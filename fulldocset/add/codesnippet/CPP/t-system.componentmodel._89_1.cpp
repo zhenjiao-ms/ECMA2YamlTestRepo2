@@ -1,12 +1,8 @@
-      try
+   public:
+      // This example method creates a ComponentEventArgs using the specified argument.
+      // Typically, this type of event args is created by a design mode subsystem.
+      ComponentEventArgs^ CreateComponentEventArgs( IComponent^ component )
       {
-         License^ licTest = nullptr;
-         licTest = LicenseManager::Validate( Form1::typeid, this );
-      }
-      catch ( LicenseException^ licE ) 
-      {
-         Console::WriteLine( licE->Message );
-         Console::WriteLine( licE->LicensedType );
-         Console::WriteLine( licE->StackTrace );
-         Console::WriteLine( licE->Source );
+         // The component that is related to the event:  args.Component
+         return gcnew ComponentEventArgs( component );
       }

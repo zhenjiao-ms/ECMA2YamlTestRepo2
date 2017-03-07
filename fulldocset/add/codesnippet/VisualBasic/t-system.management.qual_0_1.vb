@@ -1,34 +1,25 @@
 Imports System
 Imports System.Management
 
-
-Public Class Sample
+' This sample demonstrates how to
+' enumerate qualifiers of a ManagementClass
+' using QualifierDataEnumerator object.
+Class Sample_QualifierDataEnumerator
     Public Overloads Shared Function _
         Main(ByVal args() As String) As Integer
-
-        ' Get the WMI class
-        Dim mClass As ManagementClass = _
-            New ManagementClass("Win32_Service")
-
-        mClass.Options.UseAmendedQualifiers = True
-
-        ' Get the Qualifiers for the class
-        Dim qualifiers As QualifierDataCollection = _
-            mClass.Qualifiers()
-
-        ' display the Qualifier names
-        Console.WriteLine(mClass.ClassPath.ClassName & _
-            " Qualifiers: ")
-        For Each q As QualifierData In qualifiers
-            Console.WriteLine(q.Name)
-        Next
-
-        Console.WriteLine()
-
-        Console.WriteLine("Class Description: ")
-        Console.WriteLine( _
-            mClass.Qualifiers("Description").Value)
-
-
+        Dim diskClass As New _
+            ManagementClass("win32_logicaldisk")
+        diskClass.Options.UseAmendedQualifiers = True
+        Dim diskQualifier As _
+            QualifierDataCollection = diskClass.Qualifiers
+        Dim qualifierEnumerator As _
+            QualifierDataCollection.QualifierDataEnumerator = _
+                diskQualifier.GetEnumerator()
+        While qualifierEnumerator.MoveNext()
+            Console.WriteLine( _
+                qualifierEnumerator.Current.Name & _
+                " = " & qualifierEnumerator.Current.Value)
+        End While
+        Return 0
     End Function
 End Class

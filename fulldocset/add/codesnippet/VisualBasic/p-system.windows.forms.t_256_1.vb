@@ -1,13 +1,22 @@
-Private Sub TabControl1_Selected(sender as Object, e as TabControlEventArgs) _ 
-     Handles TabControl1.Selected
+Public Sub HighlightCheckedNodes()
+   Dim countIndex As Integer = 0
+   Dim selectedNode As String = "Selected customer nodes are : "
+   Dim myNode As TreeNode
+   For Each myNode In  myTreeView.Nodes(0).Nodes
+      ' Check whether the tree node is checked.
+      If myNode.Checked Then
+         ' Set the node's backColor.
+         myNode.BackColor = Color.Yellow
+         selectedNode += myNode.Text + " "
+         countIndex += 1
+      Else
+         myNode.BackColor = Color.White
+      End If
+   Next myNode
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "TabPage", e.TabPage)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TabPageIndex", e.TabPageIndex)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Action", e.Action)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"Selected Event")
-
+   If countIndex > 0 Then
+      MessageBox.Show(selectedNode)
+   Else
+      MessageBox.Show("No nodes are selected")
+   End If
 End Sub

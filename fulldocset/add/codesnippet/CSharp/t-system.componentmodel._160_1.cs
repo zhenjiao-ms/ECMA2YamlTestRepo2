@@ -1,4 +1,17 @@
-            byte myUint = 5;
-            string myUStr = "2";
-            Console.WriteLine(TypeDescriptor.GetConverter(myUint).ConvertTo(myUint, typeof(string))); 
-            Console.WriteLine(TypeDescriptor.GetConverter(myUint).ConvertFrom(myUStr));    
+        public void LinkComponentEvent(IComponentChangeService changeService)
+        {
+            // Registers an event handler for the ComponentAdded,
+            // ComponentAdding, ComponentRemoved, and ComponentRemoving events.
+            changeService.ComponentAdded += new ComponentEventHandler(this.OnComponentEvent);            
+            changeService.ComponentAdding += new ComponentEventHandler(this.OnComponentEvent);            
+            changeService.ComponentRemoved += new ComponentEventHandler(this.OnComponentEvent);            
+            changeService.ComponentRemoving += new ComponentEventHandler(this.OnComponentEvent);                        
+        }
+
+        private void OnComponentEvent(object sender, ComponentEventArgs e)
+        {
+            // Displays changed component information on the console.            
+            if( e.Component.Site != null )
+                Console.WriteLine("Name of the component related to the event: "+e.Component.Site.Name);      
+            Console.WriteLine("Type of the component related to the event: "+e.Component.GetType().FullName);
+        }

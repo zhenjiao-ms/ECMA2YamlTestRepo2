@@ -1,2 +1,1 @@
-            Dim service As CalculatorService = New CalculatorService()
-            Dim serviceHost As ServiceHost = New ServiceHost(service, baseAddress)
+            Dim svcHost As ServiceHost = New ServiceHost(GetType(CalculatorService), baseAddress)

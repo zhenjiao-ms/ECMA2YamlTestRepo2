@@ -1,98 +1,49 @@
 Imports System
+Imports System.Collections
 Imports System.IO
 Imports System.Xml.Serialization
-Imports System.Collections
-Imports System.Xml
-Imports System.Text
-Public Class Transportation
-   ' The SoapElementAttribute specifies that the
-   ' generated XML element name will be "Wheels"
-   ' instead of "Vehicle".
-   <SoapElement("Wheels")> Public Vehicle As String 
-   <SoapElement(DataType:= "dateTime")> _
-   public CreationDate As DateTime    
-   <SoapElement(IsNullable:= true)> _
-   public thing As Thing
+
+
+Public Class Group
+    ' Apply two XmlElementAttributes to the field. Set the DataType
+    ' to string and int to allow the ArrayList to accept
+    ' both types. The Namespace is also set to different values
+    ' for each type. 
+    <XmlElement(DataType := "string", _
+        Type := GetType(String), _
+        Namespace := "http://www.cpandl.com"), _
+     XmlElement(DataType := "int", _                    
+        Type := GetType(Integer), _
+        Namespace := "http://www.cohowinery.com")> _
+    Public ExtraInfo As ArrayList
 End Class
 
-Public Class Thing
-   <SoapElement(IsNullable:=true)> public ThingName As string 
-End Class
 
-Public Class Test
-
-   Shared Sub Main()
-      Dim t As Test = New Test()
-      t.SerializeObject("SoapElementOriginalVb.xml")
-      t.SerializeOverride("SoapElementOverrideVb.xml")
-      Console.WriteLine("Finished writing two XML files.")
-   End Sub
-
-   ' Return an XmlSerializer used for overriding.
-   Public Function CreateSoapOverrider() As XmlSerializer 
-      ' Create the SoapAttributes and SoapAttributeOverrides objects.
-      Dim soapAttrs As SoapAttributes = New SoapAttributes()
-
-      Dim soapOverrides As SoapAttributeOverrides = _
-      New SoapAttributeOverrides()
-            
-      ' Create a SoapElementAttribute to override 
-      ' the Vehicles property. 
-      Dim soapElement1 As SoapElementAttribute = _
-      New SoapElementAttribute("Truck")
-      ' Set the SoapElement to the object.
-      soapAttrs.SoapElement= soapElement1
-
-      ' Add the SoapAttributes to the SoapAttributeOverrides,
-      ' specifying the member to override. 
-      soapOverrides.Add(GetType(Transportation), "Vehicle", soapAttrs)
-      
-      ' Create the XmlSerializer, and return it.
-      Dim myTypeMapping As XmlTypeMapping = (New _
-      SoapReflectionImporter (soapOverrides)).ImportTypeMapping _
-      (GetType(Transportation))
-      return New XmlSerializer(myTypeMapping)
-   End Function
-
-   Public Sub SerializeOverride(filename As String)
-      ' Create an XmlSerializer instance.
-      Dim ser As XmlSerializer = CreateSoapOverrider()
-
-      ' Create the object and serialize it.
-      Dim myTransportation As Transportation = _
-      New Transportation()
-
-      myTransportation.Vehicle = "MyCar"
-      myTransportation.CreationDate = DateTime.Now
-      myTransportation.thing= new Thing()
-      
-      Dim writer As XmlTextWriter = _
-      New XmlTextWriter(filename, Encoding.UTF8)
-      writer.Formatting = Formatting.Indented
-      writer.WriteStartElement("wrapper")
-      ser.Serialize(writer, myTransportation)
-      writer.WriteEndElement()
-      writer.Close()
-   End Sub
-
-   Public Sub SerializeObject(filename As String)
-      ' Create an XmlSerializer instance.
-      Dim ser As XmlSerializer = _
-      New XmlSerializer(GetType(Transportation))
-      
-      Dim myTransportation As Transportation = _
-      New Transportation()
-      
-      myTransportation.Vehicle = "MyCar"
-      myTransportation.CreationDate=DateTime.Now
-      myTransportation.thing= new Thing()
-
-      Dim writer As XmlTextWriter = _
-      new XmlTextWriter(filename, Encoding.UTF8)
-      writer.Formatting = Formatting.Indented
-      writer.WriteStartElement("wrapper")
-      ser.Serialize(writer, myTransportation)
-      writer.WriteEndElement()
-      writer.Close()
-   End Sub
+Public Class Run
+    
+    Public Shared Sub Main()
+        Dim test As New Run()
+        test.SerializeObject("ElementTypes.xml")
+    End Sub    
+    
+    Public Sub SerializeObject(filename As String)
+        ' A TextWriter is needed to write the file.
+        Dim writer As New StreamWriter(filename)
+        
+        ' Create the XmlSerializer using the XmlAttributeOverrides.
+        Dim s As New XmlSerializer(GetType(Group))
+        
+        ' Create the object to serialize.
+        Dim myGroup As New Group()
+        
+        ' Add a string and an integer to the ArrayList returned
+        ' by the ExtraInfo field. 
+        myGroup.ExtraInfo = New ArrayList()
+        myGroup.ExtraInfo.Add("hello")
+        myGroup.ExtraInfo.Add(100)
+        
+        ' Serialize the object and close the TextWriter.
+        s.Serialize(writer, myGroup)
+        writer.Close()
+    End Sub
 End Class

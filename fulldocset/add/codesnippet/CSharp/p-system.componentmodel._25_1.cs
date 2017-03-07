@@ -1,7 +1,18 @@
-private void GetCount() {
-    // Creates a new collection and assigns it the events for button1.
-    EventDescriptorCollection events = TypeDescriptor.GetEvents(button1);
- 
-    // Prints the number of events on button1 in a text box.
-    textBox1.Text = events.Count.ToString();
- }
+using System;
+using System.Web.DynamicData;
+using System.ComponentModel.DataAnnotations;
+
+[MetadataType(typeof(ProductMetadata))]
+public partial class Product 
+{
+
+}
+
+public partial class ProductMetadata
+{
+    [UIHint("UnitsInStock")]
+    [Range(100, 10000, 
+    ErrorMessage = "Units in stock should be between {1} and {2}.")]
+    public object UnitsInStock;
+
+}

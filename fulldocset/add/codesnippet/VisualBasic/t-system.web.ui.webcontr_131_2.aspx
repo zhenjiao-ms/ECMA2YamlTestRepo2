@@ -1,102 +1,82 @@
+<%@ Page Language="VB" %>
 
-<%@ Page language="VB" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <script runat="server">
+    Private Sub Page_Load(ByVal sender As Object, _
+        ByVal e As System.EventArgs)
 
-  Sub CustomersGridView_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
-        
-    ' Get the currently selected row using the SelectedRow property.
-    Dim row As GridViewRow = CustomersGridView.SelectedRow
-        
-    ' Display the first name from the selected row.
-    ' In this example, the third column (index 2) contains
-    ' the first name.
-    MessageLabel.Text = "You selected " & row.Cells(2).Text & "."
-  End Sub
+        ' Add more rows and columns to the table than can
+        ' be displayed in the panel area.
+        ' Scroll bars will be required to view all the data.
 
-  Sub CustomersGridView_SelectedIndexChanging(ByVal sender As Object, ByVal e As GridViewSelectEventArgs)
-        
-    ' Get the currently selected row. Because the SelectedIndexChanging event
-    ' occurs before the select operation in the GridView control, the
-    ' SelectedRow property cannot be used. Instead, use the Rows collection
-    ' and the NewSelectedIndex property of the e argument passed to this 
-    ' event handler.
-    Dim row As GridViewRow = CustomersGridView.Rows(e.NewSelectedIndex)
+        ' Add rows and columns to the table.
+        Dim i As Integer
+        For i = 0 To 50
+            Dim tempRow As New TableRow
+            Dim j As Integer
+            For j = 0 To 10
+                Dim tempCell As New TableCell
+                tempCell.Text = "(" & i & "," & j & ")"
+                tempRow.Cells.Add(tempCell)
+            Next j
+            Table1.Rows.Add(tempRow)
+        Next i
+    End Sub
 
-    ' You can cancel the select operation by using the Cancel
-    ' property. For this example, if the user selects a customer with 
-    ' the ID "ANATR", the select operation is canceled and an error message
-    ' is displayed.
-    If row.Cells(1).Text = "ANATR" Then
-        e.Cancel = True
-        MessageLabel.Text = "You cannot select " + row.Cells(2).Text & "."
-    End If
-    
-  End Sub
+    Sub ListBox1_SelectedIndexChanged(ByVal sender As Object, _
+        ByVal e As EventArgs)
 
+        ' Determine which list item was clicked.
+        ' Display the selected scroll bars in the panel.
+        Select Case (ListBox1.SelectedIndex)
+            Case 0
+                Panel1.ScrollBars = ScrollBars.None
+            Case 1
+                Panel1.ScrollBars = ScrollBars.Horizontal
+            Case 2
+                Panel1.ScrollBars = ScrollBars.Vertical
+            Case 3
+                Panel1.ScrollBars = ScrollBars.Both
+            Case 4
+                Panel1.ScrollBars = ScrollBars.Auto
+            Case Else
+                Throw New Exception("Select a valid list item.")
+        End Select
+
+    End Sub
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head runat="server">
-    <title>GridView Select Example</title>
+<head id="Head2" runat="server">
+    <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
-        
-     <h3>GridView Select Example</h3>
+    <div>
 
-     <asp:gridview id="CustomersGridView" 
-       datasourceid="CustomersSource" 
-       autogeneratecolumns="False"
-       autogenerateselectbutton="True"
-       selectedindex="1"
-       onselectedindexchanged="CustomersGridView_SelectedIndexChanged"
-       onselectedindexchanging="CustomersGridView_SelectedIndexChanging"   
-       runat="server" DataKeyNames="CustomerID">
-                
-         <Columns>
-             <asp:BoundField DataField="CustomerID" 
-                 HeaderText="CustomerID" 
-                 InsertVisible="False" ReadOnly="True" 
-                 SortExpression="CustomerID" />
-             <asp:BoundField DataField="FirstName" 
-                 HeaderText="FirstName" 
-                 SortExpression="FirstName" />
-             <asp:BoundField DataField="MiddleName" 
-                 HeaderText="MiddleName" 
-                 SortExpression="MiddleName" />
-             <asp:BoundField DataField="LastName" 
-                 HeaderText="LastName" 
-                 SortExpression="LastName" />
-             <asp:BoundField DataField="Phone" 
-                 HeaderText="Phone" 
-                 SortExpression="Phone" />
-         </Columns>
-                
-       <selectedrowstyle backcolor="LightCyan"
-         forecolor="DarkBlue"
-         font-bold="true"/>  
-                
-     </asp:gridview>
-            
-      <br/>
-            
-      <asp:label id="MessageLabel"
-        forecolor="Red"
-        runat="server"/>
-            
-      <!-- This example uses Microsoft SQL Server and connects  -->
-      <!-- to the sample database. Use an ASP.NET     -->
-      <!-- expression to retrieve the connection string value   -->
-      <!-- from the Web.config file.                            -->
-      <asp:sqldatasource id="CustomersSource"
-        selectcommand="SELECT CustomerID, FirstName, MiddleName, LastName, Phone FROM SalesLT.Customer"
-        connectionstring="<%$ ConnectionStrings:AdventureWorksLTConnectionString %>" 
-        runat="server"/>
-            
+    <h3>Panel.ScrollBars Property Example</h3>
+
+    <h4>Select the scrollbars to display in the panel.</h4>
+    <asp:ListBox ID="ListBox1" runat="Server"
+      Rows="5" AutoPostBack="True" SelectionMode="Single"
+      OnSelectedIndexChanged="ListBox1_SelectedIndexChanged">
+      <asp:ListItem>None</asp:ListItem>
+      <asp:ListItem>Horizontal</asp:ListItem> 
+      <asp:ListItem>Vertical</asp:ListItem>
+      <asp:ListItem>Both</asp:ListItem> 
+      <asp:ListItem>Auto</asp:ListItem>              
+    </asp:ListBox>
+
+    <hr />              
+
+    <asp:Panel ID="Panel1" runat="Server"
+      Height="300px" Width="400px" BackColor="Aqua">
+      <asp:Table ID="Table1" runat="Server" />
+    </asp:Panel>           
+         
+    </div>
     </form>
-
-  </body>
+</body>
 </html>

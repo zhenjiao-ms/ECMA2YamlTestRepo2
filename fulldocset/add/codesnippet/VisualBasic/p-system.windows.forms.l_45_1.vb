@@ -1,33 +1,42 @@
-    Private positionListView As ListView
-    Private moveItem As ListViewItem
-    Private WithEvents button1 As Button
-    
-    
-    Private Sub InitializePositionedListViewItems() 
-        ' Set some basic properties on the ListView and button.
-        positionListView = New ListView()
-        positionListView.Height = 200
-        button1 = New Button()
-        button1.Location = New Point(160, 30)
-        button1.AutoSize = True
-        button1.Text = "Click to reposition"
+    Private WithEvents ListBox1 As New ListBox()
 
-        ' View must be set to icon view to use the Position property.
-        positionListView.View = View.LargeIcon
-        
-        ' Create the items and add them to the ListView.
-        Dim item1 As New ListViewItem("Click")
-        Dim item2 As New ListViewItem("OK")
-        moveItem = New ListViewItem("Move")
-        positionListView.Items.AddRange(New ListViewItem() _
-            {item1, item2, moveItem})
-        
-        ' Add the controls to the form.
-        Me.Controls.Add(positionListView)
-        Me.Controls.Add(button1)
-
+    Private Sub InitializeListBox() 
+        ListBox1.Items.AddRange(New Object() _
+            {"Red Item", "Orange Item", "Purple Item"})
+        ListBox1.Location = New System.Drawing.Point(81, 69)
+        ListBox1.Size = New System.Drawing.Size(120, 95)
+        ListBox1.DrawMode = DrawMode.OwnerDrawFixed
+        Controls.Add(ListBox1)
+    
     End Sub
-    
-    Private Sub button1_Click(ByVal sender As Object, ByVal e As EventArgs)
-        moveItem.Position = New Point(30, 30)
+
+    Private Sub ListBox1_DrawItem(ByVal sender As Object, _
+     ByVal e As System.Windows.Forms.DrawItemEventArgs) _
+     Handles ListBox1.DrawItem
+
+        ' Draw the background of the ListBox control for each item.
+        e.DrawBackground()
+
+        ' Define the default color of the brush as black.
+        Dim myBrush As Brush = Brushes.Black
+
+        ' Determine the color of the brush to draw each item based on   
+        ' the index of the item to draw.
+        Select Case e.Index
+            Case 0
+                myBrush = Brushes.Red
+            Case 1
+                myBrush = Brushes.Orange
+            Case 2
+                myBrush = Brushes.Purple
+        End Select
+
+        ' Draw the current item text based on the current 
+        ' Font and the custom brush settings.
+        e.Graphics.DrawString(ListBox1.Items(e.Index).ToString(), _
+            e.Font, myBrush, e.Bounds, StringFormat.GenericDefault)
+
+        ' If the ListBox has focus, draw a focus rectangle around  _ 
+        ' the selected item.
+        e.DrawFocusRectangle()
     End Sub

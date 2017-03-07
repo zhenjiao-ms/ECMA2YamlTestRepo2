@@ -1,83 +1,62 @@
-    Private WithEvents wholeTable As New ToolStripMenuItem()
-    Private WithEvents lookUp As New ToolStripMenuItem()
-    Private strip As ContextMenuStrip
-    Private cellErrorText As String
+    Private Sub ListDragTarget_DragOver(ByVal sender As Object, ByVal e As DragEventArgs) Handles ListDragTarget.DragOver
+        ' Determine whether string data exists in the drop data. If not, then
+        ' the drop effect reflects that the drop cannot occur.
+        If Not (e.Data.GetDataPresent(GetType(System.String))) Then
 
-    Private Sub dataGridView1_CellContextMenuStripNeeded(ByVal sender As Object, _
-        ByVal e As DataGridViewCellContextMenuStripNeededEventArgs) _
-        Handles dataGridView1.CellContextMenuStripNeeded
-
-        cellErrorText = String.Empty
-
-        If strip Is Nothing Then
-            strip = New ContextMenuStrip()
-            lookUp.Text = "Look Up"
-            wholeTable.Text = "See Whole Table"
-            strip.Items.Add(lookUp)
-            strip.Items.Add(wholeTable)
-        End If
-        e.ContextMenuStrip = strip
-    End Sub
-
-    Private Sub wholeTable_Click(ByVal sender As Object, ByVal e As EventArgs) Handles wholeTable.Click
-        dataGridView1.DataSource = Populate("Select * from employees", True)
-    End Sub
-
-    Private theCellImHoveringOver As DataGridViewCellEventArgs
-
-    Private Sub dataGridView1_CellMouseEnter(ByVal sender As Object, _
-        ByVal e As DataGridViewCellEventArgs) _
-        Handles dataGridView1.CellMouseEnter
-
-        theCellImHoveringOver = e
-    End Sub
-
-    Private cellErrorLocation As DataGridViewCellEventArgs
-
-    Private Sub lookUp_Click(ByVal sender As Object, ByVal e As EventArgs) Handles lookUp.Click
-        Try
-            dataGridView1.DataSource = Populate("Select * from employees where " & _
-                dataGridView1.Columns(theCellImHoveringOver.ColumnIndex).Name & " = '" & _
-                dataGridView1.Rows(theCellImHoveringOver.RowIndex).Cells(theCellImHoveringOver.ColumnIndex).Value.ToString() & _
-                "'", True)
-        Catch ex As SqlException
-            cellErrorText = "Can't look this cell up"
-            cellErrorLocation = theCellImHoveringOver
-        End Try
-    End Sub
-
-    Private Sub dataGridView1_CellErrorTextNeeded(ByVal sender As Object, _
-                ByVal e As DataGridViewCellErrorTextNeededEventArgs) _
-                Handles dataGridView1.CellErrorTextNeeded
-        If (Not cellErrorLocation Is Nothing) Then
-            If e.ColumnIndex = cellErrorLocation.ColumnIndex AndAlso _
-                e.RowIndex = cellErrorLocation.RowIndex Then
-                e.ErrorText = cellErrorText
-            End If
-        End If
-    End Sub
-
-    Private Function Populate(ByVal query As String, ByVal resetUnsharedCounter As Boolean) As DataTable
-
-        If resetUnsharedCounter Then
-            ResetCounter()
+            e.Effect = DragDropEffects.None
+            DropLocationLabel.Text = "None - no string data."
+            Return
         End If
 
-        ' Alter the data source as necessary
-        Dim adapter As New SqlDataAdapter(query, _
-            New SqlConnection("Integrated Security=SSPI;Persist Security Info=False;" & _
-            "Initial Catalog=Northwind;Data Source=localhost"))
+        ' Set the effect based upon the KeyState.
+        If ((e.KeyState And (8 + 32)) = (8 + 32) And _
+            (e.AllowedEffect And DragDropEffects.Link) = DragDropEffects.Link) Then
+            ' KeyState 8 + 32 = CTL + ALT
 
-        Dim table As New DataTable()
-        table.Locale = System.Globalization.CultureInfo.InvariantCulture
-        adapter.Fill(table)
-        Return table
-    End Function
+            ' Link drag-and-drop effect.
+            e.Effect = DragDropEffects.Link
 
-    Private count As New Label()
-    Private unsharedRowCounter As Integer
+        ElseIf ((e.KeyState And 32) = 32 And _
+            (e.AllowedEffect And DragDropEffects.Link) = DragDropEffects.Link) Then
 
-    Private Sub ResetCounter()
-        unsharedRowCounter = 0
-        count.Text = unsharedRowCounter.ToString()
+            ' ALT KeyState for link.
+            e.Effect = DragDropEffects.Link
+
+        ElseIf ((e.KeyState And 4) = 4 And _
+            (e.AllowedEffect And DragDropEffects.Move) = DragDropEffects.Move) Then
+
+            ' SHIFT KeyState for move.
+            e.Effect = DragDropEffects.Move
+
+        ElseIf ((e.KeyState And 8) = 8 And _
+            (e.AllowedEffect And DragDropEffects.Copy) = DragDropEffects.Copy) Then
+
+            ' CTL KeyState for copy.
+            e.Effect = DragDropEffects.Copy
+
+        ElseIf ((e.AllowedEffect And DragDropEffects.Move) = DragDropEffects.Move) Then
+
+            ' By default, the drop action should be move, if allowed.
+            e.Effect = DragDropEffects.Move
+
+        Else
+            e.Effect = DragDropEffects.None
+        End If
+
+        ' Gets the index of the item the mouse is below. 
+
+        ' The mouse locations are relative to the screen, so they must be 
+        ' converted to client coordinates.
+
+        indexOfItemUnderMouseToDrop = _
+            ListDragTarget.IndexFromPoint(ListDragTarget.PointToClient(New Point(e.X, e.Y)))
+
+        ' Updates the label text.
+        If (indexOfItemUnderMouseToDrop <> ListBox.NoMatches) Then
+
+            DropLocationLabel.Text = "Drops before item #" & (indexOfItemUnderMouseToDrop + 1)
+        Else
+            DropLocationLabel.Text = "Drops at the end."
+        End If
+
     End Sub

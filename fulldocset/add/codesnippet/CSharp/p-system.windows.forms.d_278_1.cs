@@ -1,43 +1,31 @@
-    private void dataGridView1_CellPainting(object sender,
-    System.Windows.Forms.DataGridViewCellPaintingEventArgs e)
+    // Draws column headers.
+    private void listView1_DrawColumnHeader(object sender,
+        DrawListViewColumnHeaderEventArgs e)
     {
-        if (this.dataGridView1.Columns["ContactName"].Index ==
-            e.ColumnIndex && e.RowIndex >= 0)
+        using (StringFormat sf = new StringFormat())
         {
-            Rectangle newRect = new Rectangle(e.CellBounds.X + 1,
-                e.CellBounds.Y + 1, e.CellBounds.Width - 4,
-                e.CellBounds.Height - 4);
-
-            using (
-                Brush gridBrush = new SolidBrush(this.dataGridView1.GridColor),
-                backColorBrush = new SolidBrush(e.CellStyle.BackColor))
+            // Store the column text alignment, letting it default
+            // to Left if it has not been set to Center or Right.
+            switch (e.Header.TextAlign)
             {
-                using (Pen gridLinePen = new Pen(gridBrush))
-                {
-                    // Erase the cell.
-                    e.Graphics.FillRectangle(backColorBrush, e.CellBounds);
+                case HorizontalAlignment.Center:
+                    sf.Alignment = StringAlignment.Center;
+                    break;
+                case HorizontalAlignment.Right:
+                    sf.Alignment = StringAlignment.Far;
+                    break;
+            }
 
-                    // Draw the grid lines (only the right and bottom lines;
-                    // DataGridView takes care of the others).
-                    e.Graphics.DrawLine(gridLinePen, e.CellBounds.Left,
-                        e.CellBounds.Bottom - 1, e.CellBounds.Right - 1,
-                        e.CellBounds.Bottom - 1);
-                    e.Graphics.DrawLine(gridLinePen, e.CellBounds.Right - 1,
-                        e.CellBounds.Top, e.CellBounds.Right - 1,
-                        e.CellBounds.Bottom);
+            // Draw the standard header background.
+            e.DrawBackground();
 
-                    // Draw the inset highlight box.
-                    e.Graphics.DrawRectangle(Pens.Blue, newRect);
-
-                    // Draw the text content of the cell, ignoring alignment.
-                    if (e.Value != null)
-                    {
-                        e.Graphics.DrawString((String)e.Value, e.CellStyle.Font,
-                            Brushes.Crimson, e.CellBounds.X + 2,
-                            e.CellBounds.Y + 2, StringFormat.GenericDefault);
-                    }
-                    e.Handled = true;
-                }
+            // Draw the header text.
+            using (Font headerFont =
+                        new Font("Helvetica", 10, FontStyle.Bold))
+            {
+                e.Graphics.DrawString(e.Header.Text, headerFont,
+                    Brushes.Black, e.Bounds, sf);
             }
         }
+        return;
     }

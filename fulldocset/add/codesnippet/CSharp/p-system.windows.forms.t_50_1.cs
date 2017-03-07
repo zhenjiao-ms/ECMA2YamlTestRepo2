@@ -1,36 +1,15 @@
-using System.Drawing;
-using System.Windows.Forms;
+private void ToolStripRenderer1_RenderArrow(Object sender, ToolStripArrowRenderEventArgs e) {
 
-public class Form1 : Form
-{
-	private TabControl tabControl1;
-	private TabPage tabPage1;
-
-	private void MyTabs()
-	{
-		this.tabControl1 = new TabControl();
-		this.tabPage1 = new TabPage();
-
-		this.tabControl1.Controls.AddRange(new Control[] {
-			this.tabPage1});
-		this.tabControl1.Location = new Point(25, 25);
-		this.tabControl1.Size = new Size(250, 250);
-
-		// Displays a string, myTabPage, on tabPage1.
-		this.tabPage1.Text = "myTabPage";
-
-		this.ClientSize = new Size(300, 300);
-		this.Controls.AddRange(new Control[] {
-			this.tabControl1});
-	}
-
-	public Form1()
-	{
-		MyTabs();
-	}
-
-	static void Main() 
-	{
-		Application.Run(new Form1());
-	}
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "ArrowRectangle", e.ArrowRectangle );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "ArrowColor", e.ArrowColor );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Direction", e.Direction );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Item", e.Item );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "RenderArrow Event" );
 }

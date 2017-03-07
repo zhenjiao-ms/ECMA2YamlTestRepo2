@@ -1,11 +1,23 @@
-Private Sub PrintCellRowAndCol()
-    Dim myCell As DataGridCell
-    myCell = DataGrid1.CurrentCell
-    Console.WriteLine(myCell.RowNumber)
-    Console.WriteLine(myCell.ColumnNumber)
-    ' Prints the value of the cell through the DataTable.
-    Dim myTable As DataTable
-    ' Assumes the DataGrid is bound to a DataTable.
-    myTable = CType(DataGrid1.DataSource, DataTable)
-    Console.WriteLine(myTable.Rows(myCell.RowNumber)(myCell.ColumnNumber))
- End Sub
+    Public Sub dataGridView1_RowContextMenuStripNeeded( _
+        ByVal sender As Object, _
+        ByVal e As DataGridViewRowContextMenuStripNeededEventArgs) _
+        Handles dataGridView1.RowContextMenuStripNeeded
+
+        Dim dataGridViewRow1 As DataGridViewRow = _
+        dataGridView1.Rows(e.RowIndex)
+
+        toolStripMenuItem1.Enabled = True
+
+        ' Show the appropriate ContextMenuStrip based on the employees title.
+        If dataGridViewRow1.Cells("Title").Value.ToString() = _
+            "Sales Manager" OrElse _
+            dataGridViewRow1.Cells("Title").Value.ToString() = _
+            "Vice President, Sales" Then
+
+            e.ContextMenuStrip = managerMenuStrip
+        Else
+            e.ContextMenuStrip = employeeMenuStrip
+        End If
+
+        contextMenuRowIndex = e.RowIndex
+    End Sub

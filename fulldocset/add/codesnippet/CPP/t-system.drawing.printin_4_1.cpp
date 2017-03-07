@@ -1,39 +1,33 @@
-   void Printing()
+public:
+   void Printing( String^ printer )
    {
       try
       {
-         
-         /* This assumes that a variable of type string, named filePath,
-                 has been set to the path of the file to print. */
          streamToPrint = gcnew StreamReader( filePath );
          try
          {
             printFont = gcnew System::Drawing::Font( "Arial",10 );
             PrintDocument^ pd = gcnew PrintDocument;
-            
-            /* This assumes that a method, named pd_PrintPage, has been
-                      defined. pd_PrintPage handles the PrintPage event. */
-            pd->PrintPage += gcnew PrintPageEventHandler( this, &Sample::pd_PrintPage );
-            
-            /* This assumes that a variable of type string, named 
-                      printer, has been set to the printer's name. */
+            pd->PrintPage += gcnew PrintPageEventHandler(
+               this, &Form1::pd_PrintPage );
+            // Specify the printer to use.
             pd->PrinterSettings->PrinterName = printer;
-            
-            // Create a new instance of Margins with one inch margins.
-            Margins^ margins = gcnew Margins( 100,100,100,100 );
-            pd->DefaultPageSettings->Margins = margins;
-            pd->Print();
+            if ( pd->PrinterSettings->IsValid )
+            {
+               pd->Print();
+            }
+            else
+            {
+               MessageBox::Show( "Printer is invalid." );
+            }
          }
          finally
          {
             streamToPrint->Close();
          }
-
       }
       catch ( Exception^ ex ) 
       {
-         MessageBox::Show( String::Concat( "An error occurred printing the file - ", ex->Message ) );
+         MessageBox::Show( ex->Message );
       }
-
    }
-

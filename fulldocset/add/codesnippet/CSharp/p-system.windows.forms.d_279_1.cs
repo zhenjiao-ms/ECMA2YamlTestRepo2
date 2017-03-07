@@ -1,20 +1,13 @@
-    // Freeze the first row.
-    private void Button4_Click(object sender, System.EventArgs e)
-    {
-
-        FreezeBand(dataGridView.Rows[0]);
-    }
-
-    private void Button5_Click(object sender, System.EventArgs e)
-    {
-
-        FreezeBand(dataGridView.Columns[1]);
-    }
-
-    private static void FreezeBand(DataGridViewBand band)
-    {
-        band.Frozen = true;
-        DataGridViewCellStyle style = new DataGridViewCellStyle();
-        style.BackColor = Color.WhiteSmoke;
-        band.DefaultCellStyle = style;
-    }
+        public override DataGridViewAdvancedBorderStyle AdjustedTopLeftHeaderBorderStyle
+        {
+            get
+            {
+                DataGridViewAdvancedBorderStyle newStyle =
+                    new DataGridViewAdvancedBorderStyle();
+                newStyle.Top = DataGridViewAdvancedCellBorderStyle.None;
+                newStyle.Left = DataGridViewAdvancedCellBorderStyle.None;
+                newStyle.Bottom = DataGridViewAdvancedCellBorderStyle.Outset;
+                newStyle.Right = DataGridViewAdvancedCellBorderStyle.OutsetDouble;
+                return newStyle;
+            }
+        }

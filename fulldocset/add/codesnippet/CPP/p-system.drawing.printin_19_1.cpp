@@ -1,28 +1,13 @@
-public:
-   void Printing()
-   {
-      try
-      {
-         streamToPrint = gcnew StreamReader( filePath );
-         try
+         // Add list of supported paper sizes found on the printer.
+         // The DisplayMember property is used to identify the property that will provide the display String*.
+         comboPaperSize->DisplayMember = "PaperName";
+         PaperSize^ pkSize;
+         for ( int i = 0; i < printDoc->PrinterSettings->PaperSizes->Count; i++ )
          {
-            printFont = gcnew Font( "Arial",10 );
-            PrintDocument^ pd = gcnew PrintDocument;
-            pd->PrintPage += gcnew PrintPageEventHandler(
-               this, &Sample::pd_PrintPage );
-            pd->PrinterSettings->PrinterName = printer;
-            // Create a new instance of Margins with 1-inch margins.
-            Margins^ margins = gcnew Margins( 100,100,100,100 );
-            pd->DefaultPageSettings->Margins = margins;
-            pd->Print();
+            pkSize = printDoc->PrinterSettings->PaperSizes[ i ];
+            comboPaperSize->Items->Add( pkSize );
          }
-         finally
-         {
-            streamToPrint->Close();
-         }
-      }
-      catch ( Exception^ ex ) 
-      {
-         MessageBox::Show( ex->Message );
-      }
-   }
+
+         // Create a PaperSize and specify the custom paper size through the constructor and add to combobox.
+         PaperSize^ pkCustomSize1 = gcnew PaperSize( "First custom size",100,200 );
+         comboPaperSize->Items->Add( pkCustomSize1 );

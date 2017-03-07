@@ -1,41 +1,30 @@
-      ' This method draws a border around the button's image. If the background
-      ' to be rendered belongs to the empty cell, a string is drawn. Otherwise,
-      ' a border is drawn at the edges of the button.
-      Protected Overrides Sub OnRenderButtonBackground(e As ToolStripItemRenderEventArgs)
-         MyBase.OnRenderButtonBackground(e)
-         
-         ' Define some local variables for convenience.
-         Dim g As Graphics = e.Graphics
-         Dim gs As GridStrip = e.ToolStrip 
-         Dim gsb As ToolStripButton = e.Item 
-         
-         ' Calculate the rectangle around which the border is painted.
-         Dim imageRectangle As New Rectangle(borderThickness, borderThickness, e.Item.Width - 2 * borderThickness, e.Item.Height - 2 * borderThickness)
-         
-         ' If rendering the empty cell background, draw an 
-         ' explanatory string, centered in the ToolStripButton.
-            If gsb Is gs.EmptyCell Then
-                e.Graphics.DrawString("Drag to here", gsb.Font, SystemBrushes.ControlDarkDark, imageRectangle, style)
-            Else
-                ' If the button can be a drag source, paint its border red.
-                ' otherwise, paint its border a dark color.
-                Dim b As Brush = IIf(gs.IsValidDragSource(gsb), Brushes.Red, SystemBrushes.ControlDarkDark)
-
-                ' Draw the top segment of the border.
-                Dim borderSegment As New Rectangle(0, 0, e.Item.Width, imageRectangle.Top)
-                g.FillRectangle(b, borderSegment)
-
-                ' Draw the right segment.
-                borderSegment = New Rectangle(imageRectangle.Right, 0, e.Item.Bounds.Right - imageRectangle.Right, imageRectangle.Bottom)
-                g.FillRectangle(b, borderSegment)
-
-                ' Draw the left segment.
-                borderSegment = New Rectangle(0, 0, imageRectangle.Left, e.Item.Height)
-                g.FillRectangle(b, borderSegment)
-
-                ' Draw the bottom segment.
-                borderSegment = New Rectangle(0, imageRectangle.Bottom, e.Item.Width, e.Item.Bounds.Bottom - imageRectangle.Bottom)
-                g.FillRectangle(b, borderSegment)
-            End If
-        End Sub
-    End Class
+    Public Sub InitializeMyToolBar()
+        ' Create the ToolBar, ToolBarButton controls, and menus.
+        Dim toolBarButton1 As New ToolBarButton("Open")
+        Dim toolBarButton2 As New ToolBarButton()
+        Dim toolBarButton3 As New ToolBarButton()
+        Dim toolBar1 As New ToolBar()
+	Dim menuItem1 As New MenuItem("Print")
+	Dim contextMenu1 As New ContextMenu(New MenuItem(){menuItem1})
+        
+        ' Add the ToolBarButton controls to the ToolBar.
+        toolBar1.Buttons.Add(toolBarButton1)
+        toolBar1.Buttons.Add(toolBarButton2)
+        toolBar1.Buttons.Add(toolBarButton3)
+        
+        ' Assign an ImageList to the ToolBar and show ToolTips.
+        toolBar1.ImageList = imageList1
+        toolBar1.ShowToolTips = True
+        
+        ' Assign ImageIndex, ContextMenu, Text, ToolTip, and
+        ' Style properties of the ToolBarButton controls. 
+        toolBarButton2.Style = ToolBarButtonStyle.Separator
+        toolBarButton3.Text = "Print"
+        toolBarButton3.Style = ToolBarButtonStyle.DropDownButton
+        toolBarButton3.ToolTipText = "Print"
+        toolBarButton3.ImageIndex = 0
+        toolBarButton3.DropDownMenu = contextMenu1
+        
+        ' Add the ToolBar to a form.
+        Controls.Add(toolBar1)
+    End Sub

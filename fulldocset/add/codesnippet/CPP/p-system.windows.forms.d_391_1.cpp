@@ -1,19 +1,38 @@
-   // Set row labels.
-   void Button6_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
+#pragma region Data store maintance
 
-      int rowNumber = 1;
-      System::Collections::IEnumerator^ myEnum = safe_cast<System::Collections::IEnumerable^>(dataGridView->Rows)->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         DataGridViewRow^ row = safe_cast<DataGridViewRow^>(myEnum->Current);
-         if ( row->IsNewRow )
-                  continue;
-         row->HeaderCell->Value = String::Format( L"Row {0}", rowNumber );
+    void VirtualConnector::dataGridView1_CellValueNeeded
+        (Object^ sender, DataGridViewCellValueEventArgs^ e)
+    {
+        if (store->ContainsKey(e->RowIndex))
+        {
+            // Use the store if the e value has been modified 
+            // and stored.            
+            e->Value = gcnew Int32(store->default[e->RowIndex]); 
+        }
+        else if (newRowNeeded && e->RowIndex == numberOfRows)
+        {
+            if (dataGridView1->IsCurrentCellInEditMode)
+            {
+                e->Value = initialValue;
+            }
+            else
+            {
+                // Show a blank e if the cursor is just loitering
+                // over(the) last row.
+                e->Value = String::Empty;
+            }
+        }
+        else
+        {
+            e->Value = e->RowIndex;
+        }
+    }
 
-         rowNumber = rowNumber + 1;
-      }
-
-      dataGridView->AutoResizeRowHeadersWidth( DataGridViewRowHeadersWidthSizeMode::AutoSizeToAllHeaders );
-   }
-
+    void VirtualConnector::dataGridView1_CellValuePushed
+        (Object^ sender, DataGridViewCellValueEventArgs^ e)
+    {
+        String^ value = e->Value->ToString();
+        store[e->RowIndex] = Int32::Parse(value, 
+            CultureInfo::CurrentCulture);
+    }
+#pragma endregion

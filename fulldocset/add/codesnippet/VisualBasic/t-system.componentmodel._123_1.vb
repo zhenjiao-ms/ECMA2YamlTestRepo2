@@ -1,4 +1,14 @@
-            Dim myGuid As New Guid("B80D56EC-5899-459d-83B4-1AE0BB8418E4")
-            Dim myGuidString As String = "1AA7F83F-C7F5-11D0-A376-00C04FC9DA04"
-            Console.WriteLine(TypeDescriptor.GetConverter(myGuid).ConvertTo(myGuid, GetType(String)))
-            Console.WriteLine(TypeDescriptor.GetConverter(myGuid).ConvertFrom(myGuidString))
+   <DesignerSerializer(GetType(MyCodeDomSerializer), GetType(CodeDomSerializer))> _
+   Public Class MyComponent
+      Inherits Component
+      Private localProperty As String = "Component Property Value"
+
+      Public Property LocalProp() As String
+         Get
+            Return localProperty
+         End Get
+         Set(ByVal Value As String)
+            localProperty = Value
+         End Set
+      End Property
+   End Class 'MyComponent

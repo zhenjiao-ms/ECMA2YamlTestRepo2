@@ -1,35 +1,17 @@
-    Private Sub Form1_Load(ByVal sender As System.Object, _
-                           ByVal e As System.EventArgs) Handles MyBase.Load
-
-        ' Create the list to use as the custom source.
-        Dim MySource As New AutoCompleteStringCollection()
-        MySource.AddRange(New String() _
-                            { _
-                                "January", _
-                                "February", _
-                                "March", _
-                                "April", _
-                                "May", _
-                                "June", _
-                                "July", _
-                                "August", _
-                                "September", _
-                                "October", _
-                                "November", _
-                                "December" _
-                            })
-
-        ' Create and initialize the text box.
-        Dim MyTextBox As New TextBox()
-        With MyTextBox
-            .AutoCompleteCustomSource = MySource
-            .AutoCompleteMode = AutoCompleteMode.SuggestAppend
-            .AutoCompleteSource = AutoCompleteSource.CustomSource
-            .Location = New Point(20, 20)
-            .Width = Me.ClientRectangle.Width - 40
-            .Visible = True
-        End With
-
-        ' Add the text box to the form.
-        Me.Controls.Add(MyTextBox)
-    End Sub
+      ' This code example demonstrates the syntax for setting
+      ' various ToolStripTextBox properties.
+      ' 
+      toolStripTextBox1.AcceptsReturn = True
+      toolStripTextBox1.AcceptsTab = True
+      toolStripTextBox1.AutoCompleteCustomSource.AddRange(New String() {"This is line one.", "Second line.", "Another line."})
+      toolStripTextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+      toolStripTextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+      toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+      toolStripTextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+      toolStripTextBox1.HideSelection = False
+      toolStripTextBox1.MaxLength = 32000
+      toolStripTextBox1.Name = "toolStripTextBox1"
+      toolStripTextBox1.ShortcutsEnabled = False
+      toolStripTextBox1.Size = New System.Drawing.Size(100, 25)
+      toolStripTextBox1.Text = "STRING1" + ControlChars.Cr + ControlChars.Lf + "STRING2" + ControlChars.Cr + ControlChars.Lf + "STRING3" + ControlChars.Cr + ControlChars.Lf + "STRING4"
+      toolStripTextBox1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center

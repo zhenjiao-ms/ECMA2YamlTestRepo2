@@ -3,54 +3,105 @@
 
 using namespace System;
 using namespace System::IO;
-using namespace System::Xml::Serialization;
 using namespace System::Xml;
 using namespace System::Xml::Schema;
-
-public ref class Group
+using namespace System::Xml::Serialization;
+public ref class Winery
 {
 public:
-   String^ GroupName;
+   String^ Name;
 };
 
-public ref class Test
+public ref class VacationCompany
 {
 public:
-   static void main()
-   {
-      Test^ t = gcnew Test;
-      
-      // Deserialize the file containing unknown elements.
-      t->DeserializeObject( "UnknownAttributes.xml" );
-   }
+   String^ Name;
+};
 
+public ref class Enterprises
+{
 private:
-   void Serializer_UnknownAttribute( Object^ sender, XmlAttributeEventArgs^ e )
+   array<Winery^>^wineries;
+   array<VacationCompany^>^companies;
+
+public:
+
+   // Sets the Form property to qualified, and specifies the namespace. 
+   [XmlArray(Form=XmlSchemaForm::Qualified,ElementName="Company",
+   Namespace="http://www.cohowinery.com")]
+   property array<Winery^>^ Wineries 
    {
-      Console::WriteLine( "Unknown Attribute" );
-      Console::WriteLine( "\t{0} {1}", e->Attr->Name, e->Attr->InnerXml );
-      Console::WriteLine( "\t LineNumber: {0}", e->LineNumber );
-      Console::WriteLine( "\t LinePosition: {0}", e->LinePosition );
-      Group^ x = dynamic_cast<Group^>(e->ObjectBeingDeserialized);
-      Console::WriteLine( x->GroupName );
-      Console::WriteLine( sender );
+      array<Winery^>^ get()
+      {
+         return wineries;
+      }
+      void set( array<Winery^>^value )
+      {
+         wineries = value;
+      }
    }
 
-   void DeserializeObject( String^ filename )
+   [XmlArray(Form=XmlSchemaForm::Qualified,ElementName="Company",
+   Namespace="http://www.treyresearch.com")]
+   property array<VacationCompany^>^ Companies 
    {
-      XmlSerializer^ ser = gcnew XmlSerializer( Group::typeid );
-
-      // Add a delegate to handle unknown element events.
-      ser->UnknownAttribute += gcnew XmlAttributeEventHandler( this, &Test::Serializer_UnknownAttribute );
-
-      // A FileStream is needed to read the XML document.
-      FileStream^ fs = gcnew FileStream( filename,FileMode::Open );
-      Group^ g = dynamic_cast<Group^>(ser->Deserialize( fs ));
-      fs->Close();
+      array<VacationCompany^>^ get()
+      {
+         return companies;
+      }
+      void set( array<VacationCompany^>^value )
+      {
+         companies = value;
+      }
    }
 };
 
 int main()
 {
-   Test::main();
+   String^ filename = "MyEnterprises.xml";
+
+   // Creates an instance of the XmlSerializer class.
+   XmlSerializer^ mySerializer = gcnew XmlSerializer( Enterprises::typeid );
+
+   // Writing file requires a TextWriter.
+   TextWriter^ writer = gcnew StreamWriter( filename );
+
+   // Creates an instance of the XmlSerializerNamespaces class.
+   XmlSerializerNamespaces^ ns = gcnew XmlSerializerNamespaces;
+
+   // Adds namespaces and prefixes for the XML document instance.
+   ns->Add( "winery", "http://www.cohowinery.com" );
+   ns->Add( "vacationCompany", "http://www.treyresearch.com" );
+
+   // Creates an instance of the class that will be serialized.
+   Enterprises^ myEnterprises = gcnew Enterprises;
+
+   // Creates objects and adds to the array. 
+   Winery^ w1 = gcnew Winery;
+   w1->Name = "cohowinery";
+   array<Winery^>^myWinery = {w1};
+   myEnterprises->Wineries = myWinery;
+   VacationCompany^ com1 = gcnew VacationCompany;
+   com1->Name = "adventure-works";
+   array<VacationCompany^>^myCompany = {com1};
+   myEnterprises->Companies = myCompany;
+
+   // Serializes the class, and closes the TextWriter.
+   mySerializer->Serialize( writer, myEnterprises, ns );
+   writer->Close();
+}
+
+void ReadEnterprises( String^ filename )
+{
+   XmlSerializer^ mySerializer = gcnew XmlSerializer( Enterprises::typeid );
+   FileStream^ fs = gcnew FileStream( filename,FileMode::Open );
+   Enterprises^ myEnterprises = dynamic_cast<Enterprises^>(mySerializer->Deserialize( fs ));
+   for ( int i = 0; i < myEnterprises->Wineries->Length; i++ )
+   {
+      Console::WriteLine( myEnterprises->Wineries[ i ]->Name );
+   }
+   for ( int i = 0; i < myEnterprises->Companies->Length; i++ )
+   {
+      Console::WriteLine( myEnterprises->Companies[ i ]->Name );
+   }
 }

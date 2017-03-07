@@ -1,1 +1,1 @@
-            MessageSecurityOverMsmq msgSecurity = security.Message;
+		string scheme = binding.Scheme;

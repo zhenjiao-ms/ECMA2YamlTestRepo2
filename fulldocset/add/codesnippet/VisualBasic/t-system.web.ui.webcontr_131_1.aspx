@@ -1,120 +1,51 @@
-<%@ Page language="VB" %>
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<%@ Page Language="VB" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    
+
 <script runat="server">
+    Private Sub Page_Load(ByVal sender As Object, _
+        ByVal e As System.EventArgs)
 
-  Sub ContactsListView_ItemInserted(ByVal sender As Object, ByVal e As ListViewInsertedEventArgs)
+        ' Add more rows and columns to the table than can
+        ' be displayed in the panel area.
+        ' Scroll bars will be required to view all the data.
 
-    If e.Exception IsNot Nothing Then
-
-      If e.AffectedRows = 0 Then
-        e.KeepInInsertMode = True
-        Message.Text = "An exception occurred inserting the new Contact. " & _
-          "Please verify your values and try again."
-      Else
-        Message.Text = "An exception occurred inserting the new Contact. " & _
-          "Please verify the values in the newly inserted item."
-      End If
-
-      e.ExceptionHandled = True
-    End If
-  End Sub
-
-  Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)
-    Message.Text = ""
-  End Sub
+        ' Add rows and columns to the table.
+        Dim rowNum As Integer
+        For rowNum = 0 To 50
+            Dim tempRow As New TableRow
+            Dim cellNum As Integer
+            For cellNum = 0 To 10
+                Dim tempCell As New TableCell
+                tempCell.Text = _
+                    String.Format("({0}, {1})", rowNum, cellNum)
+                tempRow.Cells.Add(tempCell)
+            Next
+            Table1.Rows.Add(tempRow)
+        Next
+    End Sub
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head id="Head1" runat="server">
-    <title>ListView.ItemInserted Example</title>
-  </head>
-  <body>
+<head id="Head2" runat="server">
+    <title>Panel Scrollbars - VB.NET Example</title>
+</head>
+<body>
     <form id="form1" runat="server">
-        
-      <h3>ListViewItemInserted Example</h3>
-            
-      <asp:Label ID="Message"
-        ForeColor="Red"          
-        runat="server"/>
-      <br/>
-      
-      <asp:ListView ID="ContactsListView" 
-        DataSourceID="ContactsDataSource" 
-        DataKeyNames="ContactID"
-        OnItemInserted="ContactsListView_ItemInserted"  
-        InsertItemPosition="LastItem"
-        runat="server">
-        <LayoutTemplate>
-          <table cellpadding="2" border="1" runat="server" id="tblContacts" width="640px">
-            <tr runat="server" id="itemPlaceholder" />
-          </table>
-          <asp:DataPager runat="server" ID="PeopleDataPager" PageSize="12">
-            <Fields>
-              <asp:NextPreviousPagerField 
-                ShowFirstPageButton="true" ShowLastPageButton="true"
-                FirstPageText="|&lt;&lt; " LastPageText=" &gt;&gt;|"
-                NextPageText=" &gt; " PreviousPageText=" &lt; " />
-            </Fields>
-          </asp:DataPager>
-        </LayoutTemplate>
-        <ItemTemplate>
-          <tr runat="server">
-            <td valign="top">
-              <asp:Label ID="FirstNameLabel" runat="server" Text='<%#Eval("FirstName") %>' />
-              <asp:Label ID="LastNameLabel" runat="server" Text='<%#Eval("LastName") %>' />
-            </td>
-            <td>&nbsp;
-              <asp:Label ID="EmailLabel" runat="server" Text='<%#Eval("EmailAddress") %>' />
-            </td>
-          </tr>
-        </ItemTemplate>
-        <InsertItemTemplate>
-          <tr style="background-color:#D3D3D3">
-            <td valign="top">
-              <asp:Label runat="server" ID="FirstNameLabel" 
-                AssociatedControlID="FirstNameTextBox" Text="First Name"/>
-              <asp:TextBox ID="FirstNameTextBox" runat="server" 
-                Text='<%#Bind("FirstName") %>' /><br />
-              <asp:Label runat="server" ID="LastNameLabel" 
-                AssociatedControlID="LastNameTextBox" Text="Last Name" />
-              <asp:TextBox ID="LastNameTextBox" runat="server" 
-                Text='<%#Bind("LastName") %>' /><br />
-              <asp:Label runat="server" ID="EmailLabel" 
-                AssociatedControlID="EmailTextBox" Text="E-mail" />
-              <asp:TextBox ID="EmailTextBox" runat="server" 
-                Text='<%#Bind("EmailAddress") %>' />
-            </td>
-            <td>
-              <asp:LinkButton ID="InsertButton" runat="server" 
-                CommandName="Insert" Text="Insert" />
-            </td>
-          </tr>
-        </InsertItemTemplate>
-      </asp:ListView>
+    <div>
 
-      <!-- This example uses Microsoft SQL Server and connects      -->
-      <!-- to the AdventureWorks sample database. Use an ASP.NET    -->
-      <!-- expression to retrieve the connection string value       -->
-      <!-- from the Web.config file.                                -->
-      <asp:SqlDataSource ID="ContactsDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:AdventureWorks_DataConnectionString %>"
-        SelectCommand="SELECT [ContactID], [FirstName], [LastName], [EmailAddress] 
-          FROM Person.Contact"
-        InsertCommand="INSERT INTO Person.Contact
-          ([FirstName], [LastName], [EmailAddress], [PasswordHash], [PasswordSalt]) 
-          Values(@FirstName, @LastName, @EmailAddress, '', '');
-          SELECT @ContactID = SCOPE_IDENTITY()">
-        <InsertParameters>
-          <asp:Parameter Name="FirstName" />
-          <asp:Parameter Name="LastName" />
-          <asp:Parameter Name="EmailAddress" />
-          <asp:Parameter Name="ContactID" Type="Int32" Direction="Output" />
-        </InsertParameters>
-      </asp:SqlDataSource>
-      
+    <h3>Panel.ScrollBars Property Example</h3>        
+
+    <asp:Panel ID="Panel1" runat="Server"
+      Height="300px" Width="400px"
+      BackColor="Aqua" ScrollBars="Auto">
+
+      <asp:Table ID="Table1" runat="Server"></asp:Table>  
+
+    </asp:Panel>         
+
+    </div>
     </form>
-  </body>
+</body>
 </html>

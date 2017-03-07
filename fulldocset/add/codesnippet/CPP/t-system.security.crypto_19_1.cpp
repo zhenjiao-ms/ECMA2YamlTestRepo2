@@ -1,52 +1,33 @@
+#using <System.Xml.dll>
+#using <System.Security.dll>
+#using <System.dll>
+
 using namespace System;
+using namespace System::Security::Cryptography::Xml;
+using namespace System::Xml;
 using namespace System::IO;
-using namespace System::Security::Cryptography;
-class MyMainClass
-{
-public:
-   static void DecodeFromFile( String^ inFileName, String^ outFileName )
-   {
-      FromBase64Transform^ myTransform = gcnew FromBase64Transform( FromBase64TransformMode::IgnoreWhiteSpaces );
-      array<Byte>^myOutputBytes = gcnew array<Byte>(myTransform->OutputBlockSize);
-      
-      //Open the input and output files.
-      FileStream^ myInputFile = gcnew FileStream( inFileName,FileMode::Open,FileAccess::Read );
-      FileStream^ myOutputFile = gcnew FileStream( outFileName,FileMode::Create,FileAccess::Write );
-      
-      //Retrieve the file contents into a Byte array.
-      array<Byte>^myInputBytes = gcnew array<Byte>(myInputFile->Length);
-      myInputFile->Read( myInputBytes, 0, myInputBytes->Length );
-      
-      //Transform the data in chunks the size of InputBlockSize.
-      int i = 0;
-      while ( myInputBytes->Length - i > 4 )
-      {
-         myTransform->TransformBlock( myInputBytes, i, 4, myOutputBytes, 0 );
-         
-         /*myTransform->InputBlockSize*/
-         i += 4;
-         
-         /*myTransform->InputBlockSize*/
-         myOutputFile->Write( myOutputBytes, 0, myTransform->OutputBlockSize );
-      }
 
-      
-      //Transform the final block of data.
-      myOutputBytes = myTransform->TransformFinalBlock( myInputBytes, i, myInputBytes->Length - i );
-      myOutputFile->Write( myOutputBytes, 0, myOutputBytes->Length );
-      
-      //Free up any used resources.
-      myTransform->Clear();
-      myInputFile->Close();
-      myOutputFile->Close();
-   }
+/// This sample used the GetXml method in the CipherReference class to 
+/// write the XML values for the CipherReference to the console.
 
-};
-
+[STAThread]
 int main()
 {
-   MyMainClass * m = new MyMainClass;
    
-   //Insert your file names into this method call.
-   m->DecodeFromFile(  "c:\\encoded.txt",  "c:\\roundtrip.txt" );
+   //Create a URI string.
+   String^ uri = "http://www.woodgrovebank.com/document.xml";
+   
+   // Create a Base64 transform. The input content retrieved from the
+   // URI should be Base64-decoded before other processing.
+   Transform^ base64 = gcnew XmlDsigBase64Transform;
+   
+   //Create a transform chain and add the transform to it.
+   TransformChain^ tc = gcnew TransformChain;
+   tc->Add( base64 );
+   
+   //Create <CipherReference> information.
+   CipherReference ^ reference = gcnew CipherReference( uri,tc );
+   
+   // Write the CipherReference value to the console.
+   Console::WriteLine( "Cipher Reference data: {0}", reference->GetXml()->OuterXml );
 }

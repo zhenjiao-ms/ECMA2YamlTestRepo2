@@ -1,37 +1,9 @@
-   private:
-      void MyButtonPrint_OnClick( Object^ sender, System::EventArgs^ e )
-      {
-         // Set the printer name and ensure it is valid. If not, provide a message to the user.
-         printDoc->PrinterSettings->PrinterName = "\\mynetworkprinter";
-         if ( printDoc->PrinterSettings->IsValid )
+         // Add list of paper sources found on the printer to the combo box.
+         // The DisplayMember property is used to identify the property that will provide the display String*.
+         comboPaperSource->DisplayMember = "SourceName";
+         PaperSource^ pkSource;
+         for ( int i = 0; i < printDoc->PrinterSettings->PaperSources->Count; i++ )
          {
-            // If the printer supports printing in color, then override the printer's default behavior.
-            if ( printDoc->PrinterSettings->SupportsColor )
-            {
-               // Set the page default's to not print in color.
-               printDoc->DefaultPageSettings->Color = false;
-            }
-
-            // Provide a friendly name, set the page number, and print the document.
-            printDoc->DocumentName = "My Presentation";
-            currentPageNumber = 1;
-            printDoc->Print();
+            pkSource = printDoc->PrinterSettings->PaperSources[ i ];
+            comboPaperSource->Items->Add( pkSource );
          }
-         else
-         {
-            MessageBox::Show( "Printer is not valid" );
-         }
-      }
-
-      void MyPrintQueryPageSettingsEvent( Object^ sender, QueryPageSettingsEventArgs^ e )
-      {
-         // Determines if the printer supports printing in color.
-         if ( printDoc->PrinterSettings->SupportsColor )
-         {
-            // If the printer supports color printing, use color.
-            if ( currentPageNumber == 1 )
-            {
-               e->PageSettings->Color = true;
-            }
-         }
-      }

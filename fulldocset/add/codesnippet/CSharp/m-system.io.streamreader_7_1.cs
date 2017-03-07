@@ -1,46 +1,39 @@
-        private void getNewStreamReader() 
+using System;
+using System.IO;
+
+class Test 
+{
+	
+    public static void Main() 
+    {
+        string path = @"c:\temp\MyTest.txt";
+
+        try 
         {
-            //Get a new StreamReader in ASCII format from a
-            //file using a buffer and byte order mark detection
-            StreamReader srAsciiFromFileFalse512 = 
-                new StreamReader("C:\\Temp\\Test.txt",
-                System.Text.Encoding.ASCII, false, 512);
-            //Get a new StreamReader in ASCII format from a
-            //file with byte order mark detection = false
-            StreamReader srAsciiFromFileFalse = 
-                new StreamReader("C:\\Temp\\Test.txt",
-                System.Text.Encoding.ASCII, false);
-            //Get a new StreamReader in ASCII format from a file 
-            StreamReader srAsciiFromFile = 
-                new StreamReader("C:\\Temp\\Test.txt",
-                System.Text.Encoding.ASCII);
-            //Get a new StreamReader from a
-            //file with byte order mark detection = false
-            StreamReader srFromFileFalse = 
-                new StreamReader("C:\\Temp\\Test.txt", false);
-            //Get a new StreamReader from a file
-            StreamReader srFromFile = 
-                new StreamReader("C:\\Temp\\Test.txt");
-            //Get a new StreamReader in ASCII format from a
-            //FileStream with byte order mark detection = false and a buffer
-            StreamReader srAsciiFromStreamFalse512 = new StreamReader(
-                (System.IO.Stream)File.OpenRead("C:\\Temp\\Test.txt"),
-                System.Text.Encoding.ASCII, false, 512);
-            //Get a new StreamReader in ASCII format from a
-            //FileStream with byte order mark detection = false
-            StreamReader srAsciiFromStreamFalse = new StreamReader(
-                (System.IO.Stream)File.OpenRead("C:\\Temp\\Test.txt"),
-                System.Text.Encoding.ASCII, false);
-            //Get a new StreamReader in ASCII format from a FileStream
-            StreamReader srAsciiFromStream = new StreamReader(
-                (System.IO.Stream)File.OpenRead("C:\\Temp\\Test.txt"),
-                System.Text.Encoding.ASCII);
-            //Get a new StreamReader from a
-            //FileStream with byte order mark detection = false
-            StreamReader srFromStreamFalse = new StreamReader(
-                (System.IO.Stream)File.OpenRead("C:\\Temp\\Test.txt"), 
-                false);
-            //Get a new StreamReader from a FileStream
-            StreamReader srFromStream = new StreamReader(
-                (System.IO.Stream)File.OpenRead("C:\\Temp\\Test.txt"));
+            if (File.Exists(path)) 
+            {
+                File.Delete(path);
+            }
+
+            using (StreamWriter sw = new StreamWriter(path)) 
+            {
+                sw.WriteLine("This");
+                sw.WriteLine("is some text");
+                sw.WriteLine("to test");
+                sw.WriteLine("Reading");
+            }
+
+            using (StreamReader sr = new StreamReader(path)) 
+            {
+                while (sr.Peek() >= 0) 
+                {
+                    Console.WriteLine(sr.ReadLine());
+                }
+            }
+        } 
+        catch (Exception e) 
+        {
+            Console.WriteLine("The process failed: {0}", e.ToString());
         }
+    }
+}

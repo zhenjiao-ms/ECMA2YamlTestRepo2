@@ -1,20 +1,17 @@
-            // This code example demonstrates the syntax for setting
-            // various ToolStripTextBox properties.
-            // 
-            toolStripTextBox1.AcceptsReturn = true;
-            toolStripTextBox1.AcceptsTab = true;
-            toolStripTextBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            "This is line one.",
-            "Second line.",
-            "Another line."});
-            toolStripTextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            toolStripTextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            toolStripTextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            toolStripTextBox1.HideSelection = false;
-            toolStripTextBox1.MaxLength = 32000;
-            toolStripTextBox1.Name = "toolStripTextBox1";
-            toolStripTextBox1.ShortcutsEnabled = false;
-            toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
-            toolStripTextBox1.Text = "STRING1\r\nSTRING2\r\nSTRING3\r\nSTRING4";
-            toolStripTextBox1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+private void CopyTreeNodes()
+{
+   // Get the collection of TreeNodes.
+   TreeNodeCollection myNodeCollection = myTreeView.Nodes;
+   int myCount = myNodeCollection.Count;
+
+   myLabel.Text += "Number of nodes in the collection :" + myCount;
+   myLabel.Text += "\n\nElements of the Array after Copying from the collection :\n";
+   // Create an Object array.
+   Object[] myArray = new Object[myCount];
+   // Copy the collection into an array.
+   myNodeCollection.CopyTo(myArray,0);
+   for(int i=0; i<myArray.Length; i++)
+   {
+      myLabel.Text += ((TreeNode)myArray[i]).Text + "\n";
+   }
+}

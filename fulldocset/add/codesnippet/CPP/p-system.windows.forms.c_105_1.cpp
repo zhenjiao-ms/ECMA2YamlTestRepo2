@@ -1,6 +1,12 @@
-   private:
-      void menuItemEdit_Popup( Object^ /*sender*/, EventArgs^ /*e*/ )
+   // This method handles the mouse down event for all the controls on the form.  
+   // When a control has captured the mouse
+   // the control's name will be output on label1.
+   void Control_MouseDown( System::Object^ sender,
+      System::Windows::Forms::MouseEventArgs^ /*e*/ )
+   {
+      Control^ control = (Control^)(sender);
+      if ( control->Capture )
       {
-         // Disable the menu item if the text box does not have focus.
-         this->menuItemEditInsertCustomerInfo->Enabled = this->textBox1->Focused;
+         label1->Text = control->Name + " has captured the mouse";
       }
+   }

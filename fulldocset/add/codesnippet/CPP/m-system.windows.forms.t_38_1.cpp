@@ -1,16 +1,13 @@
-   void myCheckBox_CheckedChanged( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+public:
+   void CopyAllMyText()
    {
-      
-      // If the check box is checked, expand all the tree nodes.
-      if ( myCheckBox->Checked == true )
+      // Determine if any text is selected in the TextBox control.
+      if ( textBox1->SelectionLength == 0 )
       {
-         myTreeView->ExpandAll();
+         // Select all text in the text box.
+         textBox1->SelectAll();
       }
-      else
-      {
-         
-         // If the check box is not cheked, collapse the first tree node.
-         myTreeView->Nodes[ 0 ]->FirstNode->Collapse();
-         MessageBox::Show( "The first and last  node of CutomerList root node is collapsed" );
-      }
+
+      // Copy the contents of the control to the Clipboard.
+      textBox1->Copy();
    }

@@ -1,163 +1,119 @@
+' The following code example enumerates the elements of a OrderedDictionary.
 Imports System
 Imports System.Collections
 Imports System.Collections.Specialized
 
-Public Class SamplesListDictionary   
+Public Class OrderedDictionarySample
 
-   Public Shared Sub Main()
+    Public Shared Sub Main()
 
-      ' Creates and initializes a new ListDictionary.
-      Dim myCol As New ListDictionary()
-      myCol.Add("Braeburn Apples", "1.49")
-      myCol.Add("Fuji Apples", "1.29")
-      myCol.Add("Gala Apples", "1.49")
-      myCol.Add("Golden Delicious Apples", "1.29")
-      myCol.Add("Granny Smith Apples", "0.89")
-      myCol.Add("Red Delicious Apples", "0.99")
+        ' Creates and initializes a OrderedDictionary.
+        Dim myOrderedDictionary As New OrderedDictionary()
+        myOrderedDictionary.Add("testKey1", "testValue1")
+        myOrderedDictionary.Add("testKey2", "testValue2")
+        myOrderedDictionary.Add("keyToDelete", "valueToDelete")
+        myOrderedDictionary.Add("testKey3", "testValue3")
 
-      ' Display the contents of the collection using For Each. This is the preferred method.
-      Console.WriteLine("Displays the elements using For Each:")
-      PrintKeysAndValues(myCol)
+        Dim keyCollection As ICollection = myOrderedDictionary.Keys
+        Dim valueCollection As ICollection = myOrderedDictionary.Values
 
-      ' Display the contents of the collection using the enumerator.
-      Console.WriteLine("Displays the elements using the IDictionaryEnumerator:")
-      PrintKeysAndValues2(myCol)
+        ' Display the contents Imports the key and value collections
+        DisplayContents( _
+            keyCollection, valueCollection, myOrderedDictionary.Count)
 
-      ' Display the contents of the collection using the Keys, Values, Count, and Item properties.
-      Console.WriteLine("Displays the elements using the Keys, Values, Count, and Item properties:")
-      PrintKeysAndValues3(myCol)
+        ' Modifying the OrderedDictionary
+        If Not myOrderedDictionary.IsReadOnly Then
 
-      ' Copies the ListDictionary to an array with DictionaryEntry elements.
-      Dim myArr(myCol.Count) As DictionaryEntry
-      myCol.CopyTo(myArr, 0)
+            ' Insert a new key to the beginning of the OrderedDictionary
+            myOrderedDictionary.Insert(0, "insertedKey1", "insertedValue1")
 
-      ' Displays the values in the array.
-      Console.WriteLine("Displays the elements in the array:")
-      Console.WriteLine("   KEY                       VALUE")
-      Dim i As Integer
-      For i = 0 To myArr.Length - 1
-         Console.WriteLine("   {0,-25} {1}", myArr(i).Key, myArr(i).Value)
-      Next i
-      Console.WriteLine()
+            ' Modify the value of the entry with the key "testKey2"
+            myOrderedDictionary("testKey2") = "modifiedValue"
 
-      ' Searches for a key.
-      If myCol.Contains("Kiwis") Then
-         Console.WriteLine("The collection contains the key ""Kiwis"".")
-      Else
-         Console.WriteLine("The collection does not contain the key ""Kiwis"".")
-      End If
-      Console.WriteLine()
+            ' Remove the last entry from the OrderedDictionary: "testKey3"
+            myOrderedDictionary.RemoveAt(myOrderedDictionary.Count - 1)
 
-      ' Deletes a key.
-      myCol.Remove("Plums")
-      Console.WriteLine("The collection contains the following elements after removing ""Plums"":")
-      PrintKeysAndValues(myCol)
+            ' Remove the "keyToDelete" entry, if it exists
+            If (myOrderedDictionary.Contains("keyToDelete")) Then
+                myOrderedDictionary.Remove("keyToDelete")
+            End If
+        End If
 
-      ' Clears the entire collection.
-      myCol.Clear()
-      Console.WriteLine("The collection contains the following elements after it is cleared:")
-      PrintKeysAndValues(myCol)
+        Console.WriteLine( _
+            "{0}Displaying the entries of a modified OrderedDictionary.", _
+            Environment.NewLine)
+        DisplayContents( _
+            keyCollection, valueCollection, myOrderedDictionary.Count)
 
-   End Sub 'Main
+        ' Clear the OrderedDictionary and add new values
+        myOrderedDictionary.Clear()
+        myOrderedDictionary.Add("newKey1", "newValue1")
+        myOrderedDictionary.Add("newKey2", "newValue2")
+        myOrderedDictionary.Add("newKey3", "newValue3")
 
+        ' Display the contents of the "new" Dictionary Imports an enumerator
+        Dim myEnumerator As IDictionaryEnumerator = _
+            myOrderedDictionary.GetEnumerator()
 
-   ' Uses the For Each statement which hides the complexity of the enumerator.
-   ' NOTE: The For Each statement is the preferred way of enumerating the contents of a collection.
-   Public Shared Sub PrintKeysAndValues(myCol As IDictionary)
+        Console.WriteLine( _
+            "{0}Displaying the entries of a 'new' OrderedDictionary.", _
+            Environment.NewLine)
 
-      Console.WriteLine("   KEY                       VALUE")
-      Dim de As DictionaryEntry
-      For Each de In  myCol
-         Console.WriteLine("   {0,-25} {1}", de.Key, de.Value)
-      Next de
-      Console.WriteLine()
+        DisplayEnumerator(myEnumerator)
 
-   End Sub 'PrintKeysAndValues
+        Console.ReadLine()
+    End Sub
 
+    ' Displays the contents of the OrderedDictionary from its keys and values
+    Public Shared Sub DisplayContents( _
+        ByVal keyCollection As ICollection, _
+        ByVal valueCollection As ICollection, ByVal dictionarySize As Integer)
 
-   ' Uses the enumerator. 
-   ' NOTE: The For Each statement is the preferred way of enumerating the contents of a collection.
-   Public Shared Sub PrintKeysAndValues2(myCol As IDictionary)
-      Dim myEnumerator As IDictionaryEnumerator = myCol.GetEnumerator()
+        Dim myKeys(dictionarySize) As [String]
+        Dim myValues(dictionarySize) As [String]
+        keyCollection.CopyTo(myKeys, 0)
+        valueCollection.CopyTo(myValues, 0)
 
-      Console.WriteLine("   KEY                       VALUE")
-      While myEnumerator.MoveNext()
-         Console.WriteLine("   {0,-25} {1}", myEnumerator.Key, myEnumerator.Value)
-      End While
-      Console.WriteLine()
+        ' Displays the contents of the OrderedDictionary
+        Console.WriteLine("   INDEX KEY                       VALUE")
+        Dim i As Integer
+        For i = 0 To dictionarySize - 1
+            Console.WriteLine("   {0,-5} {1,-25} {2}", _
+                 i, myKeys(i), myValues(i))
+        Next i
+        Console.WriteLine()
+    End Sub
 
-   End Sub 'PrintKeysAndValues2
+    ' Displays the contents of the OrderedDictionary using its enumerator
+    Public Shared Sub DisplayEnumerator( _
+        ByVal myEnumerator As IDictionaryEnumerator)
 
-
-   ' Uses the Keys, Values, Count, and Item properties.
-   Public Shared Sub PrintKeysAndValues3(myCol As ListDictionary)
-      Dim myKeys(myCol.Count) As [String]
-      myCol.Keys.CopyTo(myKeys, 0)
-
-      Console.WriteLine("   INDEX KEY                       VALUE")
-      Dim i As Integer
-      For i = 0 To myCol.Count - 1
-         Console.WriteLine("   {0,-5} {1,-25} {2}", i, myKeys(i), myCol(myKeys(i)))
-      Next i
-      Console.WriteLine()
-
-   End Sub 'PrintKeysAndValues3
-
-End Class 'SamplesListDictionary 
-
+        Console.WriteLine("   KEY                       VALUE")
+        While myEnumerator.MoveNext()
+            Console.WriteLine("   {0,-25} {1}", _
+                myEnumerator.Key, myEnumerator.Value)
+        End While
+    End Sub
+End Class
 
 'This code produces the following output.
-'Note that because a dictionary is implemented for fast keyed access the order
-'of the items in the dictionary are not gauranteed and, as a result, should not
-'be depended on.
 '
-'Displays the elements using for each:
-'   KEY                       VALUE
-'   Braeburn Apples           1.49
-'   Fuji Apples               1.29
-'   Gala Apples               1.49
-'   Golden Delicious Apples   1.29
-'   Granny Smith Apples       0.89
-'   Red Delicious Apples      0.99
-'
-'Displays the elements using the IDictionaryEnumerator:
-'   KEY                       VALUE
-'   Braeburn Apples           1.49
-'   Fuji Apples               1.29
-'   Gala Apples               1.49
-'   Golden Delicious Apples   1.29
-'   Granny Smith Apples       0.89
-'   Red Delicious Apples      0.99
-'
-'Displays the elements using the Keys, Values, Count, and Item properties:
 '   INDEX KEY                       VALUE
-'   0     Braeburn Apples           1.49
-'   1     Fuji Apples               1.29
-'   2     Gala Apples               1.49
-'   3     Golden Delicious Apples   1.29
-'   4     Granny Smith Apples       0.89
-'   5     Red Delicious Apples      0.99
+'0:              testKey1(testValue1)
+'1:              testKey2(testValue2)
+'2:              keyToDelete(valueToDelete)
+'3:              testKey3(testValue3)
 '
-'Displays the elements in the array:
-'   KEY                       VALUE
-'   Braeburn Apples           1.49
-'   Fuji Apples               1.29
-'   Gala Apples               1.49
-'   Golden Delicious Apples   1.29
-'   Granny Smith Apples       0.89
-'   Red Delicious Apples      0.99
 '
-'The collection does not contain the key "Kiwis".
+'Displaying the entries of a modified OrderedDictionary.
+'   INDEX KEY                       VALUE
+'0:              insertedKey1(insertedValue1)
+'1:              testKey1(testValue1)
+'2:              testKey2(modifiedValue)
 '
-'The collection contains the following elements after removing "Plums":
-'   KEY                       VALUE
-'   Braeburn Apples           1.49
-'   Fuji Apples               1.29
-'   Gala Apples               1.49
-'   Golden Delicious Apples   1.29
-'   Granny Smith Apples       0.89
-'   Red Delicious Apples      0.99
 '
-'The collection contains the following elements after it is cleared:
-'   KEY                       VALUE
-'
+'Displaying the entries of a "new" OrderedDictionary.
+'                KEY(VALUE)
+'                newKey1(newValue1)
+'                newKey2(newValue2)
+'                newKey3(newValue3)

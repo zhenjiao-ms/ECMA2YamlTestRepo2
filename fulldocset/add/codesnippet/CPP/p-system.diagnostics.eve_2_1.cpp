@@ -1,50 +1,56 @@
-#using <System.dll>
-
-using namespace System;
-using namespace System::Diagnostics;
-
-int main()
+void CreateEventSourceSample1( String^ messageFile )
 {
-   String^ myEventType = nullptr;
+   String^ myLogName;
+   String^ sourceName = "SampleApplicationSource";
    
-   // Associate the instance of 'EventLog' with local System Log.
-   EventLog^ myEventLog = gcnew EventLog( "System","." );
-   Console::WriteLine( "1:Error" );
-   Console::WriteLine( "2:Information" );
-   Console::WriteLine( "3:Warning" );
-   Console::WriteLine( "Select the Event Type" );
-   int myOption = Convert::ToInt32( Console::ReadLine() );
-   switch ( myOption )
+   // Create the event source if it does not exist.
+   if (  !EventLog::SourceExists( sourceName ) )
    {
-      case 1:
-         myEventType = "Error";
-         break;
-
-      case 2:
-         myEventType = "Information";
-         break;
-
-      case 3:
-         myEventType = "Warning";
-         break;
-
-      default:
-         break;
-   }
-   EventLogEntryCollection^ myLogEntryCollection = myEventLog->Entries;
-   int myCount = myLogEntryCollection->Count;
-   
-   // Iterate through all 'EventLogEntry' instances in 'EventLog'.
-   for ( int i = myCount - 1; i > 0; i-- )
-   {
-      EventLogEntry^ myLogEntry = myLogEntryCollection[ i ];
       
-      // Select the entry having desired EventType.
-      if ( myLogEntry->EntryType.Equals( myEventType ) )
+      // Create a new event source for the custom event log
+      // named "myNewLog."  
+      myLogName = "myNewLog";
+      EventSourceCreationData ^ mySourceData = gcnew EventSourceCreationData( sourceName,myLogName );
+      
+      // Set the message resource file that the event source references.
+      // All event resource identifiers correspond to text in this file.
+      if (  !System::IO::File::Exists( messageFile ) )
       {
-         // Display Source of the event.
-         Console::WriteLine( "{0} was the source of last event of type {1}", myLogEntry->Source, myLogEntry->EntryType );
-         return 0;
+         Console::WriteLine( "Input message resource file does not exist - {0}", messageFile );
+         messageFile = "";
       }
+      else
+      {
+         
+         // Set the specified file as the resource
+         // file for message text, category text, and 
+         // message parameter strings.  
+         mySourceData->MessageResourceFile = messageFile;
+         mySourceData->CategoryResourceFile = messageFile;
+         mySourceData->CategoryCount = CategoryCount;
+         mySourceData->ParameterResourceFile = messageFile;
+         Console::WriteLine( "Event source message resource file set to {0}", messageFile );
+      }
+
+      Console::WriteLine( "Registering new source for event log." );
+      EventLog::CreateEventSource( mySourceData );
    }
+   else
+   {
+      
+      // Get the event log corresponding to the existing source.
+      myLogName = EventLog::LogNameFromSourceName( sourceName, "." );
+   }
+
+   
+   // Register the localized name of the event log.
+   // For example, the actual name of the event log is "myNewLog," but
+   // the event log name displayed in the Event Viewer might be
+   // "Sample Application Log" or some other application-specific
+   // text.
+   EventLog^ myEventLog = gcnew EventLog( myLogName,".",sourceName );
+   if ( messageFile->Length > 0 )
+   {
+      myEventLog->RegisterDisplayName( messageFile, DisplayNameMsgId );
+   }   
 }

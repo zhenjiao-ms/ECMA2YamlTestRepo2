@@ -1,59 +1,34 @@
-void CheckSignatureWithEncryptedGrant(
-    String^ fileName, IRelDecryptor^ decryptor)
+#using <System.dll>
+#using <system.security.dll>
+
+using namespace System;
+using namespace System::Security::Cryptography;
+using namespace System::Security::Permissions;
+using namespace System::IO;
+using namespace System::Security::Cryptography::X509Certificates;
+int main()
 {
-    // Create a new XML document.
-    XmlDocument^ sourceDocument = gcnew XmlDocument();
-    XmlNamespaceManager^ namespaceManager =
-        gcnew XmlNamespaceManager(sourceDocument->NameTable);
+   try
+   {
+      X509Store ^ store = gcnew X509Store( "MY",StoreLocation::CurrentUser );
+      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
+      X509Certificate2Collection ^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
+      X509Certificate2Collection ^ fcollection = dynamic_cast<X509Certificate2Collection^>(collection->Find( X509FindType::FindByTimeValid, DateTime::Now, false ));
+      X509Certificate2Collection ^ scollection = X509Certificate2UI::SelectFromCollection(fcollection, "Test Certificate Select","Select a certificate from the following list to get information on that certificate",X509SelectionFlag::MultiSelection);
+      Console::WriteLine( "Number of certificates: {0}{1}", scollection->Count, Environment::NewLine );
+      System::Collections::IEnumerator^ myEnum = scollection->GetEnumerator();
+      while ( myEnum->MoveNext() )
+      {
+         X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum->Current);
+         X500DistinguishedName ^ dname = gcnew X500DistinguishedName( x509->SubjectName );
+         Console::WriteLine( "X500DistinguishedName: {0}{1}", dname->Name, Environment::NewLine );
+         x509->Reset();
+      }
+      store->Close();
+   }
+   catch ( CryptographicException^ ) 
+   {
+      Console::WriteLine( "Information could not be written out for this certificate." );
+   }
 
-    // Format using whitespaces.
-    sourceDocument->PreserveWhitespace = true;
-
-    // Load the passed XML file into the document.
-    sourceDocument->Load(fileName);
-    namespaceManager->AddNamespace("dsig",
-        SignedXml::XmlDsigNamespaceUrl);
-
-    // Find the "Signature" node and create a new
-    // XmlNodeList object.
-    XmlNodeList^ nodeList = 
-        sourceDocument->SelectNodes("//dsig:Signature", namespaceManager);
-
-    for (int i = 0, count = nodeList->Count; i < count; i++)
-    {
-        XmlDocument^ clone = (XmlDocument^) sourceDocument->Clone();
-        XmlNodeList^ signatures =
-            clone->SelectNodes("//dsig:Signature", namespaceManager);
-
-        // Create a new SignedXml object and pass into it the
-        // XML document clone.
-        SignedXml^ signedDocument = gcnew SignedXml(clone);
-
-        // Load the signature node.
-        signedDocument->LoadXml((XmlElement^)signatures[i]);
-
-        // Set the context for license transform
-        Transform^ licenseTransform = ((Reference^)signedDocument->
-            SignedInfo->References[0])->TransformChain[0];
-
-        if ((licenseTransform::typeid == XmlLicenseTransform::typeid) 
-            && (decryptor != nullptr))
-        {
-            // Decryptor is used to decrypt encryptedGrant
-            // elements.
-            ((XmlLicenseTransform^) licenseTransform)->Decryptor = decryptor;
-        }
-
-        // Check the signature and display the result.
-        if (signedDocument->CheckSignature())
-        {
-            Console::WriteLine("SUCCESS: " +
-                "CheckSignatureWithEncryptedGrant - issuer index #" + i);
-        }
-        else
-        {
-            Console::WriteLine("FAILURE: " +
-                "CheckSignatureWithEncryptedGrant - issuer index #" + i);
-        }
-    }
 }

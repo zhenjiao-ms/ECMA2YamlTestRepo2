@@ -1,34 +1,15 @@
-using System;
-using System.Security.Cryptography;
+		//Create new X509 store from local certificate store.
+		X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
+		store.Open(OpenFlags.OpenExistingOnly | OpenFlags.ReadWrite);
 
-class DSASample
-{
-		
-	static void Main()
-	{
-		try
-		{
-			//Create a new instance of DSACryptoServiceProvider.
-			DSACryptoServiceProvider DSA = new DSACryptoServiceProvider();
-
-			//The hash to sign.
-			byte[] Hash = {59,4,248,102,77,97,142,201,210,12,224,93,25,41,100,197,213,134,130,135};
-
-			//Create an DSASignatureFormatter object and pass it the 
-			//DSACryptoServiceProvider to transfer the key information.
-			DSASignatureFormatter DSAFormatter = new DSASignatureFormatter(DSA);
-
-			//Set the hash algorithm to SHA1.
-			DSAFormatter.SetHashAlgorithm("SHA1");
-
-			//Create a signature for HashValue and return it.
-			byte[] SignedHash = DSAFormatter.CreateSignature(Hash);
-
-		}
-		catch(CryptographicException e)
-		{
-			Console.WriteLine(e.Message);
-		}
-	}
-
-}
+		//Output store information.
+		Console.WriteLine ("Store Information");
+		Console.WriteLine ("Number of certificates in the store: {0}", store.Certificates.Count);
+		Console.WriteLine ("Store location: {0}", store.Location);
+		Console.WriteLine ("Store name: {0} {1}", store.Name, Environment.NewLine);
+	
+		//Put certificates from the store into a collection so user can select one.
+		X509Certificate2Collection fcollection = (X509Certificate2Collection)store.Certificates;
+		X509Certificate2Collection collection = X509Certificate2UI.SelectFromCollection(fcollection, "Select an X509 Certificate", "Choose a certificate to examine.", X509SelectionFlag.SingleSelection);
+		X509Certificate2 certificate = collection[0];
+		X509Certificate2UI.DisplayCertificate(certificate);

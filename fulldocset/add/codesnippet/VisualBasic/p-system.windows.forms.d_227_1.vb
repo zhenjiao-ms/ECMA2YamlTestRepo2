@@ -1,72 +1,47 @@
-    Private Function CreateComboBoxColumn() _
-        As DataGridViewComboBoxColumn
-        Dim column As New DataGridViewComboBoxColumn()
+    Private Sub dataGridView1_CellPainting(ByVal sender As Object, _
+        ByVal e As System.Windows.Forms.DataGridViewCellPaintingEventArgs) _
+        Handles dataGridView1.CellPainting
 
-        With column
-            .DataPropertyName = ColumnName.TitleOfCourtesy.ToString()
-            .HeaderText = ColumnName.TitleOfCourtesy.ToString()
-            .DropDownWidth = 160
-            .Width = 90
-            .MaxDropDownItems = 3
-            .FlatStyle = FlatStyle.Flat
-        End With
-        Return column
-    End Function
+        If Me.dataGridView1.Columns("ContactName").Index = _
+            e.ColumnIndex AndAlso e.RowIndex >= 0 Then
 
-    Private Sub SetAlternateChoicesUsingDataSource( _
-        ByVal comboboxColumn As DataGridViewComboBoxColumn)
-        With comboboxColumn
-            .DataSource = RetrieveAlternativeTitles()
-            .ValueMember = ColumnName.TitleOfCourtesy.ToString()
-            .DisplayMember = .ValueMember
-        End With
+            Dim newRect As New Rectangle(e.CellBounds.X + 1, e.CellBounds.Y + 1, _
+                e.CellBounds.Width - 4, e.CellBounds.Height - 4)
+            Dim backColorBrush As New SolidBrush(e.CellStyle.BackColor)
+            Dim gridBrush As New SolidBrush(Me.dataGridView1.GridColor)
+            Dim gridLinePen As New Pen(gridBrush)
+
+            Try
+
+                ' Erase the cell.
+                e.Graphics.FillRectangle(backColorBrush, e.CellBounds)
+
+                ' Draw the grid lines (only the right and bottom lines;
+                ' DataGridView takes care of the others).
+                e.Graphics.DrawLine(gridLinePen, e.CellBounds.Left, _
+                    e.CellBounds.Bottom - 1, e.CellBounds.Right - 1, _
+                    e.CellBounds.Bottom - 1)
+                e.Graphics.DrawLine(gridLinePen, e.CellBounds.Right - 1, _
+                    e.CellBounds.Top, e.CellBounds.Right - 1, _
+                    e.CellBounds.Bottom)
+
+                ' Draw the inset highlight box.
+                e.Graphics.DrawRectangle(Pens.Blue, newRect)
+
+                ' Draw the text content of the cell, ignoring alignment.
+                If (e.Value IsNot Nothing) Then
+                    e.Graphics.DrawString(CStr(e.Value), e.CellStyle.Font, _
+                    Brushes.Crimson, e.CellBounds.X + 2, e.CellBounds.Y + 2, _
+                    StringFormat.GenericDefault)
+                End If
+                e.Handled = True
+
+            Finally
+                gridLinePen.Dispose()
+                gridBrush.Dispose()
+                backColorBrush.Dispose()
+            End Try
+
+        End If
+
     End Sub
-
-    Private Function RetrieveAlternativeTitles() As DataTable
-        Return Populate( _
-            "SELECT distinct TitleOfCourtesy FROM Employees")
-    End Function
-
-    Private connectionString As String = _
-            "Integrated Security=SSPI;Persist Security Info=False;" _
-            & "Initial Catalog=Northwind;Data Source=localhost"
-
-    Private Function Populate(ByVal sqlCommand As String) As DataTable
-        Dim northwindConnection As New SqlConnection(connectionString)
-        northwindConnection.Open()
-
-        Dim command As New SqlCommand(sqlCommand, _
-            northwindConnection)
-        Dim adapter As New SqlDataAdapter()
-        adapter.SelectCommand = command
-        Dim table As New DataTable()
-        table.Locale = System.Globalization.CultureInfo.InvariantCulture
-        adapter.Fill(table)
-
-        Return table
-    End Function
-
-    ' Using an enum provides some abstraction between column index
-    ' and column name along with compile time checking, and gives
-    ' a handy place to store the column names.
-    Enum ColumnName
-        EmployeeId
-        LastName
-        FirstName
-        Title
-        TitleOfCourtesy
-        BirthDate
-        HireDate
-        Address
-        City
-        Region
-        PostalCode
-        Country
-        HomePhone
-        Extension
-        Photo
-        Notes
-        ReportsTo
-        PhotoPath
-        OutOfOffice
-    End Enum

@@ -1,14 +1,18 @@
-Imports System
 Imports System.IO
+Imports System.Text
 
-Public Class SWBuff
+Module Module1
 
-    Public Shared Sub Main()
-        Dim sb As New FileStream("MyFile.txt", FileMode.OpenOrCreate)
-        Dim b As Char() = {"a"c, "b"c, "c"c, "d"c, "e"c, "f"c, "g"c, _
-           "h"c, "i"c, "j"c, "k"c, "l"c, "m"c}
-        Dim sw As New StreamWriter(sb)
-        sw.Write(b, 3, 8)
-        sw.Close()
+    Sub Main()
+        WriteCharacters()
     End Sub
-End Class
+
+    Async Sub WriteCharacters()
+        Dim ue As UnicodeEncoding = New UnicodeEncoding()
+        Dim charsToAdd() = ue.GetChars(ue.GetBytes("Example string"))
+
+        Using writer As StreamWriter = File.CreateText("newfile.txt")
+            Await writer.WriteAsync(charsToAdd, 0, charsToAdd.Length)
+        End Using
+    End Sub
+End Module

@@ -1,31 +1,91 @@
-    private void DataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs anError)
+    private ToolStripMenuItem wholeTable = new ToolStripMenuItem();
+    private ToolStripMenuItem lookUp = new ToolStripMenuItem();
+    private ContextMenuStrip strip;
+    private string cellErrorText;
+
+    private void dataGridView1_CellContextMenuStripNeeded(object sender,
+        DataGridViewCellContextMenuStripNeededEventArgs e)
     {
+        cellErrorText = String.Empty;
 
-        MessageBox.Show("Error happened " + anError.Context.ToString());
+        if (strip == null)
+        {
+            strip = new ContextMenuStrip();
+            lookUp.Text = "Look Up";
+            wholeTable.Text = "See Whole Table";
+            strip.Items.Add(lookUp);
+            strip.Items.Add(wholeTable);
+        }
+        e.ContextMenuStrip = strip;
+    }
 
-        if (anError.Context == DataGridViewDataErrorContexts.Commit)
+    private void wholeTable_Click(object sender, EventArgs e)
+    {
+        dataGridView1.DataSource = Populate("Select * from employees", true);
+    }
+
+    private DataGridViewCellEventArgs theCellImHoveringOver;
+
+    private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+    {
+        theCellImHoveringOver = e;
+    }
+
+    private DataGridViewCellEventArgs cellErrorLocation;
+
+    private void lookUp_Click(object sender, EventArgs e)
+    {
+        try
         {
-            MessageBox.Show("Commit error");
+            dataGridView1.DataSource = Populate("Select * from employees where " +
+                dataGridView1.Columns[theCellImHoveringOver.ColumnIndex].Name + " = '" +
+                dataGridView1.Rows[theCellImHoveringOver.RowIndex].
+                Cells[theCellImHoveringOver.ColumnIndex].Value + "'",
+                true);
         }
-        if (anError.Context == DataGridViewDataErrorContexts.CurrentCellChange)
+        catch (SqlException)
         {
-            MessageBox.Show("Cell change");
+            cellErrorText = "Can't look this cell up";
+            cellErrorLocation = theCellImHoveringOver;
         }
-        if (anError.Context == DataGridViewDataErrorContexts.Parsing)
+    }
+
+    private void dataGridView1_CellErrorTextNeeded(object sender,
+        DataGridViewCellErrorTextNeededEventArgs e)
+    {
+        if (cellErrorLocation != null)
         {
-            MessageBox.Show("parsing error");
+            if (e.ColumnIndex == cellErrorLocation.ColumnIndex &&
+                e.RowIndex == cellErrorLocation.RowIndex)
+            {
+                e.ErrorText = cellErrorText;
+            }
         }
-        if (anError.Context == DataGridViewDataErrorContexts.LeaveControl)
+    }
+
+    private DataTable Populate(string query, bool resetUnsharedCounter)
+    {
+        if (resetUnsharedCounter)
         {
-            MessageBox.Show("leave control error");
+            ResetCounter();
         }
 
-        if ((anError.Exception) is ConstraintException)
-        {
-            DataGridView view = (DataGridView)sender;
-            view.Rows[anError.RowIndex].ErrorText = "an error";
-            view.Rows[anError.RowIndex].Cells[anError.ColumnIndex].ErrorText = "an error";
+        // Alter the data source as necessary
+        SqlDataAdapter adapter = new SqlDataAdapter(query,
+            new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;" +
+            "Initial Catalog=Northwind;Data Source=localhost"));
 
-            anError.ThrowException = false;
-        }
+        DataTable table = new DataTable();
+        table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+        adapter.Fill(table);
+        return table;
+    }
+
+    private Label count = new Label();
+    private int unsharedRowCounter;
+
+    private void ResetCounter()
+    {
+        unsharedRowCounter = 0;
+        count.Text = unsharedRowCounter.ToString();
     }

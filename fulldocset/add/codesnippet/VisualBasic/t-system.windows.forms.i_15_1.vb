@@ -1,45 +1,35 @@
 Imports System
-Imports System.Windows.Forms
 Imports System.Drawing
+Imports System.Collections
+Imports System.ComponentModel
+Imports System.Windows.Forms
+Imports System.Data
 
-
-Public Class MyButton
-   Inherits ButtonBase
-   Implements IButtonControl 
-   Private myDialogResult As DialogResult
-      
+Public Class Form1
+   Inherits System.Windows.Forms.Form
+   
+   Dim WithEvents rtb As New RichTextBox()
+   
    Public Sub New()
-      ' Make the button White and a Popup style
-      ' so it can be distinguished on the form.
-      Me.FlatStyle = FlatStyle.Popup
-      Me.BackColor = Color.White
+      MyBase.New()
+      Me.Controls.Add(rtb)
+      rtb.Dock = DockStyle.Fill
    End Sub
-   
-   ' Add implementation to the IButtonControl.DialogResult property.
-   Public Property DialogResult() As DialogResult Implements IButtonControl.DialogResult
-      Get
-         Return Me.myDialogResult
-      End Get
-      
-      Set
-         If [Enum].IsDefined(GetType(DialogResult), value) Then
-            Me.myDialogResult = value
-         End If
-      End Set
-   End Property
-   
-   ' Add implementation to the IButtonControl.NotifyDefault method.
-   Public Sub NotifyDefault(value As Boolean) Implements IButtonControl.NotifyDefault
-      If Me.IsDefault <> value Then
-         Me.IsDefault = value
+
+   Private Sub languageChange( _
+      ByVal sender As Object, _
+      ByVal e As InputLanguageChangedEventArgs _
+   ) Handles MyBase.InputLanguageChanged
+
+      ' If the input language is Japanese.
+      ' set the initial IMEMode to Katakana.
+      If e.InputLanguage.Culture.TwoLetterISOLanguageName.Equals("ja") = True Then
+         rtb.ImeMode = System.Windows.Forms.ImeMode.Katakana
       End If
-   End Sub 
-      
-   ' Add implementation to the IButtonControl.PerformClick method.
-   Public Sub PerformClick() Implements IButtonControl.PerformClick
-      If Me.CanSelect Then
-         Me.OnClick(EventArgs.Empty)
-      End If
+   End Sub
+
+   Public Shared Sub Main()
+      Application.Run(new Form1())
    End Sub
 
 End Class

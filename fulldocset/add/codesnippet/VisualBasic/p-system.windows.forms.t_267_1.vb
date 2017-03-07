@@ -1,20 +1,5 @@
-Private Sub SelectNode(node As TreeNode)
-   If node.IsSelected Then
-      ' Determine which TreeNode to select.
-      Select Case myComboBox.Text
-         Case "Previous"
-            node.TreeView.SelectedNode = node.PrevNode
-         Case "PreviousVisible"
-            node.TreeView.SelectedNode = node.PrevVisibleNode
-         Case "Next"
-            node.TreeView.SelectedNode = node.NextNode
-         Case "NextVisible"
-            node.TreeView.SelectedNode = node.NextVisibleNode
-         Case "First"
-            node.TreeView.SelectedNode = node.FirstNode
-         Case "Last"
-            node.TreeView.SelectedNode = node.LastNode
-      End Select
-   End If
-   node.TreeView.Focus()
-End Sub
+   ' This method toggles the value of the ToolStripDropDown 
+   ' control's AutoClose property.
+   Private Sub autoCloseCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles autoCloseCheckBox.CheckedChanged
+      Me.contextMenuStrip1.AutoClose = Me.contextMenuStrip1.AutoClose Xor True
+    End Sub

@@ -1,35 +1,76 @@
 <%@ Page Language="C#" AutoEventWireup="True" %>
+<%@ Import Namespace="System.Data" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
+
 <head>
-    <title>Localize Example</title>
+    <title>HyperLinkColumn Example</title>
 <script runat="server">
 
-      void ButtonClick(Object sender, EventArgs e)
+      ICollection CreateDataSource() 
       {
-         Localize1.Text="Welcome to ASP.NET!! This is localized text.";
+         DataTable dt = new DataTable();
+         DataRow dr;
+
+         dt.Columns.Add(new DataColumn("IntegerValue", typeof(Int32)));
+         dt.Columns.Add(new DataColumn("PriceValue", typeof(Double)));
+       
+         for (int i = 0; i < 3; i++) 
+         {
+            dr = dt.NewRow();
+
+            dr[0] = i;
+            dr[1] = (Double)i * 1.23;
+
+            dt.Rows.Add(dr);
+         }
+
+         DataView dv = new DataView(dt);
+         return dv;
+      }
+
+      void Page_Load(Object sender, EventArgs e) 
+      {
+         MyDataGrid.DataSource = CreateDataSource();
+         MyDataGrid.DataBind();
       }
 
    </script>
 
 </head>
+
 <body>
-   <form id="Form1" runat="server">
-      <h3>Localize Example</h3>
 
-      <asp:Localize id="Localize1"
-           Text="Hello World!!"
-           runat="server"/>
+   <form id="form1" runat="server">
 
-      <br /><br />
+      <h3>HyperLinkColumn Example</h3>
 
-      <asp:Button id="Button1"
-           Text="Change Localize Text"
-           OnClick="ButtonClick"
-           runat="server"/>
+      <asp:DataGrid id="MyDataGrid" 
+           BorderColor="black"
+           BorderWidth="1"
+           GridLines="Both"
+           AutoGenerateColumns="false"
+           runat="server">
+
+         <HeaderStyle BackColor="#aaaadd"/>
+
+         <Columns>
+
+            <asp:HyperLinkColumn
+                 HeaderText="Select an Item"
+                 DataNavigateUrlField="IntegerValue"
+                 DataNavigateUrlFormatString="detailspage.aspx?id={0}"
+                 DataTextField="PriceValue"
+                 DataTextFormatString="{0:c}"
+                 Target="_blank"/>
+           
+         </Columns>
+
+      </asp:DataGrid>
 
    </form>
+
 </body>
 </html>

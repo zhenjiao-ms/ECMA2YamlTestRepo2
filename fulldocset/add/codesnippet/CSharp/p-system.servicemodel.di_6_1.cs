@@ -10,5 +10,4 @@
 
             IChannelListener icl = serviceHost.ChannelDispatchers[0].Listener;
             ChannelDispatcher dispatcher = new ChannelDispatcher(icl);
-
-            bool isManualAddressing = dispatcher.ManualAddressing;
+            bool receiveSynchronously = dispatcher.ReceiveSynchronously;

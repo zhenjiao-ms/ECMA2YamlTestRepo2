@@ -1,47 +1,30 @@
-using System;
 using System.Runtime.InteropServices;
 
-namespace InteropSample
-{   
-
-   [StructLayout(LayoutKind.Explicit, Size=16, CharSet=CharSet.Ansi)]
-   public class MySystemTime 
+[ComVisible(false)]
+class MyClass
+{
+   public MyClass()
    {
-      [FieldOffset(0)]public ushort wYear; 
-      [FieldOffset(2)]public ushort wMonth;
-      [FieldOffset(4)]public ushort wDayOfWeek; 
-      [FieldOffset(6)]public ushort wDay; 
-      [FieldOffset(8)]public ushort wHour; 
-      [FieldOffset(10)]public ushort wMinute; 
-      [FieldOffset(12)]public ushort wSecond; 
-      [FieldOffset(14)]public ushort wMilliseconds; 
+      //Insert code here.
+   }
+   
+   [ComVisible(false)]
+   public int MyMethod(string param) 
+   {
+      return 0;
    }
 
-   class LibWrapper
+   public bool MyOtherMethod() 
    {
-      [DllImport("kernel32.dll")]
-      public static extern void GetSystemTime([MarshalAs(UnmanagedType.LPStruct)]MySystemTime st);
-   };
+      return true;
+   }
 
-   class TestApplication
-   {      
-      public static void Main()
+   [ComVisible(false)]
+   public int MyProperty
+   {
+      get
       {
-         try
-         {
-            MySystemTime sysTime = new MySystemTime();
-            LibWrapper.GetSystemTime(sysTime);
-            Console.WriteLine("The System time is {0}/{1}/{2} {3}:{4}:{5}", sysTime.wDay,
-               sysTime.wMonth, sysTime.wYear, sysTime.wHour, sysTime.wMinute, sysTime.wSecond);            
-         }         
-         catch(TypeLoadException e)
-         {
-            Console.WriteLine("TypeLoadException : " + e.Message);
-         }
-         catch(Exception e)
-         {
-            Console.WriteLine("Exception : " + e.Message);
-         }
+         return MyProperty;
       }
    }
 }

@@ -1,15 +1,19 @@
-    Private Sub GetDataPresent3()
-        ' Creates a new data object using a string and the Text format.
-        Dim myDataObject As New DataObject(DataFormats.Text, "My String")
+    Private Sub GetDataPresent2()
+        ' Creates a component to store in the data object.
+        Dim myComponent As New System.ComponentModel.Component()
 
-        ' Checks whether the string can be displayed with autoConvert equal to false.
-        If myDataObject.GetDataPresent("System.String", False) Then
-            MessageBox.Show(myDataObject.GetData("System.String", False).ToString() + ".", "Message #1")
+        ' Creates a new data object and assigns it the component.
+        Dim myDataObject As New DataObject(myComponent)
+
+        'Creates a type to store the type of data.
+        Dim myType As Type = myComponent.GetType()
+
+        ' Checks whether the specified data type exists in the object.
+        If myDataObject.GetDataPresent(myType) Then
+            MessageBox.Show("The specified data is stored in the data object.")
+            ' Displays the type of data.
+            TextBox1.Text = "The data type is " & myDataObject.GetData(myType).GetType().Name & "."
         Else
-            MessageBox.Show("Cannot convert data to the specified format with autoConvert set to false.", "Message #1")
+            MessageBox.Show("The specified data is not stored in the data object.")
         End If
-        ' Displays the string with autoConvert equal to true.
-        MessageBox.Show(("Now that autoConvert is true, you can convert " + myDataObject.GetData("System.String", _
-             True).ToString() + " to string format."), "Message #2")
-
-    End Sub 'GetDataPresent3
+    End Sub 'GetDataPresent2

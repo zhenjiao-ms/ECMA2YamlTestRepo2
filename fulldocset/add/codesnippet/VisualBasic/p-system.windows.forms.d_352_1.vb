@@ -1,19 +1,19 @@
-    ' Style and number columns.
-    Private Sub Button8_Click(ByVal sender As Object, _
-        ByVal args As EventArgs) Handles Button8.Click
+    Private Sub CreateUnboundButtonColumn()
 
-        Dim style As DataGridViewCellStyle = _
-            New DataGridViewCellStyle()
-        style.Alignment = _
-            DataGridViewContentAlignment.MiddleCenter
-        style.ForeColor = Color.IndianRed
-        style.BackColor = Color.Ivory
+        ' Initialize the button column.
+        Dim buttonColumn As New DataGridViewButtonColumn
 
-        For Each column As DataGridViewColumn _
-            In dataGridView.Columns
+        With buttonColumn
+            .HeaderText = "Details"
+            .Name = "Details"
+            .Text = "View Details"
 
-            column.HeaderCell.Value = _
-                column.Index.ToString
-            column.HeaderCell.Style = style
-        Next
+            ' Use the Text property for the button text for all cells rather
+            ' than using each cell's value as the text for its own button.
+            .UseColumnTextForButtonValue = True
+        End With
+
+        ' Add the button column to the control.
+        dataGridView1.Columns.Insert(0, buttonColumn)
+
     End Sub

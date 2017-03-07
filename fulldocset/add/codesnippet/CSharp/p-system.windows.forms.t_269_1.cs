@@ -1,53 +1,11 @@
-        // The following methods handle the CheckChanged event 
-        // for all the radio buttons. Each method calls a utility
-        // method to set the ToolStripDropDownDirection appropriately.
+private void TabControl1_Selected(Object sender, TabControlEventArgs e) {
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            this.HandleRadioButton(sender, ToolStripDropDownDirection.AboveLeft);
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            this.HandleRadioButton(sender, ToolStripDropDownDirection.AboveRight);
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            this.HandleRadioButton(sender, ToolStripDropDownDirection.BelowLeft);
-        }
-
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            this.HandleRadioButton(sender, ToolStripDropDownDirection.BelowRight);
-        }
-
-        private void radioButton5_CheckedChanged(object sender, EventArgs e)
-        {
-            this.HandleRadioButton(sender, ToolStripDropDownDirection.Default);
-        }
-
-        private void radioButton6_CheckedChanged(object sender, EventArgs e)
-        {
-            this.HandleRadioButton(sender, ToolStripDropDownDirection.Left);
-        }
-
-        private void radioButton7_CheckedChanged(object sender, EventArgs e)
-        {
-            this.HandleRadioButton(sender, ToolStripDropDownDirection.Right);
-        }
-
-        // This utility method sets the DefaultDropDownDirection property.
-        private void HandleRadioButton(object sender, ToolStripDropDownDirection direction)
-        {
-            RadioButton rb = sender as RadioButton;
-
-            if (rb != null)
-            {
-                if (rb.Checked)
-                {
-                    this.dropDownDirection = direction;
-                    this.contextMenuStrip1.DefaultDropDownDirection = direction;
-                }
-            }
-        }
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "TabPage", e.TabPage );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "TabPageIndex", e.TabPageIndex );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Action", e.Action );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "Selected Event" );
+}

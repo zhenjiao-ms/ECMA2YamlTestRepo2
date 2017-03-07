@@ -1,30 +1,23 @@
+
+using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
-[ComVisible(false)]
-class MyClass
+namespace C
 {
-   public MyClass()
-   {
-      //Insert code here.
-   }
-   
-   [ComVisible(false)]
-   public int MyMethod(string param) 
-   {
-      return 0;
-   }
-
-   public bool MyOtherMethod() 
-   {
-      return true;
-   }
-
-   [ComVisible(false)]
-   public int MyProperty
-   {
-      get
-      {
-         return MyProperty;
-      }
-   }
+	class ClassC	
+	{
+		public static bool IsHiddenMethod( MethodInfo mi )
+		{
+			object[] MethodAttributes = mi.GetCustomAttributes( typeof( TypeLibFuncAttribute ), true);
+		
+			if( MethodAttributes.Length > 0 )
+			{
+				TypeLibFuncAttribute tlf = ( TypeLibFuncAttribute )MethodAttributes[0];
+				TypeLibFuncFlags  flags = tlf.Value;
+				return ( flags & TypeLibFuncFlags.FHidden ) != 0; 
+			}
+			return false;
+		}
+	}
 }

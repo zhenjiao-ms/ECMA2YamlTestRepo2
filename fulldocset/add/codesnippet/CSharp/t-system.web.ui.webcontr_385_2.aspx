@@ -1,30 +1,28 @@
-<%@ page language="c#" %>
-<%@ register tagprefix="uc1" 
-    tagname="AccountUserControl" 
-    src="usercontrolverbcs.ascx"%>
+<%@Page language="c#" %>
+<%@ Register TagPrefix="aspSample" Namespace="Samples.AspNet.Controls.CS" 
+    Assembly="Samples.AspNet.Controls.CS" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head runat="server">
-    <title>
-      Personalizable User Control with IWebPart Properties
-    </title>
+  <head>
+    <title>TextBoxSet Data-Bound Control  - C# Example</title>
   </head>
+
   <body>
-    <form id="form1" runat="server">
-      <asp:webpartmanager id="WebPartManager1" runat="server" />
-      <asp:webpartzone 
-        id="zone1" 
-        runat="server" 
-        headertext="Main" 
-        CloseVerb-Enabled="false">
-        <zonetemplate>
-          <uc1:AccountUserControl 
-            runat="server" 
-            id="accountwebpart" 
-            title="Account Form" />
-        </zonetemplate>
-      </asp:webpartzone> 
+    <form id="Form1" method="post" runat="server">
+
+        <aspSample:textboxset
+          id="TextBoxSet1"
+          runat="server"
+          datasourceid="AccessDataSource1" />
+
+        <asp:accessdatasource
+          id="AccessDataSource1"
+          runat="server"
+          datafile="Northwind.mdb"
+          selectcommand="SELECT lastname FROM Employees" />
+          
     </form>
   </body>
 </html>

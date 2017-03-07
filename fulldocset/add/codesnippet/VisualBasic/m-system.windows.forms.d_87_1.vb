@@ -1,37 +1,34 @@
-Public Class CustomDataGridView
-    Inherits DataGridView
+    ' Draws column headers.
+    Private Sub listView1_DrawColumnHeader(ByVal sender As Object, _
+        ByVal e As DrawListViewColumnHeaderEventArgs) _
+        Handles listView1.DrawColumnHeader
 
-    <System.Security.Permissions.UIPermission( _
-        System.Security.Permissions.SecurityAction.LinkDemand, _
-        Window:=System.Security.Permissions.UIPermissionWindow.AllWindows)> _
-    Protected Overrides Function ProcessDialogKey( _
-        ByVal keyData As Keys) As Boolean
+        Dim sf As New StringFormat()
+        Try
 
-        ' Extract the key code from the key value. 
-        Dim key As Keys = keyData And Keys.KeyCode
+            ' Store the column text alignment, letting it default
+            ' to Left if it has not been set to Center or Right.
+            Select Case e.Header.TextAlign
+                Case HorizontalAlignment.Center
+                    sf.Alignment = StringAlignment.Center
+                Case HorizontalAlignment.Right
+                    sf.Alignment = StringAlignment.Far
+            End Select
 
-        ' Handle the ENTER key as if it were a RIGHT ARROW key. 
-        If key = Keys.Enter Then
-            Return Me.ProcessRightKey(keyData)
-        End If
+            ' Draw the standard header background.
+            e.DrawBackground()
 
-        Return MyBase.ProcessDialogKey(keyData)
+            ' Draw the header text.
+            Dim headerFont As New Font("Helvetica", 10, FontStyle.Bold)
+            Try
+                e.Graphics.DrawString(e.Header.Text, headerFont, _
+                    Brushes.Black, e.Bounds, sf)
+            Finally
+                headerFont.Dispose()
+            End Try
 
-    End Function
+        Finally
+            sf.Dispose()
+        End Try
 
-    <System.Security.Permissions.SecurityPermission( _
-        System.Security.Permissions.SecurityAction.LinkDemand, Flags:= _
-        System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode)> _
-    Protected Overrides Function ProcessDataGridViewKey( _
-        ByVal e As System.Windows.Forms.KeyEventArgs) As Boolean
-
-        ' Handle the ENTER key as if it were a RIGHT ARROW key. 
-        If e.KeyCode = Keys.Enter Then
-            Return Me.ProcessRightKey(e.KeyData)
-        End If
-
-        Return MyBase.ProcessDataGridViewKey(e)
-
-    End Function
-
-End Class
+    End Sub

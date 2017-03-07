@@ -1,39 +1,51 @@
-   ' This utility method creates a RolloverItem 
-   ' and adds it to a ToolStrip control.
-    Private Function CreateRolloverItem( _
-    ByVal owningToolStrip As ToolStrip, _
-    ByVal txt As String, _
-    ByVal f As Font, _
-    ByVal imgKey As String, _
-    ByVal tir As TextImageRelation, _
-    ByVal backImgKey As String) As RolloverItem
-
-        Dim item As New RolloverItem()
-
-        item.Alignment = ToolStripItemAlignment.Left
-        item.AllowDrop = False
-        item.AutoSize = True
-
-        item.BackgroundImage = owningToolStrip.ImageList.Images(backImgKey)
-        item.BackgroundImageLayout = ImageLayout.Center
-        item.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText
-        item.DoubleClickEnabled = True
-        item.Enabled = True
-        item.Font = f
-
-        ' These assignments are equivalent. Each assigns an
-        ' image from the owning toolstrip's image list.
-        item.ImageKey = imgKey
-        'item.Image = owningToolStrip.ImageList.Images[infoIconKey];
-        'item.ImageIndex = owningToolStrip.ImageList.Images.IndexOfKey(infoIconKey);
-        item.ImageScaling = ToolStripItemImageScaling.None
-
-        item.Owner = owningToolStrip
-        item.Padding = New Padding(2)
-        item.Text = txt
-        item.TextAlign = ContentAlignment.MiddleLeft
-        item.TextDirection = ToolStripTextDirection.Horizontal
-        item.TextImageRelation = tir
-
-        Return item
-    End Function
+' Get the tree node under the mouse pointer and
+' save it in the mySelectedNode variable. 
+Private Sub treeView1_MouseDown(sender As Object, _
+  e As System.Windows.Forms.MouseEventArgs)
+        
+   mySelectedNode = treeView1.GetNodeAt(e.X, e.Y)
+End Sub    
+    
+Private Sub menuItem1_Click(sender As Object, e As System.EventArgs)
+   If Not (mySelectedNode Is Nothing) And _
+     Not (mySelectedNode.Parent Is Nothing) Then
+      treeView1.SelectedNode = mySelectedNode
+      treeView1.LabelEdit = True
+      If Not mySelectedNode.IsEditing Then
+         mySelectedNode.BeginEdit()
+      End If
+   Else
+      MessageBox.Show("No tree node selected or selected node is a root node." & _
+        Microsoft.VisualBasic.ControlChars.Cr & _
+        "Editing of root nodes is not allowed.", "Invalid selection")
+   End If
+End Sub    
+    
+Private Sub treeView1_AfterLabelEdit(sender As Object, _
+  e As System.Windows.Forms.NodeLabelEditEventArgs)
+   If Not (e.Label Is Nothing) Then
+      If e.Label.Length > 0 Then
+         If e.Label.IndexOfAny(New Char() {"@"c, "."c, ","c, "!"c}) = -1 Then
+            ' Stop editing without canceling the label change.
+            e.Node.EndEdit(False)
+         Else
+            ' Cancel the label edit action, inform the user, and
+            ' place the node in edit mode again. 
+            e.CancelEdit = True
+            MessageBox.Show("Invalid tree node label." & _
+              Microsoft.VisualBasic.ControlChars.Cr & _
+              "The invalid characters are: '@','.', ',', '!'", _
+              "Node Label Edit")
+            e.Node.BeginEdit()
+         End If
+      Else
+         ' Cancel the label edit action, inform the user, and
+         ' place the node in edit mode again. 
+         e.CancelEdit = True
+         MessageBox.Show("Invalid tree node label." & _
+           Microsoft.VisualBasic.ControlChars.Cr & _
+           "The label cannot be blank", "Node Label Edit")
+           e.Node.BeginEdit()
+      End If
+   End If
+End Sub 

@@ -1,11 +1,13 @@
-         // String variable used to show message.
-         string myString = "Selection backgound color changed from: ";
-         // Store current foreground color of selected cells.
-         Color myCurrentColor = myDataGrid.SelectionBackColor;
-         myString += myCurrentColor.ToString();
-         // Reset selection background color to default.
-         myDataGrid.ResetSelectionBackColor();
-         myString += "  to ";
-         myString += myDataGrid.SelectionBackColor.ToString();
-         // Show information about changes in color setting.  
-         MessageBox.Show(myString, "Selection background color information");
+private void GetAllFormats() {
+    // Creates a new data object using a string and the text format.
+    DataObject myDataObject = new DataObject(DataFormats.Text, "Another string");
+ 
+    // Gets all the data formats and data conversion formats in the DataObject.
+    String[] arrayOfFormats = myDataObject.GetFormats();
+ 
+    // Prints the results.
+    textBox1.Text = "The format(s) associated with the data are: " + '\n';
+    for(int i=0; i<arrayOfFormats.Length; i++)
+       textBox1.Text += arrayOfFormats[i] + '\n';
+ }
+ 

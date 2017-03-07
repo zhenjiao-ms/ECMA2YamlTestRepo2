@@ -1,25 +1,33 @@
-    Private Sub button1_Click(ByVal sender As Object, ByVal e As System.EventArgs)
-        Dim myStream As Stream = Nothing
-        Dim openFileDialog1 As New OpenFileDialog()
+    Private openFileDialog1 As OpenFileDialog
+    Private WithEvents button1 As Button
 
-        openFileDialog1.InitialDirectory = "c:\"
-        openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"
-        openFileDialog1.FilterIndex = 2
-        openFileDialog1.RestoreDirectory = True
+    Private Sub InitializeDialogAndButton() 
+        Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.button1 = New System.Windows.Forms.Button()
+        Me.button1.Location = New System.Drawing.Point(53, 37)
+        Me.button1.AutoSize = True
+        Me.button1.Text = "Show dialog with custom places."
+        Me.button1.UseVisualStyleBackColor = True
 
-        If openFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-            Try
-                myStream = openFileDialog1.OpenFile()
-                If (myStream IsNot Nothing) Then
-                    ' Insert code to read the stream here.
-                End If
-            Catch Ex As Exception
-                MessageBox.Show("Cannot read file from disk. Original error: " & Ex.Message)
-            Finally
-                ' Check this again, since we need to make sure we didn't throw an exception on open.
-                If (myStream IsNot Nothing) Then
-                    myStream.Close()
-                End If
-            End Try
-        End If
+        Me.Controls.Add(Me.button1)
+    
     End Sub
+    
+    
+    Private Sub button1_Click(ByVal sender As Object, ByVal e As EventArgs) _
+        Handles button1.Click
+
+        ' Add Pictures custom place using GUID.
+        openFileDialog1.CustomPlaces.Add("33E28130-4E1E-4676-835A-98395C3BC3BB")
+
+        ' Add Links custom place using GUID
+        openFileDialog1.CustomPlaces.Add(New FileDialogCustomPlace _
+            (New Guid("BFB9D5E0-C6A9-404C-B2B2-AE6DB6AF4968")))
+
+        ' Add Windows custom place using file path.
+        openFileDialog1.CustomPlaces.Add("c:\Windows")
+
+        openFileDialog1.ShowDialog()
+
+    End Sub
+    

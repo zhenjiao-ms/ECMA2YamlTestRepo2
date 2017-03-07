@@ -1,17 +1,41 @@
-   // This example demonstrates how to use the KeyUp event with the Help class to display
-   // pop-up style help to the user of the application. When the user presses F1, the Help
-   // class displays a pop-up window, similar to a ToolTip, near the control. This example assumes
-   // that a TextBox control, named textBox1, has been added to the form and its KeyUp
-   // event has been connected to this event handler method.
+   // Boolean flag used to determine when a character other than a number is entered.
 private:
-   void textBox1_KeyUp( Object^ /*sender*/, System::Windows::Forms::KeyEventArgs^ e )
+   bool nonNumberEntered;
+
+   // Handle the KeyDown event to determine the type of character entered into the control.
+   void textBox1_KeyDown( Object^ /*sender*/, System::Windows::Forms::KeyEventArgs^ e )
    {
-      
-      // Determine whether the key entered is the F1 key. Display help if it is.
-      if ( e->KeyCode == Keys::F1 )
+      // Initialize the flag to false.
+      nonNumberEntered = false;
+
+      // Determine whether the keystroke is a number from the top of the keyboard.
+      if ( e->KeyCode < Keys::D0 || e->KeyCode > Keys::D9 )
       {
-         
-         // Display a pop-up help topic to assist the user.
-         Help::ShowPopup( textBox1, "Enter your first name", Point(textBox1->Right,this->textBox1->Bottom) );
+         // Determine whether the keystroke is a number from the keypad.
+         if ( e->KeyCode < Keys::NumPad0 || e->KeyCode > Keys::NumPad9 )
+         {
+            // Determine whether the keystroke is a backspace.
+            if ( e->KeyCode != Keys::Back )
+            {
+               // A non-numerical keystroke was pressed.
+               // Set the flag to true and evaluate in KeyPress event.
+               nonNumberEntered = true;
+            }
+         }
+      }
+      //If shift key was pressed, it's not a number.
+      if (Control::ModifierKeys == Keys::Shift) {
+         nonNumberEntered = true;
+      }
+   }
+
+   // This event occurs after the KeyDown event and can be used to prevent
+   // characters from entering the control.
+   void textBox1_KeyPress( Object^ /*sender*/, System::Windows::Forms::KeyPressEventArgs^ e )
+   {
+      // Check for the flag being set in the KeyDown event.
+      if ( nonNumberEntered == true )
+      {         // Stop the character from being entered into the control since it is non-numerical.
+         e->Handled = true;
       }
    }

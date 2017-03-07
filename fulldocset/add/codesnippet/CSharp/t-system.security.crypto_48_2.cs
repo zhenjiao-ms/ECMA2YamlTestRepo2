@@ -1,217 +1,44 @@
 using System;
-using System.IO;
-using System.Xml;
 using System.Security.Cryptography;
-using System.Security.Cryptography.Xml;
 
-class Class1
+namespace SmartCardSign
 {
-    [STAThread]
-    static void Main(string[] args)
+    class SCSign
     {
-        // Encrypt a sample XML string.
-        XmlDocument productsXml = LoadProducts();
-        ShowTransformProperties(productsXml);
-
-        // Encrypt an XPath Xml string.
-        XmlDocument transformXml = LoadTransformByXml();
-        ShowTransformProperties(transformXml);
-
-        // Use XmlDsigXPathTransform to resolve a Uri.
-        Uri baseUri = new Uri("http://www.contoso.com");
-        string relativeUri = "xml";
-        Uri absoluteUri = ResolveUris(baseUri, relativeUri);
-
-        Console.WriteLine("This sample completed successfully; " +
-            "press Enter to exit.");
-        Console.ReadLine();
-    }
-
-    // Encrypt the text in the specified XmlDocument.
-    private static void ShowTransformProperties(XmlDocument xmlDoc)
-    {
-
-        // Create a new XMLDocument object.
-        XmlDocument doc = new XmlDocument();
-
-        // Create a new XmlElement.
-        XmlElement xPathElem = doc.CreateElement("XPath");
-
-        // Set the element text to the value
-        // of the XPath string.
-        xPathElem.InnerText = "ancestor-or-self::PRODUCTS";
-
-        // Create a new XmlDsigXPathTransform object.
-        XmlDsigXPathTransform xmlTransform = new XmlDsigXPathTransform();
-
-        // Load the XPath XML from the element. 
-        xmlTransform.LoadInnerXml(xPathElem.SelectNodes("."));
-
-        // Ensure the transform is using the proper algorithm.
-        xmlTransform.Algorithm =
-            SignedXml.XmlDsigXPathTransformUrl;
-
-        // Retrieve the XML representation of the current transform.
-        XmlElement xmlInTransform = xmlTransform.GetXml();
-
-        Console.WriteLine("\nXml representation of the current transform: ");
-        Console.WriteLine(xmlInTransform.OuterXml);
-
-        // Retrieve the valid input types for the current transform.
-        Type[] validInTypes = xmlTransform.InputTypes;
-
-        // Verify the xmlTransform can accept the XMLDocument as an
-        // input type.
-        for (int i = 0; i < validInTypes.Length; i++)
+        static void Main(string[] args)
         {
-            if (validInTypes[i] == xmlDoc.GetType())
-            {
-                // Load the document into the transfrom.
-                xmlTransform.LoadInput(xmlDoc);
+            // To idendify the Smart Card CryptoGraphic Providers on your
+            // computer, use the Microsoft Registry Editor (Regedit.exe).
+            // The available Smart Card CryptoGraphic Providers are listed
+            // in HKEY_LOCAL_MACHINE\Software\Microsoft\Cryptography\Defaults\Provider.
 
-                try
-                {
-                    // This transform is created for demonstration purposes.
-                    XmlDsigXPathTransform secondTransform =
-                        new XmlDsigXPathTransform();
 
-                    string classDescription = secondTransform.ToString();
+            // Create a new CspParameters object that identifies a 
+            // Smart Card CryptoGraphic Provider.
+            // The 1st parameter comes from HKEY_LOCAL_MACHINE\Software\Microsoft\Cryptography\Defaults\Provider Types.
+            // The 2nd parameter comes from HKEY_LOCAL_MACHINE\Software\Microsoft\Cryptography\Defaults\Provider.
+            CspParameters csp = new CspParameters(1, "Schlumberger Cryptographic Service Provider");
+            csp.Flags = CspProviderFlags.UseDefaultKeyContainer;
 
-                    xmlTransform.LoadInnerXml(xPathElem.SelectNodes(".")); ;
-                }
-                catch (CryptographicException)
-                {
-                    Console.WriteLine("Caught exception while trying to " +
-                        "load the specified Xml document. The document " +
-                        "requires an XPath element to be valid.");
-                }
-                break;
-            }
+            // Initialize an RSACryptoServiceProvider object using
+            // the CspParameters object.
+            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(csp);
+
+            // Create some data to sign.
+            byte[] data = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7 };
+
+            Console.WriteLine("Data			: " + BitConverter.ToString(data));
+
+            // Sign the data using the Smart Card CryptoGraphic Provider.
+            byte[] sig = rsa.SignData(data, "SHA1");
+
+            Console.WriteLine("Signature	: " + BitConverter.ToString(sig));
+
+            // Verify the data using the Smart Card CryptoGraphic Provider.
+            bool verified = rsa.VerifyData(data, "SHA1", sig);
+
+            Console.WriteLine("Verified		: " + verified);
+
         }
-
-        Type[] validOutTypes = xmlTransform.OutputTypes;
-
-        for (int i = validOutTypes.Length - 1; i >= 0; i--)
-        {
-            if (validOutTypes[i] == typeof(System.Xml.XmlDocument))
-            {
-                try
-                {
-                    Type xmlDocumentType = typeof(System.Xml.XmlDocument);
-                    XmlDocument xmlDocumentOutput = (XmlDocument)
-                        xmlTransform.GetOutput(xmlDocumentType);
-
-                    // Display to the console the Xml before and after
-                    // encryption.
-                    Console.WriteLine("Result of the GetOutput method call" +
-                        " from the current transform: " +
-                        xmlDocumentOutput.OuterXml);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Unexpected exception caught: " +
-                        ex.ToString());
-                }
-
-                break;
-            }
-            else if (validOutTypes[i] == typeof(System.Xml.XmlNodeList))
-            {
-                try
-                {
-                    Type xmlNodeListType = typeof(System.Xml.XmlNodeList);
-                    XmlNodeList xmlNodes = (XmlNodeList)
-                        xmlTransform.GetOutput(xmlNodeListType);
-
-                    // Display to the console the Xml before and after
-                    // encryption.
-                    Console.WriteLine("Encoding the following message: " +
-                        xmlDoc.InnerText);
-
-                    Console.WriteLine("Nodes of the XmlNodeList retrieved " +
-                        "from GetOutput:");
-                    for (int j = 0; j < xmlNodes.Count; j++)
-                    {
-                        Console.WriteLine("Node " + j +
-                            " has the following name: " +
-                            xmlNodes.Item(j).Name +
-                            " and the following InnerXml: " +
-                            xmlNodes.Item(j).InnerXml);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Unexpected exception caught: " +
-                        ex.ToString());
-                }
-
-                break;
-            }
-            else
-            {
-                object outputObject = xmlTransform.GetOutput();
-            }
-        }
-    }
-
-    // Create an XML document for the dsig namespace.
-    private static XmlDocument LoadTransformByXml()
-    {
-        XmlDocument xmlDoc = new XmlDocument();
-
-        string transformXml = "<Signature><Reference URI=''><Transforms>";
-        transformXml += "<Transform><XPath ";
-        transformXml += "xmlns:dsig='http://www.w3.org/2000/09/xmldsig#'>";
-        transformXml += "not(ancestor-or-self::dsig:Signature)";
-        transformXml += "</XPath></Transform>";
-        transformXml += "</Transforms></Reference></Signature>";
-
-        xmlDoc.LoadXml(transformXml);
-        return xmlDoc;
-    }
-
-    // Create an XML document describing various products.
-    private static XmlDocument LoadProducts()
-    {
-        XmlDocument xmlDoc = new XmlDocument();
-
-        string contosoProducts = "<PRODUCTS>";
-        contosoProducts += "<PRODUCT><ID>123</ID>";
-        contosoProducts += "<DESCRIPTION>Router</DESCRIPTION></PRODUCT>";
-        contosoProducts += "<PRODUCT><ID>456</ID>";
-        contosoProducts += "<DESCRIPTION>Keyboard</DESCRIPTION></PRODUCT>";
-        contosoProducts += "<PRODUCT><ID>789</ID>";
-        contosoProducts += "<DESCRIPTION>Monitor</DESCRIPTION></PRODUCT>";
-        contosoProducts += "</PRODUCTS>";
-
-        xmlDoc.LoadXml(contosoProducts);
-        return xmlDoc;
-    }
-
-    // Resolve the specified base and relative Uri's .
-    private static Uri ResolveUris(Uri baseUri, string relativeUri)
-    {
-        XmlUrlResolver xmlResolver = new XmlUrlResolver();
-        xmlResolver.Credentials =
-            System.Net.CredentialCache.DefaultCredentials;
-
-        XmlDsigXPathTransform xmlTransform =
-            new XmlDsigXPathTransform();
-        xmlTransform.Resolver = xmlResolver;
-
-        Uri absoluteUri = xmlResolver.ResolveUri(baseUri, relativeUri);
-
-        if (absoluteUri != null)
-        {
-            Console.WriteLine(
-                "\nResolved the base Uri and relative Uri to the following:");
-            Console.WriteLine(absoluteUri.ToString());
-        }
-        else
-        {
-            Console.WriteLine(
-                "Unable to resolve the base Uri and relative Uri");
-        }
-        return absoluteUri;
     }
 }

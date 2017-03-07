@@ -1,28 +1,18 @@
-        ElseIf (e.AssociatedControl Is button2) Then
-            ' Draw a custom background and text if the ToolTip is for button2.
+    Private Sub DataGridView1_SortCompare( _
+        ByVal sender As Object, ByVal e As DataGridViewSortCompareEventArgs) _
+        Handles DataGridView1.SortCompare
 
-            ' Draw the custom background.
-            e.Graphics.FillRectangle(SystemBrushes.ActiveCaption, e.Bounds)
+        ' Try to sort based on the contents of the cell in the current column.
+        e.SortResult = System.String.Compare(e.CellValue1.ToString(), _
+            e.CellValue2.ToString())
 
-            ' Draw the standard border.
-            e.DrawBorder()
+        ' If the cells are equal, sort based on the ID column.
+        If (e.SortResult = 0) AndAlso Not (e.Column.Name = "ID") Then
+            e.SortResult = System.String.Compare( _
+                DataGridView1.Rows(e.RowIndex1).Cells("ID").Value.ToString(), _
+                DataGridView1.Rows(e.RowIndex2).Cells("ID").Value.ToString())
+        End If
 
-            ' Draw the custom text.
-            Dim sf As StringFormat = New StringFormat
-            Try
-                sf.Alignment = StringAlignment.Center
-                sf.LineAlignment = StringAlignment.Center
-                sf.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None
-                sf.FormatFlags = StringFormatFlags.NoWrap
+        e.Handled = True
 
-                Dim f As Font = New Font("Tahoma", 9)
-                Try
-                    e.Graphics.DrawString(e.ToolTipText, f, _
-                        SystemBrushes.ActiveCaptionText, _
-                        RectangleF.op_Implicit(e.Bounds), sf)
-                Finally
-                    f.Dispose()
-                End Try
-            Finally
-                sf.Dispose()
-            End Try
+    End Sub

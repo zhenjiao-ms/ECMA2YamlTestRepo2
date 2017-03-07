@@ -1,30 +1,36 @@
-using System;
-using System.ComponentModel;
-using System.ComponentModel.Design;
-using System.ComponentModel.Design.Serialization;
-using System.Windows.Forms;
-
-namespace ContextStackExample
-{
-    class ContextStackExample
-    {
-        [STAThread]
-        static void Main(string[] args)
-        {            
-            // Create a ContextStack.
-            ContextStack stack = new ContextStack();
-            
-            // Push ten items on to the stack and output the value of each.
-            for( int number = 0; number < 10; number ++ )
+        // This event handler deals with the results of the
+        // background operation.
+        private void backgroundWorker1_RunWorkerCompleted(
+            object sender, RunWorkerCompletedEventArgs e)
+        {
+            // First, handle the case where an exception was thrown.
+            if (e.Error != null)
             {
-                Console.WriteLine( "Value pushed to stack: "+number.ToString() );
-                stack.Push( number );
+                MessageBox.Show(e.Error.Message);
+            }
+            else if (e.Cancelled)
+            {
+                // Next, handle the case where the user canceled 
+                // the operation.
+                // Note that due to a race condition in 
+                // the DoWork event handler, the Cancelled
+                // flag may not have been set, even though
+                // CancelAsync was called.
+                resultLabel.Text = "Canceled";
+            }
+            else
+            {
+                // Finally, handle the case where the operation 
+                // succeeded.
+                resultLabel.Text = e.Result.ToString();
             }
 
-            // Pop each item off the stack.
-            object item = null;
-            while( (item = stack.Pop()) != null )
-                Console.WriteLine( "Value popped from stack: "+item.ToString() );
+            // Enable the UpDown control.
+            this.numericUpDown1.Enabled = true;
+
+            // Enable the Start button.
+            startAsyncButton.Enabled = true;
+
+            // Disable the Cancel button.
+            cancelAsyncButton.Enabled = false;
         }
-    }
-}

@@ -1,181 +1,237 @@
 
-<%@ Page Language="VB" %>
-
+<%@ Page Language="VB" AutoEventWireup="True" %>
+<%@ Import Namespace="System.Data" %>
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<script runat="server">
-
-  Sub HorizontalPadding_Changed(ByVal sender As Object, ByVal e As EventArgs)
-
-    ' Programmatically set the HorizontalPadding property based on the 
-    ' user's selection.
-    ItemsTreeView.ParentNodeStyle.HorizontalPadding = Convert.ToInt32(HorizontalPaddingList.SelectedItem.Text)
-
-  End Sub
-
-  Sub VerticalPadding_Changed(ByVal sender As Object, ByVal e As EventArgs)
-
-    ' Programmatically set the VerticalPadding property based on the 
-    ' user's selection.
-    ItemsTreeView.ParentNodeStyle.VerticalPadding = Convert.ToInt32(VerticalPaddingList.SelectedItem.Text)
-
-  End Sub
-
-  Sub NodeSpacing_Changed(ByVal sender As Object, ByVal e As EventArgs)
-
-    ' Programmatically set the NodeSpacing property based on the 
-    ' user's selection.
-    ItemsTreeView.ParentNodeStyle.NodeSpacing = Convert.ToInt32(NodeSpacingList.SelectedItem.Text)
-
-  End Sub
-
-  Sub ChildNodePadding_Changed(ByVal sender As Object, ByVal e As EventArgs)
-
-    ' Programmatically set the ChildNodesPadding property based on the 
-    ' user's selection.
-    ItemsTreeView.ParentNodeStyle.ChildNodesPadding = Convert.ToInt32(ChildNodesPaddingList.SelectedItem.Text)
-
-  End Sub
-
-</script>
-
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head runat="server">
-    <title>TreeNodeStyle Example</title>
-</head>
-<body>  
-    <form id="form1" runat="server">
-    
-      <h3>TreeNodeStyle Example</h3>
+   <script runat="server">
+ 
+      Function CreateDataSource() As ICollection 
       
-      <!-- Set the styles for the leaf nodes declaratively. -->
-      <asp:TreeView id="ItemsTreeView"
-        Font-Names= "Arial"
-        ForeColor="Blue"
-        ParentNodeStyle-ForeColor="Green"
-        ParentNodeStyle-HorizontalPadding="5" 
-        ParentNodeStyle-VerticalPadding="5"  
-        ParentNodeStyle-NodeSpacing="5"
-        ParentNodeStyle-ChildNodesPadding="5"
-        ExpandDepth="4"  
-        runat="server">
+         ' Create sample data for the DataList control.
+         Dim dt As DataTable = New DataTable()
+         dim dr As DataRow
+ 
+         ' Define the columns of the table.
+         dt.Columns.Add(New DataColumn("IntegerValue", GetType(Int32)))
+         dt.Columns.Add(New DataColumn("StringValue", GetType(String)))
+         dt.Columns.Add(New DataColumn("CurrencyValue", GetType(Double)))
+         dt.Columns.Add(New DataColumn("ImageValue", GetType(String)))
+ 
+         ' Populate the table with sample values.
+         Dim i As Integer
+
+         For i = 0 To 8 
+
+            dr = dt.NewRow()
+ 
+            dr(0) = i
+            dr(1) = "Description for item " & i.ToString()
+            dr(2) = 1.23 * (i + 1)
+            dr(3) = "Image" & i.ToString() & ".jpg"
+ 
+            dt.Rows.Add(dr)
+
+         Next i
+ 
+         Dim dv As DataView = New DataView(dt)
+         Return dv
+
+      End Function
+ 
+      Sub Page_Load(sender As Object, e As EventArgs) 
+
+         ' Load sample data only once, when the page is first loaded.
+         If Not IsPostBack Then 
+     
+            ItemsList.DataSource = CreateDataSource()
+            ItemsList.DataBind()
          
-        <Nodes>
-        
-          <asp:TreeNode Text="Table of Contents"
-            SelectAction="None">
-             
-            <asp:TreeNode Text="Chapter One">
-            
-              <asp:TreeNode Text="Section 1.0">
-              
-                <asp:TreeNode Text="Topic 1.0.1"/>
-                <asp:TreeNode Text="Topic 1.0.2"/>
-                <asp:TreeNode Text="Topic 1.0.3"/>
-              
-              </asp:TreeNode>
-              
-              <asp:TreeNode Text="Section 1.1">
-              
-                <asp:TreeNode Text="Topic 1.1.1"/>
-                <asp:TreeNode Text="Topic 1.1.2"/>
-                <asp:TreeNode Text="Topic 1.1.3"/>
-                <asp:TreeNode Text="Topic 1.1.4"/>
-              
-              </asp:TreeNode>
-            
-            </asp:TreeNode>
-            
-          </asp:TreeNode>
-        
-        </Nodes>
-        
-      </asp:TreeView>
-      
+         End If
+
+      End Sub
+ 
+      Sub Button_Click(sender As Object, e As EventArgs) 
+ 
+         ' Set the repeat direction based on the selected value of the
+         ' DirectionList DropDownList control.
+         ItemsList.RepeatDirection = _
+             CType(DirectionList.SelectedIndex, RepeatDirection)
+
+         ' Set the repeat layout based on the selected value of the
+         ' LayoutList DropDownList control.
+         ItemsList.RepeatLayout = CType(LayoutList.SelectedIndex, RepeatLayout)
+
+         ' Set the number of columns to display based on the selected
+         ' value of the ColumnsList DropDownList control.
+         ItemsList.RepeatColumns = ColumnsList.SelectedIndex
+
+         ' Show or hide the gridlines based on the value of the
+         ' ShowBorderCheckBox. Note that gridlines are displayed
+         ' only if the RepeatLayout property is set to Table.
+         If ShowBorderCheckBox.Checked _
+             And ItemsList.RepeatLayout = RepeatLayout.Table Then 
+
+            ItemsList.BorderWidth = Unit.Pixel(1)
+            ItemsList.GridLines = GridLines.Both
+         
+         Else  
+    
+            ItemsList.BorderWidth = Unit.Pixel(0)
+            ItemsList.GridLines = GridLines.None
+         
+         End If
+    
+      End Sub    
+ 
+   </script>
+ 
+<head runat="server">
+    <title>DataList Example</title>
+</head>
+<body>
+ 
+   <form id="form1" runat="server">
+
+      <h3>DataList Example</h3>
+ 
+      <asp:DataList id="ItemsList"
+           BorderColor="black"
+           CellPadding="5"
+           CellSpacing="5"
+           RepeatDirection="Vertical"
+           RepeatLayout="Table"
+           RepeatColumns="0"
+           BorderWidth="0"
+           runat="server">
+
+         <HeaderStyle BackColor="#aaaadd">
+         </HeaderStyle>
+
+         <AlternatingItemStyle BackColor="Gainsboro">
+         </AlternatingItemStyle>
+
+         <HeaderTemplate>
+
+            List of items
+
+         </HeaderTemplate>
+               
+         <ItemTemplate>
+
+            Description: <br />
+            <%# DataBinder.Eval(Container.DataItem, "StringValue") %>
+
+            <br />
+
+            Price: <%# DataBinder.Eval(Container.DataItem, "CurrencyValue", "{0:c}") %>
+
+            <br />
+
+            <asp:Image id="ProductImage"
+                 AlternatingText='<%# DataBinder.Eval(Container.DataItem, "StringValue") %>'
+                 ImageUrl='<%# DataBinder.Eval(Container.DataItem, "ImageValue") %>'
+                 runat="server"/>
+
+         </ItemTemplate>
+ 
+      </asp:DataList>
+ 
       <hr />
-      
-      <h5>Select the style settings for the parent nodes.</h5>
-      
+
       <table cellpadding="5">
-      
-        <tr align="right">
-        
-          <td>
-          
-            Horizontal Padding:
-          
-            <asp:DropDownList id="HorizontalPaddingList"
-              AutoPostBack="true"
-              OnSelectedIndexChanged="HorizontalPadding_Changed" 
-              runat="server">
-              
-              <asp:ListItem>0</asp:ListItem>
-              <asp:ListItem Selected="true">5</asp:ListItem>
-              <asp:ListItem>10</asp:ListItem>
-              
-            </asp:DropDownList> 
-          
-          </td>
-          
-          <td>
-          
-            Vertical Padding:
-          
-            <asp:DropDownList id="VerticalPaddingList"
-              AutoPostBack="true"
-              OnSelectedIndexChanged="VerticalPadding_Changed" 
-              runat="server">
-              
-              <asp:ListItem>0</asp:ListItem>
-              <asp:ListItem Selected="true">5</asp:ListItem>
-              <asp:ListItem>10</asp:ListItem>
-              
-            </asp:DropDownList> 
-          
-          </td>
-          
-        </tr>
-        
-        <tr align="right">
-        
-          <td>
-          
-            Node Spacing:
-          
-            <asp:DropDownList id="NodeSpacingList"
-              AutoPostBack="true"
-              OnSelectedIndexChanged="NodeSpacing_Changed"   
-              runat="server">
-              
-              <asp:ListItem>0</asp:ListItem>
-              <asp:ListItem Selected="true">5</asp:ListItem>
-              <asp:ListItem>10</asp:ListItem>
-              
-            </asp:DropDownList> 
-          
-          </td>
-          
-          <td>
-          
-            Child Nodes Padding:
-          
-            <asp:DropDownList id="ChildNodesPaddingList"
-              AutoPostBack="true"
-              OnSelectedIndexChanged="ChildNodePadding_Changed"  
-              runat="server">
-              
-              <asp:ListItem>0</asp:ListItem>
-              <asp:ListItem Selected="true">5</asp:ListItem>
-              <asp:ListItem>10</asp:ListItem>
-              
-            </asp:DropDownList> 
-          
-          </td>
-        
-        </tr>
-      
-      </table>
-       
-    </form>
-  </body>
+
+         <tr>
+
+            <th>
+
+               Repeat direction:
+
+            </th>
+
+            <th>
+
+               Repeat layout:
+
+            </th>
+
+            <th>
+
+               Repeat columns:
+
+            </th>
+
+            <th>
+
+               <asp:CheckBox id="ShowBorderCheckBox"
+                    Text="Show border"
+                    Checked="False" 
+                    runat="server" />
+
+            </th>
+
+         </tr>
+
+         <tr>
+
+            <td>
+
+               <asp:DropDownList id="DirectionList" 
+                    runat="server">
+
+                  <asp:ListItem>Horizontal</asp:ListItem>
+                  <asp:ListItem Selected="True">Vertical</asp:ListItem>
+
+               </asp:DropDownList>
+
+            </td>
+
+            <td>
+
+               <asp:DropDownList id="LayoutList" 
+                    runat="server">
+
+                  <asp:ListItem Selected="True">Table</asp:ListItem>
+                  <asp:ListItem>Flow</asp:ListItem>
+
+               </asp:DropDownList>
+
+            </td>
+
+            <td>
+
+               <asp:DropDownList id="ColumnsList" 
+                    runat="server">
+
+                  <asp:ListItem Selected="True">0</asp:ListItem>
+                  <asp:ListItem>1</asp:ListItem>
+                  <asp:ListItem>2</asp:ListItem>
+                  <asp:ListItem>3</asp:ListItem>
+                  <asp:ListItem>4</asp:ListItem>
+                  <asp:ListItem>5</asp:ListItem>
+
+               </asp:DropDownList>
+
+            </td>
+
+            <td>
+
+               &nbsp;
+
+            </td>
+
+
+         </tr>
+
+      </table>     
+         
+      <asp:LinkButton id="RefreshButton" 
+           Text="Refresh DataList" 
+           OnClick="Button_Click" 
+           runat="server"/>
+ 
+   </form>
+ 
+</body>
 </html>

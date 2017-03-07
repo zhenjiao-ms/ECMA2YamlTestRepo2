@@ -1,15 +1,13 @@
-    private void AddLinkColumn()
-    {
-        DataGridViewLinkColumn links = new DataGridViewLinkColumn();
-
-        links.UseColumnTextForLinkValue = true;
-        links.HeaderText = ColumnName.ReportsTo.ToString();
-        links.DataPropertyName = ColumnName.ReportsTo.ToString();
-        links.ActiveLinkColor = Color.White;
-        links.LinkBehavior = LinkBehavior.SystemDefault;
-        links.LinkColor = Color.Blue;
-        links.TrackVisitedState = true;
-        links.VisitedLinkColor = Color.YellowGreen;
-
-        DataGridView1.Columns.Add(links);
-    }
+        public override DataGridViewAdvancedBorderStyle AdjustedTopLeftHeaderBorderStyle
+        {
+            get
+            {
+                DataGridViewAdvancedBorderStyle newStyle =
+                    new DataGridViewAdvancedBorderStyle();
+                newStyle.Top = DataGridViewAdvancedCellBorderStyle.None;
+                newStyle.Left = DataGridViewAdvancedCellBorderStyle.None;
+                newStyle.Bottom = DataGridViewAdvancedCellBorderStyle.Outset;
+                newStyle.Right = DataGridViewAdvancedCellBorderStyle.OutsetDouble;
+                return newStyle;
+            }
+        }

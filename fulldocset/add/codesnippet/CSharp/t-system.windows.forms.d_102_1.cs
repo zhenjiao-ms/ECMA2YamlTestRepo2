@@ -1,404 +1,239 @@
-using System.Windows.Forms;
 using System;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Windows.Forms;
 
-public class DataGridViewColumnDemo : Form
+public class Form1 : System.Windows.Forms.Form
 {
-    #region "set up form"
-    public DataGridViewColumnDemo()
-    {
-        InitializeComponent();
+   private System.ComponentModel.Container components;
+   private Button button1;
+   private Button button2;
+   private DataGrid myDataGrid;   
+   private DataSet myDataSet;
+   private bool TablesAlreadyAdded;
+   public Form1()
+   {
+      // Required for Windows Form Designer support.
+      InitializeComponent();
+      // Call SetUp to bind the controls.
+      SetUp();
+   }
 
-        AddButton(Button1, "Reset",
-            new EventHandler(ResetToDisorder));
-        AddButton(Button2, "Change Column 3 Header",
-            new EventHandler(ChangeColumn3Header));
-        AddButton(Button3, "Change Meatloaf Recipe",
-            new EventHandler(ChangeMeatloafRecipe));
-        AddAdditionalButtons();
+   protected override void Dispose( bool disposing ){
+      if( disposing ){
+         if (components != null){
+            components.Dispose();}
+      }
+      base.Dispose( disposing );
+   }
+   private void InitializeComponent()
+   {
+      // Create the form and its controls.
+      this.components = new System.ComponentModel.Container();
+      this.button1 = new System.Windows.Forms.Button();
+      this.button2 = new System.Windows.Forms.Button();
+      this.myDataGrid = new DataGrid();
+      
+      this.Text = "DataGrid Control Sample";
+      this.ClientSize = new System.Drawing.Size(450, 330);
+      
+      button1.Location = new Point(24, 16);
+      button1.Size = new System.Drawing.Size(120, 24);
+      button1.Text = "Change Appearance";
+      button1.Click+=new System.EventHandler(button1_Click);
 
-        InitializeDataGridView();
-    }
+      button2.Location = new Point(150, 16);
+      button2.Size = new System.Drawing.Size(120, 24);
+      button2.Text = "Get Binding Manager";
+      button2.Click+=new System.EventHandler(button2_Click);
 
-    DataGridView dataGridView;
-    Button Button1 = new Button();
-    Button Button2 = new Button();
-    Button Button3 = new Button();
-    Button Button4 = new Button();
-    Button Button5 = new Button();
-    Button Button6 = new Button();
-    Button Button7 = new Button();
-    Button Button8 = new Button();
-    Button Button9 = new Button();
-    Button Button10 = new Button();
-    FlowLayoutPanel FlowLayoutPanel1 = new FlowLayoutPanel();
+      myDataGrid.Location = new  Point(24, 50);
+      myDataGrid.Size = new Size(300, 200);
+      myDataGrid.CaptionText = "Microsoft DataGrid Control";
+      myDataGrid.MouseUp += new MouseEventHandler(Grid_MouseUp);
+      
+      this.Controls.Add(button1);
+      this.Controls.Add(button2);
+      this.Controls.Add(myDataGrid);
+   }
 
-    private void InitializeComponent()
-    {
-        FlowLayoutPanel1.Location = new Point(454, 0);
-        FlowLayoutPanel1.AutoSize = true;
-        FlowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-        FlowLayoutPanel1.Name = "flowlayoutpanel";
-        ClientSize = new System.Drawing.Size(614, 360);
-        Controls.Add(this.FlowLayoutPanel1);
-        Text = this.GetType().Name;
-        AutoSize = true;
-    }
-    #endregion
+   public static void Main()
+   {
+      Application.Run(new Form1());
+   }
+   
+   private void SetUp()
+   {
+      // Create a DataSet with two tables and one relation.
+      MakeDataSet();
+      /* Bind the DataGrid to the DataSet. The dataMember
+      specifies that the Customers table should be displayed.*/
+      myDataGrid.SetDataBinding(myDataSet, "Customers");
+   }
 
-    #region "set up DataGridView"
+   private void button1_Click(object sender, System.EventArgs e)
+   {
+      if(TablesAlreadyAdded) return;
+      AddCustomDataTableStyle();
+   }
 
-    private string thirdColumnHeader = "Main Ingredients";
-    private string boringMeatloaf = "ground beef";
-    private string boringMeatloafRanking = "*";
-    private bool boringRecipe;
-    private bool shortMode;
+   private void AddCustomDataTableStyle()
+   {
+      DataGridTableStyle ts1 = new DataGridTableStyle();
+      ts1.MappingName = "Customers";
+      // Set other properties.
+      ts1.AlternatingBackColor = Color.LightGray;
 
-    private void InitializeDataGridView()
-    {
-        dataGridView = new System.Windows.Forms.DataGridView();
-        Controls.Add(dataGridView);
-        dataGridView.Size = new Size(300, 200);
+      /* Add a GridColumnStyle and set its MappingName 
+      to the name of a DataColumn in the DataTable. 
+      Set the HeaderText and Width properties. */
+      
+      DataGridColumnStyle boolCol = new DataGridBoolColumn();
+      boolCol.MappingName = "Current";
+      boolCol.HeaderText = "IsCurrent Customer";
+      boolCol.Width = 150;
+      ts1.GridColumnStyles.Add(boolCol);
+      
+      // Add a second column style.
+      DataGridColumnStyle TextCol = new DataGridTextBoxColumn();
+      TextCol.MappingName = "custName";
+      TextCol.HeaderText = "Customer Name";
+      TextCol.Width = 250;
+      ts1.GridColumnStyles.Add(TextCol);
 
-        // Create an unbound DataGridView by declaring a
-        // column count.
-        dataGridView.ColumnCount = 4;
-        AdjustDataGridViewSizing();
+      // Create the second table style with columns.
+      DataGridTableStyle ts2 = new DataGridTableStyle();
+      ts2.MappingName = "Orders";
 
-        // Set the column header style.
-        DataGridViewCellStyle columnHeaderStyle =
-            new DataGridViewCellStyle();
-        columnHeaderStyle.BackColor = Color.Aqua;
-        columnHeaderStyle.Font =
-            new Font("Verdana", 10, FontStyle.Bold);
-        dataGridView.ColumnHeadersDefaultCellStyle =
-            columnHeaderStyle;
+      // Set other properties.
+      ts2.AlternatingBackColor = Color.LightBlue;
+      
+      // Create new ColumnStyle objects
+      DataGridColumnStyle cOrderDate = 
+      new DataGridTextBoxColumn();
+      cOrderDate.MappingName = "OrderDate";
+      cOrderDate.HeaderText = "Order Date";
+      cOrderDate.Width = 100;
+      ts2.GridColumnStyles.Add(cOrderDate);
 
-        // Set the column header names.
-        dataGridView.Columns[0].Name = "Recipe";
-        dataGridView.Columns[1].Name = "Category";
-        dataGridView.Columns[2].Name = thirdColumnHeader;
-        dataGridView.Columns[3].Name = "Rating";
+      /* Use a PropertyDescriptor to create a formatted
+      column. First get the PropertyDescriptorCollection
+      for the data source and data member. */
+      PropertyDescriptorCollection pcol = this.BindingContext
+      [myDataSet, "Customers.custToOrders"].GetItemProperties();
+ 
+      /* Create a formatted column using a PropertyDescriptor.
+      The formatting character "c" specifies a currency format. */     
+      DataGridColumnStyle csOrderAmount = 
+      new DataGridTextBoxColumn(pcol["OrderAmount"], "c", true);
+      csOrderAmount.MappingName = "OrderAmount";
+      csOrderAmount.HeaderText = "Total";
+      csOrderAmount.Width = 100;
+      ts2.GridColumnStyles.Add(csOrderAmount);
 
-        PostColumnCreation();
+      /* Add the DataGridTableStyle instances to 
+      the GridTableStylesCollection. */
+      myDataGrid.TableStyles.Add(ts1);
+      myDataGrid.TableStyles.Add(ts2);
 
-        // Populate the rows.
-        string[] row1 = new string[]{"Meatloaf", 
-                                        "Main Dish", boringMeatloaf, boringMeatloafRanking};
-        string[] row2 = new string[]{"Key Lime Pie", 
-                                        "Dessert", "lime juice, evaporated milk", "****"};
-        string[] row3 = new string[]{"Orange-Salsa Pork Chops", 
-                                        "Main Dish", "pork chops, salsa, orange juice", "****"};
-        string[] row4 = new string[]{"Black Bean and Rice Salad", 
-                                        "Salad", "black beans, brown rice", "****"};
-        string[] row5 = new string[]{"Chocolate Cheesecake", 
-                                        "Dessert", "cream cheese", "***"};
-        string[] row6 = new string[]{"Black Bean Dip", "Appetizer",
-                                        "black beans, sour cream", "***"};
-        object[] rows = new object[] { row1, row2, row3, row4, row5, row6 };
+     // Sets the TablesAlreadyAdded to true so this doesn't happen again.
+     TablesAlreadyAdded=true;
+   }
 
-        foreach (string[] rowArray in rows)
-        {
-            dataGridView.Rows.Add(rowArray);
-        }
+   private void button2_Click(object sender, System.EventArgs e)
+   {
+      BindingManagerBase bmGrid;
+      bmGrid = BindingContext[myDataSet, "Customers"];
+      MessageBox.Show("Current BindingManager Position: " + bmGrid.Position);
+   }
 
-        shortMode = false;
-        boringRecipe = true;
-    }
+   private void Grid_MouseUp(object sender, MouseEventArgs e)
+   {
+      // Create a HitTestInfo object using the HitTest method.
 
-    private void AddButton(Button button, string buttonLabel,
-        EventHandler handler)
-    {
-        FlowLayoutPanel1.Controls.Add(button);
-        button.TabIndex = FlowLayoutPanel1.Controls.Count;
-        button.Text = buttonLabel;
-        button.AutoSize = true;
-        button.Click += handler;
-    }
+      // Get the DataGrid by casting sender.
+      DataGrid myGrid = (DataGrid)sender;
+      DataGrid.HitTestInfo myHitInfo = myGrid.HitTest(e.X, e.Y);
+      Console.WriteLine(myHitInfo);
+      Console.WriteLine(myHitInfo.Type);
+      Console.WriteLine(myHitInfo.Row);
+      Console.WriteLine(myHitInfo.Column);
+   }
 
-    private void ResetToDisorder(object sender, System.EventArgs e)
-    {
-        Controls.Remove(dataGridView);
-        dataGridView.Dispose();
-        InitializeDataGridView();
-    }
+   // Create a DataSet with two tables and populate it.
+   private void MakeDataSet()
+   {
+      // Create a DataSet.
+      myDataSet = new DataSet("myDataSet");
+      
+      // Create two DataTables.
+      DataTable tCust = new DataTable("Customers");
+      DataTable tOrders = new DataTable("Orders");
 
-    private void ChangeColumn3Header(object sender,
-        System.EventArgs e)
-    {
-        Toggle(ref shortMode);
-        if (shortMode)
-        { dataGridView.Columns[2].HeaderText = "S"; }
-        else
-        { dataGridView.Columns[2].HeaderText = thirdColumnHeader; }
-    }
+      // Create two columns, and add them to the first table.
+      DataColumn cCustID = new DataColumn("CustID", typeof(int));
+      DataColumn cCustName = new DataColumn("CustName");
+      DataColumn cCurrent = new DataColumn("Current", typeof(bool));
+      tCust.Columns.Add(cCustID);
+      tCust.Columns.Add(cCustName);
+      tCust.Columns.Add(cCurrent);
 
-    private static void Toggle(ref bool toggleThis)
-    {
-        toggleThis = !toggleThis;
-    }
+      // Create three columns, and add them to the second table.
+      DataColumn cID = 
+      new DataColumn("CustID", typeof(int));
+      DataColumn cOrderDate = 
+      new DataColumn("orderDate",typeof(DateTime));
+      DataColumn cOrderAmount = 
+      new DataColumn("OrderAmount", typeof(decimal));
+      tOrders.Columns.Add(cOrderAmount);
+      tOrders.Columns.Add(cID);
+      tOrders.Columns.Add(cOrderDate);
 
-    private void ChangeMeatloafRecipe(object sender,
-        System.EventArgs e)
-    {
-        Toggle(ref boringRecipe);
-        if (boringRecipe)
-        {
-            SetMeatloaf(boringMeatloaf, boringMeatloafRanking);
-        }
-        else
-        {
-            string greatMeatloafRecipe =
-                "1 lb. lean ground beef, " +
-                "1/2 cup bread crumbs, 1/4 cup ketchup," +
-                "1/3 tsp onion powder, " +
-                "1 clove of garlic, 1/2 pack onion soup mix " +
-                " dash of your favorite BBQ Sauce";
-            SetMeatloaf(greatMeatloafRecipe, "***");
-        }
-    }
+      // Add the tables to the DataSet.
+      myDataSet.Tables.Add(tCust);
+      myDataSet.Tables.Add(tOrders);
 
-    private void SetMeatloaf(string recipe, string rating)
-    {
-        dataGridView.Rows[0].Cells[2].Value = recipe;
-        dataGridView.Rows[0].Cells[3].Value = rating;
-    }
-    #endregion
+      // Create a DataRelation, and add it to the DataSet.
+      DataRelation dr = new DataRelation
+      ("custToOrders", cCustID , cID);
+      myDataSet.Relations.Add(dr);
+   
+      /* Populates the tables. For each customer and order, 
+      creates two DataRow variables. */
+      DataRow newRow1;
+      DataRow newRow2;
 
-    #region "demonstration code"
-    private void PostColumnCreation()
-    {
-        AddContextLabel();
-        AddCriteriaLabel();
-        CustomizeCellsInThirdColumn();
-        AddContextMenu();
-        SetDefaultCellInFirstColumn();
-        ToolTips();
+      // Create three customers in the Customers Table.
+      for(int i = 1; i < 4; i++)
+      {
+         newRow1 = tCust.NewRow();
+         newRow1["custID"] = i;
+         // Add the row to the Customers table.
+         tCust.Rows.Add(newRow1);
+      }
+      // Give each customer a distinct name.
+      tCust.Rows[0]["custName"] = "Customer1";
+      tCust.Rows[1]["custName"] = "Customer2";
+      tCust.Rows[2]["custName"] = "Customer3";
 
-        dataGridView.CellMouseEnter +=
-            dataGridView_CellMouseEnter;
-        dataGridView.AutoSizeColumnModeChanged +=
-            dataGridView_AutoSizeColumnModeChanged;
-    }
+      // Give the Current column a value.
+      tCust.Rows[0]["Current"] = true;
+      tCust.Rows[1]["Current"] = true;
+      tCust.Rows[2]["Current"] = false;
 
-    private string criteriaLabel = "Column 3 sizing criteria: ";
-    private void AddCriteriaLabel()
-    {
-        AddLabelToPanelIfNotAlreadyThere(criteriaLabel,
-            criteriaLabel +
-            dataGridView.Columns[2].AutoSizeMode.ToString() +
-            ".");
-    }
-
-    private void AddContextLabel()
-    {
-        string labelName = "label";
-        AddLabelToPanelIfNotAlreadyThere(labelName,
-            "Use shortcut menu to change cell color.");
-    }
-
-    private void AddLabelToPanelIfNotAlreadyThere(
-        string labelName, string labelText)
-    {
-        Label label;
-        if (FlowLayoutPanel1.Controls[labelName] == null)
-        {
-            label = new Label();
-            label.AutoSize = true;
-            label.Name = labelName;
-            label.BackColor = Color.Bisque;
-            FlowLayoutPanel1.Controls.Add(label);
-        }
-        else
-        {
-            label = (Label)FlowLayoutPanel1.Controls[labelName];
-        }
-        label.Text = labelText;
-    }
-
-    private void CustomizeCellsInThirdColumn()
-    {
-        int thirdColumn = 2;
-        DataGridViewColumn column =
-            dataGridView.Columns[thirdColumn];
-        DataGridViewCell cell = new DataGridViewTextBoxCell();
-
-        cell.Style.BackColor = Color.Wheat;
-        column.CellTemplate = cell;
-    }
-
-    ToolStripMenuItem toolStripItem1 = new ToolStripMenuItem();
-
-    private void AddContextMenu()
-    {
-        toolStripItem1.Text = "Redden";
-        toolStripItem1.Click += new EventHandler(toolStripItem1_Click);
-        ContextMenuStrip strip = new ContextMenuStrip();
-        foreach (DataGridViewColumn column in dataGridView.Columns)
-        {
-
-            column.ContextMenuStrip = strip;
-            column.ContextMenuStrip.Items.Add(toolStripItem1);
-        }
-    }
-
-    private DataGridViewCellEventArgs mouseLocation;
-
-    // Change the cell's color.
-    private void toolStripItem1_Click(object sender, EventArgs args)
-    {
-        dataGridView.Rows[mouseLocation.RowIndex]
-            .Cells[mouseLocation.ColumnIndex].Style.BackColor
-            = Color.Red;
-    }
-
-    // Deal with hovering over a cell.
-    private void dataGridView_CellMouseEnter(object sender,
-        DataGridViewCellEventArgs location)
-    {
-        mouseLocation = location;
-    }
-
-    private void SetDefaultCellInFirstColumn()
-    {
-        DataGridViewColumn firstColumn = dataGridView.Columns[0];
-        DataGridViewCellStyle cellStyle =
-            new DataGridViewCellStyle();
-        cellStyle.BackColor = Color.Thistle;
-
-        firstColumn.DefaultCellStyle = cellStyle;
-    }
-
-
-    private void ToolTips()
-    {
-        DataGridViewColumn firstColumn = dataGridView.Columns[0];
-        DataGridViewColumn thirdColumn = dataGridView.Columns[2];
-        firstColumn.ToolTipText =
-            "This column uses a default cell.";
-        thirdColumn.ToolTipText =
-            "This column uses a template cell." +
-            " Style changes to one cell apply to all cells.";
-    }
-
-    private void AddAdditionalButtons()
-    {
-        AddButton(Button4, "Set Minimum Width of Column Two",
-            new EventHandler(Button4_Click));
-        AddButton(Button5, "Set Width of Column One",
-            new EventHandler(Button5_Click));
-        AddButton(Button6, "Autosize Third Column",
-            new EventHandler(Button6_Click));
-        AddButton(Button7, "Add Thick Vertical Edge",
-            new EventHandler(Button7_Click));
-        AddButton(Button8, "Style and Number Columns",
-            new EventHandler(Button8_Click));
-        AddButton(Button9, "Change Column Header Text",
-            new EventHandler(Button9_Click));
-        AddButton(Button10, "Swap First and Last Columns",
-            new EventHandler(Button10_Click));
-    }
-
-    private void AdjustDataGridViewSizing()
-    {
-        dataGridView.ColumnHeadersHeightSizeMode = 
-            DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-    }
-
-    //Set the minimum width.
-    private void Button4_Click(object sender,
-        System.EventArgs e)
-    {
-        DataGridViewColumn column = dataGridView.Columns[1];
-        column.MinimumWidth = 40;
-    }
-
-    // Set the width.
-    private void Button5_Click(object sender, System.EventArgs e)
-    {
-        DataGridViewColumn column = dataGridView.Columns[0];
-        column.Width = 60;
-    }
-
-
-    // AutoSize the third column.
-    private void Button6_Click(object sender,
-        System.EventArgs e)
-    {
-        DataGridViewColumn column = dataGridView.Columns[2];
-        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-    }
-
-    // Set the vertical edge.
-    private void Button7_Click(object sender,
-        System.EventArgs e)
-    {
-        int thirdColumn = 2;
-        DataGridViewColumn column =
-            dataGridView.Columns[thirdColumn];
-        column.DividerWidth = 10;
-    }
-
-    // Style and number columns.
-    private void Button8_Click(object sender,
-        EventArgs args)
-    {
-        DataGridViewCellStyle style = new DataGridViewCellStyle();
-        style.Alignment =
-            DataGridViewContentAlignment.MiddleCenter;
-        style.ForeColor = Color.IndianRed;
-        style.BackColor = Color.Ivory;
-
-        foreach (DataGridViewColumn column in dataGridView.Columns)
-        {
-            column.HeaderCell.Value = column.Index.ToString();
-            column.HeaderCell.Style = style;
-        }
-    }
-
-    // Change the text in the column header.
-    private void Button9_Click(object sender,
-        EventArgs args)
-    {
-        foreach (DataGridViewColumn column in dataGridView.Columns)
-        {
-
-            column.HeaderText = String.Concat("Column ",
-                column.Index.ToString());
-        }
-    }
-
-    // Swap the last column with the first.
-    private void Button10_Click(object sender, EventArgs args)
-    {
-        DataGridViewColumnCollection columnCollection = dataGridView.Columns;
-
-        DataGridViewColumn firstVisibleColumn =
-            columnCollection.GetFirstColumn(DataGridViewElementStates.Visible);
-        DataGridViewColumn lastVisibleColumn =
-            columnCollection.GetLastColumn(
-                DataGridViewElementStates.Visible, DataGridViewElementStates.None);
-
-        int firstColumn_sIndex = firstVisibleColumn.DisplayIndex;
-        firstVisibleColumn.DisplayIndex = lastVisibleColumn.DisplayIndex;
-        lastVisibleColumn.DisplayIndex = firstColumn_sIndex;
-    }
-
-    // Updated the criteria label.
-    private void dataGridView_AutoSizeColumnModeChanged(object sender,
-        DataGridViewAutoSizeColumnModeEventArgs args)
-    {
-        args.Column.DataGridView.Parent.
-            Controls["flowlayoutpanel"].Controls[criteriaLabel].
-            Text = criteriaLabel
-            + args.Column.AutoSizeMode.ToString();
-    }
-    #endregion
-
-    [STAThreadAttribute()]
-    public static void Main()
-    {
-        Application.Run(new DataGridViewColumnDemo());
-    }
-
+      // For each customer, create five rows in the Orders table.
+      for(int i = 1; i < 4; i++)
+      {
+         for(int j = 1; j < 6; j++)
+         {
+            newRow2 = tOrders.NewRow();
+            newRow2["CustID"]= i;
+            newRow2["orderDate"]= new DateTime(2001, i, j * 2);
+            newRow2["OrderAmount"] = i * 10 + j  * .1;
+            // Add the row to the Orders table.
+            tOrders.Rows.Add(newRow2);
+         }
+      }
+   }
 }

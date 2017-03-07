@@ -1,28 +1,25 @@
-    Class MyDesigner
-        Inherits ControlDesigner
-        Private myAdorner As Adorner
+        ' Determine whether the cell should be painted with the 
+        ' custom selection background.
+        If (e.State And DataGridViewElementStates.Selected) = _
+            DataGridViewElementStates.Selected Then
 
+            ' Calculate the bounds of the row.
+            Dim rowBounds As New Rectangle( _
+                Me.dataGridView1.RowHeadersWidth, e.RowBounds.Top, _
+                Me.dataGridView1.Columns.GetColumnsWidth( _
+                DataGridViewElementStates.Visible) - _
+                Me.dataGridView1.HorizontalScrollingOffset + 1, _
+                e.RowBounds.Height)
 
-        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-            If disposing AndAlso (myAdorner IsNot Nothing) Then
-                Dim b As System.Windows.Forms.Design.Behavior.BehaviorService _
-                    = BehaviorService
-                If (b IsNot Nothing) Then
-                    b.Adorners.Remove(myAdorner)
-                End If
-            End If
-
-        End Sub
-
-
-        Public Overrides Sub Initialize(ByVal component As IComponent)
-            MyBase.Initialize(component)
-
-            ' Add the custom set of glyphs using the BehaviorService.  
-            ' Glyphs live on adornders.
-            myAdorner = New Adorner()
-            BehaviorService.Adorners.Add(myAdorner)
-            myAdorner.Glyphs.Add(New MyGlyph(BehaviorService, Control))
-
-        End Sub
-    End Class
+            ' Paint the custom selection background.
+            Dim backbrush As New _
+                System.Drawing.Drawing2D.LinearGradientBrush(rowBounds, _
+                Me.dataGridView1.DefaultCellStyle.SelectionBackColor, _
+                e.InheritedRowStyle.ForeColor, _
+                System.Drawing.Drawing2D.LinearGradientMode.Horizontal)
+            Try
+                e.Graphics.FillRectangle(backbrush, rowBounds)
+            Finally
+                backbrush.Dispose()
+            End Try
+        End If

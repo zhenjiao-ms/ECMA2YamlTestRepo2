@@ -1,10 +1,9 @@
-public void CopyAllMyText()
- {
-    // Determine if any text is selected in the TextBox control.
-    if(textBox1.SelectionLength == 0)
-       // Select all text in the text box.
-       textBox1.SelectAll();
-    
-    // Copy the contents of the control to the Clipboard.
-    textBox1.Copy();
- }
+    void treeView1_MouseDown(object sender, MouseEventArgs e)
+    {
+        TreeViewHitTestInfo info = treeView1.HitTest(e.X, e.Y);
+        TreeNode hitNode;
+        if (info.Node != null) {
+            hitNode = info.Node;
+            MessageBox.Show(hitNode.Level.ToString());
+        }
+    }

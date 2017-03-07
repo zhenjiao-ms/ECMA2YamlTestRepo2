@@ -1,22 +1,19 @@
-      private void DisplayHScroll()
-      {
-         // Make sure no items are displayed partially.
-         listBox1.IntegralHeight = true;
+		public void CreateMyLabel() 
+		{
+         
+			// Create a new label and create a bitmap.
 
-         // Add items that are wide to the ListBox.
-         for (int x = 0; x < 10; x++)
-         {
-            listBox1.Items.Add("Item  " + x.ToString() + " is a very large value that requires scroll bars");
-         }
+			Label label1 = new Label();
+		    Image image1 = Image.FromFile("c:\\MyImage.bmp");
 
-         // Display a horizontal scroll bar.
-         listBox1.HorizontalScrollbar = true;
+			// Set the size of the label to accommodate the bitmap size.
 
-         // Create a Graphics object to use when determining the size of the largest item in the ListBox.
-         Graphics g = listBox1.CreateGraphics();
+			label1.Size = new Size(image1.Width, image1.Height);
 
-         // Determine the size for HorizontalExtent using the MeasureString method using the last item in the list.
-         int hzSize = (int) g.MeasureString(listBox1.Items[listBox1.Items.Count -1].ToString(),listBox1.Font).Width;
-         // Set the HorizontalExtent property.
-         listBox1.HorizontalExtent = hzSize;
-      }
+			// Initialize the label control's Image property.
+
+			label1.Image = image1;
+
+			// ...Code to add the control to the form...
+
+		}

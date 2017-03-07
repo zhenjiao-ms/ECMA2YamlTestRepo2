@@ -20,7 +20,6 @@ class Program
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            return;
         }
 
         // Create a new RSA key.  This key will encrypt a symmetric key,
@@ -33,21 +32,12 @@ class Program
             // Encrypt the "creditcard" element.
             Encrypt(xmlDoc, "creditcard", rsaKey, "rsaKey");
 
-            // Display the encrypted XML to the console.
-            Console.WriteLine("Encrypted XML:");
-            Console.WriteLine();
-            Console.WriteLine(xmlDoc.OuterXml);
-            xmlDoc.Save("test.xml");
+            // Inspect the EncryptedKey element.
+            InspectElement(xmlDoc);
 
             // Decrypt the "creditcard" element.
             Decrypt(xmlDoc, rsaKey, "rsaKey");
-            xmlDoc.Save("test.xml");
 
-            // Display the encrypted XML to the console.
-            Console.WriteLine();
-            Console.WriteLine("Decrypted XML:");
-            Console.WriteLine();
-            Console.WriteLine(xmlDoc.OuterXml);
         }
         catch (Exception e)
         {
@@ -122,6 +112,23 @@ class Program
 
         ek.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncRSA15Url);
 
+        // Save some more information about the key using
+        // the EncryptionProperty element.  In this example,
+        // we will save the value "LibVersion1".  You can save
+        // anything you want here.
+
+        // Create a new "EncryptionProperty" XmlElement object. 
+        XmlElement element =  new XmlDocument().CreateElement("EncryptionProperty", EncryptedXml.XmlEncNamespaceUrl);
+
+        // Set the value of the EncryptionProperty" XmlElement object.
+        element.InnerText = "LibVersion1";
+
+        // Create the EncryptionProperty object using the XmlElement object. 
+        EncryptionProperty encProp = new EncryptionProperty(element);
+
+        // Add the EncryptionProperty object to the EncryptedData object.
+        edElement.AddProperty(encProp);
+
         // Set the KeyInfo element to specify the
         // name of the RSA key.
 
@@ -177,6 +184,45 @@ class Program
         // Decrypt the element.
         exml.DecryptDocument();
 
+    }
+
+    static void InspectElement(XmlDocument Doc)
+    {
+        // Get the EncryptedData element from the XMLDocument object.
+        XmlElement encryptedData = Doc.GetElementsByTagName("EncryptedData")[0] as XmlElement;
+
+        // Create a new EncryptedData object.
+        EncryptedData encData = new EncryptedData();
+
+        // Load the XML from the document to
+        // initialize the EncryptedData object.
+        encData.LoadXml(encryptedData);
+
+        // Display the properties.
+        // Most values are Null by default.
+
+        Console.WriteLine("EncryptedData.CipherData: " + encData.CipherData.GetXml().InnerXml);
+        Console.WriteLine("EncryptedData.Encoding: " + encData.Encoding);
+        Console.WriteLine("EncryptedData.EncryptionMethod: " + encData.EncryptionMethod.GetXml().InnerXml);
+
+        EncryptionPropertyCollection encPropCollection = encData.EncryptionProperties;
+
+        Console.WriteLine("Number of elements in the EncryptionPropertyCollection: " + encPropCollection.Count);
+        //encPropCollection.
+
+        foreach(EncryptionProperty encProp in encPropCollection)
+        {
+                Console.WriteLine("EncryptionProperty.ID: " + encProp.Id);
+                Console.WriteLine("EncryptionProperty.PropertyElement: " + encProp.PropertyElement.InnerXml);
+                Console.WriteLine("EncryptionProperty.Target: " + encProp.Target);
+                 
+        }
+
+    
+
+        Console.WriteLine("EncryptedData.Id: " + encData.Id);
+        Console.WriteLine("EncryptedData.KeyInfo: " + encData.KeyInfo.GetXml().InnerXml);
+        Console.WriteLine("EncryptedData.MimeType: " + encData.MimeType);
     }
 
 }

@@ -1,11 +1,32 @@
-Private Sub button1_Click(sender As Object, e As EventArgs) Handles button1.Click
-   ' If neither TreeNodeCollection is read-only, move the 
-   ' selected node from treeView1 to treeView2. 
-   If Not treeView1.Nodes.IsReadOnly And Not treeView2.Nodes.IsReadOnly Then
-      If (treeView1.SelectedNode IsNot Nothing) Then
-         Dim tn As TreeNode = treeView1.SelectedNode
-         treeView1.Nodes.Remove(tn)
-         treeView2.Nodes.Insert(treeView2.Nodes.Count, tn)
-      End If
-   End If
-End Sub
+Imports System.Drawing
+Imports System.Windows.Forms
+
+Public Class Form1
+    Inherits Form
+    Private tabControl1 As TabControl
+    Private tabPage1 As TabPage
+    Private tabPage2 As TabPage
+
+    Public Sub New()
+        Me.tabControl1 = New TabControl()
+        Me.tabPage1 = New TabPage()
+        Me.tabPage2 = New TabPage()
+
+        ' Sizes the tabs of tabControl1.
+        Me.tabControl1.ItemSize = New Size(90, 50)
+
+        ' Makes the tab width definable. 
+        Me.tabControl1.SizeMode = TabSizeMode.Fixed
+
+        Me.tabControl1.Controls.AddRange(New Control() {tabPage1, tabPage2})
+        Me.tabControl1.Location = New Point(35, 25)
+        Me.tabControl1.Size = New Size(220, 220)
+
+        Me.Size = New Size(300, 300)
+        Me.Controls.Add(tabControl1)
+    End Sub
+
+    Shared Sub Main()
+        Application.Run(New Form1())
+    End Sub
+End Class

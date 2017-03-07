@@ -7,5 +7,4 @@
 
 			Dim icl As IChannelListener = serviceHost.ChannelDispatchers(0).Listener
 			Dim dispatcher As New ChannelDispatcher(icl)
-
-			Dim isManualAddressing As Boolean = dispatcher.ManualAddressing
+			Dim receiveSynchronously As Boolean = dispatcher.ReceiveSynchronously

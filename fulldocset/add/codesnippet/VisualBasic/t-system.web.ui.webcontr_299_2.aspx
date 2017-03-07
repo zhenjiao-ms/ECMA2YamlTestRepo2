@@ -1,80 +1,81 @@
-
-<%@ Page language="VB" autoeventwireup="false" %>
+<%@ Page Language="VB" %>
+<%@ Register Src="~/displayModeMenuVB.ascx" 
+  TagPrefix="uc1" 
+  TagName="DisplayModeMenuVB" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
 
-  Sub CustomerDetailsView_ItemInserting(ByVal sender As Object, _
-    ByVal e As DetailsViewInsertEventArgs) _
-    Handles CustomerDetailsView.ItemInserting
-  
-    ' Use the Values property to retrieve the key field value.
-    Dim keyValue As String = e.Values("CustomerID").ToString()
-
-    ' Insert the record only if the key field is four characters
-    ' long; otherwise, cancel the insert operation.
-    If keyValue.Length = 4 Then
-    
-      ' Change the key field value to upper case before inserting 
-      ' the record in the data source.
-      e.Values("CustomerID") = keyValue.ToUpper()
-      
-      MessageLabel.Text = ""
-    
-    Else
-    
-      MessageLabel.Text = "The key field must have four digits."
-      e.Cancel = True
-    
-    End If
-
+  Protected Sub Page_Load(ByVal sender As Object, _
+    ByVal e As System.EventArgs)
+    Button1.Visible = False
+    TextBox1.Visible = False
+    BulletedList1.DataBind()
   End Sub
 
+  Protected Sub Button1_Click(ByVal sender As Object, _
+    ByVal e As System.EventArgs)
+    BehaviorEditorPart1.Title = Server.HtmlEncode(TextBox1.Text)
+  End Sub
+
+  Protected Sub BehaviorEditorPart1_PreRender(ByVal sender As Object, _
+    ByVal e As System.EventArgs)
+   
+    Button1.Visible = True
+    TextBox1.Visible = True
+    
+  End Sub
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head runat="server">
-    <title>DetailsViewInsertEventHandler Example</title>
+<head runat="server">
+    <title>ASP.NET Example</title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        
-      <h3>DetailsViewInsertEventHandler Example</h3>
-                
-        <asp:detailsview id="CustomerDetailsView"
-          datasourceid="DetailsViewSource"
-          datakeynames="CustomerID"
-          autogenerateinsertbutton="true"  
-          autogeneraterows="true"
-          allowpaging="true"
-          oniteminserting="CustomerDetailsView_ItemInserting" 
-          runat="server">
-               
-          <fieldheaderstyle backcolor="Navy"
-            forecolor="White"/>
-                    
-        </asp:detailsview>
-        
-        <asp:label id="MessageLabel"
-          forecolor="Red"
-          runat="server"/>
-            
-        <!-- This example uses Microsoft SQL Server and connects  -->
-        <!-- to the Northwind sample database. Use an ASP.NET     -->
-        <!-- expression to retrieve the connection string value   -->
-        <!-- from the web.config file.                            -->
-        <asp:sqldatasource id="DetailsViewSource"
-          selectcommand="Select [CustomerID], [CompanyName], [Address], 
-            [City], [PostalCode], [Country] From [Customers]"
-          insertcommand="INSERT INTO [Customers]([CustomerID], 
-            [CompanyName], [Address], [City], [PostalCode], 
-            [Country]) VALUES (@CustomerID, @CompanyName, @Address, 
-            @City, @PostalCode, @Country)"
-          connectionstring=
-          "<%$ ConnectionStrings:NorthWindConnectionString%>" 
-          runat="server"/>
-            
-      </form>
-  </body>
+  <form id="form1" runat="server">
+    <!-- This example uses Microsoft SQL Server and connects    -->
+    <!-- to the Pubs sample database. Use an ASP.NET expression -->
+    <!-- like the one in the following control to retrieve the  -->
+    <!-- connection string value from the Web.config file.      -->
+    <asp:SqlDataSource ID="ds1" runat="server" 
+      connectionString="<%$ ConnectionStrings:PubsConnection %>" 
+      SelectCommand="Select au_id, au_lname, au_fname From Authors"/>
+    <asp:WebPartManager ID="WebPartManager1" runat="server" />
+    <uc1:DisplayModeMenuVB id="menu1" runat="server" />
+    <asp:WebPartZone ID="WebPartZone1" runat="server" Width="150" 
+      style="z-index: 100; left: 10px; position: absolute; top: 90px" >
+      <ZoneTemplate>
+        <asp:Panel ID="panel1" runat="server" ToolTip="Author List WebPart">
+          <asp:Label ID="Label1" runat="server" 
+            Text="Author Names" 
+            Font-Bold="true" 
+            Font-Size="120%"
+            AssociatedControlID="BulletedList1"/>
+          <asp:BulletedList ID="BulletedList1" runat="server" 
+            DataSourceID="ds1" 
+            DataTextField="au_lname" 
+            DataValueField="au_id"/>
+        </asp:Panel>
+      </ZoneTemplate>
+    </asp:WebPartZone>
+    <asp:WebPartZone ID="WebPartZone2" runat="server" Width="150" 
+      style="z-index: 101; left: 170px; position: absolute; top: 90px" />
+    <asp:EditorZone ID="EditorZone1" runat="server" 
+      style="z-index: 102; left: 340px; position: absolute; top: 90px" 
+      Width="170px">
+      <ZoneTemplate>
+        <asp:BehaviorEditorPart ID="BehaviorEditorPart1" runat="server" 
+          Title="My BehaviorEditorPart"  
+          OnPreRender="BehaviorEditorPart1_PreRender" />
+      </ZoneTemplate>
+    </asp:EditorZone>
+    <asp:Button ID="Button1" runat="server" Width="140" 
+      Text="Update EditorPart Title" 
+      style="left: 340px; position: absolute; top: 65px; z-index: 103;" 
+      OnClick="Button1_Click" />
+    <asp:TextBox ID="TextBox1" runat="server" 
+      style="z-index: 105; left: 500px; position: absolute; top: 65px" />
+  </form>
+</body>
 </html>

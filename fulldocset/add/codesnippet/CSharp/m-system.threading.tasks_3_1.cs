@@ -1,29 +1,54 @@
 using System;
-using System.Threading;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 public class Example
 {
    public static void Main()
    {
-      var t = new Task( () => { Console.WriteLine("Task {0} running on thread {1}",
-                                                  Task.CurrentId, Thread.CurrentThread.ManagedThreadId);
-                                for (int ctr = 1; ctr <= 10; ctr++)
-                                   Console.WriteLine("   Iteration {0}", ctr); } 
-                        );
-      t.Start();
-      t.Wait();   
+      string pattern = @"\p{P}*\s+";
+      string[] titles = { "Sister Carrie", "The Financier" };
+      Task<int>[] tasks = new Task<int>[titles.Length];
+
+      for (int ctr = 0; ctr < titles.Length; ctr++) {
+         string s = titles[ctr];
+         tasks[ctr] = new Task<int>( () => {
+                                   // Number of words.
+                                   int nWords = 0;
+                                   // Create filename from title.
+                                   string fn = s + ".txt";
+
+                                   StreamReader sr = new StreamReader(fn);
+                                   string input = sr.ReadToEndAsync().Result;
+                                   sr.Close();
+                                   nWords = Regex.Matches(input, pattern).Count;
+                                   return nWords;
+                                } );
+      }
+      // Ensure files exist before launching tasks.
+      bool allExist = true;
+      foreach (var title in titles) {
+         string fn = title + ".txt";
+         if (! File.Exists(fn)) {
+            allExist = false;
+            Console.WriteLine("Cannot find '{0}'", fn);
+            break;
+         }   
+      }
+      // Launch tasks 
+      if (allExist) {
+         foreach (var t in tasks)
+            t.Start();
+      
+        Task.WaitAll(tasks);
+  
+        Console.WriteLine("Word Counts:\n");
+        for (int ctr = 0; ctr < titles.Length; ctr++)
+           Console.WriteLine("{0}: {1,10:N0} words", titles[ctr], tasks[ctr].Result);
+      }   
    }
 }
-// The example displays output like the following:
-//     Task 1 running on thread 3
-//        Iteration 1
-//        Iteration 2
-//        Iteration 3
-//        Iteration 4
-//        Iteration 5
-//        Iteration 6
-//        Iteration 7
-//        Iteration 8
-//        Iteration 9
-//        Iteration 10
+// The example displays the following output:
+//       Sister Carrie:    159,374 words
+//       The Financier:    196,362 words

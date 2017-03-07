@@ -1,50 +1,92 @@
 
-	// Declare the TreeView control.
-	internal System.Windows.Forms.TreeView TreeView1;
+// The basic Customer class.
+public class Customer : System.Object
+{
+   private string custName = "";
+   protected ArrayList custOrders = new ArrayList();
 
-	// Initialize the TreeView to blend with the form, giving it the 
-	// same color as the form and no border.
-	private void InitializeTreeView()
-	{
+   public Customer(string customername)
+   {
+      this.custName = customername;
+   }
 
-		// Create a new TreeView control and set the location and size.
-		this.TreeView1 = new System.Windows.Forms.TreeView();
-		this.TreeView1.Location = new System.Drawing.Point(72, 48);
-		this.TreeView1.Size = new System.Drawing.Size(200, 200);
+   public string CustomerName
+   {      
+      get{return this.custName;}
+      set{this.custName = value;}
+   }
 
-		// Set the BorderStyle property to none, the BackColor property to  
-		// the form's backcolor, and the Scrollable property to false.  
-		// This allows the TreeView to blend in form.
+   public ArrayList CustomerOrders 
+   {
+      get{return this.custOrders;}
+   }
 
-		this.TreeView1.BorderStyle = BorderStyle.None;
-		this.TreeView1.BackColor = this.BackColor;
-		this.TreeView1.Scrollable = false;
+} // End Customer class 
 
-		// Set the HideSelection property to false to keep the 
-		// selection highlighted when the user leaves the control. 
-		// This helps it blend with form.
-		this.TreeView1.HideSelection = false;
 
-		// Set the ShowRootLines and ShowLines properties to false to 
-		// give the TreeView a list-like appearance.
-		this.TreeView1.ShowRootLines = false;
-		this.TreeView1.ShowLines = false;
+// The basic customer Order class.
+public class Order : System.Object
+{
+   private string ordID = "";
 
-		// Add the nodes.
-		this.TreeView1.Nodes.AddRange(new TreeNode[]
-			{new TreeNode("Features", 
-				new TreeNode[]{
-				new TreeNode("Full Color"), 
-				new TreeNode("Project Wizards"), 
-				new TreeNode("Visual C# and Visual Basic Support")}), 
-				new TreeNode("System Requirements", 
-				new TreeNode[]{
-					new TreeNode("Pentium 133 MHz or faster processor "),
-					new TreeNode("Windows 98 or later"), 
-					new TreeNode("100 MB Disk space")})
-			});
+   public Order(string orderid)
+   {
+      this.ordID = orderid;
+   }
 
-		// Set the tab index and add the TreeView to the form.
-		this.TreeView1.TabIndex = 0;
-		this.Controls.Add(this.TreeView1);
-	}
+   public string OrderID
+   {      
+      get{return this.ordID;}
+      set{this.ordID = value;}
+   }
+
+} // End Order class
+
+// Create a new ArrayList to hold the Customer objects.
+private ArrayList customerArray = new ArrayList(); 
+
+private void FillMyTreeView()
+{
+   // Add customers to the ArrayList of Customer objects.
+   for(int x=0; x<1000; x++)
+   {
+      customerArray.Add(new Customer("Customer" + x.ToString()));
+   }
+
+   // Add orders to each Customer object in the ArrayList.
+   foreach(Customer customer1 in customerArray)
+   {
+      for(int y=0; y<15; y++)
+      {
+         customer1.CustomerOrders.Add(new Order("Order" + y.ToString()));    
+      }
+   }
+
+   // Display a wait cursor while the TreeNodes are being created.
+   Cursor.Current = new Cursor("MyWait.cur");
+        
+   // Suppress repainting the TreeView until all the objects have been created.
+   treeView1.BeginUpdate();
+
+   // Clear the TreeView each time the method is called.
+   treeView1.Nodes.Clear();
+
+   // Add a root TreeNode for each Customer object in the ArrayList.
+   foreach(Customer customer2 in customerArray)
+   {
+      treeView1.Nodes.Add(new TreeNode(customer2.CustomerName));
+          
+      // Add a child treenode for each Order object in the current Customer object.
+      foreach(Order order1 in customer2.CustomerOrders)
+      {
+         treeView1.Nodes[customerArray.IndexOf(customer2)].Nodes.Add(
+           new TreeNode(customer2.CustomerName + "." + order1.OrderID));
+      }
+   }
+
+   // Reset the cursor to the default for all controls.
+   Cursor.Current = Cursors.Default;
+
+   // Begin repainting the TreeView.
+   treeView1.EndUpdate();
+}

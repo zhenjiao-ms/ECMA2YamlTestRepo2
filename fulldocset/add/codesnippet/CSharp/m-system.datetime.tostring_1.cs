@@ -2,29 +2,33 @@ using System;
 using System.Globalization;
 using System.Threading;
 
-public class DateToStringExample
+public class Example
 {
    public static void Main()
    {
-      CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
-      DateTime exampleDate = new DateTime(2008, 5, 1, 18, 32, 6);
+      DateTime date1 = new DateTime(550, 1, 1);
+      CultureInfo dft;
+      CultureInfo arSY = new CultureInfo("ar-SY");
+      arSY.DateTimeFormat.Calendar = new HijriCalendar();
       
-      // Display the date using the current (en-US) culture.
-      Console.WriteLine(exampleDate.ToString());
-
-      // Change the current culture to fr-FR and display the date.
-      Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("fr-FR");
-      Console.WriteLine(exampleDate.ToString());
-
-      // Change the current culture to ja-JP and display the date.
-      Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("ja-JP");
-      Console.WriteLine(exampleDate.ToString());
+      // Change current culture to ar-SY.
+      dft = Thread.CurrentThread.CurrentCulture;
+      Thread.CurrentThread.CurrentCulture = arSY;
       
-      // Restore the original culture
-      Thread.CurrentThread.CurrentCulture = currentCulture;
+      // Display the date using the current culture's calendar.            
+      try {
+         Console.WriteLine(date1.ToString());
+      }
+      catch (ArgumentOutOfRangeException) {
+         Console.WriteLine("{0} is earlier than {1} or later than {2}", 
+                           date1.ToString("d", CultureInfo.InvariantCulture), 
+                           arSY.DateTimeFormat.Calendar.MinSupportedDateTime.ToString("d", CultureInfo.InvariantCulture),  
+                           arSY.DateTimeFormat.Calendar.MaxSupportedDateTime.ToString("d", CultureInfo.InvariantCulture)); 
+      }
+      
+      // Restore the default culture.
+      Thread.CurrentThread.CurrentCulture = dft;
    }
 }
-// The example displays the following output to the console:
-//       5/1/2008 6:32:06 PM
-//       01/05/2008 18:32:06
-//       2008/05/01 18:32:06
+// The example displays the following output:
+//    01/01/0550 is earlier than 07/18/0622 or later than 12/31/9999

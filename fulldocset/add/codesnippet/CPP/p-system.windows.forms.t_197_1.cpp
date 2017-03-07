@@ -1,25 +1,34 @@
-   void AddToolBar()
+   //Declare a new TrackBar object.
+internal:
+   System::Windows::Forms::TrackBar^ TrackBar1;
+
+   // Initalize the TrackBar and add it to the form.
+private:
+   void InitializeTrackBar()
    {
+      this->TrackBar1 = gcnew System::Windows::Forms::TrackBar;
+      TrackBar1->Location = System::Drawing::Point( 75, 30 );
       
-      // Add a toolbar and set some of its properties.
-      toolBar1 = gcnew ToolBar;
-      toolBar1->Appearance = System::Windows::Forms::ToolBarAppearance::Flat;
-      toolBar1->BorderStyle = System::Windows::Forms::BorderStyle::None;
-      toolBar1->Buttons->Add( this->toolBarButton1 );
-      toolBar1->ButtonSize = System::Drawing::Size( 24, 24 );
-      toolBar1->Divider = true;
-      toolBar1->DropDownArrows = true;
-      toolBar1->ImageList = this->imageList1;
-      toolBar1->ShowToolTips = true;
-      toolBar1->Size = System::Drawing::Size( 292, 25 );
-      toolBar1->TabIndex = 0;
-      toolBar1->TextAlign = System::Windows::Forms::ToolBarTextAlign::Right;
-      toolBar1->Wrappable = false;
+      // Set the TickStyle property so there are ticks on both sides
+      // of the TrackBar.
+      TrackBar1->TickStyle = TickStyle::Both;
       
-      // Add handlers for the ButtonClick and ButtonDropDown events.
-      toolBar1->ButtonDropDown += gcnew ToolBarButtonClickEventHandler( this, &MyToolBar::toolBar1_ButtonDropDown );
-      toolBar1->ButtonClick += gcnew ToolBarButtonClickEventHandler( this, &MyToolBar::toolBar1_ButtonClicked );
+      // Set the minimum and maximum number of ticks.
+      TrackBar1->Minimum = 10;
+      TrackBar1->Maximum = 100;
       
-      // Add the toolbar to the form.
-      this->Controls->Add( toolBar1 );
+      // Set the tick frequency to one tick every ten units.
+      TrackBar1->TickFrequency = 10;
+      
+      // Associate the event-handling method with the 
+      // ValueChanged event.
+      TrackBar1->ValueChanged += gcnew System::EventHandler( this, &Form1::TrackBar1_ValueChanged );
+      this->Controls->Add( this->TrackBar1 );
+   }
+
+   // Handle the TrackBar.ValueChanged event by calculating a value for
+   // TextBox1 based on the TrackBar value.  
+   void TrackBar1_ValueChanged( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      TextBox1->Text = (System::Math::Round( TrackBar1->Value / 10.0 )).ToString();
    }

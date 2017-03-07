@@ -6,80 +6,58 @@
 
 string[] rolesArray;
 
-public void Page_Load(object sender, EventArgs args)
+public void Page_Load()
 {
   if (!IsPostBack)
   {
     // Bind roles to GridView.
 
-    rolesArray = Roles.GetAllRoles();
-    RolesGrid.DataSource = rolesArray;
-    RolesGrid.DataBind();
-  }
-}
-
-public void CreateRole_OnClick(object sender, EventArgs args)
-{
-  string createRole = RoleTextBox.Text;
-
-  try
-  {
-    if (Roles.RoleExists(createRole))
+    try
     {
-      Msg.Text = "Role '" + Server.HtmlEncode(createRole) + "' already exists. Please specify a different role name.";
+      rolesArray = Roles.GetRolesForUser();
+    }
+    catch (HttpException e)
+    {
+      Msg.Text = "There is no current logged on user. Role information cannot be retrieved.";
       return;
     }
 
-    Roles.CreateRole(createRole);
-
-    Msg.Text = "Role '" + Server.HtmlEncode(createRole) + "' created.";
-
-    // Re-bind roles to GridView.
-
-    rolesArray = Roles.GetAllRoles();
-    RolesGrid.DataSource = rolesArray;
-    RolesGrid.DataBind();
+    UserRolesGrid.Columns[0].HeaderText = "Roles for " + User.Identity.Name;
+    UserRolesGrid.DataSource = rolesArray;
+    UserRolesGrid.DataBind();
   }
-  catch (Exception e)
-  {
-    Msg.Text = "Role '" + Server.HtmlEncode(createRole) + "' <u>not</u> created.";
-    Response.Write(e.ToString());
-  }
-
 }
 
 </script>
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-<title>Sample: Create Role</title>
+<title>Sample: View User Roles</title>
 </head>
 <body>
 
 <form runat="server" id="PageForm">
-  <h3>Create a Role</h3>
+
+  <h3>View User Roles</h3>
 
   <asp:Label id="Msg" ForeColor="maroon" runat="server" /><br />
 
-  Role name: 
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="top"><asp:GridView runat="server" CellPadding="4" id="UserRolesGrid" 
+                                     AutoGenerateColumns="false" Gridlines="None" 
+                                     CellSpacing="0" >
+                         <HeaderStyle BackColor="navy" ForeColor="white" />
+                         <Columns>
+                           <asp:TemplateField HeaderText="Roles" >
+                             <ItemTemplate>
+                               <%# Container.DataItem.ToString() %>
+                             </ItemTemplate>
+                           </asp:TemplateField>
+                         </Columns>
+                       </asp:GridView></td>
+    </tr>
+  </table>
 
-  <asp:TextBox id="RoleTextBox" runat="server" />
-
-  <asp:Button Text="Create Role" id="CreateRoleButton"
-              runat="server" OnClick="CreateRole_OnClick" />
-
-  <br />
-
-  <asp:GridView runat="server" CellPadding="2" id="RolesGrid" 
-                Gridlines="Both" CellSpacing="2" AutoGenerateColumns="false" >
-    <HeaderStyle BackColor="navy" ForeColor="white" />
-    <Columns>
-      <asp:TemplateField HeaderText="Roles" >
-        <ItemTemplate>
-          <%# Container.DataItem.ToString() %>
-        </ItemTemplate>
-      </asp:TemplateField>
-    </Columns>
-   </asp:GridView>
 </form>
 
 </body>

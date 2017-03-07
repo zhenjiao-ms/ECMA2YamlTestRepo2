@@ -1,23 +1,16 @@
-   public ref class CDesigner: public ComponentDesigner
-   {
-   public:
-    [PermissionSetAttribute(SecurityAction::Demand, Name="FullTrust")]
-      virtual void Initialize( IComponent^ comp ) override
+      // Gets the attributes for the property.
+      AttributeCollection^ attributes = TypeDescriptor::GetProperties( this )[ "MyProperty" ]->Attributes;
+
+      // Checks to see if the value of the DesignerSerializationVisibilityAttribute is set to Content.
+      if ( attributes[ DesignerSerializationVisibilityAttribute::typeid ]->Equals( DesignerSerializationVisibilityAttribute::Content ) )
       {
-         ComponentDesigner::Initialize( comp );
-         IMenuCommandService^ mcs = static_cast<IMenuCommandService^>(comp->Site->GetService( IMenuCommandService::typeid ));
-		 MenuCommand^ mc = gcnew MenuCommand( gcnew EventHandler( this, &CDesigner::OnF1Help ),StandardCommands::F1Help );
-         mc->Enabled = true;
-         mc->Visible = true;
-         mc->Supported = true;
-         mcs->AddCommand( mc );
-         System::Windows::Forms::MessageBox::Show( "Initialize() has been invoked." );
+         // Insert code here.
       }
 
-   private:
-      void OnF1Help( Object^ /*sender*/, EventArgs^ /*e*/ )
+      
+      // This is another way to see whether the property is marked as serializing content.
+      DesignerSerializationVisibilityAttribute^ myAttribute = dynamic_cast<DesignerSerializationVisibilityAttribute^>(attributes[ DesignerSerializationVisibilityAttribute::typeid ]);
+      if ( myAttribute->Visibility == DesignerSerializationVisibility::Content )
       {
-         System::Windows::Forms::MessageBox::Show( "F1Help has been invoked." );
+         // Insert code here.
       }
-   };
-}

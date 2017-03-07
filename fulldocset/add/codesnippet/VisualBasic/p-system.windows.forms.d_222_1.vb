@@ -1,22 +1,34 @@
-   Private Sub AddDataGridTableStyle()
-      ' Create a new DataGridTableStyle and set MappingName.
-      Dim myGridStyle As DataGridTableStyle = _
-      new DataGridTableStyle()
-      myGridStyle.MappingName = "Customers"
+    ' Draws column headers.
+    Private Sub listView1_DrawColumnHeader(ByVal sender As Object, _
+        ByVal e As DrawListViewColumnHeaderEventArgs) _
+        Handles listView1.DrawColumnHeader
 
-      ' Add two DataGridColumnStyle objects.
-      Dim colStyle1 As DataGridColumnStyle = _
-      new DataGridTextBoxColumn()
-      colStyle1.MappingName = "firstName"
-      
-      Dim colStyle2 As DataGridColumnStyle = _
-      new DataGridBoolColumn()
-      colStyle2.MappingName = "Current"
+        Dim sf As New StringFormat()
+        Try
 
-      ' Add column styles to table style.
-      myGridStyle.GridColumnStyles.Add(colStyle1)
-      myGridStyle.GridColumnStyles.Add(colStyle2)   
+            ' Store the column text alignment, letting it default
+            ' to Left if it has not been set to Center or Right.
+            Select Case e.Header.TextAlign
+                Case HorizontalAlignment.Center
+                    sf.Alignment = StringAlignment.Center
+                Case HorizontalAlignment.Right
+                    sf.Alignment = StringAlignment.Far
+            End Select
 
-      ' Add the grid style to the GridStylesCollection.
-      myDataGrid.TableStyles.Add(myGridStyle)
-   End Sub
+            ' Draw the standard header background.
+            e.DrawBackground()
+
+            ' Draw the header text.
+            Dim headerFont As New Font("Helvetica", 10, FontStyle.Bold)
+            Try
+                e.Graphics.DrawString(e.Header.Text, headerFont, _
+                    Brushes.Black, e.Bounds, sf)
+            Finally
+                headerFont.Dispose()
+            End Try
+
+        Finally
+            sf.Dispose()
+        End Try
+
+    End Sub

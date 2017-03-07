@@ -1,12 +1,13 @@
-Private Sub button3_Click(sender As Object, _
-  e As System.EventArgs) Handles button3.Click
-   Dim lastNode as TreeNode
-   lastNode = treeView1.Nodes(treeView1.Nodes.Count - 1). _
-     Nodes(treeView1.Nodes(treeView1.Nodes.Count - 1).Nodes.Count - 1)
+Private Sub TabControl1_Selected(sender as Object, e as TabControlEventArgs) _ 
+     Handles TabControl1.Selected
 
-   If Not lastNode.IsVisible Then
-      lastNode.EnsureVisible()
-      MessageBox.Show(lastNode.Text & _
-        " tree node is visible.")
-   End If
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "TabPage", e.TabPage)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "TabPageIndex", e.TabPageIndex)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Action", e.Action)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"Selected Event")
+
 End Sub

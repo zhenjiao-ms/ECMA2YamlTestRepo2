@@ -1,27 +1,43 @@
-      ' This is an example of some common ToolStrip property settings.
-      ' 
-      toolStrip1.AllowDrop = False
-      toolStrip1.AllowItemReorder = True
-      toolStrip1.AllowMerge = False
-      toolStrip1.Anchor = CType(System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right, System.Windows.Forms.AnchorStyles)
-      toolStrip1.AutoSize = False
-      toolStrip1.CanOverflow = False
-      toolStrip1.Cursor = Cursors.Cross
-      toolStrip1.Dock = System.Windows.Forms.DockStyle.None
-      toolStrip1.DefaultDropDownDirection = ToolStripDropDownDirection.BelowRight
-      toolStrip1.GripMargin = New System.Windows.Forms.Padding(3)
-      toolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-      toolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {toolStripButton1})
-      toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
-      toolStrip1.Location = New System.Drawing.Point(0, 0)
-      toolStrip1.Margin = New System.Windows.Forms.Padding(1)
-      toolStrip1.Name = "toolStrip1"
-      toolStrip1.Padding = New System.Windows.Forms.Padding(0, 0, 2, 0)
-      toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-      toolStrip1.ShowItemToolTips = False
-      toolStrip1.Size = New System.Drawing.Size(109, 273)
-      toolStrip1.Stretch = True
-      toolStrip1.TabIndex = 0
-      toolStrip1.TabStop = True
-      toolStrip1.Text = "toolStrip1"
-      toolStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90
+    Private Sub Menu_Copy(sender As System.Object, e As System.EventArgs)
+        ' Ensure that text is selected in the text box.   
+        If textBox1.SelectionLength > 0 Then
+            ' Copy the selected text to the Clipboard.
+            textBox1.Copy()
+        End If
+    End Sub
+     
+    Private Sub Menu_Cut(sender As System.Object, e As System.EventArgs)
+        ' Ensure that text is currently selected in the text box.   
+        If textBox1.SelectedText <> "" Then
+            ' Cut the selected text in the control and paste it into the Clipboard.
+            textBox1.Cut()
+        End If
+    End Sub
+     
+    Private Sub Menu_Paste(sender As System.Object, e As System.EventArgs)
+        ' Determine if there is any text in the Clipboard to paste into the text box.
+        If Clipboard.GetDataObject().GetDataPresent(DataFormats.Text) = True Then
+            ' Determine if any text is selected in the text box.
+            If textBox1.SelectionLength > 0 Then
+                ' Ask user if they want to paste over currently selected text.
+                If MessageBox.Show("Do you want to paste over current selection?", _
+                    "Cut Example", MessageBoxButtons.YesNo) = DialogResult.No Then
+                    ' Move selection to the point after the current selection and paste.
+                    textBox1.SelectionStart = textBox1.SelectionStart + _
+                        textBox1.SelectionLength
+                End If
+            End If 
+            ' Paste current text in Clipboard into text box.
+            textBox1.Paste()
+        End If
+    End Sub
+    
+    Private Sub Menu_Undo(sender As System.Object, e As System.EventArgs)
+        ' Determine if last operation can be undone in text box.   
+        If textBox1.CanUndo = True Then
+            ' Undo the last operation.
+            textBox1.Undo()
+            ' Clear the undo buffer to prevent last action from being redone.
+            textBox1.ClearUndo()
+        End If
+    End Sub

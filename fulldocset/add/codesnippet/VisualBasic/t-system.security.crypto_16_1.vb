@@ -1,75 +1,116 @@
+'
+' This example signs a file specified by a URI 
+' using a detached signature. It then verifies  
+' the signed XML.
+'
 Imports System
 Imports System.Security.Cryptography
+Imports System.Security.Cryptography.Xml
+Imports System.Text
+Imports System.Xml
 
-Namespace Contoso
-    Public Class ContosoDeformatter
-        Inherits AsymmetricKeyExchangeDeformatter
 
-        Private rsaKey As RSA
+Class XMLDSIGDetached
+   
+  
+   <STAThread()>  _
+   Overloads Shared Sub Main(args() As String)
+      ' The URI to sign.
+      Dim resourceToSign As String = "http://www.microsoft.com"
+      
+      ' The name of the file to which to save the XML signature.
+      Dim XmlFileName As String = "xmldsig.xml"
+      
+      Try
+         
+         ' Generate a DSA signing key.
+         Dim DSAKey As New DSACryptoServiceProvider()
+         
+         Console.WriteLine("Signing: {0}", resourceToSign)
+         
+         ' Sign the detached resourceand save the signature in an XML file.
+         SignDetachedResource(resourceToSign, XmlFileName, DSAKey)
+         
+         Console.WriteLine("XML signature was succesfully computed and saved to {0}.", XmlFileName)
+         
+         ' Verify the signature of the signed XML.
+         Console.WriteLine("Verifying signature...")
+         
+         'Verify the XML signature in the XML file.
+         Dim result As Boolean = VerifyDetachedSignature(XmlFileName)
+         
+         ' Display the results of the signature verification to 
+         ' the console.
+         If result Then
+            Console.WriteLine("The XML signature is valid.")
+         Else
+            Console.WriteLine("The XML signature is not valid.")
+         End If
+      Catch e As CryptographicException
+         Console.WriteLine(e.Message)
+      End Try 
+   End Sub 
+   
+   
+   
+   ' Sign an XML file and save the signature in a new file.
+   Public Shared Sub SignDetachedResource(URIString As String, XmlSigFileName As String, DSAKey As DSA)
+      ' Create a SignedXml object.
+      Dim signedXml As New SignedXml()
+      
+      ' Assign the DSA key to the SignedXml object.
+      signedXml.SigningKey = DSAKey
+      
+      ' Create a reference to be signed.
+      Dim reference As New Reference()
+      
+      ' Add the passed URI to the reference object.
+      reference.Uri = URIString
+      
+      ' Add the reference to the SignedXml object.
+      signedXml.AddReference(reference)
+      
+      ' Add a DSAKeyValue to the KeyInfo (optional; helps recipient find key to validate).
+      Dim keyInfo As New KeyInfo()
+      keyInfo.AddClause(New DSAKeyValue(CType(DSAKey, DSA)))
+      signedXml.KeyInfo = keyInfo
+      
+      ' Compute the signature.
+      signedXml.ComputeSignature()
+      
+      ' Get the XML representation of the signature and save
+      ' it to an XmlElement object.
+      Dim xmlDigitalSignature As XmlElement = signedXml.GetXml()
+      
+      ' Save the signed XML document to a file specified
+      ' using the passed string.
+      Dim xmltw As New XmlTextWriter(XmlSigFileName, New UTF8Encoding(False))
+      xmlDigitalSignature.WriteTo(xmltw)
+      xmltw.Close()
+   End Sub 
+   
 
-        ' Default constructor.
-        Public Sub New()
+   ' Verify the signature of an XML file and return the result.
+   Public Shared Function VerifyDetachedSignature(XmlSigFileName As String) As [Boolean]
+      ' Create a new XML document.
+      Dim xmlDocument As New XmlDocument()
+      
+      ' Load the passed XML file into the document.
+      xmlDocument.Load(XmlSigFileName)
+      
+      ' Create a new SignedXMl object.
+      Dim signedXml As New SignedXml()
+      
+      ' Find the "Signature" node and create a new
+      ' XmlNodeList object.
+      Dim nodeList As XmlNodeList = xmlDocument.GetElementsByTagName("Signature")
+      
+      ' Load the signature node.
+      signedXml.LoadXml(CType(nodeList(0), XmlElement))
+      
+      ' Check the signature and return the result.
+      Return signedXml.CheckSignature()
+   End Function 
 
-        End Sub
 
-        ' Constructor with the public key to use for encryption.
-        Public Sub New(ByVal key As AsymmetricAlgorithm)
-            SetKey(key)
-        End Sub
-
-        ' Set the public key for encyption operations.
-        Public Overrides Sub SetKey(ByVal key As AsymmetricAlgorithm)
-            If (Not key Is Nothing) Then
-                rsaKey = CType(key, RSA)
-            Else
-                Throw New ArgumentNullException("key")
-            End If
-        End Sub
-
-        ' Disallow access to the parameters of the formatter.
-        Public Overrides ReadOnly Property Parameters() As String
-            Get
-                Return Nothing
-            End Get
-            Set(ByVal Value As String)
-
-            End Set
-        End Property
-
-        ' Create the encrypted key exchange data from the specified input
-        ' data. This method uses the RSACryptoServiceProvider only. To
-        ' support additional providers or provide custom decryption logic,
-        ' add logic to this member.
-        Public Overrides Function DecryptKeyExchange(
-            ByVal rgbData() As Byte) As Byte()
-
-            Dim decryptedBytes() As Byte
-
-            If (Not rsaKey Is Nothing) Then
-                If (TypeOf (rsaKey) Is RSACryptoServiceProvider) Then
-                    Dim rsaProvider As RSACryptoServiceProvider
-                    rsaProvider = CType(rsaKey, RSACryptoServiceProvider)
-
-                    decryptedBytes = rsaProvider.Decrypt(rgbData, True)
-                End If
-
-                ' Add custom decryption logic here.
-
-            Else
-                Throw New CryptographicUnexpectedOperationException(
-                    "Cryptography_MissingKey")
-            End If
-
-            Return decryptedBytes
-        End Function
-
-    End Class
-End Namespace
-'
-' This code example produces the following output:
-'
-' Data to encrypt : Sample Contoso encryption application.
-' Encrypted data: Kh34dfg-(*&834d+3
-' Data decrypted : Sample Contoso encryption application.
-' 
-' This sample completed successfully; press Exit to continue.
+End Class

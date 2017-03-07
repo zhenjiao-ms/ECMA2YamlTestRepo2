@@ -2,26 +2,45 @@ Imports System
 Imports System.Drawing
 Imports System.Windows.Forms
 
-    Public Class Form1
-        Inherits System.Windows.Forms.Form
+Namespace CustomCursor
+   
+   Public Class Form1
+      Inherits System.Windows.Forms.Form
+      
+      <System.STAThread()> _
+      Public Shared Sub Main()
+         System.Windows.Forms.Application.Run(New Form1())
+      End Sub 'Main
 
-        Private button1 As System.Windows.Forms.Button = New Button
-        Private button2 As System.Windows.Forms.Button = New Button
+      Public Sub New()
 
-        <System.STAThreadAttribute()>  _
-        Public Shared Sub Main()
-            System.Windows.Forms.Application.Run(New Form1)
-        End Sub
+         Me.ClientSize = New System.Drawing.Size(292, 266)
+         Me.Text = "Cursor Example"
+         
+        ' The following generates a cursor from an embedded resource.
+         
+        'To add a custom cursor, create a bitmap
+        '       1. Add a new cursor file to your project: 
+        '               Project->Add New Item->General->Cursor File
 
-        Public Sub New()
-            Me.button2.Location = New Point(0, button1.Height + 10)
-            AddHandler Me.button2.Click, AddressOf Me.button2_Click
-            Me.Controls.Add(Me.button1)
-            Me.Controls.Add(Me.button2)
-        End Sub
+        '--- To make the custom cursor an embedded resource  ---
 
-        Private Sub button2_Click(sender As Object, e As System.EventArgs)
-            ' Draws a flat button on button1.
-            ControlPaint.DrawButton(System.Drawing.Graphics.FromHwnd(button1.Handle), 0, 0, button1.Width, button1.Height, ButtonState.Flat)
-        End Sub 'button2_Click
-End Class
+        'In Visual Studio:
+        '       1. Select the cursor file in the Solution Explorer
+        '       2. Choose View->Properties.
+        '       3. In the properties window switch "Build Action" to "Embedded Resources"
+
+        'On the command line:
+        '       Add the following flag:
+        '           /res:CursorFileName.cur,Namespace.CursorFileName.cur
+
+        '       Where "Namespace" is the namespace in which you want to use the cursor
+        '       and   "CursorFileName.cur" is the cursor filename.
+
+        'The following line uses the namespace from the passed-in type
+        'and looks for CustomCursor.MyCursor.cur in the assemblies manifest.
+        'NOTE: The cursor name is acase sensitive.
+        Me.Cursor = New Cursor(Me.GetType(), "MyCursor.cur")
+      End Sub 'New       
+   End Class 'Form1
+End Namespace 'CustomCursor

@@ -1,13 +1,11 @@
-      private void listBox1_SelectedIndexChanged(object sender, System.EventArgs e)
-      {
-         // Get the currently selected item in the ListBox.
-         string curItem = listBox1.SelectedItem.ToString();
+private void Control1_Layout(Object sender, LayoutEventArgs e) {
 
-         // Find the string in ListBox2.
-         int index = listBox2.FindString(curItem);
-         // If the item was not found in ListBox 2 display a message box, otherwise select it in ListBox2.
-         if(index == -1)
-            MessageBox.Show("Item is not available in ListBox2");
-         else
-            listBox2.SetSelected(index,true);
-      }
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "AffectedComponent", e.AffectedComponent );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "AffectedControl", e.AffectedControl );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "AffectedProperty", e.AffectedProperty );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "Layout Event" );
+}

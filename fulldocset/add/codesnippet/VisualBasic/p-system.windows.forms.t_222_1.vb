@@ -1,44 +1,23 @@
-Public Class Customer
-   Public CustomerOrders As ArrayList
-   Public CustomerName As String
-   Public Sub New(myName As String)
-      CustomerName = myName
-      CustomerOrders = New ArrayList()
-   End Sub 'New
-End Class 'Customer
+Private Sub AddToolBar()
+   ' Add a toolbar and set some of its properties.
+   toolBar1 = New ToolBar()
+   toolBar1.Appearance = System.Windows.Forms.ToolBarAppearance.Flat
+   toolBar1.BorderStyle = System.Windows.Forms.BorderStyle.None
+   toolBar1.Buttons.Add(Me.toolBarButton1)
+   toolBar1.ButtonSize = New System.Drawing.Size(24, 24)
+   toolBar1.Divider = True
+   toolBar1.DropDownArrows = True
+   toolBar1.ImageList = Me.imageList1
+   toolBar1.ShowToolTips = True
+   toolBar1.Size = New System.Drawing.Size(292, 25)
+   toolBar1.TabIndex = 0
+   toolBar1.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right
+   toolBar1.Wrappable = False
 
-Public Class Order
-   Public OrderID As String
-   Public Sub New(myOrderID As String)
-      Me.OrderID = myOrderID
-   End Sub 'New
-End Class 'Order
+   ' Add handlers for the ButtonClick and ButtonDropDown events.
+   AddHandler toolBar1.ButtonDropDown, AddressOf toolBar1_ButtonDropDown
+   AddHandler toolBar1.ButtonClick, AddressOf toolBar1_ButtonClicked
 
-Public Sub AddRootNodes()
-   ' Add a root node to assign the customer nodes to.
-   Dim rootNode As TreeNode
-   rootNode = New TreeNode()
-   rootNode.Text = "CustomerList"
-   ' Add a main root treenode.
-   myTreeView.Nodes.Add(rootNode)
-
-   ' Add a root treenode for each Customer object in the ArrayList.
-   Dim myCustomer As Customer
-   For Each myCustomer In customerArray
-      ' Add a child treenode for each Order object.
-      Dim i As Integer = 0
-      Dim myTreeNodeArray(4) As TreeNode
-      Dim myOrder As Order
-      For Each myOrder In  myCustomer.CustomerOrders
-         myTreeNodeArray(i) = New TreeNode(myOrder.OrderID)
-         i += 1
-      Next myOrder
-      Dim customerNode As New TreeNode(myCustomer.CustomerName, _
-        myTreeNodeArray)
-      ' Display the customer names with and Orange font.
-      customerNode.ForeColor = Color.Orange
-      ' Store the Customer object in the Tag property of the TreeNode.
-      customerNode.Tag = myCustomer
-      myTreeView.Nodes(0).Nodes.Add(customerNode)
-   Next myCustomer
+   ' Add the toolbar to the form.
+   Me.Controls.Add(toolBar1)
 End Sub

@@ -1,17 +1,9 @@
-    public static int Main() {
-        // Creates a new instance of MyClass.
-        MyClass myNewClass = new MyClass();
+    // Gets the attributes for the property.
+     AttributeCollection attributes = 
+        TypeDescriptor.GetProperties(this)["MyProperty"].Attributes;
      
-        // Gets the attributes for the instance.
-        AttributeCollection attributes = TypeDescriptor.GetAttributes(myNewClass);
-     
-        /* Prints the name of the type converter by retrieving the 
-         * TypeConverterAttribute from the AttributeCollection. */
-        TypeConverterAttribute myAttribute = 
-            (TypeConverterAttribute)attributes[typeof(TypeConverterAttribute)];
-        
-        Console.WriteLine("The type conveter for this class is: " + 
-            myAttribute.ConverterTypeName);
-     
-        return 0;
-     }
+     /* Prints the default value by retrieving the DefaultValueAttribute 
+      * from the AttributeCollection. */
+     DefaultValueAttribute myAttribute = 
+        (DefaultValueAttribute)attributes[typeof(DefaultValueAttribute)];
+     Console.WriteLine("The default value is: " + myAttribute.Value.ToString());

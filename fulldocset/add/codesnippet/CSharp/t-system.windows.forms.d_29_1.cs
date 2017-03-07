@@ -1,5 +1,5 @@
-    private void SizeThirdRow(Object sender, EventArgs e)
+    private void dataGridView1_EditingControlShowing(object sender, 
+        DataGridViewEditingControlShowingEventArgs e)
     {
-        dataGridView1.AutoResizeRow(
-            2, DataGridViewAutoSizeRowMode.AllCellsExceptHeader);
+        e.CellStyle.BackColor = Color.Aquamarine;
     }

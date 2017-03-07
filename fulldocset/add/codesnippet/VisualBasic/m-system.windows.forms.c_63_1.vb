@@ -1,28 +1,19 @@
-    ' This example uses the DoubleClick event of a ListBox to load text files  
-    ' listed in the ListBox into a TextBox control. This example
-    ' assumes that the ListBox, named listBox1, contains a list of valid file 
-    ' names with path and that this event handler method
-    ' is connected to the DoublClick event of a ListBox control named listBox1.
-    ' This example requires code access permission to access files.
-    Private Sub listBox1_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles listBox1.DoubleClick
-        ' Get the name of the file to open from the ListBox.
-        Dim file As [String] = listBox1.SelectedItem.ToString()
+Protected Overrides Sub OnTextChanged(e As System.EventArgs)
+   Try
+      ' Convert the text to a Double and determine
+      ' if it is a negative number.
+      If Double.Parse(Me.Text) < 0 Then
+         ' If the number is negative, display it in Red.
+         Me.ForeColor = Color.Red
+      Else
+         ' If the number is not negative, display it in Black.
+         Me.ForeColor = Color.Black
+      End If
+   Catch
+      ' If there is an error, display the
+      ' text using the system colors.
+      Me.ForeColor = SystemColors.ControlText
+   End Try
 
-        Try
-            ' Determine if the file exists before loading.
-            If System.IO.File.Exists(file) Then
-                ' Open the file and use a TextReader to read the contents into the TextBox.
-                Dim myFile As New System.IO.FileInfo(listBox1.SelectedItem.ToString())
-                Dim myData As System.IO.TextReader = myFile.OpenText()
-
-                textBox1.Text = myData.ReadToEnd()
-                myData.Close()
-            End If
-            ' Exception is thrown by the OpenText method of the FileInfo class.
-        Catch
-            MessageBox.Show("The file you specified does not exist.")
-            ' Exception is thrown by the ReadToEnd method of the TextReader class.
-        Catch
-         MessageBox.Show("There was a problem loading the file into the TextBox. Ensure that the file is a valid text file.")
-        End Try
-    End Sub
+   MyBase.OnTextChanged(e)
+End Sub

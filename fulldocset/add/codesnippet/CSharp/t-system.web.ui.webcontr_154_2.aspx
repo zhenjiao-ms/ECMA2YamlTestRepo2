@@ -1,40 +1,57 @@
-<%@ page language="c#" %>
-<%@ register TagPrefix="uc1" 
-  TagName="DisplayModeMenu" 
-  Src="DisplayModecs.ascx" %>
-<%@ register tagprefix="aspSample" 
-  Namespace="Samples.AspNet.CS.Controls" 
-  Assembly="TextDisplayWebPartCS" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
   <head runat="server">
-    <title>
-      Text Display WebPart with EditorPart
-    </title>
-  </head>
-  <body>
-    <form id="form1" runat="server">
-      <asp:webpartmanager id="WebPartManager1" runat="server" />
-      <uc1:DisplayModeMenu ID="DisplayModeMenu1" runat="server" />
-      <asp:webpartzone id="zone1" runat="server" 
-        CloseVerb-Enabled="false">
-        <zonetemplate>
-          <aspSample:TextDisplayWebPart 
-            runat="server"   
-            id="textwebpart" 
-            title = "Text Content WebPart" />          
-        </zonetemplate>
-      </asp:webpartzone> 
-      <asp:EditorZone ID="EditorZone1" runat="server">
-        <ZoneTemplate>
-          <asp:AppearanceEditorPart ID="AppearanceEditorPart1" 
-            runat="server" />
-          <asp:LayoutEditorPart ID="LayoutEditorPart1" 
-            runat="server" />
-        </ZoneTemplate>      
-      </asp:EditorZone>
+    <title>DetailsViewCommandEventArgs Example</title>
+</head>
+<body>
+    <form id="Form1" runat="server">
+    
+      <h3>DetailsViewCommandEventArgs Example</h3>
+  
+      <asp:detailsview id="ItemDetailsView"
+        datasourceid="DetailsViewSource"
+        allowpaging="true"
+        autogeneraterows="false" 
+        onitemcommand="ItemDetailsView_ItemCommand"  
+        runat="server">
+        <fields>
+          <asp:boundfield datafield="CustomerID"
+            headertext="Customer ID"/>
+          <asp:boundfield datafield="CompanyName"
+            headertext="Company Name"/>
+          <asp:boundfield datafield="Address"
+            headertext="Address"/>
+          <asp:boundfield datafield="City"
+            headertext="City"/>
+          <asp:boundfield datafield="PostalCode"
+            headertext="ZIP Code"/>
+          <asp:boundfield datafield="Country"
+            headertext="Country"/>
+          <asp:buttonfield buttontype="Link"
+            causesvalidation="false"
+            text="Add to List"
+            commandname="Add"/>
+        </fields>
+      </asp:detailsview>
+      
+      <br/><br/>
+      
+      Selected Customers:<br/>
+      <asp:listbox id="CustomerListBox"
+        runat="server"/>
+      
+      <!-- This example uses Microsoft SQL Server and connects  -->
+      <!-- to the Northwind sample database. Use an ASP.NET     -->
+      <!-- expression to retrieve the connection string value   -->
+      <!-- from the Web.config file.                            -->
+      <asp:sqldatasource id="DetailsViewSource"
+        selectcommand="Select [CustomerID], [CompanyName], [Address], [City], [PostalCode], [Country] From [Customers]"
+        connectionstring="<%$ ConnectionStrings:NorthWindConnectionString%>" 
+        runat="server"/>  
+  
     </form>
   </body>
 </html>

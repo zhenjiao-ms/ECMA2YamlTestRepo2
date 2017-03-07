@@ -1,7 +1,14 @@
-      // Draw the ToolTip using default values if the ToolTip is for button3.
-      else if ( e->AssociatedControl == button3 )
-      {
-         e->DrawBackground();
-         e->DrawBorder();
-         e->DrawText();
-      }
+private:
+   void SetHeaderText( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      // Set the HeaderText property.
+      myDataGridColumnStyle->HeaderText = "Emp ID";
+      myDataGrid->Invalidate();
+   }
+
+   void ResetHeaderText( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      // Reset the HeaderText property to its default value.
+      myDataGridColumnStyle->ResetHeaderText();
+      myDataGrid->Invalidate();
+   }

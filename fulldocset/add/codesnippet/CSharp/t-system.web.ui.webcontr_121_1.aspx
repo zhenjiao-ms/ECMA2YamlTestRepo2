@@ -1,114 +1,93 @@
+
 <%@ Page language="C#" %>
-    
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    
 <script runat="server">
 
-  void Page_Load()
+  void CustomerDetailsView_ModeChanging(Object sender, DetailsViewModeEventArgs e)
   {
-    Message.Text = String.Empty;
-  }
-      
-  void ProductsListView_SelectedIndexChanging(Object sender, ListViewSelectEventArgs e)
-  {
-    ListViewItem item = (ListViewItem)ProductsListView.Items[e.NewSelectedIndex];
-    Label l = (Label)item.FindControl("DiscontinuedDateLabel");
 
-    if (String.IsNullOrEmpty(l.Text))
+    // Use the NewMode property to determine the mode to which the 
+    // DetailsView control is transitioning.
+    switch (e.NewMode)
     {
-      return;
+      case DetailsViewMode.Edit:
+        // Hide the pager row and clear the Label control
+        // when transitioning to edit mode.
+        CustomerDetailsView.AllowPaging = false;
+        MessageLabel.Text = "";
+        break;
+      case DetailsViewMode.ReadOnly:
+        // Display the pager row and confirmation message
+        // when transitioning to edit mode.
+        CustomerDetailsView.AllowPaging = true;
+        if (e.CancelingEdit)
+        {
+          MessageLabel.Text = "Update canceled.";
+        }
+        else
+        {
+          MessageLabel.Text = "Update completed.";
+        }
+        break;
+      case DetailsViewMode.Insert:
+        // Cancel the mode change if the DetailsView
+        // control attempts to transition to insert 
+        // mode.
+        e.Cancel = true;
+        break;
+      default:
+        MessageLabel.Text = "Unsupported mode.";
+        break;
     }
-
-    DateTime discontinued = DateTime.Parse(l.Text);
-    if (discontinued < DateTime.Now)
-    {
-      Message.Text = "You cannot select a discontinued item.";
-      e.Cancel = true;
-    }
+    
   }
 
-  protected void ProductsListView_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
-  {
-    // Clear selection.
-    ProductsListView.SelectedIndex = -1;
-  }
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head id="Head1" runat="server">
-    <title>ListView.SelectedIndexChanging Example</title>
-  </head>
-  <body>
+  <head runat="server">
+    <title>DetailsViewModeEventArgs Example</title>
+</head>
+<body>
     <form id="form1" runat="server">
         
-      <h3>ListView.SelectedIndexChanging Example</h3>
+      <h3>DetailsViewModeEventArgs Example</h3>
+                
+      <asp:detailsview id="CustomerDetailsView"
+        datasourceid="DetailsViewSource"
+        datakeynames="CustomerID"
+        autogeneraterows="true"
+        autogenerateeditbutton="true" 
+        allowpaging="true"
+        onmodechanging="CustomerDetailsView_ModeChanging" 
+        runat="server">
 
-      <asp:Label ID="Message"
-        ForeColor="Red"          
-        runat="server"/>
-      <br/>
-     
-      <asp:ListView ID="ProductsListView" 
-        DataSourceID="ProductsDataSource" 
-        DataKeyNames="ProductID"
-        OnSelectedIndexChanging="ProductsListView_SelectedIndexChanging"         
-        OnPagePropertiesChanging="ProductsListView_PagePropertiesChanging"
-        runat="server" >
-        <LayoutTemplate>
-          <table cellpadding="2" runat="server" id="tblProducts" width="640px">
-            <tr runat="server" id="itemPlaceholder" />
-          </table>
-          <asp:DataPager runat="server" ID="ProductsDataPager" PageSize="12">
-            <Fields>
-              <asp:NextPreviousPagerField 
-                ShowFirstPageButton="true" ShowLastPageButton="true"
-                FirstPageText="|&lt;&lt; " LastPageText=" &gt;&gt;|"
-                NextPageText=" &gt; " PreviousPageText=" &lt; " />
-            </Fields>
-          </asp:DataPager>
-        </LayoutTemplate>
-        <ItemTemplate>
-          <tr runat="server">
-            <td valign="top">
-              <asp:LinkButton ID="SelectButton" runat="server" Text="..." CommandName="Select" />
-            </td>
-            <td valign="top">
-              <asp:Label ID="NameLabel" runat="server" Text='<%#Eval("Name") %>' />
-            </td>
-            <td valign="top">
-              <asp:Label ID="ProductNumberLabel" runat="server" Text='<%#Eval("ProductNumber") %>' />
-            </td>
-            <td>
-              <asp:Label ID="DiscontinuedDateLabel" runat="server" Text='<%#Eval("DiscontinuedDate", "{0:d}") %>' />
-            </td>
-          </tr>
-        </ItemTemplate>
-        <SelectedItemTemplate>
-          <tr runat="server" style="background-color:#ADD8E6">
-            <td>&nbsp;</td>
-            <td valign="top">
-              <asp:Label ID="NameLabel" runat="server" Text='<%#Eval("Name") %>' />
-            </td>
-            <td valign="top">
-              <asp:Label ID="ProductNumberLabel" runat="server" Text='<%#Eval("ProductNumber") %>' />
-            </td>
-            <td>
-              <asp:Label ID="DiscontinuedDateLabel" runat="server" Text='<%#Eval("DiscontinuedDate", "{0:d}") %>' />
-            </td>
-          </tr>
-        </SelectedItemTemplate>
-      </asp:ListView>
-            
-      <asp:SqlDataSource ID="ProductsDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:AdventureWorks_DataConnectionString %>"
-        SelectCommand="SELECT [ProductID], [Name], [ProductNumber], [DiscontinuedDate] 
-          FROM Production.Product"
-        UpdateCommand="UPDATE Production.Product
-           SET Name = @Name, ProductNumber = @ProductNumber, DiscontinuedDate = @DiscontinuedDate
-           WHERE ProductID = @ProductID">
-      </asp:SqlDataSource>
+      </asp:detailsview>
       
+      <br/><br/>
+      
+      <asp:label id="MessageLabel"
+        forecolor="Red"
+        runat="server"/>
+          
+      <!-- This example uses Microsoft SQL Server and connects  -->
+      <!-- to the Northwind sample database. Use an ASP.NET     -->
+      <!-- expression to retrieve the connection string value   -->
+      <!-- from the web.config file.                            -->
+      <asp:sqldatasource id="DetailsViewSource"
+        selectcommand="Select [CustomerID], [CompanyName], [Address], 
+          [City], [PostalCode], [Country] From [Customers]"
+        updatecommand="Update [Customers] Set 
+          [CompanyName]=@CompanyName, [Address]=@Address, 
+          [City]=@City, [PostalCode]=@PostalCode, 
+          [Country]=@Country 
+          Where [CustomerID]=@CustomerID" 
+        connectionstring=
+          "<%$ ConnectionStrings:NorthWindConnectionString%>" 
+        runat="server"/>
+            
     </form>
   </body>
 </html>

@@ -1,11 +1,9 @@
-Private Sub myCheckBox_CheckedChanged(ByVal sender As Object, _
-   ByVal e As System.EventArgs) Handles myCheckBox.CheckedChanged
-   ' If the check box is checked, expand all the tree nodes.
-   If myCheckBox.Checked = True Then
-      myTreeView.ExpandAll()
-   Else
-      ' If the check box is not cheked, collapse the first tree node.
-      myTreeView.Nodes(0).FirstNode.Collapse()
-      MessageBox.Show("The first and last node of CutomerList root node is collapsed")
-   End If
-End Sub
+ Public Sub CopyAllMyText()
+     ' Determine if any text is selected in the TextBox control.
+     If textBox1.SelectionLength = 0 Then
+         ' Select all text in the text box.
+         textBox1.SelectAll()
+     End If 
+     ' Copy the contents of the control to the Clipboard.
+     textBox1.Copy()
+ End Sub

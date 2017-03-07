@@ -1,13 +1,15 @@
-private void BindingSource1_ListChanged(Object sender, ListChangedEventArgs e) {
-
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "ListChangedType", e.ListChangedType );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "NewIndex", e.NewIndex );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "OldIndex", e.OldIndex );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "PropertyDescriptor", e.PropertyDescriptor );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "ListChanged Event" );
-}
+// Gets the attributes for the property.
+ AttributeCollection attributes = 
+    TypeDescriptor.GetProperties(this)["MyProperty"].Attributes;
+ 
+ // Checks to see if the value of the DesignerSerializationVisibilityAttribute is set to Content.
+ if(attributes[typeof(DesignerSerializationVisibilityAttribute)].Equals(DesignerSerializationVisibilityAttribute.Content)) {
+    // Insert code here.
+ }
+ 
+ // This is another way to see whether the property is marked as serializing content.
+ DesignerSerializationVisibilityAttribute myAttribute = 
+    (DesignerSerializationVisibilityAttribute)attributes[typeof(DesignerSerializationVisibilityAttribute)];
+ if(myAttribute.Visibility == DesignerSerializationVisibility.Content) {
+    // Insert code here.
+ }

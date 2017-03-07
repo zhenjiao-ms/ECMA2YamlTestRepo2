@@ -1,18 +1,19 @@
-   private:
-      void treeView1_MouseDown( Object^ /*sender*/, MouseEventArgs^ e )
-      {
-         switch ( e->Button )
-         {
-            // Remove the TreeNode under the mouse cursor
-            // if the right mouse button was clicked.
-            case ::MouseButtons::Right:
-               treeView1->GetNodeAt( e->X, e->Y )->Remove();
-               break;
+   void EnumerateTreeNodes()
+   {
+      TreeNodeCollection^ myNodeCollection = myTreeView->Nodes;
 
-            // Toggle the TreeNode under the mouse cursor
-            // if the middle mouse button (mouse wheel) was clicked.
-            case ::MouseButtons::Middle:
-               treeView1->GetNodeAt( e->X, e->Y )->Toggle();
-               break;
-         }
+      // Check for a node in the collection.
+      if ( myNodeCollection->Contains( myTreeNode2 ) )
+      {
+         myLabel->Text = myLabel->Text + "Node2 is at index: " + myNodeCollection->IndexOf( myTreeNode2 );
       }
+
+      myLabel->Text = myLabel->Text + "\n\nElements of the TreeNodeCollection:\n";
+
+      // Create an enumerator for the collection.
+      IEnumerator^ myEnumerator = myNodeCollection->GetEnumerator();
+      while ( myEnumerator->MoveNext() )
+      {
+         myLabel->Text = myLabel->Text + (dynamic_cast<TreeNode^>(myEnumerator->Current))->Text + "\n";
+      }
+   }

@@ -1,26 +1,14 @@
- public void Printing(string printer) {
-   try {
-     streamToPrint = new StreamReader (filePath);
-     try {
-       printFont = new Font("Arial", 10);
-       PrintDocument pd = new PrintDocument(); 
-       pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
-       // Specify the printer to use.
-       pd.PrinterSettings.PrinterName = printer;
+            // Add list of supported paper sizes found on the printer. 
+            // The DisplayMember property is used to identify the property that will provide the display string.
+            comboPaperSize.DisplayMember = "PaperName";
 
-       if (pd.PrinterSettings.IsValid) {
-          pd.Print();
-       } 
-       else {	
-          MessageBox.Show("Printer is invalid.");
-       }
-     } 
-     finally {
-       streamToPrint.Close();
-     }
-   } 
-   catch(Exception ex) {
-     MessageBox.Show(ex.Message);
-   }
- }
- 
+            PaperSize pkSize;
+            for (int i = 0; i < printDoc.PrinterSettings.PaperSizes.Count; i++){
+                pkSize = printDoc.PrinterSettings.PaperSizes[i];
+                comboPaperSize.Items.Add(pkSize);
+            }
+
+            // Create a PaperSize and specify the custom paper size through the constructor and add to combobox.
+            PaperSize pkCustomSize1 = new PaperSize("First custom size", 100, 200);
+
+            comboPaperSize.Items.Add(pkCustomSize1);

@@ -1,10 +1,16 @@
-        Public Sub LinkComponentChangingEvent(ByVal changeService As IComponentChangeService)
-            ' Registers an event handler for the ComponentChanging event.
-            AddHandler changeService.ComponentChanging, AddressOf Me.OnComponentChanging
+        Public Sub LinkActiveDesignerEvent(ByVal eventService As IDesignerEventService)
+            ' Registers an event handler for the ActiveDesignerChanged event.
+            AddHandler eventService.ActiveDesignerChanged, AddressOf Me.OnActiveDesignerEvent
         End Sub
 
-        Private Sub OnComponentChanging(ByVal sender As Object, ByVal e As ComponentChangingEventArgs)
-            ' Displays changing component information on the console.
-            Console.WriteLine(("Type of the component that is about to change: " + e.Component.GetType().FullName))
-            Console.WriteLine(("Name of the member of the component that is about to change: " + e.Member.Name))
+        Private Sub OnActiveDesignerEvent(ByVal sender As Object, ByVal e As ActiveDesignerEventArgs)
+            ' Displays changed designer information on the console.            
+            If (e.NewDesigner.RootComponent.Site IsNot Nothing) Then
+                Console.WriteLine(("Name of the component of the new active designer: " + e.NewDesigner.RootComponent.Site.Name))
+            End If
+            Console.WriteLine(("Type of the component of the new active designer: " + e.NewDesigner.RootComponentClassName))
+            If (e.OldDesigner.RootComponent.Site IsNot Nothing) Then
+                Console.WriteLine(("Name of the component of the previously active designer: " + e.OldDesigner.RootComponent.Site.Name))
+            End If
+            Console.WriteLine(("Type of the component of the previously active designer: " + e.OldDesigner.RootComponentClassName))
         End Sub

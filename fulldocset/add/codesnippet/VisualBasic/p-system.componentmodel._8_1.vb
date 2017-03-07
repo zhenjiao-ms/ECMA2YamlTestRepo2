@@ -1,18 +1,21 @@
-        ' Gets the attributes for the property.
-        Dim attributes As AttributeCollection = _
-            TypeDescriptor.GetProperties(Me)("MyProperty").Attributes
-        
-        ' Checks to see if the value of the DesignerSerializationVisibilityAttribute
-        ' is set to Content.
-        If attributes(GetType(DesignerSerializationVisibilityAttribute)).Equals( _
-            DesignerSerializationVisibilityAttribute.Content) Then
-            ' Insert code here.
-        End If 
-        
-        ' This is another way to see whether the property is marked as serializing content.
-        Dim myAttribute As DesignerSerializationVisibilityAttribute = _
-            CType(attributes(GetType(DesignerSerializationVisibilityAttribute)), _
-            DesignerSerializationVisibilityAttribute)
-        If myAttribute.Visibility = DesignerSerializationVisibility.Content Then
-            ' Insert code here.
-        End If 
+   Private Sub backgroundWorker1_DoWork( _
+   sender As Object, e As DoWorkEventArgs) _
+   Handles backgroundWorker1.DoWork
+
+      ' Do not access the form's BackgroundWorker reference directly.
+      ' Instead, use the reference provided by the sender parameter.
+      Dim bw As BackgroundWorker = CType( sender, BackgroundWorker )
+      
+      ' Extract the argument.
+      Dim arg As Integer = Fix(e.Argument)
+      
+      ' Start the time-consuming operation.
+      e.Result = TimeConsumingOperation(bw, arg)
+      
+      ' If the operation was canceled by the user, 
+      ' set the DoWorkEventArgs.Cancel property to true.
+      If bw.CancellationPending Then
+         e.Cancel = True
+      End If
+
+   End Sub   

@@ -1,19 +1,36 @@
-    Friend WithEvents boldButton As ToolStripButton
+Public Class CustomizedTreeView
+    Inherits TreeView
 
-    Private Sub InitializeBoldButton()
-        boldButton = New ToolStripButton()
-        boldButton.Text = "B"
-        boldButton.CheckOnClick = True
-        toolStrip1.Items.Add(boldButton)
+    Public Sub New()
+        ' Customize the TreeView control by setting various properties.
+        BackColor = System.Drawing.Color.CadetBlue
+        FullRowSelect = True
+        HotTracking = True
+        Indent = 34
+        ShowPlusMinus = False
 
-    End Sub
+        ' The ShowLines property must be false for the FullRowSelect 
+        ' property to work.
+        ShowLines = False
+    End Sub 'New
 
-    Private Sub boldButton_CheckedChanged(ByVal sender As [Object], _
-        ByVal e As EventArgs) Handles boldButton.CheckedChanged
-        If boldButton.Checked Then
-            Me.Font = New Font(Me.Font, FontStyle.Bold)
-        Else
-            Me.Font = New Font(Me.Font, FontStyle.Regular)
+
+    Protected Overrides Sub OnAfterSelect(ByVal e As TreeViewEventArgs)
+        ' Confirm that the user initiated the selection.
+        ' This prevents the first node from expanding when it is
+        ' automatically selected during the initialization of 
+        ' the TreeView control.
+        If e.Action <> TreeViewAction.Unknown Then
+            If e.Node.IsExpanded Then
+                e.Node.Collapse()
+            Else
+                e.Node.Expand()
+            End If
         End If
 
-    End Sub
+        ' Remove the selection. This allows the same node to be
+        ' clicked twice in succession to toggle the expansion state.
+        SelectedNode = Nothing
+    End Sub 'OnAfterSelect
+
+End Class 'CustomizedTreeView 

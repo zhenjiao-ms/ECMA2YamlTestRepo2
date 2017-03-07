@@ -1,30 +1,27 @@
+        ' Host the service within this EXE console application.
+        Public Shared Sub Main()
+            ' Create a ServiceHost for the CalculatorService type and use the base address from config.
+            Using svcHost As New ServiceHost(GetType(CalculatorService))
+                Try
+                    ' Open the ServiceHost to start listening for messages.
+                    svcHost.Open()
 
-Public Class MyServiceAuthorizationManager
-    Inherits ServiceAuthorizationManager
-    
-    Protected Overrides Function CheckAccessCore(ByVal operationContext As OperationContext) As Boolean 
-        ' Extract the action URI from the OperationContext. Match this against the claims.
-        ' in the AuthorizationContext.
-        Dim action As String = operationContext.RequestContext.RequestMessage.Headers.Action
-        
-        ' Iterate through the various claimsets in the AuthorizationContext.
-        Dim cs As ClaimSet
-        For Each cs In  operationContext.ServiceSecurityContext.AuthorizationContext.ClaimSets
-            ' Examine only those claim sets issued by System.
-            If cs.Issuer Is ClaimSet.System Then
-                ' Iterate through claims of type "http://www.contoso.com/claims/allowedoperation".
-                Dim c As Claim
-                For Each c In  cs.FindClaims("http://www.contoso.com/claims/allowedoperation", _
-                     Rights.PossessProperty)
-                    ' If the Claim resource matches the action URI then return true to allow access.
-                    If action = c.Resource.ToString() Then
-                        Return True
-                    End If
-                Next c
-            End If
-        Next cs 
-        ' If this point is reached, return false to deny access.
-        Return False
-    
-    End Function 
-End Class 
+                    ' The service can now be accessed.
+                    Console.WriteLine("The service is ready.")
+                    Console.WriteLine("Press <ENTER> to terminate service.")
+                    Console.WriteLine()
+                    Console.ReadLine()
+
+                    'Close the ServiceHost.
+                    svcHost.Close()
+
+                Catch timeout As TimeoutException
+                    Console.WriteLine(timeout.Message)
+                    Console.ReadLine()
+                Catch commException As CommunicationException
+                    Console.WriteLine(commException.Message)
+                    Console.ReadLine()
+                End Try
+            End Using
+
+        End Sub

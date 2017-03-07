@@ -7,89 +7,39 @@ Class XMLSchemaExamples
 
         Dim schema As New XmlSchema()
 
-        ' <xs:complexType name="customerOrderType">
-        Dim customerOrderType As New XmlSchemaComplexType()
-        customerOrderType.Name = "customerOrderType"
+        ' <xs:simpleType name="OrderQuantityType">
+        Dim OrderQuantityType As New XmlSchemaSimpleType()
+        OrderQuantityType.Name = "OrderQuantityType"
 
-        ' <xs:sequence>
-        Dim sequence1 As New XmlSchemaSequence()
+        ' <xs:restriction base="xs:int">
+        Dim restriction As New XmlSchemaSimpleTypeRestriction()
+        restriction.BaseTypeName = New XmlQualifiedName("int", "http://www.w3.org/2001/XMLSchema")
 
-        ' <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
-        Dim item As New XmlSchemaElement()
-        item.MinOccurs = 0
-        item.MaxOccursString = "unbounded"
-        item.Name = "item"
+        ' <xs:minExclusive value="5"/>
+        Dim MinExclusive As New XmlSchemaMinExclusiveFacet()
+        MinExclusive.Value = "5"
+        restriction.Facets.Add(MinExclusive)
 
-        ' <xs:complexType>
-        Dim ct1 As New XmlSchemaComplexType()
+        OrderQuantityType.Content = restriction
 
-        ' <xs:attribute name="itemID" type="xs:string"/>
-        Dim itemID As New XmlSchemaAttribute()
-        itemID.Name = "itemID"
-        itemID.SchemaTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
+        schema.Items.Add(OrderQuantityType)
 
-        ' </xs:complexType>
-        ct1.Attributes.Add(itemID)
-
-        ' </xs:element>
-        item.SchemaType = ct1
-
-        ' </xs:sequence>
-        sequence1.Items.Add(item)
-        customerOrderType.Particle = sequence1
-
-        ' <xs:attribute name="CustomerID" type="xs:string"/>
-        Dim CustomerID As New XmlSchemaAttribute()
-        CustomerID.Name = "CustomerID"
-        CustomerID.SchemaTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
-
-        customerOrderType.Attributes.Add(CustomerID)
-
-        ' </xs:complexType>
-        schema.Items.Add(customerOrderType)
-
-        ' <xs:element name="ordersByCustomer">
-        Dim ordersByCustomer As New XmlSchemaElement()
-        ordersByCustomer.Name = "ordersByCustomer"
+        ' <xs:element name="item">
+        Dim element As New XmlSchemaElement()
+        element.Name = "item"
 
         ' <xs:complexType>
-        Dim ct2 As New XmlSchemaComplexType()
+        Dim complexType As New XmlSchemaComplexType()
 
-        ' <xs:sequence>
-        Dim sequence2 As New XmlSchemaSequence()
+        ' <xs:attribute name="OrderQuantity" type="OrderQuantityType"/>
+        Dim OrderQuantityAttribute As New XmlSchemaAttribute()
+        OrderQuantityAttribute.Name = "OrderQuantity"
+        OrderQuantityAttribute.SchemaTypeName = New XmlQualifiedName("OrderQuantityType", "")
+        complexType.Attributes.Add(OrderQuantityAttribute)
 
-        ' <xs:element name="customerOrders" type="customerOrderType" minOccurs="0" maxOccurs="unbounded" />
-        Dim customerOrders As New XmlSchemaElement()
-        customerOrders.MinOccurs = 0
-        customerOrders.MaxOccursString = "unbounded"
-        customerOrders.Name = "customerOrders"
-        customerOrders.SchemaTypeName = New XmlQualifiedName("customerOrderType", "")
+        element.SchemaType = complexType
 
-        ' </xs:sequence>
-        sequence2.Items.Add(customerOrders)
-
-        ' </xs:complexType>
-        ct2.Particle = sequence2
-        ordersByCustomer.SchemaType = ct2
-
-        ' <xs:unique name="oneCustomerOrdersforEachCustomerID">
-        Dim element_unique As New XmlSchemaUnique()
-        element_unique.Name = "oneCustomerOrdersforEachCustomerID"
-
-        ' <xs:selector xpath="customerOrders"/>
-        element_unique.Selector = New XmlSchemaXPath()
-        element_unique.Selector.XPath = "customerOrders"
-
-        ' <xs:field xpath="@customerID"/>
-        Dim field As New XmlSchemaXPath()
-        field.XPath = "@customerID"
-
-        ' </xs:unique>
-        element_unique.Fields.Add(field)
-        ordersByCustomer.Constraints.Add(element_unique)
-
-        ' </xs:element>
-        schema.Items.Add(ordersByCustomer)
+        schema.Items.Add(element)
 
         Dim schemaSet As New XmlSchemaSet()
         AddHandler schemaSet.ValidationEventHandler, AddressOf ValidationCallbackOne
@@ -112,4 +62,5 @@ Class XMLSchemaExamples
     Public Shared Sub ValidationCallbackOne(ByVal sender As Object, ByVal args As ValidationEventArgs)
         Console.WriteLine(args.Message)
     End Sub
+
 End Class

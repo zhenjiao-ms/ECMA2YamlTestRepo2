@@ -3,82 +3,57 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<script runat="server">
-
-  void CustomerDetailsView_ItemInserted(Object sender, 
-    DetailsViewInsertedEventArgs e)
-  {
-    // Use the Exception property to determine whether an exception
-    // occurred during the insert operation.
-    if (e.Exception == null && e.AffectedRows == 1)
-    {
-      // Use the Values property to get the value entered by 
-      // the user for the CompanyName field.
-      String name = e.Values["CompanyName"].ToString();
-
-      // Display a confirmation message.
-      MessageLabel.Text = name + " added successfully. ";
-
-    }
-    else
-    {
-      // Insert the code to handle the exception.
-      MessageLabel.Text = e.Exception.Message;
-      
-      // Use the ExceptionHandled property to indicate that the 
-      // exception is already handled.
-      e.ExceptionHandled = true;
-      
-      // When an exception occurs, keep the DetailsView
-      // control in insert mode.
-      e.KeepInInsertMode = true;
-    }
-  }
-
-</script>
-
 <html xmlns="http://www.w3.org/1999/xhtml" >
   <head runat="server">
-    <title>DetailsViewInsertedEventArgs Example</title>
+    <title>BoundField Example</title>
 </head>
 <body>
     <form id="form1" runat="server">
         
-      <h3>DetailsViewInsertedEventArgs Example</h3>
+      <h3>BoundField Example</h3>
+
+      <asp:gridview id="CustomersGridView" 
+        datasourceid="CustomersSqlDataSource" 
+        autogeneratecolumns="false"
+        autogenerateeditbutton="true"
+        allowpaging="true" 
+        datakeynames="CustomerID"  
+        runat="server">
+         
+        <columns>
+          <asp:boundfield datafield="CustomerID"
+            readonly="true"      
+            headertext="Customer ID"/>
+          <asp:boundfield datafield="CompanyName"
+            convertemptystringtonull="true"
+            headertext="Customer Name"/>
+          <asp:boundfield datafield="Address"
+            convertemptystringtonull="true"
+            headertext="Address"/>
+          <asp:boundfield datafield="City"
+            convertemptystringtonull="true"
+            headertext="City"/>
+          <asp:boundfield datafield="PostalCode"
+            convertemptystringtonull="true"
+            headertext="ZIP Code"/>
+          <asp:boundfield datafield="Country"
+            convertemptystringtonull="true"
+            headertext="Country"/>
+        </columns>
                 
-        <asp:detailsview id="CustomerDetailsView"
-          datasourceid="DetailsViewSource"
-          datakeynames="CustomerID"
-          autogenerateinsertbutton="true"  
-          autogeneraterows="true"
-          allowpaging="true"
-          oniteminserted="CustomerDetailsView_ItemInserted" 
-          runat="server">
-               
-          <fieldheaderstyle backcolor="Navy"
-            forecolor="White"/>
-                    
-        </asp:detailsview>
-        
-        <asp:label id="MessageLabel"
-          forecolor="Red"
-          runat="server"/>
+      </asp:gridview>
             
-        <!-- This example uses Microsoft SQL Server and connects  -->
-        <!-- to the Northwind sample database. Use an ASP.NET     -->
-        <!-- expression to retrieve the connection string value   -->
-        <!-- from the web.config file.                            -->
-        <asp:sqldatasource id="DetailsViewSource"
-          selectcommand="Select [CustomerID], [CompanyName], [Address], 
-            [City], [PostalCode], [Country] From [Customers]"
-          insertcommand="INSERT INTO [Customers]([CustomerID], 
-            [CompanyName], [Address], [City], [PostalCode], 
-            [Country]) VALUES (@CustomerID, @CompanyName, @Address, 
-            @City, @PostalCode, @Country)"
-          connectionstring=
-            "<%$ ConnectionStrings:NorthWindConnectionString%>" 
-          runat="server"/>
+      <!-- This example uses Microsoft SQL Server and connects  -->
+      <!-- to the Northwind sample database. Use an ASP.NET     -->
+      <!-- expression to retrieve the connection string value   -->
+      <!-- from the Web.config file.                            -->
+      <asp:sqldatasource id="CustomersSqlDataSource"  
+        selectcommand="Select [CustomerID], [CompanyName], [Address], [City], [PostalCode], [Country] From [Customers]"
+        updatecommand="Update Customers Set CompanyName=@CompanyName, Address=@Address, City=@City, PostalCode=@PostalCode, Country=@Country Where (CustomerID = @CustomerID)"
+        connectionstring="<%$ ConnectionStrings:NorthWindConnectionString%>"
+        runat="server">
+      </asp:sqldatasource>
             
-      </form>
+    </form>
   </body>
 </html>

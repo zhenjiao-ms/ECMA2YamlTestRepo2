@@ -1,9 +1,12 @@
-    // This control demonstrates a simple logging capability. 
-    [ComplexBindingProperties("DataSource", "DataMember")]
-    [DefaultBindingProperty("TitleText")]
-    [DefaultEvent("ThresholdExceeded")]
-    [DefaultProperty("Threshold")]
-    [HelpKeywordAttribute(typeof(UserControl))]
-    [ToolboxItem("System.Windows.Forms.Design.AutoSizeToolboxItem,System.Design")]
-    public class AttributesDemoControl : UserControl
-    {
+        public void LinkComponentChangingEvent(IComponentChangeService changeService)
+        {
+            // Registers an event handler for the ComponentChanging event.
+            changeService.ComponentChanging += new ComponentChangingEventHandler(this.OnComponentChanging);            
+        }
+
+        private void OnComponentChanging(object sender, ComponentChangingEventArgs e)
+        {
+            // Displays changing component information on the console.
+            Console.WriteLine("Type of the component that is about to change: "+e.Component.GetType().FullName);      
+            Console.WriteLine("Name of the member of the component that is about to change: "+e.Member.Name);                        
+        }

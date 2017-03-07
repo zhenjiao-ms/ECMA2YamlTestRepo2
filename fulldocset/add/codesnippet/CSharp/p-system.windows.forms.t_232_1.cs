@@ -1,48 +1,27 @@
-using System.Drawing;
-using System.Windows.Forms;
+   private void Button1_Click(object sender,EventArgs e)
+   {
+      myTreeView.ItemHeight = 5;
+      myTreeView.SelectedNode.NodeFont = new Font("Arial",5);
 
-public class Form1 : Form
-{
-    private TabControl tabControl1;
-    private TabPage tabPage1;
-    private TabPage tabPage2;
-    private TabPage tabPage3;
+      // Get the font size from combobox.
+      string selectedString = myComboBox.SelectedItem.ToString();
+      int myNodeFontSize = Int32.Parse(selectedString);
 
-    private void MyTabs()
-    {
-        this.tabControl1 = new TabControl();
-        this.tabPage1 = new TabPage();
-        this.tabPage2 = new TabPage();
-        this.tabPage3 = new TabPage();
+      // Set the font of root node.
+      myTreeView.SelectedNode.NodeFont = new Font("Arial",myNodeFontSize);
+      for(int i = 0; i < myTreeView.Nodes[0].Nodes.Count; i++)
+      {
+         // Set the font of child nodes.
+         myTreeView.Nodes[0].Nodes[i].NodeFont =
+           new Font("Arial",myNodeFontSize);
+      }
 
-        // Positions tabs on the left side of tabControl1.
-        this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
-
-        this.tabControl1.Controls.AddRange(new Control[] {
-            this.tabPage1,
-            this.tabPage2,
-            this.tabPage3});
-        this.tabControl1.Location = new Point(16, 24);
-        this.tabControl1.SelectedIndex = 0;
-        this.tabControl1.Size = new Size(248, 232);
-        this.tabControl1.TabIndex = 0;
-
-        this.tabPage1.TabIndex = 0;
-        this.tabPage2.TabIndex = 1;
-        this.tabPage3.TabIndex = 2;
-
-        this.Size = new Size(300,300);
-        this.Controls.AddRange(new Control[] {
-            this.tabControl1});
-    }
-
-    public Form1()
-    {
-        MyTabs();
-    }
-
-    static void Main() 
-    {
-        Application.Run(new Form1());
-    }
-}
+      // Get the bounds of the tree node.
+      Rectangle myRectangle = myTreeView.SelectedNode.Bounds;
+      int myNodeHeight = myRectangle.Height;
+      if(myNodeHeight < myNodeFontSize)
+      {
+         myNodeHeight = myNodeFontSize;
+      }
+      myTreeView.ItemHeight = myNodeHeight + 4;
+   }

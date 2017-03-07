@@ -1,23 +1,21 @@
-private void ListView1_DrawColumnHeader(Object sender, DrawListViewColumnHeaderEventArgs e) {
+private void DataGridView1_RowDividerDoubleClick(Object sender, DataGridViewRowDividerDoubleClickEventArgs e) {
 
 System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "DrawDefault", e.DrawDefault );
+messageBoxCS.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex );
 messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
+messageBoxCS.AppendFormat("{0} = {1}", "Handled", e.Handled );
 messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Bounds", e.Bounds );
+messageBoxCS.AppendFormat("{0} = {1}", "Button", e.Button );
 messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ColumnIndex", e.ColumnIndex );
+messageBoxCS.AppendFormat("{0} = {1}", "Clicks", e.Clicks );
 messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Header", e.Header );
+messageBoxCS.AppendFormat("{0} = {1}", "X", e.X );
 messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "State", e.State );
+messageBoxCS.AppendFormat("{0} = {1}", "Y", e.Y );
 messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ForeColor", e.ForeColor );
+messageBoxCS.AppendFormat("{0} = {1}", "Delta", e.Delta );
 messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "BackColor", e.BackColor );
+messageBoxCS.AppendFormat("{0} = {1}", "Location", e.Location );
 messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Font", e.Font );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "DrawColumnHeader Event" );
+MessageBox.Show(messageBoxCS.ToString(), "RowDividerDoubleClick Event" );
 }

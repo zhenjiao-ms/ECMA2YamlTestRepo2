@@ -1,104 +1,67 @@
 Imports System
-Imports System.Collections
-Imports System.Data.Common
+Imports System.Security.Permissions
+Imports System.Web
 Imports System.Web.UI
 Imports System.Web.UI.WebControls
+Imports System.Web.UI.WebControls.WebParts
 
-Namespace Samples.AspNet.VB
+Namespace Samples.AspNet.VB.Controls
 
-    Public Class SimpleSpreadsheetControl
-        Inherits CompositeDataBoundControl
+<AspNetHostingPermission(SecurityAction.Demand, _
+  Level := AspNetHostingPermissionLevel.Minimal)> _
+<AspNetHostingPermission(SecurityAction.InheritanceDemand, _
+  Level := AspNetHostingPermissionLevel.Minimal)> _
+Public Class TextDisplayWebPart
+    Inherits WebPart
+    Private _contentText As String = Nothing
+    Private input As TextBox
+    Private DisplayContent As Label
+    
+    
+    Public Sub New() 
+      Me.AllowClose = False
+    End Sub
+    
+    <Personalizable(), WebBrowsable()>  _
+    Public Property ContentText() As String 
+        Get
+            Return _contentText
+        End Get
+        Set
+            _contentText = value
+        End Set
+    End Property
+     
+    Protected Overrides Sub CreateChildControls() 
+        Controls.Clear()
+        DisplayContent = New Label()
+        DisplayContent.Text = Me.ContentText
+        DisplayContent.BackColor = _
+          System.Drawing.Color.LightBlue
+        Me.Controls.Add(DisplayContent)
+        input = New TextBox()
+        Me.Controls.Add(input)
+        Dim update As New Button()
+        update.Text = "Set Label Content"
+        AddHandler update.Click, AddressOf Me.submit_Click
+        Me.Controls.Add(update)
+        ChildControlsCreated = True
+    
+    End Sub
+    
+    
+    Private Sub submit_Click(ByVal sender As Object, _
+                             ByVal e As EventArgs) 
+        ' Update the label string.
+        If input.Text <> String.Empty Then
+            Me.ContentText = Page.Server.HtmlEncode(input.Text) + "<br />"
+            ' Clear the input textbox.
+            input.Text = String.Empty
+            DisplayContent.Text = Me.ContentText
+        End If
+    
+    End Sub
+    
+End Class
 
-        Protected table As New Table()
-
-        Public Overridable ReadOnly Property Rows() As TableRowCollection
-            Get
-                Return table.Rows
-            End Get
-        End Property
-
-
-        Protected Overrides Function CreateChildControls(ByVal dataSource As IEnumerable, ByVal dataBinding As Boolean) As Integer
-
-            Dim count As Integer = 0
-            ' If dataSource is not Nothing, iterate through it and
-            ' extract each element from it as a row, then
-            ' create a SimpleSpreadsheetRow and add it to the
-            ' rows collection.
-            If Not (dataSource Is Nothing) Then
-
-                Dim row As SimpleSpreadsheetRow
-                Dim e As IEnumerator = dataSource.GetEnumerator()
-
-                While e.MoveNext()
-                    Dim datarow As Object = e.Current
-                    row = New SimpleSpreadsheetRow(count, datarow)
-                    Me.Rows.Add(row)
-                    count += 1
-                End While
-
-                Controls.Add(table)
-            End If
-            Return count
-        End Function 'CreateChildControls
-    End Class 'SimpleSpreadsheetControl
-
-
-    Public Class SimpleSpreadsheetRow
-        Inherits TableRow
-        Implements IDataItemContainer
-
-        Private dataObj As Object
-        Private _itemIndex As Integer
-
-        Public Sub New(ByVal itemIndex As Integer, ByVal o As Object)
-            dataObj = o
-            _itemIndex = itemIndex
-        End Sub 'New
-
-        Public Overridable ReadOnly Property Data() As Object
-            Get
-                Return dataObj
-            End Get
-        End Property
-
-        ReadOnly Property DataItem() As Object Implements IDataItemContainer.DataItem
-            Get
-                Return Data
-            End Get
-        End Property
-
-        ReadOnly Property DataItemIndex() As Integer Implements IDataItemContainer.DataItemIndex
-            Get
-                Return _itemIndex
-            End Get
-        End Property
-
-        ReadOnly Property DisplayIndex() As Integer Implements IDataItemContainer.DisplayIndex
-            Get
-                Return _itemIndex
-            End Get
-        End Property
-        Protected Overrides Sub RenderContents(ByVal writer As HtmlTextWriter)
-
-            If Not (Data Is Nothing) Then
-                If TypeOf Data Is System.Data.Common.DbDataRecord Then
-                    Dim temp As DbDataRecord = CType(Data, DbDataRecord)
-                    Dim i As Integer
-
-                    While i < temp.FieldCount
-                        writer.Write("<TD>")
-                        writer.Write(temp.GetValue(i).ToString())
-                        writer.Write("</TD>")
-                        i += 1
-                    End While
-                Else
-                    writer.Write(("<TD>" + Data.ToString() + "</TD>"))
-                End If
-
-            Else
-                writer.Write("<TD>This is a test</TD>")
-            End If
-        End Sub 'RenderContents
-    End Class 'SimpleSpreadsheetRow
 End Namespace

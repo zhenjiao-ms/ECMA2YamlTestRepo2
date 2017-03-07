@@ -1,107 +1,142 @@
-using System;
-using System.Drawing;
+// The following code example demonstrates using the MenuItem 
+// Merge-Order property to control the way a merged menu is displayed.
+
+
+
 using System.Windows.Forms;
 
-public class Form1 : System.Windows.Forms.Form
+public class Form1:
+	System.Windows.Forms.Form
+
+	//Declare a MainMenu object and its items.
 {
-    private System.Windows.Forms.MonthCalendar monthCalendar1;
-    private System.Windows.Forms.TextBox textBox1;
+	internal System.Windows.Forms.MainMenu mainMenu1;
+	internal System.Windows.Forms.MenuItem fileItem;
+	internal System.Windows.Forms.MenuItem newItem;
+	internal System.Windows.Forms.MenuItem openItem;
+	internal System.Windows.Forms.MenuItem saveItem;
+	internal System.Windows.Forms.MenuItem optionsMenu;
+	internal System.Windows.Forms.MenuItem viewItem;
+	internal System.Windows.Forms.MenuItem toolsItem;
 
-    [STAThread]
-    static void Main() 
-    {
-        Application.Run(new Form1());
-    }
+	// Declare a ContextMenu object and its items.
+	internal System.Windows.Forms.ContextMenu contextMenu1;
+	internal System.Windows.Forms.MenuItem cutItem;
+	internal System.Windows.Forms.MenuItem copyItem;
+	internal System.Windows.Forms.MenuItem pasteItem;
 
-    public Form1()
-    {
-        this.textBox1 = new System.Windows.Forms.TextBox();
-        this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-        this.textBox1.Location = new System.Drawing.Point(48, 488);
-        this.textBox1.Multiline = true;
-        this.textBox1.ReadOnly = true;
-        this.textBox1.Size = new System.Drawing.Size(824, 32);
+	public Form1() : base()
+	{        
+		this.mainMenu1 = new System.Windows.Forms.MainMenu();
+		this.fileItem = new System.Windows.Forms.MenuItem();
+		this.newItem = new System.Windows.Forms.MenuItem();
+		this.openItem = new System.Windows.Forms.MenuItem();
+		this.saveItem = new System.Windows.Forms.MenuItem();
 
-        // Create the calendar.
-        this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+		this.viewItem = new System.Windows.Forms.MenuItem();
+		this.toolsItem = new System.Windows.Forms.MenuItem();
 
-        // Set the calendar location.
-        this.monthCalendar1.Location = new System.Drawing.Point(47, 16);
+		this.optionsMenu = new System.Windows.Forms.MenuItem();
+		this.toolsItem = new System.Windows.Forms.MenuItem();
+		this.viewItem = new System.Windows.Forms.MenuItem();
 
-        // Change the color.
-        this.monthCalendar1.BackColor = System.Drawing.SystemColors.Info;
-        this.monthCalendar1.ForeColor = System.Drawing.Color.FromArgb(
-                                 ((System.Byte)(192)), ((System.Byte)(0)), ((System.Byte)(192)));
-        this.monthCalendar1.TitleBackColor = System.Drawing.Color.Purple;
-        this.monthCalendar1.TitleForeColor = System.Drawing.Color.Yellow;
-        this.monthCalendar1.TrailingForeColor = System.Drawing.Color.FromArgb(
-                                 ((System.Byte)(192)), ((System.Byte)(192)), ((System.Byte)(0)));
+		this.contextMenu1 = new System.Windows.Forms.ContextMenu();
+		this.cutItem = new System.Windows.Forms.MenuItem();
+		this.copyItem = new System.Windows.Forms.MenuItem();
+		this.pasteItem = new System.Windows.Forms.MenuItem();
 
-        // Add dates to the AnnuallyBoldedDates array.
-        this.monthCalendar1.AnnuallyBoldedDates = 
-            new System.DateTime[] { new System.DateTime(2002, 4, 20, 0, 0, 0, 0),
-                                    new System.DateTime(2002, 4, 28, 0, 0, 0, 0),
-                                    new System.DateTime(2002, 5, 5, 0, 0, 0, 0),
-                                    new System.DateTime(2002, 7, 4, 0, 0, 0, 0),
-                                    new System.DateTime(2002, 12, 15, 0, 0, 0, 0),
-                                    new System.DateTime(2002, 12, 18, 0, 0, 0, 0)};
+		//Add file menu item and options menu item to the MainMenu.
+		this.mainMenu1.MenuItems.AddRange(
+			new System.Windows.Forms.MenuItem[]
+			{this.fileItem, this.optionsMenu});
 
-        // Add dates to BoldedDates array.
-        this.monthCalendar1.BoldedDates = new System.DateTime[] {new System.DateTime(2002, 9, 26, 0, 0, 0, 0)};
+		// Initialize the file menu and its contents.
+		this.fileItem.Index = 0;
+		this.fileItem.Text = "File";
+		this.newItem.Index = 0;
+		this.newItem.Text = "New";
+		this.openItem.Index = 1;
+		this.openItem.Text = "Open";
+		this.saveItem.Index = 2;
+		this.saveItem.Text = "Save";
 
-        // Add dates to MonthlyBoldedDates array.
-        this.monthCalendar1.MonthlyBoldedDates = 
-           new System.DateTime[] {new System.DateTime(2002, 1, 15, 0, 0, 0, 0),
-                                  new System.DateTime(2002, 1, 30, 0, 0, 0, 0)};
 
-        // Configure the calendar to display 3 rows by 4 columns of months.
-        this.monthCalendar1.CalendarDimensions = new System.Drawing.Size(4, 3);
+		// Set the merge order of fileItem to 2 so it has a lower priority 
+		// on the merged menu.
+		this.fileItem.MergeOrder = 2;
 
-        // Set week to begin on Monday.
-        this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
+		//Add the new items to the fileItem menu item collection.
+		this.fileItem.MenuItems.AddRange(new MenuItem[]
+			{this.newItem, this.openItem, this.saveItem});
+		
 
-        // Set the maximum visible date on the calendar to 12/31/2010.
-        this.monthCalendar1.MaxDate = new System.DateTime(2010, 12, 31, 0, 0, 0, 0);
+		// Initalize the optionsMenu item and its contents.
+		this.optionsMenu.Index = 1;
+		this.optionsMenu.Text = "Options";
 
-        // Set the minimum visible date on calendar to 12/31/2010.
-        this.monthCalendar1.MinDate = new System.DateTime(1999, 1, 1, 0, 0, 0, 0);
+		this.viewItem.Index = 0;
+		this.viewItem.Text = "View";
+		this.toolsItem.Index = 1;
+		this.toolsItem.Text = "Tools";
 
-        // Only allow 21 days to be selected at the same time.
-        this.monthCalendar1.MaxSelectionCount = 21;
+		// Set mergeOrder property to 1, so it has a higher priority than
+		// the fileItem on the merged menu.
+		this.optionsMenu.MergeOrder = 1;
 
-        // Set the calendar to move one month at a time when navigating using the arrows.
-        this.monthCalendar1.ScrollChange = 1;
+		//Add view and tool items to the optionsItem menu item.
+		this.optionsMenu.MenuItems.AddRange(new MenuItem[]
+			{this.viewItem, this.toolsItem});
 
-        // Do not show the "Today" banner.
-        this.monthCalendar1.ShowToday = false;
+		// Initialize the menu items for the shortcut menu.
+		this.cutItem.Index = 0;
+		this.cutItem.Text = "Cut";
+		this.cutItem.MergeOrder = 0;
+		this.copyItem.Index = 1;
+		this.copyItem.Text = "Copy";
+		this.copyItem.MergeOrder = 0;
+		this.pasteItem.Index = 2;
+		this.pasteItem.Text = "Paste";
+		this.pasteItem.MergeOrder = 0;
 
-        // Do not circle today's date.
-        this.monthCalendar1.ShowTodayCircle = false;
-            
-        // Show the week numbers to the left of each week.
-        this.monthCalendar1.ShowWeekNumbers = true;
+		// Add menu items to the shortcut menu.
+		this.contextMenu1.MenuItems.AddRange(new MenuItem[]
+			{cutItem, copyItem, pasteItem});
 
-        // Add event handlers for the DateSelected and DateChanged events
-        this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
-        this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+		// Add the mainMenu1 items to the shortcut menu as well, by
+		// calling the MergeMenu method.
+		contextMenu1.MergeMenu(mainMenu1);
 
-        // Set up how the form should be displayed and add the controls to the form.
-        this.ClientSize = new System.Drawing.Size(920, 566);
-        this.Controls.AddRange(new System.Windows.Forms.Control[] {this.textBox1, this.monthCalendar1});
-        this.Text = "Month Calendar Example";
-    }
+		//Initialize the form.
+		this.ClientSize = new System.Drawing.Size(292, 266);
+		this.Name = "Form1";
+		this.Text = "Right click on form for merged menu.";
+		
+		// Associate the event-handling method with the
+		// MouseDown event.
+		this.MouseDown +=new MouseEventHandler(Form1_MouseDown);
 
-    private void monthCalendar1_DateSelected(object sender, System.Windows.Forms.DateRangeEventArgs e)
-    {
-        // Show the start and end dates in the text box.
-        this.textBox1.Text = "Date Selected: Start = " +
-            e.Start.ToShortDateString() + " : End = " + e.End.ToShortDateString();
-    }
+		// Add mainMenu1 to the form.
+		this.Menu = mainMenu1;
+	}
 
-    private void monthCalendar1_DateChanged(object sender, System.Windows.Forms.DateRangeEventArgs e)
-    {
-        // Show the start and end dates in the text box.
-        this.textBox1.Text = "Date Changed: Start =  " +
-            e.Start.ToShortDateString() + " : End = " + e.End.ToShortDateString();
-    }
+	private void Form1_MouseDown(object sender, MouseEventArgs e)
+	{
+
+		// Check for a right mouse click.
+		if (e.Button==MouseButtons.Right)
+
+			// Display a merged menu containing items from mainMenu1 
+			// and contextMenu1.
+		{
+			contextMenu1.Show(this, new System.Drawing.Point(30, 30));
+		}
+	}
+
+	[System.STAThreadAttribute]
+	public static void Main()
+	{
+		Application.Run(new Form1());
+	}
+
+
 }

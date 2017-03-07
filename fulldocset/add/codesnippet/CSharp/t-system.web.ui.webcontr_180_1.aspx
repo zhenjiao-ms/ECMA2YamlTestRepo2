@@ -1,82 +1,58 @@
-
-<%@ Page language="C#" %>
-
+<%@ Register TagPrefix="aspSample" Namespace="Samples.AspNet.CS" Assembly="Samples.AspNet.CS" %>
+<%@ Page language="c#" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
-  
-  void CustomerDetailsView_PageIndexChanging(Object sender, DetailsViewPageEventArgs e)
-  {
-    // Cancel the paging operation if the DetailsView control 
-    // in edit mode.
-    if (CustomerDetailsView.CurrentMode == DetailsViewMode.Edit)
-    {
-      e.Cancel = true;
-      
-      // Display an error message.
-      int newPage = e.NewPageIndex + 1;
-      MessageLabel.Text = "Please update the current record before to moving to page " + 
-        newPage.ToString() + ".";
-    }
-  }
 
-  void CustomerDetailsView_ModeChanging(Object sender, DetailsViewModeEventArgs e)
-  {
-    // Clear the message label when the user cancels edit mode.
-    if (e.CancelingEdit)
+    protected void ObjectDataSource1_Filtering(object sender, ObjectDataSourceFilteringEventArgs e)
     {
-      MessageLabel.Text = "";
+        if (Textbox1.Text == "")
+        {
+            e.ParameterValues.Clear();
+            e.ParameterValues.Add("FullName", "Nancy Davolio");
+        }
     }
-  }
-  
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
+  <head>
+    <title>ObjectDataSource - C# Example</title>
+  </head>
+  <body>
+    <form id="Form1" method="post" runat="server">
 
-  <head runat="server">
-    <title>DetailsViewPageEventArgs Example</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        
-      <h3>DetailsViewPageEventArgs Example</h3>
-                       
-        <asp:detailsview id="CustomerDetailsView"
-          datasourceid="DetailsViewSource"
-          autogeneraterows="true"
-          autogenerateeditbutton="true"
-          datakeynames="CustomerID"  
-          allowpaging="true"
-          onpageindexchanging="CustomerDetailsView_PageIndexChanging" 
-          onmodechanging="CustomerDetailsView_ModeChanging"
-          runat="server">
-            
-          <pagersettings position="Bottom"/> 
-                    
-        </asp:detailsview>
-        
-        <br/>
-        
-        <asp:label id="MessageLabel"
-          forecolor="Red"
-          runat="server"/>
-            
-        <!-- This example uses Microsoft SQL Server and connects  -->
-        <!-- to the Northwind sample database. Use an ASP.NET     -->
-        <!-- expression to retrieve the connection string value   -->
-        <!-- from the web.config file.                            -->
-        <asp:sqldatasource id="DetailsViewSource"
-          selectcommand="Select [CustomerID], [CompanyName], [Address], 
-            [City], [PostalCode], [Country] From [Customers]"
-          updatecommand="Update [Customers] Set 
-          [CompanyName]=@CompanyName, [Address]=@Address, 
-          [City]=@City, [PostalCode]=@PostalCode, 
-          [Country]=@Country 
-          Where [CustomerID]=@CustomerID"
-          connectionstring=
-          "<%$ ConnectionStrings:NorthWindConnectionString%>" 
-          runat="server"/>
-            
-      </form>
+        <p>Show all users with the following name.</p>
+
+        <asp:textbox id="Textbox1" runat="server" text="Nancy Davolio" />
+
+        <asp:gridview
+          id="GridView1"
+          runat="server"
+          datasourceid="ObjectDataSource1"
+          autogeneratecolumns="False">
+          <columns>
+            <asp:boundfield headertext="ID" datafield="EmpID" />
+            <asp:boundfield headertext="Name" datafield="FullName" />
+            <asp:boundfield headertext="Street Address" datafield="Address" />
+          </columns>
+        </asp:gridview>
+
+        <!-- Security Note: The ObjectDataSource uses a FormParameter,
+             Security Note: which does not perform validation of input from the client. -->
+
+        <asp:objectdatasource
+          id="ObjectDataSource1"
+          runat="server"
+          selectmethod="GetAllEmployeesAsDataSet"
+          typename="Samples.AspNet.CS.EmployeeLogic"
+          filterexpression="FullName='{0}'" OnFiltering="ObjectDataSource1_Filtering">
+            <filterparameters>
+              <asp:formparameter name="FullName" formfield="Textbox1" defaultvalue="Nancy Davolio" />
+            </filterparameters>
+        </asp:objectdatasource>
+
+        <p><asp:button id="Button1" runat="server" text="Search" /></p>
+
+    </form>
   </body>
 </html>

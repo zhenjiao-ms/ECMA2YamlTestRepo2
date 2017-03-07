@@ -1,24 +1,26 @@
-private void button1_Click(object sender, System.EventArgs e) {
-    // Takes the selected text from a text box and puts it on the clipboard.
-    if(textBox1.SelectedText != "")
-       Clipboard.SetDataObject(textBox1.SelectedText);
-    else
-       textBox2.Text = "No text selected in textBox1";
- }
- 
- private void button2_Click(object sender, System.EventArgs e) {
-    // Declares an IDataObject to hold the data returned from the clipboard.
-    // Retrieves the data from the clipboard.
-    IDataObject iData = Clipboard.GetDataObject();
- 
-    // Determines whether the data is in a format you can use.
-    if(iData.GetDataPresent(DataFormats.Text)) {
-       // Yes it is, so display it in a text box.
-       textBox2.Text = (String)iData.GetData(DataFormats.Text); 
-    }
-    else {
-       // No it is not.
-       textBox2.Text = "Could not retrieve data off the clipboard.";
-    }
- }
- 
+protected override void OnTextChanged(System.EventArgs e)
+{
+   try
+   {
+      // Convert the text to a Double and determine
+      // if it is a negative number.
+      if(double.Parse(this.Text) < 0)
+      {
+         // If the number is negative, display it in Red.
+         this.ForeColor = Color.Red;
+      }
+      else
+      {
+         // If the number is not negative, display it in Black.
+         this.ForeColor = Color.Black;
+      }
+   }
+   catch
+   {
+      // If there is an error, display the 
+      // text using the system colors.
+      this.ForeColor = SystemColors.ControlText;
+   }
+   
+   base.OnTextChanged(e);
+}

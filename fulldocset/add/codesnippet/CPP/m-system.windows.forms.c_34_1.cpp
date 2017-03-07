@@ -1,17 +1,20 @@
-   private:
-      void AddButtons()
-      {
-         // Suspend the form layout and add two buttons.
-         this->SuspendLayout();
-         Button^ buttonOK = gcnew Button;
-         buttonOK->Location = Point(10,10);
-         buttonOK->Size = System::Drawing::Size( 75, 25 );
-         buttonOK->Text = "OK";
-         Button^ buttonCancel = gcnew Button;
-         buttonCancel->Location = Point(90,10);
-         buttonCancel->Size = System::Drawing::Size( 75, 25 );
-         buttonCancel->Text = "Cancel";
-         array<Control^>^temp5 = {buttonOK,buttonCancel};
-         this->Controls->AddRange( temp5 );
-         this->ResumeLayout();
-      }
+private:
+   delegate void MyDelegate(
+   Label^ myControl, String^ myArg2 );
+   void Button_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
+   {
+      array<Object^>^myArray = gcnew array<Object^>(2);
+      myArray[ 0 ] = gcnew Label;
+      myArray[ 1 ] = "Enter a Value";
+      myTextBox->BeginInvoke( gcnew MyDelegate( this, &MyForm::DelegateMethod ), myArray );
+   }
+
+   void DelegateMethod( Label^ myControl, String^ myCaption )
+   {
+      myControl->Location = Point(16,16);
+      myControl->Size = System::Drawing::Size( 80, 25 );
+      myControl->Text = myCaption;
+      this->Controls->Add( myControl );
+   }
+
+   delegate void InvokeDelegate();

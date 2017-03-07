@@ -1,31 +1,15 @@
-    private void Stretch(object sender, EventArgs e)
+    private void AddLinkColumn()
     {
-        foreach (DataGridViewImageColumn column in
-            dataGridView1.Columns)
-        {
-            column.ImageLayout = DataGridViewImageCellLayout.Stretch;
-            column.Description = "Stretched";
-        }
-    }
+        DataGridViewLinkColumn links = new DataGridViewLinkColumn();
 
-    private void ZoomToImage(object sender, EventArgs e)
-    {
+        links.UseColumnTextForLinkValue = true;
+        links.HeaderText = ColumnName.ReportsTo.ToString();
+        links.DataPropertyName = ColumnName.ReportsTo.ToString();
+        links.ActiveLinkColor = Color.White;
+        links.LinkBehavior = LinkBehavior.SystemDefault;
+        links.LinkColor = Color.Blue;
+        links.TrackVisitedState = true;
+        links.VisitedLinkColor = Color.YellowGreen;
 
-        foreach (DataGridViewImageColumn column in
-            dataGridView1.Columns)
-        {
-            column.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            column.Description = "Zoomed";
-        }
-    }
-
-    private void NormalImage(object sender, EventArgs e)
-    {
-
-        foreach (DataGridViewImageColumn column in
-            dataGridView1.Columns)
-        {
-            column.ImageLayout = DataGridViewImageCellLayout.Normal;
-            column.Description = "Normal";
-        }
+        DataGridView1.Columns.Add(links);
     }

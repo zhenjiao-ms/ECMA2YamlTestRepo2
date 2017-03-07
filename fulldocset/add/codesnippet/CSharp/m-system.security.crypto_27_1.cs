@@ -1,79 +1,137 @@
 using System;
 using System.IO;
-using System.Text;
 using System.Security.Cryptography;
 
-namespace RC2CryptoServiceProvider_Examples
+namespace Aes_Example
 {
-    class MyMainClass
+    class AesExample
     {
         public static void Main()
         {
-
-            // Create a new instance of the RC2CryptoServiceProvider class
-            // and automatically generate a Key and IV.
-            RC2CryptoServiceProvider rc2CSP = new RC2CryptoServiceProvider();
-
-            Console.WriteLine("Effective key size is {0} bits.", rc2CSP.EffectiveKeySize);
-
-            // Get the key and IV.
-            byte[] key = rc2CSP.Key;
-            byte[] IV = rc2CSP.IV;
-
-            // Get an encryptor.
-            ICryptoTransform encryptor = rc2CSP.CreateEncryptor(key, IV);
-
-            // Encrypt the data as an array of encrypted bytes in memory.
-            MemoryStream msEncrypt = new MemoryStream();
-            CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write);
-
-            // Convert the data to a byte array.
-            string original = "Here is some data to encrypt.";
-            byte[] toEncrypt = Encoding.ASCII.GetBytes(original);
-
-            // Write all data to the crypto stream and flush it.
-            csEncrypt.Write(toEncrypt, 0, toEncrypt.Length);
-            csEncrypt.FlushFinalBlock();
-
-            // Get the encrypted array of bytes.
-            byte[] encrypted = msEncrypt.ToArray();
-
-            ///////////////////////////////////////////////////////
-            // This is where the data could be transmitted or saved.          
-            ///////////////////////////////////////////////////////
-
-            //Get a decryptor that uses the same key and IV as the encryptor.
-            ICryptoTransform decryptor = rc2CSP.CreateDecryptor(key, IV);
-
-            // Now decrypt the previously encrypted message using the decryptor
-            // obtained in the above step.
-            MemoryStream msDecrypt = new MemoryStream(encrypted);
-            CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read);
-
-            // Read the decrypted bytes from the decrypting stream
-            // and place them in a StringBuilder class.
-
-            StringBuilder roundtrip = new StringBuilder();
-            
-            int b = 0;
-
-            do
+            try
             {
-                b = csDecrypt.ReadByte();
-                
-                if (b != -1)
+
+                string original = "Here is some data to encrypt!";
+
+                // Create a new instance of the Aes
+                // class.  This generates a new key and initialization 
+                // vector (IV).
+                using (Aes myAes = Aes.Create())
                 {
-                    roundtrip.Append((char)b);
+
+                    // Encrypt the string to an array of bytes.
+                    byte[] encrypted = EncryptStringToBytes_Aes(original, 
+myAes.Key, myAes.IV);
+
+                    // Decrypt the bytes to a string.
+                    string roundtrip = DecryptStringFromBytes_Aes(encrypted, 
+myAes.Key, myAes.IV);
+
+                    //Display the original data and the decrypted data.
+                    Console.WriteLine("Original:   {0}", original);
+                    Console.WriteLine("Round Trip: {0}", roundtrip);
                 }
 
-            } while (b != -1);
- 
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
+            }
+        }
+        static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, 
+byte[] IV)
+        {
+            // Check arguments.
+            if (plainText == null || plainText.Length <= 0)
+                throw new ArgumentNullException("plainText");
+            if (Key == null || Key.Length <= 0)
+                throw new ArgumentNullException("Key");
+            if (IV == null || IV.Length <= 0)
+                throw new ArgumentNullException("IV");
+            byte[] encrypted;
+            // Create an Aes object
+            // with the specified key and IV.
+            using (Aes aesAlg = Aes.Create())
+            {
+                aesAlg.Key = Key;
+                aesAlg.IV = IV;
 
-            // Display the original data and the decrypted data.
-            Console.WriteLine("Original:   {0}", original);
-            Console.WriteLine("Round Trip: {0}", roundtrip);
+                // Create a decrytor to perform the stream transform.
+                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key
+, aesAlg.IV);
 
-            Console.ReadLine();
+                // Create the streams used for encryption.
+                using (MemoryStream msEncrypt = new MemoryStream())
+                {
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt
+, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter swEncrypt = new StreamWriter(
+csEncrypt))
+                        {
+
+                            //Write all data to the stream.
+                            swEncrypt.Write(plainText);
+                        }
+                        encrypted = msEncrypt.ToArray();
+                    }
+                }
+            }
+
+
+            // Return the encrypted bytes from the memory stream.
+            return encrypted;
+
+        }
+
+        static string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key
+, byte[] IV)
+        {
+            // Check arguments.
+            if (cipherText == null || cipherText.Length <= 0)
+                throw new ArgumentNullException("cipherText");
+            if (Key == null || Key.Length <= 0)
+                throw new ArgumentNullException("Key");
+            if (IV == null || IV.Length <= 0)
+                throw new ArgumentNullException("IV");
+
+            // Declare the string used to hold
+            // the decrypted text.
+            string plaintext = null;
+
+            // Create an Aes object
+            // with the specified key and IV.
+            using (Aes aesAlg = Aes.Create())
+            {
+                aesAlg.Key = Key;
+                aesAlg.IV = IV;
+
+                // Create a decrytor to perform the stream transform.
+                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key
+, aesAlg.IV);
+
+                // Create the streams used for decryption.
+                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
+                {
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt
+, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader srDecrypt = new StreamReader(
+csDecrypt))
+                        {
+
+                            // Read the decrypted bytes from the decrypting 
+stream
+                            // and place them in a string.
+                            plaintext = srDecrypt.ReadToEnd();
+                        }
+                    }
+                }
+
+            }
+
+            return plaintext;
+
         }
     }
 }

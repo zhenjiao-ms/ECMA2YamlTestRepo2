@@ -1,131 +1,107 @@
-   Public Class Form1
-      Inherits System.Windows.Forms.Form
-      Private WithEvents listBox1 As System.Windows.Forms.ListBox
-      Private components As System.ComponentModel.Container = Nothing
+Imports System
+Imports System.Drawing
+Imports System.Windows.Forms
 
-      Private FontSize As Single = 12.0F
+Public NotInheritable Class Form1
+    Inherits System.Windows.Forms.Form
 
-      '
-      '  This sample displays a ListBox that contains a list of all the fonts
-      '  installed on the system and draws each item in its respective font.
-      '
-      Public Sub New()
-         InitializeComponent()
+    Friend WithEvents MonthCalendar1 As System.Windows.Forms.MonthCalendar
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
 
-         ' Populate control with the fonts installed on the system.
-         Dim families As FontFamily() = FontFamily.Families
+    <System.STAThread()> _
+    Public Shared Sub Main()
+        System.Windows.Forms.Application.Run(New Form1)
+    End Sub 'Main
 
-         Dim family As FontFamily
-         For Each family In families
-            Dim style As FontStyle = FontStyle.Regular
+    Public Sub New()
+        MyBase.New()
 
-            ' Monotype Corsiva is only available in italic
-            If family.Name = "Monotype Corsiva" Then
-               style = style Or FontStyle.Italic
-            End If
+        Me.TextBox1 = New System.Windows.Forms.TextBox
+        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TextBox1.Location = New System.Drawing.Point(48, 488)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(824, 32)
 
-            listBox1.Items.Add(New ListBoxFontItem(New Font(family.Name, FontSize, style, GraphicsUnit.Point)))
-         Next family
-      End Sub
+        ' Create the calendar.
+        Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar
 
+        ' Set the calendar location.
+        Me.MonthCalendar1.Location = New System.Drawing.Point(47, 16)
 
-      Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
-         If disposing Then
-            If (components IsNot Nothing) Then
-               components.Dispose()
-            End If
+        ' Change the color.
+        Me.MonthCalendar1.BackColor = System.Drawing.SystemColors.Info
+        Me.MonthCalendar1.ForeColor = System.Drawing.Color.FromArgb( _
+                                CType(192, System.Byte), CType(0, System.Byte), CType(192, System.Byte))
+        Me.MonthCalendar1.TitleBackColor = System.Drawing.Color.Purple
+        Me.MonthCalendar1.TitleForeColor = System.Drawing.Color.Yellow
+        Me.MonthCalendar1.TrailingForeColor = System.Drawing.Color.FromArgb( _
+                                CType(192, System.Byte), CType(192, System.Byte), CType(0, System.Byte))
 
-            If (foreColorBrush IsNot Nothing) Then
-               foreColorBrush.Dispose()
-            End If
-         End If
+        ' Add dates to the AnnuallyBoldedDates array.
+        Me.MonthCalendar1.AnnuallyBoldedDates = New System.DateTime() _
+                     {New System.DateTime(2002, 4, 20, 0, 0, 0, 0), _
+                      New System.DateTime(2002, 4, 28, 0, 0, 0, 0), _
+                      New System.DateTime(2002, 5, 5, 0, 0, 0, 0), _
+                      New System.DateTime(2002, 7, 4, 0, 0, 0, 0), _
+                      New System.DateTime(2002, 12, 15, 0, 0, 0, 0), _ 
+                      New System.DateTime(2002, 12, 18, 0, 0, 0, 0)}
 
-         MyBase.Dispose(disposing)
-      End Sub
+        ' Add dates to BoldedDates array.
+        Me.MonthCalendar1.BoldedDates = New System.DateTime() {New System.DateTime(2002, 9, 26, 0, 0, 0, 0)}
 
-      Private Sub InitializeComponent()
-         Me.listBox1 = New System.Windows.Forms.ListBox()
-         Me.SuspendLayout()
-         ' 
-         ' listBox1
-         ' 
-         Me.listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable
-         Me.listBox1.Location = New System.Drawing.Point(16, 48)
-         Me.listBox1.Name = "listBox1"
-         Me.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-         Me.listBox1.Size = New System.Drawing.Size(256, 134)
-         Me.listBox1.TabIndex = 0
-         ' 
-         ' Form1
-         ' 
-         Me.ClientSize = New System.Drawing.Size(292, 273)
-         Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.listBox1})
-         Me.Name = "Form1"
-         Me.Text = "Form1"
-         Me.ResumeLayout(False)
-      End Sub
+        ' Add dates to MonthlyBoldedDates array.
+        Me.MonthCalendar1.MonthlyBoldedDates = New System.DateTime() _
+                     {New System.DateTime(2002, 1, 15, 0, 0, 0, 0), _
+                      New System.DateTime(2002, 1, 30, 0, 0, 0, 0)}
 
-      <STAThread()> Shared Sub Main()
-         Application.Run(New Form1())
-      End Sub
+        ' Configure the calendar to display 3 rows by 4 columns of months.
+        Me.MonthCalendar1.CalendarDimensions = New System.Drawing.Size(4, 3)
 
-      Private Sub listBox1_MeasureItem(ByVal sender As Object, ByVal e As System.Windows.Forms.MeasureItemEventArgs) Handles listBox1.MeasureItem
-         Dim font As Font = CType(listBox1.Items(e.Index), ListBoxFontItem).Font
-         Dim stringSize As SizeF = e.Graphics.MeasureString(font.Name, font)
+        ' Set the week to begin on Monday.
+        Me.MonthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday
 
-         ' Set the height and width of the item
-         e.ItemHeight = CInt(stringSize.Height)
-         e.ItemWidth = CInt(stringSize.Width)
-      End Sub
+        ' Sets the maximum visible date on the calendar to 12/31/2010.
+        Me.MonthCalendar1.MaxDate = New System.DateTime(2010, 12, 31, 0, 0, 0, 0)
 
-      ' For efficiency, cache the brush used for drawing.
-      Private foreColorBrush As SolidBrush
+        ' Set the minimum visible date on the calendar to 12/31/2010.
+        Me.MonthCalendar1.MinDate = New System.DateTime(1999, 1, 1, 0, 0, 0, 0)
 
-      Private Sub listBox1_DrawItem(ByVal sender As Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles listBox1.DrawItem
-         Dim brush As Brush
+        ' Only allow 21 days to be selected at the same time.
+        Me.MonthCalendar1.MaxSelectionCount = 21
 
-         ' Create the brush using the ForeColor specified by the DrawItemEventArgs
-         If foreColorBrush Is Nothing Then
-            foreColorBrush = New SolidBrush(e.ForeColor)
-         Else
-            If Not foreColorBrush.Color.Equals(e.ForeColor) Then
-               ' The control's ForeColor has changed, so dispose of the cached brush and
-               ' create a new one.
-               foreColorBrush.Dispose()
-               foreColorBrush = New SolidBrush(e.ForeColor)
-            End If
-         End If
+        ' Set the calendar to move one month at a time when navigating using the arrows.
+        Me.MonthCalendar1.ScrollChange = 1
 
-         ' Select the appropriate brush depending on if the item is selected.
-         ' Since State can be a combinateion (bit-flag) of enum values, you can't use
-         ' "==" to compare them.
-         If (e.State And DrawItemState.Selected) = DrawItemState.Selected Then
-            brush = SystemBrushes.HighlightText
-         Else
-            brush = foreColorBrush
-         End If
+        ' Do not show the "Today" banner.
+        Me.MonthCalendar1.ShowToday = False
 
-         ' Perform the painting.
-         Dim font As Font = CType(listBox1.Items(e.Index), ListBoxFontItem).Font
-         e.DrawBackground()
-         e.Graphics.DrawString(font.Name, font, brush, e.Bounds.X, e.Bounds.Y)
-         e.DrawFocusRectangle()
-      End Sub
+        ' Do not circle today's date.
+        Me.MonthCalendar1.ShowTodayCircle = False
 
-      '
-      '  A wrapper class for use with storing Fonts in a ListBox.  Since ListBox uses the
-      '  ToString() of its items for the text it displays, this class is needed to return
-      '  the name of the font, rather than its ToString() value.
-      '
-      Public Class ListBoxFontItem
-         Public Font As Font
+        ' Show the week numbers to the left of each week.
+        Me.MonthCalendar1.ShowWeekNumbers = True
 
-         Public Sub New(ByVal f As Font)
-            Font = f
-         End Sub
+        ' Set up how the form should be displayed and add the controls to the form.
+        Me.ClientSize = New System.Drawing.Size(920, 566)
+        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.TextBox1, Me.MonthCalendar1})
+        Me.Text = "Month Calendar Example"
 
-         Public Overrides Function ToString() As String
-            Return Font.Name
-         End Function
-      End Class
-   End Class
+    End Sub
+
+    Private Sub monthCalendar1_DateSelected(ByVal sender As Object, _
+                    ByVal e As System.Windows.Forms.DateRangeEventArgs) Handles MonthCalendar1.DateSelected
+
+        ' Show the start and end dates in the text box.
+        Me.TextBox1.Text = "Date Selected: Start = " + _
+                e.Start.ToShortDateString() + " : End = " + e.End.ToShortDateString()
+    End Sub
+
+    Private Sub monthCalendar1_DateChanged(ByVal sender As Object, _
+                    ByVal e As System.Windows.Forms.DateRangeEventArgs) Handles MonthCalendar1.DateChanged
+
+        ' Show the start and end dates in the text box.
+        Me.TextBox1.Text = "Date Changed: Start = " + _
+                e.Start.ToShortDateString() + " : End = " + e.End.ToShortDateString()
+    End Sub
+End Class

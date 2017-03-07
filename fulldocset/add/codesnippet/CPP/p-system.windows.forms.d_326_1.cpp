@@ -1,55 +1,53 @@
-   // Draws a node.
 private:
-   void myTreeView_DrawNode( Object^ sender, DrawTreeNodeEventArgs^ e )
+   void AddCustomDataTableStyle()
    {
-      // Draw the background and node text for a selected node.
-      if ( (e->State & TreeNodeStates::Selected) != (TreeNodeStates)0 )
-      {
-         // Draw the background of the selected node. The NodeBounds
-         // method makes the highlight rectangle large enough to
-         // include the text of a node tag, if one is present.
-         e->Graphics->FillRectangle( Brushes::Green, NodeBounds( e->Node ) );
+      myDataGridTableStyle1 = gcnew DataGridTableStyle;
 
-         // Retrieve the node font. If the node font has not been set,
-         // use the TreeView font.
-         System::Drawing::Font^ nodeFont = e->Node->NodeFont;
-         if ( nodeFont == nullptr )
-                  nodeFont = (dynamic_cast<TreeView^>(sender))->Font;
+      // EventHandlers
+      myDataGridTableStyle1->GridLineColorChanged += gcnew System::EventHandler( this, &DataGridTableStyle_Sample::GridLineColorChanged_Handler );
+      myDataGridTableStyle1->MappingName = "Customers";
 
-         // Draw the node text.
-         e->Graphics->DrawString( e->Node->Text, nodeFont, Brushes::White, Rectangle::Inflate( e->Bounds, 2, 0 ) );
-      }
-      // Use the default background and node text.
-      else
-      {
-         e->DrawDefault = true;
-      }
+      // Set other properties.
+      myDataGridTableStyle1->AlternatingBackColor = System::Drawing::Color::Gold;
+      myDataGridTableStyle1->BackColor = System::Drawing::Color::White;
+      myDataGridTableStyle1->GridLineStyle = System::Windows::Forms::DataGridLineStyle::Solid;
+      myDataGridTableStyle1->GridLineColor = Color::Red;
 
-      // If a node tag is present, draw its string representation 
-      // to the right of the label text.
-      if ( e->Node->Tag != nullptr )
-      {
-         e->Graphics->DrawString( e->Node->Tag->ToString(), tagFont, Brushes::Yellow, (float)e->Bounds.Right + 2, (float)e->Bounds.Top );
-      }
+      // Set the HeaderText and Width properties.
+      DataGridColumnStyle^ myBoolCol = gcnew DataGridBoolColumn;
+      myBoolCol->MappingName = "Current";
+      myBoolCol->HeaderText = "IsCurrent Customer";
+      myBoolCol->Width = 150;
+      myDataGridTableStyle1->GridColumnStyles->Add( myBoolCol );
 
-      
-      // If the node has focus, draw the focus rectangle large, making
-      // it large enough to include the text of the node tag, if present.
-      if ( (e->State & TreeNodeStates::Focused) != (TreeNodeStates)0 )
-      {
-         Pen^ focusPen = gcnew Pen( Color::Black );
-         try
-         {
-            focusPen->DashStyle = System::Drawing::Drawing2D::DashStyle::Dot;
-            Rectangle focusBounds = NodeBounds( e->Node );
-            focusBounds.Size = System::Drawing::Size( focusBounds.Width - 1, focusBounds.Height - 1 );
-            e->Graphics->DrawRectangle( focusPen, focusBounds );
-         }
-         finally
-         {
-            if ( focusPen )
-               delete safe_cast<IDisposable^>(focusPen);
-         }
+      // Add a second column style.
+      DataGridColumnStyle^ myTextCol = gcnew DataGridTextBoxColumn;
+      myTextCol->MappingName = "custName";
+      myTextCol->HeaderText = "Customer Name";
+      myTextCol->Width = 250;
+      myDataGridTableStyle1->GridColumnStyles->Add( myTextCol );
 
-      }
+      // Create new ColumnStyle objects
+      DataGridColumnStyle^ cOrderDate = gcnew DataGridTextBoxColumn;
+      cOrderDate->MappingName = "OrderDate";
+      cOrderDate->HeaderText = "Order Date";
+      cOrderDate->Width = 100;
+
+      // Use a PropertyDescriptor to create a formatted column.
+      PropertyDescriptorCollection^ myPropertyDescriptorCollection =
+         BindingContext[myDataSet, "Customers::custToOrders"]->GetItemProperties();
+
+      // Create a formatted column using a PropertyDescriptor.
+      DataGridColumnStyle^ csOrderAmount = gcnew DataGridTextBoxColumn( myPropertyDescriptorCollection[ "OrderAmount" ],"c",true );
+      csOrderAmount->MappingName = "OrderAmount";
+      csOrderAmount->HeaderText = "Total";
+      csOrderAmount->Width = 100;
+
+      // Add the DataGridTableStyle instances to the GridTableStylesCollection.
+      myDataGrid->TableStyles->Add( myDataGridTableStyle1 );
+   }
+
+   void GridLineColorChanged_Handler( Object^ /*sender*/, EventArgs^ /*e*/ )
+   {
+      MessageBox::Show( "GridLineColor Changed", "DataGridTableStyle" );
    }

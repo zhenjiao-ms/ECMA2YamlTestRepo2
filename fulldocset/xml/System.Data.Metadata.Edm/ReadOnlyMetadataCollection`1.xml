@@ -22,8 +22,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <typeparam name="T">To be added.</typeparam>
-    <summary>To be added.</summary>
+    <typeparam name="T">The type of elements in the collection.</typeparam>
+    <summary>Represents a collection of members in the [!INCLUDE[vstecado](~/add/includes/vstecado-md.md)] metadata hierarchy by providing a read-only collection with advanced lookup capabilities. This class is derived from the <see cref="System.Collections.ObjectModel.ReadOnlyCollection" /> class.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -44,9 +44,10 @@
         <Parameter Name="identity" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="identity">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="identity">The identity of the item.</param>
+        <summary>Determines whether the collection contains an item with the specified identity.</summary>
+        <returns>
+          <see langword="true" /> if the collection contains the item to be searched for; otherwise, <see langword="false" />. The default is false.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -65,8 +66,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns an enumerator that can iterate through this collection.</summary>
+        <returns>A <see cref="System.Data.Metadata.Edm.ReadOnlyMetadataCollection%601.Enumerator" /> that can be used to iterate through this <see cref="System.Data.Metadata.Edm.ReadOnlyMetadataCollection" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -88,10 +89,11 @@
         <Parameter Name="ignoreCase" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="identity">To be added.</param>
-        <param name="ignoreCase">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="identity">The identity of the item to be searched for.</param>
+        <param name="ignoreCase">
+          <see langword="true" /> to perform the case-insensitive search; otherwise, <see langword="false" />.</param>
+        <summary>Retrieves an item from this collection by using the specified identity.</summary>
+        <returns>An item from this collection.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -112,9 +114,9 @@
         <Parameter Name="value" Type="T" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="value">A value to seek.</param>
+        <summary>Returns the index of the specified value in this collection.</summary>
+        <returns>The index of the specified value in this collection.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -132,8 +134,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value indicating whether this collection is read-only.</summary>
+        <value>
+          <see langword="true" /> if this collection is read-only; otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -154,9 +157,9 @@
         <Parameter Name="identity" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="identity">To be added.</param>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <param name="identity">The identity of the item to be searched for.</param>
+        <summary>Gets an item from this collection by using the specified identity.</summary>
+        <value>An item from this collection.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -179,11 +182,13 @@
         <Parameter Name="item" Type="T&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="identity">To be added.</param>
-        <param name="ignoreCase">To be added.</param>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="identity">The identity of the item to be searched for.</param>
+        <param name="ignoreCase">
+          <see langword="true" /> to perform the case-insensitive search; otherwise, <see langword="false" />.</param>
+        <param name="item">When this method returns, this output parameter contains an item from the collection. If there is no matched item, this output parameter contains null.</param>
+        <summary>Retrieves an item from this collection by using the specified identity.</summary>
+        <returns>
+          <see langword="true" /> if there is an item that matches the search criteria; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

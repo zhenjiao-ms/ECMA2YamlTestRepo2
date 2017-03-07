@@ -1,112 +1,66 @@
-'
-' This example signs a file specified by a URI 
-' using a detached signature. It then verifies  
-' the signed XML.
-'
 Imports System
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.Xml
-Imports System.Text
-Imports System.Xml
+Imports System.Security.Cryptography.X509Certificates
 
 
-Class XMLDSIGDetached
 
-   
-   <STAThread()>  _
-   Overloads Shared Sub Main(args() As String)
-      ' The URI to sign.
-      Dim resourceToSign As String = "http://www.microsoft.com"
-      
-      ' The name of the file to which to save the XML signature.
-      Dim XmlFileName As String = "xmldsig.xml"
-      
+Class AsnEncodedDataSample
+   Shared msg As String
+   Shared Sub Main()
+      'The following example demonstrates the usage the AsnEncodedData classes.
+      ' Asn encoded data is read from the extensions of an X509 certificate.
       Try
+         ' Open the certificate store.
+         Dim store As New X509Store("MY", StoreLocation.CurrentUser)
+         store.Open((OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly))
+         Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+         Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
+         ' Select one or more certificates to display extensions information.
+         Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection)
          
-         ' Generate a signing key.
-         Dim Key As New RSACryptoServiceProvider()
+         ' Create a new AsnEncodedDataCollection object.
+         Dim asncoll As New AsnEncodedDataCollection()
+         Dim i As Integer
+         For i = 0 To scollection.Count - 1
+            ' Display certificate information.
+	    msg = "Certificate name: "& scollection(i).GetName()
+            MsgBox(msg)
+
+            ' Display extensions information.
+            Dim extension As X509Extension
+            For Each extension In  scollection(i).Extensions
+               ' Create an AsnEncodedData object using the extensions information.
+               Dim asndata As New AsnEncodedData(extension.Oid, extension.RawData)
+	       msg = "Extension type: " & extension.Oid.FriendlyName & Environment.NewLine & "Oid value: " & asndata.Oid.Value _
+		& Environment.NewLine & "Raw data length: " & asndata.RawData.Length & Environment.NewLine _
+		& asndata.Format(True) & Environment.NewLine
+               MsgBox(msg)
+		
+               ' Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+               asncoll.Add(asndata)
+            Next extension
+         Next i
+	 msg = "Number of AsnEncodedData items in the collection: " & asncoll.Count
+         MsgBox(msg)         
+         store.Close()
+
+         'Create an enumerator for moving through the collection.
+         Dim asne As AsnEncodedDataEnumerator = asncoll.GetEnumerator()
+         'You must execute a MoveNext() to get to the first item in the collection.
+         asne.MoveNext()
+         ' Write out AsnEncodedData in the collection.
+	 msg = "First AsnEncodedData in the collection: " & asne.Current.Format(True)
+	 MsgBox(msg)
+	
          
-         Console.WriteLine("Signing: {0}", resourceToSign)
-         
-         ' Sign the detached resourceand save the signature in an XML file.
-         SignDetachedResource(resourceToSign, XmlFileName, Key)
-         
-         Console.WriteLine("XML signature was succesfully computed and saved to {0}.", XmlFileName)
-         
-         ' Verify the signature of the signed XML.
-         Console.WriteLine("Verifying signature...")
-         
-         'Verify the XML signature in the XML file.
-         Dim result As Boolean = VerifyDetachedSignature(XmlFileName)
-         
-         ' Display the results of the signature verification to 
-         ' the console.
-         If result Then
-            Console.WriteLine("The XML signature is valid.")
-         Else
-            Console.WriteLine("The XML signature is not valid.")
-         End If
-      Catch e As CryptographicException
-         Console.WriteLine(e.Message)
-      End Try 
-   End Sub 
-   
-   
-   ' Sign an XML file and save the signature in a new file.
-   Public Shared Sub SignDetachedResource(URIString As String, XmlSigFileName As String, Key As RSA)
-      ' Create a SignedXml object.
-      Dim signedXml As New SignedXml()
-      
-      ' Assign the key to the SignedXml object.
-      signedXml.SigningKey = Key
-      
-      ' Create a reference to be signed.
-      Dim reference As New Reference()
-      
-      ' Add the passed URI to the reference object.
-      reference.Uri = URIString
-      
-      ' Add the reference to the SignedXml object.
-      signedXml.AddReference(reference)
-      
-      ' Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-      Dim keyInfo As New KeyInfo()
-      keyInfo.AddClause(New RSAKeyValue(CType(Key, RSA)))
-      signedXml.KeyInfo = keyInfo
-      
-      ' Compute the signature.
-      signedXml.ComputeSignature()
-      
-      ' Get the XML representation of the signature and save
-      ' it to an XmlElement object.
-      Dim xmlDigitalSignature As XmlElement = signedXml.GetXml()
-      
-      ' Save the signed XML document to a file specified
-      ' using the passed string.
-      Dim xmltw As New XmlTextWriter(XmlSigFileName, New UTF8Encoding(False))
-      xmlDigitalSignature.WriteTo(xmltw)
-      xmltw.Close()
-   End Sub 
- 
-   ' Verify the signature of an XML file and return the result.
-   Public Shared Function VerifyDetachedSignature(XmlSigFileName As String) As [Boolean]
-      ' Create a new XML document.
-      Dim xmlDocument As New XmlDocument()
-      
-      ' Load the passed XML file into the document.
-      xmlDocument.Load(XmlSigFileName)
-      
-      ' Create a new SignedXMl object.
-      Dim signedXml As New SignedXml()
-      
-      ' Find the "Signature" node and create a new
-      ' XmlNodeList object.
-      Dim nodeList As XmlNodeList = xmlDocument.GetElementsByTagName("Signature")
-      
-      ' Load the signature node.
-      signedXml.LoadXml(CType(nodeList(0), XmlElement))
-      
-      ' Check the signature and return the result.
-      Return signedXml.CheckSignature()
-   End Function
-End Class 
+         asne.MoveNext()
+	 msg = "Second AsnEncodedData in the collection: " & asne.Current.Format(True)
+	 MsgBox(msg)
+        
+         'Return index in the collection to the beginning.
+         asne.Reset()
+      Catch 
+         MsgBox("Information could not be written out for this certificate.")
+      End Try
+   End Sub 'Main
+End Class 'AsnEncodedDataSample

@@ -1,26 +1,24 @@
-Private Sub GetFormats2()
-   ' Creates a new data object using a string and the UnicodeText format.
-   Dim myDataObject As New DataObject(DataFormats.UnicodeText, "My text string")
+Private Sub SetData3()
+   ' Creates a component.
+   Dim myComponent As New System.ComponentModel.Component()
    
-   ' Gets the original data formats in the data object by setting the automatic
-   ' conversion parameter to false.
-   Dim myFormatsArray As [String]() = myDataObject.GetFormats(False)
+   ' Gets the type of the component.
+   Dim myType As Type = myComponent.GetType()
    
-   ' Stores the results in a string.
-   Dim theResult As String = "The original format associated with the data is:" & vbCr
-   Dim i As Integer
-   For i = 0 To myFormatsArray.Length - 1
-      theResult += myFormatsArray(i) + vbCr
-   Next i 
-   ' Gets all data formats and data conversion formats for the data object.
-   myFormatsArray = myDataObject.GetFormats(True)
+   ' Creates a data object.
+   Dim myDataObject As New DataObject()
    
-   ' Stores the results in the string.
-   theResult += vbCr + "The data format(s) and conversion format(s) associated with " & _
-     "the data are:" & vbCr
-   For i = 0 To myFormatsArray.Length - 1
-      theResult += myFormatsArray(i) + vbCr
-   Next i
-   ' Displays the results.
-   MessageBox.Show(theResult)
-End Sub 'GetFormats2
+   ' Stores the component in the data object.
+   myDataObject.SetData(myType, myComponent)
+   
+   ' Checks whether data of the specified type is in the data object.
+   Dim myMessageText As String
+   If myDataObject.GetDataPresent(myType) Then
+      myMessageText = "Data of type " & myType.Name & " is stored in the data object"
+   Else
+      myMessageText = "No data of type " & myType.Name & " is stored in the data object"
+   End If
+   
+   ' Displays the result.
+   MessageBox.Show(myMessageText, "The Test Result")
+End Sub 'SetData3

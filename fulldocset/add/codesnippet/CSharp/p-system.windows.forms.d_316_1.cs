@@ -1,13 +1,17 @@
-        public override DataGridViewAdvancedBorderStyle AdjustedTopLeftHeaderBorderStyle
+    // Override OnMouseClick in a class derived from DataGridViewCell to 
+    // enter edit mode when the user clicks the cell. 
+    protected override void OnMouseClick(DataGridViewCellMouseEventArgs e)
+    {
+        if (base.DataGridView != null)
         {
-            get
+            Point point1 = base.DataGridView.CurrentCellAddress;
+            if (point1.X == e.ColumnIndex &&
+                point1.Y == e.RowIndex &&
+                e.Button == MouseButtons.Left &&
+                base.DataGridView.EditMode !=
+                DataGridViewEditMode.EditProgrammatically)
             {
-                DataGridViewAdvancedBorderStyle newStyle =
-                    new DataGridViewAdvancedBorderStyle();
-                newStyle.Top = DataGridViewAdvancedCellBorderStyle.None;
-                newStyle.Left = DataGridViewAdvancedCellBorderStyle.None;
-                newStyle.Bottom = DataGridViewAdvancedCellBorderStyle.Outset;
-                newStyle.Right = DataGridViewAdvancedCellBorderStyle.OutsetDouble;
-                return newStyle;
+                base.DataGridView.BeginEdit(true);
             }
         }
+    }

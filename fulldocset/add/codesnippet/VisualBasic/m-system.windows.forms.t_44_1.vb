@@ -1,51 +1,48 @@
-' Get the tree node under the mouse pointer and
-' save it in the mySelectedNode variable. 
-Private Sub treeView1_MouseDown(sender As Object, _
-  e As System.Windows.Forms.MouseEventArgs)
-        
-   mySelectedNode = treeView1.GetNodeAt(e.X, e.Y)
-End Sub    
-    
-Private Sub menuItem1_Click(sender As Object, e As System.EventArgs)
-   If Not (mySelectedNode Is Nothing) And _
-     Not (mySelectedNode.Parent Is Nothing) Then
-      treeView1.SelectedNode = mySelectedNode
-      treeView1.LabelEdit = True
-      If Not mySelectedNode.IsEditing Then
-         mySelectedNode.BeginEdit()
-      End If
-   Else
-      MessageBox.Show("No tree node selected or selected node is a root node." & _
-        Microsoft.VisualBasic.ControlChars.Cr & _
-        "Editing of root nodes is not allowed.", "Invalid selection")
-   End If
-End Sub    
-    
-Private Sub treeView1_AfterLabelEdit(sender As Object, _
-  e As System.Windows.Forms.NodeLabelEditEventArgs)
-   If Not (e.Label Is Nothing) Then
-      If e.Label.Length > 0 Then
-         If e.Label.IndexOfAny(New Char() {"@"c, "."c, ","c, "!"c}) = -1 Then
-            ' Stop editing without canceling the label change.
-            e.Node.EndEdit(False)
-         Else
-            ' Cancel the label edit action, inform the user, and
-            ' place the node in edit mode again. 
-            e.CancelEdit = True
-            MessageBox.Show("Invalid tree node label." & _
-              Microsoft.VisualBasic.ControlChars.Cr & _
-              "The invalid characters are: '@','.', ',', '!'", _
-              "Node Label Edit")
-            e.Node.BeginEdit()
-         End If
-      Else
-         ' Cancel the label edit action, inform the user, and
-         ' place the node in edit mode again. 
-         e.CancelEdit = True
-         MessageBox.Show("Invalid tree node label." & _
-           Microsoft.VisualBasic.ControlChars.Cr & _
-           "The label cannot be blank", "Node Label Edit")
-           e.Node.BeginEdit()
-      End If
-   End If
-End Sub 
+    Private Sub showCheckedNodesButton_Click(ByVal sender As Object, ByVal e As EventArgs)
+        ' Disable redrawing of treeView1 to prevent flickering 
+        ' while changes are made.
+        treeView1.BeginUpdate()
+
+        ' Collapse all nodes of treeView1.
+        treeView1.CollapseAll()
+
+        ' Add the CheckForCheckedChildren event handler to the BeforeExpand event.
+        AddHandler treeView1.BeforeExpand, AddressOf CheckForCheckedChildren
+
+        ' Expand all nodes of treeView1. Nodes without checked children are 
+        ' prevented from expanding by the checkForCheckedChildren event handler.
+        treeView1.ExpandAll()
+
+        ' Remove the checkForCheckedChildren event handler from the BeforeExpand 
+        ' event so manual node expansion will work correctly.
+        RemoveHandler treeView1.BeforeExpand, AddressOf CheckForCheckedChildren
+
+        ' Enable redrawing of treeView1.
+        treeView1.EndUpdate()
+    End Sub 'showCheckedNodesButton_Click
+
+    ' Prevent expansion of a node that does not have any checked child nodes.
+    Private Sub CheckForCheckedChildren(ByVal sender As Object, ByVal e As TreeViewCancelEventArgs)
+        If Not HasCheckedChildNodes(e.Node) Then
+            e.Cancel = True
+        End If
+    End Sub 'CheckForCheckedChildren
+
+    ' Returns a value indicating whether the specified 
+    ' TreeNode has checked child nodes.
+    Private Function HasCheckedChildNodes(ByVal node As TreeNode) As Boolean
+        If node.Nodes.Count = 0 Then
+            Return False
+        End If
+        Dim childNode As TreeNode
+        For Each childNode In node.Nodes
+            If childNode.Checked Then
+                Return True
+            End If
+            ' Recursively check the children of the current child node.
+            If HasCheckedChildNodes(childNode) Then
+                Return True
+            End If
+        Next childNode
+        Return False
+    End Function 'HasCheckedChildNodes

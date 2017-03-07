@@ -1,6 +1,24 @@
-        ' Use the three overloads of the Write method that are 
-        ' overridden by the StringWriter class.
-        strWriter.Write("file path characters are: ")
-        strWriter.Write( _
-            Path.InvalidPathChars, 0, Path.InvalidPathChars.Length)
-        strWriter.Write("."C)
+Imports System.IO
+Imports System.Text
+
+Module Module1
+
+    Sub Main()
+        WriteCharacters()
+    End Sub
+
+    Async Sub WriteCharacters()
+        Dim stringToWrite As StringBuilder = New StringBuilder("Characters in StringBuilder")
+        stringToWrite.AppendLine()
+
+        Using writer As StringWriter = New StringWriter(stringToWrite)
+            Await writer.WriteAsync("and add characters through StringWriter")
+            Console.WriteLine(stringToWrite.ToString())
+        End Using
+    End Sub
+End Module
+' The example displays the following output:
+'
+' Characters in StringBuilder
+' and add characters through StringWriter
+'

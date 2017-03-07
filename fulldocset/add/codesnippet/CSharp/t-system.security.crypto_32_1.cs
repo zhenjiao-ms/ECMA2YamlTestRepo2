@@ -1,108 +1,134 @@
 using System;
+using System.IO;
 using System.Security.Cryptography;
-using System.Text;
 
-class RSACSPSample
+public class HMACSHA384example
 {
 
-    static void Main()
+    public static void Main(string[] Fileargs)
     {
+        string dataFile;
+        string signedFile;
+        //If no file names are specified, create them.
+        if (Fileargs.Length < 2)
+        {
+            dataFile = @"text.txt";
+            signedFile = "signedFile.enc";
+
+            if (!File.Exists(dataFile))
+            {
+                // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(dataFile))
+                {
+                    sw.WriteLine("Here is a message to sign");
+                }
+            }
+
+        }
+        else
+        {
+            dataFile = Fileargs[0];
+            signedFile = Fileargs[1];
+        }
         try
         {
-            //Create a UnicodeEncoder to convert between byte array and string.
-            UnicodeEncoding ByteConverter = new UnicodeEncoding();
-
-            //Create byte arrays to hold original, encrypted, and decrypted data.
-            byte[] dataToEncrypt = ByteConverter.GetBytes("Data to Encrypt");
-            byte[] encryptedData;
-            byte[] decryptedData;
-
-            //Create a new instance of RSACryptoServiceProvider to generate
-            //public and private key data.
-            using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
+            // Create a random key using a random number generator. This would be the
+            //  secret key shared by sender and receiver.
+            byte[] secretkey = new Byte[64];
+            //RNGCryptoServiceProvider is an implementation of a random number generator.
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
             {
+                // The array is now filled with cryptographically strong random bytes.
+                rng.GetBytes(secretkey);
 
-                //Pass the data to ENCRYPT, the public key information 
-                //(using RSACryptoServiceProvider.ExportParameters(false),
-                //and a boolean flag specifying no OAEP padding.
-                encryptedData = RSAEncrypt(dataToEncrypt, RSA.ExportParameters(false), false);
+                // Use the secret key to sign the message file.
+                SignFile(secretkey, dataFile, signedFile);
 
-                //Pass the data to DECRYPT, the private key information 
-                //(using RSACryptoServiceProvider.ExportParameters(true),
-                //and a boolean flag specifying no OAEP padding.
-                decryptedData = RSADecrypt(encryptedData, RSA.ExportParameters(true), false);
-
-                //Display the decrypted plaintext to the console. 
-                Console.WriteLine("Decrypted plaintext: {0}", ByteConverter.GetString(decryptedData));
+                // Verify the signed file
+                VerifyFile(secretkey, signedFile);
             }
         }
-        catch (ArgumentNullException)
+        catch (IOException e)
         {
-            //Catch this exception in case the encryption did
-            //not succeed.
-            Console.WriteLine("Encryption failed.");
-
+            Console.WriteLine("Error: File not found", e);
         }
-    }
 
-    static public byte[] RSAEncrypt(byte[] DataToEncrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding)
+    }  //end main
+    // Computes a keyed hash for a source file and creates a target file with the keyed hash
+    // prepended to the contents of the source file. 
+    public static void SignFile(byte[] key, String sourceFile, String destFile)
     {
-        try
+        // Initialize the keyed hash object.
+        using (HMACSHA384 hmac = new HMACSHA384(key))
         {
-            byte[] encryptedData;
-            //Create a new instance of RSACryptoServiceProvider.
-            using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
+            using (FileStream inStream = new FileStream(sourceFile, FileMode.Open))
             {
-
-                //Import the RSA Key information. This only needs
-                //toinclude the public key information.
-                RSA.ImportParameters(RSAKeyInfo);
-
-                //Encrypt the passed byte array and specify OAEP padding.  
-                //OAEP padding is only available on Microsoft Windows XP or
-                //later.  
-                encryptedData = RSA.Encrypt(DataToEncrypt, DoOAEPPadding);
+                using (FileStream outStream = new FileStream(destFile, FileMode.Create))
+                {
+                    // Compute the hash of the input file.
+                    byte[] hashValue = hmac.ComputeHash(inStream);
+                    // Reset inStream to the beginning of the file.
+                    inStream.Position = 0;
+                    // Write the computed hash value to the output file.
+                    outStream.Write(hashValue, 0, hashValue.Length);
+                    // Copy the contents of the sourceFile to the destFile.
+                    int bytesRead;
+                    // read 1K at a time
+                    byte[] buffer = new byte[1024];
+                    do
+                    {
+                        // Read from the wrapping CryptoStream.
+                        bytesRead = inStream.Read(buffer, 0, 1024);
+                        outStream.Write(buffer, 0, bytesRead);
+                    } while (bytesRead > 0);
+                }
             }
-            return encryptedData;
         }
-        //Catch and display a CryptographicException  
-        //to the console.
-        catch (CryptographicException e)
-        {
-            Console.WriteLine(e.Message);
+        return;
+    } // end SignFile
 
-            return null;
-        }
 
-    }
-
-    static public byte[] RSADecrypt(byte[] DataToDecrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding)
+    // Compares the key in the source file with a new key created for the data portion of the file. If the keys 
+    // compare the data has not been tampered with.
+    public static bool VerifyFile(byte[] key, String sourceFile)
     {
-        try
+        bool err = false;
+        // Initialize the keyed hash object. 
+        using (HMACSHA384 hmac = new HMACSHA384(key))
         {
-            byte[] decryptedData;
-            //Create a new instance of RSACryptoServiceProvider.
-            using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
+            // Create an array to hold the keyed hash value read from the file.
+            byte[] storedHash = new byte[hmac.HashSize / 8];
+            // Create a FileStream for the source file.
+            using (FileStream inStream = new FileStream(sourceFile, FileMode.Open))
             {
-                //Import the RSA Key information. This needs
-                //to include the private key information.
-                RSA.ImportParameters(RSAKeyInfo);
+                // Read in the storedHash.
+                inStream.Read(storedHash, 0, storedHash.Length);
+                // Compute the hash of the remaining contents of the file.
+                // The stream is properly positioned at the beginning of the content, 
+                // immediately after the stored hash value.
+                byte[] computedHash = hmac.ComputeHash(inStream);
+                // compare the computed hash with the stored value
 
-                //Decrypt the passed byte array and specify OAEP padding.  
-                //OAEP padding is only available on Microsoft Windows XP or
-                //later.  
-                decryptedData = RSA.Decrypt(DataToDecrypt, DoOAEPPadding);
+                for (int i = 0; i < storedHash.Length; i++)
+                {
+                    if (computedHash[i] != storedHash[i])
+                    {
+                        err = true;
+                    }
+                }
             }
-            return decryptedData;
         }
-        //Catch and display a CryptographicException  
-        //to the console.
-        catch (CryptographicException e)
+        if (err)
         {
-            Console.WriteLine(e.ToString());
-
-            return null;
+            Console.WriteLine("Hash values differ! Signed file has been tampered with!");
+            return false;
+        }
+        else
+        {
+            Console.WriteLine("Hash values agree -- no tampering occurred.");
+            return true;
         }
 
-    }
-}
+    } //end VerifyFile
+
+} //end class

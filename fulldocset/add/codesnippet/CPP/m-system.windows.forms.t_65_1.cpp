@@ -1,7 +1,9 @@
-protected:
-   // Overridden to return the custom AccessibleObject
-   // for the entire chart.
-   virtual AccessibleObject^ CreateAccessibilityInstance() override
+public:
+   void CreateMyTextBoxControl()
    {
-      return gcnew ChartControlAccessibleObject( this );
+      // Create a new TextBox control using this constructor.
+      TextBox^ textBox1 = gcnew TextBox;
+      // Assign a string of text to the new TextBox control.
+      textBox1->Text = "Hello World!";
+      // Code goes here to add the control to the form's control collection.
    }

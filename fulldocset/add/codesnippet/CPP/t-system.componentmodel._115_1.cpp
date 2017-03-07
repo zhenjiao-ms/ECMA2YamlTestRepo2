@@ -1,23 +1,5 @@
-    [DefaultEvent("CollectionChanged")]
-    public ref class TestCollection: public BaseCollection
-    {
-    private:
-        CollectionChangeEventHandler^ onCollectionChanged;
-        
-    public:
-        event CollectionChangeEventHandler^ CollectionChanged 
-        {
-        public:
-            void add(CollectionChangeEventHandler^ eventHandler)
-            { 
-                onCollectionChanged += eventHandler; 
-            }
-
-        protected:
-            void remove(CollectionChangeEventHandler^ eventHandler) 
-            { 
-                onCollectionChanged -= eventHandler; 
-            }
-        }
-        // Insert additional code.
-    };
+      // Create a DesignerCollection using a constructor
+      // that accepts an array of IDesignerHost objects with 
+      // which to initialize the array.
+      array<IDesignerHost^>^temp0 = {designerhost1,designerhost2};
+      DesignerCollection^ collection = gcnew DesignerCollection( temp0 );

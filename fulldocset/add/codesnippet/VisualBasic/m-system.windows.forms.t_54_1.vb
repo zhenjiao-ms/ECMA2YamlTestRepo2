@@ -1,11 +1,14 @@
- Public Sub SelectMyString()
-     ' Create a string to search for the word "fox".
-     Dim searchString As String = "fox"
-     ' Determine the starting location of the word "fox".
-     Dim index As Integer = textBox1.Text.IndexOf(searchString, 16, 3)
-     ' Determine if the word has been found and select it if it was.
-     If index <> - 1 Then
-         ' Select the string using the index and the length of the string.
-         textBox1.Select(index, searchString.Length)
-     End If
- End Sub
+    'Handles the Enter key being pressed while TextBox1 has focus. 
+    Private Sub TextBox1_KeyDown(ByVal sender As Object, _
+        ByVal e As KeyEventArgs) Handles TextBox1.KeyDown
+        TextBox1.HideSelection = False
+        If e.KeyCode = Keys.Enter Then
+            e.Handled = True
+
+            ' Copy the text from TextBox1 to RichTextBox1, add a CRLF after 
+            ' the copied text, and keep the caret in view.
+            RichTextBox1.SelectedText = TextBox1.Text + _
+                Microsoft.VisualBasic.vbCrLf
+            RichTextBox1.ScrollToCaret()
+        End If
+    End Sub

@@ -7,4 +7,4 @@
 
 			Dim icl As IChannelListener = serviceHost.ChannelDispatchers(0).Listener
 			Dim dispatcher As New ChannelDispatcher(icl)
-			Dim throttle As ServiceThrottle = dispatcher.ServiceThrottle
+			Dim isTransactedReceive As Boolean = dispatcher.IsTransactedReceive

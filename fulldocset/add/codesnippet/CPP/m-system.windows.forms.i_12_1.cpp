@@ -1,13 +1,37 @@
-private:
-   void TestDataObject()
-   {
-      // Creates a new data object using a string and the Text format.
-      String^ myString = "Hello World!";
-      DataObject^ myDataObject = gcnew DataObject( DataFormats::Text,myString );
+internal:
+   System::Windows::Forms::ImageList^ ImageList1;
 
-      // Checks whether the data is present in the Text format and displays the result.
-      if ( myDataObject->GetDataPresent( DataFormats::Text ) )
-            MessageBox::Show( "The stored data is in the Text format.", "Test Result" );
-      else
-            MessageBox::Show( "The stored data is not in the Text format.", "Test Result" );
+private:
+
+   // Create an ImageList Object, populate it, and display
+   // the images it contains.
+   void Button1_Click( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      
+      // Construct the ImageList.
+      ImageList1 = gcnew ImageList;
+      
+      // Set the ImageSize property to a larger size 
+      // (the default is 16 x 16).
+      ImageList1->ImageSize = System::Drawing::Size( 112, 112 );
+      
+      // Add two images to the list.
+      ImageList1->Images->Add( Image::FromFile( "c:\\windows\\FeatherTexture.bmp" ) );
+      ImageList1->Images->Add( Image::FromFile( "C:\\windows\\Gone Fishing.bmp" ) );
+      
+      // Get a Graphics object from the form's handle.
+      Graphics^ theGraphics = Graphics::FromHwnd( this->Handle );
+      
+      // Loop through the images in the list, drawing each image.
+      for ( int count = 0; count < ImageList1->Images->Count; count++ )
+      {
+         ImageList1->Draw( theGraphics, Point(85,85), count );
+         
+         // Call Application.DoEvents to force a repaint of the form.
+         Application::DoEvents();
+         
+         // Call the Sleep method to allow the user to see the image.
+         System::Threading::Thread::Sleep( 1000 );
+
+      }
    }

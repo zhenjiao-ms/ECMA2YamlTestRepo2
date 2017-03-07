@@ -1,105 +1,93 @@
-Imports System
-Imports System.Drawing
-Imports System.Windows.Forms
+   Friend Class StackRenderer
+      Inherits ToolStripProfessionalRenderer
+      Private Shared titleBarGripBmp As Bitmap
+      Private Shared titleBarGripEnc As String = "Qk16AQAAAAAAADYAAAAoAAAAIwAAAAMAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAAuGMy+/n5+/n5uGMyuGMy+/n5+/n5uGMyuGMy+/n5+/n5uGMyuGMy+/n5+/n5uGMyuGMy+/n5+/n5uGMyuGMy+/n5+/n5uGMyuGMy+/n5+/n5uGMyuGMy+/n5+/n5uGMyuGMy+/n5+/n5ANj+RzIomHRh+/n5wm8/RzIomHRh+/n5wm8/RzIomHRh+/n5wm8/RzIomHRh+/n5wm8/RzIomHRh+/n5wm8/RzIomHRh+/n5wm8/RzIomHRh+/n5wm8/RzIomHRh+/n5wm8/RzIomHRh+/n5ANj+RzIoRzIozHtMzHtMRzIoRzIozHtMzHtMRzIoRzIozHtMzHtMRzIoRzIozHtMzHtMRzIoRzIozHtMzHtMRzIoRzIozHtMzHtMRzIoRzIozHtMzHtMRzIoRzIozHtMzHtMRzIoRzIozHtMANj+"
+      
+      ' Define titlebar colors.
+      Private Shared titlebarColor1 As Color = Color.FromArgb(89, 135, 214)
+      Private Shared titlebarColor2 As Color = Color.FromArgb(76, 123, 204)
+      Private Shared titlebarColor3 As Color = Color.FromArgb(63, 111, 194)
+      Private Shared titlebarColor4 As Color = Color.FromArgb(50, 99, 184)
+      Private Shared titlebarColor5 As Color = Color.FromArgb(38, 88, 174)
+      Private Shared titlebarColor6 As Color = Color.FromArgb(25, 76, 164)
+      Private Shared titlebarColor7 As Color = Color.FromArgb(12, 64, 154)
+      Private Shared borderColor As Color = Color.FromArgb(0, 0, 128)
+      
+      Shared Sub New()
+         titleBarGripBmp = StackView.DeserializeFromBase64(titleBarGripEnc)
+        End Sub
+      
+      Public Sub New()
+        End Sub
+      
+        Private Sub DrawTitleBar(ByVal g As Graphics, ByVal rect As Rectangle)
 
-Public Class Form1
-    Inherits Form
-    Private treeView1 As TreeView
-    Private showCheckedNodesButton As Button
+            ' Assign the image for the grip.
+            Dim titlebarGrip As Image = titleBarGripBmp
 
-    Public Sub New()
-        treeView1 = New TreeView
-        showCheckedNodesButton = New Button
+            ' Fill the titlebar. 
+            ' This produces the gradient and the rounded-corner effect.
+            g.DrawLine(New Pen(titlebarColor1), rect.X, rect.Y, rect.X + rect.Width, rect.Y)
+            g.DrawLine(New Pen(titlebarColor2), rect.X, rect.Y + 1, rect.X + rect.Width, rect.Y + 1)
+            g.DrawLine(New Pen(titlebarColor3), rect.X, rect.Y + 2, rect.X + rect.Width, rect.Y + 2)
+            g.DrawLine(New Pen(titlebarColor4), rect.X, rect.Y + 3, rect.X + rect.Width, rect.Y + 3)
+            g.DrawLine(New Pen(titlebarColor5), rect.X, rect.Y + 4, rect.X + rect.Width, rect.Y + 4)
+            g.DrawLine(New Pen(titlebarColor6), rect.X, rect.Y + 5, rect.X + rect.Width, rect.Y + 5)
+            g.DrawLine(New Pen(titlebarColor7), rect.X, rect.Y + 6, rect.X + rect.Width, rect.Y + 6)
 
-        Me.SuspendLayout()
-
-        ' Initialize treeView1.
-        treeView1.Location = New Point(0, 25)
-        treeView1.Size = New Size(292, 248)
-        treeView1.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Bottom Or AnchorStyles.Right
-        treeView1.CheckBoxes = True
-
-        ' Add nodes to treeView1.
-        Dim node As TreeNode
-        Dim x As Integer
-        For x = 0 To 3
-            ' Add a root node.
-            node = treeView1.Nodes.Add(String.Format("Node{0}", x * 4))
-            Dim y As Integer
-            For y = 1 To 4
-                ' Add a node as a child of the previously added node.
-                node = node.Nodes.Add(String.Format("Node{0}", x * 4 + y))
-            Next y
-        Next x
-
-        ' Set the checked state of one of the nodes to
-        ' demonstrate the showCheckedNodesButton button behavior.
-        treeView1.Nodes(1).Nodes(0).Nodes(0).Checked = True
-
-        ' Initialize showCheckedNodesButton.
-        showCheckedNodesButton.Size = New Size(144, 24)
-        showCheckedNodesButton.Text = "Show Checked Nodes"
-        AddHandler showCheckedNodesButton.Click, AddressOf showCheckedNodesButton_Click
-
-        ' Initialize the form.
-        Me.ClientSize = New Size(292, 273)
-        Me.Controls.AddRange(New Control() {showCheckedNodesButton, treeView1})
-
-        Me.ResumeLayout(False)
-    End Sub 'New
-
-    <STAThreadAttribute()> _
-    Shared Sub Main()
-        Application.Run(New Form1)
-    End Sub 'Main
-
-    Private Sub showCheckedNodesButton_Click(ByVal sender As Object, ByVal e As EventArgs)
-        ' Disable redrawing of treeView1 to prevent flickering 
-        ' while changes are made.
-        treeView1.BeginUpdate()
-
-        ' Collapse all nodes of treeView1.
-        treeView1.CollapseAll()
-
-        ' Add the CheckForCheckedChildren event handler to the BeforeExpand event.
-        AddHandler treeView1.BeforeExpand, AddressOf CheckForCheckedChildren
-
-        ' Expand all nodes of treeView1. Nodes without checked children are 
-        ' prevented from expanding by the checkForCheckedChildren event handler.
-        treeView1.ExpandAll()
-
-        ' Remove the checkForCheckedChildren event handler from the BeforeExpand 
-        ' event so manual node expansion will work correctly.
-        RemoveHandler treeView1.BeforeExpand, AddressOf CheckForCheckedChildren
-
-        ' Enable redrawing of treeView1.
-        treeView1.EndUpdate()
-    End Sub 'showCheckedNodesButton_Click
-
-    ' Prevent expansion of a node that does not have any checked child nodes.
-    Private Sub CheckForCheckedChildren(ByVal sender As Object, ByVal e As TreeViewCancelEventArgs)
-        If Not HasCheckedChildNodes(e.Node) Then
-            e.Cancel = True
-        End If
-    End Sub 'CheckForCheckedChildren
-
-    ' Returns a value indicating whether the specified 
-    ' TreeNode has checked child nodes.
-    Private Function HasCheckedChildNodes(ByVal node As TreeNode) As Boolean
-        If node.Nodes.Count = 0 Then
-            Return False
-        End If
-        Dim childNode As TreeNode
-        For Each childNode In node.Nodes
-            If childNode.Checked Then
-                Return True
-            End If
-            ' Recursively check the children of the current child node.
-            If HasCheckedChildNodes(childNode) Then
-                Return True
-            End If
-        Next childNode
-        Return False
-    End Function 'HasCheckedChildNodes
-
-End Class 'Form1 
+            ' Center the titlebar grip.
+            g.DrawImage(titlebarGrip, New Point(rect.X + (rect.Width / 2 - titlebarGrip.Width / 2), rect.Y + 1))
+        End Sub
+      
+      
+      ' This method handles the RenderGrip event.
+      Protected Overrides Sub OnRenderGrip(e As ToolStripGripRenderEventArgs)
+         DrawTitleBar(e.Graphics, New Rectangle(0, 0, e.ToolStrip.Width, 7))
+        End Sub
+      
+      
+      ' This method handles the RenderToolStripBorder event.
+      Protected Overrides Sub OnRenderToolStripBorder(e As ToolStripRenderEventArgs)
+         DrawTitleBar(e.Graphics, New Rectangle(0, 0, e.ToolStrip.Width, 7))
+        End Sub
+      
+      
+      ' This method handles the RenderButtonBackground event.
+      Protected Overrides Sub OnRenderButtonBackground(e As ToolStripItemRenderEventArgs)
+         Dim g As Graphics = e.Graphics
+         Dim bounds As New Rectangle(Point.Empty, e.Item.Size)
+         
+         Dim gradientBegin As Color = Color.FromArgb(203, 225, 252)
+         Dim gradientEnd As Color = Color.FromArgb(125, 165, 224)
+         
+            Dim button As ToolStripButton = CType(e.Item, ToolStripButton)
+         
+         If button.Pressed OrElse button.Checked Then
+            gradientBegin = Color.FromArgb(254, 128, 62)
+            gradientEnd = Color.FromArgb(255, 223, 154)
+         ElseIf button.Selected Then
+            gradientBegin = Color.FromArgb(255, 255, 222)
+            gradientEnd = Color.FromArgb(255, 203, 136)
+         End If
+         
+         Dim b = New LinearGradientBrush(bounds, gradientBegin, gradientEnd, LinearGradientMode.Vertical)
+         Try
+            g.FillRectangle(b, bounds)
+         Finally
+            b.Dispose()
+         End Try
+         
+         e.Graphics.DrawRectangle(SystemPens.ControlDarkDark, bounds)
+         
+         g.DrawLine(SystemPens.ControlDarkDark, bounds.X, bounds.Y, bounds.Width - 1, bounds.Y)
+         
+         g.DrawLine(SystemPens.ControlDarkDark, bounds.X, bounds.Y, bounds.X, bounds.Height - 1)
+         
+         Dim toolStrip As ToolStrip = button.Owner
+            Dim nextItem As ToolStripButton = CType(button.Owner.GetItemAt(button.Bounds.X, button.Bounds.Bottom + 1), ToolStripButton)
+         
+         If nextItem Is Nothing Then
+            g.DrawLine(SystemPens.ControlDarkDark, bounds.X, bounds.Height - 1, bounds.X + bounds.Width - 1, bounds.Height - 1)
+         End If
+        End Sub
+    End Class

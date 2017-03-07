@@ -1,67 +1,79 @@
-Imports System.IO
+Imports System
 Imports System.Collections
-Imports System.Runtime.Serialization.Formatters.Binary
+Imports System.Xml
 Imports System.Runtime.Serialization
+Imports System.Xml.Schema
 
-
-Module App
-
-    Sub Main()
-        Serialize()
-        Deserialize()
-    End Sub
-
-    Sub Serialize()
-
-        ' Create a hashtable of values that will eventually be serialized.
-        Dim addresses As New Hashtable
-        addresses.Add("Jeff", "123 Main Street, Redmond, WA 98052")
-        addresses.Add("Fred", "987 Pine Road, Phila., PA 19116")
-        addresses.Add("Mary", "PO Box 112233, Palo Alto, CA 94301")
-
-        ' To serialize the hashtable (and its key/value pairs),  
-        ' you must first open a stream for writing. 
-        ' In this case, use a file stream.
-        Dim fs As New FileStream("DataFile.dat", FileMode.Create)
-
-        ' Construct a BinaryFormatter and use it to serialize the data to the stream.
-        Dim formatter As New BinaryFormatter
+Public Class Program
+    Public Shared Sub Main() 
         Try
-            formatter.Serialize(fs, addresses)
-        Catch e As SerializationException
-            Console.WriteLine("Failed to serialize. Reason: " & e.Message)
-            Throw
+            ExportXSD()
+        Catch exc As Exception
+            Console.WriteLine("Message: {0} StackTrace:{1}", exc.Message, exc.StackTrace)
         Finally
-            fs.Close()
+            Console.ReadLine()
         End Try
-    End Sub
+    
+    End Sub 
+    
+    
+    Shared Sub ExportXSD() 
 
+        Dim exporter As New XsdDataContractExporter()
 
+        ' Use the ExportOptions to add the Possessions type to the 
+        ' collection of KnownTypes. 
+        Dim eOptions As New ExportOptions()
+        eOptions.KnownTypes.Add(GetType(Possessions))        
+        exporter.Options = eOptions
 
-    Sub Deserialize()
-        ' Declare the hashtable reference.
-        Dim addresses As Hashtable = Nothing
+        If exporter.CanExport(GetType(Employee)) Then
+            exporter.Export(GetType(Employee))
+            Console.WriteLine("number of schemas: {0}", exporter.Schemas.Count)
+            Console.WriteLine()
+            Dim mySchemas As XmlSchemaSet = exporter.Schemas
+            
+            Dim XmlNameValue As XmlQualifiedName = _
+               exporter.GetRootElementName(GetType(Employee))
+            Dim EmployeeNameSpace As String = XmlNameValue.Namespace
+            
+            Dim schema As XmlSchema
+            For Each schema In  mySchemas.Schemas(EmployeeNameSpace)
+                schema.Write(Console.Out)
+            Next schema
+        End If
+    
+    End Sub 
+    
+    
+    Shared Sub GetXmlElementName() 
+        Dim myExporter As New XsdDataContractExporter()
+        Dim xmlElementName As XmlQualifiedName = myExporter. _
+            GetRootElementName(GetType(Employee))
+        Console.WriteLine("Namespace: {0}", xmlElementName.Namespace)
+        Console.WriteLine("Name: {0}", xmlElementName.Name)
+        Console.WriteLine("IsEmpty: {0}", xmlElementName.IsEmpty)
+    
+    End Sub 
+    
+    <DataContract([Namespace] := "www.Contoso.com/Examples/")>  _
+    Public Class Employee
 
-        ' Open the file containing the data that you want to deserialize.
-        Dim fs As New FileStream("DataFile.dat", FileMode.Open)
-        Try
-            Dim formatter As New BinaryFormatter
+        <DataMember()>  _
+        Public EmployeeName As String
+        <DataMember()>  _
+        Private ID As String
+        ' This member may return a Possessions type.
+        <DataMember> _
+        public Miscellaneous As Hashtable 
 
-            ' Deserialize the hashtable from the file and 
-            ' assign the reference to the local variable.
-            addresses = DirectCast(formatter.Deserialize(fs), Hashtable)
-        Catch e As SerializationException
-            Console.WriteLine("Failed to deserialize. Reason: " & e.Message)
-            Throw
-        Finally
-            fs.Close()
-        End Try
+    End Class 
 
-        ' To prove that the table deserialized correctly, 
-        ' display the key/value pairs.
-        Dim de As DictionaryEntry
-        For Each de In addresses
-            Console.WriteLine("{0} lives at {1}.", de.Key, de.Value)
-        Next
-    End Sub
-End Module
+    <DataContract> _
+    Public Class Possessions
+
+        <DataMember> _
+        Public ItemName As String
+    End Class
+
+End Class

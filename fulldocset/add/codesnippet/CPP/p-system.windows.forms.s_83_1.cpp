@@ -1,109 +1,116 @@
-#using <System.Windows.Forms.dll>
-#using <System.Drawing.dll>
-#using <System.dll>
-
 using namespace System;
-using namespace System::Collections;
-using namespace System::ComponentModel;
 using namespace System::Drawing;
-using namespace System::Reflection;
+using namespace System::IO;
 using namespace System::Windows::Forms;
-public ref class SystemInfoBrowserForm: public System::Windows::Forms::Form
+
+public ref class Form1: public Form
 {
-private:
-   System::Windows::Forms::ListBox^ listBox1;
-   System::Windows::Forms::TextBox^ textBox1;
+public private:
+   RichTextBox^ RichTextBox1;
+   Button^ Button1;
+   RichTextBox^ RichTextBox2;
+   Button^ Button2;
+   SaveFileDialog^ SaveFileDialog1;
 
 public:
-   SystemInfoBrowserForm()
+   Form1()
+      : Form()
    {
+      userInput = gcnew MemoryStream;
+      this->RichTextBox1 = gcnew RichTextBox;
+      this->Button1 = gcnew Button;
+      this->RichTextBox2 = gcnew RichTextBox;
+      this->Button2 = gcnew Button;
+      this->SaveFileDialog1 = gcnew SaveFileDialog;
       this->SuspendLayout();
-      InitForm();
-      
-      // Add each property of the SystemInformation class to the list box.
-      Type^ t = System::Windows::Forms::SystemInformation::typeid;
-      array<PropertyInfo^>^pi = t->GetProperties();
-      for ( int i = 0; i < pi->Length; i++ )
-         listBox1->Items->Add( pi[ i ]->Name );
-      textBox1->Text = String::Format( "The SystemInformation class has {0} properties.\r\n", pi->Length );
-      
-      // Configure the list item selected handler for the list box to invoke a 
-      // method that displays the value of each property.
-      listBox1->SelectedIndexChanged += gcnew EventHandler( this, &SystemInfoBrowserForm::listBox1_SelectedIndexChanged );
+      this->RichTextBox1->Location = Point( 24, 64 );
+      this->RichTextBox1->Name = "RichTextBox1";
+      this->RichTextBox1->TabIndex = 0;
+      this->RichTextBox1->Text = "Type something here.";
+      this->Button1->Location = Point( 96, 16 );
+      this->Button1->Name = "Button1";
+      this->Button1->Size = Size( 96, 24 );
+      this->Button1->TabIndex = 1;
+      this->Button1->Text = "Save To Stream";
+      this->Button1->Click += 
+		  gcnew EventHandler( this, &Form1::Button1_Click );
+      this->RichTextBox2->Location = Point( 152, 64 );
+      this->RichTextBox2->Name = "RichTextBox2";
+      this->RichTextBox2->TabIndex = 3;
+      this->RichTextBox2->Text = "It will be added to the stream "
+      "and appear here.";
+      this->Button2->Location = Point( 104, 200 );
+      this->Button2->Name = "Button2";
+      this->Button2->Size = Size( 88, 32 );
+      this->Button2->TabIndex = 4;
+      this->Button2->Text = "Save Stream To File";
+      this->Button2->Click += 
+		  gcnew EventHandler( this, &Form1::Button2_Click );
+      this->ClientSize = Size( 292, 266 );
+      this->Controls->Add( this->Button2 );
+      this->Controls->Add( this->RichTextBox2 );
+      this->Controls->Add( this->Button1 );
+      this->Controls->Add( this->RichTextBox1 );
+      this->Name = "Form1";
+      this->Text = "Form1";
       this->ResumeLayout( false );
    }
 
+   // Declare a new memory stream.
+   MemoryStream^ userInput;
 
 private:
-   void listBox1_SelectedIndexChanged( Object^ /*sender*/, EventArgs^ /*e*/ )
+
+   // Save the content of RichTextBox1 to the memory stream, 
+   // appending a LineFeed character.  
+   void Button1_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
    {
+      RichTextBox1->SaveFile( userInput, RichTextBoxStreamType::PlainText );
+      userInput->WriteByte( 13 );
       
-      // Return if no list item is selected.
-      if ( listBox1->SelectedIndex == -1 )
-            return;
-
-      
-      // Get the property name from the list item.
-      String^ propname = listBox1->Text;
-      if ( propname->Equals( "PowerStatus" ) )
-      {
-         
-         // Cycle and display the values of each property of the PowerStatus property.
-         textBox1->Text = String::Concat( textBox1->Text, "\r\nThe value of the PowerStatus property is:" );
-         Type^ t = System::Windows::Forms::PowerStatus::typeid;
-         array<PropertyInfo^>^pi = t->GetProperties();
-         for ( int i = 0; i < pi->Length; i++ )
-         {
-            Object^ propval = pi[ i ]->GetValue( SystemInformation::PowerStatus, nullptr );
-            textBox1->Text = String::Format( "{0}\r\n    PowerStatus.{1} is: {2}", textBox1->Text, pi[ i ]->Name, propval );
-
-         }
-      }
-      else
-      {
-         
-         // Display the value of the selected property of the SystemInformation type.
-         Type^ t = System::Windows::Forms::SystemInformation::typeid;
-         array<PropertyInfo^>^pi = t->GetProperties();
-         PropertyInfo^ prop = nullptr;
-         for ( int i = 0; i < pi->Length; i++ )
-            if ( pi[ i ]->Name == propname )
-            {
-               prop = pi[ i ];
-               break;
-            }
-         Object^ propval = prop->GetValue( nullptr, nullptr );
-         textBox1->Text = String::Format( "{0}\r\nThe value of the {1} property is: {2}", textBox1->Text, propname, propval );
-      }
+      // Display the entire contents of the stream,
+      // by setting its position to 0, to RichTextBox2.
+      userInput->Position = 0;
+      RichTextBox2->LoadFile( userInput, RichTextBoxStreamType::PlainText );
    }
 
-   void InitForm()
+
+   // Shows the use of a SaveFileDialog to save a MemoryStream to a file.
+   void Button2_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
    {
       
-      // Initialize the form settings
-      this->listBox1 = gcnew System::Windows::Forms::ListBox;
-      this->textBox1 = gcnew System::Windows::Forms::TextBox;
-      this->listBox1->Anchor = (System::Windows::Forms::AnchorStyles)(System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right);
-      this->listBox1->Location = System::Drawing::Point( 8, 16 );
-      this->listBox1->Size = System::Drawing::Size( 172, 496 );
-      this->listBox1->TabIndex = 0;
-      this->textBox1->Anchor = (System::Windows::Forms::AnchorStyles)(System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right);
-      this->textBox1->Location = System::Drawing::Point( 188, 16 );
-      this->textBox1->Multiline = true;
-      this->textBox1->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-      this->textBox1->Size = System::Drawing::Size( 420, 496 );
-      this->textBox1->TabIndex = 1;
-      this->ClientSize = System::Drawing::Size( 616, 525 );
-      this->Controls->Add( this->textBox1 );
-      this->Controls->Add( this->listBox1 );
-      this->Text = "Select a SystemInformation property to get the value of";
+      // Set the properties on SaveFileDialog1 so the user is 
+      // prompted to create the file if it doesn't exist 
+      // or overwrite the file if it does exist.
+      SaveFileDialog1->CreatePrompt = true;
+      SaveFileDialog1->OverwritePrompt = true;
+      
+      // Set the file name to myText.txt, set the type filter
+      // to text files, and set the initial directory to the
+	  // MyDocuments folder.
+      SaveFileDialog1->FileName = "myText";
+	  // DefaultExt is only used when "All files" is selected from 
+      // the filter box and no extension is specified by the user.
+      SaveFileDialog1->DefaultExt = "txt";
+      SaveFileDialog1->Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+      SaveFileDialog1->InitialDirectory = 
+		  Environment->GetFolderPath(Environment::SpecialFolder::MyDocuments);
+      
+      // Call ShowDialog and check for a return value of DialogResult.OK,
+      // which indicates that the file was saved. 
+      DialogResult result = SaveFileDialog1->ShowDialog();
+      Stream^ fileStream;
+      if ( result == DialogResult::OK )
+      {
+         fileStream = SaveFileDialog1->OpenFile();
+         userInput->Position = 0;
+         userInput->WriteTo( fileStream );
+         fileStream->Close();
+      }
    }
-
 };
 
-
-[STAThread]
 int main()
 {
-   Application::Run( gcnew SystemInfoBrowserForm );
+   Application::Run( gcnew Form1 );
 }

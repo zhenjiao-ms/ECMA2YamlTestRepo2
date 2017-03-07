@@ -1,101 +1,51 @@
-    private void EnumsAndComboBox_Load(object sender, System.EventArgs e)
+    void dataGridView1_CellToolTipTextNeeded(object sender,
+        DataGridViewCellToolTipTextNeededEventArgs e)
     {
-        // Populate the data source.
-        bindingSource1.Add(new Knight(Title.King, "Uther", true));
-        bindingSource1.Add(new Knight(Title.King, "Arthur", true));
-        bindingSource1.Add(new Knight(Title.Sir, "Mordred", false));
-        bindingSource1.Add(new Knight(Title.Sir, "Gawain", true));
-        bindingSource1.Add(new Knight(Title.Sir, "Galahad", true));
-
-        // Initialize the DataGridView.
-        dataGridView1.AutoGenerateColumns = false;
-        dataGridView1.AutoSize = true;
-        dataGridView1.DataSource = bindingSource1;
-
-        dataGridView1.Columns.Add(CreateComboBoxWithEnums());
-
-        // Initialize and add a text box column.
-        DataGridViewColumn column = new DataGridViewTextBoxColumn();
-        column.DataPropertyName = "Name";
-        column.Name = "Knight";
-        dataGridView1.Columns.Add(column);
-
-        // Initialize and add a check box column.
-        column = new DataGridViewCheckBoxColumn();
-        column.DataPropertyName = "GoodGuy";
-        column.Name = "Good";
-        dataGridView1.Columns.Add(column);
-
-        // Initialize the form.
-        this.Controls.Add(dataGridView1);
-        this.AutoSize = true;
-        this.Text = "DataGridView object binding demo";
-    }
-
-    DataGridViewComboBoxColumn CreateComboBoxWithEnums()
-    {
-        DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
-        combo.DataSource = Enum.GetValues(typeof(Title));
-        combo.DataPropertyName = "Title";
-        combo.Name = "Title";
-        return combo;
-    }
-    #region "business object"
-    private class Knight
-    {
-        private string hisName;
-        private bool good;
-        private Title hisTitle;
-
-        public Knight(Title title, string name, bool good)
+        string newLine = Environment.NewLine;
+        if (e.RowIndex > -1)
         {
-            hisTitle = title;
-            hisName = name;
-            this.good = good;
-        }
+            DataGridViewRow dataGridViewRow1 = dataGridView1.Rows[e.RowIndex];
 
-        public Knight()
-        {
-            hisTitle = Title.Sir;
-            hisName = "<enter name>";
-            good = true;
-        }
+            // Add the employee's ID to the ToolTipText.
+            e.ToolTipText = String.Format("EmployeeID {0}:{1}",
+                dataGridViewRow1.Cells["EmployeeID"].Value, newLine);
 
-        public string Name
-        {
-            get
-            {
-                return hisName;
-            }
+            // Add the employee's name to the ToolTipText.
+            e.ToolTipText += String.Format("{0} {1} {2}{3}",
+                dataGridViewRow1.Cells["TitleOfCourtesy"].Value.ToString(),
+                dataGridViewRow1.Cells["FirstName"].Value.ToString(),
+                dataGridViewRow1.Cells["LastName"].Value.ToString(),
+                newLine);
 
-            set
-            {
-                hisName = value;
-            }
-        }
+            // Add the employee's title to the ToolTipText.
+            e.ToolTipText += String.Format("{0}{1}{2}",
+                dataGridViewRow1.Cells["Title"].Value.ToString(),
+                newLine, newLine);
 
-        public bool GoodGuy
-        {
-            get
+            // Add the employee's contact information to the ToolTipText.
+            e.ToolTipText += String.Format("{0}{1}{2}, ",
+                dataGridViewRow1.Cells["Address"].Value.ToString(), newLine,
+                dataGridViewRow1.Cells["City"].Value.ToString());
+            if (!String.IsNullOrEmpty(
+                dataGridViewRow1.Cells["Region"].Value.ToString()))
             {
-                return good;
+                e.ToolTipText += String.Format("{0}, ",
+                    dataGridViewRow1.Cells["Region"].Value.ToString());
             }
-            set
-            {
-                good = value;
-            }
-        }
+            e.ToolTipText += String.Format("{0}, {1}{2}{3} EXT:{4}{5}{6}",
+                dataGridViewRow1.Cells["Country"].Value.ToString(),
+                dataGridViewRow1.Cells["PostalCode"].Value.ToString(),
+                newLine, dataGridViewRow1.Cells["HomePhone"].Value.ToString(),
+                dataGridViewRow1.Cells["Extension"].Value.ToString(),
+                newLine, newLine);
 
-        public Title Title
-        {
-            get
-            {
-                return hisTitle;
-            }
-            set
-            {
-                hisTitle = value;
-            }
+            // Add employee information to the ToolTipText.
+            DateTime HireDate =
+                (DateTime)dataGridViewRow1.Cells["HireDate"].Value;
+            e.ToolTipText +=
+                String.Format("Employee since: {0}/{1}/{2}{3}Manager: {4}",
+                HireDate.Month.ToString(), HireDate.Day.ToString(),
+                HireDate.Year.ToString(), newLine,
+                dataGridViewRow1.Cells["Manager"].Value.ToString());
         }
     }
-    #endregion

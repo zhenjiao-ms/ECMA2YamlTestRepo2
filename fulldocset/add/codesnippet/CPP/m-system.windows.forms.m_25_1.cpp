@@ -1,16 +1,23 @@
 private:
-   void PopupMyMenu( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   void InitializeMyMainMenu()
    {
-      if ( textBox1->Enabled == false || textBox1->Focused == false || textBox1->SelectedText->Length == 0 )
-      {
-         menuCut->Enabled = false;
-         menuCopy->Enabled = false;
-         menuDelete->Enabled = false;
-      }
-      else
-      {
-         menuCut->Enabled = true;
-         menuCopy->Enabled = true;
-         menuDelete->Enabled = true;
-      }
+      // Create the 2 menus and the menu items to add.
+      MainMenu^ mainMenu1 = gcnew MainMenu;
+      MainMenu^ mainMenu2 = gcnew MainMenu;
+      MenuItem^ menuItem1 = gcnew MenuItem;
+      MenuItem^ menuItem2 = gcnew MenuItem;
+
+      // Set the caption for the menu items.
+      menuItem1->Text = "File";
+      menuItem2->Text = "Edit";
+
+      // Add a menu item to each menu for displaying.
+      mainMenu1->MenuItems->Add( menuItem1 );
+      mainMenu2->MenuItems->Add( menuItem2 );
+
+      // Merge mainMenu2 with mainMenu1
+      mainMenu1->MergeMenu( mainMenu2 );
+
+      // Assign mainMenu1 to the form.
+      this->Menu = mainMenu1;
    }

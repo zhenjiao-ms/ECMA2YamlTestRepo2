@@ -1,31 +1,16 @@
-    ToolStripMenuItem toolStripItem1 = new ToolStripMenuItem();
-
-    private void AddContextMenu()
+    // Style and number columns.
+    private void Button8_Click(object sender,
+        EventArgs args)
     {
-        toolStripItem1.Text = "Redden";
-        toolStripItem1.Click += new EventHandler(toolStripItem1_Click);
-        ContextMenuStrip strip = new ContextMenuStrip();
+        DataGridViewCellStyle style = new DataGridViewCellStyle();
+        style.Alignment =
+            DataGridViewContentAlignment.MiddleCenter;
+        style.ForeColor = Color.IndianRed;
+        style.BackColor = Color.Ivory;
+
         foreach (DataGridViewColumn column in dataGridView.Columns)
         {
-
-            column.ContextMenuStrip = strip;
-            column.ContextMenuStrip.Items.Add(toolStripItem1);
+            column.HeaderCell.Value = column.Index.ToString();
+            column.HeaderCell.Style = style;
         }
-    }
-
-    private DataGridViewCellEventArgs mouseLocation;
-
-    // Change the cell's color.
-    private void toolStripItem1_Click(object sender, EventArgs args)
-    {
-        dataGridView.Rows[mouseLocation.RowIndex]
-            .Cells[mouseLocation.ColumnIndex].Style.BackColor
-            = Color.Red;
-    }
-
-    // Deal with hovering over a cell.
-    private void dataGridView_CellMouseEnter(object sender,
-        DataGridViewCellEventArgs location)
-    {
-        mouseLocation = location;
     }

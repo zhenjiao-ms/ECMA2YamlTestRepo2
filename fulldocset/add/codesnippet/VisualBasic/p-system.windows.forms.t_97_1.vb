@@ -1,9 +1,31 @@
-      ' 
-      toolStripStatusLabel1.BorderSides = CType(System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom, System.Windows.Forms.ToolStripStatusLabelBorderSides)
-      toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.Raised
-      toolStripStatusLabel1.IsLink = True
-      toolStripStatusLabel1.Name = "toolStripStatusLabel1"
-      toolStripStatusLabel1.Size = New System.Drawing.Size(246, 20)
-      toolStripStatusLabel1.Spring = True
-      toolStripStatusLabel1.Text = "toolStripStatusLabel1"
-      toolStripStatusLabel1.Alignment = ToolStripItemAlignment.Left
+    Friend WithEvents changeDirectionButton As ToolStripButton
+
+    Private Sub InitializeMovingToolStrip()
+        changeDirectionButton = New ToolStripButton()
+
+        movingToolStrip.AutoSize = True
+        movingToolStrip.RenderMode = ToolStripRenderMode.System
+
+        changeDirectionButton.TextDirection = ToolStripTextDirection.Vertical270
+        changeDirectionButton.Overflow = ToolStripItemOverflow.Never
+        changeDirectionButton.Text = "Change Alignment"
+        movingToolStrip.Items.Add(changeDirectionButton)
+    End Sub
+
+
+    Public Sub changeDirectionButton_Click(ByVal sender As Object, _
+        ByVal e As EventArgs) Handles changeDirectionButton.Click
+
+        Dim item As ToolStripItem = CType(sender, ToolStripItem)
+
+        If item.TextDirection = ToolStripTextDirection.Vertical270 _
+            OrElse item.TextDirection = ToolStripTextDirection.Vertical90 Then
+
+            item.TextDirection = ToolStripTextDirection.Horizontal
+            movingToolStrip.Dock = System.Windows.Forms.DockStyle.Top
+        Else
+            item.TextDirection = ToolStripTextDirection.Vertical270
+            movingToolStrip.Dock = System.Windows.Forms.DockStyle.Left
+        End If
+
+    End Sub

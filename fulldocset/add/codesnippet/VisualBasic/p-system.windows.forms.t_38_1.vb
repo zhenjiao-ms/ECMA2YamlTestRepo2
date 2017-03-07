@@ -1,13 +1,17 @@
-Private Sub treeView1_AfterSelect(sender As Object, _
-  e As TreeViewEventArgs) Handles treeView1.AfterSelect
-   ' Display the Text and Index of the 
-   ' selected tree node's Parent. 
-   If (e.Node.Parent IsNot Nothing) 
-      If (e.Node.Parent.GetType() Is GetType(TreeNode)) Then
-         statusBar1.Text = "Parent: " + e.Node.Parent.Text + _
-           ControlChars.Cr + "Index Position: " + e.Node.Parent.Index.ToString()
-      End If
-   Else
-      statusBar1.Text = "No parent node."
-   End If
-End Sub 
+Private Sub ToolStripRenderer1_RenderArrow(sender as Object, e as ToolStripArrowRenderEventArgs) _ 
+     Handles ToolStripRenderer1.RenderArrow
+
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "ArrowRectangle", e.ArrowRectangle)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ArrowColor", e.ArrowColor)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Direction", e.Direction)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Item", e.Item)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"RenderArrow Event")
+
+End Sub

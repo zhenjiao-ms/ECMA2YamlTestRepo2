@@ -1,106 +1,94 @@
-#using <System.dll>
-
 using namespace System;
 using namespace System::Security::Cryptography;
+using namespace System::Text;
 
-namespace Contoso
+// Generates a random salt value of the specified length.
+array<Byte>^ CreateRandomSalt(int length)
 {
-    ref class MaskGenerator: MaskGenerationMethod
+    // Create a buffer
+    array<Byte>^ randomBytes;
+
+    if (length >= 1)
     {
-    private:
-        String^ hashNameValue;
-
-    public:
-        // Initialize a mask to encrypt using the SHA1 algorithm.
-        MaskGenerator()
-        {
-            hashNameValue = "SHA1";
-        }
-
-        // Create a mask with the specified seed.
-        virtual array<Byte>^ GenerateMask(array<Byte>^ seed, int maskLength) override
-        {
-            HashAlgorithm^ hash;
-            array<Byte>^ rgbCounter = gcnew array<Byte>(4);
-            array<Byte>^ targetRgb = gcnew array<Byte>(maskLength);
-            UInt32 counter = 0;
-            for (int inc = 0; inc < targetRgb->Length; )
-            {
-                ConvertIntToByteArray(counter++, rgbCounter);
-                hash = (HashAlgorithm^)CryptoConfig::CreateFromName(
-                    hashNameValue);
-                array<Byte>^ temp = gcnew array<Byte>(
-                    4 + seed->Length);
-                Buffer::BlockCopy(rgbCounter, 0, temp, 0, 4);
-                Buffer::BlockCopy(seed, 0, temp, 4, seed->Length);
-                hash->ComputeHash(temp);
-                if (targetRgb->Length - inc > hash->HashSize / 8)
-                {
-                    Buffer::BlockCopy(hash->Hash, 0, targetRgb, inc,
-                        hash->Hash->Length);
-                }
-                else
-                {
-                    Buffer::BlockCopy(hash->Hash, 0, targetRgb, inc,
-                        targetRgb->Length - inc);
-                }
-
-                inc += hash->Hash->Length;
-            }
-            return targetRgb;
-        }
-
-    private:
-        // Convert the specified integer to the byte array.
-        void ConvertIntToByteArray(UInt32 source,
-            array<Byte>^ targetBytes)
-        {
-            UInt32 remainder;
-            int inc = 0;
-
-            // Clear the array prior to filling it.
-            Array::Clear(targetBytes, 0, targetBytes->Length);
-            while (source > 0)
-            {
-                remainder = source % 256;
-                targetBytes[ 3 - inc ] = (Byte)remainder;
-                source = (source - remainder) / 256;
-                inc++;
-            }
-        }
-    };
-
-    // This class demonstrates how to create the MaskGenerator class 
-    // and call its GenerateMask member.
-    ref class MaskGeneratorImpl
+        randomBytes = gcnew array <Byte>(length);
+    }
+    else
     {
-    public:
-        void static Work()
-        {
-            array<Byte>^ seed = gcnew array<Byte>(4){
-                0x01,0x02,0x03,0x04};
-            int length = 16;
-            MaskGenerator^ maskGenerator = gcnew MaskGenerator;
-            array<Byte>^ mask = maskGenerator->GenerateMask(seed,
-                length);
-            Console::WriteLine("Generated the following mask:");
-            Console::WriteLine(System::Text::Encoding::
-                ASCII::get()->GetString(mask));
-            Console::WriteLine("This sample completed successfully;"
-                " press Enter to exit.");
-            Console::ReadLine();
-        }
-    };
+        randomBytes = gcnew array <Byte>(1);
+    }
+
+    // Create a new RNGCryptoServiceProvider.
+    RNGCryptoServiceProvider^ cryptoRNGProvider =
+        gcnew RNGCryptoServiceProvider();
+
+    // Fill the buffer with random bytes.
+    cryptoRNGProvider->GetBytes(randomBytes);
+
+    // return the bytes.
+    return randomBytes;
 }
 
-void main()
+// Clears the bytes in a buffer so they can't later be read from memory.
+void ClearBytes(array<Byte>^ buffer)
 {
-    Contoso::MaskGeneratorImpl::Work();
+    // Check arguments.
+    if (buffer == nullptr)
+    {
+        throw gcnew ArgumentNullException("buffer");
+    }
+
+    // Set each byte in the buffer to 0.
+    for (int x = 0; x <= buffer->Length - 1; x++)
+    {
+        buffer[x] = 0;
+    }
 }
 
-//
-// This sample produces the following output:
-//
-// Generated the following mask:
-// ?"TFd(?~OtO?
-// This sample completed successfully; press Enter to exit.
+int main(array<String^>^ args)
+{
+
+    // Get a password from the user.
+    Console::WriteLine("Enter a password to produce a key:");
+
+    // Security Note: Never hard-code a password within your
+    // source code.  Hard-coded passwords can be retrieved
+    // from a compiled assembly.
+    array<Byte>^ password = Encoding::Unicode->GetBytes(Console::ReadLine());
+
+    array<Byte>^ randomSalt = CreateRandomSalt(7);
+
+    // Create a TripleDESCryptoServiceProvider object.
+    TripleDESCryptoServiceProvider^ cryptoDESProvider =
+        gcnew TripleDESCryptoServiceProvider();
+
+    try
+    {
+        Console::WriteLine("Creating a key with PasswordDeriveBytes...");
+
+        // Create a PasswordDeriveBytes object and then create
+        // a TripleDES key from the password and salt.
+        PasswordDeriveBytes^ passwordDeriveBytes = gcnew PasswordDeriveBytes
+            (password->ToString(), randomSalt);
+
+	   // Create the key and set it to the Key property
+	   // of the TripleDESCryptoServiceProvider object.
+        cryptoDESProvider->Key = passwordDeriveBytes->CryptDeriveKey
+            ("TripleDES", "SHA1", 192, cryptoDESProvider->IV);
+        Console::WriteLine("Operation complete.");
+    }
+    catch (Exception^ ex)
+    {
+        Console::WriteLine(ex->Message);
+    }
+    finally
+    {
+        // Clear the buffers
+        ClearBytes(password);
+        ClearBytes(randomSalt);
+
+        // Clear the key.
+        cryptoDESProvider->Clear();
+    }
+
+    Console::ReadLine();
+}

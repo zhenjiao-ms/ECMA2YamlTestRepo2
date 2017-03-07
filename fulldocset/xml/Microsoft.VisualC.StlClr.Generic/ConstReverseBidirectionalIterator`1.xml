@@ -19,9 +19,16 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <typeparam name="TValue">To be added.</typeparam>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <typeparam name="TValue">[!INCLUDE[cpp_iter_arg](~/add/includes/cpp-iter-arg-md.md)]</typeparam>
+    <summary>Defines an iterator that accesses elements in a container in the reverse direction. Elements can be accessed in the forward direction by using the decrement operator and in the backward direction by using the increment operator. The element that the iterator points to cannot be modified. Constant reverse bidirectional iterators can be used anywhere that a constant reverse input or constant reverse output iterator is required.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ [!INCLUDE[unnamed_parm](~/add/includes/unnamed-parm-md.md)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -36,7 +43,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Allocates and initializes a new <see cref="Microsoft.VisualC.StlClr.Generic.ConstReverseBidirectionalIterator%601" /> object.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -73,8 +80,8 @@
         <Parameter Name="_Iter" Type="Microsoft.VisualC.StlClr.Generic.IBidirectionalIterator&lt;TValue&gt;" />
       </Parameters>
       <Docs>
-        <param name="_Iter">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="_Iter">An existing <see cref="Microsoft.VisualC.StlClr.Generic.IBidirectionalIterator%601" /> object to copy.</param>
+        <summary>Allocates and initializes a new <see cref="Microsoft.VisualC.StlClr.Generic.ConstReverseBidirectionalIterator%601" /> object from an existing <see cref="Microsoft.VisualC.StlClr.Generic.IBidirectionalIterator%601" /> object.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -112,8 +119,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Gets the underlying base iterator for the <see cref="Microsoft.VisualC.StlClr.Generic.ConstReverseBidirectionalIterator%601" /> object.</summary>
+        <returns>The underlying base iterator for the <see cref="Microsoft.VisualC.StlClr.Generic.ConstReverseBidirectionalIterator%601" /> object.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -132,8 +139,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns a copy of the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstReverseBidirectionalIterator%601" /> object.</summary>
+        <returns>A copy of the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstReverseBidirectionalIterator%601" /> object.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -152,8 +159,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Gets the container that the iterator is traversing.</summary>
+        <returns>The container that the iterator is traversing.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -197,9 +204,10 @@
         <Parameter Name="_Right" Type="Microsoft.VisualC.StlClr.Generic.IInputIterator&lt;TValue&gt;" />
       </Parameters>
       <Docs>
-        <param name="_Right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="_Right">The <see cref="Microsoft.VisualC.StlClr.Generic.IInputIterator%601" /> object to compare with the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstReverseBidirectionalIterator%601" /> object.</param>
+        <summary>Determines whether the given <see cref="Microsoft.VisualC.StlClr.Generic.IInputIterator%601" /> object is the same as the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstReverseBidirectionalIterator%601" /> object.</summary>
+        <returns>
+          <see langword="true" /> if the two iterators are the same object; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -218,7 +226,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Decrements the iterator to the previous position in the underlying container, or to the first position in front of the beginning of container if the container has been completely traversed.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -286,8 +294,8 @@
       </Parameters>
       <Docs>
         <param name="">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Decrements the iterator by one element. Decrementing a reverse iterator is the same as incrementing a regular iterator. This is the prefix version of the decrement operator.</summary>
+        <returns>An iterator.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -309,9 +317,9 @@
       </Parameters>
       <Docs>
         <param name="">To be added.</param>
-        <param name="A_0">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="A_0">An unused parameter that indicates this is the postfix version of the operator.</param>
+        <summary>Decrements the iterator by one element. Decrementing a reverse iterator is the same as incrementing a regular iterator. This is the postfix version of the decrement operator.</summary>
+        <returns>An iterator.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -365,9 +373,10 @@
         <Parameter Name="_Right" Type="Microsoft.VisualC.StlClr.Generic.IInputIterator&lt;TValue&gt;" />
       </Parameters>
       <Docs>
-        <param name="_Right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="_Right">The <see cref="Microsoft.VisualC.StlClr.Generic.IInputIterator%601" /> object to compare with the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstReverseBidirectionalIterator%601" /> object.</param>
+        <summary>Determines whether the given <see cref="Microsoft.VisualC.StlClr.Generic.IInputIterator%601" /> object is the same as the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstReverseBidirectionalIterator%601" /> object.</summary>
+        <returns>
+          <see langword="true" /> if the two iterators are the same object; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -409,8 +418,8 @@
       </Parameters>
       <Docs>
         <param name="">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Increments the iterator by one element. Incrementing a reverse iterator is the same as decrementing a regular iterator. This is the prefix version of the increment operator.</summary>
+        <returns>An iterator.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -432,9 +441,9 @@
       </Parameters>
       <Docs>
         <param name="">To be added.</param>
-        <param name="A_0">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="A_0">Indicates that this is the postfix version of the increment operator.</param>
+        <summary>Increments the iterator by one element. Incrementing a reverse iterator is the same as decrementing a regular iterator. This is the postfix version of the increment operator.</summary>
+        <returns>An iterator.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -478,9 +487,10 @@
         <Parameter Name="_Right" Type="Microsoft.VisualC.StlClr.Generic.IInputIterator&lt;TValue&gt;" />
       </Parameters>
       <Docs>
-        <param name="_Right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="_Right">The <see cref="Microsoft.VisualC.StlClr.Generic.IInputIterator%601" /> object to compare with the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstReverseBidirectionalIterator%601" /> object.</param>
+        <summary>Determines whether the given <see cref="Microsoft.VisualC.StlClr.Generic.IInputIterator%601" /> object differs from the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstReverseBidirectionalIterator%601" /> object.</summary>
+        <returns>
+          <see langword="true" /> if the two iterators are different objects; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -561,7 +571,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Increments the iterator to the next position in the underlying container, or to the first position beyond the end of container if the container has been completely traversed.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -580,8 +590,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Determines whether the iterator is valid and can be safely used to traverse the underlying container.</summary>
+        <returns>
+          <see langword="true" /> if the iterator is valid and safe to use; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

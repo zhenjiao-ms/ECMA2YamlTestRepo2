@@ -1,9 +1,9 @@
-private void button1_Click(object sender, System.EventArgs e)
+public void EnableDoubleBuffering()
 {
-   /* If the CTRL key is pressed when the 
-      * control is clicked, hide the control. */
-   if(Control.ModifierKeys == Keys.Control)
-   {
-      ((Control)sender).Hide();
-   }
+   // Set the value of the double-buffering style bits to true.
+   this.SetStyle(ControlStyles.DoubleBuffer | 
+      ControlStyles.UserPaint | 
+      ControlStyles.AllPaintingInWmPaint,
+      true);
+   this.UpdateStyles();
 }

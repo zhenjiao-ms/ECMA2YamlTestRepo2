@@ -1,17 +1,23 @@
-   ' This example assumes that the Form_Load event handling method
-   ' is connected to the Load event of the form.
-   Private Sub Form1_Load(sender As Object, e As System.EventArgs) Handles MyBase.Load
-      ' Create the ToolTip and associate with the Form container.
-      Dim toolTip1 As New ToolTip()
-      
-      ' Set up the delays for the ToolTip.
-      toolTip1.AutoPopDelay = 5000
-      toolTip1.InitialDelay = 1000
-      toolTip1.ReshowDelay = 500
-      ' Force the ToolTip text to be displayed whether or not the form is active.
-      toolTip1.ShowAlways = True
-      
-      ' Set up the ToolTip text for the Button and Checkbox.
-      toolTip1.SetToolTip(Me.button1, "My button1")
-      toolTip1.SetToolTip(Me.checkBox1, "My checkBox1")
-   End Sub
+Private Sub AddToolBar()
+   ' Add a toolbar and set some of its properties.
+   toolBar1 = New ToolBar()
+   toolBar1.Appearance = System.Windows.Forms.ToolBarAppearance.Flat
+   toolBar1.BorderStyle = System.Windows.Forms.BorderStyle.None
+   toolBar1.Buttons.Add(Me.toolBarButton1)
+   toolBar1.ButtonSize = New System.Drawing.Size(24, 24)
+   toolBar1.Divider = True
+   toolBar1.DropDownArrows = True
+   toolBar1.ImageList = Me.imageList1
+   toolBar1.ShowToolTips = True
+   toolBar1.Size = New System.Drawing.Size(292, 25)
+   toolBar1.TabIndex = 0
+   toolBar1.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right
+   toolBar1.Wrappable = False
+
+   ' Add handlers for the ButtonClick and ButtonDropDown events.
+   AddHandler toolBar1.ButtonDropDown, AddressOf toolBar1_ButtonDropDown
+   AddHandler toolBar1.ButtonClick, AddressOf toolBar1_ButtonClicked
+
+   ' Add the toolbar to the form.
+   Me.Controls.Add(toolBar1)
+End Sub

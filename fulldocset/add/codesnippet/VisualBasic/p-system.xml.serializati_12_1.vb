@@ -2,121 +2,68 @@ Imports System
 Imports System.IO
 Imports System.Xml
 Imports System.Xml.Serialization
-Imports System.Xml.Schema
-Imports System.ComponentModel
 
+
+' This is the class that will be serialized.
 Public Class Group
-   ' The default is set to .NET.
-   <DefaultValue(".NET")> _
-   Public GroupName As String
+    ' This is the attribute that will be overridden.
+    <XmlAttribute()> Public GroupName As String
+    Public GroupNumber As Integer
 End Class
- 
+
+
 Public Class Run
+    
+    Public Shared Sub Main()
+        Dim test As New Run()
+        test.SerializeObject("OverrideAttribute.xml")
+        test.DeserializeObject("OverrideAttribute.xml")
+    End Sub
+    
+    ' Return an XmlSerializer used for overriding. 
+    Public Function CreateOverrider() As XmlSerializer
+        ' Create the XmlAttributeOverrides and XmlAttributes objects.
+        Dim xOver As New XmlAttributeOverrides()
+        Dim xAttrs As New XmlAttributes()
+        
+        ' Create an overriding XmlAttributeAttribute set it to
+        ' the XmlAttribute property of the XmlAttributes object.
+        Dim xAttribute As New XmlAttributeAttribute("SplinterName")
+        xAttrs.XmlAttribute = xAttribute
+        
+        ' Add to the XmlAttributeOverrides. Specify the member name.
+        xOver.Add(GetType(Group), "GroupName", xAttrs)
+        
+        ' Create the XmlSerializer and return it.
+        Return New XmlSerializer(GetType(Group), xOver)
+    End Function 'CreateOverrider
+    
+    
+    Public Sub SerializeObject(ByVal filename As String)
+        ' Create an instance of the XmlSerializer class.
+        Dim mySerializer As XmlSerializer = CreateOverrider()
+        ' Writing the file requires a TextWriter.
+        Dim writer As New StreamWriter(filename)
+        
+        ' Create an instance of the class that will be serialized.
+        Dim myGroup As New Group()
+        
+        ' Set the Name property, which will be generated
+        ' as an XML attribute. 
+        myGroup.GroupName = ".NET"
+        myGroup.GroupNumber = 1
+        ' Serialize the class, and close the TextWriter.
+        mySerializer.Serialize(writer, myGroup)
+        writer.Close()
+    End Sub
+    
+    
+    Public Sub DeserializeObject(ByVal filename As String)
+        Dim mySerializer As XmlSerializer = CreateOverrider()
+        Dim fs As New FileStream(filename, FileMode.Open)
+        Dim myGroup As Group = CType(mySerializer.Deserialize(fs), Group)
 
-   Public Shared Sub Main()
-   
-      Dim test As Run = new Run()
-      test.SerializeOriginal("SoapOriginal.xml")
-      test.SerializeOverride _
-      ("mySoapAttributeOverridesideAttributes.xml")
-      test.DeserializeOriginal("SoapOriginal.xml")
-      test.DeserializeOverride _
-      ("mySoapAttributeOverridesideAttributes.xml")
-   End Sub
-   
-   public Sub SerializeOriginal(filename As String)
-       ' Create an instance of the XmlSerializer class.
-      Dim mySerializer As XmlSerializer =  _
-      new XmlSerializer(GetType(Group))
-
-      ' Writing the file requires a TextWriter.
-      Dim writer As TextWriter = new StreamWriter(filename)
-
-      ' Create an instance of the class that will be serialized.
-      Dim myGroup As Group = new Group()
-
-      ' Setting the GroupName to '.NET' is like not setting it at all
-      ' because it is the default value. So no value will be 
-      ' serialized, and on deserialization it will appear as a blank.
-      myGroup.GroupName = ".NET"
-
-      ' Serialize the class, and close the TextWriter.
-      mySerializer.Serialize(writer, myGroup)
-      writer.Close()
-   End Sub
-
-   Public Sub SerializeOverride(filename As String)
-   
-      ' Create an instance of the XmlSerializer class
-      ' that overrides the serialization.
-      Dim overRideSerializer As XmlSerializer = CreateOverrideSerializer()
-
-      ' Writing the file requires a TextWriter.
-      Dim writer As TextWriter = new StreamWriter(filename)
-
-      ' Create an instance of the class that will be serialized.
-      Dim myGroup As Group = new Group()
-
-      ' The override specifies that the default value is now 
-      ' 'Team1'. So setting the GroupName to '.NET' means
-      ' the value will be serialized.
-      myGroup.GroupName = ".NET"
-      ' Serialize the class, and close the TextWriter.
-      overRideSerializer.Serialize(writer, myGroup)
-       writer.Close()
-
-   End Sub
-
-
-   Public Sub DeserializeOriginal(filename As String)
-   
-      ' Create an instance of the XmlSerializer class.
-      Dim mySerializer As XmlSerializer = new XmlSerializer(GetType(Group))
-      ' Reading the file requires a TextReader.
-      Dim reader As TextReader = new StreamReader(filename)
-
-      ' Deserialize and cast the object.
-      Dim myGroup As Group = CType(mySerializer.Deserialize(reader), Group)
-
-      Console.WriteLine(myGroup.GroupName)
-      Console.WriteLine()
-   End Sub
-
-   Public Sub DeserializeOverride(filename As String)
-   
-      ' Create an instance of the XmlSerializer class.
-      Dim overRideSerializer As XmlSerializer = CreateOverrideSerializer()
-      ' Reading the file requires a TextReader.
-      Dim reader As TextReader = new StreamReader(filename)
-
-      ' Deserialize and cast the object.
-      Dim myGroup As Group = CType(overRideSerializer.Deserialize(reader), Group)
-
-      Console.WriteLine(myGroup.GroupName)
-
-   End Sub
-
-   Private Function CreateOverrideSerializer() As XmlSerializer 
-   
-      Dim mySoapAttributeOverrides As SoapAttributeOverrides  = _
-      New SoapAttributeOverrides()
-      Dim soapAtts As SoapAttributes = New SoapAttributes()
-      ' Create a new DefaultValueAttribute object for the GroupName
-      ' property.
-      Dim newDefault As DefaultValueAttribute = _
-      new DefaultValueAttribute("Team1")
-      soapAtts.SoapDefaultValue = newDefault
-
-     mySoapAttributeOverrides.Add(GetType(Group), "GroupName", _
-     soapAtts)
-      
-      ' Create an XmlTypeMapping that is used to create an instance 
-      ' of the XmlSerializer. Then return the XmlSerializer object.
-      Dim myMapping As XmlTypeMapping = _
-      (New SoapReflectionImporter( _
-      mySoapAttributeOverrides)).ImportTypeMapping(GetType(Group))
-	
-      Dim ser As XmlSerializer = new XmlSerializer(myMapping)
-      return ser
-   End Function
+        Console.WriteLine(myGroup.GroupName)
+        Console.WriteLine(myGroup.GroupNumber)
+    End Sub
 End Class

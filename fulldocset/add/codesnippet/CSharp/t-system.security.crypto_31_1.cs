@@ -1,60 +1,83 @@
 using System;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
-public class CertSelect
+
+public class CspKeyContainerInfoExample
 {
-    public static void Main()
+
+    public static void Main(String[] args)
     {
+        RSACryptoServiceProvider rsa= new RSACryptoServiceProvider();
+
         try
         {
-            X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
-            store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+            // Note: In cases where a random key is generated,   
+            // a key container is not created until you call  
+            // a method that uses the key.  This example calls
+            // the Encrypt method before calling the
+            // CspKeyContainerInfo property so that a key
+            // container is created.  
 
-            X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
-            for (int i = 0; i < collection.Count; i++)
-            {
-                foreach (X509Extension extension in collection[i].Extensions)
-                {
-                    Console.WriteLine(extension.Oid.FriendlyName + "(" + extension.Oid.Value + ")");
-   
+            // Create some data to encrypt and display it.
+            string data = "Here is some data to encrypt.";
 
-                    if (extension.Oid.FriendlyName == "Key Usage")
-                    {
-                        X509KeyUsageExtension ext = (X509KeyUsageExtension)extension;
-                        Console.WriteLine(ext.KeyUsages);
-                    }
+            Console.WriteLine("Data to encrypt: " + data);
 
-                    if (extension.Oid.FriendlyName == "Basic Constraints")
-                    {
-                        X509BasicConstraintsExtension ext = (X509BasicConstraintsExtension)extension;
-                        Console.WriteLine(ext.CertificateAuthority);
-                        Console.WriteLine(ext.HasPathLengthConstraint);
-                        Console.WriteLine(ext.PathLengthConstraint);
-                    }
+            // Convert the data to an array of bytes and 
+            // encrypt it.
+            byte[] byteData = Encoding.ASCII.GetBytes(data);
 
-                    if (extension.Oid.FriendlyName == "Subject Key Identifier")
-                    {
-                        X509SubjectKeyIdentifierExtension ext = (X509SubjectKeyIdentifierExtension)extension;
-                        Console.WriteLine(ext.SubjectKeyIdentifier);
-                    }
+            byte[] encData = rsa.Encrypt(byteData, false);
 
-                    if (extension.Oid.FriendlyName == "Enhanced Key Usage")
-                    {
-                        X509EnhancedKeyUsageExtension ext = (X509EnhancedKeyUsageExtension)extension;
-                        OidCollection oids = ext.EnhancedKeyUsages;
-                        foreach (Oid oid in oids)
-                        {
-                            Console.WriteLine(oid.FriendlyName + "(" + oid.Value + ")");
-                        }
-                    }
-                }
-            }
-            store.Close();
+            // Display the encrypted value.
+            Console.WriteLine("Encrypted Data: " + Encoding.ASCII.GetString(encData));
+
+            Console.WriteLine();
+
+            Console.WriteLine("CspKeyContainerInfo information:");
+
+            Console.WriteLine();
+
+            // Create a new CspKeyContainerInfo object.
+            CspKeyContainerInfo keyInfo = rsa.CspKeyContainerInfo;
+
+            // Display the value of each property.
+
+            Console.WriteLine("Accessible property: " + keyInfo.Accessible);
+
+            Console.WriteLine("Exportable property: " + keyInfo.Exportable);
+
+            Console.WriteLine("HardwareDevice property: " + keyInfo.HardwareDevice);
+
+            Console.WriteLine("KeyContainerName property: " + keyInfo.KeyContainerName);
+
+            Console.WriteLine("KeyNumber property: " + keyInfo.KeyNumber.ToString());
+
+            Console.WriteLine("MachineKeyStore property: " + keyInfo.MachineKeyStore);
+
+            Console.WriteLine("Protected property: " + keyInfo.Protected);
+
+            Console.WriteLine("ProviderName property: " + keyInfo.ProviderName);
+
+            Console.WriteLine("ProviderType property: " + keyInfo.ProviderType);
+
+            Console.WriteLine("RandomlyGenerated property: " + keyInfo.RandomlyGenerated);
+
+            Console.WriteLine("Removable property: " + keyInfo.Removable);
+
+            Console.WriteLine("UniqueKeyContainerName property: " + keyInfo.UniqueKeyContainerName);
+
+
         }
-        catch (CryptographicException)
+        catch (Exception e)
         {
-            Console.WriteLine("Information could not be written out for this certificate.");
+            Console.WriteLine(e.ToString());
+        }
+        finally
+        {
+            // Clear the key.
+            rsa.Clear();
         }
     }
 }

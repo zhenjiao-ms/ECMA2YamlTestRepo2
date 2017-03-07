@@ -1,33 +1,27 @@
 Imports System
 Imports System.Globalization
 
-Module Module1
+Public Class SamplesJapaneseCalendar
 
-    Public Sub Main()
+   Public Shared Sub Main()
 
-      ' Prints the header.
-        Console.WriteLine("SPECIFIC CULTURE                                     PARENT CULTURE")
+      ' Creates and initializes a JapaneseCalendar.
+      Dim myCal As New JapaneseCalendar()
 
-        ' Determines the specific cultures that use the Chinese language, and displays the parent culture.
-        Dim ci As CultureInfo
-        For Each ci In CultureInfo.GetCultures(CultureTypes.SpecificCultures)
-            If ci.TwoLetterISOLanguageName = "zh" Then
-                Console.Write("0x{0} {1} {2,-40}", ci.LCID.ToString("X4"), ci.Name, ci.EnglishName)
-                Console.WriteLine("0x{0} {1} {2}", ci.Parent.LCID.ToString("X4"), ci.Parent.Name, ci.Parent.EnglishName)
-            End If
-        Next ci
+      ' Displays the values in the Eras property.
+      Dim i As Integer
+      For i = 0 To myCal.Eras.Length - 1
+         Console.WriteLine("Eras[{0}] = {1}", i, myCal.Eras(i))
+      Next i
 
-    End Sub 'Main 
+   End Sub 'Main 
 
-
+End Class 'SamplesJapaneseCalendar
 
 'This code produces the following output.
 '
-'SPECIFIC CULTURE                                     PARENT CULTURE
-'0x0404 zh-TW Chinese (Traditional, Taiwan)           0x7C04 zh-CHT Chinese (Traditional) Legacy
-'0x0804 zh-CN Chinese (Simplified, PRC)               0x0004 zh-CHS Chinese (Simplified) Legacy
-'0x0C04 zh-HK Chinese (Traditional, Hong Kong S.A.R.) 0x7C04 zh-CHT Chinese (Traditional) Legacy
-'0x1004 zh-SG Chinese (Simplified, Singapore)         0x0004 zh-CHS Chinese (Simplified) Legacy
-'0x1404 zh-MO Chinese (Traditional, Macao S.A.R.)     0x7C04 zh-CHT Chinese (Traditional) Legacy
-
-End Module
+'Eras[0] = 4
+'Eras[1] = 3
+'Eras[2] = 2
+'Eras[3] = 1
+'

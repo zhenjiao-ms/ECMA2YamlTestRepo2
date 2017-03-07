@@ -1,95 +1,40 @@
 Imports System
 Imports System.Security.Cryptography
-Imports System.Text
+Imports System.Security.Permissions
+Imports System.IO
+Imports System.Security.Cryptography.X509Certificates
 
+Class CertSelect
 
+    Shared Sub Main()
 
-Module PasswordDerivedBytesExample
+        Dim store As New X509Store("MY", StoreLocation.CurrentUser)
+        store.Open(OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly)
 
+        Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+        Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
+        Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Test Certificate Select", "Select a certificate from the following list to get information on that certificate", X509SelectionFlag.MultiSelection)
+        Console.WriteLine("Number of certificates: {0}{1}", scollection.Count, Environment.NewLine)
+         
+        For Each x509 As X509Certificate2 In scollection
+            Try
+                Dim rawdata As Byte() = x509.RawData
+                Console.WriteLine("Content Type: {0}{1}", X509Certificate2.GetCertContentType(rawdata), Environment.NewLine)
+                Console.WriteLine("Friendly Name: {0}{1}", x509.FriendlyName, Environment.NewLine)
+                Console.WriteLine("Certificate Verified?: {0}{1}", x509.Verify(), Environment.NewLine)
+                Console.WriteLine("Simple Name: {0}{1}", x509.GetNameInfo(X509NameType.SimpleName, True), Environment.NewLine)
+                Console.WriteLine("Signature Algorithm: {0}{1}", x509.SignatureAlgorithm.FriendlyName, Environment.NewLine)
+                Console.WriteLine("Private Key: {0}{1}", x509.PrivateKey.ToXmlString(False), Environment.NewLine)
+                Console.WriteLine("Public Key: {0}{1}", x509.PublicKey.Key.ToXmlString(False), Environment.NewLine)
+                Console.WriteLine("Certificate Archived?: {0}{1}", x509.Archived, Environment.NewLine)
+                Console.WriteLine("Length of Raw Data: {0}{1}", x509.RawData.Length, Environment.NewLine)
+                X509Certificate2UI.DisplayCertificate(x509)
+                x509.Reset()         
+             Catch cExcept As CryptographicException
+                 Console.WriteLine("Information could not be written out for this certificate.")
+             End Try
+        Next x509
 
-    Sub Main(ByVal args() As String)
-
-        ' Get a password from the user.
-        Console.WriteLine("Enter a password to produce a key:")
-
-        Dim pwd As Byte() = Encoding.Unicode.GetBytes(Console.ReadLine())
-
-        Dim salt As Byte() = CreateRandomSalt(7)
-
-        ' Create a TripleDESCryptoServiceProvider object.
-        Dim tdes As New TripleDESCryptoServiceProvider()
-
-        Try
-            Console.WriteLine("Creating a key with PasswordDeriveBytes...")
-
-            ' Create a PasswordDeriveBytes object and then create 
-            ' a TripleDES key from the password and salt.
-            Dim pdb As New PasswordDeriveBytes(pwd, salt)
-
-
-            ' Create the key and set it to the Key property
-            ' of the TripleDESCryptoServiceProvider object.
-            tdes.Key = pdb.CryptDeriveKey("TripleDES", "SHA1", 192, tdes.IV)
-
-
-            Console.WriteLine("Operation complete.")
-        Catch e As Exception
-            Console.WriteLine(e.Message)
-        Finally
-            ' Clear the buffers
-            ClearBytes(pwd)
-            ClearBytes(salt)
-
-            ' Clear the key.
-            tdes.Clear()
-        End Try
-
-        Console.ReadLine()
-
+        store.Close()
     End Sub
-
-
-    '********************************************************
-    '* Helper methods:
-    '* createRandomSalt: Generates a random salt value of the 
-    '*                   specified length.  
-    '*
-    '* clearBytes: Clear the bytes in a buffer so they can't 
-    '*             later be read from memory.
-    '********************************************************
-    Function CreateRandomSalt(ByVal length As Integer) As Byte()
-        ' Create a buffer
-        Dim randBytes() As Byte
-
-        If length >= 1 Then
-            randBytes = New Byte(length) {}
-        Else
-            randBytes = New Byte(0) {}
-        End If
-
-        ' Create a new RNGCryptoServiceProvider.
-        Dim rand As New RNGCryptoServiceProvider()
-
-        ' Fill the buffer with random bytes.
-        rand.GetBytes(randBytes)
-
-        ' return the bytes.
-        Return randBytes
-
-    End Function
-
-
-    Sub ClearBytes(ByVal buffer() As Byte)
-        ' Check arguments.
-        If buffer Is Nothing Then
-            Throw New ArgumentException("buffer")
-        End If
-
-        ' Set each byte in the buffer to 0.
-        Dim x As Integer
-        For x = 0 To buffer.Length - 1
-            buffer(x) = 0
-        Next x
-
-    End Sub
-End Module
+End Class

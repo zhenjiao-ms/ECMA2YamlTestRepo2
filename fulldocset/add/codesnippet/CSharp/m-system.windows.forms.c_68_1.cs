@@ -1,10 +1,12 @@
-   public delegate void InvokeDelegate();
-
-   private void Invoke_Click(object sender, EventArgs e)
-   {
-      myTextBox.BeginInvoke(new InvokeDelegate(InvokeMethod));
-   }
-   public void InvokeMethod()
-   {
-      myTextBox.Text = "Executed the given delegate";
-   }
+    // Demonstrates SetAudio, ContainsAudio, and GetAudioStream.
+    public System.IO.Stream SwapClipboardAudio(
+        System.IO.Stream replacementAudioStream)
+    {
+        System.IO.Stream returnAudioStream = null;
+        if (Clipboard.ContainsAudio())
+        {
+            returnAudioStream = Clipboard.GetAudioStream();
+            Clipboard.SetAudio(replacementAudioStream);
+        }
+        return returnAudioStream;
+    }

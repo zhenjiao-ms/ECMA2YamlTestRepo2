@@ -1,24 +1,23 @@
-    Private Sub MyButtonPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyButtonPrint.Click
+ Public Sub Printing(printer As String)
+     Try
+         streamToPrint = New StreamReader(filePath)
+         Try
+             printFont = New Font("Arial", 10)
+             Dim pd As New PrintDocument()
+             AddHandler pd.PrintPage, AddressOf pd_PrintPage
+             ' Specify the printer to use.
+             pd.PrinterSettings.PrinterName = printer
 
-        ' Set the paper size based upon the selection in the combo box.
-        If comboPaperSize.SelectedIndex <> -1 Then
-            printDoc.DefaultPageSettings.PaperSize = _
-            printDoc.PrinterSettings.PaperSizes.Item(comboPaperSize.SelectedIndex)
-        End If
-
-        ' Set the paper source based upon the selection in the combo box.
-        If comboPaperSource.SelectedIndex <> -1 Then
-            printDoc.DefaultPageSettings.PaperSource = _
-            printDoc.PrinterSettings.PaperSources.Item(comboPaperSource.SelectedIndex)
-        End If
-
-        ' Set the printer resolution based upon the selection in the combo box.
-        If comboPrintResolution.SelectedIndex <> -1 Then
-            printDoc.DefaultPageSettings.PrinterResolution = _
-            printDoc.PrinterSettings.PrinterResolutions.Item(comboPrintResolution.SelectedIndex)
-        End If
-
-        ' Print the document with the specified paper size and source.
-        printDoc.Print()
-
-    End Sub
+             If pd.PrinterSettings.IsValid then
+                pd.Print()
+             Else
+                MessageBox.Show("Printer is invalid.")
+             End If
+         Finally
+             streamToPrint.Close()
+         End Try
+     Catch ex As Exception
+         MessageBox.Show(ex.Message)
+     End Try
+ End Sub
+    

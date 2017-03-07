@@ -1,171 +1,102 @@
 using System;
-using System.Security;
 using System.Security.Cryptography;
 
-class SignatureDescriptionImpl
+namespace Contoso
 {
-    [STAThread]
-    static void Main(string[] args)
+    class MaskGenerator : System.Security.Cryptography.MaskGenerationMethod
     {
-        // Create a digital signature based on RSA encryption.
-        SignatureDescription rsaSignature = CreateRSAPKCS1Signature();
-        ShowProperties(rsaSignature);
+        private String HashNameValue;
 
-        // Create a digital signature based on DSA encryption.
-        SignatureDescription dsaSignature = CreateDSASignature();
-        ShowProperties(dsaSignature);
+        // Initialize a mask to encrypt using the SHA1 algorithm.
+        public MaskGenerator() 
+        {
+            HashNameValue = "SHA1";
+        }
 
-        // Create a HashAlgorithm using the digest algorithm of the signature.
-        HashAlgorithm hashAlgorithm = dsaSignature.CreateDigest();
-        Console.WriteLine("\nHash algorithm for the DigestAlgorithm property:"
-            + " " + hashAlgorithm.ToString());
+        // Create a mask with the specified seed.
+        override public byte[] GenerateMask(byte[] seed, int maskLength)
+        {
+            HashAlgorithm hash;
+            byte[] rgbCounter = new byte[4];
+            byte[] targetRgb = new byte[maskLength];
+            uint counter = 0;
 
-        // Create an AsymmetricSignatureFormatter instance using the DSA key.
-        DSA dsa = DSA.Create();
-        AsymmetricSignatureFormatter asymmetricFormatter =
-            CreateDSAFormatter(dsa);
-        
-        // Create an AsymmetricSignatureDeformatter instance using the
-        // DSA key.
-        AsymmetricSignatureDeformatter asymmetricDeformatter =
-            CreateDSADeformatter(dsa);
+            for (int inc = 0; inc < targetRgb.Length; )
+            {
+                ConvertIntToByteArray(counter++, ref rgbCounter);
+                hash = (HashAlgorithm)
+                    CryptoConfig.CreateFromName(HashNameValue);
 
-        Console.WriteLine("This sample completed successfully; " +
-            "press Enter to exit.");
-        Console.ReadLine();
+                byte[] temp = new byte[4 + seed.Length];
+                Buffer.BlockCopy(rgbCounter, 0, temp, 0, 4);
+                Buffer.BlockCopy(seed, 0, temp, 4, seed.Length);
+                hash.ComputeHash(temp);
+
+                if (targetRgb.Length - inc > hash.HashSize/8) 
+                {
+                    Buffer.BlockCopy(
+                        hash.Hash,
+                        0,
+                        targetRgb,
+                        inc,
+                        hash.Hash.Length);
+                }
+                else
+                {
+                    Buffer.BlockCopy(
+                        hash.Hash,
+                        0,
+                        targetRgb,
+                        inc,
+                        targetRgb.Length - inc);
+                }
+                inc += hash.Hash.Length;
+            }
+            return targetRgb;
+        }
+
+        // Convert the specified integer to the byte array.
+        private void ConvertIntToByteArray(
+            uint sourceInt,
+            ref byte[] targetBytes)
+        {
+            uint remainder;
+            int inc = 0;
+
+            // Clear the array prior to filling it.
+            Array.Clear(targetBytes, 0, targetBytes.Length);
+
+            while (sourceInt > 0) 
+            {
+                remainder = sourceInt % 256;
+                targetBytes[3 - inc] = (byte) remainder;
+                sourceInt = (sourceInt - remainder)/256;
+                inc++;
+            }
+        }
     }
-
-    // Create a SignatureDescription for RSA encryption.
-    private static SignatureDescription CreateRSAPKCS1Signature()
+// This class demonstrates how to create the MaskGenerator class 
+// and call its GenerateMask member.
+    class MaskGeneratorImpl
     {
-        SignatureDescription signatureDescription = 
-            new SignatureDescription();
+      public static void Main(string[] args)
+      {
+          byte[] seed = new byte[] {0x01, 0x02, 0x03, 0x04};
+          int length = 16;
+          MaskGenerator maskGenerator = new MaskGenerator();
+          byte[] mask = maskGenerator.GenerateMask(seed, length);
+          Console.WriteLine("Generated the following mask:");
+          Console.WriteLine(System.Text.Encoding.ASCII.GetString(mask));
 
-        // Set the key algorithm property for RSA encryption.
-        signatureDescription.KeyAlgorithm =
-            "System.Security.Cryptography.RSACryptoServiceProvider";
-
-        // Set the digest algorithm for RSA encryption using the
-        // SHA1 provider.
-        signatureDescription.DigestAlgorithm =
-            "System.Security.Cryptography.SHA1CryptoServiceProvider";
-
-        // Set the formatter algorithm with the RSAPKCS1 formatter.
-        signatureDescription.FormatterAlgorithm =
-            "System.Security.Cryptography.RSAPKCS1SignatureFormatter";
-
-        // Set the formatter algorithm with the RSAPKCS1 deformatter.
-        signatureDescription.DeformatterAlgorithm =
-            "System.Security.Cryptography.RSAPKCS1SignatureDeformatter";
-
-        return signatureDescription;
-    }
-
-    // Create a SignatureDescription using a constructed SecurityElement for 
-    // DSA encryption.
-    private static SignatureDescription CreateDSASignature()
-    {
-        SecurityElement securityElement = new SecurityElement("DSASignature");
-
-        // Create new security elements for the four algorithms.
-        securityElement.AddChild(new SecurityElement(
-            "Key",
-            "System.Security.Cryptography.DSACryptoServiceProvider"));
-        securityElement.AddChild(new SecurityElement(
-            "Digest",
-            "System.Security.Cryptography.SHA1CryptoServiceProvider")); 
-        securityElement.AddChild(new SecurityElement(
-            "Formatter",
-            "System.Security.Cryptography.DSASignatureFormatter"));
-        securityElement.AddChild(new SecurityElement(
-            "Deformatter",
-            "System.Security.Cryptography.DSASignatureDeformatter"));
-
-        SignatureDescription signatureDescription = 
-            new SignatureDescription(securityElement);
-
-        return signatureDescription;
-    }
-
-    // Create a signature formatter for DSA encryption.
-    private static AsymmetricSignatureFormatter CreateDSAFormatter(DSA dsa)
-    {
-        // Create a DSA signature formatter for encryption.
-        SignatureDescription signatureDescription = 
-            new SignatureDescription();
-        signatureDescription.FormatterAlgorithm =
-            "System.Security.Cryptography.DSASignatureFormatter";
-
-        AsymmetricSignatureFormatter asymmetricFormatter =
-            signatureDescription.CreateFormatter(dsa);
-
-        Console.WriteLine("\nCreated formatter : " + 
-            asymmetricFormatter.ToString());
-        return asymmetricFormatter;
-    }
-
-    // Create a signature deformatter for DSA decryption.
-    private static AsymmetricSignatureDeformatter CreateDSADeformatter(
-        DSA dsa)
-    {
-        // Create a DSA signature deformatter to verify the signature.
-        SignatureDescription signatureDescription = 
-            new SignatureDescription();
-        signatureDescription.DeformatterAlgorithm =
-            "System.Security.Cryptography.DSASignatureDeformatter";
-
-        AsymmetricSignatureDeformatter asymmetricDeformatter =
-            signatureDescription.CreateDeformatter(dsa);
-
-        Console.WriteLine("\nCreated deformatter : " + 
-            asymmetricDeformatter.ToString());
-        return asymmetricDeformatter;
-    }
-
-    // Display to the console the properties of the specified
-    // SignatureDescription.
-    private static void ShowProperties(
-        SignatureDescription signatureDescription)
-    {
-        // Retrieve the class path for the specified SignatureDescription.
-        string classDescription = signatureDescription.ToString();
-
-        string deformatterAlgorithm = 
-            signatureDescription.DeformatterAlgorithm;
-        string formatterAlgorithm = signatureDescription.FormatterAlgorithm;
-        string digestAlgorithm = signatureDescription.DigestAlgorithm;
-        string keyAlgorithm = signatureDescription.KeyAlgorithm;
-
-        Console.WriteLine("\n** " + classDescription + " **");
-        Console.WriteLine("DeformatterAlgorithm : " + deformatterAlgorithm);
-        Console.WriteLine("FormatterAlgorithm : " + formatterAlgorithm);
-        Console.WriteLine("DigestAlgorithm : " + digestAlgorithm);
-        Console.WriteLine("KeyAlgorithm : " + keyAlgorithm);
-    }
+          Console.WriteLine("This sample completed successfully; " +
+                "press Enter to exit.");
+          Console.ReadLine();
+      }
+  }
 }
 //
 // This sample produces the following output:
-// 
-// ** System.Security.Cryptography.SignatureDescription **
-// DeformatterAlgorithm : System.Security.Cryptography.
-// RSAPKCS1SignatureDeformatter
-// 
-// FormatterAlgorithm : System.Security.Cryptography.
-// RSAPKCS1SignatureFormatter
-// DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
-// KeyAlgorithm : System.Security.Cryptography.RSACryptoServiceProvider
-// 
-// ** System.Security.Cryptography.SignatureDescription **
-// DeformatterAlgorithm : System.Security.Cryptography.DSASignatureDeformatter
-// FormatterAlgorithm : System.Security.Cryptography.DSASignatureFormatter
-// DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
-// KeyAlgorithm : System.Security.Cryptography.DSACryptoServiceProvider
-// 
-// Hash algorithm for the DigestAlgorithm property: 
-// System.Security.Cryptography.SH
-// A1CryptoServiceProvider
-// 
-// Created formatter : System.Security.Cryptography.DSASignatureFormatter
-// 
-// Created deformatter : System.Security.Cryptography.DSASignatureDeformatter
+//
+// Generated the following mask:
+// ?"TFd(?~OtO?
 // This sample completed successfully; press Enter to exit.

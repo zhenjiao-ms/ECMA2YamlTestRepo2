@@ -1,12 +1,15 @@
-private:
-   void dataGrid1_KeyUp( Object^ /*sender*/, System::Windows::Forms::KeyEventArgs^ e )
+public:
+   void InstantiateMyCheckBox()
    {
-      if ( e->KeyCode == Keys::Enter )
-      {
-         
-         // Enter key pressed.
-         CurrencyManager^ gridCurrencyManager = dynamic_cast<CurrencyManager^>(this->BindingContext[dataGrid1->DataSource, dataGrid1->DataMember]);
-         gridCurrencyManager->EndCurrentEdit();
-         MessageBox::Show( "End Edit" );
-      }
+      // Create and initialize a CheckBox.   
+      CheckBox^ checkBox1 = gcnew CheckBox;
+      
+      // Make the check box control appear as a toggle button.
+      checkBox1->Appearance = Appearance::Button;
+      
+      // Turn off the update of the display on the click of the control.
+      checkBox1->AutoCheck = false;
+      
+      // Add the check box control to the form.
+      this->Controls->Add( checkBox1 );
    }

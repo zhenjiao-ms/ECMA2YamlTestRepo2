@@ -1,8 +1,14 @@
-   public:
-      // This example method creates a ComponentEventArgs using the specified argument.
-      // Typically, this type of event args is created by a design mode subsystem.
-      ComponentEventArgs^ CreateComponentEventArgs( IComponent^ component )
+public:
+   [DesignOnly(true)]
+   property CultureInfo^ GetLanguage 
+   {
+      CultureInfo^ get()
       {
-         // The component that is related to the event:  args.Component
-         return gcnew ComponentEventArgs( component );
+         // Insert code here.
+         return myCultureInfo;
       }
+      void set( CultureInfo^ value )
+      {
+         // Insert code here.
+      }
+   }

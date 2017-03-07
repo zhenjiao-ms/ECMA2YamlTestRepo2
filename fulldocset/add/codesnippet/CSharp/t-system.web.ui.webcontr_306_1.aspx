@@ -1,33 +1,56 @@
-<%@ Page Language="C#" %>
-<%@ Register TagPrefix="control"  TagName="colorcontrol" Src="~/color.ascx"%>
-<%@Register TagPrefix="pmode" TagName="persmode" Src="~/persMode.ascx" %>
+<%@ Register TagPrefix="aspSample" Namespace="Samples.AspNet.CS" Assembly="Samples.AspNet.CS" %>
+<%@ Import namespace="Samples.AspNet.CS" %>
+<%@ Page language="c#" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script runat="server">
+private void NorthwindEmployeeInserting(object source, ObjectDataSourceMethodEventArgs e)
+{
+  // The business object expects a custom type. Build it
+  // and add it to the parameters collection.
+  
+  IDictionary paramsFromPage = e.InputParameters;
 
+  NorthwindEmployee ne = new NorthwindEmployee();
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  ne.FirstName  = paramsFromPage["FirstName"].ToString();
+  ne.LastName   = paramsFromPage["LastName"].ToString();
+  ne.Title      = paramsFromPage["Title"].ToString();
+  ne.Courtesy   = paramsFromPage["Courtesy"].ToString();
+  ne.Supervisor = Int32.Parse(paramsFromPage["Supervisor"].ToString());
 
+  paramsFromPage.Clear();
+  paramsFromPage.Add("ne", ne);
+}
+
+</script>
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>Untitled Page</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <!-- Create Web Part manager and zone for the color user control. -->
-        <asp:WebPartManager ID="WebPartManager1" runat="server"></asp:WebPartManager>
-            <asp:WebPartZone ID="WebPartZone1" runat="server" HeaderText="Color Change Zone">
-                <ZoneTemplate>
-                <!-- Note that the control is Shared since it is declared on the page. -->
-                    <control:colorcontrol id="color1" title="Color Control" runat="server" />
-                </ZoneTemplate>
-            </asp:WebPartZone>
-        
-        <br />
-            <!-- Create Web Part zone for the personalization mode user control. -->
-            <asp:WebPartZone ID="WebPartZone2" runat="server" HeaderText="Scope Change Zone" Height="109px">
-                <ZoneTemplate>
-                    <pmode:persmode  ID="Persmode1" runat="server" title="Scope Tool"/>
-                </ZoneTemplate>
-            </asp:WebPartZone>
-   
+  <head>
+    <title>ObjectDataSource - C# Example</title>
+  </head>
+  <body>
+    <form id="Form1" method="post" runat="server">
+
+        <asp:detailsview
+          id="DetailsView1"
+          runat="server"
+          autogenerateinsertbutton="True"
+          datasourceid="ObjectDataSource1">
+        </asp:detailsview>
+
+        <asp:objectdatasource
+          id="ObjectDataSource1"
+          runat="server"
+          selectmethod="GetEmployee"
+          insertmethod="UpdateEmployeeInfo"
+          oninserting="NorthwindEmployeeInserting"
+          typename="Samples.AspNet.CS.EmployeeLogic"
+          >
+          <selectparameters>
+            <asp:parameter name="anID" defaultvalue="-1" />
+          </selectparameters>
+        </asp:objectdatasource>
+
     </form>
-</body>
+  </body>
 </html>

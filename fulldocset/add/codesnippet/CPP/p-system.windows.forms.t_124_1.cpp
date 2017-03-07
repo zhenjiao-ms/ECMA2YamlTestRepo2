@@ -1,9 +1,14 @@
-      void button2_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
+   private:
+      void treeView1_AfterSelect( Object^ /*sender*/, TreeViewEventArgs^ e )
       {
-         // Delete the first TreeNode in the collection
-         // if the Text property is S"Node0."
-         if ( this->treeView1->Nodes[ 0 ]->Text->Equals( "Node0" ) )
+         /* Display the Text and Index of the
+               * selected tree node's Parent. */
+         if ( e->Node->Parent != nullptr && e->Node->Parent->GetType() == TreeNode::typeid )
          {
-            this->treeView1->Nodes->RemoveAt( 0 );
+            statusBar1->Text = String::Format( "Parent: {0}\n Index Position: {1}", e->Node->Parent->Text, e->Node->Parent->Index );
+         }
+         else
+         {
+            statusBar1->Text = "No parent node.";
          }
       }

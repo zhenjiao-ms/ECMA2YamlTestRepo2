@@ -1,25 +1,19 @@
-using namespace System;
-using namespace System::Windows::Forms;
-public ref class Form1: public Form
-{
 public:
-   Form1()
+   void CreateMyMultilineTextBox()
    {
-      array<String^>^tabText = {"tabPage1","tabPage2"};
-      TabControl^ tabControl1 = gcnew TabControl;
-      TabPage^ tabPage1 = gcnew TabPage( tabText[ 0 ] );
-      TabPage^ tabPage2 = gcnew TabPage( tabText[ 1 ] );
+      // Create an instance of a TextBox control.
+      TextBox^ textBox1 = gcnew TextBox;
       
-      // Sets the tabs to appear as buttons.
-      tabControl1->Appearance = TabAppearance::Buttons;
-      array<TabPage^>^tabPageArray = {tabPage1,tabPage2};
-      tabControl1->Controls->AddRange( tabPageArray );
-      Controls->Add( tabControl1 );
+      // Set the Multiline property to true.
+      textBox1->Multiline = true;
+      // Add vertical scroll bars to the TextBox control.
+      textBox1->ScrollBars = ScrollBars::Vertical;
+      // Allow the RETURN key to be entered in the TextBox control.
+      textBox1->AcceptsReturn = true;
+      // Allow the TAB key to be entered in the TextBox control.
+      textBox1->AcceptsTab = true;
+      // Set WordWrap to true to allow text to wrap to the next line.
+      textBox1->WordWrap = true;
+      // Set the default text of the control.
+      textBox1->Text = "Welcome!";
    }
-
-};
-
-int main()
-{
-   Application::Run( gcnew Form1 );
-}

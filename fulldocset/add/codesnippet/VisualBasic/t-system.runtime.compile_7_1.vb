@@ -1,11 +1,12 @@
 Imports System.Runtime.CompilerServices
 
-
-<DiscardableAttribute()> Module Program
+<Assembly: DependencyAttribute("AssemblyA", LoadHint.Always)> 
+<Assembly: DependencyAttribute("AssemblyB", LoadHint.Sometimes)> 
+Module Program
 
 
     Sub Main(ByVal args() As String)
-        Console.WriteLine("The DiscardableAttribute attribute was applied.")
+        Console.WriteLine("The DependencyAttribute attribute was applied.")
     End Sub
 
 

@@ -1,134 +1,98 @@
-' This example signs a URL using an
-' envelope signature. It then verifies the 
-' signed XML.
-'
-Imports System
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.Xml
 Imports System.Text
-Imports System.Xml
+Imports System.IO
 
+Module DESSample
 
-
-Module SignVerifyEnvelope
-
-
-    Sub Main(ByVal args() As String)
-        ' Generate a signing key.
-        Dim Key As New RSACryptoServiceProvider()
-
+    Sub Main()
         Try
+            ' Create a new DES object to generate a key
+            ' and initialization vector (IV).
+            Dim DESalg As DES = DES.Create
 
-            ' Sign the detached resource and save the signature in an XML file.
-            SignDetachedResource("http://www.microsoft.com", "SignedExample.xml", Key)
+            ' Create a string to encrypt.
+            Dim sData As String = "Here is some data to encrypt."
 
-            Console.WriteLine("XML file signed.")
+            ' Encrypt the string to an in-memory buffer.
+            Dim Data As Byte() = EncryptTextToMemory(sData, DESalg.Key, DESalg.IV)
 
-            ' Verify the signature of the signed XML.
-            Console.WriteLine("Verifying signature...")
+            ' Decrypt the buffer back to a string.
+            Dim Final As String = DecryptTextFromMemory(Data, DESalg.Key, DESalg.IV)
 
-            Dim result As Boolean = VerifyXmlFile("SignedExample.xml")
-
-            ' Display the results of the signature verification to \
-            ' the console.
-            If result Then
-                Console.WriteLine("The XML signature is valid.")
-            Else
-                Console.WriteLine("The XML signature is not valid.")
-            End If
-        Catch e As CryptographicException
+            ' Display the decrypted string to the console.
+            Console.WriteLine(Final)
+        Catch e As Exception
             Console.WriteLine(e.Message)
-        Finally
-            ' Clear resources associated with the 
-            ' RSACryptoServiceProvider.
-            Key.Clear()
         End Try
-
     End Sub
 
 
-    ' Sign an XML file and save the signature in a new file.
-    Sub SignDetachedResource(ByVal URIString As String, ByVal XmlSigFileName As String, ByVal Key As RSA)
-        ' Check the arguments.  
-        If URIString Is Nothing Then
-            Throw New ArgumentNullException("URIString")
-        End If
-        If XmlSigFileName Is Nothing Then
-            Throw New ArgumentNullException("XmlSigFileName")
-        End If
-        If Key Is Nothing Then
-            Throw New ArgumentNullException("Key")
-        End If
-        ' Create a SignedXml object.
-        Dim signedXml As New SignedXml()
+    Function EncryptTextToMemory(ByVal Data As String, ByVal Key() As Byte, ByVal IV() As Byte) As Byte()
+        Try
+            ' Create a MemoryStream.
+            Dim mStream As New MemoryStream
 
-        ' Assign the key to the SignedXml object.
-        signedXml.SigningKey = Key
+            ' Create a new DES object.
+            Dim DESalg As DES = DES.Create
 
-        ' Get the signature object from the SignedXml object.
-        Dim XMLSignature As Signature = signedXml.Signature
+            ' Create a CryptoStream using the MemoryStream 
+            ' and the passed key and initialization vector (IV).
+            Dim cStream As New CryptoStream(mStream, _
+                                            DESalg.CreateEncryptor(Key, IV), _
+                                            CryptoStreamMode.Write)
 
-        ' Create a reference to be signed.
-        Dim reference As New Reference()
+            ' Convert the passed string to a byte array.
+            Dim toEncrypt As Byte() = New ASCIIEncoding().GetBytes(Data)
 
-        ' Add the passed URI to the reference object.
-        reference.Uri = URIString
+            ' Write the byte array to the crypto stream and flush it.
+            cStream.Write(toEncrypt, 0, toEncrypt.Length)
+            cStream.FlushFinalBlock()
 
-        ' Add the Reference object to the Signature object.
-        XMLSignature.SignedInfo.AddReference(reference)
+            ' Get an array of bytes from the 
+            ' MemoryStream that holds the 
+            ' encrypted data.
+            Dim ret As Byte() = mStream.ToArray()
 
-        ' Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-        Dim keyInfo As New KeyInfo()
-        keyInfo.AddClause(New RSAKeyValue(CType(Key, RSA)))
+            ' Close the streams.
+            cStream.Close()
+            mStream.Close()
 
-        ' Add the KeyInfo object to the Reference object.
-        XMLSignature.KeyInfo = keyInfo
-
-        ' Compute the signature.
-        signedXml.ComputeSignature()
-
-        ' Get the XML representation of the signature and save
-        ' it to an XmlElement object.
-        Dim xmlDigitalSignature As XmlElement = signedXml.GetXml()
-
-        ' Save the signed XML document to a file specified
-        ' using the passed string.
-        Dim xmltw As New XmlTextWriter(XmlSigFileName, New UTF8Encoding(False))
-        xmlDigitalSignature.WriteTo(xmltw)
-        xmltw.Close()
-
-    End Sub
+            ' Return the encrypted buffer.
+            Return ret
+        Catch e As CryptographicException
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
+            Return Nothing
+        End Try
+    End Function
 
 
+    Function DecryptTextFromMemory(ByVal Data() As Byte, ByVal Key() As Byte, ByVal IV() As Byte) As String
+        Try
+            ' Create a new MemoryStream using the passed 
+            ' array of encrypted data.
+            Dim msDecrypt As New MemoryStream(Data)
 
-    ' Verify the signature of an XML file and return the result.
-    Function VerifyXmlFile(ByVal Name As String) As [Boolean]
-        ' Check the arguments.  
-        If Name Is Nothing Then
-            Throw New ArgumentNullException("Name")
-        End If
-        ' Create a new XML document.
-        Dim xmlDocument As New XmlDocument()
+            ' Create a new DES object.
+            Dim DESalg As DES = DES.Create
 
-        ' Format using white spaces.
-        xmlDocument.PreserveWhitespace = True
+            ' Create a CryptoStream using the MemoryStream 
+            ' and the passed key and initialization vector (IV).
+            Dim csDecrypt As New CryptoStream(msDecrypt, _
+                                              DESalg.CreateDecryptor(Key, IV), _
+                                              CryptoStreamMode.Read)
 
-        ' Load the passed XML file into the document. 
-        xmlDocument.Load(Name)
+            ' Create buffer to hold the decrypted data.
+            Dim fromEncrypt(Data.Length) As Byte
 
-        ' Create a new SignedXml object and pass it
-        ' the XML document class.
-        Dim signedXml As New SignedXml(xmlDocument)
+            ' Read the decrypted data out of the crypto stream
+            ' and place it into the temporary buffer.
+            csDecrypt.Read(fromEncrypt, 0, fromEncrypt.Length)
 
-        ' Find the "Signature" node and create a new
-        ' XmlNodeList object.
-        Dim nodeList As XmlNodeList = xmlDocument.GetElementsByTagName("Signature")
-
-        ' Load the signature node.
-        signedXml.LoadXml(CType(nodeList(0), XmlElement))
-
-        ' Check the signature and return the result.
-        Return signedXml.CheckSignature()
-
+            'Convert the buffer into a string and return it.
+            Return New ASCIIEncoding().GetString(fromEncrypt)
+        Catch e As CryptographicException
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
+            Return Nothing
+        End Try
     End Function
 End Module

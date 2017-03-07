@@ -1,23 +1,29 @@
-private void MyPopupEventHandler(System.Object sender, System.EventArgs e)
- {
-    // Define the MenuItem objects to display for the TextBox.
-    MenuItem menuItem1 = new MenuItem("&Copy");
-    MenuItem menuItem2 = new MenuItem("&Find and Replace");
-    // Define the MenuItem object to display for the PictureBox.
-    MenuItem menuItem3 = new MenuItem("C&hange Picture");
+private void DecimalToCurrencyString(object sender, ConvertEventArgs cevent)
+{
+   // The method converts only to string type. Test this using the DesiredType.
+   if(cevent.DesiredType != typeof(string)) return;
 
-    // Clear all previously added MenuItems.
-    contextMenu1.MenuItems.Clear();
- 
-    if(contextMenu1.SourceControl == textBox1)
-    {
-       // Add MenuItems to display for the TextBox.
-       contextMenu1.MenuItems.Add(menuItem1);
-       contextMenu1.MenuItems.Add(menuItem2);
-    }
-    else if(contextMenu1.SourceControl == pictureBox1)
-    {
-       // Add the MenuItem to display for the PictureBox.
-       contextMenu1.MenuItems.Add(menuItem3);
-    }
- }
+   // Use the ToString method to format the value as currency ("c").
+   cevent.Value = ((decimal) cevent.Value).ToString("c");
+}
+
+private void CurrencyStringToDecimal(object sender, ConvertEventArgs cevent)
+{
+   // The method converts back to decimal type only. 
+   if(cevent.DesiredType != typeof(decimal)) return;
+
+   // Converts the string back to decimal using the static Parse method.
+   cevent.Value = Decimal.Parse(cevent.Value.ToString(),
+   NumberStyles.Currency, null);
+}
+
+private void BindControl()
+{
+   // Creates the binding first. The OrderAmount is typed as Decimal.
+   Binding b = new Binding
+   ("Text", ds, "customers.custToOrders.OrderAmount");
+   // Adds the delegates to the events.
+   b.Format += new ConvertEventHandler(DecimalToCurrencyString);
+   b.Parse += new ConvertEventHandler(CurrencyStringToDecimal);
+   text1.DataBindings.Add(b);
+}

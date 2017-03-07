@@ -1,52 +1,70 @@
-    ' A transformer that transforms a row to a string.
-    <AspNetHostingPermission(SecurityAction.Demand, _
-       Level:=AspNetHostingPermissionLevel.Minimal)> _
-    <AspNetHostingPermission(SecurityAction.InheritanceDemand, _
-       Level:=AspNetHostingPermissionLevel.Minimal)> _
-    <WebPartTransformer(GetType(IWebPartRow), GetType(IString))> _
-    Public Class RowToStringTransformer
-        Inherits WebPartTransformer
-        Implements IString
+Imports System
+Imports System.ComponentModel
+Imports System.Web.UI
+Imports System.Web.UI.WebControls
 
-        Private _provider As IWebPartRow
-        Private _callback As StringCallback
+Namespace Samples.AspNet.VB
 
-        Private Sub GetRowData(ByVal rowData As Object)
-            Dim props As PropertyDescriptorCollection = _provider.Schema
-
-            If ((Not (props Is Nothing)) AndAlso (props.Count > 0) _
-              AndAlso (Not (rowData Is Nothing))) Then
-                Dim returnValue As String = String.Empty
-                For Each prop As PropertyDescriptor In props
-                    If Not (prop Is props(0)) Then
-                        returnValue += ", "
-                    End If
-                    returnValue += prop.DisplayName.ToString() + ": " + _
-                        prop.GetValue(rowData).ToString()
-                Next
-                _callback(returnValue)
-            Else
-                _callback(Nothing)
-            End If
-        End Sub
-
-        Public Overrides Function Transform(ByVal providerData As Object) As Object
-            _provider = CType(providerData, IWebPartRow)
-            Return Me
-        End Function
+  <DefaultProperty("ControlID")>  _
+  Public Class DebugInfoControl
+     Inherits Control
 
 
-        Sub GetStringValue(ByVal callback As StringCallback) _
-           Implements IString.GetStringValue
-            If (callback Is Nothing) Then
-                Throw New ArgumentNullException("callback")
-            End If
+     Public Sub New()
+     End Sub 'New
 
-            If (Not (_provider Is Nothing)) Then
-                _callback = callback
-                _provider.GetRowData(New RowCallback(AddressOf GetRowData))
-            Else
-                callback(Nothing)
-            End If
-        End Sub
-    End Class
+
+     Public Sub New(controlID As String)
+        ControlID = controlID
+     End Sub 'New
+
+
+     <DefaultValue(""), TypeConverter(GetType(ControlIDConverter))>  _
+     Public Property ControlID() As String
+        Get
+           Dim o As Object = ViewState("ControlID")
+           If o Is Nothing Then
+              Return String.Empty
+           End If
+           Return CStr(o)
+        End Get
+        Set
+           If ControlID <> value Then
+              ViewState("ControlID") = value
+           End If
+        End Set
+     End Property
+
+
+     Protected Overrides Sub Render(writer As HtmlTextWriter)
+
+        Dim info As New Label()
+
+        If Me.ControlID.Length = 0 Then
+           writer.Write("<Font Color='Red'>No ControlID set.</Font>")
+        End If
+
+        Dim ctrl As Control = Me.FindControl(ControlID)
+
+
+        If ctrl Is Nothing Then
+           writer.Write(("<Font Color='Red'>Could not find control " + ControlID + " in Naming Container.</Font>"))
+        Else
+           writer.Write(("<Font Color='Green'>Control " + ControlID + " found.<BR>"))
+           writer.Write(("Its Naming Container is: " + ctrl.NamingContainer.ID + "<BR>"))
+           If ctrl.EnableViewState Then
+              writer.Write("It uses view state to persist its state.<BR>")
+           End If
+           If ctrl.EnableTheming Then
+              writer.Write("It can be assigned a Theme ID.<BR>")
+           End If
+           If ctrl.Visible Then
+              writer.Write("It is visible on the page.<BR>")
+           Else
+              writer.Write("It is not visible on the page.<BR>")
+           End If
+           writer.Write("</Font>")
+        End If
+     End Sub 'Render
+  End Class 'DebugInfoControl
+End Namespace

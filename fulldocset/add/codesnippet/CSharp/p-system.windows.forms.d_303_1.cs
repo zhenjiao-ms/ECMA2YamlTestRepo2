@@ -1,62 +1,77 @@
-        private void ListDragTarget_DragOver(object sender, System.Windows.Forms.DragEventArgs e) 
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+using System.Drawing;
+
+public class Form1 : System.Windows.Forms.Form
+{
+    private DataGridView dataGridView1 = new DataGridView();
+    private BindingSource bindingSource1 = new BindingSource();
+
+    public Form1()
+    {
+        dataGridView1.Dock = DockStyle.Fill;
+        this.Controls.Add(dataGridView1);
+        InitializeDataGridView();
+    }
+
+    private void InitializeDataGridView()
+    {
+        try
         {
+            // Set up the DataGridView.
+            dataGridView1.Dock = DockStyle.Fill;
 
-            // Determine whether string data exists in the drop data. If not, then
-            // the drop effect reflects that the drop cannot occur.
-            if (!e.Data.GetDataPresent(typeof(System.String))) {
+            // Automatically generate the DataGridView columns.
+            dataGridView1.AutoGenerateColumns = true;
 
-                e.Effect = DragDropEffects.None;
-                DropLocationLabel.Text = "None - no string data.";
-                return;
-            }
+            // Set up the data source.
+            bindingSource1.DataSource = GetData("Select * From Products");
+            dataGridView1.DataSource = bindingSource1;
 
-            // Set the effect based upon the KeyState.
-            if ((e.KeyState & (8+32)) == (8+32) && 
-                (e.AllowedEffect & DragDropEffects.Link) == DragDropEffects.Link) {
-                // KeyState 8 + 32 = CTL + ALT
+            // Automatically resize the visible rows.
+            dataGridView1.AutoSizeRowsMode =
+                DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
 
-                // Link drag-and-drop effect.
-                e.Effect = DragDropEffects.Link;
+            // Set the DataGridView control's border.
+            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
 
-            } else if ((e.KeyState & 32) == 32 && 
-                (e.AllowedEffect & DragDropEffects.Link) == DragDropEffects.Link) {
-
-                // ALT KeyState for link.
-                e.Effect = DragDropEffects.Link;
-
-            } else if ((e.KeyState & 4) == 4 && 
-                (e.AllowedEffect & DragDropEffects.Move) == DragDropEffects.Move) {
-
-                // SHIFT KeyState for move.
-                e.Effect = DragDropEffects.Move;
-
-            } else if ((e.KeyState & 8) == 8 && 
-                (e.AllowedEffect & DragDropEffects.Copy) == DragDropEffects.Copy) {
-
-                // CTL KeyState for copy.
-                e.Effect = DragDropEffects.Copy;
-
-            } else if ((e.AllowedEffect & DragDropEffects.Move) == DragDropEffects.Move)  {
-
-                // By default, the drop action should be move, if allowed.
-                e.Effect = DragDropEffects.Move;
-
-            } else
-                e.Effect = DragDropEffects.None;
-                
-            // Get the index of the item the mouse is below. 
-
-            // The mouse locations are relative to the screen, so they must be 
-            // converted to client coordinates.
-
-            indexOfItemUnderMouseToDrop = 
-                ListDragTarget.IndexFromPoint(ListDragTarget.PointToClient(new Point(e.X, e.Y)));
-
-            // Updates the label text.
-            if (indexOfItemUnderMouseToDrop != ListBox.NoMatches){
-
-                DropLocationLabel.Text = "Drops before item #" + (indexOfItemUnderMouseToDrop + 1);
-            } else
-                DropLocationLabel.Text = "Drops at the end.";
-
+            // Put the cells in edit mode when user enters them.
+            dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
         }
+        catch (SqlException)
+        {
+            MessageBox.Show("To run this sample replace connection.ConnectionString" +
+                " with a valid connection string to a Northwind" +
+                " database accessible to your system.", "ERROR",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            System.Threading.Thread.CurrentThread.Abort();
+        }
+    }
+
+    private static DataTable GetData(string sqlCommand)
+    {
+        string connectionString = "Integrated Security=SSPI;" +
+            "Persist Security Info=False;" +
+            "Initial Catalog=Northwind;Data Source=localhost";
+
+        SqlConnection northwindConnection = new SqlConnection(connectionString);
+
+        SqlCommand command = new SqlCommand(sqlCommand, northwindConnection);
+        SqlDataAdapter adapter = new SqlDataAdapter();
+        adapter.SelectCommand = command;
+
+        DataTable table = new DataTable();
+        table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+        adapter.Fill(table);
+
+        return table;
+    }
+
+    [STAThreadAttribute()]
+    public static void Main()
+    {
+        Application.Run(new Form1());
+    }
+}

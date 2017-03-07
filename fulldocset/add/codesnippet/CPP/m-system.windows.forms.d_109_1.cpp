@@ -1,7 +1,8 @@
-   // On Click of Button "Unselect Row" this event is raised.
 private:
-   void UnselectRow_Clicked( Object^ /*sender*/, EventArgs^ /*e*/ )
+   void Grid_MouseUp(
+      Object^ sender, System::Windows::Forms::MouseEventArgs^ /*e*/ )
    {
-      // Unselect the current row from the Datagrid
-      myDataGrid->UnSelect( myDataGrid->CurrentRowIndex );
+      DataGrid^ dg = (DataGrid^)(sender);
+      DataGridCell myCell = dg->CurrentCell;
+      Console::WriteLine( myCell.ToString() );
    }

@@ -1,325 +1,281 @@
 Imports System
 Imports System.Security.Cryptography
-Imports System.Collections
+Imports System.Security.Cryptography.X509Certificates
+Imports System.IO
 Imports System.Text
 
-Public Class Form1
-    Inherits System.Windows.Forms.Form
 
-    ' Use a public service provider for encryption and decryption.
-    Dim desCSP As New DESCryptoServiceProvider
+' To run this sample use the Certificate Creation Tool (Makecert.exe) to generate a test X.509 certificate and 
+' place it in the local user store. 
+' To generate an exchange key and make the key exportable run the following command from a Visual Studio command prompt: 
+'makecert -r -pe -n "CN=CERT_SIGN_TEST_CERT" -b 01/01/2010 -e 01/01/2012 -sky exchange -ss my
 
-    ' Event handler for Run button.
-    Private Sub Button1_Click( _
-        ByVal sender As System.Object, _
-        ByVal e As System.EventArgs) Handles Button1.Click
+Class Program
 
-        tbxOutput.Cursor = Cursors.WaitCursor
-        tbxOutput.Text = ""
+    ' Path variables for source, encryption, and
+    ' decryption folders. Must end with a backslash.
+    Private Shared encrFolder As String = "C:\Encrypt\"
+    Private Shared decrFolder As String = "C:\Decrypt\"
+    Private Shared originalFile As String = "TestData.txt"
+    Private Shared encryptedFile As String = "TestData.enc"
 
-        Dim message As String = "01234567890123456789"
-        Dim sourceBytes() As Byte = Encoding.ASCII.GetBytes(message)
-        tbxOutput.AppendText("** Phrase to be encoded: " + message + vbCrLf)
 
-        Dim encodedBytes() As Byte = EncodeBytes(sourceBytes)
-        tbxOutput.AppendText("** Phrase after encoding: " + _
-            Encoding.ASCII.GetString(encodedBytes) + vbCrLf)
+    Shared Sub Main(ByVal args() As String)
 
-        Dim decodedBytes() As Byte = DecodeBytes(encodedBytes)
-        tbxOutput.AppendText("** Phrase after decoding: " + _
-            Encoding.ASCII.GetString(decodedBytes) + vbCrLf)
+        ' Create an input file with test data.
+        Dim sw As StreamWriter = File.CreateText(originalFile)
+        sw.WriteLine("Test data to be encrypted")
+        sw.Close()
 
-        tbxOutput.AppendText(vbCrLf + "Sample ended successfully; " + _
-            "press Enter to continue.")
-        tbxOutput.Cursor = Cursors.Default
-    End Sub
-
-    ' Encode the specified byte array by using CryptoAPITranform.
-    Private Function EncodeBytes(ByVal sourceBytes() As Byte) As Byte()
-        Dim currentPosition As Int16 = 0
-        Dim targetBytes(1024) As Byte
-        Dim sourceByteLength As Integer = sourceBytes.Length
-
-        ' Create a DES encryptor from this instance to perform encryption.
-        Dim cryptoTransform As CryptoAPITransform
-        cryptoTransform = CType(desCSP.CreateEncryptor(), CryptoAPITransform)
-
-        ' Retrieve the block size to read the bytes.
-        Dim inputBlockSize As Integer = cryptoTransform.InputBlockSize
-
-        ' Retrieve the key handle.
-        Dim keyHandle As IntPtr = cryptoTransform.KeyHandle
-
-        ' Retrieve the block size to write the bytes.
-        Dim outputBlockSize As Integer = cryptoTransform.OutputBlockSize
-
-        Try
-            ' Determine if multiple blocks can be transformed.
-            If (cryptoTransform.CanTransformMultipleBlocks) Then
-                Dim numBytesRead As Int16 = 0
-                While (sourceByteLength - currentPosition >= inputBlockSize)
-                    ' Transform the bytes from currentposition in the 
-                    ' sourceBytes array, writing the bytes to the targetBytes
-                    ' array.
-                    numBytesRead = cryptoTransform.TransformBlock( _
-                        sourceBytes, _
-                        currentPosition, _
-                        inputBlockSize, _
-                        targetBytes, _
-                        currentPosition)
-
-                    ' Advance the current position in the sourceBytes array.
-                    currentPosition += numBytesRead
-                End While
-
-                ' Transform the final block of bytes.
-                Dim finalBytes() As Byte
-                finalBytes = cryptoTransform.TransformFinalBlock( _
-                    sourceBytes, _
-                    currentPosition, _
-                    sourceByteLength - currentPosition)
-
-                ' Copy the contents of the finalBytes array to the targetBytes
-                ' array.
-                finalBytes.CopyTo(targetBytes, currentPosition)
-            End If
-
-        Catch ex As Exception
-            tbxOutput.AppendText("Caught unexpected exception:" + _
-                ex.ToString() + vbCrLf)
-
-        End Try
-
-        ' Determine if the current transform can be reused.
-        If (Not cryptoTransform.CanReuseTransform) Then
-
-            ' Free up any used resources.
-            cryptoTransform.Clear()
+        ' Get the certifcate to use to encrypt the key.
+        Dim cert As X509Certificate2 = GetCertificateFromStore("CN=CERT_SIGN_TEST_CERT")
+        If cert Is Nothing Then
+            Console.WriteLine("Certificatge 'CN=CERT_SIGN_TEST_CERT' not found.")
+            Console.ReadLine()
         End If
 
-        ' Trim the extra bytes in the array that were not used.
-        Return TrimArray(targetBytes)
-    End Function
 
-    ' Decode the specified byte array using CryptoAPITranform.
-    Private Function DecodeBytes(ByVal sourceBytes() As Byte) As Byte()
+        ' Encrypt the file using the public key from the certificate.
+        EncryptFile(originalFile, CType(cert.PublicKey.Key, RSACryptoServiceProvider))
 
-        Dim currentPosition As Int16 = 0
-        Dim targetBytes(1024) As Byte
-        Dim sourceByteLength As Integer = sourceBytes.Length
+        ' Decrypt the file using the private key from the certificate.
+        DecryptFile(encryptedFile, CType(cert.PrivateKey, RSACryptoServiceProvider))
 
-        ' Create a DES decryptor from this instance to perform decryption.
-        Dim cryptoTransform As CryptoAPITransform
-        cryptoTransform = CType(desCSP.CreateDecryptor(), CryptoAPITransform)
+        'Display the original data and the decrypted data.
+        Console.WriteLine("Original:   {0}", File.ReadAllText(originalFile))
+        Console.WriteLine("Round Trip: {0}", File.ReadAllText(decrFolder + originalFile))
+        Console.WriteLine("Press the Enter key to exit.")
+        Console.ReadLine()
 
-        Dim inputBlockSize As Integer = cryptoTransform.InputBlockSize
+    End Sub 'Main
 
+    Private Shared Function GetCertificateFromStore(ByVal certName As String) As X509Certificate2
+        ' Get the certificate store for the current user.
+        Dim store As New X509Store(StoreLocation.CurrentUser)
         Try
-            ' Determine if multiple blocks can be transformed.
-            If (cryptoTransform.CanTransformMultipleBlocks) Then
+            store.Open(OpenFlags.ReadOnly)
 
-                Dim numBytesRead As Int16 = 0
-                While (sourceByteLength - currentPosition >= inputBlockSize)
-
-                    ' Transform the bytes from currentPosition in the
-                    ' sourceBytes array, writing the bytes to the targetBytes
-                    ' array.
-                    numBytesRead = cryptoTransform.TransformBlock( _
-                        sourceBytes, _
-                        currentPosition, _
-                        inputBlockSize, _
-                        targetBytes, _
-                        currentPosition)
-
-                    ' Advance the current position in the source array.
-                    currentPosition += numBytesRead
-                End While
-
-                ' Transform the final block of bytes.
-                Dim finalBytes() As Byte
-                finalBytes = cryptoTransform.TransformFinalBlock( _
-                    sourceBytes, _
-                    currentPosition, _
-                    sourceByteLength - currentPosition)
-
-                ' Copy the contents of the finalBytes array to the targetBytes
-                ' array.
-                finalBytes.CopyTo(targetBytes, currentPosition)
-            End If
-
-        Catch ex As Exception
-            tbxOutput.AppendText("Caught unexpected exception:" + _
-                ex.ToString() + vbCrLf)
-
+            ' Place all certificates in an X509Certificate2Collection object.
+            Dim certCollection As X509Certificate2Collection = store.Certificates
+            ' If using a certificate with a trusted root you do not need to FindByTimeValid, instead use:
+            ' currentCerts.Find(X509FindType.FindBySubjectDistinguishedName, certName, true);
+            Dim currentCerts As X509Certificate2Collection = certCollection.Find(X509FindType.FindByTimeValid, DateTime.Now, False)
+            Dim signingCert As X509Certificate2Collection = currentCerts.Find(X509FindType.FindBySubjectDistinguishedName, certName, False)
+            If signingCert.Count = 0 Then
+                Return Nothing
+            End If ' Return the first certificate in the collection, has the right name and is current.
+            Return signingCert(0)
+        Finally
+            store.Close()
         End Try
 
-        ' Strip out the second block of bytes.
-        Array.Copy(targetBytes, (inputBlockSize * 2), targetBytes, inputBlockSize, targetBytes.Length - (inputBlockSize * 2))
 
-        ' Trim the extra bytes in the array that were not used.
-        Return TrimArray(targetBytes)
-    End Function
+    End Function 'GetCertificateFromStore
 
-    ' Resize the dimensions of the array to a size that contains only valid
-    ' bytes.
-    Private Function TrimArray(ByVal targetArray() As Byte) As Byte()
+    ' Encrypt a file using a public key.
+    Private Shared Sub EncryptFile(ByVal inFile As String, ByVal rsaPublicKey As RSACryptoServiceProvider)
+        Dim aesManaged As New AesManaged()
+        Try
+            ' Create instance of AesManaged for
+            ' symetric encryption of the data.
+            aesManaged.KeySize = 256
+            aesManaged.BlockSize = 128
+            aesManaged.Mode = CipherMode.CBC
+            Dim transform As ICryptoTransform = aesManaged.CreateEncryptor()
+            Try
+                Dim keyFormatter As New RSAPKCS1KeyExchangeFormatter(rsaPublicKey)
+                Dim keyEncrypted As Byte() = keyFormatter.CreateKeyExchange(aesManaged.Key, aesManaged.GetType())
 
-        Dim enum1 As IEnumerator = targetArray.GetEnumerator()
-        Dim i As Int16 = 0
+                ' Create byte arrays to contain
+                ' the length values of the key and IV.
+                Dim LenK(3) As Byte
+                Dim LenIV(3) As Byte
 
-        While (enum1.MoveNext())
-            If (enum1.Current.ToString().Equals("0")) Then
-                Exit While
-            End If
+                Dim lKey As Integer = keyEncrypted.Length
+                LenK = BitConverter.GetBytes(lKey)
+                Dim lIV As Integer = aesManaged.IV.Length
+                LenIV = BitConverter.GetBytes(lIV)
 
-            i += 1
-        End While
+                ' Write the following to the FileStream
+                ' for the encrypted file (outFs):
+                ' - length of the key
+                ' - length of the IV
+                ' - ecrypted key
+                ' - the IV
+                ' - the encrypted cipher content
+                Dim startFileName As Integer = inFile.LastIndexOf("\") + 1
+                ' Change the file's extension to ".enc"
+                Dim outFile As String = encrFolder + inFile.Substring(startFileName, inFile.LastIndexOf(".") - startFileName) + ".enc"
+                Directory.CreateDirectory(encrFolder)
 
-        ' Create a new array with the number of valid bytes.
-        Dim returnedArray(i - 1) As Byte
-        For j As Int16 = 0 To i - 1 Step 1
-            returnedArray(j) = targetArray(j)
-        Next
+                Dim outFs As New FileStream(outFile, FileMode.Create)
+                Try
 
-        Return returnedArray
-    End Function
+                    outFs.Write(LenK, 0, 4)
+                    outFs.Write(LenIV, 0, 4)
+                    outFs.Write(keyEncrypted, 0, lKey)
+                    outFs.Write(aesManaged.IV, 0, lIV)
+
+                    ' Now write the cipher text using
+                    ' a CryptoStream for encrypting.
+                    Dim outStreamEncrypted As New CryptoStream(outFs, transform, CryptoStreamMode.Write)
+                    Try
+
+                        ' By encrypting a chunk at
+                        ' a time, you can save memory
+                        ' and accommodate large files.
+                        Dim count As Integer = 0
+                        Dim offset As Integer = 0
+
+                        ' blockSizeBytes can be any arbitrary size.
+                        Dim blockSizeBytes As Integer = aesManaged.BlockSize / 8
+                        Dim data(blockSizeBytes) As Byte
+                        Dim bytesRead As Integer = 0
+
+                        Dim inFs As New FileStream(inFile, FileMode.Open)
+                        Try
+                            Do
+                                count = inFs.Read(data, 0, blockSizeBytes)
+                                offset += count
+                                outStreamEncrypted.Write(data, 0, count)
+                                bytesRead += blockSizeBytes
+                            Loop While count > 0
+                            inFs.Close()
+                        Finally
+                            inFs.Dispose()
+                        End Try
+                        outStreamEncrypted.FlushFinalBlock()
+                        outStreamEncrypted.Close()
+                    Finally
+                        outStreamEncrypted.Dispose()
+                    End Try
+                    outFs.Close()
+                Finally
+                    outFs.Dispose()
+                End Try
+            Finally
+                transform.Dispose()
+            End Try
+        Finally
+            aesManaged.Dispose()
+        End Try
+
+    End Sub 'EncryptFile
 
 
-    ' Event handler for Exit button.
-    Private Sub Button2_Click( _
-        ByVal sender As System.Object, _
-        ByVal e As System.EventArgs) Handles Button2.Click
+    ' Decrypt a file using a private key.
+    Private Shared Sub DecryptFile(ByVal inFile As String, ByVal rsaPrivateKey As RSACryptoServiceProvider)
 
-        Application.Exit()
-    End Sub
-#Region " Windows Form Designer generated code "
+        ' Create instance of AesManaged for
+        ' symetric decryption of the data.
+        Dim aesManaged As New AesManaged()
+        Try
+            aesManaged.KeySize = 256
+            aesManaged.BlockSize = 128
+            aesManaged.Mode = CipherMode.CBC
 
-    Public Sub New()
-        MyBase.New()
+            ' Create byte arrays to get the length of
+            ' the encrypted key and IV.
+            ' These values were stored as 4 bytes each
+            ' at the beginning of the encrypted package.
+            Dim LenK() As Byte = New Byte(4 - 1) {}
+            Dim LenIV() As Byte = New Byte(4 - 1) {}
 
-        'This call is required by the Windows Form Designer.
-        InitializeComponent()
+            ' Consruct the file name for the decrypted file.
+            Dim outFile As String = decrFolder + inFile.Substring(0, inFile.LastIndexOf(".")) + ".txt"
 
-        'Add any initialization after the InitializeComponent() call
+            ' Use FileStream objects to read the encrypted
+            ' file (inFs) and save the decrypted file (outFs).
+            Dim inFs As New FileStream(encrFolder + inFile, FileMode.Open)
+            Try
 
-    End Sub
+                inFs.Seek(0, SeekOrigin.Begin)
+                inFs.Seek(0, SeekOrigin.Begin)
+                inFs.Read(LenK, 0, 3)
+                inFs.Seek(4, SeekOrigin.Begin)
+                inFs.Read(LenIV, 0, 3)
 
-    'Form overrides dispose to clean up the component list.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
-        If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
-        End If
-        MyBase.Dispose(disposing)
-    End Sub
+                ' Convert the lengths to integer values.
+                Dim lengthK As Integer = BitConverter.ToInt32(LenK, 0)
+                Dim lengthIV As Integer = BitConverter.ToInt32(LenIV, 0)
 
-    'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+                ' Determine the start postition of
+                ' the ciphter text (startC)
+                ' and its length(lenC).
+                Dim startC As Integer = lengthK + lengthIV + 8
+                Dim lenC As Integer = (CType(inFs.Length, Integer) - startC)
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents tbxOutput As System.Windows.Forms.RichTextBox
-    <System.Diagnostics.DebuggerStepThrough()> _
-    Private Sub InitializeComponent()
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.tbxOutput = New System.Windows.Forms.RichTextBox
-        Me.Panel2.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.Button1)
-        Me.Panel2.Controls.Add(Me.Button2)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.DockPadding.All = 20
-        Me.Panel2.Location = New System.Drawing.Point(0, 320)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(616, 64)
-        Me.Panel2.TabIndex = 1
-        '
-        'Button1
-        '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button1.Font = New System.Drawing.Font( _
-            "Microsoft Sans Serif", _
-            9.0!, _
-            System.Drawing.FontStyle.Regular, _
-            System.Drawing.GraphicsUnit.Point, _
-            CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(446, 20)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 24)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "&Run"
-        '
-        'Button2
-        '
-        Me.Button2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button2.Font = New System.Drawing.Font( _
-            "Microsoft Sans Serif", _
-            9.0!, _
-            System.Drawing.FontStyle.Regular, _
-            System.Drawing.GraphicsUnit.Point, _
-            CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(521, 20)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 24)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "E&xit"
-        '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.tbxOutput)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.DockPadding.All = 20
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(616, 320)
-        Me.Panel1.TabIndex = 2
-        '
-        'tbxOutput
-        '
-        Me.tbxOutput.AccessibleDescription = _
-            "Displays output from application."
-        Me.tbxOutput.AccessibleName = "Output textbox."
-        Me.tbxOutput.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tbxOutput.Location = New System.Drawing.Point(20, 20)
-        Me.tbxOutput.Name = "tbxOutput"
-        Me.tbxOutput.Size = New System.Drawing.Size(576, 280)
-        Me.tbxOutput.TabIndex = 1
-        Me.tbxOutput.Text = "Click the Run button to run the application."
-        '
-        'Form1
-        '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(6, 15)
-        Me.ClientSize = New System.Drawing.Size(616, 384)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Panel2)
-        Me.Name = "Form1"
-        Me.Text = "CryptoAPITransform"
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
-        Me.ResumeLayout(False)
+                ' Create the byte arrays for
+                ' the encrypted Rijndael key,
+                ' the IV, and the cipher text.
+                Dim KeyEncrypted() As Byte = New Byte(lengthK - 1) {}
+                Dim IV() As Byte = New Byte(lengthIV - 1) {}
 
-    End Sub
+                ' Extract the key and IV
+                ' starting from index 8
+                ' after the length values.
+                inFs.Seek(8, SeekOrigin.Begin)
+                inFs.Read(KeyEncrypted, 0, lengthK)
+                inFs.Seek(8 + lengthK, SeekOrigin.Begin)
+                inFs.Read(IV, 0, lengthIV)
+                Directory.CreateDirectory(decrFolder)
+                ' Use RSACryptoServiceProvider
+                ' to decrypt the Rijndael key.
+                Dim KeyDecrypted As Byte() = rsaPrivateKey.Decrypt(KeyEncrypted, False)
 
-#End Region
-End Class
-'
-' This sample produces the following output:
-'
-' ** Phrase to be encoded: 01234567890123456789
-' ** Phrase after encoding: Eaa0$\iv\oXgS
-' ** Phrase after decoding: 01234567890123456789
-' 
-' Sample ended successfully; press Enter to continue.
+                ' Decrypt the key.
+                Dim transform As ICryptoTransform = aesManaged.CreateDecryptor(KeyDecrypted, IV)
+                ' Decrypt the cipher text from
+                ' from the FileSteam of the encrypted
+                ' file (inFs) into the FileStream
+                ' for the decrypted file (outFs).
+                Dim outFs As New FileStream(outFile, FileMode.Create)
+                Try
+                    ' Decrypt the cipher text from
+                    ' from the FileSteam of the encrypted
+                    ' file (inFs) into the FileStream
+                    ' for the decrypted file (outFs).
+
+                    Dim count As Integer = 0
+                    Dim offset As Integer = 0
+
+                    Dim blockSizeBytes As Integer = aesManaged.BlockSize / 8
+                    Dim data(blockSizeBytes) As Byte
+
+                    ' By decrypting a chunk a time,
+                    ' you can save memory and
+                    ' accommodate large files.
+                    ' Start at the beginning
+                    ' of the cipher text.
+                    inFs.Seek(startC, SeekOrigin.Begin)
+                    Dim outStreamDecrypted As New CryptoStream(outFs, transform, CryptoStreamMode.Write)
+                    Try
+                        Do
+                            count = inFs.Read(data, 0, blockSizeBytes)
+                            offset += count
+                            outStreamDecrypted.Write(data, 0, count)
+                        Loop While count > 0
+
+                        outStreamDecrypted.FlushFinalBlock()
+                        outStreamDecrypted.Close()
+                    Finally
+                        outStreamDecrypted.Dispose()
+                    End Try
+                    outFs.Close()
+                Finally
+                    outFs.Dispose()
+                End Try
+                inFs.Close()
+
+            Finally
+                inFs.Dispose()
+
+            End Try
+
+        Finally
+            aesManaged.Dispose()
+        End Try
+
+
+    End Sub 'DecryptFile 
+End Class 'Program

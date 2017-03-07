@@ -1,25 +1,23 @@
-Private Sub ListView1_DrawColumnHeader(sender as Object, e as DrawListViewColumnHeaderEventArgs) _ 
-     Handles ListView1.DrawColumnHeader
+Private Sub DataGridView1_RowDividerDoubleClick(sender as Object, e as DataGridViewRowDividerDoubleClickEventArgs) _ 
+     Handles DataGridView1.RowDividerDoubleClick
 
     Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "DrawDefault", e.DrawDefault)
+    messageBoxVB.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
+    messageBoxVB.AppendFormat("{0} = {1}", "Handled", e.Handled)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Bounds", e.Bounds)
+    messageBoxVB.AppendFormat("{0} = {1}", "Button", e.Button)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "ColumnIndex", e.ColumnIndex)
+    messageBoxVB.AppendFormat("{0} = {1}", "Clicks", e.Clicks)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Header", e.Header)
+    messageBoxVB.AppendFormat("{0} = {1}", "X", e.X)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "State", e.State)
+    messageBoxVB.AppendFormat("{0} = {1}", "Y", e.Y)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "ForeColor", e.ForeColor)
+    messageBoxVB.AppendFormat("{0} = {1}", "Delta", e.Delta)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "BackColor", e.BackColor)
+    messageBoxVB.AppendFormat("{0} = {1}", "Location", e.Location)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Font", e.Font)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"DrawColumnHeader Event")
+    MessageBox.Show(messageBoxVB.ToString(),"RowDividerDoubleClick Event")
 
 End Sub

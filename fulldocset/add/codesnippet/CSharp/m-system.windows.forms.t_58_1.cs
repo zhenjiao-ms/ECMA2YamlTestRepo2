@@ -1,26 +1,14 @@
-    private void toggleSpanBtn_Click(
-		System.Object sender, 
-		System.EventArgs e)
+public void SelectMyString()
+ {
+    // Create a string to search for the word "fox".
+    String searchString = "fox";
+    // Determine the starting location of the word "fox".
+    int index = textBox1.Text.IndexOf(searchString, 16, 3);
+    // Determine if the word has been found and select it if it was.
+    if (index != -1)
     {
-        Control c = this.TableLayoutPanel1.GetControlFromPosition(0, 0);
-
-        if ( c != null )
-        {
-            int xSpan = this.TableLayoutPanel1.GetColumnSpan(c);
-            int ySpan = this.TableLayoutPanel1.GetRowSpan(c);
-
-            if (xSpan>1)
-            {
-                xSpan = 1;
-                ySpan = 1;
-            }
-            else
-            {
-                xSpan = 2;
-                ySpan = 2;
-            }
-
-            this.TableLayoutPanel1.SetColumnSpan(c, xSpan);
-            this.TableLayoutPanel1.SetRowSpan(c, ySpan);
-        }
+       // Select the string using the index and the length of the string.
+       textBox1.Select(index, searchString.Length);
     }
+ }
+ 

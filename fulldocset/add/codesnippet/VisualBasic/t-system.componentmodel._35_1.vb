@@ -1,11 +1,13 @@
-        ' This example method creates a ComponentRenameEventArgs using the specified arguments.
-        ' Typically, this type of event args is created by a design mode subsystem.  
-        Public Function CreateComponentRenameEventArgs(ByVal component As Object, ByVal oldName As String, ByVal newName As String) As ComponentRenameEventArgs
-            Dim args As New ComponentRenameEventArgs(component, oldName, newName)
+        <Category("Data"), _
+        Description("Indicates the source of data for the control."), _
+        RefreshProperties(RefreshProperties.Repaint), _
+        AttributeProvider(GetType(IListSource))> _
+        Public Property DataSource() As Object
+            Get
+                Return Me.dataGridView1.DataSource
+            End Get
 
-            ' The component that was renamed:          args.Component
-            ' The previous name of the component:      args.OldName
-            ' The new name of the component:           args.NewName            
-
-            Return args
-        End Function
+            Set(ByVal value As Object)
+                Me.dataGridView1.DataSource = value
+            End Set
+        End Property

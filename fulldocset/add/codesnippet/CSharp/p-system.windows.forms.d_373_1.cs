@@ -1,27 +1,42 @@
-private void DataGridView1_RowPrePaint(Object sender, DataGridViewRowPrePaintEventArgs e) {
+        private ListBox ListBox1 = new ListBox();
+        private void InitializeListBox()
+        {
+            ListBox1.Items.AddRange(new Object[] 
+                { "Red Item", "Orange Item", "Purple Item" });
+            ListBox1.Location = new System.Drawing.Point(81, 69);
+            ListBox1.Size = new System.Drawing.Size(120, 95);
+            ListBox1.DrawMode = DrawMode.OwnerDrawFixed;
+            ListBox1.DrawItem += new DrawItemEventHandler(ListBox1_DrawItem);
+            Controls.Add(ListBox1);
+        }
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "ClipBounds", e.ClipBounds );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ErrorText", e.ErrorText );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "InheritedRowStyle", e.InheritedRowStyle );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "IsFirstDisplayedRow", e.IsFirstDisplayedRow );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "IsLastVisibleRow", e.IsLastVisibleRow );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "PaintParts", e.PaintParts );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "RowBounds", e.RowBounds );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "State", e.State );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Handled", e.Handled );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "RowPrePaint Event" );
-}
+        private void ListBox1_DrawItem(object sender, 
+            System.Windows.Forms.DrawItemEventArgs e)
+        {
+            // Draw the background of the ListBox control for each item.
+            e.DrawBackground();
+            // Define the default color of the brush as black.
+            Brush myBrush = Brushes.Black;
+
+            // Determine the color of the brush to draw each item based 
+            // on the index of the item to draw.
+            switch (e.Index)
+            {
+                case 0:
+                    myBrush = Brushes.Red;
+                    break;
+                case 1:
+                    myBrush = Brushes.Orange;
+                    break;
+                case 2:
+                    myBrush = Brushes.Purple;
+                    break;
+            }
+
+            // Draw the current item text based on the current Font 
+            // and the custom brush settings.
+            e.Graphics.DrawString(ListBox1.Items[e.Index].ToString(), 
+                e.Font, myBrush, e.Bounds, StringFormat.GenericDefault);
+            // If the ListBox has focus, draw a focus rectangle around the selected item.
+            e.DrawFocusRectangle();
+        }

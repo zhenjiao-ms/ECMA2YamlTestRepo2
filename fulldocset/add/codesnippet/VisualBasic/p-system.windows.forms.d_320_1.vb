@@ -1,21 +1,10 @@
-    Private Shared Sub SetAlternateChoicesUsingItems( _
-        ByVal comboboxColumn As DataGridViewComboBoxColumn)
-
-        comboboxColumn.Items.AddRange("Mr.", "Ms.", "Mrs.", "Dr.")
-
-    End Sub
-
-    Private Function CreateComboBoxColumn() _
-        As DataGridViewComboBoxColumn
-        Dim column As New DataGridViewComboBoxColumn()
-
-        With column
-            .DataPropertyName = ColumnName.TitleOfCourtesy.ToString()
-            .HeaderText = ColumnName.TitleOfCourtesy.ToString()
-            .DropDownWidth = 160
-            .Width = 90
-            .MaxDropDownItems = 3
-            .FlatStyle = FlatStyle.Flat
-        End With
-        Return column
-    End Function
+    Private Sub dataGrid1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
+        Dim newLine As String = ControlChars.Cr
+        Console.WriteLine(newLine)
+        Dim myHitTest As System.Windows.Forms.DataGrid.HitTestInfo
+        ' Use the DataGrid control's HitTest method with
+        ' the x and y properties. 
+        myHitTest = dataGrid1.HitTest(e.X, e.Y)
+        Console.WriteLine(("Column " & myHitTest.Column))
+        Console.WriteLine(("Row " & myHitTest.Row))
+    End Sub 'dataGrid1_MouseDown

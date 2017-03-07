@@ -1,18 +1,30 @@
-   ' Request and release the writer lock, and handle time-outs.
-   Sub WriteToResource(timeOut As Integer)
-      Try
-         rwl.AcquireWriterLock(timeOut)
-         Try
-            ' It's safe for this thread to read or write from the shared resource.
-            resource = rnd.Next(500)
-            Display("writes resource value " & resource)
-            Interlocked.Increment(writes)
-         Finally
-            ' Ensure that the lock is released.
-            rwl.ReleaseWriterLock()
-         End Try
-      Catch ex As ApplicationException
-         ' The writer lock request timed out.
-         Interlocked.Increment(writerTimeouts)
-      End Try
-   End Sub
+    Public Function AddOrUpdate(ByVal key As Integer, _
+                                ByVal value As String) As AddOrUpdateStatus
+        cacheLock.EnterUpgradeableReadLock()
+        Try
+            Dim result As String = Nothing
+            If innerCache.TryGetValue(key, result) Then
+                If result = value Then
+                    Return AddOrUpdateStatus.Unchanged
+                Else
+                    cacheLock.EnterWriteLock()
+                    Try
+                        innerCache.Item(key) = value
+                    Finally
+                        cacheLock.ExitWriteLock()
+                    End Try
+                    Return AddOrUpdateStatus.Updated
+                End If
+            Else
+                cacheLock.EnterWriteLock()
+                Try
+                    innerCache.Add(key, value)
+                Finally
+                    cacheLock.ExitWriteLock()
+                End Try
+                Return AddOrUpdateStatus.Added
+            End If
+        Finally
+            cacheLock.ExitUpgradeableReadLock()
+        End Try
+    End Function

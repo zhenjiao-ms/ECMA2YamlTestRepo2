@@ -1,5 +1,6 @@
 using namespace System;
 using namespace System::IO;
+
 int main()
 {
    String^ path = "c:\\temp\\MyTest.txt";
@@ -25,7 +26,7 @@ int main()
       StreamReader^ sr = gcnew StreamReader( path );
       try
       {
-         while ( sr->Peek() >= 0 )
+         while ( sr->Peek() > -1 )
          {
             Console::WriteLine( sr->ReadLine() );
          }
@@ -35,7 +36,7 @@ int main()
          delete sr;
       }
    }
-   catch ( Exception^ e ) 
+   catch ( Exception^ e )
    {
       Console::WriteLine( "The process failed: {0}", e );
    }

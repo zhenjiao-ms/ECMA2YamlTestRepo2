@@ -6,18 +6,24 @@
 
 public void CreateUser_OnClick(object sender, EventArgs args)
 {
-  // Generate a new 12-character password with 1 non-alphanumeric character.
-  string password = Membership.GeneratePassword(12, 1);
-
   try
   {
     // Create new user.
 
-    MembershipUser newUser = Membership.CreateUser(UsernameTextbox.Text, password, 
-                                                   EmailTextbox.Text);
+    MembershipUser newUser = Membership.CreateUser(UsernameTextbox.Text, PasswordTextbox.Text);
 
-    Msg.Text = "User <b>" + Server.HtmlEncode(UsernameTextbox.Text) + "</b> created. " +
-               "Your temporary password is " + password + ".";
+
+    // If user created successfully, set password question and answer (if applicable) and 
+    // redirect to login page. Otherwise return an error message.
+
+    if (Membership.RequiresQuestionAndAnswer)
+    {
+      newUser.ChangePasswordQuestionAndAnswer(PasswordTextbox.Text,
+                                              PasswordQuestionTextbox.Text,
+                                              PasswordAnswerTextbox.Text);
+    }
+
+    Response.Redirect("login.aspx");
   }
   catch (MembershipCreateUserException e)
   {
@@ -51,6 +57,9 @@ public string GetErrorMessage(MembershipCreateStatus status)
       case MembershipCreateStatus.InvalidQuestion:
         return "The password retrieval question provided is invalid. Please check the value and try again.";
 
+      case MembershipCreateStatus.InvalidUserName:
+        return "The user name provided is invalid. Please check the value and try again.";
+
       case MembershipCreateStatus.ProviderError:
         return "The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
 
@@ -83,14 +92,46 @@ public string GetErrorMessage(MembershipCreateStatus status)
                                       ControlToValidate="UserNameTextbox" ForeColor="red"
                                       Display="Static" ErrorMessage="Required" /></td>
     </tr>
-
     <tr>
-      <td>Email Address:</td>
-      <td><asp:Textbox id="EmailTextbox" runat="server" /></td>
-      <td><asp:RequiredFieldValidator id="EmailRequiredValidator" runat="server"
-                                      ControlToValidate="EmailTextbox" ForeColor="red"
+      <td>Password:</td>
+      <td><asp:Textbox id="PasswordTextbox" runat="server" TextMode="Password" /></td>
+      <td><asp:RequiredFieldValidator id="PasswordRequiredValidator" runat="server"
+                                      ControlToValidate="PasswordTextbox" ForeColor="red"
                                       Display="Static" ErrorMessage="Required" /></td>
     </tr>
+    <tr>
+      <td>Confirm Password:</td>
+      <td><asp:Textbox id="PasswordConfirmTextbox" runat="server" TextMode="Password" /></td>
+      <td><asp:RequiredFieldValidator id="PasswordConfirmRequiredValidator" runat="server"
+                                      ControlToValidate="PasswordConfirmTextbox" ForeColor="red"
+                                      Display="Static" ErrorMessage="Required" />
+          <asp:CompareValidator id="PasswordConfirmCompareValidator" runat="server"
+                                      ControlToValidate="PasswordConfirmTextbox" ForeColor="red"
+                                      Display="Static" ControlToCompare="PasswordTextBox"
+                                      ErrorMessage="Confirm password must match password." />
+      </td>
+    </tr>
+
+
+<% if (Membership.RequiresQuestionAndAnswer) { %>
+
+    <tr>
+      <td>Password Question:</td>
+      <td><asp:Textbox id="PasswordQuestionTextbox" runat="server" /></td>
+      <td><asp:RequiredFieldValidator id="PasswordQuestionRequiredValidator" runat="server"
+                                      ControlToValidate="PasswordQuestionTextbox" ForeColor="red"
+                                      Display="Static" ErrorMessage="Required" /></td>
+    </tr>
+    <tr>
+      <td>Password Answer:</td>
+      <td><asp:Textbox id="PasswordAnswerTextbox" runat="server" /></td>
+      <td><asp:RequiredFieldValidator id="PasswordAnswerRequiredValidator" runat="server"
+                                      ControlToValidate="PasswordAnswerTextbox" ForeColor="red"
+                                      Display="Static" ErrorMessage="Required" /></td>
+    </tr>
+
+<% } %>
+
 
     <tr>
       <td></td>

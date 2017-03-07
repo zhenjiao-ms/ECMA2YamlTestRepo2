@@ -1,24 +1,15 @@
-public partial class Default3 : System.Web.UI.Page
-{
-    string[] citiesArray = 
-    { 
-        "Atlanta", 
-        "Charlotte", 
-        "Denver", 
-        "New York", 
-        "San Francisco" 
-    };
-
-    protected void Page_Load(object sender, EventArgs e)
+    [Personalizable(), WebBrowsable(), WebDisplayName("Job Type"), 
+      WebDescription("Select the category that corresponds to your job.")]
+    public JobTypeName UserJobType
     {
-    }
+      get
+      {
+        object o = ViewState["UserJobType"];
+        if (o != null)
+          return (JobTypeName)o;
+        else
+          return _userJobType;
+      }
 
-    protected void LinqDataSource_Selecting(object sender, LinqDataSourceSelectEventArgs e)
-    {
-        var cities = from city in citiesArray
-                     where city.CompareTo("B") > 0
-                     select city;
-        e.Result = cities;
-        // Or we could set e.Result = citiesArray to return all rows.
+      set { _userJobType = (JobTypeName)value; }
     }
-}

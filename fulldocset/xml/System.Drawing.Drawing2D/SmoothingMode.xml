@@ -11,8 +11,23 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Specifies whether smoothing (antialiasing) is applied to lines and curves and the edges of filled areas.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Default, None, and HighSpeed are equivalent and specify rendering without smoothing applied.  
+  
+ AntiAlias and HighQuality are equivalent and specify rendering with smoothing applied.  
+  
+> [!NOTE]
+>  When the <xref:System.Drawing.Graphics.SmoothingMode%2A?displayProperty=fullName> property is specified by using the SmoothingMode enumeration, it does not affect text. To set the text rendering quality, use the <xref:System.Drawing.Graphics.TextRenderingHint%2A?displayProperty=fullName> property and the <xref:System.Drawing.Text.TextRenderingHint> enumeration.  
+  
+> [!NOTE]
+>  When the<xref:System.Drawing.Graphics.SmoothingMode%2A?displayProperty=fullName> property is specified by using the SmoothingMode enumeration, it does not affect areas filled by a path gradient brush. Areas filled by using a <xref:System.Drawing.Drawing2D.PathGradientBrush> object are rendered the same way (aliased) regardless of the setting for the <xref:System.Drawing.Graphics.SmoothingMode%2A?displayProperty=fullName> property.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="AntiAlias">
@@ -29,7 +44,7 @@
         <ReturnType>System.Drawing.Drawing2D.SmoothingMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies antialiased rendering.</summary>
       </Docs>
     </Member>
     <Member MemberName="Default">
@@ -46,7 +61,7 @@
         <ReturnType>System.Drawing.Drawing2D.SmoothingMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies no antialiasing.</summary>
       </Docs>
     </Member>
     <Member MemberName="HighQuality">
@@ -63,7 +78,7 @@
         <ReturnType>System.Drawing.Drawing2D.SmoothingMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies antialiased rendering.</summary>
       </Docs>
     </Member>
     <Member MemberName="HighSpeed">
@@ -80,7 +95,7 @@
         <ReturnType>System.Drawing.Drawing2D.SmoothingMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies no antialiasing.</summary>
       </Docs>
     </Member>
     <Member MemberName="Invalid">
@@ -97,7 +112,7 @@
         <ReturnType>System.Drawing.Drawing2D.SmoothingMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies an invalid mode.</summary>
       </Docs>
     </Member>
     <Member MemberName="None">
@@ -114,7 +129,7 @@
         <ReturnType>System.Drawing.Drawing2D.SmoothingMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies no antialiasing.</summary>
       </Docs>
     </Member>
   </Members>

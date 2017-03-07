@@ -1,15 +1,14 @@
-public:
-   void ViewMyTextBoxContents()
-   {
-      #if defined(DEBUG)
-      // Create a string array and store the contents of the Lines property.
-      array<String^>^ tempArray = gcnew array<String^>( textBox1->Lines->Length );
-      tempArray = textBox1->Lines;
-      
-      // Loop through the array and send the contents of the array to debug window.
-      for ( int counter = 0; counter < tempArray->Length; counter++ )
+      void button1_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
       {
-         System::Diagnostics::Debug::WriteLine( tempArray[ counter ] );
+         // If neither TreeNodeCollection is read-only, move the
+         // selected node from treeView1 to treeView2.
+         if (  !treeView1->Nodes->IsReadOnly &&  !treeView2->Nodes->IsReadOnly )
+         {
+            if ( treeView1->SelectedNode != nullptr )
+            {
+               TreeNode^ tn = treeView1->SelectedNode;
+               treeView1->Nodes->Remove( tn );
+               treeView2->Nodes->Insert( treeView2->Nodes->Count, tn );
+            }
+         }
       }
-      #endif
-   }

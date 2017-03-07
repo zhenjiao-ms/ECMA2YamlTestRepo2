@@ -1,81 +1,57 @@
 Imports System
 Imports System.IO
-Imports System.Xml
 Imports System.Xml.Serialization
 
-Public Class Group
-   Public GroupName As String 
-   Public Grouptype As GroupType 
+Public Class Person
+   Public personName As String
+   Public address As Address
 End Class
 
-Public enum GroupType
-' Use the SoapEnumAttribute to instruct the XmlSerializer
-' to generate Small and Large instead of A and B.
-   <SoapEnum("Small")> _
-   A
-   <SoapEnum("Large")> _
-   B
-End enum
- 
-Public Class Run
+Public Class Address
+   Public state As String
+   Public zip As String
+End Class
+
+Public Class PersonTypeAttribute
+
    Public Shared Sub Main()
-      Dim test As Run = new Run()
-      test.SerializeObject("SoapEnum.xml")
-      test.SerializeOverride("SoapOverride.xml")
-      Console.WriteLine("Fininished writing two files")
+      Dim myPersonTypeAttribute As New PersonTypeAttribute()
+      myPersonTypeAttribute.SerializeObject("XmlType.xml")
    End Sub
 
-   Private Shared Sub SerializeObject(filename As string)
-      ' Create an instance of the XmlSerializer Class.
-      Dim mapp  As XmlTypeMapping = _
-      (New SoapReflectionImporter()).ImportTypeMapping(GetType(Group))
-      Dim mySerializer As XmlSerializer =  New XmlSerializer(mapp)
+   Public Function CreateOverrider() As XmlSerializer
+      Dim personOverride As New XmlAttributeOverrides()
+      Dim personAttributes As New XmlAttributes()
+      Dim personType As New XmlTypeAttribute()
+      personType.TypeName = "Employee"
+      personType.Namespace = "http://www.microsoft.com"
+      personAttributes.XmlType = personType
 
-      ' Writing the file requires a TextWriter.
-      Dim writer As TextWriter = New StreamWriter(filename)
+      Dim addressAttributes As New XmlAttributes()
+      ' Create 'XmlTypeAttribute' with 'TypeName' as an argument.
+      Dim addressType As New XmlTypeAttribute("Address")
+      addressType.Namespace = "http://www.microsoft.com"
+      addressAttributes.XmlType = addressType
 
-      ' Create an instance of the Class that will be serialized.
-      Dim myGroup As Group = New Group()
+      personOverride.Add(GetType(Person), personAttributes)
+      personOverride.Add(GetType(Address), addressAttributes)
 
-      ' Set the object properties.
-      myGroup.GroupName = ".NET"
-      myGroup.Grouptype= GroupType.A
+      Dim myXmlSerializer As New XmlSerializer(GetType(Person), personOverride)
+      Return myXmlSerializer
+   End Function
 
-      ' Serialize the Class, and close the TextWriter.
-      mySerializer.Serialize(writer, myGroup)
-       writer.Close()
-   End Sub
+   Public Sub SerializeObject(filename As String)
+      Dim myXmlSerializer As XmlSerializer = CreateOverrider()
 
-   Private  Sub SerializeOverride(fileName As String)
-      Dim soapOver As SoapAttributeOverrides = new SoapAttributeOverrides()
-      Dim SoapAtts As SoapAttributes = new SoapAttributes()
+      Dim myAddress As New Address()
+      myAddress.state = "AAA"
+      myAddress.zip = "11111"
 
-      ' Add a SoapEnumAttribute for the GroupType.A enumerator. Instead
-      ' of 'A' it will be "West".
-      Dim soapEnum As SoapEnumAttribute = new SoapEnumAttribute("West")
-      ' Override the "A" enumerator.
-      SoapAtts.SoapEnum = soapEnum
-      soapOver.Add(GetType(GroupType), "A", SoapAtts)
-
-      ' Add another SoapEnumAttribute for the GroupType.B enumerator.
-      ' Instead of 'B' it will be "East".
-      SoapAtts= New SoapAttributes()
-      soapEnum = new SoapEnumAttribute()
-      soapEnum.Name = "East"
-      SoapAtts.SoapEnum = soapEnum
-      soapOver.Add(GetType(GroupType), "B", SoapAtts)
-
-      ' Create an XmlSerializer used for overriding.
-      Dim map As XmlTypeMapping = New SoapReflectionImporter _
-      (soapOver).ImportTypeMapping(GetType(Group))
-      Dim ser As XmlSerializer = New XmlSerializer(map)
-      Dim myGroup As Group = New Group()
-      myGroup.GroupName = ".NET"
-      myGroup.Grouptype = GroupType.B
-      ' Writing the file requires a TextWriter.
-      Dim writer As TextWriter = New StreamWriter(fileName)
-      ser.Serialize(writer, myGroup)
-      writer.Close
-
+      Dim myPerson As New Person()
+      myPerson.personName = "Smith"
+      myPerson.address = myAddress
+      ' Serialize to a file.
+      Dim writer = New StreamWriter(filename)
+      myXmlSerializer.Serialize(writer, myPerson)
    End Sub
 End Class

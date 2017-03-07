@@ -1,15 +1,32 @@
-         Dim MyDialog = New ColorDialog()
-         ' Allows the user to select or edit a custom color.
-         MyDialog.AllowFullOpen = True
-         ' Assigns an array of custom colors to the CustomColors property.
-         MyDialog.CustomColors = New Integer() {6916092, 15195440, 16107657, 1836924, _
-            3758726, 12566463, 7526079, 7405793, 6945974, 241502, 2296476, 5130294, _
-            3102017, 7324121, 14993507, 11730944}
+Public Class FunButton
+    Inherits Button
 
-         ' Allows the user to get help. (The default is false.)
-         MyDialog.ShowHelp = True
-         ' Sets the initial color select to the current text color,
-         ' so that if the user cancels out, the original color is restored.
-         MyDialog.Color = Me.BackColor
-         MyDialog.ShowDialog()
-         Me.BackColor = MyDialog.Color
+    Protected Overrides Sub OnMouseHover(ByVal e As System.EventArgs)
+
+        ' Get the font size in Points, add one to the
+        ' size, and reset the button's font to the larger
+        ' size.
+        Dim fontSize As Single = Font.SizeInPoints
+        fontSize += 1
+        Dim buttonSize As System.Drawing.Size = Size
+        Me.Font = New System.Drawing.Font _
+            (Font.FontFamily, fontSize, Font.Style)
+
+        ' Increase the size width and height of the button 
+        ' by 5 points each.
+        Size = New System.Drawing.Size _
+            (Size.Width + 5, Size.Height + 5)
+
+        ' Call myBase.OnMouseHover to activate the delegate.
+        MyBase.OnMouseHover(e)
+    End Sub
+
+    Protected Overrides Sub OnMouseMove(ByVal e As MouseEventArgs)
+
+        ' Make the cursor the Hand cursor when the mouse moves 
+        ' over the button.
+        Cursor = Cursors.Hand
+
+        ' Call MyBase.OnMouseMove to activate the delegate.
+        MyBase.OnMouseMove(e)
+    End Sub

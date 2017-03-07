@@ -3,62 +3,67 @@ Imports System.IO
 Imports System.Xml
 Imports System.Xml.Serialization
 
+
+' This is the class that will be serialized.
 Public Class Group
-   ' Only the GroupName field will be known.
-   Public GroupName As String
+    Public GroupName As String
+    
+    ' This field will be serialized as XML text. 
+    Public Comment As String
 End Class
 
-Public Class Test
-   Shared Sub Main()
-      Dim t As Test = New Test()
-      t.DeserializeObject("UnknownNodes.xml")
-   End Sub
 
-   Private Sub DeserializeObject(filename As String )
-      Dim mySerializer As XmlSerializer  = New XmlSerializer(GetType(Group))
-      Dim fs As FileStream = New FileStream(filename, FileMode.Open)
-      AddHandler mySerializer.UnknownNode, _
-      AddressOf serializer_UnknownNode
-      Dim myGroup As Group = _
-      CType(mySerializer.Deserialize(fs), Group)
-      fs.Close()
-   End Sub
-   
-   Private Sub serializer_UnknownNode _
-   (sender As object , e As XmlNodeEventArgs )
-      Console.WriteLine _
-      ("UnknownNode Name: {0}", e.Name)
-      Console.WriteLine _
-      ("UnknownNode LocalName: {0}" ,e.LocalName)
-      Console.WriteLine _
-      ("UnknownNode Namespace URI: {0}", e.NamespaceURI)
-      Console.WriteLine _
-      ("UnknownNode Text: {0}", e.Text)
+Public Class Run
+    
+    Public Shared Sub Main()
+        Dim test As New Run()
+        test.SerializeObject("OverrideText.xml")
+        test.DeserializeObject("OverrideText.xml")
+    End Sub
 
-      Dim myNodeType As XmlNodeType = e.NodeType
-      Console.WriteLine("NodeType: {0}", myNodeType)
- 
-      Dim myGroup As Group = CType(e.ObjectBeingDeserialized, Group)
-      Console.WriteLine("GroupName: {0}", myGroup.GroupName)
-      Console.WriteLine()
-   End Sub
+        
+    ' Return an XmlSerializer to be used for overriding. 
+    Public Function CreateOverrider() As XmlSerializer
+        ' Create the XmlAttributeOverrides and XmlAttributes objects.
+        Dim xOver As New XmlAttributeOverrides()
+        Dim xAttrs As New XmlAttributes()
+        
+        ' Create an XmlTextAttribute and assign it to the XmlText
+        ' property. This instructs the XmlSerializer to treat the
+        ' Comment field as XML text. 
+        Dim xText As New XmlTextAttribute()
+        xAttrs.XmlText = xText
+        xOver.Add(GetType(Group), "Comment", xAttrs)
+        
+        ' Create the XmlSerializer, and return it.
+        Return New XmlSerializer(GetType(Group), xOver)
+    End Function
+    
+    
+    
+    Public Sub SerializeObject(ByVal filename As String)
+        ' Create an instance of the XmlSerializer class.
+        Dim mySerializer As XmlSerializer = CreateOverrider()
+        ' Writing the file requires a TextWriter.
+        Dim writer As New StreamWriter(filename)
+        
+        ' Create an instance of the class that will be serialized.
+        Dim myGroup As New Group()
+        
+        ' Set the object properties.
+        myGroup.GroupName = ".NET"
+        myGroup.Comment = "Great Stuff!"
+        ' Serialize the class, and close the TextWriter.
+        mySerializer.Serialize(writer, myGroup)
+        writer.Close()
+    End Sub
+    
+    
+    Public Sub DeserializeObject(ByVal filename As String)
+        Dim mySerializer As XmlSerializer = CreateOverrider()
+        Dim fs As New FileStream(filename, FileMode.Open)
+        Dim myGroup As Group = CType(mySerializer.Deserialize(fs), Group)
+        Console.WriteLine(myGroup.GroupName)
+        Console.WriteLine(myGroup.Comment)
+    End Sub
 End Class
-' Paste this XML into a file named UnknownNodes:
-'<?xml version="1.0" encoding="utf-8"?>
-'<Group xmlns:xsi="http:'www.w3.org/2001/XMLSchema-instance" 
-
-'xmlns:xsd="http:'www.w3.org/2001/XMLSchema" xmlns:coho = "http:'www.cohowinery.com" 
-
-'xmlns:cp="http:'www.cpandl.com">
-'   <coho:GroupName>MyGroup</coho:GroupName>
-'   <cp:GroupSize>Large</cp:GroupSize>
-'   <cp:GroupNumber>444</cp:GroupNumber>
-'   <coho:GroupBase>West</coho:GroupBase>
-'   <coho:ThingInfo>
-'      <Number>1</Number>
-'      <Name>Thing1</Name>
-'      <Elmo>
-'         <Glue>element</Glue>
-'      </Elmo>
-'  </coho:ThingInfo>
-'/Group>

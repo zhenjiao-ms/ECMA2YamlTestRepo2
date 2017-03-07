@@ -1,28 +1,41 @@
-Option Strict
-Option Explicit
-
 Imports System
 Imports System.Diagnostics
-Imports System.Threading
 
-Class MySample
-    Public Shared Sub Main()
-        
-        Dim myNewLog As New EventLog()
-        myNewLog.Log = "MyCustomLog"
-        
-        AddHandler myNewLog.EntryWritten, AddressOf MyOnEntryWritten
-        myNewLog.EnableRaisingEvents = True
-        
-        
-        Console.WriteLine("Press 'q' to quit.")
-        ' Wait for the EntryWrittenEvent or a quit command.
-        While Char.ToLower(Convert.ToChar(Console.Read()))<>"q"
-            ' Wait.
-        End While 
-    End Sub ' Main
-    
-    Public Shared Sub MyOnEntryWritten(source As Object, e As EntryWrittenEventArgs)
-        Console.WriteLine(("Written: " + e.Entry.Message))
-    End Sub ' MyOnEntryWritten
-End Class ' MySample
+Class MyEventlogClass
+
+   Public Shared Sub Main()
+      Dim myEventType As String = Nothing
+      ' Associate the instance of 'EventLog' with local System Log.
+      Dim myEventLog As New EventLog("System", ".")
+      Console.WriteLine("1:Error")
+      Console.WriteLine("2:Information")
+      Console.WriteLine("3:Warning")
+      Console.WriteLine("Select the Event Type")
+      Dim myOption As Integer = Convert.ToInt32(Console.ReadLine())
+      Select Case myOption
+         Case 1
+            myEventType = "Error"
+         Case 2
+            myEventType = "Information"
+         Case 3
+            myEventType = "Warning"
+         Case Else
+      End Select
+
+      Dim myLogEntryCollection As EventLogEntryCollection = myEventLog.Entries
+      Dim myCount As Integer = myLogEntryCollection.Count
+      ' Iterate through all 'EventLogEntry' instances in 'EventLog'.
+      Dim i As Integer
+      For i = myCount - 1 To -1 Step -1
+         Dim myLogEntry As EventLogEntry = myLogEntryCollection(i)
+         ' Select the entry having desired EventType.
+         If myLogEntry.EntryType.ToString().Equals(myEventType) Then
+            ' Display Source of the event.
+            Console.WriteLine(myLogEntry.Source + " was the source of last "& _
+                             "event of type " & myLogEntry.EntryType.ToString())
+            Return
+         End If
+      Next i
+
+   End Sub 'Main
+End Class 'MyEventlogClass

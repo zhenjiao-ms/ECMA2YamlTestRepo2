@@ -1,17 +1,23 @@
-    private void ChangeColumnAlignment()
-    {
-        songsDataGridView.Columns["Title"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomCenter;
-        songsDataGridView.Columns["Title"].Name = DataGridViewContentAlignment.BottomCenter.ToString();
+private void ListView1_DrawColumnHeader(Object sender, DrawListViewColumnHeaderEventArgs e) {
 
-        songsDataGridView.Columns["Artist"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomLeft;
-        songsDataGridView.Columns["Artist"].Name = DataGridViewContentAlignment.BottomLeft.ToString();
-
-        songsDataGridView.Columns["Album"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
-        songsDataGridView.Columns["Album"].Name = DataGridViewContentAlignment.BottomRight.ToString();
-
-        songsDataGridView.Columns["Release Date"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        songsDataGridView.Columns["Release Date"].Name = DataGridViewContentAlignment.MiddleCenter.ToString();
-
-        songsDataGridView.Columns["Track"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-        songsDataGridView.Columns["Track"].Name = DataGridViewContentAlignment.MiddleLeft.ToString();
-    }
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "DrawDefault", e.DrawDefault );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Bounds", e.Bounds );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "ColumnIndex", e.ColumnIndex );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Header", e.Header );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "State", e.State );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "ForeColor", e.ForeColor );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "BackColor", e.BackColor );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Font", e.Font );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "DrawColumnHeader Event" );
+}

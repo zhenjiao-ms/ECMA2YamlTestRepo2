@@ -1,19 +1,8 @@
-Protected Overrides Sub OnTextChanged(e As System.EventArgs)
-   Try
-      ' Convert the text to a Double and determine
-      ' if it is a negative number.
-      If Double.Parse(Me.Text) < 0 Then
-         ' If the number is negative, display it in Red.
-         Me.ForeColor = Color.Red
-      Else
-         ' If the number is not negative, display it in Black.
-         Me.ForeColor = Color.Black
-      End If
-   Catch
-      ' If there is an error, display the
-      ' text using the system colors.
-      Me.ForeColor = SystemColors.ControlText
-   End Try
-
-   MyBase.OnTextChanged(e)
-End Sub
+        Private Sub addGrandButton_Click(ByVal sender As Object, ByVal e As System.EventArgs)
+            comboBox1.BeginUpdate()
+            Dim I As Integer
+            For I = 0 To 1000
+                comboBox1.Items.Add("New Item " + i.ToString())
+            Next
+            comboBox1.EndUpdate()
+        End Sub

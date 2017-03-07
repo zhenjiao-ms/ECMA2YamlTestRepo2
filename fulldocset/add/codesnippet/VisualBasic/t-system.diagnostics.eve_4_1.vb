@@ -1,29 +1,41 @@
-   Imports System
-   Imports System.Configuration.Install
-   Imports System.Diagnostics
-   Imports System.ComponentModel
+Imports System
+Imports System.Diagnostics
 
-   <RunInstaller(True)>  _
-   Public Class MyEventLogInstaller
-      Inherits Installer
-      Private myEventLogInstaller As EventLogInstaller
-      
-      Public Sub New()
+Class MyEventlogClass
 
-         ' Create an instance of an EventLogInstaller.
-         myEventLogInstaller = New EventLogInstaller()
+   Public Shared Sub Main()
+      Dim myEventType As String = Nothing
+      ' Associate the instance of 'EventLog' with local System Log.
+      Dim myEventLog As New EventLog("System", ".")
+      Console.WriteLine("1:Error")
+      Console.WriteLine("2:Information")
+      Console.WriteLine("3:Warning")
+      Console.WriteLine("Select the Event Type")
+      Dim myOption As Integer = Convert.ToInt32(Console.ReadLine())
+      Select Case myOption
+         Case 1
+            myEventType = "Error"
+         Case 2
+            myEventType = "Information"
+         Case 3
+            myEventType = "Warning"
+         Case Else
+      End Select
 
-         ' Set the source name of the event log.
-         myEventLogInstaller.Source = "NewLogSource"
+      Dim myLogEntryCollection As EventLogEntryCollection = myEventLog.Entries
+      Dim myCount As Integer = myLogEntryCollection.Count
+      ' Iterate through all 'EventLogEntry' instances in 'EventLog'.
+      Dim i As Integer
+      For i = myCount - 1 To -1 Step -1
+         Dim myLogEntry As EventLogEntry = myLogEntryCollection(i)
+         ' Select the entry having desired EventType.
+         If myLogEntry.EntryType.ToString().Equals(myEventType) Then
+            ' Display Source of the event.
+            Console.WriteLine(myLogEntry.Source + " was the source of last "& _
+                             "event of type " & myLogEntry.EntryType.ToString())
+            Return
+         End If
+      Next i
 
-         ' Set the event log that the source writes entries to.
-         myEventLogInstaller.Log = "MyNewLog"
-
-         ' Add myEventLogInstaller to the Installer collection.
-         Installers.Add(myEventLogInstaller)
-      End Sub 'New
-
-    Public Shared Sub Main()
-    End Sub 'Main
-    Dim myInstaller As New EventLogInstaller()
-   End Class 'MyEventLogInstaller
+   End Sub 'Main
+End Class 'MyEventlogClass

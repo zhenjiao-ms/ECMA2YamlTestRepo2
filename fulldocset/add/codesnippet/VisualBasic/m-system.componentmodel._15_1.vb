@@ -1,4 +1,10 @@
-    ' Require that the MiddleName is not null.
-    ' Use standard validation error.
-    <Required()> _
-    Public MiddleName As Object
+ <Localizable(True)> _  
+ Public Property MyProperty() As Integer
+     Get
+         ' Insert code here.
+         Return 0
+     End Get
+     Set
+         ' Insert code here.
+     End Set 
+ End Property

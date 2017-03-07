@@ -1,72 +1,146 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
-	// Declare the LinkLabel object.
-	internal System.Windows.Forms.LinkLabel LinkLabel1;
+public class ListViewInsertionMarkExample : Form
+{
+    private ListView myListView; 
 
-	// Declare keywords array to identify links
-	string[] keywords;
+    public ListViewInsertionMarkExample()
+    {
+        // Initialize myListView.
+        myListView = new ListView();
+        myListView.Dock = DockStyle.Fill;
+        myListView.View = View.LargeIcon;
+        myListView.MultiSelect = false;
+        myListView.ListViewItemSorter = new ListViewIndexComparer();
 
-	private void InitializeLinkLabel()
-	{
-		this.LinkLabel1 = new System.Windows.Forms.LinkLabel();
-                this.LinkLabel1.Links.Clear();
+        // Initialize the insertion mark.
+        myListView.InsertionMark.Color = Color.Green;
 
-		// Set the location, name and size.
-		this.LinkLabel1.Location = new System.Drawing.Point(10, 20);
-		this.LinkLabel1.Name = "CompanyLinks";
-		this.LinkLabel1.Size = new System.Drawing.Size(104, 150);
+        // Add items to myListView.
+        myListView.Items.Add("zero");
+        myListView.Items.Add("one");
+        myListView.Items.Add("two");
+        myListView.Items.Add("three");
+        myListView.Items.Add("four");
+        myListView.Items.Add("five");
+        
+        // Initialize the drag-and-drop operation when running
+        // under Windows XP or a later operating system.
+        if (OSFeature.Feature.IsPresent(OSFeature.Themes))
+        {
+            myListView.AllowDrop = true;
+            myListView.ItemDrag += new ItemDragEventHandler(myListView_ItemDrag);
+            myListView.DragEnter += new DragEventHandler(myListView_DragEnter);
+            myListView.DragOver += new DragEventHandler(myListView_DragOver);
+            myListView.DragLeave += new EventHandler(myListView_DragLeave);
+            myListView.DragDrop += new DragEventHandler(myListView_DragDrop);
+        }
 
-		// Set the LinkBehavior property to show underline when mouse
-		// hovers over the links.
-		this.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-		string textString = "For more information see our" +
-			" company website or the research page at Contoso Ltd. ";
+        // Initialize the form.
+        this.Text = "ListView Insertion Mark Example";
+        this.Controls.Add(myListView);
+    }
 
-		// Set the text property.
-		this.LinkLabel1.Text = textString;
+    [STAThread]
+    static void Main() 
+    {
+        Application.EnableVisualStyles();
+        Application.Run(new ListViewInsertionMarkExample());
+    }
 
-		// Set the color of the links to black, unless the mouse
-		// is hovering over a link.
-		this.LinkLabel1.LinkColor = System.Drawing.Color.Black;
-		this.LinkLabel1.ActiveLinkColor = System.Drawing.Color.Blue;
+    // Starts the drag-and-drop operation when an item is dragged.
+    private void myListView_ItemDrag(object sender, ItemDragEventArgs e)
+    {
+        myListView.DoDragDrop(e.Item, DragDropEffects.Move);
+    }
 
-		// Associate the event-handling method with the LinkClicked
-		// event.
-		this.LinkLabel1.LinkClicked += 
-			new LinkLabelLinkClickedEventHandler(LinkLabel1_LinkClicked);
+    // Sets the target drop effect.
+    private void myListView_DragEnter(object sender, DragEventArgs e)
+    {
+        e.Effect = e.AllowedEffect;
+    }
 
-		// Add links to the LinkCollection using starting index and
-		// length of keywords.
-		keywords = new string[]{"company", "research"};
-		foreach ( string keyword in keywords )
-		{
-			this.LinkLabel1.Links.Add(textString.IndexOf(keyword), keyword.Length);
-		}
+    // Moves the insertion mark as the item is dragged.
+    private void myListView_DragOver(object sender, DragEventArgs e)
+    {
+        // Retrieve the client coordinates of the mouse pointer.
+        Point targetPoint = 
+            myListView.PointToClient(new Point(e.X, e.Y));
 
-		// Add the label to the form.
-		this.Controls.Add(this.LinkLabel1);
-	}
+        // Retrieve the index of the item closest to the mouse pointer.
+        int targetIndex = myListView.InsertionMark.NearestIndex(targetPoint);
 
-	private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-	{
+        // Confirm that the mouse pointer is not over the dragged item.
+        if (targetIndex > -1) 
+        {
+            // Determine whether the mouse pointer is to the left or
+            // the right of the midpoint of the closest item and set
+            // the InsertionMark.AppearsAfterItem property accordingly.
+            Rectangle itemBounds = myListView.GetItemRect(targetIndex);
+            if ( targetPoint.X > itemBounds.Left + (itemBounds.Width / 2) )
+            {
+                myListView.InsertionMark.AppearsAfterItem = true;
+            }
+            else
+            {
+                myListView.InsertionMark.AppearsAfterItem = false;
+            }
+        }
 
-		string url = "";
+        // Set the location of the insertion mark. If the mouse is
+        // over the dragged item, the targetIndex value is -1 and
+        // the insertion mark disappears.
+        myListView.InsertionMark.Index = targetIndex;
+    }
 
-		// Determine which link was clicked and set the appropriate url.
-		switch(LinkLabel1.Links.IndexOf(e.Link))
-		{
-			case 0:
-				url = "www.microsoft.com";
+    // Removes the insertion mark when the mouse leaves the control.
+    private void myListView_DragLeave(object sender, EventArgs e)
+    {
+        myListView.InsertionMark.Index = -1;
+    }
 
-				break;
-			case 1:
-				url = "www.contoso.com/research";
-				break;
-		}
+    // Moves the item to the location of the insertion mark.
+    private void myListView_DragDrop(object sender, DragEventArgs e)
+    {
+        // Retrieve the index of the insertion mark;
+        int targetIndex = myListView.InsertionMark.Index;
 
-		// Set the visited property to True. This will change
-		// the color of the link.
-		e.Link.Visited = true;
+        // If the insertion mark is not visible, exit the method.
+        if (targetIndex == -1) 
+        {
+            return;
+        }
 
-		// Open Internet Explorer to the correct url.
-		System.Diagnostics.Process.Start("IExplore.exe", url);
-	}
+        // If the insertion mark is to the right of the item with
+        // the corresponding index, increment the target index.
+        if (myListView.InsertionMark.AppearsAfterItem) 
+        {
+            targetIndex++;
+        }
+
+        // Retrieve the dragged item.
+        ListViewItem draggedItem = 
+            (ListViewItem)e.Data.GetData(typeof(ListViewItem));
+
+        // Insert a copy of the dragged item at the target index.
+        // A copy must be inserted before the original item is removed
+        // to preserve item index values. 
+        myListView.Items.Insert(
+            targetIndex, (ListViewItem)draggedItem.Clone());
+
+        // Remove the original copy of the dragged item.
+        myListView.Items.Remove(draggedItem);
+    }
+
+    // Sorts ListViewItem objects by index.
+    private class ListViewIndexComparer : System.Collections.IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            return ((ListViewItem)x).Index - ((ListViewItem)y).Index;
+        }
+    }
+
+}

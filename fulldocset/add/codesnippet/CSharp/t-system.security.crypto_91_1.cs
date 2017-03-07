@@ -1,150 +1,128 @@
-//
-// This example signs an XML file using an
-// envelope signature. It then verifies the 
-// signed XML.
-//
 using System;
+using System.IO;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Xml;
 
-public class SignVerifyEnvelope
+namespace RijndaelManaged_Example
 {
-
-    public static void Main(String[] args)
+    class RijndaelExample
     {
-        try
+        public static void Main()
         {
-           // Generate a signing key.
-           RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
+            try
+            {
 
-           // Create an XML file to sign.
-           CreateSomeXml("Example.xml");
-           Console.WriteLine("New XML file created."); 
+                string original = "Here is some data to encrypt!";
 
-           // Sign the XML that was just created and save it in a 
-           // new file.
-           SignXmlFile("Example.xml", "signedExample.xml", Key);
-           Console.WriteLine("XML file signed."); 
+                // Create a new instance of the RijndaelManaged
+                // class.  This generates a new key and initialization 
+                // vector (IV).
+                using (RijndaelManaged myRijndael = new RijndaelManaged())
+                {
 
-           // Verify the signature of the signed XML.
-           Console.WriteLine("Verifying signature...");
-           bool result = VerifyXmlFile("SignedExample.xml", Key);
+					myRijndael.GenerateKey();
+                	myRijndael.GenerateIV();
+                    // Encrypt the string to an array of bytes.
+                    byte[] encrypted = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV);
 
-           // Display the results of the signature verification to 
-           // the console.
-           if(result)
-           {
-               Console.WriteLine("The XML signature is valid.");
-           }
-           else
-           {
-            Console.WriteLine("The XML signature is not valid.");
-           }
+                    // Decrypt the bytes to a string.
+                    string roundtrip = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV);
+
+                    //Display the original data and the decrypted data.
+                    Console.WriteLine("Original:   {0}", original);
+                    Console.WriteLine("Round Trip: {0}", roundtrip);
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
+            }
         }
-        catch(CryptographicException e)
+        static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
         {
-            Console.WriteLine(e.Message);
-        }
-    }
+            // Check arguments.
+            if (plainText == null || plainText.Length <= 0)
+                throw new ArgumentNullException("plainText");
+            if (Key == null || Key.Length <= 0)
+                throw new ArgumentNullException("Key");
+            if (IV == null || IV.Length <= 0)
+                throw new ArgumentNullException("IV");
+            byte[] encrypted;
+            // Create an RijndaelManaged object
+            // with the specified key and IV.
+            using (RijndaelManaged rijAlg = new RijndaelManaged())
+            {
+                rijAlg.Key = Key;
+                rijAlg.IV = IV;
+
+                // Create a decrytor to perform the stream transform.
+                ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
+
+                // Create the streams used for encryption.
+                using (MemoryStream msEncrypt = new MemoryStream())
+                {
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                        {
+
+                            //Write all data to the stream.
+                            swEncrypt.Write(plainText);
+                        }
+                        encrypted = msEncrypt.ToArray();
+                    }
+                }
+            }
 
 
-    // Sign an XML file and save the signature in a new file. This method does not  
-    // save the public key within the XML file.  This file cannot be verified unless  
-    // the verifying code has the key with which it was signed.
-    public static void SignXmlFile(string FileName, string SignedFileName, RSA Key)
-    {
-        // Create a new XML document.
-        XmlDocument doc = new XmlDocument();
+            // Return the encrypted bytes from the memory stream.
+            return encrypted;
 
-        // Load the passed XML file using its name.
-        doc.Load(new XmlTextReader(FileName));
-
-        // Create a SignedXml object.
-        SignedXml signedXml = new SignedXml(doc);
-
-        // Add the key to the SignedXml document. 
-        signedXml.SigningKey = Key;
-
-        // Create a reference to be signed.
-        Reference reference = new Reference();
-        reference.Uri = "";
-
-        // Add an enveloped transformation to the reference.
-        XmlDsigEnvelopedSignatureTransform env = new XmlDsigEnvelopedSignatureTransform();
-        reference.AddTransform(env);
-
-        // Add the reference to the SignedXml object.
-        signedXml.AddReference(reference);
-
-        // Compute the signature.
-        signedXml.ComputeSignature();
-
-        // Get the XML representation of the signature and save
-        // it to an XmlElement object.
-        XmlElement xmlDigitalSignature = signedXml.GetXml();
-
-        // Append the element to the XML document.
-        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, true));
-		
-        if (doc.FirstChild is XmlDeclaration)  
-        {
-            doc.RemoveChild(doc.FirstChild);
         }
 
-        // Save the signed XML document to a file specified
-        // using the passed string.
-        XmlTextWriter xmltw = new XmlTextWriter(SignedFileName, new UTF8Encoding(false));
-        doc.WriteTo(xmltw);
-        xmltw.Close();
-    }
+        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
+        {
+            // Check arguments.
+            if (cipherText == null || cipherText.Length <= 0)
+                throw new ArgumentNullException("cipherText");
+            if (Key == null || Key.Length <= 0)
+                throw new ArgumentNullException("Key");
+            if (IV == null || IV.Length <= 0)
+                throw new ArgumentNullException("IV");
 
-    // Verify the signature of an XML file against an asymetric 
-    // algorithm and return the result.
-    public static Boolean VerifyXmlFile(String Name, RSA Key)
-    {
-        // Create a new XML document.
-        XmlDocument xmlDocument = new XmlDocument();
+            // Declare the string used to hold
+            // the decrypted text.
+            string plaintext = null;
 
-        // Load the passed XML file into the document. 
-        xmlDocument.Load(Name);
+            // Create an RijndaelManaged object
+            // with the specified key and IV.
+            using (RijndaelManaged rijAlg = new RijndaelManaged())
+            {
+                rijAlg.Key = Key;
+                rijAlg.IV = IV;
 
-        // Create a new SignedXml object and pass it
-        // the XML document class.
-        SignedXml signedXml = new SignedXml(xmlDocument);
+                // Create a decrytor to perform the stream transform.
+                ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
 
-        // Find the "Signature" node and create a new
-        // XmlNodeList object.
-        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
+                // Create the streams used for decryption.
+                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
+                {
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        {
 
-        // Load the signature node.
-        signedXml.LoadXml((XmlElement)nodeList[0]);
+                            // Read the decrypted bytes from the decrypting stream
+                            // and place them in a string.
+                            plaintext = srDecrypt.ReadToEnd();
+                        }
+                    }
+                }
 
-        // Check the signature and return the result.
-        return signedXml.CheckSignature(Key);
-    }
+            }
 
+            return plaintext;
 
-    // Create example data to sign.
-    public static void CreateSomeXml(string FileName)
-    {
-        // Create a new XmlDocument object.
-        XmlDocument document = new XmlDocument();
-
-        // Create a new XmlNode object.
-        XmlNode  node = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples");
-		
-        // Add some text to the node.
-        node.InnerText = "Example text to be signed.";
-
-        // Append the node to the document.
-        document.AppendChild(node);
-
-        // Save the XML document to the file name specified.
-        XmlTextWriter xmltw = new XmlTextWriter(FileName, new UTF8Encoding(false));
-        document.WriteTo(xmltw);
-        xmltw.Close();
+        }
     }
 }

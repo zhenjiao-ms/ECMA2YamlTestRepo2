@@ -3,114 +3,55 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<script runat="server">
-  
-  void CustomerDetailsView_ItemUpdated(Object sender, 
-    DetailsViewUpdatedEventArgs e)
-  {
-    // Use the Exception property to determine whether an exception
-    // occurred during the insert operation.
-    if (e.Exception == null)
-    {
-      // Use the Values property to get the value entered by 
-      // the user for the CompanyName field.
-      String keyFieldValue = e.Keys["CustomerID"].ToString();
-
-      // Display a confirmation message.
-      MessageLabel.Text = "Record " + keyFieldValue + 
-        " updated successfully. ";
-
-      // Display the old and new values.
-      DisplayValues(e);
-
-      if (e.AffectedRows == 1)
-      {
-        MessageLabel.Text += e.AffectedRows.ToString() + 
-          " record updated.";
-      }
-      else
-      {
-        MessageLabel.Text += e.AffectedRows.ToString() + 
-          " records updated.";
-      }
-    }
-    else
-    {
-      // Insert the code to handle the exception.
-      MessageLabel.Text = e.Exception.Message;
-
-      // Use the ExceptionHandled property to indicate that the 
-      // exception is already handled.
-      e.ExceptionHandled = true;
-
-      // When an exception occurs, keep the DetailsView
-      // control in edit mode.
-      e.KeepInEditMode = true;
-    }
-  }
-
-  void DisplayValues(DetailsViewUpdatedEventArgs e)
-  {
-    
-    MessageLabel.Text += "<br/></br>";
-    
-    // Iterate through the OldValue and NewValues
-    // properties and display the values.
-    for (int i = 0; i < e.OldValues.Count; i++)
-    {
-      MessageLabel.Text += "Old Value=" + e.OldValues[i].ToString() +
-        ", New Value=" + e.NewValues[i].ToString() + "<br/>";
-    }
-
-    MessageLabel.Text += "</br>";
-    
-  }
-  
-</script>
-
 <html xmlns="http://www.w3.org/1999/xhtml" >
   <head runat="server">
-    <title>DetailsViewUpdatedEventHandler Example</title>
+    <title>HyperLinkField Example</title>
 </head>
 <body>
     <form id="form1" runat="server">
         
-      <h3>DetailsViewUpdatedEventHandler Example</h3>
-                       
-      <asp:detailsview id="CustomerDetailsView"
-        datasourceid="DetailsViewSource"
-        autogeneraterows="true"
-        autogenerateeditbutton="true"  
-        allowpaging="true"
-        datakeynames="CustomerID" 
-        onitemupdated="CustomerDetailsView_ItemUpdated"
+      <h3>HyperLinkField Example</h3>
+                    
+      <!-- Populate the Columns collection declaratively. -->
+      <!-- The UnitPrice field values are bound to the         -->
+      <!-- captions of the hyperlinks in the HyperLinkField    -->
+      <!-- field column, formatted as currency. The ProductID  -->
+      <!-- field values are bound to the navigate URLs of the  -->
+      <!-- hyperlinks. However, instead of being the actual    -->
+      <!-- URL values, the product ID is passed to the linked  -->
+      <!-- page as a parameter in the URL specified by the     -->
+      <!-- DataNavigateUrlFormatString property.               -->
+      <asp:gridview id="OrdersGridView" 
+        datasourceid="OrdersSqlDataSource" 
+        autogeneratecolumns="false"
         runat="server">
-          
-        <pagersettings position="Bottom"/> 
-                  
-      </asp:detailsview>
-      
-      <br/>
-      
-      <asp:label id="MessageLabel"
-        forecolor="Red"
-        runat="server"/>
-          
-      <!-- This example uses Microsoft SQL Server and connects  -->
-      <!-- to the Northwind sample database. Use an ASP.NET     -->
-      <!-- expression to retrieve the connection string value   -->
-      <!-- from the web.config file.                            -->
-      <asp:sqldatasource id="DetailsViewSource"
-        selectcommand="Select [CustomerID], [CompanyName], [Address], 
-          [City], [PostalCode], [Country] From [Customers]"
-        updatecommand="Update [Customers] Set 
-          [CompanyName]=@CompanyName, [Address]=@Address, 
-          [City]=@City, [PostalCode]=@PostalCode, 
-          [Country]=@Country 
-          Where [CustomerID]=@CustomerID"
-        connectionstring=
-          "<%$ ConnectionStrings:NorthWindConnectionString%>" 
-        runat="server"/>
+                
+        <columns>
+                
+          <asp:boundfield datafield="OrderID" 
+            headertext="Order ID"/>
+          <asp:boundfield datafield="ProductID" 
+            headertext="Product ID"/>
+          <asp:hyperlinkfield datatextfield="UnitPrice"
+            datatextformatstring="{0:c}"
+            datanavigateurlfields="ProductID"
+            datanavigateurlformatstring="~\details.aspx?ProductID={0}"          
+            headertext="Price"
+            target="_blank" />
+          <asp:boundfield datafield="Quantity" 
+            headertext="Quantity"/>
+                 
+        </columns>
+                
+      </asp:gridview>
+            
+      <!-- This example uses Microsoft SQL Server and connects -->
+      <!-- to the Northwind sample database.                   -->
+      <asp:sqldatasource id="OrdersSqlDataSource"  
+        selectcommand="SELECT [OrderID], [ProductID], [UnitPrice], [Quantity] FROM [Order Details]"
+        connectionstring="server=localhost;database=northwind;integrated security=SSPI"
+        runat="server">
+      </asp:sqldatasource>
             
     </form>
   </body>

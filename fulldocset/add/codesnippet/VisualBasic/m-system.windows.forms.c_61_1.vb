@@ -1,17 +1,8 @@
-    ' Demonstrates SetFileDropList, ContainsFileDroList, and GetFileDropList
-    Public Function SwapClipboardFileDropList(ByVal replacementList _
-        As System.Collections.Specialized.StringCollection) _
-        As System.Collections.Specialized.StringCollection
+Private Sub MoveCursor()
+   ' Set the Current cursor, move the cursor's Position,
+   ' and set its clipping rectangle to the form. 
 
-        Dim returnList As System.Collections.Specialized.StringCollection _
-            = Nothing
-
-        If Clipboard.ContainsFileDropList() Then
-
-            returnList = Clipboard.GetFileDropList()
-            Clipboard.SetFileDropList(replacementList)
-        End If
-
-        Return returnList
-
-    End Function
+   Me.Cursor = New Cursor(Cursor.Current.Handle)
+   Cursor.Position = New Point(Cursor.Position.X - 50, Cursor.Position.Y - 50)
+   Cursor.Clip = New Rectangle(Me.Location, Me.Size)
+End Sub

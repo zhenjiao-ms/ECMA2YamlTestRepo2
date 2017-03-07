@@ -1,17 +1,13 @@
 using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
-public class MyClassThatNeedsToRegister
+[assembly: AssemblyVersion("3.0.0.0")]
+[assembly: ComCompatibleVersion(1,0,0,0)]
+namespace MyNamespace
 {
-   [ComRegisterFunctionAttribute]
-   public static void RegisterFunction(Type t)
-   {
-      //Insert code here.
-   }
-   
-   [ComUnregisterFunctionAttribute]
-   public static void UnregisterFunction(Type t)
-   {
-      //Insert code here.
-   }
+    public class TheClass
+    {
+        // Insert code.
+    }
 }

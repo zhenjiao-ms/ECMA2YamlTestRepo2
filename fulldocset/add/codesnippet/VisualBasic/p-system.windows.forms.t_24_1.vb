@@ -1,17 +1,44 @@
-   ' This example assumes that the Form_Load event handling method
-   ' is connected to the Load event of the form.
-   Private Sub Form1_Load(sender As Object, e As System.EventArgs) Handles MyBase.Load
-      ' Create the ToolTip and associate with the Form container.
-      Dim toolTip1 As New ToolTip()
+   ' This method defines the painting behavior of the control.
+   ' It performs the following operations:
+   '
+   ' Computes the layout of the item's image and text.
+   ' Draws the item's background image.
+   ' Draws the item's image.
+   ' Draws the item's text.
+   '
+   ' Drawing operations are implemented in the 
+   ' RolloverItemRenderer class.
+   Protected Overrides Sub OnPaint(e As PaintEventArgs)
+      MyBase.OnPaint(e)
       
-      ' Set up the delays for the ToolTip.
-      toolTip1.AutoPopDelay = 5000
-      toolTip1.InitialDelay = 1000
-      toolTip1.ReshowDelay = 500
-      ' Force the ToolTip text to be displayed whether or not the form is active.
-      toolTip1.ShowAlways = True
-      
-      ' Set up the ToolTip text for the Button and Checkbox.
-      toolTip1.SetToolTip(Me.button1, "My button1")
-      toolTip1.SetToolTip(Me.checkBox1, "My checkBox1")
-   End Sub
+      If (Me.Owner IsNot Nothing) Then
+         ' Find the dimensions of the image and the text 
+         ' areas of the item. 
+         Me.ComputeImageAndTextLayout()
+         
+         ' Draw the background. This includes drawing a highlighted 
+         ' border when the mouse is in the client area.
+         Dim ea As New ToolStripItemRenderEventArgs(e.Graphics, Me)
+         Me.Owner.Renderer.DrawItemBackground(ea)
+         
+         ' Draw the item's image. 
+         Dim irea As New ToolStripItemImageRenderEventArgs(e.Graphics, Me, imageRect)
+         Me.Owner.Renderer.DrawItemImage(irea)
+         
+         ' If the item is on a drop-down, give its
+         ' text a different highlighted color.
+            Dim highlightColor As Color = CType(IIf(Me.IsOnDropDown, Color.Salmon, SystemColors.ControlLightLight), Color)
+         
+         ' Draw the text, and highlight it if the 
+         ' the rollover state is true.
+            Dim rea As New ToolStripItemTextRenderEventArgs( _
+               e.Graphics, _
+               Me, _
+               MyBase.Text, _
+               textRect, _
+               CType(IIf(Me.rolloverValue, highlightColor, MyBase.ForeColor), Color), _
+               MyBase.Font, _
+               MyBase.TextAlign)
+         Me.Owner.Renderer.DrawItemText(rea)
+      End If
+    End Sub

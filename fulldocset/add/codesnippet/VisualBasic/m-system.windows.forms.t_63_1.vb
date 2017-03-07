@@ -1,14 +1,30 @@
-   Private Sub AppendTextBox1Text()
-      ' Determine if text is selected in textBox1.
-      If textBox1.SelectionLength = 0 Then
-         ' No selection made, return.
-         Return
-      End If
-      ' Determine if the text being appended to textBox2 exceeds the MaxLength property.
-      If textBox1.SelectedText.Length + textBox2.TextLength > textBox2.MaxLength Then
-         MessageBox.Show("The text to paste in is larger than the maximum number of characters allowed")
-         ' Append the text from textBox1 into textBox2.
-      Else
-         textBox2.AppendText(textBox1.SelectedText)
-      End If
-   End Sub
+    Private Sub toggleSpanBtn_Click( _
+    ByVal sender As System.Object, _
+    ByVal e As System.EventArgs) _
+    Handles toggleSpanBtn.Click
+
+        Dim c As Control = Me.TableLayoutPanel1.GetControlFromPosition(0, 0)
+
+        If c IsNot Nothing Then
+
+            Dim xSpan As Integer = Me.TableLayoutPanel1.GetColumnSpan(c)
+            Dim ySpan As Integer = Me.TableLayoutPanel1.GetRowSpan(c)
+
+            If xSpan > 1 Then
+
+                xSpan = 1
+                ySpan = 1
+
+            Else
+
+                xSpan = 2
+                ySpan = 2
+
+            End If
+
+            Me.TableLayoutPanel1.SetColumnSpan(c, xSpan)
+            Me.TableLayoutPanel1.SetRowSpan(c, ySpan)
+
+        End If
+
+    End Sub

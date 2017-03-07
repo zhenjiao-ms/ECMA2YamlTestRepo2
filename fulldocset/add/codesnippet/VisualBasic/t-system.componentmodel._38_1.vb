@@ -1,15 +1,10 @@
-        Try
-            Dim myProc As New System.Diagnostics.Process()
-            myProc.StartInfo.FileName = "c:\nonexist.exe"  'Attempting to start a non-existing executable
-            myProc.Start()    'Start the application and assign it to the process component.    
+    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        TextBox1.Text = "changed"
+        AddHandler System.ComponentModel.TypeDescriptor.Refreshed, AddressOf OnRefreshed
+        System.ComponentModel.TypeDescriptor.GetProperties(TextBox1)
+        System.ComponentModel.TypeDescriptor.Refresh(TextBox1)
+    End Sub
 
-        Catch w As System.ComponentModel.Win32Exception
-            Console.WriteLine(w.Message)
-            Console.WriteLine(w.ErrorCode.ToString())
-            Console.WriteLine(w.NativeErrorCode.ToString())
-            Console.WriteLine(w.StackTrace)
-            Console.WriteLine(w.Source)
-            Dim e As New Exception()
-            e = w.GetBaseException()
-            Console.WriteLine(e.Message)
-        End Try
+    Private Sub OnRefreshed(ByVal e As System.ComponentModel.RefreshEventArgs)
+        Console.WriteLine(e.ComponentChanged.ToString())
+    End Sub

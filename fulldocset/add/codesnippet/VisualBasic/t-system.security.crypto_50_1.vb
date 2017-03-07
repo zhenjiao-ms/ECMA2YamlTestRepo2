@@ -5,61 +5,58 @@ Imports System.IO
 
 
 
-Class X509store2
+Class TestX509Chain
 
     Shared Sub Main(ByVal args() As String)
-        'Create new X509 store called teststore from the local certificate store.
-        Dim store As New X509Store("teststore", StoreLocation.CurrentUser)
-        store.Open(OpenFlags.ReadWrite)
-        Dim certificate As New X509Certificate2()
+        'Create new X509 store from local certificate store.
+        Dim store As New X509Store("MY", StoreLocation.CurrentUser)
+        store.Open(OpenFlags.OpenExistingOnly Or OpenFlags.ReadWrite)
 
-        'Create certificates from certificate files.
-        'You must put in a valid path to three certificates in the following constructors.
-        Dim certificate1 As New X509Certificate2("c:\mycerts\*****.cer")
-        Dim certificate2 As New X509Certificate2("c:\mycerts\*****.cer")
-        Dim certificate5 As New X509Certificate2("c:\mycerts\*****.cer")
-
-        'Create a collection and add two of the certificates.
-        Dim collection As New X509Certificate2Collection()
-        collection.Add(certificate2)
-        collection.Add(certificate5)
-
-        'Add certificates to the store.
-        store.Add(certificate1)
-        store.AddRange(collection)
-
-        Dim storecollection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-        Console.WriteLine("Store name: {0}", store.Name)
+        'Output store information.
+        Console.WriteLine("Store Information")
+        Console.WriteLine("Number of certificates in the store: {0}", store.Certificates.Count)
         Console.WriteLine("Store location: {0}", store.Location)
-        Dim x509 As X509Certificate2
-        For Each x509 In storecollection
-            Console.WriteLine("certificate name: {0}", x509.Subject)
-        Next x509
+        Console.WriteLine("Store name: {0} {1}", store.Name, Environment.NewLine)
 
-        'Remove a certificate.
-        store.Remove(certificate1)
-        Dim storecollection2 As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-        Console.WriteLine("{1}Store name: {0}", store.Name, Environment.NewLine)
-        Dim x509a As X509Certificate2
-        For Each x509a In storecollection2
-            Console.WriteLine("certificate name: {0}", x509a.Subject)
-        Next x509a
+        'Put certificates from the store into a collection so user can select one.
+        Dim fcollection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+        Dim collection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Select an X509 Certificate", "Choose a certificate to examine.", X509SelectionFlag.SingleSelection)
+        Dim certificate As X509Certificate2 = collection(0)
+        X509Certificate2UI.DisplayCertificate(certificate)
+        'Output chain information of the selected certificate.
+        Dim ch As New X509Chain()
+        ch.Build(certificate)
+        Console.WriteLine("Chain Information")
+        ch.ChainPolicy.RevocationMode = X509RevocationMode.Online
+        Console.WriteLine("Chain revocation flag: {0}", ch.ChainPolicy.RevocationFlag)
+        Console.WriteLine("Chain revocation mode: {0}", ch.ChainPolicy.RevocationMode)
+        Console.WriteLine("Chain verification flag: {0}", ch.ChainPolicy.VerificationFlags)
+        Console.WriteLine("Chain verification time: {0}", ch.ChainPolicy.VerificationTime)
+        Console.WriteLine("Chain status length: {0}", ch.ChainStatus.Length)
+        Console.WriteLine("Chain application policy count: {0}", ch.ChainPolicy.ApplicationPolicy.Count)
+        Console.WriteLine("Chain certificate policy count: {0} {1}", ch.ChainPolicy.CertificatePolicy.Count, Environment.NewLine)
+        'Output chain element information.
+        Console.WriteLine("Chain Element Information")
+        Console.WriteLine("Number of chain elements: {0}", ch.ChainElements.Count)
+        Console.WriteLine("Chain elements synchronized? {0} {1}", ch.ChainElements.IsSynchronized, Environment.NewLine)
 
-        'Remove a range of certificates.
-        store.RemoveRange(collection)
-        Dim storecollection3 As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-        Console.WriteLine("{1}Store name: {0}", store.Name, Environment.NewLine)
-        If storecollection3.Count = 0 Then
-            Console.WriteLine("Store contains no certificates.")
-        Else
-            Dim x509b As X509Certificate2
-            For Each x509b In storecollection3
-                Console.WriteLine("certificate name: {0}", x509b.Subject)
-            Next x509b
-        End If
+        Dim element As X509ChainElement
+        For Each element In ch.ChainElements
+            Console.WriteLine("Element issuer name: {0}", element.Certificate.Issuer)
+            Console.WriteLine("Element certificate valid until: {0}", element.Certificate.NotAfter)
+            Console.WriteLine("Element certificate is valid: {0}", element.Certificate.Verify())
+            Console.WriteLine("Element error status length: {0}", element.ChainElementStatus.Length)
+            Console.WriteLine("Element information: {0}", element.Information)
+            Console.WriteLine("Number of element extensions: {0}{1}", element.Certificate.Extensions.Count, Environment.NewLine)
 
-        'Close the store.
+            If ch.ChainStatus.Length > 1 Then
+                Dim index As Integer
+                For index = 0 To element.ChainElementStatus.Length
+                    Console.WriteLine(element.ChainElementStatus(index).Status)
+                    Console.WriteLine(element.ChainElementStatus(index).StatusInformation)
+                Next index
+            End If
+        Next element
         store.Close()
-
     End Sub
 End Class

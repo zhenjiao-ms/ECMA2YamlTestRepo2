@@ -1,17 +1,30 @@
-   ' Request and release a reader lock, and handle time-outs.
-   Sub ReadFromResource(timeOut As Integer)
-      Try
-         rwl.AcquireReaderLock(timeOut)
-         Try
-            ' It's safe for this thread to read from the shared resource.
-            Display("reads resource value " & resource)
-            Interlocked.Increment(reads)
-         Finally
-            ' Ensure that the lock is released.
-            rwl.ReleaseReaderLock()
-         End Try
-      Catch ex As ApplicationException
-         ' The reader lock request timed out.
-         Interlocked.Increment(readerTimeouts)
-      End Try
-   End Sub
+    Public Function AddOrUpdate(ByVal key As Integer, _
+                                ByVal value As String) As AddOrUpdateStatus
+        cacheLock.EnterUpgradeableReadLock()
+        Try
+            Dim result As String = Nothing
+            If innerCache.TryGetValue(key, result) Then
+                If result = value Then
+                    Return AddOrUpdateStatus.Unchanged
+                Else
+                    cacheLock.EnterWriteLock()
+                    Try
+                        innerCache.Item(key) = value
+                    Finally
+                        cacheLock.ExitWriteLock()
+                    End Try
+                    Return AddOrUpdateStatus.Updated
+                End If
+            Else
+                cacheLock.EnterWriteLock()
+                Try
+                    innerCache.Add(key, value)
+                Finally
+                    cacheLock.ExitWriteLock()
+                End Try
+                Return AddOrUpdateStatus.Added
+            End If
+        Finally
+            cacheLock.ExitUpgradeableReadLock()
+        End Try
+    End Function

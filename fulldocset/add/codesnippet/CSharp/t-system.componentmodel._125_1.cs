@@ -1,4 +1,15 @@
-            TimeSpan ts=new TimeSpan(133333330);
-            string myTSStr = "5000000";
-            Console.WriteLine(TypeDescriptor.GetConverter(ts).ConvertTo(ts, typeof(string))); 
-            Console.WriteLine(TypeDescriptor.GetConverter(ts).ConvertFrom(myTSStr));    
+    [DefaultEvent("CollectionChanged")]
+    public class MyCollection : BaseCollection {
+         
+        private CollectionChangeEventHandler onCollectionChanged;
+         
+        public event CollectionChangeEventHandler CollectionChanged {
+           add {
+              onCollectionChanged += value;
+           }
+           remove {
+              onCollectionChanged -= value;
+           }
+        }
+        // Insert additional code.
+    }

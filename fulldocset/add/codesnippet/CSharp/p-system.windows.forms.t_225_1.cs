@@ -1,29 +1,29 @@
-using System.Drawing;
-using System.Windows.Forms;
-
-public class Form1 : Form
-{
-    private TabControl tabControl1;
-    private TabPage tabPage1;
-
-    public Form1()
-    {
-        this.tabControl1 = new TabControl();
-        this.tabPage1 = new TabPage();
-
-        // Gets the controls collection for tabControl1.
-        // Adds the tabPage1 to this collection.
-        this.tabControl1.TabPages.Add(tabPage1);
-
-        this.tabControl1.Location = new Point(25, 25);
-        this.tabControl1.Size = new Size(250, 250);
-
-        this.ClientSize = new Size(300, 300);
-        this.Controls.Add(tabControl1);
-    }
-
-    static void Main() 
-    {
-        Application.Run(new Form1());
-    }
-}
+            // This is an example of some common ToolStrip property settings.
+            // 
+            toolStrip1.AllowDrop = false;
+            toolStrip1.AllowItemReorder = true;
+            toolStrip1.AllowMerge = false;
+            toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            toolStrip1.AutoSize = false;
+            toolStrip1.CanOverflow = false;
+            toolStrip1.Cursor = System.Windows.Forms.Cursors.Cross;
+            toolStrip1.DefaultDropDownDirection = System.Windows.Forms.ToolStripDropDownDirection.BelowRight;
+            toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            toolStrip1.GripMargin = new System.Windows.Forms.Padding(3);
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            toolStripButton1});
+            toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            toolStrip1.Location = new System.Drawing.Point(0, 0);
+            toolStrip1.Margin = new System.Windows.Forms.Padding(1);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            toolStrip1.ShowItemToolTips = false;
+            toolStrip1.Size = new System.Drawing.Size(109, 273);
+            toolStrip1.Stretch = true;
+            toolStrip1.TabIndex = 0;
+            toolStrip1.TabStop = true;
+            toolStrip1.Text = "toolStrip1";
+            toolStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90;

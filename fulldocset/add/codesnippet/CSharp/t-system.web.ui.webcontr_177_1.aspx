@@ -1,73 +1,81 @@
 
-<%@ Page Language="C#" %>
+<%@ Page language="C#" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script runat="server">
+
+  void CustomersGridView_RowCommand(Object sender, GridViewCommandEventArgs e)
+  {
+  
+    // If multiple ButtonField column fields are used, use the
+    // CommandName property to determine which button was clicked.
+    if(e.CommandName=="Select")
+    {
+    
+      // Convert the row index stored in the CommandArgument
+      // property to an Integer.
+      int index = Convert.ToInt32(e.CommandArgument);    
+    
+      // Get the last name of the selected author from the appropriate
+      // cell in the GridView control.
+      GridViewRow selectedRow = CustomersGridView.Rows[index];
+      TableCell contactName = selectedRow.Cells[1];
+      string contact = contactName.Text;  
+    
+      // Display the selected author.
+      Message.Text = "You selected " + contact + ".";
+      
+    }
+    
+  }
+    
+</script>
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
   <head runat="server">
-    <title>MenuItem Declarative Example</title>
+    <title>ButtonField Example</title>
 </head>
 <body>
     <form id="form1" runat="server">
-    
-      <h3>MenuItem Declarative Example</h3>
-    
-      <!-- Use declarative syntax to create the   -->
-      <!-- menu structure. Create submenu items   -->
-      <!-- by nesting them within parent menu     -->
-      <!-- items.                                 -->
-      <asp:menu id="NavigationMenu"
-        staticdisplaylevels="1"
-        staticsubmenuindent="10" 
-        orientation="Vertical" 
-        target="_blank"  
-        runat="server">
-
-        <items>
-          <asp:menuitem navigateurl="Home.aspx" 
-            text="Home"
-            imageurl="Images\Home.gif"
-            popoutimageurl="Images\Popout.jpg"   
-            tooltip="Home">
-            <asp:menuitem navigateurl="Music.aspx"
-              text="Music"
-              popoutimageurl="Images\Popout.jpg"
-              tooltip="Music">
-              <asp:menuitem navigateurl="Classical.aspx" 
-                text="Classical"
-                separatorimageurl="Images\Separator.jpg"
-                tooltip="Classical"/>
-              <asp:menuitem navigateurl="Rock.aspx"
-                text="Rock"
-                separatorimageurl="Images\Separator.jpg"
-                tooltip="Rock"/>
-              <asp:menuitem navigateurl="Jazz.aspx"
-                text="Jazz"
-                separatorimageurl="Images\Separator.jpg"
-                tooltip="Jazz"/>
-            </asp:menuitem>
-            <asp:menuitem navigateurl="Movies.aspx"
-              text="Movies"
-              popoutimageurl="Images\Popout.jpg"              
-              tooltip="Movies">
-              <asp:menuitem navigateurl="Action.aspx"
-                text="Action"
-                separatorimageurl="Images\Separator.jpg"
-                tooltip="Action"/>
-              <asp:menuitem navigateurl="Drama.aspx"
-                text="Drama"
-                separatorimageurl="Images\Separator.jpg"
-                tooltip="Drama"/>
-              <asp:menuitem navigateurl="Musical.aspx"
-                text="Musical"
-                separatorimageurl="Images\Separator.jpg"
-                tooltip="Musical"/>
-            </asp:menuitem>
-          </asp:menuitem>
-        </items>
+        
+      <h3>ButtonField Example</h3>
       
-      </asp:menu>
-
+      <asp:label id="Message"
+        forecolor="Red"
+        runat="server"
+        AssociatedControlID="CustomersGridView"/>
+                    
+      <!-- Populate the Columns collection declaratively. -->
+      <asp:gridview id="CustomersGridView" 
+        datasourceid="CustomersSqlDataSource" 
+        autogeneratecolumns="false"
+        onrowcommand="CustomersGridView_RowCommand"
+        runat="server">
+                
+        <columns>
+                
+          <asp:buttonfield buttontype="Button" 
+            commandname="Select"
+            headertext="Select Customer" 
+            text="Select"/>
+          <asp:boundfield datafield="CompanyName" 
+            headertext="Company Name"/>
+          <asp:boundfield datafield="ContactName" 
+            headertext="Contact Name"/>
+                
+        </columns>
+                
+      </asp:gridview>
+            
+        <!-- This example uses Microsoft SQL Server and connects -->
+        <!-- to the Northwind sample database.                   -->
+        <asp:sqldatasource id="CustomersSqlDataSource"  
+          selectcommand="Select [CustomerID], [CompanyName], [ContactName], [ContactTitle] From [Customers]"
+          connectionstring="<%$ ConnectionStrings:NorthWindConnection%>"
+          runat="server">
+        </asp:sqldatasource>
+            
     </form>
   </body>
 </html>

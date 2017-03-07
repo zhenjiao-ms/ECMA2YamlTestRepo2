@@ -1,13 +1,13 @@
-    Public Sub InstantiateMyCheckBox()
-        ' Create and initialize a CheckBox.   
-        Dim checkBox1 As New CheckBox()
-        
-        ' Make the check box control appear as a toggle button.
-        checkBox1.Appearance = Appearance.Button
-        
-        ' Turn off the update of the display on the click of the control.
-        checkBox1.AutoCheck = False
-        
-        ' Add the check box control to the form.
-        Controls.Add(checkBox1)
-    End Sub 'InstantiateMyCheckBox
+Private Sub ListView1_ColumnWidthChanging(sender as Object, e as ColumnWidthChangingEventArgs) _ 
+     Handles ListView1.ColumnWidthChanging
+
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "ColumnIndex", e.ColumnIndex)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "NewWidth", e.NewWidth)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Cancel", e.Cancel)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"ColumnWidthChanging Event")
+
+End Sub

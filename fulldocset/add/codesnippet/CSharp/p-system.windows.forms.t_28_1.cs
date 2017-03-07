@@ -1,17 +1,23 @@
-private void CopyTreeNodes()
+public void HighlightCheckedNodes()
 {
-   // Get the collection of TreeNodes.
-   TreeNodeCollection myNodeCollection = myTreeView.Nodes;
-   int myCount = myNodeCollection.Count;
-
-   myLabel.Text += "Number of nodes in the collection :" + myCount;
-   myLabel.Text += "\n\nElements of the Array after Copying from the collection :\n";
-   // Create an Object array.
-   Object[] myArray = new Object[myCount];
-   // Copy the collection into an array.
-   myNodeCollection.CopyTo(myArray,0);
-   for(int i=0; i<myArray.Length; i++)
+   int countIndex = 0;
+   string selectedNode = "Selected customer nodes are : ";
+   foreach (TreeNode myNode in myTreeView.Nodes[0].Nodes)
    {
-      myLabel.Text += ((TreeNode)myArray[i]).Text + "\n";
+      // Check whether the tree node is checked.
+      if(myNode.Checked)
+      {
+         // Set the node's backColor.
+         myNode.BackColor = Color.Yellow;
+         selectedNode += myNode.Text+" ";
+         countIndex++;
+      }
+      else
+         myNode.BackColor = Color.White;
    }
+
+   if(countIndex > 0)
+      MessageBox.Show(selectedNode);
+   else
+      MessageBox.Show("No nodes are selected");
 }

@@ -1,24 +1,26 @@
-    private void MyButtonPrint_Click(object sender, System.EventArgs e)
-    {
-        // Set the paper size based upon the selection in the combo box.
-        if (comboPaperSize.SelectedIndex != -1) {
-            printDoc.DefaultPageSettings.PaperSize = 
-                printDoc.PrinterSettings.PaperSizes[comboPaperSize.SelectedIndex];
-        }
+ public void Printing(string printer) {
+   try {
+     streamToPrint = new StreamReader (filePath);
+     try {
+       printFont = new Font("Arial", 10);
+       PrintDocument pd = new PrintDocument(); 
+       pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
+       // Specify the printer to use.
+       pd.PrinterSettings.PrinterName = printer;
 
-        // Set the paper source based upon the selection in the combo box.
-        if (comboPaperSource.SelectedIndex != -1) {
-            printDoc.DefaultPageSettings.PaperSource = 
-                printDoc.PrinterSettings.PaperSources[comboPaperSource.SelectedIndex];
-        }
-        
-        // Set the printer resolution based upon the selection in the combo box.
-        if (comboPrintResolution.SelectedIndex != -1) 
-        {
-            printDoc.DefaultPageSettings.PrinterResolution= 
-                printDoc.PrinterSettings.PrinterResolutions[comboPrintResolution.SelectedIndex];
-        }
-
-        // Print the document with the specified paper size, source, and print resolution.
-        printDoc.Print();
-    }
+       if (pd.PrinterSettings.IsValid) {
+          pd.Print();
+       } 
+       else {	
+          MessageBox.Show("Printer is invalid.");
+       }
+     } 
+     finally {
+       streamToPrint.Close();
+     }
+   } 
+   catch(Exception ex) {
+     MessageBox.Show(ex.Message);
+   }
+ }
+ 

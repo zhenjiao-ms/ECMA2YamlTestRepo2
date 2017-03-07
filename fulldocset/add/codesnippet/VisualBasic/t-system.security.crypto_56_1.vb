@@ -2,7 +2,7 @@ Imports System
 Imports System.IO
 Imports System.Security.Cryptography
 
-Public Class HMACMD5example
+Public Class HMACSHA256example
 
     Public Shared Sub Main(ByVal Fileargs() As String)
         Dim dataFile As String
@@ -48,7 +48,7 @@ Public Class HMACMD5example
     ' prepended to the contents of the source file. 
     Public Shared Sub SignFile(ByVal key() As Byte, ByVal sourceFile As String, ByVal destFile As String)
         ' Initialize the keyed hash object.
-        Using myhmac As New HMACMD5(key)
+        Using myhmac As New HMACSHA256(key)
             Using inStream As New FileStream(sourceFile, FileMode.Open)
                 Using outStream As New FileStream(destFile, FileMode.Create)
                     ' Compute the hash of the input file.
@@ -79,7 +79,7 @@ Public Class HMACMD5example
     Public Shared Function VerifyFile(ByVal key() As Byte, ByVal sourceFile As String) As Boolean
         Dim err As Boolean = False
         ' Initialize the keyed hash object. 
-        Using hmac As New HMACMD5(key)
+        Using hmac As New HMACSHA256(key)
             ' Create an array to hold the keyed hash value read from the file.
             Dim storedHash(hmac.HashSize / 8) As Byte
             ' Create a FileStream for the source file.
@@ -108,5 +108,5 @@ Public Class HMACMD5example
         End If
 
     End Function 'VerifyFile 
-End Class 'HMACMD5example 'end VerifyFile
+End Class 'HMACSHA256example 'end VerifyFile
 'end class

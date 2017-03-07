@@ -1,26 +1,26 @@
-private void GetFormats2() 
+private void SetData3() 
 {
-    // Creates a new data object using a string and the UnicodeText format.
-    DataObject myDataObject = new DataObject(DataFormats.UnicodeText, "My text string");
-
-    // Gets the original data formats in the data object by setting the automatic
-    // conversion parameter to false.
-    String[] myFormatsArray = myDataObject.GetFormats(false);
-
-    // Stores the results in a string.
-    string theResult = "The original format associated with the data is:\n";
-    for(int i = 0; i < myFormatsArray.Length; i++)
-        theResult += myFormatsArray[i] + '\n';
-
-    // Gets all data formats and data conversion formats for the data object.
-    myFormatsArray = myDataObject.GetFormats(true);
+    // Creates a component.
+    Component myComponent = new Component();
  
-    // Stores the results in the string.
-    theResult += "\nThe data format(s) and conversion format(s) associated with " +
-        "the data are:\n";
-    for(int i = 0; i < myFormatsArray.Length; i++)
-        theResult += myFormatsArray[i] + '\n';
-
-    // Displays the results.
-    MessageBox.Show(theResult);
+    // Gets the type of the component.
+    Type myType = myComponent.GetType();
+ 
+    // Creates a data object.
+    DataObject myDataObject = new DataObject();
+ 
+    // Stores the component in the data object.
+    myDataObject.SetData(myType, myComponent);
+ 
+    // Checks whether data of the specified type is in the data object.
+    string myMessageText;
+    if(myDataObject.GetDataPresent(myType))
+        myMessageText = "Data of type " + myType.Name + 
+            " is stored in the data object";
+    else
+        myMessageText = "No data of type " + myType.Name +
+            " is stored in the data object";
+            
+    // Displays the result.
+    MessageBox.Show(myMessageText, "The Test Result");
 }

@@ -1,17 +1,17 @@
-    ' If a node is double-clicked, open the file indicated by the TreeNode.
-    Sub treeView1_NodeMouseDoubleClick(ByVal sender As Object, _
-        ByVal e As TreeNodeMouseClickEventArgs) _
-        Handles treeView1.NodeMouseDoubleClick
+Private Sub ToolStripRenderer1_RenderToolStripBackground(sender as Object, e as ToolStripRenderEventArgs) _ 
+     Handles ToolStripRenderer1.RenderToolStripBackground
 
-        Try
-            ' Look for a file extension, and open the file.
-            If e.Node.Text.Contains(".") Then
-                System.Diagnostics.Process.Start("c:\" + e.Node.Text)
-            End If
-            ' If the file is not found, handle the exception and inform the user.
-        Catch
-            MessageBox.Show("File not found.")
-        End Try
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "AffectedBounds", e.AffectedBounds)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "BackColor", e.BackColor)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ToolStrip", e.ToolStrip)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ConnectedArea", e.ConnectedArea)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"RenderToolStripBackground Event")
 
-    End Sub 'treeView1_NodeMouseDoubleClick
-    
+End Sub

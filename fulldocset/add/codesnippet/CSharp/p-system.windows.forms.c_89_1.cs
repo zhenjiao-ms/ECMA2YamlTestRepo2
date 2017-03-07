@@ -1,19 +1,20 @@
-// Add a GroupBox to a form and set some of its common properties.
-private void AddMyGroupBox()
-{
-   // Create a GroupBox and add a TextBox to it.
-   GroupBox groupBox1 = new GroupBox();
-   TextBox textBox1 = new TextBox();
-   textBox1.Location = new Point(15, 15);
-   groupBox1.Controls.Add(textBox1);
+private void AdjustMyCheckBoxProperties()
+ {
+    // Change the ThreeState and CheckAlign properties on every other click.
+    if (!checkBox1.ThreeState)
+    {
+       checkBox1.ThreeState = true;
+       checkBox1.CheckAlign = ContentAlignment.MiddleRight;
+    }
+    else
+    {
+       checkBox1.ThreeState = false;
+       checkBox1.CheckAlign = ContentAlignment.MiddleLeft;
+    }
 
-   // Set the Text and Dock properties of the GroupBox.
-   groupBox1.Text = "MyGroupBox";
-   groupBox1.Dock = DockStyle.Top;
-
-   // Disable the GroupBox (which disables all its child controls)
-   groupBox1.Enabled = false;
-
-   // Add the Groupbox to the form.
-   this.Controls.Add(groupBox1);
-}
+    // Concatenate the property values together on three lines.
+    label1.Text = "ThreeState: " + checkBox1.ThreeState.ToString() + "\n" +
+                  "Checked: " + checkBox1.Checked.ToString() + "\n" +
+                  "CheckState: " + checkBox1.CheckState.ToString(); 
+ }
+ 

@@ -1,16 +1,15 @@
-      ' The following code example demonstrates the syntax for setting
-      ' various ToolStripComboBox properties.
-      ' 
-      toolStripComboBox1.AutoCompleteCustomSource.AddRange(New String() {"aaa", "bbb", "ccc"})
-      toolStripComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-      toolStripComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-      toolStripComboBox1.DropDownHeight = 110
-      toolStripComboBox1.DropDownWidth = 122
-      toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard
-      toolStripComboBox1.IntegralHeight = False
-      toolStripComboBox1.Items.AddRange(New Object() {"xxx", "yyy", "zzz"})
-      toolStripComboBox1.MaxDropDownItems = 9
-      toolStripComboBox1.MergeAction = System.Windows.Forms.MergeAction.Insert
-      toolStripComboBox1.Name = "toolStripComboBox1"
-      toolStripComboBox1.Size = New System.Drawing.Size(121, 25)
-      toolStripComboBox1.Sorted = True
+      ' This method renders the GridStrip control's background.
+      Protected Overrides Sub OnRenderToolStripBackground(e As ToolStripRenderEventArgs)
+         MyBase.OnRenderToolStripBackground(e)
+         
+         ' This late initialization is a workaround. The gradient
+         ' depends on the bounds of the GridStrip control. The bounds 
+         ' are dependent on the layout engine, which hasn't fully
+         ' performed layout by the time the Initialize method runs.
+         If Me.backgroundBrush Is Nothing Then
+            Me.backgroundBrush = New LinearGradientBrush(e.ToolStrip.ClientRectangle, SystemColors.ControlLightLight, SystemColors.ControlDark, 90, True)
+         End If
+         
+         ' Paint the GridStrip control's background.
+         e.Graphics.FillRectangle(Me.backgroundBrush, e.AffectedBounds)
+        End Sub

@@ -1,43 +1,69 @@
-    private void dataGridView1_CellPainting(object sender,
-    System.Windows.Forms.DataGridViewCellPaintingEventArgs e)
+    class MyGlyph : Glyph
     {
-        if (this.dataGridView1.Columns["ContactName"].Index ==
-            e.ColumnIndex && e.RowIndex >= 0)
+        Control control;
+        BehaviorService behaviorSvc;
+
+        public MyGlyph(BehaviorService behaviorSvc, Control control) : 
+            base(new MyBehavior())
         {
-            Rectangle newRect = new Rectangle(e.CellBounds.X + 1,
-                e.CellBounds.Y + 1, e.CellBounds.Width - 4,
-                e.CellBounds.Height - 4);
+            this.behaviorSvc = behaviorSvc;
+            this.control = control;
+        }
 
-            using (
-                Brush gridBrush = new SolidBrush(this.dataGridView1.GridColor),
-                backColorBrush = new SolidBrush(e.CellStyle.BackColor))
+        public override Rectangle Bounds
+        {
+            get
             {
-                using (Pen gridLinePen = new Pen(gridBrush))
-                {
-                    // Erase the cell.
-                    e.Graphics.FillRectangle(backColorBrush, e.CellBounds);
+                // Create a glyph that is 10x10 and sitting
+                // in the middle of the control.  Glyph coordinates
+                // are in adorner window coordinates, so we must map
+                // using the behavior service.
+                Point edge = behaviorSvc.ControlToAdornerWindow(control);
+                Size size = control.Size;
+                Point center = new Point(edge.X + (size.Width / 2), 
+                    edge.Y + (size.Height / 2));
 
-                    // Draw the grid lines (only the right and bottom lines;
-                    // DataGridView takes care of the others).
-                    e.Graphics.DrawLine(gridLinePen, e.CellBounds.Left,
-                        e.CellBounds.Bottom - 1, e.CellBounds.Right - 1,
-                        e.CellBounds.Bottom - 1);
-                    e.Graphics.DrawLine(gridLinePen, e.CellBounds.Right - 1,
-                        e.CellBounds.Top, e.CellBounds.Right - 1,
-                        e.CellBounds.Bottom);
+                Rectangle bounds = new Rectangle(
+                    center.X - 5,
+                    center.Y - 5,
+                    10,
+                    10);
 
-                    // Draw the inset highlight box.
-                    e.Graphics.DrawRectangle(Pens.Blue, newRect);
+                return bounds;
+            }
+        }
 
-                    // Draw the text content of the cell, ignoring alignment.
-                    if (e.Value != null)
-                    {
-                        e.Graphics.DrawString((String)e.Value, e.CellStyle.Font,
-                            Brushes.Crimson, e.CellBounds.X + 2,
-                            e.CellBounds.Y + 2, StringFormat.GenericDefault);
-                    }
-                    e.Handled = true;
-                }
+        public override Cursor GetHitTest(Point p)
+        {
+            // GetHitTest is called to see if the point is
+            // within this glyph.  This gives us a chance to decide
+            // what cursor to show.  Returning null from here means
+            // the mouse pointer is not currently inside of the glyph.
+            // Returning a valid cursor here indicates the pointer is
+            // inside the glyph, and also enables our Behavior property
+            // as the active behavior.
+            if (Bounds.Contains(p))
+            {
+                return Cursors.Hand;
+            }
+
+            return null;
+        }
+
+        public override void Paint(PaintEventArgs pe)
+        {
+            // Draw our glyph. It is simply a blue ellipse.
+            pe.Graphics.FillEllipse(Brushes.Blue, Bounds);
+        }
+
+        // By providing our own behavior we can do something interesting
+        // when the user clicks or manipulates our glyph.
+        class MyBehavior : Behavior
+        {
+            public override bool OnMouseUp(Glyph g, MouseButtons button)
+            {
+                MessageBox.Show("Hey, you clicked the mouse here");
+                return true; // indicating we processed this event.
             }
         }
     }

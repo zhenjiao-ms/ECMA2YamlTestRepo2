@@ -1,11 +1,23 @@
-            // 
-            toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.Raised;
-            toolStripStatusLabel1.IsLink = true;
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new System.Drawing.Size(246, 20);
-            toolStripStatusLabel1.Spring = true;
-            toolStripStatusLabel1.Text = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Alignment = ToolStripItemAlignment.Left;
+		internal ToolStripButton imageButton;
+
+		private void InitializeImageButtonWithToolTip()
+		{
+
+			// Construct the button and set the image-related properties.
+			imageButton = new ToolStripButton();
+			imageButton.Image = new Bitmap(typeof(Timer), "Timer.bmp");
+			imageButton.ImageScaling = ToolStripItemImageScaling.SizeToFit;
+
+			// Set the background color of the image to be transparent.
+			imageButton.ImageTransparentColor = Color.FromArgb(0, 255, 0);
+
+			// Show ToolTip text, set custom ToolTip text, and turn
+			// off the automatic ToolTips.
+			toolStrip1.ShowItemToolTips = true;
+			imageButton.ToolTipText = "Click for the current time";
+			imageButton.AutoToolTip = false;
+
+			// Add the button to the ToolStrip.
+			toolStrip1.Items.Add(imageButton);
+
+		}

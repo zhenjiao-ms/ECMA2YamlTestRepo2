@@ -1,29 +1,22 @@
-            // This is an example of some common ToolStrip property settings.
+            // The following code example demonstrates the syntax for setting
+            // various ToolStripComboBox properties.
             // 
-            toolStrip1.AllowDrop = false;
-            toolStrip1.AllowItemReorder = true;
-            toolStrip1.AllowMerge = false;
-            toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            toolStrip1.AutoSize = false;
-            toolStrip1.CanOverflow = false;
-            toolStrip1.Cursor = System.Windows.Forms.Cursors.Cross;
-            toolStrip1.DefaultDropDownDirection = System.Windows.Forms.ToolStripDropDownDirection.BelowRight;
-            toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            toolStrip1.GripMargin = new System.Windows.Forms.Padding(3);
-            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            toolStripButton1});
-            toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            toolStrip1.Location = new System.Drawing.Point(0, 0);
-            toolStrip1.Margin = new System.Windows.Forms.Padding(1);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            toolStrip1.ShowItemToolTips = false;
-            toolStrip1.Size = new System.Drawing.Size(109, 273);
-            toolStrip1.Stretch = true;
-            toolStrip1.TabIndex = 0;
-            toolStrip1.TabStop = true;
-            toolStrip1.Text = "toolStrip1";
-            toolStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90;
+            toolStripComboBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            "aaa",
+            "bbb",
+            "ccc"});
+            toolStripComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            toolStripComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            toolStripComboBox1.DropDownHeight = 110;
+            toolStripComboBox1.DropDownWidth = 122;
+            toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            toolStripComboBox1.IntegralHeight = false;
+            toolStripComboBox1.Items.AddRange(new object[] {
+            "xxx",
+            "yyy",
+            "zzz"});
+            toolStripComboBox1.MaxDropDownItems = 9;
+            toolStripComboBox1.MergeAction = System.Windows.Forms.MergeAction.Insert;
+            toolStripComboBox1.Name = "toolStripComboBox1";
+            toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
+            toolStripComboBox1.Sorted = true;

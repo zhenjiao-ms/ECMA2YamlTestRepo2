@@ -1,139 +1,265 @@
-<%@ Page Language="VB" AutoEventWireup="True" %>
+
+<%@ Page language="VB" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>Button CommandName Example</title>
 <script runat="server">
 
-      Sub CommandBtn_Click(sender As Object, e As CommandEventArgs) 
+  Sub EmployeeFormView_ItemUpdating(ByVal sender As Object, ByVal e As FormViewUpdateEventArgs) Handles EmployeeFormView.ItemUpdating
 
-         Select e.CommandName
+    ' Validate the field values entered by the user. This
+    ' example determines whether the user left any fields
+    ' empty. The names of the empty fields are added to
+    ' an ArrayList object.
+     
+    ' Use the NewValues property to access the new 
+    ' values entered by the user.
+    Dim emptyFieldList As ArrayList = ValidateFields(CType(e.NewValues, OrderedDictionary))
 
-            Case "Sort"
+    If emptyFieldList.Count > 0 Then
 
-               ' Call the method to sort the list.
-               Sort_List(CType(e.CommandArgument, String))
+      ' The user left some fields empty. Display an error message.
+      
+      ' Use the Keys property to retrieve the key field value.
+      Dim keyValue As String = e.Keys("EmployeeID").ToString()
 
-            Case "Submit"
+      MessageLabel.Text = "You must enter a value for each field of record " & _
+        keyValue & ".<br/>The following fields are missing:<br/><br/>"
 
-               ' Display a message for the Submit button being clicked.
-               Message.Text = "You clicked the <b>Submit</b> button"
-
-               ' Test whether the Command Argument is an empty string ("").
-               If CType(e.CommandArgument , String) = "" Then
-              
-                  ' End the message.
-                  Message.Text &= "."
-               
-               Else
-               
-                  ' Display an error message for the command argument. 
-                  Message.Text &= ", but the command argument is not recogized."
-               
-               End If                
-
-            Case Else
-
-               ' The command name is not recognized. Display an error message.
-               Message.Text = "Command name not recogized."
-
-         End Select
-
-      End Sub
-
-      Sub Sort_List(commandArgument As String)
-
-         Select commandArgument
-
-            Case "Ascending"
- 
-               ' Insert code to sort the list in ascending order here.
-               Message.Text = "You clicked the <b>Sort Ascending</b> button."
-
-            Case "Descending"
-              
-               ' Insert code to sort the list in descending order here.
-               Message.Text = "You clicked the <b>Sort Descending</b> button."
-
-            Case Else
+      ' Display the missing fields.
+      Dim value As String
+      For Each value In emptyFieldList
+      
+        ' Use the OldValues property access the original value
+        ' of a field.
+        MessageLabel.Text &= value & " - Original Value = " & _
+          e.OldValues(value).ToString() & "<br />"
         
-               ' The command argument is not recognized. Display an error message.
-               Message.Text = "Command argument not recogized."
+      Next
 
-         End Select
+      ' Cancel the update operation.
+      e.Cancel = True
 
-      End Sub
+    Else
+    
+      ' The field values passed validation. Clear the
+      ' error message label.
+      MessageLabel.Text = ""
+      
+    End If
 
-      Sub Page_Load(sender As Object, e As EventArgs)
+  End Sub
 
-         ' Manually register the event-handling method for the Command  
-         ' event of the Button controls.
-         AddHandler Button1.Command, AddressOf CommandBtn_Click
-         AddHandler Button2.Command, AddressOf CommandBtn_Click
-         AddHandler Button3.Command, AddressOf CommandBtn_Click
-         AddHandler Button4.Command, AddressOf CommandBtn_Click
-         AddHandler Button5.Command, AddressOf CommandBtn_Click
+  Function ValidateFields(ByVal list As OrderedDictionary) As ArrayList
+    
+    ' Create an ArrayList object to store the
+    ' names of any empty fields.
+    Dim emptyFieldList As New ArrayList()
 
-      End Sub
+    ' Iterate though the field values entered by
+    ' the user and check for an empty field.
+    Dim entry As DictionaryEntry
+    For Each entry In list
+    
+      If entry.Value.Equals("") Then
+      
+        ' Add the field name to the ArrayList object.
+        emptyFieldList.Add(entry.Key.ToString())
+        
+      End If
+      
+    Next
 
-   </script>
+    Return emptyFieldList
+      
+  End Function
 
+  Sub EmployeeFormView_ModeChanged(ByVal sender As Object, ByVal e As EventArgs) Handles EmployeeFormView.ModeChanged
+
+    ' Clear the error message label.
+    MessageLabel.Text = ""
+    
+  End Sub
+
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+  <head runat="server">
+    <title>FormViewUpdateEventArgs Example</title>
 </head>
- 
 <body>
-
-   <form id="form1" runat="server">
-
-      <h3>Button CommandName Example</h3>
-
-      Click one of the command buttons.
-
-      <br /><br />
- 
-      <asp:Button id="Button1"
-           Text="Sort Ascending"
-           CommandName="Sort"
-           CommandArgument="Ascending"
-           runat="server"/>
-
-      &nbsp;
-
-      <asp:Button id="Button2"
-           Text="Sort Descending"
-           CommandName="Sort"
-           CommandArgument="Descending"
-           runat="server"/>
-
-      <br /><br />
-
-      <asp:Button id="Button3"
-           Text="Submit"
-           CommandName="Submit"
-           runat="server"/>
-
-      &nbsp;
-
-      <asp:Button id="Button4"
-           Text="Unknown Command Name"
-           CommandName="UnknownName"
-           CommandArgument="UnknownArgument"
-           runat="server"/>
-
-      &nbsp;
-
-      <asp:Button id="Button5"
-           Text="Submit Unknown Command Argument"
-           CommandName="Submit"
-           CommandArgument="UnknownArgument"
-           runat="server"/>
-       
-      <br /><br />
-
-      <asp:Label id="Message" runat="server"/>
- 
-   </form>
- 
-</body>
+    <form id="form1" runat="server">
+        
+      <h3>FormViewUpdateEventArgs Example</h3>
+                       
+      <asp:formview id="EmployeeFormView"
+        datasourceid="EmployeeSource"
+        allowpaging="true"
+        datakeynames="EmployeeID"
+        emptydatatext="No employees found."
+        runat="server">
+        
+        <itemtemplate>
+          <table>
+            <tr>
+              <td rowspan="6">
+                <asp:image id="EmployeeImage"
+                  imageurl='<%# Eval("PhotoPath") %>'
+                  alternatetext='<%# Eval("LastName") %>' 
+                  runat="server"/>
+              </td>
+              <td colspan="2">
+                  &nbsp; 
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Name:</b>
+              </td>
+              <td>
+                <%# Eval("FirstName") %> <%# Eval("LastName") %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Title:</b>
+              </td>
+              <td>
+                <%# Eval("Title") %>
+              </td>
+            </tr>
+            <tr style="height:150" valign="top">
+              <td>
+                <b>Address:</b>
+              </td>
+              <td>
+                <%# Eval("Address") %><br/>
+                <%# Eval("City") %> <%# Eval("Region") %>
+                <%# Eval("PostalCode") %><br/>
+                <%# Eval("Country") %>   
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <asp:linkbutton id="Edit"
+                  text="Edit"
+                  commandname="Edit"
+                  runat="server"/> 
+              </td>
+            </tr>
+          </table>       
+        </itemtemplate>
+        <edititemtemplate>
+          <table>
+            <tr>
+              <td rowspan="6">
+                <asp:image id="EmployeeEditImage"
+                  imageurl='<%# Eval("PhotoPath") %>'
+                  alternatetext='<%# Eval("LastName") %>' 
+                  runat="server"/>
+              </td>
+              <td colspan="2">
+                  &nbsp; 
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b><asp:Label runat="server" 
+                  AssociatedControlID="FirstNameUpdateTextBox" 
+                  Text="Name" />:</b>
+              </td>
+              <td>
+                <asp:textbox id="FirstNameUpdateTextBox"
+                  text='<%# Bind("FirstName") %>'
+                  accesskey="n" tabindex="1" runat="server"/>
+                <asp:textbox id="LastNameUpdateTextBox"
+                  text='<%# Bind("LastName") %>'
+                  accesskey="l" tabindex="2" runat="server"/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b><asp:Label runat="server" 
+                  AssociatedControlID="TitleUpdateTextBox" 
+                  Text="Title" />:</b>
+              </td>
+              <td>
+                <asp:textbox id="TitleUpdateTextBox"
+                  text='<%# Bind("Title") %>'
+                  accesskey="t" tabindex="3" runat="server"/> 
+              </td>
+            </tr>
+            <tr>
+                <b><asp:Label runat="server" 
+                  AssociatedControlID="HireDateUpdateTextBox" 
+                  Text="Hire Date" />:</b>
+              <td>
+                <asp:textbox id="HireDateUpdateTextBox"
+                  text='<%# Bind("HireDate", "{0:d}") %>'
+                  accesskey="h" tabindex="4" runat="server" />
+              </td>
+            </tr>
+            <tr style="height:150" valign="top">
+              <td>
+                <b><asp:Label runat="server" 
+                  AssociatedControlID="AddressUpdateTextBox" 
+                  Text="Address" />:</b>
+              </td>
+              <td>
+                <asp:textbox id="AddressUpdateTextBox"
+                  text='<%# Bind("Address") %>'
+                  accesskey="a" tabindex="5" runat="server"/>
+                <br/>
+                <asp:textbox id="CityUpdateTextBox"
+                  text='<%# Bind("City") %>'
+                  accesskey="c" tabindex="6" runat="server"/> 
+                <asp:textbox id="RegionUpdateTextBox"
+                  text='<%# Bind("Region") %>'
+                  width="40"
+                  accesskey="r" tabindex="7" runat="server"/>
+                <asp:textbox id="PostalCodeUpdateTextBox"
+                  text='<%# Bind("PostalCode") %>'
+                  width="60"
+                  accesskey="p" tabindex="8" runat="server"/>
+                <br/>
+                <asp:textbox id="CountryUpdateTextBox"
+                  text='<%# Bind("Country") %>'
+                  accesskey="u" tabindex="9" runat="server"/> 
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <asp:linkbutton id="UpdateButton"
+                  text="Update" tabindex="10" 
+                  commandname="Update"
+                  runat="server"/>
+                <asp:linkbutton id="CancelButton"
+                  text="Cancel" tabindex="11" 
+                  commandname="Cancel"
+                  runat="server"/> 
+              </td>
+            </tr>
+          </table>       
+        </edititemtemplate>
+                  
+      </asp:formview>
+      
+      <br/><br/>
+      
+      <asp:label id="MessageLabel"
+          forecolor="Red"
+          runat="server"/>
+          
+      <!-- This example uses Microsoft SQL Server and connects  -->
+      <!-- to the Northwind sample database. Use an ASP.NET     -->
+      <!-- expression to retrieve the connection string value   -->
+      <!-- from the Web.config file.                            -->
+      <asp:sqldatasource id="EmployeeSource"
+        selectcommand="Select [EmployeeID], [LastName], [FirstName], [Title], [Address], [City], [Region], [PostalCode], [Country], [HireDate], [PhotoPath] From [Employees]"
+        updatecommand="Update [Employees] Set [LastName]=@LastName, [FirstName]=@FirstName, [Title]=@Title, [Address]=@Address, [City]=@City, [Region]=@Region, [PostalCode]=@PostalCode, [Country]=@Country Where [EmployeeID]=@EmployeeID"
+        connectionstring="<%$ ConnectionStrings:NorthWindConnectionString%>" 
+        runat="server"/>
+            
+    </form>
+  </body>
 </html>

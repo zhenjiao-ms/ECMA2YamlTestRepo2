@@ -1,36 +1,48 @@
-#using <System.dll>
-
-using namespace System;
-using namespace System::Net;
-using namespace System::Net::NetworkInformation;
-using namespace System::Text;
-
-// args[1] can be an IPaddress or host name.
-int main()
+void DisplayUnicastAddresses()
 {
-   array<String^>^args = Environment::GetCommandLineArgs();
-   
-   Ping ^ pingSender = gcnew Ping;
-   PingOptions ^ options = gcnew PingOptions;
-   
-   // Use the default Ttl value which is 128,
-   // but change the fragmentation behavior.
-   options->DontFragment = true;
-   
-   // Create a buffer of 32 bytes of data to be transmitted.
-   String^ data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-   array<Byte>^buffer = Encoding::ASCII->GetBytes( data );
-   int timeout = 120;
-   PingReply ^ reply = pingSender->Send( args[ 1 ], timeout, buffer, options );
-   
-   if ( reply->Status == IPStatus::Success )
+   Console::WriteLine( "Unicast Addresses" );
+   array<NetworkInterface^>^adapters = NetworkInterface::GetAllNetworkInterfaces();
+   System::Collections::IEnumerator^ myEnum17 = adapters->GetEnumerator();
+   while ( myEnum17->MoveNext() )
    {
-      Console::WriteLine( "Address: {0}", reply->Address->ToString() );
-      Console::WriteLine( "RoundTrip time: {0}", reply->RoundtripTime );
-      Console::WriteLine( "Time to live: {0}", reply->Options->Ttl );
-      Console::WriteLine( "Don't fragment: {0}", reply->Options->DontFragment );
-      Console::WriteLine( "Buffer size: {0}", reply->Buffer->Length );
+      NetworkInterface ^ adapter = safe_cast<NetworkInterface ^>(myEnum17->Current);
+      IPInterfaceProperties ^ adapterProperties = adapter->GetIPProperties();
+      UnicastIPAddressInformationCollection ^ uniCast = adapterProperties->UnicastAddresses;
+      if ( uniCast->Count > 0 )
+      {
+         Console::WriteLine( adapter->Description );
+         String^ lifeTimeFormat = "dddd, MMMM dd, yyyy  hh:mm:ss tt";
+         System::Collections::IEnumerator^ myEnum18 = uniCast->GetEnumerator();
+         while ( myEnum18->MoveNext() )
+         {
+            UnicastIPAddressInformation ^ uni = safe_cast<UnicastIPAddressInformation ^>(myEnum18->Current);
+            DateTime when;
+            Console::WriteLine( "  Unicast Address ......................... : {0}", 
+               uni->Address );
+            Console::WriteLine( "     Prefix Origin ........................ : {0}", 
+               uni->PrefixOrigin );
+            Console::WriteLine( "     Suffix Origin ........................ : {0}", 
+               uni->SuffixOrigin );
+            Console::WriteLine( "     Duplicate Address Detection .......... : {0}", 
+               uni->DuplicateAddressDetectionState );
+            
+            // Format the lifetimes as Sunday, February 16, 2003 11:33:44 PM
+            // if en-us is the current culture.
+            // Calculate the date and time at the end of the lifetimes.    
+            when = DateTime::UtcNow + TimeSpan::FromSeconds( (double)uni->AddressValidLifetime );
+            when = when.ToLocalTime();
+            Console::WriteLine( "     Valid Life Time ...................... : {0}", 
+               when.ToString( lifeTimeFormat, System::Globalization::CultureInfo::CurrentCulture ) );
+            when = DateTime::UtcNow + TimeSpan::FromSeconds( (double)uni->AddressPreferredLifetime );
+            when = when.ToLocalTime();
+            Console::WriteLine( "     Preferred life time .................. : {0}", 
+               when.ToString( lifeTimeFormat, System::Globalization::CultureInfo::CurrentCulture ) );
+            when = DateTime::UtcNow + TimeSpan::FromSeconds( (double)uni->DhcpLeaseLifetime );
+            when = when.ToLocalTime();
+            Console::WriteLine( "     DHCP Leased Life Time ................ : {0}", 
+               when.ToString( lifeTimeFormat, System::Globalization::CultureInfo::CurrentCulture ) );
+         }
+         Console::WriteLine();
+      }
    }
-
-   
 }

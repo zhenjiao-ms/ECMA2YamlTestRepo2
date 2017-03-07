@@ -1,23 +1,13 @@
-		internal ToolStripButton imageButton;
+    TreeView treeViewWithToolTips;
+    private void InitializeTreeViewWithToolTips()
+    {
+        treeViewWithToolTips = new TreeView();
+        TreeNode node1 = new TreeNode("Node1");
+        node1.ToolTipText = "Help for Node1";
+        TreeNode node2 = new TreeNode("Node2");
+        node2.ToolTipText = "A Tip for Node2";
+        treeViewWithToolTips.Nodes.AddRange(new TreeNode[] { node1, node2 });
+        treeViewWithToolTips.ShowNodeToolTips = true;
+        this.Controls.Add(treeViewWithToolTips);
 
-		private void InitializeImageButtonWithToolTip()
-		{
-
-			// Construct the button and set the image-related properties.
-			imageButton = new ToolStripButton();
-			imageButton.Image = new Bitmap(typeof(Timer), "Timer.bmp");
-			imageButton.ImageScaling = ToolStripItemImageScaling.SizeToFit;
-
-			// Set the background color of the image to be transparent.
-			imageButton.ImageTransparentColor = Color.FromArgb(0, 255, 0);
-
-			// Show ToolTip text, set custom ToolTip text, and turn
-			// off the automatic ToolTips.
-			toolStrip1.ShowItemToolTips = true;
-			imageButton.ToolTipText = "Click for the current time";
-			imageButton.AutoToolTip = false;
-
-			// Add the button to the ToolStrip.
-			toolStrip1.Items.Add(imageButton);
-
-		}
+    }

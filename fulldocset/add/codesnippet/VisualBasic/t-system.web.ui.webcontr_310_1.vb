@@ -1,33 +1,23 @@
-Imports System
-Imports System.Collections.Generic
-Imports System.Text
-Imports System.Diagnostics
+Partial Class PanelStylevb_aspx
+    Inherits Page
 
+    Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
 
-Namespace CreateEventSource
-  Class Program
-    Sub Main()
+        Dim panelState As StateBag = New StateBag()
+        Dim myPanelStyle As PanelStyle = New PanelStyle(panelState)
 
-        Try
-            ' Create the source, if it does not already exist.
-            If Not (EventLog.SourceExists("MySamplesSite")) Then
-                EventLog.CreateEventSource("MySamplesSite", "Application")
-                Console.WriteLine("Creating Event Source")
-            End If
+        ' Set the properties of the PanelStyle class.
+        myPanelStyle.HorizontalAlign = HorizontalAlign.Center
+        myPanelStyle.ScrollBars = ScrollBars.Both
+        myPanelStyle.Wrap = False
+        myPanelStyle.Direction = ContentDirection.LeftToRight
+        myPanelStyle.BackImageUrl = "~\images\picture.jpg"
 
-            ' Create an EventLog instance and assign its source.
-            Dim myLog As New EventLog
-            myLog.Source = "MySamplesSite"
-
-            ' Write an informational entry to the event log.
-            myLog.WriteEntry("Testing writing to event log.")
-
-            Console.WriteLine("Message written to event log.")
-        Catch e As Exception
-            Console.WriteLine("Exception:")
-            Console.WriteLine(e.ToString)
-        End Try
-
+        ' Use the ApplyStyle method of the Panel control to apply
+        ' the settings from the myPanelStyle object.
+        Panel1.ApplyStyle(myPanelStyle)
+        Panel2.ApplyStyle(myPanelStyle)
+        
     End Sub
-  End Class
-End Namespace
+
+End Class

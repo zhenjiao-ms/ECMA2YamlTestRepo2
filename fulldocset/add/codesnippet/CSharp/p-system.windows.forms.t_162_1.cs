@@ -1,46 +1,40 @@
-using System.Drawing;
-using System.Windows.Forms;
-
-public class Form1 : Form
-{
-    private TabControl tabControl1;
-    private TabPage tabPage1;
-    private TabPage tabPage2;
-
-    private void MyTabs()
+    public class CustomizedTreeView : TreeView
     {
-        this.tabControl1 = new TabControl();
-        this.tabPage1 = new TabPage();
-        this.tabPage2 = new TabPage();
+        public CustomizedTreeView()
+        {
+            // Customize the TreeView control by setting various properties.
+            BackColor = System.Drawing.Color.CadetBlue;
+            FullRowSelect = true;
+            HotTracking = true;
+            Indent = 34;
+            ShowPlusMinus = false;
 
-        this.tabControl1.Controls.AddRange(new Control[] {
-            this.tabPage1,
-            this.tabPage2});
-        this.tabControl1.Padding = new Point(15, 10);
-        this.tabControl1.Location = new Point(35, 25);
-        this.tabControl1.Size = new Size(220, 220);
+            // The ShowLines property must be false for the FullRowSelect 
+            // property to work.
+            ShowLines = false;
+        }
 
-        // Selects tabPage2 using SelectedIndex.
-        this.tabControl1.SelectedIndex = 1;
-    
-        this.tabPage1.Text = "myTabPage1";
-        this.tabPage1.TabIndex = 0;
+        protected override void OnAfterSelect(TreeViewEventArgs e)
+        {
+            // Confirm that the user initiated the selection.
+            // This prevents the first node from expanding when it is
+            // automatically selected during the initialization of 
+            // the TreeView control.
+            if (e.Action != TreeViewAction.Unknown)
+            {
+                if (e.Node.IsExpanded) 
+                {
+                    e.Node.Collapse();
+                }
+                else 
+                {
+                    e.Node.Expand();
+                }
+            }
 
-        this.tabPage2.Text = "myTabPage2";
-        this.tabPage2.TabIndex = 1;
+            // Remove the selection. This allows the same node to be
+            // clicked twice in succession to toggle the expansion state.
+            SelectedNode = null;
+        }
 
-        this.Size = new Size(300, 300);
-        this.Controls.AddRange(new Control[] {
-            this.tabControl1});
     }
-    
-    public Form1()
-    {
-        MyTabs();
-    }
-
-    static void Main() 
-    {
-        Application.Run(new Form1());
-    }
-}

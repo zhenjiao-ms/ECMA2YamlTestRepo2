@@ -1,31 +1,33 @@
-Public Class DemoTableLayoutPanel
-    Inherits TableLayoutPanel
+    Private Sub toggleRowStylesBtn_Click( _
+    ByVal sender As System.Object, _
+    ByVal e As System.EventArgs) _
+    Handles toggleRowStylesBtn.Click
 
-    Protected Overrides Sub OnCellPaint( _
-    ByVal e As System.Windows.Forms.TableLayoutCellPaintEventArgs)
+        Dim styles As TableLayoutRowStyleCollection = _
+        Me.TableLayoutPanel1.RowStyles
 
-        MyBase.OnCellPaint(e)
+        For Each style As RowStyle In styles
 
-        Dim c As Control = Me.GetControlFromPosition(e.Column, e.Row)
+            If style.SizeType = SizeType.Absolute Then
 
-        If c IsNot Nothing Then
-            Dim g As Graphics = e.Graphics
+                style.SizeType = SizeType.AutoSize
 
-            g.DrawRectangle( _
-            Pens.Red, _
-            e.CellBounds.Location.X + 1, _
-            e.CellBounds.Location.Y + 1, _
-            e.CellBounds.Width - 2, _
-            e.CellBounds.Height - 2)
+            ElseIf style.SizeType = SizeType.AutoSize Then
 
-            g.FillRectangle( _
-            Brushes.Blue, _
-            e.CellBounds.Location.X + 1, _
-            e.CellBounds.Location.Y + 1, _
-            e.CellBounds.Width - 2, _
-            e.CellBounds.Height - 2)
-        End If
+                style.SizeType = SizeType.Percent
+
+                ' Set the row height to be a percentage
+                ' of the TableLayoutPanel control's height.
+                style.Height = 33
+
+            Else
+
+                ' Set the row height to 50 pixels.
+                style.SizeType = SizeType.Absolute
+                style.Height = 50
+
+            End If
+
+        Next
 
     End Sub
-
-End Class

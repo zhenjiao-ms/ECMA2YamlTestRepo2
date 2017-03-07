@@ -1,146 +1,53 @@
 using System;
-using System.Xml;
 using System.Security.Cryptography;
-using System.Security.Cryptography.Xml;
-
-class Program
+public class OidSample
 {
-    static void Main(string[] args)
-    {
+	public static void Main()
+	{
+		// Assign values to strings.
+		string Value1 = "1.2.840.113549.1.1.1";
+		string Name1 = "3DES";
+		string Value2 = "1.3.6.1.4.1.311.20.2";
+		string InvalidName = "This name is not a valid name";
+		string InvalidValue = "1.1.1.1.1.1.1.1";
 
-        // Create an XmlDocument object.
-        XmlDocument xmlDoc = new XmlDocument();
+		// Create new Oid objects using the specified values.
+		// Note that the corresponding Value or Friendly Name property is automatically added to the object.
+		Oid o1 = new Oid(Value1);
+		Oid o2 = new Oid(Name1);
 
-        // Load an XML file into the XmlDocument object.
-        try
-        {
-            xmlDoc.PreserveWhitespace = true;
-            xmlDoc.Load("test.xml");
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
+		// Create a new Oid object using the specified Value and Friendly Name properties.
+		// Note that the two are not compared to determine if the Value is associated 
+		//  with the Friendly Name.
+		Oid o3 = new Oid(Value2, InvalidName);
 
-        // Create a new TripleDES key. 
-        TripleDESCryptoServiceProvider tDESkey = new TripleDESCryptoServiceProvider();
+		//Create a new Oid object using the specified Value. Note that if the value
+		//  is invalid or not known, no value is assigned to the Friendly Name property.
+		Oid o4 = new Oid(InvalidValue);
 
+		//Write out the property information of the Oid objects.
+		Console.WriteLine("Oid1: Automatically assigned Friendly Name: {0}, {1}", o1.FriendlyName, o1.Value);
+		Console.WriteLine("Oid2: Automatically assigned Value: {0}, {1}", o2.FriendlyName, o2.Value);
+		Console.WriteLine("Oid3: Name and Value not compared: {0}, {1}", o3.FriendlyName, o3.Value);
+		Console.WriteLine("Oid4: Invalid Value used: {0}, {1} {2}", o4.FriendlyName, o4.Value, Environment.NewLine);
 
-        try
-        {
-            // Encrypt the "creditcard" element.
-            Encrypt(xmlDoc, "creditcard", tDESkey);
+		//Create an Oid collection and add several Oid objects.
+		OidCollection oc = new OidCollection();
+		oc.Add(o1);
+		oc.Add(o2);
+		oc.Add(o3);
+		Console.WriteLine("Number of Oids in the collection: {0}", oc.Count);
+		Console.WriteLine("Is synchronized: {0} {1}", oc.IsSynchronized, Environment.NewLine);
 
-            // Display the encrypted XML to the console.
-            Console.WriteLine("Encrypted XML:");
-            Console.WriteLine();
-            Console.WriteLine(xmlDoc.OuterXml);
-
-            // Decrypt the "creditcard" element.
-            Decrypt(xmlDoc, tDESkey);
-
-            // Display the encrypted XML to the console.
-            Console.WriteLine();
-            Console.WriteLine("Decrypted XML:");
-            Console.WriteLine();
-            Console.WriteLine(xmlDoc.OuterXml);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-        finally
-        {
-            // Clear the TripleDES key.
-            tDESkey.Clear();
-        }
-
-    }
-
-    public static void Encrypt(XmlDocument Doc, string ElementToEncrypt, TripleDESCryptoServiceProvider Alg)
-    {
-
-        ////////////////////////////////////////////////
-        // Find the specified element in the XmlDocument
-        // object and create a new XmlElemnt object.
-        ////////////////////////////////////////////////
-
-        XmlElement elementToEncrypt = Doc.GetElementsByTagName(ElementToEncrypt)[0] as XmlElement;
-
-        // Throw an XmlException if the element was not found.
-        if (elementToEncrypt == null)
-        {
-            throw new XmlException("The specified element was not found");
-
-        }
-
-        //////////////////////////////////////////////////
-        // Create a new instance of the EncryptedXml class 
-        // and use it to encrypt the XmlElement with the 
-        // symmetric key.
-        //////////////////////////////////////////////////
-
-        EncryptedXml eXml = new EncryptedXml();
-
-        byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, Alg, false);
-
-        ////////////////////////////////////////////////
-        // Construct an EncryptedData object and populate
-        // it with the desired encryption information.
-        ////////////////////////////////////////////////
-
-
-        EncryptedData edElement = new EncryptedData();
-        
-        edElement.Type = EncryptedXml.XmlEncElementUrl;
-
-  
-        // Create an EncryptionMethod element so that the 
-        // receiver knows which algorithm to use for decryption.
-        // Determine what kind of algorithm is being used and
-        // supply the appropriate URL to the EncryptionMethod element.
-
-        edElement.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncTripleDESUrl);
-
-        // Add the encrypted element data to the 
-        // EncryptedData object.
-        edElement.CipherData.CipherValue = encryptedElement;
-
-        ////////////////////////////////////////////////////
-        // Replace the element from the original XmlDocument
-        // object with the EncryptedData element.
-        ////////////////////////////////////////////////////
-
-        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, false);
-
-    }
-
-    public static void Decrypt(XmlDocument Doc, SymmetricAlgorithm Alg)
-    {
-
-        // Find the EncryptedData element in the XmlDocument.
-        XmlElement encryptedElement = Doc.GetElementsByTagName("EncryptedData")[0] as XmlElement;
-
-        // If the EncryptedData element was not found, throw an exception.
-        if (encryptedElement == null)
-        {
-            throw new XmlException("The EncryptedData element was not found.");
-        }
-
-        // Create an EncryptedData object and populate it.
-        EncryptedData edElement = new EncryptedData();
-        edElement.LoadXml(encryptedElement);
-
-        // Create a new EncryptedXml object.
-        EncryptedXml exml = new EncryptedXml();
-
-        // Decrypt the element using the symmetric key.
-        byte[] rgbOutput = exml.DecryptData(edElement, Alg);
-
-        // Replace the encryptedData element with the plaintext XML element.
-        exml.ReplaceData(encryptedElement, rgbOutput);
-
-    }
-
-
+		//Create an enumerator for moving through the collection.
+		OidEnumerator oe = oc.GetEnumerator();
+		//You must execute a MoveNext() to get to the first item in the collection.
+		oe.MoveNext();
+		// Write out Oids in the collection.
+		Console.WriteLine("First Oid in collection: {0},{1}", oe.Current.FriendlyName,oe.Current.Value);
+		oe.MoveNext();
+		Console.WriteLine("Second Oid in collection: {0},{1}", oe.Current.FriendlyName, oe.Current.Value);
+		//Return index in the collection to the beginning.
+		oe.Reset();
+	}
 }

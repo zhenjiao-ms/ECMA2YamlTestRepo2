@@ -1,30 +1,29 @@
 using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 public class Example
 {
    public static void Main()
    {
-      var list = new ConcurrentBag<string>();
-      string[] dirNames = { ".", ".." };
-      List<Task> tasks = new List<Task>();
-      foreach (var dirName in dirNames) {
-         Task t = new Task( () => { foreach(var path in Directory.GetFiles(dirName))
-                                    list.Add(path); }  );
-         tasks.Add(t);
-         t.Start();
-      }
-      Task.WaitAll(tasks.ToArray());
-      foreach (Task t in tasks)
-         Console.WriteLine("Task {0} Status: {1}", t.Id, t.Status);
-         
-      Console.WriteLine("Number of files read: {0}", list.Count);
+      var t = new Task( () => { Console.WriteLine("Task {0} running on thread {1}",
+                                                  Task.CurrentId, Thread.CurrentThread.ManagedThreadId);
+                                for (int ctr = 1; ctr <= 10; ctr++)
+                                   Console.WriteLine("   Iteration {0}", ctr); } 
+                        );
+      t.Start();
+      t.Wait();   
    }
 }
 // The example displays output like the following:
-//       Task 1 Status: RanToCompletion
-//       Task 2 Status: RanToCompletion
-//       Number of files read: 23
+//     Task 1 running on thread 3
+//        Iteration 1
+//        Iteration 2
+//        Iteration 3
+//        Iteration 4
+//        Iteration 5
+//        Iteration 6
+//        Iteration 7
+//        Iteration 8
+//        Iteration 9
+//        Iteration 10

@@ -1,36 +1,38 @@
-   // Declare comboBox1 as a ComboBox.
-internal:
-   System::Windows::Forms::ComboBox^ ComboBox1;
-
 private:
-   // This method initializes the combo box, adding a large string array
-   // but limiting the drop-down size to six rows so the combo box doesn't 
-   // cover other controls when it expands.
-   void InitializeComboBox()
+   void DecimalToCurrency( Object^ /*sender*/, ConvertEventArgs^ cevent )
    {
-      this->ComboBox1 = gcnew System::Windows::Forms::ComboBox;
-      array<String^>^ employees = {"Hamilton, David","Hensien, Kari",
-         "Hammond, Maria","Harris, Keith","Henshaw, Jeff D.",
-         "Hanson, Mark","Harnpadoungsataya, Sariya",
-         "Harrington, Mark","Harris, Keith","Hartwig, Doris",
-         "Harui, Roger","Hassall, Mark","Hasselberg, Jonas",
-         "Harnpadoungsataya, Sariya","Henshaw, Jeff D.",
-         "Henshaw, Jeff D.","Hensien, Kari","Harris, Keith",
-         "Henshaw, Jeff D.","Hensien, Kari","Hasselberg, Jonas",
-         "Harrington, Mark","Hedlund, Magnus","Hay, Jeff",
-         "Heidepriem, Brandon D."};
-      ComboBox1->Items->AddRange( employees );
-      this->ComboBox1->Location = System::Drawing::Point( 136, 32 );
-      this->ComboBox1->IntegralHeight = false;
-      this->ComboBox1->MaxDropDownItems = 5;
-      this->ComboBox1->DropDownStyle = ComboBoxStyle::DropDownList;
-      this->ComboBox1->Name = "ComboBox1";
-      this->ComboBox1->Size = System::Drawing::Size( 136, 81 );
-      this->ComboBox1->TabIndex = 0;
-      this->Controls->Add( this->ComboBox1 );
+      // The method converts only to string type. Test this using the DesiredType.
+      if ( cevent->DesiredType != String::typeid )
+      {
+         return;
+      }
       
-      // Associate the event-handling method with the 
-      // SelectedIndexChanged event.
-      this->ComboBox1->SelectedIndexChanged +=
-         gcnew System::EventHandler( this, &Form1::ComboBox1_SelectedIndexChanged );
+      // Use the ToString method to format the value as currency ("c").
+      cevent->Value = ( (Decimal^)(cevent->Value) )->ToString( "c" );
+   }
+
+   void CurrencyToDecimal( Object^ /*sender*/, ConvertEventArgs^ cevent )
+   {
+      // ' The method converts only to decimal type. 
+      if ( cevent->DesiredType != Decimal::typeid )
+      {
+         return;
+      }
+
+      // Converts the string back to decimal using the static ToDecimal method.
+      cevent->Value = Convert::ToDecimal( cevent->Value->ToString() );
+   }
+
+   void BindControl()
+   {
+      // Creates the binding first. The OrderAmount is typed as Decimal.
+      Binding^ b = gcnew Binding(
+         "Text",ds,"customers.custToOrders.OrderAmount" );
+      
+      // Add the delegates to the events.
+      b->Format += gcnew ConvertEventHandler(
+         this, &Form1::DecimalToCurrency );
+      b->Parse += gcnew ConvertEventHandler(
+         this, &Form1::CurrencyToDecimal );
+      text1->DataBindings->Add( b );
    }

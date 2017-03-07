@@ -1,21 +1,12 @@
-    ' Freeze the first row.
-    Private Sub Button4_Click(ByVal sender As Object, _
-        ByVal e As System.EventArgs) Handles Button4.Click
-
-        FreezeBand(dataGridView.Rows(0))
-    End Sub
-
-    Private Sub FreezeColumn(ByVal sender As Object, _
-        ByVal e As System.EventArgs) Handles Button5.Click
-
-        FreezeBand(dataGridView.Columns(1))
-    End Sub
-
-    Private Shared Sub FreezeBand(ByVal band As DataGridViewBand)
-
-        band.Frozen = True
-        Dim style As DataGridViewCellStyle = New DataGridViewCellStyle()
-        style.BackColor = Color.WhiteSmoke
-        band.DefaultCellStyle = style
-
-    End Sub
+Private Sub SetTextBoxBgColor()
+   Dim myGridTextBox As DataGridTextBox
+   Dim myColumnTextColumn As DataGridTextBoxColumn
+   ' Assumes there is a DataGridTextBoxColumn 
+   ' already created in  the DataGrid control.
+   myColumnTextColumn = CType(DataGrid1.TableStyles("Customers"). _
+   GridColumnStyles("FirstName"), DataGridTextBoxColumn)
+   myGridTextBox = CType(myColumnTextColumn.TextBox, _
+   DataGridTextBox)
+   ' Change the background color.
+   myGridTextBox.BackColor = System.Drawing.Color.Red
+End Sub

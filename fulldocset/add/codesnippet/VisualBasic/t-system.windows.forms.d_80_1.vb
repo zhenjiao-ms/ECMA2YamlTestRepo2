@@ -1,15 +1,11 @@
-    Private Sub WatchRowsModeChanges(ByVal sender As Object, _
-        ByVal modeEvent As DataGridViewAutoSizeModeEventArgs) _
-        Handles DataGridView1.AutoSizeRowsModeChanged
+Private Sub DataGridView1_RowErrorTextNeeded(sender as Object, e as DataGridViewRowErrorTextNeededEventArgs) _ 
+     Handles DataGridView1.RowErrorTextNeeded
 
-        Dim label As Label = CType(FlowLayoutPanel1.Controls _
-            (currentLayoutName), Label)
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "ErrorText", e.ErrorText)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"RowErrorTextNeeded Event")
 
-        If modeEvent.PreviousModeAutoSized Then
-            label.Text = "changed to different " & label.Name & _
-                DataGridView1.AutoSizeRowsMode.ToString()
-        Else
-            label.Text = label.Name & _
-                DataGridView1.AutoSizeRowsMode.ToString()
-        End If
-    End Sub
+End Sub

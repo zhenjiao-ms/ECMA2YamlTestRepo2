@@ -1,34 +1,25 @@
-public class FunButton:
-	Button
+// This button is a simple extension of the button class that overrides
+// the ProcessMnemonic method.  If the mnemonic is correctly entered,  
+// the message box will appear and the click event will be raised.  
+public class MyMnemonicButton:Button
 
+	// This method makes sure the control is selectable and the 
+	// mneumonic is correct before displaying the message box
+	// and triggering the click event.
 {
-	protected override void OnMouseHover(System.EventArgs e)
+	[UIPermission(
+        SecurityAction.Demand, Window = UIPermissionWindow.AllWindows)]
+        protected override bool ProcessMnemonic(char inputChar)
 	{
 
-		// Get the font size in Points, add one to the
-		// size, and reset the button's font to the larger
-		// size.
-		float fontSize = Font.SizeInPoints;
-		fontSize += 1;
-		System.Drawing.Size buttonSize = Size;
-		this.Font = new System.Drawing.Font(
-			Font.FontFamily, fontSize, Font.Style);
-
-		// Increase the size width and height of the button 
-		// by 5 points each.
-		Size = new System.Drawing.Size(Size.Width+5, Size.Height+5);
-
-		// Call myBase.OnMouseHover to activate the delegate.
-		base.OnMouseHover(e);
+		if (CanSelect&&IsMnemonic(inputChar, this.Text))
+		{
+			MessageBox.Show("You've raised the click event " +
+				"using the mnemonic.");
+			this.PerformClick();
+			return true;
+		}
+		return false;
 	}
 
-	protected override void OnMouseMove(MouseEventArgs e)
-	{
-
-		// Make the cursor the Hand cursor when the mouse moves 
-		// over the button.
-		Cursor = Cursors.Hand;
-
-		// Call MyBase.OnMouseMove to activate the delegate.
-		base.OnMouseMove(e);
-	}
+}

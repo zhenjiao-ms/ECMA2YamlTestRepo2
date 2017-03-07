@@ -1,57 +1,75 @@
-    // Configures the appearance and behavior of a DataGridView control.
-    private void InitializeDataGridView()
-    {
-        // Initialize basic DataGridView properties.
-        dataGridView1.Dock = DockStyle.Fill;
-        dataGridView1.BackgroundColor = Color.LightGray;
-        dataGridView1.BorderStyle = BorderStyle.Fixed3D;
+using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
-        // Set property values appropriate for read-only display and 
-        // limited interactivity. 
-        dataGridView1.AllowUserToAddRows = false;
+public class TriValueVirtualCheckBox:Form
+{
+    DataGridView dataGridView1 = new DataGridView();
+
+    const int initialSize = 500;
+
+    Dictionary<int, LightStatus> store 
+        = new Dictionary<int, LightStatus>();
+
+    public TriValueVirtualCheckBox() : base()
+    {        
+        Text = this.GetType().Name;
+
+        int index = 0;
+        for(index=0; index<=initialSize; index++)
+            store.Add(index, LightStatus.Unknown);
+
+        Controls.Add(dataGridView1);
+        dataGridView1.VirtualMode = true;
         dataGridView1.AllowUserToDeleteRows = false;
-        dataGridView1.AllowUserToOrderColumns = true;
-        dataGridView1.ReadOnly = true;
-        dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        dataGridView1.MultiSelect = false;
-        dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-        dataGridView1.AllowUserToResizeColumns = false;
-        dataGridView1.ColumnHeadersHeightSizeMode = 
-            DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-        dataGridView1.AllowUserToResizeRows = false;
-        dataGridView1.RowHeadersWidthSizeMode = 
-            DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+        dataGridView1.CellValueNeeded += new 
+            DataGridViewCellValueEventHandler(dataGridView1_CellValueNeeded);
+        dataGridView1.CellValuePushed += new 
+            DataGridViewCellValueEventHandler(dataGridView1_CellValuePushed);
 
-        // Set the selection background color for all the cells.
-        dataGridView1.DefaultCellStyle.SelectionBackColor = Color.White;
-        dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
-
-        // Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default
-        // value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
-        dataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty;
-
-        // Set the background color for all rows and for alternating rows. 
-        // The value for alternating rows overrides the value for all rows. 
-        dataGridView1.RowsDefaultCellStyle.BackColor = Color.LightGray;
-        dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray;
-
-        // Set the row and column header styles.
-        dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
-        dataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.Black;
-
-        // Set the Format property on the "Last Prepared" column to cause
-        // the DateTime to be formatted as "Month, Year".
-        dataGridView1.Columns["Last Prepared"].DefaultCellStyle.Format = "y";
-
-        // Specify a larger font for the "Ratings" column. 
-        using (Font font = new Font(
-            dataGridView1.DefaultCellStyle.Font.FontFamily, 25, FontStyle.Bold))
-        {
-            dataGridView1.Columns["Rating"].DefaultCellStyle.Font = font;
-        }
-
-        // Attach a handler to the CellFormatting event.
-        dataGridView1.CellFormatting += new
-            DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
+        dataGridView1.Columns.Add(CreateCheckBoxColumn());
+        dataGridView1.Rows.AddCopies(0, initialSize);
     }
+
+    private DataGridViewCheckBoxColumn CreateCheckBoxColumn()
+    {
+        DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1 
+            = new DataGridViewCheckBoxColumn();
+        dataGridViewCheckBoxColumn1.HeaderText = "Lights On";
+        dataGridViewCheckBoxColumn1.TrueValue = LightStatus.TurnedOn;
+        dataGridViewCheckBoxColumn1.FalseValue = LightStatus.TurnedOff;
+        dataGridViewCheckBoxColumn1.IndeterminateValue 
+            = LightStatus.Unknown;
+        dataGridViewCheckBoxColumn1.ThreeState = true;
+        dataGridViewCheckBoxColumn1.ValueType = typeof(LightStatus);
+        return dataGridViewCheckBoxColumn1;
+    }
+
+#region "data store maintance"
+    private void dataGridView1_CellValueNeeded(object sender, 
+        DataGridViewCellValueEventArgs e)
+    {
+        e.Value = store[e.RowIndex];
+    }
+
+    private void dataGridView1_CellValuePushed(object sender, 
+        DataGridViewCellValueEventArgs e)
+    {
+        store[e.RowIndex] = (LightStatus) e.Value;
+    }
+#endregion
+
+    [STAThreadAttribute()]
+    public static void Main()
+    {
+        Application.Run(new TriValueVirtualCheckBox());
+    }
+}
+
+public enum LightStatus
+{
+    Unknown, 
+    TurnedOn, 
+    TurnedOff
+};

@@ -1,8 +1,15 @@
-	Private Sub PrintIndexItem
-		' Creates a new collection and assigns it the attributes for button1.
-		Dim attributes As AttributeCollection
-		attributes = TypeDescriptor.GetAttributes(button1)
+Private Sub BindingSource1_ListChanged(sender as Object, e as ListChangedEventArgs) _ 
+     Handles BindingSource1.ListChanged
 
-		' Prints the second attribute's name.
-		textBox1.Text = attributes(1).ToString
-	End Sub
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "ListChangedType", e.ListChangedType)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "NewIndex", e.NewIndex)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "OldIndex", e.OldIndex)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "PropertyDescriptor", e.PropertyDescriptor)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"ListChanged Event")
+
+End Sub

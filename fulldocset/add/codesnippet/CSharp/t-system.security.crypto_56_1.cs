@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Security.Cryptography;
 
-public class HMACMD5example
+public class HMACSHA256example
 {
 
     public static void Main(string[] Fileargs)
@@ -59,7 +59,7 @@ public class HMACMD5example
     public static void SignFile(byte[] key, String sourceFile, String destFile)
     {
         // Initialize the keyed hash object.
-        using (HMACMD5 hmac = new HMACMD5(key))
+        using (HMACSHA256 hmac = new HMACSHA256(key))
         {
             using (FileStream inStream = new FileStream(sourceFile, FileMode.Open))
             {
@@ -94,7 +94,7 @@ public class HMACMD5example
     {
         bool err = false;
         // Initialize the keyed hash object. 
-        using (HMACMD5 hmac = new HMACMD5(key))
+        using (HMACSHA256 hmac = new HMACSHA256(key))
         {
             // Create an array to hold the keyed hash value read from the file.
             byte[] storedHash = new byte[hmac.HashSize / 8];

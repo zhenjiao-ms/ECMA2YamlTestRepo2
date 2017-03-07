@@ -1,40 +1,7 @@
-    public class CustomizedTreeView : TreeView
-    {
-        public CustomizedTreeView()
-        {
-            // Customize the TreeView control by setting various properties.
-            BackColor = System.Drawing.Color.CadetBlue;
-            FullRowSelect = true;
-            HotTracking = true;
-            Indent = 34;
-            ShowPlusMinus = false;
-
-            // The ShowLines property must be false for the FullRowSelect 
-            // property to work.
-            ShowLines = false;
-        }
-
-        protected override void OnAfterSelect(TreeViewEventArgs e)
-        {
-            // Confirm that the user initiated the selection.
-            // This prevents the first node from expanding when it is
-            // automatically selected during the initialization of 
-            // the TreeView control.
-            if (e.Action != TreeViewAction.Unknown)
-            {
-                if (e.Node.IsExpanded) 
-                {
-                    e.Node.Collapse();
-                }
-                else 
-                {
-                    e.Node.Expand();
-                }
-            }
-
-            // Remove the selection. This allows the same node to be
-            // clicked twice in succession to toggle the expansion state.
-            SelectedNode = null;
-        }
-
-    }
+			this.toolStripButton1.Image = Bitmap.FromFile("c:\\NewItem.bmp");
+			this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.ImageAndText;
+			this.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.toolStripButton1.Name = "toolStripButton1";
+			this.toolStripButton1.Text = "&New";
+			this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);

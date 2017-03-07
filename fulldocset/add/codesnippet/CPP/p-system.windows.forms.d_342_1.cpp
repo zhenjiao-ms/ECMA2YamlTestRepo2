@@ -1,30 +1,91 @@
+#using <System.Windows.Forms.dll>
+#using <System.dll>
+#using <System.Drawing.dll>
+using namespace System;
+using namespace System::IO;
+using namespace System::Collections::Generic;
+using namespace System::Windows::Forms;
+
+public enum class LightStatus
+{
+    Unknown,
+    TurnedOn,
+    TurnedOff
+};
+
+public ref class TriValueVirtualCheckBox: public Form
+{
 private:
-   // Create an instance of the 'AllowNavigationChanged' EventHandler.
-   void CallAllowNavigationChanged()
-   {
-      myDataGrid->AllowNavigationChanged += gcnew EventHandler( this, &MyDataGrid::Grid_AllowNavChange );
-   }
+    DataGridView^ dataGridView1;
 
-   // Set the 'AllowNavigation' property on click of a button.
 private:
-   void myButton_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
-   {
-      if ( myDataGrid->AllowNavigation == true )
-            myDataGrid->AllowNavigation = false;
-      else
-            myDataGrid->AllowNavigation = true;
-   }
+    const int initialSize;
 
-   // Raise the event when 'AllowNavigation' property is changed.
 private:
-   void Grid_AllowNavChange( Object^ /*sender*/, EventArgs^ /*e*/ )
-   {
-      String^ myString = "AllowNavigationChanged event raised, Navigation ";
-      bool myBool = myDataGrid->AllowNavigation;
+    Dictionary<int, LightStatus>^ store;
 
-      // Create appropriate alert message.
-      myString = String::Concat( myString, myBool ? (String^)" is " : " is not ", "allowed" );
+public:
+    TriValueVirtualCheckBox() :  Form(), initialSize(500)
+    {
+        dataGridView1 = gcnew DataGridView();
+        store = gcnew Dictionary<int, LightStatus>();
+        Text = this->GetType()->Name;
 
-      // Show information about navigation.
-      MessageBox::Show( myString, "Navigation information" );
-   }
+        for(int i = 0; i < initialSize; i++)
+        {
+            store->Add(i, LightStatus::Unknown);
+        }
+
+        Controls->Add(dataGridView1);
+        dataGridView1->VirtualMode = true;
+        dataGridView1->AllowUserToDeleteRows = false;
+        dataGridView1->CellValueNeeded += 
+            gcnew DataGridViewCellValueEventHandler(
+            this, &TriValueVirtualCheckBox::dataGridView1_CellValueNeeded);
+        dataGridView1->CellValuePushed += 
+            gcnew DataGridViewCellValueEventHandler(
+            this, &TriValueVirtualCheckBox::dataGridView1_CellValuePushed);
+
+        dataGridView1->Columns->Add(CreateCheckBoxColumn());
+        dataGridView1->Rows->AddCopies(0, initialSize);
+    }
+
+private:
+    DataGridViewCheckBoxColumn^ CreateCheckBoxColumn()
+    {
+        DataGridViewCheckBoxColumn^ dataGridViewCheckBoxColumn1
+            = gcnew DataGridViewCheckBoxColumn();
+        dataGridViewCheckBoxColumn1->HeaderText = "Lights On";
+        dataGridViewCheckBoxColumn1->TrueValue = LightStatus::TurnedOn;
+        dataGridViewCheckBoxColumn1->FalseValue =
+            LightStatus::TurnedOff;
+        dataGridViewCheckBoxColumn1->IndeterminateValue
+            = LightStatus::Unknown;
+        dataGridViewCheckBoxColumn1->ThreeState = true;
+        dataGridViewCheckBoxColumn1->ValueType = LightStatus::typeid;
+        return dataGridViewCheckBoxColumn1;
+    }
+
+#pragma region "data store maintance"
+private:
+    void dataGridView1_CellValueNeeded(Object^ sender,
+        DataGridViewCellValueEventArgs^ e)
+    {
+        e->Value = store[e->RowIndex];
+    }
+
+private:
+    void dataGridView1_CellValuePushed(Object^ sender,
+        DataGridViewCellValueEventArgs^ e)
+    {
+        store[e->RowIndex] = (LightStatus) e->Value;
+    }
+#pragma endregion
+
+};
+
+[STAThread]
+int main()
+{
+    Application::Run(gcnew TriValueVirtualCheckBox());
+}

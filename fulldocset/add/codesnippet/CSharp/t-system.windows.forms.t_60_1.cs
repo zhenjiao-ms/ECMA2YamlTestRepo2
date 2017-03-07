@@ -1,34 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+      // This example assumes that the Form_Load event handling method
+      // is connected to the Load event of the form.
+      private void Form1_Load(object sender, System.EventArgs e)
+      {
+         // Create the ToolTip and associate with the Form container.
+         ToolTip toolTip1 = new ToolTip();
 
-
-public class Form1 : Form
-{
-    private ToolStripContainer tsc;
-    private RichTextBox rtb;
-
-    public Form1()
-    {
-        InitializeComponent();
-    }    
-[STAThread]
-static void Main()
-    {
-        Application.EnableVisualStyles();
-        Application.Run(new Form1());
-    }
-
-    private void InitializeComponent()
-    {
-        this.tsc = new System.Windows.Forms.ToolStripContainer();
-        this.rtb = new System.Windows.Forms.RichTextBox();
-        this.tsc.ContentPanel.Controls.Add(this.rtb);
-        this.Controls.Add(this.tsc);
-
-    }
-}
+         // Set up the delays for the ToolTip.
+         toolTip1.AutoPopDelay = 5000;
+         toolTip1.InitialDelay = 1000;
+         toolTip1.ReshowDelay = 500;
+         // Force the ToolTip text to be displayed whether or not the form is active.
+         toolTip1.ShowAlways = true;
+			
+         // Set up the ToolTip text for the Button and Checkbox.
+         toolTip1.SetToolTip(this.button1, "My button1");
+         toolTip1.SetToolTip(this.checkBox1, "My checkBox1");
+      }

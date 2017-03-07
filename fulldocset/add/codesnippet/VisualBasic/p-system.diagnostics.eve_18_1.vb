@@ -1,46 +1,24 @@
-   Imports System
-   Imports System.Configuration.Install
-   Imports System.Diagnostics
-   Imports System.ComponentModel
+Option Explicit
+Option Strict
+Imports System
+Imports System.Diagnostics
+Imports System.Threading
 
-   <RunInstaller(True)>  _
-   Public Class SampleEventLogInstaller
-      Inherits Installer
-
-      Private myEventLogInstaller As EventLogInstaller
-
-      Public Sub New()
-
-         ' Create an instance of an EventLogInstaller.
-         myEventLogInstaller = New EventLogInstaller()
-
-         ' Set the source name of the event log.
-         myEventLogInstaller.Source = "ApplicationEventSource"
-
-         ' Set the event log into which the source writes entries.
-         myEventLogInstaller.Log = "MyCustomLog"
-
-         ' Set the resource file for the event log.
-         ' The message strings are defined in EventLogMsgs.mc; the message
-         ' identifiers used in the application must match those defined in the
-         ' corresponding message resource file. The messages must be built
-         ' into a Win32 resource library and copied to the target path on the
-         ' system.
-
-         myEventLogInstaller.CategoryResourceFile = _
-             Environment.SystemDirectory + "\eventlogmsgs.dll"
-         myEventLogInstaller.CategoryCount = 3
-         myEventLogInstaller.MessageResourceFile = _
-             Environment.SystemDirectory + "\eventlogmsgs.dll"
-         myEventLogInstaller.ParameterResourceFile = _
-             Environment.SystemDirectory + "\eventlogmsgs.dll"
-
-         ' Add myEventLogInstaller to the installer collection.
-         Installers.Add(myEventLogInstaller)
-
-      End Sub 'New
-
-      Public Shared Sub Main()
-        Console.WriteLine("Usage: InstallUtil.exe [<install>.exe | <install>.dll]")
-      End Sub 'Main
-   End Class 'MyEventLogInstaller
+Class MySample
+    Public Shared Sub Main()
+        ' Create the source, if it does not already exist.
+        If Not EventLog.SourceExists("MySource") Then
+            EventLog.CreateEventSource("MySource", "MyNewLog")
+            Console.WriteLine("CreatingEventSource")
+        End If
+        
+        ' Create an EventLog instance and assign its source.
+        Dim myLog As New EventLog()
+        myLog.Source = "MySource"
+        
+        ' Write an informational entry to the event log.    
+        myLog.WriteEntry("Writing to event log.")
+        
+        Console.WriteLine("Message written to event log.")
+    End Sub ' Main
+End Class ' MySample

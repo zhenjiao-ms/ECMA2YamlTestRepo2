@@ -1,43 +1,42 @@
-public ref class CustomizedTreeView: public TreeView
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
+public ref class Form1: public Form
 {
-public:
-   CustomizedTreeView()
+private:
+   TabControl^ tabControl1;
+   TabPage^ tabPage1;
+   TabPage^ tabPage2;
+   void MyTabs()
    {
-
-      // Customize the TreeView control by setting various properties.
-      BackColor = System::Drawing::Color::CadetBlue;
-      FullRowSelect = true;
-      HotTracking = true;
-      Indent = 34;
-      ShowPlusMinus = false;
-
-      // The ShowLines property must be false for the FullRowSelect
-      // property to work.
-      ShowLines = false;
-   }
-
-protected:
-   virtual void OnAfterSelect( TreeViewEventArgs^ e ) override
-   {
-      // Confirm that the user initiated the selection.
-      // This prevents the first node from expanding when it is
-      // automatically selected during the initialization of
-      // the TreeView control.
-      if ( e->Action != TreeViewAction::Unknown )
-      {
-         if ( e->Node->IsExpanded )
-         {
-            e->Node->Collapse();
-         }
-         else
-         {
-            e->Node->Expand();
-         }
-      }
-
+      this->tabControl1 = gcnew TabControl;
+      this->tabPage1 = gcnew TabPage;
+      this->tabPage2 = gcnew TabPage;
+      array<Control^>^tabPages = {this->tabPage1,this->tabPage2};
+      this->tabControl1->Controls->AddRange( tabPages );
+      this->tabControl1->Location = Point(35,25);
+      this->tabControl1->Size = System::Drawing::Size( 220, 220 );
       
-      // Remove the selection. This allows the same node to be
-      // clicked twice in succession to toggle the expansion state.
-      SelectedNode = nullptr;
+      // Shows ToolTipText when the mouse passes over tabs.
+      this->tabControl1->ShowToolTips = true;
+      
+      // Assigns String* values to ToolTipText.
+      this->tabPage1->ToolTipText = "myTabPage1";
+      this->tabPage2->ToolTipText = "myTabPage2";
+      this->Size = System::Drawing::Size( 300, 300 );
+      array<Control^>^formControls = {this->tabControl1};
+      this->Controls->AddRange( formControls );
    }
+
+
+public:
+   Form1()
+   {
+      MyTabs();
+   }
+
 };
+
+int main()
+{
+   Application::Run( gcnew Form1 );
+}

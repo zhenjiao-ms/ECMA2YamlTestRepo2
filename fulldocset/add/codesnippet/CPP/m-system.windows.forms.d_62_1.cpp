@@ -1,23 +1,26 @@
 private:
-   void GetMyData3()
+   void button1_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
    {
-      // Creates a new data object using a string and the text format.
-      String^ myString = "My new text string";
-      DataObject^ myDataObject = gcnew DataObject( DataFormats::Text,myString );
-      
-      // Prints the string in a text box with autoconvert = false.
-      if ( myDataObject->GetData( "System.String", false ) != 0 )
-      {
-         // Prints the string in a text box.
-         textBox1->Text = String::Concat(
-            myDataObject->GetData( "System.String", false )->ToString(), "\n" );
-      }
-      else
-      {
-         textBox1->Text = "Could not find data of the specified format\n";
-      }
-      
-      // Prints the string in a text box with autoconvert = true.
-      textBox1->Text = String::Concat(
-            textBox1->Text, myDataObject->GetData( "System.String", true )->ToString() );
+      ColorDialog^ myColorDialog = gcnew ColorDialog;
+
+      // Disable selecting a custom color.
+      myColorDialog->AllowFullOpen = false;
+
+      // Enable the help button.
+      myColorDialog->ShowHelp = true;
+
+      // Set the initial color to the current color.
+      myColorDialog->Color = myDataGrid->HeaderBackColor;
+
+      // Show color dialog box.
+      myColorDialog->ShowDialog();
+
+      // Set the header background color.
+      myDataGrid->HeaderBackColor = myColorDialog->Color;
+   }
+
+   // Reset the header background color.
+   void button2_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
+   {
+      myDataGrid->ResetHeaderBackColor();
    }

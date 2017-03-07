@@ -1,27 +1,45 @@
-    ' Handling CellParsing allows one to accept user input, then map it to a different
-    ' internal representation.
-    Private Sub dataGridView1_CellParsing(ByVal sender As Object, _
-        ByVal e As DataGridViewCellParsingEventArgs) _
-        Handles dataGridView1.CellParsing
+    Private Sub dataGridView1_ColumnHeaderMouseClick(ByVal sender As Object, _
+        ByVal e As DataGridViewCellMouseEventArgs) _
+        Handles dataGridView1.ColumnHeaderMouseClick
 
-        If Me.dataGridView1.Columns(e.ColumnIndex).Name = _
-            "Release Date" Then
-            If e IsNot Nothing Then
-                If e.Value IsNot Nothing Then
-                    Try
-                        ' Map what the user typed into UTC.
-                        e.Value = _
-                        DateTime.Parse(e.Value.ToString()).ToUniversalTime()
-                        ' Set the ParsingApplied property to 
-                        ' Show the event is handled.
-                        e.ParsingApplied = True
+        Dim newColumn As DataGridViewColumn = _
+            dataGridView1.Columns(e.ColumnIndex)
+        Dim oldColumn As DataGridViewColumn = dataGridView1.SortedColumn
+        Dim direction As ListSortDirection
 
-                    Catch ex As FormatException
-                        ' Set to false in case another CellParsing handler
-                        ' wants to try to parse this DataGridViewCellParsingEventArgs instance.
-                        e.ParsingApplied = False
-                    End Try
-                End If
+        ' If oldColumn is null, then the DataGridView is not currently sorted.
+        If oldColumn IsNot Nothing Then
+
+            ' Sort the same column again, reversing the SortOrder.
+            If oldColumn Is newColumn AndAlso dataGridView1.SortOrder = _
+                SortOrder.Ascending Then
+                direction = ListSortDirection.Descending
+            Else
+
+                ' Sort a new column and remove the old SortGlyph.
+                direction = ListSortDirection.Ascending
+                oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None
             End If
+        Else
+            direction = ListSortDirection.Ascending
         End If
+
+        ' Sort the selected column.
+        dataGridView1.Sort(newColumn, direction)
+        If direction = ListSortDirection.Ascending Then
+            newColumn.HeaderCell.SortGlyphDirection = SortOrder.Ascending
+        Else
+            newColumn.HeaderCell.SortGlyphDirection = SortOrder.Descending
+        End If
+
+    End Sub
+
+    Private Sub dataGridView1_DataBindingComplete(ByVal sender As Object, _
+        ByVal e As DataGridViewBindingCompleteEventArgs) _
+        Handles dataGridView1.DataBindingComplete
+
+        ' Put each of the columns into programmatic sort mode.
+        For Each column As DataGridViewColumn In dataGridView1.Columns
+            column.SortMode = DataGridViewColumnSortMode.Programmatic
+        Next
     End Sub

@@ -1,56 +1,35 @@
-   ' This utility method computes the layout of the 
-   ' RolloverItem control's image area and the text area.
-   ' For brevity, only the following settings are 
-   ' supported:
-   '
-   ' ToolStripTextDirection.Horizontal
-   ' TextImageRelation.ImageBeforeText 
-   ' TextImageRelation.ImageBeforeText
-   ' 
-   ' It would not be difficult to support vertical text
-   ' directions and other image/text relationships.
-   Private Sub ComputeImageAndTextLayout()
-      Dim cr As Rectangle = MyBase.ContentRectangle
-      Dim img As Image = MyBase.Owner.ImageList.Images(MyBase.ImageKey)
-      
-      ' Compute the center of the item's ContentRectangle.
-        Dim centerY As Integer = CInt((cr.Height - img.Height) / 2)
-      
-      ' Find the dimensions of the image and the text 
-      ' areas of the item. The text occupies the space 
-      ' not filled by the image. 
-        If MyBase.TextImageRelation = _
-        TextImageRelation.ImageBeforeText AndAlso _
-        MyBase.TextDirection = ToolStripTextDirection.Horizontal Then
+    Private Sub Form1_Load(ByVal sender As System.Object, _
+                           ByVal e As System.EventArgs) Handles MyBase.Load
 
-            imageRect = New Rectangle( _
-            MyBase.ContentRectangle.Left, _
-            centerY, _
-            MyBase.Image.Width, _
-            MyBase.Image.Height)
+        ' Create the list to use as the custom source.
+        Dim MySource As New AutoCompleteStringCollection()
+        MySource.AddRange(New String() _
+                            { _
+                                "January", _
+                                "February", _
+                                "March", _
+                                "April", _
+                                "May", _
+                                "June", _
+                                "July", _
+                                "August", _
+                                "September", _
+                                "October", _
+                                "November", _
+                                "December" _
+                            })
 
-            textRect = New Rectangle( _
-            imageRect.Width, _
-            MyBase.ContentRectangle.Top, _
-            MyBase.ContentRectangle.Width - imageRect.Width, _
-            MyBase.ContentRectangle.Height)
+        ' Create and initialize the text box.
+        Dim MyTextBox As New TextBox()
+        With MyTextBox
+            .AutoCompleteCustomSource = MySource
+            .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+            .AutoCompleteSource = AutoCompleteSource.CustomSource
+            .Location = New Point(20, 20)
+            .Width = Me.ClientRectangle.Width - 40
+            .Visible = True
+        End With
 
-        ElseIf MyBase.TextImageRelation = _
-        TextImageRelation.TextBeforeImage AndAlso _
-        MyBase.TextDirection = ToolStripTextDirection.Horizontal Then
-
-            imageRect = New Rectangle( _
-            MyBase.ContentRectangle.Right - MyBase.Image.Width, _
-            centerY, _
-            MyBase.Image.Width, _
-            MyBase.Image.Height)
-
-            textRect = New Rectangle( _
-            MyBase.ContentRectangle.Left, _
-            MyBase.ContentRectangle.Top, _
-            imageRect.X, _
-            MyBase.ContentRectangle.Bottom)
-
-        End If
+        ' Add the text box to the form.
+        Me.Controls.Add(MyTextBox)
     End Sub
-End Class

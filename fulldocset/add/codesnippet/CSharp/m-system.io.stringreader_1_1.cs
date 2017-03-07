@@ -1,18 +1,28 @@
-        // From textReaderText, create a continuous paragraph 
-        // with two spaces between each sentence.
-        string aLine, aParagraph = null;
-        StringReader strReader = new StringReader(textReaderText);
-        while(true)
+using System;
+using System.IO;
+
+namespace ConsoleApplication
+{
+    class Program
+    {
+        static void Main(string[] args)
         {
-            aLine = strReader.ReadLine();
-            if(aLine != null)
+            ReadCharacters();
+        }
+
+        static async void ReadCharacters()
+        {
+            string stringToRead = "Some characters to read but not all";
+            char[] charsRead = new char[stringToRead.Length];
+
+            using (StringReader reader = new StringReader(stringToRead))
             {
-                aParagraph = aParagraph + aLine + " ";
-            }
-            else
-            {
-                aParagraph = aParagraph + "\n";
-                break;
+                await reader.ReadAsync(charsRead, 0, 23);
+                Console.WriteLine(charsRead);
             }
         }
-        Console.WriteLine("Modified text:\n\n{0}", aParagraph);
+    }
+}
+// The example displays the following output:
+// Some characters to read
+//

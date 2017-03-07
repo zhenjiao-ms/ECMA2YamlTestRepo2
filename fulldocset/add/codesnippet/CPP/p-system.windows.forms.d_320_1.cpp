@@ -1,22 +1,13 @@
 private:
-    void SetAlternateChoicesUsingItems(
-        DataGridViewComboBoxColumn^ comboboxColumn)
-    {
-        comboboxColumn->Items->AddRange("Mr.", "Ms.", "Mrs.", "Dr.");
-    }
-
-private:
-    DataGridViewComboBoxColumn^ CreateComboBoxColumn()
-    {
-        DataGridViewComboBoxColumn^ column =
-            gcnew DataGridViewComboBoxColumn();
-        {
-            column->DataPropertyName = ColumnName::TitleOfCourtesy.ToString();
-            column->HeaderText = ColumnName::TitleOfCourtesy.ToString();
-            column->DropDownWidth = 160;
-            column->Width = 90;
-            column->MaxDropDownItems = 3;
-            column->FlatStyle = FlatStyle::Flat;
-        }
-        return column;
-    }
+   void dataGrid1_MouseDown( Object^ /*sender*/,
+      System::Windows::Forms::MouseEventArgs^ e )
+   {
+      String^ newLine = "\n";
+      Console::WriteLine( newLine );
+      System::Windows::Forms::DataGrid::HitTestInfo^ myHitTest;
+      /* Use the DataGrid control's HitTest method with 
+         the x and y properties. */
+      myHitTest = dataGrid1->HitTest( e->X, e->Y );
+      Console::WriteLine( "Column {0}", myHitTest->Column );
+      Console::WriteLine( "Row {0}", myHitTest->Row );
+   }

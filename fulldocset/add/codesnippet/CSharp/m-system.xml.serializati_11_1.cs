@@ -1,162 +1,112 @@
 using System;
 using System.IO;
-using System.Xml;
 using System.Xml.Serialization;
 
-// The SoapType is overridden when the
-// SerializeOverride  method is called.
-[SoapType("SoapGroupType", "http://www.cohowinery.com")]
-public class Group
+public class Orchestra
 {
-   public string GroupName;
-   public Employee[] Employees;
-}
+   public Instrument[] Instruments;
+}   
 
-[SoapType("EmployeeType")]
-public class Employee
+public class Instrument
 {
    public string Name;
 }
 
+public class Brass:Instrument
+{
+   public bool IsValved;
+}
+
 public class Run
 {
-   public static void Main()
-   {
-      Run test = new Run();
-      test.SerializeOriginal("SoapType.xml");
-      test.SerializeOverride("SoapType2.xml");
-      test.DeserializeObject("SoapType2.xml");
-   }
+    public static void Main()
+    {
+       Run test = new Run();
+       test.SerializeObject("Override.xml");
+       test.DeserializeObject("Override.xml");
+    }
 
-   public void SerializeOriginal(string filename)
-   {
-      // Create an instance of the XmlSerializer class that
-      // can be used for serializing as a SOAP message.
-      XmlTypeMapping mapp = 
-         (new SoapReflectionImporter()).ImportTypeMapping(typeof(Group));
-      XmlSerializer mySerializer = new XmlSerializer(mapp);
-      
-      // Writing the file requires a TextWriter.
-      TextWriter writer = new StreamWriter(filename);
+    public void SerializeObject(string filename)
+    {
+      /* Each overridden field, property, or type requires 
+      an XmlAttributes object. */
+      XmlAttributes attrs = new XmlAttributes();
 
-      // Create an XML text writer.
-      XmlTextWriter xmlWriter = new XmlTextWriter(writer);
-      xmlWriter.Formatting = Formatting.Indented;
-      xmlWriter.Indentation = 2;
+      /* Create an XmlElementAttribute to override the 
+      field that returns Instrument objects. The overridden field
+      returns Brass objects instead. */
+      XmlElementAttribute attr = new XmlElementAttribute();
+      attr.ElementName = "Brass";
+      attr.Type = typeof(Brass);
 
-      // Create an instance of the class that will be serialized.
-      Group myGroup = new Group();
+      // Add the element to the collection of elements.
+      attrs.XmlElements.Add(attr);
 
-      // Set the object properties.
-      myGroup.GroupName = ".NET";
-      Employee e1 = new Employee();
-      e1.Name = "Pat";
-      myGroup.Employees=new Employee[]{e1};
+      // Create the XmlAttributeOverrides object.
+      XmlAttributeOverrides attrOverrides = new XmlAttributeOverrides();
 
-      // Write the root element.
-      xmlWriter.WriteStartElement("root");
+      /* Add the type of the class that contains the overridden 
+      member and the XmlAttributes to override it with to the 
+      XmlAttributeOverrides object. */
+      attrOverrides.Add(typeof(Orchestra), "Instruments", attrs);
 
-      // Serialize the class.
-      mySerializer.Serialize(xmlWriter, myGroup);
-
-      // Close the root tag.
-      xmlWriter.WriteEndElement();
-
-      // Close the XmlWriter.
-      xmlWriter.Close();
-
-      // Close the TextWriter.
-      writer.Close();
-   }
-
-
-   public void SerializeOverride(string filename)
-   {
-      // Create an instance of the XmlSerializer class that
-      // uses a SoapAttributeOverrides object.
-      
-      XmlSerializer mySerializer =  CreateOverrideSerializer();
+      // Create the XmlSerializer using the XmlAttributeOverrides.
+      XmlSerializer s = 
+      new XmlSerializer(typeof(Orchestra), attrOverrides);
 
       // Writing the file requires a TextWriter.
       TextWriter writer = new StreamWriter(filename);
 
-      // Create an XML text writer.
-      XmlTextWriter xmlWriter = new XmlTextWriter(writer);
-      xmlWriter.Formatting = Formatting.Indented;
-      xmlWriter.Indentation = 2;
-
-      // Create an instance of the class that will be serialized.
-      Group myGroup = new Group();
-
-      // Set the object properties.
-      myGroup.GroupName = ".NET";
-      Employee e1 = new Employee();
-      e1.Name = "Pat";
-      myGroup.Employees=new Employee[]{e1};
-
-      // Write the root element.
-      xmlWriter.WriteStartElement("root");
-
-      // Serialize the class.
-      mySerializer.Serialize(xmlWriter, myGroup);
-
-      // Close the root tag.
-      xmlWriter.WriteEndElement();
-
-      // Close the XmlWriter.
-      xmlWriter.Close();
-
-      // Close the TextWriter.
-      writer.Close();
-   }
-
-   private XmlSerializer CreateOverrideSerializer()
-   {
-      // Create and return an XmlSerializer instance used to
-      // override and create SOAP messages.
-      SoapAttributeOverrides mySoapAttributeOverrides = 
-          new SoapAttributeOverrides();
-      SoapAttributes soapAtts = new SoapAttributes();
-
-      // Override the SoapTypeAttribute.
-      SoapTypeAttribute soapType = new SoapTypeAttribute();
-      soapType.TypeName = "Team";
-      soapType.IncludeInSchema = false;
-      soapType.Namespace = "http://www.microsoft.com";
-      soapAtts.SoapType = soapType;
+      // Create the object that will be serialized.
+      Orchestra band = new Orchestra();
       
-      mySoapAttributeOverrides.Add(typeof(Group),soapAtts);
+      // Create an object of the derived type.
+      Brass i = new Brass();
+      i.Name = "Trumpet";
+      i.IsValved = true;
+      Instrument[] myInstruments = {i};
+      band.Instruments = myInstruments;
 
-      // Create an XmlTypeMapping that is used to create an instance 
-      // of the XmlSerializer. Then return the XmlSerializer object.
-      XmlTypeMapping myMapping = (new SoapReflectionImporter(
-      mySoapAttributeOverrides)).ImportTypeMapping(typeof(Group));
-    
-      XmlSerializer ser = new XmlSerializer(myMapping);
-      return ser;
+      // Serialize the object.
+      s.Serialize(writer,band);
+      writer.Close();
    }
 
    public void DeserializeObject(string filename)
    {
-      // Create an instance of the XmlSerializer class.
-      XmlSerializer mySerializer =  CreateOverrideSerializer();
+      XmlAttributeOverrides attrOverrides = 
+         new XmlAttributeOverrides();
+      XmlAttributes attrs = new XmlAttributes();
 
-      // Reading the file requires a TextReader.
-      TextReader reader = new StreamReader(filename);
+      // Create an XmlElementAttribute to override the Instrument.
+      XmlElementAttribute attr = new XmlElementAttribute();
+      attr.ElementName = "Brass";
+      attr.Type = typeof(Brass);
 
-      // Create an XML text reader.
-      XmlTextReader xmlReader = new XmlTextReader(reader);
-      xmlReader.ReadStartElement();
+      // Add the element to the collection of elements.
+      attrs.XmlElements.Add(attr);
 
-      // Deserialize and cast the object.
-      Group myGroup = (Group) mySerializer.Deserialize(xmlReader);
-      xmlReader.ReadEndElement();
-      Console.WriteLine("The GroupName is " + myGroup.GroupName);
-      Console.WriteLine("Look at the SoapType.xml and SoapType2.xml " +
-        "files for the generated XML.");
+      attrOverrides.Add(typeof(Orchestra), "Instruments", attrs);
 
-      // Close the readers.
-      xmlReader.Close();
-      reader.Close();
+      // Create the XmlSerializer using the XmlAttributeOverrides.
+      XmlSerializer s = 
+      new XmlSerializer(typeof(Orchestra), attrOverrides);
+
+      FileStream fs = new FileStream(filename, FileMode.Open);
+      Orchestra band = (Orchestra) s.Deserialize(fs);
+      Console.WriteLine("Brass:");
+
+      /* The difference between deserializing the overridden 
+      XML document and serializing it is this: To read the derived 
+      object values, you must declare an object of the derived type 
+      (Brass), and cast the Instrument instance to it. */
+      Brass b;
+      foreach(Instrument i in band.Instruments) 
+      {
+         b = (Brass)i;
+         Console.WriteLine(
+         b.Name + "\n" + 
+         b.IsValved);
+      }
    }
 }

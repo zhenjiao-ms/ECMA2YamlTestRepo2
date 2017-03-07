@@ -1,37 +1,159 @@
-   void SetUpDataGridView()
-   {
-      this->Controls->Add( dataGridView1 );
-      dataGridView1->ColumnCount = 5;
-      DataGridViewCellStyle^ style = dataGridView1->ColumnHeadersDefaultCellStyle;
-      style->BackColor = Color::Navy;
-      style->ForeColor = Color::White;
-      style->Font = gcnew System::Drawing::Font( dataGridView1->Font,FontStyle::Bold );
-      dataGridView1->EditMode = DataGridViewEditMode::EditOnEnter;
-      dataGridView1->Name = "dataGridView1";
-      dataGridView1->Location = Point(8,8);
-      dataGridView1->Size = System::Drawing::Size( 500, 300 );
-      dataGridView1->AutoSizeRowsMode = DataGridViewAutoSizeRowsMode::DisplayedCellsExceptHeaders;
-      dataGridView1->ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle::Raised;
-      dataGridView1->CellBorderStyle = DataGridViewCellBorderStyle::Single;
-      dataGridView1->GridColor = SystemColors::ActiveBorder;
-      dataGridView1->RowHeadersVisible = false;
-      dataGridView1->Columns[ 0 ]->Name = "Release Date";
-      dataGridView1->Columns[ 1 ]->Name = "Track";
-      dataGridView1->Columns[ 1 ]->DefaultCellStyle->Alignment = DataGridViewContentAlignment::MiddleCenter;
-      dataGridView1->Columns[ 2 ]->Name = "Title";
-      dataGridView1->Columns[ 3 ]->Name = "Artist";
-      dataGridView1->Columns[ 4 ]->Name = "Album";
+#using <System.Transactions.dll>
+#using <System.EnterpriseServices.dll>
+#using <System.Xml.dll>
+#using <System.Drawing.dll>
+#using <System.dll>
+#using <System.Windows.Forms.dll>
+#using <System.Data.dll>
 
-      // Make the font italic for row four.
-      dataGridView1->Columns[ 4 ]->DefaultCellStyle->Font = gcnew System::Drawing::Font( DataGridView::DefaultFont,FontStyle::Italic );
-      dataGridView1->SelectionMode = DataGridViewSelectionMode::FullRowSelect;
-      dataGridView1->MultiSelect = false;
-      dataGridView1->BackgroundColor = Color::Honeydew;
-      dataGridView1->Dock = DockStyle::Fill;
-      dataGridView1->CellFormatting += gcnew DataGridViewCellFormattingEventHandler( this, &Form1::dataGridView1_CellFormatting );
-      dataGridView1->CellParsing += gcnew DataGridViewCellParsingEventHandler( this, &Form1::dataGridView1_CellParsing );
-      addNewRowButton->Click += gcnew EventHandler( this, &Form1::addNewRowButton_Click );
-      deleteRowButton->Click += gcnew EventHandler( this, &Form1::deleteRowButton_Click );
-      ledgerStyleButton->Click += gcnew EventHandler( this, &Form1::ledgerStyleButton_Click );
-      dataGridView1->CellValidating += gcnew DataGridViewCellValidatingEventHandler( this, &Form1::dataGridView1_CellValidating );
+using namespace System;
+using namespace System::Data;
+using namespace System::Data::SqlClient;
+using namespace System::Windows::Forms;
+using namespace System::Drawing;
+public ref class Form1: public System::Windows::Forms::Form
+{
+public:
+   Form1()
+      : Form()
+   {
+      
+      //This call is required by the Windows Form Designer.
+      InitializeComponent();
+      InitializeDataGridView();
+      
+      //Add any initialization after the InitializeComponent() call
    }
+
+
+protected:
+
+   ~Form1()
+   {
+      if ( components != nullptr )
+      {
+         delete components;
+      }
+   }
+
+private:
+   System::Windows::Forms::DataGridView ^ dataGridView1;
+   System::Windows::Forms::BindingSource ^ bindingSource1;
+
+   //Required by the Windows Form Designer
+   System::ComponentModel::IContainer^ components;
+
+   //NOTE: The following procedure is required by the Windows Form Designer
+   //It can be modified using the Windows Form Designer.  
+   //Do not modify it using the code editor.
+
+   [System::Diagnostics::DebuggerNonUserCode]
+   void InitializeComponent()
+   {
+      this->dataGridView1 = gcnew System::Windows::Forms::DataGridView;
+      this->bindingSource1 = gcnew System::Windows::Forms::BindingSource;
+      this->SuspendLayout();
+
+      //
+      //DataGridView1
+      //
+      this->dataGridView1->Location = System::Drawing::Point( 96, 71 );
+      this->dataGridView1->Name = "DataGridView1";
+      this->dataGridView1->Size = System::Drawing::Size( 321, 286 );
+      this->dataGridView1->TabIndex = 0;
+
+      //
+      //Form1
+      //
+      this->ClientSize = System::Drawing::Size( 518, 413 );
+      this->Controls->Add( this->dataGridView1 );
+      this->Name = "Form1";
+      this->Text = "Form1";
+      this->ResumeLayout( false );
+   }
+
+internal:
+
+   static property Form1^ GetInstance 
+   {
+      Form1^ get()
+      {
+         if ( m_DefaultInstance == nullptr || m_DefaultInstance->IsDisposed )
+         {
+            System::Threading::Monitor::Enter( m_SyncObject );
+            try
+            {
+               if ( m_DefaultInstance == nullptr || m_DefaultInstance->IsDisposed )
+               {
+                  m_DefaultInstance = gcnew Form1;
+               }
+            }
+            finally
+            {
+               System::Threading::Monitor::Exit( m_SyncObject );
+            }
+         }
+
+         return m_DefaultInstance;
+      }
+   }
+
+private:
+   static Form1^ m_DefaultInstance;
+   static Object^ m_SyncObject = gcnew Object;
+
+   void InitializeDataGridView()
+   {
+      try
+      {
+         // Set up the DataGridView.
+         dataGridView1->Dock = DockStyle::Fill;
+
+         // Automatically generate the DataGridView columns.
+         dataGridView1->AutoGenerateColumns = true;
+
+         // Set up the data source.
+         bindingSource1->DataSource = GetData( "Select * From Products" );
+         dataGridView1->DataSource = bindingSource1;
+
+         // Automatically resize the visible rows.
+         dataGridView1->AutoSizeRowsMode = DataGridViewAutoSizeRowsMode::DisplayedCellsExceptHeaders;
+
+         // Set the DataGridView control's border.
+         dataGridView1->BorderStyle = BorderStyle::Fixed3D;
+
+         // Put the cells in edit mode when user enters them.
+         dataGridView1->EditMode = DataGridViewEditMode::EditOnEnter;
+      }
+      catch ( SqlException^ ) 
+      {
+         MessageBox::Show( "To run this sample replace connection.ConnectionString"
+         " with a valid connection string to a Northwind"
+         " database accessible to your system.", "ERROR", MessageBoxButtons::OK, MessageBoxIcon::Exclamation );
+         System::Threading::Thread::CurrentThread->Abort();
+      }
+      catch ( System::Exception^ ex ) 
+      {
+         MessageBox::Show( ex->ToString() );
+      }
+   }
+
+
+   DataTable^ GetData( String^ sqlCommand )
+   {
+      String^ connectionString = "Integrated Security=SSPI;Persist Security Info=False;"
+      "Initial Catalog=Northwind;Data Source= localhost";
+      SqlConnection^ northwindConnection = gcnew SqlConnection( connectionString );
+      SqlCommand^ command = gcnew SqlCommand( sqlCommand,northwindConnection );
+      SqlDataAdapter^ adapter = gcnew SqlDataAdapter;
+      adapter->SelectCommand = command;
+      DataTable^ table = gcnew DataTable;
+      adapter->Fill( table );
+      return table;
+   }
+};
+
+int main()
+{
+   Application::Run( gcnew Form1 );
+}

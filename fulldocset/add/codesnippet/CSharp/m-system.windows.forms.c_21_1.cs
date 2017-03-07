@@ -1,19 +1,7 @@
-        private void textBox1_Enter(object sender, System.EventArgs e)
-        {
-            // If the TextBox contains text, change its foreground and background colors.
-            if (textBox1.Text != String.Empty)
-            {
-                textBox1.ForeColor = Color.Red;
-                textBox1.BackColor = Color.Black;
-                // Move the selection pointer to the end of the text of the control.
-                textBox1.Select(textBox1.Text.Length, 0);
+        private void addGrandButton_Click(object sender, System.EventArgs e) {
+            comboBox1.BeginUpdate();
+            for (int i = 0; i < 1000; i++) {
+                comboBox1.Items.Add("New Item " + i.ToString());
             }
-        }
-
-        private void textBox1_Leave(object sender, System.EventArgs e)
-        {
-            // Reset the colors and selection of the TextBox after focus is lost.
-            textBox1.ForeColor = Color.Black;
-            textBox1.BackColor = Color.White;
-            textBox1.Select(0,0);
+            comboBox1.EndUpdate();
         }

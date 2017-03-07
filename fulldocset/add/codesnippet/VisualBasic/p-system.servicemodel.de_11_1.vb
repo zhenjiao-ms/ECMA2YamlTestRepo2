@@ -1,18 +1,34 @@
-				' Create a service host.
-				Dim httpUri As New Uri("http://localhost/Calculator")
-				Dim sh As New ServiceHost(GetType(Calculator), httpUri)
+Imports System
+Imports System.ServiceModel
 
-				' Create a binding that uses a WindowsServiceCredential.
-				Dim b As New WSHttpBinding(SecurityMode.Message)
-				b.Security.Message.ClientCredentialType = MessageCredentialType.Windows
+<ServiceContract()> _
+Public Interface ICalculatorService
 
-				' Add an endpoint.
-				sh.AddServiceEndpoint(GetType(ICalculator), b, "WindowsCalculator")
+    <OperationBehavior(TransactionAutoComplete:=True)> _
+    Function Add(ByVal a As Integer, ByVal b As Integer) As Integer
 
-				' Get a reference to the WindowsServiceCredential object.
-				Dim winCredential As WindowsServiceCredential = sh.Credentials.WindowsAuthentication
-				' Print out values.
-				Console.WriteLine("IncludeWindowsGroup: {0}", winCredential.IncludeWindowsGroups)
-				Console.WriteLine("UserNamePasswordValidationMode: {0}", winCredential.AllowAnonymousLogons)
+    <OperationContract()> _
+    Function Subtract(ByVal a As Integer, ByVal b As Integer) As Integer
+End Interface
 
-				Console.ReadLine()
+<DeliveryRequirementsAttribute( _
+    QueuedDeliveryRequirements:=QueuedDeliveryRequirementsMode.NotAllowed, _
+    RequireOrderedDelivery:=True, _
+    TargetContract:=GetType(ICalculatorService) _
+)> _
+Class CalculatorService
+
+    Public Function add(ByVal a As Integer, ByVal b As Integer) As Integer
+        Console.WriteLine("Add called")
+        Return a + b
+    End Function
+
+    Public Function Subtract(ByVal a As Integer, ByVal b As Integer) As Integer
+        Console.WriteLine("Subtract called.")
+        Return a - b
+    End Function
+
+    Public Function Multiply(ByVal a As Integer, ByVal b As Integer) As Integer
+        Return a * b
+    End Function
+End Class

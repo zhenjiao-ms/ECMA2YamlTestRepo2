@@ -1,73 +1,117 @@
 Imports System
 Imports System.IO
-Imports System.Text
 Imports System.Security.Cryptography
 
 
 
-Module Crypto
+Class AesExample
 
-    Sub Main()
+    Public Shared Sub Main()
+        Try
 
-        ' Create a new instance of the RC2CryptoServiceProvider class
-        ' and automatically generate a Key and IV.
-        Dim rc2CSP As New RC2CryptoServiceProvider()
+            Dim original As String = "Here is some data to encrypt!"
 
-        Console.WriteLine("Effective key size is {0} bits.", rc2CSP.EffectiveKeySize)
+            ' Create a new instance of the Aes
+            ' class.  This generates a new key and initialization 
+            ' vector (IV).
+            Using myAes As Aes = Aes.Create()
 
-        ' Get the key and IV.
-        Dim key As Byte() = rc2CSP.Key
-        Dim IV As Byte() = rc2CSP.IV
+                ' Encrypt the string to an array of bytes.
+                Dim encrypted As Byte() = EncryptStringToBytes_Aes(original, myAes.Key, myAes.IV)
 
-        ' Get an encryptor.
-        Dim encryptor As ICryptoTransform = rc2CSP.CreateEncryptor(key, IV)
+                ' Decrypt the bytes to a string.
+                Dim roundtrip As String = DecryptStringFromBytes_Aes(encrypted, myAes.Key, myAes.IV)
 
-        ' Encrypt the data as an array of encrypted bytes in memory.
-        Dim msEncrypt As New MemoryStream()
-        Dim csEncrypt As New CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)
+                'Display the original data and the decrypted data.
+                Console.WriteLine("Original:   {0}", original)
+                Console.WriteLine("Round Trip: {0}", roundtrip)
+            End Using
+        Catch e As Exception
+            Console.WriteLine("Error: {0}", e.Message)
+        End Try
 
-        ' Convert the data to a byte array.
-        Dim original As String = "Here is some data to encrypt."
-        Dim toEncrypt As Byte() = Encoding.ASCII.GetBytes(original)
+    End Sub 'Main
 
-        ' Write all data to the crypto stream and flush it.
-        csEncrypt.Write(toEncrypt, 0, toEncrypt.Length)
-        csEncrypt.FlushFinalBlock()
+    Shared Function EncryptStringToBytes_Aes(ByVal plainText As String, ByVal Key() As Byte, ByVal IV() As Byte) As Byte()
+        ' Check arguments.
+        If plainText Is Nothing OrElse plainText.Length <= 0 Then
+            Throw New ArgumentNullException("plainText")
+        End If
+        If Key Is Nothing OrElse Key.Length <= 0 Then
+            Throw New ArgumentNullException("Key")
+        End If
+        If IV Is Nothing OrElse IV.Length <= 0 Then
+            Throw New ArgumentNullException("IV")
+        End If
+        Dim encrypted() As Byte
+        ' Create an Aes object
+        ' with the specified key and IV.
+        Using aesAlg As Aes = Aes.Create()
 
-        ' Get the encrypted array of bytes.
-        Dim encrypted As Byte() = msEncrypt.ToArray()
+            aesAlg.Key = Key
+            aesAlg.IV = IV
 
-        '''''''''''''''''''''''''''''''''''''''''''''''''''''''
-        ' This is where the data could be transmitted or saved.          
-        '''''''''''''''''''''''''''''''''''''''''''''''''''''''
+            ' Create a decrytor to perform the stream transform.
+            Dim encryptor As ICryptoTransform = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV)
+            ' Create the streams used for encryption.
+            Using msEncrypt As New MemoryStream()
+                Using csEncrypt As New CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)
+                    Using swEncrypt As New StreamWriter(csEncrypt)
 
-        'Get a decryptor that uses the same key and IV as the encryptor.
-        Dim decryptor As ICryptoTransform = rc2CSP.CreateDecryptor(key, IV)
+                        'Write all data to the stream.
+                        swEncrypt.Write(plainText)
+                    End Using
+                    encrypted = msEncrypt.ToArray()
+                End Using
+            End Using
+        End Using
 
-        ' Now decrypt the previously encrypted message using the decryptor
-        ' obtained in the above step.
-        Dim msDecrypt As New MemoryStream(encrypted)
-        Dim csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
+        ' Return the encrypted bytes from the memory stream.
+        Return encrypted
 
-        ' Read the decrypted bytes from the decrypting stream
-        ' and place them in a StringBuilder class.
-        Dim roundtrip As New StringBuilder()
+    End Function 'EncryptStringToBytes_Aes
 
-        Dim b As Integer = 0
+    Shared Function DecryptStringFromBytes_Aes(ByVal cipherText() As Byte, ByVal Key() As Byte, ByVal IV() As Byte) As String
+        ' Check arguments.
+        If cipherText Is Nothing OrElse cipherText.Length <= 0 Then
+            Throw New ArgumentNullException("cipherText")
+        End If
+        If Key Is Nothing OrElse Key.Length <= 0 Then
+            Throw New ArgumentNullException("Key")
+        End If
+        If IV Is Nothing OrElse IV.Length <= 0 Then
+            Throw New ArgumentNullException("IV")
+        End If
+        ' Declare the string used to hold
+        ' the decrypted text.
+        Dim plaintext As String = Nothing
 
-        Do
-            b = csDecrypt.ReadByte()
+        ' Create an Aes object
+        ' with the specified key and IV.
+        Using aesAlg As Aes = Aes.Create()
+            aesAlg.Key = Key
+            aesAlg.IV = IV
 
-            If b <> -1 Then
-                roundtrip.Append(ChrW(b))
-            End If
-        Loop While b <> -1
+            ' Create a decrytor to perform the stream transform.
+            Dim decryptor As ICryptoTransform = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV)
 
-        ' Display the original data and the decrypted data.
-        Console.WriteLine("Original:   {0}", original)
-        Console.WriteLine("Round Trip: {0}", roundtrip)
+            ' Create the streams used for decryption.
+            Using msDecrypt As New MemoryStream(cipherText)
 
-        Console.ReadLine()
+                Using csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
 
-    End Sub
-End Module
+                    Using srDecrypt As New StreamReader(csDecrypt)
+
+
+                        ' Read the decrypted bytes from the decrypting stream
+                        ' and place them in a string.
+                        plaintext = srDecrypt.ReadToEnd()
+                    End Using
+                End Using
+            End Using
+        End Using
+
+        Return plaintext
+
+    End Function 'DecryptStringFromBytes_Aes 
+End Class 'AesExample

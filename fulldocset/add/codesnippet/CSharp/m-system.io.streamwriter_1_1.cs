@@ -1,14 +1,24 @@
 using System;
+using System.Text;
 using System.IO;
- 
-public class SWBuff 
+
+namespace ConsoleApplication
 {
-    public static void Main(String[] args)
+    class Program
     {
-        FileStream sb = new FileStream("MyFile.txt", FileMode.OpenOrCreate);
-        char[] b = {'a','b','c','d','e','f','g','h','i','j','k','l','m'};
-        StreamWriter sw = new StreamWriter(sb);
-        sw.Write(b, 3, 8);
-        sw.Close();
+        static void Main(string[] args)
+        {
+            WriteCharacters();
+        }
+
+        static async void WriteCharacters()
+        {
+            UnicodeEncoding ue = new UnicodeEncoding();
+            char[] charsToAdd = ue.GetChars(ue.GetBytes("Example string"));
+            using (StreamWriter writer = File.CreateText("newfile.txt"))
+            {
+                await writer.WriteAsync(charsToAdd, 0, charsToAdd.Length);
+            }
+        }
     }
 }

@@ -1,43 +1,41 @@
-Imports System
+Imports System.Collections.Generic
 Imports System.Globalization
+Imports System.Runtime.Versioning
+Imports System.Threading
+Imports System.Threading.Tasks
 
-Module Module1
+<assembly:TargetFramework(".NETFramework,Version=v4.6")>
 
+Module Example
    Public Sub Main()
-
-      ' Displays several properties of the neutral cultures.
-      Console.WriteLine("CULTURE ISO ISO WIN DISPLAYNAME                              ENGLISHNAME")
-      Dim ci As CultureInfo
-      For Each ci In CultureInfo.GetCultures(CultureTypes.NeutralCultures)
-         Console.Write("{0,-7}", ci.Name)
-         Console.Write(" {0,-3}", ci.TwoLetterISOLanguageName)
-         Console.Write(" {0,-3}", ci.ThreeLetterISOLanguageName)
-         Console.Write(" {0,-3}", ci.ThreeLetterWindowsLanguageName)
-         Console.Write(" {0,-40}", ci.DisplayName)
-         Console.WriteLine(" {0,-40}", ci.EnglishName)
-      Next ci
-
-   End Sub 'Main 
-
-
-
-'This code produces the following output.  This output has been cropped for brevity.
-'
-'CULTURE ISO ISO WIN DISPLAYNAME                              ENGLISHNAME
-'ar      ar  ara ARA Arabic                                   Arabic                                  
-'bg      bg  bul BGR Bulgarian                                Bulgarian                               
-'ca      ca  cat CAT Catalan                                  Catalan                                 
-'zh-Hans zh  zho CHS Chinese (Simplified)                     Chinese (Simplified)                    
-'cs      cs  ces CSY Czech                                    Czech                                   
-'da      da  dan DAN Danish                                   Danish                                  
-'de      de  deu DEU German                                   German                                  
-'el      el  ell ELL Greek                                    Greek                                   
-'en      en  eng ENU English                                  English                                 
-'es      es  spa ESP Spanish                                  Spanish                                 
-'fi      fi  fin FIN Finnish                                  Finnish                                 
-'zh      zh  zho CHS Chinese                                  Chinese                                 
-'zh-Hant zh  zho CHT Chinese (Traditional)                    Chinese (Traditional)                   
-'zh-CHS  zh  zho CHS Chinese (Simplified) Legacy              Chinese (Simplified) Legacy             
-'zh-CHT  zh  zho CHT Chinese (Traditional) Legacy             Chinese (Traditional) Legacy            
-
+      Dim tasks As New List(Of Task)
+      Console.WriteLine("The current UI culture is {0}", 
+                        Thread.CurrentThread.CurrentUICulture.Name)
+      Thread.CurrentThread.CurrentUICulture = New CultureInfo("pt-BR")
+      ' Change the current UI culture to Portuguese (Brazil).
+      Console.WriteLine("Current culture changed to {0}",
+                        Thread.CurrentThread.CurrentUICulture.Name)
+      Console.WriteLine("Application thread is thread {0}",
+                        Thread.CurrentThread.ManagedThreadId)
+      ' Launch six tasks and display their current culture.
+      For ctr As Integer = 0 to 5
+         tasks.Add(Task.Run(Sub()
+                               Console.WriteLine("Culture of task {0} on thread {1} is {2}",
+                                                 Task.CurrentId, 
+                                                 Thread.CurrentThread.ManagedThreadId,
+                                                 Thread.CurrentThread.CurrentUICulture.Name)
+                            End Sub))                     
+      Next
+      Task.WaitAll(tasks.ToArray())
+   End Sub
 End Module
+' The example displays output like the following:
+'     The current culture is en-US
+'     Current culture changed to pt-BR
+'     Application thread is thread 9
+'     Culture of task 2 on thread 11 is pt-BR
+'     Culture of task 1 on thread 10 is pt-BR
+'     Culture of task 3 on thread 11 is pt-BR
+'     Culture of task 5 on thread 11 is pt-BR
+'     Culture of task 6 on thread 11 is pt-BR
+'     Culture of task 4 on thread 10 is pt-BR

@@ -1,36 +1,19 @@
-Imports System
-Imports System.Web
-Imports System.Web.Security
-Imports System.Security.Permissions
-Imports System.Web.UI
-Imports System.Web.UI.WebControls
-Imports System.Web.UI.WebControls.WebParts
+Partial Class LoginCancelEventArgsvb_aspx
+    Inherits System.Web.UI.Page
 
-Namespace Samples.AspNet.VB.Controls
-
-  <AspNetHostingPermission(SecurityAction.Demand, _
-    Level:=AspNetHostingPermissionLevel.Minimal)> _
-  <AspNetHostingPermission(SecurityAction.InheritanceDemand, _
-    Level:=AspNetHostingPermissionLevel.Minimal)> _
-  Public Class MyManagerAuthorize
-    Inherits WebPartManager
-
-    Public Overrides Function IsAuthorized(ByVal type As Type, _
-      ByVal path As String, ByVal authorizationFilter As String, _
-      ByVal isShared As Boolean) As Boolean
-
-      If Not String.IsNullOrEmpty(authorizationFilter) Then
-        If authorizationFilter = "admin" Then
-          Return True
-        Else
-          Return False
-        End If
-      Else
-        Return True
-      End If
-
+    Function IsValidEmail(ByVal strIn As String) As Boolean
+        ' Return true if strIn is in valid e-mail format.
+        Return Regex.IsMatch(strIn, _
+            ("^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
     End Function
 
-  End Class
+    Protected Sub OnLoggingIn(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.LoginCancelEventArgs)
+        If Not IsValidEmail(Login1.UserName) Then
+            Login1.InstructionText = "You must enter a valid e-mail address."
+            e.Cancel = True
+        Else
+            Login1.InstructionText = String.Empty
+        End If
+    End Sub
 
-End Namespace
+End Class

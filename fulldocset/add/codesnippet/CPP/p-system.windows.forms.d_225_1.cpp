@@ -1,33 +1,16 @@
-   void Stretch( Object^ sender, EventArgs^ e )
-   {
-      System::Collections::IEnumerator^ myEnum = dataGridView1->Columns->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         DataGridViewImageColumn^ column = safe_cast<DataGridViewImageColumn^>(myEnum->Current);
-         column->ImageLayout = DataGridViewImageCellLayout::Stretch;
-         column->Description = L"Stretched";
-      }
-   }
+private:
+    void AddLinkColumn()
+    {
+        DataGridViewLinkColumn^ links = gcnew DataGridViewLinkColumn();
 
-   void ZoomToImage( Object^ sender, EventArgs^ e )
-   {
-      System::Collections::IEnumerator^ myEnum1 = dataGridView1->Columns->GetEnumerator();
-      while ( myEnum1->MoveNext() )
-      {
-         DataGridViewImageColumn^ column = safe_cast<DataGridViewImageColumn^>(myEnum1->Current);
-         column->ImageLayout = DataGridViewImageCellLayout::Zoom;
-         column->Description = L"Zoomed";
-      }
-   }
+		links->UseColumnTextForLinkValue = true;
+        links->HeaderText = ColumnName::ReportsTo.ToString();
+        links->DataPropertyName = ColumnName::ReportsTo.ToString();
+        links->ActiveLinkColor = Color::White;
+        links->LinkBehavior = LinkBehavior::SystemDefault;
+        links->LinkColor = Color::Blue;
+        links->TrackVisitedState = true;
+        links->VisitedLinkColor = Color::YellowGreen;
 
-   void NormalImage( Object^ sender, EventArgs^ e )
-   {
-      System::Collections::IEnumerator^ myEnum2 = dataGridView1->Columns->GetEnumerator();
-      while ( myEnum2->MoveNext() )
-      {
-         DataGridViewImageColumn^ column = safe_cast<DataGridViewImageColumn^>(myEnum2->Current);
-         column->ImageLayout = DataGridViewImageCellLayout::Normal;
-         column->Description = L"Normal";
-      }
-   }
-
+        DataGridView1->Columns->Add(links);
+    }

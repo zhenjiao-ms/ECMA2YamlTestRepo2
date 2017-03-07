@@ -4,97 +4,93 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
 
-Dim pageSize As Integer = 5
-Dim totalUsers As Integer
-Dim totalPages As Integer
-    Dim currentPage As Integer = 1
+Public Sub CreateUser_OnClick(sender As Object, args As EventArgs)
+  ' Create a new 12-character password with 1 non-alphanumeric character.
+  Dim password As String = Membership.GeneratePassword(12, 1)
 
-Public Sub Page_Load()
-  If Not IsPostBack Then
-    GetUsers()
-  End If
+  Try
+    ' Create new user.
+
+    Dim newUser As MembershipUser = Membership.CreateUser(UsernameTextbox.Text, password, _
+                                                          EmailTextbox.Text)
+
+    Msg.Text = "User <b>" & Server.HtmlEncode(UsernameTextbox.Text) & "</b> created. " & _
+               "Your temporary password is " & password & "."
+  
+  Catch e As MembershipCreateUserException
+    Msg.Text = GetErrorMessage(e.StatusCode)
+  Catch e As HttpException
+    Msg.Text = e.Message
+  End Try
 End Sub
 
-Private Sub GetUsers()
-  UsersOnlineLabel.Text = Membership.GetNumberOfUsersOnline().ToString()
+Public Function GetErrorMessage(status As MembershipCreateStatus) As String
 
-  UserGrid.DataSource = Membership.GetAllUsers(currentPage-1, pageSize, totalUsers)
-  totalPages = ((totalUsers - 1) \ pageSize) + 1
+   Select Case status
+      Case MembershipCreateStatus.DuplicateUserName
+        Return "Username already exists. Please enter a different user name."
 
-  ' Ensure that we do not navigate past the last page of users.
+      Case MembershipCreateStatus.DuplicateEmail
+        Return "A username for that e-mail address already exists. Please enter a different e-mail address."
 
-  If currentPage > totalPages Then
-    currentPage = totalPages
-    GetUsers()
-    Return
-  End If
+      Case MembershipCreateStatus.InvalidPassword
+        Return "The password provided is invalid. Please enter a valid password value."
 
-  UserGrid.DataBind()
-  CurrentPageLabel.Text = currentPage.ToString()
-  TotalPagesLabel.Text = totalPages.ToString()
+      Case MembershipCreateStatus.InvalidEmail
+        Return "The e-mail address provided is invalid. Please check the value and try again."
 
-  If currentPage = totalPages Then
-    NextButton.Visible = False
-  Else
-    NextButton.Visible = True
-  End If
+      Case MembershipCreateStatus.InvalidAnswer
+        Return "The password retrieval answer provided is invalid. Please check the value and try again."
 
-  If currentPage = 1 Then
-    PreviousButton.Visible = False
-  Else
-    PreviousButton.Visible = True
-  End If
+      Case MembershipCreateStatus.InvalidQuestion
+        Return "The password retrieval question provided is invalid. Please check the value and try again."
 
-  If totalUsers <= 0 Then
-    NavigationPanel.Visible = False
-  Else
-    NavigationPanel.Visible = True
-  End If
-End SUb
+      Case MembershipCreateStatus.ProviderError
+        Return "The authentication provider Returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator."
 
-Public Sub NextButton_OnClick(sender As Object, args As EventArgs)
-  currentPage = Convert.ToInt32(CurrentPageLabel.Text)
-  currentPage += 1
-  GetUsers()
-End Sub
+      Case MembershipCreateStatus.UserRejected
+        Return "The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator."
 
-Public Sub PreviousButton_OnClick(sender As Object, args As EventArgs)
-  currentPage = Convert.ToInt32(CurrentPageLabel.Text)
-  currentPage -= 1
-  GetUsers()
-End Sub
+      Case Else
+        Return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator."
+   End Select
+End Function
 
 </script>
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-<title>Sample: Find Users</title>
+<title>Create User</title>
 </head>
 <body>
 
 <form id="form1" runat="server">
-  <h3>User List</h3>
+  <h3>Create New User</h3>
 
-  Number of Users Online: <asp:Label id="UsersOnlineLabel" runat="Server" /><br />
+  <asp:Label id="Msg" ForeColor="maroon" runat="server" /><br />
 
-  <asp:Panel id="NavigationPanel" Visible="false" runat="server">
-    <table border="0" cellpadding="3" cellspacing="3">
-      <tr>
-        <td style="width:100">Page <asp:Label id="CurrentPageLabel" runat="server" />
-            of <asp:Label id="TotalPagesLabel" runat="server" /></td>
-        <td style="width:60"><asp:LinkButton id="PreviousButton" Text="< Prev"
-                            OnClick="PreviousButton_OnClick" runat="server" /></td>
-        <td style="width:60"><asp:LinkButton id="NextButton" Text="Next >"
-                            OnClick="NextButton_OnClick" runat="server" /></td>
-      </tr>
-    </table>
-  </asp:Panel>
+  <table cellpadding="3" border="0">
+    <tr>
+      <td>Username:</td>
+      <td><asp:Textbox id="UsernameTextbox" runat="server" /></td>
+      <td><asp:RequiredFieldValidator id="UsernameRequiredValidator" runat="server"
+                                      ControlToValidate="UserNameTextbox" ForeColor="red"
+                                      Display="Static" ErrorMessage="Required" /></td>
+    </tr>
 
-  <asp:DataGrid id="UserGrid" runat="server"
-                CellPadding="2" CellSpacing="1"
-                Gridlines="Both">
-    <HeaderStyle BackColor="darkblue" ForeColor="white" />
-  </asp:DataGrid>
+    <tr>
+      <td>Email Address:</td>
+      <td><asp:Textbox id="EmailTextbox" runat="server" /></td>
+      <td><asp:RequiredFieldValidator id="EmailRequiredValidator" runat="server"
+                                      ControlToValidate="EmailTextbox" ForeColor="red"
+                                      Display="Static" ErrorMessage="Required" /></td>
+    </tr>
 
+    <tr>
+      <td></td>
+      <td><asp:Button id="CreateUserButton" Text="Create User" OnClick="CreateUser_OnClick" runat="server" /></td>
+    </tr>
+  </table>
 </form>
 
 </body>

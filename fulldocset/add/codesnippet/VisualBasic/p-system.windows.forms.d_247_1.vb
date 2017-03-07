@@ -1,47 +1,25 @@
-    Private Sub SetUpDataGridView()
+Private Sub DataGridView1_RowPostPaint(sender as Object, e as DataGridViewRowPostPaintEventArgs) _ 
+     Handles DataGridView1.RowPostPaint
 
-        Me.Controls.Add(dataGridView1)
-        dataGridView1.ColumnCount = 5
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "ClipBounds", e.ClipBounds)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ErrorText", e.ErrorText)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "InheritedRowStyle", e.InheritedRowStyle)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "IsFirstDisplayedRow", e.IsFirstDisplayedRow)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "IsLastVisibleRow", e.IsLastVisibleRow)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "RowBounds", e.RowBounds)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "State", e.State)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"RowPostPaint Event")
 
-        With dataGridView1.ColumnHeadersDefaultCellStyle
-            .BackColor = Color.Navy
-            .ForeColor = Color.White
-            .Font = New Font(dataGridView1.Font, FontStyle.Bold)
-        End With
-
-        With dataGridView1
-            .EditMode = DataGridViewEditMode.EditOnEnter
-            .Name = "dataGridView1"
-            .Location = New Point(8, 8)
-            .Size = New Size(500, 300)
-            .AutoSizeRowsMode = _
-                DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders
-            .ColumnHeadersBorderStyle = _
-                DataGridViewHeaderBorderStyle.Raised
-            .CellBorderStyle = _
-                DataGridViewCellBorderStyle.Single
-            .GridColor = SystemColors.ActiveBorder
-            .RowHeadersVisible = False
-
-            .Columns(0).Name = "Release Date"
-            .Columns(1).Name = "Track"
-            .Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns(2).Name = "Title"
-            .Columns(3).Name = "Artist"
-            .Columns(4).Name = "Album"
-
-            ' Make the font italic for row four.
-            .Columns(4).DefaultCellStyle.Font = _
-                New Font(Control.DefaultFont, _
-                    FontStyle.Italic)
-
-            .SelectionMode = _
-                DataGridViewSelectionMode.FullRowSelect
-            .MultiSelect = False
-
-            .BackgroundColor = Color.Honeydew
-
-            .Dock = DockStyle.Fill
-        End With
-
-    End Sub
+End Sub

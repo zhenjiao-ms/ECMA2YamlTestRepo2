@@ -1,6 +1,68 @@
 Imports System
-Imports System.Security
 Imports System.Security.Cryptography
+
+Public Class MaskGenerator
+    Inherits System.Security.Cryptography.MaskGenerationMethod
+
+    Private HashNameValue As String
+
+    ' Initialize a mask to encrypt using the SHA1 algorithm.
+    Public Sub New()
+        HashNameValue = "SHA1"
+    End Sub
+
+    ' Create a mask with the specified seed.
+    Public Overrides Function GenerateMask( _
+        ByVal seed() As Byte, _
+        ByVal maskLength As Integer) As Byte()
+
+        Dim hash As HashAlgorithm
+        Dim rgbCounter(4) As Byte
+        Dim targetRgb(maskLength) As Byte
+        Dim counter As Integer
+
+        For inc As Int16 = 0 To targetRgb.Length
+            ConvertIntToByteArray(counter + 1, rgbCounter)
+            hash = CType( _
+                CryptoConfig.CreateFromName(HashNameValue), _
+                HashAlgorithm)
+            Dim temp(4 + seed.Length) As Byte
+            Buffer.BlockCopy(rgbCounter, 0, temp, 0, 4)
+            Buffer.BlockCopy(seed, 0, temp, 4, seed.Length)
+            hash.ComputeHash(temp)
+
+            If (targetRgb.Length - inc > hash.HashSize / 8) Then
+                Buffer.BlockCopy( _
+                    hash.Hash, 0, targetRgb, inc, hash.Hash.Length)
+            Else
+                Buffer.BlockCopy( _
+                    hash.Hash, 0, targetRgb, inc, targetRgb.Length - inc)
+            End If
+
+            inc += hash.Hash.Length
+        Next
+
+        Return targetRgb
+    End Function
+
+    ' Convert the specified integer to the byte array.
+    Private Sub ConvertIntToByteArray( _
+        ByVal sourceInt As Integer, _
+        ByRef targetBytes() As Byte)
+        Dim remainder As Integer
+        Dim inc As Int16 = 0
+
+        ' Clear the array prior to filling it.
+        Array.Clear(targetBytes, 0, targetBytes.Length)
+
+        While (sourceInt > 0)
+            remainder = sourceInt Mod 256
+            targetBytes(3 - inc) = CType(remainder, Byte)
+            sourceInt = (sourceInt - remainder) / 256
+            inc = inc + 1
+        End While
+    End Sub
+End Class
 
 Public Class Form1
     Inherits System.Windows.Forms.Form
@@ -13,144 +75,20 @@ Public Class Form1
         tbxOutput.Cursor = Cursors.WaitCursor
         tbxOutput.Text = ""
 
-        ' Create a digital signature based on RSA encryption.
-        Dim rsaSignature As SignatureDescription = CreateRSAPKCS1Signature()
-        ShowProperties(rsaSignature)
+        Dim seed() As Byte = {&H1, &H2, &H3, &H4}
+        Dim length As Int16 = 16
+        Dim maskGenerator As New MaskGenerator
+        Dim mask() As Byte = maskGenerator.GenerateMask(seed, length)
 
-        ' Create a digital signature based on DSA encryption.
-        Dim dsaSignature As SignatureDescription = CreateDSASignature()
-        ShowProperties(dsaSignature)
-
-        ' Create a HashAlgorithm using the digest algorithm of the signature.
-        Dim hashAlgorithm As HashAlgorithm = dsaSignature.CreateDigest()
-        WriteLine("Hash algorithm for the DigestAlgorithm property: " + _
-            hashAlgorithm.ToString())
-
-        ' Create an AsymmetricSignatureFormatter instance using the DSA key.
-        Dim dsa As DSA = dsa.Create()
-        Dim asymmetricFormatter As AsymmetricSignatureFormatter = _
-            CreateDSAFormatter(dsa)
-
-        ' Create an AsymmetricSignatureDeformatter instance using the DSA key.
-        dim asymmetricDeformatter as AsymmetricSignatureDeformatter = _
-            CreateDSADeformatter(dsa)
+        tbxOutput.AppendText("Generated the following mask:")
+        tbxOutput.AppendText(System.Text.Encoding.ASCII.GetString(mask))
 
         ' Align interface and conclude application.
-        WriteLine("This sample completed successfully;" + _
-            " press Exit to continue.")
+        tbxOutput.AppendText(vbCrLf + "This sample completed" + _
+            "successfully; press Exit to continue.")
 
-        ' Reset the cursor to the default look.
         tbxOutput.Cursor = Cursors.Default
     End Sub
-
-    ' Create a SignatureDescription for RSA encryption.
-    Private Function CreateRSAPKCS1Signature() As SignatureDescription
-        Dim signatureDescription As New SignatureDescription
-
-        ' Set the key algorithm property for RSA encryption.
-        signatureDescription.KeyAlgorithm = _
-            "System.Security.Cryptography.RSACryptoServiceProvider"
-
-        ' Set the digest algorithm for RSA encryption using the SHA1 provider.
-        signatureDescription.DigestAlgorithm = _
-            "System.Security.Cryptography.SHA1CryptoServiceProvider"
-
-        ' Set the formatter algorithm with the RSAPKCS1 formatter.
-        signatureDescription.FormatterAlgorithm = _
-            "System.Security.Cryptography.RSAPKCS1SignatureFormatter"
-
-        ' Set the formatter algorithm with the RSAPKCS1 deformatter.
-        signatureDescription.DeformatterAlgorithm = _
-            "System.Security.Cryptography.RSAPKCS1SignatureDeformatter"
-
-        Return SignatureDescription
-    End Function
-
-    ' Create a SignatureDescription using a constructed SecurityElement for 
-    ' DSA encryption.
-    Private Function CreateDSASignature() As SignatureDescription
-        Dim securityElement As New SecurityElement("DSASignature")
-
-        ' Create new security elements for the four algorithms.
-        securityElement.AddChild(new SecurityElement( _
-            "Key", _
-            "System.Security.Cryptography.DSACryptoServiceProvider"))
-        securityElement.AddChild(New SecurityElement( _
-            "Digest", _
-            "System.Security.Cryptography.SHA1CryptoServiceProvider"))
-        securityElement.AddChild(new SecurityElement( _
-            "Formatter", _
-            "System.Security.Cryptography.DSASignatureFormatter"))
-        securityElement.AddChild(new SecurityElement( _
-            "Deformatter", _
-            "System.Security.Cryptography.DSASignatureDeformatter"))
-
-        Dim signatureDescription As New SignatureDescription(securityElement)
-
-        Return signatureDescription
-    End Function
-
-    ' Create a signature formatter for DSA encryption.
-    Private Function CreateDSAFormatter(ByVal dsa As DSA) _
-        As AsymmetricSignatureFormatter
-
-        ' Create a DSA signature formatter for encryption.
-        Dim signatureDescription As New SignatureDescription
-        signatureDescription.FormatterAlgorithm = _
-            "System.Security.Cryptography.DSASignatureFormatter"
-
-        Dim asymmetricFormatter As AsymmetricSignatureFormatter
-        asymmetricFormatter = signatureDescription.CreateFormatter(dsa)
-
-        WriteLine("Created formatter : " + asymmetricFormatter.ToString())
-        Return asymmetricFormatter
-    End Function
-
-    ' Create a signature deformatter for DSA decryption.
-    Private Function CreateDSADeformatter(ByVal dsa As DSA) _
-        As AsymmetricSignatureDeformatter
-
-        ' Create a DSA signature deformatter to verify the signature.
-        Dim signatureDescription As New SignatureDescription
-        signatureDescription.DeformatterAlgorithm = _
-            "System.Security.Cryptography.DSASignatureDeformatter"
-
-        Dim asymmetricDeformatter As AsymmetricSignatureDeformatter
-        asymmetricDeformatter = SignatureDescription.CreateDeformatter(dsa)
-
-        WriteLine("Created deformatter : " + asymmetricDeformatter.ToString())
-        Return asymmetricDeformatter
-    End Function
-
-    ' Display to the console the properties of the specified
-    ' SignatureDescription.
-    Private Sub ShowProperties(ByVal signatureDescription _
-        As SignatureDescription)
-
-        ' Retrieve the class path for the specified SignatureDescription.
-        Dim classDescription As String = signatureDescription.ToString()
-
-        Dim deformatterAlgorithm As String 
-        deformatterAlgorithm = signatureDescription.DeformatterAlgorithm
-        Dim formatterAlgorithm As String 
-        formatterAlgorithm = signatureDescription.FormatterAlgorithm
-        Dim digestAlgorithm As String 
-        digestAlgorithm = signatureDescription.DigestAlgorithm
-        Dim keyAlgorithm As String 
-        keyAlgorithm = signatureDescription.KeyAlgorithm
-
-        WriteLine(vbCrLf + "** " + classDescription + " **")
-        WriteLine("DeformatterAlgorithm : " + deformatterAlgorithm)
-        WriteLine("FormatterAlgorithm : " + formatterAlgorithm)
-        WriteLine("DigestAlgorithm : " + digestAlgorithm)
-        WriteLine("KeyAlgorithm : " + keyAlgorithm)
-    End Sub
-
-    ' Write the specified message and carriage return to the output textbox.
-    Private Sub WriteLine(ByVal message As String)
-        tbxOutput.AppendText(message + vbCrLf)
-    End Sub
-
     ' Event handler for Exit button.
     Private Sub Button2_Click( _
         ByVal sender As System.Object, _
@@ -216,7 +154,8 @@ Public Class Form1
         'Button1
         '
         Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", _
+        Me.Button1.Font = New System.Drawing.Font( _
+            "Microsoft Sans Serif", _
             9.0!, _
             System.Drawing.FontStyle.Regular, _
             System.Drawing.GraphicsUnit.Point, _
@@ -271,7 +210,7 @@ Public Class Form1
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.Name = "Form1"
-        Me.Text = "SignatureDescription"
+        Me.Text = "MaskGenerationMethod"
         Me.Panel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -283,22 +222,5 @@ End Class
 '
 ' This sample produces the following output:
 '
-'
-' ** System.Security.Cryptography.SignatureDescription **
-' DeformatterAlgorithm : System.Security.Cryptography.
-' RSAPKCS1SignatureDeformatter
-' FormatterAlgorithm : System.Security.Cryptography.RSAPKCS1SignatureFormatter
-' DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
-' KeyAlgorithm : System.Security.Cryptography.RSACryptoServiceProvider
-' 
-' ** System.Security.Cryptography.SignatureDescription **
-' DeformatterAlgorithm : System.Security.Cryptography.DSASignatureDeformatter
-' FormatterAlgorithm : System.Security.Cryptography.DSASignatureFormatter
-' DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
-' KeyAlgorithm : System.Security.Cryptography.DSACryptoServiceProvider
-' Hash algorithm for the DigestAlgorithm property: System.Security.
-' Cryptography.
-' SHA1CryptoServiceProvider
-' Created formatter : System.Security.Cryptography.DSASignatureFormatter
-' Created deformatter : System.Security.Cryptography.DSASignatureDeformatter
-' This sample completed successfully; press Exit to continue.
+' Generated the following mask:~&*(uj98U(*UD989D
+' This sample completedsuccessfully; press Exit to continue.

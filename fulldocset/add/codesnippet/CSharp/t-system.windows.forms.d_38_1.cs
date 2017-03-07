@@ -1,36 +1,39 @@
-    private DataGridView dataGridView1 = new DataGridView();
+    #region "data store maintance"
+    const int initialValue = -1;
 
-    private void AddColorColumn()
+    private void dataGridView1_CellValueNeeded(object sender,
+        DataGridViewCellValueEventArgs e)
     {
-        DataGridViewComboBoxColumn comboBoxColumn =
-            new DataGridViewComboBoxColumn();
-        comboBoxColumn.Items.AddRange(
-            Color.Red, Color.Yellow, Color.Green, Color.Blue);
-        comboBoxColumn.ValueType = typeof(Color);
-        dataGridView1.Columns.Add(comboBoxColumn);
-        dataGridView1.EditingControlShowing +=
-            new DataGridViewEditingControlShowingEventHandler(
-            dataGridView1_EditingControlShowing);
-    }
-
-    private void dataGridView1_EditingControlShowing(object sender,
-        DataGridViewEditingControlShowingEventArgs e)
-    {
-        ComboBox combo = e.Control as ComboBox;
-        if (combo != null)
+        if (store.ContainsKey(e.RowIndex))
         {
-            // Remove an existing event-handler, if present, to avoid 
-            // adding multiple handlers when the editing control is reused.
-            combo.SelectedIndexChanged -=
-                new EventHandler(ComboBox_SelectedIndexChanged);
-
-            // Add the event handler. 
-            combo.SelectedIndexChanged +=
-                new EventHandler(ComboBox_SelectedIndexChanged);
+            // Use the store if the e value has been modified 
+            // and stored.            
+            e.Value = store[e.RowIndex];
+        }
+        else if (newRowNeeded && e.RowIndex == numberOfRows)
+        {
+            if (dataGridView1.IsCurrentCellInEditMode)
+            {
+                e.Value = initialValue;
+            }
+            else
+            {
+                // Show a blank value if the cursor is just resting
+                // on the last row.
+                e.Value = String.Empty;
+            }
+        }
+        else
+        {
+            e.Value = e.RowIndex;
         }
     }
 
-    private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+    private void dataGridView1_CellValuePushed(object sender,
+        DataGridViewCellValueEventArgs e)
     {
-        ((ComboBox)sender).BackColor = (Color)((ComboBox)sender).SelectedItem;
+        store.Add(e.RowIndex, int.Parse(e.Value.ToString()));
     }
+    #endregion
+
+    private Dictionary<int, int> store = new Dictionary<int, int>();

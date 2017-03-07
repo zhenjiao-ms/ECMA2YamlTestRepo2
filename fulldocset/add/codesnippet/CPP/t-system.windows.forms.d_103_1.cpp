@@ -1,18 +1,14 @@
-public:
-   void CreateMyDateTimePicker()
+   void PrintCellRowAndCol()
    {
-      // Create a new DateTimePicker control and initialize it.
-      DateTimePicker^ dateTimePicker1 = gcnew DateTimePicker;
+      DataGridCell^ myCell;
+      myCell = DataGrid1->CurrentCell;
+      Console::WriteLine( myCell->RowNumber );
+      Console::WriteLine( myCell->ColumnNumber );
       
-      // Set the MinDate and MaxDate.
-      dateTimePicker1->MinDate = DateTime(1985,6,20);
-      dateTimePicker1->MaxDate = DateTime::Today;
+      // Prints the value of the cell through the DataTable.
+      DataTable^ myTable;
       
-      // Set the CustomFormat string.
-      dateTimePicker1->CustomFormat = "MMMM dd, yyyy - dddd";
-      dateTimePicker1->Format = DateTimePickerFormat::Custom;
-      
-      // Show the CheckBox and display the control as an up-down control.
-      dateTimePicker1->ShowCheckBox = true;
-      dateTimePicker1->ShowUpDown = true;
+      // Assumes the DataGrid is bound to a DataTable.
+      myTable = dynamic_cast<DataTable^>(DataGrid1->DataSource);
+      Console::WriteLine( myTable->Rows[ myCell->RowNumber ][ myCell->ColumnNumber ] );
    }

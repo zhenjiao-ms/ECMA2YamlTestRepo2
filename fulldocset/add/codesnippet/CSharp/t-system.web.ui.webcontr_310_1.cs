@@ -1,42 +1,20 @@
-#region Using directives
-
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Diagnostics;
-
-#endregion
-
-namespace CreateEventSource
+public partial class PanelStylecs_aspx : Page
 {
-    class Program
+    void Page_Load(object sender, EventArgs e)
     {
-        static void Main(string[] args)
-        {
+        StateBag panelState = new StateBag();
+        PanelStyle myPanelStyle = new PanelStyle(panelState);
+        
+        // Set the properties of the PanelStyle class.
+        myPanelStyle.HorizontalAlign = HorizontalAlign.Center;
+        myPanelStyle.ScrollBars = ScrollBars.Both;
+        myPanelStyle.Wrap = false;
+        myPanelStyle.Direction = ContentDirection.LeftToRight;
+        myPanelStyle.BackImageUrl = @"~\images\picture.jpg";
 
-            try
-            {
-                // Create the source, if it does not already exist.
-                if (!EventLog.SourceExists("MySamplesSite"))
-                {
-                    EventLog.CreateEventSource("MySamplesSite", "Application");
-                    Console.WriteLine("Creating Event Source");
-                }
-
-                // Create an EventLog instance and assign its source.
-                EventLog myLog = new EventLog();
-                myLog.Source = "MySamplesSite";
-
-                // Write an informational entry to the event log.    
-                myLog.WriteEntry("Testing writing to event log.");
-
-                Console.WriteLine("Message written to event log.");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception:");
-                Console.WriteLine("{0}", e.ToString());
-            }
-        }
+        // Use the ApplyStyle method of the Panel control to apply
+        // the settings from the myPanelStyle object.
+        Panel1.ApplyStyle(myPanelStyle);
+        Panel2.ApplyStyle(myPanelStyle); 
     }
 }

@@ -1,27 +1,22 @@
-public:
-   void Printing()
-   {
-      try
+   private:
+      void PopulateInstalledPrintersCombo()
       {
-         streamToPrint = gcnew StreamReader( filePath );
-         try
+         // Add list of installed printers found to the combo box.
+         // The pkInstalledPrinters String will be used to provide the display String.
+         String^ pkInstalledPrinters;
+         for ( int i = 0; i < PrinterSettings::InstalledPrinters->Count; i++ )
          {
-            printFont = gcnew System::Drawing::Font( "Arial",10 );
-            PrintDocument^ pd = gcnew PrintDocument;
-            pd->PrintPage += gcnew PrintPageEventHandler(
-               this, &Form1::pd_PrintPage );
-            pd->PrinterSettings->PrinterName = printer;
-            // Set the page orientation to landscape.
-            pd->DefaultPageSettings->Landscape = true;
-            pd->Print();
-         }
-         finally
-         {
-            streamToPrint->Close();
+            pkInstalledPrinters = PrinterSettings::InstalledPrinters[ i ];
+            comboInstalledPrinters->Items->Add( pkInstalledPrinters );
          }
       }
-      catch ( Exception^ ex ) 
+
+      void comboInstalledPrinters_SelectionChanged( Object^ sender, System::EventArgs^ e )
       {
-         MessageBox::Show( ex->Message );
+         // Set the printer to a printer in the combo box when the selection changes.
+         if ( comboInstalledPrinters->SelectedIndex != -1 )
+         {
+            // The combo box's Text property returns the selected item's text, which is the printer name.
+            printDoc->PrinterSettings->PrinterName = comboInstalledPrinters->Text;
+         }
       }
-   }

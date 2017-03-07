@@ -1,44 +1,98 @@
 Imports System
-Imports System.Collections
-Imports System.IO
 Imports System.Xml
-Imports System.Xml.Xsl
 Imports System.Xml.Schema
 
-
-Public Class ImportIncludeSample
-
-    Private Shared Sub ValidationCallBack(ByVal sender As Object, ByVal args As ValidationEventArgs)
-
-        If args.Severity = XmlSeverityType.Warning Then
-            Console.Write("WARNING: ")
-        Else
-            If args.Severity = XmlSeverityType.Error Then
-                Console.Write("ERROR: ")
-            End If
-        End If
-        Console.WriteLine(args.Message)
-    End Sub 'ValidationCallBack
-
-
+Class XMLSchemaExamples
     Public Shared Sub Main()
 
         Dim schema As New XmlSchema()
-        schema.ElementFormDefault = XmlSchemaForm.Qualified
-        schema.TargetNamespace = "http://www.w3.org/2001/05/XMLInfoset"
 
-        ' <xs:import namespace="http://www.example.com/IPO" />             
-        Dim import As New XmlSchemaImport()
-        import.Namespace = "http://www.example.com/IPO"
-        schema.Includes.Add(import)
+        ' <xs:complexType name="customerOrderType">
+        Dim customerOrderType As New XmlSchemaComplexType()
+        customerOrderType.Name = "customerOrderType"
 
-        ' <xs:include schemaLocation="example.xsd" />     
-        Dim include As New XmlSchemaInclude()
-        include.SchemaLocation = "example.xsd"
-        schema.Includes.Add(include)
+        ' <xs:sequence>
+        Dim sequence1 As New XmlSchemaSequence()
+
+        ' <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+        Dim item As New XmlSchemaElement()
+        item.MinOccurs = 0
+        item.MaxOccursString = "unbounded"
+        item.Name = "item"
+
+        ' <xs:complexType>
+        Dim ct1 As New XmlSchemaComplexType()
+
+        ' <xs:attribute name="itemID" type="xs:string"/>
+        Dim itemID As New XmlSchemaAttribute()
+        itemID.Name = "itemID"
+        itemID.SchemaTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
+
+        ' </xs:complexType>
+        ct1.Attributes.Add(itemID)
+
+        ' </xs:element>
+        item.SchemaType = ct1
+
+        ' </xs:sequence>
+        sequence1.Items.Add(item)
+        customerOrderType.Particle = sequence1
+
+        ' <xs:attribute name="CustomerID" type="xs:string"/>
+        Dim CustomerID As New XmlSchemaAttribute()
+        CustomerID.Name = "CustomerID"
+        CustomerID.SchemaTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
+
+        customerOrderType.Attributes.Add(CustomerID)
+
+        ' </xs:complexType>
+        schema.Items.Add(customerOrderType)
+
+        ' <xs:element name="ordersByCustomer">
+        Dim ordersByCustomer As New XmlSchemaElement()
+        ordersByCustomer.Name = "ordersByCustomer"
+
+        ' <xs:complexType>
+        Dim ct2 As New XmlSchemaComplexType()
+
+        ' <xs:sequence>
+        Dim sequence2 As New XmlSchemaSequence()
+
+        ' <xs:element name="customerOrders" type="customerOrderType" minOccurs="0" maxOccurs="unbounded" />
+        Dim customerOrders As New XmlSchemaElement()
+        customerOrders.MinOccurs = 0
+        customerOrders.MaxOccursString = "unbounded"
+        customerOrders.Name = "customerOrders"
+        customerOrders.SchemaTypeName = New XmlQualifiedName("customerOrderType", "")
+
+        ' </xs:sequence>
+        sequence2.Items.Add(customerOrders)
+
+        ' </xs:complexType>
+        ct2.Particle = sequence2
+        ordersByCustomer.SchemaType = ct2
+
+        ' <xs:unique name="oneCustomerOrdersforEachCustomerID">
+        Dim element_unique As New XmlSchemaUnique()
+        element_unique.Name = "oneCustomerOrdersforEachCustomerID"
+
+        ' <xs:selector xpath="customerOrders"/>
+        element_unique.Selector = New XmlSchemaXPath()
+        element_unique.Selector.XPath = "customerOrders"
+
+        ' <xs:field xpath="@customerID"/>
+        Dim field As New XmlSchemaXPath()
+        field.XPath = "@customerID"
+
+        ' </xs:unique>
+        element_unique.Fields.Add(field)
+        ordersByCustomer.Constraints.Add(element_unique)
+
+        ' </xs:element>
+        schema.Items.Add(ordersByCustomer)
 
         Dim schemaSet As New XmlSchemaSet()
-        AddHandler schemaSet.ValidationEventHandler, AddressOf ValidationCallBack
+        AddHandler schemaSet.ValidationEventHandler, AddressOf ValidationCallbackOne
 
         schemaSet.Add(schema)
         schemaSet.Compile()
@@ -49,11 +103,13 @@ Public Class ImportIncludeSample
             compiledSchema = schema1
         Next
 
-        Dim nsmgr As XmlNamespaceManager = New XmlNamespaceManager(New NameTable())
+        Dim nsmgr As New XmlNamespaceManager(New NameTable())
         nsmgr.AddNamespace("xs", "http://www.w3.org/2001/XMLSchema")
         compiledSchema.Write(Console.Out, nsmgr)
 
-    End Sub 'Main 
-End Class 'ImportIncludeSample ' Main() 
+    End Sub
 
-'ImportIncludeSample
+    Public Shared Sub ValidationCallbackOne(ByVal sender As Object, ByVal args As ValidationEventArgs)
+        Console.WriteLine(args.Message)
+    End Sub
+End Class

@@ -1,81 +1,61 @@
-#using <System.Drawing.dll>
-#using <System.dll>
-#using <System.Design.dll>
+#using <system.dll>
+#using <system.design.dll>
+#using <system.windows.forms.dll>
 
 using namespace System;
-using namespace System::CodeDom;
 using namespace System::ComponentModel;
 using namespace System::ComponentModel::Design;
-using namespace System::ComponentModel::Design::Serialization;
-using namespace System::Drawing;
 using namespace System::Windows::Forms;
 
-namespace CodeDomSerializerSample
+/* This sample demonstrates a designer that adds menu commands
+to the design-time shortcut menu for a component.
+
+To test this sample, build the code for the component as a class library,
+add the resulting component to the toolbox, open a form in design mode,
+and drag the component from the toolbox onto the form.
+
+The component should appear in the component tray beneath the form.
+Right-click the component.  The verbs should appear in the shortcut menu.
+*/
+// This is a designer class which provides designer verb menu commands for
+// the associated component. This code is called by the design environment at design-time.
+private ref class MyDesigner: public ComponentDesigner
 {
-   ref class MyComponent;
-   private ref class MyCodeDomSerializer: public CodeDomSerializer
+public:
+
+   property DesignerVerbCollection^ Verbs 
    {
-   public:
-      Object^ Deserialize( IDesignerSerializationManager^ manager, Object^ codeObject ) new
+      // DesignerVerbCollection is overridden from ComponentDesigner
+      virtual DesignerVerbCollection^ get() override
       {
-         // This is how we associate the component with the serializer.
-         CodeDomSerializer^ baseClassSerializer = (CodeDomSerializer^)(
-            manager->GetSerializer(
-               MyComponent::typeid->BaseType, CodeDomSerializer::typeid ));
-         
-         /* This is the simplest case, in which the class just calls the base class
-            to do the work. */
-         return baseClassSerializer->Deserialize( manager, codeObject );
-      }
-
-      Object^ Serialize( IDesignerSerializationManager^ manager, Object^ value ) new
-      {
-         /* Associate the component with the serializer in the same manner as with
-            Deserialize */
-         CodeDomSerializer^ baseClassSerializer = (CodeDomSerializer^)(
-            manager->GetSerializer(
-               MyComponent::typeid->BaseType, CodeDomSerializer::typeid ));
-
-         Object^ codeObject = baseClassSerializer->Serialize( manager, value );
-         
-         /* Anything could be in the codeObject.  This sample operates on a
-            CodeStatementCollection. */
-         if ( (CodeStatementCollection^)(codeObject) )
+         if ( m_Verbs == nullptr )
          {
-            CodeStatementCollection^ statements = (CodeStatementCollection^)(codeObject);
-            
-            // The code statement collection is valid, so add a comment.
-            String^ commentText = "This comment was added to this object by a custom serializer.";
-            CodeCommentStatement^ comment = gcnew CodeCommentStatement( commentText );
-            statements->Insert( 0, comment );
+            // Create and initialize the collection of verbs
+            m_Verbs = gcnew DesignerVerbCollection;
+            m_Verbs->Add( gcnew DesignerVerb( "First Designer Verb",gcnew EventHandler( this, &MyDesigner::OnFirstItemSelected ) ) );
+            m_Verbs->Add( gcnew DesignerVerb( "Second Designer Verb",gcnew EventHandler( this, &MyDesigner::OnSecondItemSelected ) ) );
          }
-         return codeObject;
-      }
-   };
 
-   [DesignerSerializer(CodeDomSerializerSample::MyCodeDomSerializer::typeid,
-      CodeDomSerializer::typeid)]
-   public ref class MyComponent: public Component
+         return m_Verbs;
+      }
+   }
+   MyDesigner(){}
+
+private:
+   DesignerVerbCollection^ m_Verbs;
+   void OnFirstItemSelected( Object^ /*sender*/, EventArgs^ /*args*/ )
    {
-   private:
-      String^ localProperty;
+      // Display a message
+      MessageBox::Show( "The first designer verb was invoked." );
+   }
 
-   public:
-      MyComponent()
-      {
-         localProperty = "Component Property Value";
-      }
+   void OnSecondItemSelected( Object^ /*sender*/, EventArgs^ /*args*/ )
+   {
+      // Display a message
+      MessageBox::Show( "The second designer verb was invoked." );
+   }
+};
 
-      property String^ LocalProperty 
-      {
-         String^ get()
-         {
-            return localProperty;
-         }
-         void set( String^ value )
-         {
-            localProperty = value;
-         }
-      }
-   };
-}
+// Associate MyDesigner with this component type using a DesignerAttribute
+[Designer(MyDesigner::typeid)]
+public ref class Component1: public System::ComponentModel::Component{};

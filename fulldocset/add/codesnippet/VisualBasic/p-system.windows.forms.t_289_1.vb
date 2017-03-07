@@ -1,17 +1,11 @@
-    Public Sub CreateMyMultilineTextBox()
-        ' Create an instance of a TextBox control.
-        Dim textBox1 As New TextBox()
-        
-        ' Set the Multiline property to true.
-        textBox1.Multiline = True
-        ' Add vertical scroll bars to the TextBox control.
-        textBox1.ScrollBars = ScrollBars.Vertical
-        ' Allow the RETURN key to be entered in the TextBox control.
-        textBox1.AcceptsReturn = True
-        ' Allow the TAB key to be entered in the TextBox control.
-        textBox1.AcceptsTab = True
-        ' Set WordWrap to true to allow text to wrap to the next line.
-        textBox1.WordWrap = True
-        ' Set the default text of the control.
-        textBox1.Text = "Welcome!"
-    End Sub
+Private Sub button1_Click(sender As Object, e As EventArgs) Handles button1.Click
+   ' If neither TreeNodeCollection is read-only, move the 
+   ' selected node from treeView1 to treeView2. 
+   If Not treeView1.Nodes.IsReadOnly And Not treeView2.Nodes.IsReadOnly Then
+      If (treeView1.SelectedNode IsNot Nothing) Then
+         Dim tn As TreeNode = treeView1.SelectedNode
+         treeView1.Nodes.Remove(tn)
+         treeView2.Nodes.Insert(treeView2.Nodes.Count, tn)
+      End If
+   End If
+End Sub

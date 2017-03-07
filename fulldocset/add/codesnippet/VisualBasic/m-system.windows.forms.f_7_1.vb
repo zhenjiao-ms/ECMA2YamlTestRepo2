@@ -1,33 +1,17 @@
-    Private openFileDialog1 As OpenFileDialog
-    Private WithEvents button1 As Button
-
-    Private Sub InitializeDialogAndButton() 
-        Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.button1 = New System.Windows.Forms.Button()
-        Me.button1.Location = New System.Drawing.Point(53, 37)
-        Me.button1.AutoSize = True
-        Me.button1.Text = "Show dialog with custom places."
-        Me.button1.UseVisualStyleBackColor = True
-
-        Me.Controls.Add(Me.button1)
-    
-    End Sub
-    
-    
-    Private Sub button1_Click(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles button1.Click
-
-        ' Add Pictures custom place using GUID.
-        openFileDialog1.CustomPlaces.Add("33E28130-4E1E-4676-835A-98395C3BC3BB")
-
-        ' Add Links custom place using GUID
-        openFileDialog1.CustomPlaces.Add(New FileDialogCustomPlace _
-            (New Guid("BFB9D5E0-C6A9-404C-B2B2-AE6DB6AF4968")))
-
-        ' Add Windows custom place using file path.
-        openFileDialog1.CustomPlaces.Add("c:\Windows")
-
-        openFileDialog1.ShowDialog()
-
-    End Sub
-    
+    Public Sub AddMyControls()
+        Dim textBox1 As New TextBox()
+        Dim label1 As New Label()
+        
+        ' Initialize the controls and their bounds.
+        label1.Text = "First Name"
+        label1.Location = New Point(48, 48)
+        label1.Size = New Size(104, 16)
+        textBox1.Text = ""
+        textBox1.Location = New Point(48, 64)
+        textBox1.Size = New Size(104, 16)
+        
+        ' Add the TextBox control to the form's control collection.
+        Controls.Add(textBox1)
+        ' Add the Label control to the form's control collection.
+        Controls.Add(label1)
+    End Sub 'AddMyControls

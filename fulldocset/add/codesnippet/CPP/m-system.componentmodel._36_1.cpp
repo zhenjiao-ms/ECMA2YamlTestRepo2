@@ -1,5 +1,5 @@
 public:
-   [ReadOnly(true)]
+   [MergableProperty(true)]
    property int MyProperty 
    {
       int get()

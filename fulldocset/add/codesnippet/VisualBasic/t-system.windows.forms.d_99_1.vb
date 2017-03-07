@@ -1,23 +1,9 @@
-    Public Sub dataGridView1_RowContextMenuStripNeeded( _
-        ByVal sender As Object, _
-        ByVal e As DataGridViewRowContextMenuStripNeededEventArgs) _
-        Handles dataGridView1.RowContextMenuStripNeeded
+Private Sub DataGridView1_AutoSizeColumnsModeChanged(sender as Object, e as DataGridViewAutoSizeColumnsModeEventArgs) _ 
+     Handles DataGridView1.AutoSizeColumnsModeChanged
 
-        Dim dataGridViewRow1 As DataGridViewRow = _
-        dataGridView1.Rows(e.RowIndex)
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "PreviousModes", e.PreviousModes)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"AutoSizeColumnsModeChanged Event")
 
-        toolStripMenuItem1.Enabled = True
-
-        ' Show the appropriate ContextMenuStrip based on the employees title.
-        If dataGridViewRow1.Cells("Title").Value.ToString() = _
-            "Sales Manager" OrElse _
-            dataGridViewRow1.Cells("Title").Value.ToString() = _
-            "Vice President, Sales" Then
-
-            e.ContextMenuStrip = managerMenuStrip
-        Else
-            e.ContextMenuStrip = employeeMenuStrip
-        End If
-
-        contextMenuRowIndex = e.RowIndex
-    End Sub
+End Sub

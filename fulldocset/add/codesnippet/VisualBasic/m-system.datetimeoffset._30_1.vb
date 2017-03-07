@@ -1,33 +1,30 @@
-      ' Local time changes on 3/11/2007 at 2:00 AM
-      Dim originalTime, localTime As DateTimeOffset
+Imports System.Globalization
+Imports System.Threading
+
+Module Example
+   Public Sub Main()
+      Dim date1 As New DateTimeOffset(#7/21/1550#, TimeSpan.Zero)
+      Dim dft As CultureInfo
+      Dim heIL As New CultureInfo("he-IL")
+      heIL.DateTimeFormat.Calendar = New HebrewCalendar()
       
-      originalTime = New DateTimeOffset(#03/11/2007 3:00AM#, _
-                                        New TimeSpan(-6, 0, 0))
-      localTime = originalTime.ToLocalTime()
-      Console.WriteLine("Converted {0} to {1}.", originalTime.ToString(), _
-                                                 localTime.ToString())       
-
-      originalTime = New DateTimeOffset(#03/11/2007 4:00AM#, _
-                                        New TimeSpan(-6, 0, 0))
-      localTime = originalTime.ToLocalTime()
-      Console.WriteLine("Converted {0} to {1}.", originalTime.ToString(), _
-                                                 localTime.ToString())       
-
-      ' Define a summer UTC time
-      originalTime = New DateTimeOffset(#6/15/2007 8:00AM#, _
-                                        TimeSpan.Zero)
-      localTime = originalTime.ToLocalTime()
-      Console.WriteLine("Converted {0} to {1}.", originalTime.ToString(), _
-                                                 localTime.ToString())       
-
-      ' Define a winter time
-      originalTime = New DateTimeOffset(#11/30/2007 2:00PM#, _
-                                        New TimeSpan(3, 0, 0))
-      localTime = originalTime.ToLocalTime()
-      Console.WriteLine("Converted {0} to {1}.", originalTime.ToString(), _
-                                                 localTime.ToString())   
-      ' The example produces the following output:
-      '    Converted 3/11/2007 3:00:00 AM -06:00 to 3/11/2007 1:00:00 AM -08:00.
-      '    Converted 3/11/2007 4:00:00 AM -06:00 to 3/11/2007 3:00:00 AM -07:00.
-      '    Converted 6/15/2007 8:00:00 AM +00:00 to 6/15/2007 1:00:00 AM -07:00.
-      '    Converted 11/30/2007 2:00:00 PM +03:00 to 11/30/2007 3:00:00 AM -08:00.                                                           
+      ' Change current culture to he-IL.
+      dft = Thread.CurrentThread.CurrentCulture
+      Thread.CurrentThread.CurrentCulture = heIL
+      
+      ' Display the date using the current culture's calendar.            
+      Try
+         Console.WriteLine(date1.ToString("G"))
+      Catch e As ArgumentOutOfRangeException
+         Console.WriteLine("{0} is earlier than {1} or later than {2}", _
+                           date1.ToString("d", CultureInfo.InvariantCulture), _
+                           heIL.DateTimeFormat.Calendar.MinSupportedDateTime.ToString("d", CultureInfo.InvariantCulture), _ 
+                           heIL.DateTimeFormat.Calendar.MaxSupportedDateTime.ToString("d", CultureInfo.InvariantCulture)) 
+      End Try
+      
+      ' Restore the default culture.
+      Thread.CurrentThread.CurrentCulture = dft
+   End Sub
+End Module
+' The example displays the following output:
+'    07/21/1550 is earlier than 01/01/1583 or later than 09/29/2239

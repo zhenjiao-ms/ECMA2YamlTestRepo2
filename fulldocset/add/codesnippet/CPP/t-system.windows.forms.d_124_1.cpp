@@ -1,59 +1,26 @@
-   void dataGridView1_CellFormatting( Object^ /*sender*/, DataGridViewCellFormattingEventArgs^ e )
+private:
+   void AddColumn()
    {
-      // If the column is the Artist column, check the
-      // value.
-      if ( this->dataGridView1->Columns[ e->ColumnIndex ]->Name->Equals( "Artist" ) )
-      {
-         if ( e->Value != nullptr )
-         {
-            // Check for the string "pink" in the cell.
-            String^ stringValue = dynamic_cast<String^>(e->Value);
-            stringValue = stringValue->ToLower();
-            if ( (stringValue->IndexOf( "pink" ) > -1) )
-            {
-               DataGridViewCellStyle^ pinkStyle = gcnew DataGridViewCellStyle;
-
-               //Change the style of the cell.
-               pinkStyle->BackColor = Color::Pink;
-               pinkStyle->ForeColor = Color::Black;
-               pinkStyle->Font = gcnew System::Drawing::Font( "Times New Roman",8,FontStyle::Bold );
-               e->CellStyle = pinkStyle;
-            }
-            
-         }
-      }
-      else
-      if ( this->dataGridView1->Columns[ e->ColumnIndex ]->Name->Equals( "Release Date" ) )
-      {
-         ShortFormDateFormat( e );
-      }
-   }
-
-
-   //Even though the date internaly stores the year as YYYY, using formatting, the
-   //UI can have the format in YY.  
-   void ShortFormDateFormat( DataGridViewCellFormattingEventArgs^ formatting )
-   {
-      if ( formatting->Value != nullptr )
-      {
-         try
-         {
-            System::Text::StringBuilder^ dateString = gcnew System::Text::StringBuilder;
-            DateTime theDate = DateTime::Parse( formatting->Value->ToString() );
-            dateString->Append( theDate.Month );
-            dateString->Append( "/" );
-            dateString->Append( theDate.Day );
-            dateString->Append( "/" );
-            dateString->Append( theDate.Year.ToString()->Substring( 2 ) );
-            formatting->Value = dateString->ToString();
-            formatting->FormattingApplied = true;
-         }
-         catch ( Exception^ /*notInDateFormat*/ ) 
-         {
-            // Set to false in case there are other handlers interested trying to
-            // format this DataGridViewCellFormattingEventArgs instance.
-            formatting->FormattingApplied = false;
-         }
-
-      }
+      DataTable^ myTable = gcnew DataTable;
+      
+      // Add a new DataColumn to the DataTable.
+      DataColumn^ myColumn = gcnew DataColumn( "myTextBoxColumn" );
+      myColumn->DataType = System::Type::GetType( "System::String" );
+      myColumn->DefaultValue = "default string";
+      myTable->Columns->Add( myColumn );
+      
+      // Get the CurrencyManager for the DataTable.
+      CurrencyManager^ cm = dynamic_cast<CurrencyManager^>(this->BindingContext[ myTable ]);
+      
+      // Use the CurrencyManager to get the PropertyDescriptor for the new column.
+      System::ComponentModel::PropertyDescriptor^ pd = cm->GetItemProperties()[ "myTextBoxColumn" ];
+      DataGridTextBoxColumn^ myColumnTextColumn;
+      
+      // Create the DataGridTextBoxColumn with the PropertyDescriptor.
+      myColumnTextColumn = gcnew DataGridTextBoxColumn( pd );
+      
+      // Add the new DataGridColumn to the GridColumnsCollection.
+      dataGrid1->DataSource = myTable;
+      dataGrid1->TableStyles->Add( gcnew DataGridTableStyle );
+      dataGrid1->TableStyles[ 0 ]->GridColumnStyles->Add( myColumnTextColumn );
    }

@@ -1,61 +1,64 @@
 using System;
+using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Drawing;
-using System.IO;
+using System.Data;
 using System.Windows.Forms;
-using System.Windows.Forms.Design;
 
-namespace IHelpServiceSample
+namespace ExtenderListServiceExample
 {
-    public class HelpDesigner : System.Windows.Forms.Design.ControlDesigner
-    {
-        public HelpDesigner()
+    // This control lists any active extender providers.
+    public class ExtenderListServiceControl : System.Windows.Forms.UserControl
+    {		
+        private IExtenderListService extenderListService;
+        private string[] extenderNames;
+
+        public ExtenderListServiceControl()
         {			
+            extenderNames = new string[0];
+            this.Width = 600;
         }
 
-        public override System.ComponentModel.Design.DesignerVerbCollection Verbs
+        // Queries the IExtenderListService when the control is sited 
+        // in design mode.
+        public override System.ComponentModel.ISite Site
         {
             get
             {
-                return new DesignerVerbCollection( new DesignerVerb[] { 
-                        new DesignerVerb("Add IHelpService Help Keyword", new EventHandler(this.addKeyword)),
-                        new DesignerVerb("Remove IHelpService Help Keyword", new EventHandler(this.removeKeyword))
-                } );
+                return base.Site;
+            }
+            set
+            {
+                base.Site = value;
+                if( this.DesignMode )
+                {
+                    extenderListService = (IExtenderListService)this.GetService(typeof(IExtenderListService));
+                    if( extenderListService != null )
+                    {
+                        IExtenderProvider[] extenders = extenderListService.GetExtenderProviders();
+                        extenderNames = new string[extenders.Length];
+                        for( int i=0; i<extenders.Length; i++ )
+                            extenderNames[i] = "ExtenderProvider #"+i.ToString()+":  "+extenders[i].GetType().FullName;
+                    }
+                }
+                else
+                {
+                    extenderListService = null;
+                    extenderNames = new string[0];
+                }
             }
         }
-        
-        private void addKeyword(object sender, EventArgs e)
-        {
-            IHelpService hs = (IHelpService) this.Control.Site.GetService(typeof(IHelpService));			
-            hs.AddContextAttribute("keyword", "IHelpService", HelpKeywordType.F1Keyword);	
-        }
-        
-        private void removeKeyword(object sender, EventArgs e)
-        {
-            IHelpService hs = (IHelpService) this.Control.Site.GetService(typeof(IHelpService));			
-            hs.RemoveContextAttribute("keyword", "IHelpService");
-        }
-    }
 
-    [Designer(typeof(HelpDesigner))]
-    public class HelpTestControl : System.Windows.Forms.UserControl
-    {
-        public HelpTestControl()
-        {
-            this.Size = new Size(320, 100);
-            this.BackColor = Color.White;
-        }
-
+        // Draws a list of any active extender providers
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
-        {			
-            Brush brush = new SolidBrush(Color.Blue);
-            e.Graphics.DrawString("IHelpService Example Designer Control", new Font( FontFamily.GenericMonospace, 10 ), brush, 5, 5);
-            e.Graphics.DrawString("Right-click this component for", new Font( FontFamily.GenericMonospace, 8 ), brush, 5, 25);
-            e.Graphics.DrawString("add/remove Help context keyword commands.", new Font( FontFamily.GenericMonospace, 8 ), brush, 5, 35);			
-            e.Graphics.DrawString("Press F1 while this component is", new Font( FontFamily.GenericMonospace, 8 ), brush, 5, 55);
-            e.Graphics.DrawString("selected to raise Help topics for", new Font( FontFamily.GenericMonospace, 8 ), brush, 5, 65);			
-            e.Graphics.DrawString("the current keyword or keywords", new Font( FontFamily.GenericMonospace, 8 ), brush, 5, 75);			
+        {
+            if( extenderNames.Length == 0 )
+                e.Graphics.DrawString("No active extender providers", new Font("Arial", 9), new SolidBrush(Color.Black), 10, 10);
+            else
+                e.Graphics.DrawString("List of types of active extender providers", new Font("Arial", 9), new SolidBrush(Color.Black), 10, 10);
+            for(int i=0; i<extenderNames.Length; i++)
+                e.Graphics.DrawString(extenderNames[i], new Font("Arial", 8), new SolidBrush(Color.Black), 10, 25+(i*10));
         }		
     }
 }

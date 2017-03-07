@@ -1,220 +1,137 @@
-
 using System;
-using System.Xml;
+using System.IO;
 using System.Security.Cryptography;
-using System.Security.Cryptography.Xml;
 
-class Program
+namespace Aes_Example
 {
-    static void Main(string[] args)
+    class AesExample
     {
-
-        // Create an XmlDocument object.
-        XmlDocument xmlDoc = new XmlDocument();
-
-        // Load an XML file into the XmlDocument object.
-        try
+        public static void Main()
         {
-            xmlDoc.PreserveWhitespace = true;
-            xmlDoc.Load("test.xml");
+            try
+            {
+
+                string original = "Here is some data to encrypt!";
+
+                // Create a new instance of the Aes
+                // class.  This generates a new key and initialization 
+                // vector (IV).
+                using (Aes myAes = Aes.Create())
+                {
+
+                    // Encrypt the string to an array of bytes.
+                    byte[] encrypted = EncryptStringToBytes_Aes(original, 
+myAes.Key, myAes.IV);
+
+                    // Decrypt the bytes to a string.
+                    string roundtrip = DecryptStringFromBytes_Aes(encrypted, 
+myAes.Key, myAes.IV);
+
+                    //Display the original data and the decrypted data.
+                    Console.WriteLine("Original:   {0}", original);
+                    Console.WriteLine("Round Trip: {0}", roundtrip);
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
+            }
         }
-        catch (Exception e)
+        static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, 
+byte[] IV)
         {
-            Console.WriteLine(e.Message);
+            // Check arguments.
+            if (plainText == null || plainText.Length <= 0)
+                throw new ArgumentNullException("plainText");
+            if (Key == null || Key.Length <= 0)
+                throw new ArgumentNullException("Key");
+            if (IV == null || IV.Length <= 0)
+                throw new ArgumentNullException("IV");
+            byte[] encrypted;
+            // Create an Aes object
+            // with the specified key and IV.
+            using (Aes aesAlg = Aes.Create())
+            {
+                aesAlg.Key = Key;
+                aesAlg.IV = IV;
+
+                // Create a decrytor to perform the stream transform.
+                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key
+, aesAlg.IV);
+
+                // Create the streams used for encryption.
+                using (MemoryStream msEncrypt = new MemoryStream())
+                {
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt
+, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter swEncrypt = new StreamWriter(
+csEncrypt))
+                        {
+
+                            //Write all data to the stream.
+                            swEncrypt.Write(plainText);
+                        }
+                        encrypted = msEncrypt.ToArray();
+                    }
+                }
+            }
+
+
+            // Return the encrypted bytes from the memory stream.
+            return encrypted;
+
         }
 
-        // Create a new RSA key.  This key will encrypt a symmetric key,
-        // which will then be imbedded in the XML document.  
-        RSA rsaKey = new RSACryptoServiceProvider();
-
-
-        try
+        static string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key
+, byte[] IV)
         {
-            // Encrypt the "creditcard" element.
-            Encrypt(xmlDoc, "creditcard", "EncryptedElement1", rsaKey, "rsaKey");
+            // Check arguments.
+            if (cipherText == null || cipherText.Length <= 0)
+                throw new ArgumentNullException("cipherText");
+            if (Key == null || Key.Length <= 0)
+                throw new ArgumentNullException("Key");
+            if (IV == null || IV.Length <= 0)
+                throw new ArgumentNullException("IV");
 
-            // Encrypt the "creditcard2" element.
-            Encrypt(xmlDoc, "creditcard2", "EncryptedElement2", rsaKey, "rsaKey");
+            // Declare the string used to hold
+            // the decrypted text.
+            string plaintext = null;
 
-            // Display the encrypted XML to the console.
-            Console.WriteLine("Encrypted XML:");
-            Console.WriteLine();
-            Console.WriteLine(xmlDoc.OuterXml);
+            // Create an Aes object
+            // with the specified key and IV.
+            using (Aes aesAlg = Aes.Create())
+            {
+                aesAlg.Key = Key;
+                aesAlg.IV = IV;
 
-            // Decrypt the "creditcard" element.
-            Decrypt(xmlDoc, rsaKey, "rsaKey");
+                // Create a decrytor to perform the stream transform.
+                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key
+, aesAlg.IV);
 
-            // Display the encrypted XML to the console.
-            Console.WriteLine();
-            Console.WriteLine("Decrypted XML:");
-            Console.WriteLine();
-            Console.WriteLine(xmlDoc.OuterXml);
+                // Create the streams used for decryption.
+                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
+                {
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt
+, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader srDecrypt = new StreamReader(
+csDecrypt))
+                        {
+
+                            // Read the decrypted bytes from the decrypting 
+stream
+                            // and place them in a string.
+                            plaintext = srDecrypt.ReadToEnd();
+                        }
+                    }
+                }
+
+            }
+
+            return plaintext;
+
         }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-        finally
-        {
-            // Clear the RSA key.
-            rsaKey.Clear();
-        }
-
-        Console.ReadLine();
-
-
     }
-
-    public static void Encrypt(XmlDocument Doc, string ElementToEncrypt, string EncryptionElementID, RSA Alg, string KeyName)
-    {
-        // Check the arguments.  
-        if (Doc == null)
-            throw new ArgumentNullException("Doc");
-        if (ElementToEncrypt == null)
-            throw new ArgumentNullException("ElementToEncrypt");
-        if (EncryptionElementID == null)
-            throw new ArgumentNullException("EncryptionElementID");
-        if (Alg == null)
-            throw new ArgumentNullException("Alg");
-        if (KeyName == null)
-            throw new ArgumentNullException("KeyName");
-
-        ////////////////////////////////////////////////
-        // Find the specified element in the XmlDocument
-        // object and create a new XmlElemnt object.
-        ////////////////////////////////////////////////
-
-        XmlElement elementToEncrypt = Doc.GetElementsByTagName(ElementToEncrypt)[0] as XmlElement;
-
-        // Throw an XmlException if the element was not found.
-        if (elementToEncrypt == null)
-        {
-            throw new XmlException("The specified element was not found");
-
-        }
-
-        //////////////////////////////////////////////////
-        // Create a new instance of the EncryptedXml class 
-        // and use it to encrypt the XmlElement with the 
-        // a new random symmetric key.
-        //////////////////////////////////////////////////
-
-        // Create a 256 bit Rijndael key.
-        RijndaelManaged sessionKey = new RijndaelManaged();
-        sessionKey.KeySize = 256;
-
-        EncryptedXml eXml = new EncryptedXml();
-
-        byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, sessionKey, false);
-
-        ////////////////////////////////////////////////
-        // Construct an EncryptedData object and populate
-        // it with the desired encryption information.
-        ////////////////////////////////////////////////
-
-
-        EncryptedData edElement = new EncryptedData();
-        edElement.Type = EncryptedXml.XmlEncElementUrl;
-        edElement.Id = EncryptionElementID;
-
-        // Create an EncryptionMethod element so that the 
-        // receiver knows which algorithm to use for decryption.
-
-        edElement.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncAES256Url);
-
-        // Encrypt the session key and add it to an EncryptedKey element.
-        EncryptedKey ek = new EncryptedKey();
-
-        byte[] encryptedKey = EncryptedXml.EncryptKey(sessionKey.Key, Alg, false);
-
-        ek.CipherData = new CipherData(encryptedKey);
-
-        ek.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncRSA15Url);
-
-        // Set the KeyInfo element to specify the
-        // name of the RSA key.
-
-        // Create a new KeyInfo element.
-        edElement.KeyInfo = new KeyInfo();
-
-        // Create a new KeyInfoName element.
-        KeyInfoName kin = new KeyInfoName();
-
-        // Specify a name for the key.
-        kin.Value = KeyName;
-
-        // Add the KeyInfoName element to the 
-        // EncryptedKey object.
-        ek.KeyInfo.AddClause(kin);
-
-        // Create a new DataReference element
-        // for the KeyInfo element.  This optional
-        // element specifies which EncryptedData 
-        // uses this key.  An XML document can have
-        // multiple EncryptedData elements that use
-        // different keys.
-        DataReference dRef = new DataReference();
-
-        // Specify the EncryptedData URI. 
-        dRef.Uri = "#" + EncryptionElementID;
-
-        // Add the DataReference to the EncryptedKey.
-        ek.AddReference(dRef);
-
-        // Add the encrypted key to the 
-        // EncryptedData object.
-
-        edElement.KeyInfo.AddClause(new KeyInfoEncryptedKey(ek));
-
-        // Add the encrypted element data to the 
-        // EncryptedData object.
-        edElement.CipherData.CipherValue = encryptedElement;
-
-        ////////////////////////////////////////////////////
-        // Replace the element from the original XmlDocument
-        // object with the EncryptedData element.
-        ////////////////////////////////////////////////////
-
-        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, false);
-
-    }
-
-    public static void Decrypt(XmlDocument Doc, RSA Alg, string KeyName)
-    {
-        // Check the arguments.  
-        if (Doc == null)
-            throw new ArgumentNullException("Doc");
-        if (Alg == null)
-            throw new ArgumentNullException("Alg");
-        if (KeyName == null)
-            throw new ArgumentNullException("KeyName");
-
-        // Create a new EncryptedXml object.
-        EncryptedXml exml = new EncryptedXml(Doc);
-
-        // Add a key-name mapping.
-        // This method can only decrypt documents
-        // that present the specified key name.
-        exml.AddKeyNameMapping(KeyName, Alg);
-
-        // Decrypt the element.
-        exml.DecryptDocument();
-
-    }
-
 }
-
-// To run this sample, place the following XML
-// in a file called test.xml.  Put test.xml
-// in the same directory as your compiled program.
-// 
-//  <root>
-//     <creditcard xmlns="myNamespace" Id="tag1">
-//         <number>19834209</number>
-//         <expiry>02/02/2002</expiry>
-//     </creditcard>
-//     <creditcard2 xmlns="myNamespace" Id="tag2">
-//         <number>19834208</number>
-//         <expiry>02/02/2002</expiry>
-//     </creditcard2>
-// </root>

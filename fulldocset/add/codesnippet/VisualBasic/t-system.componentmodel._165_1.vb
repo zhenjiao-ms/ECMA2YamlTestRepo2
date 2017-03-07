@@ -1,7 +1,10 @@
-    <Designer("System.Windows.Forms.Design.DocumentDesigner, System.Windows.Forms.Design.DLL", _
-        GetType(IRootDesigner)), DesignerCategory("Form")> _
-    Public Class MyForm
-        
-        Inherits ContainerControl
-        ' Insert code here.
-    End Class 'MyForm
+    <Bindable(True)> _
+    Public Property MyProperty() As Integer
+        Get
+            ' Insert code here.
+            Return 0
+        End Get
+        Set
+             ' Insert code here.
+        End Set
+    End Property

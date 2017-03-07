@@ -1,53 +1,98 @@
-        public void SetScrollBarValues()
+using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Drawing;
+using System.Reflection;
+using System.Windows.Forms;
+
+namespace SystemInfoBrowser
+{
+    public class SystemInfoBrowserForm : System.Windows.Forms.Form
+    {
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox textBox1;        
+        
+        public SystemInfoBrowserForm()
+	    {
+            this.SuspendLayout();
+            InitForm();
+            
+            // Add each property of the SystemInformation class to the list box.
+            Type t = typeof(System.Windows.Forms.SystemInformation);            
+            PropertyInfo[] pi = t.GetProperties();            
+            for( int i=0; i<pi.Length; i++ )
+                listBox1.Items.Add( pi[i].Name );            
+            textBox1.Text = "The SystemInformation class has "+pi.Length.ToString()+" properties.\r\n";
+
+            // Configure the list item selected handler for the list box to invoke a 
+            // method that displays the value of each property.
+            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
+            this.ResumeLayout(false);
+	    }
+		
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Set the following scrollbar properties:
-
-            //Minimum: Set to 0
-
-            //SmallChange and LargeChange: Per UI guidelines, these must be set
-            //    relative to the size of the view that the user sees, not to
-            //    the total size including the unseen part.  In this example,
-            //    these must be set relative to the picture box, not to the image.
-
-            //Maximum: Calculate in steps:
-            //Step 1: The maximum to scroll is the size of the unseen part.
-            //Step 2: Add the size of visible scrollbars if necessary.
-            //Step 3: Add an adjustment factor of ScrollBar.LargeChange.
-
-
-            //Configure the horizontal scrollbar
-            //---------------------------------------------
-            if (this.hScrollBar1.Visible)
+            // Return if no list item is selected.
+            if( listBox1.SelectedIndex == -1 ) return;
+            // Get the property name from the list item.
+            string propname = listBox1.Text;
+            
+            if( propname == "PowerStatus" )
             {
-                this.hScrollBar1.Minimum = 0;
-                this.hScrollBar1.SmallChange = this.pictureBox1.Width / 20;
-                this.hScrollBar1.LargeChange = this.pictureBox1.Width / 10;
-
-                this.hScrollBar1.Maximum = this.pictureBox1.Image.Size.Width - pictureBox1.ClientSize.Width;  //step 1
-
-                if (this.vScrollBar1.Visible) //step 2
+                // Cycle and display the values of each property of the PowerStatus property.
+                textBox1.Text += "\r\nThe value of the PowerStatus property is:";                                
+                Type t = typeof(System.Windows.Forms.PowerStatus);
+                PropertyInfo[] pi = t.GetProperties();            
+                for( int i=0; i<pi.Length; i++ )
                 {
-                    this.hScrollBar1.Maximum += this.vScrollBar1.Width;
+                    object propval = pi[i].GetValue(SystemInformation.PowerStatus, null);            
+                    textBox1.Text += "\r\n    PowerStatus."+pi[i].Name+" is: "+propval.ToString();
                 }
-
-                this.hScrollBar1.Maximum += this.hScrollBar1.LargeChange; //step 3
             }
-
-            //Configure the vertical scrollbar
-            //---------------------------------------------
-            if (this.vScrollBar1.Visible)
+            else
             {
-                this.vScrollBar1.Minimum = 0;
-                this.vScrollBar1.SmallChange = this.pictureBox1.Height / 20;
-                this.vScrollBar1.LargeChange = this.pictureBox1.Height / 10;
-
-                this.vScrollBar1.Maximum = this.pictureBox1.Image.Size.Height - pictureBox1.ClientSize.Height; //step 1
-
-                if (this.hScrollBar1.Visible) //step 2
-                {
-                    this.vScrollBar1.Maximum += this.hScrollBar1.Height;
-                }
-
-                this.vScrollBar1.Maximum += this.vScrollBar1.LargeChange; //step 3
+                // Display the value of the selected property of the SystemInformation type.
+                Type t = typeof(System.Windows.Forms.SystemInformation);
+                PropertyInfo[] pi = t.GetProperties();            
+                PropertyInfo prop = null;
+                for( int i=0; i<pi.Length; i++ )
+                    if( pi[i].Name == propname )
+                    {
+                        prop = pi[i];
+                        break;           
+                    }
+                object propval = prop.GetValue(null, null);            
+                textBox1.Text += "\r\nThe value of the "+propname+" property is: "+propval.ToString();
             }
         }
+
+        private void InitForm()
+        {
+            // Initialize the form settings
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();            
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+                | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox1.Location = new System.Drawing.Point(8, 16);
+            this.listBox1.Size = new System.Drawing.Size(172, 496);
+            this.listBox1.TabIndex = 0;            
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+                | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(188, 16);
+            this.textBox1.Multiline = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;           
+            this.textBox1.Size = new System.Drawing.Size(420, 496);
+            this.textBox1.TabIndex = 1;            
+            this.ClientSize = new System.Drawing.Size(616, 525);            
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.listBox1);            
+            this.Text = "Select a SystemInformation property to get the value of";                   
+        }
+
+        [STAThread]
+        static void Main() 
+        {
+            Application.Run(new SystemInfoBrowserForm());
+        }
+    }
+}

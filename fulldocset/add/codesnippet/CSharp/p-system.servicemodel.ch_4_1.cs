@@ -1,2 +1,1 @@
-            MsmqTransportBindingElement transportBindingElement = new MsmqTransportBindingElement();
-            string scheme = transportBindingElement.Scheme;
+            msgVersion = MessageVersion.Soap12WSAddressing10;

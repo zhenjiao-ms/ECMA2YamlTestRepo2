@@ -1,13 +1,25 @@
-Private Sub DataGridView1_RowHeightInfoNeeded(sender as Object, e as DataGridViewRowHeightInfoNeededEventArgs) _ 
-     Handles DataGridView1.RowHeightInfoNeeded
+        ' Determine whether the cell should be painted with the 
+        ' custom selection background.
+        If (e.State And DataGridViewElementStates.Selected) = _
+            DataGridViewElementStates.Selected Then
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "Height", e.Height)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "MinimumHeight", e.MinimumHeight)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"RowHeightInfoNeeded Event")
+            ' Calculate the bounds of the row.
+            Dim rowBounds As New Rectangle( _
+                Me.dataGridView1.RowHeadersWidth, e.RowBounds.Top, _
+                Me.dataGridView1.Columns.GetColumnsWidth( _
+                DataGridViewElementStates.Visible) - _
+                Me.dataGridView1.HorizontalScrollingOffset + 1, _
+                e.RowBounds.Height)
 
-End Sub
+            ' Paint the custom selection background.
+            Dim backbrush As New _
+                System.Drawing.Drawing2D.LinearGradientBrush(rowBounds, _
+                Me.dataGridView1.DefaultCellStyle.SelectionBackColor, _
+                e.InheritedRowStyle.ForeColor, _
+                System.Drawing.Drawing2D.LinearGradientMode.Horizontal)
+            Try
+                e.Graphics.FillRectangle(backbrush, rowBounds)
+            Finally
+                backbrush.Dispose()
+            End Try
+        End If

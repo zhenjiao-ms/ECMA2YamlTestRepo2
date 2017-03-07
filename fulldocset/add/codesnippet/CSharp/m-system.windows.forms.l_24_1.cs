@@ -1,58 +1,90 @@
-	private void InitializeListView()
+	internal System.Windows.Forms.ListBox ListBox1;
+
+	private void InitializeOwnerDrawnListBox()
 	{
-		this.ListView1 = new System.Windows.Forms.ListView();
+		this.ListBox1 = new System.Windows.Forms.ListBox();
 
-		// Set properties such as BackColor and DockStyle and Location.
-		this.ListView1.BackColor = System.Drawing.SystemColors.Control;
-		this.ListView1.Dock = System.Windows.Forms.DockStyle.Top;
-		this.ListView1.Location = new System.Drawing.Point(0, 0);
-		this.ListView1.Size = new System.Drawing.Size(292, 130);
-		this.ListView1.View = System.Windows.Forms.View.Details;
-		this.ListView1.HideSelection = false;
+		// Set the location and size.
+		ListBox1.Location = new Point(20, 20);
+		ListBox1.Size = new Size(240, 240);
 
-		// Allow the user to select multiple items.
-		this.ListView1.MultiSelect = true;
+		// Populate the ListBox.ObjectCollection property 
+		// with several strings, using the AddRange method.
+		this.ListBox1.Items.AddRange(new object[]{"System.Windows.Forms", 
+			"System.Drawing", "System.Xml", "System.Net", "System.Runtime.Remoting", 
+			"System.Web"});
 
-		// Show CheckBoxes in the ListView.
-		this.ListView1.CheckBoxes = true;
+		// Turn off the scrollbar.
+		ListBox1.ScrollAlwaysVisible = false;
+
+		// Set the border style to a single, flat border.
+		ListBox1.BorderStyle = BorderStyle.FixedSingle;
+
+		// Set the DrawMode property to the OwnerDrawVariable value. 
+		// This means the MeasureItem and DrawItem events must be 
+		// handled.
+		ListBox1.DrawMode = DrawMode.OwnerDrawVariable;
+		ListBox1.MeasureItem += 
+			new MeasureItemEventHandler(ListBox1_MeasureItem);
+		ListBox1.DrawItem += new DrawItemEventHandler(ListBox1_DrawItem);
+		this.Controls.Add(this.ListBox1);
 		
-		//Set the column headers and populate the columns.
-		ListView1.HeaderStyle = ColumnHeaderStyle.Nonclickable;
-		
-		ColumnHeader columnHeader1 = new ColumnHeader();
-		columnHeader1.Text = "Breakfast Choices";
-		columnHeader1.TextAlign = HorizontalAlignment.Left;
-		columnHeader1.Width = 146;
+	}
 
-		ColumnHeader columnHeader2 = new ColumnHeader();
-		columnHeader2.Text = "Price Each";
-		columnHeader2.TextAlign = HorizontalAlignment.Center;
-		columnHeader2.Width = 142;
 
-       	this.ListView1.Columns.Add(columnHeader1);
-		this.ListView1.Columns.Add(columnHeader2);
+	// Handle the DrawItem event for an owner-drawn ListBox.
+	private void ListBox1_DrawItem(object sender, DrawItemEventArgs e)
+	{
 
-		string[] foodList = new string[]{"Juice", "Coffee", 
-			"Cereal & Milk", "Fruit Plate", "Toast & Jelly", 
-			"Bagel & Cream Cheese"};
-
-		string[] foodPrice = new string[]{"1.09", "1.09", "2.19", 
-			"2.79", "2.09", "2.69"};
-		
-		int count;
-
-		// Members are added one at a time, so call BeginUpdate to ensure 
-		// the list is painted only once, rather than as each list item is added.
-		ListView1.BeginUpdate();
-
-		for(count = 0; count < foodList.Length; count++)
+		// If the item is the selected item, then draw the rectangle
+		// filled in blue. The item is selected when a bitwise And  
+		// of the State property and the DrawItemState.Selected 
+		// property is true.
+		if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
 		{
-			ListViewItem listItem = new ListViewItem(foodList[count]);
-			listItem.SubItems.Add(foodPrice[count]);
-			ListView1.Items.Add(listItem);
+			e.Graphics.FillRectangle(Brushes.CornflowerBlue, e.Bounds);
+		}
+		else
+		{
+			// Otherwise, draw the rectangle filled in beige.
+			e.Graphics.FillRectangle(Brushes.Beige, e.Bounds);
 		}
 
-		//Call EndUpdate when you finish adding items to the ListView.
-		ListView1.EndUpdate();
-		this.Controls.Add(this.ListView1);
+		// Draw a rectangle in blue around each item.
+		e.Graphics.DrawRectangle(Pens.Blue, e.Bounds);
+
+		// Draw the text in the item.
+		e.Graphics.DrawString(ListBox1.Items[e.Index].ToString(),
+			this.Font, Brushes.Black, e.Bounds.X, e.Bounds.Y);
+
+		// Draw the focus rectangle around the selected item.
+		e.DrawFocusRectangle();
+	}
+
+	// Handle the MeasureItem event for an owner-drawn ListBox.
+	private void ListBox1_MeasureItem(object sender, 
+		MeasureItemEventArgs e)
+	{
+
+		// Cast the sender object back to ListBox type.
+		ListBox theListBox = (ListBox) sender;
+
+		// Get the string contained in each item.
+		string itemString = (string) theListBox.Items[e.Index];
+
+		// Split the string at the " . "  character.
+		string[] resultStrings = itemString.Split('.');
+
+		// If the string contains more than one period, increase the 
+		// height by ten pixels; otherwise, increase the height by 
+		// five pixels.
+		if (resultStrings.Length>2)
+		{
+			e.ItemHeight += 10;
+		}
+		else
+		{
+			e.ItemHeight += 5;
+		}
+
 	}

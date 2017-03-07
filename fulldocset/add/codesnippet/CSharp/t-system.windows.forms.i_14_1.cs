@@ -1,30 +1,48 @@
 using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
-using System.Data;
+using System.Drawing;
 
-public class Form1 : System.Windows.Forms.Form
-{
-	RichTextBox rtb = new RichTextBox();
-	public Form1()
+	public class MyContainer : ScrollableControl, IContainerControl
 	{
-		this.Controls.Add(rtb);
-		rtb.Dock = DockStyle.Fill;
-		this.InputLanguageChanged += new InputLanguageChangedEventHandler(languageChange);
-	}
-	private void languageChange(Object sender, InputLanguageChangedEventArgs e)
-	{
-		// If the input language is Japanese.
-		// set the initial IMEMode to Katakana.
-		if (e.InputLanguage.Culture.TwoLetterISOLanguageName.Equals("ja"))
+		private Control activeControl;
+		public MyContainer() 
 		{
-			rtb.ImeMode = System.Windows.Forms.ImeMode.Katakana;
+			// Make the container control Blue so it can be distinguished on the form.
+			this.BackColor = Color.Blue;
+			
+			// Make the container scrollable.
+			this.AutoScroll = true;
+		}
+
+		// Add implementation to the IContainerControl.ActiveControl property.
+		public Control ActiveControl
+		{
+			get
+			{
+				return activeControl;
+			}
+
+			set
+			{
+				// Make sure the control is a member of the ControlCollection.
+				if(this.Controls.Contains(value))
+				{
+					activeControl = value;
+				}
+			}
+		}
+
+		// Add implementations to the IContainerControl.ActivateControl(Control) method.
+		public bool ActivateControl(Control active)
+		{
+			if(this.Controls.Contains(active))
+			{
+				// Select the control and scroll the control into view if needed.
+				active.Select();
+				this.ScrollControlIntoView(active);
+				this.activeControl = active;
+				return true;
+			}
+			return false;
 		}
 	}
-	public static void Main(string[] args)
-	{
-		Application.Run(new Form1());
-	}
-}

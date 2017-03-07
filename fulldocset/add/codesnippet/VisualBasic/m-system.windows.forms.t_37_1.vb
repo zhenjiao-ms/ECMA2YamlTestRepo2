@@ -1,9 +1,10 @@
- Public Sub CopyAllMyText()
-     ' Determine if any text is selected in the TextBox control.
-     If textBox1.SelectionLength = 0 Then
-         ' Select all text in the text box.
-         textBox1.SelectAll()
-     End If 
-     ' Copy the contents of the control to the Clipboard.
-     textBox1.Copy()
- End Sub
+    Sub treeView1_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) 
+        Dim info As TreeViewHitTestInfo = treeView1.HitTest(e.X, e.Y)
+        Dim hitNode As TreeNode
+        If (info.Node IsNot Nothing) Then
+            hitNode = info.Node
+            MessageBox.Show(hitNode.Level.ToString())
+        End If
+    
+    End Sub 'treeView1_MouseDown
+    

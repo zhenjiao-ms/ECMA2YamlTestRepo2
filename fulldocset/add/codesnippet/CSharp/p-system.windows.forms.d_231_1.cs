@@ -1,24 +1,17 @@
-            // Draw a custom background and text if the ToolTip is for button2.
-            else if (e.AssociatedControl == button2)
-            {
-                // Draw the custom background.
-                e.Graphics.FillRectangle(SystemBrushes.ActiveCaption, e.Bounds);
+    private void ChangeColumnAlignment()
+    {
+        songsDataGridView.Columns["Title"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomCenter;
+        songsDataGridView.Columns["Title"].Name = DataGridViewContentAlignment.BottomCenter.ToString();
 
-                // Draw the standard border.
-                e.DrawBorder();
+        songsDataGridView.Columns["Artist"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomLeft;
+        songsDataGridView.Columns["Artist"].Name = DataGridViewContentAlignment.BottomLeft.ToString();
 
-                // Draw the custom text.
-                // The using block will dispose the StringFormat automatically.
-                using (StringFormat sf = new StringFormat())
-                {
-                    sf.Alignment = StringAlignment.Center;
-                    sf.LineAlignment = StringAlignment.Center;
-                    sf.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None;
-                    sf.FormatFlags = StringFormatFlags.NoWrap;
-                    using (Font f = new Font("Tahoma", 9))
-                    {
-                        e.Graphics.DrawString(e.ToolTipText, f, 
-                            SystemBrushes.ActiveCaptionText, e.Bounds, sf);
-                    }
-                }
-            }
+        songsDataGridView.Columns["Album"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
+        songsDataGridView.Columns["Album"].Name = DataGridViewContentAlignment.BottomRight.ToString();
+
+        songsDataGridView.Columns["Release Date"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        songsDataGridView.Columns["Release Date"].Name = DataGridViewContentAlignment.MiddleCenter.ToString();
+
+        songsDataGridView.Columns["Track"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        songsDataGridView.Columns["Track"].Name = DataGridViewContentAlignment.MiddleLeft.ToString();
+    }

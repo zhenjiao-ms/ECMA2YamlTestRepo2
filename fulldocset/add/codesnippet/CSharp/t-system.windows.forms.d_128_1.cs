@@ -1,37 +1,21 @@
-    private void dataGridView1_CellMouseEnter(object sender,
-        DataGridViewCellEventArgs e)
-    {
-        Bitmap markingUnderMouse = (Bitmap)dataGridView1.
-               Rows[e.RowIndex].
-               Cells[e.ColumnIndex].Value;
+private void DataGridView1_ColumnDividerDoubleClick(Object sender, DataGridViewColumnDividerDoubleClickEventArgs e) {
 
-        if (markingUnderMouse == blank)
-        {
-            dataGridView1.Cursor = Cursors.Default;
-        }
-        else if (markingUnderMouse == o || markingUnderMouse == x)
-        {
-            dataGridView1.Cursor = Cursors.No;
-            ToolTip(e, true);
-        }
-    }
-
-    private void ToolTip(DataGridViewCellEventArgs e, bool showTip)
-    {
-        DataGridViewImageCell cell = (DataGridViewImageCell)
-            dataGridView1
-            .Rows[e.RowIndex].Cells[e.ColumnIndex];
-        DataGridViewImageColumn imageColumn =
-            (DataGridViewImageColumn)
-            dataGridView1.Columns[cell.ColumnIndex];
-
-        if (showTip) cell.ToolTipText = imageColumn.Description;
-        else { cell.ToolTipText = String.Empty; }
-    }
-
-    private void dataGridView1_CellMouseLeave(object sender,
-        DataGridViewCellEventArgs e)
-    {
-        ToolTip(e, false);
-        dataGridView1.Cursor = Cursors.Default;
-    }
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "ColumnIndex", e.ColumnIndex );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Handled", e.Handled );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Button", e.Button );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Clicks", e.Clicks );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "X", e.X );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Y", e.Y );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Delta", e.Delta );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Location", e.Location );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "ColumnDividerDoubleClick Event" );
+}

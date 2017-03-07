@@ -1,7 +1,14 @@
-Private Sub button2_Click(sender As Object, e As EventArgs) Handles button2.Click
-   ' Delete the first TreeNode in the collection 
-   ' if the Text property is "Node0." 
-   If Me.treeView1.Nodes(0).Text = "Node0" Then
-      Me.treeView1.Nodes.RemoveAt(0)
-   End If
-End Sub
+   ' This method shows the drop-down for the first item
+   ' in the form's ToolStrip.
+    Private Sub showButton_Click( _
+    ByVal sender As Object, _
+    ByVal e As EventArgs) _
+    Handles showButton.Click
+
+        Dim item As ToolStripDropDownItem = CType(Me.toolStrip1.Items(0), ToolStripDropDownItem)
+
+        If item.HasDropDownItems Then
+            item.ShowDropDown()
+        End If
+
+    End Sub

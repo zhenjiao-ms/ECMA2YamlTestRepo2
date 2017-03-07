@@ -1,15 +1,15 @@
-    public static int Main() {
-        // Creates a new installer.
-        MyProjectInstaller myNewProjectInstaller = new MyProjectInstaller();
-     
-        // Gets the attributes for the collection.
-        AttributeCollection attributes = TypeDescriptor.GetAttributes(myNewProjectInstaller);
-     
-        /* Prints whether to run the installer by retrieving the 
-         * RunInstallerAttribute from the AttributeCollection. */
-        RunInstallerAttribute myAttribute = 
-           (RunInstallerAttribute)attributes[typeof(RunInstallerAttribute)];
-        Console.WriteLine("Run the installer? " + myAttribute.RunInstaller.ToString());
-      
-        return 0;
-     }
+        // Gets the attributes for the property.
+        AttributeCollection attributes = 
+           TypeDescriptor.GetProperties(this)["MyProperty"].Attributes;
+         
+        // Checks to see whether the value of the ReadOnlyAttribute is Yes.
+        if(attributes[typeof(ReadOnlyAttribute)].Equals(ReadOnlyAttribute.Yes)) {
+           // Insert code here.
+        }
+         
+        // This is another way to see whether the property is read-only.
+        ReadOnlyAttribute myAttribute = 
+           (ReadOnlyAttribute)attributes[typeof(ReadOnlyAttribute)];
+        if(myAttribute.IsReadOnly) {
+           // Insert code here.
+        }

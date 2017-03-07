@@ -1,21 +1,25 @@
-    Private Sub dataGridView1_CellBeginEdit(ByVal sender As Object, _
-        ByVal e As DataGridViewCellCancelEventArgs) _
-        Handles DataGridView1.CellBeginEdit
+Private Sub DataGridView1_RowPostPaint(sender as Object, e as DataGridViewRowPostPaintEventArgs) _ 
+     Handles DataGridView1.RowPostPaint
 
-        Dim msg As String = _
-            String.Format("Editing Cell at ({0}, {1})", _
-            e.ColumnIndex, e.RowIndex)
-        Me.Text = msg
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "ClipBounds", e.ClipBounds)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ErrorText", e.ErrorText)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "InheritedRowStyle", e.InheritedRowStyle)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "IsFirstDisplayedRow", e.IsFirstDisplayedRow)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "IsLastVisibleRow", e.IsLastVisibleRow)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "RowBounds", e.RowBounds)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "State", e.State)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"RowPostPaint Event")
 
-    End Sub
-
-    Private Sub dataGridView1_CellEndEdit(ByVal sender As Object, _
-        ByVal e As DataGridViewCellEventArgs) _
-        Handles DataGridView1.CellEndEdit
-
-        Dim msg As String = _
-            String.Format("Finished Editing Cell at ({0}, {1})", _
-            e.ColumnIndex, e.RowIndex)
-        Me.Text = msg
-
-    End Sub
+End Sub

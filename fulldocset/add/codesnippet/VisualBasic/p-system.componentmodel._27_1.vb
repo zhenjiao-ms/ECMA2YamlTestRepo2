@@ -1,11 +1,11 @@
- ' Gets the attributes for the property.
- Dim attributes As AttributeCollection = _
-    TypeDescriptor.GetProperties(Me)("MyProperty").Attributes
+ Private Sub PrintIndexItem2()
+     ' Creates a new collection and assigns it the properties for button1.
+     Dim properties As PropertyDescriptorCollection = _
+        TypeDescriptor.GetProperties(button1)
         
- ' Checks to see whether the property is read-only.
- Dim myAttribute As ReadOnlyAttribute = _
-    CType(attributes(GetType(ReadOnlyAttribute)), ReadOnlyAttribute)
-    
- If myAttribute.IsReadOnly Then
-     ' Insert code here.
- End If
+     ' Sets a PropertyDescriptor to the specific property.
+     Dim myProperty As PropertyDescriptor = properties("Opacity")
+        
+     ' Prints the display name for the property.
+     textBox1.Text = myProperty.DisplayName
+ End Sub

@@ -3,21 +3,74 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
-
 <head runat="server">
-    <title> Calendar VisibleMonthChanged Example </title>
+    <title>Button CommandName Example</title>
 <script runat="server">
 
-      void MonthChange(Object sender, MonthChangedEventArgs e) 
+      void CommandBtn_Click(Object sender, CommandEventArgs e) 
       {
 
-         if (e.NewDate.Month > e.PreviousDate.Month)
-         { 
-            Message.Text = "You moved forward one month.";
-         }
-         else
+         switch(e.CommandName)
          {
-            Message.Text = "You moved backwards one month.";
+
+            case "Sort":
+
+               // Call the method to sort the list.
+               Sort_List((String)e.CommandArgument);
+               break;
+
+            case "Submit":
+
+               // Display a message for the Submit button being clicked.
+               Message.Text = "You clicked the <b>Submit</b> button";
+
+               // Test whether the Command Argument is an empty string ("").
+               if((String)e.CommandArgument == "")
+               {
+                  // End the message.
+                  Message.Text += ".";
+               }
+               else
+               {
+                  // Display an error message for the command argument. 
+                  Message.Text += ", but the command argument is not recogized.";
+               }                
+               break;
+
+            default:
+
+               // The command name is not recognized. Display an error message.
+               Message.Text = "Command name not recogized.";
+               break; 
+
+         }
+
+      }
+
+      void Sort_List(string commandArgument)
+      {
+
+         switch(commandArgument)
+         {
+
+            case "Ascending":
+ 
+               // Insert code to sort the list in ascending order here.
+               Message.Text = "You clicked the <b>Sort Ascending</b> button.";
+               break;
+
+            case "Descending":
+              
+               // Insert code to sort the list in descending order here.
+               Message.Text = "You clicked the <b>Sort Descending</b> button.";
+               break;
+
+            default:
+        
+               // The command argument is not recognized. Display an error message.
+               Message.Text = "Command argument not recogized.";
+               break;
+
          }
 
       }
@@ -25,63 +78,72 @@
       void Page_Load(Object sender, EventArgs e)
       {
 
-         // Manually register the event-handling method for the  
-         // VisibleMonthChanged event of the Calendar control.
-         Calendar1.VisibleMonthChanged += 
-            new MonthChangedEventHandler(this.MonthChange);
+         // Manually register the event-handling method for the Command  
+         // event of the Button controls.
+         Button1.Command += new CommandEventHandler(this.CommandBtn_Click);
+         Button2.Command += new CommandEventHandler(this.CommandBtn_Click);
+         Button3.Command += new CommandEventHandler(this.CommandBtn_Click);
+         Button4.Command += new CommandEventHandler(this.CommandBtn_Click);
+         Button5.Command += new CommandEventHandler(this.CommandBtn_Click);
 
       }
-         
+
    </script>
- 
+
 </head>
  
 <body>
- 
+
    <form id="form1" runat="server">
 
-      <h3> Calendar VisibleMonthChanged Example </h3>
-       
-      Select a different month on the calendar. 
+      <h3>Button CommandName Example</h3>
+
+      Click one of the command buttons.
+
       <br /><br />
  
-      <asp:Calendar id="Calendar1" runat="server">
+      <asp:Button id="Button1"
+           Text="Sort Ascending"
+           CommandName="Sort"
+           CommandArgument="Ascending"
+           runat="server"/>
 
-         <WeekendDayStyle BackColor="gray">
-         </WeekendDayStyle>
+      &nbsp;
 
-      </asp:Calendar>
+      <asp:Button id="Button2"
+           Text="Sort Descending"
+           CommandName="Sort"
+           CommandArgument="Descending"
+           runat="server"/>
 
-      <hr /> 
+      <br /><br />
 
-      <table border="1">
+      <asp:Button id="Button3"
+           Text="Submit"
+           CommandName="Submit"
+           runat="server"/>
 
-         <tr style="background-color:Silver">
+      &nbsp;
 
-            <th>
+      <asp:Button id="Button4"
+           Text="Unknown Command Name"
+           CommandName="UnknownName"
+           CommandArgument="UnknownArgument"
+           runat="server"/>
 
-               Month navigation direction
+      &nbsp;
 
-            </th>
-         </tr>
+      <asp:Button id="Button5"
+           Text="Submit Unknown Command Argument"
+           CommandName="Submit"
+           CommandArgument="UnknownArgument"
+           runat="server"/>
+       
+      <br /><br />
 
-         <tr>
-
-            <td>
-           
-               <asp:Label id="Message" 
-                    Text="Starting month." 
-                    runat="server"/>
-
-            </td>
-
-         </tr>
-
-      </table>
-                   
+      <asp:Label id="Message" runat="server"/>
+ 
    </form>
-         
+ 
 </body>
-
 </html>
-   

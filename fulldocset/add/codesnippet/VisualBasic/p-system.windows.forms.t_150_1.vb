@@ -1,17 +1,39 @@
-      ' This code example demonstrates the syntax for setting
-      ' various ToolStripTextBox properties.
-      ' 
-      toolStripTextBox1.AcceptsReturn = True
-      toolStripTextBox1.AcceptsTab = True
-      toolStripTextBox1.AutoCompleteCustomSource.AddRange(New String() {"This is line one.", "Second line.", "Another line."})
-      toolStripTextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-      toolStripTextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-      toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-      toolStripTextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-      toolStripTextBox1.HideSelection = False
-      toolStripTextBox1.MaxLength = 32000
-      toolStripTextBox1.Name = "toolStripTextBox1"
-      toolStripTextBox1.ShortcutsEnabled = False
-      toolStripTextBox1.Size = New System.Drawing.Size(100, 25)
-      toolStripTextBox1.Text = "STRING1" + ControlChars.Cr + ControlChars.Lf + "STRING2" + ControlChars.Cr + ControlChars.Lf + "STRING3" + ControlChars.Cr + ControlChars.Lf + "STRING4"
-      toolStripTextBox1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
+Imports System.Drawing
+Imports System.ComponentModel
+Imports System.Windows.Forms
+Imports System.Resources
+
+Public Class Form1
+    Inherits Form
+
+    Public Sub New()
+        Dim components = New Container()
+        Dim resources As New ResourceManager(GetType(Form1))
+        Dim tabControl1 As New TabControl()
+        Dim tabPage1 As New TabPage()
+
+        ' Declares and instantiates the ImageList object.
+        Dim myImages As New ImageList(components)
+
+        tabControl1.Controls.Add(tabPage1)
+        ' Sets the images in myImages to display on the tabs of tabControl1. 
+        tabControl1.ImageList = myImages
+
+        tabPage1.ImageIndex = 0
+        tabPage1.Text = "tabPage1"
+
+        ' Gets the handle that provides the data of myImages.
+        myImages.ImageStream = CType(resources.GetObject("myImages.ImageStream"), ImageListStreamer)
+
+        ' Sets properties of myImages. 
+        myImages.ColorDepth = ColorDepth.Depth8Bit
+        myImages.ImageSize = New Size(16, 16)
+        myImages.TransparentColor = Color.Transparent
+
+        Me.Controls.Add(tabControl1)
+    End Sub
+
+    Shared Sub Main()
+        Application.Run(New Form1())
+    End Sub
+End Class

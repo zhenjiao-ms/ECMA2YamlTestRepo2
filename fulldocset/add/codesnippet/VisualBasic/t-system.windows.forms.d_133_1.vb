@@ -1,18 +1,19 @@
-' Add a GroupBox to a form and set some of its common properties.
-Private Sub AddMyGroupBox()
-   ' Create a GroupBox and add a TextBox to it.
-   Dim groupBox1 As New GroupBox()
-   Dim textBox1 As New TextBox()
-   textBox1.Location = New Point(15, 15)
-   groupBox1.Controls.Add(textBox1)
-   
-   ' Set the Text and Dock properties of the GroupBox.
-   groupBox1.Text = "MyGroupBox"
-   groupBox1.Dock = DockStyle.Top
-   
-   ' Disable the GroupBox (which disables all its child controls)
-   groupBox1.Enabled = False
-   
-   ' Add the Groupbox to the form.
-   Me.Controls.Add(groupBox1)
-End Sub
+    Private Sub ChangeParentRowLabels(ByVal myGrid As DataGrid)
+       Static currentLabelStyle As Integer
+       If currentLabelStyle = 4 Then currentLabelStyle = 0
+       Select Case currentLabelStyle
+       Case 0 
+          myGrid.ParentRowsLabelStyle = DataGridParentRowsLabelStyle.None
+       Case 1
+          myGrid.ParentRowsLabelStyle = DataGridParentRowsLabelStyle.TableName
+       Case 2
+          myGrid.ParentRowsLabelStyle = DataGridParentRowsLabelStyle.ColumnName
+       Case 3
+          myGrid.ParentRowsLabelStyle = DataGridParentRowsLabelStyle.Both
+       Case Else
+          myGrid.ParentRowsLabelStyle = DataGridParentRowsLabelStyle.Both
+       End Select
+
+       ' Increment the variable.
+       currentLabelStyle+=1
+    End Sub

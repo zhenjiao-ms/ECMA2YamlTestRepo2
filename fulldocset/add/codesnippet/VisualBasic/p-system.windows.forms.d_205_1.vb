@@ -1,19 +1,16 @@
-    ' Style and number columns.
-    Private Sub Button8_Click(ByVal sender As Object, _
-        ByVal args As EventArgs) Handles Button8.Click
+        Public Overrides ReadOnly Property Bounds() As Rectangle
+            Get
+                ' Create a glyph that is 10x10 and sitting
+                ' in the middle of the control.  Glyph coordinates
+                ' are in adorner window coordinates, so we must map
+                ' using the behavior service.
+                Dim edge As Point = behaviorSvc.ControlToAdornerWindow(control)
+                Dim size As Size = control.Size
+                Dim center As New Point(edge.X + size.Width / 2, edge.Y + _
+                    size.Height / 2)
 
-        Dim style As DataGridViewCellStyle = _
-            New DataGridViewCellStyle()
-        style.Alignment = _
-            DataGridViewContentAlignment.MiddleCenter
-        style.ForeColor = Color.IndianRed
-        style.BackColor = Color.Ivory
+                Dim bounds1 As New Rectangle(center.X - 5, center.Y - 5, 10, 10)
 
-        For Each column As DataGridViewColumn _
-            In dataGridView.Columns
-
-            column.HeaderCell.Value = _
-                column.Index.ToString
-            column.HeaderCell.Style = style
-        Next
-    End Sub
+                Return bounds1
+            End Get
+        End Property

@@ -35,9 +35,27 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <typeparam name="T">To be added.</typeparam>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <typeparam name="T">The type of the elements contained in the queue.</typeparam>
+    <summary>Represents a thread-safe first in-first out (FIFO) collection.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+> [!NOTE]
+>  ConcurrentQueue(T) implements the <xref:System.Collections.Generic.IReadOnlyCollection%601> interface starting with the [!INCLUDE[net_v46](~/add/includes/net-v46-md.md)]; in previous versions of the .NET Framework, the ConcurrentQueue(T) class did not implement this interface.  
+  
+   
+  
+## Examples  
+ The following example shows how to use a ConcurrentQueue(T) to enqueue and dequeue items:  
+  
+ [!code-vb[System.Collections.Concurrent.ConcurrentQueue#1](~/add/codesnippet/visualbasic/t-system.collections.con_0_1.vb)]
+ [!code-cs[System.Collections.Concurrent.ConcurrentQueue#1](~/add/codesnippet/csharp/t-system.collections.con_0_1.cs)]  
+  
+ ]]></format>
+    </remarks>
+    <threadsafe>All public and protected members of ConcurrentQueue(T) are thread-safe and may be used concurrently from multiple threads.</threadsafe>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -51,7 +69,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -68,9 +86,10 @@
         <Parameter Name="collection" Type="System.Collections.Generic.IEnumerable&lt;T&gt;" />
       </Parameters>
       <Docs>
-        <param name="collection">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="collection">The collection whose elements are copied to the new <see cref="System.Collections.Concurrent.ConcurrentQueue%601" />.</param>
+        <summary>Initializes a new instance of the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" /> class that contains elements copied from the specified collection</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">The <paramref name="collection" /> argument is null.</exception>
       </Docs>
     </Member>
     <Member MemberName="CopyTo">
@@ -90,10 +109,16 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="array">To be added.</param>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="array">The one-dimensional <see cref="T:System.Array" /> that is the destination of the elements copied from the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" />. The <see cref="T:System.Array" /> must have zero-based indexing.</param>
+        <param name="index">The zero-based index in <c>array</c> at which copying begins.</param>
+        <summary>Copies the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" /> elements to an existing one-dimensional <see cref="T:System.Array" />, starting at the specified array index.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="array" /> is a null reference (Nothing in Visual Basic).</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">
+          <paramref name="index" /> is less than zero.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="index" /> is equal to or greater than the length of the <paramref name="array" /> -or- The number of elements in the source <see cref="System.Collections.Concurrent.ConcurrentQueue%601" /> is greater than the available space from <paramref name="index" /> to the end of the destination <paramref name="array" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="Count">
@@ -109,9 +134,16 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the number of elements contained in the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" />.</summary>
+        <value>The number of elements contained in the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ For determining whether the collection contains any items, use of the <xref:System.Collections.Concurrent.ConcurrentQueue%601.IsEmpty%2A> property is recommended rather than retrieving the number of items from the Count property and comparing it to 0.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Enqueue">
@@ -130,8 +162,8 @@
         <Parameter Name="item" Type="T" />
       </Parameters>
       <Docs>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="item">The object to add to the end of the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" />. The value can be a null reference (Nothing in Visual Basic) for reference types.</param>
+        <summary>Adds an object to the end of the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" />.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -149,9 +181,18 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returns an enumerator that iterates through the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" />.</summary>
+        <returns>An enumerator for the contents of the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The enumeration represents a moment-in-time snapshot of the contents of the queue. It does not reflect any updates to the collection after GetEnumerator was called. The enumerator is safe to use concurrently with reads from and writes to the queue.  
+  
+ The enumerator returns the collection elements in the order in which they were added, which is FIFO order (first-in, first-out).  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsEmpty">
@@ -167,9 +208,16 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" /> is empty.</summary>
+        <value>true if the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" /> is empty; otherwise, false.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ For determining whether the collection contains any items, use of this property is recommended rather than retrieving the number of items from the <xref:System.Collections.Concurrent.ConcurrentQueue%601.Count%2A> property and comparing it to 0. However, as this collection is intended to be accessed concurrently, it may be the case that another thread will modify the collection after IsEmpty returns, thus invalidating the result.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.Concurrent.IProducerConsumerCollection&lt;T&gt;.TryAdd">
@@ -188,10 +236,17 @@
         <Parameter Name="item" Type="T" />
       </Parameters>
       <Docs>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="item">The object to add to the <see cref="System.Collections.Concurrent.IProducerConsumerCollection%601" />. The value can be a null reference (Nothing in Visual Basic) for reference types.</param>
+        <summary>Attempts to add an object to the <see cref="System.Collections.Concurrent.IProducerConsumerCollection%601" />.</summary>
+        <returns>true if the object was added successfully; otherwise, false.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ For <xref:System.Collections.Concurrent.ConcurrentQueue%601>, this operation will always add the object to the end of the <xref:System.Collections.Concurrent.ConcurrentQueue%601> and return true.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.Concurrent.IProducerConsumerCollection&lt;T&gt;.TryTake">
@@ -210,10 +265,17 @@
         <Parameter Name="item" Type="T&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="item">When this method returns, if the operation was successful, <c>item</c> contains the object removed. If no object was available to be removed, the value is unspecified.</param>
+        <summary>Attempts to remove and return an object from the <see cref="System.Collections.Concurrent.IProducerConsumerCollection%601" />.</summary>
+        <returns>true if an element was removed and returned succesfully; otherwise, false.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ For <xref:System.Collections.Concurrent.ConcurrentQueue%601>, this operation will attempt to remove the object from the beginning of the <xref:System.Collections.Concurrent.ConcurrentQueue%601>.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.ICollection.CopyTo">
@@ -233,10 +295,16 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="array">To be added.</param>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="array">The one-dimensional <see cref="T:System.Array" /> that is the destination of the elements copied from the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />. The <see cref="T:System.Array" /> must have zero-based indexing.</param>
+        <param name="index">The zero-based index in <c>array</c> at which copying begins.</param>
+        <summary>Copies the elements of the <see cref="T:System.Collections.ICollection" /> to an <see cref="T:System.Array" />, starting at a particular <see cref="T:System.Array" /> index.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="array" /> is a null reference (Nothing in Visual Basic).</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">
+          <paramref name="index" /> is less than zero.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="array" /> is multidimensional. -or- <paramref name="array" /> does not have zero-based indexing. -or- <paramref name="index" /> is equal to or greater than the length of the <paramref name="array" /> -or- The number of elements in the source <see cref="T:System.Collections.ICollection" /> is greater than the available space from <paramref name="index" /> to the end of the destination <paramref name="array" />. -or- The type of the source <see cref="T:System.Collections.ICollection" /> cannot be cast automatically to the type of the destination <paramref name="array" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.ICollection.IsSynchronized">
@@ -252,8 +320,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value indicating whether access to the <see cref="T:System.Collections.ICollection" /> is synchronized with the SyncRoot.</summary>
+        <value>true if access to the <see cref="T:System.Collections.ICollection" /> is synchronized with the SyncRoot; otherwise, false. For <see cref="System.Collections.Concurrent.ConcurrentQueue%601" />, this property always returns false.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -270,9 +338,10 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets an object that can be used to synchronize access to the <see cref="T:System.Collections.ICollection" />. This property is not supported.</summary>
+        <value>Returns null  (Nothing in Visual Basic).</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotSupportedException">The SyncRoot property is not supported.</exception>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.IEnumerable.GetEnumerator">
@@ -289,8 +358,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns an enumerator that iterates through a collection.</summary>
+        <returns>An <see cref="T:System.Collections.IEnumerator" /> that can be used to iterate through the collection.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -308,8 +377,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Copies the elements stored in the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" /> to a new array.</summary>
+        <returns>A new array containing a snapshot of elements copied from the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -329,10 +398,20 @@
         <Parameter Name="result" Type="T&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="result">When this method returns, if the operation was successful, <c>result</c> contains the object removed. If no object was available to be removed, the value is unspecified.</param>
+        <summary>Tries to remove and return the object at the beginning of the concurrent queue.</summary>
+        <returns>
+          <see langword="true" /> if an element was removed and returned from the beginning of the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" /> successfully; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ <xref:System.Collections.Concurrent.ConcurrentQueue%601> handles all synchronization internally. If two threads call TryDequeue at precisely the same moment, neither operation is blocked. When a conflict is detected between two threads, one thread has to try again to retrieve the next element, and the synchronization is handled internally.  
+  
+ TryDequeue tries to remove an element from the queue. If the method is successful, the item is removed and the method returns `true`; otherwise, it returns `false`. That happens atomically with respect to other operations on the queue. If the queue was populated with code such as `q.Enqueue("a"); q.Enqueue("b"); q.Enqueue("c");` and two threads concurrently try to dequeue an element, one thread will dequeue `a` and the other thread will dequeue `b`. Both calls to TryDequeue will return `true`, because they were both able to dequeue an element. If each thread goes back to dequeue an additional element, one of the threads will dequeue `c` and return `true`, whereas the other thread will find the queue empty and will return `false`.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="TryPeek">
@@ -351,9 +430,10 @@
         <Parameter Name="result" Type="T&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="result">When this method returns, <c>result</c> contains an object from the beginning of the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" /> or an unspecified value if the operation failed.</param>
+        <summary>Tries to return an object from the beginning of the <see cref="System.Collections.Concurrent.ConcurrentQueue%601" /> without removing it.</summary>
+        <returns>
+          <see langword="true" /> if an object was returned successfully; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -1,82 +1,30 @@
-ref class Customer
-{
-public:
-   ArrayList^ CustomerOrders;
-   String^ CustomerName;
-   Customer( String^ myName )
+private:
+   void Button1_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
    {
-      CustomerName = myName;
-      CustomerOrders = gcnew ArrayList;
-   }
-
-};
-
-ref class Order
-{
-public:
-   String^ OrderID;
-   Order( String^ myOrderID )
-   {
-      this->OrderID = myOrderID;
-   }
-
-};
-
-   void FillTreeView()
-   {
+      myTreeView->ItemHeight = 5;
+      myTreeView->SelectedNode->NodeFont = gcnew System::Drawing::Font( "Arial",5 );
       
-      // Load the images in an ImageList.
-      ImageList^ myImageList = gcnew ImageList;
-      myImageList->Images->Add( Image::FromFile( "Default.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "SelectedDefault.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "Root.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "UnselectedCustomer.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "SelectedCustomer.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "UnselectedOrder.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "SelectedOrder.gif" ) );
+      // Get the font size from combobox.
+      String^ selectedString = myComboBox->SelectedItem->ToString();
+      int myNodeFontSize = Int32::Parse( selectedString );
       
-      // Assign the ImageList to the TreeView.
-      myTreeView->ImageList = myImageList;
-      
-      // Set the TreeView control's default image and selected image indexes.
-      myTreeView->ImageIndex = 0;
-      myTreeView->SelectedImageIndex = 1;
-      
-      /* Set the index of image from the
-        ImageList for selected and unselected tree nodes.*/
-      this->rootImageIndex = 2;
-      this->selectedCustomerImageIndex = 3;
-      this->unselectedCustomerImageIndex = 4;
-      this->selectedOrderImageIndex = 5;
-      this->unselectedOrderImageIndex = 6;
-      
-      // Create the root tree node.
-      TreeNode^ rootNode = gcnew TreeNode( "CustomerList" );
-      rootNode->ImageIndex = rootImageIndex;
-      rootNode->SelectedImageIndex = rootImageIndex;
-      
-      // Add a main root tree node.
-      myTreeView->Nodes->Add( rootNode );
-      
-      // Add a root tree node for each Customer object in the ArrayList.
-      IEnumerator^ myEnum = customerArray->GetEnumerator();
-      while ( myEnum->MoveNext() )
+      // Set the font of root node.
+      myTreeView->SelectedNode->NodeFont = gcnew System::Drawing::Font( "Arial",(float)myNodeFontSize );
+      for ( int i = 0; i < myTreeView->Nodes[ 0 ]->Nodes->Count; i++ )
       {
-         Customer^ myCustomer = safe_cast<Customer^>(myEnum->Current);
          
-         // Add a child tree node for each Order object.
-         int countIndex = 0;
-         array<TreeNode^>^myTreeNodeArray = gcnew array<TreeNode^>(myCustomer->CustomerOrders->Count);
-         IEnumerator^ myEnum = myCustomer->CustomerOrders->GetEnumerator();
-         while ( myEnum->MoveNext() )
-         {
-            Order^ myOrder = safe_cast<Order^>(myEnum->Current);
-            
-            // Add the Order tree node to the array.
-            myTreeNodeArray[ countIndex ] = gcnew TreeNode( myOrder->OrderID,unselectedOrderImageIndex,selectedOrderImageIndex );
-            countIndex++;
-         }
-         TreeNode^ customerNode = gcnew TreeNode( myCustomer->CustomerName,unselectedCustomerImageIndex,selectedCustomerImageIndex,myTreeNodeArray );
-         myTreeView->Nodes[ 0 ]->Nodes->Add( customerNode );
+         // Set the font of child nodes.
+         myTreeView->Nodes[ 0 ]->Nodes[ i ]->NodeFont = gcnew System::Drawing::Font( "Arial",(float)myNodeFontSize );
+
       }
+      
+      // Get the bounds of the tree node.
+      Rectangle myRectangle = myTreeView->SelectedNode->Bounds;
+      int myNodeHeight = myRectangle.Height;
+      if ( myNodeHeight < myNodeFontSize )
+      {
+         myNodeHeight = myNodeFontSize;
+      }
+
+      myTreeView->ItemHeight = myNodeHeight + 4;
    }

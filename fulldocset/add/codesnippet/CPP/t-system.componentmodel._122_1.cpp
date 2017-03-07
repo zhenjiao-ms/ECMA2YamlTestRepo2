@@ -1,15 +1,19 @@
-public:
-   property Image^ MyImage 
-   {
-      [Description("The image associated with the control"),Category("Appearance")]
-      Image^ get()
+   public:
+      void LinkComponentChangedEvent( IComponentChangeService^ changeService )
       {
-         // Insert code here.
-         return image1;
+         // Registers an event handler for the ComponentChanged event.
+         changeService->ComponentChanged += gcnew ComponentChangedEventHandler(
+            this, &ComponentChangedEventHandlerExample::OnComponentChanged );
       }
 
-      void set( Image^ value )
+   private:
+      void OnComponentChanged( Object^ sender, ComponentChangedEventArgs^ e )
       {
-         // Insert code here.
+         // Displays changed component information on the console.
+         Console::WriteLine( "Type of the component that has changed: " +
+            e->Component->GetType()->FullName );
+         Console::WriteLine( "Name of the member of the component that has changed: " +
+            e->Member->Name );
+         Console::WriteLine( "Old value of the member: " + e->OldValue );
+         Console::WriteLine( "New value of the member: " + e->NewValue );
       }
-   }

@@ -1,14 +1,14 @@
-    ' Demonstrates SetText, ContainsText, and GetText.
-    Public Function SwapClipboardHtmlText( _
-        ByVal replacementHtmlText As String) As String
+    ' Demonstrates SetData, ContainsData, and GetData.
+    Public Function SwapClipboardFormattedData( _
+        ByVal format As String, ByVal data As Object) As Object
 
-        Dim returnHtmlText As String = Nothing
+        Dim returnObject As Object = Nothing
 
-        If (Clipboard.ContainsText(TextDataFormat.Html)) Then
-            returnHtmlText = Clipboard.GetText(TextDataFormat.Html)
-            Clipboard.SetText(replacementHtmlText, TextDataFormat.Html)
+        If (Clipboard.ContainsData(format)) Then
+            returnObject = Clipboard.GetData(format)
+            Clipboard.SetData(format, data)
         End If
 
-        Return returnHtmlText
+        Return returnObject
 
     End Function

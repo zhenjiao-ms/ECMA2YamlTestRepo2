@@ -1,5 +1,7 @@
-        void HandleMouseDown(object sender, MouseEventArgs e)
-        {
-            ListViewHitTestInfo info = listView1.HitTest(e.X, e.Y);
-            MessageBox.Show(info.Location.ToString());
-        }
+private void RichTextBox1_LinkClicked(Object sender, LinkClickedEventArgs e) {
+
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "LinkText", e.LinkText );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "LinkClicked Event" );
+}

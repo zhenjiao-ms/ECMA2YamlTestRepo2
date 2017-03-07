@@ -1,29 +1,32 @@
-            ' Ensure that the source has already been registered using
-            ' EventLogInstaller or EventLog.CreateEventSource.
-            Dim sourceName as String = "SampleApplicationSource"
-            If EventLog.SourceExists(sourceName)
-                
-                ' Define an informational event with no category.
-                ' The message identifier corresponds to the message text in the
-                ' message resource file defined for the source.
-                Dim myEvent As EventInstance = New EventInstance(UpdateCycleCompleteMsgId, 0)
-                ' Write the event to the event log using the registered source.
-                EventLog.WriteEvent(sourceName, myEvent)
+            ' Get the event log corresponding to the existing source.
+            Dim myLogName As String = EventLog.LogNameFromSourceName(sourceName,".")
+        
+            ' Find each instance of a specific event log entry in a
+            ' particular event log.
 
-                ' Reuse the event data instance for another event entry.
-                ' Set the entry category and message identifiers for
-                ' the appropriate resource identifiers in the resource files
-                ' for the registered source.  Set the event type to Warning.
+            Dim myEventLog As EventLog = new EventLog(myLogName, ".", sourceName)
+            Dim count As Integer = 0
 
-                myEvent.CategoryId = RefreshCategoryMsgId
-                myEvent.EntryType = EventLogEntryType.Warning
-                myEvent.InstanceId = ServerConnectionDownMsgId
+            Console.WriteLine("Searching event log entries for the event ID {0}...", _
+               ServerConnectionDownMsgId.ToString())
+            
+            ' Search for the resource ID, display the event text,
+            ' and display the number of matching entries.
 
-                ' Write the event to the event log using the registered source.
-                ' Insert the machine name into the event message text.
-                EventLog.WriteEvent(sourceName, myEvent, Environment.MachineName)
+            Dim entry As EventLogEntry
+            For Each entry In  myEventLog.Entries
+                If entry.InstanceId = ServerConnectionDownMsgId
+                    count = count + 1
+                    Console.WriteLine()
+                    Console.WriteLine("Entry ID    = {0}", _
+                        entry.InstanceId.ToString())
+                    Console.WriteLine("Reported at {0}", _
+                        entry.TimeWritten.ToString())
+                    Console.WriteLine("Message text:")
+                    Console.WriteLine(ControlChars.Tab + entry.Message)
+                End If
+            Next entry
 
-            Else 
-                Console.WriteLine("Warning - event source {0} not registered", _
-                    sourceName)
-            End If
+            Console.WriteLine()
+            Console.WriteLine("Found {0} events with ID {1} in event log {2}", _
+                count.ToString(), ServerConnectionDownMsgId.ToString(), myLogName)

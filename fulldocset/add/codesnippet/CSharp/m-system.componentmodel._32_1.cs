@@ -1,16 +1,17 @@
-private void MyEnumerator() {
-    // Creates a new collection and assigns it the attributes for button1.
-    AttributeCollection attributes;
-    attributes = TypeDescriptor.GetAttributes(button1);
- 
-    // Creates an enumerator for the collection.
-    System.Collections.IEnumerator ie = attributes.GetEnumerator();
- 
-    // Prints the type of each attribute in the collection.
-    Object myAttribute;
-    while(ie.MoveNext()==true) {
-       myAttribute = ie.Current;
-       textBox1.Text += myAttribute.ToString();
-       textBox1.Text += '\n';
-    }
- }
+        // Add the new part unless the part number contains
+        // spaces. In that case cancel the add.
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Part newPart = listOfParts.AddNew();
+
+            if (newPart.PartName.Contains(" "))
+            {
+                MessageBox.Show("Part names cannot contain spaces.");
+                listOfParts.CancelNew(listOfParts.IndexOf(newPart));
+            }
+            else
+            {
+                textBox2.Text = randomNumber.Next(9999).ToString();
+                textBox1.Text = "Enter part name";
+            }
+        }

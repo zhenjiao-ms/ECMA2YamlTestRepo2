@@ -1,95 +1,27 @@
-Imports Microsoft.VisualBasic
-Imports System
-Imports System.Collections
-Imports System.ComponentModel
-Imports System.Drawing
-Imports System.Reflection
-Imports System.Windows.Forms
-
-Public Class SystemInfoBrowserForm
-    Inherits System.Windows.Forms.Form
-    
-    Private listBox1 As System.Windows.Forms.ListBox
-    Private textBox1 As System.Windows.Forms.TextBox  
-    
-    Public Sub New()
-        Me.SuspendLayout()
-        InitForm()
-        
-        ' Add each property of the SystemInformation class to the list box.
-        Dim t As Type = GetType(System.Windows.Forms.SystemInformation)
-        Dim pi As PropertyInfo() = t.GetProperties()
-        Dim i As Integer
-        For i = 0 To pi.Length - 1
-            listBox1.Items.Add(pi(i).Name)
-        Next i
-        textBox1.Text = "The SystemInformation class has " + pi.Length.ToString() + " properties." + ControlChars.CrLf
-        
-        ' Configure the list item selected handler for the list box to invoke a 
-        ' method that displays the value of each property.
-        AddHandler listBox1.SelectedIndexChanged, AddressOf listBox1_SelectedIndexChanged
-        
-        Me.ResumeLayout(False)
-    End Sub    
-    
-    Private Sub listBox1_SelectedIndexChanged(sender As Object, e As EventArgs)
-        ' Return if no list item is selected.
-        If listBox1.SelectedIndex = - 1 Then
-            Return
-        End If         
-        ' Get the property name from the list item.
-        Dim propname As String = listBox1.Text
-        
-        If propname = "PowerStatus" Then
-            ' Cycle and display the values of each property of the PowerStatus property.
-            textBox1.Text += ControlChars.CrLf + "The value of the PowerStatus property is:"
-            Dim t As Type = GetType(System.Windows.Forms.PowerStatus)
-            Dim pi As PropertyInfo() = t.GetProperties()
-            Dim i As Integer
-            For i = 0 To pi.Length - 1
-                Dim propval As Object = pi(i).GetValue(SystemInformation.PowerStatus, Nothing)
-                textBox1.Text += ControlChars.CrLf + "    PowerStatus." + pi(i).Name + " is: " + propval.ToString()
-            Next i
-        Else
-            ' Display the value of the selected property of the SystemInformation type.
-            Dim t As Type = GetType(System.Windows.Forms.SystemInformation)
-            Dim pi As PropertyInfo() = t.GetProperties()
-            Dim prop As PropertyInfo = Nothing
-            Dim i As Integer
-            For i = 0 To pi.Length - 1
-                If pi(i).Name = propname Then
-                    prop = pi(i)
-                    Exit For
-                End If
-            Next i
-            Dim propval As Object = prop.GetValue(Nothing, Nothing)
-            textBox1.Text += ControlChars.CrLf + "The value of the " + propname + " property is: " + propval.ToString()
-        End If
-    End Sub    
-    
-    Private Sub InitForm()
-        ' Initialize the form settings
-        Me.listBox1 = New System.Windows.Forms.ListBox()
-        Me.textBox1 = New System.Windows.Forms.TextBox()
-        Me.listBox1.Anchor = CType(System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right, System.Windows.Forms.AnchorStyles)
-        Me.listBox1.Location = New System.Drawing.Point(8, 16)
-        Me.listBox1.Size = New System.Drawing.Size(172, 496)
-        Me.listBox1.TabIndex = 0
-        Me.textBox1.Anchor = CType(System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right, System.Windows.Forms.AnchorStyles)
-        Me.textBox1.Location = New System.Drawing.Point(188, 16)
-        Me.textBox1.Multiline = True
-        Me.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.textBox1.Size = New System.Drawing.Size(420, 496)
-        Me.textBox1.TabIndex = 1
-        Me.ClientSize = New System.Drawing.Size(616, 525)
-        Me.Controls.Add(Me.textBox1)
-        Me.Controls.Add(Me.listBox1)
-        Me.Text = "Select a SystemInformation property to get the value of"
-    End Sub
-        
-    <STAThread()>  _
-    Shared Sub Main()
-        Application.Run(New SystemInfoBrowserForm())
-    End Sub
-
-End Class
+        ' Basic SplitContainer properties.
+        ' This is a vertical splitter that moves in 10-pixel increments.
+        ' This splitter needs no explicit Orientation property because Vertical is the default.
+        splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
+        splitContainer1.ForeColor = System.Drawing.SystemColors.Control
+        splitContainer1.Location = New System.Drawing.Point(0, 0)
+        splitContainer1.Name = "splitContainer1"
+        ' You can drag the splitter no nearer than 30 pixels from the left edge of the container.
+        splitContainer1.Panel1MinSize = 30
+        ' You can drag the splitter no nearer than 20 pixels from the right edge of the container.
+        splitContainer1.Panel2MinSize = 20
+        splitContainer1.Size = New System.Drawing.Size(292, 273)
+        splitContainer1.SplitterDistance = 79
+        ' This splitter moves in 10-pixel increments.
+        splitContainer1.SplitterIncrement = 10
+        splitContainer1.SplitterWidth = 6
+        ' splitContainer1 is the first control in the tab order.
+        splitContainer1.TabIndex = 0
+        splitContainer1.Text = "splitContainer1"
+          
+        ' Add a TreeView control to the left panel.
+        splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control
+        ' Add a TreeView control to Panel1.
+        splitContainer1.Panel1.Controls.Add(treeView1)
+        splitContainer1.Panel1.Name = "splitterPanel1"
+        ' Controls placed on Panel1 support right-to-left fonts.
+        splitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes

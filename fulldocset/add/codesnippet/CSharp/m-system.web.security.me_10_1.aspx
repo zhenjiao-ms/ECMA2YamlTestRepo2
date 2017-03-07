@@ -4,31 +4,41 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
 
-public void GoButton_OnClick(object sender, EventArgs args)
+public void Search_OnClick(object sender, EventArgs args)
 {
-  UserGrid.DataSource = Membership.FindUsersByEmail(EmailTextBox.Text);
-  UserGrid.DataBind();
+  string username = Membership.GetUserNameByEmail(EmailTextBox.Text);
+
+  if (username == null)
+  {
+    Msg.Text = "E-mail address " + Server.HtmlEncode(EmailTextBox.Text) + " is not found. Please reenter.";
+  }
+  else
+  {
+    Msg.Text = "The user name for " + Server.HtmlEncode(EmailTextBox.Text) + 
+               " is " + Server.HtmlEncode(username) + ".";
+  }
+
 }
 
 </script>
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-<title>Sample: Find Users by Email</title>
+<title>Sample: Retrieve Username By E-mail</title>
 </head>
 <body>
 
 <form id="form1" runat="server">
-  <h3>User List</h3>
+  <h3>Forgot your Username? Search for it by e-mail address.</h3>
 
-  E-mail address to Search for: 
-    <asp:TextBox id="EmailTextBox" runat="server" />
-    <asp:Button id="GoButton" Text=" Go " OnClick="GoButton_OnClick" runat="server" /><br />
+  <asp:Label id="Msg" runat="server" ForeColor="maroon" /><br />
 
-  <asp:DataGrid id="UserGrid" runat="server"
-                CellPadding="2" CellSpacing="1"
-                Gridlines="Both">
-    <HeaderStyle BackColor="darkblue" ForeColor="white" />
-  </asp:DataGrid>
+  E-mail address: <asp:Textbox id="EmailTextBox" Columns="30" runat="server" />
+                  <asp:RequiredFieldValidator id="EmailRequiredValidator" runat="server"
+                                        ControlToValidate="EmailTextBox" ForeColor="red"
+                                        Display="Static" ErrorMessage="Required" /><br />
+
+  <asp:Button id="SearchButton" Text="Search" 
+              OnClick="Search_OnClick" runat="server" />
 
 </form>
 

@@ -1,8 +1,8 @@
-    ' Make the the entire DataGridView read only.
-    Private Sub Button8_Click(ByVal sender As Object, _
-        ByVal e As System.EventArgs) Handles Button8.Click
+Private Sub ChangeFontHeight(ByVal myGrid As DataGrid)
+   ' Change the font first.
+   myGrid.Font = New System.Drawing.Font _
+   ("Microsoft Sans Serif", 15, _
+   System.Drawing.FontStyle.Regular)
 
-        For Each band As DataGridViewBand In dataGridView.Columns
-            band.ReadOnly = True
-        Next
-    End Sub
+   myGrid.PreferredRowHeight = myGrid.Font.Height
+End Sub

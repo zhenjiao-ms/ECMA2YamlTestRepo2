@@ -1,11 +1,8 @@
-    Private Sub CustomizeCellsInThirdColumn()
+    ' Make the the entire DataGridView read only.
+    Private Sub Button8_Click(ByVal sender As Object, _
+        ByVal e As System.EventArgs) Handles Button8.Click
 
-        Dim thirdColumn As Integer = 2
-        Dim column As DataGridViewColumn = _
-            dataGridView.Columns(thirdColumn)
-        Dim cell As DataGridViewCell = _
-            New DataGridViewTextBoxCell()
-
-        cell.Style.BackColor = Color.Wheat
-        column.CellTemplate = cell
+        For Each band As DataGridViewBand In dataGridView.Columns
+            band.ReadOnly = True
+        Next
     End Sub

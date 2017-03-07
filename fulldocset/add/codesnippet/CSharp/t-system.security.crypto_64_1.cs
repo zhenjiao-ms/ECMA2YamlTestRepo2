@@ -1,83 +1,157 @@
+//
+// This example signs an XML file using an
+// envelope signature. It then verifies the 
+// signed XML.
+//
 using System;
 using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
+using System.Text;
+using System.Xml;
 
-namespace Contoso
+public class SignVerifyEnvelope
 {
-    class KeySizesMembers
+
+    public static void Main(String[] args)
     {
-        [STAThread]
-        static void Main(string[] args)
+        // Generate a signing key.
+       RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
+
+       try
+       {
+
+           // Sign an XML file and save the signature to a 
+           // new file.
+           SignXmlFile("Test.xml", "SignedExample.xml", Key);
+           Console.WriteLine("XML file signed.");
+
+           // Verify the signature of the signed XML.
+           Console.WriteLine("Verifying signature...");
+
+           bool result = VerifyXmlFile("SignedExample.xml");
+
+           // Display the results of the signature verification to 
+           // the console.
+           if (result)
+           {
+               Console.WriteLine("The XML signature is valid.");
+           }
+           else
+           {
+               Console.WriteLine("The XML signature is not valid.");
+           }
+       }
+       catch (CryptographicException e)
+       {
+           Console.WriteLine(e.Message);
+       }
+       finally
+       {
+           // Clear resources associated with the 
+           // RSACryptoServiceProvider.
+           Key.Clear();
+       }
+   }
+
+    // Sign an XML file and save the signature in a new file.
+    public static void SignXmlFile(string FileName, string SignedFileName, RSA Key)
+    {
+        // Check the arguments.  
+        if (FileName == null)
+            throw new ArgumentNullException("FileName");
+        if (SignedFileName == null)
+            throw new ArgumentNullException("SignedFileName");
+        if (Key == null)
+            throw new ArgumentNullException("Key");
+
+
+        // Create a new XML document.
+        XmlDocument doc = new XmlDocument();
+
+        // Format the document to ignore white spaces.
+        doc.PreserveWhitespace = false;
+
+        // Load the passed XML file using it's name.
+        doc.Load(new XmlTextReader(FileName));
+
+        // Create a SignedXml object.
+        SignedXml signedXml = new SignedXml(doc);
+
+        // Add the key to the SignedXml document. 
+        signedXml.SigningKey = Key;
+
+        // Get the signature object from the SignedXml object.
+        Signature XMLSignature = signedXml.Signature;
+
+        // Create a reference to be signed.  Pass "" 
+        // to specify that all of the current XML
+        // document should be signed.
+        Reference reference = new Reference("");
+
+        // Add an enveloped transformation to the reference.
+        XmlDsigEnvelopedSignatureTransform env = new XmlDsigEnvelopedSignatureTransform();
+        reference.AddTransform(env);
+
+        // Add the Reference object to the Signature object.
+        XMLSignature.SignedInfo.AddReference(reference);
+
+        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+        KeyInfo keyInfo = new KeyInfo();
+        keyInfo.AddClause(new RSAKeyValue((RSA)Key));
+
+        // Add the KeyInfo object to the Reference object.
+        XMLSignature.KeyInfo = keyInfo;
+
+        // Compute the signature.
+        signedXml.ComputeSignature();
+
+        // Get the XML representation of the signature and save
+        // it to an XmlElement object.
+        XmlElement xmlDigitalSignature = signedXml.GetXml();
+
+        // Append the element to the XML document.
+        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, true));
+
+
+        if (doc.FirstChild is XmlDeclaration)
         {
-            // Initializes a new instance of the KeySizes class with the
-            // specified key values.
-            int minSize = 64;
-            int maxSize = 1024;
-            int skipSize = 64;
-            KeySizes keySizes = new KeySizes(minSize, maxSize, skipSize);
-
-            // Show the values of the keys.
-            ShowKeys(new KeySizes[1]{keySizes}, "Custom Keys");
-
-            // Create a new symmetric algorithm and display its key values.
-            SymmetricAlgorithm rijn = SymmetricAlgorithm.Create();
-            ShowKeys(rijn.LegalKeySizes, rijn.ToString());
-            Console.WriteLine("rijn.blocksize:" + rijn.BlockSize);
-
-            // Create a new RSA algorithm and display its key values.
-            RSACryptoServiceProvider rsaCSP = 
-                new RSACryptoServiceProvider(384);
-            ShowKeys(rsaCSP.LegalKeySizes, rsaCSP.ToString());
-            Console.WriteLine("RSACryptoServiceProvider KeySize = " + 
-                rsaCSP.KeySize);
-
-            Console.WriteLine("This sample completed successfully; " +
-                "press Enter to exit.");
-            Console.ReadLine();
+            doc.RemoveChild(doc.FirstChild);
         }
 
-        // Display specified KeySize properties to the console.
-        private static void ShowKeys(KeySizes[] keySizes, string objectName)
-        {
-            // Retrieve the first KeySizes in the array.
-            KeySizes firstKeySize = keySizes[0];
+        // Save the signed XML document to a file specified
+        // using the passed string.
+        XmlTextWriter xmltw = new XmlTextWriter(SignedFileName, new UTF8Encoding(false));
+        doc.WriteTo(xmltw);
+        xmltw.Close();
+    }
+    // Verify the signature of an XML file and return the result.
+    public static Boolean VerifyXmlFile(String Name)
+    {
+        // Check the arguments.  
+        if (Name == null)
+            throw new ArgumentNullException("Name");
 
-            // Retrieve the minimum key size in bits.
-            int minKeySize = firstKeySize.MinSize;
-                
-            // Retrieve the maximum key size in bits.
-            int maxKeySize = firstKeySize.MaxSize;
-                
-            // Retrieve the interval between valid key size in bits.
-            int skipKeySize = firstKeySize.SkipSize;
+        // Create a new XML document.
+        XmlDocument xmlDocument = new XmlDocument();
 
-            Console.Write("\n KeySizes retrieved from the ");
-            Console.WriteLine(objectName + " object.");
-            Console.WriteLine("Minimum key size bits: " + minKeySize);
-            Console.WriteLine("Maximum key size bits: " + maxKeySize);
-            Console.WriteLine("Interval between key size bits: " + 
-                skipKeySize);
-        }
-	}
+        // Format using white spaces.
+        xmlDocument.PreserveWhitespace = true;
+
+        // Load the passed XML file into the document. 
+        xmlDocument.Load(Name);
+
+        // Create a new SignedXml object and pass it
+        // the XML document class.
+        SignedXml signedXml = new SignedXml(xmlDocument);
+
+        // Find the "Signature" node and create a new
+        // XmlNodeList object.
+        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
+
+        // Load the signature node.
+        signedXml.LoadXml((XmlElement)nodeList[0]);
+
+        // Check the signature and return the result.
+        return signedXml.CheckSignature();
+    }
 }
-//
-// This sample produces the following output:
-//
-// KeySizes retrieved from the Custom Keys object.
-// Minimum key size bits: 64
-// Maximum key size bits: 1024
-// Interval between key size bits: 64
-// 
-// KeySizes retrieved from the System.Security.Cryptography.RijndaelManaged
-// object.
-// Minimum key size bits: 128
-// Maximum key size bits: 256
-// Interval between key size bits: 64
-// rijn.blocksize:128
-// 
-// KeySizes retrieved from the
-// System.Security.Cryptography.RSACryptoServiceProvider object.
-// Minimum key size bits: 384
-// Maximum key size bits: 16384
-// Interval between key size bits: 8
-// RSACryptoServiceProvider KeySize = 384
-// This sample completed successfully; press Enter to exit.

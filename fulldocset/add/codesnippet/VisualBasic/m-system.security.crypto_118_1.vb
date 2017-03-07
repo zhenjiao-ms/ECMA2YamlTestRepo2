@@ -1,67 +1,94 @@
 Imports System
-Imports System.IO
 Imports System.Security.Cryptography
-Imports System.Windows.Forms
+Imports System.Text
 
-Public Class HashDirectory
+ _
 
-    Public Shared Sub Main(ByVal args() As String)
-        Dim directory As String
-        If args.Length < 1 Then
-            Dim fdb As New FolderBrowserDialog
-            Dim dr As DialogResult = fdb.ShowDialog()
-            If (dr = DialogResult.OK) Then
-                directory = fdb.SelectedPath
-            Else
-                Console.WriteLine("No directory selected")
-                Return
-            End If
-        Else
-            directory = args(0)
-        End If
+Class RSACSPSample
+
+
+    Shared Sub Main()
         Try
-            ' Create a DirectoryInfo object representing the specified directory.
-            Dim dir As New DirectoryInfo(directory)
-            ' Get the FileInfo objects for every file in the directory.
-            Dim files As FileInfo() = dir.GetFiles()
-            ' Initialize a RIPE160 hash object.
-            Dim myRIPEMD160 As RIPEMD160 = RIPEMD160Managed.Create()
-            Dim hashValue() As Byte
-            ' Compute and print the hash values for each file in directory.
-            Dim fInfo As FileInfo
-            For Each fInfo In files
-                ' Create a fileStream for the file.
-                Dim fileStream As FileStream = fInfo.Open(FileMode.Open)
-                ' Be sure it's positioned to the beginning of the stream.
-                fileStream.Position = 0
-                ' Compute the hash of the fileStream.
-                hashValue = myRIPEMD160.ComputeHash(fileStream)
-                ' Write the name of the file to the Console.
-                Console.Write(fInfo.Name + ": ")
-                ' Write the hash value to the Console.
-                PrintByteArray(hashValue)
-                ' Close the file.
-                fileStream.Close()
-            Next fInfo
-            Return
-        Catch DExc As DirectoryNotFoundException
-            Console.WriteLine("Error: The directory specified could not be found.")
-        Catch IOExc As IOException
-            Console.WriteLine("Error: A file in the directory could not be accessed.")
-        End Try
+            'Create a UnicodeEncoder to convert between byte array and string.
+            Dim ByteConverter As New UnicodeEncoding()
 
+            'Create byte arrays to hold original, encrypted, and decrypted data.
+            Dim dataToEncrypt As Byte() = ByteConverter.GetBytes("Data to Encrypt")
+            Dim encryptedData() As Byte
+            Dim decryptedData() As Byte
+
+            'Create a new instance of RSACryptoServiceProvider to generate
+            'public and private key data.
+            Using RSA As New RSACryptoServiceProvider
+
+                'Pass the data to ENCRYPT, the public key information 
+                '(using RSACryptoServiceProvider.ExportParameters(false),
+                'and a boolean flag specifying no OAEP padding.
+                encryptedData = RSAEncrypt(dataToEncrypt, RSA.ExportParameters(False), False)
+
+                'Pass the data to DECRYPT, the private key information 
+                '(using RSACryptoServiceProvider.ExportParameters(true),
+                'and a boolean flag specifying no OAEP padding.
+                decryptedData = RSADecrypt(encryptedData, RSA.ExportParameters(True), False)
+
+                'Display the decrypted plaintext to the console. 
+                Console.WriteLine("Decrypted plaintext: {0}", ByteConverter.GetString(decryptedData))
+            End Using
+        Catch e As ArgumentNullException
+            'Catch this exception in case the encryption did
+            'not succeed.
+            Console.WriteLine("Encryption failed.")
+        End Try
     End Sub
 
-    ' Print the byte array in a readable format.
-    Public Shared Sub PrintByteArray(ByVal array() As Byte)
-        Dim i As Integer
-        For i = 0 To array.Length - 1
-            Console.Write(String.Format("{0:X2}", array(i)))
-            If i Mod 4 = 3 Then
-                Console.Write(" ")
-            End If
-        Next i
-        Console.WriteLine()
 
-    End Sub 'PrintByteArray
+    Public Shared Function RSAEncrypt(ByVal DataToEncrypt() As Byte, ByVal RSAKeyInfo As RSAParameters, ByVal DoOAEPPadding As Boolean) As Byte()
+        Try
+            Dim encryptedData() As Byte
+            'Create a new instance of RSACryptoServiceProvider.
+            Using RSA As New RSACryptoServiceProvider
+
+                'Import the RSA Key information. This only needs
+                'toinclude the public key information.
+                RSA.ImportParameters(RSAKeyInfo)
+
+                'Encrypt the passed byte array and specify OAEP padding.  
+                'OAEP padding is only available on Microsoft Windows XP or
+                'later.  
+                encryptedData = RSA.Encrypt(DataToEncrypt, DoOAEPPadding)
+            End Using
+            Return encryptedData
+            'Catch and display a CryptographicException  
+            'to the console.
+        Catch e As CryptographicException
+            Console.WriteLine(e.Message)
+
+            Return Nothing
+        End Try
+    End Function
+
+
+    Public Shared Function RSADecrypt(ByVal DataToDecrypt() As Byte, ByVal RSAKeyInfo As RSAParameters, ByVal DoOAEPPadding As Boolean) As Byte()
+        Try
+            Dim decryptedData() As Byte
+            'Create a new instance of RSACryptoServiceProvider.
+            Using RSA As New RSACryptoServiceProvider
+                'Import the RSA Key information. This needs
+                'to include the private key information.
+                RSA.ImportParameters(RSAKeyInfo)
+
+                'Decrypt the passed byte array and specify OAEP padding.  
+                'OAEP padding is only available on Microsoft Windows XP or
+                'later.  
+                decryptedData = RSA.Decrypt(DataToDecrypt, DoOAEPPadding)
+                'Catch and display a CryptographicException  
+                'to the console.
+            End Using
+            Return decryptedData
+        Catch e As CryptographicException
+            Console.WriteLine(e.ToString())
+
+            Return Nothing
+        End Try
+    End Function
 End Class

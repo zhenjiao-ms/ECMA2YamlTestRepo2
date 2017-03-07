@@ -1,5 +1,13 @@
-            Enum myServer= Servers.Exchange;
-            string myServerString = "BizTalk";
-            Console.WriteLine(TypeDescriptor.GetConverter(myServer).ConvertTo(myServer, typeof(string))); 
-            Console.WriteLine(TypeDescriptor.GetConverter(myServer).ConvertFrom(myServerString));    
-            
+        [EditorAttribute(typeof(System.ComponentModel.Design.CollectionEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        public ICollection testCollection
+        {
+            get
+            {
+                return Icollection;
+            }
+            set
+            {
+                Icollection = value;
+            }
+        }
+        private ICollection Icollection;

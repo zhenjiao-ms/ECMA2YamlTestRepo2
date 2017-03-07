@@ -1,76 +1,39 @@
-    private void UpdateLabelText()
+    private void SetupDataGridView()
     {
-        int WithdrawalTotal = 0;
-        int DepositTotal = 0;
-        int SelectedCellTotal = 0;
-        int counter;
+        this.Controls.Add(songsDataGridView);
 
-        // Iterate through all the rows and sum up the appropriate columns.
-        for (counter = 0; counter < (DataGridView1.Rows.Count);
-            counter++)
-        {
-            if (DataGridView1.Rows[counter].Cells["Withdrawals"].Value
-                != null)
-            {
-                if (DataGridView1.Rows[counter].
-                    Cells["Withdrawals"].Value.ToString().Length != 0)
-                {
-                    WithdrawalTotal += int.Parse(DataGridView1.Rows[counter].
-                        Cells["Withdrawals"].Value.ToString());
-                }
-            }
+        songsDataGridView.ColumnCount = 5;
 
-            if (DataGridView1.Rows[counter].Cells["Deposits"].Value != null)
-            {
-                if (DataGridView1.Rows[counter]
-                    .Cells["Deposits"].Value.ToString().Length != 0)
-                {
-                    DepositTotal += int.Parse(DataGridView1.Rows[counter]
-                        .Cells["Deposits"].Value.ToString());
-                }
-            }
-        }
+        songsDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
+        songsDataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        songsDataGridView.ColumnHeadersDefaultCellStyle.Font =
+            new Font(songsDataGridView.Font, FontStyle.Bold);
 
-        // Iterate through the SelectedCells collection and sum up the values.
-        for (counter = 0;
-            counter < (DataGridView1.SelectedCells.Count); counter++)
-        {
-            if (DataGridView1.SelectedCells[counter].FormattedValueType ==
-                Type.GetType("System.String"))
-            {
-                string value = null;
+        songsDataGridView.Name = "songsDataGridView";
+        songsDataGridView.Location = new Point(8, 8);
+        songsDataGridView.Size = new Size(500, 250);
+        songsDataGridView.AutoSizeRowsMode =
+            DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+        songsDataGridView.ColumnHeadersBorderStyle =
+            DataGridViewHeaderBorderStyle.Single;
+        songsDataGridView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+        songsDataGridView.GridColor = Color.Black;
+        songsDataGridView.RowHeadersVisible = false;
 
-                // If the cell contains a value that has not been commited,
-                // use the modified value.
-                if (DataGridView1.IsCurrentCellDirty == true)
-                {
+        songsDataGridView.Columns[0].Name = "Release Date";
+        songsDataGridView.Columns[1].Name = "Track";
+        songsDataGridView.Columns[2].Name = "Title";
+        songsDataGridView.Columns[3].Name = "Artist";
+        songsDataGridView.Columns[4].Name = "Album";
+        songsDataGridView.Columns[4].DefaultCellStyle.Font =
+            new Font(songsDataGridView.DefaultCellStyle.Font, FontStyle.Italic);
 
-                    value = DataGridView1.SelectedCells[counter]
-                        .EditedFormattedValue.ToString();
-                }
-                else
-                {
-                    value = DataGridView1.SelectedCells[counter]
-                        .FormattedValue.ToString();
-                }
-                if (value != null)
-                {
-                    // Ignore cells in the Description column.
-                    if (DataGridView1.SelectedCells[counter].ColumnIndex !=
-                        DataGridView1.Columns["Description"].Index)
-                    {
-                        if (value.Length != 0)
-                        {
-                            SelectedCellTotal += int.Parse(value);
-                        }
-                    }
-                }
-            }
-        }
+        songsDataGridView.SelectionMode =
+            DataGridViewSelectionMode.FullRowSelect;
+        songsDataGridView.MultiSelect = false;
+        songsDataGridView.Dock = DockStyle.Fill;
 
-        // Set the labels to reflect the current state of the DataGridView.
-        Label1.Text = "Withdrawals Total: " + WithdrawalTotal.ToString();
-        Label2.Text = "Deposits Total: " + DepositTotal.ToString();
-        Label3.Text = "Selected Cells Total: " + SelectedCellTotal.ToString();
-        Label4.Text = "Total entries: " + DataGridView1.RowCount.ToString();
+        songsDataGridView.CellFormatting += new
+            DataGridViewCellFormattingEventHandler(
+            songsDataGridView_CellFormatting);
     }

@@ -1,112 +1,61 @@
 Imports System
-Imports System.IO
+Imports System.Security
 Imports System.Security.Cryptography
+Imports System.Security.Permissions
 
-Public Class MACTripleDESexample
 
-    Public Shared Sub Main(ByVal Fileargs() As String)
-        Dim dataFile As String
-        Dim signedFile As String
-        'If no file names are specified, create them.
-        If Fileargs.Length < 2 Then
-            dataFile = "text.txt"
-            signedFile = "signedFile.enc"
 
-            If Not File.Exists(dataFile) Then
-                ' Create a file to write to.
-                Using sw As StreamWriter = File.CreateText(dataFile)
-                    sw.WriteLine("Here is a message to sign")
-                End Using
-            End If
+Public NotInheritable Class MyDataProtector
+    Inherits DataProtector
 
-        Else
-            dataFile = Fileargs(0)
-            signedFile = Fileargs(1)
-        End If
-        Try
-            ' Create a random key using a random number generator. This would be the
-            '  secret key shared by sender and receiver.
-            Dim secretkey() As Byte = New [Byte](23) {}
-            'RNGCryptoServiceProvider is an implementation of a random number generator.
-            Using rng As New RNGCryptoServiceProvider()
-                ' The array is now filled with cryptographically strong random bytes.
-                rng.GetBytes(secretkey)
+    Public Property Scope() As DataProtectionScope
+        Get
+            Return Scope
+        End Get
+        Set(value As DataProtectionScope)
+        End Set
+    End Property ' This implementation gets the HashedPurpose from the base class and passes it as OptionalEntropy to ProtectedData.
+    ' The default for DataProtector is to prepend the hash to the plain text, but because we are using the hash 
+    ' as OptionalEntropy there is no need to prepend it.
 
-                ' Use the secret key to encode the message file.
-                SignFile(secretkey, dataFile, signedFile)
-
-                ' Take the encoded file and decode
-                VerifyFile(secretkey, signedFile)
-            End Using
-        Catch e As IOException
-            Console.WriteLine("Error: File not found", e)
-        End Try
-
-    End Sub 'Main
-
-    ' Computes a keyed hash for a source file and creates a target file with the keyed hash
-    ' prepended to the contents of the source file. 
-    Public Shared Sub SignFile(ByVal key() As Byte, ByVal sourceFile As String, ByVal destFile As String)
-        ' Initialize the keyed hash object.
-        Using myhmac As New MACTripleDES(key)
-            Using inStream As New FileStream(sourceFile, FileMode.Open)
-                Using outStream As New FileStream(destFile, FileMode.Create)
-                    ' Compute the hash of the input file.
-                    Dim hashValue As Byte() = myhmac.ComputeHash(inStream)
-                    ' Reset inStream to the beginning of the file.
-                    inStream.Position = 0
-                    ' Write the computed hash value to the output file.
-                    outStream.Write(hashValue, 0, hashValue.Length)
-                    ' Copy the contents of the sourceFile to the destFile.
-                    Dim bytesRead As Integer
-                    ' read 1K at a time
-                    Dim buffer(1023) As Byte
-                    Do
-                        ' Read from the wrapping CryptoStream.
-                        bytesRead = inStream.Read(buffer, 0, 1024)
-                        outStream.Write(buffer, 0, bytesRead)
-                    Loop While bytesRead > 0
-                End Using
-            End Using
-        End Using
-        Return
-
-    End Sub 'SignFile
-    ' end SignFile
-
-    ' Compares the key in the source file with a new key created for the data portion of the file. If the keys 
-    ' compare the data has not been tampered with.
-    Public Shared Function VerifyFile(ByVal key() As Byte, ByVal sourceFile As String) As Boolean
-        Dim err As Boolean = False
-        ' Initialize the keyed hash object. 
-        Using hmac As New MACTripleDES(key)
-            ' Create an array to hold the keyed hash value read from the file.
-            Dim storedHash(hmac.HashSize / 8) As Byte
-            ' Create a FileStream for the source file.
-            Using inStream As New FileStream(sourceFile, FileMode.Open)
-                ' Read in the storedHash.
-                inStream.Read(storedHash, 0, storedHash.Length - 1)
-                ' Compute the hash of the remaining contents of the file.
-                ' The stream is properly positioned at the beginning of the content, 
-                ' immediately after the stored hash value.
-                Dim computedHash As Byte() = hmac.ComputeHash(inStream)
-                ' compare the computed hash with the stored value
-                Dim i As Integer
-                For i = 0 To storedHash.Length - 2
-                    If computedHash(i) <> storedHash(i) Then
-                        err = True
-                    End If
-                Next i
-            End Using
-        End Using
-        If err Then
-            Console.WriteLine("Hash values differ! Signed file has been tampered with!")
+    Protected Overrides ReadOnly Property PrependHashedPurposeToPlaintext() As Boolean
+        Get
             Return False
-        Else
-            Console.WriteLine("Hash values agree -- no tampering occurred.")
-            Return True
-        End If
+        End Get
+    End Property
 
-    End Function 'VerifyFile 
-End Class 'MACTripleDESexample 'end VerifyFile
-'end class
+    ' To allow a service to hand out instances of a DataProtector we demand unrestricted DataProtectionPermission 
+    ' in the constructor, but Assert the permission when ProviderProtect is called.  This is similar to FileStream
+    ' where access is checked at time of creation, not time of use.
+    <SecuritySafeCritical(), DataProtectionPermission(SecurityAction.Assert, ProtectData:=True)> _
+    Protected Overrides Function ProviderProtect(ByVal userData() As Byte) As Byte()
+        ' Delegate to ProtectedData
+        Return ProtectedData.Protect(userData, GetHashedPurpose(), Scope)
+
+    End Function 'ProviderProtect
+
+    ' To allow a service to hand out instances of a DataProtector we demand unrestricted DataProtectionPermission 
+    ' in the constructor, but Assert the permission when ProviderUnProtect is called.  This is similar to FileStream
+    ' where access is checked at time of creation, not time of use.
+    <SecuritySafeCritical(), DataProtectionPermission(SecurityAction.Assert, UnprotectData:=True)> _
+    Protected Overrides Function ProviderUnprotect(ByVal encryptedData() As Byte) As Byte()
+        ' Delegate to ProtectedData
+        Return ProtectedData.Unprotect(encryptedData, GetHashedPurpose(), Scope)
+
+    End Function 'ProviderUnprotect
+
+    Public Overrides Function IsReprotectRequired(ByVal encryptedData() As Byte) As Boolean
+        ' For now, this cannot be determined, so always return true;
+        Return True
+
+    End Function 'IsReprotectRequired
+
+    ' Public constructor
+    ' The Demand for DataProtectionPermission is in the constructor because we Assert this permission 
+    ' in the ProviderProtect/ProviderUnprotect methods. 
+    <DataProtectionPermission(SecurityAction.Demand, Unrestricted:=True), SecuritySafeCritical()> _
+    Public Sub New(ByVal appName As String, ByVal primaryPurpose As String, ParamArray specificPurpose() As String)
+        MyBase.New(appName, primaryPurpose, specificPurpose)
+
+    End Sub 'New
+End Class 'MyDataProtector

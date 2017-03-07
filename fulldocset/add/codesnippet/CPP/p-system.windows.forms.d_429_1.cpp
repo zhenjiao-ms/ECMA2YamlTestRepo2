@@ -1,10 +1,9 @@
-private:
-   void GetSelectedIndex( DataGrid^ myGrid )
+   void CustomizeCellsInThirdColumn()
    {
-      Console::WriteLine( myGrid->CurrentRowIndex );
+      int thirdColumn = 2;
+      DataGridViewColumn^ column = dataGridView->Columns[ thirdColumn ];
+      DataGridViewCell^ cell = gcnew DataGridViewTextBoxCell;
+      cell->Style->BackColor = Color::Wheat;
+      column->CellTemplate = cell;
    }
 
-   void SetSelectedIndex( DataGrid^ myGrid, int selIndex )
-   {
-      myGrid->CurrentRowIndex = selIndex;
-   }

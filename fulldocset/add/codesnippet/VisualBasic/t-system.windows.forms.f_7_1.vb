@@ -1,33 +1,35 @@
-    Private openFileDialog1 As OpenFileDialog
-    Private WithEvents button1 As Button
+    Private Sub flowTopDownBtn_CheckedChanged( _
+    ByVal sender As System.Object, _
+    ByVal e As System.EventArgs) _
+    Handles flowTopDownBtn.CheckedChanged
 
-    Private Sub InitializeDialogAndButton() 
-        Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.button1 = New System.Windows.Forms.Button()
-        Me.button1.Location = New System.Drawing.Point(53, 37)
-        Me.button1.AutoSize = True
-        Me.button1.Text = "Show dialog with custom places."
-        Me.button1.UseVisualStyleBackColor = True
-
-        Me.Controls.Add(Me.button1)
-    
-    End Sub
-    
-    
-    Private Sub button1_Click(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles button1.Click
-
-        ' Add Pictures custom place using GUID.
-        openFileDialog1.CustomPlaces.Add("33E28130-4E1E-4676-835A-98395C3BC3BB")
-
-        ' Add Links custom place using GUID
-        openFileDialog1.CustomPlaces.Add(New FileDialogCustomPlace _
-            (New Guid("BFB9D5E0-C6A9-404C-B2B2-AE6DB6AF4968")))
-
-        ' Add Windows custom place using file path.
-        openFileDialog1.CustomPlaces.Add("c:\Windows")
-
-        openFileDialog1.ShowDialog()
+        Me.FlowLayoutPanel1.FlowDirection = FlowDirection.TopDown
 
     End Sub
-    
+
+    Private Sub flowBottomUpBtn_CheckedChanged( _
+    ByVal sender As System.Object, _
+    ByVal e As System.EventArgs) _
+    Handles flowBottomUpBtn.CheckedChanged
+
+        Me.FlowLayoutPanel1.FlowDirection = FlowDirection.BottomUp
+
+    End Sub
+
+    Private Sub flowLeftToRight_CheckedChanged( _
+    ByVal sender As System.Object, _
+    ByVal e As System.EventArgs) _
+    Handles flowLeftToRight.CheckedChanged
+
+        Me.FlowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight
+
+    End Sub
+
+    Private Sub flowRightToLeftBtn_CheckedChanged( _
+    ByVal sender As System.Object, _
+    ByVal e As System.EventArgs) _
+    Handles flowRightToLeftBtn.CheckedChanged
+
+        Me.FlowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft
+
+    End Sub

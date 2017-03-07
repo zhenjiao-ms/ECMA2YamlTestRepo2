@@ -1,69 +1,58 @@
-// This example demonstrates a System.Globalization.Culture-
-// AndRegionInfoBuilder constructor and some of the properties 
-// of a custom culture object created with the constructor.
-
-#using <sysglobl.dll>
-
 using namespace System;
+using namespace System::Collections;
 using namespace System::Globalization;
-
 int main()
 {
-    CultureAndRegionInfoBuilder^ builder = 
-        gcnew CultureAndRegionInfoBuilder
-        ("x-en-US-sample", CultureAndRegionModifiers::None);
-    
-    // Display some of the properties 
-    // for the en-US culture.
-    Console::WriteLine("CultureName:. . . . . . . . . . {0}", 
-        builder->CultureName);
-    Console::WriteLine("CultureEnglishName: . . . . . . {0}", 
-        builder->CultureEnglishName);
-    Console::WriteLine("CultureNativeName:. . . . . . . {0}", 
-        builder->CultureNativeName);
-    Console::WriteLine("GeoId:. . . . . . . . . . . . . {0}", 
-        builder->GeoId);
-    Console::WriteLine("IsMetric: . . . . . . . . . . . {0}", 
-        builder->IsMetric);
-    Console::WriteLine("ISOCurrencySymbol:. . . . . . . {0}", 
-        builder->ISOCurrencySymbol);
-    Console::WriteLine("RegionEnglishName:. . . . . . . {0}", 
-        builder->RegionEnglishName);
-    Console::WriteLine("RegionName: . . . . . . . . . . {0}", 
-        builder->RegionName);
-    Console::WriteLine("RegionNativeName: . . . . . . . {0}", 
-        builder->RegionNativeName);
-    Console::WriteLine("ThreeLetterISOLanguageName: . . {0}", 
-        builder->ThreeLetterISOLanguageName);
-    Console::WriteLine("ThreeLetterISORegionName: . . . {0}", 
-        builder->ThreeLetterISORegionName);
-    Console::WriteLine("ThreeLetterWindowsLanguageName: {0}", 
-        builder->ThreeLetterWindowsLanguageName);
-    Console::WriteLine("ThreeLetterWindowsRegionName: . {0}", 
-        builder->ThreeLetterWindowsRegionName);
-    Console::WriteLine("TwoLetterISOLanguageName: . . . {0}", 
-        builder->TwoLetterISOLanguageName);
-    Console::WriteLine("TwoLetterISORegionName: . . . . {0}", 
-        builder->TwoLetterISORegionName);
+   
+   // Creates and initializes the CultureInfo which uses the international sort.
+   CultureInfo^ myCIintl = gcnew CultureInfo( "es-ES",false );
+   
+   // Creates and initializes the CultureInfo which uses the traditional sort.
+   CultureInfo^ myCItrad = gcnew CultureInfo( 0x040A,false );
+   
+   // Displays the properties of each culture.
+   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "PROPERTY", "INTERNATIONAL", "TRADITIONAL" );
+   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "CompareInfo", myCIintl->CompareInfo, myCItrad->CompareInfo );
+   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "DisplayName", myCIintl->DisplayName, myCItrad->DisplayName );
+   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "EnglishName", myCIintl->EnglishName, myCItrad->EnglishName );
+   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "IsNeutralCulture", myCIintl->IsNeutralCulture, myCItrad->IsNeutralCulture );
+   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "IsReadOnly", myCIintl->IsReadOnly, myCItrad->IsReadOnly );
+   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "LCID", myCIintl->LCID, myCItrad->LCID );
+   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "Name", myCIintl->Name, myCItrad->Name );
+   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "NativeName", myCIintl->NativeName, myCItrad->NativeName );
+   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "Parent", myCIintl->Parent, myCItrad->Parent );
+   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "TextInfo", myCIintl->TextInfo, myCItrad->TextInfo );
+   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "ThreeLetterISOLanguageName", myCIintl->ThreeLetterISOLanguageName, myCItrad->ThreeLetterISOLanguageName );
+   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "ThreeLetterWindowsLanguageName", myCIintl->ThreeLetterWindowsLanguageName, myCItrad->ThreeLetterWindowsLanguageName );
+   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "TwoLetterISOLanguageName", myCIintl->TwoLetterISOLanguageName, myCItrad->TwoLetterISOLanguageName );
+   Console::WriteLine();
+   
+   // Compare two strings using myCIintl -> 
+   Console::WriteLine( "Comparing \"llegar\" and \"lugar\"" );
+   Console::WriteLine( "   With myCIintl -> CompareInfo -> Compare: {0}", myCIintl->CompareInfo->Compare( "llegar", "lugar" ) );
+   Console::WriteLine( "   With myCItrad -> CompareInfo -> Compare: {0}", myCItrad->CompareInfo->Compare( "llegar", "lugar" ) );
 }
 
 /*
-This code example produces the following results:
+This code produces the following output.
 
-CultureName:. . . . . . . . . . en-US
-CultureEnglishName: . . . . . . English (United States)
-CultureNativeName:. . . . . . . English (United States)
-GeoId:. . . . . . . . . . . . . 244
-IsMetric: . . . . . . . . . . . False
-ISOCurrencySymbol:. . . . . . . USD
-RegionEnglishName:. . . . . . . United States
-RegionName: . . . . . . . . . . US
-RegionNativeName: . . . . . . . United States
-ThreeLetterISOLanguageName: . . eng
-ThreeLetterISORegionName: . . . USA
-ThreeLetterWindowsLanguageName: ENU
-ThreeLetterWindowsRegionName: . USA
-TwoLetterISOLanguageName: . . . en
-TwoLetterISORegionName: . . . . US
+PROPERTY                       INTERNATIONAL                                  TRADITIONAL              
+CompareInfo                    CompareInfo - es-ES                            CompareInfo - es-ES_tradnl
+DisplayName                    Spanish (Spain)                                Spanish (Spain)          
+EnglishName                    Spanish (Spain, International Sort)            Spanish (Spain, Traditional Sort)
+IsNeutralCulture               False                                          False                    
+IsReadOnly                     False                                          False                    
+LCID                           3082                                           1034                     
+Name                           es-ES                                          es-ES                    
+NativeName                     Español (España, alfabetización internacional) Español (España, alfabetización tradicional)
+Parent                         es                                             es                       
+TextInfo                       TextInfo - es-ES                               TextInfo - es-ES_tradnl  
+ThreeLetterISOLanguageName     spa                                            spa                      
+ThreeLetterWindowsLanguageName ESN                                            ESP                      
+TwoLetterISOLanguageName       es                                             es                       
+
+Comparing "llegar" and "lugar"
+   With myCIintl -> CompareInfo -> Compare: -1
+   With myCItrad -> CompareInfo -> Compare: 1
 
 */

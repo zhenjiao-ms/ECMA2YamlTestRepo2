@@ -1,23 +1,21 @@
-Private Sub DataGridView1_RowDividerDoubleClick(sender as Object, e as DataGridViewRowDividerDoubleClickEventArgs) _ 
-     Handles DataGridView1.RowDividerDoubleClick
+    ' Freeze the first row.
+    Private Sub Button4_Click(ByVal sender As Object, _
+        ByVal e As System.EventArgs) Handles Button4.Click
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Handled", e.Handled)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Button", e.Button)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Clicks", e.Clicks)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "X", e.X)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Y", e.Y)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Delta", e.Delta)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Location", e.Location)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"RowDividerDoubleClick Event")
+        FreezeBand(dataGridView.Rows(0))
+    End Sub
 
-End Sub
+    Private Sub FreezeColumn(ByVal sender As Object, _
+        ByVal e As System.EventArgs) Handles Button5.Click
+
+        FreezeBand(dataGridView.Columns(1))
+    End Sub
+
+    Private Shared Sub FreezeBand(ByVal band As DataGridViewBand)
+
+        band.Frozen = True
+        Dim style As DataGridViewCellStyle = New DataGridViewCellStyle()
+        style.BackColor = Color.WhiteSmoke
+        band.DefaultCellStyle = style
+
+    End Sub

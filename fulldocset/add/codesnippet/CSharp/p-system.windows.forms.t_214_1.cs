@@ -1,50 +1,58 @@
-        public Form5()
-        {
-            // Size the form to show three wide menu items.
-            this.Width = 500;
-            this.Text = "ToolStripContextMenuStrip: Image and Check Margins";
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
-            // Create a new MenuStrip control.
-            MenuStrip ms = new MenuStrip();
+public class Form1 : System.Windows.Forms.Form
+{
+    private System.Windows.Forms.TrackBar trackBar1;
+    private System.Windows.Forms.TextBox textBox1;
 
-            // Create the ToolStripMenuItems for the MenuStrip control.
-            ToolStripMenuItem bothMargins = new ToolStripMenuItem("BothMargins");
-            ToolStripMenuItem imageMarginOnly = new ToolStripMenuItem("ImageMargin");
-            ToolStripMenuItem checkMarginOnly = new ToolStripMenuItem("CheckMargin");
-            ToolStripMenuItem noMargins = new ToolStripMenuItem("NoMargins");
+    [STAThread]
+    static void Main() 
+    {
+        Application.Run(new Form1());
+    }
 
-            // Customize the DropDowns menus.
-            // This ToolStripMenuItem has an image margin 
-            // and a check margin.
-            bothMargins.DropDown = CreateCheckImageContextMenuStrip();
-            ((ContextMenuStrip)bothMargins.DropDown).ShowImageMargin = true;
-            ((ContextMenuStrip)bothMargins.DropDown).ShowCheckMargin = true;
+    public Form1()
+    {
+        this.textBox1 = new System.Windows.Forms.TextBox();
+        this.trackBar1 = new System.Windows.Forms.TrackBar();
 
-            // This ToolStripMenuItem has only an image margin.
-            imageMarginOnly.DropDown = CreateCheckImageContextMenuStrip();
-            ((ContextMenuStrip)imageMarginOnly.DropDown).ShowImageMargin = true;
-            ((ContextMenuStrip)imageMarginOnly.DropDown).ShowCheckMargin = false;
+        // TextBox for TrackBar.Value update.
+        this.textBox1.Location = new System.Drawing.Point(240, 16);
+        this.textBox1.Size = new System.Drawing.Size(48, 20);
 
-            // This ToolStripMenuItem has only a check margin.
-            checkMarginOnly.DropDown = CreateCheckImageContextMenuStrip();
-            ((ContextMenuStrip)checkMarginOnly.DropDown).ShowImageMargin = false;
-            ((ContextMenuStrip)checkMarginOnly.DropDown).ShowCheckMargin = true;
+        // Set up how the form should be displayed and add the controls to the form.
+        this.ClientSize = new System.Drawing.Size(296, 62);
+        this.Controls.AddRange(new System.Windows.Forms.Control[] {this.textBox1,this.trackBar1});
+        this.Text = "TrackBar Example";
 
-            // This ToolStripMenuItem has no image and no check margin.
-            noMargins.DropDown = CreateCheckImageContextMenuStrip();
-            ((ContextMenuStrip)noMargins.DropDown).ShowImageMargin = false;
-            ((ContextMenuStrip)noMargins.DropDown).ShowCheckMargin = false;
+        // Set up the TrackBar.
+        this.trackBar1.Location = new System.Drawing.Point(8, 8);
+        this.trackBar1.Size = new System.Drawing.Size(224, 45);
+        this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
 
-            // Populate the MenuStrip control with the ToolStripMenuItems.
-            ms.Items.Add(bothMargins);
-            ms.Items.Add(imageMarginOnly);
-            ms.Items.Add(checkMarginOnly);
-            ms.Items.Add(noMargins);
+        // The Maximum property sets the value of the track bar when
+        // the slider is all the way to the right.
+        trackBar1.Maximum = 30;
+        
+        // The TickFrequency property establishes how many positions
+        // are between each tick-mark.
+        trackBar1.TickFrequency = 5;
 
-            // Dock the MenuStrip control to the top of the form.
-            ms.Dock = DockStyle.Top;
+        // The LargeChange property sets how many positions to move
+        // if the bar is clicked on either side of the slider.
+        trackBar1.LargeChange = 3;
 
-            // Add the MenuStrip control to the controls collection last.
-            // This is important for correct placement in the z-order.
-            this.Controls.Add(ms);
-        }
+        // The SmallChange property sets how many positions to move
+        // if the keyboard arrows are used to move the slider.
+        trackBar1.SmallChange = 2;
+    }
+
+
+    private void trackBar1_Scroll(object sender, System.EventArgs e)
+    {
+        // Display the trackbar value in the text box.
+        textBox1.Text = "" + trackBar1.Value;
+    }
+}

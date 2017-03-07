@@ -1,51 +1,34 @@
-using System;
-using System.ComponentModel;
-using System.ComponentModel.Design;
-
-namespace CSMenuCommand
-{
-    [Designer(typeof(CDesigner))]
-    public class Component1 : System.ComponentModel.Component
-    {
-        private System.ComponentModel.Container components = null;
-
-        public Component1(System.ComponentModel.IContainer container)
+        // This method starts an asynchronous calculation. 
+        // First, it checks the supplied task ID for uniqueness.
+        // If taskId is unique, it creates a new WorkerEventHandler 
+        // and calls its BeginInvoke method to start the calculation.
+        public virtual void CalculatePrimeAsync(
+            int numberToTest,
+            object taskId)
         {
-            container.Add(this);
-            InitializeComponent();
-        }
+            // Create an AsyncOperation for taskId.
+            AsyncOperation asyncOp =
+                AsyncOperationManager.CreateOperation(taskId);
 
-        public Component1()
-        {
-            InitializeComponent();
-        }
+            // Multiple threads will access the task dictionary,
+            // so it must be locked to serialize access.
+            lock (userStateToLifetime.SyncRoot)
+            {
+                if (userStateToLifetime.Contains(taskId))
+                {
+                    throw new ArgumentException(
+                        "Task ID parameter must be unique", 
+                        "taskId");
+                }
 
-        private void InitializeComponent()
-        {
-            components = new System.ComponentModel.Container();
-        }
-    }
+                userStateToLifetime[taskId] = asyncOp;
+            }
 
-    [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")] 
-    public class CDesigner : System.ComponentModel.Design.ComponentDesigner 
-    {
-        public override void Initialize(IComponent comp) 
-        {
-            base.Initialize(comp);
-
-            IMenuCommandService mcs = (IMenuCommandService)comp.Site.
-                        GetService(typeof(IMenuCommandService));
-            MenuCommand mc = new MenuCommand(new EventHandler(OnF1Help), StandardCommands.F1Help);
-            mc.Enabled = true;
-            mc.Visible = true;
-            mc.Supported = true;
-            mcs.AddCommand(mc);
-            System.Windows.Forms.MessageBox.Show("Initialize() has been invoked.");
+            // Start the asynchronous operation.
+            WorkerEventHandler workerDelegate = new WorkerEventHandler(CalculateWorker);
+            workerDelegate.BeginInvoke(
+                numberToTest,
+                asyncOp,
+                null,
+                null);
         }
-
-        private void OnF1Help(object sender, EventArgs e) 
-        {
-            System.Windows.Forms.MessageBox.Show("F1Help has been invoked.");
-        }
-    }
-} 

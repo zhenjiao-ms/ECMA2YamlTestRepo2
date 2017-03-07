@@ -1,11 +1,9 @@
-    ' Updated the criteria label.
-    Private Sub dataGridView_AutoSizeColumnCriteriaChanged( _
-        ByVal sender As Object, _
-        ByVal args As DataGridViewAutoSizeColumnModeEventArgs) _
-        Handles DataGridView.AutoSizeColumnModeChanged
-
-        args.Column.DataGridView.Parent. _
-        Controls("flowlayoutpanel"). _
-        Controls(criteriaLabel).Text = _
-            criteriaLabel & args.Column.AutoSizeMode.ToString
-    End Sub
+Private Sub PrintCell(sender As Object, e As MouseEventArgs)
+   Dim thisGrid As DataGrid = CType(sender, DataGrid)
+   Dim myDataGridCell As DataGridCell = thisGrid.CurrentCell
+   Dim bm As BindingManagerBase = _
+   BindingContext (thisGrid.DataSource, thisGrid.DataMember)
+   Dim drv As DataRowView = CType(bm.Current, DataRowView)
+   Console.WriteLine(drv(myDataGridCell.ColumnNumber))
+   Console.WriteLine(myDataGridCell.RowNumber)
+End Sub

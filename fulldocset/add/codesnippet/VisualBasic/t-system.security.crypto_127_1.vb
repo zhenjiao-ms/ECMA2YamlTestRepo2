@@ -1,51 +1,63 @@
 Imports System
-Imports System.Security.Cryptography.Xml
-Imports System.Xml
-Imports System.IO
+Imports System.Security.Cryptography
 
 
-'/ This sample used the EncryptedData class to create a EncryptedData element
-'/ and write it to an XML file. It demonstrates the use of CipherReference.
-Module Module1
 
-    Sub Main()
-        ' Create a URI string.
-        Dim uri As String = "http://www.woodgrovebank.com/document.xml"
-        ' Create a Base64 transform. The input content retrieved from the
-        ' URI should be Base64-decoded before other processing.
-        Dim base64 As Transform = New XmlDsigBase64Transform
-        Dim tc As New TransformChain
-        tc.Add(base64)
-        ' Create <CipherReference> information.
-        Dim reference As CipherReference = New CipherReference(uri, tc)
+Public Class DataProtectionSample
+    ' Create byte array for additional entropy when using Protect method.
+    Private Shared s_aditionalEntropy As Byte() = {9, 8, 7, 6, 5}
 
-        ' Create a new CipherData object.
-        ' Note that you cannot assign both a CipherReference and a CipherValue
-        ' to a CipherData object.
-        Dim cd As CipherData = New CipherData(Reference)
 
-        ' Create a new EncryptedData object.
-        Dim ed As New EncryptedData
+    Public Shared Sub Main()
+        ' Create a simple byte array containing data to be encrypted.
+        Dim secret As Byte() = {0, 1, 2, 3, 4, 1, 2, 3, 4}
 
-        'Add an encryption method to the object.
-        ed.Id = "ED"
-        ed.EncryptionMethod = New EncryptionMethod("http://www.w3.org/2001/04/xmlenc#aes128-cbc")
-        ed.CipherData = cd
+        'Encrypt the data.
+        Dim encryptedSecret As Byte() = Protect(secret)
+        Console.WriteLine("The encrypted byte array is:")
+        PrintValues(encryptedSecret)
 
-        'Add key information to the object.
-        Dim ki As New KeyInfo
-        ki.AddClause(New KeyInfoRetrievalMethod("#EK", "http://www.w3.org/2001/04/xmlenc#EncryptedKey"))
-        ed.KeyInfo = ki
+        ' Decrypt the data and store in a byte array.
+        Dim originalData As Byte() = Unprotect(encryptedSecret)
+        Console.WriteLine("{0}The original data is:", Environment.NewLine)
+        PrintValues(originalData)
 
-        ' Create new XML document and put encrypted data into it.
-        Dim doc As New XmlDocument
-        Dim encryptionPropertyElement As XmlElement = CType(doc.CreateElement("EncryptionProperty", EncryptedXml.XmlEncNamespaceUrl), XmlElement)
-        Dim ep As New EncryptionProperty(encryptionPropertyElement)
-        ed.AddProperty(ep)
-
-        ' Output the resulting XML information into a file.
-        Dim path As String = "c:\test\MyTest.xml"
-        File.WriteAllText(path, ed.GetXml().OuterXml)
     End Sub
 
-End Module
+
+    Public Shared Function Protect(ByVal data() As Byte) As Byte()
+        Try
+            ' Encrypt the data using DataProtectionScope.CurrentUser. The result can be decrypted
+            '  only by the same current user.
+            Return ProtectedData.Protect(data, s_aditionalEntropy, DataProtectionScope.CurrentUser)
+        Catch e As CryptographicException
+            Console.WriteLine("Data was not encrypted. An error occurred.")
+            Console.WriteLine(e.ToString())
+            Return Nothing
+        End Try
+
+    End Function
+
+
+    Public Shared Function Unprotect(ByVal data() As Byte) As Byte()
+        Try
+            'Decrypt the data using DataProtectionScope.CurrentUser.
+            Return ProtectedData.Unprotect(data, s_aditionalEntropy, DataProtectionScope.CurrentUser)
+        Catch e As CryptographicException
+            Console.WriteLine("Data was not decrypted. An error occurred.")
+            Console.WriteLine(e.ToString())
+            Return Nothing
+        End Try
+
+    End Function
+
+
+    Public Shared Sub PrintValues(ByVal myArr() As [Byte])
+        Dim i As [Byte]
+        For Each i In myArr
+            Console.Write(vbTab + "{0}", i)
+        Next i
+        Console.WriteLine()
+
+    End Sub
+End Class

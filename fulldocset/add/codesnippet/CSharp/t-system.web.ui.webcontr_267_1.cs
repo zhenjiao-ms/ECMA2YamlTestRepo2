@@ -1,113 +1,64 @@
 using System;
-using System.Collections;
-using System.Data.Common;
-using System.Web.UI;
+using System.Security.Permissions;
+using System.Web;
 using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
 
-namespace Samples.AspNet.CS
+namespace Samples.AspNet.CS.Controls
 {
-    public class SimpleSpreadsheetControl : CompositeDataBoundControl
+  [AspNetHostingPermission(SecurityAction.Demand, 
+    Level=AspNetHostingPermissionLevel.Minimal)]
+  [AspNetHostingPermission(SecurityAction.InheritanceDemand, 
+    Level=AspNetHostingPermissionLevel.Minimal)]
+  public class TextDisplayWebPart : WebPart
+  {
+    private String _contentText = null;
+    TextBox input;
+    Label DisplayContent;
+    const string _subTitle = "Contoso, Ltd";
+
+    public TextDisplayWebPart()
     {
-        protected Table table = new Table();
-
-        public virtual TableRowCollection Rows
-        {
-            get
-            {
-                return table.Rows;
-            }
-        }
-
-        protected override int CreateChildControls(IEnumerable dataSource, bool dataBinding)
-        {
-
-            int count = 0;
-            // If dataSource is not null, iterate through it and
-            // extract each element from it as a row, then
-            // create a SimpleSpreadsheetRow and add it to the
-            // rows collection.
-            if (dataSource != null)
-            {
-
-                SimpleSpreadsheetRow row;
-                IEnumerator e = dataSource.GetEnumerator();
-
-                while (e.MoveNext())
-                {
-                    object datarow = e.Current;
-                    row = new SimpleSpreadsheetRow(count, datarow);
-                    this.Rows.Add(row);
-                    ++count;
-                }
-
-                Controls.Add(table);
-            }
-            return count;
-        }
+      this.AllowClose = false;
     }
 
-    //
-    //
-    public class SimpleSpreadsheetRow : TableRow, IDataItemContainer
+    [
+      Personalizable(PersonalizationScope.User, true),
+      WebBrowsable()
+    ]
+    public String ContentText
     {
-        private object data;
-        private int _itemIndex;
-
-        public SimpleSpreadsheetRow(int itemIndex, object o)
-        {
-            data = o;
-            _itemIndex = itemIndex;
-        }
-
-        public virtual object Data
-        {
-            get
-            {
-                return data;
-            }
-        }
-        object IDataItemContainer.DataItem
-        {
-            get
-            {
-                return Data;
-            }
-        }
-        int IDataItemContainer.DataItemIndex
-        {
-            get
-            {
-                return _itemIndex;
-            }
-        }
-        int IDataItemContainer.DisplayIndex
-        {
-            get
-            {
-                return _itemIndex;
-            }
-        }
-        protected override void RenderContents(HtmlTextWriter writer)
-        {
-
-            if (Data != null)
-            {
-                if (Data is System.Data.Common.DbDataRecord)
-                {
-                    DbDataRecord temp = (DbDataRecord)Data;
-                    for (int i = 0; i < temp.FieldCount; ++i)
-                    {
-                        writer.Write("<TD>");
-                        writer.Write(temp.GetValue(i).ToString());
-                        writer.Write("</TD>");
-                    }
-                }
-                else
-                    writer.Write("<TD>" + Data.ToString() + "</TD>");
-            }
-
-            else
-                writer.Write("<TD>This is a test</TD>");
-        }
+      get { return _contentText; }
+      set { _contentText = value; }
     }
+
+    protected override void CreateChildControls()
+    {
+      Controls.Clear();
+      DisplayContent = new Label();
+      DisplayContent.BackColor = 
+        System.Drawing.Color.LightBlue;
+      DisplayContent.Text = this.ContentText;
+      this.Controls.Add(DisplayContent);
+      input = new TextBox();
+      this.Controls.Add(input);
+      Button update = new Button();
+      update.Text = "Set Label Content";
+      update.Click += new EventHandler(this.submit_Click);
+      this.Controls.Add(update);
+      ChildControlsCreated = true;
+    }
+
+    private void submit_Click(object sender, EventArgs e)
+    {
+      // Update the label string.
+      if (input.Text != String.Empty)
+      {
+        this.ContentText = Page.Server.HtmlEncode(input.Text) + @"<br />";
+        // Clear the input textbox.
+        input.Text = String.Empty;
+        DisplayContent.Text = this.ContentText;
+      }
+    }
+  }
 }

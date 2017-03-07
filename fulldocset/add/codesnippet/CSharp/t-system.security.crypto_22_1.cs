@@ -1,169 +1,228 @@
 using System;
-using System.IO;
 using System.Xml;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Xml;
 
-class Class1
+class Program
 {
-    [STAThread]
     static void Main(string[] args)
     {
-        // Encrypt an XML message
-        EncryptXML(LoadXMLDoc());
 
-        // Using XmlDsigBase64Transform resolving a Uri.
-        Uri baseUri = new Uri("http://www.microsoft.com");
-        string relativeUri = "msdn";
-        Uri absoluteUri = ResolveUris(baseUri, relativeUri);
-
-        Console.WriteLine("This sample completed successfully; " +
-            "press Enter to exit.");
-        Console.ReadLine();
-    }
-
-    // Encrypt the text in the specified XmlDocument.
-    private static void EncryptXML(XmlDocument xmlDoc)
-    {
-        XmlDsigBase64Transform xmlTransform = new XmlDsigBase64Transform();
-
-        // Ensure the transform is using the proper algorithm.
-        xmlTransform.Algorithm = SignedXml.XmlDsigBase64TransformUrl;
-
-        // Retrieve the XML representation of the current transform.
-        XmlElement xmlInTransform = xmlTransform.GetXml();
-
-        Console.WriteLine("Xml representation of the current transform: ");
-        Console.WriteLine(xmlInTransform.OuterXml);
-
-        // Retrieve the valid input types for the current transform.
-        Type[] validInTypes = xmlTransform.InputTypes;
-
-        // Verify the xmlTransform can accept the XMLDocument as an
-        // input type.
-        for (int i=0; i<validInTypes.Length; i++)
-        {
-            if (validInTypes[i] == xmlDoc.GetType())
-            {
-                // Demonstrate loading the entire Xml Document.
-                xmlTransform.LoadInput(xmlDoc);
-
-                // This transform is created for demonstration purposes.
-                XmlDsigBase64Transform secondTransform =
-                    new XmlDsigBase64Transform();
-
-                string classDescription = secondTransform.ToString();
-
-                // This call does not perform as expected.
-                // LoadInnerXml is overridden by the XmlDsigBase64Transform
-                // class, but is stubbed out.
-                secondTransform.LoadInnerXml(xmlDoc.SelectNodes("//."));
-
-                break;
-            }
-        }
-
-        Type[] validOutTypes = xmlTransform.OutputTypes;
-
-        for (int i=0; i<validOutTypes.Length; i++)
-        {
-            if (validOutTypes[i] == typeof(System.IO.Stream))
-            {
-                try 
-                {
-                    Type streamType = typeof(System.IO.Stream);
-                    CryptoStream outputStream = (CryptoStream) 
-                        xmlTransform.GetOutput(streamType);
-
-                    // Read the CryptoStream into a stream reader.
-                    StreamReader streamReader =
-                        new StreamReader(outputStream);
-
-                    // Read the stream into a string.
-                    string outputMessage = streamReader.ReadToEnd();
-
-                    // Close the streams.
-                    outputStream.Close();
-                    streamReader.Close();
-
-                    // Display to the console the Xml before and after
-                    // encryption.
-                    Console.WriteLine("Encoding the following message: " +
-                        xmlDoc.InnerText);
-                    Console.WriteLine("Message encoded: " + outputMessage);
-            }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Unexpected exception caught: " +
-                        ex.ToString());
-                }
-
-                break;
-            }
-            else
-            {
-                object outputObject = xmlTransform.GetOutput();
-            }
-        }
-    }
-
-    // Create an XML document with Element and Text nodes.
-    private static XmlDocument LoadXMLDoc()
-    {
+        // Create an XmlDocument object.
         XmlDocument xmlDoc = new XmlDocument();
 
-        XmlNode mainNode = xmlDoc.CreateNode(
-            XmlNodeType.Element,
-            "ContosoMessages",
-            "http://www.contoso.com");
+        // Load an XML file into the XmlDocument object.
+        try
+        {
+            xmlDoc.PreserveWhitespace = true;
+            xmlDoc.Load("test.xml");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
 
-        XmlNode textNode = xmlDoc.CreateTextNode("Some text to encode.");
-        mainNode.AppendChild(textNode);
-        xmlDoc.AppendChild(mainNode);
+        // Create a new RSA key.  This key will encrypt a symmetric key,
+        // which will then be imbedded in the XML document.  
+        RSA rsaKey = new RSACryptoServiceProvider();
 
-        Console.WriteLine("Created the following XML Document for " +
-            "transformation: ");
-        Console.WriteLine(xmlDoc.InnerXml);
-        return xmlDoc;
+
+        try
+        {
+            // Encrypt the "creditcard" element.
+            Encrypt(xmlDoc, "creditcard", rsaKey, "rsaKey");
+
+            // Inspect the EncryptedKey element.
+            InspectElement(xmlDoc);
+
+            // Decrypt the "creditcard" element.
+            Decrypt(xmlDoc, rsaKey, "rsaKey");
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            // Clear the RSA key.
+            rsaKey.Clear();
+        }
+
     }
 
-    // Resolve the specified base and relative Uri's .
-    private static Uri ResolveUris(Uri baseUri, string relativeUri)
+    public static void Encrypt(XmlDocument Doc, string ElementToEncrypt, RSA Alg, string KeyName)
     {
-        XmlUrlResolver xmlResolver = new XmlUrlResolver();
-        xmlResolver.Credentials = 
-            System.Net.CredentialCache.DefaultCredentials;
+        // Check the arguments.  
+        if (Doc == null)
+            throw new ArgumentNullException("Doc");
+        if (ElementToEncrypt == null)
+            throw new ArgumentNullException("ElementToEncrypt");
+        if (Alg == null)
+            throw new ArgumentNullException("Alg");
 
-        XmlDsigBase64Transform xmlTransform = new XmlDsigBase64Transform();
-        xmlTransform.Resolver = xmlResolver;
+        ////////////////////////////////////////////////
+        // Find the specified element in the XmlDocument
+        // object and create a new XmlElemnt object.
+        ////////////////////////////////////////////////
 
-        Uri absoluteUri = xmlResolver.ResolveUri(baseUri, relativeUri);
+        XmlElement elementToEncrypt = Doc.GetElementsByTagName(ElementToEncrypt)[0] as XmlElement;
 
-        if (absoluteUri != null)
+        // Throw an XmlException if the element was not found.
+        if (elementToEncrypt == null)
         {
-            Console.WriteLine(
-                "Resolved the base Uri and relative Uri to the following:");
-            Console.WriteLine(absoluteUri.ToString());
+            throw new XmlException("The specified element was not found");
+
         }
-        else
-        {
-            Console.WriteLine(
-                "Unable to resolve the base Uri and relative Uri");
-        }
-        return absoluteUri;
+
+        //////////////////////////////////////////////////
+        // Create a new instance of the EncryptedXml class 
+        // and use it to encrypt the XmlElement with the 
+        // a new random symmetric key.
+        //////////////////////////////////////////////////
+
+        // Create a 256 bit Rijndael key.
+        RijndaelManaged sessionKey = new RijndaelManaged();
+        sessionKey.KeySize = 256;
+
+        EncryptedXml eXml = new EncryptedXml();
+
+        byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, sessionKey, false);
+
+        ////////////////////////////////////////////////
+        // Construct an EncryptedData object and populate
+        // it with the desired encryption information.
+        ////////////////////////////////////////////////
+
+
+        EncryptedData edElement = new EncryptedData();
+        edElement.Type = EncryptedXml.XmlEncElementUrl;
+
+        // Create an EncryptionMethod element so that the 
+        // receiver knows which algorithm to use for decryption.
+
+        edElement.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncAES256Url);
+
+        // Encrypt the session key and add it to an EncryptedKey element.
+        EncryptedKey ek = new EncryptedKey();
+
+        byte[] encryptedKey = EncryptedXml.EncryptKey(sessionKey.Key, Alg, false);
+
+        ek.CipherData = new CipherData(encryptedKey);
+
+        ek.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncRSA15Url);
+
+        // Save some more information about the key using
+        // the EncryptionProperty element.  In this example,
+        // we will save the value "LibVersion1".  You can save
+        // anything you want here.
+
+        // Create a new "EncryptionProperty" XmlElement object. 
+        XmlElement element =  new XmlDocument().CreateElement("EncryptionProperty", EncryptedXml.XmlEncNamespaceUrl);
+
+        // Set the value of the EncryptionProperty" XmlElement object.
+        element.InnerText = "LibVersion1";
+
+        // Create the EncryptionProperty object using the XmlElement object. 
+        EncryptionProperty encProp = new EncryptionProperty(element);
+
+        // Add the EncryptionProperty object to the EncryptedData object.
+        edElement.AddProperty(encProp);
+
+        // Set the KeyInfo element to specify the
+        // name of the RSA key.
+
+        // Create a new KeyInfo element.
+        edElement.KeyInfo = new KeyInfo();
+
+        // Create a new KeyInfoName element.
+        KeyInfoName kin = new KeyInfoName();
+
+        // Specify a name for the key.
+        kin.Value = KeyName;
+
+        // Add the KeyInfoName element to the 
+        // EncryptedKey object.
+        ek.KeyInfo.AddClause(kin);
+
+        // Add the encrypted key to the 
+        // EncryptedData object.
+
+        edElement.KeyInfo.AddClause(new KeyInfoEncryptedKey(ek));
+
+        // Add the encrypted element data to the 
+        // EncryptedData object.
+        edElement.CipherData.CipherValue = encryptedElement;
+
+        ////////////////////////////////////////////////////
+        // Replace the element from the original XmlDocument
+        // object with the EncryptedData element.
+        ////////////////////////////////////////////////////
+
+        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, false);
+
     }
+
+    public static void Decrypt(XmlDocument Doc, RSA Alg, string KeyName)
+    {
+        // Check the arguments.  
+        if (Doc == null)
+            throw new ArgumentNullException("Doc");
+        if (Alg == null)
+            throw new ArgumentNullException("Alg");
+        if (KeyName == null)
+            throw new ArgumentNullException("KeyName");
+
+        // Create a new EncryptedXml object.
+        EncryptedXml exml = new EncryptedXml(Doc);
+
+        // Add a key-name mapping.
+        // This method can only decrypt documents
+        // that present the specified key name.
+        exml.AddKeyNameMapping(KeyName, Alg);
+
+        // Decrypt the element.
+        exml.DecryptDocument();
+
+    }
+
+    static void InspectElement(XmlDocument Doc)
+    {
+        // Get the EncryptedData element from the XMLDocument object.
+        XmlElement encryptedData = Doc.GetElementsByTagName("EncryptedData")[0] as XmlElement;
+
+        // Create a new EncryptedData object.
+        EncryptedData encData = new EncryptedData();
+
+        // Load the XML from the document to
+        // initialize the EncryptedData object.
+        encData.LoadXml(encryptedData);
+
+        // Display the properties.
+        // Most values are Null by default.
+
+        Console.WriteLine("EncryptedData.CipherData: " + encData.CipherData.GetXml().InnerXml);
+        Console.WriteLine("EncryptedData.Encoding: " + encData.Encoding);
+        Console.WriteLine("EncryptedData.EncryptionMethod: " + encData.EncryptionMethod.GetXml().InnerXml);
+
+        EncryptionPropertyCollection encPropCollection = encData.EncryptionProperties;
+
+        Console.WriteLine("Number of elements in the EncryptionPropertyCollection: " + encPropCollection.Count);
+        //encPropCollection.
+
+        foreach(EncryptionProperty encProp in encPropCollection)
+        {
+                Console.WriteLine("EncryptionProperty.ID: " + encProp.Id);
+                Console.WriteLine("EncryptionProperty.PropertyElement: " + encProp.PropertyElement.InnerXml);
+                Console.WriteLine("EncryptionProperty.Target: " + encProp.Target);
+                 
+        }
+
+    
+
+        Console.WriteLine("EncryptedData.Id: " + encData.Id);
+        Console.WriteLine("EncryptedData.KeyInfo: " + encData.KeyInfo.GetXml().InnerXml);
+        Console.WriteLine("EncryptedData.MimeType: " + encData.MimeType);
+    }
+
 }
-//
-// This sample produces the following output:
-//
-// Created the following XML Document for transformation:
-// <ContosoMessages xmlns="http://www.contoso.com">Some text to encode.
-// </ContosoMessages>
-// Xml representation of the current transform:
-// <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#base64" xmlns=
-// "http://www.w3.org/2000/09/xmldsig#" />
-// Encoding the following message: Some text to encode.
-// Message encoded: Jmr^
-// Resolved the base Uri and relative Uri to the following:
-// http://www.microsoft.com/msdn
-// This sample completed successfully; press Enter to exit.

@@ -1,2 +1,1 @@
-		HostNameComparisonMode hostNameComparisonMode =
-			binding.HostNameComparisonMode;
+	    TransferMode transferMode = binding.TransferMode;

@@ -1,42 +1,51 @@
-    Private WithEvents ListBox1 As New ListBox()
+    ' Draws a node.
+    Private Sub myTreeView_DrawNode(ByVal sender As Object, _
+        ByVal e As DrawTreeNodeEventArgs) Handles myTreeView.DrawNode
 
-    Private Sub InitializeListBox() 
-        ListBox1.Items.AddRange(New Object() _
-            {"Red Item", "Orange Item", "Purple Item"})
-        ListBox1.Location = New System.Drawing.Point(81, 69)
-        ListBox1.Size = New System.Drawing.Size(120, 95)
-        ListBox1.DrawMode = DrawMode.OwnerDrawFixed
-        Controls.Add(ListBox1)
-    
-    End Sub
+        ' Draw the background and node text for a selected node.
+        If (e.State And TreeNodeStates.Selected) <> 0 Then
 
-    Private Sub ListBox1_DrawItem(ByVal sender As Object, _
-     ByVal e As System.Windows.Forms.DrawItemEventArgs) _
-     Handles ListBox1.DrawItem
+            ' Draw the background of the selected node. The NodeBounds
+            ' method makes the highlight rectangle large enough to
+            ' include the text of a node tag, if one is present.
+            e.Graphics.FillRectangle(Brushes.Green, NodeBounds(e.Node))
 
-        ' Draw the background of the ListBox control for each item.
-        e.DrawBackground()
+            ' Retrieve the node font. If the node font has not been set,
+            ' use the TreeView font.
+            Dim nodeFont As Font = e.Node.NodeFont
+            If nodeFont Is Nothing Then
+                nodeFont = CType(sender, TreeView).Font
+            End If
 
-        ' Define the default color of the brush as black.
-        Dim myBrush As Brush = Brushes.Black
+            ' Draw the node text.
+            e.Graphics.DrawString(e.Node.Text, nodeFont, Brushes.White, _
+                e.Bounds.Left - 2, e.Bounds.Top)
 
-        ' Determine the color of the brush to draw each item based on   
-        ' the index of the item to draw.
-        Select Case e.Index
-            Case 0
-                myBrush = Brushes.Red
-            Case 1
-                myBrush = Brushes.Orange
-            Case 2
-                myBrush = Brushes.Purple
-        End Select
+        ' Use the default background and node text.
+        Else
+            e.DrawDefault = True
+        End If
 
-        ' Draw the current item text based on the current 
-        ' Font and the custom brush settings.
-        e.Graphics.DrawString(ListBox1.Items(e.Index).ToString(), _
-            e.Font, myBrush, e.Bounds, StringFormat.GenericDefault)
+        ' If a node tag is present, draw its string representation 
+        ' to the right of the label text.
+        If (e.Node.Tag IsNot Nothing) Then
+            e.Graphics.DrawString(e.Node.Tag.ToString(), tagFont, _
+                Brushes.Yellow, e.Bounds.Right + 2, e.Bounds.Top)
+        End If
 
-        ' If the ListBox has focus, draw a focus rectangle around  _ 
-        ' the selected item.
-        e.DrawFocusRectangle()
-    End Sub
+        ' If the node has focus, draw the focus rectangle large, making
+        ' it large enough to include the text of the node tag, if present.
+        If (e.State And TreeNodeStates.Focused) <> 0 Then
+            Dim focusPen As New Pen(Color.Black)
+            Try
+                focusPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot
+                Dim focusBounds As Rectangle = NodeBounds(e.Node)
+                focusBounds.Size = New Size(focusBounds.Width - 1, _
+                    focusBounds.Height - 1)
+                e.Graphics.DrawRectangle(focusPen, focusBounds)
+            Finally
+                focusPen.Dispose()
+            End Try
+        End If
+
+    End Sub 'myTreeView_DrawNode

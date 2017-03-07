@@ -1,32 +1,24 @@
-Public Class FunButton
+' This button is a simple extension of the button class that overrides
+' the ProcessMnemonic method.  If the mnemonic is correctly entered,  
+' the message box will appear and the click event will be raised.  
+Public Class MyMnemonicButton
     Inherits Button
 
-    Protected Overrides Sub OnMouseHover(ByVal e As System.EventArgs)
+    ' This method makes sure the control is selectable and the 
+    ' mneumonic is correct before displaying the message box
+    ' and triggering the click event.
+    <System.Security.Permissions.UIPermission( _
+    System.Security.Permissions.SecurityAction.Demand, Window:=UIPermissionWindow.AllWindows)> _
+    Protected Overrides Function ProcessMnemonic( _
+        ByVal inputChar As Char) As Boolean
 
-        ' Get the font size in Points, add one to the
-        ' size, and reset the button's font to the larger
-        ' size.
-        Dim fontSize As Single = Font.SizeInPoints
-        fontSize += 1
-        Dim buttonSize As System.Drawing.Size = Size
-        Me.Font = New System.Drawing.Font _
-            (Font.FontFamily, fontSize, Font.Style)
+        If (CanSelect And IsMnemonic(inputChar, Me.Text)) Then
+            MessageBox.Show("You've raised the click event " _
+                & "using the mnemonic.")
+            Me.PerformClick()
+            Return True
+        End If
+        Return False
+    End Function
 
-        ' Increase the size width and height of the button 
-        ' by 5 points each.
-        Size = New System.Drawing.Size _
-            (Size.Width + 5, Size.Height + 5)
-
-        ' Call myBase.OnMouseHover to activate the delegate.
-        MyBase.OnMouseHover(e)
-    End Sub
-
-    Protected Overrides Sub OnMouseMove(ByVal e As MouseEventArgs)
-
-        ' Make the cursor the Hand cursor when the mouse moves 
-        ' over the button.
-        Cursor = Cursors.Hand
-
-        ' Call MyBase.OnMouseMove to activate the delegate.
-        MyBase.OnMouseMove(e)
-    End Sub
+End Class

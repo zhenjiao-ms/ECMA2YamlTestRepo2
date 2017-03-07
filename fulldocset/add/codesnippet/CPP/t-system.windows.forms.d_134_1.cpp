@@ -1,33 +1,32 @@
-   void dataGridView1_CellMouseEnter( Object^ sender, DataGridViewCellEventArgs^ e )
-   {
-      Bitmap^ markingUnderMouse = dynamic_cast<Bitmap^>(dataGridView1->Rows[ e->RowIndex ]->Cells[ e->ColumnIndex ]->Value);
-      if ( markingUnderMouse == blank )
-      {
-         dataGridView1->Cursor = Cursors::Default;
-      }
-      else
-      if ( markingUnderMouse == o || markingUnderMouse == x )
-      {
-         dataGridView1->Cursor = Cursors::No;
-         ToolTip(e,true);
-      }
-   }
+private:
+    void DataGridView1_DataError(Object^ sender, DataGridViewDataErrorEventArgs^ anError)
+    {
 
-   void ToolTip( DataGridViewCellEventArgs^ e, bool showTip )
-   {
-      DataGridViewImageCell^ cell = dynamic_cast<DataGridViewImageCell^>(dataGridView1->Rows[ e->RowIndex ]->Cells[ e->ColumnIndex ]);
-      DataGridViewImageColumn^ imageColumn = dynamic_cast<DataGridViewImageColumn^>(dataGridView1->Columns[ cell->ColumnIndex ]);
-      if ( showTip )
-            cell->ToolTipText = imageColumn->Description;
-      else
-      {
-         cell->ToolTipText = String::Empty;
-      }
-   }
+        MessageBox::Show("Error happened " + anError->Context.ToString());
 
-   void dataGridView1_CellMouseLeave( Object^ sender, DataGridViewCellEventArgs^ e )
-   {
-      ToolTip( e, false );
-      dataGridView1->Cursor = Cursors::Default;
-   }
+        if (anError->Context == DataGridViewDataErrorContexts::Commit)
+        {
+            MessageBox::Show("Commit error");
+        }
+        if (anError->Context == DataGridViewDataErrorContexts::CurrentCellChange)
+        {
+            MessageBox::Show("Cell change");
+        }
+        if (anError->Context == DataGridViewDataErrorContexts::Parsing)
+        {
+            MessageBox::Show("parsing error");
+        }
+        if (anError->Context == DataGridViewDataErrorContexts::LeaveControl)
+        {
+            MessageBox::Show("leave control error");
+        }
 
+        if (dynamic_cast<ConstraintException^>(anError->Exception) != nullptr)
+        {
+            DataGridView^ view = (DataGridView^)sender;
+            view->Rows[anError->RowIndex]->ErrorText = "an error";
+            view->Rows[anError->RowIndex]->Cells[anError->ColumnIndex]->ErrorText = "an error";
+
+            anError->ThrowException = false;
+        }
+    }

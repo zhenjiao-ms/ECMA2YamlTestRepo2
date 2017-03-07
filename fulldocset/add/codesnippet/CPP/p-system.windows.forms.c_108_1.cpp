@@ -1,10 +1,13 @@
 private:
-   void treeView1_MouseUp( Object^ /*sender*/, MouseEventArgs^ e )
+   void Grid_Navigate( Object^ /*sender*/, NavigateEventArgs^ e )
    {
-      // If the right mouse button was clicked and released,
-      // display the shortcut menu assigned to the TreeView.
-      if ( e->Button == ::MouseButtons::Right )
+      if ( e->Forward )
       {
-         treeView1->ContextMenu->Show( treeView1, Point(e->X,e->Y) );
+         DataSet^ ds = dynamic_cast<DataSet^>(grid->DataSource);
+         CurrencyManager^ cm = dynamic_cast<CurrencyManager^>(BindingContext[ds, "Customers::CustOrders"]);
+         
+         // Cast the IList* to a DataView to set the AllowNew property.
+         DataView^ dv = dynamic_cast<DataView^>(cm->List);
+         dv->AllowNew = false;
       }
    }

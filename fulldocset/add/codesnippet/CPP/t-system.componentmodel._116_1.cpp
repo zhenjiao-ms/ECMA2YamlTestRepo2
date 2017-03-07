@@ -1,110 +1,116 @@
-#using <System.Windows.Forms.dll>
-#using <System.Drawing.dll>
-#using <System.dll>
-
-using namespace System;
-using namespace System::ComponentModel;
-using namespace System::ComponentModel::Design;
-using namespace System::Drawing;
-using namespace System::IO;
-using namespace System::Reflection;
-using namespace System::Runtime::Serialization;
-using namespace System::Runtime::Serialization::Formatters::Binary;
-using namespace System::Windows::Forms;
-using namespace System::Windows::Forms::Design;
-using namespace System::Security::Permissions;
-
-namespace TypeCategoryTabExample
-{
-   ref class TypeCategoryTab;
-
-   // forward declaration.
-   // This component adds a TypeCategoryTab to the propery browser
-   // that is available for any components in the current design mode document.
-
-   [PropertyTabAttribute(TypeCategoryTabExample::TypeCategoryTab::typeid,PropertyTabScope::Document)]
-   public ref class TypeCategoryTabComponent: public System::ComponentModel::Component
-   {
-   public:
-      TypeCategoryTabComponent(){}
-   };
-
-   // A TypeCategoryTab property tab lists properties by the
-   // category of the type of each property.
-   public ref class TypeCategoryTab: public PropertyTab
+   //This code segment implements the IContainer interface.  The code segment
+   //containing the implementation of ISite and IComponent can be found in the documentation
+   //for those interfaces.
+   //Implement the LibraryContainer using the IContainer interface.
+   ref class LibraryContainer: public IContainer
    {
    private:
-
-      // This String^ contains a Base-64 encoded and serialized example property tab image.
-
-      [BrowsableAttribute(true)]
-      String^ img;
+      ArrayList^ m_bookList;
 
    public:
-      TypeCategoryTab()
+      LibraryContainer()
       {
-         img = "AAEAAAD/////AQAAAAAAAAAMAgAAAFRTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj0xLjAuMzMwMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAA9gAAAAJCTfYAAAAAAAAANgAAACgAAAAIAAAACAAAAAEAGAAAAAAAAAAAAMQOAADEDgAAAAAAAAAAAAD///////////////////////////////////9ZgABZgADzPz/zPz/zPz9AgP//////////gAD/gAD/AAD/AAD/AACKyub///////+AAACAAAAAAP8AAP8AAP9AgP////////9ZgABZgABz13hz13hz13hAgP//////////gAD/gACA/wCA/wCA/wAA//////////+AAACAAAAAAP8AAP8AAP9AgP////////////////////////////////////8L";
+         m_bookList = gcnew ArrayList;
       }
 
-      // Returns the properties of the specified component extended with
-      // a CategoryAttribute reflecting the name of the type of the property.
-      [ReflectionPermission(SecurityAction::Demand, Flags=ReflectionPermissionFlag::MemberAccess)]
-      virtual System::ComponentModel::PropertyDescriptorCollection^ GetProperties( Object^ component, array<System::Attribute^>^attributes ) override
+      virtual void Add( IComponent^ book )
       {
-         PropertyDescriptorCollection^ props;
-         if ( attributes == nullptr )
-                  props = TypeDescriptor::GetProperties( component );
-         else
-                  props = TypeDescriptor::GetProperties( component, attributes );
+         
+         //The book will be added without creation of the ISite object.
+         m_bookList->Add( book );
+      }
 
-         array<PropertyDescriptor^>^propArray = gcnew array<PropertyDescriptor^>(props->Count);
-         for ( int i = 0; i < props->Count; i++ )
+      virtual void Add( IComponent^ book, String^ ISNDNNum )
+      {
+         for ( int i = 0; i < m_bookList->Count; ++i )
          {
-            // Create a new PropertyDescriptor from the old one, with
-            // a CategoryAttribute matching the name of the type.
-            array<Attribute^>^temp0 = {gcnew CategoryAttribute( props[ i ]->PropertyType->Name )};
-            propArray[ i ] = TypeDescriptor::CreateProperty( props[ i ]->ComponentType, props[ i ], temp0 );
+            IComponent^ curObj = static_cast<IComponent^>(m_bookList->default[ i ]);
+            if ( curObj->Site != nullptr )
+            {
+               if ( curObj->Site->Name->Equals( ISNDNNum ) )
+                              throw gcnew SystemException( "The ISBN number already exists in the container" );
+            }
 
          }
-         return gcnew PropertyDescriptorCollection( propArray );
+         ISBNSite^ data = gcnew ISBNSite( this,book );
+         data->Name = ISNDNNum;
+         book->Site = data;
+         m_bookList->Add( book );
       }
 
-      virtual System::ComponentModel::PropertyDescriptorCollection^ GetProperties( Object^ component ) override
+      virtual void Remove( IComponent^ book )
       {
-         return this->GetProperties( component, nullptr );
-      }
-
-      property String^ TabName 
-      {
-         // Provides the name for the property tab.
-         virtual String^ get() override
+         for ( int i = 0; i < m_bookList->Count; ++i )
          {
-            return "Properties by Type";
-         }
-      }
+            if ( book->Equals( m_bookList->default[ i ] ) )
+            {
+               m_bookList->RemoveAt( i );
+               break;
+            }
 
-      property System::Drawing::Bitmap^ Bitmap 
-      {
-         // Provides an image for the property tab.
-         virtual System::Drawing::Bitmap^ get() override
-         {
-            System::Drawing::Bitmap^ bmp = gcnew System::Drawing::Bitmap( DeserializeFromBase64Text( img ) );
-            return bmp;
          }
       }
 
-   private:
 
-      // This method can be used to retrieve an Image from a block of Base64-encoded text.
-      Image^ DeserializeFromBase64Text( String^ text )
+      property ComponentCollection^ Components 
       {
-         Image^ img = nullptr;
-         array<Byte>^memBytes = Convert::FromBase64String( text );
-         IFormatter^ formatter = gcnew BinaryFormatter;
-         MemoryStream^ stream = gcnew MemoryStream( memBytes );
-         img = dynamic_cast<Image^>(formatter->Deserialize( stream ));
-         stream->Close();
-         return img;
+         virtual ComponentCollection^ get() 
+         {
+            array<IComponent^>^datalist = gcnew array<BookComponent^>(m_bookList->Count);
+            m_bookList->CopyTo( datalist );
+            return gcnew ComponentCollection( datalist );
+         }
+
       }
+
+      ~LibraryContainer()
+      {
+         for ( int i = 0; i < m_bookList->Count; ++i )
+         {
+            IComponent^ curObj = static_cast<IComponent^>(m_bookList->default[ i ]);
+            delete curObj;
+
+         }
+         m_bookList->Clear();
+      }
+
+
+
    };
-}
+
+
+
+   [STAThreadAttribute]
+   int main()
+      {
+         LibraryContainer^ cntrExmpl = gcnew LibraryContainer;
+         try
+         {
+            BookComponent^ book1 = gcnew BookComponent( "Wizard's First Rule","Terry Gooodkind" );
+            cntrExmpl->Add( book1, "0812548051" );
+            BookComponent^ book2 = gcnew BookComponent( "Stone of Tears","Terry Gooodkind" );
+            cntrExmpl->Add( book2, "0812548094" );
+            BookComponent^ book3 = gcnew BookComponent( "Blood of the Fold","Terry Gooodkind" );
+            cntrExmpl->Add( book3, "0812551478" );
+            BookComponent^ book4 = gcnew BookComponent( "The Soul of the Fire","Terry Gooodkind" );
+            
+            //This will generate exception because the ISBN already exists in the container.
+            cntrExmpl->Add( book4, "0812551478" );
+         }
+         catch ( SystemException^ e ) 
+         {
+            Console::WriteLine(  "Error description: {0}", e->Message );
+         }
+
+         ComponentCollection^ datalist = cntrExmpl->Components;
+         IEnumerator^ denum = datalist->GetEnumerator();
+         while ( denum->MoveNext() )
+         {
+            BookComponent^ cmp = static_cast<BookComponent^>(denum->Current);
+            Console::WriteLine( "Book Title: {0}", cmp->Title );
+            Console::WriteLine(  "Book Author: {0}", cmp->Author );
+            Console::WriteLine(  "Book ISBN: {0}", cmp->Site->Name );
+         }
+
+	 return 0;
+      }

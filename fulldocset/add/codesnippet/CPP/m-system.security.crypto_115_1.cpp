@@ -1,103 +1,34 @@
-using namespace System;
-using namespace System::Security::Cryptography;
-using namespace System::Text;
-array<Byte>^ RSAEncrypt( array<Byte>^DataToEncrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding )
+void EncryptData( String^ inName, String^ outName, array<Byte>^rijnKey, array<Byte>^rijnIV )
 {
-   try
-   {
-      
-      //Create a new instance of RSACryptoServiceProvider.
-      RSACryptoServiceProvider^ RSA = gcnew RSACryptoServiceProvider;
-      
-      //Import the RSA Key information. This only needs
-      //toinclude the public key information.
-      RSA->ImportParameters( RSAKeyInfo );
-      
-      //Encrypt the passed byte array and specify OAEP padding.  
-      //OAEP padding is only available on Microsoft Windows XP or
-      //later.  
+   
+   //Create the file streams to handle the input and output files.
+   FileStream^ fin = gcnew FileStream( inName,FileMode::Open,FileAccess::Read );
+   FileStream^ fout = gcnew FileStream( outName,FileMode::OpenOrCreate,FileAccess::Write );
+   fout->SetLength( 0 );
+   
+   //Create variables to help with read and write.
+   array<Byte>^bin = gcnew array<Byte>(100);
+   long rdlen = 0; //This is the total number of bytes written.
 
-      array<Byte>^encryptedData = RSA->Encrypt( DataToEncrypt, DoOAEPPadding );
-	  delete RSA;
-	  return encryptedData;
-   }
-   //Catch and display a CryptographicException  
-   //to the console.
-   catch ( CryptographicException^ e ) 
-   {
-      Console::WriteLine( e->Message );
-      return nullptr;
-   }
+   long totlen = (long)fin->Length; //This is the total length of the input file.
 
-}
+   int len; //This is the number of bytes to be written at a time.
 
-array<Byte>^ RSADecrypt( array<Byte>^DataToDecrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding )
-{
-   try
+   SymmetricAlgorithm^ rijn = SymmetricAlgorithm::Create(); //Creates the default implementation, which is RijndaelManaged.         
+
+   CryptoStream^ encStream = gcnew CryptoStream( fout,rijn->CreateEncryptor( rijnKey, rijnIV ),CryptoStreamMode::Write );
+   Console::WriteLine( "Encrypting..." );
+   
+   //Read from the input file, then encrypt and write to the output file.
+   while ( rdlen < totlen )
    {
-      
-      //Create a new instance of RSACryptoServiceProvider.
-      RSACryptoServiceProvider^ RSA = gcnew RSACryptoServiceProvider;
-      
-      //Import the RSA Key information. This needs
-      //to include the private key information.
-      RSA->ImportParameters( RSAKeyInfo );
-      
-      //Decrypt the passed byte array and specify OAEP padding.  
-      //OAEP padding is only available on Microsoft Windows XP or
-      //later.  
-	  
-      array<Byte>^decryptedData = RSA->Decrypt( DataToDecrypt, DoOAEPPadding );
-      delete RSA;
-	  return decryptedData;
-   }
-   //Catch and display a CryptographicException  
-   //to the console.
-   catch ( CryptographicException^ e ) 
-   {
-      Console::WriteLine( e );
-      return nullptr;
+      len = fin->Read( bin, 0, 100 );
+      encStream->Write( bin, 0, len );
+      rdlen = rdlen + len;
+      Console::WriteLine( "{0} bytes processed", rdlen );
    }
 
-}
-
-int main()
-{
-   try
-   {
-      
-      //Create a UnicodeEncoder to convert between byte array and string.
-      UnicodeEncoding^ ByteConverter = gcnew UnicodeEncoding;
-      
-      //Create byte arrays to hold original, encrypted, and decrypted data.
-      array<Byte>^dataToEncrypt = ByteConverter->GetBytes( "Data to Encrypt" );
-      array<Byte>^encryptedData;
-      array<Byte>^decryptedData;
-      
-      //Create a new instance of RSACryptoServiceProvider to generate
-      //public and private key data.
-      RSACryptoServiceProvider^ RSA = gcnew RSACryptoServiceProvider;
-      
-      //Pass the data to ENCRYPT, the public key information 
-      //(using RSACryptoServiceProvider.ExportParameters(false),
-      //and a boolean flag specifying no OAEP padding.
-      encryptedData = RSAEncrypt( dataToEncrypt, RSA->ExportParameters( false ), false );
-      
-      //Pass the data to DECRYPT, the private key information 
-      //(using RSACryptoServiceProvider.ExportParameters(true),
-      //and a boolean flag specifying no OAEP padding.
-      decryptedData = RSADecrypt( encryptedData, RSA->ExportParameters( true ), false );
-      
-      //Display the decrypted plaintext to the console. 
-      Console::WriteLine( "Decrypted plaintext: {0}", ByteConverter->GetString( decryptedData ) );
-	  delete RSA;
-   }
-   catch ( ArgumentNullException^ ) 
-   {
-      
-      //Catch this exception in case the encryption did
-      //not succeed.
-      Console::WriteLine( "Encryption failed." );
-   }
-
+   encStream->Close();
+   fout->Close();
+   fin->Close();
 }

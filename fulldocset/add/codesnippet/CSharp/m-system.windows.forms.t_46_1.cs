@@ -1,47 +1,42 @@
-public class Customer
-{
-   public ArrayList CustomerOrders;
-   public string CustomerName;
-   public Customer(string myName)
-   {
-      CustomerName = myName;
-      CustomerOrders = new ArrayList(); 
-   }
-}
-public class Order
-{
-   public string OrderID;
-   public Order(string myOrderID )
-   {
-      this.OrderID = myOrderID;
-   }
-}
+using System.Drawing;
+using System.Windows.Forms;
 
-public void AddRootNodes()
+public class Form1 : Form
 {
-   // Add a root node to assign the customer nodes to.
-   TreeNode rootNode = new TreeNode();
-   rootNode.Text = "CustomerList";
-   // Add a main root treenode.
-   myTreeView.Nodes.Add(rootNode);
+    private TabControl tabControl1;
+    private Rectangle myTabRect;
 
-   // Add a root treenode for each 'Customer' object in the ArrayList.
-   foreach(Customer myCustomer in customerArray)
-   {
-      // Add a child treenode for each Order object.
-      int i = 0;
-      TreeNode[] myTreeNodeArray = new TreeNode[5];
-      foreach(Order myOrder in myCustomer.CustomerOrders)
-      {
-         myTreeNodeArray[i] = new TreeNode(myOrder.OrderID);
-         i++;
-      }
-      TreeNode customerNode = new TreeNode(myCustomer.CustomerName,
-        myTreeNodeArray);
-		// Display the customer names with and Orange font.
-		customerNode.ForeColor = Color.Orange;
-		// Store the Customer object in the Tag property of the TreeNode.
-		customerNode.Tag = myCustomer;
-      myTreeView.Nodes[0].Nodes.Add(customerNode);
-   }
+    public Form1()
+    {
+        tabControl1 = new TabControl();
+        TabPage tabPage1 = new TabPage();
+
+        tabControl1.Controls.Add(tabPage1);
+        tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
+        tabControl1.Location = new Point(25, 25);
+        tabControl1.Size = new Size(250, 250);
+
+        tabPage1.TabIndex = 0;
+
+        // Gets the tabPage1 tab area defined by its TabIndex.
+        // Returns a Rectangle to myTabRect.
+        myTabRect = tabControl1.GetTabRect(0);
+
+        ClientSize = new Size(300, 300);
+        Controls.Add(tabControl1);
+
+        tabControl1.DrawItem += new DrawItemEventHandler(OnDrawItem);
+    }
+ 
+    private void OnDrawItem(object sender, DrawItemEventArgs e)
+    {
+        Graphics g = e.Graphics;
+        Pen p = new Pen(Color.Blue);
+        g.DrawRectangle(p, myTabRect);
+    }
+
+    static void Main() 
+    {
+        Application.Run(new Form1());
+    }
 }

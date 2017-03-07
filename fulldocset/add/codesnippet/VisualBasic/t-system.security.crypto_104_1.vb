@@ -1,6 +1,6 @@
 Imports System
+Imports System.IO
 Imports System.Security.Cryptography
-Imports System.Runtime.Serialization
 
 Public Class Form1
     Inherits System.Windows.Forms.Form
@@ -13,8 +13,11 @@ Public Class Form1
         tbxOutput.Cursor = Cursors.WaitCursor
         tbxOutput.Text = ""
 
-        TestConstructors()
-        ShowProperties()
+        Dim appPath As String
+        appPath = (System.IO.Directory.GetCurrentDirectory() + "\\")
+
+        ' Insert your file names into this method call.
+        EncodeFromFile(appPath + "members.vb", appPath + "membersvb.enc")
 
         ' Reset the cursor and conclude application.
         tbxOutput.AppendText(vbCrLf + "This sample completed " + _
@@ -22,151 +25,77 @@ Public Class Form1
         tbxOutput.Cursor = Cursors.Default
     End Sub
 
-    ' Test each public implementation of the
-    ' CryptographicUnexpectedOperationException constructors.
-    Private Sub TestConstructors()
-        EmptyConstructor()
-        StringConstructor()
-        StringExceptionConstructor()
-        StringStringConstructor()
-    End Sub
+    ' Read in the specified source file and write out an encoded target file.
+    Private Sub EncodeFromFile( _
+        ByVal sourceFile As String, _
+        ByVal targetFile As String)
 
-    Private Sub EmptyConstructor()
-        ' Construct a CryptographicUnexpectedOperationException
-        ' with no parameters.
-        Dim cryptographicException As _
-            New CryptographicUnexpectedOperationException
-        WriteLine("Created an empty " + _
-            "CryptographicUnexpectedOperationException.")
-    End Sub
+        ' Verify members.cs exists at the specified directory.
+        If (Not File.Exists(sourceFile)) Then
+            tbxOutput.AppendText("Unable to locate source file located at ")
+            tbxOutput.AppendText(sourceFile + ". Please correct the path ")
+            tbxOutput.AppendText("and run the sample again.")
 
-    Private Sub StringConstructor()
-        ' Construct a CryptographicUnexpectedOperationException using a custom
-        ' error message.
-        Dim errorMessage As String = "Unexpected operation exception."
-        Dim cryptographicException As _
-            New CryptographicUnexpectedOperationException(errorMessage)
-        WriteLine("Created a CryptographicUnexpectedOperationException " + _
-            "with the following error message: " + errorMessage)
-    End Sub
+            Exit Sub
+        End If
 
-    Private Sub StringExceptionConstructor()
-        ' Construct a CryptographicUnexpectedOperationException using a
-        ' custom error message and an inner exception.
-        Dim errorMessage As String = "The current operation is not supported."
-        Dim nullException As New NullReferenceException
-        Dim cryptographicException As _
-            New CryptographicUnexpectedOperationException( _
-            errorMessage, nullException)
-        Write("Created a CryptographicUnexpectedOperationException ")
-        Write("with the following error message: " + errorMessage)
-        WriteLine(" and inner exception: " + nullException.ToString())
-    End Sub
+        ' Retrieve the input and output file streams.
+        Dim inputFileStream As New FileStream( _
+            sourceFile, FileMode.Open, FileAccess.Read)
+        Dim outputFileStream As New FileStream( _
+            targetFile, FileMode.Create, FileAccess.Write)
 
-    Private Sub StringStringConstructor()
-        ' Create a CryptographicUnexpectedOperationException using
-        ' a time format and the current date.
-        Dim dateFormat As String = "{0:t}"
-        Dim timeStamp As String = DateTime.Now.ToString()
-        Dim cryptographicException As New _
-            CryptographicUnexpectedOperationException(dateFormat, timeStamp)
-        Write("Created a CryptographicUnexpectedOperationException with ")
-        Write(dateFormat + " as the format and " + timeStamp)
-        WriteLine(" as the message.")
-    End Sub
+        ' Create a new ToBase64Transform object to convert to base 64.
+        Dim base64Transform As New ToBase64Transform
 
-    ' Construct an invalid DSACryptoServiceProvider to throw a
-    ' CryptographicUnexpectedOperationException for introspection.
-    Private Sub ShowProperties()
-        ' Attempting to encode an OID greater than 127 bytes is not supported
-        ' and will throw an exception.
-        Dim veryLongNumber As String = "1234567890.1234567890."
+        ' Create a new byte array with the size of the output block size.
+        Dim outputBytes(base64Transform.OutputBlockSize) As Byte
 
-        For i As Int16 = 0 To 4 Step 1
-            veryLongNumber += veryLongNumber
-        Next
-        veryLongNumber += "0"
+        ' Retrieve the file contents into a byte array.
+        Dim inputBytes(inputFileStream.Length) As Byte
+        inputFileStream.Read(inputBytes, 0, inputBytes.Length)
 
-        Try
-            Dim tooLongOID() As Byte
-            tooLongOID = CryptoConfig.EncodeOID(veryLongNumber)
+        ' Verify that multiple blocks can not be transformed.
+        If (Not base64Transform.CanTransformMultipleBlocks) Then
+            ' Initializie the offset size.
+            Dim inputOffset As Integer = 0
 
-        Catch ex As CryptographicUnexpectedOperationException
-            ' Retrieve the link to the Help file for the exception.
-            Dim helpLink As String = ex.HelpLink
+            ' Iterate through inputBytes transforming by blockSize.
+            Dim inputBlockSize As Integer = base64Transform.InputBlockSize
 
-            ' Retrieve the exception that caused the current
-            ' CryptographicUnexpectedOperationException.
-            Dim innerException As System.Exception = ex.InnerException
-            Dim innerExceptionMessage As String = ""
-            If (Not innerException Is Nothing) Then
-                innerExceptionMessage = innerException.ToString()
-            End If
+            While (inputBytes.Length - inputOffset > inputBlockSize)
+                base64Transform.TransformBlock( _
+                    inputBytes, _
+                    inputOffset, _
+                    inputBytes.Length - inputOffset, _
+                    outputBytes, _
+                    0)
 
-            ' Retrieve the message that describes the exception.
-            Dim message As String = ex.Message
+                inputOffset += base64Transform.InputBlockSize
+                outputFileStream.Write(outputBytes, _
+                    0, _
+                    base64Transform.OutputBlockSize)
+            End While
 
-            ' Retrieve the name of the application that caused the exception.
-            Dim exceptionSource As String = ex.Source
+            ' Transform the final block of data.
+            outputBytes = base64Transform.TransformFinalBlock( _
+                inputBytes, _
+                inputOffset, _
+                inputBytes.Length - inputOffset)
 
-            ' Retrieve the call stack at the time the exception occurred.
-            Dim stackTrace As String = ex.StackTrace
+            outputFileStream.Write(outputBytes, 0, outputBytes.Length)
+            tbxOutput.AppendText("Created encoded file at " + targetFile)
+        End If
 
-            ' Retrieve the method that threw the exception.
-            Dim targetSite As System.Reflection.MethodBase
-            targetSite = ex.TargetSite
-            Dim siteName As String = targetSite.Name
+        ' Determine if the current transform can be reused.
+        If (Not base64Transform.CanReuseTransform) Then
+            ' Free up any used resources.
+            base64Transform.Clear()
+        End If
 
-            ' Retrieve the entire exception as a single string.
-            Dim entireException As String = ex.ToString()
-
-            ' GetObjectData
-            setSerializationInfo(ex)
-
-            ' Get the root exception that caused the current
-            ' CryptographicUnexpectedOperationException.
-            Dim baseException As System.Exception = ex.GetBaseException()
-            Dim baseExceptionMessage As String = ""
-            If (Not baseException Is Nothing) Then
-                baseExceptionMessage = baseException.Message
-            End If
-
-            WriteLine("Caught an expected exception:")
-            WriteLine(entireException)
-
-            WriteLine(vbCrLf + "Properties of the exception are as follows:")
-            WriteLine("Message: " + message)
-            WriteLine("Source: " + exceptionSource)
-            WriteLine("Stack trace: " + stackTrace)
-            WriteLine("Help link: " + helpLink)
-            WriteLine("Target site's name: " + siteName)
-            WriteLine("Base exception message: " + baseExceptionMessage)
-            WriteLine("Inner exception message: " + innerExceptionMessage)
-
-        End Try
-    End Sub
-
-    Private Sub setSerializationInfo( _
-        ByRef ex As CryptographicUnexpectedOperationException)
-
-        ' Insert information about the exception into a serialized object.
-        Dim formatConverter As New FormatterConverter
-        Dim serializationInfo As _
-            New SerializationInfo(ex.GetType(), formatConverter)
-        Dim streamingContext As _
-            New StreamingContext(StreamingContextStates.All)
-
-        ex.GetObjectData(serializationInfo, streamingContext)
-    End Sub
-
-    ' Write specified message to the output textbox.
-    Private Sub Write(ByVal message As String)
-        tbxOutput.AppendText(message)
-    End Sub
-
-    ' Write specified message with a carriage return to the output textbox.
-    Private Sub WriteLine(ByVal message As String)
-        tbxOutput.AppendText(message + vbCrLf)
+        ' Close file streams.
+        inputFileStream.Close()
+        outputFileStream.Close()
     End Sub
 
     ' Event handler for Exit button.
@@ -235,7 +164,8 @@ Public Class Form1
         '
         Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
         Me.Button1.Font = New System.Drawing.Font( _
-            "Microsoft Sans Serif", 9.0!, _
+            "Microsoft Sans Serif", _
+            9.0!, _
             System.Drawing.FontStyle.Regular, _
             System.Drawing.GraphicsUnit.Point, _
             CType(0, Byte))
@@ -248,7 +178,8 @@ Public Class Form1
         'Button2
         '
         Me.Button2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", _
+        Me.Button2.Font = New System.Drawing.Font( _
+            "Microsoft Sans Serif", _
             9.0!, _
             System.Drawing.FontStyle.Regular, _
             System.Drawing.GraphicsUnit.Point, _
@@ -288,7 +219,7 @@ Public Class Form1
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.Name = "Form1"
-        Me.Text = "CryptographicUnexpectedOperationException"
+        Me.Text = "ToBase64Transform"
         Me.Panel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -300,32 +231,5 @@ End Class
 '
 ' This sample produces the following output:
 '
-' Created an empty CryptographicUnexpectedOperationException.
-' Created a CryptographicUnexpectedOperationException with the following error
-' message: Unexpected operation exception.
-' Created a CryptographicUnexpectedOperationException with the following error
-' message: The current operation is not supported. and inner exception:
-' System.NullReferenceException: Object reference not set to an instance of an
-' object.
-' Created a CryptographicUnexpectedOperationException with {0:t} as the format
-' and 2/24/2004 2:29:32 PM as the message.
-' Caught an expected exception:
-' System.Security.Cryptography.CryptographicUnexpectedOperationException:
-' Encoded OID length is too large (greater than 0x7f bytes).
-'  at System.Security.Cryptography.CryptoConfig.EncodeOID(String str)
-'  at WindowsApplication1.Form1.ShowProperties() in 
-' C:\WindowsApplication1\Form1.vb:line 103
-'
-' Properties of the exception are as follows:
-' Message: Encoded OID length is too large (greater than 0x7f bytes).
-' Source: mscorlib
-' Stack trace:    at System.Security.Cryptography.CryptoConfig.EncodeOID(
-' String str) at WindowsApplication1.Form1.ShowProperties() in
-' C:\WindowsApplication1\Form1.vb:line 103
-' Help link: 
-' Target site's name: EncodeOID
-' Base exception message: Encoded OID length is too large (greater than 0x7f
-' bytes).
-' Inner exception message: 
-' 
+' Created encoded file at C:\WindowsApplication1\\membersvb.enc
 ' This sample completed successfully; press Exit to continue.

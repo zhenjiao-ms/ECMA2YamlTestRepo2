@@ -1,8 +1,9 @@
-         // Add list of printer resolutions found on the printer to the combobox.
-         // The PrinterResolution's ToString() method will be used to provide the display String.
-         PrinterResolution^ pkResolution;
-         for ( int i = 0; i < printDoc->PrinterSettings->PrinterResolutions->Count; i++ )
+         // Add list of paper sources found on the printer to the combo box.
+         // The DisplayMember property is used to identify the property that will provide the display String*.
+         comboPaperSource->DisplayMember = "SourceName";
+         PaperSource^ pkSource;
+         for ( int i = 0; i < printDoc->PrinterSettings->PaperSources->Count; i++ )
          {
-            pkResolution = printDoc->PrinterSettings->PrinterResolutions[ i ];
-            comboPrintResolution->Items->Add( pkResolution );
+            pkSource = printDoc->PrinterSettings->PaperSources[ i ];
+            comboPaperSource->Items->Add( pkSource );
          }

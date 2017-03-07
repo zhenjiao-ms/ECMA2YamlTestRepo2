@@ -1,74 +1,43 @@
-    private DataGridViewComboBoxColumn CreateComboBoxColumn()
+    private void dataGridView1_CellPainting(object sender,
+    System.Windows.Forms.DataGridViewCellPaintingEventArgs e)
     {
-        DataGridViewComboBoxColumn column =
-            new DataGridViewComboBoxColumn();
+        if (this.dataGridView1.Columns["ContactName"].Index ==
+            e.ColumnIndex && e.RowIndex >= 0)
         {
-            column.DataPropertyName = ColumnName.TitleOfCourtesy.ToString();
-            column.HeaderText = ColumnName.TitleOfCourtesy.ToString();
-            column.DropDownWidth = 160;
-            column.Width = 90;
-            column.MaxDropDownItems = 3;
-            column.FlatStyle = FlatStyle.Flat;
+            Rectangle newRect = new Rectangle(e.CellBounds.X + 1,
+                e.CellBounds.Y + 1, e.CellBounds.Width - 4,
+                e.CellBounds.Height - 4);
+
+            using (
+                Brush gridBrush = new SolidBrush(this.dataGridView1.GridColor),
+                backColorBrush = new SolidBrush(e.CellStyle.BackColor))
+            {
+                using (Pen gridLinePen = new Pen(gridBrush))
+                {
+                    // Erase the cell.
+                    e.Graphics.FillRectangle(backColorBrush, e.CellBounds);
+
+                    // Draw the grid lines (only the right and bottom lines;
+                    // DataGridView takes care of the others).
+                    e.Graphics.DrawLine(gridLinePen, e.CellBounds.Left,
+                        e.CellBounds.Bottom - 1, e.CellBounds.Right - 1,
+                        e.CellBounds.Bottom - 1);
+                    e.Graphics.DrawLine(gridLinePen, e.CellBounds.Right - 1,
+                        e.CellBounds.Top, e.CellBounds.Right - 1,
+                        e.CellBounds.Bottom);
+
+                    // Draw the inset highlight box.
+                    e.Graphics.DrawRectangle(Pens.Blue, newRect);
+
+                    // Draw the text content of the cell, ignoring alignment.
+                    if (e.Value != null)
+                    {
+                        e.Graphics.DrawString((String)e.Value, e.CellStyle.Font,
+                            Brushes.Crimson, e.CellBounds.X + 2,
+                            e.CellBounds.Y + 2, StringFormat.GenericDefault);
+                    }
+                    e.Handled = true;
+                }
+            }
         }
-        return column;
     }
-
-    private void SetAlternateChoicesUsingDataSource(DataGridViewComboBoxColumn comboboxColumn)
-    {
-        {
-            comboboxColumn.DataSource = RetrieveAlternativeTitles();
-            comboboxColumn.ValueMember = ColumnName.TitleOfCourtesy.ToString();
-            comboboxColumn.DisplayMember = comboboxColumn.ValueMember;
-        }
-    }
-
-    private DataTable RetrieveAlternativeTitles()
-    {
-        return Populate("SELECT distinct TitleOfCourtesy FROM Employees");
-    }
-
-    string connectionString =
-        "Integrated Security=SSPI;Persist Security Info=False;" +
-        "Initial Catalog=Northwind;Data Source=localhost";
-
-    private DataTable Populate(string sqlCommand)
-    {
-        SqlConnection northwindConnection = new SqlConnection(connectionString);
-        northwindConnection.Open();
-
-        SqlCommand command = new SqlCommand(sqlCommand, northwindConnection);
-        SqlDataAdapter adapter = new SqlDataAdapter();
-        adapter.SelectCommand = command;
-
-        DataTable table = new DataTable();
-        table.Locale = System.Globalization.CultureInfo.InvariantCulture;
-        adapter.Fill(table);
-
-        return table;
-    }
-
-    // Using an enum provides some abstraction between column index
-    // and column name along with compile time checking, and gives
-    // a handy place to store the column names.
-    enum ColumnName
-    {
-        EmployeeId,
-        LastName,
-        FirstName,
-        Title,
-        TitleOfCourtesy,
-        BirthDate,
-        HireDate,
-        Address,
-        City,
-        Region,
-        PostalCode,
-        Country,
-        HomePhone,
-        Extension,
-        Photo,
-        Notes,
-        ReportsTo,
-        PhotoPath,
-        OutOfOffice
-    };

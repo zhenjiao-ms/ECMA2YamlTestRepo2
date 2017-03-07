@@ -1,16 +1,27 @@
-      ' The following code example demonstrates the syntax for setting
-      ' various ToolStripComboBox properties.
+      ' This is an example of some common ToolStrip property settings.
       ' 
-      toolStripComboBox1.AutoCompleteCustomSource.AddRange(New String() {"aaa", "bbb", "ccc"})
-      toolStripComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-      toolStripComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-      toolStripComboBox1.DropDownHeight = 110
-      toolStripComboBox1.DropDownWidth = 122
-      toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard
-      toolStripComboBox1.IntegralHeight = False
-      toolStripComboBox1.Items.AddRange(New Object() {"xxx", "yyy", "zzz"})
-      toolStripComboBox1.MaxDropDownItems = 9
-      toolStripComboBox1.MergeAction = System.Windows.Forms.MergeAction.Insert
-      toolStripComboBox1.Name = "toolStripComboBox1"
-      toolStripComboBox1.Size = New System.Drawing.Size(121, 25)
-      toolStripComboBox1.Sorted = True
+      toolStrip1.AllowDrop = False
+      toolStrip1.AllowItemReorder = True
+      toolStrip1.AllowMerge = False
+      toolStrip1.Anchor = CType(System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right, System.Windows.Forms.AnchorStyles)
+      toolStrip1.AutoSize = False
+      toolStrip1.CanOverflow = False
+      toolStrip1.Cursor = Cursors.Cross
+      toolStrip1.Dock = System.Windows.Forms.DockStyle.None
+      toolStrip1.DefaultDropDownDirection = ToolStripDropDownDirection.BelowRight
+      toolStrip1.GripMargin = New System.Windows.Forms.Padding(3)
+      toolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+      toolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {toolStripButton1})
+      toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
+      toolStrip1.Location = New System.Drawing.Point(0, 0)
+      toolStrip1.Margin = New System.Windows.Forms.Padding(1)
+      toolStrip1.Name = "toolStrip1"
+      toolStrip1.Padding = New System.Windows.Forms.Padding(0, 0, 2, 0)
+      toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+      toolStrip1.ShowItemToolTips = False
+      toolStrip1.Size = New System.Drawing.Size(109, 273)
+      toolStrip1.Stretch = True
+      toolStrip1.TabIndex = 0
+      toolStrip1.TabStop = True
+      toolStrip1.Text = "toolStrip1"
+      toolStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90

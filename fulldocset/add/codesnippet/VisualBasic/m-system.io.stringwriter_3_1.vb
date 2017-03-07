@@ -1,5 +1,7 @@
-        Console.WriteLine( _
-            "Current date and time using the invariant culture: {0}" _
-            & vbCrLf & _
-            "Current date and time using the Algerian culture: {1}", _
-            DateTime.Now.ToString(), strWriter.ToString())
+        strWriter.Close()
+
+        ' Since the StringWriter is closed, an exception will 
+        ' be thrown if the Write method is called. However, 
+        ' the StringBuilder can still manipulate the string.
+        strBuilder.Insert(0, "Invalid ")
+        Console.WriteLine(strWriter.ToString())

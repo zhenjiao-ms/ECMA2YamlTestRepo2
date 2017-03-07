@@ -9,8 +9,24 @@
   </AssemblyInfo>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Provides a basic, component site-specific, key-value pair dictionary through a service that a designer can use to store user-defined data.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This service provides a simple interface to set, retrieve, and look up objects with associated keys.  
+  
+   
+  
+## Examples  
+ The following example control and designer use the IDictionaryService to share data through its site-specific key-value pair dictionary.  
+  
+ [!code-cs[IDictionaryServiceExample#1](~/add/codesnippet/csharp/t-system.componentmodel._21_1.cs)]
+ [!code-cpp[IDictionaryServiceExample#1](~/add/codesnippet/cpp/t-system.componentmodel._21_1.cpp)]
+ [!code-vb[IDictionaryServiceExample#1](~/add/codesnippet/visualbasic/t-system.componentmodel._21_1.vb)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="GetKey">
@@ -30,9 +46,9 @@
         <Parameter Name="value" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="value">The value to look up in the dictionary.</param>
+        <summary>Gets the key corresponding to the specified value.</summary>
+        <returns>The associated key, or <see langword="null" /> if no key exists.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -53,9 +69,9 @@
         <Parameter Name="key" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="key">The key to look up the value for.</param>
+        <summary>Gets the value corresponding to the specified key.</summary>
+        <returns>The associated value, or <see langword="null" /> if no value exists.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -77,9 +93,9 @@
         <Parameter Name="value" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="key">An object to use as the key to associate the value with.</param>
+        <param name="value">The value to store.</param>
+        <summary>Sets the specified key-value pair.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

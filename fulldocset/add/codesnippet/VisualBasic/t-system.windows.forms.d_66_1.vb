@@ -1,40 +1,42 @@
-    Private WithEvents dataGridView1 As New DataGridView()
+    Private WithEvents ListBox1 As New ListBox()
 
-    Private Sub AddColorColumn()
-
-        Dim comboBoxColumn As New DataGridViewComboBoxColumn()
-        comboBoxColumn.Items.AddRange( _
-            Color.Red, Color.Yellow, Color.Green, Color.Blue)
-        comboBoxColumn.ValueType = GetType(Color)
-        dataGridView1.Columns.Add(comboBoxColumn)
-
+    Private Sub InitializeListBox() 
+        ListBox1.Items.AddRange(New Object() _
+            {"Red Item", "Orange Item", "Purple Item"})
+        ListBox1.Location = New System.Drawing.Point(81, 69)
+        ListBox1.Size = New System.Drawing.Size(120, 95)
+        ListBox1.DrawMode = DrawMode.OwnerDrawFixed
+        Controls.Add(ListBox1)
+    
     End Sub
 
-    Private Sub dataGridView1_EditingControlShowing(ByVal sender As Object, _
-        ByVal e As DataGridViewEditingControlShowingEventArgs) _
-        Handles dataGridView1.EditingControlShowing
+    Private Sub ListBox1_DrawItem(ByVal sender As Object, _
+     ByVal e As System.Windows.Forms.DrawItemEventArgs) _
+     Handles ListBox1.DrawItem
 
-        Dim combo As ComboBox = CType(e.Control, ComboBox)
-        If (combo IsNot Nothing) Then
+        ' Draw the background of the ListBox control for each item.
+        e.DrawBackground()
 
-            ' Remove an existing event-handler, if present, to avoid 
-            ' adding multiple handlers when the editing control is reused.
-            RemoveHandler combo.SelectedIndexChanged, _
-                New EventHandler(AddressOf ComboBox_SelectedIndexChanged)
+        ' Define the default color of the brush as black.
+        Dim myBrush As Brush = Brushes.Black
 
-            ' Add the event handler. 
-            AddHandler combo.SelectedIndexChanged, _
-                New EventHandler(AddressOf ComboBox_SelectedIndexChanged)
+        ' Determine the color of the brush to draw each item based on   
+        ' the index of the item to draw.
+        Select Case e.Index
+            Case 0
+                myBrush = Brushes.Red
+            Case 1
+                myBrush = Brushes.Orange
+            Case 2
+                myBrush = Brushes.Purple
+        End Select
 
-        End If
+        ' Draw the current item text based on the current 
+        ' Font and the custom brush settings.
+        e.Graphics.DrawString(ListBox1.Items(e.Index).ToString(), _
+            e.Font, myBrush, e.Bounds, StringFormat.GenericDefault)
 
-    End Sub
-
-    Private Sub ComboBox_SelectedIndexChanged( _
-        ByVal sender As Object, ByVal e As EventArgs)
-
-        Dim comboBox1 As ComboBox = CType(sender, ComboBox)
-        comboBox1.BackColor = _
-            CType(CType(sender, ComboBox).SelectedItem, Color)
-
+        ' If the ListBox has focus, draw a focus rectangle around  _ 
+        ' the selected item.
+        e.DrawFocusRectangle()
     End Sub

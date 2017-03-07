@@ -1,80 +1,57 @@
-<%@ Page Language="VB" AutoEventWireup="True" %>
+<%@Page  Language="VB" %>
+<%@Import Namespace="System.Web.Mail" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script runat="server">
+
+ Sub OnDSUpdatedHandler(ByVal source As Object, ByVal e As SqlDataSourceStatusEventArgs)
+    If e.AffectedRows > 0 Then
+        ' Perform any additional processing, 
+        ' such as setting a status label after the operation.        
+        Label1.Text = Request.LogonUserIdentity.Name & _
+            " changed user information successfully!"
+    Else 
+        Label1.Text = "No data updated!"
+    End If
+ End Sub 'OnDSUpdatedHandler
+</script>
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
-   <script runat="server" >
-  
-      Sub Selection_Change(sender as Object, e As EventArgs)
-
-         ' Set the first day of the week.
-         Calendar1.FirstDayOfWeek = CType(DayList.SelectedIndex, _
-            System.Web.UI.WebControls.FirstDayOfWeek)
-
-      End Sub
-  
-   </script>
-  
-<head runat="server">
-    <title> Calendar FirstDayOfWeek Example </title>
+  <head runat="server">
+    <title>ASP.NET Example</title>
 </head>
 <body>
+    <form id="form1" runat="server">
 
-   <form id="form1" runat="server">
-  
-      <h3> Calendar FirstDayOfWeek Example </h3>
+      <asp:SqlDataSource
+          id="SqlDataSource1"
+          runat="server"
+          DataSourceMode="DataSet"
+          ConnectionString="<%$ ConnectionStrings:MyNorthwind%>"
+          SelectCommand="SELECT EmployeeID,FirstName,LastName,Title FROM Employees"
+          UpdateCommand="Update Employees SET FirstName=@FirstName,LastName=@LastName,Title=@Title WHERE EmployeeID=@EmployeeID"
+          OnUpdated="OnDSUpdatedHandler">
+      </asp:SqlDataSource>
 
-      Select the first day of the week.
+      <asp:GridView
+          id="GridView1"
+          runat="server"
+          AutoGenerateColumns="False"
+          DataKeyNames="EmployeeID"
+          AutoGenerateEditButton="True"
+          DataSourceID="SqlDataSource1">
+          <columns>
+              <asp:BoundField HeaderText="First Name" DataField="FirstName" />
+              <asp:BoundField HeaderText="Last Name" DataField="LastName" />
+              <asp:BoundField HeaderText="Title" DataField="Title" />
+          </columns>
+      </asp:GridView>
 
-      <br /><br /> 
-  
-      <asp:Calendar id="Calendar1"
-           ShowGridLines="True" 
-           ShowTitle="True"
-           runat="server"/>
+      <asp:Label
+          id="Label1"
+          runat="server">
+      </asp:Label>
 
-      <br /><br />
-
-      <table cellpadding="5">
-
-         <tr>
-
-            <td>
-
-               First day of the week:
-
-            </td>
-
-         </tr>
-
-         <tr>
-
-            <td>
-
-               <asp:DropDownList id="DayList"
-                    AutoPostBack="True"
-                    OnSelectedIndexChanged="Selection_Change"
-                    runat="server">
-
-                  <asp:ListItem> Sunday </asp:ListItem>
-                  <asp:ListItem> Monday </asp:ListItem>
-                  <asp:ListItem> Tuesday </asp:ListItem>
-                  <asp:ListItem> Wednesday </asp:ListItem>
-                  <asp:ListItem> Thursday </asp:ListItem>
-                  <asp:ListItem> Friday </asp:ListItem>
-                  <asp:ListItem> Saturday </asp:ListItem>
-                  <asp:ListItem Selected="True"> Default </asp:ListItem>
-
-               </asp:DropDownList>
-
-            </td>
-
-         </tr>
-  
-      </table>  
-  
-   </form>
-
-</body>
+    </form>
+  </body>
 </html>
- 

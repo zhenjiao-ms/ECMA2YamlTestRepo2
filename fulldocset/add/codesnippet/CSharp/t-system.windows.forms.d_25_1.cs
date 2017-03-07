@@ -1,55 +1,72 @@
-private void AddCustomDataTableStyle()
-   {
-      /* Create a new DataGridTableStyle and set
-      its MappingName to the TableName of a DataTable. */
-      DataGridTableStyle ts1 = new DataGridTableStyle();
-      ts1.MappingName = "Customers";
+    // Paints the content that spans multiple columns and the focus rectangle.
+    void dataGridView1_RowPostPaint(object sender,
+        DataGridViewRowPostPaintEventArgs e)
+    {
+        // Calculate the bounds of the row.
+        Rectangle rowBounds = new Rectangle(
+            this.dataGridView1.RowHeadersWidth, e.RowBounds.Top,
+            this.dataGridView1.Columns.GetColumnsWidth(
+                DataGridViewElementStates.Visible) -
+            this.dataGridView1.HorizontalScrollingOffset + 1,
+            e.RowBounds.Height);
 
-      /* Add a GridColumnStyle and set its MappingName 
-      to the name of a DataColumn in the DataTable. 
-      Set the HeaderText and Width properties. */
-      
-      DataGridColumnStyle boolCol = new DataGridBoolColumn();
-      boolCol.MappingName = "Current";
-      boolCol.HeaderText = "IsCurrent Customer";
-      boolCol.Width = 150;
-      ts1.GridColumnStyles.Add(boolCol);
-      
-      // Add a second column style.
-      DataGridColumnStyle TextCol = new DataGridTextBoxColumn();
-      TextCol.MappingName = "custName";
-      TextCol.HeaderText = "Customer Name";
-      TextCol.Width = 250;
-      ts1.GridColumnStyles.Add(TextCol);
+        SolidBrush forebrush = null;
+        try
+        {
+            // Determine the foreground color.
+            if ((e.State & DataGridViewElementStates.Selected) ==
+                DataGridViewElementStates.Selected)
+            {
+                forebrush = new SolidBrush(e.InheritedRowStyle.SelectionForeColor);
+            }
+            else
+            {
+                forebrush = new SolidBrush(e.InheritedRowStyle.ForeColor);
+            }
 
+            // Get the content that spans multiple columns.
+            object recipe =
+                this.dataGridView1.Rows.SharedRow(e.RowIndex).Cells[2].Value;
 
-      // Create the second table style with columns.
-      DataGridTableStyle ts2 = new DataGridTableStyle();
-      ts2.MappingName = "Orders";
-      // Change the colors.
-      ts2.ForeColor = Color.Yellow;
-      ts2.AlternatingBackColor = Color.Blue;
-      ts2.BackColor = Color.Blue;
-      
-      // Create new DataGridColumnStyle objects.
-      DataGridColumnStyle cOrderDate = 
-      new DataGridTextBoxColumn();
-      cOrderDate.MappingName = "OrderDate";
-      cOrderDate.HeaderText = "Order Date";
-      cOrderDate.Width = 100;
-      ts2.GridColumnStyles.Add(cOrderDate);
+            if (recipe != null)
+            {
+                String text = recipe.ToString();
 
-      PropertyDescriptorCollection pcol = this.BindingContext
-      [myDataSet, "Customers.custToOrders"].GetItemProperties();
-      
-      DataGridColumnStyle csOrderAmount = 
-      new DataGridTextBoxColumn(pcol["OrderAmount"], "c", true);
-      csOrderAmount.MappingName = "OrderAmount";
-      csOrderAmount.HeaderText = "Total";
-      csOrderAmount.Width = 100;
-      ts2.GridColumnStyles.Add(csOrderAmount);
+                // Calculate the bounds for the content that spans multiple 
+                // columns, adjusting for the horizontal scrolling position 
+                // and the current row height, and displaying only whole
+                // lines of text.
+                Rectangle textArea = rowBounds;
+                textArea.X -= this.dataGridView1.HorizontalScrollingOffset;
+                textArea.Width += this.dataGridView1.HorizontalScrollingOffset;
+                textArea.Y += rowBounds.Height - e.InheritedRowStyle.Padding.Bottom;
+                textArea.Height -= rowBounds.Height -
+                    e.InheritedRowStyle.Padding.Bottom;
+                textArea.Height = (textArea.Height / e.InheritedRowStyle.Font.Height) *
+                    e.InheritedRowStyle.Font.Height;
 
-      // Add the DataGridTableStyle objects to the collection.
-      myDataGrid.TableStyles.Add(ts1);
-      myDataGrid.TableStyles.Add(ts2);
-   }
+                // Calculate the portion of the text area that needs painting.
+                RectangleF clip = textArea;
+                clip.Width -= this.dataGridView1.RowHeadersWidth + 1 - clip.X;
+                clip.X = this.dataGridView1.RowHeadersWidth + 1;
+                RectangleF oldClip = e.Graphics.ClipBounds;
+                e.Graphics.SetClip(clip);
+
+                // Draw the content that spans multiple columns.
+                e.Graphics.DrawString(
+                    text, e.InheritedRowStyle.Font, forebrush, textArea);
+
+                e.Graphics.SetClip(oldClip);
+            }
+        }
+        finally
+        {
+            forebrush.Dispose();
+        }
+
+        if (this.dataGridView1.CurrentCellAddress.Y == e.RowIndex)
+        {
+            // Paint the focus rectangle.
+            e.DrawFocus(rowBounds, true);
+        }
+    }

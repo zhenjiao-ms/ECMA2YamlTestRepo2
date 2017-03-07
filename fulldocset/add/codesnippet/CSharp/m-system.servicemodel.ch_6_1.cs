@@ -1,4 +1,2 @@
-            public bool WaitForRequest(TimeSpan timeout)
-            {
-                return this.InnerChannel.WaitForRequest(timeout);
-            }
+            MsmqTransportBindingElement transportBindingElement = new MsmqTransportBindingElement();
+            BindingElement bindingElement = transportBindingElement.Clone();

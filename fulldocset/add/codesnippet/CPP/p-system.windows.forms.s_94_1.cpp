@@ -1,47 +1,20 @@
-   void SetDockPadding()
+private:
+   void button1_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
    {
-      // Dock the button in the panel.
-      button1->Dock = System::Windows::Forms::DockStyle::Fill;
+      // Create a SelectionRange object and set its Start and End properties.
+      SelectionRange^ sr = gcnew SelectionRange;
+      sr->Start = DateTime::Parse( this->textBox1->Text );
+      sr->End = DateTime::Parse( this->textBox2->Text );
+      
+      /* Assign the SelectionRange object to the
+            SelectionRange property of the MonthCalendar control. */
+      this->monthCalendar1->SelectionRange = sr;
+   }
 
-      // Reset the counter if it is greater than 5.
-      if ( myCounter > 5 )
-      {
-         myCounter = 0;
-      }
-
-      // Set the appropriate DockPadding and display
-      // which one was set on the button face.
-      switch ( myCounter )
-      {
-         case 0:
-            panel1->DockPadding->All = 0;
-            button1->Text = "Start";
-            break;
-
-         case 1:
-            panel1->DockPadding->Top = 10;
-            button1->Text = "Top";
-            break;
-
-         case 2:
-            panel1->DockPadding->Bottom = 10;
-            button1->Text = "Bottom";
-            break;
-
-         case 3:
-            panel1->DockPadding->Left = 10;
-            button1->Text = "Left";
-            break;
-
-         case 4:
-            panel1->DockPadding->Right = 10;
-            button1->Text = "Right";
-            break;
-
-         case 5:
-            panel1->DockPadding->All = 20;
-            button1->Text = "All";
-            break;
-      }
-      myCounter++;
+   void monthCalendar1_DateChanged( Object^ /*sender*/, DateRangeEventArgs^ /*e*/ )
+   {
+      /* Display the Start and End property values of
+            the SelectionRange object in the text boxes. */
+      this->textBox1->Text = monthCalendar1->SelectionRange->Start.Date.ToShortDateString();
+      this->textBox2->Text = monthCalendar1->SelectionRange->End.Date.ToShortDateString();
    }

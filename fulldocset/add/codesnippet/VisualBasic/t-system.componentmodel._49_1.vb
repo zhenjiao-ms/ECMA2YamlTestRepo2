@@ -1,4 +1,1 @@
-        Public Function CreateActiveDesignerEventArgs(ByVal losingFocus As IDesignerHost, ByVal gainingFocus As IDesignerHost) As ActiveDesignerEventArgs
-            Dim e As New ActiveDesignerEventArgs(losingFocus, gainingFocus)
-            Return e
-        End Function
+            Throw New CodeDomSerializerException("This exception was raised as an example.", New CodeLinePragma("Example.txt", 20))

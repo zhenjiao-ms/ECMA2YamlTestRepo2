@@ -1,25 +1,26 @@
-        ' Determine whether the cell should be painted with the 
-        ' custom selection background.
-        If (e.State And DataGridViewElementStates.Selected) = _
-            DataGridViewElementStates.Selected Then
-
-            ' Calculate the bounds of the row.
-            Dim rowBounds As New Rectangle( _
-                Me.dataGridView1.RowHeadersWidth, e.RowBounds.Top, _
-                Me.dataGridView1.Columns.GetColumnsWidth( _
-                DataGridViewElementStates.Visible) - _
-                Me.dataGridView1.HorizontalScrollingOffset + 1, _
-                e.RowBounds.Height)
-
-            ' Paint the custom selection background.
-            Dim backbrush As New _
-                System.Drawing.Drawing2D.LinearGradientBrush(rowBounds, _
-                Me.dataGridView1.DefaultCellStyle.SelectionBackColor, _
-                e.InheritedRowStyle.ForeColor, _
-                System.Drawing.Drawing2D.LinearGradientMode.Horizontal)
-            Try
-                e.Graphics.FillRectangle(backbrush, rowBounds)
-            Finally
-                backbrush.Dispose()
-            End Try
+   ' Instantiate the EventHandler.
+   Public Sub AttachRowHeaderVisibleChanged()
+      AddHandler myDataGridTableStyle.RowHeadersVisibleChanged, AddressOf MyDelegateRowHeadersVisibleChanged
+   End Sub 'AttachRowHeaderVisibleChanged
+   
+   
+   ' raise the event when RowHeadersVisible property is changed.
+    Private Sub MyDelegateRowHeadersVisibleChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Dim myString As String = "'RowHeadersVisibleChanged' event raised, Row Headers are"
+        If myDataGridTableStyle.RowHeadersVisible Then
+            myString += " visible"
+        Else
+            myString += " not visible"
         End If
+        MessageBox.Show(myString, "RowHeader information")
+    End Sub 'MyDelegateRowHeadersVisibleChanged
+   
+   
+   ' raise the event when a button is clicked.
+   Private Sub myButton_Click(sender As Object, e As System.EventArgs)
+      If myDataGridTableStyle.RowHeadersVisible Then
+         myDataGridTableStyle.RowHeadersVisible = False
+      Else
+         myDataGridTableStyle.RowHeadersVisible = True
+      End If
+   End Sub 'myButton_Click 

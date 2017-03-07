@@ -25,8 +25,19 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents the <see cref="T:System.Windows.Data.CollectionView" /> for collections that implement <see cref="T:System.ComponentModel.IBindingList" />, such as [!INCLUDE[TLA#tla_ado](~/add/includes/tlasharptla-ado-md.md)] data views.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ All collections have a default <xref:System.Windows.Data.CollectionView>. For collections that implement <xref:System.ComponentModel.IBindingListView> or <xref:System.ComponentModel.IBindingList>, the default collection view is BindingListCollectionView. Specifically, <xref:System.ComponentModel.IBindingList> is required for BindingListCollectionView, and <xref:System.ComponentModel.IBindingListView> is an optional interface that gives additional sorting and filtering support.  
+  
+ If you have multiple BindingListCollectionView objects and the underlying source is a `DataTable` or a `DataView`, the view objects do not sort or filter independently. For example, if you have two BindingListCollectionView objects associated with the same `DataTable` and you perform sorting on one of the views, the order of items in the other view can be affected. This is because BindingListCollectionView objects use the underlying <xref:System.ComponentModel.IBindingList> for sorting and filtering functionalities.  
+  
+ For more information about collection views, see [Data Binding Overview](../Topic/Data%20Binding%20Overview.md).  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -43,8 +54,8 @@
         <Parameter Name="list" Type="System.ComponentModel.IBindingList" />
       </Parameters>
       <Docs>
-        <param name="list">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="list">The underlying <see cref="T:System.ComponentModel.IBindingList" />.</param>
+        <summary>Initializes an instance of <see cref="T:System.Windows.Data.BindingListCollectionView" /> over the given list.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -63,9 +74,16 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Starts an add transaction and returns the pending new item.</summary>
+        <returns>The pending new item.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Calling AddNew begins an add transaction.  You should call <xref:System.Windows.Data.BindingListCollectionView.CommitNew%2A> or <xref:System.Windows.Data.BindingListCollectionView.CancelNew%2A> to end the add transaction.  A new item always appears in the collection view. Any filtering, sorting, or grouping that is applied to the view is applied to the new item when <xref:System.Windows.Data.BindingListCollectionView.CommitNew%2A> is called.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanAddNew">
@@ -82,9 +100,17 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether a new item can be added to the collection.</summary>
+        <value>
+          <see langword="true" /> if a new item can be added to the collection; otherwise, <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The <xref:System.Windows.Data.BindingListCollectionView> can create a new item for the collection if there is not an edit transaction occurring, if the collection is not a fixed size, and if the collection is not read-only.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanCancelEdit">
@@ -101,9 +127,17 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether the collection view can discard pending changes and restore the original values of an edited object.</summary>
+        <value>
+          <see langword="true" /> if the collection view can discard pending changes and restore the original values of an edited object; otherwise, <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ CanCancelEdit is `true` if the edited item implements the <xref:System.ComponentModel.IEditableObject?displayProperty=fullName> interface. If CanCancelEdit is `false`, call <xref:System.Windows.Data.BindingListCollectionView.CancelEdit%2A> to cause the view to exit the edit state and provide logic to revert the changes on the object that was edited.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CancelEdit">
@@ -121,8 +155,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Ends the edit transaction and, if possible, restores the original value to the item.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ CancelEdit sets <xref:System.Windows.Data.BindingListCollectionView.CurrentEditItem%2A> to `null` and causes the collection view to exit the edit state.  If <xref:System.Windows.Data.BindingListCollectionView.CanCancelEdit%2A> is `true`, CancelEdit also restores the original values of the edited object.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CancelNew">
@@ -140,7 +181,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Ends the add transaction and discards the pending new item.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -157,8 +198,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether this view supports turning filtering data in real time on or off.</summary>
+        <value>
+          <see langword="false" /> in all cases.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -175,8 +217,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether this view supports turning grouping data in real time on or off.</summary>
+        <value>
+          <see langword="True" /> in all cases.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -193,8 +236,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether this view supports turning sorting data in real time on or off.</summary>
+        <value>
+          <see langword="false" /> in all cases.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -212,9 +256,17 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether the view supports custom filtering.</summary>
+        <value>
+          <see langword="true" /> if the view supports custom filtering; otherwise, <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use this property to test whether the view supports custom filtering before assigning a filter string to <xref:System.Windows.Data.BindingListCollectionView.CustomFilter%2A>.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanFilter">
@@ -231,9 +283,16 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether the view supports callback-based filtering.</summary>
+        <value>This property always returns <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ <xref:System.Windows.Data.BindingListCollectionView> does not support callback-based filtering, use <xref:System.Windows.Data.BindingListCollectionView.CustomFilter%2A> instead.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanGroup">
@@ -250,8 +309,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether the view supports grouping.</summary>
+        <value>For a default instance of <see cref="T:System.Windows.Data.BindingListCollectionView" /> this property always returns <see langword="true" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -269,9 +328,17 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether an item can be removed from the collection.</summary>
+        <value>
+          <see langword="true" /> if an item can be removed from the collection; otherwise, <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The <xref:System.Windows.Data.BindingListCollectionView> can remove an item if there is not an add or edit transaction occurring, and if the collection is not a fixed size or read-only.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanSort">
@@ -288,8 +355,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether the collection supports sorting.</summary>
+        <value>For a default instance of <see cref="T:System.Windows.Data.BindingListCollectionView" /> this property always returns <see langword="true" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -308,7 +375,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Ends the edit transaction and saves the pending changes.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -327,8 +394,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Ends the add transaction and saves the pending new item.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Any filtering, sorting, or grouping that is applied to the <xref:System.Windows.Data.BindingListCollectionView> is applied to the new item when CommitNew is called.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Contains">
@@ -348,10 +422,18 @@
         <Parameter Name="item" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="item">The object to check.</param>
+        <summary>Returns a value that indicates whether a given item belongs to the collection view.</summary>
+        <returns>
+          <see langword="true" /> if the item belongs to the collection view; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This method does not make any assumptions about whether the item belongs to the underlying collection. If you know that the item belongs to the underlying collection, it is more efficient to call <xref:System.Windows.Data.BindingListCollectionView.PassesFilter%2A>.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Count">
@@ -368,9 +450,43 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the estimated number of records in the collection.</summary>
+        <value>One of the following:  
+  
+ <list type="table">  
+<listheader>  
+<term> Value  
+  
+ </term>  
+<description> Meaning  
+  
+ </description>  
+</listheader>  
+<item>  
+<term> -1  
+  
+ </term>  
+<description> Could not determine the count of the collection. This might be returned by a "virtualizing" view, where the view deliberately does not account for all items in the underlying collection because the view is attempting to increase efficiency and minimize dependence on always having the entire collection available.  
+  
+ </description>  
+</item>  
+<item>  
+<term> any other integer  
+  
+ </term>  
+<description> The count of the collection.  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Note that this count represents the filtered count.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurrentAddItem">
@@ -387,8 +503,8 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the item that is being added during the current add transaction.</summary>
+        <value>The item that is being added if <see cref="System.Windows.Data.BindingListCollectionView.IsAddingNew%2A" /> is <see langword="true" />; otherwise, <see langword="null" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -406,8 +522,8 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the item in the collection that is being edited.</summary>
+        <value>The item in the collection that is being edited if <see cref="System.Windows.Data.ListCollectionView.IsEditingItem%2A" /> is <see langword="true" />; otherwise, <see langword="null" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -425,9 +541,20 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets a custom filter.</summary>
+        <value>A string that specifies how the items are filtered.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use the <xref:System.Windows.Data.BindingListCollectionView.CanCustomFilter%2A> property to test whether the view supports custom filtering before assigning a string to this property.  
+  
+ The syntax depends on the <xref:System.ComponentModel.IBindingListView> implementation. For an example of the supported filter expression syntax, see <xref:System.Data.DataView.RowFilter%2A>.  
+  
+ Note that if you have multiple <xref:System.Windows.Data.BindingListCollectionView> objects and the underlying source is a `DataTable` or a `DataView`, the view objects do not sort or filter independently. For example, if you have two <xref:System.Windows.Data.BindingListCollectionView> objects associated with the same `DataTable` and you perform sorting on one of the views, the order of items in the other view can be affected. This is because <xref:System.Windows.Data.BindingListCollectionView> objects use the underlying <xref:System.ComponentModel.IBindingList> for sorting and filtering functionalities.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DetachFromSourceCollection">
@@ -444,7 +571,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Detaches the underlying collection from this collection view to enable the collection view to be garbage collected.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -465,8 +592,8 @@
         <Parameter Name="item" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="item">The item to edit.</param>
+        <summary>Begins an edit transaction of the specified item.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -507,10 +634,18 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="index">The zero-based index at which the item is located.</param>
+        <summary>Retrieves the item at the specified position in the view.</summary>
+        <returns>The item at the specified position in the view.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This method evaluates the index with any <xref:System.Windows.Data.CollectionView.SortDescriptions%2A> or <xref:System.Windows.Data.CollectionView.Filter%2A> properties that are set on the view.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="index" /> is out of range.</exception>
       </Docs>
     </Member>
     <Member MemberName="GroupBySelector">
@@ -532,8 +667,8 @@
         <ReturnType>System.Windows.Data.GroupDescriptionSelectorCallback</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets a delegate to select the <see cref="T:System.ComponentModel.GroupDescription" /> as a function of the parent group and its level.</summary>
+        <value>A method that provides the logic for the selection of the <see cref="T:System.ComponentModel.GroupDescription" /> as a function of the parent group and its level. The default is <see langword="null" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -551,9 +686,28 @@
         <ReturnType>System.Collections.ObjectModel.ObservableCollection&lt;System.ComponentModel.GroupDescription&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a collection of <see cref="T:System.ComponentModel.GroupDescription" /> objects that describe how the items in the collection are grouped in the view.</summary>
+        <value>A collection of <see cref="T:System.ComponentModel.GroupDescription" /> objects that describe how the items in the collection are grouped in the view.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+> [!NOTE]
+>  This property can only be set by accessing the collection object and using its various methods such as Add. The property to access the collection object itself is read-only; the collection itself is read/write.  
+  
+   
+  
+## Examples  
+ The following example shows how to use this property:  
+  
+ [!code-cs[DataBindingLab#6](~/add/codesnippet/csharp/DataBindingLab/MainWindow.xaml.cs#6)]
+ [!code-vb[DataBindingLab#6](~/add/codesnippet/visualbasic/DataBindingLab/MainWindow.xaml.vb#6)]  
+  
+ For the complete example, see [Data Binding Demo](http://go.microsoft.com/fwlink/?LinkID=163703).  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Groups">
@@ -570,9 +724,16 @@
         <ReturnType>System.Collections.ObjectModel.ReadOnlyObservableCollection&lt;System.Object&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the top-level groups.</summary>
+        <value>A read-only collection of the top-level groups, or <see langword="null" /> if there are no groups.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The items in the collection are of type <xref:System.Windows.Data.CollectionViewGroup>.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IndexOf">
@@ -592,10 +753,19 @@
         <Parameter Name="item" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="item">The object to look for in the collection.</param>
+        <summary>Returns the index at which the given item belongs in the collection view.</summary>
+        <returns>The index of the item in the collection, or <c>-1</c> if the item does not exist in the collection view.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This method evaluates the index with any <xref:System.Windows.Data.CollectionView.SortDescriptions%2A> or <xref:System.Windows.Data.CollectionView.Filter%2A> properties that are set on the view.  
+  
+ For more information, see <xref:System.Windows.Data.CollectionView.IndexOf%2A>.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsAddingNew">
@@ -612,9 +782,17 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether an add transaction is in progress.</summary>
+        <value>
+          <see langword="true" /> if an add transaction is in progress; otherwise, <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ You begin an add transaction by calling the <xref:System.Windows.Data.ListCollectionView.AddNew%2A> method, and you end the add transaction by calling <xref:System.Windows.Data.ListCollectionView.CommitNew%2A> or <xref:System.Windows.Data.ListCollectionView.CancelNew%2A>.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsDataInGroupOrder">
@@ -631,9 +809,21 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets a value that indicates whether the list of items (after applying the sort and filters, if any) is already in the correct order for grouping.</summary>
+        <value>
+          <see langword="true" /> if the list of items is already in the correct order for grouping; otherwise, <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Setting this property to `true` informs the view that the list of items is already in the correct order for grouping and allows the view to use a more efficient algorithm to build the groups. The data is in the correct order if:  
+  
+1.  All items belonging to a given group appear consecutively, and  
+  
+2.  If the <xref:System.ComponentModel.GroupDescription.GroupNames%2A> collection is non-empty, the groups in <xref:System.ComponentModel.GroupDescription.GroupNames%2A> appear before any other groups, and in the same order as in <xref:System.ComponentModel.GroupDescription.GroupNames%2A>.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsEditingItem">
@@ -650,9 +840,17 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether an edit transaction is in progress.</summary>
+        <value>
+          <see langword="true" /> if an edit transaction is in progress; otherwise, <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ You begin an edit transaction by calling the <xref:System.Windows.Data.ListCollectionView.EditItem%2A> method, and you end the transaction by calling <xref:System.Windows.Data.ListCollectionView.CommitEdit%2A> or <xref:System.Windows.Data.ListCollectionView.CancelEdit%2A>.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsEmpty">
@@ -669,8 +867,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Returns a value that indicates whether the resulting (filtered) view is empty.</summary>
+        <value>
+          <see langword="true" /> if the resulting view is empty; otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -687,9 +886,11 @@
         <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets a value that indicates whether filtering data in real time is enabled.</summary>
+        <value>
+          <see langword="true" /> if filtering data in real time is enabled; <see langword="false" /> if live filtering is not enabled; <see langword="null" /> if it cannot be determined whether the collection view implements live filtering.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException">IsLiveFiltering cannot be set.</exception>
       </Docs>
     </Member>
     <Member MemberName="IsLiveGrouping">
@@ -705,9 +906,11 @@
         <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets a value that indicates whether grouping data in real time is enabled.</summary>
+        <value>
+          <see langword="true" /> if grouping data in real time is enabled; <see langword="false" /> if live grouping is not enabled; <see langword="null" /> if it cannot be determined whether the collection view implements live grouping.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">IsLiveGrouping cannot be set to <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="IsLiveSorting">
@@ -723,9 +926,11 @@
         <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets a value that indicates whether sorting data in real time is enabled.</summary>
+        <value>
+          <see langword="true" /> if sorting data in real time is enabled; <see langword="false" /> if live sorting is not enabled; <see langword="null" /> if it cannot be determined whether the collection view implements live sorting.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException">IsLiveSorting cannot be set.</exception>
       </Docs>
     </Member>
     <Member MemberName="ItemProperties">
@@ -742,8 +947,8 @@
         <ReturnType>System.Collections.ObjectModel.ReadOnlyCollection&lt;System.ComponentModel.ItemPropertyInfo&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a collection of objects that describes the properties of the items in the collection.</summary>
+        <value>A collection of objects that describes the properties of the items in the collection.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -760,8 +965,8 @@
         <ReturnType>System.Collections.ObjectModel.ObservableCollection&lt;System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a collection of strings that specify the properties that participate in filtering data in real time.</summary>
+        <value>A collection of strings that specify the properties that participate in filtering data in real time.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -778,8 +983,8 @@
         <ReturnType>System.Collections.ObjectModel.ObservableCollection&lt;System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a collection of strings that specify the properties that participate in grouping data in real time.</summary>
+        <value>A collection of strings that specify the properties that participate in grouping data in real time.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -796,8 +1001,8 @@
         <ReturnType>System.Collections.ObjectModel.ObservableCollection&lt;System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a collection of strings that specify the properties that participate in sorting data in real time.</summary>
+        <value>A collection of strings that specify the properties that participate in sorting data in real time.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -818,10 +1023,12 @@
         <Parameter Name="position" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="position">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="position">The index to set the <see cref="System.Windows.Data.CollectionView.CurrentItem%2A" /> to.</param>
+        <summary>Sets the item at the specified index to be the <see cref="System.Windows.Data.CollectionView.CurrentItem%2A" /> in the view.</summary>
+        <returns>
+          <see langword="true" /> if the resulting <see cref="System.Windows.Data.CollectionView.CurrentItem%2A" /> is an item within the view; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">Thrown if the index is out of range.</exception>
       </Docs>
     </Member>
     <Member MemberName="NewItemPlaceholderPosition">
@@ -838,8 +1045,8 @@
         <ReturnType>System.ComponentModel.NewItemPlaceholderPosition</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the position of the new item placeholder in the <see cref="T:System.Windows.Data.BindingListCollectionView" />.</summary>
+        <value>One of the enumeration values that specifies the position of the new item placeholder in the <see cref="T:System.Windows.Data.BindingListCollectionView" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -905,10 +1112,18 @@
         <Parameter Name="item" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="item">The item to check.</param>
+        <summary>Returns a value that indicates whether the specified item in the underlying collection belongs to the view.</summary>
+        <returns>
+          <see langword="true" /> if the specified item belongs to the view or if there is not filter set on the collection view; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Unlike the <xref:System.Windows.Data.BindingListCollectionView.Contains%2A> method, this method assumes that the specified item belongs to the underlying collection. This method takes filters into account. Typically, you use this method during collection-changed notifications to determine if the added or removed item requires processing.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ProcessCollectionChanged">
@@ -969,9 +1184,16 @@
         <Parameter Name="item" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="item">The item to remove.</param>
+        <summary>Removes the specified item from the collection.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `item` is not in the collection, Remove does nothing.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveAt">
@@ -991,9 +1213,18 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="index">The zero-based index of the item to remove.</param>
+        <summary>Removes the item at the specified position from the collection.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ `index` is relative to the collection view, not the collection.  For example, if the collection has 10 items and the view has a <xref:System.ComponentModel.ICollectionView.Filter%2A> so that 7 items appear, the valid values of `index` are 0 through 6.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">
+          <paramref name="index" /> is less than 0 or greater than the number of items in the collection view.</exception>
       </Docs>
     </Member>
     <Member MemberName="SortDescriptions">
@@ -1010,9 +1241,19 @@
         <ReturnType>System.ComponentModel.SortDescriptionCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a collection of <see cref="T:System.ComponentModel.SortDescription" /> objects that describes how the items in the collection are sorted in the view.</summary>
+        <value>A collection of <see cref="T:System.ComponentModel.SortDescription" /> objects that describe how the items in the collection are sorted in the view.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Note that if you have multiple <xref:System.Windows.Data.BindingListCollectionView> objects and the underlying source is a `DataTable` or a `DataView`, the view objects do not sort or filter independently. For example, if you have two <xref:System.Windows.Data.BindingListCollectionView> objects associated with the same `DataTable` and you perform sorting on one of the views, the order of items in the other view can be affected. This is because <xref:System.Windows.Data.BindingListCollectionView> objects use the underlying <xref:System.ComponentModel.IBindingList> for sorting and filtering functionalities.  
+  
+> [!NOTE]
+>  This property can only be set by accessing the collection object and using its various methods such as `Add`. The property to access the collection object itself is read-only; the collection itself is read/write.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.IComparer.Compare">
@@ -1033,10 +1274,10 @@
         <Parameter Name="o2" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="o1">To be added.</param>
-        <param name="o2">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="o1">First object to compare.</param>
+        <param name="o2">Second object to compare.</param>
+        <summary>This member supports the [!INCLUDE[TLA#tla_winclient](~/add/includes/tlasharptla-winclient-md.md)] infrastructure and is not intended to be used directly from your code.</summary>
+        <returns>Less than zero means <paramref name="o1" /> is less than <paramref name="o2" />, a value of zero means they are equal, and over zero means <paramref name="o1" /> is greater than <paramref name="o2" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

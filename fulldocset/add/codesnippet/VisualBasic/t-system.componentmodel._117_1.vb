@@ -1,4 +1,17 @@
-            Dim dt As New DateTime(1990, 5, 6)
-            Console.WriteLine(TypeDescriptor.GetConverter(dt).ConvertTo(dt, GetType(String)))
-            Dim myStr As String = "1991-10-10"
-            Console.WriteLine(TypeDescriptor.GetConverter(dt).ConvertFrom(myStr))
+Imports System
+Imports System.Web.DynamicData
+Imports System.ComponentModel.DataAnnotations
+
+<MetadataType(GetType(CustomerMetadata))> _
+Partial Public Class Customer
+
+
+End Class
+
+Public Class CustomerMetadata
+
+    ' Add type information.
+    <DataType(DataType.EmailAddress)> _
+    Public EmailAddress As Object
+
+End Class

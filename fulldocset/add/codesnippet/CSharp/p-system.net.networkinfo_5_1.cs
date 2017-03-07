@@ -1,8 +1,6 @@
-            // Set options for transmission:
-            // The data can go through 64 gateways or routers
-            // before it is destroyed, and the data packet
-            // cannot be fragmented.
-            PingOptions options = new PingOptions (64, true);
-
-            Console.WriteLine ("Time to live: {0}", options.Ttl);
-            Console.WriteLine ("Don't fragment: {0}", options.DontFragment);
+            IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
+            Console.WriteLine("Computer name: {0}", properties.HostName);
+            Console.WriteLine("Domain name:   {0}", properties.DomainName);
+            Console.WriteLine("Node type:     {0:f}", properties.NodeType);
+            Console.WriteLine("DHCP scope:    {0}", properties.DhcpScopeName);
+            Console.WriteLine("WINS proxy?    {0}", properties.IsWinsProxy);

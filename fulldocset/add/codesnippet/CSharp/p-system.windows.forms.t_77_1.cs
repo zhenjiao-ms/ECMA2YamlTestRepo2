@@ -1,15 +1,22 @@
-private void MaskedTextBox1_TypeValidationCompleted(Object sender, TypeValidationEventArgs e) {
-
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "Cancel", e.Cancel );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "IsValidInput", e.IsValidInput );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Message", e.Message );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ReturnValue", e.ReturnValue );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ValidatingType", e.ValidatingType );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "TypeValidationCompleted Event" );
-}
+            // The following code example demonstrates the syntax for setting
+            // various ToolStripComboBox properties.
+            // 
+            toolStripComboBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            "aaa",
+            "bbb",
+            "ccc"});
+            toolStripComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            toolStripComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            toolStripComboBox1.DropDownHeight = 110;
+            toolStripComboBox1.DropDownWidth = 122;
+            toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            toolStripComboBox1.IntegralHeight = false;
+            toolStripComboBox1.Items.AddRange(new object[] {
+            "xxx",
+            "yyy",
+            "zzz"});
+            toolStripComboBox1.MaxDropDownItems = 9;
+            toolStripComboBox1.MergeAction = System.Windows.Forms.MergeAction.Insert;
+            toolStripComboBox1.Name = "toolStripComboBox1";
+            toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
+            toolStripComboBox1.Sorted = true;

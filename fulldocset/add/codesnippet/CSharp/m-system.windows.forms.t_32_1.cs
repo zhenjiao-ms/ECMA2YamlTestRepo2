@@ -1,41 +1,17 @@
-public class Class1 {
-    static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-    static int alarmCounter = 1;
-    static bool exitFlag = false;
- 
-    // This is the method to run when the timer is raised.
-    private static void TimerEventProcessor(Object myObject,
-                                            EventArgs myEventArgs) {
-       myTimer.Stop();
- 
-       // Displays a message box asking whether to continue running the timer.
-       if(MessageBox.Show("Continue running?", "Count is: " + alarmCounter, 
-          MessageBoxButtons.YesNo) == DialogResult.Yes) {
-          // Restarts the timer and increments the counter.
-          alarmCounter +=1;
-          myTimer.Enabled = true;
-       }
-       else {
-          // Stops the timer.
-          exitFlag = true;
-       }
-    }
- 
-    public static int Main() {
-       /* Adds the event and the event handler for the method that will 
-          process the timer event to the timer. */
-       myTimer.Tick += new EventHandler(TimerEventProcessor);
- 
-       // Sets the timer interval to 5 seconds.
-       myTimer.Interval = 5000;
-       myTimer.Start();
- 
-       // Runs the timer, and raises the event.
-       while(exitFlag == false) {
-          // Processes all the events in the queue.
-          Application.DoEvents();
-       }
-    return 0;
-    }
- }
-    
+private void CopyTreeNodes()
+{
+   // Get the collection of TreeNodes.
+   TreeNodeCollection myNodeCollection = myTreeView.Nodes;
+   int myCount = myNodeCollection.Count;
+
+   myLabel.Text += "Number of nodes in the collection :" + myCount;
+   myLabel.Text += "\n\nElements of the Array after Copying from the collection :\n";
+   // Create an Object array.
+   Object[] myArray = new Object[myCount];
+   // Copy the collection into an array.
+   myNodeCollection.CopyTo(myArray,0);
+   for(int i=0; i<myArray.Length; i++)
+   {
+      myLabel.Text += ((TreeNode)myArray[i]).Text + "\n";
+   }
+}

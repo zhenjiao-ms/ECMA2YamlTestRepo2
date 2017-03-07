@@ -19,8 +19,26 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Defines the attributes that can be associated with a property. These attribute values are defined in corhdr.h.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ To get the `PropertyAttributes`, first get the class `Type`. From the `Type`, get the `PropertyInfo`. From the `PropertyInfo`, get the `Attributes`.  
+  
+ The enumerated value is a number representing the bitwise OR of the attributes implemented on the method.  
+  
+   
+  
+## Examples  
+ The following example builds three properties and displays the PropertyAttributes enumerated value. Note that the read-only property has no setter and thus cannot be changed by.`Caption = statement`.  
+  
+ [!code-cpp[Classic PropertyAttributes Example#1](~/add/codesnippet/cpp/t-system.reflection.prop_1_1.cpp)]
+ [!code-cs[Classic PropertyAttributes Example#1](~/add/codesnippet/csharp/t-system.reflection.prop_1_1.cs)]
+ [!code-vb[Classic PropertyAttributes Example#1](~/add/codesnippet/visualbasic/t-system.reflection.prop_1_1.vb)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="HasDefault">
@@ -37,7 +55,7 @@
         <ReturnType>System.Reflection.PropertyAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the property has a default value.</summary>
       </Docs>
     </Member>
     <Member MemberName="None">
@@ -54,7 +72,7 @@
         <ReturnType>System.Reflection.PropertyAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that no attributes are associated with a property.</summary>
       </Docs>
     </Member>
     <Member MemberName="Reserved2">
@@ -71,7 +89,7 @@
         <ReturnType>System.Reflection.PropertyAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Reserved.</summary>
       </Docs>
     </Member>
     <Member MemberName="Reserved3">
@@ -88,7 +106,7 @@
         <ReturnType>System.Reflection.PropertyAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Reserved.</summary>
       </Docs>
     </Member>
     <Member MemberName="Reserved4">
@@ -105,7 +123,7 @@
         <ReturnType>System.Reflection.PropertyAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Reserved.</summary>
       </Docs>
     </Member>
     <Member MemberName="ReservedMask">
@@ -122,7 +140,7 @@
         <ReturnType>System.Reflection.PropertyAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies a flag reserved for runtime use only.</summary>
       </Docs>
     </Member>
     <Member MemberName="RTSpecialName">
@@ -139,7 +157,7 @@
         <ReturnType>System.Reflection.PropertyAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the metadata internal APIs check the name encoding.</summary>
       </Docs>
     </Member>
     <Member MemberName="SpecialName">
@@ -156,7 +174,7 @@
         <ReturnType>System.Reflection.PropertyAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the property is special, with the name describing how the property is special.</summary>
       </Docs>
     </Member>
   </Members>

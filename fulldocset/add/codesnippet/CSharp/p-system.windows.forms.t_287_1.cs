@@ -1,23 +1,40 @@
-		internal ToolStripButton boldButton;
+    public class CustomizedTreeView : TreeView
+    {
+        public CustomizedTreeView()
+        {
+            // Customize the TreeView control by setting various properties.
+            BackColor = System.Drawing.Color.CadetBlue;
+            FullRowSelect = true;
+            HotTracking = true;
+            Indent = 34;
+            ShowPlusMinus = false;
 
-		private void InitializeBoldButton()
-		{
-			boldButton = new ToolStripButton();
-			boldButton.Text = "B";
-			boldButton.CheckOnClick = true;
-			toolStrip1.Items.Add(boldButton);
+            // The ShowLines property must be false for the FullRowSelect 
+            // property to work.
+            ShowLines = false;
+        }
 
-		}
+        protected override void OnAfterSelect(TreeViewEventArgs e)
+        {
+            // Confirm that the user initiated the selection.
+            // This prevents the first node from expanding when it is
+            // automatically selected during the initialization of 
+            // the TreeView control.
+            if (e.Action != TreeViewAction.Unknown)
+            {
+                if (e.Node.IsExpanded) 
+                {
+                    e.Node.Collapse();
+                }
+                else 
+                {
+                    e.Node.Expand();
+                }
+            }
 
-		private void boldButton_CheckedChanged(object sender, EventArgs e)
-		{
-			if (boldButton.Checked)
-			{
-				this.Font = new Font(this.Font, FontStyle.Bold);
-			}
-			else
-			{
-				this.Font = new Font(this.Font, FontStyle.Regular);
-			}
+            // Remove the selection. This allows the same node to be
+            // clicked twice in succession to toggle the expansion state.
+            SelectedNode = null;
+        }
 
-		}
+    }

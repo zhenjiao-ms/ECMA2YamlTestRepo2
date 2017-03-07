@@ -1,14 +1,15 @@
-Private Sub treeView1_MouseDown(sender As Object, _
-  e As MouseEventArgs) Handles treeView1.MouseDown
-   Select Case e.Button
-      ' Remove the TreeNode under the mouse cursor 
-      ' if the right mouse button was clicked. 
-      Case MouseButtons.Right
-         treeView1.GetNodeAt(e.X, e.Y).Remove()
-      
-      ' Toggle the TreeNode under the mouse cursor 
-      ' if the middle mouse button (mouse wheel) was clicked. 
-      Case MouseButtons.Middle
-         treeView1.GetNodeAt(e.X, e.Y).Toggle()
-   End Select
-End Sub
+Private Sub EnumerateTreeNodes()
+   Dim myNodeCollection As TreeNodeCollection = myTreeView.Nodes
+   ' Check for a node in the collection.
+   If myNodeCollection.Contains(myTreeNode2) Then
+      myLabel.Text += "Node2 is at index: " + myNodeCollection.IndexOf(myTreeNode2)
+   End If
+   myLabel.Text += ControlChars.Cr + ControlChars.Cr + _
+     "Elements of the TreeNodeCollection:" + ControlChars.Cr
+   
+   ' Create an enumerator for the collection.
+   Dim myEnumerator As IEnumerator = myNodeCollection.GetEnumerator()
+   While myEnumerator.MoveNext()
+      myLabel.Text += CType(myEnumerator.Current, TreeNode).Text + ControlChars.Cr
+   End While
+End Sub 

@@ -1,4 +1,5 @@
 #using <System.Windows.Forms.dll>
+#using <System.Data.dll>
 #using <System.Drawing.dll>
 #using <System.Design.dll>
 #using <System.dll>
@@ -7,113 +8,108 @@ using namespace System;
 using namespace System::Collections;
 using namespace System::ComponentModel;
 using namespace System::ComponentModel::Design;
-using namespace System::Diagnostics;
 using namespace System::Drawing;
+using namespace System::Data;
 using namespace System::Windows::Forms;
 using namespace System::Windows::Forms::Design;
+using namespace System::Security::Permissions;
 
-namespace SampleRootDesigner
+// This designer provides a "Connect testEvent" designer verb shortcut 
+// menu command. When invoked, the command attaches a new event-handler 
+// method named "testEventHandler" to the "testEvent" event of an 
+// associated control.
+// If a "testEvent" event of the associated control does not exist, 
+// the IEventBindingService declares it.
+public ref class EventDesigner: public System::Windows::Forms::Design::ControlDesigner
 {
-   ref class SampleRootDesigner;
-
-   // This sample demonstrates how to provide the root designer view, or
-   // design mode background view, by overriding IRootDesigner.GetView().
-   // The following attribute associates the SampleRootDesigner designer
-   // with the SampleComponent component.
-
-   [Designer(SampleRootDesigner::typeid,IRootDesigner::typeid)]
-   public ref class RootDesignedComponent: public Component
-   {
-   public:
-      RootDesignedComponent(){}
-
-   };
-
-   public ref class SampleRootDesigner: public ComponentDesigner, public IRootDesigner
-   {
-   private:
-      ref class RootDesignerView;
-
-      // Member field of custom type RootDesignerView, a control that
-      // will be shown in the Forms designer view. This member is
-      // cached to reduce processing needed to recreate the
-      // view control on each call to GetView().
-      RootDesignerView^ m_view;
-
-      // This method returns an instance of the view for this root
-      // designer. The "view" is the user interface that is presented
-      // in a document window for the user to manipulate.
-      virtual Object^ GetView( ViewTechnology technology ) sealed = IRootDesigner::GetView
-      {
-         if ( technology != ViewTechnology::WindowsForms )
-         {
-            throw gcnew ArgumentException( "Not a supported view technology","technology" );
-         }
-
-         if ( m_view == nullptr )
-         {
-            
-            // Some type of displayable Form or control is required
-            // for a root designer that overrides GetView(). In this
-            // example, a Control of type RootDesignerView is used.
-            // Any class that inherits from Control will work.
-            m_view = gcnew RootDesignerView( this );
-         }
-
-         return m_view;
-      }
-
-
-      // IRootDesigner.SupportedTechnologies is a required override for an
-      // IRootDesigner. WindowsForms is the view technology used by this designer.
 public:
-      property array<ViewTechnology>^ SupportedTechnologies 
-      {
-		virtual array<ViewTechnology>^ get() 
-		{
-			return gcnew array<ViewTechnology> {ViewTechnology::Default};
-                	
-		}
-      }
-      
-      // RootDesignerView is a simple control that will be displayed
-      // in the designer window.
-      ref class RootDesignerView: public Control
-      {
-      private:
-         SampleRootDesigner^ m_designer;
+   EventDesigner(){}
 
-      public:
-         RootDesignerView( SampleRootDesigner^ designer )
-         {
-            m_designer = designer;
-            BackColor = Color::Blue;
-            Font = gcnew System::Drawing::Font( Font->FontFamily->Name,24.0f );
-         }
-
-
-      protected:
-         virtual void OnPaint( PaintEventArgs^ pe ) override
-         {
-            Control::OnPaint( pe );
-            
-            // Draws the name of the component in large letters.
-            pe->Graphics->DrawString( m_designer->Component->Site->Name, Font, Brushes::Yellow, ClientRectangle );
-         }
-
-      };
-
-
-   };
-
-
-   // This sample component inherits from RootDesignedComponent which
-   // uses the SampleRootDesigner.
-   public ref class RootViewSampleComponent: public RootDesignedComponent
+   // When the "Connect testEvent" designer verb shortcut menu 
+   // command is invoked, this method uses the 
+   // IEventBindingService to attach an event handler to a 
+   // "textEvent" event of the associated control.
+private:
+   void ConnectEvent( Object^ /*sender*/, EventArgs^ /*e*/ )
    {
-   public:
-      RootViewSampleComponent(){}
+      IEventBindingService^ eventservice = dynamic_cast<IEventBindingService^>(this->Component->Site->GetService( System::ComponentModel::Design::IEventBindingService::typeid ));
+      if ( eventservice != nullptr )
+      {
+         // Attempt to obtain a PropertyDescriptor for a 
+         // component event named "testEvent".
+         EventDescriptorCollection^ edc = TypeDescriptor::GetEvents( this->Component );
+         if ( edc == nullptr || edc->Count == 0 )
+                  return;
+         EventDescriptor^ ed = nullptr;
 
-   };
+         // Search for an event named "testEvent".
+         IEnumerator^ myEnum = edc->GetEnumerator();
+         while ( myEnum->MoveNext() )
+         {
+            EventDescriptor^ edi = safe_cast<EventDescriptor^>(myEnum->Current);
+            if ( edi->Name->Equals( "testEvent" ) )
+            {
+               ed = edi;
+               break;
+            }
+         }
+         if ( ed == nullptr )
+                  return;
 
-}
+         // Use the IEventBindingService to get a 
+         // PropertyDescriptor for the event.
+         PropertyDescriptor^ pd = eventservice->GetEventProperty( ed );
+         if ( pd == nullptr )
+                  return;
+
+         // Set the value of the event to "testEventHandler".
+         pd->SetValue( this->Component, "testEventHandler" );
+      }
+   }
+
+public:
+   property System::ComponentModel::Design::DesignerVerbCollection^ Verbs 
+   {
+      // Provides a designer verb command for the designer's 
+      // shortcut menu.
+      [PermissionSetAttribute(SecurityAction::Demand, Name="FullTrust")]
+      virtual System::ComponentModel::Design::DesignerVerbCollection^ get() override
+      {
+         DesignerVerbCollection^ dvc = gcnew DesignerVerbCollection;
+         dvc->Add( gcnew DesignerVerb( "Connect testEvent",gcnew EventHandler( this, &EventDesigner::ConnectEvent ) ) );
+         return dvc;
+      }
+   }
+};
+
+// EventControl is associated with the EventDesigner and displays 
+// instructions for demonstrating the service.
+
+[Designer(EventDesigner::typeid)]
+public ref class EventControl: public System::Windows::Forms::UserControl
+{
+public:
+   event System::EventHandler^ testEvent;
+   EventControl()
+   {
+      this->BackColor = Color::White;
+      this->Size = System::Drawing::Size( 320, 96 );
+   }
+
+public:
+   ~EventControl()
+   {
+   }
+
+protected:
+   virtual void OnPaint( System::Windows::Forms::PaintEventArgs^ e ) override
+   {
+      e->Graphics->DrawString( "IEventBindingService Example Control", gcnew System::Drawing::Font( FontFamily::GenericMonospace,10 ), gcnew SolidBrush( Color::Blue ), 5, 5 );
+      e->Graphics->DrawString( "Use the \"Connect testEvent\" command of the", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), gcnew SolidBrush( Color::Black ), 5, 22 );
+      e->Graphics->DrawString( "right-click shortcut menu provided by this", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), gcnew SolidBrush( Color::Black ), 5, 32 );
+      e->Graphics->DrawString( "control's associated EventDesigner to create", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), gcnew SolidBrush( Color::Black ), 5, 42 );
+      e->Graphics->DrawString( "a new event handler linked with the testEvent", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), gcnew SolidBrush( Color::Black ), 5, 52 );
+      e->Graphics->DrawString( "of this control in the initialization code", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), gcnew SolidBrush( Color::Black ), 5, 62 );
+      e->Graphics->DrawString( "for this control.", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), gcnew SolidBrush( Color::Black ), 5, 72 );
+   }
+};

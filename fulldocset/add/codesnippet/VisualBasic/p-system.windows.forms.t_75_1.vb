@@ -1,13 +1,17 @@
-    Private treeViewWithToolTips As TreeView
-    
-    Private Sub InitializeTreeViewWithToolTips() 
-        treeViewWithToolTips = New TreeView()
-        Dim node1 As New TreeNode("Node1")
-        node1.ToolTipText = "Help for Node1"
-        Dim node2 As New TreeNode("Node2")
-        node2.ToolTipText = "A Tip for Node2"
-        treeViewWithToolTips.Nodes.AddRange(New TreeNode() {node1, node2})
-        treeViewWithToolTips.ShowNodeToolTips = True
-        Me.Controls.Add(treeViewWithToolTips)
-    
+    Public Sub CreateMyMultilineTextBox()
+        ' Create an instance of a TextBox control.
+        Dim textBox1 As New TextBox()
+        
+        ' Set the Multiline property to true.
+        textBox1.Multiline = True
+        ' Add vertical scroll bars to the TextBox control.
+        textBox1.ScrollBars = ScrollBars.Vertical
+        ' Allow the RETURN key in the TextBox control.
+        textBox1.AcceptsReturn = True
+        ' Allow the TAB key to be entered in the TextBox control.
+        textBox1.AcceptsTab = True
+        ' Set WordWrap to true to allow text to wrap to the next line.
+        textBox1.WordWrap = True
+        ' Set the default text of the control.
+        textBox1.Text = "Welcome!" & Environment.NewLine & "Second Line"
     End Sub

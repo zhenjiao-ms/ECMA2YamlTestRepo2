@@ -1,29 +1,26 @@
-            // This is an example of some common ToolStrip property settings.
-            // 
-            toolStrip1.AllowDrop = false;
-            toolStrip1.AllowItemReorder = true;
-            toolStrip1.AllowMerge = false;
-            toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            toolStrip1.AutoSize = false;
-            toolStrip1.CanOverflow = false;
-            toolStrip1.Cursor = System.Windows.Forms.Cursors.Cross;
-            toolStrip1.DefaultDropDownDirection = System.Windows.Forms.ToolStripDropDownDirection.BelowRight;
-            toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            toolStrip1.GripMargin = new System.Windows.Forms.Padding(3);
-            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            toolStripButton1});
-            toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            toolStrip1.Location = new System.Drawing.Point(0, 0);
-            toolStrip1.Margin = new System.Windows.Forms.Padding(1);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            toolStrip1.ShowItemToolTips = false;
-            toolStrip1.Size = new System.Drawing.Size(109, 273);
-            toolStrip1.Stretch = true;
-            toolStrip1.TabIndex = 0;
-            toolStrip1.TabStop = true;
-            toolStrip1.Text = "toolStrip1";
-            toolStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90;
+private void AddToolBar()
+{
+   // Add a toolbar and set some of its properties.
+   toolBar1 = new ToolBar();
+   toolBar1.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
+   toolBar1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+   toolBar1.Buttons.Add(this.toolBarButton1);
+   toolBar1.ButtonSize = new System.Drawing.Size(24, 24);
+   toolBar1.Divider = true;
+   toolBar1.DropDownArrows = true;
+   toolBar1.ImageList = this.imageList1;
+   toolBar1.ShowToolTips = true;
+   toolBar1.Size = new System.Drawing.Size(292, 25);
+   toolBar1.TabIndex = 0;
+   toolBar1.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
+   toolBar1.Wrappable = false;
+   
+   // Add handlers for the ButtonClick and ButtonDropDown events.
+   toolBar1.ButtonDropDown += 
+     new ToolBarButtonClickEventHandler(toolBar1_ButtonDropDown);
+   toolBar1.ButtonClick += 
+     new ToolBarButtonClickEventHandler(toolBar1_ButtonClicked);
+
+   // Add the toolbar to the form.
+   this.Controls.Add(toolBar1);
+}

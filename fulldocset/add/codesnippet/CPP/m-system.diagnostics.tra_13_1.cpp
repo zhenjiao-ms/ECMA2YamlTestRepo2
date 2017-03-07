@@ -1,8 +1,23 @@
-      catch ( Exception^ ) 
+// Class-level declaration.
+// Create a TraceSwitch.
+private:
+   static TraceSwitch^ generalSwitch = 
+      gcnew TraceSwitch( "General", "Entire Application" );
+
+public:
+   static void MyErrorMethod()
+   {
+      // Write the message if the TraceSwitch level is set
+      // to Error or higher.
+      if ( generalSwitch->TraceError )
       {
-        #if defined(TRACE)
-        Trace::Fail( String::Format( "Invalid value: {0}", value ),
-            "Resetting value to newValue." );
-         #endif
-         value = newValue;
+         Trace::Write( "My error message. " );
       }
+      
+      // Write a second message if the TraceSwitch level is set
+      // to Verbose.
+      if ( generalSwitch->TraceVerbose )
+      {
+          Trace::WriteLine( "My second error message." );
+      }
+   }

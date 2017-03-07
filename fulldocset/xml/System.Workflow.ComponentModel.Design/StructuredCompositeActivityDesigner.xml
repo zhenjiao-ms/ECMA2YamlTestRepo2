@@ -17,8 +17,19 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Provides common methods and properties for composite activity designers that contain structured layouts.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+> [!NOTE]
+>  [!INCLUDE[DeprecatedContent](~/add/includes/deprecatedcontent-md.md)]  
+  
+ The StructuredCompositeActivityDesigner is the base class for all designers that contain child designers and the child designers are connected to each other using lines rendered on the design surface, called connectors. The class is provided so that activity designer developers can provide a number of activity designer layout types, rather than being tied to the layout provided in the <xref:System.Workflow.ComponentModel.Design.CompositeActivityDesigner> class.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -33,7 +44,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When implemented in a derived class, initializes a new instance of the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -56,9 +67,16 @@
         <ReturnType>System.Workflow.ComponentModel.Design.DesignerView</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the <see cref="T:System.Workflow.ComponentModel.Design.DesignerView" /> that contains information about the current designer view displayed by the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</summary>
+        <value>A <see cref="T:System.Workflow.ComponentModel.Design.DesignerView" /> that contains information about the current view displayed by the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ ActiveView contains the view ID and any text, images, activity designers, and user data associated with the view.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanInsertActivities">
@@ -79,11 +97,22 @@
         <Parameter Name="activitiesToInsert" Type="System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Workflow.ComponentModel.Activity&gt;" />
       </Parameters>
       <Docs>
-        <param name="insertLocation">To be added.</param>
-        <param name="activitiesToInsert">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="insertLocation">The <see cref="T:System.Workflow.ComponentModel.Design.HitTestInfo" /> that contains the screen location at which to attempt to insert the activities.</param>
+        <param name="activitiesToInsert">The <see cref="T:System.Workflow.ComponentModel.Activity" /> read-only collection that contains the activities to add.</param>
+        <summary>Returns a value that indicates whether the specified activities can be added to the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> at the specified location on the workflow design surface.</summary>
+        <returns>
+          <see langword="true" /> if the specified activities can be inserted at the specified location on the workflow design surface; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example shows how to lock a <xref:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner> by not allowing the insertion of child activities.  
+  
+ [!code-cs[WF_Samples#25](~/add/codesnippet/csharp/wf_snippets/snippets.cs#25)]
+ [!code-vb[WF_Samples#25](~/add/codesnippet/visualbasic/wf_snippets/snippets.vb#25)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanRemoveActivities">
@@ -103,10 +132,21 @@
         <Parameter Name="activitiesToRemove" Type="System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Workflow.ComponentModel.Activity&gt;" />
       </Parameters>
       <Docs>
-        <param name="activitiesToRemove">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="activitiesToRemove">The <see cref="T:System.Workflow.ComponentModel.Activity" /> read-only collection that contains the activities to remove.</param>
+        <summary>Returns a value that indicates whether the specified activities can be removed from the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</summary>
+        <returns>
+          <see langword="true" /> if the specified activities can be removed; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example shows how to override the CanRemoveActivities method to allow the moving of child activities within the <xref:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner>.  
+  
+ [!code-cs[WF_Samples#27](~/add/codesnippet/csharp/wf_snippets/snippets.cs#27)]
+ [!code-vb[WF_Samples#27](~/add/codesnippet/visualbasic/wf_snippets/snippets.vb#27)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ContainedDesigners">
@@ -123,9 +163,19 @@
         <ReturnType>System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Workflow.ComponentModel.Design.ActivityDesigner&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a generic read-only collection that contains all activity designers that are children of the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</summary>
+        <value>An <see cref="T:System.Workflow.ComponentModel.Design.ActivityDesigner" /> read-only collection that contains the child designers.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example demonstrates the addition of a new branch using a designer based off of the <xref:System.Workflow.ComponentModel.Design.CompositeActivityDesigner> class.  If <xref:System.Workflow.ComponentModel.Design.CompositeActivityDesigner.CanInsertActivities%2A> returns true, a new branch is created using the <xref:System.Workflow.ComponentModel.Design.CompositeActivityDesigner.InsertActivities%2A> method. A <xref:System.Workflow.ComponentModel.Design.ConnectorHitTestInfo> object is created as a parameter to the <xref:System.Workflow.ComponentModel.Design.CompositeActivityDesigner.InsertActivities%2A> method. When this is finished, the <xref:System.Workflow.ComponentModel.Design.CompositeActivityDesigner.EnsureVisibleContainedDesigner%2A> method is used to ensure that the newly added branch is displayed in the workflow designer by accessing a single object in the ContainedDesigners collection.  
+  
+ [!code-cs[WF_Samples#28](~/add/codesnippet/csharp/wf_snippets/snippets.cs#28)]
+ [!code-vb[WF_Samples#28](~/add/codesnippet/visualbasic/wf_snippets/snippets.vb#28)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurrentDropTarget">
@@ -142,8 +192,8 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the index of the current drop target in the array of drop targets returned by <see cref="System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner.GetDropTargets%2A" />.</summary>
+        <value>An integer that represents the index of the current drop target for the designer.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -168,13 +218,20 @@
         <Parameter Name="endCap" Type="System.Workflow.ComponentModel.Design.LineAnchor" />
       </Parameters>
       <Docs>
-        <param name="graphics">To be added.</param>
-        <param name="pen">To be added.</param>
-        <param name="points">To be added.</param>
-        <param name="startCap">To be added.</param>
-        <param name="endCap">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="graphics">The <see cref="T:System.Drawing.Graphics" /> on which to draw the connectors.</param>
+        <param name="pen">The <see cref="T:System.Drawing.Pen" /> to draw the connectors.</param>
+        <param name="points">The <see cref="T:System.Drawing.Point" /> array that contains the endpoints for each of the connectors to draw.</param>
+        <param name="startCap">A <see cref="T:System.Workflow.ComponentModel.Design.LineAnchor" /> that determines the graphic to draw at connector start points.</param>
+        <param name="endCap">A <see cref="T:System.Workflow.ComponentModel.Design.LineAnchor" /> that determines the graphic to draw at connector end points.</param>
+        <summary>Draws all of the connectors to display on the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Connectors are links between separate designers on a workflow design surface. These links appear as lines on the design surface and each line end connects to a visible point on the designers it connects. These points are called connection points.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="EnsureVisibleContainedDesigner">
@@ -194,8 +251,8 @@
         <Parameter Name="containedDesigner" Type="System.Workflow.ComponentModel.Design.ActivityDesigner" />
       </Parameters>
       <Docs>
-        <param name="containedDesigner">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="containedDesigner">The <see cref="T:System.Workflow.ComponentModel.Design.ActivityDesigner" /> for which to ensure visibility on the workflow design surface.</param>
+        <summary>Ensures that the specified activity designer is visible on the workflow design surface.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -213,9 +270,16 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the first selectable object in the navigation order of the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</summary>
+        <value>An <see cref="T:System.Object" /> that is the first selectable object in the designer navigation order.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ FirstSelectableObject returns the <xref:System.Workflow.ComponentModel.Activity> associated with the <xref:System.Workflow.ComponentModel.Design.DesignerView.AssociatedDesigner%2A> property that is exposed through <xref:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner.ActiveView%2A>.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetDropTargets">
@@ -235,9 +299,9 @@
         <Parameter Name="dropPoint" Type="System.Drawing.Point" />
       </Parameters>
       <Docs>
-        <param name="dropPoint">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="dropPoint">The <see cref="T:System.Drawing.Point" /> to query the design surface with.</param>
+        <summary>Returns an array of valid drop locations on the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> surface.</summary>
+        <returns>A <see cref="T:System.Drawing.Rectangle" /> array that represents the valid drop locations on the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> surface.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -258,10 +322,17 @@
         <Parameter Name="edges" Type="System.Workflow.ComponentModel.Design.DesignerEdges" />
       </Parameters>
       <Docs>
-        <param name="edges">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="edges">The DesignerEdges along which to search for connection points.</param>
+        <summary>Returns a read-only collection of points that represent the inner connection points for the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</summary>
+        <returns>A <see cref="T:System.Drawing.Point" /> generic read-only collection that contains the inner connection points for the designer.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Connectors are links between separate designers on a workflow design surface. These links appear as lines on the design surface and each line end connects to a visible point on each designer it connects. These points are called connection points. Designer classes that inherit from the <xref:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner> class can contain other designers, and GetInnerConnections returns a read-only collection of all the connection points for the designers associated with `edges` that are contained by the <xref:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner>.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetNextSelectableObject">
@@ -282,10 +353,10 @@
         <Parameter Name="direction" Type="System.Workflow.ComponentModel.Design.DesignerNavigationDirection" />
       </Parameters>
       <Docs>
-        <param name="current">To be added.</param>
-        <param name="direction">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="current">The current object in the navigation order.</param>
+        <param name="direction">A <see cref="T:System.Workflow.ComponentModel.Design.DesignerNavigationDirection" /> that determines the navigation order of the designer.</param>
+        <summary>Returns the first selectable object that follows the specified object in the navigation order for the current <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</summary>
+        <returns>The first selectable <see cref="T:System.Object" /> that follows the <paramref name="obj" /> parameter in the navigation order.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -306,9 +377,16 @@
         <Parameter Name="activity" Type="System.Workflow.ComponentModel.Activity" />
       </Parameters>
       <Docs>
-        <param name="activity">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="activity">The <see cref="T:System.Workflow.ComponentModel.Activity" /> with which to initialize the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</param>
+        <summary>Initializes the designer by using the specified activity.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Initialize ensures that the active view loaded into the workflow design surface is a valid view.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InsertActivities">
@@ -329,9 +407,9 @@
         <Parameter Name="activitiesToInsert" Type="System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Workflow.ComponentModel.Activity&gt;" />
       </Parameters>
       <Docs>
-        <param name="insertLocation">To be added.</param>
-        <param name="activitiesToInsert">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="insertLocation">The <see cref="T:System.Workflow.ComponentModel.Design.HitTestInfo" /> that specifies the location to add the activities.</param>
+        <param name="activitiesToInsert">The <see cref="T:System.Workflow.ComponentModel.Activity" /> read-only collection that contains the activities to add to the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</param>
+        <summary>Adds the specified activities to the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> at the specified location on the workflow design surface.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -349,9 +427,16 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the last selectable object in the navigation order of the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</summary>
+        <value>The <see cref="T:System.Object" /> that is the last selectable object in the designer navigation order.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If the <xref:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner> is the active activity designer, LastSelectableObject returns `null` (`Nothing` in Visual Basic). If a child activity designer is the active designer, it returns the last selectable object associated with the active child designer.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="LoadViewState">
@@ -371,9 +456,11 @@
         <Parameter Name="reader" Type="System.IO.BinaryReader" />
       </Parameters>
       <Docs>
-        <param name="reader">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="reader">A <see cref="T:System.IO.BinaryReader" /> used to restore the designer view state.</param>
+        <summary>Loads the view state of the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> from a binary stream.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="reader" /> contains a null reference (<see langword="Nothing" /> in Visual Basic).</exception>
       </Docs>
     </Member>
     <Member MemberName="MinimumSize">
@@ -390,8 +477,8 @@
         <ReturnType>System.Drawing.Size</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the minimum size settings for the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</summary>
+        <value>The <see cref="T:System.Drawing.Size" /> that represents the smallest possible size for the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -413,9 +500,9 @@
         <Parameter Name="activitiesToMove" Type="System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Workflow.ComponentModel.Activity&gt;" />
       </Parameters>
       <Docs>
-        <param name="moveLocation">To be added.</param>
-        <param name="activitiesToMove">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="moveLocation">The <see cref="T:System.Workflow.ComponentModel.Design.HitTestInfo" /> that contains the location on the workflow design surface to move the activities.</param>
+        <param name="activitiesToMove">The <see cref="T:System.Workflow.ComponentModel.Activity" /> read-only collection to move.</param>
+        <summary>Moves the specified activities from one designer displayed in the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> to another.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -436,9 +523,11 @@
         <Parameter Name="e" Type="System.Workflow.ComponentModel.Design.ActivityChangedEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The <see cref="T:System.Workflow.ComponentModel.Design.ActivityChangedEventArgs" /> that contains information about the changed activity.</param>
+        <summary>Notifies the designer when the activity associated with it changes.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="e" /> is a null reference (<see langword="Nothing" /> in Visual Basic).</exception>
       </Docs>
     </Member>
     <Member MemberName="OnContainedActivitiesChanging">
@@ -458,8 +547,8 @@
         <Parameter Name="listChangeArgs" Type="System.Workflow.ComponentModel.ActivityCollectionChangeEventArgs" />
       </Parameters>
       <Docs>
-        <param name="listChangeArgs">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="listChangeArgs">The <see cref="T:System.Workflow.ComponentModel.ActivityCollectionChangeEventArgs" /> that contains information about the activities that changed.</param>
+        <summary>Notifies the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> when more than one of the activities it contains has changed.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -480,9 +569,11 @@
         <Parameter Name="e" Type="System.Workflow.ComponentModel.Design.ActivityDragEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The <see cref="T:System.Workflow.ComponentModel.Design.ActivityDragEventArgs" /> that defines the operation event arguments.</param>
+        <summary>Notifies the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> when a drag-drop operation is completed with the bounds of its design surface.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="e" /> contains a null reference (<see langword="Nothing" /> in Visual Basic).</exception>
       </Docs>
     </Member>
     <Member MemberName="OnDragEnter">
@@ -502,9 +593,11 @@
         <Parameter Name="e" Type="System.Workflow.ComponentModel.Design.ActivityDragEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The <see cref="T:System.Workflow.ComponentModel.Design.ActivityDragEventArgs" /> that defines the operation event arguments.</param>
+        <summary>Notifies the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> when a drag-drop operation is in progress and the user's mouse cursor enters the bounds of the designer.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="e" /> contains a null reference (<see langword="Nothing" /> in Visual Basic).</exception>
       </Docs>
     </Member>
     <Member MemberName="OnDragLeave">
@@ -522,7 +615,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Notifies the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> when a drag-drop operation is in progress and the user's mouse cursor leaves the bounds of the designer.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -543,9 +636,11 @@
         <Parameter Name="e" Type="System.Workflow.ComponentModel.Design.ActivityDragEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The <see cref="T:System.Workflow.ComponentModel.Design.ActivityDragEventArgs" /> that defines the operation event arguments.</param>
+        <summary>Notifies the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> when a drag-drop operation is in progress and the user's mouse cursor is inside the bounds of the designer.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="e" /> contains a null reference (<see langword="Nothing" /> in Visual Basic).</exception>
       </Docs>
     </Member>
     <Member MemberName="OnLayoutPosition">
@@ -565,9 +660,11 @@
         <Parameter Name="e" Type="System.Workflow.ComponentModel.Design.ActivityDesignerLayoutEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The <see cref="T:System.Workflow.ComponentModel.Design.ActivityDesignerLayoutEventArgs" /> that contains the layout arguments.</param>
+        <summary>Performs layout tasks to position visual cues and child designers on the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="e" /> contains a null reference (<see langword="Nothing" /> in Visual Basic).</exception>
       </Docs>
     </Member>
     <Member MemberName="OnLayoutSize">
@@ -587,9 +684,9 @@
         <Parameter Name="e" Type="System.Workflow.ComponentModel.Design.ActivityDesignerLayoutEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="e">The <see cref="T:System.Workflow.ComponentModel.Design.ActivityDesignerLayoutEventArgs" /> that contains the layout arguments.</param>
+        <summary>Notifies the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> when the size of the visual cues on the designers displayed by the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> have changed.</summary>
+        <returns>The <see cref="T:System.Drawing.Size" /> that represents the new size of the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> on the workflow design surface.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -610,8 +707,8 @@
         <Parameter Name="smartTagPoint" Type="System.Drawing.Point" />
       </Parameters>
       <Docs>
-        <param name="smartTagPoint">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="smartTagPoint">The <see cref="T:System.Drawing.Point" /> that represents the location on the workflow design surface for which to show <see cref="T:System.Workflow.ComponentModel.Design.DesignerAction" /> objects.</param>
+        <summary>Displays the designer verbs associated with a smart tag at a specified location on the workflow design surface.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -632,8 +729,8 @@
         <Parameter Name="view" Type="System.Workflow.ComponentModel.Design.DesignerView" />
       </Parameters>
       <Docs>
-        <param name="view">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="view">The <see cref="T:System.Workflow.ComponentModel.Design.DesignerView" /> that is to be set.</param>
+        <summary>Notifies the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> when the current designer view changes.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -654,8 +751,8 @@
         <Parameter Name="writer" Type="System.IO.BinaryWriter" />
       </Parameters>
       <Docs>
-        <param name="writer">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="writer">The <see cref="T:System.IO.BinaryWriter" /> to which the current designer view state is stored.</param>
+        <summary>Stores the current view state of the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> to a binary stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -673,8 +770,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value indicating whether the <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> displays smart tags.</summary>
+        <value>
+          <see langword="true" /> if the designer displays smart tags; otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -692,9 +790,16 @@
         <ReturnType>System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Workflow.ComponentModel.Design.ActivityDesignerVerb&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a read-only collection of designer actions that are associated with the smart tags on the designer.</summary>
+        <value>A <see cref="T:System.Workflow.ComponentModel.Design.DesignerAction" /> read-only collection that contains all the actions associated with the smart tags on the designer.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The collection is returned only if the <xref:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner> hosts multiple views. Use the <xref:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner.Views%2A> property to determine how many views the current designer hosts.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Views">
@@ -711,8 +816,8 @@
         <ReturnType>System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Workflow.ComponentModel.Design.DesignerView&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Get a read-only collection of designer views that the current <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" /> hosts.</summary>
+        <value>The <see cref="T:System.Workflow.ComponentModel.Design.DesignerView" /> read-only collection that contains the views hosted by the current <see cref="T:System.Workflow.ComponentModel.Design.StructuredCompositeActivityDesigner" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

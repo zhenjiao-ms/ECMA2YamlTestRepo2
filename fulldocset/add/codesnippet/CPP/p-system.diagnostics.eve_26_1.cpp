@@ -1,56 +1,52 @@
-void CreateEventSourceSample1( String^ messageFile )
+#using <System.dll>
+#using <System.Configuration.Install.dll>
+
+using namespace System;
+using namespace System::Configuration::Install;
+using namespace System::Diagnostics;
+using namespace System::ComponentModel;
+
+[RunInstaller(true)]
+public ref class SampleEventLogInstaller : public Installer
 {
-   String^ myLogName;
-   String^ sourceName = "SampleApplicationSource";
-   
-   // Create the event source if it does not exist.
-   if (  !EventLog::SourceExists( sourceName ) )
-   {
-      
-      // Create a new event source for the custom event log
-      // named "myNewLog."  
-      myLogName = "myNewLog";
-      EventSourceCreationData ^ mySourceData = gcnew EventSourceCreationData( sourceName,myLogName );
-      
-      // Set the message resource file that the event source references.
-      // All event resource identifiers correspond to text in this file.
-      if (  !System::IO::File::Exists( messageFile ) )
-      {
-         Console::WriteLine( "Input message resource file does not exist - {0}", messageFile );
-         messageFile = "";
-      }
-      else
-      {
-         
-         // Set the specified file as the resource
-         // file for message text, category text, and 
-         // message parameter strings.  
-         mySourceData->MessageResourceFile = messageFile;
-         mySourceData->CategoryResourceFile = messageFile;
-         mySourceData->CategoryCount = CategoryCount;
-         mySourceData->ParameterResourceFile = messageFile;
-         Console::WriteLine( "Event source message resource file set to {0}", messageFile );
-      }
+private:
+   EventLogInstaller^ myEventLogInstaller;
 
-      Console::WriteLine( "Registering new source for event log." );
-      EventLog::CreateEventSource( mySourceData );
-   }
-   else
+public:
+   SampleEventLogInstaller()
    {
       
-      // Get the event log corresponding to the existing source.
-      myLogName = EventLog::LogNameFromSourceName( sourceName, "." );
+      // Create an instance of an EventLogInstaller.
+      myEventLogInstaller = gcnew EventLogInstaller;
+      
+      // Set the source name of the event log.
+      myEventLogInstaller->Source = "ApplicationEventSource";
+      
+      // Set the event log into which the source writes entries.
+      //myEventLogInstaller.Log = "MyCustomLog";
+      myEventLogInstaller->Log = "myNewLog";
+      
+      // Set the resource file for the event log.
+      // The message strings are defined in EventLogMsgs.mc; the message 
+      // identifiers used in the application must match those defined in the
+      // corresponding message resource file. The messages must be built
+      // into a Win32 resource library and copied to the target path on the
+      // system.  
+      myEventLogInstaller->CategoryResourceFile =
+             Environment::SystemDirectory + "\\eventlogmsgs.dll";
+      myEventLogInstaller->CategoryCount = 3;
+      myEventLogInstaller->MessageResourceFile =
+             Environment::SystemDirectory + "\\eventlogmsgs.dll";
+      myEventLogInstaller->ParameterResourceFile =
+             Environment::SystemDirectory + "\\eventlogmsgs.dll";
+
+      // Add myEventLogInstaller to the installer collection.
+      Installers->Add( myEventLogInstaller );
    }
 
-   
-   // Register the localized name of the event log.
-   // For example, the actual name of the event log is "myNewLog," but
-   // the event log name displayed in the Event Viewer might be
-   // "Sample Application Log" or some other application-specific
-   // text.
-   EventLog^ myEventLog = gcnew EventLog( myLogName,".",sourceName );
-   if ( messageFile->Length > 0 )
-   {
-      myEventLog->RegisterDisplayName( messageFile, DisplayNameMsgId );
-   }   
+};
+
+int main()
+{
+   Console::WriteLine( "Usage: InstallUtil.exe [<install>.exe | <install>.dll]" );
 }

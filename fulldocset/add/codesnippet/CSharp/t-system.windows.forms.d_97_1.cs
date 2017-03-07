@@ -1,7 +1,10 @@
-private void DataGridView1_AutoSizeColumnsModeChanged(Object sender, DataGridViewAutoSizeColumnsModeEventArgs e) {
+    private void CustomizeCellsInThirdColumn()
+    {
+        int thirdColumn = 2;
+        DataGridViewColumn column =
+            dataGridView.Columns[thirdColumn];
+        DataGridViewCell cell = new DataGridViewTextBoxCell();
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "PreviousModes", e.PreviousModes );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "AutoSizeColumnsModeChanged Event" );
-}
+        cell.Style.BackColor = Color.Wheat;
+        column.CellTemplate = cell;
+    }

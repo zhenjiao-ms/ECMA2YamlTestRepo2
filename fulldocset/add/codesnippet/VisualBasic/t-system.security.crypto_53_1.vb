@@ -1,112 +1,65 @@
 Imports System
-Imports System.IO
 Imports System.Security.Cryptography
+Imports System.Security.Cryptography.X509Certificates
+Imports System.IO
 
-Public Class HMACSHA256example
 
-    Public Shared Sub Main(ByVal Fileargs() As String)
-        Dim dataFile As String
-        Dim signedFile As String
-        'If no file names are specified, create them.
-        If Fileargs.Length < 2 Then
-            dataFile = "text.txt"
-            signedFile = "signedFile.enc"
 
-            If Not File.Exists(dataFile) Then
-                ' Create a file to write to.
-                Using sw As StreamWriter = File.CreateText(dataFile)
-                    sw.WriteLine("Here is a message to sign")
-                End Using
-            End If
+Class X509store2
 
+    Shared Sub Main(ByVal args() As String)
+        'Create new X509 store called teststore from the local certificate store.
+        Dim store As New X509Store("teststore", StoreLocation.CurrentUser)
+        store.Open(OpenFlags.ReadWrite)
+        Dim certificate As New X509Certificate2()
+
+        'Create certificates from certificate files.
+        'You must put in a valid path to three certificates in the following constructors.
+        Dim certificate1 As New X509Certificate2("c:\mycerts\*****.cer")
+        Dim certificate2 As New X509Certificate2("c:\mycerts\*****.cer")
+        Dim certificate5 As New X509Certificate2("c:\mycerts\*****.cer")
+
+        'Create a collection and add two of the certificates.
+        Dim collection As New X509Certificate2Collection()
+        collection.Add(certificate2)
+        collection.Add(certificate5)
+
+        'Add certificates to the store.
+        store.Add(certificate1)
+        store.AddRange(collection)
+
+        Dim storecollection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+        Console.WriteLine("Store name: {0}", store.Name)
+        Console.WriteLine("Store location: {0}", store.Location)
+        Dim x509 As X509Certificate2
+        For Each x509 In storecollection
+            Console.WriteLine("certificate name: {0}", x509.Subject)
+        Next x509
+
+        'Remove a certificate.
+        store.Remove(certificate1)
+        Dim storecollection2 As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+        Console.WriteLine("{1}Store name: {0}", store.Name, Environment.NewLine)
+        Dim x509a As X509Certificate2
+        For Each x509a In storecollection2
+            Console.WriteLine("certificate name: {0}", x509a.Subject)
+        Next x509a
+
+        'Remove a range of certificates.
+        store.RemoveRange(collection)
+        Dim storecollection3 As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+        Console.WriteLine("{1}Store name: {0}", store.Name, Environment.NewLine)
+        If storecollection3.Count = 0 Then
+            Console.WriteLine("Store contains no certificates.")
         Else
-            dataFile = Fileargs(0)
-            signedFile = Fileargs(1)
-        End If
-        Try
-            ' Create a random key using a random number generator. This would be the
-            '  secret key shared by sender and receiver.
-            Dim secretkey() As Byte = New [Byte](63) {}
-            'RNGCryptoServiceProvider is an implementation of a random number generator.
-            Using rng As New RNGCryptoServiceProvider()
-                ' The array is now filled with cryptographically strong random bytes.
-                rng.GetBytes(secretkey)
-
-                ' Use the secret key to encode the message file.
-                SignFile(secretkey, dataFile, signedFile)
-
-                ' Take the encoded file and decode
-                VerifyFile(secretkey, signedFile)
-            End Using
-        Catch e As IOException
-            Console.WriteLine("Error: File not found", e)
-        End Try
-
-    End Sub 'Main
-
-    ' Computes a keyed hash for a source file and creates a target file with the keyed hash
-    ' prepended to the contents of the source file. 
-    Public Shared Sub SignFile(ByVal key() As Byte, ByVal sourceFile As String, ByVal destFile As String)
-        ' Initialize the keyed hash object.
-        Using myhmac As New HMACSHA256(key)
-            Using inStream As New FileStream(sourceFile, FileMode.Open)
-                Using outStream As New FileStream(destFile, FileMode.Create)
-                    ' Compute the hash of the input file.
-                    Dim hashValue As Byte() = myhmac.ComputeHash(inStream)
-                    ' Reset inStream to the beginning of the file.
-                    inStream.Position = 0
-                    ' Write the computed hash value to the output file.
-                    outStream.Write(hashValue, 0, hashValue.Length)
-                    ' Copy the contents of the sourceFile to the destFile.
-                    Dim bytesRead As Integer
-                    ' read 1K at a time
-                    Dim buffer(1023) As Byte
-                    Do
-                        ' Read from the wrapping CryptoStream.
-                        bytesRead = inStream.Read(buffer, 0, 1024)
-                        outStream.Write(buffer, 0, bytesRead)
-                    Loop While bytesRead > 0
-                End Using
-            End Using
-        End Using
-        Return
-
-    End Sub 'SignFile
-    ' end SignFile
-
-    ' Compares the key in the source file with a new key created for the data portion of the file. If the keys 
-    ' compare the data has not been tampered with.
-    Public Shared Function VerifyFile(ByVal key() As Byte, ByVal sourceFile As String) As Boolean
-        Dim err As Boolean = False
-        ' Initialize the keyed hash object. 
-        Using hmac As New HMACSHA256(key)
-            ' Create an array to hold the keyed hash value read from the file.
-            Dim storedHash(hmac.HashSize / 8) As Byte
-            ' Create a FileStream for the source file.
-            Using inStream As New FileStream(sourceFile, FileMode.Open)
-                ' Read in the storedHash.
-                inStream.Read(storedHash, 0, storedHash.Length - 1)
-                ' Compute the hash of the remaining contents of the file.
-                ' The stream is properly positioned at the beginning of the content, 
-                ' immediately after the stored hash value.
-                Dim computedHash As Byte() = hmac.ComputeHash(inStream)
-                ' compare the computed hash with the stored value
-                Dim i As Integer
-                For i = 0 To storedHash.Length - 2
-                    If computedHash(i) <> storedHash(i) Then
-                        err = True
-                    End If
-                Next i
-            End Using
-        End Using
-        If err Then
-            Console.WriteLine("Hash values differ! Signed file has been tampered with!")
-            Return False
-        Else
-            Console.WriteLine("Hash values agree -- no tampering occurred.")
-            Return True
+            Dim x509b As X509Certificate2
+            For Each x509b In storecollection3
+                Console.WriteLine("certificate name: {0}", x509b.Subject)
+            Next x509b
         End If
 
-    End Function 'VerifyFile 
-End Class 'HMACSHA256example 'end VerifyFile
-'end class
+        'Close the store.
+        store.Close()
+
+    End Sub
+End Class

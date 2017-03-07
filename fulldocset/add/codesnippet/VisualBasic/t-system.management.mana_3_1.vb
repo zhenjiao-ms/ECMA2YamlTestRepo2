@@ -1,46 +1,45 @@
 Imports System
 Imports System.Management
 
-' This example shows synchronous consumption of events. 
-' The client is blocked while waiting for events. 
 
-Public Class EventWatcherPolling
+Public Class Sample
     Public Overloads Shared Function _
         Main(ByVal args() As String) As Integer
 
-        ' Create event query to be notified within 1 second of 
-        ' a change in a service
-        Dim query As New WqlEventQuery( _
-            "__InstanceCreationEvent", _
-            New TimeSpan(0, 0, 1), _
-            "TargetInstance isa ""Win32_Process""")
+        ' Get the WMI class path
+        Dim p As ManagementPath = _
+            New ManagementPath( _
+            "\\ComputerName\root" & _
+            "\cimv2:Win32_LogicalDisk.DeviceID=""C:""")
 
-        ' Initialize an event watcher and subscribe to events 
-        ' that match this query
-        Dim watcher As New ManagementEventWatcher
-        watcher.Query = query
-        ' times watcher.WaitForNextEvent in 5 seconds
-        watcher.Options.Timeout = New TimeSpan(0, 0, 5)
+        Console.WriteLine("IsClass: " & _
+            p.IsClass)
+        ' Should be False (because it is an instance)
 
-        ' Block until the next event occurs 
-        ' Note: this can be done in a loop
-        ' if waiting for more than one occurrence
-        Console.WriteLine( _
-          "Open an application (notepad.exe) to trigger an event.")
-        Dim e As ManagementBaseObject = _
-            watcher.WaitForNextEvent()
+        Console.WriteLine("IsInstance: " & _
+            p.IsInstance)
+        ' Should be True
 
-        'Display information from the event
-        Console.WriteLine( _
-            "Process {0} has created, path is: {1}", _
-            CType(e("TargetInstance"), _
-                ManagementBaseObject)("Name"), _
-            CType(e("TargetInstance"), _
-                ManagementBaseObject)("ExecutablePath"))
+        Console.WriteLine("ClassName: " & _
+            p.ClassName)
+        ' Should be "Win32_LogicalDisk"
 
-        'Cancel the subscription
-        watcher.Stop()
-        Return 0
+        Console.WriteLine("NamespacePath: " & _
+            p.NamespacePath)
+        ' Should be "ComputerName\cimv2"
 
-    End Function 'Main
-End Class 'EventWatcherPolling
+        Console.WriteLine("Server: " & _
+            p.Server)
+        ' Should be "ComputerName"
+
+        Console.WriteLine("Path: " & _
+            p.Path)
+        ' Should be "ComputerName\root\cimv2:
+        ' Win32_LogicalDisk.DeviceId="C:""
+
+        Console.WriteLine("RelativePath: " & _
+            p.RelativePath)
+        ' Should be "Win32_LogicalDisk.DeviceID="C:""
+
+    End Function
+End Class

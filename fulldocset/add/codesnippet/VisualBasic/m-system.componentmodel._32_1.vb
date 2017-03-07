@@ -1,15 +1,16 @@
-	Private Sub MyEnumerator
-		' Creates a new collection and assigns it the attributes for button1.
-		Dim attributes As AttributeCollection
-		attributes = TypeDescriptor.GetAttributes(button1)
+    ' Add the new part unless the part number contains
+    ' spaces. In that case cancel the add.
+    Private Sub button1_Click(ByVal sender As Object, _
+        ByVal e As EventArgs) Handles button1.Click
 
-		' Creates an enumerator for the collection.
-		Dim ie As System.Collections.IEnumerator = attributes.GetEnumerator
+        Dim newPart As Part = listOfParts.AddNew()
 
-		' Prints the type of each attribute in the collection.
-		Dim myAttribute As Object
-		Do While ie.MoveNext
-			myAttribute = ie.Current
-			textBox1.Text = textBox1.Text & myAttribute.toString & ControlChars.crlf
-		Loop
-	End Sub
+        If newPart.PartName.Contains(" ") Then
+            MessageBox.Show("Part names cannot contain spaces.")
+            listOfParts.CancelNew(listOfParts.IndexOf(newPart))
+        Else
+            textBox2.Text = randomNumber.Next(9999).ToString()
+            textBox1.Text = "Enter part name"
+        End If
+
+    End Sub

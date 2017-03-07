@@ -1,11 +1,11 @@
-    // Demonstrates SetText, ContainsText, and GetText.
-    public String SwapClipboardHtmlText(String replacementHtmlText)
+    // Demonstrates SetData, ContainsData, and GetData.
+    public Object SwapClipboardFormattedData(String format, Object data)
     {
-        String returnHtmlText = null;
-        if (Clipboard.ContainsText(TextDataFormat.Html))
+        Object returnObject = null;
+        if (Clipboard.ContainsData(format))
         {
-            returnHtmlText = Clipboard.GetText(TextDataFormat.Html);
-            Clipboard.SetText(replacementHtmlText, TextDataFormat.Html);
+            returnObject = Clipboard.GetData(format);
+            Clipboard.SetData(format, data);
         }
-        return returnHtmlText;
+        return returnObject;
     }

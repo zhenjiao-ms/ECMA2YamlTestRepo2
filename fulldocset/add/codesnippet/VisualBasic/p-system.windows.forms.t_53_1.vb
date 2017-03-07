@@ -1,31 +1,32 @@
-    Friend WithEvents changeDirectionButton As ToolStripButton
+Imports System.Drawing
+Imports System.Windows.Forms
 
-    Private Sub InitializeMovingToolStrip()
-        changeDirectionButton = New ToolStripButton()
+Public Class Form1
+    Inherits Form
+    Private tabControl1 As TabControl
+    Private tabPage1 As TabPage
 
-        movingToolStrip.AutoSize = True
-        movingToolStrip.RenderMode = ToolStripRenderMode.System
 
-        changeDirectionButton.TextDirection = ToolStripTextDirection.Vertical270
-        changeDirectionButton.Overflow = ToolStripItemOverflow.Never
-        changeDirectionButton.Text = "Change Alignment"
-        movingToolStrip.Items.Add(changeDirectionButton)
+    Private Sub MyTabs()
+        Me.tabControl1 = New TabControl()
+        Me.tabPage1 = New TabPage()
+
+        Me.tabControl1.Controls.AddRange(New Control() {Me.tabPage1})
+        Me.tabControl1.Location = New Point(25, 25)
+        Me.tabControl1.Size = New Size(250, 250)
+
+        ' Displays a string, myTabPage, on tabPage1.
+        Me.tabPage1.Text = "myTabPage"
+
+        Me.ClientSize = New Size(300, 300)
+        Me.Controls.AddRange(New Control() {Me.tabControl1})
     End Sub
 
-
-    Public Sub changeDirectionButton_Click(ByVal sender As Object, _
-        ByVal e As EventArgs) Handles changeDirectionButton.Click
-
-        Dim item As ToolStripItem = CType(sender, ToolStripItem)
-
-        If item.TextDirection = ToolStripTextDirection.Vertical270 _
-            OrElse item.TextDirection = ToolStripTextDirection.Vertical90 Then
-
-            item.TextDirection = ToolStripTextDirection.Horizontal
-            movingToolStrip.Dock = System.Windows.Forms.DockStyle.Top
-        Else
-            item.TextDirection = ToolStripTextDirection.Vertical270
-            movingToolStrip.Dock = System.Windows.Forms.DockStyle.Left
-        End If
-
+    Public Sub New()
+        MyTabs()
     End Sub
+
+    Shared Sub Main()
+        Application.Run(New Form1())
+    End Sub
+End Class

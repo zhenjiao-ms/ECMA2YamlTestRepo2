@@ -1,30 +1,26 @@
-
-Public Class MyServiceAuthorizationManager
-    Inherits ServiceAuthorizationManager
-    
-    Protected Overrides Function CheckAccessCore(ByVal operationContext As OperationContext) As Boolean 
-        ' Extract the action URI from the OperationContext. Match this against the claims.
-        ' in the AuthorizationContext.
-        Dim action As String = operationContext.RequestContext.RequestMessage.Headers.Action
+    Public Shared Function CreateCustomBinding() As Binding 
+        ' Create an empty BindingElementCollection to populate, 
+        ' then create a custom binding from it.
+        Dim outputBec As New BindingElementCollection()
         
-        ' Iterate through the various claimsets in the AuthorizationContext.
-        Dim cs As ClaimSet
-        For Each cs In  operationContext.ServiceSecurityContext.AuthorizationContext.ClaimSets
-            ' Examine only those claim sets issued by System.
-            If cs.Issuer Is ClaimSet.System Then
-                ' Iterate through claims of type "http://www.contoso.com/claims/allowedoperation".
-                Dim c As Claim
-                For Each c In  cs.FindClaims("http://www.contoso.com/claims/allowedoperation", _
-                     Rights.PossessProperty)
-                    ' If the Claim resource matches the action URI then return true to allow access.
-                    If action = c.Resource.ToString() Then
-                        Return True
-                    End If
-                Next c
-            End If
-        Next cs 
-        ' If this point is reached, return false to deny access.
-        Return False
+        ' Create a SymmetricSecurityBindingElement.
+        Dim ssbe As New SymmetricSecurityBindingElement()
+        
+        ' Set the algorithm suite to one that uses 128-bit keys.
+        ssbe.DefaultAlgorithmSuite = SecurityAlgorithmSuite.Basic128
+        
+        ' Set MessageProtectionOrder to SignBeforeEncrypt.
+        ssbe.MessageProtectionOrder = MessageProtectionOrder.SignBeforeEncrypt
+        
+        ' Use a Kerberos token as the protection token.
+        ssbe.ProtectionTokenParameters = New KerberosSecurityTokenParameters()
+        
+        ' Add the SymmetricSecurityBindingElement to the BindingElementCollection.
+        outputBec.Add(ssbe)
+        outputBec.Add(New TextMessageEncodingBindingElement())
+        outputBec.Add(New HttpTransportBindingElement())
+        
+        ' Create a CustomBinding and return it; otherwise, return null.
+        Return New CustomBinding(outputBec)
     
     End Function 
-End Class 

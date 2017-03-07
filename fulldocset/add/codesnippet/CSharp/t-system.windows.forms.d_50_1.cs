@@ -1,69 +1,57 @@
-    class MyGlyph : Glyph
+    // Configures the appearance and behavior of a DataGridView control.
+    private void InitializeDataGridView()
     {
-        Control control;
-        BehaviorService behaviorSvc;
+        // Initialize basic DataGridView properties.
+        dataGridView1.Dock = DockStyle.Fill;
+        dataGridView1.BackgroundColor = Color.LightGray;
+        dataGridView1.BorderStyle = BorderStyle.Fixed3D;
 
-        public MyGlyph(BehaviorService behaviorSvc, Control control) : 
-            base(new MyBehavior())
+        // Set property values appropriate for read-only display and 
+        // limited interactivity. 
+        dataGridView1.AllowUserToAddRows = false;
+        dataGridView1.AllowUserToDeleteRows = false;
+        dataGridView1.AllowUserToOrderColumns = true;
+        dataGridView1.ReadOnly = true;
+        dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        dataGridView1.MultiSelect = false;
+        dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+        dataGridView1.AllowUserToResizeColumns = false;
+        dataGridView1.ColumnHeadersHeightSizeMode = 
+            DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+        dataGridView1.AllowUserToResizeRows = false;
+        dataGridView1.RowHeadersWidthSizeMode = 
+            DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+        // Set the selection background color for all the cells.
+        dataGridView1.DefaultCellStyle.SelectionBackColor = Color.White;
+        dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+        // Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default
+        // value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
+        dataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty;
+
+        // Set the background color for all rows and for alternating rows. 
+        // The value for alternating rows overrides the value for all rows. 
+        dataGridView1.RowsDefaultCellStyle.BackColor = Color.LightGray;
+        dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray;
+
+        // Set the row and column header styles.
+        dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+        dataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.Black;
+
+        // Set the Format property on the "Last Prepared" column to cause
+        // the DateTime to be formatted as "Month, Year".
+        dataGridView1.Columns["Last Prepared"].DefaultCellStyle.Format = "y";
+
+        // Specify a larger font for the "Ratings" column. 
+        using (Font font = new Font(
+            dataGridView1.DefaultCellStyle.Font.FontFamily, 25, FontStyle.Bold))
         {
-            this.behaviorSvc = behaviorSvc;
-            this.control = control;
+            dataGridView1.Columns["Rating"].DefaultCellStyle.Font = font;
         }
 
-        public override Rectangle Bounds
-        {
-            get
-            {
-                // Create a glyph that is 10x10 and sitting
-                // in the middle of the control.  Glyph coordinates
-                // are in adorner window coordinates, so we must map
-                // using the behavior service.
-                Point edge = behaviorSvc.ControlToAdornerWindow(control);
-                Size size = control.Size;
-                Point center = new Point(edge.X + (size.Width / 2), 
-                    edge.Y + (size.Height / 2));
-
-                Rectangle bounds = new Rectangle(
-                    center.X - 5,
-                    center.Y - 5,
-                    10,
-                    10);
-
-                return bounds;
-            }
-        }
-
-        public override Cursor GetHitTest(Point p)
-        {
-            // GetHitTest is called to see if the point is
-            // within this glyph.  This gives us a chance to decide
-            // what cursor to show.  Returning null from here means
-            // the mouse pointer is not currently inside of the glyph.
-            // Returning a valid cursor here indicates the pointer is
-            // inside the glyph, and also enables our Behavior property
-            // as the active behavior.
-            if (Bounds.Contains(p))
-            {
-                return Cursors.Hand;
-            }
-
-            return null;
-        }
-
-        public override void Paint(PaintEventArgs pe)
-        {
-            // Draw our glyph. It is simply a blue ellipse.
-            pe.Graphics.FillEllipse(Brushes.Blue, Bounds);
-        }
-
-        // By providing our own behavior we can do something interesting
-        // when the user clicks or manipulates our glyph.
-        class MyBehavior : Behavior
-        {
-            public override bool OnMouseUp(Glyph g, MouseButtons button)
-            {
-                MessageBox.Show("Hey, you clicked the mouse here");
-                return true; // indicating we processed this event.
-            }
-        }
+        // Attach a handler to the CellFormatting event.
+        dataGridView1.CellFormatting += new
+            DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
     }

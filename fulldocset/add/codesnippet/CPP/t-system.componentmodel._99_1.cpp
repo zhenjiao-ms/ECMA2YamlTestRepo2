@@ -1,22 +1,12 @@
-   public:
-      void LinkActiveDesignerEvent( IDesignerEventService^ eventService )
+      try
       {
-         // Registers an event handler for the ActiveDesignerChanged event.
-         eventService->ActiveDesignerChanged += gcnew ActiveDesignerEventHandler( this, &MiscCompModSamples::ActiveDesignerEventHandlerExample::OnActiveDesignerEvent );
+         License^ licTest = nullptr;
+         licTest = LicenseManager::Validate( Form1::typeid, this );
       }
-
-   private:
-      void OnActiveDesignerEvent( Object^ /*sender*/, ActiveDesignerEventArgs^ e )
+      catch ( LicenseException^ licE ) 
       {
-         // Displays changed designer information on the console.
-         if ( e->NewDesigner->RootComponent->Site != nullptr )
-         {
-            Console::WriteLine( "Name of the component of the new active designer: {0}", e->NewDesigner->RootComponent->Site->Name );
-         }
-         Console::WriteLine( "Type of the component of the new active designer: {0}", e->NewDesigner->RootComponentClassName );
-         if ( e->OldDesigner->RootComponent->Site != nullptr )
-         {
-            Console::WriteLine( "Name of the component of the previously active designer: {0}", e->OldDesigner->RootComponent->Site->Name );
-         }
-         Console::WriteLine( "Type of the component of the previously active designer: {0}", e->OldDesigner->RootComponentClassName );
+         Console::WriteLine( licE->Message );
+         Console::WriteLine( licE->LicensedType );
+         Console::WriteLine( licE->StackTrace );
+         Console::WriteLine( licE->Source );
       }

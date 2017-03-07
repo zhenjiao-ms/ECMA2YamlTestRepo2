@@ -1,39 +1,27 @@
-public:
-   void CreateMyMenu()
+   void InitializeMyMenu()
    {
-      // Create a main menu objects.
-      MainMenu^ mainMenu1 = gcnew MainMenu;
+      // Create the MainMenu object.
+      MainMenu^ myMainMenu = gcnew MainMenu;
 
-      // Create empty menu item objects.
-      MenuItem^ menuItem1 = gcnew MenuItem;
-      MenuItem^ menuItem2 = gcnew MenuItem;
+      // Create the MenuItem objects.
+      MenuItem^ fileMenu = gcnew MenuItem( "&File" );
+      MenuItem^ editMenu = gcnew MenuItem( "&Edit" );
+      MenuItem^ newFile = gcnew MenuItem( "&New" );
+      MenuItem^ openFile = gcnew MenuItem( "&Open" );
+      MenuItem^ exitProgram = gcnew MenuItem( "E&xit" );
 
-      // Set the caption of the menu items.
-      menuItem1->Text = "&File";
-      menuItem2->Text = "&Edit";
+      // Add the MenuItem objects to myMainMenu.
+      myMainMenu->MenuItems->Add( fileMenu );
+      myMainMenu->MenuItems->Add( editMenu );
 
-      // Add the menu items to the main menu.
-      mainMenu1->MenuItems->Add( menuItem1 );
-      mainMenu1->MenuItems->Add( menuItem2 );
+      // Add three submenus to the File menu.
+      fileMenu->MenuItems->Add( newFile );
+      fileMenu->MenuItems->Add( openFile );
+      fileMenu->MenuItems->Add( exitProgram );
 
-      // Add functionality to the menu items.
-      menuItem1->Select += gcnew System::EventHandler( this, &Form1::menuItem1_Select );
-      menuItem2->Select += gcnew System::EventHandler( this, &Form1::menuItem2_Select );
+      // Assign myMainMenu to the form.
+      Menu = myMainMenu;
 
-      // Assign mainMenu1 to the form.
-      this->Menu = mainMenu1;
-
-      // Select the File menu item.
-      menuItem1->PerformSelect();
-   }
-
-private:
-   void menuItem1_Select( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      MessageBox::Show( "You selected the File menu.", "The Event Information" );
-   }
-
-   void menuItem2_Select( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      MessageBox::Show( "You selected the Edit menu.", "The Event Information" );
+      // Remove the item S"Exit" from the File menu.
+      fileMenu->MenuItems->RemoveAt( 2 );
    }

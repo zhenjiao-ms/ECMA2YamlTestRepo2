@@ -1,9 +1,9 @@
-private void DataGridView1_ColumnStateChanged(Object sender, DataGridViewColumnStateChangedEventArgs e) {
-
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "Column", e.Column );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "StateChanged", e.StateChanged );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "ColumnStateChanged Event" );
-}
+    // Updated the criteria label.
+    private void dataGridView_AutoSizeColumnModeChanged(object sender,
+        DataGridViewAutoSizeColumnModeEventArgs args)
+    {
+        args.Column.DataGridView.Parent.
+            Controls["flowlayoutpanel"].Controls[criteriaLabel].
+            Text = criteriaLabel
+            + args.Column.AutoSizeMode.ToString();
+    }

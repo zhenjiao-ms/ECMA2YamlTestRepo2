@@ -12,8 +12,15 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a class that can read and write key identifiers, key identifier clauses, and security tokens.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use the SecurityTokenSerializer class to read and write <xref:System.IdentityModel.Tokens.SecurityKeyIdentifier>, <xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause>, and <xref:System.IdentityModel.Tokens.SecurityToken> classes as XML. The SecurityTokenSerializer class has methods to determine whether this class can read and write these entities and to actually read and write them. For security tokens, these methods are <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanReadToken%2A>, <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanWriteToken%2A>, <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.ReadToken%2A>, and <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.WriteToken%2A>.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,7 +35,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.IdentityModel.Selectors.SecurityTokenSerializer" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -49,10 +56,20 @@
         <Parameter Name="reader" Type="System.Xml.XmlReader" />
       </Parameters>
       <Docs>
-        <param name="reader">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="reader">An <see cref="T:System.Xml.XmlReader" /> to read the key identifier.</param>
+        <summary>Determines whether this serializer can read the <see langword="&lt;KeyIdentifier&gt;" /> element referred to by the specified XML reader.</summary>
+        <returns>
+          <see langword="true" /> when the specified <see langword="&lt;KeyIdentifier&gt;" /> XML element can be read; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanReadKeyIdentifierCore%28System.Xml.XmlReader%29> method. The CanReadKeyIdentifier method calls the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanReadKeyIdentifierCore%2A> method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="reader" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="CanReadKeyIdentifierClause">
@@ -72,10 +89,20 @@
         <Parameter Name="reader" Type="System.Xml.XmlReader" />
       </Parameters>
       <Docs>
-        <param name="reader">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="reader">An <see cref="T:System.Xml.XmlReader" /> to read the key identifier clause.</param>
+        <summary>Determines whether this serializer can read a clause in a <see langword="&lt;KeyIdentifier&gt;" /> element referred to by the specified XML reader.</summary>
+        <returns>
+          <see langword="true" /> when the specified key identifier clause can be read; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanReadKeyIdentifierClauseCore%28System.Xml.XmlReader%29> method. The CanReadKeyIdentifierClause method calls the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanReadKeyIdentifierClauseCore%2A> method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="reader" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="CanReadKeyIdentifierClauseCore">
@@ -95,10 +122,20 @@
         <Parameter Name="reader" Type="System.Xml.XmlReader" />
       </Parameters>
       <Docs>
-        <param name="reader">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="reader">An <see cref="T:System.Xml.XmlReader" /> to read the key identifier clause.</param>
+        <summary>Determines whether this serializer can read the <see langword="&lt;KeyIdentifier&gt;" /> element referred to by the specified XML reader. Called by the base class.</summary>
+        <returns>
+          <see langword="true" /> when the specified <see langword="&lt;KeyIdentifier&gt;" /> element can be read; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the CanReadKeyIdentifierClauseCore method. The <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanReadKeyIdentifierClause%28System.Xml.XmlReader%29> method calls the CanReadKeyIdentifierClauseCore method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="reader" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="CanReadKeyIdentifierCore">
@@ -118,10 +155,20 @@
         <Parameter Name="reader" Type="System.Xml.XmlReader" />
       </Parameters>
       <Docs>
-        <param name="reader">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="reader">An <see cref="T:System.Xml.XmlReader" /> to read the key identifier.</param>
+        <summary>Determines whether this serializer can read the <see langword="&lt;KeyIdentifier&gt;" /> element referred to by the specified XML reader. Called by the base class.</summary>
+        <returns>
+          <see langword="true" /> when the specified key identifier clause can be read; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the CanReadKeyIdentifierCore method. The <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanReadKeyIdentifier%28System.Xml.XmlReader%29> method calls the CanReadKeyIdentifierCore method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="reader" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="CanReadToken">
@@ -141,10 +188,20 @@
         <Parameter Name="reader" Type="System.Xml.XmlReader" />
       </Parameters>
       <Docs>
-        <param name="reader">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="reader">An <see cref="T:System.Xml.XmlReader" /> to read the security token.</param>
+        <summary>Determines whether this serializer can read the security token pointed at by the specified XML reader.</summary>
+        <returns>
+          <see langword="true" /> when the security token can be read; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanReadTokenCore%28System.Xml.XmlReader%29> method. The CanReadToken method calls the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanReadTokenCore%2A> method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="reader" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="CanReadTokenCore">
@@ -164,10 +221,20 @@
         <Parameter Name="reader" Type="System.Xml.XmlReader" />
       </Parameters>
       <Docs>
-        <param name="reader">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="reader">An <see cref="T:System.Xml.XmlReader" /> to read the security token.</param>
+        <summary>Determines whether this serializer can read the security token pointed at by the specified XML reader. Called by the base class.</summary>
+        <returns>
+          <see langword="true" /> when the security token can be read; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the CanReadTokenCore method. The <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanReadToken%28System.Xml.XmlReader%29> method calls the CanReadTokenCore method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="reader" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="CanWriteKeyIdentifier">
@@ -187,10 +254,20 @@
         <Parameter Name="keyIdentifier" Type="System.IdentityModel.Tokens.SecurityKeyIdentifier" />
       </Parameters>
       <Docs>
-        <param name="keyIdentifier">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="keyIdentifier">A <see cref="T:System.IdentityModel.Tokens.SecurityKeyIdentifier" /> that represents the key identifier to write.</param>
+        <summary>Determines whether this serializer can write the specified key identifier.</summary>
+        <returns>
+          <see langword="true" /> when this serializer can write the specified key identifier; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanWriteKeyIdentifierCore%28System.IdentityModel.Tokens.SecurityKeyIdentifier%29> method. The CanWriteKeyIdentifier method calls the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanWriteKeyIdentifierCore%28System.IdentityModel.Tokens.SecurityKeyIdentifier%29> method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="keyIdentifier" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="CanWriteKeyIdentifierClause">
@@ -210,10 +287,20 @@
         <Parameter Name="keyIdentifierClause" Type="System.IdentityModel.Tokens.SecurityKeyIdentifierClause" />
       </Parameters>
       <Docs>
-        <param name="keyIdentifierClause">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="keyIdentifierClause">A <see cref="T:System.IdentityModel.Tokens.SecurityKeyIdentifierClause" /> that represents the key identifier clause to write.</param>
+        <summary>Determines whether this serializer can write the specified key identifier clause.</summary>
+        <returns>
+          <see langword="true" /> when this serializer can write the specified key identifier clause; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanWriteKeyIdentifierClauseCore%28System.IdentityModel.Tokens.SecurityKeyIdentifierClause%29> method. The CanWriteKeyIdentifierClause method calls the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanWriteKeyIdentifierClauseCore%28System.IdentityModel.Tokens.SecurityKeyIdentifierClause%29> method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="keyIdentifierClause" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="CanWriteKeyIdentifierClauseCore">
@@ -233,10 +320,20 @@
         <Parameter Name="keyIdentifierClause" Type="System.IdentityModel.Tokens.SecurityKeyIdentifierClause" />
       </Parameters>
       <Docs>
-        <param name="keyIdentifierClause">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="keyIdentifierClause">A <see cref="T:System.IdentityModel.Tokens.SecurityKeyIdentifierClause" /> that represents the key identifier clause to write.</param>
+        <summary>Determines whether this serializer can write the specified key identifier clause. Called by the base class.</summary>
+        <returns>
+          <see langword="true" /> when this serializer can write the specified key identifier clause; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the CanWriteKeyIdentifierClauseCore method. The <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanWriteKeyIdentifierClause%28System.IdentityModel.Tokens.SecurityKeyIdentifierClause%29> method calls the CanWriteKeyIdentifierClauseCore method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="keyIdentifierClause" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="CanWriteKeyIdentifierCore">
@@ -256,10 +353,20 @@
         <Parameter Name="keyIdentifier" Type="System.IdentityModel.Tokens.SecurityKeyIdentifier" />
       </Parameters>
       <Docs>
-        <param name="keyIdentifier">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="keyIdentifier">A <see cref="T:System.IdentityModel.Tokens.SecurityKeyIdentifier" /> that represents the key identifier to write.</param>
+        <summary>Determines whether this serializer can write the specified key identifier. Called by the base class.</summary>
+        <returns>
+          <see langword="true" /> when this serializer can write the specified key identifier; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the CanWriteKeyIdentifierCore method. The <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanWriteKeyIdentifier%28System.IdentityModel.Tokens.SecurityKeyIdentifier%29> method calls the CanWriteKeyIdentifierCore method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="keyIdentifier" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="CanWriteToken">
@@ -279,10 +386,20 @@
         <Parameter Name="token" Type="System.IdentityModel.Tokens.SecurityToken" />
       </Parameters>
       <Docs>
-        <param name="token">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="token">The <see cref="T:System.IdentityModel.Tokens.SecurityToken" /> to convert to XML.</param>
+        <summary>Determines whether this serializer can write the specified security token to XML.</summary>
+        <returns>
+          <see langword="true" /> when the security token can be written; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanWriteTokenCore%28System.IdentityModel.Tokens.SecurityToken%29> method. The CanWriteToken method calls the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanWriteTokenCore%28System.IdentityModel.Tokens.SecurityToken%29> method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="token" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="CanWriteTokenCore">
@@ -302,10 +419,20 @@
         <Parameter Name="token" Type="System.IdentityModel.Tokens.SecurityToken" />
       </Parameters>
       <Docs>
-        <param name="token">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="token">The <see cref="T:System.IdentityModel.Tokens.SecurityToken" /> to convert to XML.</param>
+        <summary>Determines whether this serializer can write the specified security token to XML. Called by the base class.</summary>
+        <returns>
+          <see langword="true" /> when the security token can be written; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the CanWriteTokenCore method. The <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.CanWriteToken%28System.IdentityModel.Tokens.SecurityToken%29> method calls the CanWriteTokenCore method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="token" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadKeyIdentifier">
@@ -325,10 +452,19 @@
         <Parameter Name="reader" Type="System.Xml.XmlReader" />
       </Parameters>
       <Docs>
-        <param name="reader">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="reader">An <see cref="T:System.Xml.XmlReader" /> to read the key identifier.</param>
+        <summary>Reads the key identifier using specified XML reader.</summary>
+        <returns>A <see cref="T:System.IdentityModel.Tokens.SecurityKeyIdentifier" /> that represents the key identifier that is read.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.ReadKeyIdentifierCore%28System.Xml.XmlReader%29> method. The ReadKeyIdentifier method calls the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.ReadKeyIdentifierCore%28System.Xml.XmlReader%29> method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="reader" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadKeyIdentifierClause">
@@ -348,10 +484,19 @@
         <Parameter Name="reader" Type="System.Xml.XmlReader" />
       </Parameters>
       <Docs>
-        <param name="reader">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="reader">An <see cref="T:System.Xml.XmlReader" /> to read the key identifier.</param>
+        <summary>Reads the key identifier clause using specified XML reader.</summary>
+        <returns>A <see cref="T:System.IdentityModel.Tokens.SecurityKeyIdentifierClause" /> that represents the key identifier that is read.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.ReadKeyIdentifierClauseCore%28System.Xml.XmlReader%29> method. The ReadKeyIdentifierClause method calls the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.ReadKeyIdentifierClauseCore%28System.Xml.XmlReader%29> method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="reader" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadKeyIdentifierClauseCore">
@@ -371,10 +516,19 @@
         <Parameter Name="reader" Type="System.Xml.XmlReader" />
       </Parameters>
       <Docs>
-        <param name="reader">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="reader">An <see cref="T:System.Xml.XmlReader" /> to read the key identifier.</param>
+        <summary>Reads the key identifier clause using specified XML reader. Called by the base class.</summary>
+        <returns>A <see cref="T:System.IdentityModel.Tokens.SecurityKeyIdentifierClause" /> that represents the key identifier that is read.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the ReadKeyIdentifierClauseCore method. The <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.ReadKeyIdentifierClause%28System.Xml.XmlReader%29> method calls the ReadKeyIdentifierClauseCore method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="reader" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadKeyIdentifierCore">
@@ -394,10 +548,19 @@
         <Parameter Name="reader" Type="System.Xml.XmlReader" />
       </Parameters>
       <Docs>
-        <param name="reader">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="reader">An <see cref="T:System.Xml.XmlReader" /> to read the key identifier.</param>
+        <summary>Reads the key identifier clause using specified XML reader. Called by the base class.</summary>
+        <returns>A <see cref="T:System.IdentityModel.Tokens.SecurityKeyIdentifier" /> that represents the key identifier that is read.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the ReadKeyIdentifierCore method. The <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.ReadKeyIdentifier%28System.Xml.XmlReader%29> method calls the ReadKeyIdentifierCore method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="reader" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadToken">
@@ -418,11 +581,24 @@
         <Parameter Name="tokenResolver" Type="System.IdentityModel.Selectors.SecurityTokenResolver" />
       </Parameters>
       <Docs>
-        <param name="reader">To be added.</param>
-        <param name="tokenResolver">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="reader">An <see cref="T:System.Xml.XmlReader" /> to read the security token.</param>
+        <param name="tokenResolver">A <see cref="T:System.IdentityModel.Selectors.SecurityTokenResolver" /> that determines the security token type.</param>
+        <summary>Reads the security token pointed at by the specified XML reader.</summary>
+        <returns>A <see cref="T:System.IdentityModel.Tokens.SecurityToken" /> that represents the security token that is read.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.ReadTokenCore%28System.Xml.XmlReader%2CSystem.IdentityModel.Selectors.SecurityTokenResolver%29> method. The ReadToken method calls the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.ReadTokenCore%28System.Xml.XmlReader%2CSystem.IdentityModel.Selectors.SecurityTokenResolver%29> method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="reader" /> is <see langword="null" />.  
+  
+ -or-  
+  
+ <paramref name="tokenResolver" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="ReadTokenCore">
@@ -443,11 +619,24 @@
         <Parameter Name="tokenResolver" Type="System.IdentityModel.Selectors.SecurityTokenResolver" />
       </Parameters>
       <Docs>
-        <param name="reader">To be added.</param>
-        <param name="tokenResolver">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="reader">An <see cref="T:System.Xml.XmlReader" /> to read the security token.</param>
+        <param name="tokenResolver">A <see cref="T:System.IdentityModel.Selectors.SecurityTokenResolver" /> that determines the security token type.</param>
+        <summary>Reads the security token pointed at by the specified XML reader. Called by the base class.</summary>
+        <returns>A <see cref="T:System.IdentityModel.Tokens.SecurityToken" /> that represents the security token that is read.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the ReadTokenCore method. The <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.ReadToken%28System.Xml.XmlReader%2CSystem.IdentityModel.Selectors.SecurityTokenResolver%29> method calls the ReadTokenCore method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="reader" /> is <see langword="null" />.  
+  
+ -or-  
+  
+ <paramref name="tokenResolver" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteKeyIdentifier">
@@ -468,10 +657,23 @@
         <Parameter Name="keyIdentifier" Type="System.IdentityModel.Tokens.SecurityKeyIdentifier" />
       </Parameters>
       <Docs>
-        <param name="writer">To be added.</param>
-        <param name="keyIdentifier">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="writer">A <see cref="T:System.Xml.XmlWriter" /> to write the key identifier.</param>
+        <param name="keyIdentifier">A <see cref="T:System.IdentityModel.Tokens.SecurityKeyIdentifier" /> that represents the key identifier to write.</param>
+        <summary>Writes the specified key identifier using the specified XML writer.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.WriteKeyIdentifierCore%28System.Xml.XmlWriter%2CSystem.IdentityModel.Tokens.SecurityKeyIdentifier%29> method. The WriteKeyIdentifier method calls the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.WriteKeyIdentifierCore%28System.Xml.XmlWriter%2CSystem.IdentityModel.Tokens.SecurityKeyIdentifier%29> method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="keyIdentifier" /> is <see langword="null" />.  
+  
+ -or-  
+  
+ <paramref name="writer" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteKeyIdentifierClause">
@@ -492,10 +694,23 @@
         <Parameter Name="keyIdentifierClause" Type="System.IdentityModel.Tokens.SecurityKeyIdentifierClause" />
       </Parameters>
       <Docs>
-        <param name="writer">To be added.</param>
-        <param name="keyIdentifierClause">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="writer">A <see cref="T:System.Xml.XmlWriter" /> to write the key identifier clause.</param>
+        <param name="keyIdentifierClause">A <see cref="T:System.IdentityModel.Tokens.SecurityKeyIdentifierClause" /> that represents the key identifier clause to write.</param>
+        <summary>Writes the specified key identifier clause using the specified XML writer.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.WriteKeyIdentifierClauseCore%28System.Xml.XmlWriter%2CSystem.IdentityModel.Tokens.SecurityKeyIdentifierClause%29> method. The WriteKeyIdentifierClause method calls the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.WriteKeyIdentifierClauseCore%28System.Xml.XmlWriter%2CSystem.IdentityModel.Tokens.SecurityKeyIdentifierClause%29> method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="keyIdentifierClause" /> is <see langword="null" />.  
+  
+ -or-  
+  
+ <paramref name="writer" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteKeyIdentifierClauseCore">
@@ -516,10 +731,23 @@
         <Parameter Name="keyIdentifierClause" Type="System.IdentityModel.Tokens.SecurityKeyIdentifierClause" />
       </Parameters>
       <Docs>
-        <param name="writer">To be added.</param>
-        <param name="keyIdentifierClause">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="writer">A <see cref="T:System.Xml.XmlWriter" /> to write the key identifier clause.</param>
+        <param name="keyIdentifierClause">A <see cref="T:System.IdentityModel.Tokens.SecurityKeyIdentifierClause" /> that represents the key identifier clause to write.</param>
+        <summary>Writes the specified key identifier clause using the specified XML writer. Called by the base class.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the WriteKeyIdentifierClauseCore method. The <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.WriteKeyIdentifierClause%28System.Xml.XmlWriter%2CSystem.IdentityModel.Tokens.SecurityKeyIdentifierClause%29> method calls the WriteKeyIdentifierClauseCore method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="keyIdentifierClause" /> is <see langword="null" />.  
+  
+ -or-  
+  
+ <paramref name="writer" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteKeyIdentifierCore">
@@ -540,10 +768,23 @@
         <Parameter Name="keyIdentifier" Type="System.IdentityModel.Tokens.SecurityKeyIdentifier" />
       </Parameters>
       <Docs>
-        <param name="writer">To be added.</param>
-        <param name="keyIdentifier">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="writer">A <see cref="T:System.Xml.XmlWriter" /> to write the key identifier.</param>
+        <param name="keyIdentifier">A <see cref="T:System.IdentityModel.Tokens.SecurityKeyIdentifier" /> that represents the key identifier to write.</param>
+        <summary>Writes the specified key identifier using the specified XML writer. Called by the base class.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the WriteKeyIdentifierCore method. The <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.WriteKeyIdentifier%28System.Xml.XmlWriter%2CSystem.IdentityModel.Tokens.SecurityKeyIdentifier%29> method calls the WriteKeyIdentifierCore method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="keyIdentifier" /> is <see langword="null" />.  
+  
+ -or-  
+  
+ <paramref name="writer" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteToken">
@@ -564,10 +805,23 @@
         <Parameter Name="token" Type="System.IdentityModel.Tokens.SecurityToken" />
       </Parameters>
       <Docs>
-        <param name="writer">To be added.</param>
-        <param name="token">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="writer">A <see cref="T:System.Xml.XmlWriter" /> to write the security token.</param>
+        <param name="token">A <see cref="T:System.IdentityModel.Tokens.SecurityToken" /> that represents the security token to write.</param>
+        <summary>Writes the specified security token using the specified XML writer.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.WriteTokenCore%28System.Xml.XmlWriter%2CSystem.IdentityModel.Tokens.SecurityToken%29> method. The WriteToken method calls the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.WriteTokenCore%28System.Xml.XmlWriter%2CSystem.IdentityModel.Tokens.SecurityToken%29> method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="token" /> is <see langword="null" />.  
+  
+ -or-  
+  
+ <paramref name="writer" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="WriteTokenCore">
@@ -588,10 +842,23 @@
         <Parameter Name="token" Type="System.IdentityModel.Tokens.SecurityToken" />
       </Parameters>
       <Docs>
-        <param name="writer">To be added.</param>
-        <param name="token">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="writer">A <see cref="T:System.Xml.XmlWriter" /> to write the security token.</param>
+        <param name="token">A <see cref="T:System.IdentityModel.Tokens.SecurityToken" /> that represents the security token to write.</param>
+        <summary>Writes the specified security token using the specified XML writer. Called by the base class.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Classes that derive from the <xref:System.IdentityModel.Selectors.SecurityTokenSerializer> class must override the WriteTokenCore method. The <xref:System.IdentityModel.Selectors.SecurityTokenSerializer.WriteToken%28System.Xml.XmlWriter%2CSystem.IdentityModel.Tokens.SecurityToken%29> method calls the WriteTokenCore method.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="token" /> is <see langword="null" />.  
+  
+ -or-  
+  
+ <paramref name="writer" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
   </Members>

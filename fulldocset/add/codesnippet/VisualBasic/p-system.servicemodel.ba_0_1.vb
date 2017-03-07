@@ -1,2 +1,1 @@
-            Dim sas As SecurityAlgorithmSuite = msgSecurity.AlgorithmSuite
-            Dim credType As BasicHttpMessageCredentialType = msgSecurity.ClientCredentialType
+            Dim secMode As BasicHttpSecurityMode = security.Mode

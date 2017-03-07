@@ -1,146 +1,66 @@
 using System;
-using System.Xml;
 using System.Security.Cryptography;
-using System.Security.Cryptography.Xml;
+using System.Security.Cryptography.X509Certificates;
+using System.IO;
 
-class Program
+public class X509store2
 {
-    static void Main(string[] args)
-    {
+	public static void Main (string[] args)
+	{
+		//Create new X509 store called teststore from the local certificate store.
+		X509Store store = new X509Store ("teststore", StoreLocation.CurrentUser);
+		store.Open (OpenFlags.ReadWrite);
+		X509Certificate2 certificate = new X509Certificate2 ();
 
-        // Create an XmlDocument object.
-        XmlDocument xmlDoc = new XmlDocument();
+		//Create certificates from certificate files.
+		//You must put in a valid path to three certificates in the following constructors.
+		X509Certificate2 certificate1 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
+		X509Certificate2 certificate2 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
+		X509Certificate2 certificate5 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
 
-        // Load an XML file into the XmlDocument object.
-        try
-        {
-            xmlDoc.PreserveWhitespace = true;
-            xmlDoc.Load("test.xml");
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
+		//Create a collection and add two of the certificates.
+		X509Certificate2Collection collection = new X509Certificate2Collection ();
+		collection.Add (certificate2);
+		collection.Add (certificate5);
 
-        // Create a new TripleDES key. 
-        TripleDESCryptoServiceProvider tDESkey = new TripleDESCryptoServiceProvider();
+		//Add certificates to the store.
+		store.Add (certificate1);
+		store.AddRange (collection);
 
+		X509Certificate2Collection storecollection = (X509Certificate2Collection)store.Certificates;
+		Console.WriteLine ("Store name: {0}", store.Name);
+		Console.WriteLine ("Store location: {0}", store.Location);
+		foreach (X509Certificate2 x509 in storecollection)
+		{
+			Console.WriteLine("certificate name: {0}",x509.Subject);
+		}
 
-        try
-        {
-            // Encrypt the "creditcard" element.
-            Encrypt(xmlDoc, "creditcard", tDESkey);
+		//Remove a certificate.
+		store.Remove (certificate1);
+		X509Certificate2Collection storecollection2 = (X509Certificate2Collection)store.Certificates;
+		Console.WriteLine ("{1}Store name: {0}", store.Name, Environment.NewLine);
+		foreach (X509Certificate2 x509 in storecollection2)
+		{
+			Console.WriteLine ("certificate name: {0}", x509.Subject);
+		}
 
-            // Display the encrypted XML to the console.
-            Console.WriteLine("Encrypted XML:");
-            Console.WriteLine();
-            Console.WriteLine(xmlDoc.OuterXml);
+		//Remove a range of certificates.
+		store.RemoveRange (collection);
+		X509Certificate2Collection storecollection3 = (X509Certificate2Collection)store.Certificates;
+		Console.WriteLine ("{1}Store name: {0}", store.Name, Environment.NewLine);
+		if (storecollection3.Count == 0)
+		{
+			Console.WriteLine ("Store contains no certificates.");
+		}
+		else
+		{
+			foreach (X509Certificate2 x509 in storecollection3)
+			{
+				Console.WriteLine ("certificate name: {0}", x509.Subject);
+			}
+		}
 
-            // Decrypt the "creditcard" element.
-            Decrypt(xmlDoc, tDESkey);
-
-            // Display the encrypted XML to the console.
-            Console.WriteLine();
-            Console.WriteLine("Decrypted XML:");
-            Console.WriteLine();
-            Console.WriteLine(xmlDoc.OuterXml);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-        finally
-        {
-            // Clear the TripleDES key.
-            tDESkey.Clear();
-        }
-
-    }
-
-    public static void Encrypt(XmlDocument Doc, string ElementToEncrypt, TripleDESCryptoServiceProvider Alg)
-    {
-
-        ////////////////////////////////////////////////
-        // Find the specified element in the XmlDocument
-        // object and create a new XmlElemnt object.
-        ////////////////////////////////////////////////
-
-        XmlElement elementToEncrypt = Doc.GetElementsByTagName(ElementToEncrypt)[0] as XmlElement;
-
-        // Throw an XmlException if the element was not found.
-        if (elementToEncrypt == null)
-        {
-            throw new XmlException("The specified element was not found");
-
-        }
-
-        //////////////////////////////////////////////////
-        // Create a new instance of the EncryptedXml class 
-        // and use it to encrypt the XmlElement with the 
-        // symmetric key.
-        //////////////////////////////////////////////////
-
-        EncryptedXml eXml = new EncryptedXml();
-
-        byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, Alg, false);
-
-        ////////////////////////////////////////////////
-        // Construct an EncryptedData object and populate
-        // it with the desired encryption information.
-        ////////////////////////////////////////////////
-
-
-        EncryptedData edElement = new EncryptedData();
-        
-        edElement.Type = EncryptedXml.XmlEncElementUrl;
-
-  
-        // Create an EncryptionMethod element so that the 
-        // receiver knows which algorithm to use for decryption.
-        // Determine what kind of algorithm is being used and
-        // supply the appropriate URL to the EncryptionMethod element.
-
-        edElement.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncTripleDESUrl);
-
-        // Add the encrypted element data to the 
-        // EncryptedData object.
-        edElement.CipherData.CipherValue = encryptedElement;
-
-        ////////////////////////////////////////////////////
-        // Replace the element from the original XmlDocument
-        // object with the EncryptedData element.
-        ////////////////////////////////////////////////////
-
-        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, false);
-
-    }
-
-    public static void Decrypt(XmlDocument Doc, SymmetricAlgorithm Alg)
-    {
-
-        // Find the EncryptedData element in the XmlDocument.
-        XmlElement encryptedElement = Doc.GetElementsByTagName("EncryptedData")[0] as XmlElement;
-
-        // If the EncryptedData element was not found, throw an exception.
-        if (encryptedElement == null)
-        {
-            throw new XmlException("The EncryptedData element was not found.");
-        }
-
-        // Create an EncryptedData object and populate it.
-        EncryptedData edElement = new EncryptedData();
-        edElement.LoadXml(encryptedElement);
-
-        // Create a new EncryptedXml object.
-        EncryptedXml exml = new EncryptedXml();
-
-        // Decrypt the element using the symmetric key.
-        byte[] rgbOutput = exml.DecryptData(edElement, Alg);
-
-        // Replace the encryptedData element with the plaintext XML element.
-        exml.ReplaceData(encryptedElement, rgbOutput);
-
-    }
-
-
+		//Close the store.
+		store.Close ();
+	}	
 }

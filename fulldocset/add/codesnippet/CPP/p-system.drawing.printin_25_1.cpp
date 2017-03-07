@@ -1,24 +1,42 @@
-private:
-   // Specifies what happens when the user clicks the Button.
-   void printButton_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
+   void Printing()
    {
       try
       {
-         pd->Print();
+         
+         /* This assumes that a variable of type string, named filePath,
+                 has been set to the path of the file to print. */
+         streamToPrint = gcnew StreamReader( filePath );
+         try
+         {
+            printFont = gcnew System::Drawing::Font( "Arial",10 );
+            PrintDocument^ pd = gcnew PrintDocument;
+            
+            /* This assumes that a method, named pd_PrintPage, has been
+                      defined. pd_PrintPage handles the PrintPage event. */
+            pd->PrintPage += gcnew PrintPageEventHandler( this, &Sample::pd_PrintPage );
+            
+            /* This assumes that a variable of type string, named 
+                      printer, has been set to the printer's name. */
+            pd->PrinterSettings->PrinterName = printer;
+            
+            // Set the left and right margins to 1 inch.
+            pd->DefaultPageSettings->Margins->Left = 100;
+            pd->DefaultPageSettings->Margins->Right = 100;
+            
+            // Set the top and bottom margins to 1.5 inches.
+            pd->DefaultPageSettings->Margins->Top = 150;
+            pd->DefaultPageSettings->Margins->Bottom = 150;
+            pd->Print();
+         }
+         finally
+         {
+            streamToPrint->Close();
+         }
+
       }
       catch ( Exception^ ex ) 
       {
-         MessageBox::Show( "An error occurred while printing", ex->ToString() );
+         MessageBox::Show( String::Concat( "An error occurred printing the file - ", ex->Message ) );
       }
-   }
 
-   // Specifies what happens when the PrintPage event is raised.
-   void pd_PrintPage( Object^ /*sender*/, PrintPageEventArgs^ ev )
-   {
-      // Draw a picture.
-      ev->Graphics->DrawImage( Image::FromFile( "C:\\My Folder\\MyFile.bmp" ),
-         ev->Graphics->VisibleClipBounds );
-      
-      // Indicate that this is the last page to print.
-      ev->HasMorePages = false;
    }

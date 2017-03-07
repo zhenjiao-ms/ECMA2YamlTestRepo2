@@ -1,290 +1,314 @@
+// Command-line argument examples:
+//   <exe_name>
+//      - Displays Visual Basic, C#, and JScript compiler settings.
+//   <exe_name> Language CSharp
+//      - Displays the compiler settings for C#.
+//   <exe_name> All
+//      - Displays settings for all configured compilers.
+//   <exe_name> Config Pascal
+//      - Displays settings for configured Pascal language provider,
+//        if one exists.
+//   <exe_name> Extension .vb
+//      - Displays settings for the compiler associated with the .vb
+//        file extension.
+
 using System;
+using System.Globalization;
 using System.CodeDom;
 using System.CodeDom.Compiler;
-using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
 using Microsoft.CSharp;
 using Microsoft.VisualBasic;
-using Microsoft.JScript;
 
-// This example demonstrates building a Hello World program graph 
-// using System.CodeDom elements. It calls code generator and
-// code compiler methods to build the program using CSharp, VB, or
-// JScript.  A Windows Forms interface is included. Note: Code
-// must be compiled and linked with the Microsoft.JScript assembly. 
-namespace CodeDOMExample
+namespace CodeDomCompilerInfoSample
 {
-    class CodeDomExample
+    class CompilerInfoSample
     {
-        // Build a Hello World program graph using 
-        // System.CodeDom types.
-        public static CodeCompileUnit BuildHelloWorldGraph()
+        [STAThread]
+        static void Main(string[] args)
         {
-            // Create a new CodeCompileUnit to contain 
-            // the program graph.
-            CodeCompileUnit compileUnit = new CodeCompileUnit();
+            String queryCommand = "";
+            String queryArg = "";
+            int iNumArguments = args.Length;
 
-            // Declare a new namespace called Samples.
-            CodeNamespace samples = new CodeNamespace("Samples");
-            // Add the new namespace to the compile unit.
-            compileUnit.Namespaces.Add(samples);
+            // Get input command-line arguments.
+            if (iNumArguments > 0)
+            {
+                queryCommand = args[0].ToUpper(CultureInfo.InvariantCulture);
+   
+                if (iNumArguments > 1)
+                {
+                    queryArg = args[1];
+                }
+            }
 
-            // Add the new namespace import for the System namespace.
-            samples.Imports.Add(new CodeNamespaceImport("System"));
+            // Determine which method to call.
 
-            // Declare a new type called Class1.
-            CodeTypeDeclaration class1 = new CodeTypeDeclaration("Class1");
-            // Add the new type to the namespace type collection.
-            samples.Types.Add(class1);
+            Console.WriteLine();
+            switch(queryCommand)
+            {
+                case ("LANGUAGE"):
+                    // Display compiler information for input language.
+                    DisplayCompilerInfoForLanguage(queryArg);
+                    break;
 
-            // Declare a new code entry point method.
-            CodeEntryPointMethod start = new CodeEntryPointMethod();
+                case ("EXTENSION"):
+                    // Display compiler information for input file extension.
+                    DisplayCompilerInfoUsingExtension(queryArg);
+                    break;
 
-            // Create a type reference for the System.Console class.
-            CodeTypeReferenceExpression csSystemConsoleType = new CodeTypeReferenceExpression("System.Console");
+                case ("CONFIG"):
+                    // Display settings for the configured language provider.
+                    DisplayCompilerInfoForConfigLanguage(queryArg);
+                    break;
 
-            // Build a Console.WriteLine statement.
-            CodeMethodInvokeExpression cs1 = new CodeMethodInvokeExpression(
-                csSystemConsoleType, "WriteLine",
-                new CodePrimitiveExpression("Hello World!"));
+                case ("ALL"):
+                    // Display compiler information for all configured 
+                    // language providers.
+                    DisplayAllCompilerInfo();
+                    break;
+  
+                default: 
+                    // There was no command-line argument, or the 
+                    // command-line argument was not recognized.
+                    // Display the C#, Visual Basic and JScript 
+                    // compiler information.
+   
+                    DisplayCSharpCompilerInfo();
+                    DisplayVBCompilerInfo();
+                    DisplayJScriptCompilerInfo();
+                    break;
+            }
 
-            // Add the WriteLine call to the statement collection.
-            start.Statements.Add(cs1);
+        }
+      
+        static void DisplayCSharpCompilerInfo()
+        {
+            // Get the provider for Microsoft.CSharp
+            CodeDomProvider provider = CodeDomProvider.CreateProvider("CSharp");
 
-            // Build another Console.WriteLine statement.
-            CodeMethodInvokeExpression cs2 = new CodeMethodInvokeExpression(
-                csSystemConsoleType, "WriteLine",
-                new CodePrimitiveExpression("Press the Enter key to continue."));
+            // Display the C# language provider information.
+            Console.WriteLine("CSharp provider is {0}", 
+                provider.ToString());
+            Console.WriteLine("  Provider hash code:     {0}", 
+                provider.GetHashCode().ToString());
+            Console.WriteLine("  Default file extension: {0}", 
+                provider.FileExtension);
 
-            // Add the WriteLine call to the statement collection.
-            start.Statements.Add(cs2);
-
-            // Build a call to System.Console.ReadLine.
-            CodeMethodInvokeExpression csReadLine = new CodeMethodInvokeExpression(
-                csSystemConsoleType, "ReadLine");
-
-            // Add the ReadLine statement.
-            start.Statements.Add(csReadLine);
-
-            // Add the code entry point method to
-            // the Members collection of the type.
-            class1.Members.Add(start);
-
-            return compileUnit;
+            Console.WriteLine();
         }
 
-        public static void GenerateCode(CodeDomProvider provider,
-            CodeCompileUnit compileunit)
+        static void DisplayVBCompilerInfo()
         {
-            // Build the source file name with the appropriate
-            // language extension.
-            String sourceFile;
-            if (provider.FileExtension[0] == '.')
-            {
-                sourceFile = "TestGraph" + provider.FileExtension;
-            }
-            else
-            {
-                sourceFile = "TestGraph." + provider.FileExtension;
-            }
+            // Get the provider for Microsoft.VisualBasic
+            CodeDomProvider provider = CodeDomProvider.CreateProvider("VisualBasic");
 
-            // Create an IndentedTextWriter, constructed with
-            // a StreamWriter to the source file.
-            IndentedTextWriter tw = new IndentedTextWriter(new StreamWriter(sourceFile, false), "    ");
-            // Generate source code using the code generator.
-            provider.GenerateCodeFromCompileUnit(compileunit, tw, new CodeGeneratorOptions());
-            // Close the output file.
-            tw.Close();
+            // Display the Visual Basic language provider information.
+            Console.WriteLine("Visual Basic provider is {0}", 
+                provider.ToString());
+            Console.WriteLine("  Provider hash code:     {0}", 
+                provider.GetHashCode().ToString());
+            Console.WriteLine("  Default file extension: {0}", 
+                provider.FileExtension);
+
+            Console.WriteLine();
         }
 
-        public static CompilerResults CompileCode(CodeDomProvider provider,
-                                                  String sourceFile,
-                                                  String exeFile)
+        static void DisplayJScriptCompilerInfo()
         {
-            // Configure a CompilerParameters that links System.dll
-            // and produces the specified executable file.
-            String[] referenceAssemblies = { "System.dll" };
-            CompilerParameters cp = new CompilerParameters(referenceAssemblies,
-                                                           exeFile, false);
-            // Generate an executable rather than a DLL file.
-            cp.GenerateExecutable = true;
+            // Get the provider for JScript.
+            CodeDomProvider provider;
 
-            // Invoke compilation.
-            CompilerResults cr = provider.CompileAssemblyFromFile(cp, sourceFile);
-            // Return the results of compilation.
-            return cr;
-        }
-    }
-
-    public class CodeDomExampleForm : System.Windows.Forms.Form
-    {
-        private System.Windows.Forms.Button run_button = new System.Windows.Forms.Button();
-        private System.Windows.Forms.Button compile_button = new System.Windows.Forms.Button();
-        private System.Windows.Forms.Button generate_button = new System.Windows.Forms.Button();
-        private System.Windows.Forms.TextBox textBox1 = new System.Windows.Forms.TextBox();
-        private System.Windows.Forms.ComboBox comboBox1 = new System.Windows.Forms.ComboBox();
-        private System.Windows.Forms.Label label1 = new System.Windows.Forms.Label();
-
-        private void generate_button_Click(object sender, System.EventArgs e)
-        {
-            CodeDomProvider provider = GetCurrentProvider();
-            CodeDomExample.GenerateCode(provider, CodeDomExample.BuildHelloWorldGraph());
-
-            // Build the source file name with the appropriate
-            // language extension.
-            String sourceFile;
-            if (provider.FileExtension[0] == '.')
+            try
             {
-                sourceFile = "TestGraph" + provider.FileExtension;
+                provider = CodeDomProvider.CreateProvider("js");
+
+                // Display the JScript language provider information.
+                Console.WriteLine("JScript language provider is {0}", 
+                    provider.ToString());
+                Console.WriteLine("  Provider hash code:     {0}", 
+                    provider.GetHashCode().ToString());
+                Console.WriteLine("  Default file extension: {0}", 
+                    provider.FileExtension);
+                Console.WriteLine();
             }
-            else
+            catch (System.Configuration.ConfigurationException)
             {
-                sourceFile = "TestGraph." + provider.FileExtension;
-            }
-
-            // Read in the generated source file and
-            // display the source text.
-            StreamReader sr = new StreamReader(sourceFile);
-            textBox1.Text = sr.ReadToEnd();
-            sr.Close();
-        }
-
-        private void compile_button_Click(object sender, System.EventArgs e)
-        {
-            CodeDomProvider provider = GetCurrentProvider();
-
-            // Build the source file name with the appropriate
-            // language extension.
-            String sourceFile;
-            if (provider.FileExtension[0] == '.')
-            {
-                sourceFile = "TestGraph" + provider.FileExtension;
-            }
-            else
-            {
-                sourceFile = "TestGraph." + provider.FileExtension;
-            }
-
-            // Compile the source file into an executable output file.
-            CompilerResults cr = CodeDomExample.CompileCode(provider,
-                                                            sourceFile,
-                                                            "TestGraph.exe");
-
-            if (cr.Errors.Count > 0)
-            {
-                // Display compilation errors.
-                textBox1.Text = "Errors encountered while building " +
-                                sourceFile + " into " + cr.PathToAssembly + ": \r\n\n";
-                foreach (CompilerError ce in cr.Errors)
-                    textBox1.AppendText(ce.ToString() + "\r\n");
-                run_button.Enabled = false;
-            }
-            else
-            {
-                textBox1.Text = "Source " + sourceFile + " built into " +
-                                cr.PathToAssembly + " with no errors.";
-                run_button.Enabled = true;
+                // The JScript language provider was not found.
+                Console.WriteLine("There is no configured JScript language provider.");
             }
         }
 
-        private void run_button_Click(object sender,
-            System.EventArgs e)
+        static void DisplayCompilerInfoUsingExtension(string fileExtension)
         {
-            Process.Start("TestGraph.exe");
-        }
+            if (fileExtension[0] != '.')
+            {
+                fileExtension = "." + fileExtension;
+            }
 
-        private CodeDomProvider GetCurrentProvider()
+            // Get the language associated with the file extension.
+            if (CodeDomProvider.IsDefinedExtension(fileExtension))
+            {
+                CodeDomProvider provider;
+                String language = CodeDomProvider.GetLanguageFromExtension(fileExtension);
+
+                Console.WriteLine("The language \"{0}\" is associated with file extension \"{1}\"", 
+                    language, fileExtension);
+                Console.WriteLine();
+            
+                // Next, check for a corresponding language provider.
+
+                if (CodeDomProvider.IsDefinedLanguage(language))
+                {
+                    provider = CodeDomProvider.CreateProvider(language);
+
+                    // Display information about this language provider.
+
+                    Console.WriteLine("Language provider:  {0}", 
+                        provider.ToString());
+                    Console.WriteLine();
+
+                    // Get the compiler settings for this language.
+
+                    CompilerInfo langCompilerInfo = CodeDomProvider.GetCompilerInfo(language);
+                    CompilerParameters langCompilerConfig = langCompilerInfo.CreateDefaultCompilerParameters();
+
+                    Console.WriteLine("  Compiler options:        {0}", 
+                        langCompilerConfig.CompilerOptions);
+                    Console.WriteLine("  Compiler warning level:  {0}", 
+                        langCompilerConfig.WarningLevel);
+                }
+            }
+            else 
+            {
+                // Tell the user that the language provider was not found.
+                Console.WriteLine("There is no language provider associated with input file extension \"{0}\".", 
+                    fileExtension);
+            }
+        }
+     
+        static void DisplayCompilerInfoForLanguage(string language)
         {
             CodeDomProvider provider;
-            switch ((string)this.comboBox1.SelectedItem)
+
+            // Check for a provider corresponding to the input language.  
+            if (CodeDomProvider.IsDefinedLanguage(language))
             {
-                case "CSharp":
-                    provider = CodeDomProvider.CreateProvider("CSharp");
-                    break;
-                case "Visual Basic":
-                    provider = CodeDomProvider.CreateProvider("VisualBasic");
-                    break;
-                case "JScript":
-                    provider = CodeDomProvider.CreateProvider("JScript");
-                    break;
-                default:
-                    provider = CodeDomProvider.CreateProvider("CSharp");
-                    break;
+                provider = CodeDomProvider.CreateProvider(language);
+
+                // Display information about this language provider.
+
+                Console.WriteLine("Language provider:  {0}", 
+                    provider.ToString());
+                Console.WriteLine();
+                Console.WriteLine("  Default file extension:  {0}", 
+                    provider.FileExtension);
+                Console.WriteLine();
+
+                // Get the compiler settings for this language.
+
+                CompilerInfo langCompilerInfo = CodeDomProvider.GetCompilerInfo(language);
+                CompilerParameters langCompilerConfig = langCompilerInfo.CreateDefaultCompilerParameters();
+            
+                Console.WriteLine("  Compiler options:        {0}", 
+                    langCompilerConfig.CompilerOptions);
+                Console.WriteLine("  Compiler warning level:  {0}", 
+                    langCompilerConfig.WarningLevel);
             }
-            return provider;
+            else
+            {
+                // Tell the user that the language provider was not found.
+                Console.WriteLine("There is no provider configured for input language \"{0}\".", 
+                    language);
+            }
         }
 
-        public CodeDomExampleForm()
+        static void DisplayCompilerInfoForConfigLanguage(string configLanguage)
         {
-            this.SuspendLayout();
-            // Set properties for label1
-            this.label1.Location = new System.Drawing.Point(395, 20);
-            this.label1.Size = new Size(180, 22);
-            this.label1.Text = "Select a programming language:";
-            // Set properties for comboBox1
-            this.comboBox1.Location = new System.Drawing.Point(560, 16);
-            this.comboBox1.Size = new Size(190, 23);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Items.AddRange(new string[] { "CSharp", "Visual Basic", "JScript" });
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Left
-                                    | System.Windows.Forms.AnchorStyles.Right
-                                    | System.Windows.Forms.AnchorStyles.Top;
-            this.comboBox1.SelectedIndex = 0;
-            // Set properties for generate_button. 
-            this.generate_button.Location = new System.Drawing.Point(8, 16);
-            this.generate_button.Name = "generate_button";
-            this.generate_button.Size = new System.Drawing.Size(120, 23);
-            this.generate_button.Text = "Generate Code";
-            this.generate_button.Click += new System.EventHandler(this.generate_button_Click);
-            // Set properties for compile_button.
-            this.compile_button.Location = new System.Drawing.Point(136, 16);
-            this.compile_button.Name = "compile_button";
-            this.compile_button.Size = new System.Drawing.Size(120, 23);
-            this.compile_button.Text = "Compile";
-            this.compile_button.Click += new System.EventHandler(this.compile_button_Click);
-            // Set properties for run_button.
-            this.run_button.Enabled = false;
-            this.run_button.Location = new System.Drawing.Point(264, 16);
-            this.run_button.Name = "run_button";
-            this.run_button.Size = new System.Drawing.Size(120, 23);
-            this.run_button.Text = "Run";
-            this.run_button.Click += new System.EventHandler(this.run_button_Click);
-            // Set properties for textBox1.        
-            this.textBox1.Anchor = (System.Windows.Forms.AnchorStyles.Top
-                                     | System.Windows.Forms.AnchorStyles.Bottom
-                                     | System.Windows.Forms.AnchorStyles.Left
-                                     | System.Windows.Forms.AnchorStyles.Right);
-            this.textBox1.Location = new System.Drawing.Point(8, 48);
-            this.textBox1.Multiline = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(744, 280);
-            this.textBox1.Text = "";
-            // Set properties for the CodeDomExampleForm.
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(768, 340);
-            this.MinimumSize = new System.Drawing.Size(750, 340);
-            this.Controls.AddRange(new System.Windows.Forms.Control[] {this.textBox1, 
-                this.run_button, this.compile_button, this.generate_button,
-                this.comboBox1, this.label1 });
-            this.Name = "CodeDomExampleForm";
-            this.Text = "CodeDom Hello World Example";
-            this.ResumeLayout(false);
+            CompilerInfo info = CodeDomProvider.GetCompilerInfo(configLanguage);
+
+            // Check whether there is a provider configured for this language.
+            if (info.IsCodeDomProviderTypeValid)
+            {
+                // Get a provider instance using the configured type information.
+                CodeDomProvider provider;
+                provider = (CodeDomProvider)Activator.CreateInstance(info.CodeDomProviderType);
+
+                // Display information about this language provider.
+                Console.WriteLine("Language provider:  {0}", 
+                    provider.ToString());
+                Console.WriteLine();
+                Console.WriteLine("  Default file extension:  {0}", 
+                    provider.FileExtension);
+                Console.WriteLine();
+
+                // Get the compiler settings for this language.
+
+                CompilerParameters langCompilerConfig = info.CreateDefaultCompilerParameters();
+            
+                Console.WriteLine("  Compiler options:        {0}", 
+                    langCompilerConfig.CompilerOptions);
+                Console.WriteLine("  Compiler warning level:  {0}", 
+                    langCompilerConfig.WarningLevel);
+            }
+            else
+            {
+                // Tell the user that the language provider was not found.
+                Console.WriteLine("There is no provider configured for input language \"{0}\".", 
+                    configLanguage);
+            }
         }
 
-        protected override void Dispose(bool disposing)
+        static void DisplayAllCompilerInfo()
         {
-            base.Dispose(disposing);
-        }
+            CompilerInfo [] allCompilerInfo = CodeDomProvider.GetAllCompilerInfo();
+            foreach (CompilerInfo info in allCompilerInfo)
+            {
+                String defaultLanguage;
+                String defaultExtension;
 
-        [STAThread]
-        static void Main()
-        {
-            Application.Run(new CodeDomExampleForm());
+                CodeDomProvider provider = info.CreateProvider();
+
+                // Display information about this configured provider.
+
+                Console.WriteLine("Language provider:  {0}", 
+                    provider.ToString());
+                Console.WriteLine();
+         
+                Console.WriteLine("  Supported file extension(s):");
+                foreach(String extension in info.GetExtensions())
+                { 
+                    Console.WriteLine("    {0}", extension);
+                }
+   
+                defaultExtension = provider.FileExtension;
+                if (defaultExtension[0] != '.')
+                {
+                    defaultExtension = "." + defaultExtension;
+                }
+                Console.WriteLine("  Default file extension:  {0}", 
+                    defaultExtension);
+                Console.WriteLine();
+
+                Console.WriteLine("  Supported language(s):");
+                foreach(String language in info.GetLanguages())
+                { 
+                    Console.WriteLine("    {0}", language);
+                }
+
+                defaultLanguage = CodeDomProvider.GetLanguageFromExtension(defaultExtension);
+                Console.WriteLine("  Default language:        {0}",
+                    defaultLanguage);
+                Console.WriteLine();
+
+                // Get the compiler settings for this provider.
+                CompilerParameters langCompilerConfig = info.CreateDefaultCompilerParameters();
+            
+                Console.WriteLine("  Compiler options:        {0}", 
+                    langCompilerConfig.CompilerOptions);
+                Console.WriteLine("  Compiler warning level:  {0}", 
+                    langCompilerConfig.WarningLevel);
+                Console.WriteLine();
+            }
         }
     }
 }

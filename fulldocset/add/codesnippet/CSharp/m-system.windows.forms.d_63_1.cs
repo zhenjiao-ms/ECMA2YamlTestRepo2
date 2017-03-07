@@ -1,23 +1,16 @@
-private void dataGrid1_MouseDown(object sender, MouseEventArgs e){
-   // Use the HitTest method to get a HitTestInfo object.
-   System.Windows.Forms.DataGrid.HitTestInfo hi;   
-   DataGrid grid = (DataGrid) sender;
-   hi=grid.HitTest(e.X, e.Y);
-   // Test if the clicked area was a cell.
-   if(hi.Type==DataGrid.HitTestType.Cell ) {
-      // If it's a cell, get the GridTable and CurrencyManager of the
-      // clicked table.         
-      DataGridTableStyle dgt = dataGrid1.TableStyles[0];     
-      CurrencyManager myCurrencyManager = 
-      (CurrencyManager)this.BindingContext
-      [myDataSet.Tables[dataGrid1.DataMember]];
-      // Get the Rectangle of the clicked cell.
-      Rectangle cellRect;
-      cellRect=grid.GetCellBounds(hi.Row, hi.Column);
-      // Get the clicked DataGridTextBoxColumn.
-      DataGridTextBoxColumn gridCol =
-      (DataGridTextBoxColumn) dgt.GridColumnStyles[hi.Column];
-      // Insert code to edit the value.
-      
-   }
-}
+private void GetMyData3() {
+    // Creates a new data object using a string and the text format.
+    string myString = "My new text string";
+    DataObject myDataObject = new DataObject(DataFormats.Text, myString);
+ 
+    // Prints the string in a text box with autoconvert = false.
+    if(myDataObject.GetData("System.String", false) != null) {
+       // Prints the string in a text box.
+       textBox1.Text = myDataObject.GetData("System.String", false).ToString() + '\n';
+    } else
+       textBox1.Text = "Could not find data of the specified format" + '\n';
+ 
+    // Prints the string in a text box with autoconvert = true.
+    textBox1.Text += myDataObject.GetData("System.String", true).ToString();
+ }
+ 

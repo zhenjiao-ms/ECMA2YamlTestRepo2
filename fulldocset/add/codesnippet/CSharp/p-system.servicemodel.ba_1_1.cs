@@ -1,2 +1,2 @@
-            BasicHttpSecurity security = binding.Security;
-            BasicHttpMessageSecurity msgSecurity = security.Message;
+            SecurityAlgorithmSuite sas = msgSecurity.AlgorithmSuite;
+            BasicHttpMessageCredentialType credType = msgSecurity.ClientCredentialType;

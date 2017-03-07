@@ -1,20 +1,35 @@
-            // This code example demonstrates the syntax for setting
-            // various ToolStripTextBox properties.
-            // 
-            toolStripTextBox1.AcceptsReturn = true;
-            toolStripTextBox1.AcceptsTab = true;
-            toolStripTextBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            "This is line one.",
-            "Second line.",
-            "Another line."});
-            toolStripTextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            toolStripTextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            toolStripTextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            toolStripTextBox1.HideSelection = false;
-            toolStripTextBox1.MaxLength = 32000;
-            toolStripTextBox1.Name = "toolStripTextBox1";
-            toolStripTextBox1.ShortcutsEnabled = false;
-            toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
-            toolStripTextBox1.Text = "STRING1\r\nSTRING2\r\nSTRING3\r\nSTRING4";
-            toolStripTextBox1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+        // This event handler is invoked when the ContextMenuStrip
+        // control's Opening event is raised. It demonstrates
+        // dynamic item addition and dynamic SourceControl 
+        // determination with reuse.
+        void cms_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // Acquire references to the owning control and item.
+            Control c = fruitContextMenuStrip.SourceControl as Control;
+            ToolStripDropDownItem tsi = fruitContextMenuStrip.OwnerItem as ToolStripDropDownItem;
+
+            // Clear the ContextMenuStrip control's Items collection.
+            fruitContextMenuStrip.Items.Clear();
+
+            // Check the source control first.
+            if (c != null)
+            {
+                // Add custom item (Form)
+                fruitContextMenuStrip.Items.Add("Source: " + c.GetType().ToString());
+            }
+            else if (tsi != null)
+            {
+                // Add custom item (ToolStripDropDownButton or ToolStripMenuItem)
+                fruitContextMenuStrip.Items.Add("Source: " + tsi.GetType().ToString());
+            }
+
+            // Populate the ContextMenuStrip control with its default items.
+            fruitContextMenuStrip.Items.Add("-");
+            fruitContextMenuStrip.Items.Add("Apples");
+            fruitContextMenuStrip.Items.Add("Oranges");
+            fruitContextMenuStrip.Items.Add("Pears");
+
+            // Set Cancel to false. 
+            // It is optimized to true based on empty entry.
+            e.Cancel = false;
+        }

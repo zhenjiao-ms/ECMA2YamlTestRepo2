@@ -1,14 +1,21 @@
 private:
-   void GetDataGridTextBox()
+   void validateUserEntry5()
    {
-      
-      // Get the DataGridTextBoxColumn from the DataGrid control.
-      DataGridTextBoxColumn^ myTextBoxColumn;
-      
-      // Assuming the CompanyName column is a DataGridTextBoxColumn.
-      myTextBoxColumn = dynamic_cast<DataGridTextBoxColumn^>(dataGrid1->TableStyles[ 0 ]->GridColumnStyles[ "CompanyName" ]);
-      
-      // Get the DataGridTextBox for the column.
-      DataGridTextBox^ myGridTextBox;
-      myGridTextBox = dynamic_cast<DataGridTextBox^>(myTextBoxColumn->TextBox);
+      // Checks the value of the text.
+      if ( serverName->Text->Length == 0 )
+      {
+         // Initializes the variables to pass to the MessageBox::Show method.
+         String^ message = "You did not enter a server name. Cancel this operation?";
+         String^ caption = "No Server Name Specified";
+         MessageBoxButtons buttons = MessageBoxButtons::YesNo;
+         System::Windows::Forms::DialogResult result;
+
+         // Displays the MessageBox.
+         result = MessageBox::Show( this, message, caption, buttons );
+         if ( result == ::DialogResult::Yes )
+         {
+            // Closes the parent form.
+            this->Close();
+         }
+      }
    }

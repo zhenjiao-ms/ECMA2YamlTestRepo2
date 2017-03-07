@@ -1,24 +1,29 @@
-Imports System
 Imports System.IO
 Imports System.Text
 
-Public Class StrWriter
+Module Module1
 
-    Shared Sub Main()
-        Dim strBuilder As New StringBuilder( _
-            "file path characters are: ")
-        Dim strWriter As New StringWriter(strBuilder)
-
-        strWriter.Write( _
-            Path.InvalidPathChars, 0, Path.InvalidPathChars.Length)
-
-        strWriter.Close()
-
-        ' Since the StringWriter is closed, an exception will 
-        ' be thrown if the Write method is called. However, 
-        ' the StringBuilder can still manipulate the string.
-        strBuilder.Insert(0, "Invalid ")
-        Console.WriteLine(strWriter.ToString())
+    Sub Main()
+        WriteCharacters()
     End Sub
 
-End Class
+    Async Sub WriteCharacters()
+        Dim stringToWrite As StringBuilder = New StringBuilder("Characters in StringBuilder")
+        stringToWrite.AppendLine()
+
+        Using writer As StringWriter = New StringWriter(stringToWrite)
+
+            Dim ue As UnicodeEncoding = New UnicodeEncoding()
+            Dim charsToAdd() = ue.GetChars(ue.GetBytes("and chars to add"))
+            For Each c As Char In charsToAdd
+                Await writer.WriteAsync(c)
+            Next
+            Console.WriteLine(stringToWrite.ToString())
+        End Using
+    End Sub
+End Module
+' The example displays the following output:
+'
+' Characters in StringBuilder
+' and chars to add
+'

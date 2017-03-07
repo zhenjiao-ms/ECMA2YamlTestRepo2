@@ -1,16 +1,11 @@
-    Public Sub CreateMyDateTimePicker()
-        ' Create a new DateTimePicker control and initialize it.
-        Dim dateTimePicker1 As New DateTimePicker()
-        
-        ' Set the MinDate and MaxDate.
-        dateTimePicker1.MinDate = New DateTime(1985, 6, 20)
-        dateTimePicker1.MaxDate = DateTime.Today
-        
-        ' Set the CustomFormat string.
-        dateTimePicker1.CustomFormat = "MMMM dd, yyyy - dddd"
-        dateTimePicker1.Format = DateTimePickerFormat.Custom
-        
-        ' Show the CheckBox and display the control as an up-down control.
-        dateTimePicker1.ShowCheckBox = True
-        dateTimePicker1.ShowUpDown = True
-    End Sub 'CreateMyDateTimePicker
+Private Sub PrintCellRowAndCol()
+    Dim myCell As DataGridCell
+    myCell = DataGrid1.CurrentCell
+    Console.WriteLine(myCell.RowNumber)
+    Console.WriteLine(myCell.ColumnNumber)
+    ' Prints the value of the cell through the DataTable.
+    Dim myTable As DataTable
+    ' Assumes the DataGrid is bound to a DataTable.
+    myTable = CType(DataGrid1.DataSource, DataTable)
+    Console.WriteLine(myTable.Rows(myCell.RowNumber)(myCell.ColumnNumber))
+ End Sub

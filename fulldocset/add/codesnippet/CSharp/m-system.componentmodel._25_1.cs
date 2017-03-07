@@ -1,1 +1,1 @@
-            m_MyServiceContainer.RemoveService(typeof(Control));
+        this.InternalSort(new string[]{"D", "B"});

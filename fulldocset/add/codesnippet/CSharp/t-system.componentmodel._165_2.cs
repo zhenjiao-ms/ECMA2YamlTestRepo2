@@ -1,15 +1,20 @@
-    public static int Main() {
-        // Creates a new form.
-        MyForm myNewForm = new MyForm();
-     
-        // Gets the attributes for the collection.
-        AttributeCollection attributes = TypeDescriptor.GetAttributes(myNewForm);
-     
-        /* Prints the name of the designer by retrieving the DesignerAttribute
-         * from the AttributeCollection. */
-        DesignerAttribute myAttribute = 
-           (DesignerAttribute)attributes[typeof(DesignerAttribute)];
-        Console.WriteLine("The designer for this class is: " + myAttribute.DesignerTypeName);
-      
-        return 0;
-    }
+        // Gets the attributes for the property.
+         AttributeCollection attributes = 
+            TypeDescriptor.GetProperties(this)["MyProperty"].Attributes;
+         
+         // Checks to see if the value of the BindableAttribute is Yes.
+         if(attributes[typeof(BindableAttribute)].Equals(BindableAttribute.Yes)) {
+            // Insert code here.
+         }
+         
+         // This is another way to see whether the property is bindable.
+         BindableAttribute myAttribute = 
+            (BindableAttribute)attributes[typeof(BindableAttribute)];
+         if(myAttribute.Bindable) {
+            // Insert code here.
+         }
+
+	 // Yet another way to see whether the property is bindable.
+	 if (attributes.Contains(BindableAttribute.Yes)) {
+	    // Insert code here.
+	 }

@@ -1,306 +1,212 @@
 Imports System
-Imports System.IO
 Imports System.Xml
 Imports System.Security.Cryptography
 Imports System.Security.Cryptography.Xml
 
 
-Public Class Form1
-    Inherits System.Windows.Forms.Form
 
-    ' Event handler for Run button.
-    Private Sub Button1_Click( _
-        ByVal sender As System.Object, _
-        ByVal e As System.EventArgs) Handles Button1.Click
+Module Program
 
-        tbxOutput.Cursor = Cursors.WaitCursor
-        tbxOutput.Text = ""
+    Sub Main(ByVal args() As String)
 
-        ' Encrypt an XML message
-        EncryptXML(LoadXMLDoc())
+        ' Create an XmlDocument object.
+        Dim xmlDoc As New XmlDocument()
 
-        ' Using XmlDsigBase64Transform resolving a Uri.
-        Dim baseUri As New Uri("http://www.microsoft.com")
-        Dim relativeUri As String = "msdn"
-        Dim absoluteUri As Uri = ResolveUris(baseUri, relativeUri)
+        ' Load an XML file into the XmlDocument object.
+        Try
+            xmlDoc.PreserveWhitespace = True
+            xmlDoc.Load("test.xml")
+        Catch e As Exception
+            Console.WriteLine(e.Message)
+        End Try
 
-        ' Reset the cursor and conclude application.
-        WriteLine(vbCrLf + "This sample completed successfully;" + _
-            " press Exit to continue.")
-        tbxOutput.Cursor = Cursors.Default
+        ' Create a new RSA key.  This key will encrypt a symmetric key,
+        ' which will then be imbedded in the XML document.  
+        Dim rsaKey As New RSACryptoServiceProvider()
+
+
+        Try
+            ' Encrypt the "creditcard" element.
+            Encrypt(xmlDoc, "creditcard", rsaKey, "rsaKey")
+
+            ' Inspect the EncryptedKey element.
+            InspectElement(xmlDoc)
+
+            ' Decrypt the "creditcard" element.
+            Decrypt(xmlDoc, rsaKey, "rsaKey")
+
+        Catch e As Exception
+            Console.WriteLine(e.Message)
+        Finally
+            ' Clear the RSA key.
+            rsaKey.Clear()
+        End Try
+
     End Sub
 
-    ' Encrypt the text in the specified XmlDocument.
-    Private Sub EncryptXML(ByVal xmlDoc As XmlDocument)
-        Dim xmlTransform As New XmlDsigBase64Transform
 
-        ' Ensure the transform is using the proper algorithm.
-        xmlTransform.Algorithm = SignedXml.XmlDsigBase64TransformUrl
-
-        ' Retrieve the XML representation of the current transform.
-        Dim xmlInTransform As XmlElement = xmlTransform.GetXml()
-
-        WriteLine("Xml representation of the current transform: ")
-        WriteLine(xmlInTransform.OuterXml)
-
-        ' Retrieve the valid input types for the current transform.
-        Dim validInTypes() As Type = xmlTransform.InputTypes
-
-        ' Verify the xmlTransform can accept the XMLDocument as an
-        ' input type.
-        For i As Int16 = 0 To validInTypes.Length Step 1
-            If (validInTypes(i).Equals(xmlDoc.GetType())) Then
-                ' Demonstrate loading the entire Xml Document.
-                xmlTransform.LoadInput(xmlDoc)
-
-                ' This transform is created for demonstration purposes.
-                Dim secondTransform As New XmlDsigBase64Transform
-
-                Dim classDescription As String = secondTransform.ToString()
-
-                ' This call does not perform as expected.
-                ' LoadInnerXml is overridden by the XmlDsigBase64Transform
-                ' class, but is stubbed out.
-                secondTransform.LoadInnerXml(xmlDoc.SelectNodes("//."))
-
-                Exit For
-            End If
-        Next
-        Dim validOutTypes() As Type = xmlTransform.OutputTypes
-
-        For i As Int16 = 0 To validOutTypes.Length Step 1
-            If (validOutTypes(i).equals(GetType(System.IO.Stream))) Then
-                Try
-                    Dim streamType As Type = GetType(System.IO.Stream)
-
-                    Dim outputStream As CryptoStream
-                    outputStream = CType( _
-                        xmlTransform.GetOutput(streamType), _
-                        CryptoStream)
-
-
-                    ' Read the CryptoStream into a stream reader.
-                    Dim streamReader As New StreamReader(outputStream)
-
-                    ' Read the stream into a string.
-                    Dim outputMessage As String = streamReader.ReadToEnd()
-
-                    ' Close the streams.
-                    outputStream.Close()
-                    streamReader.Close()
-
-                    ' Display to the console the Xml before and after
-                    ' encryption.
-                    WriteLine("Encoding the following message: " + _
-                        xmlDoc.InnerText)
-                    WriteLine("Message encoded: " + outputMessage)
-
-                Catch ex As Exception
-                    WriteLine("Unexpected exception caught: " + _
-                        ex.ToString())
-
-                End Try
-
-                ' Stop cycling through types, exit operation.
-                Exit For
-            Else
-                Dim outputObject As Object = xmlTransform.GetOutput()
-            End If
-        Next
-    End Sub
-
-    ' Create an XML document with Element and Text nodes.
-    Private Function LoadXMLDoc() As XmlDocument
-        Dim xmlDoc As New XmlDocument
-
-        Dim mainNode As XmlNode = xmlDoc.CreateNode( _
-            XmlNodeType.Element, _
-            "ContosoMessages", _
-            "http://www.contoso.com")
-
-        Dim textNode As XmlNode
-        textNode = xmlDoc.CreateTextNode("Some text to encode.")
-        mainNode.AppendChild(textNode)
-        xmlDoc.AppendChild(mainNode)
-
-        WriteLine("Created the following XML Document for " + _
-            "transformation: ")
-        WriteLine(xmlDoc.InnerXml)
-        Return xmlDoc
-    End Function
-
-    ' Resolve the specified base and relative Uri's .
-    Private Function ResolveUris( _
-        ByVal baseUri As Uri, _
-        ByVal relativeUri As String) As Uri
-
-        Dim xmlResolver As New XmlUrlResolver
-        xmlResolver.Credentials = _
-            System.Net.CredentialCache.DefaultCredentials
-
-        Dim xmlTransform As New XmlDsigBase64Transform
-        xmlTransform.Resolver = xmlResolver
-
-        Dim absoluteUri As Uri = _
-            xmlResolver.ResolveUri(baseUri, relativeUri)
-
-        If Not absoluteUri Is Nothing Then
-            WriteLine( _
-                "Resolved the base Uri and relative Uri to the following:")
-            WriteLine(absoluteUri.ToString())
-        Else
-            WriteLine("Unable to resolve the base Uri and relative Uri")
+    Sub Encrypt(ByVal Doc As XmlDocument, ByVal ElementToEncryptValue As String, ByVal Alg As RSA, ByVal KeyName As String)
+        ' Check the arguments.  
+        If Doc Is Nothing Then
+            Throw New ArgumentNullException("Doc")
         End If
-        Return absoluteUri
-    End Function
-
-    ' Write message and carriage return to the output textbox.
-    Private Sub WriteLine(ByVal message As String)
-        tbxOutput.AppendText(message + vbCrLf)
-    End Sub
-
-    ' Event handler for Exit button.
-    Private Sub Button2_Click( _
-        ByVal sender As System.Object, _
-        ByVal e As System.EventArgs) Handles Button2.Click
-
-        Application.Exit()
-    End Sub
-#Region " Windows Form Designer generated code "
-
-    Public Sub New()
-        MyBase.New()
-
-        'This call is required by the Windows Form Designer.
-        InitializeComponent()
-
-        'Add any initialization after the InitializeComponent() call
-
-    End Sub
-
-    'Form overrides dispose to clean up the component list.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
-        If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
+        If ElementToEncryptValue Is Nothing Then
+            Throw New ArgumentNullException("ElementToEncrypt")
         End If
-        MyBase.Dispose(disposing)
-    End Sub
+        If Alg Is Nothing Then
+            Throw New ArgumentNullException("Alg")
+        End If
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Find the specified element in the XmlDocument
+        ' object and create a new XmlElemnt object.
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        Dim elementToEncrypt As XmlElement = Doc.GetElementsByTagName(ElementToEncryptValue)(0)
 
-    'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+        ' Throw an XmlException if the element was not found.
+        If elementToEncrypt Is Nothing Then
+            Throw New XmlException("The specified element was not found")
+        End If
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents tbxOutput As System.Windows.Forms.RichTextBox
-    <System.Diagnostics.DebuggerStepThrough()> _
-    Private Sub InitializeComponent()
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.tbxOutput = New System.Windows.Forms.RichTextBox
-        Me.Panel2.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.Button1)
-        Me.Panel2.Controls.Add(Me.Button2)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.DockPadding.All = 20
-        Me.Panel2.Location = New System.Drawing.Point(0, 320)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(616, 64)
-        Me.Panel2.TabIndex = 1
-        '
-        'Button1
-        '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button1.Font = New System.Drawing.Font( _
-            "Microsoft Sans Serif", _
-            9.0!, _
-            System.Drawing.FontStyle.Regular, _
-            System.Drawing.GraphicsUnit.Point, _
-            CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(446, 20)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 24)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "&Run"
-        '
-        'Button2
-        '
-        Me.Button2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button2.Font = New System.Drawing.Font( _
-            "Microsoft Sans Serif", _
-            9.0!, _
-            System.Drawing.FontStyle.Regular, _
-            System.Drawing.GraphicsUnit.Point, _
-            CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(521, 20)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 24)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "E&xit"
-        '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.tbxOutput)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.DockPadding.All = 20
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(616, 320)
-        Me.Panel1.TabIndex = 2
-        '
-        'tbxOutput
-        '
-        Me.tbxOutput.AccessibleDescription = _
-            "Displays output from application."
-        Me.tbxOutput.AccessibleName = "Output textbox."
-        Me.tbxOutput.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tbxOutput.Location = New System.Drawing.Point(20, 20)
-        Me.tbxOutput.Name = "tbxOutput"
-        Me.tbxOutput.Size = New System.Drawing.Size(576, 280)
-        Me.tbxOutput.TabIndex = 1
-        Me.tbxOutput.Text = "Click the Run button to run the application."
-        '
-        'Form1
-        '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(6, 15)
-        Me.ClientSize = New System.Drawing.Size(616, 384)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Panel2)
-        Me.Name = "Form1"
-        Me.Text = "XmlDsigBase64Transform"
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
-        Me.ResumeLayout(False)
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Create a new instance of the EncryptedXml class 
+        ' and use it to encrypt the XmlElement with the 
+        ' a new random symmetric key.
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Create a 256 bit Rijndael key.
+        Dim sessionKey As New RijndaelManaged()
+        sessionKey.KeySize = 256
+
+        Dim eXml As New EncryptedXml()
+
+        Dim encryptedElement As Byte() = eXml.EncryptData(elementToEncrypt, sessionKey, False)
+
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Construct an EncryptedData object and populate
+        ' it with the desired encryption information.
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+
+        Dim edElement As New EncryptedData()
+        edElement.Type = EncryptedXml.XmlEncElementUrl
+
+        ' Create an EncryptionMethod element so that the 
+        ' receiver knows which algorithm to use for decryption.
+        edElement.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncAES256Url)
+
+        ' Encrypt the session key and add it to an EncryptedKey element.
+        Dim ek As New EncryptedKey()
+
+        Dim encryptedKey As Byte() = EncryptedXml.EncryptKey(sessionKey.Key, Alg, False)
+
+        ek.CipherData = New CipherData(encryptedKey)
+
+        ek.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncRSA15Url)
+
+        ' Save some more information about the key using
+        ' the EncryptionProperty element.  In this example,
+        ' we will save the value "LibVersion1".  You can save
+        ' anything you want here.
+        ' Create a new "EncryptionProperty" XmlElement object. 
+        Dim element As XmlElement = New XmlDocument().CreateElement("EncryptionProperty", EncryptedXml.XmlEncNamespaceUrl)
+
+        ' Set the value of the EncryptionProperty" XmlElement object.
+        element.InnerText = "LibVersion1"
+
+        ' Create the EncryptionProperty object using the XmlElement object. 
+        Dim encProp As New EncryptionProperty(element)
+
+        ' Add the EncryptionProperty object to the EncryptedData object.
+        edElement.AddProperty(encProp)
+
+        ' Set the KeyInfo element to specify the
+        ' name of the RSA key.
+        ' Create a new KeyInfo element.
+        edElement.KeyInfo = New KeyInfo()
+
+        ' Create a new KeyInfoName element.
+        Dim kin As New KeyInfoName()
+
+        ' Specify a name for the key.
+        kin.Value = KeyName
+
+        ' Add the KeyInfoName element to the 
+        ' EncryptedKey object.
+        ek.KeyInfo.AddClause(kin)
+
+        ' Add the encrypted key to the 
+        ' EncryptedData object.
+        edElement.KeyInfo.AddClause(New KeyInfoEncryptedKey(ek))
+
+        ' Add the encrypted element data to the 
+        ' EncryptedData object.
+        edElement.CipherData.CipherValue = encryptedElement
+
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Replace the element from the original XmlDocument
+        ' object with the EncryptedData element.
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, False)
 
     End Sub
 
-#End Region
-End Class
-'
-' This sample produces the following output:
-'
-' Created the following XML Document for transformation: 
-' <ContosoMessages xmlns="http://www.contoso.com">Some text to encode.
-' </ContosoMessages>
-' Xml representation of the current transform: 
-' <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#base64" xmlns=
-' "http://www.w3.org/2000/09/xmldsig#" />
-' Encoding the following message: Some text to encode.
-' Message encoded: Jmr^
-' Resolved the base Uri and relative Uri to the following:
-' http://www.microsoft.com/msdn
-' 
-' This sample completed successfully; press Exit to continue.
+
+    Sub Decrypt(ByVal Doc As XmlDocument, ByVal Alg As RSA, ByVal KeyName As String)
+        ' Check the arguments.  
+        If Doc Is Nothing Then
+            Throw New ArgumentNullException("Doc")
+        End If
+        If Alg Is Nothing Then
+            Throw New ArgumentNullException("Alg")
+        End If
+        If KeyName Is Nothing Then
+            Throw New ArgumentNullException("KeyName")
+        End If
+        ' Create a new EncryptedXml object.
+        Dim exml As New EncryptedXml(Doc)
+
+        ' Add a key-name mapping.
+        ' This method can only decrypt documents
+        ' that present the specified key name.
+        exml.AddKeyNameMapping(KeyName, Alg)
+
+        ' Decrypt the element.
+        exml.DecryptDocument()
+
+    End Sub
+
+
+    Sub InspectElement(ByVal Doc As XmlDocument)
+        ' Get the EncryptedData element from the XMLDocument object.
+        Dim encryptedData As XmlElement = Doc.GetElementsByTagName("EncryptedData")(0)
+
+        ' Create a new EncryptedData object.
+        Dim encData As New EncryptedData()
+
+        ' Load the XML from the document to
+        ' initialize the EncryptedData object.
+        encData.LoadXml(encryptedData)
+
+        ' Display the properties.
+        ' Most values are Null by default.
+        Console.WriteLine("EncryptedData.CipherData: " + encData.CipherData.GetXml().InnerXml)
+        Console.WriteLine("EncryptedData.Encoding: " + encData.Encoding)
+        Console.WriteLine("EncryptedData.EncryptionMethod: " + encData.EncryptionMethod.GetXml().InnerXml)
+
+        Dim encPropCollection As EncryptionPropertyCollection = encData.EncryptionProperties
+
+        Console.WriteLine("Number of elements in the EncryptionPropertyCollection: " + encPropCollection.Count.ToString())
+        'encPropCollection.
+        Dim encProp As EncryptionProperty
+        For Each encProp In encPropCollection
+            Console.WriteLine("EncryptionProperty.ID: " + encProp.Id)
+            Console.WriteLine("EncryptionProperty.PropertyElement: " + encProp.PropertyElement.InnerXml)
+            Console.WriteLine("EncryptionProperty.Target: " + encProp.Target)
+        Next encProp
+
+
+
+        Console.WriteLine("EncryptedData.Id: " + encData.Id)
+        Console.WriteLine("EncryptedData.KeyInfo: " + encData.KeyInfo.GetXml().InnerXml)
+        Console.WriteLine("EncryptedData.MimeType: " + encData.MimeType)
+
+    End Sub
+End Module

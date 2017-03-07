@@ -1,11 +1,33 @@
-   Private Sub Form1_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
-      ' Determine if text has changed in the textbox by comparing to original text.
-      If textBox1.Text <> strMyOriginalText Then
-         ' Display a MsgBox asking the user to save changes or abort.
-         If MessageBox.Show("Do you want to save changes to your text?", "My Application", MessageBoxButtons.YesNo) = DialogResult.Yes Then
-            ' Cancel the Closing event from closing the form.
-            e.Cancel = True
-         End If ' Call method to save file...
-      End If
-   End Sub 'Form1_Closing
-End Class 'Form1
+    Private openFileDialog1 As OpenFileDialog
+    Private WithEvents button1 As Button
+
+    Private Sub InitializeDialogAndButton() 
+        Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.button1 = New System.Windows.Forms.Button()
+        Me.button1.Location = New System.Drawing.Point(53, 37)
+        Me.button1.AutoSize = True
+        Me.button1.Text = "Show dialog with custom places."
+        Me.button1.UseVisualStyleBackColor = True
+
+        Me.Controls.Add(Me.button1)
+    
+    End Sub
+    
+    
+    Private Sub button1_Click(ByVal sender As Object, ByVal e As EventArgs) _
+        Handles button1.Click
+
+        ' Add Pictures custom place using GUID.
+        openFileDialog1.CustomPlaces.Add("33E28130-4E1E-4676-835A-98395C3BC3BB")
+
+        ' Add Links custom place using GUID
+        openFileDialog1.CustomPlaces.Add(New FileDialogCustomPlace _
+            (New Guid("BFB9D5E0-C6A9-404C-B2B2-AE6DB6AF4968")))
+
+        ' Add Windows custom place using file path.
+        openFileDialog1.CustomPlaces.Add("c:\Windows")
+
+        openFileDialog1.ShowDialog()
+
+    End Sub
+    

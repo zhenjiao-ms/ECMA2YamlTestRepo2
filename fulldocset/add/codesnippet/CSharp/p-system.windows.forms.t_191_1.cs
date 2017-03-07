@@ -1,20 +1,18 @@
-            // This code example demonstrates the syntax for setting
-            // various ToolStripTextBox properties.
-            // 
-            toolStripTextBox1.AcceptsReturn = true;
-            toolStripTextBox1.AcceptsTab = true;
-            toolStripTextBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            "This is line one.",
-            "Second line.",
-            "Another line."});
-            toolStripTextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            toolStripTextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            toolStripTextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            toolStripTextBox1.HideSelection = false;
-            toolStripTextBox1.MaxLength = 32000;
-            toolStripTextBox1.Name = "toolStripTextBox1";
-            toolStripTextBox1.ShortcutsEnabled = false;
-            toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
-            toolStripTextBox1.Text = "STRING1\r\nSTRING2\r\nSTRING3\r\nSTRING4";
-            toolStripTextBox1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+public void CreateMyMultilineTextBox()
+ {
+    // Create an instance of a TextBox control.
+    TextBox textBox1 = new TextBox();
+    
+    // Set the Multiline property to true.
+    textBox1.Multiline = true;
+    // Add vertical scroll bars to the TextBox control.
+    textBox1.ScrollBars = ScrollBars.Vertical;
+    // Allow the RETURN key in the TextBox control.
+    textBox1.AcceptsReturn = true;
+    // Allow the TAB key to be entered in the TextBox control.
+    textBox1.AcceptsTab = true;
+    // Set WordWrap to true to allow text to wrap to the next line.
+    textBox1.WordWrap = true;
+    // Set the default text of the control.
+    textBox1.Text = "Welcome!" + Environment.NewLine + "Second Line";
+ }

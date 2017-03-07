@@ -1,28 +1,27 @@
-  public class MyServiceAuthorizationManager : ServiceAuthorizationManager
-  {
-	protected override bool CheckAccessCore(OperationContext operationContext)
-	{                
-	  // Extract the action URI from the OperationContext. Match this against the claims
-	  // in the AuthorizationContext.
-	  string action = operationContext.RequestContext.RequestMessage.Headers.Action;
-	  
-	  // Iterate through the various claim sets in the AuthorizationContext.
-	  foreach(ClaimSet cs in operationContext.ServiceSecurityContext.AuthorizationContext.ClaimSets)
-	  {
-		// Examine only those claim sets issued by System.
-		if (cs.Issuer == ClaimSet.System)
-		{
-		  // Iterate through claims of type "http://www.contoso.com/claims/allowedoperation".
-            foreach (Claim c in cs.FindClaims("http://www.contoso.com/claims/allowedoperation", Rights.PossessProperty))
-		  {
-			// If the Claim resource matches the action URI then return true to allow access.
-			if (action == c.Resource.ToString())
-			  return true;
-		  }
-		}
-	  }
-	  
-	  // If this point is reached, return false to deny access.
-	  return false;                 
-	}
-  }
+        public static Binding CreateCustomBinding()
+        {
+            // Create an empty BindingElementCollection to populate, 
+            // then create a custom binding from it.
+            BindingElementCollection outputBec = new BindingElementCollection();
+
+            // Create a SymmetricSecurityBindingElement.
+            SymmetricSecurityBindingElement ssbe = 
+                new SymmetricSecurityBindingElement();
+
+            // Set the algorithm suite to one that uses 128-bit keys.
+            ssbe.DefaultAlgorithmSuite = SecurityAlgorithmSuite.Basic128;
+
+               // Set MessageProtectionOrder to SignBeforeEncrypt.
+            ssbe.MessageProtectionOrder = MessageProtectionOrder.SignBeforeEncrypt;
+
+            // Use a Kerberos token as the protection token.
+            ssbe.ProtectionTokenParameters = new KerberosSecurityTokenParameters();
+            
+            // Add the SymmetricSecurityBindingElement to the BindingElementCollection.
+            outputBec.Add ( ssbe );
+            outputBec.Add(new TextMessageEncodingBindingElement());
+            outputBec.Add(new HttpTransportBindingElement());
+
+            // Create a CustomBinding and return it; otherwise, return null.
+            return new CustomBinding(outputBec);
+        }

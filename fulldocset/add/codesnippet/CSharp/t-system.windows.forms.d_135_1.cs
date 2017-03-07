@@ -1,37 +1,18 @@
-    private void dataGridView1_CellMouseEnter(object sender,
-        DataGridViewCellEventArgs e)
+    private void WatchRowsModeChanges(object sender,
+        DataGridViewAutoSizeModeEventArgs modeEvent)
     {
-        Bitmap markingUnderMouse = (Bitmap)dataGridView1.
-               Rows[e.RowIndex].
-               Cells[e.ColumnIndex].Value;
+        Label label =
+            (Label)flowLayoutPanel1.Controls[currentLayoutName];
 
-        if (markingUnderMouse == blank)
+        if (modeEvent.PreviousModeAutoSized)
         {
-            dataGridView1.Cursor = Cursors.Default;
+            label.Text = "changed to a different " +
+                label.Name +
+                dataGridView1.AutoSizeRowsMode.ToString();
         }
-        else if (markingUnderMouse == o || markingUnderMouse == x)
+        else
         {
-            dataGridView1.Cursor = Cursors.No;
-            ToolTip(e, true);
+            label.Text = label.Name +
+                dataGridView1.AutoSizeRowsMode.ToString();
         }
-    }
-
-    private void ToolTip(DataGridViewCellEventArgs e, bool showTip)
-    {
-        DataGridViewImageCell cell = (DataGridViewImageCell)
-            dataGridView1
-            .Rows[e.RowIndex].Cells[e.ColumnIndex];
-        DataGridViewImageColumn imageColumn =
-            (DataGridViewImageColumn)
-            dataGridView1.Columns[cell.ColumnIndex];
-
-        if (showTip) cell.ToolTipText = imageColumn.Description;
-        else { cell.ToolTipText = String.Empty; }
-    }
-
-    private void dataGridView1_CellMouseLeave(object sender,
-        DataGridViewCellEventArgs e)
-    {
-        ToolTip(e, false);
-        dataGridView1.Cursor = Cursors.Default;
     }

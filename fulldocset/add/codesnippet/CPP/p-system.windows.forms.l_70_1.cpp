@@ -1,19 +1,37 @@
+   // Sets myListView to the groups created for the specified column.
 private:
-   void RemoveTopItems()
+   void SetGroups(int column)
    {
-      // Determine if the currently selected item in the ListBox 
-      // is the item displayed at the top in the ListBox.
-      if ( listBox1->TopIndex != listBox1->SelectedIndex )
+      // Remove the current groups.
+      myListView->Groups->Clear();
 
-      // Make the currently selected item the top item in the ListBox.
-      listBox1->TopIndex = listBox1->SelectedIndex;
+      // Retrieve the hash table corresponding to the column.
+      Hashtable^ groups = dynamic_cast<Hashtable^>(groupTables[column]);
 
-      // Remove all items before the top item in the ListBox.
-      for ( int x = (listBox1->SelectedIndex - 1); x >= 0; x-- )
+      // Copy the groups for the column to an array.
+      array<ListViewGroup^>^ groupsArray = gcnew array<ListViewGroup^>(groups->Count);
+      groups->Values->CopyTo(groupsArray, 0);
+
+      // Sort the groups and add them to myListView.
+      Array::Sort(groupsArray, gcnew ListViewGroupSorter(myListView->Sorting));
+      myListView->Groups->AddRange(groupsArray);
+
+      // Iterate through the items in myListView, assigning each 
+      // one to the appropriate group.
+      IEnumerator^ myEnum = myListView->Items->GetEnumerator();
+      while (myEnum->MoveNext())
       {
-         listBox1->Items->RemoveAt( x );
-      }
+         ListViewItem^ item = safe_cast<ListViewItem^>(myEnum->Current);
+         // Retrieve the subitem text corresponding to the column.
+         String^ subItemText = item->SubItems[column]->Text;
 
-      // Clear all selections in the ListBox.
-      listBox1->ClearSelected();
+         // For the Title column, use only the first letter.
+         if (column == 0) 
+         {
+            subItemText = subItemText->Substring(0, 1);
+         }
+
+         // Assign the item to the matching group.
+         item->Group = dynamic_cast<ListViewGroup^>(groups[subItemText]);
+      }
    }

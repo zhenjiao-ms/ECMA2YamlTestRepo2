@@ -1,7 +1,11 @@
-    Private Sub HandleMouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) _
-            Handles Me.MouseDown, listView1.MouseDown
+    
+    Private Sub ListView1_BeforeLabelEdit(ByVal sender As Object, _
+        ByVal e As System.Windows.Forms.LabelEditEventArgs) _
+        Handles ListView1.BeforeLabelEdit
 
-        Dim info As ListViewHitTestInfo = listView1.HitTest(e.X, e.Y)
-        MessageBox.Show(info.Location.ToString())
-
+        ' Allow all but the first two items of the list to be modified by
+        ' the user.
+        If (e.Item < 2) Then
+            e.CancelEdit = True
+        End If
     End Sub

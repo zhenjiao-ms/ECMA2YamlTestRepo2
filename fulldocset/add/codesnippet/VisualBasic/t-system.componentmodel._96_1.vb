@@ -1,13 +1,4 @@
-        <Category("Data"), _
-        Description("Indicates the source of data for the control."), _
-        RefreshProperties(RefreshProperties.Repaint), _
-        AttributeProvider(GetType(IListSource))> _
-        Public Property DataSource() As Object
-            Get
-                Return Me.dataGridView1.DataSource
-            End Get
-
-            Set(ByVal value As Object)
-                Me.dataGridView1.DataSource = value
-            End Set
-        End Property
+            Dim myInt16 As Short = -10000
+            Dim myInt16String As String = "+20000"
+            Console.WriteLine(TypeDescriptor.GetConverter(myInt16).ConvertTo(myInt16, GetType(String)))
+            Console.WriteLine(TypeDescriptor.GetConverter(myInt16).ConvertFrom(myInt16String))

@@ -1,27 +1,15 @@
-    // Sets the ToolTip text for cells in the Rating column.
-    void dataGridView1_CellFormatting(object sender, 
-        DataGridViewCellFormattingEventArgs e)
+    private void dataGridView1_CellBeginEdit(object sender,
+        DataGridViewCellCancelEventArgs e)
     {
-        if ( (e.ColumnIndex == this.dataGridView1.Columns["Rating"].Index)
-            && e.Value != null )
-        {
-            DataGridViewCell cell = 
-                this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            if (e.Value.Equals("*"))
-            {                
-                cell.ToolTipText = "very bad";
-            }
-            else if (e.Value.Equals("**"))
-            {
-                cell.ToolTipText = "bad";
-            }
-            else if (e.Value.Equals("***"))
-            {
-                cell.ToolTipText = "good";
-            }
-            else if (e.Value.Equals("****"))
-            {
-                cell.ToolTipText = "very good";
-            }
-        }
+        string msg = String.Format("Editing Cell at ({0}, {1})",
+            e.ColumnIndex, e.RowIndex);
+        this.Text = msg;
+    }
+
+    private void dataGridView1_CellEndEdit(object sender,
+        DataGridViewCellEventArgs e)
+    {
+        string msg = String.Format("Finished Editing Cell at ({0}, {1})",
+            e.ColumnIndex, e.RowIndex);
+        this.Text = msg;
     }

@@ -1,7 +1,27 @@
-   public:
-      void EnableDoubleBuffering()
+   protected:
+      virtual void OnTextChanged( System::EventArgs^ e ) override
       {
-         // Set the value of the double-buffering style bits to true.
-         this->SetStyle( static_cast<ControlStyles>(ControlStyles::DoubleBuffer | ControlStyles::UserPaint | ControlStyles::AllPaintingInWmPaint), true );
-         this->UpdateStyles();
+         try
+         {
+            // Convert the text to a Double and determine
+            // if it is a negative number.
+            if ( Double::Parse( this->Text ) < 0 )
+            {
+               // If the number is negative, display it in Red.
+               this->ForeColor = Color::Red;
+            }
+            else
+            {
+               // If the number is not negative, display it in Black.
+               this->ForeColor = Color::Black;
+            }
+         }
+         catch ( Exception^ ) 
+         {
+            // If there is an error, display the
+            // text using the system colors.
+            this->ForeColor = SystemColors::ControlText;
+         }
+
+         TextBox::OnTextChanged( e );
       }

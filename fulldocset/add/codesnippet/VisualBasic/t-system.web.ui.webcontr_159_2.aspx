@@ -1,139 +1,98 @@
-<%@ Page Language="VB" AutoEventWireup="True" %>
+<%@ page language="VB" %>
+<%@ Import Namespace="System.Drawing" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>Button CommandName Example</title>
+
 <script runat="server">
+    Private Sub Page_Load(ByVal sender As Object, _
+        ByVal e As System.EventArgs)
 
-      Sub CommandBtn_Click(sender As Object, e As CommandEventArgs) 
-
-         Select e.CommandName
-
-            Case "Sort"
-
-               ' Call the method to sort the list.
-               Sort_List(CType(e.CommandArgument, String))
-
-            Case "Submit"
-
-               ' Display a message for the Submit button being clicked.
-               Message.Text = "You clicked the <b>Submit</b> button"
-
-               ' Test whether the Command Argument is an empty string ("").
-               If CType(e.CommandArgument , String) = "" Then
-              
-                  ' End the message.
-                  Message.Text &= "."
-               
-               Else
-               
-                  ' Display an error message for the command argument. 
-                  Message.Text &= ", but the command argument is not recogized."
-               
-               End If                
-
-            Case Else
-
-               ' The command name is not recognized. Display an error message.
-               Message.Text = "Command name not recogized."
-
-         End Select
-
-      End Sub
-
-      Sub Sort_List(commandArgument As String)
-
-         Select commandArgument
-
-            Case "Ascending"
- 
-               ' Insert code to sort the list in ascending order here.
-               Message.Text = "You clicked the <b>Sort Ascending</b> button."
-
-            Case "Descending"
-              
-               ' Insert code to sort the list in descending order here.
-               Message.Text = "You clicked the <b>Sort Descending</b> button."
-
-            Case Else
+        ' Add rows to the table.
+        Dim rowNum As Integer
+        For rowNum = 0 To 100
+            Dim tempRow As New TableRow
+            Dim cellNum As Integer
+            For cellNum = 0 To 2
+                Dim tempCell As New TableCell
+                tempCell.Text = _
+                    String.Format("({0},{1})", rowNum, cellNum)
+                tempRow.Cells.Add(tempCell)
+            Next
+            Table1.Rows.Add(tempRow)
+        Next
         
-               ' The command argument is not recognized. Display an error message.
-               Message.Text = "Command argument not recogized."
+        ' Create a TableHeaderRow.
+        Dim headerRow As New TableHeaderRow
+        headerRow.BackColor = Color.LightBlue
 
-         End Select
+        ' Create TableCell objects to contain 
+        ' the text for the header.
+        Dim headerTableCell1 As New TableHeaderCell
+        Dim headerTableCell2 As New TableHeaderCell
+        Dim headerTableCell3 As New TableHeaderCell
+        headerTableCell1.Text = "Column 1 Header"
+        headerTableCell1.Scope = TableHeaderScope.Column
+        headerTableCell1.AbbreviatedText = "Col 1 Head"
+        headerTableCell2.Text = "Column 2 Header"
+        headerTableCell2.Scope = TableHeaderScope.Column
+        headerTableCell2.AbbreviatedText = "Col 2 Head"
+        headerTableCell3.Text = "Column 3 Header"
+        headerTableCell3.Scope = TableHeaderScope.Column
+        headerTableCell3.AbbreviatedText = "Col 3 Head"
 
-      End Sub
+        ' Add the TableHeaderCell objects to the Cells
+        ' collection of the TableHeaderRow.
+        headerRow.Cells.Add(headerTableCell1)
+        headerRow.Cells.Add(headerTableCell2)
+        headerRow.Cells.Add(headerTableCell3)
 
-      Sub Page_Load(sender As Object, e As EventArgs)
+        ' Add the TableHeaderRow as the first item 
+        ' in the Rows collection of the table.
+        Table1.Rows.AddAt(0, headerRow)
 
-         ' Manually register the event-handling method for the Command  
-         ' event of the Button controls.
-         AddHandler Button1.Command, AddressOf CommandBtn_Click
-         AddHandler Button2.Command, AddressOf CommandBtn_Click
-         AddHandler Button3.Command, AddressOf CommandBtn_Click
-         AddHandler Button4.Command, AddressOf CommandBtn_Click
-         AddHandler Button5.Command, AddressOf CommandBtn_Click
+        ' Create a TableFooterRow.
+        Dim footerRow As New TableFooterRow
+        footerRow.BackColor = Color.LightBlue
 
-      End Sub
+        ' Create TableCell objects to contain the 
+        ' text for the footer.
+        Dim footerTableCell1 As New TableCell
+        Dim footerTableCell2 As New TableCell
+        Dim footerTableCell3 As New TableCell
+        footerTableCell1.Text = "Column 1 footer"
+        footerTableCell2.Text = "Column 2 footer"
+        footerTableCell3.Text = "Column 3 footer"
 
-   </script>
+        ' Add the TableCell objects to the Cells
+        ' collection of the TableFooterRow.
+        footerRow.Cells.Add(footerTableCell1)
+        footerRow.Cells.Add(footerTableCell2)
+        footerRow.Cells.Add(footerTableCell3)
 
+        ' Add the TableFooterRow to the Rows
+        ' collection of the table.
+        Table1.Rows.Add(footerRow)
+    End Sub
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>TableHeaderRow Example</title>
 </head>
- 
 <body>
+    <form id="form1" runat="server">
+    <div>
 
-   <form id="form1" runat="server">
+    <h3>TableHeaderRow and TableFooterRow Example</h3>
+    <asp:table id="Table1" 
+        CellPadding="3" 
+        CellSpacing="0" 
+        Gridlines="Both" 
+        runat="server">
+    </asp:table>
 
-      <h3>Button CommandName Example</h3>
-
-      Click one of the command buttons.
-
-      <br /><br />
- 
-      <asp:Button id="Button1"
-           Text="Sort Ascending"
-           CommandName="Sort"
-           CommandArgument="Ascending"
-           runat="server"/>
-
-      &nbsp;
-
-      <asp:Button id="Button2"
-           Text="Sort Descending"
-           CommandName="Sort"
-           CommandArgument="Descending"
-           runat="server"/>
-
-      <br /><br />
-
-      <asp:Button id="Button3"
-           Text="Submit"
-           CommandName="Submit"
-           runat="server"/>
-
-      &nbsp;
-
-      <asp:Button id="Button4"
-           Text="Unknown Command Name"
-           CommandName="UnknownName"
-           CommandArgument="UnknownArgument"
-           runat="server"/>
-
-      &nbsp;
-
-      <asp:Button id="Button5"
-           Text="Submit Unknown Command Argument"
-           CommandName="Submit"
-           CommandArgument="UnknownArgument"
-           runat="server"/>
-       
-      <br /><br />
-
-      <asp:Label id="Message" runat="server"/>
- 
-   </form>
- 
-</body>
+    </div>
+    </form>
+  </body>
 </html>

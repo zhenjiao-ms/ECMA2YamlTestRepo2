@@ -1,17 +1,34 @@
-      private void RemoveTopItems()
-      {
-         // Determine if the currently selected item in the ListBox 
-         // is the item displayed at the top in the ListBox.
-         if (listBox1.TopIndex != listBox1.SelectedIndex)
-            // Make the currently selected item the top item in the ListBox.
-            listBox1.TopIndex = listBox1.SelectedIndex;
+    // Sets myListView to the groups created for the specified column.
+    private void SetGroups(int column)
+    {
+        // Remove the current groups.
+        myListView.Groups.Clear();
 
-         // Remove all items before the top item in the ListBox.
-         for (int x = (listBox1.SelectedIndex -1); x >= 0; x--)
-         {
-            listBox1.Items.RemoveAt(x);
-         }
+        // Retrieve the hash table corresponding to the column.
+        Hashtable groups = (Hashtable)groupTables[column];
 
-         // Clear all selections in the ListBox.
-         listBox1.ClearSelected();
-      }
+        // Copy the groups for the column to an array.
+        ListViewGroup[] groupsArray = new ListViewGroup[groups.Count];
+        groups.Values.CopyTo(groupsArray, 0);
+
+        // Sort the groups and add them to myListView.
+        Array.Sort(groupsArray, new ListViewGroupSorter(myListView.Sorting));
+        myListView.Groups.AddRange(groupsArray);
+
+        // Iterate through the items in myListView, assigning each 
+        // one to the appropriate group.
+        foreach (ListViewItem item in myListView.Items)
+        {
+            // Retrieve the subitem text corresponding to the column.
+            string subItemText = item.SubItems[column].Text;
+
+            // For the Title column, use only the first letter.
+            if (column == 0) 
+            {
+                subItemText = subItemText.Substring(0, 1);
+            }
+
+            // Assign the item to the matching group.
+            item.Group = (ListViewGroup)groups[subItemText];
+        }
+    }

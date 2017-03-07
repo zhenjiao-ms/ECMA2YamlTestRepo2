@@ -1,144 +1,187 @@
 using System;
 using System.Security.Cryptography;
+using System.Collections;
+using System.Text;
 
-public class TestHMACMD5
+class Members
 {
-    static private void PrintByteArray(Byte[] arr)
+    // Use a public service provider for encryption and decryption.
+    static DESCryptoServiceProvider des = new DESCryptoServiceProvider();
+
+    [STAThread]
+    static void Main(string[] args)
     {
-        int i;
-        Console.WriteLine("Length: " + arr.Length);
-        for (i = 0; i < arr.Length; i++)
-        {
-            Console.Write("{0:X}", arr[i]);
-            Console.Write("    ");
-            if ((i + 9) % 8 == 0) Console.WriteLine();
-        }
-        if (i % 8 != 0) Console.WriteLine();
+        string message = "012345678901234567890";
+        byte[] sourceBytes = Encoding.ASCII.GetBytes(message);
+        Console.WriteLine("** Phrase to be encoded: " + message);
+
+        byte[] encodedBytes = EncodeBytes(sourceBytes);
+        Console.WriteLine("** Phrase after encoding: " +
+            Encoding.ASCII.GetString(encodedBytes));
+
+        byte[] decodedBytes = DecodeBytes(encodedBytes);
+        Console.WriteLine("** Phrase after decoding: " +
+            Encoding.ASCII.GetString(decodedBytes));
+
+        Console.WriteLine("Sample ended successfully; " +
+            "press Enter to continue.");
+        Console.ReadLine();
     }
-    public static void Main()
+
+    // Encode the specified byte array by using CryptoAPITranform.
+    private static byte[] EncodeBytes(byte[] sourceBytes)
     {
-        // Create a key.
-        byte[] key1 = { 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b };
-        // Pass the key to the constructor of the HMACMD5 class.  
-        HMACMD5 hmac1 = new HMACMD5(key1);
+        int currentPosition = 0;
+        byte[] targetBytes = new byte[1024];
+        int sourceByteLength = sourceBytes.Length;
 
-        // Create another key.
-        byte[] key2 = System.Text.Encoding.ASCII.GetBytes("KeyString");
-        // Pass the key to the constructor of the HMACMD5 class.  
-        HMACMD5 hmac2 = new HMACMD5(key2);
+        // Create a DES encryptor from this instance to perform encryption.
+        CryptoAPITransform cryptoTransform =
+            (CryptoAPITransform)des.CreateEncryptor();
 
-        // Encode a string into a byte array, create a hash of the array,
-        // and print the hash to the screen.
-        byte[] data1 = System.Text.Encoding.ASCII.GetBytes("Hi There");
-        PrintByteArray(hmac1.ComputeHash(data1));
+        // Retrieve the block size to read the bytes.
+        int inputBlockSize = cryptoTransform.InputBlockSize;
 
-        // Encode a string into a byte array, create a hash of the array,
-        // and print the hash to the screen.
-        byte[] data2 = System.Text.Encoding.ASCII.GetBytes("This data will be hashed.");
-        PrintByteArray(hmac2.ComputeHash(data2));
+        // Retrieve the key handle.
+        IntPtr keyHandle = cryptoTransform.KeyHandle;
+
+        // Retrieve the block size to write the bytes.
+        int outputBlockSize = cryptoTransform.OutputBlockSize;
+
+        try
+        {
+            // Determine if multiple blocks can be transformed.
+            if (cryptoTransform.CanTransformMultipleBlocks)
+            {
+                int numBytesRead = 0;
+                while (sourceByteLength - currentPosition >= inputBlockSize)
+                {
+                    // Transform the bytes from currentPosition in the
+                    // sourceBytes array, writing the bytes to the targetBytes
+                    // array.
+                    numBytesRead = cryptoTransform.TransformBlock(
+                        sourceBytes,
+                        currentPosition,
+                        inputBlockSize,
+                        targetBytes,
+                        currentPosition);
+
+                    // Advance the current position in the sourceBytes array.
+                    currentPosition += numBytesRead;
+                }
+
+                // Transform the final block of bytes.
+                byte[] finalBytes = cryptoTransform.TransformFinalBlock(
+                    sourceBytes,
+                    currentPosition,
+                    sourceByteLength - currentPosition);
+
+                // Copy the contents of the finalBytes array to the
+                // targetBytes array.
+                finalBytes.CopyTo(targetBytes, currentPosition);
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Caught unexpected exception:" + ex.ToString());
+        }
+
+        // Determine if the current transform can be reused.
+        if (!cryptoTransform.CanReuseTransform)
+        {
+            // Free up any used resources.
+            cryptoTransform.Clear();
+        }
+
+        // Trim the extra bytes in the array that were not used.
+        return TrimArray(targetBytes);
     }
-}
-public class HMACMD5 : KeyedHashAlgorithm
-{
-    private MD5 hash1;
-    private MD5 hash2;
-    private bool bHashing = false;
 
-    private byte[] rgbInner = new byte[64];
-    private byte[] rgbOuter = new byte[64];
-
-    public HMACMD5(byte[] rgbKey)
+    // Decode the specified byte array using CryptoAPITranform.
+    private static byte[] DecodeBytes(byte[] sourceBytes)
     {
-        HashSizeValue = 128;
-        // Create the hash algorithms.
-        hash1 = MD5.Create();
-        hash2 = MD5.Create();
-        // Get the key.
-        if (rgbKey.Length > 64)
+        byte[] targetBytes = new byte[1024];
+        int currentPosition = 0;
+
+        // Create a DES decryptor from this instance to perform decryption.
+        CryptoAPITransform cryptoTransform =
+            (CryptoAPITransform)des.CreateDecryptor();
+
+        int inputBlockSize = cryptoTransform.InputBlockSize;
+        int sourceByteLength = sourceBytes.Length;
+
+        try
         {
-            KeyValue = hash1.ComputeHash(rgbKey);
-            // No need to call Initialize; ComputeHash does it automatically.
+            int numBytesRead = 0;
+            while (sourceByteLength - currentPosition >= inputBlockSize)
+            {
+                // Transform the bytes from current position in the 
+                // sourceBytes array, writing the bytes to the targetBytes
+                // array.
+                numBytesRead = cryptoTransform.TransformBlock(
+                    sourceBytes,
+                    currentPosition,
+                    inputBlockSize,
+                    targetBytes,
+                    currentPosition);
+
+                // Advance the current position in the source array.
+                currentPosition += numBytesRead;
+            }
+
+            // Transform the final block of bytes.
+            byte[] finalBytes = cryptoTransform.TransformFinalBlock(
+                sourceBytes,
+                currentPosition,
+                sourceByteLength - currentPosition);
+
+            // Copy the contents of the finalBytes array to the targetBytes
+            // array.
+            finalBytes.CopyTo(targetBytes, currentPosition);
         }
-        else
+        catch (Exception ex)
         {
-            KeyValue = (byte[])rgbKey.Clone();
+            Console.WriteLine("Caught unexpected exception:" + ex.ToString());
         }
-        // Compute rgbInner and rgbOuter.
+
+        // Strip out the second block of bytes.
+        Array.Copy(targetBytes, (inputBlockSize * 2), targetBytes, inputBlockSize, targetBytes.Length - (inputBlockSize * 2));
+
+        // Trim the extra bytes in the array that were not used.
+        return TrimArray(targetBytes);
+    }
+
+    // Resize the dimensions of the array to a size that contains only valid
+    // bytes.
+    private static byte[] TrimArray(byte[] targetArray)
+    {
+        IEnumerator enum1 = targetArray.GetEnumerator();
         int i = 0;
-        for (i = 0; i < 64; i++)
-        {
-            rgbInner[i] = 0x36;
-            rgbOuter[i] = 0x5C;
-        }
-        for (i = 0; i < KeyValue.Length; i++)
-        {
-            rgbInner[i] ^= KeyValue[i];
-            rgbOuter[i] ^= KeyValue[i];
-        }
-    }
 
-    public override byte[] Key
-    {
-        get { return (byte[])KeyValue.Clone(); }
-        set
+        while (enum1.MoveNext())
         {
-            if (bHashing)
+            if (enum1.Current.ToString().Equals("0"))
             {
-                throw new Exception("Cannot change key during hash operation");
+                break;
             }
-            if (value.Length > 64)
-            {
-                KeyValue = hash1.ComputeHash(value);
-                // No need to call Initialize; ComputeHash does it automatically.
-            }
-            else
-            {
-                KeyValue = (byte[])value.Clone();
-            }
-            // Compute rgbInner and rgbOuter.
-            int i = 0;
-            for (i = 0; i < 64; i++)
-            {
-                rgbInner[i] = 0x36;
-                rgbOuter[i] = 0x5C;
-            }
-            for (i = 0; i < KeyValue.Length; i++)
-            {
-                rgbInner[i] ^= KeyValue[i];
-                rgbOuter[i] ^= KeyValue[i];
-            }
+            i++;
         }
-    }
-    public override void Initialize()
-    {
-        hash1.Initialize();
-        hash2.Initialize();
-        bHashing = false;
-    }
-    protected override void HashCore(byte[] rgb, int ib, int cb)
-    {
-        if (bHashing == false)
-        {
-            hash1.TransformBlock(rgbInner, 0, 64, rgbInner, 0);
-            bHashing = true;
-        }
-        hash1.TransformBlock(rgb, ib, cb, rgb, ib);
-    }
 
-    protected override byte[] HashFinal()
-    {
-        if (bHashing == false)
+        // Create a new array with the number of valid bytes.
+        byte[] returnedArray = new byte[i];
+        for (int j = 0; j < i; j++)
         {
-            hash1.TransformBlock(rgbInner, 0, 64, rgbInner, 0);
-            bHashing = true;
+            returnedArray[j] = targetArray[j];
         }
-        // Finalize the original hash.
-        hash1.TransformFinalBlock(new byte[0], 0, 0);
-        // Write the outer array.
-        hash2.TransformBlock(rgbOuter, 0, 64, rgbOuter, 0);
-        // Write the inner hash and finalize the hash.
-        hash2.TransformFinalBlock(hash1.Hash, 0, hash1.Hash.Length);
-        bHashing = false;
-        return hash2.Hash;
+
+        return returnedArray;
     }
 }
+//
+// This sample produces the following output:
+//
+// ** Phrase to be encoded: 012345678901234567890
+// ** Phrase after encoding: AIGC(+b7X?^djAU?15ve?o
+// ** Phrase after decoding: 012345678901234567890
+// Sample ended successfully; press Enter to continue.

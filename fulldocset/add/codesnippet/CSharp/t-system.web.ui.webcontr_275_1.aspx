@@ -1,95 +1,39 @@
-
-<%@ Page Language="C#" AutoEventWireup="True" %>
-
+<%@ Import namespace="Samples.AspNet.CS" %>
+<%@ Page language="c#" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-    <title>CustomValidator ServerValidate Example</title>
 <script runat="server">
-
-      void ValidateBtn_OnClick(object sender, EventArgs e) 
-      { 
-
-         // Display whether the page passed validation.
-         if (Page.IsValid) 
-         {
-
-            Message.Text = "Page is valid.";
-
-         }
-
-         else 
-         {
-
-            Message.Text = "Page is not valid!";
-
-         }
-
-      }
-
-      void ServerValidation(object source, ServerValidateEventArgs args)
-      {
-
-         try 
-         {
-
-            // Test whether the value entered into the text box is even.
-            int i = int.Parse(args.Value);
-            args.IsValid = ((i%2) == 0);
-
-         }
-
-         catch(Exception ex)
-         {
-
-            args.IsValid = false;
-
-         }
-
-      }
-
-   </script>    
-
-</head>
-<body>
-
-   <form id="form1" runat="server">
-  
-      <h3>CustomValidator ServerValidate Example</h3>
-
-      <asp:Label id="Message"  
-           Text="Enter an even number:" 
-           Font-Names="Verdana" 
-           Font-Size="10pt" 
-           runat="server"
-           AssociatedControlID="Text1"/>
-
-      <br />
-
-      <asp:TextBox id="Text1" 
-           runat="server" />
+private void NorthwindLogicCreating(object sender, ObjectDataSourceEventArgs e)
+{
+    // Create an instance of the business object using a non-default constructor.
+    EmployeeLogic eLogic = new EmployeeLogic("Not created by the default constructor!");
     
-      &nbsp;&nbsp;
+    // Set the ObjectInstance property so that the ObjectDataSource uses the created instance.
+    e.ObjectInstance = eLogic;
+}
 
-      <asp:CustomValidator id="CustomValidator1"
-           ControlToValidate="Text1"
-           Display="Static"
-           ErrorMessage="Not an even number!"
-           ForeColor="green"
-           Font-Names="verdana" 
-           Font-Size="10pt"
-           OnServerValidate="ServerValidation"
-           runat="server"/>
+</script>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+  <head>
+    <title>ObjectDataSource - C# Example</title>
+  </head>
+  <body>
+    <form id="Form1" method="post" runat="server">
 
-      <br />
- 
-      <asp:Button id="Button1"
-           Text="Validate" 
-           OnClick="ValidateBtn_OnClick" 
-           runat="server"/>
+        <asp:gridview
+          id="GridView1"
+          runat="server"
+          datasourceid="ObjectDataSource1">
+        </asp:gridview>
 
-   </form>
-  
-</body>
+        <asp:objectdatasource
+          id="ObjectDataSource1"
+          runat="server"
+          selectmethod="GetAllEmployees"
+          onobjectcreating="NorthwindLogicCreating"
+          typename="Samples.AspNet.CS.EmployeeLogic" >
+        </asp:objectdatasource>
+
+    </form>
+  </body>
 </html>

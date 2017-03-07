@@ -1,85 +1,53 @@
 using System;
 using System.Reflection;
- 
-// Define a property.
-public class ClassWithProperty
-{
-    private string _caption = "A Default caption";
 
-    public string Caption
-    {
-        get { return _caption; }
-        set { if(_caption != value) _caption = value; }
-    }
+public class Planet
+{
+   private String planetName;
+   private Double distanceFromEarth;
+   
+   public Planet(String name, Double distance)
+   {
+      planetName = name;
+      distanceFromEarth = distance;
+   } 
+
+   public String Name
+   { get { return planetName; } }
+   
+   public Double Distance 
+   { get { return distanceFromEarth; }
+     set { distanceFromEarth = value; } }
 }
- 
-class Example
-{
-    public static void Main()
-    {
-        ClassWithProperty test = new ClassWithProperty();
-        Console.WriteLine("The Caption property: {0}", test.Caption);
-        Console.WriteLine("----------");
-        // Get the type and PropertyInfo.
-        Type t = Type.GetType("ClassWithProperty");
-        PropertyInfo propInfo = t.GetProperty("Caption");
- 
-        // Get the public GetAccessors method.
-        MethodInfo[] methInfos = propInfo.GetAccessors(true);
-        Console.WriteLine("There are {0} accessors.",
-                          methInfos.Length);
-        for(int ctr = 0; ctr < methInfos.Length; ctr++) {
-           MethodInfo m = methInfos[ctr];
-           Console.WriteLine("Accessor #{0}:", ctr + 1);
-           Console.WriteLine("   Name: {0}", m.Name);
-           Console.WriteLine("   Visibility: {0}", GetVisibility(m));
-           Console.Write("   Property Type: ");
-           // Determine if this is the property getter or setter.
-           if (m.ReturnType == typeof(void)) {
-              Console.WriteLine("Setter");
-              Console.WriteLine("   Setting the property value.");
-              //  Set the value of the property.
-              m.Invoke(test, new object[] { "The Modified Caption" } );
-           }
-           else {
-              Console.WriteLine("Getter");
-              // Get the value of the property.
-              Console.WriteLine("   Property Value: {0}",
-                                m.Invoke(test, new object[] {} ));
-           }
-        }
-        Console.WriteLine("----------");
-        Console.WriteLine("The Caption property: {0}", test.Caption);
-    }
 
-    static string GetVisibility(MethodInfo m)
-    {
-       string visibility = "";
-       if (m.IsPublic)
-          return "Public";
-       else if (m.IsPrivate)
-          return "Private";
-       else
-          if (m.IsFamily)
-             visibility = "Protected ";
-          else if (m.IsAssembly)
-             visibility += "Assembly";
-       return visibility;
-    }
+public class Example
+{
+   public static void Main()
+   {
+      Planet jupiter = new Planet("Jupiter", 3.65e08);
+      GetPropertyValues(jupiter);
+   }
+   
+   private static void GetPropertyValues(Object obj)
+   {
+      Type t = obj.GetType();
+      Console.WriteLine("Type is: {0}", t.Name);
+      PropertyInfo[] props = t.GetProperties();
+      Console.WriteLine("Properties (N = {0}):", 
+                        props.Length);
+      foreach (var prop in props)
+         if (prop.GetIndexParameters().Length == 0)
+            Console.WriteLine("   {0} ({1}): {2}", prop.Name,
+                              prop.PropertyType.Name,
+                              prop.GetValue(obj));
+         else
+            Console.WriteLine("   {0} ({1}): <Indexed>", prop.Name,
+                              prop.PropertyType.Name);
+                                        
+   }
 }
 // The example displays the following output:
-//       The Caption property: A Default caption
-//       ----------
-//       There are 2 accessors.
-//       Accessor #1:
-//          Name: get_Caption
-//          Visibility: Public
-//          Property Type: Getter
-//          Property Value: A Default caption
-//       Accessor #2:
-//          Name: set_Caption
-//          Visibility: Public
-//          Property Type: Setter
-//          Setting the property value.
-//       ----------
-//       The Caption property: The Modified Caption
+//       Type is: Planet
+//       Properties (N = 2):
+//          Name (String): Jupiter
+//          Distance (Double): 365000000

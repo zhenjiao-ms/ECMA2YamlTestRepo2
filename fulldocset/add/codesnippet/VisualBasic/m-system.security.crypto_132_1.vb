@@ -1,31 +1,66 @@
-    Private Shared Sub EncryptData(inName As String, outName As String, _
-    desKey() As Byte, desIV() As Byte)
-    
-        'Create the file streams to handle the input and output files.
-        Dim fin As New FileStream(inName, FileMode.Open, FileAccess.Read)
-        Dim fout As New FileStream(outName, FileMode.OpenOrCreate, _
-           FileAccess.Write)
-        fout.SetLength(0)
+Imports System
+Imports System.Security.Cryptography
+Imports System.Security.Cryptography.X509Certificates
+
+
+
+Class AsnEncodedDataSample
+   Shared msg As String
+   Shared Sub Main()
+      'The following example demonstrates the usage the AsnEncodedData classes.
+      ' Asn encoded data is read from the extensions of an X509 certificate.
+      Try
+         ' Open the certificate store.
+         Dim store As New X509Store("MY", StoreLocation.CurrentUser)
+         store.Open((OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly))
+         Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+         Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
+         ' Select one or more certificates to display extensions information.
+         Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection)
+         
+         ' Create a new AsnEncodedDataCollection object.
+         Dim asncoll As New AsnEncodedDataCollection()
+         Dim i As Integer
+         For i = 0 To scollection.Count - 1
+            ' Display certificate information.
+	    msg = "Certificate name: "& scollection(i).GetName()
+            MsgBox(msg)
+
+            ' Display extensions information.
+            Dim extension As X509Extension
+            For Each extension In  scollection(i).Extensions
+               ' Create an AsnEncodedData object using the extensions information.
+               Dim asndata As New AsnEncodedData(extension.Oid, extension.RawData)
+	       msg = "Extension type: " & extension.Oid.FriendlyName & Environment.NewLine & "Oid value: " & asndata.Oid.Value _
+		& Environment.NewLine & "Raw data length: " & asndata.RawData.Length & Environment.NewLine _
+		& asndata.Format(True) & Environment.NewLine
+               MsgBox(msg)
+		
+               ' Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+               asncoll.Add(asndata)
+            Next extension
+         Next i
+	 msg = "Number of AsnEncodedData items in the collection: " & asncoll.Count
+         MsgBox(msg)         
+         store.Close()
+
+         'Create an enumerator for moving through the collection.
+         Dim asne As AsnEncodedDataEnumerator = asncoll.GetEnumerator()
+         'You must execute a MoveNext() to get to the first item in the collection.
+         asne.MoveNext()
+         ' Write out AsnEncodedData in the collection.
+	 msg = "First AsnEncodedData in the collection: " & asne.Current.Format(True)
+	 MsgBox(msg)
+	
+         
+         asne.MoveNext()
+	 msg = "Second AsnEncodedData in the collection: " & asne.Current.Format(True)
+	 MsgBox(msg)
         
-        'Create variables to help with read and write.
-        Dim bin(4096) As Byte 'This is intermediate storage for the encryption.
-        Dim rdlen As Long = 0 'This is the total number of bytes written.
-        Dim totlen As Long = fin.Length 'Total length of the input file.
-        Dim len As Integer 'This is the number of bytes to be written at a time.
-        Dim des As New DESCryptoServiceProvider()
-        Dim encStream As New CryptoStream(fout, _
-           des.CreateEncryptor(desKey, desIV), CryptoStreamMode.Write)
-        
-        Console.WriteLine("Encrypting...")
-        
-        'Read from the input file, then encrypt and write to the output file.
-        While rdlen < totlen
-            len = fin.Read(bin, 0, 4096)
-            encStream.Write(bin, 0, len)
-            rdlen = Convert.ToInt32(rdlen + len / des.BlockSize * des.BlockSize)
-            Console.WriteLine("Processed {0} bytes, {1} bytes total", len, _
-               rdlen)
-        End While
-        
-        encStream.Close()
-    End Sub
+         'Return index in the collection to the beginning.
+         asne.Reset()
+      Catch 
+         MsgBox("Information could not be written out for this certificate.")
+      End Try
+   End Sub 'Main
+End Class 'AsnEncodedDataSample

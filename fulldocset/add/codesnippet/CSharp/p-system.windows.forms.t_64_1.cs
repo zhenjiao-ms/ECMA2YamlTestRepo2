@@ -1,29 +1,55 @@
-    private void toggleColumnStylesBtn_Click(
-		System.Object sender, 
-		System.EventArgs e)
-    {
-		TableLayoutColumnStyleCollection styles = 
-			this.TableLayoutPanel1.ColumnStyles;
-
-        foreach( ColumnStyle style in styles )
+        // This method defines the painting behavior of the control.
+        // It performs the following operations:
+        //
+        // Computes the layout of the item's image and text.
+        // Draws the item's background image.
+        // Draws the item's image.
+        // Draws the item's text.
+        //
+        // Drawing operations are implemented in the 
+        // RolloverItemRenderer class.
+        protected override void OnPaint(PaintEventArgs e)
         {
-            if( style.SizeType == SizeType.Absolute )
-            {
-                style.SizeType = SizeType.AutoSize;
-            }
-            else if( style.SizeType == SizeType.AutoSize )
-            {
-                style.SizeType = SizeType.Percent;
+            base.OnPaint(e);
 
-                // Set the column width to be a percentage
-                // of the TableLayoutPanel control's width.
-                style.Width = 33;
-            }
-            else
+            if (this.Owner != null)
             {
-                // Set the column width to 50 pixels.
-                style.SizeType = SizeType.Absolute;
-                style.Width = 50;
+                // Find the dimensions of the image and the text 
+                // areas of the item. 
+                this.ComputeImageAndTextLayout();
+
+                // Draw the background. This includes drawing a highlighted 
+                // border when the mouse is in the client area.
+                ToolStripItemRenderEventArgs ea = new ToolStripItemRenderEventArgs(
+                     e.Graphics,
+                     this);
+                this.Owner.Renderer.DrawItemBackground(ea);
+
+                // Draw the item's image. 
+                ToolStripItemImageRenderEventArgs irea =
+                    new ToolStripItemImageRenderEventArgs(
+                    e.Graphics,
+                    this,
+                    imageRect );
+                this.Owner.Renderer.DrawItemImage(irea);
+
+                // If the item is on a drop-down, give its
+                // text a different highlighted color.
+                Color highlightColor = 
+                    this.IsOnDropDown ?
+                    Color.Salmon : SystemColors.ControlLightLight;
+
+                // Draw the text, and highlight it if the 
+                // the rollover state is true.
+                ToolStripItemTextRenderEventArgs rea =
+                    new ToolStripItemTextRenderEventArgs(
+                    e.Graphics,
+                    this,
+                    base.Text,
+                    textRect,
+                    this.rolloverValue ? highlightColor : base.ForeColor,
+                    base.Font,
+                    base.TextAlign);
+                this.Owner.Renderer.DrawItemText(rea);
             }
         }
-    }

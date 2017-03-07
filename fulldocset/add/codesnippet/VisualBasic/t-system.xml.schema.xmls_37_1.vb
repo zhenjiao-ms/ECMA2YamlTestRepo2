@@ -1,52 +1,44 @@
 Imports System
+Imports System.Collections
+Imports System.IO
 Imports System.Xml
+Imports System.Xml.Xsl
 Imports System.Xml.Schema
 
-Class XMLSchemaExamples
+
+Public Class ImportIncludeSample
+
+    Private Shared Sub ValidationCallBack(ByVal sender As Object, ByVal args As ValidationEventArgs)
+
+        If args.Severity = XmlSeverityType.Warning Then
+            Console.Write("WARNING: ")
+        Else
+            If args.Severity = XmlSeverityType.Error Then
+                Console.Write("ERROR: ")
+            End If
+        End If
+        Console.WriteLine(args.Message)
+    End Sub 'ValidationCallBack
+
+
     Public Shared Sub Main()
 
         Dim schema As New XmlSchema()
+        schema.ElementFormDefault = XmlSchemaForm.Qualified
+        schema.TargetNamespace = "http://www.w3.org/2001/05/XMLInfoset"
 
-        '<xs:simpleType name="RatingType">
-        Dim RatingType As New XmlSchemaSimpleType()
-        RatingType.Name = "RatingType"
+        ' <xs:import namespace="http://www.example.com/IPO" />             
+        Dim import As New XmlSchemaImport()
+        import.Namespace = "http://www.example.com/IPO"
+        schema.Includes.Add(import)
 
-        '<xs:restriction base="xs:number">
-        Dim restriction As New XmlSchemaSimpleTypeRestriction()
-        restriction.BaseTypeName = New XmlQualifiedName("decimal", "http://www.w3.org/2001/XMLSchema")
-
-        '<xs:totalDigits value="2"/>
-        Dim totalDigits As New XmlSchemaTotalDigitsFacet()
-        totalDigits.Value = "2"
-        restriction.Facets.Add(totalDigits)
-
-        '<xs:fractionDigits value="1"/>
-        Dim fractionDigits As New XmlSchemaFractionDigitsFacet()
-        fractionDigits.Value = "1"
-        restriction.Facets.Add(fractionDigits)
-
-        RatingType.Content = restriction
-        schema.Items.Add(RatingType)
-
-        '<xs:element name="movie">
-        Dim element As New XmlSchemaElement()
-        element.Name = "movie"
-
-        '<xs:complexType>
-        Dim complexType As New XmlSchemaComplexType()
-
-        '<xs:attribute name="rating" type="RatingType"/>
-        Dim ratingAttribute As New XmlSchemaAttribute()
-        ratingAttribute.Name = "rating"
-        ratingAttribute.SchemaTypeName = New XmlQualifiedName("RatingType", "")
-        complexType.Attributes.Add(ratingAttribute)
-
-        element.SchemaType = complexType
-
-        schema.Items.Add(element)
+        ' <xs:include schemaLocation="example.xsd" />     
+        Dim include As New XmlSchemaInclude()
+        include.SchemaLocation = "example.xsd"
+        schema.Includes.Add(include)
 
         Dim schemaSet As New XmlSchemaSet()
-        AddHandler schemaSet.ValidationEventHandler, AddressOf ValidationCallbackOne
+        AddHandler schemaSet.ValidationEventHandler, AddressOf ValidationCallBack
 
         schemaSet.Add(schema)
         schemaSet.Compile()
@@ -57,13 +49,11 @@ Class XMLSchemaExamples
             compiledSchema = schema1
         Next
 
-        Dim nsmgr As New XmlNamespaceManager(New NameTable())
+        Dim nsmgr As XmlNamespaceManager = New XmlNamespaceManager(New NameTable())
         nsmgr.AddNamespace("xs", "http://www.w3.org/2001/XMLSchema")
         compiledSchema.Write(Console.Out, nsmgr)
 
-    End Sub
+    End Sub 'Main 
+End Class 'ImportIncludeSample ' Main() 
 
-    Public Shared Sub ValidationCallbackOne(ByVal sender As Object, ByVal args As ValidationEventArgs)
-        Console.WriteLine(args.Message)
-    End Sub
-End Class
+'ImportIncludeSample

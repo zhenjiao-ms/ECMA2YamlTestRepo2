@@ -3,88 +3,62 @@
 
 using namespace System;
 using namespace System::IO;
-using namespace System::Xml;
 using namespace System::Xml::Serialization;
-public enum class GroupType
-{
-   // Use the SoapEnumAttribute to instruct the XmlSerializer
-   // to generate Small and Large instead of A and B.
-   [SoapEnum("Small")]
-   A,
-   [SoapEnum("Large")]
-   B
-};
-
-public ref class Group
+public ref class Address
 {
 public:
-   String^ GroupName;
-   GroupType Grouptype;
+   String^ state;
+   String^ zip;
 };
 
-public ref class Run
+public ref class Person
 {
 public:
-   void SerializeObject( String^ filename )
+   String^ personName;
+   Address^ address;
+};
+
+public ref class PersonTypeAttribute
+{
+public:
+   XmlSerializer^ CreateOverrider()
    {
-      // Create an instance of the XmlSerializer Class.
-      XmlTypeMapping^ mapp = (gcnew SoapReflectionImporter)->ImportTypeMapping( Group::typeid );
-      XmlSerializer^ mySerializer = gcnew XmlSerializer( mapp );
+      XmlAttributeOverrides^ personOverride = gcnew XmlAttributeOverrides;
+      XmlAttributes^ personAttributes = gcnew XmlAttributes;
+      XmlTypeAttribute^ personType = gcnew XmlTypeAttribute;
+      personType->TypeName = "Employee";
+      personType->Namespace = "http://www.microsoft.com";
+      personAttributes->XmlType = personType;
+      XmlAttributes^ addressAttributes = gcnew XmlAttributes;
 
-      // Writing the file requires a TextWriter.
-      TextWriter^ writer = gcnew StreamWriter( filename );
-
-      // Create an instance of the Class that will be serialized.
-      Group^ myGroup = gcnew Group;
-
-      // Set the Object* properties.
-      myGroup->GroupName = ".NET";
-      myGroup->Grouptype = GroupType::A;
-
-      // Serialize the Class, and close the TextWriter.
-      mySerializer->Serialize( writer, myGroup );
-      writer->Close();
+      // Create 'XmlTypeAttribute' with 'TypeName' as an argument.
+      XmlTypeAttribute^ addressType = gcnew XmlTypeAttribute( "Address" );
+      addressType->Namespace = "http://www.microsoft.com";
+      addressAttributes->XmlType = addressType;
+      personOverride->Add( Person::typeid, personAttributes );
+      personOverride->Add( Address::typeid, addressAttributes );
+      XmlSerializer^ myXmlSerializer = gcnew XmlSerializer( Person::typeid,personOverride );
+      return myXmlSerializer;
    }
 
-   void SerializeOverride( String^ fileName )
+   void SerializeObject( String^ filename )
    {
-      SoapAttributeOverrides^ soapOver = gcnew SoapAttributeOverrides;
-      SoapAttributes^ SoapAtts = gcnew SoapAttributes;
+      XmlSerializer^ myXmlSerializer = CreateOverrider();
+      Address^ myAddress = gcnew Address;
+      myAddress->state = "AAA";
+      myAddress->zip = "11111";
+      Person^ myPerson = gcnew Person;
+      myPerson->personName = "Smith";
+      myPerson->address = myAddress;
 
-      // Add a SoapEnumAttribute for the GroupType::A enumerator.       
-      // Instead of 'A'  it will be S"West".
-      SoapEnumAttribute^ soapEnum = gcnew SoapEnumAttribute( "West" );
-
-      // Override the S"A" enumerator.
-      SoapAtts->GroupType::SoapEnum = soapEnum;
-      soapOver->Add( GroupType::typeid, "A", SoapAtts );
-
-      // Add another SoapEnumAttribute for the GroupType::B enumerator.
-      // Instead of //B// it will be S"East".
-      SoapAtts = gcnew SoapAttributes;
-      soapEnum = gcnew SoapEnumAttribute;
-      soapEnum->Name = "East";
-      SoapAtts->GroupType::SoapEnum = soapEnum;
-      soapOver->Add( GroupType::typeid, "B", SoapAtts );
-
-      // Create an XmlSerializer used for overriding.
-      XmlTypeMapping^ map = (gcnew SoapReflectionImporter( soapOver ))->ImportTypeMapping( Group::typeid );
-      XmlSerializer^ ser = gcnew XmlSerializer( map );
-      Group^ myGroup = gcnew Group;
-      myGroup->GroupName = ".NET";
-      myGroup->Grouptype = GroupType::B;
-
-      // Writing the file requires a TextWriter.
-      TextWriter^ writer = gcnew StreamWriter( fileName );
-      ser->Serialize( writer, myGroup );
-      writer->Close();
+      // Serialize to a file.
+      TextWriter^ writer = gcnew StreamWriter( filename );
+      myXmlSerializer->Serialize( writer, myPerson );
    }
 };
 
 int main()
 {
-   Run^ test = gcnew Run;
-   test->SerializeObject( "SoapEnum.xml" );
-   test->SerializeOverride( "SoapOverride.xml" );
-   Console::WriteLine( "Fininished writing two files" );
+   PersonTypeAttribute^ myPersonTypeAttribute = gcnew PersonTypeAttribute;
+   myPersonTypeAttribute->SerializeObject( "XmlType.xml" );
 }

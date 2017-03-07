@@ -1,19 +1,21 @@
-    ' Override OnMouseClick in a class derived from DataGridViewCell to 
-    ' enter edit mode when the user clicks the cell. 
-    Protected Overrides Sub OnMouseClick( _
-        ByVal e As DataGridViewCellMouseEventArgs)
+    Private Shared Sub SetAlternateChoicesUsingItems( _
+        ByVal comboboxColumn As DataGridViewComboBoxColumn)
 
-        If MyBase.DataGridView IsNot Nothing Then
+        comboboxColumn.Items.AddRange("Mr.", "Ms.", "Mrs.", "Dr.")
 
-            Dim point1 As Point = MyBase.DataGridView.CurrentCellAddress
-            If point1.X = e.ColumnIndex And _
-                point1.Y = e.RowIndex And _
-                e.Button = MouseButtons.Left And _
-                Not MyBase.DataGridView.EditMode = _
-                DataGridViewEditMode.EditProgrammatically Then
-
-                MyBase.DataGridView.BeginEdit(True)
-
-            End If
-        End If
     End Sub
+
+    Private Function CreateComboBoxColumn() _
+        As DataGridViewComboBoxColumn
+        Dim column As New DataGridViewComboBoxColumn()
+
+        With column
+            .DataPropertyName = ColumnName.TitleOfCourtesy.ToString()
+            .HeaderText = ColumnName.TitleOfCourtesy.ToString()
+            .DropDownWidth = 160
+            .Width = 90
+            .MaxDropDownItems = 3
+            .FlatStyle = FlatStyle.Flat
+        End With
+        Return column
+    End Function

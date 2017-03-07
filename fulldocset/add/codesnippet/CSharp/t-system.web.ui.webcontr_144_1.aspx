@@ -1,76 +1,69 @@
-<%@ Page Language="C#" AutoEventWireup="True" %>
-<%@ Import Namespace="System.Data" %>
+<%@Page  Language="C#" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-
-<head>
-    <title>HyperLinkColumn Example</title>
 <script runat="server">
-
-      ICollection CreateDataSource() 
-      {
-         DataTable dt = new DataTable();
-         DataRow dr;
-
-         dt.Columns.Add(new DataColumn("IntegerValue", typeof(Int32)));
-         dt.Columns.Add(new DataColumn("PriceValue", typeof(Double)));
-       
-         for (int i = 0; i < 3; i++) 
-         {
-            dr = dt.NewRow();
-
-            dr[0] = i;
-            dr[1] = (Double)i * 1.23;
-
-            dt.Rows.Add(dr);
-         }
-
-         DataView dv = new DataView(dt);
-         return dv;
-      }
-
-      void Page_Load(Object sender, EventArgs e) 
-      {
-         MyDataGrid.DataSource = CreateDataSource();
-         MyDataGrid.DataBind();
-      }
-
-   </script>
-
+private void InsertShipper (object source, EventArgs e) {
+  SqlDataSource1.Insert();
+}
+</script>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+  <head runat="server">
+    <title>ASP.NET Example</title>
 </head>
-
 <body>
+    <form id="form1" runat="server">
 
-   <form id="form1" runat="server">
+      <asp:dropdownlist
+        id="DropDownList1"
+        runat="server"
+        datasourceid="SqlDataSource1"
+        datatextfield="CompanyName"
+        datavaluefield="ShipperID" />
 
-      <h3>HyperLinkColumn Example</h3>
+<!-- Security Note: The SqlDataSource uses a FormParameter,
+     Security Note: which does not perform validation of input from the client.
+     Security Note: To validate the value of the FormParameter, handle the Inserting event. -->
 
-      <asp:DataGrid id="MyDataGrid" 
-           BorderColor="black"
-           BorderWidth="1"
-           GridLines="Both"
-           AutoGenerateColumns="false"
-           runat="server">
+      <asp:sqldatasource
+        id="SqlDataSource1"
+        runat="server"
+        connectionstring="<%$ ConnectionStrings:MyNorthwind %>"
+        selectcommand="SELECT CompanyName,ShipperID FROM Shippers"
+        insertcommand="INSERT INTO Shippers (CompanyName,Phone) VALUES (@CoName,@Phone)">
+          <insertparameters>
+            <asp:formparameter name="CoName" formfield="CompanyNameBox" />
+            <asp:formparameter name="Phone"  formfield="PhoneBox" />
+          </insertparameters>
+      </asp:sqldatasource>
 
-         <HeaderStyle BackColor="#aaaadd"/>
+      <br /><asp:textbox
+           id="CompanyNameBox"
+           runat="server" />
 
-         <Columns>
+      <asp:RequiredFieldValidator
+        id="RequiredFieldValidator1"
+        runat="server"
+        ControlToValidate="CompanyNameBox"
+        Display="Static"
+        ErrorMessage="Please enter a company name." />
 
-            <asp:HyperLinkColumn
-                 HeaderText="Select an Item"
-                 DataNavigateUrlField="IntegerValue"
-                 DataNavigateUrlFormatString="detailspage.aspx?id={0}"
-                 DataTextField="PriceValue"
-                 DataTextFormatString="{0:c}"
-                 Target="_blank"/>
-           
-         </Columns>
+      <br /><asp:textbox
+           id="PhoneBox"
+           runat="server" />
 
-      </asp:DataGrid>
+      <asp:RequiredFieldValidator
+        id="RequiredFieldValidator2"
+        runat="server"
+        ControlToValidate="PhoneBox"
+        Display="Static"
+        ErrorMessage="Please enter a phone number." />
 
-   </form>
+      <br /><asp:button
+           id="Button1"
+           runat="server"
+           text="Insert New Shipper"
+           onclick="InsertShipper" />
 
-</body>
+    </form>
+  </body>
 </html>

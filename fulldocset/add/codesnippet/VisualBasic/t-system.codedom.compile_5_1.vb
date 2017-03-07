@@ -1,77 +1,41 @@
-Imports System
-Imports System.CodeDom
-Imports System.CodeDom.Compiler
-Imports Microsoft.CSharp
+        ' Creates an empty CompilerErrorCollection.
+        Dim collection As New CompilerErrorCollection()
 
-Namespace CompilerError_Example
-    _
-    Class Class1
+        ' Adds a CompilerError to the collection.
+        collection.Add(New CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text"))
 
-        Shared Sub Main()
-            ' Output some program information using Console.WriteLine.
-            Console.WriteLine("This program compiles a CodeDOM program that incorrectly declares multiple data")
-            Console.WriteLine("types to demonstrate handling compiler errors programatically.")
-            Console.WriteLine("")
+        ' Adds an array of CompilerError objects to the collection.
+        Dim errors As CompilerError() = {New CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text"), New CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text")}
+        collection.AddRange(errors)
 
-            ' Compile the CodeCompileUnit retrieved from the GetCompileUnit() method.
-            Dim provider As CodeDomProvider
-            provider = CodeDomProvider.CreateProvider("CSharp")
+        ' Adds a collection of CompilerError objects to the collection.
+        Dim errorsCollection As New CompilerErrorCollection()
+        errorsCollection.Add(New CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text"))
+        errorsCollection.Add(New CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text"))
+        collection.AddRange(errorsCollection)
 
-            ' Initialize a CompilerParameters with the options for compilation.
-            Dim assemblies() As String = New [String]() {"System.dll"}
-            Dim options As New CompilerParameters(assemblies, "output.exe")
+        ' Tests for the presence of a CompilerError in the 
+        ' collection, and retrieves its index if it is found.
+        Dim testError As New CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text")
+        Dim itemIndex As Integer = -1
+        If collection.Contains(testError) Then
+            itemIndex = collection.IndexOf(testError)
+        End If
 
-            ' Compile the CodeDOM graph and store the results in a CompilerResults.
-            Dim results As CompilerResults = provider.CompileAssemblyFromDom(options, GetCompileUnit())
+        ' Copies the contents of the collection, beginning at index 0, 
+        ' to the specified CompilerError array.
+        ' 'errors' is a CompilerError array.
+        collection.CopyTo(errors, 0)
 
-            ' Compilation produces errors. Print out each error.
-            Console.WriteLine("Listing errors from compilation: ")
-            Console.WriteLine("")
-            Dim i As Integer
-            For i = 0 To results.Errors.Count - 1
-                Console.WriteLine(results.Errors(i).ToString())
-            Next i
-        End Sub
+        ' Retrieves the count of the items in the collection.
+        Dim collectionCount As Integer = collection.Count
 
-        Public Shared Function GetCompileUnit() As CodeCompileUnit
-            ' Create a compile unit to contain a CodeDOM graph.
-            Dim cu As New CodeCompileUnit()
+        ' Inserts a CompilerError at index 0 of the collection.
+        collection.Insert(0, New CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text"))
 
-            ' Create a namespace named TestSpace.
-            Dim cn As New CodeNamespace("TestSpace")
+        ' Removes the specified CompilerError from the collection.
+        Dim [error] As New CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text")
+        collection.Remove([error])
 
-            ' Declare a new type named TestClass.
-            Dim cd As New CodeTypeDeclaration("TestClass")
-
-            ' Declare a new member string field named TestField.
-            Dim cmf As New CodeMemberField("System.String", "TestField")
-
-            ' Add the field to the type.
-            cd.Members.Add(cmf)
-
-            ' Declare a new member method named TestMethod.
-            Dim cm As New CodeMemberMethod()
-            cm.Name = "TestMethod"
-
-            ' Declare a string variable named TestVariable.
-            Dim cvd As New CodeVariableDeclarationStatement("System.String1", "TestVariable")
-            cm.Statements.Add(cvd)
-
-            ' Cast the TestField reference expression to string and assign it to the TestVariable.
-            Dim ca As New CodeAssignStatement(New CodeVariableReferenceExpression("TestVariable"), New CodeCastExpression("System.String2", New CodeFieldReferenceExpression(New CodeThisReferenceExpression(), "TestField")))
-
-            ' This code can be used to generate the following code in C#:
-            '            TestVariable = ((string)(this.TestField));
-
-            cm.Statements.Add(ca)
-            ' Add the TestMethod member to the TestClass type.
-            cd.Members.Add(cm)
-
-            ' Add the TestClass type to the namespace.
-            cn.Types.Add(cd)
-            ' Add the TestSpace namespace to the compile unit.
-            cu.Namespaces.Add(cn)
-            Return cu
-        End Function
-    End Class
-End Namespace
+        ' Removes the CompilerError at index 0.
+        collection.RemoveAt(0)

@@ -1,16 +1,22 @@
-    // Style and number columns.
-    private void Button8_Click(object sender,
-        EventArgs args)
-    {
-        DataGridViewCellStyle style = new DataGridViewCellStyle();
-        style.Alignment =
-            DataGridViewContentAlignment.MiddleCenter;
-        style.ForeColor = Color.IndianRed;
-        style.BackColor = Color.Ivory;
-
-        foreach (DataGridViewColumn column in dataGridView.Columns)
+        public override Rectangle Bounds
         {
-            column.HeaderCell.Value = column.Index.ToString();
-            column.HeaderCell.Style = style;
+            get
+            {
+                // Create a glyph that is 10x10 and sitting
+                // in the middle of the control.  Glyph coordinates
+                // are in adorner window coordinates, so we must map
+                // using the behavior service.
+                Point edge = behaviorSvc.ControlToAdornerWindow(control);
+                Size size = control.Size;
+                Point center = new Point(edge.X + (size.Width / 2), 
+                    edge.Y + (size.Height / 2));
+
+                Rectangle bounds = new Rectangle(
+                    center.X - 5,
+                    center.Y - 5,
+                    10,
+                    10);
+
+                return bounds;
+            }
         }
-    }

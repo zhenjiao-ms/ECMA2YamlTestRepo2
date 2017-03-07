@@ -1,48 +1,158 @@
-using System;
-using System.Windows.Forms;
-using System.Drawing;
+class CalendarEditingControl : DateTimePicker, IDataGridViewEditingControl
+{
+    DataGridView dataGridView;
+    private bool valueChanged = false;
+    int rowIndex;
 
-	public class MyContainer : ScrollableControl, IContainerControl
-	{
-		private Control activeControl;
-		public MyContainer() 
-		{
-			// Make the container control Blue so it can be distinguished on the form.
-			this.BackColor = Color.Blue;
-			
-			// Make the container scrollable.
-			this.AutoScroll = true;
-		}
+    public CalendarEditingControl()
+    {
+        this.Format = DateTimePickerFormat.Short;
+    }
 
-		// Add implementation to the IContainerControl.ActiveControl property.
-		public Control ActiveControl
-		{
-			get
-			{
-				return activeControl;
-			}
+    // Implements the IDataGridViewEditingControl.EditingControlFormattedValue 
+    // property.
+    public object EditingControlFormattedValue
+    {
+        get
+        {
+            return this.Value.ToShortDateString();
+        }
+        set
+        {            
+            if (value is String)
+            {
+                try
+                {
+                    // This will throw an exception of the string is 
+                    // null, empty, or not in the format of a date.
+                    this.Value = DateTime.Parse((String)value);
+                }
+                catch
+                {
+                    // In the case of an exception, just use the 
+                    // default value so we're not left with a null
+                    // value.
+                    this.Value = DateTime.Now;
+                }
+            }
+        }
+    }
 
-			set
-			{
-				// Make sure the control is a member of the ControlCollection.
-				if(this.Controls.Contains(value))
-				{
-					activeControl = value;
-				}
-			}
-		}
+    // Implements the 
+    // IDataGridViewEditingControl.GetEditingControlFormattedValue method.
+    public object GetEditingControlFormattedValue(
+        DataGridViewDataErrorContexts context)
+    {
+        return EditingControlFormattedValue;
+    }
 
-		// Add implementations to the IContainerControl.ActivateControl(Control) method.
-		public bool ActivateControl(Control active)
-		{
-			if(this.Controls.Contains(active))
-			{
-				// Select the control and scroll the control into view if needed.
-				active.Select();
-				this.ScrollControlIntoView(active);
-				this.activeControl = active;
-				return true;
-			}
-			return false;
-		}
-	}
+    // Implements the 
+    // IDataGridViewEditingControl.ApplyCellStyleToEditingControl method.
+    public void ApplyCellStyleToEditingControl(
+        DataGridViewCellStyle dataGridViewCellStyle)
+    {
+        this.Font = dataGridViewCellStyle.Font;
+        this.CalendarForeColor = dataGridViewCellStyle.ForeColor;
+        this.CalendarMonthBackground = dataGridViewCellStyle.BackColor;
+    }
+
+    // Implements the IDataGridViewEditingControl.EditingControlRowIndex 
+    // property.
+    public int EditingControlRowIndex
+    {
+        get
+        {
+            return rowIndex;
+        }
+        set
+        {
+            rowIndex = value;
+        }
+    }
+
+    // Implements the IDataGridViewEditingControl.EditingControlWantsInputKey 
+    // method.
+    public bool EditingControlWantsInputKey(
+        Keys key, bool dataGridViewWantsInputKey)
+    {
+        // Let the DateTimePicker handle the keys listed.
+        switch (key & Keys.KeyCode)
+        {
+            case Keys.Left:
+            case Keys.Up:
+            case Keys.Down:
+            case Keys.Right:
+            case Keys.Home:
+            case Keys.End:
+            case Keys.PageDown:
+            case Keys.PageUp:
+                return true;
+            default:
+                return !dataGridViewWantsInputKey;
+        }
+    }
+
+    // Implements the IDataGridViewEditingControl.PrepareEditingControlForEdit 
+    // method.
+    public void PrepareEditingControlForEdit(bool selectAll)
+    {
+        // No preparation needs to be done.
+    }
+
+    // Implements the IDataGridViewEditingControl
+    // .RepositionEditingControlOnValueChange property.
+    public bool RepositionEditingControlOnValueChange
+    {
+        get
+        {
+            return false;
+        }
+    }
+
+    // Implements the IDataGridViewEditingControl
+    // .EditingControlDataGridView property.
+    public DataGridView EditingControlDataGridView
+    {
+        get
+        {
+            return dataGridView;
+        }
+        set
+        {
+            dataGridView = value;
+        }
+    }
+
+    // Implements the IDataGridViewEditingControl
+    // .EditingControlValueChanged property.
+    public bool EditingControlValueChanged
+    {
+        get
+        {
+            return valueChanged;
+        }
+        set
+        {
+            valueChanged = value;
+        }
+    }
+
+    // Implements the IDataGridViewEditingControl
+    // .EditingPanelCursor property.
+    public Cursor EditingPanelCursor
+    {
+        get
+        {
+            return base.Cursor;
+        }
+    }
+
+    protected override void OnValueChanged(EventArgs eventargs)
+    {
+        // Notify the DataGridView that the contents of the cell
+        // have changed.
+        valueChanged = true;
+        this.EditingControlDataGridView.NotifyCurrentCellDirty(true);
+        base.OnValueChanged(eventargs);
+    }
+}

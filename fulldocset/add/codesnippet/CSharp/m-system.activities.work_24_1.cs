@@ -1,48 +1,37 @@
-            Activity wf = new Sequence
-            {
-                Activities =
-                 {
-                     new WriteLine
-                     {
-                         Text = "Starting the workflow."
-                     },
-                     new Delay
-                     {
-                         Duration = TimeSpan.FromSeconds(5)
-                     },
-                     new WriteLine
-                     {
-                         Text = "Ending the workflow."
-                     }
-                 }
-            };
+        // single interaction with the user. The user enters a string in the console and that
+        // string is used to resume the ReadLine activity bookmark
+        static void Interact(WorkflowApplication application, AutoResetEvent resetEvent)
+        {
+            Console.WriteLine("Workflow is ready for input");
+            Console.WriteLine("Special commands: 'unload', 'exit'");
 
-            // Create a WorkflowApplication instance.
-            WorkflowApplication wfApp = new WorkflowApplication(wf);
-
-            // Subscribe to any desired workflow lifecycle events.
-            wfApp.Completed = delegate(WorkflowApplicationCompletedEventArgs e)
+            bool done = false;
+            while (!done)
             {
-                if (e.CompletionState == ActivityInstanceState.Faulted)
+                Console.Write("> ");
+                string s = Console.ReadLine();
+                if (s.Equals("unload"))
                 {
-                    Console.WriteLine("Workflow {0} Terminated.", e.InstanceId);
-                    Console.WriteLine("Exception: {0}\n{1}",
-                        e.TerminationException.GetType().FullName,
-                        e.TerminationException.Message);
+                    try
+                    {
+                        // attempt to unload will fail if the workflow is idle within a NoPersistZone
+                        application.Unload(TimeSpan.FromSeconds(5));
+                        done = true;
+                    }
+                    catch (TimeoutException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
                 }
-                else if (e.CompletionState == ActivityInstanceState.Canceled)
+                else if (s.Equals("exit"))
                 {
-                    Console.WriteLine("Workflow {0} Canceled.", e.InstanceId);
+                    application.ResumeBookmark("inputBookmark", s);
+                    done = true;
                 }
                 else
                 {
-                    Console.WriteLine("Workflow {0} Completed.", e.InstanceId);
+                    application.ResumeBookmark("inputBookmark", s);
                 }
-            };
-
-            // Run the workflow.
-            wfApp.Run();
-
-            Thread.Sleep(TimeSpan.FromSeconds(1));
-
-            wfApp.Cancel();
+            }
+            resetEvent.WaitOne();
+        }

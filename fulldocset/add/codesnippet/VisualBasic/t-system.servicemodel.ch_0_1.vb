@@ -1,35 +1,35 @@
-			Dim baseAddress As New Uri("http://localhost:8000/servicemodelsamples/service")
+			' Create an instance of the binding to use.
+			Dim b As New WSHttpBinding()
 
-			' Create a ServiceHost for the CalculatorService type and provide the base address.
-			Using serviceHost As New ServiceHost(GetType(CalculatorService), baseAddress)
-				' Create a custom binding that contains two binding elements.
-				Dim reliableSession As New ReliableSessionBindingElement()
-				reliableSession.Ordered = True
+			' Get the binding element collection.
+			Dim bec As BindingElementCollection = b.CreateBindingElements()
 
-				Dim httpTransport As New HttpTransportBindingElement()
-				httpTransport.AuthenticationScheme = System.Net.AuthenticationSchemes.Anonymous
-				httpTransport.HostNameComparisonMode = HostNameComparisonMode.StrongWildcard
+			' Find the SymmetricSecurityBindingElement in the collection.
+			' Important: Cast to the SymmetricSecurityBindingElement when using the Find
+			' method.
+			Dim sbe As SymmetricSecurityBindingElement = CType(bec.Find(Of SecurityBindingElement)(), SymmetricSecurityBindingElement)
 
-				Dim binding As New CustomBinding(reliableSession, httpTransport)
+			' Get the LocalSecuritySettings from the binding element.
+			Dim lc As LocalClientSecuritySettings = sbe.LocalClientSettings
 
-				' Add an endpoint using that binding.
-				serviceHost.AddServiceEndpoint(GetType(ICalculator), binding, "")
+			' Print out values.
+			Console.WriteLine("Maximum cookie caching time: {0} days", lc.MaxCookieCachingTime.Days)
+			Console.WriteLine("Replay Cache Size: {0}", lc.ReplayCacheSize)
+			Console.WriteLine("ReplayWindow: {0} minutes", lc.ReplayWindow.Minutes)
+			Console.WriteLine("MaxClockSkew: {0} minutes", lc.MaxClockSkew.Minutes)
+			Console.ReadLine()
 
-				' Add a MEX endpoint.
-				Dim smb As New ServiceMetadataBehavior()
-				smb.HttpGetEnabled = True
-				smb.HttpGetUrl = New Uri("http://localhost:8001/servicemodelsamples")
-				serviceHost.Description.Behaviors.Add(smb)
+			' Change the MaxClockSkew to 3 minutes.
+			lc.MaxClockSkew = New TimeSpan(0, 0, 3, 0)
 
-				' Open the ServiceHostBase to create listeners and start listening for messages.
-				serviceHost.Open()
+			' Print the new value.
+			Console.WriteLine("New MaxClockSkew: {0} minutes", lc.MaxClockSkew.Minutes)
+			Console.ReadLine()
 
-				' The service can now be accessed.
-				Console.WriteLine("The service is ready.")
-				Console.WriteLine("Press <ENTER> to terminate service.")
-				Console.WriteLine()
-				Console.ReadLine()
+			' Create an EndpointAddress for the service.
+			Dim ea As New EndpointAddress("http://localhost/calculator")
 
-				' Close the ServiceHostBase to shutdown the service.
-				serviceHost.Close()
-			End Using
+			' Create a client. The binding has the changed MaxClockSkew.
+			' CalculatorClient cc = new CalculatorClient(b, ea);
+			' Use the new client. (Not shown.)
+			' cc.Close();

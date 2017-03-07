@@ -1,119 +1,178 @@
-<%@Page  Language="C#" %>
-<%@Import Namespace="System.Data" %>
-<%@Import Namespace="System.Data.Common" %>
-<%@Import Namespace="System.Data.SqlClient" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<%@ Page language="C#" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
- private void On_Inserting(Object sender, SqlDataSourceCommandEventArgs e) {
 
-    SqlParameter insertedKey = new SqlParameter("@PK_New", SqlDbType.Int);
-    insertedKey.Direction    = ParameterDirection.Output;        
-    e.Command.Parameters.Add(insertedKey);
- }
+  void EmployeeFormView_ItemInserted(Object sender, FormViewInsertedEventArgs e)
+  {
+    // Use the Exception property to determine whether an exception
+    // occurred during the insert operation.
+    if (e.Exception == null)
+    {
+      // Use the AffectedRows property to determine whether the
+      // record was inserted. Sometimes an error might occur that 
+      // does not raise an exception, but prevents the insert
+      // operation from completing.
+      if (e.AffectedRows == 1)
+      {
+        MessageLabel.Text = "Record inserted successfully.";
+      }
+      else
+      {
+        MessageLabel.Text = "An error occurred during the insert operation.";
+        
+        // Use the KeepInInsertMode property to remain in insert mode
+        // when an error occurs during the insert operation.
+        e.KeepInInsertMode = true;
+      }
+    }
+    else
+    {
+      // Insert the code to handle the exception.
+      MessageLabel.Text = e.Exception.Message;
+      
+      // Use the ExceptionHandled property to indicate that the 
+      // exception has already been handled.
+      e.ExceptionHandled = true;
+      e.KeepInInsertMode = true;
+    }
+  }
 
- private void On_Inserted(Object sender, SqlDataSourceStatusEventArgs e) {
-    DbCommand command = e.Command;    
-    
-    // The label displays the primary key of the recently inserted row.
-    Label1.Text = command.Parameters["@PK_New"].Value.ToString();
-    
-    // Force a refresh after the data is inserted.
-    GridView1.DataBind();
- }
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
   <head runat="server">
-    <title>ASP.NET Example</title>
+    <title>FormViewInsertedEventArgs Example</title>
 </head>
 <body>
     <form id="form1" runat="server">
+        
+      <h3>FormViewInsertedEventArgs Example</h3>
+                       
+      <asp:formview id="EmployeeFormView"
+        datasourceid="EmployeeSource"
+        allowpaging="true"
+        datakeynames="EmployeeID"
+        emptydatatext="No employees found."
+        oniteminserted="EmployeeFormView_ItemInserted"  
+        runat="server">
 
-      <asp:GridView
-        id="GridView1"
-        runat="server"
-        AutoGenerateColumns="False"
-        DataKeyNames="EmployeeID"        
-        DataSourceID="SqlDataSource1">
-        <columns>          
-          <asp:BoundField HeaderText="First Name" DataField="FirstName" />
-          <asp:BoundField HeaderText="Last Name" DataField="LastName" />
-          <asp:BoundField HeaderText="Title" DataField="Title" />
-          <asp:ButtonField ButtonType="Link" CommandName="Select" Text="Details..." />
-        </columns>
-      </asp:GridView>
-
-      <asp:SqlDataSource
-        id="SqlDataSource1"
-        runat="server"
-        ConnectionString="<%$ ConnectionStrings:MyNorthwind %>"
-        SelectCommand="SELECT EmployeeID,FirstName,LastName,Title FROM Employees">
-      </asp:SqlDataSource>
-
-      <hr />
-
-      <asp:DetailsView
-        id="DetailsView1"
-        runat="server"
-        DataSourceID="SqlDataSource2"
-        AutoGenerateRows="False"
-        AutoGenerateInsertButton="True">
-        <fields>
-          <asp:BoundField HeaderText="First Name" DataField="FirstName" ReadOnly="False"/>
-          <asp:BoundField HeaderText="Last Name" DataField="LastName" ReadOnly="False"/>
-          <asp:TemplateField HeaderText="Title">
-            <ItemTemplate>
-              <asp:DropDownList
-                id="TitleDropDownList"
-                runat="server"
-                selectedvalue="<%# Bind('Title') %>" >
-                <asp:ListItem Selected="True">Sales Representative</asp:ListItem>
-                <asp:ListItem>Sales Manager</asp:ListItem>
-                <asp:ListItem>Vice President, Sales</asp:ListItem>
-              </asp:DropDownList>
-            </ItemTemplate>
-          </asp:TemplateField>
-          <asp:BoundField HeaderText="Notes" DataField="Notes" ReadOnly="False"/>
-        </fields>
-      </asp:DetailsView>
-
-
-      <asp:SqlDataSource
-        id="SqlDataSource2"
-        runat="server"
-        ConnectionString="<%$ ConnectionStrings:MyNorthwind%>"
-        SelectCommand="SELECT * FROM Employees"
-        InsertCommandType = "StoredProcedure"
-        InsertCommand="sp_insertemployee"        
-        OnInserting="On_Inserting"
-        OnInserted ="On_Inserted"
-        FilterExpression="EmployeeID={0}">
-        <FilterParameters>
-          <asp:ControlParameter Name="EmployeeID" ControlId="GridView1" PropertyName="SelectedValue" />
-        </FilterParameters>
-      </asp:SqlDataSource>
-
-<!-- 
-     -- An example sp_insertemployee stored procedure that returns
-     -- the primary key of the row that was inserted in an OUT parameter.
-     CREATE PROCEDURE sp_insertemployee 
-        @FirstName nvarchar(10), 
-        @LastName nvarchar(20) , 
-        @Title nvarchar(30), 
-        @Notes nvarchar(200), 
-        @PK_New int OUTPUT
-      AS
-        INSERT INTO Employees(FirstName,LastName,Title,Notes)VALUES (@FirstName,@LastName,@Title,@Notes)
-        SELECT @PK_New = @@IDENTITY
-        RETURN (1)    
-      GO
--->      
-
-      <asp:Label 
-        id="Label1"
-        runat="server" />
+        <itemtemplate>
+          <table>
+            <tr>
+              <td rowspan="5">
+                <asp:image id="CompanyLogoImage"
+                  imageurl="~/Images/Logo.jpg"
+                  alternatetext="Company logo"
+                  runat="server"/>
+              </td>
+              <td colspan="2">
+                  &nbsp; 
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Name:</b>
+              </td>
+              <td>
+                <%# Eval("FirstName") %> <%# Eval("LastName") %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Title:</b>
+              </td>
+              <td>
+                <%# Eval("Title") %>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <asp:linkbutton id="NewButton"
+                  text="New"
+                  commandname="New"
+                  runat="server"/> 
+              </td>
+            </tr>
+          </table>       
+        </itemtemplate>
+        <insertitemtemplate>
+          <table>
+            <tr>
+              <td rowspan="4">
+                <asp:image id="CompanyLogoEditImage"
+                  imageurl="~/Images/Logo.jpg"
+                  alternatetext="Company logo"
+                  runat="server"/>
+              </td>
+              <td colspan="2">
+                  &nbsp; 
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b><asp:Label
+                  runat="server" 
+                  AssociatedControlID="FirstNameInsertTextBox" 
+                  Text="Name" />:</b>
+              </td>
+              <td>
+                <asp:textbox id="FirstNameInsertTextBox"
+                  text='<%# Bind("FirstName") %>'
+                  runat="server"/>
+                <asp:textbox id="LastNameInsertTextBox"
+                  text='<%# Bind("LastName") %>'
+                  runat="server"/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b><asp:Label
+                  runat="server" 
+                  AssociatedControlID="TitleInsertTextBox" 
+                  Text="Title" />:</b>
+              </td>
+              <td>
+                <asp:textbox id="TitleInsertTextBox"
+                  text='<%# Bind("Title") %>'
+                  runat="server"/> 
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <asp:linkbutton id="InsertButton"
+                  text="Insert"
+                  commandname="Insert"
+                  runat="server"/>
+                <asp:linkbutton id="CancelButton"
+                  text="Cancel"
+                  commandname="Cancel"
+                  runat="server"/> 
+              </td>
+            </tr>
+          </table>       
+        </insertitemtemplate> 
+                  
+      </asp:formview>
       
+      <br/><br/>
+      
+      <asp:label id="MessageLabel"
+        forecolor="Red"
+        runat="server"/>
+
+      <!-- This example uses Microsoft SQL Server and connects  -->
+      <!-- to the Northwind sample database. Use an ASP.NET     -->
+      <!-- expression to retrieve the connection string value   -->
+      <!-- from the Web.config file.                            -->
+      <asp:sqldatasource id="EmployeeSource"
+        selectcommand="Select [EmployeeID], [LastName], [FirstName], [Title], [PhotoPath] From [Employees]"
+        insertcommand="Insert Into [Employees] ([LastName], [FirstName], [Title]) VALUES (@LastName, @FirstName, @Title)"
+        connectionstring="<%$ ConnectionStrings:NorthWindConnectionString%>" 
+        runat="server"/>
+            
     </form>
   </body>
 </html>

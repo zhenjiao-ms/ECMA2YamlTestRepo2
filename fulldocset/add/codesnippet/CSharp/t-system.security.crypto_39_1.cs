@@ -1,53 +1,123 @@
+//
+// This example signs a file specified by a URI 
+// using a detached signature. It then verifies  
+// the signed XML.
+//
+
 using System;
 using System.Security.Cryptography;
-public class OidSample
+using System.Security.Cryptography.Xml;
+using System.Text;
+using System.Xml;
+
+
+
+class XMLDSIGDetached
 {
-	public static void Main()
-	{
-		// Assign values to strings.
-		string Value1 = "1.2.840.113549.1.1.1";
-		string Name1 = "3DES";
-		string Value2 = "1.3.6.1.4.1.311.20.2";
-		string InvalidName = "This name is not a valid name";
-		string InvalidValue = "1.1.1.1.1.1.1.1";
+	
+    [STAThread]
+    static void Main(string[] args)
+    {
+    // The URI to sign.
+        string resourceToSign = "http://www.microsoft.com";
+		
+        // The name of the file to which to save the XML signature.
+        string XmlFileName = "xmldsig.xml";
 
-		// Create new Oid objects using the specified values.
-		// Note that the corresponding Value or Friendly Name property is automatically added to the object.
-		Oid o1 = new Oid(Value1);
-		Oid o2 = new Oid(Name1);
+        try
+        {
 
-		// Create a new Oid object using the specified Value and Friendly Name properties.
-		// Note that the two are not compared to determine if the Value is associated 
-		//  with the Friendly Name.
-		Oid o3 = new Oid(Value2, InvalidName);
+            // Generate a signing key.
+            RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
 
-		//Create a new Oid object using the specified Value. Note that if the value
-		//  is invalid or not known, no value is assigned to the Friendly Name property.
-		Oid o4 = new Oid(InvalidValue);
+            Console.WriteLine("Signing: {0}", resourceToSign);
 
-		//Write out the property information of the Oid objects.
-		Console.WriteLine("Oid1: Automatically assigned Friendly Name: {0}, {1}", o1.FriendlyName, o1.Value);
-		Console.WriteLine("Oid2: Automatically assigned Value: {0}, {1}", o2.FriendlyName, o2.Value);
-		Console.WriteLine("Oid3: Name and Value not compared: {0}, {1}", o3.FriendlyName, o3.Value);
-		Console.WriteLine("Oid4: Invalid Value used: {0}, {1} {2}", o4.FriendlyName, o4.Value, Environment.NewLine);
+            // Sign the detached resourceand save the signature in an XML file.
+            SignDetachedResource(resourceToSign, XmlFileName, Key);
 
-		//Create an Oid collection and add several Oid objects.
-		OidCollection oc = new OidCollection();
-		oc.Add(o1);
-		oc.Add(o2);
-		oc.Add(o3);
-		Console.WriteLine("Number of Oids in the collection: {0}", oc.Count);
-		Console.WriteLine("Is synchronized: {0} {1}", oc.IsSynchronized, Environment.NewLine);
+            Console.WriteLine("XML signature was succesfully computed and saved to {0}.", XmlFileName);
 
-		//Create an enumerator for moving through the collection.
-		OidEnumerator oe = oc.GetEnumerator();
-		//You must execute a MoveNext() to get to the first item in the collection.
-		oe.MoveNext();
-		// Write out Oids in the collection.
-		Console.WriteLine("First Oid in collection: {0},{1}", oe.Current.FriendlyName,oe.Current.Value);
-		oe.MoveNext();
-		Console.WriteLine("Second Oid in collection: {0},{1}", oe.Current.FriendlyName, oe.Current.Value);
-		//Return index in the collection to the beginning.
-		oe.Reset();
-	}
+            // Verify the signature of the signed XML.
+            Console.WriteLine("Verifying signature...");
+
+            //Verify the XML signature in the XML file.
+            bool result = VerifyDetachedSignature(XmlFileName);
+
+            // Display the results of the signature verification to 
+            // the console.
+            if(result)
+            {
+                Console.WriteLine("The XML signature is valid.");
+            }
+            else
+            {
+                Console.WriteLine("The XML signature is not valid.");
+            }
+        }
+        catch(CryptographicException e)
+        {
+            Console.WriteLine(e.Message);
+
+        }
+		
+    }
+
+    // Sign an XML file and save the signature in a new file.
+    public static void SignDetachedResource(string URIString, string XmlSigFileName, RSA Key)
+    {
+        // Create a SignedXml object.
+        SignedXml signedXml = new SignedXml();
+
+        // Assign the key to the SignedXml object.
+        signedXml.SigningKey = Key;
+
+        // Create a reference to be signed.
+        Reference reference = new Reference();
+
+        // Add the passed URI to the reference object.
+        reference.Uri = URIString;
+		
+        // Add the reference to the SignedXml object.
+        signedXml.AddReference(reference);
+
+        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+        KeyInfo keyInfo = new KeyInfo();
+        keyInfo.AddClause(new RSAKeyValue((RSA)Key));	
+        signedXml.KeyInfo = keyInfo;
+
+        // Compute the signature.
+        signedXml.ComputeSignature();
+
+        // Get the XML representation of the signature and save
+        // it to an XmlElement object.
+        XmlElement xmlDigitalSignature = signedXml.GetXml();
+
+        // Save the signed XML document to a file specified
+        // using the passed string.
+        XmlTextWriter xmltw = new XmlTextWriter(XmlSigFileName, new UTF8Encoding(false));
+        xmlDigitalSignature.WriteTo(xmltw);
+        xmltw.Close();
+    }
+    // Verify the signature of an XML file and return the result.
+    public static Boolean VerifyDetachedSignature(string XmlSigFileName)
+    {	
+        // Create a new XML document.
+        XmlDocument xmlDocument = new XmlDocument();
+
+        // Load the passed XML file into the document.
+        xmlDocument.Load(XmlSigFileName);
+	
+        // Create a new SignedXMl object.
+        SignedXml signedXml = new SignedXml();
+
+        // Find the "Signature" node and create a new
+        // XmlNodeList object.
+        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
+
+        // Load the signature node.
+        signedXml.LoadXml((XmlElement)nodeList[0]);
+
+        // Check the signature and return the result.
+        return signedXml.CheckSignature();
+    }
 }

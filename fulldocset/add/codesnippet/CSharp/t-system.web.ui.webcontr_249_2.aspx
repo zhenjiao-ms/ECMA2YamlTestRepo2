@@ -1,177 +1,311 @@
+<%@ Page Language="C#" %>
+<%@ Import Namespace="System.Drawing" %>
 
-<%@ Page Language="C#" AutoEventWireup="True" %>
-<%@ Import Namespace="System.Data" %>
- 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<script runat="server">
+    private Style primaryStyle = new Style();
+
+    void Page_Load(object sender, System.EventArgs e)
+    {
+        if (!Page.IsPostBack)
+        {
+            // Add data to the borderColorList, 
+            // backColorList, and foreColorList controls.
+            ListItemCollection colors = new ListItemCollection();
+            colors.Add(Color.Black.Name);
+            colors.Add(Color.Blue.Name);
+            colors.Add(Color.Green.Name);
+            colors.Add(Color.Orange.Name);
+            colors.Add(Color.Purple.Name);
+            colors.Add(Color.Red.Name);
+            colors.Add(Color.White.Name);
+            colors.Add(Color.Yellow.Name);
+            borderColorList.DataSource = colors;
+            borderColorList.DataBind();
+            backColorList.DataSource = colors;
+            backColorList.DataBind();
+            foreColorList.DataSource = colors;
+            foreColorList.DataBind();
+
+            // Add data to the borderStyleList control.
+            ListItemCollection styles = new ListItemCollection();
+            Type styleType = typeof(BorderStyle);
+            foreach (string s in Enum.GetNames(styleType))
+            {
+                styles.Add(s);
+            }
+            borderStyleList.DataSource = styles;
+            borderStyleList.DataBind();
+
+            // Add data to the borderWidthList control.
+            ListItemCollection widths = new ListItemCollection();
+            for (int i = 0; i < 11; i++)
+            {
+                widths.Add(i.ToString() + "px");
+            }
+            borderWidthList.DataSource = widths;
+            borderWidthList.DataBind();
+
+            // Add data to the fontNameList control.
+            ListItemCollection names = new ListItemCollection();
+            names.Add("Arial");
+            names.Add("Courier");
+            names.Add("Garamond");
+            names.Add("Times New Roman");
+            names.Add("Verdana");
+            fontNameList.DataSource = names;
+            fontNameList.DataBind();
+
+            // Add data to the fontSizeList control.
+            ListItemCollection fontSizes = new ListItemCollection();
+            fontSizes.Add("Small");
+            fontSizes.Add("Medium");
+            fontSizes.Add("Large");
+            fontSizes.Add("10pt");
+            fontSizes.Add("14pt");
+            fontSizes.Add("20pt");
+            fontSizeList.DataSource = fontSizes;
+            fontSizeList.DataBind();
+
+            //Set primaryStyle as the style for each control.
+            Label1.ApplyStyle(primaryStyle);
+            ListBox1.ApplyStyle(primaryStyle);
+            Button1.ApplyStyle(primaryStyle);
+            Table1.ApplyStyle(primaryStyle);
+            TextBox1.ApplyStyle(primaryStyle);
+        }
+    }
+    void ChangeBorderColor(object sender, System.EventArgs e)
+    {
+        primaryStyle.BorderColor =
+            Color.FromName(borderColorList.SelectedItem.Text);
+        Label1.ApplyStyle(primaryStyle);
+        ListBox1.ApplyStyle(primaryStyle);
+        Button1.ApplyStyle(primaryStyle);
+        Table1.ApplyStyle(primaryStyle);
+        TextBox1.ApplyStyle(primaryStyle);
+    }
+
+    void ChangeBackColor(object sender, System.EventArgs e)
+    {
+        primaryStyle.BackColor =
+            Color.FromName(backColorList.SelectedItem.Text);
+        Label1.ApplyStyle(primaryStyle);
+        ListBox1.ApplyStyle(primaryStyle);
+        Button1.ApplyStyle(primaryStyle);
+        Table1.ApplyStyle(primaryStyle);
+        TextBox1.ApplyStyle(primaryStyle);
+    }
+
+    void ChangeForeColor(object sender, System.EventArgs e)
+    {
+        primaryStyle.ForeColor =
+            Color.FromName(foreColorList.SelectedItem.Text);
+        Label1.ApplyStyle(primaryStyle);
+        ListBox1.ApplyStyle(primaryStyle);
+        Button1.ApplyStyle(primaryStyle);
+        Table1.ApplyStyle(primaryStyle);
+        TextBox1.ApplyStyle(primaryStyle);
+    }
+
+    void ChangeBorderStyle(object sender, System.EventArgs e)
+    {
+        primaryStyle.BorderStyle =
+            (BorderStyle)Enum.Parse(typeof(BorderStyle),
+            borderStyleList.SelectedItem.Text);
+        Label1.ApplyStyle(primaryStyle);
+        ListBox1.ApplyStyle(primaryStyle);
+        Button1.ApplyStyle(primaryStyle);
+        Table1.ApplyStyle(primaryStyle);
+        TextBox1.ApplyStyle(primaryStyle);
+    }
+
+    void ChangeBorderWidth(object sender, System.EventArgs e)
+    {
+        primaryStyle.BorderWidth =
+            Unit.Parse(borderWidthList.SelectedItem.Text);
+        Label1.ApplyStyle(primaryStyle);
+        ListBox1.ApplyStyle(primaryStyle);
+        Button1.ApplyStyle(primaryStyle);
+        Table1.ApplyStyle(primaryStyle);
+        TextBox1.ApplyStyle(primaryStyle);
+    }
+
+    void ChangeFont(object sender, System.EventArgs e)
+    {
+        primaryStyle.Font.Name =
+            fontNameList.SelectedItem.Text;
+        Label1.ApplyStyle(primaryStyle);
+        ListBox1.ApplyStyle(primaryStyle);
+        Button1.ApplyStyle(primaryStyle);
+        Table1.ApplyStyle(primaryStyle);
+        TextBox1.ApplyStyle(primaryStyle);
+    }
+
+    void ChangeFontSize(object sender, System.EventArgs e)
+    {
+        primaryStyle.Font.Size =
+            FontUnit.Parse(fontSizeList.SelectedItem.Text);
+        Label1.ApplyStyle(primaryStyle);
+        ListBox1.ApplyStyle(primaryStyle);
+        Button1.ApplyStyle(primaryStyle);
+        Table1.ApplyStyle(primaryStyle);
+        TextBox1.ApplyStyle(primaryStyle);
+    }
+</script>
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
-   <script runat="server">
- 
-      ICollection CreateDataSource()
-      {
-
-         // Create sample data for the DataGrid control.
-         DataTable dt = new DataTable();
-         DataRow dr;
- 
-         // Define the columns of the table.
-         dt.Columns.Add(new DataColumn("IntegerValue", typeof(Int32)));
-         dt.Columns.Add(new DataColumn("StringValue", typeof(String)));
-         dt.Columns.Add(new DataColumn("CurrencyValue", typeof(Double)));
- 
-         // Populate the table with sample values.
-         for (int i=0; i<=100; i++) 
-         {
-
-            dr = dt.NewRow();
- 
-            dr[0] = i;
-            dr[1] = "Item " + i.ToString();
-            dr[2] = 1.23 * (i + 1);
- 
-            dt.Rows.Add(dr);
-         
-         }
- 
-         DataView dv = new DataView(dt);
-
-         return dv;
-      
-      }
- 
-      void Page_Load(Object sender, EventArgs e)
-      { 
- 
-         // Load sample data only once, when the page is first loaded.
-         if (!IsPostBack)
-         { 
-         
-            ItemsGrid.DataSource = CreateDataSource();
-            ItemsGrid.DataBind();
-         
-         }
-
-         // Manually register the event-handling method for the PageIndexChanged  
-         // event of the DataGrid control.
-         ItemsGrid.PageIndexChanged += new DataGridPageChangedEventHandler(this.Grid_Change);
-
-      }
-
-      void Check_Change(Object sender, EventArgs e)
-      {
-   
-         // Allow or prevent paging depending on the user's selection.
-         if (AllowPagingCheckBox.Checked)
-         {
-
-            ItemsGrid.AllowPaging = true;
-
-         }
-         else
-         {
-
-            ItemsGrid.AllowPaging = false;
-
-         }
-
-         // Re-bind the data to refresh the DataGrid control. 
-         ItemsGrid.DataSource = CreateDataSource();
-         ItemsGrid.DataBind();
-
-      }
-
-      void Grid_Change(Object sender, DataGridPageChangedEventArgs e) 
-      {
- 
-         // For the DataGrid control to navigate to the correct page when paging is
-         // allowed, the CurrentPageIndex property must be programmatically updated.
-         // This process is usually accomplished in the event-handling method for the
-         // PageIndexChanged event.
-
-         // Set CurrentPageIndex to the page the user clicked.
-         ItemsGrid.CurrentPageIndex = e.NewPageIndex;
-
-         // Re-bind the data to refresh the DataGrid control. 
-         ItemsGrid.DataSource = CreateDataSource();
-         ItemsGrid.DataBind();
-      
-      }
-
-   </script>
- 
 <head runat="server">
-    <title>DataGrid PageIndexChanged Example</title>
+    <title>Untitled Page</title>
 </head>
 <body>
- 
-   <form id="form1" runat="server">
- 
-      <h3>DataGrid PageIndexChanged Example</h3>
+    <form id="form1" runat="server">
+    <div>
 
-      Select whether to allow paging in the DataGrid control.
-
-      <br /><br />
- 
-      <b>Product List</b>
- 
-      <asp:DataGrid id="ItemsGrid"
-           BorderColor="black"
-           BorderWidth="1"
-           CellPadding="3"
-           AutoGenerateColumns="False"
-           PageSize="10"
-           AllowPaging="True"
-           runat="server">
-
-         <HeaderStyle BackColor="#00aaaa">
-         </HeaderStyle>
-
-         <Columns>
-
-            <asp:BoundColumn DataField="IntegerValue" 
-                 SortExpression="IntegerValue"
-                 HeaderText="Item"/>
-
-            <asp:BoundColumn DataField="StringValue"
-                 SortExpression="StringValue" 
-                 HeaderText="Description"/>
-
-            <asp:BoundColumn DataField="CurrencyValue" 
-                 HeaderText="Price"
-                 SortExpression="CurrencyValue"
-                 DataFormatString="{0:c}">
-
-               <ItemStyle HorizontalAlign="Right">
-               </ItemStyle>
-
-            </asp:BoundColumn>
-
-         </Columns> 
- 
-      </asp:DataGrid>
-
-      <hr />
-
-      <table cellpadding="5">
-
-         <tr>
-
-            <td>
-
-               <asp:CheckBox id="AllowPagingCheckBox"
-                    Text="Allow paging"
-                    AutoPostBack="True"
-                    Checked="True"
-                    OnCheckedChanged="Check_Change"
-                    runat="server"/>
-
+    <table cellpadding="6" border="0">
+        <tr>
+            <td rowspan="10" style="border:solid 1px Gray">
+                <p>
+                    <asp:label id="Label1" 
+                        Text="Border Properties Example" Runat="server">
+                        Label Styles
+                    </asp:label>
+                </p>
+                <p>
+                    <asp:button id="Button1" runat="server" 
+                        Text="Button Styles">
+                    </asp:button>
+                </p>
+                <p>
+                    <asp:listbox id="ListBox1" Runat="server">
+                        <asp:ListItem Value="0" Text="List Item 0">
+                        </asp:ListItem>
+                        <asp:ListItem Value="1" Text="List Item 1">
+                        </asp:ListItem>
+                        <asp:ListItem Value="2" Text="List Item 2">
+                        </asp:ListItem>
+                    </asp:listbox>
+                </p>
+                <p>
+                    <asp:textbox id="TextBox1" 
+                        Text="TextBox Styles" Runat="server">
+                    </asp:textbox>
+                </p>
+                <p>
+                    <asp:table id="Table1" Runat="server">
+                        <asp:TableRow>
+                            <asp:TableCell Text="(0,0)"></asp:TableCell>
+                            <asp:TableCell Text="(0,1)"></asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell Text="(1,0)"></asp:TableCell>
+                            <asp:TableCell Text="(1,1)"></asp:TableCell>
+                        </asp:TableRow>
+                    </asp:table>
+                </p>
             </td>
-            
-         </tr>
+            <td align="right">
+                <asp:Label ID="Label2" runat="server" 
+                    AssociatedControlID="borderColorList" 
+                    Text="Border Color:">
+                </asp:Label>
+            </td>
+            <td>
+                <asp:dropdownlist id="borderColorList" 
+                    Runat="server" AutoPostBack="True" 
+                    OnSelectedIndexChanged="ChangeBorderColor">
+                </asp:dropdownlist>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <asp:Label ID="Label3" Runat="server" 
+                    AssociatedControlID="borderStyleList"
+                    Text="Border Style:">
+                </asp:Label>
+            </td>
+            <td>
+                <asp:dropdownlist id="borderStyleList" 
+                    Runat="server" AutoPostBack="True"
+                    OnSelectedIndexChanged="ChangeBorderStyle">
+                </asp:dropdownlist>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <asp:Label ID="Label4" Runat="server" 
+                    AssociatedControlID="borderWidthList"
+                    Text="Border Width">
+                </asp:Label>
+            </td>
+            <td>
+                <asp:dropdownlist id="borderWidthList" 
+                    Runat="server" AutoPostBack="True"
+                    OnSelectedIndexChanged="ChangeBorderWidth">
+                </asp:dropdownlist>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <asp:Label ID="Label5" Runat="server" 
+                    AssociatedControlID="backColorList"
+                    Text="Back Color:">
+                </asp:Label>
+            </td>
+            <td>
+                <asp:dropdownlist id="backColorList" 
+                    Runat="server" AutoPostBack="True"
+                    OnSelectedIndexChanged="ChangeBackColor">
+                </asp:dropdownlist>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <asp:Label ID="Label6" Runat="server" 
+                    AssociatedControlID="foreColorList"
+                    Text="Foreground Color:">
+                </asp:Label>
+            </td>
+            <td>
+                <asp:dropdownlist id="foreColorList" 
+                    Runat="server" AutoPostBack="True"
+                    OnSelectedIndexChanged="ChangeForeColor">
+                </asp:dropdownlist>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <asp:Label ID="Label7" Runat="server" 
+                    AssociatedControlID="fontNameList"
+                    Text="Font Name:">
+                </asp:Label>
+            </td>
+            <td>
+                <asp:dropdownlist id="fontNameList" 
+                    Runat="server" AutoPostBack="True"
+                    OnSelectedIndexChanged="ChangeFont">
+                </asp:dropdownlist>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <asp:Label ID="Label8" Runat="server" 
+                    AssociatedControlID="fontSizeList"
+                    Text="Font Size:">
+                </asp:Label>
+            </td>
+            <td>
+                <asp:dropdownlist id="fontSizeList" 
+                    Runat="server" AutoPostBack="True" 
+                    OnSelectedIndexChanged="ChangeFontSize">
+                </asp:dropdownlist>
+            </td>
+        </tr>
+    </table>
 
-      </table>
- 
-   </form>
- 
+    </div>
+    </form>
 </body>
 </html>

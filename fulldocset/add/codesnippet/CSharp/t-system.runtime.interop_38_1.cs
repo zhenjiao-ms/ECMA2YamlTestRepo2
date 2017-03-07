@@ -1,7 +1,20 @@
+using System;
 using System.Runtime.InteropServices;
 
-[ClassInterface(ClassInterfaceType.AutoDispatch)]
-public class MyClass
+namespace B
 {
-   public MyClass() {}
+	class ClassB	
+	{
+		public static bool IsHiddenInterface( Type InterfaceType )
+		{
+			object[] InterfaceAttributes = InterfaceType.GetCustomAttributes( typeof( TypeLibTypeAttribute ), false );
+			if( InterfaceAttributes.Length > 0 )
+			{
+				TypeLibTypeAttribute tlt = ( TypeLibTypeAttribute ) InterfaceAttributes[0];
+				TypeLibTypeFlags  flags = tlt.Value;
+				return ( flags & TypeLibTypeFlags.FHidden ) != 0; 
+			}
+			return false;
+		}
+	}
 }

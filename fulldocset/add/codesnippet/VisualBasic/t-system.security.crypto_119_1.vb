@@ -1,87 +1,95 @@
 Imports System
-Imports System.IO
 Imports System.Security.Cryptography
 Imports System.Text
 
 
 
-
-Class Alice
-
-    Public Shared Sub Main(ByVal args() As String)
-        Using bob As New Bob()
-            Using rsaKey As New RSACryptoServiceProvider()
-                    ' Get Bob's public key
-                    rsaKey.ImportCspBlob(bob.key)
-                    Dim encryptedSessionKey As Byte() = Nothing
-                    Dim encryptedMessage As Byte() = Nothing
-                    Dim iv As Byte() = Nothing
-                    Send(rsaKey, "Secret message", iv, encryptedSessionKey, encryptedMessage)
-                    bob.Receive(iv, encryptedSessionKey, encryptedMessage)
-            End Using
-        End Using
-
-    End Sub 'Main
+Module PasswordDerivedBytesExample
 
 
-    Private Shared Sub Send(ByVal key As RSA, ByVal secretMessage As String, ByRef iv() As Byte, ByRef encryptedSessionKey() As Byte, ByRef encryptedMessage() As Byte)
-        Using aes = New AesCryptoServiceProvider()
+    Sub Main(ByVal args() As String)
 
-            iv = aes.IV
+        ' Get a password from the user.
+        Console.WriteLine("Enter a password to produce a key:")
 
-            ' Encrypt the session key
-            Dim keyFormatter As New RSAOAEPKeyExchangeFormatter(key)
-            encryptedSessionKey = keyFormatter.CreateKeyExchange(aes.Key, GetType(Aes))
+        Dim pwd As Byte() = Encoding.Unicode.GetBytes(Console.ReadLine())
 
-            ' Encrypt the message
-            Using ciphertext As New MemoryStream()
-                Using cs As New CryptoStream(ciphertext, aes.CreateEncryptor(), CryptoStreamMode.Write)
-                    Dim plaintextMessage As Byte() = Encoding.UTF8.GetBytes(secretMessage)
-                    cs.Write(plaintextMessage, 0, plaintextMessage.Length)
-                    cs.Close()
+        Dim salt As Byte() = CreateRandomSalt(7)
 
-                    encryptedMessage = ciphertext.ToArray()
-                End Using
-            End Using
-        End Using
+        ' Create a TripleDESCryptoServiceProvider object.
+        Dim tdes As New TripleDESCryptoServiceProvider()
 
-    End Sub 'Send 
-End Class 'Alice
+        Try
+            Console.WriteLine("Creating a key with PasswordDeriveBytes...")
 
-Public Class Bob
-    Implements IDisposable
-    Public key() As Byte
-    Private rsaKey As New RSACryptoServiceProvider()
+            ' Create a PasswordDeriveBytes object and then create 
+            ' a TripleDES key from the password and salt.
+            Dim pdb As New PasswordDeriveBytes(pwd, salt)
 
-    Public Sub New()
-        key = rsaKey.ExportCspBlob(False)
 
-    End Sub 'New
+            ' Create the key and set it to the Key property
+            ' of the TripleDESCryptoServiceProvider object.
+            tdes.Key = pdb.CryptDeriveKey("TripleDES", "SHA1", 192, tdes.IV)
 
-    Public Sub Receive(ByVal iv() As Byte, ByVal encryptedSessionKey() As Byte, ByVal encryptedMessage() As Byte)
 
-        Using aes = New AesCryptoServiceProvider()
+            Console.WriteLine("Operation complete.")
+        Catch e As Exception
+            Console.WriteLine(e.Message)
+        Finally
+            ' Clear the buffers
+            ClearBytes(pwd)
+            ClearBytes(salt)
 
-            aes.IV = iv
+            ' Clear the key.
+            tdes.Clear()
+        End Try
 
-            ' Decrypt the session key
-            Dim keyDeformatter As New RSAOAEPKeyExchangeDeformatter(rsaKey)
-            aes.Key = keyDeformatter.DecryptKeyExchange(encryptedSessionKey)
+        Console.ReadLine()
 
-            ' Decrypt the message
-            Using plaintext As New MemoryStream()
-                Using cs As New CryptoStream(plaintext, aes.CreateDecryptor(), CryptoStreamMode.Write)
-                        cs.Write(encryptedMessage, 0, encryptedMessage.Length)
-                        cs.Close()
+    End Sub
 
-                        Dim message As String = Encoding.UTF8.GetString(plaintext.ToArray())
-                        Console.WriteLine(message)
-                End Using
-            End Using
-        End Using
 
-    End Sub 'Receive
-    Public Overloads Sub Dispose() Implements IDisposable.Dispose
-        rsaKey.Dispose()
-    End Sub 'Dispose
-End Class 'Bob
+    '********************************************************
+    '* Helper methods:
+    '* createRandomSalt: Generates a random salt value of the 
+    '*                   specified length.  
+    '*
+    '* clearBytes: Clear the bytes in a buffer so they can't 
+    '*             later be read from memory.
+    '********************************************************
+    Function CreateRandomSalt(ByVal length As Integer) As Byte()
+        ' Create a buffer
+        Dim randBytes() As Byte
+
+        If length >= 1 Then
+            randBytes = New Byte(length) {}
+        Else
+            randBytes = New Byte(0) {}
+        End If
+
+        ' Create a new RNGCryptoServiceProvider.
+        Dim rand As New RNGCryptoServiceProvider()
+
+        ' Fill the buffer with random bytes.
+        rand.GetBytes(randBytes)
+
+        ' return the bytes.
+        Return randBytes
+
+    End Function
+
+
+    Sub ClearBytes(ByVal buffer() As Byte)
+        ' Check arguments.
+        If buffer Is Nothing Then
+            Throw New ArgumentException("buffer")
+        End If
+
+        ' Set each byte in the buffer to 0.
+        Dim x As Integer
+        For x = 0 To buffer.Length - 1
+            buffer(x) = 0
+        Next x
+
+    End Sub
+End Module

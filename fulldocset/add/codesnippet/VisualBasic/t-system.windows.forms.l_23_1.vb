@@ -1,13 +1,13 @@
-Private Sub ListView1_VirtualItemsSelectionRangeChanged(sender as Object, e as ListViewVirtualItemsSelectionRangeChangedEventArgs) _ 
-     Handles ListView1.VirtualItemsSelectionRangeChanged
+Private Sub ListControl1_Format(sender as Object, e as ListControlConvertEventArgs) _ 
+     Handles ListControl1.Format
 
     Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "EndIndex", e.EndIndex)
+    messageBoxVB.AppendFormat("{0} = {1}", "ListItem", e.ListItem)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "IsSelected", e.IsSelected)
+    messageBoxVB.AppendFormat("{0} = {1}", "Value", e.Value)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "StartIndex", e.StartIndex)
+    messageBoxVB.AppendFormat("{0} = {1}", "DesiredType", e.DesiredType)
     messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"VirtualItemsSelectionRangeChanged Event")
+    MessageBox.Show(messageBoxVB.ToString(),"Format Event")
 
 End Sub

@@ -1,50 +1,52 @@
-    // Draws a node.
-    private void myTreeView_DrawNode(
-        object sender, DrawTreeNodeEventArgs e)
-    {
-        // Draw the background and node text for a selected node.
-        if ((e.State & TreeNodeStates.Selected) != 0)
-        {
-            // Draw the background of the selected node. The NodeBounds
-            // method makes the highlight rectangle large enough to
-            // include the text of a node tag, if one is present.
-            e.Graphics.FillRectangle(Brushes.Green, NodeBounds(e.Node));
+      private void AddCustomDataTableStyle()
+      {
+         myDataGridTableStyle1 = new DataGridTableStyle();
+        
+         // EventHandlers          
+         myDataGridTableStyle1.GridLineColorChanged += new System.EventHandler(GridLineColorChanged_Handler);         
+         myDataGridTableStyle1.MappingName = "Customers";
 
-            // Retrieve the node font. If the node font has not been set,
-            // use the TreeView font.
-            Font nodeFont = e.Node.NodeFont;
-            if (nodeFont == null) nodeFont = ((TreeView)sender).Font;
+         // Set other properties.
+         myDataGridTableStyle1.AlternatingBackColor=System.Drawing.Color.Gold;
+         myDataGridTableStyle1.BackColor = System.Drawing.Color.White;
+         myDataGridTableStyle1.GridLineStyle=System.Windows.Forms.DataGridLineStyle.Solid;
+         myDataGridTableStyle1.GridLineColor=Color.Red;
 
-            // Draw the node text.
-            e.Graphics.DrawString(e.Node.Text, nodeFont, Brushes.White,
-                Rectangle.Inflate(e.Bounds, 2, 0));
-        }
+         // Set the HeaderText and Width properties. 
+         DataGridColumnStyle myBoolCol = new DataGridBoolColumn();
+         myBoolCol.MappingName = "Current";
+         myBoolCol.HeaderText = "IsCurrent Customer";
+         myBoolCol.Width = 150;
+         myDataGridTableStyle1.GridColumnStyles.Add(myBoolCol);
+      
+         // Add a second column style.
+         DataGridColumnStyle myTextCol = new DataGridTextBoxColumn();
+         myTextCol.MappingName = "custName";
+         myTextCol.HeaderText = "Customer Name";
+         myTextCol.Width = 250;
+         myDataGridTableStyle1.GridColumnStyles.Add(myTextCol);
 
-        // Use the default background and node text.
-        else 
-        {
-            e.DrawDefault = true;
-        }
+         // Create new ColumnStyle objects
+         DataGridColumnStyle cOrderDate = new DataGridTextBoxColumn();
+         cOrderDate.MappingName = "OrderDate";
+         cOrderDate.HeaderText = "Order Date";
+         cOrderDate.Width = 100;
 
-        // If a node tag is present, draw its string representation 
-        // to the right of the label text.
-        if (e.Node.Tag != null)
-        {
-            e.Graphics.DrawString(e.Node.Tag.ToString(), tagFont,
-                Brushes.Yellow, e.Bounds.Right + 2, e.Bounds.Top);
-        }
-
-        // If the node has focus, draw the focus rectangle large, making
-        // it large enough to include the text of the node tag, if present.
-        if ((e.State & TreeNodeStates.Focused) != 0)
-        {
-            using (Pen focusPen = new Pen(Color.Black))
-            {
-                focusPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
-                Rectangle focusBounds = NodeBounds(e.Node);
-                focusBounds.Size = new Size(focusBounds.Width - 1, 
-                focusBounds.Height - 1);
-                e.Graphics.DrawRectangle(focusPen, focusBounds);
-            }
-        }
-    }
+         // Use a PropertyDescriptor to create a formatted column.
+         PropertyDescriptorCollection myPropertyDescriptorCollection = BindingContext
+            [myDataSet, "Customers.custToOrders"].GetItemProperties();
+ 
+         // Create a formatted column using a PropertyDescriptor.
+         DataGridColumnStyle csOrderAmount = 
+            new DataGridTextBoxColumn(myPropertyDescriptorCollection["OrderAmount"], "c", true);
+         csOrderAmount.MappingName = "OrderAmount";
+         csOrderAmount.HeaderText = "Total";
+         csOrderAmount.Width = 100;
+              
+         // Add the DataGridTableStyle instances to the GridTableStylesCollection.
+         myDataGrid.TableStyles.Add(myDataGridTableStyle1);      
+      }      
+      private void GridLineColorChanged_Handler(object sender,EventArgs e)
+      {
+         MessageBox.Show("GridLineColor Changed", "DataGridTableStyle");
+      }   

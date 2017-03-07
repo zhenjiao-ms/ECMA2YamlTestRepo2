@@ -2,331 +2,71 @@ Imports System
 Imports System.Collections
 Imports System.ComponentModel
 Imports System.ComponentModel.Design
-Imports System.ComponentModel.Design.Serialization
 Imports System.Drawing
-Imports System.Reflection
-Imports System.Timers
+Imports System.Data
 Imports System.Windows.Forms
 Imports System.Windows.Forms.Design
 
-Namespace ITypeDescriptorFilterSample
+' This control demonstrates retrieving the standard 
+' designer option service values in design mode.
+Public Class IDesignerOptionServiceControl
+    Inherits System.Windows.Forms.UserControl
+    Private designerOptionService As IDesignerOptionService
 
-    ' Component to host the ButtonDesignerFilterComponentDesigner that loads the 
-    ' ButtonDesignerFilterService ITypeDescriptorFilterService.
-    <Designer(GetType(ButtonDesignerFilterComponentDesigner))> _
-    Public Class ButtonDesignerFilterComponent
-        Inherits System.ComponentModel.Component
+    Public Sub New()
+        Me.BackColor = Color.Beige
+        Me.Size = New Size(404, 135)
+    End Sub
 
-        Public Sub New(ByVal container As System.ComponentModel.IContainer)
-            container.Add(Me)
-        End Sub 'New
+    Public Overrides Property Site() As System.ComponentModel.ISite
+        Get
+            Return MyBase.Site
+        End Get
+        Set(ByVal Value As System.ComponentModel.ISite)
+            MyBase.Site = Value
 
-        Public Sub New()
-        End Sub 'New
-    End Class 'ButtonDesignerFilterComponent
-
-    ' Provides a designer that can add a ColorCycleButtonDesigner to each 
-    ' button in a design time project using the ButtonDesignerFilterService 
-    ' ITypeDescriptorFilterService.
-    Public Class ButtonDesignerFilterComponentDesigner
-        Inherits System.ComponentModel.Design.ComponentDesigner
-
-        ' Indicates whether the service has been loaded.
-        Private serviceloaded As Boolean = False
-        ' Stores any old ITypeDescriptorFilterService to restore later.
-        Private oldservice As ITypeDescriptorFilterService = Nothing
-
-        Public Sub New()
-        End Sub
-
-        ' Loads the new ITypeDescriptorFilterService and reloads the 
-        ' designers for each Button.
-        Public Overrides Sub Initialize(ByVal component As System.ComponentModel.IComponent)
-
-            MyBase.Initialize(component)
-
-            ' Loads the custom service if it has not been loaded already.
-            LoadService()
-
-            ' Build list of buttons from Container.Components.
-            Dim buttons As New ArrayList()
-            Dim c As IComponent
-            For Each c In Me.Component.Site.Container.Components
-                If TypeOf c Is System.Windows.Forms.Button Then
-                    buttons.Add(CType(c, System.Windows.Forms.Button))
-                End If
-            Next c
-            If buttons.Count > 0 Then
-                ' Tests each Button for an existing 
-                ' ColorCycleButtonDesigner;
-		' if it has no designer of type 
-                ' ColorCycleButtonDesigner, adds a designer.
-                Dim b As System.Windows.Forms.Button
-                For Each b In buttons
-                    Dim loaddesigner As Boolean = True
-                    ' Gets the attributes for each button.
-                    Dim ac As AttributeCollection = TypeDescriptor.GetAttributes(b)
-                    Dim i As Integer
-                    For i = 0 To ac.Count - 1
-                        ' If designer attribute is not for a 
-                        ' ColorCycleButtonDesigner, adds a new 
-                        ' ColorCycleButtonDesigner.
-                        If TypeOf ac(i) Is DesignerAttribute Then
-                            Dim da As DesignerAttribute = CType(ac(i), DesignerAttribute)
-                            If da.DesignerTypeName.Substring((da.DesignerTypeName.LastIndexOf(".") + 1)) = "ColorCycleButtonDesigner" Then
-                                loaddesigner = False
-                            End If
-                        End If
-                    Next i
-                    If loaddesigner Then
-                        ' Saves the button location so that it 
-                        ' can be repositioned.
-                        Dim p As Point = b.Location
-
-                        ' Gets an IMenuCommandService to cut and 
-                        ' paste control in order to register with 
-                        ' selection and movement interface after 
-                        ' designer is changed without reloading.
-                        Dim imcs As IMenuCommandService = CType(Me.GetService(GetType(IMenuCommandService)), IMenuCommandService)
-                        If imcs Is Nothing Then
-                            Throw New Exception("Could not obtain IMenuCommandService interface.")
-                        End If 
-
-                        ' Gets an ISelectionService to select the 
-                        ' button so that it can be cut and pasted.
-                        Dim iss As ISelectionService = CType(Me.GetService(GetType(ISelectionService)), ISelectionService)
-                        If iss Is Nothing Then
-                            Throw New Exception("Could not obtain ISelectionService interface.")
-                        End If
-                        iss.SetSelectedComponents(New IComponent() {b}, SelectionTypes.Auto)
-
-                        ' Invoke Cut and Paste.
-                        imcs.GlobalInvoke(StandardCommands.Cut)
-                        imcs.GlobalInvoke(StandardCommands.Paste)
-
-                        ' Regains reference to button from 
-                        ' selection service.
-                        Dim b2 As System.Windows.Forms.Button = CType(iss.PrimarySelection, System.Windows.Forms.Button)
-                        iss.SetSelectedComponents(Nothing)
-
-                        ' Refreshes TypeDescriptor properties of 
-                        ' button to load new attributes from 
-                        ' ButtonDesignerFilterService.
-                        TypeDescriptor.Refresh(b2)
-                        b2.Location = p
-                        b2.Focus()
-                    End If
-                Next b
+            ' If siting component, attempt to obtain an IDesignerOptionService.
+            If (MyBase.Site IsNot Nothing) Then
+                designerOptionService = CType(Me.GetService(GetType(IDesignerOptionService)), IDesignerOptionService)
             End If
-        End Sub 
+        End Set
+    End Property
 
-        ' Loads a ButtonDesignerFilterService ITypeDescriptorFilterService 
-        ' to add ColorCycleButtonDesigner designers to each button.
-        Private Sub LoadService()
-            ' If no custom ITypeDescriptorFilterService is loaded, 
-            ' loads it now.
-            If Not serviceloaded Then
-                ' Stores the current ITypeDescriptorFilterService 
-                ' to restore later.
-                Dim tdfs As ITypeDescriptorFilterService = CType(Me.Component.Site.GetService(GetType(ITypeDescriptorFilterService)), ITypeDescriptorFilterService)
-                If (tdfs IsNot Nothing) Then
-                    oldservice = tdfs
-                End If 
-                
-                ' Retrieves an IDesignerHost interface to use to 
-                ' remove and add services.
-                Dim dh As IDesignerHost = CType(Me.Component.Site.GetService(GetType(IDesignerHost)), IDesignerHost)
-                If dh Is Nothing Then
-                    Throw New Exception("Could not obtain IDesignerHost interface.")
-                End If 
+    ' Displays control information and current IDesignerOptionService 
+    ' values, if available.
+    Protected Overrides Sub OnPaint(ByVal e As System.Windows.Forms.PaintEventArgs)
+        e.Graphics.DrawString("IDesignerOptionServiceControl", New Font("Arial", 9), New SolidBrush(Color.Blue), 4, 4)
+        If Me.DesignMode Then
+            e.Graphics.DrawString("Currently in design mode", New Font("Arial", 8), New SolidBrush(Color.Black), 4, 18)
+        Else
+            e.Graphics.DrawString("Not in design mode. Cannot access IDesignerOptionService.", New Font("Arial", 8), New SolidBrush(Color.Red), 4, 18)
+        End If
+        If (MyBase.Site IsNot Nothing) AndAlso (designerOptionService IsNot Nothing) Then
+            e.Graphics.DrawString("IDesignerOptionService provides access to the table of option values listed when", New Font("Arial", 8), New SolidBrush(Color.Black), 4, 38)
+            e.Graphics.DrawString("the Windows Forms Designer\General tab of the Tools\Options menu is selected.", New Font("Arial", 8), New SolidBrush(Color.Black), 4, 50)
 
-                ' Removes the standard ITypeDescriptorFilterService.
-                dh.RemoveService(GetType(ITypeDescriptorFilterService))
-                ' Adds the new custom ITypeDescriptorFilterService.
-                dh.AddService(GetType(ITypeDescriptorFilterService), New ButtonDesignerFilterService())
-                serviceloaded = True
-            End If
-        End Sub
+            e.Graphics.DrawString("Table of standard value names and current values", New Font("Arial", 8), New SolidBrush(Color.Red), 4, 76)
 
-        ' Removes the custom service and reloads any stored, 
-        ' preexisting service.
-        Private Sub RemoveService()
-            Dim dh As IDesignerHost = CType(Me.GetService(GetType(IDesignerHost)), IDesignerHost)
-            If dh Is Nothing Then
-                Throw New Exception("Could not obtain IDesignerHost interface.")
-            End If
-            dh.RemoveService(GetType(ITypeDescriptorFilterService))
-            If (oldservice IsNot Nothing) Then
-                dh.AddService(GetType(ITypeDescriptorFilterService), oldservice)
-            End If
-            serviceloaded = False
-        End Sub
+            ' Displays a table of the standard value names and current values.
+            Dim ypos As Integer = 90
 
-        Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
-            If serviceloaded Then
-                RemoveService()
-            End If
-        End Sub
+            ' Obtains and shows the size of the standard design-mode grid square.
+            Dim size As Size = CType(designerOptionService.GetOptionValue("WindowsFormsDesigner\General", "GridSize"), Size)
+            e.Graphics.DrawString("GridSize", New Font("Arial", 8), New SolidBrush(Color.Black), 4, ypos)
+            e.Graphics.DrawString(size.ToString(), New Font("Arial", 8), New SolidBrush(Color.Black), 100, ypos)
+            ypos += 12
 
-    End Class
+            ' Obtaisn and shows whether the design mode surface grid is enabled.
+            Dim showGrid As Boolean = CBool(designerOptionService.GetOptionValue("WindowsFormsDesigner\General", "ShowGrid"))
+            e.Graphics.DrawString("ShowGrid", New Font("Arial", 8), New SolidBrush(Color.Black), 4, ypos)
+            e.Graphics.DrawString(showGrid.ToString(), New Font("Arial", 8), New SolidBrush(Color.Black), 100, ypos)
+            ypos += 12
 
-    ' Provides a TypeDescriptorFilterService to add the 
-    ' ColorCycleButtonDesigner using a DesignerAttribute.
-    Public Class ButtonDesignerFilterService
-        Implements System.ComponentModel.Design.ITypeDescriptorFilterService
+            ' Obtains and shows whether components should be aligned with the surface grid.
+            Dim snapToGrid As Boolean = CBool(designerOptionService.GetOptionValue("WindowsFormsDesigner\General", "SnapToGrid"))
+            e.Graphics.DrawString("SnapToGrid", New Font("Arial", 8), New SolidBrush(Color.Black), 4, ypos)
+            e.Graphics.DrawString(snapToGrid.ToString(), New Font("Arial", 8), New SolidBrush(Color.Black), 100, ypos)
+        End If
+    End Sub
 
-        Public oldService As ITypeDescriptorFilterService = Nothing
-
-        Public Sub New()
-        End Sub 
-
-        Public Sub New(ByVal oldService_ As ITypeDescriptorFilterService)
-            ' Stores any previous ITypeDescriptorFilterService to implement service chaining.
-            Me.oldService = oldService_
-        End Sub 
-
-        Public Function FilterAttributes(ByVal component As System.ComponentModel.IComponent, ByVal attributes As System.Collections.IDictionary) As Boolean Implements ITypeDescriptorFilterService.FilterAttributes
-            If (oldService IsNot Nothing) Then
-                oldService.FilterAttributes(component, attributes)
-            End If
-            ' Creates a designer attribute to compare its TypeID with the TypeID of existing attributes of the component.
-            Dim da As New DesignerAttribute(GetType(ColorCycleButtonDesigner))
-            ' Adds the designer attribute if the attribute collection does not contain a DesignerAttribute of the same TypeID.
-            If TypeOf component Is System.Windows.Forms.Button And attributes.Contains(da.TypeId) Then
-                attributes(da.TypeId) = da
-            End If
-            Return True
-        End Function 
-
-        Public Function FilterEvents(ByVal component As System.ComponentModel.IComponent, ByVal events As System.Collections.IDictionary) As Boolean Implements ITypeDescriptorFilterService.FilterEvents
-            If (oldService IsNot Nothing) Then
-                oldService.FilterEvents(component, events)
-            End If
-            Return True
-        End Function 
-
-        Public Function FilterProperties(ByVal component As System.ComponentModel.IComponent, ByVal properties As System.Collections.IDictionary) As Boolean Implements ITypeDescriptorFilterService.FilterProperties
-            If (oldService IsNot Nothing) Then
-                oldService.FilterProperties(component, properties)
-            End If
-            Return True
-        End Function 
-
-    End Class   
-
-    ' Designer for a Button control which cycles the background color.
-    Public Class ColorCycleButtonDesigner
-        Inherits System.Windows.Forms.Design.ControlDesigner
-
-        Private timer1 As System.Windows.Forms.Timer
-        Private initial_bcolor, initial_fcolor As Color
-        Private r, g, b As Integer
-        Private ru, gu, bu, continue_ As Boolean
-
-        Public Sub New()
-            timer1 = New System.Windows.Forms.Timer()
-            timer1.Interval = 50
-            AddHandler timer1.Tick, AddressOf Me.Elapsed
-            ru = True
-            gu = False
-            bu = True
-            continue_ = False
-            timer1.Start()
-        End Sub 
-
-        Private Sub Elapsed(ByVal sender As Object, ByVal e As EventArgs)
-            Me.Control.BackColor = Color.FromArgb(r Mod 255, g Mod 255, b Mod 255)
-            Me.Control.Refresh()
-
-            ' Updates color.			
-            If ru Then
-                r += 10
-            Else
-                If r > 10 Then
-                    r -= 10
-                End If
-            End If
-            If gu Then
-                g += 10
-            Else
-                If g > 10 Then
-                    g -= 10
-                End If
-            End If
-            If bu Then
-                b += 10
-            Else
-                If b > 10 Then
-                    b -= 10
-                End If
-            End If 
-
-            ' Randomly switches direction of color component values.
-            Dim rand As New Random()
-            Dim i As Integer
-            For i = 0 To 3
-                Select Case rand.Next(0, 2)
-                    Case 0
-                        If ru Then
-                            ru = False
-                        Else
-                            ru = True
-                        End If
-                    Case 1
-                        If gu Then
-                            gu = False
-                        Else
-                            gu = True
-                        End If
-                    Case 2
-                        If bu Then
-                            bu = False
-                        Else
-                            bu = True
-                        End If
-                End Select
-            Next i
-            Me.Control.ForeColor = Color.FromArgb((Me.Control.BackColor.R + 128) Mod 255, (Me.Control.BackColor.G + 128) Mod 255, (Me.Control.BackColor.B + 128) Mod 255)
-        End Sub 
-
-        Protected Overrides Sub OnMouseEnter()
-            If Not timer1.Enabled Then
-                initial_bcolor = Me.Control.BackColor
-                initial_fcolor = Me.Control.ForeColor
-                r = initial_bcolor.R
-                g = initial_bcolor.G
-                b = initial_bcolor.B
-                timer1.Start()
-            End If
-        End Sub 
-
-        Protected Overrides Sub OnMouseLeave()
-            If Not continue_ Then
-                continue_ = True
-                timer1.Stop()
-            Else
-                continue_ = False
-            End If
-            Me.Control.BackColor = initial_bcolor
-            Me.Control.ForeColor = initial_fcolor
-        End Sub 
-
-        Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
-            timer1.Stop()
-            Me.Control.BackColor = initial_bcolor
-            Me.Control.ForeColor = initial_fcolor
-            MyBase.Dispose(disposing)
-        End Sub 
-
-    End Class 
-
-    ' System.Windows.Forms.Button associated with the ColorCycleButtonDesigner.
-    <Designer(GetType(ColorCycleButtonDesigner))> _
-    Public Class ColorCycleButton
-        Inherits System.Windows.Forms.Button
-
-        Public Sub New()
-        End Sub 
-    End Class 
-
-End Namespace 
+End Class

@@ -1,43 +1,49 @@
-Imports System
 Imports System.Globalization
+Imports System.Text
+Imports System.Threading
 
-Module Module1
+Module Example
 
    Public Sub Main()
+      Console.OutputEncoding = Encoding.UTF8 
+      ' Change current culture
+      Dim culture As CultureInfo
+      If Thread.CurrentThread.CurrentCulture.Name = "fr-FR" Then
+         culture = CultureInfo.CreateSpecificCulture("en-US")
+      Else
+         culture = CultureInfo.CreateSpecificCulture("fr-FR")
+      End If   
+      Thread.CurrentThread.CurrentCulture = culture
+      Thread.CurrentThread.CurrentUICulture = culture
+      
+      ' Generate and display three random numbers on the current thread.
+      DisplayRandomNumbers()
+      Thread.Sleep(1000)
+      
+      Dim workerThread As New Thread(AddressOf Example.DisplayRandomNumbers)
+      workerThread.Start()
+   End Sub
+   
+   Private Sub DisplayRandomNumbers()
+      Console.WriteLine()
+      Console.WriteLine("Current Culture:    {0}", 
+                        Thread.CurrentThread.CurrentCulture)
+      Console.WriteLine("Current UI Culture: {0}", 
+                        Thread.CurrentThread.CurrentUICulture)
 
-      ' Displays several properties of the neutral cultures.
-      Console.WriteLine("CULTURE ISO ISO WIN DISPLAYNAME                              ENGLISHNAME")
-      Dim ci As CultureInfo
-      For Each ci In CultureInfo.GetCultures(CultureTypes.NeutralCultures)
-         Console.Write("{0,-7}", ci.Name)
-         Console.Write(" {0,-3}", ci.TwoLetterISOLanguageName)
-         Console.Write(" {0,-3}", ci.ThreeLetterISOLanguageName)
-         Console.Write(" {0,-3}", ci.ThreeLetterWindowsLanguageName)
-         Console.Write(" {0,-40}", ci.DisplayName)
-         Console.WriteLine(" {0,-40}", ci.EnglishName)
-      Next ci
-
-   End Sub 'Main 
-
-
-
-'This code produces the following output.  This output has been cropped for brevity.
-'
-'CULTURE ISO ISO WIN DISPLAYNAME                              ENGLISHNAME
-'ar      ar  ara ARA Arabic                                   Arabic                                  
-'bg      bg  bul BGR Bulgarian                                Bulgarian                               
-'ca      ca  cat CAT Catalan                                  Catalan                                 
-'zh-Hans zh  zho CHS Chinese (Simplified)                     Chinese (Simplified)                    
-'cs      cs  ces CSY Czech                                    Czech                                   
-'da      da  dan DAN Danish                                   Danish                                  
-'de      de  deu DEU German                                   German                                  
-'el      el  ell ELL Greek                                    Greek                                   
-'en      en  eng ENU English                                  English                                 
-'es      es  spa ESP Spanish                                  Spanish                                 
-'fi      fi  fin FIN Finnish                                  Finnish                                 
-'zh      zh  zho CHS Chinese                                  Chinese                                 
-'zh-Hant zh  zho CHT Chinese (Traditional)                    Chinese (Traditional)                   
-'zh-CHS  zh  zho CHS Chinese (Simplified) Legacy              Chinese (Simplified) Legacy             
-'zh-CHT  zh  zho CHT Chinese (Traditional) Legacy             Chinese (Traditional) Legacy            
-
+      Console.Write("Random Values: ")
+      Dim rand As New Random()
+      For ctr As Integer = 0 To 2
+         Console.Write("     {0:C2}     ", rand.NextDouble())
+      Next      
+      Console.WriteLine()
+   End Sub
 End Module
+' The example displays output similar to the following:
+'    Current Culture:    fr-FR
+'    Current UI Culture: fr-FR
+'    Random Values:      0,77 €          0,35 €          0,52 €     
+'    
+'    Current Culture:    en-US
+'    Current UI Culture: en-US
+'    Random Values:      $0.30          $0.79          $0.65     

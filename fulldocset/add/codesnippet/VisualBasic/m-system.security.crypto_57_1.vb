@@ -1,6 +1,4 @@
-            dim namespaceManager as New XmlNamespaceManager(xmlDoc.NameTable)
 
-            Dim productsNodeList As XmlNodeList
-            productsNodeList = xmlDoc.SelectNodes("//.", namespaceManager)
-
-            xmlTransform.LoadInput(productsNodeList)
+        ' Create a new CipherData object using a byte array to represent encrypted data.
+	Dim sampledata(7) As Byte
+        Dim cd As New CipherData(sampledata)

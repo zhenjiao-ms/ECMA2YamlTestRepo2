@@ -1,67 +1,251 @@
+'
+' This example signs an XML file using an
+' envelope signature. It then verifies the 
+' signed XML.
+'
+' You must have a certificate with a subject name
+' of "CN=XMLDSIG_Test" in the "My" certificate store. 
+'
+' Run the following command to create a certificate
+' and place it in the store.
+' makecert -r -pe -n "CN=XMLDSIG_Test" -b 01/01/2005 -e 01/01/2010 -sky signing -ss my
 Imports System
-Imports System.IO
 Imports System.Security.Cryptography
-Imports System.Windows.Forms
+Imports System.Security.Cryptography.Xml
+Imports System.Security.Cryptography.X509Certificates
+Imports System.Text
+Imports System.Xml
 
-Public Class HashDirectory
 
-    Public Shared Sub Main(ByVal args() As String)
-        Dim directory As String
-        If args.Length < 1 Then
-            Dim fdb As New FolderBrowserDialog
-            Dim dr As DialogResult = fdb.ShowDialog()
-            If (dr = DialogResult.OK) Then
-                directory = fdb.SelectedPath
-            Else
-                Console.WriteLine("No directory selected")
-                Return
-            End If
-        Else
-            directory = args(0)
-        End If
+
+Module SignVerifyEnvelope
+
+
+    Sub Main(ByVal args() As String)
+
+        Dim Certificate As String = "CN=XMLDSIG_Test"
+
         Try
-            ' Create a DirectoryInfo object representing the specified directory.
-            Dim dir As New DirectoryInfo(directory)
-            ' Get the FileInfo objects for every file in the directory.
-            Dim files As FileInfo() = dir.GetFiles()
-            ' Initialize a SHA256 hash object.
-            Dim mySHA256 As SHA256 = SHA256Managed.Create()
-            Dim hashValue() As Byte
-            ' Compute and print the hash values for each file in directory.
-            Dim fInfo As FileInfo
-            For Each fInfo In files
-                ' Create a fileStream for the file.
-                Dim fileStream As FileStream = fInfo.Open(FileMode.Open)
-                ' Be sure it's positioned to the beginning of the stream.
-                fileStream.Position = 0
-                ' Compute the hash of the fileStream.
-                hashValue = mySHA256.ComputeHash(fileStream)
-                ' Write the name of the file to the Console.
-                Console.Write(fInfo.Name + ": ")
-                ' Write the hash value to the Console.
-                PrintByteArray(hashValue)
-                ' Close the file.
-                fileStream.Close()
-            Next fInfo
-            Return
-        Catch DExc As DirectoryNotFoundException
-            Console.WriteLine("Error: The directory specified could not be found.")
-        Catch IOExc As IOException
-            Console.WriteLine("Error: A file in the directory could not be accessed.")
+
+            ' Create an XML file to sign.
+            CreateSomeXml("Example.xml")
+            Console.WriteLine("New XML file created.")
+
+            ' Sign the XML that was just created and save it in a 
+            ' new file.
+            SignXmlFile("Example.xml", "SignedExample.xml", Certificate)
+            Console.WriteLine("XML file signed.")
+
+            If VerifyXmlFile("SignedExample.xml", Certificate) Then
+                Console.WriteLine("The XML signature is valid.")
+            Else
+                Console.WriteLine("The XML signature is not valid.")
+            End If
+        Catch e As CryptographicException
+            Console.WriteLine(e.Message)
         End Try
 
     End Sub
 
-    ' Print the byte array in a readable format.
-    Public Shared Sub PrintByteArray(ByVal array() As Byte)
-        Dim i As Integer
-        For i = 0 To array.Length - 1
-            Console.Write(String.Format("{0:X2}", array(i)))
-            If i Mod 4 = 3 Then
-                Console.Write(" ")
-            End If
-        Next i
-        Console.WriteLine()
 
-    End Sub 'PrintByteArray
-End Class
+    ' Sign an XML file and save the signature in a new file.
+    Sub SignXmlFile(ByVal FileName As String, ByVal SignedFileName As String, ByVal SubjectName As String)
+        If Nothing = FileName Then
+            Throw New ArgumentNullException("FileName")
+        End If
+        If Nothing = SignedFileName Then
+            Throw New ArgumentNullException("SignedFileName")
+        End If
+        If Nothing = SubjectName Then
+            Throw New ArgumentNullException("SubjectName")
+        End If
+        ' Load the certificate from the certificate store.
+        Dim cert As X509Certificate2 = GetCertificateBySubject(SubjectName)
+
+        ' Create a new XML document.
+        Dim doc As New XmlDocument()
+
+        ' Format the document to ignore white spaces.
+        doc.PreserveWhitespace = False
+
+        ' Load the passed XML file using it's name.
+        doc.Load(New XmlTextReader(FileName))
+
+        ' Create a SignedXml object.
+        Dim signedXml As New SignedXml(doc)
+
+        ' Add the key to the SignedXml document. 
+        signedXml.SigningKey = cert.PrivateKey
+
+        ' Create a reference to be signed.
+        Dim reference As New Reference()
+        reference.Uri = ""
+
+        ' Add an enveloped transformation to the reference.
+        Dim env As New XmlDsigEnvelopedSignatureTransform()
+        reference.AddTransform(env)
+
+        ' Add the reference to the SignedXml object.
+        signedXml.AddReference(reference)
+
+        ' Create a new KeyInfo object.
+        Dim keyInfo As New KeyInfo()
+
+        ' Load the certificate into a KeyInfoX509Data object
+        ' and add it to the KeyInfo object.
+        ' Create an X509IssuerSerial object and add it to the
+        ' KeyInfoX509Data object.
+
+        Dim kdata As New KeyInfoX509Data(cert)
+
+        Dim xserial As X509IssuerSerial
+
+        xserial.IssuerName = cert.IssuerName.ToString()
+        xserial.SerialNumber = cert.SerialNumber
+
+        kdata.AddIssuerSerial(xserial.IssuerName, xserial.SerialNumber)
+
+        keyInfo.AddClause(kdata)
+
+        ' Add the KeyInfo object to the SignedXml object.
+        signedXml.KeyInfo = keyInfo
+
+        ' Compute the signature.
+        signedXml.ComputeSignature()
+
+        ' Get the XML representation of the signature and save
+        ' it to an XmlElement object.
+        Dim xmlDigitalSignature As XmlElement = signedXml.GetXml()
+
+        ' Append the element to the XML document.
+        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, True))
+
+
+        If TypeOf doc.FirstChild Is XmlDeclaration Then
+            doc.RemoveChild(doc.FirstChild)
+        End If
+
+        ' Save the signed XML document to a file specified
+        ' using the passed string.
+        Dim xmltw As New XmlTextWriter(SignedFileName, New UTF8Encoding(False))
+        Try
+            doc.WriteTo(xmltw)
+
+        Finally
+            xmltw.Close()
+        End Try
+
+    End Sub
+
+    ' Verify the signature of an XML file against an asymetric 
+    ' algorithm and return the result.
+    Function VerifyXmlFile(ByVal FileName As String, ByVal CertificateSubject As String) As [Boolean]
+        ' Check the args.
+        If Nothing = FileName Then
+            Throw New ArgumentNullException("FileName")
+        End If
+        If Nothing = CertificateSubject Then
+            Throw New ArgumentNullException("CertificateSubject")
+        End If
+        ' Load the certificate from the store.
+        Dim cert As X509Certificate2 = GetCertificateBySubject(CertificateSubject)
+
+        ' Create a new XML document.
+        Dim xmlDocument As New XmlDocument()
+
+        ' Load the passed XML file into the document. 
+        xmlDocument.Load(FileName)
+
+        ' Create a new SignedXml object and pass it
+        ' the XML document class.
+        Dim signedXml As New SignedXml(xmlDocument)
+
+        ' Find the "Signature" node and create a new
+        ' XmlNodeList object.
+        Dim nodeList As XmlNodeList = xmlDocument.GetElementsByTagName("Signature")
+
+        ' Load the signature node.
+        signedXml.LoadXml(CType(nodeList(0), XmlElement))
+
+        ' Check the signature and return the result.
+        Return signedXml.CheckSignature(cert, True)
+
+    End Function
+
+
+
+    Function GetCertificateBySubject(ByVal CertificateSubject As String) As X509Certificate2
+        ' Check the args.
+        If Nothing = CertificateSubject Then
+            Throw New ArgumentNullException("CertificateSubject")
+        End If
+
+        ' Load the certificate from the certificate store.
+        Dim cert As X509Certificate2 = Nothing
+
+        Dim store As New X509Store("My", StoreLocation.CurrentUser)
+
+        Try
+            ' Open the store.
+            store.Open(OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly)
+
+            ' Get the certs from the store.
+            Dim CertCol As X509Certificate2Collection = store.Certificates
+
+            ' Find the certificate with the specified subject.
+            Dim c As X509Certificate2
+            For Each c In CertCol
+                If c.Subject = CertificateSubject Then
+                    cert = c
+                    Exit For
+                End If
+            Next c
+
+            ' Throw an exception of the certificate was not found.
+            If cert Is Nothing Then
+                Throw New CryptographicException("The certificate could not be found.")
+            End If
+        Finally
+            ' Close the store even if an exception was thrown.
+            store.Close()
+        End Try
+
+        Return cert
+
+    End Function
+
+
+    ' Create example data to sign.
+    Sub CreateSomeXml(ByVal FileName As String)
+        ' Check the args.
+        If Nothing = FileName Then
+            Throw New ArgumentNullException("FileName")
+        End If
+        ' Create a new XmlDocument object.
+        Dim document As New XmlDocument()
+
+        ' Create a new XmlNode object.
+        Dim node As XmlNode = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples")
+
+        ' Add some text to the node.
+        node.InnerText = "Example text to be signed."
+
+        ' Append the node to the document.
+        document.AppendChild(node)
+
+        ' Save the XML document to the file name specified.
+        Dim xmltw As New XmlTextWriter(FileName, New UTF8Encoding(False))
+        Try
+            document.WriteTo(xmltw)
+
+        Finally
+            xmltw.Close()
+        End Try
+
+    End Sub
+End Module
+' This code example displays the following to the console:
+'
+' New XML file created.
+' XML file signed.
+' The XML signature is valid.

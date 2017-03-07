@@ -1,2 +1,1 @@
-            CalculatorService service = new CalculatorService();
-            ServiceHost serviceHost = new ServiceHost(service, baseAddress);
+            ServiceHost serviceHost = new ServiceHost(typeof(CalculatorService), baseAddress);

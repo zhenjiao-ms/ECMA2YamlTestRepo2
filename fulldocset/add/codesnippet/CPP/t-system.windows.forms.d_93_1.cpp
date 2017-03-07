@@ -1,59 +1,49 @@
-   void dataGridView1_CellFormatting( Object^ /*sender*/, DataGridViewCellFormattingEventArgs^ e )
-   {
-      // If the column is the Artist column, check the
-      // value.
-      if ( this->dataGridView1->Columns[ e->ColumnIndex ]->Name->Equals( "Artist" ) )
-      {
-         if ( e->Value != nullptr )
-         {
-            // Check for the string "pink" in the cell.
-            String^ stringValue = dynamic_cast<String^>(e->Value);
-            stringValue = stringValue->ToLower();
-            if ( (stringValue->IndexOf( "pink" ) > -1) )
-            {
-               DataGridViewCellStyle^ pinkStyle = gcnew DataGridViewCellStyle;
+protected:
+   DomainUpDown^ domainUpDown1;
 
-               //Change the style of the cell.
-               pinkStyle->BackColor = Color::Pink;
-               pinkStyle->ForeColor = Color::Black;
-               pinkStyle->Font = gcnew System::Drawing::Font( "Times New Roman",8,FontStyle::Bold );
-               e->CellStyle = pinkStyle;
-            }
-            
-         }
+private:
+   void MySub()
+   {
+      // Create and initialize the DomainUpDown control.
+      domainUpDown1 = gcnew System::Windows::Forms::DomainUpDown;
+      
+      // Add the DomainUpDown control to the form.
+      Controls->Add( domainUpDown1 );
+   }
+
+   void button1_Click( System::Object^ sender,
+     System::EventArgs^ e )
+   {
+      // Add the text box contents and initial location in the collection
+      // to the DomainUpDown control.
+      domainUpDown1->Items->Add( String::Concat(
+         (textBox1->Text->Trim()), " - ", myCounter.ToString() ) );
+      
+      // Increment the counter variable.
+      myCounter = myCounter + 1;
+      
+      // Clear the TextBox.
+      textBox1->Text = "";
+   }
+
+   void checkBox1_Click( Object^ sender, EventArgs^ e )
+   {
+      // If Sorted is set to true, set it to false; 
+      // otherwise set it to true.
+      if ( domainUpDown1->Sorted )
+      {
+         domainUpDown1->Sorted = false;
       }
       else
-      if ( this->dataGridView1->Columns[ e->ColumnIndex ]->Name->Equals( "Release Date" ) )
       {
-         ShortFormDateFormat( e );
+         domainUpDown1->Sorted = true;
       }
    }
 
-
-   //Even though the date internaly stores the year as YYYY, using formatting, the
-   //UI can have the format in YY.  
-   void ShortFormDateFormat( DataGridViewCellFormattingEventArgs^ formatting )
+   void domainUpDown1_SelectedItemChanged( Object^ sender, EventArgs^ e )
    {
-      if ( formatting->Value != nullptr )
-      {
-         try
-         {
-            System::Text::StringBuilder^ dateString = gcnew System::Text::StringBuilder;
-            DateTime theDate = DateTime::Parse( formatting->Value->ToString() );
-            dateString->Append( theDate.Month );
-            dateString->Append( "/" );
-            dateString->Append( theDate.Day );
-            dateString->Append( "/" );
-            dateString->Append( theDate.Year.ToString()->Substring( 2 ) );
-            formatting->Value = dateString->ToString();
-            formatting->FormattingApplied = true;
-         }
-         catch ( Exception^ /*notInDateFormat*/ ) 
-         {
-            // Set to false in case there are other handlers interested trying to
-            // format this DataGridViewCellFormattingEventArgs instance.
-            formatting->FormattingApplied = false;
-         }
-
-      }
+      // Display the SelectedIndex and SelectedItem property values in a MessageBox.
+      MessageBox::Show( String::Concat( "SelectedIndex: ",
+      domainUpDown1->SelectedIndex.ToString(), "\n", "SelectedItem: ",
+      domainUpDown1->SelectedItem->ToString() ) );
    }

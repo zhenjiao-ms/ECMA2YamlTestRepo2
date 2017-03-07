@@ -1,17 +1,17 @@
-    Public Sub CreateMyMultilineTextBox()
-        ' Create an instance of a TextBox control.
-        Dim textBox1 As New TextBox()
-        
-        ' Set the Multiline property to true.
-        textBox1.Multiline = True
-        ' Add vertical scroll bars to the TextBox control.
-        textBox1.ScrollBars = ScrollBars.Vertical
-        ' Allow the RETURN key to be entered in the TextBox control.
-        textBox1.AcceptsReturn = True
-        ' Allow the TAB key to be entered in the TextBox control.
-        textBox1.AcceptsTab = True
-        ' Set WordWrap to true to allow text to wrap to the next line.
-        textBox1.WordWrap = True
-        ' Set the default text of the control.
-        textBox1.Text = "Welcome!"
-    End Sub
+Private Sub MaskedTextBox1_TypeValidationCompleted(sender as Object, e as TypeValidationEventArgs) _ 
+     Handles MaskedTextBox1.TypeValidationCompleted
+
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "Cancel", e.Cancel)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "IsValidInput", e.IsValidInput)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Message", e.Message)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ReturnValue", e.ReturnValue)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ValidatingType", e.ValidatingType)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"TypeValidationCompleted Event")
+
+End Sub

@@ -1,13 +1,39 @@
-         // Add list of supported paper sizes found on the printer.
-         // The DisplayMember property is used to identify the property that will provide the display String*.
-         comboPaperSize->DisplayMember = "PaperName";
-         PaperSize^ pkSize;
-         for ( int i = 0; i < printDoc->PrinterSettings->PaperSizes->Count; i++ )
+   void Printing()
+   {
+      try
+      {
+         
+         /* This assumes that a variable of type string, named filePath,
+                 has been set to the path of the file to print. */
+         streamToPrint = gcnew StreamReader( filePath );
+         try
          {
-            pkSize = printDoc->PrinterSettings->PaperSizes[ i ];
-            comboPaperSize->Items->Add( pkSize );
+            printFont = gcnew System::Drawing::Font( "Arial",10 );
+            PrintDocument^ pd = gcnew PrintDocument;
+            
+            /* This assumes that a method, named pd_PrintPage, has been
+                      defined. pd_PrintPage handles the PrintPage event. */
+            pd->PrintPage += gcnew PrintPageEventHandler( this, &Sample::pd_PrintPage );
+            
+            /* This assumes that a variable of type string, named 
+                      printer, has been set to the printer's name. */
+            pd->PrinterSettings->PrinterName = printer;
+            
+            // Create a new instance of Margins with one inch margins.
+            Margins^ margins = gcnew Margins( 100,100,100,100 );
+            pd->DefaultPageSettings->Margins = margins;
+            pd->Print();
+         }
+         finally
+         {
+            streamToPrint->Close();
          }
 
-         // Create a PaperSize and specify the custom paper size through the constructor and add to combobox.
-         PaperSize^ pkCustomSize1 = gcnew PaperSize( "First custom size",100,200 );
-         comboPaperSize->Items->Add( pkCustomSize1 );
+      }
+      catch ( Exception^ ex ) 
+      {
+         MessageBox::Show( String::Concat( "An error occurred printing the file - ", ex->Message ) );
+      }
+
+   }
+

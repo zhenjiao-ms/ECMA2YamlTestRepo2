@@ -1,97 +1,162 @@
 <%@ Page language="C#" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <script runat="server">
-  protected void CategoriesListView_OnItemDeleting(object sender, ListViewDeleteEventArgs e)
+
+  void Page_Load()
   {
-    if (SubCategoriesGridView.Rows.Count > 0)
+    Message.Text = String.Empty;
+  }
+
+  protected void ContactsListView_ItemCanceling(object sender, ListViewCancelEventArgs e)
+  {
+    //Check the operation that raised the event
+    if (e.CancelMode == ListViewCancelMode.CancelingEdit)
     {
-      MessageLabel.Text = "You cannot delete a category that has sub-categories.";
-      e.Cancel = true;
+      // The update operation was canceled. Display the 
+      // primary key of the item.
+      Message.Text = "Update for the ContactID " + 
+        ContactsListView.DataKeys[e.ItemIndex].Value.ToString()  + " canceled.";
+    }
+    else
+    {
+      Message.Text = "Insert operation canceled."; 
     }
   }
 
-  protected void Page_Load()
+  protected void ContactsListView_PagePropertiesChanging(object sender, 
+    PagePropertiesChangingEventArgs e)
   {
-    MessageLabel.Text = String.Empty;
+    // Clears the edit index selection when paging.
+    ContactsListView.EditIndex = -1;
   }
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
   <head id="Head1" runat="server">
-    <title>Subcategories List</title>
+    <title>ListView ItemCanceling Example</title>
   </head>
   <body>
     <form id="form1" runat="server">
-      <b>Categories</b>
-      <br />
+        
+      <h3>ListView ItemCanceling Example</h3>
       
-      <asp:Label ForeColor="Red" runat="server" ID="MessageLabel" /><br />
-      
-      <asp:ListView runat="server" 
-        ID="CategoriesListView"
-        OnItemDeleting="CategoriesListView_OnItemDeleting"
-        DataSourceID="CategoriesDataSource" 
-        DataKeyNames="ProductCategoryID">
+      <asp:Label ID="Message"
+        ForeColor="Red"          
+        runat="server"/>
+      <br/>
+                 
+      <asp:ListView ID="ContactsListView" 
+        DataSourceID="ContactsDataSource" 
+        DataKeyNames="ContactID"
+        ConvertEmptyStringToNull="true"
+        InsertItemPosition="LastItem"
+        runat="server" 
+        OnItemCanceling="ContactsListView_ItemCanceling" 
+        OnPagePropertiesChanging="ContactsListView_PagePropertiesChanging" >
         <LayoutTemplate>
-          <table runat="server" id="tblCategories" 
-                 cellspacing="0" cellpadding="1" width="440px" border="1">
-            <tr id="itemPlaceholder" runat="server"></tr>
+          <table cellpadding="2" width="680px" border="1" runat="server" id="tblContacts">
+            <tr runat="server">
+              <th runat="server">&nbsp;</th>
+              <th runat="server">ID</th>
+              <th runat="server">First Name</th>
+              <th runat="server">Last Name</th>
+              <th runat="server">E-mail Address</th>
+            </tr>
+            <tr runat="server" id="itemPlaceholder" />
           </table>
+          <asp:DataPager runat="server" ID="ContactsDataPager" PageSize="12">
+            <Fields>
+              <asp:NextPreviousPagerField 
+                ShowFirstPageButton="true" ShowLastPageButton="true"
+                FirstPageText="|&lt;&lt; " LastPageText=" &gt;&gt;|"
+                NextPageText=" &gt; " PreviousPageText=" &lt; " />
+            </Fields>
+          </asp:DataPager>
         </LayoutTemplate>
         <ItemTemplate>
           <tr runat="server">
-            <td>
-              <asp:Label runat="server" ID="NameLabel" Text='<%#Eval("Name") %>' />
+            <td valign="top">
+              <asp:LinkButton ID="EditButton" runat="server" Text="Edit" CommandName="Edit" /><br />
             </td>
-            <td style="width:40px">
-              <asp:LinkButton runat="server" ID="SelectCategoryButton" 
-                Text="Select" CommandName="Select" />
+            <td valign="top">
+              <asp:Label ID="Label1" runat="server" Text='<%#Eval("ContactID") %>' />
+            </td>
+            <td valign="top">
+              <asp:Label ID="FirstNameLabel" runat="server" Text='<%#Eval("FirstName") %>' />
+            </td>
+            <td valign="top">
+              <asp:Label ID="LastNameLabel" runat="server" Text='<%#Eval("LastName") %>' />
+            </td>
+            <td valign="top">
+              <asp:Label ID="EmailAddressLabel" runat="server" Text='<%#Eval("EmailAddress") %>' />
+              &nbsp;
             </td>
           </tr>
         </ItemTemplate>
-        <SelectedItemTemplate>
-          <tr runat="server" style="background-color:#90EE90">
-            <td>
-              <asp:Label runat="server" ID="NameLabel" Text='<%#Eval("Name") %>' />
+        <EditItemTemplate>
+          <tr style="background-color: #ADD8E6">
+            <td valign="top">
+              <asp:LinkButton ID="UpdateButton" runat="server" CommandName="Update" Text="Update" /><br />
+              <asp:LinkButton ID="CancelEditButton" runat="server" CommandName="Cancel" Text="Cancel" />
             </td>
-            <td style="width:40px">
-              <asp:LinkButton runat="server" ID="SelectCategoryButton" 
-                Text="Delete" CommandName="Delete" />
+            <td>
+              <asp:Label ID="Label1" runat="server" Text='<%#Eval("ContactID") %>' />
+            </td>
+            <td>
+              <asp:TextBox ID="FirstNameTextBox" runat="server" 
+                Text='<%#Bind("FirstName") %>' MaxLength="50" /><br />
+            </td>
+            <td>
+              <asp:TextBox ID="LastNameTextBox" runat="server" 
+                Text='<%#Bind("LastName") %>' MaxLength="50" /><br />
+            </td>
+            <td>
+              <asp:TextBox ID="EmailAddressTextBox" runat="server" 
+                Text='<%#Bind("EmailAddress") %>' MaxLength="50" /><br />
             </td>
           </tr>
-        </SelectedItemTemplate>
+        </EditItemTemplate>
+        <InsertItemTemplate>
+          <tr style="background-color:#90EE90">
+            <td colspan="2">
+              <asp:LinkButton ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" /><br />
+              <asp:LinkButton ID="CancelInsertButton" runat="server" CommandName="Cancel" Text="Cancel" />
+            </td>              
+            <td>
+              <asp:TextBox ID="FirstNameITextBox" runat="server" 
+                Text='<%#Bind("FirstName") %>' MaxLength="50" />
+            </td>
+            <td>
+              <asp:TextBox ID="LastNameITextBox" runat="server" 
+                Text='<%#Bind("LastName") %>' MaxLength="50" />
+            </td>
+            <td>
+              <asp:TextBox ID="EmailAddressITextBox" runat="server" 
+                Text='<%#Bind("EmailAddress") %>' MaxLength="50" />
+           </td>
+          </tr>
+        </InsertItemTemplate>
       </asp:ListView>
-      
-      <br />
-      
-      <b>Subcategories</b>
-      <asp:GridView runat="server" ID="SubCategoriesGridView" Width="300px"
-           DataSourceID="SubCategoriesDataSource" DataKeyNames="ProductSubcategoryID" 
-           AutoGenerateColumns="True" />
-       
+
       <!-- This example uses Microsoft SQL Server and connects      -->
       <!-- to the AdventureWorks sample database. Use an ASP.NET    -->
       <!-- expression to retrieve the connection string value       -->
       <!-- from the Web.config file.                                -->
-      <asp:SqlDataSource ID="CategoriesDataSource" runat="server" 
+      <asp:SqlDataSource ID="ContactsDataSource" runat="server" 
         ConnectionString="<%$ ConnectionStrings:AdventureWorks_DataConnectionString %>"
-        SelectCommand="SELECT [ProductCategoryID], [Name]
-                       FROM Production.ProductCategory">
+        SelectCommand="SELECT [ContactID], [FirstName], [LastName], [EmailAddress] FROM Person.Contact"
+        InsertCommand="INSERT INTO Person.Contact
+                         ([FirstName], [LastName], [EmailAddress], [PasswordHash], [PasswordSalt]) 
+                         Values(@FirstName, @LastName, @EmailAddress, '', '')"
+        UpdateCommand="UPDATE Person.Contact
+                         SET FirstName = @FirstName, LastName = @LastName,
+                         EmailAddress = @EmailAddress
+                         WHERE ContactID = @ContactID">
       </asp:SqlDataSource>
-      <asp:SqlDataSource ID="SubCategoriesDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:AdventureWorks_DataConnectionString %>"
-        SelectCommand="SELECT [ProductSubcategoryID], [Name]
-                       FROM Production.ProductSubcategory
-                       WHERE ProductCategoryID = @ProductCategoryID
-                       ORDER BY [Name]">
-          <SelectParameters>
-            <asp:ControlParameter Name="ProductCategoryID" DefaultValue="0"
-                 ControlID="CategoriesListView" PropertyName="SelectedValue"  />
-          </SelectParameters>
-      </asp:SqlDataSource>
+      
     </form>
   </body>
 </html>

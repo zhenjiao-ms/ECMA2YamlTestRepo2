@@ -1,15 +1,29 @@
-public void InitMyForm()
-{
-	// Adds a label to the form.
-	Label label1 = new Label();
-	label1.Location = new System.Drawing.Point(54, 128);
-	label1.Name = "label1";
-	label1.Size = new System.Drawing.Size(220, 80);
-	label1.Text = "Start position information";
-	this.Controls.Add(label1);
+    private void button1_Click(object sender, System.EventArgs e)
+    {
+        Stream myStream = null;
+        OpenFileDialog openFileDialog1 = new OpenFileDialog();
+ 
+        openFileDialog1.InitialDirectory = "c:\\" ;
+        openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*" ;
+        openFileDialog1.FilterIndex = 2 ;
+        openFileDialog1.RestoreDirectory = true ;
 
-	// Moves the start position to the center of the screen.
-	StartPosition = FormStartPosition.CenterScreen;
-	// Displays the position information.
-	label1.Text = "The start position is " + StartPosition;	
-}
+        if(openFileDialog1.ShowDialog() == DialogResult.OK)
+        {
+            try
+            {
+                if ((myStream = openFileDialog1.OpenFile()) != null)
+                {
+                    using (myStream)
+                    {
+                        // Insert code to read the stream here.
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+            }
+        }
+    }
+        

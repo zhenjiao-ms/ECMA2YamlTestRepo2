@@ -1,29 +1,74 @@
-            // This is an example of some common ToolStrip property settings.
-            // 
-            toolStrip1.AllowDrop = false;
-            toolStrip1.AllowItemReorder = true;
-            toolStrip1.AllowMerge = false;
-            toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            toolStrip1.AutoSize = false;
-            toolStrip1.CanOverflow = false;
-            toolStrip1.Cursor = System.Windows.Forms.Cursors.Cross;
-            toolStrip1.DefaultDropDownDirection = System.Windows.Forms.ToolStripDropDownDirection.BelowRight;
-            toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            toolStrip1.GripMargin = new System.Windows.Forms.Padding(3);
-            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            toolStripButton1});
-            toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            toolStrip1.Location = new System.Drawing.Point(0, 0);
-            toolStrip1.Margin = new System.Windows.Forms.Padding(1);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            toolStrip1.ShowItemToolTips = false;
-            toolStrip1.Size = new System.Drawing.Size(109, 273);
-            toolStrip1.Stretch = true;
-            toolStrip1.TabIndex = 0;
-            toolStrip1.TabStop = true;
-            toolStrip1.Text = "toolStrip1";
-            toolStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90;
+
+public class Customer
+{
+   public ArrayList CustomerOrders;
+   public string CustomerName;
+   public Customer(string myName)
+   {
+      CustomerName = myName;
+      CustomerOrders = new ArrayList(); 
+   }
+}
+public class Order
+{
+   public string OrderID;
+   public Order(string myOrderID )
+   {
+      this.OrderID = myOrderID;
+   }
+}
+
+private void FillTreeView()
+{
+	// Load the images in an ImageList.
+	ImageList myImageList = new ImageList();
+	myImageList.Images.Add(Image.FromFile("Default.gif"));
+	myImageList.Images.Add(Image.FromFile("SelectedDefault.gif"));
+	myImageList.Images.Add(Image.FromFile("Root.gif"));
+	myImageList.Images.Add(Image.FromFile("UnselectedCustomer.gif"));
+	myImageList.Images.Add(Image.FromFile("SelectedCustomer.gif"));
+	myImageList.Images.Add(Image.FromFile("UnselectedOrder.gif"));
+	myImageList.Images.Add(Image.FromFile("SelectedOrder.gif"));
+	
+	// Assign the ImageList to the TreeView.
+	myTreeView.ImageList = myImageList;
+	
+	// Set the TreeView control's default image and selected image indexes.
+	myTreeView.ImageIndex = 0;
+	myTreeView.SelectedImageIndex = 1;
+
+	/* Set the index of image from the 
+	ImageList for selected and unselected tree nodes.*/
+	this.rootImageIndex = 2;
+	this.selectedCustomerImageIndex = 3;
+	this.unselectedCustomerImageIndex = 4;
+	this.selectedOrderImageIndex = 5;
+	this.unselectedOrderImageIndex = 6;
+	
+	// Create the root tree node.
+	TreeNode rootNode = new TreeNode("CustomerList");
+	rootNode.ImageIndex = rootImageIndex;
+	rootNode.SelectedImageIndex = rootImageIndex;
+      
+	// Add a main root tree node.
+	myTreeView.Nodes.Add(rootNode);
+
+	// Add a root tree node for each Customer object in the ArrayList.
+	foreach(Customer myCustomer in customerArray)
+	{
+		// Add a child tree node for each Order object.
+		int countIndex=0;
+		TreeNode[] myTreeNodeArray = new TreeNode[myCustomer.CustomerOrders.Count];
+		foreach(Order myOrder in myCustomer.CustomerOrders)
+		{
+			// Add the Order tree node to the array.
+			myTreeNodeArray[countIndex] = new TreeNode(myOrder.OrderID,
+			  unselectedOrderImageIndex, selectedOrderImageIndex);
+			countIndex++;
+		}
+		// Add the Customer tree node.
+		TreeNode customerNode = new TreeNode(myCustomer.CustomerName,
+			unselectedCustomerImageIndex, selectedCustomerImageIndex, myTreeNodeArray);
+		myTreeView.Nodes[0].Nodes.Add(customerNode);
+	}
+}

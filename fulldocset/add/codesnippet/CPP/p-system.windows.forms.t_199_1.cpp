@@ -2,36 +2,35 @@ using namespace System::Drawing;
 using namespace System::Windows::Forms;
 public ref class Form1: public Form
 {
-private:
-   TabControl^ tabControl1;
-   Rectangle myTabRect;
-
 public:
    Form1()
    {
-      tabControl1 = gcnew TabControl;
+      TabControl^ tabControl1 = gcnew TabControl;
       TabPage^ tabPage1 = gcnew TabPage;
+      TabPage^ tabPage2 = gcnew TabPage;
+      TabPage^ tabPage3 = gcnew TabPage;
+      TabPage^ tabPage4 = gcnew TabPage;
+      TabPage^ tabPage5 = gcnew TabPage;
+      Label^ label1 = gcnew Label;
       
-      // Sets the tabs to be drawn by the parent window Form1.
-      // OwnerDrawFixed allows access to DrawItem.
-      tabControl1->DrawMode = TabDrawMode::OwnerDrawFixed;
-      tabControl1->Controls->Add( tabPage1 );
-      tabControl1->Location = Point(25,25);
-      tabControl1->Size = System::Drawing::Size( 250, 250 );
-      tabPage1->TabIndex = 0;
-      myTabRect = tabControl1->GetTabRect( 0 );
-      ClientSize = System::Drawing::Size( 300, 300 );
-      Controls->Add( tabControl1 );
-      tabControl1->DrawItem += gcnew DrawItemEventHandler( this, &Form1::OnDrawItem );
-   }
-
-
-private:
-   void OnDrawItem( Object^ /*sender*/, DrawItemEventArgs^ e )
-   {
-      Graphics^ g = e->Graphics;
-      Pen^ p = gcnew Pen( Color::Blue );
-      g->DrawRectangle( p, myTabRect );
+      // Allows multiple rows of tabs in the tabControl1 tab strip.
+      tabControl1->Multiline = true;
+      tabControl1->SizeMode = TabSizeMode::FillToRight;
+      tabControl1->Padding = Point(15,5);
+      array<Control^>^temp0 = {tabPage1,tabPage2,tabPage3,tabPage4,tabPage5};
+      tabControl1->Controls->AddRange( temp0 );
+      tabControl1->Location = Point(35,65);
+      tabControl1->Size = System::Drawing::Size( 220, 180 );
+      
+      // Gets the number of rows currently in the tabControl1 tab strip.
+      // Assigns int value to the rows variable.
+      int rows = tabControl1->RowCount;
+      label1->Text = System::String::Concat( "There are ", rows, " rows of tabs in the tabControl1 tab strip." );
+      label1->Location = Point(35,25);
+      label1->Size = System::Drawing::Size( 220, 30 );
+      Size = System::Drawing::Size( 300, 300 );
+      array<Control^>^temp1 = {label1,tabControl1};
+      Controls->AddRange( temp1 );
    }
 
 };

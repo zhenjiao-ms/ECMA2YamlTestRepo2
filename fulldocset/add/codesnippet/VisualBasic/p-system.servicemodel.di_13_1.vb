@@ -5,5 +5,7 @@
 
 			serviceHost.Open()
 
-			Dim dispatcher As ChannelDispatcher = CType(serviceHost.ChannelDispatchers(0), ChannelDispatcher)
-			Dim bindingName As String = dispatcher.BindingName
+			Dim icl As IChannelListener = serviceHost.ChannelDispatchers(0).Listener
+			Dim dispatcher As New ChannelDispatcher(icl)
+
+			dispatcher.MaxTransactedBatchSize = 10

@@ -1,106 +1,90 @@
 Imports System
-Imports System.Web
-Imports System.IO
-Imports System.Collections
-Imports System.Runtime.Serialization.Formatters.Binary
+Imports System.CodeDom.Compiler
+Imports System.CodeDom
 Imports System.Runtime.Serialization
-Imports System.Security.Permissions
+Imports System.IO
+Imports System.Xml
+Imports System.Xml.Schema
+Imports System.Globalization
 
+Class Program
+   
+    Shared Sub Main(ByVal args() As String) 
+        Try
+            Dim schemas As XmlSchemaSet = Export()
+            Dim ccu As CodeCompileUnit = Import(schemas)
+            CompileCode(ccu, "Person.cs")
+            CompileCode(ccu, "Person.vb")
+        Catch exc As Exception
+            Console.WriteLine("{0}: {1}", exc.Message, exc.StackTrace)
+        Finally
+            Console.WriteLine("Press <Enter> to end....")
+            Console.ReadLine()
+        End Try
+    
+    End Sub 
+    
+    Shared Function Export() As XmlSchemaSet 
+        Dim ex As New XsdDataContractExporter()
+        ex.Export(GetType(Person))
+        Return ex.Schemas
+    End Function
+    Shared Function Import(ByVal schemas As XmlSchemaSet) As CodeCompileUnit 
 
-' There should be only one instance of this type per AppDomain.
-<Serializable()> _
-<PermissionSet(SecurityAction.Demand, Name:="FullTrust")> _
-Public NotInheritable Class Singleton
-   Implements ISerializable
+        Dim imp As New XsdDataContractImporter()
+       ' The EnableDataBinding option adds a RaisePropertyChanged method to
+       ' the generated code. The GenerateInternal causes code access to be
+       ' set to internal.
+       Dim iOptions As New ImportOptions()
+       iOptions.EnableDataBinding = true
+       iOptions.GenerateInternal = true
+       imp.Options = IOptions
 
-   ' This is the one instance of this type.
-   Private Shared ReadOnly theOneObject As New Singleton
+        If imp.CanImport(schemas) Then
+            imp.Import(schemas)
+            Return imp.CodeCompileUnit
+        Else
+            Return Nothing
+        End If
+    End Function
 
-   ' Here are the instance fields.
-   Private someString As String
-   private someNumber As Int32
-
-   ' Private constructor allowing this type to construct the Singleton.
-   Private Sub New()
-      ' Do whatever is necessary to initialize the Singleton.
-      someString = "This is a string field"
-      someNumber = 123
-   End Sub
-
-   ' A method returning a reference to the Singleton.
-   Public Shared Function GetSingleton() As Singleton
-      Return theOneObject
-   End Function
-
-   ' A method called when serializing a Singleton.
-   <SecurityPermissionAttribute(SecurityAction.LinkDemand, Flags:=SecurityPermissionFlag.SerializationFormatter)> _
-   Private Sub GetObjectData(ByVal info As SerializationInfo, _
-      ByVal context As StreamingContext) _
-      Implements ISerializable.GetObjectData
-
-      ' Instead of serializing this object, we will  
-      ' serialize a SingletonSerializationHelp instead.
-      info.SetType(GetType(SingletonSerializationHelper))
-      ' No other values need to be added.
-   End Sub
-
-   ' Note: ISerializable's special constructor is not necessary 
-   ' because it is never called.
+    Shared Sub CompileCode(ByVal ccu As CodeCompileUnit, ByVal sourceName As String) 
+        Dim provider As CodeDomProvider = Nothing
+        Dim sourceFile As New FileInfo(sourceName)
+        ' Select the code provider based on the input file extension, either C# or Visual Basic.
+        If sourceFile.Extension.ToUpper(CultureInfo.InvariantCulture) = ".CS" Then
+            provider = New Microsoft.CSharp.CSharpCodeProvider()
+        ElseIf sourceFile.Extension.ToUpper(CultureInfo.InvariantCulture) = ".VB" Then
+            provider = New Microsoft.VisualBasic.VBCodeProvider()
+        Else
+            Console.WriteLine("Source file must have a .cs or .vb extension")
+        End If
+        If Not (provider Is Nothing) Then
+            Dim options As New CodeGeneratorOptions()
+            ' Set code formatting options to your preference. 
+            options.BlankLinesBetweenMembers = True
+            options.BracingStyle = "C"
+            
+            Dim sw As New StreamWriter(sourceName)
+            provider.GenerateCodeFromCompileUnit(ccu, sw, options)
+            sw.Close()
+        End If
+    
+    End Sub
 End Class
 
-
-<Serializable()> _
-<PermissionSet(SecurityAction.Demand, Name:="FullTrust")> _
-Friend NotInheritable Class SingletonSerializationHelper
-   Implements IObjectReference
-   ' This object has no fields (although it could).
-
-   ' GetRealObject is called after this object is deserialized.
-   <SecurityPermissionAttribute(SecurityAction.LinkDemand, Flags:=SecurityPermissionFlag.SerializationFormatter)> _
-   Public Function GetRealObject(ByVal context As StreamingContext) As Object Implements IObjectReference.GetRealObject
-      ' When deserialiing this object, return a reference to 
-      ' the Singleton object instead.
-      Return Singleton.GetSingleton()
-   End Function
-End Class
-
-
-Class App
-   <STAThread()> Shared Sub Main()
-      Dim fs As New FileStream("DataFile.dat", FileMode.Create)
-
-      Try
-         ' Construct a BinaryFormatter and use it 
-         ' to serialize the data to the stream.
-         Dim formatter As New BinaryFormatter
-
-         ' Create an array with multiple elements refering to 
-         ' the one Singleton object.
-         Dim a1() As Singleton = {Singleton.GetSingleton(), Singleton.GetSingleton()}
-
-         ' This displays "True".
-         Console.WriteLine("Do both array elements refer to the same object? " & _
-            Object.ReferenceEquals(a1(0), a1(1)))
-
-         ' Serialize the array elements.
-         formatter.Serialize(fs, a1)
-
-         ' Deserialize the array elements.
-         fs.Position = 0
-         Dim a2() As Singleton = DirectCast(formatter.Deserialize(fs), Singleton())
-
-         ' This displays "True".
-         Console.WriteLine("Do both array elements refer to the same object? " & _
-            Object.ReferenceEquals(a2(0), a2(1)))
-
-         ' This displays "True".
-         Console.WriteLine("Do all array elements refer to the same object? " & _
-            Object.ReferenceEquals(a1(0), a2(0)))
-      Catch e As SerializationException
-         Console.WriteLine("Failed to serialize. Reason: " & e.Message)
-         Throw
-      Finally
-         fs.Close()
-      End Try
-   End Sub
-End Class
+<DataContract()>  _
+Public Class Person
+    <DataMember()>  _
+    Public FirstName As String
+    
+    <DataMember()>  _
+    Public LastName As String
+    
+    
+    Public Sub New(ByVal newFName As String, ByVal newLName As String) 
+        FirstName = newFName
+        LastName = newLName
+    
+    End Sub 
+End Class 

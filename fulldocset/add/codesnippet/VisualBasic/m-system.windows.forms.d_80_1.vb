@@ -1,6 +1,11 @@
-        ElseIf (e.AssociatedControl Is button3) Then
-            ' Draw the ToolTip using default values if the ToolTip is for button3.
-            e.DrawBackground()
-            e.DrawBorder()
-            e.DrawText()
-        End If
+   Private Sub SetHeaderText(ByVal sender As Object, ByVal e As EventArgs)
+      ' Set the HeaderText property.
+      myDataGridColumnStyle.HeaderText = "Emp ID"
+      myDataGrid.Invalidate()
+   End Sub 'SetHeaderText
+
+   Private Sub ResetHeaderText(ByVal sender As Object, ByVal e As EventArgs)
+      ' Reset the HeaderText property to its default value.
+      myDataGridColumnStyle.ResetHeaderText()
+      myDataGrid.Invalidate()
+   End Sub 'ResetHeaderText

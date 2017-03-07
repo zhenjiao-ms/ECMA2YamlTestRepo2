@@ -1,9 +1,44 @@
-Private Sub ListView1_ColumnWidthChanged(sender as Object, e as ColumnWidthChangedEventArgs) _ 
-     Handles ListView1.ColumnWidthChanged
-
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "ColumnIndex", e.ColumnIndex)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"ColumnWidthChanged Event")
-
-End Sub
+Private Sub MoveNext(ByVal myCurrencyManager As CurrencyManager)
+    If myCurrencyManager.Count = 0 Then
+       Console.WriteLine("No records to move to.")
+       Exit Sub
+    End If
+ 
+    If myCurrencyManager.Position = myCurrencyManager.Count - 1 Then 
+       MessageBox.Show("You're at end of the records")
+    Else
+       myCurrencyManager.Position += 1
+    End If
+ End Sub
+ 
+ Private Sub MoveFirst(ByVal myCurrencyManager As CurrencyManager)
+    If myCurrencyManager.Count = 0 Then
+       Console.WriteLine("No records to move to.")
+       Exit Sub
+    End If
+ 
+    myCurrencyManager.Position = 0
+ End Sub
+ 
+ Private Sub MovePrevious(ByVal myCurrencyManager As CurrencyManager)
+    If myCurrencyManager.Count = 0 Then
+       Console.WriteLine("No records to move to.")
+       Exit Sub
+    End If
+ 
+    If myCurrencyManager.Position = 0 Then
+       MessageBox.Show("You're at the beginning of the records.")
+    Else
+       myCurrencyManager.Position -= 1
+    End if
+ End Sub
+ 
+ Private Sub MoveLast(ByVal myCurrencyManager As CurrencyManager)
+    If myCurrencyManager.Count = 0 Then
+       Console.WriteLine("No records to move to.")
+       Exit Sub
+    End If
+ 
+    myCurrencyManager.Position = myCurrencyManager.Count - 1
+ End Sub
+   

@@ -1,15 +1,17 @@
-    ' Demonstrates SetAudio, ContainsAudio, and GetAudioStream.
-    Public Function SwapClipboardAudio( _
-        ByVal replacementAudioStream As System.IO.Stream) _
-        As System.IO.Stream
+    ' Demonstrates SetFileDropList, ContainsFileDroList, and GetFileDropList
+    Public Function SwapClipboardFileDropList(ByVal replacementList _
+        As System.Collections.Specialized.StringCollection) _
+        As System.Collections.Specialized.StringCollection
 
-        Dim returnAudioStream As System.IO.Stream = Nothing
+        Dim returnList As System.Collections.Specialized.StringCollection _
+            = Nothing
 
-        If (Clipboard.ContainsAudio()) Then
-            returnAudioStream = Clipboard.GetAudioStream()
-            Clipboard.SetAudio(replacementAudioStream)
+        If Clipboard.ContainsFileDropList() Then
+
+            returnList = Clipboard.GetFileDropList()
+            Clipboard.SetFileDropList(replacementList)
         End If
 
-        Return returnAudioStream
+        Return returnList
 
     End Function

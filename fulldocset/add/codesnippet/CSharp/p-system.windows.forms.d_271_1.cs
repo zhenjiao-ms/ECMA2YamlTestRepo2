@@ -1,17 +1,16 @@
-    void dataGridView1_ColumnHeaderMouseClick(
-        object sender, DataGridViewCellMouseEventArgs e)
+    private void dataGridView1_SortCompare(object sender,
+        DataGridViewSortCompareEventArgs e)
     {
-        this.dataGridView1.SelectionMode =
-            DataGridViewSelectionMode.ColumnHeaderSelect;
-        this.dataGridView1.Columns[e.ColumnIndex].HeaderCell
-            .SortGlyphDirection = SortOrder.None;
-        this.dataGridView1.Columns[e.ColumnIndex].Selected = true;
-    }
+        // Try to sort based on the cells in the current column.
+        e.SortResult = System.String.Compare(
+            e.CellValue1.ToString(), e.CellValue2.ToString());
 
-    void dataGridView1_RowHeaderMouseClick(
-        object sender, DataGridViewCellMouseEventArgs e)
-    {
-        this.dataGridView1.SelectionMode =
-            DataGridViewSelectionMode.RowHeaderSelect;
-        this.dataGridView1.Rows[e.RowIndex].Selected = true;
+        // If the cells are equal, sort based on the ID column.
+        if (e.SortResult == 0 && e.Column.Name != "ID")
+        {
+            e.SortResult = System.String.Compare(
+                dataGridView1.Rows[e.RowIndex1].Cells["ID"].Value.ToString(),
+                dataGridView1.Rows[e.RowIndex2].Cells["ID"].Value.ToString());
+        }
+        e.Handled = true;
     }

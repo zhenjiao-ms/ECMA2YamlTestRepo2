@@ -1,85 +1,126 @@
+<%@ Page Language="C#" %>
+<%@ Import Namespace="System.Data" %>
 
-<%@ Page language="C#" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <script runat="server">
-
-  void CustomersGridView_PageIndexChanging(Object sender, GridViewPageEventArgs e)
-  {
-    
-    // Cancel the paging operation if the user attempts to navigate
-    // to another page while the GridView control is in edit mode. 
-    if (CustomersGridView.EditIndex != -1)
+    private ICollection CreateDataSource()
     {
-      // Use the Cancel property to cancel the paging operation.
-      e.Cancel = true;
-      
-      // Display an error message.
-      int newPageNumber = e.NewPageIndex + 1;
-      Message.Text = "Please update the record before moving to page " +
-        newPageNumber.ToString() + ".";
+        // Create sample data for the DataGrid control.
+        DataTable dt = new DataTable();
+        DataRow dr;
+
+        // Define the columns of the table.
+        dt.Columns.Add(new DataColumn("IntegerValue", typeof(Int32)));
+        dt.Columns.Add(new DataColumn("StringValue", typeof(String)));
+        dt.Columns.Add(new DataColumn("CurrencyValue", typeof(Double)));
+
+        // Populate the table with sample values.
+        for (int i = 0; i <= 100; i++) 
+        {
+            dr = dt.NewRow();
+            dr[0] = i;
+            dr[1] = "Item " + i.ToString();
+            dr[2] = 1.23 * (i + 1);
+
+            dt.Rows.Add(dr);
+        }
+        DataView dv = new DataView(dt);
+        return dv;
     }
-    else
+
+    private void Page_Load(Object sender, EventArgs e)
+    { 
+        // Load sample data only once, when the page is first loaded.
+        if (!IsPostBack)
+        { 
+            ItemsGrid.DataSource = CreateDataSource();
+            ItemsGrid.DataBind();
+        }
+    }
+
+    private void Check_Change(Object sender, EventArgs e)
     {
-      // Clear the error message.
-      Message.Text = "";
+        // Allow or prevent paging depending 
+        // on the user's selection.
+        ItemsGrid.AllowPaging = AllowPagingCheckBox.Checked;
+
+        // Rebind the data to refresh the DataGrid control. 
+        ItemsGrid.DataSource = CreateDataSource();
+        ItemsGrid.DataBind();
     }
-    
-  }
 
-  void CustomersGridView_RowCancelingEdit(Object sender, GridViewCancelEditEventArgs e)
-  {
-    // Clear the error message.
-    Message.Text = "";
-  }
+    private void Grid_Change(Object sender, DataGridPageChangedEventArgs e) 
+    {
+        // For the DataGrid control to navigate to the correct page when
+        // paging is allowed, the CurrentPageIndex property must be updated
+        // programmatically. This process is usually accomplished in the
+        // event-handling method for the PageIndexChanged event.
 
+        // Set CurrentPageIndex to the page the user clicked.
+        ItemsGrid.CurrentPageIndex = e.NewPageIndex;
+
+        // Rebind the data to refresh the DataGrid control. 
+        ItemsGrid.DataSource = CreateDataSource();
+        ItemsGrid.DataBind();
+    }
 </script>
-
+ 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head runat="server">
-    <title>GridView PageIndexChanging Example</title>
+<head id="Head1" runat="server">
+    <title>DataGrid AllowPaging Example</title>
 </head>
 <body>
     <form id="form1" runat="server">
-        
-      <h3>GridView PageIndexChanging Example</h3>
-            
-      <asp:label id="Message"
-        forecolor="Red"
-        runat="server"/>
-                
-      <br/>  
+    <div>
+ 
+    <h3>DataGrid AllowPaging Example</h3>
 
-      <asp:gridview id="CustomersGridView" 
-        datasourceid="CustomersSource" 
-        autogeneratecolumns="true"
-        emptydatatext="No data available." 
-        allowpaging="true"
-        autogenerateeditbutton="true"
-        datakeynames="CustomerID"  
-        onpageindexchanging="CustomersGridView_PageIndexChanging"
-        onrowcancelingedit="CustomersGridView_RowCancelingEdit" 
-        runat="server">
-                
-        <pagersettings mode="Numeric"
-          position="Bottom"           
-          pagebuttoncount="10"/>
-                      
-        <pagerstyle backcolor="LightBlue"/>
-                
-      </asp:gridview>
-            
-      <!-- This example uses Microsoft SQL Server and connects  -->
-      <!-- to the Northwind sample database. Use an ASP.NET     -->
-      <!-- expression to retrieve the connection string value   -->
-      <!-- from the Web.config file.                            -->
-      <asp:sqldatasource id="CustomersSource"
-        selectcommand="Select [CustomerID], [CompanyName], [Address], [City], [PostalCode], [Country] From [Customers]"
-        updatecommand="Update Customers SET CompanyName=@CompanyName, Address=@Address, City=@City, PostalCode=@PostalCode, Country=@Country WHERE (CustomerID = @CustomerID)"
-        connectionstring="<%$ ConnectionStrings:NorthWindConnectionString%>" 
-        runat="server"/>
-            
+    <p>Select whether to allow paging in the DataGrid control.<br />
+       <asp:CheckBox id="AllowPagingCheckBox"
+            Text="Allow paging"
+            AutoPostBack="True"
+            Checked="True"
+            OnCheckedChanged="Check_Change"
+            runat="server" />
+    </p>
+    <hr />
+    <asp:Label runat="server" 
+        AssociatedControlID="ItemsGrid" 
+        Font-Bold="true">Product List</asp:Label>
+    <asp:DataGrid id="ItemsGrid" runat="server"
+        BorderColor="Gray"
+        BorderWidth="1"
+        CellPadding="3"
+        AutoGenerateColumns="False"
+        UseAccessibleHeader="true"
+        PageSize="10"
+        AllowPaging="True"
+        OnPageIndexChanged="Grid_Change">
+
+        <HeaderStyle BackColor="LightBlue" />
+        <Columns>
+            <asp:BoundColumn DataField="IntegerValue" 
+                 SortExpression="IntegerValue"
+                 ItemStyle-HorizontalAlign="center"
+                 HeaderText="Item" />
+
+            <asp:BoundColumn DataField="StringValue" 
+                HeaderText="Description" 
+                ItemStyle-HorizontalAlign="left"
+                SortExpression="StringValue" />
+
+            <asp:BoundColumn DataField="CurrencyValue" 
+                 HeaderText="Price"
+                 SortExpression="CurrencyValue"
+                 DataFormatString="{0:c}" />
+
+        </Columns>
+        <ItemStyle HorizontalAlign="Right" />
+    </asp:DataGrid>
+
+    </div>
     </form>
-  </body>
+</body>
 </html>

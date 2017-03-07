@@ -1,13 +1,9 @@
-      void button1_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+      void button2_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
       {
-         if ( treeView1->SelectedNode->IsExpanded )
+         // Delete the first TreeNode in the collection
+         // if the Text property is S"Node0."
+         if ( this->treeView1->Nodes[ 0 ]->Text->Equals( "Node0" ) )
          {
-            treeView1->SelectedNode->Collapse();
-            MessageBox::Show( String::Concat( treeView1->SelectedNode->Text, " tree node collapsed." ) );
-         }
-         else
-         {
-            treeView1->SelectedNode->Expand();
-            MessageBox::Show( String::Concat( treeView1->SelectedNode->Text, " tree node expanded." ) );
+            this->treeView1->Nodes->RemoveAt( 0 );
          }
       }

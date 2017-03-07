@@ -7,4 +7,4 @@
 
 			Dim icl As IChannelListener = serviceHost.ChannelDispatchers(0).Listener
 			Dim dispatcher As New ChannelDispatcher(icl)
-			Dim receiveSynchronously As Boolean = dispatcher.ReceiveSynchronously
+			dispatcher.MessageVersion = MessageVersion.Default

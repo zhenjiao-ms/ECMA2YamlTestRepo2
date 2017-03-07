@@ -1,8 +1,14 @@
-Private Sub MoveCursor()
-   ' Set the Current cursor, move the cursor's Position,
-   ' and set its clipping rectangle to the form. 
+    ' Demonstrates SetData, ContainsData, and GetData.
+    Public Function SwapClipboardFormattedData( _
+        ByVal format As String, ByVal data As Object) As Object
 
-   Me.Cursor = New Cursor(Cursor.Current.Handle)
-   Cursor.Position = New Point(Cursor.Position.X - 50, Cursor.Position.Y - 50)
-   Cursor.Clip = New Rectangle(Me.Location, Me.Size)
-End Sub
+        Dim returnObject As Object = Nothing
+
+        If (Clipboard.ContainsData(format)) Then
+            returnObject = Clipboard.GetData(format)
+            Clipboard.SetData(format, data)
+        End If
+
+        Return returnObject
+
+    End Function

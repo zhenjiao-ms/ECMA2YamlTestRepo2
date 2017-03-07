@@ -1,17 +1,36 @@
-Private Sub ToolStripRenderer1_RenderArrow(sender as Object, e as ToolStripArrowRenderEventArgs) _ 
-     Handles ToolStripRenderer1.RenderArrow
+Public Class CustomizedTreeView
+    Inherits TreeView
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "ArrowRectangle", e.ArrowRectangle)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "ArrowColor", e.ArrowColor)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Direction", e.Direction)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Item", e.Item)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"RenderArrow Event")
+    Public Sub New()
+        ' Customize the TreeView control by setting various properties.
+        BackColor = System.Drawing.Color.CadetBlue
+        FullRowSelect = True
+        HotTracking = True
+        Indent = 34
+        ShowPlusMinus = False
 
-End Sub
+        ' The ShowLines property must be false for the FullRowSelect 
+        ' property to work.
+        ShowLines = False
+    End Sub 'New
+
+
+    Protected Overrides Sub OnAfterSelect(ByVal e As TreeViewEventArgs)
+        ' Confirm that the user initiated the selection.
+        ' This prevents the first node from expanding when it is
+        ' automatically selected during the initialization of 
+        ' the TreeView control.
+        If e.Action <> TreeViewAction.Unknown Then
+            If e.Node.IsExpanded Then
+                e.Node.Collapse()
+            Else
+                e.Node.Expand()
+            End If
+        End If
+
+        ' Remove the selection. This allows the same node to be
+        ' clicked twice in succession to toggle the expansion state.
+        SelectedNode = Nothing
+    End Sub 'OnAfterSelect
+
+End Class 'CustomizedTreeView 

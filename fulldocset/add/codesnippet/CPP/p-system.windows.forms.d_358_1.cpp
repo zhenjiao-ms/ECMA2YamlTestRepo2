@@ -1,30 +1,16 @@
-   ToolStripMenuItem^ toolStripItem1;
-   void AddContextMenu()
+   // Style and number columns.
+   void Button8_Click( Object^ /*sender*/, EventArgs^ /*args*/ )
    {
-      toolStripItem1->Text = L"Redden";
-      toolStripItem1->Click += gcnew EventHandler( this, &DataGridViewColumnDemo::toolStripItem1_Click );
-      System::Windows::Forms::ContextMenuStrip^ strip = gcnew System::Windows::Forms::ContextMenuStrip;
-      IEnumerator^ myEnum = dataGridView->Columns->GetEnumerator();
-      while ( myEnum->MoveNext() )
+      DataGridViewCellStyle^ style = gcnew DataGridViewCellStyle;
+      style->Alignment = DataGridViewContentAlignment::MiddleCenter;
+      style->ForeColor = Color::IndianRed;
+      style->BackColor = Color::Ivory;
+      IEnumerator^ myEnum1 = dataGridView->Columns->GetEnumerator();
+      while ( myEnum1->MoveNext() )
       {
-         DataGridViewColumn^ column = safe_cast<DataGridViewColumn^>(myEnum->Current);
-         column->ContextMenuStrip = strip;
-         column->ContextMenuStrip->Items->Add( toolStripItem1 );
+         DataGridViewColumn^ column = safe_cast<DataGridViewColumn^>(myEnum1->Current);
+         column->HeaderCell->Value = column->Index.ToString();
+         column->HeaderCell->Style = style;
       }
-   }
-
-   DataGridViewCellEventArgs^ mouseLocation;
-
-   // Change the cell's color.
-   void toolStripItem1_Click( Object^ /*sender*/, EventArgs^ /*args*/ )
-   {
-      dataGridView->Rows[ mouseLocation->RowIndex ]->Cells[ mouseLocation->ColumnIndex ]->Style->BackColor = Color::Red;
-   }
-
-
-   // Deal with hovering over a cell.
-   void dataGridView_CellMouseEnter( Object^ /*sender*/, DataGridViewCellEventArgs^ location )
-   {
-      mouseLocation = location;
    }
 

@@ -1,87 +1,56 @@
-#using <System.dll>
-#using <System.Security.dll>
+#using <system.dll>
 
 using namespace System;
 using namespace System::Security::Cryptography;
-using namespace System::Security::Cryptography::X509Certificates;
-
 int main()
 {
    
-   //The following example demonstrates the usage of the AsnEncodedData classes.
-   // Asn encoded data is read from the extensions of an X509 certificate.
-   try
-   {
-      
-      // Open the certificate store.
-      X509Store^ store = gcnew X509Store( L"MY",StoreLocation::CurrentUser );
-      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
-      X509Certificate2Collection^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-      X509Certificate2Collection^ fcollection = dynamic_cast<X509Certificate2Collection^>(collection->Find( X509FindType::FindByTimeValid, DateTime::Now, false ));
-      
-      // Select one or more certificates to display extensions information.
-      X509Certificate2Collection^ scollection = X509Certificate2UI::SelectFromCollection(fcollection, L"Certificate Select",L"Select certificates from the following list to get extension information on that certificate",X509SelectionFlag::MultiSelection);
-      
-      // Create a new AsnEncodedDataCollection object.
-      AsnEncodedDataCollection^ asncoll = gcnew AsnEncodedDataCollection;
-      for ( int i = 0; i < scollection->Count; i++ )
-      {
-         
-         // Display certificate information.
-         Console::ForegroundColor = ConsoleColor::Red;
-         Console::WriteLine( L"Certificate name: {0}", scollection[i]->GetName() );
-         Console::ResetColor();
-         
-         // Display extensions information.
-         System::Collections::IEnumerator^ myEnum = scollection[i]->Extensions->GetEnumerator();
-         while ( myEnum->MoveNext() )
-         {
-            X509Extension^ extension = safe_cast<X509Extension ^>(myEnum->Current);
-            
-            // Create an AsnEncodedData object using the extensions information.
-            AsnEncodedData^ asndata = gcnew AsnEncodedData( extension->Oid,extension->RawData );
-            Console::ForegroundColor = ConsoleColor::Green;
-            Console::WriteLine( L"Extension type: {0}", extension->Oid->FriendlyName );
-            Console::WriteLine( L"Oid value: {0}", asndata->Oid->Value );
-            Console::WriteLine( L"Raw data length: {0} {1}", asndata->RawData->Length, Environment::NewLine );
-            Console::ResetColor();
-            Console::WriteLine( asndata->Format(true) );
-            Console::WriteLine( Environment::NewLine );
-            
-            // Add the AsnEncodedData object to the AsnEncodedDataCollection object.
-            asncoll->Add( asndata );
-         }
-
-         Console::WriteLine( Environment::NewLine );
-
-      }
-      Console::ForegroundColor = ConsoleColor::Red;
-      Console::WriteLine( L"Number of AsnEncodedData items in the collection: {0} {1}", asncoll->Count, Environment::NewLine );
-      Console::ResetColor();
-      store->Close();
-      
-      //Create an enumerator for moving through the collection.
-      AsnEncodedDataEnumerator^ asne = asncoll->GetEnumerator();
-      
-      //You must execute a MoveNext() to get to the first item in the collection.
-      asne->MoveNext();
-      
-      // Write out AsnEncodedData in the collection.
-      Console::ForegroundColor = ConsoleColor::Blue;
-      Console::WriteLine( L"First AsnEncodedData in the collection: {0}", asne->Current->Format(true) );
-      Console::ResetColor();
-      asne->MoveNext();
-      Console::ForegroundColor = ConsoleColor::DarkBlue;
-      Console::WriteLine( L"Second AsnEncodedData in the collection: {0}", asne->Current->Format(true) );
-      Console::ResetColor();
-      
-      //Return index in the collection to the beginning.
-      asne->Reset();
-   }
-   catch ( CryptographicException^ ) 
-   {
-      Console::WriteLine( L"Information could not be written out for this certificate." );
-   }
-
-   return 1;
+   // Assign values to strings.
+   String^ Value1 = "1.2.840.113549.1.1.1";
+   String^ Name1 = "3DES";
+   String^ Value2 = "1.3.6.1.4.1.311.20.2";
+   String^ InvalidName = "This name is not a valid name";
+   String^ InvalidValue = "1.1.1.1.1.1.1.1";
+   
+   // Create new Oid objects using the specified values.
+   // Note that the corresponding Value or Friendly Name property is automatically added to the object.
+   Oid ^ o1 = gcnew Oid( Value1 );
+   Oid ^ o2 = gcnew Oid( Name1 );
+   
+   // Create a new Oid object using the specified Value and Friendly Name properties.
+   // Note that the two are not compared to determine if the Value is associated 
+   //  with the Friendly Name.
+   Oid ^ o3 = gcnew Oid( Value2,InvalidName );
+   
+   //Create a new Oid object using the specified Value. Note that if the value
+   //  is invalid or not known, no value is assigned to the Friendly Name property.
+   Oid ^ o4 = gcnew Oid( InvalidValue );
+   
+   //Write out the property information of the Oid objects.
+   Console::WriteLine( "Oid1: Automatically assigned Friendly Name: {0}, {1}", o1->FriendlyName, o1->Value );
+   Console::WriteLine( "Oid2: Automatically assigned Value: {0}, {1}", o2->FriendlyName, o2->Value );
+   Console::WriteLine( "Oid3: Name and Value not compared: {0}, {1}", o3->FriendlyName, o3->Value );
+   Console::WriteLine( "Oid4: Invalid Value used: {0}, {1} {2}", o4->FriendlyName, o4->Value, Environment::NewLine );
+   
+   //Create an Oid collection and add several Oid objects.
+   OidCollection ^ oc = gcnew OidCollection;
+   oc->Add( o1 );
+   oc->Add( o2 );
+   oc->Add( o3 );
+   Console::WriteLine( "Number of Oids in the collection: {0}", oc->Count );
+   Console::WriteLine( "Is synchronized: {0} {1}", oc->IsSynchronized, Environment::NewLine );
+   
+   //Create an enumerator for moving through the collection.
+   OidEnumerator ^ oe = oc->GetEnumerator();
+   
+   //You must execute a MoveNext() to get to the first item in the collection.
+   oe->MoveNext();
+   
+   // Write out Oids in the collection.
+   Console::WriteLine( "First Oid in collection: {0},{1}", oe->Current->FriendlyName, oe->Current->Value );
+   oe->MoveNext();
+   Console::WriteLine( "Second Oid in collection: {0},{1}", oe->Current->FriendlyName, oe->Current->Value );
+   
+   //Return index in the collection to the beginning.
+   oe->Reset();
 }

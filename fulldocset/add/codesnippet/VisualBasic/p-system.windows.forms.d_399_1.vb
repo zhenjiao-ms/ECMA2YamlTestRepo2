@@ -1,30 +1,5 @@
-    ' Draws the backgrounds for entire ListView items.
-    Private Sub listView1_DrawItem(ByVal sender As Object, _
-        ByVal e As DrawListViewItemEventArgs) _
-        Handles listView1.DrawItem
+        ' Retrieve the cell value for the cell at column 3, row 7.
+        Dim testValue1 As String = CStr(dataGridView1(3, 7).Value)
 
-        If Not (e.State And ListViewItemStates.Selected) = 0 Then
-
-            ' Draw the background for a selected item.
-            e.Graphics.FillRectangle(Brushes.Maroon, e.Bounds)
-            e.DrawFocusRectangle()
-
-        Else
-
-            ' Draw the background for an unselected item.
-            Dim brush As New LinearGradientBrush(e.Bounds, Color.Orange, _
-                Color.Maroon, LinearGradientMode.Horizontal)
-            Try
-                e.Graphics.FillRectangle(brush, e.Bounds)
-            Finally
-                brush.Dispose()
-            End Try
-
-        End If
-
-        ' Draw the item text for views other than the Details view.
-        If Not Me.listView1.View = View.Details Then
-            e.DrawText()
-        End If
-
-    End Sub
+        ' Retrieve the cell value for the cell in the Name column at row 4.
+        Dim testValue2 As String = CStr(dataGridView1("Name", 4).Value)

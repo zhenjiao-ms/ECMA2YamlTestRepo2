@@ -1,64 +1,136 @@
+Imports System
+Imports System.Drawing
+Imports System.Windows.Forms
 
-    ' Declare the LinkLabel object.
-    Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
+Public Class ListViewInsertionMarkExample
+    Inherits Form
 
-    ' Declare keywords array to identify links
-    Dim keywords() As String
+    Private myListView As ListView
+    
+    Public Sub New()
+        ' Initialize myListView.
+        myListView = New ListView()
+        myListView.Dock = DockStyle.Fill
+        myListView.View = View.LargeIcon
+        myListView.MultiSelect = False
+        myListView.ListViewItemSorter = New ListViewIndexComparer()
+        
+        ' Initialize the insertion mark.
+        myListView.InsertionMark.Color = Color.Green
+        
+        ' Add items to myListView.
+        myListView.Items.Add("zero")
+        myListView.Items.Add("one")
+        myListView.Items.Add("two")
+        myListView.Items.Add("three")
+        myListView.Items.Add("four")
+        myListView.Items.Add("five")
+        
+        ' Initialize the drag-and-drop operation when running
+        ' under Windows XP or a later operating system.
+        If OSFeature.Feature.IsPresent(OSFeature.Themes)
+            myListView.AllowDrop = True
+            AddHandler myListView.ItemDrag, AddressOf myListView_ItemDrag
+            AddHandler myListView.DragEnter, AddressOf myListView_DragEnter
+            AddHandler myListView.DragOver, AddressOf myListView_DragOver
+            AddHandler myListView.DragLeave, AddressOf myListView_DragLeave
+            AddHandler myListView.DragDrop, AddressOf myListView_DragDrop
+        End If 
 
-    Private Sub InitializeLinkLabel()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel
-        Me.LinkLabel1.Links.Clear()
-        ' Set the location, name and size.
-        Me.LinkLabel1.Location = New System.Drawing.Point(10, 20)
-        Me.LinkLabel1.Name = "CompanyLinks"
-        Me.LinkLabel1.Size = New System.Drawing.Size(104, 150)
+        ' Initialize the form.
+        Me.Text = "ListView Insertion Mark Example"
+        Me.Controls.Add(myListView)
+    End Sub 'New
 
-        ' Set the LinkBehavior property to show underline when mouse
-        ' hovers over the links.
-        Me.LinkLabel1.LinkBehavior = _
-            System.Windows.Forms.LinkBehavior.HoverUnderline
-        Dim textString As String = "For more information see our" & _
-           " company website or the research page at Contoso Ltd. "
+    <STAThread()> _
+    Shared Sub Main()
+        Application.EnableVisualStyles()
+        Application.Run(New ListViewInsertionMarkExample())
+    End Sub 'Main
+    
+    ' Starts the drag-and-drop operation when an item is dragged.
+    Private Sub myListView_ItemDrag(sender As Object, e As ItemDragEventArgs)
+        myListView.DoDragDrop(e.Item, DragDropEffects.Move)
+    End Sub 'myListView_ItemDrag
+    
+    ' Sets the target drop effect.
+    Private Sub myListView_DragEnter(sender As Object, e As DragEventArgs)
+        e.Effect = e.AllowedEffect
+    End Sub 'myListView_DragEnter
+    
+    ' Moves the insertion mark as the item is dragged.
+    Private Sub myListView_DragOver(sender As Object, e As DragEventArgs)
+        ' Retrieve the client coordinates of the mouse pointer.
+        Dim targetPoint As Point = myListView.PointToClient(New Point(e.X, e.Y))
+        
+        ' Retrieve the index of the item closest to the mouse pointer.
+        Dim targetIndex As Integer = _
+            myListView.InsertionMark.NearestIndex(targetPoint)
+        
+        ' Confirm that the mouse pointer is not over the dragged item.
+        If targetIndex > -1 Then
+            ' Determine whether the mouse pointer is to the left or
+            ' the right of the midpoint of the closest item and set
+            ' the InsertionMark.AppearsAfterItem property accordingly.
+            Dim itemBounds As Rectangle = myListView.GetItemRect(targetIndex)
+            If targetPoint.X > itemBounds.Left + (itemBounds.Width / 2) Then
+                myListView.InsertionMark.AppearsAfterItem = True
+            Else
+                myListView.InsertionMark.AppearsAfterItem = False
+            End If
+        End If
+        
+        ' Set the location of the insertion mark. If the mouse is
+        ' over the dragged item, the targetIndex value is -1 and
+        ' the insertion mark disappears.
+        myListView.InsertionMark.Index = targetIndex
+    End Sub 'myListView_DragOver
 
-        ' Set the text property.
-        Me.LinkLabel1.Text = textString
+    ' Removes the insertion mark when the mouse leaves the control.
+    Private Sub myListView_DragLeave(sender As Object, e As EventArgs)
+        myListView.InsertionMark.Index = -1
+    End Sub 'myListView_DragLeave
+    
+    ' Moves the item to the location of the insertion mark.
+    Private Sub myListView_DragDrop(sender As Object, e As DragEventArgs)
+        ' Retrieve the index of the insertion mark;
+        Dim targetIndex As Integer = myListView.InsertionMark.Index
+        
+        ' If the insertion mark is not visible, exit the method.
+        If targetIndex = -1 Then
+            Return
+        End If 
 
-        ' Set the color of the links to black, unless the mouse
-        ' is hovering over a link.
-        Me.LinkLabel1.LinkColor = System.Drawing.Color.Black
-        Me.LinkLabel1.ActiveLinkColor = System.Drawing.Color.Blue
+        ' If the insertion mark is to the right of the item with
+        ' the corresponding index, increment the target index.
+        If myListView.InsertionMark.AppearsAfterItem Then
+            targetIndex += 1
+        End If 
 
-        ' Add links to the LinkCollection using starting index and
-        ' length of keywords.
-        keywords = New String() {"company", "research"}
-        Dim keyword As String
-        For Each keyword In keywords
-            Me.LinkLabel1.Links.Add(textString.IndexOf(keyword), keyword.Length)
-        Next
+        ' Retrieve the dragged item.
+        Dim draggedItem As ListViewItem = _
+            CType(e.Data.GetData(GetType(ListViewItem)), ListViewItem)
+        
+        ' Insert a copy of the dragged item at the target index.
+        ' A copy must be inserted before the original item is removed
+        ' to preserve item index values.
+        myListView.Items.Insert(targetIndex, _
+            CType(draggedItem.Clone(), ListViewItem))
+        
+        ' Remove the original copy of the dragged item.
+        myListView.Items.Remove(draggedItem)
 
-        ' Add the label to the form.
-        Me.Controls.Add(Me.LinkLabel1)
-    End Sub
+    End Sub 'myListView_DragDrop
+    
+    ' Sorts ListViewItem objects by index.    
+    Private Class ListViewIndexComparer
+        Implements System.Collections.IComparer
+        
+        Public Function Compare(x As Object, y As Object) As Integer _
+            Implements System.Collections.IComparer.Compare
+            Return CType(x, ListViewItem).Index - CType(y, ListViewItem).Index
+        End Function 'Compare
 
-    Private Sub LinkLabel1_LinkClicked(ByVal sender As Object, _
-        ByVal e As LinkLabelLinkClickedEventArgs) _
-        Handles LinkLabel1.LinkClicked
+    End Class 'ListViewIndexComparer
 
-        Dim url As String
-
-        ' Determine which link was clicked and set the appropriate url.
-        Select Case LinkLabel1.Links.IndexOf(e.Link)
-            Case 0
-                url = "www.microsoft.com"
-
-            Case 1
-                url = "www.contoso.com/research"
-        End Select
-
-        ' Set the visited property to True. This will change
-        ' the color of the link.
-        e.Link.Visited = True
-
-        ' Open Internet Explorer to the correct url.
-        System.Diagnostics.Process.Start("IExplore.exe", url)
-    End Sub
+End Class 'ListViewInsertionMarkExample 

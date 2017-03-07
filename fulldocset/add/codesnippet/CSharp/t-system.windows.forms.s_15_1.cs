@@ -1,15 +1,29 @@
-private void SplitContainer1_SplitterMoving(Object sender, SplitterCancelEventArgs e) {
+    private void toggleColumnStylesBtn_Click(
+		System.Object sender, 
+		System.EventArgs e)
+    {
+		TableLayoutColumnStyleCollection styles = 
+			this.TableLayoutPanel1.ColumnStyles;
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "MouseCursorX", e.MouseCursorX );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "MouseCursorY", e.MouseCursorY );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "SplitX", e.SplitX );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "SplitY", e.SplitY );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Cancel", e.Cancel );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "SplitterMoving Event" );
-}
+        foreach( ColumnStyle style in styles )
+        {
+            if( style.SizeType == SizeType.Absolute )
+            {
+                style.SizeType = SizeType.AutoSize;
+            }
+            else if( style.SizeType == SizeType.AutoSize )
+            {
+                style.SizeType = SizeType.Percent;
+
+                // Set the column width to be a percentage
+                // of the TableLayoutPanel control's width.
+                style.Width = 33;
+            }
+            else
+            {
+                // Set the column width to 50 pixels.
+                style.SizeType = SizeType.Absolute;
+                style.Width = 50;
+            }
+        }
+    }

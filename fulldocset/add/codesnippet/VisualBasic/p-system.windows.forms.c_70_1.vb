@@ -1,35 +1,23 @@
-' Create three buttons and place them on a form using 
-' several size and location related properties. 
-Private Sub AddOKCancelButtons()
-   ' Set the button size and location using 
-      ' the Size and Location properties. 
-   Dim buttonOK As New Button()
-   buttonOK.Location = New Point(136, 248)
-   buttonOK.Size = New Size(75, 25)
-   ' Set the Text property and make the 
-   ' button the form's default button. 
-   buttonOK.Text = "&OK"
-   Me.AcceptButton = buttonOK
-   
-   ' Set the button size and location using the Top, 
-   ' Left, Width, and Height properties. 
-   Dim buttonCancel As New Button()
-   buttonCancel.Top = buttonOK.Top
-   buttonCancel.Left = buttonOK.Right + 5
-   buttonCancel.Width = buttonOK.Width
-   buttonCancel.Height = buttonOK.Height
-   ' Set the Text property and make the 
-   ' button the form's cancel button. 
-   buttonCancel.Text = "&Cancel"
-   Me.CancelButton = buttonCancel
-   
-   ' Set the button size and location using 
-   ' the Bounds property. 
-   Dim buttonHelp As New Button()
-   buttonHelp.Bounds = New Rectangle(10, 10, 75, 25)
-   ' Set the Text property of the button.
-   buttonHelp.Text = "&Help"
-   
-   ' Add the buttons to the form.
-   Me.Controls.AddRange(New Control() {buttonOK, buttonCancel, buttonHelp})
-End Sub
+    Private Sub WhatIsChecked_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles WhatIsChecked.Click
+        ' Display in a message box all the items that are checked.
+        Dim indexChecked As Integer
+        Dim itemChecked As Object
+        Const quote As String = """"
+
+        ' First show the index and check state of all selected items.
+        For Each indexChecked In CheckedListBox1.CheckedIndices
+            ' The indexChecked variable contains the index of the item.
+            MessageBox.Show("Index#: " + indexChecked.ToString() + ", is checked. Checked state is:" + _
+                            CheckedListBox1.GetItemCheckState(indexChecked).ToString() + ".")
+        Next
+
+        ' Next show the object title and check state for each item selected.
+        For Each itemChecked In CheckedListBox1.CheckedItems
+
+            ' Use the IndexOf method to get the index of an item.
+            MessageBox.Show("Item with title: " + quote + itemChecked.ToString() + quote + _
+                            ", is checked. Checked state is: " + _
+                            CheckedListBox1.GetItemCheckState(CheckedListBox1.Items.IndexOf(itemChecked)).ToString() + ".")
+        Next
+
+    End Sub

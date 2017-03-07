@@ -1,8 +1,15 @@
-        ' Gets the attributes for the property.
-        Dim attributes As AttributeCollection = TypeDescriptor.GetProperties(Me)("MyProperty").Attributes
+    Public Shared Function Main() As Integer
+        ' Creates a new control.
+        Dim myNewControl As New MyControl()
         
-        ' Checks to see if the property needs to be localized.
-        Dim myAttribute As LocalizableAttribute = CType(attributes(GetType(LocalizableAttribute)), LocalizableAttribute)
-        If myAttribute.IsLocalizable Then
-             ' Insert code here.
-        End If
+        ' Gets the attributes for the collection.
+        Dim attributes As AttributeCollection = TypeDescriptor.GetAttributes(myNewControl)
+        
+        ' Prints the name of the default property by retrieving the
+        ' DefaultPropertyAttribute from the AttributeCollection. 
+        Dim myAttribute As DefaultPropertyAttribute = _
+            CType(attributes(GetType(DefaultPropertyAttribute)), DefaultPropertyAttribute)
+        Console.WriteLine(("The default property is: " + myAttribute.Name))
+        Return 0
+    End Function 'Main
+    

@@ -1,16 +1,31 @@
-    private void Form1_Load(object sender, System.EventArgs e)
+    private void DataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs anError)
     {
-        // Bind the DataGridView controls to the BindingSource
-        // components and load the data from the database.
-        masterDataGridView.DataSource = masterBindingSource;
-        detailsDataGridView.DataSource = detailsBindingSource;
-        GetData();
 
-        // Resize the master DataGridView columns to fit the newly loaded data.
-        masterDataGridView.AutoResizeColumns();
+        MessageBox.Show("Error happened " + anError.Context.ToString());
 
-        // Configure the details DataGridView so that its columns automatically
-        // adjust their widths when the data changes.
-        detailsDataGridView.AutoSizeColumnsMode = 
-            DataGridViewAutoSizeColumnsMode.AllCells;
+        if (anError.Context == DataGridViewDataErrorContexts.Commit)
+        {
+            MessageBox.Show("Commit error");
+        }
+        if (anError.Context == DataGridViewDataErrorContexts.CurrentCellChange)
+        {
+            MessageBox.Show("Cell change");
+        }
+        if (anError.Context == DataGridViewDataErrorContexts.Parsing)
+        {
+            MessageBox.Show("parsing error");
+        }
+        if (anError.Context == DataGridViewDataErrorContexts.LeaveControl)
+        {
+            MessageBox.Show("leave control error");
+        }
+
+        if ((anError.Exception) is ConstraintException)
+        {
+            DataGridView view = (DataGridView)sender;
+            view.Rows[anError.RowIndex].ErrorText = "an error";
+            view.Rows[anError.RowIndex].Cells[anError.ColumnIndex].ErrorText = "an error";
+
+            anError.ThrowException = false;
+        }
     }

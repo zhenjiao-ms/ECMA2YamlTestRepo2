@@ -1,9 +1,9 @@
-    Private Sub Button_Click(ByVal sender As Object, ByVal e As EventArgs) Handles myButton.Click
-        ' Change the 'GridLineColor'.
-        myDataTableStyle.GridLineColor = Color.Blue
-    End Sub 'Button_Click
+   Private Sub myButton1_Click(sender As Object, e As EventArgs)
+      'Set the 'AlternatingBackColor'.
+      myDataGridTableStyle.AlternatingBackColor = Color.Blue
+   End Sub 'myButton1_Click
    
-    Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles myButton1.Click
-        ' Reset the 'GridLineColor' to its orginal color.
-        myDataTableStyle.ResetGridLineColor()
-    End Sub 'Button1_Click
+   Private Sub myButton2_Click(sender As Object, e As EventArgs)
+      ' Reset the 'AlternatingBackColor'.
+      myDataGridTableStyle.ResetAlternatingBackColor()
+   End Sub 'myButton2_Click

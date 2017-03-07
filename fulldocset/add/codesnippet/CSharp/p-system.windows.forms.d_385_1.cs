@@ -1,39 +1,26 @@
-    #region "data store maintance"
-    const int initialValue = -1;
-
-    private void dataGridView1_CellValueNeeded(object sender,
-        DataGridViewCellValueEventArgs e)
-    {
-        if (store.ContainsKey(e.RowIndex))
-        {
-            // Use the store if the e value has been modified 
-            // and stored.            
-            e.Value = store[e.RowIndex];
-        }
-        else if (newRowNeeded && e.RowIndex == numberOfRows)
-        {
-            if (dataGridView1.IsCurrentCellInEditMode)
+            // Draw a custom 3D border if the ToolTip is for button1.
+            if (e.AssociatedControl == button1)
             {
-                e.Value = initialValue;
-            }
-            else
-            {
-                // Show a blank value if the cursor is just resting
-                // on the last row.
-                e.Value = String.Empty;
-            }
-        }
-        else
-        {
-            e.Value = e.RowIndex;
-        }
-    }
+                // Draw the standard background.
+                e.DrawBackground();
 
-    private void dataGridView1_CellValuePushed(object sender,
-        DataGridViewCellValueEventArgs e)
-    {
-        store.Add(e.RowIndex, int.Parse(e.Value.ToString()));
-    }
-    #endregion
+                // Draw the custom border to appear 3-dimensional.
+                e.Graphics.DrawLines(SystemPens.ControlLightLight, new Point[] {
+                    new Point (0, e.Bounds.Height - 1), 
+                    new Point (0, 0), 
+                    new Point (e.Bounds.Width - 1, 0)
+                });
+                e.Graphics.DrawLines(SystemPens.ControlDarkDark, new Point[] {
+                    new Point (0, e.Bounds.Height - 1), 
+                    new Point (e.Bounds.Width - 1, e.Bounds.Height - 1), 
+                    new Point (e.Bounds.Width - 1, 0)
+                });
 
-    private Dictionary<int, int> store = new Dictionary<int, int>();
+                // Specify custom text formatting flags.
+                TextFormatFlags sf = TextFormatFlags.VerticalCenter |
+                                     TextFormatFlags.HorizontalCenter |
+                                     TextFormatFlags.NoFullWidthCharacterBreak;
+
+                // Draw the standard text with customized formatting options.
+                e.DrawText(sf);
+            }

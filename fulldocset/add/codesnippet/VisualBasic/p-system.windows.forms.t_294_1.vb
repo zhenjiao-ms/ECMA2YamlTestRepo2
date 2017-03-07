@@ -1,31 +1,17 @@
-    Friend WithEvents changeDirectionButton As ToolStripButton
-
-    Private Sub InitializeMovingToolStrip()
-        changeDirectionButton = New ToolStripButton()
-
-        movingToolStrip.AutoSize = True
-        movingToolStrip.RenderMode = ToolStripRenderMode.System
-
-        changeDirectionButton.TextDirection = ToolStripTextDirection.Vertical270
-        changeDirectionButton.Overflow = ToolStripItemOverflow.Never
-        changeDirectionButton.Text = "Change Alignment"
-        movingToolStrip.Items.Add(changeDirectionButton)
-    End Sub
-
-
-    Public Sub changeDirectionButton_Click(ByVal sender As Object, _
-        ByVal e As EventArgs) Handles changeDirectionButton.Click
-
-        Dim item As ToolStripItem = CType(sender, ToolStripItem)
-
-        If item.TextDirection = ToolStripTextDirection.Vertical270 _
-            OrElse item.TextDirection = ToolStripTextDirection.Vertical90 Then
-
-            item.TextDirection = ToolStripTextDirection.Horizontal
-            movingToolStrip.Dock = System.Windows.Forms.DockStyle.Top
-        Else
-            item.TextDirection = ToolStripTextDirection.Vertical270
-            movingToolStrip.Dock = System.Windows.Forms.DockStyle.Left
-        End If
-
+    Public Sub CreateMyMultilineTextBox()
+        ' Create an instance of a TextBox control.
+        Dim textBox1 As New TextBox()
+        
+        ' Set the Multiline property to true.
+        textBox1.Multiline = True
+        ' Add vertical scroll bars to the TextBox control.
+        textBox1.ScrollBars = ScrollBars.Vertical
+        ' Allow the RETURN key to be entered in the TextBox control.
+        textBox1.AcceptsReturn = True
+        ' Allow the TAB key to be entered in the TextBox control.
+        textBox1.AcceptsTab = True
+        ' Set WordWrap to true to allow text to wrap to the next line.
+        textBox1.WordWrap = True
+        ' Set the default text of the control.
+        textBox1.Text = "Welcome!"
     End Sub

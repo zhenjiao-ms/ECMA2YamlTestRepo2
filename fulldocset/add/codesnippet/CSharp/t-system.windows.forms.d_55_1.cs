@@ -1,15 +1,13 @@
-    private void dataGridView1_CellBeginEdit(object sender,
-        DataGridViewCellCancelEventArgs e)
-    {
-        string msg = String.Format("Editing Cell at ({0}, {1})",
-            e.ColumnIndex, e.RowIndex);
-        this.Text = msg;
-    }
-
-    private void dataGridView1_CellEndEdit(object sender,
-        DataGridViewCellEventArgs e)
-    {
-        string msg = String.Format("Finished Editing Cell at ({0}, {1})",
-            e.ColumnIndex, e.RowIndex);
-        this.Text = msg;
-    }
+        public override DataGridViewAdvancedBorderStyle AdjustedTopLeftHeaderBorderStyle
+        {
+            get
+            {
+                DataGridViewAdvancedBorderStyle newStyle =
+                    new DataGridViewAdvancedBorderStyle();
+                newStyle.Top = DataGridViewAdvancedCellBorderStyle.None;
+                newStyle.Left = DataGridViewAdvancedCellBorderStyle.None;
+                newStyle.Bottom = DataGridViewAdvancedCellBorderStyle.Outset;
+                newStyle.Right = DataGridViewAdvancedCellBorderStyle.OutsetDouble;
+                return newStyle;
+            }
+        }

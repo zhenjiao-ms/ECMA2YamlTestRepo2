@@ -1,3 +1,6 @@
-[DebuggerDisplay("Count = {Count}")]
-[DebuggerTypeProxy(HashtableDebugView::typeid)]
-ref class MyHashtable : Hashtable
+   catch ( Exception^ e ) 
+   {
+      #if defined(DEBUG)
+      Debug::Fail( "Unknown Option " + option + ", using the default." );
+      #endif
+   }

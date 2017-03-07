@@ -4,100 +4,62 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
 
-int pageSize = 5;
-int totalUsers;
-int totalPages;
-int currentPage = 1;
+MembershipUser u;
 
-public void Page_Load()
+public void Page_Load(object sender, EventArgs args)
 {
+  u = Membership.GetUser(User.Identity.Name);
+
   if (!IsPostBack)
   {
-    GetUsers();
+    EmailTextBox.Text = u.Email; 
   }
 }
 
-private void GetUsers()
+public void UpdateEmailButton_OnClick(object sender, EventArgs args)
 {
-  UsersOnlineLabel.Text = Membership.GetNumberOfUsersOnline().ToString();
-
-  UserGrid.DataSource = Membership.GetAllUsers(currentPage-1, pageSize, out totalUsers);
-  totalPages = ((totalUsers - 1) / pageSize) + 1;
-
-  // Ensure that we do not navigate past the last page of users.
-
-  if (currentPage > totalPages)
+  try
   {
-    currentPage = totalPages;
-    GetUsers();
-    return;
+    u.Email = EmailTextBox.Text;
+
+    Membership.UpdateUser(u);
+  
+    Msg.Text = "User e-mail updated.";
   }
-
-  UserGrid.DataBind();
-  CurrentPageLabel.Text = currentPage.ToString();
-  TotalPagesLabel.Text = totalPages.ToString();
-
-  if (currentPage == totalPages)
-    NextButton.Visible = false;
-  else
-    NextButton.Visible = true;
-
-  if (currentPage == 1)
-    PreviousButton.Visible = false;
-  else
-    PreviousButton.Visible = true;
-
-  if (totalUsers <= 0)
-    NavigationPanel.Visible = false;
-  else
-    NavigationPanel.Visible = true;
-}
-
-public void NextButton_OnClick(object sender, EventArgs args)
-{
-  currentPage = Convert.ToInt32(CurrentPageLabel.Text);
-  currentPage++;
-  GetUsers();
-}
-
-public void PreviousButton_OnClick(object sender, EventArgs args)
-{
-  currentPage = Convert.ToInt32(CurrentPageLabel.Text);
-  currentPage--;
-  GetUsers();
+  catch (System.Configuration.Provider.ProviderException e)
+  {
+    Msg.Text = e.Message;
+  }
 }
 
 </script>
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-<title>Sample: Find Users</title>
+<title>Sample: Update User E-Mail</title>
 </head>
 <body>
 
 <form id="form1" runat="server">
-  <h3>User List</h3>
+  <h3>Update E-Mail Address for <%=User.Identity.Name%></h3>
 
-  Number of Users Online: <asp:Label id="UsersOnlineLabel" runat="Server" /><br />
+  <asp:Label id="Msg" ForeColor="maroon" runat="server" /><br />
 
-  <asp:Panel id="NavigationPanel" Visible="false" runat="server">
-    <table border="0" cellpadding="3" cellspacing="3">
-      <tr>
-        <td style="width:100">Page <asp:Label id="CurrentPageLabel" runat="server" />
-            of <asp:Label id="TotalPagesLabel" runat="server" /></td>
-        <td style="width:60"><asp:LinkButton id="PreviousButton" Text="< Prev"
-                            OnClick="PreviousButton_OnClick" runat="server" /></td>
-        <td style="width:60"><asp:LinkButton id="NextButton" Text="Next >"
-                            OnClick="NextButton_OnClick" runat="server" /></td>
-      </tr>
-    </table>
-  </asp:Panel>
-
-  <asp:DataGrid id="UserGrid" runat="server"
-                CellPadding="2" CellSpacing="1"
-                Gridlines="Both">
-    <HeaderStyle BackColor="darkblue" ForeColor="white" />
-  </asp:DataGrid>
-
+  <table cellpadding="3" border="0">
+    <tr>
+      <td>E-mail Address:</td>
+      <td><asp:TextBox id="EmailTextBox" MaxLength="128" Columns="30" runat="server" /></td>
+      <td><asp:RequiredFieldValidator id="EmailRequiredValidator" runat="server"
+                                    ControlToValidate="EmailTextBox" ForeColor="red"
+                                    Display="Static" ErrorMessage="Required" /></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><asp:Button id="UpdateEmailButton" 
+                      Text="Update E-mail" 
+                      OnClick="UpdateEmailButton_OnClick" 
+                      runat="server" /></td>
+    </tr>
+  </table>
 </form>
 
 </body>

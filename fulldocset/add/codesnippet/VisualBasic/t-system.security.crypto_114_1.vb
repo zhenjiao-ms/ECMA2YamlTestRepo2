@@ -1,226 +1,167 @@
 Imports System
+Imports System.Xml
 Imports System.Security.Cryptography
+Imports System.Security.Cryptography.Xml
 
-Public Class MaskGenerator
-    Inherits System.Security.Cryptography.MaskGenerationMethod
 
-    Private HashNameValue As String
 
-    ' Initialize a mask to encrypt using the SHA1 algorithm.
-    Public Sub New()
-        HashNameValue = "SHA1"
-    End Sub
+Module Program
 
-    ' Create a mask with the specified seed.
-    Public Overrides Function GenerateMask( _
-        ByVal seed() As Byte, _
-        ByVal maskLength As Integer) As Byte()
+    Sub Main(ByVal args() As String)
 
-        Dim hash As HashAlgorithm
-        Dim rgbCounter(4) As Byte
-        Dim targetRgb(maskLength) As Byte
-        Dim counter As Integer
+        ' Create an XmlDocument object.
+        Dim xmlDoc As New XmlDocument()
 
-        For inc As Int16 = 0 To targetRgb.Length
-            ConvertIntToByteArray(counter + 1, rgbCounter)
-            hash = CType( _
-                CryptoConfig.CreateFromName(HashNameValue), _
-                HashAlgorithm)
-            Dim temp(4 + seed.Length) As Byte
-            Buffer.BlockCopy(rgbCounter, 0, temp, 0, 4)
-            Buffer.BlockCopy(seed, 0, temp, 4, seed.Length)
-            hash.ComputeHash(temp)
+        ' Load an XML file into the XmlDocument object.
+        xmlDoc.PreserveWhitespace = True
+        xmlDoc.Load("test.xml")
 
-            If (targetRgb.Length - inc > hash.HashSize / 8) Then
-                Buffer.BlockCopy( _
-                    hash.Hash, 0, targetRgb, inc, hash.Hash.Length)
-            Else
-                Buffer.BlockCopy( _
-                    hash.Hash, 0, targetRgb, inc, targetRgb.Length - inc)
-            End If
 
-            inc += hash.Hash.Length
-        Next
+        ' Create a new TripleDES key. 
+        Dim tDESkey As New TripleDESCryptoServiceProvider()
 
-        Return targetRgb
-    End Function
+        ' Create a new instance of the TrippleDESDocumentEncryption object
+        ' defined in this sample.
+        Dim xmlTDES As New TrippleDESDocumentEncryption(xmlDoc, tDESkey)
 
-    ' Convert the specified integer to the byte array.
-    Private Sub ConvertIntToByteArray( _
-        ByVal sourceInt As Integer, _
-        ByRef targetBytes() As Byte)
-        Dim remainder As Integer
-        Dim inc As Int16 = 0
+        Try
+            ' Encrypt the "creditcard" element.
+            xmlTDES.Encrypt("creditcard")
 
-        ' Clear the array prior to filling it.
-        Array.Clear(targetBytes, 0, targetBytes.Length)
+            ' Display the encrypted XML to the console.
+            Console.WriteLine("Encrypted XML:")
+            Console.WriteLine()
+            Console.WriteLine(xmlTDES.Doc.OuterXml)
 
-        While (sourceInt > 0)
-            remainder = sourceInt Mod 256
-            targetBytes(3 - inc) = CType(remainder, Byte)
-            sourceInt = (sourceInt - remainder) / 256
-            inc = inc + 1
-        End While
-    End Sub
-End Class
+            ' Decrypt the "creditcard" element.
+            xmlTDES.Decrypt()
 
-Public Class Form1
-    Inherits System.Windows.Forms.Form
+            ' Display the encrypted XML to the console.
+            Console.WriteLine()
+            Console.WriteLine("Decrypted XML:")
+            Console.WriteLine()
+            Console.WriteLine(xmlTDES.Doc.OuterXml)
+        Catch e As Exception
+            Console.WriteLine(e.Message)
+        Finally
+            ' Clear the TripleDES key.
+            xmlTDES.Clear()
+        End Try
 
-    ' Event handler for Run button.
-    Private Sub Button1_Click( _
-        ByVal sender As System.Object, _
-        ByVal e As System.EventArgs) Handles Button1.Click
+    End Sub 'Main 
+End Module 'Program
 
-        tbxOutput.Cursor = Cursors.WaitCursor
-        tbxOutput.Text = ""
 
-        Dim seed() As Byte = {&H1, &H2, &H3, &H4}
-        Dim length As Int16 = 16
-        Dim maskGenerator As New MaskGenerator
-        Dim mask() As Byte = maskGenerator.GenerateMask(seed, length)
 
-        tbxOutput.AppendText("Generated the following mask:")
-        tbxOutput.AppendText(System.Text.Encoding.ASCII.GetString(mask))
+Class TrippleDESDocumentEncryption
+    Protected docValue As XmlDocument
+    Protected algValue As TripleDES
 
-        ' Align interface and conclude application.
-        tbxOutput.AppendText(vbCrLf + "This sample completed" + _
-            "successfully; press Exit to continue.")
 
-        tbxOutput.Cursor = Cursors.Default
-    End Sub
-    ' Event handler for Exit button.
-    Private Sub Button2_Click( _
-        ByVal sender As System.Object, _
-        ByVal e As System.EventArgs) Handles Button2.Click
-
-        Application.Exit()
-    End Sub
-#Region " Windows Form Designer generated code "
-
-    Public Sub New()
-        MyBase.New()
-
-        'This call is required by the Windows Form Designer.
-        InitializeComponent()
-
-        'Add any initialization after the InitializeComponent() call
-
-    End Sub
-
-    'Form overrides dispose to clean up the component list.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
-        If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
+    Public Sub New(ByVal Doc As XmlDocument, ByVal Key As TripleDES)
+        If Not (Doc Is Nothing) Then
+            docValue = Doc
+        Else
+            Throw New ArgumentNullException("Doc")
         End If
-        MyBase.Dispose(disposing)
-    End Sub
 
-    'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+        If Not (Key Is Nothing) Then
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents tbxOutput As System.Windows.Forms.RichTextBox
-    <System.Diagnostics.DebuggerStepThrough()> _
-    Private Sub InitializeComponent()
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.tbxOutput = New System.Windows.Forms.RichTextBox
-        Me.Panel2.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.Button1)
-        Me.Panel2.Controls.Add(Me.Button2)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.DockPadding.All = 20
-        Me.Panel2.Location = New System.Drawing.Point(0, 320)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(616, 64)
-        Me.Panel2.TabIndex = 1
-        '
-        'Button1
-        '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button1.Font = New System.Drawing.Font( _
-            "Microsoft Sans Serif", _
-            9.0!, _
-            System.Drawing.FontStyle.Regular, _
-            System.Drawing.GraphicsUnit.Point, _
-            CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(446, 20)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 24)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "&Run"
-        '
-        'Button2
-        '
-        Me.Button2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button2.Font = New System.Drawing.Font( _
-            "Microsoft Sans Serif", _
-            9.0!, _
-            System.Drawing.FontStyle.Regular, _
-            System.Drawing.GraphicsUnit.Point, _
-            CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(521, 20)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 24)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "E&xit"
-        '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.tbxOutput)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.DockPadding.All = 20
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(616, 320)
-        Me.Panel1.TabIndex = 2
-        '
-        'tbxOutput
-        '
-        Me.tbxOutput.AccessibleDescription = _
-            "Displays output from application."
-        Me.tbxOutput.AccessibleName = "Output textbox."
-        Me.tbxOutput.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tbxOutput.Location = New System.Drawing.Point(20, 20)
-        Me.tbxOutput.Name = "tbxOutput"
-        Me.tbxOutput.Size = New System.Drawing.Size(576, 280)
-        Me.tbxOutput.TabIndex = 1
-        Me.tbxOutput.Text = "Click the Run button to run the application."
-        '
-        'Form1
-        '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(6, 15)
-        Me.ClientSize = New System.Drawing.Size(616, 384)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Panel2)
-        Me.Name = "Form1"
-        Me.Text = "MaskGenerationMethod"
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
-        Me.ResumeLayout(False)
+            algValue = Key
+        Else
+            Throw New ArgumentNullException("Key")
+        End If
 
     End Sub
 
-#End Region
+
+    Public Property Doc() As XmlDocument
+        Get
+            Return docValue
+        End Get
+        Set(ByVal value As XmlDocument)
+            docValue = value
+        End Set
+    End Property
+
+    Public Property Alg() As TripleDES
+        Get
+            Return algValue
+        End Get
+        Set(ByVal value As TripleDES)
+            algValue = value
+        End Set
+    End Property
+
+    Public Sub Clear()
+        If Not (algValue Is Nothing) Then
+            algValue.Clear()
+        Else
+            Throw New Exception("No TripleDES key was found to clear.")
+        End If
+
+    End Sub
+
+
+    Public Sub Encrypt(ByVal Element As String)
+        ' Find the element by name and create a new
+        ' XmlElement object.
+        Dim inputElement As XmlElement = docValue.GetElementsByTagName(Element)(0)
+
+        ' If the element was not found, throw an exception.
+        If inputElement Is Nothing Then
+            Throw New Exception("The element was not found.")
+        End If
+
+        ' Create a new EncryptedXml object.
+        Dim exml As New EncryptedXml(docValue)
+
+        ' Encrypt the element using the symmetric key.
+        Dim rgbOutput As Byte() = exml.EncryptData(inputElement, algValue, False)
+
+        ' Create an EncryptedData object and populate it.
+        Dim ed As New EncryptedData()
+
+        ' Specify the namespace URI for XML encryption elements.
+        ed.Type = EncryptedXml.XmlEncElementUrl
+
+        ' Specify the namespace URI for the TrippleDES algorithm.
+        ed.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncTripleDESUrl)
+
+        ' Create a CipherData element.
+        ed.CipherData = New CipherData()
+
+        ' Set the CipherData element to the value of the encrypted XML element.
+        ed.CipherData.CipherValue = rgbOutput
+
+        ' Replace the plaintext XML elemnt with an EncryptedData element.
+        EncryptedXml.ReplaceElement(inputElement, ed, False)
+
+    End Sub
+
+
+    Public Sub Decrypt()
+
+        ' XmlElement object.
+        Dim encryptedElement As XmlElement = docValue.GetElementsByTagName("EncryptedData")(0)
+
+        ' If the EncryptedData element was not found, throw an exception.
+        If encryptedElement Is Nothing Then
+            Throw New Exception("The EncryptedData element was not found.")
+        End If
+
+        ' Create an EncryptedData object and populate it.
+        Dim ed As New EncryptedData()
+        ed.LoadXml(encryptedElement)
+
+        ' Create a new EncryptedXml object.
+        Dim exml As New EncryptedXml()
+
+        ' Decrypt the element using the symmetric key.
+        Dim rgbOutput As Byte() = exml.DecryptData(ed, algValue)
+
+        ' Replace the encryptedData element with the plaintext XML elemnt.
+        exml.ReplaceData(encryptedElement, rgbOutput)
+
+    End Sub
 End Class
-'
-' This sample produces the following output:
-'
-' Generated the following mask:~&*(uj98U(*UD989D
-' This sample completedsuccessfully; press Exit to continue.

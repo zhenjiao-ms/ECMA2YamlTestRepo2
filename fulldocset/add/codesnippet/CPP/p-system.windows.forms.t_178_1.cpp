@@ -1,61 +1,26 @@
-ref class Customer
-{
-public:
-   ArrayList^ CustomerOrders;
-   String^ CustomerName;
-   Customer( String^ myName )
+   ToolStripControlHost^ dateTimePickerHost;
+   void InitializeDateTimePickerHost()
    {
-      CustomerName = myName;
-      CustomerOrders = gcnew ArrayList;
-   }
-
-};
-
-ref class Order
-{
-public:
-   String^ OrderID;
-   Order( String^ myOrderID )
-   {
-      this->OrderID = myOrderID;
-   }
-
-};
-
-
-   void AddRootNodes()
-   {
+      // Create a new ToolStripControlHost, passing in a control.
+      dateTimePickerHost = gcnew ToolStripControlHost( gcnew DateTimePicker );
       
-      // Add a root node to assign the customer nodes to.
-      TreeNode^ rootNode = gcnew TreeNode;
-      rootNode->Text = "CustomerList";
+      // Set the font on the ToolStripControlHost, this will affect the hosted control.
+      dateTimePickerHost->Font =
+         gcnew System::Drawing::Font( L"Arial",7.0F,FontStyle::Italic );
       
-      // Add a main root treenode.
-      myTreeView->Nodes->Add( rootNode );
+      // Set the Width property, this will also affect the hosted control.
+      dateTimePickerHost->Width = 100;
+      dateTimePickerHost->DisplayStyle = ToolStripItemDisplayStyle::Text;
       
-      // Add a root treenode for each 'Customer' object in the ArrayList.
-      IEnumerator^ myEnum = customerArray->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         Customer^ myCustomer = safe_cast<Customer^>(myEnum->Current);
-         
-         // Add a child treenode for each Order object.
-         int i = 0;
-         array<TreeNode^>^myTreeNodeArray = gcnew array<TreeNode^>(5);
-         IEnumerator^ myEnum = myCustomer->CustomerOrders->GetEnumerator();
-         while ( myEnum->MoveNext() )
-         {
-            Order^ myOrder = safe_cast<Order^>(myEnum->Current);
-            myTreeNodeArray[ i ] = gcnew TreeNode( myOrder->OrderID );
-            i++;
-         }
-         TreeNode^ customerNode = gcnew TreeNode( myCustomer->CustomerName,myTreeNodeArray );
-         
-         // Display the customer names with and Orange font.
-         customerNode->ForeColor = Color::Orange;
-         
-         // Store the Customer Object* in the Tag property of the TreeNode.
-         customerNode->Tag = myCustomer;
-         myTreeView->Nodes[ 0 ]->Nodes->Add( customerNode );
-      }
+      // Setting the Text property requires a string that converts to a
+      // DateTime type since that is what the hosted control requires.
+      dateTimePickerHost->Text = L"12/23/2005";
+      
+      // Cast the Control property back to the original type to set a
+      // type-specific property.
+      (dynamic_cast<DateTimePicker^>(dateTimePickerHost->Control))->Format =
+         DateTimePickerFormat::Short;
+      
+      // Add the control host to the ToolStrip.
+      toolStrip1->Items->Add( dateTimePickerHost );
    }

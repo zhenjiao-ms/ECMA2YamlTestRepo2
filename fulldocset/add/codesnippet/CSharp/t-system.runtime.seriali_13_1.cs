@@ -1,134 +1,109 @@
 using System;
-using System.Web;
-using System.IO;
-using System.Collections;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.CodeDom.Compiler;
+using System.CodeDom;
 using System.Runtime.Serialization;
-using System.Security.Permissions;
+using System.IO;
+using System.Xml;
+using System.Xml.Schema;
+using System.Globalization;
 
-
-// There should be only one instance of this type per AppDomain.
-[Serializable]
-[PermissionSet(SecurityAction.Demand, Name="FullTrust")]
-[AspNetHostingPermission(SecurityAction.LinkDemand, 
-    Level=AspNetHostingPermissionLevel.Minimal)]
-public sealed class Singleton : ISerializable 
+namespace XsdContractImporterExample
 {
-    // This is the one instance of this type.
-    private static readonly Singleton theOneObject = new Singleton();
-
-    // Here are the instance fields.
-    private string someString_value;
-    private Int32 someNumber_value;
-
-   public string SomeString
-   {
-       get{return someString_value;}
-       set{someString_value = value;}
-   }
-
-   public Int32 SomeNumber
-   {
-       get{return someNumber_value;}
-       set{someNumber_value = value;}
-   }
-
-    // Private constructor allowing this type to construct the Singleton.
-    private Singleton() 
-    { 
-        // Do whatever is necessary to initialize the Singleton.
-        someString_value = "This is a string field";
-        someNumber_value = 123;
-    }
-
-    // A method returning a reference to the Singleton.
-    public static Singleton GetSingleton() 
-    { 
-        return theOneObject; 
-    }
-
-    // A method called when serializing a Singleton.
-   [SecurityPermissionAttribute(SecurityAction.LinkDemand, 
-   Flags=SecurityPermissionFlag.SerializationFormatter)]
-    void ISerializable.GetObjectData(
-        SerializationInfo info, StreamingContext context) 
+    class Program
     {
-        // Instead of serializing this object, 
-        // serialize a SingletonSerializationHelp instead.
-        info.SetType(typeof(SingletonSerializationHelper));
-        // No other values need to be added.
-    }
-
-    // Note: ISerializable's special constructor is not necessary 
-    // because it is never called.
-}
-
-
-[Serializable]
-[PermissionSet(SecurityAction.Demand, Name="FullTrust")]
-[SecurityPermissionAttribute(SecurityAction.LinkDemand, 
-    Flags=SecurityPermissionFlag.SerializationFormatter)]
-[AspNetHostingPermission(SecurityAction.LinkDemand, 
-   Level=AspNetHostingPermissionLevel.Minimal)]
-internal sealed class SingletonSerializationHelper : IObjectReference 
-{
-    // This object has no fields (although it could).
-
-    // GetRealObject is called after this object is deserialized.
-    public Object GetRealObject(StreamingContext context) 
-    {
-        // When deserialiing this object, return a reference to 
-        // the Singleton object instead.
-        return Singleton.GetSingleton();
-    }
-}
-
-
-class App 
-{
-    [STAThread]
-    static void Main() 
-    {
-        FileStream fs = new FileStream("DataFile.dat", FileMode.Create);
-
-        try 
+        static void Main(string[] args)
         {
-            // Construct a BinaryFormatter and use it 
-            // to serialize the data to the stream.
-            BinaryFormatter formatter = new BinaryFormatter();
+            try
+            {
+                XmlSchemaSet schemas = Export();
+                CodeCompileUnit ccu = Import(schemas);
+                CompileCode(ccu, "Person.cs");
+                CompileCode(ccu, "Person.vb");
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("{0}: {1}", exc.Message, exc.StackTrace);
+            }
+            finally
+            {
+                Console.WriteLine("Press <Enter> to end....");
+                Console.ReadLine();
+            }
 
-            // Create an array with multiple elements refering to 
-            // the one Singleton object.
-            Singleton[] a1 = { Singleton.GetSingleton(), Singleton.GetSingleton() };
-
-            // This displays "True".
-            Console.WriteLine(
-                "Do both array elements refer to the same object? " + 
-                (a1[0] == a1[1]));     
-
-            // Serialize the array elements.
-            formatter.Serialize(fs, a1);
-
-            // Deserialize the array elements.
-            fs.Position = 0;
-            Singleton[] a2 = (Singleton[]) formatter.Deserialize(fs);
-
-            // This displays "True".
-            Console.WriteLine("Do both array elements refer to the same object? " 
-                + (a2[0] == a2[1])); 
-
-            // This displays "True".
-            Console.WriteLine("Do all array elements refer to the same object? " 
-                + (a1[0] == a2[0]));
-        }   
-        catch (SerializationException e) 
-        {
-            Console.WriteLine("Failed to serialize. Reason: " + e.Message);
-            throw;
         }
-        finally 
+
+        static XmlSchemaSet Export()
         {
-            fs.Close();
+            XsdDataContractExporter ex = new XsdDataContractExporter();
+            ex.Export(typeof(Person));
+            return ex.Schemas;
+        }
+        static CodeCompileUnit Import(XmlSchemaSet schemas)
+        {
+
+            XsdDataContractImporter imp = new XsdDataContractImporter();
+
+            // The EnableDataBinding option adds a RaisePropertyChanged method to
+            // the generated code. The GenerateInternal causes code access to be
+            // set to internal.
+            ImportOptions iOptions = new ImportOptions();
+            iOptions.EnableDataBinding = true;
+            iOptions.GenerateInternal = true;
+            imp.Options = iOptions;
+
+
+            if (imp.CanImport(schemas))
+            {
+                imp.Import(schemas);
+                return imp.CodeCompileUnit;
+            }
+            else
+                return null;
+        }
+        static void CompileCode(CodeCompileUnit ccu, string sourceName)
+        {
+            CodeDomProvider provider = null;
+            FileInfo sourceFile = new FileInfo(sourceName);
+            // Select the code provider based on the input file extension, either C# or Visual Basic.
+            if (sourceFile.Extension.ToUpper(CultureInfo.InvariantCulture) == ".CS")
+            {
+                provider = new Microsoft.CSharp.CSharpCodeProvider();
+            }
+            else if (sourceFile.Extension.ToUpper(CultureInfo.InvariantCulture) == ".VB")
+            {
+                provider = new Microsoft.VisualBasic.VBCodeProvider();
+            }
+            else
+            {
+                Console.WriteLine("Source file must have a .cs or .vb extension");
+            }
+            if (provider != null)
+            {
+                CodeGeneratorOptions options = new CodeGeneratorOptions();
+                // Set code formatting options to your preference.
+                options.BlankLinesBetweenMembers = true;
+                options.BracingStyle = "C";
+
+                StreamWriter sw = new StreamWriter(sourceName);
+                provider.GenerateCodeFromCompileUnit(ccu, sw, options);
+                sw.Close();
+            }
+        }
+    }
+
+    [DataContract]
+    public class Person
+    {
+        [DataMember]
+        public string FirstName;
+
+        [DataMember]
+        public string LastName;
+
+        public Person(string newFName, string newLName)
+        {
+            FirstName = newFName;
+            LastName = newLName;
         }
     }
 }

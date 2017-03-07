@@ -8,5 +8,5 @@
 
             serviceHost.Open();
 
-            ChannelDispatcher dispatcher = (ChannelDispatcher) serviceHost.ChannelDispatchers[0];
-            string bindingName = dispatcher.BindingName;
+            ChannelDispatcher dispatcher = (ChannelDispatcher)serviceHost.ChannelDispatchers[0];
+            ServiceHostBase hostBase = dispatcher.Host;

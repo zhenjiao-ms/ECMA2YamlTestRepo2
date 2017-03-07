@@ -1,123 +1,91 @@
 <%@ Page Language="VB" AutoEventWireup="True" %>
-<%@ Import Namespace="System.Data" %>
- 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
-   <script language="VB" runat="server">
- 
-    Function CreateDataSource() As ICollection
-        Dim dt As New DataTable()
-        Dim dr As DataRow
+ <head>
+    <title>Repeater Example</title>
+<script language="VB" runat="server">
+
+    Sub Page_Load(Sender As Object, e As EventArgs)
         
-        dt.Columns.Add(New DataColumn("IntegerValue", GetType(Int32)))
-        dt.Columns.Add(New DataColumn("StringValue", GetType(String)))
-        dt.Columns.Add(New DataColumn("DateTimeValue", GetType(String)))
-        dt.Columns.Add(New DataColumn("BoolValue", GetType(Boolean)))
-        
-        Dim i As Integer
-        For i = 0 To 99
-            dr = dt.NewRow()
+        If Not IsPostBack Then
+            Dim values As New ArrayList()
             
-            dr(0) = i
-            dr(1) = "Item " & i.ToString()
-            dr(2) = DateTime.Now.ToShortDateString()
-            If i Mod 2 <> 0 Then
-                dr(3) = True
-            Else
-                dr(3) = False
-            End If
+            values.Add(New PositionData("Microsoft", "Msft"))
+            values.Add(New PositionData("Intel", "Intl"))
+            values.Add(New PositionData("Dell", "Dell"))
             
-            dt.Rows.Add(dr)
-        Next i
+            Repeater1.DataSource = values
+            Repeater1.DataBind()
+        End If
+    End Sub
+
+    Sub R1_ItemCommand(Sender As Object, e As RepeaterCommandEventArgs)
+        Label2.Text = "The " & CType(e.CommandSource, Button).Text & _
+            " button has just been clicked; <br />"
+    End Sub
+ 
+    Public Class PositionData
         
-        Dim dv As New DataView(dt)
-        Return dv
-    End Function 'CreateDataSource
-
-    Sub Page_Load(sender As Object, e As EventArgs)
-        If chk1.Checked Then
-            MyDataGrid.PagerStyle.Mode = PagerMode.NumericPages
-        Else
-            MyDataGrid.PagerStyle.Mode = PagerMode.NextPrev
-        End If 
-        BindGrid()
-    End Sub 'Page_Load
-
-    Sub MyDataGrid_Page(sender As Object, e As DataGridPageChangedEventArgs)
-        MyDataGrid.CurrentPageIndex = e.NewPageIndex
-        BindGrid()
-    End Sub 'MyDataGrid_Page
-
-    Sub BindGrid()
-        MyDataGrid.DataSource = CreateDataSource()
-        MyDataGrid.DataBind()
-        ShowStats()
-    End Sub 'BindGrid
-
-    Sub ShowStats()
-        lblEnabled.Text = "AllowPaging is " & MyDataGrid.AllowPaging
-        lblCurrentIndex.Text = "CurrentPageIndex is " & MyDataGrid.CurrentPageIndex
-        lblPageCount.Text = "PageCount is " & MyDataGrid.PageCount
-        lblPageSize.Text = "PageSize is " & MyDataGrid.PageSize
-    End Sub 'ShowStats
-   </script>
+        Private myName As String
+        Private myTicker As String        
+        
+        Public Sub New(newName As String, newTicker As String)
+            Me.myName = newName
+            Me.myTicker = newTicker
+        End Sub        
+        
+        Public ReadOnly Property Name() As String
+            Get
+                Return myName
+            End Get
+        End Property        
+        
+        Public ReadOnly Property Ticker() As String
+            Get
+                Return myTicker
+            End Get
+        End Property
+    End Class
  
-<head runat="server">
-    <title>Paging with DataGrid</title>
-</head>
-<body>
+    </script>
  
-   <h3>Paging with DataGrid</h3>
+ </head>
+ <body>
  
-   <form id="form1" runat="server">
+    <h3>Repeater Example</h3>
  
-      <asp:DataGrid id="MyDataGrid" runat="server"
-           AllowPaging="True"
-           PageSize="10"
-           PagerStyle-Mode="NumericPages"
-           PagerStyle-HorizontalAlign="Right"
-           OnPageIndexChanged="MyDataGrid_Page"
-           BorderColor="black"
-           BorderWidth="1"
-           GridLines="Both"
-           CellPadding="3"
-           CellSpacing="0"
-           Font-Names="Verdana"
-           Font-Size="8pt"
-           HeaderStyle-BackColor="#aaaadd"
-           AlternatingItemStyle-BackColor="#eeeeee"/>
+    <form id="form1" runat="server">
  
-      <br />
+       <b>Repeater1:</b>
+         
+       <br />
+         
+       <asp:Repeater id="Repeater1" OnItemCommand="R1_ItemCommand" runat="server">
+          <HeaderTemplate>
+             <table border="1">
+                <tr>
+                   <td><b>Company</b></td>
+                   <td><b>Symbol</b></td>
+                </tr>
+          </HeaderTemplate>
+             
+          <ItemTemplate>
+             <tr>
+                <td> <%# DataBinder.Eval(Container.DataItem, "Name") %> </td>
+                <td> <asp:Button Text=<%# DataBinder.Eval(Container.DataItem, "Ticker") %> runat="server" /></td>
+             </tr>
+          </ItemTemplate>
+             
+          <FooterTemplate>
+             </table>
+          </FooterTemplate>
+             
+       </asp:Repeater>
+       <br />
+         
+       <asp:Label id="Label2" font-names="Verdana" ForeColor="Green" font-size="10pt" runat="server"/>
+    </form>
+ </body>
+ </html>
  
-      <asp:Checkbox id="chk1" runat="server"
-           Text="Show numeric page navigation buttons"
-           Font-Names="Verdana"
-           Font-Size="8pt"
-           AutoPostBack="true"/>
- 
-      <br />
- 
-      <table style="background-color:#eeeeee; padding:6">
-         <tr>
-            <td style="display:inline">
-               
- 
-                  <asp:Label id="lblEnabled" 
-                       runat="server"/><br />
-                  <asp:Label id="lblCurrentIndex" 
-                       runat="server"/><br />
-                  <asp:Label id="lblPageCount" 
-                       runat="server"/><br />
-                  <asp:Label id="lblPageSize" 
-                        runat="server"/><br />
- 
-               
-            </td>
-         </tr>
-      </table>
- 
-   </form>
- 
-</body>
-</html>

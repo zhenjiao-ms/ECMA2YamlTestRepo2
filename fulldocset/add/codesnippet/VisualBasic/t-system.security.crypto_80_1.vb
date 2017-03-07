@@ -1,167 +1,40 @@
 Imports System
-Imports System.Xml
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.Xml
+Imports System.Security.Permissions
+Imports System.IO
+Imports System.Security.Cryptography.X509Certificates
 
+Class CertSelect
 
+    Shared Sub Main()
 
-Module Program
+        Dim store As New X509Store("MY", StoreLocation.CurrentUser)
+        store.Open(OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly)
 
-    Sub Main(ByVal args() As String)
+        Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+        Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
+        Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Test Certificate Select", "Select a certificate from the following list to get information on that certificate", X509SelectionFlag.MultiSelection)
+        Console.WriteLine("Number of certificates: {0}{1}", scollection.Count, Environment.NewLine)
+         
+        For Each x509 As X509Certificate2 In scollection
+            Try
+                Dim rawdata As Byte() = x509.RawData
+                Console.WriteLine("Content Type: {0}{1}", X509Certificate2.GetCertContentType(rawdata), Environment.NewLine)
+                Console.WriteLine("Friendly Name: {0}{1}", x509.FriendlyName, Environment.NewLine)
+                Console.WriteLine("Certificate Verified?: {0}{1}", x509.Verify(), Environment.NewLine)
+                Console.WriteLine("Simple Name: {0}{1}", x509.GetNameInfo(X509NameType.SimpleName, True), Environment.NewLine)
+                Console.WriteLine("Signature Algorithm: {0}{1}", x509.SignatureAlgorithm.FriendlyName, Environment.NewLine)
+                Console.WriteLine("Private Key: {0}{1}", x509.PrivateKey.ToXmlString(False), Environment.NewLine)
+                Console.WriteLine("Public Key: {0}{1}", x509.PublicKey.Key.ToXmlString(False), Environment.NewLine)
+                Console.WriteLine("Certificate Archived?: {0}{1}", x509.Archived, Environment.NewLine)
+                Console.WriteLine("Length of Raw Data: {0}{1}", x509.RawData.Length, Environment.NewLine)
+                X509Certificate2UI.DisplayCertificate(x509)
+                x509.Reset()         
+             Catch cExcept As CryptographicException
+                 Console.WriteLine("Information could not be written out for this certificate.")
+             End Try
+        Next x509
 
-        ' Create an XmlDocument object.
-        Dim xmlDoc As New XmlDocument()
-
-        ' Load an XML file into the XmlDocument object.
-        xmlDoc.PreserveWhitespace = True
-        xmlDoc.Load("test.xml")
-
-
-        ' Create a new TripleDES key. 
-        Dim tDESkey As New TripleDESCryptoServiceProvider()
-
-        ' Create a new instance of the TrippleDESDocumentEncryption object
-        ' defined in this sample.
-        Dim xmlTDES As New TrippleDESDocumentEncryption(xmlDoc, tDESkey)
-
-        Try
-            ' Encrypt the "creditcard" element.
-            xmlTDES.Encrypt("creditcard")
-
-            ' Display the encrypted XML to the console.
-            Console.WriteLine("Encrypted XML:")
-            Console.WriteLine()
-            Console.WriteLine(xmlTDES.Doc.OuterXml)
-
-            ' Decrypt the "creditcard" element.
-            xmlTDES.Decrypt()
-
-            ' Display the encrypted XML to the console.
-            Console.WriteLine()
-            Console.WriteLine("Decrypted XML:")
-            Console.WriteLine()
-            Console.WriteLine(xmlTDES.Doc.OuterXml)
-        Catch e As Exception
-            Console.WriteLine(e.Message)
-        Finally
-            ' Clear the TripleDES key.
-            xmlTDES.Clear()
-        End Try
-
-    End Sub 'Main 
-End Module 'Program
-
-
-
-Class TrippleDESDocumentEncryption
-    Protected docValue As XmlDocument
-    Protected algValue As TripleDES
-
-
-    Public Sub New(ByVal Doc As XmlDocument, ByVal Key As TripleDES)
-        If Not (Doc Is Nothing) Then
-            docValue = Doc
-        Else
-            Throw New ArgumentNullException("Doc")
-        End If
-
-        If Not (Key Is Nothing) Then
-
-            algValue = Key
-        Else
-            Throw New ArgumentNullException("Key")
-        End If
-
-    End Sub
-
-
-    Public Property Doc() As XmlDocument
-        Get
-            Return docValue
-        End Get
-        Set(ByVal value As XmlDocument)
-            docValue = value
-        End Set
-    End Property
-
-    Public Property Alg() As TripleDES
-        Get
-            Return algValue
-        End Get
-        Set(ByVal value As TripleDES)
-            algValue = value
-        End Set
-    End Property
-
-    Public Sub Clear()
-        If Not (algValue Is Nothing) Then
-            algValue.Clear()
-        Else
-            Throw New Exception("No TripleDES key was found to clear.")
-        End If
-
-    End Sub
-
-
-    Public Sub Encrypt(ByVal Element As String)
-        ' Find the element by name and create a new
-        ' XmlElement object.
-        Dim inputElement As XmlElement = docValue.GetElementsByTagName(Element)(0)
-
-        ' If the element was not found, throw an exception.
-        If inputElement Is Nothing Then
-            Throw New Exception("The element was not found.")
-        End If
-
-        ' Create a new EncryptedXml object.
-        Dim exml As New EncryptedXml(docValue)
-
-        ' Encrypt the element using the symmetric key.
-        Dim rgbOutput As Byte() = exml.EncryptData(inputElement, algValue, False)
-
-        ' Create an EncryptedData object and populate it.
-        Dim ed As New EncryptedData()
-
-        ' Specify the namespace URI for XML encryption elements.
-        ed.Type = EncryptedXml.XmlEncElementUrl
-
-        ' Specify the namespace URI for the TrippleDES algorithm.
-        ed.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncTripleDESUrl)
-
-        ' Create a CipherData element.
-        ed.CipherData = New CipherData()
-
-        ' Set the CipherData element to the value of the encrypted XML element.
-        ed.CipherData.CipherValue = rgbOutput
-
-        ' Replace the plaintext XML elemnt with an EncryptedData element.
-        EncryptedXml.ReplaceElement(inputElement, ed, False)
-
-    End Sub
-
-
-    Public Sub Decrypt()
-
-        ' XmlElement object.
-        Dim encryptedElement As XmlElement = docValue.GetElementsByTagName("EncryptedData")(0)
-
-        ' If the EncryptedData element was not found, throw an exception.
-        If encryptedElement Is Nothing Then
-            Throw New Exception("The EncryptedData element was not found.")
-        End If
-
-        ' Create an EncryptedData object and populate it.
-        Dim ed As New EncryptedData()
-        ed.LoadXml(encryptedElement)
-
-        ' Create a new EncryptedXml object.
-        Dim exml As New EncryptedXml()
-
-        ' Decrypt the element using the symmetric key.
-        Dim rgbOutput As Byte() = exml.DecryptData(ed, algValue)
-
-        ' Replace the encryptedData element with the plaintext XML elemnt.
-        exml.ReplaceData(encryptedElement, rgbOutput)
-
+        store.Close()
     End Sub
 End Class

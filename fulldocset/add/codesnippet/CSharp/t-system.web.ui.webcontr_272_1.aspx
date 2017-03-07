@@ -1,50 +1,89 @@
-<%@ Page Language="C#" %>
-<%@ register tagprefix="aspSample" 
-  Namespace="Samples.AspNet.CS.Controls" %>
-<%@ Register TagPrefix="uc1" TagName="DisplayModeMenuCS" Src="~/DisplayModeMenuCS.ascx" %>
+<%@ Page Language="C#" AutoEventWireup="True" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head id="Head1" runat="server">
-  <title>Web Parts Page</title>
-</head>
-<body>
-  <h1>Web Parts Demonstration Page</h1>
-  <form runat="server" id="form1">
-<asp:webpartmanager id="WebPartManager1" runat="server" />
-<uc1:DisplayModeMenuCS runat="server" ID="DisplayModeMenu" />
-  <br />
-  <table cellspacing="0" cellpadding="0" border="0">
-    <tr>
-      <td valign="top">
-    <asp:webpartzone id="SideBarZone" runat="server" 
-        headertext="Sidebar">
-        <zonetemplate>
-        </zonetemplate>
-      </asp:webpartzone>
-      <aspSample:MyEditorZone ID="EditorZone1" runat="server">
-      <ZoneTemplate>
-        <asp:AppearanceEditorPart ID="AppearanceEditorPart1" 
-          runat="server" />
-        <asp:LayoutEditorPart ID="LayoutEditorPart1" 
-          runat="server" />
-      </ZoneTemplate>
-    </aspSample:MyEditorZone>
-      </td>
-      <td valign="top">
-    <asp:webpartzone id="MainZone" runat="server" headertext="Main">
-         <zonetemplate>
-        <asp:label id="contentPart" runat="server" title="Content">
-              <h2>Welcome to My Home Page</h2>
-              <p>Use links to visit my favorite sites!</p>
-            </asp:label>
-         </zonetemplate>
-       </asp:webpartzone>
-      </td>
-      <td valign="top">
-      </td>
-    </tr>
-  </table>
-  </form>
-</body>
-</html>
+ <head>
+    <title>Repeater Example</title>
+<script language="C#" runat="server">
+       void Page_Load(Object Sender, EventArgs e) {
+ 
+          if (!IsPostBack) {
+             ArrayList values = new ArrayList();
+ 
+             values.Add(new PositionData("Microsoft", "Msft"));
+             values.Add(new PositionData("Intel", "Intc"));
+             values.Add(new PositionData("Dell", "Dell"));
+ 
+             Repeater1.DataSource = values;
+             Repeater1.DataBind();
+          }
+       }
+ 
+       void R1_ItemCommand(Object Sender, RepeaterCommandEventArgs e) {        
+          Label2.Text = "The " + ((Button)e.CommandSource).Text + " button has just been clicked; <br />";
+       }    
+ 
+       public class PositionData {
+         
+          private string name;
+          private string ticker;
+ 
+          public PositionData(string name, string ticker) {
+             this.name = name;
+             this.ticker = ticker;
+          }
+ 
+          public string Name {
+             get {
+                return name;
+             }
+          }
+ 
+          public string Ticker {
+             get {
+                return ticker;
+             }
+          }
+       }
+ 
+    </script>
+ 
+ </head>
+ <body>
+ 
+    <h3>Repeater Example</h3>
+ 
+    <form id="form1" runat="server">
+ 
+       <b>Repeater1:</b>
+         
+       <br />
+         
+       <asp:Repeater id="Repeater1" OnItemCommand="R1_ItemCommand" runat="server">
+          <HeaderTemplate>
+             <table border="1">
+                <tr>
+                   <td><b>Company</b></td>
+                   <td><b>Symbol</b></td>
+                </tr>
+          </HeaderTemplate>
+             
+          <ItemTemplate>
+             <tr>
+                <td> <%# DataBinder.Eval(Container.DataItem, "Name") %> </td>
+                <td> <ASP:Button Text=<%# DataBinder.Eval(Container.DataItem, "Ticker") %> runat="server" /></td>
+             </tr>
+          </ItemTemplate>
+             
+          <FooterTemplate>
+             </table>
+          </FooterTemplate>
+             
+       </asp:Repeater>
+       <br />
+         
+       <asp:Label id="Label2" font-names="Verdana" ForeColor="Green" font-size="10pt" runat="server"/>
+    </form>
+ </body>
+ </html>
+    

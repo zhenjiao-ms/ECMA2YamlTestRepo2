@@ -1,123 +1,40 @@
-//
-// This example signs a file specified by a URI 
-// using a detached signature. It then verifies  
-// the signed XML.
-//
-
 using System;
 using System.Security.Cryptography;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Xml;
 
-
-
-class XMLDSIGDetached
+class RSASample
 {
-	
-    [STAThread]
-    static void Main(string[] args)
-    {
-        // The URI to sign.
-        string resourceToSign = "http://www.microsoft.com";
-		
-        // The name of the file to which to save the XML signature.
-        string XmlFileName = "xmldsig.xml";
 
+    static void Main()
+    {
         try
         {
-
-            // Generate a DSA signing key.
-            DSACryptoServiceProvider DSAKey = new DSACryptoServiceProvider();
-
-            Console.WriteLine("Signing: {0}", resourceToSign);
-
-            // Sign the detached resourceand save the signature in an XML file.
-            SignDetachedResource(resourceToSign, XmlFileName, DSAKey);
-
-            Console.WriteLine("XML signature was succesfully computed and saved to {0}.", XmlFileName);
-
-            // Verify the signature of the signed XML.
-            Console.WriteLine("Verifying signature...");
-
-            //Verify the XML signature in the XML file.
-            bool result = VerifyDetachedSignature(XmlFileName);
-
-            // Display the results of the signature verification to 
-            // the console.
-            if(result)
+            //Create a new instance of RSACryptoServiceProvider.
+            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
             {
-                Console.WriteLine("The XML signature is valid.");
+                //The hash to sign.
+                byte[] hash;
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] data = new byte[] { 59, 4, 248, 102, 77, 97, 142, 201, 210, 12, 224, 93, 25, 41, 100, 197, 213, 134, 130, 135 };
+                    hash = sha256.ComputeHash(data);
+                }
+
+                //Create an RSASignatureFormatter object and pass it the 
+                //RSACryptoServiceProvider to transfer the key information.
+                RSAPKCS1SignatureFormatter RSAFormatter = new RSAPKCS1SignatureFormatter(rsa);
+
+                //Set the hash algorithm to SHA256.
+                RSAFormatter.SetHashAlgorithm("SHA256");
+
+                //Create a signature for HashValue and return it.
+                byte[] SignedHash = RSAFormatter.CreateSignature(hash);
             }
-            else
-            {
-                Console.WriteLine("The XML signature is not valid.");
-            }
+
         }
-        catch(CryptographicException e)
+        catch (CryptographicException e)
         {
             Console.WriteLine(e.Message);
-
         }
-		
     }
 
-    // Sign an XML file and save the signature in a new file.
-    public static void SignDetachedResource(string URIString, string XmlSigFileName, DSA DSAKey)
-    {
-        // Create a SignedXml object.
-        SignedXml signedXml = new SignedXml();
-
-        // Assign the DSA key to the SignedXml object.
-        signedXml.SigningKey = DSAKey;
-
-        // Create a reference to be signed.
-        Reference reference = new Reference();
-
-        // Add the passed URI to the reference object.
-        reference.Uri = URIString;
-		
-        // Add the reference to the SignedXml object.
-        signedXml.AddReference(reference);
-
-        // Add a DSAKeyValue to the KeyInfo (optional; helps recipient find key to validate).
-        KeyInfo keyInfo = new KeyInfo();
-        keyInfo.AddClause(new DSAKeyValue((DSA)DSAKey));	
-        signedXml.KeyInfo = keyInfo;
-
-        // Compute the signature.
-        signedXml.ComputeSignature();
-
-        // Get the XML representation of the signature and save
-        // it to an XmlElement object.
-        XmlElement xmlDigitalSignature = signedXml.GetXml();
-
-        // Save the signed XML document to a file specified
-        // using the passed string.
-        XmlTextWriter xmltw = new XmlTextWriter(XmlSigFileName, new UTF8Encoding(false));
-        xmlDigitalSignature.WriteTo(xmltw);
-        xmltw.Close();
-    }
-    // Verify the signature of an XML file and return the result.
-    public static Boolean VerifyDetachedSignature(string XmlSigFileName)
-    {	
-        // Create a new XML document.
-        XmlDocument xmlDocument = new XmlDocument();
-
-        // Load the passed XML file into the document.
-        xmlDocument.Load(XmlSigFileName);
-	
-        // Create a new SignedXMl object.
-        SignedXml signedXml = new SignedXml();
-
-        // Find the "Signature" node and create a new
-        // XmlNodeList object.
-        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
-
-        // Load the signature node.
-        signedXml.LoadXml((XmlElement)nodeList[0]);
-
-        // Check the signature and return the result.
-        return signedXml.CheckSignature();
-    }
 }

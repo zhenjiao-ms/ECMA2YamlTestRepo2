@@ -1,20 +1,13 @@
-Private Sub SelectNode(node As TreeNode)
-   If node.IsSelected Then
-      ' Determine which TreeNode to select.
-      Select Case myComboBox.Text
-         Case "Previous"
-            node.TreeView.SelectedNode = node.PrevNode
-         Case "PreviousVisible"
-            node.TreeView.SelectedNode = node.PrevVisibleNode
-         Case "Next"
-            node.TreeView.SelectedNode = node.NextNode
-         Case "NextVisible"
-            node.TreeView.SelectedNode = node.NextVisibleNode
-         Case "First"
-            node.TreeView.SelectedNode = node.FirstNode
-         Case "Last"
-            node.TreeView.SelectedNode = node.LastNode
-      End Select
+Private Sub treeView1_AfterSelect(sender As Object, _
+  e As TreeViewEventArgs) Handles treeView1.AfterSelect
+   ' Display the Text and Index of the 
+   ' selected tree node's Parent. 
+   If (e.Node.Parent IsNot Nothing) 
+      If (e.Node.Parent.GetType() Is GetType(TreeNode)) Then
+         statusBar1.Text = "Parent: " + e.Node.Parent.Text + _
+           ControlChars.Cr + "Index Position: " + e.Node.Parent.Index.ToString()
+      End If
+   Else
+      statusBar1.Text = "No parent node."
    End If
-   node.TreeView.Focus()
-End Sub
+End Sub 

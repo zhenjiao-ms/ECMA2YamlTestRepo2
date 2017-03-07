@@ -1,83 +1,100 @@
-Imports System
-Imports System.ComponentModel
-Imports System.ComponentModel.Design
-Imports System.Drawing
-Imports System.IO
-Imports System.Reflection
-Imports System.Runtime.Serialization
-Imports System.Runtime.Serialization.Formatters.Binary
-Imports System.Windows.Forms
-Imports System.Windows.Forms.Design
+	'This code segment implements the IContainer interface.  The code segment 
+	'containing the implementation of ISite and IComponent can be found in the documentation
+	'for those interfaces.
+	
+	'Implement the LibraryContainer using the IContainer interface.
 
-' This component adds a TypeCategoryTab to the property browser
-' that is available for any components in the current design mode document.
-<PropertyTabAttribute(GetType(TypeCategoryTab), PropertyTabScope.Document)>  _
-Public Class TypeCategoryTabComponent
-   Inherits System.ComponentModel.Component
-   
-   Public Sub New()
-    End Sub
-End Class
-
-' A TypeCategoryTab property tab lists properties by the 
-' category of the type of each property.
-<System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name:="FullTrust")> _
-Public Class TypeCategoryTab
-    Inherits PropertyTab
-
-    ' This string contains a Base-64 encoded and serialized example property tab image.
-    <BrowsableAttribute(True)> _
-    Private img As String = "AAEAAAD/////AQAAAAAAAAAMAgAAAFRTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj0xLjAuMzMwMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAA9gAAAAJCTfYAAAAAAAAANgAAACgAAAAIAAAACAAAAAEAGAAAAAAAAAAAAMQOAADEDgAAAAAAAAAAAAD///////////////////////////////////9ZgABZgADzPz/zPz/zPz9AgP//////////gAD/gAD/AAD/AAD/AACKyub///////+AAACAAAAAAP8AAP8AAP9AgP////////9ZgABZgABz13hz13hz13hAgP//////////gAD/gACA/wCA/wCA/wAA//////////+AAACAAAAAAP8AAP8AAP9AgP////////////////////////////////////8L"
+Class LibraryContainer
+    Implements IContainer
+    Private m_bookList As ArrayList
 
     Public Sub New()
+        m_bookList = New ArrayList()
     End Sub
 
-    ' Returns the properties of the specified component extended with 
-    ' a CategoryAttribute reflecting the name of the type of the property.
-    Public Overloads Overrides Function GetProperties(ByVal component As Object, ByVal attributes() As System.Attribute) As System.ComponentModel.PropertyDescriptorCollection
-        Dim props As PropertyDescriptorCollection
-        If attributes Is Nothing Then
-            props = TypeDescriptor.GetProperties(component)
-        Else
-            props = TypeDescriptor.GetProperties(component, attributes)
-        End If
-        Dim propArray(props.Count - 1) As PropertyDescriptor
+    Public Sub Add(ByVal book As IComponent) Implements IContainer.Add
+        'The book will be added without creation of the ISite object.
+        m_bookList.Add(book)
+    End Sub
+
+    Public Sub Add(ByVal book As IComponent, ByVal ISNDNNum As String) Implements IContainer.Add
+
         Dim i As Integer
-        For i = 0 To props.Count - 1
-            ' Create a new PropertyDescriptor from the old one, with 
-            ' a CategoryAttribute matching the name of the type.
-            propArray(i) = TypeDescriptor.CreateProperty(props(i).ComponentType, props(i), New CategoryAttribute(props(i).PropertyType.Name))
+        Dim curObj As IComponent
+
+        For i = 0 To m_bookList.Count - 1
+            curObj = CType(m_bookList(i), IComponent)
+            If curObj.Site IsNot Nothing Then
+                If (curObj.Site.Name.Equals(ISNDNNum)) Then
+                    Throw New SystemException("The ISBN number already exists in the container")
+                End If
+            End If
         Next i
-        Return New PropertyDescriptorCollection(propArray)
-    End Function
 
-    Public Overloads Overrides Function GetProperties(ByVal component As Object) As System.ComponentModel.PropertyDescriptorCollection
-        Return Me.GetProperties(component, Nothing)
-    End Function
+        Dim data As ISBNSite = New ISBNSite(Me, book)
+        data.Name = ISNDNNum
+        book.Site = data
+        m_bookList.Add(book)
 
-    ' Provides the name for the property tab.
-    Public Overrides ReadOnly Property TabName() As String
+    End Sub
+
+    Public Sub Remove(ByVal book As IComponent) Implements IContainer.Remove
+        Dim i As Integer
+        Dim curComp As BookComponent = CType(book, BookComponent)
+
+        For i = 0 To m_bookList.Count - 1
+            If (curComp.Equals(m_bookList(i)) = True) Then
+                m_bookList.RemoveAt(i)
+                Exit For
+            End If
+        Next i
+    End Sub
+
+
+    Public ReadOnly Property Components() As ComponentCollection Implements IContainer.Components
         Get
-            Return "Properties by Type"
+            Dim datalist(m_bookList.Count - 1) As IComponent
+            
+            m_bookList.CopyTo(datalist)
+            Return New ComponentCollection(datalist)
         End Get
     End Property
 
-    ' Provides an image for the property tab.
-    Public Overrides ReadOnly Property Bitmap() As System.Drawing.Bitmap
-        Get
-            Dim bmp As New Bitmap(DeserializeFromBase64Text(img))
-            Return bmp
-        End Get
-    End Property
+    Public Overridable Sub Dispose() Implements IDisposable.Dispose
+        Dim i As Integer
+        For i = 0 To m_bookList.Count - 1
+            Dim curObj As IComponent = CType(m_bookList(i), IComponent)
+            curObj.Dispose()
+        Next i
 
-    ' This method can be used to retrieve an Image from a block of Base64-encoded text.
-    Private Function DeserializeFromBase64Text(ByVal [text] As String) As Image
-        Dim img As Image = Nothing
-        Dim memBytes As Byte() = Convert.FromBase64String([text])
-        Dim formatter As New BinaryFormatter()
-        Dim stream As New MemoryStream(memBytes)
-        img = CType(formatter.Deserialize(stream), Image)
-        stream.Close()
-        Return img
-    End Function
+        m_bookList.Clear()
+    End Sub
+
+    Public Shared Sub Main()
+        Dim cntrExmpl As LibraryContainer = New LibraryContainer()
+
+        Try
+            Dim book1 As BookComponent = New BookComponent("Wizard's First Rule", "Terry Gooodkind")
+            cntrExmpl.Add(book1, "0812548051")
+            Dim book2 As BookComponent = New BookComponent("Stone of Tears", "Terry Gooodkind")
+            cntrExmpl.Add(book2, "0812548094")
+            Dim book3 As BookComponent = New BookComponent("Blood of the Fold", "Terry Gooodkind")
+            cntrExmpl.Add(book3, "0812551478")
+            Dim book4 As BookComponent = New BookComponent("The Soul of the Fire", "Terry Gooodkind")
+            'This will generate an exception, because the ISBN already exists in the container.
+            cntrExmpl.Add(book4, "0812551478")
+        Catch e As SystemException
+            Console.WriteLine("Error description: " + e.Message)
+        End Try
+
+        Dim datalist As ComponentCollection = cntrExmpl.Components
+        Dim denum As IEnumerator = datalist.GetEnumerator()
+
+        While (denum.MoveNext())
+            Dim cmp As BookComponent = CType(denum.Current, BookComponent)
+            Console.WriteLine("Book Title: " + cmp.Title)
+            Console.WriteLine("Book Author: " + cmp.Author)
+            Console.WriteLine("Book ISBN: " + cmp.Site.Name)
+        End While
+    End Sub
 End Class

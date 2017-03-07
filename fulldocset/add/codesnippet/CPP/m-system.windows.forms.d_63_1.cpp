@@ -1,28 +1,23 @@
 private:
-   void dataGrid1_MouseDown( Object^ sender, MouseEventArgs^ e )
+   void GetMyData3()
    {
+      // Creates a new data object using a string and the text format.
+      String^ myString = "My new text string";
+      DataObject^ myDataObject = gcnew DataObject( DataFormats::Text,myString );
       
-      // Use the HitTest method to get a HitTestInfo object.
-      System::Windows::Forms::DataGrid::HitTestInfo^ hi;
-      DataGrid^ grid = dynamic_cast<DataGrid^>(sender);
-      hi = grid->HitTest( e->X, e->Y );
-      
-      // Test if the clicked area was a cell.
-      if ( hi->Type == DataGrid::HitTestType::Cell )
+      // Prints the string in a text box with autoconvert = false.
+      if ( myDataObject->GetData( "System.String", false ) != 0 )
       {
-         
-         // If it's a cell, get the GridTable and CurrencyManager of the
-         // clicked table.
-         DataGridTableStyle^ dgt = dataGrid1->TableStyles[ 0 ];
-         CurrencyManager^ myCurrencyManager = dynamic_cast<CurrencyManager^>(BindingContext[ myDataSet->Tables[ dataGrid1->DataMember ] ]);
-         
-         // Get the Rectangle of the clicked cell.
-         Rectangle cellRect;
-         cellRect = grid->GetCellBounds( hi->Row, hi->Column );
-         
-         // Get the clicked DataGridTextBoxColumn.
-         DataGridTextBoxColumn^ gridCol = dynamic_cast<DataGridTextBoxColumn^>(dgt->GridColumnStyles[ hi->Column ]);
-         
-         // Insert code to edit the value.
+         // Prints the string in a text box.
+         textBox1->Text = String::Concat(
+            myDataObject->GetData( "System.String", false )->ToString(), "\n" );
       }
+      else
+      {
+         textBox1->Text = "Could not find data of the specified format\n";
+      }
+      
+      // Prints the string in a text box with autoconvert = true.
+      textBox1->Text = String::Concat(
+            textBox1->Text, myDataObject->GetData( "System.String", true )->ToString() );
    }

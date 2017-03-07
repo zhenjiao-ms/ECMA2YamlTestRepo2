@@ -6,20 +6,19 @@ class StrWriter
 {
     static void Main()
     {
-        StringWriter strWriter  = new StringWriter();
+        StringBuilder strBuilder = 
+            new StringBuilder("file path characters are: ");
+        StringWriter strWriter = new StringWriter(strBuilder);
 
-        // Use the three overloads of the Write method that are 
-        // overridden by the StringWriter class.
-        strWriter.Write("file path characters are: ");
         strWriter.Write(
             Path.InvalidPathChars, 0, Path.InvalidPathChars.Length);
-        strWriter.Write('.');
 
-        // Use the underlying StringBuilder for more complex 
-        // manipulations of the string.
-        strWriter.GetStringBuilder().Insert(0, "Invalid ");
+        strWriter.Close();
 
-        Console.WriteLine("The following string is {0} encoded.\n{1}", 
-            strWriter.Encoding.EncodingName, strWriter.ToString());
+        // Since the StringWriter is closed, an exception will 
+        // be thrown if the Write method is called. However, 
+        // the StringBuilder can still manipulate the string.
+        strBuilder.Insert(0, "Invalid ");
+        Console.WriteLine(strWriter.ToString());
     }
 }

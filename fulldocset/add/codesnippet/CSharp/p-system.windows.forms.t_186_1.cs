@@ -1,109 +1,29 @@
-using System;
-using System.Drawing;
-using System.Windows.Forms;
-
-public class Form1 : Form
-{
-    private TreeView treeView1;
-    private Button showCheckedNodesButton;
-    private TreeViewCancelEventHandler checkForCheckedChildren;
-
-    public Form1()
-    {
-        treeView1 = new TreeView();
-        showCheckedNodesButton = new Button();
-        checkForCheckedChildren = 
-            new TreeViewCancelEventHandler(CheckForCheckedChildrenHandler);
-
-        this.SuspendLayout();
-
-        // Initialize treeView1.
-        treeView1.Location = new Point(0, 25);
-        treeView1.Size = new Size(292, 248);
-        treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | 
-            AnchorStyles.Bottom | AnchorStyles.Right;
-        treeView1.CheckBoxes = true;
-
-        // Add nodes to treeView1.
-        TreeNode node;
-        for (int x = 0; x < 3; ++x)
-        {
-            // Add a root node.
-            node = treeView1.Nodes.Add(String.Format("Node{0}", x*4));
-            for (int y = 1; y < 4; ++y)
-            {
-                // Add a node as a child of the previously added node.
-                node = node.Nodes.Add(String.Format("Node{0}", x*4 + y));
-            }
-        }
-
-        // Set the checked state of one of the nodes to
-        // demonstrate the showCheckedNodesButton button behavior.
-        treeView1.Nodes[1].Nodes[0].Nodes[0].Checked = true;
-
-        // Initialize showCheckedNodesButton.
-        showCheckedNodesButton.Size = new Size(144, 24);
-        showCheckedNodesButton.Text = "Show Checked Nodes";
-        showCheckedNodesButton.Click += 
-            new EventHandler(showCheckedNodesButton_Click);
-
-        // Initialize the form.
-        this.ClientSize = new Size(292, 273);
-        this.Controls.AddRange(new Control[] 
-            { showCheckedNodesButton, treeView1 } );
-
-        this.ResumeLayout(false);
-    }
-
-    [STAThreadAttribute()]
-    static void Main() 
-    {
-        Application.Run(new Form1());
-    }
-
-    private void showCheckedNodesButton_Click(object sender, EventArgs e)
-    {
-        // Disable redrawing of treeView1 to prevent flickering 
-        // while changes are made.
-        treeView1.BeginUpdate();
-
-        // Collapse all nodes of treeView1.
-        treeView1.CollapseAll();
-
-        // Add the checkForCheckedChildren event handler to the BeforeExpand event.
-        treeView1.BeforeExpand += checkForCheckedChildren;
-
-        // Expand all nodes of treeView1. Nodes without checked children are 
-        // prevented from expanding by the checkForCheckedChildren event handler.
-        treeView1.ExpandAll();
-
-        // Remove the checkForCheckedChildren event handler from the BeforeExpand 
-        // event so manual node expansion will work correctly.
-        treeView1.BeforeExpand -= checkForCheckedChildren;
-
-        // Enable redrawing of treeView1.
-        treeView1.EndUpdate();
-    }
-
-    // Prevent expansion of a node that does not have any checked child nodes.
-    private void CheckForCheckedChildrenHandler(object sender, 
-        TreeViewCancelEventArgs e)
-    {
-        if (!HasCheckedChildNodes(e.Node)) e.Cancel = true;
-    }
-
-    // Returns a value indicating whether the specified 
-    // TreeNode has checked child nodes.
-    private bool HasCheckedChildNodes(TreeNode node)
-    {
-        if (node.Nodes.Count == 0) return false;
-        foreach (TreeNode childNode in node.Nodes)
-        {
-            if (childNode.Checked) return true;
-            // Recursively check the children of the current child node.
-            if (HasCheckedChildNodes(childNode)) return true;
-        }
-        return false;
-    }
-
-}
+            // This is an example of some common ToolStrip property settings.
+            // 
+            toolStrip1.AllowDrop = false;
+            toolStrip1.AllowItemReorder = true;
+            toolStrip1.AllowMerge = false;
+            toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            toolStrip1.AutoSize = false;
+            toolStrip1.CanOverflow = false;
+            toolStrip1.Cursor = System.Windows.Forms.Cursors.Cross;
+            toolStrip1.DefaultDropDownDirection = System.Windows.Forms.ToolStripDropDownDirection.BelowRight;
+            toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            toolStrip1.GripMargin = new System.Windows.Forms.Padding(3);
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            toolStripButton1});
+            toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            toolStrip1.Location = new System.Drawing.Point(0, 0);
+            toolStrip1.Margin = new System.Windows.Forms.Padding(1);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            toolStrip1.ShowItemToolTips = false;
+            toolStrip1.Size = new System.Drawing.Size(109, 273);
+            toolStrip1.Stretch = true;
+            toolStrip1.TabIndex = 0;
+            toolStrip1.TabStop = true;
+            toolStrip1.Text = "toolStrip1";
+            toolStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90;

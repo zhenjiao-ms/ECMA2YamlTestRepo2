@@ -3,88 +3,95 @@
 
 using namespace System;
 using namespace System::IO;
-using namespace System::Xml;
 using namespace System::Xml::Serialization;
-public enum class GroupType
-{
-   // Use the SoapEnumAttribute to instruct the XmlSerializer
-   // to generate Small and Large instead of A and B.
-   [SoapEnum("Small")]
-   A,
-   [SoapEnum("Large")]
-   B
-};
+using namespace System::Collections;
+using namespace System::Xml;
 
-public ref class Group
+public ref class Car
 {
 public:
-   String^ GroupName;
-   GroupType Grouptype;
+   String^ Name;
 };
 
-public ref class Run
+public ref class Plane
 {
 public:
-   void SerializeObject( String^ filename )
-   {
-      // Create an instance of the XmlSerializer Class.
-      XmlTypeMapping^ mapp = (gcnew SoapReflectionImporter)->ImportTypeMapping( Group::typeid );
-      XmlSerializer^ mySerializer = gcnew XmlSerializer( mapp );
-
-      // Writing the file requires a TextWriter.
-      TextWriter^ writer = gcnew StreamWriter( filename );
-
-      // Create an instance of the Class that will be serialized.
-      Group^ myGroup = gcnew Group;
-
-      // Set the Object* properties.
-      myGroup->GroupName = ".NET";
-      myGroup->Grouptype = GroupType::A;
-
-      // Serialize the Class, and close the TextWriter.
-      mySerializer->Serialize( writer, myGroup );
-      writer->Close();
-   }
-
-   void SerializeOverride( String^ fileName )
-   {
-      SoapAttributeOverrides^ soapOver = gcnew SoapAttributeOverrides;
-      SoapAttributes^ SoapAtts = gcnew SoapAttributes;
-
-      // Add a SoapEnumAttribute for the GroupType::A enumerator.       
-      // Instead of 'A'  it will be S"West".
-      SoapEnumAttribute^ soapEnum = gcnew SoapEnumAttribute( "West" );
-
-      // Override the S"A" enumerator.
-      SoapAtts->GroupType::SoapEnum = soapEnum;
-      soapOver->Add( GroupType::typeid, "A", SoapAtts );
-
-      // Add another SoapEnumAttribute for the GroupType::B enumerator.
-      // Instead of //B// it will be S"East".
-      SoapAtts = gcnew SoapAttributes;
-      soapEnum = gcnew SoapEnumAttribute;
-      soapEnum->Name = "East";
-      SoapAtts->GroupType::SoapEnum = soapEnum;
-      soapOver->Add( GroupType::typeid, "B", SoapAtts );
-
-      // Create an XmlSerializer used for overriding.
-      XmlTypeMapping^ map = (gcnew SoapReflectionImporter( soapOver ))->ImportTypeMapping( Group::typeid );
-      XmlSerializer^ ser = gcnew XmlSerializer( map );
-      Group^ myGroup = gcnew Group;
-      myGroup->GroupName = ".NET";
-      myGroup->Grouptype = GroupType::B;
-
-      // Writing the file requires a TextWriter.
-      TextWriter^ writer = gcnew StreamWriter( fileName );
-      ser->Serialize( writer, myGroup );
-      writer->Close();
-   }
+   String^ Name;
 };
+
+public ref class Truck
+{
+public:
+   String^ Name;
+};
+
+public ref class Train
+{
+public:
+   String^ Name;
+};
+
+public ref class Transportation
+{
+public:
+
+   // Subsequent code overrides these two XmlElementAttributes.
+
+   [XmlElement(Car::typeid),
+   XmlElement(Plane::typeid)]
+   ArrayList^ Vehicles;
+};
+
+// Return an XmlSerializer used for overriding.
+XmlSerializer^ CreateOverrider()
+{
+   // Create the XmlAttributes and XmlAttributeOverrides objects.
+   XmlAttributes^ attrs = gcnew XmlAttributes;
+   XmlAttributeOverrides^ xOver = gcnew XmlAttributeOverrides;
+
+   /* Create an XmlElementAttribute to override 
+      the Vehicles property. */
+   XmlElementAttribute^ xElement1 = gcnew XmlElementAttribute( Truck::typeid );
+
+   // Add the XmlElementAttribute to the collection.
+   attrs->XmlElements->Add( xElement1 );
+
+   /* Create a second XmlElementAttribute, and 
+      add it to the collection. */
+   XmlElementAttribute^ xElement2 = gcnew XmlElementAttribute( Train::typeid );
+   attrs->XmlElements->Add( xElement2 );
+
+   /* Add the XmlAttributes to the XmlAttributeOverrides,
+      specifying the member to override. */
+   xOver->Add( Transportation::typeid, "Vehicles", attrs );
+
+   // Create the XmlSerializer, and return it.
+   XmlSerializer^ xSer = gcnew XmlSerializer( Transportation::typeid,xOver );
+   return xSer;
+}
+
+void SerializeObject( String^ filename )
+{
+   // Create an XmlSerializer instance.
+   XmlSerializer^ xSer = CreateOverrider();
+
+   // Create the object and serialize it.
+   Transportation^ myTransportation = gcnew Transportation;
+
+   /* Create two new override objects that can be
+      inserted into the array. */
+   myTransportation->Vehicles = gcnew ArrayList;
+   Truck^ myTruck = gcnew Truck;
+   myTruck->Name = "MyTruck";
+   Train^ myTrain = gcnew Train;
+   myTrain->Name = "MyTrain";
+   myTransportation->Vehicles->Add( myTruck );
+   myTransportation->Vehicles->Add( myTrain );
+   TextWriter^ writer = gcnew StreamWriter( filename );
+   xSer->Serialize( writer, myTransportation );
+}
 
 int main()
 {
-   Run^ test = gcnew Run;
-   test->SerializeObject( "SoapEnum.xml" );
-   test->SerializeOverride( "SoapOverride.xml" );
-   Console::WriteLine( "Fininished writing two files" );
+   SerializeObject( "OverrideElement.xml" );
 }

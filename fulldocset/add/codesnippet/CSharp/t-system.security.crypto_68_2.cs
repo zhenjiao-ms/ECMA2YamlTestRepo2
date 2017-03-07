@@ -1,66 +1,77 @@
 using System;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.IO;
+using System.Text;
 
-public class X509store2
+class Example
 {
-	public static void Main (string[] args)
-	{
-		//Create new X509 store called teststore from the local certificate store.
-		X509Store store = new X509Store ("teststore", StoreLocation.CurrentUser);
-		store.Open (OpenFlags.ReadWrite);
-		X509Certificate2 certificate = new X509Certificate2 ();
+    // Hash an input string and return the hash as
+    // a 32 character hexadecimal string.
+    static string getMd5Hash(string input)
+    {
+        // Create a new instance of the MD5CryptoServiceProvider object.
+        MD5CryptoServiceProvider md5Hasher = new MD5CryptoServiceProvider();
 
-		//Create certificates from certificate files.
-		//You must put in a valid path to three certificates in the following constructors.
-		X509Certificate2 certificate1 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
-		X509Certificate2 certificate2 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
-		X509Certificate2 certificate5 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
+        // Convert the input string to a byte array and compute the hash.
+        byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(input));
 
-		//Create a collection and add two of the certificates.
-		X509Certificate2Collection collection = new X509Certificate2Collection ();
-		collection.Add (certificate2);
-		collection.Add (certificate5);
+        // Create a new Stringbuilder to collect the bytes
+        // and create a string.
+        StringBuilder sBuilder = new StringBuilder();
 
-		//Add certificates to the store.
-		store.Add (certificate1);
-		store.AddRange (collection);
+        // Loop through each byte of the hashed data 
+        // and format each one as a hexadecimal string.
+        for (int i = 0; i < data.Length; i++)
+        {
+            sBuilder.Append(data[i].ToString("x2"));
+        }
 
-		X509Certificate2Collection storecollection = (X509Certificate2Collection)store.Certificates;
-		Console.WriteLine ("Store name: {0}", store.Name);
-		Console.WriteLine ("Store location: {0}", store.Location);
-		foreach (X509Certificate2 x509 in storecollection)
-		{
-			Console.WriteLine("certificate name: {0}",x509.Subject);
-		}
+        // Return the hexadecimal string.
+        return sBuilder.ToString();
+    }
 
-		//Remove a certificate.
-		store.Remove (certificate1);
-		X509Certificate2Collection storecollection2 = (X509Certificate2Collection)store.Certificates;
-		Console.WriteLine ("{1}Store name: {0}", store.Name, Environment.NewLine);
-		foreach (X509Certificate2 x509 in storecollection2)
-		{
-			Console.WriteLine ("certificate name: {0}", x509.Subject);
-		}
+    // Verify a hash against a string.
+    static bool verifyMd5Hash(string input, string hash)
+    {
+        // Hash the input.
+        string hashOfInput = getMd5Hash(input);
 
-		//Remove a range of certificates.
-		store.RemoveRange (collection);
-		X509Certificate2Collection storecollection3 = (X509Certificate2Collection)store.Certificates;
-		Console.WriteLine ("{1}Store name: {0}", store.Name, Environment.NewLine);
-		if (storecollection3.Count == 0)
-		{
-			Console.WriteLine ("Store contains no certificates.");
-		}
-		else
-		{
-			foreach (X509Certificate2 x509 in storecollection3)
-			{
-				Console.WriteLine ("certificate name: {0}", x509.Subject);
-			}
-		}
+        // Create a StringComparer an compare the hashes.
+        StringComparer comparer = StringComparer.OrdinalIgnoreCase;
 
-		//Close the store.
-		store.Close ();
-	}	
+        if (0 == comparer.Compare(hashOfInput, hash))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+    static void Main()
+    {
+        string source = "Hello World!";
+        
+        string hash = getMd5Hash(source);
+
+        Console.WriteLine("The MD5 hash of " + source + " is: " + hash + ".");
+
+        Console.WriteLine("Verifying the hash...");
+
+        if (verifyMd5Hash(source, hash))
+        {
+            Console.WriteLine("The hashes are the same.");
+        }
+        else
+        {
+            Console.WriteLine("The hashes are not same.");
+        }
+        
+    }
 }
+// This code example produces the following output:
+//
+// The MD5 hash of Hello World! is: ed076287532e86365e841e92bfc50d8c.
+// Verifying the hash...
+// The hashes are the same.

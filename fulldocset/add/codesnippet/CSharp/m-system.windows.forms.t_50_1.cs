@@ -1,14 +1,47 @@
-	//Handles the Enter key being pressed while TextBox1 has focus. 
-	private void TextBox1_KeyDown(object sender, KeyEventArgs e)
-	{
-		TextBox1.HideSelection = false;
-		if (e.KeyCode==Keys.Enter)
-		{
-			e.Handled = true;
+public class Customer
+{
+   public ArrayList CustomerOrders;
+   public string CustomerName;
+   public Customer(string myName)
+   {
+      CustomerName = myName;
+      CustomerOrders = new ArrayList(); 
+   }
+}
+public class Order
+{
+   public string OrderID;
+   public Order(string myOrderID )
+   {
+      this.OrderID = myOrderID;
+   }
+}
 
-			// Copy the text from TextBox1 to RichTextBox1, add a CRLF after 
-			// the copied text, and keep the caret in view.
-			RichTextBox1.SelectedText = TextBox1.Text + "\r\n";
-			RichTextBox1.ScrollToCaret();
-		}
-	}
+public void AddRootNodes()
+{
+   // Add a root node to assign the customer nodes to.
+   TreeNode rootNode = new TreeNode();
+   rootNode.Text = "CustomerList";
+   // Add a main root treenode.
+   myTreeView.Nodes.Add(rootNode);
+
+   // Add a root treenode for each 'Customer' object in the ArrayList.
+   foreach(Customer myCustomer in customerArray)
+   {
+      // Add a child treenode for each Order object.
+      int i = 0;
+      TreeNode[] myTreeNodeArray = new TreeNode[5];
+      foreach(Order myOrder in myCustomer.CustomerOrders)
+      {
+         myTreeNodeArray[i] = new TreeNode(myOrder.OrderID);
+         i++;
+      }
+      TreeNode customerNode = new TreeNode(myCustomer.CustomerName,
+        myTreeNodeArray);
+		// Display the customer names with and Orange font.
+		customerNode.ForeColor = Color.Orange;
+		// Store the Customer object in the Tag property of the TreeNode.
+		customerNode.Tag = myCustomer;
+      myTreeView.Nodes[0].Nodes.Add(customerNode);
+   }
+}

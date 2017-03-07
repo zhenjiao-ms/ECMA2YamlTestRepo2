@@ -4,99 +4,52 @@
 using namespace System;
 using namespace System::IO;
 using namespace System::Xml::Serialization;
-using namespace System::Collections;
-using namespace System::Xml;
-using namespace System::Text;
-public ref class Thing
+
+public ref class Person
+{
+public:
+   String^ Name;
+};
+
+public ref class Manager: public Person
+{
+public:
+   int Rank;
+};
+
+public ref class Group
 {
 public:
 
-   [SoapElement(IsNullable=true)]
-   String^ ThingName;
+   /* The Type property instructs the XmlSerializer to accept both
+      the Person and Manager types in the array. */
+
+   [XmlArrayItem(Type=Manager::typeid),
+   XmlArrayItem(Type=Person::typeid)]
+   array<Person^>^Staff;
 };
 
-public ref class Transportation
+void SerializeOrder( String^ filename )
 {
-public:
+   // Creates an XmlSerializer.
+   XmlSerializer^ xSer = gcnew XmlSerializer( Group::typeid );
 
-   // The SoapElementAttribute specifies that the
-   // generated XML element name will be S"Wheels"
-   // instead of S"Vehicle".
-
-   [SoapElement("Wheels")]
-   String^ Vehicle;
-
-   [SoapElement(DataType="dateTime")]
-   DateTime CreationDate;
-
-   [SoapElement(IsNullable=true)]
-   Thing^ thing;
-};
-
-public ref class Test
-{
-public:
-
-   // Return an XmlSerializer used for overriding.
-   XmlSerializer^ CreateSoapOverrider()
-   {
-      // Create the SoapAttributes and SoapAttributeOverrides objects.
-      SoapAttributes^ soapAttrs = gcnew SoapAttributes;
-      SoapAttributeOverrides^ soapOverrides = gcnew SoapAttributeOverrides;
-
-      // Create an SoapElementAttribute to the Vehicles property.
-      SoapElementAttribute^ soapElement1 = gcnew SoapElementAttribute( "Truck" );
-
-      // Set the SoapElement to the Object*.
-      soapAttrs->SoapElement = soapElement1;
-
-      // Add the SoapAttributes to the SoapAttributeOverrides,specifying the member to.
-      soapOverrides->Add( Transportation::typeid, "Vehicle", soapAttrs );
-
-      // Create the XmlSerializer, and return it.
-      XmlTypeMapping^ myTypeMapping = (gcnew SoapReflectionImporter( soapOverrides ))->ImportTypeMapping( Transportation::typeid );
-      return gcnew XmlSerializer( myTypeMapping );
-   }
-
-   void SerializeOverride( String^ filename )
-   {
-      // Create an XmlSerializer instance.
-      XmlSerializer^ ser = CreateSoapOverrider();
-
-      // Create the Object* and serialize it.
-      Transportation^ myTransportation = gcnew Transportation;
-      myTransportation->Vehicle = "MyCar";
-      myTransportation->CreationDate = DateTime::Now;
-      myTransportation->thing = gcnew Thing;
-      XmlTextWriter^ writer = gcnew XmlTextWriter( filename,Encoding::UTF8 );
-      writer->Formatting = Formatting::Indented;
-      writer->WriteStartElement( "wrapper" );
-      ser->Serialize( writer, myTransportation );
-      writer->WriteEndElement();
-      writer->Close();
-   }
-
-   void SerializeObject( String^ filename )
-   {
-      // Create an XmlSerializer instance.
-      XmlSerializer^ ser = gcnew XmlSerializer( Transportation::typeid );
-      Transportation^ myTransportation = gcnew Transportation;
-      myTransportation->Vehicle = "MyCar";
-      myTransportation->CreationDate = DateTime::Now;
-      myTransportation->thing = gcnew Thing;
-      XmlTextWriter^ writer = gcnew XmlTextWriter( filename,Encoding::UTF8 );
-      writer->Formatting = Formatting::Indented;
-      writer->WriteStartElement( "wrapper" );
-      ser->Serialize( writer, myTransportation );
-      writer->WriteEndElement();
-      writer->Close();
-   }
-};
+   // Creates the Group object, and two array items.
+   Group^ myGroup = gcnew Group;
+   Person^ p1 = gcnew Person;
+   p1->Name = "Jacki";
+   Manager^ p2 = gcnew Manager;
+   p2->Name = "Megan";
+   p2->Rank = 2;
+   array<Person^>^myStaff = {p1,p2};
+   myGroup->Staff = myStaff;
+   
+   // Serializes the object, and closes the StreamWriter.
+   TextWriter^ writer = gcnew StreamWriter( filename );
+   xSer->Serialize( writer, myGroup );
+}
 
 int main()
 {
-   Test^ t = gcnew Test;
-   t->SerializeObject( "SoapElementOriginal.xml" );
-   t->SerializeOverride( "SoapElementOverride.xml" );
-   Console::WriteLine( "Finished writing two XML files." );
+   SerializeOrder( "TypeEx.xml" );
 }

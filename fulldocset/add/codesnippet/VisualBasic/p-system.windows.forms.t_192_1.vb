@@ -1,16 +1,30 @@
-      ' The following code example demonstrates the syntax for setting
-      ' various ToolStripComboBox properties.
-      ' 
-      toolStripComboBox1.AutoCompleteCustomSource.AddRange(New String() {"aaa", "bbb", "ccc"})
-      toolStripComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-      toolStripComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-      toolStripComboBox1.DropDownHeight = 110
-      toolStripComboBox1.DropDownWidth = 122
-      toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard
-      toolStripComboBox1.IntegralHeight = False
-      toolStripComboBox1.Items.AddRange(New Object() {"xxx", "yyy", "zzz"})
-      toolStripComboBox1.MaxDropDownItems = 9
-      toolStripComboBox1.MergeAction = System.Windows.Forms.MergeAction.Insert
-      toolStripComboBox1.Name = "toolStripComboBox1"
-      toolStripComboBox1.Size = New System.Drawing.Size(121, 25)
-      toolStripComboBox1.Sorted = True
+    Public Sub InitializeMyToolBar()
+        ' Create the ToolBar, ToolBarButton controls, and menus.
+        Dim toolBarButton1 As New ToolBarButton("Open")
+        Dim toolBarButton2 As New ToolBarButton()
+        Dim toolBarButton3 As New ToolBarButton()
+        Dim toolBar1 As New ToolBar()
+	Dim menuItem1 As New MenuItem("Print")
+	Dim contextMenu1 As New ContextMenu(New MenuItem(){menuItem1})
+        
+        ' Add the ToolBarButton controls to the ToolBar.
+        toolBar1.Buttons.Add(toolBarButton1)
+        toolBar1.Buttons.Add(toolBarButton2)
+        toolBar1.Buttons.Add(toolBarButton3)
+        
+        ' Assign an ImageList to the ToolBar and show ToolTips.
+        toolBar1.ImageList = imageList1
+        toolBar1.ShowToolTips = True
+        
+        ' Assign ImageIndex, ContextMenu, Text, ToolTip, and
+        ' Style properties of the ToolBarButton controls. 
+        toolBarButton2.Style = ToolBarButtonStyle.Separator
+        toolBarButton3.Text = "Print"
+        toolBarButton3.Style = ToolBarButtonStyle.DropDownButton
+        toolBarButton3.ToolTipText = "Print"
+        toolBarButton3.ImageIndex = 0
+        toolBarButton3.DropDownMenu = contextMenu1
+        
+        ' Add the ToolBar to a form.
+        Controls.Add(toolBar1)
+    End Sub

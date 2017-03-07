@@ -1,61 +1,42 @@
-ref class Customer
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
+public ref class Form1: public Form
 {
+private:
+   TabControl^ tabControl1;
+   Rectangle myTabRect;
+
 public:
-   ArrayList^ CustomerOrders;
-   String^ CustomerName;
-   Customer( String^ myName )
+   Form1()
    {
-      CustomerName = myName;
-      CustomerOrders = gcnew ArrayList;
+      tabControl1 = gcnew TabControl;
+      TabPage^ tabPage1 = gcnew TabPage;
+      tabControl1->Controls->Add( tabPage1 );
+      tabControl1->DrawMode = TabDrawMode::OwnerDrawFixed;
+      tabControl1->Location = Point(25,25);
+      tabControl1->Size = System::Drawing::Size( 250, 250 );
+      tabPage1->TabIndex = 0;
+      
+      // Gets the tabPage1 tab area defined by its TabIndex.
+      // Returns a Rectangle to myTabRect.
+      myTabRect = tabControl1->GetTabRect( 0 );
+      ClientSize = System::Drawing::Size( 300, 300 );
+      Controls->Add( tabControl1 );
+      tabControl1->DrawItem += gcnew DrawItemEventHandler( this, &Form1::OnDrawItem );
+   }
+
+
+private:
+   void OnDrawItem( Object^ /*sender*/, DrawItemEventArgs^ e )
+   {
+      Graphics^ g = e->Graphics;
+      Pen^ p = gcnew Pen( Color::Blue );
+      g->DrawRectangle( p, myTabRect );
    }
 
 };
 
-ref class Order
+int main()
 {
-public:
-   String^ OrderID;
-   Order( String^ myOrderID )
-   {
-      this->OrderID = myOrderID;
-   }
-
-};
-
-
-   void AddRootNodes()
-   {
-      
-      // Add a root node to assign the customer nodes to.
-      TreeNode^ rootNode = gcnew TreeNode;
-      rootNode->Text = "CustomerList";
-      
-      // Add a main root treenode.
-      myTreeView->Nodes->Add( rootNode );
-      
-      // Add a root treenode for each 'Customer' object in the ArrayList.
-      IEnumerator^ myEnum = customerArray->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         Customer^ myCustomer = safe_cast<Customer^>(myEnum->Current);
-         
-         // Add a child treenode for each Order object.
-         int i = 0;
-         array<TreeNode^>^myTreeNodeArray = gcnew array<TreeNode^>(5);
-         IEnumerator^ myEnum = myCustomer->CustomerOrders->GetEnumerator();
-         while ( myEnum->MoveNext() )
-         {
-            Order^ myOrder = safe_cast<Order^>(myEnum->Current);
-            myTreeNodeArray[ i ] = gcnew TreeNode( myOrder->OrderID );
-            i++;
-         }
-         TreeNode^ customerNode = gcnew TreeNode( myCustomer->CustomerName,myTreeNodeArray );
-         
-         // Display the customer names with and Orange font.
-         customerNode->ForeColor = Color::Orange;
-         
-         // Store the Customer Object* in the Tag property of the TreeNode.
-         customerNode->Tag = myCustomer;
-         myTreeView->Nodes[ 0 ]->Nodes->Add( customerNode );
-      }
-   }
+   Application::Run( gcnew Form1 );
+}

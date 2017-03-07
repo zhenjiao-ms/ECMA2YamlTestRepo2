@@ -1,31 +1,47 @@
-    // Draws column headers.
-    private void listView1_DrawColumnHeader(object sender,
-        DrawListViewColumnHeaderEventArgs e)
+    private void sortButton_Click(object sender, System.EventArgs e)
     {
-        using (StringFormat sf = new StringFormat())
+        // Check which column is selected, otherwise set NewColumn to null.
+        DataGridViewColumn newColumn =
+            dataGridView1.Columns.GetColumnCount(
+            DataGridViewElementStates.Selected) == 1 ?
+            dataGridView1.SelectedColumns[0] : null;
+
+        DataGridViewColumn oldColumn = dataGridView1.SortedColumn;
+        ListSortDirection direction;
+
+        // If oldColumn is null, then the DataGridView is not currently sorted.
+        if (oldColumn != null)
         {
-            // Store the column text alignment, letting it default
-            // to Left if it has not been set to Center or Right.
-            switch (e.Header.TextAlign)
+            // Sort the same column again, reversing the SortOrder.
+            if (oldColumn == newColumn &&
+                dataGridView1.SortOrder == SortOrder.Ascending)
             {
-                case HorizontalAlignment.Center:
-                    sf.Alignment = StringAlignment.Center;
-                    break;
-                case HorizontalAlignment.Right:
-                    sf.Alignment = StringAlignment.Far;
-                    break;
+                direction = ListSortDirection.Descending;
             }
-
-            // Draw the standard header background.
-            e.DrawBackground();
-
-            // Draw the header text.
-            using (Font headerFont =
-                        new Font("Helvetica", 10, FontStyle.Bold))
+            else
             {
-                e.Graphics.DrawString(e.Header.Text, headerFont,
-                    Brushes.Black, e.Bounds, sf);
+                // Sort a new column and remove the old SortGlyph.
+                direction = ListSortDirection.Ascending;
+                oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
             }
         }
-        return;
+        else
+        {
+            direction = ListSortDirection.Ascending;
+        }
+
+        // If no column has been selected, display an error dialog  box.
+        if (newColumn == null)
+        {
+            MessageBox.Show("Select a single column and try again.",
+                "Error: Invalid Selection", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+        }
+        else
+        {
+            dataGridView1.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
     }

@@ -1,28 +1,15 @@
-// Add a button to a form and set some of its common properties.
-private void AddMyButton()
-{
-   // Create a button and add it to the form.
-   Button button1 = new Button();
-
-   // Anchor the button to the bottom right corner of the form
-   button1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
-
-   // Assign a background image.
-   button1.BackgroundImage = imageList1.Images[0];
-
-   // Specify the layout style of the background image. Tile is the default.
-   button1.BackgroundImageLayout = ImageLayout.Center;
-   
-   // Make the button the same size as the image.
-   button1.Size = button1.BackgroundImage.Size;
-
-   // Set the button's TabIndex and TabStop properties.
-   button1.TabIndex = 1;
-   button1.TabStop = true;
-
-   // Add a delegate to handle the Click event.
-   button1.Click += new System.EventHandler(this.button1_Click);
-
-   // Add the button to the form.
-   this.Controls.Add(button1);
-}
+public void InstantiateMyCheckBox()
+ {
+    // Create and initialize a CheckBox.   
+    CheckBox checkBox1 = new CheckBox(); 
+    
+    // Make the check box control appear as a toggle button.
+    checkBox1.Appearance = Appearance.Button;
+ 
+    // Turn off the update of the display on the click of the control.
+    checkBox1.AutoCheck = false;
+ 
+    // Add the check box control to the form.
+    Controls.Add(checkBox1);
+ }
+ 

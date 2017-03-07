@@ -1,57 +1,50 @@
-public class CalendarCell : DataGridViewTextBoxCell
-{
+      private void Create_Table()
+      {
+         // Create a DataSet.
+         myDataSet = new DataSet("myDataSet");
+         // Create DataTable.
+         DataTable myCustomerTable = new DataTable("Customers");
+         // Create two columns, and add to the table.
+         DataColumn CustID = new DataColumn("CustID", typeof(int));
+         DataColumn CustName = new DataColumn("CustName");
+         myCustomerTable.Columns.Add(CustID);
+         myCustomerTable.Columns.Add(CustName);
+         DataRow newRow1;
+         // Create three customers in the Customers Table.
+         for(int i = 1; i < 3; i++)
+         {
+            newRow1 = myCustomerTable.NewRow();
+            newRow1["custID"] = i;
+            // Add row to the Customers table.
+            myCustomerTable.Rows.Add(newRow1);
+         }
+         // Give each customer a distinct name.
+         myCustomerTable.Rows[0]["custName"] = "Alpha";
+         myCustomerTable.Rows[1]["custName"] = "Beta";
+         // Add table to DataSet.
+         myDataSet.Tables.Add(myCustomerTable);
+         dataGrid1.SetDataBinding(myDataSet,"Customers");
+         myTableStyle = new DataGridTableStyle();
+         myTableStyle.MappingName = "Customers";
+         myTableStyle.ForeColor  = Color.DarkMagenta;
+         dataGrid1.TableStyles.Add(myTableStyle);
+      }
 
-    public CalendarCell()
-        : base()
-    {
-        // Use the short date format.
-        this.Style.Format = "d";
-    }
-
-    public override void InitializeEditingControl(int rowIndex, object 
-        initialFormattedValue, DataGridViewCellStyle dataGridViewCellStyle)
-    {
-        // Set the value of the editing control to the current cell value.
-        base.InitializeEditingControl(rowIndex, initialFormattedValue, 
-            dataGridViewCellStyle);
-        CalendarEditingControl ctl = 
-            DataGridView.EditingControl as CalendarEditingControl;
-        // Use the default row value when Value property is null.
-        if (this.Value == null)
-        {
-            ctl.Value = (DateTime)this.DefaultNewRowValue;
-        }
-        else
-        {
-            ctl.Value = (DateTime)this.Value;
-        }
-    }
-
-    public override Type EditType
-    {
-        get
-        {
-            // Return the type of the editing control that CalendarCell uses.
-            return typeof(CalendarEditingControl);
-        }
-    }
-
-    public override Type ValueType
-    {
-        get
-        {
-            // Return the type of the value that CalendarCell contains.
-            
-            return typeof(DateTime);
-        }
-    }
-
-    public override object DefaultNewRowValue
-    {
-        get
-        {
-            // Use the current date and time as the default value.
-            return DateTime.Now;
-        }
-    }
-}
+      // Set table's forecolor.
+      private void OnForeColor_Click(object sender, System.EventArgs e)
+      {
+         dataGrid1.TableStyles.Clear();
+         switch(myComboBox.SelectedItem.ToString())
+         {
+            case "Green":
+               myTableStyle.ForeColor = Color.Green;
+               break;
+            case "Red":
+               myTableStyle.ForeColor = Color.Red;
+               break;
+            case "Violet":
+               myTableStyle.ForeColor = Color.Violet;
+               break;
+         }
+         dataGrid1.TableStyles.Add(myTableStyle);
+      }

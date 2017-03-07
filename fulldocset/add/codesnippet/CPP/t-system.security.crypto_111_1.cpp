@@ -1,42 +1,123 @@
-#using <System.dll>
+//
+// This example signs a file specified by a URI 
+// using a detached signature. It then verifies  
+// the signed XML.
+//
 #using <System.Security.dll>
+#using <System.Xml.dll>
 
 using namespace System;
 using namespace System::Security::Cryptography;
-using namespace System::Security::Permissions;
-using namespace System::IO;
-using namespace System::Security::Cryptography::X509Certificates;
+using namespace System::Security::Cryptography::Xml;
+using namespace System::Text;
+using namespace System::Xml;
+
+// Sign an XML file and save the signature in a new file.
+void SignDetachedResource( String^ URIString, String^ XmlSigFileName, RSA^ Key )
+{
+   
+   // Create a SignedXml object.
+   SignedXml^ signedXml = gcnew SignedXml;
+   
+   // Assign the key to the SignedXml object.
+   signedXml->SigningKey = Key;
+   
+   // Create a reference to be signed.
+   Reference^ reference = gcnew Reference;
+   
+   // Add the passed URI to the reference object.
+   reference->Uri = URIString;
+
+   // Add the reference to the SignedXml object.
+   signedXml->AddReference( reference );
+   
+   // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+   KeyInfo^ keyInfo = gcnew KeyInfo;
+   keyInfo->AddClause( gcnew RSAKeyValue( safe_cast<RSA^>(Key) ) );
+   signedXml->KeyInfo = keyInfo;
+   
+   // Compute the signature.
+   signedXml->ComputeSignature();
+   
+   // Get the XML representation of the signature and save
+   // it to an XmlElement object.
+   XmlElement^ xmlDigitalSignature = signedXml->GetXml();
+   
+   // Save the signed XML document to a file specified
+   // using the passed string.
+   XmlTextWriter^ xmltw = gcnew XmlTextWriter( XmlSigFileName,gcnew UTF8Encoding( false ) );
+   xmlDigitalSignature->WriteTo( xmltw );
+   xmltw->Close();
+}
+
+
+// Verify the signature of an XML file and return the result.
+Boolean VerifyDetachedSignature( String^ XmlSigFileName )
+{
+   
+   // Create a new XML document.
+   XmlDocument^ xmlDocument = gcnew XmlDocument;
+   
+   // Load the passed XML file into the document.
+   xmlDocument->Load( XmlSigFileName );
+   
+   // Create a new SignedXMl object.
+   SignedXml^ signedXml = gcnew SignedXml;
+   
+   // Find the "Signature" node and create a new
+   // XmlNodeList object.
+   XmlNodeList^ nodeList = xmlDocument->GetElementsByTagName( "Signature" );
+   
+   // Load the signature node.
+   signedXml->LoadXml( safe_cast<XmlElement^>(nodeList->Item( 0 )) );
+   
+   // Check the signature and return the result.
+   return signedXml->CheckSignature();
+}
+
+
+
+[STAThread]
 int main()
 {
+   array<String^>^args = Environment::GetCommandLineArgs();
+   
+   // The URI to sign.
+   String^ resourceToSign = "http://www.microsoft.com";
+   
+   // The name of the file to which to save the XML signature.
+   String^ XmlFileName = "xmldsig.xml";
    try
    {
-      X509Store ^ store = gcnew X509Store( "MY",StoreLocation::CurrentUser );
-      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
-      X509Certificate2Collection ^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-      X509Certificate2Collection ^ fcollection = dynamic_cast<X509Certificate2Collection^>(collection->Find( X509FindType::FindByTimeValid, DateTime::Now, false ));
-      X509Certificate2Collection ^ scollection = X509Certificate2UI::SelectFromCollection(fcollection, "Test Certificate Select","Select a certificate from the following list to get information on that certificate",X509SelectionFlag::MultiSelection);
-      Console::WriteLine( "Number of certificates: {0}{1}", scollection->Count, Environment::NewLine );
-      System::Collections::IEnumerator^ myEnum = scollection->GetEnumerator();
-      while ( myEnum->MoveNext() )
+      
+      // Generate a signing key.
+      RSACryptoServiceProvider^ Key = gcnew RSACryptoServiceProvider;
+      Console::WriteLine( "Signing: {0}", resourceToSign );
+      
+      // Sign the detached resourceand save the signature in an XML file.
+      SignDetachedResource( resourceToSign, XmlFileName, Key );
+      Console::WriteLine( "XML signature was succesfully computed and saved to {0}.", XmlFileName );
+      
+      // Verify the signature of the signed XML.
+      Console::WriteLine( "Verifying signature..." );
+      
+      //Verify the XML signature in the XML file.
+      bool result = VerifyDetachedSignature( XmlFileName );
+      
+      // Display the results of the signature verification to 
+      // the console.
+      if ( result )
       {
-         X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum->Current);
-         array<Byte>^rawdata = x509->RawData;
-         Console::WriteLine( "Content Type: {0}{1}", X509Certificate2::GetCertContentType( rawdata ), Environment::NewLine );
-         Console::WriteLine( "Friendly Name: {0}{1}", x509->FriendlyName, Environment::NewLine );
-         Console::WriteLine( "Certificate Verified?: {0}{1}", x509->Verify(), Environment::NewLine );
-         Console::WriteLine( "Simple Name: {0}{1}", x509->GetNameInfo( X509NameType::SimpleName, true ), Environment::NewLine );
-         Console::WriteLine( "Signature Algorithm: {0}{1}", x509->SignatureAlgorithm->FriendlyName, Environment::NewLine );
-         Console::WriteLine( "Private Key: {0}{1}", x509->PrivateKey->ToXmlString( false ), Environment::NewLine );
-         Console::WriteLine( "Public Key: {0}{1}", x509->PublicKey->Key->ToXmlString( false ), Environment::NewLine );
-         Console::WriteLine( "Certificate Archived?: {0}{1}", x509->Archived, Environment::NewLine );
-         Console::WriteLine( "Length of Raw Data: {0}{1}", x509->RawData->Length, Environment::NewLine );
-         x509->Reset();
+         Console::WriteLine( "The XML signature is valid." );
       }
-      store->Close();
+      else
+      {
+         Console::WriteLine( "The XML signature is not valid." );
+      }
    }
-   catch ( CryptographicException^ ) 
+   catch ( CryptographicException^ e ) 
    {
-      Console::WriteLine( "Information could not be written out for this certificate." );
+      Console::WriteLine( e->Message );
    }
 
 }

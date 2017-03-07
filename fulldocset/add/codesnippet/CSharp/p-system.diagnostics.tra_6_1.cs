@@ -1,7 +1,19 @@
-                // Test the filter on the ConsoleTraceListener.
-                ts.Listeners["console"].Filter = new SourceFilter("No match");
-                ts.TraceData(TraceEventType.Error, 5,
-                    "SourceFilter should reject this message for the console trace listener.");
-                ts.Listeners["console"].Filter = new SourceFilter("TraceTest");
-                ts.TraceData(TraceEventType.Error, 6,
-                    "SourceFilter should let this message through on the console trace listener.");
+//Class-level declaration.
+ /* Create a TraceSwitch to use in the entire application.*/
+ static TraceSwitch mySwitch = new TraceSwitch("General", "Entire Application");
+ 
+ static public void MyMethod() {
+    // Write the message if the TraceSwitch level is set to Warning or higher.
+    if(mySwitch.TraceWarning)
+       Console.WriteLine("My error message.");
+ 
+    // Write the message if the TraceSwitch level is set to Verbose.
+    if(mySwitch.TraceVerbose)
+       Console.WriteLine("My second error message.");
+ }
+ 
+ public static void Main(string[] args) {
+    // Run the method that prints error messages based on the switch level.
+    MyMethod();
+ }
+ 

@@ -1,31 +1,48 @@
-    private void DataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs anError)
+    private void SetUpDataGridView()
     {
+        this.Controls.Add(dataGridView1);
+        dataGridView1.ColumnCount = 5;
+        DataGridViewCellStyle style = 
+            dataGridView1.ColumnHeadersDefaultCellStyle;
+        style.BackColor = Color.Navy;
+        style.ForeColor = Color.White;
+        style.Font = new Font(dataGridView1.Font, FontStyle.Bold);
 
-        MessageBox.Show("Error happened " + anError.Context.ToString());
+        dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
+        dataGridView1.Name = "dataGridView1";
+        dataGridView1.Location = new Point(8, 8);
+        dataGridView1.Size = new Size(500, 300);
+        dataGridView1.AutoSizeRowsMode = 
+            DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+        dataGridView1.ColumnHeadersBorderStyle = 
+            DataGridViewHeaderBorderStyle.Raised;
+        dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+        dataGridView1.GridColor = SystemColors.ActiveBorder;
+        dataGridView1.RowHeadersVisible = false;
 
-        if (anError.Context == DataGridViewDataErrorContexts.Commit)
-        {
-            MessageBox.Show("Commit error");
-        }
-        if (anError.Context == DataGridViewDataErrorContexts.CurrentCellChange)
-        {
-            MessageBox.Show("Cell change");
-        }
-        if (anError.Context == DataGridViewDataErrorContexts.Parsing)
-        {
-            MessageBox.Show("parsing error");
-        }
-        if (anError.Context == DataGridViewDataErrorContexts.LeaveControl)
-        {
-            MessageBox.Show("leave control error");
-        }
+        dataGridView1.Columns[0].Name = "Release Date";
+        dataGridView1.Columns[1].Name = "Track";
+        dataGridView1.Columns[1].DefaultCellStyle.Alignment = 
+            DataGridViewContentAlignment.MiddleCenter;
+        dataGridView1.Columns[2].Name = "Title";
+        dataGridView1.Columns[3].Name = "Artist";
+        dataGridView1.Columns[4].Name = "Album";
 
-        if ((anError.Exception) is ConstraintException)
-        {
-            DataGridView view = (DataGridView)sender;
-            view.Rows[anError.RowIndex].ErrorText = "an error";
-            view.Rows[anError.RowIndex].Cells[anError.ColumnIndex].ErrorText = "an error";
+        // Make the font italic for row four.
+        dataGridView1.Columns[4].DefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Italic);
 
-            anError.ThrowException = false;
-        }
+        dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        dataGridView1.MultiSelect = false;
+
+        dataGridView1.BackgroundColor = Color.Honeydew;
+
+        dataGridView1.Dock = DockStyle.Fill;
+
+        dataGridView1.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
+        dataGridView1.CellParsing += new DataGridViewCellParsingEventHandler(dataGridView1_CellParsing);
+        addNewRowButton.Click += new EventHandler(addNewRowButton_Click);
+        deleteRowButton.Click += new EventHandler(deleteRowButton_Click);
+        ledgerStyleButton.Click += new EventHandler(ledgerStyleButton_Click);
+        dataGridView1.CellValidating += new DataGridViewCellValidatingEventHandler(dataGridView1_CellValidating);
+
     }

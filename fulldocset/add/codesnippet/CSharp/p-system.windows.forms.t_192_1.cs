@@ -1,22 +1,33 @@
-            // The following code example demonstrates the syntax for setting
-            // various ToolStripComboBox properties.
-            // 
-            toolStripComboBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            "aaa",
-            "bbb",
-            "ccc"});
-            toolStripComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            toolStripComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            toolStripComboBox1.DropDownHeight = 110;
-            toolStripComboBox1.DropDownWidth = 122;
-            toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-            toolStripComboBox1.IntegralHeight = false;
-            toolStripComboBox1.Items.AddRange(new object[] {
-            "xxx",
-            "yyy",
-            "zzz"});
-            toolStripComboBox1.MaxDropDownItems = 9;
-            toolStripComboBox1.MergeAction = System.Windows.Forms.MergeAction.Insert;
-            toolStripComboBox1.Name = "toolStripComboBox1";
-            toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
-            toolStripComboBox1.Sorted = true;
+public void InitializeMyToolBar()
+ {
+    // Create the ToolBar, ToolBarButton controls, and menus.
+    ToolBarButton toolBarButton1 = new ToolBarButton("Open");
+    ToolBarButton toolBarButton2 = new ToolBarButton();
+    ToolBarButton toolBarButton3 = new ToolBarButton();
+    ToolBar toolBar1 = new ToolBar();
+    MenuItem menuItem1 = new MenuItem("Print");
+    ContextMenu contextMenu1 = new ContextMenu(new MenuItem[]{menuItem1});
+
+     
+    // Add the ToolBarButton controls to the ToolBar.
+    toolBar1.Buttons.Add(toolBarButton1);
+    toolBar1.Buttons.Add(toolBarButton2);
+    toolBar1.Buttons.Add(toolBarButton3);
+ 
+    // Assign an ImageList to the ToolBar and show ToolTips.
+    toolBar1.ImageList = imageList1;
+    toolBar1.ShowToolTips = true;
+ 
+    /* Assign ImageIndex, ContextMenu, Text, ToolTip, and 
+       Style properties of the ToolBarButton controls. */
+    toolBarButton2.Style = ToolBarButtonStyle.Separator;
+    toolBarButton3.Text = "Print";
+    toolBarButton3.Style = ToolBarButtonStyle.DropDownButton;
+    toolBarButton3.ToolTipText = "Print";
+    toolBarButton3.ImageIndex = 0;
+    toolBarButton3.DropDownMenu = contextMenu1;
+ 
+    // Add the ToolBar to a form.
+    Controls.Add(toolBar1);
+ }
+ 

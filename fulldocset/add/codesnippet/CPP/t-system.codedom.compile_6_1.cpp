@@ -1,299 +1,75 @@
-// Command-line argument examples:
-//   <exe_name>
-//      - Displays Visual Basic, C#, and JScript compiler settings.
-//   <exe_name> Language CSharp
-//      - Displays the compiler settings for C#.
-//   <exe_name> All
-//      - Displays settings for all configured compilers.
-//   <exe_name> Config Pascal
-//      - Displays settings for configured Pascal language provider,
-//        if one exists.
-//   <exe_name> Extension .vb
-//      - Displays settings for the compiler associated with the .vb
-//        file extension.
 #using <System.dll>
-#using <System.Xml.dll>
 
 using namespace System;
-using namespace System::Globalization;
 using namespace System::CodeDom;
 using namespace System::CodeDom::Compiler;
 using namespace Microsoft::CSharp;
-using namespace Microsoft::VisualBasic;
-using namespace System::Configuration;
-using namespace System::Security::Permissions;
-
-namespace CodeDomCompilerInfoSample
+CodeCompileUnit^ GetCompileUnit()
 {
-   [PermissionSet(SecurityAction::Demand, Name="FullTrust")]
-   public ref class CompilerInfoSample
-   {
-   public:
-      static void Main( array<String^>^args )
-      {
-         String^ queryCommand = "";
-         String^ queryArg = "";
-         int iNumArguments = args->Length;
-         
-         // Get input command-line arguments.
-         if ( iNumArguments > 0 )
-         {
-            queryCommand = args[ 0 ]->ToUpper( CultureInfo::InvariantCulture );
-            if ( iNumArguments > 1 )
-               queryArg = args[ 1 ];
-         }
-
-         // Determine which method to call.
-         Console::WriteLine();
-         if ( queryCommand->Equals( "LANGUAGE" ) )
-             DisplayCompilerInfoForLanguage( queryArg );        // Display compiler information for input language.
-         else if ( queryCommand->Equals( "EXTENSION" ) )
-             DisplayCompilerInfoUsingExtension( queryArg );     // Display compiler information for input file extension.
-         else if ( queryCommand->Equals( "CONFIG" ) )
-             DisplayCompilerInfoForConfigLanguage( queryArg );  // Display settings for the configured language provider.
-         else if ( queryCommand->Equals( "ALL" ) )
-             DisplayAllCompilerInfo();             // Display compiler information for all configured language providers.
-         else
-         {
-            // There was no command-line argument, or the 
-            // command-line argument was not recognized.
-            // Display the C#, Visual Basic and JScript 
-            // compiler information.
-            DisplayCSharpCompilerInfo();
-            DisplayVBCompilerInfo();
-            DisplayJScriptCompilerInfo();
-         }
-      }
-
-
-   private:
-      static void DisplayCSharpCompilerInfo()
-      {
-         // Get the provider for Microsoft.CSharp
-//         CodeDomProvider^ provider = CodeDomProvider.CreateProvider("CSharp");
-         CodeDomProvider^ provider = CodeDomProvider::CreateProvider("CSharp");
-
-         if ( provider )
-         {
-            // Display the C# language provider information.
-            Console::WriteLine( "CSharp provider is {0}", provider->ToString() );
-            Console::WriteLine( "  Provider hash code:     {0}", provider->GetHashCode().ToString() );
-            Console::WriteLine( "  Default file extension: {0}", provider->FileExtension );
-         }
-
-         Console::WriteLine();
-      }
-
-      static void DisplayVBCompilerInfo()
-      {
-         // Get the provider for Microsoft.VisualBasic
-//         CodeDomProvider^ provider = CodeDomProvider.CreateProvider("VisualBasic");
-         CodeDomProvider^ provider = CodeDomProvider::CreateProvider("VisualBasic");
-         if ( provider ) // Display the Visual Basic language provider information.
-         {
-            Console::WriteLine( "Visual Basic provider is {0}", provider->ToString() );
-            Console::WriteLine( "  Provider hash code:     {0}", provider->GetHashCode().ToString() );
-            Console::WriteLine( "  Default file extension: {0}", provider->FileExtension );
-         }
-
-         Console::WriteLine();
-      }
-
-      static void DisplayJScriptCompilerInfo()
-      {
-         // Get the provider for JScript.
-         CodeDomProvider^ provider;
-         try
-         {
-//            provider = CodeDomProvider.CreateProvider("JScript");
-            provider = CodeDomProvider::CreateProvider("JScript");
-            if ( provider )
-            {
-               // Display the JScript language provider information.
-               Console::WriteLine( "JScript language provider is {0}", provider->ToString() );
-               Console::WriteLine( "  Provider hash code:     {0}", provider->GetHashCode().ToString() );
-               Console::WriteLine( "  Default file extension: {0}", provider->FileExtension );
-               Console::WriteLine();
-            }
-         }
-         catch ( ConfigurationException^ e ) 
-         {
-            // The JScript language provider was not found.
-            Console::WriteLine( "There is no configured JScript language provider." );
-         }
-
-      }
-
-      static void DisplayCompilerInfoUsingExtension( String^ fileExtension )
-      {
-         if (  !fileExtension->StartsWith(  "." ) )
-            fileExtension = String::Concat( ".", fileExtension );
-
-         // Get the language associated with the file extension.
-         CodeDomProvider^ provider = nullptr;
-         if ( CodeDomProvider::IsDefinedExtension( fileExtension ) )
-         {
-            String^ language = CodeDomProvider::GetLanguageFromExtension( fileExtension );
-            if ( language )
-               Console::WriteLine( "The language \"{0}\" is associated with file extension \"{1}\"\n",
-                                    language, fileExtension );
-
-            // Check for a corresponding language provider.
-            if ( language && CodeDomProvider::IsDefinedLanguage( language ) )
-            {
-               provider = CodeDomProvider::CreateProvider( language );
-               if ( provider )
-               {
-                  // Display information about this language provider.
-                  Console::WriteLine( "Language provider:  {0}\n", provider->ToString() );
-                  
-                  // Get the compiler settings for this language.
-                  CompilerInfo^ langCompilerInfo = CodeDomProvider::GetCompilerInfo( language );
-                  if ( langCompilerInfo )
-                  {
-                     CompilerParameters^ langCompilerConfig = langCompilerInfo->CreateDefaultCompilerParameters();
-                     if ( langCompilerConfig )
-                     {
-                        Console::WriteLine( "  Compiler options:        {0}", langCompilerConfig->CompilerOptions );
-                        Console::WriteLine( "  Compiler warning level:  {0}", langCompilerConfig->WarningLevel.ToString() );
-                     }
-                  }
-               }
-            }
-         }
-
-         if ( provider == nullptr )  // Tell the user that the language provider was not found.
-            Console::WriteLine( "There is no language provider associated with input file extension \"{0}\".", fileExtension );
-
-      }
-
-      static void DisplayCompilerInfoForLanguage( String^ language )
-      {
-         CodeDomProvider^ provider = nullptr;
-         
-         // Check for a provider corresponding to the input language.  
-         if ( CodeDomProvider::IsDefinedLanguage( language ) )
-         {
-            provider = CodeDomProvider::CreateProvider( language );
-            if ( provider )
-            {
-               // Display information about this language provider.
-               Console::WriteLine( "Language provider:  {0}", provider->ToString() );
-               Console::WriteLine();
-               Console::WriteLine( "  Default file extension:  {0}", provider->FileExtension );
-               Console::WriteLine();
-               
-               // Get the compiler settings for this language.
-               CompilerInfo^ langCompilerInfo = CodeDomProvider::GetCompilerInfo( language );
-               if ( langCompilerInfo )
-               {
-                  CompilerParameters^ langCompilerConfig = langCompilerInfo->CreateDefaultCompilerParameters();
-                  if ( langCompilerConfig )
-                  {
-                     Console::WriteLine( "  Compiler options:        {0}", langCompilerConfig->CompilerOptions );
-                     Console::WriteLine( "  Compiler warning level:  {0}", langCompilerConfig->WarningLevel.ToString() );
-                  }
-               }
-            }
-         }
-
-         if ( provider == nullptr )  // Tell the user that the language provider was not found.
-            Console::WriteLine(  "There is no provider configured for input language \"{0}\".", language );
-
-      }
-
-      static void DisplayCompilerInfoForConfigLanguage( String^ configLanguage )
-      {
-         CodeDomProvider^ provider = nullptr;
-         CompilerInfo^ info = CodeDomProvider::GetCompilerInfo( configLanguage );
-         
-         // Check whether there is a provider configured for this language.
-         if ( info->IsCodeDomProviderTypeValid )
-         {
-            // Get a provider instance using the configured type information.
-            provider = dynamic_cast<CodeDomProvider^>(Activator::CreateInstance( info->CodeDomProviderType ));
-            if ( provider )
-            {
-               // Display information about this language provider.
-               Console::WriteLine( "Language provider:  {0}", provider->ToString() );
-               Console::WriteLine();
-               Console::WriteLine( "  Default file extension:  {0}", provider->FileExtension );
-               Console::WriteLine();
-               
-               // Get the compiler settings for this language.
-               CompilerParameters^ langCompilerConfig = info->CreateDefaultCompilerParameters();
-               if ( langCompilerConfig )
-               {
-                  Console::WriteLine( "  Compiler options:        {0}", langCompilerConfig->CompilerOptions );
-                  Console::WriteLine( "  Compiler warning level:  {0}", langCompilerConfig->WarningLevel.ToString() );
-               }
-            }
-         }
-
-         if ( provider == nullptr ) // Tell the user that the language provider was not found.
-            Console::WriteLine( "There is no provider configured for input language \"{0}\".", configLanguage );
-
-      }
-
-      static void DisplayAllCompilerInfo()
-      {
-         array<CompilerInfo^>^allCompilerInfo = CodeDomProvider::GetAllCompilerInfo();
-         for ( int i = 0; i < allCompilerInfo->Length; i++ )
-         {
-            String^ defaultLanguage;
-            String^ defaultExtension;
-            CompilerInfo^ info = allCompilerInfo[ i ];
-            CodeDomProvider^ provider = nullptr;
-            if ( info )
-               provider = info->CreateProvider();
-
-            if ( provider )
-            {
-               // Display information about this configured provider.
-               Console::WriteLine( "Language provider:  {0}", provider->ToString() );
-               Console::WriteLine();
-               Console::WriteLine( "  Supported file extension(s):" );
-               array<String^>^extensions = info->GetExtensions();
-               for ( int i = 0; i < extensions->Length; i++ )
-                   Console::WriteLine( "    {0}", extensions[ i ] );
-
-               defaultExtension = provider->FileExtension;
-               if (  !defaultExtension->StartsWith( "." ) )
-                   defaultExtension = String::Concat( ".", defaultExtension );
-
-               Console::WriteLine( "  Default file extension:  {0}\n", defaultExtension );
-               Console::WriteLine( "  Supported language(s):" );
-               array<String^>^languages = info->GetLanguages();
-               for ( int i = 0; i < languages->Length; i++ )
-                   Console::WriteLine( "    {0}", languages[ i ] );
-
-               defaultLanguage = CodeDomProvider::GetLanguageFromExtension( defaultExtension );
-               Console::WriteLine(  "  Default language:        {0}", defaultLanguage );
-               Console::WriteLine();
-               
-               // Get the compiler settings for this provider.
-               CompilerParameters^ langCompilerConfig = info->CreateDefaultCompilerParameters();
-               if ( langCompilerConfig )
-               {
-                  Console::WriteLine( "  Compiler options:        {0}", langCompilerConfig->CompilerOptions );
-                  Console::WriteLine( "  Compiler warning level:  {0}", langCompilerConfig->WarningLevel.ToString() );
-               }
-            }
-
-         }
-      }
-
-   };
-
+   
+   // Create a compile unit to contain a CodeDOM graph.
+   CodeCompileUnit^ cu = gcnew CodeCompileUnit;
+   
+   // Create a namespace named TestSpace.
+   CodeNamespace^ cn = gcnew CodeNamespace( "TestSpace" );
+   
+   // Declare a new type named TestClass. 
+   CodeTypeDeclaration^ cd = gcnew CodeTypeDeclaration( "TestClass" );
+   
+   // Declare a new member string field named TestField.
+   CodeMemberField^ cmf = gcnew CodeMemberField( "System.String","TestField" );
+   
+   // Add the field to the type.
+   cd->Members->Add( cmf );
+   
+   // Declare a new member method named TestMethod.
+   CodeMemberMethod^ cm = gcnew CodeMemberMethod;
+   cm->Name = "TestMethod";
+   
+   // Declare a string variable named TestVariable.
+   CodeVariableDeclarationStatement^ cvd = gcnew CodeVariableDeclarationStatement( "System.String1","TestVariable" );
+   cm->Statements->Add( cvd );
+   
+   // Cast the TestField reference expression to string and assign it to the TestVariable.
+   CodeAssignStatement^ ca = gcnew CodeAssignStatement( gcnew CodeVariableReferenceExpression( "TestVariable" ),gcnew CodeCastExpression( "System.String2",gcnew CodeFieldReferenceExpression( gcnew CodeThisReferenceExpression,"TestField" ) ) );
+   
+   // This code can be used to generate the following code in C#:
+   //            TestVariable = ((string)(this.TestField));
+   cm->Statements->Add( ca );
+   
+   // Add the TestMethod member to the TestClass type.
+   cd->Members->Add( cm );
+   
+   // Add the TestClass type to the namespace.
+   cn->Types->Add( cd );
+   
+   // Add the TestSpace namespace to the compile unit.
+   cu->Namespaces->Add( cn );
+   return cu;
 }
 
-
-// The main entry point for the application.
-
-[STAThread]
-int main( int argc, char *argv[] )
+int main()
 {
-    CodeDomCompilerInfoSample::CompilerInfoSample::Main( Environment::GetCommandLineArgs() );
-    Console::WriteLine("\n\nPress ENTER to return");
-    Console::ReadLine();
+   
+   // Output some program information using Console.WriteLine.
+   Console::WriteLine( "This program compiles a CodeDOM program that incorrectly declares multiple data" );
+   Console::WriteLine( "types to demonstrate handling compiler errors programmatically." );
+   Console::WriteLine( "" );
+   
+   // Compile the CodeCompileUnit retrieved from the GetCompileUnit() method.
+   //CSharpCodeProvider ^ provider = gcnew Microsoft::CSharp::CSharpCodeProvider;
+   CodeDomProvider ^ provider = CodeDomProvider::CreateProvider("CSharp");
+   
+   // Initialize a CompilerParameters with the options for compilation.
+   array<String^>^assemblies = {"System.dll"};
+   CompilerParameters^ options = gcnew CompilerParameters( assemblies,"output.exe" );
+   
+   // Compile the CodeDOM graph and store the results in a CompilerResults.
+   CompilerResults^ results = provider->CompileAssemblyFromDom( options, GetCompileUnit() );
+   
+   // Compilation produces errors. Print out each error.
+   Console::WriteLine( "Listing errors from compilation: " );
+   Console::WriteLine( "" );
+   for ( int i = 0; i < results->Errors->Count; i++ )
+      Console::WriteLine( results->Errors[ i ] );
 }

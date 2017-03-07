@@ -1,99 +1,52 @@
-    Private Sub InitializeDataGridView()
+    ' Draws subitem text and applies content-based formatting.
+    Private Sub listView1_DrawSubItem(ByVal sender As Object, _
+        ByVal e As DrawListViewSubItemEventArgs) _
+        Handles listView1.DrawSubItem
 
-        ' Create an unbound DataGridView by declaring a column count.
-        dataGridView1.ColumnCount = 4
-        dataGridView1.ColumnHeadersVisible = True
+        Dim flags As TextFormatFlags = TextFormatFlags.Left
 
-        ' Set the column header style.
-        Dim columnHeaderStyle As New DataGridViewCellStyle()
+        Dim sf As New StringFormat()
+        Try
 
-        columnHeaderStyle.BackColor = Color.Beige
-        columnHeaderStyle.Font = New Font("Verdana", 10, FontStyle.Bold)
-        dataGridView1.ColumnHeadersDefaultCellStyle = columnHeaderStyle
+            ' Store the column text alignment, letting it default
+            ' to Left if it has not been set to Center or Right.
+            Select Case e.Header.TextAlign
+                Case HorizontalAlignment.Center
+                    sf.Alignment = StringAlignment.Center
+                    flags = TextFormatFlags.HorizontalCenter
+                Case HorizontalAlignment.Right
+                    sf.Alignment = StringAlignment.Far
+                    flags = TextFormatFlags.Right
+            End Select
 
-        ' Set the column header names.
-        dataGridView1.Columns(0).Name = "Recipe"
-        dataGridView1.Columns(1).Name = "Category"
-        dataGridView1.Columns(2).Name = "Main Ingredients"
-        dataGridView1.Columns(3).Name = "Rating"
+            ' Draw the text and background for a subitem with a 
+            ' negative value. 
+            Dim subItemValue As Double
+            If e.ColumnIndex > 0 AndAlso _
+                Double.TryParse(e.SubItem.Text, NumberStyles.Currency, _
+                NumberFormatInfo.CurrentInfo, subItemValue) AndAlso _
+                subItemValue < 0 Then
 
-        ' Populate the rows.
-        Dim row1() As String = {"Meatloaf", "Main Dish", "ground beef", "**"}
-        Dim row2() As String = _
-            {"Key Lime Pie", "Dessert", "lime juice, evaporated milk", "****"}
-        Dim row3() As String = {"Orange-Salsa Pork Chops", "Main Dish", _
-            "pork chops, salsa, orange juice", "****"}
-        Dim row4() As String = {"Black Bean and Rice Salad", "Salad", _
-            "black beans, brown rice", "****"}
-        Dim row5() As String = _
-            {"Chocolate Cheesecake", "Dessert", "cream cheese", "***"}
-        Dim row6() As String = _
-            {"Black Bean Dip", "Appetizer", "black beans, sour cream", "***"}
-        Dim rows() As Object = {row1, row2, row3, row4, row5, row6}
+                ' Unless the item is selected, draw the standard 
+                ' background to make it stand out from the gradient.
+                If (e.ItemState And ListViewItemStates.Selected) = 0 Then
+                    e.DrawBackground()
+                End If
 
-        Dim rowArray As String()
-        For Each rowArray In rows
-            dataGridView1.Rows.Add(rowArray)
-        Next rowArray
+                ' Draw the subitem text in red to highlight it. 
+                e.Graphics.DrawString(e.SubItem.Text, _
+                    Me.listView1.Font, Brushes.Red, e.Bounds, sf)
 
-    End Sub
+                Return
 
-    Private Sub button1_Click(ByVal sender As Object, _
-        ByVal e As System.EventArgs) Handles button1.Click
-
-        ' Resize the height of the column headers. 
-        dataGridView1.AutoResizeColumnHeadersHeight()
-
-        ' Resize all the row heights to fit the contents of all 
-        ' non-header cells.
-        dataGridView1.AutoResizeRows( _
-            DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders)
-
-    End Sub
-
-    Private Sub InitializeContextMenu()
-
-        ' Create the menu item.
-        Dim getRecipe As New ToolStripMenuItem( _
-            "Search for recipe", Nothing, AddressOf ShortcutMenuClick)
-
-        ' Add the menu item to the shortcut menu.
-        Dim recipeMenu As New ContextMenuStrip()
-        recipeMenu.Items.Add(getRecipe)
-
-        ' Set the shortcut menu for the first column.
-        dataGridView1.Columns(0).ContextMenuStrip = recipeMenu
-
-    End Sub
-
-    Private clickedCell As DataGridViewCell
-
-    Private Sub dataGridView1_MouseDown(ByVal sender As Object, _
-        ByVal e As MouseEventArgs) Handles dataGridView1.MouseDown
-
-        ' If the user right-clicks a cell, store it for use by the 
-        ' shortcut menu.
-        If e.Button = MouseButtons.Right Then
-            Dim hit As DataGridView.HitTestInfo = _
-                dataGridView1.HitTest(e.X, e.Y)
-            If hit.Type = DataGridViewHitTestType.Cell Then
-                clickedCell = _
-                    dataGridView1.Rows(hit.RowIndex).Cells(hit.ColumnIndex)
             End If
-        End If
 
-    End Sub
+            ' Draw normal text for a subitem with a nonnegative 
+            ' or nonnumerical value.
+            e.DrawText(flags)
 
-    Private Sub ShortcutMenuClick(ByVal sender As Object, _
-        ByVal e As System.EventArgs)
-
-        If (clickedCell IsNot Nothing) Then
-            'Retrieve the recipe name.
-            Dim recipeName As String = CStr(clickedCell.Value)
-
-            'Search for the recipe.
-            System.Diagnostics.Process.Start( _
-                "http://search.msn.com/results.aspx?q=" + recipeName)
-        End If
+        Finally
+            sf.Dispose()
+        End Try
 
     End Sub

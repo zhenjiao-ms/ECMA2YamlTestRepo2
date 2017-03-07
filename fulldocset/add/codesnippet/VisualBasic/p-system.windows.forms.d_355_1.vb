@@ -1,18 +1,40 @@
-        ' Check if the 'FlatMode' property is changed.
-        Private Sub myDataGrid_FlatModeChanged(ByVal sender As Object, ByVal e As EventArgs) Handles myDataGrid.FlatModeChanged
-            Dim strMessage As String = "false"
-            If myDataGrid.FlatMode = True Then
-                strMessage = "true"
-            End If
-            MessageBox.Show("Flat mode changed to " + strMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-        End Sub 'myDataGrid_FlatModeChanged
+    Private WithEvents dataGridView1 As New DataGridView()
 
+    Private Sub AddColorColumn()
 
-        ' Toggle the 'FlatMode'.
-        Private Sub button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles button1.Click
-            If myDataGrid.FlatMode = True Then
-                myDataGrid.FlatMode = False
-            Else
-                myDataGrid.FlatMode = True
-            End If
-        End Sub 'button1_Click
+        Dim comboBoxColumn As New DataGridViewComboBoxColumn()
+        comboBoxColumn.Items.AddRange( _
+            Color.Red, Color.Yellow, Color.Green, Color.Blue)
+        comboBoxColumn.ValueType = GetType(Color)
+        dataGridView1.Columns.Add(comboBoxColumn)
+
+    End Sub
+
+    Private Sub dataGridView1_EditingControlShowing(ByVal sender As Object, _
+        ByVal e As DataGridViewEditingControlShowingEventArgs) _
+        Handles dataGridView1.EditingControlShowing
+
+        Dim combo As ComboBox = CType(e.Control, ComboBox)
+        If (combo IsNot Nothing) Then
+
+            ' Remove an existing event-handler, if present, to avoid 
+            ' adding multiple handlers when the editing control is reused.
+            RemoveHandler combo.SelectedIndexChanged, _
+                New EventHandler(AddressOf ComboBox_SelectedIndexChanged)
+
+            ' Add the event handler. 
+            AddHandler combo.SelectedIndexChanged, _
+                New EventHandler(AddressOf ComboBox_SelectedIndexChanged)
+
+        End If
+
+    End Sub
+
+    Private Sub ComboBox_SelectedIndexChanged( _
+        ByVal sender As Object, ByVal e As EventArgs)
+
+        Dim comboBox1 As ComboBox = CType(sender, ComboBox)
+        comboBox1.BackColor = _
+            CType(CType(sender, ComboBox).SelectedItem, Color)
+
+    End Sub

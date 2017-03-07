@@ -1,111 +1,52 @@
-#using <System.dll>
 #using <System.Xml.dll>
+#using <System.dll>
 
 using namespace System;
 using namespace System::IO;
-using namespace System::Text;
-using namespace System::Xml;
 using namespace System::Xml::Serialization;
+using namespace System::Xml;
 using namespace System::Xml::Schema;
 
-//using namespace System::Runtime::Remoting::Metadata;
-public ref class Vehicle
-{
-public:
-   String^ licenseNumber;
-};
-
-
-[SoapInclude(Vehicle::typeid)]
 public ref class Group
 {
 public:
-
-   [SoapAttributeAttribute(Namespace="http://www.cpandl.com")]
    String^ GroupName;
-
-   [SoapAttributeAttribute(DataType="base64Binary")]
-   array<Byte>^GroupNumber;
-
-   [SoapAttributeAttribute(DataType="date",AttributeName="CreationDate")]
-   DateTime Today;
-
-   [SoapElement(DataType="nonNegativeInteger",ElementName="PosInt")]
-   String^ PostitiveInt;
-   Vehicle^ GroupVehicle;
 };
 
-public ref class Run
+public ref class Test
 {
-public:
-   void SerializeObject( String^ filename )
-   {
-      // Create an instance of the XmlSerializer class that
-      // can generate encoded SOAP messages.
-      XmlSerializer^ mySerializer = ReturnSOAPSerializer();
-      Group^ myGroup = MakeGroup();
-
-      // Writing the file requires a TextWriter.
-      XmlTextWriter^ writer = gcnew XmlTextWriter( filename,Encoding::UTF8 );
-      writer->Formatting = Formatting::Indented;
-      writer->WriteStartElement( "wrapper" );
-
-      // Serialize the class, and close the TextWriter.
-      mySerializer->Serialize( writer, myGroup );
-      writer->WriteEndElement();
-      writer->Close();
-   }
-
-
 private:
-   Group^ MakeGroup()
+   void Serializer_UnknownElement( Object^ sender, XmlElementEventArgs^ e )
    {
-      // Create an instance of the class that will be serialized.
-      Group^ myGroup = gcnew Group;
-
-      // Set the Object* properties.
-      myGroup->GroupName = ".NET";
-      array<Byte>^hexByte = {Convert::ToByte( 100 ),Convert::ToByte( 50 )};
-      myGroup->GroupNumber = hexByte;
-      DateTime myDate = DateTime(2002,5,2);
-      myGroup->Today = myDate;
-      myGroup->PostitiveInt = "10000";
-      myGroup->GroupVehicle = gcnew Vehicle;
-      myGroup->GroupVehicle->licenseNumber = "1234";
-      return myGroup;
+      Console::WriteLine( "Unknown Element" );
+      Console::Write( "\t {0}", e->Element->Name );
+      Console::WriteLine( " {0}", e->Element->InnerXml );
+      Console::WriteLine( "\t LineNumber: {0}", e->LineNumber );
+      Console::WriteLine( "\t LinePosition: {0}", e->LinePosition );
+      Group^ x = dynamic_cast<Group^>(e->ObjectBeingDeserialized);
+      Console::WriteLine( x->GroupName );
+      Console::WriteLine( sender );
    }
 
 public:
    void DeserializeObject( String^ filename )
    {
-      // Create an instance of the XmlSerializer class that
-      // can generate encoded SOAP messages.
-      XmlSerializer^ mySerializer = ReturnSOAPSerializer();
+      XmlSerializer^ ser = gcnew XmlSerializer( Group::typeid );
 
-      // Reading the file requires an  XmlTextReader.
-      XmlTextReader^ reader = gcnew XmlTextReader( filename );
-      reader->ReadStartElement( "wrapper" );
+      // Add a delegate to handle unknown element events.
+      ser->UnknownElement += gcnew XmlElementEventHandler( this, &Test::Serializer_UnknownElement );
 
-      // Deserialize and cast the Object*.
-      Group^ myGroup;
-      myGroup = safe_cast<Group^>(mySerializer->Deserialize( reader ));
-      reader->ReadEndElement();
-      reader->Close();
-   }
-
-private:
-   XmlSerializer^ ReturnSOAPSerializer()
-   {
-      
-      // Create an instance of the XmlSerializer class.
-      XmlTypeMapping^ myMapping = (gcnew SoapReflectionImporter)->ImportTypeMapping( Group::typeid );
-      return gcnew XmlSerializer( myMapping );
+      // A FileStream is needed to read the XML document.
+      FileStream^ fs = gcnew FileStream( filename,FileMode::Open );
+      Group^ g = dynamic_cast<Group^>(ser->Deserialize( fs ));
+      fs->Close();
    }
 };
 
 int main()
 {
-   Run^ test = gcnew Run;
-   test->SerializeObject( "SoapAtts.xml" );
-   test->DeserializeObject( "SoapAtts.xml" );
+   Test^ t = gcnew Test;
+
+   // Deserialize the file containing unknown elements.
+   t->DeserializeObject( "UnknownElements.xml" );
 }

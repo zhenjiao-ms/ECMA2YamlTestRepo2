@@ -1,86 +1,126 @@
 Imports System
-Imports System.IO
-Imports System.Collections
-Imports System.Runtime.Serialization.Formatters.Binary
+Imports System.Collections.Generic
+Imports System.Linq
+Imports System.Text
+Imports System.Reflection
 Imports System.Runtime.Serialization
+Imports System.Xml
 
-' This class is serializable and will have its OnDeserialization method
-' called after each instance of this class is deserialized.
-<Serializable()> Class Circle
-   Implements IDeserializationCallback
-   Private m_radius As Double
+Namespace GeneratPathExample
 
-   ' To reduce the size of the serialization stream, the field below is 
-   ' not serialized. This field is calculated when an object is constructed
-   ' or after an instance of this class is deserialized.
-   <NonSerialized()> Public m_area As Double
+    Class Program
 
-   Public Sub New(ByVal radius As Double)
-      m_radius = radius
-      m_area = Math.PI * radius * radius
-   End Sub
+        Shared Sub Main(ByVal args As String())
 
-   Private Sub OnDeserialization(ByVal sender As Object) _
-      Implements IDeserializationCallback.OnDeserialization
-      ' After being deserialized, initialize the m_area field 
-      ' using the deserialized m_radius value.
-      m_area = Math.PI * m_radius * m_radius
-   End Sub
+            ' Get the type of the class that defines the data contract.
+            Dim t As Type = GetType(Order)
 
-   Public Overrides Function ToString() As String
-      Return String.Format("radius={0}, area={1}", m_radius, m_area)
-   End Function
-End Class
+            ' Get the meta data for the specific members to be used in the query.
+            Dim mi As MemberInfo() = t.GetMember("Product")
+            Dim mi2 As MemberInfo() = t.GetMember("Value")
+            Dim mi3 As MemberInfo() = t.GetMember("Quantity")
+
+            ' Call the function below to generate and display the query.
+            GenerateXPath(t, mi)
+            GenerateXPath(t, mi2)
+            GenerateXPath(t, mi3)
 
 
-Class Class1
-   <STAThread()> Shared Sub Main()
-      Serialize()
-      Deserialize()
-   End Sub
+            ' Get the type of the second class that defines a data contract.
+            Dim t2 As Type = GetType(Line)
 
-   Shared Sub Serialize()
-      Dim c As New Circle(10)
-      Console.WriteLine("Object being serialized: " + c.ToString())
+            ' Get the meta data for the member to be used in the query.
+            Dim mi4 As MemberInfo() = t2.GetMember("Items")
 
-      ' To serialize the Circle, you must first open a stream for 
-      ' writing. Use a file stream here.
-      Dim fs As New FileStream("DataFile.dat", FileMode.Create)
+            GenerateXPath(t2, mi4)
 
-      ' Construct a BinaryFormatter and use it 
-      ' to serialize the data to the stream.
-      Dim formatter As New BinaryFormatter
-      Try
-         formatter.Serialize(fs, c)
-      Catch e As SerializationException
-         Console.WriteLine("Failed to serialize. Reason: " + e.Message)
-         Throw
-      Finally
-         fs.Close()
-      End Try
-   End Sub
+            Console.ReadLine()
+        End Sub
+
+        Shared Sub GenerateXPath(ByVal t As Type, ByVal mi As MemberInfo())
 
 
-   Shared Sub Deserialize()
-      ' Declare the Circle reference
-      Dim c As Circle = Nothing
+            ' Create a new name table and name space manager.
+            Dim nt As New NameTable()
+            Dim xname As New XmlNamespaceManager(nt)
 
-      ' Open the file containing the data that you want to deserialize.
-      Dim fs As New FileStream("DataFile.dat", FileMode.Open)
-      Try
-         Dim formatter As New BinaryFormatter
 
-         ' Deserialize the Circle from the file and 
-         ' assign the reference to the local variable.
-         c = CType(formatter.Deserialize(fs), Circle)
-      Catch e As SerializationException
-         Console.WriteLine("Failed to deserialize. Reason: " + e.Message)
-         Throw
-      Finally
-         fs.Close()
-      End Try
+            ' Generate the query and print it.
+            Dim query As String = XPathQueryGenerator.CreateFromDataContractSerializer( _
+                t, mi, xname)
+            Console.WriteLine(query)
+            Console.WriteLine()
 
-      ' To prove that the Circle deserialized correctly, display its area.
-      Console.WriteLine("Object being deserialized: " + c.ToString())
-   End Sub
-End Class
+
+            ' Display the namespaces and prefixes used in the data contract.
+            Dim s As String
+            For Each s In xname
+                Console.WriteLine("{0}  = {1}", s, xname.LookupNamespace(s))
+            Next
+
+            Console.WriteLine()
+
+        End Sub
+    End Class
+
+
+    <DataContract(Namespace:="http://www.cohowinery.com/")> _
+        Public Class Line
+
+        Private itemsValue As Order()
+
+        <DataMember()>
+        Public Property Item() As Order()
+
+            Get
+                Return itemsValue
+            End Get
+            Set(ByVal value As Order())
+                itemsValue = value
+            End Set
+        End Property
+
+    End Class
+
+    <DataContract(Namespace:="http://contoso.com")> _
+    Public Class Order
+
+        Private productValue As String
+        Private quantityValue As Integer
+        Private valueValue As Decimal
+
+        <DataMember(Name:="cost")>
+        Public Property Value() As String
+
+            Get
+                Return valueValue
+            End Get
+            Set(ByVal value As String)
+                valueValue = value
+            End Set
+        End Property
+
+        <DataMember(Name:="quantity")> _
+        Public Property Quantity() As Integer
+
+            Get
+                Return quantityValue
+            End Get
+            set(ByVal value As Integer)
+                quantityValue = value
+            End Set
+        End Property
+
+
+        <DataMember(Name:="productName")> _
+        Public Property Product() As String
+
+            Get
+                Return productValue
+            End Get
+            Set(ByVal value As String)
+                productValue = value
+            End Set
+        End Property
+    End Class
+End Namespace

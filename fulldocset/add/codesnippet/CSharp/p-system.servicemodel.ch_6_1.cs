@@ -1,2 +1,7 @@
-            MsmqTransportBindingElement transportBindingElement = new MsmqTransportBindingElement();
-            transportBindingElement.MaxPoolSize = 5;
+        public EndpointAddress LocalAddress
+        {
+            get
+            {
+                return this.InnerChannel.LocalAddress;
+            }
+        }

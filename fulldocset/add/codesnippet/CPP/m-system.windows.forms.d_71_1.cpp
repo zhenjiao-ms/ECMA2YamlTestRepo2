@@ -1,12 +1,12 @@
 private:
-   void Button_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
+   void myButton1_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
    {
-      // Change the 'GridLineColor'.
-      myDataTableStyle->GridLineColor = Color::Blue;
+      //Set the 'AlternatingBackColor'.
+      myDataGridTableStyle->AlternatingBackColor = Color::Blue;
    }
 
-   void Button1_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
+   void myButton2_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
    {
-      // Reset the 'GridLineColor' to its orginal color.
-      myDataTableStyle->ResetGridLineColor();
+      // Reset the 'AlternatingBackColor'.
+      myDataGridTableStyle->ResetAlternatingBackColor();
    }

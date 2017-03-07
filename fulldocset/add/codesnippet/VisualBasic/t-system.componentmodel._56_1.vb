@@ -1,2 +1,4 @@
-            ' Requests an IDesignerHost service from the design time environment using Component.Site.GetService()
-            Dim host As IDesignerHost = CType(Me.Component.Site.GetService(GetType(IDesignerHost)), IDesignerHost)
+        Public Function CreateActiveDesignerEventArgs(ByVal losingFocus As IDesignerHost, ByVal gainingFocus As IDesignerHost) As ActiveDesignerEventArgs
+            Dim e As New ActiveDesignerEventArgs(losingFocus, gainingFocus)
+            Return e
+        End Function

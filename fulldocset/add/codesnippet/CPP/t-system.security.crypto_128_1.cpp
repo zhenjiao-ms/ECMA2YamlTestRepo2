@@ -1,179 +1,66 @@
+#using <System.Xml.dll>
+#using <System.Security.dll>
+#using <System.dll>
+
 using namespace System;
-using namespace System::Security::Cryptography;
-using namespace System::Collections;
-using namespace System::Text;
+using namespace System::Security::Cryptography::Xml;
+using namespace System::Xml;
+using namespace System::IO;
 
-ref class Members
-{
-private:
+/// This sample used the EncryptedData class to create an encrypted data element
+/// and write it to an XML file. It demonstrates the use of CipherReference.
 
-   // Use a public service provider for encryption and decryption.
-   static DESCryptoServiceProvider^ des = gcnew DESCryptoServiceProvider;
-
-public:
-   [STAThread]
-   static void Main()
-   {
-      String^ message = L"012345678901234567890";
-      array<Byte>^sourceBytes = Encoding::ASCII->GetBytes( message );
-      Console::WriteLine( L"** Phrase to be encoded: {0}", message );
-      array<Byte>^encodedBytes = EncodeBytes( sourceBytes );
-      Console::WriteLine( L"** Phrase after encoding: {0}",
-         Encoding::ASCII->GetString( encodedBytes ) );
-      array<Byte>^decodedBytes = DecodeBytes( encodedBytes );
-      Console::WriteLine( L"** Phrase after decoding: {0}",
-         Encoding::ASCII->GetString( decodedBytes ) );
-      Console::WriteLine( L"Sample ended successfully; "
-      L"press Enter to continue." );
-      Console::ReadLine();
-   }
-
-private:
-   // Encode the specified byte array by using CryptoAPITranform.
-   static array<Byte>^ EncodeBytes( array<Byte>^sourceBytes )
-   {
-      int currentPosition = 0;
-      array<Byte>^targetBytes = gcnew array<Byte>(1024);
-      int sourceByteLength = sourceBytes->Length;
-      
-      // Create a DES encryptor from this instance to perform encryption.
-      CryptoAPITransform^ cryptoTransform =
-         static_cast<CryptoAPITransform^>(des->CreateEncryptor());
-      
-      // Retrieve the block size to read the bytes.
-      int inputBlockSize = cryptoTransform->InputBlockSize;
-
-      // Retrieve the key handle.
-      IntPtr keyHandle = cryptoTransform->KeyHandle;
-
-      // Retrieve the block size to write the bytes.
-      int outputBlockSize = cryptoTransform->OutputBlockSize;
-
-      try
-      {
-         // Determine if multiple blocks can be transformed.
-         if ( cryptoTransform->CanTransformMultipleBlocks )
-         {
-            int numBytesRead = 0;
-            while ( sourceByteLength - currentPosition >= inputBlockSize )
-            {
-               // Transform the bytes from currentPosition in the
-               // sourceBytes array, writing the bytes to the targetBytes
-               // array.
-               numBytesRead = cryptoTransform->TransformBlock(
-                  sourceBytes, currentPosition, inputBlockSize,
-                  targetBytes, currentPosition );
-               // Advance the current position in the sourceBytes array.
-               currentPosition += numBytesRead;
-            }
-            
-            // Transform the final block of bytes.
-            array<Byte>^finalBytes = cryptoTransform->TransformFinalBlock(
-               sourceBytes, currentPosition, sourceByteLength - currentPosition );
-
-            // Copy the contents of the finalBytes array to the
-            // targetBytes array.
-            finalBytes->CopyTo( targetBytes, currentPosition );
-         }
-      }
-      catch ( Exception^ ex ) 
-      {
-         Console::WriteLine( L"Caught unexpected exception:{0}", ex );
-      }
-      
-      // Determine if the current transform can be reused.
-      if (  !cryptoTransform->CanReuseTransform )
-      {
-         // Free up any used resources.
-         cryptoTransform->Clear();
-      }
-
-      // Trim the extra bytes in the array that were not used.
-      return TrimArray( targetBytes );
-   }
-
-   // Decode the specified byte array using CryptoAPITranform.
-   static array<Byte>^ DecodeBytes( array<Byte>^sourceBytes )
-   {
-      array<Byte>^targetBytes = gcnew array<Byte>(1024);
-      int currentPosition = 0;
-      
-      // Create a DES decryptor from this instance to perform decryption.
-      CryptoAPITransform^ cryptoTransform =
-         static_cast<CryptoAPITransform^>(des->CreateDecryptor());
-      int inputBlockSize = cryptoTransform->InputBlockSize;
-      int sourceByteLength = sourceBytes->Length;
-      try
-      {
-         int numBytesRead = 0;
-         while ( sourceByteLength - currentPosition >= inputBlockSize )
-         {
-            // Transform the bytes from currentposition in the 
-            // sourceBytes array, writing the bytes to the targetBytes
-            // array.
-            numBytesRead = cryptoTransform->TransformBlock(
-               sourceBytes, currentPosition, inputBlockSize,
-               targetBytes, currentPosition );
-            
-            // Advance the current position in the source array.
-            currentPosition += numBytesRead;
-         }
-         
-         // Transform the final block of bytes.
-         array<Byte>^finalBytes = cryptoTransform->TransformFinalBlock(
-            sourceBytes, currentPosition, sourceByteLength - currentPosition );
-         
-         // Copy the contents of the finalBytes array to the targetBytes
-         // array.
-         finalBytes->CopyTo( targetBytes, currentPosition );
-      }
-      catch ( Exception^ ex ) 
-      {
-         Console::WriteLine( L"Caught unexpected exception:{0}", ex );
-      }
-
-      // Strip out the second block of bytes.
-      Array::Copy(targetBytes, (inputBlockSize * 2), targetBytes, inputBlockSize, targetBytes->Length - (inputBlockSize * 2));
-
-      
-      // Trim the extra bytes in the array that were not used.
-      return TrimArray( targetBytes );
-   }
-
-   // Resize the dimensions of the array to a size that contains only valid
-   // bytes.
-   static array<Byte>^ TrimArray( array<Byte>^targetArray )
-   {
-      IEnumerator^ enum1 = targetArray->GetEnumerator();
-      int i = 0;
-      while ( enum1->MoveNext() )
-      {
-         if ( enum1->Current->ToString()->Equals( L"0" ) )
-         {
-            break;
-         }
-         i++;
-      }
-
-      // Create a new array with the number of valid bytes.
-      array<Byte>^returnedArray = gcnew array<Byte>(i);
-      for ( int j = 0; j < i; j++ )
-      {
-         returnedArray[ j ] = targetArray[ j ];
-      }
-      return returnedArray;
-   }
-};
-
+[STAThread]
 int main()
 {
-   Members::Main();
-}
+   
+   //Create a URI string.
+   String^ uri = "http://www.woodgrovebank.com/document.xml";
+   
+   // Create a Base64 transform. The input content retrieved from the
+   // URI should be Base64-decoded before other processing.
+   Transform^ base64 = gcnew XmlDsigBase64Transform;
+   
+   //Create a transform chain and add the transform to it.
+   TransformChain^ tc = gcnew TransformChain;
+   tc->Add( base64 );
+   
+   //Create <CipherReference> information.
+   CipherReference ^ reference = gcnew CipherReference( uri,tc );
+   
+   // Create a new CipherData object using the CipherReference information.
+   // Note that you cannot assign both a CipherReference and a CipherValue
+   // to a CipherData object.
+   CipherData ^ cd = gcnew CipherData( reference );
+   
+   // Create a new EncryptedData object.
+   EncryptedData^ ed = gcnew EncryptedData;
+   
+   //Add an encryption method to the object.
+   ed->Id = "ED";
+   ed->EncryptionMethod = gcnew EncryptionMethod( "http://www.w3.org/2001/04/xmlenc#aes128-cbc" );
+   ed->CipherData = cd;
+   
+   //Add key information to the object.
+   KeyInfo^ ki = gcnew KeyInfo;
+   ki->AddClause( gcnew KeyInfoRetrievalMethod( "#EK","http://www.w3.org/2001/04/xmlenc#EncryptedKey" ) );
+   ed->KeyInfo = ki;
+   
+   // Create new XML document and put encrypted data into it.
+   XmlDocument^ doc = gcnew XmlDocument;
+   XmlElement^ encryptionPropertyElement = dynamic_cast<XmlElement^>(doc->CreateElement( "EncryptionProperty", EncryptedXml::XmlEncNamespaceUrl ));
+   EncryptionProperty ^ ep = gcnew EncryptionProperty( encryptionPropertyElement );
+   ed->AddProperty( ep );
+   
+   // Output the resulting XML information into a file.
+   try
+   {
+      String^ path = "c:\\test\\MyTest.xml";
+      File::WriteAllText( path, ed->GetXml()->OuterXml );
+   }
+   catch ( IOException^ e ) 
+   {
+      Console::WriteLine( "File IO error. {0}", e );
+   }
 
-//
-// This sample produces the following output:
-//
-// ** Phrase to be encoded: 012345678901234567890
-// ** Phrase after encoding: AIGC(+b7X?^djAU?15ve?o
-// ** Phrase after decoding: 012345678901234567890
-// Sample ended successfully; press Enter to continue.
+}

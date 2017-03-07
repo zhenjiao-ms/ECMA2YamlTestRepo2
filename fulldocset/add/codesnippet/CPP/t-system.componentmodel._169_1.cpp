@@ -1,64 +1,70 @@
-#using <System.Windows.Forms.dll>
-#using <System.Drawing.dll>
-#using <System.Design.dll>
-#using <System.dll>
+#using <system.dll>
+#using <system.drawing.dll>
+#using <system.windows.forms.dll>
 
 using namespace System;
+using namespace System::Drawing;
 using namespace System::ComponentModel;
 using namespace System::ComponentModel::Design;
-using namespace System::Drawing;
-using namespace System::IO;
 using namespace System::Windows::Forms;
-using namespace System::Windows::Forms::Design;
 
-public ref class HelpDesigner: public System::Windows::Forms::Design::ControlDesigner
+namespace ExtenderListServiceExample
 {
-public:
-   HelpDesigner(){}
-
-   property System::ComponentModel::Design::DesignerVerbCollection^ Verbs 
+   // This control lists any active extender providers.
+   public ref class ExtenderListServiceControl: public UserControl
    {
-      virtual System::ComponentModel::Design::DesignerVerbCollection^ get() override
+   private:
+      IExtenderListService^ extenderListService;
+      array<String^>^extenderNames;
+
+   public:
+      ExtenderListServiceControl()
       {
-         array<DesignerVerb^>^temp0 = {gcnew DesignerVerb( "Add IHelpService Help Keyword",gcnew EventHandler( this, &HelpDesigner::addKeyword ) ),gcnew DesignerVerb( "Remove IHelpService Help Keyword",gcnew EventHandler( this, &HelpDesigner::removeKeyword ) )};
-         return gcnew DesignerVerbCollection( temp0 );
+         this->Width = 600;
       }
-   }
 
-private:
-   void addKeyword( Object^ /*sender*/, EventArgs^ /*e*/ )
-   {
-      IHelpService^ hs = dynamic_cast<IHelpService^>(this->Control->Site->GetService( IHelpService::typeid ));
-      hs->AddContextAttribute( "keyword", "IHelpService", HelpKeywordType::F1Keyword );
-   }
+      property ISite^ Site 
+      {
+         // Queries the IExtenderListService when the control is sited
+         // in design mode.
+         virtual ISite^ get() override
+         {
+            return __super::Site;
+         }
 
-   void removeKeyword( Object^ /*sender*/, EventArgs^ /*e*/ )
-   {
-      IHelpService^ hs = dynamic_cast<IHelpService^>(this->Control->Site->GetService( IHelpService::typeid ));
-      hs->RemoveContextAttribute( "keyword", "IHelpService" );
-   }
-};
+         virtual void set( ISite^ value ) override
+         {
+            __super::Site = value;
+            if ( this->DesignMode )
+            {
+               extenderListService = dynamic_cast<IExtenderListService^>(this->GetService( IExtenderListService::typeid ));
+               if ( extenderListService != nullptr )
+               {
+                  array<IExtenderProvider^>^extenders = extenderListService->GetExtenderProviders();
+                  extenderNames = gcnew array<String^>(extenders->Length);
+                  for ( int i = 0; i < extenders->Length; i++ )
+                     extenderNames[ i ] = String::Concat( "ExtenderProvider #", i.ToString(), ":  ", extenders[ i ]->GetType()->FullName );
+               }
+            }
+            else
+            {
+               extenderListService = nullptr;
+            }
+         }
+      }
 
+   protected:
 
-[Designer(HelpDesigner::typeid)]
-public ref class HelpTestControl: public System::Windows::Forms::UserControl
-{
-public:
-   HelpTestControl()
-   {
-      this->Size = System::Drawing::Size( 320, 100 );
-      this->BackColor = Color::White;
-   }
+      // Draws a list of any active extender providers
+      virtual void OnPaint( PaintEventArgs^ e ) override
+      {
+         if ( extenderNames->Length == 0 )
+                  e->Graphics->DrawString( "No active extender providers", gcnew System::Drawing::Font( "Arial",9 ), gcnew SolidBrush( Color::Black ), 10, 10 );
+         else
+                  e->Graphics->DrawString( "List of types of active extender providers", gcnew System::Drawing::Font( "Arial",9 ), gcnew SolidBrush( Color::Black ), 10, 10 );
 
-protected:
-   virtual void OnPaint( System::Windows::Forms::PaintEventArgs^ e ) override
-   {
-      Brush^ brush = gcnew SolidBrush( Color::Blue );
-      e->Graphics->DrawString( "IHelpService Example Designer Control", gcnew System::Drawing::Font( FontFamily::GenericMonospace,10 ), brush, 5, 5 );
-      e->Graphics->DrawString( "Right-click this component for", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), brush, 5, 25 );
-      e->Graphics->DrawString( "add/remove Help context keyword commands.", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), brush, 5, 35 );
-      e->Graphics->DrawString( "Press F1 while this component is", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), brush, 5, 55 );
-      e->Graphics->DrawString( "selected to raise Help topics for", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), brush, 5, 65 );
-      e->Graphics->DrawString( "the current keyword or keywords", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), brush, 5, 75 );
-   }
-};
+         for ( int i = 0; i < extenderNames->Length; i++ )
+            e->Graphics->DrawString( extenderNames[ i ], gcnew System::Drawing::Font( "Arial",8 ), gcnew SolidBrush( Color::Black ), 10, 25 + (i * 10) );
+      }
+   };
+}

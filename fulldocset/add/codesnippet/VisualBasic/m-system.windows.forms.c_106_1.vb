@@ -1,49 +1,23 @@
-Imports System.Windows.Forms
-
-Public Class Form1
-    Inherits Form
-
-    Public Sub New()
-
-        Dim panel As New FlowLayoutPanel()
-
-        Dim tabTextBox1 As New TabTextBox()
-        tabTextBox1.Text = "TabTextBox"
-        panel.Controls.Add(tabTextBox1)
-
-        Dim textBox1 As New TextBox()
-        textBox1.Text = "Normal TextBox"
-        panel.Controls.Add(textBox1)
-
-        Me.Controls.Add(panel)
-
-    End Sub
-
-End Class
-
-Class TabTextBox
-    Inherits TextBox
-
-    Protected Overrides Function IsInputKey( _
-        ByVal keyData As System.Windows.Forms.Keys) As Boolean
-
-        If keyData = Keys.Tab Then
-            Return True
+    Private Sub button1_Click(sender As Object, e As System.EventArgs)
+        ' Takes the selected text from a text box and puts it on the clipboard.
+        If textBox1.SelectedText <> "" Then
+            Clipboard.SetDataObject(textBox1.SelectedText)
         Else
-            Return MyBase.IsInputKey(keyData)
+            textBox2.Text = "No text selected in textBox1"
         End If
-
-    End Function
-
-    Protected Overrides Sub OnKeyDown( _
-        ByVal e As System.Windows.Forms.KeyEventArgs)
-
-        If e.KeyData = Keys.Tab Then
-            Me.SelectedText = "    "
+    End Sub 'button1_Click
+     
+    Private Sub button2_Click(sender As Object, e As System.EventArgs)
+        ' Declares an IDataObject to hold the data returned from the clipboard.
+        ' Retrieves the data from the clipboard.
+        Dim iData As IDataObject = Clipboard.GetDataObject()
+        
+        ' Determines whether the data is in a format you can use.
+        If iData.GetDataPresent(DataFormats.Text) Then
+            ' Yes it is, so display it in a text box.
+            textBox2.Text = CType(iData.GetData(DataFormats.Text), String)
         Else
-            MyBase.OnKeyDown(e)
+            ' No it is not.
+            textBox2.Text = "Could not retrieve data off the clipboard."
         End If
-
-    End Sub
-
-End Class
+    End Sub 'button2_Click

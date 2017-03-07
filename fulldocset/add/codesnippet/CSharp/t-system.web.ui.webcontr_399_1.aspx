@@ -1,70 +1,46 @@
-
-<%@ Page Language="C#" AutoEventWireup="True" %>
+<%@ Page Language="C#" %>
+<%@ Register TagPrefix="uc1" 
+  TagName="DisplayModeMenuCS"
+  Src="~/DisplayModeMenuCS.ascx" %>
+<%@ Register TagPrefix="aspSample" 
+  Namespace="Samples.AspNet.CS.Controls" 
+  Assembly="MyChromeCS" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
-
-<head>
-    <title>RangeValidator Example</title>
-<script runat="server">
-
-      void ButtonClick(Object sender, EventArgs e)
-      {
-
-         if (Page.IsValid)
-         {
-            Label1.Text="Page is valid.";
-         }
-         else
-         {
-            Label1.Text="Page is not valid!!";
-         }
-
-      }
-
-   </script>
-
+<head runat="server">
+    <title>ASP.NET Example</title>
 </head>
-
 <body>
-
-   <form id="form1" runat="server">
-
-      <h3>RangeValidator Example</h3>
-
-      Enter a number from 1 to 10:
-
-      <br />
-
-      <asp:TextBox id="TextBox1"
-           runat="server"/>
-
-      <br />
-
-      <asp:RangeValidator id="Range1"
-           ControlToValidate="TextBox1"
-           MinimumValue="1"
-           MaximumValue="10"
-           Type="Integer"
-           EnableClientScript="false"
-           Text="The value must be from 1 to 10!"
-           runat="server"/>
-
-      <br /><br />
-
-      <asp:Label id="Label1"
-           runat="server"/>
-
-      <br /><br />
-
-      <asp:Button id="Button1"
-           Text="Submit"
-           OnClick="ButtonClick"
-           runat="server"/>
-            
-
-   </form>
-
+  <form id="form1" runat="server">
+    <asp:WebPartManager ID="WebPartManager1" runat="server" />
+    <uc1:DisplayModeMenuCS id="menu1" runat="server" />
+    <aspSample:MyZone ID="WebPartZone1" runat="server"
+      RenderVerbsInMenu="true">
+      <PartTitleStyle Font-Bold="true"
+        BorderWidth="1" 
+        BackColor="lightblue"/>
+      <ZoneTemplate>
+        <asp:Panel runat="server" id="panel1" 
+          title="Vote on Issues" >
+          <asp:RadioButtonList ID="RadioButtonList1" runat="server" >
+            <asp:ListItem Value="1">Issue 1</asp:ListItem>
+            <asp:ListItem Value="2">Issue 2</asp:ListItem>
+            <asp:ListItem Value="3">Issue 3</asp:ListItem>
+          </asp:RadioButtonList>
+          <asp:Button ID="Button1" runat="server" Text="Cast Vote" />
+        </asp:Panel>
+        <asp:FileUpload ID="FileUpload1" runat="server" 
+          title="Upload Files" />
+      </ZoneTemplate>
+    </aspSample:MyZone>
+    <asp:WebPartZone ID="WebPartZone2" runat="server" />
+    <asp:EditorZone ID="EditorZone1" runat="server">
+      <ZoneTemplate>
+        <asp:AppearanceEditorPart ID="AppearanceEditorPart1" runat="server" />
+      </ZoneTemplate>
+    </asp:EditorZone>
+  </form>
 </body>
 </html>

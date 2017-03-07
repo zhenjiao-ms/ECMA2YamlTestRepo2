@@ -6,4 +6,4 @@
 			serviceHost.Open()
 
 			Dim dispatcher As ChannelDispatcher = CType(serviceHost.ChannelDispatchers(0), ChannelDispatcher)
-			Dim col As Collection(Of IErrorHandler) = dispatcher.ErrorHandlers
+			Dim isTransactedAccept As Boolean = dispatcher.IsTransactedAccept

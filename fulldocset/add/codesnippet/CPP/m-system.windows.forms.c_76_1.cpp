@@ -1,73 +1,88 @@
-using namespace System;
-using namespace System::Drawing;
-using namespace System::Windows::Forms;
-using namespace System::Security::Permissions;
-
-namespace csTempWindowsApplication1
-{
-   public ref class Form1: public System::Windows::Forms::Form
-   {
    private:
-
-      // Constant value was found in the "windows.h" header file.
-      static const Int32 WM_ACTIVATEAPP = 0x001C;
-      Boolean appActive;
+      Image^ picture;
+      Point pictureLocation;
 
    public:
       Form1()
       {
-         appActive = true;
-         this->Size = System::Drawing::Size( 300, 300 );
-         this->Text = "Form1";
-         this->Font = gcnew System::Drawing::Font( "Microsoft Sans Serif",18.0F,System::Drawing::FontStyle::Bold,System::Drawing::GraphicsUnit::Point,((System::Byte)(0)) );
+         
+         // Enable drag-and-drop operations and
+         // add handlers for DragEnter and DragDrop.
+         this->AllowDrop = true;
+         this->DragDrop += gcnew DragEventHandler( this, &Form1::Form1_DragDrop );
+         this->DragEnter += gcnew DragEventHandler( this, &Form1::Form1_DragEnter );
       }
-
 
    protected:
       virtual void OnPaint( PaintEventArgs^ e ) override
       {
          
-         // Paint a string in different styles depending on whether the
-         // application is active.
-         if ( appActive )
+         // If there is an image and it has a location,
+         // paint it when the Form is repainted.
+         Form::OnPaint( e );
+         if ( this->picture != nullptr && this->pictureLocation != Point::Empty )
          {
-            e->Graphics->FillRectangle( SystemBrushes::ActiveCaption, 20, 20, 260, 50 );
-            e->Graphics->DrawString( "Application is active", this->Font, SystemBrushes::ActiveCaptionText, 20, 20 );
+            e->Graphics->DrawImage( this->picture, this->pictureLocation );
+         }
+      }
+
+   private:
+      void Form1_DragDrop( Object^ /*sender*/, DragEventArgs^ e )
+      {
+         
+         // Handle FileDrop data.
+         if ( e->Data->GetDataPresent( DataFormats::FileDrop ) )
+         {
+            // Assign the file names to a String* array, in
+            // case the user has selected multiple files.
+            array<String^>^files = (array<String^>^)e->Data->GetData( DataFormats::FileDrop );
+            try
+            {
+               // Assign the first image to the picture variable.
+               this->picture = Image::FromFile( files[ 0 ] );
+               
+               // Set the picture location equal to the drop point.
+               this->pictureLocation = this->PointToClient( Point(e->X,e->Y) );
+            }
+            catch ( Exception^ ex ) 
+            {
+               MessageBox::Show( ex->Message );
+               return;
+            }
+
+         }
+         
+         // Handle Bitmap data.
+         if ( e->Data->GetDataPresent( DataFormats::Bitmap ) )
+         {
+            try
+            {
+               // Create an Image and assign it to the picture variable.
+               this->picture = dynamic_cast<Image^>(e->Data->GetData( DataFormats::Bitmap ));
+
+               // Set the picture location equal to the drop point.
+               this->pictureLocation = this->PointToClient( Point(e->X,e->Y) );
+            }
+            catch ( Exception^ ex ) 
+            {
+               MessageBox::Show( ex->Message );
+               return;
+            }
+         }
+         
+         // Force the form to be redrawn with the image.
+         this->Invalidate();
+      }
+
+      void Form1_DragEnter( Object^ /*sender*/, DragEventArgs^ e )
+      {
+         // If the data is a file or a bitmap, display the copy cursor.
+         if ( e->Data->GetDataPresent( DataFormats::Bitmap ) || e->Data->GetDataPresent( DataFormats::FileDrop ) )
+         {
+            e->Effect = DragDropEffects::Copy;
          }
          else
          {
-            e->Graphics->FillRectangle( SystemBrushes::InactiveCaption, 20, 20, 260, 50 );
-            e->Graphics->DrawString( "Application is Inactive", this->Font, SystemBrushes::ActiveCaptionText, 20, 20 );
+            e->Effect = DragDropEffects::None;
          }
       }
-
-
-      [SecurityPermission(SecurityAction::Demand, Flags=SecurityPermissionFlag::UnmanagedCode)]
-      virtual void WndProc( Message% m ) override
-      {
-         
-         // Listen for operating system messages.
-         switch ( m.Msg )
-         {
-            case WM_ACTIVATEAPP:
-               
-               // The WParam value identifies what is occurring.
-               appActive = (int)m.WParam != 0;
-               
-               // Invalidate to get new text painted.
-               this->Invalidate();
-               break;
-         }
-         Form::WndProc( m );
-      }
-
-   };
-
-}
-
-
-[STAThread]
-int main()
-{
-   Application::Run( gcnew csTempWindowsApplication1::Form1 );
-}

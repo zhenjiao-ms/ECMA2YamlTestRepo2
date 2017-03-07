@@ -1,13 +1,57 @@
-        // Set a cell padding to provide space for the top of the focus 
-        // rectangle and for the content that spans multiple columns. 
-        Padding newPadding = new Padding(0, 1, 0, CUSTOM_CONTENT_HEIGHT);
-        this.dataGridView1.RowTemplate.DefaultCellStyle.Padding = newPadding;
+public class CalendarCell : DataGridViewTextBoxCell
+{
 
-        // Set the selection background color to transparent so 
-        // the cell won't paint over the custom selection background.
-        this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor =
-            Color.Transparent;
+    public CalendarCell()
+        : base()
+    {
+        // Use the short date format.
+        this.Style.Format = "d";
+    }
 
-        // Set the row height to accommodate the content that 
-        // spans multiple columns.
-        this.dataGridView1.RowTemplate.Height += CUSTOM_CONTENT_HEIGHT;
+    public override void InitializeEditingControl(int rowIndex, object 
+        initialFormattedValue, DataGridViewCellStyle dataGridViewCellStyle)
+    {
+        // Set the value of the editing control to the current cell value.
+        base.InitializeEditingControl(rowIndex, initialFormattedValue, 
+            dataGridViewCellStyle);
+        CalendarEditingControl ctl = 
+            DataGridView.EditingControl as CalendarEditingControl;
+        // Use the default row value when Value property is null.
+        if (this.Value == null)
+        {
+            ctl.Value = (DateTime)this.DefaultNewRowValue;
+        }
+        else
+        {
+            ctl.Value = (DateTime)this.Value;
+        }
+    }
+
+    public override Type EditType
+    {
+        get
+        {
+            // Return the type of the editing control that CalendarCell uses.
+            return typeof(CalendarEditingControl);
+        }
+    }
+
+    public override Type ValueType
+    {
+        get
+        {
+            // Return the type of the value that CalendarCell contains.
+            
+            return typeof(DateTime);
+        }
+    }
+
+    public override object DefaultNewRowValue
+    {
+        get
+        {
+            // Use the current date and time as the default value.
+            return DateTime.Now;
+        }
+    }
+}

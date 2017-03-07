@@ -17,8 +17,22 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents the information for a contract operation defined in a workflow service.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+> [!NOTE]
+>  [!INCLUDE[DeprecatedContent](~/add/includes/deprecatedcontent-md.md)]  
+  
+ The OperationInfo class is used to define service contract information for a <xref:System.Workflow.Activities.ReceiveActivity> activity.  
+  
+> [!NOTE]
+>  The OperationInfo class can be used only with a workflow-first service. For more information about workflow-first services, see [Workflow Service Authoring Styles](http://msdn.microsoft.com/en-us/995bf98e-5b51-4c49-802b-c4e6293dd530).  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -33,8 +47,23 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Initializes a new instance of the <see cref="T:System.Workflow.Activities.OperationInfo" /> class.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ When activities are deserialized from Xoml, the constructors for the associated properties are called automatically.  
+  
+   
+  
+## Examples  
+ The following example demonstrates how to create a new instance of the <xref:System.Workflow.Activities.OperationInfo> class.  
+  
+ [!code-cs[OperationInfo#0](~/add/codesnippet/csharp/operationinfo/operationinfosnippets.cs#0)]
+ [!code-vb[OperationInfo#0](~/add/codesnippet/visualbasic/operationinfo/operationinfosnippets.vb#0)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Clone">
@@ -52,9 +81,24 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Creates a copy of the object.</summary>
+        <returns>The copy of the <see cref="T:System.Workflow.Activities.OperationInfo" /> object.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This method creates a deep copy of the <xref:System.Workflow.Activities.OperationInfo> object, with the same <xref:System.Workflow.Activities.OperationInfo.ContractName%2A>, <xref:System.Workflow.Activities.OperationInfo.IsOneWay%2A>, <xref:System.Workflow.Activities.OperationInfo.Parameters%2A>, and <xref:System.Workflow.Activities.OperationInfo.ProtectionLevel%2A> values.  
+  
+   
+  
+## Examples  
+ The following example demonstrates how to use the `Clone` method.  
+  
+ [!code-cs[OperationInfo#6](~/add/codesnippet/csharp/operationinfo/operationinfosnippets.cs#6)]
+ [!code-vb[OperationInfo#6](~/add/codesnippet/visualbasic/operationinfo/operationinfosnippets.vb#6)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ContractName">
@@ -71,9 +115,19 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the full name of the contract that defines this operation.</summary>
+        <value>A string that represents the full name of the contract that defines the operation.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example demonstrates how to access the `ContractName` property.  
+  
+ [!code-cs[OperationInfo#1](~/add/codesnippet/csharp/operationinfo/operationinfosnippets.cs#1)]
+ [!code-vb[OperationInfo#1](~/add/codesnippet/visualbasic/operationinfo/operationinfosnippets.vb#1)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Equals">
@@ -93,10 +147,26 @@
         <Parameter Name="obj" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="obj">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="obj">The object to compare with the current <see cref="T:System.Workflow.Activities.OperationInfo" />.</param>
+        <summary>Determines whether two object instances are equal.</summary>
+        <returns>
+          <see langword="true" /> to indicate that the current <see cref="T:System.Workflow.Activities.OperationInfo" /> and <paramref name="obj" /> are equal; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This operation compares the values of the <xref:System.Workflow.Activities.OperationInfo.ContractName%2A>, <xref:System.Workflow.Activities.OperationInfo.IsOneWay%2A>, <xref:System.Workflow.Activities.OperationInfo.Parameters%2A>, and <xref:System.Workflow.Activities.OperationInfo.ProtectionLevel%2A> values.  
+  
+   
+  
+## Examples  
+ The following example demonstrates how to use the `Equals` method.  
+  
+ [!code-cs[OperationInfo#7](~/add/codesnippet/csharp/operationinfo/operationinfosnippets.cs#7)]
+ [!code-vb[OperationInfo#7](~/add/codesnippet/visualbasic/operationinfo/operationinfosnippets.vb#7)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetContractFullName">
@@ -160,9 +230,19 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returns a hash code for the current <see cref="T:System.Workflow.Activities.OperationInfo" />.</summary>
+        <returns>A hash code for this instance.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example demonstrates how to use the `GetHashCode` method.  
+  
+ [!code-cs[OperationInfo#8](~/add/codesnippet/csharp/operationinfo/operationinfosnippets.cs#8)]
+ [!code-vb[OperationInfo#8](~/add/codesnippet/visualbasic/operationinfo/operationinfosnippets.vb#8)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetIsOneWay">
@@ -253,9 +333,19 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets information on whether or not the operation has a defined <see cref="T:System.Net.Security.ProtectionLevel" />.</summary>
+        <value>A Boolean value indicating whether or not the operation has a <see cref="T:System.Net.Security.ProtectionLevel" /> associated with it.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example demonstrates how to access the `HasProtectionLevel` property.  
+  
+ [!code-cs[OperationInfo#2](~/add/codesnippet/csharp/operationinfo/operationinfosnippets.cs#2)]
+ [!code-vb[OperationInfo#2](~/add/codesnippet/visualbasic/operationinfo/operationinfosnippets.vb#2)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsOneWay">
@@ -277,9 +367,25 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets information on the operation to specify that communication between the service and a client is one-way.</summary>
+        <value>
+          <see langword="true" /> if the operation supports one-way communication; otherwise, <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The default value is `false`.  
+  
+   
+  
+## Examples  
+ The following example demonstrates how to access the `IsOneWay` property.  
+  
+ [!code-cs[OperationInfo#3](~/add/codesnippet/csharp/operationinfo/operationinfosnippets.cs#3)]
+ [!code-vb[OperationInfo#3](~/add/codesnippet/visualbasic/operationinfo/operationinfosnippets.vb#3)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Parameters">
@@ -301,9 +407,24 @@
         <ReturnType>System.Workflow.Activities.OperationParameterInfoCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a collection of <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> objects that represents the parameter definitions used by the operation.</summary>
+        <value>A collection of <see cref="T:System.Workflow.Activities.OperationParameterInfo" /> objects that represents the parameter definitions used by the operation when called by a client.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `Parameters` collection will contain one element for each parameter in the method signature of the operation, plus one element for the return value of the operation.  
+  
+   
+  
+## Examples  
+ The following example demonstrates how to access the `Parameters` property.  
+  
+ [!code-cs[OperationInfo#4](~/add/codesnippet/csharp/operationinfo/operationinfosnippets.cs#4)]
+ [!code-vb[OperationInfo#4](~/add/codesnippet/visualbasic/operationinfo/operationinfosnippets.vb#4)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ProtectionLevel">
@@ -325,9 +446,24 @@
         <ReturnType>System.Nullable&lt;System.Net.Security.ProtectionLevel&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the <see cref="T:System.Net.Security.ProtectionLevel" /> of an operation.</summary>
+        <value>A <see cref="T:System.Net.Security.ProtectionLevel" /> object used by the operation.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The default value is `null`, which means that the protection level is not set.  
+  
+   
+  
+## Examples  
+ The following example demonstrates how to access the `ProtectionLevel` property.  
+  
+ [!code-cs[OperationInfo#5](~/add/codesnippet/csharp/operationinfo/operationinfosnippets.cs#5)]
+ [!code-vb[OperationInfo#5](~/add/codesnippet/visualbasic/operationinfo/operationinfosnippets.vb#5)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -345,9 +481,24 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Provides a string that represents this instance.</summary>
+        <returns>A string that represents this instance.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This method returns the <xref:System.Workflow.Activities.OperationInfo.ContractName%2A> value if extant; otherwise, it returns the <xref:System.Workflow.Activities.OperationInfoBase.Name%2A> value.  
+  
+   
+  
+## Examples  
+ The following example demonstrates how to use the `ToString` method.  
+  
+ [!code-cs[OperationInfo#9](~/add/codesnippet/csharp/operationinfo/operationinfosnippets.cs#9)]
+ [!code-vb[OperationInfo#9](~/add/codesnippet/visualbasic/operationinfo/operationinfosnippets.vb#9)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
   </Members>

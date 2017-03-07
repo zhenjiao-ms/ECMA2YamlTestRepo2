@@ -1,36 +1,57 @@
-Public Class CustomizedTreeView
-    Inherits TreeView
+Imports System
+Imports System.Drawing
+Imports System.Windows.Forms
+
+Public Class Form1
+    Inherits System.Windows.Forms.Form
+
+    Private WithEvents trackBar1 As System.Windows.Forms.TrackBar
+    Private textBox1 As System.Windows.Forms.TextBox
+
+    <System.STAThread()> _
+    Public Shared Sub Main()
+        System.Windows.Forms.Application.Run(New Form1)
+    End Sub 'Main
 
     Public Sub New()
-        ' Customize the TreeView control by setting various properties.
-        BackColor = System.Drawing.Color.CadetBlue
-        FullRowSelect = True
-        HotTracking = True
-        Indent = 34
-        ShowPlusMinus = False
+        Me.textBox1 = New System.Windows.Forms.TextBox
+        Me.trackBar1 = New System.Windows.Forms.TrackBar
 
-        ' The ShowLines property must be false for the FullRowSelect 
-        ' property to work.
-        ShowLines = False
+        ' TextBox for TrackBar.Value update.
+        Me.textBox1.Location = New System.Drawing.Point(240, 16)
+        Me.textBox1.Size = New System.Drawing.Size(48, 20)
+
+        ' Set up how the form should be displayed and add the controls to the form.
+        Me.ClientSize = New System.Drawing.Size(296, 62)
+        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.textBox1, Me.trackBar1})
+        Me.Text = "TrackBar Example"
+
+        ' Set up the TrackBar.
+        Me.trackBar1.Location = New System.Drawing.Point(8, 8)
+        Me.trackBar1.Size = New System.Drawing.Size(224, 45)
+
+        ' The Maximum property sets the value of the track bar when
+        ' the slider is all the way to the right.
+        trackBar1.Maximum = 30
+
+        ' The TickFrequency property establishes how many positions
+        ' are between each tick-mark.
+        trackBar1.TickFrequency = 5
+
+        ' The LargeChange property sets how many positions to move
+        ' if the bar is clicked on either side of the slider.
+        trackBar1.LargeChange = 3
+
+        ' The SmallChange property sets how many positions to move
+        ' if the keyboard arrows are used to move the slider.
+        trackBar1.SmallChange = 2
     End Sub 'New
 
+    Private Sub trackBar1_Scroll(ByVal sender As Object, _
+                    ByVal e As System.EventArgs) Handles trackBar1.Scroll
 
-    Protected Overrides Sub OnAfterSelect(ByVal e As TreeViewEventArgs)
-        ' Confirm that the user initiated the selection.
-        ' This prevents the first node from expanding when it is
-        ' automatically selected during the initialization of 
-        ' the TreeView control.
-        If e.Action <> TreeViewAction.Unknown Then
-            If e.Node.IsExpanded Then
-                e.Node.Collapse()
-            Else
-                e.Node.Expand()
-            End If
-        End If
+        ' Display the trackbar value in the text box.
+        textBox1.Text = trackBar1.Value
+    End Sub 
 
-        ' Remove the selection. This allows the same node to be
-        ' clicked twice in succession to toggle the expansion state.
-        SelectedNode = Nothing
-    End Sub 'OnAfterSelect
-
-End Class 'CustomizedTreeView 
+End Class 'Form1

@@ -1,73 +1,53 @@
 using namespace System;
-using namespace System::Drawing;
 using namespace System::Windows::Forms;
-using namespace System::Security::Permissions;
+using namespace System::Drawing;
 
-namespace csTempWindowsApplication1
+public ref class MyContainer: public ScrollableControl, public IContainerControl
 {
-   public ref class Form1: public System::Windows::Forms::Form
+private:
+   Control^ activeControl;
+
+public:
+   MyContainer()
    {
-   private:
+      // Make the container control Blue so it can be distinguished on the form.
+      this->BackColor = Color::Blue;
 
-      // Constant value was found in the "windows.h" header file.
-      static const Int32 WM_ACTIVATEAPP = 0x001C;
-      Boolean appActive;
+      // Make the container scrollable.
+      this->AutoScroll = true;
+   }
 
-   public:
-      Form1()
+   property Control^ ActiveControl 
+   {
+      // Add implementation to the IContainerControl.ActiveControl property.
+      virtual Control^ get()
       {
-         appActive = true;
-         this->Size = System::Drawing::Size( 300, 300 );
-         this->Text = "Form1";
-         this->Font = gcnew System::Drawing::Font( "Microsoft Sans Serif",18.0F,System::Drawing::FontStyle::Bold,System::Drawing::GraphicsUnit::Point,((System::Byte)(0)) );
+         return activeControl;
       }
 
-
-   protected:
-      virtual void OnPaint( PaintEventArgs^ e ) override
+      virtual void set( Control^ value )
       {
          
-         // Paint a string in different styles depending on whether the
-         // application is active.
-         if ( appActive )
+         // Make sure the control is a member of the ControlCollection.
+         if ( this->Controls->Contains( value ) )
          {
-            e->Graphics->FillRectangle( SystemBrushes::ActiveCaption, 20, 20, 260, 50 );
-            e->Graphics->DrawString( "Application is active", this->Font, SystemBrushes::ActiveCaptionText, 20, 20 );
-         }
-         else
-         {
-            e->Graphics->FillRectangle( SystemBrushes::InactiveCaption, 20, 20, 260, 50 );
-            e->Graphics->DrawString( "Application is Inactive", this->Font, SystemBrushes::ActiveCaptionText, 20, 20 );
+            activeControl = value;
          }
       }
+   }
 
-
-      [SecurityPermission(SecurityAction::Demand, Flags=SecurityPermissionFlag::UnmanagedCode)]
-      virtual void WndProc( Message% m ) override
+   // Add implementations to the IContainerControl.ActivateControl(Control) method.
+   virtual bool ActivateControl( Control^ active )
+   {
+      if ( this->Controls->Contains( active ) )
       {
-         
-         // Listen for operating system messages.
-         switch ( m.Msg )
-         {
-            case WM_ACTIVATEAPP:
-               
-               // The WParam value identifies what is occurring.
-               appActive = (int)m.WParam != 0;
-               
-               // Invalidate to get new text painted.
-               this->Invalidate();
-               break;
-         }
-         Form::WndProc( m );
+         // Select the control and scroll the control into view if needed.
+         active->Select(  );
+         this->ScrollControlIntoView( active );
+         this->activeControl = active;
+         return true;
       }
 
-   };
-
-}
-
-
-[STAThread]
-int main()
-{
-   Application::Run( gcnew csTempWindowsApplication1::Form1 );
-}
+      return false;
+   }
+};

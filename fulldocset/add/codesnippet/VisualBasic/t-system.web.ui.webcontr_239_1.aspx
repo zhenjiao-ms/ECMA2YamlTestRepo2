@@ -1,190 +1,93 @@
-
-<%@ Page language="VB" %>
+<%@ Page Language="VB" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<script runat="server">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>BulletStyle Example</title>
+<script runat="server">       
+        Sub Index_Changed(ByVal sender As Object, ByVal e As System.EventArgs)
+            ' Change the message displayed, based on 
+            ' the style selected from the list box.
+            If BulletStylesListBox.SelectedIndex > -1 Then
+                Message.Text = "You selected bullet style: " & BulletStylesListBox.SelectedItem.Text
+            End If
 
-  Sub ProductFormView_ItemCommand(ByVal sender As Object, ByVal e As FormViewCommandEventArgs)
+            ' Change the bullet style used, based on 
+            ' the style selected from the list box.
+            Select Case (BulletStylesListBox.SelectedIndex)
+                Case 0
+                    ItemsBulletedList.BulletStyle = BulletStyle.Numbered
+                Case 1
+                    ItemsBulletedList.BulletStyle = BulletStyle.LowerAlpha
+                Case 2
+                    ItemsBulletedList.BulletStyle = BulletStyle.UpperAlpha
+                Case 3
+                    ItemsBulletedList.BulletStyle = BulletStyle.LowerRoman
+                Case 4
+                    ItemsBulletedList.BulletStyle = BulletStyle.UpperRoman
+                Case 5
+                    ItemsBulletedList.BulletStyle = BulletStyle.Disc
+                Case 6
+                    ItemsBulletedList.BulletStyle = BulletStyle.Circle
+                Case 7
+                    ItemsBulletedList.BulletStyle = BulletStyle.Square
+                Case 8
+                    ItemsBulletedList.BulletStyle = BulletStyle.CustomImage
+                    ' Specify the path to the custom image to use for the bullet.
+                    ItemsBulletedList.BulletImageUrl = "Images/image1.jpg"
+                Case 9
+                    Message.Text = "You selected NotSet. The browser will determine the bullet style."
+                Case Else
+                    Throw New Exception("You did not select a valid bullet style.")
+            End Select
 
-    ' The ItemCommand event is raised when any button within
-    ' the FormView control is clicked. Use the CommandName property 
-    ' to determine which button was clicked. 
-    If e.CommandName = "Add" Then
+        End Sub
 
-      ' Add the product to the ListBox control. 
-      
-      ' Use the Row property to retrieve the data row.
-      Dim row As FormViewRow = ProductFormView.Row
-      
-      ' Retrieve the ProductNameLabel control from
-      ' the data row.
-      Dim productNameLabel As Label = CType(row.FindControl("ProductNameLabel"), Label)
-
-      ' Retrieve the QuantityTextBox control from
-      ' the data row.
-      Dim quantityTextBox As TextBox = CType(row.FindControl("QuantityTextBox"), TextBox)
-
-      If productNameLabel IsNot Nothing And quantityTextBox IsNot Nothing Then
-          
-        ' Get the product name from the ProductNameLabel control.
-        Dim name As String = productNameLabel.Text
-        
-        ' Get the quantity from the QuantityTextBox control.
-        Dim quantity As String = quantityTextBox.Text
-
-        ' Create the text to display in the ListBox control.
-        Dim description As String = name & " - " & quantity & " Qty"
-
-        ' Create a ListItem object using the description and
-        ' product name.
-        Dim item As new ListItem(description, name)
-
-        ' Add the ListItem object to the ListBox.
-        ProductListBox.Items.Add(item)
-
-        ' Use the CommandSource property to retrieve
-        ' the Add button. Disable the button after
-        ' the user adds the currently displayed employee
-        ' name to the ListBox control.
-        Dim addButton As Button = CType(e.CommandSource, Button)
-        addButton.Enabled = False
-        
-      End If
-
-    End If
-
-  End Sub
-
-  Sub ProductFormView_DataBound(ByVal sender As Object, ByVal e As EventArgs)
-    
-    ' To prevent the user from adding duplicate items, 
-    ' disable the Add button if the item being bound to the 
-    ' FormView control is already in the ListBox control.
-    
-    ' Use the Row property to retrieve the data row.
-    Dim row As FormViewRow = ProductFormView.Row
-
-    ' Retrieve the Add button from the data row.
-    Dim addButton As Button = CType(row.FindControl("AddButton"), Button)
-
-    ' Retrieve the ProductNameLabel control from
-    ' data row.
-    Dim productNameLabel As Label = CType(row.FindControl("ProductNameLabel"), Label)
-
-    If addButton IsNot Nothing And productNameLabel IsNot Nothing Then
-    
-      ' Get the product name from the ProductNameLabel 
-      ' control.
-      Dim name As String = productNameLabel.Text
-
-      ' Use the FindByValue method to determine whether
-      ' the ListBox control already contains an entry for
-      ' the item.
-      Dim item As ListItem = ProductListBox.Items.FindByValue(name)
-
-      ' Disable the Add button if the ListBox control
-      ' already contains the item.
-      If item IsNot Nothing Then
-      
-        addButton.Enabled = False
-      
-      Else
-      
-        addButton.Enabled = True
-        
-      End If
-      
-    End If
-
-  End Sub
-    
 </script>
 
-<html xmlns="http://www.w3.org/1999/xhtml" >
-  <head runat="server">
-    <title>FormViewCommandEventArgs Example</title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        
-      <h3>FormViewCommandEventArgs Example</h3>
-                       
-      <asp:formview id="ProductFormView"
-        datasourceid="ProductSource"
-        allowpaging="true"
-        datakeynames="ProductID"
-        onitemcommand="ProductFormView_ItemCommand"
-        ondatabound="ProductFormView_DataBound"  
-        runat="server">
-        
-        <itemtemplate>
-        
-          <table>
-            <tr>
-              <td style="width:400px">
-                <b>Description:</b>
-                <asp:label id="ProductNameLabel"
-                  text='<%# Eval("ProductName") %>'
-                  runat='server'/>
-                <br/>      
-                <b>Price:</b>
-                <asp:label id="PriceLabel"
-                  text='<%# Eval("UnitPrice", "{0:c}") %>'
-                  runat='server'/>
-                <br/>  
-                <asp:textbox id="QuantityTextBox"
-                  width="50px"
-                  maxlength="3" 
-                  runat="server"/> Qty                   
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <asp:requiredfieldvalidator ID="QuantityRequiredValidator"
-                  controltovalidate="QuantityTextBox"
-                  text="Please enter a quantity."
-                  display="Static"
-                  runat="server"/>
-                <br/>
-                <asp:CompareValidator id="QuantityCompareValidator"
-                  controltovalidate="QuantityTextBox"
-                  text="Please enter an integer value."
-                  display="Static"
-                  type="Integer"
-                  operator="DataTypeCheck"  
-                  runat="server"/>    
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <asp:button id="AddButton"
-                  text="Add"
-                  commandname="Add"
-                  runat="server"/>
-              </td>
-            </tr>
-          </table>
-        
-        </itemtemplate>
-                  
-      </asp:formview>
-      
-      <br/><br/><hr/>
-      
-      Items:<br/>
-      <asp:listbox id="ProductListBox"
-        runat="server"/>
-          
-      <!-- This example uses Microsoft SQL Server and connects  -->
-      <!-- to the Northwind sample database. Use an ASP.NET     -->
-      <!-- expression to retrieve the connection string value   -->
-      <!-- from the Web.config file.                            -->
-      <asp:sqldatasource id="ProductSource"
-        selectcommand="Select [ProductID], [ProductName], [UnitPrice] From [Products]"
-        connectionstring="<%$ ConnectionStrings:NorthWindConnectionString%>" 
-        runat="server"/>
+    <form id="form1" runat="server"> 
+
+        <h3>BulletStyle Example</h3>
+
+        <asp:BulletedList id="ItemsBulletedList"             
+            DisplayMode="Text" 
+            BulletStyle="NotSet"
+            runat="server">    
+                <asp:ListItem Value="0">Coho Winery</asp:ListItem>
+                <asp:ListItem Value="1">Contoso, Ltd.</asp:ListItem>
+                <asp:ListItem Value="2">Tailspin Toys</asp:ListItem>
+            </asp:BulletedList>        
+
+            <hr />
+
+        <h4>Select a bullet type:</h4>        
+        <asp:ListBox id="BulletStylesListBox" 
+            SelectionMode="Single"
+            Rows="1" 
+            OnSelectedIndexChanged="Index_Changed"
+            AutoPostBack="True"
+            runat="server">         
+                <asp:ListItem Value="Numbered">Numbered</asp:ListItem>
+                <asp:ListItem Value="LowerAlpha">LowerAlpha</asp:ListItem>
+                <asp:ListItem Value="UpperAlpha">UpperAlpha</asp:ListItem>
+                <asp:ListItem Value="LowerRoman">LowerRoman</asp:ListItem>
+                <asp:ListItem Value="UpperRoman">UpperRoman</asp:ListItem>
+                <asp:ListItem>Disc</asp:ListItem>
+                <asp:ListItem>Circle</asp:ListItem>
+                <asp:ListItem>Square</asp:ListItem>
+                <asp:ListItem>CustomImage</asp:ListItem>       
+                <asp:ListItem Value="NotSet">NotSet</asp:ListItem>
+        </asp:ListBox>        
             
-    </form>
-  </body>
+        <hr />
+
+        <asp:Label id="Message" 
+            runat="server"
+            AssociatedControlID="BulletStylesListBox"/>            
+                  
+   </form>
+</body>
 </html>

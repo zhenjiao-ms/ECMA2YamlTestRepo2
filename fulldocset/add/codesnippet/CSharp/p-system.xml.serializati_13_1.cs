@@ -1,98 +1,51 @@
 using System;
+using System.Collections;
 using System.IO;
 using System.Xml.Serialization;
-using System.Collections;
-using System.Xml;
-using System.Text;
-public class Transportation
+
+public class Group
 {
-   // The SoapElementAttribute specifies that the
-   // generated XML element name will be "Wheels"
-   // instead of "Vehicle".
-   [SoapElement("Wheels")]
-   public string Vehicle;
-   [SoapElement(DataType = "dateTime")]
-   public DateTime CreationDate;
-   [SoapElement(IsNullable = true)]
-   public Thing thing;
-   
+   /* Apply two XmlElementAttributes to the field. Set the DataType
+      to string an int to allow the ArrayList to accept 
+      both types. The Namespace is also set to different values
+      for each type. */ 
+   [XmlElement(DataType = "string",
+   Type = typeof(string),
+   Namespace = "http://www.cpandl.com"),
+   XmlElement(DataType = "int", 
+   Namespace = "http://www.cohowinery.com",
+   Type = typeof(int))]
+   public ArrayList ExtraInfo;
 }
 
-public class Thing{ 
-   [SoapElement(IsNullable=true)] public string ThingName;
-}
-
-public class Test
+public class Run
 {
-   public static void Main()
-   {
-      Test t = new Test();
-      t.SerializeObject("SoapElementOriginal.xml");
-      t.SerializeOverride("SoapElementOverride.xml");
-      Console.WriteLine("Finished writing two XML files.");
-   }
+    public static void Main()
+    {
+       Run test = new Run();
+       test.SerializeObject("ElementTypes.xml");
+          }
 
-   // Return an XmlSerializer used for overriding.
-   public XmlSerializer CreateSoapOverrider()
-   {
-      // Create the SoapAttributes and SoapAttributeOverrides objects.
-      SoapAttributes soapAttrs = new SoapAttributes();
+    public void SerializeObject(string filename)
+    {
+      // A TextWriter is needed to write the file.
+      TextWriter writer = new StreamWriter(filename);
 
-      SoapAttributeOverrides soapOverrides = 
-      new SoapAttributeOverrides();
-            
-      /* Create an SoapElementAttribute to override 
-      the Vehicles property. */
-      SoapElementAttribute soapElement1 = 
-      new SoapElementAttribute("Truck");
-      // Set the SoapElement to the object.
-      soapAttrs.SoapElement= soapElement1;
+      // Create the XmlSerializer using the XmlAttributeOverrides.
+      XmlSerializer s = 
+      new XmlSerializer(typeof(Group));
 
-      /* Add the SoapAttributes to the SoapAttributeOverrides,
-      specifying the member to override. */
-      soapOverrides.Add(typeof(Transportation), "Vehicle", soapAttrs);
-      
-      // Create the XmlSerializer, and return it.
-      XmlTypeMapping myTypeMapping = (new SoapReflectionImporter
-      (soapOverrides)).ImportTypeMapping(typeof(Transportation));
-      return new XmlSerializer(myTypeMapping);
-   }
+      // Create the object to serialize.
+      Group myGroup = new Group();
 
-   public void SerializeOverride(string filename)
-   {
-      // Create an XmlSerializer instance.
-      XmlSerializer ser = CreateSoapOverrider();
+      /* Add a string and an integer to the ArrayList returned
+         by the ExtraInfo field. */
+      myGroup.ExtraInfo = new ArrayList();
+      myGroup.ExtraInfo.Add("hello");
+      myGroup.ExtraInfo.Add(100);
 
-      // Create the object and serialize it.
-      Transportation myTransportation = 
-      new Transportation();
-
-      myTransportation.Vehicle = "MyCar";
-      myTransportation.CreationDate=DateTime.Now;
-      myTransportation.thing = new Thing();
-
-      XmlTextWriter writer = 
-      new XmlTextWriter(filename, Encoding.UTF8);
-      writer.Formatting = Formatting.Indented;
-      writer.WriteStartElement("wrapper");
-      ser.Serialize(writer, myTransportation);
-      writer.WriteEndElement();
-      writer.Close();
-   }
-   public void SerializeObject(string filename){
-      // Create an XmlSerializer instance.
-      XmlSerializer ser = new XmlSerializer(typeof(Transportation));
-      Transportation myTransportation = 
-      new Transportation();
-      myTransportation.Vehicle = "MyCar";
-      myTransportation.CreationDate = DateTime.Now;
-      myTransportation.thing = new Thing();
-      XmlTextWriter writer = 
-      new XmlTextWriter(filename, Encoding.UTF8);
-      writer.Formatting = Formatting.Indented;
-      writer.WriteStartElement("wrapper");
-      ser.Serialize(writer, myTransportation);
-      writer.WriteEndElement();
+      // Serialize the object and close the TextWriter.
+      s.Serialize(writer,myGroup);
       writer.Close();
    }
 }

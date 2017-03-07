@@ -17,8 +17,22 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>The <see langword="Conversion" /> module contains the procedures used to perform various conversion operations.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This module supports the Visual Basic language keywords and run-time library members that convert decimal numbers to other bases, numbers to strings, strings to numbers, and one data type to another.  
+  
+   
+  
+## Examples  
+ This example uses the `Hex` function to return the hexadecimal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#16](~/add/codesnippet/visualbasic/t-microsoft.visualbasic._0_1.vb)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="CTypeDynamic">
@@ -38,11 +52,52 @@
         <Parameter Name="TargetType" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="Expression">To be added.</param>
-        <param name="TargetType">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Expression">The object to convert.</param>
+        <param name="TargetType">The type to which to convert the object.</param>
+        <summary>Converts an object to the specified type.</summary>
+        <returns>An object whose type at run time is the requested target type.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `CTypeDynamic` method converts the object passed as the `Expression` parameter to the type specified by the `TargetType` parameter. If the object is a dynamic object, the `CTypeDynamic` method applies available dynamic conversions.  
+  
+ The `CTypeDynamic` method applies dynamic conversions in accordance with the conversion semantics defined by the object itself. If a dynamic object inherits from <xref:System.Dynamic.DynamicObject>, the `CTypeDynamic` method first attempts to perform the conversion by using a user-defined, static conversion. If the user-defined, static conversion fails, the `CTypeDynamic` method attempts to perform the conversion by using dynamic conversions. If a dynamic object implements <xref:System.Dynamic.IDynamicMetaObjectProvider>, the `CTypeDynamic` method gives precedence to dynamic conversions over user-defined, static conversions.  
+  
+   
+  
+## Examples  
+ The following example uses the `CTypeDynamic` method to convert a dynamic object to a string by using the conversion defined by the dynamic object.  
+  
+```vb#  
+Imports System.Dynamic  
+  
+Module Module1  
+    Sub Main()  
+        Dim dyn As Object = New SampleDynamicObject  
+        Dim sampleString = CTypeDynamic(dyn, GetType(String))  
+        Console.WriteLine(sampleString)  
+    End Sub  
+End Module  
+  
+Class SampleDynamicObject  
+    Inherits DynamicObject  
+  
+    Public Overrides Function TryConvert(ByVal binder As ConvertBinder,  
+                                         ByRef result As Object) As Boolean  
+  
+        If binder.Type = GetType(String) Then  
+            result = "Sample String"  
+            Return True  
+        End If  
+  
+        Return False  
+    End Function  
+End Class  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CTypeDynamic&lt;TargetType&gt;">
@@ -64,11 +119,52 @@
         <Parameter Name="Expression" Type="System.Object" />
       </Parameters>
       <Docs>
-        <typeparam name="TargetType">To be added.</typeparam>
-        <param name="Expression">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <typeparam name="TargetType">The type to which to convert the object.</typeparam>
+        <param name="Expression">The object to convert.</param>
+        <summary>Converts an object to the specified generic type.</summary>
+        <returns>An object statically typed as the requested generic type.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `CTypeDynamic` method converts the object passed as the `Expression` parameter to the type specified by the type of the generic parameter. If the object is a dynamic object, the `CTypeDynamic` method applies available dynamic conversions.  
+  
+ The `CTypeDynamic` method applies dynamic conversions in accordance with the conversion semantics defined by the object itself. If a dynamic object inherits from <xref:System.Dynamic.DynamicObject>, the `CTypeDynamic` method first attempts to perform the conversion by using a user-defined, static conversion. If the user-defined, static conversion fails, the `CTypeDynamic` method attempts to perform the conversion by using dynamic conversions. If a dynamic object implements <xref:System.Dynamic.IDynamicMetaObjectProvider>, the `CTypeDynamic` method gives precedence to dynamic conversions over user-defined, static conversions.  
+  
+   
+  
+## Examples  
+ The following example uses the `CTypeDynamic` method to convert a dynamic object to a string by using the conversion defined by the dynamic object.  
+  
+```vb#  
+Imports System.Dynamic  
+  
+Module Module1  
+    Sub Main()  
+        Dim dyn As Object = New SampleDynamicObject  
+        Dim str = CTypeDynamic(Of String)(dyn)  
+        Console.WriteLine(str)  
+    End Sub  
+End Module  
+  
+Class SampleDynamicObject  
+    Inherits DynamicObject  
+  
+    Public Overrides Function TryConvert(ByVal binder As ConvertBinder,  
+                                         ByRef result As Object) As Boolean  
+  
+        If binder.Type = GetType(String) Then  
+            result = "Sample String"  
+            Return True  
+        End If  
+  
+        Return False  
+    End Function  
+End Class  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ErrorToString">
@@ -86,9 +182,27 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returns the error message that corresponds to a given error number.</summary>
+        <returns>The error message that corresponds to the most recent run-time error.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `ErrorToString` function examines the property settings of the `Err` object to identify the most recent run-time error. The return value of the `ErrorToString` function corresponds to the `Description` property of the `Err` object. If no run-time error has occurred, `ErrorToString` returns a zero-length string ("").  
+  
+ In Visual Basic version 6.0 and earlier, this functionality was provided by the `Error` function.  
+  
+   
+  
+## Examples  
+ The following code uses the `ErrorToString` function to display error messages that correspond to the specified error numbers.  
+  
+ [!code-vb[VbVbalrCatRef#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._1_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="ErrorNumber" /> is out of range.</exception>
       </Docs>
     </Member>
     <Member MemberName="ErrorToString">
@@ -108,10 +222,28 @@
         <Parameter Name="ErrorNumber" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="ErrorNumber">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="ErrorNumber">Optional. Any valid error number.</param>
+        <summary>Returns the error message that corresponds to a given error number.</summary>
+        <returns>The error message that corresponds to a given error number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `ErrorToString` function examines the property settings of the `Err` object to identify the most recent run-time error. The return value of the `ErrorToString` function corresponds to the `Description` property of the `Err` object. If `ErrorNumber` is a valid error number but is not defined, `ErrorToString` returns the string `"Application-defined or object-defined error."` If `ErrorNumber` is not valid, an error occurs. If `ErrorNumber` is omitted, the message corresponding to the most recent run-time error is returned. If no run-time error has occurred or `ErrorNumber` is 0, `ErrorToString` returns a zero-length string ("").  
+  
+ In Visual Basic version 6.0 and earlier, this functionality was provided by the `Error` function.  
+  
+   
+  
+## Examples  
+ The following code uses the `ErrorToString` function to display error messages that correspond to the specified error numbers.  
+  
+ [!code-vb[VbVbalrCatRef#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._191_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="ErrorNumber" /> is out of range.</exception>
       </Docs>
     </Member>
     <Member MemberName="Fix">
@@ -131,10 +263,40 @@
         <Parameter Name="Number" Type="System.Decimal" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. A number of type <see langword="Double" /> or any valid numeric expression. If <c>Number</c> contains <see langword="Nothing" />, <see langword="Nothing" /> is returned.</param>
+        <summary>Return the integer portion of a number.</summary>
+        <returns>Return the integer portion of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Both the `Int` and `Fix` functions remove the fractional part of `Number` and return the resulting integer value.  
+  
+ The difference between `Int` and `Fix` functions is that if `Number` is negative, `Int` returns the first negative integer less than or equal to `Number`, whereas `Fix` returns the first negative integer greater than or equal to `Number`. For example, `Int` converts -8.4 to -9, and `Fix` converts -8.4 to -8.  
+  
+ `Fix(number)` is equivalent to `Sign(number) * Int(Abs(number)).`  
+  
+   
+  
+## Examples  
+ This example illustrates how the `Int` and `Fix` functions return integer portions of numbers. In the case of a negative number argument, the `Int` function returns the first negative integer less than or equal to the number; the `Fix` function returns the first negative integer greater than or equal to the number. The following example requires you to specify `Option Strict Off` because implicit conversions from type `Double` to type `Integer` are not allowed under `Option Strict On`:  
+  
+ [!code-vb[VbVbalrMath#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._62_1.vb)]  
+  
+ You can use the `CInt` function to explicitly convert other data types to type `Integer` with `Option Strict Off`. However, `CInt` rounds to the nearest integer instead of truncating the fractional part of numbers. For example:  
+  
+ [!code-vb[VbVbalrMath#5](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._62_2.vb)]  
+  
+ You can use the `CInt` function on the result of a call to `Fix` or `Int` to perform explicit conversion to integer without rounding. For example:  
+  
+ [!code-vb[VbVbalrMath#6](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._62_3.vb)]  
+  
+ For more information on `CInt`, see [Type Conversion Functions](../Topic/Type%20Conversion%20Functions%20\(Visual%20Basic\).md).  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">Number is not specified.</exception>
+        <exception cref="T:System.ArgumentException">Number is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Fix">
@@ -154,10 +316,40 @@
         <Parameter Name="Number" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. A number of type <see langword="Double" /> or any valid numeric expression. If <c>Number</c> contains <see langword="Nothing" />, <see langword="Nothing" /> is returned.</param>
+        <summary>Return the integer portion of a number.</summary>
+        <returns>Return the integer portion of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Both the `Int` and `Fix` functions remove the fractional part of `Number` and return the resulting integer value.  
+  
+ The difference between `Int` and `Fix` functions is that if `Number` is negative, `Int` returns the first negative integer less than or equal to `Number`, whereas `Fix` returns the first negative integer greater than or equal to `Number`. For example, `Int` converts -8.4 to -9, and `Fix` converts -8.4 to -8.  
+  
+ `Fix(number)` is equivalent to `Sign(number) * Int(Abs(number)).`  
+  
+   
+  
+## Examples  
+ This example illustrates how the `Int` and `Fix` functions return integer portions of numbers. In the case of a negative number argument, the `Int` function returns the first negative integer less than or equal to the number; the `Fix` function returns the first negative integer greater than or equal to the number. The following example requires you to specify `Option Strict Off` because implicit conversions from type `Double` to type `Integer` are not allowed under `Option Strict On`:  
+  
+ [!code-vb[VbVbalrMath#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._43_1.vb)]  
+  
+ You can use the `CInt` function to explicitly convert other data types to type `Integer` with `Option Strict Off`. However, `CInt` rounds to the nearest integer instead of truncating the fractional part of numbers. For example:  
+  
+ [!code-vb[VbVbalrMath#5](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._43_2.vb)]  
+  
+ You can use the `CInt` function on the result of a call to `Fix` or `Int` to perform explicit conversion to integer without rounding. For example:  
+  
+ [!code-vb[VbVbalrMath#6](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._43_3.vb)]  
+  
+ For more information on `CInt`, see [Type Conversion Functions](../Topic/Type%20Conversion%20Functions%20\(Visual%20Basic\).md).  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">Number is not specified.</exception>
+        <exception cref="T:System.ArgumentException">Number is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Fix">
@@ -177,10 +369,40 @@
         <Parameter Name="Number" Type="System.Int16" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. A number of type <see langword="Double" /> or any valid numeric expression. If <c>Number</c> contains <see langword="Nothing" />, <see langword="Nothing" /> is returned.</param>
+        <summary>Return the integer portion of a number.</summary>
+        <returns>Return the integer portion of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Both the `Int` and `Fix` functions remove the fractional part of `Number` and return the resulting integer value.  
+  
+ The difference between `Int` and `Fix` functions is that if `Number` is negative, `Int` returns the first negative integer less than or equal to `Number`, whereas `Fix` returns the first negative integer greater than or equal to `Number`. For example, `Int` converts -8.4 to -9, and `Fix` converts -8.4 to -8.  
+  
+ `Fix(number)` is equivalent to `Sign(number) * Int(Abs(number)).`  
+  
+   
+  
+## Examples  
+ This example illustrates how the `Int` and `Fix` functions return integer portions of numbers. In the case of a negative number argument, the `Int` function returns the first negative integer less than or equal to the number; the `Fix` function returns the first negative integer greater than or equal to the number. The following example requires you to specify `Option Strict Off` because implicit conversions from type `Double` to type `Integer` are not allowed under `Option Strict On`:  
+  
+ [!code-vb[VbVbalrMath#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._231_1.vb)]  
+  
+ You can use the `CInt` function to explicitly convert other data types to type `Integer` with `Option Strict Off`. However, `CInt` rounds to the nearest integer instead of truncating the fractional part of numbers. For example:  
+  
+ [!code-vb[VbVbalrMath#5](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._231_2.vb)]  
+  
+ You can use the `CInt` function on the result of a call to `Fix` or `Int` to perform explicit conversion to integer without rounding. For example:  
+  
+ [!code-vb[VbVbalrMath#6](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._231_3.vb)]  
+  
+ For more information on `CInt`, see [Type Conversion Functions](../Topic/Type%20Conversion%20Functions%20\(Visual%20Basic\).md).  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">Number is not specified.</exception>
+        <exception cref="T:System.ArgumentException">Number is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Fix">
@@ -200,10 +422,40 @@
         <Parameter Name="Number" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. A number of type <see langword="Double" /> or any valid numeric expression. If <c>Number</c> contains <see langword="Nothing" />, <see langword="Nothing" /> is returned.</param>
+        <summary>Return the integer portion of a number.</summary>
+        <returns>Return the integer portion of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Both the `Int` and `Fix` functions remove the fractional part of `Number` and return the resulting integer value.  
+  
+ The difference between `Int` and `Fix` functions is that if `Number` is negative, `Int` returns the first negative integer less than or equal to `Number`, whereas `Fix` returns the first negative integer greater than or equal to `Number`. For example, `Int` converts -8.4 to -9, and `Fix` converts -8.4 to -8.  
+  
+ `Fix(number)` is equivalent to `Sign(number) * Int(Abs(number)).`  
+  
+   
+  
+## Examples  
+ This example illustrates how the `Int` and `Fix` functions return integer portions of numbers. In the case of a negative number argument, the `Int` function returns the first negative integer less than or equal to the number; the `Fix` function returns the first negative integer greater than or equal to the number. The following example requires you to specify `Option Strict Off` because implicit conversions from type `Double` to type `Integer` are not allowed under `Option Strict On`:  
+  
+ [!code-vb[VbVbalrMath#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._70_1.vb)]  
+  
+ You can use the `CInt` function to explicitly convert other data types to type `Integer` with `Option Strict Off`. However, `CInt` rounds to the nearest integer instead of truncating the fractional part of numbers. For example:  
+  
+ [!code-vb[VbVbalrMath#5](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._70_2.vb)]  
+  
+ You can use the `CInt` function on the result of a call to `Fix` or `Int` to perform explicit conversion to integer without rounding. For example:  
+  
+ [!code-vb[VbVbalrMath#6](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._70_3.vb)]  
+  
+ For more information on `CInt`, see [Type Conversion Functions](../Topic/Type%20Conversion%20Functions%20\(Visual%20Basic\).md).  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">Number is not specified.</exception>
+        <exception cref="T:System.ArgumentException">Number is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Fix">
@@ -223,10 +475,40 @@
         <Parameter Name="Number" Type="System.Int64" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. A number of type <see langword="Double" /> or any valid numeric expression. If <c>Number</c> contains <see langword="Nothing" />, <see langword="Nothing" /> is returned.</param>
+        <summary>Return the integer portion of a number.</summary>
+        <returns>Return the integer portion of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Both the `Int` and `Fix` functions remove the fractional part of `Number` and return the resulting integer value.  
+  
+ The difference between `Int` and `Fix` functions is that if `Number` is negative, `Int` returns the first negative integer less than or equal to `Number`, whereas `Fix` returns the first negative integer greater than or equal to `Number`. For example, `Int` converts -8.4 to -9, and `Fix` converts -8.4 to -8.  
+  
+ `Fix(number)` is equivalent to `Sign(number) * Int(Abs(number)).`  
+  
+   
+  
+## Examples  
+ This example illustrates how the `Int` and `Fix` functions return integer portions of numbers. In the case of a negative number argument, the `Int` function returns the first negative integer less than or equal to the number; the `Fix` function returns the first negative integer greater than or equal to the number. The following example requires you to specify `Option Strict Off` because implicit conversions from type `Double` to type `Integer` are not allowed under `Option Strict On`:  
+  
+ [!code-vb[VbVbalrMath#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._85_1.vb)]  
+  
+ You can use the `CInt` function to explicitly convert other data types to type `Integer` with `Option Strict Off`. However, `CInt` rounds to the nearest integer instead of truncating the fractional part of numbers. For example:  
+  
+ [!code-vb[VbVbalrMath#5](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._85_2.vb)]  
+  
+ You can use the `CInt` function on the result of a call to `Fix` or `Int` to perform explicit conversion to integer without rounding. For example:  
+  
+ [!code-vb[VbVbalrMath#6](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._85_3.vb)]  
+  
+ For more information on `CInt`, see [Type Conversion Functions](../Topic/Type%20Conversion%20Functions%20\(Visual%20Basic\).md).  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">Number is not specified.</exception>
+        <exception cref="T:System.ArgumentException">Number is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Fix">
@@ -246,10 +528,40 @@
         <Parameter Name="Number" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. A number of type <see langword="Double" /> or any valid numeric expression. If <c>Number</c> contains <see langword="Nothing" />, <see langword="Nothing" /> is returned.</param>
+        <summary>Return the integer portion of a number.</summary>
+        <returns>Return the integer portion of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Both the `Int` and `Fix` functions remove the fractional part of `Number` and return the resulting integer value.  
+  
+ The difference between `Int` and `Fix` functions is that if `Number` is negative, `Int` returns the first negative integer less than or equal to `Number`, whereas `Fix` returns the first negative integer greater than or equal to `Number`. For example, `Int` converts -8.4 to -9, and `Fix` converts -8.4 to -8.  
+  
+ `Fix(number)` is equivalent to `Sign(number) * Int(Abs(number)).`  
+  
+   
+  
+## Examples  
+ This example illustrates how the `Int` and `Fix` functions return integer portions of numbers. In the case of a negative number argument, the `Int` function returns the first negative integer less than or equal to the number; the `Fix` function returns the first negative integer greater than or equal to the number. The following example requires you to specify `Option Strict Off` because implicit conversions from type `Double` to type `Integer` are not allowed under `Option Strict On`:  
+  
+ [!code-vb[VbVbalrMath#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._106_1.vb)]  
+  
+ You can use the `CInt` function to explicitly convert other data types to type `Integer` with `Option Strict Off`. However, `CInt` rounds to the nearest integer instead of truncating the fractional part of numbers. For example:  
+  
+ [!code-vb[VbVbalrMath#5](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._106_2.vb)]  
+  
+ You can use the `CInt` function on the result of a call to `Fix` or `Int` to perform explicit conversion to integer without rounding. For example:  
+  
+ [!code-vb[VbVbalrMath#6](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._106_3.vb)]  
+  
+ For more information on `CInt`, see [Type Conversion Functions](../Topic/Type%20Conversion%20Functions%20\(Visual%20Basic\).md).  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">Number is not specified.</exception>
+        <exception cref="T:System.ArgumentException">Number is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Fix">
@@ -269,10 +581,40 @@
         <Parameter Name="Number" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. A number of type <see langword="Double" /> or any valid numeric expression. If <c>Number</c> contains <see langword="Nothing" />, <see langword="Nothing" /> is returned.</param>
+        <summary>Return the integer portion of a number.</summary>
+        <returns>Return the integer portion of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Both the `Int` and `Fix` functions remove the fractional part of `Number` and return the resulting integer value.  
+  
+ The difference between `Int` and `Fix` functions is that if `Number` is negative, `Int` returns the first negative integer less than or equal to `Number`, whereas `Fix` returns the first negative integer greater than or equal to `Number`. For example, `Int` converts -8.4 to -9, and `Fix` converts -8.4 to -8.  
+  
+ `Fix(number)` is equivalent to `Sign(number) * Int(Abs(number)).`  
+  
+   
+  
+## Examples  
+ This example illustrates how the `Int` and `Fix` functions return integer portions of numbers. In the case of a negative number argument, the `Int` function returns the first negative integer less than or equal to the number; the `Fix` function returns the first negative integer greater than or equal to the number. The following example requires you to specify `Option Strict Off` because implicit conversions from type `Double` to type `Integer` are not allowed under `Option Strict On`:  
+  
+ [!code-vb[VbVbalrMath#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._79_1.vb)]  
+  
+ You can use the `CInt` function to explicitly convert other data types to type `Integer` with `Option Strict Off`. However, `CInt` rounds to the nearest integer instead of truncating the fractional part of numbers. For example:  
+  
+ [!code-vb[VbVbalrMath#5](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._79_2.vb)]  
+  
+ You can use the `CInt` function on the result of a call to `Fix` or `Int` to perform explicit conversion to integer without rounding. For example:  
+  
+ [!code-vb[VbVbalrMath#6](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._79_3.vb)]  
+  
+ For more information on `CInt`, see [Type Conversion Functions](../Topic/Type%20Conversion%20Functions%20\(Visual%20Basic\).md).  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">Number is not specified.</exception>
+        <exception cref="T:System.ArgumentException">Number is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Hex">
@@ -292,10 +634,36 @@
         <Parameter Name="Number" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the hexadecimal value of a number.</summary>
+        <returns>Returns a string representing the hexadecimal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If `Number` is|Hex returns|  
+|Empty|Zero (0)|  
+|Any numeric value|Up to sixteen hexadecimal characters|  
+  
+ You can represent hexadecimal numbers directly by preceding numbers in the proper range with `&H`. For example, `&H10` represents decimal 16 in hexadecimal notation.  
+  
+   
+  
+## Examples  
+ This example uses the `Hex` function to return the hexadecimal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#16](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._208_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Hex">
@@ -315,10 +683,36 @@
         <Parameter Name="Number" Type="System.Int16" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the hexadecimal value of a number.</summary>
+        <returns>Returns a string representing the hexadecimal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If `Number` is|Hex returns|  
+|Empty|Zero (0)|  
+|Any numeric value|Up to sixteen hexadecimal characters|  
+  
+ You can represent hexadecimal numbers directly by preceding numbers in the proper range with `&H`. For example, `&H10` represents decimal 16 in hexadecimal notation.  
+  
+   
+  
+## Examples  
+ This example uses the `Hex` function to return the hexadecimal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#16](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._128_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Hex">
@@ -338,10 +732,36 @@
         <Parameter Name="Number" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the hexadecimal value of a number.</summary>
+        <returns>Returns a string representing the hexadecimal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If `Number` is|Hex returns|  
+|Empty|Zero (0)|  
+|Any numeric value|Up to sixteen hexadecimal characters|  
+  
+ You can represent hexadecimal numbers directly by preceding numbers in the proper range with `&H`. For example, `&H10` represents decimal 16 in hexadecimal notation.  
+  
+   
+  
+## Examples  
+ This example uses the `Hex` function to return the hexadecimal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#16](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._102_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Hex">
@@ -361,10 +781,36 @@
         <Parameter Name="Number" Type="System.Int64" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the hexadecimal value of a number.</summary>
+        <returns>Returns a string representing the hexadecimal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If `Number` is|Hex returns|  
+|Empty|Zero (0)|  
+|Any numeric value|Up to sixteen hexadecimal characters|  
+  
+ You can represent hexadecimal numbers directly by preceding numbers in the proper range with `&H`. For example, `&H10` represents decimal 16 in hexadecimal notation.  
+  
+   
+  
+## Examples  
+ This example uses the `Hex` function to return the hexadecimal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#16](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._75_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Hex">
@@ -384,10 +830,36 @@
         <Parameter Name="Number" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the hexadecimal value of a number.</summary>
+        <returns>Returns a string representing the hexadecimal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If `Number` is|Hex returns|  
+|Empty|Zero (0)|  
+|Any numeric value|Up to sixteen hexadecimal characters|  
+  
+ You can represent hexadecimal numbers directly by preceding numbers in the proper range with `&H`. For example, `&H10` represents decimal 16 in hexadecimal notation.  
+  
+   
+  
+## Examples  
+ This example uses the `Hex` function to return the hexadecimal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#16](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._53_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Hex">
@@ -412,10 +884,37 @@
         <Parameter Name="Number" Type="System.SByte" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the hexadecimal value of a number.</summary>
+        <returns>Returns a string representing the hexadecimal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If `Number` is|Hex returns|  
+|Empty|Zero (0)|  
+|Any numeric value|Up to sixteen hexadecimal characters|  
+  
+ You can represent hexadecimal numbers directly by preceding numbers in the proper range with `&H`. For example, `&H10` represents decimal 16 in hexadecimal notation.  
+  
+   
+  
+## Examples  
+ This example uses the `Hex` function to return the hexadecimal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#16](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._15_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <altCompliant cref="M:Microsoft.VisualBasic.Conversion.Hex(System.Byte)" />
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Hex">
@@ -440,10 +939,37 @@
         <Parameter Name="Number" Type="System.UInt16" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the hexadecimal value of a number.</summary>
+        <returns>Returns a string representing the hexadecimal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If `Number` is|Hex returns|  
+|Empty|Zero (0)|  
+|Any numeric value|Up to sixteen hexadecimal characters|  
+  
+ You can represent hexadecimal numbers directly by preceding numbers in the proper range with `&H`. For example, `&H10` represents decimal 16 in hexadecimal notation.  
+  
+   
+  
+## Examples  
+ This example uses the `Hex` function to return the hexadecimal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#16](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._118_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <altCompliant cref="M:Microsoft.VisualBasic.Conversion.Hex(System.Int16)" />
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Hex">
@@ -468,10 +994,37 @@
         <Parameter Name="Number" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the hexadecimal value of a number.</summary>
+        <returns>Returns a string representing the hexadecimal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If `Number` is|Hex returns|  
+|Empty|Zero (0)|  
+|Any numeric value|Up to sixteen hexadecimal characters|  
+  
+ You can represent hexadecimal numbers directly by preceding numbers in the proper range with `&H`. For example, `&H10` represents decimal 16 in hexadecimal notation.  
+  
+   
+  
+## Examples  
+ This example uses the `Hex` function to return the hexadecimal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#16](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._182_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <altCompliant cref="M:Microsoft.VisualBasic.Conversion.Hex(System.Int32)" />
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Hex">
@@ -496,10 +1049,37 @@
         <Parameter Name="Number" Type="System.UInt64" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the hexadecimal value of a number.</summary>
+        <returns>Returns a string representing the hexadecimal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If `Number` is|Hex returns|  
+|Empty|Zero (0)|  
+|Any numeric value|Up to sixteen hexadecimal characters|  
+  
+ You can represent hexadecimal numbers directly by preceding numbers in the proper range with `&H`. For example, `&H10` represents decimal 16 in hexadecimal notation.  
+  
+   
+  
+## Examples  
+ This example uses the `Hex` function to return the hexadecimal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#16](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._119_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <altCompliant cref="M:Microsoft.VisualBasic.Conversion.Hex(System.Int64)" />
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Int">
@@ -519,10 +1099,40 @@
         <Parameter Name="Number" Type="System.Decimal" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. A number of type <see langword="Double" /> or any valid numeric expression. If <c>Number</c> contains <see langword="Nothing" />, <see langword="Nothing" /> is returned.</param>
+        <summary>Return the integer portion of a number.</summary>
+        <returns>Return the integer portion of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Both the `Int` and `Fix` functions remove the fractional part of `Number` and return the resulting integer value.  
+  
+ The difference between `Int` and `Fix` functions is that if `Number` is negative, `Int` returns the first negative integer less than or equal to `Number`, whereas `Fix` returns the first negative integer greater than or equal to `Number`. For example, `Int` converts -8.4 to -9, and `Fix` converts -8.4 to -8.  
+  
+ `Fix(number)` is equivalent to `Sign(number) * Int(Abs(number)).`  
+  
+   
+  
+## Examples  
+ This example illustrates how the `Int` and `Fix` functions return integer portions of numbers. In the case of a negative number argument, the `Int` function returns the first negative integer less than or equal to the number; the `Fix` function returns the first negative integer greater than or equal to the number. The following example requires you to specify `Option Strict Off` because implicit conversions from type `Double` to type `Integer` are not allowed under `Option Strict On`:  
+  
+ [!code-vb[VbVbalrMath#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._14_1.vb)]  
+  
+ You can use the `CInt` function to explicitly convert other data types to type `Integer` with `Option Strict Off`. However, `CInt` rounds to the nearest integer instead of truncating the fractional part of numbers. For example:  
+  
+ [!code-vb[VbVbalrMath#5](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._14_2.vb)]  
+  
+ You can use the `CInt` function on the result of a call to `Fix` or `Int` to perform explicit conversion to integer without rounding. For example:  
+  
+ [!code-vb[VbVbalrMath#6](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._14_3.vb)]  
+  
+ For more information on `CInt`, see [Type Conversion Functions](../Topic/Type%20Conversion%20Functions%20\(Visual%20Basic\).md).  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">Number is not specified.</exception>
+        <exception cref="T:System.ArgumentException">Number is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Int">
@@ -542,10 +1152,40 @@
         <Parameter Name="Number" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. A number of type <see langword="Double" /> or any valid numeric expression. If <c>Number</c> contains <see langword="Nothing" />, <see langword="Nothing" /> is returned.</param>
+        <summary>Return the integer portion of a number.</summary>
+        <returns>Return the integer portion of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Both the `Int` and `Fix` functions remove the fractional part of `Number` and return the resulting integer value.  
+  
+ The difference between `Int` and `Fix` functions is that if `Number` is negative, `Int` returns the first negative integer less than or equal to `Number`, whereas `Fix` returns the first negative integer greater than or equal to `Number`. For example, `Int` converts -8.4 to -9, and `Fix` converts -8.4 to -8.  
+  
+ `Fix(number)` is equivalent to `Sign(number) * Int(Abs(number)).`  
+  
+   
+  
+## Examples  
+ This example illustrates how the `Int` and `Fix` functions return integer portions of numbers. In the case of a negative number argument, the `Int` function returns the first negative integer less than or equal to the number; the `Fix` function returns the first negative integer greater than or equal to the number. The following example requires you to specify `Option Strict Off` because implicit conversions from type `Double` to type `Integer` are not allowed under `Option Strict On`:  
+  
+ [!code-vb[VbVbalrMath#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._202_1.vb)]  
+  
+ You can use the `CInt` function to explicitly convert other data types to type `Integer` with `Option Strict Off`. However, `CInt` rounds to the nearest integer instead of truncating the fractional part of numbers. For example:  
+  
+ [!code-vb[VbVbalrMath#5](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._202_2.vb)]  
+  
+ You can use the `CInt` function on the result of a call to `Fix` or `Int` to perform explicit conversion to integer without rounding. For example:  
+  
+ [!code-vb[VbVbalrMath#6](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._202_3.vb)]  
+  
+ For more information on `CInt`, see [Type Conversion Functions](../Topic/Type%20Conversion%20Functions%20\(Visual%20Basic\).md).  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">Number is not specified.</exception>
+        <exception cref="T:System.ArgumentException">Number is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Int">
@@ -565,10 +1205,40 @@
         <Parameter Name="Number" Type="System.Int16" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. A number of type <see langword="Double" /> or any valid numeric expression. If <c>Number</c> contains <see langword="Nothing" />, <see langword="Nothing" /> is returned.</param>
+        <summary>Return the integer portion of a number.</summary>
+        <returns>Return the integer portion of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Both the `Int` and `Fix` functions remove the fractional part of `Number` and return the resulting integer value.  
+  
+ The difference between `Int` and `Fix` functions is that if `Number` is negative, `Int` returns the first negative integer less than or equal to `Number`, whereas `Fix` returns the first negative integer greater than or equal to `Number`. For example, `Int` converts -8.4 to -9, and `Fix` converts -8.4 to -8.  
+  
+ `Fix(number)` is equivalent to `Sign(number) * Int(Abs(number)).`  
+  
+   
+  
+## Examples  
+ This example illustrates how the `Int` and `Fix` functions return integer portions of numbers. In the case of a negative number argument, the `Int` function returns the first negative integer less than or equal to the number; the `Fix` function returns the first negative integer greater than or equal to the number. The following example requires you to specify `Option Strict Off` because implicit conversions from type `Double` to type `Integer` are not allowed under `Option Strict On`:  
+  
+ [!code-vb[VbVbalrMath#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._161_1.vb)]  
+  
+ You can use the `CInt` function to explicitly convert other data types to type `Integer` with `Option Strict Off`. However, `CInt` rounds to the nearest integer instead of truncating the fractional part of numbers. For example:  
+  
+ [!code-vb[VbVbalrMath#5](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._161_2.vb)]  
+  
+ You can use the `CInt` function on the result of a call to `Fix` or `Int` to perform explicit conversion to integer without rounding. For example:  
+  
+ [!code-vb[VbVbalrMath#6](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._161_3.vb)]  
+  
+ For more information on `CInt`, see [Type Conversion Functions](../Topic/Type%20Conversion%20Functions%20\(Visual%20Basic\).md).  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">Number is not specified.</exception>
+        <exception cref="T:System.ArgumentException">Number is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Int">
@@ -588,10 +1258,40 @@
         <Parameter Name="Number" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. A number of type <see langword="Double" /> or any valid numeric expression. If <c>Number</c> contains <see langword="Nothing" />, <see langword="Nothing" /> is returned.</param>
+        <summary>Return the integer portion of a number.</summary>
+        <returns>Return the integer portion of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Both the `Int` and `Fix` functions remove the fractional part of `Number` and return the resulting integer value.  
+  
+ The difference between `Int` and `Fix` functions is that if `Number` is negative, `Int` returns the first negative integer less than or equal to `Number`, whereas `Fix` returns the first negative integer greater than or equal to `Number`. For example, `Int` converts -8.4 to -9, and `Fix` converts -8.4 to -8.  
+  
+ `Fix(number)` is equivalent to `Sign(number) * Int(Abs(number)).`  
+  
+   
+  
+## Examples  
+ This example illustrates how the `Int` and `Fix` functions return integer portions of numbers. In the case of a negative number argument, the `Int` function returns the first negative integer less than or equal to the number; the `Fix` function returns the first negative integer greater than or equal to the number. The following example requires you to specify `Option Strict Off` because implicit conversions from type `Double` to type `Integer` are not allowed under `Option Strict On`:  
+  
+ [!code-vb[VbVbalrMath#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._234_1.vb)]  
+  
+ You can use the `CInt` function to explicitly convert other data types to type `Integer` with `Option Strict Off`. However, `CInt` rounds to the nearest integer instead of truncating the fractional part of numbers. For example:  
+  
+ [!code-vb[VbVbalrMath#5](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._234_2.vb)]  
+  
+ You can use the `CInt` function on the result of a call to `Fix` or `Int` to perform explicit conversion to integer without rounding. For example:  
+  
+ [!code-vb[VbVbalrMath#6](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._234_3.vb)]  
+  
+ For more information on `CInt`, see [Type Conversion Functions](../Topic/Type%20Conversion%20Functions%20\(Visual%20Basic\).md).  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">Number is not specified.</exception>
+        <exception cref="T:System.ArgumentException">Number is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Int">
@@ -611,10 +1311,40 @@
         <Parameter Name="Number" Type="System.Int64" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. A number of type <see langword="Double" /> or any valid numeric expression. If <c>Number</c> contains <see langword="Nothing" />, <see langword="Nothing" /> is returned.</param>
+        <summary>Return the integer portion of a number.</summary>
+        <returns>Return the integer portion of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Both the `Int` and `Fix` functions remove the fractional part of `Number` and return the resulting integer value.  
+  
+ The difference between `Int` and `Fix` functions is that if `Number` is negative, `Int` returns the first negative integer less than or equal to `Number`, whereas `Fix` returns the first negative integer greater than or equal to `Number`. For example, `Int` converts -8.4 to -9, and `Fix` converts -8.4 to -8.  
+  
+ `Fix(number)` is equivalent to `Sign(number) * Int(Abs(number)).`  
+  
+   
+  
+## Examples  
+ This example illustrates how the `Int` and `Fix` functions return integer portions of numbers. In the case of a negative number argument, the `Int` function returns the first negative integer less than or equal to the number; the `Fix` function returns the first negative integer greater than or equal to the number. The following example requires you to specify `Option Strict Off` because implicit conversions from type `Double` to type `Integer` are not allowed under `Option Strict On`:  
+  
+ [!code-vb[VbVbalrMath#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._112_1.vb)]  
+  
+ You can use the `CInt` function to explicitly convert other data types to type `Integer` with `Option Strict Off`. However, `CInt` rounds to the nearest integer instead of truncating the fractional part of numbers. For example:  
+  
+ [!code-vb[VbVbalrMath#5](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._112_2.vb)]  
+  
+ You can use the `CInt` function on the result of a call to `Fix` or `Int` to perform explicit conversion to integer without rounding. For example:  
+  
+ [!code-vb[VbVbalrMath#6](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._112_3.vb)]  
+  
+ For more information on `CInt`, see [Type Conversion Functions](../Topic/Type%20Conversion%20Functions%20\(Visual%20Basic\).md).  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">Number is not specified.</exception>
+        <exception cref="T:System.ArgumentException">Number is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Int">
@@ -634,10 +1364,40 @@
         <Parameter Name="Number" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. A number of type <see langword="Double" /> or any valid numeric expression. If <c>Number</c> contains <see langword="Nothing" />, <see langword="Nothing" /> is returned.</param>
+        <summary>Return the integer portion of a number.</summary>
+        <returns>Return the integer portion of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Both the `Int` and `Fix` functions remove the fractional part of `Number` and return the resulting integer value.  
+  
+ The difference between `Int` and `Fix` functions is that if `Number` is negative, `Int` returns the first negative integer less than or equal to `Number`, whereas `Fix` returns the first negative integer greater than or equal to `Number`. For example, `Int` converts -8.4 to -9, and `Fix` converts -8.4 to -8.  
+  
+ `Fix(number)` is equivalent to `Sign(number) * Int(Abs(number)).`  
+  
+   
+  
+## Examples  
+ This example illustrates how the `Int` and `Fix` functions return integer portions of numbers. In the case of a negative number argument, the `Int` function returns the first negative integer less than or equal to the number; the `Fix` function returns the first negative integer greater than or equal to the number. The following example requires you to specify `Option Strict Off` because implicit conversions from type `Double` to type `Integer` are not allowed under `Option Strict On`:  
+  
+ [!code-vb[VbVbalrMath#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._111_1.vb)]  
+  
+ You can use the `CInt` function to explicitly convert other data types to type `Integer` with `Option Strict Off`. However, `CInt` rounds to the nearest integer instead of truncating the fractional part of numbers. For example:  
+  
+ [!code-vb[VbVbalrMath#5](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._111_2.vb)]  
+  
+ You can use the `CInt` function on the result of a call to `Fix` or `Int` to perform explicit conversion to integer without rounding. For example:  
+  
+ [!code-vb[VbVbalrMath#6](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._111_3.vb)]  
+  
+ For more information on `CInt`, see [Type Conversion Functions](../Topic/Type%20Conversion%20Functions%20\(Visual%20Basic\).md).  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">Number is not specified.</exception>
+        <exception cref="T:System.ArgumentException">Number is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Int">
@@ -657,10 +1417,40 @@
         <Parameter Name="Number" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. A number of type <see langword="Double" /> or any valid numeric expression. If <c>Number</c> contains <see langword="Nothing" />, <see langword="Nothing" /> is returned.</param>
+        <summary>Return the integer portion of a number.</summary>
+        <returns>Return the integer portion of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Both the `Int` and `Fix` functions remove the fractional part of `Number` and return the resulting integer value.  
+  
+ The difference between `Int` and `Fix` functions is that if `Number` is negative, `Int` returns the first negative integer less than or equal to `Number`, whereas `Fix` returns the first negative integer greater than or equal to `Number`. For example, `Int` converts -8.4 to -9, and `Fix` converts -8.4 to -8.  
+  
+ `Fix(number)` is equivalent to `Sign(number) * Int(Abs(number)).`  
+  
+   
+  
+## Examples  
+ This example illustrates how the `Int` and `Fix` functions return integer portions of numbers. In the case of a negative number argument, the `Int` function returns the first negative integer less than or equal to the number; the `Fix` function returns the first negative integer greater than or equal to the number. The following example requires you to specify `Option Strict Off` because implicit conversions from type `Double` to type `Integer` are not allowed under `Option Strict On`:  
+  
+ [!code-vb[VbVbalrMath#4](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._49_1.vb)]  
+  
+ You can use the `CInt` function to explicitly convert other data types to type `Integer` with `Option Strict Off`. However, `CInt` rounds to the nearest integer instead of truncating the fractional part of numbers. For example:  
+  
+ [!code-vb[VbVbalrMath#5](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._49_2.vb)]  
+  
+ You can use the `CInt` function on the result of a call to `Fix` or `Int` to perform explicit conversion to integer without rounding. For example:  
+  
+ [!code-vb[VbVbalrMath#6](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._49_3.vb)]  
+  
+ For more information on `CInt`, see [Type Conversion Functions](../Topic/Type%20Conversion%20Functions%20\(Visual%20Basic\).md).  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">Number is not specified.</exception>
+        <exception cref="T:System.ArgumentException">Number is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Oct">
@@ -680,10 +1470,36 @@
         <Parameter Name="Number" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the octal value of a number.</summary>
+        <returns>Returns a string representing the octal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If Number is|Oct returns|  
+|Empty|Zero (0)|  
+|Any other number|Up to 22 octal characters|  
+  
+ You can represent octal numbers directly by preceding numbers in the proper range with `&O`. For example, `&O10` is the octal notation for decimal 8.  
+  
+   
+  
+## Examples  
+ This example uses the `Oct` function to return the octal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#30](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._109_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Oct">
@@ -703,10 +1519,36 @@
         <Parameter Name="Number" Type="System.Int16" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the octal value of a number.</summary>
+        <returns>Returns a string representing the octal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If Number is|Oct returns|  
+|Empty|Zero (0)|  
+|Any other number|Up to 22 octal characters|  
+  
+ You can represent octal numbers directly by preceding numbers in the proper range with `&O`. For example, `&O10` is the octal notation for decimal 8.  
+  
+   
+  
+## Examples  
+ This example uses the `Oct` function to return the octal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#30](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._151_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Oct">
@@ -726,10 +1568,36 @@
         <Parameter Name="Number" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the octal value of a number.</summary>
+        <returns>Returns a string representing the octal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If Number is|Oct returns|  
+|Empty|Zero (0)|  
+|Any other number|Up to 22 octal characters|  
+  
+ You can represent octal numbers directly by preceding numbers in the proper range with `&O`. For example, `&O10` is the octal notation for decimal 8.  
+  
+   
+  
+## Examples  
+ This example uses the `Oct` function to return the octal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#30](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._36_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Oct">
@@ -749,10 +1617,36 @@
         <Parameter Name="Number" Type="System.Int64" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the octal value of a number.</summary>
+        <returns>Returns a string representing the octal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If Number is|Oct returns|  
+|Empty|Zero (0)|  
+|Any other number|Up to 22 octal characters|  
+  
+ You can represent octal numbers directly by preceding numbers in the proper range with `&O`. For example, `&O10` is the octal notation for decimal 8.  
+  
+   
+  
+## Examples  
+ This example uses the `Oct` function to return the octal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#30](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._217_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Oct">
@@ -772,10 +1666,36 @@
         <Parameter Name="Number" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the octal value of a number.</summary>
+        <returns>Returns a string representing the octal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If Number is|Oct returns|  
+|Empty|Zero (0)|  
+|Any other number|Up to 22 octal characters|  
+  
+ You can represent octal numbers directly by preceding numbers in the proper range with `&O`. For example, `&O10` is the octal notation for decimal 8.  
+  
+   
+  
+## Examples  
+ This example uses the `Oct` function to return the octal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#30](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._233_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Oct">
@@ -800,10 +1720,37 @@
         <Parameter Name="Number" Type="System.SByte" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the octal value of a number.</summary>
+        <returns>Returns a string representing the octal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If Number is|Oct returns|  
+|Empty|Zero (0)|  
+|Any other number|Up to 22 octal characters|  
+  
+ You can represent octal numbers directly by preceding numbers in the proper range with `&O`. For example, `&O10` is the octal notation for decimal 8.  
+  
+   
+  
+## Examples  
+ This example uses the `Oct` function to return the octal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#30](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._16_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <altCompliant cref="M:Microsoft.VisualBasic.Conversion.Oct(System.Byte)" />
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Oct">
@@ -828,10 +1775,37 @@
         <Parameter Name="Number" Type="System.UInt16" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the octal value of a number.</summary>
+        <returns>Returns a string representing the octal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If Number is|Oct returns|  
+|Empty|Zero (0)|  
+|Any other number|Up to 22 octal characters|  
+  
+ You can represent octal numbers directly by preceding numbers in the proper range with `&O`. For example, `&O10` is the octal notation for decimal 8.  
+  
+   
+  
+## Examples  
+ This example uses the `Oct` function to return the octal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#30](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._28_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <altCompliant cref="M:Microsoft.VisualBasic.Conversion.Oct(System.Int16)" />
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Oct">
@@ -856,10 +1830,37 @@
         <Parameter Name="Number" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the octal value of a number.</summary>
+        <returns>Returns a string representing the octal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If Number is|Oct returns|  
+|Empty|Zero (0)|  
+|Any other number|Up to 22 octal characters|  
+  
+ You can represent octal numbers directly by preceding numbers in the proper range with `&O`. For example, `&O10` is the octal notation for decimal 8.  
+  
+   
+  
+## Examples  
+ This example uses the `Oct` function to return the octal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#30](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._240_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <altCompliant cref="M:Microsoft.VisualBasic.Conversion.Oct(System.Int32)" />
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Oct">
@@ -884,10 +1885,37 @@
         <Parameter Name="Number" Type="System.UInt64" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. Any valid numeric expression or <see langword="String" /> expression.</param>
+        <summary>Returns a string representing the octal value of a number.</summary>
+        <returns>Returns a string representing the octal value of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If `Number` is not already a whole number, it is rounded to the nearest whole number before being evaluated.  
+  
+|||  
+|-|-|  
+|If Number is|Oct returns|  
+|Empty|Zero (0)|  
+|Any other number|Up to 22 octal characters|  
+  
+ You can represent octal numbers directly by preceding numbers in the proper range with `&O`. For example, `&O10` is the octal notation for decimal 8.  
+  
+   
+  
+## Examples  
+ This example uses the `Oct` function to return the octal value of a number.  
+  
+ [!code-vb[VbVbalrStrings#30](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._219_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <altCompliant cref="M:Microsoft.VisualBasic.Conversion.Oct(System.Int64)" />
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Str">
@@ -907,10 +1935,33 @@
         <Parameter Name="Number" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="Number">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Number">Required. An <see langword="Object" /> containing any valid numeric expression.</param>
+        <summary>Returns a <see langword="String" /> representation of a number.</summary>
+        <returns>Returns a <see langword="String" /> representation of a number.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ When numbers are converted to strings, a leading space is always reserved for the sign of `Number`. If `Number` is positive, the returned string contains a leading space, and the plus sign is implied. A negative number will include the minus sign (-) and no leading space.  
+  
+ Use the `Format` function to convert numeric values you want formatted as dates, times, or currency or in other user-defined formats. Unlike the `Str` function, the `Format` function does not include a leading space for the sign of `Number`.  
+  
+> [!NOTE]
+>  The `Str` function recognizes only the period (`.`) as a valid decimal separator. If different decimal separators are used (for example, in international applications), use the `CStr` or `Format` functions to convert a number to a string. To get the string representation of a number in a particular culture, use the number's `ToString(IFormatProvider)` method. For example, use <xref:System.Double.ToString%2A> when converting a value of type `Double` to a string.  
+  
+   
+  
+## Examples  
+ This example uses the `Str` function to return a `String` representation of a number. When a positive number is converted to a string, a leading space is always reserved for its sign.  
+  
+ [!code-vb[VbVbalrStrings#1](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._24_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="Number" /> is not specified.</exception>
+        <exception cref="T:System.InvalidCastException">
+          <paramref name="Number" /> is not a numeric type.</exception>
       </Docs>
     </Member>
     <Member MemberName="Val">
@@ -930,10 +1981,62 @@
         <Parameter Name="Expression" Type="System.Char" />
       </Parameters>
       <Docs>
-        <param name="Expression">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Expression">Required. Any valid <see langword="String" /> expression, <see langword="Object" /> variable, or <see langword="Char" /> value. If <c>Expression</c> is of type <see langword="Object" />, its value must be convertible to <see langword="String" /> or an <see cref="T:System.ArgumentException" /> error occurs.</param>
+        <summary>Returns the numbers contained in a string as a numeric value of appropriate type.</summary>
+        <returns>Returns the numbers contained in a string as a numeric value of appropriate type.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `Val` function stops reading the string at the first character it cannot recognize as part of a number. Symbols and characters that are often considered parts of numeric values, such as dollar signs and commas, are not recognized. However, the function recognizes the radix prefixes `&O` (for octal) and `&H` (for hexadecimal). Blanks, tabs, and linefeed characters are stripped from the argument.  
+  
+ The following call returns the value 1615198.  
+  
+```  
+  
+Val(" 1615 198th Street N.E.")   
+```  
+  
+ The following call returns the decimal value -1.  
+  
+```  
+  
+Val("&HFFFF")   
+```  
+  
+> [!NOTE]
+>  The `Val` function recognizes only the period (`.`) as a valid decimal separator. When different decimal separators are used, as in international applications, use `CDbl` or `CInt` instead to convert a string to a number. To convert the string representation of a number in a particular culture to a numeric value, use the numeric type's `Parse(String, IFormatProvider)` method. For example, use <xref:System.Double.Parse%2A?displayProperty=fullName> when converting a string to a `Double`.  
+  
+> [!NOTE]
+>  An <xref:System.InvalidCastException> exception might be raised in response to certain uncommon number formats. For example, the following code raises this exception.  
+>   
+>  `' These examples cause run-time errors.`  
+>   
+>  `'Console.WriteLine(Val("1.34%"))`  
+>   
+>  `'Console.WriteLine(Val("1.34&"))`  
+>   
+>  The conflict between the number formatted as a `Double` and the `Integer` and `Long` type characters would be caught by the compiler if it were not contained in a string.  
+>   
+>  `' These examples cause compiler errors.`  
+>   
+>  `'Dim m = 1.34%`  
+>   
+>  `'Dim n = 1.34&`  
+  
+   
+  
+## Examples  
+ The following example uses the `Val` function to return the numbers contained in each string. `Val` stops converting at the first character that cannot be interpreted as a numeric digit, numeric modifier, numeric punctuation, or white space.  
+  
+ [!code-vb[VbVbalrFunctions#54](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._65_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.OverflowException">
+          <paramref name="InputStr" /> is too large.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Expression" /> is an <see langword="Object" /> type expression that is not convertible to <see langword="String" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="Val">
@@ -953,10 +2056,62 @@
         <Parameter Name="Expression" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="Expression">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="Expression">Required. Any valid <see langword="String" /> expression, <see langword="Object" /> variable, or <see langword="Char" /> value. If <c>Expression</c> is of type <see langword="Object" />, its value must be convertible to <see langword="String" /> or an <see cref="T:System.ArgumentException" /> error occurs.</param>
+        <summary>Returns the numbers contained in a string as a numeric value of appropriate type.</summary>
+        <returns>Returns the numbers contained in a string as a numeric value of appropriate type.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `Val` function stops reading the string at the first character it cannot recognize as part of a number. Symbols and characters that are often considered parts of numeric values, such as dollar signs and commas, are not recognized. However, the function recognizes the radix prefixes `&O` (for octal) and `&H` (for hexadecimal). Blanks, tabs, and linefeed characters are removed from the argument.  
+  
+ The following call returns the value 1234123.  
+  
+```  
+  
+Val(" 1234 123th Street N.E.")   
+```  
+  
+ The following call returns the decimal value -1.  
+  
+```  
+  
+Val("&HFFFF")   
+```  
+  
+> [!NOTE]
+>  The `Val` function recognizes only the period (`.`) as a valid decimal separator. When other decimal separators are used, as in international applications, use `CDbl` or `CInt` instead to convert a string to a number. To convert the string representation of a number in a particular culture to a numeric value, use the numeric type's `Parse(String, IFormatProvider)` method. For example, use <xref:System.Double.Parse%2A?displayProperty=fullName> when converting a string to a `Double`.  
+  
+> [!NOTE]
+>  An <xref:System.InvalidCastException> exception might be raised in response to certain uncommon number formats. For example, the following code raises this exception.  
+>   
+>  `' These examples cause run-time errors.`  
+>   
+>  `'Console.WriteLine(Val("1.34%"))`  
+>   
+>  `'Console.WriteLine(Val("1.34&"))`  
+>   
+>  The conflict between the number formatted as a `Double` and the `Integer` and `Long` type characters would be caught by the compiler if the conflict were not contained in strings.  
+>   
+>  `' These examples cause compiler errors.`  
+>   
+>  `'Dim m = 1.34%`  
+>   
+>  `'Dim n = 1.34&`  
+  
+   
+  
+## Examples  
+ The following example uses the `Val` function to return the numbers contained in each string. `Val` stops converting at the first character that cannot be interpreted as a numeric digit, numeric modifier, numeric punctuation, or white space.  
+  
+ [!code-vb[VbVbalrFunctions#54](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._98_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.OverflowException">
+          <paramref name="InputStr" /> is too large.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Expression" /> is an <see langword="Object" /> type expression that is not convertible to <see langword="String" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="Val">
@@ -976,10 +2131,62 @@
         <Parameter Name="InputStr" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="InputStr">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="InputStr">Required. Any valid <see langword="String" /> expression, <see langword="Object" /> variable, or <see langword="Char" /> value. If <c>Expression</c> is of type <see langword="Object" />, its value must be convertible to <see langword="String" /> or an <see cref="T:System.ArgumentException" /> error occurs.</param>
+        <summary>Returns the numbers contained in a string as a numeric value of appropriate type.</summary>
+        <returns>Returns the numbers contained in a string as a numeric value of appropriate type.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `Val` function stops reading the string at the first character it cannot recognize as part of a number. Symbols and characters that are often considered parts of numeric values, such as dollar signs and commas, are not recognized. However, the function recognizes the radix prefixes `&O` (for octal) and `&H` (for hexadecimal). Blanks, tabs, and linefeed characters are removed from the argument.  
+  
+ The following call returns the value 1234123.  
+  
+```  
+  
+Val(" 1234 123th Street N.E.")   
+```  
+  
+ The following call returns the decimal value -1.  
+  
+```  
+  
+Val("&HFFFF")   
+```  
+  
+> [!NOTE]
+>  The `Val` function recognizes only the period (`.`) as a valid decimal separator. When other decimal separators are used, as in international applications, use `CDbl` or `CInt` instead to convert a string to a number. To convert the string representation of a number in a particular culture to a numeric value, use the numeric type's `Parse(String, IFormatProvider)` method. For example, use <xref:System.Double.Parse%2A?displayProperty=fullName> when converting a string to a `Double`.  
+  
+> [!NOTE]
+>  An <xref:System.InvalidCastException> exception might be raised in response to certain uncommon number formats. For example, the following code raises this exception.  
+>   
+>  `' These examples cause run-time errors.`  
+>   
+>  `'Console.WriteLine(Val("1.34%"))`  
+>   
+>  `'Console.WriteLine(Val("1.34&"))`  
+>   
+>  The conflict between the number formatted as a `Double` and the `Integer` and `Long` type characters would be caught by the compiler if the conflict were not contained in strings.  
+>   
+>  `' These examples cause compiler errors.`  
+>   
+>  `'Dim m = 1.34%`  
+>   
+>  `'Dim n = 1.34&`  
+  
+   
+  
+## Examples  
+ The following example uses the `Val` function to return the numbers contained in each string. `Val` stops converting at the first character that cannot be interpreted as a numeric digit, numeric modifier, numeric punctuation, or white space.  
+  
+ [!code-vb[VbVbalrFunctions#54](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._227_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.OverflowException">
+          <paramref name="InputStr" /> is too large.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="Expression" /> is an <see langword="Object" /> type expression that is not convertible to <see langword="String" />.</exception>
       </Docs>
     </Member>
   </Members>

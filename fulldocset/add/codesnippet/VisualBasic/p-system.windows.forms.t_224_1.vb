@@ -1,20 +1,19 @@
-Private Sub SelectNode(node As TreeNode)
-   If node.IsSelected Then
-      ' Determine which TreeNode to select.
-      Select Case myComboBox.Text
-         Case "Previous"
-            node.TreeView.SelectedNode = node.PrevNode
-         Case "PreviousVisible"
-            node.TreeView.SelectedNode = node.PrevVisibleNode
-         Case "Next"
-            node.TreeView.SelectedNode = node.NextNode
-         Case "NextVisible"
-            node.TreeView.SelectedNode = node.NextVisibleNode
-         Case "First"
-            node.TreeView.SelectedNode = node.FirstNode
-         Case "Last"
-            node.TreeView.SelectedNode = node.LastNode
-      End Select
-   End If
-   node.TreeView.Focus()
-End Sub
+    Friend WithEvents boldButton As ToolStripButton
+
+    Private Sub InitializeBoldButton()
+        boldButton = New ToolStripButton()
+        boldButton.Text = "B"
+        boldButton.CheckOnClick = True
+        toolStrip1.Items.Add(boldButton)
+
+    End Sub
+
+    Private Sub boldButton_CheckedChanged(ByVal sender As [Object], _
+        ByVal e As EventArgs) Handles boldButton.CheckedChanged
+        If boldButton.Checked Then
+            Me.Font = New Font(Me.Font, FontStyle.Bold)
+        Else
+            Me.Font = New Font(Me.Font, FontStyle.Regular)
+        End If
+
+    End Sub

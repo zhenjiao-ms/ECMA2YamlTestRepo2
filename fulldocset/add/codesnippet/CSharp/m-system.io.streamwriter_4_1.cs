@@ -1,6 +1,6 @@
 using System;
-using System.IO;
 using System.Text;
+using System.IO;
 
 namespace ConsoleApplication
 {
@@ -8,21 +8,17 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
-            string fileName = "test.txt";
-            string textToAdd = "Example text in file";
-            FileStream fs = null;
-            try
+            WriteCharacters();
+        }
+
+        static async void WriteCharacters()
+        {
+            UnicodeEncoding ue = new UnicodeEncoding();
+            char[] charsToAdd = ue.GetChars(ue.GetBytes("First line and second line"));
+            using (StreamWriter writer = File.CreateText("newfile.txt"))
             {
-               fs = new FileStream(fileName, FileMode.CreateNew);
-               using (StreamWriter writer = new StreamWriter(fs, Encoding.Default))
-                {
-                    writer.Write(textToAdd);
-                }
-            }       
-            finally
-            {
-                if (fs != null)
-                    fs.Dispose();
+                await writer.WriteLineAsync(charsToAdd, 0, 11);
+                await writer.WriteLineAsync(charsToAdd, 11, charsToAdd.Length - 11);
             }
         }
     }

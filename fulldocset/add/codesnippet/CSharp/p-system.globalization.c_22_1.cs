@@ -1,44 +1,50 @@
 using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Globalization;
-using System.Runtime.Versioning;
-using System.Threading;
-using System.Threading.Tasks;
 
-[assembly:TargetFramework(".NETFramework,Version=v4.6")]
-
-public class Example
+public class Example 
 {
-   public static void Main()
+   public static void Main() 
    {
-      var tasks = new List<Task>();
-      Console.WriteLine("The current UI culture is {0}", 
-                        Thread.CurrentThread.CurrentUICulture.Name);
-      Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-BR");
-      // Change the current UI culture to Portuguese (Brazil).
-      Console.WriteLine("Current UI culture changed to {0}",
-                        Thread.CurrentThread.CurrentUICulture.Name);
-      Console.WriteLine("Application thread is thread {0}",
-                        Thread.CurrentThread.ManagedThreadId);
-      // Launch six tasks and display their current culture.
-      for (int ctr = 0; ctr <= 5; ctr++)
-         tasks.Add(Task.Run( () => {
-                               Console.WriteLine("UI Culture of task {0} on thread {1} is {2}",
-                                                 Task.CurrentId, 
-                                                 Thread.CurrentThread.ManagedThreadId,
-                                                 Thread.CurrentThread.CurrentUICulture.Name);
-                            } ));                     
+      // Persist the date and time data.
+      StreamWriter sw = new StreamWriter(@".\DateData.dat");
+      
+      // Create a DateTime value.      
+      DateTime dtIn = DateTime.Now;
+      // Retrieve a CultureInfo object.
+      CultureInfo invC = CultureInfo.InvariantCulture;
+      
+      // Convert the date to a string and write it to a file.
+      sw.WriteLine(dtIn.ToString("r", invC));
+      sw.Close();
 
-      Task.WaitAll(tasks.ToArray());
+      // Restore the date and time data.
+      StreamReader sr = new StreamReader(@".\DateData.dat");
+      String input;
+      while ((input = sr.ReadLine()) != null) 
+      {
+         Console.WriteLine("Stored data: {0}\n" , input);    
+
+         // Parse the stored string.
+         DateTime dtOut = DateTime.Parse(input, invC, DateTimeStyles.RoundtripKind);
+
+         // Create a French (France) CultureInfo object.
+         CultureInfo frFr = new CultureInfo("fr-FR");
+         // Displays the date formatted for the "fr-FR" culture.
+         Console.WriteLine("Date formatted for the {0} culture: {1}" , 
+                           frFr.Name, dtOut.ToString("f", frFr));
+
+         // Creates a German (Germany) CultureInfo object.
+         CultureInfo deDe= new CultureInfo("de-De");
+         // Displays the date formatted for the "de-DE" culture.
+         Console.WriteLine("Date formatted for {0} culture: {1}" , 
+                           deDe.Name, dtOut.ToString("f", deDe));
+      }
+      sr.Close();
    }
 }
-// The example displays output like the following:
-//     The current culture is en-US
-//     Current culture changed to pt-BR
-//     Application thread is thread 9
-//     Culture of task 2 on thread 11 is pt-BR
-//     Culture of task 1 on thread 10 is pt-BR
-//     Culture of task 3 on thread 11 is pt-BR
-//     Culture of task 5 on thread 11 is pt-BR
-//     Culture of task 6 on thread 11 is pt-BR
-//     Culture of task 4 on thread 10 is pt-BR
+// The example displays the following output:
+//    Stored data: Tue, 15 May 2012 16:34:16 GMT
+//    
+//    Date formatted for the fr-FR culture: mardi 15 mai 2012 16:34
+//    Date formatted for de-DE culture: Dienstag, 15. Mai 2012 16:34

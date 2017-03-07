@@ -8,4 +8,4 @@
 			Dim icl As IChannelListener = serviceHost.ChannelDispatchers(0).Listener
 			Dim dispatcher As New ChannelDispatcher(icl)
 
-			dispatcher.MaxTransactedBatchSize = 10
+			Dim isManualAddressing As Boolean = dispatcher.ManualAddressing

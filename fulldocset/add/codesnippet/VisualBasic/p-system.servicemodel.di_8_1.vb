@@ -6,4 +6,4 @@
 			serviceHost.Open()
 
 			Dim dispatcher As ChannelDispatcher = CType(serviceHost.ChannelDispatchers(0), ChannelDispatcher)
-			Dim hostBase As ServiceHostBase = dispatcher.Host
+			Dim listener As IChannelListener = dispatcher.Listener

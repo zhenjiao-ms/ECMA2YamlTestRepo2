@@ -1,23 +1,16 @@
-Private Sub DataGridView1_RowDividerDoubleClick(sender as Object, e as DataGridViewRowDividerDoubleClickEventArgs) _ 
-     Handles DataGridView1.RowDividerDoubleClick
-
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Handled", e.Handled)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Button", e.Button)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Clicks", e.Clicks)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "X", e.X)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Y", e.Y)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Delta", e.Delta)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Location", e.Location)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"RowDividerDoubleClick Event")
-
-End Sub
+    Public Sub CreateMyDateTimePicker()
+        ' Create a new DateTimePicker control and initialize it.
+        Dim dateTimePicker1 As New DateTimePicker()
+        
+        ' Set the MinDate and MaxDate.
+        dateTimePicker1.MinDate = New DateTime(1985, 6, 20)
+        dateTimePicker1.MaxDate = DateTime.Today
+        
+        ' Set the CustomFormat string.
+        dateTimePicker1.CustomFormat = "MMMM dd, yyyy - dddd"
+        dateTimePicker1.Format = DateTimePickerFormat.Custom
+        
+        ' Show the CheckBox and display the control as an up-down control.
+        dateTimePicker1.ShowCheckBox = True
+        dateTimePicker1.ShowUpDown = True
+    End Sub 'CreateMyDateTimePicker

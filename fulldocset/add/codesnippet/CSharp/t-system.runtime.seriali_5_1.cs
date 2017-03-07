@@ -1,102 +1,309 @@
+// Note: You must compile this file using the C# /unsafe switch.
 using System;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters;
+using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using System.Runtime.InteropServices;
+using System.Security.Permissions;
 
+[assembly: SecurityPermission(
+SecurityAction.RequestMinimum, Execution = true)]
+// This class includes several Win32 interop definitions.
+internal class Win32
+{
+    public static readonly IntPtr InvalidHandleValue = new IntPtr(-1);
+    public const UInt32 FILE_MAP_WRITE = 2;
+    public const UInt32 PAGE_READWRITE = 0x04;
 
-// This class is not serializable.
-class Employee 
-    {
-    public String name, address;
+    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
+    public static extern IntPtr CreateFileMapping(IntPtr hFile,
+        IntPtr pAttributes, UInt32 flProtect,
+        UInt32 dwMaximumSizeHigh, UInt32 dwMaximumSizeLow, String pName);
 
-    public Employee(String name, String address) 
-    {
-        this.name = name;
-        this.address = address;
-    }
+    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
+    public static extern IntPtr OpenFileMapping(UInt32 dwDesiredAccess,
+        Boolean bInheritHandle, String name);
+
+    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
+    public static extern Boolean CloseHandle(IntPtr handle);
+
+    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
+    public static extern IntPtr MapViewOfFile(IntPtr hFileMappingObject,
+        UInt32 dwDesiredAccess,
+        UInt32 dwFileOffsetHigh, UInt32 dwFileOffsetLow,
+        IntPtr dwNumberOfBytesToMap);
+
+    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
+    public static extern Boolean UnmapViewOfFile(IntPtr address);
+
+    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
+    public static extern Boolean DuplicateHandle(IntPtr hSourceProcessHandle,
+        IntPtr hSourceHandle,
+        IntPtr hTargetProcessHandle, ref IntPtr lpTargetHandle,
+        UInt32 dwDesiredAccess, Boolean bInheritHandle, UInt32 dwOptions);
+    public const UInt32 DUPLICATE_CLOSE_SOURCE = 0x00000001;
+    public const UInt32 DUPLICATE_SAME_ACCESS = 0x00000002;
+
+    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
+    public static extern IntPtr GetCurrentProcess();
 }
 
-// This class can manually serialize an Employee object.
-sealed class EmployeeSerializationSurrogate : ISerializationSurrogate 
+
+// This class wraps memory that can be simultaneously 
+// shared by multiple AppDomains and Processes.
+[Serializable]
+public sealed class SharedMemory : ISerializable, IDisposable
 {
+    // The handle and string that identify 
+    // the Windows file-mapping object.
+    private IntPtr m_hFileMap = IntPtr.Zero;
+    private String m_name;
 
-    // Serialize the Employee object to save the object�s name and address fields.
-    public void GetObjectData(Object obj, 
-        SerializationInfo info, StreamingContext context) 
+    // The address of the memory-mapped file-mapping object.
+    private IntPtr m_address;
+
+    public unsafe Byte* Address
     {
-
-        Employee emp = (Employee) obj;
-        info.AddValue("name", emp.name);
-        info.AddValue("address", emp.address);
+        get { return (Byte*)m_address; }
     }
 
-    // Deserialize the Employee object to set the object�s name and address fields.
-    public Object SetObjectData(Object obj,
-        SerializationInfo info, StreamingContext context,
-        ISurrogateSelector selector) 
-    {
+    // The constructors.
+    public SharedMemory(Int32 size) : this(size, null) { }
 
-        Employee emp = (Employee) obj;
-        emp.name = info.GetString("name");
-        emp.address = info.GetString("address");
-        return null;
+    public SharedMemory(Int32 size, String name)
+    {
+        m_hFileMap = Win32.CreateFileMapping(Win32.InvalidHandleValue,
+            IntPtr.Zero, Win32.PAGE_READWRITE,
+            0, unchecked((UInt32)size), name);
+        if (m_hFileMap == IntPtr.Zero)
+            throw new Exception("Could not create memory-mapped file.");
+        m_name = name;
+        m_address = Win32.MapViewOfFile(m_hFileMap, Win32.FILE_MAP_WRITE,
+            0, 0, IntPtr.Zero);
     }
-}
 
-public sealed class App 
-{
-    static void Main() 
+    // The cleanup methods.
+    public void Dispose()
     {
-        // This sample uses the BinaryFormatter.
-        IFormatter formatter = new BinaryFormatter();
+        GC.SuppressFinalize(this);
+        Dispose(true);
+    }
 
-        // Create a MemoryStream that the object will be serialized into and deserialized from.
-        using (Stream stream = new MemoryStream()) 
+    private void Dispose(Boolean disposing)
+    {
+        Win32.UnmapViewOfFile(m_address);
+        Win32.CloseHandle(m_hFileMap);
+        m_address = IntPtr.Zero;
+        m_hFileMap = IntPtr.Zero;
+    }
+
+    ~SharedMemory()
+    {
+        Dispose(false);
+    }
+
+    // Private helper methods.
+    private static Boolean AllFlagsSet(Int32 flags, Int32 flagsToTest)
+    {
+        return (flags & flagsToTest) == flagsToTest;
+    }
+
+    private static Boolean AnyFlagsSet(Int32 flags, Int32 flagsToTest)
+    {
+        return (flags & flagsToTest) != 0;
+    }
+
+
+    // The security attribute demands that code that calls  
+    // this method have permission to perform serialization.
+    [SecurityPermissionAttribute(SecurityAction.Demand, SerializationFormatter = true)]
+    void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
+    {
+        // The context's State member indicates
+        // where the object will be deserialized.
+
+        // A SharedMemory object cannot be serialized 
+        // to any of the following destinations.
+        const StreamingContextStates InvalidDestinations =
+                  StreamingContextStates.CrossMachine |
+                  StreamingContextStates.File |
+                  StreamingContextStates.Other |
+                  StreamingContextStates.Persistence |
+                  StreamingContextStates.Remoting;
+        if (AnyFlagsSet((Int32)context.State, (Int32)InvalidDestinations))
+            throw new SerializationException("The SharedMemory object " +
+                "cannot be serialized to any of the following streaming contexts: " +
+                InvalidDestinations);
+
+        const StreamingContextStates DeserializableByHandle =
+                  StreamingContextStates.Clone |
+            // The same process.
+                  StreamingContextStates.CrossAppDomain;
+        if (AnyFlagsSet((Int32)context.State, (Int32)DeserializableByHandle))
+            info.AddValue("hFileMap", m_hFileMap);
+
+        const StreamingContextStates DeserializableByName =
+            // The same computer.
+                  StreamingContextStates.CrossProcess;
+        if (AnyFlagsSet((Int32)context.State, (Int32)DeserializableByName))
         {
-            // Create a SurrogateSelector.
-            SurrogateSelector ss = new SurrogateSelector();
+            if (m_name == null)
+                throw new SerializationException("The SharedMemory object " +
+                    "cannot be serialized CrossProcess because it was not constructed " +
+                    "with a String name.");
+            info.AddValue("name", m_name);
+        }
+    }
 
-            // Tell the SurrogateSelector that Employee objects are serialized and deserialized 
-            // using the EmployeeSerializationSurrogate object.
-            ss.AddSurrogate(typeof(Employee),
-            new StreamingContext(StreamingContextStates.All),
-            new EmployeeSerializationSurrogate());
 
-            // Associate the SurrogateSelector with the BinaryFormatter.
-            formatter.SurrogateSelector = ss;
+    // The security attribute demands that code that calls  
+    // this method have permission to perform serialization.
+    [SecurityPermissionAttribute(SecurityAction.Demand, SerializationFormatter = true)]
+    private SharedMemory(SerializationInfo info, StreamingContext context)
+    {
+        // The context's State member indicates 
+        // where the object was serialized from.
 
-            try 
+        const StreamingContextStates InvalidSources =
+                  StreamingContextStates.CrossMachine |
+                  StreamingContextStates.File |
+                  StreamingContextStates.Other |
+                  StreamingContextStates.Persistence |
+                  StreamingContextStates.Remoting;
+        if (AnyFlagsSet((Int32)context.State, (Int32)InvalidSources))
+            throw new SerializationException("The SharedMemory object " +
+                "cannot be deserialized from any of the following stream contexts: " +
+                InvalidSources);
+
+        const StreamingContextStates SerializedByHandle =
+                  StreamingContextStates.Clone |
+            // The same process.
+                  StreamingContextStates.CrossAppDomain;
+        if (AnyFlagsSet((Int32)context.State, (Int32)SerializedByHandle))
+        {
+            try
             {
-                // Serialize an Employee object into the memory stream.
-                formatter.Serialize(stream, new Employee("Jeff", "1 Microsoft Way"));
+                Win32.DuplicateHandle(Win32.GetCurrentProcess(),
+                    (IntPtr)info.GetValue("hFileMap", typeof(IntPtr)),
+                    Win32.GetCurrentProcess(), ref m_hFileMap, 0, false,
+                    Win32.DUPLICATE_SAME_ACCESS);
             }
-            catch (SerializationException e) 
+            catch (SerializationException)
             {
-                Console.WriteLine("Serialization failed: {0}", e.Message);
-                throw;
+                throw new SerializationException("A SharedMemory was not serialized " +
+                    "using any of the following streaming contexts: " +
+                    SerializedByHandle);
             }
+        }
 
-            // Rewind the MemoryStream.
-            stream.Position = 0;
-
-            try 
+        const StreamingContextStates SerializedByName =
+            // The same computer.
+                  StreamingContextStates.CrossProcess;
+        if (AnyFlagsSet((Int32)context.State, (Int32)SerializedByName))
+        {
+            try
             {
-                // Deserialize the Employee object from the memory stream.
-                Employee emp = (Employee) formatter.Deserialize(stream);
-
-                // Verify that it all worked.
-                Console.WriteLine("Name = {0}, Address = {1}", emp.name, emp.address);
+                m_name = info.GetString("name");
             }
-            catch (SerializationException e) 
+            catch (SerializationException)
             {
-                Console.WriteLine("Deserialization failed: {0}", e.Message);
-                throw;
+                throw new SerializationException("A SharedMemory object was not " +
+                    "serialized using any of the following streaming contexts: " +
+                    SerializedByName);
             }
+            m_hFileMap = Win32.OpenFileMapping(Win32.FILE_MAP_WRITE, false, m_name);
+        }
+        if (m_hFileMap != IntPtr.Zero)
+        {
+            m_address = Win32.MapViewOfFile(m_hFileMap, Win32.FILE_MAP_WRITE,
+                0, 0, IntPtr.Zero);
+        }
+        else
+        {
+            throw new SerializationException("A SharedMemory object could not " +
+                "be deserialized.");
         }
     }
 }
 
-// This code produces the following output.
-//
-// Name = Jeff, Address = 1 Microsoft Way
+
+class App
+{
+    [STAThread]
+    static void Main(string[] args)
+    {
+        Serialize();
+        Console.WriteLine();
+        Deserialize();
+    }
+
+    unsafe static void Serialize()
+    {
+        // Create a hashtable of values that will eventually be serialized.
+        SharedMemory sm = new SharedMemory(1024, "JeffMemory");
+        for (Int32 x = 0; x < 100; x++)
+            *(sm.Address + x) = (Byte)x;
+
+        Byte[] b = new Byte[10];
+        for (Int32 x = 0; x < b.Length; x++) b[x] = *(sm.Address + x);
+        Console.WriteLine(BitConverter.ToString(b));
+
+        // To serialize the SharedMemory object, 
+        // you must first open a stream for writing. 
+        // Use a file stream here.
+        FileStream fs = new FileStream("DataFile.dat", FileMode.Create);
+
+        // Construct a BinaryFormatter and tell it where 
+        // the objects will be serialized to.
+        BinaryFormatter formatter = new BinaryFormatter(null,
+            new StreamingContext(StreamingContextStates.CrossAppDomain));
+        try
+        {
+            formatter.Serialize(fs, sm);
+        }
+        catch (SerializationException e)
+        {
+            Console.WriteLine("Failed to serialize. Reason: " + e.Message);
+            throw;
+        }
+        finally
+        {
+            fs.Close();
+        }
+    }
+
+
+    unsafe static void Deserialize()
+    {
+        // Declare a SharedMemory reference.
+        SharedMemory sm = null;
+
+        // Open the file containing the data that you want to deserialize.
+        FileStream fs = new FileStream("DataFile.dat", FileMode.Open);
+        try
+        {
+            BinaryFormatter formatter = new BinaryFormatter(null,
+                new StreamingContext(StreamingContextStates.CrossAppDomain));
+
+            // Deserialize the SharedMemory object from the file and 
+            // assign the reference to the local variable.
+            sm = (SharedMemory)formatter.Deserialize(fs);
+        }
+        catch (SerializationException e)
+        {
+            Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
+            throw;
+        }
+        finally
+        {
+            fs.Close();
+        }
+
+        // To prove that the SharedMemory object deserialized correctly, 
+        // display some of its bytes to the console.
+        Byte[] b = new Byte[10];
+        for (Int32 x = 0; x < b.Length; x++) b[x] = *(sm.Address + x);
+        Console.WriteLine(BitConverter.ToString(b));
+    }
+}

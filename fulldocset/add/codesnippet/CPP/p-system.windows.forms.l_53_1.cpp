@@ -1,98 +1,43 @@
-#using <System.dll>
-#using <System.Drawing.dll>
-#using <System.Windows.Forms.dll>
-
-using namespace System;
-using namespace System::Windows::Forms;
-using namespace System::Drawing;
-using namespace System::Collections;
-public ref class USState
-{
-private:
-   String^ myShortName;
-   String^ myLongName;
-
-public:
-   USState( String^ strLongName, String^ strShortName )
+   void button1_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
    {
-      this->myShortName = strShortName;
-      this->myLongName = strLongName;
-   }
-
-   property String^ ShortName 
-   {
-      String^ get()
+      
+      // Create an instance of the ListBox.
+      ListBox^ listBox1 = gcnew ListBox;
+      
+      // Set the size and location of the ListBox.
+      listBox1->Size = System::Drawing::Size( 200, 100 );
+      listBox1->Location = System::Drawing::Point( 10, 10 );
+      
+      // Add the ListBox to the form.
+      this->Controls->Add( listBox1 );
+      
+      // Set the ListBox to display items in multiple columns.
+      listBox1->MultiColumn = true;
+      
+      // Set the selection mode to multiple and extended.
+      listBox1->SelectionMode = SelectionMode::MultiExtended;
+      
+      // Shutdown the painting of the ListBox as items are added.
+      listBox1->BeginUpdate();
+      
+      // Loop through and add 50 items to the ListBox.
+      for ( int x = 1; x <= 50; x++ )
       {
-         return myShortName;
+         listBox1->Items->Add( String::Format( "Item {0}", x ) );
+
       }
+      listBox1->EndUpdate();
+      
+      // Select three items from the ListBox.
+      listBox1->SetSelected( 1, true );
+      listBox1->SetSelected( 3, true );
+      listBox1->SetSelected( 5, true );
+      
+      #if defined(DEBUG)
+      // Display the second selected item in the ListBox to the console.
+      System::Diagnostics::Debug::WriteLine( listBox1->SelectedItems[ 1 ] );
+      
+      // Display the index of the first selected item in the ListBox.
+      System::Diagnostics::Debug::WriteLine( listBox1->SelectedIndices[ 0 ] );
+      #endif
    }
-
-   property String^ LongName 
-   {
-      String^ get()
-      {
-         return myLongName;
-      }
-
-   }
-};
-
-public ref class ListBoxSample3: public Form
-{
-private:
-   ListBox^ ListBox1;
-   Label^ label1;
-   TextBox^ textBox1;
-
-public:
-   ListBoxSample3()
-   {
-      ListBox1 = gcnew ListBox;
-      label1 = gcnew Label;
-      textBox1 = gcnew TextBox;
-      this->ClientSize = System::Drawing::Size(307, 206 );
-      this->Text = "ListBox Sample3";
-      ListBox1->Location = Point(54,16);
-      ListBox1->Name = "ListBox1";
-      ListBox1->Size = System::Drawing::Size( 240, 130 );
-      label1->Location = Point(14,150);
-      label1->Name = "label1";
-      label1->Size = System::Drawing::Size(40, 24);
-      label1->Text = "Value";
-      textBox1->Location = Point(54,150);
-      textBox1->Name = "textBox1";
-      textBox1->Size = System::Drawing::Size( 240, 24 );
-      array<Control^>^temp2 = {ListBox1,label1, textBox1};
-      this->Controls->AddRange( temp2 );
-
-      // Populate the list box using an array as DataSource. 
-      // DisplayMember is used to display just the long name of each state.
-      ArrayList^ USStates = gcnew ArrayList;
-      USStates->Add( gcnew USState( "Alabama","AL" ) );
-      USStates->Add( gcnew USState( "Washington","WA" ) );
-      USStates->Add( gcnew USState( "West Virginia","WV" ) );
-      USStates->Add( gcnew USState( "Wisconsin","WI" ) );
-      USStates->Add( gcnew USState( "Wyoming","WY" ) );
-      ListBox1->DataSource = USStates;
-      ListBox1->DisplayMember = "LongName";
-      ListBox1->ValueMember = "ShortName";
-      ListBox1->SelectedValueChanged += gcnew EventHandler( this, &ListBoxSample3::ListBox1_SelectedValueChanged );
-      ListBox1->SetSelected(0, false);
-   }
-
-   void InitializeComponent(){}
-
-private:
-   void ListBox1_SelectedValueChanged( Object^ /*sender*/, EventArgs^ /*e*/ )
-   {
-      textBox1->Text="";
-      if ( ListBox1->SelectedIndex != -1 )
-            textBox1->Text = ListBox1->SelectedValue->ToString();
-   }
-};
-
-[STAThread]
-int main()
-{
-   Application::Run( gcnew ListBoxSample3 );
-}

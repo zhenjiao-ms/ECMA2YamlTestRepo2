@@ -1,9 +1,31 @@
-Private Sub TreeView1_NodeMouseHover(sender as Object, e as TreeNodeMouseHoverEventArgs) _ 
-     Handles TreeView1.NodeMouseHover
+    Friend WithEvents changeDirectionButton As ToolStripButton
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "Node", e.Node)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"NodeMouseHover Event")
+    Private Sub InitializeMovingToolStrip()
+        changeDirectionButton = New ToolStripButton()
 
-End Sub
+        movingToolStrip.AutoSize = True
+        movingToolStrip.RenderMode = ToolStripRenderMode.System
+
+        changeDirectionButton.TextDirection = ToolStripTextDirection.Vertical270
+        changeDirectionButton.Overflow = ToolStripItemOverflow.Never
+        changeDirectionButton.Text = "Change Alignment"
+        movingToolStrip.Items.Add(changeDirectionButton)
+    End Sub
+
+
+    Public Sub changeDirectionButton_Click(ByVal sender As Object, _
+        ByVal e As EventArgs) Handles changeDirectionButton.Click
+
+        Dim item As ToolStripItem = CType(sender, ToolStripItem)
+
+        If item.TextDirection = ToolStripTextDirection.Vertical270 _
+            OrElse item.TextDirection = ToolStripTextDirection.Vertical90 Then
+
+            item.TextDirection = ToolStripTextDirection.Horizontal
+            movingToolStrip.Dock = System.Windows.Forms.DockStyle.Top
+        Else
+            item.TextDirection = ToolStripTextDirection.Vertical270
+            movingToolStrip.Dock = System.Windows.Forms.DockStyle.Left
+        End If
+
+    End Sub

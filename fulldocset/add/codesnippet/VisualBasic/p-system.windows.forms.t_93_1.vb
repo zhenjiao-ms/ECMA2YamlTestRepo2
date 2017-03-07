@@ -1,31 +1,20 @@
-    Friend WithEvents changeDirectionButton As ToolStripButton
-
-    Private Sub InitializeMovingToolStrip()
-        changeDirectionButton = New ToolStripButton()
-
-        movingToolStrip.AutoSize = True
-        movingToolStrip.RenderMode = ToolStripRenderMode.System
-
-        changeDirectionButton.TextDirection = ToolStripTextDirection.Vertical270
-        changeDirectionButton.Overflow = ToolStripItemOverflow.Never
-        changeDirectionButton.Text = "Change Alignment"
-        movingToolStrip.Items.Add(changeDirectionButton)
-    End Sub
-
-
-    Public Sub changeDirectionButton_Click(ByVal sender As Object, _
-        ByVal e As EventArgs) Handles changeDirectionButton.Click
-
-        Dim item As ToolStripItem = CType(sender, ToolStripItem)
-
-        If item.TextDirection = ToolStripTextDirection.Vertical270 _
-            OrElse item.TextDirection = ToolStripTextDirection.Vertical90 Then
-
-            item.TextDirection = ToolStripTextDirection.Horizontal
-            movingToolStrip.Dock = System.Windows.Forms.DockStyle.Top
-        Else
-            item.TextDirection = ToolStripTextDirection.Vertical270
-            movingToolStrip.Dock = System.Windows.Forms.DockStyle.Left
-        End If
-
-    End Sub
+Private Sub SelectNode(node As TreeNode)
+   If node.IsSelected Then
+      ' Determine which TreeNode to select.
+      Select Case myComboBox.Text
+         Case "Previous"
+            node.TreeView.SelectedNode = node.PrevNode
+         Case "PreviousVisible"
+            node.TreeView.SelectedNode = node.PrevVisibleNode
+         Case "Next"
+            node.TreeView.SelectedNode = node.NextNode
+         Case "NextVisible"
+            node.TreeView.SelectedNode = node.NextVisibleNode
+         Case "First"
+            node.TreeView.SelectedNode = node.FirstNode
+         Case "Last"
+            node.TreeView.SelectedNode = node.LastNode
+      End Select
+   End If
+   node.TreeView.Focus()
+End Sub

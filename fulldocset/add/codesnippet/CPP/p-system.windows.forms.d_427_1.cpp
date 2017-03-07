@@ -1,7 +1,21 @@
-   // Get the width of row header.
-private:
-   void button9_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
+   void SetCellValue( DataGrid^ myGrid )
    {
-      Int32 myRowHeaderWidth = myDataGrid->RowHeaderWidth;
-      MessageBox::Show( String::Concat( "Width of row headers is: ", myRowHeaderWidth ), "Message", MessageBoxButtons::OK, MessageBoxIcon::Exclamation );
+      DataGridCell myCell;
+      
+      // Use an arbitrary cell.
+      myCell.RowNumber = 1;
+      myCell.ColumnNumber = 1;
+      
+      // Change the cell's value using the CurrentCell.
+      myGrid[ myCell ] = "New Value";
+   }
+
+   void GetCellValue( DataGrid^ myGrid )
+   {
+      DataGridCell myCell;
+      
+      // Use and arbitrary cell.
+      myCell.RowNumber = 1;
+      myCell.ColumnNumber = 1;
+      Console::WriteLine( myGrid[ myCell ] );
    }

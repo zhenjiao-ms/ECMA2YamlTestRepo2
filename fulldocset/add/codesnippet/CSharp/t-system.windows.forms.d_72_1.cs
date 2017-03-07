@@ -1,11 +1,35 @@
-private void DataGridView1_RowHeightInfoNeeded(Object sender, DataGridViewRowHeightInfoNeededEventArgs e) {
+    private void Form1_Load(object sender, System.EventArgs e)
+    {
+        // Initialize the DataGridView control.
+        this.DataGridView1.ColumnCount = 5;
+        this.DataGridView1.Rows.Add(new string[] { "A", "B", "C", "D", "E" });
+        this.DataGridView1.Rows.Add(new string[] { "F", "G", "H", "I", "J" });
+        this.DataGridView1.Rows.Add(new string[] { "K", "L", "M", "N", "O" });
+        this.DataGridView1.Rows.Add(new string[] { "P", "Q", "R", "S", "T" });
+        this.DataGridView1.Rows.Add(new string[] { "U", "V", "W", "X", "Y" });
+        this.DataGridView1.AutoResizeColumns();
+        this.DataGridView1.ClipboardCopyMode = 
+            DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+    }
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "Height", e.Height );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "MinimumHeight", e.MinimumHeight );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "RowHeightInfoNeeded Event" );
-}
+    private void CopyPasteButton_Click(object sender, System.EventArgs e)
+    {
+        if (this.DataGridView1
+            .GetCellCount(DataGridViewElementStates.Selected) > 0)
+        {
+            try
+            {
+                // Add the selection to the clipboard.
+                Clipboard.SetDataObject(
+                    this.DataGridView1.GetClipboardContent());
+                
+                // Replace the text box contents with the clipboard text.
+                this.TextBox1.Text = Clipboard.GetText();
+            }
+            catch (System.Runtime.InteropServices.ExternalException)
+            {
+                this.TextBox1.Text = 
+                    "The Clipboard could not be accessed. Please try again.";
+            }
+        }
+    }

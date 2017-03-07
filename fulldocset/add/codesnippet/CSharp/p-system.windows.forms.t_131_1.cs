@@ -1,26 +1,71 @@
-private void AddToolBar()
-{
-   // Add a toolbar and set some of its properties.
-   toolBar1 = new ToolBar();
-   toolBar1.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
-   toolBar1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-   toolBar1.Buttons.Add(this.toolBarButton1);
-   toolBar1.ButtonSize = new System.Drawing.Size(24, 24);
-   toolBar1.Divider = true;
-   toolBar1.DropDownArrows = true;
-   toolBar1.ImageList = this.imageList1;
-   toolBar1.ShowToolTips = true;
-   toolBar1.Size = new System.Drawing.Size(292, 25);
-   toolBar1.TabIndex = 0;
-   toolBar1.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
-   toolBar1.Wrappable = false;
-   
-   // Add handlers for the ButtonClick and ButtonDropDown events.
-   toolBar1.ButtonDropDown += 
-     new ToolBarButtonClickEventHandler(toolBar1_ButtonDropDown);
-   toolBar1.ButtonClick += 
-     new ToolBarButtonClickEventHandler(toolBar1_ButtonClicked);
+	private void InitializeTreeView()
+	{
 
-   // Add the toolbar to the form.
-   this.Controls.Add(toolBar1);
-}
+		// Construct the TreeView object.
+		this.TreeView1 = new System.Windows.Forms.TreeView();
+
+		// Set dock, location, size name, and tab order
+		// values for the TreeView object.
+		TreeView1.Dock = System.Windows.Forms.DockStyle.Left;
+		TreeView1.Location = new System.Drawing.Point(0, 0);
+		TreeView1.Name = "TreeView1";
+		TreeView1.Size = new System.Drawing.Size(152, 266);
+		TreeView1.TabIndex = 1;
+		
+		// Associate the event-handling methods with the
+		// BeforeLabeEdit and the AfterSelect events.
+		TreeView1.BeforeLabelEdit += 
+			new NodeLabelEditEventHandler(TreeView1_BeforeLabelEdit);
+		TreeView1.AfterSelect += 
+			new TreeViewEventHandler(TreeView1_AfterSelect);
+
+		// Set the LabelEdit property to true to allow the 
+		// user to edit the TreeNode text.
+		this.TreeView1.LabelEdit = true;
+
+		// Declare and create objects needed to populate 
+		// the TreeView.
+		string[] files = new string[]{"bigPresentation.ppt", 
+			"myFinances.xls", "myResume.doc"};; 
+		string filePath = "c:\\myFiles";
+		System.Collections.ArrayList nodes = 
+			new System.Collections.ArrayList();
+
+		// Create a node for each file, setting the Text property to the 
+		// file's name and the Tag property to file's fully-qualified name.
+		foreach ( string file in files )
+		{
+			TreeNode node = new TreeNode(file);
+			node.Tag = filePath+"\\"+file;
+			nodes.Add(node);
+		}
+
+		TreeNode[] treeNodes = new TreeNode[nodes.Count];
+		nodes.CopyTo(treeNodes);
+
+		// Create a new node named topNode and add the ArrayList of 
+		// nodes to topNode.
+		TreeNode topNode = new TreeNode("myFiles",  treeNodes);
+		topNode.Tag = filePath;
+
+		// Add topNode to the TreeView.
+		TreeView1.Nodes.Add(topNode);
+
+		// Add the TreeView to the form.
+		this.Controls.Add(TreeView1);
+	}
+
+	private void TreeView1_BeforeLabelEdit(object sender, 
+		NodeLabelEditEventArgs e)
+	{
+
+		// Determine whether the user has selected the top node. If so,
+		// change the CancelEdit property to true to cancel the edit.  
+		if (e.Node == TreeView1.TopNode)
+
+		{
+			e.CancelEdit = true;
+			MessageBox.Show("You are not allowed to edit the top node");
+		}
+		
+	}

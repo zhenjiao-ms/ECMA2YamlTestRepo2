@@ -1,105 +1,57 @@
-<%@ Page Language="VB" %>
+
+<%@ Page language="VB" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script runat="server">
 
-<script language="VB" runat="server">
-    Dim Count As Integer = 1
-
-    Sub Page_Load(Sender As Object, e As EventArgs)
-        If Not IsPostBack Then
-            Dim values As New ArrayList()
-            
-            values.Add(New PositionData("Microsoft", "Msft"))
-            values.Add(New PositionData("Intel", "Intc"))
-            values.Add(New PositionData("Dell", "Dell"))
-            
-            Repeater1.DataSource = values
-            Repeater1.DataBind()
-        End If
-    End Sub
-
-    Sub R1_ItemCreated(Sender As Object, e As RepeaterItemEventArgs)
-        Dim iTypeText As String = ""
-        
-        Select Case e.Item.ItemType
-            Case ListItemType.Item
-                iTypeText = "Item"
-            Case ListItemType.AlternatingItem
-                iTypeText = "AlternatingItem"
-            Case ListItemType.Header
-                iTypeText = "Header"
-            Case ListItemType.Footer
-                iTypeText = "Footer"
-            Case ListItemType.Separator
-                iTypeText = "Separator"
-        End Select
-        Count = Count + 1
-        Label1.Text &= "(" & Count & ") A Repeater " & _
-            iTypeText & " has been created; <br />"
-    End Sub
+  Sub AuthorsGridView_Sorted(ByVal sender As Object, ByVal e As EventArgs)
+      
+    ' Display the sort direction.   
+    If AuthorsGridView.SortDirection = SortDirection.Ascending Then
  
-    Public Class PositionData
-        
-        Private myName As String
-        Private myTicker As String        
-        
-        Public Sub New(newName As String, newTicker As String)
-            Me.myName = newName
-            Me.myTicker = newTicker
-        End Sub        
-        
-        Public ReadOnly Property Name() As String
-            Get
-                Return myName
-            End Get
-        End Property        
-        
-        Public ReadOnly Property Ticker() As String
-            Get
-                Return myTicker
-            End Get
-        End Property
-    End Class
+      Message.Text = "Sorting in ascending order."
     
+    Else
+    
+      Message.Text = "Sorting in descending order."
+    
+    End If
+        
+  End Sub
+
 </script>
- 
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-    <title>Repeater Example</title>
+  <head runat="server">
+    <title>SortDirection Example</title>
 </head>
 <body>
     <form id="form1" runat="server">
-
-    <h3>Repeater Example</h3>
- 
-       <p style="font-weight: bold">Repeater1:</p>
-         
-       <asp:Repeater ID="Repeater1" OnItemCreated="R1_ItemCreated" runat="server">
-          <HeaderTemplate>
-             <table border="1">
-                <tr>
-                   <td style="font-weight:bold">Company</td>
-                   <td style="font-weight:bold">Symbol</td>
-                </tr>
-          </HeaderTemplate>
-             
-          <ItemTemplate>
-             <tr>
-                <td> <%# DataBinder.Eval(Container.DataItem, "Name") %> </td>
-                <td> <%# DataBinder.Eval(Container.DataItem, "Ticker") %> </td>
-             </tr>
-          </ItemTemplate>
-             
-          <FooterTemplate>
-             </table>
-          </FooterTemplate>
-             
-       </asp:Repeater>
-       <br />
-         
-       <asp:Label ID="Label1" Font-Names="Verdana" 
-          ForeColor="Green" Font-Size="10pt" Runat="server"/>
+        
+      <h3>SortDirection Example</h3>
+            
+      <asp:label id="Message"
+        forecolor="Red"
+        runat="server"/>
+        
+      <br/><br/>    
+          
+      <asp:gridview id="AuthorsGridView"
+        datasourceid="AuthorsSqlDataSource"
+        allowsorting="true"
+        onsorted="AuthorsGridView_Sorted"  
+        runat="server"/>
+            
+      <!-- This example uses Microsoft SQL Server and connects -->
+      <!-- to the Pubs sample database.                        -->
+      <asp:sqldatasource id="AuthorsSqlDataSource"  
+        selectcommand="SELECT [au_id], [au_lname], [au_fname], [address], [city], [state], [zip], [contract] FROM [authors]"
+        updatecommand="UPDATE authors SET au_lname=@au_lname, au_fname=@au_fname, address=@address, city=@city, state=@state, zip=@zip, contract=@contract WHERE (authors.au_id = @au_id)"
+        connectionstring="server=localhost;database=pubs;integrated security=SSPI"
+        runat="server">
+      </asp:sqldatasource>
+            
     </form>
- </body>
- </html>
+  </body>
+</html>

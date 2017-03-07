@@ -1,14 +1,18 @@
-    // Set row labels.
-    private void Button6_Click(object sender, System.EventArgs e)
-    {
+public void CreateMyDateTimePicker()
+{
+   // Create a new DateTimePicker control and initialize it.
+   DateTimePicker dateTimePicker1 = new DateTimePicker();
 
-        int rowNumber = 1;
-        foreach (DataGridViewRow row in dataGridView.Rows)
-        {
-            if (row.IsNewRow) continue;
-            row.HeaderCell.Value = "Row " + rowNumber;
-            rowNumber = rowNumber + 1;
-        }
-        dataGridView.AutoResizeRowHeadersWidth(
-            DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
-    }
+   // Set the MinDate and MaxDate.
+   dateTimePicker1.MinDate = new DateTime(1985, 6, 20);
+   dateTimePicker1.MaxDate = DateTime.Today;
+
+   // Set the CustomFormat string.
+   dateTimePicker1.CustomFormat = "MMMM dd, yyyy - dddd";
+   dateTimePicker1.Format = DateTimePickerFormat.Custom;
+
+   // Show the CheckBox and display the control as an up-down control.
+   dateTimePicker1.ShowCheckBox = true;
+   dateTimePicker1.ShowUpDown = true;
+}
+   

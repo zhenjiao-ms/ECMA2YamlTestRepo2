@@ -1,81 +1,99 @@
 using System;
 using System.IO;
-using System.Xml;
 using System.Xml.Serialization;
+using System.Collections;
+using System.Xml;
 
-public class Group{
-   public string GroupName;
-   public GroupType Grouptype;
+public class Transportation
+{
+   // Subsequent code overrides these two XmlElementAttributes.
+   [XmlElement(typeof(Car)),
+   XmlElement(typeof(Plane))]
+   public ArrayList Vehicles;
 }
 
-public enum GroupType{
-   // Use the SoapEnumAttribute to instruct the XmlSerializer
-   // to generate Small and Large instead of A and B.
-   [SoapEnum("Small")]
-   A,
-   [SoapEnum("Large")]
-   B
+public class Car
+{
+   public string Name;
 }
- 
-public class Run {
-   static void Main(){
-      Run test= new Run();
-      test.SerializeObject("SoapEnum.xml");
-      test.SerializeOverride("SoapOverride.xml");
-      Console.WriteLine("Fininished writing two files");
+
+public class Plane
+{
+   public string Name;
+}
+public class Truck
+{
+   public string Name;
+}
+public class Train
+{
+   public string Name;
+}
+
+public class Test
+{
+   public static void Main()
+   {
+      Test t = new Test();
+      t.SerializeObject("OverrideElement.xml");
    }
 
-     private void SerializeObject(string filename){
-      // Create an instance of the XmlSerializer Class.
-      XmlTypeMapping mapp  =
-      (new SoapReflectionImporter()).ImportTypeMapping(typeof(Group));
-      XmlSerializer mySerializer =  new XmlSerializer(mapp);
+   // Return an XmlSerializer used for overriding.
+   public XmlSerializer CreateOverrider()
+   {
+      // Create the XmlAttributes and XmlAttributeOverrides objects.
+      XmlAttributes attrs = new XmlAttributes();
 
-      // Writing the file requires a TextWriter.
+      XmlAttributeOverrides xOver = 
+      new XmlAttributeOverrides();
+      
+      
+      /* Create an XmlElementAttribute to override 
+      the Vehicles property. */
+      XmlElementAttribute xElement1 = 
+      new XmlElementAttribute(typeof(Truck));
+      // Add the XmlElementAttribute to the collection.
+      attrs.XmlElements.Add(xElement1);
+
+      /* Create a second XmlElementAttribute, and 
+      add it to the collection. */
+      XmlElementAttribute xElement2 = 
+      new XmlElementAttribute(typeof(Train));
+      attrs.XmlElements.Add(xElement2);
+
+      /* Add the XmlAttributes to the XmlAttributeOverrides,
+      specifying the member to override. */
+      xOver.Add(typeof(Transportation), "Vehicles", attrs);
+      
+      // Create the XmlSerializer, and return it.
+      XmlSerializer xSer = new XmlSerializer
+      (typeof(Transportation), xOver);
+      return xSer;
+   }
+
+   public void SerializeObject(string filename)
+   {
+      // Create an XmlSerializer instance.
+      XmlSerializer xSer = CreateOverrider();
+
+      // Create the object and serialize it.
+      Transportation myTransportation = 
+      new Transportation();
+
+      /* Create two new override objects that can be
+      inserted into the array. */
+      myTransportation.Vehicles = new ArrayList();
+      Truck myTruck = new Truck();
+      myTruck.Name = "MyTruck";
+
+      Train myTrain = new Train();
+      myTrain.Name = "MyTrain";
+
+      myTransportation.Vehicles.Add(myTruck);
+      myTransportation.Vehicles.Add(myTrain);
+
       TextWriter writer = new StreamWriter(filename);
-
-      // Create an instance of the Class that will be serialized.
-      Group myGroup = new Group();
-
-      // Set the object properties.
-      myGroup.GroupName = ".NET";
-      myGroup.Grouptype= GroupType.A;
-
-      // Serialize the Class, and close the TextWriter.
-      mySerializer.Serialize(writer, myGroup);
-       writer.Close();
+      xSer.Serialize(writer, myTransportation);
+      
    }
-
-   private void SerializeOverride(string fileName){
-      SoapAttributeOverrides soapOver = new SoapAttributeOverrides();
-      SoapAttributes SoapAtts = new SoapAttributes();
-
-      // Add a SoapEnumAttribute for the GroupType.A enumerator.       
-      // Instead of 'A'  it will be "West".
-      SoapEnumAttribute soapEnum = new SoapEnumAttribute("West");
-      // Override the "A" enumerator.
-      SoapAtts.SoapEnum = soapEnum;
-      soapOver.Add(typeof(GroupType), "A", SoapAtts);
-
-      // Add another SoapEnumAttribute for the GroupType.B enumerator.
-      // Instead of //B// it will be "East".
-      SoapAtts= new SoapAttributes();
-      soapEnum = new SoapEnumAttribute();
-      soapEnum.Name = "East";
-      SoapAtts.SoapEnum = soapEnum;
-      soapOver.Add(typeof(GroupType), "B", SoapAtts);
-
-      // Create an XmlSerializer used for overriding.
-      XmlTypeMapping map = 
-      new SoapReflectionImporter(soapOver).
-      ImportTypeMapping(typeof(Group));
-      XmlSerializer ser = new XmlSerializer(map);
-      Group myGroup = new Group();
-      myGroup.GroupName = ".NET";
-      myGroup.Grouptype = GroupType.B;
-      // Writing the file requires a TextWriter.
-      TextWriter writer = new StreamWriter(fileName);
-      ser.Serialize(writer, myGroup);
-      writer.Close();
-   	}
 }

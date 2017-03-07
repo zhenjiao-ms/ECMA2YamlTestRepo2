@@ -1,85 +1,101 @@
 using System;
-using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-
-class Alice
+public class PasswordDerivedBytesExample
 {
-    public static void Main(string[] args)
+
+    public static void Main(String[] args)
     {
-        using (Bob bob = new Bob())
+
+        // Get a password from the user.
+        Console.WriteLine("Enter a password to produce a key:");
+
+        byte[] pwd = Encoding.Unicode.GetBytes(Console.ReadLine());
+
+        byte[] salt = CreateRandomSalt(7);
+
+        // Create a TripleDESCryptoServiceProvider object.
+        TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
+
+        try
         {
-            using (RSACryptoServiceProvider rsaKey = new RSACryptoServiceProvider())
-            {
-                // Get Bob's public key
-                rsaKey.ImportCspBlob(bob.key);
-                byte[] encryptedSessionKey = null;
-                byte[] encryptedMessage = null;
-                byte[] iv = null;
-                Send(rsaKey, "Secret message", out iv, out encryptedSessionKey, out encryptedMessage);
-                bob.Receive(iv, encryptedSessionKey, encryptedMessage);
-            }
-        }
-    }
+            Console.WriteLine("Creating a key with PasswordDeriveBytes...");
 
-    private static void Send(RSA key, string secretMessage, out byte[] iv, out byte[] encryptedSessionKey, out byte[] encryptedMessage)
-    {
-        using (Aes aes = new AesCryptoServiceProvider())
+            // Create a PasswordDeriveBytes object and then create
+            // a TripleDES key from the password and salt.
+            PasswordDeriveBytes pdb = new PasswordDeriveBytes(pwd, salt);
+
+
+            // Create the key and set it to the Key property
+            // of the TripleDESCryptoServiceProvider object.
+            tdes.Key = pdb.CryptDeriveKey("TripleDES", "SHA1", 192, tdes.IV);
+
+
+            Console.WriteLine("Operation complete.");
+        }
+        catch (Exception e)
         {
-            iv = aes.IV;
-
-            // Encrypt the session key
-            RSAOAEPKeyExchangeFormatter keyFormatter = new RSAOAEPKeyExchangeFormatter(key);
-            encryptedSessionKey = keyFormatter.CreateKeyExchange(aes.Key, typeof(Aes));
-
-            // Encrypt the message
-            using (MemoryStream ciphertext = new MemoryStream())
-            using (CryptoStream cs = new CryptoStream(ciphertext, aes.CreateEncryptor(), CryptoStreamMode.Write))
-            {
-                byte[] plaintextMessage = Encoding.UTF8.GetBytes(secretMessage);
-                cs.Write(plaintextMessage, 0, plaintextMessage.Length);
-                cs.Close();
-
-                encryptedMessage = ciphertext.ToArray();
-            }
+            Console.WriteLine(e.Message);
         }
-    }
-
-}
-public class Bob : IDisposable
-{
-    public byte[] key;
-    private RSACryptoServiceProvider rsaKey = new RSACryptoServiceProvider();
-    public Bob()
-    {
-        key = rsaKey.ExportCspBlob(false);
-    }
-    public void Receive(byte[] iv, byte[] encryptedSessionKey, byte[] encryptedMessage)
-    {
-
-        using (Aes aes = new AesCryptoServiceProvider())
+        finally
         {
-            aes.IV = iv;
+            // Clear the buffers
+            ClearBytes(pwd);
+            ClearBytes(salt);
 
-            // Decrypt the session key
-            RSAOAEPKeyExchangeDeformatter keyDeformatter = new RSAOAEPKeyExchangeDeformatter(rsaKey);
-            aes.Key = keyDeformatter.DecryptKeyExchange(encryptedSessionKey);
-
-            // Decrypt the message
-            using (MemoryStream plaintext = new MemoryStream())
-            using (CryptoStream cs = new CryptoStream(plaintext, aes.CreateDecryptor(), CryptoStreamMode.Write))
-            {
-                cs.Write(encryptedMessage, 0, encryptedMessage.Length);
-                cs.Close();
-
-                string message = Encoding.UTF8.GetString(plaintext.ToArray());
-                Console.WriteLine(message);
-            }
+            // Clear the key.
+            tdes.Clear();
         }
+
+        Console.ReadLine();
     }
-    public void Dispose()
+
+    //////////////////////////////////////////////////////////
+    // Helper methods:
+    // CreateRandomSalt: Generates a random salt value of the
+    //                   specified length.
+    //
+    // ClearBytes: Clear the bytes in a buffer so they can't
+    //             later be read from memory.
+    //////////////////////////////////////////////////////////
+
+    public static byte[] CreateRandomSalt(int length)
     {
-        rsaKey.Dispose();
+        // Create a buffer
+        byte[] randBytes;
+
+        if (length >= 1)
+        {
+            randBytes = new byte[length];
+        }
+        else
+        {
+            randBytes = new byte[1];
+        }
+
+        // Create a new RNGCryptoServiceProvider.
+        RNGCryptoServiceProvider rand = new RNGCryptoServiceProvider();
+
+        // Fill the buffer with random bytes.
+        rand.GetBytes(randBytes);
+
+        // return the bytes.
+        return randBytes;
+    }
+
+    public static void ClearBytes(byte[] buffer)
+    {
+        // Check arguments.
+        if (buffer == null)
+        {
+            throw new ArgumentException("buffer");
+        }
+
+        // Set each byte in the buffer to 0.
+        for (int x = 0; x < buffer.Length; x++)
+        {
+            buffer[x] = 0;
+        }
     }
 }

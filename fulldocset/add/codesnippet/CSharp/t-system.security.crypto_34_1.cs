@@ -1,33 +1,60 @@
 using System;
 using System.Security.Cryptography;
-using System.Security.Permissions;
-using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
-class X500Sample
+public class CertSelect
 {
-	static void Main()
-	{
-		try
-		{
-			X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
-			store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
-			X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
-			X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
-			X509Certificate2Collection scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Test Certificate Select", "Select a certificate from the following list to get information on that certificate", X509SelectionFlag.MultiSelection);
-			Console.WriteLine("Number of certificates: {0}{1}", scollection.Count, Environment.NewLine);
-			foreach (X509Certificate2 x509 in scollection)
-			{
-				X500DistinguishedName dname = new X500DistinguishedName(x509.SubjectName);
-				Console.WriteLine("X500DistinguishedName: {0}{1}", dname.Name, Environment.NewLine);
-				x509.Reset();
-			}
-			store.Close();
-		}
-		catch (CryptographicException)
-		{
-			Console.WriteLine("Information could not be written out for this certificate.");
-		}
+    public static void Main()
+    {
+        try
+        {
+            X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
+            store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
 
-	}
+            X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
+            for (int i = 0; i < collection.Count; i++)
+            {
+                foreach (X509Extension extension in collection[i].Extensions)
+                {
+                    Console.WriteLine(extension.Oid.FriendlyName + "(" + extension.Oid.Value + ")");
+   
+
+                    if (extension.Oid.FriendlyName == "Key Usage")
+                    {
+                        X509KeyUsageExtension ext = (X509KeyUsageExtension)extension;
+                        Console.WriteLine(ext.KeyUsages);
+                    }
+
+                    if (extension.Oid.FriendlyName == "Basic Constraints")
+                    {
+                        X509BasicConstraintsExtension ext = (X509BasicConstraintsExtension)extension;
+                        Console.WriteLine(ext.CertificateAuthority);
+                        Console.WriteLine(ext.HasPathLengthConstraint);
+                        Console.WriteLine(ext.PathLengthConstraint);
+                    }
+
+                    if (extension.Oid.FriendlyName == "Subject Key Identifier")
+                    {
+                        X509SubjectKeyIdentifierExtension ext = (X509SubjectKeyIdentifierExtension)extension;
+                        Console.WriteLine(ext.SubjectKeyIdentifier);
+                    }
+
+                    if (extension.Oid.FriendlyName == "Enhanced Key Usage")
+                    {
+                        X509EnhancedKeyUsageExtension ext = (X509EnhancedKeyUsageExtension)extension;
+                        OidCollection oids = ext.EnhancedKeyUsages;
+                        foreach (Oid oid in oids)
+                        {
+                            Console.WriteLine(oid.FriendlyName + "(" + oid.Value + ")");
+                        }
+                    }
+                }
+            }
+            store.Close();
+        }
+        catch (CryptographicException)
+        {
+            Console.WriteLine("Information could not be written out for this certificate.");
+        }
+    }
 }

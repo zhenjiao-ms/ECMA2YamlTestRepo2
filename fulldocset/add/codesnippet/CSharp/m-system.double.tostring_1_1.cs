@@ -1,51 +1,32 @@
-      double value = 16325.62901;
-      string specifier;
-      CultureInfo culture;
+using System;
+using System.Globalization;
 
-      // Use standard numeric format specifiers.
-      specifier = "G";
-      culture = CultureInfo.CreateSpecificCulture("eu-ES");
-      Console.WriteLine(value.ToString(specifier, culture));
-      // Displays:    16325,62901
-      Console.WriteLine(value.ToString(specifier, CultureInfo.InvariantCulture));
-      // Displays:    16325.62901
-      
-      specifier = "C";
-      culture = CultureInfo.CreateSpecificCulture("en-US");
-      Console.WriteLine(value.ToString(specifier, culture));
-      // Displays:    $16,325.63
-      culture = CultureInfo.CreateSpecificCulture("en-GB");
-      Console.WriteLine(value.ToString(specifier, culture));
-      // Displays:    £16,325.63
-      
-      specifier = "E04";
-      culture = CultureInfo.CreateSpecificCulture("sv-SE");
-      Console.WriteLine(value.ToString(specifier, culture));
-      // Displays: 1,6326E+004   
-       culture = CultureInfo.CreateSpecificCulture("en-NZ");
-       Console.WriteLine(value.ToString(specifier, culture));
-      // Displays:    1.6326E+004   
-      
-      specifier = "F";
-      culture = CultureInfo.CreateSpecificCulture("fr-FR");
-      Console.WriteLine(value.ToString(specifier, culture));
-      // Displays:    16325,63
-      culture = CultureInfo.CreateSpecificCulture("en-CA");
-      Console.WriteLine(value.ToString(specifier, culture));
-      // Displays:    16325.63
-      
-      specifier = "N";
-      culture = CultureInfo.CreateSpecificCulture("es-ES");
-      Console.WriteLine(value.ToString(specifier, culture));
-      // Displays:    16.325,63
-      culture = CultureInfo.CreateSpecificCulture("fr-CA");
-      Console.WriteLine(value.ToString(specifier, culture));
-      // Displays:    16 325,63
-      
-      specifier = "P";
-      culture = CultureInfo.InvariantCulture;
-      Console.WriteLine((value/10000).ToString(specifier, culture));
-      // Displays:    163.26 %
-      culture = CultureInfo.CreateSpecificCulture("ar-EG");
-      Console.WriteLine((value/10000).ToString(specifier, culture));
-      // Displays:    163.256 %
+public class Example
+{
+   static void Main(string[] args)
+   {
+      Console.WriteLine("Attempting to round-trip a Double with 'R':");
+      double initialValue = 0.6822871999174;
+      string valueString = initialValue.ToString("R",
+                                                 CultureInfo.InvariantCulture);
+      double roundTripped = double.Parse(valueString,
+                                         CultureInfo.InvariantCulture);
+      Console.WriteLine("{0:R} = {1:R}: {2}\n",
+                        initialValue, roundTripped, initialValue.Equals(roundTripped));
+
+      Console.WriteLine("Attempting to round-trip a Double with 'G17':");
+      string valueString17 = initialValue.ToString("G17",
+                                                   CultureInfo.InvariantCulture);
+      double roundTripped17 = double.Parse(valueString17,
+                                           CultureInfo.InvariantCulture);
+      Console.WriteLine("{0:R} = {1:R}: {2}\n",
+                        initialValue, roundTripped17, initialValue.Equals(roundTripped17));
+   }
+}
+// If compiled to an application that targets anycpu or x64 and run on an x64 system,
+// the example displays the following output:
+//       Attempting to round-trip a Double with 'R':
+//       0.6822871999174 = 0.68228719991740006: False
+//
+//       Attempting to round-trip a Double with 'G17':
+//       0.6822871999174 = 0.6822871999174: True

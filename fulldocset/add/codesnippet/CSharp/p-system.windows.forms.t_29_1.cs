@@ -1,22 +1,25 @@
-            // The following code example demonstrates the syntax for setting
-            // various ToolStripComboBox properties.
-            // 
-            toolStripComboBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            "aaa",
-            "bbb",
-            "ccc"});
-            toolStripComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            toolStripComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            toolStripComboBox1.DropDownHeight = 110;
-            toolStripComboBox1.DropDownWidth = 122;
-            toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-            toolStripComboBox1.IntegralHeight = false;
-            toolStripComboBox1.Items.AddRange(new object[] {
-            "xxx",
-            "yyy",
-            "zzz"});
-            toolStripComboBox1.MaxDropDownItems = 9;
-            toolStripComboBox1.MergeAction = System.Windows.Forms.MergeAction.Insert;
-            toolStripComboBox1.Name = "toolStripComboBox1";
-            toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
-            toolStripComboBox1.Sorted = true;
+            // This method renders the GridStrip control's background.
+            protected override void OnRenderToolStripBackground(
+                ToolStripRenderEventArgs e)
+            {
+                base.OnRenderToolStripBackground(e);
+
+                // This late initialization is a workaround. The gradient
+                // depends on the bounds of the GridStrip control. The bounds 
+                // are dependent on the layout engine, which hasn't fully
+                // performed layout by the time the Initialize method runs.
+                if (this.backgroundBrush == null)
+                {
+                    this.backgroundBrush = new LinearGradientBrush(
+                       e.ToolStrip.ClientRectangle,
+                       SystemColors.ControlLightLight,
+                       SystemColors.ControlDark,
+                       90,
+                       true);
+                }
+
+                // Paint the GridStrip control's background.
+                e.Graphics.FillRectangle(
+                    this.backgroundBrush, 
+                    e.AffectedBounds);
+            }

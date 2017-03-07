@@ -1,6 +1,5 @@
-            Ping pingSender = new Ping ();
-            PingOptions options = new PingOptions ();
-
-            // Use the default Ttl value which is 128,
-            // but change the fragmentation behavior.
-            options.DontFragment = true;
+            System.Net.NetworkInformation.NetworkInformationPermission read = 
+                new System.Net.NetworkInformation.NetworkInformationPermission(
+                    System.Net.NetworkInformation.NetworkInformationAccess.Read);
+            System.Net.NetworkInformation.NetworkInformationPermission copyPermission =
+               (System.Net.NetworkInformation.NetworkInformationPermission) read.Copy();

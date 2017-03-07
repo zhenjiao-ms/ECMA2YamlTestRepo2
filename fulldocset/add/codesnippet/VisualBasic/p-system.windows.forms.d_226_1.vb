@@ -1,47 +1,29 @@
-    Private Sub dataGridView1_CellPainting(ByVal sender As Object, _
-        ByVal e As System.Windows.Forms.DataGridViewCellPaintingEventArgs) _
-        Handles dataGridView1.CellPainting
+    Private Sub Stretch(ByVal sender As Object, _
+        ByVal e As EventArgs) Handles Button3.Click
 
-        If Me.dataGridView1.Columns("ContactName").Index = _
-            e.ColumnIndex AndAlso e.RowIndex >= 0 Then
+        For Each column As DataGridViewImageColumn _
+            In dataGridView1.Columns
+            column.ImageLayout = DataGridViewImageCellLayout.Stretch
+            column.Description = "Stretched image layout"
+        Next
+    End Sub
 
-            Dim newRect As New Rectangle(e.CellBounds.X + 1, e.CellBounds.Y + 1, _
-                e.CellBounds.Width - 4, e.CellBounds.Height - 4)
-            Dim backColorBrush As New SolidBrush(e.CellStyle.BackColor)
-            Dim gridBrush As New SolidBrush(Me.dataGridView1.GridColor)
-            Dim gridLinePen As New Pen(gridBrush)
+    Private Sub ZoomToImage(ByVal sender As Object, _
+        ByVal e As EventArgs) Handles Button4.Click
 
-            Try
+        For Each column As DataGridViewImageColumn _
+            In dataGridView1.Columns
+            column.ImageLayout = DataGridViewImageCellLayout.Zoom
+            column.Description = "Zoomed image layout"
+        Next
+    End Sub
 
-                ' Erase the cell.
-                e.Graphics.FillRectangle(backColorBrush, e.CellBounds)
+    Private Sub NormalImage(ByVal sender As Object, _
+        ByVal e As EventArgs) Handles Button5.Click
 
-                ' Draw the grid lines (only the right and bottom lines;
-                ' DataGridView takes care of the others).
-                e.Graphics.DrawLine(gridLinePen, e.CellBounds.Left, _
-                    e.CellBounds.Bottom - 1, e.CellBounds.Right - 1, _
-                    e.CellBounds.Bottom - 1)
-                e.Graphics.DrawLine(gridLinePen, e.CellBounds.Right - 1, _
-                    e.CellBounds.Top, e.CellBounds.Right - 1, _
-                    e.CellBounds.Bottom)
-
-                ' Draw the inset highlight box.
-                e.Graphics.DrawRectangle(Pens.Blue, newRect)
-
-                ' Draw the text content of the cell, ignoring alignment.
-                If (e.Value IsNot Nothing) Then
-                    e.Graphics.DrawString(CStr(e.Value), e.CellStyle.Font, _
-                    Brushes.Crimson, e.CellBounds.X + 2, e.CellBounds.Y + 2, _
-                    StringFormat.GenericDefault)
-                End If
-                e.Handled = True
-
-            Finally
-                gridLinePen.Dispose()
-                gridBrush.Dispose()
-                backColorBrush.Dispose()
-            End Try
-
-        End If
-
+        For Each column As DataGridViewImageColumn _
+            In dataGridView1.Columns
+            column.ImageLayout = DataGridViewImageCellLayout.Normal
+            column.Description = "Normal image layout"
+        Next
     End Sub

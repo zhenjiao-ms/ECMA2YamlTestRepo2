@@ -1,227 +1,107 @@
 Imports System
 Imports System.IO
-Imports System.Text
-Imports System.Xml
 Imports System.Xml.Serialization
-Imports System.Xml.Schema
+Imports Microsoft.VisualBasic
 
-Public Class Group
-   <SoapAttribute (Namespace:= "http:'www.cpandl.com")> _
-   Public GroupName As String 
-   
-   <SoapAttribute(DataType:= "base64Binary")> _
-   Public GroupNumber() As Byte
 
-   <SoapAttribute(DataType:= "date", _
-   AttributeName:= "CreationDate")> _
-   Public Today As DateTime 
-   <SoapElement(DataType:= "nonNegativeInteger", _
-   ElementName:= "PosInt")> _
-   Public PostitiveInt As String 
-   ' This is ignored when serialized unless it's overridden.
-   <SoapIgnore> _ 
-   Public IgnoreThis As Boolean 
-   
-   Public Grouptype As GroupType 
-
-   Public MyVehicle As Vehicle 
-
-   '  The SoapInclude allows the method to return a Car.
-   <SoapInclude(GetType(Car))> _
-   Public Function myCar(licNumber As String ) As Vehicle 
-      Dim v As Vehicle 
-      if licNumber = "" Then
-         v = New Car()
-         v.licenseNumber = "!!!!!!"
-      else  
-   	   v = New Car()
-   	   v.licenseNumber = licNumber
-      End If
-      
-      return v
-   End Function
-End Class
-  
-' SoapInclude allows Vehicle to accept Car type.
-<SoapInclude(GetType(Car))> _
-Public MustInherit  class Vehicle
-   Public licenseNumber As String 
-   Public makeDate As DateTime 
+Public Class Orchestra
+    Public Instruments() As Instrument
 End Class
 
-Public Class Car
-   Inherits Vehicle
-
+Public Class Instrument
+    Public Name As String
 End Class
 
-Public enum GroupType
-   ' These enums can be overridden.
-   <SoapEnum("Small")> _
-   A
-   <SoapEnum("Large")> _ 
-   B
-End Enum
- 
+Public Class Brass
+    Inherits Instrument
+    Public IsValved As Boolean
+End Class
+
+
 Public Class Run
-
-   Shared Sub Main()
-      Dim test As Run = New Run()
-      test.SerializeOriginal("SoapOriginal.xml")
-      test.SerializeOverride("SoapOverrides.xml")
-      test.DeserializeOriginal("SoapOriginal.xml")
-      test.DeserializeOverride("SoapOverrides.xml")
-   End SUb
-   
-   Public Sub SerializeOriginal(filename As String)
-
-      ' Create an instance of the XmlSerializer class.
-      Dim myMapping As XmlTypeMapping = _
-      (New SoapReflectionImporter().ImportTypeMapping _
-      (GetType(Group)))
-      Dim mySerializer As XmlSerializer =  _
-      New XmlSerializer(myMapping)
-      
-      Dim myGroup As Group =MakeGroup()
-      ' Writing the file requires a TextWriter.
-      Dim writer As XmlTextWriter  = _
-      New XmlTextWriter(filename, Encoding.UTF8)
-      writer.Formatting = Formatting.Indented
-      writer.WriteStartElement("wrapper")
-      ' Serialize the class, and close the TextWriter.
-      mySerializer.Serialize(writer, myGroup)
-      writer.WriteEndElement()
-      writer.Close()
-   End Sub
-
-   Public Sub SerializeOverride(filename As String)
-      ' Create an instance of the XmlSerializer class
-      ' that overrides the serialization.
-      Dim overRideSerializer As XmlSerializer = _
-      CreateOverrideSerializer()
-      Dim myGroup As Group =MakeGroup()
-      ' Writing the file requires a TextWriter.
-      Dim writer As XmlTextWriter  = _
-      New XmlTextWriter(filename, Encoding.UTF8)
-      writer.Formatting = Formatting.Indented
-      writer.WriteStartElement("wrapper")
-      ' Serialize the class, and close the TextWriter.
-      overRideSerializer.Serialize(writer, myGroup)
-      writer.WriteEndElement()
-      writer.Close()
+    
+    Public Shared Sub Main()
+        Dim test As New Run()
+        test.SerializeObject("Override.xml")
+        test.DeserializeObject("Override.xml")
+    End Sub    
+    
+    Public Sub SerializeObject(ByVal filename As String)
+        ' Each overridden field, property, or type requires
+        ' an XmlAttributes object. 
+        Dim attrs As New XmlAttributes()
+        
+        ' Create an XmlElementAttribute to override the
+        ' field that returns Instrument objects. The overridden field
+        ' returns Brass objects instead. 
+        Dim attr As New XmlElementAttribute()
+        attr.ElementName = "Brass"
+        attr.Type = GetType(Brass)
+        
+        ' Add the element to the collection of elements.
+        attrs.XmlElements.Add(attr)
+        
+        ' Create the XmlAttributeOverrides object.
+        Dim attrOverrides As New XmlAttributeOverrides()
+        
+        ' Add the type of the class that contains the overridden
+        ' member and the XmlAttributes to override it with to the
+        ' XmlAttributeOverrides object. 
+        attrOverrides.Add(GetType(Orchestra), "Instruments", attrs)
+        
+        ' Create the XmlSerializer using the XmlAttributeOverrides.
+        Dim s As New XmlSerializer(GetType(Orchestra), attrOverrides)
+        
+        ' Writing the file requires a TextWriter.
+        Dim writer As New StreamWriter(filename)
+        
+        ' Create the object that will be serialized.
+        Dim band As New Orchestra()
+        
+        ' Create an object of the derived type.
+        Dim i As New Brass()
+        i.Name = "Trumpet"
+        i.IsValved = True
+        Dim myInstruments() As Instrument = {i}
+        band.Instruments = myInstruments
+        
+        ' Serialize the object.
+        s.Serialize(writer, band)
+        writer.Close()
     End Sub
-
-   private Function MakeGroup() As Group 
-      ' Create an instance of the class that will be serialized.
-      Dim myGroup As Group  = New Group()
-
-      ' Set the object properties.
-      myGroup.GroupName = ".NET"
-
-      Dim hexByte()As Byte = new Byte(1){Convert.ToByte(100), _
-      Convert.ToByte(50)}
-      myGroup.GroupNumber = hexByte
-
-      Dim myDate As DateTime  = new DateTime(2002,5,2)
-      myGroup.Today = myDate
-
-      myGroup.PostitiveInt = "10000"
-	myGroup.IgnoreThis = true
-	myGroup.Grouptype = GroupType.B
-	Dim thisCar As Car 
-	thisCar =CType(myGroup.myCar("1234566"), Car)
-	myGroup.myVehicle=thisCar
-      return myGroup
-   End Function   	
-
-   Public Sub DeserializeOriginal(filename As String)
-      ' Create an instance of the XmlSerializer class.
-      Dim myMapping As XmlTypeMapping = _
-      (New SoapReflectionImporter().ImportTypeMapping _
-      (GetType(Group)))
-      Dim mySerializer As XmlSerializer =  _
-      New XmlSerializer(myMapping)
-
-      ' Reading the file requires an  XmlTextReader.
-      Dim reader As XmlTextReader = _
-      New XmlTextReader(filename)
-      reader.ReadStartElement("wrapper")
-
-      ' Deserialize and cast the object.
-      Dim myGroup As Group  = _
-      CType(mySerializer.Deserialize(reader), Group)
-      reader.ReadEndElement()
-      reader.Close()
-   End Sub
-
-   Public Sub DeserializeOverride(filename As String)
-      ' Create an instance of the XmlSerializer class.
-      Dim overRideSerializer As XmlSerializer  = _
-      CreateOverrideSerializer()
-
-      ' Reading the file requires an  XmlTextReader.
-      Dim reader As XmlTextReader = _
-      New XmlTextReader(filename)
-      reader.ReadStartElement("wrapper")
-
-      ' Deserialize and cast the object.
-      Dim myGroup As Group = _
-      CType(overRideSerializer.Deserialize(reader), Group)
-      reader.ReadEndElement()
-      reader.Close()
-      ReadGroup(myGroup)
-   End Sub
-
-   private Sub ReadGroup(myGroup As Group)
-      Console.WriteLine(myGroup.GroupName)
-      Console.WriteLine(myGroup.GroupNumber(0))
-      Console.WriteLine(myGroup.GroupNumber(1))
-      Console.WriteLine(myGroup.Today)
-      Console.WriteLine(myGroup.PostitiveInt)
-      Console.WriteLine(myGroup.IgnoreThis)
-      Console.WriteLine()
-   End Sub
-   
-   Private Function CreateOverrideSerializer() As XmlSerializer
-      Dim soapOver As SoapAttributeOverrides = New SoapAttributeOverrides()
-      Dim soapAtts As SoapAttributes = New SoapAttributes()
-
-      Dim mySoapElement As SoapElementAttribute = New SoapElementAttribute()
-      mySoapElement.ElementName = "xxxx"
-      soapAtts.SoapElement = mySoapElement
-      soapOver.Add(GetType(Group), "PostitiveInt", soapAtts)
-
-      ' Override the IgnoreThis property.
-      Dim myIgnore As SoapIgnoreAttribute  = new SoapIgnoreAttribute()
-      soapAtts = New SoapAttributes()
-      soapAtts.SoapIgnore = false
-      soapOver.Add(GetType(Group), "IgnoreThis", soapAtts)
-
-      ' Override the GroupType enumeration.
-      soapAtts = New SoapAttributes()
-      Dim xSoapEnum As SoapEnumAttribute = new SoapEnumAttribute()
-      xSoapEnum.Name = "Over1000"
-      soapAtts.SoapEnum = xSoapEnum
-      ' Add the SoapAttributes to the SoapOverrides object.
-      soapOver.Add(GetType(GroupType), "A", soapAtts)
-
-      ' Create second enumeration and add it.
-      soapAtts = New SoapAttributes()
-      xSoapEnum = New SoapEnumAttribute()
-      xSoapEnum.Name = "ZeroTo1000"
-      soapAtts.SoapEnum = xSoapEnum
-      soapOver.Add(GetType(GroupType), "B", soapAtts)
-
-      ' Override the Group type.
-      soapAtts = New SoapAttributes()
-      Dim soapType As SoapTypeAttribute = New SoapTypeAttribute()
-      soapType.TypeName = "Team"
-      soapAtts.SoapType = soapType
-      soapOver.Add(GetType(Group),soapAtts)
-	
-      Dim myMapping As XmlTypeMapping = (New SoapReflectionImporter( _
-      soapOver)).ImportTypeMapping(GetType(Group))
-	
-       Dim ser As XmlSerializer = new XmlSerializer(myMapping)
-      return ser
-   End Function
+    
+    
+    Public Sub DeserializeObject(ByVal filename As String)
+        Dim attrOverrides As New XmlAttributeOverrides()
+        Dim attrs As New XmlAttributes()
+        
+        ' Create an XmlElementAttribute to override the Instrument.
+        Dim attr As New XmlElementAttribute()
+        attr.ElementName = "Brass"
+        attr.Type = GetType(Brass)
+        
+        ' Add the element to the collection of elements.
+        attrs.XmlElements.Add(attr)
+        
+        attrOverrides.Add(GetType(Orchestra), "Instruments", attrs)
+        
+        ' Create the XmlSerializer using the XmlAttributeOverrides.
+        Dim s As New XmlSerializer(GetType(Orchestra), attrOverrides)
+        
+        Dim fs As New FileStream(filename, FileMode.Open)
+        Dim band As Orchestra = CType(s.Deserialize(fs), Orchestra)
+        Console.WriteLine("Brass:")
+        
+        ' The difference between deserializing the overridden
+        ' XML document and serializing it is this: To read the derived
+        ' object values, you must declare an object of the derived type
+        ' (Brass), and cast the Instrument instance to it. 
+        Dim b As Brass
+        Dim i As Instrument
+        For Each i In  band.Instruments
+            b = CType(i, Brass)
+            Console.WriteLine(b.Name + ControlChars.Cr + _
+                              b.IsValved.ToString())
+        Next i
+    End Sub
 End Class

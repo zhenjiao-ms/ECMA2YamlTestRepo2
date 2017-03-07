@@ -1,38 +1,117 @@
 Imports System
+Imports System.IO
 Imports System.Security.Cryptography
-Imports System.Text
 
-Class EncryptorExample
-     Private Shared quote As String = _
-         "Things may come to those who wait, but only the " + _
-         "things left by those who hustle. -- Abraham Lincoln"
 
-     Public Shared Sub Main()
-         Dim aesCSP As New AesCryptoServiceProvider()
 
-         aesCSP.GenerateKey()
-         aesCSP.GenerateIV()
-         Dim encQuote() As Byte = EncryptString(aesCSP, quote)
+Class RijndaelExample
 
-         Console.WriteLine("Encrypted Quote:" + vbNewLine)
-         Console.WriteLine(Convert.ToBase64String(encQuote))
+    Public Shared Sub Main()
+        Try
 
-         Console.WriteLine(vbNewLine + "Decrypted Quote:" + vbNewLine)
-         Console.WriteLine(DecryptBytes(aesCSP, encQuote))
-     End Sub
+            Dim original As String = "Here is some data to encrypt!"
 
-     Public Shared Function EncryptString(symAlg As SymmetricAlgorithm, inString As String) As Byte()
-         Dim inBlock() As Byte = UnicodeEncoding.Unicode.GetBytes(inString)
-         Dim xfrm As ICryptoTransform = symAlg.CreateEncryptor()
-         Dim outBlock() As Byte = xfrm.TransformFinalBlock(inBlock, 0, inBlock.Length)
+            ' Create a new instance of the Rijndael
+            ' class.  This generates a new key and initialization 
+            ' vector (IV).
+            Using myRijndael = Rijndael.Create()
 
-         Return outBlock
-     End Function
+                ' Encrypt the string to an array of bytes.
+                Dim encrypted As Byte() = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV)
 
-     Public Shared Function DecryptBytes(symAlg As SymmetricAlgorithm, inBytes() As Byte) As String
-         Dim xfrm As ICryptoTransform = symAlg.CreateDecryptor()
-         Dim outBlock() As Byte = xfrm.TransformFinalBlock(inBytes, 0, inBytes.Length)
+                ' Decrypt the bytes to a string.
+                Dim roundtrip As String = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV)
 
-         return UnicodeEncoding.Unicode.GetString(outBlock)
-     End Function
+                'Display the original data and the decrypted data.
+                Console.WriteLine("Original:   {0}", original)
+                Console.WriteLine("Round Trip: {0}", roundtrip)
+            End Using
+        Catch e As Exception
+            Console.WriteLine("Error: {0}", e.Message)
+        End Try
+
+    End Sub 'Main
+
+    Shared Function EncryptStringToBytes(ByVal plainText As String, ByVal Key() As Byte, ByVal IV() As Byte) As Byte()
+        ' Check arguments.
+        If plainText Is Nothing OrElse plainText.Length <= 0 Then
+            Throw New ArgumentNullException("plainText")
+        End If
+        If Key Is Nothing OrElse Key.Length <= 0 Then
+            Throw New ArgumentNullException("Key")
+        End If
+        If IV Is Nothing OrElse IV.Length <= 0 Then
+            Throw New ArgumentNullException("IV")
+        End If
+        Dim encrypted() As Byte
+        ' Create an Rijndael object
+        ' with the specified key and IV.
+        Using rijAlg = Rijndael.Create()
+
+            rijAlg.Key = Key
+            rijAlg.IV = IV
+
+            ' Create an encryptor to perform the stream transform.
+            Dim encryptor As ICryptoTransform = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV)
+            ' Create the streams used for encryption.
+            Using msEncrypt As New MemoryStream()
+                Using csEncrypt As New CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)
+                    Using swEncrypt As New StreamWriter(csEncrypt)
+
+                        'Write all data to the stream.
+                        swEncrypt.Write(plainText)
+                    End Using
+                    encrypted = msEncrypt.ToArray()
+                End Using
+            End Using
+        End Using
+
+        ' Return the encrypted bytes from the memory stream.
+        Return encrypted
+
+    End Function 'EncryptStringToBytes
+
+    Shared Function DecryptStringFromBytes(ByVal cipherText() As Byte, ByVal Key() As Byte, ByVal IV() As Byte) As String
+        ' Check arguments.
+        If cipherText Is Nothing OrElse cipherText.Length <= 0 Then
+            Throw New ArgumentNullException("cipherText")
+        End If
+        If Key Is Nothing OrElse Key.Length <= 0 Then
+            Throw New ArgumentNullException("Key")
+        End If
+        If IV Is Nothing OrElse IV.Length <= 0 Then
+            Throw New ArgumentNullException("IV")
+        End If
+        ' Declare the string used to hold
+        ' the decrypted text.
+        Dim plaintext As String = Nothing
+
+        ' Create an Rijndael object
+        ' with the specified key and IV.
+        Using rijAlg = Rijndael.Create()
+            rijAlg.Key = Key
+            rijAlg.IV = IV
+
+            ' Create a decryptor to perform the stream transform.
+            Dim decryptor As ICryptoTransform = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV)
+
+            ' Create the streams used for decryption.
+            Using msDecrypt As New MemoryStream(cipherText)
+
+                Using csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
+
+                    Using srDecrypt As New StreamReader(csDecrypt)
+
+
+                        ' Read the decrypted bytes from the decrypting stream
+                        ' and place them in a string.
+                        plaintext = srDecrypt.ReadToEnd()
+                    End Using
+                End Using
+            End Using
+        End Using
+
+        Return plaintext
+
+    End Function 'DecryptStringFromBytes 
 End Class

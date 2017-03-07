@@ -1,63 +1,64 @@
+Option Explicit
+Option Strict
+
+Imports System
+Imports System.Security.Permissions
 Imports System.Threading
-Imports Timers = System.Timers
 
-Public Module Example
-   Dim t As Timers.Timer
-   Private priorityTest As New PriorityTest()
+Public Class ThreadInterrupt
 
-    Public Sub Main()
-        Dim thread1 As New Thread(AddressOf priorityTest.ThreadMethod)
-        thread1.Name = "ThreadOne"
-        Dim thread2 As New Thread(AddressOf priorityTest.ThreadMethod)
-        thread2.Name = "ThreadTwo"
-        thread2.Priority = ThreadPriority.BelowNormal
-        Dim thread3 As New Thread(AddressOf priorityTest.ThreadMethod)
-        thread3.Name = "ThreadThree"
-        thread3.Priority = ThreadPriority.AboveNormal
-        thread1.Start()
-        thread2.Start()
-        thread3.Start()
+    <MTAThread> _
+    Shared Sub Main()
+        Dim stayAwake As New StayAwake()
+        Dim newThread As New Thread(AddressOf stayAwake.ThreadMethod)
+        newThread.Start()
 
-        ' Allow threads to execute for about 10 seconds.
-        t = New Timers.Timer()
-        t.AutoReset = False
-        t.Interval = 10000
-        AddHandler t.Elapsed, AddressOf Elapsed
-        t.Start()
+        ' The following line causes an exception to be thrown 
+        ' in ThreadMethod if newThread is currently blocked
+        ' or becomes blocked in the future.
+        newThread.Interrupt()
+        Console.WriteLine("Main thread calls Interrupt on newThread.")
+
+        ' Tell newThread to go to sleep.
+        stayAwake.SleepSwitch = True
+
+        ' Wait for newThread to end.
+        newThread.Join()
     End Sub
 
-    Private Sub Elapsed(sender As Object, e As Timers.ElapsedEventArgs)
-       priorityTest.LoopSwitch = False
-    End Sub
-End Module
+End Class
 
-Public Class PriorityTest
-    Private Shared loopSwitchValue As Boolean
-    <ThreadStatic> Shared threadCount As Long
+Public Class StayAwake
+
+    Dim sleepSwitchValue As Boolean = False
+
+    WriteOnly Property SleepSwitch As Boolean
+        Set
+            sleepSwitchValue = Value
+        End Set
+    End Property 
 
     Sub New()
-        loopSwitchValue = True
     End Sub
-
-    WriteOnly Property LoopSwitch As Boolean
-        Set
-            loopSwitchValue = Value
-        End Set
-    End Property
 
     Sub ThreadMethod()
-        Do While True
-            threadCount += 1
-            If Not loopSwitchValue Then Exit Do
-        Loop
+        Console.WriteLine("newThread is executing ThreadMethod.")
+        While Not sleepSwitchValue
 
-        Console.WriteLine("{0,-11} with {1,11} priority " &
-            "has a count = {2,13}", Thread.CurrentThread.Name,
-            Thread.CurrentThread.Priority.ToString(),
-            threadCount.ToString("N0")) 
+            ' Use SpinWait instead of Sleep to demonstrate the 
+            ' effect of calling Interrupt on a running thread.
+            Thread.SpinWait(10000000)
+        End While
+        Try
+            Console.WriteLine("newThread going to sleep.")
+
+            ' When newThread goes to sleep, it is immediately 
+            ' woken up by a ThreadInterruptedException.
+            Thread.Sleep(Timeout.Infinite)
+        Catch ex As ThreadInterruptedException
+            Console.WriteLine("newThread cannot go to " & _
+                "sleep - interrupted by main thread.")
+        End Try
     End Sub
+
 End Class
-' The example displays the following output:
-'    ThreadOne   with      Normal priority has a count =   755,897,581
-'    ThreadThree with AboveNormal priority has a count =   778,099,094
-'    ThreadTwo   with BelowNormal priority has a count =     7,840,984

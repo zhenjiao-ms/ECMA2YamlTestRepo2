@@ -1,4 +1,9 @@
-            Dim ts As New TimeSpan(133333330)
-            Dim myTSStr As String = "5000000"
-            Console.WriteLine(TypeDescriptor.GetConverter(ts).ConvertTo(ts, GetType(String)))
-            Console.WriteLine(TypeDescriptor.GetConverter(ts).ConvertFrom(myTSStr))
+    <DefaultEvent("CollectionChanged")> _ 
+    Public Class MyCollection
+        Inherits BaseCollection
+
+        Public Event CollectionChanged (ByVal sender As Object, _
+            ByVal e As CollectionChangeEventArgs)
+        
+        ' Insert additional code.
+    End Class 'MyCollection

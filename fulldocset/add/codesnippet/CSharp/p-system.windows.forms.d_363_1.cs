@@ -1,17 +1,20 @@
-    private void AddButtonColumn()
+    private static void SetAlternateChoicesUsingItems(
+        DataGridViewComboBoxColumn comboboxColumn)
     {
-        DataGridViewButtonColumn buttons = new DataGridViewButtonColumn();
+        comboboxColumn.Items.AddRange("Mr.", "Ms.", "Mrs.", "Dr.");
+    }
+
+    private DataGridViewComboBoxColumn CreateComboBoxColumn()
+    {
+        DataGridViewComboBoxColumn column =
+            new DataGridViewComboBoxColumn();
         {
-            buttons.HeaderText = "Sales";
-            buttons.Text = "Sales";
-            buttons.UseColumnTextForButtonValue = true;
-            buttons.AutoSizeMode =
-                DataGridViewAutoSizeColumnMode.AllCells;
-            buttons.FlatStyle = FlatStyle.Standard;
-            buttons.CellTemplate.Style.BackColor = Color.Honeydew;
-            buttons.DisplayIndex = 0;
+            column.DataPropertyName = ColumnName.TitleOfCourtesy.ToString();
+            column.HeaderText = ColumnName.TitleOfCourtesy.ToString();
+            column.DropDownWidth = 160;
+            column.Width = 90;
+            column.MaxDropDownItems = 3;
+            column.FlatStyle = FlatStyle.Flat;
         }
-
-        DataGridView1.Columns.Add(buttons);
-
+        return column;
     }

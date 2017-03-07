@@ -1,13 +1,7 @@
-        public override DataGridViewAdvancedBorderStyle AdjustedTopLeftHeaderBorderStyle
-        {
-            get
-            {
-                DataGridViewAdvancedBorderStyle newStyle =
-                    new DataGridViewAdvancedBorderStyle();
-                newStyle.Top = DataGridViewAdvancedCellBorderStyle.None;
-                newStyle.Left = DataGridViewAdvancedCellBorderStyle.None;
-                newStyle.Bottom = DataGridViewAdvancedCellBorderStyle.Outset;
-                newStyle.Right = DataGridViewAdvancedCellBorderStyle.OutsetDouble;
-                return newStyle;
-            }
-        }
+    //Set the minimum width.
+    private void Button4_Click(object sender,
+        System.EventArgs e)
+    {
+        DataGridViewColumn column = dataGridView.Columns[1];
+        column.MinimumWidth = 40;
+    }

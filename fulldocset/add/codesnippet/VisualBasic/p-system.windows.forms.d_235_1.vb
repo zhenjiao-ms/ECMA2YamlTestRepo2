@@ -1,15 +1,8 @@
-    Private Sub AddLinkColumn()
+    ' Make the the entire DataGridView read only.
+    Private Sub Button8_Click(ByVal sender As Object, _
+        ByVal e As System.EventArgs) Handles Button8.Click
 
-        Dim links As New DataGridViewLinkColumn()
-        With links
-            .UseColumnTextForLinkValue = True
-            .HeaderText = ColumnName.ReportsTo.ToString()
-            .DataPropertyName = ColumnName.ReportsTo.ToString()
-            .ActiveLinkColor = Color.White
-            .LinkBehavior = LinkBehavior.SystemDefault
-            .LinkColor = Color.Blue
-            .TrackVisitedState = True
-            .VisitedLinkColor = Color.YellowGreen
-        End With
-        DataGridView1.Columns.Add(links)
+        For Each band As DataGridViewBand In dataGridView.Columns
+            band.ReadOnly = True
+        Next
     End Sub

@@ -1,16 +1,9 @@
-    private void AddOutOfOfficeColumn()
+    // Updated the criteria label.
+    private void dataGridView_AutoSizeColumnModeChanged(object sender,
+        DataGridViewAutoSizeColumnModeEventArgs args)
     {
-        DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn();
-        {
-            column.HeaderText = ColumnName.OutOfOffice.ToString();
-            column.Name = ColumnName.OutOfOffice.ToString();
-            column.AutoSizeMode = 
-                DataGridViewAutoSizeColumnMode.DisplayedCells;
-            column.FlatStyle = FlatStyle.Standard;
-            column.ThreeState = true;
-            column.CellTemplate = new DataGridViewCheckBoxCell();
-            column.CellTemplate.Style.BackColor = Color.Beige;
-        }
-
-        DataGridView1.Columns.Insert(0, column);
+        args.Column.DataGridView.Parent.
+            Controls["flowlayoutpanel"].Controls[criteriaLabel].
+            Text = criteriaLabel
+            + args.Column.AutoSizeMode.ToString();
     }

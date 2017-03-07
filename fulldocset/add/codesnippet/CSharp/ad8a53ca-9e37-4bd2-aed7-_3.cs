@@ -1,28 +1,17 @@
 using System;
 using System.Globalization;
 
-class Sample {
-    public static void Main() {
-    String str1 = "change";
-    String str2 = "dollar";
-    String relation = null;
-
-    relation = symbol( String.Compare(str1, str2, false, new CultureInfo("en-US")) );
-    Console.WriteLine("For en-US: {0} {1} {2}", str1, relation, str2);
-
-    relation = symbol( String.Compare(str1, str2, false, new CultureInfo("cs-CZ")) );
-    Console.WriteLine("For cs-CZ: {0} {1} {2}", str1, relation, str2);
-    }
-
-    private static String symbol(int r) {
-    String s = "=";
-    if      (r < 0) s = "<";
-    else if (r > 0) s = ">";
-    return s;
-    }
+public class Example
+{
+   public static void Main()
+   {
+      string s1 = "Ani\u00ADmal";
+      string s2 = "animal";
+      
+      Console.WriteLine("Comparison of '{0}' and '{1}': {2}", 
+                        s1, s2, String.Compare(s1, s2, true,
+                        CultureInfo.InvariantCulture));
+   }
 }
-/*
-This example produces the following results.
-For en-US: change < dollar
-For cs-CZ: change > dollar
-*/
+// The example displays the following output:
+//       Comparison of 'ani-mal' and 'animal': 0

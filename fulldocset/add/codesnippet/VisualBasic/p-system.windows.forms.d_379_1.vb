@@ -1,24 +1,29 @@
-        ' Draw a custom 3D border if the ToolTip is for button1.
-        If (e.AssociatedControl Is button1) Then
-            ' Draw the standard background.
-            e.DrawBackground()
+Private Sub DataGridView1_RowPrePaint(sender as Object, e as DataGridViewRowPrePaintEventArgs) _ 
+     Handles DataGridView1.RowPrePaint
 
-            ' Draw the custom border to appear 3-dimensional.
-            e.Graphics.DrawLines( _
-                SystemPens.ControlLightLight, New Point() { _
-                New Point(0, e.Bounds.Height - 1), _
-                New Point(0, 0), _
-                New Point(e.Bounds.Width - 1, 0)})
-            e.Graphics.DrawLines( _
-                SystemPens.ControlDarkDark, New Point() { _
-                New Point(0, e.Bounds.Height - 1), _
-                New Point(e.Bounds.Width - 1, e.Bounds.Height - 1), _
-                New Point(e.Bounds.Width - 1, 0)})
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "ClipBounds", e.ClipBounds)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ErrorText", e.ErrorText)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "InheritedRowStyle", e.InheritedRowStyle)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "IsFirstDisplayedRow", e.IsFirstDisplayedRow)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "IsLastVisibleRow", e.IsLastVisibleRow)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "PaintParts", e.PaintParts)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "RowBounds", e.RowBounds)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "State", e.State)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Handled", e.Handled)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"RowPrePaint Event")
 
-            ' Specify custom text formatting flags.
-            Dim sf As TextFormatFlags = TextFormatFlags.VerticalCenter Or _
-                                 TextFormatFlags.HorizontalCenter Or _
-                                 TextFormatFlags.NoFullWidthCharacterBreak
-
-            ' Draw standard text with customized formatting options.
-            e.DrawText(sf)
+End Sub

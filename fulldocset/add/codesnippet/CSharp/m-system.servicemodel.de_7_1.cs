@@ -1,32 +1,38 @@
-using System;
-using System.ServiceModel;
-using System.ServiceModel.Description;
-
-namespace WsdlExporterSample
-{
-    class Program
-    {
-        static void Main(string[] args)
+        public void ImportPolicy(MetadataImporter importer, 
+            PolicyConversionContext context)
         {
-            WsdlExporter exporter = new WsdlExporter();
-            exporter.PolicyVersion = PolicyVersion.Policy15;
-          
-            ServiceEndpoint [] myServiceEndpoints = new ServiceEndpoint[2];
-            ContractDescription myDescription = new ContractDescription ("myContract");
-            myServiceEndpoints[0] = new ServiceEndpoint(myDescription,new BasicHttpBinding(),new EndpointAddress("http://localhost/myservice"));
-            myServiceEndpoints[1] = new ServiceEndpoint(myDescription,new BasicHttpBinding(),new EndpointAddress("http://localhost/myservice"));
-            
-            // Export all endpoints for each endpoint in collection.
-            foreach (ServiceEndpoint endpoint in myServiceEndpoints)
+            Console.WriteLine("The custom policy importer has been called.");
+            foreach (XmlElement assertion in context.GetBindingAssertions())
             {
-                exporter.ExportEndpoint(endpoint);
-            }
-            // If there are no errors, get the documents.
-            MetadataSet metadataDocs = null;
-            if (exporter.Errors.Count != 0)
-            {
-                metadataDocs = exporter.GetGeneratedMetadata();
+                Console.WriteLine(assertion.NamespaceURI + " : " + assertion.Name);
+                // locate a particular assertion by Name and NamespaceURI
+                XmlElement customAssertion = context.GetBindingAssertions().Find(name1, ns1);
+                if (customAssertion != null)
+                {
+                  // Found assertion; remove from collection.
+                  context.GetBindingAssertions().Remove(customAssertion);
+                  Console.WriteLine(
+                    "Removed our custom assertion from the imported "
+                    + "assertions collection and inserting our custom binding element."
+                  );
+                    // Here if you find the custom policy assertion that you are looking for,
+                    // add the custom binding element that handles the functionality that the policy indicates.
+                    // Attach it to the PolicyConversionContext.BindingElements collection.
+                    // For example, if the custom policy had a "speed" attribute value:
+                    /*
+                      string speed 
+                        = customAssertion.GetAttribute(SpeedBindingElement.name2, SpeedBindingElement.ns2);
+                      SpeedBindingElement e = new SpeedBindingElement(speed);
+                      context.BindingElements.Add(e);
+                    */
+                }
+
+                // write assertion name in red.
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(assertion.NamespaceURI + " : " + assertion.Name);
+
+                //write contents in gray.
+                Console.WriteLine(assertion.OuterXml);
+                Console.ForegroundColor = ConsoleColor.Gray; 
             }
         }
-    }
-}

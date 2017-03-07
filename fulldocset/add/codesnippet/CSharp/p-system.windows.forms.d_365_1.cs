@@ -1,48 +1,77 @@
-    private void SetUpDataGridView()
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+using System.Drawing;
+
+public class Form1 : System.Windows.Forms.Form
+{
+    private DataGridView dataGridView1 = new DataGridView();
+    private BindingSource bindingSource1 = new BindingSource();
+
+    public Form1()
     {
-        this.Controls.Add(dataGridView1);
-        dataGridView1.ColumnCount = 5;
-        DataGridViewCellStyle style = 
-            dataGridView1.ColumnHeadersDefaultCellStyle;
-        style.BackColor = Color.Navy;
-        style.ForeColor = Color.White;
-        style.Font = new Font(dataGridView1.Font, FontStyle.Bold);
-
-        dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
-        dataGridView1.Name = "dataGridView1";
-        dataGridView1.Location = new Point(8, 8);
-        dataGridView1.Size = new Size(500, 300);
-        dataGridView1.AutoSizeRowsMode = 
-            DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
-        dataGridView1.ColumnHeadersBorderStyle = 
-            DataGridViewHeaderBorderStyle.Raised;
-        dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-        dataGridView1.GridColor = SystemColors.ActiveBorder;
-        dataGridView1.RowHeadersVisible = false;
-
-        dataGridView1.Columns[0].Name = "Release Date";
-        dataGridView1.Columns[1].Name = "Track";
-        dataGridView1.Columns[1].DefaultCellStyle.Alignment = 
-            DataGridViewContentAlignment.MiddleCenter;
-        dataGridView1.Columns[2].Name = "Title";
-        dataGridView1.Columns[3].Name = "Artist";
-        dataGridView1.Columns[4].Name = "Album";
-
-        // Make the font italic for row four.
-        dataGridView1.Columns[4].DefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Italic);
-
-        dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        dataGridView1.MultiSelect = false;
-
-        dataGridView1.BackgroundColor = Color.Honeydew;
-
         dataGridView1.Dock = DockStyle.Fill;
-
-        dataGridView1.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
-        dataGridView1.CellParsing += new DataGridViewCellParsingEventHandler(dataGridView1_CellParsing);
-        addNewRowButton.Click += new EventHandler(addNewRowButton_Click);
-        deleteRowButton.Click += new EventHandler(deleteRowButton_Click);
-        ledgerStyleButton.Click += new EventHandler(ledgerStyleButton_Click);
-        dataGridView1.CellValidating += new DataGridViewCellValidatingEventHandler(dataGridView1_CellValidating);
-
+        this.Controls.Add(dataGridView1);
+        InitializeDataGridView();
     }
+
+    private void InitializeDataGridView()
+    {
+        try
+        {
+            // Set up the DataGridView.
+            dataGridView1.Dock = DockStyle.Fill;
+
+            // Automatically generate the DataGridView columns.
+            dataGridView1.AutoGenerateColumns = true;
+
+            // Set up the data source.
+            bindingSource1.DataSource = GetData("Select * From Products");
+            dataGridView1.DataSource = bindingSource1;
+
+            // Automatically resize the visible rows.
+            dataGridView1.AutoSizeRowsMode =
+                DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+
+            // Set the DataGridView control's border.
+            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
+
+            // Put the cells in edit mode when user enters them.
+            dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
+        }
+        catch (SqlException)
+        {
+            MessageBox.Show("To run this sample replace connection.ConnectionString" +
+                " with a valid connection string to a Northwind" +
+                " database accessible to your system.", "ERROR",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            System.Threading.Thread.CurrentThread.Abort();
+        }
+    }
+
+    private static DataTable GetData(string sqlCommand)
+    {
+        string connectionString = "Integrated Security=SSPI;" +
+            "Persist Security Info=False;" +
+            "Initial Catalog=Northwind;Data Source=localhost";
+
+        SqlConnection northwindConnection = new SqlConnection(connectionString);
+
+        SqlCommand command = new SqlCommand(sqlCommand, northwindConnection);
+        SqlDataAdapter adapter = new SqlDataAdapter();
+        adapter.SelectCommand = command;
+
+        DataTable table = new DataTable();
+        table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+        adapter.Fill(table);
+
+        return table;
+    }
+
+    [STAThreadAttribute()]
+    public static void Main()
+    {
+        Application.Run(new Form1());
+    }
+}

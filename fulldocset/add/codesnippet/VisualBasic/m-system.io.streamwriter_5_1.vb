@@ -7,7 +7,7 @@ Module Module1
         Dim fileName As String = "test.txt"
         Dim textToAdd As String = "Example text in file"
 
-        Using writer As StreamWriter = New StreamWriter(fileName, True)
+        Using writer As StreamWriter = New StreamWriter(fileName)
             writer.Write(textToAdd)
         End Using
     End Sub

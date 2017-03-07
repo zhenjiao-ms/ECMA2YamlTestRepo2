@@ -1,11 +1,13 @@
-    // Demonstrates SetData, ContainsData, and GetData.
-    public Object SwapClipboardFormattedData(String format, Object data)
+    // Demonstrates SetFileDropList, ContainsFileDroList, and GetFileDropList
+    public System.Collections.Specialized.StringCollection
+        SwapClipboardFileDropList(
+        System.Collections.Specialized.StringCollection replacementList)
     {
-        Object returnObject = null;
-        if (Clipboard.ContainsData(format))
+        System.Collections.Specialized.StringCollection returnList = null;
+        if (Clipboard.ContainsFileDropList())
         {
-            returnObject = Clipboard.GetData(format);
-            Clipboard.SetData(format, data);
+            returnList = Clipboard.GetFileDropList();
+            Clipboard.SetFileDropList(replacementList);
         }
-        return returnObject;
+        return returnList;
     }

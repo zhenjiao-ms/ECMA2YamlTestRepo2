@@ -1,28 +1,28 @@
-        ToolStripButton^ boldButton;
+   void SelectNode( TreeNode^ node )
+   {
+      if ( node->IsSelected )
+      {
+         
+         // Determine which TreeNode to select.
+         String^ str = myComboBox->Text;
+         if ( str->Equals( "Previous" ) )
+                  node->TreeView->SelectedNode = node->PrevNode;
+         else
+         if ( str->Equals( "PreviousVisible" ) )
+                  node->TreeView->SelectedNode = node->PrevVisibleNode;
+         else
+         if ( str->Equals( "Next" ) )
+                  node->TreeView->SelectedNode = node->NextNode;
+         else
+         if ( str->Equals( "NextVisible" ) )
+                  node->TreeView->SelectedNode = node->NextVisibleNode;
+         else
+         if ( str->Equals( "First" ) )
+                  node->TreeView->SelectedNode = node->FirstNode;
+         else
+         if ( str->Equals( "Last" ) )
+                  node->TreeView->SelectedNode = node->LastNode;
+      }
 
-        void InitializeBoldButton()
-        {
-            boldButton = gcnew ToolStripButton;
-            boldButton->Text = "B";
-            boldButton->CheckOnClick = true;
-            boldButton->CheckedChanged  += gcnew EventHandler(this, 
-                &Form1::boldButtonCheckedChanged);
-            toolStrip1->Items->Add(boldButton);
-        }
-
-        void boldButtonCheckedChanged(Object^ sender, EventArgs^ e)
-        {
-            if (boldButton->Checked)
-            { 
-                this->Font= gcnew System::Drawing::Font(this->Font, 
-                    FontStyle::Bold);
-            }
-            else
-            { 
-                this->Font = gcnew System::Drawing::Font(this->Font, 
-                    FontStyle::Regular);
-            }
-        }
-
-
-        //   internal:
+      node->TreeView->Focus();
+   }

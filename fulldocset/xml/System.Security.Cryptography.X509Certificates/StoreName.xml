@@ -11,8 +11,23 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Specifies the name of the X.509 certificate store to open.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This enumeration specifies the X.509 store name, which also includes the type of certificates included. For example, My includes personal certificates, whereas Disallowed includes only revoked certificates.  
+  
+   
+  
+## Examples  
+ The following code example opens an X.509 certificate store, adds and deletes certificates, and then closes the store. It assumes you have three certificates to add to and remove from a local store.  
+  
+ [!code-vb[X509StoreName#1](~/add/codesnippet/visualbasic/t-system.security.crypto_96_1.vb)]
+ [!code-cs[X509StoreName#1](~/add/codesnippet/csharp/t-system.security.crypto_96_1.cs)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="AddressBook">
@@ -29,7 +44,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.StoreName</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The X.509 certificate store for other users.</summary>
       </Docs>
     </Member>
     <Member MemberName="AuthRoot">
@@ -46,7 +61,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.StoreName</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The X.509 certificate store for third-party certificate authorities (CAs).</summary>
       </Docs>
     </Member>
     <Member MemberName="CertificateAuthority">
@@ -63,7 +78,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.StoreName</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The X.509 certificate store for intermediate certificate authorities (CAs).</summary>
       </Docs>
     </Member>
     <Member MemberName="Disallowed">
@@ -80,7 +95,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.StoreName</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The X.509 certificate store for revoked certificates.</summary>
       </Docs>
     </Member>
     <Member MemberName="My">
@@ -97,7 +112,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.StoreName</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The X.509 certificate store for personal certificates.</summary>
       </Docs>
     </Member>
     <Member MemberName="Root">
@@ -114,7 +129,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.StoreName</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The X.509 certificate store for trusted root certificate authorities (CAs).</summary>
       </Docs>
     </Member>
     <Member MemberName="TrustedPeople">
@@ -131,7 +146,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.StoreName</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The X.509 certificate store for directly trusted people and resources.</summary>
       </Docs>
     </Member>
     <Member MemberName="TrustedPublisher">
@@ -148,7 +163,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.StoreName</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The X.509 certificate store for directly trusted publishers.</summary>
       </Docs>
     </Member>
   </Members>

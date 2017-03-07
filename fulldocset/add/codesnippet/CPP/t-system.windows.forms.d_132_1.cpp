@@ -1,84 +1,33 @@
-using namespace System;
-using namespace System::ComponentModel;
-using namespace System::ComponentModel::Design;
-using namespace System::Collections;
-using namespace System::Drawing;
-using namespace System::Windows::Forms;
-using namespace System::Windows::Forms::Design;
-using namespace System::Security::Permissions;
-
-   public ref class TestControlDesigner: public System::Windows::Forms::Design::ControlDesigner
+   void dataGridView1_CellMouseEnter( Object^ sender, DataGridViewCellEventArgs^ e )
    {
-   private:
-      bool mouseover;
-      Color lineColor;
-
-   public:
-
-      property Color OutlineColor 
+      Bitmap^ markingUnderMouse = dynamic_cast<Bitmap^>(dataGridView1->Rows[ e->RowIndex ]->Cells[ e->ColumnIndex ]->Value);
+      if ( markingUnderMouse == blank )
       {
-         Color get()
-         {
-            return lineColor;
-         }
-
-         void set( Color value )
-         {
-            lineColor = value;
-         }
-
+         dataGridView1->Cursor = Cursors::Default;
       }
-      TestControlDesigner()
+      else
+      if ( markingUnderMouse == o || markingUnderMouse == x )
       {
-         mouseover = false;
-         lineColor = Color::White;
+         dataGridView1->Cursor = Cursors::No;
+         ToolTip(e,true);
       }
+   }
 
-   protected:
-      virtual void OnMouseEnter() override
-      {
-         this->mouseover = true;
-         this->Control->Refresh();
-      }
-
-      virtual void OnMouseLeave() override
-      {
-         this->mouseover = false;
-         this->Control->Refresh();
-      }
-
-      virtual void OnPaintAdornments( System::Windows::Forms::PaintEventArgs^ pe ) override
-      {
-         if ( this->mouseover )
-                  pe->Graphics->DrawRectangle( gcnew Pen( gcnew SolidBrush( this->lineColor ),6 ), 0, 0, this->Control->Size.Width, this->Control->Size.Height );
-      }
-
-   protected:
-      [ReflectionPermission(SecurityAction::Demand, Flags=ReflectionPermissionFlag::MemberAccess)]
-      virtual void PreFilterProperties( System::Collections::IDictionary^ properties ) override
-      {
-         properties->Add( "OutlineColor", TypeDescriptor::CreateProperty( TestControlDesigner::typeid, "OutlineColor", System::Drawing::Color::typeid, nullptr ) );
-      }
-   };
-
-   [DesignerAttribute(TestControlDesigner::typeid)]
-   public ref class TestControl: public System::Windows::Forms::UserControl
+   void ToolTip( DataGridViewCellEventArgs^ e, bool showTip )
    {
-   private:
-      System::ComponentModel::Container^ components;
-
-   public:
-      TestControl()
+      DataGridViewImageCell^ cell = dynamic_cast<DataGridViewImageCell^>(dataGridView1->Rows[ e->RowIndex ]->Cells[ e->ColumnIndex ]);
+      DataGridViewImageColumn^ imageColumn = dynamic_cast<DataGridViewImageColumn^>(dataGridView1->Columns[ cell->ColumnIndex ]);
+      if ( showTip )
+            cell->ToolTipText = imageColumn->Description;
+      else
       {
-         components = gcnew System::ComponentModel::Container;
+         cell->ToolTipText = String::Empty;
       }
+   }
 
-   protected:
-      ~TestControl()
-      {
-         if ( components != nullptr )
-         {
-            delete components;
-         }
-      }
-   };
+   void dataGridView1_CellMouseLeave( Object^ sender, DataGridViewCellEventArgs^ e )
+   {
+      ToolTip( e, false );
+      dataGridView1->Cursor = Cursors::Default;
+   }
+

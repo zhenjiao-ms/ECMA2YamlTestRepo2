@@ -1,28 +1,41 @@
 using System;
+using System.Collections;
 using System.Globalization;
 
+public class SamplesCultureInfo
+{
 
-public class SamplesCultureInfo  {
+   public static void Main()
+   {
 
-   public static void Main()  {
+      // Creates and initializes the CultureInfo which uses the international sort.
+      CultureInfo myCIintl = new CultureInfo("es-ES", false);
 
-      // Creates and initializes a CultureInfo.
-      CultureInfo myCI = new CultureInfo("en-US", false);
+      // Creates and initializes the CultureInfo which uses the traditional sort.
+      CultureInfo myCItrad = new CultureInfo(0x040A, false);
 
-      // Clones myCI and modifies the DTFI and NFI instances associated with the clone.
-      CultureInfo myCIclone = (CultureInfo) myCI.Clone();
-      myCIclone.DateTimeFormat.AMDesignator = "a.m.";
-      myCIclone.DateTimeFormat.DateSeparator = "-";
-      myCIclone.NumberFormat.CurrencySymbol = "USD";
-      myCIclone.NumberFormat.NumberDecimalDigits = 4;
+      // Displays the properties of each culture.
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "PROPERTY", "INTERNATIONAL", "TRADITIONAL");
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "CompareInfo", myCIintl.CompareInfo, myCItrad.CompareInfo);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "DisplayName", myCIintl.DisplayName, myCItrad.DisplayName);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "EnglishName", myCIintl.EnglishName, myCItrad.EnglishName);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "IsNeutralCulture", myCIintl.IsNeutralCulture, myCItrad.IsNeutralCulture);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "IsReadOnly", myCIintl.IsReadOnly, myCItrad.IsReadOnly);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "LCID", myCIintl.LCID, myCItrad.LCID);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "Name", myCIintl.Name, myCItrad.Name);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "NativeName", myCIintl.NativeName, myCItrad.NativeName);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "Parent", myCIintl.Parent, myCItrad.Parent);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "TextInfo", myCIintl.TextInfo, myCItrad.TextInfo);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "ThreeLetterISOLanguageName", myCIintl.ThreeLetterISOLanguageName, myCItrad.ThreeLetterISOLanguageName);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "ThreeLetterWindowsLanguageName", myCIintl.ThreeLetterWindowsLanguageName, myCItrad.ThreeLetterWindowsLanguageName);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "TwoLetterISOLanguageName", myCIintl.TwoLetterISOLanguageName, myCItrad.TwoLetterISOLanguageName);
+      Console.WriteLine();
 
-      // Displays the properties of the DTFI and NFI instances associated with the original and with the clone. 
-      Console.WriteLine( "DTFI/NFI PROPERTY\tORIGINAL\tMODIFIED CLONE" );
-      Console.WriteLine( "DTFI.AMDesignator\t{0}\t\t{1}", myCI.DateTimeFormat.AMDesignator, myCIclone.DateTimeFormat.AMDesignator );
-      Console.WriteLine( "DTFI.DateSeparator\t{0}\t\t{1}", myCI.DateTimeFormat.DateSeparator, myCIclone.DateTimeFormat.DateSeparator );
-      Console.WriteLine( "NFI.CurrencySymbol\t{0}\t\t{1}", myCI.NumberFormat.CurrencySymbol, myCIclone.NumberFormat.CurrencySymbol );
-      Console.WriteLine( "NFI.NumberDecimalDigits\t{0}\t\t{1}", myCI.NumberFormat.NumberDecimalDigits, myCIclone.NumberFormat.NumberDecimalDigits );
-      
+      // Compare two strings using myCIintl.
+      Console.WriteLine("Comparing \"llegar\" and \"lugar\"");
+      Console.WriteLine("   With myCIintl.CompareInfo.Compare: {0}", myCIintl.CompareInfo.Compare("llegar", "lugar"));
+      Console.WriteLine("   With myCItrad.CompareInfo.Compare: {0}", myCItrad.CompareInfo.Compare("llegar", "lugar"));
+
    }
 
 }
@@ -30,10 +43,23 @@ public class SamplesCultureInfo  {
 /*
 This code produces the following output.
 
-DTFI/NFI PROPERTY       ORIGINAL        MODIFIED CLONE
-DTFI.AMDesignator       AM              a.m.
-DTFI.DateSeparator      /               -
-NFI.CurrencySymbol      $               USD
-NFI.NumberDecimalDigits 2               4
+PROPERTY                       INTERNATIONAL                                  TRADITIONAL              
+CompareInfo                    CompareInfo - es-ES                            CompareInfo - es-ES_tradnl
+DisplayName                    Spanish (Spain)                                Spanish (Spain)          
+EnglishName                    Spanish (Spain, International Sort)            Spanish (Spain, Traditional Sort)
+IsNeutralCulture               False                                          False                    
+IsReadOnly                     False                                          False                    
+LCID                           3082                                           1034                     
+Name                           es-ES                                          es-ES                    
+NativeName                     Español (España, alfabetización internacional) Español (España, alfabetización tradicional)
+Parent                         es                                             es                       
+TextInfo                       TextInfo - es-ES                               TextInfo - es-ES_tradnl  
+ThreeLetterISOLanguageName     spa                                            spa                      
+ThreeLetterWindowsLanguageName ESN                                            ESP                      
+TwoLetterISOLanguageName       es                                             es                       
+
+Comparing "llegar" and "lugar"
+   With myCIintl.CompareInfo.Compare: -1
+   With myCItrad.CompareInfo.Compare: 1
 
 */

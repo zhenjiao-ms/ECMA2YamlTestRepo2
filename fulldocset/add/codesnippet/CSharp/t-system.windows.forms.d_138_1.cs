@@ -1,26 +1,16 @@
-    private void dataGridView1_CellClick(object sender,
-        DataGridViewCellEventArgs e)
+    private void Form1_Load(object sender, System.EventArgs e)
     {
+        // Bind the DataGridView controls to the BindingSource
+        // components and load the data from the database.
+        masterDataGridView.DataSource = masterBindingSource;
+        detailsDataGridView.DataSource = detailsBindingSource;
+        GetData();
 
-        if (turn.Text.Equals(gameOverString)) { return; }
+        // Resize the master DataGridView columns to fit the newly loaded data.
+        masterDataGridView.AutoResizeColumns();
 
-        DataGridViewImageCell cell = (DataGridViewImageCell)
-            dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
-
-        if (cell.Value == blank)
-        {
-            if (IsOsTurn())
-            {
-                cell.Value = o;
-            }
-            else
-            {
-                cell.Value = x;
-            }
-            ToggleTurn();
-        }
-        if (IsAWin())
-        {
-            turn.Text = gameOverString;
-        }
+        // Configure the details DataGridView so that its columns automatically
+        // adjust their widths when the data changes.
+        detailsDataGridView.AutoSizeColumnsMode = 
+            DataGridViewAutoSizeColumnsMode.AllCells;
     }

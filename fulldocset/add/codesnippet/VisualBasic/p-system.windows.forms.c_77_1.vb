@@ -1,35 +1,27 @@
-' Create three buttons and place them on a form using 
-' several size and location related properties. 
-Private Sub AddOKCancelButtons()
-   ' Set the button size and location using 
-      ' the Size and Location properties. 
-   Dim buttonOK As New Button()
-   buttonOK.Location = New Point(136, 248)
-   buttonOK.Size = New Size(75, 25)
-   ' Set the Text property and make the 
-   ' button the form's default button. 
-   buttonOK.Text = "&OK"
-   Me.AcceptButton = buttonOK
+' Add a button to a form and set some of its common properties.
+Private Sub AddMyButton()
+   ' Create a button and add it to the form.
+   Dim button1 As New Button()
    
-   ' Set the button size and location using the Top, 
-   ' Left, Width, and Height properties. 
-   Dim buttonCancel As New Button()
-   buttonCancel.Top = buttonOK.Top
-   buttonCancel.Left = buttonOK.Right + 5
-   buttonCancel.Width = buttonOK.Width
-   buttonCancel.Height = buttonOK.Height
-   ' Set the Text property and make the 
-   ' button the form's cancel button. 
-   buttonCancel.Text = "&Cancel"
-   Me.CancelButton = buttonCancel
+   ' Anchor the button to the bottom right corner of the form
+   button1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
    
-   ' Set the button size and location using 
-   ' the Bounds property. 
-   Dim buttonHelp As New Button()
-   buttonHelp.Bounds = New Rectangle(10, 10, 75, 25)
-   ' Set the Text property of the button.
-   buttonHelp.Text = "&Help"
+   ' Assign a background image.
+   button1.BackgroundImage = imageList1.Images(0)
+
+   ' Specify the layout style of the background image. Tile is the default.
+   button1.BackgroundImageLayout = ImageLayout.Center
    
-   ' Add the buttons to the form.
-   Me.Controls.AddRange(New Control() {buttonOK, buttonCancel, buttonHelp})
+   ' Make the button the same size as the image.
+   button1.Size = button1.BackgroundImage.Size
+   
+   ' Set the button's TabIndex and TabStop properties.
+   button1.TabIndex = 1
+   button1.TabStop = True
+
+   ' Add a delegate to handle the Click event.
+   AddHandler button1.Click, AddressOf Me.button1_Click
+   
+   ' Add the button to the form.
+   Me.Controls.Add(button1)
 End Sub

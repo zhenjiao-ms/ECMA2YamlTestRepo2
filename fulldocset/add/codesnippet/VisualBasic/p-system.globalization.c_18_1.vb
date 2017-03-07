@@ -1,37 +1,37 @@
 Imports System
 Imports System.Globalization
 
-Module Module1
 
-   Public Sub Main()
-
-      ' Lists the cultures that use the Chinese language and determines if each is a neutral culture.
-      Dim ci As CultureInfo
-      For Each ci In CultureInfo.GetCultures(CultureTypes.AllCultures)
-         If ci.TwoLetterISOLanguageName = "zh" Then
-            Console.Write("{0,-7} {1,-40}", ci.Name, ci.EnglishName)
-            If ci.IsNeutralCulture Then
-               Console.WriteLine(": neutral")
-            Else
-               Console.WriteLine(": specific")
-            End If
-         End If
-      Next ci
+Public Class SamplesCultureInfo
+   
+   Public Shared Sub Main()
+      
+      ' Creates and initializes a CultureInfo.
+      Dim myCI As New CultureInfo("en-US", False)
+      
+      ' Clones myCI and modifies the DTFI and NFI instances associated with the clone.
+      Dim myCIclone As CultureInfo = CType(myCI.Clone(), CultureInfo)
+      myCIclone.DateTimeFormat.AMDesignator = "a.m."
+      myCIclone.DateTimeFormat.DateSeparator = "-"
+      myCIclone.NumberFormat.CurrencySymbol = "USD"
+      myCIclone.NumberFormat.NumberDecimalDigits = 4
+      
+      ' Displays the properties of the DTFI and NFI instances associated with the original and with the clone. 
+      Console.WriteLine("DTFI/NFI PROPERTY" + ControlChars.Tab + "ORIGINAL" + ControlChars.Tab + "MODIFIED CLONE")
+      Console.WriteLine("DTFI.AMDesignator" + ControlChars.Tab + "{0}" + ControlChars.Tab + ControlChars.Tab + "{1}", myCI.DateTimeFormat.AMDesignator, myCIclone.DateTimeFormat.AMDesignator)
+      Console.WriteLine("DTFI.DateSeparator" + ControlChars.Tab + "{0}" + ControlChars.Tab + ControlChars.Tab + "{1}", myCI.DateTimeFormat.DateSeparator, myCIclone.DateTimeFormat.DateSeparator)
+      Console.WriteLine("NFI.CurrencySymbol" + ControlChars.Tab + "{0}" + ControlChars.Tab + ControlChars.Tab + "{1}", myCI.NumberFormat.CurrencySymbol, myCIclone.NumberFormat.CurrencySymbol)
+      Console.WriteLine("NFI.NumberDecimalDigits" + ControlChars.Tab + "{0}" + ControlChars.Tab + ControlChars.Tab + "{1}", myCI.NumberFormat.NumberDecimalDigits, myCIclone.NumberFormat.NumberDecimalDigits)
 
    End Sub 'Main 
 
-End Module
+End Class 'SamplesCultureInfo
 
 
-'This code produces the following output.
+' This code produces the following output.
 '
-'zh-Hans Chinese (Simplified)                    : neutral
-'zh-TW   Chinese (Traditional, Taiwan)           : specific
-'zh-CN   Chinese (Simplified, PRC)               : specific
-'zh-HK   Chinese (Traditional, Hong Kong S.A.R.) : specific
-'zh-SG   Chinese (Simplified, Singapore)         : specific
-'zh-MO   Chinese (Traditional, Macao S.A.R.)     : specific
-'zh      Chinese                                 : neutral
-'zh-Hant Chinese (Traditional)                   : neutral
-'zh-CHS  Chinese (Simplified) Legacy             : neutral
-'zh-CHT  Chinese (Traditional) Legacy            : neutral
+' DTFI/NFI PROPERTY       ORIGINAL        MODIFIED CLONE
+' DTFI.AMDesignator       AM              a.m.
+' DTFI.DateSeparator      /               -
+' NFI.CurrencySymbol      $               USD
+' NFI.NumberDecimalDigits 2               4

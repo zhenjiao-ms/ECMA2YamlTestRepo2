@@ -1,12 +1,13 @@
 Imports System.Runtime.CompilerServices
 
-<Assembly: DependencyAttribute("AssemblyA", LoadHint.Always)> 
-<Assembly: DependencyAttribute("AssemblyB", LoadHint.Sometimes)> 
+<Assembly: StringFreezingAttribute()> 
+
 Module Program
 
+    Dim frozenString = "This is a frozen string after Ngen is run."
 
     Sub Main(ByVal args() As String)
-        Console.WriteLine("The DependencyAttribute attribute was applied.")
+        Console.WriteLine("The FixedAddressValueTypeAttribute attribute was applied.")
     End Sub
 
 

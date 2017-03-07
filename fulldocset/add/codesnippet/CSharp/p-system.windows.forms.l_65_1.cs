@@ -1,90 +1,22 @@
-	internal System.Windows.Forms.ListBox ListBox1;
-
-	private void InitializeOwnerDrawnListBox()
+	// Declare a label.
+	internal System.Windows.Forms.Label Label1;
+    
+	// Initialize the label.
+	private void InitializeLabel()
 	{
-		this.ListBox1 = new System.Windows.Forms.ListBox();
+		this.Label1 = new Label();
+		this.Label1.Location = new System.Drawing.Point(10, 10);
+		this.Label1.Name = "Label1";
+		this.Label1.TabIndex = 0;
 
-		// Set the location and size.
-		ListBox1.Location = new Point(20, 20);
-		ListBox1.Size = new Size(240, 240);
-
-		// Populate the ListBox.ObjectCollection property 
-		// with several strings, using the AddRange method.
-		this.ListBox1.Items.AddRange(new object[]{"System.Windows.Forms", 
-			"System.Drawing", "System.Xml", "System.Net", "System.Runtime.Remoting", 
-			"System.Web"});
-
-		// Turn off the scrollbar.
-		ListBox1.ScrollAlwaysVisible = false;
-
-		// Set the border style to a single, flat border.
-		ListBox1.BorderStyle = BorderStyle.FixedSingle;
-
-		// Set the DrawMode property to the OwnerDrawVariable value. 
-		// This means the MeasureItem and DrawItem events must be 
-		// handled.
-		ListBox1.DrawMode = DrawMode.OwnerDrawVariable;
-		ListBox1.MeasureItem += 
-			new MeasureItemEventHandler(ListBox1_MeasureItem);
-		ListBox1.DrawItem += new DrawItemEventHandler(ListBox1_DrawItem);
-		this.Controls.Add(this.ListBox1);
-		
-	}
-
-
-	// Handle the DrawItem event for an owner-drawn ListBox.
-	private void ListBox1_DrawItem(object sender, DrawItemEventArgs e)
-	{
-
-		// If the item is the selected item, then draw the rectangle
-		// filled in blue. The item is selected when a bitwise And  
-		// of the State property and the DrawItemState.Selected 
-		// property is true.
-		if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
-		{
-			e.Graphics.FillRectangle(Brushes.CornflowerBlue, e.Bounds);
-		}
-		else
-		{
-			// Otherwise, draw the rectangle filled in beige.
-			e.Graphics.FillRectangle(Brushes.Beige, e.Bounds);
-		}
-
-		// Draw a rectangle in blue around each item.
-		e.Graphics.DrawRectangle(Pens.Blue, e.Bounds);
-
-		// Draw the text in the item.
-		e.Graphics.DrawString(ListBox1.Items[e.Index].ToString(),
-			this.Font, Brushes.Black, e.Bounds.X, e.Bounds.Y);
-
-		// Draw the focus rectangle around the selected item.
-		e.DrawFocusRectangle();
-	}
-
-	// Handle the MeasureItem event for an owner-drawn ListBox.
-	private void ListBox1_MeasureItem(object sender, 
-		MeasureItemEventArgs e)
-	{
-
-		// Cast the sender object back to ListBox type.
-		ListBox theListBox = (ListBox) sender;
-
-		// Get the string contained in each item.
-		string itemString = (string) theListBox.Items[e.Index];
-
-		// Split the string at the " . "  character.
-		string[] resultStrings = itemString.Split('.');
-
-		// If the string contains more than one period, increase the 
-		// height by ten pixels; otherwise, increase the height by 
-		// five pixels.
-		if (resultStrings.Length>2)
-		{
-			e.ItemHeight += 10;
-		}
-		else
-		{
-			e.ItemHeight += 5;
-		}
+		// Set the label to a small size, but set the AutoSize property 
+		// to true. The label will adjust its length so all the text
+		// is visible, however if the label is wider than the form,
+		// the entire label will not be visible.
+		this.Label1.Size = new System.Drawing.Size(10, 10);
+		this.Controls.Add(this.Label1);
+		this.Label1.AutoSize = true;
+		this.Label1.Text = "The text in this label is longer" +  
+			" than the set size.";
 
 	}

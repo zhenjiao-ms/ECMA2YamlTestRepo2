@@ -1,19 +1,20 @@
-Protected Overrides Sub OnTextChanged(e As System.EventArgs)
-   Try
-      ' Convert the text to a Double and determine
-      ' if it is a negative number.
-      If Double.Parse(Me.Text) < 0 Then
-         ' If the number is negative, display it in Red.
-         Me.ForeColor = Color.Red
-      Else
-         ' If the number is not negative, display it in Black.
-         Me.ForeColor = Color.Black
-      End If
-   Catch
-      ' If there is an error, display the
-      ' text using the system colors.
-      Me.ForeColor = SystemColors.ControlText
-   End Try
+    Private Sub DemonstrateRefresh()
+        ' Create an array with ten elements and bind to a TextBox.
+        Dim myArray(9) As String
+        Dim i As Integer
+        For i = 0 To 9
+            myArray(i) = "item " & i
+        Next i
+        textBox1.DataBindings.Add("Text", myArray, "")
+        ' Change one value.
+        myArray(0) = "New value"
 
-   MyBase.OnTextChanged(e)
-End Sub
+        ' Uncomment the next line to refresh the CurrencyManager.
+        ' RefreshGrid(myArray);
+
+    End Sub 'DemonstrateRefresh
+
+    Private Sub RefreshGrid(dataSource As Object)
+        Dim myCurrencyManager As CurrencyManager = CType(Me.BindingContext(dataSource), CurrencyManager)
+        myCurrencyManager.Refresh()
+    End Sub 'RefreshGrid

@@ -1,110 +1,56 @@
-namespace Samples.AspNet.CS.Controls
+using System;
+using System.Data;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+
+public partial class webpartzonecollection_overview : System.Web.UI.Page
 {
-  using System;
-  using System.Web;
-  using System.Web.Security;
-  using System.Security.Permissions;
-  using System.Web.UI;
-  using System.Web.UI.WebControls;
-  using System.Web.UI.WebControls.WebParts;
 
-  [AspNetHostingPermission(SecurityAction.Demand,
-    Level = AspNetHostingPermissionLevel.Minimal)]
-  [AspNetHostingPermission(SecurityAction.InheritanceDemand,
-    Level = AspNetHostingPermissionLevel.Minimal)]
-  public interface IZipCode
+  protected void Button1_Click(object sender, EventArgs e)
   {
-    string ZipCode { get; set;}
+    Label1.Text = String.Empty;
+    Label1.Text = "WebPartZone Count:  " + mgr.Zones.Count;
   }
 
-  [AspNetHostingPermission(SecurityAction.Demand,
-    Level = AspNetHostingPermissionLevel.Minimal)]
-  [AspNetHostingPermission(SecurityAction.InheritanceDemand,
-    Level = AspNetHostingPermissionLevel.Minimal)]
-  public class ZipCodeWebPart : WebPart, IZipCode
+  protected void Button2_Click(object sender, EventArgs e)
   {
-    string zipCodeText = String.Empty;
-    TextBox input;
-    Button send;
-
-    public ZipCodeWebPart()
-    {
-    }
-
-    // Make the implemented property personalizable to save 
-    // the Zip Code between browser sessions.
-    [Personalizable()]
-    public virtual string ZipCode
-    {
-      get { return zipCodeText; }
-      set { zipCodeText = value; }
-    }
-
-    // This is the callback method that returns the provider.
-    [ConnectionProvider("Zip Code Provider", "ZipCodeProvider")]
-    public IZipCode ProvideIZipCode()
-    {
-      return this;
-    }
-
-    protected override void CreateChildControls()
-    {
-      Controls.Clear();
-      input = new TextBox();
-      this.Controls.Add(input);
-      send = new Button();
-      send.Text = "Enter 5-digit Zip Code";
-      send.Click += new EventHandler(this.submit_Click);
-      this.Controls.Add(send);
-    }
-
-    private void submit_Click(object sender, EventArgs e)
-    {
-      if (input.Text != String.Empty)
-      {
-        zipCodeText = Page.Server.HtmlEncode(input.Text);
-        input.Text = String.Empty;
-      }
-    }
-
+    Label1.Text = String.Empty;
+    Label1.Text = mgr.Zones.Contains(WebPartZone2).ToString();
   }
 
-  [AspNetHostingPermission(SecurityAction.Demand,
-    Level = AspNetHostingPermissionLevel.Minimal)]
-  [AspNetHostingPermission(SecurityAction.InheritanceDemand,
-    Level = AspNetHostingPermissionLevel.Minimal)]
-  public class WeatherWebPart : WebPart
+  protected void Button3_Click(object sender, EventArgs e)
   {
-    private IZipCode _provider;
-    string _zipSearch;
-    Label DisplayContent;
+    Label1.Text = String.Empty;
+    WebPartZoneBase[] zoneArray = new WebPartZoneBase[mgr.Zones.Count];
+    mgr.Zones.CopyTo(zoneArray, 0);
+    Label1.Text = zoneArray[2].ID;
+    Label1.Text += ", " + zoneArray[1].ID;
+    Label1.Text += ", " + zoneArray[0].ID;
+  }
 
-    // This method is identified by the ConnectionConsumer 
-    // attribute, and is the mechanism for connecting with 
-    // the provider. 
-    [ConnectionConsumer("Zip Code Consumer", "ZipCodeConsumer")]
-    public void GetIZipCode(IZipCode Provider)
+  protected void Button4_Click(object sender, EventArgs e)
+  {
+    Label1.Text = String.Empty;
+    Label1.Text = "WebPartZone1 index:  " + mgr.Zones.IndexOf(WebPartZone1);
+  }
+
+  protected void Button5_Click(object sender, EventArgs e)
+  {
+    Label1.Text = String.Empty;
+
+    WebPartZoneCollection zoneCollection = mgr.Zones;
+    foreach (WebPartZone zone in zoneCollection)
     {
-      _provider = Provider;
-    }
-    
-    protected override void OnPreRender(EventArgs e)
-    {
-      EnsureChildControls();
 
-      if (this._provider != null)
-      {
-        _zipSearch = _provider.ZipCode.Trim();
-        DisplayContent.Text = "My Zip Code is:  " + _zipSearch;
-      }
+      if (zone.WebPartVerbRenderMode == WebPartVerbRenderMode.Menu)
+        zone.WebPartVerbRenderMode = WebPartVerbRenderMode.TitleBar;
+      else
+        zone.WebPartVerbRenderMode = WebPartVerbRenderMode.Menu;
     }
-
-    protected override void CreateChildControls()
-    {
-      Controls.Clear();
-      DisplayContent = new Label();
-      this.Controls.Add(DisplayContent);
-    }
-
   }
 }

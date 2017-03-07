@@ -1,21 +1,6 @@
-    Private Shared Sub SetAlternateChoicesUsingItems( _
-        ByVal comboboxColumn As DataGridViewComboBoxColumn)
+    Private Sub dataGridView1_Sorted(ByVal sender As Object, _
+        ByVal e As System.EventArgs) Handles dataGridView1.Sorted
 
-        comboboxColumn.Items.AddRange("Mr.", "Ms.", "Mrs.", "Dr.")
+        Me.dataGridView1.FirstDisplayedCell = Me.dataGridView1.CurrentCell
 
     End Sub
-
-    Private Function CreateComboBoxColumn() _
-        As DataGridViewComboBoxColumn
-        Dim column As New DataGridViewComboBoxColumn()
-
-        With column
-            .DataPropertyName = ColumnName.TitleOfCourtesy.ToString()
-            .HeaderText = ColumnName.TitleOfCourtesy.ToString()
-            .DropDownWidth = 160
-            .Width = 90
-            .MaxDropDownItems = 3
-            .FlatStyle = FlatStyle.Flat
-        End With
-        Return column
-    End Function

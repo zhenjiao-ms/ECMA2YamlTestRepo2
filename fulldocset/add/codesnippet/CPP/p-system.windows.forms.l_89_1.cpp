@@ -1,96 +1,39 @@
-#using <System.dll>
-#using <System.Windows.Forms.dll>
-#using <System.Drawing.dll>
-
-using namespace System;
-using namespace System::Drawing;
-using namespace System::Windows::Forms;
-public ref class Form1: public System::Windows::Forms::Form
-{
-private:
-   System::Windows::Forms::LinkLabel^ linkLabel1;
-
-public:
-   Form1()
+   // This method adds two columns to the ListView, setting the Text 
+   // and TextAlign, and Width properties of each ColumnHeader.  The 
+   // HeaderStyle property is set to NonClickable since the ColumnClick 
+   // event is not handled.  Finally the method adds ListViewItems and 
+   // SubItems to each column.
+   void InitializeListView()
    {
-      
-      // Create the LinkLabel.
-      this->linkLabel1 = gcnew System::Windows::Forms::LinkLabel;
-      
-      // Configure the LinkLabel's size and location. Specify that the
-      // size should be automatically determined by the content.
-      this->linkLabel1->Location = System::Drawing::Point( 34, 56 );
-      this->linkLabel1->Size = System::Drawing::Size( 224, 16 );
-      this->linkLabel1->AutoSize = true;
-      
-      // Configure the appearance.
-      this->linkLabel1->DisabledLinkColor = System::Drawing::Color::Red;
-      this->linkLabel1->VisitedLinkColor = System::Drawing::Color::Blue;
-      this->linkLabel1->LinkBehavior = System::Windows::Forms::LinkBehavior::HoverUnderline;
-      this->linkLabel1->LinkColor = System::Drawing::Color::Navy;
-      this->linkLabel1->TabIndex = 0;
-      this->linkLabel1->TabStop = true;
-      
-      // Add an event handler to do something when the links are clicked.
-      this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler( this, &Form1::linkLabel1_LinkClicked );
-      
-      // Identify what the first Link is.
-      this->linkLabel1->LinkArea = System::Windows::Forms::LinkArea( 0, 8 );
-      
-      // Identify that the first link is visited already.
-      this->linkLabel1->Links[ 0 ]->Visited = true;
-      
-      // Set the Text property to a String*.
-      this->linkLabel1->Text = "Register Online.  Visit Microsoft.  Visit MSN.";
-      
-      // Create new links using the Add method of the LinkCollection class.
-      // Underline the appropriate words in the LinkLabel's Text property.
-      // The words 'Register', 'Microsoft', and 'MSN' will
-      // all be underlined and behave as hyperlinks.
-      // First check that the Text property is long enough to accommodate
-      // the desired hyperlinked areas.  If it's not, don't add hyperlinks.
-      if ( this->linkLabel1->Text->Length >= 45 )
+      this->ListView1 = gcnew System::Windows::Forms::ListView;
+      this->ListView1->BackColor = System::Drawing::SystemColors::Control;
+      this->ListView1->Dock = System::Windows::Forms::DockStyle::Top;
+      this->ListView1->Location = System::Drawing::Point( 0, 0 );
+      this->ListView1->Name = "ListView1";
+      this->ListView1->Size = System::Drawing::Size( 292, 130 );
+      this->ListView1->TabIndex = 0;
+      this->ListView1->View = System::Windows::Forms::View::Details;
+      this->ListView1->MultiSelect = true;
+      this->ListView1->HideSelection = false;
+      this->ListView1->HeaderStyle = ColumnHeaderStyle::Nonclickable;
+      ColumnHeader^ columnHeader1 = gcnew ColumnHeader;
+      columnHeader1->Text = "Breakfast Item";
+      columnHeader1->TextAlign = HorizontalAlignment::Left;
+      columnHeader1->Width = 146;
+      ColumnHeader^ columnHeader2 = gcnew ColumnHeader;
+      columnHeader2->Text = "Price Each";
+      columnHeader2->TextAlign = HorizontalAlignment::Center;
+      columnHeader2->Width = 142;
+      this->ListView1->Columns->Add( columnHeader1 );
+      this->ListView1->Columns->Add( columnHeader2 );
+      array<String^>^foodList = {"Juice","Coffee","Cereal & Milk","Fruit Plate","Toast & Jelly","Bagel & Cream Cheese"};
+      array<String^>^foodPrice = {"1.09","1.09","2.19","2.49","1.49","1.49"};
+      for ( int count = 0; count < foodList->Length; count++ )
       {
-         this->linkLabel1->Links[ 0 ]->LinkData = "Register";
-         this->linkLabel1->Links->Add( 24, 9, "www.microsoft.com" );
-         this->linkLabel1->Links->Add( 42, 3, "www.msn.com" );
-         this->linkLabel1->Links[ 1 ]->Enabled = false;
-      }
+         ListViewItem^ listItem = gcnew ListViewItem( foodList[ count ] );
+         listItem->SubItems->Add( foodPrice[ count ] );
+         ListView1->Items->Add( listItem );
 
-      
-      // Set up how the form should be displayed and add the controls to the form.
-      this->ClientSize = System::Drawing::Size( 292, 266 );
-      array<System::Windows::Forms::Control^>^temp0 = {this->linkLabel1};
-      this->Controls->AddRange( temp0 );
-      this->Text = "Link Label Example";
+      }
+      this->Controls->Add( ListView1 );
    }
-
-
-private:
-   void linkLabel1_LinkClicked( Object^ /*sender*/, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e )
-   {
-      // Determine which link was clicked within the LinkLabel.
-      this->linkLabel1->Links[ linkLabel1->Links->IndexOf( e->Link ) ]->Visited = true;
-      
-      // Display the appropriate link based on the value of the
-      // LinkData property of the Link Object*.
-      String^ target = dynamic_cast<String^>(e->Link->LinkData);
-      
-      // If the value looks like a URL, navigate to it.
-      // Otherwise, display it in a message box.
-      if ( nullptr != target && target->StartsWith( "www" ) )
-      {
-         System::Diagnostics::Process::Start( target );
-      }
-      else
-      {
-         MessageBox::Show( "Item clicked: {0}", target );
-      }
-   }
-};
-
-[STAThread]
-int main()
-{
-   Application::Run( gcnew Form1 );
-}

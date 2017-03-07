@@ -2,17 +2,26 @@ using System;
 
 public class Example
 {
-   public static void Main()
+   static void Main(string[] args)
    {
-      float number = 1764.3789m;
-      
-      // Format as a currency value.
-      Console.WriteLine(number.ToString("C"));
-      
-      // Format as a numeric value with 3 decimal places.
-      Console.WriteLine(number.ToString("N3"));
+      Console.WriteLine("Attempting to round-trip a Double with 'R':");
+      double initialValue = 0.6822871999174;
+      string valueString = initialValue.ToString("R");
+      double roundTripped = double.Parse(valueString);
+      Console.WriteLine("{0:R} = {1:R}: {2}\n",
+                        initialValue, roundTripped, initialValue.Equals(roundTripped));
+
+      Console.WriteLine("Attempting to round-trip a Double with 'G17':");
+      string valueString17 = initialValue.ToString("G17");
+      double roundTripped17 = double.Parse(valueString17);
+      Console.WriteLine("{0:R} = {1:R}: {2}\n",
+                        initialValue, roundTripped17, initialValue.Equals(roundTripped17));
    }
 }
-// The example displays the following output:
-//       $1,764.38
-//       1,764.379
+// If compiled to an application that targets anycpu or x64 and run on an x64 system,
+// the example displays the following output:
+//       Attempting to round-trip a Double with 'R':
+//       0.6822871999174 = 0.68228719991740006: False
+//
+//       Attempting to round-trip a Double with 'G17':
+//       0.6822871999174 = 0.6822871999174: True

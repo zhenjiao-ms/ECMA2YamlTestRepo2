@@ -1,91 +1,63 @@
-#using <System.Windows.Forms.dll>
-#using <System.dll>
-#using <System.Drawing.dll>
-using namespace System;
-using namespace System::IO;
-using namespace System::Collections::Generic;
-using namespace System::Windows::Forms;
+      void ListDragTarget_DragOver( Object^ /*sender*/, System::Windows::Forms::DragEventArgs^ e )
+      {
+         // Determine whether string data exists in the drop data. If not, then
+         // the drop effect reflects that the drop cannot occur.
+         if (  !e->Data->GetDataPresent( System::String::typeid ) )
+         {
+            e->Effect = DragDropEffects::None;
+            DropLocationLabel->Text = "None - no string data.";
+            return;
+         }
 
-public enum class LightStatus
-{
-    Unknown,
-    TurnedOn,
-    TurnedOff
-};
+         // Set the effect based upon the KeyState.
+         if ( (e->KeyState & (8 + 32)) == (8 + 32) && ((e->AllowedEffect & DragDropEffects::Link) == DragDropEffects::Link) )
+         {
+            // KeyState 8 + 32 = CTL + ALT
+            // Link drag-and-drop effect.
+            e->Effect = DragDropEffects::Link;
+         }
+         else
+         if ( (e->KeyState & 32) == 32 && ((e->AllowedEffect & DragDropEffects::Link) == DragDropEffects::Link) )
+         {
+            // ALT KeyState for link.
+            e->Effect = DragDropEffects::Link;
+         }
+         else
+         if ( (e->KeyState & 4) == 4 && ((e->AllowedEffect & DragDropEffects::Move) == DragDropEffects::Move) )
+         {
+            // SHIFT KeyState for move.
+            e->Effect = DragDropEffects::Move;
+         }
+         else
+         if ( (e->KeyState & 8) == 8 && ((e->AllowedEffect & DragDropEffects::Copy) == DragDropEffects::Copy) )
+         {
+            // CTL KeyState for copy.
+            e->Effect = DragDropEffects::Copy;
+         }
+         else
+         if ( (e->AllowedEffect & DragDropEffects::Move) == DragDropEffects::Move )
+         {
+            // By default, the drop action should be move, if allowed.
+            e->Effect = DragDropEffects::Move;
+         }
+         else
+                  e->Effect = DragDropEffects::None;
 
-public ref class TriValueVirtualCheckBox: public Form
-{
-private:
-    DataGridView^ dataGridView1;
 
-private:
-    const int initialSize;
 
-private:
-    Dictionary<int, LightStatus>^ store;
 
-public:
-    TriValueVirtualCheckBox() :  Form(), initialSize(500)
-    {
-        dataGridView1 = gcnew DataGridView();
-        store = gcnew Dictionary<int, LightStatus>();
-        Text = this->GetType()->Name;
 
-        for(int i = 0; i < initialSize; i++)
-        {
-            store->Add(i, LightStatus::Unknown);
-        }
-
-        Controls->Add(dataGridView1);
-        dataGridView1->VirtualMode = true;
-        dataGridView1->AllowUserToDeleteRows = false;
-        dataGridView1->CellValueNeeded += 
-            gcnew DataGridViewCellValueEventHandler(
-            this, &TriValueVirtualCheckBox::dataGridView1_CellValueNeeded);
-        dataGridView1->CellValuePushed += 
-            gcnew DataGridViewCellValueEventHandler(
-            this, &TriValueVirtualCheckBox::dataGridView1_CellValuePushed);
-
-        dataGridView1->Columns->Add(CreateCheckBoxColumn());
-        dataGridView1->Rows->AddCopies(0, initialSize);
-    }
-
-private:
-    DataGridViewCheckBoxColumn^ CreateCheckBoxColumn()
-    {
-        DataGridViewCheckBoxColumn^ dataGridViewCheckBoxColumn1
-            = gcnew DataGridViewCheckBoxColumn();
-        dataGridViewCheckBoxColumn1->HeaderText = "Lights On";
-        dataGridViewCheckBoxColumn1->TrueValue = LightStatus::TurnedOn;
-        dataGridViewCheckBoxColumn1->FalseValue =
-            LightStatus::TurnedOff;
-        dataGridViewCheckBoxColumn1->IndeterminateValue
-            = LightStatus::Unknown;
-        dataGridViewCheckBoxColumn1->ThreeState = true;
-        dataGridViewCheckBoxColumn1->ValueType = LightStatus::typeid;
-        return dataGridViewCheckBoxColumn1;
-    }
-
-#pragma region "data store maintance"
-private:
-    void dataGridView1_CellValueNeeded(Object^ sender,
-        DataGridViewCellValueEventArgs^ e)
-    {
-        e->Value = store[e->RowIndex];
-    }
-
-private:
-    void dataGridView1_CellValuePushed(Object^ sender,
-        DataGridViewCellValueEventArgs^ e)
-    {
-        store[e->RowIndex] = (LightStatus) e->Value;
-    }
-#pragma endregion
-
-};
-
-[STAThread]
-int main()
-{
-    Application::Run(gcnew TriValueVirtualCheckBox());
-}
+         
+         // Get the index of the item the mouse is below.
+         // The mouse locations are relative to the screen, so they must be
+         // converted to client coordinates.
+         indexOfItemUnderMouseToDrop = ListDragTarget->IndexFromPoint( ListDragTarget->PointToClient( Point(e->X,e->Y) ) );
+         
+         // Updates the label text.
+         if ( indexOfItemUnderMouseToDrop != ListBox::NoMatches )
+         {
+            DropLocationLabel->Text = String::Concat( "Drops before item # ", (indexOfItemUnderMouseToDrop + 1) );
+         }
+         else
+                  DropLocationLabel->Text = "Drops at the end.";
+      }

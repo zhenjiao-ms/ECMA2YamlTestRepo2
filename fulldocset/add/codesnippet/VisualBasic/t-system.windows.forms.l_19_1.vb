@@ -1,33 +1,80 @@
- Private Sub button1_Click(sender As Object, e As System.EventArgs)
-     ' Create an instance of the ListBox.
-     Dim listBox1 As New ListBox()
-     ' Set the size and location of the ListBox.
-     listBox1.Size = New System.Drawing.Size(200, 100)
-     listBox1.Location = New System.Drawing.Point(10, 10)
-     ' Add the ListBox to the form.
-     Me.Controls.Add(listBox1)
-     ' Set the ListBox to display items in multiple columns.
-     listBox1.MultiColumn = True
-     ' Set the selection mode to multiple and extended.
-     listBox1.SelectionMode = SelectionMode.MultiExtended
-     
-     ' Shutdown the painting of the ListBox as items are added.
-     listBox1.BeginUpdate()
-     ' Loop through and add 50 items to the ListBox.
-     Dim x As Integer
-     For x = 1 To 50
-         listBox1.Items.Add("Item " & x.ToString())
-     Next x
-     ' Allow the ListBox to repaint and display the new items.
-     listBox1.EndUpdate()
-     
-     ' Select three items from the ListBox.
-     listBox1.SetSelected(1, True)
-     listBox1.SetSelected(3, True)
-     listBox1.SetSelected(5, True)
-        
-     ' Display the second selected item in the ListBox to the console.
-     System.Diagnostics.Debug.WriteLine(listBox1.SelectedItems(1).ToString())
-     ' Display the index of the first selected item in the ListBox.
-     System.Diagnostics.Debug.WriteLine(listBox1.SelectedIndices(0).ToString())
- End Sub
+Imports System
+Imports System.Collections.Generic
+Imports System.Drawing
+Imports System.Text
+Imports System.Windows.Forms
+Imports System.Windows.Forms.Layout
+
+' This class demonstrates a simple custom layout panel.
+' It overrides the LayoutEngine property of the Panel
+' control to provide a custom layout engine. 
+Public Class DemoFlowPanel
+    Inherits Panel
+
+    Private layoutEng As DemoFlowLayout
+
+    Public Sub New()
+    End Sub
+
+    Public Overrides ReadOnly Property LayoutEngine() As LayoutEngine
+        Get
+            If layoutEng Is Nothing Then
+                layoutEng = New DemoFlowLayout()
+            End If
+
+            Return layoutEng
+        End Get
+    End Property
+End Class
+
+' This class demonstrates a simple custom layout engine.
+Public Class DemoFlowLayout
+   Inherits LayoutEngine
+
+    Public Overrides Function Layout( _
+    ByVal container As Object, _
+    ByVal layoutEventArgs As LayoutEventArgs) As Boolean
+
+        Dim parent As Control = container
+
+        ' Use DisplayRectangle so that parent.Padding is honored.
+        Dim parentDisplayRectangle As Rectangle = parent.DisplayRectangle
+        Dim nextControlLocation As Point = parentDisplayRectangle.Location
+
+        Dim c As Control
+        For Each c In parent.Controls
+
+            ' Only apply layout to visible controls.
+            If c.Visible <> True Then
+                Continue For
+            End If
+
+            ' Respect the margin of the control:
+            ' shift over the left and the top.
+            nextControlLocation.Offset(c.Margin.Left, c.Margin.Top)
+
+            ' Set the location of the control.
+            c.Location = nextControlLocation
+
+            ' Set the autosized controls to their 
+            ' autosized heights.
+            If c.AutoSize Then
+                c.Size = c.GetPreferredSize(parentDisplayRectangle.Size)
+            End If
+
+            ' Move X back to the display rectangle origin.
+            nextControlLocation.X = parentDisplayRectangle.X
+
+            ' Increment Y by the height of the control 
+            ' and the bottom margin.
+            nextControlLocation.Y += c.Height + c.Margin.Bottom
+        Next c
+
+        ' Optional: Return whether or not the container's 
+        ' parent should perform layout as a result of this 
+        ' layout. Some layout engines return the value of 
+        ' the container's AutoSize property.
+        Return False
+
+    End Function
+End Class

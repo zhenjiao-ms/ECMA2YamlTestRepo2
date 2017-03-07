@@ -1,21 +1,37 @@
-                // Create a service host.
-                Uri httpUri = new Uri("http://localhost/Calculator");
-                ServiceHost sh = new ServiceHost(typeof(Calculator), httpUri);
+using System;
+using System.ServiceModel;
 
-                // Create a binding that uses a WindowsServiceCredential.
-                WSHttpBinding b = new WSHttpBinding(SecurityMode.Message);
-                b.Security.Message.ClientCredentialType = MessageCredentialType.Windows;
+[ServiceContract]
+interface ICalculatorService
+{
+    [OperationBehavior(TransactionAutoComplete = true)]
+    int Add(int a, int b);
 
-                // Add an endpoint.
-                sh.AddServiceEndpoint(typeof(ICalculator), b, "WindowsCalculator");
+    [OperationContract]
+    int Subtract(int a, int b);
+}
 
-                // Get a reference to the WindowsServiceCredential object.
-                WindowsServiceCredential winCredential =
-                    sh.Credentials.WindowsAuthentication;
-                // Print out values.
-                Console.WriteLine("IncludeWindowsGroup: {0}",
-                    winCredential.IncludeWindowsGroups);
-                Console.WriteLine("UserNamePasswordValidationMode: {0}",
-                    winCredential.AllowAnonymousLogons);
+[DeliveryRequirementsAttribute(
+  QueuedDeliveryRequirements = QueuedDeliveryRequirementsMode.NotAllowed,
+  RequireOrderedDelivery = true,
+  TargetContract= typeof(ICalculatorService)
+)]
+class CalculatorService : ICalculatorService
+{
+    public int Add(int a, int b)
+    {
+        Console.WriteLine("Add called.");
+        return a + b;
+    }
 
-                Console.ReadLine();
+    public int Subtract(int a, int b)
+    {
+        Console.WriteLine("Subtract called.");
+        return a - b;
+    }
+
+    public int Multiply(int a, int b)
+    {
+        return a * b;
+    }
+}

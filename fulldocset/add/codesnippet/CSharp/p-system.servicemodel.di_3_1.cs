@@ -10,4 +10,4 @@
 
             IChannelListener icl = serviceHost.ChannelDispatchers[0].Listener;
             ChannelDispatcher dispatcher = new ChannelDispatcher(icl);
-            bool receiveSynchronously = dispatcher.ReceiveSynchronously;
+            dispatcher.MessageVersion = MessageVersion.Default;

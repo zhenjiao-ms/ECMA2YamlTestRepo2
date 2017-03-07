@@ -1,13 +1,13 @@
-Private Sub SetBorderStyle(ByRef myGrid As DataGrid, ByRef style As Integer)
-    Select Case style
-    Case 0
-       myGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
-    Case 1
-       myGrid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-    Case 2 
-       myGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-    Case Else
-       myGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
-    End Select
- End Sub
-    
+    Private Sub dataGridView1_DefaultValuesNeeded(ByVal sender As Object, _
+        ByVal e As System.Windows.Forms.DataGridViewRowEventArgs) _
+        Handles dataGridView1.DefaultValuesNeeded
+
+        With e.Row
+            .Cells("Region").Value = "WA"
+            .Cells("City").Value = "Redmond"
+            .Cells("PostalCode").Value = "98052-6399"
+            .Cells("Country").Value = "USA"
+            .Cells("CustomerID").Value = NewCustomerId()
+        End With
+
+    End Sub

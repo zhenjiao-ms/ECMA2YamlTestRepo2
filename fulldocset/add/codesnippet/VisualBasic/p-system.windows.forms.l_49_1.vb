@@ -1,13 +1,13 @@
-   Private Sub listBox1_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles listBox1.SelectedIndexChanged
-      ' Get the currently selected item in the ListBox.
-      Dim curItem As String = listBox1.SelectedItem.ToString()
+Private Sub Control1_Layout(sender as Object, e as LayoutEventArgs) _ 
+     Handles Control1.Layout
 
-      ' Find the string in ListBox2.
-      Dim index As Integer = listBox2.FindString(curItem)
-      ' If the item was not found in ListBox 2 display a message box, otherwise select it in ListBox2.
-      If index = -1 Then
-         MessageBox.Show("Item is not available in ListBox2")
-      Else
-         listBox2.SetSelected(index, True)
-      End If
-   End Sub
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "AffectedComponent", e.AffectedComponent)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "AffectedControl", e.AffectedControl)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "AffectedProperty", e.AffectedProperty)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"Layout Event")
+
+End Sub

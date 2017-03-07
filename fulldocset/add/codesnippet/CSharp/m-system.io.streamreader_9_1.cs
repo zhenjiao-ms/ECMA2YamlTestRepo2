@@ -25,10 +25,8 @@ class Test
 
             using (StreamReader sr = new StreamReader(path)) 
             {
-                while (sr.Peek() >= 0) 
-                {
-                    Console.Write((char)sr.Read());
-                }
+                //This allows you to do one Read operation.
+                Console.WriteLine(sr.ReadToEnd());
             }
         } 
         catch (Exception e) 

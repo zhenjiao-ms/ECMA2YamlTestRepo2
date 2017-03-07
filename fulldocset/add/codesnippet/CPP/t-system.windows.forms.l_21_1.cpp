@@ -1,76 +1,135 @@
+public ref class Form1: public System::Windows::Forms::Form
+{
 private:
-   void CreateMyListView()
+   System::Windows::Forms::TextBox^ textBox1;
+   System::Windows::Forms::Label ^ label1;
+   System::Windows::Forms::Button^ layoutButton;
+   System::ComponentModel::Container^ components;
+
+public:
+   Form1()
    {
-      // Create a new ListView control.
-      ListView^ listView1 = gcnew ListView;
-      listView1->Bounds = Rectangle(Point(10,10),System::Drawing::Size( 300, 200 ));
-
-      // Set the view to show details.
-      listView1->View = View::Details;
-
-      // Allow the user to edit item text.
-      listView1->LabelEdit = true;
-
-      // Allow the user to rearrange columns.
-      listView1->AllowColumnReorder = true;
-
-      // Display check boxes.
-      listView1->CheckBoxes = true;
-
-      // Select the item and subitems when selection is made.
-      listView1->FullRowSelect = true;
-
-      // Display grid lines.
-      listView1->GridLines = true;
-
-      // Sort the items in the list in ascending order.
-      listView1->Sorting = SortOrder::Ascending;
-
-      // Create three items and three sets of subitems for each item.
-      ListViewItem^ item1 = gcnew ListViewItem( "item1",0 );
-
-      // Place a check mark next to the item.
-      item1->Checked = true;
-      item1->SubItems->Add( "1" );
-      item1->SubItems->Add( "2" );
-      item1->SubItems->Add( "3" );
-      ListViewItem^ item2 = gcnew ListViewItem( "item2",1 );
-      item2->SubItems->Add( "4" );
-      item2->SubItems->Add( "5" );
-      item2->SubItems->Add( "6" );
-      ListViewItem^ item3 = gcnew ListViewItem( "item3",0 );
-
-      // Place a check mark next to the item.
-      item3->Checked = true;
-      item3->SubItems->Add( "7" );
-      item3->SubItems->Add( "8" );
-      item3->SubItems->Add( "9" );
-
-      // Create columns for the items and subitems.
-      // Width of -2 indicates auto-size.
-      listView1->Columns->Add( "Item Column", -2, HorizontalAlignment::Left );
-      listView1->Columns->Add( "Column 2", -2, HorizontalAlignment::Left );
-      listView1->Columns->Add( "Column 3", -2, HorizontalAlignment::Left );
-      listView1->Columns->Add( "Column 4", -2, HorizontalAlignment::Center );
-
-      //Add the items to the ListView.
-      array<ListViewItem^>^temp1 = {item1,item2,item3};
-      listView1->Items->AddRange( temp1 );
-
-      // Create two ImageList objects.
-      ImageList^ imageListSmall = gcnew ImageList;
-      ImageList^ imageListLarge = gcnew ImageList;
-
-      // Initialize the ImageList objects with bitmaps.
-      imageListSmall->Images->Add( Bitmap::FromFile( "C:\\MySmallImage1.bmp" ) );
-      imageListSmall->Images->Add( Bitmap::FromFile( "C:\\MySmallImage2.bmp" ) );
-      imageListLarge->Images->Add( Bitmap::FromFile( "C:\\MyLargeImage1.bmp" ) );
-      imageListLarge->Images->Add( Bitmap::FromFile( "C:\\MyLargeImage2.bmp" ) );
-
-      //Assign the ImageList objects to the ListView.
-      listView1->LargeImageList = imageListLarge;
-      listView1->SmallImageList = imageListSmall;
-      
-      // Add the ListView to the control collection.
-      this->Controls->Add( listView1 );
+      InitializeComponent();
    }
+
+protected:
+   ~Form1()
+   {
+      if ( components != nullptr )
+      {
+         delete components;
+      }
+   }
+
+private:
+   void InitializeComponent()
+   {
+      this->layoutButton = gcnew System::Windows::Forms::Button;
+      this->textBox1 = gcnew System::Windows::Forms::TextBox;
+      this->label1 = gcnew System::Windows::Forms::Label;
+      this->SuspendLayout();
+
+      // 
+      // layoutButton
+      // 
+      this->layoutButton->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
+      this->layoutButton->Location = System::Drawing::Point( 72, 88 );
+      this->layoutButton->Name = "layoutButton";
+      this->layoutButton->Size = System::Drawing::Size( 150, 23 );
+      this->layoutButton->TabIndex = 0;
+      this->layoutButton->Text = "Hello";
+
+      // 
+      // textBox1
+      // 
+      this->textBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right);
+      this->textBox1->Location = System::Drawing::Point( 24, 40 );
+      this->textBox1->Name = "textBox1";
+      this->textBox1->Size = System::Drawing::Size( 248, 20 );
+      this->textBox1->TabIndex = 1;
+      this->textBox1->Text = "Hello";
+      this->textBox1->TextChanged += gcnew System::EventHandler( this, &Form1::textBox1_TextChanged );
+
+      // 
+      // label1
+      // 
+      this->label1->Location = System::Drawing::Point( 24, 16 );
+      this->label1->Name = "label1";
+      this->label1->TabIndex = 2;
+      this->label1->Text = "Button's Text:";
+
+      // 
+      // Form1
+      // 
+      this->ClientSize = System::Drawing::Size( 292, 129 );
+      array<System::Windows::Forms::Control^>^temp0 = {this->label1,this->textBox1,this->layoutButton};
+      this->Controls->AddRange( temp0 );
+      this->Name = "Form1";
+      this->Text = "Layout Sample";
+      this->Layout += gcnew System::Windows::Forms::LayoutEventHandler( this, &Form1::Form1_Layout );
+      this->ResumeLayout( false );
+   }
+
+   // This method ensures that the form's width is the preferred size of 300 pixels
+   // or the size of the button plus 50 pixels, whichever amount is less.
+   void Form1_Layout( Object^ /*sender*/, System::Windows::Forms::LayoutEventArgs^ e )
+   {
+      // This event is raised once at startup with the AffectedControl
+      // and AffectedProperty properties on the LayoutEventArgs as null. 
+      // The event provides size preferences for that case.
+      if ( (e->AffectedControl != nullptr) && (e->AffectedProperty != nullptr) )
+      {
+         // Ensure that the affected property is the Bounds property
+         // of the form.
+         if ( e->AffectedProperty->ToString()->Equals( "Bounds" ) )
+         {
+            // If layoutButton's width plus a padding of 50 pixels is greater than the preferred 
+            // size of 300 pixels, increase the form's width.
+            if ( (this->layoutButton->Width + 50) > 300 )
+            {
+               this->Width = this->layoutButton->Width + 50;
+            }
+            // If not, keep the form's width at 300 pixels.
+            else
+            {
+               this->Width = 300;
+            }
+
+            // Center layoutButton on the form.
+            this->layoutButton->Left = (this->ClientSize.Width - this->layoutButton->Width) / 2;
+         }
+      }
+   }
+
+   // This method sets the Text property of layoutButton to the Text property
+   // of textBox1.  If the new text plus a padding of 20 pixels is larger than 
+   // the preferred size of 150 pixels, increase layoutButton's Width property.
+   void textBox1_TextChanged( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      // Set the Text property of layoutButton.
+      this->layoutButton->Text = this->textBox1->Text;
+
+      // Get the width of the text using the proper font.
+      int textWidth = (int)this->CreateGraphics()->MeasureString( layoutButton->Text, layoutButton->Font ).Width;
+
+      // If the width of the text plus a padding of 20 pixels is greater than the preferred size of
+      // 150 pixels, increase layoutButton's width.
+      if ( (textWidth + 20) > 150 )
+      {
+         // Setting the size property on any control raises 
+         // the Layout event for its container.
+         this->layoutButton->Width = textWidth + 20;
+      }
+      // If not, keep layoutButton's width at 150 pixels.
+      else
+      {
+         this->layoutButton->Width = 150;
+      }
+   }
+};
+
+[STAThread]
+int main()
+{
+   Application::Run( gcnew Form1 );
+}

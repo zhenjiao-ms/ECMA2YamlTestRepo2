@@ -16,8 +16,15 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Specifies when you can use a licensed object and provides a way of obtaining additional services needed to support licenses running within its domain.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This class provides the default LicenseContext. It implements only run-time support and does not support saved license keys.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -32,7 +39,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.LicenseContext" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -54,10 +61,10 @@
         <Parameter Name="resourceAssembly" Type="System.Reflection.Assembly" />
       </Parameters>
       <Docs>
-        <param name="type">To be added.</param>
-        <param name="resourceAssembly">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="type">A <see cref="T:System.Type" /> that represents the type of component.</param>
+        <param name="resourceAssembly">An <see cref="T:System.Reflection.Assembly" /> with the license key.</param>
+        <summary>When overridden in a derived class, returns a saved license key for the specified type, from the specified resource assembly.</summary>
+        <returns>The <see cref="System.ComponentModel.License.LicenseKey%2A" /> for the specified type. This method returns <see langword="null" /> unless you override it.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -78,9 +85,9 @@
         <Parameter Name="type" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="type">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="type">The type of service to retrieve.</param>
+        <summary>Gets the requested service, if it is available.</summary>
+        <returns>An instance of the service, or <see langword="null" /> if the service cannot be found.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -102,10 +109,17 @@
         <Parameter Name="key" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="type">To be added.</param>
-        <param name="key">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="type">A <see cref="T:System.Type" /> that represents the component associated with the license key.</param>
+        <param name="key">The <see cref="System.ComponentModel.License.LicenseKey%2A" /> to save for the type of component.</param>
+        <summary>When overridden in a derived class, sets a license key for the specified type.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Typically, call this method when you set <xref:System.ComponentModel.LicenseUsageMode> at design time. You must override the <xref:System.ComponentModel.LicenseContext.UsageMode%2A> property to implement design-time license support.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="UsageMode">
@@ -122,8 +136,8 @@
         <ReturnType>System.ComponentModel.LicenseUsageMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>When overridden in a derived class, gets a value that specifies when you can use a license.</summary>
+        <value>One of the <see cref="T:System.ComponentModel.LicenseUsageMode" /> values that specifies when you can use a license. The default is <see cref="T:System.ComponentModel.LicenseUsageMode" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

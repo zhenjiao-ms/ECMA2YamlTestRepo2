@@ -1,18 +1,30 @@
 private:
-   void treeView1_ItemDrag( Object^ /*sender*/, ItemDragEventArgs^ e )
+   void LayeredWindows()
    {
+      // Gets the version of the layered windows feature.
+      Version^ myVersion = OSFeature::Feature->GetVersionPresent(
+         OSFeature::LayeredWindows );
       
-      // Move the dragged node when the left mouse button is used.
-      if ( e->Button == ::MouseButtons::Left )
+      // Prints whether the feature is available.
+      if ( myVersion != nullptr )
       {
-         DoDragDrop( e->Item, DragDropEffects::Move );
+         textBox1->Text = "Layered windows feature is installed.\n";
       }
-      // Copy the dragged node when the right mouse button is used.
       else
-      
-      // Copy the dragged node when the right mouse button is used.
-      if ( e->Button == ::MouseButtons::Right )
       {
-         DoDragDrop( e->Item, DragDropEffects::Copy );
+         textBox1->Text = "Layered windows feature is not installed.\n";
+      }
+
+      
+      // This is an alternate way to check whether a feature is present.
+      if ( OSFeature::Feature->IsPresent( OSFeature::LayeredWindows ) )
+      {
+         textBox1->Text = String::Concat( textBox1->Text,
+            "Again, layered windows feature is installed." );
+      }
+      else
+      {
+         textBox1->Text = String::Concat( textBox1->Text,
+            "Again, layered windows feature is not installed." );
       }
    }

@@ -1,72 +1,66 @@
-<%@ Page Language="VB" AutoEventWireup="True" %>
+
+<%@ Page Language="VB" %>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
 
-  Sub Button_Click(ByVal sender As Object, ByVal e As EventArgs)
-      
-    Dim i As Integer
-    Dim j As Integer
+  Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)
 
-    ' Iterate through the rows of the table.
-    For i = 0 To Table1.Rows.Count - 1
+    ' Define an HtmlInputReset button using the default constructor.
+    Dim reset1 As New HtmlInputReset()
+    reset1.ID = "ResetButton1"
+    reset1.Value = "Reset 1"
+       
+    ' Define an HtmlInputReset button as type "reset".
+    Dim reset2 As New HtmlInputReset("reset")
+    reset2.ID = "ResetButton2"
+    reset2.Value = "Reset 2"
 
-      ' Iterate through the cells of a row.       
-      For j = 0 To Table1.Rows(i).Cells.Count - 1
-            
-        ' Change the inner HTML of the cell.
-        Table1.Rows(i).Cells(j).InnerHtml = "Row " & i.ToString() & _
-                                            ", Column " & j.ToString()
-      Next j
-
-    Next i
-
+    ' Define an HtmlInputReset button as custom type "custom".
+    ' This is not a valid HTML input type so a standared input
+    ' field will be displayed.
+    Dim reset3 As New HtmlInputReset("custom")
+    reset3.ID = "ResetButton3"
+    reset3.Value = "Reset 3"
+       
+    ' Clear the PlaceHolder control and add the Reset buttons to it.
+    PlaceHolder.Controls.Clear()
+    PlaceHolder.Controls.Add(reset1)
+    PlaceHolder.Controls.Add(New LiteralControl("<br />"))
+    PlaceHolder.Controls.Add(reset2)
+    PlaceHolder.Controls.Add(New LiteralControl("<br />"))
+    PlaceHolder.Controls.Add(reset3)
+    
   End Sub
-
+  
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
+
 <head>
-   <title>HtmlTableRow Example</title>
+
+  <title>HtmlInputReset Example</title>
+
 </head>
+
 <body>
+    <form id="form1" runat="server">
 
-   <form id="form1" runat="server">
+      <h3> HtmlInputReset Example </h3>
 
-      <h3>HtmlTableRow Example</h3>
+      <asp:PlaceHolder id="PlaceHolder"
+                       runat="server">
+      </asp:PlaceHolder>
+      
+      <br />
 
-      <table id="Table1" 
-             style="border-width:1; border-color:Black"
-             runat="server">
+      Change the text in the input field and then click 
+      "Reset 1" or "Reset 2" to change it back to its initial
+      value.
 
-         <tr>
-            <td>
-               Cell 1
-            </td>
-            <td>
-               Cell 2
-            </td>
-         </tr>
-         <tr>
-            <td>
-               Cell 3
-            </td>
-            <td>
-               Cell 4
-            </td>
-         </tr>
-
-      </table>
-
-      <br /><br />
-  
-      <input type="button" 
-             value="Change Table Contents"
-             onserverclick="Button_Click" 
-             runat="server"/>
-
-   </form>
-
+    </form>
 </body>
+
 </html>

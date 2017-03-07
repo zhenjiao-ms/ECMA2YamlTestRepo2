@@ -1,9 +1,4 @@
-    <DefaultEvent("CollectionChanged")> _ 
-    Public Class MyCollection
-        Inherits BaseCollection
-
-        Public Event CollectionChanged (ByVal sender As Object, _
-            ByVal e As CollectionChangeEventArgs)
-        
-        ' Insert additional code.
-    End Class 'MyCollection
+        ' Create a DesignerCollection using a constructor
+        ' that accepts an array of IDesignerHost objects with
+        ' which to initialize the collection.
+        Dim collection As New DesignerCollection(New IDesignerHost() {designerhost1, designerhost2})

@@ -1,106 +1,109 @@
 Imports System
-Imports System.Web
-Imports System.IO
+Imports System.Collections.Generic
 Imports System.Collections
-Imports System.Runtime.Serialization.Formatters.Binary
+Imports System.Text
+Imports System.IO
 Imports System.Runtime.Serialization
-Imports System.Security.Permissions
+Imports System.Xml
+
+Class Program
+
+    Shared Sub Main(ByVal args() As String)
+        Try
+            Serialize("KnownTypeAttributeExample.xml")
+            Deserialize("KnownTypeAttributeExample.xml")
+            ' Run this twice. The second time, comment out the
+            ' Serialize call and comment out the 
+            ' KnownTypeAttribute on the Person class. The
+            ' deserialization will then fail.
+        Catch exc As SerializationException
+            Console.WriteLine("{0}: {1}", exc.Message, exc.StackTrace)
+        Finally
+            Console.WriteLine("Press Enter to exit...")
+            Console.ReadLine()
+        End Try
+
+    End Sub
 
 
-' There should be only one instance of this type per AppDomain.
-<Serializable()> _
-<PermissionSet(SecurityAction.Demand, Name:="FullTrust")> _
-Public NotInheritable Class Singleton
-   Implements ISerializable
+    Public Shared Sub Serialize(ByVal path As String)
+        Dim p As New Person()
+        p.Miscellaneous.Add(DateTime.Now, "Hello")
+        p.Miscellaneous.Add(DateTime.Now.AddSeconds(1), "World")
+        Dim w As New IDInformation()
+        w.ID = "1111 00000"
+        p.Miscellaneous.Add(DateTime.Now.AddSeconds(2), w)
+        Dim ser As New DataContractserializer(GetType(Person))
+        Using fs As New FileStream(path, FileMode.OpenOrCreate)
+            ser.WriteObject(fs, p)
+        End Using
+    End Sub
 
-   ' This is the one instance of this type.
-   Private Shared ReadOnly theOneObject As New Singleton
+    Public Shared Sub Deserialize(ByVal path As String)
+        Dim ser As New DataContractserializer(GetType(Person))
+        Using fs As New FileStream(path, FileMode.OpenOrCreate)
+            Dim p2 As Person = ser.ReadObject(fs)
+            Console.WriteLine("Count {0}", p2.Miscellaneous.Count)
+            For Each de As DictionaryEntry In p2.Miscellaneous
+                Console.WriteLine("Key {0} Value: {1}", de.Key, _
+                de.Value)
+                If TypeOf (de.Value) Is IDInformation Then
+                    Dim www As IDInformation = de.Value
+                    Console.WriteLine( _
+                    "Found ID Information. ID: {0}", www.ID)
+                End If
+            Next
+        End Using
+    End Sub
 
-   ' Here are the instance fields.
-   Private someString As String
-   private someNumber As Int32
+    ' Apply the KnownTypeAttribute to the class that 
+    ' includes a member that returns a Hashtable.
+    <System.Runtime.Serialization.KnownType(GetType(IDInformation))> _
+    <DataContract()> _
+    Public Class Person
+        Implements IExtensibleDataObject
+        Private MiscellaneousValue As New Hashtable()
+        Private ExtensionDataObjectValue As ExtensionDataObject
 
-   ' Private constructor allowing this type to construct the Singleton.
-   Private Sub New()
-      ' Do whatever is necessary to initialize the Singleton.
-      someString = "This is a string field"
-      someNumber = 123
-   End Sub
+        Public Property ExtensionData() As ExtensionDataObject _
+            Implements IExtensibleDataObject.ExtensionData
+            Get
+                Return ExtensionDataObjectValue
+            End Get
+            Set(ByVal value As ExtensionDataObject)
+                ExtensionDataObjectValue = value
+            End Set
+        End Property
 
-   ' A method returning a reference to the Singleton.
-   Public Shared Function GetSingleton() As Singleton
-      Return theOneObject
-   End Function
+        <DataMember()> _
+        Public Property Miscellaneous() As Hashtable
+            Get
+                Return MiscellaneousValue
+            End Get
+            Set(ByVal value As Hashtable)
+                MiscellaneousValue = value
+            End Set
+        End Property
+    End Class
 
-   ' A method called when serializing a Singleton.
-   <SecurityPermissionAttribute(SecurityAction.LinkDemand, Flags:=SecurityPermissionFlag.SerializationFormatter)> _
-   Private Sub GetObjectData(ByVal info As SerializationInfo, _
-      ByVal context As StreamingContext) _
-      Implements ISerializable.GetObjectData
+    <DataContract()> _
+    Public Class IDInformation
+        Implements IExtensibleDataObject
 
-      ' Instead of serializing this object, we will  
-      ' serialize a SingletonSerializationHelp instead.
-      info.SetType(GetType(SingletonSerializationHelper))
-      ' No other values need to be added.
-   End Sub
+        Private ExtensionDataObjectValue As ExtensionDataObject
 
-   ' Note: ISerializable's special constructor is not necessary 
-   ' because it is never called.
-End Class
+        Public Property ExtensionData() As ExtensionDataObject _
+            Implements IExtensibleDataObject.ExtensionData
+            Get
+                Return ExtensionDataObjectValue
+            End Get
 
+            Set(ByVal value As ExtensionDataObject)
+                ExtensionDataObjectValue = value
+            End Set
+        End Property
 
-<Serializable()> _
-<PermissionSet(SecurityAction.Demand, Name:="FullTrust")> _
-Friend NotInheritable Class SingletonSerializationHelper
-   Implements IObjectReference
-   ' This object has no fields (although it could).
-
-   ' GetRealObject is called after this object is deserialized.
-   <SecurityPermissionAttribute(SecurityAction.LinkDemand, Flags:=SecurityPermissionFlag.SerializationFormatter)> _
-   Public Function GetRealObject(ByVal context As StreamingContext) As Object Implements IObjectReference.GetRealObject
-      ' When deserialiing this object, return a reference to 
-      ' the Singleton object instead.
-      Return Singleton.GetSingleton()
-   End Function
-End Class
-
-
-Class App
-   <STAThread()> Shared Sub Main()
-      Dim fs As New FileStream("DataFile.dat", FileMode.Create)
-
-      Try
-         ' Construct a BinaryFormatter and use it 
-         ' to serialize the data to the stream.
-         Dim formatter As New BinaryFormatter
-
-         ' Create an array with multiple elements refering to 
-         ' the one Singleton object.
-         Dim a1() As Singleton = {Singleton.GetSingleton(), Singleton.GetSingleton()}
-
-         ' This displays "True".
-         Console.WriteLine("Do both array elements refer to the same object? " & _
-            Object.ReferenceEquals(a1(0), a1(1)))
-
-         ' Serialize the array elements.
-         formatter.Serialize(fs, a1)
-
-         ' Deserialize the array elements.
-         fs.Position = 0
-         Dim a2() As Singleton = DirectCast(formatter.Deserialize(fs), Singleton())
-
-         ' This displays "True".
-         Console.WriteLine("Do both array elements refer to the same object? " & _
-            Object.ReferenceEquals(a2(0), a2(1)))
-
-         ' This displays "True".
-         Console.WriteLine("Do all array elements refer to the same object? " & _
-            Object.ReferenceEquals(a1(0), a2(0)))
-      Catch e As SerializationException
-         Console.WriteLine("Failed to serialize. Reason: " & e.Message)
-         Throw
-      Finally
-         fs.Close()
-      End Try
-   End Sub
+        <DataMember()> _
+        Public ID As String
+    End Class
 End Class

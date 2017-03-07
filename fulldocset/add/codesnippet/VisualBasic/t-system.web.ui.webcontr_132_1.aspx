@@ -1,99 +1,120 @@
-
 <%@ Page language="VB" %>
-
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
 <script runat="server">
 
-    Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
-        
-        ' Create a new GridView object.
-        Dim authorGridView As GridView = New GridView
-         
-        ' Set the GridView object's properties.
-        authorGridView.ID = "AuthorGridView"
-        authorGridView.DataSourceID = "AuthorsSqlDataSource"
-        authorGridView.AutoGenerateColumns = True
-        authorGridView.AutoGenerateSelectButton = True
-        authorGridView.AllowPaging = True
-        authorGridView.SelectedIndex = 1
-        authorGridView.SelectedRowStyle.BackColor = System.Drawing.Color.LightCyan
-        authorGridView.SelectedRowStyle.ForeColor = System.Drawing.Color.DarkBlue
-        authorGridView.SelectedRowStyle.Font.Bold = True
-        
-        ' Programmatically register the event-handling methods.
-        AddHandler authorGridView.SelectedIndexChanged, AddressOf AuthorsGridView_SelectedIndexChanged
-        AddHandler authorGridView.SelectedIndexChanging, AddressOf AuthorsGridView_SelectedIndexChanging
-        
-        ' Add the GridView object to the Controls collection
-        ' of the PlaceHolder control.
-        GridViewPlaceHolder.Controls.Add(authorGridView)
-        
-    End Sub
-    
-    Sub AuthorsGridView_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+  Sub ContactsListView_ItemInserted(ByVal sender As Object, ByVal e As ListViewInsertedEventArgs)
 
-        ' Get the currently selected row using the SelectedRow property.
-        Dim AuthorsGridView As GridView = CType(sender, GridView)
-        Dim row As GridViewRow = AuthorsGridView.SelectedRow
-        
-        ' Display the author's name from the selected row.
-        ' In this example, the second and third columns contain
-        ' the author's last and first name, respectively.
-        Message.Text = "You selected " & row.Cells(2).Text & _
-            " " & row.Cells(1).Text & "."
-    
-    End Sub
-    
-    Sub AuthorsGridView_SelectedIndexChanging(ByVal sender As Object, ByVal e As GridViewSelectEventArgs)
-        
-        ' Get the currently selected row. Because the SelectedIndexChanging event
-        ' occurs before the select operation in the GridView control, the
-        ' SelectedRow property cannot be used. Instead, use the Rows collection
-        ' and the NewSelectedIndex property of the e argument passed to this 
-        ' event handler.
-        Dim AuthorsGridView As GridView = CType(sender, GridView)
-        Dim row As GridViewRow = AuthorsGridView.Rows(e.NewSelectedIndex)
-        
-        ' If the user selects an author with the last name White,
-        ' cancel the selection operation and display an error message.
-        If row.Cells(1).Text = "White"
-        
-            e.Cancel = true
-            Message.Text = "You cannot select " & row.Cells(2).Text & _
-            " " & row.Cells(1).Text & "."
-        
-        End If
-    
-    End Sub
+    If e.Exception IsNot Nothing Then
 
+      If e.AffectedRows = 0 Then
+        e.KeepInInsertMode = True
+        Message.Text = "An exception occurred inserting the new Contact. " & _
+          "Please verify your values and try again."
+      Else
+        Message.Text = "An exception occurred inserting the new Contact. " & _
+          "Please verify the values in the newly inserted item."
+      End If
+
+      e.ExceptionHandled = True
+    End If
+  End Sub
+
+  Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)
+    Message.Text = ""
+  End Sub
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-    <head runat="server">
-    <title>GridViewSelectEventHandler Example</title>
-</head>
-<body>
-        <form id="form1" runat="server">
+  <head id="Head1" runat="server">
+    <title>ListView.ItemInserted Example</title>
+  </head>
+  <body>
+    <form id="form1" runat="server">
         
-            <h3>GridViewSelectEventHandler Example</h3>
+      <h3>ListViewItemInserted Example</h3>
             
-            <asp:placeholder id="GridViewPlaceHolder"
-                runat="Server"/>
-            
-            <!-- This example uses Microsoft SQL Server and connects -->
-            <!-- to the Pubs sample database.                         -->
-            <asp:sqldatasource id="AuthorsSqlDataSource"  
-                selectcommand="SELECT [au_lname], [au_fname], [address], [city], [state], [zip], [contract] FROM [authors]"
-                connectionstring="server=localhost;database=pubs;integrated security=SSPI"
-                runat="server">
-            </asp:sqldatasource>
-            
-            <br/>
-            
-            <asp:label id="Message"
-                runat="server"/>
-            
-        </form>
-    </body>
+      <asp:Label ID="Message"
+        ForeColor="Red"          
+        runat="server"/>
+      <br/>
+      
+      <asp:ListView ID="ContactsListView" 
+        DataSourceID="ContactsDataSource" 
+        DataKeyNames="ContactID"
+        OnItemInserted="ContactsListView_ItemInserted"  
+        InsertItemPosition="LastItem"
+        runat="server">
+        <LayoutTemplate>
+          <table cellpadding="2" border="1" runat="server" id="tblContacts" width="640px">
+            <tr runat="server" id="itemPlaceholder" />
+          </table>
+          <asp:DataPager runat="server" ID="PeopleDataPager" PageSize="12">
+            <Fields>
+              <asp:NextPreviousPagerField 
+                ShowFirstPageButton="true" ShowLastPageButton="true"
+                FirstPageText="|&lt;&lt; " LastPageText=" &gt;&gt;|"
+                NextPageText=" &gt; " PreviousPageText=" &lt; " />
+            </Fields>
+          </asp:DataPager>
+        </LayoutTemplate>
+        <ItemTemplate>
+          <tr runat="server">
+            <td valign="top">
+              <asp:Label ID="FirstNameLabel" runat="server" Text='<%#Eval("FirstName") %>' />
+              <asp:Label ID="LastNameLabel" runat="server" Text='<%#Eval("LastName") %>' />
+            </td>
+            <td>&nbsp;
+              <asp:Label ID="EmailLabel" runat="server" Text='<%#Eval("EmailAddress") %>' />
+            </td>
+          </tr>
+        </ItemTemplate>
+        <InsertItemTemplate>
+          <tr style="background-color:#D3D3D3">
+            <td valign="top">
+              <asp:Label runat="server" ID="FirstNameLabel" 
+                AssociatedControlID="FirstNameTextBox" Text="First Name"/>
+              <asp:TextBox ID="FirstNameTextBox" runat="server" 
+                Text='<%#Bind("FirstName") %>' /><br />
+              <asp:Label runat="server" ID="LastNameLabel" 
+                AssociatedControlID="LastNameTextBox" Text="Last Name" />
+              <asp:TextBox ID="LastNameTextBox" runat="server" 
+                Text='<%#Bind("LastName") %>' /><br />
+              <asp:Label runat="server" ID="EmailLabel" 
+                AssociatedControlID="EmailTextBox" Text="E-mail" />
+              <asp:TextBox ID="EmailTextBox" runat="server" 
+                Text='<%#Bind("EmailAddress") %>' />
+            </td>
+            <td>
+              <asp:LinkButton ID="InsertButton" runat="server" 
+                CommandName="Insert" Text="Insert" />
+            </td>
+          </tr>
+        </InsertItemTemplate>
+      </asp:ListView>
+
+      <!-- This example uses Microsoft SQL Server and connects      -->
+      <!-- to the AdventureWorks sample database. Use an ASP.NET    -->
+      <!-- expression to retrieve the connection string value       -->
+      <!-- from the Web.config file.                                -->
+      <asp:SqlDataSource ID="ContactsDataSource" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:AdventureWorks_DataConnectionString %>"
+        SelectCommand="SELECT [ContactID], [FirstName], [LastName], [EmailAddress] 
+          FROM Person.Contact"
+        InsertCommand="INSERT INTO Person.Contact
+          ([FirstName], [LastName], [EmailAddress], [PasswordHash], [PasswordSalt]) 
+          Values(@FirstName, @LastName, @EmailAddress, '', '');
+          SELECT @ContactID = SCOPE_IDENTITY()">
+        <InsertParameters>
+          <asp:Parameter Name="FirstName" />
+          <asp:Parameter Name="LastName" />
+          <asp:Parameter Name="EmailAddress" />
+          <asp:Parameter Name="ContactID" Type="Int32" Direction="Output" />
+        </InsertParameters>
+      </asp:SqlDataSource>
+      
+    </form>
+  </body>
 </html>

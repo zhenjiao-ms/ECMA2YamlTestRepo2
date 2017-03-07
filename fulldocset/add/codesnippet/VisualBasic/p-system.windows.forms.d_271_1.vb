@@ -1,21 +1,18 @@
-    Private Sub dataGridView1_ColumnHeaderMouseClick( _
-        ByVal sender As Object, ByVal e As DataGridViewCellMouseEventArgs) _
-        Handles dataGridView1.ColumnHeaderMouseClick
+    Private Sub DataGridView1_SortCompare( _
+        ByVal sender As Object, ByVal e As DataGridViewSortCompareEventArgs) _
+        Handles DataGridView1.SortCompare
 
-        Me.dataGridView1.SelectionMode = _
-            DataGridViewSelectionMode.ColumnHeaderSelect
-        Me.dataGridView1.Columns(e.ColumnIndex).HeaderCell _
-            .SortGlyphDirection = SortOrder.None
-        Me.dataGridView1.Columns(e.ColumnIndex).Selected = True
+        ' Try to sort based on the contents of the cell in the current column.
+        e.SortResult = System.String.Compare(e.CellValue1.ToString(), _
+            e.CellValue2.ToString())
 
-    End Sub
+        ' If the cells are equal, sort based on the ID column.
+        If (e.SortResult = 0) AndAlso Not (e.Column.Name = "ID") Then
+            e.SortResult = System.String.Compare( _
+                DataGridView1.Rows(e.RowIndex1).Cells("ID").Value.ToString(), _
+                DataGridView1.Rows(e.RowIndex2).Cells("ID").Value.ToString())
+        End If
 
-    Private Sub dataGridView1_RowHeaderMouseClick( _
-        ByVal sender As Object, ByVal e As DataGridViewCellMouseEventArgs) _
-        Handles dataGridView1.RowHeaderMouseClick
-
-        Me.dataGridView1.SelectionMode = _
-            DataGridViewSelectionMode.RowHeaderSelect
-        Me.dataGridView1.Rows(e.RowIndex).Selected = True
+        e.Handled = True
 
     End Sub

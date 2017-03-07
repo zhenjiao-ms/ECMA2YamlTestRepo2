@@ -1,93 +1,105 @@
-using System;
-using System.ComponentModel;
-using System.ComponentModel.Design;
-using System.Drawing;
-using System.IO;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Windows.Forms;
-using System.Windows.Forms.Design;
+	//This code segment implements the IContainer interface.  The code segment 
+	//containing the implementation of ISite and IComponent can be found in the documentation
+	//for those interfaces.
+	
+	//Implement the LibraryContainer using the IContainer interface.
+	
+	class LibraryContainer : IContainer
+	{
+		private ArrayList m_bookList;
 
-namespace TypeCategoryTabExample
-{	
-    // This component adds a TypeCategoryTab to the property browser 
-    // that is available for any components in the current design mode document.
-    [PropertyTabAttribute(typeof(TypeCategoryTab), PropertyTabScope.Document)]
-    public class TypeCategoryTabComponent : System.ComponentModel.Component
-    {           
-        public TypeCategoryTabComponent()
-        {
-        }
-    }
+		public LibraryContainer()
+		{
+			m_bookList = new ArrayList();
+		}
 
-    // A TypeCategoryTab property tab lists properties by the 
-    // category of the type of each property.
-    [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")] 
-    public class TypeCategoryTab : PropertyTab
-    {
-        [BrowsableAttribute(true)]
-        // This string contains a Base-64 encoded and serialized example property tab image.
-        private string img = "AAEAAAD/////AQAAAAAAAAAMAgAAAFRTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj0xLjAuMzMwMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAA9gAAAAJCTfYAAAAAAAAANgAAACgAAAAIAAAACAAAAAEAGAAAAAAAAAAAAMQOAADEDgAAAAAAAAAAAAD///////////////////////////////////9ZgABZgADzPz/zPz/zPz9AgP//////////gAD/gAD/AAD/AAD/AACKyub///////+AAACAAAAAAP8AAP8AAP9AgP////////9ZgABZgABz13hz13hz13hAgP//////////gAD/gACA/wCA/wCA/wAA//////////+AAACAAAAAAP8AAP8AAP9AgP////////////////////////////////////8L";
+		public virtual void Add(IComponent book)
+		{
+			//The book will be added without creation of the ISite object.
+			m_bookList.Add(book);
+		}
 
-        public TypeCategoryTab()
-        {            
-        }
+		public virtual void Add(IComponent book, string ISNDNNum)
+		{
+			for(int i =0; i < m_bookList.Count; ++i)
+			{
+				IComponent curObj = (IComponent)m_bookList[i];
+				if(curObj.Site != null)
+				{
+					if(curObj.Site.Name.Equals(ISNDNNum))
+						throw new SystemException("The ISBN number already exists in the container"); 
+				}
+			}
 
-        // Returns the properties of the specified component extended with 
-        // a CategoryAttribute reflecting the name of the type of the property.
-        public override System.ComponentModel.PropertyDescriptorCollection GetProperties(object component, System.Attribute[] attributes)
-        {
-            PropertyDescriptorCollection props;
-            if( attributes == null )
-                props = TypeDescriptor.GetProperties(component);    
-            else
-                props = TypeDescriptor.GetProperties(component, attributes);    
-            
-            PropertyDescriptor[] propArray = new PropertyDescriptor[props.Count];            
-            for(int i=0; i<props.Count; i++)           
-            {                
-                // Create a new PropertyDescriptor from the old one, with 
-                // a CategoryAttribute matching the name of the type.
-                propArray[i] = TypeDescriptor.CreateProperty(props[i].ComponentType, props[i], new CategoryAttribute(props[i].PropertyType.Name));
-            }
-            return new PropertyDescriptorCollection( propArray );
-        }
+			ISBNSite data = new ISBNSite(this, book);
+			data.Name = ISNDNNum;
+			book.Site = data;
+			m_bookList.Add(book);
+		}
 
-        public override System.ComponentModel.PropertyDescriptorCollection GetProperties(object component)
-        {                     
-            return this.GetProperties(component, null);
-        }
+		public virtual void Remove(IComponent book)
+		{
+			for(int i =0; i < m_bookList.Count; ++i)
+			{				
+				if(book.Equals(m_bookList[i]))
+				{
+					m_bookList.RemoveAt(i);
+						break;
+				}
+			}
+		}
 
-        // Provides the name for the property tab.
-        public override string TabName
-        {
-            get
-            {
-                return "Properties by Type";
-            }
-        }
+		public ComponentCollection Components
+		{
+			get
+			{
+				IComponent[] datalist = new BookComponent[m_bookList.Count];
+				m_bookList.CopyTo(datalist);
+				return new ComponentCollection(datalist);
+			}
+		}
 
-        // Provides an image for the property tab.
-        public override System.Drawing.Bitmap Bitmap
-        {
-            get
-            {
-                Bitmap bmp = new Bitmap(DeserializeFromBase64Text(img));
-                return bmp;
-            }
-        }
+		public virtual void Dispose()
+		{	
+			for(int i =0; i < m_bookList.Count; ++i)
+			{
+				IComponent curObj = (IComponent)m_bookList[i];
+				curObj.Dispose();
+			}
+			
+			m_bookList.Clear();
+		}
 
-        // This method can be used to retrieve an Image from a block of Base64-encoded text.
-        private Image DeserializeFromBase64Text(string text)
-        {
-            Image img = null;
-            byte[] memBytes = Convert.FromBase64String(text);
-            IFormatter formatter = new BinaryFormatter();
-            MemoryStream stream = new MemoryStream(memBytes);
-            img = (Image)formatter.Deserialize(stream);
-            stream.Close();
-            return img;
-        }
-    }
-}
+		static void Main(string[] args)
+		{
+			LibraryContainer cntrExmpl = new LibraryContainer();
+
+			try
+			{
+				BookComponent book1 = new BookComponent("Wizard's First Rule", "Terry Gooodkind");
+				cntrExmpl.Add(book1, "0812548051");
+				BookComponent book2 = new BookComponent("Stone of Tears", "Terry Gooodkind");
+				cntrExmpl.Add(book2, "0812548094");
+				BookComponent book3 = new BookComponent("Blood of the Fold", "Terry Gooodkind");
+				cntrExmpl.Add(book3, "0812551478");
+				BookComponent book4 = new BookComponent("The Soul of the Fire", "Terry Gooodkind");
+				//This will generate exception because the ISBN already exists in the container.
+				cntrExmpl.Add(book4, "0812551478");
+			}
+			catch(SystemException e)
+			{
+				Console.WriteLine("Error description: " + e.Message);
+			}
+
+			ComponentCollection datalist =cntrExmpl.Components;
+			IEnumerator denum = datalist.GetEnumerator();
+
+			while(denum.MoveNext())
+			{
+				BookComponent cmp = (BookComponent)denum.Current;
+				Console.WriteLine("Book Title: " + cmp.Title);
+				Console.WriteLine("Book Author: " + cmp.Author);
+				Console.WriteLine("Book ISBN: " + cmp.Site.Name);
+			}
+		}
+	}

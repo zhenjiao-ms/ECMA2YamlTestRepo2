@@ -1,15 +1,15 @@
-private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-{  
-   /* Display the Text and Index of the 
-    * selected tree node's Parent. */
-   if(e.Node.Parent!= null && 
-     e.Node.Parent.GetType() == typeof(TreeNode) )
-   {
-      statusBar1.Text = "Parent: " + e.Node.Parent.Text + "\n"
-         + "Index Position: " + e.Node.Parent.Index.ToString();
-   }
-   else
-   {
-      statusBar1.Text = "No parent node.";
-   }
+private void ToolStripRenderer1_RenderArrow(Object sender, ToolStripArrowRenderEventArgs e) {
+
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "ArrowRectangle", e.ArrowRectangle );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "ArrowColor", e.ArrowColor );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Direction", e.Direction );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Item", e.Item );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "RenderArrow Event" );
 }

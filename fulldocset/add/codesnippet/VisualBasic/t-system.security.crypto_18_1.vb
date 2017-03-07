@@ -1,33 +1,75 @@
-    Private Shared Sub EncryptData(inName As String, outName As String, _
-    rijnKey() As Byte, rijnIV() As Byte)
-    
-        'Create the file streams to handle the input and output files.
-        Dim fin As New FileStream(inName, FileMode.Open, FileAccess.Read)
-        Dim fout As New FileStream(outName, FileMode.OpenOrCreate, _
-           FileAccess.Write)
-        fout.SetLength(0)
-        
-        'Create variables to help with read and write.
-        Dim bin(100) As Byte 'This is intermediate storage for the encryption.
-        Dim rdlen As Long = 0 'This is the total number of bytes written.
-        Dim totlen As Long = fin.Length 'Total length of the input file.
-        Dim len As Integer 'This is the number of bytes to be written at a time.
-        'Creates the default implementation, which is RijndaelManaged.
-        Dim rijn As SymmetricAlgorithm = SymmetricAlgorithm.Create()
-        Dim encStream As New CryptoStream(fout, _
-           rijn.CreateEncryptor(rijnKey, rijnIV), CryptoStreamMode.Write)
-        
-        Console.WriteLine("Encrypting...")
-        
-        'Read from the input file, then encrypt and write to the output file.
-        While rdlen < totlen
-            len = fin.Read(bin, 0, 100)
-            encStream.Write(bin, 0, len)
-            rdlen = Convert.ToInt32(rdlen + len)
-            Console.WriteLine("{0} bytes processed", rdlen)
-        End While
-        
-        encStream.Close()
-	fout.Close()
-	fin.Close()
-    End Sub
+Imports System
+Imports System.Security.Cryptography
+
+Namespace Contoso
+    Public Class ContosoDeformatter
+        Inherits AsymmetricKeyExchangeDeformatter
+
+        Private rsaKey As RSA
+
+        ' Default constructor.
+        Public Sub New()
+
+        End Sub
+
+        ' Constructor with the public key to use for encryption.
+        Public Sub New(ByVal key As AsymmetricAlgorithm)
+            SetKey(key)
+        End Sub
+
+        ' Set the public key for encyption operations.
+        Public Overrides Sub SetKey(ByVal key As AsymmetricAlgorithm)
+            If (Not key Is Nothing) Then
+                rsaKey = CType(key, RSA)
+            Else
+                Throw New ArgumentNullException("key")
+            End If
+        End Sub
+
+        ' Disallow access to the parameters of the formatter.
+        Public Overrides ReadOnly Property Parameters() As String
+            Get
+                Return Nothing
+            End Get
+            Set(ByVal Value As String)
+
+            End Set
+        End Property
+
+        ' Create the encrypted key exchange data from the specified input
+        ' data. This method uses the RSACryptoServiceProvider only. To
+        ' support additional providers or provide custom decryption logic,
+        ' add logic to this member.
+        Public Overrides Function DecryptKeyExchange(
+            ByVal rgbData() As Byte) As Byte()
+
+            Dim decryptedBytes() As Byte
+
+            If (Not rsaKey Is Nothing) Then
+                If (TypeOf (rsaKey) Is RSACryptoServiceProvider) Then
+                    Dim rsaProvider As RSACryptoServiceProvider
+                    rsaProvider = CType(rsaKey, RSACryptoServiceProvider)
+
+                    decryptedBytes = rsaProvider.Decrypt(rgbData, True)
+                End If
+
+                ' Add custom decryption logic here.
+
+            Else
+                Throw New CryptographicUnexpectedOperationException(
+                    "Cryptography_MissingKey")
+            End If
+
+            Return decryptedBytes
+        End Function
+
+    End Class
+End Namespace
+'
+' This code example produces the following output:
+'
+' Data to encrypt : Sample Contoso encryption application.
+' Encrypted data: Kh34dfg-(*&834d+3
+' Data decrypted : Sample Contoso encryption application.
+' 
+' This sample completed successfully; press Exit to continue.

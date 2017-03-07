@@ -1,16 +1,11 @@
-private:
-    void AddLinkColumn()
-    {
-        DataGridViewLinkColumn^ links = gcnew DataGridViewLinkColumn();
+   // Make the the entire DataGridView read only.
+   void Button8_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      System::Collections::IEnumerator^ myEnum = dataGridView->Columns->GetEnumerator();
+      while ( myEnum->MoveNext() )
+      {
+         DataGridViewBand^ band = safe_cast<DataGridViewBand^>(myEnum->Current);
+         band->ReadOnly = true;
+      }
+   }
 
-		links->UseColumnTextForLinkValue = true;
-        links->HeaderText = ColumnName::ReportsTo.ToString();
-        links->DataPropertyName = ColumnName::ReportsTo.ToString();
-        links->ActiveLinkColor = Color::White;
-        links->LinkBehavior = LinkBehavior::SystemDefault;
-        links->LinkColor = Color::Blue;
-        links->TrackVisitedState = true;
-        links->VisitedLinkColor = Color::YellowGreen;
-
-        DataGridView1->Columns->Add(links);
-    }

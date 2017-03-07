@@ -1,29 +1,44 @@
-    // Handling CellParsing allows one to accept user input, then map it to a different
-    // internal representation.
-    private void dataGridView1_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
+    private void dataGridView1_ColumnHeaderMouseClick(
+        object sender, DataGridViewCellMouseEventArgs e)
     {
-        if (this.dataGridView1.Columns[e.ColumnIndex].Name == "Release Date")
-        {
-            if (e != null)
-            {
-                if (e.Value != null)
-                {
-                    try
-                    {
-                        // Map what the user typed into UTC.
-                        e.Value = DateTime.Parse(e.Value.ToString()).ToUniversalTime();
-                        // Set the ParsingApplied property to 
-                        // Show the event is handled.
-                        e.ParsingApplied = true;
+        DataGridViewColumn newColumn = dataGridView1.Columns[e.ColumnIndex];
+        DataGridViewColumn oldColumn = dataGridView1.SortedColumn;
+        ListSortDirection direction;
 
-                    }
-                    catch (FormatException)
-                    {
-                        // Set to false in case another CellParsing handler
-                        // wants to try to parse this DataGridViewCellParsingEventArgs instance.
-                        e.ParsingApplied = false;
-                    }
-                }
+        // If oldColumn is null, then the DataGridView is not sorted.
+        if (oldColumn != null)
+        {
+            // Sort the same column again, reversing the SortOrder.
+            if (oldColumn == newColumn &&
+                dataGridView1.SortOrder == SortOrder.Ascending)
+            {
+                direction = ListSortDirection.Descending;
             }
+            else
+            {
+                // Sort a new column and remove the old SortGlyph.
+                direction = ListSortDirection.Ascending;
+                oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+            }
+        }
+        else
+        {
+            direction = ListSortDirection.Ascending;
+        }
+
+        // Sort the selected column.
+        dataGridView1.Sort(newColumn, direction);
+        newColumn.HeaderCell.SortGlyphDirection =
+            direction == ListSortDirection.Ascending ?
+            SortOrder.Ascending : SortOrder.Descending;
+    }
+
+    private void dataGridView1_DataBindingComplete(object sender,
+        DataGridViewBindingCompleteEventArgs e)
+    {
+        // Put each of the columns into programmatic sort mode.
+        foreach (DataGridViewColumn column in dataGridView1.Columns)
+        {
+            column.SortMode = DataGridViewColumnSortMode.Programmatic;
         }
     }

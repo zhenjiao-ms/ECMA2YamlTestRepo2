@@ -1,23 +1,26 @@
-        // Determine whether the cell should be painted
-        // with the custom selection background.
-        if ((e.State & DataGridViewElementStates.Selected) ==
-                    DataGridViewElementStates.Selected)
-        {
-            // Calculate the bounds of the row.
-            Rectangle rowBounds = new Rectangle(
-                this.dataGridView1.RowHeadersWidth, e.RowBounds.Top,
-                this.dataGridView1.Columns.GetColumnsWidth(
-                    DataGridViewElementStates.Visible) -
-                this.dataGridView1.HorizontalScrollingOffset + 1,
-                e.RowBounds.Height);
+   // Instantiate the EventHandler.
+   public void AttachRowHeaderVisibleChanged()
+   {
+      myDataGridTableStyle.RowHeadersVisibleChanged += new EventHandler (MyDelegateRowHeadersVisibleChanged);
+   }
 
-            // Paint the custom selection background.
-            using (Brush backbrush =
-                new System.Drawing.Drawing2D.LinearGradientBrush(rowBounds,
-                    this.dataGridView1.DefaultCellStyle.SelectionBackColor,
-                    e.InheritedRowStyle.ForeColor,
-                    System.Drawing.Drawing2D.LinearGradientMode.Horizontal))
-            {
-                e.Graphics.FillRectangle(backbrush, rowBounds);
-            }
-        }
+   // raise the event when RowHeadersVisible property is changed.
+   private void MyDelegateRowHeadersVisibleChanged(object sender, EventArgs e)
+   {
+      string myString = "'RowHeadersVisibleChanged' event raised, Row Headers are";
+      if (myDataGridTableStyle.RowHeadersVisible)
+         myString += " visible";
+      else
+         myString += " not visible";
+
+      MessageBox.Show(myString, "RowHeader information");
+   }
+
+   // raise the event when a button is clicked.
+   private void myButton_Click(object sender, System.EventArgs e)
+   {
+      if (myDataGridTableStyle.RowHeadersVisible)
+         myDataGridTableStyle.RowHeadersVisible = false;
+      else
+         myDataGridTableStyle.RowHeadersVisible = true;
+   }

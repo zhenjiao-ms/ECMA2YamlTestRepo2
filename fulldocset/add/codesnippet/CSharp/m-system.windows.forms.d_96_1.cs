@@ -1,9 +1,11 @@
-private void CreateTextDataObject2() {
-    // Creates a new data object using a string.
-    string myString = "My next text string";
-    DataObject myDataObject = new DataObject("System.String", myString);
- 
-    // Prints the string in a text box.
-    textBox1.Text = myDataObject.GetData(DataFormats.Text).ToString();
- }
- 
+    // Force the cell to repaint itself when the mouse pointer enters it.
+    protected override void OnMouseEnter(int rowIndex)
+    {
+        this.DataGridView.InvalidateCell(this);
+    }
+
+    // Force the cell to repaint itself when the mouse pointer leaves it.
+    protected override void OnMouseLeave(int rowIndex)
+    {
+        this.DataGridView.InvalidateCell(this);
+    }

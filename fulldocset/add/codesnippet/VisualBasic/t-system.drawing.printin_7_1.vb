@@ -1,14 +1,26 @@
-        ' Add list of supported paper sizes found on the printer. 
-        ' The DisplayMember property is used to identify the property that will provide the display string.
-        comboPaperSize.DisplayMember = "PaperName"
-
-        Dim pkSize As PaperSize
-        For i = 0 to printDoc.PrinterSettings.PaperSizes.Count - 1
-            pkSize = printDoc.PrinterSettings.PaperSizes.Item(i)
-            comboPaperSize.Items.Add(pkSize)
-        Next
-
-        ' Create a PaperSize and specify the custom paper size through the constructor and add to combobox.
-        Dim pkCustomSize1 As New PaperSize("Custom Paper Size", 100, 200)
-
-        comboPaperSize.Items.Add(pkCustomSize1)
+ Public Sub Printing()
+     Try
+         ' This assumes that a variable of type string, named filePath,
+         ' has been set to the path of the file to print. 
+         streamToPrint = New StreamReader(filePath)
+         Try
+             printFont = New Font("Arial", 10)
+             Dim pd As New PrintDocument()
+             ' This assumes that a method, named pd_PrintPage, has been
+             ' defined. pd_PrintPage handles the PrintPage event. 
+             AddHandler pd.PrintPage, AddressOf pd_PrintPage
+             ' This assumes that a variable of type string, named
+             ' printer, has been set to the printer's name. 
+             pd.PrinterSettings.PrinterName = printer
+             ' Create a new instance of Margins with one inch margins.
+             Dim margins As New Margins(100, 100, 100, 100)
+             pd.DefaultPageSettings.Margins = margins
+             pd.Print()
+         Finally
+             streamToPrint.Close()
+         End Try
+     Catch ex As Exception
+         MessageBox.Show("An error occurred printing the file - " & ex.Message)
+     End Try
+ End Sub
+    

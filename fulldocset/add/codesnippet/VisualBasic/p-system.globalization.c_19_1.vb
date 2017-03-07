@@ -1,70 +1,37 @@
-' This example demonstrates the CultureTypes enumeration 
-' and the CultureInfo.CultureTypes property.
-
 Imports System
 Imports System.Globalization
 
 Module Module1
-    Public Sub Main()
 
-        ' Create a table of most culture types. 
-        Dim mostCultureTypes() As CultureTypes = { _
-                CultureTypes.NeutralCultures, _
-                CultureTypes.SpecificCultures, _
-                CultureTypes.InstalledWin32Cultures, _
-                CultureTypes.UserCustomCulture, _
-                CultureTypes.ReplacementCultures, _
-                CultureTypes.FrameworkCultures, _
-                CultureTypes.WindowsOnlyCultures}
-        Dim allCultures() As CultureInfo
-        Dim combo As CultureTypes
+   Public Sub Main()
 
-        ' Get and enumerate all cultures.
-        allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures)
-        Dim ci As CultureInfo
-        For Each ci In allCultures
-            ' Display the name of each culture.
-            Console.WriteLine("Culture: {0}", ci.Name)
+      ' Lists the cultures that use the Chinese language and determines if each is a neutral culture.
+      Dim ci As CultureInfo
+      For Each ci In CultureInfo.GetCultures(CultureTypes.AllCultures)
+         If ci.TwoLetterISOLanguageName = "zh" Then
+            Console.Write("{0,-7} {1,-40}", ci.Name, ci.EnglishName)
+            If ci.IsNeutralCulture Then
+               Console.WriteLine(": neutral")
+            Else
+               Console.WriteLine(": specific")
+            End If
+         End If
+      Next ci
 
-            ' Get the culture types of each culture. 
-            combo = ci.CultureTypes
+   End Sub 'Main 
 
-            ' Display the name of each culture type flag that is set.
-            Console.Write("  ")
-            Dim ct As CultureTypes
-            For Each ct In mostCultureTypes
-                If 0 <> (ct And combo) Then
-                    Console.Write("{0} ", ct)
-                End If
-            Next ct
-            Console.WriteLine()
-        Next ci
-
-    End Sub 'Main 
 End Module
 
-'The following is a portion of the results produced by this code example.
-'.
-'.
-'.
-'Culture: tg
-'  NeutralCultures InstalledWin32Cultures 
-'Culture: ta
-'  NeutralCultures InstalledWin32Cultures FrameworkCultures 
-'Culture: te
-'  NeutralCultures InstalledWin32Cultures FrameworkCultures 
-'Culture: syr
-'  NeutralCultures InstalledWin32Cultures FrameworkCultures 
-'Culture: tg-Cyrl-TJ
-'  SpecificCultures InstalledWin32Cultures 
-'Culture: ta-IN
-'  SpecificCultures InstalledWin32Cultures FrameworkCultures 
-'Culture: te-IN
-'  SpecificCultures InstalledWin32Cultures FrameworkCultures 
-'Culture: syr-SY
-'  SpecificCultures InstalledWin32Cultures FrameworkCultures 
-'Culture: tg-Cyrl
-'  NeutralCultures InstalledWin32Cultures 
-'.
-'.
-'.
+
+'This code produces the following output.
+'
+'zh-Hans Chinese (Simplified)                    : neutral
+'zh-TW   Chinese (Traditional, Taiwan)           : specific
+'zh-CN   Chinese (Simplified, PRC)               : specific
+'zh-HK   Chinese (Traditional, Hong Kong S.A.R.) : specific
+'zh-SG   Chinese (Simplified, Singapore)         : specific
+'zh-MO   Chinese (Traditional, Macao S.A.R.)     : specific
+'zh      Chinese                                 : neutral
+'zh-Hant Chinese (Traditional)                   : neutral
+'zh-CHS  Chinese (Simplified) Legacy             : neutral
+'zh-CHT  Chinese (Traditional) Legacy            : neutral

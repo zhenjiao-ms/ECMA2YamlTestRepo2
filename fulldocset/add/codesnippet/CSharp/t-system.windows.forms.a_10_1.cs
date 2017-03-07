@@ -1,91 +1,92 @@
-        // Inner class ChartControlAccessibleObject represents accessible information associated with the ChartControl.
-        // The ChartControlAccessibleObject is returned in the ChartControl.CreateAccessibilityInstance override.
-        public class ChartControlAccessibleObject : ControlAccessibleObject
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Text;
+
+namespace TestValidation
+{
+    class Form1 : Form
+    {
+        private static void Main(string[] args)
         {
-            ChartControl chartControl;
+            Application.EnableVisualStyles();
+            Application.Run(new Form1());
+        }
 
-            public ChartControlAccessibleObject(ChartControl ctrl) : base(ctrl) 
+        private TextBox firstNameBox, lastNameBox;
+        private Button validateButton;
+        private FlowLayoutPanel flowLayout1;
+
+        private Form1()
+        {
+            this.Load += new EventHandler(Form1_Load);
+        }
+
+        void Form1_Load(object sender, EventArgs e)
+        {
+            // Turn off validation when a control loses focus. This will be inherited by child
+            // controls on the form, enabling us to validate the entire form when the 
+            // button is clicked instead of one control at a time.
+            this.AutoValidate = AutoValidate.Disable;
+
+            flowLayout1 = new FlowLayoutPanel();
+            flowLayout1.Dock = DockStyle.Fill;
+            flowLayout1.Name = "flowLayout1";
+
+            firstNameBox = new TextBox();
+            firstNameBox.Name = "firstNameBox";
+            firstNameBox.Size = new Size(75, firstNameBox.Size.Height);
+            firstNameBox.CausesValidation = true;
+            firstNameBox.Validating += new System.ComponentModel.CancelEventHandler(firstNameBox_Validating);
+            flowLayout1.Controls.Add(firstNameBox);
+
+            lastNameBox = new TextBox();
+            lastNameBox.Name = "lastNameBox";
+            lastNameBox.Size = new Size(75, lastNameBox.Size.Height);
+            lastNameBox.CausesValidation = true;
+            lastNameBox.Validating += new System.ComponentModel.CancelEventHandler(lastNameBox_Validating);
+            flowLayout1.Controls.Add(lastNameBox);
+
+            validateButton = new Button();
+            validateButton.Text = "Validate";
+            // validateButton.Location = new Point(170, 10);
+            validateButton.Size = new Size(75, validateButton.Size.Height);
+            validateButton.Click += new EventHandler(validateButton_Click);
+            flowLayout1.Controls.Add(validateButton);
+
+            this.Controls.Add(flowLayout1);
+
+            this.Text = "Test Validation";
+        }
+
+        void firstNameBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (firstNameBox.Text.Length == 0)
             {
-                chartControl = ctrl;
+                e.Cancel = true;
             }
-
-            // Gets the role for the Chart. This is used by accessibility programs.
-            public override AccessibleRole Role
-            {  
-                get {
-                    return AccessibleRole.Chart;
-                }
-            }
-
-            // Gets the state for the Chart. This is used by accessibility programs.
-            public override AccessibleStates State
-            {  
-                get {                    
-                    return AccessibleStates.ReadOnly;
-                }
-            }
-
-            // The CurveLegend objects are "child" controls in terms of accessibility so 
-            // return the number of ChartLengend objects.
-            public override int GetChildCount()
-            {  
-                return chartControl.Legends.Length;
-            }
-
-            // Gets the Accessibility object of the child CurveLegend idetified by index.
-            public override AccessibleObject GetChild(int index)
-            {  
-                if (index >= 0 && index < chartControl.Legends.Length) {
-                    return chartControl.Legends[index].AccessibilityObject;
-                }                
-                return null;
-            }
-
-            // Helper function that is used by the CurveLegend's accessibility object
-            // to navigate between sibiling controls. Specifically, this function is used in
-            // the CurveLegend.CurveLegendAccessibleObject.Navigate function.
-            internal AccessibleObject NavigateFromChild(CurveLegend.CurveLegendAccessibleObject child, 
-                                                        AccessibleNavigation navdir) 
-            {  
-                switch(navdir) {
-                    case AccessibleNavigation.Down:
-                    case AccessibleNavigation.Next:
-                        return GetChild(child.ID + 1);
-                        
-                    case AccessibleNavigation.Up:
-                    case AccessibleNavigation.Previous:
-                        return GetChild(child.ID - 1);                        
-                }
-                return null;
-            }
-
-            // Helper function that is used by the CurveLegend's accessibility object
-            // to select a specific CurveLegend control. Specifically, this function is used
-            // in the CurveLegend.CurveLegendAccessibleObject.Select function.
-            internal void SelectChild(CurveLegend.CurveLegendAccessibleObject child, AccessibleSelection selection) 
-            {   
-                int childID = child.ID;
-
-                // Determine which selection action should occur, based on the
-                // AccessibleSelection value.
-                if ((selection & AccessibleSelection.TakeSelection) != 0) {
-                    for(int i = 0; i < chartControl.Legends.Length; i++) {
-                        if (i == childID) {
-                            chartControl.Legends[i].Selected = true;                        
-                        } else {
-                            chartControl.Legends[i].Selected = false;
-                        }
-                    }
-
-                    // AccessibleSelection.AddSelection means that the CurveLegend will be selected.
-                    if ((selection & AccessibleSelection.AddSelection) != 0) {
-                        chartControl.Legends[childID].Selected = true;                        
-                    }
-
-                    // AccessibleSelection.AddSelection means that the CurveLegend will be unselected.
-                    if ((selection & AccessibleSelection.RemoveSelection) != 0) {
-                        chartControl.Legends[childID].Selected = false;                        
-                    }
-                }            
+            else
+            {
+                e.Cancel = false;
             }
         }
+
+        void lastNameBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = false;
+        }
+
+        void validateButton_Click(object sender, EventArgs e)
+        {
+            if (this.ValidateChildren())
+            {
+                MessageBox.Show("Validation succeeded!");
+            }
+            else
+            {
+                MessageBox.Show("Validation failed.");
+            }
+        }
+    }
+}

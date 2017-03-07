@@ -1,16 +1,15 @@
-    private void dataGridView1_SortCompare(object sender,
-        DataGridViewSortCompareEventArgs e)
+    private void AddLinkColumn()
     {
-        // Try to sort based on the cells in the current column.
-        e.SortResult = System.String.Compare(
-            e.CellValue1.ToString(), e.CellValue2.ToString());
+        DataGridViewLinkColumn links = new DataGridViewLinkColumn();
 
-        // If the cells are equal, sort based on the ID column.
-        if (e.SortResult == 0 && e.Column.Name != "ID")
-        {
-            e.SortResult = System.String.Compare(
-                dataGridView1.Rows[e.RowIndex1].Cells["ID"].Value.ToString(),
-                dataGridView1.Rows[e.RowIndex2].Cells["ID"].Value.ToString());
-        }
-        e.Handled = true;
+        links.UseColumnTextForLinkValue = true;
+        links.HeaderText = ColumnName.ReportsTo.ToString();
+        links.DataPropertyName = ColumnName.ReportsTo.ToString();
+        links.ActiveLinkColor = Color.White;
+        links.LinkBehavior = LinkBehavior.SystemDefault;
+        links.LinkColor = Color.Blue;
+        links.TrackVisitedState = true;
+        links.VisitedLinkColor = Color.YellowGreen;
+
+        DataGridView1.Columns.Add(links);
     }

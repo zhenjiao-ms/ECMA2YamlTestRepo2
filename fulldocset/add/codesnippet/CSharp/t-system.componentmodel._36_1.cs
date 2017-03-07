@@ -1,122 +1,132 @@
 using System;
-using System.Collections;
 using System.ComponentModel;
-using System.ComponentModel.Design;
 using System.Drawing;
 using System.Globalization;
-using System.Resources;
 using System.Windows.Forms;
-using System.Windows.Forms.Design;
 
-namespace IResourceServiceExample
+namespace ExpandableObjectDemo
 {
-    // Associates the ResourceTestControlDesigner with the 
-    // ResourceTestControl class.
-    [Designer(typeof(ResourceTestControlDesigner))]
-    public class ResourceTestControl : System.Windows.Forms.UserControl
+    public partial class DemoControl : UserControl
     {
-        // Initializes a string array used to store strings that 
-        // this control displays.
-        public string[] resource_strings = new string[] { "Initial Default String #1", "Initial Default String #2" };
+        BorderAppearance borderAppearanceValue = new BorderAppearance();
+        private System.ComponentModel.IContainer components = null;
 
-        public ResourceTestControl()
+        public DemoControl()
         {
-            this.BackColor = Color.White;
-            this.Size = new Size(408, 160);
+            InitializeComponent();
         }
 
-        // Draws the strings contained in the string array.
-        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
+        protected override void Dispose(bool disposing)
         {
-            e.Graphics.DrawString("IResourceService Example Designer Control", new Font(FontFamily.GenericMonospace, 10), new SolidBrush(Color.Blue), 2, 2);
-            e.Graphics.DrawString("String list:  (use shortcut menu in design mode)", new Font(FontFamily.GenericMonospace, 8), new SolidBrush(Color.Black), 2, 20);
-            
-            for(int i=0; i<resource_strings.Length; i++)
+            if (disposing && (components != null))
             {
-                e.Graphics.DrawString(resource_strings[i], new Font(FontFamily.GenericMonospace, 8), new SolidBrush(Color.SeaGreen), 2, 38+(i*18));
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        [Browsable(true)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [Category("Demo")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public BorderAppearance Border
+        {
+            get
+            {
+                return this.borderAppearanceValue;
+            }
+
+            set
+            {
+                this.borderAppearanceValue = value;
+            }
+        }
+
+        private void InitializeComponent()
+        {
+            components = new System.ComponentModel.Container();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        }
+    }
+
+    [TypeConverter(typeof(BorderAppearanceConverter))]
+    public class BorderAppearance
+    {
+        private int borderSizeValue = 1;
+        private Color borderColorValue = Color.Empty;
+
+        [Browsable(true),
+        NotifyParentProperty(true),
+        EditorBrowsable(EditorBrowsableState.Always),
+        DefaultValue(1)]
+        public int BorderSize
+        {
+            get
+            {
+                return borderSizeValue;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(
+                        "BorderSize",
+                        value,
+                        "must be >= 0");
+                }
+
+                if (borderSizeValue != value)
+                {
+                    borderSizeValue = value;
+                }
+            }
+        }
+
+        [Browsable(true)]
+        [NotifyParentProperty(true)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [DefaultValue(typeof(Color), "")]
+        public Color BorderColor
+        {
+            get
+            {
+                return borderColorValue;
+            }
+            set
+            {
+                if (value.Equals(Color.Transparent))
+                {
+                    throw new NotSupportedException("Transparent colors are not supported.");
+                }
+
+                if (borderColorValue != value)
+                {
+                    borderColorValue = value;
+                }
             }
         }
     }
 
-    // This designer offers several menu commands for the 
-    // shortcut menu for the associated control.
-    // These commands can be used to reset the control's string 
-    // list, to generate a default resources file, or to load the string 
-    // list for the control from the default resources file.
-    public class ResourceTestControlDesigner : System.Windows.Forms.Design.ControlDesigner
+    public class BorderAppearanceConverter : ExpandableObjectConverter
     {
-        public ResourceTestControlDesigner()
-        {}
-
-        public override System.ComponentModel.Design.DesignerVerbCollection Verbs
+        // This override prevents the PropertyGrid from 
+        // displaying the full type name in the value cell.
+        public override object ConvertTo(
+            ITypeDescriptorContext context,
+            CultureInfo culture,
+            object value,
+            Type destinationType)
         {
-            get
+            if (destinationType == typeof(string))
             {
-                // Creates a collection of designer verb menu commands 
-                // that link to event handlers in this designer.
-                return new DesignerVerbCollection( new DesignerVerb[] { 
-                    new DesignerVerb("Load Strings from Default Resources File", new EventHandler(this.LoadResources)),
-                    new DesignerVerb("Create Default Resources File", new EventHandler(this.CreateResources)),
-                    new DesignerVerb("Clear ResourceTestControl String List", new EventHandler(this.ClearStrings)) });
+                return "";
             }
-        }
 
-        // Sets the string list for the control to the strings 
-        // loaded from a resource file.
-        private void LoadResources(object sender, EventArgs e)
-        {
-            IResourceService rs = (IResourceService)this.Component.Site.GetService(typeof(IResourceService));
-            if( rs == null )
-                throw new Exception("Could not obtain IResourceService.");
-
-            IResourceReader rr = rs.GetResourceReader(CultureInfo.CurrentUICulture);
-            if( rr == null )
-                throw new Exception("Resource file could not be obtained. You may need to create one first.");
-
-            IDictionaryEnumerator de = rr.GetEnumerator();
-            
-            if(this.Control.GetType() == typeof(ResourceTestControl))
-            {
-                ResourceTestControl rtc = (ResourceTestControl)this.Control;
-                string s1, s2, s3;		
-                de.MoveNext();		
-                s1 = (string)((DictionaryEntry)de.Current).Value;
-                de.MoveNext();
-                s2 = (string)((DictionaryEntry)de.Current).Value;
-                de.MoveNext();
-                s3 = (string)((DictionaryEntry)de.Current).Value;
-                de.MoveNext();
-                rtc.resource_strings = new string[] {s1, s2, s3};
-                this.Control.Refresh();
-            }
-            
-        }
-
-        // Creates a default resource file for the current 
-        // CultureInfo and adds 3 strings to it.
-        private void CreateResources(object sender, EventArgs e)
-        {
-            IResourceService rs = (IResourceService)this.Component.Site.GetService(typeof(IResourceService));
-            if( rs == null )
-                throw new Exception("Could not obtain IResourceService.");
-
-            IResourceWriter rw = rs.GetResourceWriter(CultureInfo.CurrentUICulture);
-            rw.AddResource("string1", "Persisted resource string #1");
-            rw.AddResource("string2", "Persisted resource string #2");
-            rw.AddResource("string3", "Persisted resource string #3");
-            rw.Generate();
-            rw.Close();
-        }
-
-        // Clears the string list of the associated ResourceTestControl.
-        private void ClearStrings(object sender, EventArgs e)
-        {
-            if(this.Control.GetType() == typeof(ResourceTestControl))
-            {
-                ResourceTestControl rtc = (ResourceTestControl)this.Control;
-                rtc.resource_strings = new string[] { "Test String #1", "Test String #2" };
-                this.Control.Refresh();
-            }
+            return base.ConvertTo(
+                context,
+                culture,
+                value,
+                destinationType);
         }
     }
 }

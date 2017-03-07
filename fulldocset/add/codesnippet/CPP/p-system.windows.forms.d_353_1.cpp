@@ -1,13 +1,16 @@
-   void SetReadOnly()
-   {
-      DataColumnCollection^ myDataColumns;
-      
-      // Get the columns for a table bound to a DataGrid.
-      myDataColumns = dataSet1->Tables[ "Suppliers" ]->Columns;
-      System::Collections::IEnumerator^ myEnum = myDataColumns->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         DataColumn^ dataColumn = safe_cast<DataColumn^>(myEnum->Current);
-         dataGrid1->TableStyles[ 0 ]->GridColumnStyles[ dataColumn->ColumnName ]->ReadOnly = dataColumn->ReadOnly;
-      }
-   }
+private:
+    void AddLinkColumn()
+    {
+        DataGridViewLinkColumn^ links = gcnew DataGridViewLinkColumn();
+
+		links->UseColumnTextForLinkValue = true;
+        links->HeaderText = ColumnName::ReportsTo.ToString();
+        links->DataPropertyName = ColumnName::ReportsTo.ToString();
+        links->ActiveLinkColor = Color::White;
+        links->LinkBehavior = LinkBehavior::SystemDefault;
+        links->LinkColor = Color::Blue;
+        links->TrackVisitedState = true;
+        links->VisitedLinkColor = Color::YellowGreen;
+
+        DataGridView1->Columns->Add(links);
+    }

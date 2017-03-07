@@ -1,57 +1,45 @@
 Imports System
-Imports System.Drawing
 Imports System.Windows.Forms
+Imports System.Drawing
 
-Namespace csTempWindowsApplication1
+   Public Class MyContainerControl
+      Inherits ScrollableControl
+      Implements IContainerControl 
 
-    Public Class Form1
-        Inherits System.Windows.Forms.Form
-
-        ' Constant value was found in the "windows.h" header file.
-        Private Const WM_ACTIVATEAPP As Integer = &H1C
-        Private appActive As Boolean = True
-
-        <STAThread()> _
-        Shared Sub Main()
-            Application.Run(New Form1())
-        End Sub 'Main
-
-        Public Sub New()
-            MyBase.New()
-
-            Me.Size = New System.Drawing.Size(300, 300)
-            Me.Text = "Form1"
-            Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        End Sub
-
-        Protected Overrides Sub OnPaint(ByVal e As PaintEventArgs)
-
-            ' Paint a string in different styles depending on whether the
-            ' application is active.
-            If (appActive) Then
-                e.Graphics.FillRectangle(SystemBrushes.ActiveCaption, 20, 20, 260, 50)
-                e.Graphics.DrawString("Application is active", Me.Font, SystemBrushes.ActiveCaptionText, 20, 20)
-            Else
-                e.Graphics.FillRectangle(SystemBrushes.InactiveCaption, 20, 20, 260, 50)
-                e.Graphics.DrawString("Application is Inactive", Me.Font, SystemBrushes.ActiveCaptionText, 20, 20)
+      Private myActiveControl As Control
+      
+      Public Sub New()
+         ' Make the container control Blue so it can be distinguished on the form.
+         Me.BackColor = Color.Blue
+         
+         ' Make the container scrollable.
+         Me.AutoScroll = True
+      End Sub 
+      
+      ' Add implementation to the IContainerControl.ActiveControl property.
+      Public Property ActiveControl() As Control Implements IContainerControl.ActiveControl
+         Get
+            Return Me.myActiveControl
+         End Get
+         
+         Set
+            ' Make sure the control is a member of the ControlCollection.
+            If Me.Controls.Contains(value) Then
+               Me.myActiveControl = value
             End If
-        End Sub
-	<System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name:="FullTrust")> _
-        Protected Overrides Sub WndProc(ByRef m As Message)
-            ' Listen for operating system messages
-            Select Case (m.Msg)
-                ' The WM_ACTIVATEAPP message occurs when the application
-                ' becomes the active application or becomes inactive.
-            Case WM_ACTIVATEAPP
+         End Set
+      End Property
+      
+      ' Add implementation to the IContainerControl.ActivateControl(Control) method.
+      public Function ActivateControl(active As Control) As Boolean Implements IContainerControl.ActivateControl
+         If Me.Controls.Contains(active) Then
+            ' Select the control and scroll the control into view if needed.
+            active.Select()
+            Me.ScrollControlIntoView(active)
+            Me.myActiveControl = active
+            Return True
+         End If
+         Return False
+      End Function 
 
-                    ' The WParam value identifies what is occurring.
-                    appActive = (m.WParam.ToInt32() <> 0)
-
-                    ' Invalidate to get new text painted.
-                    Me.Invalidate()
-
-            End Select
-            MyBase.WndProc(m)
-        End Sub
-    End Class
-End Namespace
+   End Class  

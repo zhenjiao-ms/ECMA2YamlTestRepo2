@@ -1,9 +1,11 @@
-    ' This control demonstrates a simple logging capability. 
-    <ComplexBindingProperties("DataSource", "DataMember"), _
-    DefaultBindingProperty("TitleText"), _
-    DefaultEvent("ThresholdExceeded"), _
-    DefaultProperty("Threshold"), _
-    HelpKeywordAttribute(GetType(UserControl)), _
-    ToolboxItem("System.Windows.Forms.Design.AutoSizeToolboxItem,System.Design")> _
-    Public Class AttributesDemoControl
-        Inherits UserControl
+    <LicenseProvider(GetType(LicFileLicenseProvider))> _
+    Public Class MyControl
+        Inherits Control
+        
+        ' Insert code here.
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            ' All components must dispose of the licenses they grant.
+            ' Insert code here to dispose of the license.
+        End Sub        
+
+    End Class

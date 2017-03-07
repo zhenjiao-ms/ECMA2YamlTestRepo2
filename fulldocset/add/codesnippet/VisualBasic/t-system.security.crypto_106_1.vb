@@ -1,149 +1,70 @@
-'
-' This example signs an XML file using an
-' envelope signature. It then verifies the 
-' signed XML.
-'
 Imports System
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.X509Certificates
-Imports System.Security.Cryptography.Xml
 Imports System.Text
-Imports System.Xml
+
+
+Class Program
+
+    Shared Sub Main(ByVal args() As String)
+        Dim [source] As String = "Hello World!"
+        Using md5Hash As MD5 = MD5.Create()
+
+            Dim hash As String = GetMd5Hash(md5Hash, source)
+
+            Console.WriteLine("The MD5 hash of " + source + " is: " + hash + ".")
+
+            Console.WriteLine("Verifying the hash...")
+
+            If VerifyMd5Hash(md5Hash, [source], hash) Then
+                Console.WriteLine("The hashes are the same.")
+            Else
+                Console.WriteLine("The hashes are not same.")
+            End If
+        End Using
+    End Sub 'Main
 
 
 
-Public Class SignVerifyEnvelope
-   
-   Overloads Public Shared Sub Main(args() As [String])
-      Try
-         ' Generate a signing key.
-         Dim Key As New RSACryptoServiceProvider()
-         
-         ' Create an XML file to sign.
-         CreateSomeXml("Example.xml")
-         Console.WriteLine("New XML file created.")
-         
-         ' Sign the XML that was just created and save it in a 
-         ' new file.
-         SignXmlFile("Example.xml", "SignedExample.xml", Key)
-         Console.WriteLine("XML file signed.")
-         
-         ' Verify the signature of the signed XML.
-         Console.WriteLine("Verifying signature...")
-         Dim result As Boolean = VerifyXmlFile("SignedExample.xml")
-         
-         ' Display the results of the signature verification to \
-         ' the console.
-         If result Then
-            Console.WriteLine("The XML signature is valid.")
-         Else
-            Console.WriteLine("The XML signature is not valid.")
-         End If
-      Catch e As CryptographicException
-         Console.WriteLine(e.Message)
-      End Try
-   End Sub 
-   
-   
-   ' Sign an XML file and save the signature in a new file.
-   Public Shared Sub SignXmlFile(FileName As String, SignedFileName As String, Key As RSA)
-      ' Create a new XML document.
-      Dim doc As New XmlDocument()
-      
-      ' Format the document to ignore white spaces.
-      doc.PreserveWhitespace = False
-      
-      ' Load the passed XML file using it's name.
-      doc.Load(New XmlTextReader(FileName))
-      
-      ' Create a SignedXml object.
-      Dim signedXml As New SignedXml(doc)
-      
-      ' Add the key to the SignedXml document. 
-      signedXml.SigningKey = Key
-      
-      ' Create a reference to be signed.
-      Dim reference As New Reference()
-      reference.Uri = ""
-      
-      ' Add an enveloped transformation to the reference.
-      Dim env As New XmlDsigEnvelopedSignatureTransform()
-      reference.AddTransform(env)
-      
-      ' Add the reference to the SignedXml object.
-      signedXml.AddReference(reference)
-      
-      
-      ' Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-      Dim keyInfo As New KeyInfo()
-      keyInfo.AddClause(New RSAKeyValue(CType(Key, RSA)))
-      signedXml.KeyInfo = keyInfo
-      
-      ' Compute the signature.
-      signedXml.ComputeSignature()
-      
-      ' Get the XML representation of the signature and save
-      ' it to an XmlElement object.
-      Dim xmlDigitalSignature As XmlElement = signedXml.GetXml()
-      
-      ' Append the element to the XML document.
-      doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, True))
-      
-      
-      If TypeOf doc.FirstChild Is XmlDeclaration Then
-         doc.RemoveChild(doc.FirstChild)
-      End If
-      
-      ' Save the signed XML document to a file specified
-      ' using the passed string.
-      Dim xmltw As New XmlTextWriter(SignedFileName, New UTF8Encoding(False))
-      doc.WriteTo(xmltw)
-      xmltw.Close()
-   End Sub 
-   ' Verify the signature of an XML file and return the result.
-   Public Shared Function VerifyXmlFile(Name As [String]) As [Boolean]
-      ' Create a new XML document.
-      Dim xmlDocument As New XmlDocument()
-      
-      ' Format using white spaces.
-      xmlDocument.PreserveWhitespace = True
-      
-      ' Load the passed XML file into the document. 
-      xmlDocument.Load(Name)
-      
-      ' Create a new SignedXml object and pass it
-      ' the XML document class.
-      Dim signedXml As New SignedXml(xmlDocument)
-      
-      ' Find the "Signature" node and create a new
-      ' XmlNodeList object.
-      Dim nodeList As XmlNodeList = xmlDocument.GetElementsByTagName("Signature")
-      
-      ' Load the signature node.
-      signedXml.LoadXml(CType(nodeList(0), XmlElement))
-      
-      ' Check the signature and return the result.
-      Return signedXml.CheckSignature()
-   End Function 
-   
-   
-   ' Create example data to sign.
-   Public Shared Sub CreateSomeXml(FileName As String)
-      ' Create a new XmlDocument object.
-      Dim document As New XmlDocument()
-      
-      ' Create a new XmlNode object.
-      Dim node As XmlNode = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples")
-      
-      ' Add some text to the node.
-      node.InnerText = "Example text to be signed."
-      
-      ' Append the node to the document.
-      document.AppendChild(node)
-      
-      ' Save the XML document to the file name specified.
-      Dim xmltw As New XmlTextWriter(FileName, New UTF8Encoding(False))
-      document.WriteTo(xmltw)
-      xmltw.Close()
-   End Sub 
-End Class
+    Shared Function GetMd5Hash(ByVal md5Hash As MD5, ByVal input As String) As String
+
+        ' Convert the input string to a byte array and compute the hash.
+        Dim data As Byte() = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input))
+
+        ' Create a new Stringbuilder to collect the bytes
+        ' and create a string.
+        Dim sBuilder As New StringBuilder()
+
+        ' Loop through each byte of the hashed data 
+        ' and format each one as a hexadecimal string.
+        Dim i As Integer
+        For i = 0 To data.Length - 1
+            sBuilder.Append(data(i).ToString("x2"))
+        Next i
+
+        ' Return the hexadecimal string.
+        Return sBuilder.ToString()
+
+    End Function 'GetMd5Hash
+
+
+    ' Verify a hash against a string.
+    Shared Function VerifyMd5Hash(ByVal md5Hash As MD5, ByVal input As String, ByVal hash As String) As Boolean
+        ' Hash the input.
+        Dim hashOfInput As String = GetMd5Hash(md5Hash, input)
+
+        ' Create a StringComparer an compare the hashes.
+        Dim comparer As StringComparer = StringComparer.OrdinalIgnoreCase
+
+        If 0 = comparer.Compare(hashOfInput, hash) Then
+            Return True
+        Else
+            Return False
+        End If
+
+    End Function 'VerifyMd5Hash
+End Class 'Program 
+' This code example produces the following output:
+'
+' The MD5 hash of Hello World! is: ed076287532e86365e841e92bfc50d8c.
+' Verifying the hash...
+' The hashes are the same.

@@ -1,46 +1,73 @@
-    Private Sub dataGridView1_CellFormatting(ByVal sender As Object, _
-        ByVal e As DataGridViewCellFormattingEventArgs) _
-        Handles dataGridView1.CellFormatting
-        ' If the column is the Artist column, check the
-        ' value.
-        If Me.dataGridView1.Columns(e.ColumnIndex).Name _
-            = "Artist" Then
-            If e.Value IsNot Nothing Then
+    Private Sub UpdateLabelText()
+        Dim WithdrawalTotal As Integer = 0
+        Dim DepositTotal As Integer = 0
+        Dim SelectedCellTotal As Integer = 0
+        Dim counter As Integer
 
-                ' Check for the string "pink" in the cell.
-                Dim stringValue As String = _
-                CType(e.Value, String)
-                stringValue = stringValue.ToLower()
-                If ((stringValue.IndexOf("pink") > -1)) Then
-                    e.CellStyle.BackColor = Color.Pink
+        ' Iterate through all the rows and sum up the appropriate columns.
+        For counter = 0 To (DataGridView1.Rows.Count - 1)
+            If Not DataGridView1.Rows(counter) _
+                .Cells("Withdrawals").Value Is Nothing Then
+
+                If Not DataGridView1.Rows(counter) _
+                    .Cells("Withdrawals").Value.ToString().Length = 0 Then
+
+                    WithdrawalTotal += _
+                        Integer.Parse(DataGridView1.Rows(counter) _
+                        .Cells("Withdrawals").Value.ToString())
+                End If
+            End If
+
+            If Not DataGridView1.Rows(counter) _
+                .Cells("Deposits").Value Is Nothing Then
+
+                If Not DataGridView1.Rows(counter) _
+                    .Cells("Deposits").Value.ToString().Length = 0 Then
+
+                    DepositTotal += _
+                        Integer.Parse(DataGridView1.Rows(counter) _
+                        .Cells("Deposits").Value.ToString())
+                End If
+            End If
+        Next
+
+        ' Iterate through the SelectedCells collection and sum up the values.
+        For counter = 0 To (DataGridView1.SelectedCells.Count - 1)
+            If DataGridView1.SelectedCells(counter).FormattedValueType Is _
+            Type.GetType("System.String") Then
+
+                Dim value As String = Nothing
+
+                ' If the cell contains a value that has not been commited,
+                ' use the modified value.
+                If (DataGridView1.IsCurrentCellDirty = True) Then
+
+                    value = DataGridView1.SelectedCells(counter) _
+                        .EditedFormattedValue.ToString()
+                Else
+
+                    value = DataGridView1.SelectedCells(counter) _
+                        .FormattedValue.ToString()
                 End If
 
+                If value IsNot Nothing Then
+
+                    ' Ignore cells in the Description column.
+                    If Not DataGridView1.SelectedCells(counter).ColumnIndex = _
+                        DataGridView1.Columns("Description").Index Then
+
+                        If Not value.Length = 0 Then
+                            SelectedCellTotal += Integer.Parse(value)
+                        End If
+                    End If
+                End If
             End If
-        ElseIf Me.dataGridView1.Columns(e.ColumnIndex).Name _
-            = "Release Date" Then
-            ShortFormDateFormat(e)
-        End If
-    End Sub
 
-    'Even though the date internaly stores the year as YYYY, using formatting, the
-    'UI can have the format in YY.  
-    Private Shared Sub ShortFormDateFormat(ByVal formatting As DataGridViewCellFormattingEventArgs)
-        If formatting.Value IsNot Nothing Then
-            Try
-                Dim dateString As System.Text.StringBuilder = New System.Text.StringBuilder()
-                Dim theDate As Date = DateTime.Parse(formatting.Value.ToString())
+        Next
 
-                dateString.Append(theDate.Month)
-                dateString.Append("/")
-                dateString.Append(theDate.Day)
-                dateString.Append("/")
-                dateString.Append(theDate.Year.ToString().Substring(2))
-                formatting.Value = dateString.ToString()
-                formatting.FormattingApplied = True
-            Catch notInDateFormat As FormatException
-                ' Set to false in case there are other handlers interested trying to
-                ' format this DataGridViewCellFormattingEventArgs instance.
-                formatting.FormattingApplied = False
-            End Try
-        End If
+        ' Set the labels to reflect the current state of the DataGridView.
+        Label1.Text = "Withdrawals Total: " & WithdrawalTotal.ToString()
+        Label2.Text = "Deposits Total: " & DepositTotal.ToString()
+        Label3.Text = "Selected Cells Total: " & SelectedCellTotal.ToString()
+        Label4.Text = "Total entries: " & DataGridView1.RowCount.ToString()
     End Sub

@@ -1,7 +1,9 @@
-    Private Sub HandleMouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) _
-            Handles Me.MouseDown, listView1.MouseDown
+Private Sub RichTextBox1_LinkClicked(sender as Object, e as LinkClickedEventArgs) _ 
+     Handles RichTextBox1.LinkClicked
 
-        Dim info As ListViewHitTestInfo = listView1.HitTest(e.X, e.Y)
-        MessageBox.Show(info.Location.ToString())
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "LinkText", e.LinkText)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"LinkClicked Event")
 
-    End Sub
+End Sub

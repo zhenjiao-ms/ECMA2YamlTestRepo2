@@ -1,11 +1,11 @@
-private void myButton_MouseEnter(object sender, System.EventArgs e)
-{
-   // Hide the cursor when the mouse pointer enters the button.
-   Cursor.Hide();
-}
-
-private void myButton_MouseLeave(object sender, System.EventArgs e)
-{
-   // Show the cursor when the mouse pointer leaves the button.
-   Cursor.Show();
-}
+    // Demonstrates SetText, ContainsText, and GetText.
+    public String SwapClipboardHtmlText(String replacementHtmlText)
+    {
+        String returnHtmlText = null;
+        if (Clipboard.ContainsText(TextDataFormat.Html))
+        {
+            returnHtmlText = Clipboard.GetText(TextDataFormat.Html);
+            Clipboard.SetText(replacementHtmlText, TextDataFormat.Html);
+        }
+        return returnHtmlText;
+    }

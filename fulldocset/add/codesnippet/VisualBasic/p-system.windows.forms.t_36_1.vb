@@ -1,17 +1,10 @@
-Private Sub ToolStripRenderer1_RenderArrow(sender as Object, e as ToolStripArrowRenderEventArgs) _ 
-     Handles ToolStripRenderer1.RenderArrow
-
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "ArrowRectangle", e.ArrowRectangle)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "ArrowColor", e.ArrowColor)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Direction", e.Direction)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Item", e.Item)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"RenderArrow Event")
-
-End Sub
+    Sub treeView1_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) 
+        Dim info As TreeViewHitTestInfo = treeView1.HitTest(e.X, e.Y)
+        Dim hitNode As TreeNode
+        If (info.Node IsNot Nothing) Then
+            hitNode = info.Node
+            MessageBox.Show(hitNode.Level.ToString())
+        End If
+    
+    End Sub 'treeView1_MouseDown
+    

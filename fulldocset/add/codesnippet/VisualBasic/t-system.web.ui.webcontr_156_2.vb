@@ -1,118 +1,60 @@
 Imports System
+Imports System.Data
+Imports System.Configuration
 Imports System.Web
 Imports System.Web.Security
-Imports System.Security.Permissions
 Imports System.Web.UI
 Imports System.Web.UI.WebControls
 Imports System.Web.UI.WebControls.WebParts
-
-Namespace Samples.AspNet.VB.Controls
-
-  <AspNetHostingPermission(SecurityAction.Demand, _
-    Level:=AspNetHostingPermissionLevel.Minimal)> _
-  <AspNetHostingPermission(SecurityAction.InheritanceDemand, _
-    Level:=AspNetHostingPermissionLevel.Minimal)> _
-  Public Interface IZipCode
-
-    Property ZipCode() As String
-
-  End Interface
-
-  <AspNetHostingPermission(SecurityAction.Demand, _
-    Level:=AspNetHostingPermissionLevel.Minimal)> _
-  <AspNetHostingPermission(SecurityAction.InheritanceDemand, _
-    Level:=AspNetHostingPermissionLevel.Minimal)> _
-  Public Class ZipCodeWebPart
-    Inherits WebPart
-    Implements IZipCode
-    Private zipCodeText As String = String.Empty
-    Private input As TextBox
-    Private send As Button
-
-    Public Sub New()
-    End Sub
-
-    ' Make the implemented property personalizable to save 
-    ' the Zip Code between browser sessions.
-    <Personalizable()> _
-    Public Property ZipCode() As String _
-      Implements IZipCode.ZipCode
-
-      Get
-        Return zipCodeText
-      End Get
-      Set(ByVal value As String)
-        zipCodeText = value
-      End Set
-    End Property
-
-    ' This is the callback method that returns the provider.
-    <ConnectionProvider("Zip Code Provider", "ZipCodeProvider")> _
-    Public Function ProvideIZipCode() As IZipCode
-      Return Me
-    End Function
+Imports System.Web.UI.HtmlControls
 
 
-    Protected Overrides Sub CreateChildControls()
-      Controls.Clear()
-      input = New TextBox()
-      Me.Controls.Add(input)
-      send = New Button()
-      send.Text = "Enter 5-digit Zip Code"
-      AddHandler send.Click, AddressOf Me.submit_Click
-      Me.Controls.Add(send)
+Partial Public Class webpartzonecollection_overview
 
-    End Sub
+  Inherits Page
+
+  Protected Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs)
+    Label1.Text = String.Empty
+    Label1.Text = "WebPartZone Count:  " & mgr.Zones.Count
+
+  End Sub
 
 
-    Private Sub submit_Click(ByVal sender As Object, _
-      ByVal e As EventArgs)
+  Protected Sub Button2_Click(ByVal sender As Object, ByVal e As EventArgs)
+    Label1.Text = String.Empty
+    Label1.Text = mgr.Zones.Contains(WebPartZone2).ToString()
 
-      If input.Text <> String.Empty Then
-        zipCodeText = Page.Server.HtmlEncode(input.Text)
-        input.Text = String.Empty
+  End Sub
+
+  Protected Sub Button3_Click(ByVal sender As Object, ByVal e As EventArgs)
+    Label1.Text = String.Empty
+    Dim zoneArray(mgr.Zones.Count) As WebPartZoneBase
+    mgr.Zones.CopyTo(zoneArray, 0)
+    Label1.Text = zoneArray(2).ID
+    Label1.Text += ", " & zoneArray(1).ID
+    Label1.Text += ", " & zoneArray(0).ID
+
+  End Sub
+
+  Protected Sub Button4_Click(ByVal sender As Object, ByVal e As EventArgs)
+    Label1.Text = String.Empty
+    Label1.Text = "WebPartZone1 index:  " & mgr.Zones.IndexOf(WebPartZone1)
+
+  End Sub
+
+  Protected Sub Button5_Click(ByVal sender As Object, ByVal e As EventArgs)
+    Label1.Text = String.Empty
+
+    Dim zoneCollection As WebPartZoneCollection = mgr.Zones
+    Dim zone As WebPartZone
+    For Each zone In zoneCollection
+      If zone.WebPartVerbRenderMode = WebPartVerbRenderMode.Menu Then
+        zone.WebPartVerbRenderMode = WebPartVerbRenderMode.TitleBar
+      Else
+        zone.WebPartVerbRenderMode = WebPartVerbRenderMode.Menu
       End If
+    Next zone
 
-    End Sub
+  End Sub
 
-  End Class
-
-  <AspNetHostingPermission(SecurityAction.Demand, _
-    Level:=AspNetHostingPermissionLevel.Minimal)> _
-  <AspNetHostingPermission(SecurityAction.InheritanceDemand, _
-    Level:=AspNetHostingPermissionLevel.Minimal)> _
-  Public Class WeatherWebPart
-    Inherits WebPart
-    Private _provider As IZipCode
-    Private _zipSearch As String
-    Private DisplayContent As Label
-
-    ' This method is identified by the ConnectionConsumer 
-    ' attribute, and is the mechanism for connecting with 
-    ' the provider. 
-    <ConnectionConsumer("Zip Code Consumer", "ZipCodeConsumer")> _
-    Public Sub GetIZipCode(ByVal Provider As IZipCode)
-      _provider = Provider
-    End Sub
-
-
-    Protected Overrides Sub OnPreRender(ByVal e As EventArgs)
-      EnsureChildControls()
-
-      If Not (Me._provider Is Nothing) Then
-        _zipSearch = _provider.ZipCode.Trim()
-				DisplayContent.Text = "My Zip Code is:  " + _zipSearch
-      End If
-
-    End Sub 'OnPreRender
-
-    Protected Overrides Sub CreateChildControls()
-      Controls.Clear()
-      DisplayContent = New Label()
-      Me.Controls.Add(DisplayContent)
-
-    End Sub
-
-  End Class
-
-End Namespace
+End Class

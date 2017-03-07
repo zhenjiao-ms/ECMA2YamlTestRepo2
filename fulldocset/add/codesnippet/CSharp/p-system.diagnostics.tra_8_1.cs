@@ -3,8 +3,8 @@
  static TraceSwitch mySwitch = new TraceSwitch("General", "Entire Application");
  
  static public void MyMethod() {
-    // Write the message if the TraceSwitch level is set to Info or higher.
-    if(mySwitch.TraceInfo)
+    // Write the message if the TraceSwitch level is set to Error or higher.
+    if(mySwitch.TraceError)
        Console.WriteLine("My error message.");
  
     // Write the message if the TraceSwitch level is set to Verbose.

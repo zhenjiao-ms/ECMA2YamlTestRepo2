@@ -1,4 +1,6 @@
-         double myDoub(100.55);
-         String^ myDoStr = "4000.425";
-         Console::WriteLine( TypeDescriptor::GetConverter( myDoub )->ConvertTo( myDoub, String::typeid ) );
-         Console::WriteLine( TypeDescriptor::GetConverter( myDoub )->ConvertFrom( myDoStr ) );
+         // Requires public declaration of the following type.
+         // __value enum Servers {Windows=1, Exchange=2, BizTalk=3};
+         Servers myServer = Servers::Exchange;
+         String^ myServerString = "BizTalk";
+         Console::WriteLine( TypeDescriptor::GetConverter( myServer )->ConvertTo( myServer, String::typeid ) );
+         Console::WriteLine( TypeDescriptor::GetConverter( myServer )->ConvertFrom( myServerString ) );

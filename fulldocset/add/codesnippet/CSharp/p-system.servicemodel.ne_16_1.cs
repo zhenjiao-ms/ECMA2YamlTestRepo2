@@ -1,1 +1,2 @@
-		NetNamedPipeSecurity security = binding.Security;
+	    OptionalReliableSession reliableSession =
+		    binding.ReliableSession;

@@ -1,10 +1,11 @@
-private void WriteMappingNames(){
-    foreach(DataGridTableStyle dgt in myDataGrid.TableStyles)
+    // Display NullValue for cell values equal to DataSourceNullValue.
+    private void dataGridView1_CellFormatting(object sender,
+        DataGridViewCellFormattingEventArgs e)
     {
-        Console.WriteLine(dgt.MappingName);
-        foreach(DataGridColumnStyle dgc in dgt.GridColumnStyles)
+        String value = e.Value as string;
+        if ((value != null) && value.Equals(e.CellStyle.DataSourceNullValue))
         {
-            Console.WriteLine(dgc.MappingName);
+            e.Value = e.CellStyle.NullValue;
+            e.FormattingApplied = true;
         }
     }
-}

@@ -1,63 +1,39 @@
-    Private Sub InitializeTreeView()
+   ' This utility method creates a RolloverItem 
+   ' and adds it to a ToolStrip control.
+    Private Function CreateRolloverItem( _
+    ByVal owningToolStrip As ToolStrip, _
+    ByVal txt As String, _
+    ByVal f As Font, _
+    ByVal imgKey As String, _
+    ByVal tir As TextImageRelation, _
+    ByVal backImgKey As String) As RolloverItem
 
-        ' Construct the TreeView object.
-        Me.TreeView1 = New System.Windows.Forms.TreeView
+        Dim item As New RolloverItem()
 
-        ' Set dock, location, size name, and tab order
-        ' values for the TreeView object.
+        item.Alignment = ToolStripItemAlignment.Left
+        item.AllowDrop = False
+        item.AutoSize = True
 
-        With TreeView1
-            .Dock = System.Windows.Forms.DockStyle.Left
-            .Location = New System.Drawing.Point(0, 0)
-            .Name = "TreeView1"
-            .Size = New System.Drawing.Size(152, 266)
-            .TabIndex = 1
-        End With
+        item.BackgroundImage = owningToolStrip.ImageList.Images(backImgKey)
+        item.BackgroundImageLayout = ImageLayout.Center
+        item.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText
+        item.DoubleClickEnabled = True
+        item.Enabled = True
+        item.Font = f
 
-        ' Set the LabelEdit property to true to allow the 
-        ' user to edit the TreeNode text.
-        Me.TreeView1.LabelEdit = True
+        ' These assignments are equivalent. Each assigns an
+        ' image from the owning toolstrip's image list.
+        item.ImageKey = imgKey
+        'item.Image = owningToolStrip.ImageList.Images[infoIconKey];
+        'item.ImageIndex = owningToolStrip.ImageList.Images.IndexOfKey(infoIconKey);
+        item.ImageScaling = ToolStripItemImageScaling.None
 
-        ' Declare and create objects needed to populate 
-        ' the TreeView.
-        Dim file, files(), filePath As String
-        files = New String() {"bigPresentation.ppt", "myFinances.xls", _
-            "myResume.doc"}
-        filePath = "c:\myFiles"
-        Dim nodes As New System.Collections.ArrayList
+        item.Owner = owningToolStrip
+        item.Padding = New Padding(2)
+        item.Text = txt
+        item.TextAlign = ContentAlignment.MiddleLeft
+        item.TextDirection = ToolStripTextDirection.Horizontal
+        item.TextImageRelation = tir
 
-        ' Create a node for each file, setting the Text property to the 
-        ' file's name and the Tag property to file's fully-qualified name.
-        For Each file In files
-            Dim node As New TreeNode(file)
-            node.Tag = filePath & "\" & file
-            nodes.Add(node)
-        Next
-
-        ' Create a new node named topNode and add the ArrayList of 
-        ' nodes to topNode.
-        Dim topNode As New TreeNode("myFiles", _
-            nodes.ToArray(GetType(TreeNode)))
-
-        topNode.Tag = filePath
-
-        ' Add topNode to the TreeView.
-        TreeView1.Nodes.Add(topNode)
-
-        ' Add the TreeView to the form.
-        Me.Controls.Add(TreeView1)
-    End Sub
-
-    Private Sub TreeView1_BeforeLabelEdit(ByVal sender As Object, _
-        ByVal e As NodeLabelEditEventArgs) Handles TreeView1.BeforeLabelEdit
-
-        ' Determine whether the user has selected the top node. If so,
-        ' change the CancelEdit property to true to cancel the edit.  
-        If (e.Node Is TreeView1.TopNode) Then
-
-            e.CancelEdit = True
-            MessageBox.Show("You are not allowed to edit the top node")
-        End If
-
-
-    End Sub
+        Return item
+    End Function

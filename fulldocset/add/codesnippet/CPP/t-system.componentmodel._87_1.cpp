@@ -1,12 +1,4 @@
-[LicenseProvider(LicFileLicenseProvider::typeid)]
-ref class MyControl: public Control
-{
-protected:
-
-   // Insert code here.
-   ~MyControl()
-   {
-      /* All components must dispose of the licenses they grant. 
-               * Insert code here to dispose of the license. */
-   }
-};
+         char chrA('a');
+         String^ strB = "b";
+         Console::WriteLine( TypeDescriptor::GetConverter( chrA )->ConvertTo( chrA, String::typeid ) );
+         Console::WriteLine( TypeDescriptor::GetConverter( chrA )->ConvertFrom( strB ) );

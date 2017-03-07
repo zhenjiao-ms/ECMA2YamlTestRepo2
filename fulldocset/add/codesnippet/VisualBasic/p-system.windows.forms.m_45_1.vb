@@ -1,19 +1,11 @@
-Private Sub Control1_MouseClick(sender as Object, e as MouseEventArgs) _ 
-     Handles Control1.MouseClick
+Private Sub MaskedTextBox1_MaskInputRejected(sender as Object, e as MaskInputRejectedEventArgs) _ 
+     Handles MaskedTextBox1.MaskInputRejected
 
     Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "Button", e.Button)
+    messageBoxVB.AppendFormat("{0} = {1}", "Position", e.Position)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Clicks", e.Clicks)
+    messageBoxVB.AppendFormat("{0} = {1}", "RejectionHint", e.RejectionHint)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "X", e.X)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Y", e.Y)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Delta", e.Delta)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Location", e.Location)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"MouseClick Event")
+    MessageBox.Show(messageBoxVB.ToString(),"MaskInputRejected Event")
 
 End Sub

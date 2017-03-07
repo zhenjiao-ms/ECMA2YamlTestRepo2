@@ -1,16 +1,16 @@
-    // Style and number columns.
-    private void Button8_Click(object sender,
-        EventArgs args)
+    private void CreateUnboundButtonColumn()
     {
-        DataGridViewCellStyle style = new DataGridViewCellStyle();
-        style.Alignment =
-            DataGridViewContentAlignment.MiddleCenter;
-        style.ForeColor = Color.IndianRed;
-        style.BackColor = Color.Ivory;
+        // Initialize the button column.
+        DataGridViewButtonColumn buttonColumn =
+            new DataGridViewButtonColumn();
+        buttonColumn.Name = "Details";
+        buttonColumn.HeaderText = "Details";
+        buttonColumn.Text = "View Details";
 
-        foreach (DataGridViewColumn column in dataGridView.Columns)
-        {
-            column.HeaderCell.Value = column.Index.ToString();
-            column.HeaderCell.Style = style;
-        }
+        // Use the Text property for the button text for all cells rather
+        // than using each cell's value as the text for its own button.
+        buttonColumn.UseColumnTextForButtonValue = true;
+
+        // Add the button column to the control.
+        dataGridView1.Columns.Insert(0, buttonColumn);
     }

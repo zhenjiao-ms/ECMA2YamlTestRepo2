@@ -1,4 +1,14 @@
-            public RequestContext ReceiveRequest()
+            public RequestContext ReceiveRequest(TimeSpan timeout)
             {
-                return ReceiveRequest(DefaultReceiveTimeout);
+                RequestContext requestContext;
+                while (true)
+                {
+                    requestContext = this.InnerChannel.ReceiveRequest(timeout);
+                    if (ProcessRequestContext(ref requestContext))
+                    {
+                        break;
+                    }
+                }
+
+                return requestContext;
             }

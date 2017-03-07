@@ -1,39 +1,39 @@
-   // Requests a reader lock, upgrades the reader lock to the writer
-   // lock, and downgrades it to a reader lock again.
-   static void UpgradeDowngrade(int timeOut)
+   // Release all locks and later restores the lock state.
+   // Uses sequence numbers to determine whether another thread has
+   // obtained a writer lock since this thread last accessed the resource.
+   static void ReleaseRestore(int timeOut)
    {
+      int lastWriter;
+
       try {
          rwl.AcquireReaderLock(timeOut);
          try {
-            // It's safe for this thread to read from the shared resource.
-            Display("reads resource value " + resource);
+            // It's safe for this thread to read from the shared resource,
+            // so read and cache the resource value.
+            int resourceValue = resource;     // Cache the resource value.
+            Display("reads resource value " + resourceValue);
             Interlocked.Increment(ref reads);
 
-            // To write to the resource, either release the reader lock and
-            // request the writer lock, or upgrade the reader lock. Upgrading
-            // the reader lock puts the thread in the write queue, behind any
-            // other threads that might be waiting for the writer lock.
-            try {
-               LockCookie lc = rwl.UpgradeToWriterLock(timeOut);
-               try {
-                  // It's safe for this thread to read or write from the shared resource.
-                  resource = rnd.Next(500);
-                  Display("writes resource value " + resource);
-                  Interlocked.Increment(ref writes);
-               }
-               finally {
-                  // Ensure that the lock is released.
-                  rwl.DowngradeFromWriterLock(ref lc);
-               }
-            }
-            catch (ApplicationException) {
-               // The upgrade request timed out.
-               Interlocked.Increment(ref writerTimeouts);
-            }
+            // Save the current writer sequence number.
+            lastWriter = rwl.WriterSeqNum;
 
-            // If the lock was downgraded, it's still safe to read from the resource.
-            Display("reads resource value " + resource);
-            Interlocked.Increment(ref reads);
+            // Release the lock and save a cookie so the lock can be restored later.
+            LockCookie lc = rwl.ReleaseLock();
+
+            // Wait for a random interval and then restore the previous state of the lock.
+            Thread.Sleep(rnd.Next(250));
+            rwl.RestoreLock(ref lc);
+
+            // Check whether other threads obtained the writer lock in the interval.
+            // If not, then the cached value of the resource is still valid.
+            if (rwl.AnyWritersSince(lastWriter)) {
+               resourceValue = resource;
+               Interlocked.Increment(ref reads);
+               Display("resource has changed " + resourceValue);
+            }
+            else {
+               Display("resource has not changed " + resourceValue);
+            }
          }
          finally {
             // Ensure that the lock is released.

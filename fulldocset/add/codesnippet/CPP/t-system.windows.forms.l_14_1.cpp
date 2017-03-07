@@ -1,152 +1,39 @@
-#using <System.dll>
-#using <System.Windows.Forms.dll>
-#using <System.Drawing.dll>
-
-using namespace System;
-using namespace System::Drawing;
-using namespace System::Windows::Forms;
-public ref class ListViewInsertionMarkExample: public Form
-{
-private:
-   ListView^ myListView;
-
-public:
-
-   ListViewInsertionMarkExample()
+   // This method adds two columns to the ListView, setting the Text 
+   // and TextAlign, and Width properties of each ColumnHeader.  The 
+   // HeaderStyle property is set to NonClickable since the ColumnClick 
+   // event is not handled.  Finally the method adds ListViewItems and 
+   // SubItems to each column.
+   void InitializeListView()
    {
-      // Initialize myListView.
-      myListView = gcnew ListView;
-      myListView->Dock = DockStyle::Fill;
-      myListView->View = View::LargeIcon;
-      myListView->MultiSelect = false;
-      myListView->ListViewItemSorter = gcnew ListViewIndexComparer;
-
-      // Initialize the insertion mark.
-      myListView->InsertionMark->Color = Color::Green;
-
-      // Add items to myListView.
-      myListView->Items->Add( "zero" );
-      myListView->Items->Add( "one" );
-      myListView->Items->Add( "two" );
-      myListView->Items->Add( "three" );
-      myListView->Items->Add( "four" );
-      myListView->Items->Add( "five" );
-
-      // Initialize the drag-and-drop operation when running
-      // under Windows XP or a later operating system.
-      if ( System::Environment::OSVersion->Version->Major > 5 || (System::Environment::OSVersion->Version->Major == 5 && System::Environment::OSVersion->Version->Minor >= 1) )
+      this->ListView1 = gcnew System::Windows::Forms::ListView;
+      this->ListView1->BackColor = System::Drawing::SystemColors::Control;
+      this->ListView1->Dock = System::Windows::Forms::DockStyle::Top;
+      this->ListView1->Location = System::Drawing::Point( 0, 0 );
+      this->ListView1->Name = "ListView1";
+      this->ListView1->Size = System::Drawing::Size( 292, 130 );
+      this->ListView1->TabIndex = 0;
+      this->ListView1->View = System::Windows::Forms::View::Details;
+      this->ListView1->MultiSelect = true;
+      this->ListView1->HideSelection = false;
+      this->ListView1->HeaderStyle = ColumnHeaderStyle::Nonclickable;
+      ColumnHeader^ columnHeader1 = gcnew ColumnHeader;
+      columnHeader1->Text = "Breakfast Item";
+      columnHeader1->TextAlign = HorizontalAlignment::Left;
+      columnHeader1->Width = 146;
+      ColumnHeader^ columnHeader2 = gcnew ColumnHeader;
+      columnHeader2->Text = "Price Each";
+      columnHeader2->TextAlign = HorizontalAlignment::Center;
+      columnHeader2->Width = 142;
+      this->ListView1->Columns->Add( columnHeader1 );
+      this->ListView1->Columns->Add( columnHeader2 );
+      array<String^>^foodList = {"Juice","Coffee","Cereal & Milk","Fruit Plate","Toast & Jelly","Bagel & Cream Cheese"};
+      array<String^>^foodPrice = {"1.09","1.09","2.19","2.49","1.49","1.49"};
+      for ( int count = 0; count < foodList->Length; count++ )
       {
-         myListView->AllowDrop = true;
-         myListView->ItemDrag += gcnew ItemDragEventHandler( this, &ListViewInsertionMarkExample::myListView_ItemDrag );
-         myListView->DragEnter += gcnew DragEventHandler( this, &ListViewInsertionMarkExample::myListView_DragEnter );
-         myListView->DragOver += gcnew DragEventHandler( this, &ListViewInsertionMarkExample::myListView_DragOver );
-         myListView->DragLeave += gcnew EventHandler( this, &ListViewInsertionMarkExample::myListView_DragLeave );
-         myListView->DragDrop += gcnew DragEventHandler( this, &ListViewInsertionMarkExample::myListView_DragDrop );
+         ListViewItem^ listItem = gcnew ListViewItem( foodList[ count ] );
+         listItem->SubItems->Add( foodPrice[ count ] );
+         ListView1->Items->Add( listItem );
+
       }
-
-      // Initialize the form.
-      this->Text = "ListView Insertion Mark Example";
-      this->Controls->Add( myListView );
+      this->Controls->Add( ListView1 );
    }
-
-private:
-
-   // Starts the drag-and-drop operation when an item is dragged.
-   void myListView_ItemDrag( Object^ /*sender*/, ItemDragEventArgs^ e )
-   {
-      myListView->DoDragDrop( e->Item, DragDropEffects::Move );
-   }
-
-   // Sets the target drop effect.
-   void myListView_DragEnter( Object^ /*sender*/, DragEventArgs^ e )
-   {
-      e->Effect = e->AllowedEffect;
-   }
-
-   // Moves the insertion mark as the item is dragged.
-   void myListView_DragOver( Object^ /*sender*/, DragEventArgs^ e )
-   {
-      // Retrieve the client coordinates of the mouse pointer.
-      Point targetPoint = myListView->PointToClient( Point(e->X,e->Y) );
-
-      // Retrieve the index of the item closest to the mouse pointer.
-      int targetIndex = myListView->InsertionMark->NearestIndex( targetPoint );
-
-      // Confirm that the mouse pointer is not over the dragged item.
-      if ( targetIndex > -1 )
-      {
-         // Determine whether the mouse pointer is to the left or
-         // the right of the midpoint of the closest item and set
-         // the InsertionMark.AppearsAfterItem property accordingly.
-         Rectangle itemBounds = myListView->GetItemRect( targetIndex );
-         if ( targetPoint.X > itemBounds.Left + (itemBounds.Width / 2) )
-         {
-            myListView->InsertionMark->AppearsAfterItem = true;
-         }
-         else
-         {
-            myListView->InsertionMark->AppearsAfterItem = false;
-         }
-      }
-
-      // Set the location of the insertion mark. If the mouse is
-      // over the dragged item, the targetIndex value is -1 and
-      // the insertion mark disappears.
-      myListView->InsertionMark->Index = targetIndex;
-   }
-
-   // Removes the insertion mark when the mouse leaves the control.
-   void myListView_DragLeave( Object^ /*sender*/, EventArgs^ /*e*/ )
-   {
-      myListView->InsertionMark->Index = -1;
-   }
-
-   // Moves the item to the location of the insertion mark.
-   void myListView_DragDrop( Object^ /*sender*/, DragEventArgs^ e )
-   {
-      // Retrieve the index of the insertion mark;
-      int targetIndex = myListView->InsertionMark->Index;
-
-      // If the insertion mark is not visible, exit the method.
-      if ( targetIndex == -1 )
-      {
-         return;
-      }
-
-      // If the insertion mark is to the right of the item with
-      // the corresponding index, increment the target index.
-      if ( myListView->InsertionMark->AppearsAfterItem )
-      {
-         targetIndex++;
-      }
-
-      // Retrieve the dragged item.
-      ListViewItem^ draggedItem = dynamic_cast<ListViewItem^>(e->Data->GetData( ListViewItem::typeid ));
-
-      // Insert a copy of the dragged item at the target index.
-      // A copy must be inserted before the original item is removed
-      // to preserve item index values.
-      myListView->Items->Insert( targetIndex, dynamic_cast<ListViewItem^>(draggedItem->Clone()) );
-
-      // Remove the original copy of the dragged item.
-      myListView->Items->Remove( draggedItem );
-
-   }
-
-   // Sorts ListViewItem objects by index.
-   ref class ListViewIndexComparer: public System::Collections::IComparer
-   {
-   public:
-      virtual int Compare( Object^ x, Object^ y )
-      {
-         return (dynamic_cast<ListViewItem^>(x))->Index - (dynamic_cast<ListViewItem^>(y))->Index;
-      }
-   };
-};
-
-[STAThread]
-int main()
-{
-   Application::EnableVisualStyles();
-   Application::Run( gcnew ListViewInsertionMarkExample );
-}

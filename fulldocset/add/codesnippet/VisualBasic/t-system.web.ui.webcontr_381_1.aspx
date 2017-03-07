@@ -3,76 +3,179 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script runat="server">
+
+  Sub HorizontalPadding_Changed(ByVal sender As Object, ByVal e As EventArgs)
+
+    ' Programmatically set the HorizontalPadding property based on the 
+    ' user's selection.
+    ItemsTreeView.ParentNodeStyle.HorizontalPadding = Convert.ToInt32(HorizontalPaddingList.SelectedItem.Text)
+
+  End Sub
+
+  Sub VerticalPadding_Changed(ByVal sender As Object, ByVal e As EventArgs)
+
+    ' Programmatically set the VerticalPadding property based on the 
+    ' user's selection.
+    ItemsTreeView.ParentNodeStyle.VerticalPadding = Convert.ToInt32(VerticalPaddingList.SelectedItem.Text)
+
+  End Sub
+
+  Sub NodeSpacing_Changed(ByVal sender As Object, ByVal e As EventArgs)
+
+    ' Programmatically set the NodeSpacing property based on the 
+    ' user's selection.
+    ItemsTreeView.ParentNodeStyle.NodeSpacing = Convert.ToInt32(NodeSpacingList.SelectedItem.Text)
+
+  End Sub
+
+  Sub ChildNodePadding_Changed(ByVal sender As Object, ByVal e As EventArgs)
+
+    ' Programmatically set the ChildNodesPadding property based on the 
+    ' user's selection.
+    ItemsTreeView.ParentNodeStyle.ChildNodesPadding = Convert.ToInt32(ChildNodesPaddingList.SelectedItem.Text)
+
+  End Sub
+
+</script>
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
-
-  <!-- For the hover styles of the Menu control to  -->
-  <!-- work correctly, you must include this head   -->
-  <!-- element.                                     -->
   <head runat="server">
-    <title>Menu Declarative Example</title>
+    <title>TreeNodeStyle Example</title>
 </head>
-
-  <body>
+<body>  
     <form id="form1" runat="server">
     
-      <h3>Menu Declarative Example</h3>
-    
-      <!-- Use declarative syntax to create the   -->
-      <!-- menu structure. Submenu items are      -->
-      <!-- created by nesting them in parent menu -->
-      <!-- items.                                 -->
-      <asp:menu id="NavigationMenu"
-        disappearafter="2000"
-        staticdisplaylevels="2"
-        staticsubmenuindent="10" 
-        orientation="Vertical"
-        font-names="Arial" 
-        target="_blank"  
+      <h3>TreeNodeStyle Example</h3>
+      
+      <!-- Set the styles for the leaf nodes declaratively. -->
+      <asp:TreeView id="ItemsTreeView"
+        Font-Names= "Arial"
+        ForeColor="Blue"
+        ParentNodeStyle-ForeColor="Green"
+        ParentNodeStyle-HorizontalPadding="5" 
+        ParentNodeStyle-VerticalPadding="5"  
+        ParentNodeStyle-NodeSpacing="5"
+        ParentNodeStyle-ChildNodesPadding="5"
+        ExpandDepth="4"  
         runat="server">
+         
+        <Nodes>
         
-        <staticmenuitemstyle backcolor="LightSteelBlue"
-          forecolor="Black"/>
-        <statichoverstyle backcolor="LightSkyBlue"/>
-        <dynamicmenuitemstyle backcolor="Black"
-          forecolor="Silver"/>
-        <dynamichoverstyle backcolor="LightSkyBlue"
-          forecolor="Black"/>
+          <asp:TreeNode Text="Table of Contents"
+            SelectAction="None">
+             
+            <asp:TreeNode Text="Chapter One">
+            
+              <asp:TreeNode Text="Section 1.0">
+              
+                <asp:TreeNode Text="Topic 1.0.1"/>
+                <asp:TreeNode Text="Topic 1.0.2"/>
+                <asp:TreeNode Text="Topic 1.0.3"/>
+              
+              </asp:TreeNode>
+              
+              <asp:TreeNode Text="Section 1.1">
+              
+                <asp:TreeNode Text="Topic 1.1.1"/>
+                <asp:TreeNode Text="Topic 1.1.2"/>
+                <asp:TreeNode Text="Topic 1.1.3"/>
+                <asp:TreeNode Text="Topic 1.1.4"/>
+              
+              </asp:TreeNode>
+            
+            </asp:TreeNode>
+            
+          </asp:TreeNode>
+        
+        </Nodes>
+        
+      </asp:TreeView>
       
-        <items>
-          <asp:menuitem navigateurl="Home.aspx" 
-            text="Home"
-            tooltip="Home">
-            <asp:menuitem navigateurl="Music.aspx"
-              text="Music"
-              tooltip="Music">
-              <asp:menuitem navigateurl="Classical.aspx" 
-                text="Classical"
-                tooltip="Classical"/>
-              <asp:menuitem navigateurl="Rock.aspx"
-                text="Rock"
-                tooltip="Rock"/>
-              <asp:menuitem navigateurl="Jazz.aspx"
-                text="Jazz"
-                tooltip="Jazz"/>
-            </asp:menuitem>
-            <asp:menuitem navigateurl="Movies.aspx"
-              text="Movies"
-              tooltip="Movies">
-              <asp:menuitem navigateurl="Action.aspx"
-                text="Action"
-                tooltip="Action"/>
-              <asp:menuitem navigateurl="Drama.aspx"
-                text="Drama"
-                tooltip="Drama"/>
-              <asp:menuitem navigateurl="Musical.aspx"
-                text="Musical"
-                tooltip="Musical"/>
-            </asp:menuitem>
-          </asp:menuitem>
-        </items>
+      <hr />
       
-      </asp:menu>
-
+      <h5>Select the style settings for the parent nodes.</h5>
+      
+      <table cellpadding="5">
+      
+        <tr align="right">
+        
+          <td>
+          
+            Horizontal Padding:
+          
+            <asp:DropDownList id="HorizontalPaddingList"
+              AutoPostBack="true"
+              OnSelectedIndexChanged="HorizontalPadding_Changed" 
+              runat="server">
+              
+              <asp:ListItem>0</asp:ListItem>
+              <asp:ListItem Selected="true">5</asp:ListItem>
+              <asp:ListItem>10</asp:ListItem>
+              
+            </asp:DropDownList> 
+          
+          </td>
+          
+          <td>
+          
+            Vertical Padding:
+          
+            <asp:DropDownList id="VerticalPaddingList"
+              AutoPostBack="true"
+              OnSelectedIndexChanged="VerticalPadding_Changed" 
+              runat="server">
+              
+              <asp:ListItem>0</asp:ListItem>
+              <asp:ListItem Selected="true">5</asp:ListItem>
+              <asp:ListItem>10</asp:ListItem>
+              
+            </asp:DropDownList> 
+          
+          </td>
+          
+        </tr>
+        
+        <tr align="right">
+        
+          <td>
+          
+            Node Spacing:
+          
+            <asp:DropDownList id="NodeSpacingList"
+              AutoPostBack="true"
+              OnSelectedIndexChanged="NodeSpacing_Changed"   
+              runat="server">
+              
+              <asp:ListItem>0</asp:ListItem>
+              <asp:ListItem Selected="true">5</asp:ListItem>
+              <asp:ListItem>10</asp:ListItem>
+              
+            </asp:DropDownList> 
+          
+          </td>
+          
+          <td>
+          
+            Child Nodes Padding:
+          
+            <asp:DropDownList id="ChildNodesPaddingList"
+              AutoPostBack="true"
+              OnSelectedIndexChanged="ChildNodePadding_Changed"  
+              runat="server">
+              
+              <asp:ListItem>0</asp:ListItem>
+              <asp:ListItem Selected="true">5</asp:ListItem>
+              <asp:ListItem>10</asp:ListItem>
+              
+            </asp:DropDownList> 
+          
+          </td>
+        
+        </tr>
+      
+      </table>
+       
     </form>
   </body>
 </html>

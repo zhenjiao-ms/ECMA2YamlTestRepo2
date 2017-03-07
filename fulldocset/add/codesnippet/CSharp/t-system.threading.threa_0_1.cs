@@ -1,65 +1,36 @@
 using System;
 using System.Threading;
-using System.Windows.Forms;
+using System.Threading.Tasks;
 
-// Create a form with a button that, when clicked, throws an exception.
- public class ErrorForm : System.Windows.Forms.Form
- {
-    internal Button button1;
+class ThreadLocalDemo
+{
+    
+        // Demonstrates:
+        //      ThreadLocal(T) constructor
+        //      ThreadLocal(T).Value
+        //      One usage of ThreadLocal(T)
+        static void Main()
+        {
+            // Thread-Local variable that yields a name for a thread
+            ThreadLocal<string> ThreadName = new ThreadLocal<string>(() =>
+            {
+                return "Thread" + Thread.CurrentThread.ManagedThreadId;
+            });
 
-    public ErrorForm() : base()
-    {
-       // Add the button to the form.
-       this.button1 = new System.Windows.Forms.Button();
-       this.SuspendLayout();
-       this.button1.Location = new System.Drawing.Point(100, 43);
-       this.button1.Size = new System.Drawing.Size(75, 23);
-       this.button1.Text = "Click!";
-       this.Controls.Add(this.button1);
-       this.button1.Click += new EventHandler(this.button1_Click);
+            // Action that prints out ThreadName for the current thread
+            Action action = () =>
+            {
+                // If ThreadName.IsValueCreated is true, it means that we are not the
+                // first action to run on this thread.
+                bool repeat = ThreadName.IsValueCreated;
 
-       this.Text = "ThreadException";
-       this.ResumeLayout(false);
-    }
+                Console.WriteLine("ThreadName = {0} {1}", ThreadName.Value, repeat ? "(repeat)" : "");
+            };
 
-    // Throw an exception when the button is clicked.
-    private void button1_Click(object sender, System.EventArgs e)
-    {
-       throw new ArgumentException("The parameter was invalid");
-    }
- 
-    public static void Main()
-    {
-       // Add the event handler.
-       Application.ThreadException += new ThreadExceptionEventHandler(CustomExceptionHandler.OnThreadException);
+            // Launch eight of them.  On 4 cores or less, you should see some repeat ThreadNames
+            Parallel.Invoke(action, action, action, action, action, action, action, action);
 
-       // Start the example.
-       Application.Run(new ErrorForm());
-    }
- }
- 
- // Create a class to handle the exception event.
- internal class CustomExceptionHandler
- {
-     // Handle the exception event
-    public static void OnThreadException(object sender, ThreadExceptionEventArgs t)
-    {
-       DialogResult result = ShowThreadExceptionDialog(t.Exception);
-
-       // Exit the program when the user clicks Abort.
-       if (result == DialogResult.Abort) 
-          Application.Exit();
-    }
- 
-    // Create and display the error message.
-    private static DialogResult ShowThreadExceptionDialog(Exception e)
-    {
-       string errorMsg = "An error occurred.  Please contact the adminstrator " +
-            "with the following information:\n\n";
-       errorMsg += String.Format("Exception Type: {0}\n\n", e.GetType().Name);
-       errorMsg += "\n\nStack Trace:\n" + e.StackTrace;
-       return MessageBox.Show(errorMsg, "Application Error", 
-            MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Stop);
-    }
- }
- 
+            // Dispose when you are done
+            ThreadName.Dispose();
+        }
+}

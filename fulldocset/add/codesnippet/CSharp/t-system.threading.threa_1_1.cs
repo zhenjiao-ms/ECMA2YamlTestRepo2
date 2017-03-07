@@ -1,62 +1,65 @@
 using System;
-using System.Security.Permissions;
 using System.Threading;
+using System.Windows.Forms;
 
-class ThreadInterrupt
-{
-    static void Main()
+// Create a form with a button that, when clicked, throws an exception.
+ public class ErrorForm : System.Windows.Forms.Form
+ {
+    internal Button button1;
+
+    public ErrorForm() : base()
     {
-        StayAwake stayAwake = new StayAwake();
-        Thread newThread = 
-            new Thread(new ThreadStart(stayAwake.ThreadMethod));
-        newThread.Start();
+       // Add the button to the form.
+       this.button1 = new System.Windows.Forms.Button();
+       this.SuspendLayout();
+       this.button1.Location = new System.Drawing.Point(100, 43);
+       this.button1.Size = new System.Drawing.Size(75, 23);
+       this.button1.Text = "Click!";
+       this.Controls.Add(this.button1);
+       this.button1.Click += new EventHandler(this.button1_Click);
 
-        // The following line causes an exception to be thrown 
-        // in ThreadMethod if newThread is currently blocked
-        // or becomes blocked in the future.
-        newThread.Interrupt();
-        Console.WriteLine("Main thread calls Interrupt on newThread.");
-
-        // Tell newThread to go to sleep.
-        stayAwake.SleepSwitch = true;
-
-        // Wait for newThread to end.
-        newThread.Join();
-    }
-}
-
-class StayAwake
-{
-    bool sleepSwitch = false;
-
-    public bool SleepSwitch
-    {
-        set{ sleepSwitch = value; }
+       this.Text = "ThreadException";
+       this.ResumeLayout(false);
     }
 
-    public StayAwake(){}
-
-    public void ThreadMethod()
+    // Throw an exception when the button is clicked.
+    private void button1_Click(object sender, System.EventArgs e)
     {
-        Console.WriteLine("newThread is executing ThreadMethod.");
-        while(!sleepSwitch)
-        {
-            // Use SpinWait instead of Sleep to demonstrate the 
-            // effect of calling Interrupt on a running thread.
-            Thread.SpinWait(10000000);
-        }
-        try
-        {
-            Console.WriteLine("newThread going to sleep.");
-
-            // When newThread goes to sleep, it is immediately 
-            // woken up by a ThreadInterruptedException.
-            Thread.Sleep(Timeout.Infinite);
-        }
-        catch(ThreadInterruptedException e)
-        {
-            Console.WriteLine("newThread cannot go to sleep - " +
-                "interrupted by main thread.");
-        }
+       throw new ArgumentException("The parameter was invalid");
     }
-}
+ 
+    public static void Main()
+    {
+       // Add the event handler.
+       Application.ThreadException += new ThreadExceptionEventHandler(CustomExceptionHandler.OnThreadException);
+
+       // Start the example.
+       Application.Run(new ErrorForm());
+    }
+ }
+ 
+ // Create a class to handle the exception event.
+ internal class CustomExceptionHandler
+ {
+     // Handle the exception event
+    public static void OnThreadException(object sender, ThreadExceptionEventArgs t)
+    {
+       DialogResult result = ShowThreadExceptionDialog(t.Exception);
+
+       // Exit the program when the user clicks Abort.
+       if (result == DialogResult.Abort) 
+          Application.Exit();
+    }
+ 
+    // Create and display the error message.
+    private static DialogResult ShowThreadExceptionDialog(Exception e)
+    {
+       string errorMsg = "An error occurred.  Please contact the adminstrator " +
+            "with the following information:\n\n";
+       errorMsg += String.Format("Exception Type: {0}\n\n", e.GetType().Name);
+       errorMsg += "\n\nStack Trace:\n" + e.StackTrace;
+       return MessageBox.Show(errorMsg, "Application Error", 
+            MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Stop);
+    }
+ }
+ 

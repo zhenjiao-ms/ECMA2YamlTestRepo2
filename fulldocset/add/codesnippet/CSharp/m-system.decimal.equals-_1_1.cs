@@ -1,74 +1,87 @@
-// Example of the decimal.Compare and static decimal.Equals methods.
 using System;
 
-class DecCompareEqualsDemo
+public class Example
 {
-    const string dataFmt = "{0,-45}{1}";
+   static decimal value = 112m;
+   
+   public static void Main()
+   {
+      byte byte1= 112;
+      Console.WriteLine("value = byte1: {0,17}", value.Equals(byte1));
+      TestObjectForEquality(byte1);
 
-    // Compare decimal parameters, and display them with the results.
-    public static void CompareDecimals( decimal Left, decimal Right, 
-        string RightText )
-    {
-        Console.WriteLine( );
-        Console.WriteLine( dataFmt, "Right: "+RightText, Right );
-        Console.WriteLine( dataFmt, "decimal.Equals( Left, Right )", 
-            Decimal.Equals( Left, Right ) );
-        Console.WriteLine( dataFmt, "decimal.Compare( Left, Right )", 
-            Decimal.Compare( Left, Right ) );
-    }
+      short short1 = 112;
+      Console.WriteLine("value = short1: {0,17}", value.Equals(short1));
+      TestObjectForEquality(short1);
 
-    public static void Main( )
-    {
-        Console.WriteLine( "This example of the " +
-            "decimal.Equals( decimal, decimal ) and \n" +
-            "decimal.Compare( decimal, decimal ) methods " +
-            "generates the \nfollowing output. It creates several " +
-            "different decimal \nvalues and compares them with " +
-            "the following reference value.\n" );
+      int int1 = 112;
+      Console.WriteLine("value = int1: {0,19}", value.Equals(int1));
+      TestObjectForEquality(int1);
 
-        // Create a reference decimal value.
-        decimal Left = new decimal( 123.456 );
+      long long1 = 112;
+      Console.WriteLine("value = long1: {0,18}", value.Equals(long1));
+      TestObjectForEquality(long1);
+      
+      sbyte sbyte1 = 112;
+      Console.WriteLine("value = sbyte1: {0,17}", value.Equals(sbyte1));
+      TestObjectForEquality(sbyte1);
 
-        Console.WriteLine( dataFmt, "Left: decimal( 123.456 )", 
-            Left );
+      ushort ushort1 = 112;
+      Console.WriteLine("value = ushort1: {0,17}", value.Equals(ushort1));
+      TestObjectForEquality(ushort1);
 
-        // Create decimal values to compare with the reference.
-        CompareDecimals( Left, new decimal( 1.2345600E+2 ), 
-            "decimal( 1.2345600E+2 )" );
-        CompareDecimals( Left, 123.4561M, "123.4561M" );
-        CompareDecimals( Left, 123.4559M, "123.4559M" );
-        CompareDecimals( Left, 123.456000M, "123.456000M" );
-        CompareDecimals( Left, 
-            new decimal( 123456000, 0, 0, false, 6 ), 
-            "decimal( 123456000, 0, 0, false, 6 )" );
-    }
+      uint uint1 = 112;
+      Console.WriteLine("value = uint1: {0,19}", value.Equals(uint1));
+      TestObjectForEquality(uint1);
+
+      ulong ulong1 = 112;
+      Console.WriteLine("value = ulong1: {0,18}", value.Equals(ulong1));
+      TestObjectForEquality(ulong1);
+
+      float sng1 = 112;
+      Console.WriteLine("value = sng1: {0,21}", value.Equals(sng1));
+      TestObjectForEquality(sng1);
+
+      double dbl1 = 112;
+      Console.WriteLine("value = dbl1: {0,21}", value.Equals(dbl1));
+      TestObjectForEquality(dbl1);
+   }
+
+   private static void TestObjectForEquality(Object obj)
+   {
+      Console.WriteLine("{0} ({1}) = {2} ({3}): {4}\n",
+                        value, value.GetType().Name,
+                        obj, obj.GetType().Name,
+                        value.Equals(obj));
+   }
 }
-
-/*
-This example of the decimal.Equals( decimal, decimal ) and
-decimal.Compare( decimal, decimal ) methods generates the
-following output. It creates several different decimal
-values and compares them with the following reference value.
-
-Left: decimal( 123.456 )                     123.456
-
-Right: decimal( 1.2345600E+2 )               123.456
-decimal.Equals( Left, Right )                True
-decimal.Compare( Left, Right )               0
-
-Right: 123.4561M                             123.4561
-decimal.Equals( Left, Right )                False
-decimal.Compare( Left, Right )               -1
-
-Right: 123.4559M                             123.4559
-decimal.Equals( Left, Right )                False
-decimal.Compare( Left, Right )               1
-
-Right: 123.456000M                           123.456000
-decimal.Equals( Left, Right )                True
-decimal.Compare( Left, Right )               0
-
-Right: decimal( 123456000, 0, 0, false, 6 )  123.456000
-decimal.Equals( Left, Right )                True
-decimal.Compare( Left, Right )               0
-*/ 
+// The example displays the following output:
+//       value = byte1:             True
+//       112 (Double) = 112 (Byte): False
+//
+//       value = short1:             True
+//       112 (Double) = 112 (Int16): False
+//
+//       value = int1:               True
+//       112 (Double) = 112 (Int32): False
+//
+//       value = long1:              True
+//       112 (Double) = 112 (Int64): False
+//
+//       value = sbyte1:             True
+//       112 (Double) = 112 (SByte): False
+//
+//       value = ushort1:             True
+//       112 (Double) = 112 (UInt16): False
+//
+//       value = uint1:               True
+//       112 (Double) = 112 (UInt32): False
+//
+//       value = ulong1:              True
+//       112 (Double) = 112 (UInt64): False
+//
+//       value = dec1:                 False
+//       112 (Double) = 112 (Decimal): False
+//
+//       value = sng1:                True
+//       112 (Double) = 112 (Single): False

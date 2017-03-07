@@ -1,11 +1,23 @@
-private void ToolStripRenderer1_RenderToolStripContentPanelBackground(Object sender, ToolStripContentPanelRenderEventArgs e) {
+		internal ToolStripButton boldButton;
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Handled", e.Handled );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ToolStripContentPanel", e.ToolStripContentPanel );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "RenderToolStripContentPanelBackground Event" );
-}
+		private void InitializeBoldButton()
+		{
+			boldButton = new ToolStripButton();
+			boldButton.Text = "B";
+			boldButton.CheckOnClick = true;
+			toolStrip1.Items.Add(boldButton);
+
+		}
+
+		private void boldButton_CheckedChanged(object sender, EventArgs e)
+		{
+			if (boldButton.Checked)
+			{
+				this.Font = new Font(this.Font, FontStyle.Bold);
+			}
+			else
+			{
+				this.Font = new Font(this.Font, FontStyle.Regular);
+			}
+
+		}

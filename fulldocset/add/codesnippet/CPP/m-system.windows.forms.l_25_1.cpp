@@ -1,51 +1,97 @@
-private:
-   void InitializeListView()
-   {
-      // Set up the inital values for the ListView and populate it.
-      this->ListView1 = gcnew ListView;
-      this->ListView1->Dock = DockStyle::Top;
-      this->ListView1->Location = System::Drawing::Point( 0, 0 );
-      this->ListView1->Size = System::Drawing::Size( 292, 130 );
-      this->ListView1->View = View::Details;
-      this->ListView1->FullRowSelect = true;
-      array<String^>^breakfast = {"Continental Breakfast","Pancakes and Sausage","Denver Omelet","Eggs & Bacon","Bagel & Cream Cheese"};
-      array<String^>^breakfastPrices = {"3.09","4.09","4.19","4.79","2.09"};
-      PopulateMenu( "Breakfast", breakfast, breakfastPrices );
-   }
+// The following code example demonstrates using the ListBox.Sort method
+// by inheriting from the ListBox class and overriding the Sort method.
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
 
-   void PopulateMenu( String^ meal, array<String^>^menuItems, array<String^>^menuPrices )
+// This class inherits from ListBox and implements a different 
+// sorting method. Sort will be called by setting the class's Sorted
+// property to True.
+public ref class SortByLengthListBox: public ListBox
+{
+public:
+   SortByLengthListBox()
+      : ListBox()
+   {}
+
+protected:
+
+   // Overrides the parent class Sort to perform a simple
+   // bubble sort on the length of the string contained in each item.
+   virtual void Sort() override
    {
-      ColumnHeader^ columnHeader1 = gcnew ColumnHeader;
-      columnHeader1->Text = String::Concat( meal, " Choices" );
-      columnHeader1->TextAlign = HorizontalAlignment::Left;
-      columnHeader1->Width = 146;
-      ColumnHeader^ columnHeader2 = gcnew ColumnHeader;
-      columnHeader2->Text = "Price";
-      columnHeader2->TextAlign = HorizontalAlignment::Center;
-      columnHeader2->Width = 142;
-      this->ListView1->Columns->Add( columnHeader1 );
-      this->ListView1->Columns->Add( columnHeader2 );
-      for ( int count = 0; count < menuItems->Length; count++ )
+      if ( Items->Count > 1 )
       {
-         ListViewItem^ listItem = gcnew ListViewItem( menuItems[ count ] );
-         listItem->SubItems->Add( menuPrices[ count ] );
-         ListView1->Items->Add( listItem );
-
+         bool swapped;
+         do
+         {
+            int counter = Items->Count - 1;
+            swapped = false;
+            while ( counter > 0 )
+            {
+               
+               // Compare the items' length. 
+               if ( Items[ counter ]->ToString()->Length < Items[ counter - 1 ]->ToString()->Length )
+               {
+                  
+                  // Swap the items.
+                  Object^ temp = Items[ counter ];
+                  Items[ counter ] = Items[ counter - 1 ];
+                  Items[ counter - 1 ] = temp;
+                  swapped = true;
+               }
+               
+               // Decrement the counter.
+               counter -= 1;
+            }
+         }
+         while ( (swapped == true) );
       }
-      
-      // Use the Selected property to select the first item on 
-      // the list.
-      ListView1->Focus();
-      ListView1->Items[ 0 ]->Selected = true;
+   }
+};
+
+public ref class Form1: public System::Windows::Forms::Form
+{
+internal:
+   System::Windows::Forms::Button^ Button1;
+   SortByLengthListBox^ sortingBox;
+
+public:
+   Form1()
+      : Form()
+   {
+      this->Button1 = gcnew System::Windows::Forms::Button;
+      this->sortingBox = gcnew SortByLengthListBox;
+      this->SuspendLayout();
+      this->Button1->Location = System::Drawing::Point( 64, 16 );
+      this->Button1->Name = "Button1";
+      this->Button1->Size = System::Drawing::Size( 176, 23 );
+      this->Button1->TabIndex = 0;
+      this->Button1->Text = "Click me for list sorted by length";
+      this->Button1->Click += gcnew System::EventHandler( this, &Form1::Button1_Click );
+      array<Object^>^temp0 = {"System","System.Windows.Forms","System.Xml","System.Net","System.Drawing","System.IO"};
+      this->sortingBox->Items->AddRange( temp0 );
+      this->sortingBox->Location = System::Drawing::Point( 72, 48 );
+      this->sortingBox->Size = System::Drawing::Size( 120, 95 );
+      this->sortingBox->TabIndex = 1;
+      this->ClientSize = System::Drawing::Size( 292, 266 );
+      this->Controls->Add( this->sortingBox );
+      this->Controls->Add( this->Button1 );
+      this->Name = "Form1";
+      this->Text = "Sort Example";
+      this->ResumeLayout( false );
    }
 
+private:
    void Button1_Click( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
    {
-      // Create new values for the ListView, clear the list, 
-      // and repopulate it.
-      array<String^>^lunch = {"Hamburger","Grilled Cheese","Soup & Salad","Club Sandwich","Hotdog"};
-      array<String^>^lunchPrices = {"4.09","5.09","5.19","4.79","2.09"};
-      ListView1->Clear();
-      PopulateMenu( "Lunch", lunch, lunchPrices );
-      Button1->Enabled = false;
+      // Set the Sorted property to True to raise the overridden Sort
+      // method.
+      sortingBox->Sorted = true;
    }
+
+};
+
+int main()
+{
+   Application::Run( gcnew Form1 );
+}

@@ -1,6 +1,9 @@
- Private Sub RemoveThirdBinding()
-     If textBox1.DataBindings.Count < 3 Then
-         Return
-     End If
-     textBox1.DataBindings.RemoveAt(2)
- End Sub
+   Private Sub button4_Click(sender As Object, e As EventArgs)
+      Try
+         Dim myBindingManager2 As BindingManagerBase = BindingContext(myDataSet, "Customers")
+         myBindingManager2.ResumeBinding()
+      Catch ex As Exception
+         MessageBox.Show(ex.Source.ToString())
+         MessageBox.Show(ex.Message.ToString())
+      End Try
+   End Sub 'button4_Click

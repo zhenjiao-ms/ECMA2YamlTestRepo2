@@ -10,8 +10,21 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Defines the standard operation codes that the event source attaches to events.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example shows how to use the EventOpcode class to specify event operation codes. This code example is part of a larger example provided for the <xref:System.Diagnostics.Tracing.EventSource> class.  
+  
+ [!code-vb[ETWTrace#7](~/add/codesnippet/visualbasic/t-system.diagnostics.tra_5_1.vb)]
+ [!code-cs[ETWTrace#7](~/add/codesnippet/csharp/t-system.diagnostics.tra_5_1.cs)]  
+  
+ [!code-vb[ETWTrace#8](~/add/codesnippet/visualbasic/t-system.diagnostics.tra_5_2.vb)]
+ [!code-cs[ETWTrace#8](~/add/codesnippet/csharp/t-system.diagnostics.tra_5_2.cs)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="DataCollectionStart">
@@ -27,7 +40,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventOpcode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>A trace collection start event.</summary>
       </Docs>
     </Member>
     <Member MemberName="DataCollectionStop">
@@ -43,7 +56,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventOpcode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>A trace collection stop event.</summary>
       </Docs>
     </Member>
     <Member MemberName="Extension">
@@ -59,7 +72,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventOpcode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>An extension event.</summary>
       </Docs>
     </Member>
     <Member MemberName="Info">
@@ -75,7 +88,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventOpcode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>An informational event.</summary>
       </Docs>
     </Member>
     <Member MemberName="Receive">
@@ -91,7 +104,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventOpcode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>An event that is published when one activity in an application receives data.</summary>
       </Docs>
     </Member>
     <Member MemberName="Reply">
@@ -107,7 +120,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventOpcode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>An event that is published after an activity in an application replies to an event.</summary>
       </Docs>
     </Member>
     <Member MemberName="Resume">
@@ -123,7 +136,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventOpcode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>An event that is published after an activity in an application resumes from a suspended state. The event should follow an event that has the Suspend operation code.</summary>
       </Docs>
     </Member>
     <Member MemberName="Send">
@@ -139,7 +152,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventOpcode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>An event that is published when one activity in an application transfers data or system resources to another activity.</summary>
       </Docs>
     </Member>
     <Member MemberName="Start">
@@ -155,7 +168,18 @@
         <ReturnType>System.Diagnostics.Tracing.EventOpcode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>An event that is published when an application starts a new transaction or activity. This operation code can be embedded within another transaction or activity when multiple events that have the Start code follow each other without an intervening event that has a Stop code.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example shows how to use the Start field to specify a start operation. This code example is part of a larger example provided for the <xref:System.Diagnostics.Tracing.EventSource> class.  
+  
+ [!code-vb[ETWTrace#7](~/add/codesnippet/visualbasic/t-system.diagnostics.tra_5_1.vb)]
+ [!code-cs[ETWTrace#7](~/add/codesnippet/csharp/t-system.diagnostics.tra_5_1.cs)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Stop">
@@ -171,7 +195,18 @@
         <ReturnType>System.Diagnostics.Tracing.EventOpcode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>An event that is published when an activity or a transaction in an application ends. The event corresponds to the last unpaired event that has a Start operation code.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example shows how to use the Stop field to specify a stop operation. This code example is part of a larger example provided for the <xref:System.Diagnostics.Tracing.EventSource> class.  
+  
+ [!code-vb[ETWTrace#8](~/add/codesnippet/visualbasic/t-system.diagnostics.tra_5_2.vb)]
+ [!code-cs[ETWTrace#8](~/add/codesnippet/csharp/t-system.diagnostics.tra_5_2.cs)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Suspend">
@@ -187,7 +222,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventOpcode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>An event that is published when an activity in an application is suspended.</summary>
       </Docs>
     </Member>
   </Members>

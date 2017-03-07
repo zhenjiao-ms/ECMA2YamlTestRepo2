@@ -1,56 +1,44 @@
-Imports System
-Imports System.Collections.Generic
-Imports System.ComponentModel
-Imports System.Data
-Imports System.Drawing
-Imports System.Windows.Forms
 
+    ' Declare the TreeView control.
+    Friend WithEvents TreeView1 As System.Windows.Forms.TreeView
 
+    ' Initialize the TreeView to blend with the form, giving it the 
+    ' same color as the form and no border.
+    Private Sub InitializeTreeView()
 
-Public Class Form1
-   Inherits Form
-   Private toolStripButton1 As ToolStripButton
-   Private toolStrip1 As ToolStrip
-   
-   
-   Public Sub New()
-      InitializeComponent()
-   End Sub 'New
-   
-   <STAThread()>  _
-   Shared Sub Main()
-      Application.EnableVisualStyles()
-      Application.Run(New Form1())
-   End Sub 'Main
-   
-   
-   Private Sub InitializeComponent()
-      Me.toolStrip1 = New System.Windows.Forms.ToolStrip()
-      Me.toolStripButton1 = New System.Windows.Forms.ToolStripButton()
-      Me.toolStrip1.SuspendLayout()
-      Me.SuspendLayout()
-      ' 
-      ' toolStrip1
-      ' 
-      Me.toolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolStripButton1})
-      Me.toolStrip1.Location = New System.Drawing.Point(0, 0)
-      Me.toolStrip1.Name = "toolStrip1"
-      Me.toolStrip1.TabIndex = 0
-      Me.toolStrip1.Text = "toolStrip1"
-      ' 
-      ' toolStripButton1
-      Me.toolStripButton1.AutoToolTip = False
-      Me.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-      Me.toolStripButton1.Name = "toolStripButton1"
-      Me.toolStripButton1.Text = "Button1"
-      Me.toolStripButton1.ToolTipText = "ToolTip for Button1."
-      ' Form1
-      ' 
-      Me.ClientSize = New System.Drawing.Size(292, 273)
-      Me.Controls.Add(toolStrip1)
-      Me.Name = "Form1"
-      Me.toolStrip1.ResumeLayout(False)
-      Me.ResumeLayout(False)
-      Me.PerformLayout()
-   End Sub 'InitializeComponent 
-End Class 'Form1
+        ' Create a new TreeView control and set the location and size.
+        Me.TreeView1 = New System.Windows.Forms.TreeView
+        Me.TreeView1.Location = New System.Drawing.Point(72, 48)
+        Me.TreeView1.Size = New System.Drawing.Size(200, 200)
+
+        ' Set the BorderStyle property to none, the BackColor property to  
+        ' the form's backcolor, and the Scrollable property to false.  
+        ' This allows the TreeView to blend in form.
+        Me.TreeView1.BorderStyle = BorderStyle.None
+        Me.TreeView1.BackColor = Me.BackColor
+        Me.TreeView1.Scrollable = False
+
+        
+        ' Set the ShowRootLines and ShowLines properties to false to 
+        ' give the TreeView a list-like appearance.
+        Me.TreeView1.ShowRootLines = False
+        Me.TreeView1.ShowLines = False
+
+        ' Add the nodes.
+        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() _
+            {New System.Windows.Forms.TreeNode("Features", _
+            New System.Windows.Forms.TreeNode() _
+            {New System.Windows.Forms.TreeNode("Full Color"), _
+            New System.Windows.Forms.TreeNode("Project Wizards"), _
+            New System.Windows.Forms.TreeNode("Visual C# and Visual Basic Support")}), _
+            New System.Windows.Forms.TreeNode("System Requirements", _
+            New System.Windows.Forms.TreeNode() _
+            {New System.Windows.Forms.TreeNode _
+            ("Pentium 133 MHz or faster processor "), _
+            New System.Windows.Forms.TreeNode("Windows 98 or later"), _
+            New System.Windows.Forms.TreeNode("100 MB Disk space")})})
+
+        ' Set the tab index and add the TreeView to the form.
+        Me.TreeView1.TabIndex = 0
+        Me.Controls.Add(Me.TreeView1)
+    End Sub

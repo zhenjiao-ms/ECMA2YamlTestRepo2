@@ -1,10 +1,9 @@
-    private void CustomizeCellsInThirdColumn()
-    {
-        int thirdColumn = 2;
-        DataGridViewColumn column =
-            dataGridView.Columns[thirdColumn];
-        DataGridViewCell cell = new DataGridViewTextBoxCell();
-
-        cell.Style.BackColor = Color.Wheat;
-        column.CellTemplate = cell;
-    }
+ private void GetMyFormatInfomation() {
+    // Creates a DataFormats.Format for the Unicode data format.
+    DataFormats.Format myFormat = DataFormats.GetFormat(DataFormats.UnicodeText);
+ 
+    // Displays the contents of myFormat.
+    textBox1.Text = "ID value: " + myFormat.Id + '\n' +
+       "Format name: " + myFormat.Name;
+ }
+ 

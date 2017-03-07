@@ -1,20 +1,39 @@
-    TreeView^ checkTreeView;
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
+public ref class Form1: public Form
+{
 private:
-    void InitializeCheckTreeView()
-    {
-        checkTreeView = gcnew TreeView();
+   Rectangle myTabRect;
 
-        // Show check boxes for the TreeView. This
-        // will cause the StateImageList to be used.
-        checkTreeView->CheckBoxes = true;
+public:
+   Form1()
+   {
+      TabControl^ tabControl1 = gcnew TabControl;
+      TabPage^ tabPage1 = gcnew TabPage;
+      tabControl1->DrawMode = TabDrawMode::OwnerDrawFixed;
+      tabControl1->Appearance = TabAppearance::Buttons;
+      tabControl1->Location = Point(25,25);
+      tabControl1->Controls->Add( tabPage1 );
+      Controls->Add( tabControl1 );
+      
+      // Gets a Rectangle that represents the tab page display area of tabControl1.
+      myTabRect = tabControl1->DisplayRectangle;
+      myTabRect.Inflate( 1, 1 );
+      tabControl1->DrawItem += gcnew DrawItemEventHandler( this, &Form1::DrawOnTabPage );
+   }
 
-        // Create the StateImageList and add two images.
-        checkTreeView->StateImageList = gcnew ImageList();
-        checkTreeView->StateImageList->Images->Add(SystemIcons::Question);
-        checkTreeView->StateImageList->Images->Add(SystemIcons::Exclamation);
 
-        // Add some nodes to the TreeView and the TreeView to the form.
-        checkTreeView->Nodes->Add("Node1");
-        checkTreeView->Nodes->Add("Node2");
-        this->Controls->Add(checkTreeView);
-    }
+private:
+   void DrawOnTabPage( Object^ /*sender*/, DrawItemEventArgs^ e )
+   {
+      Graphics^ g = e->Graphics;
+      Pen^ p = gcnew Pen( Color::Blue );
+      g->DrawRectangle( p, myTabRect );
+   }
+
+};
+
+int main()
+{
+   Application::Run( gcnew Form1 );
+}

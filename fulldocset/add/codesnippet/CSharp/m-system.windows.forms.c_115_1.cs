@@ -1,7 +1,4 @@
-public bool DoubleBufferingEnabled()
-{
-   // Get the value of the double-buffering style bits.
-   return this.GetStyle(ControlStyles.DoubleBuffer | 
-      ControlStyles.UserPaint | 
-      ControlStyles.AllPaintingInWmPaint);
-}
+        private void findButton_Click(object sender, System.EventArgs e) {
+            int index = comboBox1.FindString(textBox2.Text);
+            comboBox1.SelectedIndex = index;
+        }

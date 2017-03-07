@@ -1,8 +1,18 @@
-    Private Sub GetData1()
-        ' Creates a new data object using a string and the text format.
-        Dim myString As String = "My text string"
-        Dim myDataObject As New DataObject(DataFormats.Text, myString)
-
-        ' Displays the string in a text box.
-        textBox1.Text = myDataObject.GetData(DataFormats.Text).ToString()
-    End Sub 'GetData1
+    Private Sub AddStripToCollection() 
+        ' Add the image strip.
+        Dim bitmaps As New Bitmap(GetType(PrintPreviewDialog), "PrintPreviewStrip.bmp")
+        imageList1.Images.AddStrip(bitmaps)
+        
+        ' Iterate through the images and display them on the form.
+        Dim i As Integer
+        For i = 0 To imageList1.Images.Count
+            
+            imageList1.Draw(Me.CreateGraphics(), New Point(10, 10), i)
+            Application.DoEvents()
+            System.Threading.Thread.Sleep(1000)
+        Next i
+     
+    End Sub
+    
+    
+    

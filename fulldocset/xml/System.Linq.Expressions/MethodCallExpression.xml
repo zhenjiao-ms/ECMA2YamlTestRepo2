@@ -21,8 +21,25 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a call to either static or an instance method.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use the <xref:System.Linq.Expressions.Expression.Call%2A>, <xref:System.Linq.Expressions.Expression.ArrayIndex%2A>, or <xref:System.Linq.Expressions.Expression.ArrayIndex%2A> factory method to create a MethodCallExpression.  
+  
+ The value of the <xref:System.Linq.Expressions.Expression.NodeType%2A> property of a MethodCallExpression object is <xref:System.Linq.Expressions.ExpressionType>.  
+  
+   
+  
+## Examples  
+ The following example creates a MethodCallExpression object that represents indexing into a two-dimensional array.  
+  
+ [!code-cs[System.Linq.Expressions.Expression#3](~/add/codesnippet/csharp/t-system.linq.expression_14_1.cs)]
+ [!code-vb[System.Linq.Expressions.Expression#3](~/add/codesnippet/visualbasic/t-system.linq.expression_14_1.vb)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Accept">
@@ -41,10 +58,17 @@
         <Parameter Name="visitor" Type="System.Linq.Expressions.ExpressionVisitor" />
       </Parameters>
       <Docs>
-        <param name="visitor">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="visitor">The visitor to visit this node with.</param>
+        <summary>Dispatches to the specific visit method for this node type. For example, <see cref="T:System.Linq.Expressions.MethodCallExpression" /> calls the <see cref="System.Linq.Expressions.ExpressionVisitor.VisitMethodCall%2A" />.</summary>
+        <returns>The result of visiting this node.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This default implementation for <xref:System.Linq.Expressions.ExpressionType> nodes calls <xref:System.Linq.Expressions.ExpressionVisitor.VisitExtension%2A>. Override this method to call into a more specific method on a derived visitor class of the <xref:System.Linq.Expressions.ExpressionVisitor> class. However, it should still support unknown visitors by calling <xref:System.Linq.Expressions.ExpressionVisitor.VisitExtension%2A>.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Arguments">
@@ -61,8 +85,8 @@
         <ReturnType>System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Linq.Expressions.Expression&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a collection of expressions that represent arguments of the called method.</summary>
+        <value>A <see cref="System.Collections.ObjectModel.ReadOnlyCollection%601" /> of <see cref="T:System.Linq.Expressions.Expression" /> objects which represent the arguments to the called method.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -80,8 +104,8 @@
         <ReturnType>System.Reflection.MethodInfo</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Reflection.MethodInfo" /> for the method to be called.</summary>
+        <value>The <see cref="T:System.Reflection.MethodInfo" /> that represents the called method.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -98,8 +122,8 @@
         <ReturnType>System.Linq.Expressions.ExpressionType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Returns the node type of this <see cref="T:System.Linq.Expressions.Expression" />.</summary>
+        <value>The <see cref="T:System.Linq.Expressions.ExpressionType" /> that represents this expression.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -117,9 +141,16 @@
         <ReturnType>System.Linq.Expressions.Expression</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the <see cref="T:System.Linq.Expressions.Expression" /> that represents the instance for instance method calls or null for static method calls.</summary>
+        <value>An <see cref="T:System.Linq.Expressions.Expression" /> that represents the receiving object of the method.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If a <xref:System.Linq.Expressions.MethodCallExpression> object's <xref:System.Linq.Expressions.MethodCallExpression.Method%2A> property represents a `static` (`Shared` in Visual Basic) method, the Object property is `null`.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="System.Linq.Expressions.IArgumentProvider.ArgumentCount">
@@ -135,8 +166,8 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Returns the number of arguments to the expression tree node.  You should not use this member.  It is only public due to assembly refactoring, and it is used internally for performance optimizations.</summary>
+        <value>The number of arguments to the expression tree node as  <see cref="T:System.Int32" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -156,9 +187,9 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="index">The index of the argument.</param>
+        <summary>Returns the argument at index, throwing if index is out of bounds.  You should not use this member.  It is only public due to assembly refactoring, and it is used internally for performance optimizations.</summary>
+        <returns>Returns <see cref="T:System.Linq.Expressions.Expression" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -175,8 +206,8 @@
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the static type of the expression that this <see cref="T:System.Linq.Expressions.Expression" /> represents.</summary>
+        <value>The Type that represents the static type of the expression.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -197,10 +228,10 @@
         <Parameter Name="arguments" Type="System.Collections.Generic.IEnumerable&lt;System.Linq.Expressions.Expression&gt;" />
       </Parameters>
       <Docs>
-        <param name="object">To be added.</param>
-        <param name="arguments">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="object">The <see cref="System.Linq.Expressions.MethodCallExpression.Object%2A" /> property of the result.</param>
+        <param name="arguments">The <see cref="System.Linq.Expressions.MethodCallExpression.Arguments%2A" /> property of the result.</param>
+        <summary>Creates a new expression that is like this one, but using the supplied children. If all of the children are the same, it will return this expression.</summary>
+        <returns>This expression if no children are changed or an expression with the updated children.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

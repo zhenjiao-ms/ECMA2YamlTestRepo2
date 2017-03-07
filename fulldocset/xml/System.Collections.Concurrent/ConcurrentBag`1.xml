@@ -35,9 +35,29 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <typeparam name="T">To be added.</typeparam>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <typeparam name="T">The type of the elements to be stored in the collection.</typeparam>
+    <summary>Represents a thread-safe, unordered collection of objects.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Bags are useful for storing objects when ordering doesn't matter, and unlike sets, bags support duplicates. ConcurrentBag(T) is a thread-safe bag implementation, optimized for scenarios where the same thread will be both producing and consuming data stored in the bag.  
+  
+ ConcurrentBag(T) accepts `null` as a valid value for reference types.  
+  
+ For more information, see the entry [FAQ: Are all of the new concurrent collections lock-free?](http://blogs.msdn.com/b/pfxteam/archive/2010/01/26/9953725.aspx) in the Parallel Programming with .NET blog.  
+  
+   
+  
+## Examples  
+ The following example shows how to add and remove items from a ConcurrentBag(T):  
+  
+ [!code-vb[System.Collections.Concurrent.ConcurrentBag#1](~/add/codesnippet/visualbasic/t-system.collections.con_5_1.vb)]
+ [!code-cs[System.Collections.Concurrent.ConcurrentBag#1](~/add/codesnippet/csharp/t-system.collections.con_5_1.cs)]  
+  
+ ]]></format>
+    </remarks>
+    <threadsafe>All public and protected members of ConcurrentBag(T) are thread-safe and may be used concurrently from multiple threads. However, members accessed through one of the interfaces the ConcurrentBag(T) implements, including extension methods, are not guaranteed to be thread safe and may need to be synchronized by the caller.</threadsafe>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -51,7 +71,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="System.Collections.Concurrent.ConcurrentBag%601" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -68,9 +88,11 @@
         <Parameter Name="collection" Type="System.Collections.Generic.IEnumerable&lt;T&gt;" />
       </Parameters>
       <Docs>
-        <param name="collection">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="collection">The collection whose elements are copied to the new <see cref="System.Collections.Concurrent.ConcurrentBag%601" />.</param>
+        <summary>Initializes a new instance of the <see cref="System.Collections.Concurrent.ConcurrentBag%601" /> class that contains elements copied from the specified collection.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="collection" /> is a null reference (Nothing in Visual Basic).</exception>
       </Docs>
     </Member>
     <Member MemberName="Add">
@@ -89,8 +111,8 @@
         <Parameter Name="item" Type="T" />
       </Parameters>
       <Docs>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="item">The object to be added to the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />. The value can be a null reference (Nothing in Visual Basic) for reference types.</param>
+        <summary>Adds an object to the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -111,10 +133,16 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="array">To be added.</param>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="array">The one-dimensional <see cref="T:System.Array" /> that is the destination of the elements copied from the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />. The <see cref="T:System.Array" /> must have zero-based indexing.</param>
+        <param name="index">The zero-based index in <c>array</c> at which copying begins.</param>
+        <summary>Copies the <see cref="System.Collections.Concurrent.ConcurrentBag%601" /> elements to an existing one-dimensional <see cref="T:System.Array" />, starting at the specified array index.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="array" /> is a null reference (Nothing in Visual Basic).</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">
+          <paramref name="index" /> is less than zero.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="index" /> is equal to or greater than the length of the <paramref name="array" /> -or- the number of elements in the source <see cref="System.Collections.Concurrent.ConcurrentBag%601" /> is greater than the available space from <paramref name="index" /> to the end of the destination <paramref name="array" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="Count">
@@ -130,9 +158,16 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the number of elements contained in the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />.</summary>
+        <value>The number of elements contained in the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The count returned represents a moment-in-time snapshot of the contents of the bag. It is possible that other threads might add or remove items immediately after you access the `Count` property.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetEnumerator">
@@ -149,9 +184,16 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returns an enumerator that iterates through the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />.</summary>
+        <returns>An enumerator for the contents of the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The enumeration represents a moment-in-time snapshot of the contents of the bag. It does not reflect any updates to the collection after GetEnumerator was called. The enumerator is safe to use concurrently with reads from and writes to the bag.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsEmpty">
@@ -167,8 +209,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether the <see cref="System.Collections.Concurrent.ConcurrentBag%601" /> is empty.</summary>
+        <value>true if the <see cref="System.Collections.Concurrent.ConcurrentBag%601" /> is empty; otherwise, false.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -188,9 +230,9 @@
         <Parameter Name="item" Type="T" />
       </Parameters>
       <Docs>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="item">The object to be added to the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />. The value can be a null reference (Nothing in Visual Basic) for reference types.</param>
+        <summary>Attempts to add an object to the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />.</summary>
+        <returns>Always returns true</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -211,10 +253,16 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="array">To be added.</param>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="array">The one-dimensional <see cref="T:System.Array" /> that is the destination of the elements copied from the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />. The <see cref="T:System.Array" /> must have zero-based indexing.</param>
+        <param name="index">The zero-based index in <c>array</c> at which copying begins.</param>
+        <summary>Copies the elements of the <see cref="T:System.Collections.ICollection" /> to an <see cref="T:System.Array" />, starting at a particular <see cref="T:System.Array" /> index.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="array" /> is a null reference (Nothing in Visual Basic).</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">
+          <paramref name="index" /> is less than zero.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="array" /> is multidimensional. -or- <paramref name="array" /> does not have zero-based indexing. -or- <paramref name="index" /> is equal to or greater than the length of the <paramref name="array" /> -or- The number of elements in the source <see cref="T:System.Collections.ICollection" /> is greater than the available space from <paramref name="index" /> to the end of the destination <paramref name="array" />. -or- The type of the source <see cref="T:System.Collections.ICollection" /> cannot be cast automatically to the type of the destination <paramref name="array" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.ICollection.IsSynchronized">
@@ -230,8 +278,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value indicating whether access to the <see cref="T:System.Collections.ICollection" /> is synchronized with the SyncRoot.</summary>
+        <value>true if access to the <see cref="T:System.Collections.ICollection" /> is synchronized with the SyncRoot; otherwise, false. For <see cref="System.Collections.Concurrent.ConcurrentBag%601" />, this property always returns false.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -248,9 +296,10 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets an object that can be used to synchronize access to the <see cref="T:System.Collections.ICollection" />. This property is not supported.</summary>
+        <value>Returns null  (Nothing in Visual Basic).</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotSupportedException">The SyncRoot property is not supported.</exception>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.IEnumerable.GetEnumerator">
@@ -267,9 +316,16 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returns an enumerator that iterates through the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />.</summary>
+        <returns>An enumerator for the contents of the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The items enumerated represent a moment-in-time snapshot of the contents of the bag. It does not reflect any update to the collection after <xref:System.Collections.Concurrent.ConcurrentBag%601.GetEnumerator%2A> was called.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ToArray">
@@ -286,8 +342,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Copies the <see cref="System.Collections.Concurrent.ConcurrentBag%601" /> elements to a new array.</summary>
+        <returns>A new array containing a snapshot of elements copied from the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -307,9 +363,9 @@
         <Parameter Name="result" Type="T&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="result">When this method returns, <c>result</c> contains an object from the <see cref="System.Collections.Concurrent.ConcurrentBag%601" /> or the default value of <c>T</c> if the operation failed.</param>
+        <summary>Attempts to return an object from the <see cref="System.Collections.Concurrent.ConcurrentBag%601" /> without removing it.</summary>
+        <returns>true if and object was returned successfully; otherwise, false.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -329,9 +385,9 @@
         <Parameter Name="result" Type="T&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="result">When this method returns, <c>result</c> contains the object removed from the <see cref="System.Collections.Concurrent.ConcurrentBag%601" /> or the default value of <c>T</c> if the bag is empty.</param>
+        <summary>Attempts to remove and return an object from the <see cref="System.Collections.Concurrent.ConcurrentBag%601" />.</summary>
+        <returns>true if an object was removed successfully; otherwise, false.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

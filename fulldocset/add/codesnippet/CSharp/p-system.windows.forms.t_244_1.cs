@@ -1,39 +1,60 @@
-        // This utility method creates a RolloverItem 
-        // and adds it to a ToolStrip control.
-        private RolloverItem CreateRolloverItem(
-            ToolStrip owningToolStrip,
-            string txt,
-            Font f,
-            string imgKey,
-            TextImageRelation tir,
-            string backImgKey)
+/* Get the tree node under the mouse pointer and 
+   save it in the mySelectedNode variable. */
+private void treeView1_MouseDown(object sender, 
+  System.Windows.Forms.MouseEventArgs e)
+{
+   mySelectedNode = treeView1.GetNodeAt(e.X, e.Y);
+}
+
+private void menuItem1_Click(object sender, System.EventArgs e)
+{
+   if (mySelectedNode != null && mySelectedNode.Parent != null)
+   {
+      treeView1.SelectedNode = mySelectedNode;
+      treeView1.LabelEdit = true;
+      if(!mySelectedNode.IsEditing)
+      {
+         mySelectedNode.BeginEdit();
+      }
+   }
+   else
+   {
+      MessageBox.Show("No tree node selected or selected node is a root node.\n" + 
+         "Editing of root nodes is not allowed.", "Invalid selection");
+   }
+}
+
+private void treeView1_AfterLabelEdit(object sender, 
+         System.Windows.Forms.NodeLabelEditEventArgs e)
+{
+   if (e.Label != null)
+   {
+     if(e.Label.Length > 0)
+     {
+        if (e.Label.IndexOfAny(new char[]{'@', '.', ',', '!'}) == -1)
         {
-            RolloverItem item = new RolloverItem();
-
-            item.Alignment = ToolStripItemAlignment.Left;
-            item.AllowDrop = false;
-            item.AutoSize = true;
-
-            item.BackgroundImage = owningToolStrip.ImageList.Images[backImgKey];
-            item.BackgroundImageLayout = ImageLayout.Center;
-            item.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-            item.DoubleClickEnabled = true;
-            item.Enabled = true;
-            item.Font = f;
-
-            // These assignments are equivalent. Each assigns an
-            // image from the owning toolstrip's image list.
-            item.ImageKey = imgKey;
-            //item.Image = owningToolStrip.ImageList.Images[infoIconKey];
-            //item.ImageIndex = owningToolStrip.ImageList.Images.IndexOfKey(infoIconKey);
-            item.ImageScaling = ToolStripItemImageScaling.None;
-
-            item.Owner = owningToolStrip;
-            item.Padding = new Padding(2);
-            item.Text = txt;
-            item.TextAlign = ContentAlignment.MiddleLeft;
-            item.TextDirection = ToolStripTextDirection.Horizontal;
-            item.TextImageRelation = tir;
-
-            return item;
+           // Stop editing without canceling the label change.
+           e.Node.EndEdit(false);
         }
+        else
+        {
+           /* Cancel the label edit action, inform the user, and 
+              place the node in edit mode again. */
+           e.CancelEdit = true;
+           MessageBox.Show("Invalid tree node label.\n" + 
+              "The invalid characters are: '@','.', ',', '!'", 
+              "Node Label Edit");
+           e.Node.BeginEdit();
+        }
+     }
+     else
+     {
+        /* Cancel the label edit action, inform the user, and 
+           place the node in edit mode again. */
+        e.CancelEdit = true;
+        MessageBox.Show("Invalid tree node label.\nThe label cannot be blank", 
+           "Node Label Edit");
+        e.Node.BeginEdit();
+     }
+   }
+}

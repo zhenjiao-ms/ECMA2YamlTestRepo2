@@ -1,4 +1,5 @@
 
+
 #using <mscorlib.dll>
 
 using namespace System;
@@ -77,11 +78,11 @@ public:
 
 };
 
-void _tmain()
+void main()
 {
 
     // Create a CodeEmitter to handle assembly creation.
-    CodeEmitter ^ e = gcnew CodeEmitter("programMyAss.exe");
+    CodeEmitter ^ e = gcnew CodeEmitter("program.exe");
 
     // Create a new type.
     TypeBuilder^ mainClass = e->CreateType("MainClass");
@@ -110,9 +111,9 @@ void _tmain()
     /////////////////////////////////////////////////
     /////////////////////////////////////////////////
 
-    array<Type^>^fType = {IsUdtReturn::typeid};
+    array<Type^>^fType = {IsImplicitlyDereferenced::typeid};
 
-    mainClass->DefineField("modifiedInteger", Type::GetType("System.Type"), fType, nullptr, FieldAttributes::Private);
+    mainClass->DefineField("modifiedInteger", Type::GetType("System.IntPtr"), fType, nullptr, FieldAttributes::Private);
 
     // Create the type.
     mainClass->CreateType();

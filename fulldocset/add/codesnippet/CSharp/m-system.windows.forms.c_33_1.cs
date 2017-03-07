@@ -1,18 +1,15 @@
-   public delegate void MyDelegate(Label myControl, string myArg2);
+    private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+    {
 
-   private void Button_Click(object sender, EventArgs e)
-   {
-      object[] myArray = new object[2];
-
-      myArray[0] = new Label();
-      myArray[1] = "Enter a Value";
-      myTextBox.BeginInvoke(new MyDelegate(DelegateMethod), myArray);
-   }
-
-   public void DelegateMethod(Label myControl, string myCaption)
-   {
-      myControl.Location = new Point(16,16);
-      myControl.Size = new Size(80, 25);
-      myControl.Text = myCaption;
-      this.Controls.Add(myControl);
-   }
+        ComboBox senderComboBox = (ComboBox) sender;
+      
+        // Change the length of the text box depending on what the user has 
+        // selected and committed using the SelectionLength property.
+        if (senderComboBox.SelectionLength > 0)
+        {
+            textbox1.Width = 
+                senderComboBox.SelectedItem.ToString().Length *
+                ((int) this.textbox1.Font.SizeInPoints);
+            textbox1.Text = senderComboBox.SelectedItem.ToString();
+        }
+    }

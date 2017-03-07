@@ -1,39 +1,20 @@
-   ' This utility method creates a RolloverItem 
-   ' and adds it to a ToolStrip control.
-    Private Function CreateRolloverItem( _
-    ByVal owningToolStrip As ToolStrip, _
-    ByVal txt As String, _
-    ByVal f As Font, _
-    ByVal imgKey As String, _
-    ByVal tir As TextImageRelation, _
-    ByVal backImgKey As String) As RolloverItem
+Private Sub AddToolbarButtons(toolBar As ToolBar)
+   If Not toolBar.Buttons.IsReadOnly Then
+      ' If toolBarButton1 in in the collection, remove it.
+      If toolBar.Buttons.Contains(toolBarButton1) Then
+         toolBar.Buttons.Remove(toolBarButton1)
+      End If
 
-        Dim item As New RolloverItem()
+      ' Create three toolbar buttons.
+      Dim tbb1 As New ToolBarButton("tbb1")
+      Dim tbb2 As New ToolBarButton("tbb2")
+      Dim tbb3 As New ToolBarButton("tbb3")
 
-        item.Alignment = ToolStripItemAlignment.Left
-        item.AllowDrop = False
-        item.AutoSize = True
+      ' Add toolbar buttons to the toolbar.		
+      toolBar.Buttons.AddRange(New ToolBarButton() {tbb2, tbb3})
+      toolBar.Buttons.Add("tbb4")
 
-        item.BackgroundImage = owningToolStrip.ImageList.Images(backImgKey)
-        item.BackgroundImageLayout = ImageLayout.Center
-        item.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText
-        item.DoubleClickEnabled = True
-        item.Enabled = True
-        item.Font = f
-
-        ' These assignments are equivalent. Each assigns an
-        ' image from the owning toolstrip's image list.
-        item.ImageKey = imgKey
-        'item.Image = owningToolStrip.ImageList.Images[infoIconKey];
-        'item.ImageIndex = owningToolStrip.ImageList.Images.IndexOfKey(infoIconKey);
-        item.ImageScaling = ToolStripItemImageScaling.None
-
-        item.Owner = owningToolStrip
-        item.Padding = New Padding(2)
-        item.Text = txt
-        item.TextAlign = ContentAlignment.MiddleLeft
-        item.TextDirection = ToolStripTextDirection.Horizontal
-        item.TextImageRelation = tir
-
-        Return item
-    End Function
+      ' Insert tbb1 into the first position in the collection.
+      toolBar.Buttons.Insert(0, tbb1)
+   End If
+End Sub

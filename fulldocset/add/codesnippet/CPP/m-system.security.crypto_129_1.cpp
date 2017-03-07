@@ -1,33 +1,23 @@
-void EncryptData( String^ inName, String^ outName, array<Byte>^desKey, array<Byte>^desIV )
+using namespace System;
+using namespace System::Security::Cryptography::X509Certificates;
+int main()
 {
    
-   //Create the file streams to handle the input and output files.
-   FileStream^ fin = gcnew FileStream( inName,FileMode::Open,FileAccess::Read );
-   FileStream^ fout = gcnew FileStream( outName,FileMode::OpenOrCreate,FileAccess::Write );
-   fout->SetLength( 0 );
+   // The path to the certificate.
+   String^ Certificate = "Certificate.cer";
    
-   //Create variables to help with read and write.
-   array<Byte>^bin = gcnew array<Byte>(100);
-   long rdlen = 0; //This is the total number of bytes written.
-
-   long totlen = (long)fin->Length; //This is the total length of the input file.
-
-   int len; //This is the number of bytes to be written at a time.
-
-   DES^ des = gcnew DESCryptoServiceProvider;
-   CryptoStream^ encStream = gcnew CryptoStream( fout,des->CreateEncryptor( desKey, desIV ),CryptoStreamMode::Write );
-   Console::WriteLine( "Encrypting..." );
+   // Load the certificate into an X509Certificate object.
+   X509Certificate^ cert = X509Certificate::CreateFromCertFile( Certificate );
    
-   //Read from the input file, then encrypt and write to the output file.
-   while ( rdlen < totlen )
-   {
-      len = fin->Read( bin, 0, 100 );
-      encStream->Write( bin, 0, len );
-      rdlen = rdlen + len;
-      Console::WriteLine( "{0} bytes processed", rdlen );
-   }
-
-   encStream->Close();
-   fout->Close();
-   fin->Close();
+   // Get the value.
+   String^ resultsTrue = cert->ToString( true );
+   
+   // Display the value to the console.
+   Console::WriteLine( resultsTrue );
+   
+   // Get the value.
+   String^ resultsFalse = cert->ToString( false );
+   
+   // Display the value to the console.
+   Console::WriteLine( resultsFalse );
 }

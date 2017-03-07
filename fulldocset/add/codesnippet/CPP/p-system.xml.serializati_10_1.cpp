@@ -6,70 +6,65 @@ using namespace System::IO;
 using namespace System::Xml;
 using namespace System::Xml::Serialization;
 
+// This is the class that will be serialized.
 public ref class Group
 {
 public:
-
-   // Only the GroupName field will be known.
    String^ GroupName;
+
+   // This field will be serialized as XML text. 
+   String^ Comment;
 };
 
-public ref class Test
+// Return an XmlSerializer to be used for overriding. 
+XmlSerializer^ CreateOverrider()
 {
-public:
-   static void main()
-   {
-      Test^ t = gcnew Test;
-      t->DeserializeObject( "UnknownNodes.xml" );
-   }
+   // Create the XmlAttributeOverrides and XmlAttributes objects.
+   XmlAttributeOverrides^ xOver = gcnew XmlAttributeOverrides;
+   XmlAttributes^ xAttrs = gcnew XmlAttributes;
 
-private:
-   void DeserializeObject( String^ filename )
-   {
-      XmlSerializer^ mySerializer = gcnew XmlSerializer( Group::typeid );
-      FileStream^ fs = gcnew FileStream( filename,FileMode::Open );
-      mySerializer->UnknownNode += gcnew XmlNodeEventHandler( this, &Test::serializer_UnknownNode );
-      Group^ myGroup = dynamic_cast<Group^>(mySerializer->Deserialize( fs ));
-      fs->Close();
-   }
+   /* Create an XmlTextAttribute and assign it to the XmlText 
+      property. This instructs the XmlSerializer to treat the 
+      Comment field as XML text. */
+   XmlTextAttribute^ xText = gcnew XmlTextAttribute;
+   xAttrs->XmlText = xText;
+   xOver->Add( Group::typeid, "Comment", xAttrs );
 
-private:
-   void serializer_UnknownNode( Object^ /*sender*/, XmlNodeEventArgs^ e )
-   {
-      Console::WriteLine( "UnknownNode Name: {0}", e->Name );
-      Console::WriteLine( "UnknownNode LocalName: {0}", e->LocalName );
-      Console::WriteLine( "UnknownNode Namespace URI: {0}", e->NamespaceURI );
-      Console::WriteLine( "UnknownNode Text: {0}", e->Text );
-      XmlNodeType myNodeType = e->NodeType;
-      Console::WriteLine( "NodeType: {0}", myNodeType );
-      Group^ myGroup = dynamic_cast<Group^>(e->ObjectBeingDeserialized);
-      Console::WriteLine( "GroupName: {0}", myGroup->GroupName );
-      Console::WriteLine();
-   }
-};
+   // Create the XmlSerializer, and return it.
+   return gcnew XmlSerializer( Group::typeid,xOver );
+}
+
+void SerializeObject( String^ filename )
+{
+   // Create an instance of the XmlSerializer class.
+   XmlSerializer^ mySerializer = CreateOverrider();
+
+   // Writing the file requires a TextWriter.
+   TextWriter^ writer = gcnew StreamWriter( filename );
+
+   // Create an instance of the class that will be serialized.
+   Group^ myGroup = gcnew Group;
+
+   // Set the object properties.
+   myGroup->GroupName = ".NET";
+   myGroup->Comment = "Great Stuff!";
+
+   // Serialize the class, and close the TextWriter.
+   mySerializer->Serialize( writer, myGroup );
+   writer->Close();
+}
+
+void DeserializeObject( String^ filename )
+{
+   XmlSerializer^ mySerializer = CreateOverrider();
+   FileStream^ fs = gcnew FileStream( filename,FileMode::Open );
+   Group^ myGroup = dynamic_cast<Group^>(mySerializer->Deserialize( fs ));
+   Console::WriteLine( myGroup->GroupName );
+   Console::WriteLine( myGroup->Comment );
+}
 
 int main()
 {
-   Test::main();
+   SerializeObject( "OverrideText.xml" );
+   DeserializeObject( "OverrideText.xml" );
 }
-
-/* Paste this XML into a file named UnknownNodes:
-<?xml version="1.0" encoding="utf-8"?>
-<Group xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-
-xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:coho = "http://www.cohowinery.com" 
-
-xmlns:cp="http://www.cpandl.com">
-   <coho:GroupName>MyGroup</coho:GroupName>
-   <cp:GroupSize>Large</cp:GroupSize>
-   <cp:GroupNumber>444</cp:GroupNumber>
-   <coho:GroupBase>West</coho:GroupBase>
-   <coho:ThingInfo>
-      <Number>1</Number>
-      <Name>Thing1</Name>
-      <Elmo>
-         <Glue>element</Glue>
-      </Elmo>
-   </coho:ThingInfo>
-</Group>
-*/

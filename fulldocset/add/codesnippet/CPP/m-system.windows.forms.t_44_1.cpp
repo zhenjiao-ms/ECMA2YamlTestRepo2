@@ -1,62 +1,54 @@
-   /* Get the tree node under the mouse pointer and 
-      save it in the mySelectedNode variable. */
 private:
-   void treeView1_MouseDown( Object^ /*sender*/, System::Windows::Forms::MouseEventArgs^ e )
+   void showCheckedNodesButton_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
    {
-      mySelectedNode = treeView1->GetNodeAt( e->X, e->Y );
+      // Disable redrawing of treeView1 to prevent flickering 
+      // while changes are made.
+      treeView1->BeginUpdate();
+      
+      // Collapse all nodes of treeView1.
+      treeView1->CollapseAll();
+      
+      // Add the checkForCheckedChildren event handler to the BeforeExpand event.
+      treeView1->BeforeExpand += checkForCheckedChildren;
+      
+      // Expand all nodes of treeView1. Nodes without checked children are 
+      // prevented from expanding by the checkForCheckedChildren event handler.
+      treeView1->ExpandAll();
+      
+      // Remove the checkForCheckedChildren event handler from the BeforeExpand 
+      // event so manual node expansion will work correctly.
+      treeView1->BeforeExpand -= checkForCheckedChildren;
+      
+      // Enable redrawing of treeView1.
+      treeView1->EndUpdate();
    }
 
-   void menuItem1_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   // Prevent expansion of a node that does not have any checked child nodes.
+   void CheckForCheckedChildrenHandler( Object^ /*sender*/, TreeViewCancelEventArgs^ e )
    {
-      if ( mySelectedNode != nullptr && mySelectedNode->Parent != nullptr )
-      {
-         treeView1->SelectedNode = mySelectedNode;
-         treeView1->LabelEdit = true;
-         if (  !mySelectedNode->IsEditing )
-         {
-            mySelectedNode->BeginEdit();
-         }
-      }
-      else
-      {
-         MessageBox::Show( String::Concat( "No tree node selected or selected node is a root node.\n",
-            "Editing of root nodes is not allowed." ), "Invalid selection" );
-      }
+      if (  !HasCheckedChildNodes( e->Node ) )
+            e->Cancel = true;
    }
 
-   void treeView1_AfterLabelEdit( Object^ /*sender*/,
-      System::Windows::Forms::NodeLabelEditEventArgs^ e )
+
+   // Returns a value indicating whether the specified 
+   // TreeNode has checked child nodes.
+   bool HasCheckedChildNodes( TreeNode^ node )
    {
-      if ( e->Label != nullptr )
+      if ( node->Nodes->Count == 0 )
+            return false;
+
+      System::Collections::IEnumerator^ myEnum = node->Nodes->GetEnumerator();
+      while ( myEnum->MoveNext() )
       {
-         if ( e->Label->Length > 0 )
-         {
-            array<Char>^ temp0 = {'@','.',',','!'};
-            if ( e->Label->IndexOfAny( temp0 ) == -1 )
-            {
-               
-               // Stop editing without canceling the label change.
-               e->Node->EndEdit( false );
-            }
-            else
-            {
-               /* Cancel the label edit action, inform the user, and 
-                  place the node in edit mode again. */
-               e->CancelEdit = true;
-               MessageBox::Show( String::Concat( "Invalid tree node label.\n",
-                  "The invalid characters are: '@','.', ',', '!'" ),
-                  "Node Label Edit" );
-               e->Node->BeginEdit();
-            }
-         }
-         else
-         {
-            /* Cancel the label edit action, inform the user, and 
-               place the node in edit mode again. */
-            e->CancelEdit = true;
-            MessageBox::Show( "Invalid tree node label.\nThe label cannot be blank",
-               "Node Label Edit" );
-            e->Node->BeginEdit();
-         }
+         TreeNode^ childNode = safe_cast<TreeNode^>(myEnum->Current);
+         if ( childNode->Checked )
+                  return true;
+
+         // Recursively check the children of the current child node.
+         if ( HasCheckedChildNodes( childNode ) )
+                  return true;
       }
+
+      return false;
    }

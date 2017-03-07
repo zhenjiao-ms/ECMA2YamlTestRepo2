@@ -12,8 +12,19 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Provides a standard set of application related commands.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The commands in the ApplicationCommands class and commands in the other command library classes, such as <xref:System.Windows.Input.ComponentCommands> and <xref:System.Windows.Input.NavigationCommands>, are intended to represent a set of common commands that application programmers encounter frequently.  The commands only represent the instance of the <xref:System.Windows.Input.RoutedCommand> and not the implementation logic for the command. The implementation logic is bound to the command with a <xref:System.Windows.Input.CommandBinding>. For example, if the <xref:System.Windows.Input.ApplicationCommands.Close%2A> command is executed on a control, the logic which performs the <xref:System.Windows.Input.ApplicationCommands.Close%2A> command may not be provided by the control, so the application writer will be responsible for writing the logic that determines how the control will handle the command.  
+  
+ Many controls do provide implementation logic for many of the commands in the command library.  For example, the <xref:System.Windows.Controls.TextBox> class provides logic for the <xref:System.Windows.Input.ApplicationCommands.Paste%2A>, <xref:System.Windows.Input.ApplicationCommands.Cut%2A>, <xref:System.Windows.Input.ApplicationCommands.Copy%2A>, <xref:System.Windows.Input.ApplicationCommands.Undo%2A>, and <xref:System.Windows.Input.ApplicationCommands.Redo%2A> commands.  
+  
+ For more information on commands and commanding see the [Commanding Overview](../Topic/Commanding%20Overview.md).  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="CancelPrint">
@@ -30,9 +41,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Cancel Print command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> No gesture defined.  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Cancel Print  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to cancel a print job.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_CancelPrint"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="CancelPrint"/>>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Close">
@@ -49,9 +101,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Close command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> No gesture defined.  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Close  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to close an item (typically a file).  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Close"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Close"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ContextMenu">
@@ -68,9 +161,60 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Context Menu command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Shift+F10  
+  
+ Apps  
+  
+ </description>  
+</item>  
+<item>  
+<term> Mouse Gesture  
+  
+ </term>  
+<description> A Mouse Gesture is not attached to this command, but most applications follow the convention of using the Right Click gesture to invoke the context menu.  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Context Menu  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to open the context menu.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_ContextMenu"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="ContextMenu"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Copy">
@@ -87,9 +231,52 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Copy command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Ctrl+C  
+  
+ Ctrl+Insert  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Copy  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to copy the selection to the clipboard.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Copy"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Copy"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CorrectionList">
@@ -106,9 +293,52 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Correction List command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> No gesture defined.  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Correction List  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to open the correction list.  
+  
+ The correction list is different depending on the context. For example, with [!INCLUDE[TLA#tla_ime](~/add/includes/tlasharptla-ime-md.md)] input the correction list identifies reconversion choices.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_CorrectionList"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="CorrectionList"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Cut">
@@ -125,9 +355,52 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Cut command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Ctrl+X  
+  
+ Shift+Delete  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Cut  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to cut the selection to the clipboard.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Cut"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Cut"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Delete">
@@ -144,9 +417,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Delete command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Del  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Delete  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to delete the selection.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Delete"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Delete"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Find">
@@ -163,9 +477,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Find command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Ctrl+F  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Find  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to open the dedicated Find dialog.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Find"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Find"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Help">
@@ -182,9 +537,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Help command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> F1  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Help  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to open the Help dialog (window).  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Help"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Help"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="New">
@@ -201,9 +597,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the New command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Ctrl+N  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> New  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to create a new item.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_New"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="New"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="NotACommand">
@@ -220,9 +657,25 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Represents a command which is always ignored.</summary>
+        <value>The command.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command is always ignored and does not handle the input event that caused it.  This provides a way to turn off an input binding built into an existing control.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_NotACommand"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="NotACommand"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Open">
@@ -239,9 +692,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Open command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Ctrl+O  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Open  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to open an item (typically a file).  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Open"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Open"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Paste">
@@ -258,9 +752,52 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Paste command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Ctrl+V  
+  
+ Shift+Insert  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Paste  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to paste the selection to the clipboard.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Paste"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Paste"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Print">
@@ -277,9 +814,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Print command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Ctrl+P  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Print  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to prints the current item.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Print"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Print"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="PrintPreview">
@@ -296,9 +874,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Print Preview command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Ctrl+F2  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Print Preview  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to open the Print Preview dialog.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_PrintPreview"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="PrintPreview"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Properties">
@@ -315,9 +934,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Properties command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> F4  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Properties  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to open a properties dialog.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Properties"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Properties"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Redo">
@@ -334,9 +994,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Redo command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Ctrl+Y  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Redo  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to redo the last action.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Redo"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Redo"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Replace">
@@ -353,9 +1054,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Replace command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Ctrl+H  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Replace  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to open the Replace dialog.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Replace"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Replace"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Save">
@@ -372,9 +1114,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Save command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Ctrl+S  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Save  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to save the current item.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Save"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Save"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SaveAs">
@@ -391,9 +1174,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Save As command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> No gesture defined.  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Save As  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to open the Save As dialog.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_SaveAs"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="SaveAs"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SelectAll">
@@ -410,9 +1234,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Select All command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Ctrl+A  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Select All  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to select all items.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_SelectAll"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="SelectAll"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Stop">
@@ -429,9 +1294,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Stop command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Esc  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Stop  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to stop processing.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Stop"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Stop"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Undo">
@@ -448,9 +1354,50 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the value that represents the Undo command.</summary>
+        <value>The command.  
+  
+ <list type="table">  
+<listheader>  
+<term> Default Values  
+  
+ </term>  
+<description></description>  
+</listheader>  
+<item>  
+<term> Key Gesture  
+  
+ </term>  
+<description> Ctrl-Z  
+  
+ </description>  
+</item>  
+<item>  
+<term> UI Text  
+  
+ </term>  
+<description> Undo  
+  
+ </description>  
+</item>  
+</list></value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This command indicates intention to undo the last action.  
+  
+ There is not necessarily an implementation for the command on any given object; in many cases the implementation for the command is the responsibility of the application writer.  
+  
+<a name="xamlAttributeUsage_Undo"></a>   
+## XAML Attribute Usage  
+  
+```  
+<object property="Undo"/>  
+```  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
   </Members>

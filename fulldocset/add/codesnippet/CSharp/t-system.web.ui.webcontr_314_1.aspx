@@ -1,42 +1,64 @@
 <%@ Page Language="C#" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<script runat="server">
-    void Page_Load(Object sender, EventArgs e)
-    {
-        // Generate rows and cells.           
-        int numRows = 3;
-        int numCells = 2;
-        for (int rowNum = 0; rowNum < numRows; rowNum++)
-        {
-            TableRow rw = new TableRow();
-            for (int cellNum = 0; cellNum < numCells; cellNum++)
-            {
-                TableCell cel = new TableCell();
-                cel.Text = String.Format(
-                    "row {0}, cell {1}", rowNum, cellNum);
-                rw.Cells.Add(cel);
-            }
-            Table1.Rows.Add(rw);
-            Table1.GridLines = GridLines.Both;
-            Table1.CellPadding = 4;
-            Table1.CellSpacing = 0;
-        }
-    }
-</script>
-
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head id="Head1" runat="server">
-    <title>Programmatic Table</title>
+<head runat="server">
+  <title>BulletedList Click Example</title>
+  <script runat="server">
+
+    void ItemsBulletedList_Click(object sender, System.Web.UI.WebControls.BulletedListEventArgs e)
+    {
+
+	    // Change the message displayed in the label based on the index
+	    // of the list item that was clicked.
+	    switch (e.Index) 
+      {
+		    case 0:
+			    Message.Text = "You clicked list item 1.";
+			    break;
+		    case 1:
+			    Message.Text = "You clicked list item 2.";
+			    break;
+		    case 2:
+			    Message.Text = "You clicked list item 3.";
+			    break;
+		    default:
+			    throw new Exception("You did not click a valid list item.");
+			    break;
+	    }
+
+    }
+
+  </script>
+
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-        <h3>Table Example, constructed programmatically</h3>
-        <asp:Table id="Table1" runat="server"/>
-    </div>
-    </form>
+
+  <h3>BulletedList Click Example</h3>
+
+  <form id="form1" runat="server">
+            
+    <p>Click on an item in the list to raise the Click event.</p> 
+    
+    <asp:BulletedList id="ItemsBulletedList" 
+      BulletStyle="Disc"
+      DisplayMode="LinkButton" 
+      OnClick="ItemsBulletedList_Click"
+      runat="server">    
+        <asp:ListItem Value="http://www.cohowinery.com">Coho Winery</asp:ListItem>
+        <asp:ListItem Value="http://www.contoso.com">Contoso, Ltd.</asp:ListItem>
+        <asp:ListItem Value="http://www.tailspintoys.com">Tailspin Toys</asp:ListItem>
+    </asp:BulletedList>
+            
+    <asp:Label id="Message" 
+      Font-Size="12"
+      Width="168px" 
+      Font-Bold="True" 
+      runat="server"
+      AssociatedControlID="ItemsBulletedList"/>
+              
+   </form>
+
 </body>
 </html>

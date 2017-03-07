@@ -1,27 +1,31 @@
-Imports System
-Imports System.ComponentModel
-Imports System.ComponentModel.Design
-Imports System.ComponentModel.Design.Serialization
+    ' This event handler deals with the results of the
+    ' background operation.
+    Private Sub backgroundWorker1_RunWorkerCompleted( _
+    ByVal sender As Object, ByVal e As RunWorkerCompletedEventArgs) _
+    Handles backgroundWorker1.RunWorkerCompleted
 
-Module ContextStackExample
+        ' First, handle the case where an exception was thrown.
+        If (e.Error IsNot Nothing) Then
+            MessageBox.Show(e.Error.Message)
+        ElseIf e.Cancelled Then
+            ' Next, handle the case where the user canceled the 
+            ' operation.
+            ' Note that due to a race condition in 
+            ' the DoWork event handler, the Cancelled
+            ' flag may not have been set, even though
+            ' CancelAsync was called.
+            resultLabel.Text = "Canceled"
+        Else
+            ' Finally, handle the case where the operation succeeded.
+            resultLabel.Text = e.Result.ToString()
+        End If
 
-    Sub Main()
-        ' Create a ContextStack.
-        Dim stack As New ContextStack
+        ' Enable the UpDown control.
+        Me.numericUpDown1.Enabled = True
 
-        ' Push ten items on to the stack and output the value of each.
-        Dim number As Integer
-        For number = 0 To 9
-            Console.WriteLine(("Value pushed to stack: " + number.ToString()))
-            stack.Push(number)
-        Next number
+        ' Enable the Start button.
+        startAsyncButton.Enabled = True
 
-        ' Pop each item off the stack.        
-        Dim item As Object = stack.Pop()
-        While item IsNot Nothing
-            Console.WriteLine(("Value popped from stack: " + item.ToString()))
-            item = stack.Pop()
-        End While
-    End Sub
-
-End Module
+        ' Disable the Cancel button.
+        cancelAsyncButton.Enabled = False
+    End Sub 'backgroundWorker1_RunWorkerCompleted

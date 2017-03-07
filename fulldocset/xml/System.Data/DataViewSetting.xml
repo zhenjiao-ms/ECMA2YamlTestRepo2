@@ -17,8 +17,9 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Represents the default settings for <see cref="System.Data.DataView.ApplyDefaultSort%2A" />, <see cref="System.Data.DataView.DataViewManager%2A" />, <see cref="System.Data.DataView.RowFilter%2A" />, <see cref="System.Data.DataView.RowStateFilter%2A" />, <see cref="System.Data.DataView.Sort%2A" />, and <see cref="System.Data.DataView.Table%2A" /> for DataViews created from the <see cref="T:System.Data.DataViewManager" />.</summary>
     <remarks>To be added.</remarks>
+    <threadsafe>This type is safe for multithreaded read operations. You must synchronize any write operations.</threadsafe>
   </Docs>
   <Members>
     <Member MemberName="ApplyDefaultSort">
@@ -35,8 +36,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets a value indicating whether to use the default sort.</summary>
+        <value>
+          <see langword="true" /> if the default sort is used; otherwise <see langword="false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -59,8 +61,8 @@
         <ReturnType>System.Data.DataViewManager</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Data.DataViewManager" /> that contains this <see cref="T:System.Data.DataViewSetting" />.</summary>
+        <value>A <see cref="T:System.Data.DataViewManager" /> object.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -78,8 +80,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the filter to apply in the <see cref="T:System.Data.DataView" />. See <see cref="System.Data.DataView.RowFilter%2A" /> for a code sample using RowFilter.</summary>
+        <value>A string that contains the filter to apply.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -97,9 +99,16 @@
         <ReturnType>System.Data.DataViewRowState</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets a value indicating whether to display Current, Deleted, Modified Current, ModifiedOriginal, New, Original, Unchanged, or no rows in the <see cref="T:System.Data.DataView" />.</summary>
+        <value>A value that indicates which rows to display.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The default value of RowStateFilter is `DataViewRowState.CurrentRows`.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Sort">
@@ -116,9 +125,16 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets a value indicating the sort to apply in the <see cref="T:System.Data.DataView" />.</summary>
+        <value>The sort to apply in the <see cref="T:System.Data.DataView" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ <xref:System.Data.DataView.Sort%2A> can have two defaults based on the value of <xref:System.Data.DataView.RowFilter%2A> property. If <xref:System.Data.DataView.RowFilter%2A> is null or empty (that is, the value is not explicitly specified), the <xref:System.Data.DataRowView> in the <xref:System.Data.DataView> is sorted on the position or ordinal of <xref:System.Data.DataRow> in the <xref:System.Data.DataTable.Rows%2A> collection. The <xref:System.Data.DataView.Sort%2A> default, an empty string, causes a <xref:System.Data.DataRowView> in <xref:System.Data.DataView> to be sorted on the position or ordinal of <xref:System.Data.DataRow> in the <xref:System.Data.DataTable.Rows%2A> collection.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Table">
@@ -140,8 +156,8 @@
         <ReturnType>System.Data.DataTable</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Data.DataTable" /> to which the <see cref="T:System.Data.DataViewSetting" /> properties apply.</summary>
+        <value>A <see cref="T:System.Data.DataTable" /> object.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

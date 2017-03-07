@@ -1,25 +1,36 @@
-      // Attach to event handler.
-      private void AttachFlatModeChanged()
-      {
-         this.myDataGrid.FlatModeChanged += new EventHandler(this.myDataGrid_FlatModeChanged);
-      }
-      // Check if the 'FlatMode' property is changed.
-      private void myDataGrid_FlatModeChanged(object sender, EventArgs e)
-      {
-         string strMessage = "false";
-         if(myDataGrid.FlatMode == true)
-            strMessage = "true";
+    private DataGridView dataGridView1 = new DataGridView();
 
-         MessageBox.Show("Flat mode changed to "+strMessage,
-            "Message",   MessageBoxButtons.OK,
-            MessageBoxIcon.Exclamation);
-         
-      }
-      // Toggle the 'FlatMode'.
-      private void button1_Click(object sender, EventArgs e)
-      {
-         if(myDataGrid.FlatMode == true)
-            myDataGrid.FlatMode = false;
-         else
-            myDataGrid.FlatMode = true;
-      }
+    private void AddColorColumn()
+    {
+        DataGridViewComboBoxColumn comboBoxColumn =
+            new DataGridViewComboBoxColumn();
+        comboBoxColumn.Items.AddRange(
+            Color.Red, Color.Yellow, Color.Green, Color.Blue);
+        comboBoxColumn.ValueType = typeof(Color);
+        dataGridView1.Columns.Add(comboBoxColumn);
+        dataGridView1.EditingControlShowing +=
+            new DataGridViewEditingControlShowingEventHandler(
+            dataGridView1_EditingControlShowing);
+    }
+
+    private void dataGridView1_EditingControlShowing(object sender,
+        DataGridViewEditingControlShowingEventArgs e)
+    {
+        ComboBox combo = e.Control as ComboBox;
+        if (combo != null)
+        {
+            // Remove an existing event-handler, if present, to avoid 
+            // adding multiple handlers when the editing control is reused.
+            combo.SelectedIndexChanged -=
+                new EventHandler(ComboBox_SelectedIndexChanged);
+
+            // Add the event handler. 
+            combo.SelectedIndexChanged +=
+                new EventHandler(ComboBox_SelectedIndexChanged);
+        }
+    }
+
+    private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        ((ComboBox)sender).BackColor = (Color)((ComboBox)sender).SelectedItem;
+    }

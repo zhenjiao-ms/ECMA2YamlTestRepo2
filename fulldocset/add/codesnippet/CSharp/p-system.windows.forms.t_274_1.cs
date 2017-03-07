@@ -1,64 +1,53 @@
-    // Declare the TreeView.
-    private TreeView treeView1;
-    private TextBox textBox1;
-    private Button button1;
+        // The following methods handle the CheckChanged event 
+        // for all the radio buttons. Each method calls a utility
+        // method to set the ToolStripDropDownDirection appropriately.
 
-    private void InitializeTreeView1()
-    {
-        // Create the TreeView
-        treeView1 = new TreeView();
-        treeView1.Size = new Size(200, 200);
-
-        // Create the button and set some basic properties. 
-        button1 = new Button();
-        button1.Location = new Point(205, 138);
-        button1.Text = "Set Sorter";
-
-        // Handle the click event for the button.
-        button1.Click += new EventHandler(button1_Click);
-
-        // Create the root nodes.
-        TreeNode docNode = new TreeNode("Documents");
-        TreeNode spreadSheetNode = new TreeNode("Spreadsheets");
-
-        // Add some additional nodes.
-        spreadSheetNode.Nodes.Add("payroll.xls");
-        spreadSheetNode.Nodes.Add("checking.xls");
-        spreadSheetNode.Nodes.Add("tracking.xls");
-        docNode.Nodes.Add("phoneList.doc");
-        docNode.Nodes.Add("resume.doc");
-
-        // Add the root nodes to the TreeView.
-        treeView1.Nodes.Add(spreadSheetNode);
-        treeView1.Nodes.Add(docNode);
-
-        // Add the TreeView to the form.
-        Controls.Add(treeView1);
-        Controls.Add(button1);
-    }
-
-    // Set the TreeViewNodeSorter property to a new instance
-    // of the custom sorter.
-    private void button1_Click(object sender, EventArgs e)
-    {
-        treeView1.TreeViewNodeSorter = new NodeSorter();
-    }
-
-    // Create a node sorter that implements the IComparer interface.
-    public class NodeSorter : IComparer
-    {
-        // Compare the length of the strings, or the strings
-        // themselves, if they are the same length.
-        public int Compare(object x, object y)
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            TreeNode tx = x as TreeNode;
-            TreeNode ty = y as TreeNode;
-
-            // Compare the length of the strings, returning the difference.
-            if (tx.Text.Length != ty.Text.Length)
-                return tx.Text.Length - ty.Text.Length;
-
-            // If they are the same length, call Compare.
-            return string.Compare(tx.Text, ty.Text);
+            this.HandleRadioButton(sender, ToolStripDropDownDirection.AboveLeft);
         }
-    }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            this.HandleRadioButton(sender, ToolStripDropDownDirection.AboveRight);
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            this.HandleRadioButton(sender, ToolStripDropDownDirection.BelowLeft);
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            this.HandleRadioButton(sender, ToolStripDropDownDirection.BelowRight);
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            this.HandleRadioButton(sender, ToolStripDropDownDirection.Default);
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            this.HandleRadioButton(sender, ToolStripDropDownDirection.Left);
+        }
+
+        private void radioButton7_CheckedChanged(object sender, EventArgs e)
+        {
+            this.HandleRadioButton(sender, ToolStripDropDownDirection.Right);
+        }
+
+        // This utility method sets the DefaultDropDownDirection property.
+        private void HandleRadioButton(object sender, ToolStripDropDownDirection direction)
+        {
+            RadioButton rb = sender as RadioButton;
+
+            if (rb != null)
+            {
+                if (rb.Checked)
+                {
+                    this.dropDownDirection = direction;
+                    this.contextMenuStrip1.DefaultDropDownDirection = direction;
+                }
+            }
+        }

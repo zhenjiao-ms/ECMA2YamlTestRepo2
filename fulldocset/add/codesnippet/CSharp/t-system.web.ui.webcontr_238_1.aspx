@@ -1,95 +1,84 @@
 
-<%@ Page Language="C#" %>
+<%@ Page language="C#" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>
-            BulletStyle Example</title>
-<script runat="server">       
-        protected void Index_Changed(object sender, EventArgs e)
-        {
-            // Change the message displayed, based on 
-            // the style selected from the list box.
-            if (BulletStylesListBox.SelectedIndex > -1)
-            {
-                Message.Text = "You selected bullet style: " +
-                    BulletStylesListBox.SelectedItem.Text;
-            }
+<script runat="server">
 
-            // Change the bullet style used, based on 
-            // the style selected from the list box.
-            switch (BulletStylesListBox.SelectedIndex)
-            {
-                case 0:
-                    ItemsBulletedList.BulletStyle = BulletStyle.Numbered;
-                    break;
-                case 1:
-                    ItemsBulletedList.BulletStyle = BulletStyle.LowerAlpha;
-                    break;
-                case 2:
-                    ItemsBulletedList.BulletStyle = BulletStyle.UpperAlpha;
-                    break;
-                case 3:
-                    ItemsBulletedList.BulletStyle = BulletStyle.LowerRoman;
-                    break;
-                case 4:
-                    ItemsBulletedList.BulletStyle = BulletStyle.UpperRoman;
-                    break;
-                case 5:
-                    ItemsBulletedList.BulletStyle = BulletStyle.Disc;
-                    break;
-                case 6:
-                    ItemsBulletedList.BulletStyle = BulletStyle.Circle;
-                    break;
-                case 7:
-                    ItemsBulletedList.BulletStyle = BulletStyle.Square;
-                    break;
-                case 8:
-                    ItemsBulletedList.BulletStyle = BulletStyle.CustomImage;
-                    // Specify the path to the custom image to use for the bullet.
-                    ItemsBulletedList.BulletImageUrl = "Images/image1.jpg";
-                    break;
-                case 9:
-                    Message.Text = "You selected NotSet. The browser will determine the bullet style.";
-                    break;
-                default:
-                    throw new Exception("You did not select a valid bullet style.");
-            }
+  void CustomerDetailsView_ItemInserted(Object sender, 
+    DetailsViewInsertedEventArgs e)
+  {
+    // Use the Exception property to determine whether an exception
+    // occurred during the insert operation.
+    if (e.Exception == null && e.AffectedRows == 1)
+    {
+      // Use the Values property to get the value entered by 
+      // the user for the CompanyName field.
+      String name = e.Values["CompanyName"].ToString();
 
-        }
+      // Display a confirmation message.
+      MessageLabel.Text = name + " added successfully. ";
+
+    }
+    else
+    {
+      // Insert the code to handle the exception.
+      MessageLabel.Text = e.Exception.Message;
+      
+      // Use the ExceptionHandled property to indicate that the 
+      // exception is already handled.
+      e.ExceptionHandled = true;
+      
+      // When an exception occurs, keep the DetailsView
+      // control in insert mode.
+      e.KeepInInsertMode = true;
+    }
+  }
+
 </script>
 
+<html xmlns="http://www.w3.org/1999/xhtml" >
+  <head runat="server">
+    <title>DetailsViewInsertedEventArgs Example</title>
 </head>
 <body>
     <form id="form1" runat="server">
-        <h3>
-            BulletStyle Example</h3>
-        <asp:BulletedList ID="ItemsBulletedList" DisplayMode="Text" BulletStyle="NotSet"
-            runat="server">
-            <asp:ListItem Value="0">Coho Winery</asp:ListItem>
-            <asp:ListItem Value="1">Contoso, Ltd.</asp:ListItem>
-            <asp:ListItem Value="2">Tailspin Toys</asp:ListItem>
-        </asp:BulletedList>
-        <hr />
-        <h4>
-            Select a bullet type:</h4>
-        <asp:ListBox ID="BulletStylesListBox" SelectionMode="Single" Rows="1" OnSelectedIndexChanged="Index_Changed"
-            AutoPostBack="True" runat="server">
-            <asp:ListItem Value="Numbered">Numbered</asp:ListItem>
-            <asp:ListItem Value="LowerAlpha">LowerAlpha</asp:ListItem>
-            <asp:ListItem Value="UpperAlpha">UpperAlpha</asp:ListItem>
-            <asp:ListItem Value="LowerRoman">LowerRoman</asp:ListItem>
-            <asp:ListItem Value="UpperRoman">UpperRoman</asp:ListItem>
-            <asp:ListItem>Disc</asp:ListItem>
-            <asp:ListItem>Circle</asp:ListItem>
-            <asp:ListItem>Square</asp:ListItem>
-            <asp:ListItem>CustomImage</asp:ListItem>
-            <asp:ListItem Value="NotSet">NotSet</asp:ListItem>
-        </asp:ListBox>
-        <hr />
-        <asp:Label ID="Message" runat="server" AssociatedControlID="BulletStylesListBox" />
-    </form>
-</body>
+        
+      <h3>DetailsViewInsertedEventArgs Example</h3>
+                
+        <asp:detailsview id="CustomerDetailsView"
+          datasourceid="DetailsViewSource"
+          datakeynames="CustomerID"
+          autogenerateinsertbutton="true"  
+          autogeneraterows="true"
+          allowpaging="true"
+          oniteminserted="CustomerDetailsView_ItemInserted" 
+          runat="server">
+               
+          <fieldheaderstyle backcolor="Navy"
+            forecolor="White"/>
+                    
+        </asp:detailsview>
+        
+        <asp:label id="MessageLabel"
+          forecolor="Red"
+          runat="server"/>
+            
+        <!-- This example uses Microsoft SQL Server and connects  -->
+        <!-- to the Northwind sample database. Use an ASP.NET     -->
+        <!-- expression to retrieve the connection string value   -->
+        <!-- from the web.config file.                            -->
+        <asp:sqldatasource id="DetailsViewSource"
+          selectcommand="Select [CustomerID], [CompanyName], [Address], 
+            [City], [PostalCode], [Country] From [Customers]"
+          insertcommand="INSERT INTO [Customers]([CustomerID], 
+            [CompanyName], [Address], [City], [PostalCode], 
+            [Country]) VALUES (@CustomerID, @CompanyName, @Address, 
+            @City, @PostalCode, @Country)"
+          connectionstring=
+            "<%$ ConnectionStrings:NorthWindConnectionString%>" 
+          runat="server"/>
+            
+      </form>
+  </body>
 </html>

@@ -1,33 +1,37 @@
-public:
-   void Printing( String^ printer )
-   {
-      try
+   private:
+      void MyButtonPrint_OnClick( Object^ sender, System::EventArgs^ e )
       {
-         streamToPrint = gcnew StreamReader( filePath );
-         try
+         // Set the printer name and ensure it is valid. If not, provide a message to the user.
+         printDoc->PrinterSettings->PrinterName = "\\mynetworkprinter";
+         if ( printDoc->PrinterSettings->IsValid )
          {
-            printFont = gcnew System::Drawing::Font( "Arial",10 );
-            PrintDocument^ pd = gcnew PrintDocument;
-            pd->PrintPage += gcnew PrintPageEventHandler(
-               this, &Form1::pd_PrintPage );
-            // Specify the printer to use.
-            pd->PrinterSettings->PrinterName = printer;
-            if ( pd->PrinterSettings->IsValid )
+            // If the printer supports printing in color, then override the printer's default behavior.
+            if ( printDoc->PrinterSettings->SupportsColor )
             {
-               pd->Print();
+               // Set the page default's to not print in color.
+               printDoc->DefaultPageSettings->Color = false;
             }
-            else
-            {
-               MessageBox::Show( "Printer is invalid." );
-            }
+
+            // Provide a friendly name, set the page number, and print the document.
+            printDoc->DocumentName = "My Presentation";
+            currentPageNumber = 1;
+            printDoc->Print();
          }
-         finally
+         else
          {
-            streamToPrint->Close();
+            MessageBox::Show( "Printer is not valid" );
          }
       }
-      catch ( Exception^ ex ) 
+
+      void MyPrintQueryPageSettingsEvent( Object^ sender, QueryPageSettingsEventArgs^ e )
       {
-         MessageBox::Show( ex->Message );
+         // Determines if the printer supports printing in color.
+         if ( printDoc->PrinterSettings->SupportsColor )
+         {
+            // If the printer supports color printing, use color.
+            if ( currentPageNumber == 1 )
+            {
+               e->PageSettings->Color = true;
+            }
+         }
       }
-   }

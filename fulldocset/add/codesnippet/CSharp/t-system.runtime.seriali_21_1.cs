@@ -1,106 +1,57 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Xml;
-
-namespace GeneratPathExample
-{
-    class Program
+    // Implement the IExtensibleDataObject interface 
+    // to store the extra data for future versions.
+    [DataContract(
+        Name = "Person",
+        Namespace = "http://www.cohowinery.com/employees")]
+    class Person : IExtensibleDataObject
     {
-        static void Main(string[] args)
+        // To implement the IExtensibleDataObject interface,
+        // you must implement the ExtensionData property. The property
+        // holds data from future versions of the class for backward
+        // compatibility.
+        private ExtensionDataObject extensionDataObject_value;
+        public ExtensionDataObject ExtensionData
         {
-            // Get the type of the class that defines the data contract.
-            Type t = typeof(Order);
-
-            // Get the meta data for the specific members to be used in the query.
-            MemberInfo[] mi = t.GetMember("Product");
-            MemberInfo[] mi2 = t.GetMember("Value");
-            MemberInfo[] mi3 = t.GetMember("Quantity");
-
-            // Call the function below to generate and display the query.
-            GenerateXPath(t, mi);
-            GenerateXPath(t, mi2);
-            GenerateXPath(t, mi3);
-
-
-            // Get the type of the second class that defines a data contract.
-            Type t2 = typeof(Line);
-
-            // Get the meta data for the member to be used in the query.
-            MemberInfo[] mi4 = t2.GetMember("Items");
-            
-            GenerateXPath(t2, mi4);
-
-            Console.ReadLine();
+            get
+            {
+                return extensionDataObject_value;
+            }
+            set
+            {
+                extensionDataObject_value = value;
+            }
         }
-
-        static void GenerateXPath(Type t, MemberInfo[] mi)
-        {
-
-            // Create a new name table and name space manager.
-            NameTable nt = new NameTable();
-            XmlNamespaceManager xname = new XmlNamespaceManager(nt);
-
-
-            // Generate the query and print it.
-            string query = XPathQueryGenerator.CreateFromDataContractSerializer(
-                t, mi, out xname);
-            Console.WriteLine(query);
-            Console.WriteLine();
-
-
-            // Display the namespaces and prefixes used in the data contract.
-            foreach (string s in xname)
-                Console.WriteLine("{0}  = {1}", s, xname.LookupNamespace(s));
-           
-            Console.WriteLine();       
-
-        }
+        [DataMember]
+        public string Name;
     }
 
-    [DataContract(Namespace = "http://www.cohowinery.com/")]
-    public class Line
+    // The second version of the class adds a new field. The field's 
+    // data is stored in the ExtensionDataObject field of
+    // the first version (Person). You must also set the Name property 
+    // of the DataContractAttribute to match the first version. 
+    // If necessary, also set the Namespace property so that the 
+    // name of the contracts is the same.
+    [DataContract(Name = "Person",
+        Namespace = "http://www.cohowinery.com/employees")]
+    class PersonVersion2 : IExtensibleDataObject
     {
-        private Order[] itemsValue;
+        // Best practice: add an Order number to new members.
+        [DataMember(Order=2)]
+        public int ID;
 
         [DataMember]
-        public Order[] Items
+        public string Name;
+
+        private ExtensionDataObject extensionDataObject_value;
+        public ExtensionDataObject ExtensionData
         {
-            get { return itemsValue; }
-            set { itemsValue = value; }
-        }
-
-    }
-
-    [DataContract(Namespace = "http://contoso.com")]
-    public class Order
-    {
-        private string productValue;
-        private int quantityValue;
-        private decimal valueValue;
-
-        [DataMember(Name = "cost")]
-        public decimal Value
-        {
-            get { return valueValue; }
-            set { valueValue = value; }
-        }
-
-        [DataMember(Name = "quantity")]
-        public int Quantity
-        {
-            get { return quantityValue; }
-            set { quantityValue = value; }
-        }
-
-        [DataMember(Name = "productName")]
-        public string Product
-        {
-            get { return productValue; }
-            set { productValue = value; }
+            get
+            {
+                return extensionDataObject_value;
+            }
+            set
+            {
+                extensionDataObject_value = value;
+            }
         }
     }
-}

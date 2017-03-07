@@ -11,8 +11,17 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Serves as the base class for classes that provide helper methods for processing Web requests.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The HttpServerUtilityBase class is an abstract class that contains the same members as the <xref:System.Web.HttpServerUtility> class. The HttpServerUtilityBase class enables you to create derived classes that are like the <xref:System.Web.HttpServerUtility> class, but that you can customize and that work outside the ASP.NET pipeline. When you perform unit testing, you typically use a derived class to implement members with customized behavior that fulfills the scenario you are testing.  
+  
+ The <xref:System.Web.HttpServerUtilityWrapper> class derives from the HttpServerUtilityBase class. The <xref:System.Web.HttpServerUtilityWrapper> class serves as a wrapper for the <xref:System.Web.HttpServerUtility> class. At run time, you typically use an instance of the <xref:System.Web.HttpServerUtilityWrapper> class to call members of the <xref:System.Web.HttpServerUtility> object.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,7 +35,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes the class for use by an inherited class instance. This constructor can only be called by an inherited class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -44,8 +53,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When overridden in a derived class, clears the most recent exception.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="CreateObject">
@@ -64,10 +74,11 @@
         <Parameter Name="progID" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="progID">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="progID">The class or type of object to create an instance of.</param>
+        <summary>When overridden in a derived class, creates a server instance of a COM object that is identified by the object's programmatic identifier (ProgID).</summary>
+        <returns>The new object.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="CreateObject">
@@ -86,10 +97,11 @@
         <Parameter Name="type" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="type">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="type">A type that represents the object to create.</param>
+        <summary>When overridden in a derived class, creates a server instance of a COM object that is identified by the object's type.</summary>
+        <returns>The new object.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="CreateObjectFromClsid">
@@ -108,10 +120,11 @@
         <Parameter Name="clsid" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="clsid">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="clsid">The class identifier of the object to create an instance of.</param>
+        <summary>When overridden in a derived class, creates a server instance of a COM object that is identified by the object's class identifier (CLSID).</summary>
+        <returns>The new object.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Execute">
@@ -130,9 +143,10 @@
         <Parameter Name="path" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="path">The URL of the handler to execute.</param>
+        <summary>When overridden in a derived class, executes the handler for the specified virtual path in the context of the current process.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Execute">
@@ -152,10 +166,12 @@
         <Parameter Name="preserveForm" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <param name="preserveForm">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="path">The URL of the handler to execute.</param>
+        <param name="preserveForm">
+          <see langword="true" /> to preserve the <see cref="System.Web.HttpRequest.QueryString%2A" /> and <see cref="System.Web.HttpRequest.Form%2A" /> collections; <see langword="false" /> to clear the <see cref="System.Web.HttpRequest.QueryString%2A" /> and <see cref="System.Web.HttpRequest.Form%2A" /> collections.</param>
+        <summary>When overridden in a derived class, executes the handler for the specified virtual path in the context of the current process and specifies whether to clear the <see cref="System.Web.HttpRequestBase.QueryString%2A" /> and <see cref="System.Web.HttpRequestBase.Form%2A" /> collections.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Execute">
@@ -175,10 +191,18 @@
         <Parameter Name="writer" Type="System.IO.TextWriter" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <param name="writer">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="path">The URL of the handler to execute.</param>
+        <param name="writer">An object to capture the output.</param>
+        <summary>When overridden in a derived class, executes the handler for the specified virtual path in the context of the current process, using a <see cref="T:System.IO.TextWriter" /> instance to capture output from the executed handler.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `writer` parameter is passed by reference to the Execute method. To retrieve the output from the handler after the method completes, you use the properties and methods of the `writer` object. For an example, see <xref:System.Web.HttpServerUtility.Execute%2A>.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Execute">
@@ -199,11 +223,20 @@
         <Parameter Name="preserveForm" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <param name="writer">To be added.</param>
-        <param name="preserveForm">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="path">The URL of the handler to execute.</param>
+        <param name="writer">The object to capture the output.</param>
+        <param name="preserveForm">
+          <see langword="true" /> to preserve the <see cref="System.Web.HttpRequest.QueryString%2A" /> and <see cref="System.Web.HttpRequest.Form%2A" /> collections; <see langword="false" /> to clear the <see cref="System.Web.HttpRequest.QueryString%2A" /> and <see cref="System.Web.HttpRequest.Form%2A" /> collections.</param>
+        <summary>When overridden in a derived class, executes the handler for the specified virtual path in the context of the current request, using a <see cref="T:System.IO.TextWriter" /> instance to capture output from the page and a value that indicates whether to clear the <see cref="System.Web.HttpRequestBase.QueryString%2A" /> and <see cref="System.Web.HttpRequestBase.Form%2A" /> collections.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `writer` parameter is passed by reference to the Execute method. To retrieve the output from the handler after the method completes, you use the properties and methods of the `writer` object. For an example, see <xref:System.Web.HttpServerUtility.Execute%2A>.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Execute">
@@ -224,11 +257,20 @@
         <Parameter Name="preserveForm" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="handler">To be added.</param>
-        <param name="writer">To be added.</param>
-        <param name="preserveForm">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="handler">The HTTP handler that implements the interface to transfer the current request to.</param>
+        <param name="writer">The object to capture the output.</param>
+        <param name="preserveForm">
+          <see langword="true" /> to preserve the <see cref="System.Web.HttpRequest.QueryString%2A" /> and <see cref="System.Web.HttpRequest.Form%2A" /> collections; <see langword="false" /> to clear the <see cref="System.Web.HttpRequest.QueryString%2A" /> and <see cref="System.Web.HttpRequest.Form%2A" /> collections.</param>
+        <summary>When overridden in a derived class, executes the specified handler in the context of the current process, using a <see cref="T:System.IO.TextWriter" /> instance to capture output from the executed handler and a value that specifies whether to clear the <see cref="System.Web.HttpRequestBase.QueryString%2A" /> and <see cref="System.Web.HttpRequestBase.Form%2A" /> collections.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `writer` parameter is passed by reference to the Execute method. To retrieve the output from the handler after the method completes, you use the properties and methods of the `writer` object. For an example, see <xref:System.Web.HttpServerUtility.Execute%2A>.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="GetLastError">
@@ -245,9 +287,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>When overridden in a derived class, returns the most recent exception.</summary>
+        <returns>The most recent exception that was thrown.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="HtmlDecode">
@@ -266,10 +309,11 @@
         <Parameter Name="s" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="s">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="s">The HTML string to decode.</param>
+        <summary>When overridden in a derived class, decodes an HTML-encoded string and returns the decoded string.</summary>
+        <returns>The decoded text.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="HtmlDecode">
@@ -289,10 +333,18 @@
         <Parameter Name="output" Type="System.IO.TextWriter" />
       </Parameters>
       <Docs>
-        <param name="s">To be added.</param>
-        <param name="output">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="s">The HTML string to decode.</param>
+        <param name="output">The stream to contain the decoded string.</param>
+        <summary>When overridden in a derived class, decodes an HTML-encoded string and returns the results in a stream.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `output` parameter is passed by reference to the HtmlDecode method. To retrieve the output from the handler after the method completes, you use the properties and methods of the `output` object. For an example, see <xref:System.Web.HttpServerUtility.HtmlDecode%2A>.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="HtmlEncode">
@@ -311,10 +363,11 @@
         <Parameter Name="s" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="s">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="s">The string to encode.</param>
+        <summary>When overridden in a derived class, HTML-encodes a string and returns the encoded string.</summary>
+        <returns>The HTML-encoded text.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="HtmlEncode">
@@ -334,10 +387,18 @@
         <Parameter Name="output" Type="System.IO.TextWriter" />
       </Parameters>
       <Docs>
-        <param name="s">To be added.</param>
-        <param name="output">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="s">The string to encode.</param>
+        <param name="output">The stream to contain the encoded string.</param>
+        <summary>When overridden in a derived class, HTML-encodes a string and sends the resulting output to an output stream.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `output` parameter is passed by reference to the HtmlEncode method. To retrieve the output from the handler after the method completes, you use the properties and methods of the `output` object. For an example, see <xref:System.Web.HttpServerUtility.HtmlEncode%2A>.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="MachineName">
@@ -353,9 +414,10 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>When overridden in a derived class, gets the server's computer name.</summary>
+        <value>The name of the server computer.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="MapPath">
@@ -374,10 +436,11 @@
         <Parameter Name="path" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="path">The virtual path to get the physical path for.</param>
+        <summary>When overridden in a derived class, returns the physical file path that corresponds to the specified virtual path on the Web server.</summary>
+        <returns>The physical file path that corresponds to <paramref name="path" />.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="ScriptTimeout">
@@ -393,9 +456,10 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>When overridden in a derived class, gets or sets the request time-out value in seconds.</summary>
+        <value>The time-out value for requests.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Transfer">
@@ -414,9 +478,10 @@
         <Parameter Name="path" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="path">The URL of the page or handler to execute.</param>
+        <summary>When overridden in a derived class, terminates execution of the current process and starts execution of a page or handler that is specified with a URL.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Transfer">
@@ -436,10 +501,12 @@
         <Parameter Name="preserveForm" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <param name="preserveForm">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="path">The URL of the page or handler to execute.</param>
+        <param name="preserveForm">
+          <see langword="true" /> to preserve the <see cref="System.Web.HttpRequest.QueryString%2A" /> and <see cref="System.Web.HttpRequest.Form%2A" /> collections; <see langword="false" /> to clear the <see cref="System.Web.HttpRequest.QueryString%2A" /> and <see cref="System.Web.HttpRequest.Form%2A" /> collections.</param>
+        <summary>When overridden in a derived class, terminates execution of the current page and starts execution of a different page or handler by using the specified URL and a value that specifies whether to clear the <see cref="System.Web.HttpRequestBase.QueryString%2A" /> and <see cref="System.Web.HttpRequestBase.Form%2A" /> collections.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Transfer">
@@ -459,10 +526,12 @@
         <Parameter Name="preserveForm" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="handler">To be added.</param>
-        <param name="preserveForm">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="handler">The HTTP handler to transfer the current request to.</param>
+        <param name="preserveForm">
+          <see langword="true" /> to preserve the <see cref="System.Web.HttpRequest.QueryString%2A" /> and <see cref="System.Web.HttpRequest.Form%2A" /> collections; <see langword="false" /> to clear the <see cref="System.Web.HttpRequest.QueryString%2A" /> and <see cref="System.Web.HttpRequest.Form%2A" /> collections.</param>
+        <summary>When overridden in a derived class, terminates execution of the current process and starts execution of a new request, using a custom HTTP handler and a value that specifies whether to clear the <see cref="System.Web.HttpRequestBase.QueryString%2A" /> and <see cref="System.Web.HttpRequestBase.Form%2A" /> collections.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="TransferRequest">
@@ -481,9 +550,10 @@
         <Parameter Name="path" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="path">The URL of the page or handler to execute.</param>
+        <summary>When overridden in a derived class, asynchronously executes the end point at the specified URL.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="TransferRequest">
@@ -503,10 +573,12 @@
         <Parameter Name="preserveForm" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <param name="preserveForm">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="path">The URL of the page or handler to execute.</param>
+        <param name="preserveForm">
+          <see langword="true" /> to preserve the <see cref="System.Web.HttpRequest.QueryString%2A" /> and <see cref="System.Web.HttpRequest.Form%2A" /> collections; <see langword="false" /> to clear the <see cref="System.Web.HttpRequest.QueryString%2A" /> and <see cref="System.Web.HttpRequest.Form%2A" /> collections.</param>
+        <summary>When overridden in a derived class, asynchronously executes the endpoint at the specified URL and specifies whether to clear the <see cref="System.Web.HttpRequestBase.QueryString%2A" /> and <see cref="System.Web.HttpRequestBase.Form%2A" /> collections.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="TransferRequest">
@@ -528,12 +600,14 @@
         <Parameter Name="headers" Type="System.Collections.Specialized.NameValueCollection" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <param name="preserveForm">To be added.</param>
-        <param name="method">To be added.</param>
-        <param name="headers">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="path">The URL of the page or handler to execute.</param>
+        <param name="preserveForm">
+          <see langword="true" /> to preserve the <see cref="System.Web.HttpRequest.QueryString%2A" /> and <see cref="System.Web.HttpRequest.Form%2A" /> collections; <see langword="false" /> to clear the <see cref="System.Web.HttpRequest.QueryString%2A" /> and <see cref="System.Web.HttpRequest.Form%2A" /> collections.</param>
+        <param name="method">The HTTP method (<see langword="GET" />, <see langword="POST" />, and so on) to use for the new request. If <see langword="null" />, the HTTP method of the original request is used.</param>
+        <param name="headers">A collection of request headers for the new request.</param>
+        <summary>When overridden in a derived class, asynchronously executes the endpoint at the specified URL by using the specified HTTP method and headers.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="UrlDecode">
@@ -552,10 +626,11 @@
         <Parameter Name="s" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="s">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="s">The string to decode.</param>
+        <summary>When overridden in a derived class, decodes a URL-encoded string and returns the decoded string.</summary>
+        <returns>The decoded text.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="UrlDecode">
@@ -575,10 +650,18 @@
         <Parameter Name="output" Type="System.IO.TextWriter" />
       </Parameters>
       <Docs>
-        <param name="s">To be added.</param>
-        <param name="output">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="s">The string to decode.</param>
+        <param name="output">The stream to contain the decoded string.</param>
+        <summary>When overridden in a derived class, decodes a URL-encoded string and sends the resulting output to a stream.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `output` parameter is passed by reference to the UrlDecode method. To retrieve the output from the handler after the method completes, you use the properties and methods of the `output` object. For an example, see <xref:System.Web.HttpServerUtility.HtmlDecode%2A>.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="UrlEncode">
@@ -597,10 +680,11 @@
         <Parameter Name="s" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="s">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="s">The text to URL-encode.</param>
+        <summary>When overridden in a derived class, URL-encodes a string and returns the encoded string.</summary>
+        <returns>The URL-encoded text.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="UrlEncode">
@@ -620,10 +704,18 @@
         <Parameter Name="output" Type="System.IO.TextWriter" />
       </Parameters>
       <Docs>
-        <param name="s">To be added.</param>
-        <param name="output">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="s">The string to encode.</param>
+        <param name="output">The stream to contain the encoded string.</param>
+        <summary>When overridden in a derived class, URL-encodes a string and sends the resulting output to a stream.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `output` parameter is passed by reference to the UrlEncode method. To retrieve the output from the handler after the method completes, you use the properties and methods of the `output` object. For an example, see <xref:System.Web.HttpServerUtility.UrlEncode%2A>.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="UrlPathEncode">
@@ -642,10 +734,11 @@
         <Parameter Name="s" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="s">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="s">The string to URL-encode.</param>
+        <summary>When overridden in a derived class, URL-encodes the path section of a URL string.</summary>
+        <returns>The URL-encoded text.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="UrlTokenDecode">
@@ -664,10 +757,11 @@
         <Parameter Name="input" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="input">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="input">The URL string token to decode.</param>
+        <summary>When overridden in a derived class, decodes a URL string token into an equivalent byte array by using base64-encoded digits.</summary>
+        <returns>The byte array that contains the decoded URL token.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="UrlTokenEncode">
@@ -686,10 +780,11 @@
         <Parameter Name="input" Type="System.Byte[]" />
       </Parameters>
       <Docs>
-        <param name="input">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="input">The byte array to encode.</param>
+        <summary>When overridden in a derived class, encodes a byte array into an equivalent string representation by using base64 digits, which makes it usable for transmission on the URL.</summary>
+        <returns>The string that contains the encoded array if the length of <paramref name="input" /> is greater than 1; otherwise, an empty string ("")</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
   </Members>

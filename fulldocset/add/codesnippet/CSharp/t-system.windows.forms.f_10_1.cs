@@ -8,8 +8,8 @@ public void InitMyForm()
 	label1.Text = "Start position information";
 	this.Controls.Add(label1);
 
-	// Changes the window state to Maximized.
-	WindowState = FormWindowState.Maximized;
-	// Displays the state information.
-	label1.Text = "The form window is " + WindowState;	
+	// Moves the start position to the center of the screen.
+	StartPosition = FormStartPosition.CenterScreen;
+	// Displays the position information.
+	label1.Text = "The start position is " + StartPosition;	
 }

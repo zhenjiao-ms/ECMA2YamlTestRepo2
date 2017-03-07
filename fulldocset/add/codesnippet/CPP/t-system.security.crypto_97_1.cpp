@@ -1,131 +1,154 @@
+//
+// This example signs an XML file using an
+// envelope signature. It then verifies the 
+// signed XML.
+//
+#using <System.Security.dll>
+#using <System.Xml.dll>
+
 using namespace System;
-using namespace System::IO;
 using namespace System::Security::Cryptography;
+using namespace System::Security::Cryptography::X509Certificates;
+using namespace System::Security::Cryptography::Xml;
+using namespace System::Text;
+using namespace System::Xml;
 
-// Computes a keyed hash for a source file, creates a target file with the keyed hash
-// prepended to the contents of the source file, then decrypts the file and compares
-// the source and the decrypted files.
-void EncodeFile( array<Byte>^key, String^ sourceFile, String^ destFile )
+// Sign an XML file and save the signature in a new file. This method does not  
+// save the public key within the XML file.  This file cannot be verified unless  
+// the verifying code has the key with which it was signed.
+void SignXmlFile( String^ FileName, String^ SignedFileName, RSA^ Key )
 {
    
-   // Initialize the keyed hash object.
-   HMACRIPEMD160^ myhmacRIPEMD160 = gcnew HMACRIPEMD160( key );
-   FileStream^ inStream = gcnew FileStream( sourceFile,FileMode::Open );
-   FileStream^ outStream = gcnew FileStream( destFile,FileMode::Create );
+   // Create a new XML document.
+   XmlDocument^ doc = gcnew XmlDocument;
    
-   // Compute the hash of the input file.
-   array<Byte>^hashValue = myhmacRIPEMD160->ComputeHash( inStream );
+   // Load the passed XML file using its name.
+   doc->Load( gcnew XmlTextReader( FileName ) );
    
-   // Reset inStream to the beginning of the file.
-   inStream->Position = 0;
+   // Create a SignedXml object.
+   SignedXml^ signedXml = gcnew SignedXml( doc );
    
-   // Write the computed hash value to the output file.
-   outStream->Write( hashValue, 0, hashValue->Length );
+   // Add the key to the SignedXml document. 
+   signedXml->SigningKey = Key;
    
-   // Copy the contents of the sourceFile to the destFile.
-   int bytesRead;
+   // Create a reference to be signed.
+   Reference^ reference = gcnew Reference;
+   reference->Uri = "";
    
-   // read 1K at a time
-   array<Byte>^buffer = gcnew array<Byte>(1024);
-   do
+   // Add an enveloped transformation to the reference.
+   XmlDsigEnvelopedSignatureTransform^ env = gcnew XmlDsigEnvelopedSignatureTransform;
+   reference->AddTransform( env );
+   
+   // Add the reference to the SignedXml object.
+   signedXml->AddReference( reference );
+   
+   // Compute the signature.
+   signedXml->ComputeSignature();
+   
+   // Get the XML representation of the signature and save
+   // it to an XmlElement object.
+   XmlElement^ xmlDigitalSignature = signedXml->GetXml();
+   
+   // Append the element to the XML document.
+   doc->DocumentElement->AppendChild( doc->ImportNode( xmlDigitalSignature, true ) );
+   if ( (doc->FirstChild)->GetType() == XmlDeclaration::typeid )
    {
-      
-      // Read from the wrapping CryptoStream.
-      bytesRead = inStream->Read( buffer, 0, 1024 );
-      outStream->Write( buffer, 0, bytesRead );
+      doc->RemoveChild( doc->FirstChild );
    }
-   while ( bytesRead > 0 );
 
-   myhmacRIPEMD160->Clear();
    
-   // Close the streams
-   inStream->Close();
-   outStream->Close();
-   return;
-} // end EncodeFile
+   // Save the signed XML document to a file specified
+   // using the passed string.
+   XmlTextWriter^ xmltw = gcnew XmlTextWriter( SignedFileName,gcnew UTF8Encoding( false ) );
+   doc->WriteTo( xmltw );
+   xmltw->Close();
+}
 
 
-
-// Decrypt the encoded file and compare to original file.
-bool DecodeFile( array<Byte>^key, String^ sourceFile )
+// Verify the signature of an XML file against an asymmetric 
+// algorithm and return the result.
+Boolean VerifyXmlFile( String^ Name, RSA^ Key )
 {
    
-   // Initialize the keyed hash object. 
-   HMACRIPEMD160^ hmacRIPEMD160 = gcnew HMACRIPEMD160( key );
+   // Create a new XML document.
+   XmlDocument^ xmlDocument = gcnew XmlDocument;
    
-   // Create an array to hold the keyed hash value read from the file.
-   array<Byte>^storedHash = gcnew array<Byte>(hmacRIPEMD160->HashSize / 8);
+   // Load the passed XML file into the document. 
+   xmlDocument->Load( Name );
    
-   // Create a FileStream for the source file.
-   FileStream^ inStream = gcnew FileStream( sourceFile,FileMode::Open );
+   // Create a new SignedXml object and pass it
+   // the XML document class.
+   SignedXml^ signedXml = gcnew SignedXml( xmlDocument );
    
-   // Read in the storedHash.
-   inStream->Read( storedHash, 0, storedHash->Length );
+   // Find the "Signature" node and create a new
+   // XmlNodeList object.
+   XmlNodeList^ nodeList = xmlDocument->GetElementsByTagName( "Signature" );
    
-   // Compute the hash of the remaining contents of the file.
-   // The stream is properly positioned at the beginning of the content, 
-   // immediately after the stored hash value.
-   array<Byte>^computedHash = hmacRIPEMD160->ComputeHash( inStream );
+   // Load the signature node.
+   signedXml->LoadXml( safe_cast<XmlElement^>(nodeList->Item( 0 )) );
    
-   // compare the computed hash with the stored value
-   bool err = false;
-   for ( int i = 0; i < storedHash->Length; i++ )
-   {
-      if ( computedHash[ i ] != storedHash[ i ] )
-      {
-         err = true;
-      }
-   }
-   if (err)
-        {
-            Console::WriteLine("Hash values differ! Encoded file has been tampered with!");
-            return false;
-        }
-        else
-        {
-            Console::WriteLine("Hash values agree -- no tampering occurred.");
-            return true;
-        }
+   // Check the signature and return the result.
+   return signedXml->CheckSignature( Key );
+}
 
-} //end DecodeFile
 
+// Create example data to sign.
+void CreateSomeXml( String^ FileName )
+{
+   
+   // Create a new XmlDocument Object*.
+   XmlDocument^ document = gcnew XmlDocument;
+   
+   // Create a new XmlNode object.
+   XmlNode^ node = document->CreateNode( XmlNodeType::Element, "", "MyElement", "samples" );
+   
+   // Add some text to the node.
+   node->InnerText = "Example text to be signed.";
+   
+   // Append the node to the document.
+   document->AppendChild( node );
+   
+   // Save the XML document to the file name specified.
+   XmlTextWriter^ xmltw = gcnew XmlTextWriter( FileName,gcnew UTF8Encoding( false ) );
+   document->WriteTo( xmltw );
+   xmltw->Close();
+}
 
 int main()
 {
-   array<String^>^Fileargs = Environment::GetCommandLineArgs();
-   String^ usageText = "Usage: HMACRIPEMD160 inputfile.txt encryptedfile.hsh\nYou must specify the two file names. Only the first file must exist.\n";
-   
-   //If no file names are specified, write usage text.
-   if ( Fileargs->Length < 3 )
+   try
    {
-      Console::WriteLine( usageText );
+      
+      // Generate a signing key.
+      RSACryptoServiceProvider^ Key = gcnew RSACryptoServiceProvider;
+      
+      // Create an XML file to sign.
+      CreateSomeXml( "Example.xml" );
+      Console::WriteLine( "New XML file created." );
+      
+      // Sign the XML that was just created and save it in a 
+      // new file.
+      SignXmlFile( "Example.xml", "signedExample.xml", Key );
+      Console::WriteLine( "XML file signed." );
+      
+      // Verify the signature of the signed XML.
+      Console::WriteLine( "Verifying signature..." );
+      bool result = VerifyXmlFile( "SignedExample.xml", Key );
+      
+      // Display the results of the signature verification to 
+      // the console.
+      if ( result )
+      {
+         Console::WriteLine( "The XML signature is valid." );
+      }
+      else
+      {
+         Console::WriteLine( "The XML signature is not valid." );
+      }
    }
-   else
+   catch ( CryptographicException^ e ) 
    {
-      try
-      {
-         
-         // Create a random key using a random number generator. This would be the
-         //  secret key shared by sender and receiver.
-         array<Byte>^secretkey = gcnew array<Byte>(64);
-         
-         //RNGCryptoServiceProvider is an implementation of a random number generator.
-         RNGCryptoServiceProvider^ rng = gcnew RNGCryptoServiceProvider;
-         
-         // The array is now filled with cryptographically strong random bytes.
-         rng->GetBytes( secretkey );
-         
-         // Use the secret key to encode the message file.
-         EncodeFile( secretkey, Fileargs[ 1 ], Fileargs[ 2 ] );
-         
-         // Take the encoded file and decode
-         DecodeFile( secretkey, Fileargs[ 2 ] );
-      }
-      catch ( IOException^ e ) 
-      {
-         Console::WriteLine( "Error: File not found", e );
-      }
-
+      Console::WriteLine( e->Message );
    }
-} //end main
 
+}

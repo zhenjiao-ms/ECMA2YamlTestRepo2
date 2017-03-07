@@ -1,67 +1,91 @@
-    Private Sub InitializeListView()
 
-        ' Set up the inital values for the ListView and populate it.
-        Me.ListView1 = New ListView
-        Me.ListView1.Dock = DockStyle.Top
-        Me.ListView1.Location = New System.Drawing.Point(0, 0)
-        Me.ListView1.Size = New System.Drawing.Size(292, 130)
-        Me.ListView1.View = View.Details
-        Me.ListView1.FullRowSelect = True
+Imports System.Drawing
+Imports System.Windows.Forms
 
-        Dim breakfast() As String = New String() {"Continental Breakfast", "Pancakes and Sausage", _
-       "Denver Omelet", "Eggs & Bacon", "Bagel & Cream Cheese"}
+Public Class Form1
+    Inherits System.Windows.Forms.Form
 
-        Dim breakfastPrices() As String = New String() {"3.09", "4.09", "4.19", _
-           "4.79", "2.09"}
+    Public Sub New()
+        MyBase.New()
+        Me.Button1 = New System.Windows.Forms.Button
+        Me.SortByLengthListBox1 = New SortByLengthListBox
+        Me.SuspendLayout()
+        Me.Button1.Location = New System.Drawing.Point(64, 16)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(176, 23)
+        Me.Button1.TabIndex = 0
+        Me.Button1.Text = "Click me for list sorted by length"
+        Me.SortByLengthListBox1.Items.AddRange(New Object() {"System", _
+            "System.Windows.Forms", "System.Xml", _
+            "System.Net", "System.Drawing", "System.IO"})
+        Me.SortByLengthListBox1.Location = New System.Drawing.Point(72, 48)
+        Me.SortByLengthListBox1.Name = "SortByLengthListBox1"
+        Me.SortByLengthListBox1.Size = New System.Drawing.Size(120, 95)
+        Me.SortByLengthListBox1.TabIndex = 1
+        Me.ClientSize = New System.Drawing.Size(292, 266)
+        Me.Controls.Add(Me.SortByLengthListBox1)
+        Me.Controls.Add(Me.Button1)
+        Me.Name = "Form1"
+        Me.Text = "Sort Example"
+        Me.ResumeLayout(False)
 
-        PopulateMenu("Breakfast", breakfast, breakfastPrices)
     End Sub
 
-    Private Sub PopulateMenu(ByVal meal As String, _
-        ByVal menuItems() As String, ByVal menuPrices() As String)
-        Dim columnHeader1 As New ColumnHeader
-        With columnHeader1
-            .Text = meal & " Choices"
-            .TextAlign = HorizontalAlignment.Left
-            .Width = 146
-        End With
-        Dim columnHeader2 As New ColumnHeader
-        With columnHeader2
-            .Text = "Price"
-            .TextAlign = HorizontalAlignment.Center
-            .Width = 142
-        End With
-        Me.ListView1.Columns.Add(columnHeader1)
-        Me.ListView1.Columns.Add(columnHeader2)
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents SortByLengthListBox1 As SortByLengthListBox
 
-        Dim count As Integer
-
-        For count = 0 To menuItems.Length - 1
-            Dim listItem As New ListViewItem(menuItems(count))
-            listItem.SubItems.Add(menuPrices(count))
-            ListView1.Items.Add(listItem)
-        Next
-
-        ' Use the Selected property to select the first item on 
-        ' the list.
-        ListView1.Focus()
-        ListView1.Items(0).Selected = True
+    Public Shared Sub Main()
+        Application.Run(New Form1)
     End Sub
 
-
+    
     Private Sub Button1_Click(ByVal sender As System.Object, _
         ByVal e As System.EventArgs) Handles Button1.Click
 
-        ' Create new values for the ListView, clear the list, 
-        ' and repopulate it.
-        Dim lunch() As String = New String() {"Hamburger", _ 
-            "Grilled Cheese", "Soup & Salad", "Club Sandwich", "Hotdog"}
-
-        Dim lunchPrices() As String = New String() {"4.09", "5.09", _
-            "5.19", "4.79", "2.09"}
-
-        ListView1.Clear()
-
-        PopulateMenu("Lunch", lunch, lunchPrices)
-        Button1.Enabled = False
+        ' Set the Sorted property to True to raise the overridden Sort
+        ' method.
+        SortByLengthListBox1.Sorted = True
     End Sub
+End Class
+
+' This class inherits from ListBox and implements a different 
+' sorting method. Sort will be called by setting the class's Sorted
+' property to True.
+Public Class SortByLengthListBox
+    Inherits ListBox
+
+    Public Sub New()
+        MyBase.New()
+    End Sub
+
+    ' Overrides the parent class Sort to perform a simple
+    ' bubble sort on the length of the string contained in each item.
+    Protected Overrides Sub Sort()
+        If (Items.Count > 1) Then
+
+            Dim swapped As Boolean
+
+            Do
+                Dim counter As Integer = Items.Count - 1
+                swapped = False
+                While (counter > 0)
+
+                    ' Compare the items' length.
+                    If Items(counter).ToString.Length < _
+                       Items(counter - 1).ToString.Length Then
+
+                        ' If true, swap the items.
+                        Dim temp As Object = Items(counter)
+                        Items(counter) = Items(counter - 1)
+                        Items(counter - 1) = temp
+                        swapped = True
+
+                    End If
+                    ' Decrement the counter.
+                    counter -= 1
+                End While
+            Loop While (swapped = True)
+        End If
+    End Sub
+
+End Class

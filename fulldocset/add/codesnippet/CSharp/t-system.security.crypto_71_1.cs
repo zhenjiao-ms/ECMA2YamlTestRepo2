@@ -2,71 +2,59 @@ using System;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 
-class AsnEncodedDataSample
+public class Example
 {
-	static void Main()
-	{		
-		//The following example demonstrates the usage the AsnEncodedData classes.
-		// Asn encoded data is read from the extensions of an X509 certificate.
-		try
-		{
-			// Open the certificate store.
-			X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
-			store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
-			X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
-			X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
-			// Select one or more certificates to display extensions information.
-			X509Certificate2Collection scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection);
+    static void Main()
+    {
+        Console.WriteLine("\r\nExists Certs Name and Location");
+        Console.WriteLine("------ ----- -------------------------");
 
-			// Create a new AsnEncodedDataCollection object.
-			AsnEncodedDataCollection asncoll = new AsnEncodedDataCollection();
-			for (int i = 0; i < scollection.Count; i++)
-			{
-				// Display certificate information.
-				Console.ForegroundColor = ConsoleColor.Red;
-				Console.WriteLine("Certificate name: {0}", scollection[i].GetName());
-				Console.ResetColor();
-				// Display extensions information.
-				foreach (X509Extension extension in scollection[i].Extensions)
-				{
-					// Create an AsnEncodedData object using the extensions information.
-					AsnEncodedData asndata = new AsnEncodedData(extension.Oid, extension.RawData);
-					Console.ForegroundColor = ConsoleColor.Green;
-					Console.WriteLine("Extension type: {0}", extension.Oid.FriendlyName);
-					Console.WriteLine("Oid value: {0}",asndata.Oid.Value);
-					Console.WriteLine("Raw data length: {0} {1}", asndata.RawData.Length, Environment.NewLine);
-					Console.ResetColor();
-					Console.WriteLine(asndata.Format(true));
-					Console.WriteLine(Environment.NewLine);
-					// Add the AsnEncodedData object to the AsnEncodedDataCollection object.
-					asncoll.Add(asndata);
-				}
-				Console.WriteLine(Environment.NewLine);
-			}
-			Console.ForegroundColor = ConsoleColor.Red;
-			Console.WriteLine("Number of AsnEncodedData items in the collection: {0} {1}", asncoll.Count, Environment.NewLine);
-			Console.ResetColor();
+        foreach (StoreLocation storeLocation in (StoreLocation[]) 
+            Enum.GetValues(typeof(StoreLocation)))
+        {
+            foreach (StoreName storeName in (StoreName[]) 
+                Enum.GetValues(typeof(StoreName)))
+            {
+                X509Store store = new X509Store(storeName, storeLocation);
 
-			store.Close();
-			//Create an enumerator for moving through the collection.
-			AsnEncodedDataEnumerator asne = asncoll.GetEnumerator();
-			//You must execute a MoveNext() to get to the first item in the collection.
-			asne.MoveNext();
-			// Write out AsnEncodedData in the collection.
-			Console.ForegroundColor = ConsoleColor.Blue;
-			Console.WriteLine("First AsnEncodedData in the collection: {0}", asne.Current.Format(true));
-			Console.ResetColor();
+                try
+                {
+                    store.Open(OpenFlags.OpenExistingOnly);
 
-			asne.MoveNext();
-			Console.ForegroundColor = ConsoleColor.DarkBlue;
-			Console.WriteLine("Second AsnEncodedData in the collection: {0}", asne.Current.Format(true));
-			Console.ResetColor();
-			//Return index in the collection to the beginning.
-			asne.Reset();
-		}
-		catch (CryptographicException)
-		{
-			Console.WriteLine("Information could not be written out for this certificate.");
-		}
-	}
+                    Console.WriteLine("Yes    {0,4}  {1}, {2}", 
+                        store.Certificates.Count, store.Name, store.Location);
+                }   
+                catch (CryptographicException)
+                {
+                    Console.WriteLine("No           {0}, {1}", 
+                        store.Name, store.Location);
+                }
+            }
+            Console.WriteLine();
+        }
+    }
 }
+
+/* This example produces output similar to the following:
+
+Exists Certs Name and Location
+------ ----- -------------------------
+Yes       1  AddressBook, CurrentUser
+Yes      25  AuthRoot, CurrentUser
+Yes     136  CA, CurrentUser
+Yes      55  Disallowed, CurrentUser
+Yes      20  My, CurrentUser
+Yes      36  Root, CurrentUser
+Yes       0  TrustedPeople, CurrentUser
+Yes       1  TrustedPublisher, CurrentUser
+
+No           AddressBook, LocalMachine
+Yes      25  AuthRoot, LocalMachine
+Yes     131  CA, LocalMachine
+Yes      55  Disallowed, LocalMachine
+Yes       3  My, LocalMachine
+Yes      36  Root, LocalMachine
+Yes       0  TrustedPeople, LocalMachine
+Yes       1  TrustedPublisher, LocalMachine
+
+ */

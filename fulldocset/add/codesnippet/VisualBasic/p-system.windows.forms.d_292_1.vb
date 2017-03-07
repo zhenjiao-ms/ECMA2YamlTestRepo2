@@ -1,52 +1,32 @@
-    ' Draws subitem text and applies content-based formatting.
-    Private Sub listView1_DrawSubItem(ByVal sender As Object, _
-        ByVal e As DrawListViewSubItemEventArgs) _
-        Handles listView1.DrawSubItem
+            ' Get the content that spans multiple columns.
+            Dim recipe As Object = _
+                Me.dataGridView1.Rows.SharedRow(e.RowIndex).Cells(2).Value
 
-        Dim flags As TextFormatFlags = TextFormatFlags.Left
+            If (recipe IsNot Nothing) Then
+                Dim text As String = recipe.ToString()
 
-        Dim sf As New StringFormat()
-        Try
+                ' Calculate the bounds for the content that spans multiple 
+                ' columns, adjusting for the horizontal scrolling position 
+                ' and the current row height, and displaying only whole
+                ' lines of text.
+                Dim textArea As Rectangle = rowBounds
+                textArea.X -= Me.dataGridView1.HorizontalScrollingOffset
+                textArea.Width += Me.dataGridView1.HorizontalScrollingOffset
+                textArea.Y += rowBounds.Height - e.InheritedRowStyle.Padding.Bottom
+                textArea.Height -= rowBounds.Height - e.InheritedRowStyle.Padding.Bottom
+                textArea.Height = (textArea.Height \ e.InheritedRowStyle.Font.Height) * _
+                    e.InheritedRowStyle.Font.Height
 
-            ' Store the column text alignment, letting it default
-            ' to Left if it has not been set to Center or Right.
-            Select Case e.Header.TextAlign
-                Case HorizontalAlignment.Center
-                    sf.Alignment = StringAlignment.Center
-                    flags = TextFormatFlags.HorizontalCenter
-                Case HorizontalAlignment.Right
-                    sf.Alignment = StringAlignment.Far
-                    flags = TextFormatFlags.Right
-            End Select
+                ' Calculate the portion of the text area that needs painting.
+                Dim clip As RectangleF = textArea
+                clip.Width -= Me.dataGridView1.RowHeadersWidth + 1 - clip.X
+                clip.X = Me.dataGridView1.RowHeadersWidth + 1
+                Dim oldClip As RectangleF = e.Graphics.ClipBounds
+                e.Graphics.SetClip(clip)
 
-            ' Draw the text and background for a subitem with a 
-            ' negative value. 
-            Dim subItemValue As Double
-            If e.ColumnIndex > 0 AndAlso _
-                Double.TryParse(e.SubItem.Text, NumberStyles.Currency, _
-                NumberFormatInfo.CurrentInfo, subItemValue) AndAlso _
-                subItemValue < 0 Then
+                ' Draw the content that spans multiple columns.
+                e.Graphics.DrawString(text, e.InheritedRowStyle.Font, forebrush, _
+                    textArea)
 
-                ' Unless the item is selected, draw the standard 
-                ' background to make it stand out from the gradient.
-                If (e.ItemState And ListViewItemStates.Selected) = 0 Then
-                    e.DrawBackground()
-                End If
-
-                ' Draw the subitem text in red to highlight it. 
-                e.Graphics.DrawString(e.SubItem.Text, _
-                    Me.listView1.Font, Brushes.Red, e.Bounds, sf)
-
-                Return
-
+                e.Graphics.SetClip(oldClip)
             End If
-
-            ' Draw normal text for a subitem with a nonnegative 
-            ' or nonnumerical value.
-            e.DrawText(flags)
-
-        Finally
-            sf.Dispose()
-        End Try
-
-    End Sub

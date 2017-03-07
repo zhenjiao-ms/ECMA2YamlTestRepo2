@@ -1,1 +1,1 @@
-            NetMsmqSecurityMode secMode = security.Mode;
+	    EnvelopeVersion envelopeVersion = binding.EnvelopeVersion;

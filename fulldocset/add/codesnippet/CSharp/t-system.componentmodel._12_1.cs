@@ -1,10 +1,8 @@
-    [RecommendedAsConfigurable(true)]
-     public int MyProperty {
-        get {
-           // Insert code here.
-           return 0;
-        }
-        set {
-           // Insert code here.
-        }
-     }
+    [DesignerSerializerAttribute(typeof(ExampleSerializer), typeof(CodeDomSerializer))]
+	public class ExampleControl : System.Windows.Forms.UserControl
+	{
+		public ExampleControl()
+		{
+
+		}
+	}

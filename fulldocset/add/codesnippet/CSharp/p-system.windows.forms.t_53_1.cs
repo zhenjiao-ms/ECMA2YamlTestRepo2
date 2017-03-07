@@ -1,35 +1,36 @@
-		internal ToolStripButton changeDirectionButton;
+using System.Drawing;
+using System.Windows.Forms;
 
-		private void InitializeMovingToolStrip()
-		{
-            movingToolStrip = new ToolStrip();
+public class Form1 : Form
+{
+	private TabControl tabControl1;
+	private TabPage tabPage1;
 
-			changeDirectionButton = new ToolStripButton();
+	private void MyTabs()
+	{
+		this.tabControl1 = new TabControl();
+		this.tabPage1 = new TabPage();
 
-			movingToolStrip.AutoSize = true;
-			movingToolStrip.RenderMode = ToolStripRenderMode.System;
+		this.tabControl1.Controls.AddRange(new Control[] {
+			this.tabPage1});
+		this.tabControl1.Location = new Point(25, 25);
+		this.tabControl1.Size = new Size(250, 250);
 
-			changeDirectionButton.TextDirection = ToolStripTextDirection.Vertical270;
-			changeDirectionButton.Overflow = ToolStripItemOverflow.Never;
-			changeDirectionButton.Text = "Change Alignment";
-				movingToolStrip.Items.Add(changeDirectionButton);
-		}
+		// Displays a string, myTabPage, on tabPage1.
+		this.tabPage1.Text = "myTabPage";
 
+		this.ClientSize = new Size(300, 300);
+		this.Controls.AddRange(new Control[] {
+			this.tabControl1});
+	}
 
-		private void changeDirectionButton_Click(object sender, EventArgs e)
-		{
+	public Form1()
+	{
+		MyTabs();
+	}
 
-			ToolStripItem item = (ToolStripItem)sender;
-
-			if (item.TextDirection == ToolStripTextDirection.Vertical270 || item.TextDirection == ToolStripTextDirection.Vertical90)
-			{
-				item.TextDirection = ToolStripTextDirection.Horizontal;
-				movingToolStrip.Dock = System.Windows.Forms.DockStyle.Top;
-			}
-			else
-			{
-				item.TextDirection = ToolStripTextDirection.Vertical270;
-				movingToolStrip.Dock = System.Windows.Forms.DockStyle.Left;
-			}
-
-		}
+	static void Main() 
+	{
+		Application.Run(new Form1());
+	}
+}

@@ -1,21 +1,11 @@
-                // Create a service host.
-                Uri httpUri = new Uri("http://localhost/Calculator");
-                ServiceHost sh = new ServiceHost(typeof(Calculator), httpUri);
+            WSHttpBinding myBinding = new WSHttpBinding();
+            myBinding.Security.Mode = SecurityMode.Message;
+            myBinding.Security.Message.ClientCredentialType = 
+                MessageCredentialType.UserName;
 
-                // Create a binding that uses a WindowsServiceCredential.
-                WSHttpBinding b = new WSHttpBinding(SecurityMode.Message);
-                b.Security.Message.ClientCredentialType = MessageCredentialType.Windows;
 
-                // Add an endpoint.
-                sh.AddServiceEndpoint(typeof(ICalculator), b, "WindowsCalculator");
+            CalculatorClient client = new CalculatorClient("default");
 
-                // Get a reference to the WindowsServiceCredential object.
-                WindowsServiceCredential winCredential =
-                    sh.Credentials.WindowsAuthentication;
-                // Print out values.
-                Console.WriteLine("IncludeWindowsGroup: {0}",
-                    winCredential.IncludeWindowsGroups);
-                Console.WriteLine("UserNamePasswordValidationMode: {0}",
-                    winCredential.AllowAnonymousLogons);
+            client.ClientCredentials.UserName.Password = ReturnPassword();
 
-                Console.ReadLine();
+            client.ClientCredentials.UserName.UserName = ReturnUsername();

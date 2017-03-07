@@ -1,14 +1,10 @@
-        public void LinkComponentChangedEvent(IComponentChangeService changeService)
+        // This example method creates a DesignerEventArgs using the specified designer host.
+        // Typically, this type of event args is created by the IDesignerEventService.  
+        public DesignerEventArgs CreateComponentEventArgs(IDesignerHost host)
         {
-            // Registers an event handler for the ComponentChanged event.
-            changeService.ComponentChanged += new ComponentChangedEventHandler(this.OnComponentChanged);            
-        }
+            DesignerEventArgs args = new DesignerEventArgs(host);
 
-        private void OnComponentChanged(object sender, ComponentChangedEventArgs e)
-        {
-            // Displays changed component information on the console.
-            Console.WriteLine("Type of the component that has changed: "+e.Component.GetType().FullName);      
-            Console.WriteLine("Name of the member of the component that has changed: "+e.Member.Name);            
-            Console.WriteLine("Old value of the member: "+e.OldValue.ToString());
-            Console.WriteLine("New value of the member: "+e.NewValue.ToString());
+            // The designer host of the created or disposed document:  args.Component
+
+            return args;
         }

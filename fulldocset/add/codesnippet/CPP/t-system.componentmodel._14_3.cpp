@@ -1,5 +1,5 @@
-         AttributeCollection^ attributes = TypeDescriptor::GetAttributes( MyProperty );
-         if ( attributes[ BrowsableAttribute::typeid ]->Equals( BrowsableAttribute::Yes ) )
-         {
-            // Insert code here.
-         }
+      AttributeCollection^ attributes = TypeDescriptor::GetAttributes( MyProperty );
+      if ( attributes[ RecommendedAsConfigurableAttribute::typeid ]->Equals( RecommendedAsConfigurableAttribute::Yes ) )
+      {
+         // Insert code here.
+      }

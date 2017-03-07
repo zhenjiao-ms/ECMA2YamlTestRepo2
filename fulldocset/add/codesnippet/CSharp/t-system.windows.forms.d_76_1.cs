@@ -1,228 +1,135 @@
-#region Using directives
-
-using System;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Windows.Forms;
-
-#endregion
-
-class Form1 : Form
+public class Form1 : Form
 {
+    private List<Employee> employees = new List<Employee>();
+    private List<Task> tasks = new List<Task>();
+    private Button reportButton = new Button();
     private DataGridView dataGridView1 = new DataGridView();
-    private ContextMenuStrip employeeMenuStrip = new ContextMenuStrip();
-    private ContextMenuStrip managerMenuStrip = new ContextMenuStrip();
-    private ToolStripMenuItem toolStripMenuItem1 = new ToolStripMenuItem();
-    private ToolStripMenuItem toolStripMenuItem2 = new ToolStripMenuItem();
-    private ToolStripMenuItem toolStripMenuItem3 = new ToolStripMenuItem();
 
-    private int contextMenuRowIndex;
-
-    public Form1()
-    {
-        // Initialize the form.
-        // This code can be replaced with designer generated code.
-        this.Size = new Size(700, 300);
-        this.Controls.Add(dataGridView1);
-
-        toolStripMenuItem1.Text = "View Employee Sales Report";
-        toolStripMenuItem2.Text = "View Team Sales Report";
-        toolStripMenuItem3.Text = "View Company Sales Team Ranking Report";
-    }
-
-    protected override void OnLoad(EventArgs e)
-    {
-        dataGridView1.DataBindingComplete +=
-            new DataGridViewBindingCompleteEventHandler(
-            dataGridView1_DataBindingComplete);
-        dataGridView1.CellToolTipTextNeeded +=
-            new DataGridViewCellToolTipTextNeededEventHandler(
-            dataGridView1_CellToolTipTextNeeded);
-        dataGridView1.RowContextMenuStripNeeded +=
-            new DataGridViewRowContextMenuStripNeededEventHandler(
-            dataGridView1_RowContextMenuStripNeeded);
-        toolStripMenuItem1.Click +=
-            new EventHandler(toolStripMenuItem1_Click);
-        toolStripMenuItem2.Click +=
-            new EventHandler(toolStripMenuItem2_Click);
-        toolStripMenuItem3.Click +=
-            new EventHandler(toolStripMenuItem3_Click);
-
-        employeeMenuStrip.Items.Add(toolStripMenuItem1);
-
-        managerMenuStrip.Items.Add(toolStripMenuItem2);
-        managerMenuStrip.Items.Add(toolStripMenuItem3);
-
-        PopulateDataGridView();
-
-        base.OnLoad(e);
-    }
-
-    // Establish the main entry point for the application.
-    [STAThreadAttribute()]
+    [STAThread]
     public static void Main()
     {
         Application.Run(new Form1());
     }
 
-    // Replace this with your own code to populate the DataGridView.
-    private void PopulateDataGridView()
+    public Form1()
     {
         dataGridView1.Dock = DockStyle.Fill;
-        dataGridView1.AllowUserToAddRows = false;
-        dataGridView1.MultiSelect = false;
-        dataGridView1.ReadOnly = true;
-        dataGridView1.AllowUserToDeleteRows = false;
+        dataGridView1.AutoSizeColumnsMode = 
+            DataGridViewAutoSizeColumnsMode.AllCells;
+        reportButton.Text = "Generate Report";
+        reportButton.Dock = DockStyle.Top;
+        reportButton.Click += new EventHandler(reportButton_Click);
 
-        string query;
-        query = "SELECT e1.*, e2.FirstName + ' ' + e2.LastName AS Manager "
-            + "FROM employees AS e1 LEFT JOIN employees AS e2 "
-            + "ON e1.ReportsTo = e2.EmployeeID";
-
-        // Connect to the database
-        SqlConnection sqlConnection1 = new SqlConnection(
-            "Integrated Security=SSPI;Persist Security Info=False;" +
-            "Initial Catalog=Northwind;Data Source=localhost");
-        SqlDataAdapter sqlDataAdapter1 = new SqlDataAdapter(query,
-            sqlConnection1);
-
-        DataTable dataTable1 = new DataTable();
-        dataTable1.Locale = System.Globalization.CultureInfo.InvariantCulture;
-        sqlDataAdapter1.Fill(dataTable1);
-
-        dataGridView1.DataSource = dataTable1;
+        Controls.Add(dataGridView1);
+        Controls.Add(reportButton);
+        Load += new EventHandler(Form1_Load);
+        Text = "DataGridViewComboBoxColumn Demo";
     }
 
-    private void dataGridView1_DataBindingComplete(object sender,
-        DataGridViewBindingCompleteEventArgs e)
+    // Initializes the data source and populates the DataGridView control.
+    private void Form1_Load(object sender, EventArgs e)
     {
-        // Hide some of the columns.
-        dataGridView1.Columns["EmployeeID"].Visible = false;
-        dataGridView1.Columns["Address"].Visible = false;
-        dataGridView1.Columns["TitleOfCourtesy"].Visible = false;
-        dataGridView1.Columns["BirthDate"].Visible = false;
-        dataGridView1.Columns["HireDate"].Visible = false;
-        dataGridView1.Columns["PostalCode"].Visible = false;
-        dataGridView1.Columns["Photo"].Visible = false;
-        dataGridView1.Columns["Notes"].Visible = false;
-        dataGridView1.Columns["ReportsTo"].Visible = false;
-        dataGridView1.Columns["PhotoPath"].Visible = false;
+        PopulateLists();
+        dataGridView1.AutoGenerateColumns = false;
+        dataGridView1.DataSource = tasks;
+        AddColumns();
+    }
 
-        // Disable sorting for the DataGridView.
-        foreach (DataGridViewColumn i in
-            dataGridView1.Columns)
+    // Populates the employees and tasks lists. 
+    private void PopulateLists()
+    {
+        employees.Add(new Employee("Harry"));
+        employees.Add(new Employee("Sally"));
+        employees.Add(new Employee("Roy"));
+        employees.Add(new Employee("Pris"));
+        tasks.Add(new Task(1, employees[1]));
+        tasks.Add(new Task(2));
+        tasks.Add(new Task(3, employees[2]));
+        tasks.Add(new Task(4));
+    }
+
+    // Configures columns for the DataGridView control.
+    private void AddColumns()
+    {
+        DataGridViewTextBoxColumn idColumn = 
+            new DataGridViewTextBoxColumn();
+        idColumn.Name = "Task";
+        idColumn.DataPropertyName = "Id";
+        idColumn.ReadOnly = true;
+
+        DataGridViewComboBoxColumn assignedToColumn = 
+            new DataGridViewComboBoxColumn();
+
+        // Populate the combo box drop-down list with Employee objects. 
+        foreach (Employee e in employees) assignedToColumn.Items.Add(e);
+
+        // Add "unassigned" to the drop-down list and display it for 
+        // empty AssignedTo values or when the user presses CTRL+0. 
+        assignedToColumn.Items.Add("unassigned");
+        assignedToColumn.DefaultCellStyle.NullValue = "unassigned";
+
+        assignedToColumn.Name = "Assigned To";
+        assignedToColumn.DataPropertyName = "AssignedTo";
+        assignedToColumn.AutoComplete = true;
+        assignedToColumn.DisplayMember = "Name";
+        assignedToColumn.ValueMember = "Self";
+
+        // Add a button column. 
+        DataGridViewButtonColumn buttonColumn = 
+            new DataGridViewButtonColumn();
+        buttonColumn.HeaderText = "";
+        buttonColumn.Name = "Status Request";
+        buttonColumn.Text = "Request Status";
+        buttonColumn.UseColumnTextForButtonValue = true;
+
+        dataGridView1.Columns.Add(idColumn);
+        dataGridView1.Columns.Add(assignedToColumn);
+        dataGridView1.Columns.Add(buttonColumn);
+
+        // Add a CellClick handler to handle clicks in the button column.
+        dataGridView1.CellClick +=
+            new DataGridViewCellEventHandler(dataGridView1_CellClick);
+    }
+
+    // Reports on task assignments. 
+    private void reportButton_Click(object sender, EventArgs e)
+    {
+        StringBuilder report = new StringBuilder();
+        foreach (Task t in tasks)
         {
-            i.SortMode = DataGridViewColumnSortMode.NotSortable;
+            String assignment = 
+                t.AssignedTo == null ? 
+                "unassigned" : "assigned to " + t.AssignedTo.Name;
+            report.AppendFormat("Task {0} is {1}.", t.Id, assignment);
+            report.Append(Environment.NewLine);
         }
-
-        dataGridView1.AutoResizeColumns();
+        MessageBox.Show(report.ToString(), "Task Assignments");
     }
 
-    void dataGridView1_RowContextMenuStripNeeded(object sender,
-        DataGridViewRowContextMenuStripNeededEventArgs e)
+    // Calls the Employee.RequestStatus method.
+    void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
     {
-        DataGridViewRow dataGridViewRow1 = dataGridView1.Rows[e.RowIndex];
+        // Ignore clicks that are not on button cells. 
+        if (e.RowIndex < 0 || e.ColumnIndex !=
+            dataGridView1.Columns["Status Request"].Index) return;
 
-        toolStripMenuItem1.Enabled = true;
+        // Retrieve the task ID.
+        Int32 taskID = (Int32)dataGridView1[0, e.RowIndex].Value;
 
-        // Show the appropriate ContextMenuStrip based on the employees title.
-        if ((dataGridViewRow1.Cells["Title"].Value.ToString() ==
-            "Sales Manager") ||
-            (dataGridViewRow1.Cells["Title"].Value.ToString() ==
-            "Vice President, Sales"))
+        // Retrieve the Employee object from the "Assigned To" cell.
+        Employee assignedTo = dataGridView1.Rows[e.RowIndex]
+            .Cells["Assigned To"].Value as Employee;
+
+        // Request status through the Employee object if present. 
+        if (assignedTo != null)
         {
-            e.ContextMenuStrip = managerMenuStrip;
+            assignedTo.RequestStatus(taskID);
         }
         else
         {
-            e.ContextMenuStrip = employeeMenuStrip;
-        }
-
-        contextMenuRowIndex = e.RowIndex;
-    }
-
-    void dataGridView1_CellToolTipTextNeeded(object sender,
-        DataGridViewCellToolTipTextNeededEventArgs e)
-    {
-        string newLine = Environment.NewLine;
-        if (e.RowIndex > -1)
-        {
-            DataGridViewRow dataGridViewRow1 = dataGridView1.Rows[e.RowIndex];
-
-            // Add the employee's ID to the ToolTipText.
-            e.ToolTipText = String.Format("EmployeeID {0}:{1}",
-                dataGridViewRow1.Cells["EmployeeID"].Value, newLine);
-
-            // Add the employee's name to the ToolTipText.
-            e.ToolTipText += String.Format("{0} {1} {2}{3}",
-                dataGridViewRow1.Cells["TitleOfCourtesy"].Value.ToString(),
-                dataGridViewRow1.Cells["FirstName"].Value.ToString(),
-                dataGridViewRow1.Cells["LastName"].Value.ToString(),
-                newLine);
-
-            // Add the employee's title to the ToolTipText.
-            e.ToolTipText += String.Format("{0}{1}{2}",
-                dataGridViewRow1.Cells["Title"].Value.ToString(),
-                newLine, newLine);
-
-            // Add the employee's contact information to the ToolTipText.
-            e.ToolTipText += String.Format("{0}{1}{2}, ",
-                dataGridViewRow1.Cells["Address"].Value.ToString(), newLine,
-                dataGridViewRow1.Cells["City"].Value.ToString());
-            if (!String.IsNullOrEmpty(
-                dataGridViewRow1.Cells["Region"].Value.ToString()))
-            {
-                e.ToolTipText += String.Format("{0}, ",
-                    dataGridViewRow1.Cells["Region"].Value.ToString());
-            }
-            e.ToolTipText += String.Format("{0}, {1}{2}{3} EXT:{4}{5}{6}",
-                dataGridViewRow1.Cells["Country"].Value.ToString(),
-                dataGridViewRow1.Cells["PostalCode"].Value.ToString(),
-                newLine, dataGridViewRow1.Cells["HomePhone"].Value.ToString(),
-                dataGridViewRow1.Cells["Extension"].Value.ToString(),
-                newLine, newLine);
-
-            // Add employee information to the ToolTipText.
-            DateTime HireDate =
-                (DateTime)dataGridViewRow1.Cells["HireDate"].Value;
-            e.ToolTipText +=
-                String.Format("Employee since: {0}/{1}/{2}{3}Manager: {4}",
-                HireDate.Month.ToString(), HireDate.Day.ToString(),
-                HireDate.Year.ToString(), newLine,
-                dataGridViewRow1.Cells["Manager"].Value.ToString());
+            MessageBox.Show(String.Format(
+                "Task {0} is unassigned.", taskID), "Status Request");
         }
     }
 
-    void toolStripMenuItem1_Click(object sender, EventArgs e)
-    {
-        DataGridViewRow dataGridViewRow1 =
-            dataGridView1.Rows[contextMenuRowIndex];
-
-        MessageBox.Show(String.Format(
-            "Sales Report for {0} {1}{2}{3}Reporting not implemented.",
-            dataGridViewRow1.Cells["FirstName"].Value.ToString(),
-            dataGridViewRow1.Cells["LastName"].Value.ToString(),
-            Environment.NewLine, Environment.NewLine));
-    }
-
-    void toolStripMenuItem2_Click(object sender, EventArgs e)
-    {
-        DataGridViewRow dataGridViewRow1 =
-            dataGridView1.Rows[contextMenuRowIndex];
-        MessageBox.Show(String.Format(
-            "Sales Report for {0} {1}'s Team{2}{3}Reporting not implemented.",
-            dataGridViewRow1.Cells["FirstName"].Value.ToString(),
-            dataGridViewRow1.Cells["LastName"].Value.ToString(),
-            Environment.NewLine, Environment.NewLine));
-    }
-
-    void toolStripMenuItem3_Click(object sender, EventArgs e)
-    {
-        DataGridViewRow dataGridViewRow1 =
-            dataGridView1.Rows[contextMenuRowIndex];
-        MessageBox.Show(String.Format(
-            "Company Sales Ranking Report:{0}{1}Reporting not implemented.",
-            Environment.NewLine, Environment.NewLine));
-    }
 }

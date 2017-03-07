@@ -1,17 +1,8 @@
-Public Sub New()
-   ' Create a 'MyCheckBox' control and 
-   ' display an image on it. 
-   Dim myCheckBox As New MyCustomControls.MyCheckBox()
-   myCheckBox.Location = New Point(5, 5)
-   myCheckBox.Image = Image.FromFile( _
-     Application.CommonAppDataPath + "\Preview.jpg")
+Private Sub MoveCursor()
+   ' Set the Current cursor, move the cursor's Position,
+   ' and set its clipping rectangle to the form. 
 
-   ' Set the AccessibleName property
-   ' since there is no Text displayed. 
-   myCheckBox.AccessibleName = "Preview"
-
-   ' Set the AccessibleDescription text.
-   myCheckBox.AccessibleDescription = _
-     "A toggle button used to show the document preview."
-   Me.Controls.Add(myCheckBox)
+   Me.Cursor = New Cursor(Cursor.Current.Handle)
+   Cursor.Position = New Point(Cursor.Position.X - 50, Cursor.Position.Y - 50)
+   Cursor.Clip = New Rectangle(Me.Location, Me.Size)
 End Sub

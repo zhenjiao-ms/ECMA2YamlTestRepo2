@@ -1,38 +1,10 @@
-Imports System.Drawing
-Imports System.Windows.Forms
-
-Public Class Form1
-    Inherits Form
-
-    Public Sub New()
-        Dim tabControl1 As New TabControl()
-        Dim tabPage1 As New TabPage()
-        Dim tabPage2 As New TabPage()
-        Dim tabPage3 As New TabPage()
-        Dim tabPage4 As New TabPage()
-        Dim tabPage5 As New TabPage()
-        Dim label1 As New Label()
-
-        tabControl1.Multiline = True
-        tabControl1.SizeMode = TabSizeMode.FillToRight
-        tabControl1.Padding = New Point(15, 5)
-        tabControl1.Controls.AddRange(New Control() {tabPage1, tabPage2, tabPage3, tabPage4, tabPage5})
-        tabControl1.Location = New Point(35, 65)
-        tabControl1.Size = New Size(220, 180)
-
-        ' Gets the number of tabs currently in the tabControl1 tab strip.
-        ' Assigns int value to the tabsInTabStrip variable.
-        Dim tabsInTabStrip As Integer = tabControl1.TabCount
-
-        label1.Text = "There are " + tabsInTabStrip.ToString() + " tabs in the tabControl1 tab strip."
-        label1.Location = New Point(35, 25)
-        label1.Size = New Size(220, 30)
-
-        Size = New Size(300, 300)
-        Controls.AddRange(New Control() {label1, tabControl1})
-    End Sub
-
-    Shared Sub Main()
-        Application.Run(New Form1())
-    End Sub
-End Class
+   Public Sub ShowInsertInSameLocationSample()
+      ' Notice how the items are in backward order.  
+      ' This is because "merge-one" gets applied, then a search occurs for the new second position 
+      ' for "merge-two", and so on.
+      Dim item As ToolStripItem
+      For Each item In  cmsItemsToMerge.Items
+         item.MergeAction = MergeAction.Insert
+         item.MergeIndex = 2
+      Next item
+   End Sub

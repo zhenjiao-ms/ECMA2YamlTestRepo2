@@ -1,18 +1,9 @@
-    private void WatchRowsModeChanges(object sender,
-        DataGridViewAutoSizeModeEventArgs modeEvent)
-    {
-        Label label =
-            (Label)flowLayoutPanel1.Controls[currentLayoutName];
+private void DataGridView1_RowErrorTextNeeded(Object sender, DataGridViewRowErrorTextNeededEventArgs e) {
 
-        if (modeEvent.PreviousModeAutoSized)
-        {
-            label.Text = "changed to a different " +
-                label.Name +
-                dataGridView1.AutoSizeRowsMode.ToString();
-        }
-        else
-        {
-            label.Text = label.Name +
-                dataGridView1.AutoSizeRowsMode.ToString();
-        }
-    }
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "ErrorText", e.ErrorText );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "RowErrorTextNeeded Event" );
+}

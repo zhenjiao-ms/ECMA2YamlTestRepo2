@@ -1,25 +1,13 @@
-        ' Determine whether the cell should be painted with the 
-        ' custom selection background.
-        If (e.State And DataGridViewElementStates.Selected) = _
-            DataGridViewElementStates.Selected Then
+    Private Sub AddOutOfOfficeColumn()
+        Dim column As New DataGridViewCheckBoxColumn()
+        With column
+            .HeaderText = ColumnName.OutOfOffice.ToString()
+            .Name = ColumnName.OutOfOffice.ToString()
+            .AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            .FlatStyle = FlatStyle.Standard
+            .CellTemplate = New DataGridViewCheckBoxCell()
+            .CellTemplate.Style.BackColor = Color.Beige
+        End With
 
-            ' Calculate the bounds of the row.
-            Dim rowBounds As New Rectangle( _
-                Me.dataGridView1.RowHeadersWidth, e.RowBounds.Top, _
-                Me.dataGridView1.Columns.GetColumnsWidth( _
-                DataGridViewElementStates.Visible) - _
-                Me.dataGridView1.HorizontalScrollingOffset + 1, _
-                e.RowBounds.Height)
-
-            ' Paint the custom selection background.
-            Dim backbrush As New _
-                System.Drawing.Drawing2D.LinearGradientBrush(rowBounds, _
-                Me.dataGridView1.DefaultCellStyle.SelectionBackColor, _
-                e.InheritedRowStyle.ForeColor, _
-                System.Drawing.Drawing2D.LinearGradientMode.Horizontal)
-            Try
-                e.Graphics.FillRectangle(backbrush, rowBounds)
-            Finally
-                backbrush.Dispose()
-            End Try
-        End If
+        DataGridView1.Columns.Insert(0, column)
+    End Sub

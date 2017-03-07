@@ -1,27 +1,18 @@
-		ToolStripControlHost dateTimePickerHost;
-
-		private void InitializeDateTimePickerHost()
-		{
-
-			// Create a new ToolStripControlHost, passing in a control.
-			dateTimePickerHost = new ToolStripControlHost(new DateTimePicker());
-
-			// Set the font on the ToolStripControlHost, this will affect the hosted control.
-			dateTimePickerHost.Font = new Font("Arial", 7.0F, FontStyle.Italic);
-
-			// Set the Width property, this will also affect the hosted control.
-			dateTimePickerHost.Width = 100;
-			dateTimePickerHost.DisplayStyle = ToolStripItemDisplayStyle.Text;
-
-			// Setting the Text property requires a string that converts to a 
-			// DateTime type since that is what the hosted control requires.
-			dateTimePickerHost.Text = "12/23/2005";
-
-			// Cast the Control property back to the original type to set a 
-			// type-specific property.
-			((DateTimePicker)dateTimePickerHost.Control).Format = DateTimePickerFormat.Short;
-
-			// Add the control host to the ToolStrip.
-			toolStrip1.Items.Add(dateTimePickerHost);
-
-		}
+public void CreateMyMultilineTextBox()
+ {
+    // Create an instance of a TextBox control.
+    TextBox textBox1 = new TextBox();
+    
+    // Set the Multiline property to true.
+    textBox1.Multiline = true;
+    // Add vertical scroll bars to the TextBox control.
+    textBox1.ScrollBars = ScrollBars.Vertical;
+    // Allow the RETURN key in the TextBox control.
+    textBox1.AcceptsReturn = true;
+    // Allow the TAB key to be entered in the TextBox control.
+    textBox1.AcceptsTab = true;
+    // Set WordWrap to true to allow text to wrap to the next line.
+    textBox1.WordWrap = true;
+    // Set the default text of the control.
+    textBox1.Text = "Welcome!" + Environment.NewLine + "Second Line";
+ }

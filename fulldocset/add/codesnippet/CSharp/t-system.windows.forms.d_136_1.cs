@@ -1,44 +1,107 @@
-    private void dataGridView1_ColumnHeaderMouseClick(
-        object sender, DataGridViewCellMouseEventArgs e)
+using System;
+using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.Collections;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Windows.Forms.Design;
+
+namespace ControlDesignerExample
+{
+    // ExampleControlDesigner is an example control designer that 
+    // demonstrates basic functions of a ControlDesigner.
+    [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")] 
+    public class ExampleControlDesigner  : System.Windows.Forms.Design.ControlDesigner
     {
-        DataGridViewColumn newColumn = dataGridView1.Columns[e.ColumnIndex];
-        DataGridViewColumn oldColumn = dataGridView1.SortedColumn;
-        ListSortDirection direction;
+        // This boolean state reflects whether the mouse is over the control.
+        private bool mouseover = false;
+        // This color is a private field for the OutlineColor property.
+        private Color lineColor = Color.White;
 
-        // If oldColumn is null, then the DataGridView is not sorted.
-        if (oldColumn != null)
+        // This color is used to outline the control when the mouse is 
+        // over the control.
+        public Color OutlineColor
         {
-            // Sort the same column again, reversing the SortOrder.
-            if (oldColumn == newColumn &&
-                dataGridView1.SortOrder == SortOrder.Ascending)
+            get
             {
-                direction = ListSortDirection.Descending;
+                return lineColor;
             }
-            else
+            set
             {
-                // Sort a new column and remove the old SortGlyph.
-                direction = ListSortDirection.Ascending;
-                oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                lineColor = value;
             }
         }
-        else
+
+        public ExampleControlDesigner()
         {
-            direction = ListSortDirection.Ascending;
         }
 
-        // Sort the selected column.
-        dataGridView1.Sort(newColumn, direction);
-        newColumn.HeaderCell.SortGlyphDirection =
-            direction == ListSortDirection.Ascending ?
-            SortOrder.Ascending : SortOrder.Descending;
+        // Sets a value and refreshes the control's display when the 
+        // mouse position enters the area of the control.
+        protected override void OnMouseEnter()
+        {
+            this.mouseover = true;
+            this.Control.Refresh();
+        }    
+
+        // Sets a value and refreshes the control's display when the 
+        // mouse position enters the area of the control.        
+        protected override void OnMouseLeave()
+        {
+            this.mouseover = false;            
+            this.Control.Refresh();
+        }        
+        
+        // Draws an outline around the control when the mouse is 
+        // over the control.    
+        protected override void OnPaintAdornments(System.Windows.Forms.PaintEventArgs pe)
+        {
+            if (this.mouseover)
+            {
+                pe.Graphics.DrawRectangle(
+                    new Pen(new SolidBrush(this.lineColor), 6), 
+                    0, 
+                    0, 
+                    this.Control.Size.Width, 
+                    this.Control.Size.Height);
+            }
+        }
+
+        // Adds a property to this designer's control at design time 
+        // that indicates the outline color to use. 
+        // The DesignOnlyAttribute ensures that the OutlineColor
+        // property is not serialized by the designer.
+        protected override void PreFilterProperties(System.Collections.IDictionary properties)
+        {
+            PropertyDescriptor pd = TypeDescriptor.CreateProperty(
+                typeof(ExampleControlDesigner), 
+                "OutlineColor",
+                typeof(System.Drawing.Color),
+                new Attribute[] { new DesignOnlyAttribute(true) });
+
+            properties.Add("OutlineColor", pd);
+        }
     }
 
-    private void dataGridView1_DataBindingComplete(object sender,
-        DataGridViewBindingCompleteEventArgs e)
-    {
-        // Put each of the columns into programmatic sort mode.
-        foreach (DataGridViewColumn column in dataGridView1.Columns)
+    // This example control demonstrates the ExampleControlDesigner.
+    [DesignerAttribute(typeof(ExampleControlDesigner))]
+    public class ExampleControl : System.Windows.Forms.UserControl
+    {        
+        private System.ComponentModel.Container components = null;
+
+        public ExampleControl()
         {
-            column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            components = new System.ComponentModel.Container();
+        }
+
+        protected override void Dispose( bool disposing )
+        {
+            if( disposing )
+            {
+                if( components != null )
+                components.Dispose();
+            }
+            base.Dispose( disposing );
         }
     }
+}

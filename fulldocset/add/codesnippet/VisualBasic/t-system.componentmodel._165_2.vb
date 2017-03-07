@@ -1,15 +1,20 @@
-    Public Shared Function Main() As Integer
-        ' Creates a new form.
-        Dim myNewForm As New MyForm()
-        
-        ' Gets the attributes for the collection.
-        Dim attributes As AttributeCollection = TypeDescriptor.GetAttributes(myNewForm)
-        
-        ' Prints the name of the designer by retrieving the DesignerAttribute
-        ' from the AttributeCollection. 
-        Dim myAttribute As DesignerAttribute = _
-            CType(attributes(GetType(DesignerAttribute)), DesignerAttribute)
-        Console.WriteLine(("The designer for this class is: " & myAttribute.DesignerTypeName))
-        
-        Return 0
-    End Function 'Main
+            ' Gets the attributes for the property.
+            Dim attributes As AttributeCollection = _
+                TypeDescriptor.GetProperties(Me)("MyProperty").Attributes
+            
+            ' Checks to see if the value of the BindableAttribute is Yes.
+            If attributes(GetType(BindableAttribute)).Equals(BindableAttribute.Yes) Then
+                ' Insert code here.
+            End If 
+            
+            ' This is another way to see whether the property is bindable.
+            Dim myAttribute As BindableAttribute = _
+                CType(attributes(GetType(BindableAttribute)), BindableAttribute)
+            If myAttribute.Bindable Then
+                ' Insert code here.
+            End If 
+
+ 	    ' Yet another way to see whether the property is bindable.
+	    If attributes.Contains(BindableAttribute.Yes) Then
+		' Insert code here.
+	    End If

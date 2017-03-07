@@ -6,4 +6,4 @@
 			serviceHost.Open()
 
 			Dim dispatcher As ChannelDispatcher = CType(serviceHost.ChannelDispatchers(0), ChannelDispatcher)
-			Dim bindingName As String = dispatcher.BindingName
+			Dim hostBase As ServiceHostBase = dispatcher.Host

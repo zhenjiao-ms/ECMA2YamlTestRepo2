@@ -1,103 +1,85 @@
+<%@ page language="VB" %>
+<%@ Import Namespace="System.Drawing" %>
 
-<%@ Page language="VB" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <script runat="server">
+    Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)
+        ' Create a TableItemStyle object that can be
+        ' set as the default style for all cells
+        ' in the table.
+        Dim tableStyle As New TableItemStyle()
+        tableStyle.HorizontalAlign = HorizontalAlign.Center
+        tableStyle.VerticalAlign = VerticalAlign.Middle
+        tableStyle.Width = Unit.Pixel(100)
+        ' Create more rows for the table.
+        Dim rowNum As Integer
+        For rowNum = 2 To 9
+            Dim tempRow As New TableRow()
+            Dim cellNum As Integer
+            For cellNum = 0 To 2
+                Dim tempCell As New TableCell()
+                tempCell.Text = _
+                    String.Format("({0},{1})", rowNum, cellNum)
+                tempRow.Cells.Add(tempCell)
+            Next
+            Table1.Rows.Add(tempRow)
+        Next
 
-  Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
+        ' Apply the TableItemStyle to all rows in the table.
+        Dim rw As TableRow
+        For Each rw In Table1.Rows
+            Dim cel As TableCell
+            For Each cel In rw.Cells
+                cel.ApplyStyle(tableStyle)
+            Next
+        Next
 
-    ' Create a new GridView control.
-    Dim customersGridView As New GridView()
+        ' Create a header for the table.
+        Dim header As New TableHeaderCell()
+        header.RowSpan = 1
+        header.ColumnSpan = 3
+        header.Text = "Table of (x,y) Values"
+        header.Font.Bold = True
+        header.BackColor = Color.Gray
+        header.HorizontalAlign = HorizontalAlign.Center
+        header.VerticalAlign = VerticalAlign.Middle
 
-    ' Set the GridView object's properties.
-    customersGridView.ID = "CustomersGridView"
-    customersGridView.DataSourceID = "CustomersSource"
-    customersGridView.AutoGenerateColumns = True
-    customersGridView.EmptyDataText = "No data available."
-    customersGridView.AllowPaging = True
-    customersGridView.AutoGenerateEditButton = True
-    customersGridView.PagerSettings.Mode = PagerButtons.Numeric
-    customersGridView.PagerSettings.Position = PagerPosition.Bottom
-    customersGridView.PagerSettings.PageButtonCount = 10
-    customersGridView.PagerStyle.BackColor = System.Drawing.Color.LightBlue
-    Dim keyArray() As String = {"CustomerID"}
-    customersGridView.DataKeyNames = keyArray
+        ' Add the header to a new row.
+        Dim headerRow As New TableRow()
+        headerRow.Cells.Add(header)
 
-    ' Programmatically register the event-handling methods.
-    AddHandler customersGridView.PageIndexChanging, AddressOf CustomersGridView_PageIndexChanging
-    AddHandler customersGridView.RowCancelingEdit, AddressOf CustomersGridView_RowCancelingEdit
-
-    ' Add the GridView control to the Controls collection
-    ' of the PlaceHolder control.
-    GridViewPlaceHolder.Controls.Add(customersGridView)
-    
-  End Sub
-
-  Sub CustomersGridView_PageIndexChanging(ByVal sender As Object, ByVal e As GridViewPageEventArgs)
-
-    ' User the sender parameter to retrieve the GridView control
-    ' that raised the event.
-    Dim customersGridView As GridView = CType(sender, GridView)
-    
-    ' Cancel the paging operation if the user attempts to navigate
-    ' to another page while the GridView control is in edit mode. 
-    If customersGridView.EditIndex <> -1 Then
-    
-      ' Use the cancel property to cancel the paging operation.
-      e.Cancel = True
-      
-      ' Display an error message.
-      Dim newPageNumber As Integer = e.NewPageIndex + 1
-      Message.Text = "Please update the record before moving to page " & _
-        newPageNumber.ToString() & "."
-    
-    Else
-    
-      ' Clear the error message.
-      Message.Text = ""
-    
-    End If
-    
-  End Sub
-
-  Sub CustomersGridView_RowCancelingEdit(ByVal sender As Object, ByVal e As GridViewCancelEditEventArgs)
-  
-    ' Clear the error message.
-    Message.Text = ""
-    
-  End Sub
-
+        ' Add the header row to the table.
+        Table1.Rows.AddAt(0, headerRow)
+    End Sub
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head runat="server">
-    <title>GridViewPageEventHandler Example</title>
+<head id="Head1" runat="server">
+    <title>TableCell Example</title>
 </head>
 <body>
     <form id="form1" runat="server">
-        
-      <h3>GridViewPageEventHandler Example</h3>
-            
-      <asp:label id="Message"
-        forecolor="Red"
-        runat="server"/>
-                
-      <br/>  
+    <div>
 
-      <asp:placeholder id="GridViewPlaceHolder"
-        runat="server" />
-            
-      <!-- This example uses Microsoft SQL Server and connects  -->
-      <!-- to the Northwind sample database. Use an ASP.NET     -->
-      <!-- expression to retrieve the connection string value   -->
-      <!-- from the Web.config file.                            -->
-      <asp:sqldatasource id="CustomersSource"
-        selectcommand="Select [CustomerID], [CompanyName], [Address], [City], [PostalCode], [Country] From [Customers]"
-        updatecommand="Update Customers SET CompanyName=@CompanyName, Address=@Address, City=@City, PostalCode=@PostalCode, Country=@Country WHERE (CustomerID = @CustomerID)"
-        connectionstring="<%$ ConnectionStrings:NorthWindConnectionString%>" 
-        runat="server"/>
-            
+    <h1>TableCell Example</h1>
+    <asp:table id="Table1" runat="server" 
+        CellPadding="3" CellSpacing="3"
+        Gridlines="both">
+        <asp:TableRow>
+            <asp:TableCell Text="(0,0)" />
+            <asp:TableCell Text="(0,1)" />
+            <asp:TableCell Text="(0,2)" />
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell Text="(1,0)" />
+            <asp:TableCell Text="(1,1)" />
+            <asp:TableCell Text="(1,2)" />
+        </asp:TableRow>
+    </asp:table>
+
+    </div>
     </form>
   </body>
 </html>

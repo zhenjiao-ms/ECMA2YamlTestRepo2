@@ -1,35 +1,36 @@
-
 Imports System
+Imports System.Web
+Imports System.Web.Security
+Imports System.Security.Permissions
 Imports System.Web.UI
 Imports System.Web.UI.WebControls
+Imports System.Web.UI.WebControls.WebParts
 
-Namespace ControlTest
-   
-   ' Renders the following HTML: 
-   ' <span onclick="alert('Hello');" style="color:Red;">Custom Contents</span>
-   Public Class MyWebControl
-      Inherits WebControl
-      
-      
-      Public Sub New()
-         MyBase.New(HtmlTextWriterTag.Span)
-      End Sub 'New      
-      
-      <System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name:="FullTrust")> _
-      Protected Overrides Sub AddAttributesToRender(writer As HtmlTextWriter)
-         
-         writer.AddAttribute(HtmlTextWriterAttribute.Onclick, "alert('Hello');")
-         writer.AddStyleAttribute(HtmlTextWriterStyle.Color, "Red")
-         MyBase.AddAttributesToRender(writer)
+Namespace Samples.AspNet.VB.Controls
 
-      End Sub 'AddAttributesToRender       
+  <AspNetHostingPermission(SecurityAction.Demand, _
+    Level:=AspNetHostingPermissionLevel.Minimal)> _
+  <AspNetHostingPermission(SecurityAction.InheritanceDemand, _
+    Level:=AspNetHostingPermissionLevel.Minimal)> _
+  Public Class MyManagerAuthorize
+    Inherits WebPartManager
 
-      <System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name:="FullTrust")> _
-      Protected Overrides Sub RenderContents(writer As HtmlTextWriter)
-         writer.Write("Custom Contents")
-         MyBase.RenderContents(writer)
-      End Sub 'RenderContents
+    Public Overrides Function IsAuthorized(ByVal type As Type, _
+      ByVal path As String, ByVal authorizationFilter As String, _
+      ByVal isShared As Boolean) As Boolean
 
-   End Class 'MyWebControl
+      If Not String.IsNullOrEmpty(authorizationFilter) Then
+        If authorizationFilter = "admin" Then
+          Return True
+        Else
+          Return False
+        End If
+      Else
+        Return True
+      End If
 
-End Namespace 'ControlTest
+    End Function
+
+  End Class
+
+End Namespace

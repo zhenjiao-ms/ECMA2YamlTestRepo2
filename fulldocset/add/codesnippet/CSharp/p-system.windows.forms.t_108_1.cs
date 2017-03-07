@@ -1,36 +1,11 @@
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            // Create the list to use as the custom source. 
-            var source = new AutoCompleteStringCollection();
-            source.AddRange(new string[]
-                            {
-                                "January",
-                                "February",
-                                "March",
-                                "April",
-                                "May",
-                                "June",
-                                "July",
-                                "August",
-                                "September",
-                                "October",
-                                "November",
-                                "December"
-                            });
-
-            // Create and initialize the text box.
-            var textBox = new TextBox
-                          {
-                              AutoCompleteCustomSource = source,
-                              AutoCompleteMode = 
-                                  AutoCompleteMode.SuggestAppend,
-                              AutoCompleteSource =
-                                  AutoCompleteSource.CustomSource,
-                              Location = new Point(20, 20),
-                              Width = ClientRectangle.Width - 40,
-                              Visible = true
-                          };
-
-            // Add the text box to the form.
-            Controls.Add(textBox);
-        }
+            // 
+            toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
+                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.Raised;
+            toolStripStatusLabel1.IsLink = true;
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new System.Drawing.Size(246, 20);
+            toolStripStatusLabel1.Spring = true;
+            toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Alignment = ToolStripItemAlignment.Left;

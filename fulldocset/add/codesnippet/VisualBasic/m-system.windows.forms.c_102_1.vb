@@ -1,23 +1,15 @@
-    Private Sub button1_Click(sender As Object, e As System.EventArgs)
-        ' Takes the selected text from a text box and puts it on the clipboard.
-        If textBox1.SelectedText <> "" Then
-            Clipboard.SetDataObject(textBox1.SelectedText)
-        Else
-            textBox2.Text = "No text selected in textBox1"
+    ' Demonstrates SetAudio, ContainsAudio, and GetAudioStream.
+    Public Function SwapClipboardAudio( _
+        ByVal replacementAudioStream As System.IO.Stream) _
+        As System.IO.Stream
+
+        Dim returnAudioStream As System.IO.Stream = Nothing
+
+        If (Clipboard.ContainsAudio()) Then
+            returnAudioStream = Clipboard.GetAudioStream()
+            Clipboard.SetAudio(replacementAudioStream)
         End If
-    End Sub 'button1_Click
-     
-    Private Sub button2_Click(sender As Object, e As System.EventArgs)
-        ' Declares an IDataObject to hold the data returned from the clipboard.
-        ' Retrieves the data from the clipboard.
-        Dim iData As IDataObject = Clipboard.GetDataObject()
-        
-        ' Determines whether the data is in a format you can use.
-        If iData.GetDataPresent(DataFormats.Text) Then
-            ' Yes it is, so display it in a text box.
-            textBox2.Text = CType(iData.GetData(DataFormats.Text), String)
-        Else
-            ' No it is not.
-            textBox2.Text = "Could not retrieve data off the clipboard."
-        End If
-    End Sub 'button2_Click
+
+        Return returnAudioStream
+
+    End Function

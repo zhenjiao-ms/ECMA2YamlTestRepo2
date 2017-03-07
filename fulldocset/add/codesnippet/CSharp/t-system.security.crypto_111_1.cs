@@ -1,43 +1,123 @@
+//
+// This example signs a file specified by a URI 
+// using a detached signature. It then verifies  
+// the signed XML.
+//
+
 using System;
 using System.Security.Cryptography;
-using System.Security.Permissions;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography.Xml;
+using System.Text;
+using System.Xml;
 
-class CertSelect
+
+
+class XMLDSIGDetached
 {
-    static void Main()
+	
+    [STAThread]
+    static void Main(string[] args)
     {
-        X509Store store = new X509Store("MY",StoreLocation.CurrentUser);
-        store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+    // The URI to sign.
+        string resourceToSign = "http://www.microsoft.com";
+		
+        // The name of the file to which to save the XML signature.
+        string XmlFileName = "xmldsig.xml";
 
-        X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
-        X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid,DateTime.Now,false);
-        X509Certificate2Collection scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Test Certificate Select","Select a certificate from the following list to get information on that certificate",X509SelectionFlag.MultiSelection);
-        Console.WriteLine("Number of certificates: {0}{1}",scollection.Count,Environment.NewLine);
-
-        foreach (X509Certificate2 x509 in scollection)
+        try
         {
-            try
+
+            // Generate a signing key.
+            RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
+
+            Console.WriteLine("Signing: {0}", resourceToSign);
+
+            // Sign the detached resourceand save the signature in an XML file.
+            SignDetachedResource(resourceToSign, XmlFileName, Key);
+
+            Console.WriteLine("XML signature was succesfully computed and saved to {0}.", XmlFileName);
+
+            // Verify the signature of the signed XML.
+            Console.WriteLine("Verifying signature...");
+
+            //Verify the XML signature in the XML file.
+            bool result = VerifyDetachedSignature(XmlFileName);
+
+            // Display the results of the signature verification to 
+            // the console.
+            if(result)
             {
-                byte[] rawdata = x509.RawData;
-                Console.WriteLine("Content Type: {0}{1}",X509Certificate2.GetCertContentType(rawdata),Environment.NewLine);
-                Console.WriteLine("Friendly Name: {0}{1}",x509.FriendlyName,Environment.NewLine);
-                Console.WriteLine("Certificate Verified?: {0}{1}",x509.Verify(),Environment.NewLine);
-                Console.WriteLine("Simple Name: {0}{1}",x509.GetNameInfo(X509NameType.SimpleName,true),Environment.NewLine);
-                Console.WriteLine("Signature Algorithm: {0}{1}",x509.SignatureAlgorithm.FriendlyName,Environment.NewLine);
-                Console.WriteLine("Private Key: {0}{1}",x509.PrivateKey.ToXmlString(false),Environment.NewLine);
-                Console.WriteLine("Public Key: {0}{1}",x509.PublicKey.Key.ToXmlString(false),Environment.NewLine);
-                Console.WriteLine("Certificate Archived?: {0}{1}",x509.Archived,Environment.NewLine);
-                Console.WriteLine("Length of Raw Data: {0}{1}",x509.RawData.Length,Environment.NewLine);
-                X509Certificate2UI.DisplayCertificate(x509);
-                x509.Reset();
+                Console.WriteLine("The XML signature is valid.");
             }
-            catch (CryptographicException)
+            else
             {
-                Console.WriteLine("Information could not be written out for this certificate.");
+                Console.WriteLine("The XML signature is not valid.");
             }
         }
-        store.Close();
+        catch(CryptographicException e)
+        {
+            Console.WriteLine(e.Message);
+
+        }
+		
+    }
+
+    // Sign an XML file and save the signature in a new file.
+    public static void SignDetachedResource(string URIString, string XmlSigFileName, RSA Key)
+    {
+        // Create a SignedXml object.
+        SignedXml signedXml = new SignedXml();
+
+        // Assign the key to the SignedXml object.
+        signedXml.SigningKey = Key;
+
+        // Create a reference to be signed.
+        Reference reference = new Reference();
+
+        // Add the passed URI to the reference object.
+        reference.Uri = URIString;
+		
+        // Add the reference to the SignedXml object.
+        signedXml.AddReference(reference);
+
+        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+        KeyInfo keyInfo = new KeyInfo();
+        keyInfo.AddClause(new RSAKeyValue((RSA)Key));	
+        signedXml.KeyInfo = keyInfo;
+
+        // Compute the signature.
+        signedXml.ComputeSignature();
+
+        // Get the XML representation of the signature and save
+        // it to an XmlElement object.
+        XmlElement xmlDigitalSignature = signedXml.GetXml();
+
+        // Save the signed XML document to a file specified
+        // using the passed string.
+        XmlTextWriter xmltw = new XmlTextWriter(XmlSigFileName, new UTF8Encoding(false));
+        xmlDigitalSignature.WriteTo(xmltw);
+        xmltw.Close();
+    }
+    // Verify the signature of an XML file and return the result.
+    public static Boolean VerifyDetachedSignature(string XmlSigFileName)
+    {	
+        // Create a new XML document.
+        XmlDocument xmlDocument = new XmlDocument();
+
+        // Load the passed XML file into the document.
+        xmlDocument.Load(XmlSigFileName);
+	
+        // Create a new SignedXMl object.
+        SignedXml signedXml = new SignedXml();
+
+        // Find the "Signature" node and create a new
+        // XmlNodeList object.
+        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
+
+        // Load the signature node.
+        signedXml.LoadXml((XmlElement)nodeList[0]);
+
+        // Check the signature and return the result.
+        return signedXml.CheckSignature();
     }
 }

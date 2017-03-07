@@ -1,40 +1,43 @@
-    Private WithEvents dataGridView1 As New DataGridView()
-
-    Private Sub AddColorColumn()
-
-        Dim comboBoxColumn As New DataGridViewComboBoxColumn()
-        comboBoxColumn.Items.AddRange( _
-            Color.Red, Color.Yellow, Color.Green, Color.Blue)
-        comboBoxColumn.ValueType = GetType(Color)
-        dataGridView1.Columns.Add(comboBoxColumn)
-
-    End Sub
-
-    Private Sub dataGridView1_EditingControlShowing(ByVal sender As Object, _
-        ByVal e As DataGridViewEditingControlShowingEventArgs) _
-        Handles dataGridView1.EditingControlShowing
-
-        Dim combo As ComboBox = CType(e.Control, ComboBox)
-        If (combo IsNot Nothing) Then
-
-            ' Remove an existing event-handler, if present, to avoid 
-            ' adding multiple handlers when the editing control is reused.
-            RemoveHandler combo.SelectedIndexChanged, _
-                New EventHandler(AddressOf ComboBox_SelectedIndexChanged)
-
-            ' Add the event handler. 
-            AddHandler combo.SelectedIndexChanged, _
-                New EventHandler(AddressOf ComboBox_SelectedIndexChanged)
-
+    Protected domainUpDown1 As DomainUpDown
+    
+    
+    Private Sub MySub()
+        ' Create and initialize the DomainUpDown control.
+        domainUpDown1 = New System.Windows.Forms.DomainUpDown()
+        
+        ' Add the DomainUpDown control to the form.
+        Controls.Add(domainUpDown1)
+    End Sub 'MySub
+    
+    
+    Private Sub button1_Click(sender As System.Object, e As System.EventArgs)
+        ' Add the text box contents and initial location in the collection
+        ' to the DomainUpDown control.
+        domainUpDown1.Items.Add((textBox1.Text.Trim() & " - " & myCounter))
+        
+        ' Increment the counter variable.
+        myCounter = myCounter + 1
+        
+        ' Clear the TextBox.
+        textBox1.Text = ""
+    End Sub 'button1_Click
+    
+    
+    Private Sub checkBox1_Click(sender As System.Object, e As System.EventArgs)
+        ' If Sorted is set to true, set it to false; 
+        ' otherwise set it to true.
+        If domainUpDown1.Sorted Then
+            domainUpDown1.Sorted = False
+        Else
+            domainUpDown1.Sorted = True
         End If
-
-    End Sub
-
-    Private Sub ComboBox_SelectedIndexChanged( _
-        ByVal sender As Object, ByVal e As EventArgs)
-
-        Dim comboBox1 As ComboBox = CType(sender, ComboBox)
-        comboBox1.BackColor = _
-            CType(CType(sender, ComboBox).SelectedItem, Color)
-
-    End Sub
+    End Sub 'checkBox1_Click
+    
+    
+    Private Sub domainUpDown1_SelectedItemChanged _
+        (sender As System.Object, e As System.EventArgs)
+        
+        ' Display the SelectedIndex and SelectedItem property values in a MessageBox.
+        MessageBox.Show(("SelectedIndex: " & domainUpDown1.SelectedIndex.ToString() & _
+            ControlChars.Cr & "SelectedItem: " & domainUpDown1.SelectedItem.ToString()))
+    End Sub 'domainUpDown1_SelectedItemChanged

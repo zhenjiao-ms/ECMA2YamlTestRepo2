@@ -1,25 +1,21 @@
-    ' Sets the ToolTip text for cells in the Rating column.
-    Sub dataGridView1_CellFormatting(ByVal sender As Object, _
-        ByVal e As DataGridViewCellFormattingEventArgs) _
-        Handles dataGridView1.CellFormatting
+    Private Sub dataGridView1_CellBeginEdit(ByVal sender As Object, _
+        ByVal e As DataGridViewCellCancelEventArgs) _
+        Handles DataGridView1.CellBeginEdit
 
-        If e.ColumnIndex = Me.dataGridView1.Columns("Rating").Index _
-            AndAlso (e.Value IsNot Nothing) Then
+        Dim msg As String = _
+            String.Format("Editing Cell at ({0}, {1})", _
+            e.ColumnIndex, e.RowIndex)
+        Me.Text = msg
 
-            With Me.dataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex)
+    End Sub
 
-                If e.Value.Equals("*") Then
-                    .ToolTipText = "very bad"
-                ElseIf e.Value.Equals("**") Then
-                    .ToolTipText = "bad"
-                ElseIf e.Value.Equals("***") Then
-                    .ToolTipText = "good"
-                ElseIf e.Value.Equals("****") Then
-                    .ToolTipText = "very good"
-                End If
+    Private Sub dataGridView1_CellEndEdit(ByVal sender As Object, _
+        ByVal e As DataGridViewCellEventArgs) _
+        Handles DataGridView1.CellEndEdit
 
-            End With
+        Dim msg As String = _
+            String.Format("Finished Editing Cell at ({0}, {1})", _
+            e.ColumnIndex, e.RowIndex)
+        Me.Text = msg
 
-        End If
-
-    End Sub 'dataGridView1_CellFormatting
+    End Sub

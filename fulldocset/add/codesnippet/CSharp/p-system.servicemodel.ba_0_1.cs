@@ -1,2 +1,1 @@
-            SecurityAlgorithmSuite sas = msgSecurity.AlgorithmSuite;
-            BasicHttpMessageCredentialType credType = msgSecurity.ClientCredentialType;
+            BasicHttpSecurityMode secMode = security.Mode;

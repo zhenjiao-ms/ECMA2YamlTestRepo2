@@ -1,67 +1,39 @@
 using System;
-using System.Collections;
 using System.Globalization;
-using System.Reflection;
 
-public class Example
-{
-   public static void Main()
-   {
-      Assembly assem = Assembly.GetAssembly(typeof(Calendar));
-      Type[] types = assem.GetExportedTypes();
-      Type[] calendars = Array.FindAll(types, IsValidCalendar);
-      Array.Sort(calendars, new CalendarComparer());
 
-      Console.WriteLine("{0,-30} {1}\n", "Calendar", "Algorithm Type");
-      foreach (var cal in calendars) {
-         // Instantiate a calendar object.
-         ConstructorInfo ctor = cal.GetConstructor( new Type[] {} );
-         Calendar calObj = (Calendar) ctor.Invoke( new Type[] {} ); 
+public class SamplesCultureInfo  {
 
-         Console.WriteLine("{0,-30} {1}", 
-                          cal.ToString().Replace("System.Globalization.", ""),
-                          cal.InvokeMember("AlgorithmType", 
-                                           BindingFlags.Public | BindingFlags.Instance | BindingFlags.GetProperty,
-                                           null, calObj, null));
-      }
+   public static void Main()  {
+
+      // Creates and initializes a CultureInfo.
+      CultureInfo myCI = new CultureInfo("en-US", false);
+
+      // Clones myCI and modifies the DTFI and NFI instances associated with the clone.
+      CultureInfo myCIclone = (CultureInfo) myCI.Clone();
+      myCIclone.DateTimeFormat.AMDesignator = "a.m.";
+      myCIclone.DateTimeFormat.DateSeparator = "-";
+      myCIclone.NumberFormat.CurrencySymbol = "USD";
+      myCIclone.NumberFormat.NumberDecimalDigits = 4;
+
+      // Displays the properties of the DTFI and NFI instances associated with the original and with the clone. 
+      Console.WriteLine( "DTFI/NFI PROPERTY\tORIGINAL\tMODIFIED CLONE" );
+      Console.WriteLine( "DTFI.AMDesignator\t{0}\t\t{1}", myCI.DateTimeFormat.AMDesignator, myCIclone.DateTimeFormat.AMDesignator );
+      Console.WriteLine( "DTFI.DateSeparator\t{0}\t\t{1}", myCI.DateTimeFormat.DateSeparator, myCIclone.DateTimeFormat.DateSeparator );
+      Console.WriteLine( "NFI.CurrencySymbol\t{0}\t\t{1}", myCI.NumberFormat.CurrencySymbol, myCIclone.NumberFormat.CurrencySymbol );
+      Console.WriteLine( "NFI.NumberDecimalDigits\t{0}\t\t{1}", myCI.NumberFormat.NumberDecimalDigits, myCIclone.NumberFormat.NumberDecimalDigits );
+      
    }
 
-   private static bool IsValidCalendar(Type t)
-   {
-        if (t.IsSubclassOf(typeof(Calendar)))
-            if (t.IsAbstract)
-                return false;
-            else
-                return true;
-        else
-            return false;
-   }
 }
 
-public class CalendarComparer : IComparer
-{
-   public int Compare(object x, object y)
-   {
-      Type tX = (Type) x;
-      Type tY = (Type) y;
+/*
+This code produces the following output.
 
-      return tX.Name.CompareTo(tY.Name);
-   }
-}
-// The example displays the following output:
-//       Calendar                       Algorithm Type
-//       
-//       ChineseLunisolarCalendar       LunisolarCalendar
-//       GregorianCalendar              SolarCalendar
-//       HebrewCalendar                 LunisolarCalendar
-//       HijriCalendar                  LunarCalendar
-//       JapaneseCalendar               SolarCalendar
-//       JapaneseLunisolarCalendar      LunisolarCalendar
-//       JulianCalendar                 SolarCalendar
-//       KoreanCalendar                 SolarCalendar
-//       KoreanLunisolarCalendar        LunisolarCalendar
-//       PersianCalendar                SolarCalendar
-//       TaiwanCalendar                 SolarCalendar
-//       TaiwanLunisolarCalendar        LunisolarCalendar
-//       ThaiBuddhistCalendar           SolarCalendar
-//       UmAlQuraCalendar               LunarCalendar
+DTFI/NFI PROPERTY       ORIGINAL        MODIFIED CLONE
+DTFI.AMDesignator       AM              a.m.
+DTFI.DateSeparator      /               -
+NFI.CurrencySymbol      $               USD
+NFI.NumberDecimalDigits 2               4
+
+*/

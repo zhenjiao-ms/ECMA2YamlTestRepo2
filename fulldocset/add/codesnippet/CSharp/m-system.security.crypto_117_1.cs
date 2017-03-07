@@ -1,1 +1,3 @@
-        HashAlgorithm hashAlgorithm = dsaSignature.CreateDigest();
+        string errorMessage = ("Unexpected Operation exception.");
+        CryptographicException cryptographicException =
+            new CryptographicException(errorMessage);

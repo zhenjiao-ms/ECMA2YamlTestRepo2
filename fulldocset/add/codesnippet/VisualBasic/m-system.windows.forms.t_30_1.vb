@@ -1,37 +1,30 @@
-      ' Create ToolStripPanel controls.
-      Dim tspTop As New ToolStripPanel()
-      Dim tspBottom As New ToolStripPanel()
-      Dim tspLeft As New ToolStripPanel()
-      Dim tspRight As New ToolStripPanel()
-      
-      ' Dock the ToolStripPanel controls to the edges of the form.
-      tspTop.Dock = DockStyle.Top
-      tspBottom.Dock = DockStyle.Bottom
-      tspLeft.Dock = DockStyle.Left
-      tspRight.Dock = DockStyle.Right
-      
-      ' Create ToolStrip controls to move among the 
-      ' ToolStripPanel controls.
-      ' Create the "Top" ToolStrip control and add
-      ' to the corresponding ToolStripPanel.
-      Dim tsTop As New ToolStrip()
-      tsTop.Items.Add("Top")
-      tspTop.Join(tsTop)
-      
-      ' Create the "Bottom" ToolStrip control and add
-      ' to the corresponding ToolStripPanel.
-      Dim tsBottom As New ToolStrip()
-      tsBottom.Items.Add("Bottom")
-      tspBottom.Join(tsBottom)
-      
-      ' Create the "Right" ToolStrip control and add
-      ' to the corresponding ToolStripPanel.
-      Dim tsRight As New ToolStrip()
-      tsRight.Items.Add("Right")
-      tspRight.Join(tsRight)
-      
-      ' Create the "Left" ToolStrip control and add
-      ' to the corresponding ToolStripPanel.
-      Dim tsLeft As New ToolStrip()
-      tsLeft.Items.Add("Left")
-      tspLeft.Join(tsLeft)
+    Public Sub InitializeMyToolBar()
+        ' Create the ToolBar, ToolBarButton controls, and menus.
+        Dim toolBarButton1 As New ToolBarButton("Open")
+        Dim toolBarButton2 As New ToolBarButton()
+        Dim toolBarButton3 As New ToolBarButton()
+        Dim toolBar1 As New ToolBar()
+	Dim menuItem1 As New MenuItem("Print")
+	Dim contextMenu1 As New ContextMenu(New MenuItem(){menuItem1})
+        
+        ' Add the ToolBarButton controls to the ToolBar.
+        toolBar1.Buttons.Add(toolBarButton1)
+        toolBar1.Buttons.Add(toolBarButton2)
+        toolBar1.Buttons.Add(toolBarButton3)
+        
+        ' Assign an ImageList to the ToolBar and show ToolTips.
+        toolBar1.ImageList = imageList1
+        toolBar1.ShowToolTips = True
+        
+        ' Assign ImageIndex, ContextMenu, Text, ToolTip, and
+        ' Style properties of the ToolBarButton controls. 
+        toolBarButton2.Style = ToolBarButtonStyle.Separator
+        toolBarButton3.Text = "Print"
+        toolBarButton3.Style = ToolBarButtonStyle.DropDownButton
+        toolBarButton3.ToolTipText = "Print"
+        toolBarButton3.ImageIndex = 0
+        toolBarButton3.DropDownMenu = contextMenu1
+        
+        ' Add the ToolBar to a form.
+        Controls.Add(toolBar1)
+    End Sub

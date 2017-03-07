@@ -1,40 +1,36 @@
-Imports System.Drawing
-Imports System.Windows.Forms
-
-Public Class Form1
-    Inherits Form
-    Private tabControl1 As TabControl
-    Private tabPage1 As TabPage
-    Private tabPage2 As TabPage
-
-    Private Sub MyTabs()
-        Me.tabControl1 = New TabControl()
-        Me.tabPage1 = New TabPage()
-        Me.tabPage2 = New TabPage()
-
-        Me.tabControl1.Controls.AddRange(New Control() {Me.tabPage1, Me.tabPage2})
-        Me.tabControl1.Padding = New Point(15, 10)
-        Me.tabControl1.Location = New Point(35, 25)
-        Me.tabControl1.Size = New Size(220, 220)
-
-        ' Selects tabPage2 using SelectedIndex.
-        Me.tabControl1.SelectedIndex = 1
-
-        Me.tabPage1.Text = "myTabPage1"
-        Me.tabPage1.TabIndex = 0
-
-        Me.tabPage2.Text = "myTabPage2"
-        Me.tabPage2.TabIndex = 1
-
-        Me.Size = New Size(300, 300)
-        Me.Controls.AddRange(New Control() {Me.tabControl1})
-    End Sub
+Public Class CustomizedTreeView
+    Inherits TreeView
 
     Public Sub New()
-        MyTabs()
-    End Sub
+        ' Customize the TreeView control by setting various properties.
+        BackColor = System.Drawing.Color.CadetBlue
+        FullRowSelect = True
+        HotTracking = True
+        Indent = 34
+        ShowPlusMinus = False
 
-    Shared Sub Main()
-        Application.Run(New Form1())
-    End Sub
-End Class
+        ' The ShowLines property must be false for the FullRowSelect 
+        ' property to work.
+        ShowLines = False
+    End Sub 'New
+
+
+    Protected Overrides Sub OnAfterSelect(ByVal e As TreeViewEventArgs)
+        ' Confirm that the user initiated the selection.
+        ' This prevents the first node from expanding when it is
+        ' automatically selected during the initialization of 
+        ' the TreeView control.
+        If e.Action <> TreeViewAction.Unknown Then
+            If e.Node.IsExpanded Then
+                e.Node.Collapse()
+            Else
+                e.Node.Expand()
+            End If
+        End If
+
+        ' Remove the selection. This allows the same node to be
+        ' clicked twice in succession to toggle the expansion state.
+        SelectedNode = Nothing
+    End Sub 'OnAfterSelect
+
+End Class 'CustomizedTreeView 

@@ -1,50 +1,105 @@
 
-<%@ Page Language="VB" AutoEventWireup="True" %>
+<%@ Page language="VB" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script runat="server">
+
+  Sub EmployeeFormView_ItemDeleting(ByVal sender As Object, ByVal e As FormViewDeleteEventArgs)
+  
+    ' Get the employee ID, name, and job title from the Keys and Values
+    ' properties.
+    Dim keyValue As String = e.Keys("EmployeeID").ToString()
+    Dim employeeName As String = e.Values("FirstName").ToString() & _
+      " " & e.Values("LastName").ToString()
+    Dim title As String = e.Values("Title").ToString()
+
+    ' Cancel the delete operation if the user attempts to 
+    ' delete a protected record. In this example, records for
+    ' employees with a "Sales Manager" job title are protected.
+    If Title.Equals("Sales Manager") Then
+    
+      e.Cancel = True
+      MessageLabel.Text = "You cannot delete record " & _
+        e.RowIndex.ToString() & ". " & employeeName & _
+        " (Employee Number " & keyValue.ToString() & _
+        ") is protected."
+    
+    End If
+
+  End Sub
+   
+</script>
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>AdRotator AdCreated Example</title>
+  <head runat="server">
+    <title>FormViewDeleteEventHandler Example</title>
 </head>
- 
-   <script runat="server">
-
-      Sub Page_Load(sender As Object, e As EventArgs)
-
-         ' Create an EventHandler delegate for the method you want to handle the event
-         ' and then add it to the list of methods called when the event is raised.
-         AddHandler Ad.AdCreated, AddressOf AdCreated_Event
-
-      End Sub
-
-      Sub AdCreated_Event(sender As Object, e As AdCreatedEventArgs) 
-
-         ' Override the AlternateText value from the ads.xml file.
-         e.AlternateText = "Visit this site!"   
-
-      End Sub      
-
-   </script>
- 
 <body>
- 
-   <form id="form1" runat="server">
- 
-      <h3>AdRotator AdCreated Example</h3>
-
-      Notice that the AlternateText property of the advertisement <br />
-      has been programmatically modified from the value in the XML <br />
-      file. 
-
-      <br /><br />
- 
-      <asp:AdRotator id="Ad" runat="server"
-           AdvertisementFile = "~/App_Data/Ads.xml"
-           Borderwidth="1"
-           Target="_blank"/>
- 
-   </form>
- 
-</body>
+    <form id="form1" runat="server">
+        
+      <h3>FormViewDeleteEventHandler Example</h3>
+                       
+      <asp:formview id="EmployeeFormView"
+        datasourceid="EmployeeSource"
+        allowpaging="true"
+        datakeynames="EmployeeID"
+        onitemdeleting="EmployeeFormView_ItemDeleting"  
+        runat="server">
+        
+        <itemtemplate>
+        
+          <table>
+            <tr>
+              <td>
+                <asp:image id="EmployeeImage"
+                  imageurl='<%# Eval("PhotoPath") %>'
+                  alternatetext='<%# Eval("LastName") %>' 
+                  runat="server"/>
+              </td>
+              <td>
+                <asp:label id="FirstNameLabel"
+                  text='<%#Bind("FirstName")%>'
+                  font-bold="true"
+                  runat="server"/>
+                <asp:label id="LastNameLabel"
+                  text='<%#Bind("LastName")%>'
+                  font-bold="true"
+                  runat="server"/>
+                <br/>     
+                <asp:label id="TitleLabel"
+                  text='<%#Bind("Title")%>'
+                  runat="server"/>        
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <asp:button id="DeleteButton"
+                  text="Delete Record"
+                  commandname="Delete"
+                  runat="server" />
+              </td>
+            </tr>
+          </table>
+        
+        </itemtemplate>         
+                  
+      </asp:formview>
+      
+      <asp:label id="MessageLabel"
+        forecolor="Red"
+        runat="server"/>
+          
+      <!-- This example uses Microsoft SQL Server and connects  -->
+      <!-- to the Northwind sample database. Use an ASP.NET     -->
+      <!-- expression to retrieve the connection string value   -->
+      <!-- from the Web.config file.                            -->
+      <asp:sqldatasource id="EmployeeSource"
+        selectcommand="Select [EmployeeID], [LastName], [FirstName], [Title], [PhotoPath] From [Employees]"
+        deletecommand="Delete [Employees] Where [EmployeeID]=@EmployeeID"
+        connectionstring="<%$ ConnectionStrings:NorthWindConnectionString%>" 
+        runat="server"/>
+            
+    </form>
+  </body>
 </html>

@@ -1,47 +1,27 @@
-    private void sortButton_Click(object sender, System.EventArgs e)
+    // Draws the backgrounds for entire ListView items.
+    private void listView1_DrawItem(object sender,
+        DrawListViewItemEventArgs e)
     {
-        // Check which column is selected, otherwise set NewColumn to null.
-        DataGridViewColumn newColumn =
-            dataGridView1.Columns.GetColumnCount(
-            DataGridViewElementStates.Selected) == 1 ?
-            dataGridView1.SelectedColumns[0] : null;
-
-        DataGridViewColumn oldColumn = dataGridView1.SortedColumn;
-        ListSortDirection direction;
-
-        // If oldColumn is null, then the DataGridView is not currently sorted.
-        if (oldColumn != null)
+        if ((e.State & ListViewItemStates.Selected) != 0)
         {
-            // Sort the same column again, reversing the SortOrder.
-            if (oldColumn == newColumn &&
-                dataGridView1.SortOrder == SortOrder.Ascending)
-            {
-                direction = ListSortDirection.Descending;
-            }
-            else
-            {
-                // Sort a new column and remove the old SortGlyph.
-                direction = ListSortDirection.Ascending;
-                oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
-            }
+            // Draw the background and focus rectangle for a selected item.
+            e.Graphics.FillRectangle(Brushes.Maroon, e.Bounds);
+            e.DrawFocusRectangle();
         }
         else
         {
-            direction = ListSortDirection.Ascending;
+            // Draw the background for an unselected item.
+            using (LinearGradientBrush brush =
+                new LinearGradientBrush(e.Bounds, Color.Orange,
+                Color.Maroon, LinearGradientMode.Horizontal))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds);
+            }
         }
 
-        // If no column has been selected, display an error dialog  box.
-        if (newColumn == null)
+        // Draw the item text for views other than the Details view.
+        if (listView1.View != View.Details)
         {
-            MessageBox.Show("Select a single column and try again.",
-                "Error: Invalid Selection", MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-        }
-        else
-        {
-            dataGridView1.Sort(newColumn, direction);
-            newColumn.HeaderCell.SortGlyphDirection =
-                direction == ListSortDirection.Ascending ?
-                SortOrder.Ascending : SortOrder.Descending;
+            e.DrawText();
         }
     }

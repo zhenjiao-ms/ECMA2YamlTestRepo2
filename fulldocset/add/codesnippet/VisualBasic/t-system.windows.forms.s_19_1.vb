@@ -1,15 +1,16 @@
-Private Sub SplitContainer1_SplitterMoved(sender as Object, e as SplitterEventArgs) _ 
-     Handles SplitContainer1.SplitterMoved
-
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "X", e.X)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Y", e.Y)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "SplitX", e.SplitX)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "SplitY", e.SplitY)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"SplitterMoved Event")
-
-End Sub
+    Private Sub button1_Click(sender As Object, e As System.EventArgs)
+        Dim myStream As Stream
+        Dim saveFileDialog1 As New SaveFileDialog()
+        
+        saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        saveFileDialog1.FilterIndex = 2
+        saveFileDialog1.RestoreDirectory = True
+        
+        If saveFileDialog1.ShowDialog() = DialogResult.OK Then
+            myStream = saveFileDialog1.OpenFile()
+            If (myStream IsNot Nothing) Then
+                ' Code to write the stream goes here.
+                myStream.Close()
+            End If
+        End If
+    End Sub

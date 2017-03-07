@@ -1,1 +1,1 @@
-            MsmqTransportSecurity trnsSecurity = security.Transport;
+	    long maxBufferPoolsize = binding.MaxBufferPoolSize;

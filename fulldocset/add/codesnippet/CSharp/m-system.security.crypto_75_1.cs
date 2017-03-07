@@ -1,172 +1,123 @@
+//
+// This example signs a file specified by a URI 
+// using a detached signature. It then verifies  
+// the signed XML.
+//
+
 using System;
-using System.Xml;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Xml;
+using System.Text;
+using System.Xml;
 
-	class Program
-	{
-		static void Main(string[] args)
-		{
 
-			// Create an XmlDocument object.
-			XmlDocument xmlDoc = new XmlDocument();
 
-			// Load an XML file into the XmlDocument object.
-			try
-			{
-				xmlDoc.PreserveWhitespace = true;
-				xmlDoc.Load("test.xml");
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.Message);
-				return;
-			}
-
-			// Create a new TripleDES key. 
-			TripleDESCryptoServiceProvider tDESkey = new TripleDESCryptoServiceProvider();
-
-			// Create a new instance of the TrippleDESDocumentEncryption object
-			// defined in this sample.
-			TrippleDESDocumentEncryption xmlTDES = new TrippleDESDocumentEncryption(xmlDoc, tDESkey);
-			
-			try
-			{
-				// Encrypt the "creditcard" element.
-				xmlTDES.Encrypt("creditcard");
-
-				// Display the encrypted XML to the console.
-				Console.WriteLine("Encrypted XML:");
-				Console.WriteLine();
-				Console.WriteLine(xmlTDES.Doc.OuterXml);
-
-				// Decrypt the "creditcard" element.
-				xmlTDES.Decrypt();
-
-				// Display the encrypted XML to the console.
-				Console.WriteLine();
-				Console.WriteLine("Decrypted XML:");
-				Console.WriteLine();
-				Console.WriteLine(xmlTDES.Doc.OuterXml);
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.Message);
-			}
-			finally
-			{
-				// Clear the TripleDES key.
-				xmlTDES.Clear();
-			}
-
-		}
-
-	}
-
-class TrippleDESDocumentEncryption
+class XMLDSIGDetached
 {
-	protected XmlDocument docValue;
-	protected TripleDES algValue;
+	
+    [STAThread]
+    static void Main(string[] args)
+    {
+    // The URI to sign.
+        string resourceToSign = "http://www.microsoft.com";
+		
+        // The name of the file to which to save the XML signature.
+        string XmlFileName = "xmldsig.xml";
 
-	public TrippleDESDocumentEncryption(XmlDocument Doc, TripleDES Key)
-	{
-		if (Doc != null)
-		{
-			docValue = Doc;
-		}
-		else
-		{
-			throw new ArgumentNullException("Doc");
-		}
+        try
+        {
 
-		if (Key != null)
-		{
+            // Generate a signing key.
+            RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
 
-			algValue = Key;
-		}
-		else
-		{
-			throw new ArgumentNullException("Key");
-		}
-	}
+            Console.WriteLine("Signing: {0}", resourceToSign);
 
-	public XmlDocument Doc { set { docValue = value; } get { return docValue; } }
-	public TripleDES Alg { set { algValue = value; } get { return algValue; } }
+            // Sign the detached resourceand save the signature in an XML file.
+            SignDetachedResource(resourceToSign, XmlFileName, Key);
 
-	public void Clear()
-	{
-		if (algValue != null)
-		{
-			algValue.Clear();
-		}
-		else
-		{
-			throw new Exception("No TripleDES key was found to clear.");
-		}
-	}
+            Console.WriteLine("XML signature was succesfully computed and saved to {0}.", XmlFileName);
 
-	public void Encrypt(string Element)
-	{
-		// Find the element by name and create a new
-		// XmlElement object.
-		XmlElement inputElement = docValue.GetElementsByTagName(Element)[0] as XmlElement;
+            // Verify the signature of the signed XML.
+            Console.WriteLine("Verifying signature...");
 
-		// If the element was not found, throw an exception.
-		if (inputElement == null)
-		{
-			throw new Exception("The element was not found.");
-		}
+            //Verify the XML signature in the XML file.
+            bool result = VerifyDetachedSignature(XmlFileName);
 
-		// Create a new EncryptedXml object.
-		EncryptedXml exml = new EncryptedXml(docValue);
+            // Display the results of the signature verification to 
+            // the console.
+            if(result)
+            {
+                Console.WriteLine("The XML signature is valid.");
+            }
+            else
+            {
+                Console.WriteLine("The XML signature is not valid.");
+            }
+        }
+        catch(CryptographicException e)
+        {
+            Console.WriteLine(e.Message);
 
-		// Encrypt the element using the symmetric key.
-		byte[] rgbOutput = exml.EncryptData(inputElement, algValue, false);
+        }
+		
+    }
 
-		// Create an EncryptedData object and populate it.
-		EncryptedData ed = new EncryptedData();
+    // Sign an XML file and save the signature in a new file.
+    public static void SignDetachedResource(string URIString, string XmlSigFileName, RSA Key)
+    {
+        // Create a SignedXml object.
+        SignedXml signedXml = new SignedXml();
 
-		// Specify the namespace URI for XML encryption elements.
-		ed.Type = EncryptedXml.XmlEncElementUrl;
+        // Assign the key to the SignedXml object.
+        signedXml.SigningKey = Key;
 
-		// Specify the namespace URI for the TrippleDES algorithm.
-		ed.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncTripleDESUrl);
+        // Create a reference to be signed.
+        Reference reference = new Reference();
 
-		// Create a CipherData element.
-		ed.CipherData = new CipherData();
+        // Add the passed URI to the reference object.
+        reference.Uri = URIString;
+		
+        // Add the reference to the SignedXml object.
+        signedXml.AddReference(reference);
 
-		// Set the CipherData element to the value of the encrypted XML element.
-		ed.CipherData.CipherValue = rgbOutput;
+        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+        KeyInfo keyInfo = new KeyInfo();
+        keyInfo.AddClause(new RSAKeyValue((RSA)Key));	
+        signedXml.KeyInfo = keyInfo;
 
-		// Replace the plaintext XML elemnt with an EncryptedData element.
-		EncryptedXml.ReplaceElement(inputElement, ed, false);
-	}
+        // Compute the signature.
+        signedXml.ComputeSignature();
 
-	public void Decrypt()
-	{
+        // Get the XML representation of the signature and save
+        // it to an XmlElement object.
+        XmlElement xmlDigitalSignature = signedXml.GetXml();
 
-		// XmlElement object.
-		XmlElement encryptedElement = docValue.GetElementsByTagName("EncryptedData")[0] as XmlElement;
+        // Save the signed XML document to a file specified
+        // using the passed string.
+        XmlTextWriter xmltw = new XmlTextWriter(XmlSigFileName, new UTF8Encoding(false));
+        xmlDigitalSignature.WriteTo(xmltw);
+        xmltw.Close();
+    }
+    // Verify the signature of an XML file and return the result.
+    public static Boolean VerifyDetachedSignature(string XmlSigFileName)
+    {	
+        // Create a new XML document.
+        XmlDocument xmlDocument = new XmlDocument();
 
-		// If the EncryptedData element was not found, throw an exception.
-		if (encryptedElement == null)
-		{
-			throw new Exception("The EncryptedData element was not found.");
-		}
+        // Load the passed XML file into the document.
+        xmlDocument.Load(XmlSigFileName);
+	
+        // Create a new SignedXMl object.
+        SignedXml signedXml = new SignedXml();
 
-		// Create an EncryptedData object and populate it.
-		EncryptedData ed = new EncryptedData();
-		ed.LoadXml(encryptedElement);
+        // Find the "Signature" node and create a new
+        // XmlNodeList object.
+        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
 
-		// Create a new EncryptedXml object.
-		EncryptedXml exml = new EncryptedXml();
+        // Load the signature node.
+        signedXml.LoadXml((XmlElement)nodeList[0]);
 
-		// Decrypt the element using the symmetric key.
-		byte[] rgbOutput = exml.DecryptData(ed, algValue);
-
-		// Replace the encryptedData element with the plaintext XML elemnt.
-		exml.ReplaceData(encryptedElement, rgbOutput);
-
-	}
-
+        // Check the signature and return the result.
+        return signedXml.CheckSignature();
+    }
 }

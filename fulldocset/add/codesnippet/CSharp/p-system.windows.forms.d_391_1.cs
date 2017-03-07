@@ -1,14 +1,39 @@
-    // Set row labels.
-    private void Button6_Click(object sender, System.EventArgs e)
-    {
+    #region "data store maintance"
+    const int initialValue = -1;
 
-        int rowNumber = 1;
-        foreach (DataGridViewRow row in dataGridView.Rows)
+    private void dataGridView1_CellValueNeeded(object sender,
+        DataGridViewCellValueEventArgs e)
+    {
+        if (store.ContainsKey(e.RowIndex))
         {
-            if (row.IsNewRow) continue;
-            row.HeaderCell.Value = "Row " + rowNumber;
-            rowNumber = rowNumber + 1;
+            // Use the store if the e value has been modified 
+            // and stored.            
+            e.Value = store[e.RowIndex];
         }
-        dataGridView.AutoResizeRowHeadersWidth(
-            DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
+        else if (newRowNeeded && e.RowIndex == numberOfRows)
+        {
+            if (dataGridView1.IsCurrentCellInEditMode)
+            {
+                e.Value = initialValue;
+            }
+            else
+            {
+                // Show a blank value if the cursor is just resting
+                // on the last row.
+                e.Value = String.Empty;
+            }
+        }
+        else
+        {
+            e.Value = e.RowIndex;
+        }
     }
+
+    private void dataGridView1_CellValuePushed(object sender,
+        DataGridViewCellValueEventArgs e)
+    {
+        store.Add(e.RowIndex, int.Parse(e.Value.ToString()));
+    }
+    #endregion
+
+    private Dictionary<int, int> store = new Dictionary<int, int>();

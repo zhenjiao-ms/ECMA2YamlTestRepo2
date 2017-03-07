@@ -21,9 +21,8 @@ Public Class Test
 
             Dim sr As StreamReader = New StreamReader(path)
 
-            Do While sr.Peek() >= 0
-                Console.Write(Convert.ToChar(sr.Read()))
-            Loop
+            'This allows you to do one Read operation.
+            Console.WriteLine(sr.ReadToEnd())
             sr.Close()
         Catch e As Exception
             Console.WriteLine("The process failed: {0}", e.ToString())

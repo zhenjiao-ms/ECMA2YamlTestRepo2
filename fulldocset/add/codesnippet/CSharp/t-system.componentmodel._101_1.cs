@@ -1,10 +1,2 @@
-[Description("The image associated with the control"),Category("Appearance")] 
- public Image MyImage {
-    get {
-       // Insert code here.
-       return image1;
-    }
-    set {
-       // Insert code here.
-    }
- }
+public class ColorLabelActionList :
+          System.ComponentModel.Design.DesignerActionList

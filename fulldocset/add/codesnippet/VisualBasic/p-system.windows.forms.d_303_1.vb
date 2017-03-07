@@ -1,62 +1,78 @@
-    Private Sub ListDragTarget_DragOver(ByVal sender As Object, ByVal e As DragEventArgs) Handles ListDragTarget.DragOver
-        ' Determine whether string data exists in the drop data. If not, then
-        ' the drop effect reflects that the drop cannot occur.
-        If Not (e.Data.GetDataPresent(GetType(System.String))) Then
+Imports System.Data
+Imports System.Data.SqlClient
+Imports System.Windows.Forms
+Imports System.Drawing
+Imports System
 
-            e.Effect = DragDropEffects.None
-            DropLocationLabel.Text = "None - no string data."
-            Return
-        End If
+Public Class Form1
+    Inherits System.Windows.Forms.Form
 
-        ' Set the effect based upon the KeyState.
-        If ((e.KeyState And (8 + 32)) = (8 + 32) And _
-            (e.AllowedEffect And DragDropEffects.Link) = DragDropEffects.Link) Then
-            ' KeyState 8 + 32 = CTL + ALT
+    Private WithEvents dataGridView1 As New DataGridView()
+    Private bindingSource1 As New BindingSource()
 
-            ' Link drag-and-drop effect.
-            e.Effect = DragDropEffects.Link
+    Public Sub New()
 
-        ElseIf ((e.KeyState And 32) = 32 And _
-            (e.AllowedEffect And DragDropEffects.Link) = DragDropEffects.Link) Then
-
-            ' ALT KeyState for link.
-            e.Effect = DragDropEffects.Link
-
-        ElseIf ((e.KeyState And 4) = 4 And _
-            (e.AllowedEffect And DragDropEffects.Move) = DragDropEffects.Move) Then
-
-            ' SHIFT KeyState for move.
-            e.Effect = DragDropEffects.Move
-
-        ElseIf ((e.KeyState And 8) = 8 And _
-            (e.AllowedEffect And DragDropEffects.Copy) = DragDropEffects.Copy) Then
-
-            ' CTL KeyState for copy.
-            e.Effect = DragDropEffects.Copy
-
-        ElseIf ((e.AllowedEffect And DragDropEffects.Move) = DragDropEffects.Move) Then
-
-            ' By default, the drop action should be move, if allowed.
-            e.Effect = DragDropEffects.Move
-
-        Else
-            e.Effect = DragDropEffects.None
-        End If
-
-        ' Gets the index of the item the mouse is below. 
-
-        ' The mouse locations are relative to the screen, so they must be 
-        ' converted to client coordinates.
-
-        indexOfItemUnderMouseToDrop = _
-            ListDragTarget.IndexFromPoint(ListDragTarget.PointToClient(New Point(e.X, e.Y)))
-
-        ' Updates the label text.
-        If (indexOfItemUnderMouseToDrop <> ListBox.NoMatches) Then
-
-            DropLocationLabel.Text = "Drops before item #" & (indexOfItemUnderMouseToDrop + 1)
-        Else
-            DropLocationLabel.Text = "Drops at the end."
-        End If
+        Me.dataGridView1.Dock = DockStyle.Fill
+        Me.Controls.Add(Me.dataGridView1)
+        InitializeDataGridView()
 
     End Sub
+
+    Private Sub InitializeDataGridView()
+        Try
+            ' Set up the DataGridView.
+            With Me.dataGridView1
+                ' Automatically generate the DataGridView columns.
+                .AutoGenerateColumns = True
+
+                ' Set up the data source.
+                bindingSource1.DataSource = GetData("Select * From Products")
+                .DataSource = bindingSource1
+
+                ' Automatically resize the visible rows.
+                .AutoSizeRowsMode = _
+                    DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders
+
+                ' Set the DataGridView control's border.
+                .BorderStyle = BorderStyle.Fixed3D
+
+                ' Put the cells in edit mode when user enters them.
+                .EditMode = DataGridViewEditMode.EditOnEnter
+            End With
+        Catch ex As SqlException
+            MessageBox.Show("To run this sample replace " _
+                & "connection.ConnectionString with a valid connection string" _
+                & "  to a Northwind database accessible to your system.", _
+                "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            System.Threading.Thread.CurrentThread.Abort()
+        End Try
+    End Sub
+
+    Private Shared Function GetData(ByVal sqlCommand As String) _
+        As DataTable
+
+        Dim connectionString As String = _
+            "Integrated Security=SSPI;Persist Security Info=False;" _
+            & "Initial Catalog=Northwind;Data Source=localhost"
+
+        Dim northwindConnection As SqlConnection = _
+            New SqlConnection(connectionString)
+
+        Dim command As New SqlCommand(sqlCommand, northwindConnection)
+        Dim adapter As SqlDataAdapter = New SqlDataAdapter()
+        adapter.SelectCommand = command
+
+        Dim table As New DataTable
+        table.Locale = System.Globalization.CultureInfo.InvariantCulture
+        adapter.Fill(table)
+
+        Return table
+
+    End Function
+
+    <STAThreadAttribute()> _
+    Public Shared Sub Main()
+        Application.Run(New Form1)
+    End Sub
+
+End Class

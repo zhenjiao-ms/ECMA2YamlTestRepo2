@@ -1,16 +1,15 @@
-         // Gets the attributes for the property.
-         AttributeCollection^ attributes = TypeDescriptor::GetProperties( this )[ "MyProperty" ]->Attributes;
-         
-         // Checks to see if the value of the BrowsableAttribute is Yes.
-         if ( attributes[ BrowsableAttribute::typeid ]->Equals( BrowsableAttribute::Yes ) )
-         {
-            
-            // Insert code here.
-         }
+      // Gets the attributes for the property.
+      AttributeCollection^ attributes = TypeDescriptor::GetProperties( this )[ "MyProperty" ]->Attributes;
 
-         // This is another way to see whether the property is browsable.
-         BrowsableAttribute^ myAttribute = dynamic_cast<BrowsableAttribute^>(attributes[ BrowsableAttribute::typeid ]);
-         if ( myAttribute->Browsable )
-         {
-            // Insert code here.
-         }
+      // Checks to see if the value of the RecommendedAsConfigurableAttribute is Yes.
+      if ( attributes[ RecommendedAsConfigurableAttribute::typeid ]->Equals( RecommendedAsConfigurableAttribute::Yes ) )
+      {
+         // Insert code here.
+      }
+
+      // This is another way to see if the property is recommended as configurable.
+      RecommendedAsConfigurableAttribute^ myAttribute = dynamic_cast<RecommendedAsConfigurableAttribute^>(attributes[ RecommendedAsConfigurableAttribute::typeid ]);
+      if ( myAttribute->RecommendedAsConfigurable )
+      {
+         // Insert code here.
+      }

@@ -1,47 +1,27 @@
-    private void sortButton_Click(object sender, System.EventArgs e)
+    class MyDesigner : ControlDesigner
     {
-        // Check which column is selected, otherwise set NewColumn to null.
-        DataGridViewColumn newColumn =
-            dataGridView1.Columns.GetColumnCount(
-            DataGridViewElementStates.Selected) == 1 ?
-            dataGridView1.SelectedColumns[0] : null;
+        private Adorner myAdorner;
 
-        DataGridViewColumn oldColumn = dataGridView1.SortedColumn;
-        ListSortDirection direction;
-
-        // If oldColumn is null, then the DataGridView is not currently sorted.
-        if (oldColumn != null)
+        protected override void Dispose(bool disposing)
         {
-            // Sort the same column again, reversing the SortOrder.
-            if (oldColumn == newColumn &&
-                dataGridView1.SortOrder == SortOrder.Ascending)
+            if (disposing && myAdorner != null)
             {
-                direction = ListSortDirection.Descending;
-            }
-            else
-            {
-                // Sort a new column and remove the old SortGlyph.
-                direction = ListSortDirection.Ascending;
-                oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                BehaviorService b = BehaviorService;
+                if (b != null)
+                {
+                    b.Adorners.Remove(myAdorner);
+                }
             }
         }
-        else
-        {
-            direction = ListSortDirection.Ascending;
-        }
 
-        // If no column has been selected, display an error dialog  box.
-        if (newColumn == null)
+        public override void Initialize(IComponent component)
         {
-            MessageBox.Show("Select a single column and try again.",
-                "Error: Invalid Selection", MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-        }
-        else
-        {
-            dataGridView1.Sort(newColumn, direction);
-            newColumn.HeaderCell.SortGlyphDirection =
-                direction == ListSortDirection.Ascending ?
-                SortOrder.Ascending : SortOrder.Descending;
+            base.Initialize(component);
+
+            // Add the custom set of glyphs using the BehaviorService. 
+            // Glyphs live on adornders.
+            myAdorner = new Adorner();
+            BehaviorService.Adorners.Add(myAdorner);
+            myAdorner.Glyphs.Add(new MyGlyph(BehaviorService, Control));
         }
     }

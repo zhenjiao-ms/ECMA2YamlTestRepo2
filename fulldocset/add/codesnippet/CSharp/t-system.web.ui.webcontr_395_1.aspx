@@ -1,92 +1,49 @@
-
 <%@ Page Language="C#" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script runat="server">
+</script>
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
-
-  <head runat="server">
-    <title>TreeView LevelStyles Example</title>
+    <head runat="server">
+    <title>ASP.NET Example</title>
 </head>
 <body>
-    <form id="form1" runat="server">
-    
-      <h3>TreeView LevelStyles Example</h3>
+        <form id="form1" runat="server">
 
-      <!-- Populate the LevelStyles collection of the TreeView control -->
-      <!-- declaratively.                                              -->
-      
-      <asp:TreeView id="LinksTreeView"
-        Font-Names= "Arial"
-        ForeColor="Blue"
-        ShowExpandCollapse="false"
-        ExpandDepth="3"
-        NodeIndent="0" 
-        runat="server">
-         
-        <LevelStyles>
-        
-          <asp:TreeNodeStyle ChildNodesPadding="10" 
-            Font-Bold="true" 
-            Font-Size="12pt" 
-            ForeColor="DarkGreen"/>
-          <asp:TreeNodeStyle ChildNodesPadding="5" 
-            Font-Bold="true" 
-            Font-Size="10pt"/>
-          <asp:TreeNodeStyle ChildNodesPadding="5" 
-            Font-UnderLine="true" 
-            Font-Size="10pt"/>
-          <asp:TreeNodeStyle ChildNodesPadding="10" 
-            Font-Size="8pt"/>
-             
-        </LevelStyles>
-         
-        <Nodes>
-        
-          <asp:TreeNode Text="Table of Contents"
-            SelectAction="None">
-             
-            <asp:TreeNode Text="Chapter One">
-            
-              <asp:TreeNode Text="Section 1.0">
-              
-                <asp:TreeNode Text="Topic 1.0.1"/>
-                <asp:TreeNode Text="Topic 1.0.2"/>
-                <asp:TreeNode Text="Topic 1.0.3"/>
-              
-              </asp:TreeNode>
-              
-              <asp:TreeNode Text="Section 1.1">
-              
-                <asp:TreeNode Text="Topic 1.1.1"/>
-                <asp:TreeNode Text="Topic 1.1.2"/>
-                <asp:TreeNode Text="Topic 1.1.3"/>
-                <asp:TreeNode Text="Topic 1.1.4"/>
-              
-              </asp:TreeNode>
-            
-            </asp:TreeNode>
-            
-            <asp:TreeNode Text="Chapter Two">
-            
-              <asp:TreeNode Text="Section 2.0">
-              
-                <asp:TreeNode Text="Topic 2.0.1"/>
-                <asp:TreeNode Text="Topic 2.0.2"/>
-              
-              </asp:TreeNode>
-            
-            </asp:TreeNode>
-            
-          </asp:TreeNode>
-          <asp:TreeNode Text="Appendix A" />
-          <asp:TreeNode Text="Appendix B" />
-          <asp:TreeNode Text="Appendix C" />
-        
-        </Nodes>
-        
-      </asp:TreeView>
+            <!-- The following example demonstrates some of the orders
+                 of precedence when applying styles and templates to
+                 functional nodes of a SiteMapPath.
 
-    </form>
-  </body>
+                 The NodeStyle and RootNodeStyle define the same attributes,
+                 but are different and conflict with each other: the
+                 RootNodeStyle supersedes NodeStyle, and is the style
+                 rendered. Notice, however, that the underline style
+                 defined by NodeStyle is still applied.
+
+                 Both a CurrentNodeStyle and a CurrentNodeTemplate are
+                 defined. A template supersedes a style for a node
+                 type, so CurrentNodeTemplate is displayed and CurrentNodeStyle
+                 is ignored. -->
+
+            <asp:SiteMapPath ID="SiteMapPath1" runat="server"
+                RenderCurrentNodeAsLink="true"
+                NodeStyle-Font-Names="Franklin Gothic Medium"
+                NodeStyle-Font-Underline="true"
+                NodeStyle-Font-Bold="true"
+                RootNodeStyle-Font-Names="Symbol"
+                RootNodeStyle-Font-Bold="false"
+                CurrentNodeStyle-Font-Names="Verdana"
+                CurrentNodeStyle-Font-Size="10pt"
+                CurrentNodeStyle-Font-Bold="true"
+                CurrentNodeStyle-ForeColor="red"
+                CurrentNodeStyle-Font-Underline="false">
+                <CURRENTNODETEMPLATE>
+                        <asp:Image id="Image1" runat="server" ImageUrl="WebForm2.jpg" AlternateText="WebForm2"/>
+                </CURRENTNODETEMPLATE>
+            </asp:SiteMapPath>
+
+
+        </form>
+    </body>
 </html>

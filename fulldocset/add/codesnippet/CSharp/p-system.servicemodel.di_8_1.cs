@@ -9,4 +9,4 @@
             serviceHost.Open();
 
             ChannelDispatcher dispatcher = (ChannelDispatcher)serviceHost.ChannelDispatchers[0];
-            ServiceHostBase hostBase = dispatcher.Host;
+            IChannelListener listener = dispatcher.Listener;

@@ -1,31 +1,25 @@
-
-        // Declare the ListView.
-        private ListView ListViewWithToolTips;
-        private void InitializeItemsWithToolTips()
-        {
-
-            // Construct and set the View property of the ListView.
-            ListViewWithToolTips = new ListView();
-            ListViewWithToolTips.Width = 200;
-            ListViewWithToolTips.View = View.List;
-
-            // Show item tooltips.
-            ListViewWithToolTips.ShowItemToolTips = true;
-            
-            // Create items with a tooltip.
-            ListViewItem item1WithToolTip = new ListViewItem("Item with a tooltip");
-            item1WithToolTip.ToolTipText = "This is the item tooltip.";
-            ListViewItem item2WithToolTip = new ListViewItem("Second item with a tooltip");
-            item2WithToolTip.ToolTipText = "A different tooltip for this item.";
-
-            // Create an item without a tooltip.
-            ListViewItem itemWithoutToolTip = new ListViewItem("Item without tooltip.");
-
-            // Add the items to the ListView.
-            ListViewWithToolTips.Items.AddRange(new ListViewItem[]{item1WithToolTip, 
-                item2WithToolTip, itemWithoutToolTip} );
-
-            // Add the ListView to the form.
-            this.Controls.Add(ListViewWithToolTips);
-            this.Controls.Add(button1);
-        }
+ public void CreateMyLabel()
+ {
+    // Create an instance of a Label.
+    Label label1 = new Label();
+ 
+    // Set the border to a three-dimensional border.
+    label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+    // Set the ImageList to use for displaying an image.
+    label1.ImageList = imageList1;
+    // Use the second image in imageList1.
+    label1.ImageIndex = 1;
+    // Align the image to the top left corner.
+    label1.ImageAlign = ContentAlignment.TopLeft;
+ 
+    // Specify that the text can display mnemonic characters.
+    label1.UseMnemonic = true;
+    // Set the text of the control and specify a mnemonic character.
+    label1.Text = "First &Name:";
+    
+    /* Set the size of the control based on the PreferredHeight and PreferredWidth values. */
+    label1.Size = new Size (label1.PreferredWidth, label1.PreferredHeight);
+ 
+    //...Code to add the control to the form...
+ }
+ 

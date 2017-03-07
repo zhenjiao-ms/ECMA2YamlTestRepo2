@@ -1,66 +1,100 @@
-	private void InitializeListView()
+
+// The following code example demonstrates using the ListBox.Sort method
+// by inheriting from the ListBox class and overriding the Sort method.
+
+
+using System.Drawing;
+using System.Windows.Forms;
+
+public class Form1:
+	System.Windows.Forms.Form
+{
+
+	internal System.Windows.Forms.Button Button1;
+	internal SortByLengthListBox sortingBox;
+	
+	public Form1() : base()
+	{        
+		this.Button1 = new System.Windows.Forms.Button();
+		this.sortingBox = 
+			new SortByLengthListBox();
+		this.SuspendLayout();
+		this.Button1.Location = new System.Drawing.Point(64, 16);
+		this.Button1.Name = "Button1";
+		this.Button1.Size = new System.Drawing.Size(176, 23);
+		this.Button1.TabIndex = 0;
+		this.Button1.Text = "Click me for list sorted by length";
+		this.Button1.Click += new System.EventHandler(Button1_Click);
+		this.sortingBox.Items.AddRange(new object[]{"System", 
+			"System.Windows.Forms", "System.Xml", "System.Net", 
+			"System.Drawing", "System.IO"});
+		this.sortingBox.Location = 
+			new System.Drawing.Point(72, 48);
+		this.sortingBox.Size = 
+			new System.Drawing.Size(120, 95);
+		this.sortingBox.TabIndex = 1;
+		this.ClientSize = new System.Drawing.Size(292, 266);
+		this.Controls.Add(this.sortingBox);
+		this.Controls.Add(this.Button1);
+		this.Name = "Form1";
+		this.Text = "Sort Example";
+		this.ResumeLayout(false);
+	}
+	
+   	public static void Main()
 	{
-		// Set up the inital values for the ListView and populate it.
-		this.ListView1 = new ListView();
-		this.ListView1.Dock = DockStyle.Top;
-		this.ListView1.Location = new System.Drawing.Point(0, 0);
-		this.ListView1.Size = new System.Drawing.Size(292, 130);
-		this.ListView1.View = View.Details;
-		this.ListView1.FullRowSelect = true;
-
-		string[] breakfast = new string[]{"Continental Breakfast", 
-			"Pancakes and Sausage", "Denver Omelet", "Eggs & Bacon", 
-			"Bagel & Cream Cheese"};
-
-		string[] breakfastPrices = new string[]{"3.09", "4.09", 
-			"4.19", "4.79", "2.09"};
-
-		PopulateMenu("Breakfast", breakfast, breakfastPrices);
+		Application.Run(new Form1());
 	}
 
-	private void PopulateMenu(string meal, 
-		string[] menuItems, string[] menuPrices)
-	{
-		ColumnHeader columnHeader1 = new ColumnHeader();
-		columnHeader1.Text = meal + " Choices";
-		columnHeader1.TextAlign = HorizontalAlignment.Left;
-		columnHeader1.Width = 146;
-
-		ColumnHeader columnHeader2 = new ColumnHeader();
-		columnHeader2.Text = "Price";
-		columnHeader2.TextAlign = HorizontalAlignment.Center;
-		columnHeader2.Width = 142;
-
-		this.ListView1.Columns.Add(columnHeader1);
-		this.ListView1.Columns.Add(columnHeader2);
-
-		for(int count=0; count < menuItems.Length; count++)
-		{
-			ListViewItem listItem = 
-				new ListViewItem(menuItems[count]);
-			listItem.SubItems.Add(menuPrices[count]);
-			ListView1.Items.Add(listItem);
-		}
-
-		// Use the Selected property to select the first item on 
-		// the list.
-		ListView1.Focus();
-		ListView1.Items[0].Selected = true;
-	}
-
-
+    
 	private void Button1_Click(System.Object sender, System.EventArgs e)
 	{
-		// Create new values for the ListView, clear the list, 
-		// and repopulate it.
-		string[] lunch = new string[]{"Hamburger", "Grilled Cheese",
-			"Soup & Salad", "Club Sandwich", "Hotdog"};
-
-		string[] lunchPrices = new string[]{"4.09", "5.09", "5.19", 
-			"4.79", "2.09"};
-
-		ListView1.Clear();
-
-		PopulateMenu("Lunch", lunch, lunchPrices);
-		Button1.Enabled = false;
+		// Set the Sorted property to True to raise the overridden Sort
+		// method.
+		sortingBox.Sorted = true;
 	}
+}
+
+// This class inherits from ListBox and implements a different 
+// sorting method. Sort will be called by setting the class's Sorted
+// property to True.
+public class SortByLengthListBox:
+	ListBox
+
+{
+	public SortByLengthListBox() : base()
+	{        
+	}
+
+	// Overrides the parent class Sort to perform a simple
+	// bubble sort on the length of the string contained in each item.
+	protected override void Sort()
+	{
+		if (Items.Count > 1)
+		{
+			bool swapped;
+			do
+			{
+				int counter = Items.Count - 1;
+				swapped = false;
+				
+				while (counter > 0)
+				{
+					// Compare the items' length. 
+					if (Items[counter].ToString().Length  
+						< Items[counter-1].ToString().Length)
+					{
+						// Swap the items.
+						object temp = Items[counter];
+						Items[counter] = Items[counter-1];
+						Items[counter-1] = temp;
+						swapped = true;
+					}
+					// Decrement the counter.
+					counter -= 1;
+				}
+			}
+			while((swapped==true));
+		}
+	}
+}

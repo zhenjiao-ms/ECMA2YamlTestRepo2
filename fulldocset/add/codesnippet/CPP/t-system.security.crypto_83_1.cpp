@@ -2,72 +2,130 @@ using namespace System;
 using namespace System::IO;
 using namespace System::Security::Cryptography;
 
-// Print the byte array in a readable format.
-void PrintByteArray( array<Byte>^array )
+// Computes a keyed hash for a source file, creates a target file with the keyed hash
+// prepended to the contents of the source file, then decrypts the file and compares
+// the source and the decrypted files.
+void EncodeFile( array<Byte>^key, String^ sourceFile, String^ destFile )
 {
-   int i;
-   for ( i = 0; i < array->Length; i++ )
+   
+   // Initialize the keyed hash object.
+   HMACSHA1^ myhmacsha1 = gcnew HMACSHA1( key );
+   FileStream^ inStream = gcnew FileStream( sourceFile,FileMode::Open );
+   FileStream^ outStream = gcnew FileStream( destFile,FileMode::Create );
+   
+   // Compute the hash of the input file.
+   array<Byte>^hashValue = myhmacsha1->ComputeHash( inStream );
+   
+   // Reset inStream to the beginning of the file.
+   inStream->Position = 0;
+   
+   // Write the computed hash value to the output file.
+   outStream->Write( hashValue, 0, hashValue->Length );
+   
+   // Copy the contents of the sourceFile to the destFile.
+   int bytesRead;
+   
+   // read 1K at a time
+   array<Byte>^buffer = gcnew array<Byte>(1024);
+   do
    {
-      Console::Write( String::Format( "{0:X2}", array[ i ] ) );
-      if ( (i % 4) == 3 )
-            Console::Write( " " );
-
+      
+      // Read from the wrapping CryptoStream.
+      bytesRead = inStream->Read( buffer, 0, 1024 );
+      outStream->Write( buffer, 0, bytesRead );
    }
-   Console::WriteLine();
-}
+   while ( bytesRead > 0 );
+
+   myhmacsha1->Clear();
+   
+   // Close the streams
+   inStream->Close();
+   outStream->Close();
+   return;
+} // end EncodeFile
+
+
+
+// Decrypt the encoded file and compare to original file.
+bool DecodeFile( array<Byte>^key, String^ sourceFile )
+{
+   
+   // Initialize the keyed hash object. 
+   HMACSHA1^ hmacsha1 = gcnew HMACSHA1( key );
+   
+   // Create an array to hold the keyed hash value read from the file.
+   array<Byte>^storedHash = gcnew array<Byte>(hmacsha1->HashSize / 8);
+   
+   // Create a FileStream for the source file.
+   FileStream^ inStream = gcnew FileStream( sourceFile,FileMode::Open );
+   
+   // Read in the storedHash.
+   inStream->Read( storedHash, 0, storedHash->Length );
+   
+   // Compute the hash of the remaining contents of the file.
+   // The stream is properly positioned at the beginning of the content, 
+   // immediately after the stored hash value.
+   array<Byte>^computedHash = hmacsha1->ComputeHash( inStream );
+   
+   // compare the computed hash with the stored value
+   bool err = false;
+   for ( int i = 0; i < storedHash->Length; i++ )
+   {
+      if ( computedHash[ i ] != storedHash[ i ] )
+      {
+         err = true;
+      }
+   }
+   if (err)
+        {
+            Console::WriteLine("Hash values differ! Encoded file has been tampered with!");
+            return false;
+        }
+        else
+        {
+            Console::WriteLine("Hash values agree -- no tampering occurred.");
+            return true;
+        }
+
+} //end DecodeFile
+
 
 int main()
 {
-   array<String^>^args = Environment::GetCommandLineArgs();
-   if ( args->Length < 2 )
+   array<String^>^Fileargs = Environment::GetCommandLineArgs();
+   String^ usageText = "Usage: HMACSHA1 inputfile.txt encryptedfile.hsh\nYou must specify the two file names. Only the first file must exist.\n";
+   
+   //If no file names are specified, write usage text.
+   if ( Fileargs->Length < 3 )
    {
-      Console::WriteLine( "Usage: hashdir <directory>" );
-      return 0;
+      Console::WriteLine( usageText );
    }
-
-   try
+   else
    {
-      
-      // Create a DirectoryInfo object representing the specified directory.
-      DirectoryInfo^ dir = gcnew DirectoryInfo( args[ 1 ] );
-      
-      // Get the FileInfo objects for every file in the directory.
-      array<FileInfo^>^files = dir->GetFiles();
-      
-      // Initialize a RIPE160 hash object.
-      RIPEMD160 ^ myRIPEMD160 = RIPEMD160Managed::Create();
-      array<Byte>^hashValue;
-      
-      // Compute and print the hash values for each file in directory.
-      System::Collections::IEnumerator^ myEnum = files->GetEnumerator();
-      while ( myEnum->MoveNext() )
+      try
       {
-         FileInfo^ fInfo = safe_cast<FileInfo^>(myEnum->Current);
          
-         // Create a fileStream for the file.
-         FileStream^ fileStream = fInfo->Open( FileMode::Open );
+         // Create a random key using a random number generator. This would be the
+         //  secret key shared by sender and receiver.
+         array<Byte>^secretkey = gcnew array<Byte>(64);
          
-         // Compute the hash of the fileStream.
-         hashValue = myRIPEMD160->ComputeHash( fileStream );
+         //RNGCryptoServiceProvider is an implementation of a random number generator.
+         RNGCryptoServiceProvider^ rng = gcnew RNGCryptoServiceProvider;
          
-         // Write the name of the file to the Console.
-         Console::Write( "{0}: ", fInfo->Name );
+         // The array is now filled with cryptographically strong random bytes.
+         rng->GetBytes( secretkey );
          
-         // Write the hash value to the Console.
-         PrintByteArray( hashValue );
+         // Use the secret key to encode the message file.
+         EncodeFile( secretkey, Fileargs[ 1 ], Fileargs[ 2 ] );
          
-         // Close the file.
-         fileStream->Close();
+         // Take the encoded file and decode
+         DecodeFile( secretkey, Fileargs[ 2 ] );
       }
-      return 0;
-   }
-   catch ( DirectoryNotFoundException^ ) 
-   {
-      Console::WriteLine( "Error: The directory specified could not be found." );
-   }
-   catch ( IOException^ ) 
-   {
-      Console::WriteLine( "Error: A file in the directory could not be accessed." );
-   }
+      catch ( IOException^ e ) 
+      {
+         Console::WriteLine( "Error: File not found", e );
+      }
 
-}
+   }
+} //end main
+

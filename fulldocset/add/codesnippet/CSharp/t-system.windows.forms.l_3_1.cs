@@ -1,110 +1,91 @@
 using System;
-using System.Windows.Forms;
 using System.Drawing;
-using System.Collections;
+using System.Windows.Forms;
 
-namespace MyListControlSample
+public class Form1 : System.Windows.Forms.Form
 {
-    public class ListBoxSample3 : Form
+    private System.Windows.Forms.LinkLabel linkLabel1;
+    
+    [STAThread]
+    static void Main() 
     {
-        private ListBox ListBox1 = new ListBox();
-        private Label label1 = new Label();
-        private TextBox textBox1 = new TextBox();
-
-        [STAThread]
-        static void Main()
-        {
-            Application.Run(new ListBoxSample3());
-        }
-
-        public ListBoxSample3()
-        {
-            this.ClientSize = new Size(307, 206);
-            this.Text = "ListBox Sample3";
-
-            ListBox1.Location = new Point(54, 16);
-            ListBox1.Name = "ListBox1";
-            ListBox1.Size = new Size(240, 130);
-
-            label1.Location = new Point(14, 150);
-            label1.Name = "label1";
-            label1.Size = new Size(40, 24);
-            label1.Text = "Value";
-
-            textBox1.Location = new Point(54, 150);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(240, 24);
-            
-            this.Controls.AddRange(new Control[] { ListBox1, label1, textBox1 });
-
-            // Populate the list box using an array as DataSource.
-            ArrayList USStates = new ArrayList();
-            USStates.Add(new USState("Alabama", "AL"));
-            USStates.Add(new USState("Washington", "WA"));
-            USStates.Add(new USState("West Virginia", "WV"));
-            USStates.Add(new USState("Wisconsin", "WI"));
-            USStates.Add(new USState("Wyoming", "WY"));
-            ListBox1.DataSource = USStates;
-
-            // Set the long name as the property to be displayed and the short
-            // name as the value to be returned when a row is selected.  Here
-            // these are properties; if we were binding to a database table or
-            // query these could be column names.
-            ListBox1.DisplayMember = "LongName";
-            ListBox1.ValueMember = "ShortName";
-
-            // Bind the SelectedValueChanged event to our handler for it.
-            ListBox1.SelectedValueChanged += 
-                new EventHandler(ListBox1_SelectedValueChanged);
-
-            // Ensure the form opens with no rows selected.
-            ListBox1.ClearSelected();
-        }
-
-        private void InitializeComponent()
-        {
-        }
-
-        private void ListBox1_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (ListBox1.SelectedIndex != -1)
-            {
-                textBox1.Text = ListBox1.SelectedValue.ToString();
-                // If we also wanted to get the displayed text we could use
-                // the SelectedItem item property:
-                // string s = ((USState)ListBox1.SelectedItem).LongName;
-            }
-        }
+        Application.Run(new Form1());
     }
 
-    public class USState
+    public Form1()
     {
-        private string myShortName;
-        private string myLongName;
+        // Create the LinkLabel.
+        this.linkLabel1 = new System.Windows.Forms.LinkLabel();
 
-        public USState(string strLongName, string strShortName)
+        // Configure the LinkLabel's size and location. Specify that the
+        // size should be automatically determined by the content.
+        this.linkLabel1.Location = new System.Drawing.Point(34, 56);
+        this.linkLabel1.Size = new System.Drawing.Size(224, 16);
+        this.linkLabel1.AutoSize = true;
+
+        // Configure the appearance. 
+        // Set the DisabledLinkColor so that a disabled link will show up against the form's background.
+        this.linkLabel1.DisabledLinkColor = System.Drawing.Color.Red;
+        this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Blue;
+        this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+        this.linkLabel1.LinkColor = System.Drawing.Color.Navy;
+        
+        this.linkLabel1.TabIndex = 0;
+        this.linkLabel1.TabStop = true;
+        
+
+        // Add an event handler to do something when the links are clicked.
+        this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+
+        // Identify what the first Link is.
+        this.linkLabel1.LinkArea = new System.Windows.Forms.LinkArea(0, 8);
+
+        // Identify that the first link is visited already.
+        this.linkLabel1.Links[0].Visited = true;
+        
+        // Set the Text property to a string.
+        this.linkLabel1.Text = "Register Online.  Visit Microsoft.  Visit MSN.";
+
+        // Create new links using the Add method of the LinkCollection class.
+        // Underline the appropriate words in the LinkLabel's Text property.
+        // The words 'Register', 'Microsoft', and 'MSN' will 
+        // all be underlined and behave as hyperlinks.
+
+        // First check that the Text property is long enough to accommodate
+        // the desired hyperlinked areas.  If it's not, don't add hyperlinks.
+        if(this.linkLabel1.Text.Length >= 45)
         {
-
-            this.myShortName = strShortName;
-            this.myLongName = strLongName;
+            this.linkLabel1.Links[0].LinkData = "Register";
+            this.linkLabel1.Links.Add(24, 9, "www.microsoft.com");
+            this.linkLabel1.Links.Add(42, 3, "www.msn.com");
+        //  The second link is disabled and will appear as red.
+            this.linkLabel1.Links[1].Enabled = false;
         }
+        
+        // Set up how the form should be displayed and add the controls to the form.
+        this.ClientSize = new System.Drawing.Size(292, 266);
+        this.Controls.AddRange(new System.Windows.Forms.Control[] {this.linkLabel1});
+        this.Text = "Link Label Example";
+    }
 
-        public string ShortName
+    private void linkLabel1_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+    {
+        // Determine which link was clicked within the LinkLabel.
+        this.linkLabel1.Links[linkLabel1.Links.IndexOf(e.Link)].Visited = true;
+
+        // Display the appropriate link based on the value of the 
+        // LinkData property of the Link object.
+        string target = e.Link.LinkData as string;
+
+        // If the value looks like a URL, navigate to it.
+        // Otherwise, display it in a message box.
+        if(null != target && target.StartsWith("www"))
         {
-            get
-            {
-                return myShortName;
-            }
+            System.Diagnostics.Process.Start(target);
         }
-
-        public string LongName
-        {
-
-            get
-            {
-                return myLongName;
-            }
+        else
+        {    
+            MessageBox.Show("Item clicked: " + target);
         }
-
     }
 }

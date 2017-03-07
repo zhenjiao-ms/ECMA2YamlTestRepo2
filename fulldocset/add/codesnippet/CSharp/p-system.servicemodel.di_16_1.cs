@@ -10,4 +10,4 @@
 
             IChannelListener icl = serviceHost.ChannelDispatchers[0].Listener;
             ChannelDispatcher dispatcher = new ChannelDispatcher(icl);
-            ServiceThrottle throttle = dispatcher.ServiceThrottle;
+            bool isTransactedReceive = dispatcher.IsTransactedReceive;

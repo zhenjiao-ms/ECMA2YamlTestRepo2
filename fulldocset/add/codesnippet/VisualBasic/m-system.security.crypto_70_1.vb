@@ -1,66 +1,102 @@
-Imports System
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.X509Certificates
+Imports System.Text
+Imports System.IO
+
+Module DESSample
+
+    Sub Main()
+        Try
+            ' Create a new DES object to generate a key
+            ' and initialization vector (IV).
+            Dim DESalg As DES = DES.Create
+
+            ' Create a string to encrypt.
+            Dim sData As String = "Here is some data to encrypt."
+            Dim FileName As String = "CText.txt"
+
+            ' Encrypt text to a file using the file name, key, and IV.
+            EncryptTextToFile(sData, FileName, DESalg.Key, DESalg.IV)
+
+            ' Decrypt the text from a file using the file name, key, and IV.
+            Dim Final As String = DecryptTextFromFile(FileName, DESalg.Key, DESalg.IV)
+
+            ' Display the decrypted string to the console.
+            Console.WriteLine(Final)
+        Catch e As Exception
+            Console.WriteLine(e.Message)
+        End Try
+    End Sub
 
 
+    Sub EncryptTextToFile(ByVal Data As String, ByVal FileName As String, ByVal Key() As Byte, ByVal IV() As Byte)
+        Try
+            ' Create or open the specified file.
+            Dim fStream As FileStream = File.Open(FileName, FileMode.OpenOrCreate)
 
-Class AsnEncodedDataSample
-   Shared msg As String
-   Shared Sub Main()
-      'The following example demonstrates the usage the AsnEncodedData classes.
-      ' Asn encoded data is read from the extensions of an X509 certificate.
-      Try
-         ' Open the certificate store.
-         Dim store As New X509Store("MY", StoreLocation.CurrentUser)
-         store.Open((OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly))
-         Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-         Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
-         ' Select one or more certificates to display extensions information.
-         Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection)
-         
-         ' Create a new AsnEncodedDataCollection object.
-         Dim asncoll As New AsnEncodedDataCollection()
-         Dim i As Integer
-         For i = 0 To scollection.Count - 1
-            ' Display certificate information.
-	    msg = "Certificate name: "& scollection(i).GetName()
-            MsgBox(msg)
+            ' Create a new DES object.
+            Dim DESalg As DES = DES.Create
 
-            ' Display extensions information.
-            Dim extension As X509Extension
-            For Each extension In  scollection(i).Extensions
-               ' Create an AsnEncodedData object using the extensions information.
-               Dim asndata As New AsnEncodedData(extension.Oid, extension.RawData)
-	       msg = "Extension type: " & extension.Oid.FriendlyName & Environment.NewLine & "Oid value: " & asndata.Oid.Value _
-		& Environment.NewLine & "Raw data length: " & asndata.RawData.Length & Environment.NewLine _
-		& asndata.Format(True) & Environment.NewLine
-               MsgBox(msg)
-		
-               ' Add the AsnEncodedData object to the AsnEncodedDataCollection object.
-               asncoll.Add(asndata)
-            Next extension
-         Next i
-	 msg = "Number of AsnEncodedData items in the collection: " & asncoll.Count
-         MsgBox(msg)         
-         store.Close()
+            ' Create a CryptoStream using the FileStream 
+            ' and the passed key and initialization vector (IV).
+            Dim cStream As New CryptoStream(fStream, _
+                                           DESalg.CreateEncryptor(Key, IV), _
+                                           CryptoStreamMode.Write)
 
-         'Create an enumerator for moving through the collection.
-         Dim asne As AsnEncodedDataEnumerator = asncoll.GetEnumerator()
-         'You must execute a MoveNext() to get to the first item in the collection.
-         asne.MoveNext()
-         ' Write out AsnEncodedData in the collection.
-	 msg = "First AsnEncodedData in the collection: " & asne.Current.Format(True)
-	 MsgBox(msg)
-	
-         
-         asne.MoveNext()
-	 msg = "Second AsnEncodedData in the collection: " & asne.Current.Format(True)
-	 MsgBox(msg)
-        
-         'Return index in the collection to the beginning.
-         asne.Reset()
-      Catch 
-         MsgBox("Information could not be written out for this certificate.")
-      End Try
-   End Sub 'Main
-End Class 'AsnEncodedDataSample
+            ' Create a StreamWriter using the CryptoStream.
+            Dim sWriter As New StreamWriter(cStream)
+
+            ' Write the data to the stream 
+            ' to encrypt it.
+            sWriter.WriteLine(Data)
+
+            ' Close the streams and
+            ' close the file.
+            sWriter.Close()
+            cStream.Close()
+            fStream.Close()
+        Catch e As CryptographicException
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
+        Catch e As UnauthorizedAccessException
+            Console.WriteLine("A file error occurred: {0}", e.Message)
+        End Try
+    End Sub
+
+
+    Function DecryptTextFromFile(ByVal FileName As String, ByVal Key() As Byte, ByVal IV() As Byte) As String
+        Try
+            ' Create or open the specified file. 
+            Dim fStream As FileStream = File.Open(FileName, FileMode.OpenOrCreate)
+
+            ' Create a new DES object.
+            Dim DESalg As DES = DES.Create
+
+            ' Create a CryptoStream using the FileStream 
+            ' and the passed key and initialization vector (IV).
+            Dim cStream As New CryptoStream(fStream, _
+                                            DESalg.CreateDecryptor(Key, IV), _
+                                            CryptoStreamMode.Read)
+
+            ' Create a StreamReader using the CryptoStream.
+            Dim sReader As New StreamReader(cStream)
+
+            ' Read the data from the stream 
+            ' to decrypt it.
+            Dim val As String = sReader.ReadLine()
+
+            ' Close the streams and
+            ' close the file.
+            sReader.Close()
+            cStream.Close()
+            fStream.Close()
+
+            ' Return the string. 
+            Return val
+        Catch e As CryptographicException
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
+            Return Nothing
+        Catch e As UnauthorizedAccessException
+            Console.WriteLine("A file error occurred: {0}", e.Message)
+            Return Nothing
+        End Try
+    End Function
+End Module

@@ -1,31 +1,15 @@
 using System;
 
-class Example
+public class Example
 {
-   static void Main()
+   public static void Main()
    {
-      // Create upper-case characters from their Unicode code units.
-      String stringUpper = "\x0041\x0042\x0043";
-
-      // Create lower-case characters from their Unicode code units.
-      String stringLower = "\x0061\x0062\x0063";
-
-      // Display the strings.
-      Console.WriteLine("Comparing '{0}' and '{1}':", 
-                        stringUpper, stringLower);
-
-      // Compare the uppercased strings; the result is true.
-      Console.WriteLine("The Strings are equal when capitalized? {0}",
-                        String.Compare(stringUpper.ToUpper(), stringLower.ToUpper()) == 0 
-                                       ? "true" : "false");
-
-      // The previous method call is equivalent to this Compare method, which ignores case.
-      Console.WriteLine("The Strings are equal when case is ignored? {0}",
-                        String.Compare(stringUpper, stringLower, true) == 0
-                                       ? "true" : "false" );
+      string s1 = "Ani\u00ADmal";
+      string s2 = "animal";
+      
+      Console.WriteLine("Comparison of '{0}' and '{1}': {2}", 
+                        s1, s2, String.Compare(s1, s2, true));
    }
-} 
+}
 // The example displays the following output:
-//       Comparing 'ABC' and 'abc':
-//       The Strings are equal when capitalized? true
-//       The Strings are equal when case is ignored? true
+//       Comparison of 'ani-mal' and 'animal': 0

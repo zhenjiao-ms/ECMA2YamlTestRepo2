@@ -19,8 +19,18 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Defines a set of flags that specifies the source or destination context for the stream during serialization.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following code example demonstrates the use of the StreamingContextStates enum.  
+  
+ [!code-vb[StreamingContext Example#1](~/add/codesnippet/visualbasic/t-system.runtime.seriali_28_1.vb)]
+ [!code-cs[StreamingContext Example#1](~/add/codesnippet/csharp/t-system.runtime.seriali_28_1.cs)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="All">
@@ -37,7 +47,7 @@
         <ReturnType>System.Runtime.Serialization.StreamingContextStates</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the serialized data can be transmitted to or received from any of the other contexts.</summary>
       </Docs>
     </Member>
     <Member MemberName="Clone">
@@ -54,7 +64,7 @@
         <ReturnType>System.Runtime.Serialization.StreamingContextStates</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the object graph is being cloned. Users can assume that the cloned graph will continue to exist within the same process and be safe to access handles or other references to unmanaged resources.</summary>
       </Docs>
     </Member>
     <Member MemberName="CrossAppDomain">
@@ -71,7 +81,7 @@
         <ReturnType>System.Runtime.Serialization.StreamingContextStates</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the source or destination context is a different AppDomain. (For a description of AppDomains, see [Application Domains](http://msdn.microsoft.com/en-us/39e57d07-a740-4cd4-ae82-e119ea3856c1)).</summary>
       </Docs>
     </Member>
     <Member MemberName="CrossMachine">
@@ -88,7 +98,7 @@
         <ReturnType>System.Runtime.Serialization.StreamingContextStates</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the source or destination context is a different computer.</summary>
       </Docs>
     </Member>
     <Member MemberName="CrossProcess">
@@ -105,7 +115,7 @@
         <ReturnType>System.Runtime.Serialization.StreamingContextStates</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the source or destination context is a different process on the same computer.</summary>
       </Docs>
     </Member>
     <Member MemberName="File">
@@ -122,7 +132,7 @@
         <ReturnType>System.Runtime.Serialization.StreamingContextStates</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the source or destination context is a file. Users can assume that files will last longer than the process that created them and not serialize objects in such a way that deserialization will require accessing any data from the current process.</summary>
       </Docs>
     </Member>
     <Member MemberName="Other">
@@ -139,7 +149,7 @@
         <ReturnType>System.Runtime.Serialization.StreamingContextStates</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the serialization context is unknown.</summary>
       </Docs>
     </Member>
     <Member MemberName="Persistence">
@@ -156,7 +166,7 @@
         <ReturnType>System.Runtime.Serialization.StreamingContextStates</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the source or destination context is a persisted store, which could include databases, files, or other backing stores. Users can assume that persisted data will last longer than the process that created the data and not serialize objects so that deserialization will require accessing any data from the current process.</summary>
       </Docs>
     </Member>
     <Member MemberName="Remoting">
@@ -173,7 +183,7 @@
         <ReturnType>System.Runtime.Serialization.StreamingContextStates</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the data is remoted to a context in an unknown location. Users cannot make any assumptions whether this is on the same computer.</summary>
       </Docs>
     </Member>
   </Members>

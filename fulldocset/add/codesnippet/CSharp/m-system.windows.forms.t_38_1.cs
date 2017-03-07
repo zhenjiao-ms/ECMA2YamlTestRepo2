@@ -1,14 +1,10 @@
-private void myCheckBox_CheckedChanged(object sender, System.EventArgs e)
-{
-   // If the check box is checked, expand all the tree nodes.
-   if (myCheckBox.Checked == true)
-   {
-      myTreeView.ExpandAll();
-   }
-   else
-   {
-      // If the check box is not cheked, collapse the first tree node.
-      myTreeView.Nodes[0].FirstNode.Collapse();
-      MessageBox.Show("The first and last  node of CutomerList root node is collapsed");
-   }
-}
+public void CopyAllMyText()
+ {
+    // Determine if any text is selected in the TextBox control.
+    if(textBox1.SelectionLength == 0)
+       // Select all text in the text box.
+       textBox1.SelectAll();
+    
+    // Copy the contents of the control to the Clipboard.
+    textBox1.Copy();
+ }

@@ -1,34 +1,28 @@
-        ToolStripButton^ changeDirectionButton;
+   void SelectNode( TreeNode^ node )
+   {
+      if ( node->IsSelected )
+      {
+         
+         // Determine which TreeNode to select.
+         String^ str = myComboBox->Text;
+         if ( str->Equals( "Previous" ) )
+                  node->TreeView->SelectedNode = node->PrevNode;
+         else
+         if ( str->Equals( "PreviousVisible" ) )
+                  node->TreeView->SelectedNode = node->PrevVisibleNode;
+         else
+         if ( str->Equals( "Next" ) )
+                  node->TreeView->SelectedNode = node->NextNode;
+         else
+         if ( str->Equals( "NextVisible" ) )
+                  node->TreeView->SelectedNode = node->NextVisibleNode;
+         else
+         if ( str->Equals( "First" ) )
+                  node->TreeView->SelectedNode = node->FirstNode;
+         else
+         if ( str->Equals( "Last" ) )
+                  node->TreeView->SelectedNode = node->LastNode;
+      }
 
-        void InitializeMovingToolStrip()
-        {
-            changeDirectionButton = gcnew ToolStripButton;
-            movingToolStrip->AutoSize = true;
-            movingToolStrip->RenderMode = ToolStripRenderMode::System;
-            changeDirectionButton->TextDirection = 
-                ToolStripTextDirection::Vertical270;
-            changeDirectionButton->Overflow = 
-                ToolStripItemOverflow::Never;
-            changeDirectionButton->Text = "Change Alignment";
-            movingToolStrip->Items->Add(changeDirectionButton);
-            changeDirectionButton->Click += gcnew EventHandler(this, 
-                &Form1::changeDirectionButtonClick);
-        }
-
-        void changeDirectionButtonClick(Object^ sender, EventArgs^ e)
-        {
-            ToolStripItem^ item = (ToolStripItem^) sender;
-            if ((item->TextDirection == ToolStripTextDirection::Vertical270) 
-                || (item->TextDirection == ToolStripTextDirection::Vertical90))
-            {
-                item->TextDirection = ToolStripTextDirection::Horizontal;
-                movingToolStrip->Raft = RaftingSides::Top;
-            }
-            else
-            {
-                item->TextDirection = 
-                    ToolStripTextDirection::Vertical270;
-                movingToolStrip->Raft = RaftingSides::Left;
-            }
-        }
-
+      node->TreeView->Focus();
+   }

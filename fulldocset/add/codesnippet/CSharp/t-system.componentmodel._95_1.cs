@@ -1,4 +1,7 @@
-    [RunInstallerAttribute(true)]
-     public class MyProjectInstaller : Installer {
-        // Insert code here.
-     }
+    [ReadOnly(true)]
+     public int MyProperty {
+        get {
+           // Insert code here.
+           return 0;
+        }
+    }

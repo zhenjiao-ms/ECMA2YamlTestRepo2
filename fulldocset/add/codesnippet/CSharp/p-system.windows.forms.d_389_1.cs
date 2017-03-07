@@ -1,36 +1,77 @@
-    private DataGridView dataGridView1 = new DataGridView();
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+using System.Drawing;
 
-    private void AddColorColumn()
+public class Form1 : System.Windows.Forms.Form
+{
+    private DataGridView dataGridView1 = new DataGridView();
+    private BindingSource bindingSource1 = new BindingSource();
+
+    public Form1()
     {
-        DataGridViewComboBoxColumn comboBoxColumn =
-            new DataGridViewComboBoxColumn();
-        comboBoxColumn.Items.AddRange(
-            Color.Red, Color.Yellow, Color.Green, Color.Blue);
-        comboBoxColumn.ValueType = typeof(Color);
-        dataGridView1.Columns.Add(comboBoxColumn);
-        dataGridView1.EditingControlShowing +=
-            new DataGridViewEditingControlShowingEventHandler(
-            dataGridView1_EditingControlShowing);
+        dataGridView1.Dock = DockStyle.Fill;
+        this.Controls.Add(dataGridView1);
+        InitializeDataGridView();
     }
 
-    private void dataGridView1_EditingControlShowing(object sender,
-        DataGridViewEditingControlShowingEventArgs e)
+    private void InitializeDataGridView()
     {
-        ComboBox combo = e.Control as ComboBox;
-        if (combo != null)
+        try
         {
-            // Remove an existing event-handler, if present, to avoid 
-            // adding multiple handlers when the editing control is reused.
-            combo.SelectedIndexChanged -=
-                new EventHandler(ComboBox_SelectedIndexChanged);
+            // Set up the DataGridView.
+            dataGridView1.Dock = DockStyle.Fill;
 
-            // Add the event handler. 
-            combo.SelectedIndexChanged +=
-                new EventHandler(ComboBox_SelectedIndexChanged);
+            // Automatically generate the DataGridView columns.
+            dataGridView1.AutoGenerateColumns = true;
+
+            // Set up the data source.
+            bindingSource1.DataSource = GetData("Select * From Products");
+            dataGridView1.DataSource = bindingSource1;
+
+            // Automatically resize the visible rows.
+            dataGridView1.AutoSizeRowsMode =
+                DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+
+            // Set the DataGridView control's border.
+            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
+
+            // Put the cells in edit mode when user enters them.
+            dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
+        }
+        catch (SqlException)
+        {
+            MessageBox.Show("To run this sample replace connection.ConnectionString" +
+                " with a valid connection string to a Northwind" +
+                " database accessible to your system.", "ERROR",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            System.Threading.Thread.CurrentThread.Abort();
         }
     }
 
-    private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+    private static DataTable GetData(string sqlCommand)
     {
-        ((ComboBox)sender).BackColor = (Color)((ComboBox)sender).SelectedItem;
+        string connectionString = "Integrated Security=SSPI;" +
+            "Persist Security Info=False;" +
+            "Initial Catalog=Northwind;Data Source=localhost";
+
+        SqlConnection northwindConnection = new SqlConnection(connectionString);
+
+        SqlCommand command = new SqlCommand(sqlCommand, northwindConnection);
+        SqlDataAdapter adapter = new SqlDataAdapter();
+        adapter.SelectCommand = command;
+
+        DataTable table = new DataTable();
+        table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+        adapter.Fill(table);
+
+        return table;
     }
+
+    [STAThreadAttribute()]
+    public static void Main()
+    {
+        Application.Run(new Form1());
+    }
+}

@@ -17,8 +17,24 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a reference in a discovery document to a service description.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ XML Web services discovery involves discovering the available Web Services given an URL. The URL usually points to a discovery document, which typically has a.disco file name extension. Within a discovery document are references to information about the existance of XML Web services. These references can refer to service descriptions, XML Schema Definition language (XSD) schemas or other discovery documents. This class represents a reference to a Service Description.  
+  
+ Within a discovery document, a reference to a Service Description is contained within a `contractRef` XML element. The `contractRef` XML element has two attributes: `ref` and `docRef`. The `contractRef` element must have an XML namespace matching the <xref:System.Web.Services.Discovery.ContractReference.Namespace> constant, whereas the `ref` and `docRef` attributes are placed in the <xref:System.Web.Services.Discovery.ContractReference.Ref%2A> and <xref:System.Web.Services.Discovery.ContractReference.DocRef%2A> properties.  
+  
+   
+  
+## Examples  
+ [!code-cpp[ContractReference#1](~/add/codesnippet/cpp/t-system.web.services.di_3_1.cpp)]
+ [!code-vb[ContractReference#1](~/add/codesnippet/visualbasic/t-system.web.services.di_3_1.vb)]
+ [!code-cs[ContractReference#1](~/add/codesnippet/csharp/t-system.web.services.di_3_1.cs)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -33,8 +49,24 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Initializes a new instance of the <see cref="T:System.Web.Services.Discovery.ContractReference" /> class using default values.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use this constructor to create and initialize a new instance of the <xref:System.Web.Services.Discovery.ContractReference> class using default values.  
+  
+   
+  
+## Examples  
+ The following code example creates a new instance of <xref:System.Web.Services.Discovery.ContractReference>.  
+  
+ [!code-cs[ContractReference_Reference#1](~/add/codesnippet/csharp/m-system.web.services.di_0_1.cs)]
+ [!code-cpp[ContractReference_Reference#1](~/add/codesnippet/cpp/m-system.web.services.di_0_1.cpp)]
+ [!code-vb[ContractReference_Reference#1](~/add/codesnippet/visualbasic/m-system.web.services.di_0_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -51,9 +83,29 @@
         <Parameter Name="href" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="href">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="href">The URL for a Sevice Descritpion. Initializes the <see cref="System.Web.Services.Discovery.ContractReference.Ref%2A" /> property value.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.Web.Services.Discovery.ContractReference" /> class using the supplied reference to a Service Description.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use this constructor to create and initialize a new instance of the <xref:System.Web.Services.Discovery.ContractReference> class using the specified reference name.  
+  
+ The following table shows initial property values for an instance of <xref:System.Web.Services.Discovery.ContractReference>.  
+  
+|Property|Initial Value|  
+|--------------|-------------------|  
+|`Ref`|The `href` parameter that represents the reference name.|  
+  
+   
+  
+## Examples  
+ [!code-cpp[ContractReference_ctor1#1](~/add/codesnippet/cpp/m-system.web.services.di_12_1.cpp)]
+ [!code-cs[ContractReference_ctor1#1](~/add/codesnippet/csharp/m-system.web.services.di_12_1.cs)]
+ [!code-vb[ContractReference_ctor1#1](~/add/codesnippet/visualbasic/m-system.web.services.di_12_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -71,10 +123,31 @@
         <Parameter Name="docRef" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="href">To be added.</param>
-        <param name="docRef">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="href">The URL for a service description. Initializes the <see cref="System.Web.Services.Discovery.ContractReference.Ref%2A" /> property value.</param>
+        <param name="docRef">The URL for a XML Web service implementing the service description at <c>href</c>. Initializes the <see cref="System.Web.Services.Discovery.ContractReference.DocRef%2A" /> property value.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.Web.Services.Discovery.ContractReference" /> class using the supplied references to a service description and a XML Web service implementing the service description.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use this constructor to create and initialize a new instance of the <xref:System.Web.Services.Discovery.ContractReference> class using the specified reference name and `docRef`.  
+  
+ The following table shows initial property values for an instance of <xref:System.Web.Services.Discovery.ContractReference>.  
+  
+|Property|Initial Value|  
+|--------------|-------------------|  
+|`Ref`|The `href` parameter that represents the reference name.|  
+|`DocRef`|The `docRef` parameter that represents the DocRef.|  
+  
+   
+  
+## Examples  
+ [!code-cs[ContractReference_ctor2#1](~/add/codesnippet/csharp/ec009f7b-c155-441a-bbe3-_1.cs)]
+ [!code-cpp[ContractReference_ctor2#1](~/add/codesnippet/cpp/ec009f7b-c155-441a-bbe3-_1.cpp)]
+ [!code-vb[ContractReference_ctor2#1](~/add/codesnippet/visualbasic/ec009f7b-c155-441a-bbe3-_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Contract">
@@ -96,9 +169,21 @@
         <ReturnType>System.Web.Services.Description.ServiceDescription</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a <see cref="T:System.Web.Services.Description.ServiceDescription" /> object representing the service description.</summary>
+        <value>A <see cref="T:System.Web.Services.Description.ServiceDescription" /> object representing the service description.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cs[ContractReference_Contract#1](~/add/codesnippet/csharp/p-system.web.services.di_1_1.cs)]
+ [!code-vb[ContractReference_Contract#1](~/add/codesnippet/visualbasic/p-system.web.services.di_1_1.vb)]
+ [!code-cpp[ContractReference_Contract#1](~/add/codesnippet/cpp/p-system.web.services.di_1_1.cpp)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">
+          <see cref="System.Web.Services.Discovery.DiscoveryReference.ClientProtocol%2A" /> property is <see langword="null" />.</exception>
+        <exception cref="T:System.Exception">The <see cref="System.Web.Services.Discovery.DiscoveryClientProtocol.Documents%2A" /> property of <see cref="System.Web.Services.Discovery.DiscoveryReference.ClientProtocol%2A" /> does not contain a discovery document with an URL of <see cref="System.Web.Services.Discovery.ContractReference.Url%2A" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="DefaultFilename">
@@ -120,9 +205,18 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the name of the file to use by default when saving the referenced service description.</summary>
+        <value>Name of the default file to use when saving the referenced service description to a file.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cpp[ContractReference_DefaultFileName#1](~/add/codesnippet/cpp/p-system.web.services.di_9_1.cpp)]
+ [!code-cs[ContractReference_DefaultFileName#1](~/add/codesnippet/csharp/p-system.web.services.di_9_1.cs)]
+ [!code-vb[ContractReference_DefaultFileName#1](~/add/codesnippet/visualbasic/p-system.web.services.di_9_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DocRef">
@@ -144,9 +238,30 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets and sets the URL for a XML Web service implementing the service description referenced in the <see cref="System.Web.Services.Discovery.ContractReference.Ref%2A" /> property.</summary>
+        <value>The URL for a XML Web service implementing the Service Description referenced in the <see cref="System.Web.Services.Discovery.ContractReference.Ref%2A" /> property.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Within a discovery document, a reference to a Service Description is contained within a `contractRef` XML element. The `contractRef` XML element has two attributes described in the following table.  
+  
+|Attribute|Description|  
+|---------------|-----------------|  
+|ref|The URL for the service description. The <xref:System.Web.Services.Discovery.ContractReference.Ref%2A> property represents the value of the `ref` attribute.|  
+|docRef|The URL for a XML Web service implementing the service description specified by the `ref` attribute. The DocRef property represents the value of the `docRef` attribute.|  
+  
+   
+  
+## Examples  
+ The following code example sets the DocRef property of <xref:System.Web.Services.Discovery.ContractReference>.  
+  
+ [!code-cs[ContractReference_Reference#3](~/add/codesnippet/csharp/p-system.web.services.di_33_1.cs)]
+ [!code-cpp[ContractReference_Reference#3](~/add/codesnippet/cpp/p-system.web.services.di_33_1.cpp)]
+ [!code-vb[ContractReference_Reference#3](~/add/codesnippet/visualbasic/p-system.web.services.di_33_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Namespace">
@@ -163,8 +278,24 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>XML namespace for service description references in discovery documents.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Within a discovery document, a reference to a Service Description is contained within a `contractRef` XML element, which is a part of the XML namespace specified in the Namespace constant.  
+  
+   
+  
+## Examples  
+ The following code example outputs to the console the value of the Namespace constant.  
+  
+ [!code-cs[ContractReference_Reference#4](~/add/codesnippet/csharp/f-system.web.services.di_1_1.cs)]
+ [!code-cpp[ContractReference_Reference#4](~/add/codesnippet/cpp/f-system.web.services.di_1_1.cpp)]
+ [!code-vb[ContractReference_Reference#4](~/add/codesnippet/visualbasic/f-system.web.services.di_1_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ReadDocument">
@@ -184,10 +315,20 @@
         <Parameter Name="stream" Type="System.IO.Stream" />
       </Parameters>
       <Docs>
-        <param name="stream">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="stream">
+          <see cref="T:System.IO.Stream" /> containing the service description.</param>
+        <summary>Reads the service description from the passed <see cref="T:System.IO.Stream" /> and returns the service description.</summary>
+        <returns>A <see cref="T:System.Web.Services.Description.ServiceDescription" /> containing the contents of the referenced service description.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cs[ContractReference_ReadDocument#1](~/add/codesnippet/csharp/m-system.web.services.di_17_1.cs)]
+ [!code-vb[ContractReference_ReadDocument#1](~/add/codesnippet/visualbasic/m-system.web.services.di_17_1.vb)]
+ [!code-cpp[ContractReference_ReadDocument#1](~/add/codesnippet/cpp/m-system.web.services.di_17_1.cpp)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Ref">
@@ -209,9 +350,30 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the URL to the referenced service description.</summary>
+        <value>The URL to the referenced service description.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Within a discovery document, a reference to a service description is contained within a `contractRef` XML element. The `contractRef` XML element has two attributes described in the following table.  
+  
+|Attribute|Description|  
+|---------------|-----------------|  
+|ref|The URL for the service description.The Ref property represents the value of the `ref` attribute.|  
+|docRef|The URL for a XML Web service implementing the service description specified by the `ref` attribute. The <xref:System.Web.Services.Discovery.ContractReference.DocRef%2A> property represents the value of the `docRef` attribute.|  
+  
+   
+  
+## Examples  
+ The following code example sets the Ref property of a <xref:System.Web.Services.Discovery.ContractReference>.  
+  
+ [!code-cs[ContractReference_Reference#2](~/add/codesnippet/csharp/p-system.web.services.di_26_1.cs)]
+ [!code-cpp[ContractReference_Reference#2](~/add/codesnippet/cpp/p-system.web.services.di_26_1.cpp)]
+ [!code-vb[ContractReference_Reference#2](~/add/codesnippet/visualbasic/p-system.web.services.di_26_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Resolve">
@@ -232,10 +394,22 @@
         <Parameter Name="stream" Type="System.IO.Stream" />
       </Parameters>
       <Docs>
-        <param name="contentType">To be added.</param>
-        <param name="stream">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="contentType">The MIME content type of <c>stream</c>.</param>
+        <param name="stream">The <see cref="T:System.IO.Stream" /> containing the referenced document.</param>
+        <summary>Resolves whether the the referenced document is valid.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If the MIME type is `text/xml` and the contents of `stream` is a Service Description, then the contents of `stream` are added to the <xref:System.Web.Services.Discovery.DiscoveryClientProtocol.References%2A> and <xref:System.Web.Services.Discovery.DiscoveryClientProtocol.Documents%2A> properties of <xref:System.Web.Services.Discovery.DiscoveryReference.ClientProtocol%2A>.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.InvalidOperationException">The <see cref="System.Web.Services.Discovery.DiscoveryReference.ClientProtocol%2A" /> property is <see langword="null" />.  
+  
+ -or-  
+  
+ The service description could not be downloaded and verified successfully.</exception>
       </Docs>
     </Member>
     <Member MemberName="Url">
@@ -257,9 +431,23 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the URL for the referenced Service Description.</summary>
+        <value>The URL for the referenced service description.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ For the <xref:System.Web.Services.Discovery.ContractReference> class, the Url property returns the value of the <xref:System.Web.Services.Discovery.ContractReference.Ref%2A> property.  
+  
+   
+  
+## Examples  
+ [!code-cpp[ContractReference_DefaultFileName#2](~/add/codesnippet/cpp/p-system.web.services.di_29_1.cpp)]
+ [!code-cs[ContractReference_DefaultFileName#2](~/add/codesnippet/csharp/p-system.web.services.di_29_1.cs)]
+ [!code-vb[ContractReference_DefaultFileName#2](~/add/codesnippet/visualbasic/p-system.web.services.di_29_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WriteDocument">
@@ -280,10 +468,19 @@
         <Parameter Name="stream" Type="System.IO.Stream" />
       </Parameters>
       <Docs>
-        <param name="document">To be added.</param>
-        <param name="stream">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="document">The <see cref="T:System.Web.Services.Description.ServiceDescription" /> to write into <c>stream</c>.</param>
+        <param name="stream">The <see cref="T:System.IO.Stream" /> into which the serialized <see cref="T:System.Web.Services.Description.ServiceDescription" /> is written.</param>
+        <summary>Writes the passed-in service description into the passed-in <see cref="T:System.IO.Stream" />.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cs[ContractReference_WriteDocument#1](~/add/codesnippet/csharp/6e326fd8-01e0-4377-a439-_1.cs)]
+ [!code-vb[ContractReference_WriteDocument#1](~/add/codesnippet/visualbasic/6e326fd8-01e0-4377-a439-_1.vb)]
+ [!code-cpp[ContractReference_WriteDocument#1](~/add/codesnippet/cpp/6e326fd8-01e0-4377-a439-_1.cpp)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
   </Members>

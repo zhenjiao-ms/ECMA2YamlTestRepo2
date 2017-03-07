@@ -1,98 +1,59 @@
 Imports System
 Imports System.IO
-Imports System.Xml.Serialization
-Imports System.Collections
 Imports System.Xml
-Imports System.Text
-Public Class Transportation
-   ' The SoapElementAttribute specifies that the
-   ' generated XML element name will be "Wheels"
-   ' instead of "Vehicle".
-   <SoapElement("Wheels")> Public Vehicle As String 
-   <SoapElement(DataType:= "dateTime")> _
-   public CreationDate As DateTime    
-   <SoapElement(IsNullable:= true)> _
-   public thing As Thing
-End Class
+Imports System.Xml.Schema
+Imports System.Xml.Serialization
 
-Public Class Thing
-   <SoapElement(IsNullable:=true)> public ThingName As string 
+<XmlRoot(Namespace:="www.contoso.com", _
+    ElementName:="MyGroupName", _
+    DataType:="string", _
+    IsNullable:=True)> _
+Public Class Group
+
+    Private groupNameValue As String
+    ' Insert code for the Group class.
+    Public Sub New()
+
+    End Sub
+
+    Public Sub New(ByVal groupNameVal As String)
+
+        groupNameValue = groupNameVal
+    End Sub
+
+    Property GroupName() As String
+        Get
+            Return groupNameValue
+        End Get
+
+        Set(ByVal Value As String)
+            groupNameValue = Value
+        End Set
+    End Property
 End Class
 
 Public Class Test
 
-   Shared Sub Main()
-      Dim t As Test = New Test()
-      t.SerializeObject("SoapElementOriginalVb.xml")
-      t.SerializeOverride("SoapElementOverrideVb.xml")
-      Console.WriteLine("Finished writing two XML files.")
-   End Sub
+    Shared Sub Main()
 
-   ' Return an XmlSerializer used for overriding.
-   Public Function CreateSoapOverrider() As XmlSerializer 
-      ' Create the SoapAttributes and SoapAttributeOverrides objects.
-      Dim soapAttrs As SoapAttributes = New SoapAttributes()
+        Dim t As Test = New Test()
+        t.SerializeGroup()
+    End Sub
 
-      Dim soapOverrides As SoapAttributeOverrides = _
-      New SoapAttributeOverrides()
-            
-      ' Create a SoapElementAttribute to override 
-      ' the Vehicles property. 
-      Dim soapElement1 As SoapElementAttribute = _
-      New SoapElementAttribute("Truck")
-      ' Set the SoapElement to the object.
-      soapAttrs.SoapElement= soapElement1
+    Private Sub SerializeGroup()
 
-      ' Add the SoapAttributes to the SoapAttributeOverrides,
-      ' specifying the member to override. 
-      soapOverrides.Add(GetType(Transportation), "Vehicle", soapAttrs)
-      
-      ' Create the XmlSerializer, and return it.
-      Dim myTypeMapping As XmlTypeMapping = (New _
-      SoapReflectionImporter (soapOverrides)).ImportTypeMapping _
-      (GetType(Transportation))
-      return New XmlSerializer(myTypeMapping)
-   End Function
+        ' Create an instance of the Group class, and an
+        ' instance of the XmlSerializer to serialize it.
+        Dim myGroup As Group = New Group("Redmond")
+        Dim ser As XmlSerializer = New XmlSerializer(GetType(Group))
 
-   Public Sub SerializeOverride(filename As String)
-      ' Create an XmlSerializer instance.
-      Dim ser As XmlSerializer = CreateSoapOverrider()
+        ' A FileStream is used to write the file.
+        Dim fs As FileStream = New FileStream("group.xml", FileMode.Create)
+        ser.Serialize(fs, myGroup)
+        fs.Close()
+        Console.WriteLine(myGroup.GroupName)
+        Console.WriteLine("Done... Press any key to exit.")
+        Console.ReadLine()
+    End Sub
 
-      ' Create the object and serialize it.
-      Dim myTransportation As Transportation = _
-      New Transportation()
-
-      myTransportation.Vehicle = "MyCar"
-      myTransportation.CreationDate = DateTime.Now
-      myTransportation.thing= new Thing()
-      
-      Dim writer As XmlTextWriter = _
-      New XmlTextWriter(filename, Encoding.UTF8)
-      writer.Formatting = Formatting.Indented
-      writer.WriteStartElement("wrapper")
-      ser.Serialize(writer, myTransportation)
-      writer.WriteEndElement()
-      writer.Close()
-   End Sub
-
-   Public Sub SerializeObject(filename As String)
-      ' Create an XmlSerializer instance.
-      Dim ser As XmlSerializer = _
-      New XmlSerializer(GetType(Transportation))
-      
-      Dim myTransportation As Transportation = _
-      New Transportation()
-      
-      myTransportation.Vehicle = "MyCar"
-      myTransportation.CreationDate=DateTime.Now
-      myTransportation.thing= new Thing()
-
-      Dim writer As XmlTextWriter = _
-      new XmlTextWriter(filename, Encoding.UTF8)
-      writer.Formatting = Formatting.Indented
-      writer.WriteStartElement("wrapper")
-      ser.Serialize(writer, myTransportation)
-      writer.WriteEndElement()
-      writer.Close()
-   End Sub
 End Class

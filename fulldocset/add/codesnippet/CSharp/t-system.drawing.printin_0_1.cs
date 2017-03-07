@@ -1,5 +1,8 @@
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            if (e.PageSettings.Color && !printDocument1.PrinterSettings.SupportsColor)
-                MessageBox.Show("Color printing not supported on selected printer.", "Printer Warning", MessageBoxButtons.OKCancel);
-        }
+            // Add list of printer resolutions found on the printer to the combobox.
+            // The PrinterResolution's ToString() method will be used to provide the display string.
+
+            PrinterResolution pkResolution;
+            for (int i = 0; i < printDoc.PrinterSettings.PrinterResolutions.Count; i++){
+                pkResolution = printDoc.PrinterSettings.PrinterResolutions[i];
+                comboPrintResolution.Items.Add(pkResolution);
+            }

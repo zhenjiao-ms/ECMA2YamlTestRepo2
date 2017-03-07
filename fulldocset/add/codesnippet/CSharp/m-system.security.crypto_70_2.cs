@@ -1,137 +1,111 @@
-//
-// This example signs a URL using an
-// envelope signature. It then verifies the 
-// signed XML.
-//
 using System;
 using System.Security.Cryptography;
-using System.Security.Cryptography.Xml;
 using System.Text;
-using System.Xml;
+using System.IO;
 
-public class SignVerifyEnvelope
+class DESSample
 {
-
-    public static void Main(String[] args)
+    static void Main()
     {
-        // Generate a signing key.
-       RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
+        try
+        {
+            // Create a new DES object to generate a key
+            // and initialization vector (IV).
+            DES DESalg = DES.Create();
 
-       try
-       {
+            // Create a string to encrypt.
+            string sData = "Here is some data to encrypt.";
 
-           // Sign the detached resource and save the signature in an XML file.
-           SignDetachedResource("http://www.microsoft.com", "SignedExample.xml", Key);
+            // Encrypt the string to an in-memory buffer.
+            byte[] Data = EncryptTextToMemory(sData, DESalg.Key, DESalg.IV);
 
-           Console.WriteLine("XML file signed.");
-
-           // Verify the signature of the signed XML.
-           Console.WriteLine("Verifying signature...");
-
-           bool result = VerifyXmlFile("SignedExample.xml");
-
-           // Display the results of the signature verification to \
-           // the console.
-           if (result)
-           {
-               Console.WriteLine("The XML signature is valid.");
-           }
-           else
-           {
-               Console.WriteLine("The XML signature is not valid.");
-           }
-       }
-       catch (CryptographicException e)
-       {
-           Console.WriteLine(e.Message);
-       }
-       finally
-       {
-           // Clear resources associated with the 
-           // RSACryptoServiceProvider.
-           Key.Clear();
-       }
-   }
-
-    // Sign an XML file and save the signature in a new file.
-    public static void SignDetachedResource(string URIString, string XmlSigFileName, RSA Key)
-    {
-        // Check the arguments.  
-        if (URIString == null)
-            throw new ArgumentNullException("URIString");
-        if (XmlSigFileName == null)
-            throw new ArgumentNullException("XmlSigFileName");
-        if (Key == null)
-            throw new ArgumentNullException("Key");
-
-        // Create a SignedXml object.
-        SignedXml signedXml = new SignedXml();
-
-        // Assign the key to the SignedXml object.
-        signedXml.SigningKey = Key;
-
-        // Get the signature object from the SignedXml object.
-        Signature XMLSignature = signedXml.Signature;
-
-        // Create a reference to be signed.
-        Reference reference = new Reference();
-
-        // Add the passed URI to the reference object.
-        reference.Uri = URIString;
-
-        // Add the Reference object to the Signature object.
-        XMLSignature.SignedInfo.AddReference(reference);
-
-        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-        KeyInfo keyInfo = new KeyInfo();
-        keyInfo.AddClause(new RSAKeyValue((RSA)Key));
-
-        // Add the KeyInfo object to the Reference object.
-        XMLSignature.KeyInfo = keyInfo;
-
-        // Compute the signature.
-        signedXml.ComputeSignature();
-
-        // Get the XML representation of the signature and save
-        // it to an XmlElement object.
-        XmlElement xmlDigitalSignature = signedXml.GetXml();
-
-        // Save the signed XML document to a file specified
-        // using the passed string.
-        XmlTextWriter xmltw = new XmlTextWriter(XmlSigFileName, new UTF8Encoding(false));
-        xmlDigitalSignature.WriteTo(xmltw);
-        xmltw.Close();
+            // Decrypt the buffer back to a string.
+            string Final = DecryptTextFromMemory(Data, DESalg.Key, DESalg.IV);
+            
+            // Display the decrypted string to the console.
+            Console.WriteLine(Final);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+       
     }
 
-
-    // Verify the signature of an XML file and return the result.
-    public static Boolean VerifyXmlFile(String Name)
+    public static byte[] EncryptTextToMemory(string Data,  byte[] Key, byte[] IV)
     {
-        // Check the arguments.  
-        if (Name == null)
-            throw new ArgumentNullException("Name");
+        try
+        {
+            // Create a MemoryStream.
+            MemoryStream mStream = new MemoryStream();
 
-        // Create a new XML document.
-        XmlDocument xmlDocument = new XmlDocument();
+            // Create a new DES object.
+            DES DESalg = DES.Create();
 
-        // Format using white spaces.
-        xmlDocument.PreserveWhitespace = true;
+            // Create a CryptoStream using the MemoryStream 
+            // and the passed key and initialization vector (IV).
+            CryptoStream cStream = new CryptoStream(mStream, 
+                DESalg.CreateEncryptor(Key, IV), 
+                CryptoStreamMode.Write);
 
-        // Load the passed XML file into the document. 
-        xmlDocument.Load(Name);
+            // Convert the passed string to a byte array.
+            byte[] toEncrypt = new ASCIIEncoding().GetBytes(Data);
 
-        // Create a new SignedXml object and pass it
-        // the XML document class.
-        SignedXml signedXml = new SignedXml(xmlDocument);
+            // Write the byte array to the crypto stream and flush it.
+            cStream.Write(toEncrypt, 0, toEncrypt.Length);
+            cStream.FlushFinalBlock();
+        
+            // Get an array of bytes from the 
+            // MemoryStream that holds the 
+            // encrypted data.
+            byte[] ret = mStream.ToArray();
 
-        // Find the "Signature" node and create a new
-        // XmlNodeList object.
-        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
+            // Close the streams.
+            cStream.Close();
+            mStream.Close();
 
-        // Load the signature node.
-        signedXml.LoadXml((XmlElement)nodeList[0]);
+            // Return the encrypted buffer.
+            return ret;
+        }
+        catch(CryptographicException e)
+        {
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
+            return null;
+        }
 
-        // Check the signature and return the result.
-        return signedXml.CheckSignature();
+    }
+
+    public static string DecryptTextFromMemory(byte[] Data,  byte[] Key, byte[] IV)
+    {
+        try
+        {
+            // Create a new MemoryStream using the passed 
+            // array of encrypted data.
+            MemoryStream msDecrypt = new MemoryStream(Data);
+
+            // Create a new DES object.
+            DES DESalg = DES.Create();
+
+            // Create a CryptoStream using the MemoryStream 
+            // and the passed key and initialization vector (IV).
+            CryptoStream csDecrypt = new CryptoStream(msDecrypt, 
+                DESalg.CreateDecryptor(Key, IV), 
+                CryptoStreamMode.Read);
+
+            // Create buffer to hold the decrypted data.
+            byte[] fromEncrypt = new byte[Data.Length];
+
+            // Read the decrypted data out of the crypto stream
+            // and place it into the temporary buffer.
+            csDecrypt.Read(fromEncrypt, 0, fromEncrypt.Length);
+
+            //Convert the buffer into a string and return it.
+            return new ASCIIEncoding().GetString(fromEncrypt);
+        }
+        catch(CryptographicException e)
+        {
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
+            return null;
+        }
     }
 }

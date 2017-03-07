@@ -1,15 +1,30 @@
-    private void AddLinkColumn()
+    // This event handler manually raises the CellValueChanged event
+    // by calling the CommitEdit method.
+    void dataGridView1_CurrentCellDirtyStateChanged(object sender,
+        EventArgs e)
     {
-        DataGridViewLinkColumn links = new DataGridViewLinkColumn();
+        if (dataGridView1.IsCurrentCellDirty)
+        {
+            dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+    }
 
-        links.UseColumnTextForLinkValue = true;
-        links.HeaderText = ColumnName.ReportsTo.ToString();
-        links.DataPropertyName = ColumnName.ReportsTo.ToString();
-        links.ActiveLinkColor = Color.White;
-        links.LinkBehavior = LinkBehavior.SystemDefault;
-        links.LinkColor = Color.Blue;
-        links.TrackVisitedState = true;
-        links.VisitedLinkColor = Color.YellowGreen;
+    // If a check box cell is clicked, this event handler disables  
+    // or enables the button in the same row as the clicked cell.
+    public void dataGridView1_CellValueChanged(object sender,
+        DataGridViewCellEventArgs e)
+    {
+        if (dataGridView1.Columns[e.ColumnIndex].Name == "CheckBoxes")
+        {
+            DataGridViewDisableButtonCell buttonCell =
+                (DataGridViewDisableButtonCell)dataGridView1.
+                Rows[e.RowIndex].Cells["Buttons"];
 
-        DataGridView1.Columns.Add(links);
+            DataGridViewCheckBoxCell checkCell =
+                (DataGridViewCheckBoxCell)dataGridView1.
+                Rows[e.RowIndex].Cells["CheckBoxes"];
+            buttonCell.Enabled = !(Boolean)checkCell.Value;
+
+            dataGridView1.Invalidate();
+        }
     }

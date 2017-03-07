@@ -1,30 +1,23 @@
-    Public Sub InitializeMyToolBar()
-        ' Create the ToolBar, ToolBarButton controls, and menus.
-        Dim toolBarButton1 As New ToolBarButton("Open")
-        Dim toolBarButton2 As New ToolBarButton()
-        Dim toolBarButton3 As New ToolBarButton()
-        Dim toolBar1 As New ToolBar()
-	Dim menuItem1 As New MenuItem("Print")
-	Dim contextMenu1 As New ContextMenu(New MenuItem(){menuItem1})
-        
-        ' Add the ToolBarButton controls to the ToolBar.
-        toolBar1.Buttons.Add(toolBarButton1)
-        toolBar1.Buttons.Add(toolBarButton2)
-        toolBar1.Buttons.Add(toolBarButton3)
-        
-        ' Assign an ImageList to the ToolBar and show ToolTips.
-        toolBar1.ImageList = imageList1
-        toolBar1.ShowToolTips = True
-        
-        ' Assign ImageIndex, ContextMenu, Text, ToolTip, and
-        ' Style properties of the ToolBarButton controls. 
-        toolBarButton2.Style = ToolBarButtonStyle.Separator
-        toolBarButton3.Text = "Print"
-        toolBarButton3.Style = ToolBarButtonStyle.DropDownButton
-        toolBarButton3.ToolTipText = "Print"
-        toolBarButton3.ImageIndex = 0
-        toolBarButton3.DropDownMenu = contextMenu1
-        
-        ' Add the ToolBar to a form.
-        Controls.Add(toolBar1)
-    End Sub
+Private Sub AddToolBar()
+   ' Add a toolbar and set some of its properties.
+   toolBar1 = New ToolBar()
+   toolBar1.Appearance = System.Windows.Forms.ToolBarAppearance.Flat
+   toolBar1.BorderStyle = System.Windows.Forms.BorderStyle.None
+   toolBar1.Buttons.Add(Me.toolBarButton1)
+   toolBar1.ButtonSize = New System.Drawing.Size(24, 24)
+   toolBar1.Divider = True
+   toolBar1.DropDownArrows = True
+   toolBar1.ImageList = Me.imageList1
+   toolBar1.ShowToolTips = True
+   toolBar1.Size = New System.Drawing.Size(292, 25)
+   toolBar1.TabIndex = 0
+   toolBar1.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right
+   toolBar1.Wrappable = False
+
+   ' Add handlers for the ButtonClick and ButtonDropDown events.
+   AddHandler toolBar1.ButtonDropDown, AddressOf toolBar1_ButtonDropDown
+   AddHandler toolBar1.ButtonClick, AddressOf toolBar1_ButtonClicked
+
+   ' Add the toolbar to the form.
+   Me.Controls.Add(toolBar1)
+End Sub

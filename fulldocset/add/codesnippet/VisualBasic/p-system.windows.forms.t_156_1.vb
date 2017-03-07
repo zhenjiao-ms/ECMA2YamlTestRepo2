@@ -1,25 +1,36 @@
-Private Sub ToolStripRenderer1_RenderItemText(sender as Object, e as ToolStripItemTextRenderEventArgs) _ 
-     Handles ToolStripRenderer1.RenderItemText
+Imports System.Drawing
+Imports System.Windows.Forms
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "Text", e.Text)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextColor", e.TextColor)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextFont", e.TextFont)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextRectangle", e.TextRectangle)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextFormat", e.TextFormat)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextDirection", e.TextDirection)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Item", e.Item)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "ToolStrip", e.ToolStrip)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"RenderItemText Event")
+Public Class Form1
+    Inherits Form
+    Private tabControl1 As TabControl
+    Private tabPage1 As TabPage
+    Private tabPage2 As TabPage
 
-End Sub
+    Private Sub MyTabs()
+        Me.tabControl1 = New TabControl()
+        Me.tabPage1 = New TabPage()
+        Me.tabPage2 = New TabPage()
+
+        Me.tabControl1.Multiline = True
+        Me.tabControl1.Controls.AddRange(New Control() {Me.tabPage1, Me.tabPage2})
+        Me.tabControl1.Location = New Point(35, 25)
+        Me.tabControl1.Size = New Size(220, 220)
+
+        ' Creates a cushion of 22 pixels around TabPage.Text strings.
+        Me.tabControl1.Padding = New System.Drawing.Point(22, 22)
+        Me.tabPage1.Text = "myTabPage1"
+        Me.tabPage2.Text = "myTabPage2"
+
+        Me.Size = New Size(300, 300)
+        Me.Controls.AddRange(New Control() {Me.tabControl1})
+    End Sub
+
+    Public Sub New()
+        MyTabs()
+    End Sub
+
+    Shared Sub Main()
+        Application.Run(New Form1())
+    End Sub
+End Class

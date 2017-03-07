@@ -1,33 +1,87 @@
-void EncryptData( String^ inName, String^ outName, array<Byte>^desKey, array<Byte>^desIV )
+#using <System.dll>
+#using <System.Security.dll>
+
+using namespace System;
+using namespace System::Security::Cryptography;
+using namespace System::Security::Cryptography::X509Certificates;
+
+int main()
 {
    
-   //Create the file streams to handle the input and output files.
-   FileStream^ fin = gcnew FileStream( inName,FileMode::Open,FileAccess::Read );
-   FileStream^ fout = gcnew FileStream( outName,FileMode::OpenOrCreate,FileAccess::Write );
-   fout->SetLength( 0 );
-   
-   //Create variables to help with read and write.
-   array<Byte>^bin = gcnew array<Byte>(100);
-   long rdlen = 0; //This is the total number of bytes written.
-
-   long totlen = (long)fin->Length; //This is the total length of the input file.
-
-   int len; //This is the number of bytes to be written at a time.
-
-   DES^ des = gcnew DESCryptoServiceProvider;
-   CryptoStream^ encStream = gcnew CryptoStream( fout,des->CreateEncryptor( desKey, desIV ),CryptoStreamMode::Write );
-   Console::WriteLine( "Encrypting..." );
-   
-   //Read from the input file, then encrypt and write to the output file.
-   while ( rdlen < totlen )
+   //The following example demonstrates the usage of the AsnEncodedData classes.
+   // Asn encoded data is read from the extensions of an X509 certificate.
+   try
    {
-      len = fin->Read( bin, 0, 100 );
-      encStream->Write( bin, 0, len );
-      rdlen = rdlen + len;
-      Console::WriteLine( "{0} bytes processed", rdlen );
+      
+      // Open the certificate store.
+      X509Store^ store = gcnew X509Store( L"MY",StoreLocation::CurrentUser );
+      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
+      X509Certificate2Collection^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
+      X509Certificate2Collection^ fcollection = dynamic_cast<X509Certificate2Collection^>(collection->Find( X509FindType::FindByTimeValid, DateTime::Now, false ));
+      
+      // Select one or more certificates to display extensions information.
+      X509Certificate2Collection^ scollection = X509Certificate2UI::SelectFromCollection(fcollection, L"Certificate Select",L"Select certificates from the following list to get extension information on that certificate",X509SelectionFlag::MultiSelection);
+      
+      // Create a new AsnEncodedDataCollection object.
+      AsnEncodedDataCollection^ asncoll = gcnew AsnEncodedDataCollection;
+      for ( int i = 0; i < scollection->Count; i++ )
+      {
+         
+         // Display certificate information.
+         Console::ForegroundColor = ConsoleColor::Red;
+         Console::WriteLine( L"Certificate name: {0}", scollection[i]->GetName() );
+         Console::ResetColor();
+         
+         // Display extensions information.
+         System::Collections::IEnumerator^ myEnum = scollection[i]->Extensions->GetEnumerator();
+         while ( myEnum->MoveNext() )
+         {
+            X509Extension^ extension = safe_cast<X509Extension ^>(myEnum->Current);
+            
+            // Create an AsnEncodedData object using the extensions information.
+            AsnEncodedData^ asndata = gcnew AsnEncodedData( extension->Oid,extension->RawData );
+            Console::ForegroundColor = ConsoleColor::Green;
+            Console::WriteLine( L"Extension type: {0}", extension->Oid->FriendlyName );
+            Console::WriteLine( L"Oid value: {0}", asndata->Oid->Value );
+            Console::WriteLine( L"Raw data length: {0} {1}", asndata->RawData->Length, Environment::NewLine );
+            Console::ResetColor();
+            Console::WriteLine( asndata->Format(true) );
+            Console::WriteLine( Environment::NewLine );
+            
+            // Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+            asncoll->Add( asndata );
+         }
+
+         Console::WriteLine( Environment::NewLine );
+
+      }
+      Console::ForegroundColor = ConsoleColor::Red;
+      Console::WriteLine( L"Number of AsnEncodedData items in the collection: {0} {1}", asncoll->Count, Environment::NewLine );
+      Console::ResetColor();
+      store->Close();
+      
+      //Create an enumerator for moving through the collection.
+      AsnEncodedDataEnumerator^ asne = asncoll->GetEnumerator();
+      
+      //You must execute a MoveNext() to get to the first item in the collection.
+      asne->MoveNext();
+      
+      // Write out AsnEncodedData in the collection.
+      Console::ForegroundColor = ConsoleColor::Blue;
+      Console::WriteLine( L"First AsnEncodedData in the collection: {0}", asne->Current->Format(true) );
+      Console::ResetColor();
+      asne->MoveNext();
+      Console::ForegroundColor = ConsoleColor::DarkBlue;
+      Console::WriteLine( L"Second AsnEncodedData in the collection: {0}", asne->Current->Format(true) );
+      Console::ResetColor();
+      
+      //Return index in the collection to the beginning.
+      asne->Reset();
+   }
+   catch ( CryptographicException^ ) 
+   {
+      Console::WriteLine( L"Information could not be written out for this certificate." );
    }
 
-   encStream->Close();
-   fout->Close();
-   fin->Close();
+   return 1;
 }

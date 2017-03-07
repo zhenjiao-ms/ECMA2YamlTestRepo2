@@ -1,27 +1,15 @@
-   private void Button1_Click(object sender,EventArgs e)
-   {
-      myTreeView.ItemHeight = 5;
-      myTreeView.SelectedNode.NodeFont = new Font("Arial",5);
+private void MaskedTextBox1_TypeValidationCompleted(Object sender, TypeValidationEventArgs e) {
 
-      // Get the font size from combobox.
-      string selectedString = myComboBox.SelectedItem.ToString();
-      int myNodeFontSize = Int32.Parse(selectedString);
-
-      // Set the font of root node.
-      myTreeView.SelectedNode.NodeFont = new Font("Arial",myNodeFontSize);
-      for(int i = 0; i < myTreeView.Nodes[0].Nodes.Count; i++)
-      {
-         // Set the font of child nodes.
-         myTreeView.Nodes[0].Nodes[i].NodeFont =
-           new Font("Arial",myNodeFontSize);
-      }
-
-      // Get the bounds of the tree node.
-      Rectangle myRectangle = myTreeView.SelectedNode.Bounds;
-      int myNodeHeight = myRectangle.Height;
-      if(myNodeHeight < myNodeFontSize)
-      {
-         myNodeHeight = myNodeFontSize;
-      }
-      myTreeView.ItemHeight = myNodeHeight + 4;
-   }
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "Cancel", e.Cancel );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "IsValidInput", e.IsValidInput );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Message", e.Message );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "ReturnValue", e.ReturnValue );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "ValidatingType", e.ValidatingType );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "TypeValidationCompleted Event" );
+}

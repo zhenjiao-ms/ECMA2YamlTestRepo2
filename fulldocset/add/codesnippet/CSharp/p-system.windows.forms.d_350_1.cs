@@ -1,20 +1,26 @@
-        // The AnchorGlyph objects should mimic the resize glyphs;
-        // they should only be visible when the control is the 
-        // primary selection. The adorner is enabled when the 
-        // control is the primary selection and disabled when 
-        // it is not.
+   // Create an instance of the 'AllowNavigationChanged' EventHandler.
+   private void CallAllowNavigationChanged()
+   {
+      myDataGrid.AllowNavigationChanged += 
+                                      new EventHandler(Grid_AllowNavChange);
+   }
 
-        void selectionService_SelectionChanged(object sender, EventArgs e)
-        {
-            if (object.ReferenceEquals(
-                this.selectionService.PrimarySelection,
-                this.relatedControl))
-            {
-                this.ComputeBounds();
-                this.anchorAdorner.Enabled = true;
-            }
-            else
-            {
-                this.anchorAdorner.Enabled = false;
-            }
-        }
+   // Set the 'AllowNavigation' property on click of a button.
+   private void myButton_Click(object sender, EventArgs e)
+   {
+      if (myDataGrid.AllowNavigation == true)
+         myDataGrid.AllowNavigation = false;
+      else
+         myDataGrid.AllowNavigation = true;
+   }
+   
+   // Raise the event when 'AllowNavigation' property is changed.
+   private void Grid_AllowNavChange(object sender, EventArgs e)
+   {
+      string myString = "AllowNavigationChanged event raised, Navigation ";
+      bool myBool = myDataGrid.AllowNavigation;
+      // Create appropriate alert message.
+      myString = myString + (myBool ? " is " : " is not ") + "allowed";
+      // Show information about navigation.
+      MessageBox.Show(myString, "Navigation information");
+   }

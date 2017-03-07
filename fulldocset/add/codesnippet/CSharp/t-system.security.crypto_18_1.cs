@@ -1,31 +1,73 @@
-private static void EncryptData(String inName, String outName, byte[] rijnKey, byte[] rijnIV)
- {    
-     //Create the file streams to handle the input and output files.
-     FileStream fin = new FileStream(inName, FileMode.Open, FileAccess.Read);
-     FileStream fout = new FileStream(outName, FileMode.OpenOrCreate, FileAccess.Write);
-     fout.SetLength(0);
-       
-     //Create variables to help with read and write.
-     byte[] bin = new byte[100]; //This is intermediate storage for the encryption.
-     long rdlen = 0;              //This is the total number of bytes written.
-     long totlen = fin.Length;    //This is the total length of the input file.
-     int len;                     //This is the number of bytes to be written at a time.
- 
-     SymmetricAlgorithm rijn = SymmetricAlgorithm.Create(); //Creates the default implementation, which is RijndaelManaged.         
-     CryptoStream encStream = new CryptoStream(fout, rijn.CreateEncryptor(rijnKey, rijnIV), CryptoStreamMode.Write);
-                
-     Console.WriteLine("Encrypting...");
- 
-     //Read from the input file, then encrypt and write to the output file.
-     while(rdlen < totlen)
-     {
-         len = fin.Read(bin, 0, 100);
-         encStream.Write(bin, 0, len);
-         rdlen = rdlen + len;
-         Console.WriteLine("{0} bytes processed", rdlen);
-     }
- 
-     encStream.Close();  
-     fout.Close();
-     fin.Close();                   
- }
+using System;
+using System.Security.Cryptography;
+
+namespace Contoso
+{
+    public class ContosoDeformatter : AsymmetricKeyExchangeDeformatter
+    {
+        private RSA rsaKey;
+
+        // Default constructor.
+        public ContosoDeformatter(){}
+
+        // Constructor with the public key to use for encryption.
+        public ContosoDeformatter(AsymmetricAlgorithm key)
+        {
+            SetKey(key);
+        }
+
+        // Set the public key for encyption operations.
+        public override void SetKey(AsymmetricAlgorithm key) {
+            if (key != null)
+            {
+                rsaKey = (RSA)key;
+            }
+            else
+            {
+                throw new ArgumentNullException("key");
+            }
+        }
+
+        // Disallow access to the parameters of the formatter.
+        public override String Parameters 
+        {
+            get { return null; }
+            set { ; }
+        }
+
+        // Create the encrypted key exchange data from the specified input
+        // data. This method uses the RSACryptoServiceProvider only. To
+        // support additional providers or provide custom decryption logic,
+        // add logic to this member.
+        public override byte[] DecryptKeyExchange(byte[] rgbData) {
+            byte[] decryptedBytes = null;
+
+            if (rsaKey != null)
+            {
+                if (rsaKey is RSACryptoServiceProvider)
+                {
+                    RSACryptoServiceProvider serviceProvder =
+                        (RSACryptoServiceProvider)rsaKey;
+
+                    decryptedBytes = serviceProvder.Decrypt(rgbData, true);
+                }
+                // Add custom decryption logic here.
+            }
+            else
+            {
+                throw new CryptographicUnexpectedOperationException(
+                    "Cryptography_MissingKey");
+            }
+
+            return decryptedBytes;
+        }
+    }
+}
+//
+// This code example produces the following output:
+//
+// Data to encrypt : Sample Contoso encryption application.
+// Encrypted data: Khasdf-3248&$%23
+// Data decrypted : Sample Contoso encryption application.
+// 
+// This sample completed successfully; press Enter to exit.

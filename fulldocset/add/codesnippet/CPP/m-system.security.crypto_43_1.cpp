@@ -1,87 +1,169 @@
 #using <System.dll>
-#using <System.Security.dll>
 
 using namespace System;
+using namespace System::IO;
 using namespace System::Security::Cryptography;
-using namespace System::Security::Cryptography::X509Certificates;
+
+
+class RijndaelMemoryExample
+{
+public:
+    static array<Byte>^ encryptStringToBytes_AES(String^ plainText, array<Byte>^ Key, array<Byte>^ IV)
+    {
+        // Check arguments.
+        if (!plainText || plainText->Length <= 0)
+            throw gcnew ArgumentNullException("plainText");
+        if (!Key || Key->Length <= 0)
+            throw gcnew ArgumentNullException("Key");
+        if (!IV  || IV->Length <= 0)
+            throw gcnew ArgumentNullException("IV");
+
+        // Declare the streams used
+        // to encrypt to an in memory
+        // array of bytes.
+		MemoryStream^   msEncrypt;
+        CryptoStream^   csEncrypt;
+        StreamWriter^   swEncrypt;
+
+        // Declare the RijndaelManaged object
+        // used to encrypt the data.
+        RijndaelManaged^ aesAlg;
+
+        try
+        {
+            // Create a RijndaelManaged object
+            // with the specified key and IV.
+            aesAlg = gcnew RijndaelManaged();
+			aesAlg->Padding = PaddingMode::PKCS7;
+            aesAlg->Key = Key;
+            aesAlg->IV = IV;
+
+            // Create an encryptor to perform the stream transform.
+            ICryptoTransform^ encryptor = aesAlg->CreateEncryptor(aesAlg->Key, aesAlg->IV);
+
+            // Create the streams used for encryption.
+            msEncrypt = gcnew MemoryStream();
+			csEncrypt = gcnew CryptoStream(msEncrypt, encryptor, CryptoStreamMode::Write);
+            swEncrypt = gcnew StreamWriter(csEncrypt);
+
+            //Write all data to the stream.
+            swEncrypt->Write(plainText);
+			swEncrypt->Flush();
+			csEncrypt->FlushFinalBlock();
+			msEncrypt->Flush();
+        }
+        finally
+        {
+            // Clean things up.
+
+            // Close the streams.
+            if(swEncrypt)
+                swEncrypt->Close();
+            if (csEncrypt)
+                csEncrypt->Close();
+
+
+            // Clear the RijndaelManaged object.
+            if (aesAlg)
+                aesAlg->Clear();
+        }
+
+        // Return the encrypted bytes from the memory stream.
+        return msEncrypt->ToArray();
+    }
+
+    static String^ decryptStringFromBytes_AES(array<Byte>^ cipherText, array<Byte>^ Key, array<Byte>^ IV)
+    {
+        // Check arguments.
+        if (!cipherText || cipherText->Length <= 0)
+            throw gcnew ArgumentNullException("cipherText");
+        if (!Key || Key->Length <= 0)
+            throw gcnew ArgumentNullException("Key");
+        if (!IV || IV->Length <= 0)
+            throw gcnew ArgumentNullException("IV");
+
+        // TDeclare the streams used
+        // to decrypt to an in memory
+        // array of bytes.
+        MemoryStream^ msDecrypt;
+        CryptoStream^ csDecrypt;
+        StreamReader^ srDecrypt;
+
+        // Declare the RijndaelManaged object
+        // used to decrypt the data.
+        RijndaelManaged^ aesAlg;
+
+        // Declare the string used to hold
+        // the decrypted text.
+        String^ plaintext;
+
+        try
+        {
+            // Create a RijndaelManaged object
+            // with the specified key and IV.
+            aesAlg = gcnew RijndaelManaged();
+			aesAlg->Padding = PaddingMode::PKCS7;
+            aesAlg->Key = Key;
+            aesAlg->IV = IV;
+
+            // Create a decrytor to perform the stream transform.
+			ICryptoTransform^ decryptor = aesAlg->CreateDecryptor(aesAlg->Key, aesAlg->IV);
+
+            // Create the streams used for decryption.
+            msDecrypt = gcnew MemoryStream(cipherText);
+			csDecrypt = gcnew CryptoStream(msDecrypt, decryptor, CryptoStreamMode::Read);
+            srDecrypt = gcnew StreamReader(csDecrypt);
+
+            // Read the decrypted bytes from the decrypting stream
+            // and place them in a string.
+            plaintext = srDecrypt->ReadToEnd();
+        }
+        finally
+        {
+            // Clean things up.
+
+            // Close the streams.
+            if (srDecrypt)
+                srDecrypt->Close();
+            if (csDecrypt)
+                csDecrypt->Close();
+            if (msDecrypt)
+                msDecrypt->Close();
+
+            // Clear the RijndaelManaged object.
+            if (aesAlg)
+                aesAlg->Clear();
+        }
+
+        return plaintext;
+    }
+};
 
 int main()
 {
-   
-   //The following example demonstrates the usage of the AsnEncodedData classes.
-   // Asn encoded data is read from the extensions of an X509 certificate.
-   try
-   {
-      
-      // Open the certificate store.
-      X509Store^ store = gcnew X509Store( L"MY",StoreLocation::CurrentUser );
-      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
-      X509Certificate2Collection^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-      X509Certificate2Collection^ fcollection = dynamic_cast<X509Certificate2Collection^>(collection->Find( X509FindType::FindByTimeValid, DateTime::Now, false ));
-      
-      // Select one or more certificates to display extensions information.
-      X509Certificate2Collection^ scollection = X509Certificate2UI::SelectFromCollection(fcollection, L"Certificate Select",L"Select certificates from the following list to get extension information on that certificate",X509SelectionFlag::MultiSelection);
-      
-      // Create a new AsnEncodedDataCollection object.
-      AsnEncodedDataCollection^ asncoll = gcnew AsnEncodedDataCollection;
-      for ( int i = 0; i < scollection->Count; i++ )
-      {
-         
-         // Display certificate information.
-         Console::ForegroundColor = ConsoleColor::Red;
-         Console::WriteLine( L"Certificate name: {0}", scollection[i]->GetName() );
-         Console::ResetColor();
-         
-         // Display extensions information.
-         System::Collections::IEnumerator^ myEnum = scollection[i]->Extensions->GetEnumerator();
-         while ( myEnum->MoveNext() )
-         {
-            X509Extension^ extension = safe_cast<X509Extension ^>(myEnum->Current);
-            
-            // Create an AsnEncodedData object using the extensions information.
-            AsnEncodedData^ asndata = gcnew AsnEncodedData( extension->Oid,extension->RawData );
-            Console::ForegroundColor = ConsoleColor::Green;
-            Console::WriteLine( L"Extension type: {0}", extension->Oid->FriendlyName );
-            Console::WriteLine( L"Oid value: {0}", asndata->Oid->Value );
-            Console::WriteLine( L"Raw data length: {0} {1}", asndata->RawData->Length, Environment::NewLine );
-            Console::ResetColor();
-            Console::WriteLine( asndata->Format(true) );
-            Console::WriteLine( Environment::NewLine );
-            
-            // Add the AsnEncodedData object to the AsnEncodedDataCollection object.
-            asncoll->Add( asndata );
-         }
+    try
+    {
+        String^ original = "Here is some data to encrypt!";
 
-         Console::WriteLine( Environment::NewLine );
+        // Create a new instance of the RijndaelManaged
+        // class.  This generates a new key and initialization
+        // vector (IV).
+        RijndaelManaged^ myRijndael = gcnew RijndaelManaged();
 
-      }
-      Console::ForegroundColor = ConsoleColor::Red;
-      Console::WriteLine( L"Number of AsnEncodedData items in the collection: {0} {1}", asncoll->Count, Environment::NewLine );
-      Console::ResetColor();
-      store->Close();
-      
-      //Create an enumerator for moving through the collection.
-      AsnEncodedDataEnumerator^ asne = asncoll->GetEnumerator();
-      
-      //You must execute a MoveNext() to get to the first item in the collection.
-      asne->MoveNext();
-      
-      // Write out AsnEncodedData in the collection.
-      Console::ForegroundColor = ConsoleColor::Blue;
-      Console::WriteLine( L"First AsnEncodedData in the collection: {0}", asne->Current->Format(true) );
-      Console::ResetColor();
-      asne->MoveNext();
-      Console::ForegroundColor = ConsoleColor::DarkBlue;
-      Console::WriteLine( L"Second AsnEncodedData in the collection: {0}", asne->Current->Format(true) );
-      Console::ResetColor();
-      
-      //Return index in the collection to the beginning.
-      asne->Reset();
-   }
-   catch ( CryptographicException^ ) 
-   {
-      Console::WriteLine( L"Information could not be written out for this certificate." );
-   }
+        // Encrypt the string to an array of bytes.
+		array<Byte>^ encrypted = RijndaelMemoryExample::encryptStringToBytes_AES(original, myRijndael->Key, myRijndael->IV);
 
-   return 1;
+        // Decrypt the bytes to a string.
+        String^ roundtrip = RijndaelMemoryExample::decryptStringFromBytes_AES(encrypted, myRijndael->Key, myRijndael->IV);
+
+        //Display the original data and the decrypted data.
+		Console::WriteLine("Original:   {0}", original);
+		Console::WriteLine("Round Trip: {0}", roundtrip);
+    }
+    catch (Exception^ e)
+    {
+		Console::WriteLine("Error: {0}", e->Message);
+    }
+
+	return 0;
 }

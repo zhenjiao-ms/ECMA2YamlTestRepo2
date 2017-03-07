@@ -1,20 +1,37 @@
-Private Sub CopyTreeNodes()
-   ' Get the collection of TreeNodes.
-   Dim myNodeCollection As TreeNodeCollection = myTreeView.Nodes
-   Dim myCount As Integer = myNodeCollection.Count
-
-   myLabel.Text += "Number of nodes in the collection :" + myCount.ToString()
-
-   myLabel.Text += ControlChars.NewLine + ControlChars.NewLine + _
-     "Elements of the Array after Copying from the collection :" + ControlChars.NewLine
-
-   ' Create an Object array.
-   Dim myArray(myCount -1) As Object
-
-   ' Copy the collection into an array.
-   myNodeCollection.CopyTo(myArray, 0)
-   Dim i As Integer
-   For i = 0 To myArray.Length - 1
-      myLabel.Text += CType(myArray(i), TreeNode).Text + ControlChars.NewLine
-   Next i
-End Sub
+      ' Create ToolStripPanel controls.
+      Dim tspTop As New ToolStripPanel()
+      Dim tspBottom As New ToolStripPanel()
+      Dim tspLeft As New ToolStripPanel()
+      Dim tspRight As New ToolStripPanel()
+      
+      ' Dock the ToolStripPanel controls to the edges of the form.
+      tspTop.Dock = DockStyle.Top
+      tspBottom.Dock = DockStyle.Bottom
+      tspLeft.Dock = DockStyle.Left
+      tspRight.Dock = DockStyle.Right
+      
+      ' Create ToolStrip controls to move among the 
+      ' ToolStripPanel controls.
+      ' Create the "Top" ToolStrip control and add
+      ' to the corresponding ToolStripPanel.
+      Dim tsTop As New ToolStrip()
+      tsTop.Items.Add("Top")
+      tspTop.Join(tsTop)
+      
+      ' Create the "Bottom" ToolStrip control and add
+      ' to the corresponding ToolStripPanel.
+      Dim tsBottom As New ToolStrip()
+      tsBottom.Items.Add("Bottom")
+      tspBottom.Join(tsBottom)
+      
+      ' Create the "Right" ToolStrip control and add
+      ' to the corresponding ToolStripPanel.
+      Dim tsRight As New ToolStrip()
+      tsRight.Items.Add("Right")
+      tspRight.Join(tsRight)
+      
+      ' Create the "Left" ToolStrip control and add
+      ' to the corresponding ToolStripPanel.
+      Dim tsLeft As New ToolStrip()
+      tsLeft.Items.Add("Left")
+      tspLeft.Join(tsLeft)

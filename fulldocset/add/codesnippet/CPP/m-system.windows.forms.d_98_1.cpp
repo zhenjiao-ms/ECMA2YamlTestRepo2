@@ -1,10 +1,7 @@
-private:
-   void CreateTextDataObject2()
+   void AddDataGridBoolColumnStyle()
    {
-      // Creates a new data object using a string.
-      String^ myString = "My next text string";
-      DataObject^ myDataObject = gcnew DataObject( "System.String",myString );
-      
-      // Prints the string in a text box.
-      textBox1->Text = myDataObject->GetData( DataFormats::Text )->ToString();
+      DataGridBoolColumn^ myColumn = gcnew DataGridBoolColumn;
+      myColumn->MappingName = "Current";
+      myColumn->Width = 200;
+      dataGrid1->TableStyles[ "Customers" ]->GridColumnStyles->Add( myColumn );
    }

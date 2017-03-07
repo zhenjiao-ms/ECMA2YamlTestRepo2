@@ -1,5 +1,12 @@
-        // Distinguish the merged items by setting the shortcut display string.
-        foreach (ToolStripMenuItem tsmi in cmsItemsToMerge.Items)
-        {
-            tsmi.ShortcutKeyDisplayString = "Merged Item";
-        }
+            // This method draws a border around the GridStrip control.
+            protected override void OnRenderToolStripBorder(
+                ToolStripRenderEventArgs e)
+            {
+                base.OnRenderToolStripBorder(e);
+
+                ControlPaint.DrawFocusRectangle(
+                    e.Graphics,
+                    e.AffectedBounds,
+                    SystemColors.ControlDarkDark,
+                    SystemColors.ControlDarkDark);
+            }

@@ -1,60 +1,44 @@
-/* Get the tree node under the mouse pointer and 
-   save it in the mySelectedNode variable. */
-private void treeView1_MouseDown(object sender, 
-  System.Windows.Forms.MouseEventArgs e)
-{
-   mySelectedNode = treeView1.GetNodeAt(e.X, e.Y);
-}
+    private void showCheckedNodesButton_Click(object sender, EventArgs e)
+    {
+        // Disable redrawing of treeView1 to prevent flickering 
+        // while changes are made.
+        treeView1.BeginUpdate();
 
-private void menuItem1_Click(object sender, System.EventArgs e)
-{
-   if (mySelectedNode != null && mySelectedNode.Parent != null)
-   {
-      treeView1.SelectedNode = mySelectedNode;
-      treeView1.LabelEdit = true;
-      if(!mySelectedNode.IsEditing)
-      {
-         mySelectedNode.BeginEdit();
-      }
-   }
-   else
-   {
-      MessageBox.Show("No tree node selected or selected node is a root node.\n" + 
-         "Editing of root nodes is not allowed.", "Invalid selection");
-   }
-}
+        // Collapse all nodes of treeView1.
+        treeView1.CollapseAll();
 
-private void treeView1_AfterLabelEdit(object sender, 
-         System.Windows.Forms.NodeLabelEditEventArgs e)
-{
-   if (e.Label != null)
-   {
-     if(e.Label.Length > 0)
-     {
-        if (e.Label.IndexOfAny(new char[]{'@', '.', ',', '!'}) == -1)
+        // Add the checkForCheckedChildren event handler to the BeforeExpand event.
+        treeView1.BeforeExpand += checkForCheckedChildren;
+
+        // Expand all nodes of treeView1. Nodes without checked children are 
+        // prevented from expanding by the checkForCheckedChildren event handler.
+        treeView1.ExpandAll();
+
+        // Remove the checkForCheckedChildren event handler from the BeforeExpand 
+        // event so manual node expansion will work correctly.
+        treeView1.BeforeExpand -= checkForCheckedChildren;
+
+        // Enable redrawing of treeView1.
+        treeView1.EndUpdate();
+    }
+
+    // Prevent expansion of a node that does not have any checked child nodes.
+    private void CheckForCheckedChildrenHandler(object sender, 
+        TreeViewCancelEventArgs e)
+    {
+        if (!HasCheckedChildNodes(e.Node)) e.Cancel = true;
+    }
+
+    // Returns a value indicating whether the specified 
+    // TreeNode has checked child nodes.
+    private bool HasCheckedChildNodes(TreeNode node)
+    {
+        if (node.Nodes.Count == 0) return false;
+        foreach (TreeNode childNode in node.Nodes)
         {
-           // Stop editing without canceling the label change.
-           e.Node.EndEdit(false);
+            if (childNode.Checked) return true;
+            // Recursively check the children of the current child node.
+            if (HasCheckedChildNodes(childNode)) return true;
         }
-        else
-        {
-           /* Cancel the label edit action, inform the user, and 
-              place the node in edit mode again. */
-           e.CancelEdit = true;
-           MessageBox.Show("Invalid tree node label.\n" + 
-              "The invalid characters are: '@','.', ',', '!'", 
-              "Node Label Edit");
-           e.Node.BeginEdit();
-        }
-     }
-     else
-     {
-        /* Cancel the label edit action, inform the user, and 
-           place the node in edit mode again. */
-        e.CancelEdit = true;
-        MessageBox.Show("Invalid tree node label.\nThe label cannot be blank", 
-           "Node Label Edit");
-        e.Node.BeginEdit();
-     }
-   }
-}
+        return false;
+    }

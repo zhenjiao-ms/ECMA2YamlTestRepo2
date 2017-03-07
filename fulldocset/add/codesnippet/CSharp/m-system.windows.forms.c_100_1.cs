@@ -1,53 +1,47 @@
-        // This example demonstrates the use of the ControlAdded and
-        // ControlRemoved events. This example assumes that two Button controls
-        // are added to the form and connected to the addControl_Click and
-        // removeControl_Click event-handler methods.
-        private void Form1_Load(object sender, System.EventArgs e)
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace CustomCursor
+{
+    public class Form1 : System.Windows.Forms.Form
+    {
+        [STAThread]
+        static void Main() 
         {
-            // Connect the ControlRemoved and ControlAdded event handlers
-            // to the event-handler methods.
-            // ControlRemoved and ControlAdded are not available at design time.
-            this.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.Control_Removed);
-            this.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.Control_Added);
+            Application.Run(new Form1());
         }
 
-        private void Control_Added(object sender, System.Windows.Forms.ControlEventArgs e)
+        public Form1()
         {
-            MessageBox.Show("The control named " + e.Control.Name + " has been added to the form.");
-        }
+            this.ClientSize = new System.Drawing.Size(292, 266);
+            this.Text = "Cursor Example";
+            
+            // The following generates a cursor from an embedded resource.
+            
+            // To add a custom cursor, create a bitmap
+            //        1. Add a new cursor file to your project: 
+            //                Project->Add New Item->General->Cursor File
 
-        private void Control_Removed(object sender, System.Windows.Forms.ControlEventArgs e)
-        {
-            MessageBox.Show("The control named " + e.Control.Name + " has been removed from the form.");
-        }
+            // --- To make the custom cursor an embedded resource  ---
+            
+            // In Visual Studio:
+            //        1. Select the cursor file in the Solution Explorer
+            //        2. Choose View->Properties.
+            //        3. In the properties window switch "Build Action" to "Embedded Resources"
 
-        // Click event handler for a Button control. Adds a TextBox to the form.
-        private void addControl_Click(object sender, System.EventArgs e)
-        {
-            // Create a new TextBox control and add it to the form.
-            TextBox textBox1 = new TextBox();
-            textBox1.Size = new Size(100,10);
-            textBox1.Location = new Point(10,10);
-            // Name the control in order to remove it later. The name must be specified
-            // if a control is added at run time.
-            textBox1.Name = "textBox1";
+            // On the command line:
+            //        Add the following flag:
+            //            /res:CursorFileName.cur,Namespace.CursorFileName.cur
+            //        
+            //        Where "Namespace" is the namespace in which you want to use the cursor
+            //        and   "CursorFileName.cur" is the cursor filename.
 
-            // Add the control to the form's control collection.
-            this.Controls.Add(textBox1);
+            // The following line uses the namespace from the passed-in type
+            // and looks for CustomCursor.MyCursor.Cur in the assemblies manifest.
+	    // NOTE: The cursor name is acase sensitive.
+            this.Cursor = new Cursor(GetType(), "MyCursor.cur");  
+           
         }
-
-        // Click event handler for a Button control.
-        // Removes the previously added TextBox from the form.
-        private void removeControl_Click(object sender, System.EventArgs e)
-        {
-            // Loop through all controls in the form's control collection.
-            foreach (Control tempCtrl in this.Controls)
-            {
-                // Determine whether the control is textBox1,
-                // and if it is, remove it.
-                if (tempCtrl.Name == "textBox1")
-                {
-                    this.Controls.Remove(tempCtrl);
-                }
-            }
-        }
+    }
+}

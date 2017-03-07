@@ -1,23 +1,8 @@
-    public class MyFontList : BindingList<Font>
-    {
-
-        protected override bool SupportsSearchingCore
-        {
-            get { return true; }
-        }
-        protected override int FindCore(PropertyDescriptor prop, object key)
-        {
-            // Ignore the prop value and search by family name.
-            for (int i = 0; i < Count; ++i)
-            {
-                if (Items[i].FontFamily.Name.ToLower() == ((string)key).ToLower())
-                    return i;
-
-            }
-            return -1;
-        }
-
-
-    }
-  
-}
+private void PrintIndexItem() {
+    // Creates a new collection and assigns it the attributes for button1.
+    AttributeCollection attributes;
+    attributes = TypeDescriptor.GetAttributes(button1);
+ 
+    // Prints the second attribute's name.
+    textBox1.Text = attributes[1].ToString();
+ }

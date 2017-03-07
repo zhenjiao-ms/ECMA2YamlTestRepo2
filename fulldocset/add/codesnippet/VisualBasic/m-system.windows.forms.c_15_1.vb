@@ -1,13 +1,16 @@
-' This is a custom TextBox control that overrides the OnClick method
-' to allow one-click selection of the text in the text box.
-
-Public Class SingleClickTextBox
-    Inherits TextBox
-
-    Protected Overrides Sub OnClick(ByVal e As EventArgs)
-        Me.SelectAll()
-        MyBase.OnClick(e)
-    End Sub
-
-
-End Class
+Private Sub AddButtons()
+   ' Suspend the form layout and add two buttons.
+   Me.SuspendLayout()
+   Dim buttonOK As New Button()
+   buttonOK.Location = New Point(10, 10)
+   buttonOK.Size = New Size(75, 25)
+   buttonOK.Text = "OK"
+   
+   Dim buttonCancel As New Button()
+   buttonCancel.Location = New Point(90, 10)
+   buttonCancel.Size = New Size(75, 25)
+   buttonCancel.Text = "Cancel"
+   
+   Me.Controls.AddRange(New Control() {buttonOK, buttonCancel})
+   Me.ResumeLayout()
+End Sub

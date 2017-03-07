@@ -1,80 +1,102 @@
 using System;
-using System.Text;
 using System.IO;
-// Add references to Soap and Binary formatters.
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization.Formatters.Soap ;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters;
+using System.Runtime.Serialization.Formatters.Binary;
 
 
-[Serializable]
-public class MyItemType : ISerializable
-{
-    public MyItemType()
+// This class is not serializable.
+class Employee 
     {
-        // Empty constructor required to compile.
-    }
+    public String name, address;
 
-    // The value to serialize.
-    private string myProperty_value;
-
-    public string MyProperty
+    public Employee(String name, String address) 
     {
-        get { return myProperty_value; }
-        set { myProperty_value = value; }
-    }
-        
-    // Implement this method to serialize data. The method is called 
-    // on serialization.
-    public void GetObjectData(SerializationInfo info, StreamingContext context)
-    {
-        // Use the AddValue method to specify serialized values.
-        info.AddValue("props", myProperty_value, typeof(string));
-
-    }
-
-    // The special constructor is used to deserialize values.
-    public MyItemType(SerializationInfo info, StreamingContext context)
-    {
-        // Reset the property value using the GetValue method.
-        myProperty_value = (string) info.GetValue("props", typeof(string));
+        this.name = name;
+        this.address = address;
     }
 }
 
-// This is a console application. 
-public static class Test
+// This class can manually serialize an Employee object.
+sealed class EmployeeSerializationSurrogate : ISerializationSurrogate 
 {
-    static void Main()
-    {
-        // This is the name of the file holding the data. You can use any file extension you like.
-        string fileName = "dataStuff.myData";
 
-        // Use a BinaryFormatter or SoapFormatter.
+    // Serialize the Employee object to save the object�s name and address fields.
+    public void GetObjectData(Object obj, 
+        SerializationInfo info, StreamingContext context) 
+    {
+
+        Employee emp = (Employee) obj;
+        info.AddValue("name", emp.name);
+        info.AddValue("address", emp.address);
+    }
+
+    // Deserialize the Employee object to set the object�s name and address fields.
+    public Object SetObjectData(Object obj,
+        SerializationInfo info, StreamingContext context,
+        ISurrogateSelector selector) 
+    {
+
+        Employee emp = (Employee) obj;
+        emp.name = info.GetString("name");
+        emp.address = info.GetString("address");
+        return null;
+    }
+}
+
+public sealed class App 
+{
+    static void Main() 
+    {
+        // This sample uses the BinaryFormatter.
         IFormatter formatter = new BinaryFormatter();
-        //IFormatter formatter = new SoapFormatter();
-            
-        Test.SerializeItem(fileName, formatter); // Serialize an instance of the class.
-        Test.DeserializeItem(fileName, formatter); // Deserialize the instance.
-        Console.WriteLine("Done");
-        Console.ReadLine();
+
+        // Create a MemoryStream that the object will be serialized into and deserialized from.
+        using (Stream stream = new MemoryStream()) 
+        {
+            // Create a SurrogateSelector.
+            SurrogateSelector ss = new SurrogateSelector();
+
+            // Tell the SurrogateSelector that Employee objects are serialized and deserialized 
+            // using the EmployeeSerializationSurrogate object.
+            ss.AddSurrogate(typeof(Employee),
+            new StreamingContext(StreamingContextStates.All),
+            new EmployeeSerializationSurrogate());
+
+            // Associate the SurrogateSelector with the BinaryFormatter.
+            formatter.SurrogateSelector = ss;
+
+            try 
+            {
+                // Serialize an Employee object into the memory stream.
+                formatter.Serialize(stream, new Employee("Jeff", "1 Microsoft Way"));
+            }
+            catch (SerializationException e) 
+            {
+                Console.WriteLine("Serialization failed: {0}", e.Message);
+                throw;
+            }
+
+            // Rewind the MemoryStream.
+            stream.Position = 0;
+
+            try 
+            {
+                // Deserialize the Employee object from the memory stream.
+                Employee emp = (Employee) formatter.Deserialize(stream);
+
+                // Verify that it all worked.
+                Console.WriteLine("Name = {0}, Address = {1}", emp.name, emp.address);
+            }
+            catch (SerializationException e) 
+            {
+                Console.WriteLine("Deserialization failed: {0}", e.Message);
+                throw;
+            }
+        }
     }
-
-    public static void SerializeItem(string fileName, IFormatter formatter)
-    {
-        // Create an instance of the type and serialize it.
-        MyItemType t = new MyItemType();
-        t.MyProperty = "Hello World";
-
-        FileStream s = new FileStream(fileName , FileMode.Create);
-        formatter.Serialize(s, t);            
-        s.Close();
-    }
-
-
-    public static void DeserializeItem(string fileName, IFormatter formatter)
-    {
-        FileStream s = new FileStream(fileName, FileMode.Open);
-        MyItemType t = (MyItemType)formatter.Deserialize(s);
-        Console.WriteLine(t.MyProperty);            
-    }       
 }
+
+// This code produces the following output.
+//
+// Name = Jeff, Address = 1 Microsoft Way

@@ -1,9 +1,11 @@
-private void DataGridView1_RowStateChanged(Object sender, DataGridViewRowStateChangedEventArgs e) {
+    // Change the text in the column header.
+    private void Button9_Click(object sender,
+        EventArgs args)
+    {
+        foreach (DataGridViewColumn column in dataGridView.Columns)
+        {
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "Row", e.Row );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "StateChanged", e.StateChanged );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "RowStateChanged Event" );
-}
+            column.HeaderText = String.Concat("Column ",
+                column.Index.ToString());
+        }
+    }

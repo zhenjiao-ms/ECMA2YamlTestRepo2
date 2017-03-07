@@ -1,50 +1,33 @@
-        public static void CheckSignatureWithEncryptedGrant(string fileName, IRelDecryptor decryptor)
-        {
-            // Create a new XML document.
-            XmlDocument xmlDocument = new XmlDocument();
-            XmlNamespaceManager nsManager = new XmlNamespaceManager(xmlDocument.NameTable);
+using System;
+using System.Security.Cryptography;
+using System.Security.Permissions;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
-            // Format using whitespaces.
-            xmlDocument.PreserveWhitespace = true;
+class X500Sample
+{
+	static void Main()
+	{
+		try
+		{
+			X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
+			store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+			X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
+			X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
+			X509Certificate2Collection scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Test Certificate Select", "Select a certificate from the following list to get information on that certificate", X509SelectionFlag.MultiSelection);
+			Console.WriteLine("Number of certificates: {0}{1}", scollection.Count, Environment.NewLine);
+			foreach (X509Certificate2 x509 in scollection)
+			{
+				X500DistinguishedName dname = new X500DistinguishedName(x509.SubjectName);
+				Console.WriteLine("X500DistinguishedName: {0}{1}", dname.Name, Environment.NewLine);
+				x509.Reset();
+			}
+			store.Close();
+		}
+		catch (CryptographicException)
+		{
+			Console.WriteLine("Information could not be written out for this certificate.");
+		}
 
-            // Load the passed XML file into the document. 
-            xmlDocument.Load(fileName);
-            nsManager.AddNamespace("dsig", SignedXml.XmlDsigNamespaceUrl);
-
-            // Find the "Signature" node and create a new XmlNodeList object.
-            XmlNodeList nodeList = xmlDocument.SelectNodes("//dsig:Signature", nsManager);
-
-            for (int i = 0, count = nodeList.Count; i < count; i++)
-            {
-                XmlDocument clone = xmlDocument.Clone() as XmlDocument;
-                XmlNodeList signatures = clone.SelectNodes("//dsig:Signature", nsManager);
-
-                // Create a new SignedXml object and pass into it the XML document clone.
-                SignedXml signedXml = new SignedXml(clone);
-
-                // Load the signature node.
-                signedXml.LoadXml((XmlElement)signatures[i]);
-
-                // Set the context for license transform
-                Transform trans = ((Reference)signedXml.SignedInfo.References[0]).TransformChain[0];
-
-                if (trans is XmlLicenseTransform)
-                {
-
-                    // Decryptor is used to decrypt encryptedGrant elements.
-                    if (decryptor != null)
-                        (trans as XmlLicenseTransform).Decryptor = decryptor;
-                }
-
-                // Check the signature and display the result.
-                bool result = signedXml.CheckSignature();
-
-                if (result)
-                    Console.WriteLine("SUCCESS: CheckSignatureWithEncryptedGrant - issuer index #" +
-                                                    i.ToString());
-                else
-                    Console.WriteLine("FAILURE: CheckSignatureWithEncryptedGrant - issuer index #" +
-                                                    i.ToString());
-            }
-
-        }
+	}
+}

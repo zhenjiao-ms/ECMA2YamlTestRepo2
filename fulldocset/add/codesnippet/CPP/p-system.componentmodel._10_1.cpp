@@ -1,10 +1,9 @@
-private:
-   void PrintIndexItem()
-   {
-      
-      // Creates a new collection and assigns it the events for button1.
-      EventDescriptorCollection^ events = TypeDescriptor::GetEvents( button1 );
-      
-      // Prints the second event's name.
-      textBox1->Text = events[ 1 ]->ToString();
-   }
+      // Gets the attributes for the property.
+      AttributeCollection^ attributes = TypeDescriptor::GetProperties( this )[ "MyPropertyProperty" ]->Attributes;
+
+      // Checks to see if the property is bindable.
+      MergablePropertyAttribute^ myAttribute = dynamic_cast<MergablePropertyAttribute^>(attributes[ MergablePropertyAttribute::typeid ]);
+      if ( myAttribute->AllowMerge )
+      {
+         // Insert code here.
+      }

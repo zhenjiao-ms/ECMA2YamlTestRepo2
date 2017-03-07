@@ -1,23 +1,17 @@
-   public ref class CDesigner: public ComponentDesigner
-   {
    public:
-    [PermissionSetAttribute(SecurityAction::Demand, Name="FullTrust")]
-      virtual void Initialize( IComponent^ comp ) override
+      void LinkDesignerEvent( IDesignerEventService^ eventService )
       {
-         ComponentDesigner::Initialize( comp );
-         IMenuCommandService^ mcs = static_cast<IMenuCommandService^>(comp->Site->GetService( IMenuCommandService::typeid ));
-		 MenuCommand^ mc = gcnew MenuCommand( gcnew EventHandler( this, &CDesigner::OnF1Help ),StandardCommands::F1Help );
-         mc->Enabled = true;
-         mc->Visible = true;
-         mc->Supported = true;
-         mcs->AddCommand( mc );
-         System::Windows::Forms::MessageBox::Show( "Initialize() has been invoked." );
+         // Registers an event handler for the DesignerCreated and DesignerDisposed events.
+         eventService->DesignerCreated += gcnew DesignerEventHandler(
+            this, &DesignerEventHandlerExample::OnDesignerEvent );
+         eventService->DesignerDisposed += gcnew DesignerEventHandler(
+            this, &DesignerEventHandlerExample::OnDesignerEvent );
       }
 
    private:
-      void OnF1Help( Object^ /*sender*/, EventArgs^ /*e*/ )
+      void OnDesignerEvent( Object^ sender, DesignerEventArgs^ e )
       {
-         System::Windows::Forms::MessageBox::Show( "F1Help has been invoked." );
+         // Displays designer event information on the console.
+         Console::WriteLine( "Name of the root component of the created or disposed designer: " +
+            e->Designer->RootComponentClassName );
       }
-   };
-}

@@ -1,73 +1,72 @@
-    Private Sub UpdateLabelText()
-        Dim WithdrawalTotal As Integer = 0
-        Dim DepositTotal As Integer = 0
-        Dim SelectedCellTotal As Integer = 0
-        Dim counter As Integer
+    Private Function CreateComboBoxColumn() _
+        As DataGridViewComboBoxColumn
+        Dim column As New DataGridViewComboBoxColumn()
 
-        ' Iterate through all the rows and sum up the appropriate columns.
-        For counter = 0 To (DataGridView1.Rows.Count - 1)
-            If Not DataGridView1.Rows(counter) _
-                .Cells("Withdrawals").Value Is Nothing Then
+        With column
+            .DataPropertyName = ColumnName.TitleOfCourtesy.ToString()
+            .HeaderText = ColumnName.TitleOfCourtesy.ToString()
+            .DropDownWidth = 160
+            .Width = 90
+            .MaxDropDownItems = 3
+            .FlatStyle = FlatStyle.Flat
+        End With
+        Return column
+    End Function
 
-                If Not DataGridView1.Rows(counter) _
-                    .Cells("Withdrawals").Value.ToString().Length = 0 Then
-
-                    WithdrawalTotal += _
-                        Integer.Parse(DataGridView1.Rows(counter) _
-                        .Cells("Withdrawals").Value.ToString())
-                End If
-            End If
-
-            If Not DataGridView1.Rows(counter) _
-                .Cells("Deposits").Value Is Nothing Then
-
-                If Not DataGridView1.Rows(counter) _
-                    .Cells("Deposits").Value.ToString().Length = 0 Then
-
-                    DepositTotal += _
-                        Integer.Parse(DataGridView1.Rows(counter) _
-                        .Cells("Deposits").Value.ToString())
-                End If
-            End If
-        Next
-
-        ' Iterate through the SelectedCells collection and sum up the values.
-        For counter = 0 To (DataGridView1.SelectedCells.Count - 1)
-            If DataGridView1.SelectedCells(counter).FormattedValueType Is _
-            Type.GetType("System.String") Then
-
-                Dim value As String = Nothing
-
-                ' If the cell contains a value that has not been commited,
-                ' use the modified value.
-                If (DataGridView1.IsCurrentCellDirty = True) Then
-
-                    value = DataGridView1.SelectedCells(counter) _
-                        .EditedFormattedValue.ToString()
-                Else
-
-                    value = DataGridView1.SelectedCells(counter) _
-                        .FormattedValue.ToString()
-                End If
-
-                If value IsNot Nothing Then
-
-                    ' Ignore cells in the Description column.
-                    If Not DataGridView1.SelectedCells(counter).ColumnIndex = _
-                        DataGridView1.Columns("Description").Index Then
-
-                        If Not value.Length = 0 Then
-                            SelectedCellTotal += Integer.Parse(value)
-                        End If
-                    End If
-                End If
-            End If
-
-        Next
-
-        ' Set the labels to reflect the current state of the DataGridView.
-        Label1.Text = "Withdrawals Total: " & WithdrawalTotal.ToString()
-        Label2.Text = "Deposits Total: " & DepositTotal.ToString()
-        Label3.Text = "Selected Cells Total: " & SelectedCellTotal.ToString()
-        Label4.Text = "Total entries: " & DataGridView1.RowCount.ToString()
+    Private Sub SetAlternateChoicesUsingDataSource( _
+        ByVal comboboxColumn As DataGridViewComboBoxColumn)
+        With comboboxColumn
+            .DataSource = RetrieveAlternativeTitles()
+            .ValueMember = ColumnName.TitleOfCourtesy.ToString()
+            .DisplayMember = .ValueMember
+        End With
     End Sub
+
+    Private Function RetrieveAlternativeTitles() As DataTable
+        Return Populate( _
+            "SELECT distinct TitleOfCourtesy FROM Employees")
+    End Function
+
+    Private connectionString As String = _
+            "Integrated Security=SSPI;Persist Security Info=False;" _
+            & "Initial Catalog=Northwind;Data Source=localhost"
+
+    Private Function Populate(ByVal sqlCommand As String) As DataTable
+        Dim northwindConnection As New SqlConnection(connectionString)
+        northwindConnection.Open()
+
+        Dim command As New SqlCommand(sqlCommand, _
+            northwindConnection)
+        Dim adapter As New SqlDataAdapter()
+        adapter.SelectCommand = command
+        Dim table As New DataTable()
+        table.Locale = System.Globalization.CultureInfo.InvariantCulture
+        adapter.Fill(table)
+
+        Return table
+    End Function
+
+    ' Using an enum provides some abstraction between column index
+    ' and column name along with compile time checking, and gives
+    ' a handy place to store the column names.
+    Enum ColumnName
+        EmployeeId
+        LastName
+        FirstName
+        Title
+        TitleOfCourtesy
+        BirthDate
+        HireDate
+        Address
+        City
+        Region
+        PostalCode
+        Country
+        HomePhone
+        Extension
+        Photo
+        Notes
+        ReportsTo
+        PhotoPath
+        OutOfOffice
+    End Enum

@@ -1,1 +1,2 @@
-        Dim hashAlgorithm As HashAlgorithm = dsaSignature.CreateDigest()
+        Dim errorMessage As String = "Unexpected Operation exception."
+        Dim cryptographicException As New CryptographicException(errorMessage)

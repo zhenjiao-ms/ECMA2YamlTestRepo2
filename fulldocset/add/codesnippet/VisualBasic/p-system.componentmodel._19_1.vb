@@ -1,15 +1,7 @@
-Imports System
-Imports System.Web.DynamicData
-Imports System.ComponentModel.DataAnnotations
-
-
-<MetadataType(GetType(ProductMetadata))> _
-Partial Public Class Product
-
-End Class
-
-Partial Public Class ProductMetadata
-    <UIHint("UnitsInStock")> _
-    <Range(100, 10000)> _
-    Public UnitsInStock As Object
-End Class
+    Private Sub PrintIndexItem()
+        ' Creates a new collection and assigns it the events for button1.
+        Dim events As EventDescriptorCollection = TypeDescriptor.GetEvents(button1)
+        
+        ' Prints the second event's name.
+        textBox1.Text = events(1).ToString()
+    End Sub 'PrintIndexItem

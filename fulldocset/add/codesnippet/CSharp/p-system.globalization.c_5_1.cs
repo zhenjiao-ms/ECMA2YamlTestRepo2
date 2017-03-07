@@ -1,65 +1,71 @@
 using System;
-using System.Collections;
 using System.Globalization;
 
-public class SamplesCultureInfo
+public class Example
 {
-
    public static void Main()
    {
+      // Get all available cultures on the current system.
+      CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
 
-      // Creates and initializes the CultureInfo which uses the international sort.
-      CultureInfo myCIintl = new CultureInfo("es-ES", false);
+      Console.WriteLine("{0,-32} {1,-13} {2,-6}\n", "Display Name", 
+                        "Name", "TwoLetterISOLanguageName");
 
-      // Creates and initializes the CultureInfo which uses the traditional sort.
-      CultureInfo myCItrad = new CultureInfo(0x040A, false);
-
-      // Displays the properties of each culture.
-      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "PROPERTY", "INTERNATIONAL", "TRADITIONAL");
-      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "CompareInfo", myCIintl.CompareInfo, myCItrad.CompareInfo);
-      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "DisplayName", myCIintl.DisplayName, myCItrad.DisplayName);
-      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "EnglishName", myCIintl.EnglishName, myCItrad.EnglishName);
-      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "IsNeutralCulture", myCIintl.IsNeutralCulture, myCItrad.IsNeutralCulture);
-      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "IsReadOnly", myCIintl.IsReadOnly, myCItrad.IsReadOnly);
-      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "LCID", myCIintl.LCID, myCItrad.LCID);
-      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "Name", myCIintl.Name, myCItrad.Name);
-      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "NativeName", myCIintl.NativeName, myCItrad.NativeName);
-      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "Parent", myCIintl.Parent, myCItrad.Parent);
-      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "TextInfo", myCIintl.TextInfo, myCItrad.TextInfo);
-      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "ThreeLetterISOLanguageName", myCIintl.ThreeLetterISOLanguageName, myCItrad.ThreeLetterISOLanguageName);
-      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "ThreeLetterWindowsLanguageName", myCIintl.ThreeLetterWindowsLanguageName, myCItrad.ThreeLetterWindowsLanguageName);
-      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "TwoLetterISOLanguageName", myCIintl.TwoLetterISOLanguageName, myCItrad.TwoLetterISOLanguageName);
-      Console.WriteLine();
-
-      // Compare two strings using myCIintl.
-      Console.WriteLine("Comparing \"llegar\" and \"lugar\"");
-      Console.WriteLine("   With myCIintl.CompareInfo.Compare: {0}", myCIintl.CompareInfo.Compare("llegar", "lugar"));
-      Console.WriteLine("   With myCItrad.CompareInfo.Compare: {0}", myCItrad.CompareInfo.Compare("llegar", "lugar"));
-
+      foreach (var culture in cultures) {
+         // Exclude custom cultures.
+         if ((culture.CultureTypes & CultureTypes.UserCustomCulture) == CultureTypes.UserCustomCulture) 
+            continue;
+         
+         // Exclude all two-letter codes.
+         if (culture.TwoLetterISOLanguageName.Length == 2)
+            continue;
+         
+         Console.WriteLine("{0,-32} {1,-13} {2,-6}", culture.DisplayName,
+                           culture.Name, culture.TwoLetterISOLanguageName);
+      }   
    }
-
 }
-
-/*
-This code produces the following output.
-
-PROPERTY                       INTERNATIONAL                                  TRADITIONAL              
-CompareInfo                    CompareInfo - es-ES                            CompareInfo - es-ES_tradnl
-DisplayName                    Spanish (Spain)                                Spanish (Spain)          
-EnglishName                    Spanish (Spain, International Sort)            Spanish (Spain, Traditional Sort)
-IsNeutralCulture               False                                          False                    
-IsReadOnly                     False                                          False                    
-LCID                           3082                                           1034                     
-Name                           es-ES                                          es-ES                    
-NativeName                     Español (España, alfabetización internacional) Español (España, alfabetización tradicional)
-Parent                         es                                             es                       
-TextInfo                       TextInfo - es-ES                               TextInfo - es-ES_tradnl  
-ThreeLetterISOLanguageName     spa                                            spa                      
-ThreeLetterWindowsLanguageName ESN                                            ESP                      
-TwoLetterISOLanguageName       es                                             es                       
-
-Comparing "llegar" and "lugar"
-   With myCIintl.CompareInfo.Compare: -1
-   With myCItrad.CompareInfo.Compare: 1
-
-*/
+// The example output like the following:
+//       Display Name                     Name          TwoLetterISOLanguageName
+//       
+//       Upper Sorbian                    hsb           hsb
+//       Konkani                          kok           kok
+//       Syriac                           syr           syr
+//       Tamazight                        tzm           tzm
+//       Filipino                         fil           fil
+//       Quechua                          quz           quz
+//       Sesotho sa Leboa                 nso           nso
+//       Mapudungun                       arn           arn
+//       Mohawk                           moh           moh
+//       Alsatian                         gsw           gsw
+//       Sakha                            sah           sah
+//       K'iche                           qut           qut
+//       Dari                             prs           prs
+//       Upper Sorbian (Germany)          hsb-DE        hsb
+//       Konkani (India)                  kok-IN        kok
+//       Syriac (Syria)                   syr-SY        syr
+//       Filipino (Philippines)           fil-PH        fil
+//       Quechua (Bolivia)                quz-BO        quz
+//       Sesotho sa Leboa (South Africa)  nso-ZA        nso
+//       Mapudungun (Chile)               arn-CL        arn
+//       Mohawk (Mohawk)                  moh-CA        moh
+//       Alsatian (France)                gsw-FR        gsw
+//       Sakha (Russia)                   sah-RU        sah
+//       K'iche (Guatemala)               qut-GT        qut
+//       Dari (Afghanistan)               prs-AF        prs
+//       Lower Sorbian (Germany)          dsb-DE        dsb
+//       Tamazight (Latin, Algeria)       tzm-Latn-DZ   tzm
+//       Quechua (Ecuador)                quz-EC        quz
+//       Quechua (Peru)                   quz-PE        quz
+//       Sami, Lule (Norway)              smj-NO        smj
+//       Sami, Lule (Sweden)              smj-SE        smj
+//       Sami, Southern (Norway)          sma-NO        sma
+//       Sami, Southern (Sweden)          sma-SE        sma
+//       Sami, Skolt (Finland)            sms-FI        sms
+//       Sami, Inari (Finland)            smn-FI        smn
+//       Sami (Inari)                     smn           smn
+//       Sami (Skolt)                     sms           sms
+//       Sami (Southern)                  sma           sma
+//       Lower Sorbian                    dsb           dsb
+//       Sami (Lule)                      smj           smj
+//       Tamazight (Latin)                tzm-Latn      tzm

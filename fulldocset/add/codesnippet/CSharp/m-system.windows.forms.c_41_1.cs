@@ -1,26 +1,8 @@
-protected override void OnTextChanged(System.EventArgs e)
+// Remove the first control in the collection.
+private void removeAtButton_Click(object sender, System.EventArgs e)
 {
-   try
+   if (panel1.Controls.Count > 0)
    {
-      // Convert the text to a Double and determine
-      // if it is a negative number.
-      if(double.Parse(this.Text) < 0)
-      {
-         // If the number is negative, display it in Red.
-         this.ForeColor = Color.Red;
-      }
-      else
-      {
-         // If the number is not negative, display it in Black.
-         this.ForeColor = Color.Black;
-      }
+      panel1.Controls.RemoveAt(0);
    }
-   catch
-   {
-      // If there is an error, display the 
-      // text using the system colors.
-      this.ForeColor = SystemColors.ControlText;
-   }
-   
-   base.OnTextChanged(e);
 }

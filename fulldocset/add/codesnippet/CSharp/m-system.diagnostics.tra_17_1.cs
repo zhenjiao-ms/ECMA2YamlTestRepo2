@@ -1,29 +1,13 @@
-// Specify /d:TRACE when compiling.
-
-using System;
-using System.IO;
-using System.Diagnostics;
-
-class Test
-{
-    static void Main()
-    {
-        // Create a file for output named TestFile.txt.
-        using (FileStream myFileStream = 
-            new FileStream("TestFile.txt", FileMode.Append))
-        {
-            // Create a new text writer using the output stream 
-            // and add it to the trace listeners.
-            TextWriterTraceListener myTextListener = 
-                new TextWriterTraceListener(myFileStream);
-            Trace.Listeners.Add(myTextListener);
-          
-            // Write output to the file.
-            Trace.WriteLine("Test output");
-         
-            // Flush and close the output stream.
-            Trace.Flush();
-            Trace.Close();
-        }
-    }
-}
+// Class-level declaration.
+ // Create a TraceSwitch.
+ static TraceSwitch generalSwitch = new TraceSwitch("General", "Entire Application");
+ 
+ static public void MyErrorMethod(Object myObject, String category) {
+    // Write the message if the TraceSwitch level is set to Verbose.
+    if(generalSwitch.TraceVerbose)
+       Trace.Write(myObject, category);
+ 
+    // Write a second message if the TraceSwitch level is set to Error or higher.
+    if(generalSwitch.TraceError)
+       Trace.WriteLine(" Object is not valid for this category.");
+ }

@@ -1,287 +1,299 @@
-#using <System.Windows.Forms.dll>
-#using <System.Drawing.dll>
+// Command-line argument examples:
+//   <exe_name>
+//      - Displays Visual Basic, C#, and JScript compiler settings.
+//   <exe_name> Language CSharp
+//      - Displays the compiler settings for C#.
+//   <exe_name> All
+//      - Displays settings for all configured compilers.
+//   <exe_name> Config Pascal
+//      - Displays settings for configured Pascal language provider,
+//        if one exists.
+//   <exe_name> Extension .vb
+//      - Displays settings for the compiler associated with the .vb
+//        file extension.
 #using <System.dll>
-#using <Microsoft.JScript.dll>
+#using <System.Xml.dll>
 
 using namespace System;
+using namespace System::Globalization;
 using namespace System::CodeDom;
 using namespace System::CodeDom::Compiler;
-using namespace System::Collections;
-using namespace System::ComponentModel;
-using namespace System::Diagnostics;
-using namespace System::Drawing;
-using namespace System::IO;
-using namespace System::Windows::Forms;
 using namespace Microsoft::CSharp;
 using namespace Microsoft::VisualBasic;
-using namespace Microsoft::JScript;
+using namespace System::Configuration;
 using namespace System::Security::Permissions;
 
-// This example demonstrates building a Hello World program graph 
-// using System.CodeDom elements. It calls code generator and
-// code compiler methods to build the program using CSharp, VB, or
-// JScript.  A Windows Forms interface is included. Note: Code
-// must be compiled and linked with the Microsoft.JScript assembly. 
-namespace CodeDOMExample
+namespace CodeDomCompilerInfoSample
 {
-    [PermissionSet(SecurityAction::Demand, Name="FullTrust")]
-    public ref class CodeDomExample
-    {
-    public:
-        // Build a Hello World program graph using 
-        // System::CodeDom types.
-        static CodeCompileUnit^ BuildHelloWorldGraph()
-        {
-            // Create a new CodeCompileUnit to contain 
-            // the program graph.
-            CodeCompileUnit^ compileUnit = gcnew CodeCompileUnit;
+   [PermissionSet(SecurityAction::Demand, Name="FullTrust")]
+   public ref class CompilerInfoSample
+   {
+   public:
+      static void Main( array<String^>^args )
+      {
+         String^ queryCommand = "";
+         String^ queryArg = "";
+         int iNumArguments = args->Length;
+         
+         // Get input command-line arguments.
+         if ( iNumArguments > 0 )
+         {
+            queryCommand = args[ 0 ]->ToUpper( CultureInfo::InvariantCulture );
+            if ( iNumArguments > 1 )
+               queryArg = args[ 1 ];
+         }
 
-            // Declare a new namespace called Samples.
-            CodeNamespace^ samples = gcnew CodeNamespace( "Samples" );
+         // Determine which method to call.
+         Console::WriteLine();
+         if ( queryCommand->Equals( "LANGUAGE" ) )
+             DisplayCompilerInfoForLanguage( queryArg );        // Display compiler information for input language.
+         else if ( queryCommand->Equals( "EXTENSION" ) )
+             DisplayCompilerInfoUsingExtension( queryArg );     // Display compiler information for input file extension.
+         else if ( queryCommand->Equals( "CONFIG" ) )
+             DisplayCompilerInfoForConfigLanguage( queryArg );  // Display settings for the configured language provider.
+         else if ( queryCommand->Equals( "ALL" ) )
+             DisplayAllCompilerInfo();             // Display compiler information for all configured language providers.
+         else
+         {
+            // There was no command-line argument, or the 
+            // command-line argument was not recognized.
+            // Display the C#, Visual Basic and JScript 
+            // compiler information.
+            DisplayCSharpCompilerInfo();
+            DisplayVBCompilerInfo();
+            DisplayJScriptCompilerInfo();
+         }
+      }
 
-            // Add the new namespace to the compile unit.
-            compileUnit->Namespaces->Add( samples );
 
-            // Add the new namespace import for the System namespace.
-            samples->Imports->Add( gcnew CodeNamespaceImport( "System" ) );
+   private:
+      static void DisplayCSharpCompilerInfo()
+      {
+         // Get the provider for Microsoft.CSharp
+//         CodeDomProvider^ provider = CodeDomProvider.CreateProvider("CSharp");
+         CodeDomProvider^ provider = CodeDomProvider::CreateProvider("CSharp");
 
-            // Declare a new type called Class1.
-            CodeTypeDeclaration^ class1 = gcnew CodeTypeDeclaration( "Class1" );
+         if ( provider )
+         {
+            // Display the C# language provider information.
+            Console::WriteLine( "CSharp provider is {0}", provider->ToString() );
+            Console::WriteLine( "  Provider hash code:     {0}", provider->GetHashCode().ToString() );
+            Console::WriteLine( "  Default file extension: {0}", provider->FileExtension );
+         }
 
-            // Add the new type to the namespace's type collection.
-            samples->Types->Add( class1 );
+         Console::WriteLine();
+      }
 
-            // Declare a new code entry point method.
-            CodeEntryPointMethod^ start = gcnew CodeEntryPointMethod;
+      static void DisplayVBCompilerInfo()
+      {
+         // Get the provider for Microsoft.VisualBasic
+//         CodeDomProvider^ provider = CodeDomProvider.CreateProvider("VisualBasic");
+         CodeDomProvider^ provider = CodeDomProvider::CreateProvider("VisualBasic");
+         if ( provider ) // Display the Visual Basic language provider information.
+         {
+            Console::WriteLine( "Visual Basic provider is {0}", provider->ToString() );
+            Console::WriteLine( "  Provider hash code:     {0}", provider->GetHashCode().ToString() );
+            Console::WriteLine( "  Default file extension: {0}", provider->FileExtension );
+         }
 
-            // Create a type reference for the System::Console class.
-            CodeTypeReferenceExpression^ csSystemConsoleType = gcnew CodeTypeReferenceExpression( "System.Console" );
+         Console::WriteLine();
+      }
 
-            // Build a Console::WriteLine statement.
-            CodeMethodInvokeExpression^ cs1 = gcnew CodeMethodInvokeExpression( csSystemConsoleType,"WriteLine", gcnew CodePrimitiveExpression("Hello World!") );
-
-            // Add the WriteLine call to the statement collection.
-            start->Statements->Add( cs1 );
-
-            // Build another Console::WriteLine statement.
-            CodeMethodInvokeExpression^ cs2 = gcnew CodeMethodInvokeExpression( csSystemConsoleType,"WriteLine", gcnew CodePrimitiveExpression( "Press the Enter key to continue." ) );
-
-            // Add the WriteLine call to the statement collection.
-            start->Statements->Add( cs2 );
-
-            // Build a call to System::Console::ReadLine.
-            CodeMethodReferenceExpression^ csReadLine = gcnew CodeMethodReferenceExpression( csSystemConsoleType, "ReadLine" );
-            CodeMethodInvokeExpression^ cs3 = gcnew CodeMethodInvokeExpression( csReadLine, gcnew array<CodeExpression^>(0) );
-
-            // Add the ReadLine statement.
-            start->Statements->Add( cs3 );
-
-            // Add the code entry point method to
-            // the Members collection of the type.
-            class1->Members->Add( start );
-            return compileUnit;
-        }
-
-        static void GenerateCode( CodeDomProvider^ provider, CodeCompileUnit^ compileunit )
-        {
-            // Build the source file name with the appropriate
-            // language extension.
-            String^ sourceFile;
-            if ( provider->FileExtension->StartsWith( "." ) )
+      static void DisplayJScriptCompilerInfo()
+      {
+         // Get the provider for JScript.
+         CodeDomProvider^ provider;
+         try
+         {
+//            provider = CodeDomProvider.CreateProvider("JScript");
+            provider = CodeDomProvider::CreateProvider("JScript");
+            if ( provider )
             {
-                sourceFile = String::Concat( "TestGraph", provider->FileExtension );
+               // Display the JScript language provider information.
+               Console::WriteLine( "JScript language provider is {0}", provider->ToString() );
+               Console::WriteLine( "  Provider hash code:     {0}", provider->GetHashCode().ToString() );
+               Console::WriteLine( "  Default file extension: {0}", provider->FileExtension );
+               Console::WriteLine();
             }
-            else
+         }
+         catch ( ConfigurationException^ e ) 
+         {
+            // The JScript language provider was not found.
+            Console::WriteLine( "There is no configured JScript language provider." );
+         }
+
+      }
+
+      static void DisplayCompilerInfoUsingExtension( String^ fileExtension )
+      {
+         if (  !fileExtension->StartsWith(  "." ) )
+            fileExtension = String::Concat( ".", fileExtension );
+
+         // Get the language associated with the file extension.
+         CodeDomProvider^ provider = nullptr;
+         if ( CodeDomProvider::IsDefinedExtension( fileExtension ) )
+         {
+            String^ language = CodeDomProvider::GetLanguageFromExtension( fileExtension );
+            if ( language )
+               Console::WriteLine( "The language \"{0}\" is associated with file extension \"{1}\"\n",
+                                    language, fileExtension );
+
+            // Check for a corresponding language provider.
+            if ( language && CodeDomProvider::IsDefinedLanguage( language ) )
             {
-                sourceFile = String::Concat( "TestGraph.", provider->FileExtension );
+               provider = CodeDomProvider::CreateProvider( language );
+               if ( provider )
+               {
+                  // Display information about this language provider.
+                  Console::WriteLine( "Language provider:  {0}\n", provider->ToString() );
+                  
+                  // Get the compiler settings for this language.
+                  CompilerInfo^ langCompilerInfo = CodeDomProvider::GetCompilerInfo( language );
+                  if ( langCompilerInfo )
+                  {
+                     CompilerParameters^ langCompilerConfig = langCompilerInfo->CreateDefaultCompilerParameters();
+                     if ( langCompilerConfig )
+                     {
+                        Console::WriteLine( "  Compiler options:        {0}", langCompilerConfig->CompilerOptions );
+                        Console::WriteLine( "  Compiler warning level:  {0}", langCompilerConfig->WarningLevel.ToString() );
+                     }
+                  }
+               }
             }
+         }
 
-            // Create an IndentedTextWriter, constructed with
-            // a StreamWriter to the source file.
-            IndentedTextWriter^ tw = gcnew IndentedTextWriter( gcnew StreamWriter( sourceFile,false ),"    " );
+         if ( provider == nullptr )  // Tell the user that the language provider was not found.
+            Console::WriteLine( "There is no language provider associated with input file extension \"{0}\".", fileExtension );
 
-            // Generate source code using the code generator.
-            provider->GenerateCodeFromCompileUnit( compileunit, tw, gcnew CodeGeneratorOptions );
+      }
 
-            // Close the output file.
-            tw->Close();
-        }
-
-        static CompilerResults^ CompileCode( CodeDomProvider^ provider, String^ sourceFile, String^ exeFile )
-        {
-            // Configure a CompilerParameters that links System.dll
-            // and produces the specified executable file.
-            array<String^>^referenceAssemblies = {"System.dll"};
-            CompilerParameters^ cp = gcnew CompilerParameters( referenceAssemblies,exeFile,false );
-
-            // Generate an executable rather than a DLL file.
-            cp->GenerateExecutable = true;
-
-            // Invoke compilation.
-            CompilerResults^ cr = provider->CompileAssemblyFromFile( cp, sourceFile );
-
-            // Return the results of compilation.
-            return cr;
-        }
-    };
-
-    public ref class CodeDomExampleForm: public System::Windows::Forms::Form
-    {
-    private:
-        static System::Windows::Forms::Button^ run_button = gcnew System::Windows::Forms::Button;
-        static System::Windows::Forms::Button^ compile_button = gcnew System::Windows::Forms::Button;
-        static System::Windows::Forms::Button^ generate_button = gcnew System::Windows::Forms::Button;
-        static System::Windows::Forms::TextBox^ textBox1 = gcnew System::Windows::Forms::TextBox;
-        static System::Windows::Forms::ComboBox^ comboBox1 = gcnew System::Windows::Forms::ComboBox;
-        static System::Windows::Forms::Label^ label1 = gcnew System::Windows::Forms::Label;
-        void generate_button_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-        {
-            CodeDomProvider^ provider = GetCurrentProvider();
-            CodeDomExample::GenerateCode( provider, CodeDomExample::BuildHelloWorldGraph() );
-
-            // Build the source file name with the appropriate
-            // language extension.
-            String^ sourceFile;
-            if ( provider->FileExtension->StartsWith( "." ) )
+      static void DisplayCompilerInfoForLanguage( String^ language )
+      {
+         CodeDomProvider^ provider = nullptr;
+         
+         // Check for a provider corresponding to the input language.  
+         if ( CodeDomProvider::IsDefinedLanguage( language ) )
+         {
+            provider = CodeDomProvider::CreateProvider( language );
+            if ( provider )
             {
-                sourceFile = String::Concat( "TestGraph", provider->FileExtension );
+               // Display information about this language provider.
+               Console::WriteLine( "Language provider:  {0}", provider->ToString() );
+               Console::WriteLine();
+               Console::WriteLine( "  Default file extension:  {0}", provider->FileExtension );
+               Console::WriteLine();
+               
+               // Get the compiler settings for this language.
+               CompilerInfo^ langCompilerInfo = CodeDomProvider::GetCompilerInfo( language );
+               if ( langCompilerInfo )
+               {
+                  CompilerParameters^ langCompilerConfig = langCompilerInfo->CreateDefaultCompilerParameters();
+                  if ( langCompilerConfig )
+                  {
+                     Console::WriteLine( "  Compiler options:        {0}", langCompilerConfig->CompilerOptions );
+                     Console::WriteLine( "  Compiler warning level:  {0}", langCompilerConfig->WarningLevel.ToString() );
+                  }
+               }
             }
-            else
+         }
+
+         if ( provider == nullptr )  // Tell the user that the language provider was not found.
+            Console::WriteLine(  "There is no provider configured for input language \"{0}\".", language );
+
+      }
+
+      static void DisplayCompilerInfoForConfigLanguage( String^ configLanguage )
+      {
+         CodeDomProvider^ provider = nullptr;
+         CompilerInfo^ info = CodeDomProvider::GetCompilerInfo( configLanguage );
+         
+         // Check whether there is a provider configured for this language.
+         if ( info->IsCodeDomProviderTypeValid )
+         {
+            // Get a provider instance using the configured type information.
+            provider = dynamic_cast<CodeDomProvider^>(Activator::CreateInstance( info->CodeDomProviderType ));
+            if ( provider )
             {
-                sourceFile = String::Concat( "TestGraph.", provider->FileExtension );
+               // Display information about this language provider.
+               Console::WriteLine( "Language provider:  {0}", provider->ToString() );
+               Console::WriteLine();
+               Console::WriteLine( "  Default file extension:  {0}", provider->FileExtension );
+               Console::WriteLine();
+               
+               // Get the compiler settings for this language.
+               CompilerParameters^ langCompilerConfig = info->CreateDefaultCompilerParameters();
+               if ( langCompilerConfig )
+               {
+                  Console::WriteLine( "  Compiler options:        {0}", langCompilerConfig->CompilerOptions );
+                  Console::WriteLine( "  Compiler warning level:  {0}", langCompilerConfig->WarningLevel.ToString() );
+               }
             }
+         }
 
+         if ( provider == nullptr ) // Tell the user that the language provider was not found.
+            Console::WriteLine( "There is no provider configured for input language \"{0}\".", configLanguage );
 
-            // Read in the generated source file and
-            // display the source text.
-            StreamReader^ sr = gcnew StreamReader( sourceFile );
-            textBox1->Text = sr->ReadToEnd();
-            sr->Close();
-        }
+      }
 
-        CodeDomProvider^ GetCurrentProvider()
-        {
-            CodeDomProvider^ provider;
-            if ( String::Compare( dynamic_cast<String^>(this->comboBox1->SelectedItem), "CSharp" ) == 0 )
-                provider = CodeDomProvider::CreateProvider("CSharp");
-            else
-                if ( String::Compare( dynamic_cast<String^>(this->comboBox1->SelectedItem), "Visual Basic" ) == 0 )
-                    provider = CodeDomProvider::CreateProvider("VisualBasic");
-                else
-                    if ( String::Compare( dynamic_cast<String^>(this->comboBox1->SelectedItem), "JScript" ) == 0 )
-                        provider = CodeDomProvider::CreateProvider("JScript");
-                    else
-                        provider = CodeDomProvider::CreateProvider("CSharp");
+      static void DisplayAllCompilerInfo()
+      {
+         array<CompilerInfo^>^allCompilerInfo = CodeDomProvider::GetAllCompilerInfo();
+         for ( int i = 0; i < allCompilerInfo->Length; i++ )
+         {
+            String^ defaultLanguage;
+            String^ defaultExtension;
+            CompilerInfo^ info = allCompilerInfo[ i ];
+            CodeDomProvider^ provider = nullptr;
+            if ( info )
+               provider = info->CreateProvider();
 
-            return provider;
-        }
-
-        void compile_button_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-        {
-            CodeDomProvider^ provider = GetCurrentProvider();
-
-            // Build the source file name with the appropriate
-            // language extension.
-            String^ sourceFile = String::Concat( "TestGraph.", provider->FileExtension );
-
-            // Compile the source file into an executable output file.
-            CompilerResults^ cr = CodeDomExample::CompileCode( provider, sourceFile, "TestGraph.exe" );
-            if ( cr->Errors->Count > 0 )
+            if ( provider )
             {
-                // Display compilation errors.
-                textBox1->Text = String::Concat( "Errors encountered while building ", sourceFile, " into ", cr->PathToAssembly, ": \r\n\n" );
-                System::CodeDom::Compiler::CompilerError^ ce;
-                for ( int i = 0; i < cr->Errors->Count; i++ )
-                {
-                    ce = cr->Errors[i];
-                    textBox1->AppendText( String::Concat( ce->ToString(), "\r\n" ) );
+               // Display information about this configured provider.
+               Console::WriteLine( "Language provider:  {0}", provider->ToString() );
+               Console::WriteLine();
+               Console::WriteLine( "  Supported file extension(s):" );
+               array<String^>^extensions = info->GetExtensions();
+               for ( int i = 0; i < extensions->Length; i++ )
+                   Console::WriteLine( "    {0}", extensions[ i ] );
 
-                }
-                run_button->Enabled = false;
+               defaultExtension = provider->FileExtension;
+               if (  !defaultExtension->StartsWith( "." ) )
+                   defaultExtension = String::Concat( ".", defaultExtension );
+
+               Console::WriteLine( "  Default file extension:  {0}\n", defaultExtension );
+               Console::WriteLine( "  Supported language(s):" );
+               array<String^>^languages = info->GetLanguages();
+               for ( int i = 0; i < languages->Length; i++ )
+                   Console::WriteLine( "    {0}", languages[ i ] );
+
+               defaultLanguage = CodeDomProvider::GetLanguageFromExtension( defaultExtension );
+               Console::WriteLine(  "  Default language:        {0}", defaultLanguage );
+               Console::WriteLine();
+               
+               // Get the compiler settings for this provider.
+               CompilerParameters^ langCompilerConfig = info->CreateDefaultCompilerParameters();
+               if ( langCompilerConfig )
+               {
+                  Console::WriteLine( "  Compiler options:        {0}", langCompilerConfig->CompilerOptions );
+                  Console::WriteLine( "  Compiler warning level:  {0}", langCompilerConfig->WarningLevel.ToString() );
+               }
             }
-            else
-            {
-                textBox1->Text = String::Concat( "Source ", sourceFile, " built into ", cr->PathToAssembly, " with no errors." );
-                run_button->Enabled = true;
-            }
-        }
 
-        void run_button_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-        {
-            Process::Start( "TestGraph.exe" );
-        }
+         }
+      }
 
-    public:
-        CodeDomExampleForm()
-        {
-            this->SuspendLayout();
-
-            // Set properties for label1.
-            this->label1->Location = System::Drawing::Point( 395, 20 );
-            this->label1->Size = System::Drawing::Size( 180, 22 );
-            this->label1->Text = "Select a programming language:";
-
-            // Set properties for comboBox1.
-            this->comboBox1->Location = System::Drawing::Point( 560, 16 );
-            this->comboBox1->Size = System::Drawing::Size( 190, 23 );
-            this->comboBox1->Name = "comboBox1";
-            array<String^>^temp1 = {"CSharp","Visual Basic","JScript"};
-            this->comboBox1->Items->AddRange( temp1 );
-            this->comboBox1->Anchor = (System::Windows::Forms::AnchorStyles)(System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right | System::Windows::Forms::AnchorStyles::Top);
-            this->comboBox1->SelectedIndex = 0;
-
-            // Set properties for generate_button.
-            this->generate_button->Location = System::Drawing::Point( 8, 16 );
-            this->generate_button->Name = "generate_button";
-            this->generate_button->Size = System::Drawing::Size( 120, 23 );
-            this->generate_button->Text = "Generate Code";
-            this->generate_button->Click += gcnew System::EventHandler( this, &CodeDomExampleForm::generate_button_Click );
-
-            // Set properties for compile_button.
-            this->compile_button->Location = System::Drawing::Point( 136, 16 );
-            this->compile_button->Name = "compile_button";
-            this->compile_button->Size = System::Drawing::Size( 120, 23 );
-            this->compile_button->Text = "Compile";
-            this->compile_button->Click += gcnew System::EventHandler( this, &CodeDomExampleForm::compile_button_Click );
-
-            // Set properties for run_button.
-            this->run_button->Enabled = false;
-            this->run_button->Location = System::Drawing::Point( 264, 16 );
-            this->run_button->Name = "run_button";
-            this->run_button->Size = System::Drawing::Size( 120, 23 );
-            this->run_button->Text = "Run";
-            this->run_button->Click += gcnew System::EventHandler( this, &CodeDomExampleForm::run_button_Click );
-
-            // Set properties for textBox1.
-            this->textBox1->Anchor = (System::Windows::Forms::AnchorStyles)(System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right);
-            this->textBox1->Location = System::Drawing::Point( 8, 48 );
-            this->textBox1->Multiline = true;
-            this->textBox1->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-            this->textBox1->Name = "textBox1";
-            this->textBox1->Size = System::Drawing::Size( 744, 280 );
-            this->textBox1->Text = "";
-
-            // Set properties for the CodeDomExampleForm.
-            this->AutoScaleBaseSize = System::Drawing::Size( 5, 13 );
-            this->ClientSize = System::Drawing::Size( 768, 340 );
-            this->MinimumSize = System::Drawing::Size( 750, 340 );
-            array<System::Windows::Forms::Control^>^myControl = {this->textBox1,this->run_button,this->compile_button,this->generate_button,this->comboBox1,this->label1};
-            this->Controls->AddRange( myControl );
-            this->Name = "CodeDomExampleForm";
-            this->Text = "CodeDom Hello World Example";
-            this->ResumeLayout( false );
-        }
-
-    public:
-        ~CodeDomExampleForm()
-        {
-        }
-    };
+   };
 
 }
 
+
+// The main entry point for the application.
+
 [STAThread]
-int main()
+int main( int argc, char *argv[] )
 {
-    Application::Run( gcnew CodeDOMExample::CodeDomExampleForm );
+    CodeDomCompilerInfoSample::CompilerInfoSample::Main( Environment::GetCommandLineArgs() );
+    Console::WriteLine("\n\nPress ENTER to return");
+    Console::ReadLine();
 }

@@ -1,108 +1,31 @@
-using System;
-using System.Security.Cryptography;
-using System.Text;
-
-class RSACSPSample
-{
-
-    static void Main()
-    {
-        try
-        {
-            //Create a UnicodeEncoder to convert between byte array and string.
-            UnicodeEncoding ByteConverter = new UnicodeEncoding();
-
-            //Create byte arrays to hold original, encrypted, and decrypted data.
-            byte[] dataToEncrypt = ByteConverter.GetBytes("Data to Encrypt");
-            byte[] encryptedData;
-            byte[] decryptedData;
-
-            //Create a new instance of RSACryptoServiceProvider to generate
-            //public and private key data.
-            using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
-            {
-
-                //Pass the data to ENCRYPT, the public key information 
-                //(using RSACryptoServiceProvider.ExportParameters(false),
-                //and a boolean flag specifying no OAEP padding.
-                encryptedData = RSAEncrypt(dataToEncrypt, RSA.ExportParameters(false), false);
-
-                //Pass the data to DECRYPT, the private key information 
-                //(using RSACryptoServiceProvider.ExportParameters(true),
-                //and a boolean flag specifying no OAEP padding.
-                decryptedData = RSADecrypt(encryptedData, RSA.ExportParameters(true), false);
-
-                //Display the decrypted plaintext to the console. 
-                Console.WriteLine("Decrypted plaintext: {0}", ByteConverter.GetString(decryptedData));
-            }
-        }
-        catch (ArgumentNullException)
-        {
-            //Catch this exception in case the encryption did
-            //not succeed.
-            Console.WriteLine("Encryption failed.");
-
-        }
-    }
-
-    static public byte[] RSAEncrypt(byte[] DataToEncrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding)
-    {
-        try
-        {
-            byte[] encryptedData;
-            //Create a new instance of RSACryptoServiceProvider.
-            using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
-            {
-
-                //Import the RSA Key information. This only needs
-                //toinclude the public key information.
-                RSA.ImportParameters(RSAKeyInfo);
-
-                //Encrypt the passed byte array and specify OAEP padding.  
-                //OAEP padding is only available on Microsoft Windows XP or
-                //later.  
-                encryptedData = RSA.Encrypt(DataToEncrypt, DoOAEPPadding);
-            }
-            return encryptedData;
-        }
-        //Catch and display a CryptographicException  
-        //to the console.
-        catch (CryptographicException e)
-        {
-            Console.WriteLine(e.Message);
-
-            return null;
-        }
-
-    }
-
-    static public byte[] RSADecrypt(byte[] DataToDecrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding)
-    {
-        try
-        {
-            byte[] decryptedData;
-            //Create a new instance of RSACryptoServiceProvider.
-            using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
-            {
-                //Import the RSA Key information. This needs
-                //to include the private key information.
-                RSA.ImportParameters(RSAKeyInfo);
-
-                //Decrypt the passed byte array and specify OAEP padding.  
-                //OAEP padding is only available on Microsoft Windows XP or
-                //later.  
-                decryptedData = RSA.Decrypt(DataToDecrypt, DoOAEPPadding);
-            }
-            return decryptedData;
-        }
-        //Catch and display a CryptographicException  
-        //to the console.
-        catch (CryptographicException e)
-        {
-            Console.WriteLine(e.ToString());
-
-            return null;
-        }
-
-    }
-}
+private static void EncryptData(String inName, String outName, byte[] rijnKey, byte[] rijnIV)
+ {    
+     //Create the file streams to handle the input and output files.
+     FileStream fin = new FileStream(inName, FileMode.Open, FileAccess.Read);
+     FileStream fout = new FileStream(outName, FileMode.OpenOrCreate, FileAccess.Write);
+     fout.SetLength(0);
+       
+     //Create variables to help with read and write.
+     byte[] bin = new byte[100]; //This is intermediate storage for the encryption.
+     long rdlen = 0;              //This is the total number of bytes written.
+     long totlen = fin.Length;    //This is the total length of the input file.
+     int len;                     //This is the number of bytes to be written at a time.
+ 
+     SymmetricAlgorithm rijn = SymmetricAlgorithm.Create(); //Creates the default implementation, which is RijndaelManaged.         
+     CryptoStream encStream = new CryptoStream(fout, rijn.CreateEncryptor(rijnKey, rijnIV), CryptoStreamMode.Write);
+                
+     Console.WriteLine("Encrypting...");
+ 
+     //Read from the input file, then encrypt and write to the output file.
+     while(rdlen < totlen)
+     {
+         len = fin.Read(bin, 0, 100);
+         encStream.Write(bin, 0, len);
+         rdlen = rdlen + len;
+         Console.WriteLine("{0} bytes processed", rdlen);
+     }
+ 
+     encStream.Close();  
+     fout.Close();
+     fin.Close();                   
+ }

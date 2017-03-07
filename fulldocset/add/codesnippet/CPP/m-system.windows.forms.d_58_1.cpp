@@ -1,9 +1,11 @@
-   void CustomizeCellsInThirdColumn()
+private:
+   void GetMyFormatInfomation()
    {
-      int thirdColumn = 2;
-      DataGridViewColumn^ column = dataGridView->Columns[ thirdColumn ];
-      DataGridViewCell^ cell = gcnew DataGridViewTextBoxCell;
-      cell->Style->BackColor = Color::Wheat;
-      column->CellTemplate = cell;
+      // Creates a DataFormats.Format for the Unicode data format.
+      DataFormats::Format^ myFormat = DataFormats::GetFormat(
+         DataFormats::UnicodeText );
+      
+      // Displays the contents of myFormat.
+      textBox1->Text = String::Format( "ID value: {0}\nFormat name: {1}",
+         myFormat->Id, myFormat->Name );
    }
-

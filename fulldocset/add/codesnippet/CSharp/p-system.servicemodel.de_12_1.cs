@@ -1,36 +1,5 @@
-using System;
-using System.ServiceModel;
-
-[ServiceContract]
-interface ICalculatorService
-{
-  [OperationBehavior()]
-  int Add(int a, int b);  
-
-  [OperationContract]
-  int Subtract(int a, int b);
-}
-
-[DeliveryRequirementsAttribute(
-  QueuedDeliveryRequirements=QueuedDeliveryRequirementsMode.NotAllowed,
-  RequireOrderedDelivery=true
-)]
-class CalculatorService: ICalculatorService
-{
-  public int Add(int a, int b)
-  {
-    Console.WriteLine("Add called.");
-    return a + b; 
-  }
-  
-  public int Subtract(int a, int b)
-  {
-    Console.WriteLine("Subtract called.");
-    return a - b;
-  }
-  
-  public int Multiply(int a, int b)
-  {
-    return a * b;
-  }
-}
+                ServiceEndpoint endpoint;
+                endpoint = serviceHost.AddServiceEndpoint(typeof(IQueueCalculator), new NetMsmqBinding(),"net.msmq://localhost/private/ServiceModelSamples");
+                TransactedBatchingBehavior batchBehavior = new TransactedBatchingBehavior(10);
+                batchBehavior.MaxBatchSize = 100;
+                endpoint.Behaviors.Add(new TransactedBatchingBehavior(10));

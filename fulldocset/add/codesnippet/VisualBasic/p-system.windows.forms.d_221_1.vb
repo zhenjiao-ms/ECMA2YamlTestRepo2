@@ -1,34 +1,48 @@
-    ' Draws column headers.
-    Private Sub listView1_DrawColumnHeader(ByVal sender As Object, _
-        ByVal e As DrawListViewColumnHeaderEventArgs) _
-        Handles listView1.DrawColumnHeader
+    Private Sub SortButton_Click(ByVal sender As Object, _
+        ByVal e As EventArgs) Handles sortButton.Click
 
-        Dim sf As New StringFormat()
-        Try
+        ' Check which column is selected, otherwise set NewColumn to Nothing.
+        Dim newColumn As DataGridViewColumn
+        If dataGridView1.Columns.GetColumnCount(DataGridViewElementStates _
+            .Selected) = 1 Then
+            newColumn = dataGridView1.SelectedColumns(0)
+        Else
+            newColumn = Nothing
+        End If
 
-            ' Store the column text alignment, letting it default
-            ' to Left if it has not been set to Center or Right.
-            Select Case e.Header.TextAlign
-                Case HorizontalAlignment.Center
-                    sf.Alignment = StringAlignment.Center
-                Case HorizontalAlignment.Right
-                    sf.Alignment = StringAlignment.Far
-            End Select
+        Dim oldColumn As DataGridViewColumn = dataGridView1.SortedColumn
+        Dim direction As ListSortDirection
 
-            ' Draw the standard header background.
-            e.DrawBackground()
+        ' If oldColumn is null, then the DataGridView is not currently sorted.
+        If oldColumn IsNot Nothing Then
 
-            ' Draw the header text.
-            Dim headerFont As New Font("Helvetica", 10, FontStyle.Bold)
-            Try
-                e.Graphics.DrawString(e.Header.Text, headerFont, _
-                    Brushes.Black, e.Bounds, sf)
-            Finally
-                headerFont.Dispose()
-            End Try
+            ' Sort the same column again, reversing the SortOrder.
+            If oldColumn Is newColumn AndAlso dataGridView1.SortOrder = _
+                SortOrder.Ascending Then
+                direction = ListSortDirection.Descending
+            Else
 
-        Finally
-            sf.Dispose()
-        End Try
+                ' Sort a new column and remove the old SortGlyph.
+                direction = ListSortDirection.Ascending
+                oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None
+            End If
+        Else
+            direction = ListSortDirection.Ascending
+        End If
+
+
+        ' If no column has been selected, display an error dialog  box.
+        If newColumn Is Nothing Then
+            MessageBox.Show("Select a single column and try again.", _
+                "Error: Invalid Selection", MessageBoxButtons.OK, _
+                MessageBoxIcon.Error)
+        Else
+            dataGridView1.Sort(newColumn, direction)
+            If direction = ListSortDirection.Ascending Then
+                newColumn.HeaderCell.SortGlyphDirection = SortOrder.Ascending
+            Else
+                newColumn.HeaderCell.SortGlyphDirection = SortOrder.Descending
+            End If
+        End If
 
     End Sub

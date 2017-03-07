@@ -1,32 +1,18 @@
-Imports System
 Imports System.IO
-Imports System.Text
 
-Public Class Test
+Module Module1
 
-    Public Shared Sub Main()
-        Dim path As String = "c:\temp\MyTest.txt"
-
-        Try
-            If File.Exists(path) Then
-                File.Delete(path)
-            End If
-
-            Dim sw As StreamWriter = New StreamWriter(path)
-            sw.WriteLine("This")
-            sw.WriteLine("is some text")
-            sw.WriteLine("to test")
-            sw.WriteLine("Reading")
-            sw.Close()
-
-            Dim sr As StreamReader = New StreamReader(path)
-
-            Do While sr.Peek() > -1
-                Console.WriteLine(sr.ReadLine())
-            Loop
-            sr.Close()
-        Catch e As Exception
-            Console.WriteLine("The process failed: {0}", e.ToString())
-        End Try
+    Sub Main()
+        ReadCharacters()
     End Sub
-End Class
+
+    Async Sub ReadCharacters()
+        Dim result As String
+
+        Using reader As StreamReader = File.OpenText("existingfile.txt")
+            Console.WriteLine("Opened file.")
+            result = Await reader.ReadToEndAsync()
+            Console.WriteLine("Contains: " + result)
+        End Using
+    End Sub
+End Module

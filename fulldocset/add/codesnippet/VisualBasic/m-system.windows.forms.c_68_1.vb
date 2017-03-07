@@ -1,9 +1,15 @@
-   Delegate Sub InvokeDelegate()
-   
-   Private Sub Invoke_Click(sender As Object, e As EventArgs)
-      myTextBox.BeginInvoke(New InvokeDelegate(AddressOf InvokeMethod))
-   End Sub 'Invoke_Click
-   
-   Public Sub InvokeMethod()
-      myTextBox.Text = "Executed the given delegate"
-   End Sub 'InvokeMethod
+    ' Demonstrates SetAudio, ContainsAudio, and GetAudioStream.
+    Public Function SwapClipboardAudio( _
+        ByVal replacementAudioStream As System.IO.Stream) _
+        As System.IO.Stream
+
+        Dim returnAudioStream As System.IO.Stream = Nothing
+
+        If (Clipboard.ContainsAudio()) Then
+            returnAudioStream = Clipboard.GetAudioStream()
+            Clipboard.SetAudio(replacementAudioStream)
+        End If
+
+        Return returnAudioStream
+
+    End Function

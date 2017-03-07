@@ -1,38 +1,30 @@
-    Private Sub selectedCellsButton_Click( _
-        ByVal sender As Object, ByVal e As System.EventArgs) _
-        Handles selectedCellsButton.Click
+    ' Draws the backgrounds for entire ListView items.
+    Private Sub listView1_DrawItem(ByVal sender As Object, _
+        ByVal e As DrawListViewItemEventArgs) _
+        Handles listView1.DrawItem
 
-        Dim selectedCellCount As Integer = _
-            dataGridView1.GetCellCount(DataGridViewElementStates.Selected)
+        If Not (e.State And ListViewItemStates.Selected) = 0 Then
 
-        If selectedCellCount > 0 Then
+            ' Draw the background for a selected item.
+            e.Graphics.FillRectangle(Brushes.Maroon, e.Bounds)
+            e.DrawFocusRectangle()
 
-            If dataGridView1.AreAllCellsSelected(True) Then
+        Else
 
-                MessageBox.Show("All cells are selected", "Selected Cells")
+            ' Draw the background for an unselected item.
+            Dim brush As New LinearGradientBrush(e.Bounds, Color.Orange, _
+                Color.Maroon, LinearGradientMode.Horizontal)
+            Try
+                e.Graphics.FillRectangle(brush, e.Bounds)
+            Finally
+                brush.Dispose()
+            End Try
 
-            Else
+        End If
 
-                Dim sb As New System.Text.StringBuilder()
-
-                Dim i As Integer
-                For i = 0 To selectedCellCount - 1
-
-                    sb.Append("Row: ")
-                    sb.Append(dataGridView1.SelectedCells(i).RowIndex _
-                        .ToString())
-                    sb.Append(", Column: ")
-                    sb.Append(dataGridView1.SelectedCells(i).ColumnIndex _
-                        .ToString())
-                    sb.Append(Environment.NewLine)
-
-                Next i
-
-                sb.Append("Total: " + selectedCellCount.ToString())
-                MessageBox.Show(sb.ToString(), "Selected Cells")
-
-            End If
-
+        ' Draw the item text for views other than the Details view.
+        If Not Me.listView1.View = View.Details Then
+            e.DrawText()
         End If
 
     End Sub

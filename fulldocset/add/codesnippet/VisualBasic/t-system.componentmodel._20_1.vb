@@ -1,17 +1,15 @@
-Imports System
-Imports System.Web.DynamicData
-Imports System.ComponentModel.DataAnnotations
+        Public Sub LinkDesignerTransactionCloseEvent(ByVal host As IDesignerHost)
+            ' Registers an event handler for the designer TransactionClosing 
+            ' and TransactionClosed events.
+            AddHandler host.TransactionClosing, AddressOf Me.OnTransactionClose
+            AddHandler host.TransactionClosed, AddressOf Me.OnTransactionClose
+        End Sub
 
-<MetadataType(GetType(CustomerMetadata))> _
-Partial Public Class Customer
-
-End Class
-
-Public Class CustomerMetadata
-
-    ' Apply RequitedAttribute.
-    <Required(ErrorMessage:="Title is required.")> _
-    Public Title As Object
-
-   
-End Class
+        Private Sub OnTransactionClose(ByVal sender As Object, ByVal e As DesignerTransactionCloseEventArgs)
+            ' Displays transaction close information on the console.           
+            If e.TransactionCommitted Then
+                Console.WriteLine("Transaction has been committed.")
+            Else
+                Console.WriteLine("Transaction has not yet been committed.")
+            End If
+        End Sub

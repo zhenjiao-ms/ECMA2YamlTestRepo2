@@ -1,73 +1,83 @@
-' Example of the Decimal.Compare and static Decimal.Equals methods.
-Imports System
-Imports Microsoft.VisualBasic
+Module Example
+   Dim value As Decimal = 112d
+   
+   Public Sub Main()
+      Dim byte1 As Byte = 112
+      Console.WriteLine("value = byte1: {0,17}", value.Equals(byte1))
+      TestObjectForEquality(byte1)
+      
+      Dim short1 As Short = 112
+      Console.WriteLine("value = short1: {0,17}", value.Equals(short1))
+      TestObjectForEquality(short1)
 
-Module DecCompareEqualsDemo
-    
-    Const dataFmt As String = "{0,-45}{1}"
+      Dim int1 As Integer = 112
+      Console.WriteLine("value = int1: {0,19}", value.Equals(int1))
+      TestObjectForEquality(int1)
 
-    ' Compare Decimal parameters, and display them with the results.
-    Sub CompareDecimals( Left as Decimal, Right as Decimal, _
-        RightText as String )
+      Dim long1 As Long = 112
+      Console.WriteLine("value = long1: {0,18}", value.Equals(long1))
+      TestObjectForEquality(long1)
 
-        Console.WriteLine( )
-        Console.WriteLine( dataFmt, "Right: " & RightText, Right )
-        Console.WriteLine( dataFmt, "Decimal.Equals( Left, Right )", _
-            Decimal.Equals( Left, Right ) )
-        Console.WriteLine( dataFmt, _
-            "Decimal.Compare( Left, Right )", _
-            Decimal.Compare( Left, Right ) )
-    End Sub
+      Dim sbyte1 As SByte = 112
+      Console.WriteLine("value = sbyte1: {0,17}", value.Equals(sbyte1))
+      TestObjectForEquality(sbyte1)
+      
+      Dim ushort1 As UShort = 112
+      Console.WriteLine("value = ushort1: {0,17}", value.Equals(ushort1))
+      TestObjectForEquality(ushort1)
 
-    Sub Main( )
-        Console.WriteLine( _
-            "This example of the Decimal.Equals( Decimal, " & _
-            "Decimal ) and " & vbCrLf & "Decimal.Compare( " & _
-            "Decimal, Decimal ) methods generates the " & vbCrLf & _
-            "following output. It creates several different " & _
-            "Decimal " & vbCrLf & "values and compares them " & _
-            "with the following reference value." & vbCrLf )
+      Dim uint1 As UInteger = 112
+      Console.WriteLine("value = uint1: {0,19}", value.Equals(uint1))
+      TestObjectForEquality(uint1)
 
-        ' Create a reference Decimal value.
-        Dim Left as New Decimal( 123.456 )
+      Dim ulong1 As ULong = 112
+      Console.WriteLine("value = ulong1: {0,18}", value.Equals(ulong1))
+      TestObjectForEquality(ulong1)
 
-        Console.WriteLine( dataFmt, "Left: Decimal( 123.456 )", Left )
+      Dim sng1 As Single = 112
+      Console.WriteLine("value = sng1: {0,21}", value.Equals(sng1))
+      TestObjectForEquality(sng1)
 
-        ' Create Decimal values to compare with the reference.
-        CompareDecimals( Left, New Decimal( 1.2345600E+2 ), _
-            "Decimal( 1.2345600E+2 )" )
-        CompareDecimals( Left, 123.4561D, "123.4561D" )
-        CompareDecimals( Left, 123.4559D, "123.4559D" )
-        CompareDecimals( Left, 123.456000D, "123.456000D" )
-        CompareDecimals( Left, _
-            New Decimal( 123456000, 0, 0, false, 6 ), _
-            "Decimal( 123456000, 0, 0, false, 6 )" )
-    End Sub 
-End Module 
-
-' This example of the Decimal.Equals( Decimal, Decimal ) and
-' Decimal.Compare( Decimal, Decimal ) methods generates the
-' following output. It creates several different Decimal
-' values and compares them with the following reference value.
-' 
-' Left: Decimal( 123.456 )                     123.456
-' 
-' Right: Decimal( 1.2345600E+2 )               123.456
-' Decimal.Equals( Left, Right )                True
-' Decimal.Compare( Left, Right )               0
-' 
-' Right: 123.4561D                             123.4561
-' Decimal.Equals( Left, Right )                False
-' Decimal.Compare( Left, Right )               -1
-' 
-' Right: 123.4559D                             123.4559
-' Decimal.Equals( Left, Right )                False
-' Decimal.Compare( Left, Right )               1
-' 
-' Right: 123.456000D                           123.456
-' Decimal.Equals( Left, Right )                True
-' Decimal.Compare( Left, Right )               0
-' 
-' Right: Decimal( 123456000, 0, 0, false, 6 )  123.456000
-' Decimal.Equals( Left, Right )                True
-' Decimal.Compare( Left, Right )               0
+      Dim dbl1 As Double = 112
+      Console.WriteLine("value = dbl1: {0,21}", value.Equals(dbl1))
+      TestObjectForEquality(dbl1)
+   End Sub
+   
+   Private Sub TestObjectForEquality(obj As Object)
+      Console.WriteLine("{0} ({1}) = {2} ({3}): {4}",
+                        value, value.GetType().Name,
+                        obj, obj.GetType().Name,
+                        value.Equals(obj))
+      Console.WriteLine()
+   End Sub
+End Module
+' The example displays the following output:
+'       value = byte1:             True
+'       112 (Double) = 112 (Byte): False
+'
+'       value = short1:             True
+'       112 (Double) = 112 (Int16): False
+'
+'       value = int1:               True
+'       112 (Double) = 112 (Int32): False
+'
+'       value = long1:              True
+'       112 (Double) = 112 (Int64): False
+'
+'       value = sbyte1:             True
+'       112 (Double) = 112 (SByte): False
+'
+'       value = ushort1:             True
+'       112 (Double) = 112 (UInt16): False
+'
+'       value = uint1:               True
+'       112 (Double) = 112 (UInt32): False
+'
+'       value = ulong1:              True
+'       112 (Double) = 112 (UInt64): False
+'
+'       value = dec1:                 True
+'       112 (Double) = 112 (Decimal): False
+'
+'       value = sng1:                True
+'       112 (Double) = 112 (Single): False

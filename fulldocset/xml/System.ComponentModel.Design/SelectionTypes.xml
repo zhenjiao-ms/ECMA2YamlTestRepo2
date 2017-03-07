@@ -19,8 +19,17 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Defines identifiers that indicate the type of a selection.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Components of a designer document can be selected using the <xref:System.ComponentModel.Design.ISelectionService.SetSelectedComponents%2A> method of the <xref:System.ComponentModel.Design.ISelectionService>. Some types of actions can operate on a selected component or group of selected components. The <xref:System.ComponentModel.Design.ISelectionService> keeps track of the selection type of the current selection. These selection type identifiers indicate whether the selection was completed using a single click, a mouse down or mouse up selection, whether the selection should replace the previous selection, or use the default selection mode.  
+  
+ Use the SelectionTypes enumeration to specify the type of a selection when setting a new selection using the <xref:System.ComponentModel.Design.ISelectionService.SetSelectedComponents%2A> method.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Add">
@@ -37,7 +46,7 @@
         <ReturnType>System.ComponentModel.Design.SelectionTypes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Represents an add selection that adds the selected components to the current selection, maintaining the current set of selected components.</summary>
       </Docs>
     </Member>
     <Member MemberName="Auto">
@@ -54,7 +63,7 @@
         <ReturnType>System.ComponentModel.Design.SelectionTypes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Represents a regular selection. The selection service responds to the CTRL and SHIFT keys to support adding or removing components to or from the selection.</summary>
       </Docs>
     </Member>
     <Member MemberName="Click">
@@ -76,7 +85,7 @@
         <ReturnType>System.ComponentModel.Design.SelectionTypes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Represents a selection that occurs when a user clicks a component. If the newly selected component is already selected, it is promoted to be the primary selected component rather than being canceled.</summary>
       </Docs>
     </Member>
     <Member MemberName="MouseDown">
@@ -98,7 +107,7 @@
         <ReturnType>System.ComponentModel.Design.SelectionTypes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Represents a selection that occurs when the user presses on the mouse button while the mouse pointer is over a component. If the component under the pointer is already selected, it is promoted to become the primary selected component rather than being canceled.</summary>
       </Docs>
     </Member>
     <Member MemberName="MouseUp">
@@ -120,7 +129,7 @@
         <ReturnType>System.ComponentModel.Design.SelectionTypes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Represents a selection that occurs when the user releases the mouse button immediately after a component has been selected. If the newly selected component is already selected, it is promoted to be the primary selected component rather than being canceled.</summary>
       </Docs>
     </Member>
     <Member MemberName="Normal">
@@ -142,7 +151,7 @@
         <ReturnType>System.ComponentModel.Design.SelectionTypes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Represents a regular selection. The selection service responds to the CTRL and SHIFT keys to support adding or removing components to or from the selection.</summary>
       </Docs>
     </Member>
     <Member MemberName="Primary">
@@ -159,7 +168,7 @@
         <ReturnType>System.ComponentModel.Design.SelectionTypes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Represents a primary selection that occurs when a user clicks on a component. If a component in the selection list is already selected, the component is promoted to be the primary selection.</summary>
       </Docs>
     </Member>
     <Member MemberName="Remove">
@@ -176,7 +185,7 @@
         <ReturnType>System.ComponentModel.Design.SelectionTypes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Represents a remove selection that removes the selected components from the current selection, maintaining the current set of selected components.</summary>
       </Docs>
     </Member>
     <Member MemberName="Replace">
@@ -193,7 +202,7 @@
         <ReturnType>System.ComponentModel.Design.SelectionTypes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Represents a selection that occurs when the content of a selection is replaced. The selection service replaces the current selection with the replacement.</summary>
       </Docs>
     </Member>
     <Member MemberName="Toggle">
@@ -210,7 +219,7 @@
         <ReturnType>System.ComponentModel.Design.SelectionTypes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Represents a toggle selection that switches between the current selection and the provided selection. If a component is already selected and is passed into <see cref="System.ComponentModel.Design.ISelectionService.SetSelectedComponents%2A" /> with a selection type of Toggle, the component selection will be canceled.</summary>
       </Docs>
     </Member>
     <Member MemberName="Valid">
@@ -232,7 +241,7 @@
         <ReturnType>System.ComponentModel.Design.SelectionTypes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the valid selection types as Normal, Replace, MouseDown, MouseUp, or Click.</summary>
       </Docs>
     </Member>
   </Members>

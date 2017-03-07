@@ -1,58 +1,98 @@
-<%@ Page Language="VB" AutoEventWireup="True" %>
+
+<%@ Page language="VB" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>Calendar DayRender Example</title>
 <script runat="server">
-   
-      Sub DayRender(sender as Object, e As DayRenderEventArgs) 
 
-         ' Change the background color of the days in the month
-         ' to yellow.
-         If (Not e.Day.IsOtherMonth) And (Not e.Day.IsWeekend) Then
+  Sub ContactsGridView_RowCommand(ByVal sender As Object, ByVal e As GridViewCommandEventArgs)
+
+    ' If multiple buttons are used in a GridView control, use the
+    ' CommandName property to determine which button was clicked.
+    If e.CommandName = "Add" Then
+    
+      ' Convert the row index stored in the CommandArgument
+      ' property to an Integer.
+      Dim index As Integer = Convert.ToInt32(e.CommandArgument)
+            
+      ' Retrieve the row that contains the button clicked 
+      ' by the user from the Rows collection.
+      Dim row As GridViewRow = ContactsGridView.Rows(index)
+            
+      ' Create a new ListItem object for the contact in the row.     
+      Dim item As New ListItem()
+      item.Text = Server.HtmlDecode(row.Cells(2).Text) & " " & _
+        Server.HtmlDecode(row.Cells(3).Text)
+            
+      ' If the contact is not already in the ListBox, add the ListItem 
+      ' object to the Items collection of the ListBox control. 
+      If Not ContactsListBox.Items.Contains(item) Then
+      
+        ContactsListBox.Items.Add(item)
         
-            e.Cell.BackColor=System.Drawing.Color.Yellow
-         
-         End If
+      End If
+      
+    End If
+    
+  End Sub
+    
+</script>
 
-         ' Add custom text to cell in the Calendar control.
-         If e.Day.Date.Day = 18 Then
-         
-            e.Cell.Controls.Add(New LiteralControl("<br />Holiday"))
-         
-         End If
-
-      End Sub
-
-      Sub Page_Load(sender As Object, e As EventArgs)
-
-         ' Manually register the event-handling method for the DayRender  
-         ' event of the Calendar control.
-         AddHandler Calendar1.DayRender, AddressOf DayRender
-
-      End Sub
-
-   </script>
- 
+<html xmlns="http://www.w3.org/1999/xhtml" >
+  <head id="Head1" runat="server">
+    <title>GridView RowCommand Example</title>
 </head>
- 
 <body>
- 
-   <form id="form1" runat="server">
+    <form id="form1" runat="server">
 
-      <h3>Calendar DayRender Example</h3>
- 
-      <asp:Calendar id="Calendar1" 
-                    runat="server">
+      <h3>GridView RowCommand Example</h3>
 
-         <WeekendDayStyle BackColor="gray">
-         </WeekendDayStyle>
+      <table width="100%">
+        <tr>
+          <td style="width:50%">
 
-      </asp:Calendar>
-                   
-   </form>
-          
-</body>
+            <asp:gridview id="ContactsGridView" 
+              datasourceid="ContactsSource"
+              allowpaging="true" 
+              autogeneratecolumns="false"
+              onrowcommand="ContactsGridView_RowCommand"
+              runat="server">
+
+              <columns>
+                <asp:buttonfield buttontype="Link" 
+                  commandname="Add" 
+                  text="Add"/>
+                <asp:boundfield datafield="ContactID" 
+                  headertext="Contact ID"/>
+                <asp:boundfield datafield="FirstName" 
+                  headertext="First Name"/> 
+                <asp:boundfield datafield="LastName" 
+                  headertext="Last Name"/>
+              </columns>
+
+            </asp:gridview>
+
+          </td>
+
+          <td style="vertical-align:top; width:50%">
+
+            Contacts: <br/>
+            <asp:listbox id="ContactsListBox"
+              runat="server" Height="200px" Width="200px"/>
+
+          </td>
+        </tr>
+      </table>
+
+      <!-- This example uses Microsoft SQL Server and connects    -->
+      <!-- to the AdventureWorks sample database. Use an ASP.NET  -->
+      <!-- expression to retrieve the connection string value     -->
+      <!-- from the Web.config file.                              -->
+      <asp:sqldatasource id="ContactsSource"
+        selectcommand="Select [ContactID], [FirstName], [LastName] From Person.Contact"
+        connectionstring="<%$ ConnectionStrings:AdventureWorks_DataConnectionString%>" 
+        runat="server"/>
+
+    </form>
+  </body>
 </html>
-   

@@ -1,161 +1,106 @@
+#using <System.dll>
+
 using namespace System;
-using namespace System::Security;
 using namespace System::Security::Cryptography;
 
-ref class SignatureDescriptionImpl
+namespace Contoso
 {
-public:
-   [STAThread]
-   static void Main()
-   {
-      // Create a digital signature based on RSA encryption.
-      SignatureDescription^ rsaSignature = CreateRSAPKCS1Signature();
-      ShowProperties( rsaSignature );
-      
-      // Create a digital signature based on DSA encryption.
-      SignatureDescription^ dsaSignature = CreateDSASignature();
-      ShowProperties( dsaSignature );
-      
-      // Create a HashAlgorithm using the digest algorithm of the signature.
-      HashAlgorithm^ hashAlgorithm = dsaSignature->CreateDigest();
+    ref class MaskGenerator: MaskGenerationMethod
+    {
+    private:
+        String^ hashNameValue;
 
-      Console::WriteLine( L"\nHash algorithm for the DigestAlgorithm property:"
-         L" {0}", hashAlgorithm );
-      
-      // Create an AsymmetricSignatureFormatter instance using the DSA key.
-      DSA^ dsa = DSA::Create();
-      AsymmetricSignatureFormatter^ asymmetricFormatter = CreateDSAFormatter( dsa );
-      
-      // Create an AsymmetricSignatureDeformatter instance using the
-      // DSA key.
-      AsymmetricSignatureDeformatter^ asymmetricDeformatter =
-         CreateDSADeformatter( dsa );
-      Console::WriteLine( L"This sample completed successfully; "
-         L"press Enter to exit." );
-      Console::ReadLine();
-   }
+    public:
+        // Initialize a mask to encrypt using the SHA1 algorithm.
+        MaskGenerator()
+        {
+            hashNameValue = "SHA1";
+        }
 
-private:
-   // Create a SignatureDescription for RSA encryption.
-   static SignatureDescription^ CreateRSAPKCS1Signature()
-   {
-      SignatureDescription^ signatureDescription = gcnew SignatureDescription;
+        // Create a mask with the specified seed.
+        virtual array<Byte>^ GenerateMask(array<Byte>^ seed, int maskLength) override
+        {
+            HashAlgorithm^ hash;
+            array<Byte>^ rgbCounter = gcnew array<Byte>(4);
+            array<Byte>^ targetRgb = gcnew array<Byte>(maskLength);
+            UInt32 counter = 0;
+            for (int inc = 0; inc < targetRgb->Length; )
+            {
+                ConvertIntToByteArray(counter++, rgbCounter);
+                hash = (HashAlgorithm^)CryptoConfig::CreateFromName(
+                    hashNameValue);
+                array<Byte>^ temp = gcnew array<Byte>(
+                    4 + seed->Length);
+                Buffer::BlockCopy(rgbCounter, 0, temp, 0, 4);
+                Buffer::BlockCopy(seed, 0, temp, 4, seed->Length);
+                hash->ComputeHash(temp);
+                if (targetRgb->Length - inc > hash->HashSize / 8)
+                {
+                    Buffer::BlockCopy(hash->Hash, 0, targetRgb, inc,
+                        hash->Hash->Length);
+                }
+                else
+                {
+                    Buffer::BlockCopy(hash->Hash, 0, targetRgb, inc,
+                        targetRgb->Length - inc);
+                }
 
-      // Set the key algorithm property for RSA encryption.
-      signatureDescription->KeyAlgorithm = L"System.Security.Cryptography.RSACryptoServiceProvider";
+                inc += hash->Hash->Length;
+            }
+            return targetRgb;
+        }
 
-      // Set the digest algorithm for RSA encryption using the
-      // SHA1 provider.
-      signatureDescription->DigestAlgorithm = L"System.Security.Cryptography.SHA1CryptoServiceProvider";
+    private:
+        // Convert the specified integer to the byte array.
+        void ConvertIntToByteArray(UInt32 source,
+            array<Byte>^ targetBytes)
+        {
+            UInt32 remainder;
+            int inc = 0;
 
-      // Set the formatter algorithm with the RSAPKCS1 formatter.
-      signatureDescription->FormatterAlgorithm = L"System.Security.Cryptography.RSAPKCS1SignatureFormatter";
+            // Clear the array prior to filling it.
+            Array::Clear(targetBytes, 0, targetBytes->Length);
+            while (source > 0)
+            {
+                remainder = source % 256;
+                targetBytes[ 3 - inc ] = (Byte)remainder;
+                source = (source - remainder) / 256;
+                inc++;
+            }
+        }
+    };
 
-      // Set the formatter algorithm with the RSAPKCS1 deformatter.
-      signatureDescription->DeformatterAlgorithm = L"System.Security.Cryptography.RSAPKCS1SignatureDeformatter";
+    // This class demonstrates how to create the MaskGenerator class 
+    // and call its GenerateMask member.
+    ref class MaskGeneratorImpl
+    {
+    public:
+        void static Work()
+        {
+            array<Byte>^ seed = gcnew array<Byte>(4){
+                0x01,0x02,0x03,0x04};
+            int length = 16;
+            MaskGenerator^ maskGenerator = gcnew MaskGenerator;
+            array<Byte>^ mask = maskGenerator->GenerateMask(seed,
+                length);
+            Console::WriteLine("Generated the following mask:");
+            Console::WriteLine(System::Text::Encoding::
+                ASCII::get()->GetString(mask));
+            Console::WriteLine("This sample completed successfully;"
+                " press Enter to exit.");
+            Console::ReadLine();
+        }
+    };
+}
 
-      return signatureDescription;
-   }
-
-   // Create a SignatureDescription using a constructed SecurityElement for
-   // DSA encryption.
-   static SignatureDescription^ CreateDSASignature()
-   {
-      SecurityElement^ securityElement = gcnew SecurityElement( L"DSASignature" );
-      // Create new security elements for the four algorithms.
-      securityElement->AddChild( gcnew SecurityElement(
-         L"Key",L"System.Security.Cryptography.DSACryptoServiceProvider" ) );
-      securityElement->AddChild( gcnew SecurityElement(
-         L"Digest",L"System.Security.Cryptography.SHA1CryptoServiceProvider" ) );
-      securityElement->AddChild( gcnew SecurityElement(
-         L"Formatter",L"System.Security.Cryptography.DSASignatureFormatter" ) );
-      securityElement->AddChild( gcnew SecurityElement(
-         L"Deformatter",L"System.Security.Cryptography.DSASignatureDeformatter" ) );
-      SignatureDescription^ signatureDescription =
-         gcnew SignatureDescription( securityElement );
-
-      return signatureDescription;
-   }
-
-   // Create a signature formatter for DSA encryption.
-   static AsymmetricSignatureFormatter^ CreateDSAFormatter( DSA^ dsa )
-   {
-      // Create a DSA signature formatter for encryption.
-      SignatureDescription^ signatureDescription =
-         gcnew SignatureDescription;
-      signatureDescription->FormatterAlgorithm =
-         L"System.Security.Cryptography.DSASignatureFormatter";
-      AsymmetricSignatureFormatter^ asymmetricFormatter =
-         signatureDescription->CreateFormatter( dsa );
-
-      Console::WriteLine( L"\nCreated formatter : {0}",
-         asymmetricFormatter );
-      return asymmetricFormatter;
-   }
-
-   // Create a signature deformatter for DSA decryption.
-   static AsymmetricSignatureDeformatter^ CreateDSADeformatter( DSA^ dsa )
-   {
-      // Create a DSA signature deformatter to verify the signature.
-      SignatureDescription^ signatureDescription =
-         gcnew SignatureDescription;
-      signatureDescription->DeformatterAlgorithm =
-         L"System.Security.Cryptography.DSASignatureDeformatter";
-      AsymmetricSignatureDeformatter^ asymmetricDeformatter =
-         signatureDescription->CreateDeformatter( dsa );
-
-      Console::WriteLine( L"\nCreated deformatter : {0}",
-         asymmetricDeformatter );
-      return asymmetricDeformatter;
-   }
-
-   // Display to the console the properties of the specified
-   // SignatureDescription.
-   static void ShowProperties( SignatureDescription^ signatureDescription )
-   {
-      // Retrieve the class path for the specified SignatureDescription.
-      String^ classDescription = signatureDescription->ToString();
-
-      String^ deformatterAlgorithm = signatureDescription->DeformatterAlgorithm;
-      String^ formatterAlgorithm = signatureDescription->FormatterAlgorithm;
-      String^ digestAlgorithm = signatureDescription->DigestAlgorithm;
-      String^ keyAlgorithm = signatureDescription->KeyAlgorithm;
-      Console::WriteLine( L"\n** {0} **", classDescription );
-      Console::WriteLine( L"DeformatterAlgorithm : {0}", deformatterAlgorithm );
-      Console::WriteLine( L"FormatterAlgorithm : {0}", formatterAlgorithm );
-      Console::WriteLine( L"DigestAlgorithm : {0}", digestAlgorithm );
-      Console::WriteLine( L"KeyAlgorithm : {0}", keyAlgorithm );
-   }
-};
-
-int main()
+void main()
 {
-   SignatureDescriptionImpl::Main();
+    Contoso::MaskGeneratorImpl::Work();
 }
 
 //
 // This sample produces the following output:
 //
-// ** System.Security.Cryptography.SignatureDescription **
-// DeformatterAlgorithm : System.Security.Cryptography.
-// RSAPKCS1SignatureDeformatter
-//
-// FormatterAlgorithm : System.Security.Cryptography.
-// RSAPKCS1SignatureFormatter
-// DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
-// KeyAlgorithm : System.Security.Cryptography.RSACryptoServiceProvider
-//
-// ** System.Security.Cryptography.SignatureDescription **
-// DeformatterAlgorithm : System.Security.Cryptography.DSASignatureDeformatter
-// FormatterAlgorithm : System.Security.Cryptography.DSASignatureFormatter
-// DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
-// KeyAlgorithm : System.Security.Cryptography.DSACryptoServiceProvider
-//
-// Hash algorithm for the DigestAlgorithm property:
-// System.Security.Cryptography.SH
-// A1CryptoServiceProvider
-//
-// Created formatter : System.Security.Cryptography.DSASignatureFormatter
-//
-// Created deformatter : System.Security.Cryptography.DSASignatureDeformatter
+// Generated the following mask:
+// ?"TFd(?~OtO?
 // This sample completed successfully; press Enter to exit.

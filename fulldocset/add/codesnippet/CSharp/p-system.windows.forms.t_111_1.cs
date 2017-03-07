@@ -1,12 +1,14 @@
-public void ViewMyTextBoxContents()
- {
-    // Create a string array and store the contents of the Lines property.
-    string[] tempArray = textBox1.Lines;
- 
-    // Loop through the array and send the contents of the array to debug window.
-    for(int counter=0; counter < tempArray.Length;counter++)
-    {
-       System.Diagnostics.Debug.WriteLine(tempArray[counter]);
-    }
- }
- 
+private void button1_Click(object sender, EventArgs e)
+{
+   // If neither TreeNodeCollection is read-only, move the 
+   // selected node from treeView1 to treeView2.
+   if(!treeView1.Nodes.IsReadOnly && !treeView2.Nodes.IsReadOnly)
+   {
+      if(treeView1.SelectedNode != null)
+      {
+         TreeNode tn = treeView1.SelectedNode;
+         treeView1.Nodes.Remove(tn);
+         treeView2.Nodes.Insert(treeView2.Nodes.Count, tn);
+      }
+   }
+}

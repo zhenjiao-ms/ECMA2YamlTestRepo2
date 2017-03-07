@@ -1,16 +1,6 @@
-        [Category("Data")]
-        [Description("Indicates the source of data for the control.")]
-        [RefreshProperties(RefreshProperties.Repaint)]
-        [AttributeProvider(typeof(IListSource))]
-        public object DataSource
-        {
-            get
+            // Push ten items on to the stack and output the value of each.
+            for( int number = 0; number < 10; number ++ )
             {
-                return this.dataGridView1.DataSource;
+                Console.WriteLine( "Value pushed to stack: "+number.ToString() );
+                stack.Push( number );
             }
-
-            set
-            {
-                this.dataGridView1.DataSource = value;
-            }
-        }

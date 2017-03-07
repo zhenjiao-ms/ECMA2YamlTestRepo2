@@ -5,22 +5,45 @@
 <script runat="server">
 
 Dim rolesArray() As String
+Dim users As MembershipUserCollection
 
 Public Sub Page_Load()
+
+  Msg.Text = ""
+
+  Try
+    If Not Roles.IsUserInRole(User.Identity.Name, "Administrators") Then
+      Msg.Text = "You are not authorized to view user roles."
+      UsersListBox.Visible = False
+      Return
+    End If
+  Catch e As HttpException
+    Msg.Text = "There is no current logged on user. Role membership cannot be verified."
+    Return
+  End Try
+
+
   If Not IsPostBack Then
+    ' Bind users to ListBox.
+
+    users = Membership.GetAllUsers()
+    UsersListBox.DataSource = users
+    UsersListBox.DataBind()
+  End If
+
+
+  ' If a user is selected, show the roles for the selected user.
+
+  If Not UsersListBox.SelectedItem Is Nothing Then
     ' Bind roles to GridView.
 
-    Try
-      rolesArray = Roles.GetRolesForUser()
-    Catch e As HttpException
-      Msg.Text = "There is no current logged on user. Role information cannot be retrieved."
-      Return
-    End Try
-
-    UserRolesGrid.Columns(0).HeaderText = "Roles for " & User.Identity.Name
+    rolesArray = Roles.GetRolesForUser(UsersListBox.SelectedItem.Value)
     UserRolesGrid.DataSource = rolesArray
     UserRolesGrid.DataBind()
+
+    UserRolesGrid.Columns(0).HeaderText = "Roles for " & UsersListBox.SelectedItem.Value
   End If
+
 End Sub
 
 </script>
@@ -38,6 +61,8 @@ End Sub
 
   <table border="0" cellspacing="4">
     <tr>
+      <td valign="top"><asp:ListBox id="UsersListBox" DataTextField="Username" 
+                                    Rows="8" AutoPostBack="true" runat="server" /></td>
       <td valign="top"><asp:GridView runat="server" CellPadding="4" id="UserRolesGrid" 
                                      AutoGenerateColumns="false" Gridlines="None" 
                                      CellSpacing="0" >

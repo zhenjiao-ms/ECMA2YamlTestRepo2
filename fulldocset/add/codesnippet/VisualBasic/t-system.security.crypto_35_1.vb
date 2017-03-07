@@ -1,63 +1,94 @@
 Imports System
 Imports System.Security.Cryptography
+Imports System.Text
+
+ _
+
+Class RSACSPSample
 
 
+    Shared Sub Main()
+        Try
+            'Create a UnicodeEncoder to convert between byte array and string.
+            Dim ByteConverter As New UnicodeEncoding()
 
-Public Class DataProtectionSample
-    ' Create byte array for additional entropy when using Protect method.
-    Private Shared s_aditionalEntropy As Byte() = {9, 8, 7, 6, 5}
+            'Create byte arrays to hold original, encrypted, and decrypted data.
+            Dim dataToEncrypt As Byte() = ByteConverter.GetBytes("Data to Encrypt")
+            Dim encryptedData() As Byte
+            Dim decryptedData() As Byte
 
+            'Create a new instance of RSACryptoServiceProvider to generate
+            'public and private key data.
+            Using RSA As New RSACryptoServiceProvider
 
-    Public Shared Sub Main()
-        ' Create a simple byte array containing data to be encrypted.
-        Dim secret As Byte() = {0, 1, 2, 3, 4, 1, 2, 3, 4}
+                'Pass the data to ENCRYPT, the public key information 
+                '(using RSACryptoServiceProvider.ExportParameters(false),
+                'and a boolean flag specifying no OAEP padding.
+                encryptedData = RSAEncrypt(dataToEncrypt, RSA.ExportParameters(False), False)
 
-        'Encrypt the data.
-        Dim encryptedSecret As Byte() = Protect(secret)
-        Console.WriteLine("The encrypted byte array is:")
-        PrintValues(encryptedSecret)
+                'Pass the data to DECRYPT, the private key information 
+                '(using RSACryptoServiceProvider.ExportParameters(true),
+                'and a boolean flag specifying no OAEP padding.
+                decryptedData = RSADecrypt(encryptedData, RSA.ExportParameters(True), False)
 
-        ' Decrypt the data and store in a byte array.
-        Dim originalData As Byte() = Unprotect(encryptedSecret)
-        Console.WriteLine("{0}The original data is:", Environment.NewLine)
-        PrintValues(originalData)
-
+                'Display the decrypted plaintext to the console. 
+                Console.WriteLine("Decrypted plaintext: {0}", ByteConverter.GetString(decryptedData))
+            End Using
+        Catch e As ArgumentNullException
+            'Catch this exception in case the encryption did
+            'not succeed.
+            Console.WriteLine("Encryption failed.")
+        End Try
     End Sub
 
 
-    Public Shared Function Protect(ByVal data() As Byte) As Byte()
+    Public Shared Function RSAEncrypt(ByVal DataToEncrypt() As Byte, ByVal RSAKeyInfo As RSAParameters, ByVal DoOAEPPadding As Boolean) As Byte()
         Try
-            ' Encrypt the data using DataProtectionScope.CurrentUser. The result can be decrypted
-            '  only by the same current user.
-            Return ProtectedData.Protect(data, s_aditionalEntropy, DataProtectionScope.CurrentUser)
+            Dim encryptedData() As Byte
+            'Create a new instance of RSACryptoServiceProvider.
+            Using RSA As New RSACryptoServiceProvider
+
+                'Import the RSA Key information. This only needs
+                'toinclude the public key information.
+                RSA.ImportParameters(RSAKeyInfo)
+
+                'Encrypt the passed byte array and specify OAEP padding.  
+                'OAEP padding is only available on Microsoft Windows XP or
+                'later.  
+                encryptedData = RSA.Encrypt(DataToEncrypt, DoOAEPPadding)
+            End Using
+            Return encryptedData
+            'Catch and display a CryptographicException  
+            'to the console.
         Catch e As CryptographicException
-            Console.WriteLine("Data was not encrypted. An error occurred.")
-            Console.WriteLine(e.ToString())
+            Console.WriteLine(e.Message)
+
             Return Nothing
         End Try
-
     End Function
 
 
-    Public Shared Function Unprotect(ByVal data() As Byte) As Byte()
+    Public Shared Function RSADecrypt(ByVal DataToDecrypt() As Byte, ByVal RSAKeyInfo As RSAParameters, ByVal DoOAEPPadding As Boolean) As Byte()
         Try
-            'Decrypt the data using DataProtectionScope.CurrentUser.
-            Return ProtectedData.Unprotect(data, s_aditionalEntropy, DataProtectionScope.CurrentUser)
+            Dim decryptedData() As Byte
+            'Create a new instance of RSACryptoServiceProvider.
+            Using RSA As New RSACryptoServiceProvider
+                'Import the RSA Key information. This needs
+                'to include the private key information.
+                RSA.ImportParameters(RSAKeyInfo)
+
+                'Decrypt the passed byte array and specify OAEP padding.  
+                'OAEP padding is only available on Microsoft Windows XP or
+                'later.  
+                decryptedData = RSA.Decrypt(DataToDecrypt, DoOAEPPadding)
+                'Catch and display a CryptographicException  
+                'to the console.
+            End Using
+            Return decryptedData
         Catch e As CryptographicException
-            Console.WriteLine("Data was not decrypted. An error occurred.")
             Console.WriteLine(e.ToString())
+
             Return Nothing
         End Try
-
     End Function
-
-
-    Public Shared Sub PrintValues(ByVal myArr() As [Byte])
-        Dim i As [Byte]
-        For Each i In myArr
-            Console.Write(vbTab + "{0}", i)
-        Next i
-        Console.WriteLine()
-
-    End Sub
 End Class

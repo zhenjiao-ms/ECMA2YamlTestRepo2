@@ -1,23 +1,18 @@
-public void HighlightCheckedNodes()
-{
-   int countIndex = 0;
-   string selectedNode = "Selected customer nodes are : ";
-   foreach (TreeNode myNode in myTreeView.Nodes[0].Nodes)
-   {
-      // Check whether the tree node is checked.
-      if(myNode.Checked)
+      // This example assumes that the Form_Load event handling method
+      // is connected to the Load event of the form.
+      private void Form1_Load(object sender, System.EventArgs e)
       {
-         // Set the node's backColor.
-         myNode.BackColor = Color.Yellow;
-         selectedNode += myNode.Text+" ";
-         countIndex++;
-      }
-      else
-         myNode.BackColor = Color.White;
-   }
+         // Create the ToolTip and associate with the Form container.
+         ToolTip toolTip1 = new ToolTip();
 
-   if(countIndex > 0)
-      MessageBox.Show(selectedNode);
-   else
-      MessageBox.Show("No nodes are selected");
-}
+         // Set up the delays for the ToolTip.
+         toolTip1.AutoPopDelay = 5000;
+         toolTip1.InitialDelay = 1000;
+         toolTip1.ReshowDelay = 500;
+         // Force the ToolTip text to be displayed whether or not the form is active.
+         toolTip1.ShowAlways = true;
+			
+         // Set up the ToolTip text for the Button and Checkbox.
+         toolTip1.SetToolTip(this.button1, "My button1");
+         toolTip1.SetToolTip(this.checkBox1, "My checkBox1");
+      }

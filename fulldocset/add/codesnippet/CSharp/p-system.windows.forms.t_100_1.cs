@@ -1,56 +1,33 @@
-public class Form1 : Form
-{
-    private MenuStrip menuStrip1 = new MenuStrip();
-    private ToolStripMenuItem mainToolStripMenuItem = new ToolStripMenuItem();
-    private ToolStripMenuItem toolStripMenuItem1 = new ToolStripMenuItem();
-    private ToolStripRadioButtonMenuItem toolStripRadioButtonMenuItem1 = 
-        new ToolStripRadioButtonMenuItem();
-    private ToolStripRadioButtonMenuItem toolStripRadioButtonMenuItem2 = 
-        new ToolStripRadioButtonMenuItem();
-    private ToolStripRadioButtonMenuItem toolStripRadioButtonMenuItem3 = 
-        new ToolStripRadioButtonMenuItem();
-    private ToolStripRadioButtonMenuItem toolStripRadioButtonMenuItem4 = 
-        new ToolStripRadioButtonMenuItem();
-    private ToolStripRadioButtonMenuItem toolStripRadioButtonMenuItem5 = 
-        new ToolStripRadioButtonMenuItem();
-    private ToolStripRadioButtonMenuItem toolStripRadioButtonMenuItem6 = 
-        new ToolStripRadioButtonMenuItem();
+public void InitializeMyToolBar()
+ {
+    // Create the ToolBar, ToolBarButton controls, and menus.
+    ToolBarButton toolBarButton1 = new ToolBarButton("Open");
+    ToolBarButton toolBarButton2 = new ToolBarButton();
+    ToolBarButton toolBarButton3 = new ToolBarButton();
+    ToolBar toolBar1 = new ToolBar();
+    MenuItem menuItem1 = new MenuItem("Print");
+    ContextMenu contextMenu1 = new ContextMenu(new MenuItem[]{menuItem1});
 
-    public Form1()
-    {
-        mainToolStripMenuItem.Text = "main";
-        toolStripRadioButtonMenuItem1.Text = "option 1";
-        toolStripRadioButtonMenuItem2.Text = "option 2";
-        toolStripRadioButtonMenuItem3.Text = "option 2-1";
-        toolStripRadioButtonMenuItem4.Text = "option 2-2";
-        toolStripRadioButtonMenuItem5.Text = "option 3-1";
-        toolStripRadioButtonMenuItem6.Text = "option 3-2";
-        toolStripMenuItem1.Text = "toggle";
-        toolStripMenuItem1.CheckOnClick = true;
-
-        mainToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
-            toolStripRadioButtonMenuItem1, toolStripRadioButtonMenuItem2,
-            toolStripMenuItem1});
-        toolStripRadioButtonMenuItem2.DropDownItems.AddRange(
-            new ToolStripItem[] {toolStripRadioButtonMenuItem3, 
-            toolStripRadioButtonMenuItem4});
-        toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] {
-            toolStripRadioButtonMenuItem5, toolStripRadioButtonMenuItem6});
-
-        menuStrip1.Items.AddRange(new ToolStripItem[] {mainToolStripMenuItem});
-        Controls.Add(menuStrip1);
-        MainMenuStrip = menuStrip1;
-        Text = "ToolStripRadioButtonMenuItem demo";
-    }
-}
-
-static class Program
-{
-    [STAThread]
-    static void Main()
-    {
-        Application.EnableVisualStyles();
-        Application.SetCompatibleTextRenderingDefault(false);
-        Application.Run(new Form1());
-    }
-}
+     
+    // Add the ToolBarButton controls to the ToolBar.
+    toolBar1.Buttons.Add(toolBarButton1);
+    toolBar1.Buttons.Add(toolBarButton2);
+    toolBar1.Buttons.Add(toolBarButton3);
+ 
+    // Assign an ImageList to the ToolBar and show ToolTips.
+    toolBar1.ImageList = imageList1;
+    toolBar1.ShowToolTips = true;
+ 
+    /* Assign ImageIndex, ContextMenu, Text, ToolTip, and 
+       Style properties of the ToolBarButton controls. */
+    toolBarButton2.Style = ToolBarButtonStyle.Separator;
+    toolBarButton3.Text = "Print";
+    toolBarButton3.Style = ToolBarButtonStyle.DropDownButton;
+    toolBarButton3.ToolTipText = "Print";
+    toolBarButton3.ImageIndex = 0;
+    toolBarButton3.DropDownMenu = contextMenu1;
+ 
+    // Add the ToolBar to a form.
+    Controls.Add(toolBar1);
+ }
+ 

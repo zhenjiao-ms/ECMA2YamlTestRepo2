@@ -1,19 +1,14 @@
-public void CreateMyMultilineTextBox()
- {
-    // Create an instance of a TextBox control.
-    TextBox textBox1 = new TextBox();
-       
-    // Set the Multiline property to true.
-    textBox1.Multiline = true;
-    // Add vertical scroll bars to the TextBox control.
-    textBox1.ScrollBars = ScrollBars.Vertical;
-    // Allow the RETURN key to be entered in the TextBox control.
-    textBox1.AcceptsReturn = true;
-    // Allow the TAB key to be entered in the TextBox control.
-    textBox1.AcceptsTab = true;
-    // Set WordWrap to true to allow text to wrap to the next line.
-    textBox1.WordWrap = true;
-    // Set the default text of the control.
-    textBox1.Text = "Welcome!";
- }
- 
+private void button1_Click(object sender, EventArgs e)
+{
+   // If neither TreeNodeCollection is read-only, move the 
+   // selected node from treeView1 to treeView2.
+   if(!treeView1.Nodes.IsReadOnly && !treeView2.Nodes.IsReadOnly)
+   {
+      if(treeView1.SelectedNode != null)
+      {
+         TreeNode tn = treeView1.SelectedNode;
+         treeView1.Nodes.Remove(tn);
+         treeView2.Nodes.Insert(treeView2.Nodes.Count, tn);
+      }
+   }
+}

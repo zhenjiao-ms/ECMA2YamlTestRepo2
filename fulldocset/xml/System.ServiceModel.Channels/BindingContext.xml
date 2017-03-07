@@ -12,8 +12,15 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Provides information about the addresses, bindings, binding elements and binding parameters required to build the channel listeners and channel factories.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The channel listeners and channel factories, in turn, construct the channel stacks used to process incoming and outgoing messages. The binding context also provides the linkage to the inner channel factories and channel listeners that are used to construct the channel and listener stacks. The binding context basically stores all of the dynamic information needed during the construction of the channel stack.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -31,10 +38,25 @@
         <Parameter Name="parameters" Type="System.ServiceModel.Channels.BindingParameterCollection" />
       </Parameters>
       <Docs>
-        <param name="binding">To be added.</param>
-        <param name="parameters">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="binding">The <see cref="T:System.ServiceModel.Channels.CustomBinding" /> for the channel.</param>
+        <param name="parameters">The <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" /> for the channel.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.Channels.BindingContext" /> class for a specified binding and collection of binding parameters.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The value of <xref:System.ServiceModel.Description.ListenUriMode> is set to <xref:System.ServiceModel.Description.ListenUriMode> by this constructor, the relative address is set to <xref:System.String.Empty>, and the base address is set to `null`.  
+  
+   
+  
+## Examples  
+ [!code-cs[S_UE_BindingContext#1](~/add/codesnippet/csharp/a31011cc-e037-442b-938a-_1.cs)]
+ [!code-vb[S_UE_BindingContext#1](~/add/codesnippet/visualbasic/a31011cc-e037-442b-938a-_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="binding" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -55,13 +77,24 @@
         <Parameter Name="listenUriMode" Type="System.ServiceModel.Description.ListenUriMode" />
       </Parameters>
       <Docs>
-        <param name="binding">To be added.</param>
-        <param name="parameters">To be added.</param>
-        <param name="listenUriBaseAddress">To be added.</param>
-        <param name="listenUriRelativeAddress">To be added.</param>
-        <param name="listenUriMode">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="binding">The <see cref="T:System.ServiceModel.Channels.CustomBinding" /> for the channel.</param>
+        <param name="parameters">The <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" /> for the channel.</param>
+        <param name="listenUriBaseAddress">The <see cref="T:System.Uri" /> at which the service endpoint listens.</param>
+        <param name="listenUriRelativeAddress">The relative address at which the service endpoint listens.</param>
+        <param name="listenUriMode">The <see cref="T:System.ServiceModel.Description.ListenUriMode" /> that indicates whether the transport must ensure that the URI provided for the service to listen on is unique.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.Channels.BindingContext" /> class for a specified binding, collection of binding parameters, and address for the endpoint at which the service listens.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cs[S_UE_BindingContext#2](~/add/codesnippet/csharp/7b3b48c1-52a1-434c-9f90-_1.cs)]
+ [!code-vb[S_UE_BindingContext#2](~/add/codesnippet/visualbasic/7b3b48c1-52a1-434c-9f90-_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="binding" /> is <see langword="null" />.</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">The <see cref="T:System.ServiceModel.Description.ListenUriMode" /> is not defined.</exception>
       </Docs>
     </Member>
     <Member MemberName="Binding">
@@ -78,9 +111,17 @@
         <ReturnType>System.ServiceModel.Channels.CustomBinding</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the binding for the channel built in the current context.</summary>
+        <value>The <see cref="T:System.ServiceModel.Channels.CustomBinding" /> for the channel built in the current context.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cs[S_UE_BindingContext#3](~/add/codesnippet/csharp/p-system.servicemodel.ch_32_1.cs)]
+ [!code-vb[S_UE_BindingContext#3](~/add/codesnippet/visualbasic/p-system.servicemodel.ch_32_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="BindingParameters">
@@ -97,9 +138,22 @@
         <ReturnType>System.ServiceModel.Channels.BindingParameterCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the collection of binding parameters for the channel built in the current context.</summary>
+        <value>The <see cref="T:System.ServiceModel.Channels.BindingParameterCollection" /> for the channel built in the current context.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This collection holds the settings encountered when building the channel stack from the bindings. Settings that need to be pushed down the channel stack during creation are put into the collection until a channel lower in the stack needs them.  
+  
+   
+  
+## Examples  
+ [!code-cs[S_UE_BindingContext#4](~/add/codesnippet/csharp/p-system.servicemodel.ch_36_1.cs)]
+ [!code-vb[S_UE_BindingContext#4](~/add/codesnippet/visualbasic/p-system.servicemodel.ch_36_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="BuildInnerChannelFactory&lt;TChannel&gt;">
@@ -120,10 +174,18 @@
       </TypeParameters>
       <Parameters />
       <Docs>
-        <typeparam name="TChannel">To be added.</typeparam>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <typeparam name="TChannel">The type of <see cref="T:System.ServiceModel.Channels.IChannel" /> object the inner channel factory produces.</typeparam>
+        <summary>Builds the inner channel factory for channels of a specified type below the current channel factory.</summary>
+        <returns>The <see cref="System.ServiceModel.Channels.IChannelFactory%601" /> of type <see cref="T:System.ServiceModel.Channels.IChannel" /> that represents the inner channel factory of the current channel factory.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cs[S_UE_BindingContext#9](~/add/codesnippet/csharp/m-system.servicemodel.ch_20_1.cs)]
+ [!code-vb[S_UE_BindingContext#9](~/add/codesnippet/visualbasic/m-system.servicemodel.ch_20_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="BuildInnerChannelListener&lt;TChannel&gt;">
@@ -149,10 +211,18 @@
       </TypeParameters>
       <Parameters />
       <Docs>
-        <typeparam name="TChannel">To be added.</typeparam>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <typeparam name="TChannel">The type of <see cref="T:System.ServiceModel.Channels.IChannel" /> object for which the inner channel listener listens.</typeparam>
+        <summary>Builds an inner channel listener that listens for a specified type of channel.</summary>
+        <returns>The <see cref="System.ServiceModel.Channels.IChannelListener%601" /> of type <see cref="T:System.ServiceModel.Channels.IChannel" /> that represents the inner channel listener of the current channel factory.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cs[S_UE_BindingContext#10](~/add/codesnippet/csharp/m-system.servicemodel.ch_2_1.cs)]
+ [!code-vb[S_UE_BindingContext#10](~/add/codesnippet/visualbasic/m-system.servicemodel.ch_2_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanBuildInnerChannelFactory&lt;TChannel&gt;">
@@ -173,10 +243,19 @@
       </TypeParameters>
       <Parameters />
       <Docs>
-        <typeparam name="TChannel">To be added.</typeparam>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <typeparam name="TChannel">The type of <see cref="T:System.ServiceModel.Channels.IChannel" /> object the inner channel factory produces.</typeparam>
+        <summary>Returns a value that indicates whether the inner channel factory can produce a specified type of channel.</summary>
+        <returns>
+          <see langword="true" /> if the inner channel factory can produce the specified <paramref name="TChannel" />; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cs[S_UE_BindingContext#11](~/add/codesnippet/csharp/m-system.servicemodel.ch_37_1.cs)]
+ [!code-vb[S_UE_BindingContext#11](~/add/codesnippet/visualbasic/m-system.servicemodel.ch_37_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanBuildInnerChannelListener&lt;TChannel&gt;">
@@ -202,10 +281,19 @@
       </TypeParameters>
       <Parameters />
       <Docs>
-        <typeparam name="TChannel">To be added.</typeparam>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <typeparam name="TChannel">The type of <see cref="T:System.ServiceModel.Channels.IChannel" /> object for which the inner channel listener listens.</typeparam>
+        <summary>Returns a value that indicates whether the inner channel listener can be built to listen for a specified type of channel.</summary>
+        <returns>
+          <see langword="true" /> if the inner channel listener can be built to listen for the <paramref name="TChannel" /> specified; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cs[S_UE_BindingContext#12](~/add/codesnippet/csharp/m-system.servicemodel.ch_1_1.cs)]
+ [!code-vb[S_UE_BindingContext#12](~/add/codesnippet/visualbasic/m-system.servicemodel.ch_1_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Clone">
@@ -223,9 +311,22 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returns a copy of the current channel build context.</summary>
+        <returns>A <see cref="T:System.ServiceModel.Channels.BindingContext" /> object that is a copy of the current channel build context.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This method returns a copy that is a deep clone of your binding context. A deep clone of an object creates a copy of the object and a copy of everything directly or indirectly referenced by that object. (This is also called copying the entire object graph.) A shallow clone of an object, by contrast, is a copy of the object only. If the object contains references to other objects, the shallow copy does not create copies of the referred objects; instead, it copies only the references to the original objects.  
+  
+   
+  
+## Examples  
+ [!code-cs[S_UE_BindingContext#13](~/add/codesnippet/csharp/m-system.servicemodel.ch_31_1.cs)]
+ [!code-vb[S_UE_BindingContext#13](~/add/codesnippet/visualbasic/m-system.servicemodel.ch_31_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetInnerProperty&lt;T&gt;">
@@ -250,10 +351,23 @@
       </TypeParameters>
       <Parameters />
       <Docs>
-        <typeparam name="T">To be added.</typeparam>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <typeparam name="T">The typed object for which the method is querying.</typeparam>
+        <summary>Returns a typed object requested, if present, from the appropriate layer in the binding stack.</summary>
+        <returns>The typed object <paramref name="T" /> requested if it is present or <see langword="null" /> if it is not.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Clones the binding context and calls <xref:System.ServiceModel.Channels.BindingElement.GetProperty%60%601%28System.ServiceModel.Channels.BindingContext%29> on the next binding element stored in the binding context.  
+  
+   
+  
+## Examples  
+ [!code-cs[S_UE_BindingContext#14](~/add/codesnippet/csharp/m-system.servicemodel.ch_11_1.cs)]
+ [!code-vb[S_UE_BindingContext#14](~/add/codesnippet/visualbasic/m-system.servicemodel.ch_11_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ListenUriBaseAddress">
@@ -270,9 +384,22 @@
         <ReturnType>System.Uri</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the URI that provides the base address at which the service endpoint listens.</summary>
+        <value>The <see cref="T:System.Uri" /> at which the service endpoint listens.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The address for the endpoint at which a service listens is obtained by appending the <xref:System.ServiceModel.Channels.BindingContext.ListenUriRelativeAddress%2A> to the ListenUriBaseAddress. This absolute address can be set using the <xref:System.ServiceModel.Description.ServiceEndpoint.ListenUri%2A> property.  
+  
+   
+  
+## Examples  
+ [!code-cs[S_UE_BindingContext#5](~/add/codesnippet/csharp/p-system.servicemodel.ch_35_1.cs)]
+ [!code-vb[S_UE_BindingContext#5](~/add/codesnippet/visualbasic/p-system.servicemodel.ch_35_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ListenUriMode">
@@ -289,9 +416,17 @@
         <ReturnType>System.ServiceModel.Description.ListenUriMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets a value that indicates whether the transport must ensure that the URI provided for the service to listen on is unique.</summary>
+        <value>The <see cref="T:System.ServiceModel.Description.ListenUriMode" /> that indicates whether the transport must ensure that the URI provided for the service to listen on is unique.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cs[S_UE_BindingContext#6](~/add/codesnippet/csharp/p-system.servicemodel.ch_12_1.cs)]
+ [!code-vb[S_UE_BindingContext#6](~/add/codesnippet/visualbasic/p-system.servicemodel.ch_12_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ListenUriRelativeAddress">
@@ -308,9 +443,22 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the URI that provides the relative address at which the service endpoint listens.</summary>
+        <value>The relative address at which the service endpoint listens.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The address for the endpoint at which a service listens is obtained by appending the ListenUriRelativeAddress to the <xref:System.ServiceModel.Channels.BindingContext.ListenUriBaseAddress%2A>. This absolute address can be set using the <xref:System.ServiceModel.Description.ServiceEndpoint.ListenUri%2A> property.  
+  
+   
+  
+## Examples  
+ [!code-cs[S_UE_BindingContext#7](~/add/codesnippet/csharp/p-system.servicemodel.ch_64_1.cs)]
+ [!code-vb[S_UE_BindingContext#7](~/add/codesnippet/visualbasic/p-system.servicemodel.ch_64_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RemainingBindingElements">
@@ -327,9 +475,22 @@
         <ReturnType>System.ServiceModel.Channels.BindingElementCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the binding elements that are used by other binding elements to construct the channel stack.</summary>
+        <value>The <see cref="T:System.ServiceModel.Channels.BindingElementCollection" /> that contains the binding elements that are used by other binding elements to construct the channel stack.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The binding elements that are put into this collection are those elements that do not correspond directly to a listener or factory in one of the channel stacks. The encoder binding element, for example, ends up in this collection and is then used by the transport channel to construct a message encoder.  
+  
+   
+  
+## Examples  
+ [!code-cs[S_UE_BindingContext#8](~/add/codesnippet/csharp/p-system.servicemodel.ch_24_1.cs)]
+ [!code-vb[S_UE_BindingContext#8](~/add/codesnippet/visualbasic/p-system.servicemodel.ch_24_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
   </Members>

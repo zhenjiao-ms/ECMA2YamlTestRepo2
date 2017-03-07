@@ -1,5 +1,5 @@
 public:
-   [Browsable(true)]
+   [RecommendedAsConfigurable(true)]
    property int MyProperty 
    {
       int get()
@@ -7,7 +7,7 @@ public:
          // Insert code here.
          return 0;
       }
-      void set( int value )
+      void set( int /*value*/ )
       {
          // Insert code here.
       }

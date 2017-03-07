@@ -1,39 +1,51 @@
-<%@ Import namespace="Samples.AspNet.CS" %>
-<%@ Page language="c#" %>
+
+<%@ Page language="C#" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<script runat="server">
-private void NorthwindLogicCreating(object sender, ObjectDataSourceEventArgs e)
-{
-    // Create an instance of the business object using a non-default constructor.
-    EmployeeLogic eLogic = new EmployeeLogic("Not created by the default constructor!");
-    
-    // Set the ObjectInstance property so that the ObjectDataSource uses the created instance.
-    e.ObjectInstance = eLogic;
-}
-
-</script>
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head>
-    <title>ObjectDataSource - C# Example</title>
-  </head>
-  <body>
-    <form id="Form1" method="post" runat="server">
-
-        <asp:gridview
-          id="GridView1"
-          runat="server"
-          datasourceid="ObjectDataSource1">
-        </asp:gridview>
-
-        <asp:objectdatasource
-          id="ObjectDataSource1"
-          runat="server"
-          selectmethod="GetAllEmployees"
-          onobjectcreating="NorthwindLogicCreating"
-          typename="Samples.AspNet.CS.EmployeeLogic" >
-        </asp:objectdatasource>
-
+  <head runat="server">
+    <title>HyperLinkField Example</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        
+      <h3>HyperLinkField Example</h3>
+                    
+      <!-- Populate the Columns collection declaratively. -->
+      <!-- Set the HyperLinkField field column to a static     -->
+      <!-- caption and URL.                                    -->
+      <asp:gridview id="OrdersGridView" 
+        datasourceid="OrdersSqlDataSource" 
+        autogeneratecolumns="false"
+        runat="server">
+                
+        <columns>
+                
+          <asp:boundfield datafield="OrderID" 
+            headertext="OrderID"/>
+          <asp:boundfield datafield="CustomerID" 
+            headertext="Customer ID"/>
+          <asp:boundfield datafield="OrderDate" 
+            headertext="Order Date"
+            dataformatstring="{0:d}" />
+          <asp:hyperlinkfield text="Details..."
+            navigateurl="~\details.aspx"            
+            headertext="Order Details"
+            target="_blank" />
+                
+        </columns>
+                
+      </asp:gridview>
+            
+      <!-- This example uses Microsoft SQL Server and connects -->
+      <!-- to the Northwind sample database.                   -->
+      <asp:sqldatasource id="OrdersSqlDataSource"  
+        selectcommand="SELECT [OrderID], [CustomerID], [OrderDate] FROM [Orders]"
+        connectionstring="server=localhost;database=northwind;integrated security=SSPI"
+        runat="server">
+      </asp:sqldatasource>
+            
     </form>
   </body>
 </html>

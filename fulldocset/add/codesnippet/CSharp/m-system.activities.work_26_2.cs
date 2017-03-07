@@ -1,55 +1,33 @@
-            Variable<string> name = new Variable<string>();
+            AutoResetEvent syncEvent = new AutoResetEvent(false);
 
-            Activity wf = new Sequence
+            WorkflowInvoker invoker = new WorkflowInvoker(new LongRunningDiceRoll());
+
+            invoker.InvokeCompleted += delegate(object sender, InvokeCompletedEventArgs args)
             {
-                Variables = { name },
-                Activities =
-                 {
-                     new WriteLine
-                     {
-                         Text = "What is your name?"
-                     },
-                     new ReadLine
-                     {
-                         BookmarkName = "UserName",
-                         Result = new OutArgument<string>(name)
+                if (args.Cancelled == true)
+                {
+                    Console.WriteLine("Workflow was cancelled.");
+                }
+                else if (args.Error != null)
+                {
+                    Console.WriteLine("Exception: {0}\n{1}",
+                        args.Error.GetType().FullName,
+                        args.Error.Message);
+                }
+                else
+                {
+                    Console.WriteLine("The two dice are {0} and {1}.",
+                        args.Outputs["D1"], args.Outputs["D2"]);
+                }
 
-                     },
-                     new WriteLine
-                     {
-                         Text = new InArgument<string>((env) => 
-                             ("Hello, " + name.Get(env)))
-                     }
-                 }
+                syncEvent.Set();
             };
 
-            // Create a WorkflowApplication instance.
-            WorkflowApplication wfApp = new WorkflowApplication(wf);
+            invoker.InvokeAsync("InvokeAsync Example");
 
-            // Workflow lifecycle events omitted except idle.
-            AutoResetEvent idleEvent = new AutoResetEvent(false);
+            Console.WriteLine("Waiting for the workflow to complete.");
 
-            wfApp.Idle = delegate(WorkflowApplicationIdleEventArgs e)
-            {
-                // You can also inspect the bookmarks from the Idle handler
-                // using e.Bookmarks
+            // Wait for the workflow to complete.
+            syncEvent.WaitOne();
 
-                idleEvent.Set();
-            };
-
-            // Run the workflow.
-            wfApp.Run();
-
-            // Wait for the workflow to go idle and give it a chance
-            // to create the Bookmark.
-            idleEvent.WaitOne();
-
-            // Inspect the bookmarks
-            foreach (BookmarkInfo info in wfApp.GetBookmarks())
-            {
-                Console.WriteLine("BookmarkName: {0} - OwnerDisplayName: {1}",
-                    info.BookmarkName, info.OwnerDisplayName);
-            }
-
-            // Gather the user's input and resume the bookmark.
-            wfApp.ResumeBookmark("UserName", Console.ReadLine());
+            Console.WriteLine("The workflow is complete.");

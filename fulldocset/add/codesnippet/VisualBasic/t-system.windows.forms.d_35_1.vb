@@ -1,3 +1,112 @@
+Imports System
+Imports System.Collections.Generic
+Imports System.ComponentModel
+Imports System.Data
+Imports System.Drawing
+Imports System.Windows.Forms
+Imports System.Text
+Imports System.Windows.Forms.Design
+Imports System.Windows.Forms.Design.Behavior
+
+Namespace BehaviorServiceSample
+
+    Public Class Form1
+        Inherits System.Windows.Forms.Form
+
+        Private userControl As UserControl1
+        Private components As System.ComponentModel.IContainer = Nothing
+
+        Public Sub New()
+            MyBase.New()
+            InitializeComponent()
+        End Sub
+
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            If disposing AndAlso (components IsNot Nothing) Then
+                components.Dispose()
+            End If
+            MyBase.Dispose(disposing)
+        End Sub
+
+
+        Private Sub InitializeComponent()
+            Me.userControl = New UserControl1()
+            Me.SuspendLayout()
+
+            Me.userControl.Location = New System.Drawing.Point(12, 13)
+            Me.userControl.Name = "userControl"
+            Me.userControl.Size = New System.Drawing.Size(143, 110)
+            Me.userControl.TabIndex = 0
+
+            Me.ClientSize = New System.Drawing.Size(184, 153)
+            Me.Controls.Add(userControl)
+            Me.Name = "Form1"
+            Me.Text = "Form1"
+            Me.ResumeLayout(False)
+        End Sub
+
+        <STAThread()> _
+        Shared Sub Main()
+            Application.EnableVisualStyles()
+            Application.Run(New Form1())
+        End Sub
+
+    End Class
+
+    <Designer(GetType(MyDesigner))> _
+    Public Class UserControl1
+        Inherits UserControl
+        Private components As System.ComponentModel.IContainer = Nothing
+
+
+        Public Sub New()
+            InitializeComponent()
+        End Sub
+
+
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            If disposing AndAlso (components IsNot Nothing) Then
+                components.Dispose()
+            End If
+            MyBase.Dispose(disposing)
+        End Sub
+
+
+        Private Sub InitializeComponent()
+            Me.Name = "UserControl1"
+            Me.Size = New System.Drawing.Size(170, 156)
+        End Sub 'InitializeComponent
+    End Class
+
+    Class MyDesigner
+        Inherits ControlDesigner
+        Private myAdorner As Adorner
+
+
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            If disposing AndAlso (myAdorner IsNot Nothing) Then
+                Dim b As System.Windows.Forms.Design.Behavior.BehaviorService _
+                    = BehaviorService
+                If (b IsNot Nothing) Then
+                    b.Adorners.Remove(myAdorner)
+                End If
+            End If
+
+        End Sub
+
+
+        Public Overrides Sub Initialize(ByVal component As IComponent)
+            MyBase.Initialize(component)
+
+            ' Add the custom set of glyphs using the BehaviorService.  
+            ' Glyphs live on adornders.
+            myAdorner = New Adorner()
+            BehaviorService.Adorners.Add(myAdorner)
+            myAdorner.Glyphs.Add(New MyGlyph(BehaviorService, Control))
+
+        End Sub
+    End Class
+
     Class MyGlyph
         Inherits Glyph
         Private control As Control
@@ -68,3 +177,5 @@
         End Class
 
     End Class
+
+End Namespace

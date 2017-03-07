@@ -1,127 +1,413 @@
-#using <System.Windows.Forms.dll>
 #using <System.Drawing.dll>
 #using <System.dll>
+#using <system.windows.forms.dll>
 
 using namespace System;
-using namespace System::ComponentModel;
-using namespace System::ComponentModel::Design;
-using namespace System::Collections;
-using namespace System::Drawing;
-using namespace System::IO;
-using namespace System::Reflection;
-using namespace System::Runtime::Serialization;
-using namespace System::Runtime::Serialization::Formatters::Binary;
 using namespace System::Windows::Forms;
-using namespace System::Windows::Forms::Design;
-
-ref class TypeEventsTab;
-
-// This component adds a TypeEventsTab to the Properties Window.
-
-[PropertyTabAttribute(TypeEventsTab::typeid,PropertyTabScope::Document)]
-public ref class TypeEventsTabComponent: public Component
-{
-public:
-   TypeEventsTabComponent(){}
-
-};
-
-
-// This example events tab lists events by their delegate type.
-[System::Security::Permissions::PermissionSetAttribute
-      (System::Security::Permissions::SecurityAction::InheritanceDemand, Name="FullTrust")]
-[System::Security::Permissions::PermissionSetAttribute
-      (System::Security::Permissions::SecurityAction::Demand, Name="FullTrust")]
-public ref class TypeEventsTab: public System::Windows::Forms::Design::EventsTab
+using namespace System::Drawing;
+using namespace System::Collections;
+public ref class DataGridViewColumnDemo: public Form
 {
 private:
 
-   // This string contains a Base-64 encoded and serialized example 
-   // property tab image.
-
-   [BrowsableAttribute(true)]
-   String^ img;
-   IServiceProvider^ sp;
+#pragma region S "set up form" 
 
 public:
-   TypeEventsTab( IServiceProvider^ sp )
-      : EventsTab( sp )
+   DataGridViewColumnDemo()
    {
-      this->sp = sp;
-      String^ s = "AAEAAAD/////AQAAAAAAAAAMAgAAAFRTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj0xLjAuMzMwMC4w"
-      "LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRt"
-      "YXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAtgIAAAJCTbYCAAAAAAAANgAAACgAAAANAAAAEAAAAAEAGAAAAAAAAAAAAMQOAADED"
-      "gAAAAAAAAAAAADO1tnO1tnO1tnO1tnO1tnO1tnO1tnO1tnO1tnO1tnO1tnO1tnO1tn/ztbZztbZHh4eHh4eztbZztbZztbZztbZztb"
-      "ZztbZztbZztbZztbZ/87W2c7W2QDBAB4eHh4eHs7W2c7W2c7W2c7W2c7W2c7W2c7W2c7W2f/O1tnO1tnO1tkAwQAeHh4eHh7O1tnO1"
-      "tnO1tnO1tnO1tnO1tnO1tn/ztbZztbZlJSU////AMEAHh4eHh4eztbZztbZztbZztbZztbZztbZ/87W2c7W2c7W2ZSUlP///wDBAB4"
-      "eHh4eHs7W2c7W2c7W2c7W2c7W2f/O1tnO1tnO1tnO1tmUlJT///8AwQAeHh4eHh7O1tnO1tnO1tnO1tn/ztbZHh4eHh4eHh4eHh4eH"
-      "h4e////AIAAHh4eHh4eztbZztbZztbZ/87W2ZSUlP///wDBAADBAADBAADBAADBAACAAB4eHh4eHs7W2c7W2f/O1tnO1tmUlJT///8"
-      "AwQAAgAAeHh4eHh7O1tnO1tnO1tnO1tnO1tn/ztbZztbZztbZlJSU////AMEAAIAAHh4eHh4eztbZztbZztbZztbZ/87W2c7W2c7W2"
-      "c7W2ZSUlP///wDBAACAAB4eHh4eHs7W2c7W2c7W2f/O1tnO1tnO1tnO1tnO1tmUlJT///8AwQAAgAAeHh4eHh7O1tnO1tn/ztbZztb"
-      "ZztbZztbZztbZztbZlJSU////AMEAAIAAHh4eHh4eztbZ/87W2c7W2c7W2c7W2c7W2c7W2c7W2ZSUlP///wDBAACAAB4eHs7W2f/O1"
-      "tnO1tnO1tnO1tnO1tnO1tnO1tnO1tnO1tnO1tnO1tnO1tnO1tn/Cw==";
-      img = s;
+      Button1 = gcnew Button;
+      Button2 = gcnew Button;
+      Button3 = gcnew Button;
+      Button4 = gcnew Button;
+      Button5 = gcnew Button;
+      Button6 = gcnew Button;
+      Button7 = gcnew Button;
+      Button8 = gcnew Button;
+      Button9 = gcnew Button;
+      Button10 = gcnew Button;
+      FlowLayoutPanel1 = gcnew FlowLayoutPanel;
+      thirdColumnHeader = L"Main Ingredients";
+      boringMeatloaf = L"ground beef";
+      boringMeatloafRanking = L"*";
+      toolStripItem1 = gcnew ToolStripMenuItem;
+      InitializeComponent();
+      AddButton( Button1, L"Reset", gcnew EventHandler( this, &DataGridViewColumnDemo::ResetToDisorder ) );
+      AddButton( Button2, L"Change Column 3 Header", gcnew EventHandler( this, &DataGridViewColumnDemo::ChangeColumn3Header ) );
+      AddButton( Button3, L"Change Meatloaf Recipe", gcnew EventHandler( this, &DataGridViewColumnDemo::ChangeMeatloafRecipe ) );
+      AddAdditionalButtons();
+      InitializeDataGridView();
    }
 
-   // Returns the properties of the specified component extended with a 
-   // CategoryAttribute reflecting the name of the type of the property.
-   virtual System::ComponentModel::PropertyDescriptorCollection^ GetProperties( ITypeDescriptorContext^ /*context*/, Object^ component, array<System::Attribute^>^attributes ) override
+   DataGridView^ dataGridView;
+   Button^ Button1;
+   Button^ Button2;
+   Button^ Button3;
+   Button^ Button4;
+   Button^ Button5;
+   Button^ Button6;
+   Button^ Button7;
+   Button^ Button8;
+   Button^ Button9;
+   Button^ Button10;
+   FlowLayoutPanel^ FlowLayoutPanel1;
+
+private:
+   void InitializeComponent()
    {
-      // Obtain an instance of the IEventBindingService.
-      IEventBindingService^ eventPropertySvc = dynamic_cast<IEventBindingService^>(sp->GetService( IEventBindingService::typeid ));
+      FlowLayoutPanel1->Location = Point(454,0);
+      FlowLayoutPanel1->AutoSize = true;
+      FlowLayoutPanel1->FlowDirection = FlowDirection::TopDown;
+      AutoSize = true;
+      ClientSize = System::Drawing::Size( 614, 360 );
+      FlowLayoutPanel1->Name = L"flowlayoutpanel";
+      Controls->Add( this->FlowLayoutPanel1 );
+      Text = this->GetType()->Name;
+   }
+
+
+#pragma endregion 
+#pragma region S " set up DataGridView " 
+   String^ thirdColumnHeader;
+   String^ boringMeatloaf;
+   String^ boringMeatloafRanking;
+   bool boringRecipe;
+   bool shortMode;
+   void InitializeDataGridView()
+   {
+      dataGridView = gcnew System::Windows::Forms::DataGridView;
+      Controls->Add( dataGridView );
+      dataGridView->Size = System::Drawing::Size( 300, 200 );
       
-      // Return if an IEventBindingService could not be obtained.
-      if ( eventPropertySvc == nullptr )
-            return gcnew PropertyDescriptorCollection( nullptr );
-
-      // Obtain the events on the component.
-      EventDescriptorCollection^ events = TypeDescriptor::GetEvents( component, attributes );
-
-      // Create an array of the events, where each event is assigned 
-      // a category matching its type.
-      array<EventDescriptor^>^newEvents = gcnew array<EventDescriptor^>(events->Count);
-      for ( int i = 0; i < events->Count; i++ )
+      // Create an unbound DataGridView by declaring a
+      // column count.
+      dataGridView->ColumnCount = 4;
+      AdjustDataGridViewSizing();
+      
+      // Set the column header style.
+      DataGridViewCellStyle^ columnHeaderStyle = gcnew DataGridViewCellStyle;
+      columnHeaderStyle->BackColor = Color::Aqua;
+      columnHeaderStyle->Font = gcnew System::Drawing::Font( L"Verdana",10,FontStyle::Bold );
+      dataGridView->ColumnHeadersDefaultCellStyle = columnHeaderStyle;
+      
+      // Set the column header names.
+      dataGridView->Columns[ 0 ]->Name = L"Recipe";
+      dataGridView->Columns[ 1 ]->Name = L"Category";
+      dataGridView->Columns[ 2 ]->Name = thirdColumnHeader;
+      dataGridView->Columns[ 3 ]->Name = L"Rating";
+      criteriaLabel = L"Column 3 sizing criteria: ";
+      PostColumnCreation();
+      
+      // Populate the rows.
+      array<String^>^row1 = gcnew array<String^>{
+         L"Meatloaf",L"Main Dish",boringMeatloaf,boringMeatloafRanking
+      };
+      array<String^>^row2 = gcnew array<String^>{
+         L"Key Lime Pie",L"Dessert",L"lime juice, evaporated milk",L"****"
+      };
+      array<String^>^row3 = gcnew array<String^>{
+         L"Orange-Salsa Pork Chops",L"Main Dish",L"pork chops, salsa, orange juice",L"****"
+      };
+      array<String^>^row4 = gcnew array<String^>{
+         L"Black Bean and Rice Salad",L"Salad",L"black beans, brown rice",L"****"
+      };
+      array<String^>^row5 = gcnew array<String^>{
+         L"Chocolate Cheesecake",L"Dessert",L"cream cheese",L"***"
+      };
+      array<String^>^row6 = gcnew array<String^>{
+         L"Black Bean Dip",L"Appetizer",L"black beans, sour cream",L"***"
+      };
+      array<Object^>^rows = gcnew array<Object^>{
+         row1,row2,row3,row4,row5,row6
+      };
+      System::Collections::IEnumerator^ myEnum = rows->GetEnumerator();
+      while ( myEnum->MoveNext() )
       {
-         array<Attribute^>^temp = {gcnew CategoryAttribute( events[ i ]->EventType->FullName )};
-         newEvents[ i ] = TypeDescriptor::CreateEvent( events[ i ]->ComponentType, events[ i ], temp );
+         array<String^>^rowArray = safe_cast<array<String^>^>(myEnum->Current);
+         dataGridView->Rows->Add( rowArray );
       }
-      events = gcnew EventDescriptorCollection( newEvents );
 
-      // Return event properties for the event descriptors.
-      return eventPropertySvc->GetEventProperties( events );
+      shortMode = false;
+      boringRecipe = true;
    }
 
-   property String^ TabName 
+   void AddButton( Button^ button, String^ buttonLabel, EventHandler^ handler )
    {
-      // Provides the name for the event property tab.
-      virtual String^ get() override
+      FlowLayoutPanel1->Controls->Add( button );
+      button->TabIndex = FlowLayoutPanel1->Controls->Count;
+      button->Text = buttonLabel;
+      button->AutoSize = true;
+      button->Click += handler;
+   }
+
+   void ResetToDisorder( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      Controls->Remove( dataGridView );
+      dataGridView->~DataGridView();
+      InitializeDataGridView();
+   }
+
+   void ChangeColumn3Header( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      Toggle(  &shortMode );
+      if ( shortMode )
       {
-         return "Events by Type";
+         dataGridView->Columns[ 2 ]->HeaderText = L"S";
+      }
+      else
+      {
+         dataGridView->Columns[ 2 ]->HeaderText = thirdColumnHeader;
       }
    }
 
-   property System::Drawing::Bitmap^ Bitmap 
+   void Toggle( interior_ptr<Boolean> toggleThis )
    {
-      // Provides an image for the event property tab.
-      virtual System::Drawing::Bitmap^ get() override
+       *toggleThis =  ! *toggleThis;
+   }
+
+   void ChangeMeatloafRecipe( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      Toggle(  &boringRecipe );
+      if ( boringRecipe )
       {
-         System::Drawing::Bitmap^ bmp = gcnew System::Drawing::Bitmap( DeserializeFromBase64Text( img ) );
-         return bmp;
+         SetMeatloaf( boringMeatloaf, boringMeatloafRanking );
+      }
+      else
+      {
+         String^ greatMeatloafRecipe = L"1 lb. lean ground beef, "
+         L"1/2 cup bread crumbs, 1/4 cup ketchup,"
+         L"1/3 tsp onion powder, "
+         L"1 clove of garlic, 1/2 pack onion soup mix "
+         L" dash of your favorite BBQ Sauce";
+         SetMeatloaf( greatMeatloafRecipe, L"***" );
       }
    }
+
+   void SetMeatloaf( String^ recipe, String^ rating )
+   {
+      dataGridView->Rows[ 0 ]->Cells[ 2 ]->Value = recipe;
+      dataGridView->Rows[ 0 ]->Cells[ 3 ]->Value = rating;
+   }
+
+
+#pragma endregion 
+
+public:
+   static void Main()
+   {
+      Application::Run( gcnew DataGridViewColumnDemo );
+   }
+
+
+#pragma region S " demonstration code " 
 
 private:
-
-   // This method can be used to retrieve an Image from a block of 
-   // Base64-encoded text.
-   Image^ DeserializeFromBase64Text( String^ text )
+   void PostColumnCreation()
    {
-      Image^ img = nullptr;
-      array<Byte>^memBytes = Convert::FromBase64String( text );
-      IFormatter^ formatter = gcnew BinaryFormatter;
-      MemoryStream^ stream = gcnew MemoryStream( memBytes );
-      img = dynamic_cast<Image^>(formatter->Deserialize( stream ));
-      stream->Close();
-      return img;
+      AddContextLabel();
+      AddCriteriaLabel();
+      CustomizeCellsInThirdColumn();
+      AddContextMenu();
+      SetDefaultCellInFirstColumn();
+      ToolTips();
+      dataGridView->CellMouseEnter += gcnew DataGridViewCellEventHandler( this, &DataGridViewColumnDemo::dataGridView_CellMouseEnter );
+      dataGridView->AutoSizeColumnModeChanged += gcnew DataGridViewAutoSizeColumnModeEventHandler( this, &DataGridViewColumnDemo::dataGridView_AutoSizeColumnModeChanged );
    }
+
+   String^ criteriaLabel;
+   void AddCriteriaLabel()
+   {
+      AddLabelToPanelIfNotAlreadyThere( criteriaLabel, String::Concat( criteriaLabel, dataGridView->Columns[ 2 ]->AutoSizeMode, L"." ) );
+   }
+
+   void AddContextLabel()
+   {
+      String^ labelName = L"label";
+      AddLabelToPanelIfNotAlreadyThere( labelName, L"Use shortcut menu to change cell color." );
+   }
+
+   void AddLabelToPanelIfNotAlreadyThere( String^ labelName, String^ labelText )
+   {
+      Label^ label;
+      if ( FlowLayoutPanel1->Controls[ labelName ] == nullptr )
+      {
+         label = gcnew Label;
+         label->AutoSize = true;
+         label->Name = labelName;
+         label->BackColor = Color::Bisque;
+         FlowLayoutPanel1->Controls->Add( label );
+      }
+      else
+      {
+         label = dynamic_cast<Label^>(FlowLayoutPanel1->Controls[ labelName ]);
+      }
+
+      label->Text = labelText;
+   }
+
+
+   void CustomizeCellsInThirdColumn()
+   {
+      int thirdColumn = 2;
+      DataGridViewColumn^ column = dataGridView->Columns[ thirdColumn ];
+      DataGridViewCell^ cell = gcnew DataGridViewTextBoxCell;
+      cell->Style->BackColor = Color::Wheat;
+      column->CellTemplate = cell;
+   }
+
+
+   ToolStripMenuItem^ toolStripItem1;
+   void AddContextMenu()
+   {
+      toolStripItem1->Text = L"Redden";
+      toolStripItem1->Click += gcnew EventHandler( this, &DataGridViewColumnDemo::toolStripItem1_Click );
+      System::Windows::Forms::ContextMenuStrip^ strip = gcnew System::Windows::Forms::ContextMenuStrip;
+      IEnumerator^ myEnum = dataGridView->Columns->GetEnumerator();
+      while ( myEnum->MoveNext() )
+      {
+         DataGridViewColumn^ column = safe_cast<DataGridViewColumn^>(myEnum->Current);
+         column->ContextMenuStrip = strip;
+         column->ContextMenuStrip->Items->Add( toolStripItem1 );
+      }
+   }
+
+   DataGridViewCellEventArgs^ mouseLocation;
+
+   // Change the cell's color.
+   void toolStripItem1_Click( Object^ /*sender*/, EventArgs^ /*args*/ )
+   {
+      dataGridView->Rows[ mouseLocation->RowIndex ]->Cells[ mouseLocation->ColumnIndex ]->Style->BackColor = Color::Red;
+   }
+
+
+   // Deal with hovering over a cell.
+   void dataGridView_CellMouseEnter( Object^ /*sender*/, DataGridViewCellEventArgs^ location )
+   {
+      mouseLocation = location;
+   }
+
+
+   void SetDefaultCellInFirstColumn()
+   {
+      DataGridViewColumn^ firstColumn = dataGridView->Columns[ 0 ];
+      DataGridViewCellStyle^ cellStyle = gcnew DataGridViewCellStyle;
+      cellStyle->BackColor = Color::Thistle;
+      firstColumn->DefaultCellStyle = cellStyle;
+   }
+
+
+   void ToolTips()
+   {
+      DataGridViewColumn^ firstColumn = dataGridView->Columns[ 0 ];
+      DataGridViewColumn^ thirdColumn = dataGridView->Columns[ 2 ];
+      firstColumn->ToolTipText = L"This column uses a default cell.";
+      thirdColumn->ToolTipText = L"This column uses a template cell."
+      L" Style changes to one cell apply to all cells.";
+   }
+
+
+   void AddAdditionalButtons()
+   {
+      AddButton( Button4, L"Set Minimum Width of Column Two", gcnew EventHandler( this, &DataGridViewColumnDemo::Button4_Click ) );
+      AddButton( Button5, L"Set Width of Column One", gcnew EventHandler( this, &DataGridViewColumnDemo::Button5_Click ) );
+      AddButton( Button6, L"Autosize Third Column", gcnew EventHandler( this, &DataGridViewColumnDemo::Button6_Click ) );
+      AddButton( Button7, L"Add Thick Vertical Edge", gcnew EventHandler( this, &DataGridViewColumnDemo::Button7_Click ) );
+      AddButton( Button8, L"Style and Number Columns", gcnew EventHandler( this, &DataGridViewColumnDemo::Button8_Click ) );
+      AddButton( Button9, L"Change Column Header Text", gcnew EventHandler( this, &DataGridViewColumnDemo::Button9_Click ) );
+      AddButton( Button10, L"Swap First and Last Columns", gcnew EventHandler( this, &DataGridViewColumnDemo::Button10_Click ) );
+   }
+
+   void AdjustDataGridViewSizing()
+   {
+      dataGridView->ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+   }
+
+
+   //Set the minimum width.
+   void Button4_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      DataGridViewColumn^ column = dataGridView->Columns[ 1 ];
+      column->MinimumWidth = 40;
+   }
+
+
+   // Set the width.
+   void Button5_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      DataGridViewColumn^ column = dataGridView->Columns[ 0 ];
+      column->Width = 60;
+   }
+
+
+   // AutoSize the third column.
+   void Button6_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      DataGridViewColumn^ column = dataGridView->Columns[ 2 ];
+      column->AutoSizeMode = DataGridViewAutoSizeColumnMode::DisplayedCells;
+   }
+
+
+   // Set the vertical edge.
+   void Button7_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      int thirdColumn = 2;
+      
+      //        int edgeThickness = 5;
+      DataGridViewColumn^ column = dataGridView->Columns[ thirdColumn ];
+      column->DividerWidth = 10;
+   }
+
+
+   // Style and number columns.
+   void Button8_Click( Object^ /*sender*/, EventArgs^ /*args*/ )
+   {
+      DataGridViewCellStyle^ style = gcnew DataGridViewCellStyle;
+      style->Alignment = DataGridViewContentAlignment::MiddleCenter;
+      style->ForeColor = Color::IndianRed;
+      style->BackColor = Color::Ivory;
+      IEnumerator^ myEnum1 = dataGridView->Columns->GetEnumerator();
+      while ( myEnum1->MoveNext() )
+      {
+         DataGridViewColumn^ column = safe_cast<DataGridViewColumn^>(myEnum1->Current);
+         column->HeaderCell->Value = column->Index.ToString();
+         column->HeaderCell->Style = style;
+      }
+   }
+
+
+   // Change the text in the column header.
+   void Button9_Click( Object^ /*sender*/, EventArgs^ /*args*/ )
+   {
+      IEnumerator^ myEnum2 = dataGridView->Columns->GetEnumerator();
+      while ( myEnum2->MoveNext() )
+      {
+         DataGridViewColumn^ column = safe_cast<DataGridViewColumn^>(myEnum2->Current);
+         column->HeaderText = String::Concat( L"Column ", column->Index.ToString() );
+      }
+   }
+
+
+   // Swap the last column with the first.
+   void Button10_Click( Object^ /*sender*/, EventArgs^ /*args*/ )
+   {
+      DataGridViewColumnCollection^ columnCollection = dataGridView->Columns;
+      DataGridViewColumn^ firstDisplayedColumn = columnCollection->GetFirstColumn( DataGridViewElementStates::Visible );
+      DataGridViewColumn^ lastDisplayedColumn = columnCollection->GetLastColumn( DataGridViewElementStates::Visible, DataGridViewElementStates::None );
+      int firstColumn_sIndex = firstDisplayedColumn->DisplayIndex;
+      firstDisplayedColumn->DisplayIndex = lastDisplayedColumn->DisplayIndex;
+      lastDisplayedColumn->DisplayIndex = firstColumn_sIndex;
+   }
+
+
+   // Updated the criteria label.
+   void dataGridView_AutoSizeColumnModeChanged( Object^ /*sender*/, DataGridViewAutoSizeColumnModeEventArgs^ args )
+   {
+      args->Column->DataGridView->Parent->Controls[ L"flowlayoutpanel" ]->Controls[ criteriaLabel ]->Text = String::Concat( criteriaLabel, args->Column->AutoSizeMode );
+   }
+#pragma endregion 
+
 };
+
+int main()
+{
+   DataGridViewColumnDemo::Main();
+}

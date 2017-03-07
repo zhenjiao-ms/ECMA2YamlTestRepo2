@@ -1,8 +1,9 @@
- [ReadOnly(true)]
+
+ [MergableProperty(true)]
  public int MyProperty {
     get {
        // Insert code here.
-       return 0;
+      return 0;
     }
     set {
        // Insert code here.

@@ -1,132 +1,105 @@
-<%@ Page Language="VB" AutoEventWireup="True" %>
+<%@ Page Language="VB" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>Button CommandName Example</title>
-<script runat="server">
 
-      Sub CommandBtn_Click(sender As Object, e As CommandEventArgs) 
+<script language="VB" runat="server">
+    Dim Count As Integer = 1
 
-         Select e.CommandName
+    Sub Page_Load(Sender As Object, e As EventArgs)
+        If Not IsPostBack Then
+            Dim values As New ArrayList()
+            
+            values.Add(New PositionData("Microsoft", "Msft"))
+            values.Add(New PositionData("Intel", "Intc"))
+            values.Add(New PositionData("Dell", "Dell"))
+            
+            Repeater1.DataSource = values
+            Repeater1.DataBind()
+        End If
+    End Sub
 
-            Case "Sort"
-
-               ' Call the method to sort the list.
-               Sort_List(CType(e.CommandArgument, String))
-
-            Case "Submit"
-
-               ' Display a message for the Submit button being clicked.
-               Message.Text = "You clicked the Submit button"
-
-               ' Test whether the command argument is an empty string ("").
-               If CType(e.CommandArgument , String) = "" Then
-              
-                  ' End the message.
-                  Message.Text &= "."
-               
-               Else
-               
-                  ' Display an error message for the command argument. 
-                  Message.Text &= ", however the command argument is not recogized."
-               
-               End If                
-
-            Case Else
-
-               ' The command name is not recognized. Display an error message.
-               Message.Text = "Command name not recogized."
-
-         End Select
-
-      End Sub
-
-      Sub Sort_List(commandArgument As String)
-
-         Select commandArgument
-
-            Case "Ascending"
- 
-               ' Insert code to sort the list in ascending order here.
-               Message.Text = "You clicked the Sort Ascending button."
-
-            Case "Descending"
-              
-               ' Insert code to sort the list in descending order here.
-               Message.Text = "You clicked the Sort Descending button."
-
-            Case Else
+    Sub R1_ItemCreated(Sender As Object, e As RepeaterItemEventArgs)
+        Dim iTypeText As String = ""
         
-               ' The command argument is not recognized. Display an error message.
-               Message.Text = "Command argument not recogized."
-
-         End Select
-
-      End Sub
-
-   </script>
-
+        Select Case e.Item.ItemType
+            Case ListItemType.Item
+                iTypeText = "Item"
+            Case ListItemType.AlternatingItem
+                iTypeText = "AlternatingItem"
+            Case ListItemType.Header
+                iTypeText = "Header"
+            Case ListItemType.Footer
+                iTypeText = "Footer"
+            Case ListItemType.Separator
+                iTypeText = "Separator"
+        End Select
+        Count = Count + 1
+        Label1.Text &= "(" & Count & ") A Repeater " & _
+            iTypeText & " has been created; <br />"
+    End Sub
+ 
+    Public Class PositionData
+        
+        Private myName As String
+        Private myTicker As String        
+        
+        Public Sub New(newName As String, newTicker As String)
+            Me.myName = newName
+            Me.myTicker = newTicker
+        End Sub        
+        
+        Public ReadOnly Property Name() As String
+            Get
+                Return myName
+            End Get
+        End Property        
+        
+        Public ReadOnly Property Ticker() As String
+            Get
+                Return myTicker
+            End Get
+        End Property
+    End Class
+    
+</script>
+ 
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Repeater Example</title>
 </head>
- 
 <body>
+    <form id="form1" runat="server">
 
-   <form id="form1" runat="server">
-
-      <h3>Button CommandName Example</h3>
-
-      Click on one of the command buttons.
-
-      <br /><br />
+    <h3>Repeater Example</h3>
  
-      <asp:Button id="Button1"
-           Text="Sort Ascending"
-           CommandName="Sort"
-           CommandArgument="Ascending"
-           OnCommand="CommandBtn_Click" 
-           runat="server"/>
-
-      &nbsp;
-
-      <asp:Button id="Button2"
-           Text="Sort Descending"
-           CommandName="Sort"
-           CommandArgument="Descending"
-           OnCommand="CommandBtn_Click" 
-           runat="server"/>
-
-      <br /><br />
-
-      <asp:Button id="Button3"
-           Text="Submit"
-           CommandName="Submit"
-           OnCommand="CommandBtn_Click" 
-           runat="server"/>
-
-      &nbsp;
-
-      <asp:Button id="Button4"
-           Text="Unknown Command Name"
-           CommandName="UnknownName"
-           CommandArgument="UnknownArgument"
-           OnCommand="CommandBtn_Click" 
-           runat="server"/>
-
-      &nbsp;
-
-      <asp:Button id="Button5"
-           Text="Submit Unknown Command Argument"
-           CommandName="Submit"
-           CommandArgument="UnknownArgument"
-           OnCommand="CommandBtn_Click" 
-           runat="server"/>
-       
-      <br /><br />
-
-      <asp:Label id="Message" runat="server"/>
- 
-   </form>
- 
-</body>
-</html>
+       <p style="font-weight: bold">Repeater1:</p>
+         
+       <asp:Repeater ID="Repeater1" OnItemCreated="R1_ItemCreated" runat="server">
+          <HeaderTemplate>
+             <table border="1">
+                <tr>
+                   <td style="font-weight:bold">Company</td>
+                   <td style="font-weight:bold">Symbol</td>
+                </tr>
+          </HeaderTemplate>
+             
+          <ItemTemplate>
+             <tr>
+                <td> <%# DataBinder.Eval(Container.DataItem, "Name") %> </td>
+                <td> <%# DataBinder.Eval(Container.DataItem, "Ticker") %> </td>
+             </tr>
+          </ItemTemplate>
+             
+          <FooterTemplate>
+             </table>
+          </FooterTemplate>
+             
+       </asp:Repeater>
+       <br />
+         
+       <asp:Label ID="Label1" Font-Names="Verdana" 
+          ForeColor="Green" Font-Size="10pt" Runat="server"/>
+    </form>
+ </body>
+ </html>

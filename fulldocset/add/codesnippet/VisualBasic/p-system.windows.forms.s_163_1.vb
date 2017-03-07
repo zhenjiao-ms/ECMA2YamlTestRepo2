@@ -1,23 +1,39 @@
-Private Sub ListView1_SearchForVirtualItem(sender as Object, e as SearchForVirtualItemEventArgs) _ 
-     Handles ListView1.SearchForVirtualItem
+   Private Sub CreateMyStatusBar()
+      ' Create a StatusBar control.
+      Dim statusBar1 As New StatusBar()
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "IsTextSearch", e.IsTextSearch)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "IncludeSubItemsInSearch", e.IncludeSubItemsInSearch)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Index", e.Index)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "IsPrefixSearch", e.IsPrefixSearch)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Text", e.Text)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "StartingPoint", e.StartingPoint)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Direction", e.Direction)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "StartIndex", e.StartIndex)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"SearchForVirtualItem Event")
+      ' Create two StatusBarPanel objects to display in the StatusBar.
+      Dim panel1 As New StatusBarPanel()
+      Dim panel2 As New StatusBarPanel()
 
-End Sub
+      ' Display the first panel with a sunken border style.
+      panel1.BorderStyle = StatusBarPanelBorderStyle.Sunken
+
+      ' Initialize the text of the panel.
+      panel1.Text = "Ready..."
+
+      ' Set the AutoSize property to use all remaining space on the StatusBar.
+      panel1.AutoSize = StatusBarPanelAutoSize.Spring
+      
+      ' Display the second panel with a raised border style.
+      panel2.BorderStyle = StatusBarPanelBorderStyle.Raised
+      
+      ' Create ToolTip text that displays the time the application was started.
+      panel2.ToolTipText = "Started: " & System.DateTime.Now.ToShortTimeString()
+
+      ' Set the text of the panel to the current date.
+      panel2.Text = System.DateTime.Today.ToLongDateString()
+
+      ' Set the AutoSize property to size the panel to the size of the contents.
+      panel2.AutoSize = StatusBarPanelAutoSize.Contents
+
+      ' Display panels in the StatusBar control.
+      statusBar1.ShowPanels = True
+
+      ' Add both panels to the StatusBarPanelCollection of the StatusBar.			
+      statusBar1.Panels.Add(panel1)
+      statusBar1.Panels.Add(panel2)
+
+      ' Add the StatusBar to the form.
+      Me.Controls.Add(statusBar1)
+   End Sub

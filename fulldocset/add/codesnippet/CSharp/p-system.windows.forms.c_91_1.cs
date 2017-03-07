@@ -1,17 +1,9 @@
-public MyForm()
+private void MoveCursor()
 {
-   // Create a 'MyCheckBox' control and 
-   // display an image on it.
-   MyCustomControls.MyCheckBox myCheckBox = 
-      new MyCustomControls.MyCheckBox();
-   myCheckBox.Location = new Point(5,5);
-   myCheckBox.Image = Image.FromFile(
-     Application.CommonAppDataPath + "\\Preview.jpg");
+   // Set the Current cursor, move the cursor's Position,
+   // and set its clipping rectangle to the form. 
 
-   // Set the AccessibleName property
-   // since there is no Text displayed.
-   myCheckBox.AccessibleName = "Preview";
-   myCheckBox.AccessibleDescription =
-     "A toggle button used to show the document preview.";
-   this.Controls.Add(myCheckBox);
+   this.Cursor = new Cursor(Cursor.Current.Handle);
+   Cursor.Position = new Point(Cursor.Position.X - 50, Cursor.Position.Y - 50);
+   Cursor.Clip = new Rectangle(this.Location, this.Size);
 }

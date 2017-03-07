@@ -1,70 +1,109 @@
 Imports System
+Imports System.IO
 Imports System.Security.Cryptography
 Imports System.Text
 
 
-Class Program
 
-    Shared Sub Main(ByVal args() As String)
-        Dim [source] As String = "Hello World!"
-        Using md5Hash As MD5 = MD5.Create()
 
-            Dim hash As String = GetMd5Hash(md5Hash, source)
+Class Alice
 
-            Console.WriteLine("The MD5 hash of " + source + " is: " + hash + ".")
+    Public Shared Sub Main(ByVal args() As String)
+        Dim bob As New Bob()
+        Try
+            Dim rsaKey As New RSACryptoServiceProvider()
+            Try
+                ' Get Bob's public key
+                rsaKey.ImportCspBlob(bob.key)
+                Dim encryptedSessionKey As Byte() = Nothing
+                Dim encryptedMessage As Byte() = Nothing
+                Dim iv As Byte() = Nothing
+                Send(rsaKey, "Secret message", iv, encryptedSessionKey, encryptedMessage)
+                bob.Receive(iv, encryptedSessionKey, encryptedMessage)
+            Finally
+                rsaKey.Dispose()
+            End Try
+        Finally
+            bob.Dispose()
+        End Try
 
-            Console.WriteLine("Verifying the hash...")
-
-            If VerifyMd5Hash(md5Hash, [source], hash) Then
-                Console.WriteLine("The hashes are the same.")
-            Else
-                Console.WriteLine("The hashes are not same.")
-            End If
-        End Using
     End Sub 'Main
 
 
+    Private Shared Sub Send(ByVal key As RSA, ByVal secretMessage As String, ByRef iv() As Byte, ByRef encryptedSessionKey() As Byte, ByRef encryptedMessage() As Byte)
+        Dim aes = New AesCryptoServiceProvider()
+        Try
+            iv = aes.IV
 
-    Shared Function GetMd5Hash(ByVal md5Hash As MD5, ByVal input As String) As String
+            ' Encrypt the session key
+            Dim keyFormatter As New RSAPKCS1KeyExchangeFormatter(key)
+            encryptedSessionKey = keyFormatter.CreateKeyExchange(aes.Key, GetType(Aes))
 
-        ' Convert the input string to a byte array and compute the hash.
-        Dim data As Byte() = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input))
+            ' Encrypt the message
+            Dim ciphertext As New MemoryStream()
+            Try
+                Dim cs As New CryptoStream(ciphertext, aes.CreateEncryptor(), CryptoStreamMode.Write)
+                Try
+                    Dim plaintextMessage As Byte() = Encoding.UTF8.GetBytes(secretMessage)
+                    cs.Write(plaintextMessage, 0, plaintextMessage.Length)
+                    cs.Close()
 
-        ' Create a new Stringbuilder to collect the bytes
-        ' and create a string.
-        Dim sBuilder As New StringBuilder()
+                    encryptedMessage = ciphertext.ToArray()
+                Finally
+                    cs.Dispose()
+                End Try
+            Finally
+                ciphertext.Dispose()
+            End Try
+        Finally
+            aes.Dispose()
+        End Try
 
-        ' Loop through each byte of the hashed data 
-        ' and format each one as a hexadecimal string.
-        Dim i As Integer
-        For i = 0 To data.Length - 1
-            sBuilder.Append(data(i).ToString("x2"))
-        Next i
+    End Sub 'Send 
+End Class 'Alice
 
-        ' Return the hexadecimal string.
-        Return sBuilder.ToString()
+Public Class Bob
+    Implements IDisposable
+    Public key() As Byte
+    Private rsaKey As New RSACryptoServiceProvider()
 
-    End Function 'GetMd5Hash
+    Public Sub New()
+        key = rsaKey.ExportCspBlob(False)
 
+    End Sub 'New
 
-    ' Verify a hash against a string.
-    Shared Function VerifyMd5Hash(ByVal md5Hash As MD5, ByVal input As String, ByVal hash As String) As Boolean
-        ' Hash the input.
-        Dim hashOfInput As String = GetMd5Hash(md5Hash, input)
+    Public Sub Receive(ByVal iv() As Byte, ByVal encryptedSessionKey() As Byte, ByVal encryptedMessage() As Byte)
 
-        ' Create a StringComparer an compare the hashes.
-        Dim comparer As StringComparer = StringComparer.OrdinalIgnoreCase
+        Dim aes = New AesCryptoServiceProvider()
+        Try
+            aes.IV = iv
 
-        If 0 = comparer.Compare(hashOfInput, hash) Then
-            Return True
-        Else
-            Return False
-        End If
+            ' Decrypt the session key
+            Dim keyDeformatter As New RSAPKCS1KeyExchangeDeformatter(rsaKey)
+            aes.Key = keyDeformatter.DecryptKeyExchange(encryptedSessionKey)
 
-    End Function 'VerifyMd5Hash
-End Class 'Program 
-' This code example produces the following output:
-'
-' The MD5 hash of Hello World! is: ed076287532e86365e841e92bfc50d8c.
-' Verifying the hash...
-' The hashes are the same.
+            ' Decrypt the message
+            Dim plaintext As New MemoryStream()
+            Try
+                Dim cs As New CryptoStream(plaintext, aes.CreateDecryptor(), CryptoStreamMode.Write)
+                Try
+                    cs.Write(encryptedMessage, 0, encryptedMessage.Length)
+                    cs.Close()
+
+                    Dim message As String = Encoding.UTF8.GetString(plaintext.ToArray())
+                    Console.WriteLine(message)
+                Finally
+                    cs.Dispose()
+                End Try
+            Finally
+                plaintext.Dispose()
+            End Try
+        Finally
+            aes.Dispose()
+        End Try
+
+    End Sub 'Receive
+    Public Overloads Sub Dispose() Implements IDisposable.Dispose
+        rsaKey.Dispose()
+    End Sub 'Dispose
+End Class 'Bob

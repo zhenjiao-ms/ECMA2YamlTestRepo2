@@ -1,15 +1,21 @@
-        private void GetDataPresent3() 
+        private void GetDataPresent2() 
         {
-            // Creates a new data object using a string and the Text format.
-            DataObject myDataObject = new DataObject(DataFormats.Text, "My String");
+            // Creates a component to store in the data object.
+            Component myComponent = new Component();
+
+            // Creates a new data object and assigns it the component.
+            DataObject myDataObject = new DataObject(myComponent);
  
-            // Checks whether the string can be displayed with autoConvert equal to false.
-            if(myDataObject.GetDataPresent("System.String", false)) 
-                MessageBox.Show(myDataObject.GetData("System.String", false).ToString(), "Message #1");
+            // Creates a type to store the type of data.
+            Type myType = myComponent.GetType();
+ 
+            // Checks whether the specified data type exists in the object.
+            if (myDataObject.GetDataPresent(myType))
+            {
+                MessageBox.Show("The specified data is stored in the data object.");
+                // Displays the type of data.
+                textBox1.Text = "The data type is " + myDataObject.GetData(myType).GetType().Name + ".";
+            }
             else
-                MessageBox.Show("Cannot convert data to the specified format with autoConvert set to false.", "Message #1");
- 
-            // Displays the string with autoConvert equal to true.
-            MessageBox.Show("Now that autoConvert is true, you can convert " + 
-                myDataObject.GetData("System.String", true).ToString() + " to string format.","Message #2");
+                MessageBox.Show("The specified data is not stored in the data object.");
         }

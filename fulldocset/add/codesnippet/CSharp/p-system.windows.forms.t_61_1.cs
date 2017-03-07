@@ -1,55 +1,40 @@
-        // This method defines the painting behavior of the control.
-        // It performs the following operations:
-        //
-        // Computes the layout of the item's image and text.
-        // Draws the item's background image.
-        // Draws the item's image.
-        // Draws the item's text.
-        //
-        // Drawing operations are implemented in the 
-        // RolloverItemRenderer class.
-        protected override void OnPaint(PaintEventArgs e)
+    public class CustomizedTreeView : TreeView
+    {
+        public CustomizedTreeView()
         {
-            base.OnPaint(e);
+            // Customize the TreeView control by setting various properties.
+            BackColor = System.Drawing.Color.CadetBlue;
+            FullRowSelect = true;
+            HotTracking = true;
+            Indent = 34;
+            ShowPlusMinus = false;
 
-            if (this.Owner != null)
-            {
-                // Find the dimensions of the image and the text 
-                // areas of the item. 
-                this.ComputeImageAndTextLayout();
-
-                // Draw the background. This includes drawing a highlighted 
-                // border when the mouse is in the client area.
-                ToolStripItemRenderEventArgs ea = new ToolStripItemRenderEventArgs(
-                     e.Graphics,
-                     this);
-                this.Owner.Renderer.DrawItemBackground(ea);
-
-                // Draw the item's image. 
-                ToolStripItemImageRenderEventArgs irea =
-                    new ToolStripItemImageRenderEventArgs(
-                    e.Graphics,
-                    this,
-                    imageRect );
-                this.Owner.Renderer.DrawItemImage(irea);
-
-                // If the item is on a drop-down, give its
-                // text a different highlighted color.
-                Color highlightColor = 
-                    this.IsOnDropDown ?
-                    Color.Salmon : SystemColors.ControlLightLight;
-
-                // Draw the text, and highlight it if the 
-                // the rollover state is true.
-                ToolStripItemTextRenderEventArgs rea =
-                    new ToolStripItemTextRenderEventArgs(
-                    e.Graphics,
-                    this,
-                    base.Text,
-                    textRect,
-                    this.rolloverValue ? highlightColor : base.ForeColor,
-                    base.Font,
-                    base.TextAlign);
-                this.Owner.Renderer.DrawItemText(rea);
-            }
+            // The ShowLines property must be false for the FullRowSelect 
+            // property to work.
+            ShowLines = false;
         }
+
+        protected override void OnAfterSelect(TreeViewEventArgs e)
+        {
+            // Confirm that the user initiated the selection.
+            // This prevents the first node from expanding when it is
+            // automatically selected during the initialization of 
+            // the TreeView control.
+            if (e.Action != TreeViewAction.Unknown)
+            {
+                if (e.Node.IsExpanded) 
+                {
+                    e.Node.Collapse();
+                }
+                else 
+                {
+                    e.Node.Expand();
+                }
+            }
+
+            // Remove the selection. This allows the same node to be
+            // clicked twice in succession to toggle the expansion state.
+            SelectedNode = null;
+        }
+
+    }

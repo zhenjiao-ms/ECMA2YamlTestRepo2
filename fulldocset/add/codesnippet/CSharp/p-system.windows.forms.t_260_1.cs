@@ -1,15 +1,40 @@
-private void ToolStripRenderer1_RenderArrow(Object sender, ToolStripArrowRenderEventArgs e) {
+    public class CustomizedTreeView : TreeView
+    {
+        public CustomizedTreeView()
+        {
+            // Customize the TreeView control by setting various properties.
+            BackColor = System.Drawing.Color.CadetBlue;
+            FullRowSelect = true;
+            HotTracking = true;
+            Indent = 34;
+            ShowPlusMinus = false;
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "ArrowRectangle", e.ArrowRectangle );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ArrowColor", e.ArrowColor );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Direction", e.Direction );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Item", e.Item );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "RenderArrow Event" );
-}
+            // The ShowLines property must be false for the FullRowSelect 
+            // property to work.
+            ShowLines = false;
+        }
+
+        protected override void OnAfterSelect(TreeViewEventArgs e)
+        {
+            // Confirm that the user initiated the selection.
+            // This prevents the first node from expanding when it is
+            // automatically selected during the initialization of 
+            // the TreeView control.
+            if (e.Action != TreeViewAction.Unknown)
+            {
+                if (e.Node.IsExpanded) 
+                {
+                    e.Node.Collapse();
+                }
+                else 
+                {
+                    e.Node.Expand();
+                }
+            }
+
+            // Remove the selection. This allows the same node to be
+            // clicked twice in succession to toggle the expansion state.
+            SelectedNode = null;
+        }
+
+    }

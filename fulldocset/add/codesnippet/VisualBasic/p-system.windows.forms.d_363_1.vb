@@ -1,15 +1,21 @@
-    Private Sub AddButtonColumn()
-        Dim buttons As New DataGridViewButtonColumn()
-        With buttons
-            .HeaderText = "Sales"
-            .Text = "Sales"
-            .UseColumnTextForButtonValue = True
-            .AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            .FlatStyle = FlatStyle.Standard
-            .CellTemplate.Style.BackColor = Color.Honeydew
-            .DisplayIndex = 0
-        End With
+    Private Shared Sub SetAlternateChoicesUsingItems( _
+        ByVal comboboxColumn As DataGridViewComboBoxColumn)
 
-        DataGridView1.Columns.Add(buttons)
+        comboboxColumn.Items.AddRange("Mr.", "Ms.", "Mrs.", "Dr.")
 
     End Sub
+
+    Private Function CreateComboBoxColumn() _
+        As DataGridViewComboBoxColumn
+        Dim column As New DataGridViewComboBoxColumn()
+
+        With column
+            .DataPropertyName = ColumnName.TitleOfCourtesy.ToString()
+            .HeaderText = ColumnName.TitleOfCourtesy.ToString()
+            .DropDownWidth = 160
+            .Width = 90
+            .MaxDropDownItems = 3
+            .FlatStyle = FlatStyle.Flat
+        End With
+        Return column
+    End Function

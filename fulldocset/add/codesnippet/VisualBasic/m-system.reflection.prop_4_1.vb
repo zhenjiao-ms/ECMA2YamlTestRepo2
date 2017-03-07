@@ -1,13 +1,11 @@
 Imports System
 Imports System.Reflection
-Imports System.Collections
 Imports Microsoft.VisualBasic
 
-' A test class that has some properties.
-Public Class MyProperty
-
-    ' Define a simple string property.
+' Define a property.
+Public Class Myproperty
     Private myCaption As String = "A Default caption"
+
     Public Property Caption() As String
         Get
             Return myCaption
@@ -18,47 +16,36 @@ Public Class MyProperty
             End If
         End Set
     End Property
-
-    ' A very limited indexed default property that gets or
-    ' sets one of four string values.
-    Private strings() As String = {"abc", "def", "ghi", "jkl"}
-    Public Default Property Item(ByVal Index As Integer) As String
-        Get
-            Return strings(Index)
-        End Get
-        Set
-            strings(Index) = Value
-        End Set 
-    End Property
 End Class
 
-Public Class Example
+Class Mypropertyinfo
 
     Public Shared Function Main() As Integer
+        Console.WriteLine(ControlChars.CrLf & "Reflection.PropertyInfo")
 
-        ' Get the type and PropertyInfo.
-        Dim t As Type = GetType(MyProperty)
-        Dim pi As PropertyInfo = t.GetProperty("Caption")
+        ' Get the type and PropertyInfo for two separate properties.
+        Dim MyTypea As Type = Type.GetType("Myproperty")
+        Dim Mypropertyinfoa As PropertyInfo = MyTypea.GetProperty("Caption")
+        Dim MyTypeb As Type = Type.GetType("System.Reflection.MethodInfo")
+        Dim Mypropertyinfob As PropertyInfo = MyTypeb.GetProperty("MemberType")
 
-        ' Get an array containing the parameters (if any).
-        Dim params As ParameterInfo() = pi.GetIndexParameters()
-        Console.WriteLine(vbCrLf & t.FullName & "." & pi.Name & _
-           " has " & params.GetLength(0) & " parameters.")
+        ' Get and display the GetGetMethod Method for each property.
+        Dim Mygetmethodinfoa As MethodInfo = Mypropertyinfoa.GetGetMethod()
+        Console.WriteLine("GetAccessor for " & _
+           Mypropertyinfoa.Name & " returns a " & _
+           Mygetmethodinfoa.ReturnType.ToString())
+        Dim Mygetmethodinfob As MethodInfo = Mypropertyinfob.GetGetMethod()
+        Console.WriteLine("GetAccessor for " & _
+           Mypropertyinfob.Name & " returns a " & _
+           Mygetmethodinfob.ReturnType.ToString())
 
-        ' Display a property that has parameters.
-        pi = t.GetProperty("Item")
-        params = pi.GetIndexParameters()
-        Console.WriteLine(t.FullName & "." & pi.Name & _
-           " has " & params.GetLength(0) & " parameters.")
-        For Each p As ParameterInfo In params
-            Console.WriteLine("   Parameter: " & p.Name)
-        Next
-
+        ' Display the GetGetMethod without using the MethodInfo.
+        Console.WriteLine(MyTypea.FullName & "." & _
+           Mypropertyinfoa.Name & " GetGetMethod - " & _
+           Mypropertyinfoa.GetGetMethod().ToString())
+        Console.WriteLine(MyTypeb.FullName & "." & _
+           Mypropertyinfob.Name & " GetGetMethod - " & _
+           Mypropertyinfob.GetGetMethod().ToString())
         Return 0
     End Function
 End Class
-
-' This example produces the following output:
-' MyProperty.Caption has 0 parameters.
-' MyProperty.Item has 1 parameters.
-'    Parameter: Index

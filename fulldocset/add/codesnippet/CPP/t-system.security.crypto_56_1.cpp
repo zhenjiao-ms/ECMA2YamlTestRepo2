@@ -3,18 +3,18 @@ using namespace System::IO;
 using namespace System::Security::Cryptography;
 
 // Computes a keyed hash for a source file, creates a target file with the keyed hash
-// prepended to the contents of the source file, then decrypts the file and compares
-// the source and the decrypted files.
+// prepended to the contents of the source file, then decodes the file and compares
+// the source and the decoded files.
 void EncodeFile( array<Byte>^key, String^ sourceFile, String^ destFile )
 {
    
    // Initialize the keyed hash object.
-   HMACMD5^ myhmacMD5 = gcnew HMACMD5( key );
+   HMACSHA256^ myhmacsha256 = gcnew HMACSHA256( key );
    FileStream^ inStream = gcnew FileStream( sourceFile,FileMode::Open );
    FileStream^ outStream = gcnew FileStream( destFile,FileMode::Create );
    
    // Compute the hash of the input file.
-   array<Byte>^hashValue = myhmacMD5->ComputeHash( inStream );
+   array<Byte>^hashValue = myhmacsha256->ComputeHash( inStream );
    
    // Reset inStream to the beginning of the file.
    inStream->Position = 0;
@@ -36,7 +36,7 @@ void EncodeFile( array<Byte>^key, String^ sourceFile, String^ destFile )
    }
    while ( bytesRead > 0 );
 
-   myhmacMD5->Clear();
+   myhmacsha256->Clear();
    
    // Close the streams
    inStream->Close();
@@ -46,15 +46,15 @@ void EncodeFile( array<Byte>^key, String^ sourceFile, String^ destFile )
 
 
 
-// Decrypt the encoded file and compare to original file.
+// Decode the encoded file and compare to original file.
 bool DecodeFile( array<Byte>^key, String^ sourceFile )
 {
    
    // Initialize the keyed hash object. 
-   HMACMD5^ hmacMD5 = gcnew HMACMD5( key );
+   HMACSHA256^ hmacsha256 = gcnew HMACSHA256( key );
    
    // Create an array to hold the keyed hash value read from the file.
-   array<Byte>^storedHash = gcnew array<Byte>(hmacMD5->HashSize / 8);
+   array<Byte>^storedHash = gcnew array<Byte>(hmacsha256->HashSize / 8);
    
    // Create a FileStream for the source file.
    FileStream^ inStream = gcnew FileStream( sourceFile,FileMode::Open );
@@ -65,7 +65,7 @@ bool DecodeFile( array<Byte>^key, String^ sourceFile )
    // Compute the hash of the remaining contents of the file.
    // The stream is properly positioned at the beginning of the content, 
    // immediately after the stored hash value.
-   array<Byte>^computedHash = hmacMD5->ComputeHash( inStream );
+   array<Byte>^computedHash = hmacsha256->ComputeHash( inStream );
    
    // compare the computed hash with the stored value
    bool err = false;
@@ -92,8 +92,8 @@ bool DecodeFile( array<Byte>^key, String^ sourceFile )
 
 int main()
 {
-   String^ usageText = "Usage: HMACMD5 inputfile.txt encryptedfile.hsh\nYou must specify the two file names. Only the first file must exist.\n";
    array<String^>^Fileargs = Environment::GetCommandLineArgs();
+   String^ usageText = "Usage: HMACSHA256 inputfile.txt encodedfile.hsh\nYou must specify the two file names. Only the first file must exist.\n";
    
    //If no file names are specified, write usage text.
    if ( Fileargs->Length < 3 )

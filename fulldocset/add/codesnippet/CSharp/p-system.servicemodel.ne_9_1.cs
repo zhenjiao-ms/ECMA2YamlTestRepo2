@@ -1,1 +1,1 @@
-		string scheme = binding.Scheme;
+	    bool portSharingEnabled = binding.PortSharingEnabled;

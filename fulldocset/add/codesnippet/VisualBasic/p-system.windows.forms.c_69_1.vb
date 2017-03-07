@@ -1,23 +1,18 @@
-    Private Sub WhatIsChecked_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles WhatIsChecked.Click
-        ' Display in a message box all the items that are checked.
-        Dim indexChecked As Integer
-        Dim itemChecked As Object
-        Const quote As String = """"
-
-        ' First show the index and check state of all selected items.
-        For Each indexChecked In CheckedListBox1.CheckedIndices
-            ' The indexChecked variable contains the index of the item.
-            MessageBox.Show("Index#: " + indexChecked.ToString() + ", is checked. Checked state is:" + _
-                            CheckedListBox1.GetItemCheckState(indexChecked).ToString() + ".")
-        Next
-
-        ' Next show the object title and check state for each item selected.
-        For Each itemChecked In CheckedListBox1.CheckedItems
-
-            ' Use the IndexOf method to get the index of an item.
-            MessageBox.Show("Item with title: " + quote + itemChecked.ToString() + quote + _
-                            ", is checked. Checked state is: " + _
-                            CheckedListBox1.GetItemCheckState(CheckedListBox1.Items.IndexOf(itemChecked)).ToString() + ".")
-        Next
-
-    End Sub
+' Add a GroupBox to a form and set some of its common properties.
+Private Sub AddMyGroupBox()
+   ' Create a GroupBox and add a TextBox to it.
+   Dim groupBox1 As New GroupBox()
+   Dim textBox1 As New TextBox()
+   textBox1.Location = New Point(15, 15)
+   groupBox1.Controls.Add(textBox1)
+   
+   ' Set the Text and Dock properties of the GroupBox.
+   groupBox1.Text = "MyGroupBox"
+   groupBox1.Dock = DockStyle.Top
+   
+   ' Disable the GroupBox (which disables all its child controls)
+   groupBox1.Enabled = False
+   
+   ' Add the Groupbox to the form.
+   Me.Controls.Add(groupBox1)
+End Sub

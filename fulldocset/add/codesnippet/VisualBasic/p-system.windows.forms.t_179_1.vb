@@ -1,22 +1,15 @@
-    Friend WithEvents imageButton As ToolStripButton
+Private Sub TabControl1_Selecting(sender as Object, e as TabControlCancelEventArgs) _ 
+     Handles TabControl1.Selecting
 
-    Private Sub InitializeImageButtonWithToolTip()
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "TabPage", e.TabPage)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "TabPageIndex", e.TabPageIndex)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Action", e.Action)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Cancel", e.Cancel)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"Selecting Event")
 
-        ' Construct the button and set the image-related properties.
-        imageButton = New ToolStripButton()
-        imageButton.Image = New Bitmap(GetType(Timer), "Timer.bmp")
-        imageButton.ImageScaling = ToolStripItemImageScaling.SizeToFit
-
-        ' Set the background color of the image to be transparent.
-        imageButton.ImageTransparentColor = Color.FromArgb(0, 255, 0)
-
-        ' Show ToolTip text, set custom ToolTip text, and turn
-        ' off the automatic ToolTips.
-        toolStrip1.ShowItemToolTips = True
-        imageButton.ToolTipText = "Click for the current time"
-        imageButton.AutoToolTip = False
-
-        ' Add the button to the ToolStrip.
-        toolStrip1.Items.Add(imageButton)
-
-    End Sub
+End Sub

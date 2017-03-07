@@ -1,7 +1,9 @@
-   // Hide a band of cells.
-   void Button6_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   void CustomizeCellsInThirdColumn()
    {
-      DataGridViewBand^ band = dataGridView->Rows[ 3 ];
-      band->Visible = false;
+      int thirdColumn = 2;
+      DataGridViewColumn^ column = dataGridView->Columns[ thirdColumn ];
+      DataGridViewCell^ cell = gcnew DataGridViewTextBoxCell;
+      cell->Style->BackColor = Color::Wheat;
+      column->CellTemplate = cell;
    }
 

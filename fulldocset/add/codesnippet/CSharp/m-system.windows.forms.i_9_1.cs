@@ -1,9 +1,17 @@
-        private void GetData1() 
+        public void AddStripToCollection()
         {
-            // Creates a new data object using a string and the text format.
-            string myString = "My text string";
-            DataObject myDataObject = new DataObject(DataFormats.Text, myString);
+            // Add the image strip.
+            Bitmap bitmaps = new Bitmap(typeof(PrintPreviewDialog), "PrintPreviewStrip.bmp");
+            imageList1.Images.AddStrip(bitmaps);
+            
+            // Iterate through the images and display them on the form.
+            for (int i = 0; i < imageList1.Images.Count; i++) {
+            
+                imageList1.Draw(this.CreateGraphics(), new Point(10,10), i);
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(1000);
+                
+            }
+            
 
-            // Displays the string in a text box.
-            textBox1.Text = myDataObject.GetData(DataFormats.Text).ToString();
         }

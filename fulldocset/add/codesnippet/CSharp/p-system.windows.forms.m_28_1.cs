@@ -1,14 +1,7 @@
- private void InitializeMyMainMenu()
+ public void SwitchMyMenuItems()
  {
-    // Create the MainMenu and the MenuItem to add.
-    MainMenu mainMenu1 = new MainMenu();
-    MenuItem menuItem1 = new MenuItem("&File");
-    
-    /* Use the MenuItems property to call the Add method
-       to add the MenuItem to the MainMenu menu item collection. */
-    mainMenu1.MenuItems.Add (menuItem1);
- 
-    // Assign mainMenu1 to the form.
-    this.Menu = mainMenu1;
+    // Move menuItem1 down one position in the menu order.
+    menuItem1.Index = menuItem1.Index + 1;
+    // Move menuItem2 up one position in the menu order.
+    menuItem2.Index = menuItem2.Index - 1;
  }
- 

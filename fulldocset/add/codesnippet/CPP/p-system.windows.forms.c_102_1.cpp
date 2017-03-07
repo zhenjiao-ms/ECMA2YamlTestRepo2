@@ -1,29 +1,23 @@
-      // Add a button to a form and set some of its common properties.
-   private:
-      void AddMyButton()
+public:
+   void DisplayScrollBars()
+   {
+      // Display or hide the scroll bars based upon  
+      // whether the image is larger than the PictureBox.
+      if ( pictureBox1->Width > pictureBox1->Image->Width )
       {
-         // Create a button and add it to the form.
-         Button^ button1 = gcnew Button;
-
-         // Anchor the button to the bottom right corner of the form
-         button1->Anchor = static_cast<AnchorStyles>(AnchorStyles::Bottom | AnchorStyles::Right);
-
-         // Assign a background image.
-         button1->BackgroundImage = imageList1->Images[ 0 ];
-
-         // Specify the layout style of the background image. Tile is the default.
-         button1->BackgroundImageLayout = ImageLayout::Center;
-
-         // Make the button the same size as the image.
-         button1->Size = button1->BackgroundImage->Size;
-
-         // Set the button's TabIndex and TabStop properties.
-         button1->TabIndex = 1;
-         button1->TabStop = true;
-
-         // Add a delegate to handle the Click event.
-         button1->Click += gcnew System::EventHandler( this, &Form1::button1_Click );
-
-         // Add the button to the form.
-         this->Controls->Add( button1 );
+         hScrollBar1->Visible = false;
       }
+      else
+      {
+         hScrollBar1->Visible = true;
+      }
+
+      if ( pictureBox1->Height > pictureBox1->Image->Height )
+      {
+         vScrollBar1->Visible = false;
+      }
+      else
+      {
+         vScrollBar1->Visible = true;
+      }
+   }

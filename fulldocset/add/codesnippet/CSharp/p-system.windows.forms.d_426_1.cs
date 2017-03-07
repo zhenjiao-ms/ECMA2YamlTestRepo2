@@ -1,24 +1,16 @@
-            // Draw a custom background and text if the ToolTip is for button2.
-            else if (e.AssociatedControl == button2)
-            {
-                // Draw the custom background.
-                e.Graphics.FillRectangle(SystemBrushes.ActiveCaption, e.Bounds);
+    private void dataGridView1_SortCompare(object sender,
+        DataGridViewSortCompareEventArgs e)
+    {
+        // Try to sort based on the cells in the current column.
+        e.SortResult = System.String.Compare(
+            e.CellValue1.ToString(), e.CellValue2.ToString());
 
-                // Draw the standard border.
-                e.DrawBorder();
-
-                // Draw the custom text.
-                // The using block will dispose the StringFormat automatically.
-                using (StringFormat sf = new StringFormat())
-                {
-                    sf.Alignment = StringAlignment.Center;
-                    sf.LineAlignment = StringAlignment.Center;
-                    sf.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None;
-                    sf.FormatFlags = StringFormatFlags.NoWrap;
-                    using (Font f = new Font("Tahoma", 9))
-                    {
-                        e.Graphics.DrawString(e.ToolTipText, f, 
-                            SystemBrushes.ActiveCaptionText, e.Bounds, sf);
-                    }
-                }
-            }
+        // If the cells are equal, sort based on the ID column.
+        if (e.SortResult == 0 && e.Column.Name != "ID")
+        {
+            e.SortResult = System.String.Compare(
+                dataGridView1.Rows[e.RowIndex1].Cells["ID"].Value.ToString(),
+                dataGridView1.Rows[e.RowIndex2].Cells["ID"].Value.ToString());
+        }
+        e.Handled = true;
+    }

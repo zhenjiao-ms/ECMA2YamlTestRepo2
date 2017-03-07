@@ -1,7 +1,11 @@
-private:
-   void dataGrid1_CurrentCellChange( Object^ /*sender*/, EventArgs^ /*e*/ )
+protected:
+   DataGridCell dgc;
+
+   void GetRect()
    {
       Rectangle rect;
-      rect = dataGrid1->GetCurrentCellBounds();
+      dgc.ColumnNumber = 0;
+      dgc.RowNumber = 0;
+      rect = dataGrid1->GetCellBounds( dgc );
       Console::WriteLine( rect );
    }

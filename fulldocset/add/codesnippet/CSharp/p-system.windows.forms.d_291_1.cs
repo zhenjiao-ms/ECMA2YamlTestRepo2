@@ -1,4 +1,7 @@
-    private void dataGridView1_Sorted(object sender, EventArgs e)
+    // Set height.
+    private void Button5_Click(object sender, System.EventArgs e)
     {
-        this.dataGridView1.FirstDisplayedCell = this.dataGridView1.CurrentCell;
+
+        DataGridViewRow row = dataGridView.Rows[0];
+        row.Height = 15;
     }

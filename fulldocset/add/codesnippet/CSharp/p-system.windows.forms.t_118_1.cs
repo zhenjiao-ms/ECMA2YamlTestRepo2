@@ -1,9 +1,11 @@
-private void button2_Click(object sender, EventArgs e)
-{
-   // Delete the first TreeNode in the collection 
-   // if the Text property is "Node0." 
-   if(this.treeView1.Nodes[0].Text == "Node0")
-   {
-      this.treeView1.Nodes.RemoveAt(0);
-   }
-}
+        // This method shows the drop-down for the first item
+        // in the form's ToolStrip.
+        private void showButton_Click(object sender, EventArgs e)
+        {
+            ToolStripDropDownItem item = this.toolStrip1.Items[0] as ToolStripDropDownItem;
+
+            if (item.HasDropDownItems)
+            {
+                item.ShowDropDown();
+            }
+        }

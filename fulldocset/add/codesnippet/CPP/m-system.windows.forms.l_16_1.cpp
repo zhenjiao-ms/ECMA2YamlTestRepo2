@@ -1,16 +1,19 @@
 private:
-   void FindMySpecificString( String^ searchString )
+   void RemoveTopItems()
    {
-      // Ensure we have a proper string to search for.
-      if ( searchString != String::Empty )
-      {
-         // Find the item in the list and store the index to the item.
-         int index = listBox1->FindStringExact( searchString );
+      // Determine if the currently selected item in the ListBox 
+      // is the item displayed at the top in the ListBox.
+      if ( listBox1->TopIndex != listBox1->SelectedIndex )
 
-         // Determine if a valid index is returned. Select the item if it is valid.
-         if ( index != ListBox::NoMatches )
-                  listBox1->SetSelected( index, true );
-         else
-                  MessageBox::Show( "The search string did not find any items in the ListBox that exactly match the specified search string" );
+      // Make the currently selected item the top item in the ListBox.
+      listBox1->TopIndex = listBox1->SelectedIndex;
+
+      // Remove all items before the top item in the ListBox.
+      for ( int x = (listBox1->SelectedIndex - 1); x >= 0; x-- )
+      {
+         listBox1->Items->RemoveAt( x );
       }
+
+      // Clear all selections in the ListBox.
+      listBox1->ClearSelected();
    }

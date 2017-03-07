@@ -1,98 +1,111 @@
 using System;
-using System.Collections;
-using System.ComponentModel;
 using System.Drawing;
-using System.Reflection;
+using System.IO;
 using System.Windows.Forms;
 
-namespace SystemInfoBrowser
+public partial class Form1: Form
 {
-    public class SystemInfoBrowserForm : System.Windows.Forms.Form
-    {
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox1;        
-        
-        public SystemInfoBrowserForm()
-	    {
-            this.SuspendLayout();
-            InitForm();
-            
-            // Add each property of the SystemInformation class to the list box.
-            Type t = typeof(System.Windows.Forms.SystemInformation);            
-            PropertyInfo[] pi = t.GetProperties();            
-            for( int i=0; i<pi.Length; i++ )
-                listBox1.Items.Add( pi[i].Name );            
-            textBox1.Text = "The SystemInformation class has "+pi.Length.ToString()+" properties.\r\n";
+	internal RichTextBox RichTextBox1;
+	internal Button Button1;
+	internal RichTextBox RichTextBox2;
+	internal Button Button2;
+	internal SaveFileDialog SaveFileDialog1;
 
-            // Configure the list item selected handler for the list box to invoke a 
-            // method that displays the value of each property.
-            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
-            this.ResumeLayout(false);
-	    }
-		
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Return if no list item is selected.
-            if( listBox1.SelectedIndex == -1 ) return;
-            // Get the property name from the list item.
-            string propname = listBox1.Text;
-            
-            if( propname == "PowerStatus" )
-            {
-                // Cycle and display the values of each property of the PowerStatus property.
-                textBox1.Text += "\r\nThe value of the PowerStatus property is:";                                
-                Type t = typeof(System.Windows.Forms.PowerStatus);
-                PropertyInfo[] pi = t.GetProperties();            
-                for( int i=0; i<pi.Length; i++ )
-                {
-                    object propval = pi[i].GetValue(SystemInformation.PowerStatus, null);            
-                    textBox1.Text += "\r\n    PowerStatus."+pi[i].Name+" is: "+propval.ToString();
-                }
-            }
-            else
-            {
-                // Display the value of the selected property of the SystemInformation type.
-                Type t = typeof(System.Windows.Forms.SystemInformation);
-                PropertyInfo[] pi = t.GetProperties();            
-                PropertyInfo prop = null;
-                for( int i=0; i<pi.Length; i++ )
-                    if( pi[i].Name == propname )
-                    {
-                        prop = pi[i];
-                        break;           
-                    }
-                object propval = prop.GetValue(null, null);            
-                textBox1.Text += "\r\nThe value of the "+propname+" property is: "+propval.ToString();
-            }
-        }
+	public Form1() : base()
+	{   
+		this.RichTextBox1 = new RichTextBox();
+		this.Button1 = new Button();
+		this.RichTextBox2 = new RichTextBox();
+		this.Button2 = new Button();
+		this.SaveFileDialog1 = new SaveFileDialog();
+		this.SuspendLayout();
+		this.RichTextBox1.Location = new Point(24, 64);
+		this.RichTextBox1.Name = "RichTextBox1";
+		this.RichTextBox1.TabIndex = 0;
+		this.RichTextBox1.Text = "Type something here.";
+		this.Button1.Location = new Point(96, 16);
+		this.Button1.Name = "Button1";
+		this.Button1.Size = new Size(96, 24);
+		this.Button1.TabIndex = 1;
+		this.Button1.Text = "Save To Stream";
+		this.Button1.Click += new EventHandler(Button1_Click);
+		this.RichTextBox2.Location = new Point(152, 64);
+		this.RichTextBox2.Name = "RichTextBox2";
+		this.RichTextBox2.TabIndex = 3;
+		this.RichTextBox2.Text = 
+            "It will be added to the stream and appear here.";
+		this.Button2.Location = new Point(104, 200);
+		this.Button2.Name = "Button2";
+		this.Button2.Size = new Size(88, 32);
+		this.Button2.TabIndex = 4;
+		this.Button2.Text = "Save Stream To File";
+		this.Button2.Click += new EventHandler(Button2_Click);
+		this.ClientSize = new Size(292, 266);
+		this.Controls.Add(this.Button2);
+		this.Controls.Add(this.RichTextBox2);
+		this.Controls.Add(this.Button1);
+		this.Controls.Add(this.RichTextBox1);
+		this.Name = "Form1";
+		this.Text = "Form1";
+		this.ResumeLayout(false);
+	}
 
-        private void InitForm()
-        {
-            // Initialize the form settings
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();            
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-                | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.Location = new System.Drawing.Point(8, 16);
-            this.listBox1.Size = new System.Drawing.Size(172, 496);
-            this.listBox1.TabIndex = 0;            
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-                | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(188, 16);
-            this.textBox1.Multiline = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;           
-            this.textBox1.Size = new System.Drawing.Size(420, 496);
-            this.textBox1.TabIndex = 1;            
-            this.ClientSize = new System.Drawing.Size(616, 525);            
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.listBox1);            
-            this.Text = "Select a SystemInformation property to get the value of";                   
-        }
+	public static void Main()
+	{
+		Application.Run(new Form1());
+	}
 
-        [STAThread]
-        static void Main() 
-        {
-            Application.Run(new SystemInfoBrowserForm());
-        }
-    }
+	// Declare a new memory stream.
+	MemoryStream userInput = new MemoryStream();
+
+	// Save the content of RichTextBox1 to the memory stream, 
+	// appending a LineFeed character.  
+	private void Button1_Click(Object sender, EventArgs e)
+	{
+		RichTextBox1.SaveFile(userInput, RichTextBoxStreamType.PlainText);
+		userInput.WriteByte(13);
+
+		// Display the entire contents of the stream,
+		// by setting its position to 0, to RichTextBox2.
+		userInput.Position = 0;
+		RichTextBox2.LoadFile(userInput, RichTextBoxStreamType.PlainText);
+	}
+
+	// Shows the use of a SaveFileDialog to save a MemoryStream to a file.
+	private void Button2_Click(Object sender, EventArgs e)
+	{
+		// Set the properties on SaveFileDialog1 so the user is 
+		// prompted to create the file if it doesn't exist 
+		// or overwrite the file if it does exist.
+		SaveFileDialog1.CreatePrompt = true;
+		SaveFileDialog1.OverwritePrompt = true;
+
+		// Set the file name to myText.txt, set the type filter
+		// to text files, and set the initial directory to the 
+        // MyDocuments folder.
+		SaveFileDialog1.FileName = "myText";
+        // DefaultExt is only used when "All files" is selected from 
+        // the filter box and no extension is specified by the user.
+		SaveFileDialog1.DefaultExt = "txt";
+        SaveFileDialog1.Filter = 
+            "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+        SaveFileDialog1.InitialDirectory = 
+            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+		// Call ShowDialog and check for a return value of DialogResult.OK,
+		// which indicates that the file was saved. 
+		DialogResult result = SaveFileDialog1.ShowDialog();
+		Stream fileStream;
+
+		if (result == DialogResult.OK)
+		{
+            // Open the file, copy the contents of memoryStream to fileStream,
+            // and close fileStream. Set the memoryStream.Position value to 0 
+            // to copy the entire stream. 
+            fileStream = SaveFileDialog1.OpenFile();
+			userInput.Position = 0;
+			userInput.WriteTo(fileStream);
+			fileStream.Close();
+		}
+	}
 }

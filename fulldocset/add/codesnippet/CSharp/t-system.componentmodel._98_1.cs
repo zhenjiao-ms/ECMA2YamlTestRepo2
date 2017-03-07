@@ -1,45 +1,28 @@
-    public override DesignerActionItemCollection GetSortedActionItems()
-    {
-        DesignerActionItemCollection items = new DesignerActionItemCollection();
+using System;
+using System.Web.DynamicData;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
-        //Define static section header entries.
-        items.Add(new DesignerActionHeaderItem("Appearance"));
-        items.Add(new DesignerActionHeaderItem("Information"));
+[MetadataType(typeof(ProductMetaData))]
+public partial class Product
+{
 
-        //Boolean property for locking color selections.
-        items.Add(new DesignerActionPropertyItem("LockColors",
-                         "Lock Colors", "Appearance",
-                         "Locks the color properties."));
-        if (!LockColors)
-        {
-            items.Add(new DesignerActionPropertyItem("BackColor",
-                             "Back Color", "Appearance",
-                             "Selects the background color."));
-            items.Add(new DesignerActionPropertyItem("ForeColor",
-                             "Fore Color", "Appearance",
-                             "Selects the foreground color."));
+}
 
-            //This next method item is also added to the context menu 
-            // (as a designer verb).
-            items.Add(new DesignerActionMethodItem(this,
-                             "InvertColors", "Invert Colors",
-                             "Appearance",
-                             "Inverts the fore and background colors.",
-                              true));
-        }
-        items.Add(new DesignerActionPropertyItem("Text",
-                         "Text String", "Appearance",
-                         "Sets the display text."));
 
-        //Create entries for static Information section.
-        StringBuilder location = new StringBuilder("Location: ");
-        location.Append(colLabel.Location);
-        StringBuilder size = new StringBuilder("Size: ");
-        size.Append(colLabel.Size);
-        items.Add(new DesignerActionTextItem(location.ToString(),
-                         "Information"));
-        items.Add(new DesignerActionTextItem(size.ToString(),
-                         "Information"));
+public class ProductMetaData
+{
+    
+    [Range(10, 1000, 
+        ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+    public object Weight;
 
-        return items;
-    }
+    [Range(300, 3000)]
+    public object ListPrice;
+
+    [Range(typeof(DateTime), "1/2/2004", "3/4/2004",
+        ErrorMessage = "Value for {0} must be between {1} and {2}")]
+    public object SellEndDate;
+
+}
+ 

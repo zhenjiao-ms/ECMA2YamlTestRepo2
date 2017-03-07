@@ -1,7 +1,4 @@
-   Ping ^ pingSender = gcnew Ping;
-   PingOptions ^ options = gcnew PingOptions;
+   System::Net::NetworkInformation::NetworkInformationPermission^ read = gcnew System::Net::NetworkInformation::NetworkInformationPermission( System::Net::NetworkInformation::NetworkInformationAccess::Read );
    
-   // Use the default Ttl value which is 128,
-   // but change the fragmentation behavior.
-   options->DontFragment = true;
+   System::Net::NetworkInformation::NetworkInformationPermission^ copyPermission = dynamic_cast<System::Net::NetworkInformation::NetworkInformationPermission^>(read->Copy());
    

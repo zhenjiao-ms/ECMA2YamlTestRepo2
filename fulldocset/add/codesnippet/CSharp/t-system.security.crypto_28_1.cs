@@ -1,125 +1,44 @@
 using System;
+using System.Security.Cryptography.Xml;
+using System.Xml;
 using System.IO;
-using System.Security.Cryptography;
 
-namespace TripleDESCryptoServiceProvider_Example
+/// This sample used the EncryptedData class to create a EncryptedData element
+/// and write it to an XML file.
+namespace EncryptedDataSample
 {
-    class TripleDESManagedExample
-    {
-        public static void Main()
-        {
-            try
-            {
+	class Sample1
+	{
+		[STAThread]
+		static void Main(string[] args)
+		{
+			// Create a new CipherData object.
+			CipherData cd = new CipherData();
+			// Assign a byte array to be the CipherValue. This is a byte array representing encrypted data.
+			cd.CipherValue = new byte[8];
+			// Create a new EncryptedData object.
+			EncryptedData ed = new EncryptedData();
+			//Add an encryption method to the object.
+			ed.Id = "ED";
+			ed.EncryptionMethod = new EncryptionMethod("http://www.w3.org/2001/04/xmlenc#aes128-cbc");
+			ed.CipherData = cd;
 
-                string original = "Here is some data to encrypt!";
+			//Add key information to the object.
+			KeyInfo ki = new KeyInfo();
+			ki.AddClause(new KeyInfoRetrievalMethod("#EK", "http://www.w3.org/2001/04/xmlenc#EncryptedKey"));
+			ed.KeyInfo = ki;
 
-                // Create a new instance of the TripleDESCryptoServiceProvider
-                // class.  This generates a new key and initialization 
-                // vector (IV).
-                using (TripleDESCryptoServiceProvider myTripleDES = new TripleDESCryptoServiceProvider())
-                {
-                    // Encrypt the string to an array of bytes.
-                    byte[] encrypted = EncryptStringToBytes(original, myTripleDES.Key, myTripleDES.IV);
+			// Create new XML document and put encrypted data into it.
+			XmlDocument doc = new XmlDocument();
+			XmlElement encryptionPropertyElement = (XmlElement)doc.CreateElement("EncryptionProperty", EncryptedXml.XmlEncNamespaceUrl);
+			EncryptionProperty ep = new EncryptionProperty(encryptionPropertyElement);
+			ed.AddProperty(ep);
 
-                    // Decrypt the bytes to a string.
-                    string roundtrip = DecryptStringFromBytes(encrypted, myTripleDES.Key, myTripleDES.IV);
+			// Output the resulting XML information into a file.
+			string path = @"c:\test\MyTest.xml";
+			File.WriteAllText(path,ed.GetXml().OuterXml);
+			//Console.WriteLine(ed.GetXml().OuterXml);
 
-                    //Display the original data and the decrypted data.
-                    Console.WriteLine("Original:   {0}", original);
-                    Console.WriteLine("Round Trip: {0}", roundtrip);
-                }
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: {0}", e.Message);
-            }
-        }
-        static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
-        {
-            // Check arguments.
-            if (plainText == null || plainText.Length <= 0)
-                throw new ArgumentNullException("plainText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("Key");
-            byte[] encrypted;
-            // Create an TripleDESCryptoServiceProvider object
-            // with the specified key and IV.
-            using (TripleDESCryptoServiceProvider tdsAlg = new TripleDESCryptoServiceProvider())
-            {
-                tdsAlg.Key = Key;
-                tdsAlg.IV = IV;
-
-                // Create a decrytor to perform the stream transform.
-                ICryptoTransform encryptor = tdsAlg.CreateEncryptor(tdsAlg.Key, tdsAlg.IV);
-
-                // Create the streams used for encryption.
-                using (MemoryStream msEncrypt = new MemoryStream())
-                {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                        {
-
-                            //Write all data to the stream.
-                            swEncrypt.Write(plainText);
-                        }
-                        encrypted = msEncrypt.ToArray();
-                    }
-                }
-            }
-
-
-            // Return the encrypted bytes from the memory stream.
-            return encrypted;
-
-        }
-
-        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
-        {
-            // Check arguments.
-            if (cipherText == null || cipherText.Length <= 0)
-                throw new ArgumentNullException("cipherText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("Key");
-
-            // Declare the string used to hold
-            // the decrypted text.
-            string plaintext = null;
-
-            // Create an TripleDESCryptoServiceProvider object
-            // with the specified key and IV.
-            using (TripleDESCryptoServiceProvider tdsAlg = new TripleDESCryptoServiceProvider())
-            {
-                tdsAlg.Key = Key;
-                tdsAlg.IV = IV;
-
-                // Create a decrytor to perform the stream transform.
-                ICryptoTransform decryptor = tdsAlg.CreateDecryptor(tdsAlg.Key, tdsAlg.IV);
-
-                // Create the streams used for decryption.
-                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
-                {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-                        {
-
-                            // Read the decrypted bytes from the decrypting stream
-                            // and place them in a string.
-                            plaintext = srDecrypt.ReadToEnd();
-                        }
-                    }
-                }
-
-            }
-
-            return plaintext;
-
-        }
-    }
+		}
+	}
 }

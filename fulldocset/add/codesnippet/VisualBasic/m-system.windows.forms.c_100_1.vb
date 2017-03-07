@@ -1,50 +1,46 @@
-    ' This example demonstrates the use of the ControlAdded and
-    ' ControlRemoved events. This example assumes that two Button controls 
-    ' are added to the form and connected to the addControl_Click and 
-    ' removeControl_Click event-handler methods.
-    Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        ' Connect the ControlRemoved and ControlAdded event handlers to the event-handler methods.
-        ' ControlRemoved and ControlAdded are not available at design time.
-        AddHandler Me.ControlRemoved, AddressOf Me.Control_Removed
-        AddHandler Me.ControlAdded, AddressOf Me.Control_Added
-    End Sub 'Form1_Load
+Imports System
+Imports System.Drawing
+Imports System.Windows.Forms
 
+Namespace CustomCursor
+   
+   Public Class Form1
+      Inherits System.Windows.Forms.Form
+      
+      <System.STAThread()> _
+      Public Shared Sub Main()
+         System.Windows.Forms.Application.Run(New Form1())
+      End Sub 'Main
 
-    Private Sub Control_Added(ByVal sender As Object, ByVal e As System.Windows.Forms.ControlEventArgs)
-        MessageBox.Show(("The control named " + e.Control.Name + " has been added to the form."))
-    End Sub
+      Public Sub New()
 
+         Me.ClientSize = New System.Drawing.Size(292, 266)
+         Me.Text = "Cursor Example"
+         
+        ' The following generates a cursor from an embedded resource.
+         
+        'To add a custom cursor, create a bitmap
+        '       1. Add a new cursor file to your project: 
+        '               Project->Add New Item->General->Cursor File
 
-    Private Sub Control_Removed(ByVal sender As Object, ByVal e As System.Windows.Forms.ControlEventArgs)
-        MessageBox.Show(("The control named " + e.Control.Name + " has been removed from the form."))
-    End Sub
+        '--- To make the custom cursor an embedded resource  ---
 
+        'In Visual Studio:
+        '       1. Select the cursor file in the Solution Explorer
+        '       2. Choose View->Properties.
+        '       3. In the properties window switch "Build Action" to "Embedded Resources"
 
-    ' Click event handler for a Button control. Adds a TextBox to the form.
-    Private Sub addControl_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles button1.Click
-        ' Create a new TextBox control and add it to the form.
-        Dim textBox1 As New TextBox()
-        textBox1.Size = New Size(100, 10)
-        textBox1.Location = New Point(10, 10)
-        ' Name the control in order to remove it later. 
-        ' The name must be specified if a control is added at run time.
-        textBox1.Name = "textBox1"
+        'On the command line:
+        '       Add the following flag:
+        '           /res:CursorFileName.cur,Namespace.CursorFileName.cur
 
-        ' Add the control to the form's control collection.
-        Me.Controls.Add(textBox1)
-    End Sub
+        '       Where "Namespace" is the namespace in which you want to use the cursor
+        '       and   "CursorFileName.cur" is the cursor filename.
 
-
-    ' Click event handler for a Button control.
-    ' Removes the previously added TextBox from the form.
-    Private Sub removeControl_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles button2.Click
-        ' Loop through all controls in the form's control collection.
-        Dim tempCtrl As Control
-        For Each tempCtrl In Me.Controls
-            ' Determine whether the control is textBox1,
-            ' and if it is, remove it.
-            If tempCtrl.Name = "textBox1" Then
-                Me.Controls.Remove(tempCtrl)
-            End If
-        Next tempCtrl
-    End Sub
+        'The following line uses the namespace from the passed-in type
+        'and looks for CustomCursor.MyCursor.cur in the assemblies manifest.
+        'NOTE: The cursor name is acase sensitive.
+        Me.Cursor = New Cursor(Me.GetType(), "MyCursor.cur")
+      End Sub 'New       
+   End Class 'Form1
+End Namespace 'CustomCursor

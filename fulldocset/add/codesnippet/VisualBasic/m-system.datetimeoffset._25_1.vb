@@ -1,13 +1,30 @@
-      Dim thisDate As DateTimeOffset
+Imports System.Globalization
+Imports System.Threading
+
+Module Example
+   Public Sub Main()
+      Dim date1 As New DateTimeOffset(#1/1/550#, TimeSpan.Zero)
+      Dim dft As CultureInfo
+      Dim arSY As New CultureInfo("ar-SY")
+      arSY.DateTimeFormat.Calendar = New HijriCalendar()
       
-      ' Show output for UTC time
-      thisDate = DateTimeOffset.UtcNow
-      Console.WriteLine(thisDate.ToString())  ' Displays 3/28/2007 7:13:50 PM +00:00
+      ' Change current culture to ar-SY.
+      dft = Thread.CurrentThread.CurrentCulture
+      Thread.CurrentThread.CurrentCulture = arSY
       
-      ' Show output for local time 
-      thisDate = DateTimeOffset.Now
-      Console.WriteLine(thisDate.ToString())  ' Displays 3/28/2007 12:13:50 PM -07:00
+      ' Display the date using the current culture's calendar.            
+      Try
+         Console.WriteLine(date1.ToString())
+      Catch e As ArgumentOutOfRangeException
+         Console.WriteLine("{0} is earlier than {1:d} or later than {2:d}", _
+                           date1.ToString("d", CultureInfo.InvariantCulture), _
+                           arSY.DateTimeFormat.Calendar.MinSupportedDateTime.ToString("d", CultureInfo.InvariantCulture), _ 
+                           arSY.DateTimeFormat.Calendar.MaxSupportedDateTime.ToString("d", CultureInfo.InvariantCulture)) 
+      End Try
       
-      ' Show output for arbitrary time offset
-      thisDate = thisDate.ToOffset(new TimeSpan(-5, 0, 0))
-      Console.WriteLine(thisDate.ToString())  ' Displays 3/28/2007 2:13:50 PM -05:00
+      ' Restore the default culture.
+      Thread.CurrentThread.CurrentCulture = dft
+   End Sub
+End Module
+' The example displays the following output:
+'    01/01/0550 is earlier than 07/18/0622 or later than 12/31/9999

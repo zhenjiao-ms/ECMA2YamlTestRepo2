@@ -6,16 +6,12 @@ Public Class Form1
     Private tabPage1 As TabPage
 
     Public Sub MyTabs()
+        Me.tabControl1 = New TabControl()
 
-        ' Invokes the TabControl() constructor to create the tabControl1 object.
-        Me.tabControl1 = New System.Windows.Forms.TabControl()
+        ' Invokes the TabPage() constructor to create the tabPage1.
+        Me.tabPage1 = New System.Windows.Forms.TabPage()
 
-        ' Creates a new tab page and adds it to the tab control.
-        Me.tabPage1 = New TabPage()
-
-        Me.tabControl1.TabPages.Add(tabPage1)
-
-        ' Adds the tab control to the form.	
+        Me.tabControl1.Controls.Add(tabPage1)
         Me.Controls.Add(tabControl1)
     End Sub
 

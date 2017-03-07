@@ -1,80 +1,65 @@
-// This example demonstrates a System.Globalization.Culture-
-// AndRegionInfoBuilder constructor and some of the properties 
-// of the CultureAndRegionInfoBuilder object that is created.
-// Compile this example with a reference to sysglobl.dll.
-
 using System;
+using System.Collections;
 using System.Globalization;
 
-class Sample 
+public class SamplesCultureInfo
 {
-    public static void Main() 
-    {
 
-// Construct a new, privately used culture that extends the en-US culture 
-// provided by the .NET Framework. In this sample, the CultureAndRegion-
-// Types.Specific parameter creates a minimal CultureAndRegionInfoBuilder 
-// object that you must populate with culture and region information.
+   public static void Main()
+   {
 
-    CultureAndRegionInfoBuilder cib = null;
-    try {
-        cib = new CultureAndRegionInfoBuilder(
-                                          "x-en-US-sample",
-                                          CultureAndRegionModifiers.None);
-        }
-    catch (ArgumentException ae)
-        {
-        Console.WriteLine(ae);
-        return;
-        }
+      // Creates and initializes the CultureInfo which uses the international sort.
+      CultureInfo myCIintl = new CultureInfo("es-ES", false);
 
-// Populate the new CultureAndRegionInfoBuilder object with culture information.
+      // Creates and initializes the CultureInfo which uses the traditional sort.
+      CultureInfo myCItrad = new CultureInfo(0x040A, false);
 
-    CultureInfo ci = new CultureInfo("en-US");
-    cib.LoadDataFromCultureInfo(ci);
+      // Displays the properties of each culture.
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "PROPERTY", "INTERNATIONAL", "TRADITIONAL");
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "CompareInfo", myCIintl.CompareInfo, myCItrad.CompareInfo);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "DisplayName", myCIintl.DisplayName, myCItrad.DisplayName);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "EnglishName", myCIintl.EnglishName, myCItrad.EnglishName);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "IsNeutralCulture", myCIintl.IsNeutralCulture, myCItrad.IsNeutralCulture);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "IsReadOnly", myCIintl.IsReadOnly, myCItrad.IsReadOnly);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "LCID", myCIintl.LCID, myCItrad.LCID);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "Name", myCIintl.Name, myCItrad.Name);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "NativeName", myCIintl.NativeName, myCItrad.NativeName);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "Parent", myCIintl.Parent, myCItrad.Parent);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "TextInfo", myCIintl.TextInfo, myCItrad.TextInfo);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "ThreeLetterISOLanguageName", myCIintl.ThreeLetterISOLanguageName, myCItrad.ThreeLetterISOLanguageName);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "ThreeLetterWindowsLanguageName", myCIintl.ThreeLetterWindowsLanguageName, myCItrad.ThreeLetterWindowsLanguageName);
+      Console.WriteLine("{0,-31}{1,-47}{2,-25}", "TwoLetterISOLanguageName", myCIintl.TwoLetterISOLanguageName, myCItrad.TwoLetterISOLanguageName);
+      Console.WriteLine();
 
-// Populate the new CultureAndRegionInfoBuilder object with region information.
+      // Compare two strings using myCIintl.
+      Console.WriteLine("Comparing \"llegar\" and \"lugar\"");
+      Console.WriteLine("   With myCIintl.CompareInfo.Compare: {0}", myCIintl.CompareInfo.Compare("llegar", "lugar"));
+      Console.WriteLine("   With myCItrad.CompareInfo.Compare: {0}", myCItrad.CompareInfo.Compare("llegar", "lugar"));
 
-    RegionInfo  ri = new RegionInfo("US");
-    cib.LoadDataFromRegionInfo(ri);
+   }
 
-// Display some of the properties for the x-en-US-sample custom culture.
-
-    Console.Clear();
-    Console.WriteLine("CultureName:. . . . . . . . . . {0}", cib.CultureName);
-    Console.WriteLine("CultureEnglishName: . . . . . . {0}", cib.CultureEnglishName);
-    Console.WriteLine("CultureNativeName:. . . . . . . {0}", cib.CultureNativeName);
-    Console.WriteLine("GeoId:. . . . . . . . . . . . . {0}", cib.GeoId);
-    Console.WriteLine("IsMetric: . . . . . . . . . . . {0}", cib.IsMetric);
-    Console.WriteLine("ISOCurrencySymbol:. . . . . . . {0}", cib.ISOCurrencySymbol);
-    Console.WriteLine("RegionEnglishName:. . . . . . . {0}", cib.RegionEnglishName);
-    Console.WriteLine("RegionName: . . . . . . . . . . {0}", cib.RegionName);
-    Console.WriteLine("RegionNativeName: . . . . . . . {0}", cib.RegionNativeName);
-    Console.WriteLine("ThreeLetterISOLanguageName: . . {0}", cib.ThreeLetterISOLanguageName);
-    Console.WriteLine("ThreeLetterISORegionName: . . . {0}", cib.ThreeLetterISORegionName);
-    Console.WriteLine("ThreeLetterWindowsLanguageName: {0}", cib.ThreeLetterWindowsLanguageName);
-    Console.WriteLine("ThreeLetterWindowsRegionName: . {0}", cib.ThreeLetterWindowsRegionName);
-    Console.WriteLine("TwoLetterISOLanguageName: . . . {0}", cib.TwoLetterISOLanguageName);
-    Console.WriteLine("TwoLetterISORegionName: . . . . {0}", cib.TwoLetterISORegionName);
-    }
 }
-/*
-This code example produces the following results:
 
-CultureName:. . . . . . . . . . x-en-US-sample
-CultureEnglishName: . . . . . . English
-CultureNativeName:. . . . . . . English
-GeoId:. . . . . . . . . . . . . 244
-IsMetric: . . . . . . . . . . . False
-ISOCurrencySymbol:. . . . . . . USD
-RegionEnglishName:. . . . . . . United States
-RegionName: . . . . . . . . . . US
-RegionNativeName: . . . . . . . United States
-ThreeLetterISOLanguageName: . . eng
-ThreeLetterISORegionName: . . . USA
-ThreeLetterWindowsLanguageName: ENU
-ThreeLetterWindowsRegionName: . USA
-TwoLetterISOLanguageName: . . . en
-TwoLetterISORegionName: . . . . US
+/*
+This code produces the following output.
+
+PROPERTY                       INTERNATIONAL                                  TRADITIONAL              
+CompareInfo                    CompareInfo - es-ES                            CompareInfo - es-ES_tradnl
+DisplayName                    Spanish (Spain)                                Spanish (Spain)          
+EnglishName                    Spanish (Spain, International Sort)            Spanish (Spain, Traditional Sort)
+IsNeutralCulture               False                                          False                    
+IsReadOnly                     False                                          False                    
+LCID                           3082                                           1034                     
+Name                           es-ES                                          es-ES                    
+NativeName                     Español (España, alfabetización internacional) Español (España, alfabetización tradicional)
+Parent                         es                                             es                       
+TextInfo                       TextInfo - es-ES                               TextInfo - es-ES_tradnl  
+ThreeLetterISOLanguageName     spa                                            spa                      
+ThreeLetterWindowsLanguageName ESN                                            ESP                      
+TwoLetterISOLanguageName       es                                             es                       
+
+Comparing "llegar" and "lugar"
+   With myCIintl.CompareInfo.Compare: -1
+   With myCItrad.CompareInfo.Compare: 1
 
 */

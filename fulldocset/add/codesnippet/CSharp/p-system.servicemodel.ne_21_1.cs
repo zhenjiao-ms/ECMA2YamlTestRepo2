@@ -1,1 +1,2 @@
-                NamedPipeTransportSecurity npts = nnpSecurity.Transport;
+	    XmlDictionaryReaderQuotas xmlDictionaryReaderQuotas =
+		    binding.ReaderQuotas;

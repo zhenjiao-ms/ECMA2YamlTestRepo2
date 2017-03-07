@@ -1,17 +1,15 @@
-    private void AddButtonColumn()
+    private void AddLinkColumn()
     {
-        DataGridViewButtonColumn buttons = new DataGridViewButtonColumn();
-        {
-            buttons.HeaderText = "Sales";
-            buttons.Text = "Sales";
-            buttons.UseColumnTextForButtonValue = true;
-            buttons.AutoSizeMode =
-                DataGridViewAutoSizeColumnMode.AllCells;
-            buttons.FlatStyle = FlatStyle.Standard;
-            buttons.CellTemplate.Style.BackColor = Color.Honeydew;
-            buttons.DisplayIndex = 0;
-        }
+        DataGridViewLinkColumn links = new DataGridViewLinkColumn();
 
-        DataGridView1.Columns.Add(buttons);
+        links.UseColumnTextForLinkValue = true;
+        links.HeaderText = ColumnName.ReportsTo.ToString();
+        links.DataPropertyName = ColumnName.ReportsTo.ToString();
+        links.ActiveLinkColor = Color.White;
+        links.LinkBehavior = LinkBehavior.SystemDefault;
+        links.LinkColor = Color.Blue;
+        links.TrackVisitedState = true;
+        links.VisitedLinkColor = Color.YellowGreen;
 
+        DataGridView1.Columns.Add(links);
     }

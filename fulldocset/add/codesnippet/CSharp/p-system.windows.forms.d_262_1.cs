@@ -1,39 +1,7 @@
-    #region "data store maintance"
-    const int initialValue = -1;
-
-    private void dataGridView1_CellValueNeeded(object sender,
-        DataGridViewCellValueEventArgs e)
+    // Hide a band of cells.
+    private void Button6_Click(object sender, System.EventArgs e)
     {
-        if (store.ContainsKey(e.RowIndex))
-        {
-            // Use the store if the e value has been modified 
-            // and stored.            
-            e.Value = store[e.RowIndex];
-        }
-        else if (newRowNeeded && e.RowIndex == numberOfRows)
-        {
-            if (dataGridView1.IsCurrentCellInEditMode)
-            {
-                e.Value = initialValue;
-            }
-            else
-            {
-                // Show a blank value if the cursor is just resting
-                // on the last row.
-                e.Value = String.Empty;
-            }
-        }
-        else
-        {
-            e.Value = e.RowIndex;
-        }
-    }
 
-    private void dataGridView1_CellValuePushed(object sender,
-        DataGridViewCellValueEventArgs e)
-    {
-        store.Add(e.RowIndex, int.Parse(e.Value.ToString()));
+        DataGridViewBand band = dataGridView.Rows[3];
+        band.Visible = false;
     }
-    #endregion
-
-    private Dictionary<int, int> store = new Dictionary<int, int>();

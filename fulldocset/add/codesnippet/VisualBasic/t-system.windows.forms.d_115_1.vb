@@ -1,35 +1,29 @@
-    ' Paints the custom selection background for selected rows.
-    Sub dataGridView1_RowPrePaint(ByVal sender As Object, _
-        ByVal e As DataGridViewRowPrePaintEventArgs) _
-        Handles dataGridView1.RowPrePaint
+    Private Sub Stretch(ByVal sender As Object, _
+        ByVal e As EventArgs) Handles Button3.Click
 
-        ' Do not automatically paint the focus rectangle.
-        e.PaintParts = e.PaintParts And Not DataGridViewPaintParts.Focus
+        For Each column As DataGridViewImageColumn _
+            In dataGridView1.Columns
+            column.ImageLayout = DataGridViewImageCellLayout.Stretch
+            column.Description = "Stretched image layout"
+        Next
+    End Sub
 
-        ' Determine whether the cell should be painted with the 
-        ' custom selection background.
-        If (e.State And DataGridViewElementStates.Selected) = _
-            DataGridViewElementStates.Selected Then
+    Private Sub ZoomToImage(ByVal sender As Object, _
+        ByVal e As EventArgs) Handles Button4.Click
 
-            ' Calculate the bounds of the row.
-            Dim rowBounds As New Rectangle( _
-                Me.dataGridView1.RowHeadersWidth, e.RowBounds.Top, _
-                Me.dataGridView1.Columns.GetColumnsWidth( _
-                DataGridViewElementStates.Visible) - _
-                Me.dataGridView1.HorizontalScrollingOffset + 1, _
-                e.RowBounds.Height)
+        For Each column As DataGridViewImageColumn _
+            In dataGridView1.Columns
+            column.ImageLayout = DataGridViewImageCellLayout.Zoom
+            column.Description = "Zoomed image layout"
+        Next
+    End Sub
 
-            ' Paint the custom selection background.
-            Dim backbrush As New _
-                System.Drawing.Drawing2D.LinearGradientBrush(rowBounds, _
-                Me.dataGridView1.DefaultCellStyle.SelectionBackColor, _
-                e.InheritedRowStyle.ForeColor, _
-                System.Drawing.Drawing2D.LinearGradientMode.Horizontal)
-            Try
-                e.Graphics.FillRectangle(backbrush, rowBounds)
-            Finally
-                backbrush.Dispose()
-            End Try
-        End If
+    Private Sub NormalImage(ByVal sender As Object, _
+        ByVal e As EventArgs) Handles Button5.Click
 
-    End Sub 'dataGridView1_RowPrePaint
+        For Each column As DataGridViewImageColumn _
+            In dataGridView1.Columns
+            column.ImageLayout = DataGridViewImageCellLayout.Normal
+            column.Description = "Normal image layout"
+        Next
+    End Sub

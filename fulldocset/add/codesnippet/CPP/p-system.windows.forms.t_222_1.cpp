@@ -1,61 +1,25 @@
-ref class Customer
-{
-public:
-   ArrayList^ CustomerOrders;
-   String^ CustomerName;
-   Customer( String^ myName )
-   {
-      CustomerName = myName;
-      CustomerOrders = gcnew ArrayList;
-   }
-
-};
-
-ref class Order
-{
-public:
-   String^ OrderID;
-   Order( String^ myOrderID )
-   {
-      this->OrderID = myOrderID;
-   }
-
-};
-
-
-   void AddRootNodes()
+   void AddToolBar()
    {
       
-      // Add a root node to assign the customer nodes to.
-      TreeNode^ rootNode = gcnew TreeNode;
-      rootNode->Text = "CustomerList";
+      // Add a toolbar and set some of its properties.
+      toolBar1 = gcnew ToolBar;
+      toolBar1->Appearance = System::Windows::Forms::ToolBarAppearance::Flat;
+      toolBar1->BorderStyle = System::Windows::Forms::BorderStyle::None;
+      toolBar1->Buttons->Add( this->toolBarButton1 );
+      toolBar1->ButtonSize = System::Drawing::Size( 24, 24 );
+      toolBar1->Divider = true;
+      toolBar1->DropDownArrows = true;
+      toolBar1->ImageList = this->imageList1;
+      toolBar1->ShowToolTips = true;
+      toolBar1->Size = System::Drawing::Size( 292, 25 );
+      toolBar1->TabIndex = 0;
+      toolBar1->TextAlign = System::Windows::Forms::ToolBarTextAlign::Right;
+      toolBar1->Wrappable = false;
       
-      // Add a main root treenode.
-      myTreeView->Nodes->Add( rootNode );
+      // Add handlers for the ButtonClick and ButtonDropDown events.
+      toolBar1->ButtonDropDown += gcnew ToolBarButtonClickEventHandler( this, &MyToolBar::toolBar1_ButtonDropDown );
+      toolBar1->ButtonClick += gcnew ToolBarButtonClickEventHandler( this, &MyToolBar::toolBar1_ButtonClicked );
       
-      // Add a root treenode for each 'Customer' object in the ArrayList.
-      IEnumerator^ myEnum = customerArray->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         Customer^ myCustomer = safe_cast<Customer^>(myEnum->Current);
-         
-         // Add a child treenode for each Order object.
-         int i = 0;
-         array<TreeNode^>^myTreeNodeArray = gcnew array<TreeNode^>(5);
-         IEnumerator^ myEnum = myCustomer->CustomerOrders->GetEnumerator();
-         while ( myEnum->MoveNext() )
-         {
-            Order^ myOrder = safe_cast<Order^>(myEnum->Current);
-            myTreeNodeArray[ i ] = gcnew TreeNode( myOrder->OrderID );
-            i++;
-         }
-         TreeNode^ customerNode = gcnew TreeNode( myCustomer->CustomerName,myTreeNodeArray );
-         
-         // Display the customer names with and Orange font.
-         customerNode->ForeColor = Color::Orange;
-         
-         // Store the Customer Object* in the Tag property of the TreeNode.
-         customerNode->Tag = myCustomer;
-         myTreeView->Nodes[ 0 ]->Nodes->Add( customerNode );
-      }
+      // Add the toolbar to the form.
+      this->Controls->Add( toolBar1 );
    }

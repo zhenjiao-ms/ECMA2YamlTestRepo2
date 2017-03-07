@@ -3,32 +3,57 @@
 
 using namespace System;
 using namespace System::Security::Cryptography;
-using namespace System::Security::Permissions;
-using namespace System::IO;
 using namespace System::Security::Cryptography::X509Certificates;
 int main()
 {
    try
    {
-      X509Store ^ store = gcnew X509Store( "MY",StoreLocation::CurrentUser );
+      X509Store^ store = gcnew X509Store( L"MY",StoreLocation::CurrentUser );
       store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
-      X509Certificate2Collection ^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-      X509Certificate2Collection ^ fcollection = dynamic_cast<X509Certificate2Collection^>(collection->Find( X509FindType::FindByTimeValid, DateTime::Now, false ));
-      X509Certificate2Collection ^ scollection = X509Certificate2UI::SelectFromCollection(fcollection, "Test Certificate Select","Select a certificate from the following list to get information on that certificate",X509SelectionFlag::MultiSelection);
-      Console::WriteLine( "Number of certificates: {0}{1}", scollection->Count, Environment::NewLine );
-      System::Collections::IEnumerator^ myEnum = scollection->GetEnumerator();
-      while ( myEnum->MoveNext() )
+      X509Certificate2Collection^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
+      for ( int i = 0; i < collection->Count; i++ )
       {
-         X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum->Current);
-         X500DistinguishedName ^ dname = gcnew X500DistinguishedName( x509->SubjectName );
-         Console::WriteLine( "X500DistinguishedName: {0}{1}", dname->Name, Environment::NewLine );
-         x509->Reset();
+         System::Collections::IEnumerator^ myEnum = collection[ i ]->Extensions->GetEnumerator();
+         while ( myEnum->MoveNext() )
+         {
+            X509Extension^ extension = safe_cast<X509Extension^>(myEnum->Current);
+            Console::WriteLine( L"{0}({1})", extension->Oid->FriendlyName, extension->Oid->Value );
+            if ( extension->Oid->FriendlyName == L"Key Usage" )
+            {
+               X509KeyUsageExtension^ ext = dynamic_cast<X509KeyUsageExtension^>(extension);
+               Console::WriteLine( ext->KeyUsages );
+            }
+            if ( extension->Oid->FriendlyName == L"Basic Constraints" )
+            {
+               X509BasicConstraintsExtension^ ext = dynamic_cast<X509BasicConstraintsExtension^>(extension);
+               Console::WriteLine( ext->CertificateAuthority );
+               Console::WriteLine( ext->HasPathLengthConstraint );
+               Console::WriteLine( ext->PathLengthConstraint );
+            }
+            if ( extension->Oid->FriendlyName == L"Subject Key Identifier" )
+            {
+               X509SubjectKeyIdentifierExtension^ ext = dynamic_cast<X509SubjectKeyIdentifierExtension^>(extension);
+               Console::WriteLine( ext->SubjectKeyIdentifier );
+            }
+            if ( extension->Oid->FriendlyName == L"Enhanced Key Usage" )
+            {
+               X509EnhancedKeyUsageExtension^ ext = dynamic_cast<X509EnhancedKeyUsageExtension^>(extension);
+               OidCollection^ oids = ext->EnhancedKeyUsages;
+               System::Collections::IEnumerator^ myEnum1 = oids->GetEnumerator();
+               while ( myEnum1->MoveNext() )
+               {
+                  Oid^ oid = safe_cast<Oid^>(myEnum1->Current);
+                  Console::WriteLine( L"{0}({1})", oid->FriendlyName, oid->Value );
+               }
+            }
+         }
+
       }
       store->Close();
    }
    catch ( CryptographicException^ ) 
    {
-      Console::WriteLine( "Information could not be written out for this certificate." );
+      Console::WriteLine( L"Information could not be written out for this certificate." );
    }
 
 }

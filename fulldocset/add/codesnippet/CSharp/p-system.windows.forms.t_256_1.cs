@@ -1,11 +1,23 @@
-private void TabControl1_Selected(Object sender, TabControlEventArgs e) {
+public void HighlightCheckedNodes()
+{
+   int countIndex = 0;
+   string selectedNode = "Selected customer nodes are : ";
+   foreach (TreeNode myNode in myTreeView.Nodes[0].Nodes)
+   {
+      // Check whether the tree node is checked.
+      if(myNode.Checked)
+      {
+         // Set the node's backColor.
+         myNode.BackColor = Color.Yellow;
+         selectedNode += myNode.Text+" ";
+         countIndex++;
+      }
+      else
+         myNode.BackColor = Color.White;
+   }
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "TabPage", e.TabPage );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "TabPageIndex", e.TabPageIndex );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Action", e.Action );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "Selected Event" );
+   if(countIndex > 0)
+      MessageBox.Show(selectedNode);
+   else
+      MessageBox.Show("No nodes are selected");
 }

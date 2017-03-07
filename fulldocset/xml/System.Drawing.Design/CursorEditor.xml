@@ -17,8 +17,10 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Provides a <see cref="T:System.Drawing.Design.UITypeEditor" /> that can perform default file searching for cursor (.cur) files.</summary>
     <remarks>To be added.</remarks>
+    <permission cref="T:System.Security.Permissions.SecurityPermission">for access to unmanaged code. Associated enumeration: <see cref="T:System.Security.Permissions.SecurityPermissionFlag" /></permission>
+    <permission cref="T:System.Security.NamedPermissionSet">for full access to system resources. Demand values: <see cref="T:System.Security.Permissions.SecurityAction" />, <see cref="T:System.Security.Permissions.SecurityAction" />. Associated state:</permission>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -33,7 +35,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.Drawing.Design.CursorEditor" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -56,12 +58,19 @@
         <Parameter Name="value" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="context">To be added.</param>
-        <param name="provider">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="context">A type descriptor context that can be used to provide additional context information.</param>
+        <param name="provider">A service provider object through which editing services may be obtained.</param>
+        <param name="value">An instance of the value being edited.</param>
+        <summary>Edits the given object value using the editor style provided by the <see cref="System.Drawing.Design.CursorEditor.GetEditStyle%2A" /> method.</summary>
+        <returns>The new value of the object. If the value of the object has not changed, this should return the same object it was passed.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ A service provider is provided so that any required editing services can be obtained.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetEditStyle">
@@ -81,9 +90,9 @@
         <Parameter Name="context" Type="System.ComponentModel.ITypeDescriptorContext" />
       </Parameters>
       <Docs>
-        <param name="context">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="context">A type descriptor context that can be used to provide additional context information.</param>
+        <summary>Retrieves the editing style of the <see cref="System.Drawing.Design.CursorEditor.EditValue%2A" /> method.</summary>
+        <returns>An enum value indicating the provided editing style. If the method is not supported, this will return <see cref="T:System.Drawing.Design.UITypeEditorEditStyle" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -101,8 +110,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value indicating whether drop-down editors should be resizable by the user.</summary>
+        <value>
+          <see langword="true" /> if drop-down editors are resizable; otherwise, **false**.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

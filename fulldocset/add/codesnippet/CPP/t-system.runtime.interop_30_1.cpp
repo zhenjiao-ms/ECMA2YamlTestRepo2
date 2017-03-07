@@ -1,40 +1,20 @@
+using namespace System;
+using namespace System::Reflection;
 using namespace System::Runtime::InteropServices;
 
-[ComVisible(false)]
-ref class MyClass
+ref class ClassC
 {
 private:
-   int myProperty;
-
-public:
-   MyClass()
+   static bool IsHiddenMethod( MethodInfo^ mi )
    {
-      
-      //Insert code here.
-   }
-
-
-   [ComVisible(false)]
-   int MyMethod( String^ param )
-   {
-      return 0;
-   }
-
-   bool MyOtherMethod()
-   {
-      return true;
-   }
-
-
-   property int MyProperty 
-   {
-
-      [ComVisible(false)]
-      int get()
+      array<Object^>^MethodAttributes = mi->GetCustomAttributes( TypeLibFuncAttribute::typeid, true );
+      if ( MethodAttributes->Length > 0 )
       {
-         return myProperty;
+         TypeLibFuncAttribute^ tlf = dynamic_cast<TypeLibFuncAttribute^>(MethodAttributes[ 0 ]);
+         TypeLibFuncFlags flags = tlf->Value;
+         return (flags & TypeLibFuncFlags::FHidden) != (TypeLibFuncFlags)0;
       }
 
+      return false;
    }
-
 };

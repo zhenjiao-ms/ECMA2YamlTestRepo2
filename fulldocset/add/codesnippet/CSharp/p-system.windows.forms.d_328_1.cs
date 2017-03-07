@@ -1,23 +1,20 @@
-private void ListView1_DrawSubItem(Object sender, DrawListViewSubItemEventArgs e) {
+    // Freeze the first row.
+    private void Button4_Click(object sender, System.EventArgs e)
+    {
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "DrawDefault", e.DrawDefault );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Bounds", e.Bounds );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Item", e.Item );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "SubItem", e.SubItem );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ItemIndex", e.ItemIndex );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ColumnIndex", e.ColumnIndex );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Header", e.Header );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ItemState", e.ItemState );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "DrawSubItem Event" );
-}
+        FreezeBand(dataGridView.Rows[0]);
+    }
+
+    private void Button5_Click(object sender, System.EventArgs e)
+    {
+
+        FreezeBand(dataGridView.Columns[1]);
+    }
+
+    private static void FreezeBand(DataGridViewBand band)
+    {
+        band.Frozen = true;
+        DataGridViewCellStyle style = new DataGridViewCellStyle();
+        style.BackColor = Color.WhiteSmoke;
+        band.DefaultCellStyle = style;
+    }

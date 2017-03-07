@@ -1,11 +1,11 @@
-   Private Sub SetHeaderText(ByVal sender As Object, ByVal e As EventArgs)
-      ' Set the HeaderText property.
-      myDataGridColumnStyle.HeaderText = "Emp ID"
-      myDataGrid.Invalidate()
-   End Sub 'SetHeaderText
-
-   Private Sub ResetHeaderText(ByVal sender As Object, ByVal e As EventArgs)
-      ' Reset the HeaderText property to its default value.
-      myDataGridColumnStyle.ResetHeaderText()
-      myDataGrid.Invalidate()
-   End Sub 'ResetHeaderText
+         ' String variable used to show message.   
+         Dim myString As String = "Fore color changed from: "
+         ' Store current foreground color of selected cells.
+         Dim myCurrentColor As Color = customersStyle.SelectionForeColor
+         myString += myCurrentColor.ToString()
+         ' Reset selection fore color to default.
+         customersStyle.ResetSelectionForeColor()
+         myString += "  to "
+         myString += customersStyle.SelectionForeColor.ToString()
+         ' Show information about changes in color setting.  
+         MessageBox.Show(myString, "Selection fore color information")

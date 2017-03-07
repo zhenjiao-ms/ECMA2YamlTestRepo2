@@ -1,30 +1,16 @@
-    ' Draws the backgrounds for entire ListView items.
-    Private Sub listView1_DrawItem(ByVal sender As Object, _
-        ByVal e As DrawListViewItemEventArgs) _
-        Handles listView1.DrawItem
+    Private Sub ChangeColumnAlignment()
+        songsDataGridView.Columns("Title").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomCenter
+        songsDataGridView.Columns("Title").Name = DataGridViewContentAlignment.BottomCenter.ToString()
 
-        If Not (e.State And ListViewItemStates.Selected) = 0 Then
+        songsDataGridView.Columns("Artist").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomLeft
+        songsDataGridView.Columns("Artist").Name = DataGridViewContentAlignment.BottomLeft.ToString()
 
-            ' Draw the background for a selected item.
-            e.Graphics.FillRectangle(Brushes.Maroon, e.Bounds)
-            e.DrawFocusRectangle()
+        songsDataGridView.Columns("Album").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        songsDataGridView.Columns("Album").Name = DataGridViewContentAlignment.BottomRight.ToString()
 
-        Else
+        songsDataGridView.Columns("Release Date").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        songsDataGridView.Columns("Release Date").Name = DataGridViewContentAlignment.MiddleCenter.ToString()
 
-            ' Draw the background for an unselected item.
-            Dim brush As New LinearGradientBrush(e.Bounds, Color.Orange, _
-                Color.Maroon, LinearGradientMode.Horizontal)
-            Try
-                e.Graphics.FillRectangle(brush, e.Bounds)
-            Finally
-                brush.Dispose()
-            End Try
-
-        End If
-
-        ' Draw the item text for views other than the Details view.
-        If Not Me.listView1.View = View.Details Then
-            e.DrawText()
-        End If
-
+        songsDataGridView.Columns("Track").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        songsDataGridView.Columns("Track").Name = DataGridViewContentAlignment.MiddleLeft.ToString()
     End Sub

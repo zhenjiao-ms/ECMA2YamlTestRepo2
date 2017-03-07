@@ -1,17 +1,25 @@
-private void EnumerateTreeNodes()
-{
-   TreeNodeCollection myNodeCollection = myTreeView.Nodes;
-   // Check for a node in the collection.
-   if (myNodeCollection.Contains(myTreeNode2))
-   {
-      myLabel.Text += "Node2 is at index: " + myNodeCollection.IndexOf(myTreeNode2);
-   }
-   myLabel.Text += "\n\nElements of the TreeNodeCollection:\n";
+// This button is a simple extension of the button class that overrides
+// the ProcessMnemonic method.  If the mnemonic is correctly entered,  
+// the message box will appear and the click event will be raised.  
+public class MyMnemonicButton:Button
 
-   // Create an enumerator for the collection.
-   IEnumerator myEnumerator = myNodeCollection.GetEnumerator();
-   while(myEnumerator.MoveNext())
-   {
-      myLabel.Text += ((TreeNode)myEnumerator.Current).Text +"\n";
-   }
+	// This method makes sure the control is selectable and the 
+	// mneumonic is correct before displaying the message box
+	// and triggering the click event.
+{
+	[UIPermission(
+        SecurityAction.Demand, Window = UIPermissionWindow.AllWindows)]
+        protected override bool ProcessMnemonic(char inputChar)
+	{
+
+		if (CanSelect&&IsMnemonic(inputChar, this.Text))
+		{
+			MessageBox.Show("You've raised the click event " +
+				"using the mnemonic.");
+			this.PerformClick();
+			return true;
+		}
+		return false;
+	}
+
 }

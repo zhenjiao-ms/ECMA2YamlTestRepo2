@@ -1,31 +1,47 @@
-<%@ Page Language="VB" AutoEventWireup="True" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<%@ page language="VB" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-    <title>ASP.NET Example</title>
-<script language="VB" runat="server">
-        Sub DayRender(source As Object, e As DayRenderEventArgs)
-            
-            If Not e.Day.IsOtherMonth And Not e.Day.IsWeekend Then
-                e.Cell.BackColor = System.Drawing.Color.Yellow
-            End If 
-        End Sub 'DayRender
-   </script>
- 
+<head id="Head1" runat="server">
+    <title>TableCaptionAlign Example</title>
 </head>
- 
 <body>
- 
-   <form id="form1" runat="server">
- 
-      <asp:Calendar id="calendar1" runat="server"
-           WeekendDayStyle-BackColor="gray"
-           OnDayRender="DayRender"/>
-                   
-   </form>
-         
-</body>
+    <form id="form1" runat="server">
+    <div>
+
+    <h3>TableCaptionAlign Enumeration Example</h3>
+    <!-- Scope attribute added for accessibility -->
+    <asp:table id="Table1" runat="server" CellPadding="4"
+      caption="City Postal Codes" CellSpacing="1"
+      captionalign="Right" gridlines="Both">
+    <asp:TableRow>
+      <asp:TableHeaderCell id="CityHeader" Scope="Column">
+        City Name
+      </asp:TableHeaderCell>
+      <asp:TableHeaderCell id="ZipHeader" Scope="Column">
+        ZIP Code
+      </asp:TableHeaderCell>
+    </asp:TableRow>
+    <asp:TableRow>
+      <asp:TableCell>
+        Redmond
+      </asp:TableCell>
+      <asp:TableCell>
+        98052
+      </asp:TableCell>
+    </asp:TableRow>
+    <asp:TableRow>
+      <asp:TableCell>
+        Albany
+      </asp:TableCell>
+      <asp:TableCell>
+        12222
+      </asp:TableCell>
+    </asp:TableRow>
+    </asp:table>
+
+    </div>
+    </form>
+  </body>
 </html>
-   

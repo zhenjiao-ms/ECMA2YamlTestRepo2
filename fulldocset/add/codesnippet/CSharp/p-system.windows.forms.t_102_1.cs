@@ -1,29 +1,77 @@
-            // This is an example of some common ToolStrip property settings.
-            // 
-            toolStrip1.AllowDrop = false;
-            toolStrip1.AllowItemReorder = true;
-            toolStrip1.AllowMerge = false;
-            toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            toolStrip1.AutoSize = false;
-            toolStrip1.CanOverflow = false;
-            toolStrip1.Cursor = System.Windows.Forms.Cursors.Cross;
-            toolStrip1.DefaultDropDownDirection = System.Windows.Forms.ToolStripDropDownDirection.BelowRight;
-            toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            toolStrip1.GripMargin = new System.Windows.Forms.Padding(3);
-            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            toolStripButton1});
-            toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            toolStrip1.Location = new System.Drawing.Point(0, 0);
-            toolStrip1.Margin = new System.Windows.Forms.Padding(1);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            toolStrip1.ShowItemToolTips = false;
-            toolStrip1.Size = new System.Drawing.Size(109, 273);
-            toolStrip1.Stretch = true;
-            toolStrip1.TabIndex = 0;
-            toolStrip1.TabStop = true;
-            toolStrip1.Text = "toolStrip1";
-            toolStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+
+public class Form1 : Form
+{
+    private ToolStripLabel toolStripLabel1;
+    private ToolStrip toolStrip1;
+
+    public Form1()
+    {
+        InitializeComponent();
+    }
+    [STAThread]
+    static void Main()
+    {
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+        Application.Run(new Form1());
+    }
+
+    private void InitializeComponent()
+    {
+        this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+        this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+        this.toolStrip1.SuspendLayout();
+        this.SuspendLayout();
+        // 
+        // toolStrip1
+        // 
+        this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1});
+        this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+        this.toolStrip1.Name = "toolStrip1";
+        this.toolStrip1.Size = new System.Drawing.Size(292, 25);
+        this.toolStrip1.TabIndex = 0;
+        this.toolStrip1.Text = "toolStrip1";
+        // 
+        // toolStripLabel1
+        // 
+        this.toolStripLabel1.IsLink = true;
+        this.toolStripLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
+        this.toolStripLabel1.Name = "toolStripLabel1";
+        this.toolStripLabel1.Size = new System.Drawing.Size(71, 22);
+        this.toolStripLabel1.Tag = "http://search.microsoft.com/search/search.aspx?";
+        this.toolStripLabel1.Text = "Search MSDN";
+        this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
+        // 
+        // Form1
+        // 
+        this.ClientSize = new System.Drawing.Size(292, 273);
+        this.Controls.Add(this.toolStrip1);
+        this.Name = "Form1";
+        this.toolStrip1.ResumeLayout(false);
+        this.toolStrip1.PerformLayout();
+        this.ResumeLayout(false);
+        this.PerformLayout();
+
+    }
+
+    private void toolStripLabel1_Click(object sender, EventArgs e)
+    {
+        ToolStripLabel toolStripLabel1 = (ToolStripLabel)sender;
+
+        // Start Internet Explorer and navigate to the URL in the
+        // tag property.
+        System.Diagnostics.Process.Start("IEXPLORE.EXE", toolStripLabel1.Tag.ToString());
+
+        // Set the LinkVisited property to true to change the color.
+        toolStripLabel1.LinkVisited = true;
+    }
+}

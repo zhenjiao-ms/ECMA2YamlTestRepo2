@@ -11,8 +11,18 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Specifies values that succinctly describe the results of a masked text parsing operation.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The <xref:System.Windows.Forms.MaskedTextBox> control delegates the actual responsibility for parsing the input characters to the <xref:System.ComponentModel.MaskedTextProvider> class. Many of the methods of <xref:System.ComponentModel.MaskedTextProvider>, in addition to returning a <xref:System.Boolean> success result, also provide an additional output parameter of type MaskedTextResultHint. This enumeration provides additional information about the operation of the method.  
+  
+> [!NOTE]
+>  The <xref:System.ComponentModel.MaskedTextProvider.GetOperationResultFromHint%2A> method can be used to convert a MaskedTextResultHint value into a <xref:System.Boolean> success value.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="AlphanumericCharacterExpected">
@@ -29,7 +39,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Operation did not succeed.An input character was encountered that was not alphanumeric. .</summary>
       </Docs>
     </Member>
     <Member MemberName="AsciiCharacterExpected">
@@ -46,7 +56,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Operation did not succeed.An input character was encountered that was not a member of the ASCII character set.</summary>
       </Docs>
     </Member>
     <Member MemberName="CharacterEscaped">
@@ -63,7 +73,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Success. The operation succeeded because a literal, prompt or space character was an escaped character. For more information about escaped characters, see the <see cref="System.ComponentModel.MaskedTextProvider.VerifyEscapeChar%2A" /> method.</summary>
       </Docs>
     </Member>
     <Member MemberName="DigitExpected">
@@ -80,7 +90,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Operation did not succeed. An input character was encountered that was not a digit.</summary>
       </Docs>
     </Member>
     <Member MemberName="InvalidInput">
@@ -97,7 +107,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Operation did not succeed. The program encountered an  input character that was not valid. For more information about characters that are not valid, see the <see cref="System.ComponentModel.MaskedTextProvider.IsValidInputChar%2A" /> method.</summary>
       </Docs>
     </Member>
     <Member MemberName="LetterExpected">
@@ -114,7 +124,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Operation did not succeed. An input character was encountered that was not a letter.</summary>
       </Docs>
     </Member>
     <Member MemberName="NoEffect">
@@ -131,7 +141,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Success. The primary operation was not performed because it was not needed; therefore, no side effect was produced.</summary>
       </Docs>
     </Member>
     <Member MemberName="NonEditPosition">
@@ -148,7 +158,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Operation did not succeed. The current position in the formatted string is a literal character.</summary>
       </Docs>
     </Member>
     <Member MemberName="PositionOutOfRange">
@@ -165,7 +175,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Operation did not succeed. The specified position is not in the range of the target string; typically it is either less than zero or greater then the length of the target string.</summary>
       </Docs>
     </Member>
     <Member MemberName="PromptCharNotAllowed">
@@ -182,7 +192,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Operation did not succeed. The prompt character is not valid at input, perhaps because the <see cref="System.ComponentModel.MaskedTextProvider.AllowPromptAsInput%2A" /> property is set to <see langword="false" />.</summary>
       </Docs>
     </Member>
     <Member MemberName="SideEffect">
@@ -199,7 +209,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Success. The primary operation was not performed because it was not needed, but the method produced a side effect. For example, the <see cref="System.ComponentModel.MaskedTextProvider.RemoveAt%2A" /> method can delete an unassigned edit position, which causes left-shifting of subsequent characters in the formatted string.</summary>
       </Docs>
     </Member>
     <Member MemberName="SignedDigitExpected">
@@ -216,7 +226,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Operation did not succeed. An input character was encountered that was not a signed digit.</summary>
       </Docs>
     </Member>
     <Member MemberName="Success">
@@ -233,7 +243,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Success. The primary operation succeeded.</summary>
       </Docs>
     </Member>
     <Member MemberName="UnavailableEditPosition">
@@ -250,7 +260,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Operation did not succeed. There were not enough edit positions available to fulfill the request.</summary>
       </Docs>
     </Member>
     <Member MemberName="Unknown">
@@ -267,7 +277,7 @@
         <ReturnType>System.ComponentModel.MaskedTextResultHint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Unknown. The result of the operation could not be determined.</summary>
       </Docs>
     </Member>
   </Members>

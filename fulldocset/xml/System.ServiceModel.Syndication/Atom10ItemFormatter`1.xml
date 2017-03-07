@@ -31,9 +31,27 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <typeparam name="TSyndicationItem">To be added.</typeparam>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <typeparam name="TSyndicationItem">The <see cref="T:System.ServiceModel.Syndication.SyndicationItem" /> -derived class to serialize.</typeparam>
+    <summary>A class that serializes <see cref="T:System.ServiceModel.Syndication.SyndicationItem" />-derived classes to and from Atom 1.0 format.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use this class to serialize instances of <xref:System.ServiceModel.Syndication.SyndicationItem>-derived classes and to create instances of <xref:System.ServiceModel.Syndication.SyndicationFeed>-derived classes from XML documents that contain Atom1.0 entries. If you must serialize a <xref:System.ServiceModel.Syndication.SyndicationItem> instance use the <xref:System.ServiceModel.Syndication.Atom10ItemFormatter> formatter instead.  
+  
+> [!NOTE]
+>  The Atom 1.0 specification allows for fractional seconds to be specified in any of its date constructs. When serializing and deserializing, the [!INCLUDE[indigo2](~/add/includes/indigo2-md.md)] implementation ignores the fractional seconds.  
+  
+   
+  
+## Examples  
+ The following code demonstrates how to create a <xref:System.ServiceModel.Syndication.SyndicationItem>-derived class and serialize it to Atom 1.0.  
+  
+ [!code-vb[AtomFormatter#9](~/add/codesnippet/visualbasic/t-system.servicemodel.sy_11_1.vb)]
+ [!code-cs[AtomFormatter#9](~/add/codesnippet/csharp/t-system.servicemodel.sy_11_1.cs)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -51,7 +69,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Creates a new instance of the <see cref="System.ServiceModel.Syndication.Atom10ItemFormatter%601" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -72,9 +90,19 @@
         <Parameter Name="itemToWrite" Type="TSyndicationItem" />
       </Parameters>
       <Docs>
-        <param name="itemToWrite">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="itemToWrite">The <see cref="T:System.ServiceModel.Syndication.SyndicationItem" /> to serialize.</param>
+        <summary>Creates a new instance of the <see cref="System.ServiceModel.Syndication.Atom10ItemFormatter%601" /> class with the specified <see cref="T:System.ServiceModel.Syndication.SyndicationItem" />-derived instance.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example shows how to call this constructor.  
+  
+ [!code-vb[AtomFormatter#10](~/add/codesnippet/visualbasic/m-system.servicemodel.sy_25_1.vb)]
+ [!code-cs[AtomFormatter#10](~/add/codesnippet/csharp/m-system.servicemodel.sy_25_1.cs)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CreateItemInstance">
@@ -95,8 +123,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Creates a new instance of the <see cref="T:System.ServiceModel.Syndication.SyndicationItem" />-derived class.</summary>
+        <returns>A new instance of the <see cref="T:System.ServiceModel.Syndication.SyndicationItem" /> class.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

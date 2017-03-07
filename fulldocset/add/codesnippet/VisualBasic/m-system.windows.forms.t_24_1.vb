@@ -1,25 +1,13 @@
-Imports System.Windows.Forms
+    Private Sub getRowBtn_Click( _
+    ByVal sender As System.Object, _
+    ByVal e As System.EventArgs) _
+    Handles getRowBtn.Click
 
-Public Class Form1
-    Inherits Form
-    Private tabControl1 As TabControl
-    Private tabPage1 As TabPage
+        Dim c As Control
+        For Each c In Me.TableLayoutPanel1.Controls
 
-    Public Sub MyTabs()
-        Me.tabControl1 = New TabControl()
+            Trace.WriteLine(Me.TableLayoutPanel1.GetRow(c))
 
-        ' Invokes the TabPage() constructor to create the tabPage1.
-        Me.tabPage1 = New System.Windows.Forms.TabPage()
+        Next
 
-        Me.tabControl1.Controls.Add(tabPage1)
-        Me.Controls.Add(tabControl1)
     End Sub
-
-    Public Sub New()
-        MyTabs()
-    End Sub
-
-    Shared Sub Main()
-        Application.Run(New Form1())
-    End Sub
-End Class

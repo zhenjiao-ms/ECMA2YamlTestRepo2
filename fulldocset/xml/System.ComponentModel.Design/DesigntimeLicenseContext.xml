@@ -12,8 +12,16 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a design-time license context that can support a license provider at design time.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This class provides methods for managing license keys of the associated context and a property for representing the licensing mode of the associated context.  
+  
+ ]]></format>
+    </remarks>
+    <permission cref="T:System.Security.NamedPermissionSet">for full access to system resources. Demand values: <see cref="T:System.Security.Permissions.SecurityAction" />, <see cref="T:System.Security.Permissions.SecurityAction" />. Associated state:</permission>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,7 +36,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.Design.DesigntimeLicenseContext" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -50,10 +58,10 @@
         <Parameter Name="resourceAssembly" Type="System.Reflection.Assembly" />
       </Parameters>
       <Docs>
-        <param name="type">To be added.</param>
-        <param name="resourceAssembly">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="type">The type of the license key.</param>
+        <param name="resourceAssembly">The assembly to get the key from.</param>
+        <summary>Gets a saved license key.</summary>
+        <returns>The saved license key that matches the specified type.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -75,10 +83,17 @@
         <Parameter Name="key" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="type">To be added.</param>
-        <param name="key">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="type">The type of the license key.</param>
+        <param name="key">The license key.</param>
+        <summary>Sets a saved license key.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This method sets the specified license key to this license context.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="UsageMode">
@@ -95,8 +110,8 @@
         <ReturnType>System.ComponentModel.LicenseUsageMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the license usage mode.</summary>
+        <value>A <see cref="T:System.ComponentModel.LicenseUsageMode" /> indicating the licensing mode for the context.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

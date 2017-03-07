@@ -1,66 +1,72 @@
-		private void CreateMyListView()
+
+	// Declare the LinkLabel object.
+	internal System.Windows.Forms.LinkLabel LinkLabel1;
+
+	// Declare keywords array to identify links
+	string[] keywords;
+
+	private void InitializeLinkLabel()
+	{
+		this.LinkLabel1 = new System.Windows.Forms.LinkLabel();
+                this.LinkLabel1.Links.Clear();
+
+		// Set the location, name and size.
+		this.LinkLabel1.Location = new System.Drawing.Point(10, 20);
+		this.LinkLabel1.Name = "CompanyLinks";
+		this.LinkLabel1.Size = new System.Drawing.Size(104, 150);
+
+		// Set the LinkBehavior property to show underline when mouse
+		// hovers over the links.
+		this.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+		string textString = "For more information see our" +
+			" company website or the research page at Contoso Ltd. ";
+
+		// Set the text property.
+		this.LinkLabel1.Text = textString;
+
+		// Set the color of the links to black, unless the mouse
+		// is hovering over a link.
+		this.LinkLabel1.LinkColor = System.Drawing.Color.Black;
+		this.LinkLabel1.ActiveLinkColor = System.Drawing.Color.Blue;
+
+		// Associate the event-handling method with the LinkClicked
+		// event.
+		this.LinkLabel1.LinkClicked += 
+			new LinkLabelLinkClickedEventHandler(LinkLabel1_LinkClicked);
+
+		// Add links to the LinkCollection using starting index and
+		// length of keywords.
+		keywords = new string[]{"company", "research"};
+		foreach ( string keyword in keywords )
 		{
-			// Create a new ListView control.
-			ListView listView1 = new ListView();
-			listView1.Bounds = new Rectangle(new Point(10,10), new Size(300,200));
-
-			// Set the view to show details.
-			listView1.View = View.Details;
-			// Allow the user to edit item text.
-			listView1.LabelEdit = true;
-			// Allow the user to rearrange columns.
-			listView1.AllowColumnReorder = true;
-			// Display check boxes.
-			listView1.CheckBoxes = true;
-			// Select the item and subitems when selection is made.
-			listView1.FullRowSelect = true;
-			// Display grid lines.
-			listView1.GridLines = true;
-			// Sort the items in the list in ascending order.
-			listView1.Sorting = SortOrder.Ascending;
-            			
-			// Create three items and three sets of subitems for each item.
-			ListViewItem item1 = new ListViewItem("item1",0);
-			// Place a check mark next to the item.
-			item1.Checked = true;
-			item1.SubItems.Add("1");
-			item1.SubItems.Add("2");
-			item1.SubItems.Add("3");
-			ListViewItem item2 = new ListViewItem("item2",1);
-			item2.SubItems.Add("4");
-			item2.SubItems.Add("5");
-			item2.SubItems.Add("6");
-			ListViewItem item3 = new ListViewItem("item3",0);
-			// Place a check mark next to the item.
-			item3.Checked = true;
-			item3.SubItems.Add("7");
-			item3.SubItems.Add("8");
-			item3.SubItems.Add("9");
-
-			// Create columns for the items and subitems.
-			// Width of -2 indicates auto-size.
-			listView1.Columns.Add("Item Column", -2, HorizontalAlignment.Left);
-			listView1.Columns.Add("Column 2", -2, HorizontalAlignment.Left);
-			listView1.Columns.Add("Column 3", -2, HorizontalAlignment.Left);
-			listView1.Columns.Add("Column 4", -2, HorizontalAlignment.Center);
-
-			//Add the items to the ListView.
-            		listView1.Items.AddRange(new ListViewItem[]{item1,item2,item3});
-
-			// Create two ImageList objects.
-			ImageList imageListSmall = new ImageList();
-			ImageList imageListLarge = new ImageList();
-
-			// Initialize the ImageList objects with bitmaps.
-			imageListSmall.Images.Add(Bitmap.FromFile("C:\\MySmallImage1.bmp"));
-			imageListSmall.Images.Add(Bitmap.FromFile("C:\\MySmallImage2.bmp"));
-			imageListLarge.Images.Add(Bitmap.FromFile("C:\\MyLargeImage1.bmp"));
-			imageListLarge.Images.Add(Bitmap.FromFile("C:\\MyLargeImage2.bmp"));
-
-			//Assign the ImageList objects to the ListView.
-			listView1.LargeImageList = imageListLarge;
-			listView1.SmallImageList = imageListSmall;
-
-			// Add the ListView to the control collection.
-			this.Controls.Add(listView1);
+			this.LinkLabel1.Links.Add(textString.IndexOf(keyword), keyword.Length);
 		}
+
+		// Add the label to the form.
+		this.Controls.Add(this.LinkLabel1);
+	}
+
+	private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+	{
+
+		string url = "";
+
+		// Determine which link was clicked and set the appropriate url.
+		switch(LinkLabel1.Links.IndexOf(e.Link))
+		{
+			case 0:
+				url = "www.microsoft.com";
+
+				break;
+			case 1:
+				url = "www.contoso.com/research";
+				break;
+		}
+
+		// Set the visited property to True. This will change
+		// the color of the link.
+		e.Link.Visited = true;
+
+		// Open Internet Explorer to the correct url.
+		System.Diagnostics.Process.Start("IExplore.exe", url);
+	}

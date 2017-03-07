@@ -1,15 +1,20 @@
-    // Swap the last column with the first.
-    private void Button10_Click(object sender, EventArgs args)
+    private static void SetAlternateChoicesUsingItems(
+        DataGridViewComboBoxColumn comboboxColumn)
     {
-        DataGridViewColumnCollection columnCollection = dataGridView.Columns;
+        comboboxColumn.Items.AddRange("Mr.", "Ms.", "Mrs.", "Dr.");
+    }
 
-        DataGridViewColumn firstVisibleColumn =
-            columnCollection.GetFirstColumn(DataGridViewElementStates.Visible);
-        DataGridViewColumn lastVisibleColumn =
-            columnCollection.GetLastColumn(
-                DataGridViewElementStates.Visible, DataGridViewElementStates.None);
-
-        int firstColumn_sIndex = firstVisibleColumn.DisplayIndex;
-        firstVisibleColumn.DisplayIndex = lastVisibleColumn.DisplayIndex;
-        lastVisibleColumn.DisplayIndex = firstColumn_sIndex;
+    private DataGridViewComboBoxColumn CreateComboBoxColumn()
+    {
+        DataGridViewComboBoxColumn column =
+            new DataGridViewComboBoxColumn();
+        {
+            column.DataPropertyName = ColumnName.TitleOfCourtesy.ToString();
+            column.HeaderText = ColumnName.TitleOfCourtesy.ToString();
+            column.DropDownWidth = 160;
+            column.Width = 90;
+            column.MaxDropDownItems = 3;
+            column.FlatStyle = FlatStyle.Flat;
+        }
+        return column;
     }

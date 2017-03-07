@@ -1,69 +1,149 @@
 using System;
+using System.Collections;
 using System.Collections.Specialized;
 
-
-public class SamplesBitVector32  {
+public class SamplesListDictionary  {
 
    public static void Main()  {
 
-      // Creates and initializes a BitVector32.
-      BitVector32 myBV = new BitVector32( 0 );
+      // Creates and initializes a new ListDictionary.
+      ListDictionary myCol = new ListDictionary();
+      myCol.Add( "Braeburn Apples", "1.49" );
+      myCol.Add( "Fuji Apples", "1.29" );
+      myCol.Add( "Gala Apples", "1.49" );
+      myCol.Add( "Golden Delicious Apples", "1.29" );
+      myCol.Add( "Granny Smith Apples", "0.89" );
+      myCol.Add( "Red Delicious Apples", "0.99" );
 
-      // Creates four sections in the BitVector32 with maximum values 6, 3, 1, and 15.
-      // mySect3, which uses exactly one bit, can also be used as a bit flag.
-      BitVector32.Section mySect1 = BitVector32.CreateSection( 6 );
-      BitVector32.Section mySect2 = BitVector32.CreateSection( 3, mySect1 );
-      BitVector32.Section mySect3 = BitVector32.CreateSection( 1, mySect2 );
-      BitVector32.Section mySect4 = BitVector32.CreateSection( 15, mySect3 );
+      // Display the contents of the collection using foreach. This is the preferred method.
+      Console.WriteLine( "Displays the elements using foreach:" );
+      PrintKeysAndValues1( myCol );
 
-      // Displays the values of the sections.
-      Console.WriteLine( "Initial values:" );
-      Console.WriteLine( "\tmySect1: {0}", myBV[mySect1] );
-      Console.WriteLine( "\tmySect2: {0}", myBV[mySect2] );
-      Console.WriteLine( "\tmySect3: {0}", myBV[mySect3] );
-      Console.WriteLine( "\tmySect4: {0}", myBV[mySect4] );
+      // Display the contents of the collection using the enumerator.
+      Console.WriteLine( "Displays the elements using the IDictionaryEnumerator:" );
+      PrintKeysAndValues2( myCol );
 
-      // Sets each section to a new value and displays the value of the BitVector32 at each step.
-      Console.WriteLine( "Changing the values of each section:" );
-      Console.WriteLine( "\tInitial:    \t{0}", myBV.ToString() );
-      myBV[mySect1] = 5;
-      Console.WriteLine( "\tmySect1 = 5:\t{0}", myBV.ToString() );
-      myBV[mySect2] = 3;
-      Console.WriteLine( "\tmySect2 = 3:\t{0}", myBV.ToString() );
-      myBV[mySect3] = 1;
-      Console.WriteLine( "\tmySect3 = 1:\t{0}", myBV.ToString() );
-      myBV[mySect4] = 9;
-      Console.WriteLine( "\tmySect4 = 9:\t{0}", myBV.ToString() );
+      // Display the contents of the collection using the Keys, Values, Count, and Item properties.
+      Console.WriteLine( "Displays the elements using the Keys, Values, Count, and Item properties:" );
+      PrintKeysAndValues3( myCol );
 
-      // Displays the values of the sections.
-      Console.WriteLine( "New values:" );
-      Console.WriteLine( "\tmySect1: {0}", myBV[mySect1] );
-      Console.WriteLine( "\tmySect2: {0}", myBV[mySect2] );
-      Console.WriteLine( "\tmySect3: {0}", myBV[mySect3] );
-      Console.WriteLine( "\tmySect4: {0}", myBV[mySect4] );
+      // Copies the ListDictionary to an array with DictionaryEntry elements.
+      DictionaryEntry[] myArr = new DictionaryEntry[myCol.Count];
+      myCol.CopyTo( myArr, 0 );
 
+      // Displays the values in the array.
+      Console.WriteLine( "Displays the elements in the array:" );
+      Console.WriteLine( "   KEY                       VALUE" );
+      for ( int i = 0; i < myArr.Length; i++ )
+         Console.WriteLine( "   {0,-25} {1}", myArr[i].Key, myArr[i].Value );
+      Console.WriteLine();
+
+      // Searches for a key.
+      if ( myCol.Contains( "Kiwis" ) )
+         Console.WriteLine( "The collection contains the key \"Kiwis\"." );
+      else
+         Console.WriteLine( "The collection does not contain the key \"Kiwis\"." );
+      Console.WriteLine();
+
+      // Deletes a key.
+      myCol.Remove( "Plums" );
+      Console.WriteLine( "The collection contains the following elements after removing \"Plums\":" );
+      PrintKeysAndValues1( myCol );
+
+      // Clears the entire collection.
+      myCol.Clear();
+      Console.WriteLine( "The collection contains the following elements after it is cleared:" );
+      PrintKeysAndValues1( myCol );
+
+   }
+
+   // Uses the foreach statement which hides the complexity of the enumerator.
+   // NOTE: The foreach statement is the preferred way of enumerating the contents of a collection.
+   public static void PrintKeysAndValues1( IDictionary myCol )  {
+      Console.WriteLine( "   KEY                       VALUE" );
+      foreach ( DictionaryEntry de in myCol )
+         Console.WriteLine( "   {0,-25} {1}", de.Key, de.Value );
+      Console.WriteLine();
+   }
+
+   // Uses the enumerator. 
+   // NOTE: The foreach statement is the preferred way of enumerating the contents of a collection.
+   public static void PrintKeysAndValues2( IDictionary myCol )  {
+      IDictionaryEnumerator myEnumerator = myCol.GetEnumerator();
+      Console.WriteLine( "   KEY                       VALUE" );
+      while ( myEnumerator.MoveNext() )
+         Console.WriteLine( "   {0,-25} {1}", myEnumerator.Key, myEnumerator.Value );
+      Console.WriteLine();
+   }
+
+   // Uses the Keys, Values, Count, and Item properties.
+   public static void PrintKeysAndValues3( ListDictionary myCol )  {
+      String[] myKeys = new String[myCol.Count];
+      myCol.Keys.CopyTo( myKeys, 0 );
+
+      Console.WriteLine( "   INDEX KEY                       VALUE" );
+      for ( int i = 0; i < myCol.Count; i++ )
+         Console.WriteLine( "   {0,-5} {1,-25} {2}", i, myKeys[i], myCol[myKeys[i]] );
+      Console.WriteLine();
    }
 
 }
 
 /*
-This code produces the following output.
+This code produces output similar to the following.
+Note that because a dictionary is implemented for fast keyed access the order
+of the items in the dictionary are not gauranteed and, as a result, should not
+be depended on.
 
-Initial values:
-        mySect1: 0
-        mySect2: 0
-        mySect3: 0
-        mySect4: 0
-Changing the values of each section:
-        Initial:        BitVector32{00000000000000000000000000000000}
-        mySect1 = 5:    BitVector32{00000000000000000000000000000101}
-        mySect2 = 3:    BitVector32{00000000000000000000000000011101}
-        mySect3 = 1:    BitVector32{00000000000000000000000000111101}
-        mySect4 = 9:    BitVector32{00000000000000000000001001111101}
-New values:
-        mySect1: 5
-        mySect2: 3
-        mySect3: 1
-        mySect4: 9
+Displays the elements using foreach:
+   KEY                       VALUE
+   Braeburn Apples           1.49
+   Fuji Apples               1.29
+   Gala Apples               1.49
+   Golden Delicious Apples   1.29
+   Granny Smith Apples       0.89
+   Red Delicious Apples      0.99
+
+Displays the elements using the IDictionaryEnumerator:
+   KEY                       VALUE
+   Braeburn Apples           1.49
+   Fuji Apples               1.29
+   Gala Apples               1.49
+   Golden Delicious Apples   1.29
+   Granny Smith Apples       0.89
+   Red Delicious Apples      0.99
+
+Displays the elements using the Keys, Values, Count, and Item properties:
+   INDEX KEY                       VALUE
+   0     Braeburn Apples           1.49
+   1     Fuji Apples               1.29
+   2     Gala Apples               1.49
+   3     Golden Delicious Apples   1.29
+   4     Granny Smith Apples       0.89
+   5     Red Delicious Apples      0.99
+
+Displays the elements in the array:
+   KEY                       VALUE
+   Braeburn Apples           1.49
+   Fuji Apples               1.29
+   Gala Apples               1.49
+   Golden Delicious Apples   1.29
+   Granny Smith Apples       0.89
+   Red Delicious Apples      0.99
+
+The collection does not contain the key "Kiwis".
+
+The collection contains the following elements after removing "Plums":
+   KEY                       VALUE
+   Braeburn Apples           1.49
+   Fuji Apples               1.29
+   Gala Apples               1.49
+   Golden Delicious Apples   1.29
+   Granny Smith Apples       0.89
+   Red Delicious Apples      0.99
+
+The collection contains the following elements after it is cleared:
+   KEY                       VALUE
+
 
 */

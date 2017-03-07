@@ -11,8 +11,23 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Specifies the values for the custom errors modality.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The CustomErrorsMode enumerates the values you can use when setting the <xref:System.Web.Configuration.CustomErrorsSection.Mode%2A> property. These values define whether custom errors are enabled, disabled, or shown only to remote clients.  
+  
+   
+  
+## Examples  
+ The following code example shows how to set the <xref:System.Web.Configuration.CustomErrorsSection.Mode%2A> property.  
+  
+ [!code-vb[System.Web.Configuration.CustomErrorsSection#9](~/add/codesnippet/visualbasic/t-system.web.configurati_54_1.vb)]
+ [!code-cs[System.Web.Configuration.CustomErrorsSection#9](~/add/codesnippet/csharp/t-system.web.configurati_54_1.cs)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Off">
@@ -29,7 +44,7 @@
         <ReturnType>System.Web.Configuration.CustomErrorsMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Disables custom errors, allowing display of standard errors.</summary>
       </Docs>
     </Member>
     <Member MemberName="On">
@@ -46,7 +61,7 @@
         <ReturnType>System.Web.Configuration.CustomErrorsMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Enables custom errors. If no <see cref="System.Web.Configuration.CustomErrorsSection.DefaultRedirect%2A" /> is specified, standard errors are issued.</summary>
       </Docs>
     </Member>
     <Member MemberName="RemoteOnly">
@@ -63,7 +78,7 @@
         <ReturnType>System.Web.Configuration.CustomErrorsMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Enables custom errors on remote clients only. Custom errors are shown only to remote clients and ASP.NET errors are shown to the local host.</summary>
       </Docs>
     </Member>
   </Members>

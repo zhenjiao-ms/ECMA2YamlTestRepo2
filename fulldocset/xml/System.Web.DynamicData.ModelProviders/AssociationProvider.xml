@@ -12,8 +12,15 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Provides the base class for column-association providers.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Association providers must extend this class.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,7 +35,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.Web.DynamicData.ModelProviders.AssociationProvider" /> class for use by an inherited class instance. This constructor can only be called by an inherited class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -46,9 +53,16 @@
         <ReturnType>System.Web.DynamicData.ModelProviders.AssociationDirection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the type of the association.</summary>
+        <value>The type of the association.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Associations include one-to-one, one-to-many, and many-to-many.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ForeignKeyNames">
@@ -65,8 +79,8 @@
         <ReturnType>System.Collections.ObjectModel.ReadOnlyCollection&lt;System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the names of the foreign keys that make up this association.</summary>
+        <value>The names of the foreign keys that make up this association.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -84,8 +98,8 @@
         <ReturnType>System.Web.DynamicData.ModelProviders.ColumnProvider</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the source column of the association.</summary>
+        <value>The source column of the association.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -106,9 +120,9 @@
         <Parameter Name="sortColumn" Type="System.Web.DynamicData.ModelProviders.ColumnProvider" />
       </Parameters>
       <Docs>
-        <param name="sortColumn">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="sortColumn">The column to sort the entity by.</param>
+        <summary>Returns the sort expression for the column that is represented by the association.</summary>
+        <returns>If <see cref="System.Web.DynamicData.ModelProviders.ColumnProvider.IsSortable%2A" /> returns <see langword="true" />, the sort expression for the column that is represented by the association; otherwise, <see langword="null" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -126,8 +140,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets a value that indicates whether the From column part of the primary key is in the table.</summary>
+        <value>
+          <see langword="true" /> if the From column part of the primary key is in the table; otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -145,9 +160,16 @@
         <ReturnType>System.Web.DynamicData.ModelProviders.ColumnProvider</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the destination column of the association.</summary>
+        <value>The destination column of the association.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This property is optional and is generally required only for one-to-many and one-to-one relationships  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ToTable">
@@ -164,8 +186,8 @@
         <ReturnType>System.Web.DynamicData.ModelProviders.TableProvider</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the destination table of the association.</summary>
+        <value>The destination table of the association.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

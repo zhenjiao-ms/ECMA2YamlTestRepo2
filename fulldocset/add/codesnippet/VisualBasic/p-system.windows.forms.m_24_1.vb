@@ -1,17 +1,26 @@
-
-    ' Computes a week one month from today.
-    Private Sub ShowAWeeksVacationOneMonthFromToday()
-         
-        Dim today As Date = monthCalendar1.TodayDate
-        Dim vacationMonth As Integer = today.Month + 1
-        Dim vacationYear As Integer = today.Year
-        If (today.Month = 12) Then
-            vacationYear += 1
-            vacationMonth = 1
-        End If
-
-        Me.monthCalendar1.SelectionStart = _
-            New Date(vacationYear, vacationMonth, today.Day - 1)
-        Me.monthCalendar1.SelectionEnd = _
-            New Date(vacationYear, vacationMonth, today.Day + 6)
-    End Sub
+Public Sub InitializeMyMenu()
+   ' Create the MainMenu object.
+   Dim myMainMenu As New MainMenu()
+   
+   ' Create the MenuItem objects.
+   Dim fileMenu As New MenuItem("&File")
+   Dim newFile As New MenuItem("&New")
+   Dim openFile As New MenuItem("&Open")
+   Dim exitProgram As New MenuItem("E&xit")
+   
+   ' Add the File menu item to myMainMenu.
+   myMainMenu.MenuItems.Add(fileMenu)
+   
+   ' Add three submenus to the File menu.
+   fileMenu.MenuItems.Add(newFile)
+   fileMenu.MenuItems.Add(openFile)
+   fileMenu.MenuItems.Add(exitProgram)
+   
+   ' Assign myMainMenu to the form.
+   Me.Menu = myMainMenu
+   
+   ' Count the number of objects in the File menu and display the result.
+   Dim objectNumber As String = fileMenu.MenuItems.Count.ToString()
+   MessageBox.Show(("Number of objects in the File menu = " + objectNumber))
+End Sub 
+'InitializeMyMenu

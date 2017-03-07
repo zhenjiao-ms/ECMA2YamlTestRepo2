@@ -1,23 +1,19 @@
-    Private Sub button1_Click(sender As Object, e As System.EventArgs)
-        ' Takes the selected text from a text box and puts it on the clipboard.
-        If textBox1.SelectedText <> "" Then
-            Clipboard.SetDataObject(textBox1.SelectedText)
-        Else
-            textBox2.Text = "No text selected in textBox1"
-        End If
-    End Sub 'button1_Click
-     
-    Private Sub button2_Click(sender As Object, e As System.EventArgs)
-        ' Declares an IDataObject to hold the data returned from the clipboard.
-        ' Retrieves the data from the clipboard.
-        Dim iData As IDataObject = Clipboard.GetDataObject()
-        
-        ' Determines whether the data is in a format you can use.
-        If iData.GetDataPresent(DataFormats.Text) Then
-            ' Yes it is, so display it in a text box.
-            textBox2.Text = CType(iData.GetData(DataFormats.Text), String)
-        Else
-            ' No it is not.
-            textBox2.Text = "Could not retrieve data off the clipboard."
-        End If
-    End Sub 'button2_Click
+Protected Overrides Sub OnTextChanged(e As System.EventArgs)
+   Try
+      ' Convert the text to a Double and determine
+      ' if it is a negative number.
+      If Double.Parse(Me.Text) < 0 Then
+         ' If the number is negative, display it in Red.
+         Me.ForeColor = Color.Red
+      Else
+         ' If the number is not negative, display it in Black.
+         Me.ForeColor = Color.Black
+      End If
+   Catch
+      ' If there is an error, display the
+      ' text using the system colors.
+      Me.ForeColor = SystemColors.ControlText
+   End Try
+
+   MyBase.OnTextChanged(e)
+End Sub

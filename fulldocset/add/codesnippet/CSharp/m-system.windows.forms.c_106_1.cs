@@ -1,46 +1,24 @@
-using System.Windows.Forms;
-
-public class Form1 : Form
-{
-    public Form1()
-    {
-        FlowLayoutPanel panel = new FlowLayoutPanel();
-
-        TabTextBox tabTextBox1 = new TabTextBox();
-        tabTextBox1.Text = "TabTextBox";
-        panel.Controls.Add(tabTextBox1);
-
-        TextBox textBox1 = new TextBox();
-        textBox1.Text = "Normal TextBox";
-        panel.Controls.Add(textBox1);
-
-        this.Controls.Add(panel);
+private void button1_Click(object sender, System.EventArgs e) {
+    // Takes the selected text from a text box and puts it on the clipboard.
+    if(textBox1.SelectedText != "")
+       Clipboard.SetDataObject(textBox1.SelectedText);
+    else
+       textBox2.Text = "No text selected in textBox1";
+ }
+ 
+ private void button2_Click(object sender, System.EventArgs e) {
+    // Declares an IDataObject to hold the data returned from the clipboard.
+    // Retrieves the data from the clipboard.
+    IDataObject iData = Clipboard.GetDataObject();
+ 
+    // Determines whether the data is in a format you can use.
+    if(iData.GetDataPresent(DataFormats.Text)) {
+       // Yes it is, so display it in a text box.
+       textBox2.Text = (String)iData.GetData(DataFormats.Text); 
     }
-}
-
-class TabTextBox : TextBox
-{
-    protected override bool IsInputKey(Keys keyData)
-    {
-        if (keyData == Keys.Tab)
-        {
-            return true;
-        }
-        else
-        {
-            return base.IsInputKey(keyData);
-        }
+    else {
+       // No it is not.
+       textBox2.Text = "Could not retrieve data off the clipboard.";
     }
-
-    protected override void OnKeyDown(KeyEventArgs e)
-    {
-        if (e.KeyData == Keys.Tab)
-        {
-            this.SelectedText = "    ";                
-        }
-        else
-        {
-            base.OnKeyDown(e);
-        }
-    }
-}
+ }
+ 

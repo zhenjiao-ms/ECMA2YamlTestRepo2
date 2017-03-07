@@ -1,212 +1,66 @@
-    Public Class CustomersList
-        Inherits CollectionBase
-        Implements IBindingList 
+        Public Overrides Function GetSortedActionItems() _
+        As DesignerActionItemCollection
+            Dim items As New DesignerActionItemCollection()
 
-        Private resetEvent As New ListChangedEventArgs(ListChangedType.Reset, -1)
-        Private onListChanged1 As ListChangedEventHandler
+            'Define static section header entries.
+            items.Add(New DesignerActionHeaderItem("Appearance"))
+            items.Add(New DesignerActionHeaderItem("Information"))
 
+            'Boolean property for locking color selections.
+            items.Add(New DesignerActionPropertyItem( _
+            "LockColors", _
+            "Lock Colors", _
+            "Appearance", _
+            "Locks the color properties."))
 
-        Public Sub LoadCustomers()
-            Dim l As IList = CType(Me, IList)
-            l.Add(ReadCustomer1())
-            l.Add(ReadCustomer2())
-            OnListChanged(resetEvent)
-        End Sub 
+            If Not LockColors Then
+                items.Add( _
+                New DesignerActionPropertyItem( _
+                "BackColor", _
+                "Back Color", _
+                "Appearance", _
+                "Selects the background color."))
 
+                items.Add( _
+                New DesignerActionPropertyItem( _
+                "ForeColor", _
+                "Fore Color", _
+                "Appearance", _
+                "Selects the foreground color."))
 
-        Default Public Property Item(ByVal index As Integer) As Customer
-            Get
-                Return CType(List(index), Customer)
-            End Get
-            Set(ByVal Value As Customer)
-                List(index) = Value
-            End Set
-        End Property
-
-
-        Public Function Add(ByVal value As Customer) As Integer
-            Return List.Add(value)
-        End Function 
-
-
-        Public Function AddNew2() As Customer
-            Return CType(CType(Me, IBindingList).AddNew(), Customer)
-        End Function 
-
-
-        Public Sub Remove(ByVal value As Customer)
-            List.Remove(value)
-        End Sub 
-
-
-
-        Protected Overridable Sub OnListChanged(ByVal ev As ListChangedEventArgs)
-            If (onListChanged1 IsNot Nothing) Then
-                onListChanged1(Me, ev)
+                'This next method item is also added to the context menu 
+                ' (as a designer verb).
+                items.Add( _
+                New DesignerActionMethodItem( _
+                Me, _
+                "InvertColors", _
+                "Invert Colors", _
+                "Appearance", _
+                "Inverts the fore and background colors.", _
+                True))
             End If
-        End Sub 
+            items.Add( _
+            New DesignerActionPropertyItem( _
+            "Text", _
+            "Text String", _
+            "Appearance", _
+            "Sets the display text."))
 
+            'Create entries for static Information section.
+            Dim location As New StringBuilder("Location: ")
+            location.Append(colLabel.Location)
+            Dim size As New StringBuilder("Size: ")
+            size.Append(colLabel.Size)
 
+            items.Add( _
+            New DesignerActionTextItem( _
+            location.ToString(), _
+            "Information"))
 
-        Protected Overrides Sub OnClear()
-            Dim c As Customer
-            For Each c In List
-                c.parent = Nothing
-            Next c
-        End Sub 
+            items.Add( _
+            New DesignerActionTextItem( _
+            size.ToString(), _
+            "Information"))
 
-
-        Protected Overrides Sub OnClearComplete()
-            OnListChanged(resetEvent)
-        End Sub 
-
-
-        Protected Overrides Sub OnInsertComplete(ByVal index As Integer, ByVal value As Object)
-            Dim c As Customer = CType(value, Customer)
-            c.parent = Me
-            OnListChanged(New ListChangedEventArgs(ListChangedType.ItemAdded, index))
-        End Sub 
-
-
-        Protected Overrides Sub OnRemoveComplete(ByVal index As Integer, ByVal value As Object)
-            Dim c As Customer = CType(value, Customer)
-            c.parent = Me
-            OnListChanged(New ListChangedEventArgs(ListChangedType.ItemDeleted, index))
-        End Sub 
-
-
-        Protected Overrides Sub OnSetComplete(ByVal index As Integer, ByVal oldValue As Object, ByVal newValue As Object)
-            If oldValue <> newValue Then
-
-                Dim oldcust As Customer = CType(oldValue, Customer)
-                Dim newcust As Customer = CType(newValue, Customer)
-
-                oldcust.parent = Nothing
-                newcust.parent = Me
-
-                OnListChanged(New ListChangedEventArgs(ListChangedType.ItemAdded, index))
-            End If
-        End Sub 
-
-
-        ' Called by Customer when it changes.
-        Friend Sub CustomerChanged(ByVal cust As Customer)
-            Dim index As Integer = List.IndexOf(cust)
-            OnListChanged(New ListChangedEventArgs(ListChangedType.ItemChanged, index))
-        End Sub 
-
-
-        ' Implements IBindingList.
-
-        ReadOnly Property AllowEdit() As Boolean Implements IBindingList.AllowEdit
-            Get
-                Return True
-            End Get
-        End Property
-
-        ReadOnly Property AllowNew() As Boolean Implements IBindingList.AllowNew
-            Get
-                Return True
-            End Get
-        End Property
-
-        ReadOnly Property AllowRemove() As Boolean Implements IBindingList.AllowRemove
-            Get
-                Return True
-            End Get
-        End Property
-
-        ReadOnly Property SupportsChangeNotification() As Boolean Implements IBindingList.SupportsChangeNotification
-            Get
-                Return True
-            End Get
-        End Property
-
-        ReadOnly Property SupportsSearching() As Boolean Implements IBindingList.SupportsSearching
-            Get
-                Return False
-            End Get
-        End Property
-
-        ReadOnly Property SupportsSorting() As Boolean Implements IBindingList.SupportsSorting
-            Get
-                Return False
-            End Get
-        End Property
-
-        ' Events.
-        Public Event ListChanged As ListChangedEventHandler Implements IBindingList.ListChanged
-
-
-        ' Methods.
-        Function AddNew() As Object Implements IBindingList.AddNew
-            Dim c As New Customer(Me.Count.ToString())
-            List.Add(c)
-            Return c
-        End Function 
-
-
-        ' Unsupported properties.
-
-        ReadOnly Property IsSorted() As Boolean Implements IBindingList.IsSorted
-            Get
-                Throw New NotSupportedException()
-            End Get
-        End Property
-
-        ReadOnly Property SortDirection() As ListSortDirection Implements IBindingList.SortDirection
-            Get
-                Throw New NotSupportedException()
-            End Get
-        End Property
-
-
-        ReadOnly Property SortProperty() As PropertyDescriptor Implements IBindingList.SortProperty
-            Get
-                Throw New NotSupportedException()
-            End Get
-        End Property
-
-
-        ' Unsupported Methods.
-        Sub AddIndex(ByVal prop As PropertyDescriptor) Implements IBindingList.AddIndex
-            Throw New NotSupportedException()
-        End Sub 
-
-
-        Sub ApplySort(ByVal prop As PropertyDescriptor, ByVal direction As ListSortDirection) Implements IBindingList.ApplySort
-            Throw New NotSupportedException()
-        End Sub 
-
-
-        Function Find(ByVal prop As PropertyDescriptor, ByVal key As Object) As Integer Implements IBindingList.Find
-            Throw New NotSupportedException()
-        End Function 
-
-
-        Sub RemoveIndex(ByVal prop As PropertyDescriptor) Implements IBindingList.RemoveIndex
-            Throw New NotSupportedException()
-        End Sub 
-
-
-        Sub RemoveSort() Implements IBindingList.RemoveSort
-            Throw New NotSupportedException()
-        End Sub 
-
-
-        ' Worker functions to populate the list with data.
-        Private Shared Function ReadCustomer1() As Customer
-            Dim cust As New Customer("536-45-1245")
-            cust.FirstName = "Jo"
-            cust.LastName = "Brown"
-            Return cust
-        End Function 
-
-
-        Private Shared Function ReadCustomer2() As Customer
-            Dim cust As New Customer("246-12-5645")
-            cust.FirstName = "Robert"
-            cust.LastName = "Brown"
-            Return cust
-        End Function 
-    End Class
+            Return items
+        End Function

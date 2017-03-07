@@ -1,41 +1,53 @@
-Imports System
-Imports System.Diagnostics
+        Public Shared Sub CreateEventSourceSample1(ByVal messageFile As String)
 
-Class MyEventlogClass
+            Dim myLogName As String
+            Dim sourceName As String = "SampleApplicationSource"
 
-   Public Shared Sub Main()
-      Dim myEventType As String = Nothing
-      ' Associate the instance of 'EventLog' with local System Log.
-      Dim myEventLog As New EventLog("System", ".")
-      Console.WriteLine("1:Error")
-      Console.WriteLine("2:Information")
-      Console.WriteLine("3:Warning")
-      Console.WriteLine("Select the Event Type")
-      Dim myOption As Integer = Convert.ToInt32(Console.ReadLine())
-      Select Case myOption
-         Case 1
-            myEventType = "Error"
-         Case 2
-            myEventType = "Information"
-         Case 3
-            myEventType = "Warning"
-         Case Else
-      End Select
+            ' Create the event source if it does not exist.
+            If Not EventLog.SourceExists(sourceName)
+            
+                ' Create a new event source for the custom event log
+                ' named "myNewLog."  
 
-      Dim myLogEntryCollection As EventLogEntryCollection = myEventLog.Entries
-      Dim myCount As Integer = myLogEntryCollection.Count
-      ' Iterate through all 'EventLogEntry' instances in 'EventLog'.
-      Dim i As Integer
-      For i = myCount - 1 To -1 Step -1
-         Dim myLogEntry As EventLogEntry = myLogEntryCollection(i)
-         ' Select the entry having desired EventType.
-         If myLogEntry.EntryType.ToString().Equals(myEventType) Then
-            ' Display Source of the event.
-            Console.WriteLine(myLogEntry.Source + " was the source of last "& _
-                             "event of type " & myLogEntry.EntryType.ToString())
-            Return
-         End If
-      Next i
+                myLogName = "myNewLog"
+                Dim mySourceData As EventSourceCreationData = New EventSourceCreationData(sourceName, myLogName)
 
-   End Sub 'Main
-End Class 'MyEventlogClass
+                ' Set the message resource file that the event source references.
+                ' All event resource identifiers correspond to text in this file.
+                If Not System.IO.File.Exists(messageFile)
+
+                    Console.WriteLine("Input message resource file does not exist - {0}", _
+                        messageFile)
+                    messageFile = ""
+                Else 
+                    ' Set the specified file as the resource
+                    ' file for message text, category text and 
+                    ' message parameters strings.
+
+                    mySourceData.MessageResourceFile = messageFile
+                    mySourceData.CategoryResourceFile = messageFile
+                    mySourceData.CategoryCount = CategoryCount
+                    mySourceData.ParameterResourceFile = messageFile
+
+                    Console.WriteLine("Event source message resource file set to {0}", _
+                        messageFile)
+                End If
+
+                Console.WriteLine("Registering new source for event log.")
+                EventLog.CreateEventSource(mySourceData)
+            Else
+                ' Get the event log corresponding to the existing source.
+                myLogName = EventLog.LogNameFromSourceName(sourceName,".")
+            End If
+
+            ' Register the localized name of the event log.
+            ' For example, the actual name of the event log is "myNewLog," but
+            ' the event log name displayed in the Event Viewer might be
+            ' "Sample Application Log" or some other application-specific
+            ' text.
+            Dim myEventLog As EventLog = New EventLog(myLogName, ".", sourceName)
+            
+            If messageFile.Length > 0
+                myEventLog.RegisterDisplayName(messageFile, DisplayNameMsgId)
+            End If
+        End Sub

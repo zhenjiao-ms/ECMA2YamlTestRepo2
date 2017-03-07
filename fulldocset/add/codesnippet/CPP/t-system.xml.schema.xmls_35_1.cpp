@@ -9,97 +9,47 @@ ref class XMLSchemaExamples
 private:
 	static void ValidationCallbackOne(Object^ sender, ValidationEventArgs^ args)
     {
-		Console::WriteLine(args->Message);
+        Console::WriteLine(args->Message);
     }
 
 public:
-    static void Main()
+	static void Main()
     {
         XmlSchema^ schema = gcnew XmlSchema();
 
-        // <xs:complexType name="customerOrderType">
-        XmlSchemaComplexType^ customerOrderType = gcnew XmlSchemaComplexType();
-        customerOrderType->Name = "customerOrderType";
+        // <xs:simpleType name="OrderQuantityType">
+        XmlSchemaSimpleType^ OrderQuantityType = gcnew XmlSchemaSimpleType();
+        OrderQuantityType->Name = "OrderQuantityType";
 
-        // <xs:sequence>
-        XmlSchemaSequence^ sequence1 = gcnew XmlSchemaSequence();
+        // <xs:restriction base="xs:int">
+        XmlSchemaSimpleTypeRestriction^ restriction = gcnew XmlSchemaSimpleTypeRestriction();
+        restriction->BaseTypeName = gcnew XmlQualifiedName("int", "http://www.w3.org/2001/XMLSchema");
 
-        // <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
-        XmlSchemaElement^ item = gcnew XmlSchemaElement();
-        item->MinOccurs = 0;
-        item->MaxOccursString = "unbounded";
-        item->Name = "item";
+        // <xs:minExclusive value="5"/>
+        XmlSchemaMinExclusiveFacet^ MinExclusive = gcnew XmlSchemaMinExclusiveFacet();
+        MinExclusive->Value = "5";
+        restriction->Facets->Add(MinExclusive);
 
-        // <xs:complexType>
-        XmlSchemaComplexType^ ct1 = gcnew XmlSchemaComplexType();
+        OrderQuantityType->Content = restriction;
 
-        // <xs:attribute name="itemID" type="xs:string"/>
-        XmlSchemaAttribute^ itemID = gcnew XmlSchemaAttribute();
-        itemID->Name = "itemID";
-        itemID->SchemaTypeName = gcnew XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema");
+        schema->Items->Add(OrderQuantityType);
 
-        // </xs:complexType>
-        ct1->Attributes->Add(itemID);
-
-        // </xs:element>
-        item->SchemaType = ct1;
-
-        // </xs:sequence>
-        sequence1->Items->Add(item);
-        customerOrderType->Particle = sequence1;
-
-        // <xs:attribute name="CustomerID" type="xs:string"/>
-        XmlSchemaAttribute^ CustomerID = gcnew XmlSchemaAttribute();
-        CustomerID->Name = "CustomerID";
-        CustomerID->SchemaTypeName = gcnew XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema");
-
-        customerOrderType->Attributes->Add(CustomerID);
-
-        // </xs:complexType>
-        schema->Items->Add(customerOrderType);
-
-        // <xs:element name="ordersByCustomer">
-        XmlSchemaElement^ ordersByCustomer = gcnew XmlSchemaElement();
-        ordersByCustomer->Name = "ordersByCustomer";
+        // <xs:element name="item">
+        XmlSchemaElement^ element = gcnew XmlSchemaElement();
+        element->Name = "item";
 
         // <xs:complexType>
-        XmlSchemaComplexType^ ct2 = gcnew XmlSchemaComplexType();
+        XmlSchemaComplexType^ complexType = gcnew XmlSchemaComplexType();
 
-        // <xs:sequence>
-        XmlSchemaSequence^ sequence2 = gcnew XmlSchemaSequence();
+        // <xs:attribute name="OrderQuantity" type="OrderQuantityType"/>
+        XmlSchemaAttribute^ OrderQuantityAttribute = gcnew XmlSchemaAttribute();
+        OrderQuantityAttribute->Name = "OrderQuantity";
+        OrderQuantityAttribute->SchemaTypeName = gcnew XmlQualifiedName("OrderQuantityType", "");
+        complexType->Attributes->Add(OrderQuantityAttribute);
 
-        // <xs:element name="customerOrders" type="customerOrderType" minOccurs="0" maxOccurs="unbounded" />
-        XmlSchemaElement^ customerOrders = gcnew XmlSchemaElement();
-        customerOrders->MinOccurs = 0;
-        customerOrders->MaxOccursString = "unbounded";
-        customerOrders->Name = "customerOrders";
-        customerOrders->SchemaTypeName = gcnew XmlQualifiedName("customerOrderType", "");
+        element->SchemaType = complexType;
 
-        // </xs:sequence>
-        sequence2->Items->Add(customerOrders);
-
-        // </xs:complexType>
-        ct2->Particle = sequence2;
-        ordersByCustomer->SchemaType = ct2;
-
-        // <xs:unique name="oneCustomerOrdersforEachCustomerID">
-        XmlSchemaUnique^ element_unique = gcnew XmlSchemaUnique();
-        element_unique->Name = "oneCustomerOrdersforEachCustomerID";
-
-        // <xs:selector xpath="customerOrders"/>
-        element_unique->Selector = gcnew XmlSchemaXPath();
-        element_unique->Selector->XPath = "customerOrders";
-
-        // <xs:field xpath="@customerID"/>
-        XmlSchemaXPath^ field = gcnew XmlSchemaXPath();
-        field->XPath = "@customerID";
-
-        // </xs:unique>
-        element_unique->Fields->Add(field);
-        ordersByCustomer->Constraints->Add(element_unique);
-
-        // </xs:element>
-        schema->Items->Add(ordersByCustomer);
+        schema->Items->Add(element);
 
         XmlSchemaSet^ schemaSet = gcnew XmlSchemaSet();
         schemaSet->ValidationEventHandler += gcnew ValidationEventHandler(ValidationCallbackOne);
@@ -115,7 +65,7 @@ public:
 
         XmlNamespaceManager^ nsmgr = gcnew XmlNamespaceManager(gcnew NameTable());
         nsmgr->AddNamespace("xs", "http://www.w3.org/2001/XMLSchema");
-		compiledSchema->Write(Console::Out, nsmgr);
+        compiledSchema->Write(Console::Out, nsmgr);
     }
 };
 

@@ -1,101 +1,63 @@
+<%@Page  Language="C#" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<%@ Page language="C#" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
 
-  void CustomersGridView_SelectedIndexChanged(Object sender, EventArgs e)
-  {
-    // Get the currently selected row using the SelectedRow property.
-    GridViewRow row = CustomersGridView.SelectedRow;
-        
-    // Display the first name from the selected row.
-    // In this example, the third column (index 2) contains
-    // the first name.
-    MessageLabel.Text = "You selected " + row.Cells[2].Text + ".";
-  }
+void Page_Load(Object sender, EventArgs e){
 
-  void CustomersGridView_SelectedIndexChanging(Object sender, GridViewSelectEventArgs e)
-  {
-    // Get the currently selected row. Because the SelectedIndexChanging event
-    // occurs before the select operation in the GridView control, the
-    // SelectedRow property cannot be used. Instead, use the Rows collection
-    // and the NewSelectedIndex property of the e argument passed to this 
-    // event handler.
-    GridViewRow row = CustomersGridView.Rows[e.NewSelectedIndex];
+  // You can add a FormParameter to the AccessDataSource control's
+  // SelectParameters collection programmatically.
+  AccessDataSource1.SelectParameters.Clear();
 
-    // You can cancel the select operation by using the Cancel
-    // property. For this example, if the user selects a customer with 
-    // the ID "ANATR", the select operation is canceled and an error message
-    // is displayed.
-    if (row.Cells[1].Text == "ANATR")
-    {
-      e.Cancel = true;
-      MessageLabel.Text = "You cannot select " + row.Cells[2].Text + "."; 
-    }
-  }
+  // Security Note: The AccessDataSource uses a FormParameter,
+  // Security Note: which does not perform validation of input from the client.
+  // Security Note: To validate the value of the FormParameter,
+  // Security Note: handle the Selecting event.
+
+  FormParameter formParam = new FormParameter("lastname","LastNameBox");
+  formParam.Type=TypeCode.String;
+  AccessDataSource1.SelectParameters.Add(formParam);
+}
 
 </script>
-
 <html xmlns="http://www.w3.org/1999/xhtml" >
   <head runat="server">
-    <title>GridView Select Example</title>
+    <title>ASP.NET Example</title>
 </head>
 <body>
     <form id="form1" runat="server">
-        
-     <h3>GridView Select Example</h3>
 
-     <asp:gridview id="CustomersGridView" 
-       datasourceid="CustomersSource" 
-       autogeneratecolumns="False"
-       autogenerateselectbutton="True"
-       selectedindex="1"
-       onselectedindexchanged="CustomersGridView_SelectedIndexChanged"
-       onselectedindexchanging="CustomersGridView_SelectedIndexChanging"   
-       runat="server" DataKeyNames="CustomerID">
-                
-         <Columns>
-             <asp:BoundField DataField="CustomerID" 
-                 HeaderText="CustomerID" 
-                 InsertVisible="False" ReadOnly="True" 
-                 SortExpression="CustomerID" />
-             <asp:BoundField DataField="FirstName" 
-                 HeaderText="FirstName" 
-                 SortExpression="FirstName" />
-             <asp:BoundField DataField="MiddleName" 
-                 HeaderText="MiddleName" 
-                 SortExpression="MiddleName" />
-             <asp:BoundField DataField="LastName" 
-                 HeaderText="LastName" 
-                 SortExpression="LastName" />
-             <asp:BoundField DataField="Phone" 
-                 HeaderText="Phone" 
-                 SortExpression="Phone" />
-         </Columns>
-                
-       <selectedrowstyle backcolor="LightCyan"
-         forecolor="DarkBlue"
-         font-bold="true"/>  
-                
-     </asp:gridview>
-            
-      <br/>
-            
-      <asp:label id="MessageLabel"
-        forecolor="Red"
-        runat="server"/>
-            
-      <!-- This example uses Microsoft SQL Server and connects  -->
-      <!-- to the sample database. Use an ASP.NET     -->
-      <!-- expression to retrieve the connection string value   -->
-      <!-- from the Web.config file.                            -->
-      <asp:sqldatasource id="CustomersSource"
-        selectcommand="SELECT CustomerID, FirstName, MiddleName, LastName, Phone FROM SalesLT.Customer"
-        connectionstring="<%$ ConnectionStrings:AdventureWorksLTConnectionString %>" 
-        runat="server"/>
-            
+      <asp:accessdatasource
+          id="AccessDataSource1"
+          runat="server"
+          datasourcemode="DataSet"
+          datafile="Northwind.mdb"
+          selectcommand="SELECT OrderID,CustomerID,OrderDate,RequiredDate,ShippedDate
+                         FROM Orders WHERE EmployeeID =
+                         (SELECT EmployeeID FROM Employees WHERE LastName = @lastname)">
+      </asp:accessdatasource>
+
+      <br />Enter the name "Davolio" or "King" in the text box and click the button.
+
+      <br />
+      <asp:textbox
+        id="LastNameBox"
+        runat="server" />
+
+      <br />
+      <asp:button
+        id="Button1"
+        runat="server"
+        text="Get Records" />
+
+      <br />
+      <asp:gridview
+          id="GridView1"
+          runat="server"
+          allowsorting="True"
+          datasourceid="AccessDataSource1">
+      </asp:gridview>
+
     </form>
   </body>
 </html>

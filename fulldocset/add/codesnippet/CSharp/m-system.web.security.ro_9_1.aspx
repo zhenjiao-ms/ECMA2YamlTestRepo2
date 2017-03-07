@@ -1,74 +1,80 @@
-
 <%@ Page Language="C#" %>
-
 <%@ Import Namespace="System.Web.Security" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
 
-  string[] rolesArray;
+string[] rolesArray;
+MembershipUserCollection users;
 
-  public void Page_Load(object sender, EventArgs args)
+public void Page_Load()
+{
+  Msg.Text = "";
+
+  if (!User.IsInRole("Administrators"))
   {
-    if (!IsPostBack)
-    {
-      // Bind roles to ListBox.
+    Msg.Text = "You are not authorized to view user roles.";
+    UsersListBox.Visible = false;
+    return;
+  }
 
-      rolesArray = Roles.GetAllRoles();
-      RolesListBox.DataSource = rolesArray;
-      RolesListBox.DataBind();
-    }
+  if (!IsPostBack)
+  {
+    // Bind users to ListBox.
+
+    users = Membership.GetAllUsers();
+    UsersListBox.DataSource = users;
+    UsersListBox.DataBind();
   }
 
 
-  public void DeleteRole_OnClick(object sender, EventArgs args)
+  // If a user is selected, show the roles for the selected user.
+
+  if (UsersListBox.SelectedItem != null)
   {
-    string delRole = "";
+    // Bind roles to GridView.
 
-    try
-    {
-      delRole = RolesListBox.SelectedItem.Value;
+    rolesArray = Roles.GetRolesForUser(UsersListBox.SelectedItem.Value);
+    UserRolesGrid.DataSource = rolesArray;
+    UserRolesGrid.DataBind();
 
-      Roles.DeleteRole(delRole);
-
-      Msg.Text = "Role '" + Server.HtmlEncode(delRole) + "' deleted.";
-
-
-      // Re-bind roles to ListBox.
-
-      rolesArray = Roles.GetAllRoles();
-      RolesListBox.DataSource = rolesArray;
-      RolesListBox.DataBind();
-    }
-    catch
-    {
-      Msg.Text = "Role '" + Server.HtmlEncode(delRole) + "' <u>not</u> deleted.";
-    }
-
+    UserRolesGrid.Columns[0].HeaderText = "Roles for " + UsersListBox.SelectedItem.Value;
   }
+}
 
 </script>
-
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-  <title>Sample: Delete Role</title>
+<title>Sample: View User Roles</title>
 </head>
 <body>
-  <form runat="server" id="PageForm">
-    <h3>
-      Delete Role</h3>
-    <asp:Label ID="Msg" ForeColor="maroon" runat="server" /><br />
-    <table border="0">
-      <tr>
-        <td valign="top">
-          Delete Role:</td>
-        <td valign="top">
-          <asp:ListBox ID="RolesListBox" runat="server" Rows="8" /></td>
-        <td valign="top">
-          <asp:Button Text="Delete Role" ID="DeleteRoleButton" runat="server" OnClick="DeleteRole_OnClick" /></td>
-      </tr>
-    </table>
-  </form>
+
+<form runat="server" id="PageForm">
+
+  <h3>View User Roles</h3>
+
+  <asp:Label id="Msg" ForeColor="maroon" runat="server" /><br />
+
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="top"><asp:ListBox id="UsersListBox" DataTextField="Username" 
+                                    Rows="8" AutoPostBack="true" runat="server" /></td>
+      <td valign="top"><asp:GridView runat="server" CellPadding="4" id="UserRolesGrid" 
+                                     AutoGenerateColumns="false" Gridlines="None" 
+                                     CellSpacing="0" >
+                         <HeaderStyle BackColor="navy" ForeColor="white" />
+                         <Columns>
+                           <asp:TemplateField HeaderText="Roles" >
+                             <ItemTemplate>
+                               <%# Container.DataItem.ToString() %>
+                             </ItemTemplate>
+                           </asp:TemplateField>
+                         </Columns>
+                       </asp:GridView></td>
+    </tr>
+  </table>
+
+</form>
+
 </body>
 </html>

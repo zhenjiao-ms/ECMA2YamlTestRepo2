@@ -1,45 +1,93 @@
-    Private Sub dataGridView1_ColumnHeaderMouseClick(ByVal sender As Object, _
-        ByVal e As DataGridViewCellMouseEventArgs) _
-        Handles dataGridView1.ColumnHeaderMouseClick
+Imports System
+Imports System.ComponentModel
+Imports System.ComponentModel.Design
+Imports System.Collections
+Imports System.Drawing
+Imports System.Windows.Forms
+Imports System.Windows.Forms.Design
 
-        Dim newColumn As DataGridViewColumn = _
-            dataGridView1.Columns(e.ColumnIndex)
-        Dim oldColumn As DataGridViewColumn = dataGridView1.SortedColumn
-        Dim direction As ListSortDirection
+Namespace ControlDesignerExample
+    _
+    ' ExampleControlDesigner is an example control designer that 
+    ' demonstrates basic functions of a ControlDesigner.
+    <System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name:="FullTrust")> _
+    Public Class ExampleControlDesigner
+        Inherits System.Windows.Forms.Design.ControlDesigner
 
-        ' If oldColumn is null, then the DataGridView is not currently sorted.
-        If oldColumn IsNot Nothing Then
+        ' This boolean state reflects whether the mouse is over the control.
+        Private mouseover As Boolean = False
+        ' This color is a private field for the OutlineColor property.
+        Private lineColor As Color = Color.White
 
-            ' Sort the same column again, reversing the SortOrder.
-            If oldColumn Is newColumn AndAlso dataGridView1.SortOrder = _
-                SortOrder.Ascending Then
-                direction = ListSortDirection.Descending
-            Else
+        ' This color is used to outline the control when the mouse is 
+        ' over the control.
+        Public Property OutlineColor() As Color
+            Get
+                Return lineColor
+            End Get
+            Set(ByVal Value As Color)
+                lineColor = Value
+            End Set
+        End Property
 
-                ' Sort a new column and remove the old SortGlyph.
-                direction = ListSortDirection.Ascending
-                oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None
+        Public Sub New()
+        End Sub
+
+        ' Sets a value and refreshes the control's display when the 
+        ' mouse position enters the area of the control.
+        Protected Overrides Sub OnMouseEnter()
+            Me.mouseover = True
+            Me.Control.Refresh()
+        End Sub
+
+        ' Sets a value and refreshes the control's display when the 
+        ' mouse position enters the area of the control.		
+        Protected Overrides Sub OnMouseLeave()
+            Me.mouseover = False
+            Me.Control.Refresh()
+        End Sub
+
+        ' Draws an outline around the control when the mouse is 
+        ' over the control.	
+        Protected Overrides Sub OnPaintAdornments(ByVal pe As System.Windows.Forms.PaintEventArgs)
+            If Me.mouseover Then
+                pe.Graphics.DrawRectangle(New Pen(New SolidBrush(Me.lineColor), 6), 0, 0, Me.Control.Size.Width, Me.Control.Size.Height)
             End If
-        Else
-            direction = ListSortDirection.Ascending
-        End If
+        End Sub
 
-        ' Sort the selected column.
-        dataGridView1.Sort(newColumn, direction)
-        If direction = ListSortDirection.Ascending Then
-            newColumn.HeaderCell.SortGlyphDirection = SortOrder.Ascending
-        Else
-            newColumn.HeaderCell.SortGlyphDirection = SortOrder.Descending
-        End If
+        ' Adds a property to this designer's control at design time 
+        ' that indicates the outline color to use.
+        ' The DesignOnlyAttribute ensures that the OutlineColor
+        ' property is not serialized by the designer.
+        Protected Overrides Sub PreFilterProperties(ByVal properties As System.Collections.IDictionary)
+            Dim pd As PropertyDescriptor = TypeDescriptor.CreateProperty( _
+            GetType(ExampleControlDesigner), _
+            "OutlineColor", _
+            GetType(System.Drawing.Color), _
+            New Attribute() {New DesignOnlyAttribute(True)})
 
-    End Sub
+            properties.Add("OutlineColor", pd)
+        End Sub
+    End Class
 
-    Private Sub dataGridView1_DataBindingComplete(ByVal sender As Object, _
-        ByVal e As DataGridViewBindingCompleteEventArgs) _
-        Handles dataGridView1.DataBindingComplete
+    ' This example control demonstrates the ExampleControlDesigner.
+    <DesignerAttribute(GetType(ExampleControlDesigner))> _
+     Public Class ExampleControl
+        Inherits System.Windows.Forms.UserControl
+        Private components As System.ComponentModel.Container = Nothing
 
-        ' Put each of the columns into programmatic sort mode.
-        For Each column As DataGridViewColumn In dataGridView1.Columns
-            column.SortMode = DataGridViewColumnSortMode.Programmatic
-        Next
-    End Sub
+        Public Sub New()
+            components = New System.ComponentModel.Container()
+        End Sub
+
+        Protected Overloads Sub Dispose(ByVal disposing As Boolean)
+            If disposing Then
+                If (components IsNot Nothing) Then
+                    components.Dispose()
+                End If
+            End If
+            MyBase.Dispose(disposing)
+        End Sub
+    End Class
+
+End Namespace

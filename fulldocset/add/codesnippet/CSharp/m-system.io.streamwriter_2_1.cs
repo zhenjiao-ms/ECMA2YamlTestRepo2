@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Text;
 
 namespace ConsoleApplication
 {
@@ -8,12 +7,14 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
-            string fileName = "test.txt";
-            string textToAdd = "Example text in file";
+            WriteCharacters();
+        }
 
-            using (StreamWriter writer = new StreamWriter(fileName))
+        static async void WriteCharacters()
+        {
+            using (StreamWriter writer = File.CreateText("newfile.txt"))
             {
-                writer.Write(textToAdd);
+                await writer.WriteAsync("Example text as string");
             }
         }
     }

@@ -1,1 +1,2 @@
-      m_MyServiceContainer->RemoveService( Control::typeid );
+      array<String^>^ temp0 = {"D","B"};
+      this->InternalSort( temp0 );

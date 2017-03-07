@@ -1,123 +1,72 @@
-//
-// This example signs a file specified by a URI 
-// using a detached signature. It then verifies  
-// the signed XML.
-//
-
 using System;
 using System.Security.Cryptography;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Xml;
+using System.Security.Cryptography.X509Certificates;
 
-
-
-class XMLDSIGDetached
+class AsnEncodedDataSample
 {
-	
-    [STAThread]
-    static void Main(string[] args)
-    {
-    // The URI to sign.
-        string resourceToSign = "http://www.microsoft.com";
-		
-        // The name of the file to which to save the XML signature.
-        string XmlFileName = "xmldsig.xml";
+	static void Main()
+	{		
+		//The following example demonstrates the usage the AsnEncodedData classes.
+		// Asn encoded data is read from the extensions of an X509 certificate.
+		try
+		{
+			// Open the certificate store.
+			X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
+			store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+			X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
+			X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
+			// Select one or more certificates to display extensions information.
+			X509Certificate2Collection scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection);
 
-        try
-        {
+			// Create a new AsnEncodedDataCollection object.
+			AsnEncodedDataCollection asncoll = new AsnEncodedDataCollection();
+			for (int i = 0; i < scollection.Count; i++)
+			{
+				// Display certificate information.
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Certificate name: {0}", scollection[i].GetName());
+				Console.ResetColor();
+				// Display extensions information.
+				foreach (X509Extension extension in scollection[i].Extensions)
+				{
+					// Create an AsnEncodedData object using the extensions information.
+					AsnEncodedData asndata = new AsnEncodedData(extension.Oid, extension.RawData);
+					Console.ForegroundColor = ConsoleColor.Green;
+					Console.WriteLine("Extension type: {0}", extension.Oid.FriendlyName);
+					Console.WriteLine("Oid value: {0}",asndata.Oid.Value);
+					Console.WriteLine("Raw data length: {0} {1}", asndata.RawData.Length, Environment.NewLine);
+					Console.ResetColor();
+					Console.WriteLine(asndata.Format(true));
+					Console.WriteLine(Environment.NewLine);
+					// Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+					asncoll.Add(asndata);
+				}
+				Console.WriteLine(Environment.NewLine);
+			}
+			Console.ForegroundColor = ConsoleColor.Red;
+			Console.WriteLine("Number of AsnEncodedData items in the collection: {0} {1}", asncoll.Count, Environment.NewLine);
+			Console.ResetColor();
 
-            // Generate a signing key.
-            RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
+			store.Close();
+			//Create an enumerator for moving through the collection.
+			AsnEncodedDataEnumerator asne = asncoll.GetEnumerator();
+			//You must execute a MoveNext() to get to the first item in the collection.
+			asne.MoveNext();
+			// Write out AsnEncodedData in the collection.
+			Console.ForegroundColor = ConsoleColor.Blue;
+			Console.WriteLine("First AsnEncodedData in the collection: {0}", asne.Current.Format(true));
+			Console.ResetColor();
 
-            Console.WriteLine("Signing: {0}", resourceToSign);
-
-            // Sign the detached resourceand save the signature in an XML file.
-            SignDetachedResource(resourceToSign, XmlFileName, Key);
-
-            Console.WriteLine("XML signature was succesfully computed and saved to {0}.", XmlFileName);
-
-            // Verify the signature of the signed XML.
-            Console.WriteLine("Verifying signature...");
-
-            //Verify the XML signature in the XML file.
-            bool result = VerifyDetachedSignature(XmlFileName);
-
-            // Display the results of the signature verification to 
-            // the console.
-            if(result)
-            {
-                Console.WriteLine("The XML signature is valid.");
-            }
-            else
-            {
-                Console.WriteLine("The XML signature is not valid.");
-            }
-        }
-        catch(CryptographicException e)
-        {
-            Console.WriteLine(e.Message);
-
-        }
-		
-    }
-
-    // Sign an XML file and save the signature in a new file.
-    public static void SignDetachedResource(string URIString, string XmlSigFileName, RSA Key)
-    {
-        // Create a SignedXml object.
-        SignedXml signedXml = new SignedXml();
-
-        // Assign the key to the SignedXml object.
-        signedXml.SigningKey = Key;
-
-        // Create a reference to be signed.
-        Reference reference = new Reference();
-
-        // Add the passed URI to the reference object.
-        reference.Uri = URIString;
-		
-        // Add the reference to the SignedXml object.
-        signedXml.AddReference(reference);
-
-        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-        KeyInfo keyInfo = new KeyInfo();
-        keyInfo.AddClause(new RSAKeyValue((RSA)Key));	
-        signedXml.KeyInfo = keyInfo;
-
-        // Compute the signature.
-        signedXml.ComputeSignature();
-
-        // Get the XML representation of the signature and save
-        // it to an XmlElement object.
-        XmlElement xmlDigitalSignature = signedXml.GetXml();
-
-        // Save the signed XML document to a file specified
-        // using the passed string.
-        XmlTextWriter xmltw = new XmlTextWriter(XmlSigFileName, new UTF8Encoding(false));
-        xmlDigitalSignature.WriteTo(xmltw);
-        xmltw.Close();
-    }
-    // Verify the signature of an XML file and return the result.
-    public static Boolean VerifyDetachedSignature(string XmlSigFileName)
-    {	
-        // Create a new XML document.
-        XmlDocument xmlDocument = new XmlDocument();
-
-        // Load the passed XML file into the document.
-        xmlDocument.Load(XmlSigFileName);
-	
-        // Create a new SignedXMl object.
-        SignedXml signedXml = new SignedXml();
-
-        // Find the "Signature" node and create a new
-        // XmlNodeList object.
-        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
-
-        // Load the signature node.
-        signedXml.LoadXml((XmlElement)nodeList[0]);
-
-        // Check the signature and return the result.
-        return signedXml.CheckSignature();
-    }
+			asne.MoveNext();
+			Console.ForegroundColor = ConsoleColor.DarkBlue;
+			Console.WriteLine("Second AsnEncodedData in the collection: {0}", asne.Current.Format(true));
+			Console.ResetColor();
+			//Return index in the collection to the beginning.
+			asne.Reset();
+		}
+		catch (CryptographicException)
+		{
+			Console.WriteLine("Information could not be written out for this certificate.");
+		}
+	}
 }

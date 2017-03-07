@@ -1,26 +1,21 @@
-
 using System;
-using System.Security.Cryptography.X509Certificates;
+using System.IO;
+using System.Security.Cryptography;
 
-
-public class X509
+public class StoreKey
 {
+	public static void Main()
+	{
+		// creates the CspParameters object and sets the key container name used to store the RSA key pair
+		CspParameters cp = new CspParameters();
+		cp.KeyContainerName = "MyKeyContainerName";
 
-    public static void Main()
-    {
+		// instantiates the rsa instance accessing the key container MyKeyContainerName
+		RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(cp);
+		// add the below line to delete the key entry in MyKeyContainerName
+		// rsa.PersistKeyInCsp = false;
 
-        // The path to the certificate.
-        string Certificate =  "Certificate.cer";
-
-        // Load the certificate into an X509Certificate object.
-        X509Certificate cert = X509Certificate.CreateFromCertFile(Certificate);
-
-        // Get the value.
-        string results = cert.GetName();
-       
-        // Display the value to the console.
-        Console.WriteLine(results);
-  
-    }
-
+		//writes out the current key pair used in the rsa instance
+		Console.WriteLine("Key is : \n" + rsa.ToXmlString(true));
+	}
 }

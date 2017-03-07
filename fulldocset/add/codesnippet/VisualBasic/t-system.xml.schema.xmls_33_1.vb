@@ -1,45 +1,68 @@
+Option Strict On
+Option Explicit On
+
 Imports System
 Imports System.Xml
 Imports System.Xml.Schema
 
-Class XMLSchemaExamples
-    Public Shared Sub Main()
+Public Class Sample
 
+    Public Shared Sub Main()
         Dim schema As New XmlSchema()
 
-        ' <xs:simpleType name="WaitQueueLengthType">
-        Dim WaitQueueLengthType As New XmlSchemaSimpleType()
-        WaitQueueLengthType.Name = "WaitQueueLengthType"
+        Dim thing1 As New XmlSchemaElement()
+        thing1.Name = "thing1"
+        thing1.SchemaTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
+        schema.Items.Add(thing1)
 
-        ' <xs:restriction base="xs:int">
-        Dim restriction As New XmlSchemaSimpleTypeRestriction()
-        restriction.BaseTypeName = New XmlQualifiedName("int", "http://www.w3.org/2001/XMLSchema")
+        Dim thing2 As New XmlSchemaElement()
+        thing2.Name = "thing2"
+        thing2.SchemaTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
+        schema.Items.Add(thing2)
 
-        ' <xs:maxInclusive value="5"/>
-        Dim maxInclusive As New XmlSchemaMaxInclusiveFacet()
-        maxInclusive.Value = "5"
-        restriction.Facets.Add(maxInclusive)
+        Dim thing3 As New XmlSchemaElement()
+        thing3.Name = "thing3"
+        thing3.SchemaTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
+        schema.Items.Add(thing3)
 
-        WaitQueueLengthType.Content = restriction
+        Dim thing4 As New XmlSchemaElement()
+        thing4.Name = "thing4"
+        thing4.SchemaTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
+        schema.Items.Add(thing4)
 
-        schema.Items.Add(WaitQueueLengthType)
+        Dim myAttribute As New XmlSchemaAttribute()
+        myAttribute.Name = "myAttribute"
+        myAttribute.SchemaTypeName = New XmlQualifiedName("decimal", "http://www.w3.org/2001/XMLSchema")
+        schema.Items.Add(myAttribute)
 
-        ' <xs:element name="Lobby">
-        Dim element As New XmlSchemaElement()
-        element.Name = "Lobby"
+        Dim myComplexType As New XmlSchemaComplexType()
+        myComplexType.Name = "myComplexType"
 
-        ' <xs:complexType>
-        Dim complexType As New XmlSchemaComplexType()
+        Dim complexType_all As New XmlSchemaAll()
 
-        ' <xs:attribute name="WaitQueueLength" type="WaitQueueLengthType"/>
-        Dim WaitQueueLengthAttribute As New XmlSchemaAttribute()
-        WaitQueueLengthAttribute.Name = "WaitQueueLength"
-        WaitQueueLengthAttribute.SchemaTypeName = New XmlQualifiedName("WaitQueueLengthType", "")
-        complexType.Attributes.Add(WaitQueueLengthAttribute)
+        Dim complexType_all_thing1 As New XmlSchemaElement()
+        complexType_all_thing1.RefName = New XmlQualifiedName("thing1", "")
+        complexType_all.Items.Add(complexType_all_thing1)
 
-        element.SchemaType = complexType
+        Dim complexType_all_thing2 As New XmlSchemaElement()
+        complexType_all_thing2.RefName = New XmlQualifiedName("thing2", "")
+        complexType_all.Items.Add(complexType_all_thing2)
 
-        schema.Items.Add(element)
+        Dim complexType_all_thing3 As New XmlSchemaElement()
+        complexType_all_thing3.RefName = New XmlQualifiedName("thing3", "")
+        complexType_all.Items.Add(complexType_all_thing3)
+
+        Dim complexType_all_thing4 As New XmlSchemaElement()
+        complexType_all_thing4.RefName = New XmlQualifiedName("thing4", "")
+        complexType_all.Items.Add(complexType_all_thing4)
+
+        myComplexType.Particle = complexType_all
+
+        Dim complexType_myAttribute As New XmlSchemaAttribute()
+        complexType_myAttribute.RefName = New XmlQualifiedName("myAttribute", "")
+        myComplexType.Attributes.Add(complexType_myAttribute)
+
+        schema.Items.Add(myComplexType)
 
         Dim schemaSet As New XmlSchemaSet()
         AddHandler schemaSet.ValidationEventHandler, AddressOf ValidationCallbackOne
@@ -56,11 +79,10 @@ Class XMLSchemaExamples
         Dim nsmgr As New XmlNamespaceManager(New NameTable())
         nsmgr.AddNamespace("xs", "http://www.w3.org/2001/XMLSchema")
         compiledSchema.Write(Console.Out, nsmgr)
+    End Sub 'Main
 
-    End Sub
 
-    Public Shared Sub ValidationCallbackOne(ByVal sender As Object, ByVal args As ValidationEventArgs)
+    Private Shared Sub ValidationCallbackOne(ByVal sender As Object, ByVal args As ValidationEventArgs)
         Console.WriteLine(args.Message)
-    End Sub
-
-End Class
+    End Sub 'ValidationCallbackOne
+End Class 'Sample 

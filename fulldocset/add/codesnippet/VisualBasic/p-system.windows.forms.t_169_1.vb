@@ -1,20 +1,19 @@
-Private Sub SelectNode(node As TreeNode)
-   If node.IsSelected Then
-      ' Determine which TreeNode to select.
-      Select Case myComboBox.Text
-         Case "Previous"
-            node.TreeView.SelectedNode = node.PrevNode
-         Case "PreviousVisible"
-            node.TreeView.SelectedNode = node.PrevVisibleNode
-         Case "Next"
-            node.TreeView.SelectedNode = node.NextNode
-         Case "NextVisible"
-            node.TreeView.SelectedNode = node.NextVisibleNode
-         Case "First"
-            node.TreeView.SelectedNode = node.FirstNode
-         Case "Last"
-            node.TreeView.SelectedNode = node.LastNode
-      End Select
-   End If
-   node.TreeView.Focus()
-End Sub
+    Private checkTreeView As TreeView
+    
+    Private Sub InitializeCheckTreeView() 
+        checkTreeView = New TreeView()
+        
+        ' Show check boxes for the TreeView.
+        checkTreeView.CheckBoxes = True
+        
+        ' Create the StateImageList and add two images.
+        checkTreeView.StateImageList = New ImageList()
+        checkTreeView.StateImageList.Images.Add(SystemIcons.Question)
+        checkTreeView.StateImageList.Images.Add(SystemIcons.Exclamation)
+        
+        ' Add some nodes to the TreeView and the TreeView to the form.
+        checkTreeView.Nodes.Add("Node1")
+        checkTreeView.Nodes.Add("Node2")
+        Me.Controls.Add(checkTreeView)
+    
+    End Sub

@@ -1,18 +1,23 @@
-    // Give cheescake excellent rating.
-    private void Button8_Click(object sender,
-        System.EventArgs e)
-    {
-        UpdateStars(dataGridView.Rows[4], "******************");
-    }
+private void ListView1_DrawColumnHeader(Object sender, DrawListViewColumnHeaderEventArgs e) {
 
-    int ratingColumn = 3;
-
-    private void UpdateStars(DataGridViewRow row, string stars)
-    {
-
-        row.Cells[ratingColumn].Value = stars;
-
-        // Resize the column width to account for the new value.
-        row.DataGridView.AutoResizeColumn(ratingColumn, 
-            DataGridViewAutoSizeColumnMode.DisplayedCells);
-    }
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "DrawDefault", e.DrawDefault );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Bounds", e.Bounds );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "ColumnIndex", e.ColumnIndex );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Header", e.Header );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "State", e.State );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "ForeColor", e.ForeColor );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "BackColor", e.BackColor );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Font", e.Font );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "DrawColumnHeader Event" );
+}

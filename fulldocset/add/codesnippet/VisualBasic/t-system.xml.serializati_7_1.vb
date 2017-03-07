@@ -5,77 +5,223 @@ Imports System.Xml
 Imports System.Xml.Serialization
 Imports System.Xml.Schema
 
-' You must use the SoapIncludeAttribute to inform the XmlSerializer
-' that the Vehicle type should be recognized when deserializing.
-<SoapInclude(GetType(Vehicle))> _
 Public Class Group
-    Public GroupName As String 
-   public GroupVehicle As Vehicle 
-End Class
+   <SoapAttribute (Namespace:= "http:'www.cpandl.com")> _
+   Public GroupName As String 
+   
+   <SoapAttribute(DataType:= "base64Binary")> _
+   Public GroupNumber() As Byte
 
-Public Class Vehicle
+   <SoapAttribute(DataType:= "date", _
+   AttributeName:= "CreationDate")> _
+   Public Today As DateTime 
+   <SoapElement(DataType:= "nonNegativeInteger", _
+   ElementName:= "PosInt")> _
+   Public PostitiveInt As String 
+   ' This is ignored when serialized unless it's overridden.
+   <SoapIgnore> _ 
+   Public IgnoreThis As Boolean 
+   
+   Public Grouptype As GroupType 
+
+   Public MyVehicle As Vehicle 
+
+   '  The SoapInclude allows the method to return a Car.
+   <SoapInclude(GetType(Car))> _
+   Public Function myCar(licNumber As String ) As Vehicle 
+      Dim v As Vehicle 
+      if licNumber = "" Then
+         v = New Car()
+         v.licenseNumber = "!!!!!!"
+      else  
+   	   v = New Car()
+   	   v.licenseNumber = licNumber
+      End If
+      
+      return v
+   End Function
+End Class
+  
+' SoapInclude allows Vehicle to accept Car type.
+<SoapInclude(GetType(Car))> _
+Public MustInherit  class Vehicle
    Public licenseNumber As String 
+   Public makeDate As DateTime 
 End Class
 
+Public Class Car
+   Inherits Vehicle
+
+End Class
+
+Public enum GroupType
+   ' These enums can be overridden.
+   <SoapEnum("Small")> _
+   A
+   <SoapEnum("Large")> _ 
+   B
+End Enum
  
 Public Class Run
+
    Shared Sub Main()
-      Dim test As Run = new Run()
-      test.DeserializeObject("UnrefObj.xml")
-   End Sub
+      Dim test As Run = New Run()
+      test.SerializeOriginal("SoapOriginal.xml")
+      test.SerializeOverride("SoapOverrides.xml")
+      test.DeserializeOriginal("SoapOriginal.xml")
+      test.DeserializeOverride("SoapOverrides.xml")
+   End SUb
    
-   Public Sub DeserializeObject(filename As String)
+   Public Sub SerializeOriginal(filename As String)
+
       ' Create an instance of the XmlSerializer class.
       Dim myMapping As XmlTypeMapping = _
-      (new SoapReflectionImporter().ImportTypeMapping _
+      (New SoapReflectionImporter().ImportTypeMapping _
       (GetType(Group)))
       Dim mySerializer As XmlSerializer =  _
-      new XmlSerializer(myMapping)
+      New XmlSerializer(myMapping)
+      
+      Dim myGroup As Group =MakeGroup()
+      ' Writing the file requires a TextWriter.
+      Dim writer As XmlTextWriter  = _
+      New XmlTextWriter(filename, Encoding.UTF8)
+      writer.Formatting = Formatting.Indented
+      writer.WriteStartElement("wrapper")
+      ' Serialize the class, and close the TextWriter.
+      mySerializer.Serialize(writer, myGroup)
+      writer.WriteEndElement()
+      writer.Close()
+   End Sub
 
-      AddHandler mySerializer.UnreferencedObject, _
-      AddressOf Serializer_UnreferencedObject
+   Public Sub SerializeOverride(filename As String)
+      ' Create an instance of the XmlSerializer class
+      ' that overrides the serialization.
+      Dim overRideSerializer As XmlSerializer = _
+      CreateOverrideSerializer()
+      Dim myGroup As Group =MakeGroup()
+      ' Writing the file requires a TextWriter.
+      Dim writer As XmlTextWriter  = _
+      New XmlTextWriter(filename, Encoding.UTF8)
+      writer.Formatting = Formatting.Indented
+      writer.WriteStartElement("wrapper")
+      ' Serialize the class, and close the TextWriter.
+      overRideSerializer.Serialize(writer, myGroup)
+      writer.WriteEndElement()
+      writer.Close()
+    End Sub
+
+   private Function MakeGroup() As Group 
+      ' Create an instance of the class that will be serialized.
+      Dim myGroup As Group  = New Group()
+
+      ' Set the object properties.
+      myGroup.GroupName = ".NET"
+
+      Dim hexByte()As Byte = new Byte(1){Convert.ToByte(100), _
+      Convert.ToByte(50)}
+      myGroup.GroupNumber = hexByte
+
+      Dim myDate As DateTime  = new DateTime(2002,5,2)
+      myGroup.Today = myDate
+
+      myGroup.PostitiveInt = "10000"
+	myGroup.IgnoreThis = true
+	myGroup.Grouptype = GroupType.B
+	Dim thisCar As Car 
+	thisCar =CType(myGroup.myCar("1234566"), Car)
+	myGroup.myVehicle=thisCar
+      return myGroup
+   End Function   	
+
+   Public Sub DeserializeOriginal(filename As String)
+      ' Create an instance of the XmlSerializer class.
+      Dim myMapping As XmlTypeMapping = _
+      (New SoapReflectionImporter().ImportTypeMapping _
+      (GetType(Group)))
+      Dim mySerializer As XmlSerializer =  _
+      New XmlSerializer(myMapping)
 
       ' Reading the file requires an  XmlTextReader.
       Dim reader As XmlTextReader = _
-      new XmlTextReader(filename)
-      reader.ReadStartElement()
+      New XmlTextReader(filename)
+      reader.ReadStartElement("wrapper")
 
       ' Deserialize and cast the object.
-      Dim myGroup As Group  
-      myGroup = CType( mySerializer.Deserialize(reader), Group)
+      Dim myGroup As Group  = _
+      CType(mySerializer.Deserialize(reader), Group)
       reader.ReadEndElement()
       reader.Close()
    End Sub
+
+   Public Sub DeserializeOverride(filename As String)
+      ' Create an instance of the XmlSerializer class.
+      Dim overRideSerializer As XmlSerializer  = _
+      CreateOverrideSerializer()
+
+      ' Reading the file requires an  XmlTextReader.
+      Dim reader As XmlTextReader = _
+      New XmlTextReader(filename)
+      reader.ReadStartElement("wrapper")
+
+      ' Deserialize and cast the object.
+      Dim myGroup As Group = _
+      CType(overRideSerializer.Deserialize(reader), Group)
+      reader.ReadEndElement()
+      reader.Close()
+      ReadGroup(myGroup)
+   End Sub
+
+   private Sub ReadGroup(myGroup As Group)
+      Console.WriteLine(myGroup.GroupName)
+      Console.WriteLine(myGroup.GroupNumber(0))
+      Console.WriteLine(myGroup.GroupNumber(1))
+      Console.WriteLine(myGroup.Today)
+      Console.WriteLine(myGroup.PostitiveInt)
+      Console.WriteLine(myGroup.IgnoreThis)
+      Console.WriteLine()
+   End Sub
    
-   Private Sub Serializer_UnreferencedObject _
-   (sender As object , e As UnreferencedObjectEventArgs)
-      Console.WriteLine("UnreferencedObject:")
-      Console.WriteLine("ID: " + e.UnreferencedId)
-      Console.WriteLine("UnreferencedObject: " + e.UnreferencedObject)
-      Dim myVehicle As Vehicle = CType(e.UnreferencedObject, Vehicle)
-      Console.WriteLine("License: " + myVehicle.licenseNumber)
-       End Sub
- End Class
- 
-' The XML document should contain this information:
+   Private Function CreateOverrideSerializer() As XmlSerializer
+      Dim soapOver As SoapAttributeOverrides = New SoapAttributeOverrides()
+      Dim soapAtts As SoapAttributes = New SoapAttributes()
 
-'<wrapper>
+      Dim mySoapElement As SoapElementAttribute = New SoapElementAttribute()
+      mySoapElement.ElementName = "xxxx"
+      soapAtts.SoapElement = mySoapElement
+      soapOver.Add(GetType(Group), "PostitiveInt", soapAtts)
 
-'  <Group xmlns:xsi="http:'www.w3.org/2001/XMLSchema-instance" 
-'xmlns:xsd="http:'www.w3.org/2001/XMLSchema" id="id1" 
-'n1:GroupName=".NET" xmlns:n1="http:'www.cpandl.com">
-'   </Group>
+      ' Override the IgnoreThis property.
+      Dim myIgnore As SoapIgnoreAttribute  = new SoapIgnoreAttribute()
+      soapAtts = New SoapAttributes()
+      soapAtts.SoapIgnore = false
+      soapOver.Add(GetType(Group), "IgnoreThis", soapAtts)
 
-'<Vehicle id="id2" n1:type="Vehicle" 
-'xmlns:n1="http:'www.w3.org/2001/XMLSchema-instance">
-'    <licenseNumber xmlns:q1="http:'www.w3.org/2001/XMLSchema" 
-'n1:type="q1:string">ABCD</licenseNumber>
-'  </Vehicle>
+      ' Override the GroupType enumeration.
+      soapAtts = New SoapAttributes()
+      Dim xSoapEnum As SoapEnumAttribute = new SoapEnumAttribute()
+      xSoapEnum.Name = "Over1000"
+      soapAtts.SoapEnum = xSoapEnum
+      ' Add the SoapAttributes to the SoapOverrides object.
+      soapOver.Add(GetType(GroupType), "A", soapAtts)
 
-'<Vehicle id="id3" n1:type="Vehicle" 
-'xmlns:n1="http:'www.w3.org/2001/XMLSchema-instance">
-'    <licenseNumber xmlns:q1="http:'www.w3.org/2001/XMLSchema" 
-'n1:type="q1:string">1234</licenseNumber>
-'  </Vehicle>
+      ' Create second enumeration and add it.
+      soapAtts = New SoapAttributes()
+      xSoapEnum = New SoapEnumAttribute()
+      xSoapEnum.Name = "ZeroTo1000"
+      soapAtts.SoapEnum = xSoapEnum
+      soapOver.Add(GetType(GroupType), "B", soapAtts)
 
-'</wrapper>
+      ' Override the Group type.
+      soapAtts = New SoapAttributes()
+      Dim soapType As SoapTypeAttribute = New SoapTypeAttribute()
+      soapType.TypeName = "Team"
+      soapAtts.SoapType = soapType
+      soapOver.Add(GetType(Group),soapAtts)
+	
+      Dim myMapping As XmlTypeMapping = (New SoapReflectionImporter( _
+      soapOver)).ImportTypeMapping(GetType(Group))
+	
+       Dim ser As XmlSerializer = new XmlSerializer(myMapping)
+      return ser
+   End Function
+End Class

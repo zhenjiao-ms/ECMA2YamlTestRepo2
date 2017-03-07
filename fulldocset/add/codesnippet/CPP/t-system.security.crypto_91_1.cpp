@@ -1,154 +1,169 @@
-//
-// This example signs an XML file using an
-// envelope signature. It then verifies the 
-// signed XML.
-//
-#using <System.Security.dll>
-#using <System.Xml.dll>
+#using <System.dll>
 
 using namespace System;
+using namespace System::IO;
 using namespace System::Security::Cryptography;
-using namespace System::Security::Cryptography::X509Certificates;
-using namespace System::Security::Cryptography::Xml;
-using namespace System::Text;
-using namespace System::Xml;
 
-// Sign an XML file and save the signature in a new file. This method does not  
-// save the public key within the XML file.  This file cannot be verified unless  
-// the verifying code has the key with which it was signed.
-void SignXmlFile( String^ FileName, String^ SignedFileName, RSA^ Key )
+
+class RijndaelMemoryExample
 {
-   
-   // Create a new XML document.
-   XmlDocument^ doc = gcnew XmlDocument;
-   
-   // Load the passed XML file using its name.
-   doc->Load( gcnew XmlTextReader( FileName ) );
-   
-   // Create a SignedXml object.
-   SignedXml^ signedXml = gcnew SignedXml( doc );
-   
-   // Add the key to the SignedXml document. 
-   signedXml->SigningKey = Key;
-   
-   // Create a reference to be signed.
-   Reference^ reference = gcnew Reference;
-   reference->Uri = "";
-   
-   // Add an enveloped transformation to the reference.
-   XmlDsigEnvelopedSignatureTransform^ env = gcnew XmlDsigEnvelopedSignatureTransform;
-   reference->AddTransform( env );
-   
-   // Add the reference to the SignedXml object.
-   signedXml->AddReference( reference );
-   
-   // Compute the signature.
-   signedXml->ComputeSignature();
-   
-   // Get the XML representation of the signature and save
-   // it to an XmlElement object.
-   XmlElement^ xmlDigitalSignature = signedXml->GetXml();
-   
-   // Append the element to the XML document.
-   doc->DocumentElement->AppendChild( doc->ImportNode( xmlDigitalSignature, true ) );
-   if ( (doc->FirstChild)->GetType() == XmlDeclaration::typeid )
-   {
-      doc->RemoveChild( doc->FirstChild );
-   }
+public:
+    static array<Byte>^ encryptStringToBytes_AES(String^ plainText, array<Byte>^ Key, array<Byte>^ IV)
+    {
+        // Check arguments.
+        if (!plainText || plainText->Length <= 0)
+            throw gcnew ArgumentNullException("plainText");
+        if (!Key || Key->Length <= 0)
+            throw gcnew ArgumentNullException("Key");
+        if (!IV  || IV->Length <= 0)
+            throw gcnew ArgumentNullException("IV");
 
-   
-   // Save the signed XML document to a file specified
-   // using the passed string.
-   XmlTextWriter^ xmltw = gcnew XmlTextWriter( SignedFileName,gcnew UTF8Encoding( false ) );
-   doc->WriteTo( xmltw );
-   xmltw->Close();
-}
+        // Declare the streams used
+        // to encrypt to an in memory
+        // array of bytes.
+		MemoryStream^   msEncrypt;
+        CryptoStream^   csEncrypt;
+        StreamWriter^   swEncrypt;
 
+        // Declare the RijndaelManaged object
+        // used to encrypt the data.
+        RijndaelManaged^ aesAlg;
 
-// Verify the signature of an XML file against an asymmetric 
-// algorithm and return the result.
-Boolean VerifyXmlFile( String^ Name, RSA^ Key )
-{
-   
-   // Create a new XML document.
-   XmlDocument^ xmlDocument = gcnew XmlDocument;
-   
-   // Load the passed XML file into the document. 
-   xmlDocument->Load( Name );
-   
-   // Create a new SignedXml object and pass it
-   // the XML document class.
-   SignedXml^ signedXml = gcnew SignedXml( xmlDocument );
-   
-   // Find the "Signature" node and create a new
-   // XmlNodeList object.
-   XmlNodeList^ nodeList = xmlDocument->GetElementsByTagName( "Signature" );
-   
-   // Load the signature node.
-   signedXml->LoadXml( safe_cast<XmlElement^>(nodeList->Item( 0 )) );
-   
-   // Check the signature and return the result.
-   return signedXml->CheckSignature( Key );
-}
+        try
+        {
+            // Create a RijndaelManaged object
+            // with the specified key and IV.
+            aesAlg = gcnew RijndaelManaged();
+			aesAlg->Padding = PaddingMode::PKCS7;
+            aesAlg->Key = Key;
+            aesAlg->IV = IV;
+
+            // Create an encryptor to perform the stream transform.
+            ICryptoTransform^ encryptor = aesAlg->CreateEncryptor(aesAlg->Key, aesAlg->IV);
+
+            // Create the streams used for encryption.
+            msEncrypt = gcnew MemoryStream();
+			csEncrypt = gcnew CryptoStream(msEncrypt, encryptor, CryptoStreamMode::Write);
+            swEncrypt = gcnew StreamWriter(csEncrypt);
+
+            //Write all data to the stream.
+            swEncrypt->Write(plainText);
+			swEncrypt->Flush();
+			csEncrypt->FlushFinalBlock();
+			msEncrypt->Flush();
+        }
+        finally
+        {
+            // Clean things up.
+
+            // Close the streams.
+            if(swEncrypt)
+                swEncrypt->Close();
+            if (csEncrypt)
+                csEncrypt->Close();
 
 
-// Create example data to sign.
-void CreateSomeXml( String^ FileName )
-{
-   
-   // Create a new XmlDocument Object*.
-   XmlDocument^ document = gcnew XmlDocument;
-   
-   // Create a new XmlNode object.
-   XmlNode^ node = document->CreateNode( XmlNodeType::Element, "", "MyElement", "samples" );
-   
-   // Add some text to the node.
-   node->InnerText = "Example text to be signed.";
-   
-   // Append the node to the document.
-   document->AppendChild( node );
-   
-   // Save the XML document to the file name specified.
-   XmlTextWriter^ xmltw = gcnew XmlTextWriter( FileName,gcnew UTF8Encoding( false ) );
-   document->WriteTo( xmltw );
-   xmltw->Close();
-}
+            // Clear the RijndaelManaged object.
+            if (aesAlg)
+                aesAlg->Clear();
+        }
+
+        // Return the encrypted bytes from the memory stream.
+        return msEncrypt->ToArray();
+    }
+
+    static String^ decryptStringFromBytes_AES(array<Byte>^ cipherText, array<Byte>^ Key, array<Byte>^ IV)
+    {
+        // Check arguments.
+        if (!cipherText || cipherText->Length <= 0)
+            throw gcnew ArgumentNullException("cipherText");
+        if (!Key || Key->Length <= 0)
+            throw gcnew ArgumentNullException("Key");
+        if (!IV || IV->Length <= 0)
+            throw gcnew ArgumentNullException("IV");
+
+        // TDeclare the streams used
+        // to decrypt to an in memory
+        // array of bytes.
+        MemoryStream^ msDecrypt;
+        CryptoStream^ csDecrypt;
+        StreamReader^ srDecrypt;
+
+        // Declare the RijndaelManaged object
+        // used to decrypt the data.
+        RijndaelManaged^ aesAlg;
+
+        // Declare the string used to hold
+        // the decrypted text.
+        String^ plaintext;
+
+        try
+        {
+            // Create a RijndaelManaged object
+            // with the specified key and IV.
+            aesAlg = gcnew RijndaelManaged();
+			aesAlg->Padding = PaddingMode::PKCS7;
+            aesAlg->Key = Key;
+            aesAlg->IV = IV;
+
+            // Create a decrytor to perform the stream transform.
+			ICryptoTransform^ decryptor = aesAlg->CreateDecryptor(aesAlg->Key, aesAlg->IV);
+
+            // Create the streams used for decryption.
+            msDecrypt = gcnew MemoryStream(cipherText);
+			csDecrypt = gcnew CryptoStream(msDecrypt, decryptor, CryptoStreamMode::Read);
+            srDecrypt = gcnew StreamReader(csDecrypt);
+
+            // Read the decrypted bytes from the decrypting stream
+            // and place them in a string.
+            plaintext = srDecrypt->ReadToEnd();
+        }
+        finally
+        {
+            // Clean things up.
+
+            // Close the streams.
+            if (srDecrypt)
+                srDecrypt->Close();
+            if (csDecrypt)
+                csDecrypt->Close();
+            if (msDecrypt)
+                msDecrypt->Close();
+
+            // Clear the RijndaelManaged object.
+            if (aesAlg)
+                aesAlg->Clear();
+        }
+
+        return plaintext;
+    }
+};
 
 int main()
 {
-   try
-   {
-      
-      // Generate a signing key.
-      RSACryptoServiceProvider^ Key = gcnew RSACryptoServiceProvider;
-      
-      // Create an XML file to sign.
-      CreateSomeXml( "Example.xml" );
-      Console::WriteLine( "New XML file created." );
-      
-      // Sign the XML that was just created and save it in a 
-      // new file.
-      SignXmlFile( "Example.xml", "signedExample.xml", Key );
-      Console::WriteLine( "XML file signed." );
-      
-      // Verify the signature of the signed XML.
-      Console::WriteLine( "Verifying signature..." );
-      bool result = VerifyXmlFile( "SignedExample.xml", Key );
-      
-      // Display the results of the signature verification to 
-      // the console.
-      if ( result )
-      {
-         Console::WriteLine( "The XML signature is valid." );
-      }
-      else
-      {
-         Console::WriteLine( "The XML signature is not valid." );
-      }
-   }
-   catch ( CryptographicException^ e ) 
-   {
-      Console::WriteLine( e->Message );
-   }
+    try
+    {
+        String^ original = "Here is some data to encrypt!";
 
+        // Create a new instance of the RijndaelManaged
+        // class.  This generates a new key and initialization
+        // vector (IV).
+        RijndaelManaged^ myRijndael = gcnew RijndaelManaged();
+
+        // Encrypt the string to an array of bytes.
+		array<Byte>^ encrypted = RijndaelMemoryExample::encryptStringToBytes_AES(original, myRijndael->Key, myRijndael->IV);
+
+        // Decrypt the bytes to a string.
+        String^ roundtrip = RijndaelMemoryExample::decryptStringFromBytes_AES(encrypted, myRijndael->Key, myRijndael->IV);
+
+        //Display the original data and the decrypted data.
+		Console::WriteLine("Original:   {0}", original);
+		Console::WriteLine("Round Trip: {0}", roundtrip);
+    }
+    catch (Exception^ e)
+    {
+		Console::WriteLine("Error: {0}", e->Message);
+    }
+
+	return 0;
 }

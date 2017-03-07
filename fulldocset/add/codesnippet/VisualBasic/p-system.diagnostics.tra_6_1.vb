@@ -1,5 +1,19 @@
-            ' Test the filter on the ConsoleTraceListener.
-            ts.Listeners("console").Filter = New SourceFilter("No match")
-            ts.TraceData(TraceEventType.Error, 5, "SourceFilter should reject this message for the console trace listener.")
-            ts.Listeners("console").Filter = New SourceFilter("TraceTest")
-            ts.TraceData(TraceEventType.Error, 6, "SourceFilter should let this message through on the console trace listener.")
+    ' Class-level declaration.
+    ' Create a TraceSwitch to use in the entire application. 
+    Private Shared mySwitch As New TraceSwitch("General", "Entire Application")    
+    
+    Public Shared Sub MyMethod()
+        ' Write the message if the TraceSwitch level is set to Warning or higher.
+        If mySwitch.TraceWarning Then
+            Console.WriteLine("My error message.")
+        End If 
+        ' Write the message if the TraceSwitch level is set to Verbose.
+        If mySwitch.TraceVerbose Then
+            Console.WriteLine("My second error message.")
+        End If
+    End Sub
+    
+    Public Shared Sub Main()
+        ' Run the method that prints error messages based on the switch level.
+        MyMethod()
+    End Sub

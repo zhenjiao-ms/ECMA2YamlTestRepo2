@@ -1,9 +1,11 @@
- Public Sub CloneMyMenu()
-     ' Determine if mainMenu1 is currently hosted on the form.
-     If (mainMenu1.GetForm() IsNot Nothing) Then
-         ' Create a copy of the MainMenu that is hosted on the form.
-         Dim mainMenu2 As MainMenu = mainMenu1.CloneMenu()
-         ' Set the RightToLeft property for mainMenu2.
-         mainMenu2.RightToLeft = RightToLeft.Yes
-     End If
- End Sub
+Private Sub MaskedTextBox1_MaskInputRejected(sender as Object, e as MaskInputRejectedEventArgs) _ 
+     Handles MaskedTextBox1.MaskInputRejected
+
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "Position", e.Position)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "RejectionHint", e.RejectionHint)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"MaskInputRejected Event")
+
+End Sub

@@ -1,31 +1,27 @@
-private void DataGridView1_CellPainting(Object sender, DataGridViewCellPaintingEventArgs e) {
+    // Draws the backgrounds for entire ListView items.
+    private void listView1_DrawItem(object sender,
+        DrawListViewItemEventArgs e)
+    {
+        if ((e.State & ListViewItemStates.Selected) != 0)
+        {
+            // Draw the background and focus rectangle for a selected item.
+            e.Graphics.FillRectangle(Brushes.Maroon, e.Bounds);
+            e.DrawFocusRectangle();
+        }
+        else
+        {
+            // Draw the background for an unselected item.
+            using (LinearGradientBrush brush =
+                new LinearGradientBrush(e.Bounds, Color.Orange,
+                Color.Maroon, LinearGradientMode.Horizontal))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds);
+            }
+        }
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "AdvancedBorderStyle", e.AdvancedBorderStyle );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "CellBounds", e.CellBounds );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "CellStyle", e.CellStyle );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ClipBounds", e.ClipBounds );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ColumnIndex", e.ColumnIndex );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ErrorText", e.ErrorText );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "FormattedValue", e.FormattedValue );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "PaintParts", e.PaintParts );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "State", e.State );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Value", e.Value );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Handled", e.Handled );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "CellPainting Event" );
-}
+        // Draw the item text for views other than the Details view.
+        if (listView1.View != View.Details)
+        {
+            e.DrawText();
+        }
+    }

@@ -1,33 +1,35 @@
-      // Local time changes on 3/11/2007 at 2:00 AM
-      DateTimeOffset originalTime, localTime;
+using System;
+using System.Globalization;
+using System.Threading;
+
+public class Example
+{
+   public static void Main()
+   {
+      DateTimeOffset date1 = new DateTimeOffset(new DateTime(1550, 7, 21),
+                                                TimeSpan.Zero);
+      CultureInfo dft;
+      CultureInfo heIL = new CultureInfo("he-IL");
+      heIL.DateTimeFormat.Calendar = new HebrewCalendar();
       
-      originalTime = new DateTimeOffset(2007, 3, 11, 3, 0, 0, 
-                                        new TimeSpan(-6, 0, 0));
-      localTime = originalTime.ToLocalTime();
-      Console.WriteLine("Converted {0} to {1}.", originalTime.ToString(), 
-                                                 localTime.ToString());   
-
-      originalTime = new DateTimeOffset(2007, 3, 11, 4, 0, 0, 
-                                        new TimeSpan(-6, 0, 0));
-      localTime = originalTime.ToLocalTime();
-      Console.WriteLine("Converted {0} to {1}.", originalTime.ToString(), 
-                                                 localTime.ToString());    
-
-      // Define a summer UTC time
-      originalTime = new DateTimeOffset(2007, 6, 15, 8, 0, 0, 
-                                        TimeSpan.Zero);
-      localTime = originalTime.ToLocalTime();
-      Console.WriteLine("Converted {0} to {1}.", originalTime.ToString(),
-                                                 localTime.ToString());    
-
-      // Define a winter time
-      originalTime = new DateTimeOffset(2007, 11, 30, 14, 0, 0, 
-                                        new TimeSpan(3, 0, 0));
-      localTime = originalTime.ToLocalTime();
-      Console.WriteLine("Converted {0} to {1}.", originalTime.ToString(), 
-                                                 localTime.ToString());
-      // The example produces the following output:
-      //    Converted 3/11/2007 3:00:00 AM -06:00 to 3/11/2007 1:00:00 AM -08:00.
-      //    Converted 3/11/2007 4:00:00 AM -06:00 to 3/11/2007 3:00:00 AM -07:00.
-      //    Converted 6/15/2007 8:00:00 AM +00:00 to 6/15/2007 1:00:00 AM -07:00.
-      //    Converted 11/30/2007 2:00:00 PM +03:00 to 11/30/2007 3:00:00 AM -08:00.                                                           
+      // Change current culture to he-IL.
+      dft = Thread.CurrentThread.CurrentCulture;
+      Thread.CurrentThread.CurrentCulture = heIL;
+      
+      // Display the date using the current culture's calendar.            
+      try {
+         Console.WriteLine(date1.ToString("G"));
+      }   
+      catch (ArgumentOutOfRangeException) {
+         Console.WriteLine("{0} is earlier than {1} or later than {2}", 
+                           date1.ToString("d", CultureInfo.InvariantCulture), 
+                           heIL.DateTimeFormat.Calendar.MinSupportedDateTime.ToString("d", CultureInfo.InvariantCulture),  
+                           heIL.DateTimeFormat.Calendar.MaxSupportedDateTime.ToString("d", CultureInfo.InvariantCulture)); 
+      }
+      
+      // Restore the default culture.
+      Thread.CurrentThread.CurrentCulture = dft;
+   }
+}
+// The example displays the following output:
+//    07/21/1550 is earlier than 01/01/1583 or later than 09/29/2239

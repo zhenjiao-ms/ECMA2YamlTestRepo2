@@ -12,8 +12,18 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Performs symmetric encryption and decryption using the Cryptographic Application Programming Interfaces (CAPI) implementation of the Advanced Encryption Standard (AES) algorithm.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example demonstrates how to encrypt and decrypt sample data using the AesCryptoServiceProvider class.  
+  
+ [!code-vb[AesCryptoServProvider#1](~/add/codesnippet/visualbasic/t-system.security.crypto_74_1.vb)]
+ [!code-cs[AesCryptoServProvider#1](~/add/codesnippet/csharp/t-system.security.crypto_74_1.cs)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -33,8 +43,9 @@
       </Attributes>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.Security.Cryptography.AesCryptoServiceProvider" /> class.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.PlatformNotSupportedException">There is no supported key size for the current platform.</exception>
       </Docs>
     </Member>
     <Member MemberName="CreateDecryptor">
@@ -57,9 +68,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Creates a symmetric AES decryptor object using the current key and initialization vector (IV).</summary>
+        <returns>A symmetric AES decryptor object.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">The current key is invalid or missing.</exception>
       </Docs>
     </Member>
     <Member MemberName="CreateDecryptor">
@@ -85,11 +97,25 @@
         <Parameter Name="iv" Type="System.Byte[]" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <param name="iv">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="key">The secret key to use for the symmetric algorithm.</param>
+        <param name="iv">The initialization vector to use for the symmetric algorithm.</param>
+        <summary>Creates a symmetric AES decryptor object using the specified key and initialization vector (IV).</summary>
+        <returns>A symmetric AES decryptor object.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example shows how to use the CreateDecryptor method to decrypt an encrypted message. This code example is part of a larger example provided for the <xref:System.Security.Cryptography.AesCryptoServiceProvider> class.  
+  
+ [!code-vb[AesCryptoServProvider#3](~/add/codesnippet/visualbasic/da7de4f0-05be-4eb7-95ca-_1.vb)]
+ [!code-cs[AesCryptoServProvider#3](~/add/codesnippet/csharp/da7de4f0-05be-4eb7-95ca-_1.cs)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="key" /> or <paramref name="iv" /> is <see langword="null" />.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="key" /> is invalid.</exception>
       </Docs>
     </Member>
     <Member MemberName="CreateEncryptor">
@@ -112,8 +138,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Creates a symmetric AES encryptor object using the current key and initialization vector (IV).</summary>
+        <returns>A symmetric AES encryptor object.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -140,11 +166,29 @@
         <Parameter Name="iv" Type="System.Byte[]" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <param name="iv">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="key">The secret key to use for the symmetric algorithm.</param>
+        <param name="iv">The initialization vector to use for the symmetric algorithm.</param>
+        <summary>Creates a symmetric encryptor object using the specified key and initialization vector (IV).</summary>
+        <returns>A symmetric AES encryptor object.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ See the code examples in the <xref:System.Security.Cryptography.SymmetricAlgorithm.LegalKeySizes%2A> and <xref:System.Security.Cryptography.SymmetricAlgorithm.LegalBlockSizes%2A> properties to determine the size of the `key` and `iv` parameters.  
+  
+   
+  
+## Examples  
+ The following example shows how to use the CreateEncryptor method to encrypt a message. This code example is part of a larger example provided for the <xref:System.Security.Cryptography.AesCryptoServiceProvider> class.  
+  
+ [!code-vb[AesCryptoServProvider#2](~/add/codesnippet/visualbasic/2e043d16-7828-4c0a-bf1c-_1.vb)]
+ [!code-cs[AesCryptoServProvider#2](~/add/codesnippet/csharp/2e043d16-7828-4c0a-bf1c-_1.cs)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">The <paramref name="key" /> or <paramref name="iv" /> parameter is <see langword="null" />.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="key" /> is invalid.</exception>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -194,8 +238,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Generates a random initialization vector (IV) to use for the algorithm.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">The initialization vector (IV) could not be generated.</exception>
       </Docs>
     </Member>
     <Member MemberName="GenerateKey">
@@ -218,8 +263,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Generates a random key to use for the algorithm.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">The key could not be generated.</exception>
       </Docs>
     </Member>
     <Member MemberName="Key">
@@ -244,9 +290,11 @@
         <ReturnType>System.Byte[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the symmetric key that is used for encryption and decryption.</summary>
+        <value>The symmetric key that is used for encryption and decryption.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">The value for the key is <see langword="null" />.</exception>
+        <exception cref="T:System.Security.Cryptography.CryptographicException">The size of the key is invalid.</exception>
       </Docs>
     </Member>
     <Member MemberName="KeySize">
@@ -268,9 +316,16 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the size, in bits, of the secret key.</summary>
+        <value>The size, in bits, of the key.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The minimum size of the key is 128 bits, and the maximum size is 256 bits.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
   </Members>

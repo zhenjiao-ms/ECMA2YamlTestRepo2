@@ -9,89 +9,39 @@ class XMLSchemaExamples
 
         XmlSchema schema = new XmlSchema();
 
-        // <xs:complexType name="customerOrderType">
-        XmlSchemaComplexType customerOrderType = new XmlSchemaComplexType();
-        customerOrderType.Name = "customerOrderType";
+        // <xs:simpleType name="OrderQuantityType">
+        XmlSchemaSimpleType OrderQuantityType = new XmlSchemaSimpleType();
+        OrderQuantityType.Name = "OrderQuantityType";
 
-        // <xs:sequence>
-        XmlSchemaSequence sequence1 = new XmlSchemaSequence();
+        // <xs:restriction base="xs:int">
+        XmlSchemaSimpleTypeRestriction restriction = new XmlSchemaSimpleTypeRestriction();
+        restriction.BaseTypeName = new XmlQualifiedName("int", "http://www.w3.org/2001/XMLSchema");
 
-        // <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
-        XmlSchemaElement item = new XmlSchemaElement();
-        item.MinOccurs = 0;
-        item.MaxOccursString = "unbounded";
-        item.Name = "item";
+        // <xs:minExclusive value="5"/>
+        XmlSchemaMinExclusiveFacet MinExclusive = new XmlSchemaMinExclusiveFacet();
+        MinExclusive.Value = "5";
+        restriction.Facets.Add(MinExclusive);
 
-        // <xs:complexType>
-        XmlSchemaComplexType ct1 = new XmlSchemaComplexType();
+        OrderQuantityType.Content = restriction;
 
-        // <xs:attribute name="itemID" type="xs:string"/>
-        XmlSchemaAttribute itemID = new XmlSchemaAttribute();
-        itemID.Name = "itemID";
-        itemID.SchemaTypeName = new XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema");
+        schema.Items.Add(OrderQuantityType);
 
-        // </xs:complexType>
-        ct1.Attributes.Add(itemID);
-
-        // </xs:element>
-        item.SchemaType = ct1;
-
-        // </xs:sequence>
-        sequence1.Items.Add(item);
-        customerOrderType.Particle = sequence1;
-
-        // <xs:attribute name="CustomerID" type="xs:string"/>
-        XmlSchemaAttribute CustomerID = new XmlSchemaAttribute();
-        CustomerID.Name = "CustomerID";
-        CustomerID.SchemaTypeName = new XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema");
-
-        customerOrderType.Attributes.Add(CustomerID);
-
-        // </xs:complexType>
-        schema.Items.Add(customerOrderType);
-
-        // <xs:element name="ordersByCustomer">
-        XmlSchemaElement ordersByCustomer = new XmlSchemaElement();
-        ordersByCustomer.Name = "ordersByCustomer";
+        // <xs:element name="item">
+        XmlSchemaElement element = new XmlSchemaElement();
+        element.Name = "item";
 
         // <xs:complexType>
-        XmlSchemaComplexType ct2 = new XmlSchemaComplexType();
+        XmlSchemaComplexType complexType = new XmlSchemaComplexType();
 
-        // <xs:sequence>
-        XmlSchemaSequence sequence2 = new XmlSchemaSequence();
+        // <xs:attribute name="OrderQuantity" type="OrderQuantityType"/>
+        XmlSchemaAttribute OrderQuantityAttribute = new XmlSchemaAttribute();
+        OrderQuantityAttribute.Name = "OrderQuantity";
+        OrderQuantityAttribute.SchemaTypeName = new XmlQualifiedName("OrderQuantityType", "");
+        complexType.Attributes.Add(OrderQuantityAttribute);
 
-        // <xs:element name="customerOrders" type="customerOrderType" minOccurs="0" maxOccurs="unbounded" />
-        XmlSchemaElement customerOrders = new XmlSchemaElement();
-        customerOrders.MinOccurs = 0;
-        customerOrders.MaxOccursString = "unbounded";
-        customerOrders.Name = "customerOrders";
-        customerOrders.SchemaTypeName = new XmlQualifiedName("customerOrderType", "");
+        element.SchemaType = complexType;
 
-        // </xs:sequence>
-        sequence2.Items.Add(customerOrders);
-
-        // </xs:complexType>
-        ct2.Particle = sequence2;
-        ordersByCustomer.SchemaType = ct2;
-
-        // <xs:unique name="oneCustomerOrdersforEachCustomerID">
-        XmlSchemaUnique element_unique = new XmlSchemaUnique();
-        element_unique.Name = "oneCustomerOrdersforEachCustomerID";
-
-        // <xs:selector xpath="customerOrders"/>
-        element_unique.Selector = new XmlSchemaXPath();
-        element_unique.Selector.XPath = "customerOrders";
-
-        // <xs:field xpath="@customerID"/>
-        XmlSchemaXPath field = new XmlSchemaXPath();
-        field.XPath = "@customerID";
-
-        // </xs:unique>
-        element_unique.Fields.Add(field);
-        ordersByCustomer.Constraints.Add(element_unique);
-
-        // </xs:element>
-        schema.Items.Add(ordersByCustomer);
+        schema.Items.Add(element);
 
         XmlSchemaSet schemaSet = new XmlSchemaSet();
         schemaSet.ValidationEventHandler += new ValidationEventHandler(ValidationCallbackOne);

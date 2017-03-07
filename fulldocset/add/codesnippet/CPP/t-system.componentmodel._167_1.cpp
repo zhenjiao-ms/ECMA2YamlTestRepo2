@@ -1,6 +1,12 @@
-   protected:
-      [ReflectionPermission(SecurityAction::Demand, Flags=ReflectionPermissionFlag::MemberAccess)]
-      virtual void PreFilterProperties( System::Collections::IDictionary^ properties ) override
+   public:
+      // This example method creates a DesignerTransactionCloseEventArgs using the specified argument.
+      // Typically, this type of event args is created by a design mode subsystem.
+      DesignerTransactionCloseEventArgs^ CreateDesignerTransactionCloseEventArgs( bool commit )
       {
-         properties->Add( "OutlineColor", TypeDescriptor::CreateProperty( TestControlDesigner::typeid, "OutlineColor", System::Drawing::Color::typeid, nullptr ) );
+         // Creates a component changed event args with the specified arguments.
+         DesignerTransactionCloseEventArgs^ args = gcnew DesignerTransactionCloseEventArgs( commit );
+
+         // Whether the transaction has been committed:  args.TransactionCommitted
+
+         return args;
       }

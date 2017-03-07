@@ -1,70 +1,67 @@
 Imports System
+Imports System.IO
 Imports System.Security.Cryptography
-Imports System.Text
+Imports System.Windows.Forms
 
+Public Class HashDirectory
 
-Class Program
-
-    Shared Sub Main(ByVal args() As String)
-        Dim [source] As String = "Hello World!"
-        Using md5Hash As MD5 = MD5.Create()
-
-            Dim hash As String = GetMd5Hash(md5Hash, source)
-
-            Console.WriteLine("The MD5 hash of " + source + " is: " + hash + ".")
-
-            Console.WriteLine("Verifying the hash...")
-
-            If VerifyMd5Hash(md5Hash, [source], hash) Then
-                Console.WriteLine("The hashes are the same.")
+    Public Shared Sub Main(ByVal args() As String)
+        Dim directory As String
+        If args.Length < 1 Then
+            Dim fdb As New FolderBrowserDialog
+            Dim dr As DialogResult = fdb.ShowDialog()
+            If (dr = DialogResult.OK) Then
+                directory = fdb.SelectedPath
             Else
-                Console.WriteLine("The hashes are not same.")
+                Console.WriteLine("No directory selected")
+                Return
             End If
-        End Using
-    End Sub 'Main
-
-
-
-    Shared Function GetMd5Hash(ByVal md5Hash As MD5, ByVal input As String) As String
-
-        ' Convert the input string to a byte array and compute the hash.
-        Dim data As Byte() = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input))
-
-        ' Create a new Stringbuilder to collect the bytes
-        ' and create a string.
-        Dim sBuilder As New StringBuilder()
-
-        ' Loop through each byte of the hashed data 
-        ' and format each one as a hexadecimal string.
-        Dim i As Integer
-        For i = 0 To data.Length - 1
-            sBuilder.Append(data(i).ToString("x2"))
-        Next i
-
-        ' Return the hexadecimal string.
-        Return sBuilder.ToString()
-
-    End Function 'GetMd5Hash
-
-
-    ' Verify a hash against a string.
-    Shared Function VerifyMd5Hash(ByVal md5Hash As MD5, ByVal input As String, ByVal hash As String) As Boolean
-        ' Hash the input.
-        Dim hashOfInput As String = GetMd5Hash(md5Hash, input)
-
-        ' Create a StringComparer an compare the hashes.
-        Dim comparer As StringComparer = StringComparer.OrdinalIgnoreCase
-
-        If 0 = comparer.Compare(hashOfInput, hash) Then
-            Return True
         Else
-            Return False
+            directory = args(0)
         End If
+        Try
+            ' Create a DirectoryInfo object representing the specified directory.
+            Dim dir As New DirectoryInfo(directory)
+            ' Get the FileInfo objects for every file in the directory.
+            Dim files As FileInfo() = dir.GetFiles()
+            ' Initialize a RIPE160 hash object.
+            Dim myRIPEMD160 As RIPEMD160 = RIPEMD160Managed.Create()
+            Dim hashValue() As Byte
+            ' Compute and print the hash values for each file in directory.
+            Dim fInfo As FileInfo
+            For Each fInfo In files
+                ' Create a fileStream for the file.
+                Dim fileStream As FileStream = fInfo.Open(FileMode.Open)
+                ' Be sure it's positioned to the beginning of the stream.
+                fileStream.Position = 0
+                ' Compute the hash of the fileStream.
+                hashValue = myRIPEMD160.ComputeHash(fileStream)
+                ' Write the name of the file to the Console.
+                Console.Write(fInfo.Name + ": ")
+                ' Write the hash value to the Console.
+                PrintByteArray(hashValue)
+                ' Close the file.
+                fileStream.Close()
+            Next fInfo
+            Return
+        Catch DExc As DirectoryNotFoundException
+            Console.WriteLine("Error: The directory specified could not be found.")
+        Catch IOExc As IOException
+            Console.WriteLine("Error: A file in the directory could not be accessed.")
+        End Try
 
-    End Function 'VerifyMd5Hash
-End Class 'Program 
-' This code example produces the following output:
-'
-' The MD5 hash of Hello World! is: ed076287532e86365e841e92bfc50d8c.
-' Verifying the hash...
-' The hashes are the same.
+    End Sub
+
+    ' Print the byte array in a readable format.
+    Public Shared Sub PrintByteArray(ByVal array() As Byte)
+        Dim i As Integer
+        For i = 0 To array.Length - 1
+            Console.Write(String.Format("{0:X2}", array(i)))
+            If i Mod 4 = 3 Then
+                Console.Write(" ")
+            End If
+        Next i
+        Console.WriteLine()
+
+    End Sub 'PrintByteArray
+End Class

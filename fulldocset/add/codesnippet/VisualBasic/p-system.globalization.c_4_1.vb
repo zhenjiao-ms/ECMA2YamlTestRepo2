@@ -1,68 +1,75 @@
+' This example demonstrates a System.Globalization.Culture-
+' AndRegionInfoBuilder constructor and some of the properties 
+' of the CultureAndRegionInfoBuilder object that is created.
+' Compile this example with a reference to sysglobl.dll.
+
+Imports System
 Imports System.Globalization
 
-Module Example
-   Public Sub Main()
-      ' Get all available cultures on the current system.
-      Dim cultures() As CultureInfo = CultureInfo.GetCultures(CultureTypes.AllCultures)
+Class Sample
+    Public Shared Sub Main() 
+        
+        ' Construct a new, privately used culture that extends the en-US culture 
+        ' provided by the .NET Framework. In this sample, the CultureAndRegion-
+        ' Types.Specific parameter creates a minimal CultureAndRegionInfoBuilder 
+        ' object that you must populate with culture and region information.
 
-      Console.WriteLine("{0,-32} {1,-13} {2,-6}", "Display Name", 
-                        "Name", "TwoLetterISOLanguageName")
-      Console.WriteLine()
-      For Each culture In cultures
-         ' Exclude custom cultures.
-         If (culture.CultureTypes And CultureTypes.UserCustomCulture) = CultureTypes.UserCustomCulture Then 
-            Continue For
-         End If
-         
-         ' Exclude all two-letter codes.
-         If culture.TwoLetterISOLanguageName.Length = 2 Then Continue For
-         
-         Console.WriteLine("{0,-32} {1,-13} {2,-6}", culture.DisplayName,
-                           culture.Name, culture.TwoLetterISOLanguageName)
-      Next   
-   End Sub
-End Module
-' The example output like the following:
-'       Display Name                     Name          TwoLetterISOLanguageName
-'       
-'       Upper Sorbian                    hsb           hsb
-'       Konkani                          kok           kok
-'       Syriac                           syr           syr
-'       Tamazight                        tzm           tzm
-'       Filipino                         fil           fil
-'       Quechua                          quz           quz
-'       Sesotho sa Leboa                 nso           nso
-'       Mapudungun                       arn           arn
-'       Mohawk                           moh           moh
-'       Alsatian                         gsw           gsw
-'       Sakha                            sah           sah
-'       K'iche                           qut           qut
-'       Dari                             prs           prs
-'       Upper Sorbian (Germany)          hsb-DE        hsb
-'       Konkani (India)                  kok-IN        kok
-'       Syriac (Syria)                   syr-SY        syr
-'       Filipino (Philippines)           fil-PH        fil
-'       Quechua (Bolivia)                quz-BO        quz
-'       Sesotho sa Leboa (South Africa)  nso-ZA        nso
-'       Mapudungun (Chile)               arn-CL        arn
-'       Mohawk (Mohawk)                  moh-CA        moh
-'       Alsatian (France)                gsw-FR        gsw
-'       Sakha (Russia)                   sah-RU        sah
-'       K'iche (Guatemala)               qut-GT        qut
-'       Dari (Afghanistan)               prs-AF        prs
-'       Lower Sorbian (Germany)          dsb-DE        dsb
-'       Tamazight (Latin, Algeria)       tzm-Latn-DZ   tzm
-'       Quechua (Ecuador)                quz-EC        quz
-'       Quechua (Peru)                   quz-PE        quz
-'       Sami, Lule (Norway)              smj-NO        smj
-'       Sami, Lule (Sweden)              smj-SE        smj
-'       Sami, Southern (Norway)          sma-NO        sma
-'       Sami, Southern (Sweden)          sma-SE        sma
-'       Sami, Skolt (Finland)            sms-FI        sms
-'       Sami, Inari (Finland)            smn-FI        smn
-'       Sami (Inari)                     smn           smn
-'       Sami (Skolt)                     sms           sms
-'       Sami (Southern)                  sma           sma
-'       Lower Sorbian                    dsb           dsb
-'       Sami (Lule)                      smj           smj
-'       Tamazight (Latin)                tzm-Latn      tzm
+        Dim cib As CultureAndRegionInfoBuilder = Nothing
+        Try
+            cib = New CultureAndRegionInfoBuilder("x-en-US-sample", _
+                                                   CultureAndRegionModifiers.None)
+        Catch ae As ArgumentException
+            Console.WriteLine(ae)
+            Return
+        End Try
+        
+        ' Populate the new CultureAndRegionInfoBuilder object with culture information.
+
+        Dim ci As New CultureInfo("en-US")
+        cib.LoadDataFromCultureInfo(ci)
+        
+        ' Populate the new CultureAndRegionInfoBuilder object with region information.
+
+        Dim ri As New RegionInfo("US")
+        cib.LoadDataFromRegionInfo(ri)
+        
+        ' Display some of the properties for the x-en-US-sample custom culture.
+
+        Console.Clear()
+        Console.WriteLine("CultureName:. . . . . . . . . . {0}", cib.CultureName)
+        Console.WriteLine("CultureEnglishName: . . . . . . {0}", cib.CultureEnglishName)
+        Console.WriteLine("CultureNativeName:. . . . . . . {0}", cib.CultureNativeName)
+        Console.WriteLine("GeoId:. . . . . . . . . . . . . {0}", cib.GeoId)
+        Console.WriteLine("IsMetric: . . . . . . . . . . . {0}", cib.IsMetric)
+        Console.WriteLine("ISOCurrencySymbol:. . . . . . . {0}", cib.ISOCurrencySymbol)
+        Console.WriteLine("RegionEnglishName:. . . . . . . {0}", cib.RegionEnglishName)
+        Console.WriteLine("RegionName: . . . . . . . . . . {0}", cib.RegionName)
+        Console.WriteLine("RegionNativeName: . . . . . . . {0}", cib.RegionNativeName)
+        Console.WriteLine("ThreeLetterISOLanguageName: . . {0}", cib.ThreeLetterISOLanguageName)
+        Console.WriteLine("ThreeLetterISORegionName: . . . {0}", cib.ThreeLetterISORegionName)
+        Console.WriteLine("ThreeLetterWindowsLanguageName: {0}", cib.ThreeLetterWindowsLanguageName)
+        Console.WriteLine("ThreeLetterWindowsRegionName: . {0}", cib.ThreeLetterWindowsRegionName)
+        Console.WriteLine("TwoLetterISOLanguageName: . . . {0}", cib.TwoLetterISOLanguageName)
+        Console.WriteLine("TwoLetterISORegionName: . . . . {0}", cib.TwoLetterISORegionName)
+    
+    End Sub 'Main
+End Class 'Sample
+'
+'This code example produces the following results:
+'
+'CultureName:. . . . . . . . . . x-en-US-sample
+'CultureEnglishName: . . . . . . English
+'CultureNativeName:. . . . . . . English
+'GeoId:. . . . . . . . . . . . . 244
+'IsMetric: . . . . . . . . . . . False
+'ISOCurrencySymbol:. . . . . . . USD
+'RegionEnglishName:. . . . . . . United States
+'RegionName: . . . . . . . . . . US
+'RegionNativeName: . . . . . . . United States
+'ThreeLetterISOLanguageName: . . eng
+'ThreeLetterISORegionName: . . . USA
+'ThreeLetterWindowsLanguageName: ENU
+'ThreeLetterWindowsRegionName: . USA
+'TwoLetterISOLanguageName: . . . en
+'TwoLetterISORegionName: . . . . US
+'

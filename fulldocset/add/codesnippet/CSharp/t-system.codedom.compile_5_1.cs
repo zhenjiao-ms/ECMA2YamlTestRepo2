@@ -1,80 +1,40 @@
-using System;
-using System.CodeDom;
-using System.CodeDom.Compiler;
-using Microsoft.CSharp;
+            // Creates an empty CompilerErrorCollection.
+            CompilerErrorCollection collection = new CompilerErrorCollection();            			
 
-namespace CompilerError_Example
-{
-    public class Class1
-    {		
-        [STAThread]
-        static void Main(string[] args)			
-        {
-            // Output some program information using Console.WriteLine.
-            Console.WriteLine("This program compiles a CodeDOM program that incorrectly declares multiple data");
-            Console.WriteLine("types to demonstrate handling compiler errors programmatically.");
-            Console.WriteLine("");
-                        
-            // Compile the CodeCompileUnit retrieved from the GetCompileUnit() method.
-            CSharpCodeProvider provider = new Microsoft.CSharp.CSharpCodeProvider();
-                                               
-            // Initialize a CompilerParameters with the options for compilation.
-            string[] assemblies = new String[] {"System.dll"};
-            CompilerParameters options = new CompilerParameters( assemblies, "output.exe");
+            // Adds a CompilerError to the collection.
+            collection.Add( new CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text") );
 
-            // Compile the CodeDOM graph and store the results in a CompilerResults.
-            CompilerResults results = provider.CompileAssemblyFromDom(options, GetCompileUnit());
-                                        
-            // Compilation produces errors. Print out each error.
-            Console.WriteLine("Listing errors from compilation: ");
-            Console.WriteLine("");
-                for( int i=0; i<results.Errors.Count; i++)
-                Console.WriteLine(results.Errors[i].ToString());			
-        }
+            // Adds an array of CompilerError objects to the collection.
+            CompilerError[] errors = { new CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text"), new CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text") };
+            collection.AddRange( errors );
 
-        public static CodeCompileUnit GetCompileUnit()
-        {
-            // Create a compile unit to contain a CodeDOM graph.
-            CodeCompileUnit cu = new CodeCompileUnit();
+            // Adds a collection of CompilerError objects to the collection.
+            CompilerErrorCollection errorsCollection = new CompilerErrorCollection();
+            errorsCollection.Add( new CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text") );
+            errorsCollection.Add( new CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text") );
+            collection.AddRange( errorsCollection );
 
-            // Create a namespace named TestSpace.
-            CodeNamespace cn = new CodeNamespace("TestSpace");		
-        
-            // Declare a new type named TestClass.	
-            CodeTypeDeclaration cd = new CodeTypeDeclaration("TestClass");
+            // Tests for the presence of a CompilerError in the 
+            // collection, and retrieves its index if it is found.
+            CompilerError testError = new CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text");
+            int itemIndex = -1;
+            if( collection.Contains( testError ) )
+                itemIndex = collection.IndexOf( testError );
 
-            // Declare a new member string field named TestField.
-            CodeMemberField cmf = new CodeMemberField("System.String", "TestField");
+            // Copies the contents of the collection, beginning at index 0, 
+            // to the specified CompilerError array.
+            // 'errors' is a CompilerError array.
+            collection.CopyTo( errors, 0 );
 
-            // Add the field to the type.
-            cd.Members.Add(cmf);
+            // Retrieves the count of the items in the collection.
+            int collectionCount = collection.Count;
 
-            // Declare a new member method named TestMethod.
-            CodeMemberMethod cm = new CodeMemberMethod();
-            cm.Name = "TestMethod";
+            // Inserts a CompilerError at index 0 of the collection.
+            collection.Insert( 0, new CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text") );
 
-            // Declare a string variable named TestVariable.
-            CodeVariableDeclarationStatement cvd = new CodeVariableDeclarationStatement("System.String1", "TestVariable");
-            cm.Statements.Add(cvd);
-
-            // Cast the TestField reference expression to string and assign it to the TestVariable.
-            CodeAssignStatement ca = new CodeAssignStatement(new CodeVariableReferenceExpression("TestVariable"), 
-                new CodeCastExpression("System.String2", new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), "TestField")));
-
-            // This code can be used to generate the following code in C#:
-            //            TestVariable = ((string)(this.TestField));
-
-            cm.Statements.Add(ca);
-             
-            // Add the TestMethod member to the TestClass type.
-            cd.Members.Add(cm);
-        
-            // Add the TestClass type to the namespace.
-            cn.Types.Add(cd);
+            // Removes the specified CompilerError from the collection.
+            CompilerError error = new CompilerError("Testfile.cs", 5, 10, "CS0001", "Example error text");
+            collection.Remove( error );
             
-            // Add the TestSpace namespace to the compile unit.
-            cu.Namespaces.Add(cn);
-            return cu;
-        }
-    }
-}
+            // Removes the CompilerError at index 0.
+            collection.RemoveAt(0);

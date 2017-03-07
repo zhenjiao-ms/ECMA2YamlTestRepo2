@@ -1,51 +1,64 @@
-    Private Sub AddCustomDataTableStyle()
-        ' Create a new DataGridTableStyle and set
-        ' its MappingName to the TableName of a DataTable. 
-        Dim ts1 As New DataGridTableStyle()
-        ts1.MappingName = "Customers"
-        
-        ' Add a GridColumnStyle and set its MappingName
-        ' to the name of a DataColumn in the DataTable.
-        ' Set the HeaderText and Width properties. 
-        
-        Dim boolCol As New DataGridBoolColumn()
-        boolCol.MappingName = "Current"
-        boolCol.HeaderText = "IsCurrent Customer"
-        boolCol.Width = 150
-        ts1.GridColumnStyles.Add(boolCol)
-        
-        ' Add a second column style.
-        Dim TextCol As New DataGridTextBoxColumn()
-        TextCol.MappingName = "custName"
-        TextCol.HeaderText = "Customer Name"
-        TextCol.Width = 250
-        ts1.GridColumnStyles.Add(TextCol)
+    ' Paints the content that spans multiple columns and the focus rectangle.
+    Sub dataGridView1_RowPostPaint(ByVal sender As Object, _
+        ByVal e As DataGridViewRowPostPaintEventArgs) _
+        Handles dataGridView1.RowPostPaint
 
-        ' Create the second table style with columns.
-        Dim ts2 As New DataGridTableStyle()
-        ts2.MappingName = "Orders"
+        ' Calculate the bounds of the row.
+        Dim rowBounds As New Rectangle(Me.dataGridView1.RowHeadersWidth, _
+            e.RowBounds.Top, Me.dataGridView1.Columns.GetColumnsWidth( _
+            DataGridViewElementStates.Visible) - _
+            Me.dataGridView1.HorizontalScrollingOffset + 1, e.RowBounds.Height)
 
-        ' Change the colors.
-        ts2.ForeColor = Color.Yellow
-        ts2.AlternatingBackColor = Color.Blue
-        ts2.BackColor = Color.Blue
-        
-        ' Create new DataGridColumnStyle objects.
-        Dim cOrderDate As New DataGridTextBoxColumn()
-        cOrderDate.MappingName = "OrderDate"
-        cOrderDate.HeaderText = "Order Date"
-        cOrderDate.Width = 100
-        ts2.GridColumnStyles.Add(cOrderDate)
-        
-        Dim pcol As PropertyDescriptorCollection = Me.BindingContext(myDataSet, "Customers.custToOrders").GetItemProperties()
-        
-        Dim csOrderAmount As New DataGridTextBoxColumn(pcol("OrderAmount"), "c", True)
-        csOrderAmount.MappingName = "OrderAmount"
-        csOrderAmount.HeaderText = "Total"
-        csOrderAmount.Width = 100
-        ts2.GridColumnStyles.Add(csOrderAmount)
+        Dim forebrush As SolidBrush = Nothing
+        Try
+            ' Determine the foreground color.
+            If (e.State And DataGridViewElementStates.Selected) = _
+                DataGridViewElementStates.Selected Then
 
-        ' Add the DataGridTableStyle objects to the collection.
-        myDataGrid.TableStyles.Add(ts1)
-        myDataGrid.TableStyles.Add(ts2)
-    End Sub 'AddCustomDataTableStyle
+                forebrush = New SolidBrush(e.InheritedRowStyle.SelectionForeColor)
+            Else
+                forebrush = New SolidBrush(e.InheritedRowStyle.ForeColor)
+            End If
+
+            ' Get the content that spans multiple columns.
+            Dim recipe As Object = _
+                Me.dataGridView1.Rows.SharedRow(e.RowIndex).Cells(2).Value
+
+            If (recipe IsNot Nothing) Then
+                Dim text As String = recipe.ToString()
+
+                ' Calculate the bounds for the content that spans multiple 
+                ' columns, adjusting for the horizontal scrolling position 
+                ' and the current row height, and displaying only whole
+                ' lines of text.
+                Dim textArea As Rectangle = rowBounds
+                textArea.X -= Me.dataGridView1.HorizontalScrollingOffset
+                textArea.Width += Me.dataGridView1.HorizontalScrollingOffset
+                textArea.Y += rowBounds.Height - e.InheritedRowStyle.Padding.Bottom
+                textArea.Height -= rowBounds.Height - e.InheritedRowStyle.Padding.Bottom
+                textArea.Height = (textArea.Height \ e.InheritedRowStyle.Font.Height) * _
+                    e.InheritedRowStyle.Font.Height
+
+                ' Calculate the portion of the text area that needs painting.
+                Dim clip As RectangleF = textArea
+                clip.Width -= Me.dataGridView1.RowHeadersWidth + 1 - clip.X
+                clip.X = Me.dataGridView1.RowHeadersWidth + 1
+                Dim oldClip As RectangleF = e.Graphics.ClipBounds
+                e.Graphics.SetClip(clip)
+
+                ' Draw the content that spans multiple columns.
+                e.Graphics.DrawString(text, e.InheritedRowStyle.Font, forebrush, _
+                    textArea)
+
+                e.Graphics.SetClip(oldClip)
+            End If
+        Finally
+            forebrush.Dispose()
+        End Try
+
+        If Me.dataGridView1.CurrentCellAddress.Y = e.RowIndex Then
+            ' Paint the focus rectangle.
+            e.DrawFocus(rowBounds, True)
+        End If
+
+    End Sub 'dataGridView1_RowPostPaint

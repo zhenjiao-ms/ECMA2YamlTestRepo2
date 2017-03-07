@@ -1,15 +1,4 @@
-using System;
-
-public class EnumSample {
-    enum Colors {Red = 1, Blue = 2};
-    
-    public static void Main() {
-        Enum myColors = Colors.Red;
-        Console.WriteLine("The value of this instance is '{0}'",
-           myColors.ToString());
-    }
+enum Shade
+{
+    White = 0, Gray = 1, Grey = 1, Black = 2 
 }
-/*
-Output.
-The value of this instance is 'Red'.
-*/

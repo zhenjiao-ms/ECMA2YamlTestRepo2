@@ -1,11 +1,35 @@
-            // 
-            toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.Raised;
-            toolStripStatusLabel1.IsLink = true;
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new System.Drawing.Size(246, 20);
-            toolStripStatusLabel1.Spring = true;
-            toolStripStatusLabel1.Text = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Alignment = ToolStripItemAlignment.Left;
+		internal ToolStripButton changeDirectionButton;
+
+		private void InitializeMovingToolStrip()
+		{
+            movingToolStrip = new ToolStrip();
+
+			changeDirectionButton = new ToolStripButton();
+
+			movingToolStrip.AutoSize = true;
+			movingToolStrip.RenderMode = ToolStripRenderMode.System;
+
+			changeDirectionButton.TextDirection = ToolStripTextDirection.Vertical270;
+			changeDirectionButton.Overflow = ToolStripItemOverflow.Never;
+			changeDirectionButton.Text = "Change Alignment";
+				movingToolStrip.Items.Add(changeDirectionButton);
+		}
+
+
+		private void changeDirectionButton_Click(object sender, EventArgs e)
+		{
+
+			ToolStripItem item = (ToolStripItem)sender;
+
+			if (item.TextDirection == ToolStripTextDirection.Vertical270 || item.TextDirection == ToolStripTextDirection.Vertical90)
+			{
+				item.TextDirection = ToolStripTextDirection.Horizontal;
+				movingToolStrip.Dock = System.Windows.Forms.DockStyle.Top;
+			}
+			else
+			{
+				item.TextDirection = ToolStripTextDirection.Vertical270;
+				movingToolStrip.Dock = System.Windows.Forms.DockStyle.Left;
+			}
+
+		}

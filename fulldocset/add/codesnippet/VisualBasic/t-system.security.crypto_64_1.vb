@@ -1,219 +1,153 @@
+' This example signs an XML file using an
+' envelope signature. It then verifies the 
+' signed XML.
+'
 Imports System
 Imports System.Security.Cryptography
+Imports System.Security.Cryptography.Xml
+Imports System.Text
+Imports System.Xml
 
-Public Class Form1
-    Inherits System.Windows.Forms.Form
 
-    ' Event handler for Run button.
-    Private Sub Button1_Click( _
-        ByVal sender As System.Object, _
-        ByVal e As System.EventArgs) Handles Button1.Click
 
-        tbxOutput.Cursor = Cursors.WaitCursor
-        tbxOutput.Text = ""
+Module SignVerifyEnvelope
 
-        ' Initializes a new instance of the KeySizes class with the
-        ' specified key values.
-        Dim MinSize As Integer = 64
-        Dim MaxSize As Integer = 1024
-        Dim SkipSize As Integer = 64
-        Dim keySizes As New KeySizes(MinSize, MaxSize, SkipSize)
 
-        ' Show the values of the keys.
-        ShowKeys(New KeySizes(0) {keySizes}, "Custom Keys")
+    Sub Main(ByVal args() As String)
+        ' Generate a signing key.
+        Dim Key As New RSACryptoServiceProvider()
 
-        ' Create a new symmetric algorithm and display its key values.
-        Dim rijn As SymmetricAlgorithm = SymmetricAlgorithm.Create()
-        WriteLine("rijn.blocksize:" + rijn.BlockSize.ToString())
-        ShowKeys(rijn.LegalKeySizes, rijn.ToString())
+        Try
 
-        ' Create a new RSA algorithm and display its key values.
-        Dim rsaCSP As New RSACryptoServiceProvider(384)
-        WriteLine("RSACryptoServiceProvider KeySize = " + _
-            rsaCSP.KeySize.ToString())
-        ShowKeys(rsaCSP.LegalKeySizes, rsaCSP.ToString())
+            ' Sign an XML file and save the signature to a 
+            ' new file.
+            SignXmlFile("Test.xml", "SignedExample.xml", Key)
+            Console.WriteLine("XML file signed.")
 
-        ' Reset the cursor and conclude application.
-        WriteLine("This sample completed successfully;" + _
-            " press Exit to continue.")
-        tbxOutput.Cursor = Cursors.Default
-    End Sub
+            ' Verify the signature of the signed XML.
+            Console.WriteLine("Verifying signature...")
 
-    ' Display specified KeySize properties to output textbox.
-    Private Sub ShowKeys( _
-        ByVal KeySizes() As KeySizes, _
-        ByVal objectName As String)
+            Dim result As Boolean = VerifyXmlFile("SignedExample.xml")
 
-        ' Retrieve the first KeySizes in the array.
-        Dim firstKeySize As KeySizes = KeySizes(0)
-
-        ' Retrieve the minimum key size in bits.
-        Dim minKeySize As Integer = firstKeySize.MinSize
-
-        ' Retrieve the maximum key size in bits.
-        Dim maxKeySize As Integer = firstKeySize.MaxSize
-
-        ' Retrieve the interval between valid key size in bits.
-        Dim skipKeySize As Integer = firstKeySize.SkipSize
-
-        WriteLine("KeySizes retrieved from the " + objectName + " object.")
-        WriteLine("Minimum key size bits: " + minKeySize.ToString())
-        WriteLine("Maximum key size bits: " + maxKeySize.ToString())
-        WriteLine("Interval between key size bits: " + skipKeySize.ToString())
-        WriteLine("")
-    End Sub
-    ' Display the message to the textbox with a carriage return and line feed.
-    Private Sub WriteLine(ByVal message As String)
-        tbxOutput.AppendText(message + vbCrLf)
-    End Sub
-    ' Event handler for Exit button.
-    Private Sub Button2_Click( _
-        ByVal sender As System.Object, _
-        ByVal e As System.EventArgs) Handles Button2.Click
-
-        Application.Exit()
-    End Sub
-#Region " Windows Form Designer generated code "
-
-    Public Sub New()
-        MyBase.New()
-
-        'This call is required by the Windows Form Designer.
-        InitializeComponent()
-
-        'Add any initialization after the InitializeComponent() call
-
-    End Sub
-
-    'Form overrides dispose to clean up the component list.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
-        If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
+            ' Display the results of the signature verification to 
+            ' the console.
+            If result Then
+                Console.WriteLine("The XML signature is valid.")
+            Else
+                Console.WriteLine("The XML signature is not valid.")
             End If
+        Catch e As CryptographicException
+            Console.WriteLine(e.Message)
+        Finally
+            ' Clear resources associated with the 
+            ' RSACryptoServiceProvider.
+            Key.Clear()
+        End Try
+
+    End Sub
+
+
+    ' Sign an XML file and save the signature in a new file.
+    Sub SignXmlFile(ByVal FileName As String, ByVal SignedFileName As String, ByVal Key As RSA)
+        ' Check the arguments.  
+        If FileName Is Nothing Then
+            Throw New ArgumentNullException("FileName")
         End If
-        MyBase.Dispose(disposing)
-    End Sub
+        If SignedFileName Is Nothing Then
+            Throw New ArgumentNullException("SignedFileName")
+        End If
+        If Key Is Nothing Then
+            Throw New ArgumentNullException("Key")
+        End If
 
-    'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+        ' Create a new XML document.
+        Dim doc As New XmlDocument()
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents tbxOutput As System.Windows.Forms.RichTextBox
-    <System.Diagnostics.DebuggerStepThrough()> _
-    Private Sub InitializeComponent()
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.tbxOutput = New System.Windows.Forms.RichTextBox
-        Me.Panel2.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.Button1)
-        Me.Panel2.Controls.Add(Me.Button2)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.DockPadding.All = 20
-        Me.Panel2.Location = New System.Drawing.Point(0, 320)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(616, 64)
-        Me.Panel2.TabIndex = 1
-        '
-        'Button1
-        '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", _
-            9.0!, _
-            System.Drawing.FontStyle.Regular, _
-            System.Drawing.GraphicsUnit.Point, _
-            CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(446, 20)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 24)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "&Run"
-        '
-        'Button2
-        '
-        Me.Button2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", _
-            9.0!, _
-            System.Drawing.FontStyle.Regular, _
-            System.Drawing.GraphicsUnit.Point, _
-            CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(521, 20)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 24)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "E&xit"
-        '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.tbxOutput)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.DockPadding.All = 20
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(616, 320)
-        Me.Panel1.TabIndex = 2
-        '
-        'tbxOutput
-        '
-        Me.tbxOutput.AccessibleDescription = _
-            "Displays output from application."
-        Me.tbxOutput.AccessibleName = "Output textbox."
-        Me.tbxOutput.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tbxOutput.Location = New System.Drawing.Point(20, 20)
-        Me.tbxOutput.Name = "tbxOutput"
-        Me.tbxOutput.Size = New System.Drawing.Size(576, 280)
-        Me.tbxOutput.TabIndex = 1
-        Me.tbxOutput.Text = "Click the Run button to run the application."
-        '
-        'Form1
-        '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(6, 15)
-        Me.ClientSize = New System.Drawing.Size(616, 384)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Panel2)
-        Me.Name = "Form1"
-        Me.Text = "KeySizes"
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
-        Me.ResumeLayout(False)
+        ' Format the document to ignore white spaces.
+        doc.PreserveWhitespace = False
+
+        ' Load the passed XML file using it's name.
+        doc.Load(New XmlTextReader(FileName))
+
+        ' Create a SignedXml object.
+        Dim signedXml As New SignedXml(doc)
+
+        ' Add the key to the SignedXml document. 
+        signedXml.SigningKey = Key
+
+        ' Get the signature object from the SignedXml object.
+        Dim XMLSignature As Signature = signedXml.Signature
+
+        ' Create a reference to be signed.  Pass "" 
+        ' to specify that all of the current XML
+        ' document should be signed.
+        Dim reference As New Reference("")
+
+        ' Add an enveloped transformation to the reference.
+        Dim env As New XmlDsigEnvelopedSignatureTransform()
+        reference.AddTransform(env)
+
+        ' Add the Reference object to the Signature object.
+        XMLSignature.SignedInfo.AddReference(reference)
+
+        ' Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+        Dim keyInfo As New KeyInfo()
+        keyInfo.AddClause(New RSAKeyValue(CType(Key, RSA)))
+
+        ' Add the KeyInfo object to the Reference object.
+        XMLSignature.KeyInfo = keyInfo
+
+        ' Compute the signature.
+        signedXml.ComputeSignature()
+
+        ' Get the XML representation of the signature and save
+        ' it to an XmlElement object.
+        Dim xmlDigitalSignature As XmlElement = signedXml.GetXml()
+
+        ' Append the element to the XML document.
+        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, True))
+
+
+        If TypeOf doc.FirstChild Is XmlDeclaration Then
+            doc.RemoveChild(doc.FirstChild)
+        End If
+
+        ' Save the signed XML document to a file specified
+        ' using the passed string.
+        Dim xmltw As New XmlTextWriter(SignedFileName, New UTF8Encoding(False))
+        doc.WriteTo(xmltw)
+        xmltw.Close()
 
     End Sub
 
-#End Region
-End Class
-'
-' This sample produces the following output:
-'
-' KeySizes retrieved from the Custom Keys object.
-' Minimum key size bits: 64
-' Maximum key size bits: 1024
-' Interval between key size bits: 64
-' 
-' rijn.blocksize:128
-' KeySizes retrieved from the System.Security.Cryptography.RijndaelManaged
-' object.
-' Minimum key size bits: 128
-' Maximum key size bits: 256
-' Interval between key size bits: 64
-' 
-' RSACryptoServiceProvider KeySize = 384
-' KeySizes retrieved from the
-' System.Security.Cryptography.RSACryptoServiceProvider object.
-' Minimum key size bits: 384
-' Maximum key size bits: 16384
-' Interval between key size bits: 8
-' 
-' This sample completed successfully; press Exit to continue.
+    ' Verify the signature of an XML file and return the result.
+    Function VerifyXmlFile(ByVal Name As String) As [Boolean]
+        ' Check the arguments.  
+        If Name Is Nothing Then
+            Throw New ArgumentNullException("Name")
+        End If
+        ' Create a new XML document.
+        Dim xmlDocument As New XmlDocument()
+
+        ' Format using white spaces.
+        xmlDocument.PreserveWhitespace = True
+
+        ' Load the passed XML file into the document. 
+        xmlDocument.Load(Name)
+
+        ' Create a new SignedXml object and pass it
+        ' the XML document class.
+        Dim signedXml As New SignedXml(xmlDocument)
+
+        ' Find the "Signature" node and create a new
+        ' XmlNodeList object.
+        Dim nodeList As XmlNodeList = xmlDocument.GetElementsByTagName("Signature")
+
+        ' Load the signature node.
+        signedXml.LoadXml(CType(nodeList(0), XmlElement))
+
+        ' Check the signature and return the result.
+        Return signedXml.CheckSignature()
+
+    End Function
+End Module

@@ -1,32 +1,27 @@
-namespace ControlTest 
+using System;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+
+namespace Samples.AspNet.CS.Controls
 {
-   using System;
-   using System.Web.UI;
-   using System.Web.UI.WebControls;
-
-   // Renders the following HTML: 
-   // <span onclick="alert('Hello');" style="color:Red;">Custom Contents</span>
-
-   public class MyWebControl: WebControl {
-
-      public MyWebControl() : base(HtmlTextWriterTag.Span) 
-      { }
-
-      [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name="FullTrust")] 
-      protected override void AddAttributesToRender(HtmlTextWriter writer) 
+  public class MyManagerAuthorize : WebPartManager
+  {
+    public override bool IsAuthorized(Type type, string path, string authorizationFilter, bool isShared)
+    {
+      if (!String.IsNullOrEmpty(authorizationFilter))
       {
-
-         writer.AddAttribute(HtmlTextWriterAttribute.Onclick, "alert('Hello');");
-         writer.AddStyleAttribute(HtmlTextWriterStyle.Color, "Red");
-         base.AddAttributesToRender(writer);
-
+        if (authorizationFilter == "admin")
+          return true;
+        else
+          return false;
       }
+      else
+        return true;
 
-      [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name="FullTrust")] 
-      protected override void RenderContents(HtmlTextWriter writer) 
-      {
-         writer.Write("Custom Contents");
-         base.RenderContents(writer);
-      }
-   }
+    }
+  }
 }

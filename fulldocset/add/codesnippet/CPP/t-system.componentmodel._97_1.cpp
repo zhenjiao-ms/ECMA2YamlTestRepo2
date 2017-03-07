@@ -1,10 +1,12 @@
-      // This example method creates a DesignerEventArgs using the specified designer host.
-      // Typically, this type of event args is created by the IDesignerEventService.
-      DesignerEventArgs^ CreateComponentEventArgs( IDesignerHost^ host )
-      {
-         DesignerEventArgs^ args = gcnew DesignerEventArgs( host );
+[LicenseProvider(LicFileLicenseProvider::typeid)]
+ref class MyControl: public Control
+{
+protected:
 
-         // The designer host of the created or disposed document:  args.Component
-
-         return args;
-      }
+   // Insert code here.
+   ~MyControl()
+   {
+      /* All components must dispose of the licenses they grant. 
+               * Insert code here to dispose of the license. */
+   }
+};

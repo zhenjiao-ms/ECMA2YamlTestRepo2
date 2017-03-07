@@ -1,36 +1,112 @@
 using System;
 using System.IO;
 using System.Xml.Serialization;
-using System.Xml;
-using System.Xml.Schema;
 
-public class Group{
-   public string GroupName;
+public class Orchestra
+{
+   public Instrument[] Instruments;
+}   
+
+public class Instrument
+{
+   public string Name;
 }
 
-public class Test{
-   static void Main(){
-      Test t = new Test();
-      // Deserialize the file containing unknown elements.
-      t.DeserializeObject("UnknownElements.xml");
-   }
-   private void Serializer_UnknownElement(object sender, XmlElementEventArgs e){
-      Console.WriteLine("Unknown Element");
-      Console.WriteLine("\t" + e.Element.Name + " " + e.Element.InnerXml);
-      Console.WriteLine("\t LineNumber: " + e.LineNumber);
-      Console.WriteLine("\t LinePosition: " + e.LinePosition);
+public class Brass:Instrument
+{
+   public bool IsValved;
+}
+
+public class Run
+{
+    public static void Main()
+    {
+       Run test = new Run();
+       test.SerializeObject("Override.xml");
+       test.DeserializeObject("Override.xml");
+    }
+
+    public void SerializeObject(string filename)
+    {
+      /* Each overridden field, property, or type requires 
+      an XmlAttributes object. */
+      XmlAttributes attrs = new XmlAttributes();
+
+      /* Create an XmlElementAttribute to override the 
+      field that returns Instrument objects. The overridden field
+      returns Brass objects instead. */
+      XmlElementAttribute attr = new XmlElementAttribute();
+      attr.ElementName = "Brass";
+      attr.Type = typeof(Brass);
+
+      // Add the element to the collection of elements.
+      attrs.XmlElements.Add(attr);
+
+      // Create the XmlAttributeOverrides object.
+      XmlAttributeOverrides attrOverrides = new XmlAttributeOverrides();
+
+      /* Add the type of the class that contains the overridden 
+      member and the XmlAttributes to override it with to the 
+      XmlAttributeOverrides object. */
+      attrOverrides.Add(typeof(Orchestra), "Instruments", attrs);
+
+      // Create the XmlSerializer using the XmlAttributeOverrides.
+      XmlSerializer s = 
+      new XmlSerializer(typeof(Orchestra), attrOverrides);
+
+      // Writing the file requires a TextWriter.
+      TextWriter writer = new StreamWriter(filename);
+
+      // Create the object that will be serialized.
+      Orchestra band = new Orchestra();
       
-      Group x  = (Group) e.ObjectBeingDeserialized;
-      Console.WriteLine (x.GroupName);
-      Console.WriteLine (sender.ToString());
+      // Create an object of the derived type.
+      Brass i = new Brass();
+      i.Name = "Trumpet";
+      i.IsValved = true;
+      Instrument[] myInstruments = {i};
+      band.Instruments = myInstruments;
+
+      // Serialize the object.
+      s.Serialize(writer,band);
+      writer.Close();
    }
-   private void DeserializeObject(string filename){
-      XmlSerializer ser = new XmlSerializer(typeof(Group));
-      // Add a delegate to handle unknown element events.
-      ser.UnknownElement+=new XmlElementEventHandler(Serializer_UnknownElement);
-      // A FileStream is needed to read the XML document.
-     FileStream fs = new FileStream(filename, FileMode.Open);
-     Group g = (Group) ser.Deserialize(fs);
-     fs.Close();
-   	}
+
+   public void DeserializeObject(string filename)
+   {
+      XmlAttributeOverrides attrOverrides = 
+         new XmlAttributeOverrides();
+      XmlAttributes attrs = new XmlAttributes();
+
+      // Create an XmlElementAttribute to override the Instrument.
+      XmlElementAttribute attr = new XmlElementAttribute();
+      attr.ElementName = "Brass";
+      attr.Type = typeof(Brass);
+
+      // Add the XmlElementAttribute to the collection of objects.
+      attrs.XmlElements.Add(attr);
+
+      attrOverrides.Add(typeof(Orchestra), "Instruments", attrs);
+
+      // Create the XmlSerializer using the XmlAttributeOverrides.
+      XmlSerializer s = 
+      new XmlSerializer(typeof(Orchestra), attrOverrides);
+
+      FileStream fs = new FileStream(filename, FileMode.Open);
+      Orchestra band = (Orchestra) s.Deserialize(fs);
+      Console.WriteLine("Brass:");
+
+      /* The difference between deserializing the overridden 
+      XML document and serializing it is this: To read the derived 
+      object values, you must declare an object of the derived type 
+      (Brass), and cast the Instrument instance to it. */
+      Brass b;
+      foreach(Instrument i in band.Instruments) 
+      {
+         b = (Brass)i;
+         Console.WriteLine(
+         b.Name + "\n" + 
+         b.IsValved);
+      }
+   }
 }

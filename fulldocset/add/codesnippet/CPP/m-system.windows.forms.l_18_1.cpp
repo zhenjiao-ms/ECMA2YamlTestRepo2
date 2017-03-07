@@ -1,39 +1,12 @@
-public:
-   Form1()
+   void AddToMyListBox()
    {
-      InitializeComponent();
-      
-      // Sets the control to allow drops, and then adds the necessary event handlers.
-      this->richTextBox1->AllowDrop = true;
-   }
+      // Stop the ListBox from drawing while items are added.
+      listBox1->BeginUpdate();
 
-private:
-   void listBox1_MouseDown( Object^ sender, System::Windows::Forms::MouseEventArgs^ e )
-   {
-      // Determines which item was selected.
-      ListBox^ lb = (dynamic_cast<ListBox^>(sender));
-      Point pt = Point(e->X,e->Y);
-
-      //Retrieve the item at the specified location within the ListBox.
-      int index = lb->IndexFromPoint( pt );
-
-      // Starts a drag-and-drop operation.
-      if ( index >= 0 )
+      // Loop through and add five thousand new items.
+      for ( int x = 1; x < 5000; x++ )
       {
-         // Retrieve the selected item text to drag into the RichTextBox.
-         lb->DoDragDrop( lb->Items[ index ]->ToString(), DragDropEffects::Copy );
+         listBox1->Items->Add( String::Format( "Item {0}", x ) );
       }
-   }
-
-   void richTextBox1_DragEnter( Object^ /*sender*/, DragEventArgs^ e )
-   {
-      // If the data is text, copy the data to the RichTextBox control.
-      if ( e->Data->GetDataPresent( "Text" ) )
-            e->Effect = DragDropEffects::Copy;
-   }
-
-   void richTextBox1_DragDrop( Object^ /*sender*/, DragEventArgs^ e )
-   {
-      // Paste the text into the RichTextBox where at selection location.
-      richTextBox1->SelectedText = e->Data->GetData( "System.String", true )->ToString();
+      listBox1->EndUpdate();
    }

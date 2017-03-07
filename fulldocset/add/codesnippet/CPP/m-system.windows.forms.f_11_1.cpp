@@ -1,18 +1,18 @@
-   void ShowMyDialogBox()
+private:
+   void HorizontallyTileMyWindows( Object^ sender, System::EventArgs^ e )
    {
-      Form2^ testDialog = gcnew Form2;
-      
-      // Show testDialog as a modal dialog and determine if DialogResult = OK.
-      if ( testDialog->ShowDialog( this ) == ::DialogResult::OK )
-      {
-         
-         // Read the contents of testDialog's TextBox.
-         this->txtResult->Text = testDialog->TextBox1->Text;
-      }
-      else
-      {
-         this->txtResult->Text = "Cancelled";
-      }
+      // Tile all child forms horizontally.
+      this->LayoutMdi( MdiLayout::TileHorizontal );
+   }
 
-      delete testDialog;
+   void VerticallyTileMyWindows( Object^ sender, System::EventArgs^ e )
+   {
+      // Tile all child forms vertically.
+      this->LayoutMdi( MdiLayout::TileVertical );
+   }
+
+   void CascadeMyWindows( Object^ sender, System::EventArgs^ e )
+   {
+      // Cascade all MDI child windows.
+      this->LayoutMdi( MdiLayout::Cascade );
    }

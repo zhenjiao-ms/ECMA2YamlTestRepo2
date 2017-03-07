@@ -1,128 +1,78 @@
+
 <%@ Page language="C#" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
-  
-  void AuthorsGridView_RowUpdating (Object sender, GridViewUpdateEventArgs e)
+
+  void CustomerDetailsView_ItemInserting(Object sender, 
+    DetailsViewInsertEventArgs e)
   {
-    
-    // In this example, the GridView control will not automatically extract 
-    // updated values from TemplateField column fields because they are not
-    // using a two-way binding expression. So, the updated
-    // values must be added manually to the NewValues dictionary.
-    
-    // Get the GridViewRow object that represents the row being edited
-    // from the Rows collection of the GridView control.
-    int index = AuthorsGridView.EditIndex;
-    GridViewRow row = AuthorsGridView.Rows[index];
-    
-    // Get the controls that contain the updated values. In this
-    // example, the updated values are contained in the TextBox 
-    // controls declared in the EditItemTemplates of the TemplateField 
-    // column fields in the GridView control.
-    TextBox lastName = (TextBox)row.FindControl("LastNameTextBox");
-    TextBox firstName = (TextBox)row.FindControl("FirstNameTextBox");
-    
-    // Add the updated values to the NewValues dictionary. Use the
-    // parameter names declared in the parameterized update query 
-    // string for the key names.
-    e.NewValues["au_lname"] = lastName.Text;
-    e.NewValues["au_fname"] = firstName.Text;    
-          
+    // Use the Values property to retrieve the key field value.
+    String keyValue = e.Values["CustomerID"].ToString();
+
+    // Insert the record only if the key field is four characters
+    // long; otherwise, cancel the insert operation.
+    if (keyValue.Length == 4)
+    {
+      // Change the key field value to upper case before inserting 
+      // the record in the data source.
+      e.Values["CustomerID"] = keyValue.ToUpper();
+
+      MessageLabel.Text = "";
+    }
+    else
+    {
+      MessageLabel.Text = "The key field must have four digits.";
+      e.Cancel = true;
+    }
+
   }
 
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
   <head runat="server">
-    <title>GridViewRow Example</title>
+    <title>DetailsViewInsertEventHandler Example</title>
 </head>
 <body>
     <form id="form1" runat="server">
         
-      <h3>GridViewRow Example</h3>
-
-      <!-- The GridView control automatically sets the columns     -->
-      <!-- specified in the datakeynames attribute as read-only    -->
-      <!-- No input controls are rendered for these columns in     -->
-      <!-- edit mode.                                              -->
-      <asp:gridview id="AuthorsGridView" 
-        datasourceid="AuthorsSqlDataSource" 
-        autogeneratecolumns="false"
-        autogenerateeditbutton="true"
-        datakeynames="au_id"
-        cellpadding="10"
-        onrowupdating="AuthorsGridView_RowUpdating"      
-        runat="server">
+      <h3>DetailsViewInsertEventHandler Example</h3>
                 
-        <columns>
+        <asp:detailsview id="CustomerDetailsView"
+          datasourceid="DetailsViewSource"
+          datakeynames="CustomerID"
+          autogenerateinsertbutton="true"  
+          autogeneraterows="true"
+          allowpaging="true"
+          oniteminserting="CustomerDetailsView_ItemInserting" 
+          runat="server">
+               
+          <fieldheaderstyle backcolor="Navy"
+            forecolor="White"/>
+                    
+        </asp:detailsview>
         
-          <asp:boundfield datafield="au_id"
-            headertext="Author ID"
-            readonly="true"/>
+        <asp:label id="MessageLabel"
+          forecolor="Red"
+          runat="server"/>
             
-          <asp:templatefield headertext="Last Name"
-            itemstyle-verticalalign="Top">
+        <!-- This example uses Microsoft SQL Server and connects  -->
+        <!-- to the Northwind sample database. Use an ASP.NET     -->
+        <!-- expression to retrieve the connection string value   -->
+        <!-- from the web.config file.                            -->
+        <asp:sqldatasource id="DetailsViewSource"
+          selectcommand="Select [CustomerID], [CompanyName], [Address], 
+            [City], [PostalCode], [Country] From [Customers]"
+          insertcommand="INSERT INTO [Customers]([CustomerID], 
+            [CompanyName], [Address], [City], [PostalCode], 
+            [Country]) VALUES (@CustomerID, @CompanyName, @Address, 
+            @City, @PostalCode, @Country)"
+          connectionstring=
+          "<%$ ConnectionStrings:NorthWindConnectionString%>" 
+          runat="server"/>
             
-            <itemtemplate>
-              <%#Eval("au_lname")%>
-            </itemtemplate>
-            
-            <edititemtemplate>
-              <asp:textbox id="LastNameTextBox"
-                text='<%#Eval("au_lname")%>'
-                width="90"
-                runat="server"/>
-              <br/>
-              <asp:requiredfieldvalidator id="LastNameRequiredValidator"
-                controltovalidate="LastNameTextBox"
-                display="Dynamic"
-                text="Please enter a last name." 
-                runat="server" />                                      
-            </edititemtemplate>
-            
-          </asp:templatefield>
-          
-          <asp:templatefield headertext="First Name"
-            itemstyle-verticalalign="Top">
-            
-            <itemtemplate>
-              <%#Eval("au_fname")%>
-            </itemtemplate>
-            
-            <edititemtemplate>
-              <asp:textbox id="FirstNameTextBox"
-                text='<%#Eval("au_fname")%>'
-                width="90"
-                runat="server"/>
-              <br/>
-              <asp:requiredfieldvalidator id="FirstNameRequiredValidator"
-                controltovalidate="FirstNameTextBox"
-                display="Dynamic"
-                text="Please enter a first name."
-                runat="server" />                      
-            </edititemtemplate>
-            
-          </asp:templatefield>
-          
-          <asp:checkboxfield datafield="contract" 
-            headertext="Contract"
-            readonly="true"/>
-            
-        </columns>
-                
-      </asp:gridview>
-            
-      <!-- This example uses Microsoft SQL Server and connects -->
-      <!-- to the Pubs sample database.                        -->
-      <asp:sqldatasource id="AuthorsSqlDataSource"  
-        selectcommand="SELECT [au_id], [au_lname], [au_fname], [contract] FROM [authors]"             
-        updatecommand="UPDATE authors SET au_lname=@au_lname, au_fname=@au_fname WHERE (authors.au_id = @au_id)" 
-        connectionstring="server=localhost;database=pubs;integrated security=SSPI"
-        runat="server">
-      </asp:sqldatasource>
-            
-    </form>
+      </form>
   </body>
 </html>

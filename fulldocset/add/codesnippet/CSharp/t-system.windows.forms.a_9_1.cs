@@ -1,28 +1,36 @@
-// Add a button to a form and set some of its common properties.
-private void AddMyButton()
-{
-   // Create a button and add it to the form.
-   Button button1 = new Button();
+        public AxMaskEdBox()
+            :
+          base("c932ba85-4374-101b-a56c-00aa003668dc") // The ActiveX control's class identifier.
+        {
+            // Make the AboutBox method the about box delegate.
+            this.SetAboutBoxDelegate(new AboutBoxDelegate(AboutBox));
+        }
 
-   // Anchor the button to the bottom right corner of the form
-   button1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+        public virtual void AboutBox()
+        {
+            // If the instance of the ActiveX control is null when the AboutBox method 
+            // is called, raise an InvalidActiveXStateException exception.
+            if ((this.ocx == null))
+            {
+                throw new System.Windows.Forms.AxHost.InvalidActiveXStateException(
+                  "AboutBox", System.Windows.Forms.AxHost.ActiveXInvokeKind.MethodInvoke);
+            }
+            // Show the about box if the ActiveX control has one.
+            if (this.HasAboutBox)
+            {
+                this.ocx.AboutBox();
+            }
+        }
 
-   // Assign a background image.
-   button1.BackgroundImage = imageList1.Images[0];
-
-   // Specify the layout style of the background image. Tile is the default.
-   button1.BackgroundImageLayout = ImageLayout.Center;
-   
-   // Make the button the same size as the image.
-   button1.Size = button1.BackgroundImage.Size;
-
-   // Set the button's TabIndex and TabStop properties.
-   button1.TabIndex = 1;
-   button1.TabStop = true;
-
-   // Add a delegate to handle the Click event.
-   button1.Click += new System.EventHandler(this.button1_Click);
-
-   // Add the button to the form.
-   this.Controls.Add(button1);
-}
+        protected override void AttachInterfaces()
+        {
+            try
+            {
+                // Attach the IMSMask interface to the ActiveX control.
+                this.ocx = ((MSMask.IMSMask)(this.GetOcx()));
+            }
+            catch (System.Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+        }

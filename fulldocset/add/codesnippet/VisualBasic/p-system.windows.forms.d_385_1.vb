@@ -1,35 +1,24 @@
-#Region "data store maintance"
-    Const initialValue As Integer = -1
+        ' Draw a custom 3D border if the ToolTip is for button1.
+        If (e.AssociatedControl Is button1) Then
+            ' Draw the standard background.
+            e.DrawBackground()
 
-    Private Sub dataGridView1_CellValueNeeded(ByVal sender As Object, _
-        ByVal e As DataGridViewCellValueEventArgs) _
-        Handles dataGridView1.CellValueNeeded
+            ' Draw the custom border to appear 3-dimensional.
+            e.Graphics.DrawLines( _
+                SystemPens.ControlLightLight, New Point() { _
+                New Point(0, e.Bounds.Height - 1), _
+                New Point(0, 0), _
+                New Point(e.Bounds.Width - 1, 0)})
+            e.Graphics.DrawLines( _
+                SystemPens.ControlDarkDark, New Point() { _
+                New Point(0, e.Bounds.Height - 1), _
+                New Point(e.Bounds.Width - 1, e.Bounds.Height - 1), _
+                New Point(e.Bounds.Width - 1, 0)})
 
-        If store.ContainsKey(e.RowIndex) Then
-            ' Use the store if the e value has been modified 
-            ' and stored.
-            e.Value = store(e.RowIndex)
-        ElseIf newRowNeeded AndAlso e.RowIndex = numberOfRows Then
-            If dataGridView1.IsCurrentCellInEditMode Then
-                e.Value = initialValue
-            Else
-                ' Show a blank value if the cursor is just resting
-                ' on the last row.
-                e.Value = String.Empty
-            End If
-        Else
-            e.Value = e.RowIndex
-        End If
-    End Sub
+            ' Specify custom text formatting flags.
+            Dim sf As TextFormatFlags = TextFormatFlags.VerticalCenter Or _
+                                 TextFormatFlags.HorizontalCenter Or _
+                                 TextFormatFlags.NoFullWidthCharacterBreak
 
-    Private Sub dataGridView1_CellValuePushed(ByVal sender As Object, _
-        ByVal e As DataGridViewCellValueEventArgs) _
-        Handles dataGridView1.CellValuePushed
-
-        store.Add(e.RowIndex, CInt(e.Value))
-
-    End Sub
-#End Region
-
-    Dim store As System.Collections.Generic.Dictionary(Of Integer, Integer) = _
-        New Dictionary(Of Integer, Integer)
+            ' Draw standard text with customized formatting options.
+            e.DrawText(sf)

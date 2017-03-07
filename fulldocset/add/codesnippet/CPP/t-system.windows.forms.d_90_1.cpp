@@ -1,143 +1,63 @@
-#using <System.dll>
-#using <System.Windows.Forms.dll>
-#using <System.Drawing.dll>
-
-using namespace System;
-using namespace System::Drawing;
-using namespace System::Windows::Forms;
-using namespace System::Windows::Forms::VisualStyles;
-
-// Form for the ToolTip example.
-public ref class ToolTipExampleForm: public System::Windows::Forms::Form
-{
-private:
-   System::Windows::Forms::ToolTip^ toolTip1;
-   System::Windows::Forms::Button^ button1;
-   System::Windows::Forms::Button^ button2;
-   System::Windows::Forms::Button^ button3;
-
-public:
-   ToolTipExampleForm()
-   {
-      // Create the ToolTip and set initial values.
-      this->toolTip1 = gcnew System::Windows::Forms::ToolTip;
-      this->toolTip1->AutoPopDelay = 5000;
-      this->toolTip1->InitialDelay = 500;
-      this->toolTip1->OwnerDraw = true;
-      this->toolTip1->ReshowDelay = 10;
-      this->toolTip1->Draw += gcnew DrawToolTipEventHandler( this, &ToolTipExampleForm::toolTip1_Draw );
-      
-      // Create button1 and set initial values.
-      this->button1 = gcnew System::Windows::Forms::Button;
-      this->button1->Location = System::Drawing::Point( 8, 8 );
-      this->button1->Text = "Button 1";
-      this->toolTip1->SetToolTip( this->button1, "Button1 tip text" );
-      
-      // Create button2 and set initial values.
-      this->button2 = gcnew System::Windows::Forms::Button;
-      this->button2->Location = System::Drawing::Point( 8, 32 );
-      this->button2->Text = "Button 2";
-      this->toolTip1->SetToolTip( this->button2, "Button2 tip text" );
-      
-      // Create button3 and set initial values.
-      this->button3 = gcnew System::Windows::Forms::Button;
-      this->button3->Location = System::Drawing::Point( 8, 56 );
-      this->button3->Text = "Button 3";
-      this->toolTip1->SetToolTip( this->button3, "Button3 tip text" );
-      
-      // Set up the Form.
-      array<Control^>^temp0 = {this->button1,this->button2,this->button3};
-      this->Controls->AddRange( temp0 );
-      this->Text = "owner drawn ToolTip example";
-   }
-
-protected:
-
-   ~ToolTipExampleForm()
-   {
-      if ( toolTip1 != nullptr )
+      void ListDragTarget_DragOver( Object^ /*sender*/, System::Windows::Forms::DragEventArgs^ e )
       {
-         delete toolTip1;
-      }
-   }
-
-   // Handles drawing the ToolTip.
-private:
-   void toolTip1_Draw( System::Object^ /*sender*/, System::Windows::Forms::DrawToolTipEventArgs^ e )
-   {
-      // Draw the ToolTip differently depending on which 
-      // control this ToolTip is for.
-      // Draw a custom 3D border if the ToolTip is for button1.
-      if ( e->AssociatedControl == button1 )
-      {
-         // Draw the standard background.
-         e->DrawBackground();
-         
-         // Draw the custom border to appear 3-dimensional.
-         array<Point>^ temp1 = {Point(0,e->Bounds.Height - 1),Point(0,0),Point(e->Bounds.Width - 1,0)};
-         e->Graphics->DrawLines( SystemPens::ControlLightLight, temp1 );
-         array<Point>^ temp2 = {Point(0,e->Bounds.Height - 1),Point(e->Bounds.Width - 1,e->Bounds.Height - 1),Point(e->Bounds.Width - 1,0)};
-         e->Graphics->DrawLines( SystemPens::ControlDarkDark, temp2 );
-         
-         // Specify custom text formatting flags.
-         TextFormatFlags sf = static_cast<TextFormatFlags>(TextFormatFlags::VerticalCenter | TextFormatFlags::HorizontalCenter | TextFormatFlags::NoFullWidthCharacterBreak);
-         
-         // Draw the standard text with customized formatting options.
-         e->DrawText( sf );
-      }
-      // Draw a custom background and text if the ToolTip is for button2.
-      else
-      
-      // Draw a custom background and text if the ToolTip is for button2.
-      if ( e->AssociatedControl == button2 )
-      {
-         // Draw the custom background.
-         e->Graphics->FillRectangle( SystemBrushes::ActiveCaption, e->Bounds );
-         
-         // Draw the standard border.
-         e->DrawBorder();
-         
-         // Draw the custom text.
-         // The using block will dispose the StringFormat automatically.
-         StringFormat^ sf = gcnew StringFormat;
-         try
+         // Determine whether string data exists in the drop data. If not, then
+         // the drop effect reflects that the drop cannot occur.
+         if (  !e->Data->GetDataPresent( System::String::typeid ) )
          {
-            sf->Alignment = StringAlignment::Center;
-            sf->LineAlignment = StringAlignment::Center;
-            sf->HotkeyPrefix = System::Drawing::Text::HotkeyPrefix::None;
-            sf->FormatFlags = StringFormatFlags::NoWrap;
-            System::Drawing::Font^ f = gcnew System::Drawing::Font( "Tahoma",9 );
-            try
-            {
-               e->Graphics->DrawString( e->ToolTipText, f, SystemBrushes::ActiveCaptionText, e->Bounds, sf );
-            }
-            finally
-            {
-               if ( f )
-                  delete safe_cast<IDisposable^>(f);
-            }
-
+            e->Effect = DragDropEffects::None;
+            DropLocationLabel->Text = "None - no string data.";
+            return;
          }
-         finally
+
+         // Set the effect based upon the KeyState.
+         if ( (e->KeyState & (8 + 32)) == (8 + 32) && ((e->AllowedEffect & DragDropEffects::Link) == DragDropEffects::Link) )
          {
-            if ( sf )
-               delete safe_cast<IDisposable^>(sf);
+            // KeyState 8 + 32 = CTL + ALT
+            // Link drag-and-drop effect.
+            e->Effect = DragDropEffects::Link;
          }
-      }
-      // Draw the ToolTip using default values if the ToolTip is for button3.
-      else if ( e->AssociatedControl == button3 )
-      {
-         e->DrawBackground();
-         e->DrawBorder();
-         e->DrawText();
-      }
-   }
-};
+         else
+         if ( (e->KeyState & 32) == 32 && ((e->AllowedEffect & DragDropEffects::Link) == DragDropEffects::Link) )
+         {
+            // ALT KeyState for link.
+            e->Effect = DragDropEffects::Link;
+         }
+         else
+         if ( (e->KeyState & 4) == 4 && ((e->AllowedEffect & DragDropEffects::Move) == DragDropEffects::Move) )
+         {
+            // SHIFT KeyState for move.
+            e->Effect = DragDropEffects::Move;
+         }
+         else
+         if ( (e->KeyState & 8) == 8 && ((e->AllowedEffect & DragDropEffects::Copy) == DragDropEffects::Copy) )
+         {
+            // CTL KeyState for copy.
+            e->Effect = DragDropEffects::Copy;
+         }
+         else
+         if ( (e->AllowedEffect & DragDropEffects::Move) == DragDropEffects::Move )
+         {
+            // By default, the drop action should be move, if allowed.
+            e->Effect = DragDropEffects::Move;
+         }
+         else
+                  e->Effect = DragDropEffects::None;
 
-// The main entry point for the application.
 
-[STAThread]
-int main()
-{
-   Application::Run( gcnew ToolTipExampleForm );
-}
+
+
+
+         
+         // Get the index of the item the mouse is below.
+         // The mouse locations are relative to the screen, so they must be
+         // converted to client coordinates.
+         indexOfItemUnderMouseToDrop = ListDragTarget->IndexFromPoint( ListDragTarget->PointToClient( Point(e->X,e->Y) ) );
+         
+         // Updates the label text.
+         if ( indexOfItemUnderMouseToDrop != ListBox::NoMatches )
+         {
+            DropLocationLabel->Text = String::Concat( "Drops before item # ", (indexOfItemUnderMouseToDrop + 1) );
+         }
+         else
+                  DropLocationLabel->Text = "Drops at the end.";
+      }

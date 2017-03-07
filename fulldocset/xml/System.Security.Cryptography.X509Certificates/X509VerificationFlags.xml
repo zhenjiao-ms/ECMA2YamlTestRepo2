@@ -16,8 +16,24 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Specifies conditions under which verification of certificates in the X509 chain should be conducted.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ These flags indicate the conditions under which chain verification should occur. For example, if an application does not require certificates time values in a chain to be valid, the IgnoreNotTimeValid flag can be used.  
+  
+   
+  
+## Examples  
+ The following example opens the current user's personal certificate store, allows the user to select a certificate, then writes certificate and certificate chain information to the console. The output depends on the certificate you select.  
+  
+ [!code-cpp[x509chaintest#3](~/add/codesnippet/cpp/t-system.security.crypto_108_1.cpp)]
+ [!code-cs[x509chaintest#3](~/add/codesnippet/csharp/t-system.security.crypto_108_1.cs)]
+ [!code-vb[x509chaintest#3](~/add/codesnippet/visualbasic/t-system.security.crypto_108_1.vb)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="AllFlags">
@@ -34,7 +50,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509VerificationFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>All flags pertaining to verification are included.</summary>
       </Docs>
     </Member>
     <Member MemberName="AllowUnknownCertificateAuthority">
@@ -51,7 +67,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509VerificationFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Ignore that the chain cannot be verified due to an unknown certificate authority (CA).</summary>
       </Docs>
     </Member>
     <Member MemberName="IgnoreCertificateAuthorityRevocationUnknown">
@@ -68,7 +84,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509VerificationFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Ignore that the certificate authority revocation is unknown when determining certificate verification.</summary>
       </Docs>
     </Member>
     <Member MemberName="IgnoreCtlNotTimeValid">
@@ -85,7 +101,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509VerificationFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Ignore that the certificate trust list (CTL) is not valid, for reasons such as the CTL has expired, when determining certificate verification.</summary>
       </Docs>
     </Member>
     <Member MemberName="IgnoreCtlSignerRevocationUnknown">
@@ -102,7 +118,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509VerificationFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Ignore that the certificate trust list (CTL) signer revocation is unknown when determining certificate verification.</summary>
       </Docs>
     </Member>
     <Member MemberName="IgnoreEndRevocationUnknown">
@@ -119,7 +135,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509VerificationFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Ignore that the end certificate (the user certificate) revocation is unknown when determining certificate verification.</summary>
       </Docs>
     </Member>
     <Member MemberName="IgnoreInvalidBasicConstraints">
@@ -136,7 +152,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509VerificationFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Ignore that the basic constraints are not valid when determining certificate verification.</summary>
       </Docs>
     </Member>
     <Member MemberName="IgnoreInvalidName">
@@ -153,7 +169,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509VerificationFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Ignore that the certificate has an invalid name when determining certificate verification.</summary>
       </Docs>
     </Member>
     <Member MemberName="IgnoreInvalidPolicy">
@@ -170,7 +186,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509VerificationFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Ignore that the certificate has invalid policy when determining certificate verification.</summary>
       </Docs>
     </Member>
     <Member MemberName="IgnoreNotTimeNested">
@@ -187,7 +203,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509VerificationFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Ignore that the CA (certificate authority) certificate and the issued certificate have validity periods that are not nested when verifying the certificate. For example, the CA cert can be valid from January 1 to December 1 and the issued certificate from January 2 to December 2, which would mean the validity periods are not nested.</summary>
       </Docs>
     </Member>
     <Member MemberName="IgnoreNotTimeValid">
@@ -204,7 +220,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509VerificationFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Ignore certificates in the chain that are not valid either because they have expired or they are not yet in effect when determining certificate validity.</summary>
       </Docs>
     </Member>
     <Member MemberName="IgnoreRootRevocationUnknown">
@@ -221,7 +237,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509VerificationFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Ignore that the root revocation is unknown when determining certificate verification.</summary>
       </Docs>
     </Member>
     <Member MemberName="IgnoreWrongUsage">
@@ -238,7 +254,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509VerificationFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Ignore that the certificate was not issued for the current use when determining certificate verification.</summary>
       </Docs>
     </Member>
     <Member MemberName="NoFlag">
@@ -255,7 +271,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.X509VerificationFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>No flags pertaining to verification are included.</summary>
       </Docs>
     </Member>
   </Members>

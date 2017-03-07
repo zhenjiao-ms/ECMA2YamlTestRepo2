@@ -1,35 +1,19 @@
-    Private Sub SetDockPadding()
-        ' Dock the button in the panel.
-        button1.Dock = System.Windows.Forms.DockStyle.Fill
-        
-        ' Reset the counter if it is greater than 5.
-        If myCounter > 5 Then
-            myCounter = 0
-        End If
-        
-        ' Set the appropriate DockPadding and display
-        ' which one was set on the button face.
-        Select Case myCounter
-            Case 0
-                panel1.DockPadding.All = 0
-                button1.Text = "Start"
-            Case 1
-                panel1.DockPadding.Top = 10
-                button1.Text = "Top"
-            Case 2
-                panel1.DockPadding.Bottom = 10
-                button1.Text = "Bottom"
-            Case 3
-                panel1.DockPadding.Left = 10
-                button1.Text = "Left"
-            Case 4
-                panel1.DockPadding.Right = 10
-                button1.Text = "Right"
-            Case 5
-                panel1.DockPadding.All = 20
-                button1.Text = "All"
-        End Select
-        
-        ' Increment the counter.
-        myCounter += 1
-    End Sub
+Private Sub button1_Click(sender As Object, _
+  e As EventArgs) Handles button1.Click
+   ' Create a SelectionRange object and set its Start and End properties.
+   Dim sr As New SelectionRange()
+   sr.Start = DateTime.Parse(Me.textBox1.Text)
+   sr.End = DateTime.Parse(Me.textBox2.Text)
+   ' Assign the SelectionRange object to the
+   ' SelectionRange property of the MonthCalendar control. 
+   Me.monthCalendar1.SelectionRange = sr
+End Sub 
+
+
+Private Sub monthCalendar1_DateChanged(sender As Object, _
+  e As DateRangeEventArgs) Handles monthCalendar1.DateChanged
+   ' Display the Start and End property values of
+   ' the SelectionRange object in the text boxes. 
+   Me.textBox1.Text = monthCalendar1.SelectionRange.Start.Date.ToShortDateString()
+   Me.textBox2.Text = monthCalendar1.SelectionRange.End.Date.ToShortDateString()
+End Sub

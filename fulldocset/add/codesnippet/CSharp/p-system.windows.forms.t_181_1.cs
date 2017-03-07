@@ -1,22 +1,26 @@
-            // The following code example demonstrates the syntax for setting
-            // various ToolStripComboBox properties.
-            // 
-            toolStripComboBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            "aaa",
-            "bbb",
-            "ccc"});
-            toolStripComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            toolStripComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            toolStripComboBox1.DropDownHeight = 110;
-            toolStripComboBox1.DropDownWidth = 122;
-            toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-            toolStripComboBox1.IntegralHeight = false;
-            toolStripComboBox1.Items.AddRange(new object[] {
-            "xxx",
-            "yyy",
-            "zzz"});
-            toolStripComboBox1.MaxDropDownItems = 9;
-            toolStripComboBox1.MergeAction = System.Windows.Forms.MergeAction.Insert;
-            toolStripComboBox1.Name = "toolStripComboBox1";
-            toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
-            toolStripComboBox1.Sorted = true;
+private void AddToolBar()
+{
+   // Add a toolbar and set some of its properties.
+   toolBar1 = new ToolBar();
+   toolBar1.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
+   toolBar1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+   toolBar1.Buttons.Add(this.toolBarButton1);
+   toolBar1.ButtonSize = new System.Drawing.Size(24, 24);
+   toolBar1.Divider = true;
+   toolBar1.DropDownArrows = true;
+   toolBar1.ImageList = this.imageList1;
+   toolBar1.ShowToolTips = true;
+   toolBar1.Size = new System.Drawing.Size(292, 25);
+   toolBar1.TabIndex = 0;
+   toolBar1.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
+   toolBar1.Wrappable = false;
+   
+   // Add handlers for the ButtonClick and ButtonDropDown events.
+   toolBar1.ButtonDropDown += 
+     new ToolBarButtonClickEventHandler(toolBar1_ButtonDropDown);
+   toolBar1.ButtonClick += 
+     new ToolBarButtonClickEventHandler(toolBar1_ButtonClicked);
+
+   // Add the toolbar to the form.
+   this.Controls.Add(toolBar1);
+}

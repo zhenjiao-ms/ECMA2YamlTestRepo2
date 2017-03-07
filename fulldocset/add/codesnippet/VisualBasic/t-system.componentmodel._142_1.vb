@@ -1,17 +1,4 @@
-Imports System
-Imports System.Web.DynamicData
-Imports System.ComponentModel.DataAnnotations
-
-<MetadataType(GetType(CustomerMetadata))> _
-Partial Public Class Customer
-
-
-End Class
-
-Public Class CustomerMetadata
-
-    ' Add type information.
-    <DataType(DataType.EmailAddress)> _
-    Public EmailAddress As Object
-
-End Class
+            Dim myDoub As Double = 100.55
+            Dim myDoStr As String = "4000.425"
+            Console.WriteLine(TypeDescriptor.GetConverter(myDoub).ConvertTo(myDoub, GetType(String)))
+            Console.WriteLine(TypeDescriptor.GetConverter(myDoub).ConvertFrom(myDoStr))

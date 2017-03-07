@@ -1,34 +1,116 @@
 Imports System
-Imports System.Security.Cryptography
-Imports System.Security.Permissions
 Imports System.IO
-Imports System.Security.Cryptography.X509Certificates
+Imports System.Security.Cryptography
 
 
 
-Class X500Sample
-   Shared msg As String
-   Shared Sub Main()
-	
-      Try
-         Dim store As New X509Store("MY", StoreLocation.CurrentUser)
-         store.Open((OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly))
-         Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-         Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
-         Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Test Certificate Select", "Select a certificate from the following list to get information on that certificate", X509SelectionFlag.MultiSelection)
-	 msg = "Number of certificates: " & scollection.Count & Environment.NewLine
-	 MsgBox(msg)
-         Dim x509 As X509Certificate2
-         For Each x509 In  scollection
-            Dim dname As New X500DistinguishedName(x509.SubjectName)
-	    msg = "X500DistinguishedName: " & dname.Name & Environment.NewLine
-	 MsgBox(msg)
-            x509.Reset()
-         Next x509
-         store.Close()
-	 Catch e As Exception
-            msg = "Error: Information could not be written out for this certificate."
-            MsgBox(msg)
-      End Try
-   End Sub 'Main 
-End Class 'X500Sample
+Class AesExample
+
+    Public Shared Sub Main()
+        Try
+
+            Dim original As String = "Here is some data to encrypt!"
+
+            ' Create a new instance of the AesCryptoServiceProvider
+            ' class.  This generates a new key and initialization 
+            ' vector (IV).
+            Using myAes As New AesCryptoServiceProvider()
+
+                ' Encrypt the string to an array of bytes.
+                Dim encrypted As Byte() = EncryptStringToBytes_Aes(original, myAes.Key, myAes.IV)
+
+                ' Decrypt the bytes to a string.
+                Dim roundtrip As String = DecryptStringFromBytes_Aes(encrypted, myAes.Key, myAes.IV)
+
+                'Display the original data and the decrypted data.
+                Console.WriteLine("Original:   {0}", original)
+                Console.WriteLine("Round Trip: {0}", roundtrip)
+            End Using
+        Catch e As Exception
+            Console.WriteLine("Error: {0}", e.Message)
+        End Try
+
+    End Sub 'Main
+
+    Shared Function EncryptStringToBytes_Aes(ByVal plainText As String, ByVal Key() As Byte, ByVal IV() As Byte) As Byte() 
+        ' Check arguments.
+        If plainText Is Nothing OrElse plainText.Length <= 0 Then
+            Throw New ArgumentNullException("plainText")
+        End If
+        If Key Is Nothing OrElse Key.Length <= 0 Then
+            Throw New ArgumentNullException("Key")
+        End If
+        If IV Is Nothing OrElse IV.Length <= 0 Then
+            Throw New ArgumentNullException("IV")
+        End If
+        Dim encrypted() As Byte
+        ' Create an AesCryptoServiceProvider object
+        ' with the specified key and IV.
+        Using aesAlg As New AesCryptoServiceProvider()
+
+            aesAlg.Key = Key
+            aesAlg.IV = IV
+
+            ' Create a decrytor to perform the stream transform.
+            Dim encryptor As ICryptoTransform = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV)
+
+            ' Create the streams used for encryption.
+            Dim msEncrypt As New MemoryStream()
+            Using csEncrypt As New CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)
+                Using swEncrypt As New StreamWriter(csEncrypt)
+                    'Write all data to the stream.
+                    swEncrypt.Write(plainText)
+                End Using
+                encrypted = msEncrypt.ToArray()
+
+            End Using
+        End Using
+
+        ' Return the encrypted bytes from the memory stream.
+        Return encrypted
+
+    End Function 'EncryptStringToBytes_Aes
+
+    Shared Function DecryptStringFromBytes_Aes(ByVal cipherText() As Byte,ByVal Key() As Byte, ByVal IV() As Byte) As String
+        ' Check arguments.
+        If cipherText Is Nothing OrElse cipherText.Length <= 0 Then
+            Throw New ArgumentNullException("cipherText")
+        End If
+        If Key Is Nothing OrElse Key.Length <= 0 Then
+            Throw New ArgumentNullException("Key")
+        End If
+        If IV Is Nothing OrElse IV.Length <= 0 Then
+            Throw New ArgumentNullException("IV")
+        End If
+        ' Declare the string used to hold
+        ' the decrypted text.
+        Dim plaintext As String = Nothing
+
+        ' Create an AesCryptoServiceProvider object
+        ' with the specified key and IV.
+        Using aesAlg As New AesCryptoServiceProvider()
+
+            aesAlg.Key = Key
+            aesAlg.IV = IV
+
+            ' Create a decrytor to perform the stream transform.
+            Dim decryptor As ICryptoTransform = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV)
+
+            ' Create the streams used for decryption.
+            Using msDecrypt As New MemoryStream(cipherText)
+
+                Using csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
+
+                    Using srDecrypt As New StreamReader(csDecrypt)
+
+                        ' Read the decrypted bytes from the decrypting stream
+                        ' and place them in a string.
+                        plaintext = srDecrypt.ReadToEnd()
+                    End Using
+                End Using
+            End Using
+        End Using
+        Return plaintext
+
+    End Function 'DecryptStringFromBytes_Aes 
+End Class 'AesExample

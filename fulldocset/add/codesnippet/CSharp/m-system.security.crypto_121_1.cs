@@ -1,80 +1,74 @@
 using System;
+using System.IO;
 using System.Security.Cryptography;
-using System.Text;
+using System.Windows.Forms;
 
-namespace MD5Sample
+public class HashDirectory
 {
-    class Program
+
+    [STAThreadAttribute]
+    public static void Main(String[] args)
     {
-        static void Main(string[] args)
+        string directory = "";
+        if (args.Length < 1)
         {
-            string source = "Hello World!";
-            using (MD5 md5Hash = MD5.Create())
-            {
-                string hash = GetMd5Hash(md5Hash, source);
-
-                Console.WriteLine("The MD5 hash of " + source + " is: " + hash + ".");
-
-                Console.WriteLine("Verifying the hash...");
-
-                if (VerifyMd5Hash(md5Hash, source, hash))
-                {
-                    Console.WriteLine("The hashes are the same.");
-                }
-                else
-                {
-                    Console.WriteLine("The hashes are not same.");
-                }
-            }
-
-
-
-        }
-        static string GetMd5Hash(MD5 md5Hash, string input)
-        {
-
-            // Convert the input string to a byte array and compute the hash.
-            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-            // Create a new Stringbuilder to collect the bytes
-            // and create a string.
-            StringBuilder sBuilder = new StringBuilder();
-
-            // Loop through each byte of the hashed data 
-            // and format each one as a hexadecimal string.
-            for (int i = 0; i < data.Length; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-
-            // Return the hexadecimal string.
-            return sBuilder.ToString();
-        }
-
-        // Verify a hash against a string.
-        static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
-        {
-            // Hash the input.
-            string hashOfInput = GetMd5Hash(md5Hash, input);
-
-            // Create a StringComparer an compare the hashes.
-            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
-
-            if (0 == comparer.Compare(hashOfInput, hash))
-            {
-                return true;
-            }
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            DialogResult dr = fbd.ShowDialog();
+            if (dr == DialogResult.OK)
+                directory = fbd.SelectedPath;
             else
             {
-                return false;
+                Console.WriteLine("No directory selected.");
+                return;
             }
         }
-
+        else
+            directory = args[0];
+        try
+        {
+            // Create a DirectoryInfo object representing the specified directory.
+            DirectoryInfo dir = new DirectoryInfo(directory);
+            // Get the FileInfo objects for every file in the directory.
+            FileInfo[] files = dir.GetFiles();
+            // Initialize a RIPE160 hash object.
+            RIPEMD160 myRIPEMD160 = RIPEMD160Managed.Create();
+            byte[] hashValue;
+            // Compute and print the hash values for each file in directory.
+            foreach (FileInfo fInfo in files)
+            {
+                // Create a fileStream for the file.
+                FileStream fileStream = fInfo.Open(FileMode.Open);
+                // Be sure it's positioned to the beginning of the stream.
+                fileStream.Position = 0;
+                // Compute the hash of the fileStream.
+                hashValue = myRIPEMD160.ComputeHash(fileStream);
+                // Write the name of the file to the Console.
+                Console.Write(fInfo.Name + ": ");
+                // Write the hash value to the Console.
+                PrintByteArray(hashValue);
+                // Close the file.
+                fileStream.Close();
+            }
+            return;
+        }
+        catch (DirectoryNotFoundException)
+        {
+            Console.WriteLine("Error: The directory specified could not be found.");
+        }
+        catch (IOException)
+        {
+            Console.WriteLine("Error: A file in the directory could not be accessed.");
+        }
+    }
+    // Print the byte array in a readable format.
+    public static void PrintByteArray(byte[] array)
+    {
+        int i;
+        for (i = 0; i < array.Length; i++)
+        {
+            Console.Write(String.Format("{0:X2}", array[i]));
+            if ((i % 4) == 3) Console.Write(" ");
+        }
+        Console.WriteLine();
     }
 }
-
-// This code example produces the following output:
-//
-// The MD5 hash of Hello World! is: ed076287532e86365e841e92bfc50d8c.
-// Verifying the hash...
-// The hashes are the same.

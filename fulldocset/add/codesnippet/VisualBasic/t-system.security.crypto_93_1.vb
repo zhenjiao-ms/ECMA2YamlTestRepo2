@@ -1,6 +1,19 @@
- Dim data(DATA_SIZE) As Byte
- Dim result() As Byte
-        
- Dim sha As New SHA1CryptoServiceProvider()
- ' This is one implementation of the abstract class SHA1.
- result = sha.ComputeHash(data)
+Imports System
+Imports System.Security.Cryptography
+
+
+
+Public Class MemoryProtectionSample
+
+    Public Shared Sub Main()
+        ' Create the original data to be encrypted (The data length should be a multiple of 16).
+        Dim secret As Byte() = {1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4}
+
+        ' Encrypt the data in memory. The result is stored in the same same array as the original data.
+        ProtectedMemory.Protect(secret, MemoryProtectionScope.SameLogon)
+
+        ' Decrypt the data in memory and store in the original array.
+        ProtectedMemory.Unprotect(secret, MemoryProtectionScope.SameLogon)
+
+    End Sub
+End Class

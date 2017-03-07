@@ -1,31 +1,23 @@
-    ' Declare the ListView.
-    Private ListViewWithToolTips As ListView
-    
-    Private Sub InitializeItemsWithToolTips() 
+ Public Sub CreateMyLabel()
+     ' Create an instance of a Label.
+     Dim label1 As New Label()
         
-        ' Construct and set the View property of the ListView.
-        ListViewWithToolTips = New ListView()
-        ListViewWithToolTips.Width = 200
-        ListViewWithToolTips.View = View.List
+     ' Set the border to a three-dimensional border.
+     label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+     ' Set the ImageList to use for displaying an image.
+     label1.ImageList = imageList1
+     ' Use the second image in imageList1.
+     label1.ImageIndex = 1
+     ' Align the image to the top left corner.
+     label1.ImageAlign = ContentAlignment.TopLeft
+      
+     ' Specify that the text can display mnemonic characters.
+     label1.UseMnemonic = True
+     ' Set the text of the control and specify a mnemonic character.
+     label1.Text = "First &Name:"
         
-        ' Show item tooltips.
-        ListViewWithToolTips.ShowItemToolTips = True
-        
-        ' Create items with a tooltip.
-        Dim item1WithToolTip As New ListViewItem("Item with a tooltip")
-        item1WithToolTip.ToolTipText = "This is the item tooltip."
-        Dim item2WithToolTip As New ListViewItem("Second item with a tooltip")
-        item2WithToolTip.ToolTipText = "A different tooltip for this item."
-        
-        ' Create an item without a tooltip.
-        Dim itemWithoutToolTip As New ListViewItem("Item without tooltip.")
-        
-        ' Add the items to the ListView.
-        ListViewWithToolTips.Items.AddRange(New ListViewItem() _
-            {item1WithToolTip, item2WithToolTip, itemWithoutToolTip})
-        
-        ' Add the ListView to the form.
-        Me.Controls.Add(ListViewWithToolTips)
-        Me.Controls.Add(button1)
-    
-    End Sub
+     ' Set the size of the control based on the PreferredHeight and PreferredWidth values. 
+     label1.Size = New Size(label1.PreferredWidth, label1.PreferredHeight)
+
+     '...Code to add the control to the form...
+ End Sub

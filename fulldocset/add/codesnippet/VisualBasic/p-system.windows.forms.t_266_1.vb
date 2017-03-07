@@ -1,17 +1,17 @@
-    Public Sub CreateMyMultilineTextBox()
-        ' Create an instance of a TextBox control.
-        Dim textBox1 As New TextBox()
-        
-        ' Set the Multiline property to true.
-        textBox1.Multiline = True
-        ' Add vertical scroll bars to the TextBox control.
-        textBox1.ScrollBars = ScrollBars.Vertical
-        ' Allow the RETURN key in the TextBox control.
-        textBox1.AcceptsReturn = True
-        ' Allow the TAB key to be entered in the TextBox control.
-        textBox1.AcceptsTab = True
-        ' Set WordWrap to true to allow text to wrap to the next line.
-        textBox1.WordWrap = True
-        ' Set the default text of the control.
-        textBox1.Text = "Welcome!" & Environment.NewLine & "Second Line"
-    End Sub
+   ' This example assumes that the Form_Load event handling method
+   ' is connected to the Load event of the form.
+   Private Sub Form1_Load(sender As Object, e As System.EventArgs) Handles MyBase.Load
+      ' Create the ToolTip and associate with the Form container.
+      Dim toolTip1 As New ToolTip()
+      
+      ' Set up the delays for the ToolTip.
+      toolTip1.AutoPopDelay = 5000
+      toolTip1.InitialDelay = 1000
+      toolTip1.ReshowDelay = 500
+      ' Force the ToolTip text to be displayed whether or not the form is active.
+      toolTip1.ShowAlways = True
+      
+      ' Set up the ToolTip text for the Button and Checkbox.
+      toolTip1.SetToolTip(Me.button1, "My button1")
+      toolTip1.SetToolTip(Me.checkBox1, "My checkBox1")
+   End Sub

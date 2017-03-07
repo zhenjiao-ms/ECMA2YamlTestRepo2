@@ -1,109 +1,56 @@
-#using <System.Windows.Forms.dll>
-#using <System.Drawing.dll>
-#using <System.dll>
-
-using namespace System;
-using namespace System::Collections;
-using namespace System::ComponentModel;
-using namespace System::Drawing;
-using namespace System::Reflection;
-using namespace System::Windows::Forms;
-public ref class SystemInfoBrowserForm: public System::Windows::Forms::Form
-{
-private:
-   System::Windows::Forms::ListBox^ listBox1;
-   System::Windows::Forms::TextBox^ textBox1;
-
-public:
-   SystemInfoBrowserForm()
+   StatusBar^ StatusBar1;
+   void InitializeStatusBarPanels()
    {
-      this->SuspendLayout();
-      InitForm();
+      StatusBar1 = gcnew StatusBar;
       
-      // Add each property of the SystemInformation class to the list box.
-      Type^ t = System::Windows::Forms::SystemInformation::typeid;
-      array<PropertyInfo^>^pi = t->GetProperties();
-      for ( int i = 0; i < pi->Length; i++ )
-         listBox1->Items->Add( pi[ i ]->Name );
-      textBox1->Text = String::Format( "The SystemInformation class has {0} properties.\r\n", pi->Length );
+      // Create two StatusBarPanel objects.
+      StatusBarPanel^ panel1 = gcnew StatusBarPanel;
+      StatusBarPanel^ panel2 = gcnew StatusBarPanel;
       
-      // Configure the list item selected handler for the list box to invoke a 
-      // method that displays the value of each property.
-      listBox1->SelectedIndexChanged += gcnew EventHandler( this, &SystemInfoBrowserForm::listBox1_SelectedIndexChanged );
-      this->ResumeLayout( false );
+      // Set the style of the panels.  
+      // panel1 will be owner-drawn.
+      panel1->Style = StatusBarPanelStyle::OwnerDraw;
+      
+      // The panel2 object will be drawn by the operating system.
+      panel2->Style = StatusBarPanelStyle::Text;
+      
+      // Set the text of both panels to the same date string.
+      panel1->Text = System::DateTime::Today.ToShortDateString();
+      panel2->Text = System::DateTime::Today.ToShortDateString();
+      
+      // Add both panels to the StatusBar.
+      StatusBar1->Panels->Add( panel1 );
+      StatusBar1->Panels->Add( panel2 );
+      
+      // Make panels visible by setting the ShowPanels 
+      // property to True.
+      StatusBar1->ShowPanels = true;
+      
+      // Associate the event-handling method with the DrawItem event 
+      // for the owner-drawn panel.
+      StatusBar1->DrawItem += gcnew StatusBarDrawItemEventHandler( this, &Form1::DrawCustomStatusBarPanel );
+      this->Controls->Add( StatusBar1 );
    }
 
 
-private:
-   void listBox1_SelectedIndexChanged( Object^ /*sender*/, EventArgs^ /*e*/ )
+   // Draw the panel.
+   void DrawCustomStatusBarPanel( Object^ sender, StatusBarDrawItemEventArgs^ e )
    {
       
-      // Return if no list item is selected.
-      if ( listBox1->SelectedIndex == -1 )
-            return;
-
+      // Draw a blue background in the owner-drawn panel.
+      e->Graphics->FillRectangle( Brushes::AliceBlue, e->Bounds );
       
-      // Get the property name from the list item.
-      String^ propname = listBox1->Text;
-      if ( propname->Equals( "PowerStatus" ) )
-      {
-         
-         // Cycle and display the values of each property of the PowerStatus property.
-         textBox1->Text = String::Concat( textBox1->Text, "\r\nThe value of the PowerStatus property is:" );
-         Type^ t = System::Windows::Forms::PowerStatus::typeid;
-         array<PropertyInfo^>^pi = t->GetProperties();
-         for ( int i = 0; i < pi->Length; i++ )
-         {
-            Object^ propval = pi[ i ]->GetValue( SystemInformation::PowerStatus, nullptr );
-            textBox1->Text = String::Format( "{0}\r\n    PowerStatus.{1} is: {2}", textBox1->Text, pi[ i ]->Name, propval );
-
-         }
-      }
-      else
-      {
-         
-         // Display the value of the selected property of the SystemInformation type.
-         Type^ t = System::Windows::Forms::SystemInformation::typeid;
-         array<PropertyInfo^>^pi = t->GetProperties();
-         PropertyInfo^ prop = nullptr;
-         for ( int i = 0; i < pi->Length; i++ )
-            if ( pi[ i ]->Name == propname )
-            {
-               prop = pi[ i ];
-               break;
-            }
-         Object^ propval = prop->GetValue( nullptr, nullptr );
-         textBox1->Text = String::Format( "{0}\r\nThe value of the {1} property is: {2}", textBox1->Text, propname, propval );
-      }
-   }
-
-   void InitForm()
-   {
+      // Create a StringFormat object to align text in the panel.
+      StringFormat^ textFormat = gcnew StringFormat;
       
-      // Initialize the form settings
-      this->listBox1 = gcnew System::Windows::Forms::ListBox;
-      this->textBox1 = gcnew System::Windows::Forms::TextBox;
-      this->listBox1->Anchor = (System::Windows::Forms::AnchorStyles)(System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right);
-      this->listBox1->Location = System::Drawing::Point( 8, 16 );
-      this->listBox1->Size = System::Drawing::Size( 172, 496 );
-      this->listBox1->TabIndex = 0;
-      this->textBox1->Anchor = (System::Windows::Forms::AnchorStyles)(System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right);
-      this->textBox1->Location = System::Drawing::Point( 188, 16 );
-      this->textBox1->Multiline = true;
-      this->textBox1->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-      this->textBox1->Size = System::Drawing::Size( 420, 496 );
-      this->textBox1->TabIndex = 1;
-      this->ClientSize = System::Drawing::Size( 616, 525 );
-      this->Controls->Add( this->textBox1 );
-      this->Controls->Add( this->listBox1 );
-      this->Text = "Select a SystemInformation property to get the value of";
+      // Center the text in the middle of the line.
+      textFormat->LineAlignment = StringAlignment::Center;
+      
+      // Align the text to the left.
+      textFormat->Alignment = StringAlignment::Far;
+      
+      // Draw the panel's text in dark blue using the Panel 
+      // and Bounds properties of the StatusBarEventArgs object 
+      // and the StringFormat object.
+      e->Graphics->DrawString( e->Panel->Text, StatusBar1->Font, Brushes::DarkBlue, RectangleF(e->Bounds.X,e->Bounds.Y,e->Bounds.Width,e->Bounds.Height), textFormat );
    }
-
-};
-
-
-[STAThread]
-int main()
-{
-   Application::Run( gcnew SystemInfoBrowserForm );
-}

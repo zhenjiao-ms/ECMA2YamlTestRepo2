@@ -1,120 +1,80 @@
 <%@ Page Language="C#" %>
 <%@ Import Namespace="System.Web.Security" %>
-<%@ Import Namespace="System.Net.Mail" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
 
-public void Page_Load(object sender, EventArgs args)
-{
-  if (!Membership.EnablePasswordRetrieval)
-  {
-    FormsAuthentication.RedirectToLoginPage();
-  }
+MembershipUserCollection users;
 
-  Msg.Text = "";
+public void Page_Load()
+{
+  users = Membership.GetAllUsers();
 
   if (!IsPostBack)
   {
-    Msg.Text = "Please enter a user name.";
+    // Bind users to ListBox.
+    UsersListBox.DataSource = users;
+    UsersListBox.DataBind();
   }
-  else
+
+
+  // If a user is selected, show the properties for the selected user.
+
+  if (UsersListBox.SelectedItem != null)
   {
-    VerifyUsername();
-  }
-}
+    MembershipUser u = users[UsersListBox.SelectedItem.Value];
 
-
-public void VerifyUsername()
-{
-    MembershipUser user = Membership.GetUser(UsernameTextBox.Text, false);
-
-    if (user == null)
-    {
-      Msg.Text = "The user name " + Server.HtmlEncode(UsernameTextBox.Text) + " was not found. Please check the value and re-enter.";
-
-      QuestionLabel.Text = "";
-      QuestionLabel.Enabled = false;
-      AnswerTextBox.Enabled = false;
-      EmailPasswordButton.Enabled = false;
-    }
-    else
-    {
-      QuestionLabel.Text = user.PasswordQuestion;
-      QuestionLabel.Enabled = true;
-      AnswerTextBox.Enabled = true;
-      EmailPasswordButton.Enabled = true;
-    }
-}
-
-
-public void EmailPassword_OnClick(object sender, EventArgs args)
-{
-  // Note: Returning a password in clear text using e-mail is not recommended for
-  // sites that require a high level of security.
-
-  try
-  {
-    string password = Membership.Provider.GetPassword(UsernameTextBox.Text, AnswerTextBox.Text);
-    MembershipUser u = Membership.GetUser(UsernameTextBox.Text);
-    EmailPassword(u.Email, password);
-    Msg.Text = "Your password was sent via e-mail.";
-  }
-  catch (MembershipPasswordException e)
-  {
-    Msg.Text = "The password answer is incorrect. Please check the value and try again.";
-  }
-  catch (System.Configuration.Provider.ProviderException e)
-  {
-    Msg.Text = "An error occurred retrieving your password. Please check your values " +
-               "and try again.";
-  }
-}
-
-
-private void EmailPassword(string email, string password)
-{
-  try
-  {
-    MailMessage Message = new MailMessage("administrator", email);
-    Message.Subject = "Your Password";
-    Message.Body = "Your password is: " + Server.HtmlEncode(password);
-
-    SmtpClient SmtpMail = new SmtpClient("SMTPSERVER");
-    SmtpMail.Send(Message);
-  }
-  catch 
-  {
-    Msg.Text = "An exception occurred while sending your password. Please try again.";
+    EmailLabel.Text = u.Email;
+    IsOnlineLabel.Text = u.IsOnline.ToString();
+    LastLoginDateLabel.Text = u.LastLoginDate.ToString();
+    CreationDateLabel.Text = u.CreationDate.ToString();
+    LastActivityDateLabel.Text = u.LastActivityDate.ToString();
   }
 }
 
 </script>
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-<title>Sample: Retrieve Password</title>
+<title>Sample: View User Information</title>
 </head>
 <body>
 
-<form id="form1" runat="server">
-  <h3>Retrieve Password</h3>
+<form runat="server" id="PageForm">
 
-  <asp:Label id="Msg" runat="server" ForeColor="maroon" /><br />
+  <h3>View User Information</h3>
 
-  Username: <asp:Textbox id="UsernameTextBox" Columns="30" runat="server" AutoPostBack="true" />
-            <asp:RequiredFieldValidator id="UsernameRequiredValidator" runat="server"
-                                        ControlToValidate="UsernameTextBox" ForeColor="red"
-                                        Display="Static" ErrorMessage="Required" /><br />
-
-  Password Question: <b><asp:Label id="QuestionLabel" runat="server" /></b><br />
-
-  Answer: <asp:TextBox id="AnswerTextBox" Columns="60" runat="server" Enabled="false" />
-          <asp:RequiredFieldValidator id="AnswerRequiredValidator" runat="server"
-                                      ControlToValidate="AnswerTextBox" ForeColor="red"
-                                      Display="Static" ErrorMessage="Required" Enabled="false" /><br />
-
-  <asp:Button id="EmailPasswordButton" Text="Email My Password" 
-              OnClick="EmailPassword_OnClick" runat="server" Enabled="false" />
+  <table border="0" cellspacing="4">
+    <tr>
+      <td valign="top">
+        <asp:ListBox id="UsersListBox" DataTextField="Username" 
+                     Rows="8" AutoPostBack="true" runat="server" />
+      </td>
+      <td valign="top">
+        <table border="0" cellpadding="2" cellspacing="0">
+          <tr>
+           <td>E-mail:</td>
+           <td><asp:Label runat="server" id="EmailLabel" /></td>
+          </tr>
+          <tr>
+           <td>Is Online?:</td>
+           <td><asp:Label runat="server" id="IsOnlineLabel" /></td>
+          </tr>
+          <tr>
+           <td>LastLoginDate:</td>
+           <td><asp:Label runat="server" id="LastLoginDateLabel" /></td>
+          </tr>
+          <tr>
+           <td>CreationDate:</td>
+           <td><asp:Label runat="server" id="CreationDateLabel" /></td>
+          </tr>
+          <tr>
+           <td>LastActivityDate:</td>
+           <td><asp:Label runat="server" id="LastActivityDateLabel" /></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 
 </form>
 

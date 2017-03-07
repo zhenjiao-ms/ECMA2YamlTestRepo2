@@ -25,7 +25,8 @@ class Test
 
             using (StreamReader sr = new StreamReader(path)) 
             {
-                while (sr.Peek() >= 0) 
+
+                while (sr.Peek() > -1) 
                 {
                     Console.WriteLine(sr.ReadLine());
                 }

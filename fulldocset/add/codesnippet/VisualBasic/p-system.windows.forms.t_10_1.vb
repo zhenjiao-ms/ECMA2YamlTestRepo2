@@ -1,40 +1,45 @@
-    Public Sub InitializeMyToolBar()
-        ' Create and initialize the ToolBar and ToolBarButton controls.
-        Dim toolBar1 As New ToolBar()
-        Dim toolBarButton1 As New ToolBarButton()
-        Dim toolBarButton2 As New ToolBarButton()
-        Dim toolBarButton3 As New ToolBarButton()
-        
-        ' Set the Text properties of the ToolBarButton controls.
-        toolBarButton1.Text = "Open"
-        toolBarButton2.Text = "Save"
-        toolBarButton3.Text = "Print"
-        
-        ' Add the ToolBarButton controls to the ToolBar.
-        toolBar1.Buttons.Add(toolBarButton1)
-        toolBar1.Buttons.Add(toolBarButton2)
-        toolBar1.Buttons.Add(toolBarButton3)
-        
-        ' Add the event-handler delegate.
-        AddHandler toolBar1.ButtonClick, AddressOf Me.toolBar1_ButtonClick
-        
-        ' Add the ToolBar to the Form.
-        Controls.Add(toolBar1)
-    End Sub    
-    
-    Private Sub toolBar1_ButtonClick(ByVal sender As Object, _
-    ByVal e As ToolBarButtonClickEventArgs)
+    Private Sub growStyleNoneBtn_CheckedChanged( _
+    ByVal sender As System.Object, _
+    ByVal e As System.EventArgs) _
+    Handles growStyleNoneBtn.CheckedChanged
 
-        ' Evaluate the Button property to determine which button was clicked.
-        Select Case toolBar1.Buttons.IndexOf(e.Button)
-            Case 0
-                openFileDialog1.ShowDialog()
-                ' Insert code to open the file.
-            Case 1
-                saveFileDialog1.ShowDialog()
-                ' Insert code to save the file.
-            Case 2
-                printDialog1.ShowDialog()
-                ' Insert code to print the file.
-        End Select
+        Me.tlpGrowStyle = TableLayoutPanelGrowStyle.FixedSize
+
+    End Sub
+
+    Private Sub growStyleAddRowBtn_CheckedChanged( _
+    ByVal sender As System.Object, _
+    ByVal e As System.EventArgs) _
+    Handles growStyleAddRowBtn.CheckedChanged
+
+        Me.tlpGrowStyle = TableLayoutPanelGrowStyle.AddRows
+
+    End Sub
+
+    Private Sub growStyleAddColumnBtn_CheckedChanged( _
+    ByVal sender As System.Object, _
+    ByVal e As System.EventArgs) _
+    Handles growStyleAddColumnBtn.CheckedChanged
+
+        Me.tlpGrowStyle = TableLayoutPanelGrowStyle.AddColumns
+
+    End Sub
+
+    Private Sub testGrowStyleBtn_Click( _
+    ByVal sender As System.Object, _
+    ByVal e As System.EventArgs) _
+    Handles testGrowStyleBtn.Click
+
+        Me.TableLayoutPanel1.GrowStyle = Me.tlpGrowStyle
+
+        Try
+
+            Me.TableLayoutPanel1.Controls.Add(New Button())
+
+        Catch ex As ArgumentException
+
+            Trace.WriteLine(ex.Message)
+
+        End Try
+
     End Sub

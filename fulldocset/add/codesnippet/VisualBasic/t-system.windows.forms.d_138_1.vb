@@ -1,22 +1,18 @@
-    Private Sub dataGridView1_CellClick(ByVal sender As Object, _
-        ByVal e As DataGridViewCellEventArgs) _
-        Handles dataGridView1.CellClick
+    Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles Me.Load
 
-        If turn.Text.Equals(gameOverString) Then Return
+        ' Bind the DataGridView controls to the BindingSource
+        ' components and load the data from the database.
+        masterDataGridView.DataSource = masterBindingSource
+        detailsDataGridView.DataSource = detailsBindingSource
+        GetData()
 
-        Dim cell As DataGridViewImageCell = _
-            CType(dataGridView1.Rows(e.RowIndex). _
-                Cells(e.ColumnIndex), DataGridViewImageCell)
-        If (cell.Value Is blank) Then
-            If IsOsTurn() Then
-                cell.Value = o
-            Else
-                cell.Value = x
-            End If
-            ToggleTurn()
-            ToolTip(e)
-        End If
-        If IsAWin() Then
-            turn.Text = gameOverString
-        End If
+        ' Resize the master DataGridView columns to fit the newly loaded data.
+        masterDataGridView.AutoResizeColumns()
+
+        ' Configure the details DataGridView so that its columns automatically
+        ' adjust their widths when the data changes.
+        detailsDataGridView.AutoSizeColumnsMode = _
+            DataGridViewAutoSizeColumnsMode.AllCells
+
     End Sub

@@ -1,77 +1,116 @@
-using System;
-using System.Data;
-using System.Data.SqlClient;
+using System.IO;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
+using System;
 
-public class Form1 : System.Windows.Forms.Form
+public class VirtualModeDemo : Form
 {
-    private DataGridView dataGridView1 = new DataGridView();
-    private BindingSource bindingSource1 = new BindingSource();
+    DataGridView dataGridView1 = new DataGridView();
 
-    public Form1()
+    public VirtualModeDemo()
+        : base()
     {
-        dataGridView1.Dock = DockStyle.Fill;
-        this.Controls.Add(dataGridView1);
-        InitializeDataGridView();
+        Text = "DataGridView virtual-mode demo (cell-level commit scope)";
+        dataGridView1.NewRowNeeded +=
+            new DataGridViewRowEventHandler(dataGridView1_NewRowNeeded);
+        dataGridView1.RowsAdded +=
+            new DataGridViewRowsAddedEventHandler(dataGridView1_RowsAdded);
+        dataGridView1.CellValidating +=
+            new DataGridViewCellValidatingEventHandler(dataGridView1_CellValidating);
+        dataGridView1.CellValueNeeded +=
+            new DataGridViewCellValueEventHandler(dataGridView1_CellValueNeeded);
+        dataGridView1.CellValuePushed +=
+            new DataGridViewCellValueEventHandler(dataGridView1_CellValuePushed);
+
+        Controls.Add(dataGridView1);
+        dataGridView1.VirtualMode = true;
+        dataGridView1.AllowUserToDeleteRows = false;
+        dataGridView1.Columns.Add("Numbers", "Positive Numbers");
+        dataGridView1.Rows.AddCopies(0, initialSize);
     }
 
-    private void InitializeDataGridView()
+    bool newRowNeeded;
+    private void dataGridView1_NewRowNeeded(object sender,
+        DataGridViewRowEventArgs e)
     {
-        try
+        newRowNeeded = true;
+    }
+
+    const int initialSize = 5000000;
+    int numberOfRows = initialSize;
+
+    private void dataGridView1_RowsAdded(object sender,
+         DataGridViewRowsAddedEventArgs e)
+    {
+        if (newRowNeeded)
         {
-            // Set up the DataGridView.
-            dataGridView1.Dock = DockStyle.Fill;
-
-            // Automatically generate the DataGridView columns.
-            dataGridView1.AutoGenerateColumns = true;
-
-            // Set up the data source.
-            bindingSource1.DataSource = GetData("Select * From Products");
-            dataGridView1.DataSource = bindingSource1;
-
-            // Automatically resize the visible rows.
-            dataGridView1.AutoSizeRowsMode =
-                DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
-
-            // Set the DataGridView control's border.
-            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
-
-            // Put the cells in edit mode when user enters them.
-            dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;
-        }
-        catch (SqlException)
-        {
-            MessageBox.Show("To run this sample replace connection.ConnectionString" +
-                " with a valid connection string to a Northwind" +
-                " database accessible to your system.", "ERROR",
-                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            System.Threading.Thread.CurrentThread.Abort();
+            newRowNeeded = false;
+            numberOfRows = numberOfRows + 1;
         }
     }
 
-    private static DataTable GetData(string sqlCommand)
+    #region "data store maintance"
+    const int initialValue = -1;
+
+    private void dataGridView1_CellValueNeeded(object sender,
+        DataGridViewCellValueEventArgs e)
     {
-        string connectionString = "Integrated Security=SSPI;" +
-            "Persist Security Info=False;" +
-            "Initial Catalog=Northwind;Data Source=localhost";
+        if (store.ContainsKey(e.RowIndex))
+        {
+            // Use the store if the e value has been modified 
+            // and stored.            
+            e.Value = store[e.RowIndex];
+        }
+        else if (newRowNeeded && e.RowIndex == numberOfRows)
+        {
+            if (dataGridView1.IsCurrentCellInEditMode)
+            {
+                e.Value = initialValue;
+            }
+            else
+            {
+                // Show a blank value if the cursor is just resting
+                // on the last row.
+                e.Value = String.Empty;
+            }
+        }
+        else
+        {
+            e.Value = e.RowIndex;
+        }
+    }
 
-        SqlConnection northwindConnection = new SqlConnection(connectionString);
+    private void dataGridView1_CellValuePushed(object sender,
+        DataGridViewCellValueEventArgs e)
+    {
+        store.Add(e.RowIndex, int.Parse(e.Value.ToString()));
+    }
+    #endregion
 
-        SqlCommand command = new SqlCommand(sqlCommand, northwindConnection);
-        SqlDataAdapter adapter = new SqlDataAdapter();
-        adapter.SelectCommand = command;
+    private Dictionary<int, int> store = new Dictionary<int, int>();
 
-        DataTable table = new DataTable();
-        table.Locale = System.Globalization.CultureInfo.InvariantCulture;
-        adapter.Fill(table);
+    private void dataGridView1_CellValidating(object sender,
+        DataGridViewCellValidatingEventArgs e)
+    {
+        dataGridView1.Rows[e.RowIndex].ErrorText = "";
+        int newInteger;
 
-        return table;
+        // Don't try to validate the 'new row' until finished 
+        // editing since there
+        // is not any point in validating its initial value.
+        if (dataGridView1.Rows[e.RowIndex].IsNewRow) { return; }
+        if (!int.TryParse(e.FormattedValue.ToString(),
+            out newInteger) || newInteger < 0)
+        {
+            e.Cancel = true;
+            dataGridView1.Rows[e.RowIndex].ErrorText = "the value must be a non-negative integer";
+        }
     }
 
     [STAThreadAttribute()]
     public static void Main()
     {
-        Application.Run(new Form1());
+        Application.Run(new VirtualModeDemo());
     }
 }

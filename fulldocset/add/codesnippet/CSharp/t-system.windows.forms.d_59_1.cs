@@ -1,29 +1,27 @@
-    // Handling CellParsing allows one to accept user input, then map it to a different
-    // internal representation.
-    private void dataGridView1_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
+    // Sets the ToolTip text for cells in the Rating column.
+    void dataGridView1_CellFormatting(object sender, 
+        DataGridViewCellFormattingEventArgs e)
     {
-        if (this.dataGridView1.Columns[e.ColumnIndex].Name == "Release Date")
+        if ( (e.ColumnIndex == this.dataGridView1.Columns["Rating"].Index)
+            && e.Value != null )
         {
-            if (e != null)
+            DataGridViewCell cell = 
+                this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            if (e.Value.Equals("*"))
+            {                
+                cell.ToolTipText = "very bad";
+            }
+            else if (e.Value.Equals("**"))
             {
-                if (e.Value != null)
-                {
-                    try
-                    {
-                        // Map what the user typed into UTC.
-                        e.Value = DateTime.Parse(e.Value.ToString()).ToUniversalTime();
-                        // Set the ParsingApplied property to 
-                        // Show the event is handled.
-                        e.ParsingApplied = true;
-
-                    }
-                    catch (FormatException)
-                    {
-                        // Set to false in case another CellParsing handler
-                        // wants to try to parse this DataGridViewCellParsingEventArgs instance.
-                        e.ParsingApplied = false;
-                    }
-                }
+                cell.ToolTipText = "bad";
+            }
+            else if (e.Value.Equals("***"))
+            {
+                cell.ToolTipText = "good";
+            }
+            else if (e.Value.Equals("****"))
+            {
+                cell.ToolTipText = "very good";
             }
         }
     }

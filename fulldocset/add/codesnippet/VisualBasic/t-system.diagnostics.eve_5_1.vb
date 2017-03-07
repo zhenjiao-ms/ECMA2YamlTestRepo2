@@ -1,30 +1,29 @@
-         ' Check whether source exist in event log.
-         If False = EventLog.SourceExists(mySource) Then
-            ' Create a new source in a specified log on a system.
-            EventLog.CreateEventSource(mySource, myLog)
-         End If
-         ' Create an event log instance.
-         myEventLog = New EventLog(myLog)
-         ' Initialize source property of obtained instance.
-         myEventLog.Source = mySource
-         Select Case myIntLog
-            Case 1
-               ' Write an 'Error' entry in specified log of event log.
-               myEventLog.WriteEntry(myMessage, EventLogEntryType.Error, myID)
-            Case 2
-               ' Write a 'Warning' entry in specified log of event log.
-               myEventLog.WriteEntry(myMessage, EventLogEntryType.Warning, myID)
-            Case 3
-               ' Write an 'Information' entry in specified log of event log.
-               myEventLog.WriteEntry(myMessage, EventLogEntryType.Information, myID)
-            Case 4
-               ' Write a 'FailureAudit' entry in specified log of event log.
-               myEventLog.WriteEntry(myMessage, EventLogEntryType.FailureAudit, myID)
-            Case 5
-               ' Write a 'SuccessAudit' entry in specified log of event log.
-               myEventLog.WriteEntry(myMessage, EventLogEntryType.SuccessAudit, myID)
-            Case Else
-               Console.WriteLine("Error: Failed to create an event in event log.")
-         End Select
-         Console.WriteLine("A new event in log '{0}' with ID '{1}' " + _
-                  "is successfully written into event log.", myEventLog.Log, myID)
+   Imports System
+   Imports System.Configuration.Install
+   Imports System.Diagnostics
+   Imports System.ComponentModel
+
+   <RunInstaller(True)>  _
+   Public Class MyEventLogInstaller
+      Inherits Installer
+      Private myEventLogInstaller As EventLogInstaller
+      
+      Public Sub New()
+
+         ' Create an instance of an EventLogInstaller.
+         myEventLogInstaller = New EventLogInstaller()
+
+         ' Set the source name of the event log.
+         myEventLogInstaller.Source = "NewLogSource"
+
+         ' Set the event log that the source writes entries to.
+         myEventLogInstaller.Log = "MyNewLog"
+
+         ' Add myEventLogInstaller to the Installer collection.
+         Installers.Add(myEventLogInstaller)
+      End Sub 'New
+
+    Public Shared Sub Main()
+    End Sub 'Main
+    Dim myInstaller As New EventLogInstaller()
+   End Class 'MyEventLogInstaller

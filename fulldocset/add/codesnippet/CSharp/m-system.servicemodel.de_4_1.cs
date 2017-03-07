@@ -1,5 +1,6 @@
-                // Create a new auditing behavior and set the log location.
-                ServiceSecurityAuditBehavior newAudit = 
-                    new ServiceSecurityAuditBehavior();
-                newAudit.AuditLogLocation = 
-                    AuditLogLocation.Application;
+            ServiceDescription d = ServiceDescription.GetService(new CalculatorService());
+            foreach (IServiceBehavior isb in d.Behaviors)
+            {
+                Console.WriteLine(isb.GetType());
+            }
+            Console.WriteLine();

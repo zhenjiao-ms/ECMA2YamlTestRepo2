@@ -1,75 +1,31 @@
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Windows.Forms;
-
-public class TriValueVirtualCheckBox:Form
-{
-    DataGridView dataGridView1 = new DataGridView();
-
-    const int initialSize = 500;
-
-    Dictionary<int, LightStatus> store 
-        = new Dictionary<int, LightStatus>();
-
-    public TriValueVirtualCheckBox() : base()
-    {        
-        Text = this.GetType().Name;
-
-        int index = 0;
-        for(index=0; index<=initialSize; index++)
-            store.Add(index, LightStatus.Unknown);
-
-        Controls.Add(dataGridView1);
-        dataGridView1.VirtualMode = true;
-        dataGridView1.AllowUserToDeleteRows = false;
-        dataGridView1.CellValueNeeded += new 
-            DataGridViewCellValueEventHandler(dataGridView1_CellValueNeeded);
-        dataGridView1.CellValuePushed += new 
-            DataGridViewCellValueEventHandler(dataGridView1_CellValuePushed);
-
-        dataGridView1.Columns.Add(CreateCheckBoxColumn());
-        dataGridView1.Rows.AddCopies(0, initialSize);
-    }
-
-    private DataGridViewCheckBoxColumn CreateCheckBoxColumn()
+    // Draws column headers.
+    private void listView1_DrawColumnHeader(object sender,
+        DrawListViewColumnHeaderEventArgs e)
     {
-        DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1 
-            = new DataGridViewCheckBoxColumn();
-        dataGridViewCheckBoxColumn1.HeaderText = "Lights On";
-        dataGridViewCheckBoxColumn1.TrueValue = LightStatus.TurnedOn;
-        dataGridViewCheckBoxColumn1.FalseValue = LightStatus.TurnedOff;
-        dataGridViewCheckBoxColumn1.IndeterminateValue 
-            = LightStatus.Unknown;
-        dataGridViewCheckBoxColumn1.ThreeState = true;
-        dataGridViewCheckBoxColumn1.ValueType = typeof(LightStatus);
-        return dataGridViewCheckBoxColumn1;
-    }
+        using (StringFormat sf = new StringFormat())
+        {
+            // Store the column text alignment, letting it default
+            // to Left if it has not been set to Center or Right.
+            switch (e.Header.TextAlign)
+            {
+                case HorizontalAlignment.Center:
+                    sf.Alignment = StringAlignment.Center;
+                    break;
+                case HorizontalAlignment.Right:
+                    sf.Alignment = StringAlignment.Far;
+                    break;
+            }
 
-#region "data store maintance"
-    private void dataGridView1_CellValueNeeded(object sender, 
-        DataGridViewCellValueEventArgs e)
-    {
-        e.Value = store[e.RowIndex];
-    }
+            // Draw the standard header background.
+            e.DrawBackground();
 
-    private void dataGridView1_CellValuePushed(object sender, 
-        DataGridViewCellValueEventArgs e)
-    {
-        store[e.RowIndex] = (LightStatus) e.Value;
+            // Draw the header text.
+            using (Font headerFont =
+                        new Font("Helvetica", 10, FontStyle.Bold))
+            {
+                e.Graphics.DrawString(e.Header.Text, headerFont,
+                    Brushes.Black, e.Bounds, sf);
+            }
+        }
+        return;
     }
-#endregion
-
-    [STAThreadAttribute()]
-    public static void Main()
-    {
-        Application.Run(new TriValueVirtualCheckBox());
-    }
-}
-
-public enum LightStatus
-{
-    Unknown, 
-    TurnedOn, 
-    TurnedOff
-};

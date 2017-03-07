@@ -1,19 +1,13 @@
-//Class-level declaration.
- /* Create a TraceSwitch to use in the entire application.*/
- static TraceSwitch mySwitch = new TraceSwitch("General", "Entire Application");
- 
- static public void MyMethod() {
-    // Write the message if the TraceSwitch level is set to Error or higher.
-    if(mySwitch.TraceError)
-       Console.WriteLine("My error message.");
- 
-    // Write the message if the TraceSwitch level is set to Verbose.
-    if(mySwitch.TraceVerbose)
-       Console.WriteLine("My second error message.");
- }
- 
- public static void Main(string[] args) {
-    // Run the method that prints error messages based on the switch level.
-    MyMethod();
- }
- 
+        public class Keywords
+        {
+            public const EventKeywords Page = (EventKeywords)1;
+            public const EventKeywords DataBase = (EventKeywords)2;
+            public const EventKeywords Diagnostic = (EventKeywords)4;
+            public const EventKeywords Perf = (EventKeywords)8;
+        }
+
+        public class Tasks
+        {
+            public const EventTask Page = (EventTask)1;
+            public const EventTask DBQuery = (EventTask)2;
+        }

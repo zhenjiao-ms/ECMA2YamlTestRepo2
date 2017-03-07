@@ -1,45 +1,45 @@
 using System;
 using System.Management;
 
-// This example shows synchronous consumption of events. 
-// The client is blocked while waiting for events. 
-
-public class EventWatcherPolling 
-{
-    public static int Main(string[] args) 
+public class Sample 
+{    
+    public static void Main() 
     {
-        // Create event query to be notified within 1 second of 
-        // a change in a service
-        WqlEventQuery query = 
-            new WqlEventQuery("__InstanceCreationEvent", 
-            new TimeSpan(0,0,1), 
-            "TargetInstance isa \"Win32_Process\"");
 
-        // Initialize an event watcher and subscribe to events 
-        // that match this query
-        ManagementEventWatcher watcher =
-            new ManagementEventWatcher();
-        watcher.Query = query;
-        // times out watcher.WaitForNextEvent in 5 seconds
-        watcher.Options.Timeout = new TimeSpan(0,0,5);
-      
-        // Block until the next event occurs 
-        // Note: this can be done in a loop if waiting for 
-        //        more than one occurrence
-        Console.WriteLine(
-            "Open an application (notepad.exe) to trigger an event.");
-        ManagementBaseObject e = watcher.WaitForNextEvent();
+        // Get the WMI class path
+        ManagementPath p = 
+            new ManagementPath(
+            "\\\\ComputerName\\root" +
+            "\\cimv2:Win32_LogicalDisk.DeviceID=\"C:\"");
 
-        //Display information from the event
-        Console.WriteLine(
-            "Process {0} has been created, path is: {1}", 
-            ((ManagementBaseObject)e
-            ["TargetInstance"])["Name"],
-            ((ManagementBaseObject)e
-            ["TargetInstance"])["ExecutablePath"]);
+        Console.WriteLine("IsClass: " +
+            p.IsClass);
+        // Should be False (because it is an instance)
 
-        //Cancel the subscription
-        watcher.Stop();
-        return 0;
+        Console.WriteLine("IsInstance: " +
+            p.IsInstance);
+        // Should be True
+
+        Console.WriteLine("ClassName: " +
+            p.ClassName);
+        // Should be "Win32_LogicalDisk"
+
+        Console.WriteLine("NamespacePath: " +
+            p.NamespacePath);
+        // Should be "ComputerName\cimv2"
+
+        Console.WriteLine("Server: " + 
+            p.Server);
+        // Should be "ComputerName"
+
+        Console.WriteLine("Path: " +
+            p.Path);
+        // Should be "ComputerName\root\cimv2:
+        // Win32_LogicalDisk.DeviceId="C:""
+
+        Console.WriteLine("RelativePath: " +
+            p.RelativePath);
+        // Should be "Win32_LogicalDisk.DeviceID="C:""
+
     }
 }

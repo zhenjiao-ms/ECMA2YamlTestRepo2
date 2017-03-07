@@ -1,43 +1,33 @@
-    Protected domainUpDown1 As DomainUpDown
-    
-    
-    Private Sub MySub()
-        ' Create and initialize the DomainUpDown control.
-        domainUpDown1 = New System.Windows.Forms.DomainUpDown()
-        
-        ' Add the DomainUpDown control to the form.
-        Controls.Add(domainUpDown1)
-    End Sub 'MySub
-    
-    
-    Private Sub button1_Click(sender As System.Object, e As System.EventArgs)
-        ' Add the text box contents and initial location in the collection
-        ' to the DomainUpDown control.
-        domainUpDown1.Items.Add((textBox1.Text.Trim() & " - " & myCounter))
-        
-        ' Increment the counter variable.
-        myCounter = myCounter + 1
-        
-        ' Clear the TextBox.
-        textBox1.Text = ""
-    End Sub 'button1_Click
-    
-    
-    Private Sub checkBox1_Click(sender As System.Object, e As System.EventArgs)
-        ' If Sorted is set to true, set it to false; 
-        ' otherwise set it to true.
-        If domainUpDown1.Sorted Then
-            domainUpDown1.Sorted = False
-        Else
-            domainUpDown1.Sorted = True
-        End If
-    End Sub 'checkBox1_Click
-    
-    
-    Private Sub domainUpDown1_SelectedItemChanged _
-        (sender As System.Object, e As System.EventArgs)
-        
-        ' Display the SelectedIndex and SelectedItem property values in a MessageBox.
-        MessageBox.Show(("SelectedIndex: " & domainUpDown1.SelectedIndex.ToString() & _
-            ControlChars.Cr & "SelectedItem: " & domainUpDown1.SelectedItem.ToString()))
-    End Sub 'domainUpDown1_SelectedItemChanged
+Private Sub DataGridView1_CellPainting(sender as Object, e as DataGridViewCellPaintingEventArgs) _ 
+     Handles DataGridView1.CellPainting
+
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "AdvancedBorderStyle", e.AdvancedBorderStyle)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "CellBounds", e.CellBounds)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "CellStyle", e.CellStyle)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ClipBounds", e.ClipBounds)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ColumnIndex", e.ColumnIndex)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ErrorText", e.ErrorText)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "FormattedValue", e.FormattedValue)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "PaintParts", e.PaintParts)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "State", e.State)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Value", e.Value)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Handled", e.Handled)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"CellPainting Event")
+
+End Sub

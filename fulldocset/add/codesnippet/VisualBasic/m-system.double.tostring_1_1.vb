@@ -1,51 +1,30 @@
-      Dim value As Double = 16325.62901
-      Dim specifier As String
-      Dim culture As CultureInfo
+Imports System.Globalization
 
-      ' Use standard numeric format specifiers.
-      specifier = "G"
-      culture = CultureInfo.CreateSpecificCulture("eu-ES")
-      Console.WriteLine(value.ToString(specifier, culture))
-      ' Displays:    16325,62901
-      Console.WriteLine(value.ToString(specifier, CultureInfo.InvariantCulture))
-      ' Displays:    16325.62901
+Module Example
+   Public Sub Main()
+      Console.WriteLine("Attempting to round-trip a Double with 'R':")
+      Dim initialValue As Double = 0.6822871999174
+      Dim valueString As String = initialValue.ToString("R",
+                                               CultureInfo.InvariantCulture)
+      Dim roundTripped As Double = Double.Parse(valueString,
+                                                CultureInfo.InvariantCulture)
+      Console.WriteLine("{0:R} = {1:R}: {2}",
+                        initialValue, roundTripped, initialValue.Equals(roundTripped))
+      Console.WriteLine()
       
-      specifier = "C"
-      culture = CultureInfo.CreateSpecificCulture("en-US")
-      Console.WriteLine(value.ToString(specifier, culture))
-      ' Displays:    $16,325.63
-      culture = CultureInfo.CreateSpecificCulture("en-GB")
-      Console.WriteLine(value.ToString(specifier, culture))
-      ' Displays:    £16,325.63
-      
-      specifier = "E04"
-      culture = CultureInfo.CreateSpecificCulture("sv-SE")
-      Console.WriteLine(value.ToString(specifier, culture))
-      ' Displays: 1,6326E+004   
-       culture = CultureInfo.CreateSpecificCulture("en-NZ")
-       Console.WriteLine(value.ToString(specifier, culture))
-      ' Displays:    1.6326E+004   
-      
-      specifier = "F"
-      culture = CultureInfo.CreateSpecificCulture("fr-FR")
-      Console.WriteLine(value.ToString(specifier, culture))
-      ' Displays:    16325,63
-      culture = CultureInfo.CreateSpecificCulture("en-CA")
-      Console.WriteLine(value.ToString(specifier, culture))
-      ' Displays:    16325.63
-      
-      specifier = "N"
-      culture = CultureInfo.CreateSpecificCulture("es-ES")
-      Console.WriteLine(value.ToString(specifier, culture))
-      ' Displays:    16.325,63
-      culture = CultureInfo.CreateSpecificCulture("fr-CA")
-      Console.WriteLine(value.ToString(specifier, culture))
-      ' Displays:    16 325,63
-      
-      specifier = "P"
-      culture = CultureInfo.InvariantCulture
-      Console.WriteLine((value/10000).ToString(specifier, culture))
-      ' Displays:    163.26 %
-      culture = CultureInfo.CreateSpecificCulture("ar-EG")
-      Console.WriteLine((value/10000).ToString(specifier, culture))
-      ' Displays:    163.256 %
+      Console.WriteLine("Attempting to round-trip a Double with 'G17':")
+      Dim valueString17 As String = initialValue.ToString("G17",
+                                                 CultureInfo.InvariantCulture)
+      Dim roundTripped17 As Double = double.Parse(valueString17,
+                                            CultureInfo.InvariantCulture)
+      Console.WriteLine("{0:R} = {1:R}: {2}",
+                        initialValue, roundTripped17, initialValue.Equals(roundTripped17))
+   End Sub
+End Module
+' If compiled to an application that targets anycpu or x64 and run on an x64 system,
+' the example displays the following output:
+'       Attempting to round-trip a Double with 'R':
+'       0.6822871999174 = 0.68228719991740006: False
+'
+'       Attempting to round-trip a Double with 'G17':
+'       0.6822871999174 = 0.6822871999174: True

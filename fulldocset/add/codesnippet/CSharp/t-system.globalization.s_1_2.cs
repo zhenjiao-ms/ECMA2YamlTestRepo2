@@ -1,60 +1,69 @@
 using System;
+using System.Text;
 using System.Globalization;
 
-public class Example
-{
-   public static void Main()
-   {
-      // Define names.
-      String[] names= { "Adam", "Ignatius", "Batholomew", "Gregory", 
-                        "Clement", "Frances", "Harold", "Dalmatius", 
-                        "Edgar", "John", "Benedict", "Paul", "George" }; 
-      SortKey[] sortKeys = new SortKey[names.Length];
-      CompareInfo ci = CultureInfo.CurrentCulture.CompareInfo;
+public sealed class App {
+   static void Main() {
+      // The string below contains combining characters.
+      String s = "a\u0304\u0308bc\u0327";
 
-      for (int ctr = 0; ctr < names.Length; ctr++)
-         sortKeys[ctr] = ci.GetSortKey(names[ctr], CompareOptions.IgnoreCase);         
-      
-      // Sort array based on value of sort keys.
-      Array.Sort(names, sortKeys);
-      
-      Console.WriteLine("Sorted array: ");
-      foreach (var name in names)
-         Console.WriteLine(name);
+      // Show each 'character' in the string.
+      EnumTextElements(s);
 
-      Console.WriteLine();
-      
-      String[] namesToFind = { "Paul", "PAUL", "Wilberforce" };
-      
-      Console.WriteLine("Searching an array:");
-      foreach (var nameToFind in namesToFind) {
-         SortKey searchKey = ci.GetSortKey(nameToFind, CompareOptions.IgnoreCase);
-         int index = Array.FindIndex(sortKeys, (x) => x.Equals(searchKey)); 
-         if (index >= 0)
-            Console.WriteLine("{0} found at index {1}: {2}", nameToFind,
-                              index, names[index]);
-         else
-            Console.WriteLine("{0} not found", nameToFind);
-      } 
+      // Show the index in the string where each 'character' starts.
+      EnumTextElementIndexes(s);
+   }
+
+   // Show how to enumerate each real character (honoring surrogates) in a string.
+   static void EnumTextElements(String s) {
+      // This StringBuilder holds the output results.
+      StringBuilder sb = new StringBuilder();
+
+      // Use the enumerator returned from GetTextElementEnumerator 
+      // method to examine each real character.
+      TextElementEnumerator charEnum = StringInfo.GetTextElementEnumerator(s);
+      while (charEnum.MoveNext()) {
+         sb.AppendFormat(
+           "Character at index {0} is '{1}'{2}",
+           charEnum.ElementIndex, charEnum.GetTextElement(),
+           Environment.NewLine);
+      }
+
+      // Show the results.
+      Console.WriteLine("Result of GetTextElementEnumerator:");
+      Console.WriteLine(sb);
+   }
+
+   // Show how to discover the index of each real character (honoring surrogates) in a string.
+   static void EnumTextElementIndexes(String s) {
+      // This StringBuilder holds the output results.
+      StringBuilder sb = new StringBuilder();
+
+      // Use the ParseCombiningCharacters method to 
+      // get the index of each real character in the string.
+      Int32[] textElemIndex = StringInfo.ParseCombiningCharacters(s);
+
+      // Iterate through each real character showing the character and the index where it was found.
+      for (Int32 i = 0; i < textElemIndex.Length; i++) {
+         sb.AppendFormat(
+            "Character {0} starts at index {1}{2}",
+            i, textElemIndex[i], Environment.NewLine);
+      }
+
+      // Show the results.
+      Console.WriteLine("Result of ParseCombiningCharacters:");
+      Console.WriteLine(sb);
    }
 }
-// The example displays the following output:
-//       Sorted array:
-//       Adam
-//       Batholomew
-//       Benedict
-//       Clement
-//       Dalmatius
-//       Edgar
-//       Frances
-//       George
-//       Gregory
-//       Harold
-//       Ignatius
-//       John
-//       Paul
-//       
-//       Searching an array:
-//       Paul found at index 12: Paul
-//       PAUL found at index 12: Paul
-//       Wilberforce not found
+
+// This code produces the following output.
+//
+// Result of GetTextElementEnumerator:
+// Character at index 0 is 'a-"'
+// Character at index 3 is 'b'
+// Character at index 4 is 'c,'
+// 
+// Result of ParseCombiningCharacters:
+// Character 0 starts at index 0
+// Character 1 starts at index 3
+// Character 2 starts at index 4

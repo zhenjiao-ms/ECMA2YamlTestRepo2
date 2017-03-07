@@ -1,63 +1,95 @@
+Imports Microsoft.VisualBasic
+Imports System
+Imports System.Collections
+Imports System.ComponentModel
+Imports System.Drawing
+Imports System.Reflection
+Imports System.Windows.Forms
 
-    Friend WithEvents statusBar1 As System.Windows.Forms.StatusBar
-
-    Private Sub InitializeStatusBarPanels()
-
-        ' Create a StatusBar control.
-        statusBar1 = New StatusBar
-
-        ' Dock the status bar at the top of the form. 
-        statusBar1.Dock = DockStyle.Top
-
-        ' Set the SizingGrip property to false so the user cannot 
-        ' resize the status bar.
-        statusBar1.SizingGrip = False
-
-        ' Create two StatusBarPanel objects to display in statusBar1.
-        Dim panel1 As New StatusBarPanel
-        Dim panel2 As New StatusBarPanel
-
-        ' Set the width of panel2 explicitly and set
-        ' panel1 to fill in the remaining space.
-        panel2.Width = 80
-        panel1.AutoSize = StatusBarPanelAutoSize.Spring
-
-        ' Set the text alignment within each panel.
-        panel1.Alignment = HorizontalAlignment.Left
-        panel2.Alignment = HorizontalAlignment.Right
-
-        ' Display the first panel without a border and the second
-        ' with a raised border.
-        panel1.BorderStyle = StatusBarPanelBorderStyle.None
-        panel2.BorderStyle = StatusBarPanelBorderStyle.Raised
-
-        ' Set the text of the panels. The panel1 object is reserved
-        ' for line numbers, while panel2 is set to the current time.
-        panel1.Text = "Reserved for important information."
-        panel2.Text = System.DateTime.Now.ToShortTimeString
-
-        ' Set a tooltip for panel2
-        panel2.ToolTipText = "Click time to display seconds"
-
-        ' Display panels in statusBar1 and add them to the
-        ' status bar's StatusBarPanelCollection.
-        statusBar1.ShowPanels = True
-        statusBar1.Panels.Add(panel1)
-        statusBar1.Panels.Add(panel2)
-
-        ' Add the StatusBar to the form.
-        Me.Controls.Add(statusBar1)
-    End Sub
-
-
-    ' If the user clicks the status bar, check the text of the 
-    ' StatusBarPanel.  If the text equals a short time string,
-    ' change it to long time display.
-    Private Sub statusBar1_PanelClick(ByVal sender As Object, _
-        ByVal e As StatusBarPanelClickEventArgs) _
-            Handles statusBar1.PanelClick
-        If (e.StatusBarPanel.Text = _
-            System.DateTime.Now.ToShortTimeString) Then
-            e.StatusBarPanel.Text = System.DateTime.Now.ToLongTimeString
+Public Class SystemInfoBrowserForm
+    Inherits System.Windows.Forms.Form
+    
+    Private listBox1 As System.Windows.Forms.ListBox
+    Private textBox1 As System.Windows.Forms.TextBox  
+    
+    Public Sub New()
+        Me.SuspendLayout()
+        InitForm()
+        
+        ' Add each property of the SystemInformation class to the list box.
+        Dim t As Type = GetType(System.Windows.Forms.SystemInformation)
+        Dim pi As PropertyInfo() = t.GetProperties()
+        Dim i As Integer
+        For i = 0 To pi.Length - 1
+            listBox1.Items.Add(pi(i).Name)
+        Next i
+        textBox1.Text = "The SystemInformation class has " + pi.Length.ToString() + " properties." + ControlChars.CrLf
+        
+        ' Configure the list item selected handler for the list box to invoke a 
+        ' method that displays the value of each property.
+        AddHandler listBox1.SelectedIndexChanged, AddressOf listBox1_SelectedIndexChanged
+        
+        Me.ResumeLayout(False)
+    End Sub    
+    
+    Private Sub listBox1_SelectedIndexChanged(sender As Object, e As EventArgs)
+        ' Return if no list item is selected.
+        If listBox1.SelectedIndex = - 1 Then
+            Return
+        End If         
+        ' Get the property name from the list item.
+        Dim propname As String = listBox1.Text
+        
+        If propname = "PowerStatus" Then
+            ' Cycle and display the values of each property of the PowerStatus property.
+            textBox1.Text += ControlChars.CrLf + "The value of the PowerStatus property is:"
+            Dim t As Type = GetType(System.Windows.Forms.PowerStatus)
+            Dim pi As PropertyInfo() = t.GetProperties()
+            Dim i As Integer
+            For i = 0 To pi.Length - 1
+                Dim propval As Object = pi(i).GetValue(SystemInformation.PowerStatus, Nothing)
+                textBox1.Text += ControlChars.CrLf + "    PowerStatus." + pi(i).Name + " is: " + propval.ToString()
+            Next i
+        Else
+            ' Display the value of the selected property of the SystemInformation type.
+            Dim t As Type = GetType(System.Windows.Forms.SystemInformation)
+            Dim pi As PropertyInfo() = t.GetProperties()
+            Dim prop As PropertyInfo = Nothing
+            Dim i As Integer
+            For i = 0 To pi.Length - 1
+                If pi(i).Name = propname Then
+                    prop = pi(i)
+                    Exit For
+                End If
+            Next i
+            Dim propval As Object = prop.GetValue(Nothing, Nothing)
+            textBox1.Text += ControlChars.CrLf + "The value of the " + propname + " property is: " + propval.ToString()
         End If
+    End Sub    
+    
+    Private Sub InitForm()
+        ' Initialize the form settings
+        Me.listBox1 = New System.Windows.Forms.ListBox()
+        Me.textBox1 = New System.Windows.Forms.TextBox()
+        Me.listBox1.Anchor = CType(System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right, System.Windows.Forms.AnchorStyles)
+        Me.listBox1.Location = New System.Drawing.Point(8, 16)
+        Me.listBox1.Size = New System.Drawing.Size(172, 496)
+        Me.listBox1.TabIndex = 0
+        Me.textBox1.Anchor = CType(System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right, System.Windows.Forms.AnchorStyles)
+        Me.textBox1.Location = New System.Drawing.Point(188, 16)
+        Me.textBox1.Multiline = True
+        Me.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.textBox1.Size = New System.Drawing.Size(420, 496)
+        Me.textBox1.TabIndex = 1
+        Me.ClientSize = New System.Drawing.Size(616, 525)
+        Me.Controls.Add(Me.textBox1)
+        Me.Controls.Add(Me.listBox1)
+        Me.Text = "Select a SystemInformation property to get the value of"
     End Sub
+        
+    <STAThread()>  _
+    Shared Sub Main()
+        Application.Run(New SystemInfoBrowserForm())
+    End Sub
+
+End Class

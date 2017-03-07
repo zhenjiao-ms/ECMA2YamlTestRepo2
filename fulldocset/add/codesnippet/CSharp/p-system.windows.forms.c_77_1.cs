@@ -1,36 +1,28 @@
-// Create three buttons and place them on a form using 
-// several size and location related properties. 
-private void AddOKCancelButtons()
+// Add a button to a form and set some of its common properties.
+private void AddMyButton()
 {
-   // Set the button size and location using 
-   // the Size and Location properties.
-   Button buttonOK = new Button();
-   buttonOK.Location = new Point(136,248);
-   buttonOK.Size = new Size(75,25);
-   // Set the Text property and make the 
-   // button the form's default button. 
-   buttonOK.Text = "&OK";
-   this.AcceptButton = buttonOK;
+   // Create a button and add it to the form.
+   Button button1 = new Button();
 
-   // Set the button size and location using the Top, 
-   // Left, Width, and Height properties.
-   Button buttonCancel = new Button();
-   buttonCancel.Top = buttonOK.Top;
-   buttonCancel.Left = buttonOK.Right + 5;
-   buttonCancel.Width = buttonOK.Width;
-   buttonCancel.Height = buttonOK.Height;
-   // Set the Text property and make the 
-   // button the form's cancel button.
-   buttonCancel.Text = "&Cancel";
-   this.CancelButton = buttonCancel;
+   // Anchor the button to the bottom right corner of the form
+   button1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
 
-   // Set the button size and location using 
-   // the Bounds property.
-   Button buttonHelp = new Button();
-   buttonHelp.Bounds = new Rectangle(10,10, 75, 25);
-   // Set the Text property of the button.
-   buttonHelp.Text = "&Help";
+   // Assign a background image.
+   button1.BackgroundImage = imageList1.Images[0];
 
-   // Add the buttons to the form.
-   this.Controls.AddRange(new Control[] {buttonOK, buttonCancel, buttonHelp} );
+   // Specify the layout style of the background image. Tile is the default.
+   button1.BackgroundImageLayout = ImageLayout.Center;
+   
+   // Make the button the same size as the image.
+   button1.Size = button1.BackgroundImage.Size;
+
+   // Set the button's TabIndex and TabStop properties.
+   button1.TabIndex = 1;
+   button1.TabStop = true;
+
+   // Add a delegate to handle the Click event.
+   button1.Click += new System.EventHandler(this.button1_Click);
+
+   // Add the button to the form.
+   this.Controls.Add(button1);
 }

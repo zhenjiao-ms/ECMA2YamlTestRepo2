@@ -1,13 +1,12 @@
-public:
-   void CopyAllMyText()
-   {
-      // Determine if any text is selected in the TextBox control.
-      if ( textBox1->SelectionLength == 0 )
-      {
-         // Select all text in the text box.
-         textBox1->SelectAll();
-      }
+private:
+    void InitialTreeView_MouseDown(Object^ sender, MouseEventArgs^ e)
+    {
+        TreeViewHitTestInfo^ info = initialTreeView->HitTest(e->X, e->Y);
+        TreeNode^ hitNode;
 
-      // Copy the contents of the control to the Clipboard.
-      textBox1->Copy();
-   }
+        if (info->Node != nullptr)
+        {
+            hitNode = info->Node;
+            MessageBox::Show(hitNode->Level.ToString());
+        }
+    }

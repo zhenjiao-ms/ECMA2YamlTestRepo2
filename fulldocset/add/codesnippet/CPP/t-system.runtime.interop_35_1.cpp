@@ -1,11 +1,22 @@
+using namespace System;
 using namespace System::Runtime::InteropServices;
+public ref class MyClassThatNeedsToRegister
+{
+public:
 
-//Interface is exposed to COM as dual.
-interface class IMyInterface1{};
+   [ComRegisterFunctionAttribute]
+   static void RegisterFunction( Type^ t )
+   {
+      
+      //Insert code here.
+   }
 
-//Insert code here.
-//Interface is exposed to COM as IDispatch.
 
-[InterfaceTypeAttribute(ComInterfaceType::InterfaceIsIDispatch)]
-interface class IMyInterface2{};
-//Insert code here.
+   [ComUnregisterFunctionAttribute]
+   static void UnregisterFunction( Type^ t )
+   {
+      
+      //Insert code here.
+   }
+
+};

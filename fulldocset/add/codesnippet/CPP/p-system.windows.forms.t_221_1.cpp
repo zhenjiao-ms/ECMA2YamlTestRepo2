@@ -1,82 +1,53 @@
-ref class Customer
-{
-public:
-   ArrayList^ CustomerOrders;
-   String^ CustomerName;
-   Customer( String^ myName )
+private:
+   void Menu_Copy( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
    {
-      CustomerName = myName;
-      CustomerOrders = gcnew ArrayList;
-   }
-
-};
-
-ref class Order
-{
-public:
-   String^ OrderID;
-   Order( String^ myOrderID )
-   {
-      this->OrderID = myOrderID;
-   }
-
-};
-
-   void FillTreeView()
-   {
-      
-      // Load the images in an ImageList.
-      ImageList^ myImageList = gcnew ImageList;
-      myImageList->Images->Add( Image::FromFile( "Default.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "SelectedDefault.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "Root.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "UnselectedCustomer.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "SelectedCustomer.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "UnselectedOrder.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "SelectedOrder.gif" ) );
-      
-      // Assign the ImageList to the TreeView.
-      myTreeView->ImageList = myImageList;
-      
-      // Set the TreeView control's default image and selected image indexes.
-      myTreeView->ImageIndex = 0;
-      myTreeView->SelectedImageIndex = 1;
-      
-      /* Set the index of image from the
-        ImageList for selected and unselected tree nodes.*/
-      this->rootImageIndex = 2;
-      this->selectedCustomerImageIndex = 3;
-      this->unselectedCustomerImageIndex = 4;
-      this->selectedOrderImageIndex = 5;
-      this->unselectedOrderImageIndex = 6;
-      
-      // Create the root tree node.
-      TreeNode^ rootNode = gcnew TreeNode( "CustomerList" );
-      rootNode->ImageIndex = rootImageIndex;
-      rootNode->SelectedImageIndex = rootImageIndex;
-      
-      // Add a main root tree node.
-      myTreeView->Nodes->Add( rootNode );
-      
-      // Add a root tree node for each Customer object in the ArrayList.
-      IEnumerator^ myEnum = customerArray->GetEnumerator();
-      while ( myEnum->MoveNext() )
+      // Ensure that text is selected in the text box.   
+      if ( textBox1->SelectionLength > 0 )
       {
-         Customer^ myCustomer = safe_cast<Customer^>(myEnum->Current);
-         
-         // Add a child tree node for each Order object.
-         int countIndex = 0;
-         array<TreeNode^>^myTreeNodeArray = gcnew array<TreeNode^>(myCustomer->CustomerOrders->Count);
-         IEnumerator^ myEnum = myCustomer->CustomerOrders->GetEnumerator();
-         while ( myEnum->MoveNext() )
+         // Copy the selected text to the Clipboard.
+         textBox1->Copy();
+      }
+   }
+
+   void Menu_Cut( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      // Ensure that text is currently selected in the text box.   
+      if (  !textBox1->SelectedText->Equals( "" ) )
+      {
+         // Cut the selected text in the control and paste it into the Clipboard.
+         textBox1->Cut();
+      }
+   }
+
+   void Menu_Paste( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      // Determine if there is any text in the Clipboard to paste into the text box.
+      if ( Clipboard::GetDataObject()->GetDataPresent( DataFormats::Text ) == true )
+      {
+         // Determine if any text is selected in the text box.
+         if ( textBox1->SelectionLength > 0 )
          {
-            Order^ myOrder = safe_cast<Order^>(myEnum->Current);
-            
-            // Add the Order tree node to the array.
-            myTreeNodeArray[ countIndex ] = gcnew TreeNode( myOrder->OrderID,unselectedOrderImageIndex,selectedOrderImageIndex );
-            countIndex++;
+            // Ask user if they want to paste over currently selected text.
+            if ( MessageBox::Show( "Do you want to paste over current selection?",
+               "Cut Example", MessageBoxButtons::YesNo ) == ::DialogResult::No )
+            {
+               // Move selection to the point after the current selection and paste.
+               textBox1->SelectionStart = textBox1->SelectionStart + textBox1->SelectionLength;
+            }
          }
-         TreeNode^ customerNode = gcnew TreeNode( myCustomer->CustomerName,unselectedCustomerImageIndex,selectedCustomerImageIndex,myTreeNodeArray );
-         myTreeView->Nodes[ 0 ]->Nodes->Add( customerNode );
+         // Paste current text in Clipboard into text box.
+         textBox1->Paste();
+      }
+   }
+
+   void Menu_Undo( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      // Determine if last operation can be undone in text box.   
+      if ( textBox1->CanUndo == true )
+      {
+         // Undo the last operation.
+         textBox1->Undo();
+         // Clear the undo buffer to prevent last action from being redone.
+         textBox1->ClearUndo();
       }
    }

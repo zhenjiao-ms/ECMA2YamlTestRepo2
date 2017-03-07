@@ -1,15 +1,13 @@
-    Private Sub AddLinkColumn()
-
-        Dim links As New DataGridViewLinkColumn()
-        With links
-            .UseColumnTextForLinkValue = True
-            .HeaderText = ColumnName.ReportsTo.ToString()
-            .DataPropertyName = ColumnName.ReportsTo.ToString()
-            .ActiveLinkColor = Color.White
-            .LinkBehavior = LinkBehavior.SystemDefault
-            .LinkColor = Color.Blue
-            .TrackVisitedState = True
-            .VisitedLinkColor = Color.YellowGreen
-        End With
-        DataGridView1.Columns.Add(links)
-    End Sub
+        Public Overrides ReadOnly Property AdjustedTopLeftHeaderBorderStyle() _
+            As DataGridViewAdvancedBorderStyle
+            Get
+                Dim newStyle As New DataGridViewAdvancedBorderStyle()
+                With newStyle
+                    .Top = DataGridViewAdvancedCellBorderStyle.None
+                    .Left = DataGridViewAdvancedCellBorderStyle.None
+                    .Bottom = DataGridViewAdvancedCellBorderStyle.Outset
+                    .Right = DataGridViewAdvancedCellBorderStyle.OutsetDouble
+                End With
+                Return newStyle
+            End Get
+        End Property

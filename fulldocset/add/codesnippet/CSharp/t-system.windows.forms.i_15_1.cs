@@ -1,51 +1,30 @@
 using System;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
 
-public class MyButton : ButtonBase, IButtonControl
+public class Form1 : System.Windows.Forms.Form
 {
-	private DialogResult myDialogResult;
-
-	public MyButton()
+	RichTextBox rtb = new RichTextBox();
+	public Form1()
 	{
-		// Make the button White and a Popup style
-		// so it can be distinguished on the form.
-		this.FlatStyle = FlatStyle.Popup;
-		this.BackColor = Color.White;
+		this.Controls.Add(rtb);
+		rtb.Dock = DockStyle.Fill;
+		this.InputLanguageChanged += new InputLanguageChangedEventHandler(languageChange);
 	}
-		
-	// Add implementation to the IButtonControl.DialogResult property.
-	public DialogResult DialogResult
+	private void languageChange(Object sender, InputLanguageChangedEventArgs e)
 	{
-		get
+		// If the input language is Japanese.
+		// set the initial IMEMode to Katakana.
+		if (e.InputLanguage.Culture.TwoLetterISOLanguageName.Equals("ja"))
 		{
-			return this.myDialogResult;
-		}
-
-		set
-		{
-			if(Enum.IsDefined(typeof(DialogResult), value))				
-			{
-				this.myDialogResult = value;
-			}
-		}	
-	}
-
-	// Add implementation to the IButtonControl.NotifyDefault method.
-	public void NotifyDefault(bool value)
-	{
-		if(this.IsDefault != value)
-		{
-			this.IsDefault = value;
+			rtb.ImeMode = System.Windows.Forms.ImeMode.Katakana;
 		}
 	}
-
-	// Add implementation to the IButtonControl.PerformClick method.
-	public void PerformClick()
+	public static void Main(string[] args)
 	{
-		if(this.CanSelect)
-		{
-			this.OnClick(EventArgs.Empty);
-		}
+		Application.Run(new Form1());
 	}
 }

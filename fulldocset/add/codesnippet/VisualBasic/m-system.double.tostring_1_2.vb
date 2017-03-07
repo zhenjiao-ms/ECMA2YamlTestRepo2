@@ -1,39 +1,51 @@
-    Public Class Temperature
-        Implements IFormattable
+      Dim value As Double = 16325.62901
+      Dim specifier As String
+      Dim culture As CultureInfo
 
-        Public Overloads Function ToString(ByVal format As String, ByVal provider As IFormatProvider) As String _
-            Implements IFormattable.ToString
-
-            If Not (format Is Nothing) Then
-                If format.Equals("F") Then
-                    Return [String].Format("{0}'F", Me.Value.ToString())
-                End If
-                If format.Equals("C") Then
-                    Return [String].Format("{0}'C", Me.Celsius.ToString())
-                End If
-            End If
-
-            Return m_value.ToString(format, provider)
-        End Function
-
-        ' The value holder
-        Protected m_value As Double
-
-        Public Property Value() As Double
-            Get
-                Return m_value
-            End Get
-            Set(ByVal Value As Double)
-                m_value = Value
-            End Set
-        End Property
-
-        Public Property Celsius() As Double
-            Get
-                Return (m_value - 32) / 1.8
-            End Get
-            Set(ByVal Value As Double)
-                m_value = Value * 1.8 + 32
-            End Set
-        End Property
-    End Class
+      ' Use standard numeric format specifiers.
+      specifier = "G"
+      culture = CultureInfo.CreateSpecificCulture("eu-ES")
+      Console.WriteLine(value.ToString(specifier, culture))
+      ' Displays:    16325,62901
+      Console.WriteLine(value.ToString(specifier, CultureInfo.InvariantCulture))
+      ' Displays:    16325.62901
+      
+      specifier = "C"
+      culture = CultureInfo.CreateSpecificCulture("en-US")
+      Console.WriteLine(value.ToString(specifier, culture))
+      ' Displays:    $16,325.63
+      culture = CultureInfo.CreateSpecificCulture("en-GB")
+      Console.WriteLine(value.ToString(specifier, culture))
+      ' Displays:    £16,325.63
+      
+      specifier = "E04"
+      culture = CultureInfo.CreateSpecificCulture("sv-SE")
+      Console.WriteLine(value.ToString(specifier, culture))
+      ' Displays: 1,6326E+004   
+       culture = CultureInfo.CreateSpecificCulture("en-NZ")
+       Console.WriteLine(value.ToString(specifier, culture))
+      ' Displays:    1.6326E+004   
+      
+      specifier = "F"
+      culture = CultureInfo.CreateSpecificCulture("fr-FR")
+      Console.WriteLine(value.ToString(specifier, culture))
+      ' Displays:    16325,63
+      culture = CultureInfo.CreateSpecificCulture("en-CA")
+      Console.WriteLine(value.ToString(specifier, culture))
+      ' Displays:    16325.63
+      
+      specifier = "N"
+      culture = CultureInfo.CreateSpecificCulture("es-ES")
+      Console.WriteLine(value.ToString(specifier, culture))
+      ' Displays:    16.325,63
+      culture = CultureInfo.CreateSpecificCulture("fr-CA")
+      Console.WriteLine(value.ToString(specifier, culture))
+      ' Displays:    16 325,63
+      
+      specifier = "P"
+      culture = CultureInfo.InvariantCulture
+      Console.WriteLine((value/10000).ToString(specifier, culture))
+      ' Displays:    163.26 %
+      culture = CultureInfo.CreateSpecificCulture("ar-EG")
+      Console.WriteLine((value/10000).ToString(specifier, culture))
+      ' Displays:    163.256 %

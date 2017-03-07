@@ -1,26 +1,15 @@
-   // Select the first row.
-private:
-   void button7_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
+protected:
+   void TextExpanded( DataGrid^ myGrid )
    {
-      myDataGrid->Select(0);
-   }
-
-   // Check if the first row is selected.
-private:
-   void button8_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
-   {
-      if ( myDataGrid->IsSelected( 0 ) )
+      // Get the DataTable of the grid
+      DataTable^ myTable;
+      // Assuming the grid is bound to a DataTable
+      myTable = (DataTable^)(myGrid->DataSource);
+      for ( int i = 0; i < myTable->Rows->Count; i++ )
       {
-         MessageBox::Show( "Row selected", "Message", MessageBoxButtons::OK, MessageBoxIcon::Exclamation );
+         if ( myGrid->IsExpanded( i ) )
+         {
+            Console::WriteLine( "Row {0} was expanded", i );
+         }
       }
-      else
-      {
-         MessageBox::Show( "Row not selected", "Message", MessageBoxButtons::OK, MessageBoxIcon::Exclamation );
-      }
-   }
-
-   // Deselect the first row.
-   void button11_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
-   {
-      myDataGrid->UnSelect( 0 );
    }

@@ -1,13 +1,28 @@
-private void ListView1_ColumnReordered(Object sender, ColumnReorderedEventArgs e) {
+private void DecimalToCurrency(object sender, ConvertEventArgs cevent)
+{
+   // The method converts only to string type. Test this using the DesiredType.
+   if (cevent.DesiredType != typeof(string)) return;
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "OldDisplayIndex", e.OldDisplayIndex );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "NewDisplayIndex", e.NewDisplayIndex );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Header", e.Header );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Cancel", e.Cancel );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "ColumnReordered Event" );
+   // Use the ToString method to format the value as currency ("c").
+   cevent.Value = ((decimal) cevent.Value).ToString("c");
+}
+
+private void CurrencyToDecimal(object sender, ConvertEventArgs cevent)
+{
+   // ' The method converts only to decimal type. 
+   if (cevent.DesiredType != typeof(decimal)) return;
+
+   // Converts the string back to decimal using the static ToDecimal method.
+   cevent.Value = Convert.ToDecimal(cevent.Value.ToString());
+}
+
+private void BindControl()
+{
+   // Creates the binding first. The OrderAmount is typed as Decimal.
+   Binding b = new Binding
+      ("Text", ds, "customers.custToOrders.OrderAmount");
+   // Add the delegates to the events.
+   b.Format += new ConvertEventHandler(DecimalToCurrency);
+   b.Parse += new ConvertEventHandler(CurrencyToDecimal);
+   text1.DataBindings.Add(b);
 }

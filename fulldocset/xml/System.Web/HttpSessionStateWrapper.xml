@@ -11,8 +11,15 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Encapsulates the HTTP intrinsic object that provides access to session-state values, session-level settings, and lifetime management methods.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The HttpSessionStateWrapper class derives from the <xref:System.Web.HttpSessionStateBase> class and serves as a wrapper for the <xref:System.Web.SessionState.HttpSessionState> class. This class exposes the functionality of the <xref:System.Web.SessionState.HttpSessionState> class and exposes the <xref:System.Web.HttpSessionStateBase> type. The <xref:System.Web.HttpSessionStateBase> class lets you replace the original implementation of the <xref:System.Web.SessionState.HttpSessionState> class in your application with a custom implementation, such as when you perform unit testing outside the ASP.NET pipeline.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,9 +35,11 @@
         <Parameter Name="httpSessionState" Type="System.Web.SessionState.HttpSessionState" />
       </Parameters>
       <Docs>
-        <param name="httpSessionState">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="httpSessionState">The object that this wrapper class provides access to.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.Web.HttpSessionStateWrapper" /> class.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="httpSessionState" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="Abandon">
@@ -47,7 +56,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Cancels the current session.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -68,9 +77,9 @@
         <Parameter Name="value" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="name">The name of the item to add to the session-state collection.</param>
+        <param name="value">The value of the item to add to the session-state collection.</param>
+        <summary>Adds an item to the session-state collection.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -88,7 +97,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Removes all keys and values from the session-state collection.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -105,8 +114,8 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the character-set identifier for the current session.</summary>
+        <value>The character-set identifier for the current session.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -123,8 +132,8 @@
         <ReturnType>System.Web.HttpSessionStateBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a reference to the current session-state object.</summary>
+        <value>The current session-state object.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -141,8 +150,8 @@
         <ReturnType>System.Web.HttpCookieMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether the application is configured for cookieless sessions.</summary>
+        <value>One of the cookie-mode values that indicate whether the application is configured for cookieless sessions. The default is <see cref="T:System.Web.HttpCookieMode" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -163,9 +172,9 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="array">To be added.</param>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="array">The array to copy session values to</param>
+        <param name="index">The zero-based index in <c>array</c> at which copying starts.</param>
+        <summary>Copies the collection of session-state values to a one-dimensional array, starting at the specified index in the array.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -182,8 +191,8 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the number of items in the session-state collection.</summary>
+        <value>The number of items in the collection.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -201,8 +210,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns an enumerator that can be used to read all the session-state variable names in the current session.</summary>
+        <returns>An enumerator that can iterate through the variable names in the session-state collection.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -219,8 +228,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether the session ID is embedded in the URL.</summary>
+        <value>
+          <see langword="true" /> if the session ID is embedded in the URL; otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -237,8 +247,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether the session was created during the current request.</summary>
+        <value>
+          <see langword="true" /> if the session was created during the current request; otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -255,8 +266,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether the session is read-only.</summary>
+        <value>
+          <see langword="true" /> if the session is read-only; otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -273,8 +285,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether access to the collection of session-state values is synchronized (thread safe).</summary>
+        <value>
+          <see langword="true" /> if access to the collection is synchronized (thread safe); otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -294,10 +307,12 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <param name="index">The index of the session value.</param>
+        <summary>Gets or sets a session value by using the specified index.</summary>
+        <value>The session-state value that is stored at the specified index.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">
+          <paramref name="index" /> is outside the valid range of indexes for the collection.</exception>
       </Docs>
     </Member>
     <Member MemberName="Item">
@@ -316,9 +331,9 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <param name="name">The key name of the session value.</param>
+        <summary>Gets or sets a session value by using the specified name.</summary>
+        <value>The session-state value that has the specified name, or <see langword="null" /> if the item does not exist.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -335,8 +350,8 @@
         <ReturnType>System.Collections.Specialized.NameObjectCollectionBase+KeysCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a collection of the keys for all values that are stored in the session-state collection.</summary>
+        <value>The session keys.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -353,8 +368,8 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the locale identifier (LCID) of the current session.</summary>
+        <value>The LCID (culture) of the current session.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -371,8 +386,8 @@
         <ReturnType>System.Web.SessionState.SessionStateMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the current session-state mode.</summary>
+        <value>The session-state mode.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -392,8 +407,8 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="name">The name of the item to delete from the session-state collection.</param>
+        <summary>Deletes an item from the session-state collection.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -411,8 +426,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Removes all keys and values from the session-state collection.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This method performs the same function as the <xref:System.Web.HttpSessionStateWrapper.Clear%2A> method.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveAt">
@@ -431,9 +453,15 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="index">The index of the item to remove from the session-state collection.</param>
+        <summary>Deletes the item at the specified index from the session-state collection.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">
+          <paramref name="index" /> is less than zero.  
+  
+ \- or -  
+  
+ <paramref name="index" /> is equal to or greater than <see cref="System.Web.SessionState.HttpSessionState.Count%2A" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="SessionID">
@@ -449,8 +477,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the unique identifier for the session.</summary>
+        <value>The unique session identifier.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -467,8 +495,8 @@
         <ReturnType>System.Web.HttpStaticObjectsCollectionBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a collection of objects that are declared by <see langword="object" /> elements that are marked as server controls and scoped to the current session in the application's Global.asax file.</summary>
+        <value>The objects that are declared in the Global.asax file.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -485,8 +513,8 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets an object that can be used to synchronize access to the collection of session-state values.</summary>
+        <value>An object that can be used to synchronize access to the collection.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -503,8 +531,8 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the time, in minutes, that can elapse between requests before the session-state provider ends the session.</summary>
+        <value>The time-out period, in minutes.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

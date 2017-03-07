@@ -1,17 +1,20 @@
-public:
-   void InitMyForm()
+private:
+   void button1_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
    {
-      // Adds a label to the form.
-      Label^ label1 = gcnew Label;
-      label1->Location = System::Drawing::Point( 54, 128 );
-      label1->Name = "label1";
-      label1->Size = System::Drawing::Size( 220, 80 );
-      label1->Text = "Start position information";
-      this->Controls->Add( label1 );
-      
-      // Moves the start position to the center of the screen.
-      StartPosition = FormStartPosition::CenterScreen;
-      
-      // Displays the position information.
-      label1->Text = String::Format( "The start position is {0}", StartPosition );
+      Stream^ myStream;
+      OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog;
+
+      openFileDialog1->InitialDirectory = "c:\\";
+      openFileDialog1->Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+      openFileDialog1->FilterIndex = 2;
+      openFileDialog1->RestoreDirectory = true;
+
+      if ( openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK )
+      {
+         if ( (myStream = openFileDialog1->OpenFile()) != nullptr )
+         {
+            // Insert code to read the stream here.
+            myStream->Close();
+         }
+      }
    }

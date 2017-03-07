@@ -1,35 +1,62 @@
+Option Explicit On
+Option Strict On
+
 Imports System
 Imports System.Xml
 Imports System.Xml.Schema
 
 Class XMLSchemaExamples
     Public Shared Sub Main()
-
         Dim schema As New XmlSchema()
 
-        ' <xs:simpleType name="NameType">
-        Dim NameType As New XmlSchemaSimpleType()
-        NameType.Name = "NameType"
+        ' <xs:element name="cat" type="xs:string"/>
+        Dim elementCat As New XmlSchemaElement()
+        schema.Items.Add(elementCat)
+        elementCat.Name = "cat"
+        elementCat.SchemaTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
 
-        ' <xs:restriction base="xs:string">
-        Dim restriction As New XmlSchemaSimpleTypeRestriction()
-        restriction.BaseTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
+        ' <xs:element name="dog" type="xs:string"/>
+        Dim elementDog As New XmlSchemaElement()
+        schema.Items.Add(elementDog)
+        elementDog.Name = "dog"
+        elementDog.SchemaTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
 
-        ' <xs:whiteSpace value="collapse"/>
-        Dim whiteSpace As New XmlSchemaWhiteSpaceFacet()
-        whiteSpace.Value = "collapse"
-        restriction.Facets.Add(whiteSpace)
+        ' <xs:element name="redDog" substitutionGroup="dog" />
+        Dim elementRedDog As New XmlSchemaElement()
+        schema.Items.Add(elementRedDog)
+        elementRedDog.Name = "redDog"
+        elementRedDog.SubstitutionGroup = New XmlQualifiedName("dog")
 
-        NameType.Content = restriction
+        ' <xs:element name="brownDog" substitutionGroup ="dog" />
+        Dim elementBrownDog As New XmlSchemaElement()
+        schema.Items.Add(elementBrownDog)
+        elementBrownDog.Name = "brownDog"
+        elementBrownDog.SubstitutionGroup = New XmlQualifiedName("dog")
 
-        schema.Items.Add(NameType)
+        ' <xs:element name="pets">
+        Dim elementPets As New XmlSchemaElement()
+        schema.Items.Add(elementPets)
+        elementPets.Name = "pets"
 
-        ' <xs:element name="LastName" type="NameType"/>
-        Dim element As New XmlSchemaElement()
-        element.Name = "LastName"
-        element.SchemaTypeName = New XmlQualifiedName("NameType", "")
+        ' <xs:complexType>
+        Dim complexType As New XmlSchemaComplexType()
+        elementPets.SchemaType = complexType
 
-        schema.Items.Add(element)
+        ' <xs:choice minOccurs="0" maxOccurs="unbounded">
+        Dim choice As New XmlSchemaChoice()
+        complexType.Particle = choice
+        choice.MinOccurs = 0
+        choice.MaxOccursString = "unbounded"
+
+        ' <xs:element ref="cat"/>
+        Dim catRef As New XmlSchemaElement()
+        choice.Items.Add(catRef)
+        catRef.RefName = New XmlQualifiedName("cat")
+
+        ' <xs:element ref="dog"/>
+        Dim dogRef As New XmlSchemaElement()
+        choice.Items.Add(dogRef)
+        dogRef.RefName = New XmlQualifiedName("dog")
 
         Dim schemaSet As New XmlSchemaSet()
         AddHandler schemaSet.ValidationEventHandler, AddressOf ValidationCallbackOne
@@ -47,10 +74,11 @@ Class XMLSchemaExamples
         nsmgr.AddNamespace("xs", "http://www.w3.org/2001/XMLSchema")
         compiledSchema.Write(Console.Out, nsmgr)
 
-    End Sub
+
+    End Sub 'Main
+
 
     Public Shared Sub ValidationCallbackOne(ByVal sender As Object, ByVal args As ValidationEventArgs)
         Console.WriteLine(args.Message)
-    End Sub
-
-End Class
+    End Sub 'ValidationCallbackOne
+End Class 'XMLSchemaExamples

@@ -1,4 +1,5 @@
-Private Sub ToggleParentRowsVisible(ByRef myGrid As DataGrid)
-    myGrid.ParentRowsVisible = myGrid.ParentRowsVisible Xor True
+Private Sub ToggleCaptionVisible(ByVal myGrid As DataGrid)
+    ' Toggle the CaptionVisibleProperty.
+    myGrid.CaptionVisible = myGrid.CaptionVisible Xor True
  End Sub
  

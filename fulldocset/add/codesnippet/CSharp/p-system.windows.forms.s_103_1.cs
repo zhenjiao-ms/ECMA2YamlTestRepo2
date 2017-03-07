@@ -1,98 +1,62 @@
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Drawing;
-using System.Reflection;
-using System.Windows.Forms;
+	private StatusBar StatusBar1;
 
-namespace SystemInfoBrowser
-{
-    public class SystemInfoBrowserForm : System.Windows.Forms.Form
-    {
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox1;        
-        
-        public SystemInfoBrowserForm()
-	    {
-            this.SuspendLayout();
-            InitForm();
+	private void InitializeStatusBarPanels()
+	{
+		StatusBar1 = new StatusBar();
+
+		// Create two StatusBarPanel objects.
+		StatusBarPanel panel1 = new StatusBarPanel();
+		StatusBarPanel panel2 = new StatusBarPanel();
+
+		// Set the style of the panels.  
+		// panel1 will be owner-drawn.
+		panel1.Style = StatusBarPanelStyle.OwnerDraw;
+
+		// The panel2 object will be drawn by the operating system.
+		panel2.Style = StatusBarPanelStyle.Text;
+
+		// Set the text of both panels to the same date string.
+		panel1.Text = System.DateTime.Today.ToShortDateString();
+		panel2.Text = System.DateTime.Today.ToShortDateString();
+
+		// Add both panels to the StatusBar.
+		StatusBar1.Panels.Add(panel1);
+		StatusBar1.Panels.Add(panel2);
+
+		// Make panels visible by setting the ShowPanels 
+		// property to True.
+		StatusBar1.ShowPanels = true;
+
+		// Associate the event-handling method with the DrawItem event 
+		// for the owner-drawn panel.
+		StatusBar1.DrawItem += 
+			new StatusBarDrawItemEventHandler(DrawCustomStatusBarPanel);
             
-            // Add each property of the SystemInformation class to the list box.
-            Type t = typeof(System.Windows.Forms.SystemInformation);            
-            PropertyInfo[] pi = t.GetProperties();            
-            for( int i=0; i<pi.Length; i++ )
-                listBox1.Items.Add( pi[i].Name );            
-            textBox1.Text = "The SystemInformation class has "+pi.Length.ToString()+" properties.\r\n";
+		this.Controls.Add(StatusBar1);
+	}
 
-            // Configure the list item selected handler for the list box to invoke a 
-            // method that displays the value of each property.
-            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
-            this.ResumeLayout(false);
-	    }
-		
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Return if no list item is selected.
-            if( listBox1.SelectedIndex == -1 ) return;
-            // Get the property name from the list item.
-            string propname = listBox1.Text;
-            
-            if( propname == "PowerStatus" )
-            {
-                // Cycle and display the values of each property of the PowerStatus property.
-                textBox1.Text += "\r\nThe value of the PowerStatus property is:";                                
-                Type t = typeof(System.Windows.Forms.PowerStatus);
-                PropertyInfo[] pi = t.GetProperties();            
-                for( int i=0; i<pi.Length; i++ )
-                {
-                    object propval = pi[i].GetValue(SystemInformation.PowerStatus, null);            
-                    textBox1.Text += "\r\n    PowerStatus."+pi[i].Name+" is: "+propval.ToString();
-                }
-            }
-            else
-            {
-                // Display the value of the selected property of the SystemInformation type.
-                Type t = typeof(System.Windows.Forms.SystemInformation);
-                PropertyInfo[] pi = t.GetProperties();            
-                PropertyInfo prop = null;
-                for( int i=0; i<pi.Length; i++ )
-                    if( pi[i].Name == propname )
-                    {
-                        prop = pi[i];
-                        break;           
-                    }
-                object propval = prop.GetValue(null, null);            
-                textBox1.Text += "\r\nThe value of the "+propname+" property is: "+propval.ToString();
-            }
-        }
+	// Draw the panel.
+	private void DrawCustomStatusBarPanel(object sender, 
+		StatusBarDrawItemEventArgs e)
+	{
 
-        private void InitForm()
-        {
-            // Initialize the form settings
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();            
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-                | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.Location = new System.Drawing.Point(8, 16);
-            this.listBox1.Size = new System.Drawing.Size(172, 496);
-            this.listBox1.TabIndex = 0;            
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-                | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(188, 16);
-            this.textBox1.Multiline = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;           
-            this.textBox1.Size = new System.Drawing.Size(420, 496);
-            this.textBox1.TabIndex = 1;            
-            this.ClientSize = new System.Drawing.Size(616, 525);            
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.listBox1);            
-            this.Text = "Select a SystemInformation property to get the value of";                   
-        }
+		// Draw a blue background in the owner-drawn panel.
+		e.Graphics.FillRectangle(Brushes.AliceBlue, e.Bounds);
 
-        [STAThread]
-        static void Main() 
-        {
-            Application.Run(new SystemInfoBrowserForm());
-        }
-    }
-}
+		// Create a StringFormat object to align text in the panel.
+		StringFormat textFormat = new StringFormat();
+
+		// Center the text in the middle of the line.
+		textFormat.LineAlignment = StringAlignment.Center;
+
+		// Align the text to the left.
+		textFormat.Alignment = StringAlignment.Far;
+
+		// Draw the panel's text in dark blue using the Panel 
+		// and Bounds properties of the StatusBarEventArgs object 
+		// and the StringFormat object.
+		e.Graphics.DrawString(e.Panel.Text, StatusBar1.Font, 
+			Brushes.DarkBlue, new RectangleF(e.Bounds.X, 
+			e.Bounds.Y, e.Bounds.Width, e.Bounds.Height), textFormat);
+
+	}

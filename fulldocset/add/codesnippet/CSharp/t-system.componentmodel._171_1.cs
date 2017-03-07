@@ -1,22 +1,12 @@
-    [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")] 
-    public class CDesigner : System.ComponentModel.Design.ComponentDesigner 
-    {
-        public override void Initialize(IComponent comp) 
-        {
-            base.Initialize(comp);
-
-            IMenuCommandService mcs = (IMenuCommandService)comp.Site.
-                        GetService(typeof(IMenuCommandService));
-            MenuCommand mc = new MenuCommand(new EventHandler(OnF1Help), StandardCommands.F1Help);
-            mc.Enabled = true;
-            mc.Visible = true;
-            mc.Supported = true;
-            mcs.AddCommand(mc);
-            System.Windows.Forms.MessageBox.Show("Initialize() has been invoked.");
+        public void LinkDesignerEvent(IDesignerEventService eventService)
+        {                                   
+            // Registers an event handler for the DesignerCreated and DesignerDisposed events.
+            eventService.DesignerCreated += new DesignerEventHandler(this.OnDesignerEvent);
+            eventService.DesignerDisposed += new DesignerEventHandler(this.OnDesignerEvent);            
         }
 
-        private void OnF1Help(object sender, EventArgs e) 
+        private void OnDesignerEvent(object sender, DesignerEventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("F1Help has been invoked.");
+            // Displays designer event information on the console.
+            Console.WriteLine("Name of the root component of the created or disposed designer: "+e.Designer.RootComponentClassName);
         }
-    }

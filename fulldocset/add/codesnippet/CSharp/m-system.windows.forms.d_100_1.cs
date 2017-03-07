@@ -1,13 +1,11 @@
-        void changeService_ComponentChanged(object sender, ComponentChangedEventArgs e)
-        {
-            if (object.ReferenceEquals(
-                e.Component, 
-                this.relatedControl))
-            {
-                if (e.Member.Name == "Margin" ||
-                    e.Member.Name == "Padding" )
-                {
-                    this.marginAndPaddingAdorner.Invalidate();
-                }
-            }
-        }
+private void AddMyData() {
+    // Creates a new data object using a string and the text format.
+    DataObject myDataObject = new DataObject();
+ 
+    // Stores a string, specifying the Unicode format.
+    myDataObject.SetData(DataFormats.UnicodeText, "Text string");
+ 
+    // Retrieves the data by specifying Text.
+    textBox1.Text = myDataObject.GetData(DataFormats.Text).GetType().Name;
+ }
+ 

@@ -1,17 +1,18 @@
-private void AddButtons()
-{
-   // Suspend the form layout and add two buttons.
-   this.SuspendLayout();
-   Button buttonOK = new Button();
-   buttonOK.Location = new Point(10, 10);
-   buttonOK.Size = new Size(75, 25);
-   buttonOK.Text = "OK";
+   public delegate void MyDelegate(Label myControl, string myArg2);
 
-   Button buttonCancel = new Button();
-   buttonCancel.Location = new Point(90, 10);
-   buttonCancel.Size = new Size(75, 25);
-   buttonCancel.Text = "Cancel";
-      
-   this.Controls.AddRange(new Control[]{buttonOK, buttonCancel});
-   this.ResumeLayout();
-}
+   private void Button_Click(object sender, EventArgs e)
+   {
+      object[] myArray = new object[2];
+
+      myArray[0] = new Label();
+      myArray[1] = "Enter a Value";
+      myTextBox.BeginInvoke(new MyDelegate(DelegateMethod), myArray);
+   }
+
+   public void DelegateMethod(Label myControl, string myCaption)
+   {
+      myControl.Location = new Point(16,16);
+      myControl.Size = new Size(80, 25);
+      myControl.Text = myCaption;
+      this.Controls.Add(myControl);
+   }

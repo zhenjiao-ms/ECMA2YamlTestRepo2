@@ -1,15 +1,16 @@
-    Public Shared Function Main() As Integer
-        ' Creates a new installer.
-        Dim myNewProjectInstaller As New MyProjectInstaller()
+        ' Gets the attributes for the property.
+        Dim attributes As AttributeCollection = _
+            TypeDescriptor.GetProperties(Me)("MyProperty").Attributes
         
-        ' Gets the attributes for the collection.
-        Dim attributes As AttributeCollection = TypeDescriptor.GetAttributes(myNewProjectInstaller)
+        ' Checks to see whether the value of the ReadOnlyAttribute is Yes.
+        If attributes(GetType(ReadOnlyAttribute)).Equals(ReadOnlyAttribute.Yes) Then
+            ' Insert code here.
+        End If 
         
-        ' Prints whether to run the installer by retrieving the
-        ' RunInstallerAttribute from the AttributeCollection. 
-        Dim myAttribute As RunInstallerAttribute = _
-            CType(attributes(GetType(RunInstallerAttribute)), RunInstallerAttribute)
-
-        Console.WriteLine(("Run the installer? " & myAttribute.RunInstaller.ToString()))
-        Return 0
-    End Function 'Main
+        ' This is another way to see whether the property is read-only.
+        Dim myAttribute As ReadOnlyAttribute = _
+            CType(attributes(GetType(ReadOnlyAttribute)), ReadOnlyAttribute)
+            
+        If myAttribute.IsReadOnly Then
+            ' Insert code here.
+        End If 

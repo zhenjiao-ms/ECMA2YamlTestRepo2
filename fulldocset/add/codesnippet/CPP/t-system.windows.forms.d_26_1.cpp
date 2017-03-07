@@ -1,63 +1,50 @@
-      void ListDragTarget_DragOver( Object^ /*sender*/, System::Windows::Forms::DragEventArgs^ e )
-      {
-         // Determine whether string data exists in the drop data. If not, then
-         // the drop effect reflects that the drop cannot occur.
-         if (  !e->Data->GetDataPresent( System::String::typeid ) )
-         {
-            e->Effect = DragDropEffects::None;
-            DropLocationLabel->Text = "None - no string data.";
-            return;
-         }
-
-         // Set the effect based upon the KeyState.
-         if ( (e->KeyState & (8 + 32)) == (8 + 32) && ((e->AllowedEffect & DragDropEffects::Link) == DragDropEffects::Link) )
-         {
-            // KeyState 8 + 32 = CTL + ALT
-            // Link drag-and-drop effect.
-            e->Effect = DragDropEffects::Link;
-         }
-         else
-         if ( (e->KeyState & 32) == 32 && ((e->AllowedEffect & DragDropEffects::Link) == DragDropEffects::Link) )
-         {
-            // ALT KeyState for link.
-            e->Effect = DragDropEffects::Link;
-         }
-         else
-         if ( (e->KeyState & 4) == 4 && ((e->AllowedEffect & DragDropEffects::Move) == DragDropEffects::Move) )
-         {
-            // SHIFT KeyState for move.
-            e->Effect = DragDropEffects::Move;
-         }
-         else
-         if ( (e->KeyState & 8) == 8 && ((e->AllowedEffect & DragDropEffects::Copy) == DragDropEffects::Copy) )
-         {
-            // CTL KeyState for copy.
-            e->Effect = DragDropEffects::Copy;
-         }
-         else
-         if ( (e->AllowedEffect & DragDropEffects::Move) == DragDropEffects::Move )
-         {
-            // By default, the drop action should be move, if allowed.
-            e->Effect = DragDropEffects::Move;
-         }
-         else
-                  e->Effect = DragDropEffects::None;
-
-
-
-
-
-         
-         // Get the index of the item the mouse is below.
-         // The mouse locations are relative to the screen, so they must be
-         // converted to client coordinates.
-         indexOfItemUnderMouseToDrop = ListDragTarget->IndexFromPoint( ListDragTarget->PointToClient( Point(e->X,e->Y) ) );
-         
-         // Updates the label text.
-         if ( indexOfItemUnderMouseToDrop != ListBox::NoMatches )
-         {
-            DropLocationLabel->Text = String::Concat( "Drops before item # ", (indexOfItemUnderMouseToDrop + 1) );
-         }
-         else
-                  DropLocationLabel->Text = "Drops at the end.";
-      }
+   void AddCustomDataTableStyle()
+   {
+      
+      /* Create a new DataGridTableStyle and set
+            its MappingName to the TableName of a DataTable. */
+      DataGridTableStyle^ ts1 = gcnew DataGridTableStyle;
+      ts1->MappingName = "Customers";
+      
+      /* Add a GridColumnStyle and set its MappingName 
+            to the name of a DataColumn in the DataTable. 
+            Set the HeaderText and Width properties. */
+      DataGridColumnStyle^ boolCol = gcnew DataGridBoolColumn;
+      boolCol->MappingName = "Current";
+      boolCol->HeaderText = "IsCurrent Customer";
+      boolCol->Width = 150;
+      ts1->GridColumnStyles->Add( boolCol );
+      
+      // Add a second column style.
+      DataGridColumnStyle^ TextCol = gcnew DataGridTextBoxColumn;
+      TextCol->MappingName = "custName";
+      TextCol->HeaderText = "Customer Name";
+      TextCol->Width = 250;
+      ts1->GridColumnStyles->Add( TextCol );
+      
+      // Create the second table style with columns.
+      DataGridTableStyle^ ts2 = gcnew DataGridTableStyle;
+      ts2->MappingName = "Orders";
+      
+      // Change the colors.
+      ts2->ForeColor = Color::Yellow;
+      ts2->AlternatingBackColor = Color::Blue;
+      ts2->BackColor = Color::Blue;
+      
+      // Create new DataGridColumnStyle objects.
+      DataGridColumnStyle^ cOrderDate = gcnew DataGridTextBoxColumn;
+      cOrderDate->MappingName = "OrderDate";
+      cOrderDate->HeaderText = "Order Date";
+      cOrderDate->Width = 100;
+      ts2->GridColumnStyles->Add( cOrderDate );
+      PropertyDescriptorCollection^ pcol = this->BindingContext[ myDataSet,"Customers.custToOrders" ]->GetItemProperties();
+      DataGridColumnStyle^ csOrderAmount = gcnew DataGridTextBoxColumn( pcol[ "OrderAmount" ],"c",true );
+      csOrderAmount->MappingName = "OrderAmount";
+      csOrderAmount->HeaderText = "Total";
+      csOrderAmount->Width = 100;
+      ts2->GridColumnStyles->Add( csOrderAmount );
+      
+      // Add the DataGridTableStyle objects to the collection.
+      myDataGrid->TableStyles->Add( ts1 );
+      myDataGrid->TableStyles->Add( ts2 );
+   }

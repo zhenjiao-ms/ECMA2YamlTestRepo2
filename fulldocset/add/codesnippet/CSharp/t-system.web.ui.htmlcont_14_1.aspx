@@ -2,84 +2,158 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
- <head>
-    <title>HtmlImage Example</title>
-<script language="C#" runat="server">
-        
-       void Image1_Click(object sender, EventArgs e) 
-       {
-          Image1.Src="Image1.jpg";
-          Image1.Height=226;
-          Image1.Width=500;
-          Image1.Border=5;
-          Image1.Align="center";
-          Image1.Alt="Image 1";
-       }
-    
-       void Image2_Click(object sender, EventArgs e) 
-       {
-          Image1.Src="Image2.jpg";
-          Image1.Height=480;
-          Image1.Width=640;
-          Image1.Border=7;
-          Image1.Align="left";
-          Image1.Alt="Image 2";
-       }
- 
-       void Image3_Click(object sender, EventArgs e) 
-       {
-          Image1.Src="Image3.jpg";
-          Image1.Height=413;
-          Image1.Width=631;
-          Image1.Border=3;
-          Image1.Align="right";
-          Image1.Alt="Image 3";
-       }
- 
-    </script>
- 
- </head>
- 
- <body>
- 
-    <form id="form1" runat="server">
- 
-       <h3>HtmlImage Example</h3>
-       
-       <center>
- 
-          <button id="Button1"
-                  onserverclick="Image1_Click" 
-                  runat="server">
-          Image 1
-          </button>
- 
-          <button id="Button2"
-                  onserverclick="Image2_Click" 
-                  runat="server">
-          Image 2
-          </button>
- 
-          <button id="Button3"
-                  onserverclick="Image3_Click" 
-                  runat="server">
-          Image 3
-          </button>
- 
-       </center>
-       
-       <br /><br />
+
+<script runat="server">
+
+    protected void AddButton_Click(Object sender, EventArgs e)
+    {
+
+        int Answer;
+
+        // Calculate and display the result.
+        Answer = Convert.ToInt32(Value1.Value) + Convert.ToInt32(Value2.Value);
+        AnswerMessage.InnerHtml = Answer.ToString();
+
+    }
      
-       <img id ="Image1"
-            src="Image1.jpg"
-            alt="Image 1"
-            runat="server"
-            style="width:500; height:226; border:5; text-align:center" />
-       Enter the caption for this image here.
-    
-    </form>
- 
- </body>
- </html>
-   
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml" > 
+<head>
+  <title>HtmlForm Example</title>
+</head>
+<body>
+
+   <form method="Post"
+         enctype="application/x-www-form-urlencoded" 
+         runat="server" id="myform">
+
+      <h3> HtmlForm Example </h3>
+
+      <table>
+         <tr>
+            <td colspan="5">
+               Enter integer values into the text boxes. <br />
+               Click the Add button to add the two values. <br />
+               Click the Reset button to reset the text boxes.
+            </td>
+         </tr>
+         <tr>
+            <td colspan="5">
+               &nbsp;
+            </td>
+         </tr>
+         <tr align="center">
+            <td>
+               <input id="Value1"
+                      type="Text"
+                      size="2"
+                      maxlength="3"
+                      value="1"
+                      runat="server"/>
+            </td>
+            <td>
+               + 
+            </td>
+            <td>
+               <input id="Value2"
+                      type="Text"
+                      size="2"
+                      maxlength="3"
+                      value="1"
+                      runat="server"/>
+            </td>
+            <td>
+               =
+            </td>
+            <td>
+               <span id="AnswerMessage"
+                     runat="server"/>
+            </td>
+         </tr>
+         <tr>
+            <td colspan="2">
+               <asp:RequiredFieldValidator
+                    ID="Value1RequiredValidator"
+                    ControlToValidate="Value1"
+                    ErrorMessage="Please enter a value.<br />"
+                    Display="Dynamic"
+                    runat="server"/>
+
+               <asp:CompareValidator
+                    ID="Value1MinCompareValidator"
+                    ControlToValidate="Value1"
+                    Operator="LessThan"
+                    Type="Integer"
+                    ValueToCompare="100"
+                    ErrorMessage="Please enter an integer less than 100.<br />"
+                    Display="Dynamic"
+                    runat="server"/>
+
+               <asp:CompareValidator
+                    ID="Value1MaxCompareValidator"
+                    ControlToValidate="Value1"
+                    Operator="GreaterThan"
+                    Type="Integer"
+                    ValueToCompare="0"
+                    ErrorMessage="Please enter an integer greater than 0.<br />"
+                    Display="Dynamic"
+                    runat="server"/>
+            </td>
+            <td colspan="2">
+               <asp:RequiredFieldValidator
+                    ID="Value2RequiredValidator"
+                    ControlToValidate="Value2"
+                    ErrorMessage="Please enter a value.<br />"
+                    Display="Dynamic"
+                    runat="server"/>
+
+               <asp:CompareValidator
+                    ID="Value2MinCompareValidator"
+                    ControlToValidate="Value2"
+                    Operator="LessThan"
+                    Type="Integer"
+                    ValueToCompare="100"
+                    ErrorMessage="Please enter an integer less than 100.<br />"
+                    Display="Dynamic"
+                    runat="server"/>
+
+               <asp:CompareValidator
+                    ID="Value2MaxCompareValidator"
+                    ControlToValidate="Value2"
+                    Operator="GreaterThan"
+                    Type="Integer"
+                    ValueToCompare="0"
+                    ErrorMessage="Please enter an integer greater than 0.<br />"
+                    Display="Dynamic"
+                    runat="server"/>
+
+            </td>
+            <td>
+               &nbsp;
+            </td>
+         </tr>
+         <tr align="center">
+            <td colspan="4">
+               <input type="Submit"
+                      name="AddButton"
+                      value="Add"
+                      onserverclick="AddButton_Click"
+                      runat="server"/>
+
+               &nbsp;&nbsp;&nbsp;
+
+               <input type="Reset"
+                      name="AddButton"
+                      value="Reset"
+                      runat="server"/>
+            </td>
+            <td>
+               &nbsp;
+            </td>
+         </tr>
+      </table>
+
+   </form>
+</body>
+</html>

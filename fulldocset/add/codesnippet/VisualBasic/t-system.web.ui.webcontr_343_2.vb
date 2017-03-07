@@ -1,115 +1,84 @@
 Imports System
-Imports System.Web
-Imports System.Web.Security
+Imports System.Collections
+Imports System.ComponentModel
+Imports System.Drawing
 Imports System.Security.Permissions
+Imports System.Web
 Imports System.Web.UI
 Imports System.Web.UI.WebControls
 Imports System.Web.UI.WebControls.WebParts
 
 Namespace Samples.AspNet.VB.Controls
 
+  ' Create a custom CatalogZone control by setting some 
+  ' properties in the constructor.
   <AspNetHostingPermission(SecurityAction.Demand, _
     Level:=AspNetHostingPermissionLevel.Minimal)> _
   <AspNetHostingPermission(SecurityAction.InheritanceDemand, _
     Level:=AspNetHostingPermissionLevel.Minimal)> _
-  Public Interface IZipCode
-
-    Property ZipCode() As String
-
-  End Interface
-
-  <AspNetHostingPermission(SecurityAction.Demand, _
-    Level:=AspNetHostingPermissionLevel.Minimal)> _
-  <AspNetHostingPermission(SecurityAction.InheritanceDemand, _
-    Level:=AspNetHostingPermissionLevel.Minimal)> _
-  Public Class ZipCodeWebPart
-    Inherits WebPart
-    Implements IZipCode
-    Private zipCodeText As String = String.Empty
-    Private input As TextBox
-    Private send As Button
+  Public Class MyCatalogZone
+    Inherits CatalogZone
 
     Public Sub New()
-    End Sub
-
-    ' Make the implemented property personalizable to save 
-    ' the Zip Code between browser sessions.
-    <Personalizable()> _
-    Public Property ZipCode() As String _
-      Implements IZipCode.ZipCode
-
-      Get
-        Return zipCodeText
-      End Get
-      Set(ByVal value As String)
-        zipCodeText = value
-      End Set
-    End Property
-
-    ' This is the callback method that returns the provider.
-    <ConnectionProvider("Zip Code Provider", "ZipCodeProvider")> _
-    Public Function ProvideIZipCode() As IZipCode
-      Return Me
-    End Function
-
-
-    Protected Overrides Sub CreateChildControls()
-      Controls.Clear()
-      input = New TextBox()
-      Me.Controls.Add(input)
-      send = New Button()
-      send.Text = "Enter 5-digit Zip Code"
-      AddHandler send.Click, AddressOf Me.submit_Click
-      Me.Controls.Add(send)
-
-    End Sub
-
-
-    Private Sub submit_Click(ByVal sender As Object, _
-      ByVal e As EventArgs)
-
-      If input.Text <> String.Empty Then
-        zipCodeText = Page.Server.HtmlEncode(input.Text)
-        input.Text = String.Empty
-      End If
-
+      Me.HeaderText = "My Company Catalog"
+      Me.HeaderCloseVerb.Text = "Close Catalog"
+      Me.CloseVerb.Text = "Close Catalog"
     End Sub
 
   End Class
 
+
+  ' Create a custom WebPart to add to a WebPartZone.
   <AspNetHostingPermission(SecurityAction.Demand, _
     Level:=AspNetHostingPermissionLevel.Minimal)> _
   <AspNetHostingPermission(SecurityAction.InheritanceDemand, _
     Level:=AspNetHostingPermissionLevel.Minimal)> _
-  Public Class WeatherWebPart
+  Public Class TextDisplayWebPart
     Inherits WebPart
-    Private _provider As IZipCode
-    Private _zipSearch As String
+    Private _contentText As String = Nothing
+    Private _fontStyle As String = Nothing
+    Private input As TextBox
     Private DisplayContent As Label
+    Private lineBreak As Literal
 
-    ' This method is identified by the ConnectionConsumer 
-    ' attribute, and is the mechanism for connecting with 
-    ' the provider. 
-    <ConnectionConsumer("Zip Code Consumer", "ZipCodeConsumer")> _
-    Public Sub GetIZipCode(ByVal Provider As IZipCode)
-      _provider = Provider
-    End Sub
-
-
-    Protected Overrides Sub OnPreRender(ByVal e As EventArgs)
-      EnsureChildControls()
-
-      If Not (Me._provider Is Nothing) Then
-        _zipSearch = _provider.ZipCode.Trim()
-				DisplayContent.Text = "My Zip Code is:  " + _zipSearch
-      End If
-
-    End Sub 'OnPreRender
+    <Personalizable(), WebBrowsable()> _
+    Public Property ContentText() As String
+      Get
+        Return _contentText
+      End Get
+      Set(ByVal value As String)
+        _contentText = value
+      End Set
+    End Property
 
     Protected Overrides Sub CreateChildControls()
       Controls.Clear()
       DisplayContent = New Label()
+      DisplayContent.BackColor = Color.LightBlue
+      DisplayContent.Text = Me.ContentText
       Me.Controls.Add(DisplayContent)
+
+      lineBreak = New Literal()
+      lineBreak.Text = "<br />"
+      Controls.Add(lineBreak)
+
+      input = New TextBox()
+      Me.Controls.Add(input)
+      Dim update As New Button()
+      update.Text = "Set Label Content"
+      AddHandler update.Click, AddressOf Me.submit_Click
+      Me.Controls.Add(update)
+
+    End Sub
+
+    Private Sub submit_Click(ByVal sender As Object, _
+                             ByVal e As EventArgs)
+      ' Update the label string.
+      If input.Text <> String.Empty Then
+        _contentText = input.Text + "<br />"
+        input.Text = String.Empty
+        DisplayContent.Text = Me.ContentText
+      End If
 
     End Sub
 

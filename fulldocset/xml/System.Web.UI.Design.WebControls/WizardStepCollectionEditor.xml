@@ -12,7 +12,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Provides a design-time editor in a design host such as [!INCLUDE[vsprvslong](~/add/includes/vsprvslong-md.md)] for a <see cref="T:System.Web.UI.WebControls.WizardStepCollection" />.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -30,8 +30,8 @@
         <Parameter Name="type" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="type">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="type">The <see cref="T:System.Type" /> of items in the collection.</param>
+        <summary>Creates a new instance of the <see cref="T:System.Web.UI.Design.WebControls.WizardStepCollectionEditor" /> class using the given <see cref="T:System.Type" />.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -50,8 +50,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Indicates whether multiple instances may be selected.</summary>
+        <returns>
+          <see langword="true" /> if multiple items can be selected at once; otherwise, <see langword="false" />. This implementation always returns <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -70,8 +71,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Creates a new form to display and edit the current collection.</summary>
+        <returns>A <see cref="T:System.ComponentModel.Design.CollectionEditor.CollectionForm" /> to provide as the user interface for editing the collection.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -92,9 +93,9 @@
         <Parameter Name="itemType" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="itemType">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="itemType">The <see cref="T:System.Type" /> of collection to create.</param>
+        <summary>Creates an instance of the collection of the specified <see cref="T:System.Type" />.</summary>
+        <returns>A collection of the specified <paramref name="itemType" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -113,9 +114,16 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Retrieves the data types this collection can contain.</summary>
+        <returns>An array of <see cref="T:System.Type" /> objects.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The default implementation looks in the collection for the Item property and returns the returning Type of the item. Do not call this directly. Instead, use the <xref:System.ComponentModel.Design.CollectionEditor.NewItemTypes%2A> property of the base class. Use the CreateNewItemTypes method to override the default implementation.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
   </Members>

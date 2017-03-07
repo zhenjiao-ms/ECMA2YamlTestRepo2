@@ -1,63 +1,159 @@
-      void ListDragTarget_DragOver( Object^ /*sender*/, System::Windows::Forms::DragEventArgs^ e )
+#using <System.Transactions.dll>
+#using <System.EnterpriseServices.dll>
+#using <System.Xml.dll>
+#using <System.Drawing.dll>
+#using <System.dll>
+#using <System.Windows.Forms.dll>
+#using <System.Data.dll>
+
+using namespace System;
+using namespace System::Data;
+using namespace System::Data::SqlClient;
+using namespace System::Windows::Forms;
+using namespace System::Drawing;
+public ref class Form1: public System::Windows::Forms::Form
+{
+public:
+   Form1()
+      : Form()
+   {
+      
+      //This call is required by the Windows Form Designer.
+      InitializeComponent();
+      InitializeDataGridView();
+      
+      //Add any initialization after the InitializeComponent() call
+   }
+
+
+protected:
+
+   ~Form1()
+   {
+      if ( components != nullptr )
       {
-         // Determine whether string data exists in the drop data. If not, then
-         // the drop effect reflects that the drop cannot occur.
-         if (  !e->Data->GetDataPresent( System::String::typeid ) )
-         {
-            e->Effect = DragDropEffects::None;
-            DropLocationLabel->Text = "None - no string data.";
-            return;
-         }
-
-         // Set the effect based upon the KeyState.
-         if ( (e->KeyState & (8 + 32)) == (8 + 32) && ((e->AllowedEffect & DragDropEffects::Link) == DragDropEffects::Link) )
-         {
-            // KeyState 8 + 32 = CTL + ALT
-            // Link drag-and-drop effect.
-            e->Effect = DragDropEffects::Link;
-         }
-         else
-         if ( (e->KeyState & 32) == 32 && ((e->AllowedEffect & DragDropEffects::Link) == DragDropEffects::Link) )
-         {
-            // ALT KeyState for link.
-            e->Effect = DragDropEffects::Link;
-         }
-         else
-         if ( (e->KeyState & 4) == 4 && ((e->AllowedEffect & DragDropEffects::Move) == DragDropEffects::Move) )
-         {
-            // SHIFT KeyState for move.
-            e->Effect = DragDropEffects::Move;
-         }
-         else
-         if ( (e->KeyState & 8) == 8 && ((e->AllowedEffect & DragDropEffects::Copy) == DragDropEffects::Copy) )
-         {
-            // CTL KeyState for copy.
-            e->Effect = DragDropEffects::Copy;
-         }
-         else
-         if ( (e->AllowedEffect & DragDropEffects::Move) == DragDropEffects::Move )
-         {
-            // By default, the drop action should be move, if allowed.
-            e->Effect = DragDropEffects::Move;
-         }
-         else
-                  e->Effect = DragDropEffects::None;
-
-
-
-
-
-         
-         // Get the index of the item the mouse is below.
-         // The mouse locations are relative to the screen, so they must be
-         // converted to client coordinates.
-         indexOfItemUnderMouseToDrop = ListDragTarget->IndexFromPoint( ListDragTarget->PointToClient( Point(e->X,e->Y) ) );
-         
-         // Updates the label text.
-         if ( indexOfItemUnderMouseToDrop != ListBox::NoMatches )
-         {
-            DropLocationLabel->Text = String::Concat( "Drops before item # ", (indexOfItemUnderMouseToDrop + 1) );
-         }
-         else
-                  DropLocationLabel->Text = "Drops at the end.";
+         delete components;
       }
+   }
+
+private:
+   System::Windows::Forms::DataGridView ^ dataGridView1;
+   System::Windows::Forms::BindingSource ^ bindingSource1;
+
+   //Required by the Windows Form Designer
+   System::ComponentModel::IContainer^ components;
+
+   //NOTE: The following procedure is required by the Windows Form Designer
+   //It can be modified using the Windows Form Designer.  
+   //Do not modify it using the code editor.
+
+   [System::Diagnostics::DebuggerNonUserCode]
+   void InitializeComponent()
+   {
+      this->dataGridView1 = gcnew System::Windows::Forms::DataGridView;
+      this->bindingSource1 = gcnew System::Windows::Forms::BindingSource;
+      this->SuspendLayout();
+
+      //
+      //DataGridView1
+      //
+      this->dataGridView1->Location = System::Drawing::Point( 96, 71 );
+      this->dataGridView1->Name = "DataGridView1";
+      this->dataGridView1->Size = System::Drawing::Size( 321, 286 );
+      this->dataGridView1->TabIndex = 0;
+
+      //
+      //Form1
+      //
+      this->ClientSize = System::Drawing::Size( 518, 413 );
+      this->Controls->Add( this->dataGridView1 );
+      this->Name = "Form1";
+      this->Text = "Form1";
+      this->ResumeLayout( false );
+   }
+
+internal:
+
+   static property Form1^ GetInstance 
+   {
+      Form1^ get()
+      {
+         if ( m_DefaultInstance == nullptr || m_DefaultInstance->IsDisposed )
+         {
+            System::Threading::Monitor::Enter( m_SyncObject );
+            try
+            {
+               if ( m_DefaultInstance == nullptr || m_DefaultInstance->IsDisposed )
+               {
+                  m_DefaultInstance = gcnew Form1;
+               }
+            }
+            finally
+            {
+               System::Threading::Monitor::Exit( m_SyncObject );
+            }
+         }
+
+         return m_DefaultInstance;
+      }
+   }
+
+private:
+   static Form1^ m_DefaultInstance;
+   static Object^ m_SyncObject = gcnew Object;
+
+   void InitializeDataGridView()
+   {
+      try
+      {
+         // Set up the DataGridView.
+         dataGridView1->Dock = DockStyle::Fill;
+
+         // Automatically generate the DataGridView columns.
+         dataGridView1->AutoGenerateColumns = true;
+
+         // Set up the data source.
+         bindingSource1->DataSource = GetData( "Select * From Products" );
+         dataGridView1->DataSource = bindingSource1;
+
+         // Automatically resize the visible rows.
+         dataGridView1->AutoSizeRowsMode = DataGridViewAutoSizeRowsMode::DisplayedCellsExceptHeaders;
+
+         // Set the DataGridView control's border.
+         dataGridView1->BorderStyle = BorderStyle::Fixed3D;
+
+         // Put the cells in edit mode when user enters them.
+         dataGridView1->EditMode = DataGridViewEditMode::EditOnEnter;
+      }
+      catch ( SqlException^ ) 
+      {
+         MessageBox::Show( "To run this sample replace connection.ConnectionString"
+         " with a valid connection string to a Northwind"
+         " database accessible to your system.", "ERROR", MessageBoxButtons::OK, MessageBoxIcon::Exclamation );
+         System::Threading::Thread::CurrentThread->Abort();
+      }
+      catch ( System::Exception^ ex ) 
+      {
+         MessageBox::Show( ex->ToString() );
+      }
+   }
+
+
+   DataTable^ GetData( String^ sqlCommand )
+   {
+      String^ connectionString = "Integrated Security=SSPI;Persist Security Info=False;"
+      "Initial Catalog=Northwind;Data Source= localhost";
+      SqlConnection^ northwindConnection = gcnew SqlConnection( connectionString );
+      SqlCommand^ command = gcnew SqlCommand( sqlCommand,northwindConnection );
+      SqlDataAdapter^ adapter = gcnew SqlDataAdapter;
+      adapter->SelectCommand = command;
+      DataTable^ table = gcnew DataTable;
+      adapter->Fill( table );
+      return table;
+   }
+};
+
+int main()
+{
+   Application::Run( gcnew Form1 );
+}

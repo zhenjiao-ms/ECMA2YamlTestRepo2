@@ -1,29 +1,32 @@
-   // Handling CellParsing allows one to accept user input, then map it to a different
-   // internal representation.
-   void dataGridView1_CellParsing( Object^ /*sender*/, DataGridViewCellParsingEventArgs^ e )
-   {
-      if ( this->dataGridView1->Columns[ e->ColumnIndex ]->Name->Equals( "Release Date" ) )
-      {
-         if ( e != nullptr )
-         {
-            if ( e->Value != nullptr )
-            {
-               try
-               {
-                  // Map what the user typed into UTC.
-                  e->Value = DateTime::Parse( e->Value->ToString() ).ToUniversalTime();
+private:
+    void DataGridView1_DataError(Object^ sender, DataGridViewDataErrorEventArgs^ anError)
+    {
 
-                  // Set the ParsingApplied property to 
-                  // Show the event is handled.
-                  e->ParsingApplied = true;
-               }
-               catch ( FormatException^ /*ex*/ ) 
-               {
-                  // Set to false in case another CellParsing handler
-                  // wants to try to parse this DataGridViewCellParsingEventArgs instance.
-                  e->ParsingApplied = false;
-               }
-            }
-         }
-      }
-   }
+        MessageBox::Show("Error happened " + anError->Context.ToString());
+
+        if (anError->Context == DataGridViewDataErrorContexts::Commit)
+        {
+            MessageBox::Show("Commit error");
+        }
+        if (anError->Context == DataGridViewDataErrorContexts::CurrentCellChange)
+        {
+            MessageBox::Show("Cell change");
+        }
+        if (anError->Context == DataGridViewDataErrorContexts::Parsing)
+        {
+            MessageBox::Show("parsing error");
+        }
+        if (anError->Context == DataGridViewDataErrorContexts::LeaveControl)
+        {
+            MessageBox::Show("leave control error");
+        }
+
+        if (dynamic_cast<ConstraintException^>(anError->Exception) != nullptr)
+        {
+            DataGridView^ view = (DataGridView^)sender;
+            view->Rows[anError->RowIndex]->ErrorText = "an error";
+            view->Rows[anError->RowIndex]->Cells[anError->ColumnIndex]->ErrorText = "an error";
+
+            anError->ThrowException = false;
+        }
+    }

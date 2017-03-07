@@ -1,41 +1,48 @@
-Imports System.Collections.Generic
 Imports System.Globalization
-Imports System.Runtime.Versioning
-Imports System.Threading
-Imports System.Threading.Tasks
-
-<assembly:TargetFramework(".NETFramework,Version=v4.6")>
+Imports System.IO
 
 Module Example
    Public Sub Main()
-      Dim tasks As New List(Of Task)
-      Console.WriteLine("The current UI culture is {0}", 
-                        Thread.CurrentThread.CurrentUICulture.Name)
-      Thread.CurrentThread.CurrentUICulture = New CultureInfo("pt-BR")
-      ' Change the current UI culture to Portuguese (Brazil).
-      Console.WriteLine("Current culture changed to {0}",
-                        Thread.CurrentThread.CurrentUICulture.Name)
-      Console.WriteLine("Application thread is thread {0}",
-                        Thread.CurrentThread.ManagedThreadId)
-      ' Launch six tasks and display their current culture.
-      For ctr As Integer = 0 to 5
-         tasks.Add(Task.Run(Sub()
-                               Console.WriteLine("Culture of task {0} on thread {1} is {2}",
-                                                 Task.CurrentId, 
-                                                 Thread.CurrentThread.ManagedThreadId,
-                                                 Thread.CurrentThread.CurrentUICulture.Name)
-                            End Sub))                     
-      Next
-      Task.WaitAll(tasks.ToArray())
+      ' Persist the date and time data.
+      Dim sw As New StreamWriter(".\DateData.dat")
+      
+      ' Create a DateTime value.      
+      Dim dtIn As DateTime = DateTime.Now
+      ' Retrieve a CultureInfo object.
+      Dim invC As CultureInfo = CultureInfo.InvariantCulture
+      
+      ' Convert the date to a string and write it to a file.
+      sw.WriteLine(dtIn.ToString("r", invC))
+      sw.Close()
+
+      ' Restore the date and time data.
+      Dim sr As New StreamReader(".\DateData.dat")
+      Dim input As String = String.Empty
+      Do While sr.Peek() >= 0 
+         input = sr.ReadLine()
+         Console.WriteLine("Stored data: {0}" , input)    
+         Console.WriteLine()
+         
+         ' Parse the stored string.
+         Dim dtOut As DateTime = DateTime.Parse(input, invC, DateTimeStyles.RoundtripKind)
+
+         ' Create a French (France) CultureInfo object.
+         Dim frFr As New CultureInfo("fr-FR")
+         ' Displays the date formatted for the "fr-FR" culture.
+         Console.WriteLine("Date formatted for the {0} culture: {1}" , 
+                           frFr.Name, dtOut.ToString("f", frFr))
+
+         ' Creates a German (Germany) CultureInfo object.
+         Dim deDe As New CultureInfo("de-De")
+         ' Displays the date formatted for the "de-DE" culture.
+         Console.WriteLine("Date formatted for {0} culture: {1}" , 
+                           deDe.Name, dtOut.ToString("f", deDe))
+      Loop
+      sr.Close()
    End Sub
 End Module
-' The example displays output like the following:
-'     The current culture is en-US
-'     Current culture changed to pt-BR
-'     Application thread is thread 9
-'     Culture of task 2 on thread 11 is pt-BR
-'     Culture of task 1 on thread 10 is pt-BR
-'     Culture of task 3 on thread 11 is pt-BR
-'     Culture of task 5 on thread 11 is pt-BR
-'     Culture of task 6 on thread 11 is pt-BR
-'     Culture of task 4 on thread 10 is pt-BR
+' The example displays the following output:
+'    Stored data: Tue, 15 May 2012 16:34:16 GMT
+'    
+'    Date formatted for the fr-FR culture: mardi 15 mai 2012 16:34
+'    Date formatted for de-DE culture: Dienstag, 15. Mai 2012 16:34

@@ -1,2 +1,1 @@
-		TransactionProtocol transactionProtocol =
-			binding.TransactionProtocol;
+		int maxBufferSize = binding.MaxBufferSize;

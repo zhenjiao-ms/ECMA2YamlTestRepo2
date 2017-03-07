@@ -1,15 +1,42 @@
-private void EnterNull() {
-   // Creates an instance of a class derived from DataGridBoolColumn.
-   MyDataGridBoolColumn colBool;
-   colBool = (MyDataGridBoolColumn)dataGrid1.TableStyles[0].GridColumnStyles[2];
-   colBool.CallEnterNullValue();
-}
+        private ListBox ListBox1 = new ListBox();
+        private void InitializeListBox()
+        {
+            ListBox1.Items.AddRange(new Object[] 
+                { "Red Item", "Orange Item", "Purple Item" });
+            ListBox1.Location = new System.Drawing.Point(81, 69);
+            ListBox1.Size = new System.Drawing.Size(120, 95);
+            ListBox1.DrawMode = DrawMode.OwnerDrawFixed;
+            ListBox1.DrawItem += new DrawItemEventHandler(ListBox1_DrawItem);
+            Controls.Add(ListBox1);
+        }
 
-// Class derived from DataGridBoolColumn.
-internal class MyDataGridBoolColumn : DataGridBoolColumn {
+        private void ListBox1_DrawItem(object sender, 
+            System.Windows.Forms.DrawItemEventArgs e)
+        {
+            // Draw the background of the ListBox control for each item.
+            e.DrawBackground();
+            // Define the default color of the brush as black.
+            Brush myBrush = Brushes.Black;
 
-   public void CallEnterNullValue() {
-      this.EnterNullValue();
-   }
-}
-   
+            // Determine the color of the brush to draw each item based 
+            // on the index of the item to draw.
+            switch (e.Index)
+            {
+                case 0:
+                    myBrush = Brushes.Red;
+                    break;
+                case 1:
+                    myBrush = Brushes.Orange;
+                    break;
+                case 2:
+                    myBrush = Brushes.Purple;
+                    break;
+            }
+
+            // Draw the current item text based on the current Font 
+            // and the custom brush settings.
+            e.Graphics.DrawString(ListBox1.Items[e.Index].ToString(), 
+                e.Font, myBrush, e.Bounds, StringFormat.GenericDefault);
+            // If the ListBox has focus, draw a focus rectangle around the selected item.
+            e.DrawFocusRectangle();
+        }

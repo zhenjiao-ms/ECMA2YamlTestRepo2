@@ -1,20 +1,39 @@
-   [DefaultProperty("MyProperty")]
-   ref class MyControl: public Control
+#using <system.dll>
+
+using namespace System;
+using namespace System::ComponentModel;
+
+namespace EditorBrowsableDemo
+{
+   public ref class Class1
    {
    public:
+      Class1()
+      { 
+         //
+         // TODO: Add constructor logic here
+         //
+      }
 
-      property int MyProperty 
+   private:
+      int ageval;
+
+   public:
+      [EditorBrowsable(EditorBrowsableState::Never)]
+      property int Age 
       {
          int get()
          {
-            // Insert code here.
-            return 0;
+            return ageval;
          }
 
          void set( int value )
          {
-            // Insert code here.
+            if ( ageval != value )
+            {
+               ageval = value;
+            }
          }
       }
-      // Insert any additional code.
    };
+}

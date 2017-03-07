@@ -1,29 +1,27 @@
 using System;
-using System.Text;
 using System.Security.Cryptography;
 using System.Runtime.Serialization;
 
-class CryptographicExceptionMembers
+class Members
 {
     [STAThread]
-    public static void Main(string[] args)
+    static void Main(string[] args)
     {
-        CryptographicExceptionMembers testRun = 
-            new CryptographicExceptionMembers();
+        Members testRun = new Members();
+
         testRun.TestConstructors();
         testRun.ShowProperties();
-        
-        Console.WriteLine("This sample ended successfully; " + 
-            " press Enter to exit.");
+
+        Console.WriteLine("Sample ended successfully, " +
+            " press Enter to continue.");
         Console.ReadLine();
     }
 
-    // Test each public implementation of the CryptographicException
-    // constructors.
+    // Test each public implementation of the
+    // CryptographicUnexpectedOperationException constructors.
     private void TestConstructors()
     {
         EmptyConstructor();
-        IntConstructor();
         StringConstructor();
         StringExceptionConstructor();
         StringStringConstructor();
@@ -31,78 +29,78 @@ class CryptographicExceptionMembers
 
     private void EmptyConstructor()
     {
-        // Construct a CryptographicException with no parameters.
-        CryptographicException cryptographicException =
-            new CryptographicException();
-        Console.WriteLine("Created an empty CryptographicException.");
-    }
-
-    private void IntConstructor()
-    {
-        // Construct a CryptographicException using the error code for an
-        // unexpected operation exception.
-        int exceptionNumber = unchecked((int)0x80131431);
-        CryptographicException cryptographicException =
-            new CryptographicException(exceptionNumber);
-        Console.WriteLine("Created a CryptographicException with the " + 
-            "following error code: " + exceptionNumber);
+        // Construct a CryptographicUnexpectedOperationException
+        // with no parameters.
+        CryptographicUnexpectedOperationException cryptographicException =
+            new CryptographicUnexpectedOperationException();
+        Console.WriteLine("Created an empty " + 
+            "CryptographicUnexpectedOperationException.");
     }
 
     private void StringConstructor()
     {
-        // Construct a CryptographicException using a custom error message.
-        string errorMessage = ("Unexpected Operation exception.");
-        CryptographicException cryptographicException =
-            new CryptographicException(errorMessage);
-        Console.WriteLine("Created a CryptographicException with the " + 
-            "following error message: " + errorMessage);
+        // Construct a CryptographicUnexpectedOperationException
+        // using a custom error message.
+        string errorMessage = ("Unexpected operation exception.");
+        CryptographicUnexpectedOperationException cryptographicException =
+            new CryptographicUnexpectedOperationException(errorMessage);
+        Console.WriteLine("Created a " + 
+            "CryptographicUnexpectedOperationException with the following " +
+            " error message: " + errorMessage);
     }
 
     private void StringExceptionConstructor()
     {
-        // Construct a CryptographicException using a custom error message
-        // and an inner exception.
+        // Construct a CryptographicUnexpectedOperationException using a 
+        // custom error message and an inner exception.
         string errorMessage = ("The current operation is not supported.");
         NullReferenceException nullException = new NullReferenceException();
-        CryptographicException cryptographicException = 
-            new CryptographicException(errorMessage, nullException);
-        Console.WriteLine("Created a CryptographicException with the " +
-            "following error message: " + errorMessage + 
-            " and the inner exception of " + nullException.ToString());
+        CryptographicUnexpectedOperationException cryptographicException = 
+            new CryptographicUnexpectedOperationException(
+            errorMessage, nullException);
+        Console.WriteLine("Created a " +
+            "CryptographicUnexpectedOperationException with the following" +
+            "error message: " + errorMessage + " and inner exception: "
+            + nullException.ToString());
     }
 
     private void StringStringConstructor()
     {
-        // Create a CryptographicException using a time format and a the 
-        // current date.
+        // Create a CryptographicUnexpectedOperationException using a time
+        // format and the current date.
         string dateFormat = "{0:t}";
         string timeStamp = (DateTime.Now.ToString());
-        CryptographicException cryptographicException = 
-            new CryptographicException(dateFormat, timeStamp);
-        Console.WriteLine("Created a CryptographicException with (" +
-            dateFormat + ") as the format and (" + timeStamp + 
-            ") as the message.");
+        CryptographicUnexpectedOperationException cryptographicException = 
+            new CryptographicUnexpectedOperationException(
+            dateFormat, timeStamp);
+        Console.WriteLine("Created a " + 
+            "CryptographicUnexpectedOperationException with (" + dateFormat +
+            ") as the format and (" + timeStamp + ") as the message.");
     }
 
     // Construct an invalid DSACryptoServiceProvider to throw a
-    // CryptographicException for introspection.
+    // CryptographicUnexpectedOperationException for introspection.
     private void ShowProperties()
     {
+        // Attempting to encode an OID greater than 127 bytes is not supported
+        // and will throw an exception.
+        string veryLongNumber = "1234567890.1234567890.";
+        for (int i=0; i < 4; i++)
+        {
+            veryLongNumber += veryLongNumber;
+        }
+        veryLongNumber += "0";
         try 
         {
-            // Create a DSACryptoServiceProvider with invalid provider type
-            // code to throw a CryptographicException exception.
-            CspParameters cspParams = new CspParameters(44);
-            DSACryptoServiceProvider DSAalg = 
-                new DSACryptoServiceProvider(cspParams);
+            byte[] tooLongOID = CryptoConfig.EncodeOID(veryLongNumber);
         }
-        catch (CryptographicException ex)
+        catch(CryptographicUnexpectedOperationException ex)
         {
-            // Retrieve the link to the help file for the exception.
+            // Retrieve the link to the Help file for the exception.
             string helpLink = ex.HelpLink;
             
             // Retrieve the exception that caused the current
-            // CryptographicException exception.
+            // CryptographicUnexpectedOperationException.
             System.Exception innerException = ex.InnerException;
             string innerExceptionMessage = "";
             if (innerException != null)
@@ -116,7 +114,7 @@ class CryptographicExceptionMembers
             // Retrieve the name of the application that caused the exception.
             string exceptionSource = ex.Source;
 
-            // Retrieve the call stack at the time the exception occured.
+            // Retrieve the call stack at the time the exception occurred.
             string stackTrace = ex.StackTrace;
 
             // Retrieve the method that threw the exception.
@@ -130,7 +128,7 @@ class CryptographicExceptionMembers
             setSerializationInfo(ref ex);
 
             // Get the root exception that caused the current
-            // CryptographicException exception.
+            // CryptographicUnexpectedOperationException.
             System.Exception baseException = ex.GetBaseException();
             string baseExceptionMessage = "";
             if (baseException != null)
@@ -139,9 +137,8 @@ class CryptographicExceptionMembers
             }
 
             Console.WriteLine("Caught an expected exception:");
-            Console.WriteLine(entireException);
+            Console.WriteLine(entireException + "\n");
 
-            Console.WriteLine("\n");
             Console.WriteLine("Properties of the exception are as follows:");
             Console.WriteLine("Message: " + message);
             Console.WriteLine("Source: " + exceptionSource);
@@ -152,11 +149,11 @@ class CryptographicExceptionMembers
                 baseExceptionMessage);
             Console.WriteLine("Inner exception message: " + 
                 innerExceptionMessage);
-
         }
     }
 
-    private void setSerializationInfo(ref CryptographicException ex)
+    private void setSerializationInfo(
+        ref CryptographicUnexpectedOperationException ex)
     {
         // Insert information about the exception into a serialized object.
         FormatterConverter formatConverter = new FormatterConverter();
@@ -171,42 +168,30 @@ class CryptographicExceptionMembers
 //
 // This sample produces the following output:
 //
-// Created an empty CryptographicException.
-// Created a CryptographicException with the following error code: -2146233295
-// Created a CryptographicException with the following error message: 
-// Unexpected Operation exception.
-// Created a CryptographicException with the following error message: The
-// current operation is not supported. and the inner exception of 
+// Created an empty CryptographicUnexpectedOperationException.
+// Created a CryptographicUnexpectedOperationException with the following 
+// error message: Unexpected operation exception.
+// Created a CryptographicUnexpectedOperationException with the following
+// error message: The current operation is not supported. and inner exception:
 // System.NullReferenceException: Object reference not set to an instance of
 // an object.
-// Created a CryptographicException with ({0:t}) as the format and (2/24/2004
-// 2:13:15 PM) as the message.
+// Created a CryptographicUnexpectedOperationException with ({0:t}) as the
+// format and (2/24/2004 2:35:22 PM) as the message.
 // Caught an expected exception:
-// System.Security.Cryptography.CryptographicException: CryptoAPI
-// cryptographic service provider (CSP) for this implementation could not be
-// acquired. 
-//  at System.Security.Cryptography.DSACryptoServiceProvider..ctor(Int32
-// dwKeySize, CspParameters parameters)
-//  at System.Security.Cryptography.DSACryptoServiceProvider..ctor(
-// CspParametersparameters)
-//  at CryptographicExceptionMembers.ShowProperties() in c:\inetpub\
-// vssolutions\test\testbuild\consoleapplication1\class1.cs:line 109
-//
-//
+// System.Security.Cryptography.CryptographicUnexpectedOperationException: 
+// Encoded OID length is too large (greater than 0x7f bytes).
+//  at System.Security.Cryptography.CryptoConfig.EncodeOID(String str)
+//  at Members.ShowProperties() in c:\consoleapplication1\class1.cs:line 106
+// 
 // Properties of the exception are as follows:
-// Message: CryptoAPI cryptographic service provider (CSP) for this
-// implementation could not be acquired.
+// Message: Encoded OID length is too large (greater than 0x7f bytes).
 // Source: mscorlib
-// Stack trace:    
-//  at System.Security.Cryptography.DSACryptoServiceProvider..ctor(
-// Int32 dwKeySize, CspParameters parameters) 
-//  at System.Security.Cryptography.DSACryptoServiceProvider..ctor(
-// CspParameters parameters)
-//  at CryptographicExceptionMembers.ShowProperties() in c:\inetpub\
-// vssolutions\test\testbuild\consoleapplication1\class1.cs:line 109
+// Stack trace:    at System.Security.Cryptography.CryptoConfig.EncodeOID(
+// String str)
+//  at Members.ShowProperties() in c:\consoleapplication1\class1.cs:line 106
 // Help link:
-// Target site's name: .ctor
-// Base exception message: CryptoAPI cryptographic service provider (CSP) for
-// this implementation could not be acquired.
+// Target site's name: EncodeOID
+// Base exception message: Encoded OID length is too large (greater than 0x7f
+// bytes).
 // Inner exception message:
-// This sample ended successfully;  press Enter to exit.
+// Sample ended successfully,  press Enter to continue.

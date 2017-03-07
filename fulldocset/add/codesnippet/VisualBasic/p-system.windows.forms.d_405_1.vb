@@ -1,36 +1,30 @@
-    Private Sub SetupDataGridView()
+    ' Draws the backgrounds for entire ListView items.
+    Private Sub listView1_DrawItem(ByVal sender As Object, _
+        ByVal e As DrawListViewItemEventArgs) _
+        Handles listView1.DrawItem
 
-        Me.Controls.Add(songsDataGridView)
+        If Not (e.State And ListViewItemStates.Selected) = 0 Then
 
-        songsDataGridView.ColumnCount = 5
-        With songsDataGridView.ColumnHeadersDefaultCellStyle
-            .BackColor = Color.Navy
-            .ForeColor = Color.White
-            .Font = New Font(songsDataGridView.Font, FontStyle.Bold)
-        End With
+            ' Draw the background for a selected item.
+            e.Graphics.FillRectangle(Brushes.Maroon, e.Bounds)
+            e.DrawFocusRectangle()
 
-        With songsDataGridView
-            .Name = "songsDataGridView"
-            .Location = New Point(8, 8)
-            .Size = New Size(500, 250)
-            .AutoSizeRowsMode = _
-                DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders
-            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
-            .CellBorderStyle = DataGridViewCellBorderStyle.Single
-            .GridColor = Color.Black
-            .RowHeadersVisible = False
+        Else
 
-            .Columns(0).Name = "Release Date"
-            .Columns(1).Name = "Track"
-            .Columns(2).Name = "Title"
-            .Columns(3).Name = "Artist"
-            .Columns(4).Name = "Album"
-            .Columns(4).DefaultCellStyle.Font = _
-                New Font(Me.songsDataGridView.DefaultCellStyle.Font, FontStyle.Italic)
+            ' Draw the background for an unselected item.
+            Dim brush As New LinearGradientBrush(e.Bounds, Color.Orange, _
+                Color.Maroon, LinearGradientMode.Horizontal)
+            Try
+                e.Graphics.FillRectangle(brush, e.Bounds)
+            Finally
+                brush.Dispose()
+            End Try
 
-            .SelectionMode = DataGridViewSelectionMode.FullRowSelect
-            .MultiSelect = False
-            .Dock = DockStyle.Fill
-        End With
+        End If
+
+        ' Draw the item text for views other than the Details view.
+        If Not Me.listView1.View = View.Details Then
+            e.DrawText()
+        End If
 
     End Sub

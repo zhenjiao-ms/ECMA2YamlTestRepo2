@@ -1,15 +1,34 @@
-         System.Windows.Forms.ColorDialog MyDialog = new ColorDialog();
-         // Allows the user to select or edit a custom color.
-         MyDialog.AllowFullOpen = true ;
-         // Assigns an array of custom colors to the CustomColors property
-         MyDialog.CustomColors = new int[]{6916092, 15195440, 16107657, 1836924,
-            3758726, 12566463, 7526079, 7405793, 6945974, 241502, 2296476, 5130294,
-            3102017, 7324121, 14993507, 11730944,};
+public class FunButton:
+	Button
 
-         // Allows the user to get help. (The default is false.)
-         MyDialog.ShowHelp = true ;
-         // Sets the initial color select to the current text color,
-         // so that if the user cancels out, the original color is restored.
-         MyDialog.Color = this.BackColor;
-         MyDialog.ShowDialog();
-         this.BackColor =  MyDialog.Color;
+{
+	protected override void OnMouseHover(System.EventArgs e)
+	{
+
+		// Get the font size in Points, add one to the
+		// size, and reset the button's font to the larger
+		// size.
+		float fontSize = Font.SizeInPoints;
+		fontSize += 1;
+		System.Drawing.Size buttonSize = Size;
+		this.Font = new System.Drawing.Font(
+			Font.FontFamily, fontSize, Font.Style);
+
+		// Increase the size width and height of the button 
+		// by 5 points each.
+		Size = new System.Drawing.Size(Size.Width+5, Size.Height+5);
+
+		// Call myBase.OnMouseHover to activate the delegate.
+		base.OnMouseHover(e);
+	}
+
+	protected override void OnMouseMove(MouseEventArgs e)
+	{
+
+		// Make the cursor the Hand cursor when the mouse moves 
+		// over the button.
+		Cursor = Cursors.Hand;
+
+		// Call MyBase.OnMouseMove to activate the delegate.
+		base.OnMouseMove(e);
+	}

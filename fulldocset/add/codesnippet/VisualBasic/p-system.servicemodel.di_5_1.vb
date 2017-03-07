@@ -5,5 +5,6 @@
 
 			serviceHost.Open()
 
-			Dim dispatcher As ChannelDispatcher = CType(serviceHost.ChannelDispatchers(0), ChannelDispatcher)
-			Dim listener As IChannelListener = dispatcher.Listener
+			Dim icl As IChannelListener = serviceHost.ChannelDispatchers(0).Listener
+			Dim dispatcher As New ChannelDispatcher(icl)
+			dispatcher.TransactionIsolationLevel = System.Transactions.IsolationLevel.ReadCommitted

@@ -1,66 +1,19 @@
-        Public Overrides Function GetSortedActionItems() _
-        As DesignerActionItemCollection
-            Dim items As New DesignerActionItemCollection()
+  <DataObjectAttribute()> _
+  Public Class NorthwindData
 
-            'Define static section header entries.
-            items.Add(New DesignerActionHeaderItem("Appearance"))
-            items.Add(New DesignerActionHeaderItem("Information"))
+    <DataObjectMethodAttribute(DataObjectMethodType.Select, True)> _
+    Public Shared Function GetAllEmployees() As IEnumerable
+      Dim ads As New AccessDataSource()
+      ads.DataSourceMode = SqlDataSourceMode.DataReader
+      ads.DataFile = "~/App_Data/Northwind.mdb"
+      ads.SelectCommand = "SELECT EmployeeID,FirstName,LastName FROM Employees"
+      Return ads.Select(DataSourceSelectArguments.Empty)
+    End Function 'GetAllEmployees
 
-            'Boolean property for locking color selections.
-            items.Add(New DesignerActionPropertyItem( _
-            "LockColors", _
-            "Lock Colors", _
-            "Appearance", _
-            "Locks the color properties."))
+    ' Delete the Employee by ID.
+    <DataObjectMethodAttribute(DataObjectMethodType.Delete, True)> _
+    Public Sub DeleteEmployeeByID(ByVal employeeID As Integer)
+      Throw New Exception("The value passed to the delete method is " + employeeID.ToString())
+    End Sub 'DeleteEmployeeByID
 
-            If Not LockColors Then
-                items.Add( _
-                New DesignerActionPropertyItem( _
-                "BackColor", _
-                "Back Color", _
-                "Appearance", _
-                "Selects the background color."))
-
-                items.Add( _
-                New DesignerActionPropertyItem( _
-                "ForeColor", _
-                "Fore Color", _
-                "Appearance", _
-                "Selects the foreground color."))
-
-                'This next method item is also added to the context menu 
-                ' (as a designer verb).
-                items.Add( _
-                New DesignerActionMethodItem( _
-                Me, _
-                "InvertColors", _
-                "Invert Colors", _
-                "Appearance", _
-                "Inverts the fore and background colors.", _
-                True))
-            End If
-            items.Add( _
-            New DesignerActionPropertyItem( _
-            "Text", _
-            "Text String", _
-            "Appearance", _
-            "Sets the display text."))
-
-            'Create entries for static Information section.
-            Dim location As New StringBuilder("Location: ")
-            location.Append(colLabel.Location)
-            Dim size As New StringBuilder("Size: ")
-            size.Append(colLabel.Size)
-
-            items.Add( _
-            New DesignerActionTextItem( _
-            location.ToString(), _
-            "Information"))
-
-            items.Add( _
-            New DesignerActionTextItem( _
-            size.ToString(), _
-            "Information"))
-
-            Return items
-        End Function
+  End Class 'NorthwindData

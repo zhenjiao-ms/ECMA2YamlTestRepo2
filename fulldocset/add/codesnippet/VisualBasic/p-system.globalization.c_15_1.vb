@@ -1,37 +1,62 @@
 Imports System
+Imports System.Collections
 Imports System.Globalization
 
+Module Module1
 
-Public Class SamplesCultureInfo
-   
-   Public Shared Sub Main()
-      
-      ' Creates and initializes a CultureInfo.
-      Dim myCI As New CultureInfo("en-US", False)
-      
-      ' Clones myCI and modifies the DTFI and NFI instances associated with the clone.
-      Dim myCIclone As CultureInfo = CType(myCI.Clone(), CultureInfo)
-      myCIclone.DateTimeFormat.AMDesignator = "a.m."
-      myCIclone.DateTimeFormat.DateSeparator = "-"
-      myCIclone.NumberFormat.CurrencySymbol = "USD"
-      myCIclone.NumberFormat.NumberDecimalDigits = 4
-      
-      ' Displays the properties of the DTFI and NFI instances associated with the original and with the clone. 
-      Console.WriteLine("DTFI/NFI PROPERTY" + ControlChars.Tab + "ORIGINAL" + ControlChars.Tab + "MODIFIED CLONE")
-      Console.WriteLine("DTFI.AMDesignator" + ControlChars.Tab + "{0}" + ControlChars.Tab + ControlChars.Tab + "{1}", myCI.DateTimeFormat.AMDesignator, myCIclone.DateTimeFormat.AMDesignator)
-      Console.WriteLine("DTFI.DateSeparator" + ControlChars.Tab + "{0}" + ControlChars.Tab + ControlChars.Tab + "{1}", myCI.DateTimeFormat.DateSeparator, myCIclone.DateTimeFormat.DateSeparator)
-      Console.WriteLine("NFI.CurrencySymbol" + ControlChars.Tab + "{0}" + ControlChars.Tab + ControlChars.Tab + "{1}", myCI.NumberFormat.CurrencySymbol, myCIclone.NumberFormat.CurrencySymbol)
-      Console.WriteLine("NFI.NumberDecimalDigits" + ControlChars.Tab + "{0}" + ControlChars.Tab + ControlChars.Tab + "{1}", myCI.NumberFormat.NumberDecimalDigits, myCIclone.NumberFormat.NumberDecimalDigits)
+    Public Sub Main()
 
-   End Sub 'Main 
+        ' Creates and initializes the CultureInfo which uses the international sort.
+        Dim myCIintl As New CultureInfo("es-ES", False)
 
-End Class 'SamplesCultureInfo
+        ' Creates and initializes the CultureInfo which uses the traditional sort.
+        Dim myCItrad As New CultureInfo(&H40A, False)
+
+        ' Displays the properties of each culture.
+        Console.WriteLine("{0,-31}{1,-47}{2,-25}", "PROPERTY", "INTERNATIONAL", "TRADITIONAL")
+        Console.WriteLine("{0,-31}{1,-47}{2,-25}", "CompareInfo", myCIintl.CompareInfo, myCItrad.CompareInfo)
+        Console.WriteLine("{0,-31}{1,-47}{2,-25}", "DisplayName", myCIintl.DisplayName, myCItrad.DisplayName)
+        Console.WriteLine("{0,-31}{1,-47}{2,-25}", "EnglishName", myCIintl.EnglishName, myCItrad.EnglishName)
+        Console.WriteLine("{0,-31}{1,-47}{2,-25}", "IsNeutralCulture", myCIintl.IsNeutralCulture, myCItrad.IsNeutralCulture)
+        Console.WriteLine("{0,-31}{1,-47}{2,-25}", "IsReadOnly", myCIintl.IsReadOnly, myCItrad.IsReadOnly)
+        Console.WriteLine("{0,-31}{1,-47}{2,-25}", "LCID", myCIintl.LCID, myCItrad.LCID)
+        Console.WriteLine("{0,-31}{1,-47}{2,-25}", "Name", myCIintl.Name, myCItrad.Name)
+        Console.WriteLine("{0,-31}{1,-47}{2,-25}", "NativeName", myCIintl.NativeName, myCItrad.NativeName)
+        Console.WriteLine("{0,-31}{1,-47}{2,-25}", "Parent", myCIintl.Parent, myCItrad.Parent)
+        Console.WriteLine("{0,-31}{1,-47}{2,-25}", "TextInfo", myCIintl.TextInfo, myCItrad.TextInfo)
+        Console.WriteLine("{0,-31}{1,-47}{2,-25}", "ThreeLetterISOLanguageName", myCIintl.ThreeLetterISOLanguageName, myCItrad.ThreeLetterISOLanguageName)
+        Console.WriteLine("{0,-31}{1,-47}{2,-25}", "ThreeLetterWindowsLanguageName", myCIintl.ThreeLetterWindowsLanguageName, myCItrad.ThreeLetterWindowsLanguageName)
+        Console.WriteLine("{0,-31}{1,-47}{2,-25}", "TwoLetterISOLanguageName", myCIintl.TwoLetterISOLanguageName, myCItrad.TwoLetterISOLanguageName)
+        Console.WriteLine()
+
+        ' Compare two strings using myCIintl.
+        Console.WriteLine("Comparing ""llegar"" and ""lugar""")
+        Console.WriteLine("   With myCIintl.CompareInfo.Compare: {0}", myCIintl.CompareInfo.Compare("llegar", "lugar"))
+        Console.WriteLine("   With myCItrad.CompareInfo.Compare: {0}", myCItrad.CompareInfo.Compare("llegar", "lugar"))
+
+    End Sub 'Main 
 
 
-' This code produces the following output.
+
+'This code produces the following output.
 '
-' DTFI/NFI PROPERTY       ORIGINAL        MODIFIED CLONE
-' DTFI.AMDesignator       AM              a.m.
-' DTFI.DateSeparator      /               -
-' NFI.CurrencySymbol      $               USD
-' NFI.NumberDecimalDigits 2               4
+'PROPERTY                       INTERNATIONAL                                  TRADITIONAL              
+'CompareInfo                    CompareInfo - es-ES                            CompareInfo - es-ES_tradnl
+'DisplayName                    Spanish (Spain)                                Spanish (Spain)          
+'EnglishName                    Spanish (Spain, International Sort)            Spanish (Spain, Traditional Sort)
+'IsNeutralCulture               False                                          False                    
+'IsReadOnly                     False                                          False                    
+'LCID                           3082                                           1034                     
+'Name                           es-ES                                          es-ES                    
+'NativeName                     Español (España, alfabetización internacional) Español (España, alfabetización tradicional)
+'Parent                         es                                             es                       
+'TextInfo                       TextInfo - es-ES                               TextInfo - es-ES_tradnl  
+'ThreeLetterISOLanguageName     spa                                            spa                      
+'ThreeLetterWindowsLanguageName ESN                                            ESP                      
+'TwoLetterISOLanguageName       es                                             es                       
+'
+'Comparing "llegar" and "lugar"
+'   With myCIintl.CompareInfo.Compare: -1
+'   With myCItrad.CompareInfo.Compare: 1
+
+End Module

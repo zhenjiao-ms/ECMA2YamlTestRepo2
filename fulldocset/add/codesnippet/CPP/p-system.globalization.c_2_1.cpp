@@ -1,58 +1,41 @@
 using namespace System;
-using namespace System::Collections;
 using namespace System::Globalization;
 int main()
 {
    
-   // Creates and initializes the CultureInfo which uses the international sort.
-   CultureInfo^ myCIintl = gcnew CultureInfo( "es-ES",false );
-   
-   // Creates and initializes the CultureInfo which uses the traditional sort.
-   CultureInfo^ myCItrad = gcnew CultureInfo( 0x040A,false );
-   
-   // Displays the properties of each culture.
-   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "PROPERTY", "INTERNATIONAL", "TRADITIONAL" );
-   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "CompareInfo", myCIintl->CompareInfo, myCItrad->CompareInfo );
-   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "DisplayName", myCIintl->DisplayName, myCItrad->DisplayName );
-   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "EnglishName", myCIintl->EnglishName, myCItrad->EnglishName );
-   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "IsNeutralCulture", myCIintl->IsNeutralCulture, myCItrad->IsNeutralCulture );
-   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "IsReadOnly", myCIintl->IsReadOnly, myCItrad->IsReadOnly );
-   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "LCID", myCIintl->LCID, myCItrad->LCID );
-   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "Name", myCIintl->Name, myCItrad->Name );
-   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "NativeName", myCIintl->NativeName, myCItrad->NativeName );
-   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "Parent", myCIintl->Parent, myCItrad->Parent );
-   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "TextInfo", myCIintl->TextInfo, myCItrad->TextInfo );
-   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "ThreeLetterISOLanguageName", myCIintl->ThreeLetterISOLanguageName, myCItrad->ThreeLetterISOLanguageName );
-   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "ThreeLetterWindowsLanguageName", myCIintl->ThreeLetterWindowsLanguageName, myCItrad->ThreeLetterWindowsLanguageName );
-   Console::WriteLine( "{0,-31}{1,-47}{2,-25}", "TwoLetterISOLanguageName", myCIintl->TwoLetterISOLanguageName, myCItrad->TwoLetterISOLanguageName );
-   Console::WriteLine();
-   
-   // Compare two strings using myCIintl -> 
-   Console::WriteLine( "Comparing \"llegar\" and \"lugar\"" );
-   Console::WriteLine( "   With myCIintl -> CompareInfo -> Compare: {0}", myCIintl->CompareInfo->Compare( "llegar", "lugar" ) );
-   Console::WriteLine( "   With myCItrad -> CompareInfo -> Compare: {0}", myCItrad->CompareInfo->Compare( "llegar", "lugar" ) );
+   // Displays several properties of the neutral cultures.
+   Console::WriteLine( "CULTURE ISO ISO WIN DISPLAYNAME                              ENGLISHNAME" );
+   System::Collections::IEnumerator^ enum0 = CultureInfo::GetCultures( CultureTypes::NeutralCultures )->GetEnumerator();
+   while ( enum0->MoveNext() )
+   {
+      CultureInfo^ ci = safe_cast<CultureInfo^>(enum0->Current);
+      Console::Write( "{0,-7}", ci->Name );
+      Console::Write( " {0,-3}", ci->TwoLetterISOLanguageName );
+      Console::Write( " {0,-3}", ci->ThreeLetterISOLanguageName );
+      Console::Write( " {0,-3}", ci->ThreeLetterWindowsLanguageName );
+      Console::Write( " {0,-40}", ci->DisplayName );
+      Console::WriteLine( " {0,-40}", ci->EnglishName );
+   }
 }
 
 /*
-This code produces the following output.
+This code produces the following output.  This output has been cropped for brevity.
 
-PROPERTY                       INTERNATIONAL                                  TRADITIONAL              
-CompareInfo                    CompareInfo - es-ES                            CompareInfo - es-ES_tradnl
-DisplayName                    Spanish (Spain)                                Spanish (Spain)          
-EnglishName                    Spanish (Spain, International Sort)            Spanish (Spain, Traditional Sort)
-IsNeutralCulture               False                                          False                    
-IsReadOnly                     False                                          False                    
-LCID                           3082                                           1034                     
-Name                           es-ES                                          es-ES                    
-NativeName                     Español (España, alfabetización internacional) Español (España, alfabetización tradicional)
-Parent                         es                                             es                       
-TextInfo                       TextInfo - es-ES                               TextInfo - es-ES_tradnl  
-ThreeLetterISOLanguageName     spa                                            spa                      
-ThreeLetterWindowsLanguageName ESN                                            ESP                      
-TwoLetterISOLanguageName       es                                             es                       
-
-Comparing "llegar" and "lugar"
-   With myCIintl -> CompareInfo -> Compare: -1
-   With myCItrad -> CompareInfo -> Compare: 1
+CULTURE ISO ISO WIN DISPLAYNAME                              ENGLISHNAME
+ar      ar  ara ARA Arabic                                   Arabic                                  
+bg      bg  bul BGR Bulgarian                                Bulgarian                               
+ca      ca  cat CAT Catalan                                  Catalan                                 
+zh-Hans zh  zho CHS Chinese (Simplified)                     Chinese (Simplified)                    
+cs      cs  ces CSY Czech                                    Czech                                   
+da      da  dan DAN Danish                                   Danish                                  
+de      de  deu DEU German                                   German                                  
+el      el  ell ELL Greek                                    Greek                                   
+en      en  eng ENU English                                  English                                 
+es      es  spa ESP Spanish                                  Spanish                                 
+fi      fi  fin FIN Finnish                                  Finnish                                 
+zh      zh  zho CHS Chinese                                  Chinese                                 
+zh-Hant zh  zho CHT Chinese (Traditional)                    Chinese (Traditional)                   
+zh-CHS  zh  zho CHS Chinese (Simplified) Legacy              Chinese (Simplified) Legacy             
+zh-CHT  zh  zho CHT Chinese (Traditional) Legacy             Chinese (Traditional) Legacy            
 
 */

@@ -1,8 +1,8 @@
-    Private Sub CreateTextDataObject()
-        ' Creates a new data object using a string.
-        Dim myString As String = "My text string"
-        Dim myDataObject As New DataObject(myString)
-        
-        ' Prints the string in a text box.
-        textBox1.Text = myDataObject.GetData(DataFormats.Text).ToString()
-    End Sub 'CreateTextDataObject
+    Private Sub dataGrid1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
+        Dim newLine As String = ControlChars.Cr
+        Console.WriteLine(newLine)
+        Dim myHitTest As System.Windows.Forms.DataGrid.HitTestInfo
+        ' Use the DataGrid control's HitTest method with the x and y properties.
+        myHitTest = dataGrid1.HitTest(e.X, e.Y)
+        Console.WriteLine(("Hashcode " & myHitTest.GetHashCode().ToString()))
+    End Sub 'dataGrid1_MouseDown

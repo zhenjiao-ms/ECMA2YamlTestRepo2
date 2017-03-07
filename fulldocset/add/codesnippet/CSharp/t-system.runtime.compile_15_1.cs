@@ -1,13 +1,21 @@
-using System;
-using System.Runtime.CompilerServices;
+        public void DoProcessing()
+        {
+            TraceMessage("Something happened.");
+        }
 
-[assembly: SuppressIldasmAttribute()]
-class Program
-{
-    static void Main(string[] args)
-    {
-        Console.WriteLine("The SuppressIldasmAttribute is applied to this assembly.");
+        public void TraceMessage(string message,
+                [System.Runtime.CompilerServices.CallerMemberName] string memberName = "",
+                [System.Runtime.CompilerServices.CallerFilePath] string sourceFilePath = "",
+                [System.Runtime.CompilerServices.CallerLineNumber] int sourceLineNumber = 0)
+        {
+            System.Diagnostics.Trace.WriteLine("message: " + message);
+            System.Diagnostics.Trace.WriteLine("member name: " + memberName);
+            System.Diagnostics.Trace.WriteLine("source file path: " + sourceFilePath);
+            System.Diagnostics.Trace.WriteLine("source line number: " + sourceLineNumber);
+        }
 
-    }
-
-}
+        // Sample Output:
+        //  message: Something happened.
+        //  member name: DoProcessing
+        //  source file path: c:\Users\username\Documents\Visual Studio 2012\Projects\CallerInfoCS\CallerInfoCS\Form1.cs
+        //  source line number: 31

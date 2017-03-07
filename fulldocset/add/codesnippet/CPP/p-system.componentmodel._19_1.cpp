@@ -1,12 +1,10 @@
-   void PrintIndexItem2()
+private:
+   void PrintIndexItem()
    {
       
-      // Creates a new collection and assigns it the properties for button1.
-      PropertyDescriptorCollection^ properties = TypeDescriptor::GetProperties( button1 );
+      // Creates a new collection and assigns it the events for button1.
+      EventDescriptorCollection^ events = TypeDescriptor::GetEvents( button1 );
       
-      // Sets a PropertyDescriptor to the specific property.
-      PropertyDescriptor^ myProperty = properties[ "Opacity" ];
-      
-      // Prints the display name for the property.
-      textBox1->Text = myProperty->DisplayName;
+      // Prints the second event's name.
+      textBox1->Text = events[ 1 ]->ToString();
    }

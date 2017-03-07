@@ -1,9 +1,18 @@
-            convertedCharacter = Convert.ToChar(intCharacter);
-            if(convertedCharacter == '.')
+        // From textReaderText, create a continuous paragraph 
+        // with two spaces between each sentence.
+        string aLine, aParagraph = null;
+        StringReader strReader = new StringReader(textReaderText);
+        while(true)
+        {
+            aLine = strReader.ReadLine();
+            if(aLine != null)
             {
-                strWriter.Write(".\n\n");
-
-                // Bypass the spaces between sentences.
-                strReader.Read();
-                strReader.Read();
+                aParagraph = aParagraph + aLine + " ";
             }
+            else
+            {
+                aParagraph = aParagraph + "\n";
+                break;
+            }
+        }
+        Console.WriteLine("Modified text:\n\n{0}", aParagraph);

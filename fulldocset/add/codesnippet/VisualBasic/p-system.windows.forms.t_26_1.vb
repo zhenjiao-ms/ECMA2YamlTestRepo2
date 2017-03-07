@@ -1,22 +1,17 @@
-Public Sub HighlightCheckedNodes()
-   Dim countIndex As Integer = 0
-   Dim selectedNode As String = "Selected customer nodes are : "
-   Dim myNode As TreeNode
-   For Each myNode In  myTreeView.Nodes(0).Nodes
-      ' Check whether the tree node is checked.
-      If myNode.Checked Then
-         ' Set the node's backColor.
-         myNode.BackColor = Color.Yellow
-         selectedNode += myNode.Text + " "
-         countIndex += 1
-      Else
-         myNode.BackColor = Color.White
-      End If
-   Next myNode
-
-   If countIndex > 0 Then
-      MessageBox.Show(selectedNode)
-   Else
-      MessageBox.Show("No nodes are selected")
-   End If
-End Sub
+   ' This example assumes that the Form_Load event handling method
+   ' is connected to the Load event of the form.
+   Private Sub Form1_Load(sender As Object, e As System.EventArgs) Handles MyBase.Load
+      ' Create the ToolTip and associate with the Form container.
+      Dim toolTip1 As New ToolTip()
+      
+      ' Set up the delays for the ToolTip.
+      toolTip1.AutoPopDelay = 5000
+      toolTip1.InitialDelay = 1000
+      toolTip1.ReshowDelay = 500
+      ' Force the ToolTip text to be displayed whether or not the form is active.
+      toolTip1.ShowAlways = True
+      
+      ' Set up the ToolTip text for the Button and Checkbox.
+      toolTip1.SetToolTip(Me.button1, "My button1")
+      toolTip1.SetToolTip(Me.checkBox1, "My checkBox1")
+   End Sub

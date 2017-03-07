@@ -1,126 +1,89 @@
 <%@ Page Language="C#" AutoEventWireup="True" %>
-<%@ Import Namespace="System.Data" %>
- 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
-   <script language="C#" runat="server">
+ <head>
+    <title>Repeater Example</title>
+<script language="C#" runat="server">
+       void Page_Load(Object Sender, EventArgs e) {
  
-      ICollection CreateDataSource() 
-      {
-         DataTable dt = new DataTable();
-         DataRow dr;
+          if (!IsPostBack) {
+             ArrayList values = new ArrayList();
  
-         dt.Columns.Add(new DataColumn("IntegerValue", typeof(Int32)));
-         dt.Columns.Add(new DataColumn("StringValue", typeof(string)));
-         dt.Columns.Add(new DataColumn("DateTimeValue", typeof(string)));
-         dt.Columns.Add(new DataColumn("BoolValue", typeof(bool)));
+             values.Add(new PositionData("Microsoft", "Msft"));
+             values.Add(new PositionData("Intel", "Intl"));
+             values.Add(new PositionData("Dell", "Dell"));
  
-         for (int i = 0; i < 100; i++) 
-         {
-            dr = dt.NewRow();
+             Repeater1.DataSource = values;
+             Repeater1.DataBind();
+          }
+       }
  
-            dr[0] = i;
-            dr[1] = "Item " + i.ToString();
-            dr[2] = DateTime.Now.ToShortDateString();
-            dr[3] = (i % 2 != 0) ? true : false;
+       void R1_ItemCommand(Object Sender, RepeaterCommandEventArgs e) {        
+          Label2.Text = "The " + ((Button)e.CommandSource).Text + " button has just been clicked; <br />";
+       }    
  
-            dt.Rows.Add(dr);
-         }
+       public class PositionData {
+         
+          private string name;
+          private string ticker;
  
-         DataView dv = new DataView(dt);
-         return dv;
-      }
+          public PositionData(string name, string ticker) {
+             this.name = name;
+             this.ticker = ticker;
+          }
  
-      void Page_Load(Object sender, EventArgs e) 
-      {
-         if (chk1.Checked)
-            MyDataGrid.PagerStyle.Mode = PagerMode.NumericPages;
-         else 
-            MyDataGrid.PagerStyle.Mode = PagerMode.NextPrev;
+          public string Name {
+             get {
+                return name;
+             }
+          }
  
-         BindGrid();
-      }
+          public string Ticker {
+             get {
+                return ticker;
+             }
+          }
+       }
  
-      void MyDataGrid_Page(Object sender, DataGridPageChangedEventArgs e) 
-      {
-         MyDataGrid.CurrentPageIndex = e.NewPageIndex;
-         BindGrid();
-      }
+    </script>
  
-      void BindGrid() 
-      {
-         MyDataGrid.DataSource = CreateDataSource();
-         MyDataGrid.DataBind();
-         ShowStats();
-      }
+ </head>
+ <body>
  
-      void ShowStats() 
-      {
-         lblEnabled.Text = "AllowPaging is " + MyDataGrid.AllowPaging;
-         lblCurrentIndex.Text = "CurrentPageIndex is " + MyDataGrid.CurrentPageIndex;
-         lblPageCount.Text = "PageCount is " + MyDataGrid.PageCount;
-         lblPageSize.Text = "PageSize is " + MyDataGrid.PageSize;
-      }
+    <h3>Repeater Example</h3>
  
+    <form id="form1" runat="server">
  
-   </script>
+       <b>Repeater1:</b>
+         
+       <br />
+         
+       <asp:Repeater id="Repeater1" OnItemCommand="R1_ItemCommand" runat="server">
+          <HeaderTemplate>
+             <table border="1">
+                <tr>
+                   <td><b>Company</b></td>
+                   <td><b>Symbol</b></td>
+                </tr>
+          </HeaderTemplate>
+             
+          <ItemTemplate>
+             <tr>
+                <td> <%# DataBinder.Eval(Container.DataItem, "Name") %> </td>
+                <td> <asp:Button Text=<%# DataBinder.Eval(Container.DataItem, "Ticker") %> runat="server" /></td>
+             </tr>
+          </ItemTemplate>
+             
+          <FooterTemplate>
+             </table>
+          </FooterTemplate>
+             
+       </asp:Repeater>
+       <br />
+         
+       <asp:Label id="Label2" font-names="Verdana" ForeColor="Green" font-size="10pt" runat="server"/>
+    </form>
+ </body>
+ </html>
  
-<head runat="server">
-    <title>Paging with DataGrid</title>
-</head>
-<body>
- 
-   <h3>Paging with DataGrid</h3>
- 
-   <form id="form1" runat="server">
- 
-      <asp:DataGrid id="MyDataGrid" runat="server"
-           AllowPaging="True"
-           PageSize="10"
-           PagerStyle-Mode="NumericPages"
-           PagerStyle-HorizontalAlign="Right"
-           OnPageIndexChanged="MyDataGrid_Page"
-           BorderColor="black"
-           BorderWidth="1"
-           GridLines="Both"
-           CellPadding="3"
-           CellSpacing="0"
-           Font-Names="Verdana"
-           Font-Size="8pt"
-           HeaderStyle-BackColor="#aaaadd"
-           AlternatingItemStyle-BackColor="#eeeeee"/>
- 
-      <br />
- 
-      <asp:Checkbox id="chk1" runat="server"
-           Text="Show numeric page navigation buttons"
-           Font-Names="Verdana"
-           Font-Size="8pt"
-           AutoPostBack="true"/>
- 
-      <br />
- 
-      <table style="background-color:#eeeeee; padding:6">
-         <tr>
-            <td style="display:inline">
-               
- 
-                  <asp:Label id="lblEnabled" 
-                       runat="server"/><br />
-                  <asp:Label id="lblCurrentIndex" 
-                       runat="server"/><br />
-                  <asp:Label id="lblPageCount" 
-                       runat="server"/><br />
-                  <asp:Label id="lblPageSize" 
-                        runat="server"/><br />
- 
-               
-            </td>
-         </tr>
-      </table>
- 
-   </form>
- 
-</body>
-</html>

@@ -12,8 +12,31 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Provides a text writer that can indent new lines by a tab string token.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ IndentedTextWriter extends a <xref:System.IO.TextWriter> by providing methods that insert a tab string and track the current indentation level. Text formatted with multiple indentation levels is useful for generated code, so this class is used by CodeDOM code generator implementations.  
+  
+ The tab string is the string that each indentation consists of. Typically the tab string contains white space.  
+  
+> [!NOTE]
+>  This class contains a link demand and an inheritance demand at the class level that applies to all members. A <xref:System.Security.SecurityException> is thrown when either the immediate caller or the derived class does not have full-trust permission. For details about security demands, see [Link Demands](../Topic/Link%20Demands.md) and [Inheritance Demands](http://msdn.microsoft.com/en-us/28b9adbb-8f08-4f10-b856-dbf59eb932d9).  
+  
+   
+  
+## Examples  
+ The following code example demonstrates using an IndentedTextWriter to write text at different levels of indentation.  
+  
+ [!code-cs[IndentedTextWriterExample#1](~/add/codesnippet/csharp/t-system.codedom.compile_0_1.cs)]
+ [!code-cpp[IndentedTextWriterExample#1](~/add/codesnippet/cpp/t-system.codedom.compile_0_1.cpp)]
+ [!code-vb[IndentedTextWriterExample#1](~/add/codesnippet/visualbasic/t-system.codedom.compile_0_1.vb)]  
+  
+ ]]></format>
+    </remarks>
+    <permission cref="F:System.Security.Permissions.SecurityAction.LinkDemand">for full trust for the immediate caller. This class cannot be used by partially trusted code.</permission>
+    <permission cref="F:System.Security.Permissions.SecurityAction.InheritanceDemand">for full trust for inheritors. This class cannot be inherited by partially trusted code.</permission>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -30,9 +53,10 @@
         <Parameter Name="writer" Type="System.IO.TextWriter" />
       </Parameters>
       <Docs>
-        <param name="writer">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="writer">The <see cref="T:System.IO.TextWriter" /> to use for output.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.CodeDom.Compiler.IndentedTextWriter" /> class using the specified text writer and default tab string.</summary>
         <remarks>To be added.</remarks>
+        <permission cref="F:System.Security.Permissions.SecurityAction.LinkDemand">for full trust for the immediate caller. This member cannot be used by partially trusted code.</permission>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -50,10 +74,22 @@
         <Parameter Name="tabString" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="writer">To be added.</param>
-        <param name="tabString">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="writer">The <see cref="T:System.IO.TextWriter" /> to use for output.</param>
+        <param name="tabString">The tab string to use for indentation.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.CodeDom.Compiler.IndentedTextWriter" /> class using the specified text writer and tab string.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following code example demonstrates creating an <xref:System.CodeDom.Compiler.IndentedTextWriter> using a specified tab string.  
+  
+ [!code-cs[IndentedTextWriterExample#3](~/add/codesnippet/csharp/ae96d2ff-c764-46ba-a5ec-_1.cs)]
+ [!code-cpp[IndentedTextWriterExample#3](~/add/codesnippet/cpp/ae96d2ff-c764-46ba-a5ec-_1.cpp)]
+ [!code-vb[IndentedTextWriterExample#3](~/add/codesnippet/visualbasic/ae96d2ff-c764-46ba-a5ec-_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <permission cref="F:System.Security.Permissions.SecurityAction.LinkDemand">for full trust for the immediate caller. This member cannot be used by partially trusted code.</permission>
       </Docs>
     </Member>
     <Member MemberName="Close">
@@ -71,7 +107,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Closes the document being written to.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -89,8 +125,16 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Specifies the default tab string. This field is constant.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The default tab string consists of a single white space. (" ")  
+  
+ ]]></format>
+        </remarks>
+        <permission cref="F:System.Security.Permissions.SecurityAction.LinkDemand">for full trust for the immediate caller. This member cannot be used by partially trusted code.</permission>
       </Docs>
     </Member>
     <Member MemberName="Encoding">
@@ -107,8 +151,8 @@
         <ReturnType>System.Text.Encoding</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the encoding for the text writer to use.</summary>
+        <value>An <see cref="T:System.Text.Encoding" /> that indicates the encoding for the text writer to use.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -127,8 +171,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Flushes the stream.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This clears the stream of any data.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Indent">
@@ -145,9 +196,20 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the number of spaces to indent.</summary>
+        <value>The number of spaces to indent.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following code example demonstrates setting the indentation level of an <xref:System.CodeDom.Compiler.IndentedTextWriter>. The indentation level is the number of tab strings to prefix each line with.  
+  
+ [!code-cs[IndentedTextWriterExample#3](~/add/codesnippet/csharp/p-system.codedom.compile_3_1.cs)]
+ [!code-cpp[IndentedTextWriterExample#3](~/add/codesnippet/cpp/p-system.codedom.compile_3_1.cpp)]
+ [!code-vb[IndentedTextWriterExample#3](~/add/codesnippet/visualbasic/p-system.codedom.compile_3_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InnerWriter">
@@ -164,8 +226,8 @@
         <ReturnType>System.IO.TextWriter</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.IO.TextWriter" /> to use.</summary>
+        <value>The <see cref="T:System.IO.TextWriter" /> to use.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -183,8 +245,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the new line character to use.</summary>
+        <value>The new line character to use.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -203,7 +265,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Outputs the tab string once for each level of indentation according to the <see cref="System.CodeDom.Compiler.IndentedTextWriter.Indent%2A" /> property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -224,8 +286,8 @@
         <Parameter Name="value" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The Boolean value to write.</param>
+        <summary>Writes the text representation of a Boolean value to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -246,8 +308,8 @@
         <Parameter Name="value" Type="System.Char" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The character to write.</param>
+        <summary>Writes a character to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -268,8 +330,8 @@
         <Parameter Name="buffer" Type="System.Char[]" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="buffer">The character array to write.</param>
+        <summary>Writes a character array to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -290,8 +352,8 @@
         <Parameter Name="value" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The <see langword="double" /> to write.</param>
+        <summary>Writes the text representation of a Double to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -312,8 +374,8 @@
         <Parameter Name="value" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The integer to write.</param>
+        <summary>Writes the text representation of an integer to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -334,8 +396,8 @@
         <Parameter Name="value" Type="System.Int64" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The 8-byte integer to write.</param>
+        <summary>Writes the text representation of an 8-byte integer to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -356,8 +418,8 @@
         <Parameter Name="value" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The object to write.</param>
+        <summary>Writes the text representation of an object to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -378,8 +440,8 @@
         <Parameter Name="value" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The <see langword="single" /> to write.</param>
+        <summary>Writes the text representation of a Single to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -400,8 +462,8 @@
         <Parameter Name="s" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="s">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="s">The string to write.</param>
+        <summary>Writes the specified string to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -423,9 +485,9 @@
         <Parameter Name="arg0" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <param name="arg0">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="format">The formatting string.</param>
+        <param name="arg0">The object to write into the formatted string.</param>
+        <summary>Writes out a formatted string, using the same semantics as specified.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -453,9 +515,9 @@
         </Parameter>
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <param name="arg">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="format">The formatting string to use.</param>
+        <param name="arg">The argument array to output.</param>
+        <summary>Writes out a formatted string, using the same semantics as specified.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -478,10 +540,10 @@
         <Parameter Name="count" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <param name="index">To be added.</param>
-        <param name="count">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="buffer">The character array to write data from.</param>
+        <param name="index">Starting index in the buffer.</param>
+        <param name="count">The number of characters to write.</param>
+        <summary>Writes a subarray of characters to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -504,10 +566,10 @@
         <Parameter Name="arg1" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <param name="arg0">To be added.</param>
-        <param name="arg1">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="format">The formatting string to use.</param>
+        <param name="arg0">The first object to write into the formatted string.</param>
+        <param name="arg1">The second object to write into the formatted string.</param>
+        <summary>Writes out a formatted string, using the same semantics as specified.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -526,7 +588,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Writes a line terminator.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -547,8 +609,8 @@
         <Parameter Name="value" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The Boolean to write.</param>
+        <summary>Writes the text representation of a Boolean, followed by a line terminator, to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -569,8 +631,8 @@
         <Parameter Name="value" Type="System.Char" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The character to write.</param>
+        <summary>Writes a character, followed by a line terminator, to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -591,8 +653,8 @@
         <Parameter Name="buffer" Type="System.Char[]" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="buffer">The character array to write.</param>
+        <summary>Writes a character array, followed by a line terminator, to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -613,8 +675,8 @@
         <Parameter Name="value" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The <see langword="double" /> to write.</param>
+        <summary>Writes the text representation of a Double, followed by a line terminator, to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -635,8 +697,8 @@
         <Parameter Name="value" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The integer to write.</param>
+        <summary>Writes the text representation of an integer, followed by a line terminator, to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -657,8 +719,8 @@
         <Parameter Name="value" Type="System.Int64" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The 8-byte integer to write.</param>
+        <summary>Writes the text representation of an 8-byte integer, followed by a line terminator, to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -679,8 +741,8 @@
         <Parameter Name="value" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The object to write.</param>
+        <summary>Writes the text representation of an object, followed by a line terminator, to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -701,8 +763,8 @@
         <Parameter Name="value" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The <see langword="single" /> to write.</param>
+        <summary>Writes the text representation of a Single, followed by a line terminator, to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -723,8 +785,8 @@
         <Parameter Name="s" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="s">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="s">The string to write.</param>
+        <summary>Writes the specified string, followed by a line terminator, to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -750,8 +812,8 @@
         <Parameter Name="value" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">A UInt32 to output.</param>
+        <summary>Writes the text representation of a UInt32, followed by a line terminator, to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -773,9 +835,9 @@
         <Parameter Name="arg0" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <param name="arg0">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="format">The formatting string.</param>
+        <param name="arg0">The object to write into the formatted string.</param>
+        <summary>Writes out a formatted string, followed by a line terminator, using the same semantics as specified.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -803,9 +865,9 @@
         </Parameter>
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <param name="arg">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="format">The formatting string to use.</param>
+        <param name="arg">The argument array to output.</param>
+        <summary>Writes out a formatted string, followed by a line terminator, using the same semantics as specified.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -828,10 +890,10 @@
         <Parameter Name="count" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <param name="index">To be added.</param>
-        <param name="count">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="buffer">The character array to write data from.</param>
+        <param name="index">Starting index in the buffer.</param>
+        <param name="count">The number of characters to write.</param>
+        <summary>Writes a subarray of characters, followed by a line terminator, to the text stream.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -854,10 +916,10 @@
         <Parameter Name="arg1" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="format">To be added.</param>
-        <param name="arg0">To be added.</param>
-        <param name="arg1">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="format">The formatting string to use.</param>
+        <param name="arg0">The first object to write into the formatted string.</param>
+        <param name="arg1">The second object to write into the formatted string.</param>
+        <summary>Writes out a formatted string, followed by a line terminator, using the same semantics as specified.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -878,9 +940,20 @@
         <Parameter Name="s" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="s">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="s">The string to write.</param>
+        <summary>Writes the specified string to a line without tabs.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following code example demonstrates writing a line without tab string indentations.  
+  
+ [!code-cs[IndentedTextWriterExample#6](~/add/codesnippet/csharp/m-system.codedom.compile_4_1.cs)]
+ [!code-cpp[IndentedTextWriterExample#6](~/add/codesnippet/cpp/m-system.codedom.compile_4_1.cpp)]
+ [!code-vb[IndentedTextWriterExample#6](~/add/codesnippet/visualbasic/m-system.codedom.compile_4_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
   </Members>

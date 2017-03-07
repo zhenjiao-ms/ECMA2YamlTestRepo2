@@ -1,49 +1,13 @@
-Imports System
-Imports System.Collections.Generic
-Imports System.ComponentModel
-Imports System.Data
-Imports System.Drawing
-Imports System.Text
-Imports System.Windows.Forms
+   Private Sub listBox1_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles listBox1.SelectedIndexChanged
+      ' Get the currently selected item in the ListBox.
+      Dim curItem As String = listBox1.SelectedItem.ToString()
 
-Public Class Form1
-   Inherits Form
-   Private listBox1 As ListBox
-   
-   
-   Public Sub New()
-      InitializeComponent()
+      ' Find the string in ListBox2.
+      Dim index As Integer = listBox2.FindString(curItem)
+      ' If the item was not found in ListBox 2 display a message box, otherwise select it in ListBox2.
+      If index = -1 Then
+         MessageBox.Show("Item is not available in ListBox2")
+      Else
+         listBox2.SetSelected(index, True)
+      End If
    End Sub
-   
-   <STAThread()>  _
-   Shared Sub Main()
-      Application.EnableVisualStyles()
-      Application.SetCompatibleTextRenderingDefault(False)
-      Application.Run(New Form1())
-   End Sub
-   
-   Private Sub InitializeComponent()
-      Me.listBox1 = New System.Windows.Forms.ListBox()
-      Me.SuspendLayout()
-      ' 
-      ' listBox1
-      ' 
-      Me.listBox1.FormattingEnabled = True
-      Me.listBox1.HorizontalScrollbar = True
-      Me.listBox1.Items.AddRange(New Object() {"Item 1, column 1", "Item 2, column 1", "Item 3, column 1", "Item 4, column 1", "Item 5, column 1", "Item 1, column 2", "Item 2, column 2", "Item 3, column 2"})
-      Me.listBox1.Location = New System.Drawing.Point(0, 0)
-      Me.listBox1.MultiColumn = True
-      Me.listBox1.Name = "listBox1"
-      Me.listBox1.ScrollAlwaysVisible = True
-      Me.listBox1.Size = New System.Drawing.Size(120, 95)
-      Me.listBox1.TabIndex = 0
-      Me.listBox1.ColumnWidth = 85
-      ' 
-      ' Form1
-      ' 
-      Me.ClientSize = New System.Drawing.Size(292, 273)
-      Me.Controls.Add(listBox1)
-      Me.Name = "Form1"
-      Me.ResumeLayout(False)
-   End Sub
-End Class

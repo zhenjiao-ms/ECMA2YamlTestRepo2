@@ -4,10 +4,8 @@
  
  static public void MyErrorMethod() {
     // Write the message if the TraceSwitch level is set to Error or higher.
-    if(generalSwitch.TraceError)
-       Trace.Write("My error message. ");
+    Trace.WriteIf(generalSwitch.TraceError, "My error message. ");
  
     // Write a second message if the TraceSwitch level is set to Verbose.
-    if(generalSwitch.TraceVerbose)
-       Trace.WriteLine("My second error message.");
+    Trace.WriteLineIf(generalSwitch.TraceVerbose, "My second error message.");
  }

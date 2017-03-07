@@ -1,21 +1,11 @@
-Imports System
-Imports System.Windows.Forms
-Imports Microsoft.Visualbasic
-
-
-Public Class DataFormat_GetFormat
-   
-   Shared Sub Main()
-      
-     ' Create a DataFormats.Format for the Unicode data format.
-
-      Dim myFormat As DataFormats.Format = DataFormats.GetFormat(13)
-
-      ' Display the contents of myFormat.
-
-      Console.WriteLine(("The Format Name corresponding to the ID " + myFormat.Id.ToString + " is :"))
-      Console.WriteLine(myFormat.Name)
-
-   End Sub 'Main 
-
-End Class 'DataFormat_GetFormat 
+            ' String variable used to show message.
+            Dim myString As String = "Selection backgound color changed from: "
+            ' Store current foreground color of selected cells.
+            Dim myCurrentColor As Color = myDataGrid.SelectionBackColor
+            myString += myCurrentColor.ToString()
+            ' Reset selection background color to default.
+            myDataGrid.ResetSelectionBackColor()
+            myString += "  to "
+            myString += myDataGrid.SelectionBackColor.ToString()
+            ' Show information about changes in color setting.  
+            MessageBox.Show(myString, "Selection background color information")

@@ -1,25 +1,51 @@
-        ' Determine whether the cell should be painted with the 
-        ' custom selection background.
-        If (e.State And DataGridViewElementStates.Selected) = _
-            DataGridViewElementStates.Selected Then
+    ' Draws a node.
+    Private Sub myTreeView_DrawNode(ByVal sender As Object, _
+        ByVal e As DrawTreeNodeEventArgs) Handles myTreeView.DrawNode
 
-            ' Calculate the bounds of the row.
-            Dim rowBounds As New Rectangle( _
-                Me.dataGridView1.RowHeadersWidth, e.RowBounds.Top, _
-                Me.dataGridView1.Columns.GetColumnsWidth( _
-                DataGridViewElementStates.Visible) - _
-                Me.dataGridView1.HorizontalScrollingOffset + 1, _
-                e.RowBounds.Height)
+        ' Draw the background and node text for a selected node.
+        If (e.State And TreeNodeStates.Selected) <> 0 Then
 
-            ' Paint the custom selection background.
-            Dim backbrush As New _
-                System.Drawing.Drawing2D.LinearGradientBrush(rowBounds, _
-                Me.dataGridView1.DefaultCellStyle.SelectionBackColor, _
-                e.InheritedRowStyle.ForeColor, _
-                System.Drawing.Drawing2D.LinearGradientMode.Horizontal)
+            ' Draw the background of the selected node. The NodeBounds
+            ' method makes the highlight rectangle large enough to
+            ' include the text of a node tag, if one is present.
+            e.Graphics.FillRectangle(Brushes.Green, NodeBounds(e.Node))
+
+            ' Retrieve the node font. If the node font has not been set,
+            ' use the TreeView font.
+            Dim nodeFont As Font = e.Node.NodeFont
+            If nodeFont Is Nothing Then
+                nodeFont = CType(sender, TreeView).Font
+            End If
+
+            ' Draw the node text.
+            e.Graphics.DrawString(e.Node.Text, nodeFont, Brushes.White, _
+                e.Bounds.Left - 2, e.Bounds.Top)
+
+        ' Use the default background and node text.
+        Else
+            e.DrawDefault = True
+        End If
+
+        ' If a node tag is present, draw its string representation 
+        ' to the right of the label text.
+        If (e.Node.Tag IsNot Nothing) Then
+            e.Graphics.DrawString(e.Node.Tag.ToString(), tagFont, _
+                Brushes.Yellow, e.Bounds.Right + 2, e.Bounds.Top)
+        End If
+
+        ' If the node has focus, draw the focus rectangle large, making
+        ' it large enough to include the text of the node tag, if present.
+        If (e.State And TreeNodeStates.Focused) <> 0 Then
+            Dim focusPen As New Pen(Color.Black)
             Try
-                e.Graphics.FillRectangle(backbrush, rowBounds)
+                focusPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot
+                Dim focusBounds As Rectangle = NodeBounds(e.Node)
+                focusBounds.Size = New Size(focusBounds.Width - 1, _
+                    focusBounds.Height - 1)
+                e.Graphics.DrawRectangle(focusPen, focusBounds)
             Finally
-                backbrush.Dispose()
+                focusPen.Dispose()
             End Try
         End If
+
+    End Sub 'myTreeView_DrawNode

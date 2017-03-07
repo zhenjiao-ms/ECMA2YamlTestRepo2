@@ -3,165 +3,106 @@
 
 using namespace System;
 using namespace System::IO;
-using namespace System::Xml;
 using namespace System::Xml::Serialization;
-
-[SoapType("EmployeeType")]
-public ref class Employee
+public ref class Instrument
 {
 public:
    String^ Name;
 };
 
-
-// The SoapType is overridden when the
-// SerializeOverride  method is called.
-
-[SoapType("SoapGroupType","http://www.cohowinery.com")]
-public ref class Group
+public ref class Brass: public Instrument
 {
 public:
-   String^ GroupName;
-   array<Employee^>^Employees;
+   bool IsValved;
 };
 
-public ref class Run
+public ref class Orchestra
 {
 public:
-   void SerializeOriginal( String^ filename )
-   {
-      // Create an instance of the XmlSerializer class that
-      // can be used for serializing as a SOAP message.
-      XmlTypeMapping^ mapp = (gcnew SoapReflectionImporter)->ImportTypeMapping( Group::typeid );
-      XmlSerializer^ mySerializer = gcnew XmlSerializer( mapp );
-
-      // Writing the file requires a TextWriter.
-      TextWriter^ writer = gcnew StreamWriter( filename );
-
-      // Create an XML text writer.
-      XmlTextWriter^ xmlWriter = gcnew XmlTextWriter( writer );
-      xmlWriter->Formatting = Formatting::Indented;
-      xmlWriter->Indentation = 2;
-
-      // Create an instance of the class that will be serialized.
-      Group^ myGroup = gcnew Group;
-
-      // Set the Object* properties.
-      myGroup->GroupName = ".NET";
-      Employee^ e1 = gcnew Employee;
-      e1->Name = "Pat";
-      myGroup->Employees = gcnew array<Employee^>(1);
-      myGroup->Employees[ 0 ] = e1;
-
-      // Write the root element.
-      xmlWriter->WriteStartElement( "root" );
-
-      // Serialize the class.
-      mySerializer->Serialize( xmlWriter, myGroup );
-
-      // Close the root tag.
-      xmlWriter->WriteEndElement();
-
-      // Close the XmlWriter.
-      xmlWriter->Close();
-
-      // Close the TextWriter.
-      writer->Close();
-   }
-
-   void SerializeOverride( String^ filename )
-   {
-      // Create an instance of the XmlSerializer class that
-      // uses a SoapAttributeOverrides Object*.
-      XmlSerializer^ mySerializer = CreateOverrideSerializer();
-
-      // Writing the file requires a TextWriter.
-      TextWriter^ writer = gcnew StreamWriter( filename );
-
-      // Create an XML text writer.
-      XmlTextWriter^ xmlWriter = gcnew XmlTextWriter( writer );
-      xmlWriter->Formatting = Formatting::Indented;
-      xmlWriter->Indentation = 2;
-
-      // Create an instance of the class that will be serialized.
-      Group^ myGroup = gcnew Group;
-
-      // Set the Object* properties.
-      myGroup->GroupName = ".NET";
-      Employee^ e1 = gcnew Employee;
-      e1->Name = "Pat";
-      myGroup->Employees = gcnew array<Employee^>(1);
-      myGroup->Employees[ 0 ] = e1;
-
-      // Write the root element.
-      xmlWriter->WriteStartElement( "root" );
-
-      // Serialize the class.
-      mySerializer->Serialize( xmlWriter, myGroup );
-
-      // Close the root tag.
-      xmlWriter->WriteEndElement();
-
-      // Close the XmlWriter.
-      xmlWriter->Close();
-
-      // Close the TextWriter.
-      writer->Close();
-   }
-
-   void DeserializeObject( String^ filename )
-   {
-      // Create an instance of the XmlSerializer class.
-      XmlSerializer^ mySerializer = CreateOverrideSerializer();
-
-      // Reading the file requires a TextReader.
-      TextReader^ reader = gcnew StreamReader( filename );
-
-      // Create an XML text reader.
-      XmlTextReader^ xmlReader = gcnew XmlTextReader( reader );
-      xmlReader->ReadStartElement();
-
-      // Deserialize and cast the object.
-      Group^ myGroup;
-      myGroup = dynamic_cast<Group^>(mySerializer->Deserialize( xmlReader ));
-      xmlReader->ReadEndElement();
-      Console::WriteLine( "The GroupName is {0}", myGroup->GroupName );
-      Console::WriteLine( "Look at the SoapType.xml and SoapType2.xml "
-      "files for the generated XML." );
-
-      // Close the readers.
-      xmlReader->Close();
-      reader->Close();
-   }
-
-private:
-   XmlSerializer^ CreateOverrideSerializer()
-   {
-      // Create and return an XmlSerializer instance used to
-      //  and create SOAP messages.
-      SoapAttributeOverrides^ mySoapAttributeOverrides = gcnew SoapAttributeOverrides;
-      SoapAttributes^ soapAtts = gcnew SoapAttributes;
-
-      // Override the SoapTypeAttribute.
-      SoapTypeAttribute^ soapType = gcnew SoapTypeAttribute;
-      soapType->TypeName = "Team";
-      soapType->IncludeInSchema = false;
-      soapType->Namespace = "http://www.microsoft.com";
-      soapAtts->SoapType = soapType;
-      mySoapAttributeOverrides->Add( Group::typeid, soapAtts );
-
-      // Create an XmlTypeMapping that is used to create an instance 
-      // of the XmlSerializer. Then return the XmlSerializer Object*.
-      XmlTypeMapping^ myMapping = (gcnew SoapReflectionImporter( mySoapAttributeOverrides ))->ImportTypeMapping( Group::typeid );
-      XmlSerializer^ ser = gcnew XmlSerializer( myMapping );
-      return ser;
-   }
+   array<Instrument^>^Instruments;
 };
+
+void SerializeObject( String^ filename )
+{
+   /* Each overridden field, property, or type requires 
+      an XmlAttributes object. */
+   XmlAttributes^ attrs = gcnew XmlAttributes;
+
+   /* Create an XmlElementAttribute to override the 
+      field that returns Instrument objects. The overridden field
+      returns Brass objects instead. */
+   XmlElementAttribute^ attr = gcnew XmlElementAttribute;
+   attr->ElementName = "Brass";
+   attr->Type = Brass::typeid;
+
+   // Add the element to the collection of elements.
+   attrs->XmlElements->Add( attr );
+
+   // Create the XmlAttributeOverrides object.
+   XmlAttributeOverrides^ attrOverrides = gcnew XmlAttributeOverrides;
+
+   /* Add the type of the class that contains the overridden 
+      member and the XmlAttributes to override it with to the 
+      XmlAttributeOverrides object. */
+   attrOverrides->Add( Orchestra::typeid, "Instruments", attrs );
+
+   // Create the XmlSerializer using the XmlAttributeOverrides.
+   XmlSerializer^ s = gcnew XmlSerializer( Orchestra::typeid,attrOverrides );
+
+   // Writing the file requires a TextWriter.
+   TextWriter^ writer = gcnew StreamWriter( filename );
+
+   // Create the object that will be serialized.
+   Orchestra^ band = gcnew Orchestra;
+
+   // Create an object of the derived type.
+   Brass^ i = gcnew Brass;
+   i->Name = "Trumpet";
+   i->IsValved = true;
+   array<Instrument^>^myInstruments = {i};
+   band->Instruments = myInstruments;
+
+   // Serialize the object.
+   s->Serialize( writer, band );
+   writer->Close();
+}
+
+void DeserializeObject( String^ filename )
+{
+   XmlAttributeOverrides^ attrOverrides = gcnew XmlAttributeOverrides;
+   XmlAttributes^ attrs = gcnew XmlAttributes;
+
+   // Create an XmlElementAttribute to override the Instrument.
+   XmlElementAttribute^ attr = gcnew XmlElementAttribute;
+   attr->ElementName = "Brass";
+   attr->Type = Brass::typeid;
+
+   // Add the element to the collection of elements.
+   attrs->XmlElements->Add( attr );
+   attrOverrides->Add( Orchestra::typeid, "Instruments", attrs );
+
+   // Create the XmlSerializer using the XmlAttributeOverrides.
+   XmlSerializer^ s = gcnew XmlSerializer( Orchestra::typeid,attrOverrides );
+   FileStream^ fs = gcnew FileStream( filename,FileMode::Open );
+   Orchestra^ band = dynamic_cast<Orchestra^>(s->Deserialize( fs ));
+   Console::WriteLine( "Brass:" );
+
+   /* The difference between deserializing the overridden 
+      XML document and serializing it is this: To read the derived 
+      object values, you must declare an object of the derived type 
+      (Brass), and cast the Instrument instance to it. */
+   Brass^ b;
+   System::Collections::IEnumerator^ myEnum = band->Instruments->GetEnumerator();
+   while ( myEnum->MoveNext() )
+   {
+      Instrument^ i = safe_cast<Instrument^>(myEnum->Current);
+      b = dynamic_cast<Brass^>(i);
+      Console::WriteLine( "{0}\n{1}", b->Name, b->IsValved );
+   }
+}
 
 int main()
 {
-   Run^ test = gcnew Run;
-   test->SerializeOriginal( "SoapType.xml" );
-   test->SerializeOverride( "SoapType2.xml" );
-   test->DeserializeObject( "SoapType2.xml" );
+   SerializeObject( "Override.xml" );
+   DeserializeObject( "Override.xml" );
 }

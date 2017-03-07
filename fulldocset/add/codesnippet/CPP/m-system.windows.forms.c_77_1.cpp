@@ -1,12 +1,7 @@
+   // The following example displays the location of the form in screen coordinates
+   // on the caption bar of the form.
 private:
-   void dataGrid1_KeyUp( Object^ /*sender*/, System::Windows::Forms::KeyEventArgs^ e )
+   void Form1_Move( Object^ /*sender*/, System::EventArgs^ /*e*/ )
    {
-      if ( e->KeyCode == System::Windows::Forms::Keys::Escape )
-      {
-         
-         // Escape key pressed.
-         CurrencyManager^ gridCurrencyManager = dynamic_cast<CurrencyManager^>(this->BindingContext[dataGrid1->DataSource, dataGrid1->DataMember]);
-         gridCurrencyManager->CancelCurrentEdit();
-         MessageBox::Show( "Escape!" );
-      }
+      this->Text = String::Format( "Form screen position = {0}", this->Location );
    }

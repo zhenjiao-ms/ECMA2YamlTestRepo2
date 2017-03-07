@@ -9,7 +9,7 @@ MembershipUser currentUser;
 
 public void Page_Load()
 {
-  currentUser = Membership.GetUser();
+  currentUser = Membership.GetUser(false);
 }
 
 </script>

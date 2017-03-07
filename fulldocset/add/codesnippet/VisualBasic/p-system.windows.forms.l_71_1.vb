@@ -1,34 +1,27 @@
-    Public Sub New()
-        ' Initialize myListView.
-        myListView = New ListView()
-        myListView.Dock = DockStyle.Fill
-        myListView.View = View.LargeIcon
-        myListView.MultiSelect = False
-        myListView.ListViewItemSorter = New ListViewIndexComparer()
+    ' Moves the insertion mark as the item is dragged.
+    Private Sub myListView_DragOver(sender As Object, e As DragEventArgs)
+        ' Retrieve the client coordinates of the mouse pointer.
+        Dim targetPoint As Point = myListView.PointToClient(New Point(e.X, e.Y))
         
-        ' Initialize the insertion mark.
-        myListView.InsertionMark.Color = Color.Green
+        ' Retrieve the index of the item closest to the mouse pointer.
+        Dim targetIndex As Integer = _
+            myListView.InsertionMark.NearestIndex(targetPoint)
         
-        ' Add items to myListView.
-        myListView.Items.Add("zero")
-        myListView.Items.Add("one")
-        myListView.Items.Add("two")
-        myListView.Items.Add("three")
-        myListView.Items.Add("four")
-        myListView.Items.Add("five")
+        ' Confirm that the mouse pointer is not over the dragged item.
+        If targetIndex > -1 Then
+            ' Determine whether the mouse pointer is to the left or
+            ' the right of the midpoint of the closest item and set
+            ' the InsertionMark.AppearsAfterItem property accordingly.
+            Dim itemBounds As Rectangle = myListView.GetItemRect(targetIndex)
+            If targetPoint.X > itemBounds.Left + (itemBounds.Width / 2) Then
+                myListView.InsertionMark.AppearsAfterItem = True
+            Else
+                myListView.InsertionMark.AppearsAfterItem = False
+            End If
+        End If
         
-        ' Initialize the drag-and-drop operation when running
-        ' under Windows XP or a later operating system.
-        If OSFeature.Feature.IsPresent(OSFeature.Themes)
-            myListView.AllowDrop = True
-            AddHandler myListView.ItemDrag, AddressOf myListView_ItemDrag
-            AddHandler myListView.DragEnter, AddressOf myListView_DragEnter
-            AddHandler myListView.DragOver, AddressOf myListView_DragOver
-            AddHandler myListView.DragLeave, AddressOf myListView_DragLeave
-            AddHandler myListView.DragDrop, AddressOf myListView_DragDrop
-        End If 
-
-        ' Initialize the form.
-        Me.Text = "ListView Insertion Mark Example"
-        Me.Controls.Add(myListView)
-    End Sub 'New
+        ' Set the location of the insertion mark. If the mouse is
+        ' over the dragged item, the targetIndex value is -1 and
+        ' the insertion mark disappears.
+        myListView.InsertionMark.Index = targetIndex
+    End Sub 'myListView_DragOver

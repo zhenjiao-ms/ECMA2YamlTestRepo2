@@ -1,28 +1,9 @@
-using System.Windows.Forms;
-
-public class Form1 : Form
-{
-    private TabControl tabControl1;
-    private TabPage tabPage1;
-
-    public void MyTabs()
+    private void getRowBtn_Click(
+		System.Object sender, 
+		System.EventArgs e)
     {
-        this.tabControl1 = new TabControl();
-
-        // Invokes the TabPage() constructor to create the tabPage1.
-        this.tabPage1 = new System.Windows.Forms.TabPage();
-
-        this.tabControl1.Controls.Add(tabPage1);
-        this.Controls.Add(tabControl1);
+        foreach ( Control c in this.TableLayoutPanel1.Controls )
+        {
+            Trace.WriteLine(this.TableLayoutPanel1.GetRow(c));
+        }
     }
-
-    public Form1()
-    {
-        MyTabs();
-    }
-
-    static void Main() 
-    {
-        Application.Run(new Form1());
-    }
-}

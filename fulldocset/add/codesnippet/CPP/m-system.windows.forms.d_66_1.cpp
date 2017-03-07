@@ -1,14 +1,26 @@
-         // String variable used to show message.
-         String^ myString = "Selection backgound color changed from: ";
+private:
+   void button3_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
+   {
+      ColorDialog^ myColorDialog = gcnew ColorDialog;
 
-         // Store current foreground color of selected cells.
-         Color myCurrentColor = myDataGrid->SelectionBackColor;
-         myString = String::Concat( myString, myCurrentColor.ToString() );
+      // Disable selecting a custom color.
+      myColorDialog->AllowFullOpen = false;
 
-         // Reset selection background color to default.
-         myDataGrid->ResetSelectionBackColor();
-         myString = String::Concat( myString, " to " );
-         myString = String::Concat( myString, myDataGrid->SelectionBackColor.ToString() );
+      // Enable the help button.
+      myColorDialog->ShowHelp = true;
 
-         // Show information about changes in color setting.  
-         MessageBox::Show( myString, "Selection background color information" );
+      // Set the initial color to the current color.
+      myColorDialog->Color = myDataGrid->HeaderForeColor;
+
+      // Show color dialog box.
+      myColorDialog->ShowDialog();
+
+      // Set the header foreground color.
+      myDataGrid->HeaderForeColor = myColorDialog->Color;
+   }
+
+   // Reset the header foregroundcolor.
+   void button4_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
+   {
+      myDataGrid->ResetHeaderForeColor();
+   }

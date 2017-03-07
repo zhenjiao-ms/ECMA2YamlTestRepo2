@@ -1,27 +1,5 @@
-    // Draws the backgrounds for entire ListView items.
-    private void listView1_DrawItem(object sender,
-        DrawListViewItemEventArgs e)
-    {
-        if ((e.State & ListViewItemStates.Selected) != 0)
-        {
-            // Draw the background and focus rectangle for a selected item.
-            e.Graphics.FillRectangle(Brushes.Maroon, e.Bounds);
-            e.DrawFocusRectangle();
-        }
-        else
-        {
-            // Draw the background for an unselected item.
-            using (LinearGradientBrush brush =
-                new LinearGradientBrush(e.Bounds, Color.Orange,
-                Color.Maroon, LinearGradientMode.Horizontal))
-            {
-                e.Graphics.FillRectangle(brush, e.Bounds);
-            }
-        }
-
-        // Draw the item text for views other than the Details view.
-        if (listView1.View != View.Details)
-        {
-            e.DrawText();
-        }
-    }
+        // Retrieve the cell value for the cell at column 3, row 7.
+        String testValue1 = (String)dataGridView1[3, 7].Value;
+        
+        // Retrieve the cell value for the cell in the Name column at row 4.
+        String testValue2 = (String)dataGridView1["Name", 4].Value;

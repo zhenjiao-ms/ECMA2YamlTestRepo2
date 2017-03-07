@@ -1,95 +1,114 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Text;
 
-public class Example
+public class Example : IComparer
 {
+   private const string FILENAME = @".\Regions.dat";
+
+   private struct Region
+   {
+      internal Region(string id, string name) 
+      {
+         this.Id = id;
+         this.NativeName = name;
+      }
+      
+      public string Id;
+      public string NativeName;
+      
+      public override string ToString()
+      {
+         return this.NativeName;
+      }
+   }
+
    public static void Main()
    {
-      // The Unicode code points specify Arabic base characters and 
-      // combining character sequences.
-      string strCombining = "\u0627\u0655\u0650\u064A\u0647\u064E" +
-                            "\u0627\u0628\u064C";
-
-      // The Unicode code points specify private surrogate pairs.
-      string strSurrogates = Char.ConvertFromUtf32(0x10148) +
-                             Char.ConvertFromUtf32(0x20026) + "a" +
-                             Char.ConvertFromUtf32(0xF1001);
+      bool reindex = false;
       
-      EnumerateTextElements(strCombining);
-      EnumerateTextElements(strSurrogates);
+      Region[] regions;
+      SortVersion ver = null;
+
+      // If the data has not been saved, create it.
+      if (! File.Exists(FILENAME)) { 
+         regions = GenerateData();
+         ver = CultureInfo.CurrentCulture.CompareInfo.Version;  
+         reindex = true;
+      }
+      // Retrieve the existing data.
+      else {
+         regions = RestoreData(out ver);
+      }
+
+      // Determine whether the current ordering is valid; if not, reorder.
+      if (reindex || ver != CultureInfo.CurrentCulture.CompareInfo.Version) { 
+         Array.Sort(regions, new Example());      
+         // Save newly reordered data.
+         SaveData(regions);
+      }
+      
+      // Continue with application...
    }
 
-   public static void EnumerateTextElements(string str)
+   private static Region[] GenerateData()
    {
-      // Get the Enumerator.
-      TextElementEnumerator teEnum = null;      
+      List<Region> regions = new List<Region>();
 
-      // Parse the string using the ParseCombiningCharacters method.
-      Console.WriteLine("\nParsing with ParseCombiningCharacters:");
-      int[] teIndices = StringInfo.ParseCombiningCharacters(str);
-      
-      for (int i = 0; i < teIndices.Length; i++) {
-         if (i < teIndices.Length - 1)
-            Console.WriteLine("Text Element {0} ({1}..{2})= {3}", i, 
-               teIndices[i], teIndices[i + 1] - 1, 
-               ShowHexValues(str.Substring(teIndices[i], teIndices[i + 1] - 
-                             teIndices[i])));
-         else
-            Console.WriteLine("Text Element {0} ({1}..{2})= {3}", i, 
-               teIndices[i], str.Length - 1, 
-               ShowHexValues(str.Substring(teIndices[i])));
+      foreach (var culture in CultureInfo.GetCultures(CultureTypes.AllCultures)) {
+         if (culture.IsNeutralCulture | culture.Equals(CultureInfo.InvariantCulture))
+            continue;
+            
+         RegionInfo region = new RegionInfo(culture.Name);
+         regions.Add(new Region(region.Name, region.NativeName));
       }
-      Console.WriteLine();
-
-      // Parse the string with the GetTextElementEnumerator method.
-      Console.WriteLine("Parsing with TextElementEnumerator:");
-      teEnum = StringInfo.GetTextElementEnumerator(str);
-
-      int teCount = - 1;
-
-      while (teEnum.MoveNext()) {
-         // Displays the current element.
-         // Both GetTextElement() and Current retrieve the current
-         // text element. The latter returns it as an Object.
-         teCount++;
-         Console.WriteLine("Text Element {0} ({1}..{2})= {3}", teCount, 
-            teEnum.ElementIndex, teEnum.ElementIndex + 
-            teEnum.GetTextElement().Length - 1, ShowHexValues((string)(teEnum.Current)));
-      }
+      return regions.ToArray();
    }
-   
-   private static string ShowHexValues(string s)
-   {
-      string hexString = "";
-      foreach (var ch in s)
-         hexString += String.Format("{0:X4} ", Convert.ToUInt16(ch));
 
-      return hexString;
+   private static Region[] RestoreData(out SortVersion ver)
+   {
+      List<Region> regions = new List<Region>();
+      
+      BinaryReader rdr = new BinaryReader(File.Open(FILENAME, FileMode.Open));
+      
+      int sortVer = rdr.ReadInt32();
+      Guid sortId = Guid.Parse(rdr.ReadString());
+      ver = new SortVersion(sortVer, sortId);
+      
+      string id, name;
+      while (rdr.PeekChar() != -1) {
+         id = rdr.ReadString();
+         name = rdr.ReadString();
+         regions.Add(new Region(id, name));      
+      }
+      return regions.ToArray();
+   }
+
+   private static void SaveData(Region[] regions)
+   {
+      SortVersion ver = CultureInfo.CurrentCulture.CompareInfo.Version;
+
+      BinaryWriter wrtr = new BinaryWriter(File.Open(FILENAME, FileMode.Create));
+      wrtr.Write(ver.FullVersion); 
+      wrtr.Write(ver.SortId.ToString()); 
+      
+      foreach (var region in regions) {
+         wrtr.Write(region.Id);
+         wrtr.Write(region.NativeName);
+      }
+      wrtr.Close();
+   }
+
+   public int Compare(object o1, object o2)
+   {
+        // Assume that all casts succeed.
+        Region r1 = (Region) o1;
+        Region r2 = (Region) o2;
+        
+        return String.Compare(r1.NativeName, r2.NativeName, 
+                              StringComparison.CurrentCulture);        
    }
 }
-// The example displays the following output:
-//       Parsing with ParseCombiningCharacters:
-//       Text Element 0 (0..2)= 0627 0655 0650
-//       Text Element 1 (3..3)= 064A
-//       Text Element 2 (4..5)= 0647 064E
-//       Text Element 3 (6..6)= 0627
-//       Text Element 4 (7..8)= 0628 064C
-//       
-//       Parsing with TextElementEnumerator:
-//       Text Element 0 (0..2)= 0627 0655 0650
-//       Text Element 1 (3..3)= 064A
-//       Text Element 2 (4..5)= 0647 064E
-//       Text Element 3 (6..6)= 0627
-//       Text Element 4 (7..8)= 0628 064C
-//       
-//       Parsing with ParseCombiningCharacters:
-//       Text Element 0 (0..1)= D800 DD48
-//       Text Element 1 (2..3)= D840 DC26
-//       Text Element 2 (4..4)= 0061
-//       Text Element 3 (5..6)= DB84 DC01
-//       
-//       Parsing with TextElementEnumerator:
-//       Text Element 0 (0..1)= D800 DD48
-//       Text Element 1 (2..3)= D840 DC26
-//       Text Element 2 (4..4)= 0061
-//       Text Element 3 (5..6)= DB84 DC01

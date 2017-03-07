@@ -1,95 +1,47 @@
+<%@Page  Language="C#" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<%@ Page Language="C#" AutoEventWireup="True" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-    <title>CustomValidator ServerValidate Example</title>
 <script runat="server">
 
-      void ValidateBtn_OnClick(object sender, EventArgs e) 
-      { 
+void Page_Load(Object sender, EventArgs e){
+  // These cookies might be added by a login form.
+  // They are added here for simplicity.
+  if (!IsPostBack) {
+      Response.Cookies.Add(new HttpCookie("lname",    "davolio"));
+      Response.Cookies.Add(new HttpCookie("loginname","ndavolio"));
+      Response.Cookies.Add(new HttpCookie("lastvisit", DateTime.Now.ToString()));
+  }
+}
 
-         // Display whether the page passed validation.
-         if (Page.IsValid) 
-         {
 
-            Message.Text = "Page is valid.";
-
-         }
-
-         else 
-         {
-
-            Message.Text = "Page is not valid!";
-
-         }
-
-      }
-
-      void ServerValidation(object source, ServerValidateEventArgs args)
-      {
-
-         try 
-         {
-
-            // Test whether the value entered into the text box is even.
-            int i = int.Parse(args.Value);
-            args.IsValid = ((i%2) == 0);
-
-         }
-
-         catch(Exception ex)
-         {
-
-            args.IsValid = false;
-
-         }
-
-      }
-
-   </script>    
-
+</script>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+  <head runat="server">
+    <title>ASP.NET Example</title>
 </head>
 <body>
+    <form id="form1" runat="server">
 
-   <form id="form1" runat="server">
-  
-      <h3>CustomValidator ServerValidate Example</h3>
+      <asp:SqlDataSource
+          id="SqlDataSource1"
+          runat="server"
+          DataSourceMode="DataSet"
+          ConnectionString="<%$ ConnectionStrings:MyNorthwind%>"
+          SelectCommand = "SELECT OrderID,CustomerID,OrderDate,RequiredDate,ShippedDate 
+                           FROM Orders WHERE EmployeeID = 
+                           (SELECT EmployeeID FROM Employees WHERE LastName = @lastname)">
+          <SelectParameters>
+            <asp:CookieParameter Name="lastname" CookieName="lname" />
+          </SelectParameters>
+      </asp:SqlDataSource>
 
-      <asp:Label id="Message"  
-           Text="Enter an even number:" 
-           Font-Names="Verdana" 
-           Font-Size="10pt" 
-           runat="server"
-           AssociatedControlID="Text1"/>
+      <asp:GridView
+          id="GridView1"
+          runat="server"
+          AllowSorting="True"
+          DataSourceID="SqlDataSource1">
+      </asp:GridView>
 
-      <br />
-
-      <asp:TextBox id="Text1" 
-           runat="server" />
-    
-      &nbsp;&nbsp;
-
-      <asp:CustomValidator id="CustomValidator1"
-           ControlToValidate="Text1"
-           Display="Static"
-           ErrorMessage="Not an even number!"
-           ForeColor="green"
-           Font-Names="verdana" 
-           Font-Size="10pt"
-           OnServerValidate="ServerValidation"
-           runat="server"/>
-
-      <br />
- 
-      <asp:Button id="Button1"
-           Text="Validate" 
-           OnClick="ValidateBtn_OnClick" 
-           runat="server"/>
-
-   </form>
-  
-</body>
+    </form>
+  </body>
 </html>

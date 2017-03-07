@@ -1,17 +1,22 @@
    public:
-      void LinkComponentChangingEvent( IComponentChangeService^ changeService )
+      void LinkActiveDesignerEvent( IDesignerEventService^ eventService )
       {
-         // Registers an event handler for the ComponentChanging event.
-         changeService->ComponentChanging += gcnew ComponentChangingEventHandler(
-            this, &ComponentChangingEventHandlerExample::OnComponentChanging );
+         // Registers an event handler for the ActiveDesignerChanged event.
+         eventService->ActiveDesignerChanged += gcnew ActiveDesignerEventHandler( this, &MiscCompModSamples::ActiveDesignerEventHandlerExample::OnActiveDesignerEvent );
       }
 
    private:
-      void OnComponentChanging( Object^ sender, ComponentChangingEventArgs^ e )
+      void OnActiveDesignerEvent( Object^ /*sender*/, ActiveDesignerEventArgs^ e )
       {
-         // Displays changing component information on the console.
-         Console::WriteLine( "Type of the component that is about to change: " +
-            e->Component->GetType()->FullName );
-         Console::WriteLine( "Name of the member of the component that is about to change: " +
-            e->Member->Name );
+         // Displays changed designer information on the console.
+         if ( e->NewDesigner->RootComponent->Site != nullptr )
+         {
+            Console::WriteLine( "Name of the component of the new active designer: {0}", e->NewDesigner->RootComponent->Site->Name );
+         }
+         Console::WriteLine( "Type of the component of the new active designer: {0}", e->NewDesigner->RootComponentClassName );
+         if ( e->OldDesigner->RootComponent->Site != nullptr )
+         {
+            Console::WriteLine( "Name of the component of the previously active designer: {0}", e->OldDesigner->RootComponent->Site->Name );
+         }
+         Console::WriteLine( "Type of the component of the previously active designer: {0}", e->OldDesigner->RootComponentClassName );
       }

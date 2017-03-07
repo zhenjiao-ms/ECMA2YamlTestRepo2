@@ -1,53 +1,27 @@
-    ' This method defines the behavior for rendering the
-    ' background of a ToolStripItem. If the item is a
-    ' RolloverItem, it paints the item's BackgroundImage 
-    ' centered in the client area. If the mouse is in the 
-    ' item's client area, a border is drawn around it.
-    ' If the item is on a drop-down or if it is on the
-    ' overflow, a gradient is painted in the background.
-    Protected Overrides Sub OnRenderItemBackground(ByVal e As ToolStripItemRenderEventArgs)
-        MyBase.OnRenderItemBackground(e)
-
-        Dim item As RolloverItem = CType(e.Item, RolloverItem)
-
-        ' If the ToolSTripItem is of type RolloverItem, 
-        ' perform custom rendering for the background.
-        If (item IsNot Nothing) Then
-            If item.Placement = ToolStripItemPlacement.Overflow OrElse item.IsOnDropDown Then
-                Dim b As New LinearGradientBrush(item.ContentRectangle, Color.Salmon, Color.DarkRed, 0.0F, False)
-                Try
-                    e.Graphics.FillRectangle(b, item.ContentRectangle)
-                Finally
-                    b.Dispose()
-                End Try
-            End If
-
-            ' The RolloverItem control only supports 
-            ' the ImageLayout.Center setting for the
-            ' BackgroundImage property.
-            If item.BackgroundImageLayout = ImageLayout.Center Then
-                ' Get references to the item's ContentRectangle
-                ' and BackgroundImage, for convenience.
-                Dim cr As Rectangle = item.ContentRectangle
-                Dim bgi As Image = item.BackgroundImage
-
-                ' Compute the center of the item's ContentRectangle.
-                Dim centerX As Integer = CInt((cr.Width - bgi.Width) / 2)
-                Dim centerY As Integer = CInt((cr.Height - bgi.Height) / 2)
-
-                ' If the item is selected, draw the background
-                ' image as usual. Otherwise, draw it as disabled.
-                If item.Selected Then
-                    e.Graphics.DrawImage(bgi, centerX, centerY)
-                Else
-                    ControlPaint.DrawImageDisabled(e.Graphics, bgi, centerX, centerY, item.BackColor)
-                End If
-            End If
-
-            ' If the item is in the rollover state, 
-            ' draw a border around it.
-            If item.Rollover Then
-                ControlPaint.DrawFocusRectangle(e.Graphics, item.ContentRectangle)
-            End If
-        End If
-    End Sub
+      ' This is an example of some common ToolStrip property settings.
+      ' 
+      toolStrip1.AllowDrop = False
+      toolStrip1.AllowItemReorder = True
+      toolStrip1.AllowMerge = False
+      toolStrip1.Anchor = CType(System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right, System.Windows.Forms.AnchorStyles)
+      toolStrip1.AutoSize = False
+      toolStrip1.CanOverflow = False
+      toolStrip1.Cursor = Cursors.Cross
+      toolStrip1.Dock = System.Windows.Forms.DockStyle.None
+      toolStrip1.DefaultDropDownDirection = ToolStripDropDownDirection.BelowRight
+      toolStrip1.GripMargin = New System.Windows.Forms.Padding(3)
+      toolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+      toolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {toolStripButton1})
+      toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
+      toolStrip1.Location = New System.Drawing.Point(0, 0)
+      toolStrip1.Margin = New System.Windows.Forms.Padding(1)
+      toolStrip1.Name = "toolStrip1"
+      toolStrip1.Padding = New System.Windows.Forms.Padding(0, 0, 2, 0)
+      toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+      toolStrip1.ShowItemToolTips = False
+      toolStrip1.Size = New System.Drawing.Size(109, 273)
+      toolStrip1.Stretch = True
+      toolStrip1.TabIndex = 0
+      toolStrip1.TabStop = True
+      toolStrip1.Text = "toolStrip1"
+      toolStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90

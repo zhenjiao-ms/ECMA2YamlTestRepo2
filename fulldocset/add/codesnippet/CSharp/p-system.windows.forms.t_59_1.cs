@@ -1,11 +1,7 @@
-    public void ShowInsertInSameLocationSample()
-    {
-        // Notice how the items are in backward order.  
-        // This is because "merge-one" gets applied, then a search occurs for the new second position 
-        // for "merge-two", and so on.
-        foreach (ToolStripItem item in cmsItemsToMerge.Items)
-        {
-            item.MergeAction = MergeAction.Insert;
-            item.MergeIndex = 2;
-        }
-    }
+private void TreeView1_NodeMouseHover(Object sender, TreeNodeMouseHoverEventArgs e) {
+
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "Node", e.Node );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "NodeMouseHover Event" );
+}

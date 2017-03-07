@@ -10,8 +10,17 @@
   </AssemblyInfo>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Defines the events raised by the build engine. Loggers receive an object implementing this interface in their <see cref="Microsoft.Build.Framework.ILogger.Initialize%2A" /> method and use it to subscribe to the events they are interested in receiving.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example shows how to write a basic logger that responds to build events.  
+  
+ [!code-cs[msbuild_BasicLogger#1](~/add/codesnippet/csharp/msbuild_BasicLogger/msbuild_BasicLogger.cs#1)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="AnyEventRaised">
@@ -29,7 +38,7 @@
         <ReturnType>Microsoft.Build.Framework.AnyEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a build raises any other type of build event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -48,7 +57,7 @@
         <ReturnType>Microsoft.Build.Framework.BuildFinishedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a build finishes.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -67,7 +76,7 @@
         <ReturnType>Microsoft.Build.Framework.BuildStartedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a build starts.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -86,7 +95,7 @@
         <ReturnType>Microsoft.Build.Framework.CustomBuildEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a build raises a custom event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -105,7 +114,7 @@
         <ReturnType>Microsoft.Build.Framework.BuildErrorEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a build raises an error.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -124,7 +133,7 @@
         <ReturnType>Microsoft.Build.Framework.BuildMessageEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a build raises a message.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -143,7 +152,7 @@
         <ReturnType>Microsoft.Build.Framework.ProjectFinishedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a project finishes building.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -162,7 +171,7 @@
         <ReturnType>Microsoft.Build.Framework.ProjectStartedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a project starts building.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -181,7 +190,7 @@
         <ReturnType>Microsoft.Build.Framework.BuildStatusEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a build raises a status event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -200,7 +209,7 @@
         <ReturnType>Microsoft.Build.Framework.TargetFinishedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a target finishes building.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -219,7 +228,7 @@
         <ReturnType>Microsoft.Build.Framework.TargetStartedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a target starts building.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -238,7 +247,7 @@
         <ReturnType>Microsoft.Build.Framework.TaskFinishedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a task completes execution.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -257,7 +266,7 @@
         <ReturnType>Microsoft.Build.Framework.TaskStartedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a task begins execution.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -276,7 +285,7 @@
         <ReturnType>Microsoft.Build.Framework.BuildWarningEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a build raises a warning.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

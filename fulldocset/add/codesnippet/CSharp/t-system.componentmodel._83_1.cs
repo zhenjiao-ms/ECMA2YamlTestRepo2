@@ -1,10 +1,16 @@
-    [Localizable(true)]
-     public int MyProperty {
-        get {
-           // Insert code here.
-           return 0;
+        [Category("Data")]
+        [Description("Indicates the source of data for the control.")]
+        [RefreshProperties(RefreshProperties.Repaint)]
+        [AttributeProvider(typeof(IListSource))]
+        public object DataSource
+        {
+            get
+            {
+                return this.dataGridView1.DataSource;
+            }
+
+            set
+            {
+                this.dataGridView1.DataSource = value;
+            }
         }
-        set {
-           // Insert code here.
-        }
-     }

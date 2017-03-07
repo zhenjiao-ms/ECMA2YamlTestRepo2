@@ -1,1 +1,1 @@
-         m_MyServiceContainer.RemoveService(GetType(Control))
+        Me.InternalSort(New String() {"D", "B"})

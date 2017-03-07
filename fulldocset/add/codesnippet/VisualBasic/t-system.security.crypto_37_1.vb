@@ -1,53 +1,34 @@
-    Public Shared Sub CheckSignatureWithEncryptedGrant(ByVal fileName As String, ByVal decryptor As IRelDecryptor)
-        ' Create a new XML document.
-        Dim xmlDocument As New XmlDocument()
-        Dim nsManager As New XmlNamespaceManager(xmlDocument.NameTable)
+Imports System
+Imports System.Security.Cryptography
+Imports System.Security.Permissions
+Imports System.IO
+Imports System.Security.Cryptography.X509Certificates
 
-        ' Format using whitespaces.
-        xmlDocument.PreserveWhitespace = True
 
-        ' Load the passed XML file into the document. 
-        xmlDocument.Load(fileName)
-        nsManager.AddNamespace("dsig", SignedXml.XmlDsigNamespaceUrl)
 
-        ' Find the "Signature" node and create a new XmlNodeList object.
-        Dim nodeList As XmlNodeList = xmlDocument.SelectNodes("//dsig:Signature", nsManager)
-
-        Dim count = nodeList.Count
-        Dim i As Integer
-
-        For i = 0 To count
-            Dim clone As XmlDocument = xmlDocument.Clone()
-           
-            Dim signatures As XmlNodeList = clone.SelectNodes("//dsig:Signature", nsManager)
-
-            ' Create a new SignedXml object and pass into it the XML document clone.
-            Dim signedXml As New SignedXml(clone)
-
-            ' Load the signature node.
-            signedXml.LoadXml(CType(signatures(i), XmlElement))
-
-            ' Set the context for license transform
-            Dim trans As Transform = CType(signedXml.SignedInfo.References(0), Reference).TransformChain(0)
-
-            If TypeOf trans Is XmlLicenseTransform Then
-
-                ' Decryptor is used to decrypt encryptedGrant elements.
-                If Not (decryptor Is Nothing) Then
-                    CType(trans, XmlLicenseTransform).Decryptor = decryptor
-                End If
-
-            End If
-
-            ' Check the signature and display the result.
-            Dim result As Boolean = signedXml.CheckSignature()
-
-            If result Then
-                Console.WriteLine("SUCCESS: CheckSignatureWithEncryptedGrant - issuer index #" + i.ToString())
-            Else
-                Console.WriteLine("FAILURE: CheckSignatureWithEncryptedGrant - issuer index #" + i.ToString())
-            End If
-        Next i
-
-    End Sub
-End Class
+Class X500Sample
+   Shared msg As String
+   Shared Sub Main()
+	
+      Try
+         Dim store As New X509Store("MY", StoreLocation.CurrentUser)
+         store.Open((OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly))
+         Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+         Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
+         Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Test Certificate Select", "Select a certificate from the following list to get information on that certificate", X509SelectionFlag.MultiSelection)
+	 msg = "Number of certificates: " & scollection.Count & Environment.NewLine
+	 MsgBox(msg)
+         Dim x509 As X509Certificate2
+         For Each x509 In  scollection
+            Dim dname As New X500DistinguishedName(x509.SubjectName)
+	    msg = "X500DistinguishedName: " & dname.Name & Environment.NewLine
+	 MsgBox(msg)
+            x509.Reset()
+         Next x509
+         store.Close()
+	 Catch e As Exception
+            msg = "Error: Information could not be written out for this certificate."
+            MsgBox(msg)
+      End Try
+   End Sub 'Main 
+End Class 'X500Sample

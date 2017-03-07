@@ -1,19 +1,15 @@
-    Private Sub CreateUnboundButtonColumn()
+    Private Sub UserDeletingRow(ByVal sender As Object, _
+        ByVal e As DataGridViewRowCancelEventArgs) _
+        Handles DataGridView1.UserDeletingRow
 
-        ' Initialize the button column.
-        Dim buttonColumn As New DataGridViewButtonColumn
+        Dim startingBalanceRow As DataGridViewRow = DataGridView1.Rows(0)
 
-        With buttonColumn
-            .HeaderText = "Details"
-            .Name = "Details"
-            .Text = "View Details"
+        ' Check if the starting balance row is included in the selected rows
+        If DataGridView1.SelectedRows.Contains(startingBalanceRow) Then
+            ' Do not allow the user to delete the Starting Balance row.
+            MessageBox.Show("Cannot delete Starting Balance row!")
 
-            ' Use the Text property for the button text for all cells rather
-            ' than using each cell's value as the text for its own button.
-            .UseColumnTextForButtonValue = True
-        End With
-
-        ' Add the button column to the control.
-        dataGridView1.Columns.Insert(0, buttonColumn)
-
+            ' Cancel the deletion if the Starting Balance row is included.
+            e.Cancel = True
+        End If
     End Sub

@@ -8,15 +8,11 @@ private:
 public:
    void MyTabs()
    {
+      this->tabControl1 = gcnew TabControl;
       
-      // Invokes the TabControl() constructor to create the tabControl1 object.
-      this->tabControl1 = gcnew System::Windows::Forms::TabControl;
-      
-      // Creates a new tab page and adds it to the tab control
-      this->tabPage1 = gcnew TabPage;
-      this->tabControl1->TabPages->Add( tabPage1 );
-      
-      // Adds the tab control to the form
+      // Invokes the TabPage() constructor to create the tabPage1.
+      this->tabPage1 = gcnew System::Windows::Forms::TabPage;
+      this->tabControl1->Controls->Add( tabPage1 );
       this->Controls->Add( tabControl1 );
    }
 

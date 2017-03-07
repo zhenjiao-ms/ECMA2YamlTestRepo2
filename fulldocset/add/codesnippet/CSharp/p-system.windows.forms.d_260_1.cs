@@ -1,7 +1,10 @@
-    // Hide a band of cells.
-    private void Button6_Click(object sender, System.EventArgs e)
+    private void CustomizeCellsInThirdColumn()
     {
+        int thirdColumn = 2;
+        DataGridViewColumn column =
+            dataGridView.Columns[thirdColumn];
+        DataGridViewCell cell = new DataGridViewTextBoxCell();
 
-        DataGridViewBand band = dataGridView.Rows[3];
-        band.Visible = false;
+        cell.Style.BackColor = Color.Wheat;
+        column.CellTemplate = cell;
     }

@@ -1,117 +1,66 @@
 Imports System
-Imports System.IO
 Imports System.Security.Cryptography
+Imports System.Security.Cryptography.X509Certificates
 
 
 
-Class RijndaelExample
+Class AsnEncodedDataSample
+   Shared msg As String
+   Shared Sub Main()
+      'The following example demonstrates the usage the AsnEncodedData classes.
+      ' Asn encoded data is read from the extensions of an X509 certificate.
+      Try
+         ' Open the certificate store.
+         Dim store As New X509Store("MY", StoreLocation.CurrentUser)
+         store.Open((OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly))
+         Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+         Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
+         ' Select one or more certificates to display extensions information.
+         Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection)
+         
+         ' Create a new AsnEncodedDataCollection object.
+         Dim asncoll As New AsnEncodedDataCollection()
+         Dim i As Integer
+         For i = 0 To scollection.Count - 1
+            ' Display certificate information.
+	    msg = "Certificate name: "& scollection(i).GetName()
+            MsgBox(msg)
 
-    Public Shared Sub Main()
-        Try
+            ' Display extensions information.
+            Dim extension As X509Extension
+            For Each extension In  scollection(i).Extensions
+               ' Create an AsnEncodedData object using the extensions information.
+               Dim asndata As New AsnEncodedData(extension.Oid, extension.RawData)
+	       msg = "Extension type: " & extension.Oid.FriendlyName & Environment.NewLine & "Oid value: " & asndata.Oid.Value _
+		& Environment.NewLine & "Raw data length: " & asndata.RawData.Length & Environment.NewLine _
+		& asndata.Format(True) & Environment.NewLine
+               MsgBox(msg)
+		
+               ' Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+               asncoll.Add(asndata)
+            Next extension
+         Next i
+	 msg = "Number of AsnEncodedData items in the collection: " & asncoll.Count
+         MsgBox(msg)         
+         store.Close()
 
-            Dim original As String = "Here is some data to encrypt!"
-
-            ' Create a new instance of the Rijndael
-            ' class.  This generates a new key and initialization 
-            ' vector (IV).
-            Using myRijndael = Rijndael.Create()
-
-                ' Encrypt the string to an array of bytes.
-                Dim encrypted As Byte() = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV)
-
-                ' Decrypt the bytes to a string.
-                Dim roundtrip As String = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV)
-
-                'Display the original data and the decrypted data.
-                Console.WriteLine("Original:   {0}", original)
-                Console.WriteLine("Round Trip: {0}", roundtrip)
-            End Using
-        Catch e As Exception
-            Console.WriteLine("Error: {0}", e.Message)
-        End Try
-
-    End Sub 'Main
-
-    Shared Function EncryptStringToBytes(ByVal plainText As String, ByVal Key() As Byte, ByVal IV() As Byte) As Byte()
-        ' Check arguments.
-        If plainText Is Nothing OrElse plainText.Length <= 0 Then
-            Throw New ArgumentNullException("plainText")
-        End If
-        If Key Is Nothing OrElse Key.Length <= 0 Then
-            Throw New ArgumentNullException("Key")
-        End If
-        If IV Is Nothing OrElse IV.Length <= 0 Then
-            Throw New ArgumentNullException("IV")
-        End If
-        Dim encrypted() As Byte
-        ' Create an Rijndael object
-        ' with the specified key and IV.
-        Using rijAlg = Rijndael.Create()
-
-            rijAlg.Key = Key
-            rijAlg.IV = IV
-
-            ' Create an encryptor to perform the stream transform.
-            Dim encryptor As ICryptoTransform = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV)
-            ' Create the streams used for encryption.
-            Using msEncrypt As New MemoryStream()
-                Using csEncrypt As New CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)
-                    Using swEncrypt As New StreamWriter(csEncrypt)
-
-                        'Write all data to the stream.
-                        swEncrypt.Write(plainText)
-                    End Using
-                    encrypted = msEncrypt.ToArray()
-                End Using
-            End Using
-        End Using
-
-        ' Return the encrypted bytes from the memory stream.
-        Return encrypted
-
-    End Function 'EncryptStringToBytes
-
-    Shared Function DecryptStringFromBytes(ByVal cipherText() As Byte, ByVal Key() As Byte, ByVal IV() As Byte) As String
-        ' Check arguments.
-        If cipherText Is Nothing OrElse cipherText.Length <= 0 Then
-            Throw New ArgumentNullException("cipherText")
-        End If
-        If Key Is Nothing OrElse Key.Length <= 0 Then
-            Throw New ArgumentNullException("Key")
-        End If
-        If IV Is Nothing OrElse IV.Length <= 0 Then
-            Throw New ArgumentNullException("IV")
-        End If
-        ' Declare the string used to hold
-        ' the decrypted text.
-        Dim plaintext As String = Nothing
-
-        ' Create an Rijndael object
-        ' with the specified key and IV.
-        Using rijAlg = Rijndael.Create()
-            rijAlg.Key = Key
-            rijAlg.IV = IV
-
-            ' Create a decryptor to perform the stream transform.
-            Dim decryptor As ICryptoTransform = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV)
-
-            ' Create the streams used for decryption.
-            Using msDecrypt As New MemoryStream(cipherText)
-
-                Using csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
-
-                    Using srDecrypt As New StreamReader(csDecrypt)
-
-
-                        ' Read the decrypted bytes from the decrypting stream
-                        ' and place them in a string.
-                        plaintext = srDecrypt.ReadToEnd()
-                    End Using
-                End Using
-            End Using
-        End Using
-
-        Return plaintext
-
-    End Function 'DecryptStringFromBytes 
-End Class
+         'Create an enumerator for moving through the collection.
+         Dim asne As AsnEncodedDataEnumerator = asncoll.GetEnumerator()
+         'You must execute a MoveNext() to get to the first item in the collection.
+         asne.MoveNext()
+         ' Write out AsnEncodedData in the collection.
+	 msg = "First AsnEncodedData in the collection: " & asne.Current.Format(True)
+	 MsgBox(msg)
+	
+         
+         asne.MoveNext()
+	 msg = "Second AsnEncodedData in the collection: " & asne.Current.Format(True)
+	 MsgBox(msg)
+        
+         'Return index in the collection to the beginning.
+         asne.Reset()
+      Catch 
+         MsgBox("Information could not be written out for this certificate.")
+      End Try
+   End Sub 'Main
+End Class 'AsnEncodedDataSample

@@ -1,7 +1,10 @@
-private void RichTextBox1_ContentsResized(Object sender, ContentsResizedEventArgs e) {
+	// Handle the Button1 object's Paint Event to create a CaptionButton.
+	private void Button1_Paint(object sender, PaintEventArgs e)
+	{
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "NewRectangle", e.NewRectangle );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "ContentsResized Event" );
-}
+		// Draw a CaptionButton control using the ClientRectangle 
+		// property of Button1. Make the button a Help button 
+		// with a normal state.
+		ControlPaint.DrawCaptionButton(e.Graphics, Button1.ClientRectangle,
+			CaptionButton.Help, ButtonState.Normal);
+	}

@@ -1,10 +1,10 @@
-        ' This example method creates a ComponentEventArgs using the specified argument.
-        ' Typically, this type of event args is created by a design mode subsystem.  
-        Public Function CreateComponentEventArgs(ByVal component As IComponent) As ComponentEventArgs
-
-            Dim args As New ComponentEventArgs(component)
-
-            ' The component that is related to the event:  args.Component
-
-            Return args
-        End Function
+    <DesignOnly(True)> _
+    Public Property GetLanguage() As CultureInfo
+        Get
+            ' Insert code here.
+            Return myCultureInfo
+        End Get
+        Set
+            ' Insert code here.
+        End Set
+    End Property

@@ -1,127 +1,114 @@
-
-<%@ Page Language="VB" AutoEventWireup="True" %>
-<%@ Import Namespace="System.Data" %>
- 
+<%@ Page language="VB" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+<script runat="server">
+
+    Sub Page_Load()
+        Message.Text = String.Empty
+    End Sub
+
+    Sub ContactsListView_ItemUpdated(sender As Object, e As ListViewUpdatedEventArgs)
+        If e.Exception IsNot Nothing Then
+            If e.AffectedRows = 0 Then
+                e.KeepInEditMode = True
+                Message.Text = "An exception occurred updating the contact. " & _
+                                    "Please verify your values and try again."
+            Else
+                Message.Text = "An exception occurred updating the contact. " & _
+                                    "Please verify the values in the recently updated item."
+            End If
+
+            e.ExceptionHandled = True
+        End If
+    End Sub
+    
+</script>
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
-   <script runat="server">
- 
-      Function CreateDataSource() As ICollection 
-      
-         ' Create sample data for the DataList control.
-         Dim dt As DataTable = New DataTable()
-         Dim dr As DataRow
- 
-         ' Define the columns of the table.
-         dt.Columns.Add(New DataColumn("IntegerValue", GetType(Int32)))
-         dt.Columns.Add(New DataColumn("StringValue", GetType(String)))
-         dt.Columns.Add(New DataColumn("CurrencyValue", GetType(Double)))
- 
-         ' Populate the table with sample values.
-         Dim i As Integer
-
-         For i = 0 To 8 
-
-            dr = dt.NewRow()
- 
-            dr(0) = i
-            dr(1) = "Description for item " & i.ToString()
-            dr(2) = 1.23 * (i + 1)
- 
-            dt.Rows.Add(dr)
-
-         Next i
- 
-         Dim dv As DataView = New DataView(dt)
-         Return dv
-
-      End Function
- 
- 
-      Sub Page_Load(sender As Object, e As EventArgs) 
-
-         ' Load sample data only once, when the page is first loaded.
-         If Not IsPostBack Then
-         
-            ItemsList.DataSource = CreateDataSource()
-            ItemsList.DataBind()
-         
-         End If
-
-      End Sub
-
-      Sub Item_Bound(sender As Object, e As DataListItemEventArgs)
-
-         If e.Item.ItemType = ListItemType.Item Or _
-             e.Item.ItemType = ListItemType.AlternatingItem Then
-
-
-            ' Retrieve the Label control in the current DataListItem.
-            Dim PriceLabel As Label = _
-                CType(e.Item.FindControl("PriceLabel"), Label)
-
-            ' Retrieve the text of the CurrencyColumn from the DataListItem
-            ' and convert the value to a Double.
-            Dim Price As Double = Convert.ToDouble( _
-                (CType(e.Item.DataItem, DataRowView)).Row.ItemArray(2).ToString())
-
-            ' Format the value as currency and redisplay it in the DataList.
-            PriceLabel.Text = Price.ToString("c")
-
-         End If
-
-      End Sub
- 
-   </script>
- 
-<head runat="server">
-    <title>DataList ItemDataBound Example</title>
+  <head id="Head1" runat="server">
+    <title>ListView.ItemUpdated Example</title>
 </head>
 <body>
- 
-   <form id="form1" runat="server">
+    <form id="form1" runat="server">
+        
+      <h3>ListView.ItemUpdated Example</h3>
+            
+      <asp:Label ID="Message"
+        ForeColor="Red"          
+        runat="server"/>
+      <br/>
 
-      <h3>DataList ItemDataBound Example</h3>
- 
-      <asp:DataList id="ItemsList"
-           BorderColor="black"
-           CellPadding="5"
-           CellSpacing="5"
-           RepeatDirection="Vertical"
-           RepeatLayout="Table"
-           RepeatColumns="3"
-           OnItemDataBound="Item_Bound"
-           runat="server">
-
-         <HeaderStyle BackColor="#aaaadd">
-         </HeaderStyle>
-
-         <AlternatingItemStyle BackColor="Gainsboro">
-         </AlternatingItemStyle>
-
-         <HeaderTemplate>
-
-            List of items
-
-         </HeaderTemplate>
-               
+      <asp:ListView ID="ContactsListView" 
+        DataSourceID="ContactsDataSource" 
+        DataKeyNames="ContactID"
+        OnItemUpdated="ContactsListView_ItemUpdated"  
+        runat="server">
+        <LayoutTemplate>
+          <table cellpadding="2" border="1" runat="server" id="tblContacts" width="640px">
+            <tr runat="server" id="itemPlaceholder" />
+          </table>
+          <asp:DataPager runat="server" ID="PeopleDataPager" PageSize="12">
+             <Fields>
+               <asp:NextPreviousPagerField 
+                ShowFirstPageButton="True" ShowLastPageButton="True"
+                    FirstPageText="|&lt;&lt; " LastPageText=" &gt;&gt;|"
+                    NextPageText=" &gt; " PreviousPageText=" &lt; " />
+             </Fields>
+           </asp:DataPager>
+         </LayoutTemplate>
          <ItemTemplate>
+            <tr>
+              <td valign="top">
+                <asp:Label ID="FirstNameLabel" runat="server" Text='<%#Eval("FirstName") %>' />
+                <asp:Label ID="LastNameLabel" runat="server" Text='<%#Eval("LastName") %>' />
+              </td>
+              <td>
+                <asp:Label ID="EmailLabel" runat="server" Text='<%#Eval("EmailAddress") %>' />
+              </td>
+              <td>
+                <asp:LinkButton ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
+              </td>
+            </tr>
+          </ItemTemplate>
+          <EditItemTemplate>
+            <tr style="background-color:#ADD8E6">
+              <td valign="top">
+                <asp:Label runat="server" ID="FirstNameLabel" 
+                  AssociatedControlID="FirstNameTextBox" Text="First Name"/>
+                <asp:TextBox ID="FirstNameTextBox" runat="server"
+                  Text='<%# Bind("FirstName") %>' MaxLength="50" Width="200px" /><br />
+                <asp:Label runat="server" ID="LastNameLabel" 
+                  AssociatedControlID="LastNameTextBox" Text="Last Name" />
+                <asp:TextBox ID="LastNameTextBox" runat="server" 
+                  Text='<%# Bind("LastName") %>' MaxLength="50" Width="200px" /><br />
+                <asp:Label runat="server" ID="EmailLabel" 
+                  AssociatedControlID="EmailTextBox" Text="E-mail" />
+                <asp:TextBox ID="EmailTextBox" runat="server" 
+                  Text='<%# Bind("EmailAddress") %>' MaxLength="50" Width="200px" />
+              </td>
+              <td colspan="2" valign="top">
+                <asp:LinkButton ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                <asp:LinkButton ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+              </td>
+            </tr>
+          </EditItemTemplate>
+      </asp:ListView>
 
-            Description: <br />
-            <%# DataBinder.Eval(Container.DataItem, "StringValue") %>
-
-            <br />
-
-            Price: 
-            <asp:Label id="PriceLabel"
-                 runat="server"/>
-
-         </ItemTemplate>
- 
-      </asp:DataList>
- 
-   </form>
- 
-</body>
+      <!-- This example uses Microsoft SQL Server and connects      -->
+      <!-- to the AdventureWorks sample database. Use an ASP.NET    -->
+      <!-- expression to retrieve the connection string value       -->
+      <!-- from the Web.config file.                                -->            
+      <asp:SqlDataSource ID="ContactsDataSource" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:AdventureWorks_DataConnectionString %>"
+        SelectCommand="SELECT [ContactID], [FirstName], [LastName], [EmailAddress] 
+          FROM Person.Contact"
+        UpdateCommand="UPDATE Person.Contact
+          Set [FirstName] = @FirstName, [LastName] = @LastName, [EmailAddress] = @EmailAddress 
+          WHERE [ContactID] = @ContactID">
+      </asp:SqlDataSource>
+      
+    </form>
+  </body>
 </html>

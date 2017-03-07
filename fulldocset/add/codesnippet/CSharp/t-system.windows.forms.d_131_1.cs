@@ -1,18 +1,9 @@
-    private void WatchRowsModeChanges(object sender,
-        DataGridViewAutoSizeModeEventArgs modeEvent)
+    private void dataGridView1_RowsAdded(object sender,
+         DataGridViewRowsAddedEventArgs e)
     {
-        Label label =
-            (Label)flowLayoutPanel1.Controls[currentLayoutName];
-
-        if (modeEvent.PreviousModeAutoSized)
+        if (newRowNeeded)
         {
-            label.Text = "changed to a different " +
-                label.Name +
-                dataGridView1.AutoSizeRowsMode.ToString();
-        }
-        else
-        {
-            label.Text = label.Name +
-                dataGridView1.AutoSizeRowsMode.ToString();
+            newRowNeeded = false;
+            numberOfRows = numberOfRows + 1;
         }
     }

@@ -1,10 +1,14 @@
 using System;
 using System.IO;
 using System.Collections;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 
-public class App 
+// Note: When building this code, you must reference the
+// System.Runtime.Serialization.Formatters.Soap.dll assembly.
+using System.Runtime.Serialization.Formatters.Soap;
+
+
+class App 
 {
     [STAThread]
     static void Main() 
@@ -21,13 +25,14 @@ public class App
         addresses.Add("Fred", "987 Pine Road, Phila., PA 19116");
         addresses.Add("Mary", "PO Box 112233, Palo Alto, CA 94301");
 
-        // To serialize the hashtable and its key/value pairs,  
-        // you must first open a stream for writing. 
-        // In this case, use a file stream.
-        FileStream fs = new FileStream("DataFile.dat", FileMode.Create);
+        // To serialize the hashtable (and its key/value pairs), 
+        // you must first open a stream for writing.
+        // Use a file stream here.
+        FileStream fs = new FileStream("DataFile.soap", FileMode.Create);
 
-        // Construct a BinaryFormatter and use it to serialize the data to the stream.
-        BinaryFormatter formatter = new BinaryFormatter();
+        // Construct a SoapFormatter and use it 
+        // to serialize the data to the stream.
+        SoapFormatter formatter = new SoapFormatter();
         try 
         {
             formatter.Serialize(fs, addresses);
@@ -50,10 +55,10 @@ public class App
         Hashtable addresses  = null;
 
         // Open the file containing the data that you want to deserialize.
-        FileStream fs = new FileStream("DataFile.dat", FileMode.Open);
+        FileStream fs = new FileStream("DataFile.soap", FileMode.Open);
         try 
         {
-            BinaryFormatter formatter = new BinaryFormatter();
+            SoapFormatter formatter = new SoapFormatter();
 
             // Deserialize the hashtable from the file and 
             // assign the reference to the local variable.
@@ -70,7 +75,7 @@ public class App
         }
 
         // To prove that the table deserialized correctly, 
-        // display the key/value pairs.
+        // display the key/value pairs to the console.
         foreach (DictionaryEntry de in addresses) 
         {
             Console.WriteLine("{0} lives at {1}.", de.Key, de.Value);

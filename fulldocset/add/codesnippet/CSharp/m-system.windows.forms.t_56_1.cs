@@ -1,92 +1,47 @@
-
-// The basic Customer class.
-public class Customer : System.Object
-{
-   private string custName = "";
-   protected ArrayList custOrders = new ArrayList();
-
-   public Customer(string customername)
-   {
-      this.custName = customername;
-   }
-
-   public string CustomerName
-   {      
-      get{return this.custName;}
-      set{this.custName = value;}
-   }
-
-   public ArrayList CustomerOrders 
-   {
-      get{return this.custOrders;}
-   }
-
-} // End Customer class 
-
-
-// The basic customer Order class.
-public class Order : System.Object
-{
-   private string ordID = "";
-
-   public Order(string orderid)
-   {
-      this.ordID = orderid;
-   }
-
-   public string OrderID
-   {      
-      get{return this.ordID;}
-      set{this.ordID = value;}
-   }
-
-} // End Order class
-
-// Create a new ArrayList to hold the Customer objects.
-private ArrayList customerArray = new ArrayList(); 
-
-private void FillMyTreeView()
-{
-   // Add customers to the ArrayList of Customer objects.
-   for(int x=0; x<1000; x++)
-   {
-      customerArray.Add(new Customer("Customer" + x.ToString()));
-   }
-
-   // Add orders to each Customer object in the ArrayList.
-   foreach(Customer customer1 in customerArray)
-   {
-      for(int y=0; y<15; y++)
-      {
-         customer1.CustomerOrders.Add(new Order("Order" + y.ToString()));    
-      }
-   }
-
-   // Display a wait cursor while the TreeNodes are being created.
-   Cursor.Current = new Cursor("MyWait.cur");
-        
-   // Suppress repainting the TreeView until all the objects have been created.
-   treeView1.BeginUpdate();
-
-   // Clear the TreeView each time the method is called.
-   treeView1.Nodes.Clear();
-
-   // Add a root TreeNode for each Customer object in the ArrayList.
-   foreach(Customer customer2 in customerArray)
-   {
-      treeView1.Nodes.Add(new TreeNode(customer2.CustomerName));
-          
-      // Add a child treenode for each Order object in the current Customer object.
-      foreach(Order order1 in customer2.CustomerOrders)
-      {
-         treeView1.Nodes[customerArray.IndexOf(customer2)].Nodes.Add(
-           new TreeNode(customer2.CustomerName + "." + order1.OrderID));
-      }
-   }
-
-   // Reset the cursor to the default for all controls.
-   Cursor.Current = Cursors.Default;
-
-   // Begin repainting the TreeView.
-   treeView1.EndUpdate();
-}
+private void Menu_Copy(System.Object sender, System.EventArgs e)
+ {
+    // Ensure that text is selected in the text box.   
+    if(textBox1.SelectionLength > 0)
+        // Copy the selected text to the Clipboard.
+        textBox1.Copy();
+ }
+ 
+ private void Menu_Cut(System.Object sender, System.EventArgs e)
+ {   
+     // Ensure that text is currently selected in the text box.   
+     if(textBox1.SelectedText != "")
+        // Cut the selected text in the control and paste it into the Clipboard.
+        textBox1.Cut();
+ }
+ 
+ private void Menu_Paste(System.Object sender, System.EventArgs e)
+ {
+    // Determine if there is any text in the Clipboard to paste into the text box.
+    if(Clipboard.GetDataObject().GetDataPresent(DataFormats.Text) == true)
+    {
+        // Determine if any text is selected in the text box.
+        if(textBox1.SelectionLength > 0)
+        {
+          // Ask user if they want to paste over currently selected text.
+          if(MessageBox.Show("Do you want to paste over current selection?", "Cut Example", MessageBoxButtons.YesNo) == DialogResult.No)
+             // Move selection to the point after the current selection and paste.
+             textBox1.SelectionStart = textBox1.SelectionStart + textBox1.SelectionLength;
+        }
+        // Paste current text in Clipboard into text box.
+        textBox1.Paste();
+    }
+ }
+ 
+ 
+ private void Menu_Undo(System.Object sender, System.EventArgs e)
+ {
+    // Determine if last operation can be undone in text box.   
+    if(textBox1.CanUndo == true)
+    {
+       // Undo the last operation.
+       textBox1.Undo();
+       // Clear the undo buffer to prevent last action from being redone.
+       textBox1.ClearUndo();
+    }
+ }
+ 

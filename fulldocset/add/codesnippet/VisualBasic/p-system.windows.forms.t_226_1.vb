@@ -1,30 +1,72 @@
-    Public Sub InitializeMyToolBar()
-        ' Create the ToolBar, ToolBarButton controls, and menus.
-        Dim toolBarButton1 As New ToolBarButton("Open")
-        Dim toolBarButton2 As New ToolBarButton()
-        Dim toolBarButton3 As New ToolBarButton()
-        Dim toolBar1 As New ToolBar()
-	Dim menuItem1 As New MenuItem("Print")
-	Dim contextMenu1 As New ContextMenu(New MenuItem(){menuItem1})
-        
-        ' Add the ToolBarButton controls to the ToolBar.
-        toolBar1.Buttons.Add(toolBarButton1)
-        toolBar1.Buttons.Add(toolBarButton2)
-        toolBar1.Buttons.Add(toolBarButton3)
-        
-        ' Assign an ImageList to the ToolBar and show ToolTips.
-        toolBar1.ImageList = imageList1
-        toolBar1.ShowToolTips = True
-        
-        ' Assign ImageIndex, ContextMenu, Text, ToolTip, and
-        ' Style properties of the ToolBarButton controls. 
-        toolBarButton2.Style = ToolBarButtonStyle.Separator
-        toolBarButton3.Text = "Print"
-        toolBarButton3.Style = ToolBarButtonStyle.DropDownButton
-        toolBarButton3.ToolTipText = "Print"
-        toolBarButton3.ImageIndex = 0
-        toolBarButton3.DropDownMenu = contextMenu1
-        
-        ' Add the ToolBar to a form.
-        Controls.Add(toolBar1)
-    End Sub
+Public Class Customer
+   Public CustomerOrders As ArrayList
+   Public CustomerName As String
+   
+   Public Sub New(myName As String)
+      CustomerName = myName
+      CustomerOrders = New ArrayList()
+   End Sub 'New
+End Class 'Customer
+
+
+Public Class Order
+   Public OrderID As String
+   
+   Public Sub New(myOrderID As String)
+      Me.OrderID = myOrderID
+   End Sub 'New
+End Class 'Order
+
+Private Sub FillTreeView()
+   ' Load the images in an ImageList.
+   Dim myImageList As New ImageList()
+   myImageList.Images.Add(Image.FromFile("Default.gif"))
+   myImageList.Images.Add(Image.FromFile("SelectedDefault.gif"))
+   myImageList.Images.Add(Image.FromFile("Root.gif"))
+   myImageList.Images.Add(Image.FromFile("UnselectedCustomer.gif"))
+   myImageList.Images.Add(Image.FromFile("SelectedCustomer.gif"))
+   myImageList.Images.Add(Image.FromFile("UnselectedOrder.gif"))
+   myImageList.Images.Add(Image.FromFile("SelectedOrder.gif"))
+   
+   ' Assign the ImageList to the TreeView.
+   myTreeView.ImageList = myImageList
+   
+   ' Set the TreeView control's default image and selected image indexes.
+   myTreeView.ImageIndex = 0
+   myTreeView.SelectedImageIndex = 1
+   
+   ' Set the index of image from the 
+   ' ImageList for selected and unselected tree nodes.
+   Me.rootImageIndex = 2
+   Me.selectedCustomerImageIndex = 3
+   Me.unselectedCustomerImageIndex = 4
+   Me.selectedOrderImageIndex = 5
+   Me.unselectedOrderImageIndex = 6
+   
+   ' Create the root tree node.
+   Dim rootNode As New TreeNode("CustomerList")
+   rootNode.ImageIndex = rootImageIndex
+   rootNode.SelectedImageIndex = rootImageIndex
+   
+   ' Add a main root tree node.
+   myTreeView.Nodes.Add(rootNode)
+   
+   ' Add a root tree node for each Customer object in the ArrayList.
+   Dim myCustomer As Customer
+   For Each myCustomer In  customerArray
+      ' Add a child tree node for each Order object.
+      Dim countIndex As Integer = 0
+      Dim myTreeNodeArray(myCustomer.CustomerOrders.Count) As TreeNode
+      Dim myOrder As Order
+      For Each myOrder In  myCustomer.CustomerOrders
+         ' Add the Order tree node to the array.
+         myTreeNodeArray(countIndex) = New TreeNode(myOrder.OrderID, _
+            unselectedOrderImageIndex, selectedOrderImageIndex)
+         countIndex += 1
+      Next myOrder
+      ' Add the Customer tree node.
+      Dim customerNode As New TreeNode(myCustomer.CustomerName, _
+         unselectedCustomerImageIndex, selectedCustomerImageIndex, myTreeNodeArray)
+      myTreeView.Nodes(0).Nodes.Add(customerNode)
+   Next myCustomer
+End Sub

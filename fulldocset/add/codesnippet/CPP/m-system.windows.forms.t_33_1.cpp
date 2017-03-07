@@ -1,37 +1,56 @@
-using namespace System::Drawing;
-using namespace System::Windows::Forms;
-public ref class Form1: public Form
+public ref class Class1
 {
 private:
-   TabControl^ tabControl1;
-   TabPage^ tabPage1;
-   void MyTabs()
+   static System::Windows::Forms::Timer^ myTimer = gcnew System::Windows::Forms::Timer;
+   static int alarmCounter = 1;
+   static bool exitFlag = false;
+
+   // This is the method to run when the timer is raised.
+   static void TimerEventProcessor( Object^ /*myObject*/, EventArgs^ /*myEventArgs*/ )
    {
-      this->tabControl1 = gcnew TabControl;
-      this->tabPage1 = gcnew TabPage;
-      this->tabControl1->Controls->Add( tabPage1 );
-      this->tabControl1->Location = Point(25,25);
-      this->tabControl1->Size = System::Drawing::Size( 250, 250 );
-      this->tabControl1->ShowToolTips = true;
-      this->tabPage1->Text = "myTabPage1";
+      myTimer->Stop();
       
-      // Creates a string showing the Text value for tabPage1. 
-      // Then assigns the string to ToolTipText.  
-      this->tabPage1->ToolTipText = tabPage1->ToString();
-      this->ClientSize = System::Drawing::Size( 300, 300 );
-      this->Controls->Add( tabControl1 );
+      // Displays a message box asking whether to continue running the timer.
+      if ( MessageBox::Show( "Continue running?", String::Format( "Count is: {0}", alarmCounter ), MessageBoxButtons::YesNo ) == DialogResult::Yes )
+      {
+         
+         // Restarts the timer and increments the counter.
+         alarmCounter += 1;
+         myTimer->Enabled = true;
+      }
+      else
+      {
+         
+         // Stops the timer.
+         exitFlag = true;
+      }
    }
 
 
 public:
-   Form1()
+   static void Main()
    {
-      MyTabs();
+      
+      /* Adds the event and the event handler for the method that will 
+                process the timer event to the timer. */
+      myTimer->Tick += gcnew EventHandler( TimerEventProcessor );
+      
+      // Sets the timer interval to 5 seconds.
+      myTimer->Interval = 5000;
+      myTimer->Start();
+      
+      // Runs the timer, and raises the event.
+      while ( exitFlag == false )
+      {
+         
+         // Processes all the events in the queue.
+         Application::DoEvents();
+      }
    }
 
 };
 
 int main()
 {
-   Application::Run( gcnew Form1 );
+   Class1::Main();
 }

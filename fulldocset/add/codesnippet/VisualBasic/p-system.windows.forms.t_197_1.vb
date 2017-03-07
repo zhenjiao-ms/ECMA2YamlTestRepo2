@@ -1,23 +1,30 @@
-Private Sub AddToolBar()
-   ' Add a toolbar and set some of its properties.
-   toolBar1 = New ToolBar()
-   toolBar1.Appearance = System.Windows.Forms.ToolBarAppearance.Flat
-   toolBar1.BorderStyle = System.Windows.Forms.BorderStyle.None
-   toolBar1.Buttons.Add(Me.toolBarButton1)
-   toolBar1.ButtonSize = New System.Drawing.Size(24, 24)
-   toolBar1.Divider = True
-   toolBar1.DropDownArrows = True
-   toolBar1.ImageList = Me.imageList1
-   toolBar1.ShowToolTips = True
-   toolBar1.Size = New System.Drawing.Size(292, 25)
-   toolBar1.TabIndex = 0
-   toolBar1.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right
-   toolBar1.Wrappable = False
 
-   ' Add handlers for the ButtonClick and ButtonDropDown events.
-   AddHandler toolBar1.ButtonDropDown, AddressOf toolBar1_ButtonDropDown
-   AddHandler toolBar1.ButtonClick, AddressOf toolBar1_ButtonClicked
+    'Declare a new TrackBar object.
+    Friend WithEvents TrackBar1 As System.Windows.Forms.TrackBar
 
-   ' Add the toolbar to the form.
-   Me.Controls.Add(toolBar1)
-End Sub
+    ' Initalize the TrackBar and add it to the form.
+    Private Sub InitializeTrackBar()
+        Me.TrackBar1 = New System.Windows.Forms.TrackBar
+
+        ' Set the TickStyle property so there are ticks on both sides
+        ' of the TrackBar.
+        TrackBar1.TickStyle = TickStyle.Both
+
+        ' Set the minimum and maximum number of ticks.
+        TrackBar1.Minimum = 10
+        TrackBar1.Maximum = 100
+
+        ' Set the tick frequency to one tick every ten units.
+        TrackBar1.TickFrequency = 10
+
+        TrackBar1.Location = New System.Drawing.Point(75, 30)
+        Me.Controls.Add(Me.TrackBar1)
+    End Sub
+
+
+    ' Handle the TrackBar.ValueChanged event by calculating a value for
+    ' TextBox1 based on the TrackBar value.  
+    Private Sub TrackBar1_ValueChanged(ByVal sender As Object, _
+        ByVal e As System.EventArgs) Handles TrackBar1.ValueChanged
+        TextBox1.Text = System.Math.Round(TrackBar1.Value / 10)
+    End Sub

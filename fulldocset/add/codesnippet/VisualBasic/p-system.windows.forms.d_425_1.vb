@@ -1,18 +1,21 @@
-    ' Swap the last column with the first.
-    Private Sub Button10_Click(ByVal sender As Object, _
-        ByVal args As EventArgs) Handles Button10.Click
+    Private Shared Sub SetAlternateChoicesUsingItems( _
+        ByVal comboboxColumn As DataGridViewComboBoxColumn)
 
-        Dim columnCollection As DataGridViewColumnCollection = _
-            dataGridView.Columns
+        comboboxColumn.Items.AddRange("Mr.", "Ms.", "Mrs.", "Dr.")
 
-        Dim firstVisibleColumn As DataGridViewColumn = _
-            columnCollection.GetFirstColumn(DataGridViewElementStates.Visible)
-        Dim lastVisibleColumn As DataGridViewColumn = _
-            columnCollection.GetLastColumn(DataGridViewElementStates.Visible, _
-            Nothing)
-
-        Dim firstColumn_sIndex As Integer = firstVisibleColumn.DisplayIndex
-        firstVisibleColumn.DisplayIndex = _
-            lastVisibleColumn.DisplayIndex
-        lastVisibleColumn.DisplayIndex = firstColumn_sIndex
     End Sub
+
+    Private Function CreateComboBoxColumn() _
+        As DataGridViewComboBoxColumn
+        Dim column As New DataGridViewComboBoxColumn()
+
+        With column
+            .DataPropertyName = ColumnName.TitleOfCourtesy.ToString()
+            .HeaderText = ColumnName.TitleOfCourtesy.ToString()
+            .DropDownWidth = 160
+            .Width = 90
+            .MaxDropDownItems = 3
+            .FlatStyle = FlatStyle.Flat
+        End With
+        Return column
+    End Function

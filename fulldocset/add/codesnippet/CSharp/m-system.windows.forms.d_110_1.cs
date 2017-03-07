@@ -1,19 +1,11 @@
-using System;
-using System.Windows.Forms;
-
-   public class DataFormat_GetFormat
-   {
-      static void Main()
-      {
-
-         // Create a DataFormats.Format for the Unicode data format.
-         DataFormats.Format myFormat = DataFormats.GetFormat(13);
-
-         // Display the contents of myFormat.
-         Console.WriteLine("The Format Name corresponding to the ID "+myFormat.Id+" is :");
-         Console.WriteLine(myFormat.Name);
-
-         
-
-      }
-   }
+         // String variable used to show message.
+         string myString = "Selection backgound color changed from: ";
+         // Store current foreground color of selected cells.
+         Color myCurrentColor = myDataGrid.SelectionBackColor;
+         myString += myCurrentColor.ToString();
+         // Reset selection background color to default.
+         myDataGrid.ResetSelectionBackColor();
+         myString += "  to ";
+         myString += myDataGrid.SelectionBackColor.ToString();
+         // Show information about changes in color setting.  
+         MessageBox.Show(myString, "Selection background color information");

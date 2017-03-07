@@ -1,41 +1,25 @@
-Imports System.Drawing
-Imports System.Windows.Forms
+Private Sub Button1_Click(sender As Object, e As EventArgs)
+   myTreeView.ItemHeight = 5
+   myTreeView.SelectedNode.NodeFont = New Font("Arial", 5)
 
-Public Class Form1
-    Inherits Form
-    Private tabControl1 As TabControl
-    Private tabPage1 As TabPage
-    Private tabPage2 As TabPage
-    Private tabPage3 As TabPage
+   ' Get the font size from combobox.
+   Dim selectedString As String = myComboBox.SelectedItem.ToString()
+   Dim myNodeFontSize As Integer = Int32.Parse(selectedString)
 
-    Private Sub MyTabs()
-        Me.tabControl1 = New TabControl()
-        Me.tabPage1 = New TabPage()
-        Me.tabPage2 = New TabPage()
-        Me.tabPage3 = New TabPage()
+   ' Set the font of root node.
+   myTreeView.SelectedNode.NodeFont = New Font("Arial", myNodeFontSize)
+   Dim i As Integer
+   For  i = 0 To (myTreeView.Nodes(0).Nodes.Count) - 1
+      ' Set the font of child nodes.
+      myTreeView.Nodes(0).Nodes(i).NodeFont = New Font("Arial", _
+        myNodeFontSize)
+   Next i
 
-        ' Positions tabs on the left side of tabControl1.
-        Me.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left
-
-        Me.tabControl1.Controls.AddRange(New Control() {Me.tabPage1, Me.tabPage2, Me.tabPage3})
-        Me.tabControl1.Location = New Point(16, 24)
-        Me.tabControl1.SelectedIndex = 0
-        Me.tabControl1.Size = New Size(248, 232)
-        Me.tabControl1.TabIndex = 0
-
-        Me.tabPage1.TabIndex = 0
-        Me.tabPage2.TabIndex = 1
-        Me.tabPage3.TabIndex = 2
-
-        Me.Size = New Size(300, 300)
-        Me.Controls.AddRange(New Control() {Me.tabControl1})
-    End Sub
-
-    Public Sub New()
-        MyTabs()
-    End Sub
-
-    Shared Sub Main()
-        Application.Run(New Form1())
-    End Sub
-End Class
+   ' Get the bounds of the tree node.
+   Dim myRectangle As Rectangle = myTreeView.SelectedNode.Bounds
+   Dim myNodeHeight As Integer = myRectangle.Height
+   If myNodeHeight < myNodeFontSize Then
+      myNodeHeight = myNodeFontSize
+   End If
+   myTreeView.ItemHeight = myNodeHeight + 4
+End Sub 

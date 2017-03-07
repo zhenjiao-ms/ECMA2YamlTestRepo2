@@ -1,8 +1,11 @@
-   // Shows how to request a reader lock, upgrade the
-   // reader lock to the writer lock, and downgrade to a
-   // reader lock again.
-   static void UpgradeDowngrade( int timeOut )
+   // Shows how to release all locks and later restore
+   // the lock state. Shows how to use sequence numbers
+   // to determine whether another thread has obtained
+   // a writer lock since this thread last accessed the
+   // resource.
+   static void ReleaseRestore( int timeOut )
    {
+      int lastWriter;
       try
       {
          rwl->AcquireReaderLock( timeOut );
@@ -10,49 +13,41 @@
          {
             
             // It is safe for this thread to read from
-            // the shared resource.
-            Display( String::Format( "reads resource value {0}", resource ) );
+            // the shared resource. Cache the value. (You
+            // might do this if reading the resource is
+            // an expensive operation.)
+            int resourceValue = resource;
+            Display( String::Format( "reads resource value {0}", resourceValue ) );
             Interlocked::Increment( reads );
             
-            // If it is necessary to write to the resource,
-            // you must either release the reader lock and 
-            // then request the writer lock, or upgrade the
-            // reader lock. Note that upgrading the reader lock
-            // puts the thread in the write queue, behind any
-            // other threads that might be waiting for the 
-            // writer lock.
-            try
-            {
-               LockCookie lc = rwl->UpgradeToWriterLock( timeOut );
-               try
-               {
-                  
-                  // It is safe for this thread to read or write
-                  // from the shared resource.
-                  resource = rnd->Next( 500 );
-                  Display( String::Format( "writes resource value {0}", resource ) );
-                  Interlocked::Increment( writes );
-               }
-               finally
-               {
-                  
-                  // Ensure that the lock is released.
-                  rwl->DowngradeFromWriterLock( lc );
-               }
-
-            }
-            catch ( ApplicationException^ ) 
-            {
-               
-               // The upgrade request timed out.
-               Interlocked::Increment( writerTimeouts );
-            }
-
+            // Save the current writer sequence number.
+            lastWriter = rwl->WriterSeqNum;
             
-            // When the lock has been downgraded, it is 
-            // still safe to read from the resource.
-            Display( String::Format( "reads resource value {0}", resource ) );
-            Interlocked::Increment( reads );
+            // Release the lock, and save a cookie so the
+            // lock can be restored later.
+            LockCookie lc = rwl->ReleaseLock();
+            
+            // Wait for a random interval (up to a 
+            // quarter of a second), and then restore
+            // the previous state of the lock. Note that
+            // there is no timeout on the Restore method.
+            Thread::Sleep( rnd->Next( 250 ) );
+            rwl->RestoreLock( lc );
+            
+            // Check whether other threads obtained the
+            // writer lock in the interval. If not, then
+            // the cached value of the resource is still
+            // valid.
+            if ( rwl->AnyWritersSince( lastWriter ) )
+            {
+               resourceValue = resource;
+               Interlocked::Increment( reads );
+               Display( String::Format( "resource has changed {0}", resourceValue ) );
+            }
+            else
+            {
+               Display( String::Format( "resource has not changed {0}", resourceValue ) );
+            }
          }
          finally
          {

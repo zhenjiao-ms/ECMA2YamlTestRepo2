@@ -1,53 +1,83 @@
 using System;
-using System.IO;
 using System.Security.Cryptography;
-using System.Security.Cryptography.Xml;
-using System.Xml;
 
-
-public class XMLdsigsample1 {
-
-static void Main(String[] args)
+namespace Contoso
 {
-     // Create example data to sign.
-     XmlDocument document = new XmlDocument();
-     XmlNode  node = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples");
-     node.InnerText = "This is some text";
-     document.AppendChild(node);
-     Console.Error.WriteLine("Data to sign:\n" + document.OuterXml + "\n");
- 
-     // Create the SignedXml message.
-     SignedXml signedXml = new SignedXml();
-     RSA key = RSA.Create();
-     signedXml.SigningKey = key;
- 
-     // Create a data object to hold the data to sign.
-     DataObject dataObject = new DataObject();
-     dataObject.Data = document.ChildNodes;
-     dataObject.Id = "MyObjectId";
+    class KeySizesMembers
+    {
+        [STAThread]
+        static void Main(string[] args)
+        {
+            // Initializes a new instance of the KeySizes class with the
+            // specified key values.
+            int minSize = 64;
+            int maxSize = 1024;
+            int skipSize = 64;
+            KeySizes keySizes = new KeySizes(minSize, maxSize, skipSize);
 
-     // Add the data object to the signature.
-     signedXml.AddObject(dataObject);
- 
-     // Create a reference to be able to package everything into the
-     // message.
-     Reference reference = new Reference();
-     reference.Uri = "#MyObjectId";
- 
-     // Add it to the message.
-     signedXml.AddReference(reference);
+            // Show the values of the keys.
+            ShowKeys(new KeySizes[1]{keySizes}, "Custom Keys");
 
-     // Add a KeyInfo.
-     KeyInfo keyInfo = new KeyInfo();
-     keyInfo.AddClause(new RSAKeyValue(key));
-     signedXml.KeyInfo = keyInfo;
+            // Create a new symmetric algorithm and display its key values.
+            SymmetricAlgorithm rijn = SymmetricAlgorithm.Create();
+            ShowKeys(rijn.LegalKeySizes, rijn.ToString());
+            Console.WriteLine("rijn.blocksize:" + rijn.BlockSize);
 
-     // Compute the signature.
-     signedXml.ComputeSignature();
+            // Create a new RSA algorithm and display its key values.
+            RSACryptoServiceProvider rsaCSP = 
+                new RSACryptoServiceProvider(384);
+            ShowKeys(rsaCSP.LegalKeySizes, rsaCSP.ToString());
+            Console.WriteLine("RSACryptoServiceProvider KeySize = " + 
+                rsaCSP.KeySize);
 
-     // Get the XML representation of the signature.
-     XmlElement xmlSignature = signedXml.GetXml();
-     Console.WriteLine(xmlSignature.OuterXml);
+            Console.WriteLine("This sample completed successfully; " +
+                "press Enter to exit.");
+            Console.ReadLine();
+        }
+
+        // Display specified KeySize properties to the console.
+        private static void ShowKeys(KeySizes[] keySizes, string objectName)
+        {
+            // Retrieve the first KeySizes in the array.
+            KeySizes firstKeySize = keySizes[0];
+
+            // Retrieve the minimum key size in bits.
+            int minKeySize = firstKeySize.MinSize;
+                
+            // Retrieve the maximum key size in bits.
+            int maxKeySize = firstKeySize.MaxSize;
+                
+            // Retrieve the interval between valid key size in bits.
+            int skipKeySize = firstKeySize.SkipSize;
+
+            Console.Write("\n KeySizes retrieved from the ");
+            Console.WriteLine(objectName + " object.");
+            Console.WriteLine("Minimum key size bits: " + minKeySize);
+            Console.WriteLine("Maximum key size bits: " + maxKeySize);
+            Console.WriteLine("Interval between key size bits: " + 
+                skipKeySize);
+        }
+	}
 }
-
-}
+//
+// This sample produces the following output:
+//
+// KeySizes retrieved from the Custom Keys object.
+// Minimum key size bits: 64
+// Maximum key size bits: 1024
+// Interval between key size bits: 64
+// 
+// KeySizes retrieved from the System.Security.Cryptography.RijndaelManaged
+// object.
+// Minimum key size bits: 128
+// Maximum key size bits: 256
+// Interval between key size bits: 64
+// rijn.blocksize:128
+// 
+// KeySizes retrieved from the
+// System.Security.Cryptography.RSACryptoServiceProvider object.
+// Minimum key size bits: 384
+// Maximum key size bits: 16384
+// Interval between key size bits: 8
+// RSACryptoServiceProvider KeySize = 384
+// This sample completed successfully; press Enter to exit.

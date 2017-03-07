@@ -1,16 +1,31 @@
-    Private Sub DisplayText()
-        Me.MaskedTextBox1.PasswordChar = CChar("*")
-
-        Me.MaskedTextBox1.Mask = "000-00-0000" ' United States Social Security Number
-        Me.MaskedTextBox1.Text = "999999999"
-
-        Debug.WriteLine("MaskedControl.Text: " & Me.MaskedTextBox1.Text) ' Displays: 999-99-9
-        Me.MaskedTextBox1.Text = ""
-
-        ' Assigning text.
-        Me.MaskedTextBox1.AllowPromptAsInput = True
-        Me.MaskedTextBox1.Text = "999-99-9999" ' Works
-        Me.MaskedTextBox1.Text = "999999999" ' Works
-        Me.MaskedTextBox1.AllowPromptAsInput = False
-        'Me.MaskedTextBox1.Text = "999-99-9999" ' Does not work
-    End Sub
+ ' The following event handler would be connected to three menu items.
+ Private Sub MyMenuClick(sender As Object, e As EventArgs)
+     ' Determine if clicked menu item is the Blue menu item.
+     If sender Is menuItemBlue Then
+         ' Set the checkmark for the menuItemBlue menu item.
+         menuItemBlue.Checked = True
+         ' Uncheck the menuItemRed and menuItemGreen menu items.
+         menuItemRed.Checked = False
+         menuItemGreen.Checked = False
+         ' Set the color of the text in the TextBox control to Blue.
+         textBox1.ForeColor = Color.Blue
+     Else
+         If sender Is menuItemRed Then
+             ' Set the checkmark for the menuItemRed menu item.
+             menuItemRed.Checked = True
+             ' Uncheck the menuItemBlue and menuItemGreen menu items.
+             menuItemBlue.Checked = False
+             menuItemGreen.Checked = False
+             ' Set the color of the text in the TextBox control to Red.
+             textBox1.ForeColor = Color.Red
+         Else
+             ' Set the checkmark for the menuItemGreen.
+             menuItemGreen.Checked = True
+             ' Uncheck the menuItemRed and menuItemBlue menu items.
+             menuItemBlue.Checked = False
+             menuItemRed.Checked = False
+             ' Set the color of the text in the TextBox control to Blue.
+             textBox1.ForeColor = Color.Green
+         End If
+     End If
+ End Sub

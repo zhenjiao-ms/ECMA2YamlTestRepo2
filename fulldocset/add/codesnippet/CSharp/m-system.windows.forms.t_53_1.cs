@@ -1,91 +1,54 @@
-        // Inner class ChartControlAccessibleObject represents accessible information associated with the ChartControl.
-        // The ChartControlAccessibleObject is returned in the ChartControl.CreateAccessibilityInstance override.
-        public class ChartControlAccessibleObject : ControlAccessibleObject
-        {
-            ChartControl chartControl;
+		// Declare the drop-down button and the items it will contain.
+		internal ToolStripDropDownButton dropDownButton1;
+		internal ToolStripDropDown dropDown;
+		internal ToolStripButton buttonRed;
+		internal ToolStripButton buttonBlue;
+		internal ToolStripButton buttonYellow;
 
-            public ChartControlAccessibleObject(ChartControl ctrl) : base(ctrl) 
-            {
-                chartControl = ctrl;
-            }
 
-            // Gets the role for the Chart. This is used by accessibility programs.
-            public override AccessibleRole Role
-            {  
-                get {
-                    return AccessibleRole.Chart;
-                }
-            }
+		private void InitializeDropDownButton()
+		{
+			dropDownButton1 = new ToolStripDropDownButton();
+			dropDown = new ToolStripDropDown();
+			dropDownButton1.Text = "A";
 
-            // Gets the state for the Chart. This is used by accessibility programs.
-            public override AccessibleStates State
-            {  
-                get {                    
-                    return AccessibleStates.ReadOnly;
-                }
-            }
+			// Set the drop-down on the ToolStripDropDownButton.
+			dropDownButton1.DropDown = dropDown;
 
-            // The CurveLegend objects are "child" controls in terms of accessibility so 
-            // return the number of ChartLengend objects.
-            public override int GetChildCount()
-            {  
-                return chartControl.Legends.Length;
-            }
+            // Set the drop-down direction.
+            dropDownButton1.DropDownDirection = ToolStripDropDownDirection.Left;
 
-            // Gets the Accessibility object of the child CurveLegend idetified by index.
-            public override AccessibleObject GetChild(int index)
-            {  
-                if (index >= 0 && index < chartControl.Legends.Length) {
-                    return chartControl.Legends[index].AccessibilityObject;
-                }                
-                return null;
-            }
+            // Do not show a drop-down arrow.
+            dropDownButton1.ShowDropDownArrow = false;
 
-            // Helper function that is used by the CurveLegend's accessibility object
-            // to navigate between sibiling controls. Specifically, this function is used in
-            // the CurveLegend.CurveLegendAccessibleObject.Navigate function.
-            internal AccessibleObject NavigateFromChild(CurveLegend.CurveLegendAccessibleObject child, 
-                                                        AccessibleNavigation navdir) 
-            {  
-                switch(navdir) {
-                    case AccessibleNavigation.Down:
-                    case AccessibleNavigation.Next:
-                        return GetChild(child.ID + 1);
-                        
-                    case AccessibleNavigation.Up:
-                    case AccessibleNavigation.Previous:
-                        return GetChild(child.ID - 1);                        
-                }
-                return null;
-            }
+			// Declare three buttons, set their foreground color and text, 
+			// and add the buttons to the drop-down.
+			buttonRed = new ToolStripButton();
+			buttonRed.ForeColor = Color.Red;
+			buttonRed.Text = "A";
 
-            // Helper function that is used by the CurveLegend's accessibility object
-            // to select a specific CurveLegend control. Specifically, this function is used
-            // in the CurveLegend.CurveLegendAccessibleObject.Select function.
-            internal void SelectChild(CurveLegend.CurveLegendAccessibleObject child, AccessibleSelection selection) 
-            {   
-                int childID = child.ID;
+			buttonBlue = new ToolStripButton();
+			buttonBlue.ForeColor = Color.Blue;
+			buttonBlue.Text = "A";
 
-                // Determine which selection action should occur, based on the
-                // AccessibleSelection value.
-                if ((selection & AccessibleSelection.TakeSelection) != 0) {
-                    for(int i = 0; i < chartControl.Legends.Length; i++) {
-                        if (i == childID) {
-                            chartControl.Legends[i].Selected = true;                        
-                        } else {
-                            chartControl.Legends[i].Selected = false;
-                        }
-                    }
+			buttonYellow = new ToolStripButton();
+			buttonYellow.ForeColor = Color.Yellow;
+			buttonYellow.Text = "A";
+			
+			buttonBlue.Click += new EventHandler(colorButtonsClick);
+			buttonRed.Click += new EventHandler(colorButtonsClick);
+			buttonYellow.Click += new EventHandler(colorButtonsClick);
 
-                    // AccessibleSelection.AddSelection means that the CurveLegend will be selected.
-                    if ((selection & AccessibleSelection.AddSelection) != 0) {
-                        chartControl.Legends[childID].Selected = true;                        
-                    }
+			dropDown.Items.AddRange(new ToolStripItem[] 
+				{ buttonRed, buttonBlue, buttonYellow });
+			toolStrip1.Items.Add(dropDownButton1);
+		}
 
-                    // AccessibleSelection.AddSelection means that the CurveLegend will be unselected.
-                    if ((selection & AccessibleSelection.RemoveSelection) != 0) {
-                        chartControl.Legends[childID].Selected = false;                        
-                    }
-                }            
-            }
-        }
+
+		// Handle the buttons' click event by setting the foreground color of the
+		// form to the foreground color of the button that is clicked.
+		private void colorButtonsClick(object sender, EventArgs e)
+		{
+			ToolStripButton senderButton = (ToolStripButton)sender;
+			this.ForeColor = senderButton.ForeColor;
+		}

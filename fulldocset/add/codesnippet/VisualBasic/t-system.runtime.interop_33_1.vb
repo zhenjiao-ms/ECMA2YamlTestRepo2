@@ -1,11 +1,17 @@
 Imports System
-Imports System.Reflection
 Imports System.Runtime.InteropServices
 
-<assembly: AssemblyVersion("3.0.0.0")>
-<assembly: ComCompatibleVersion(1,0,0,0)>
-Namespace MyNamespace
-    Public Class TheClass
-        ' Insert code.
-    End Class
-End Namespace
+Module Example
+
+    ' Use DllImport to import the Win32 MessageBox function.
+    <DllImport("user32.dll", CharSet:=CharSet.Unicode)> _
+    Function MessageBox(ByVal hwnd As IntPtr, ByVal t As String, ByVal caption As String, ByVal t2 As UInt32) As Integer
+    End Function
+
+
+    Sub Main()
+        ' Call the MessageBox function using platform invoke.
+        MessageBox(New IntPtr(0), "Hello World!", "Hello Dialog", 0)
+    End Sub
+
+End Module

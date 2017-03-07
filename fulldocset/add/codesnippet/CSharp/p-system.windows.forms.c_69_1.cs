@@ -1,20 +1,19 @@
-        private void WhatIsChecked_Click(object sender, System.EventArgs e) {
-            // Display in a message box all the items that are checked.
+// Add a GroupBox to a form and set some of its common properties.
+private void AddMyGroupBox()
+{
+   // Create a GroupBox and add a TextBox to it.
+   GroupBox groupBox1 = new GroupBox();
+   TextBox textBox1 = new TextBox();
+   textBox1.Location = new Point(15, 15);
+   groupBox1.Controls.Add(textBox1);
 
-            // First show the index and check state of all selected items.
-            foreach(int indexChecked in checkedListBox1.CheckedIndices) {
-                // The indexChecked variable contains the index of the item.
-                MessageBox.Show("Index#: " + indexChecked.ToString() + ", is checked. Checked state is:" +
-                                checkedListBox1.GetItemCheckState(indexChecked).ToString() + ".");
-            }
+   // Set the Text and Dock properties of the GroupBox.
+   groupBox1.Text = "MyGroupBox";
+   groupBox1.Dock = DockStyle.Top;
 
-            // Next show the object title and check state for each item selected.
-            foreach(object itemChecked in checkedListBox1.CheckedItems) {
+   // Disable the GroupBox (which disables all its child controls)
+   groupBox1.Enabled = false;
 
-                // Use the IndexOf method to get the index of an item.
-                MessageBox.Show("Item with title: \"" + itemChecked.ToString() + 
-                                "\", is checked. Checked state is: " + 
-                                checkedListBox1.GetItemCheckState(checkedListBox1.Items.IndexOf(itemChecked)).ToString() + ".");
-            }
-
-        }
+   // Add the Groupbox to the form.
+   this.Controls.Add(groupBox1);
+}

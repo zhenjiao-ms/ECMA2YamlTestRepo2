@@ -19,8 +19,33 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Specifies type attributes.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Some of the members of the TypeAttributes enumeration are masks that represent a set of mutually exclusive attributes. For example, the VisibilityMask member includes the NotPublic, Public, NestedPublic, NestedPrivate, NestedFamily, NestedAssembly, NestedFamANDAssem, and NestedFamORAssem members,  Because each attribute set includes a member whose underlying value is zero, you should first `And` the value of the mask with the specific TypeAttributes value retrieved from a property such as <xref:System.Type.Attributes%2A?displayProperty=fullName>. The following table lists the masks and the individual members that they include:  
+  
+|Mask|Includes|  
+|----------|--------------|  
+|VisibilityMask|NotPublic <br /> Public <br /> NestedPublic <br /> NestedPrivate <br /> NestedFamily <br /> NestedAssembly <br /> NestedFamANDAssem <br /> NestedFamORAssem|  
+|LayoutMask|AutoLayout <br /> SequentialLayout <br /> ExplicitLayout|  
+|ClassSemanticsMask|Class <br /> Interface|  
+|StringFormatMask|AnsiClass <br /> UnicodeClass <br /> AutoClass <br /> CustomFormatClass|  
+|CustomFormatMask|No members.|  
+  
+ The members of this enumerator class match the CorTypeAttr enumerator as defined in the corhdr.h file.  
+  
+   
+  
+## Examples  
+ The following example retrieves the value of the <xref:System.Type.Attributes%2A> property for <xref:System.Type> objects that represent a number of different types, and then determines whether individual attribute flags have been set.  
+  
+ [!code-vb[System.Type.Attributes#1](~/add/codesnippet/visualbasic/t-system.reflection.type_0_1.vb)]
+ [!code-cs[System.Type.Attributes#1](~/add/codesnippet/csharp/t-system.reflection.type_0_1.cs)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Abstract">
@@ -37,7 +62,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the type is abstract.</summary>
       </Docs>
     </Member>
     <Member MemberName="AnsiClass">
@@ -54,7 +79,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>LPTSTR is interpreted as ANSI.</summary>
       </Docs>
     </Member>
     <Member MemberName="AutoClass">
@@ -71,7 +96,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>LPTSTR is interpreted automatically.</summary>
       </Docs>
     </Member>
     <Member MemberName="AutoLayout">
@@ -88,7 +113,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that class fields are automatically laid out by the common language runtime.</summary>
       </Docs>
     </Member>
     <Member MemberName="BeforeFieldInit">
@@ -105,7 +130,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that calling static methods of the type does not force the system to initialize the type.</summary>
       </Docs>
     </Member>
     <Member MemberName="Class">
@@ -122,7 +147,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the type is a class.</summary>
       </Docs>
     </Member>
     <Member MemberName="ClassSemanticsMask">
@@ -139,7 +164,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies class semantics information; the current class is contextful (else agile).</summary>
       </Docs>
     </Member>
     <Member MemberName="CustomFormatClass">
@@ -156,7 +181,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>LPSTR is interpreted by some implementation-specific means, which includes the possibility of throwing a <see cref="T:System.NotSupportedException" />. Not used in the Microsoft implementation of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)].</summary>
       </Docs>
     </Member>
     <Member MemberName="CustomFormatMask">
@@ -173,7 +198,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Used to retrieve non-standard encoding information for native interop. The meaning of the values of these 2 bits is unspecified. Not used in the Microsoft implementation of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)].</summary>
       </Docs>
     </Member>
     <Member MemberName="ExplicitLayout">
@@ -190,7 +215,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that class fields are laid out at the specified offsets.</summary>
       </Docs>
     </Member>
     <Member MemberName="HasSecurity">
@@ -207,7 +232,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Type has security associate with it.</summary>
       </Docs>
     </Member>
     <Member MemberName="Import">
@@ -224,7 +249,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the class or interface is imported from another module.</summary>
       </Docs>
     </Member>
     <Member MemberName="Interface">
@@ -241,7 +266,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the type is an interface.</summary>
       </Docs>
     </Member>
     <Member MemberName="LayoutMask">
@@ -258,7 +283,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies class layout information.</summary>
       </Docs>
     </Member>
     <Member MemberName="NestedAssembly">
@@ -275,7 +300,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the class is nested with assembly visibility, and is thus accessible only by methods within its assembly.</summary>
       </Docs>
     </Member>
     <Member MemberName="NestedFamANDAssem">
@@ -292,7 +317,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the class is nested with assembly and family visibility, and is thus accessible only by methods lying in the intersection of its family and assembly.</summary>
       </Docs>
     </Member>
     <Member MemberName="NestedFamily">
@@ -309,7 +334,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the class is nested with family visibility, and is thus accessible only by methods within its own type and any derived types.</summary>
       </Docs>
     </Member>
     <Member MemberName="NestedFamORAssem">
@@ -326,7 +351,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the class is nested with family or assembly visibility, and is thus accessible only by methods lying in the union of its family and assembly.</summary>
       </Docs>
     </Member>
     <Member MemberName="NestedPrivate">
@@ -343,7 +368,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the class is nested with private visibility.</summary>
       </Docs>
     </Member>
     <Member MemberName="NestedPublic">
@@ -360,7 +385,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the class is nested with public visibility.</summary>
       </Docs>
     </Member>
     <Member MemberName="NotPublic">
@@ -377,7 +402,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the class is not public.</summary>
       </Docs>
     </Member>
     <Member MemberName="Public">
@@ -394,7 +419,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the class is public.</summary>
       </Docs>
     </Member>
     <Member MemberName="ReservedMask">
@@ -411,7 +436,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Attributes reserved for runtime use.</summary>
       </Docs>
     </Member>
     <Member MemberName="RTSpecialName">
@@ -428,7 +453,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Runtime should check name encoding.</summary>
       </Docs>
     </Member>
     <Member MemberName="Sealed">
@@ -445,7 +470,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the class is concrete and cannot be extended.</summary>
       </Docs>
     </Member>
     <Member MemberName="SequentialLayout">
@@ -462,7 +487,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that class fields are laid out sequentially, in the order that the fields were emitted to the metadata.</summary>
       </Docs>
     </Member>
     <Member MemberName="Serializable">
@@ -479,7 +504,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the class can be serialized.</summary>
       </Docs>
     </Member>
     <Member MemberName="SpecialName">
@@ -496,7 +521,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies that the class is special in a way denoted by the name.</summary>
       </Docs>
     </Member>
     <Member MemberName="StringFormatMask">
@@ -513,7 +538,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Used to retrieve string information for native interoperability.</summary>
       </Docs>
     </Member>
     <Member MemberName="UnicodeClass">
@@ -530,7 +555,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>LPTSTR is interpreted as UNICODE.</summary>
       </Docs>
     </Member>
     <Member MemberName="VisibilityMask">
@@ -547,7 +572,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies type visibility information.</summary>
       </Docs>
     </Member>
     <Member MemberName="WindowsRuntime">
@@ -568,7 +593,7 @@
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Specifies a [!INCLUDE[wrt](~/add/includes/wrt-md.md)] type.</summary>
       </Docs>
     </Member>
   </Members>

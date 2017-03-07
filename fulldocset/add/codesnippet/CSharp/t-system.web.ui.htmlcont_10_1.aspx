@@ -1,38 +1,48 @@
+<%@ Page Language="C#" AutoEventWireup="true"%>
 
-<%@ Page Language="C#" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
-  
-  void Page_Load(object sender, EventArgs e)
-  {
 
-    if (Page.Header != null)
-    {
-      
-      Page.Header.Title = "Welcome!  The time is: " + System.DateTime.Now;
-      
-    }
-    
+  protected void SubmitButton_Click(object sender, EventArgs e)
+  {
+    Message.InnerText = "You entered: " + Server.HtmlEncode(Input1.Value);
   }
-    
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-
-  <head id="Head1" runat="server">
-    <title>HtmlTitle Example</title>
+<head runat="server">
+    <title>HtmlInputButton Example</title>
 </head>
-
-  <body>
-
-    <form id="form1" runat="server">
-
-      <h3>HtmlTitle Example</h3>
-
+<body>
+    <form id="myform"
+          method="post"
+          enctype="application/x-www-form-urlencoded"
+          runat="server">
+    <div>
+      <input id="Input1"
+             type="Text" 
+             maxlength="40"
+             runat="server"/>
+      <input id="SubmitButton"
+             type="submit"
+             value="Submit"
+             onserverclick="SubmitButton_Click"
+             runat="server" />
+      <input id="ResetButton"
+             type="reset"
+             value="Reset"
+             runat="server" />
+      <input id="Button"
+             type="button"
+             value="Button"
+             onclick="alert('Hello from the client side.');"
+             runat="server" />
+      <br />
+      <span  id="Message" 
+             runat="server"/>
+    
+    </div>
     </form>
-
-  </body>
-
+</body>
 </html>

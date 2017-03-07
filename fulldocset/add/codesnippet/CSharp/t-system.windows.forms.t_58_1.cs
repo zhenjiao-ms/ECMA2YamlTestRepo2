@@ -1,109 +1,126 @@
-using System;
-using System.Drawing;
-using System.Windows.Forms;
-
-public class Form1 : Form
-{
-    private TreeView treeView1;
-    private Button showCheckedNodesButton;
-    private TreeViewCancelEventHandler checkForCheckedChildren;
-
-    public Form1()
-    {
-        treeView1 = new TreeView();
-        showCheckedNodesButton = new Button();
-        checkForCheckedChildren = 
-            new TreeViewCancelEventHandler(CheckForCheckedChildrenHandler);
-
-        this.SuspendLayout();
-
-        // Initialize treeView1.
-        treeView1.Location = new Point(0, 25);
-        treeView1.Size = new Size(292, 248);
-        treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | 
-            AnchorStyles.Bottom | AnchorStyles.Right;
-        treeView1.CheckBoxes = true;
-
-        // Add nodes to treeView1.
-        TreeNode node;
-        for (int x = 0; x < 3; ++x)
+        internal class StackRenderer : ToolStripProfessionalRenderer
         {
-            // Add a root node.
-            node = treeView1.Nodes.Add(String.Format("Node{0}", x*4));
-            for (int y = 1; y < 4; ++y)
+            private static Bitmap titleBarGripBmp;
+            private static string titleBarGripEnc = @"Qk16AQAAAAAAADYAAAAoAAAAIwAAAAMAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAAuGMy+/n5+/n5uGMyuGMy+/n5+/n5uGMyuGMy+/n5+/n5uGMyuGMy+/n5+/n5uGMyuGMy+/n5+/n5uGMyuGMy+/n5+/n5uGMyuGMy+/n5+/n5uGMyuGMy+/n5+/n5uGMyuGMy+/n5+/n5ANj+RzIomHRh+/n5wm8/RzIomHRh+/n5wm8/RzIomHRh+/n5wm8/RzIomHRh+/n5wm8/RzIomHRh+/n5wm8/RzIomHRh+/n5wm8/RzIomHRh+/n5wm8/RzIomHRh+/n5wm8/RzIomHRh+/n5ANj+RzIoRzIozHtMzHtMRzIoRzIozHtMzHtMRzIoRzIozHtMzHtMRzIoRzIozHtMzHtMRzIoRzIozHtMzHtMRzIoRzIozHtMzHtMRzIoRzIozHtMzHtMRzIoRzIozHtMzHtMRzIoRzIozHtMANj+";
+
+            // Define titlebar colors.
+            private static Color titlebarColor1 = Color.FromArgb(89, 135, 214);
+            private static Color titlebarColor2 = Color.FromArgb(76, 123, 204);
+            private static Color titlebarColor3 = Color.FromArgb(63, 111, 194);
+            private static Color titlebarColor4 = Color.FromArgb(50, 99, 184);
+            private static Color titlebarColor5 = Color.FromArgb(38, 88, 174);
+            private static Color titlebarColor6 = Color.FromArgb(25, 76, 164);
+            private static Color titlebarColor7 = Color.FromArgb(12, 64, 154);
+            private static Color borderColor = Color.FromArgb(0, 0, 128);
+
+            static StackRenderer()
             {
-                // Add a node as a child of the previously added node.
-                node = node.Nodes.Add(String.Format("Node{0}", x*4 + y));
+                titleBarGripBmp = StackView.DeserializeFromBase64(titleBarGripEnc);
+            }
+
+            public StackRenderer()
+            {
+            }
+
+            private void DrawTitleBar(Graphics g, Rectangle rect)
+            {
+                // Assign the image for the grip.
+                Image titlebarGrip = titleBarGripBmp;
+
+                // Fill the titlebar. 
+                // This produces the gradient and the rounded-corner effect.
+                g.DrawLine(new Pen(titlebarColor1), rect.X, rect.Y, rect.X + rect.Width, rect.Y);
+                g.DrawLine(new Pen(titlebarColor2), rect.X, rect.Y + 1, rect.X + rect.Width, rect.Y + 1);
+                g.DrawLine(new Pen(titlebarColor3), rect.X, rect.Y + 2, rect.X + rect.Width, rect.Y + 2);
+                g.DrawLine(new Pen(titlebarColor4), rect.X, rect.Y + 3, rect.X + rect.Width, rect.Y + 3);
+                g.DrawLine(new Pen(titlebarColor5), rect.X, rect.Y + 4, rect.X + rect.Width, rect.Y + 4);
+                g.DrawLine(new Pen(titlebarColor6), rect.X, rect.Y + 5, rect.X + rect.Width, rect.Y + 5);
+                g.DrawLine(new Pen(titlebarColor7), rect.X, rect.Y + 6, rect.X + rect.Width, rect.Y + 6);
+
+                // Center the titlebar grip.
+                g.DrawImage(
+                    titlebarGrip,
+                    new Point(rect.X + ((rect.Width / 2) - (titlebarGrip.Width / 2)),
+                    rect.Y + 1));
+            }
+
+            // This method handles the RenderGrip event.
+            protected override void OnRenderGrip(ToolStripGripRenderEventArgs e)
+            {
+                DrawTitleBar(
+                    e.Graphics,
+                    new Rectangle(0, 0, e.ToolStrip.Width, 7));
+            }
+
+            // This method handles the RenderToolStripBorder event.
+            protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
+            {
+                DrawTitleBar(
+                    e.Graphics,
+                    new Rectangle(0, 0, e.ToolStrip.Width, 7));
+            }
+
+            // This method handles the RenderButtonBackground event.
+            protected override void OnRenderButtonBackground(ToolStripItemRenderEventArgs e)
+            {
+                Graphics g = e.Graphics;
+                Rectangle bounds = new Rectangle(Point.Empty, e.Item.Size);
+
+                Color gradientBegin = Color.FromArgb(203, 225, 252);
+                Color gradientEnd = Color.FromArgb(125, 165, 224);
+
+                ToolStripButton button = e.Item as ToolStripButton;
+                if (button.Pressed || button.Checked)
+                {
+                    gradientBegin = Color.FromArgb(254, 128, 62);
+                    gradientEnd = Color.FromArgb(255, 223, 154);
+                }
+                else if (button.Selected)
+                {
+                    gradientBegin = Color.FromArgb(255, 255, 222);
+                    gradientEnd = Color.FromArgb(255, 203, 136);
+                }
+
+                using (Brush b = new LinearGradientBrush(
+                    bounds,
+                    gradientBegin,
+                    gradientEnd,
+                    LinearGradientMode.Vertical))
+                {
+                    g.FillRectangle(b, bounds);
+                }
+
+                e.Graphics.DrawRectangle(
+                    SystemPens.ControlDarkDark,
+                    bounds);
+
+                g.DrawLine(
+                    SystemPens.ControlDarkDark,
+                    bounds.X,
+                    bounds.Y,
+                    bounds.Width - 1,
+                    bounds.Y);
+
+                g.DrawLine(
+                    SystemPens.ControlDarkDark,
+                    bounds.X,
+                    bounds.Y,
+                    bounds.X,
+                    bounds.Height - 1);
+
+                ToolStrip toolStrip = button.Owner;
+                ToolStripButton nextItem = button.Owner.GetItemAt(
+                    button.Bounds.X,
+                    button.Bounds.Bottom + 1) as ToolStripButton;
+
+                if (nextItem == null)
+                {
+                    g.DrawLine(
+                        SystemPens.ControlDarkDark,
+                        bounds.X,
+                        bounds.Height - 1,
+                        bounds.X + bounds.Width - 1,
+                        bounds.Height - 1);
+                }
             }
         }
-
-        // Set the checked state of one of the nodes to
-        // demonstrate the showCheckedNodesButton button behavior.
-        treeView1.Nodes[1].Nodes[0].Nodes[0].Checked = true;
-
-        // Initialize showCheckedNodesButton.
-        showCheckedNodesButton.Size = new Size(144, 24);
-        showCheckedNodesButton.Text = "Show Checked Nodes";
-        showCheckedNodesButton.Click += 
-            new EventHandler(showCheckedNodesButton_Click);
-
-        // Initialize the form.
-        this.ClientSize = new Size(292, 273);
-        this.Controls.AddRange(new Control[] 
-            { showCheckedNodesButton, treeView1 } );
-
-        this.ResumeLayout(false);
-    }
-
-    [STAThreadAttribute()]
-    static void Main() 
-    {
-        Application.Run(new Form1());
-    }
-
-    private void showCheckedNodesButton_Click(object sender, EventArgs e)
-    {
-        // Disable redrawing of treeView1 to prevent flickering 
-        // while changes are made.
-        treeView1.BeginUpdate();
-
-        // Collapse all nodes of treeView1.
-        treeView1.CollapseAll();
-
-        // Add the checkForCheckedChildren event handler to the BeforeExpand event.
-        treeView1.BeforeExpand += checkForCheckedChildren;
-
-        // Expand all nodes of treeView1. Nodes without checked children are 
-        // prevented from expanding by the checkForCheckedChildren event handler.
-        treeView1.ExpandAll();
-
-        // Remove the checkForCheckedChildren event handler from the BeforeExpand 
-        // event so manual node expansion will work correctly.
-        treeView1.BeforeExpand -= checkForCheckedChildren;
-
-        // Enable redrawing of treeView1.
-        treeView1.EndUpdate();
-    }
-
-    // Prevent expansion of a node that does not have any checked child nodes.
-    private void CheckForCheckedChildrenHandler(object sender, 
-        TreeViewCancelEventArgs e)
-    {
-        if (!HasCheckedChildNodes(e.Node)) e.Cancel = true;
-    }
-
-    // Returns a value indicating whether the specified 
-    // TreeNode has checked child nodes.
-    private bool HasCheckedChildNodes(TreeNode node)
-    {
-        if (node.Nodes.Count == 0) return false;
-        foreach (TreeNode childNode in node.Nodes)
-        {
-            if (childNode.Checked) return true;
-            // Recursively check the children of the current child node.
-            if (HasCheckedChildNodes(childNode)) return true;
-        }
-        return false;
-    }
-
-}

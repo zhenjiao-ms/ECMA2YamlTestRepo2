@@ -1,11 +1,10 @@
-		try {
-		    License licTest = null;
-		    licTest = LicenseManager.Validate(typeof(Form1), this);
-		}
+        // This example method creates a ComponentEventArgs using the specified argument.
+        // Typically, this type of event args is created by a design mode subsystem.  
+        public ComponentEventArgs CreateComponentEventArgs(IComponent component)
+        {
+            ComponentEventArgs args = new ComponentEventArgs(component);
 
-		catch(LicenseException licE) {
-		    Console.WriteLine(licE.Message);
-		    Console.WriteLine(licE.LicensedType);
-		    Console.WriteLine(licE.StackTrace);
-		    Console.WriteLine(licE.Source);	
-		}
+            // The component that is related to the event:  args.Component
+
+            return args;
+        }

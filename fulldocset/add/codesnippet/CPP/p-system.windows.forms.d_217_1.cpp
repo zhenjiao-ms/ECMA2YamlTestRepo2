@@ -1,15 +1,19 @@
-   // Give cheescake excellent rating.
-   void Button8_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   // Freeze the first row.
+   void Button4_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
    {
-      UpdateStars( dataGridView->Rows[ 4 ], L"******************" );
+      FreezeBand( dataGridView->Rows[ 0 ] );
    }
 
-   int ratingColumn;
-   void UpdateStars( DataGridViewRow^ row, String^ stars )
+   void Button5_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
    {
-      row->Cells[ ratingColumn ]->Value = stars;
-      
-      // Resize the column width to account for the new value.
-      row->DataGridView->AutoResizeColumn( ratingColumn, DataGridViewAutoSizeColumnMode::DisplayedCells );
+      FreezeBand( dataGridView->Columns[ 1 ] );
+   }
+
+   void FreezeBand( DataGridViewBand^ band )
+   {
+      band->Frozen = true;
+      DataGridViewCellStyle^ style = gcnew DataGridViewCellStyle;
+      style->BackColor = Color::WhiteSmoke;
+      band->DefaultCellStyle = style;
    }
 

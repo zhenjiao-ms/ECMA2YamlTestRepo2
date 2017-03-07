@@ -1,29 +1,19 @@
-Private Sub DataGridView1_RowPrePaint(sender as Object, e as DataGridViewRowPrePaintEventArgs) _ 
-     Handles DataGridView1.RowPrePaint
+    ' Style and number columns.
+    Private Sub Button8_Click(ByVal sender As Object, _
+        ByVal args As EventArgs) Handles Button8.Click
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "ClipBounds", e.ClipBounds)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "ErrorText", e.ErrorText)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "InheritedRowStyle", e.InheritedRowStyle)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "IsFirstDisplayedRow", e.IsFirstDisplayedRow)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "IsLastVisibleRow", e.IsLastVisibleRow)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "PaintParts", e.PaintParts)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "RowBounds", e.RowBounds)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "State", e.State)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Handled", e.Handled)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"RowPrePaint Event")
+        Dim style As DataGridViewCellStyle = _
+            New DataGridViewCellStyle()
+        style.Alignment = _
+            DataGridViewContentAlignment.MiddleCenter
+        style.ForeColor = Color.IndianRed
+        style.BackColor = Color.Ivory
 
-End Sub
+        For Each column As DataGridViewColumn _
+            In dataGridView.Columns
+
+            column.HeaderCell.Value = _
+                column.Index.ToString
+            column.HeaderCell.Style = style
+        Next
+    End Sub

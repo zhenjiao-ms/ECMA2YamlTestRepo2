@@ -1,23 +1,26 @@
-    [ServiceContract]
-    public interface ICalculator
-    {
-        [OperationContract]
-        [WebGet]
-        long Add(long x, long y);
+            Uri baseAddress = new Uri("http://localhost:8000");
+            WebServiceHost host = new WebServiceHost(typeof(Service), baseAddress);
+            try
+            {
+                host.Open();
 
-        [OperationContract]
-        [WebGet(UriTemplate = "Sub?x={x}&y={y}")]
-        long Subtract(long x, long y);
+                WebChannelFactory<IService> cf = new WebChannelFactory<IService>(baseAddress);
+                IService channel = cf.CreateChannel();
+                string s;
 
-        [OperationContract]
-        [WebGet(UriTemplate = "Mult?x={x}&y={y}", BodyStyle = WebMessageBodyStyle.Bare)]
-        long Multiply(long x, long y);
+                Console.WriteLine("Calling EchoWithGet via HTTP GET: ");
+                s = channel.EchoWithGet("Hello, world");
+                Console.WriteLine("   Output: {0}", s);
 
-        [OperationContract]
-        [WebGet(UriTemplate = "Div?x={x}&y={y}", RequestFormat = WebMessageFormat.Xml)]
-        long Divide(long x, long y);
+                Console.WriteLine("");
 
-        [OperationContract]
-        [WebGet(ResponseFormat= WebMessageFormat.Json)]
-        long Mod(long x, long y);
-    }
+                Console.WriteLine("Calling EchoWithPost via HTTP POST: ");
+                s = channel.EchoWithPost("Hello, world");
+                Console.WriteLine("   Output: {0}", s);
+
+                Console.WriteLine("");
+            }
+            catch (CommunicationException ex)
+            {
+                Console.WriteLine("An exception occurred: " + ex.Message);
+            }

@@ -11,8 +11,15 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Encapsulates the HTTP intrinsic object that contains HTTP-specific information about an individual HTTP request.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The HttpContextWrapper class derives from the <xref:System.Web.HttpContextBase> class and serves as a wrapper for the <xref:System.Web.HttpContext> class. This class exposes the functionality of the <xref:System.Web.HttpContext> class and also exposes the <xref:System.Web.HttpContextBase> type. The <xref:System.Web.HttpContextBase> class lets you replace the original implementation of the <xref:System.Web.HttpContext> class in your application with a custom implementation, such as when you perform unit testing outside the ASP.NET pipeline.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,9 +35,11 @@
         <Parameter Name="httpContext" Type="System.Web.HttpContext" />
       </Parameters>
       <Docs>
-        <param name="httpContext">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="httpContext">The object that this wrapper class provides access to.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.Web.HttpContextWrapper" /> class by using the specified context object.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="httpContext" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="AddError">
@@ -49,8 +58,8 @@
         <Parameter Name="errorInfo" Type="System.Exception" />
       </Parameters>
       <Docs>
-        <param name="errorInfo">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="errorInfo">The exception to add to the exception collection.</param>
+        <summary>Adds an exception to the exception collection for the current HTTP request.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -67,8 +76,8 @@
         <ReturnType>System.Exception[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets an array of errors (if any) that accumulated when an HTTP request was being processed.</summary>
+        <value>An array of <see cref="T:System.Exception" /> objects for the current HTTP request, or <see langword="null" /> if no errors accumulated during the HTTP request processing.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -85,8 +94,8 @@
         <ReturnType>System.Web.HttpApplicationStateBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Web.HttpApplicationState" /> object for the current HTTP request.</summary>
+        <value>The state object for the current HTTP request.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -103,8 +112,8 @@
         <ReturnType>System.Web.HttpApplication</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the <see cref="T:System.Web.HttpApplication" /> object for the current HTTP request.</summary>
+        <value>The object for the current HTTP request.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -121,8 +130,8 @@
         <ReturnType>System.Web.Caching.Cache</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Web.Caching.Cache" /> object for the current application domain.</summary>
+        <value>The cache object for the current application domain.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -140,7 +149,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Clears all errors for the current HTTP request.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -157,8 +166,8 @@
         <ReturnType>System.Web.IHttpHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Web.IHttpHandler" /> object that represents the handler that is currently executing.</summary>
+        <value>An object that represents the handler that is currently executing.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -175,8 +184,8 @@
         <ReturnType>System.Web.RequestNotification</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a <see cref="T:System.Web.RequestNotification" /> value that indicates the current <see cref="T:System.Web.HttpApplication" /> event that is processing.</summary>
+        <value>One of the <see cref="T:System.Web.RequestNotification" /> values.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -193,8 +202,8 @@
         <ReturnType>System.Exception</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the first error (if any) that accumulated when an HTTP request was being processed.</summary>
+        <value>The first exception for the current HTTP request, or <see langword="null" /> if no errors accumulated when the HTTP request was being processed. The default is <see langword="null" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -215,10 +224,10 @@
         <Parameter Name="resourceKey" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="classKey">To be added.</param>
-        <param name="resourceKey">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="classKey">A string that represents the <see cref="System.Web.Compilation.ResourceExpressionFields.ClassKey%2A" /> property of the requested resource object.</param>
+        <param name="resourceKey">A string that represents the <see cref="System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A" /> property of the requested resource object.</param>
+        <summary>Gets an application-level resource object based on the specified <see cref="System.Web.Compilation.ResourceExpressionFields.ClassKey%2A" /> and <see cref="System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A" /> properties.</summary>
+        <returns>The requested application-level resource object, or <see langword="null" /> if no matching resource object is found.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -240,11 +249,11 @@
         <Parameter Name="culture" Type="System.Globalization.CultureInfo" />
       </Parameters>
       <Docs>
-        <param name="classKey">To be added.</param>
-        <param name="resourceKey">To be added.</param>
-        <param name="culture">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="classKey">A string that represents the <see cref="System.Web.Compilation.ResourceExpressionFields.ClassKey%2A" /> property of the requested resource object.</param>
+        <param name="resourceKey">A string that represents the <see cref="System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A" /> property of the requested resource object.</param>
+        <param name="culture">A string that represents the <see cref="T:System.Globalization.CultureInfo" /> object of the requested resource.</param>
+        <summary>Gets an application-level resource object based on the specified <see cref="System.Web.Compilation.ResourceExpressionFields.ClassKey%2A" /> and <see cref="System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A" /> properties, and on the <see cref="T:System.Globalization.CultureInfo" /> object.</summary>
+        <returns>The requested application-level resource object, which is localized for the specified culture, or <see langword="null" /> if no matching resource object is found.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -265,10 +274,10 @@
         <Parameter Name="resourceKey" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="virtualPath">To be added.</param>
-        <param name="resourceKey">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="virtualPath">A string that represents the <see cref="System.Web.Compilation.ExpressionBuilderContext.VirtualPath%2A" /> property of the local resource object.</param>
+        <param name="resourceKey">A string that represents the <see cref="System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A" /> property of the requested resource object.</param>
+        <summary>Gets a page-level resource object based on the specified <see cref="System.Web.Compilation.ExpressionBuilderContext.VirtualPath%2A" /> and <see cref="System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A" /> properties.</summary>
+        <returns>The requested page-level resource object, or <see langword="null" /> if no matching resource object is found.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -290,11 +299,11 @@
         <Parameter Name="culture" Type="System.Globalization.CultureInfo" />
       </Parameters>
       <Docs>
-        <param name="virtualPath">To be added.</param>
-        <param name="resourceKey">To be added.</param>
-        <param name="culture">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="virtualPath">A string that represents the <see cref="System.Web.Compilation.ExpressionBuilderContext.VirtualPath%2A" /> property of the local resource object.</param>
+        <param name="resourceKey">A string that represents the <see cref="System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A" /> property of the requested resource object.</param>
+        <param name="culture">A string that represents the <see cref="T:System.Globalization.CultureInfo" /> object of the requested resource object.</param>
+        <summary>Gets a page-level resource object based on the specified <see cref="System.Web.Compilation.ExpressionBuilderContext.VirtualPath%2A" /> and <see cref="System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A" /> properties, and on the <see cref="T:System.Globalization.CultureInfo" /> object.</summary>
+        <returns>The requested local resource object, which is localized for the specified culture, or <see langword="null" /> if no matching resource object is found.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -314,9 +323,9 @@
         <Parameter Name="sectionName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="sectionName">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="sectionName">The configuration section path (in XPath format) and the configuration element name.</param>
+        <summary>Gets the specified configuration section of the current application's default configuration.</summary>
+        <returns>The specified section, or <see langword="null" /> if the section does not exist.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -336,9 +345,9 @@
         <Parameter Name="serviceType" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="serviceType">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="serviceType">The type of service to get.</param>
+        <summary>Returns an object for the current service type.</summary>
+        <returns>The current service type, or <see langword="null" /> if no service is found.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -355,8 +364,8 @@
         <ReturnType>System.Web.IHttpHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the <see cref="T:System.Web.IHttpHandler" /> object that is responsible for processing the HTTP request.</summary>
+        <value>The object that is responsible for processing the HTTP request.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -373,8 +382,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether custom errors are enabled for the current HTTP request.</summary>
+        <value>
+          <see langword="true" /> if custom errors are enabled; otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -391,8 +401,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether the current HTTP request is in debug mode.</summary>
+        <value>
+          <see langword="true" /> if the request is in debug mode; otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -409,8 +420,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether an <see cref="T:System.Web.HttpApplication" /> event has finished processing.</summary>
+        <value>
+          <see langword="true" /> if the event has finished processing; otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -427,8 +439,8 @@
         <ReturnType>System.Collections.IDictionary</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a key/value collection that can be used to organize and share data between a module and a handler during an HTTP request.</summary>
+        <value>A key/value collection that provides access to an individual value in the collection by using a specified key.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -445,8 +457,8 @@
         <ReturnType>System.Web.IHttpHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Web.IHttpHandler" /> object for the parent handler.</summary>
+        <value>An <see cref="T:System.Web.IHttpHandler" /> object that represents the parent handler, or <see langword="null" /> if no parent handler was found.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -463,8 +475,8 @@
         <ReturnType>System.Web.Profile.ProfileBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Web.Profile.ProfileBase" /> object for the current user profile.</summary>
+        <value>If profile properties are defined in the application configuration file and profiles are enabled for the application, an object that represents the current user profile; otherwise, <see langword="null" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -481,8 +493,8 @@
         <ReturnType>System.Web.HttpRequestBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Web.HttpRequestBase" /> object for the current HTTP request.</summary>
+        <value>The current HTTP request.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -499,8 +511,8 @@
         <ReturnType>System.Web.HttpResponseBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Web.HttpResponseBase" /> object for the current HTTP response.</summary>
+        <value>The current HTTP response.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -520,9 +532,13 @@
         <Parameter Name="path" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="path">The replacement path.</param>
+        <summary>Rewrites the URL by using the specified path.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="path" /> is <see langword="null" />.</exception>
+        <exception cref="T:System.Web.HttpException">
+          <paramref name="path" /> is not in the current application's root directory.</exception>
       </Docs>
     </Member>
     <Member MemberName="RewritePath">
@@ -542,10 +558,15 @@
         <Parameter Name="rebaseClientPath" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <param name="rebaseClientPath">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="path">The path to rewrite to.</param>
+        <param name="rebaseClientPath">
+          <see langword="true" /> to reset the virtual path; <see langword="false" /> to keep the virtual path unchanged.</param>
+        <summary>Rewrites the URL by using the specified path and a value that specifies whether the virtual path for server resources is modified.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="path" /> is <see langword="null" />.</exception>
+        <exception cref="T:System.Web.HttpException">
+          <paramref name="path" /> is not in the current application's root directory.</exception>
       </Docs>
     </Member>
     <Member MemberName="RewritePath">
@@ -566,11 +587,13 @@
         <Parameter Name="queryString" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="filePath">To be added.</param>
-        <param name="pathInfo">To be added.</param>
-        <param name="queryString">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="filePath">The replacement path.</param>
+        <param name="pathInfo">Additional path information for a resource.</param>
+        <param name="queryString">The request query string.</param>
+        <summary>Rewrites the URL by using the specified path, path information, and query string information.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">The <paramref name="filePath" /> parameter is <see langword="null" />.</exception>
+        <exception cref="T:System.Web.HttpException">The <paramref name="filePath" /> parameter is not in the current application's root directory.</exception>
       </Docs>
     </Member>
     <Member MemberName="RewritePath">
@@ -592,12 +615,17 @@
         <Parameter Name="setClientFilePath" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="filePath">To be added.</param>
-        <param name="pathInfo">To be added.</param>
-        <param name="queryString">To be added.</param>
-        <param name="setClientFilePath">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="filePath">The replacement path.</param>
+        <param name="pathInfo">Additional path information for a resource.</param>
+        <param name="queryString">The request query string.</param>
+        <param name="setClientFilePath">
+          <see langword="true" /> to set the file path used for client resources to the value of the <c>filePath</c> parameter; otherwise, <see langword="false" />.</param>
+        <summary>Rewrites the URL by using the specified path, path information, query string information, and a value that specifies whether the client file path is set to the rewrite path.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="filePath" /> is <see langword="null" />.</exception>
+        <exception cref="T:System.Web.HttpException">
+          <paramref name="filePath" /> is not in the current application's root directory.</exception>
       </Docs>
     </Member>
     <Member MemberName="Server">
@@ -613,8 +641,8 @@
         <ReturnType>System.Web.HttpServerUtilityBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Web.HttpServerUtilityBase" /> object that provides methods that are used when Web requests are being processed.</summary>
+        <value>The server utility object for the current HTTP request.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -631,8 +659,8 @@
         <ReturnType>System.Web.HttpSessionStateBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Web.HttpSessionStateBase" /> object for the current HTTP request.</summary>
+        <value>The session-state object for the current HTTP request.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -649,8 +677,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets a value that specifies whether the <see cref="T:System.Web.Security.UrlAuthorizationModule" /> object should skip the authorization check for the current request.</summary>
+        <value>
+          <see langword="true" /> if <see cref="T:System.Web.Security.UrlAuthorizationModule" /> should skip the authorization check; otherwise, <see langword="false" />. The default is <see langword="false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -667,8 +696,8 @@
         <ReturnType>System.DateTime</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the initial timestamp of the current HTTP request.</summary>
+        <value>The timestamp of the current HTTP request.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -685,8 +714,8 @@
         <ReturnType>System.Web.TraceContext</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Web.TraceContext" /> object for the current HTTP response.</summary>
+        <value>The trace object for the current HTTP response.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -703,8 +732,8 @@
         <ReturnType>System.Security.Principal.IPrincipal</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets security information for the current HTTP request.</summary>
+        <value>An object that contains security information for the current HTTP request.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

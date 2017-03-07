@@ -1,30 +1,17 @@
-private:
-   void LayeredWindows()
+public:
+   void InitMyForm()
    {
-      // Gets the version of the layered windows feature.
-      Version^ myVersion = OSFeature::Feature->GetVersionPresent(
-         OSFeature::LayeredWindows );
+      // Adds a label to the form.
+      Label^ label1 = gcnew Label;
+      label1->Location = System::Drawing::Point( 54, 128 );
+      label1->Name = "label1";
+      label1->Size = System::Drawing::Size( 220, 80 );
+      label1->Text = "Start position information";
+      this->Controls->Add( label1 );
       
-      // Prints whether the feature is available.
-      if ( myVersion != nullptr )
-      {
-         textBox1->Text = "Layered windows feature is installed.\n";
-      }
-      else
-      {
-         textBox1->Text = "Layered windows feature is not installed.\n";
-      }
-
+      // Changes the window state to Maximized.
+      WindowState = FormWindowState::Maximized;
       
-      // This is an alternate way to check whether a feature is present.
-      if ( OSFeature::Feature->IsPresent( OSFeature::LayeredWindows ) )
-      {
-         textBox1->Text = String::Concat( textBox1->Text,
-            "Again, layered windows feature is installed." );
-      }
-      else
-      {
-         textBox1->Text = String::Concat( textBox1->Text,
-            "Again, layered windows feature is not installed." );
-      }
+      // Displays the state information.
+      label1->Text = String::Format( "The form window is {0}", WindowState );
    }

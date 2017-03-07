@@ -1,65 +1,72 @@
 Imports System
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.X509Certificates
-Imports System.IO
+Imports System.Text
+
+Module Example
+
+    ' Hash an input string and return the hash as
+    ' a 32 character hexadecimal string.
+    Function getMd5Hash(ByVal input As String) As String
+        ' Create a new instance of the MD5CryptoServiceProvider object.
+        Dim md5Hasher As New MD5CryptoServiceProvider()
+
+        ' Convert the input string to a byte array and compute the hash.
+        Dim data As Byte() = md5Hasher.ComputeHash(Encoding.Default.GetBytes(input))
+
+        ' Create a new Stringbuilder to collect the bytes
+        ' and create a string.
+        Dim sBuilder As New StringBuilder()
+
+        ' Loop through each byte of the hashed data 
+        ' and format each one as a hexadecimal string.
+        Dim i As Integer
+        For i = 0 To data.Length - 1
+            sBuilder.Append(data(i).ToString("x2"))
+        Next i
+
+        ' Return the hexadecimal string.
+        Return sBuilder.ToString()
+
+    End Function
 
 
+    ' Verify a hash against a string.
+    Function verifyMd5Hash(ByVal input As String, ByVal hash As String) As Boolean
+        ' Hash the input.
+        Dim hashOfInput As String = getMd5Hash(input)
 
-Class X509store2
+        ' Create a StringComparer an compare the hashes.
+        Dim comparer As StringComparer = StringComparer.OrdinalIgnoreCase
 
-    Shared Sub Main(ByVal args() As String)
-        'Create new X509 store called teststore from the local certificate store.
-        Dim store As New X509Store("teststore", StoreLocation.CurrentUser)
-        store.Open(OpenFlags.ReadWrite)
-        Dim certificate As New X509Certificate2()
-
-        'Create certificates from certificate files.
-        'You must put in a valid path to three certificates in the following constructors.
-        Dim certificate1 As New X509Certificate2("c:\mycerts\*****.cer")
-        Dim certificate2 As New X509Certificate2("c:\mycerts\*****.cer")
-        Dim certificate5 As New X509Certificate2("c:\mycerts\*****.cer")
-
-        'Create a collection and add two of the certificates.
-        Dim collection As New X509Certificate2Collection()
-        collection.Add(certificate2)
-        collection.Add(certificate5)
-
-        'Add certificates to the store.
-        store.Add(certificate1)
-        store.AddRange(collection)
-
-        Dim storecollection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-        Console.WriteLine("Store name: {0}", store.Name)
-        Console.WriteLine("Store location: {0}", store.Location)
-        Dim x509 As X509Certificate2
-        For Each x509 In storecollection
-            Console.WriteLine("certificate name: {0}", x509.Subject)
-        Next x509
-
-        'Remove a certificate.
-        store.Remove(certificate1)
-        Dim storecollection2 As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-        Console.WriteLine("{1}Store name: {0}", store.Name, Environment.NewLine)
-        Dim x509a As X509Certificate2
-        For Each x509a In storecollection2
-            Console.WriteLine("certificate name: {0}", x509a.Subject)
-        Next x509a
-
-        'Remove a range of certificates.
-        store.RemoveRange(collection)
-        Dim storecollection3 As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-        Console.WriteLine("{1}Store name: {0}", store.Name, Environment.NewLine)
-        If storecollection3.Count = 0 Then
-            Console.WriteLine("Store contains no certificates.")
+        If 0 = comparer.Compare(hashOfInput, hash) Then
+            Return True
         Else
-            Dim x509b As X509Certificate2
-            For Each x509b In storecollection3
-                Console.WriteLine("certificate name: {0}", x509b.Subject)
-            Next x509b
+            Return False
         End If
 
-        'Close the store.
-        store.Close()
+    End Function
+
+
+
+    Sub Main()
+        Dim source As String = "Hello World!"
+
+        Dim hash As String = getMd5Hash(source)
+
+        Console.WriteLine("The MD5 hash of " + source + " is: " + hash + ".")
+
+        Console.WriteLine("Verifying the hash...")
+
+        If verifyMd5Hash(source, hash) Then
+            Console.WriteLine("The hashes are the same.")
+        Else
+            Console.WriteLine("The hashes are not same.")
+        End If
 
     End Sub
-End Class
+End Module
+' This code example produces the following output:
+'
+' The MD5 hash of Hello World! is: ed076287532e86365e841e92bfc50d8c.
+' Verifying the hash...
+' The hashes are the same.

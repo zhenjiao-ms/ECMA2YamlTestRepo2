@@ -1,63 +1,56 @@
-<%@Page  Language="C#" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<script runat="server">
-
-void Page_Load(Object sender, EventArgs e){
-
-  // You can add a FormParameter to the AccessDataSource control's
-  // SelectParameters collection programmatically.
-  AccessDataSource1.SelectParameters.Clear();
-
-  // Security Note: The AccessDataSource uses a FormParameter,
-  // Security Note: which does not perform validation of input from the client.
-  // Security Note: To validate the value of the FormParameter,
-  // Security Note: handle the Selecting event.
-
-  FormParameter formParam = new FormParameter("lastname","LastNameBox");
-  formParam.Type=TypeCode.String;
-  AccessDataSource1.SelectParameters.Add(formParam);
-}
-
+<%@ outputcache duration="60" varybyparam="none" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script runat="server" language="C#">  
+  
+  void Page_Load(object sender, System.EventArgs e)
+  {
+    // Display the current date and time in the label.
+    // Output caching applies to this section of the page.
+    CachedDateLabel.Text = DateTime.Now.ToString();    
+  }
+  
+  // The Substitution control calls this method to retrieve
+  // the current date and time. This section of the page
+  // is exempt from output caching. 
+  public static string GetCurrentDateTime (HttpContext context)
+  {
+    return DateTime.Now.ToString ();
+  }
+  
 </script>
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head runat="server">
-    <title>ASP.NET Example</title>
+<head runat="server">
+  <title>Substitution Class Example</title>
 </head>
 <body>
-    <form id="form1" runat="server">
+  <form id="form1" runat="server">
+  
+    <h3>Substitution Class Example</h3>  
+    
+    <p>This section of the page is not cached:</p>
+    
+    <asp:substitution id="Substitution1"
+      methodname="GetCurrentDateTime"
+      runat="Server">
+    </asp:substitution>
+    
+    <br />
+    
+    <p>This section of the page is cached:</p>
+    
+    <asp:label id="CachedDateLabel"
+      runat="Server">
+    </asp:label>
+    
+    <br /><br />
+    
+    <asp:button id="RefreshButton"
+      text="Refresh Page"
+      runat="Server">
+    </asp:button>     
 
-      <asp:accessdatasource
-          id="AccessDataSource1"
-          runat="server"
-          datasourcemode="DataSet"
-          datafile="Northwind.mdb"
-          selectcommand="SELECT OrderID,CustomerID,OrderDate,RequiredDate,ShippedDate
-                         FROM Orders WHERE EmployeeID =
-                         (SELECT EmployeeID FROM Employees WHERE LastName = @lastname)">
-      </asp:accessdatasource>
-
-      <br />Enter the name "Davolio" or "King" in the text box and click the button.
-
-      <br />
-      <asp:textbox
-        id="LastNameBox"
-        runat="server" />
-
-      <br />
-      <asp:button
-        id="Button1"
-        runat="server"
-        text="Get Records" />
-
-      <br />
-      <asp:gridview
-          id="GridView1"
-          runat="server"
-          allowsorting="True"
-          datasourceid="AccessDataSource1">
-      </asp:gridview>
-
-    </form>
-  </body>
+  </form>
+</body>
 </html>

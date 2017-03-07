@@ -1,50 +1,91 @@
-<%@ Page Language="VB" %>
-<%@ register tagprefix="aspSample" 
-  Namespace="Samples.AspNet.VB.Controls" %>
-<%@ Register TagPrefix="uc1" TagName="DisplayModeMenuVB" Src="~/DisplayModeMenuVB.ascx" %>
+<%@ Page Language="VB" AutoEventWireup="True" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head id="Head1" runat="server">
-  <title>Web Parts Page</title>
-</head>
-<body>
-  <h1>Web Parts Demonstration Page</h1>
-  <form runat="server" id="form1">
-<asp:webpartmanager id="WebPartManager1" runat="server" />
-<uc1:DisplayModeMenuVB runat="server" ID="DisplayModeMenu" />
-  <br />
-  <table cellspacing="0" cellpadding="0" border="0">
-    <tr>
-      <td valign="top">
-    <asp:webpartzone id="SideBarZone" runat="server" 
-        headertext="Sidebar">
-        <zonetemplate>
-        </zonetemplate>
-      </asp:webpartzone>
-      <aspSample:MyEditorZone ID="EditorZone1" runat="server">
-      <ZoneTemplate>
-        <asp:AppearanceEditorPart ID="AppearanceEditorPart1" 
-          runat="server" />
-        <asp:LayoutEditorPart ID="LayoutEditorPart1" 
-          runat="server" />
-      </ZoneTemplate>
-    </aspSample:MyEditorZone>
-      </td>
-      <td valign="top">
-    <asp:webpartzone id="MainZone" runat="server" headertext="Main">
-         <zonetemplate>
-        <asp:label id="contentPart" runat="server" title="Content">
-              <h2>Welcome to My Home Page</h2>
-              <p>Use links to visit my favorite sites!</p>
-            </asp:label>
-         </zonetemplate>
-       </asp:webpartzone>
-      </td>
-      <td valign="top">
-      </td>
-    </tr>
-  </table>
-  </form>
-</body>
-</html>
+ <head>
+    <title>Repeater Example</title>
+<script language="VB" runat="server">
+
+    Sub Page_Load(Sender As Object, e As EventArgs)
+        
+        If Not IsPostBack Then
+            Dim values As New ArrayList()
+            
+            values.Add(New PositionData("Microsoft", "Msft"))
+            values.Add(New PositionData("Intel", "Intc"))
+            values.Add(New PositionData("Dell", "Dell"))
+            
+            Repeater1.DataSource = values
+            Repeater1.DataBind()
+        End If
+    End Sub
+
+    Sub R1_ItemCommand(Sender As Object, e As RepeaterCommandEventArgs)
+        Label2.Text = "The " & CType(e.CommandSource, Button).Text & _
+            " button has just been clicked; <br />"
+    End Sub
+ 
+    Public Class PositionData
+        
+        Private myName As String
+        Private myTicker As String        
+        
+        Public Sub New(newName As String, newTicker As String)
+            Me.myName = newName
+            Me.myTicker = newTicker
+        End Sub        
+        
+        Public ReadOnly Property Name() As String
+            Get
+                Return myName
+            End Get
+        End Property        
+        
+        Public ReadOnly Property Ticker() As String
+            Get
+                Return myTicker
+            End Get
+        End Property
+    End Class
+ 
+    </script>
+ 
+ </head>
+ <body>
+ 
+    <h3>Repeater Example</h3>
+ 
+    <form id="form1" runat="server">
+ 
+       <b>Repeater1:</b>
+         
+       <br />
+         
+       <asp:Repeater id="Repeater1" OnItemCommand="R1_ItemCommand" runat="server">
+          <HeaderTemplate>
+             <table border="1">
+                <tr>
+                   <td><b>Company</b></td>
+                   <td><b>Symbol</b></td>
+                </tr>
+          </HeaderTemplate>
+             
+          <ItemTemplate>
+             <tr>
+                <td> <%# DataBinder.Eval(Container.DataItem, "Name") %> </td>
+                <td> <ASP:Button Text=<%# DataBinder.Eval(Container.DataItem, "Ticker") %> runat="server" /></td>
+             </tr>
+          </ItemTemplate>
+             
+          <FooterTemplate>
+             </table>
+          </FooterTemplate>
+             
+       </asp:Repeater>
+       <br />
+         
+       <asp:Label id="Label2" font-names="Verdana" ForeColor="Green" font-size="10pt" runat="server"/>
+    </form>
+ </body>
+ </html>
+    

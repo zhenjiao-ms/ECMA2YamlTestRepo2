@@ -1,232 +1,120 @@
 <%@ Page Language="VB" %>
+<%@ Import Namespace="System.Data" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-    <title>MultiView ActiveViewIndex Example</title>
+
 <script runat="server">
+    Function CreateDataSource() As ICollection
+        ' Create sample data for the DataGrid control.
+        Dim dt As DataTable = New DataTable()
+        Dim dr As DataRow
+ 
+        ' Define the columns of the table.
+        dt.Columns.Add(New DataColumn("IntegerValue", GetType(Int32)))
+        dt.Columns.Add(New DataColumn("StringValue", GetType(String)))
+        dt.Columns.Add(New DataColumn("CurrencyValue", GetType(Double)))
+ 
+        ' Populate the table with sample values.
+        Dim i As Integer
+        For i = 0 To 100
+            dr = dt.NewRow()
+            dr(0) = i
+            dr(1) = "Item " & i.ToString()
+            dr(2) = 1.23 * (i + 1)
+            dt.Rows.Add(dr)
+        Next i
+ 
+        Dim dv As DataView = New DataView(dt)
+        Return dv
+    End Function
+ 
+    Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
+        ' Load sample data only once, when the page is first loaded.
+        If Not IsPostBack Then
+            ItemsGrid.DataSource = CreateDataSource()
+            ItemsGrid.DataBind()
+        End If
+    End Sub
 
-        Sub NextButton_Command(sender As Object, e As System.EventArgs)
-            ' Determine which button was clicked
-            ' and set the ActiveViewIndex property to
-            ' the view selected by the user.
-            If (DevPollMultiView.ActiveViewIndex > -1) AND DevPollMultiView.ActiveViewIndex < 3 Then
-                ' Increment the ActiveViewIndex property 
-                ' by one to advance to the next view.
-                DevPollMultiView.ActiveViewIndex += 1
-            ElseIf DevPollMultiView.ActiveViewIndex = 3 Then
-                ' This is the final view.
-                ' The user wants to save the survey results.
-                ' Insert code here to save survey results.
-                ' Disable the navigation buttons.
-                Page4Save.Enabled = False
-                Page4Restart.Enabled = False
-            Else
-                Throw New Exception("An error occurred.")
+    Sub Check_Change(ByVal sender As Object, ByVal e As EventArgs)
+        ' Allow or prevent paging depending on the user's selection.
+        ItemsGrid.AllowPaging = AllowPagingCheckBox.Checked()
 
-            End If
+        ' Rebind the data to refresh the DataGrid control. 
+        ItemsGrid.DataSource = CreateDataSource()
+        ItemsGrid.DataBind()
+    End Sub
 
-        End Sub
+    Sub Grid_Change(ByVal sender As Object, ByVal e As DataGridPageChangedEventArgs)
+        ' For the DataGrid control to navigate to the correct page when
+        ' paging is allowed, the CurrentPageIndex property must be updated
+        ' programmatically. This process is usually accomplished in the
+        ' event-handling method for the PageIndexChanged event.
 
-        Sub BackButton_Command(ByVal sender As Object, ByVal e As System.EventArgs)
-            If (DevPollMultiView.ActiveViewIndex > 0) And DevPollMultiView.ActiveViewIndex <= 2 Then
-                ' Decrement the ActiveViewIndex property
-                ' by one to return to the previous view.
-                DevPollMultiView.ActiveViewIndex -= 1
-            ElseIf DevPollMultiView.ActiveViewIndex = 3 Then
-                ' This is the final view.
-                ' The user wants to restart the survey.
-                ' Return to the first view.
-                DevPollMultiView.ActiveViewIndex = 0
-            Else
-                Throw New Exception("An error occurred.")
+        ' Set CurrentPageIndex to the page the user clicked.
+        ItemsGrid.CurrentPageIndex = e.NewPageIndex
 
-            End If
-
-        End Sub
-
+        ' Rebind the data to refresh the DataGrid control. 
+        ItemsGrid.DataSource = CreateDataSource()
+        ItemsGrid.DataBind()
+    End Sub
 </script>
 
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head2" runat="server">
+    <title></title>
 </head>
 <body>
-    <form id="Form1" runat="Server">
-        
-        <h3>MultiView ActiveViewIndex Example</h3>
-        
-        <asp:Panel id="Page1ViewPanel" 
-            Width="330px" 
-            Height="150px"
-            HorizontalAlign ="Left"
-            Font-size="12" 
-            BackColor="#C0C0FF" 
-            BorderColor="#404040"
-            BorderStyle="Double"                     
-            runat="Server">  
+    <form id="form1" runat="server">
+    <div>
 
-            <asp:MultiView id="DevPollMultiView"
-                ActiveViewIndex="0"
-                runat="Server">
+    <h3>DataGrid AllowPaging Example</h3>
 
-                <asp:View id="Page1" 
-                    runat="Server">   
+    <p>Select whether to allow paging in the DataGrid control.<br />
+       <asp:CheckBox id="AllowPagingCheckBox"
+            Text="Allow paging"
+            AutoPostBack="True"
+            Checked="True"
+            OnCheckedChanged="Check_Change"
+            runat="server" />
+    </p>
+    <hr />
+    <asp:Label ID="Label1" runat="server" 
+        AssociatedControlID="ItemsGrid" 
+        Font-Bold="true">Product List</asp:Label>
+    <asp:DataGrid id="ItemsGrid" runat="server"
+        BorderColor="Gray"
+        BorderWidth="1"
+        CellPadding="3"
+        UseAccessibleHeader="true"
+        AutoGenerateColumns="False"
+        PageSize="10"
+        AllowPaging="True"
+        OnPageIndexChanged="Grid_Change">
 
-                    <asp:Label id="Page1Label" 
-                        Font-bold="true"                         
-                        Text="What kind of applications do you develop?"
-                        runat="Server"
-                        AssociatedControlID="Page1">
-                    </asp:Label><br /><br />
+        <HeaderStyle BackColor="LightBlue" />
+        <Columns>
+            <asp:BoundColumn DataField="IntegerValue" 
+                 SortExpression="IntegerValue"
+                 ItemStyle-HorizontalAlign="center"
+                 HeaderText="Item" />
 
-                    <asp:RadioButton id="Page1Radio1"
-                         Text="Web Applications" 
-                         Checked="False" 
-                         GroupName="RadioGroup1" 
-                         runat="server" >
-                    </asp:RadioButton><br />
+            <asp:BoundColumn DataField="StringValue" 
+                HeaderText="Description" 
+                ItemStyle-HorizontalAlign="left"
+                SortExpression="StringValue" />
 
-                    <asp:RadioButton id="Page1Radio2"
-                         Text="Windows Forms Applications" 
-                         Checked="False" 
-                         GroupName="RadioGroup1" 
-                         runat="server" >
-                     </asp:RadioButton><br /><br /><br />                                       
-                     
-                    <asp:Button id="Page1Next"
-                        Text = "Next"
-                        OnClick="NextButton_Command"
-                        Height="25"
-                        Width="70"
-                        runat= "Server">
-                    </asp:Button>     
-                          
-                </asp:View>
+            <asp:BoundColumn DataField="CurrencyValue" 
+                 HeaderText="Price"
+                 SortExpression="CurrencyValue"
+                 DataFormatString="{0:c}" />
 
-                <asp:View id="Page2" 
-                    runat="Server">
+        </Columns>
+        <ItemStyle HorizontalAlign="Right" />
+    </asp:DataGrid>
 
-                    <asp:Label id="Page2Label" 
-                        Font-bold="true"                        
-                        Text="How long have you been a developer?"
-                        runat="Server"
-                        AssociatedControlID="Page2">                    
-                    </asp:Label><br /><br />
-
-                    <asp:RadioButton id="Page2Radio1"
-                         Text="Less than five years" 
-                         Checked="False" 
-                         GroupName="RadioGroup1" 
-                         runat="Server">
-                     </asp:RadioButton><br />
-
-                    <asp:RadioButton id="Page2Radio2"
-                         Text="More than five years" 
-                         Checked="False" 
-                         GroupName="RadioGroup1" 
-                         runat="Server">
-                     </asp:RadioButton><br /><br /><br />
-
-                    <asp:Button id="Page2Back"
-                        Text = "Previous"
-                        OnClick="BackButton_Command"
-                        Height="25"
-                        Width="70"
-                        runat= "Server">
-                    </asp:Button> 
-
-                    <asp:Button id="Page2Next"
-                        Text = "Next"
-                        OnClick="NextButton_Command"
-                        Height="25"
-                        Width="70"
-                        runat="Server">
-                    </asp:Button> 
-                
-                </asp:View>
-
-                <asp:View id="Page3" 
-                    runat="Server">
-
-                    <asp:Label id="Page3Label1" 
-                        Font-bold="true"                        
-                        Text= "What is your primary programming language?"                        
-                        runat="Server"
-                        AssociatedControlID="Page3">                    
-                    </asp:Label><br /><br />
-
-                    <asp:RadioButton id="Page3Radio1"
-                         Text="Visual Basic .NET" 
-                         Checked="False" 
-                         GroupName="RadioGroup1" 
-                         runat="Server">
-                     </asp:RadioButton><br />
-
-                    <asp:RadioButton id="Page3Radio2"
-                         Text="C#" 
-                         Checked="False" 
-                         GroupName="RadioGroup1" 
-                         runat="Server">
-                     </asp:RadioButton><br />
-
-                    <asp:RadioButton id="Page3Radio3"
-                         Text="C++" 
-                         Checked="False" 
-                         GroupName="RadioGroup1" 
-                         runat="Server">
-                     </asp:RadioButton><br /><br />
-
-                     <asp:Button id="Page3Back"
-                        Text = "Previous"
-                        OnClick="BackButton_Command"
-                        Height="25"
-                        Width="70"
-                        runat="Server">
-                    </asp:Button> 
-
-                    <asp:Button id="Page3Next"
-                        Text = "Next"
-                        OnClick="NextButton_Command"
-                        Height="25"
-                        Width="70"
-                        runat="Server">
-                    </asp:Button><br />
-                    
-                </asp:View>     
-            
-                <asp:View id="Page4"
-                    runat="Server">
-                    
-                    <asp:Label id="Label1"
-                        Font-bold="true"                                           
-                        Text = "Thank you for taking the survey."
-                        runat="Server"
-                        AssociatedControlID="Page4">
-                    </asp:Label>
-                    
-                    <br /><br /><br /><br /><br /><br />              
-                   
-                    <asp:Button id="Page4Save"
-                        Text = "Save Responses"
-                        OnClick="NextButton_Command"
-                        Height="25"
-                        Width="110"
-                        runat="Server">
-                    </asp:Button>
-                
-                    <asp:Button id="Page4Restart"
-                        Text = "Retake Survey"
-                        OnClick="BackButton_Command"
-                        Height="25"
-                        Width="110"
-                        runat= "Server">
-                    </asp:Button>                    
-                    
-                </asp:View>  
-       
-            </asp:MultiView>
-        
-        </asp:Panel> 
-
+    </div>
     </form>
 </body>
 </html>

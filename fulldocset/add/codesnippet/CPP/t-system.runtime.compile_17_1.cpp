@@ -1,5 +1,4 @@
 
-
 #using <mscorlib.dll>
 
 using namespace System;
@@ -78,11 +77,11 @@ public:
 
 };
 
-void main()
+void _tmain()
 {
 
     // Create a CodeEmitter to handle assembly creation.
-    CodeEmitter ^ e = gcnew CodeEmitter("program.exe");
+    CodeEmitter ^ e = gcnew CodeEmitter("programMyAss.exe");
 
     // Create a new type.
     TypeBuilder^ mainClass = e->CreateType("MainClass");
@@ -111,9 +110,9 @@ void main()
     /////////////////////////////////////////////////
     /////////////////////////////////////////////////
 
-    array<Type^>^fType = {IsSignUnspecifiedByte::typeid};
+    array<Type^>^fType = {IsUdtReturn::typeid};
 
-    mainClass->DefineField("modifiedInteger", Type::GetType("System.Byte"), fType, nullptr, FieldAttributes::Private);
+    mainClass->DefineField("modifiedInteger", Type::GetType("System.Type"), fType, nullptr, FieldAttributes::Private);
 
     // Create the type.
     mainClass->CreateType();

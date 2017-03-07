@@ -1,14 +1,26 @@
-      private void AppendTextBox1Text()
-      {
-         // Determine if text is selected in textBox1.
-         if(textBox1.SelectionLength == 0)
-            // No selection made, return.
-            return;
-         
-         // Determine if the text being appended to textBox2 exceeds the MaxLength property.
-         if((textBox1.SelectedText.Length + textBox2.TextLength) > textBox2.MaxLength)
-            MessageBox.Show("The text to paste in is larger than the maximum number of characters allowed");
-         else
-            // Append the text from textBox1 into textBox2.
-            textBox2.AppendText(textBox1.SelectedText);
-      }
+    private void toggleSpanBtn_Click(
+		System.Object sender, 
+		System.EventArgs e)
+    {
+        Control c = this.TableLayoutPanel1.GetControlFromPosition(0, 0);
+
+        if ( c != null )
+        {
+            int xSpan = this.TableLayoutPanel1.GetColumnSpan(c);
+            int ySpan = this.TableLayoutPanel1.GetRowSpan(c);
+
+            if (xSpan>1)
+            {
+                xSpan = 1;
+                ySpan = 1;
+            }
+            else
+            {
+                xSpan = 2;
+                ySpan = 2;
+            }
+
+            this.TableLayoutPanel1.SetColumnSpan(c, xSpan);
+            this.TableLayoutPanel1.SetRowSpan(c, ySpan);
+        }
+    }

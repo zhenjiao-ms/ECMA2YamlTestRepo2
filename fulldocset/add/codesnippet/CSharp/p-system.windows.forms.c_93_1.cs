@@ -1,78 +1,53 @@
-private Image picture;
-private Point pictureLocation;
+        // This example demonstrates the use of the ControlAdded and
+        // ControlRemoved events. This example assumes that two Button controls
+        // are added to the form and connected to the addControl_Click and
+        // removeControl_Click event-handler methods.
+        private void Form1_Load(object sender, System.EventArgs e)
+        {
+            // Connect the ControlRemoved and ControlAdded event handlers
+            // to the event-handler methods.
+            // ControlRemoved and ControlAdded are not available at design time.
+            this.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.Control_Removed);
+            this.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.Control_Added);
+        }
 
-public Form1()
-{
-   // Enable drag-and-drop operations and 
-   // add handlers for DragEnter and DragDrop.
-   this.AllowDrop = true;
-   this.DragDrop += new DragEventHandler(this.Form1_DragDrop);
-   this.DragEnter += new DragEventHandler(this.Form1_DragEnter);
-}
+        private void Control_Added(object sender, System.Windows.Forms.ControlEventArgs e)
+        {
+            MessageBox.Show("The control named " + e.Control.Name + " has been added to the form.");
+        }
 
-protected override void OnPaint(PaintEventArgs e)
-{
-   // If there is an image and it has a location, 
-   // paint it when the Form is repainted.
-   base.OnPaint(e);
-   if(this.picture != null && this.pictureLocation != Point.Empty)
-   {
-      e.Graphics.DrawImage(this.picture, this.pictureLocation);
-   }
-}
+        private void Control_Removed(object sender, System.Windows.Forms.ControlEventArgs e)
+        {
+            MessageBox.Show("The control named " + e.Control.Name + " has been removed from the form.");
+        }
 
-private void Form1_DragDrop(object sender, DragEventArgs e)
-{
-   // Handle FileDrop data.
-   if(e.Data.GetDataPresent(DataFormats.FileDrop) )
-   {
-      // Assign the file names to a string array, in 
-      // case the user has selected multiple files.
-      string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-      try
-      {
-         // Assign the first image to the picture variable.
-         this.picture = Image.FromFile(files[0]);
-         // Set the picture location equal to the drop point.
-         this.pictureLocation = this.PointToClient(new Point(e.X, e.Y) );
-      }
-      catch(Exception ex)
-      {
-         MessageBox.Show(ex.Message);
-         return;
-      }
-   }
+        // Click event handler for a Button control. Adds a TextBox to the form.
+        private void addControl_Click(object sender, System.EventArgs e)
+        {
+            // Create a new TextBox control and add it to the form.
+            TextBox textBox1 = new TextBox();
+            textBox1.Size = new Size(100,10);
+            textBox1.Location = new Point(10,10);
+            // Name the control in order to remove it later. The name must be specified
+            // if a control is added at run time.
+            textBox1.Name = "textBox1";
 
-   // Handle Bitmap data.
-   if(e.Data.GetDataPresent(DataFormats.Bitmap) )
-   {
-      try
-      {
-         // Create an Image and assign it to the picture variable.
-         this.picture = (Image)e.Data.GetData(DataFormats.Bitmap);
-         // Set the picture location equal to the drop point.
-         this.pictureLocation = this.PointToClient(new Point(e.X, e.Y) );
-      }
-      catch(Exception ex)
-      {
-         MessageBox.Show(ex.Message);
-         return;
-      }
-   }
-   // Force the form to be redrawn with the image.
-   this.Invalidate();
-}
+            // Add the control to the form's control collection.
+            this.Controls.Add(textBox1);
+        }
 
-private void Form1_DragEnter(object sender, DragEventArgs e)
-{
-   // If the data is a file or a bitmap, display the copy cursor.
-   if (e.Data.GetDataPresent(DataFormats.Bitmap) || 
-      e.Data.GetDataPresent(DataFormats.FileDrop) ) 
-   {
-      e.Effect = DragDropEffects.Copy;
-   }
-   else
-   {
-      e.Effect = DragDropEffects.None;
-   }
-}
+        // Click event handler for a Button control.
+        // Removes the previously added TextBox from the form.
+        private void removeControl_Click(object sender, System.EventArgs e)
+        {
+            // Loop through all controls in the form's control collection.
+            foreach (Control tempCtrl in this.Controls)
+            {
+                // Determine whether the control is textBox1,
+                // and if it is, remove it.
+                if (tempCtrl.Name == "textBox1")
+                {
+                    this.Controls.Remove(tempCtrl);
+                }
+            }
+        }

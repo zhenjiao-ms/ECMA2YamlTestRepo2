@@ -1,67 +1,48 @@
 <%@ Page Language="C#" %>
-<%@ Register TagPrefix="uc1" 
-    TagName="DisplayModeMenuCS"
-    Src="~/displaymodemenucs.ascx" %>
-<%@ Register TagPrefix="aspSample" 
-    Namespace="Samples.AspNet.CS.Controls" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<script runat="server">
-
-  protected void Button1_Click(object sender, EventArgs e)
-  {
-    ProviderConnectionPoint provPoint = 
-      mgr.GetProviderConnectionPoints(zip1)["ZipCodeProvider"];
-    ConsumerConnectionPoint connPoint = 
-      mgr.GetConsumerConnectionPoints(weather1)["ZipCodeConsumer"];
-    WebPartConnection conn1 = mgr.ConnectWebParts(zip1, provPoint,
-      weather1, connPoint);
-  }
-
-  protected void mgr_DisplayModeChanged(object sender, 
-    WebPartDisplayModeEventArgs e)
-  {
-    if (mgr.DisplayMode == WebPartManager.ConnectDisplayMode)
-      Button1.Visible = true;
-    else
-      Button1.Visible = false;
-  }
-</script>
-
+<%@ register TagPrefix="uc1" 
+  TagName="DisplayModeMenuCS" 
+  Src="DisplayModeMenuCS.ascx" %>
+<%@ Register TagPrefix="aspSample"
+  Namespace="Samples.AspNet.CS.Controls" %> 
+  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>Untitled Page</title>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-      <asp:WebPartManager ID="mgr" runat="server" 
-    OnDisplayModeChanged="mgr_DisplayModeChanged">
-        <StaticConnections>
-          <asp:WebPartConnection ID="conn1"
-            ConsumerConnectionPointID="ZipCodeConsumer"
-            ConsumerID="weather1"
-            ProviderConnectionPointID="ZipCodeProvider"
-            ProviderID="zip1" />
-        </StaticConnections>
-      </asp:WebPartManager>
-      <uc1:DisplayModeMenuCS ID="menu1" runat="server" />
-      <asp:WebPartZone ID="WebPartZone1" runat="server">
-        <ZoneTemplate>
-          <aspSample:ZipCodeWebPart ID="zip1" runat="server"
-            Title="Zip Code Provider" />
-          <aspSample:WeatherWebPart ID="weather1" runat="server" 
-            Title="Zip Code Consumer" />
-        </ZoneTemplate>
-      </asp:WebPartZone>
-      <asp:ConnectionsZone ID="ConnectionsZone1" runat="server">
-      </asp:ConnectionsZone>
-      <asp:Button ID="Button1" runat="server" 
-        Text="Connect WebPart Controls" 
-        OnClick="Button1_Click" 
-    Visible="false" />
-    </div>
-    </form>
+  <form id="form1" runat="server">
+    <asp:WebPartManager ID="WebPartManager1" runat="server" />
+    <uc1:DisplayModeMenuCS ID="DisplayModeMenu1" runat="server" />
+    <asp:WebPartZone ID="WebPartZone1" runat="server">
+      <ZoneTemplate>
+        <asp:BulletedList 
+          ID="BulletedList1" 
+          Runat="server"
+          DisplayMode="HyperLink" 
+          Title="Favorite Links" >
+          <asp:ListItem Value="http://msdn.microsoft.com">
+            MSDN
+          </asp:ListItem>
+          <asp:ListItem Value="http://www.asp.net">
+            ASP.NET
+          </asp:ListItem>
+          <asp:ListItem Value="http://www.msn.com">
+            MSN
+          </asp:ListItem>
+        </asp:BulletedList>
+        <aspsample:textdisplaywebpart id="wp1" runat="server" 
+           Title="My Text Display WebPart" />
+      </ZoneTemplate>
+    </asp:WebPartZone>
+    <aspSample:MyCatalogZone ID="CatalogZone1" runat="server">
+      <ZoneTemplate>
+        <asp:ImportCatalogPart id="ImportCatalogPart1" 
+          runat="server" />
+      </ZoneTemplate>
+    </aspSample:MyCatalogZone>
+  </form>
 </body>
 </html>

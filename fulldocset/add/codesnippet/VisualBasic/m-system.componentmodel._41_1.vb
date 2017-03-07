@@ -1,15 +1,16 @@
- Private Sub MatchesAttributes()
-     ' Creates a new collection and assigns it the attributes for button1.
-     Dim myCollection As AttributeCollection
-     myCollection = TypeDescriptor.GetAttributes(button1)
-        
-     ' Checks to see whether the attributes in myCollection match the attributes.
-     ' for textBox1.
-     Dim myAttrArray(100) As Attribute
-     TypeDescriptor.GetAttributes(textBox1).CopyTo(myAttrArray, 0)
-     If myCollection.Matches(myAttrArray) Then
-         textBox1.Text = "The attributes in the button and text box match."
-     Else
-         textBox1.Text = "The attributes in the button and text box do not match."
-     End If
- End Sub
+    ' Add the new part unless the part number contains
+    ' spaces. In that case cancel the add.
+    Private Sub button1_Click(ByVal sender As Object, _
+        ByVal e As EventArgs) Handles button1.Click
+
+        Dim newPart As Part = listOfParts.AddNew()
+
+        If newPart.PartName.Contains(" ") Then
+            MessageBox.Show("Part names cannot contain spaces.")
+            listOfParts.CancelNew(listOfParts.IndexOf(newPart))
+        Else
+            textBox2.Text = randomNumber.Next(9999).ToString()
+            textBox1.Text = "Enter part name"
+        End If
+
+    End Sub

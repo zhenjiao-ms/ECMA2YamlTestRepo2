@@ -1,75 +1,255 @@
-using System;
-using System.IO;
-using System.Security.Cryptography;
-using System.Windows.Forms;
+//
+// This example signs an XML file using an
+// envelope signature. It then verifies the 
+// signed XML.
+//
+// You must have a certificate with a subject name
+// of "CN=XMLDSIG_Test" in the "My" certificate store. 
+//
+// Run the following command to create a certificate
+// and place it in the store.
+// makecert -r -pe -n "CN=XMLDSIG_Test" -b 01/01/2005 -e 01/01/2010 -sky signing -ss my
 
-public class HashDirectory
+using System;
+using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Xml;
+
+public class SignVerifyEnvelope
 {
 
-    [STAThreadAttribute]
     public static void Main(String[] args)
     {
-        string directory = "";
-        if (args.Length < 1)
-        {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            DialogResult dr = fbd.ShowDialog();
-            if (dr == DialogResult.OK)
-                directory = fbd.SelectedPath;
-            else
-            {
-                Console.WriteLine("No directory selected.");
-                return;
-            }
-        }
-        else
-            directory = args[0];
+
+        string Certificate = "CN=XMLDSIG_Test";
+
         try
         {
-            // Create a DirectoryInfo object representing the specified directory.
-            DirectoryInfo dir = new DirectoryInfo(directory);
-            // Get the FileInfo objects for every file in the directory.
-            FileInfo[] files = dir.GetFiles();
-            // Initialize a SHA256 hash object.
-            SHA256 mySHA256 = SHA256Managed.Create();
-           
-            byte[] hashValue;
-            // Compute and print the hash values for each file in directory.
-            foreach (FileInfo fInfo in files)
+
+            // Create an XML file to sign.
+            CreateSomeXml("Example.xml");
+            Console.WriteLine("New XML file created.");
+
+            // Sign the XML that was just created and save it in a 
+            // new file.
+            SignXmlFile("Example.xml", "SignedExample.xml", Certificate);
+            Console.WriteLine("XML file signed.");
+
+            if (VerifyXmlFile("SignedExample.xml", Certificate))
             {
-                // Create a fileStream for the file.
-                FileStream fileStream = fInfo.Open(FileMode.Open);
-                // Be sure it's positioned to the beginning of the stream.
-                fileStream.Position = 0;
-                // Compute the hash of the fileStream.
-                hashValue = mySHA256.ComputeHash(fileStream);
-                // Write the name of the file to the Console.
-                Console.Write(fInfo.Name + ": ");
-                // Write the hash value to the Console.
-                PrintByteArray(hashValue);
-                // Close the file.
-                fileStream.Close();
+                Console.WriteLine("The XML signature is valid.");
             }
-            return;
+            else
+            {
+                Console.WriteLine("The XML signature is not valid.");
+            }
         }
-        catch (DirectoryNotFoundException)
+        catch (CryptographicException e)
         {
-            Console.WriteLine("Error: The directory specified could not be found.");
-        }
-        catch (IOException)
-        {
-            Console.WriteLine("Error: A file in the directory could not be accessed.");
+            Console.WriteLine(e.Message);
         }
     }
-    // Print the byte array in a readable format.
-    public static void PrintByteArray(byte[] array)
+
+    // Sign an XML file and save the signature in a new file.
+    public static void SignXmlFile(string FileName, string SignedFileName, string SubjectName)
     {
-        int i;
-        for (i = 0; i < array.Length; i++)
+        if (null == FileName)
+            throw new ArgumentNullException("FileName");
+        if (null == SignedFileName)
+            throw new ArgumentNullException("SignedFileName");
+        if (null == SubjectName)
+            throw new ArgumentNullException("SubjectName");
+
+        // Load the certificate from the certificate store.
+        X509Certificate2 cert = GetCertificateBySubject(SubjectName);
+
+        // Create a new XML document.
+        XmlDocument doc = new XmlDocument();
+
+        // Format the document to ignore white spaces.
+        doc.PreserveWhitespace = false;
+
+        // Load the passed XML file using it's name.
+        doc.Load(new XmlTextReader(FileName));
+
+        // Create a SignedXml object.
+        SignedXml signedXml = new SignedXml(doc);
+
+        // Add the key to the SignedXml document. 
+        signedXml.SigningKey = cert.PrivateKey;
+
+        // Create a reference to be signed.
+        Reference reference = new Reference();
+        reference.Uri = "";
+
+        // Add an enveloped transformation to the reference.
+        XmlDsigEnvelopedSignatureTransform env = new XmlDsigEnvelopedSignatureTransform();
+        reference.AddTransform(env);
+
+        // Add the reference to the SignedXml object.
+        signedXml.AddReference(reference);
+
+        // Create a new KeyInfo object.
+        KeyInfo keyInfo = new KeyInfo();
+
+        // Load the certificate into a KeyInfoX509Data object
+        // and add it to the KeyInfo object.
+        // Create an X509IssuerSerial object and add it to the
+        // KeyInfoX509Data object.
+        
+        KeyInfoX509Data kdata = new KeyInfoX509Data(cert);
+
+        X509IssuerSerial xserial;
+
+        xserial.IssuerName = cert.IssuerName.ToString();
+        xserial.SerialNumber = cert.SerialNumber;
+
+        kdata.AddIssuerSerial(xserial.IssuerName, xserial.SerialNumber);
+
+        keyInfo.AddClause(kdata);
+
+        // Add the KeyInfo object to the SignedXml object.
+        signedXml.KeyInfo = keyInfo;
+
+        // Compute the signature.
+        signedXml.ComputeSignature();
+
+        // Get the XML representation of the signature and save
+        // it to an XmlElement object.
+        XmlElement xmlDigitalSignature = signedXml.GetXml();
+
+        // Append the element to the XML document.
+        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, true));
+
+
+        if (doc.FirstChild is XmlDeclaration)
         {
-            Console.Write(String.Format("{0:X2}", array[i]));
-            if ((i % 4) == 3) Console.Write(" ");
+            doc.RemoveChild(doc.FirstChild);
         }
-        Console.WriteLine();
+
+        // Save the signed XML document to a file specified
+        // using the passed string.
+        using (XmlTextWriter xmltw = new XmlTextWriter(SignedFileName, new UTF8Encoding(false)))
+        {
+            doc.WriteTo(xmltw);
+            xmltw.Close();
+        }
+
+    }
+
+    // Verify the signature of an XML file against an asymetric 
+    // algorithm and return the result.
+    public static Boolean VerifyXmlFile(String FileName, String CertificateSubject)
+    {
+        // Check the args.
+        if (null == FileName)
+            throw new ArgumentNullException("FileName");
+        if (null == CertificateSubject)
+            throw new ArgumentNullException("CertificateSubject");
+
+        // Load the certificate from the store.
+        X509Certificate2 cert = GetCertificateBySubject(CertificateSubject);
+
+        // Create a new XML document.
+        XmlDocument xmlDocument = new XmlDocument();
+
+        // Load the passed XML file into the document. 
+        xmlDocument.Load(FileName);
+
+        // Create a new SignedXml object and pass it
+        // the XML document class.
+        SignedXml signedXml = new SignedXml(xmlDocument);
+
+        // Find the "Signature" node and create a new
+        // XmlNodeList object.
+        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
+
+        // Load the signature node.
+        signedXml.LoadXml((XmlElement)nodeList[0]);
+
+        // Check the signature and return the result.
+        return signedXml.CheckSignature(cert, true);
+
+    }
+
+
+    public static X509Certificate2 GetCertificateBySubject(string CertificateSubject)
+    {
+        // Check the args.
+        if (null == CertificateSubject)
+            throw new ArgumentNullException("CertificateSubject");
+
+
+        // Load the certificate from the certificate store.
+        X509Certificate2 cert = null;
+
+        X509Store store = new X509Store("My", StoreLocation.CurrentUser);
+
+        try
+        {
+            // Open the store.
+            store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+
+            // Get the certs from the store.
+            X509Certificate2Collection CertCol = store.Certificates;
+
+            // Find the certificate with the specified subject.
+            foreach (X509Certificate2 c in CertCol)
+            {
+                if (c.Subject == CertificateSubject)
+                {
+                    cert = c;
+                    break;
+                }
+            }
+
+            // Throw an exception of the certificate was not found.
+            if (cert == null)
+            {
+                throw new CryptographicException("The certificate could not be found.");
+            }
+        }
+        finally
+        {
+            // Close the store even if an exception was thrown.
+            store.Close();
+        }
+        
+        return cert;
+    }
+
+    // Create example data to sign.
+    public static void CreateSomeXml(string FileName)
+    {
+        // Check the args.
+        if (null == FileName)
+            throw new ArgumentNullException("FileName");
+
+        // Create a new XmlDocument object.
+        XmlDocument document = new XmlDocument();
+
+        // Create a new XmlNode object.
+        XmlNode node = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples");
+
+        // Add some text to the node.
+        node.InnerText = "Example text to be signed.";
+
+        // Append the node to the document.
+        document.AppendChild(node);
+
+        // Save the XML document to the file name specified.
+        using (XmlTextWriter xmltw = new XmlTextWriter(FileName, new UTF8Encoding(false)))
+        {
+            document.WriteTo(xmltw);
+
+            xmltw.Close();
+        }
     }
 }
+// This code example displays the following to the console:
+//
+// New XML file created.
+// XML file signed.
+// The XML signature is valid.

@@ -1,121 +1,107 @@
-   public class Form1 : System.Windows.Forms.Form
-   {
-      private System.Windows.Forms.ListBox listBox1;
-      private System.ComponentModel.Container components = null;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
+public class Form1 : System.Windows.Forms.Form
+{
+    private System.Windows.Forms.MonthCalendar monthCalendar1;
+    private System.Windows.Forms.TextBox textBox1;
 
-      protected override void Dispose(bool disposing)
-      {
-         if( disposing )
-         {
-            if ( components != null ) 
-               components.Dispose();
+    [STAThread]
+    static void Main() 
+    {
+        Application.Run(new Form1());
+    }
 
-            if ( foreColorBrush != null )
-               foreColorBrush.Dispose();
-         }
-         base.Dispose(disposing);
-      }
+    public Form1()
+    {
+        this.textBox1 = new System.Windows.Forms.TextBox();
+        this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        this.textBox1.Location = new System.Drawing.Point(48, 488);
+        this.textBox1.Multiline = true;
+        this.textBox1.ReadOnly = true;
+        this.textBox1.Size = new System.Drawing.Size(824, 32);
 
-		#region Windows Form Designer generated code
-      /// <summary>
-      /// Required method for Designer support - do not modify
-      /// the contents of this method with the code editor.
-      /// </summary>
-      private void InitializeComponent()
-      {
-         this.listBox1 = new System.Windows.Forms.ListBox();
-         this.SuspendLayout();
-         // 
-         // listBox1
-         // 
-         this.listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-         this.listBox1.Location = new System.Drawing.Point(16, 48);
-         this.listBox1.Name = "listBox1";
-         this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-         this.listBox1.Size = new System.Drawing.Size(256, 134);
-         this.listBox1.TabIndex = 0;
-         this.listBox1.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.listBox1_MeasureItem);
-         this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox1_DrawItem);
-         // 
-         // Form1
-         // 
-         this.ClientSize = new System.Drawing.Size(292, 273);
-         this.Controls.AddRange(new System.Windows.Forms.Control[] {
-                                                                      this.listBox1});
-         this.Name = "Form1";
-         this.Text = "Form1";
-         this.ResumeLayout(false);
+        // Create the calendar.
+        this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
 
-      }
-		#endregion
+        // Set the calendar location.
+        this.monthCalendar1.Location = new System.Drawing.Point(47, 16);
 
-      [STAThread]
-      static void Main() 
-      {
-         Application.Run(new Form1());
-      }
+        // Change the color.
+        this.monthCalendar1.BackColor = System.Drawing.SystemColors.Info;
+        this.monthCalendar1.ForeColor = System.Drawing.Color.FromArgb(
+                                 ((System.Byte)(192)), ((System.Byte)(0)), ((System.Byte)(192)));
+        this.monthCalendar1.TitleBackColor = System.Drawing.Color.Purple;
+        this.monthCalendar1.TitleForeColor = System.Drawing.Color.Yellow;
+        this.monthCalendar1.TrailingForeColor = System.Drawing.Color.FromArgb(
+                                 ((System.Byte)(192)), ((System.Byte)(192)), ((System.Byte)(0)));
 
-      private void listBox1_MeasureItem(object sender, System.Windows.Forms.MeasureItemEventArgs e)
-      {
-         Font font = ((ListBoxFontItem)listBox1.Items[e.Index]).Font;
-         SizeF stringSize = e.Graphics.MeasureString(font.Name, font);
+        // Add dates to the AnnuallyBoldedDates array.
+        this.monthCalendar1.AnnuallyBoldedDates = 
+            new System.DateTime[] { new System.DateTime(2002, 4, 20, 0, 0, 0, 0),
+                                    new System.DateTime(2002, 4, 28, 0, 0, 0, 0),
+                                    new System.DateTime(2002, 5, 5, 0, 0, 0, 0),
+                                    new System.DateTime(2002, 7, 4, 0, 0, 0, 0),
+                                    new System.DateTime(2002, 12, 15, 0, 0, 0, 0),
+                                    new System.DateTime(2002, 12, 18, 0, 0, 0, 0)};
 
-         // Set the height and width of the item
-         e.ItemHeight = (int)stringSize.Height;
-         e.ItemWidth = (int)stringSize.Width;
-      }
+        // Add dates to BoldedDates array.
+        this.monthCalendar1.BoldedDates = new System.DateTime[] {new System.DateTime(2002, 9, 26, 0, 0, 0, 0)};
 
-      // For efficiency, cache the brush to use for drawing.
-      private SolidBrush foreColorBrush;
+        // Add dates to MonthlyBoldedDates array.
+        this.monthCalendar1.MonthlyBoldedDates = 
+           new System.DateTime[] {new System.DateTime(2002, 1, 15, 0, 0, 0, 0),
+                                  new System.DateTime(2002, 1, 30, 0, 0, 0, 0)};
 
-      private void listBox1_DrawItem(object sender, System.Windows.Forms.DrawItemEventArgs e)
-      {
-         Brush brush;
+        // Configure the calendar to display 3 rows by 4 columns of months.
+        this.monthCalendar1.CalendarDimensions = new System.Drawing.Size(4, 3);
 
-         // Create the brush using the ForeColor specified by the DrawItemEventArgs
-         if ( foreColorBrush == null )
-            foreColorBrush = new SolidBrush(e.ForeColor);
-         else if ( foreColorBrush.Color != e.ForeColor )
-         {
-            // The control's ForeColor has changed, so dispose of the cached brush and
-            // create a new one.
-            foreColorBrush.Dispose();
-            foreColorBrush = new SolidBrush(e.ForeColor);
-         }
+        // Set week to begin on Monday.
+        this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
 
-         // Select the appropriate brush depending on if the item is selected.
-         // Since State can be a combinateion (bit-flag) of enum values, you can't use
-         // "==" to compare them.
-         if ( (e.State & DrawItemState.Selected) == DrawItemState.Selected )
-            brush = SystemBrushes.HighlightText;
-         else
-            brush = foreColorBrush;
+        // Set the maximum visible date on the calendar to 12/31/2010.
+        this.monthCalendar1.MaxDate = new System.DateTime(2010, 12, 31, 0, 0, 0, 0);
 
-         // Perform the painting.
-         Font font = ((ListBoxFontItem)listBox1.Items[e.Index]).Font;
-         e.DrawBackground();
-         e.Graphics.DrawString(font.Name, font, brush, e.Bounds);
-         e.DrawFocusRectangle();
-      }
+        // Set the minimum visible date on calendar to 12/31/2010.
+        this.monthCalendar1.MinDate = new System.DateTime(1999, 1, 1, 0, 0, 0, 0);
 
-      /// <summary>
-      ///  A wrapper class for use with storing Fonts in a ListBox.  Since ListBox uses the
-      ///  ToString() of its items for the text it displays, this class is needed to return
-      ///  the name of the font, rather than its ToString() value.
-      /// </summary>
-      public class ListBoxFontItem 
-      {
-         public Font Font;
+        // Only allow 21 days to be selected at the same time.
+        this.monthCalendar1.MaxSelectionCount = 21;
 
-         public ListBoxFontItem(Font f) 
-         {
-            Font = f;
-         }
+        // Set the calendar to move one month at a time when navigating using the arrows.
+        this.monthCalendar1.ScrollChange = 1;
 
-         public override string ToString() 
-         {
-            return Font.Name;
-         }
-      }
-   }
+        // Do not show the "Today" banner.
+        this.monthCalendar1.ShowToday = false;
+
+        // Do not circle today's date.
+        this.monthCalendar1.ShowTodayCircle = false;
+            
+        // Show the week numbers to the left of each week.
+        this.monthCalendar1.ShowWeekNumbers = true;
+
+        // Add event handlers for the DateSelected and DateChanged events
+        this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
+        this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+
+        // Set up how the form should be displayed and add the controls to the form.
+        this.ClientSize = new System.Drawing.Size(920, 566);
+        this.Controls.AddRange(new System.Windows.Forms.Control[] {this.textBox1, this.monthCalendar1});
+        this.Text = "Month Calendar Example";
+    }
+
+    private void monthCalendar1_DateSelected(object sender, System.Windows.Forms.DateRangeEventArgs e)
+    {
+        // Show the start and end dates in the text box.
+        this.textBox1.Text = "Date Selected: Start = " +
+            e.Start.ToShortDateString() + " : End = " + e.End.ToShortDateString();
+    }
+
+    private void monthCalendar1_DateChanged(object sender, System.Windows.Forms.DateRangeEventArgs e)
+    {
+        // Show the start and end dates in the text box.
+        this.textBox1.Text = "Date Changed: Start =  " +
+            e.Start.ToShortDateString() + " : End = " + e.End.ToShortDateString();
+    }
+}

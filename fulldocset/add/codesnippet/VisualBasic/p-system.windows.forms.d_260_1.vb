@@ -1,7 +1,11 @@
-    ' Hide a band of cells.
-    Private Sub Button6_Click(ByVal sender As Object, _
-        ByVal e As System.EventArgs) Handles Button6.Click
+    Private Sub CustomizeCellsInThirdColumn()
 
-        Dim band As DataGridViewBand = dataGridView.Rows(3)
-        band.Visible = False
+        Dim thirdColumn As Integer = 2
+        Dim column As DataGridViewColumn = _
+            dataGridView.Columns(thirdColumn)
+        Dim cell As DataGridViewCell = _
+            New DataGridViewTextBoxCell()
+
+        cell.Style.BackColor = Color.Wheat
+        column.CellTemplate = cell
     End Sub

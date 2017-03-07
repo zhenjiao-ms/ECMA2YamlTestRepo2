@@ -1,91 +1,101 @@
 using System;
-using System.Drawing;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Collections;
 
-public class Form1 : System.Windows.Forms.Form
+namespace ListViewSortFormNamespace
 {
-    private System.Windows.Forms.LinkLabel linkLabel1;
     
-    [STAThread]
-    static void Main() 
+   
+    public class ListViewSortForm : Form
     {
-        Application.Run(new Form1());
-    }
-
-    public Form1()
-    {
-        // Create the LinkLabel.
-        this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-
-        // Configure the LinkLabel's size and location. Specify that the
-        // size should be automatically determined by the content.
-        this.linkLabel1.Location = new System.Drawing.Point(34, 56);
-        this.linkLabel1.Size = new System.Drawing.Size(224, 16);
-        this.linkLabel1.AutoSize = true;
-
-        // Configure the appearance. 
-        // Set the DisabledLinkColor so that a disabled link will show up against the form's background.
-        this.linkLabel1.DisabledLinkColor = System.Drawing.Color.Red;
-        this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Blue;
-        this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-        this.linkLabel1.LinkColor = System.Drawing.Color.Navy;
-        
-        this.linkLabel1.TabIndex = 0;
-        this.linkLabel1.TabStop = true;
-        
-
-        // Add an event handler to do something when the links are clicked.
-        this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-
-        // Identify what the first Link is.
-        this.linkLabel1.LinkArea = new System.Windows.Forms.LinkArea(0, 8);
-
-        // Identify that the first link is visited already.
-        this.linkLabel1.Links[0].Visited = true;
-        
-        // Set the Text property to a string.
-        this.linkLabel1.Text = "Register Online.  Visit Microsoft.  Visit MSN.";
-
-        // Create new links using the Add method of the LinkCollection class.
-        // Underline the appropriate words in the LinkLabel's Text property.
-        // The words 'Register', 'Microsoft', and 'MSN' will 
-        // all be underlined and behave as hyperlinks.
-
-        // First check that the Text property is long enough to accommodate
-        // the desired hyperlinked areas.  If it's not, don't add hyperlinks.
-        if(this.linkLabel1.Text.Length >= 45)
+        private ListView listView1;
+       
+        public ListViewSortForm()
         {
-            this.linkLabel1.Links[0].LinkData = "Register";
-            this.linkLabel1.Links.Add(24, 9, "www.microsoft.com");
-            this.linkLabel1.Links.Add(42, 3, "www.msn.com");
-        //  The second link is disabled and will appear as red.
-            this.linkLabel1.Links[1].Enabled = false;
+            // Create ListView items to add to the control.
+            ListViewItem listViewItem1 = new ListViewItem(new string[] {"Banana","a","b","c"}, -1, Color.Empty, Color.Yellow, null);
+            ListViewItem listViewItem2 = new ListViewItem(new string[] {"Cherry","v","g","t"}, -1, Color.Empty, Color.Red, new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((System.Byte)(0))));
+            ListViewItem listViewItem3 = new ListViewItem(new string[] {"Apple","h","j","n"}, -1, Color.Empty, Color.Lime, null);
+            ListViewItem listViewItem4 = new ListViewItem(new string[] {"Pear","y","u","i"}, -1, Color.Empty, Color.FromArgb(((System.Byte)(192)), ((System.Byte)(128)), ((System.Byte)(156))), null);
+     
+            //Initialize the ListView control and add columns to it.
+            this.listView1 = new ListView();
+
+            // Set the initial sorting type for the ListView.
+            this.listView1.Sorting = SortOrder.None;
+            // Disable automatic sorting to enable manual sorting.
+            this.listView1.View = View.Details;
+            // Add columns and set their text.
+            this.listView1.Columns.Add(new ColumnHeader());
+            this.listView1.Columns[0].Text = "Column 1";
+            this.listView1.Columns[0].Width = 100;
+            listView1.Columns.Add(new ColumnHeader());
+            listView1.Columns[1].Text = "Column 2";
+            listView1.Columns.Add(new ColumnHeader());
+            listView1.Columns[2].Text = "Column 3";
+            listView1.Columns.Add(new ColumnHeader());
+            listView1.Columns[3].Text = "Column 4";
+            // Suspend control logic until form is done configuring form.
+            this.SuspendLayout();
+            // Add Items to the ListView control.
+            this.listView1.Items.AddRange(new ListViewItem[] {listViewItem1,
+                listViewItem2,
+                listViewItem3,
+                listViewItem4});
+            // Set the location and size of the ListView control.
+            this.listView1.Location = new Point(10, 10);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new Size(300, 100);
+            this.listView1.TabIndex = 0;
+            // Enable editing of the items in the ListView.
+            this.listView1.LabelEdit = true;
+            // Connect the ListView.ColumnClick event to the ColumnClick event handler.
+            this.listView1.ColumnClick += new ColumnClickEventHandler(ColumnClick);
+   			
+            // Initialize the form.
+            this.ClientSize = new Size(400, 400);
+            this.Controls.AddRange(new Control[] {this.listView1});
+            this.Name = "ListViewSortForm";
+            this.Text = "Sorted ListView Control";
+            // Resume layout of the form.
+            this.ResumeLayout(false);
         }
         
-        // Set up how the form should be displayed and add the controls to the form.
-        this.ClientSize = new System.Drawing.Size(292, 266);
-        this.Controls.AddRange(new System.Windows.Forms.Control[] {this.linkLabel1});
-        this.Text = "Link Label Example";
-    }
-
-    private void linkLabel1_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
-    {
-        // Determine which link was clicked within the LinkLabel.
-        this.linkLabel1.Links[linkLabel1.Links.IndexOf(e.Link)].Visited = true;
-
-        // Display the appropriate link based on the value of the 
-        // LinkData property of the Link object.
-        string target = e.Link.LinkData as string;
-
-        // If the value looks like a URL, navigate to it.
-        // Otherwise, display it in a message box.
-        if(null != target && target.StartsWith("www"))
+	
+        // ColumnClick event handler.
+        private void ColumnClick(object o, ColumnClickEventArgs e)
         {
-            System.Diagnostics.Process.Start(target);
+            // Set the ListViewItemSorter property to a new ListViewItemComparer 
+            // object. Setting this property immediately sorts the 
+            // ListView using the ListViewItemComparer object.
+            this.listView1.ListViewItemSorter = new ListViewItemComparer(e.Column);
         }
-        else
-        {    
-            MessageBox.Show("Item clicked: " + target);
+
+        [System.STAThreadAttribute()]
+        public static void Main()
+        {
+            Application.Run(new ListViewSortForm());
+        }
+
+    }
+
+    // Implements the manual sorting of items by columns.
+    class ListViewItemComparer : IComparer
+    {
+        private int col;
+        public ListViewItemComparer()
+        {
+            col = 0;
+        }
+        public ListViewItemComparer(int column)
+        {
+            col = column;
+        }
+        public int Compare(object x, object y)
+        {
+            return String.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text);
         }
     }
+
 }

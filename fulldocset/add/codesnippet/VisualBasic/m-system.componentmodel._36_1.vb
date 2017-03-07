@@ -1,4 +1,4 @@
- <ReadOnlyAttribute(True)> _
+ <MergableProperty(True)> _    
  Public Property MyProperty() As Integer
      Get
          ' Insert code here.
@@ -6,5 +6,5 @@
      End Get
      Set
          ' Insert code here.
-     End Set
+     End Set 
  End Property

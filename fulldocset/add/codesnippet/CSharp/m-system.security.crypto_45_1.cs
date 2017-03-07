@@ -1,120 +1,72 @@
 using System;
 using System.Security.Cryptography;
-using System.Text;
-using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
-class RC2Sample
+class AsnEncodedDataSample
 {
+	static void Main()
+	{		
+		//The following example demonstrates the usage the AsnEncodedData classes.
+		// Asn encoded data is read from the extensions of an X509 certificate.
+		try
+		{
+			// Open the certificate store.
+			X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
+			store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+			X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
+			X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
+			// Select one or more certificates to display extensions information.
+			X509Certificate2Collection scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection);
 
-    static void Main()
-    {
-        try
-        {
-            // Create a new RC2 object to generate a key
-            // and initialization vector (IV).
-            RC2 RC2alg = RC2.Create();
+			// Create a new AsnEncodedDataCollection object.
+			AsnEncodedDataCollection asncoll = new AsnEncodedDataCollection();
+			for (int i = 0; i < scollection.Count; i++)
+			{
+				// Display certificate information.
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Certificate name: {0}", scollection[i].GetName());
+				Console.ResetColor();
+				// Display extensions information.
+				foreach (X509Extension extension in scollection[i].Extensions)
+				{
+					// Create an AsnEncodedData object using the extensions information.
+					AsnEncodedData asndata = new AsnEncodedData(extension.Oid, extension.RawData);
+					Console.ForegroundColor = ConsoleColor.Green;
+					Console.WriteLine("Extension type: {0}", extension.Oid.FriendlyName);
+					Console.WriteLine("Oid value: {0}",asndata.Oid.Value);
+					Console.WriteLine("Raw data length: {0} {1}", asndata.RawData.Length, Environment.NewLine);
+					Console.ResetColor();
+					Console.WriteLine(asndata.Format(true));
+					Console.WriteLine(Environment.NewLine);
+					// Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+					asncoll.Add(asndata);
+				}
+				Console.WriteLine(Environment.NewLine);
+			}
+			Console.ForegroundColor = ConsoleColor.Red;
+			Console.WriteLine("Number of AsnEncodedData items in the collection: {0} {1}", asncoll.Count, Environment.NewLine);
+			Console.ResetColor();
 
-            // Create a string to encrypt.
-            string sData = "Here is some data to encrypt.";
-            string FileName = "CText.txt";
+			store.Close();
+			//Create an enumerator for moving through the collection.
+			AsnEncodedDataEnumerator asne = asncoll.GetEnumerator();
+			//You must execute a MoveNext() to get to the first item in the collection.
+			asne.MoveNext();
+			// Write out AsnEncodedData in the collection.
+			Console.ForegroundColor = ConsoleColor.Blue;
+			Console.WriteLine("First AsnEncodedData in the collection: {0}", asne.Current.Format(true));
+			Console.ResetColor();
 
-            // Encrypt text to a file using the file name, key, and IV.
-            EncryptTextToFile(sData, FileName, RC2alg.Key, RC2alg.IV);
-
-            // Decrypt the text from a file using the file name, key, and IV.
-            string Final = DecryptTextFromFile(FileName, RC2alg.Key, RC2alg.IV);
-            
-            // Display the decrypted string to the console.
-            Console.WriteLine(Final);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-       
-    }
-
-    public static void EncryptTextToFile(String Data, String FileName, byte[] Key, byte[] IV)
-    {
-        try
-        {
-            // Create or open the specified file.
-            FileStream fStream = File.Open(FileName,FileMode.OpenOrCreate);
-
-            // Create a new RC2 object.
-            RC2 RC2alg = RC2.Create();
-
-            // Create a CryptoStream using the FileStream 
-            // and the passed key and initialization vector (IV).
-            CryptoStream cStream = new CryptoStream(fStream, 
-                RC2alg.CreateEncryptor(Key,IV), 
-                CryptoStreamMode.Write); 
-
-            // Create a StreamWriter using the CryptoStream.
-            StreamWriter sWriter = new StreamWriter(cStream);
-
-            // Write the data to the stream 
-            // to encrypt it.
-            sWriter.WriteLine(Data);
-  
-            // Close the streams and
-            // close the file.
-            sWriter.Close();
-            cStream.Close();
-            fStream.Close();
-        }
-        catch(CryptographicException e)
-        {
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
-        }
-        catch(UnauthorizedAccessException  e)
-        {
-            Console.WriteLine("A file error occurred: {0}", e.Message);
-        }
-
-    }
-
-    public static string DecryptTextFromFile(String FileName, byte[] Key, byte[] IV)
-    {
-        try
-        {
-            // Create or open the specified file. 
-            FileStream fStream = File.Open(FileName, FileMode.OpenOrCreate);
-
-            // Create a new RC2 object.
-            RC2 RC2alg = RC2.Create();
-  
-            // Create a CryptoStream using the FileStream 
-            // and the passed key and initialization vector (IV).
-            CryptoStream cStream = new CryptoStream(fStream, 
-                RC2alg.CreateDecryptor(Key,IV), 
-                CryptoStreamMode.Read); 
-
-            // Create a StreamReader using the CryptoStream.
-            StreamReader sReader = new StreamReader(cStream);
-
-            // Read the data from the stream 
-            // to decrypt it.
-            string val = sReader.ReadLine();
-    
-            // Close the streams and
-            // close the file.
-            sReader.Close();
-            cStream.Close();
-            fStream.Close();
-
-            // Return the string. 
-            return val;
-        }
-        catch(CryptographicException e)
-        {
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
-            return null;
-        }
-        catch(UnauthorizedAccessException  e)
-        {
-            Console.WriteLine("A file error occurred: {0}", e.Message);
-            return null;
-        }
-    }
+			asne.MoveNext();
+			Console.ForegroundColor = ConsoleColor.DarkBlue;
+			Console.WriteLine("Second AsnEncodedData in the collection: {0}", asne.Current.Format(true));
+			Console.ResetColor();
+			//Return index in the collection to the beginning.
+			asne.Reset();
+		}
+		catch (CryptographicException)
+		{
+			Console.WriteLine("Information could not be written out for this certificate.");
+		}
+	}
 }

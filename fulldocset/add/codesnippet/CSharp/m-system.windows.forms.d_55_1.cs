@@ -1,5 +1,4 @@
-    private void SizeAllColumns(Object sender, EventArgs e)
-    {
-        dataGridView1.AutoResizeColumns(
-            DataGridViewAutoSizeColumnsMode.AllCells);
-    }
+        IUIService UIservice = (IUIService)this.GetService( 
+            typeof( System.Windows.Forms.Design.IUIService ) );
+        if( UIservice != null )            
+            UIservice.ShowDialog(new ExampleForm());

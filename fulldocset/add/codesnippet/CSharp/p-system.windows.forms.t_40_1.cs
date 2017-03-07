@@ -1,29 +1,15 @@
-	private void SelectNode(TreeNode node)
-	{
-		if(node.IsSelected)
-		{
-			// Determine which TreeNode to select.
-			switch(myComboBox.Text)
-			{
-				case "Previous":
-					node.TreeView.SelectedNode = node.PrevNode;
-					break;
-				case "PreviousVisible":
-					node.TreeView.SelectedNode = node.PrevVisibleNode;
-					break;
-				case "Next":
-					node.TreeView.SelectedNode = node.NextNode;
-					break;
-				case "NextVisible":
-					node.TreeView.SelectedNode = node.NextVisibleNode;
-					break;
-				case "First":
-					node.TreeView.SelectedNode = node.FirstNode;
-					break;
-				case "Last":
-					node.TreeView.SelectedNode = node.LastNode;
-					break;
-			}
-		}
-		node.TreeView.Focus();
-	}
+private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+{  
+   /* Display the Text and Index of the 
+    * selected tree node's Parent. */
+   if(e.Node.Parent!= null && 
+     e.Node.Parent.GetType() == typeof(TreeNode) )
+   {
+      statusBar1.Text = "Parent: " + e.Node.Parent.Text + "\n"
+         + "Index Position: " + e.Node.Parent.Index.ToString();
+   }
+   else
+   {
+      statusBar1.Text = "No parent node.";
+   }
+}

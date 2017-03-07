@@ -1,6 +1,16 @@
-         // Requires public declaration of the following type.
-         // __value enum Servers {Windows=1, Exchange=2, BizTalk=3};
-         Servers myServer = Servers::Exchange;
-         String^ myServerString = "BizTalk";
-         Console::WriteLine( TypeDescriptor::GetConverter( myServer )->ConvertTo( myServer, String::typeid ) );
-         Console::WriteLine( TypeDescriptor::GetConverter( myServer )->ConvertFrom( myServerString ) );
+   public:
+      [EditorAttribute(System::ComponentModel::Design::CollectionEditor::typeid,
+         System::Drawing::Design::UITypeEditor::typeid)]
+      property ICollection^ testCollection 
+      {
+         ICollection^ get()
+         {
+            return Icollection;
+         }
+         void set( ICollection^ value )
+         {
+            Icollection = value;
+         }
+      }
+   private:
+      ICollection^ Icollection;

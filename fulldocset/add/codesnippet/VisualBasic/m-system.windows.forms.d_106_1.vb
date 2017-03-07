@@ -1,11 +1,14 @@
-            ' String variable used to show message.
-            Dim myString As String = "Selection backgound color changed from: "
-            ' Store current foreground color of selected cells.
-            Dim myCurrentColor As Color = myDataGrid.SelectionBackColor
-            myString += myCurrentColor.ToString()
-            ' Reset selection background color to default.
-            myDataGrid.ResetSelectionBackColor()
-            myString += "  to "
-            myString += myDataGrid.SelectionBackColor.ToString()
-            ' Show information about changes in color setting.  
-            MessageBox.Show(myString, "Selection background color information")
+    Private Sub GetAllFormats()
+        ' Creates a new data object using a string and the text format.
+        Dim myDataObject As New DataObject(DataFormats.Text, "Another string")
+        
+        ' Gets all the data formats and data conversion formats in the DataObject.
+        Dim arrayOfFormats As String() = myDataObject.GetFormats()
+        
+        ' Prints the results.
+        textBox1.Text = "The format(s) associated with the data are: " & ControlChars.Cr
+        Dim i As Integer
+        For i = 0 To arrayOfFormats.Length - 1
+            textBox1.Text += arrayOfFormats(i) & ControlChars.Cr
+        Next i
+    End Sub 'GetAllFormats 

@@ -1,50 +1,47 @@
 using System;
-using System.IO;
 using System.Globalization;
 
-public class Example 
+public class SamplesCultureInfo
 {
-   public static void Main() 
+
+   public static void Main()
    {
-      // Persist the date and time data.
-      StreamWriter sw = new StreamWriter(@".\DateData.dat");
-      
-      // Create a DateTime value.      
-      DateTime dtIn = DateTime.Now;
-      // Retrieve a CultureInfo object.
-      CultureInfo invC = CultureInfo.InvariantCulture;
-      
-      // Convert the date to a string and write it to a file.
-      sw.WriteLine(dtIn.ToString("r", invC));
-      sw.Close();
 
-      // Restore the date and time data.
-      StreamReader sr = new StreamReader(@".\DateData.dat");
-      String input;
-      while ((input = sr.ReadLine()) != null) 
+      // Displays several properties of the neutral cultures.
+      Console.WriteLine("CULTURE ISO ISO WIN DISPLAYNAME                              ENGLISHNAME");
+      foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.NeutralCultures))
       {
-         Console.WriteLine("Stored data: {0}\n" , input);    
-
-         // Parse the stored string.
-         DateTime dtOut = DateTime.Parse(input, invC, DateTimeStyles.RoundtripKind);
-
-         // Create a French (France) CultureInfo object.
-         CultureInfo frFr = new CultureInfo("fr-FR");
-         // Displays the date formatted for the "fr-FR" culture.
-         Console.WriteLine("Date formatted for the {0} culture: {1}" , 
-                           frFr.Name, dtOut.ToString("f", frFr));
-
-         // Creates a German (Germany) CultureInfo object.
-         CultureInfo deDe= new CultureInfo("de-De");
-         // Displays the date formatted for the "de-DE" culture.
-         Console.WriteLine("Date formatted for {0} culture: {1}" , 
-                           deDe.Name, dtOut.ToString("f", deDe));
+         Console.Write("{0,-7}", ci.Name);
+         Console.Write(" {0,-3}", ci.TwoLetterISOLanguageName);
+         Console.Write(" {0,-3}", ci.ThreeLetterISOLanguageName);
+         Console.Write(" {0,-3}", ci.ThreeLetterWindowsLanguageName);
+         Console.Write(" {0,-40}", ci.DisplayName);
+         Console.WriteLine(" {0,-40}", ci.EnglishName);
       }
-      sr.Close();
+
    }
+
 }
-// The example displays the following output:
-//    Stored data: Tue, 15 May 2012 16:34:16 GMT
-//    
-//    Date formatted for the fr-FR culture: mardi 15 mai 2012 16:34
-//    Date formatted for de-DE culture: Dienstag, 15. Mai 2012 16:34
+
+
+/*
+This code produces the following output.  This output has been cropped for brevity.
+
+CULTURE ISO ISO WIN DISPLAYNAME                              ENGLISHNAME
+ar      ar  ara ARA Arabic                                   Arabic                                  
+bg      bg  bul BGR Bulgarian                                Bulgarian                               
+ca      ca  cat CAT Catalan                                  Catalan                                 
+zh-Hans zh  zho CHS Chinese (Simplified)                     Chinese (Simplified)                    
+cs      cs  ces CSY Czech                                    Czech                                   
+da      da  dan DAN Danish                                   Danish                                  
+de      de  deu DEU German                                   German                                  
+el      el  ell ELL Greek                                    Greek                                   
+en      en  eng ENU English                                  English                                 
+es      es  spa ESP Spanish                                  Spanish                                 
+fi      fi  fin FIN Finnish                                  Finnish                                 
+zh      zh  zho CHS Chinese                                  Chinese                                 
+zh-Hant zh  zho CHT Chinese (Traditional)                    Chinese (Traditional)                   
+zh-CHS  zh  zho CHS Chinese (Simplified) Legacy              Chinese (Simplified) Legacy             
+zh-CHT  zh  zho CHT Chinese (Traditional) Legacy             Chinese (Traditional) Legacy            
+
+*/

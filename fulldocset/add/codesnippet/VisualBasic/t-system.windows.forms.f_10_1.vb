@@ -4,11 +4,11 @@ Public Sub InitMyForm()
    label1.Location = New System.Drawing.Point(54, 128)
    label1.Name = "label1"
    label1.Size = New System.Drawing.Size(220, 80)
-   label1.Text = "Start Position Information"
+   label1.Text = "Start position information"
    Me.Controls.Add(label1)
    
-   ' Changes the windows state to Maximized.
-   WindowState = FormWindowState.Maximized
-   ' Displays the window information.
-   label1.Text = "The Form Window is " + WindowState
+   ' Moves the start position to the center of the screen.
+   StartPosition = FormStartPosition.CenterScreen
+   ' Displays the position information.
+   label1.Text = "The start position is " + StartPosition
 End Sub 'InitMyForm

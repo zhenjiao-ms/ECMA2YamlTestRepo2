@@ -1,18 +1,18 @@
-public:
-   void CreateMyDateTimePicker()
+protected:
+   Object^ source;
+
+private:
+   void SetSourceAndMember()
    {
-      // Create a new DateTimePicker control and initialize it.
-      DateTimePicker^ dateTimePicker1 = gcnew DateTimePicker;
+      DataSet^ myDataSet = gcnew DataSet( "myDataSet" );
+      DataTable^ tableCustomers = gcnew DataTable( "Customers" );
+      myDataSet->Tables->Add( tableCustomers );
+      // Insert code to populate the DataSet.
+
+      // Set DataSource and DataMember with SetDataBinding method.
+      String^ member;
       
-      // Set the MinDate and MaxDate.
-      dateTimePicker1->MinDate = DateTime(1985,6,20);
-      dateTimePicker1->MaxDate = DateTime::Today;
-      
-      // Set the CustomFormat string.
-      dateTimePicker1->CustomFormat = "MMMM dd, yyyy - dddd";
-      dateTimePicker1->Format = DateTimePickerFormat::Custom;
-      
-      // Show the CheckBox and display the control as an up-down control.
-      dateTimePicker1->ShowCheckBox = true;
-      dateTimePicker1->ShowUpDown = true;
+      // The name of a DataTable is Customers.
+      member = "Customers";
+      dataGrid1->SetDataBinding( myDataSet, member );
    }

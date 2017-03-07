@@ -1,79 +1,150 @@
-<%@ Page Language="VB" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<script runat="server">
-    Sub UploadButton_Click(ByVal sender As Object, ByVal e As System.EventArgs)
-            
-        ' Save the uploaded file to an "Uploads" directory
-        ' that already exists in the file system of the 
-        ' currently executing ASP.NET application.  
-        ' Creating an "Uploads" directory isolates uploaded 
-        ' files in a separate directory. This helps prevent
-        ' users from overwriting existing application files by
-        ' uploading files with names like "Web.config".
-        Dim saveDir As String = "\Uploads\"
-           
-        ' Get the physical file system path for the currently
-        ' executing application.
-        Dim appPath As String = Request.PhysicalApplicationPath
-            
-        ' Before attempting to save the file, verify
-        ' that the FileUpload control contains a file.
-        If (FileUpload1.HasFile) Then
-            Dim savePath As String = appPath + saveDir + _
-                Server.HtmlEncode(FileUpload1.FileName)
-                        
-            ' Call the SaveAs method to save the 
-            ' uploaded file to the specified path.
-            ' This example does not perform all
-            ' the necessary error checking.               
-            ' If a file with the same name
-            ' already exists in the specified path,  
-            ' the uploaded file overwrites it.
-            FileUpload1.SaveAs(savePath)
-                
-            ' Notify the user that the file was uploaded successfully.
-            UploadStatusLabel.Text = "Your file was uploaded successfully."
-
-        Else
-            ' Notify the user that a file was not uploaded.
-            UploadStatusLabel.Text = "You did not specify a file to upload."
-        End If
-
-    End Sub
-       
-</script>
-    
+<%@ Page Language="VB" AutoEventWireup="True" %>
+<%@ Import Namespace="System.Data" %>
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
+   <script runat="server">
+
+      Function CreateDataSource() As ICollection 
+      
+         ' Create sample data for the DataGrid control.
+         Dim dt As DataTable = New DataTable()
+         Dim dr As DataRow
+ 
+         ' Define the columns of the table.
+         dt.Columns.Add(New DataColumn("IntegerValue", GetType(Int32)))
+         dt.Columns.Add(New DataColumn("StringValue", GetType(string)))
+         dt.Columns.Add(New DataColumn("CurrencyValue", GetType(double)))
+ 
+         ' Populate the table with sample values.
+         Dim i As Integer
+
+         For i = 0 to 8 
+        
+            dr = dt.NewRow()
+ 
+            dr(0) = i
+            dr(1) = "Item " & i.ToString()
+            dr(2) = 1.23 * (i + 1)
+ 
+            dt.Rows.Add(dr)
+
+         Next i
+ 
+         Dim dv As DataView = New DataView(dt)
+         Return dv
+
+      End Function
+ 
+      Sub Page_Load(sender As Object, e As EventArgs) 
+
+         ' Create a DataGrid control.
+         Dim ItemsGrid As DataGrid = New DataGrid()
+
+         ' Set the properties of the DataGrid.
+         ItemsGrid.ID = "ItemsGrid"
+         ItemsGrid.BorderColor = System.Drawing.Color.Black
+         ItemsGrid.CellPadding = 3
+         ItemsGrid.AutoGenerateColumns = False
+
+         ' Set the styles for the DataGrid.
+         ItemsGrid.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(&H0000aaaa)
+
+         ' Create the columns for the DataGrid control. The DataGrid
+         ' columns are dynamically generated. Therefore, the columns   
+         ' must be re-created each time the page is refreshed.
+         
+         ' Create and add the columns to the collection.
+         ItemsGrid.Columns.Add(CreateBoundColumn("IntegerValue", "Item"))
+         ItemsGrid.Columns.Add( _
+             CreateBoundColumn("StringValue", "Description"))
+         ItemsGrid.Columns.Add( _
+             CreateBoundColumn("CurrencyValue", "Price", "{0:c}", _
+             HorizontalAlign.Right))
+         ItemsGrid.Columns.Add( _
+             CreateLinkColumn("http:'www.microsoft.com", "_self", _
+             "Microsoft", "Related link"))
+        
+         ' Specify the data source and bind it to the control.     
+         ItemsGrid.DataSource = CreateDataSource()
+         ItemsGrid.DataBind()
+
+         ' Add the DataGrid control to the Controls collection of 
+         ' the PlaceHolder control.
+         Place.Controls.Add(ItemsGrid)
+
+      End Sub
+
+      Function CreateBoundColumn(DataFieldValue As String, HeaderTextValue As String) As BoundColumn
+
+         ' This version of CreateBoundColumn method sets only the 
+         ' DataField and HeaderText properties.
+
+         ' Create a BoundColumn.
+         Dim column As BoundColumn = New BoundColumn()
+
+         ' Set the properties of the BoundColumn.
+         column.DataField = DataFieldValue
+         column.HeaderText = HeaderTextValue
+
+         Return column
+
+      End Function
+
+      Function CreateBoundColumn(DataFieldValue As String, _
+          HeaderTextValue As String, FormatValue As String, _
+          AlignValue As HorizontalAlign) As BoundColumn
+
+         ' This version of CreateBoundColumn method sets the DataField,
+         ' HeaderText, and DataFormatString properties. It also sets the 
+         ' HorizontalAlign property of the ItemStyle property of the column. 
+
+         ' Create a BoundColumn using the overloaded CreateBoundColumn method.
+         Dim column As BoundColumn = CreateBoundColumn(DataFieldValue, HeaderTextValue)
+
+         ' Set the properties of the BoundColumn.
+         column.DataFormatString = FormatValue
+         column.ItemStyle.HorizontalAlign = AlignValue
+
+         Return column
+
+      End Function
+
+      Function CreateLinkColumn(NavUrlValue As String, TargetValue As String, _
+         TextValue As String, HeaderTextValue As String) As HyperLinkColumn 
+
+         ' Create a BoundColumn.
+         Dim column As HyperLinkColumn = New HyperLinkColumn()
+
+         ' Set the properties of the ButtonColumn.
+         column.NavigateUrl = NavUrlValue
+         column.Target = TargetValue
+         column.Text = TextValue
+         column.HeaderText = HeaderTextValue
+
+         Return column
+
+      End Function
+
+   </script>
+ 
 <head runat="server">
-    <title>FileUpload Class Example</title>
+    <title>DataGrid Constructor Example</title>
 </head>
 <body>
-   <h3>FileUpload Class Example: Save To Application Directory</h3>
+ 
    <form id="form1" runat="server">
-   <div>   
-       <h4>Select a file to upload:</h4>
-   
-       <asp:FileUpload id="FileUpload1"                 
-           runat="server">
-       </asp:FileUpload>
-            
-       <br/><br/>
-       
-       <asp:Button id="UploadButton" 
-           Text="Upload file"
-           OnClick="UploadButton_Click"
-           runat="server">
-       </asp:Button>    
-       
-       <hr />
-       
-       <asp:Label id="UploadStatusLabel"
-           runat="server">
-       </asp:Label>       
-         
-   </div>
+ 
+      <h3>DataGrid Constructor Example</h3>
+ 
+      <b>Product List</b>
+
+      <asp:PlaceHolder id="Place"
+           runat="server"/>
+ 
    </form>
+ 
 </body>
 </html>

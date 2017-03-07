@@ -1,10 +1,15 @@
-    Private Sub WriteMappingNames()
-        Dim dgt As DataGridTableStyle
-        For Each dgt In  myDataGrid.TableStyles
-            Console.WriteLine(dgt.MappingName)
-            Dim dgc As DataGridColumnStyle
-            For Each dgc In  dgt.GridColumnStyles
-                Console.WriteLine(dgc.MappingName)
-            Next dgc
-        Next dgt
-    End Sub 'WriteMappingNames
+    ' Display NullValue for cell values equal to DataSourceNullValue.
+    Private Sub dataGridView1_CellFormatting(ByVal sender As Object, _
+        ByVal e As DataGridViewCellFormattingEventArgs) _
+        Handles dataGridView1.CellFormatting
+
+        Dim value As String = TryCast(e.Value, String)
+        If value IsNot Nothing And _
+            value.Equals(e.CellStyle.DataSourceNullValue) Then
+
+            e.Value = e.CellStyle.NullValue
+            e.FormattingApplied = True
+
+        End If
+
+    End Sub

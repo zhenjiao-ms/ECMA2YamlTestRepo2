@@ -1,106 +1,203 @@
+#using <System.Security.dll>
 #using <System.dll>
+#using <System.Xml.dll>
 
 using namespace System;
+using namespace System::Xml;
 using namespace System::Security::Cryptography;
+using namespace System::Security::Cryptography::Xml;
 
-namespace Contoso
+ref class TrippleDESDocumentEncryption
 {
-    ref class MaskGenerator: MaskGenerationMethod
-    {
-    private:
-        String^ hashNameValue;
+protected:
+   XmlDocument^ docValue;
+   TripleDES^ algValue;
 
-    public:
-        // Initialize a mask to encrypt using the SHA1 algorithm.
-        MaskGenerator()
-        {
-            hashNameValue = "SHA1";
-        }
+public:
+   TrippleDESDocumentEncryption( XmlDocument^ Doc, TripleDES^ Key )
+   {
+      if ( Doc != nullptr )
+      {
+         docValue = Doc;
+      }
+      else
+      {
+         throw gcnew ArgumentNullException( L"Doc" );
+      }
 
-        // Create a mask with the specified seed.
-        virtual array<Byte>^ GenerateMask(array<Byte>^ seed, int maskLength) override
-        {
-            HashAlgorithm^ hash;
-            array<Byte>^ rgbCounter = gcnew array<Byte>(4);
-            array<Byte>^ targetRgb = gcnew array<Byte>(maskLength);
-            UInt32 counter = 0;
-            for (int inc = 0; inc < targetRgb->Length; )
-            {
-                ConvertIntToByteArray(counter++, rgbCounter);
-                hash = (HashAlgorithm^)CryptoConfig::CreateFromName(
-                    hashNameValue);
-                array<Byte>^ temp = gcnew array<Byte>(
-                    4 + seed->Length);
-                Buffer::BlockCopy(rgbCounter, 0, temp, 0, 4);
-                Buffer::BlockCopy(seed, 0, temp, 4, seed->Length);
-                hash->ComputeHash(temp);
-                if (targetRgb->Length - inc > hash->HashSize / 8)
-                {
-                    Buffer::BlockCopy(hash->Hash, 0, targetRgb, inc,
-                        hash->Hash->Length);
-                }
-                else
-                {
-                    Buffer::BlockCopy(hash->Hash, 0, targetRgb, inc,
-                        targetRgb->Length - inc);
-                }
+      if ( Key != nullptr )
+      {
+         algValue = Key;
+      }
+      else
+      {
+         throw gcnew ArgumentNullException( L"Key" );
+      }
+   }
 
-                inc += hash->Hash->Length;
-            }
-            return targetRgb;
-        }
 
-    private:
-        // Convert the specified integer to the byte array.
-        void ConvertIntToByteArray(UInt32 source,
-            array<Byte>^ targetBytes)
-        {
-            UInt32 remainder;
-            int inc = 0;
+   property XmlDocument^ Doc
+   {
+      XmlDocument^ get()
+      {
+         return docValue;
+      }
 
-            // Clear the array prior to filling it.
-            Array::Clear(targetBytes, 0, targetBytes->Length);
-            while (source > 0)
-            {
-                remainder = source % 256;
-                targetBytes[ 3 - inc ] = (Byte)remainder;
-                source = (source - remainder) / 256;
-                inc++;
-            }
-        }
-    };
+      void set( XmlDocument^ value )
+      {
+         docValue = value;
+      }
 
-    // This class demonstrates how to create the MaskGenerator class 
-    // and call its GenerateMask member.
-    ref class MaskGeneratorImpl
-    {
-    public:
-        void static Work()
-        {
-            array<Byte>^ seed = gcnew array<Byte>(4){
-                0x01,0x02,0x03,0x04};
-            int length = 16;
-            MaskGenerator^ maskGenerator = gcnew MaskGenerator;
-            array<Byte>^ mask = maskGenerator->GenerateMask(seed,
-                length);
-            Console::WriteLine("Generated the following mask:");
-            Console::WriteLine(System::Text::Encoding::
-                ASCII::get()->GetString(mask));
-            Console::WriteLine("This sample completed successfully;"
-                " press Enter to exit.");
-            Console::ReadLine();
-        }
-    };
-}
+   }
 
-void main()
+   property TripleDES^ Alg
+   {
+      TripleDES^ get()
+      {
+         return algValue;
+      }
+
+      void set( TripleDES^ value )
+      {
+         algValue = value;
+      }
+
+   }
+   void Clear()
+   {
+      if ( algValue != nullptr )
+      {
+         algValue->Clear();
+      }
+      else
+      {
+         throw gcnew Exception( L"No TripleDES key was found to clear." );
+      }
+   }
+
+   void Encrypt( String^ Element )
+   {
+
+      // Find the element by name and create a new
+      // XmlElement object.
+      XmlElement^ inputElement = dynamic_cast<XmlElement^>(docValue->GetElementsByTagName( Element )->Item( 0 ));
+
+      // If the element was not found, throw an exception.
+      if ( inputElement == nullptr )
+      {
+         throw gcnew Exception( L"The element was not found." );
+      }
+
+
+      // Create a new EncryptedXml object.
+      EncryptedXml^ exml = gcnew EncryptedXml( docValue );
+
+      // Encrypt the element using the symmetric key.
+      array<Byte>^rgbOutput = exml->EncryptData( inputElement, algValue, false );
+
+      // Create an EncryptedData object and populate it.
+      EncryptedData^ ed = gcnew EncryptedData;
+
+      // Specify the namespace URI for XML encryption elements.
+      ed->Type = EncryptedXml::XmlEncElementUrl;
+
+      // Specify the namespace URI for the TrippleDES algorithm.
+      ed->EncryptionMethod = gcnew EncryptionMethod( EncryptedXml::XmlEncTripleDESUrl );
+
+      // Create a CipherData element.
+      ed->CipherData = gcnew CipherData;
+
+      // Set the CipherData element to the value of the encrypted XML element.
+      ed->CipherData->CipherValue = rgbOutput;
+
+      // Replace the plaintext XML elemnt with an EncryptedData element.
+      EncryptedXml::ReplaceElement( inputElement, ed, false );
+   }
+
+   void Decrypt()
+   {
+
+      // XmlElement object.
+      XmlElement^ encryptedElement = dynamic_cast<XmlElement^>(docValue->GetElementsByTagName( L"EncryptedData" )->Item( 0 ));
+
+      // If the EncryptedData element was not found, throw an exception.
+      if ( encryptedElement == nullptr )
+      {
+         throw gcnew Exception( L"The EncryptedData element was not found." );
+      }
+
+
+      // Create an EncryptedData object and populate it.
+      EncryptedData^ ed = gcnew EncryptedData;
+      ed->LoadXml( encryptedElement );
+
+      // Create a new EncryptedXml object.
+      EncryptedXml^ exml = gcnew EncryptedXml;
+
+      // Decrypt the element using the symmetric key.
+      array<Byte>^rgbOutput = exml->DecryptData( ed, algValue );
+
+      // Replace the encryptedData element with the plaintext XML elemnt.
+      exml->ReplaceData( encryptedElement, rgbOutput );
+   }
+
+};
+
+int main()
 {
-    Contoso::MaskGeneratorImpl::Work();
-}
 
-//
-// This sample produces the following output:
-//
-// Generated the following mask:
-// ?"TFd(?~OtO?
-// This sample completed successfully; press Enter to exit.
+   // Create an XmlDocument object.
+   XmlDocument^ xmlDoc = gcnew XmlDocument;
+
+   // Load an XML file into the XmlDocument object.
+   try
+   {
+      xmlDoc->PreserveWhitespace = true;
+      xmlDoc->Load( L"test.xml" );
+   }
+   catch ( Exception^ e )
+   {
+      Console::WriteLine( e->Message );
+      return 0;
+   }
+
+
+   // Create a new TripleDES key.
+   TripleDESCryptoServiceProvider^ tDESkey = gcnew TripleDESCryptoServiceProvider;
+
+   // Create a new instance of the TrippleDESDocumentEncryption object
+   // defined in this sample.
+   TrippleDESDocumentEncryption^ xmlTDES = gcnew TrippleDESDocumentEncryption( xmlDoc,tDESkey );
+   try
+   {
+
+      // Encrypt the "creditcard" element.
+      xmlTDES->Encrypt( L"creditcard" );
+
+      // Display the encrypted XML to the console.
+      Console::WriteLine( L"Encrypted XML:" );
+      Console::WriteLine();
+      Console::WriteLine( xmlTDES->Doc->OuterXml );
+
+      // Decrypt the "creditcard" element.
+      xmlTDES->Decrypt();
+
+      // Display the encrypted XML to the console.
+      Console::WriteLine();
+      Console::WriteLine( L"Decrypted XML:" );
+      Console::WriteLine();
+      Console::WriteLine( xmlTDES->Doc->OuterXml );
+   }
+   catch ( Exception^ e )
+   {
+      Console::WriteLine( e->Message );
+   }
+   finally
+   {
+
+      // Clear the TripleDES key.
+      xmlTDES->Clear();
+   }
+
+   return 1;
+}

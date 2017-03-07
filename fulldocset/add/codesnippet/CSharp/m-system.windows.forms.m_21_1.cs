@@ -1,12 +1,11 @@
- public void CloneMyMenu()
- {
-    // Determine if mainMenu1 is currently hosted on the form.
-    if(mainMenu1.GetForm() != null)
-    {
-       // Create a copy of the MainMenu that is hosted on the form.
-       MainMenu mainMenu2 = mainMenu1.CloneMenu();
-       // Set the RightToLeft property for mainMenu2.
-       mainMenu2.RightToLeft = RightToLeft.Yes;
-    }
- }
- 
+      private void MenuSelected(object sender, System.EventArgs e)
+      {
+         if (sender == menuOpen)
+            statusBar1.Panels[0].Text = "Opens a file to edit";
+         else if(sender == menuSave)
+            statusBar1.Panels[0].Text = "Saves the current file";
+         else if(sender == menuExit)
+            statusBar1.Panels[0].Text = "Exits the application";
+         else
+            statusBar1.Panels[0].Text = "Ready";
+      }

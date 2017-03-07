@@ -3,10 +3,12 @@
 
             serviceHost.AddServiceEndpoint(
                 typeof(ICalculator),
-                new WSHttpBinding(),
+                new WSHttpBinding(), 
                 "CalculatorServiceObject");
 
             serviceHost.Open();
 
-            ChannelDispatcher dispatcher = (ChannelDispatcher) serviceHost.ChannelDispatchers[0];
-            string bindingName = dispatcher.BindingName;
+            IChannelListener icl = serviceHost.ChannelDispatchers[0].Listener;
+            ChannelDispatcher dispatcher = new ChannelDispatcher(icl);
+
+            dispatcher.MaxTransactedBatchSize = 10;

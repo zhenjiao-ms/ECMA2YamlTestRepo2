@@ -1,8 +1,7 @@
-    Private Sub SizeThirdRow(ByVal sender As Object, _
-        ByVal e As System.EventArgs) Handles Button7.Click
+    Private Sub dataGridView1_EditingControlShowing(ByVal sender As Object, _
+        ByVal e As DataGridViewEditingControlShowingEventArgs) _
+        Handles dataGridView1.EditingControlShowing
 
-        Dim thirdRow As Integer = 2
-        DataGridView1.AutoResizeRow( _
-            2, DataGridViewAutoSizeRowMode.AllCellsExceptHeader)
+        e.CellStyle.BackColor = Color.Aquamarine
 
     End Sub

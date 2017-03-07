@@ -4,77 +4,87 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
-
-  void AuthorsGridView_SelectedIndexChanged(Object sender, EventArgs e)
-  {
   
-    // Get the selected row from the GridView control.
-    GridViewRow selectRow = AuthorsGridView.SelectedRow;
+  void Page_Load(Object sender, EventArgs e)
+  {
+
+    // Create a new DetailsView object.
+    DetailsView customerDetailsView = new DetailsView();
+
+    // Set the DetailsView object's properties.
+    customerDetailsView.ID = "CustomerDetailsView";
+    customerDetailsView.DataSourceID = "DetailsViewSource";
+    customerDetailsView.AutoGenerateRows = true;
+    customerDetailsView.AutoGenerateInsertButton = true;
+    customerDetailsView.AllowPaging = true;
+    customerDetailsView.DataKeyNames = new String[1] { "CustomerID" };
     
-    // Get the author's first and last name from the appropriate
-    // cells in the selected row. For BoundField field columns
-    // and automatically generated field columns, the Text property
-    // of a cell is used to access a field value.
-    String lastName = selectRow.Cells[1].Text;
-    
-    // In a TemplateField column where a data-binding expression
-    // is used directly in the ItemTemplate, the field value
-    // is automatically placed in DataBoundLiteral control.
-    
-    // Retrieve the DataBoundLiteral control from the cell. The
-    // DataBoundLiteral control is the first control in the 
-    // Controls collection.
-    DataBoundLiteralControl firstNameLiteral = (DataBoundLiteralControl)selectRow.Cells[2].Controls[0];
-    String firstName = firstNameLiteral.Text;
-    
-    // Display the name of the selected author.
-    Message.Text = "You selected " + firstName + " " + lastName + ".";
-    
+    // Programmatically register the event-handling method
+    // for the ItemInserted event of a DetailsView control.
+    customerDetailsView.ItemInserting += new DetailsViewInsertEventHandler(this.CustomerDetailsView_ItemInserting);
+
+    // Add the DetailsView object to the Controls collection
+    // of the PlaceHolder control.
+    DetailsViewPlaceHolder.Controls.Add(customerDetailsView);
+
+  }
+
+  void CustomerDetailsView_ItemInserting(Object sender, DetailsViewInsertEventArgs e)
+  {
+    // Use the Values property to retrieve the key field value.
+    String keyValue = e.Values["CustomerID"].ToString();
+
+    // Insert the record only if the key field is four characters
+    // long; otherwise, cancel the insert operation.
+    if (keyValue.Length == 4)
+    {
+      // Change the key field value to upper case before inserting 
+      // the record in the data source.
+      e.Values["CustomerID"] = keyValue.ToUpper();
+
+      MessageLabel.Text = "";
+    }
+    else
+    {
+      MessageLabel.Text = "The key field must have four digits.";
+      e.Cancel = true;
+    }
+
   }
 
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
   <head runat="server">
-    <title>GridViewRow Example</title>
+    <title>DetailsViewInsertEventHandler Example</title>
 </head>
 <body>
     <form id="form1" runat="server">
         
-      <h3>GridViewRow Example</h3>
-
-      <asp:label id="Message" 
+      <h3>DetailsViewInsertEventHandler Example</h3>
+        
+      <!-- Use a PlaceHolder control as the container for the -->
+      <!-- dynamically generated DetailsView control.         -->       
+      <asp:PlaceHolder id="DetailsViewPlaceHolder"
+        runat="server"/>
+        
+      <br/><br/>
+      
+      <asp:label id="MessageLabel"
         forecolor="Red"
         runat="server"/>
-              
-      <br/> 
-
-      <asp:gridview id="AuthorsGridView" 
-        datasourceid="AuthorsSqlDataSource" 
-        autogeneratecolumns="false"
-        autogenerateselectbutton="true"
-        onselectedindexchanged="AuthorsGridView_SelectedIndexChanged"  
-        runat="server"> 
-               
-        <columns>
-          <asp:boundfield datafield="au_lname"
-            headertext="Last Name"/>
-          <asp:templatefield headertext="FirstName">
-            <itemtemplate>
-              <%#Eval("au_fname")%>
-            </itemtemplate>
-          </asp:templatefield>
-        </columns>
-                              
-      </asp:gridview>
-            
-      <!-- This example uses Microsoft SQL Server and connects -->
-      <!-- to the Pubs sample database.                        -->
-      <asp:sqldatasource id="AuthorsSqlDataSource"  
-        selectcommand="SELECT [au_lname], [au_fname], [address], [city], [state], [zip], [contract] FROM [authors]"
-        connectionstring="server=localhost;database=pubs;integrated security=SSPI"
-        runat="server">
-      </asp:sqldatasource>
+          
+      <!-- This example uses Microsoft SQL Server and connects  -->
+      <!-- to the Northwind sample database. Use an ASP.NET     -->
+      <!-- expression to retrieve the connection string value   -->
+      <!-- from the web.config file.                            -->
+      <asp:sqldatasource id="DetailsViewSource"
+        selectcommand="Select [CustomerID], [CompanyName], [Address], 
+          [City], [PostalCode], [Country] From [Customers]"
+        insertcommand="INSERT INTO [Customers]([CustomerID], [CompanyName], [Address], [City], [PostalCode], [Country]) VALUES (@CustomerID, @CompanyName, @Address, @City, @PostalCode, @Country)"
+        connectionstring=
+          "<%$ ConnectionStrings:NorthWindConnectionString%>" 
+        runat="server"/>
             
     </form>
   </body>

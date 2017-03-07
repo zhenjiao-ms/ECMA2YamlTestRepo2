@@ -1,70 +1,46 @@
-// This example demonstrates the CultureTypes enumeration 
-// and the CultureInfo.CultureTypes property.
-
 using System;
 using System.Globalization;
 
-class Sample
+public class SamplesCultureInfo
 {
-    public static void Main()
-    {
-        // Create a table of most culture types. 
-        CultureTypes[] mostCultureTypes = new CultureTypes[] {
-                        CultureTypes.NeutralCultures, 
-                        CultureTypes.SpecificCultures, 
-                        CultureTypes.InstalledWin32Cultures, 
-                        CultureTypes.UserCustomCulture, 
-                        CultureTypes.ReplacementCultures, 
-                        CultureTypes.FrameworkCultures,
-                        CultureTypes.WindowsOnlyCultures
-                        };
-        CultureInfo[] allCultures;
-        CultureTypes combo;
 
-        // Get and enumerate all cultures.
-        allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
-        foreach (CultureInfo ci in allCultures)
-        {
-            // Display the name of each culture.
-            Console.WriteLine("Culture: {0}", ci.Name);
+   public static void Main()
+   {
 
-            // Get the culture types of each culture. 
-            combo = ci.CultureTypes;
+      // Lists the cultures that use the Chinese language and determines if each is a neutral culture.
+      foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures))
+      {
+         if (ci.TwoLetterISOLanguageName == "zh")
+         {
+            Console.Write("{0,-7} {1,-40}", ci.Name, ci.EnglishName);
+            if (ci.IsNeutralCulture)
+            {
+               Console.WriteLine(": neutral");
+                }
+            else
+            {
+               Console.WriteLine(": specific");
+            }
+         }
+      }
 
-            // Display the name of each culture type flag that is set.
-            Console.Write("  ");
-            foreach (CultureTypes ct in mostCultureTypes)
-                if (0 != (ct & combo))
-                    Console.Write("{0} ", ct);
-            Console.WriteLine();
-        }
-    }
+   }
+
 }
 
+
 /*
-The following is a portion of the results produced by this code example.
-.
-.
-.
-Culture: tg
-  NeutralCultures InstalledWin32Cultures 
-Culture: ta
-  NeutralCultures InstalledWin32Cultures FrameworkCultures 
-Culture: te
-  NeutralCultures InstalledWin32Cultures FrameworkCultures 
-Culture: syr
-  NeutralCultures InstalledWin32Cultures FrameworkCultures 
-Culture: tg-Cyrl-TJ
-  SpecificCultures InstalledWin32Cultures 
-Culture: ta-IN
-  SpecificCultures InstalledWin32Cultures FrameworkCultures 
-Culture: te-IN
-  SpecificCultures InstalledWin32Cultures FrameworkCultures 
-Culture: syr-SY
-  SpecificCultures InstalledWin32Cultures FrameworkCultures 
-Culture: tg-Cyrl
-  NeutralCultures InstalledWin32Cultures 
-.
-.
-.
+This code produces the following output.
+
+zh-Hans Chinese (Simplified)                    : neutral
+zh-TW   Chinese (Traditional, Taiwan)           : specific
+zh-CN   Chinese (Simplified, PRC)               : specific
+zh-HK   Chinese (Traditional, Hong Kong S.A.R.) : specific
+zh-SG   Chinese (Simplified, Singapore)         : specific
+zh-MO   Chinese (Traditional, Macao S.A.R.)     : specific
+zh      Chinese                                 : neutral
+zh-Hant Chinese (Traditional)                   : neutral
+zh-CHS  Chinese (Simplified) Legacy             : neutral
+zh-CHT  Chinese (Traditional) Legacy            : neutral
+
 */

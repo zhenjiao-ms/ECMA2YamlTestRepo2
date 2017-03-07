@@ -15,8 +15,17 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Serves as the base class for classes that enable information to be shared across multiple sessions and requests within an ASP.NET application.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The HttpApplicationStateBase class is an abstract class that contains the same members as the <xref:System.Web.HttpApplicationState> class. The HttpApplicationStateBase class lets you create derived classes that are like the <xref:System.Web.HttpApplicationState> class, but that you can customize and that work outside the ASP.NET pipeline. When you perform unit testing, you typically use a derived class to implement members with customized behavior that fulfills the scenario you are testing.  
+  
+ The <xref:System.Web.HttpApplicationStateWrapper> class derives from the HttpApplicationStateBase class. The <xref:System.Web.HttpApplicationStateWrapper> class serves as a wrapper for the <xref:System.Web.HttpApplicationState> class. At run time, you typically use an instance of the <xref:System.Web.HttpApplicationStateWrapper> class to call members of the <xref:System.Web.HttpApplicationState> object.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -30,7 +39,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes the class for use by an inherited class instance. This constructor can only be called by an inherited class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -51,10 +60,11 @@
         <Parameter Name="value" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="name">The name of the object to add to the collection.</param>
+        <param name="value">The value of the object.</param>
+        <summary>When overridden in a derived class, adds a new object to the collection.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="AllKeys">
@@ -70,9 +80,10 @@
         <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>When overridden in a derived class, gets the access keys for the objects in the collection.</summary>
+        <value>An array of state object keys.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Clear">
@@ -89,8 +100,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When overridden in a derived class, removes all objects from the collection.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Contents">
@@ -106,9 +118,17 @@
         <ReturnType>System.Web.HttpApplicationStateBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>When overridden in a derived class, gets a reference to the <see cref="T:System.Web.HttpApplicationStateBase" /> object.</summary>
+        <value>A reference to the <see cref="T:System.Web.HttpApplicationState" /> object.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This property provides compatibility with earlier versions of ASP.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="CopyTo">
@@ -128,10 +148,11 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="array">To be added.</param>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="array">The one-dimensional array that is the destination for the elements that are copied from the collection. The array must have zero-based indexing.</param>
+        <param name="index">The zero-based index in <c>array</c> at which to begin copying.</param>
+        <summary>When overridden in a derived class, copies the elements of the collection to an array, starting at the specified index in the array.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Count">
@@ -147,9 +168,10 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>When overridden in a derived class, gets the number of objects in the collection.</summary>
+        <value>The number of objects in the collection.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Get">
@@ -168,10 +190,11 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="index">The index of the application state object to get.</param>
+        <summary>When overridden in a derived class, gets a state object by index.</summary>
+        <returns>The object referenced by <paramref name="index" />.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Get">
@@ -190,10 +213,11 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="name">The name of the object to get.</param>
+        <summary>When overridden in a derived class, gets a state object by name.</summary>
+        <returns>The object referenced by <paramref name="name" />.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="GetEnumerator">
@@ -210,9 +234,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>When overridden in a derived class, returns an enumerator that can be used to iterate through the collection.</summary>
+        <returns>An object that can be used to iterate through the collection.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="GetKey">
@@ -231,10 +256,11 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="index">The index of the application state object to get.</param>
+        <summary>When overridden in a derived class, gets the name of a state object by index.</summary>
+        <returns>The name of the application state object.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="IsSynchronized">
@@ -250,9 +276,11 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>When overridden in a derived class, gets a value that indicates whether access to the collection is thread-safe.</summary>
+        <value>
+          <see langword="true" /> if access is synchronized (thread-safe); otherwise, <see langword="false" />.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Item">
@@ -271,10 +299,11 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <param name="index">The index of the object in the collection.</param>
+        <summary>When overridden in a derived class, gets a state object by index.</summary>
+        <value>The object referenced by <paramref name="index" />.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Item">
@@ -293,10 +322,11 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <param name="name">The name of the object in the collection.</param>
+        <summary>When overridden in a derived class, gets a state object by name.</summary>
+        <value>The object referenced by <paramref name="name" />.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Lock">
@@ -313,8 +343,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When overridden in a derived class, locks access to objects in the collection in order to enable synchronized access.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Remove">
@@ -333,9 +364,10 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="name">The name of the object to remove from the collection.</param>
+        <summary>When overridden in a derived class, removes the named object from the collection.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="RemoveAll">
@@ -352,8 +384,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When overridden in a derived class, removes all objects from the collection.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="RemoveAt">
@@ -372,9 +405,10 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="index">The position in the collection of the item to remove.</param>
+        <summary>When overridden in a derived class, removes a state object specified by index from the collection.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="Set">
@@ -394,10 +428,11 @@
         <Parameter Name="value" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="name">The name of the object to update.</param>
+        <param name="value">The updated value of the object.</param>
+        <summary>When overridden in a derived class, updates the value of an object in the collection.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="StaticObjects">
@@ -413,9 +448,19 @@
         <ReturnType>System.Web.HttpStaticObjectsCollectionBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>When overridden in a derived class, gets all objects that are declared by an <see langword="object" /> element where the scope is set to "Application" in the ASP.NET application.</summary>
+        <value>A collection of objects in the application.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Application objects are defined in the Global.asax file inside an element with syntax like the following:  
+  
+ `<object runat="server" scope="Application">Object information</object>`  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="SyncRoot">
@@ -431,9 +476,10 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>When overridden in a derived class, gets an object that can be used to synchronize access to the collection.</summary>
+        <value>An object that can be used to synchronize access to the collection.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
     <Member MemberName="UnLock">
@@ -450,8 +496,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When overridden in a derived class, unlocks access to objects in the collection to enable synchronized access.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">Always.</exception>
       </Docs>
     </Member>
   </Members>

@@ -1,59 +1,59 @@
-#using <System.dll>
-#using <system.security.dll>
-
 using namespace System;
 using namespace System::Security::Cryptography;
-using namespace System::Security::Cryptography::X509Certificates;
+using namespace System::Text;
 int main()
 {
+   RSACryptoServiceProvider^ rsa = gcnew RSACryptoServiceProvider;
    try
    {
-      X509Store^ store = gcnew X509Store( L"MY",StoreLocation::CurrentUser );
-      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
-      X509Certificate2Collection^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-      for ( int i = 0; i < collection->Count; i++ )
-      {
-         System::Collections::IEnumerator^ myEnum = collection[ i ]->Extensions->GetEnumerator();
-         while ( myEnum->MoveNext() )
-         {
-            X509Extension^ extension = safe_cast<X509Extension^>(myEnum->Current);
-            Console::WriteLine( L"{0}({1})", extension->Oid->FriendlyName, extension->Oid->Value );
-            if ( extension->Oid->FriendlyName == L"Key Usage" )
-            {
-               X509KeyUsageExtension^ ext = dynamic_cast<X509KeyUsageExtension^>(extension);
-               Console::WriteLine( ext->KeyUsages );
-            }
-            if ( extension->Oid->FriendlyName == L"Basic Constraints" )
-            {
-               X509BasicConstraintsExtension^ ext = dynamic_cast<X509BasicConstraintsExtension^>(extension);
-               Console::WriteLine( ext->CertificateAuthority );
-               Console::WriteLine( ext->HasPathLengthConstraint );
-               Console::WriteLine( ext->PathLengthConstraint );
-            }
-            if ( extension->Oid->FriendlyName == L"Subject Key Identifier" )
-            {
-               X509SubjectKeyIdentifierExtension^ ext = dynamic_cast<X509SubjectKeyIdentifierExtension^>(extension);
-               Console::WriteLine( ext->SubjectKeyIdentifier );
-            }
-            if ( extension->Oid->FriendlyName == L"Enhanced Key Usage" )
-            {
-               X509EnhancedKeyUsageExtension^ ext = dynamic_cast<X509EnhancedKeyUsageExtension^>(extension);
-               OidCollection^ oids = ext->EnhancedKeyUsages;
-               System::Collections::IEnumerator^ myEnum1 = oids->GetEnumerator();
-               while ( myEnum1->MoveNext() )
-               {
-                  Oid^ oid = safe_cast<Oid^>(myEnum1->Current);
-                  Console::WriteLine( L"{0}({1})", oid->FriendlyName, oid->Value );
-               }
-            }
-         }
-
-      }
-      store->Close();
+      
+      // Note: In cases where a random key is generated,   
+      // a key container is not created until you call  
+      // a method that uses the key.  This example calls
+      // the Encrypt method before calling the
+      // CspKeyContainerInfo property so that a key
+      // container is created.  
+      // Create some data to encrypt and display it.
+      String^ data = L"Here is some data to encrypt.";
+      Console::WriteLine( L"Data to encrypt: {0}", data );
+      
+      // Convert the data to an array of bytes and 
+      // encrypt it.
+      array<Byte>^byteData = Encoding::ASCII->GetBytes( data );
+      array<Byte>^encData = rsa->Encrypt( byteData, false );
+      
+      // Display the encrypted value.
+      Console::WriteLine( L"Encrypted Data: {0}", Encoding::ASCII->GetString( encData ) );
+      Console::WriteLine();
+      Console::WriteLine( L"CspKeyContainerInfo information:" );
+      Console::WriteLine();
+      
+      // Create a new CspKeyContainerInfo object.
+      CspKeyContainerInfo^ keyInfo = rsa->CspKeyContainerInfo;
+      
+      // Display the value of each property.
+      Console::WriteLine( L"Accessible property: {0}", keyInfo->Accessible );
+      Console::WriteLine( L"Exportable property: {0}", keyInfo->Exportable );
+      Console::WriteLine( L"HardwareDevice property: {0}", keyInfo->HardwareDevice );
+      Console::WriteLine( L"KeyContainerName property: {0}", keyInfo->KeyContainerName );
+      Console::WriteLine( L"KeyNumber property: {0}", keyInfo->KeyNumber );
+      Console::WriteLine( L"MachineKeyStore property: {0}", keyInfo->MachineKeyStore );
+      Console::WriteLine( L"Protected property: {0}", keyInfo->Protected );
+      Console::WriteLine( L"ProviderName property: {0}", keyInfo->ProviderName );
+      Console::WriteLine( L"ProviderType property: {0}", keyInfo->ProviderType );
+      Console::WriteLine( L"RandomlyGenerated property: {0}", keyInfo->RandomlyGenerated );
+      Console::WriteLine( L"Removable property: {0}", keyInfo->Removable );
+      Console::WriteLine( L"UniqueKeyContainerName property: {0}", keyInfo->UniqueKeyContainerName );
    }
-   catch ( CryptographicException^ ) 
+   catch ( Exception^ e ) 
    {
-      Console::WriteLine( L"Information could not be written out for this certificate." );
+      Console::WriteLine( e );
+   }
+   finally
+   {
+      
+      // Clear the key.
+      rsa->Clear();
    }
 
 }

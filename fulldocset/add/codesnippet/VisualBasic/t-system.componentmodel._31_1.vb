@@ -1,13 +1,4 @@
-        <Category("Data"), _
-        Description("Indicates the source of data for the control."), _
-        RefreshProperties(RefreshProperties.Repaint), _
-        AttributeProvider(GetType(IListSource))> _
-        Public Property DataSource() As Object
-            Get
-                Return Me.dataGridView1.DataSource
-            End Get
-
-            Set(ByVal value As Object)
-                Me.dataGridView1.DataSource = value
-            End Set
-        End Property
+            Dim bVal As Boolean = True
+            Dim strA As String = "false"
+            Console.WriteLine(TypeDescriptor.GetConverter(bVal).ConvertTo(bVal, GetType(String)))
+            Console.WriteLine(TypeDescriptor.GetConverter(bVal).ConvertFrom(strA))

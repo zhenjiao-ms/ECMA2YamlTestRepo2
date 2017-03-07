@@ -1,179 +1,130 @@
-<!-- 
-The following example demonstrates how to create XmlDocument and 
-XslTransform objects from the sample XML and XSL Transform files. 
-The objects are then used by the Xml control to display the XML 
-document. Make sure the sample XML file is called People.xml and 
-the sample XSL Transform file is called Peopletable.xsl.
--->
+<%@ Page Language="VB" 
+    Codefile="webpartzonecollection_overview.vb" 
+    Inherits="webpartzonecollection_overview" %>
 
-<%@ Page Language="VB" AutoEventWireup="True" %>
-<%@ Import Namespace="System.Xml" %>
-<%@ Import Namespace="System.Xml.Xsl" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
 <html xmlns="http://www.w3.org/1999/xhtml" >
-   <script runat="server">
-      Sub Page_Load(sender As Object, e As EventArgs)
-         Dim doc As XmlDocument = New XmlDocument()
-         doc.Load(Server.MapPath("people.xml"))
-
-         Dim trans As XslTransform = new XslTransform()
-         trans.Load(Server.MapPath("peopletable.xsl"))
-
-         xml1.Document = doc
-         xml1.Transform = trans
-      End Sub
-</script>
-<head runat="server">
-    <title>Xml Class Example</title>
+<head id="Head1" runat="server">
+    <title>WebPartZoneCollection Demo</title>
 </head>
 <body>
-   <h3>Xml Example</h3>
-   <form id="form1" runat="server">
-      <asp:Xml id="xml1" runat="server" />
-   </form>
+    <form id="form1" runat="server">
+    <div>
+    <asp:WebPartManager ID="mgr" runat="server" />
+    <asp:Table ID="Table1" runat="server">
+      <asp:TableRow>
+        <asp:TableCell>
+          <asp:Label ID="lblZone1" runat="server" 
+            Font-Bold="true"
+            AssociatedControlID="WebPartZone1">
+            WebPartZone1 Contents
+          </asp:Label>
+          <asp:WebPartZone ID="WebPartZone1" 
+            runat="server" Width="230">
+            <ZoneTemplate>
+              <asp:BulletedList 
+                ID="BulletedList1" 
+                Runat="server"
+                DisplayMode="HyperLink"
+                Title="Favorite Links">
+                <asp:ListItem 
+                  Value="http://msdn.microsoft.com">
+                  MSDN
+                </asp:ListItem>
+                <asp:ListItem Value="http://www.asp.net">
+                  ASP.NET
+                </asp:ListItem>
+                <asp:ListItem Value="http://www.msn.com">
+                  MSN
+                </asp:ListItem>
+              </asp:BulletedList>      
+            </ZoneTemplate>
+          </asp:WebPartZone>
+          <div>
+          <asp:Label ID="lblZone2" runat="server" 
+            Font-Bold="true"
+            AssociatedControlID="WebPartZone2">
+            WebPartZone2 Contents
+          </asp:Label>
+          </div>
+          <asp:WebPartZone ID="WebPartZone2" 
+            runat="server" Width="230">
+            <ZoneTemplate>
+              <asp:Calendar ID="Calendar1" 
+                runat="server" 
+                Title="My Calendar" 
+                CatalogIconImageUrl="Mine.gif" />
+            </ZoneTemplate>
+          </asp:WebPartZone> 
+        </asp:TableCell>
+        <asp:TableCell VerticalAlign="top"> 
+          <asp:Label ID="lblZone3" runat="server" 
+            Font-Bold="true" 
+            AssociatedControlID="WebPartZone3">
+            WebPartZone3 Contents
+          </asp:Label>
+          <asp:WebPartZone ID="WebPartZone3" runat="server">
+            <ZoneTemplate>
+              <asp:Table runat="server" ID="table2" 
+                Title="Employee Extensions">
+                <asp:TableHeaderRow>
+                  <asp:TableHeaderCell Scope="Column">
+                    Employee Name</asp:TableHeaderCell>
+                  <asp:TableHeaderCell Scope="Column">
+                    Extension</asp:TableHeaderCell>
+                </asp:TableHeaderRow>
+                <asp:TableRow>
+                  <asp:TableCell>Alberts, Amy</asp:TableCell>
+                  <asp:TableCell>x9764</asp:TableCell>
+                </asp:TableRow>                
+                <asp:TableRow>
+                  <asp:TableCell>Hanif, Karim</asp:TableCell>
+                  <asp:TableCell>x3240</asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                  <asp:TableCell>Penor, Lori</asp:TableCell>
+                  <asp:TableCell>x4165</asp:TableCell>
+                </asp:TableRow>
+              </asp:Table>
+            </ZoneTemplate>
+          </asp:WebPartZone>
+        </asp:TableCell>
+      </asp:TableRow>
+    </asp:Table>
+    </div>
+    <hr />
+    <asp:Table ID="Table3" runat="server">
+      <asp:TableRow>
+        <asp:TableCell>
+          <asp:Button ID="Button1" runat="server" 
+            Width ="200" OnClick="Button1_Click" 
+            Text="Total Zone Count" />
+          <br />
+          <asp:Button ID="Button2" runat="server" 
+            Width ="200" OnClick="Button2_Click"
+            Text="Coll. Contains WebPartZone2" />
+          <br />
+          <asp:Button ID="Button3" runat="server" 
+            Width ="200" OnClick="Button3_Click"
+            Text="Zone Names from Array" />
+          <br />
+          <asp:Button ID="Button4" runat="server" 
+            Width ="200" OnClick="Button4_Click"
+            Text="WebPartZone1 Index" />  
+          <br />
+          <asp:Button ID="Button5" runat="server" 
+            Width ="200" OnClick="Button5_Click"
+            Text="Toggle Verb Render Mode" />
+        </asp:TableCell>
+        <asp:TableCell HorizontalAlign="right" 
+          Width="200" VerticalAlign="top">
+          <asp:Label ID="Label1" runat="server" 
+            Font-Bold="true" />
+        </asp:TableCell>  
+      </asp:TableRow>
+    </asp:Table>
+    </form>
 </body>
 </html>
-
-<!-- 
-For this example to work, paste the following code into a file
-named peopletable.xsl. Store the file in the same directory as
-your .aspx file.
-
-<?xml version="1.0" encoding="utf-8"?>
-
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:template match="/People">
-    <xsl:apply-templates select="Person" />
-  </xsl:template>
-
-  <xsl:template match="Person">
-    <table width="100%" border="1">
-      <tr>
-        <td>
-          <b>
-            <xsl:value-of select="Name/FirstName" />
-            &#160;
-            <xsl:value-of select="Name/LastName" />
-          </b>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <xsl:value-of select="Address/Street" /><br />
-          <xsl:value-of select="Address/City" />
-          ,
-          <xsl:value-of select="Address/State" />
-          <xsl:value-of select="Address/Zip" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Job Title: <xsl:value-of select="Job/Title" /><br />
-          Description: <xsl:value-of select="Job/Description" />
-        </td>
-      </tr>
-    </table>
-  </xsl:template>
-
-  <xsl:template match="bookstore">
-
-      <bookstore>
-         <xsl:apply-templates select="book"/>
-      </bookstore>
-   </xsl:template>
-
-   <xsl:template match="book">
-      <book>
-         <xsl:attribute name="ISBN">
-            <xsl:value-of select="@ISBN"/>
-         </xsl:attribute>
-         <price>
-            <xsl:value-of select="price"/>
-         </price>
-         <xsl:text>
-         </xsl:text>
-      </book>
-   </xsl:template>
-
-</xsl:stylesheet>
-
--->
-
-<!--
-For this example to work, paste the following code into a file 
-named people.xml. Store the file in the same directory as 
-your .aspx file.
-
-<?xml version="1.0" encoding="utf-8" ?>
-<People>
-  <Person>
-    <Name>
-      <FirstName>Joe</FirstName>
-      <LastName>Suits</LastName>
-    </Name>
-    <Address>
-      <Street>1800 Success Way</Street>
-      <City>Redmond</City>
-      <State>WA</State>
-      <ZipCode>98052</ZipCode>
-    </Address>
-    <Job>
-      <Title>CEO</Title>
-      <Description>Wears the nice suit</Description>
-    </Job>
-  </Person>
-
-  <Person>
-    <Name>
-      <FirstName>Linda</FirstName>
-      <LastName>Sue</LastName>
-    </Name>
-    <Address>
-      <Street>1302 American St.</Street>
-      <City>Paso Robles</City>
-      <State>CA</State>
-      <ZipCode>93447</ZipCode>
-    </Address>
-    <Job>
-      <Title>Attorney</Title>
-      <Description>Stands up for justice</Description>
-    </Job>
-  </Person>
-
-  <Person>
-    <Name>
-      <FirstName>Jeremy</FirstName>
-      <LastName>Boards</LastName>
-    </Name>
-    <Address>
-      <Street>34 Palm Avenue</Street>
-      <City>Waikiki</City>
-      <State>HI</State>
-      <ZipCode>98052</ZipCode>
-    </Address>
-    <Job>
-      <Title>Pro Surfer</Title>
-      <Description>Rides the big waves</Description>
-    </Job>
-  </Person>
-
-  <Person>
-    <Name>
-      <FirstName>Joan</FirstName>
-      <LastName>Page</LastName>
-    </Name>
-    <Address>
-      <Street>700 Webmaster Road</Street>
-      <City>Redmond</City>
-      <State>WA</State>
-      <ZipCode>98073</ZipCode>
-    </Address>
-    <Job>
-      <Title>Web Site Developer</Title>
-      <Description>Writes the pretty pages</Description>
-    </Job>
-  </Person>
-</People>
-
--->

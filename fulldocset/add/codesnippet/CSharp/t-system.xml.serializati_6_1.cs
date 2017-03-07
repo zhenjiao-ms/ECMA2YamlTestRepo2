@@ -1,81 +1,112 @@
 using System;
+using System.Collections;
 using System.IO;
-using System.Xml;
 using System.Xml.Serialization;
 
-public class Group{
-   public string GroupName;
-   public GroupType Grouptype;
+public class Group
+{
+   /* Set the element name and namespace of the XML element.
+   By applying an XmlElementAttribute to an array,  you instruct
+   the XmlSerializer to serialize the array as a series of XML
+   elements, instead of a nested set of elements. */
+   
+   [XmlElement(
+   ElementName = "Members",
+   Namespace = "http://www.cpandl.com")]
+   public Employee[] Employees;
+      
+   [XmlElement(DataType = "double",
+   ElementName = "Building")]
+   public double GroupID;
+
+   [XmlElement(DataType = "hexBinary")]
+   public byte [] HexBytes;
+
+
+   [XmlElement(DataType = "boolean")]
+   public bool IsActive;
+
+   [XmlElement(Type = typeof(Manager))]
+   public Employee Manager;
+
+   [XmlElement(typeof(int),
+   ElementName = "ObjectNumber"),
+   XmlElement(typeof(string),
+   ElementName = "ObjectString")]
+   public ArrayList ExtraInfo;
+}   
+
+public class Employee
+{
+   public string Name;
 }
 
-public enum GroupType{
-   // Use the SoapEnumAttribute to instruct the XmlSerializer
-   // to generate Small and Large instead of A and B.
-   [SoapEnum("Small")]
-   A,
-   [SoapEnum("Large")]
-   B
+public class Manager:Employee{
+   public int Level;
 }
- 
-public class Run {
-   static void Main(){
-      Run test= new Run();
-      test.SerializeObject("SoapEnum.xml");
-      test.SerializeOverride("SoapOverride.xml");
-      Console.WriteLine("Fininished writing two files");
-   }
 
-     private void SerializeObject(string filename){
-      // Create an instance of the XmlSerializer Class.
-      XmlTypeMapping mapp  =
-      (new SoapReflectionImporter()).ImportTypeMapping(typeof(Group));
-      XmlSerializer mySerializer =  new XmlSerializer(mapp);
+public class Run
+{
+    public static void Main()
+    {
+       Run test = new Run();
+       test.SerializeObject("FirstDoc.xml");
+       test.DeserializeObject("FirstDoc.xml");
+    }
 
-      // Writing the file requires a TextWriter.
+
+   public void SerializeObject(string filename)
+   {
+      // Create the XmlSerializer.
+      XmlSerializer s = new XmlSerializer(typeof(Group));
+
+      // To write the file, a TextWriter is required.
       TextWriter writer = new StreamWriter(filename);
 
-      // Create an instance of the Class that will be serialized.
-      Group myGroup = new Group();
+      /* Create an instance of the group to serialize, and set
+         its properties. */
+      Group group = new Group();
+      group.GroupID = 10.089f;
+      group.IsActive = false;
+      
+      group.HexBytes = new byte[1]{Convert.ToByte(100)};
 
-      // Set the object properties.
-      myGroup.GroupName = ".NET";
-      myGroup.Grouptype= GroupType.A;
+      Employee x = new Employee();
+      Employee y = new Employee();
 
-      // Serialize the Class, and close the TextWriter.
-      mySerializer.Serialize(writer, myGroup);
-       writer.Close();
+      x.Name = "Jack";
+      y.Name = "Jill";
+      
+      group.Employees = new Employee[2]{x,y};
+
+      Manager mgr = new Manager();
+      mgr.Name = "Sara";
+      mgr.Level = 4;
+      group.Manager = mgr;
+
+      /* Add a number and a string to the 
+      ArrayList returned by the ExtraInfo property. */
+      group.ExtraInfo = new ArrayList();
+      group.ExtraInfo.Add(42);
+      group.ExtraInfo.Add("Answer");
+
+      // Serialize the object, and close the TextWriter.      
+      s.Serialize(writer, group);
+      writer.Close();
    }
 
-   private void SerializeOverride(string fileName){
-      SoapAttributeOverrides soapOver = new SoapAttributeOverrides();
-      SoapAttributes SoapAtts = new SoapAttributes();
-
-      // Add a SoapEnumAttribute for the GroupType.A enumerator.       
-      // Instead of 'A'  it will be "West".
-      SoapEnumAttribute soapEnum = new SoapEnumAttribute("West");
-      // Override the "A" enumerator.
-      SoapAtts.SoapEnum = soapEnum;
-      soapOver.Add(typeof(GroupType), "A", SoapAtts);
-
-      // Add another SoapEnumAttribute for the GroupType.B enumerator.
-      // Instead of //B// it will be "East".
-      SoapAtts= new SoapAttributes();
-      soapEnum = new SoapEnumAttribute();
-      soapEnum.Name = "East";
-      SoapAtts.SoapEnum = soapEnum;
-      soapOver.Add(typeof(GroupType), "B", SoapAtts);
-
-      // Create an XmlSerializer used for overriding.
-      XmlTypeMapping map = 
-      new SoapReflectionImporter(soapOver).
-      ImportTypeMapping(typeof(Group));
-      XmlSerializer ser = new XmlSerializer(map);
-      Group myGroup = new Group();
-      myGroup.GroupName = ".NET";
-      myGroup.Grouptype = GroupType.B;
-      // Writing the file requires a TextWriter.
-      TextWriter writer = new StreamWriter(fileName);
-      ser.Serialize(writer, myGroup);
-      writer.Close();
-   	}
+   public void DeserializeObject(string filename)
+   {
+      FileStream fs = new FileStream(filename, FileMode.Open);
+      XmlSerializer x = new XmlSerializer(typeof(Group));
+      Group g = (Group) x.Deserialize(fs);
+      Console.WriteLine(g.Manager.Name);
+      Console.WriteLine(g.GroupID);
+      Console.WriteLine(g.HexBytes[0]);
+      foreach(Employee e in g.Employees)
+      {
+         Console.WriteLine(e.Name);
+      }
+   }
 }
+   

@@ -1,69 +1,55 @@
-<%@Page  Language="VB" %>
+<%@ Page Language="VB" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <script runat="server">
-Private Sub InsertShipper (ByVal Source As Object, ByVal e As EventArgs)
-  SqlDataSource1.Insert()
-End Sub ' InsertShipper
+
+    Protected Sub SqlDataSource1_Filtering(ByVal sender As Object, _
+        ByVal e As System.Web.UI.WebControls.SqlDataSourceFilteringEventArgs)
+        Label1.Text = e.ParameterValues(0).ToString()
+    End Sub
 </script>
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head runat="server">
+    <head runat="server">
     <title>ASP.NET Example</title>
 </head>
 <body>
-    <form id="form1" runat="server">
+        <form id="form1" runat="server">
 
-      <asp:dropdownlist
-        id="DropDownList1"
-        runat="server"
-        datasourceid="SqlDataSource1"
-        datatextfield="CompanyName"
-        datavaluefield="ShipperID" />
+            <p>Show all employees with the following title:
+            <asp:DropDownList
+                id="DropDownList1"
+                runat="server"
+                AutoPostBack="True">
+                <asp:ListItem>Sales Representative</asp:ListItem>
+                <asp:ListItem>Sales Manager</asp:ListItem>
+                <asp:ListItem>Vice President, Sales</asp:ListItem>
+            </asp:DropDownList></p>
 
-<!-- Security Note: The SqlDataSource uses a FormParameter,
-     Security Note: which does not perform validation of input from the client.
-     Security Note: To validate the value of the FormParameter, handle the Inserting event. -->
+            <asp:SqlDataSource
+                id="SqlDataSource1"
+                runat="server"
+                ConnectionString="<%$ ConnectionStrings:NorthwindConnection %>"
+                SelectCommand="SELECT EmployeeID,FirstName,LastName,Title FROM Employees"
+                FilterExpression="Title='{0}'" OnFiltering="SqlDataSource1_Filtering">
+                <FilterParameters>
+                    <asp:ControlParameter Name="Title" ControlId="DropDownList1" PropertyName="SelectedValue"/>
+                </FilterParameters>
+            </asp:SqlDataSource><br />
 
-      <asp:sqldatasource
-        id="SqlDataSource1"
-        runat="server"
-        connectionstring="<%$ ConnectionStrings:MyNorthwind %>"
-        selectcommand="SELECT CompanyName,ShipperID FROM Shippers"
-        insertcommand="INSERT INTO Shippers (CompanyName,Phone) VALUES (@CoName,@Phone)">
-          <insertparameters>
-            <asp:formparameter name="CoName" formfield="CompanyNameBox" />
-            <asp:formparameter name="Phone"  formfield="PhoneBox" />
-          </insertparameters>
-      </asp:sqldatasource>
+            <asp:GridView
+                id="GridView1"
+                runat="server"
+                DataSourceID="SqlDataSource1"
+                AutoGenerateColumns="False">
+                <columns>
+                    <asp:BoundField Visible="False" DataField="EmployeeID" />
+                    <asp:BoundField HeaderText="First Name" DataField="FirstName" />
+                    <asp:BoundField HeaderText="Last Name" DataField="LastName" />
+                </columns>
+            </asp:GridView>
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
-      <br /><asp:textbox
-           id="CompanyNameBox"
-           runat="server" />
-
-      <asp:RequiredFieldValidator
-        id="RequiredFieldValidator1"
-        runat="server"
-        ControlToValidate="CompanyNameBox"
-        Display="Static"
-        ErrorMessage="Please enter a company name." />
-
-      <br /><asp:textbox
-           id="PhoneBox"
-           runat="server" />
-
-      <asp:RequiredFieldValidator
-        id="RequiredFieldValidator2"
-        runat="server"
-        ControlToValidate="PhoneBox"
-        Display="Static"
-        ErrorMessage="Please enter a phone number." />
-
-      <br /><asp:button
-           id="Button1"
-           runat="server"
-           text="Insert New Shipper"
-           onclick="InsertShipper" />
-
-    </form>
-  </body>
+        </form>
+    </body>
 </html>

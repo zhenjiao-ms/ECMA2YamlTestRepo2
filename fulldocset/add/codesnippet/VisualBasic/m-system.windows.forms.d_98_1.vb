@@ -1,9 +1,6 @@
-    ' Force the cell to repaint itself when the mouse pointer enters it.
-    Protected Overrides Sub OnMouseEnter(ByVal rowIndex As Integer)
-        Me.DataGridView.InvalidateCell(Me)
-    End Sub
-
-    ' Force the cell to repaint itself when the mouse pointer leaves it.
-    Protected Overrides Sub OnMouseLeave(ByVal rowIndex As Integer)
-        Me.DataGridView.InvalidateCell(Me)
-    End Sub
+Private Sub AddDataGridBoolColumnStyle()
+   Dim myColumn As DataGridBoolColumn  = new DataGridBoolColumn()
+   myColumn.MappingName = "Current"
+   myColumn.Width = 200
+   dataGrid1.TableStyles("Customers").GridColumnStyles.Add(myColumn)
+End Sub 

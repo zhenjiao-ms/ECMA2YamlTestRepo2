@@ -1,36 +1,16 @@
-Public Class CustomizedTreeView
-    Inherits TreeView
-
-    Public Sub New()
-        ' Customize the TreeView control by setting various properties.
-        BackColor = System.Drawing.Color.CadetBlue
-        FullRowSelect = True
-        HotTracking = True
-        Indent = 34
-        ShowPlusMinus = False
-
-        ' The ShowLines property must be false for the FullRowSelect 
-        ' property to work.
-        ShowLines = False
-    End Sub 'New
-
-
-    Protected Overrides Sub OnAfterSelect(ByVal e As TreeViewEventArgs)
-        ' Confirm that the user initiated the selection.
-        ' This prevents the first node from expanding when it is
-        ' automatically selected during the initialization of 
-        ' the TreeView control.
-        If e.Action <> TreeViewAction.Unknown Then
-            If e.Node.IsExpanded Then
-                e.Node.Collapse()
-            Else
-                e.Node.Expand()
-            End If
-        End If
-
-        ' Remove the selection. This allows the same node to be
-        ' clicked twice in succession to toggle the expansion state.
-        SelectedNode = Nothing
-    End Sub 'OnAfterSelect
-
-End Class 'CustomizedTreeView 
+      ' The following code example demonstrates the syntax for setting
+      ' various ToolStripComboBox properties.
+      ' 
+      toolStripComboBox1.AutoCompleteCustomSource.AddRange(New String() {"aaa", "bbb", "ccc"})
+      toolStripComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+      toolStripComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+      toolStripComboBox1.DropDownHeight = 110
+      toolStripComboBox1.DropDownWidth = 122
+      toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard
+      toolStripComboBox1.IntegralHeight = False
+      toolStripComboBox1.Items.AddRange(New Object() {"xxx", "yyy", "zzz"})
+      toolStripComboBox1.MaxDropDownItems = 9
+      toolStripComboBox1.MergeAction = System.Windows.Forms.MergeAction.Insert
+      toolStripComboBox1.Name = "toolStripComboBox1"
+      toolStripComboBox1.Size = New System.Drawing.Size(121, 25)
+      toolStripComboBox1.Sorted = True

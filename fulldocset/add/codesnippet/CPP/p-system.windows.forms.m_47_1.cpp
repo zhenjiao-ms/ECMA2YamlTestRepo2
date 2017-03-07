@@ -1,131 +1,109 @@
-// The following code example demonstrates using the MenuItem 
-// Merge-Order property to control the way a merged menu is displayed.
-using namespace System::Windows::Forms;
+#using <System.dll>
+#using <System.Windows.Forms.dll>
+#using <System.Drawing.dll>
 
-//Declare a MainMenu object and its items.
+using namespace System;
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
 public ref class Form1: public System::Windows::Forms::Form
 {
-public private:
-   System::Windows::Forms::MainMenu^ mainMenu1;
-   System::Windows::Forms::MenuItem^ fileItem;
-   System::Windows::Forms::MenuItem^ newItem;
-   System::Windows::Forms::MenuItem^ openItem;
-   System::Windows::Forms::MenuItem^ saveItem;
-   System::Windows::Forms::MenuItem^ optionsMenu;
-   System::Windows::Forms::MenuItem^ viewItem;
-   System::Windows::Forms::MenuItem^ toolsItem;
-
-   // Declare a ContextMenu object and its items.
-   System::Windows::Forms::ContextMenu^ contextMenu1;
-   System::Windows::Forms::MenuItem^ cutItem;
-   System::Windows::Forms::MenuItem^ copyItem;
-   System::Windows::Forms::MenuItem^ pasteItem;
+private:
+   System::Windows::Forms::MonthCalendar^ monthCalendar1;
+   System::Windows::Forms::TextBox^ textBox1;
 
 public:
    Form1()
-      : Form()
    {
-      this->mainMenu1 = gcnew System::Windows::Forms::MainMenu;
-      this->fileItem = gcnew System::Windows::Forms::MenuItem;
-      this->newItem = gcnew System::Windows::Forms::MenuItem;
-      this->openItem = gcnew System::Windows::Forms::MenuItem;
-      this->saveItem = gcnew System::Windows::Forms::MenuItem;
-      this->viewItem = gcnew System::Windows::Forms::MenuItem;
-      this->toolsItem = gcnew System::Windows::Forms::MenuItem;
-      this->optionsMenu = gcnew System::Windows::Forms::MenuItem;
-      this->toolsItem = gcnew System::Windows::Forms::MenuItem;
-      this->viewItem = gcnew System::Windows::Forms::MenuItem;
-      this->contextMenu1 = gcnew System::Windows::Forms::ContextMenu;
-      this->cutItem = gcnew System::Windows::Forms::MenuItem;
-      this->copyItem = gcnew System::Windows::Forms::MenuItem;
-      this->pasteItem = gcnew System::Windows::Forms::MenuItem;
+      this->textBox1 = gcnew System::Windows::Forms::TextBox;
+      this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+      this->textBox1->Location = System::Drawing::Point( 48, 488 );
+      this->textBox1->Multiline = true;
+      this->textBox1->ReadOnly = true;
+      this->textBox1->Size = System::Drawing::Size( 824, 32 );
       
-      //Add file menu item and options menu item to the MainMenu.
-      array<System::Windows::Forms::MenuItem^>^temp0 = {this->fileItem,this->optionsMenu};
-      this->mainMenu1->MenuItems->AddRange( temp0 );
+      // Create the calendar.
+      this->monthCalendar1 = gcnew System::Windows::Forms::MonthCalendar;
       
-      // Initialize the file menu and its contents.
-      this->fileItem->Index = 0;
-      this->fileItem->Text = "File";
-      this->newItem->Index = 0;
-      this->newItem->Text = "New";
-      this->openItem->Index = 1;
-      this->openItem->Text = "Open";
-      this->saveItem->Index = 2;
-      this->saveItem->Text = "Save";
+      // Set the calendar location.
+      this->monthCalendar1->Location = System::Drawing::Point( 47, 16 );
       
-      // Set the merge order of fileItem to 2 so it has a lower priority 
-      // on the merged menu.
-      this->fileItem->MergeOrder = 2;
+      // Change the color.
+      this->monthCalendar1->BackColor = System::Drawing::SystemColors::Info;
+      this->monthCalendar1->ForeColor = System::Drawing::Color::FromArgb( ((System::Byte)(192)) ),((System::Byte)(0)),((System::Byte)(192));
+      this->monthCalendar1->TitleBackColor = System::Drawing::Color::Purple;
+      this->monthCalendar1->TitleForeColor = System::Drawing::Color::Yellow;
+      this->monthCalendar1->TrailingForeColor = System::Drawing::Color::FromArgb( ((System::Byte)(192)) ),((System::Byte)(192)),((System::Byte)(0));
       
-      //Add the new items to the fileItem menu item collection.
-      array<MenuItem^>^temp1 = {this->newItem,this->openItem,this->saveItem};
-      this->fileItem->MenuItems->AddRange( temp1 );
+      // Add dates to the AnnuallyBoldedDates array.
+      array<System::DateTime>^ temp1 = {System::DateTime( 2002, 4, 20, 0, 0, 0, 0 ),System::DateTime( 2002, 4, 28, 0, 0, 0, 0 ),System::DateTime( 2002, 5, 5, 0, 0, 0, 0 ),System::DateTime( 2002, 7, 4, 0, 0, 0, 0 ),System::DateTime( 2002, 12, 15, 0, 0, 0, 0 ),System::DateTime( 2002, 12, 18, 0, 0, 0, 0 )};
+      this->monthCalendar1->AnnuallyBoldedDates = temp1;
       
-      // Initalize the optionsMenu item and its contents.
-      this->optionsMenu->Index = 1;
-      this->optionsMenu->Text = "Options";
-      this->viewItem->Index = 0;
-      this->viewItem->Text = "View";
-      this->toolsItem->Index = 1;
-      this->toolsItem->Text = "Tools";
+      // Add dates to BoldedDates array.
+      array<System::DateTime>^ temp2 = {System::DateTime( 2002, 9, 26, 0, 0, 0, 0 )};
+      this->monthCalendar1->BoldedDates = temp2;
       
-      // Set mergeOrder property to 1, so it has a higher priority than
-      // the fileItem on the merged menu.
-      this->optionsMenu->MergeOrder = 1;
+      // Add dates to MonthlyBoldedDates array.
+      array<System::DateTime>^ temp5 = {System::DateTime( 2002, 1, 15, 0, 0, 0, 0 ),System::DateTime( 2002, 1, 30, 0, 0, 0, 0 )};
+      this->monthCalendar1->MonthlyBoldedDates = temp5;
       
-      //Add view and tool items to the optionsItem menu item.
-      array<MenuItem^>^temp2 = {this->viewItem,this->toolsItem};
-      this->optionsMenu->MenuItems->AddRange( temp2 );
+      // Configure the calendar to display 3 rows by 4 columns of months.
+      this->monthCalendar1->CalendarDimensions = System::Drawing::Size( 4, 3 );
       
-      // Initialize the menu items for the shortcut menu.
-      this->cutItem->Index = 0;
-      this->cutItem->Text = "Cut";
-      this->cutItem->MergeOrder = 0;
-      this->copyItem->Index = 1;
-      this->copyItem->Text = "Copy";
-      this->copyItem->MergeOrder = 0;
-      this->pasteItem->Index = 2;
-      this->pasteItem->Text = "Paste";
-      this->pasteItem->MergeOrder = 0;
+      // Set week to begin on Monday.
+      this->monthCalendar1->FirstDayOfWeek = System::Windows::Forms::Day::Monday;
       
-      // Add menu items to the shortcut menu.
-      array<MenuItem^>^temp3 = {cutItem,copyItem,pasteItem};
-      this->contextMenu1->MenuItems->AddRange( temp3 );
+      // Set the maximum visible date on the calendar to 12/31/2010.
+      this->monthCalendar1->MaxDate = System::DateTime( 2010, 12, 31, 0, 0, 0, 0 );
       
-      // Add the mainMenu1 items to the shortcut menu as well, by
-      // calling the MergeMenu method.
-      contextMenu1->MergeMenu( mainMenu1 );
+      // Set the minimum visible date on calendar to 12/31/2010.
+      this->monthCalendar1->MinDate = System::DateTime( 1999, 1, 1, 0, 0, 0, 0 );
       
-      //Initialize the form.
-      this->ClientSize = System::Drawing::Size( 292, 266 );
-      this->Name = "Form1";
-      this->Text = "Right click on form for merged menu.";
+      // Only allow 21 days to be selected at the same time.
+      this->monthCalendar1->MaxSelectionCount = 21;
       
-      // Associate the event-handling method with the
-      // MouseDown event.
-      this->MouseDown += gcnew MouseEventHandler( this, &Form1::Form1_MouseDown );
+      // Set the calendar to move one month at a time when navigating using the arrows.
+      this->monthCalendar1->ScrollChange = 1;
       
-      // Add mainMenu1 to the form.
-      this->Menu = mainMenu1;
+      // Do not show the S"Today" banner.
+      this->monthCalendar1->ShowToday = false;
+      
+      // Do not circle today's date.
+      this->monthCalendar1->ShowTodayCircle = false;
+      
+      // Show the week numbers to the left of each week.
+      this->monthCalendar1->ShowWeekNumbers = true;
+      
+      // Add event handlers for the DateSelected and DateChanged events
+      this->monthCalendar1->DateSelected += gcnew System::Windows::Forms::DateRangeEventHandler( this, &Form1::monthCalendar1_DateSelected );
+      this->monthCalendar1->DateChanged += gcnew System::Windows::Forms::DateRangeEventHandler( this, &Form1::monthCalendar1_DateChanged );
+      
+      // Set up how the form should be displayed and add the controls to the form.
+      this->ClientSize = System::Drawing::Size( 920, 566 );
+      array<System::Windows::Forms::Control^>^temp0 = {this->textBox1,this->monthCalendar1};
+      this->Controls->AddRange( temp0 );
+      this->Text = "Month Calendar Example";
    }
 
 
 private:
-   void Form1_MouseDown( Object^ /*sender*/, MouseEventArgs^ e )
+   void monthCalendar1_DateSelected( Object^ /*sender*/, System::Windows::Forms::DateRangeEventArgs^ e )
    {
       
-      // Check for a right mouse click.
-      if ( e->Button == ::MouseButtons::Right )
-      {
-         contextMenu1->Show( this, System::Drawing::Point( 30, 30 ) );
-      }
+      // Show the start and end dates in the text box.
+      this->textBox1->Text = String::Format( "Date Selected: Start = {0} : End = {1}", e->Start.ToShortDateString(), e->End.ToShortDateString() );
+   }
+
+   void monthCalendar1_DateChanged( Object^ /*sender*/, System::Windows::Forms::DateRangeEventArgs^ e )
+   {
+      
+      // Show the start and end dates in the text box.
+      this->textBox1->Text = String::Format( "Date Changed: Start = {0} : End = {1}", e->Start.ToShortDateString(), e->End.ToShortDateString() );
    }
 
 };
 
 
-[System::STAThreadAttribute]
+[STAThread]
 int main()
 {
    Application::Run( gcnew Form1 );

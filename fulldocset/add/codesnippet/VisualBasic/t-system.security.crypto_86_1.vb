@@ -18,33 +18,23 @@ Module Program
             xmlDoc.Load("test.xml")
         Catch e As Exception
             Console.WriteLine(e.Message)
-            Return
         End Try
 
         ' Create a new RSA key.  This key will encrypt a symmetric key,
         ' which will then be imbedded in the XML document.  
-        Dim rsaKey = New RSACryptoServiceProvider()
+        Dim rsaKey As New RSACryptoServiceProvider()
 
 
         Try
             ' Encrypt the "creditcard" element.
             Encrypt(xmlDoc, "creditcard", rsaKey, "rsaKey")
 
-            ' Display the encrypted XML to the console.
-            Console.WriteLine("Encrypted XML:")
-            Console.WriteLine()
-            Console.WriteLine(xmlDoc.OuterXml)
-            xmlDoc.Save("test.xml")
+            ' Inspect the EncryptedKey element.
+            InspectElement(xmlDoc)
 
             ' Decrypt the "creditcard" element.
             Decrypt(xmlDoc, rsaKey, "rsaKey")
 
-            ' Display the encrypted XML to the console.
-            Console.WriteLine()
-            Console.WriteLine("Decrypted XML:")
-            Console.WriteLine()
-            Console.WriteLine(xmlDoc.OuterXml)
-            xmlDoc.Save("test.xml")
         Catch e As Exception
             Console.WriteLine(e.Message)
         Finally
@@ -55,45 +45,45 @@ Module Program
     End Sub
 
 
-    Sub Encrypt(ByVal Doc As XmlDocument, ByVal ElementToEncrypt As String, ByVal Alg As RSA, ByVal KeyName As String)
+    Sub Encrypt(ByVal Doc As XmlDocument, ByVal ElementToEncryptValue As String, ByVal Alg As RSA, ByVal KeyName As String)
         ' Check the arguments.  
         If Doc Is Nothing Then
             Throw New ArgumentNullException("Doc")
         End If
-        If ElementToEncrypt Is Nothing Then
+        If ElementToEncryptValue Is Nothing Then
             Throw New ArgumentNullException("ElementToEncrypt")
         End If
         If Alg Is Nothing Then
             Throw New ArgumentNullException("Alg")
         End If
-        '''''''''''''''''''''''''''''''''''''''''''''''''''
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
         ' Find the specified element in the XmlDocument
         ' object and create a new XmlElemnt object.
-        '''''''''''''''''''''''''''''''''''''''''''''''''''
-        Dim elementEncrypt As XmlElement = Doc.GetElementsByTagName(ElementToEncrypt)(0)
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        Dim elementToEncrypt As XmlElement = Doc.GetElementsByTagName(ElementToEncryptValue)(0)
 
         ' Throw an XmlException if the element was not found.
         If elementToEncrypt Is Nothing Then
             Throw New XmlException("The specified element was not found")
         End If
 
-        '''''''''''''''''''''''''''''''''''''''''''''''''''
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
         ' Create a new instance of the EncryptedXml class 
         ' and use it to encrypt the XmlElement with the 
         ' a new random symmetric key.
-        '''''''''''''''''''''''''''''''''''''''''''''''''''
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
         ' Create a 256 bit Rijndael key.
         Dim sessionKey As New RijndaelManaged()
         sessionKey.KeySize = 256
 
         Dim eXml As New EncryptedXml()
 
-        Dim encryptedElement As Byte() = eXml.EncryptData(elementEncrypt, sessionKey, False)
+        Dim encryptedElement As Byte() = eXml.EncryptData(elementToEncrypt, sessionKey, False)
 
-        '''''''''''''''''''''''''''''''''''''''''''''''''''
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
         ' Construct an EncryptedData object and populate
         ' it with the desired encryption information.
-        '''''''''''''''''''''''''''''''''''''''''''''''''''
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
 
         Dim edElement As New EncryptedData()
         edElement.Type = EncryptedXml.XmlEncElementUrl
@@ -110,6 +100,22 @@ Module Program
         ek.CipherData = New CipherData(encryptedKey)
 
         ek.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncRSA15Url)
+
+        ' Save some more information about the key using
+        ' the EncryptionProperty element.  In this example,
+        ' we will save the value "LibVersion1".  You can save
+        ' anything you want here.
+        ' Create a new "EncryptionProperty" XmlElement object. 
+        Dim element As XmlElement = New XmlDocument().CreateElement("EncryptionProperty", EncryptedXml.XmlEncNamespaceUrl)
+
+        ' Set the value of the EncryptionProperty" XmlElement object.
+        element.InnerText = "LibVersion1"
+
+        ' Create the EncryptionProperty object using the XmlElement object. 
+        Dim encProp As New EncryptionProperty(element)
+
+        ' Add the EncryptionProperty object to the EncryptedData object.
+        edElement.AddProperty(encProp)
 
         ' Set the KeyInfo element to specify the
         ' name of the RSA key.
@@ -134,11 +140,11 @@ Module Program
         ' EncryptedData object.
         edElement.CipherData.CipherValue = encryptedElement
 
-        '''''''''''''''''''''''''''''''''''''''''''''''''''
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
         ' Replace the element from the original XmlDocument
         ' object with the EncryptedData element.
-        '''''''''''''''''''''''''''''''''''''''''''''''''''
-        EncryptedXml.ReplaceElement(elementEncrypt, edElement, False)
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, False)
 
     End Sub
 
@@ -164,6 +170,43 @@ Module Program
 
         ' Decrypt the element.
         exml.DecryptDocument()
+
+    End Sub
+
+
+    Sub InspectElement(ByVal Doc As XmlDocument)
+        ' Get the EncryptedData element from the XMLDocument object.
+        Dim encryptedData As XmlElement = Doc.GetElementsByTagName("EncryptedData")(0)
+
+        ' Create a new EncryptedData object.
+        Dim encData As New EncryptedData()
+
+        ' Load the XML from the document to
+        ' initialize the EncryptedData object.
+        encData.LoadXml(encryptedData)
+
+        ' Display the properties.
+        ' Most values are Null by default.
+        Console.WriteLine("EncryptedData.CipherData: " + encData.CipherData.GetXml().InnerXml)
+        Console.WriteLine("EncryptedData.Encoding: " + encData.Encoding)
+        Console.WriteLine("EncryptedData.EncryptionMethod: " + encData.EncryptionMethod.GetXml().InnerXml)
+
+        Dim encPropCollection As EncryptionPropertyCollection = encData.EncryptionProperties
+
+        Console.WriteLine("Number of elements in the EncryptionPropertyCollection: " + encPropCollection.Count.ToString())
+        'encPropCollection.
+        Dim encProp As EncryptionProperty
+        For Each encProp In encPropCollection
+            Console.WriteLine("EncryptionProperty.ID: " + encProp.Id)
+            Console.WriteLine("EncryptionProperty.PropertyElement: " + encProp.PropertyElement.InnerXml)
+            Console.WriteLine("EncryptionProperty.Target: " + encProp.Target)
+        Next encProp
+
+
+
+        Console.WriteLine("EncryptedData.Id: " + encData.Id)
+        Console.WriteLine("EncryptedData.KeyInfo: " + encData.KeyInfo.GetXml().InnerXml)
+        Console.WriteLine("EncryptedData.MimeType: " + encData.MimeType)
 
     End Sub
 End Module

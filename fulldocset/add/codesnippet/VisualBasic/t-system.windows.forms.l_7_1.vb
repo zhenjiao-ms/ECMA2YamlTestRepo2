@@ -1,11 +1,9 @@
-    
-    Private Sub ListView1_BeforeLabelEdit(ByVal sender As Object, _
-        ByVal e As System.Windows.Forms.LabelEditEventArgs) _
-        Handles ListView1.BeforeLabelEdit
+Private Sub ListView1_ItemMouseHover(sender as Object, e as ListViewItemMouseHoverEventArgs) _ 
+     Handles ListView1.ItemMouseHover
 
-        ' Allow all but the first two items of the list to be modified by
-        ' the user.
-        If (e.Item < 2) Then
-            e.CancelEdit = True
-        End If
-    End Sub
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "Item", e.Item)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"ItemMouseHover Event")
+
+End Sub

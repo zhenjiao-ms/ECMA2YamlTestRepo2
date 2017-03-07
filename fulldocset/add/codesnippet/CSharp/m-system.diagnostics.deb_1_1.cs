@@ -1,3 +1,3 @@
-[DebuggerDisplay("Count = {Count}")]
-[DebuggerTypeProxy(typeof(HashtableDebugView))]
-class MyHashtable : Hashtable
+catch (Exception) {
+    Debug.Fail("Unknown Option " + option + ", using the default.");
+ }

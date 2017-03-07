@@ -21,8 +21,25 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents an expression that applies a delegate or lambda expression to a list of argument expressions.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use the <xref:System.Linq.Expressions.Expression.Invoke%2A> factory methods to create an InvocationExpression.  
+  
+ The <xref:System.Linq.Expressions.Expression.NodeType%2A> of an InvocationExpression is <xref:System.Linq.Expressions.ExpressionType>.  
+  
+   
+  
+## Examples  
+ The following example creates an InvocationExpression that represents invoking a lambda expression with specified arguments.  
+  
+ [!code-cs[System.Linq.Expressions.Expression#6](~/add/codesnippet/csharp/t-system.linq.expression_24_1.cs)]
+ [!code-vb[System.Linq.Expressions.Expression#6](~/add/codesnippet/visualbasic/t-system.linq.expression_24_1.vb)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Accept">
@@ -61,8 +78,8 @@
         <ReturnType>System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Linq.Expressions.Expression&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the arguments that the delegate or lambda expression is applied to.</summary>
+        <value>A <see cref="System.Collections.ObjectModel.ReadOnlyCollection%601" /> of <see cref="T:System.Linq.Expressions.Expression" /> objects which represent the arguments that the delegate is applied to.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -80,8 +97,8 @@
         <ReturnType>System.Linq.Expressions.Expression</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the delegate or lambda expression to be applied.</summary>
+        <value>An <see cref="T:System.Linq.Expressions.Expression" /> that represents the delegate to be applied.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -98,8 +115,8 @@
         <ReturnType>System.Linq.Expressions.ExpressionType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Returns the node type of this expression. Extension nodes should return <see cref="T:System.Linq.Expressions.ExpressionType" /> when overriding this method.</summary>
+        <value>The <see cref="T:System.Linq.Expressions.ExpressionType" /> of the expression.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -116,8 +133,8 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Returns the number of arguments to the expression tree node.  You should not use this member.  It is only public due to assembly refactoring, and it is used internally for performance optimizations.</summary>
+        <value>The number of arguments to the expression tree node as <see cref="T:System.Int32" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -137,9 +154,9 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="index">The index of the argument.</param>
+        <summary>Returns the argument at index, throwing if index is out of bounds.  You should not use this member.  It is only public due to assembly refactoring, and it is used internally for performance optimizations.</summary>
+        <returns>The argument at index, throwing if index is out of bounds, as <see cref="T:System.Linq.Expressions.Expression" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -156,8 +173,8 @@
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the static type of the expression that this <see cref="System.Linq.Expressions.InvocationExpression.Expression%2A" /> represents.</summary>
+        <value>The Type that represents the static type of the expression.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -178,10 +195,10 @@
         <Parameter Name="arguments" Type="System.Collections.Generic.IEnumerable&lt;System.Linq.Expressions.Expression&gt;" />
       </Parameters>
       <Docs>
-        <param name="expression">To be added.</param>
-        <param name="arguments">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="expression">The <see cref="System.Linq.Expressions.InvocationExpression.Expression%2A" /> property of the result.</param>
+        <param name="arguments">The <see cref="System.Linq.Expressions.InvocationExpression.Arguments%2A" /> property of the result.</param>
+        <summary>Creates a new expression that is like this one, but using the supplied children. If all of the children are the same, it will return this expression.</summary>
+        <returns>This expression if no children are changed or an expression with the updated children.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -2,46 +2,66 @@ using System;
 using System.Xml;
 using System.Xml.Schema;
 
-class XMLSchemaExamples
+public class Sample
 {
     public static void Main()
     {
-
         XmlSchema schema = new XmlSchema();
 
-        // <xs:simpleType name="WaitQueueLengthType">
-        XmlSchemaSimpleType WaitQueueLengthType = new XmlSchemaSimpleType();
-        WaitQueueLengthType.Name = "WaitQueueLengthType";
+        XmlSchemaElement thing1 = new XmlSchemaElement();
+        thing1.Name = "thing1";
+        thing1.SchemaTypeName = new XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema");
+        schema.Items.Add(thing1);
 
-        // <xs:restriction base="xs:int">
-        XmlSchemaSimpleTypeRestriction restriction = new XmlSchemaSimpleTypeRestriction();
-        restriction.BaseTypeName = new XmlQualifiedName("int", "http://www.w3.org/2001/XMLSchema");
+        XmlSchemaElement thing2 = new XmlSchemaElement();
+        thing2.Name = "thing2";
+        thing2.SchemaTypeName = new XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema");
+        schema.Items.Add(thing2);
 
-        // <xs:maxInclusive value="5"/>
-        XmlSchemaMaxInclusiveFacet maxInclusive = new XmlSchemaMaxInclusiveFacet();
-        maxInclusive.Value = "5";
-        restriction.Facets.Add(maxInclusive);
+        XmlSchemaElement thing3 = new XmlSchemaElement();
+        thing3.Name = "thing3";
+        thing3.SchemaTypeName =
+        new XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema");
+        schema.Items.Add(thing3);
 
-        WaitQueueLengthType.Content = restriction;
+        XmlSchemaElement thing4 = new XmlSchemaElement();
+        thing4.Name = "thing4";
+        thing4.SchemaTypeName = new XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema");
+        schema.Items.Add(thing4);
 
-        schema.Items.Add(WaitQueueLengthType);
+        XmlSchemaAttribute myAttribute = new XmlSchemaAttribute();
+        myAttribute.Name = "myAttribute";
+        myAttribute.SchemaTypeName = new XmlQualifiedName("decimal", "http://www.w3.org/2001/XMLSchema");
+        schema.Items.Add(myAttribute);
 
-        // <xs:element name="Lobby">
-        XmlSchemaElement element = new XmlSchemaElement();
-        element.Name = "Lobby";
+        XmlSchemaComplexType myComplexType = new XmlSchemaComplexType();
+        myComplexType.Name = "myComplexType";
 
-        // <xs:complexType>
-        XmlSchemaComplexType complexType = new XmlSchemaComplexType();
+        XmlSchemaAll complexType_all = new XmlSchemaAll();
 
-        // <xs:attribute name="WaitQueueLength" type="WaitQueueLengthType"/>
-        XmlSchemaAttribute WaitQueueLengthAttribute = new XmlSchemaAttribute();
-        WaitQueueLengthAttribute.Name = "WaitQueueLength";
-        WaitQueueLengthAttribute.SchemaTypeName = new XmlQualifiedName("WaitQueueLengthType", "");
-        complexType.Attributes.Add(WaitQueueLengthAttribute);
+        XmlSchemaElement complexType_all_thing1 = new XmlSchemaElement();
+        complexType_all_thing1.RefName = new XmlQualifiedName("thing1", "");
+        complexType_all.Items.Add(complexType_all_thing1);
 
-        element.SchemaType = complexType;
+        XmlSchemaElement complexType_all_thing2 = new XmlSchemaElement();
+        complexType_all_thing2.RefName = new XmlQualifiedName("thing2", "");
+        complexType_all.Items.Add(complexType_all_thing2);
 
-        schema.Items.Add(element);
+        XmlSchemaElement complexType_all_thing3 = new XmlSchemaElement();
+        complexType_all_thing3.RefName = new XmlQualifiedName("thing3", "");
+        complexType_all.Items.Add(complexType_all_thing3);
+
+        XmlSchemaElement complexType_all_thing4 = new XmlSchemaElement();
+        complexType_all_thing4.RefName = new XmlQualifiedName("thing4", "");
+        complexType_all.Items.Add(complexType_all_thing4);
+
+        myComplexType.Particle = complexType_all;
+
+        XmlSchemaAttribute complexType_myAttribute = new XmlSchemaAttribute();
+        complexType_myAttribute.RefName = new XmlQualifiedName("myAttribute", "");
+        myComplexType.Attributes.Add(complexType_myAttribute);
+
+        schema.Items.Add(myComplexType);
 
         XmlSchemaSet schemaSet = new XmlSchemaSet();
         schemaSet.ValidationEventHandler += new ValidationEventHandler(ValidationCallbackOne);
@@ -60,8 +80,9 @@ class XMLSchemaExamples
         compiledSchema.Write(Console.Out, nsmgr);
     }
 
-    public static void ValidationCallbackOne(object sender, ValidationEventArgs args)
+    private static void ValidationCallbackOne(object sender, ValidationEventArgs args)
     {
         Console.WriteLine(args.Message);
     }
+
 }

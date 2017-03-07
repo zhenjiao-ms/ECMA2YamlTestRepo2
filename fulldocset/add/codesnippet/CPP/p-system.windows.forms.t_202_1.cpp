@@ -1,18 +1,25 @@
-   // This example assumes that the Form_Load event handling method
-   // is connected to the Load event of the form.
-   void Form1_Load( Object^ sender, System::EventArgs^ e )
+   void AddToolBar()
    {
-      // Create the ToolTip and associate with the Form container.
-      ToolTip^ toolTip1 = gcnew ToolTip;
       
-      // Set up the delays for the ToolTip.
-      toolTip1->AutoPopDelay = 5000;
-      toolTip1->InitialDelay = 1000;
-      toolTip1->ReshowDelay = 500;
-      // Force the ToolTip text to be displayed whether or not the form is active.
-      toolTip1->ShowAlways = true;
+      // Add a toolbar and set some of its properties.
+      toolBar1 = gcnew ToolBar;
+      toolBar1->Appearance = System::Windows::Forms::ToolBarAppearance::Flat;
+      toolBar1->BorderStyle = System::Windows::Forms::BorderStyle::None;
+      toolBar1->Buttons->Add( this->toolBarButton1 );
+      toolBar1->ButtonSize = System::Drawing::Size( 24, 24 );
+      toolBar1->Divider = true;
+      toolBar1->DropDownArrows = true;
+      toolBar1->ImageList = this->imageList1;
+      toolBar1->ShowToolTips = true;
+      toolBar1->Size = System::Drawing::Size( 292, 25 );
+      toolBar1->TabIndex = 0;
+      toolBar1->TextAlign = System::Windows::Forms::ToolBarTextAlign::Right;
+      toolBar1->Wrappable = false;
       
-      // Set up the ToolTip text for the Button and Checkbox.
-      toolTip1->SetToolTip( this->button1, "My button1" );
-      toolTip1->SetToolTip( this->checkBox1, "My checkBox1" );
+      // Add handlers for the ButtonClick and ButtonDropDown events.
+      toolBar1->ButtonDropDown += gcnew ToolBarButtonClickEventHandler( this, &MyToolBar::toolBar1_ButtonDropDown );
+      toolBar1->ButtonClick += gcnew ToolBarButtonClickEventHandler( this, &MyToolBar::toolBar1_ButtonClicked );
+      
+      // Add the toolbar to the form.
+      this->Controls->Add( toolBar1 );
    }

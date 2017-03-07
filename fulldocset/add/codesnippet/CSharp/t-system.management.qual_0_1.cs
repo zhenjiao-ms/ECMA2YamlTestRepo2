@@ -1,31 +1,27 @@
-using System;
+using System; 
 using System.Management;
-
-public class Sample 
-{    
-    public static void Main() 
-    {
-        // Get the WMI class
-        ManagementClass mClass = 
-            new ManagementClass("Win32_Service");
-
-        mClass.Options.UseAmendedQualifiers = true;
-
-        // Get the Qualifiers for the class
-        QualifierDataCollection qualifiers =
-            mClass.Qualifiers;
-
-        // display the Qualifier names
-        Console.WriteLine(mClass.ClassPath.ClassName +
-            " Qualifiers: ");
-        foreach (QualifierData q in qualifiers)
+ 
+// This sample demonstrates how to 
+// enumerate qualifiers of a ManagementClass 
+// using QualifierDataEnumerator object.
+class Sample_QualifierDataEnumerator 
+{ 
+    public static int Main(string[] args) 
+    { 
+        ManagementClass diskClass = 
+            new ManagementClass("Win32_LogicalDisk"); 
+        diskClass.Options.UseAmendedQualifiers = true; 
+        QualifierDataCollection diskQualifier = 
+            diskClass.Qualifiers;
+        QualifierDataCollection.QualifierDataEnumerator 
+            qualifierEnumerator = 
+            diskQualifier.GetEnumerator();
+        while(qualifierEnumerator.MoveNext()) 
         {
-            Console.WriteLine(q.Name);
+            Console.WriteLine(
+                qualifierEnumerator.Current.Name + " = " +
+                qualifierEnumerator.Current.Value);
         }
-        Console.WriteLine();
-        
-        Console.WriteLine("Class Description: ");
-        Console.WriteLine(
-            mClass.Qualifiers["Description"].Value);
+        return 0;
     }
 }

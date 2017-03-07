@@ -1,18 +1,16 @@
-public void CreateMyDateTimePicker()
-{
-   // Create a new DateTimePicker control and initialize it.
-   DateTimePicker dateTimePicker1 = new DateTimePicker();
+    private void AddOutOfOfficeColumn()
+    {
+        DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn();
+        {
+            column.HeaderText = ColumnName.OutOfOffice.ToString();
+            column.Name = ColumnName.OutOfOffice.ToString();
+            column.AutoSizeMode = 
+                DataGridViewAutoSizeColumnMode.DisplayedCells;
+            column.FlatStyle = FlatStyle.Standard;
+            column.ThreeState = true;
+            column.CellTemplate = new DataGridViewCheckBoxCell();
+            column.CellTemplate.Style.BackColor = Color.Beige;
+        }
 
-   // Set the MinDate and MaxDate.
-   dateTimePicker1.MinDate = new DateTime(1985, 6, 20);
-   dateTimePicker1.MaxDate = DateTime.Today;
-
-   // Set the CustomFormat string.
-   dateTimePicker1.CustomFormat = "MMMM dd, yyyy - dddd";
-   dateTimePicker1.Format = DateTimePickerFormat.Custom;
-
-   // Show the CheckBox and display the control as an up-down control.
-   dateTimePicker1.ShowCheckBox = true;
-   dateTimePicker1.ShowUpDown = true;
-}
-   
+        DataGridView1.Columns.Insert(0, column);
+    }

@@ -1,4 +1,5 @@
-            Dim myDoub As Double = 100.55
-            Dim myDoStr As String = "4000.425"
-            Console.WriteLine(TypeDescriptor.GetConverter(myDoub).ConvertTo(myDoub, GetType(String)))
-            Console.WriteLine(TypeDescriptor.GetConverter(myDoub).ConvertFrom(myDoStr))
+            Dim myServer As Servers = Servers.Exchange
+            Dim myServerString As string = "BizTalk"
+            Console.WriteLine(TypeDescriptor.GetConverter(myServer).ConvertTo(myServer, GetType(String))) 
+            Console.WriteLine(TypeDescriptor.GetConverter(myServer).ConvertFrom(myServerString))	
+            			

@@ -1,19 +1,11 @@
-    ' Class-level declaration.
-    ' Create a TraceSwitch to use in the entire application. 
-    Private Shared mySwitch As New TraceSwitch("General", "Entire Application")    
-    
-    Public Shared Sub MyMethod()
-        ' Write the message if the TraceSwitch level is set to Error or higher.
-        If mySwitch.TraceError Then
-            Console.WriteLine("My error message.")
-        End If 
-        ' Write the message if the TraceSwitch level is set to Verbose.
-        If mySwitch.TraceVerbose Then
-            Console.WriteLine("My second error message.")
-        End If
-    End Sub
-    
-    Public Shared Sub Main()
-        ' Run the method that prints error messages based on the switch level.
-        MyMethod()
-    End Sub
+    Public Class Keywords
+        Public Const Page As EventKeywords = CType(1, EventKeywords)
+        Public Const DataBase As EventKeywords = CType(2, EventKeywords)
+        Public Const Diagnostic As EventKeywords = CType(4, EventKeywords)
+        Public Const Perf As EventKeywords = CType(8, EventKeywords)
+    End Class 'Keywords
+
+    Public Class Tasks
+        Public Const Page As EventTask = CType(1, EventTask)
+        Public Const DBQuery As EventTask = CType(2, EventTask)
+    End Class 'Tasks

@@ -1,35 +1,13 @@
-using namespace System::Drawing;
-using namespace System::ComponentModel;
-using namespace System::Windows::Forms;
-using namespace System::Resources;
-public ref class Form1: public Form
-{
-public:
-   Form1()
+   void myButton_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
    {
-      IContainer^ components = gcnew System::ComponentModel::Container;
-      ResourceManager^ resources = gcnew ResourceManager( Form1::typeid );
-      TabControl^ tabControl1 = gcnew TabControl;
-      TabPage^ tabPage1 = gcnew TabPage;
-      ImageList^ myImages = gcnew ImageList( components );
-      tabControl1->Controls->Add( tabPage1 );
       
-      // Displays images from myImages on the tabs of tabControl1.
-      tabControl1->ImageList = myImages;
+      // Set the tree view's PathSeparator property.
+      myTreeView->PathSeparator = ".";
       
-      // Specifies which image to display (on the tab of tabPage1) by its index.
-      tabPage1->ImageIndex = 0;
-      tabPage1->Text = "tabPage1";
-      myImages->ImageStream = (dynamic_cast<ImageListStreamer^>(resources->GetObject( "myImages.ImageStream" )));
-      myImages->ColorDepth = ColorDepth::Depth8Bit;
-      myImages->ImageSize = System::Drawing::Size( 16, 16 );
-      myImages->TransparentColor = Color::Transparent;
-      this->Controls->Add( tabControl1 );
+      // Get the count of the child tree nodes contained in the SelectedNode.
+      int myNodeCount = myTreeView->SelectedNode->GetNodeCount( true );
+      Decimal myChildPercentage = ((Decimal)myNodeCount / (Decimal)myTreeView->GetNodeCount( true )) * 100;
+      
+      // Display the tree node path and the number of child nodes it and the tree view have.
+      MessageBox::Show( String::Concat( "The '", myTreeView->SelectedNode->FullPath, "' node has ", myNodeCount, " child nodes.\nThat is ", String::Format( "{0:###.##}", myChildPercentage ), "% of the total tree nodes in the tree view control." ) );
    }
-
-};
-
-int main()
-{
-   Application::Run( gcnew Form1 );
-}

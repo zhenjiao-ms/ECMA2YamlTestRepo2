@@ -1,11 +1,9 @@
- public void CloneMyMenu()
- {
-    // Determine if mainMenu1 is currently hosted on the form.
-    if(mainMenu1.GetForm() != null)
-    {
-       // Create a copy of the MainMenu that is hosted on the form.
-       MainMenu mainMenu2 = mainMenu1.CloneMenu();
-       // Set the RightToLeft property for mainMenu2.
-       mainMenu2.RightToLeft = RightToLeft.Yes;
-    }
- }
+private void MaskedTextBox1_MaskInputRejected(Object sender, MaskInputRejectedEventArgs e) {
+
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "Position", e.Position );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "RejectionHint", e.RejectionHint );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "MaskInputRejected Event" );
+}

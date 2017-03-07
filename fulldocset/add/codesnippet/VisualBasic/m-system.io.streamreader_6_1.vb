@@ -1,5 +1,6 @@
 Imports System
 Imports System.IO
+Imports System.Text
 
 Public Class Test
 
@@ -20,7 +21,7 @@ Public Class Test
 
             Dim sr As StreamReader = New StreamReader(path)
 
-            Do While sr.Peek() >= 0
+            Do While sr.Peek() > -1
                 Console.WriteLine(sr.ReadLine())
             Loop
             sr.Close()

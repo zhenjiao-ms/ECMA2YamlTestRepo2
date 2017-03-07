@@ -1,17 +1,17 @@
-    Public Sub CreateMyMultilineTextBox()
-        ' Create an instance of a TextBox control.
-        Dim textBox1 As New TextBox()
-        
-        ' Set the Multiline property to true.
-        textBox1.Multiline = True
-        ' Add vertical scroll bars to the TextBox control.
-        textBox1.ScrollBars = ScrollBars.Vertical
-        ' Allow the RETURN key in the TextBox control.
-        textBox1.AcceptsReturn = True
-        ' Allow the TAB key to be entered in the TextBox control.
-        textBox1.AcceptsTab = True
-        ' Set WordWrap to true to allow text to wrap to the next line.
-        textBox1.WordWrap = True
-        ' Set the default text of the control.
-        textBox1.Text = "Welcome!" & Environment.NewLine & "Second Line"
-    End Sub
+      ' This code example demonstrates the syntax for setting
+      ' various ToolStripTextBox properties.
+      ' 
+      toolStripTextBox1.AcceptsReturn = True
+      toolStripTextBox1.AcceptsTab = True
+      toolStripTextBox1.AutoCompleteCustomSource.AddRange(New String() {"This is line one.", "Second line.", "Another line."})
+      toolStripTextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+      toolStripTextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+      toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+      toolStripTextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+      toolStripTextBox1.HideSelection = False
+      toolStripTextBox1.MaxLength = 32000
+      toolStripTextBox1.Name = "toolStripTextBox1"
+      toolStripTextBox1.ShortcutsEnabled = False
+      toolStripTextBox1.Size = New System.Drawing.Size(100, 25)
+      toolStripTextBox1.Text = "STRING1" + ControlChars.Cr + ControlChars.Lf + "STRING2" + ControlChars.Cr + ControlChars.Lf + "STRING3" + ControlChars.Cr + ControlChars.Lf + "STRING4"
+      toolStripTextBox1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center

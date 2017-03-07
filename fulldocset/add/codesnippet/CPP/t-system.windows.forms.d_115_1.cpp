@@ -1,74 +1,33 @@
-#using <System.dll>
-#using <System.Drawing.dll>
-#using <System.Windows.Forms.dll>
-
-using namespace System;
-using namespace System::Windows::Forms;
-
-// Creates a new type.
-
-[Serializable]
-public ref class MyNewObject: public Object
-{
-private:
-   String^ myValue;
-
-public:
-
-   // Creates a default constructor for the class.
-   MyNewObject()
+   void Stretch( Object^ sender, EventArgs^ e )
    {
-      myValue = "This is the value of the class";
-   }
-
-
-   property String^ MyObjectValue 
-   {
-
-      // Creates a property to retrieve or set the value.
-      String^ get()
+      System::Collections::IEnumerator^ myEnum = dataGridView1->Columns->GetEnumerator();
+      while ( myEnum->MoveNext() )
       {
-         return myValue;
+         DataGridViewImageColumn^ column = safe_cast<DataGridViewImageColumn^>(myEnum->Current);
+         column->ImageLayout = DataGridViewImageCellLayout::Stretch;
+         column->Description = L"Stretched";
       }
-
-      void set( String^ value )
-      {
-         myValue = value;
-      }
-
    }
 
-};
-
-public ref class MyClass: public Form
-{
-protected:
-   TextBox^ textBox1;
-
-public:
-   void MyClipboardMethod()
+   void ZoomToImage( Object^ sender, EventArgs^ e )
    {
-      
-      // Creates a new data format.
-      DataFormats::Format^ myFormat = DataFormats::GetFormat( "myFormat" );
-      
-      /* Creates a new object and stores it in a DataObject using myFormat 
-               * as the type of format. */
-      MyNewObject^ myObject = gcnew MyNewObject;
-      DataObject^ myDataObject = gcnew DataObject( myFormat->Name,myObject );
-      
-      // Copies myObject into the clipboard.
-      Clipboard::SetDataObject( myDataObject );
-      
-      // Performs some processing steps.
-      // Retrieves the data from the clipboard.
-      IDataObject^ myRetrievedObject = Clipboard::GetDataObject();
-      
-      // Converts the IDataObject type to MyNewObject type. 
-      MyNewObject^ myDereferencedObject = dynamic_cast<MyNewObject^>(myRetrievedObject->GetData( myFormat->Name ));
-      
-      // Prints the value of the Object in a textBox.
-      textBox1->Text = myDereferencedObject->MyObjectValue;
+      System::Collections::IEnumerator^ myEnum1 = dataGridView1->Columns->GetEnumerator();
+      while ( myEnum1->MoveNext() )
+      {
+         DataGridViewImageColumn^ column = safe_cast<DataGridViewImageColumn^>(myEnum1->Current);
+         column->ImageLayout = DataGridViewImageCellLayout::Zoom;
+         column->Description = L"Zoomed";
+      }
    }
 
-};
+   void NormalImage( Object^ sender, EventArgs^ e )
+   {
+      System::Collections::IEnumerator^ myEnum2 = dataGridView1->Columns->GetEnumerator();
+      while ( myEnum2->MoveNext() )
+      {
+         DataGridViewImageColumn^ column = safe_cast<DataGridViewImageColumn^>(myEnum2->Current);
+         column->ImageLayout = DataGridViewImageCellLayout::Normal;
+         column->Description = L"Normal";
+      }
+   }
+

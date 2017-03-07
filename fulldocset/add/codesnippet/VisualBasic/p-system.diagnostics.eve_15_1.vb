@@ -1,43 +1,70 @@
-            Dim mySourceData As EventSourceCreationData = new EventSourceCreationData("", "")
-            Dim registerSource As Boolean = True
+   Shared Sub DisplayEventLogProperties()
 
-            ' Process input parameters.
-            If args.Length > 0
-                ' Require at least the source name.
+      ' Iterate through the current set of event log files,
+      ' displaying the property settings for each file.
+      Dim eventLogs As EventLog() = EventLog.GetEventLogs()
+      
+      Dim e As EventLog
+      For Each e In  eventLogs
+         Dim sizeKB As Int64 = 0
+         
+         Console.WriteLine()
+         Console.WriteLine("{0}:", e.LogDisplayName)
+         Console.WriteLine("  Log name = " + ControlChars.Tab _
+                             + ControlChars.Tab + " {0}", e.Log)
 
-                mySourceData.Source = args(0)
+         Console.WriteLine("  Number of event log entries = {0}", e.Entries.Count.ToString())
+         
+         ' Determine if there is an event log file for this event log.
+         Dim regEventLog As RegistryKey
+         regEventLog = Registry.LocalMachine.OpenSubKey( _
+                ("System\CurrentControlSet\Services\EventLog\" + e.Log))
 
-                If args.Length > 1
-   
-                    mySourceData.LogName = args(1)
-    
-                End If
-                If args.Length > 2
-   
-                    mySourceData.MachineName = args(2)
-    
-                End If
-                If args.Length > 3 AndAlso args(3).Length > 0
-   
-                    mySourceData.MessageResourceFile = args(3)
-    
-                End If
+         If Not (regEventLog Is Nothing) Then
 
-            Else 
-                ' Display a syntax help message.
-                Console.WriteLine("Input:")
-                Console.WriteLine(" source [event log] [machine name] [resource file]")
+            Dim temp As Object = regEventLog.GetValue("File")
+            If Not (temp Is Nothing) Then
 
-                registerSource = False
+               Console.WriteLine("  Log file path = " + ControlChars.Tab _
+                                     + " {0}", temp.ToString())
+               Dim file As New FileInfo(temp.ToString())
+               
+               ' Get the current size of the event log file.
+               If file.Exists Then
+                  sizeKB = file.Length / 1024
+                  If file.Length Mod 1024 <> 0 Then
+                     sizeKB += 1
+                  End If
+                  Console.WriteLine("  Current size = " + ControlChars.Tab _
+                             + " {0} kilobytes", sizeKB.ToString())
+               End If
+            Else
+               Console.WriteLine("  Log file path = " + ControlChars.Tab _
+                                + " <not set>")
             End If
+         End If
+         
+         ' Display the maximum size and overflow settings.
+         sizeKB = e.MaximumKilobytes
+         Console.WriteLine("  Maximum size = " + ControlChars.Tab _
+                            + " {0} kilobytes", sizeKB.ToString())
+         Console.WriteLine("  Overflow setting = " + ControlChars.Tab _
+                            + " {0}", e.OverflowAction.ToString())
+         
+         Select Case e.OverflowAction
+            Case OverflowAction.OverwriteOlder
+               Console.WriteLine(ControlChars.Tab + _
+                    " Entries are retained a minimum of {0} days.", _
+                    e.MinimumRetentionDays)
+            Case OverflowAction.DoNotOverwrite
+               Console.WriteLine(ControlChars.Tab + _
+                    " Older entries are not overwritten.")
+            Case OverflowAction.OverwriteAsNeeded
+               Console.WriteLine(ControlChars.Tab + _
+                    " If number of entries equals max size limit, a new event log entry overwrites the oldest entry.")
+            Case Else
+         End Select
 
-            ' Set defaults for parameters missing input.
-            If mySourceData.MachineName.Length = 0
-            
-                ' Default to the local computer.
-                mySourceData.MachineName = "."
-            End If
-            If mySourceData.LogName.Length = 0
-                ' Default to the Application log.
-                mySourceData.LogName = "Application"
-            End If
+      Next e
+
+   End Sub

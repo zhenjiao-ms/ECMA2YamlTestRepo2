@@ -1,48 +1,30 @@
-    Private Sub SortButton_Click(ByVal sender As Object, _
-        ByVal e As EventArgs) Handles sortButton.Click
+    ' Draws the backgrounds for entire ListView items.
+    Private Sub listView1_DrawItem(ByVal sender As Object, _
+        ByVal e As DrawListViewItemEventArgs) _
+        Handles listView1.DrawItem
 
-        ' Check which column is selected, otherwise set NewColumn to Nothing.
-        Dim newColumn As DataGridViewColumn
-        If dataGridView1.Columns.GetColumnCount(DataGridViewElementStates _
-            .Selected) = 1 Then
-            newColumn = dataGridView1.SelectedColumns(0)
+        If Not (e.State And ListViewItemStates.Selected) = 0 Then
+
+            ' Draw the background for a selected item.
+            e.Graphics.FillRectangle(Brushes.Maroon, e.Bounds)
+            e.DrawFocusRectangle()
+
         Else
-            newColumn = Nothing
+
+            ' Draw the background for an unselected item.
+            Dim brush As New LinearGradientBrush(e.Bounds, Color.Orange, _
+                Color.Maroon, LinearGradientMode.Horizontal)
+            Try
+                e.Graphics.FillRectangle(brush, e.Bounds)
+            Finally
+                brush.Dispose()
+            End Try
+
         End If
 
-        Dim oldColumn As DataGridViewColumn = dataGridView1.SortedColumn
-        Dim direction As ListSortDirection
-
-        ' If oldColumn is null, then the DataGridView is not currently sorted.
-        If oldColumn IsNot Nothing Then
-
-            ' Sort the same column again, reversing the SortOrder.
-            If oldColumn Is newColumn AndAlso dataGridView1.SortOrder = _
-                SortOrder.Ascending Then
-                direction = ListSortDirection.Descending
-            Else
-
-                ' Sort a new column and remove the old SortGlyph.
-                direction = ListSortDirection.Ascending
-                oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None
-            End If
-        Else
-            direction = ListSortDirection.Ascending
-        End If
-
-
-        ' If no column has been selected, display an error dialog  box.
-        If newColumn Is Nothing Then
-            MessageBox.Show("Select a single column and try again.", _
-                "Error: Invalid Selection", MessageBoxButtons.OK, _
-                MessageBoxIcon.Error)
-        Else
-            dataGridView1.Sort(newColumn, direction)
-            If direction = ListSortDirection.Ascending Then
-                newColumn.HeaderCell.SortGlyphDirection = SortOrder.Ascending
-            Else
-                newColumn.HeaderCell.SortGlyphDirection = SortOrder.Descending
-            End If
+        ' Draw the item text for views other than the Details view.
+        If Not Me.listView1.View = View.Details Then
+            e.DrawText()
         End If
 
     End Sub

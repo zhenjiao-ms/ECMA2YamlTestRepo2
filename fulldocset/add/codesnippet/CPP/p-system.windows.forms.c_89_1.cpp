@@ -1,20 +1,19 @@
-      // Add a GroupBox to a form and set some of its common properties.
-   private:
-      void AddMyGroupBox()
+private:
+   void AdjustMyCheckBoxProperties()
+   {
+      // Concatenate the property values together on three lines.
+      label1->Text = String::Format( "ThreeState: {0}\nChecked: {1}\nCheckState: {2}",
+         checkBox1->ThreeState, checkBox1->Checked, checkBox1->CheckState );
+      
+      // Change the ThreeState and CheckAlign properties on every other click.
+      if ( !checkBox1->ThreeState )
       {
-         // Create a GroupBox and add a TextBox to it.
-         GroupBox^ groupBox1 = gcnew GroupBox;
-         TextBox^ textBox1 = gcnew TextBox;
-         textBox1->Location = Point(15,15);
-         groupBox1->Controls->Add( textBox1 );
-
-         // Set the Text and Dock properties of the GroupBox.
-         groupBox1->Text = "MyGroupBox";
-         groupBox1->Dock = DockStyle::Top;
-
-         // Disable the GroupBox (which disables all its child controls)
-         groupBox1->Enabled = false;
-
-         // Add the Groupbox to the form.
-         this->Controls->Add( groupBox1 );
+         checkBox1->ThreeState = true;
+         checkBox1->CheckAlign = ContentAlignment::MiddleRight;
       }
+      else
+      {
+         checkBox1->ThreeState = false;
+         checkBox1->CheckAlign = ContentAlignment::MiddleLeft;
+      }
+   }

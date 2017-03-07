@@ -1,40 +1,90 @@
-            // Creates an empty DesignerVerbCollection.
-            DesignerVerbCollection collection = new DesignerVerbCollection();
+using System;
+using System.ComponentModel.Design;
+using System.ComponentModel.Design.Serialization;
+using System.Globalization;
 
-            // Adds a DesignerVerb to the collection.
-            collection.Add( new DesignerVerb("Example designer verb", new EventHandler(this.ExampleEvent)) );
+namespace NameCreationServiceExample
+{
+    public class NameCreationService : System.ComponentModel.Design.Serialization.INameCreationService
+    {
+        public NameCreationService()
+        {
+        }
 
-            // Adds an array of DesignerVerb objects to the collection.
-            DesignerVerb[] verbs = { new DesignerVerb("Example designer verb", new EventHandler(this.ExampleEvent)), new DesignerVerb("Example designer verb", new EventHandler(this.ExampleEvent)) };
-            collection.AddRange( verbs );
+        // Creates an identifier for a particular data type that does not conflict 
+        // with the identifiers of any components in the specified collection.
+        public string CreateName(System.ComponentModel.IContainer container, System.Type dataType)
+        {
+            // Create a basic type name string.
+            string baseName = dataType.Name;
+            int uniqueID = 1;
 
-            // Adds a collection of DesignerVerb objects to the collection.
-            DesignerVerbCollection verbsCollection = new DesignerVerbCollection();
-            verbsCollection.Add( new DesignerVerb("Example designer verb", new EventHandler(this.ExampleEvent)) );
-            verbsCollection.Add( new DesignerVerb("Example designer verb", new EventHandler(this.ExampleEvent)) );
-            collection.AddRange( verbsCollection );
+            bool unique = false;            
+            // Continue to increment uniqueID numeral until a 
+            // unique ID is located.
+            while( !unique )
+            {
+                unique = true;
+                // Check each component in the container for a matching 
+                // base type name and unique ID.
+                for(int i=0; i<container.Components.Count; i++)
+                {
+                    // Check component name for match with unique ID string.
+                    if( container.Components[i].Site.Name.StartsWith(baseName+uniqueID.ToString()) )
+                    {
+                        // If a match is encountered, set flag to recycle 
+                        // collection, increment ID numeral, and restart.
+                        unique = false;
+                        uniqueID++;
+                        break;
+                    }
+                }
+            }
+            
+            return baseName+uniqueID.ToString();
+        }
 
-            // Tests for the presence of a DesignerVerb in the collection, 
-            // and retrieves its index if it is found.
-            DesignerVerb testVerb = new DesignerVerb("Example designer verb", new EventHandler(this.ExampleEvent));
-            int itemIndex = -1;
-            if( collection.Contains( testVerb ) )
-                itemIndex = collection.IndexOf( testVerb );
+        // Returns whether the specified name contains 
+        // all valid character types.
+        public bool IsValidName(string name)
+        {            
+            for(int i = 0; i < name.Length; i++)
+            {
+                char ch = name[i];
+                UnicodeCategory uc = Char.GetUnicodeCategory(ch);
+                switch (uc) 
+                {
+                    case UnicodeCategory.UppercaseLetter:       
+                    case UnicodeCategory.LowercaseLetter:     
+                    case UnicodeCategory.TitlecaseLetter:                                                  
+                    case UnicodeCategory.DecimalDigitNumber:                         
+                        break;
+                    default:
+                        return false;                
+                }
+            }
+            return true;        
+         }
 
-            // Copies the contents of the collection, beginning at index 0, 
-            // to the specified DesignerVerb array.
-            // 'verbs' is a DesignerVerb array.
-            collection.CopyTo( verbs, 0 );
-
-            // Retrieves the count of the items in the collection.
-            int collectionCount = collection.Count;
-
-            // Inserts a DesignerVerb at index 0 of the collection.
-            collection.Insert( 0, new DesignerVerb("Example designer verb", new EventHandler(this.ExampleEvent)) );
-
-            // Removes the specified DesignerVerb from the collection.
-            DesignerVerb verb = new DesignerVerb("Example designer verb", new EventHandler(this.ExampleEvent));
-            collection.Remove( verb );
-
-            // Removes the DesignerVerb at index 0.
-            collection.RemoveAt(0);
+        // Throws an exception if the specified name does not contain 
+        // all valid character types.
+        public void ValidateName(string name)
+        {
+            for(int i = 0; i < name.Length; i++)
+            {
+                char ch = name[i];
+                UnicodeCategory uc = Char.GetUnicodeCategory(ch);
+                switch (uc) 
+                {
+                    case UnicodeCategory.UppercaseLetter:       
+                    case UnicodeCategory.LowercaseLetter:     
+                    case UnicodeCategory.TitlecaseLetter:                                                  
+                    case UnicodeCategory.DecimalDigitNumber:                         
+                        break;
+                    default:
+                        throw new Exception("The name '"+name+"' is not a valid identifier.");                
+                }
+            }
+        }
+     }
+}

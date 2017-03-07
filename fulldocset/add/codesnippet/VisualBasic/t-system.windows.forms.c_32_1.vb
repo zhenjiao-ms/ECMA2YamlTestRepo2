@@ -1,9 +1,10 @@
-Private Sub RichTextBox1_ContentsResized(sender as Object, e as ContentsResizedEventArgs) _ 
-     Handles RichTextBox1.ContentsResized
+    ' Handle the Button1 object's Paint Event to create a CaptionButton.
+    Private Sub Button1_Paint(ByVal sender As Object, _
+        ByVal e As PaintEventArgs) Handles Button1.Paint
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "NewRectangle", e.NewRectangle)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"ContentsResized Event")
-
-End Sub
+        ' Draw a CaptionButton control using the ClientRectangle 
+        ' property of Button1. Make the button a Help button 
+        ' with a normal state.
+        ControlPaint.DrawCaptionButton(e.Graphics, Button1.ClientRectangle, _
+            CaptionButton.Help, ButtonState.Normal)
+    End Sub

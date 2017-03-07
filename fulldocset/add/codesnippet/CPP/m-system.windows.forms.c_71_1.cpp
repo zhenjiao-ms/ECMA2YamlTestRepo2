@@ -1,10 +1,10 @@
-   void RemoveFromList()
+private:
+   void Invoke_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
    {
-      
-      // Get the CurrencyManager of a TextBox control.
-      CurrencyManager^ myCurrencyManager = dynamic_cast<CurrencyManager^>(textBox1->BindingContext[nullptr]);
-      
-      // If the count is 0, exit the function.
-      if ( myCurrencyManager->Count > 1 )
-            myCurrencyManager->RemoveAt( 0 );
+      myTextBox->BeginInvoke( gcnew InvokeDelegate( this, &MyForm::InvokeMethod ) );
+   }
+
+   void InvokeMethod()
+   {
+      myTextBox->Text = "Executed the given delegate";
    }

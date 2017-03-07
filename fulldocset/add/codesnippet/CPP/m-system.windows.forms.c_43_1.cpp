@@ -1,9 +1,13 @@
-private:
-   void RemoveThirdBinding()
+   void button4_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
    {
-      if ( textBox1->DataBindings->Count < 3 )
+      try
       {
-         return;
+         BindingManagerBase^ myBindingManager2 = BindingContext[ myDataSet, "Customers" ];
+         myBindingManager2->ResumeBinding();
       }
-      textBox1->DataBindings->RemoveAt( 2 );
+      catch ( Exception^ ex ) 
+      {
+         MessageBox::Show( ex->Source );
+         MessageBox::Show( ex->Message );
+      }
    }

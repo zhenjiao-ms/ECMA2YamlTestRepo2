@@ -1,68 +1,72 @@
-//The following sample uses the Cryptography class to simulate the roll of a dice.
-
 using System;
-using System.IO;
-using System.Text;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
-class RNGCSP
+class AsnEncodedDataSample
 {
-    private static RNGCryptoServiceProvider rngCsp = new RNGCryptoServiceProvider();
-    // Main method.
-    public static void Main()
-    {
-        const int totalRolls = 25000;
-        int[] results = new int[6];
+	static void Main()
+	{		
+		//The following example demonstrates the usage the AsnEncodedData classes.
+		// Asn encoded data is read from the extensions of an X509 certificate.
+		try
+		{
+			// Open the certificate store.
+			X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
+			store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+			X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
+			X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
+			// Select one or more certificates to display extensions information.
+			X509Certificate2Collection scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection);
 
-        // Roll the dice 25000 times and display
-        // the results to the console.
-        for (int x = 0; x < totalRolls; x++)
-        {
-            byte roll = RollDice((byte)results.Length);
-            results[roll - 1]++;
-        }
-        for (int i = 0; i < results.Length; ++i)
-        {
-            Console.WriteLine("{0}: {1} ({2:p1})", i + 1, results[i], (double)results[i] / (double)totalRolls);
-        }
-        rngCsp.Dispose();
-        Console.ReadLine();
-    }
+			// Create a new AsnEncodedDataCollection object.
+			AsnEncodedDataCollection asncoll = new AsnEncodedDataCollection();
+			for (int i = 0; i < scollection.Count; i++)
+			{
+				// Display certificate information.
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Certificate name: {0}", scollection[i].GetName());
+				Console.ResetColor();
+				// Display extensions information.
+				foreach (X509Extension extension in scollection[i].Extensions)
+				{
+					// Create an AsnEncodedData object using the extensions information.
+					AsnEncodedData asndata = new AsnEncodedData(extension.Oid, extension.RawData);
+					Console.ForegroundColor = ConsoleColor.Green;
+					Console.WriteLine("Extension type: {0}", extension.Oid.FriendlyName);
+					Console.WriteLine("Oid value: {0}",asndata.Oid.Value);
+					Console.WriteLine("Raw data length: {0} {1}", asndata.RawData.Length, Environment.NewLine);
+					Console.ResetColor();
+					Console.WriteLine(asndata.Format(true));
+					Console.WriteLine(Environment.NewLine);
+					// Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+					asncoll.Add(asndata);
+				}
+				Console.WriteLine(Environment.NewLine);
+			}
+			Console.ForegroundColor = ConsoleColor.Red;
+			Console.WriteLine("Number of AsnEncodedData items in the collection: {0} {1}", asncoll.Count, Environment.NewLine);
+			Console.ResetColor();
 
-    // This method simulates a roll of the dice. The input parameter is the
-    // number of sides of the dice.
+			store.Close();
+			//Create an enumerator for moving through the collection.
+			AsnEncodedDataEnumerator asne = asncoll.GetEnumerator();
+			//You must execute a MoveNext() to get to the first item in the collection.
+			asne.MoveNext();
+			// Write out AsnEncodedData in the collection.
+			Console.ForegroundColor = ConsoleColor.Blue;
+			Console.WriteLine("First AsnEncodedData in the collection: {0}", asne.Current.Format(true));
+			Console.ResetColor();
 
-    public static byte RollDice(byte numberSides)
-    {
-        if (numberSides <= 0)
-            throw new ArgumentOutOfRangeException("numberSides");
-
-        // Create a byte array to hold the random value.
-        byte[] randomNumber = new byte[1];
-        do
-        {
-            // Fill the array with a random value.
-            rngCsp.GetBytes(randomNumber);
-        }
-        while (!IsFairRoll(randomNumber[0], numberSides));
-        // Return the random number mod the number
-        // of sides.  The possible values are zero-
-        // based, so we add one.
-        return (byte)((randomNumber[0] % numberSides) + 1);
-    }
-
-    private static bool IsFairRoll(byte roll, byte numSides)
-    {
-        // There are MaxValue / numSides full sets of numbers that can come up
-        // in a single byte.  For instance, if we have a 6 sided die, there are
-        // 42 full sets of 1-6 that come up.  The 43rd set is incomplete.
-        int fullSetsOfValues = Byte.MaxValue / numSides;
-
-        // If the roll is within this range of fair values, then we let it continue.
-        // In the 6 sided die case, a roll between 0 and 251 is allowed.  (We use
-        // < rather than <= since the = portion allows through an extra 0 value).
-        // 252 through 255 would provide an extra 0, 1, 2, 3 so they are not fair
-        // to use.
-        return roll < numSides * fullSetsOfValues;
-    }
+			asne.MoveNext();
+			Console.ForegroundColor = ConsoleColor.DarkBlue;
+			Console.WriteLine("Second AsnEncodedData in the collection: {0}", asne.Current.Format(true));
+			Console.ResetColor();
+			//Return index in the collection to the beginning.
+			asne.Reset();
+		}
+		catch (CryptographicException)
+		{
+			Console.WriteLine("Information could not be written out for this certificate.");
+		}
+	}
 }

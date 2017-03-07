@@ -1,23 +1,10 @@
-   public ref class CDesigner: public ComponentDesigner
+private:
+   void GetCount()
    {
-   public:
-    [PermissionSetAttribute(SecurityAction::Demand, Name="FullTrust")]
-      virtual void Initialize( IComponent^ comp ) override
-      {
-         ComponentDesigner::Initialize( comp );
-         IMenuCommandService^ mcs = static_cast<IMenuCommandService^>(comp->Site->GetService( IMenuCommandService::typeid ));
-		 MenuCommand^ mc = gcnew MenuCommand( gcnew EventHandler( this, &CDesigner::OnF1Help ),StandardCommands::F1Help );
-         mc->Enabled = true;
-         mc->Visible = true;
-         mc->Supported = true;
-         mcs->AddCommand( mc );
-         System::Windows::Forms::MessageBox::Show( "Initialize() has been invoked." );
-      }
-
-   private:
-      void OnF1Help( Object^ /*sender*/, EventArgs^ /*e*/ )
-      {
-         System::Windows::Forms::MessageBox::Show( "F1Help has been invoked." );
-      }
-   };
-}
+      // Creates a new collection and assigns it the attributes for button1.
+      AttributeCollection^ attributes;
+      attributes = TypeDescriptor::GetAttributes( button1 );
+      
+      // Prints the number of items in the collection.
+      textBox1->Text = attributes->Count.ToString();
+   }

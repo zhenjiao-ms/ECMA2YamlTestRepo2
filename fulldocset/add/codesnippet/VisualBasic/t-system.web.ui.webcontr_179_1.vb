@@ -1,67 +1,13 @@
-Imports System
-Imports System.Security.Permissions
-Imports System.Web
-Imports System.Web.UI
-Imports System.Web.UI.WebControls
-Imports System.Web.UI.WebControls.WebParts
+    Private Sub Page_Init(sender As Object, e As EventArgs)
+        
+        ' Create dynamic column to add to Columns collection.
+        Dim AddColumn As New ButtonColumn()
+        AddColumn.HeaderText = "Add Item"
+        AddColumn.Text = "Add"
+        AddColumn.CommandName = "Add"
+        AddColumn.ButtonType = ButtonColumnType.PushButton
 
-Namespace Samples.AspNet.VB.Controls
-
-<AspNetHostingPermission(SecurityAction.Demand, _
-  Level := AspNetHostingPermissionLevel.Minimal)> _
-<AspNetHostingPermission(SecurityAction.InheritanceDemand, _
-  Level := AspNetHostingPermissionLevel.Minimal)> _
-Public Class TextDisplayWebPart
-    Inherits WebPart
-    Private _contentText As String = Nothing
-    Private input As TextBox
-    Private DisplayContent As Label
-    
-    
-    Public Sub New() 
-      Me.AllowClose = False
-    End Sub
-    
-    <Personalizable(), WebBrowsable()>  _
-    Public Property ContentText() As String 
-        Get
-            Return _contentText
-        End Get
-        Set
-            _contentText = value
-        End Set
-    End Property
-     
-    Protected Overrides Sub CreateChildControls() 
-        Controls.Clear()
-        DisplayContent = New Label()
-        DisplayContent.Text = Me.ContentText
-        DisplayContent.BackColor = _
-          System.Drawing.Color.LightBlue
-        Me.Controls.Add(DisplayContent)
-        input = New TextBox()
-        Me.Controls.Add(input)
-        Dim update As New Button()
-        update.Text = "Set Label Content"
-        AddHandler update.Click, AddressOf Me.submit_Click
-        Me.Controls.Add(update)
-        ChildControlsCreated = True
-    
-    End Sub
-    
-    
-    Private Sub submit_Click(ByVal sender As Object, _
-                             ByVal e As EventArgs) 
-        ' Update the label string.
-        If input.Text <> String.Empty Then
-            Me.ContentText = Page.Server.HtmlEncode(input.Text) + "<br />"
-            ' Clear the input textbox.
-            input.Text = String.Empty
-            DisplayContent.Text = Me.ContentText
-        End If
-    
-    End Sub
-    
-End Class
-
-End Namespace
+        
+        ' Add column to Columns collection.
+        ItemsGrid.Columns.AddAt(2, AddColumn)
+    End Sub 'Page_Init 

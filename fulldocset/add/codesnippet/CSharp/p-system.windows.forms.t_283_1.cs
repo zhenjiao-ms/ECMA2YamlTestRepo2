@@ -1,55 +1,29 @@
-        // This method defines the painting behavior of the control.
-        // It performs the following operations:
-        //
-        // Computes the layout of the item's image and text.
-        // Draws the item's background image.
-        // Draws the item's image.
-        // Draws the item's text.
-        //
-        // Drawing operations are implemented in the 
-        // RolloverItemRenderer class.
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-
-            if (this.Owner != null)
-            {
-                // Find the dimensions of the image and the text 
-                // areas of the item. 
-                this.ComputeImageAndTextLayout();
-
-                // Draw the background. This includes drawing a highlighted 
-                // border when the mouse is in the client area.
-                ToolStripItemRenderEventArgs ea = new ToolStripItemRenderEventArgs(
-                     e.Graphics,
-                     this);
-                this.Owner.Renderer.DrawItemBackground(ea);
-
-                // Draw the item's image. 
-                ToolStripItemImageRenderEventArgs irea =
-                    new ToolStripItemImageRenderEventArgs(
-                    e.Graphics,
-                    this,
-                    imageRect );
-                this.Owner.Renderer.DrawItemImage(irea);
-
-                // If the item is on a drop-down, give its
-                // text a different highlighted color.
-                Color highlightColor = 
-                    this.IsOnDropDown ?
-                    Color.Salmon : SystemColors.ControlLightLight;
-
-                // Draw the text, and highlight it if the 
-                // the rollover state is true.
-                ToolStripItemTextRenderEventArgs rea =
-                    new ToolStripItemTextRenderEventArgs(
-                    e.Graphics,
-                    this,
-                    base.Text,
-                    textRect,
-                    this.rolloverValue ? highlightColor : base.ForeColor,
-                    base.Font,
-                    base.TextAlign);
-                this.Owner.Renderer.DrawItemText(rea);
-            }
-        }
+            // This is an example of some common ToolStrip property settings.
+            // 
+            toolStrip1.AllowDrop = false;
+            toolStrip1.AllowItemReorder = true;
+            toolStrip1.AllowMerge = false;
+            toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            toolStrip1.AutoSize = false;
+            toolStrip1.CanOverflow = false;
+            toolStrip1.Cursor = System.Windows.Forms.Cursors.Cross;
+            toolStrip1.DefaultDropDownDirection = System.Windows.Forms.ToolStripDropDownDirection.BelowRight;
+            toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            toolStrip1.GripMargin = new System.Windows.Forms.Padding(3);
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            toolStripButton1});
+            toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            toolStrip1.Location = new System.Drawing.Point(0, 0);
+            toolStrip1.Margin = new System.Windows.Forms.Padding(1);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            toolStrip1.ShowItemToolTips = false;
+            toolStrip1.Size = new System.Drawing.Size(109, 273);
+            toolStrip1.Stretch = true;
+            toolStrip1.TabIndex = 0;
+            toolStrip1.TabStop = true;
+            toolStrip1.Text = "toolStrip1";
+            toolStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90;

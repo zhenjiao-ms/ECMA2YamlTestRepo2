@@ -1,14 +1,12 @@
-Class Sample
-   Public Shared Sub Main()
-      Console.WriteLine()
-      '  Invoke this sample with an arbitrary set of command line arguments.
-      Dim arguments As String() = Environment.GetCommandLineArgs()
-      Console.WriteLine("GetCommandLineArgs: {0}", String.Join(", ", arguments))
+Imports System.IO
+
+Module Example
+   Public Sub Main()
+        ' Change the directory to %WINDIR%
+        Environment.CurrentDirectory = Environment.GetEnvironmentVariable("windir")
+        Dim info As New DirectoryInfo(".")
+        Console.WriteLine("Directory Info:   " + info.FullName)
    End Sub
-End Class
-'This example produces output like the following:
-'    
-'    C:\>GetCommandLineArgs ARBITRARY TEXT
-'    
-'      GetCommandLineArgs: GetCommandLineArgs, ARBITRARY, TEXT
-'    
+End Module
+' The example displays output like the following:
+'        Directory Info:   C:\windows

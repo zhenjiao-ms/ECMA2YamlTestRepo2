@@ -1,31 +1,36 @@
-    
-	// Declare ComboBox1.
-	internal System.Windows.Forms.ComboBox ComboBox1;
-    
-	// Initialize ComboBox1.
-	private void InitializeComboBox()
-	{
-		this.ComboBox1 = new ComboBox();
-		this.ComboBox1.Location = new System.Drawing.Point(128, 48);
-		this.ComboBox1.Name = "ComboBox1";
-		this.ComboBox1.Size = new System.Drawing.Size(100, 21);
-		this.ComboBox1.TabIndex = 0;
-		this.ComboBox1.Text	= "Typical";
-		string[] installs = new string[]{"Typical", "Compact", "Custom"};
-		ComboBox1.Items.AddRange(installs);
-		this.Controls.Add(this.ComboBox1);
-		
-		// Hook up the event handler.
-		this.ComboBox1.DropDown +=  
-			new System.EventHandler(ComboBox1_DropDown);
-	}
+// Create three buttons and place them on a form using 
+// several size and location related properties. 
+private void AddOKCancelButtons()
+{
+   // Set the button size and location using 
+   // the Size and Location properties.
+   Button buttonOK = new Button();
+   buttonOK.Location = new Point(136,248);
+   buttonOK.Size = new Size(75,25);
+   // Set the Text property and make the 
+   // button the form's default button. 
+   buttonOK.Text = "&OK";
+   this.AcceptButton = buttonOK;
 
-	// Handles the ComboBox1 DropDown event. If the user expands the  
-	// drop-down box, a message box will appear, recommending the
-	// typical installation.
-	private void ComboBox1_DropDown(object sender, System.EventArgs e)
-	{
-		MessageBox.Show("Typical installation is strongly recommended.", 
-		"Install information", MessageBoxButtons.OK, 
-			MessageBoxIcon.Information);
-	}
+   // Set the button size and location using the Top, 
+   // Left, Width, and Height properties.
+   Button buttonCancel = new Button();
+   buttonCancel.Top = buttonOK.Top;
+   buttonCancel.Left = buttonOK.Right + 5;
+   buttonCancel.Width = buttonOK.Width;
+   buttonCancel.Height = buttonOK.Height;
+   // Set the Text property and make the 
+   // button the form's cancel button.
+   buttonCancel.Text = "&Cancel";
+   this.CancelButton = buttonCancel;
+
+   // Set the button size and location using 
+   // the Bounds property.
+   Button buttonHelp = new Button();
+   buttonHelp.Bounds = new Rectangle(10,10, 75, 25);
+   // Set the Text property of the button.
+   buttonHelp.Text = "&Help";
+
+   // Add the buttons to the form.
+   this.Controls.AddRange(new Control[] {buttonOK, buttonCancel, buttonHelp} );
+}

@@ -1,44 +1,66 @@
-            EventSourceCreationData mySourceData = new EventSourceCreationData("", "");
-            bool registerSource = true;
+        static void DisplayEventLogProperties()
+        {
+            // Iterate through the current set of event log files,
+            // displaying the property settings for each file.
 
-            // Process input parameters.
-            if (args.Length > 0)
+            EventLog[] eventLogs = EventLog.GetEventLogs();
+            foreach (EventLog e in eventLogs)
             {
-                // Require at least the source name.
+                Int64 sizeKB = 0;
 
-                mySourceData.Source = args[0];
+                Console.WriteLine();
+                Console.WriteLine("{0}:", e.LogDisplayName);
+                Console.WriteLine("  Log name = \t\t {0}", e.Log); 
 
-                if (args.Length > 1)
+                Console.WriteLine("  Number of event log entries = {0}", e.Entries.Count.ToString());
+                            
+                // Determine if there is an event log file for this event log.
+                RegistryKey regEventLog = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Services\\EventLog\\" + e.Log);
+                if (regEventLog != null)
                 {
-                    mySourceData.LogName = args[1];
-                }
+                    Object temp = regEventLog.GetValue("File");
+                    if (temp != null)
+                    {
+                        Console.WriteLine("  Log file path = \t {0}", temp.ToString());
+                        FileInfo file = new FileInfo(temp.ToString());
 
-                if (args.Length > 2)
+                        // Get the current size of the event log file.
+                        if (file.Exists)
+                        {
+                            sizeKB = file.Length / 1024;
+                            if ((file.Length % 1024) != 0)
+                            {
+                                sizeKB++;
+                            }
+                            Console.WriteLine("  Current size = \t {0} kilobytes", sizeKB.ToString());
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("  Log file path = \t <not set>");
+                    }
+                }
+                            
+                // Display the maximum size and overflow settings.
+
+                sizeKB = e.MaximumKilobytes;
+                Console.WriteLine("  Maximum size = \t {0} kilobytes", sizeKB.ToString());
+                Console.WriteLine("  Overflow setting = \t {0}", e.OverflowAction.ToString());
+
+                switch (e.OverflowAction)
                 {
-                    mySourceData.MachineName = args[2];
+                    case OverflowAction.OverwriteOlder:
+                        Console.WriteLine("\t Entries are retained a minimum of {0} days.", 
+                            e.MinimumRetentionDays);
+                        break;
+                    case OverflowAction.DoNotOverwrite:
+                        Console.WriteLine("\t Older entries are not overwritten.");
+                        break;
+                    case OverflowAction.OverwriteAsNeeded:
+                        Console.WriteLine("\t If number of entries equals max size limit, a new event log entry overwrites the oldest entry.");
+                        break;
+                    default:
+                        break;
                 }
-                if ((args.Length > 3) && (args[3].Length > 0))
-                {
-                    mySourceData.MessageResourceFile = args[3];
-                }
             }
-            else 
-            {
-                // Display a syntax help message.
-                Console.WriteLine("Input:");
-                Console.WriteLine(" source [event log] [machine name] [resource file]");
-
-                registerSource = false;
-            }
-
-            // Set defaults for parameters missing input.
-            if (mySourceData.MachineName.Length == 0)
-            {
-                // Default to the local computer.
-                mySourceData.MachineName = ".";
-            }
-            if (mySourceData.LogName.Length == 0)
-            {
-                // Default to the Application log.
-                mySourceData.LogName = "Application";
-            }
+        }

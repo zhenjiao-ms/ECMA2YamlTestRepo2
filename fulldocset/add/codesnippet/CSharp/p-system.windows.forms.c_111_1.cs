@@ -1,7 +1,15 @@
-        private void showSelectedButton_Click(object sender, System.EventArgs e) {
-            int selectedIndex = comboBox1.SelectedIndex;
-            Object selectedItem = comboBox1.SelectedItem;
-
-            MessageBox.Show("Selected Item Text: " + selectedItem.ToString() + "\n" +
-                            "Index: " + selectedIndex.ToString());
-        }
+public void InstantiateMyCheckBox()
+ {
+    // Create and initialize a CheckBox.   
+    CheckBox checkBox1 = new CheckBox(); 
+    
+    // Make the check box control appear as a toggle button.
+    checkBox1.Appearance = Appearance.Button;
+ 
+    // Turn off the update of the display on the click of the control.
+    checkBox1.AutoCheck = false;
+ 
+    // Add the check box control to the form.
+    Controls.Add(checkBox1);
+ }
+ 

@@ -8,7 +8,7 @@
 Dim currentUser As MembershipUser
 
 Public Sub Page_Load()
-  currentUser = Membership.GetUser()
+  currentUser = Membership.GetUser(False)
 End Sub
 
 </script>

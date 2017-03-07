@@ -1,37 +1,28 @@
-        // single interaction with the user. The user enters a string in the console and that
-        // string is used to resume the ReadLine activity bookmark
-        static void Interact(WorkflowApplication application, AutoResetEvent resetEvent)
-        {
-            Console.WriteLine("Workflow is ready for input");
-            Console.WriteLine("Special commands: 'unload', 'exit'");
+    public sealed class LongRunningDiceRoll : Activity
+    {
+        public OutArgument<int> D1 { get; set; }
+        public OutArgument<int> D2 { get; set; }
 
-            bool done = false;
-            while (!done)
+        public LongRunningDiceRoll()
+        {
+            this.Implementation = () => new Sequence
             {
-                Console.Write("> ");
-                string s = Console.ReadLine();
-                if (s.Equals("unload"))
+                Activities =
                 {
-                    try
+                    new WriteLine
                     {
-                        // attempt to unload will fail if the workflow is idle within a NoPersistZone
-                        application.Unload(TimeSpan.FromSeconds(5));
-                        done = true;
-                    }
-                    catch (TimeoutException e)
+                        Text = "Rolling the dice for 5 seconds."
+                    },
+                    new Delay
                     {
-                        Console.WriteLine(e.Message);
+                        Duration = TimeSpan.FromSeconds(5)
+                    },
+                    new DiceRoll
+                    {
+                        D1 = new OutArgument<int>(env => this.D1.Get(env)),
+                        D2 = new OutArgument<int>(env => this.D2.Get(env))
                     }
                 }
-                else if (s.Equals("exit"))
-                {
-                    application.ResumeBookmark("inputBookmark", s);
-                    done = true;
-                }
-                else
-                {
-                    application.ResumeBookmark("inputBookmark", s);
-                }
-            }
-            resetEvent.WaitOne();
+            };
         }
+    }

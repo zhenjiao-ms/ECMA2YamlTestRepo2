@@ -1,3 +1,93 @@
+#using <System.dll>
+#using <System.Data.dll>
+#using <System.Drawing.dll>
+#using <System.Windows.Forms.dll>
+#using <System.Design.dll>
+
+using namespace System;
+using namespace System::Collections::Generic;
+using namespace System::ComponentModel;
+using namespace System::Data;
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
+using namespace System::Windows::Forms::Design;
+using namespace System::Windows::Forms::Design::Behavior;
+using namespace System::Text;
+
+namespace BehaviorServiceSample
+{
+
+    public ref class UserControl1 : public UserControl
+    {
+    private:
+        System::ComponentModel::IContainer^ components;
+
+    public:
+        UserControl1()
+        {
+            InitializeComponent();
+        }
+
+    protected:
+        ~UserControl1()
+        {
+            if (components != nullptr)
+            {
+                delete components;
+            }
+        }
+
+    private:
+        void InitializeComponent()
+        {
+            this->Name = "UserControl1";
+            this->Size = System::Drawing::Size(170, 156);
+        }
+    };
+
+    public ref class Form1 : public Form
+    {
+    private:
+        UserControl1^ userControl;
+
+    public:
+        Form1()
+        {
+            InitializeComponent();
+        }
+
+    private:
+        System::ComponentModel::IContainer^ components;
+
+    protected:
+        ~Form1()
+        {
+            if (components != nullptr)
+            {
+                delete components;
+            }
+        }
+
+    private:
+        void InitializeComponent()
+        {
+            this->userControl = gcnew UserControl1();
+            this->SuspendLayout();
+
+            this->userControl->Location = System::Drawing::Point(12,13);
+            this->userControl->Name = "userControl";
+            this->userControl->Size = System::Drawing::Size(143,110);
+            this->userControl->TabIndex = 0;
+
+            this->AutoScaleBaseSize = System::Drawing::Size(5, 13);
+            this->ClientSize = System::Drawing::Size(184, 153);
+            this->Controls->Add(this->userControl);
+            this->Name = "Form1";
+            this->Text = "Form1";
+            this->ResumeLayout(false);
+        }
+    };
+
 
     // By providing our own behavior we can do something
     // interesting when the user clicks or manipulates our glyph.
@@ -71,3 +161,46 @@
             pe->Graphics->FillEllipse(Brushes::Blue, Bounds);
         }
     };
+
+
+    public ref class DemoDesigner : public ControlDesigner
+    {
+    private:
+        Adorner^ demoAdorner;
+
+    protected:
+        ~DemoDesigner()
+        {
+            if (demoAdorner != nullptr)
+            {
+                System::Windows::Forms::Design::Behavior::BehaviorService^ b = 
+                    this->BehaviorService;
+                if (b != nullptr)
+                {
+                    b->Adorners->Remove(demoAdorner);
+                }
+            }
+        }
+
+    public:
+        virtual void Initialize(IComponent^ component) override
+        {
+            __super::Initialize(component);
+
+            // Get a hold of the behavior service and add our own set
+            // of glyphs.  Glyphs live on adorners.
+            demoAdorner = gcnew Adorner();
+            BehaviorService->Adorners->Add(demoAdorner);
+            demoAdorner->Glyphs->Add 
+                (gcnew DemoGlyph(BehaviorService, Control));
+        }
+    };
+}
+
+[STAThread]
+int main()
+{
+    Application::EnableVisualStyles();
+    Application::Run(gcnew BehaviorServiceSample::Form1());
+}
+

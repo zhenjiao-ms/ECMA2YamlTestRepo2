@@ -1,17 +1,18 @@
 using namespace System;
-using namespace System::Security::Cryptography::X509Certificates;
+using namespace System::IO;
+using namespace System::Security::Cryptography;
 int main()
 {
    
-   // The path to the certificate.
-   String^ Certificate = "Certificate.cer";
+   // creates the CspParameters object and sets the key container name used to store the RSA key pair
+   CspParameters^ cp = gcnew CspParameters;
+   cp->KeyContainerName = "MyKeyContainerName";
    
-   // Load the certificate into an X509Certificate object.
-   X509Certificate^ cert = X509Certificate::CreateFromCertFile( Certificate );
+   // instantiates the rsa instance accessing the key container MyKeyContainerName
+   RSACryptoServiceProvider^ rsa = gcnew RSACryptoServiceProvider( cp );
    
-   // Get the value.
-   String^ results = cert->GetName();
-   
-   // Display the value to the console.
-   Console::WriteLine( results );
+   // add the below line to delete the key entry in MyKeyContainerName
+   // rsa.PersistKeyInCsp = false;
+   //writes out the current key pair used in the rsa instance
+   Console::WriteLine( "Key is : \n{0}", rsa->ToXmlString( true ) );
 }

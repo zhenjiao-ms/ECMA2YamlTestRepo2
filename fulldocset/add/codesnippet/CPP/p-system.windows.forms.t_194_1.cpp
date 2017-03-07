@@ -1,34 +1,41 @@
-public:
-   void InitializeMyToolBar()
+   // Declare the TreeView control.
+internal:
+   System::Windows::Forms::TreeView^ TreeView1;
+
+private:
+   // Initialize the TreeView to blend with the form, giving it the 
+   // same color as the form and no border.
+   void InitializeTreeView()
    {
-      // Create the ToolBar, ToolBarButton controls, and menus.
-      ToolBarButton^ toolBarButton1 = gcnew ToolBarButton( "Open" );
-      ToolBarButton^ toolBarButton2 = gcnew ToolBarButton;
-      ToolBarButton^ toolBarButton3 = gcnew ToolBarButton;
-      ToolBar^ toolBar1 = gcnew ToolBar;
-      MenuItem^ menuItem1 = gcnew MenuItem( "Print" );
-      array<MenuItem^>^ temp1 = {menuItem1};
-      System::Windows::Forms::ContextMenu^ contextMenu1 =
-         gcnew System::Windows::Forms::ContextMenu( temp1 );
-      
-      // Add the ToolBarButton controls to the ToolBar.
-      toolBar1->Buttons->Add( toolBarButton1 );
-      toolBar1->Buttons->Add( toolBarButton2 );
-      toolBar1->Buttons->Add( toolBarButton3 );
-      
-      // Assign an ImageList to the ToolBar and show ToolTips.
-      toolBar1->ImageList = imageList1;
-      toolBar1->ShowToolTips = true;
-      
-      /* Assign ImageIndex, ContextMenu, Text, ToolTip, and 
-         Style properties of the ToolBarButton controls. */
-      toolBarButton2->Style = ToolBarButtonStyle::Separator;
-      toolBarButton3->Text = "Print";
-      toolBarButton3->Style = ToolBarButtonStyle::DropDownButton;
-      toolBarButton3->ToolTipText = "Print";
-      toolBarButton3->ImageIndex = 0;
-      toolBarButton3->DropDownMenu = contextMenu1;
-      
-      // Add the ToolBar to a form.
-      Controls->Add( toolBar1 );
+      // Create a new TreeView control and set the location and size.
+      this->TreeView1 = gcnew System::Windows::Forms::TreeView;
+      this->TreeView1->Location = System::Drawing::Point( 72, 48 );
+      this->TreeView1->Size = System::Drawing::Size( 200, 200 );
+
+      // Set the BorderStyle property to none, the BackColor property to  
+      // the form's backcolor, and the Scrollable property to false.  
+      // This allows the TreeView to blend in form.
+      this->TreeView1->BorderStyle = BorderStyle::None;
+      this->TreeView1->BackColor = this->BackColor;
+      this->TreeView1->Scrollable = false;
+
+      // Set the HideSelection property to false to keep the 
+      // selection highlighted when the user leaves the control. 
+      // This helps it blend with form.
+      this->TreeView1->HideSelection = false;
+
+      // Set the ShowRootLines and ShowLines properties to false to 
+      // give the TreeView a list-like appearance.
+      this->TreeView1->ShowRootLines = false;
+      this->TreeView1->ShowLines = false;
+
+      // Add the nodes.
+      array<TreeNode^>^temp0 = {gcnew TreeNode( "Full Color" ),gcnew TreeNode( "Project Wizards" ),gcnew TreeNode( "Visual C# and Visual Basic Support" )};
+      array<TreeNode^>^temp1 = {gcnew TreeNode( "Pentium 133 MHz or faster processor " ),gcnew TreeNode( "Windows 98 or later" ),gcnew TreeNode( "100 MB Disk space" )};
+      array<TreeNode^>^temp2 = {gcnew TreeNode( "Features",temp0 ),gcnew TreeNode( "System Requirements",temp1 )};
+      this->TreeView1->Nodes->AddRange( temp2 );
+
+      // Set the tab index and add the TreeView to the form.
+      this->TreeView1->TabIndex = 0;
+      this->Controls->Add( this->TreeView1 );
    }

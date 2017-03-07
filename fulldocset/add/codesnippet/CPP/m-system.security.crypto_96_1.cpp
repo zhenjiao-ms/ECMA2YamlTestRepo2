@@ -1,56 +1,52 @@
-#using <system.dll>
+#using <System.dll>
+#using <System.Xml.dll>
+#using <System.Security.dll>
 
 using namespace System;
+using namespace System::IO;
 using namespace System::Security::Cryptography;
+using namespace System::Security::Cryptography::Xml;
+using namespace System::Xml;
 int main()
 {
    
-   // Assign values to strings.
-   String^ Value1 = "1.2.840.113549.1.1.1";
-   String^ Name1 = "3DES";
-   String^ Value2 = "1.3.6.1.4.1.311.20.2";
-   String^ InvalidName = "This name is not a valid name";
-   String^ InvalidValue = "1.1.1.1.1.1.1.1";
+   // Create example data to sign.
+   XmlDocument^ document = gcnew XmlDocument;
+   XmlNode^ node = document->CreateNode( XmlNodeType::Element, "", "MyElement", "samples" );
+   node->InnerText = "This is some text";
+   document->AppendChild( node );
+   Console::Error->WriteLine( "Data to sign:\n{0}\n", document->OuterXml );
    
-   // Create new Oid objects using the specified values.
-   // Note that the corresponding Value or Friendly Name property is automatically added to the object.
-   Oid ^ o1 = gcnew Oid( Value1 );
-   Oid ^ o2 = gcnew Oid( Name1 );
+   // Create the SignedXml message.
+   SignedXml^ signedXml = gcnew SignedXml;
+   RSA^ key = RSA::Create();
+   signedXml->SigningKey = key;
    
-   // Create a new Oid object using the specified Value and Friendly Name properties.
-   // Note that the two are not compared to determine if the Value is associated 
-   //  with the Friendly Name.
-   Oid ^ o3 = gcnew Oid( Value2,InvalidName );
+   // Create a data object to hold the data to sign.
+   DataObject^ dataObject = gcnew DataObject;
+   dataObject->Data = document->ChildNodes;
+   dataObject->Id = "MyObjectId";
    
-   //Create a new Oid object using the specified Value. Note that if the value
-   //  is invalid or not known, no value is assigned to the Friendly Name property.
-   Oid ^ o4 = gcnew Oid( InvalidValue );
+   // Add the data object to the signature.
+   signedXml->AddObject( dataObject );
    
-   //Write out the property information of the Oid objects.
-   Console::WriteLine( "Oid1: Automatically assigned Friendly Name: {0}, {1}", o1->FriendlyName, o1->Value );
-   Console::WriteLine( "Oid2: Automatically assigned Value: {0}, {1}", o2->FriendlyName, o2->Value );
-   Console::WriteLine( "Oid3: Name and Value not compared: {0}, {1}", o3->FriendlyName, o3->Value );
-   Console::WriteLine( "Oid4: Invalid Value used: {0}, {1} {2}", o4->FriendlyName, o4->Value, Environment::NewLine );
+   // Create a reference to be able to package everything into the
+   // message.
+   Reference^ reference = gcnew Reference;
+   reference->Uri = "#MyObjectId";
    
-   //Create an Oid collection and add several Oid objects.
-   OidCollection ^ oc = gcnew OidCollection;
-   oc->Add( o1 );
-   oc->Add( o2 );
-   oc->Add( o3 );
-   Console::WriteLine( "Number of Oids in the collection: {0}", oc->Count );
-   Console::WriteLine( "Is synchronized: {0} {1}", oc->IsSynchronized, Environment::NewLine );
+   // Add it to the message.
+   signedXml->AddReference( reference );
    
-   //Create an enumerator for moving through the collection.
-   OidEnumerator ^ oe = oc->GetEnumerator();
+   // Add a KeyInfo.
+   KeyInfo^ keyInfo = gcnew KeyInfo;
+   keyInfo->AddClause( gcnew RSAKeyValue( key ) );
+   signedXml->KeyInfo = keyInfo;
    
-   //You must execute a MoveNext() to get to the first item in the collection.
-   oe->MoveNext();
+   // Compute the signature.
+   signedXml->ComputeSignature();
    
-   // Write out Oids in the collection.
-   Console::WriteLine( "First Oid in collection: {0},{1}", oe->Current->FriendlyName, oe->Current->Value );
-   oe->MoveNext();
-   Console::WriteLine( "Second Oid in collection: {0},{1}", oe->Current->FriendlyName, oe->Current->Value );
-   
-   //Return index in the collection to the beginning.
-   oe->Reset();
+   // Get the XML representation of the signature.
+   XmlElement^ xmlSignature = signedXml->GetXml();
+   Console::WriteLine( xmlSignature->OuterXml );
 }

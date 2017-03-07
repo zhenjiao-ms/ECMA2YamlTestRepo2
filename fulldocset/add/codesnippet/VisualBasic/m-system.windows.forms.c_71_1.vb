@@ -1,9 +1,9 @@
-    Private Sub RemoveFromList()
-        ' Get the CurrencyManager of a TextBox control.
-        Dim myCurrencyManager As CurrencyManager = CType(textBox1.BindingContext(0), CurrencyManager)
-        ' If the count is 0, exit the function.
-        If myCurrencyManager.Count > 1 Then
-            myCurrencyManager.RemoveAt(0)
-        End If
-        
-    End Sub 'RemoveFromList
+   Delegate Sub InvokeDelegate()
+   
+   Private Sub Invoke_Click(sender As Object, e As EventArgs)
+      myTextBox.BeginInvoke(New InvokeDelegate(AddressOf InvokeMethod))
+   End Sub 'Invoke_Click
+   
+   Public Sub InvokeMethod()
+      myTextBox.Text = "Executed the given delegate"
+   End Sub 'InvokeMethod

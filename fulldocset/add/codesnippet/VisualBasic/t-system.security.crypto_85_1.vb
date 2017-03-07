@@ -1,120 +1,167 @@
 Imports System
-Imports System.IO
+Imports System.Xml
 Imports System.Security.Cryptography
+Imports System.Security.Cryptography.Xml
 
 
 
-Class RijndaelExample
+Module Program
 
-    Public Shared Sub Main()
+    Sub Main(ByVal args() As String)
+
+        ' Create an XmlDocument object.
+        Dim xmlDoc As New XmlDocument()
+
+        ' Load an XML file into the XmlDocument object.
+        xmlDoc.PreserveWhitespace = True
+        xmlDoc.Load("test.xml")
+
+
+        ' Create a new TripleDES key. 
+        Dim tDESkey As New TripleDESCryptoServiceProvider()
+
+        ' Create a new instance of the TrippleDESDocumentEncryption object
+        ' defined in this sample.
+        Dim xmlTDES As New TrippleDESDocumentEncryption(xmlDoc, tDESkey)
+
         Try
+            ' Encrypt the "creditcard" element.
+            xmlTDES.Encrypt("creditcard")
 
-            Dim original As String = "Here is some data to encrypt!"
+            ' Display the encrypted XML to the console.
+            Console.WriteLine("Encrypted XML:")
+            Console.WriteLine()
+            Console.WriteLine(xmlTDES.Doc.OuterXml)
 
-            ' Create a new instance of the RijndaelManaged
-            ' class.  This generates a new key and initialization 
-            ' vector (IV).
-            Using myRijndael As New RijndaelManaged()
-            
-            	myRijndael.GenerateKey()
-                myRijndael.GenerateIV()
+            ' Decrypt the "creditcard" element.
+            xmlTDES.Decrypt()
 
-                ' Encrypt the string to an array of bytes.
-                Dim encrypted As Byte() = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV)
-
-                ' Decrypt the bytes to a string.
-                Dim roundtrip As String = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV)
-
-                'Display the original data and the decrypted data.
-                Console.WriteLine("Original:   {0}", original)
-                Console.WriteLine("Round Trip: {0}", roundtrip)
-            End Using
+            ' Display the encrypted XML to the console.
+            Console.WriteLine()
+            Console.WriteLine("Decrypted XML:")
+            Console.WriteLine()
+            Console.WriteLine(xmlTDES.Doc.OuterXml)
         Catch e As Exception
-            Console.WriteLine("Error: {0}", e.Message)
+            Console.WriteLine(e.Message)
+        Finally
+            ' Clear the TripleDES key.
+            xmlTDES.Clear()
         End Try
 
-    End Sub 'Main
+    End Sub 'Main 
+End Module 'Program
 
-    Shared Function EncryptStringToBytes(ByVal plainText As String, ByVal Key() As Byte, ByVal IV() As Byte) As Byte()
-        ' Check arguments.
-        If plainText Is Nothing OrElse plainText.Length <= 0 Then
-            Throw New ArgumentNullException("plainText")
+
+
+Class TrippleDESDocumentEncryption
+    Protected docValue As XmlDocument
+    Protected algValue As TripleDES
+
+
+    Public Sub New(ByVal Doc As XmlDocument, ByVal Key As TripleDES)
+        If Not (Doc Is Nothing) Then
+            docValue = Doc
+        Else
+            Throw New ArgumentNullException("Doc")
         End If
-        If Key Is Nothing OrElse Key.Length <= 0 Then
+
+        If Not (Key Is Nothing) Then
+
+            algValue = Key
+        Else
             Throw New ArgumentNullException("Key")
         End If
-        If IV Is Nothing OrElse IV.Length <= 0 Then
-            Throw New ArgumentNullException("IV")
+
+    End Sub
+
+
+    Public Property Doc() As XmlDocument
+        Get
+            Return docValue
+        End Get
+        Set(ByVal value As XmlDocument)
+            docValue = value
+        End Set
+    End Property
+
+    Public Property Alg() As TripleDES
+        Get
+            Return algValue
+        End Get
+        Set(ByVal value As TripleDES)
+            algValue = value
+        End Set
+    End Property
+
+    Public Sub Clear()
+        If Not (algValue Is Nothing) Then
+            algValue.Clear()
+        Else
+            Throw New Exception("No TripleDES key was found to clear.")
         End If
-        Dim encrypted() As Byte
-        ' Create an RijndaelManaged object
-        ' with the specified key and IV.
-        Using rijAlg As New RijndaelManaged()
 
-            rijAlg.Key = Key
-            rijAlg.IV = IV
+    End Sub
 
-            ' Create a decrytor to perform the stream transform.
-            Dim encryptor As ICryptoTransform = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV)
-            ' Create the streams used for encryption.
-            Using msEncrypt As New MemoryStream()
-                Using csEncrypt As New CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)
-                    Using swEncrypt As New StreamWriter(csEncrypt)
 
-                        'Write all data to the stream.
-                        swEncrypt.Write(plainText)
-                    End Using
-                    encrypted = msEncrypt.ToArray()
-                End Using
-            End Using
-        End Using
+    Public Sub Encrypt(ByVal Element As String)
+        ' Find the element by name and create a new
+        ' XmlElement object.
+        Dim inputElement As XmlElement = docValue.GetElementsByTagName(Element)(0)
 
-        ' Return the encrypted bytes from the memory stream.
-        Return encrypted
-
-    End Function 'EncryptStringToBytes
-
-    Shared Function DecryptStringFromBytes(ByVal cipherText() As Byte, ByVal Key() As Byte, ByVal IV() As Byte) As String
-        ' Check arguments.
-        If cipherText Is Nothing OrElse cipherText.Length <= 0 Then
-            Throw New ArgumentNullException("cipherText")
+        ' If the element was not found, throw an exception.
+        If inputElement Is Nothing Then
+            Throw New Exception("The element was not found.")
         End If
-        If Key Is Nothing OrElse Key.Length <= 0 Then
-            Throw New ArgumentNullException("Key")
+
+        ' Create a new EncryptedXml object.
+        Dim exml As New EncryptedXml(docValue)
+
+        ' Encrypt the element using the symmetric key.
+        Dim rgbOutput As Byte() = exml.EncryptData(inputElement, algValue, False)
+
+        ' Create an EncryptedData object and populate it.
+        Dim ed As New EncryptedData()
+
+        ' Specify the namespace URI for XML encryption elements.
+        ed.Type = EncryptedXml.XmlEncElementUrl
+
+        ' Specify the namespace URI for the TrippleDES algorithm.
+        ed.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncTripleDESUrl)
+
+        ' Create a CipherData element.
+        ed.CipherData = New CipherData()
+
+        ' Set the CipherData element to the value of the encrypted XML element.
+        ed.CipherData.CipherValue = rgbOutput
+
+        ' Replace the plaintext XML elemnt with an EncryptedData element.
+        EncryptedXml.ReplaceElement(inputElement, ed, False)
+
+    End Sub
+
+
+    Public Sub Decrypt()
+
+        ' XmlElement object.
+        Dim encryptedElement As XmlElement = docValue.GetElementsByTagName("EncryptedData")(0)
+
+        ' If the EncryptedData element was not found, throw an exception.
+        If encryptedElement Is Nothing Then
+            Throw New Exception("The EncryptedData element was not found.")
         End If
-        If IV Is Nothing OrElse IV.Length <= 0 Then
-            Throw New ArgumentNullException("IV")
-        End If
-        ' Declare the string used to hold
-        ' the decrypted text.
-        Dim plaintext As String = Nothing
 
-        ' Create an RijndaelManaged object
-        ' with the specified key and IV.
-        Using rijAlg As New RijndaelManaged
-            rijAlg.Key = Key
-            rijAlg.IV = IV
+        ' Create an EncryptedData object and populate it.
+        Dim ed As New EncryptedData()
+        ed.LoadXml(encryptedElement)
 
-            ' Create a decrytor to perform the stream transform.
-            Dim decryptor As ICryptoTransform = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV)
+        ' Create a new EncryptedXml object.
+        Dim exml As New EncryptedXml()
 
-            ' Create the streams used for decryption.
-            Using msDecrypt As New MemoryStream(cipherText)
+        ' Decrypt the element using the symmetric key.
+        Dim rgbOutput As Byte() = exml.DecryptData(ed, algValue)
 
-                Using csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
+        ' Replace the encryptedData element with the plaintext XML elemnt.
+        exml.ReplaceData(encryptedElement, rgbOutput)
 
-                    Using srDecrypt As New StreamReader(csDecrypt)
-
-
-                        ' Read the decrypted bytes from the decrypting stream
-                        ' and place them in a string.
-                        plaintext = srDecrypt.ReadToEnd()
-                    End Using
-                End Using
-            End Using
-        End Using
-
-        Return plaintext
-
-    End Function 'DecryptStringFromBytes 
+    End Sub
 End Class

@@ -1,11 +1,13 @@
-    <Localizable(True)> _
-    Public Property MyProperty() As Integer
-        Get
-            ' Insert code here.
-            Return 0
-        End Get
-        Set
-            ' Insert code here.
-        End Set 
-    End Property
-    
+        <Category("Data"), _
+        Description("Indicates the source of data for the control."), _
+        RefreshProperties(RefreshProperties.Repaint), _
+        AttributeProvider(GetType(IListSource))> _
+        Public Property DataSource() As Object
+            Get
+                Return Me.dataGridView1.DataSource
+            End Get
+
+            Set(ByVal value As Object)
+                Me.dataGridView1.DataSource = value
+            End Set
+        End Property

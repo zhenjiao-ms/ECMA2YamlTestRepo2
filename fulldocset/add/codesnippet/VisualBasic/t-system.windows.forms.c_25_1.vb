@@ -1,11 +1,14 @@
-Private Sub ListView1_CacheVirtualItems(sender as Object, e as CacheVirtualItemsEventArgs) _ 
-     Handles ListView1.CacheVirtualItems
+   ' Set the 'FixedHeight' and 'FixedWidth' styles to false.
+   Private Sub MyForm_Load(sender As Object, e As EventArgs)
+      Me.SetStyle(ControlStyles.FixedHeight, False)
+      Me.SetStyle(ControlStyles.FixedWidth, False)
+   End Sub 'MyForm_Load
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "StartIndex", e.StartIndex)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "EndIndex", e.EndIndex)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"CacheVirtualItems Event")
+   Private Sub RegisterEventHandler()
+      AddHandler Me.StyleChanged, AddressOf MyForm_StyleChanged
+   End Sub 'RegisterEventHandler
 
-End Sub
+   ' Handle the 'StyleChanged' event for the 'Form'.
+   Private Sub MyForm_StyleChanged(sender As Object, e As EventArgs)
+      MessageBox.Show("The style releated to the 'Form' has been changed")
+   End Sub 'MyForm_StyleChanged

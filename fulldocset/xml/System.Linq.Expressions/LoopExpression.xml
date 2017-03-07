@@ -16,8 +16,18 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents an infinite loop. It can be exited with "break".</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example demonstrates how to create a block expression that contains a LoopExpression object by using the <xref:System.Linq.Expressions.Expression.Loop%2A> method.  
+  
+ [!code-vb[System.Linq.Expressions.ExpressionDev10#44](~/add/codesnippet/visualbasic/t-system.linq.expression_13_1.vb)]
+ [!code-cs[System.Linq.Expressions.ExpressionDev10#44](~/add/codesnippet/csharp/t-system.linq.expression_13_1.cs)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Accept">
@@ -55,8 +65,8 @@
         <ReturnType>System.Linq.Expressions.Expression</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Linq.Expressions.Expression" /> that is the body of the loop.</summary>
+        <value>The <see cref="T:System.Linq.Expressions.Expression" /> that is the body of the loop.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -73,8 +83,8 @@
         <ReturnType>System.Linq.Expressions.LabelTarget</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Linq.Expressions.LabelTarget" /> that is used by the loop body as a break statement target.</summary>
+        <value>The <see cref="T:System.Linq.Expressions.LabelTarget" /> that is used by the loop body as a break statement target.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -91,8 +101,8 @@
         <ReturnType>System.Linq.Expressions.LabelTarget</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Linq.Expressions.LabelTarget" /> that is used by the loop body as a continue statement target.</summary>
+        <value>The <see cref="T:System.Linq.Expressions.LabelTarget" /> that is used by the loop body as a continue statement target.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -109,8 +119,8 @@
         <ReturnType>System.Linq.Expressions.ExpressionType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Returns the node type of this expression. Extension nodes should return <see cref="T:System.Linq.Expressions.ExpressionType" /> when overriding this method.</summary>
+        <value>The <see cref="T:System.Linq.Expressions.ExpressionType" /> of the expression.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -127,8 +137,8 @@
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the static type of the expression that this <see cref="T:System.Linq.Expressions.Expression" /> represents.</summary>
+        <value>The Type that represents the static type of the expression.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -150,11 +160,11 @@
         <Parameter Name="body" Type="System.Linq.Expressions.Expression" />
       </Parameters>
       <Docs>
-        <param name="breakLabel">To be added.</param>
-        <param name="continueLabel">To be added.</param>
-        <param name="body">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="breakLabel">The <see cref="System.Linq.Expressions.LoopExpression.BreakLabel%2A" /> property of the result.</param>
+        <param name="continueLabel">The <see cref="System.Linq.Expressions.LoopExpression.ContinueLabel%2A" /> property of the result.</param>
+        <param name="body">The <see cref="System.Linq.Expressions.LoopExpression.Body%2A" /> property of the result.</param>
+        <summary>Creates a new expression that is like this one, but using the supplied children. If all of the children are the same, it will return this expression.</summary>
+        <returns>This expression if no children are changed or an expression with the updated children.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

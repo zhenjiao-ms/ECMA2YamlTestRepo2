@@ -1,13 +1,15 @@
 using System;
-using System.Globalization;
 using System.Runtime.CompilerServices;
 
-public class Utility
+
+[DiscardableAttribute()]
+class Program
 {
-   [MethodImplAttribute(MethodImplOptions.NoInlining)] 
-   public static string GetCalendarName(Calendar cal)
-   {
-      return cal.ToString().Replace("System.Globalization.", "").
-                 Replace("Calendar", "");
-   }
+    
+    static void Main(string[] args)
+    {
+
+        Console.WriteLine("The DiscardableAttribute attribute was applied.");
+
+    }
 }

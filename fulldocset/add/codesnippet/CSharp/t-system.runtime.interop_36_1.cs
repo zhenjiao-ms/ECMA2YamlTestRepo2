@@ -1,17 +1,14 @@
-using System;
 using System.Runtime.InteropServices;
 
-public class MyClassThatNeedsToRegister
+//Interface is exposed to COM as dual.
+interface IMyInterface1 
 {
-   [ComRegisterFunctionAttribute]
-   public static void RegisterFunction(Type t)
-   {
-      //Insert code here.
-   }
-   
-   [ComUnregisterFunctionAttribute]
-   public static void UnregisterFunction(Type t)
-   {
-      //Insert code here.
-   }
+    //Insert code here.
+}
+
+//Interface is exposed to COM as IDispatch.
+[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIDispatch)]
+interface IMyInterface2 
+{
+    //Insert code here.
 }

@@ -1,34 +1,19 @@
-        ToolStripButton^ changeDirectionButton;
-
-        void InitializeMovingToolStrip()
-        {
-            changeDirectionButton = gcnew ToolStripButton;
-            movingToolStrip->AutoSize = true;
-            movingToolStrip->RenderMode = ToolStripRenderMode::System;
-            changeDirectionButton->TextDirection = 
-                ToolStripTextDirection::Vertical270;
-            changeDirectionButton->Overflow = 
-                ToolStripItemOverflow::Never;
-            changeDirectionButton->Text = "Change Alignment";
-            movingToolStrip->Items->Add(changeDirectionButton);
-            changeDirectionButton->Click += gcnew EventHandler(this, 
-                &Form1::changeDirectionButtonClick);
-        }
-
-        void changeDirectionButtonClick(Object^ sender, EventArgs^ e)
-        {
-            ToolStripItem^ item = (ToolStripItem^) sender;
-            if ((item->TextDirection == ToolStripTextDirection::Vertical270) 
-                || (item->TextDirection == ToolStripTextDirection::Vertical90))
-            {
-                item->TextDirection = ToolStripTextDirection::Horizontal;
-                movingToolStrip->Raft = RaftingSides::Top;
-            }
-            else
-            {
-                item->TextDirection = 
-                    ToolStripTextDirection::Vertical270;
-                movingToolStrip->Raft = RaftingSides::Left;
-            }
-        }
-
+public:
+   void CreateMyMultilineTextBox()
+   {
+      // Create an instance of a TextBox control.
+      TextBox^ textBox1 = gcnew TextBox;
+      
+      // Set the Multiline property to true.
+      textBox1->Multiline = true;
+      // Add vertical scroll bars to the TextBox control.
+      textBox1->ScrollBars = ScrollBars::Vertical;
+      // Allow the RETURN key to be entered in the TextBox control.
+      textBox1->AcceptsReturn = true;
+      // Allow the TAB key to be entered in the TextBox control.
+      textBox1->AcceptsTab = true;
+      // Set WordWrap to true to allow text to wrap to the next line.
+      textBox1->WordWrap = true;
+      // Set the default text of the control.
+      textBox1->Text = "Welcome!";
+   }

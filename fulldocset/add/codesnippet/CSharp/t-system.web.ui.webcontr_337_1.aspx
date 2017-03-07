@@ -1,80 +1,154 @@
-<%@ Page Language="C#" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<script runat="server">
-
-    protected void UploadButton_Click(object sender, EventArgs e)
-    {
-        // Save the uploaded file to an "Uploads" directory
-        // that already exists in the file system of the 
-        // currently executing ASP.NET application.  
-        // Creating an "Uploads" directory isolates uploaded 
-        // files in a separate directory. This helps prevent
-        // users from overwriting existing application files by
-        // uploading files with names like "Web.config".
-        string saveDir = @"\Uploads\";
-
-        // Get the physical file system path for the currently
-        // executing application.
-        string appPath = Request.PhysicalApplicationPath;
-
-        // Before attempting to save the file, verify
-        // that the FileUpload control contains a file.
-        if (FileUpload1.HasFile)
-        {
-            string savePath = appPath + saveDir +
-                Server.HtmlEncode(FileUpload1.FileName);
-            
-            // Call the SaveAs method to save the 
-            // uploaded file to the specified path.
-            // This example does not perform all
-            // the necessary error checking.               
-            // If a file with the same name
-            // already exists in the specified path,  
-            // the uploaded file overwrites it.
-            FileUpload1.SaveAs(savePath);
-
-            // Notify the user that the file was uploaded successfully.
-            UploadStatusLabel.Text = "Your file was uploaded successfully.";
-
-        }
-        else
-        {
-            // Notify the user that a file was not uploaded.
-            UploadStatusLabel.Text = "You did not specify a file to upload.";   
-        }
-    }
-</script>
-
+<%@ Page Language="C#" AutoEventWireup="True" %>
+<%@ Import Namespace="System.Data" %>
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
+   <script runat="server">
+
+      ICollection CreateDataSource() 
+      {
+      
+         // Create sample data for the DataGrid control.
+         DataTable dt = new DataTable();
+         DataRow dr;
+ 
+         // Define the columns of the table.
+         dt.Columns.Add(new DataColumn("IntegerValue", typeof(Int32)));
+         dt.Columns.Add(new DataColumn("StringValue", typeof(string)));
+         dt.Columns.Add(new DataColumn("CurrencyValue", typeof(double)));
+ 
+         // Populate the table with sample values.
+         for (int i = 0; i < 9; i++) 
+         {
+            dr = dt.NewRow();
+ 
+            dr[0] = i;
+            dr[1] = "Item " + i.ToString();
+            dr[2] = 1.23 * (i + 1);
+ 
+            dt.Rows.Add(dr);
+         }
+ 
+         DataView dv = new DataView(dt);
+         return dv;
+
+      }
+ 
+      void Page_Load(Object sender, EventArgs e) 
+      {
+
+         // Create a DataGrid control.
+         DataGrid ItemsGrid = new DataGrid();
+
+         // Set the properties of the DataGrid.
+         ItemsGrid.ID = "ItemsGrid";
+         ItemsGrid.BorderColor = System.Drawing.Color.Black;
+         ItemsGrid.CellPadding = 3;
+         ItemsGrid.AutoGenerateColumns = false;
+
+         // Set the styles for the DataGrid.
+         ItemsGrid.HeaderStyle.BackColor = 
+             System.Drawing.Color.FromArgb(0x0000aaaa);
+
+         // Create the columns for the DataGrid control. The DataGrid
+         // columns are dynamically generated. Therefore, the columns   
+         // must be re-created each time the page is refreshed.
+         
+         // Create and add the columns to the collection.
+         ItemsGrid.Columns.Add(CreateBoundColumn("IntegerValue", "Item"));
+         ItemsGrid.Columns.Add(
+             CreateBoundColumn("StringValue", "Description"));
+         ItemsGrid.Columns.Add(
+             CreateBoundColumn("CurrencyValue", "Price", "{0:c}", 
+             HorizontalAlign.Right));
+         ItemsGrid.Columns.Add(
+             CreateLinkColumn("http://www.microsoft.com", "_self", 
+             "Microsoft", "Related link"));
+        
+         // Specify the data source and bind it to the control.
+         ItemsGrid.DataSource = CreateDataSource();
+         ItemsGrid.DataBind();
+
+         // Add the DataGrid control to the Controls collection of 
+         // the PlaceHolder control.
+         Place.Controls.Add(ItemsGrid);
+
+      }
+
+      BoundColumn CreateBoundColumn(String DataFieldValue, 
+          String HeaderTextValue)
+      {
+
+         // This version of the CreateBoundColumn method sets only the
+         // DataField and HeaderText properties.
+
+         // Create a BoundColumn.
+         BoundColumn column = new BoundColumn();
+
+         // Set the properties of the BoundColumn.
+         column.DataField = DataFieldValue;
+         column.HeaderText = HeaderTextValue;
+
+         return column;
+
+      }
+
+      BoundColumn CreateBoundColumn(String DataFieldValue, 
+          String HeaderTextValue, String FormatValue, 
+          HorizontalAlign AlignValue)
+      {
+
+         // This version of CreateBoundColumn method sets the DataField,
+         // HeaderText, and DataFormatString properties. It also sets the 
+         // HorizontalAlign property of the ItemStyle property of the column. 
+
+         // Create a BoundColumn using the overloaded CreateBoundColumn method.
+         BoundColumn column = CreateBoundColumn(DataFieldValue, HeaderTextValue);
+
+         // Set the properties of the BoundColumn.
+         column.DataFormatString = FormatValue;
+         column.ItemStyle.HorizontalAlign = AlignValue;
+
+         return column;
+
+      }
+
+      HyperLinkColumn CreateLinkColumn(String NavUrlValue, 
+          String TargetValue, String TextValue, String HeaderTextValue)
+      {
+
+         // Create a BoundColumn.
+         HyperLinkColumn column = new HyperLinkColumn();
+
+         // Set the properties of the ButtonColumn.
+         column.NavigateUrl = NavUrlValue;
+         column.Target = TargetValue;
+         column.Text = TextValue;
+         column.HeaderText = HeaderTextValue;
+
+         return column;
+
+      }
+
+   </script>
+ 
 <head runat="server">
-    <title>FileUpload Class Example</title>
+    <title>DataGrid Constructor Example</title>
 </head>
 <body>
-    <h3>FileUpload Class Example: Save To Application Directory</h3>
-    <form id="form1" runat="server">
-    <div>
-       <h4>Select a file to upload:</h4>
-   
-       <asp:FileUpload id="FileUpload1"                 
-           runat="server">
-       </asp:FileUpload>
-            
-       <br/><br/>
-       
-       <asp:Button id="UploadButton" 
-           Text="Upload file"
-           OnClick="UploadButton_Click"
-           runat="server">
-       </asp:Button>    
-       
-       <hr />
-       
-       <asp:Label id="UploadStatusLabel"
-           runat="server">
-       </asp:Label>           
-    </div>
-    </form>
+ 
+   <form id="form1" runat="server">
+ 
+      <h3>DataGrid Constructor Example</h3>
+ 
+      <b>Product List</b>
+
+      <asp:PlaceHolder id="Place"
+           runat="server"/>
+ 
+   </form>
+ 
 </body>
 </html>

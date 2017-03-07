@@ -1,30 +1,37 @@
-private:
-   void LayeredWindows()
-   {
-      // Gets the version of the layered windows feature.
-      Version^ myVersion = OSFeature::Feature->GetVersionPresent(
-         OSFeature::LayeredWindows );
-      
-      // Prints whether the feature is available.
-      if ( myVersion != nullptr )
-      {
-         textBox1->Text = "Layered windows feature is installed.\n";
-      }
-      else
-      {
-         textBox1->Text = "Layered windows feature is not installed.\n";
-      }
+internal:
+   System::Windows::Forms::ImageList^ ImageList1;
 
+private:
+
+   // Create an ImageList Object, populate it, and display
+   // the images it contains.
+   void Button1_Click( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
       
-      // This is an alternate way to check whether a feature is present.
-      if ( OSFeature::Feature->IsPresent( OSFeature::LayeredWindows ) )
+      // Construct the ImageList.
+      ImageList1 = gcnew ImageList;
+      
+      // Set the ImageSize property to a larger size 
+      // (the default is 16 x 16).
+      ImageList1->ImageSize = System::Drawing::Size( 112, 112 );
+      
+      // Add two images to the list.
+      ImageList1->Images->Add( Image::FromFile( "c:\\windows\\FeatherTexture.bmp" ) );
+      ImageList1->Images->Add( Image::FromFile( "C:\\windows\\Gone Fishing.bmp" ) );
+      
+      // Get a Graphics object from the form's handle.
+      Graphics^ theGraphics = Graphics::FromHwnd( this->Handle );
+      
+      // Loop through the images in the list, drawing each image.
+      for ( int count = 0; count < ImageList1->Images->Count; count++ )
       {
-         textBox1->Text = String::Concat( textBox1->Text,
-            "Again, layered windows feature is installed." );
-      }
-      else
-      {
-         textBox1->Text = String::Concat( textBox1->Text,
-            "Again, layered windows feature is not installed." );
+         ImageList1->Draw( theGraphics, Point(85,85), count );
+         
+         // Call Application.DoEvents to force a repaint of the form.
+         Application::DoEvents();
+         
+         // Call the Sleep method to allow the user to see the image.
+         System::Threading::Thread::Sleep( 1000 );
+
       }
    }

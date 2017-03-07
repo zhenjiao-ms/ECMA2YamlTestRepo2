@@ -1,66 +1,25 @@
-        Public Overrides Function GetSortedActionItems() _
-        As DesignerActionItemCollection
-            Dim items As New DesignerActionItemCollection()
+Imports System
+Imports System.Web.DynamicData
+Imports System.ComponentModel.DataAnnotations
+Imports System.ComponentModel
 
-            'Define static section header entries.
-            items.Add(New DesignerActionHeaderItem("Appearance"))
-            items.Add(New DesignerActionHeaderItem("Information"))
+<MetadataType(GetType(ProductMetaData))> _
+Partial Public Class Product
 
-            'Boolean property for locking color selections.
-            items.Add(New DesignerActionPropertyItem( _
-            "LockColors", _
-            "Lock Colors", _
-            "Appearance", _
-            "Locks the color properties."))
+End Class
 
-            If Not LockColors Then
-                items.Add( _
-                New DesignerActionPropertyItem( _
-                "BackColor", _
-                "Back Color", _
-                "Appearance", _
-                "Selects the background color."))
 
-                items.Add( _
-                New DesignerActionPropertyItem( _
-                "ForeColor", _
-                "Fore Color", _
-                "Appearance", _
-                "Selects the foreground color."))
+Public Class ProductMetaData
+    
+    <Range(10, 1000, _
+           ErrorMessage:="Value for {0} must be between {1} and {2}.")> _
+    Public Weight As Object
 
-                'This next method item is also added to the context menu 
-                ' (as a designer verb).
-                items.Add( _
-                New DesignerActionMethodItem( _
-                Me, _
-                "InvertColors", _
-                "Invert Colors", _
-                "Appearance", _
-                "Inverts the fore and background colors.", _
-                True))
-            End If
-            items.Add( _
-            New DesignerActionPropertyItem( _
-            "Text", _
-            "Text String", _
-            "Appearance", _
-            "Sets the display text."))
+    <Range(300, 3000)> _
+    Public ListPrice As Object
 
-            'Create entries for static Information section.
-            Dim location As New StringBuilder("Location: ")
-            location.Append(colLabel.Location)
-            Dim size As New StringBuilder("Size: ")
-            size.Append(colLabel.Size)
+    <Range(GetType(DateTime), "1/2/2004", "3/4/2004", _
+           ErrorMessage:="Value for {0} must be between {1} and {2}")> _
+    Public SellEndDate As Object
 
-            items.Add( _
-            New DesignerActionTextItem( _
-            location.ToString(), _
-            "Information"))
-
-            items.Add( _
-            New DesignerActionTextItem( _
-            size.ToString(), _
-            "Information"))
-
-            Return items
-        End Function
+End Class

@@ -1,20 +1,7 @@
-    <System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name:="FullTrust")> _
-    Public Class CDesigner
-        Inherits System.ComponentModel.Design.ComponentDesigner
-
-        Public Overrides Sub Initialize(ByVal comp As IComponent)
-            MyBase.Initialize(comp)
-
-            Dim mcs As IMenuCommandService = CType(comp.Site.GetService(GetType(IMenuCommandService)), IMenuCommandService)
-            Dim mc As New MenuCommand(New EventHandler(AddressOf OnF1Help), StandardCommands.F1Help)
-            mc.Enabled = True
-            mc.Visible = True
-            mc.Supported = True
-            mcs.AddCommand(mc)
-            System.Windows.Forms.MessageBox.Show("Initialize() has been invoked.")
-        End Sub
-
-        Private Sub OnF1Help(ByVal sender As Object, ByVal e As EventArgs)
-            System.Windows.Forms.MessageBox.Show("F1Help has been invoked.")
-        End Sub
-    End Class
+ Private Sub PrintIndexItem()
+     ' Creates a new collection and assigns it the properties for button1.
+     Dim properties As PropertyDescriptorCollection = TypeDescriptor.GetProperties(button1)
+        
+     ' Prints the second property's name.
+     textBox1.Text = properties(1).ToString()
+ End Sub

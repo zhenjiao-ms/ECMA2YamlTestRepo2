@@ -1,15 +1,17 @@
 using namespace System;
 using namespace System::Reflection;
 
-// A class that contains some properties.
-public ref class MyProperty
+// Define a property.
+public ref class Myproperty
 {
 private:
-
-   // Define a simple string property.
    String^ caption;
 
 public:
+   Myproperty()
+      : caption( "A Default caption" )
+   {}
+
 
    property String^ Caption 
    {
@@ -28,62 +30,26 @@ public:
 
    }
 
-private:
-
-   // A very limited indexer that gets or sets one of four 
-   // strings.
-   array<String^>^strings;
-
-public:
-   MyProperty()
-   {
-      array<String^>^temp0 = {"abc","def","ghi","jkl"};
-      strings = temp0;
-   }
-
-
-   property String^ Item [int]
-   {
-      String^ get( int Index )
-      {
-         return strings[ Index ];
-      }
-
-      void set( int Index, String^ value )
-      {
-         strings[ Index ] = value;
-      }
-
-   }
-
 };
 
 int main()
 {
+   Console::WriteLine( "\nReflection.PropertyInfo" );
    
-   // Get the type and PropertyInfo.
-   Type^ t = Type::GetType( "MyProperty" );
-   PropertyInfo^ pi = t->GetProperty( "Caption" );
+   // Get the type and PropertyInfo for two separate properties.
+   Type^ MyTypea = Type::GetType( "Myproperty" );
+   PropertyInfo^ Mypropertyinfoa = MyTypea->GetProperty( "Caption" );
+   Type^ MyTypeb = Type::GetType( "System.Reflection.MethodInfo" );
+   PropertyInfo^ Mypropertyinfob = MyTypeb->GetProperty( "MemberType" );
    
-   // Get the public GetIndexParameters method.
-   array<ParameterInfo^>^parms = pi->GetIndexParameters();
-   Console::WriteLine( "\n{0}.{1} has {2} parameters.", t->FullName, pi->Name, parms->GetLength( 0 ) );
+   // Get and display the GetGetMethod method for each property.
+   MethodInfo^ Mygetmethodinfoa = Mypropertyinfoa->GetGetMethod();
+   Console::Write( "\nGetAccessor for {0} returns a {1}", Mypropertyinfoa->Name, Mygetmethodinfoa->ReturnType );
+   MethodInfo^ Mygetmethodinfob = Mypropertyinfob->GetGetMethod();
+   Console::Write( "\nGetAccessor for {0} returns a {1}", Mypropertyinfob->Name, Mygetmethodinfob->ReturnType );
    
-   // Display a property that has parameters. 
-   pi = t->GetProperty( "Item" );
-   parms = pi->GetIndexParameters();
-   Console::WriteLine( "{0}.{1} has {2} parameters.", t->FullName, pi->Name, parms->GetLength( 0 ) );
-   for ( int i = 0; i < parms->GetLength( 0 ); i++ )
-   {
-      Console::WriteLine( "    Parameter: {0}", parms[ i ]->Name );
-
-   }
+   // Display the GetGetMethod without using the MethodInfo.
+   Console::Write( "\n{0}.{1} GetGetMethod - {2}", MyTypea->FullName, Mypropertyinfoa->Name, Mypropertyinfoa->GetGetMethod() );
+   Console::Write( "\n{0}.{1} GetGetMethod - {2}", MyTypeb->FullName, Mypropertyinfob->Name, Mypropertyinfob->GetGetMethod() );
    return 0;
 }
-
-/*
- This example produces the following output:
- MyProperty.Caption has 0 parameters.
- MyProperty.Item has 1 parameters.
-    Parameter: Index
- */

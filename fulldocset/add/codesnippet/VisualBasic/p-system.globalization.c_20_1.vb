@@ -1,43 +1,70 @@
+' This example demonstrates the CultureTypes enumeration 
+' and the CultureInfo.CultureTypes property.
+
 Imports System
 Imports System.Globalization
 
 Module Module1
+    Public Sub Main()
 
-   Public Sub Main()
+        ' Create a table of most culture types. 
+        Dim mostCultureTypes() As CultureTypes = { _
+                CultureTypes.NeutralCultures, _
+                CultureTypes.SpecificCultures, _
+                CultureTypes.InstalledWin32Cultures, _
+                CultureTypes.UserCustomCulture, _
+                CultureTypes.ReplacementCultures, _
+                CultureTypes.FrameworkCultures, _
+                CultureTypes.WindowsOnlyCultures}
+        Dim allCultures() As CultureInfo
+        Dim combo As CultureTypes
 
-      ' Displays several properties of the neutral cultures.
-      Console.WriteLine("CULTURE ISO ISO WIN DISPLAYNAME                              ENGLISHNAME")
-      Dim ci As CultureInfo
-      For Each ci In CultureInfo.GetCultures(CultureTypes.NeutralCultures)
-         Console.Write("{0,-7}", ci.Name)
-         Console.Write(" {0,-3}", ci.TwoLetterISOLanguageName)
-         Console.Write(" {0,-3}", ci.ThreeLetterISOLanguageName)
-         Console.Write(" {0,-3}", ci.ThreeLetterWindowsLanguageName)
-         Console.Write(" {0,-40}", ci.DisplayName)
-         Console.WriteLine(" {0,-40}", ci.EnglishName)
-      Next ci
+        ' Get and enumerate all cultures.
+        allCultures = CultureInfo.GetCultures(CultureTypes.AllCultures)
+        Dim ci As CultureInfo
+        For Each ci In allCultures
+            ' Display the name of each culture.
+            Console.WriteLine("Culture: {0}", ci.Name)
 
-   End Sub 'Main 
+            ' Get the culture types of each culture. 
+            combo = ci.CultureTypes
 
+            ' Display the name of each culture type flag that is set.
+            Console.Write("  ")
+            Dim ct As CultureTypes
+            For Each ct In mostCultureTypes
+                If 0 <> (ct And combo) Then
+                    Console.Write("{0} ", ct)
+                End If
+            Next ct
+            Console.WriteLine()
+        Next ci
 
-
-'This code produces the following output.  This output has been cropped for brevity.
-'
-'CULTURE ISO ISO WIN DISPLAYNAME                              ENGLISHNAME
-'ar      ar  ara ARA Arabic                                   Arabic                                  
-'bg      bg  bul BGR Bulgarian                                Bulgarian                               
-'ca      ca  cat CAT Catalan                                  Catalan                                 
-'zh-Hans zh  zho CHS Chinese (Simplified)                     Chinese (Simplified)                    
-'cs      cs  ces CSY Czech                                    Czech                                   
-'da      da  dan DAN Danish                                   Danish                                  
-'de      de  deu DEU German                                   German                                  
-'el      el  ell ELL Greek                                    Greek                                   
-'en      en  eng ENU English                                  English                                 
-'es      es  spa ESP Spanish                                  Spanish                                 
-'fi      fi  fin FIN Finnish                                  Finnish                                 
-'zh      zh  zho CHS Chinese                                  Chinese                                 
-'zh-Hant zh  zho CHT Chinese (Traditional)                    Chinese (Traditional)                   
-'zh-CHS  zh  zho CHS Chinese (Simplified) Legacy              Chinese (Simplified) Legacy             
-'zh-CHT  zh  zho CHT Chinese (Traditional) Legacy             Chinese (Traditional) Legacy            
-
+    End Sub 'Main 
 End Module
+
+'The following is a portion of the results produced by this code example.
+'.
+'.
+'.
+'Culture: tg
+'  NeutralCultures InstalledWin32Cultures 
+'Culture: ta
+'  NeutralCultures InstalledWin32Cultures FrameworkCultures 
+'Culture: te
+'  NeutralCultures InstalledWin32Cultures FrameworkCultures 
+'Culture: syr
+'  NeutralCultures InstalledWin32Cultures FrameworkCultures 
+'Culture: tg-Cyrl-TJ
+'  SpecificCultures InstalledWin32Cultures 
+'Culture: ta-IN
+'  SpecificCultures InstalledWin32Cultures FrameworkCultures 
+'Culture: te-IN
+'  SpecificCultures InstalledWin32Cultures FrameworkCultures 
+'Culture: syr-SY
+'  SpecificCultures InstalledWin32Cultures FrameworkCultures 
+'Culture: tg-Cyrl
+'  NeutralCultures InstalledWin32Cultures 
+'.
+'.
+'.

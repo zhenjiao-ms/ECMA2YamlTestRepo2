@@ -1,203 +1,42 @@
-#using <System.Security.dll>
 #using <System.dll>
-#using <System.Xml.dll>
+#using <System.Security.dll>
 
 using namespace System;
-using namespace System::Xml;
 using namespace System::Security::Cryptography;
-using namespace System::Security::Cryptography::Xml;
-
-ref class TrippleDESDocumentEncryption
-{
-protected:
-   XmlDocument^ docValue;
-   TripleDES^ algValue;
-
-public:
-   TrippleDESDocumentEncryption( XmlDocument^ Doc, TripleDES^ Key )
-   {
-      if ( Doc != nullptr )
-      {
-         docValue = Doc;
-      }
-      else
-      {
-         throw gcnew ArgumentNullException( L"Doc" );
-      }
-
-      if ( Key != nullptr )
-      {
-         algValue = Key;
-      }
-      else
-      {
-         throw gcnew ArgumentNullException( L"Key" );
-      }
-   }
-
-
-   property XmlDocument^ Doc
-   {
-      XmlDocument^ get()
-      {
-         return docValue;
-      }
-
-      void set( XmlDocument^ value )
-      {
-         docValue = value;
-      }
-
-   }
-
-   property TripleDES^ Alg
-   {
-      TripleDES^ get()
-      {
-         return algValue;
-      }
-
-      void set( TripleDES^ value )
-      {
-         algValue = value;
-      }
-
-   }
-   void Clear()
-   {
-      if ( algValue != nullptr )
-      {
-         algValue->Clear();
-      }
-      else
-      {
-         throw gcnew Exception( L"No TripleDES key was found to clear." );
-      }
-   }
-
-   void Encrypt( String^ Element )
-   {
-
-      // Find the element by name and create a new
-      // XmlElement object.
-      XmlElement^ inputElement = dynamic_cast<XmlElement^>(docValue->GetElementsByTagName( Element )->Item( 0 ));
-
-      // If the element was not found, throw an exception.
-      if ( inputElement == nullptr )
-      {
-         throw gcnew Exception( L"The element was not found." );
-      }
-
-
-      // Create a new EncryptedXml object.
-      EncryptedXml^ exml = gcnew EncryptedXml( docValue );
-
-      // Encrypt the element using the symmetric key.
-      array<Byte>^rgbOutput = exml->EncryptData( inputElement, algValue, false );
-
-      // Create an EncryptedData object and populate it.
-      EncryptedData^ ed = gcnew EncryptedData;
-
-      // Specify the namespace URI for XML encryption elements.
-      ed->Type = EncryptedXml::XmlEncElementUrl;
-
-      // Specify the namespace URI for the TrippleDES algorithm.
-      ed->EncryptionMethod = gcnew EncryptionMethod( EncryptedXml::XmlEncTripleDESUrl );
-
-      // Create a CipherData element.
-      ed->CipherData = gcnew CipherData;
-
-      // Set the CipherData element to the value of the encrypted XML element.
-      ed->CipherData->CipherValue = rgbOutput;
-
-      // Replace the plaintext XML elemnt with an EncryptedData element.
-      EncryptedXml::ReplaceElement( inputElement, ed, false );
-   }
-
-   void Decrypt()
-   {
-
-      // XmlElement object.
-      XmlElement^ encryptedElement = dynamic_cast<XmlElement^>(docValue->GetElementsByTagName( L"EncryptedData" )->Item( 0 ));
-
-      // If the EncryptedData element was not found, throw an exception.
-      if ( encryptedElement == nullptr )
-      {
-         throw gcnew Exception( L"The EncryptedData element was not found." );
-      }
-
-
-      // Create an EncryptedData object and populate it.
-      EncryptedData^ ed = gcnew EncryptedData;
-      ed->LoadXml( encryptedElement );
-
-      // Create a new EncryptedXml object.
-      EncryptedXml^ exml = gcnew EncryptedXml;
-
-      // Decrypt the element using the symmetric key.
-      array<Byte>^rgbOutput = exml->DecryptData( ed, algValue );
-
-      // Replace the encryptedData element with the plaintext XML elemnt.
-      exml->ReplaceData( encryptedElement, rgbOutput );
-   }
-
-};
-
+using namespace System::Security::Permissions;
+using namespace System::IO;
+using namespace System::Security::Cryptography::X509Certificates;
 int main()
 {
-
-   // Create an XmlDocument object.
-   XmlDocument^ xmlDoc = gcnew XmlDocument;
-
-   // Load an XML file into the XmlDocument object.
    try
    {
-      xmlDoc->PreserveWhitespace = true;
-      xmlDoc->Load( L"test.xml" );
+      X509Store ^ store = gcnew X509Store( "MY",StoreLocation::CurrentUser );
+      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
+      X509Certificate2Collection ^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
+      X509Certificate2Collection ^ fcollection = dynamic_cast<X509Certificate2Collection^>(collection->Find( X509FindType::FindByTimeValid, DateTime::Now, false ));
+      X509Certificate2Collection ^ scollection = X509Certificate2UI::SelectFromCollection(fcollection, "Test Certificate Select","Select a certificate from the following list to get information on that certificate",X509SelectionFlag::MultiSelection);
+      Console::WriteLine( "Number of certificates: {0}{1}", scollection->Count, Environment::NewLine );
+      System::Collections::IEnumerator^ myEnum = scollection->GetEnumerator();
+      while ( myEnum->MoveNext() )
+      {
+         X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum->Current);
+         array<Byte>^rawdata = x509->RawData;
+         Console::WriteLine( "Content Type: {0}{1}", X509Certificate2::GetCertContentType( rawdata ), Environment::NewLine );
+         Console::WriteLine( "Friendly Name: {0}{1}", x509->FriendlyName, Environment::NewLine );
+         Console::WriteLine( "Certificate Verified?: {0}{1}", x509->Verify(), Environment::NewLine );
+         Console::WriteLine( "Simple Name: {0}{1}", x509->GetNameInfo( X509NameType::SimpleName, true ), Environment::NewLine );
+         Console::WriteLine( "Signature Algorithm: {0}{1}", x509->SignatureAlgorithm->FriendlyName, Environment::NewLine );
+         Console::WriteLine( "Private Key: {0}{1}", x509->PrivateKey->ToXmlString( false ), Environment::NewLine );
+         Console::WriteLine( "Public Key: {0}{1}", x509->PublicKey->Key->ToXmlString( false ), Environment::NewLine );
+         Console::WriteLine( "Certificate Archived?: {0}{1}", x509->Archived, Environment::NewLine );
+         Console::WriteLine( "Length of Raw Data: {0}{1}", x509->RawData->Length, Environment::NewLine );
+         x509->Reset();
+      }
+      store->Close();
    }
-   catch ( Exception^ e )
+   catch ( CryptographicException^ ) 
    {
-      Console::WriteLine( e->Message );
-      return 0;
+      Console::WriteLine( "Information could not be written out for this certificate." );
    }
 
-
-   // Create a new TripleDES key.
-   TripleDESCryptoServiceProvider^ tDESkey = gcnew TripleDESCryptoServiceProvider;
-
-   // Create a new instance of the TrippleDESDocumentEncryption object
-   // defined in this sample.
-   TrippleDESDocumentEncryption^ xmlTDES = gcnew TrippleDESDocumentEncryption( xmlDoc,tDESkey );
-   try
-   {
-
-      // Encrypt the "creditcard" element.
-      xmlTDES->Encrypt( L"creditcard" );
-
-      // Display the encrypted XML to the console.
-      Console::WriteLine( L"Encrypted XML:" );
-      Console::WriteLine();
-      Console::WriteLine( xmlTDES->Doc->OuterXml );
-
-      // Decrypt the "creditcard" element.
-      xmlTDES->Decrypt();
-
-      // Display the encrypted XML to the console.
-      Console::WriteLine();
-      Console::WriteLine( L"Decrypted XML:" );
-      Console::WriteLine();
-      Console::WriteLine( xmlTDES->Doc->OuterXml );
-   }
-   catch ( Exception^ e )
-   {
-      Console::WriteLine( e->Message );
-   }
-   finally
-   {
-
-      // Clear the TripleDES key.
-      xmlTDES->Clear();
-   }
-
-   return 1;
 }

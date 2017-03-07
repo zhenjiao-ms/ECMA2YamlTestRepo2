@@ -1,30 +1,18 @@
-private:
-   // Create an instance of the 'AllowNavigationChanged' EventHandler.
-   void CallAllowNavigationChanged()
+public:
+   void CreateMyDateTimePicker()
    {
-      myDataGrid->AllowNavigationChanged += gcnew EventHandler( this, &MyDataGrid::Grid_AllowNavChange );
-   }
-
-   // Set the 'AllowNavigation' property on click of a button.
-private:
-   void myButton_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
-   {
-      if ( myDataGrid->AllowNavigation == true )
-            myDataGrid->AllowNavigation = false;
-      else
-            myDataGrid->AllowNavigation = true;
-   }
-
-   // Raise the event when 'AllowNavigation' property is changed.
-private:
-   void Grid_AllowNavChange( Object^ /*sender*/, EventArgs^ /*e*/ )
-   {
-      String^ myString = "AllowNavigationChanged event raised, Navigation ";
-      bool myBool = myDataGrid->AllowNavigation;
-
-      // Create appropriate alert message.
-      myString = String::Concat( myString, myBool ? (String^)" is " : " is not ", "allowed" );
-
-      // Show information about navigation.
-      MessageBox::Show( myString, "Navigation information" );
+      // Create a new DateTimePicker control and initialize it.
+      DateTimePicker^ dateTimePicker1 = gcnew DateTimePicker;
+      
+      // Set the MinDate and MaxDate.
+      dateTimePicker1->MinDate = DateTime(1985,6,20);
+      dateTimePicker1->MaxDate = DateTime::Today;
+      
+      // Set the CustomFormat string.
+      dateTimePicker1->CustomFormat = "MMMM dd, yyyy - dddd";
+      dateTimePicker1->Format = DateTimePickerFormat::Custom;
+      
+      // Show the CheckBox and display the control as an up-down control.
+      dateTimePicker1->ShowCheckBox = true;
+      dateTimePicker1->ShowUpDown = true;
    }

@@ -1,15 +1,67 @@
-		//Create new X509 store from local certificate store.
-		X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
-		store.Open(OpenFlags.OpenExistingOnly | OpenFlags.ReadWrite);
+using System;
+using System.Security.Cryptography;
 
-		//Output store information.
-		Console.WriteLine ("Store Information");
-		Console.WriteLine ("Number of certificates in the store: {0}", store.Certificates.Count);
-		Console.WriteLine ("Store location: {0}", store.Location);
-		Console.WriteLine ("Store name: {0} {1}", store.Name, Environment.NewLine);
-	
-		//Put certificates from the store into a collection so user can select one.
-		X509Certificate2Collection fcollection = (X509Certificate2Collection)store.Certificates;
-		X509Certificate2Collection collection = X509Certificate2UI.SelectFromCollection(fcollection, "Select an X509 Certificate", "Choose a certificate to examine.", X509SelectionFlag.SingleSelection);
-		X509Certificate2 certificate = collection[0];
-		X509Certificate2UI.DisplayCertificate(certificate);
+public class DataProtectionSample
+{
+// Create byte array for additional entropy when using Protect method.
+	static byte [] s_aditionalEntropy = { 9, 8, 7, 6, 5 };
+
+	public static void Main()
+	{
+// Create a simple byte array containing data to be encrypted.
+		
+byte [] secret = { 0, 1, 2, 3, 4, 1, 2, 3, 4 };
+
+//Encrypt the data.
+		byte [] encryptedSecret = Protect( secret );
+		Console.WriteLine("The encrypted byte array is:");
+		PrintValues(encryptedSecret);
+		
+// Decrypt the data and store in a byte array.
+		byte [] originalData = Unprotect( encryptedSecret );
+		Console.WriteLine("{0}The original data is:", Environment.NewLine);
+		PrintValues(originalData);
+
+	}
+
+	public static byte [] Protect( byte [] data )
+	{
+		try
+		{
+			// Encrypt the data using DataProtectionScope.CurrentUser. The result can be decrypted
+			//  only by the same current user.
+			return ProtectedData.Protect( data, s_aditionalEntropy, DataProtectionScope.CurrentUser );
+		} 
+		catch (CryptographicException e)
+		{
+			Console.WriteLine("Data was not encrypted. An error occurred.");
+			Console.WriteLine(e.ToString());
+			return null;
+		}
+	}
+
+	public static byte [] Unprotect( byte [] data )
+	{
+		try
+		{
+			//Decrypt the data using DataProtectionScope.CurrentUser.
+			return ProtectedData.Unprotect( data, s_aditionalEntropy, DataProtectionScope.CurrentUser );
+		} 
+		catch (CryptographicException e)
+		{
+			Console.WriteLine("Data was not decrypted. An error occurred.");
+			Console.WriteLine(e.ToString());
+			return null;
+		}
+	}
+
+	public static void PrintValues( Byte[] myArr )  
+	{
+	      foreach ( Byte i in myArr )  
+		  	{
+		         Console.Write( "\t{0}", i );
+			 }
+      Console.WriteLine();
+	 }
+
+}

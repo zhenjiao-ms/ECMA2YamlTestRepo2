@@ -1,30 +1,14 @@
 using System;
 using System.Reflection;
  
-// A class that contains some properties.
-public class MyProperty   
+// Define a property.
+public class Myproperty   
 {
-    // Define a simple string property.
     private string caption = "A Default caption";
     public string Caption
     {
         get{return caption;}
         set {if(caption!=value) {caption = value;}
-        }
-    }
-
-    // A very limited indexer that gets or sets one of four 
-    // strings.
-    private string[] strings = {"abc", "def", "ghi", "jkl"};
-    public string this[int Index]    
-    {
-        get
-        {
-            return strings[Index];
-        }
-        set
-        {
-            strings[Index] = value;
         }
     }
 }
@@ -33,32 +17,27 @@ class Mypropertyinfo
 {
     public static int Main()
     {
-        // Get the type and PropertyInfo.
-        Type t = Type.GetType("MyProperty");
-        PropertyInfo pi = t.GetProperty("Caption");
+        Console.WriteLine ("\nReflection.PropertyInfo");
  
-        // Get the public GetIndexParameters method.
-        ParameterInfo[] parms = pi.GetIndexParameters();
-        Console.WriteLine("\r\n" + t.FullName + "." + pi.Name
-            + " has " + parms.GetLength(0) + " parameters.");
+        // Get the type and PropertyInfo for two separate properties.
+        Type MyTypea = Type.GetType("Myproperty");
+        PropertyInfo Mypropertyinfoa = MyTypea.GetProperty("Caption");
+        Type MyTypeb = Type.GetType("System.Reflection.MethodInfo");
+        PropertyInfo Mypropertyinfob = MyTypeb.GetProperty("MemberType");
  
-        // Display a property that has parameters. The default 
-        // name of an indexer is "Item".
-        pi = t.GetProperty("Item");
-        parms = pi.GetIndexParameters();
-        Console.WriteLine(t.FullName + "." + pi.Name + " has " + 
-            parms.GetLength(0) + " parameters.");
-        foreach( ParameterInfo p in parms )
-        {
-            Console.WriteLine("   Parameter: " + p.Name);
-        }
-
+        // Get and display the GetGetMethod method for each property.
+        MethodInfo Mygetmethodinfoa = Mypropertyinfoa.GetGetMethod();
+        Console.Write ("\nGetAccessor for " + Mypropertyinfoa.Name
+            + " returns a " + Mygetmethodinfoa.ReturnType);
+        MethodInfo Mygetmethodinfob = Mypropertyinfob.GetGetMethod();
+        Console.Write ("\nGetAccessor for " + Mypropertyinfob.Name
+            + " returns a " + Mygetmethodinfob.ReturnType);
+ 
+        // Display the GetGetMethod without using the MethodInfo.
+        Console.Write ("\n" + MyTypea.FullName + "." + Mypropertyinfoa.Name
+            + " GetGetMethod - " + Mypropertyinfoa.GetGetMethod());
+        Console.Write ("\n" + MyTypeb.FullName + "." + Mypropertyinfob.Name
+            + " GetGetMethod - " + Mypropertyinfob.GetGetMethod());
         return 0;
     }
 }
-/*
- This example produces the following output:
- MyProperty.Caption has 0 parameters.
- MyProperty.Item has 1 parameters.
-    Parameter: Index
- */

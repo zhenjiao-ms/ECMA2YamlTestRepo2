@@ -1,5 +1,6 @@
-byte[] data = new byte[DATA_SIZE]; 
-byte[] result;
+byte[] data = new byte[DATA_SIZE];
+byte[] result; 
  
-SHA384 shaM = new SHA384Managed(); 
-result = shaM.ComputeHash(data);
+SHA1 sha = new SHA1CryptoServiceProvider(); 
+// This is one implementation of the abstract class SHA1.
+result = sha.ComputeHash(data);

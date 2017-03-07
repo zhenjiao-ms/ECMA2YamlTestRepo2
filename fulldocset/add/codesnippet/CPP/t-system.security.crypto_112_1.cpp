@@ -1,83 +1,162 @@
-using namespace System;
-using namespace System::IO;
-using namespace System::Text;
-using namespace System::Security::Cryptography;
+//
+// This example signs an XML file using an
+// envelope signature. It then verifies the 
+// signed XML.
+//
+#using <System.Security.dll>
+#using <System.Xml.dll>
 
-// Generate a key k1 with password pwd1 and salt salt1.
-// Generate a key k2 with password pwd1 and salt salt1.
-// Encrypt data1 with key k1 using symmetric encryption, creating edata1.
-// Decrypt edata1 with key k2 using symmetric decryption, creating data2.
-// data2 should equal data1.
+using namespace System;
+using namespace System::Security::Cryptography;
+using namespace System::Security::Cryptography::X509Certificates;
+using namespace System::Security::Cryptography::Xml;
+using namespace System::Text;
+using namespace System::Xml;
+
+// Sign an XML file and save the signature in a new file.
+void SignXmlFile( String^ FileName, String^ SignedFileName, RSA^ Key )
+{
+   
+   // Create a new XML document.
+   XmlDocument^ doc = gcnew XmlDocument;
+   
+   // Format the document to ignore white spaces.
+   doc->PreserveWhitespace = false;
+   
+   // Load the passed XML file using its name.
+   doc->Load( gcnew XmlTextReader( FileName ) );
+   
+   // Create a SignedXml object.
+   SignedXml^ signedXml = gcnew SignedXml( doc );
+   
+   // Add the key to the SignedXml document. 
+   signedXml->SigningKey = Key;
+   
+   // Create a reference to be signed.
+   Reference^ reference = gcnew Reference;
+   reference->Uri = "";
+   
+   // Add an enveloped transformation to the reference.
+   XmlDsigEnvelopedSignatureTransform^ env = gcnew XmlDsigEnvelopedSignatureTransform;
+   reference->AddTransform( env );
+   
+   // Add the reference to the SignedXml object.
+   signedXml->AddReference( reference );
+   
+   // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+   KeyInfo^ keyInfo = gcnew KeyInfo;
+   keyInfo->AddClause( gcnew RSAKeyValue( safe_cast<RSA^>(Key) ) );
+   signedXml->KeyInfo = keyInfo;
+   
+   // Compute the signature.
+   signedXml->ComputeSignature();
+   
+   // Get the XML representation of the signature and save
+   // it to an XmlElement object.
+   XmlElement^ xmlDigitalSignature = signedXml->GetXml();
+   
+   // Append the element to the XML document.
+   doc->DocumentElement->AppendChild( doc->ImportNode( xmlDigitalSignature, true ) );
+   if ( (doc->FirstChild)->GetType() == XmlDeclaration::typeid )
+   {
+      doc->RemoveChild( doc->FirstChild );
+   }
+
+   
+   // Save the signed XML document to a file specified
+   // using the passed string.
+   XmlTextWriter^ xmltw = gcnew XmlTextWriter( SignedFileName,gcnew UTF8Encoding( false ) );
+   doc->WriteTo( xmltw );
+   xmltw->Close();
+}
+
+
+// Verify the signature of an XML file and return the result.
+Boolean VerifyXmlFile( String^ Name )
+{
+   
+   // Create a new XML document.
+   XmlDocument^ xmlDocument = gcnew XmlDocument;
+   
+   // Format using white spaces.
+   xmlDocument->PreserveWhitespace = true;
+   
+   // Load the passed XML file into the document. 
+   xmlDocument->Load( Name );
+   
+   // Create a new SignedXml object and pass it
+   // the XML document class.
+   SignedXml^ signedXml = gcnew SignedXml( xmlDocument );
+   
+   // Find the "Signature" node and create a new
+   // XmlNodeList object.
+   XmlNodeList^ nodeList = xmlDocument->GetElementsByTagName( "Signature" );
+   
+   // Load the signature node.
+   signedXml->LoadXml( safe_cast<XmlElement^>(nodeList->Item( 0 )) );
+   
+   // Check the signature and return the result.
+   return signedXml->CheckSignature();
+}
+
+
+// Create example data to sign.
+void CreateSomeXml( String^ FileName )
+{
+   
+   // Create a new XmlDocument object.
+   XmlDocument^ document = gcnew XmlDocument;
+   
+   // Create a new XmlNode object.
+   XmlNode^ node = document->CreateNode( XmlNodeType::Element, "", "MyElement", "samples" );
+   
+   // Add some text to the node.
+   node->InnerText = "Example text to be signed.";
+   
+   // Append the node to the document.
+   document->AppendChild( node );
+   
+   // Save the XML document to the file name specified.
+   XmlTextWriter^ xmltw = gcnew XmlTextWriter( FileName,gcnew UTF8Encoding( false ) );
+   document->WriteTo( xmltw );
+   xmltw->Close();
+}
 
 int main()
 {
-   array<String^>^passwordargs = Environment::GetCommandLineArgs();
-   String^ usageText = "Usage: RFC2898 <password>\nYou must specify the password for encryption.\n";
-
-   //If no file name is specified, write usage text.
-   if ( passwordargs->Length == 1 )
+   try
    {
-      Console::WriteLine( usageText );
-   }
-   else
-   {
-      String^ pwd1 = passwordargs[ 1 ];
       
-      array<Byte>^salt1 = gcnew array<Byte>(8);
-	  RNGCryptoServiceProvider ^ rngCsp = gcnew RNGCryptoServiceProvider();
-		 rngCsp->GetBytes(salt1);
-      //data1 can be a string or contents of a file.
-      String^ data1 = "Some test data";
-
-      //The default iteration count is 1000 so the two methods use the same iteration count.
-      int myIterations = 1000;
-
-      try
+      // Generate a signing key.
+      RSACryptoServiceProvider^ Key = gcnew RSACryptoServiceProvider;
+      
+      // Create an XML file to sign.
+      CreateSomeXml( "Example.xml" );
+      Console::WriteLine( "New XML file created." );
+      
+      // Sign the XML that was just created and save it in a 
+      // new file.
+      SignXmlFile( "Example.xml", "SignedExample.xml", Key );
+      Console::WriteLine( "XML file signed." );
+      
+      // Verify the signature of the signed XML.
+      Console::WriteLine( "Verifying signature..." );
+      bool result = VerifyXmlFile( "SignedExample.xml" );
+      
+      // Display the results of the signature verification to
+      // the console.
+      if ( result )
       {
-         Rfc2898DeriveBytes ^ k1 = gcnew Rfc2898DeriveBytes( pwd1,salt1,myIterations );
-         Rfc2898DeriveBytes ^ k2 = gcnew Rfc2898DeriveBytes( pwd1,salt1 );
-
-         // Encrypt the data.
-         TripleDES^ encAlg = TripleDES::Create();
-         encAlg->Key = k1->GetBytes( 16 );
-         MemoryStream^ encryptionStream = gcnew MemoryStream;
-         CryptoStream^ encrypt = gcnew CryptoStream( encryptionStream,encAlg->CreateEncryptor(),CryptoStreamMode::Write );
-         array<Byte>^utfD1 = (gcnew System::Text::UTF8Encoding( false ))->GetBytes( data1 );
-
-         encrypt->Write( utfD1, 0, utfD1->Length );
-         encrypt->FlushFinalBlock();
-         encrypt->Close();
-         array<Byte>^edata1 = encryptionStream->ToArray();
-         k1->Reset();
-
-         // Try to decrypt, thus showing it can be round-tripped.
-         TripleDES^ decAlg = TripleDES::Create();
-         decAlg->Key = k2->GetBytes( 16 );
-         decAlg->IV = encAlg->IV;
-         MemoryStream^ decryptionStreamBacking = gcnew MemoryStream;
-         CryptoStream^ decrypt = gcnew CryptoStream( decryptionStreamBacking,decAlg->CreateDecryptor(),CryptoStreamMode::Write );
-
-         decrypt->Write( edata1, 0, edata1->Length );
-         decrypt->Flush();
-         decrypt->Close();
-         k2->Reset();
-
-         String^ data2 = (gcnew UTF8Encoding( false ))->GetString( decryptionStreamBacking->ToArray() );
-         if (  !data1->Equals( data2 ) )
-         {
-            Console::WriteLine( "Error: The two values are not equal." );
-         }
-         else
-         {
-            Console::WriteLine( "The two values are equal." );
-            Console::WriteLine( "k1 iterations: {0}", k1->IterationCount );
-            Console::WriteLine( "k2 iterations: {0}", k2->IterationCount );
-         }
+         Console::WriteLine( "The XML signature is valid." );
       }
-
-      catch ( Exception^ e ) 
+      else
       {
-         Console::WriteLine( "Error: ", e );
+         Console::WriteLine( "The XML signature is not valid." );
       }
    }
+   catch ( CryptographicException^ e ) 
+   {
+      Console::WriteLine( e->Message );
+   }
+
 }

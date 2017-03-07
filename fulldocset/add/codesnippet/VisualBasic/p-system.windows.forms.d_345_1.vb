@@ -1,34 +1,62 @@
-    ' Draws column headers.
-    Private Sub listView1_DrawColumnHeader(ByVal sender As Object, _
-        ByVal e As DrawListViewColumnHeaderEventArgs) _
-        Handles listView1.DrawColumnHeader
+    Private Sub ListDragTarget_DragOver(ByVal sender As Object, ByVal e As DragEventArgs) Handles ListDragTarget.DragOver
+        ' Determine whether string data exists in the drop data. If not, then
+        ' the drop effect reflects that the drop cannot occur.
+        If Not (e.Data.GetDataPresent(GetType(System.String))) Then
 
-        Dim sf As New StringFormat()
-        Try
+            e.Effect = DragDropEffects.None
+            DropLocationLabel.Text = "None - no string data."
+            Return
+        End If
 
-            ' Store the column text alignment, letting it default
-            ' to Left if it has not been set to Center or Right.
-            Select Case e.Header.TextAlign
-                Case HorizontalAlignment.Center
-                    sf.Alignment = StringAlignment.Center
-                Case HorizontalAlignment.Right
-                    sf.Alignment = StringAlignment.Far
-            End Select
+        ' Set the effect based upon the KeyState.
+        If ((e.KeyState And (8 + 32)) = (8 + 32) And _
+            (e.AllowedEffect And DragDropEffects.Link) = DragDropEffects.Link) Then
+            ' KeyState 8 + 32 = CTL + ALT
 
-            ' Draw the standard header background.
-            e.DrawBackground()
+            ' Link drag-and-drop effect.
+            e.Effect = DragDropEffects.Link
 
-            ' Draw the header text.
-            Dim headerFont As New Font("Helvetica", 10, FontStyle.Bold)
-            Try
-                e.Graphics.DrawString(e.Header.Text, headerFont, _
-                    Brushes.Black, e.Bounds, sf)
-            Finally
-                headerFont.Dispose()
-            End Try
+        ElseIf ((e.KeyState And 32) = 32 And _
+            (e.AllowedEffect And DragDropEffects.Link) = DragDropEffects.Link) Then
 
-        Finally
-            sf.Dispose()
-        End Try
+            ' ALT KeyState for link.
+            e.Effect = DragDropEffects.Link
+
+        ElseIf ((e.KeyState And 4) = 4 And _
+            (e.AllowedEffect And DragDropEffects.Move) = DragDropEffects.Move) Then
+
+            ' SHIFT KeyState for move.
+            e.Effect = DragDropEffects.Move
+
+        ElseIf ((e.KeyState And 8) = 8 And _
+            (e.AllowedEffect And DragDropEffects.Copy) = DragDropEffects.Copy) Then
+
+            ' CTL KeyState for copy.
+            e.Effect = DragDropEffects.Copy
+
+        ElseIf ((e.AllowedEffect And DragDropEffects.Move) = DragDropEffects.Move) Then
+
+            ' By default, the drop action should be move, if allowed.
+            e.Effect = DragDropEffects.Move
+
+        Else
+            e.Effect = DragDropEffects.None
+        End If
+
+        ' Gets the index of the item the mouse is below. 
+
+        ' The mouse locations are relative to the screen, so they must be 
+        ' converted to client coordinates.
+
+        indexOfItemUnderMouseToDrop = _
+            ListDragTarget.IndexFromPoint(ListDragTarget.PointToClient(New Point(e.X, e.Y)))
+
+        ' Updates the label text.
+        If (indexOfItemUnderMouseToDrop <> ListBox.NoMatches) Then
+
+            DropLocationLabel.Text = "Drops before item #" & (indexOfItemUnderMouseToDrop + 1)
+        Else
+            DropLocationLabel.Text = "Drops at the end."
+        End If
 
     End Sub

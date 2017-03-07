@@ -1,8 +1,17 @@
-    Private Sub RenderText6(ByVal e As PaintEventArgs)
-        Dim flags As TextFormatFlags = TextFormatFlags.Bottom Or _
-            TextFormatFlags.EndEllipsis
-        TextRenderer.DrawText(e.Graphics, _
-        "This is some text that will be clipped at the end.", _
-        Me.Font, New Rectangle(10, 10, 100, 50), SystemColors.ControlText, flags)
+Private Sub ToolStripRenderer1_RenderItemImage(sender as Object, e as ToolStripItemImageRenderEventArgs) _ 
+     Handles ToolStripRenderer1.RenderItemImage
 
-    End Sub
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "Image", e.Image)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ImageRectangle", e.ImageRectangle)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Item", e.Item)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ToolStrip", e.ToolStrip)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"RenderItemImage Event")
+
+End Sub

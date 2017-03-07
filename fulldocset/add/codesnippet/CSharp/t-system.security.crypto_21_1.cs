@@ -1,66 +1,133 @@
+
 using System;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using System.IO;
+using System.Security.Cryptography;
 
-public class X509store2
+class Members
 {
-	public static void Main (string[] args)
-	{
-		//Create new X509 store called teststore from the local certificate store.
-		X509Store store = new X509Store ("teststore", StoreLocation.CurrentUser);
-		store.Open (OpenFlags.ReadWrite);
-		X509Certificate2 certificate = new X509Certificate2 ();
+    [STAThread]
+    static void Main(string[] args)
+    {
+        string appPath = (System.IO.Directory.GetCurrentDirectory() );
+        appPath = appPath + "..\\\\..\\\\..\\";
+        // Insert your file names into this method call.
+        EncodeFromFile(appPath + "program.cs", appPath + "code.enc");
+        DecodeFromFile(appPath + "code.enc", appPath + "roundtrip.txt");
 
-		//Create certificates from certificate files.
-		//You must put in a valid path to three certificates in the following constructors.
-		X509Certificate2 certificate1 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
-		X509Certificate2 certificate2 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
-		X509Certificate2 certificate5 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
+    }
 
-		//Create a collection and add two of the certificates.
-		X509Certificate2Collection collection = new X509Certificate2Collection ();
-		collection.Add (certificate2);
-		collection.Add (certificate5);
+    // Read in the specified source file and write out an encoded target file.
+    private static void EncodeFromFile(string sourceFile, string targetFile) 
+    {
+        // Verify members.cs exists at the specified directory.
+        if (!File.Exists(sourceFile))
+        {
+            Console.Write("Unable to locate source file located at ");
+            Console.WriteLine(sourceFile + ".");
+            Console.Write("Please correct the path and run the ");
+            Console.WriteLine("sample again.");
+            return;
+        }
 
-		//Add certificates to the store.
-		store.Add (certificate1);
-		store.AddRange (collection);
+        // Retrieve the input and output file streams.
+        using (FileStream inputFileStream =
+            new FileStream(sourceFile, FileMode.Open, FileAccess.Read))
+        {
+            using (FileStream outputFileStream =
+                new FileStream(targetFile, FileMode.Create, FileAccess.Write))
+            {
 
-		X509Certificate2Collection storecollection = (X509Certificate2Collection)store.Certificates;
-		Console.WriteLine ("Store name: {0}", store.Name);
-		Console.WriteLine ("Store location: {0}", store.Location);
-		foreach (X509Certificate2 x509 in storecollection)
-		{
-			Console.WriteLine("certificate name: {0}",x509.Subject);
-		}
+                // Create a new ToBase64Transform object to convert to base 64.
+                ToBase64Transform base64Transform = new ToBase64Transform();
 
-		//Remove a certificate.
-		store.Remove (certificate1);
-		X509Certificate2Collection storecollection2 = (X509Certificate2Collection)store.Certificates;
-		Console.WriteLine ("{1}Store name: {0}", store.Name, Environment.NewLine);
-		foreach (X509Certificate2 x509 in storecollection2)
-		{
-			Console.WriteLine ("certificate name: {0}", x509.Subject);
-		}
+                // Create a new byte array with the size of the output block size.
+                byte[] outputBytes = new byte[base64Transform.OutputBlockSize];
 
-		//Remove a range of certificates.
-		store.RemoveRange (collection);
-		X509Certificate2Collection storecollection3 = (X509Certificate2Collection)store.Certificates;
-		Console.WriteLine ("{1}Store name: {0}", store.Name, Environment.NewLine);
-		if (storecollection3.Count == 0)
-		{
-			Console.WriteLine ("Store contains no certificates.");
-		}
-		else
-		{
-			foreach (X509Certificate2 x509 in storecollection3)
-			{
-				Console.WriteLine ("certificate name: {0}", x509.Subject);
-			}
-		}
+                // Retrieve the file contents into a byte array.
+                byte[] inputBytes = new byte[inputFileStream.Length];
+                inputFileStream.Read(inputBytes, 0, inputBytes.Length);
 
-		//Close the store.
-		store.Close ();
-	}	
+                // Verify that multiple blocks can not be transformed.
+                if (!base64Transform.CanTransformMultipleBlocks)
+                {
+                    // Initializie the offset size.
+                    int inputOffset = 0;
+
+                    // Iterate through inputBytes transforming by blockSize.
+                    int inputBlockSize = base64Transform.InputBlockSize;
+
+                    while (inputBytes.Length - inputOffset > inputBlockSize)
+                    {
+                        base64Transform.TransformBlock(
+                            inputBytes,
+                            inputOffset,
+                            inputBytes.Length - inputOffset,
+                            outputBytes,
+                            0);
+
+                        inputOffset += base64Transform.InputBlockSize;
+                        outputFileStream.Write(
+                            outputBytes,
+                            0,
+                            base64Transform.OutputBlockSize);
+                    }
+
+                    // Transform the final block of data.
+                    outputBytes = base64Transform.TransformFinalBlock(
+                        inputBytes,
+                        inputOffset,
+                        inputBytes.Length - inputOffset);
+
+                    outputFileStream.Write(outputBytes, 0, outputBytes.Length);
+                    Console.WriteLine("Created encoded file at " + targetFile);
+                }
+
+                // Determine if the current transform can be reused.
+                if (!base64Transform.CanReuseTransform)
+                {
+                    // Free up any used resources.
+                    base64Transform.Clear();
+                }
+            }
+        }
+
+    }
+
+        public static void DecodeFromFile(string inFileName, string outFileName)
+        {
+            using (FromBase64Transform myTransform = new FromBase64Transform(FromBase64TransformMode.IgnoreWhiteSpaces))
+            {
+
+                byte[] myOutputBytes = new byte[myTransform.OutputBlockSize];
+
+                //Open the input and output files.
+                using (FileStream myInputFile = new FileStream(inFileName, FileMode.Open, FileAccess.Read))
+                {
+                    using (FileStream myOutputFile = new FileStream(outFileName, FileMode.Create, FileAccess.Write))
+                    {
+
+                        //Retrieve the file contents into a byte array. 
+                        byte[] myInputBytes = new byte[myInputFile.Length];
+                        myInputFile.Read(myInputBytes, 0, myInputBytes.Length);
+
+                        //Transform the data in chunks the size of InputBlockSize. 
+                        int i = 0;
+                        while (myInputBytes.Length - i > 4/*myTransform.InputBlockSize*/)
+                        {
+                            int bytesWritten = myTransform.TransformBlock(myInputBytes, i, 4/*myTransform.InputBlockSize*/, myOutputBytes, 0);
+                            i += 4/*myTransform.InputBlockSize*/;
+                            myOutputFile.Write(myOutputBytes, 0, bytesWritten);
+                        }
+
+                        //Transform the final block of data.
+                        myOutputBytes = myTransform.TransformFinalBlock(myInputBytes, i, myInputBytes.Length - i);
+                        myOutputFile.Write(myOutputBytes, 0, myOutputBytes.Length);
+
+                        //Free up any used resources.
+                        myTransform.Clear();
+                    }
+                }
+            }
+
+        }
 }

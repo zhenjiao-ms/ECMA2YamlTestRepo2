@@ -1,10 +1,12 @@
- Public Sub SetupMyMenuItem()
-     ' Set the caption for the menu item.
-     menuItem1.Text = "&New"
-     ' Assign a shortcut key.
-     menuItem1.Shortcut = Shortcut.CtrlN
-     ' Make the menu item visible.
-     menuItem1.Visible = True
-     ' Display the shortcut key combination.
-     menuItem1.ShowShortcut = True
- End Sub
+' Reset all the controls to the user's default Control color. 
+Private Sub ResetAllControlsBackColor(control As Control)
+   control.BackColor = SystemColors.Control
+   control.ForeColor = SystemColors.ControlText
+   If control.HasChildren Then
+      ' Recursively call this method for each child control.
+      Dim childControl As Control
+      For Each childControl In  control.Controls
+         ResetAllControlsBackColor(childControl)
+      Next childControl
+   End If
+End Sub

@@ -1,26 +1,35 @@
 using System;
 using System.Threading;
+using System.Security.Permissions;
 
-public class Example 
-{
-    public static void Main() 
-    {
-        // Queue the task.
-        ThreadPool.QueueUserWorkItem(ThreadProc);
-        Console.WriteLine("Main thread does some work, then sleeps.");
+public class ThreadWork {
+    public static void DoWork() {
+        try {
+            for(int i=0; i<100; i++) {
+                Console.WriteLine("Thread - working."); 
+                Thread.Sleep(100);
+            }
+        }
+        catch(ThreadAbortException e) {
+            Console.WriteLine("Thread - caught ThreadAbortException - resetting.");
+            Console.WriteLine("Exception message: {0}", e.Message);
+            Thread.ResetAbort();
+        }
+        Console.WriteLine("Thread - still alive and working."); 
         Thread.Sleep(1000);
-
-        Console.WriteLine("Main thread exits.");
-    }
-
-    // This thread procedure performs the task.
-    static void ThreadProc(Object stateInfo) 
-    {
-        // No state object was passed to QueueUserWorkItem, so stateInfo is null.
-        Console.WriteLine("Hello from the thread pool.");
+        Console.WriteLine("Thread - finished working.");
     }
 }
-// The example displays output like the following:
-//       Main thread does some work, then sleeps.
-//       Hello from the thread pool.
-//       Main thread exits.
+
+class ThreadAbortTest {
+    public static void Main() {
+        ThreadStart myThreadDelegate = new ThreadStart(ThreadWork.DoWork);
+        Thread myThread = new Thread(myThreadDelegate);
+        myThread.Start();
+        Thread.Sleep(100);
+        Console.WriteLine("Main - aborting my thread.");
+        myThread.Abort();
+        myThread.Join();
+        Console.WriteLine("Main ending."); 
+    }
+}

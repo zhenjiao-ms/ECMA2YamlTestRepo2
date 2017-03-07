@@ -1,31 +1,5 @@
-Module Example
-   Public Sub Main()
-      Dim maxPrime As Integer = 100
-      Dim primes() As Integer = GetPrimes(maxPrime)
-      Console.WriteLine("Primes less than {0}:", maxPrime)
-      Console.WriteLine("   {0}", String.Join(" ", primes))
-   End Sub
-   
-   Private Function GetPrimes(maxPrime As Integer) As Integer()
-      Dim values As Array = Array.CreateInstance(GetType(Integer), _
-                              New Integer() { maxPrime - 1}, New Integer(){ 2 }) 
-        ' Use Sieve of Eratosthenes to determine prime numbers.
-      For ctr As Integer = values.GetLowerBound(0) To _
-                           CInt(Math.Ceiling(Math.Sqrt(values.GetUpperBound(0))))
-         If CInt(values.GetValue(ctr)) = 1 Then Continue For
-         
-         For multiplier As Integer = ctr To maxPrime \ 2
-            If ctr * multiplier <= maxPrime Then values.SetValue(1, ctr * multiplier)
-         Next   
-      Next      
-      
-      Dim primes As New System.Collections.Generic.List(Of Integer)
-      For ctr As Integer = values.GetLowerBound(0) To values.GetUpperBound(0)
-         If CInt(values.GetValue(ctr)) = 0 Then primes.Add(ctr)
-      Next            
-      Return primes.ToArray()
-   End Function   
-End Module
-' The example displays the following output:
-'    Primes less than 100:
-'       2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+   Dim values() As Object = { Nothing, "Cobb", 4189, 11434, .366 }
+   If values(0) Is Nothing Then values(0) = String.Empty
+   Console.WriteLine(String.Join("|", values))
+   ' The example displays the following output:
+   '      |Cobb|4189|11434|0.366

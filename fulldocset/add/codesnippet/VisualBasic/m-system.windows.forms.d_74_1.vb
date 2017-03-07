@@ -1,16 +1,18 @@
-    Public Sub CreateMyDateTimePicker()
-        ' Create a new DateTimePicker control and initialize it.
-        Dim dateTimePicker1 As New DateTimePicker()
-        
-        ' Set the MinDate and MaxDate.
-        dateTimePicker1.MinDate = New DateTime(1985, 6, 20)
-        dateTimePicker1.MaxDate = DateTime.Today
-        
-        ' Set the CustomFormat string.
-        dateTimePicker1.CustomFormat = "MMMM dd, yyyy - dddd"
-        dateTimePicker1.Format = DateTimePickerFormat.Custom
-        
-        ' Show the CheckBox and display the control as an up-down control.
-        dateTimePicker1.ShowCheckBox = True
-        dateTimePicker1.ShowUpDown = True
-    End Sub 'CreateMyDateTimePicker
+   Private Sub AddCustomColumnStyle()
+      ' Set the TableStyle Mapping name.
+      myTableStyle.MappingName = "customerTable"
+      myTableStyle.BackColor = Color.Pink
+      
+      ' Set the ColumnStyle properties and add to TableStyle.
+      myColumnStyle.MappingName = "Customers"
+      myColumnStyle.HeaderText = "Customer Name"
+      myColumnStyle.Width = 250
+      myTableStyle.GridColumnStyles.Add(myColumnStyle)
+      myDataGrid.TableStyles.Add(myTableStyle)
+   End Sub 'AddCustomColumnStyle
+   
+   
+   Private Sub myButton1_Click(sender As Object, e As EventArgs)
+      ' Reset the background color.
+      myTableStyle.ResetBackColor()
+   End Sub 'myButton1_Click

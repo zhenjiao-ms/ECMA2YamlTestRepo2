@@ -1,80 +1,85 @@
 using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace MD5Sample
+
+class Alice
 {
-    class Program
+    public static void Main(string[] args)
     {
-        static void Main(string[] args)
+        using (Bob bob = new Bob())
         {
-            string source = "Hello World!";
-            using (MD5 md5Hash = MD5.Create())
+            using (RSACryptoServiceProvider rsaKey = new RSACryptoServiceProvider())
             {
-                string hash = GetMd5Hash(md5Hash, source);
-
-                Console.WriteLine("The MD5 hash of " + source + " is: " + hash + ".");
-
-                Console.WriteLine("Verifying the hash...");
-
-                if (VerifyMd5Hash(md5Hash, source, hash))
-                {
-                    Console.WriteLine("The hashes are the same.");
-                }
-                else
-                {
-                    Console.WriteLine("The hashes are not same.");
-                }
-            }
-
-
-
-        }
-        static string GetMd5Hash(MD5 md5Hash, string input)
-        {
-
-            // Convert the input string to a byte array and compute the hash.
-            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-            // Create a new Stringbuilder to collect the bytes
-            // and create a string.
-            StringBuilder sBuilder = new StringBuilder();
-
-            // Loop through each byte of the hashed data 
-            // and format each one as a hexadecimal string.
-            for (int i = 0; i < data.Length; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-
-            // Return the hexadecimal string.
-            return sBuilder.ToString();
-        }
-
-        // Verify a hash against a string.
-        static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
-        {
-            // Hash the input.
-            string hashOfInput = GetMd5Hash(md5Hash, input);
-
-            // Create a StringComparer an compare the hashes.
-            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
-
-            if (0 == comparer.Compare(hashOfInput, hash))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
+                // Get Bob's public key
+                rsaKey.ImportCspBlob(bob.key);
+                byte[] encryptedSessionKey = null;
+                byte[] encryptedMessage = null;
+                byte[] iv = null;
+                Send(rsaKey, "Secret message", out iv, out encryptedSessionKey, out encryptedMessage);
+                bob.Receive(iv, encryptedSessionKey, encryptedMessage);
             }
         }
+    }
 
+    private static void Send(RSA key, string secretMessage, out byte[] iv, out byte[] encryptedSessionKey, out byte[] encryptedMessage)
+    {
+        using (Aes aes = new AesCryptoServiceProvider())
+        {
+            iv = aes.IV;
+
+            // Encrypt the session key
+            RSAPKCS1KeyExchangeFormatter keyFormatter = new RSAPKCS1KeyExchangeFormatter(key);
+            encryptedSessionKey = keyFormatter.CreateKeyExchange(aes.Key, typeof(Aes));
+
+            // Encrypt the message
+            using (MemoryStream ciphertext = new MemoryStream())
+            using (CryptoStream cs = new CryptoStream(ciphertext, aes.CreateEncryptor(), CryptoStreamMode.Write))
+            {
+                byte[] plaintextMessage = Encoding.UTF8.GetBytes(secretMessage);
+                cs.Write(plaintextMessage, 0, plaintextMessage.Length);
+                cs.Close();
+
+                encryptedMessage = ciphertext.ToArray();
+            }
+        }
+    }
+
+}
+public class Bob : IDisposable
+{
+    public byte[] key;
+    private RSACryptoServiceProvider rsaKey = new RSACryptoServiceProvider();
+    public Bob()
+    {
+        key = rsaKey.ExportCspBlob(false);
+    }
+    public void Receive(byte[] iv, byte[] encryptedSessionKey, byte[] encryptedMessage)
+    {
+
+        using (Aes aes = new AesCryptoServiceProvider())
+        {
+            aes.IV = iv;
+
+            // Decrypt the session key
+            RSAPKCS1KeyExchangeDeformatter keyDeformatter = new RSAPKCS1KeyExchangeDeformatter(rsaKey);
+            aes.Key = keyDeformatter.DecryptKeyExchange(encryptedSessionKey);
+
+            // Decrypt the message
+            using (MemoryStream plaintext = new MemoryStream())
+            using (CryptoStream cs = new CryptoStream(plaintext, aes.CreateDecryptor(), CryptoStreamMode.Write))
+            {
+                cs.Write(encryptedMessage, 0, encryptedMessage.Length);
+                cs.Close();
+
+                string message = Encoding.UTF8.GetString(plaintext.ToArray());
+                Console.WriteLine(message);
+            }
+        }
+    }
+    public void Dispose()
+    {
+        rsaKey.Dispose();
     }
 }
-
-// This code example produces the following output:
-//
-// The MD5 hash of Hello World! is: ed076287532e86365e841e92bfc50d8c.
-// Verifying the hash...
-// The hashes are the same.

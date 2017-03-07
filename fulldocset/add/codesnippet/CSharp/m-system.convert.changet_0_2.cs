@@ -1,43 +1,21 @@
+using System;
+
 public class Example
 {
    public static void Main()
    {
-      Temperature cool = new Temperature(5);
-      Type[] targetTypes = { typeof(SByte), typeof(Int16), typeof(Int32),
-                             typeof(Int64), typeof(Byte), typeof(UInt16),
-                             typeof(UInt32), typeof(UInt64), typeof(Decimal),
-                             typeof(Single), typeof(Double), typeof(String) };
-      CultureInfo provider = new CultureInfo("fr-FR");
+      int? intValue1 = 12893;
+      double dValue1 = (double) Convert.ChangeType(intValue1, typeof(Double), null);
+      Console.WriteLine("{0} ({1})--> {2} ({3})", intValue1, intValue1.GetType().Name,
+                        dValue1, dValue1.GetType().Name);
       
-      foreach (Type targetType in targetTypes)
-      {
-         try {
-            object value = Convert.ChangeType(cool, targetType, provider);
-            Console.WriteLine("Converted {0} {1} to {2} {3}.",
-                              cool.GetType().Name, cool.ToString(),
-                              targetType.Name, value);
-         }
-         catch (InvalidCastException) {
-            Console.WriteLine("Unsupported {0} --> {1} conversion.",
-                              cool.GetType().Name, targetType.Name);
-         }                     
-         catch (OverflowException) {
-            Console.WriteLine("{0} is out of range of the {1} type.",
-                              cool, targetType.Name);
-         }
-      }
+
+      float fValue1 = 16.3478f;
+      int? intValue2 = (int) fValue1; 
+      Console.WriteLine("{0} ({1})--> {2} ({3})", fValue1, fValue1.GetType().Name,
+                        intValue2, intValue2.GetType().Name);
    }
 }
-// The example dosplays the following output:
-//       Converted Temperature 5.00°C to SByte 5.
-//       Converted Temperature 5.00°C to Int16 5.
-//       Converted Temperature 5.00°C to Int32 5.
-//       Converted Temperature 5.00°C to Int64 5.
-//       Converted Temperature 5.00°C to Byte 5.
-//       Converted Temperature 5.00°C to UInt16 5.
-//       Converted Temperature 5.00°C to UInt32 5.
-//       Converted Temperature 5.00°C to UInt64 5.
-//       Converted Temperature 5.00°C to Decimal 5.
-//       Converted Temperature 5.00°C to Single 5.
-//       Converted Temperature 5.00°C to Double 5.
-//       Converted Temperature 5.00°C to String 5,00°C.
+// The example displays the following output:
+//    12893 (Int32)--> 12893 (Double)
+//    16.3478 (Single)--> 16 (Int32)

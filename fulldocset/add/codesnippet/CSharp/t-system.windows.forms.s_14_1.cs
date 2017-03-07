@@ -1,29 +1,36 @@
-    private void toggleColumnStylesBtn_Click(
-		System.Object sender, 
-		System.EventArgs e)
-    {
-		TableLayoutColumnStyleCollection styles = 
-			this.TableLayoutPanel1.ColumnStyles;
+		private void CreateMyStatusBar()
+		{
+			// Create a StatusBar control.
+			StatusBar statusBar1 = new StatusBar();
+			// Create two StatusBarPanel objects to display in the StatusBar.
+			StatusBarPanel panel1 = new StatusBarPanel();
+			StatusBarPanel panel2 = new StatusBarPanel();
 
-        foreach( ColumnStyle style in styles )
-        {
-            if( style.SizeType == SizeType.Absolute )
-            {
-                style.SizeType = SizeType.AutoSize;
-            }
-            else if( style.SizeType == SizeType.AutoSize )
-            {
-                style.SizeType = SizeType.Percent;
+			// Display the first panel with a sunken border style.
+			panel1.BorderStyle = StatusBarPanelBorderStyle.Sunken;
+			// Initialize the text of the panel.
+			panel1.Text = "Ready...";
+			// Set the AutoSize property to use all remaining space on the StatusBar.
+			panel1.AutoSize = StatusBarPanelAutoSize.Spring;
+			
+			// Display the second panel with a raised border style.
+			panel2.BorderStyle = StatusBarPanelBorderStyle.Raised;
+			
+			// Create ToolTip text that displays time the application was 
+      			//started.
+			panel2.ToolTipText = "Started: " + System.DateTime.Now.ToShortTimeString();
+			// Set the text of the panel to the current date.
+			panel2.Text = System.DateTime.Today.ToLongDateString();
+			// Set the AutoSize property to size the panel to the size of the contents.
+			panel2.AutoSize = StatusBarPanelAutoSize.Contents;
+						
+			// Display panels in the StatusBar control.
+			statusBar1.ShowPanels = true;
 
-                // Set the column width to be a percentage
-                // of the TableLayoutPanel control's width.
-                style.Width = 33;
-            }
-            else
-            {
-                // Set the column width to 50 pixels.
-                style.SizeType = SizeType.Absolute;
-                style.Width = 50;
-            }
-        }
-    }
+			// Add both panels to the StatusBarPanelCollection of the StatusBar.			
+			statusBar1.Panels.Add(panel1);
+			statusBar1.Panels.Add(panel2);
+
+			// Add the StatusBar to the form.
+			this.Controls.Add(statusBar1);
+		}

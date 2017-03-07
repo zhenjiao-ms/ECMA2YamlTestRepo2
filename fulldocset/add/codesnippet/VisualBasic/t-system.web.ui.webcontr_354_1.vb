@@ -1,193 +1,167 @@
 Imports System
 Imports System.Collections
 Imports System.ComponentModel
+Imports System.Data
+Imports System.Reflection
 Imports System.Security.Permissions
 Imports System.Web
 Imports System.Web.UI
 Imports System.Web.UI.WebControls
+Imports System.Web.UI.WebControls.WebParts
 
 Namespace Samples.AspNet.VB.Controls
 
-    <AspNetHostingPermission(SecurityAction.Demand, _
-      Level:=AspNetHostingPermissionLevel.Minimal), _
-      AspNetHostingPermission(SecurityAction.InheritanceDemand, _
-      Level:=AspNetHostingPermissionLevel.Minimal)> _
-    Public Class GeneologyTree
-        Inherits HierarchicalDataBoundControl
-
-        Dim MaxDepth As Integer = 0
-
-        Private aRootNode As TreeNode
-        Public ReadOnly Property RootNode() As TreeNode
-            Get
-                If aRootNode Is Nothing Then
-                    aRootNode = New TreeNode(String.Empty)
-                End If
-                Return aRootNode
-            End Get
-        End Property
-
-        Private alNodes As ArrayList
-        Public ReadOnly Property Nodes() As ArrayList
-            Get
-                If alNodes Is Nothing Then
-                    alNodes = New ArrayList()
-                End If
-                Return alNodes
-            End Get
-        End Property
-
-        Public Property DataTextField() As String
-            Get
-                Dim o As Object = ViewState("DataTextField")
-                If o Is Nothing Then
-                    Return String.Empty
-                Else
-                    Return CStr(o)
-                End If
-            End Get
-            Set(ByVal value As String)
-                ViewState("DataTextField") = value
-                If Initialized Then
-                    OnDataPropertyChanged()
-                End If
-            End Set
-        End Property
-
-        Protected Overrides Sub PerformDataBinding()
-            MyBase.PerformDataBinding()
-
-            ' Do not attempt to bind data if there is no
-            ' data source set.
-            If Not IsBoundUsingDataSourceID AndAlso DataSource Is Nothing Then
-                Return
-            End If
-
-            Dim view As HierarchicalDataSourceView = GetData(RootNode.DataPath)
-
-            If view Is Nothing Then
-                Throw New InvalidOperationException _
-                ("No view returned by data source control.")
-            End If
-
-            Dim enumerable As IHierarchicalEnumerable = view.Select()
-            If Not (enumerable Is Nothing) Then
-
-                Nodes.Clear()
-
-                Try
-                    RecurseDataBindInternal(RootNode, enumerable, 1)
-                Finally
-                End Try
-            End If
-
-        End Sub ' PerformDataBinding
-
-        Private Sub RecurseDataBindInternal(ByVal node As TreeNode, _
-            ByVal enumerable As IHierarchicalEnumerable, _
-            ByVal depth As Integer)
-
-            Dim item As Object
-            For Each item In enumerable
-
-                Dim data As IHierarchyData = enumerable.GetHierarchyData(item)
-
-                If Not data Is Nothing Then
-
-                    ' Create an object that represents the bound data
-                    ' to the control.
-                    Dim newNode As New TreeNode()
-                    Dim rvnode As New RootViewNode()
-
-                    rvnode.Node = newNode
-                    rvnode.Depth = depth
-
-                    ' The dataItem is not just a string, but potentially
-                    ' an XML node or some other container. 
-                    ' If DataTextField is set, use it to determine which 
-                    ' field to render. Otherwise, use the first field.                    
-                    If DataTextField.Length > 0 Then
-                        newNode.Text = DataBinder.GetPropertyValue _
-                        (data, DataTextField, Nothing)
-                    Else
-                        Dim props As PropertyDescriptorCollection = _
-                        TypeDescriptor.GetProperties(data)
-
-                        ' Set the "default" value of the node.
-                        newNode.Text = String.Empty
-
-                        ' Set the true data-bound value of the TextBox,
-                        ' if possible.
-                        If props.Count >= 1 Then
-                            If Not props(0).GetValue(data) Is Nothing Then
-                                newNode.Text = props(0).GetValue(data).ToString()
-                            End If
-                        End If
-                    End If
-
-                    Nodes.Add(rvnode)
-
-                    If data.HasChildren Then
-                        Dim newEnumerable As IHierarchicalEnumerable = _
-                            data.GetChildren()
-                        If Not (newEnumerable Is Nothing) Then
-                            RecurseDataBindInternal(newNode, _
-                            newEnumerable, depth + 1)
-                        End If
-                    End If
-
-                    If MaxDepth < depth Then
-                        MaxDepth = depth
-                    End If
-                End If
-            Next item
-
-        End Sub 'RecurseDataBindInternal
-
-        Protected Overrides Sub Render(ByVal writer As HtmlTextWriter)
-
-            writer.WriteLine("<PRE>")
-            Dim currentDepth As Integer = 1
-            Dim currentTextLen As Integer = 0
-
-            Dim rvnode As RootViewNode
-            For Each rvnode In Nodes
-                If rvnode.Depth = currentDepth Then
-                    Dim output As String = "  " + rvnode.Node.Text + "  "
-                    writer.Write(output)
-                    currentTextLen = currentTextLen + output.Length
-                Else
-                    writer.WriteLine("")
-
-                    ' Some very basic whitespace formatting.
-                    ' The implicit conversion to an Integer is fine, as 
-                    ' a general estimate is acceptable for this 
-                    ' simple example.
-                    Dim halfLine As Integer = CInt(currentTextLen / 2)
-                    Dim i As Integer
-                    For i = 0 To halfLine
-                        writer.Write(" "c)
-                    Next i
-                    writer.Write("|"c)
-                    writer.WriteLine("")
-                    currentDepth += 1
-                    Dim j As Integer
-                    For j = 0 To halfLine
-                        writer.Write(" "c)
-                    Next j
-                    Dim output As String = "  " + rvnode.Node.Text + "  "
-                    writer.Write(output)
-                    currentTextLen = currentTextLen + output.Length
-                End If
-            Next rvnode
-            writer.WriteLine("</PRE>")
-
-        End Sub 'Render
+  ' This sample code creates a Web Parts control that acts as a 
+  ' provider of field data.
+  <AspNetHostingPermission(SecurityAction.Demand, _
+    Level:=AspNetHostingPermissionLevel.Minimal)> _
+  <AspNetHostingPermission(SecurityAction.InheritanceDemand, _
+    Level:=AspNetHostingPermissionLevel.Minimal)> _
+  Public NotInheritable Class FieldProviderWebPart
+    Inherits WebPart
+    Implements IWebPartField
+    Private _table As DataTable
 
 
-        Private Class RootViewNode
-            Public Node As TreeNode
-            Public Depth As Integer
-        End Class 'RootViewNode
-    End Class 'GeneologyTree
-End Namespace
+    Public Sub New()
+      _table = New DataTable()
+
+      Dim col As New DataColumn()
+      col.DataType = GetType(String)
+      col.ColumnName = "Name"
+      _table.Columns.Add(col)
+
+      col = New DataColumn()
+      col.DataType = GetType(String)
+      col.ColumnName = "Address"
+      _table.Columns.Add(col)
+
+      col = New DataColumn()
+      col.DataType = GetType(Integer)
+      col.ColumnName = "ZIP Code"
+      _table.Columns.Add(col)
+
+      Dim row As DataRow = _table.NewRow()
+      row("Name") = "John Q. Public"
+      row("Address") = "123 Main Street"
+      row("ZIP Code") = 98000
+      _table.Rows.Add(row)
+
+    End Sub
+
+
+    <ConnectionProvider("FieldProvider")> _
+    Public Function GetConnectionInterface() As IWebPartField
+      Return New FieldProviderWebPart()
+
+    End Function
+
+
+    Public ReadOnly Property Schema() As ComponentModel.PropertyDescriptor _
+      Implements IWebPartField.Schema
+      Get
+        ' The two parameters are row and field. Zero is the first record. 
+        ' 0,2 returns the zip code field value.   
+        Return TypeDescriptor.GetProperties(_table.DefaultView(0))(2)
+      End Get
+    End Property
+
+
+    Sub GetFieldValue(ByVal callback As FieldCallback) _
+      Implements IWebPartField.GetFieldValue
+
+      callback(Schema.GetValue(_table.DefaultView(0)))
+
+    End Sub
+
+  End Class 'FieldProviderWebPart 
+
+
+  ' This sample code creates a Web Parts control that acts as a 
+  ' consumer of an IWebPartField interface.
+  <AspNetHostingPermission(SecurityAction.Demand, _
+    Level:=AspNetHostingPermissionLevel.Minimal)> _
+  <AspNetHostingPermission(SecurityAction.InheritanceDemand, _
+    Level:=AspNetHostingPermissionLevel.Minimal)> _
+  Public Class FieldConsumerWebPart
+    Inherits WebPart
+
+    Private _provider As IWebPartField
+    Private _fieldValue As Object
+
+
+    Private Sub GetFieldValue(ByVal fieldValue As Object)
+      _fieldValue = fieldValue
+
+    End Sub
+
+
+    Public Property ConnectionPointEnabled() As Boolean
+      Get
+        Dim o As Object = ViewState("ConnectionPointEnabled")
+        Return IIf(Not (o Is Nothing), CBool(o), True)
+      End Get
+      Set(ByVal value As Boolean)
+        ViewState("ConnectionPointEnabled") = value
+      End Set
+    End Property
+
+
+    Protected Overrides Sub OnPreRender(ByVal e As EventArgs)
+      If Not (_provider Is Nothing) Then
+        _provider.GetFieldValue(New FieldCallback(AddressOf GetFieldValue))
+      End If
+      MyBase.OnPreRender(e)
+
+    End Sub
+
+
+    Protected Overrides Sub RenderContents(ByVal writer As _
+      HtmlTextWriter)
+
+      If Not (_provider Is Nothing) Then
+        Dim prop As PropertyDescriptor = _provider.Schema
+
+        If Not (prop Is Nothing) AndAlso Not (_fieldValue Is Nothing) Then
+          writer.Write(prop.DisplayName & ": " & _fieldValue)
+        Else
+          writer.Write("No data")
+        End If
+      Else
+        writer.Write("Not connected")
+      End If
+
+    End Sub
+
+    <ConnectionConsumer("FieldConsumer", "Connpoint1", _
+      GetType(FieldConsumerConnectionPoint), AllowsMultipleConnections:=True)> _
+    Public Sub SetConnectionInterface(ByVal provider As IWebPartField)
+      _provider = provider
+
+    End Sub
+
+  End Class 'FieldConsumerWebPart
+
+  Public Class FieldConsumerConnectionPoint
+    Inherits ConsumerConnectionPoint
+
+    Public Sub New(ByVal callbackMethod As MethodInfo, _
+      ByVal interfaceType As Type, ByVal controlType As Type, _
+      ByVal name As String, ByVal id As String, _
+      ByVal allowsMultipleConnections As Boolean)
+      MyBase.New(callbackMethod, interfaceType, controlType, _
+        name, id, allowsMultipleConnections)
+
+    End Sub
+
+
+    Public Overrides Function GetEnabled(ByVal control As Control) _
+      As Boolean
+
+      Return CType(control, FieldConsumerWebPart).ConnectionPointEnabled
+
+    End Function
+
+  End Class 'FieldConsumerConnectionPoint
+
+End Namespace  ' Samples.AspNet.VB.Controls

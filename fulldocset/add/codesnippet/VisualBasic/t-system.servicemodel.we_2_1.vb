@@ -1,22 +1,24 @@
-    <ServiceContract()> _
-    Public Interface ICalculator
-        <OperationContract()> _
-        <WebGet()> _
-        Function Add(ByVal x As Long, ByVal y As Long) As Long
+        Dim baseAddress As New Uri("http://localhost:8000")
+        Dim host As New WebServiceHost(GetType(Service), baseAddress)
+        Try
+            host.Open()
 
-        <OperationContract()> _
-        <WebGet(UriTemplate:="Sub?x={x}&y={y}")> _
-        Function Subtract(ByVal x As Long, ByVal y As Long) As Long
+            Dim cf As New WebChannelFactory(Of IService)(baseAddress)
+            Dim channel As IService = cf.CreateChannel()
+            Dim s As String
 
-        <OperationContract()> _
-        <WebGet(UriTemplate:="Mult?x={x}&y={y}", BodyStyle:=WebMessageBodyStyle.Bare)> _
-        Function Multiply(ByVal x As Long, ByVal y As Long) As Long
+            Console.WriteLine("Calling EchoWithGet via HTTP GET: ")
+            s = channel.EchoWithGet("Hello, world")
+            Console.WriteLine("   Output:  0}", s)
 
-        <OperationContract()> _
-        <WebGet(UriTemplate:="Div?x={x}&y={y}", RequestFormat:=WebMessageFormat.Xml)> _
-        Function Divide(ByVal x As Long, ByVal y As Long) As Long
+            Console.WriteLine("")
 
-        <OperationContract()> _
-        <WebGet(ResponseFormat:=WebMessageFormat.Json)> _
-        Function Modulo(ByVal x As Long, ByVal y As Long) As Long
-    End Interface
+            Console.WriteLine("Calling EchoWithPost via HTTP POST: ")
+            s = channel.EchoWithPost("Hello, world")
+            Console.WriteLine("   Output:  0}", s)
+
+            Console.WriteLine("")
+
+        Catch ex As CommunicationException
+            Console.WriteLine("An exception occurred: " + ex.Message)
+        End Try

@@ -1,65 +1,64 @@
-        Private Sub CreateMyListView()
-            ' Create a new ListView control.
-            Dim listView1 As New ListView()
-            listView1.Bounds = New Rectangle(New Point(10, 10), New Size(300, 200))
 
-            ' Set the view to show details.
-            listView1.View = View.Details
-            ' Allow the user to edit item text.
-            listView1.LabelEdit = True
-            ' Allow the user to rearrange columns.
-            listView1.AllowColumnReorder = True
-            ' Display check boxes.
-            listView1.CheckBoxes = True
-            ' Select the item and subitems when selection is made.
-            listView1.FullRowSelect = True
-            ' Display grid lines.
-            listView1.GridLines = True
-            ' Sort the items in the list in ascending order.
-            listView1.Sorting = SortOrder.Ascending
+    ' Declare the LinkLabel object.
+    Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
 
-            ' Create three items and three sets of subitems for each item.
-            Dim item1 As New ListViewItem("item1", 0)
-            ' Place a check mark next to the item.
-            item1.Checked = True
-            item1.SubItems.Add("1")
-            item1.SubItems.Add("2")
-            item1.SubItems.Add("3")
-            Dim item2 As New ListViewItem("item2", 1)
-            item2.SubItems.Add("4")
-            item2.SubItems.Add("5")
-            item2.SubItems.Add("6")
-            Dim item3 As New ListViewItem("item3", 0)
-            ' Place a check mark next to the item.
-            item3.Checked = True
-            item3.SubItems.Add("7")
-            item3.SubItems.Add("8")
-            item3.SubItems.Add("9")
+    ' Declare keywords array to identify links
+    Dim keywords() As String
 
-            ' Create columns for the items and subitems.
-            ' Width of -2 indicates auto-size.
-            listView1.Columns.Add("Item Column", -2, HorizontalAlignment.Left)
-            listView1.Columns.Add("Column 2", -2, HorizontalAlignment.Left)
-            listView1.Columns.Add("Column 3", -2, HorizontalAlignment.Left)
-            listView1.Columns.Add("Column 4", -2, HorizontalAlignment.Center)
+    Private Sub InitializeLinkLabel()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel
+        Me.LinkLabel1.Links.Clear()
+        ' Set the location, name and size.
+        Me.LinkLabel1.Location = New System.Drawing.Point(10, 20)
+        Me.LinkLabel1.Name = "CompanyLinks"
+        Me.LinkLabel1.Size = New System.Drawing.Size(104, 150)
 
-            'Add the items to the ListView.
-            listView1.Items.AddRange(New ListViewItem() {item1, item2, item3})
+        ' Set the LinkBehavior property to show underline when mouse
+        ' hovers over the links.
+        Me.LinkLabel1.LinkBehavior = _
+            System.Windows.Forms.LinkBehavior.HoverUnderline
+        Dim textString As String = "For more information see our" & _
+           " company website or the research page at Contoso Ltd. "
 
-            ' Create two ImageList objects.
-            Dim imageListSmall As New ImageList()
-            Dim imageListLarge As New ImageList()
+        ' Set the text property.
+        Me.LinkLabel1.Text = textString
 
-            ' Initialize the ImageList objects with bitmaps.
-            imageListSmall.Images.Add(Bitmap.FromFile("C:\MySmallImage1.bmp"))
-            imageListSmall.Images.Add(Bitmap.FromFile("C:\MySmallImage2.bmp"))
-            imageListLarge.Images.Add(Bitmap.FromFile("C:\MyLargeImage1.bmp"))
-            imageListLarge.Images.Add(Bitmap.FromFile("C:\MyLargeImage2.bmp"))
+        ' Set the color of the links to black, unless the mouse
+        ' is hovering over a link.
+        Me.LinkLabel1.LinkColor = System.Drawing.Color.Black
+        Me.LinkLabel1.ActiveLinkColor = System.Drawing.Color.Blue
 
-            'Assign the ImageList objects to the ListView.
-            listView1.LargeImageList = imageListLarge
-            listView1.SmallImageList = imageListSmall
+        ' Add links to the LinkCollection using starting index and
+        ' length of keywords.
+        keywords = New String() {"company", "research"}
+        Dim keyword As String
+        For Each keyword In keywords
+            Me.LinkLabel1.Links.Add(textString.IndexOf(keyword), keyword.Length)
+        Next
 
-            ' Add the ListView to the control collection.
-            Me.Controls.Add(listView1)
-        End Sub 'CreateMyListView
+        ' Add the label to the form.
+        Me.Controls.Add(Me.LinkLabel1)
+    End Sub
+
+    Private Sub LinkLabel1_LinkClicked(ByVal sender As Object, _
+        ByVal e As LinkLabelLinkClickedEventArgs) _
+        Handles LinkLabel1.LinkClicked
+
+        Dim url As String
+
+        ' Determine which link was clicked and set the appropriate url.
+        Select Case LinkLabel1.Links.IndexOf(e.Link)
+            Case 0
+                url = "www.microsoft.com"
+
+            Case 1
+                url = "www.contoso.com/research"
+        End Select
+
+        ' Set the visited property to True. This will change
+        ' the color of the link.
+        e.Link.Visited = True
+
+        ' Open Internet Explorer to the correct url.
+        System.Diagnostics.Process.Start("IExplore.exe", url)
+    End Sub

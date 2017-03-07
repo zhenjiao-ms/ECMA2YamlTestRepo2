@@ -1,18 +1,10 @@
-Private Sub ToolStripRenderer1_RenderItemText(sender as Object, e as ToolStripItemTextRenderEventArgs) _ 
-     Handles ToolStripRenderer1.RenderItemText
+Private Sub ToolStripRenderer1_RenderItemImage(sender as Object, e as ToolStripItemImageRenderEventArgs) _ 
+     Handles ToolStripRenderer1.RenderItemImage
 
     Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "Text", e.Text)
+    messageBoxVB.AppendFormat("{0} = {1}", "Image", e.Image)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextColor", e.TextColor)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextFont", e.TextFont)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextRectangle", e.TextRectangle)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextFormat", e.TextFormat)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextDirection", e.TextDirection)
+    messageBoxVB.AppendFormat("{0} = {1}", "ImageRectangle", e.ImageRectangle)
     messageBoxVB.AppendLine()
     messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
     messageBoxVB.AppendLine()
@@ -20,6 +12,6 @@ Private Sub ToolStripRenderer1_RenderItemText(sender as Object, e as ToolStripIt
     messageBoxVB.AppendLine()
     messageBoxVB.AppendFormat("{0} = {1}", "ToolStrip", e.ToolStrip)
     messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"RenderItemText Event")
+    MessageBox.Show(messageBoxVB.ToString(),"RenderItemImage Event")
 
 End Sub

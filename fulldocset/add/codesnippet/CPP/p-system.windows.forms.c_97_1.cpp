@@ -1,19 +1,32 @@
+internal:
+   // Declare ComboBox1
+   System::Windows::Forms::ComboBox^ ComboBox1;
+
 private:
-   void AdjustMyCheckBoxProperties()
+   // Initialize ComboBox1.
+   void InitializeComboBox()
    {
-      // Concatenate the property values together on three lines.
-      label1->Text = String::Format( "ThreeState: {0}\nChecked: {1}\nCheckState: {2}",
-         checkBox1->ThreeState, checkBox1->Checked, checkBox1->CheckState );
+      this->ComboBox1 = gcnew ComboBox;
+      this->ComboBox1->Location = System::Drawing::Point( 128, 48 );
+      this->ComboBox1->Name = "ComboBox1";
+      this->ComboBox1->Size = System::Drawing::Size( 100, 21 );
+      this->ComboBox1->TabIndex = 0;
+      this->ComboBox1->Text = "Typical";
+      array<String^>^ installs = {"Typical","Compact","Custom"};
+      ComboBox1->Items->AddRange( installs );
+      this->Controls->Add( this->ComboBox1 );
       
-      // Change the ThreeState and CheckAlign properties on every other click.
-      if ( !checkBox1->ThreeState )
-      {
-         checkBox1->ThreeState = true;
-         checkBox1->CheckAlign = ContentAlignment::MiddleRight;
-      }
-      else
-      {
-         checkBox1->ThreeState = false;
-         checkBox1->CheckAlign = ContentAlignment::MiddleLeft;
-      }
+      // Hook up the event handler.
+      this->ComboBox1->DropDown += gcnew System::EventHandler(
+         this, &Form1::ComboBox1_DropDown );
+   }
+
+   // Handles the ComboBox1 DropDown event. If the user expands the  
+   // drop-down box, a message box will appear, recommending the
+   // typical installation.
+   void ComboBox1_DropDown( Object^ sender, System::EventArgs^ e )
+   {
+      MessageBox::Show( "Typical installation is strongly recommended.",
+         "Install information", MessageBoxButtons::OK,
+         MessageBoxIcon::Information );
    }

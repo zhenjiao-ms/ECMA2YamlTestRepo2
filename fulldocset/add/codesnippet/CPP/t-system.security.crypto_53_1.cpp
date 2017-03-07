@@ -1,131 +1,74 @@
+#using <System.dll>
+#using <System.Security.dll>
+
 using namespace System;
-using namespace System::IO;
 using namespace System::Security::Cryptography;
-
-// Computes a keyed hash for a source file, creates a target file with the keyed hash
-// prepended to the contents of the source file, then decodes the file and compares
-// the source and the decoded files.
-void EncodeFile( array<Byte>^key, String^ sourceFile, String^ destFile )
-{
-   
-   // Initialize the keyed hash object.
-   HMACSHA256^ myhmacsha256 = gcnew HMACSHA256( key );
-   FileStream^ inStream = gcnew FileStream( sourceFile,FileMode::Open );
-   FileStream^ outStream = gcnew FileStream( destFile,FileMode::Create );
-   
-   // Compute the hash of the input file.
-   array<Byte>^hashValue = myhmacsha256->ComputeHash( inStream );
-   
-   // Reset inStream to the beginning of the file.
-   inStream->Position = 0;
-   
-   // Write the computed hash value to the output file.
-   outStream->Write( hashValue, 0, hashValue->Length );
-   
-   // Copy the contents of the sourceFile to the destFile.
-   int bytesRead;
-   
-   // read 1K at a time
-   array<Byte>^buffer = gcnew array<Byte>(1024);
-   do
-   {
-      
-      // Read from the wrapping CryptoStream.
-      bytesRead = inStream->Read( buffer, 0, 1024 );
-      outStream->Write( buffer, 0, bytesRead );
-   }
-   while ( bytesRead > 0 );
-
-   myhmacsha256->Clear();
-   
-   // Close the streams
-   inStream->Close();
-   outStream->Close();
-   return;
-} // end EncodeFile
-
-
-
-// Decode the encoded file and compare to original file.
-bool DecodeFile( array<Byte>^key, String^ sourceFile )
-{
-   
-   // Initialize the keyed hash object. 
-   HMACSHA256^ hmacsha256 = gcnew HMACSHA256( key );
-   
-   // Create an array to hold the keyed hash value read from the file.
-   array<Byte>^storedHash = gcnew array<Byte>(hmacsha256->HashSize / 8);
-   
-   // Create a FileStream for the source file.
-   FileStream^ inStream = gcnew FileStream( sourceFile,FileMode::Open );
-   
-   // Read in the storedHash.
-   inStream->Read( storedHash, 0, storedHash->Length );
-   
-   // Compute the hash of the remaining contents of the file.
-   // The stream is properly positioned at the beginning of the content, 
-   // immediately after the stored hash value.
-   array<Byte>^computedHash = hmacsha256->ComputeHash( inStream );
-   
-   // compare the computed hash with the stored value
-   bool err = false;
-   for ( int i = 0; i < storedHash->Length; i++ )
-   {
-      if ( computedHash[ i ] != storedHash[ i ] )
-      {
-         err = true;
-      }
-   }
-   if (err)
-        {
-            Console::WriteLine("Hash values differ! Encoded file has been tampered with!");
-            return false;
-        }
-        else
-        {
-            Console::WriteLine("Hash values agree -- no tampering occurred.");
-            return true;
-        }
-
-} //end DecodeFile
-
-
+using namespace System::Security::Cryptography::X509Certificates;
+using namespace System::IO;
 int main()
 {
-   array<String^>^Fileargs = Environment::GetCommandLineArgs();
-   String^ usageText = "Usage: HMACSHA256 inputfile.txt encodedfile.hsh\nYou must specify the two file names. Only the first file must exist.\n";
    
-   //If no file names are specified, write usage text.
-   if ( Fileargs->Length < 3 )
+   //Create new X509 store called teststore from the local certificate store.
+   X509Store ^ store = gcnew X509Store( "teststore",StoreLocation::CurrentUser );
+   store->Open( OpenFlags::ReadWrite );
+   X509Certificate2 ^ certificate = gcnew X509Certificate2;
+   
+   //Create certificates from certificate files.
+   //You must put in a valid path to three certificates in the following constructors.
+   X509Certificate2 ^ certificate1 = gcnew X509Certificate2( "c:\\mycerts\\*****.cer" );
+   X509Certificate2 ^ certificate2 = gcnew X509Certificate2( "c:\\mycerts\\*****.cer" );
+   X509Certificate2 ^ certificate5 = gcnew X509Certificate2( "c:\\mycerts\\*****.cer" );
+   
+   //Create a collection and add two of the certificates.
+   X509Certificate2Collection ^ collection = gcnew X509Certificate2Collection;
+   collection->Add( certificate2 );
+   collection->Add( certificate5 );
+   
+   //Add certificates to the store.
+   store->Add( certificate1 );
+   store->AddRange( collection );
+   X509Certificate2Collection ^ storecollection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
+   Console::WriteLine( "Store name: {0}", store->Name );
+   Console::WriteLine( "Store location: {0}", store->Location );
+   System::Collections::IEnumerator^ myEnum = storecollection->GetEnumerator();
+   while ( myEnum->MoveNext() )
    {
-      Console::WriteLine( usageText );
+      X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum->Current);
+      Console::WriteLine( "certificate name: {0}", x509->Subject );
+   }
+
+   
+   //Remove a certificate.
+   store->Remove( certificate1 );
+   X509Certificate2Collection ^ storecollection2 = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
+   Console::WriteLine( "{1}Store name: {0}", store->Name, Environment::NewLine );
+   System::Collections::IEnumerator^ myEnum1 = storecollection2->GetEnumerator();
+   while ( myEnum1->MoveNext() )
+   {
+      X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum1->Current);
+      Console::WriteLine( "certificate name: {0}", x509->Subject );
+   }
+
+   
+   //Remove a range of certificates.
+   store->RemoveRange( collection );
+   X509Certificate2Collection ^ storecollection3 = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
+   Console::WriteLine( "{1}Store name: {0}", store->Name, Environment::NewLine );
+   if ( storecollection3->Count == 0 )
+   {
+      Console::WriteLine( "Store contains no certificates." );
    }
    else
    {
-      try
+      System::Collections::IEnumerator^ myEnum2 = storecollection3->GetEnumerator();
+      while ( myEnum2->MoveNext() )
       {
-         
-         // Create a random key using a random number generator. This would be the
-         //  secret key shared by sender and receiver.
-         array<Byte>^secretkey = gcnew array<Byte>(64);
-         
-         //RNGCryptoServiceProvider is an implementation of a random number generator.
-         RNGCryptoServiceProvider^ rng = gcnew RNGCryptoServiceProvider;
-         
-         // The array is now filled with cryptographically strong random bytes.
-         rng->GetBytes( secretkey );
-         
-         // Use the secret key to encode the message file.
-         EncodeFile( secretkey, Fileargs[ 1 ], Fileargs[ 2 ] );
-         
-         // Take the encoded file and decode
-         DecodeFile( secretkey, Fileargs[ 2 ] );
+         X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum2->Current);
+         Console::WriteLine( "certificate name: {0}", x509->Subject );
       }
-      catch ( IOException^ e ) 
-      {
-         Console::WriteLine( "Error: File not found", e );
-      }
-
    }
-} //end main
 
+   
+   //Close the store.
+   store->Close();
+}

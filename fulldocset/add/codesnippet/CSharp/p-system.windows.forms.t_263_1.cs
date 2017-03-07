@@ -1,38 +1,16 @@
-using System.Drawing;
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.Resources;
-
-public class Form1 : Form
+private void myButton_Click(object sender, System.EventArgs e)
 {
-    public Form1()
-    {
-        IContainer components = new Container();
-        ResourceManager resources = new ResourceManager(typeof(Form1));
-        TabControl tabControl1 = new TabControl();
-        TabPage tabPage1 = new TabPage();
-        ImageList myImages = new ImageList(components);
+   // Set the tree view's PathSeparator property.
+   myTreeView.PathSeparator = ".";
 
-        tabControl1.Controls.Add(tabPage1);
+   // Get the count of the child tree nodes contained in the SelectedNode.
+   int myNodeCount = myTreeView.SelectedNode.GetNodeCount(true);
+   decimal myChildPercentage = ((decimal)myNodeCount/
+     (decimal)myTreeView.GetNodeCount(true)) * 100;
 
-        // Displays images from myImages on the tabs of tabControl1.
-        tabControl1.ImageList = myImages;
-
-        // Specifies which image to display (on the tab of tabPage1) by its index.
-        tabPage1.ImageIndex = 0;
-
-        tabPage1.Text = "tabPage1";
-
-        myImages.ImageStream = ((ImageListStreamer)(resources.GetObject("myImages.ImageStream")));
-        myImages.ColorDepth = ColorDepth.Depth8Bit;
-        myImages.ImageSize = new Size(16, 16);
-        myImages.TransparentColor = Color.Transparent;
-
-        this.Controls.Add(tabControl1);
-    }
-
-    static void Main() 
-    {
-        Application.Run(new Form1());
-    }
+   // Display the tree node path and the number of child nodes it and the tree view have.
+   MessageBox.Show("The '" + myTreeView.SelectedNode.FullPath + "' node has " 
+     + myNodeCount.ToString() + " child nodes.\nThat is " 
+     + string.Format("{0:###.##}", myChildPercentage) 
+     + "% of the total tree nodes in the tree view control.");
 }

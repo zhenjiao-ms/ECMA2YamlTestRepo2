@@ -1,16 +1,31 @@
-    private void dataGridView1_SortCompare(object sender,
-        DataGridViewSortCompareEventArgs e)
+    private void DataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs anError)
     {
-        // Try to sort based on the cells in the current column.
-        e.SortResult = System.String.Compare(
-            e.CellValue1.ToString(), e.CellValue2.ToString());
 
-        // If the cells are equal, sort based on the ID column.
-        if (e.SortResult == 0 && e.Column.Name != "ID")
+        MessageBox.Show("Error happened " + anError.Context.ToString());
+
+        if (anError.Context == DataGridViewDataErrorContexts.Commit)
         {
-            e.SortResult = System.String.Compare(
-                dataGridView1.Rows[e.RowIndex1].Cells["ID"].Value.ToString(),
-                dataGridView1.Rows[e.RowIndex2].Cells["ID"].Value.ToString());
+            MessageBox.Show("Commit error");
         }
-        e.Handled = true;
+        if (anError.Context == DataGridViewDataErrorContexts.CurrentCellChange)
+        {
+            MessageBox.Show("Cell change");
+        }
+        if (anError.Context == DataGridViewDataErrorContexts.Parsing)
+        {
+            MessageBox.Show("parsing error");
+        }
+        if (anError.Context == DataGridViewDataErrorContexts.LeaveControl)
+        {
+            MessageBox.Show("leave control error");
+        }
+
+        if ((anError.Exception) is ConstraintException)
+        {
+            DataGridView view = (DataGridView)sender;
+            view.Rows[anError.RowIndex].ErrorText = "an error";
+            view.Rows[anError.RowIndex].Cells[anError.ColumnIndex].ErrorText = "an error";
+
+            anError.ThrowException = false;
+        }
     }

@@ -1,159 +1,133 @@
-Imports System
-Imports System.Drawing
-Imports System.Windows.Forms
+Public Class Form1
+    Inherits Form
 
+    Private employees As New List(Of Employee)
+    Private tasks As New List(Of Task)
+    Private WithEvents reportButton As New Button
+    Private WithEvents dataGridView1 As New DataGridView
 
-Namespace DataGridViewAdvancedBorderStyleSample
+    <STAThread()> _
+    Public Sub Main()
+        Application.Run(New Form1)
+    End Sub
 
-    Class Form1
-        Inherits Form
+    Sub New()
+        dataGridView1.Dock = DockStyle.Fill
+        dataGridView1.AutoSizeColumnsMode = _
+            DataGridViewAutoSizeColumnsMode.AllCells
+        reportButton.Text = "Generate Report"
+        reportButton.Dock = DockStyle.Top
 
-        <STAThreadAttribute()> _
-        Public Shared Sub Main()
-            Application.EnableVisualStyles()
-            Application.Run(New Form1())
-        End Sub
+        Controls.Add(dataGridView1)
+        Controls.Add(reportButton)
+        Text = "DataGridViewComboBoxColumn Demo"
+    End Sub
 
-        Public Sub New()
-            Me.AutoSize = True
-            Me.Controls.Add(New CustomDataGridView())
-            Me.Text = "DataGridView advanced border styles demo"
-        End Sub
-    End Class
+    ' Initializes the data source and populates the DataGridView control.
+    Private Sub Form1_Load(ByVal sender As Object, _
+        ByVal e As EventArgs) Handles Me.Load
 
-    Public Class CustomDataGridView
-        Inherits DataGridView
+        PopulateLists()
+        dataGridView1.AutoGenerateColumns = False
+        dataGridView1.DataSource = tasks
+        AddColumns()
 
-        Public Sub New()
-            With Me
-                .RowTemplate = New DataGridViewCustomRow()
-                .Columns.Add(New DataGridViewCustomColumn())
-                .Columns.Add(New DataGridViewCustomColumn())
-                .Columns.Add(New DataGridViewCustomColumn())
-                .RowCount = 4
-                .EnableHeadersVisualStyles = False
-                .AutoSize = True
-            End With
-        End Sub
+    End Sub
 
-        Public Overrides ReadOnly Property AdjustedTopLeftHeaderBorderStyle() _
-            As DataGridViewAdvancedBorderStyle
-            Get
-                Dim newStyle As New DataGridViewAdvancedBorderStyle()
-                With newStyle
-                    .Top = DataGridViewAdvancedCellBorderStyle.None
-                    .Left = DataGridViewAdvancedCellBorderStyle.None
-                    .Bottom = DataGridViewAdvancedCellBorderStyle.Outset
-                    .Right = DataGridViewAdvancedCellBorderStyle.OutsetDouble
-                End With
-                Return newStyle
-            End Get
-        End Property
+    ' Populates the employees and tasks lists. 
+    Private Sub PopulateLists()
+        employees.Add(New Employee("Harry"))
+        employees.Add(New Employee("Sally"))
+        employees.Add(New Employee("Roy"))
+        employees.Add(New Employee("Pris"))
+        tasks.Add(New Task(1, employees(1)))
+        tasks.Add(New Task(2))
+        tasks.Add(New Task(3, employees(2)))
+        tasks.Add(New Task(4))
+    End Sub
 
-        Public Overrides Function AdjustColumnHeaderBorderStyle( _
-            ByVal dataGridViewAdvancedBorderStyleInput As DataGridViewAdvancedBorderStyle, _
-            ByVal dataGridViewAdvancedBorderStylePlaceHolder As DataGridViewAdvancedBorderStyle, _
-            ByVal firstDisplayedColumn As Boolean, ByVal lastVisibleColumn As Boolean) _
-            As DataGridViewAdvancedBorderStyle
+    ' Configures columns for the DataGridView control.
+    Private Sub AddColumns()
 
-            ' Customize the left border of the first column header and the
-            ' bottom border of all the column headers. Use the input style for 
-            ' all other borders.
-            If firstDisplayedColumn Then
-                dataGridViewAdvancedBorderStylePlaceHolder.Left = _
-                    DataGridViewAdvancedCellBorderStyle.OutsetDouble
+        Dim idColumn As New DataGridViewTextBoxColumn()
+        idColumn.Name = "Task"
+        idColumn.DataPropertyName = "Id"
+        idColumn.ReadOnly = True
+
+        Dim assignedToColumn As New DataGridViewComboBoxColumn()
+
+        ' Populate the combo box drop-down list with Employee objects. 
+        For Each e As Employee In employees
+            assignedToColumn.Items.Add(e)
+        Next
+
+        ' Add "unassigned" to the drop-down list and display it for 
+        ' empty AssignedTo values or when the user presses CTRL+0. 
+        assignedToColumn.Items.Add("unassigned")
+        assignedToColumn.DefaultCellStyle.NullValue = "unassigned"
+
+        assignedToColumn.Name = "Assigned To"
+        assignedToColumn.DataPropertyName = "AssignedTo"
+        assignedToColumn.AutoComplete = True
+        assignedToColumn.DisplayMember = "Name"
+        assignedToColumn.ValueMember = "Self"
+
+        ' Add a button column. 
+        Dim buttonColumn As New DataGridViewButtonColumn()
+        buttonColumn.HeaderText = ""
+        buttonColumn.Name = "Status Request"
+        buttonColumn.Text = "Request Status"
+        buttonColumn.UseColumnTextForButtonValue = True
+
+        dataGridView1.Columns.Add(idColumn)
+        dataGridView1.Columns.Add(assignedToColumn)
+        dataGridView1.Columns.Add(buttonColumn)
+
+    End Sub
+
+    ' Reports on task assignments. 
+    Private Sub reportButton_Click(ByVal sender As Object, _
+        ByVal e As EventArgs) Handles reportButton.Click
+
+        Dim report As New StringBuilder()
+        For Each t As Task In tasks
+            Dim assignment As String
+            If t.AssignedTo Is Nothing Then
+                assignment = "unassigned"
             Else
-                dataGridViewAdvancedBorderStylePlaceHolder.Left = _
-                    DataGridViewAdvancedCellBorderStyle.None
+                assignment = "assigned to " + t.AssignedTo.Name
             End If
+            report.AppendFormat("Task {0} is {1}.", t.Id, assignment)
+            report.Append(Environment.NewLine)
+        Next
+        MessageBox.Show(report.ToString(), "Task Assignments")
 
-            With dataGridViewAdvancedBorderStylePlaceHolder
-                .Bottom = DataGridViewAdvancedCellBorderStyle.Single
-                .Right = dataGridViewAdvancedBorderStyleInput.Right
-                .Top = dataGridViewAdvancedBorderStyleInput.Top
-            End With
+    End Sub
 
-            Return dataGridViewAdvancedBorderStylePlaceHolder
-        End Function
-    End Class
+    ' Calls the Employee.RequestStatus method.
+    Private Sub dataGridView1_CellClick(ByVal sender As Object, _
+        ByVal e As DataGridViewCellEventArgs) _
+        Handles dataGridView1.CellClick
 
-    Public Class DataGridViewCustomColumn
-        Inherits DataGridViewColumn
+        ' Ignore clicks that are not on button cells. 
+        If e.RowIndex < 0 OrElse Not e.ColumnIndex = _
+            dataGridView1.Columns("Status Request").Index Then Return
 
-        Public Sub New()
-            Me.CellTemplate = New DataGridViewCustomCell()
-        End Sub
-    End Class
+        ' Retrieve the task ID.
+        Dim taskID As Int32 = CInt(dataGridView1(0, e.RowIndex).Value)
 
-    Public Class DataGridViewCustomCell
-        Inherits DataGridViewTextBoxCell
+        ' Retrieve the Employee object from the "Assigned To" cell.
+        Dim assignedTo As Employee = TryCast(dataGridView1.Rows(e.RowIndex) _
+            .Cells("Assigned To").Value, Employee)
 
-        Public Overrides Function AdjustCellBorderStyle( _
-            ByVal dataGridViewAdvancedBorderStyleInput As DataGridViewAdvancedBorderStyle, _
-            ByVal dataGridViewAdvancedBorderStylePlaceHolder As DataGridViewAdvancedBorderStyle, _
-            ByVal singleVerticalBorderAdded As Boolean, _
-            ByVal singleHorizontalBorderAdded As Boolean, _
-            ByVal firstVisibleColumn As Boolean, _
-            ByVal firstVisibleRow As Boolean) As DataGridViewAdvancedBorderStyle
+        ' Request status through the Employee object if present. 
+        If assignedTo IsNot Nothing Then
+            assignedTo.RequestStatus(taskID)
+        Else
+            MessageBox.Show(String.Format( _
+                "Task {0} is unassigned.", taskID), "Status Request")
+        End If
 
-            ' Customize the top border of cells in the first row and the 
-            ' right border of cells in the first column. Use the input style 
-            ' for all other borders.
-            If firstVisibleColumn Then
-                dataGridViewAdvancedBorderStylePlaceHolder.Left = _
-                    DataGridViewAdvancedCellBorderStyle.OutsetDouble
-            Else
-                dataGridViewAdvancedBorderStylePlaceHolder.Left = _
-                    DataGridViewAdvancedCellBorderStyle.None
-            End If
+    End Sub
 
-            If firstVisibleRow Then
-                dataGridViewAdvancedBorderStylePlaceHolder.Top = _
-                    DataGridViewAdvancedCellBorderStyle.InsetDouble
-            Else
-                dataGridViewAdvancedBorderStylePlaceHolder.Top = _
-                    DataGridViewAdvancedCellBorderStyle.None
-            End If
-
-            With dataGridViewAdvancedBorderStylePlaceHolder
-                .Right = dataGridViewAdvancedBorderStyleInput.Right
-                .Bottom = dataGridViewAdvancedBorderStyleInput.Bottom
-            End With
-
-            Return dataGridViewAdvancedBorderStylePlaceHolder
-        End Function
-    End Class
-
-    Public Class DataGridViewCustomRow
-        Inherits DataGridViewRow
-
-        Public Overrides Function AdjustRowHeaderBorderStyle( _
-            ByVal dataGridViewAdvancedBorderStyleInput As DataGridViewAdvancedBorderStyle, _
-            ByVal dataGridViewAdvancedBorderStylePlaceHolder As DataGridViewAdvancedBorderStyle, _
-            ByVal singleVerticalBorderAdded As Boolean, _
-            ByVal singleHorizontalBorderAdded As Boolean, _
-            ByVal isFirstDisplayedRow As Boolean, _
-            ByVal isLastDisplayedRow As Boolean) As DataGridViewAdvancedBorderStyle
-
-            ' Customize the top border of the first row header and the
-            ' right border of all the row headers. Use the input style for 
-            ' all other borders.
-            If isFirstDisplayedRow Then
-                dataGridViewAdvancedBorderStylePlaceHolder.Top = _
-                    DataGridViewAdvancedCellBorderStyle.InsetDouble
-            Else
-                dataGridViewAdvancedBorderStylePlaceHolder.Top = _
-                    DataGridViewAdvancedCellBorderStyle.None
-            End If
-
-            With dataGridViewAdvancedBorderStylePlaceHolder
-                .Right = DataGridViewAdvancedCellBorderStyle.OutsetDouble
-                .Left = dataGridViewAdvancedBorderStyleInput.Left
-                .Bottom = dataGridViewAdvancedBorderStyleInput.Bottom
-            End With
-
-            Return dataGridViewAdvancedBorderStylePlaceHolder
-        End Function
-    End Class
-
-End Namespace
+End Class

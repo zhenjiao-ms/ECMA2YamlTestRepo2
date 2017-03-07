@@ -1,15 +1,23 @@
-        public void LinkDesignerTransactionCloseEvent(IDesignerHost host)
-        {                       
-            // Registers an event handler for the designer TransactionClosing and TransactionClosed events.
-            host.TransactionClosing += new DesignerTransactionCloseEventHandler(this.OnTransactionClose);
-            host.TransactionClosed += new DesignerTransactionCloseEventHandler(this.OnTransactionClose);
-        }
+  [DataObjectAttribute]
+  public class NorthwindData
+  {  
+    public NorthwindData() {}
 
-        private void OnTransactionClose(object sender, DesignerTransactionCloseEventArgs e)
-        {
-            // Displays transaction close information on the console.           
-            if( e.TransactionCommitted )            
-                Console.WriteLine("Transaction has been committed.");
-            else
-                Console.WriteLine("Transaction has not yet been committed.");
-        }
+    [DataObjectMethodAttribute(DataObjectMethodType.Select, true)]
+    public static IEnumerable GetAllEmployees()
+    {
+      AccessDataSource ads = new AccessDataSource();
+      ads.DataSourceMode = SqlDataSourceMode.DataReader;
+      ads.DataFile = "~//App_Data//Northwind.mdb";
+      ads.SelectCommand = "SELECT EmployeeID,FirstName,LastName FROM Employees";
+      return ads.Select(DataSourceSelectArguments.Empty);
+    }
+
+    // Delete the Employee by ID.
+    [DataObjectMethodAttribute(DataObjectMethodType.Delete, true)]
+    public void DeleteEmployeeByID(int employeeID)
+    {
+      throw new Exception("The value passed to the delete method is "
+                           + employeeID.ToString());
+    }
+  }

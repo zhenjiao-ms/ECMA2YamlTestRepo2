@@ -1,37 +1,16 @@
-Imports System.Drawing
-Imports System.ComponentModel
-Imports System.Windows.Forms
-Imports System.Resources
+Private Sub myButton_Click(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles myButton.Click
+   ' Set the tree view's PathSeparator property.
+   myTreeView.PathSeparator = "."
 
-Public Class Form1
-    Inherits Form
+   ' Get the count of the child tree nodes contained in the SelectedNode.
+   Dim myNodeCount As Integer = myTreeView.SelectedNode.GetNodeCount(True)
+   Dim myChildPercentage As Decimal = CDec(myNodeCount) / _
+      CDec(myTreeView.GetNodeCount(True)) * 100
 
-    Public Sub New()
-        Dim components = New Container()
-        Dim resources As New ResourceManager(GetType(Form1))
-        Dim tabControl1 As New TabControl()
-        Dim tabPage1 As New TabPage()
-        Dim myImages As New ImageList(components)
-
-        tabControl1.Controls.Add(tabPage1)
-
-        ' Displays images from myImages on the tabs of tabControl1.
-        tabControl1.ImageList = myImages
-
-        ' Specifies which image to display (on the tab of tabPage1) by its index.
-        tabPage1.ImageIndex = 0
-
-        tabPage1.Text = "tabPage1"
-
-        myImages.ImageStream = CType(resources.GetObject("myImages.ImageStream"), ImageListStreamer)
-        myImages.ColorDepth = ColorDepth.Depth8Bit
-        myImages.ImageSize = New Size(16, 16)
-        myImages.TransparentColor = Color.Transparent
-
-        Me.Controls.Add(tabControl1)
-    End Sub
-
-    Shared Sub Main()
-        Application.Run(New Form1())
-    End Sub
-End Class
+   ' Display the tree node path and the number of child nodes it and the tree view have.
+   MessageBox.Show(("The '" + myTreeView.SelectedNode.FullPath + "' node has " _
+      + myNodeCount.ToString() + " child nodes." + Microsoft.VisualBasic.ControlChars.Lf _
+      + "That is " + String.Format("{0:###.##}", myChildPercentage) _
+      + "% of the total tree nodes in the tree view control."))
+End Sub

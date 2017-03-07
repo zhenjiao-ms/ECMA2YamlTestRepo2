@@ -1,39 +1,139 @@
-   // This method adds two columns to the ListView, setting the Text 
-   // and TextAlign, and Width properties of each ColumnHeader.  The 
-   // HeaderStyle property is set to NonClickable since the ColumnClick 
-   // event is not handled.  Finally the method adds ListViewItems and 
-   // SubItems to each column.
-   void InitializeListView()
-   {
-      this->ListView1 = gcnew System::Windows::Forms::ListView;
-      this->ListView1->BackColor = System::Drawing::SystemColors::Control;
-      this->ListView1->Dock = System::Windows::Forms::DockStyle::Top;
-      this->ListView1->Location = System::Drawing::Point( 0, 0 );
-      this->ListView1->Name = "ListView1";
-      this->ListView1->Size = System::Drawing::Size( 292, 130 );
-      this->ListView1->TabIndex = 0;
-      this->ListView1->View = System::Windows::Forms::View::Details;
-      this->ListView1->MultiSelect = true;
-      this->ListView1->HideSelection = false;
-      this->ListView1->HeaderStyle = ColumnHeaderStyle::Nonclickable;
-      ColumnHeader^ columnHeader1 = gcnew ColumnHeader;
-      columnHeader1->Text = "Breakfast Item";
-      columnHeader1->TextAlign = HorizontalAlignment::Left;
-      columnHeader1->Width = 146;
-      ColumnHeader^ columnHeader2 = gcnew ColumnHeader;
-      columnHeader2->Text = "Price Each";
-      columnHeader2->TextAlign = HorizontalAlignment::Center;
-      columnHeader2->Width = 142;
-      this->ListView1->Columns->Add( columnHeader1 );
-      this->ListView1->Columns->Add( columnHeader2 );
-      array<String^>^foodList = {"Juice","Coffee","Cereal & Milk","Fruit Plate","Toast & Jelly","Bagel & Cream Cheese"};
-      array<String^>^foodPrice = {"1.09","1.09","2.19","2.49","1.49","1.49"};
-      for ( int count = 0; count < foodList->Length; count++ )
-      {
-         ListViewItem^ listItem = gcnew ListViewItem( foodList[ count ] );
-         listItem->SubItems->Add( foodPrice[ count ] );
-         ListView1->Items->Add( listItem );
+#using <System.dll>
+#using <System.Drawing.dll>
+#using <System.Windows.Forms.dll>
 
-      }
-      this->Controls->Add( ListView1 );
-   }
+using namespace System;
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
+using namespace System::Windows::Forms::VisualStyles;
+
+namespace CheckBoxRendererSample
+{
+    ref class CustomCheckBox : Control
+    {
+        private:
+        Rectangle textRectangleValue;
+        Point clickedLocationValue;
+        bool clicked;
+        CheckBoxState state;
+
+        public :
+        CustomCheckBox() : Control()
+        {
+            this->textRectangleValue = Rectangle();
+            this->clickedLocationValue = Point();
+            this->clicked = false;
+            this->state = CheckBoxState::UncheckedNormal;
+            this->Location = Point(50, 50);
+            this->Size = System::Drawing::Size(100, 20);
+            this->Text = "Click here";
+            this->Font = SystemFonts::IconTitleFont;
+        }
+
+        // Calculate the text bounds, exluding the check box.
+        Rectangle getTextRectangle()
+        {
+            Graphics ^g = this->CreateGraphics();
+            textRectangleValue.X = ClientRectangle.X +
+                        CheckBoxRenderer::GetGlyphSize(g,
+                        CheckBoxState::UncheckedNormal).Width;
+            textRectangleValue.Y = ClientRectangle.Y;
+            textRectangleValue.Width = ClientRectangle.Width -
+                        CheckBoxRenderer::GetGlyphSize(g,
+                        CheckBoxState::UncheckedNormal).Width;
+            textRectangleValue.Height = ClientRectangle.Height;
+
+            delete g;
+            return textRectangleValue;
+        }
+
+protected:
+        // Draw the check box in the current state.
+        virtual void OnPaint(PaintEventArgs ^e) override
+        {
+            Control::OnPaint(e);
+
+            CheckBoxRenderer::DrawCheckBox(e->Graphics,
+                ClientRectangle.Location, this->getTextRectangle(), this->Text,
+                this->Font, TextFormatFlags::HorizontalCenter,
+                clicked, state);
+        }
+
+
+        // Draw the check box in the checked or unchecked state, alternately.
+        virtual void OnMouseDown(MouseEventArgs ^e) override
+        {
+            Control::OnMouseDown(e);
+
+            if (!clicked)
+            {
+                clicked = true;
+                this->Text = "Clicked!";
+                state = CheckBoxState::CheckedPressed;
+                Invalidate();
+            }
+            else
+            {
+                clicked = false;
+                this->Text = "Click here";
+                state = CheckBoxState::UncheckedNormal;
+                Invalidate();
+            }
+        }
+
+        // Draw the check box in the hot state. 
+        virtual void OnMouseHover(EventArgs ^e) override
+        {
+            Control::OnMouseHover(e);
+            state = clicked ? CheckBoxState::CheckedHot :
+                CheckBoxState::UncheckedHot;
+            Invalidate();
+        }
+
+        // Draw the check box in the hot state. 
+        virtual void OnMouseUp(MouseEventArgs ^e) override
+        {
+            Control::OnMouseUp(e);
+            this->OnMouseHover(e);
+        }
+
+        // Draw the check box in the unpressed state.
+        virtual void OnMouseLeave(EventArgs ^e) override
+        {
+            Control::OnMouseLeave(e);
+            state = clicked ? CheckBoxState::CheckedNormal :
+                CheckBoxState::UncheckedNormal;
+            Invalidate();
+        } 
+    }; 
+
+    ref class Form1: public Form
+    {
+    public:
+        Form1() : Form() 
+        {
+            CustomCheckBox ^CheckBox1 = gcnew CustomCheckBox();
+            Controls->Add(CheckBox1);
+
+            if (Application::RenderWithVisualStyles) 
+            {
+                this->Text = "Visual Styles Enabled";
+            }
+            else 
+            {
+                this->Text = "Visual Styles Disabled";
+            }
+        }
+    };
+}
+
+
+[STAThread]
+int main()
+{
+    // If you do not call EnableVisualStyles below, then 
+    // CheckBoxRenderer.DrawCheckBox automatically detects 
+    // this and draws the check box without visual styles.
+    Application::EnableVisualStyles();
+    Application::Run(gcnew CheckBoxRendererSample::Form1());
+}

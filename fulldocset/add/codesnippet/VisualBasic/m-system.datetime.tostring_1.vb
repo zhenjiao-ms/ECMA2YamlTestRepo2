@@ -1,27 +1,30 @@
 Imports System.Globalization
 Imports System.Threading
 
-Module DateToStringExample
+Module Example
    Public Sub Main()
-      Dim currentCulture As CultureInfo = Thread.CurrentThread.CurrentCulture
-      Dim exampleDate As Date = #05/01/2008 6:32:06PM#
+      Dim date1 As Date = #1/1/550#
+      Dim dft As CultureInfo
+      Dim arSY As New CultureInfo("ar-SY")
+      arSY.DateTimeFormat.Calendar = New HijriCalendar()
       
-      ' Display the date using the current (en-US) culture.
-      Console.WriteLine(exampleDate.ToString())
-
-      ' Change the current culture to fr-FR and display the date.
-      Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("fr-FR")
-      Console.WriteLine(exampleDate.ToString())
-
-      ' Change the current culture to ja-JP and display the date.
-      Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("ja-JP")
-      Console.WriteLine(exampleDate.ToString())
+      ' Change current culture to ar-SY.
+      dft = Thread.CurrentThread.CurrentCulture
+      Thread.CurrentThread.CurrentCulture = arSY
       
-      ' Restore the original culture
-      Thread.CurrentThread.CurrentCulture = currentCulture
+      ' Display the date using the current culture's calendar.            
+      Try
+         Console.WriteLine(date1.ToString())
+      Catch e As ArgumentOutOfRangeException
+         Console.WriteLine("{0} is earlier than {1} or later than {2}", _
+                           date1.ToString("d", CultureInfo.InvariantCulture), _
+                           arSY.DateTimeFormat.Calendar.MinSupportedDateTime.ToString("d", CultureInfo.InvariantCulture), _ 
+                           arSY.DateTimeFormat.Calendar.MaxSupportedDateTime.ToString("d", CultureInfo.InvariantCulture)) 
+      End Try
+      
+      ' Restore the default culture.
+      Thread.CurrentThread.CurrentCulture = dft
    End Sub
 End Module
-' The example displays the following output to the console:
-'       5/1/2008 6:32:06 PM
-'       01/05/2008 18:32:06
-'       2008/05/01 18:32:06
+' The example displays the following output:
+'    01/01/0550 is earlier than 07/18/0622 or later than 12/31/9999

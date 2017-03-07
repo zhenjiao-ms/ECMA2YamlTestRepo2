@@ -1,48 +1,17 @@
-Imports System.Globalization
-Imports System.Threading
-
-Module Example
-   Public Sub Main()
-      Dim values() As String = { "6", "6:12", "6:12:14", "6:12:14:45", 
-                                 "6.12:14:45", "6:12:14:45.3448", 
-                                 "6:12:14:45,3448", "6:34:14:45" }
-      Dim cultures() As CultureInfo = { New CultureInfo("en-US"), 
-                                        New CultureInfo("ru-RU"),
-                                        CultureInfo.InvariantCulture }
-      
-      Dim header As String = String.Format("{0,-17}", "String")
-      For Each culture As CultureInfo In cultures
-         header += If(culture.Equals(CultureInfo.InvariantCulture), 
-                      String.Format("{0,20}", "Invariant"),
-                      String.Format("{0,20}", culture.Name))
-      Next
-      Console.WriteLine(header)
-      Console.WriteLine()
-      
+      Dim values() As String = { "000000006", "12.12:12:12.12345678" }
       For Each value As String In values
-         Console.Write("{0,-17}", value)
-         For Each culture As CultureInfo In cultures
-            Try
-               Dim ts As TimeSpan = TimeSpan.Parse(value, culture)
-               Console.Write("{0,20}", ts.ToString("c"))
-            Catch e As FormatException
-               Console.Write("{0,20}", "Bad Format")
-            Catch e As OverflowException
-               Console.Write("{0,20}", "Overflow")
-            End Try      
-         Next
-         Console.WriteLine()                                
+         Try
+            Dim interval As TimeSpan = TimeSpan.Parse(value)
+            Console.WriteLine("{0} --> {1}", value, interval)
+         Catch e As FormatException
+            Console.WriteLine("{0}: Bad Format", value)
+         Catch e As OverflowException
+            Console.WriteLine("{0}: Overflow", value)
+         End Try         
       Next
-   End Sub
-End Module
-' The example displays the following output:
-'    String                          en-US               ru-RU           Invariant
-'    
-'    6                          6.00:00:00          6.00:00:00          6.00:00:00
-'    6:12                         06:12:00            06:12:00            06:12:00
-'    6:12:14                      06:12:14            06:12:14            06:12:14
-'    6:12:14:45                 6.12:14:45          6.12:14:45          6.12:14:45
-'    6.12:14:45                 6.12:14:45          6.12:14:45          6.12:14:45
-'    6:12:14:45.3448    6.12:14:45.3448000          Bad Format  6.12:14:45.3448000
-'    6:12:14:45,3448            Bad Format  6.12:14:45.3448000          Bad Format
-'    6:34:14:45                   Overflow            Overflow            Overflow
+      ' Output from .NET Framework 3.5 and earlier versions:
+      '       000000006 --> 6.00:00:00
+      '       12.12:12:12.12345678: Bad Format      
+      ' Output from .NET Framework 4:
+      '       000000006: Overflow
+      '       12.12:12:12.12345678: Overflow

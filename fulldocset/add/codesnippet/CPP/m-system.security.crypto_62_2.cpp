@@ -1,157 +1,107 @@
-// This example signs an XML file using an
-// envelope signature. It then verifies the 
-// signed XML.
-#using <System.Security.dll>
-#using <System.Xml.dll>
+#using <System.dll>
 
 using namespace System;
 using namespace System::Security::Cryptography;
-using namespace System::Security::Cryptography::Xml;
 using namespace System::Text;
-using namespace System::Xml;
-
-// Sign an XML file and save the signature in a new file.
-void SignXmlFile( String^ FileName, String^ SignedFileName, RSA^ Key )
-{
-   
-   // Create a new XML document.
-   XmlDocument^ doc = gcnew XmlDocument;
-   
-   // Format the document to ignore white spaces.
-   doc->PreserveWhitespace = false;
-   
-   // Load the passed XML file using it's name.
-   doc->Load( gcnew XmlTextReader( FileName ) );
-   
-   // Create a SignedXml Object*.
-   SignedXml^ signedXml = gcnew SignedXml( doc );
-   
-   // Add the key to the SignedXml document. 
-   signedXml->SigningKey = Key;
-   
-   // Create a reference to be signed.
-   Reference^ reference = gcnew Reference;
-   reference->Uri = "";
-   
-   // Add an enveloped transformation to the reference.
-   XmlDsigEnvelopedSignatureTransform^ env = gcnew XmlDsigEnvelopedSignatureTransform;
-   reference->AddTransform( env );
-   
-   // Add the reference to the SignedXml Object*.
-   signedXml->AddReference( reference );
-   
-   // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-   KeyInfo^ keyInfo = gcnew KeyInfo;
-   keyInfo->AddClause( gcnew RSAKeyValue( safe_cast<RSA^>(Key) ) );
-   signedXml->KeyInfo = keyInfo;
-   
-   // Compute the signature.
-   signedXml->ComputeSignature();
-   
-   // Get the XML representation of the signature and save
-   // it to an XmlElement Object*.
-   XmlElement^ xmlDigitalSignature = signedXml->GetXml();
-   
-   // Append the element to the XML document.
-   doc->DocumentElement->AppendChild( doc->ImportNode( xmlDigitalSignature, true ) );
-   if ( (doc->FirstChild)->GetType() == XmlDeclaration::typeid )
-   {
-      doc->RemoveChild( doc->FirstChild );
-   }
-
-   
-   // Save the signed XML document to a file specified
-   // using the passed String*.
-   XmlTextWriter^ xmltw = gcnew XmlTextWriter( SignedFileName,gcnew UTF8Encoding( false ) );
-   doc->WriteTo( xmltw );
-   xmltw->Close();
-}
-
-
-// Verify the signature of an XML file and return the result.
-Boolean VerifyXmlFile( String^ Name )
-{
-   
-   // Create a new XML document.
-   XmlDocument^ xmlDocument = gcnew XmlDocument;
-   
-   // Format using white spaces.
-   xmlDocument->PreserveWhitespace = true;
-   
-   // Load the passed XML file into the document. 
-   xmlDocument->Load( Name );
-   
-   // Create a new SignedXml Object* and pass it
-   // the XML document class.
-   SignedXml^ signedXml = gcnew SignedXml( xmlDocument );
-   
-   // Find the S"Signature" node and create a new
-   // XmlNodeList Object*.
-   XmlNodeList^ nodeList = xmlDocument->GetElementsByTagName( "Signature" );
-   
-   // Load the signature node.
-   signedXml->LoadXml( safe_cast<XmlElement^>(nodeList->Item( 0 )) );
-   
-   // Check the signature and return the result.
-   return signedXml->CheckSignature();
-}
-
-
-// Create example data to sign.
-void CreateSomeXml( String^ FileName )
-{
-   
-   // Create a new XmlDocument Object*.
-   XmlDocument^ document = gcnew XmlDocument;
-   
-   // Create a new XmlNode Object*.
-   XmlNode^ node = document->CreateNode( XmlNodeType::Element, "", "MyElement", "samples" );
-   
-   // Add some text to the node.
-   node->InnerText = "Example text to be signed.";
-   
-   // Append the node to the document.
-   document->AppendChild( node );
-   
-   // Save the XML document to the file name specified.
-   XmlTextWriter^ xmltw = gcnew XmlTextWriter( FileName,gcnew UTF8Encoding( false ) );
-   document->WriteTo( xmltw );
-   xmltw->Close();
-}
-
-void main()
+using namespace System::IO;
+array<Byte>^ EncryptTextToMemory( String^ Data, array<Byte>^Key, array<Byte>^IV )
 {
    try
    {
       
-      // Generate a signing key.
-      RSACryptoServiceProvider^ Key = gcnew RSACryptoServiceProvider;
+      // Create a MemoryStream.
+      MemoryStream^ mStream = gcnew MemoryStream;
       
-      // Create an XML file to sign.
-      CreateSomeXml( "Example.xml" );
-      Console::WriteLine( "New XML file created." );
+      // Create a new TripleDES object.
+      TripleDES^ tripleDESalg = TripleDES::Create();
       
-      // Sign the XML that was just created and save it in a 
-      // new file.
-      SignXmlFile( "Example.xml", "SignedExample.xml", Key );
-      Console::WriteLine( "XML file signed." );
+      // Create a CryptoStream using the MemoryStream 
+      // and the passed key and initialization vector (IV).
+      CryptoStream^ cStream = gcnew CryptoStream( mStream,tripleDESalg->CreateEncryptor( Key, IV ),CryptoStreamMode::Write );
       
-      // Verify the signature of the signed XML.
-      Console::WriteLine( "Verifying signature..." );
-      bool result = VerifyXmlFile( "SignedExample.xml" );
+      // Convert the passed string to a byte array.
+      array<Byte>^toEncrypt = (gcnew ASCIIEncoding)->GetBytes( Data );
       
-      // Display the results of the signature verification to
-      // the console.
-      if ( result )
-      {
-         Console::WriteLine( "The XML signature is valid." );
-      }
-      else
-      {
-         Console::WriteLine( "The XML signature is not valid." );
-      }
+      // Write the byte array to the crypto stream and flush it.
+      cStream->Write( toEncrypt, 0, toEncrypt->Length );
+      cStream->FlushFinalBlock();
+      
+      // Get an array of bytes from the 
+      // MemoryStream that holds the 
+      // encrypted data.
+      array<Byte>^ret = mStream->ToArray();
+      
+      // Close the streams.
+      cStream->Close();
+      mStream->Close();
+      
+      // Return the encrypted buffer.
+      return ret;
    }
    catch ( CryptographicException^ e ) 
+   {
+      Console::WriteLine( "A Cryptographic error occurred: {0}", e->Message );
+      return nullptr;
+   }
+
+}
+
+String^ DecryptTextFromMemory( array<Byte>^Data, array<Byte>^Key, array<Byte>^IV )
+{
+   try
+   {
+      
+      // Create a new MemoryStream using the passed 
+      // array of encrypted data.
+      MemoryStream^ msDecrypt = gcnew MemoryStream( Data );
+      
+      // Create a new TripleDES object.
+      TripleDES^ tripleDESalg = TripleDES::Create();
+      
+      // Create a CryptoStream using the MemoryStream 
+      // and the passed key and initialization vector (IV).
+      CryptoStream^ csDecrypt = gcnew CryptoStream( msDecrypt,tripleDESalg->CreateDecryptor( Key, IV ),CryptoStreamMode::Read );
+      
+      // Create buffer to hold the decrypted data.
+      array<Byte>^fromEncrypt = gcnew array<Byte>(Data->Length);
+      
+      // Read the decrypted data out of the crypto stream
+      // and place it into the temporary buffer.
+      csDecrypt->Read( fromEncrypt, 0, fromEncrypt->Length );
+      
+      //Convert the buffer into a string and return it.
+      return (gcnew ASCIIEncoding)->GetString( fromEncrypt );
+   }
+   catch ( CryptographicException^ e ) 
+   {
+      Console::WriteLine( "A Cryptographic error occurred: {0}", e->Message );
+      return nullptr;
+   }
+
+}
+
+int main()
+{
+   try
+   {
+      
+      // Create a new TripleDES object to generate a key
+      // and initialization vector (IV).
+      TripleDES^ TripleDESalg = TripleDES::Create();
+      
+      // Create a string to encrypt.
+      String^ sData = "Here is some data to encrypt.";
+      
+      // Encrypt the string to an in-memory buffer.
+      array<Byte>^Data = EncryptTextToMemory( sData, TripleDESalg->Key, TripleDESalg->IV );
+      
+      // Decrypt the buffer back to a string.
+      String^ Final = DecryptTextFromMemory( Data, TripleDESalg->Key, TripleDESalg->IV );
+      
+      // Display the decrypted string to the console.
+      Console::WriteLine( Final );
+   }
+   catch ( Exception^ e ) 
    {
       Console::WriteLine( e->Message );
    }

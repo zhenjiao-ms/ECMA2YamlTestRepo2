@@ -1,10 +1,9 @@
-   Public Sub ShowInsertInSameLocationSample()
-      ' Notice how the items are in backward order.  
-      ' This is because "merge-one" gets applied, then a search occurs for the new second position 
-      ' for "merge-two", and so on.
-      Dim item As ToolStripItem
-      For Each item In  cmsItemsToMerge.Items
-         item.MergeAction = MergeAction.Insert
-         item.MergeIndex = 2
-      Next item
-   End Sub
+Private Sub TreeView1_NodeMouseHover(sender as Object, e as TreeNodeMouseHoverEventArgs) _ 
+     Handles TreeView1.NodeMouseHover
+
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "Node", e.Node)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"NodeMouseHover Event")
+
+End Sub

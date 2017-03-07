@@ -1,10 +1,7 @@
-    <RecommendedAsConfigurable(True)> _
-    Public Property MyProperty() As Integer
-        Get
-            ' Insert code here.
-            Return 0
-        End Get
-        Set
-            ' Insert code here.
-        End Set 
-    End Property
+    <DesignerSerializerAttribute(GetType(ExampleSerializer), GetType(CodeDomSerializer))> _
+     Public Class ExampleControl
+        Inherits System.Windows.Forms.UserControl
+
+        Public Sub New()
+        End Sub
+    End Class   

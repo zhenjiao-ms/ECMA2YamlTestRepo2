@@ -1,107 +1,57 @@
-<%@ Page Language="C#" AutoEventWireup="True" %>
+
+<%@ Page language="C#" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script runat="server">
 
-<script language="C#" runat="server">
-    int Count = 1;
-    void Page_Load(Object Sender, EventArgs e) 
-    {
-        if (!IsPostBack) {
-            ArrayList values = new ArrayList();
- 
-            values.Add(new PositionData("Microsoft", "Msft"));
-            values.Add(new PositionData("Intel", "Intc"));
-            values.Add(new PositionData("Dell", "Dell"));
- 
-            Repeater1.DataSource = values;
-            Repeater1.DataBind();
-        }
+  void AuthorsGridView_Sorted(Object sender, EventArgs e)
+  {
+      
+    // Display the sort direction.   
+    if(AuthorsGridView.SortDirection == SortDirection.Ascending)
+    {  
+      Message.Text = "Sorting in ascending order.";
     }
- 
-    void R1_ItemCreated(Object Sender, RepeaterItemEventArgs e) 
+    else
     {
-        String iTypeText = "";
- 
-        switch (e.Item.ItemType) 
-        {
-            case ListItemType.Item:
-                iTypeText = "Item";
-                break;
-            case ListItemType.AlternatingItem:
-                iTypeText = "AlternatingItem";
-                break;
-            case ListItemType.Header:
-                iTypeText = "Header";
-                break;
-            case ListItemType.Footer:
-                iTypeText = "Footer";
-                break;
-            case ListItemType.Separator:
-                iTypeText = "Separator";
-                break;
-        }
-        Label1.Text += "(" + Count++ + ") A Repeater " + iTypeText + " has been created; <br />";
+      Message.Text = "Sorting in descending order.";
     }
- 
-    public class PositionData 
-    {
-        private string name;
-        private string ticker;
- 
-        public PositionData(string name, string ticker) 
-        {
-            this.name = name;
-            this.ticker = ticker;
-        }
- 
-        public string Name 
-        {
-            get { return name; }
-        }
- 
-        public string Ticker 
-        {
-             get { return ticker; }
-        }
-    }
+        
+  }
+
 </script>
- 
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-    <title>Repeater Example</title>
+  <head runat="server">
+    <title>SortDirection Example</title>
 </head>
 <body>
     <form id="form1" runat="server">
-
-    <h3>Repeater Example</h3>
- 
-       <p style="font-weight: bold">Repeater1:</p>
-         
-       <asp:Repeater ID="Repeater1" OnItemCreated="R1_ItemCreated" runat="server">
-          <HeaderTemplate>
-             <table border="1">
-                <tr>
-                   <td style="font-weight:bold">Company</td>
-                   <td style="font-weight:bold">Symbol</td>
-                </tr>
-          </HeaderTemplate>
-             
-          <ItemTemplate>
-             <tr>
-                <td> <%# DataBinder.Eval(Container.DataItem, "Name") %> </td>
-                <td> <%# DataBinder.Eval(Container.DataItem, "Ticker") %> </td>
-             </tr>
-          </ItemTemplate>
-             
-          <FooterTemplate>
-             </table>
-          </FooterTemplate>
-             
-       </asp:Repeater>
-       <br />
-         
-       <asp:Label ID="Label1" Font-Names="Verdana" 
-          ForeColor="Green" Font-Size="10pt" Runat="server"/>
+        
+      <h3>SortDirection Example</h3>
+            
+      <asp:label id="Message"
+        forecolor="Red"
+        runat="server"/>
+        
+      <br/><br/>    
+          
+      <asp:gridview id="AuthorsGridView"
+        datasourceid="AuthorsSqlDataSource"
+        allowsorting="true"
+        onsorted="AuthorsGridView_Sorted"  
+        runat="server"/>
+            
+      <!-- This example uses Microsoft SQL Server and connects -->
+      <!-- to the Pubs sample database.                        -->
+      <asp:sqldatasource id="AuthorsSqlDataSource"  
+        selectcommand="SELECT [au_id], [au_lname], [au_fname], [address], [city], [state], [zip], [contract] FROM [authors]"
+        updatecommand="UPDATE authors SET au_lname=@au_lname, au_fname=@au_fname, address=@address, city=@city, state=@state, zip=@zip, contract=@contract WHERE (authors.au_id = @au_id)"
+        connectionstring="server=localhost;database=pubs;integrated security=SSPI"
+        runat="server">
+      </asp:sqldatasource>
+            
     </form>
- </body>
- </html>
+  </body>
+</html>

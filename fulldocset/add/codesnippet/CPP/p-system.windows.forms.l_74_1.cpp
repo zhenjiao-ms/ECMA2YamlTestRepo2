@@ -1,25 +1,15 @@
-   private:
-      void DisplayHScroll()
-      {
-         // Make sure no items are displayed partially.
-         listBox1->IntegralHeight = true;
+public:
+   void CreateMyLabel()
+   {
+      // Create a new label and create a bitmap.
+      Label^ label1 = gcnew Label;
+      Image^ image1 = Image::FromFile( "c:\\MyImage.bmp" );
 
-         // Add items that are wide to the ListBox.
-         for ( int x = 0; x < 10; x++ )
-         {
-            listBox1->Items->Add( String::Format( "Item {0} is a very large value that requires scroll bars", x ) );
+      // Set the size of the label to accommodate the bitmap size.
+      label1->Size = System::Drawing::Size( image1->Width, image1->Height );
 
-         }
+      // Initialize the label control's Image property.
+      label1->Image = image1;
 
-         // Display a horizontal scroll bar.
-         listBox1->HorizontalScrollbar = true;
-
-         // Create a Graphics object to use when determining the size of the largest item in the ListBox.
-         Graphics^ g = listBox1->CreateGraphics();
-
-         // Determine the size for HorizontalExtent using the MeasureString method using the last item in the list.
-         int hzSize = (int)g->MeasureString( dynamic_cast<String^>(listBox1->Items[ listBox1->Items->Count - 1 ]), listBox1->Font ).Width;
-
-         // Set the HorizontalExtent property.
-         listBox1->HorizontalExtent = hzSize;
-      }
+      // ...Code to add the control to the form...
+   }

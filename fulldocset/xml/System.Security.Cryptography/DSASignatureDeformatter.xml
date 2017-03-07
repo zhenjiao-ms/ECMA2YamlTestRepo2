@@ -17,8 +17,17 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Verifies a Digital Signature Algorithm (<see cref="T:System.Security.Cryptography.DSA" />) PKCS#1 v1.5 signature.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cs[System.Security.Cryptography.DSASignatureDeformatter#1](~/add/codesnippet/csharp/t-system.security.crypto_52_1.cs)]
+ [!code-cpp[System.Security.Cryptography.DSASignatureDeformatter#1](~/add/codesnippet/cpp/t-system.security.crypto_52_1.cpp)]
+ [!code-vb[System.Security.Cryptography.DSASignatureDeformatter#1](~/add/codesnippet/visualbasic/t-system.security.crypto_52_1.vb)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -33,8 +42,17 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Initializes a new instance of the <see cref="T:System.Security.Cryptography.DSASignatureDeformatter" /> class.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cs[System.Security.Cryptography.DSASignatureDeformatter#1](~/add/codesnippet/csharp/m-system.security.crypto_103_1.cs)]
+ [!code-cpp[System.Security.Cryptography.DSASignatureDeformatter#1](~/add/codesnippet/cpp/m-system.security.crypto_103_1.cpp)]
+ [!code-vb[System.Security.Cryptography.DSASignatureDeformatter#1](~/add/codesnippet/visualbasic/m-system.security.crypto_103_1.vb)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -51,9 +69,11 @@
         <Parameter Name="key" Type="System.Security.Cryptography.AsymmetricAlgorithm" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="key">The instance of Digital Signature Algorithm (<see cref="T:System.Security.Cryptography.DSA" />) that holds the key.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.Security.Cryptography.DSASignatureDeformatter" /> class with the specified key.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="key" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="SetHashAlgorithm">
@@ -73,9 +93,19 @@
         <Parameter Name="strName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="strName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="strName">The name of the hash algorithm to use for the signature deformatter.</param>
+        <summary>Specifies the hash algorithm for the Digital Signature Algorithm (<see cref="T:System.Security.Cryptography.DSA" />) signature deformatter.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cs[System.Security.Cryptography.DSASignatureDeformatter#1](~/add/codesnippet/csharp/d7721c10-6dcf-468e-8cd2-_1.cs)]
+ [!code-cpp[System.Security.Cryptography.DSASignatureDeformatter#1](~/add/codesnippet/cpp/d7721c10-6dcf-468e-8cd2-_1.cpp)]
+ [!code-vb[System.Security.Cryptography.DSASignatureDeformatter#1](~/add/codesnippet/visualbasic/d7721c10-6dcf-468e-8cd2-_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.Security.Cryptography.CryptographicUnexpectedOperationException">The <paramref name="strName" /> parameter does not map to the <see cref="T:System.Security.Cryptography.SHA1" /> hash algorithm.</exception>
       </Docs>
     </Member>
     <Member MemberName="SetKey">
@@ -95,9 +125,11 @@
         <Parameter Name="key" Type="System.Security.Cryptography.AsymmetricAlgorithm" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="key">The instance of <see cref="T:System.Security.Cryptography.DSA" /> that holds the key.</param>
+        <summary>Specifies the key to be used for the Digital Signature Algorithm (<see cref="T:System.Security.Cryptography.DSA" />) signature deformatter.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="key" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="VerifySignature">
@@ -118,11 +150,28 @@
         <Parameter Name="rgbSignature" Type="System.Byte[]" />
       </Parameters>
       <Docs>
-        <param name="rgbHash">To be added.</param>
-        <param name="rgbSignature">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="rgbHash">The data signed with <c>rgbSignature</c>.</param>
+        <param name="rgbSignature">The signature to be verified for <c>rgbHash</c>.</param>
+        <summary>Verifies the Digital Signature Algorithm (<see cref="T:System.Security.Cryptography.DSA" />) signature on the data.</summary>
+        <returns>
+          <see langword="true" /> if the signature is valid for the data; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ [!code-cs[System.Security.Cryptography.DSASignatureDeformatter#1](~/add/codesnippet/csharp/19d138e4-9862-459e-90a1-_1.cs)]
+ [!code-cpp[System.Security.Cryptography.DSASignatureDeformatter#1](~/add/codesnippet/cpp/19d138e4-9862-459e-90a1-_1.cpp)]
+ [!code-vb[System.Security.Cryptography.DSASignatureDeformatter#1](~/add/codesnippet/visualbasic/19d138e4-9862-459e-90a1-_1.vb)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="rgbHash" /> is <see langword="null" />.  
+  
+ -or-  
+  
+ <paramref name="rgbSignature" /> is <see langword="null" />.</exception>
+        <exception cref="T:System.Security.Cryptography.CryptographicUnexpectedOperationException">The DSA key is missing.</exception>
       </Docs>
     </Member>
   </Members>

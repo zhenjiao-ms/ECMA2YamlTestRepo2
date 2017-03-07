@@ -1,22 +1,14 @@
-public void Printing(){
-   try{
-     streamToPrint = new StreamReader (filePath);
-     try{
-       printFont = new Font("Arial", 10);
-       PrintDocument pd = new PrintDocument(); 
-       pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
-       pd.PrinterSettings.PrinterName = printer;
-       // Create a new instance of Margins with 1-inch margins.
-       Margins margins = new Margins(100,100,100,100);
-       pd.DefaultPageSettings.Margins = margins;
-       pd.Print();
-     } 
-     finally{
-       streamToPrint.Close() ;
-     }
-   } 
-   catch(Exception ex){ 
-     MessageBox.Show(ex.Message);
-   }
- }
- 
+            // Add list of supported paper sizes found on the printer. 
+            // The DisplayMember property is used to identify the property that will provide the display string.
+            comboPaperSize.DisplayMember = "PaperName";
+
+            PaperSize pkSize;
+            for (int i = 0; i < printDoc.PrinterSettings.PaperSizes.Count; i++){
+                pkSize = printDoc.PrinterSettings.PaperSizes[i];
+                comboPaperSize.Items.Add(pkSize);
+            }
+
+            // Create a PaperSize and specify the custom paper size through the constructor and add to combobox.
+            PaperSize pkCustomSize1 = new PaperSize("First custom size", 100, 200);
+
+            comboPaperSize.Items.Add(pkCustomSize1);

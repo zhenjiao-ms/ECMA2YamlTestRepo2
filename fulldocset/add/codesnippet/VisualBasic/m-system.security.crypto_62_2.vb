@@ -1,145 +1,104 @@
-' This example signs an XML file using an
-' envelope signature. It then verifies the 
-' signed XML.
-Imports System
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.Xml
 Imports System.Text
-Imports System.Xml
+Imports System.IO
+
+Module TripleDESPSample
+
+    Sub Main()
+        Try
+            ' Create a new TripleDES object to generate a key
+            ' and initialization vector (IV).
+            Using TripleDESalg As TripleDES = TripleDES.Create
+
+                ' Create a string to encrypt.
+                Dim sData As String = "Here is some data to encrypt."
+
+                ' Encrypt the string to an in-memory buffer.
+                Dim Data As Byte() = EncryptTextToMemory(sData, TripleDESalg.Key, TripleDESalg.IV)
+
+                ' Decrypt the buffer back to a string.
+                Dim Final As String = DecryptTextFromMemory(Data, TripleDESalg.Key, TripleDESalg.IV)
+
+                ' Display the decrypted string to the console.
+                Console.WriteLine(Final)
+            End Using
+
+        Catch e As Exception
+            Console.WriteLine(e.Message)
+        End Try
+    End Sub
 
 
-Public Class SignVerifyEnvelope
+    Function EncryptTextToMemory(ByVal Data As String, ByVal Key() As Byte, ByVal IV() As Byte) As Byte()
+        Try
+            Dim ret As Byte()
+            ' Create a MemoryStream.
+            Using mStream As New MemoryStream
 
-   Overloads Public Shared Sub Main(args() As [String])
-      Try
-         ' Generate a signing key.
-         Dim Key As New RSACryptoServiceProvider()
-         
-         ' Create an XML file to sign.
-         CreateSomeXml("Example.xml")
-         Console.WriteLine("New XML file created.")
-         
-         ' Sign the XML that was just created and save it in a 
-         ' new file.
-         SignXmlFile("Example.xml", "SignedExample.xml", Key)
-         Console.WriteLine("XML file signed.")
-         
-         ' Verify the signature of the signed XML.
-         Console.WriteLine("Verifying signature...")
-         Dim result As Boolean = VerifyXmlFile("SignedExample.xml")
-         
-         ' Display the results of the signature verification to \
-         ' the console.
-         If result Then
-            Console.WriteLine("The XML signature is valid.")
-         Else
-            Console.WriteLine("The XML signature is not valid.")
-         End If
-      Catch e As CryptographicException
-         Console.WriteLine(e.Message)
-      End Try
-   End Sub 
-   
-   
-   ' Sign an XML file and save the signature in a new file.
-   Public Shared Sub SignXmlFile(FileName As String, SignedFileName As String, Key As RSA)
-      ' Create a new XML document.
-      Dim doc As New XmlDocument()
-      
-      ' Format the document to ignore white spaces.
-      doc.PreserveWhitespace = False
-      
-      ' Load the passed XML file using it's name.
-      doc.Load(New XmlTextReader(FileName))
-      
-      ' Create a SignedXml object.
-      Dim signedXml As New SignedXml(doc)
-      
-      ' Add the key to the SignedXml document. 
-      signedXml.SigningKey = Key
-      
-      ' Create a reference to be signed.
-      Dim reference As New Reference()
-      reference.Uri = ""
-      
-      ' Add an enveloped transformation to the reference.
-      Dim env As New XmlDsigEnvelopedSignatureTransform()
-      reference.AddTransform(env)
-      
-      ' Add the reference to the SignedXml object.
-      signedXml.AddReference(reference)
-      
-      
-      ' Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-      Dim keyInfo As New KeyInfo()
-      keyInfo.AddClause(New RSAKeyValue(CType(Key, RSA)))
-      signedXml.KeyInfo = keyInfo
-      
-      ' Compute the signature.
-      signedXml.ComputeSignature()
-      
-      ' Get the XML representation of the signature and save
-      ' it to an XmlElement object.
-      Dim xmlDigitalSignature As XmlElement = signedXml.GetXml()
-      
-      ' Append the element to the XML document.
-      doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, True))
-      
-      
-      If TypeOf doc.FirstChild Is XmlDeclaration Then
-         doc.RemoveChild(doc.FirstChild)
-      End If
-      
-      ' Save the signed XML document to a file specified
-      ' using the passed string.
-      Dim xmltw As New XmlTextWriter(SignedFileName, New UTF8Encoding(False))
-      doc.WriteTo(xmltw)
-      xmltw.Close()
-   End Sub 
-   
-   ' Verify the signature of an XML file and return the result.
-   Public Shared Function VerifyXmlFile(Name As [String]) As [Boolean]
-      ' Create a new XML document.
-      Dim xmlDocument As New XmlDocument()
-      
-      ' Format using white spaces.
-      xmlDocument.PreserveWhitespace = True
-      
-      ' Load the passed XML file into the document. 
-      xmlDocument.Load(Name)
-      
-      ' Create a new SignedXml object and pass it
-      ' the XML document class.
-      Dim signedXml As New SignedXml(xmlDocument)
-      
-      ' Find the "Signature" node and create a new
-      ' XmlNodeList object.
-      Dim nodeList As XmlNodeList = xmlDocument.GetElementsByTagName("Signature")
-      
-      ' Load the signature node.
-      signedXml.LoadXml(CType(nodeList(0), XmlElement))
-      
-      ' Check the signature and return the result.
-      Return signedXml.CheckSignature()
-   End Function 
-   
-   ' Create example data to sign.
-   Public Shared Sub CreateSomeXml(FileName As String)
-      ' Create a new XmlDocument object.
-      Dim document As New XmlDocument()
-      
-      ' Create a new XmlNode object.
-      Dim node As XmlNode = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples")
-      
-      ' Add some text to the node.
-      node.InnerText = "Example text to be signed."
-      
-      ' Append the node to the document.
-      document.AppendChild(node)
-      
-      ' Save the XML document to the file name specified.
-      Dim xmltw As New XmlTextWriter(FileName, New UTF8Encoding(False))
-      document.WriteTo(xmltw)
-      xmltw.Close()
-   End Sub 
-End Class 
+                ' Create a new TripleDES object.
+                Using tripleDESalg As TripleDES = TripleDES.Create
+
+                    ' Create a CryptoStream using the MemoryStream 
+                    ' and the passed key and initialization vector (IV).
+                    Using cStream As New CryptoStream(mStream, _
+                        tripleDESalg.CreateEncryptor(Key, IV), CryptoStreamMode.Write)
+
+                        ' Convert the passed string to a byte array.
+                        Dim toEncrypt As Byte() = New ASCIIEncoding().GetBytes(Data)
+
+                        ' Write the byte array to the crypto stream and flush it.
+                        cStream.Write(toEncrypt, 0, toEncrypt.Length)
+                        cStream.FlushFinalBlock()
+
+                        ' Get an array of bytes from the 
+                        ' MemoryStream that holds the 
+                        ' encrypted data.
+                        ret = mStream.ToArray()
+                    End Using
+                End Using
+            End Using
+
+            ' Return the encrypted buffer.
+            Return ret
+        Catch e As CryptographicException
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
+            Return Nothing
+        End Try
+    End Function
+
+
+    Function DecryptTextFromMemory(ByVal Data() As Byte, ByVal Key() As Byte, ByVal IV() As Byte) As String
+        Try
+            Dim ret As String
+            ' Create a new MemoryStream using the passed 
+            ' array of encrypted data.
+            Using msDecrypt As New MemoryStream(Data)
+
+                ' Create a new TripleDES object.
+                Using tripleDESalg As TripleDES = TripleDES.Create
+
+                    ' Create a CryptoStream using the MemoryStream 
+                    ' and the passed key and initialization vector (IV).
+                    Using csDecrypt As New CryptoStream(msDecrypt, _
+                         tripleDESalg.CreateDecryptor(Key, IV), CryptoStreamMode.Read)
+
+                        ' Create buffer to hold the decrypted data.
+                        Dim fromEncrypt(Data.Length - 1) As Byte
+
+                        ' Read the decrypted data out of the crypto stream
+                        ' and place it into the temporary buffer.
+                        csDecrypt.Read(fromEncrypt, 0, fromEncrypt.Length)
+
+                        'Convert the buffer into a string and return it.
+                        ret = New ASCIIEncoding().GetString(fromEncrypt)
+                    End Using
+                End Using
+            End Using
+            Return ret
+
+        Catch e As CryptographicException
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
+            Return Nothing
+        End Try
+    End Function
+End Module

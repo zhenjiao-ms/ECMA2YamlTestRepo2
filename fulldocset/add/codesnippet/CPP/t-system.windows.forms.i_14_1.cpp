@@ -1,44 +1,53 @@
-#using <System.Data.dll>
-#using <System.Windows.Forms.dll>
-#using <System.dll>
-#using <System.Drawing.dll>
-
 using namespace System;
-using namespace System::Drawing;
-using namespace System::Collections;
-using namespace System::ComponentModel;
 using namespace System::Windows::Forms;
-using namespace System::Data;
-public ref class Form1: public System::Windows::Forms::Form
+using namespace System::Drawing;
+
+public ref class MyContainer: public ScrollableControl, public IContainerControl
 {
 private:
-   RichTextBox^ rtb;
+   Control^ activeControl;
 
 public:
-   Form1()
+   MyContainer()
    {
-      rtb = gcnew RichTextBox;
-      this->Controls->Add( rtb );
-      rtb->Dock = DockStyle::Fill;
-      this->InputLanguageChanged += gcnew InputLanguageChangedEventHandler( this, &Form1::languageChange );
+      // Make the container control Blue so it can be distinguished on the form.
+      this->BackColor = Color::Blue;
+
+      // Make the container scrollable.
+      this->AutoScroll = true;
    }
 
-
-private:
-   void languageChange( Object^ /*sender*/, InputLanguageChangedEventArgs^ e )
+   property Control^ ActiveControl 
    {
-      
-      // If the input language is Japanese.
-      // set the initial IMEMode to Katakana.
-      if ( e->InputLanguage->Culture->TwoLetterISOLanguageName->Equals( "ja" ) )
+      // Add implementation to the IContainerControl.ActiveControl property.
+      virtual Control^ get()
       {
-         rtb->ImeMode = System::Windows::Forms::ImeMode::Katakana;
+         return activeControl;
+      }
+
+      virtual void set( Control^ value )
+      {
+         
+         // Make sure the control is a member of the ControlCollection.
+         if ( this->Controls->Contains( value ) )
+         {
+            activeControl = value;
+         }
       }
    }
 
-};
+   // Add implementations to the IContainerControl.ActivateControl(Control) method.
+   virtual bool ActivateControl( Control^ active )
+   {
+      if ( this->Controls->Contains( active ) )
+      {
+         // Select the control and scroll the control into view if needed.
+         active->Select(  );
+         this->ScrollControlIntoView( active );
+         this->activeControl = active;
+         return true;
+      }
 
-int main()
-{
-   Application::Run( gcnew Form1 );
-}
+      return false;
+   }
+};

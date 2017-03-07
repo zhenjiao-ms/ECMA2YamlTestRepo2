@@ -1,31 +1,17 @@
-Public Class DemoTableLayoutPanel
-    Inherits TableLayoutPanel
+Private Sub ToolStripRenderer1_RenderArrow(sender as Object, e as ToolStripArrowRenderEventArgs) _ 
+     Handles ToolStripRenderer1.RenderArrow
 
-    Protected Overrides Sub OnCellPaint( _
-    ByVal e As System.Windows.Forms.TableLayoutCellPaintEventArgs)
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "ArrowRectangle", e.ArrowRectangle)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ArrowColor", e.ArrowColor)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Direction", e.Direction)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Item", e.Item)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"RenderArrow Event")
 
-        MyBase.OnCellPaint(e)
-
-        Dim c As Control = Me.GetControlFromPosition(e.Column, e.Row)
-
-        If c IsNot Nothing Then
-            Dim g As Graphics = e.Graphics
-
-            g.DrawRectangle( _
-            Pens.Red, _
-            e.CellBounds.Location.X + 1, _
-            e.CellBounds.Location.Y + 1, _
-            e.CellBounds.Width - 2, _
-            e.CellBounds.Height - 2)
-
-            g.FillRectangle( _
-            Brushes.Blue, _
-            e.CellBounds.Location.X + 1, _
-            e.CellBounds.Location.Y + 1, _
-            e.CellBounds.Width - 2, _
-            e.CellBounds.Height - 2)
-        End If
-
-    End Sub
-
-End Class
+End Sub

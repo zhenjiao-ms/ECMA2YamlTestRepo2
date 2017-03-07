@@ -3,37 +3,37 @@ using System.Windows.Forms;
 
 public class Form1 : Form
 {
-    private TabControl tabControl1;
-    private Rectangle myTabRect;
-
     public Form1()
     {
-        tabControl1 = new TabControl();
+        TabControl tabControl1 = new TabControl();
         TabPage tabPage1 = new TabPage();
+        TabPage tabPage2 = new TabPage();
+        TabPage tabPage3 = new TabPage();
+        TabPage tabPage4 = new TabPage();
+        TabPage tabPage5 = new TabPage();
+        Label label1= new Label();
 
-        // Sets the tabs to be drawn by the parent window Form1.
-        // OwnerDrawFixed allows access to DrawItem. 
-        tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
+        // Allows multiple rows of tabs in the tabControl1 tab strip.
+        tabControl1.Multiline = true;
 
-        tabControl1.Controls.Add(tabPage1);
-        tabControl1.Location = new Point(25, 25);
-        tabControl1.Size = new Size(250, 250);
+        tabControl1.SizeMode = TabSizeMode.FillToRight;
+        tabControl1.Padding = new Point(15, 5);
+        tabControl1.Controls.AddRange(new Control[] {
+            tabPage1, tabPage2, tabPage3, tabPage4, tabPage5});
+        tabControl1.Location = new Point(35, 65);
+        tabControl1.Size = new Size(220, 180);    
 
-        tabPage1.TabIndex = 0;
+        // Gets the number of rows currently in the tabControl1 tab strip.
+        // Assigns int value to the rows variable.
+        int rows = tabControl1.RowCount;
 
-        myTabRect = tabControl1.GetTabRect(0);
+        label1.Text = "There are " + rows.ToString() + 
+            " rows of tabs in the tabControl1 tab strip.";
+        label1.Location = new Point(35, 25);
+        label1.Size = new Size(220, 30);
 
-        ClientSize = new Size(300, 300);
-        Controls.Add(tabControl1);
-
-        tabControl1.DrawItem += new DrawItemEventHandler(OnDrawItem);
-    }
- 
-    private void OnDrawItem(object sender, DrawItemEventArgs e)
-    {
-        Graphics g = e.Graphics;
-        Pen p = new Pen(Color.Blue);
-        g.DrawRectangle(p, myTabRect);
+        Size = new Size(300, 300);
+        Controls.AddRange(new Control[] {label1, tabControl1});
     }
 
     static void Main() 

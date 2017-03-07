@@ -1,2 +1,2 @@
-            MsmqTransportBindingElement transportBindingElement = new MsmqTransportBindingElement();
-            transportBindingElement.MaxPoolSize = 5;
+	    string statusDescription =
+		responseProperty.StatusDescription;

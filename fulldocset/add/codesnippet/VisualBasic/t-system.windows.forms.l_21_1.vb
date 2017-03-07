@@ -1,65 +1,107 @@
-        Private Sub CreateMyListView()
-            ' Create a new ListView control.
-            Dim listView1 As New ListView()
-            listView1.Bounds = New Rectangle(New Point(10, 10), New Size(300, 200))
+Public Class Form1
+    Inherits System.Windows.Forms.Form
+    Private WithEvents textBox1 As System.Windows.Forms.TextBox
+    Private label1 As System.Windows.Forms.Label
+    Private layoutButton As System.Windows.Forms.Button
+    Private components As System.ComponentModel.Container = Nothing
 
-            ' Set the view to show details.
-            listView1.View = View.Details
-            ' Allow the user to edit item text.
-            listView1.LabelEdit = True
-            ' Allow the user to rearrange columns.
-            listView1.AllowColumnReorder = True
-            ' Display check boxes.
-            listView1.CheckBoxes = True
-            ' Select the item and subitems when selection is made.
-            listView1.FullRowSelect = True
-            ' Display grid lines.
-            listView1.GridLines = True
-            ' Sort the items in the list in ascending order.
-            listView1.Sorting = SortOrder.Ascending
 
-            ' Create three items and three sets of subitems for each item.
-            Dim item1 As New ListViewItem("item1", 0)
-            ' Place a check mark next to the item.
-            item1.Checked = True
-            item1.SubItems.Add("1")
-            item1.SubItems.Add("2")
-            item1.SubItems.Add("3")
-            Dim item2 As New ListViewItem("item2", 1)
-            item2.SubItems.Add("4")
-            item2.SubItems.Add("5")
-            item2.SubItems.Add("6")
-            Dim item3 As New ListViewItem("item3", 0)
-            ' Place a check mark next to the item.
-            item3.Checked = True
-            item3.SubItems.Add("7")
-            item3.SubItems.Add("8")
-            item3.SubItems.Add("9")
+    Public Sub New()
+        InitializeComponent()
+    End Sub
 
-            ' Create columns for the items and subitems.
-            ' Width of -2 indicates auto-size.
-            listView1.Columns.Add("Item Column", -2, HorizontalAlignment.Left)
-            listView1.Columns.Add("Column 2", -2, HorizontalAlignment.Left)
-            listView1.Columns.Add("Column 3", -2, HorizontalAlignment.Left)
-            listView1.Columns.Add("Column 4", -2, HorizontalAlignment.Center)
+    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing Then
+            If (components IsNot Nothing) Then
+                components.Dispose()
+            End If
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
 
-            'Add the items to the ListView.
-            listView1.Items.AddRange(New ListViewItem() {item1, item2, item3})
+    Private Sub InitializeComponent()
+        Me.layoutButton = New System.Windows.Forms.Button()
+        Me.textBox1 = New System.Windows.Forms.TextBox()
+        Me.label1 = New System.Windows.Forms.Label()
+        Me.SuspendLayout()
+        ' 
+        ' layoutButton
+        ' 
+        Me.layoutButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.layoutButton.Location = New System.Drawing.Point(72, 88)
+        Me.layoutButton.Name = "layoutButton"
+        Me.layoutButton.Size = New System.Drawing.Size(150, 23)
+        Me.layoutButton.TabIndex = 0
+        Me.layoutButton.Text = "Hello"
+        ' 
+        ' textBox1
+        ' 
+        Me.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+        Me.textBox1.Location = New System.Drawing.Point(24, 40)
+        Me.textBox1.Name = "textBox1"
+        Me.textBox1.Size = New System.Drawing.Size(248, 20)
+        Me.textBox1.TabIndex = 1
+        Me.textBox1.Text = "Hello"
+        ' 
+        ' label1
+        ' 
+        Me.label1.Location = New System.Drawing.Point(24, 16)
+        Me.label1.Name = "label1"
+        Me.label1.TabIndex = 2
+        Me.label1.Text = "Button's Text:"
+        ' 
+        ' Form1
+        ' 
+        Me.ClientSize = New System.Drawing.Size(292, 129)
+        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.label1, Me.textBox1, Me.layoutButton})
+        Me.Name = "Form1"
+        Me.Text = "Layout Sample"
+        Me.ResumeLayout(False)
+    End Sub
 
-            ' Create two ImageList objects.
-            Dim imageListSmall As New ImageList()
-            Dim imageListLarge As New ImageList()
+   ' This method ensures that the form's width is the preferred size of 300 pixels
+   ' or the size of the button plus 50 pixels, whichever amount is less.
+    Private Sub Form1_Layout(ByVal sender As Object, ByVal e As System.Windows.Forms.LayoutEventArgs) Handles MyBase.Layout
+      ' This event is raised once at startup with the AffectedControl
+      ' and AffectedProperty properties on the LayoutEventArgs as null. 
+      ' The event provides size preferences for that case.
+        If (e.AffectedControl IsNot Nothing) And (e.AffectedProperty IsNot Nothing) Then
+            ' Ensure that the affected property is the Bounds property
+            ' of the form.
+            If e.AffectedProperty.ToString() = "Bounds" Then
+             ' If layoutButton's width plus a padding of 50 pixels is greater than the preferred 
+             ' size of 300 pixels, increase the form's width.
+                If Me.layoutButton.Width + 50 > 300 Then
+                    Me.Width = Me.layoutButton.Width + 50
+                    ' If not, keep the form's width at 300 pixels.
+                Else
+                    Me.Width = 300
+                End If
 
-            ' Initialize the ImageList objects with bitmaps.
-            imageListSmall.Images.Add(Bitmap.FromFile("C:\MySmallImage1.bmp"))
-            imageListSmall.Images.Add(Bitmap.FromFile("C:\MySmallImage2.bmp"))
-            imageListLarge.Images.Add(Bitmap.FromFile("C:\MyLargeImage1.bmp"))
-            imageListLarge.Images.Add(Bitmap.FromFile("C:\MyLargeImage2.bmp"))
+                ' Center layoutButton on the form.
+                Me.layoutButton.Left = (Me.ClientSize.Width - Me.layoutButton.Width) / 2
+            End If
+        End If
+    End Sub
 
-            'Assign the ImageList objects to the ListView.
-            listView1.LargeImageList = imageListLarge
-            listView1.SmallImageList = imageListSmall
+    ' This method sets the Text property of layoutButton to the Text property
+    ' of textBox1.  If the new text plus a padding of 20 pixels is larger than 
+    ' the preferred size of 150 pixels, increase layoutButton's Width property.
+    Private Sub textBox1_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles textBox1.TextChanged
+        ' Set the Text property of layoutButton.
+        Me.layoutButton.Text = Me.textBox1.Text
+        ' Get the width of the text using the proper font.
+        Dim textWidth As Integer = CInt(Me.CreateGraphics().MeasureString(layoutButton.Text, layoutButton.Font).Width)
 
-            ' Add the ListView to the control collection.
-            Me.Controls.Add(listView1)
-        End Sub 'CreateMyListView
+        ' If the width of the text plus a padding of 20 pixels is greater than the preferred size of
+        ' 150 pixels, increase layoutButton's width.
+        If textWidth + 20 > 150 Then
+            ' Setting the size property on any control raises 
+            ' the Layout event for its container.
+            Me.layoutButton.Width = textWidth + 20
+            ' If not, keep layoutButton's width at 150 pixels.
+        Else
+            Me.layoutButton.Width = 150
+        End If
+    End Sub
+End Class

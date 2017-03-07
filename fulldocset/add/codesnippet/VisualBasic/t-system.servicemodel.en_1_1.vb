@@ -1,15 +1,17 @@
-			' Create an EndpointAddress with a specified address.
-			Dim epa1 As New EndpointAddress("http://localhost/ServiceModelSamples")
-			Console.WriteLine("The URI of the EndpointAddress is {0}:", epa1.Uri)
-			Console.WriteLine()
+            Dim eab As New EndpointAddressBuilder()
+            eab.Uri = New Uri("http://localhost/Uri")
+            eab.Headers.Add(AddressHeader.CreateAddressHeader("n", "ns", "val"))
 
-			'Initialize an EndpointAddress10 from the endpointAddress.
-			Dim epa10 As EndpointAddress10 = EndpointAddress10.FromEndpointAddress(epa1)
+            eab.Identity = EndpointIdentity.CreateUpnIdentity("foo")
 
-			'Serialize and then deserializde the Endpoint10 type.
+            Dim xdrExtensions As XmlDictionaryReader = eab.GetReaderAtExtensions()
 
-			'Convert the EndpointAddress10 back into an EndpointAddress.
-			Dim epa2 As EndpointAddress = epa10.ToEndpointAddress()
+            Dim sr As New StringReader("<myExtension xmlns=""myExtNs"" />")
+            eab.SetExtensionReader(XmlDictionaryReader.CreateDictionaryReader(XmlReader.Create(sr)))
 
-			Console.WriteLine("The URI of the EndpointAddress is still {0}:", epa2.Uri)
-			Console.WriteLine()
+            Dim ea As EndpointAddress = eab.ToEndpointAddress()
+
+            sr = New StringReader("<myMetadata xmlns=""myMetaNs"" />")
+            Dim xdrMetaData As XmlDictionaryReader = eab.GetReaderAtMetadata()
+
+            eab.SetMetadataReader(XmlDictionaryReader.CreateDictionaryReader(XmlReader.Create(sr)))

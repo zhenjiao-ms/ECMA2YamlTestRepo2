@@ -1,19 +1,7 @@
-Protected Overrides Sub OnTextChanged(e As System.EventArgs)
-   Try
-      ' Convert the text to a Double and determine
-      ' if it is a negative number.
-      If Double.Parse(Me.Text) < 0 Then
-         ' If the number is negative, display it in Red.
-         Me.ForeColor = Color.Red
-      Else
-         ' If the number is not negative, display it in Black.
-         Me.ForeColor = Color.Black
-      End If
-   Catch
-      ' If there is an error, display the
-      ' text using the system colors.
-      Me.ForeColor = SystemColors.ControlText
-   End Try
-
-   MyBase.OnTextChanged(e)
-End Sub
+    ' Remove the first control in the collection.
+    Private Sub RemoveAtButton_Click(ByVal sender As System.Object, _
+		ByVal e As System.EventArgs) Handles RemoveAtButton.Click
+        If (Panel1.Controls.Count > 0) Then
+            Panel1.Controls.RemoveAt(0)
+        End If
+    End Sub

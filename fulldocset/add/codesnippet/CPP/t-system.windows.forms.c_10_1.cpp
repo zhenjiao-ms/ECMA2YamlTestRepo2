@@ -1,67 +1,112 @@
-protected:
-   void BindControls()
+#include <windows.h>
+
+#using <System.dll>
+#using <System.Drawing.dll>
+#using <System.Windows.Forms.dll>
+
+using namespace System;
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
+using namespace System::Runtime::InteropServices;
+using namespace System::Diagnostics;
+using namespace System::IO;
+
+public ref class MyIconButton: public Button
+{
+private:
+   Icon^ icon;
+
+public:
+   MyIconButton()
    {
-      /* Create two Binding objects for the first two TextBox 
-         controls. The data-bound property for both controls 
-         is the Text property. The data source is a DataSet 
-         (ds). The data member is the navigation path: 
-         TableName.ColumnName. */
-      textBox1->DataBindings->Add( gcnew Binding(
-         "Text",ds,"customers.custName" ) );
-      textBox2->DataBindings->Add( gcnew Binding(
-         "Text",ds,"customers.custID" ) );
       
-      /* Bind the DateTimePicker control by adding a new Binding. 
-         The data member of the DateTimePicker is a navigation path:
-         TableName.RelationName.ColumnName. */
-      DateTimePicker1->DataBindings->Add( gcnew Binding(
-         "Value",ds,"customers.CustToOrders.OrderDate" ) );
-      
-      /* Create a new Binding using the DataSet and a 
-         navigation path(TableName.RelationName.ColumnName).
-         Add event delegates for the Parse and Format events to 
-         the Binding object, and add the object to the third 
-         TextBox control's BindingsCollection. The delegates 
-         must be added before adding the Binding to the 
-         collection; otherwise, no formatting occurs until 
-         the Current object of the BindingManagerBase for 
-         the data source changes. */
-      Binding^ b = gcnew Binding(
-         "Text",ds,"customers.custToOrders.OrderAmount" );
-      b->Parse += gcnew ConvertEventHandler(
-         this, &Form1::CurrencyStringToDecimal );
-      b->Format += gcnew ConvertEventHandler(
-         this, &Form1::DecimalToCurrencyString );
-      textBox3->DataBindings->Add( b );
-      
-      /*Bind the fourth TextBox to the Value of the 
-         DateTimePicker control. This demonstates how one control
-         can be data-bound to another.*/
-      textBox4->DataBindings->Add( "Text", DateTimePicker1, "Value" );
-      
-      // Get the BindingManagerBase for the textBox4 Binding.
-      BindingManagerBase^ bmText = this->BindingContext[
-         DateTimePicker1 ];
-      
-      /* Print the Type of the BindingManagerBase, which is 
-         a PropertyManager because the data source
-         returns only a single property value. */
-      Console::WriteLine( bmText->GetType() );
-      
-      // Print the count of managed objects, which is one.
-      Console::WriteLine( bmText->Count );
-      
-      // Get the BindingManagerBase for the Customers table. 
-      bmCustomers = this->BindingContext[ds, "Customers"];
-      
-      /* Print the Type and count of the BindingManagerBase.
-         Because the data source inherits from IBindingList,
-         it is a RelatedCurrencyManager (a derived class of
-         CurrencyManager). */
-      Console::WriteLine( bmCustomers->GetType() );
-      Console::WriteLine( bmCustomers->Count );
-      
-      /* Get the BindingManagerBase for the Orders of the current
-         customer using a navigation path: TableName.RelationName. */
-      bmOrders = this->BindingContext[ds, "customers.CustToOrders"];
+      // Set the button's FlatStyle property.
+      FlatStyle = ::FlatStyle::System;
    }
+
+   MyIconButton( Icon^ ButtonIcon )
+   {
+      
+      // Set the button's FlatStyle property.
+      FlatStyle = ::FlatStyle::System;
+      
+      // Assign the icon to the private field.
+      this->icon = ButtonIcon;
+      
+      // Size the button to 4 pixels larger than the icon.
+      this->Height = icon->Height + 4;
+      this->Width = icon->Width + 4;
+   }
+
+
+protected:
+
+   property System::Windows::Forms::CreateParams^ CreateParams 
+   {
+
+      virtual System::Windows::Forms::CreateParams^ get() override
+      {
+         
+         // Extend the CreateParams property of the Button class.
+         System::Windows::Forms::CreateParams^ cp = __super::CreateParams;
+
+         // Update the button Style.
+         cp->Style |= 0x00000040; // BS_ICON value
+         return cp;
+      }
+   }
+
+public:
+   property System::Drawing::Icon^ Icon
+   {
+      System::Drawing::Icon^ get()
+      {
+         return icon;
+      }
+      void set(System::Drawing::Icon^ value)
+      {
+         icon = value;
+         UpdateIcon();
+         this->Height = icon->Height + 4;
+         this->Width = icon->Width + 4;
+      }
+   }
+
+protected:
+   virtual void OnHandleCreated( EventArgs^ e ) override
+   {
+      Button::OnHandleCreated( e );
+      
+      // Update the icon on the button if there is currently an icon assigned to the icon field.
+      if ( icon != nullptr )
+      {
+         UpdateIcon();
+      }
+   }
+
+
+private:
+   void UpdateIcon()
+   {
+      IntPtr iconHandle = IntPtr::Zero;
+      
+      // Get the icon's handle.
+      if ( icon != nullptr )
+      {
+         iconHandle = icon->Handle;
+      }
+
+      
+      // Send Windows the message to update the button.
+      SendMessage( (HWND)Handle.ToPointer(), 0x00F7, 1, (int)iconHandle );
+      
+      /*BM_SETIMAGE value*/
+      /*IMAGE_ICON value*/
+   }
+
+   public:
+	[DllImport("user32.dll")]
+	static LRESULT SendMessage(HWND hWnd, int msg, int wParam, int lParam);
+
+};
+

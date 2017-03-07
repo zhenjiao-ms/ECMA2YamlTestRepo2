@@ -15,8 +15,23 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Defines the standard keywords that apply to events.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ You can customize the meaning of a keyword by assigning different names to the flags.  
+  
+   
+  
+## Examples  
+ The following example shows how to use the EventKeywords class to redefine event keywords. This code example is part of a larger example provided for the <xref:System.Diagnostics.Tracing.EventSource> class.  
+  
+ [!code-vb[ETWTrace#3](~/add/codesnippet/visualbasic/t-system.diagnostics.tra_9_1.vb)]
+ [!code-cs[ETWTrace#3](~/add/codesnippet/csharp/t-system.diagnostics.tra_9_1.cs)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="All">
@@ -32,7 +47,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventKeywords</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>All the bits are set to 1, representing every possible group of events.</summary>
       </Docs>
     </Member>
     <Member MemberName="AuditFailure">
@@ -48,7 +63,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventKeywords</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Attached to all failed security audit events. Use this keyword only  for events in the security log.</summary>
       </Docs>
     </Member>
     <Member MemberName="AuditSuccess">
@@ -64,7 +79,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventKeywords</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Attached to all successful security audit events. Use this keyword only for events in the security log.</summary>
       </Docs>
     </Member>
     <Member MemberName="CorrelationHint">
@@ -80,7 +95,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventKeywords</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Attached to transfer events where the related activity ID (correlation ID) is a computed value and is not guaranteed to be unique (that is, it is not a real GUID).</summary>
       </Docs>
     </Member>
     <Member MemberName="EventLogClassic">
@@ -96,7 +111,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventKeywords</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Attached to events that are raised by using the <see langword="RaiseEvent" /> function.</summary>
       </Docs>
     </Member>
     <Member MemberName="MicrosoftTelemetry">
@@ -112,7 +127,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventKeywords</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Attached to all Microsoft telemetry events.</summary>
       </Docs>
     </Member>
     <Member MemberName="None">
@@ -128,7 +143,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventKeywords</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>No filtering on keywords is performed when the event is published.</summary>
       </Docs>
     </Member>
     <Member MemberName="Sqm">
@@ -144,7 +159,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventKeywords</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Attached to all Service Quality Mechanism (SQM) events.</summary>
       </Docs>
     </Member>
     <Member MemberName="WdiContext">
@@ -160,7 +175,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventKeywords</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Attached to all Windows Diagnostics Infrastructure (WDI) context events.</summary>
       </Docs>
     </Member>
     <Member MemberName="WdiDiagnostic">
@@ -176,7 +191,7 @@
         <ReturnType>System.Diagnostics.Tracing.EventKeywords</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Attached to all Windows Diagnostics Infrastructure (WDI) diagnostic events.</summary>
       </Docs>
     </Member>
   </Members>

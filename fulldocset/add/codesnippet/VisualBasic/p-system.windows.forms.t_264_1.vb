@@ -1,13 +1,22 @@
-Private Sub TabControl1_Selected(sender as Object, e as TabControlEventArgs) _ 
-     Handles TabControl1.Selected
+Imports System.Windows.Forms
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "TabPage", e.TabPage)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TabPageIndex", e.TabPageIndex)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Action", e.Action)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"Selected Event")
+Public Class Form1
+    Inherits Form
 
-End Sub
+    Public Sub New()
+        Dim tabText As String() = {"tabPage1", "tabPage2"}
+        Dim tabControl1 As New TabControl()
+        Dim tabPage1 As New TabPage(tabText(0))
+        Dim tabPage2 As New TabPage(tabText(1))
+
+        ' Sets the tabs to appear as buttons.
+        tabControl1.Appearance = TabAppearance.Buttons
+
+        tabControl1.Controls.AddRange(New TabPage() {tabPage1, tabPage2})
+        Controls.Add(tabControl1)
+    End Sub
+
+    Shared Sub Main()
+        Application.Run(New Form1())
+    End Sub
+End Class

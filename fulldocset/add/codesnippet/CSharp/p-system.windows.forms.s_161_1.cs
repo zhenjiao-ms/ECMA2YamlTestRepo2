@@ -1,71 +1,98 @@
-	
-	internal System.Windows.Forms.StatusBar statusBar1;
+using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Drawing;
+using System.Reflection;
+using System.Windows.Forms;
 
-	private void InitializeStatusBarPanels()
-	{
+namespace SystemInfoBrowser
+{
+    public class SystemInfoBrowserForm : System.Windows.Forms.Form
+    {
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox textBox1;        
+        
+        public SystemInfoBrowserForm()
+	    {
+            this.SuspendLayout();
+            InitForm();
+            
+            // Add each property of the SystemInformation class to the list box.
+            Type t = typeof(System.Windows.Forms.SystemInformation);            
+            PropertyInfo[] pi = t.GetProperties();            
+            for( int i=0; i<pi.Length; i++ )
+                listBox1.Items.Add( pi[i].Name );            
+            textBox1.Text = "The SystemInformation class has "+pi.Length.ToString()+" properties.\r\n";
 
-		// Create a StatusBar control.
-		statusBar1 = new StatusBar();
+            // Configure the list item selected handler for the list box to invoke a 
+            // method that displays the value of each property.
+            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
+            this.ResumeLayout(false);
+	    }
+		
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Return if no list item is selected.
+            if( listBox1.SelectedIndex == -1 ) return;
+            // Get the property name from the list item.
+            string propname = listBox1.Text;
+            
+            if( propname == "PowerStatus" )
+            {
+                // Cycle and display the values of each property of the PowerStatus property.
+                textBox1.Text += "\r\nThe value of the PowerStatus property is:";                                
+                Type t = typeof(System.Windows.Forms.PowerStatus);
+                PropertyInfo[] pi = t.GetProperties();            
+                for( int i=0; i<pi.Length; i++ )
+                {
+                    object propval = pi[i].GetValue(SystemInformation.PowerStatus, null);            
+                    textBox1.Text += "\r\n    PowerStatus."+pi[i].Name+" is: "+propval.ToString();
+                }
+            }
+            else
+            {
+                // Display the value of the selected property of the SystemInformation type.
+                Type t = typeof(System.Windows.Forms.SystemInformation);
+                PropertyInfo[] pi = t.GetProperties();            
+                PropertyInfo prop = null;
+                for( int i=0; i<pi.Length; i++ )
+                    if( pi[i].Name == propname )
+                    {
+                        prop = pi[i];
+                        break;           
+                    }
+                object propval = prop.GetValue(null, null);            
+                textBox1.Text += "\r\nThe value of the "+propname+" property is: "+propval.ToString();
+            }
+        }
 
-		// Dock the status bar at the top of the form. 
-		statusBar1.Dock = DockStyle.Top;
+        private void InitForm()
+        {
+            // Initialize the form settings
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();            
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+                | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox1.Location = new System.Drawing.Point(8, 16);
+            this.listBox1.Size = new System.Drawing.Size(172, 496);
+            this.listBox1.TabIndex = 0;            
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+                | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(188, 16);
+            this.textBox1.Multiline = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;           
+            this.textBox1.Size = new System.Drawing.Size(420, 496);
+            this.textBox1.TabIndex = 1;            
+            this.ClientSize = new System.Drawing.Size(616, 525);            
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.listBox1);            
+            this.Text = "Select a SystemInformation property to get the value of";                   
+        }
 
-		// Set the SizingGrip property to false so the user cannot 
-		// resize the status bar.
-		statusBar1.SizingGrip = false;
-
-		// Associate the event-handling method with the 
-		// PanelClick event.
-		statusBar1.PanelClick += 
-			new StatusBarPanelClickEventHandler(statusBar1_PanelClick);
-
-		// Create two StatusBarPanel objects to display in statusBar1.
-		StatusBarPanel panel1 = new StatusBarPanel();
-		StatusBarPanel panel2 = new StatusBarPanel();
-
-		// Set the width of panel2 explicitly and set
-		// panel1 to fill in the remaining space.
-		panel2.Width = 80;
-		panel1.AutoSize = StatusBarPanelAutoSize.Spring;
-
-		// Set the text alignment within each panel.
-		panel1.Alignment = HorizontalAlignment.Left;
-		panel2.Alignment = HorizontalAlignment.Right;
-
-		// Display the first panel without a border and the second
-		// with a raised border.
-		panel1.BorderStyle = StatusBarPanelBorderStyle.None;
-		panel2.BorderStyle = StatusBarPanelBorderStyle.Raised;
-
-		// Set the text of the panels. The panel1 object is reserved
-		// for line numbers, while panel2 is set to the current time.
-		panel1.Text = "Reserved for important information.";
-		panel2.Text = System.DateTime.Now.ToShortTimeString();
-
-		// Set a tooltip for panel2
-		panel2.ToolTipText = "Click time to display seconds";
-
-		// Display panels in statusBar1 and add them to the
-		// status bar's StatusBarPanelCollection.
-		statusBar1.ShowPanels = true;
-		statusBar1.Panels.Add(panel1);
-		statusBar1.Panels.Add(panel2);
-
-		// Add the StatusBar to the form.
-		this.Controls.Add(statusBar1);
-	}
-	
-
-	// If the user clicks the status bar, check the text of the 
-	// StatusBarPanel.  If the text equals a short time string,
-	// change it to long time display.
-	private void statusBar1_PanelClick(object sender, 
-		StatusBarPanelClickEventArgs e)
-	{
-		if (e.StatusBarPanel.Text == 
-			System.DateTime.Now.ToShortTimeString())
-		{
-			e.StatusBarPanel.Text = 
-				System.DateTime.Now.ToLongTimeString();
-		}
-	}
+        [STAThread]
+        static void Main() 
+        {
+            Application.Run(new SystemInfoBrowserForm());
+        }
+    }
+}

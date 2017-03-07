@@ -1,43 +1,20 @@
-using System.Drawing;
-using System.Windows.Forms;
-
-public class Form1 : Form
-{
-    public Form1()
-    {
-        TabControl tabControl1 = new TabControl();
-        TabPage tabPage1 = new TabPage();
-        TabPage tabPage2 = new TabPage();
-        TabPage tabPage3 = new TabPage();
-        TabPage tabPage4 = new TabPage();
-        TabPage tabPage5 = new TabPage();
-        Label label1= new Label();
-
-        // Allows multiple rows of tabs in the tabControl1 tab strip.
-        tabControl1.Multiline = true;
-
-        tabControl1.SizeMode = TabSizeMode.FillToRight;
-        tabControl1.Padding = new Point(15, 5);
-        tabControl1.Controls.AddRange(new Control[] {
-            tabPage1, tabPage2, tabPage3, tabPage4, tabPage5});
-        tabControl1.Location = new Point(35, 65);
-        tabControl1.Size = new Size(220, 180);    
-
-        // Gets the number of rows currently in the tabControl1 tab strip.
-        // Assigns int value to the rows variable.
-        int rows = tabControl1.RowCount;
-
-        label1.Text = "There are " + rows.ToString() + 
-            " rows of tabs in the tabControl1 tab strip.";
-        label1.Location = new Point(35, 25);
-        label1.Size = new Size(220, 30);
-
-        Size = new Size(300, 300);
-        Controls.AddRange(new Control[] {label1, tabControl1});
-    }
-
-    static void Main() 
-    {
-        Application.Run(new Form1());
-    }
-}
+            // This code example demonstrates the syntax for setting
+            // various ToolStripTextBox properties.
+            // 
+            toolStripTextBox1.AcceptsReturn = true;
+            toolStripTextBox1.AcceptsTab = true;
+            toolStripTextBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            "This is line one.",
+            "Second line.",
+            "Another line."});
+            toolStripTextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            toolStripTextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            toolStripTextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            toolStripTextBox1.HideSelection = false;
+            toolStripTextBox1.MaxLength = 32000;
+            toolStripTextBox1.Name = "toolStripTextBox1";
+            toolStripTextBox1.ShortcutsEnabled = false;
+            toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
+            toolStripTextBox1.Text = "STRING1\r\nSTRING2\r\nSTRING3\r\nSTRING4";
+            toolStripTextBox1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;

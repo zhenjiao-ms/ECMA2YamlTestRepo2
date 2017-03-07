@@ -1,36 +1,27 @@
-#using <System.dll>
-
-using namespace System;
-using namespace System::Net;
-using namespace System::Net::NetworkInformation;
-using namespace System::Text;
-
-// args[1] can be an IPaddress or host name.
-int main()
+void ShowUdpStatistics( NetworkInterfaceComponent version )
 {
-   array<String^>^args = Environment::GetCommandLineArgs();
-   
-   Ping ^ pingSender = gcnew Ping;
-   PingOptions ^ options = gcnew PingOptions;
-   
-   // Use the default Ttl value which is 128,
-   // but change the fragmentation behavior.
-   options->DontFragment = true;
-   
-   // Create a buffer of 32 bytes of data to be transmitted.
-   String^ data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-   array<Byte>^buffer = Encoding::ASCII->GetBytes( data );
-   int timeout = 120;
-   PingReply ^ reply = pingSender->Send( args[ 1 ], timeout, buffer, options );
-   
-   if ( reply->Status == IPStatus::Success )
+   IPGlobalProperties ^ properties = IPGlobalProperties::GetIPGlobalProperties();
+   UdpStatistics ^ udpStat = nullptr;
+   switch ( version )
    {
-      Console::WriteLine( "Address: {0}", reply->Address->ToString() );
-      Console::WriteLine( "RoundTrip time: {0}", reply->RoundtripTime );
-      Console::WriteLine( "Time to live: {0}", reply->Options->Ttl );
-      Console::WriteLine( "Don't fragment: {0}", reply->Options->DontFragment );
-      Console::WriteLine( "Buffer size: {0}", reply->Buffer->Length );
-   }
+      case NetworkInterfaceComponent::IPv4:
+         udpStat = properties->GetUdpIPv4Statistics();
+         Console::WriteLine( "UDP IPv4 Statistics" );
+         break;
 
-   
+      case NetworkInterfaceComponent::IPv6:
+         udpStat = properties->GetUdpIPv6Statistics();
+         Console::WriteLine( "UDP IPv6 Statistics" );
+         break;
+
+      default:
+         throw gcnew ArgumentException( "version" );
+         break;
+   }
+   Console::WriteLine( "  Datagrams Received ...................... : {0}", udpStat->DatagramsReceived );
+   Console::WriteLine( "  Datagrams Sent .......................... : {0}", udpStat->DatagramsSent );
+   Console::WriteLine( "  Incoming Datagrams Discarded ............ : {0}", udpStat->IncomingDatagramsDiscarded );
+   Console::WriteLine( "  Incoming Datagrams With Errors .......... : {0}", udpStat->IncomingDatagramsWithErrors );
+   Console::WriteLine( "  UDP Listeners ........................... : {0}", udpStat->UdpListeners );
+   Console::WriteLine( "" );
 }

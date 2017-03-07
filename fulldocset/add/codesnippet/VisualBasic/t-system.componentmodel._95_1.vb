@@ -1,6 +1,7 @@
-    <RunInstallerAttribute(True)> _
-    Public Class MyProjectInstaller
-        Inherits Installer
-
-        ' Insert code here.
-    End Class 'MyProjectInstaller
+    Public ReadOnly Property MyProperty() As Integer
+        Get
+            ' Insert code here.
+            Return 0
+        End Get
+    End Property
+    

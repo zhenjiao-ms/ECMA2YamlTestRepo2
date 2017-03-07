@@ -1,100 +1,53 @@
 using System;
-using System.IO;
 using System.Security.Cryptography;
 
-class Members
+class RSASample
 {
-    [STAThread]
-    static void Main(string[] args)
+
+    static void Main()
     {
-        string appPath = (System.IO.Directory.GetCurrentDirectory() + "\\");
-
-        // Insert your file names into this method call.
-        EncodeFromFile(appPath + "members.cs", appPath + "members.enc");
-
-        Console.WriteLine("This sample completed successfully; " +
-            "press Enter to exit.");
-        Console.ReadLine();
-    }
-
-    // Read in the specified source file and write out an encoded target file.
-    private static void EncodeFromFile(string sourceFile, string targetFile) 
-    {
-        // Verify members.cs exists at the specified directory.
-        if (!File.Exists(sourceFile))
+        try
         {
-            Console.Write("Unable to locate source file located at ");
-            Console.WriteLine(sourceFile + ".");
-            Console.Write("Please correct the path and run the ");
-            Console.WriteLine("sample again.");
-            return;
-        }
-
-        // Retrieve the input and output file streams.
-        FileStream inputFileStream = 
-            new FileStream(sourceFile, FileMode.Open, FileAccess.Read);
-        FileStream outputFileStream = 
-            new FileStream(targetFile, FileMode.Create, FileAccess.Write);
-
-        // Create a new ToBase64Transform object to convert to base 64.
-        ToBase64Transform base64Transform = new ToBase64Transform();
-
-        // Create a new byte array with the size of the output block size.
-        byte[] outputBytes = new byte[base64Transform.OutputBlockSize];
-
-        // Retrieve the file contents into a byte array.
-        byte[] inputBytes = new byte[inputFileStream.Length];
-        inputFileStream.Read(inputBytes, 0, inputBytes.Length);
-
-        // Verify that multiple blocks can not be transformed.
-        if (!base64Transform.CanTransformMultipleBlocks)
-        {
-            // Initializie the offset size.
-            int inputOffset = 0;
-
-            // Iterate through inputBytes transforming by blockSize.
-            int inputBlockSize = base64Transform.InputBlockSize;
-
-            while(inputBytes.Length - inputOffset > inputBlockSize)
+            //Create a new instance of RSACryptoServiceProvider.
+            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
             {
-                base64Transform.TransformBlock(
-                    inputBytes,
-                    inputOffset,
-                    inputBytes.Length - inputOffset,
-                    outputBytes,
-                    0);
+                //The hash to sign.
+                byte[] hash;
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] data = new byte[] { 59, 4, 248, 102, 77, 97, 142, 201, 210, 12, 224, 93, 25, 41, 100, 197, 213, 134, 130, 135 };
+                    hash = sha256.ComputeHash(data);
+                }
 
-                inputOffset += base64Transform.InputBlockSize;
-                outputFileStream.Write(
-                    outputBytes, 
-                    0, 
-                    base64Transform.OutputBlockSize);
+                //Create an RSASignatureFormatter object and pass it the 
+                //RSACryptoServiceProvider to transfer the key information.
+                RSAPKCS1SignatureFormatter RSAFormatter = new RSAPKCS1SignatureFormatter(rsa);
+
+                //Set the hash algorithm to SHA256.
+                RSAFormatter.SetHashAlgorithm("SHA256");
+
+                //Create a signature for HashValue and return it.
+                byte[] signedHash = RSAFormatter.CreateSignature(hash);
+                //Create an RSAPKCS1SignatureDeformatter object and pass it the  
+                //RSACryptoServiceProvider to transfer the key information.
+                RSAPKCS1SignatureDeformatter RSADeformatter = new RSAPKCS1SignatureDeformatter(rsa);
+                RSADeformatter.SetHashAlgorithm("SHA256");
+                //Verify the hash and display the results to the console. 
+                if (RSADeformatter.VerifySignature(hash, signedHash))
+                {
+                    Console.WriteLine("The signature was verified.");
+                }
+                else
+                {
+                    Console.WriteLine("The signature was not verified.");
+                }
             }
 
-            // Transform the final block of data.
-            outputBytes = base64Transform.TransformFinalBlock(
-                inputBytes,
-                inputOffset,
-                inputBytes.Length - inputOffset);
-
-            outputFileStream.Write(outputBytes, 0, outputBytes.Length);
-            Console.WriteLine("Created encoded file at " + targetFile);
         }
-
-        // Determine if the current transform can be reused.
-        if (! base64Transform.CanReuseTransform)
+        catch (CryptographicException e)
         {
-            // Free up any used resources.
-            base64Transform.Clear();
+            Console.WriteLine(e.Message);
         }
-
-        // Close file streams.
-        inputFileStream.Close();
-        outputFileStream.Close();
     }
+
 }
-//
-// This sample produces the following output:
-//
-// Created encoded file at C:\ConsoleApplication1\\membersvcs.enc
-// This sample completed successfully; press Enter to exit.

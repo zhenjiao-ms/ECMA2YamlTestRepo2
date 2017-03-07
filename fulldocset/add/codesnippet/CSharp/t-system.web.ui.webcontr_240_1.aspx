@@ -1,96 +1,190 @@
-<%@ page language="C#" %>
+
+<%@ Page language="C#" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
-  
-  void VoteMap_Clicked (Object sender, ImageMapEventArgs e)
+
+  void ProductFormView_ItemCommand(Object sender, FormViewCommandEventArgs e)
   {
-    string coordinates;
-    string hotSpotType;
-    int yescount = ((ViewState["yescount"] != null)? (int)ViewState["yescount"] : 0);
-    int nocount = ((ViewState["nocount"] != null)? (int)ViewState["nocount"] : 0);
 
-    // When a user clicks the "Yes" hot spot,
-    // display the hot spot's name and coordinates.
-    if (e.PostBackValue.Contains("Yes"))
+    // The ItemCommand event is raised when any button within
+    // the FormView control is clicked. Use the CommandName property 
+    // to determine which button was clicked. 
+    if (e.CommandName == "Add")
     {
-      yescount += 1;
-      coordinates = Vote.HotSpots[0].GetCoordinates();
-      hotSpotType = Vote.HotSpots[0].ToString ();
-      Message1.Text = "You selected " + hotSpotType + " " + e.PostBackValue + ".<br />" +
-                      "The coordinates are " + coordinates + ".<br />" +
-                      "The current vote count is " + yescount.ToString() + 
-            " yes votes and " + nocount.ToString() + " no votes.";
-    }
+
+      // Add the product to the ListBox control. 
       
-    // When a user clicks the "No" hot spot,
-    // display the hot spot's name and coordinates.
-    else if (e.PostBackValue.Contains("No"))
-    {
-      nocount += 1;
-      coordinates = Vote.HotSpots[1].GetCoordinates();
-      hotSpotType = Vote.HotSpots[1].ToString ();
-      Message1.Text = "You selected " + hotSpotType + " " + e.PostBackValue + ".<br />" +
-                      "The coordinates are " + coordinates + ".<br />" +
-            "The current vote count is " + yescount.ToString() +
-            " yes votes and " + nocount.ToString() + " no votes.";
-    }
-    
-    else
-    {
-      Message1.Text = "You did not click a valid hot spot region.";
+      // Use the Row property to retrieve the data row.
+      FormViewRow row = ProductFormView.Row;
+      
+      // Retrieve the ProductNameLabel control from
+      // the data row.
+      Label productNameLabel = (Label)row.FindControl("ProductNameLabel");
+
+      // Retrieve the QuantityTextBox control from
+      // the data row.
+      TextBox quantityTextBox = (TextBox)row.FindControl("QuantityTextBox");
+
+      if (productNameLabel != null && quantityTextBox != null)
+      {    
+        // Get the product name from the ProductNameLabel control.
+        string name = productNameLabel.Text;
+        
+        // Get the quantity from the QuantityTextBox control.
+        string quantity = quantityTextBox.Text;
+
+        // Create the text to display in the ListBox control.
+        string description = name + " - " + quantity + " Qty";
+
+        // Create a ListItem object using the description and
+        // product name.
+        ListItem item = new ListItem(description, name);
+
+        // Add the ListItem object to the ListBox.
+        ProductListBox.Items.Add(item);
+
+        // Use the CommandSource property to retrieve
+        // the Add button. Disable the button after
+        // the user adds the currently displayed employee
+        // name to the ListBox control.
+        Button addButton = (Button)e.CommandSource;
+        addButton.Enabled = false;
+      }
+
     }
 
-    ViewState["yescount"] = yescount;
-    ViewState["nocount"] = nocount;
-  }           
-  
+  }
+
+  void ProductFormView_DataBound(Object sender, EventArgs e)
+  {
+    
+    // To prevent the user from adding duplicate items, 
+    // disable the Add button if the item being bound to the 
+    // FormView control is already in the ListBox control.
+    
+    // Use the Row property to retrieve the data row.
+    FormViewRow row = ProductFormView.Row;
+
+    // Retrieve the Add button from the data row.
+    Button addButton = (Button)row.FindControl("AddButton");
+
+    // Retrieve the ProductNameLabel control from
+    // data row.
+    Label productNameLabel = (Label)row.FindControl("ProductNameLabel");
+
+    if (addButton != null && productNameLabel != null)
+    {
+      // Get the product name from the ProductNameLabel 
+      // control.
+      string name = productNameLabel.Text;
+
+      // Use the FindByValue method to determine whether
+      // the ListBox control already contains an entry for
+      // the item.
+      ListItem item = ProductListBox.Items.FindByValue(name);
+
+      // Disable the Add button if the ListBox control
+      // already contains the item.
+      if (item != null)
+      {
+        addButton.Enabled = false;
+      }
+      else
+      {
+        addButton.Enabled = true;
+      }
+    }
+
+  }
+    
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head id="head1" runat="server">
-  <title>ImageMap Class Post Back Example</title>
+  <head runat="server">
+    <title>FormViewCommandEventArgs Example</title>
 </head>
-  <body>
+<body>
     <form id="form1" runat="server">
-    
-      <h3>ImageMap Class Post Back Example</h3>
+        
+      <h3>FormViewCommandEventArgs Example</h3>
+                       
+      <asp:formview id="ProductFormView"
+        datasourceid="ProductSource"
+        allowpaging="true"
+        datakeynames="ProductID"
+        onitemcommand="ProductFormView_ItemCommand"
+        ondatabound="ProductFormView_DataBound"  
+        runat="server">
+        
+        <itemtemplate>
+        
+          <table>
+            <tr>
+              <td style="width:400px">
+                <b>Description:</b>
+                <asp:label id="ProductNameLabel"
+                  text='<%# Eval("ProductName") %>'
+                  runat='server'/>
+                <br/>      
+                <b>Price:</b>
+                <asp:label id="PriceLabel"
+                  text='<%# Eval("UnitPrice", "{0:c}") %>'
+                  runat='server'/>
+                <br/>  
+                <asp:textbox id="QuantityTextBox"
+                  width="50px"
+                  maxlength="3" 
+                  runat="server"/> Qty                   
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <asp:requiredfieldvalidator ID="QuantityRequiredValidator"
+                  controltovalidate="QuantityTextBox"
+                  text="Please enter a quantity."
+                  display="Static"
+                  runat="server"/>
+                <br/>
+                <asp:CompareValidator id="QuantityCompareValidator"
+                  controltovalidate="QuantityTextBox"
+                  text="Please enter an integer value."
+                  display="Static"
+                  type="Integer"
+                  operator="DataTypeCheck"  
+                  runat="server"/>    
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <asp:button id="AddButton"
+                  text="Add"
+                  commandname="Add"
+                  runat="server"/>
+              </td>
+            </tr>
+          </table>
+        
+        </itemtemplate>
+                  
+      </asp:formview>
       
-      <asp:imagemap id="Vote"           
-        imageurl="Images/VoteImage.jpg"
-        width="400" 
-        height="200" 
-        alternatetext="Vote Yes or No"
-        hotspotmode="PostBack"
-        onclick="VoteMap_Clicked"
-        runat="Server">            
-          
-        <asp:RectangleHotSpot          
-          top="0"
-          left="0"
-          bottom="200"
-          right="200"
-          postbackvalue="Yes"
-          alternatetext="Vote yes">
-        </asp:RectangleHotSpot>
-          
-        <asp:RectangleHotSpot 
-          top="0"
-          left="201"
-          bottom="200"
-          right="400"
-          postbackvalue="No"
-          alternatetext="Vote no">
-        </asp:RectangleHotSpot>
+      <br/><br/><hr/>
       
-      </asp:imagemap>
+      Items:<br/>
+      <asp:listbox id="ProductListBox"
+        runat="server"/>
+          
+      <!-- This example uses Microsoft SQL Server and connects  -->
+      <!-- to the Northwind sample database. Use an ASP.NET     -->
+      <!-- expression to retrieve the connection string value   -->
+      <!-- from the Web.config file.                            -->
+      <asp:sqldatasource id="ProductSource"
+        selectcommand="Select [ProductID], [ProductName], [UnitPrice] From [Products]"
+        connectionstring="<%$ ConnectionStrings:NorthWindConnectionString%>" 
+        runat="server"/>
             
-      <br /><br />
-          
-      <asp:label id="Message1"
-        runat="Server">
-      </asp:label>                 
-                 
-    </form>      
+    </form>
   </body>
 </html>

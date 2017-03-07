@@ -1,9 +1,9 @@
-    // Updated the criteria label.
-    private void dataGridView_AutoSizeColumnModeChanged(object sender,
-        DataGridViewAutoSizeColumnModeEventArgs args)
-    {
-        args.Column.DataGridView.Parent.
-            Controls["flowlayoutpanel"].Controls[criteriaLabel].
-            Text = criteriaLabel
-            + args.Column.AutoSizeMode.ToString();
-    }
+private void PrintCell(object sender, MouseEventArgs e)
+{
+   DataGrid thisGrid = (DataGrid) sender;
+   DataGridCell myDataGridCell = thisGrid.CurrentCell;
+   BindingManagerBase bm = BindingContext[thisGrid.DataSource, thisGrid.DataMember];
+   DataRowView drv = (DataRowView) bm.Current;
+   Console.WriteLine(drv [myDataGridCell.ColumnNumber]);
+   Console.WriteLine(myDataGridCell.RowNumber);
+}

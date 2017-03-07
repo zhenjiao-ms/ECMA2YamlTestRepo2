@@ -1,17 +1,35 @@
-         System::Windows::Forms::ColorDialog^ MyDialog = gcnew ColorDialog;
+// To use this example create a new form and paste this class 
+// forming the same file, after the form class in the same file.  
+// Add a button of type FunButton to the form. 
+public ref class FunButton: public Button
+{
+protected:
+   virtual void OnMouseHover( System::EventArgs^ e ) override
+   {
+      
+      // Get the font size in Points, add one to the
+      // size, and reset the button's font to the larger
+      // size.
+      float fontSize = Font->SizeInPoints;
+      fontSize += 1;
+      System::Drawing::Size buttonSize = Size;
+      this->Font = gcnew System::Drawing::Font( Font->FontFamily,fontSize,Font->Style );
+      
+      // Increase the size width and height of the button 
+      // by 5 points each.
+      Size = System::Drawing::Size( Size.Width + 5, Size.Height + 5 );
+      
+      // Call myBase.OnMouseHover to activate the delegate.
+      Button::OnMouseHover( e );
+   }
 
-         // Allows the user to select or edit a custom color.
-         MyDialog->AllowFullOpen = true;
-
-         // Assigns an array of custom colors to the CustomColors property
-         array<int>^temp0 = {6916092,15195440,16107657,1836924,3758726,12566463,7526079,7405793,6945974,241502,2296476,5130294,3102017,7324121,14993507,11730944};
-         MyDialog->CustomColors = temp0;
-
-         // Allows the user to get help. (The default is false.)
-         MyDialog->ShowHelp = true;
-
-         // Sets the initial color select to the current text color,
-         // so that if the user cancels out, the original color is restored.
-         MyDialog->Color = this->BackColor;
-         MyDialog->ShowDialog();
-         this->BackColor = MyDialog->Color;
+   virtual void OnMouseMove( MouseEventArgs^ e ) override
+   {
+      
+      // Make the cursor the Hand cursor when the mouse moves 
+      // over the button.
+      Cursor = Cursors::Hand;
+      
+      // Call MyBase.OnMouseMove to activate the delegate.
+      Button::OnMouseMove( e );
+   }

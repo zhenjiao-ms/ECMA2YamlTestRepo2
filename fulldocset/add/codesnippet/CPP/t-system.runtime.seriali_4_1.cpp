@@ -1,107 +1,31 @@
+#using <system.dll>
+#using <system.runtime.serialization.formatters.soap.dll>
+
 using namespace System;
 using namespace System::IO;
 using namespace System::Collections;
-using namespace System::Runtime::Serialization::Formatters::Binary;
 using namespace System::Runtime::Serialization;
-
-ref class SingletonSerializationHelper;
-
-// There should be only one instance of this type per AppDomain.
-
-[Serializable]
-public ref class Singleton sealed: public ISerializable
+using namespace System::Runtime::Serialization::Formatters::Soap;
+void Serialize()
 {
-private:
-
-   // This is the one instance of this type.
-   static Singleton^ theOneObject = gcnew Singleton;
-
-public:
-
-   // Here are the instance fields.
-   String^ someString;
-   Int32 someNumber;
-
-private:
-
-   // Private constructor allowing this type to construct the singleton.
-   Singleton()
-   {
-      
-      // Do whatever is necessary to initialize the singleton.
-      someString = "This is a String* field";
-      someNumber = 123;
-   }
-
-public:
-
-   // A method returning a reference to the singleton.
-   static Singleton^ GetSingleton()
-   {
-      return theOneObject;
-   }
-
-   // A method called when serializing a Singleton.
-   [System::Security::Permissions::SecurityPermissionAttribute
-   (System::Security::Permissions::SecurityAction::LinkDemand, 
-   Flags=System::Security::Permissions::SecurityPermissionFlag::SerializationFormatter)]
-   virtual void GetObjectData( SerializationInfo^ info, StreamingContext context )
-   {
-      // Instead of serializing this Object*, we will  
-      // serialize a SingletonSerializationHelp instead.
-      info->SetType( SingletonSerializationHelper::typeid );
-
-      // No other values need to be added.
-   }
-
-   // NOTE: ISerializable*'s special constructor is NOT necessary 
-   // because it's never called
-};
-
-[Serializable]
-private ref class SingletonSerializationHelper sealed: public IObjectReference
-{
-public:
-
-   // This Object* has no fields (although it could).
-   // GetRealObject is called after this Object* is deserialized
-   virtual Object^ GetRealObject( StreamingContext context )
-   {
-      // When deserialiing this Object*, return a reference to 
-      // the singleton Object* instead.
-      return Singleton::GetSingleton();
-   }
-};
-
-[STAThread]
-int main()
-{
-   FileStream^ fs = gcnew FileStream( "DataFile.dat",FileMode::Create );
+   
+   // Create a hashtable of values that will eventually be serialized.
+   Hashtable^ addresses = gcnew Hashtable;
+   addresses->Add( "Jeff", "123 Main Street, Redmond, WA 98052" );
+   addresses->Add( "Fred", "987 Pine Road, Phila., PA 19116" );
+   addresses->Add( "Mary", "PO Box 112233, Palo Alto, CA 94301" );
+   
+   // To serialize the hashtable (and its keys/values), 
+   // you must first open a stream for writing.
+   // We will use a file stream here.
+   FileStream^ fs = gcnew FileStream( "DataFile.soap",FileMode::Create );
+   
+   // Construct a SoapFormatter and use it 
+   // to serialize the data to the stream.
+   SoapFormatter^ formatter = gcnew SoapFormatter;
    try
    {
-      // Construct a BinaryFormatter and use it 
-      // to serialize the data to the stream.
-      BinaryFormatter^ formatter = gcnew BinaryFormatter;
-
-      // Create an array with multiple elements refering to 
-      // the one Singleton Object*.
-      array<Singleton^>^a1 = {Singleton::GetSingleton(),Singleton::GetSingleton()};
-
-      // This displays S"True".
-      Console::WriteLine( "Do both array elements refer to the same Object? {0}", (a1[ 0 ] == a1[ 1 ]) );
-
-      // Serialize the array elements.
-      formatter->Serialize( fs, a1 );
-
-      // Deserialize the array elements.
-      fs->Position = 0;
-      array<Singleton^>^a2 = (array<Singleton^>^)formatter->Deserialize( fs );
-
-      // This displays S"True".
-      Console::WriteLine( "Do both array elements refer to the same Object? {0}", (a2[ 0 ] == a2[ 1 ]) );
-
-      // This displays S"True".
-      Console::WriteLine( "Do all  array elements refer to the same Object? {0}", (a1[ 0 ] == a2[ 0 ]) );
+      formatter->Serialize( fs, addresses );
    }
    catch ( SerializationException^ e ) 
    {
@@ -113,5 +37,49 @@ int main()
       fs->Close();
    }
 
-   return 0;
+}
+
+void Deserialize()
+{
+   
+   // Declare the hashtable reference.
+   Hashtable^ addresses = nullptr;
+   
+   // Open the file containing the data that we want to deserialize.
+   FileStream^ fs = gcnew FileStream( "DataFile.soap",FileMode::Open );
+   try
+   {
+      SoapFormatter^ formatter = gcnew SoapFormatter;
+      
+      // Deserialize the hashtable from the file and 
+      // assign the reference to our local variable.
+      addresses = dynamic_cast<Hashtable^>(formatter->Deserialize( fs ));
+   }
+   catch ( SerializationException^ e ) 
+   {
+      Console::WriteLine( "Failed to deserialize. Reason: {0}", e->Message );
+      throw;
+   }
+   finally
+   {
+      fs->Close();
+   }
+
+   
+   // To prove that the table deserialized correctly, 
+   // display the keys/values to the console.
+   IEnumerator^ myEnum = addresses->GetEnumerator();
+   while ( myEnum->MoveNext() )
+   {
+      DictionaryEntry^ de = safe_cast<DictionaryEntry^>(myEnum->Current);
+      Console::WriteLine( " {0} lives at {1}.", de->Key, de->Value );
+   }
+}
+
+
+[STAThread]
+int main()
+{
+   Serialize();
+   Deserialize();
 }

@@ -1,15 +1,12 @@
-Imports System
 Imports System.Runtime.InteropServices
 
-Public Class MyClassThatNeedsToRegister
-    
-    <ComRegisterFunctionAttribute()> Public Shared Sub _
-      RegisterFunction(t As Type)
-        'Insert code here.
-    End Sub
-    
-    <ComUnregisterFunctionAttribute()> Public Shared Sub _
-      UnregisterFunction(t As Type)
-        'Insert code here.
-    End Sub
-End Class
+'Interface is exposed to COM as dual.
+Interface IMyInterface1
+     'Insert code here.
+End Interface
+
+'Interface is exposed to COM as IDispatch.
+<InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIDispatch)> _
+Interface IMyInterface2
+    'Insert code here.
+End Interface

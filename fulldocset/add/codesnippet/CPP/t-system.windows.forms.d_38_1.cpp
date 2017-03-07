@@ -1,18 +1,38 @@
-    void VirtualConnector::dataGridView1_CellValidating
-        (Object^ sender, DataGridViewCellValidatingEventArgs^ e)
-    {
-        int newInteger;
+#pragma region Data store maintance
 
-        // Don't try to validate the 'new row' until finished 
-        // editing since there
-        // is not any point in validating its initial value.
-        if (dataGridView1->Rows[e->RowIndex]->IsNewRow) 
+    void VirtualConnector::dataGridView1_CellValueNeeded
+        (Object^ sender, DataGridViewCellValueEventArgs^ e)
+    {
+        if (store->ContainsKey(e->RowIndex))
         {
-            return; 
+            // Use the store if the e value has been modified 
+            // and stored.            
+            e->Value = gcnew Int32(store->default[e->RowIndex]); 
         }
-        if (!Int32::TryParse(e->FormattedValue->ToString(), 
-            newInteger) || (newInteger < 0))
+        else if (newRowNeeded && e->RowIndex == numberOfRows)
         {
-            e->Cancel = true;
+            if (dataGridView1->IsCurrentCellInEditMode)
+            {
+                e->Value = initialValue;
+            }
+            else
+            {
+                // Show a blank e if the cursor is just loitering
+                // over(the) last row.
+                e->Value = String::Empty;
+            }
+        }
+        else
+        {
+            e->Value = e->RowIndex;
         }
     }
+
+    void VirtualConnector::dataGridView1_CellValuePushed
+        (Object^ sender, DataGridViewCellValueEventArgs^ e)
+    {
+        String^ value = e->Value->ToString();
+        store[e->RowIndex] = Int32::Parse(value, 
+            CultureInfo::CurrentCulture);
+    }
+#pragma endregion

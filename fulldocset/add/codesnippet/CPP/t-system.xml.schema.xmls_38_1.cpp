@@ -13,63 +13,44 @@ public:
     {
         XmlSchema^ schema = gcnew XmlSchema();
 
-        // <xs:complexType name="address">
-        XmlSchemaComplexType^ address = gcnew XmlSchemaComplexType();
-        schema->Items->Add(address);
-        address->Name = "address";
+        // <xs:simpleType name="RatingType">
+        XmlSchemaSimpleType^ RatingType = gcnew XmlSchemaSimpleType();
+        RatingType->Name = "RatingType";
 
-        // <xs:sequence>
-        XmlSchemaSequence^ sequence = gcnew XmlSchemaSequence();
-        address->Particle = sequence;
+        // <xs:restriction base="xs:number">
+        XmlSchemaSimpleTypeRestriction^ restriction = gcnew XmlSchemaSimpleTypeRestriction();
+        restriction->BaseTypeName = gcnew XmlQualifiedName("decimal", "http://www.w3.org/2001/XMLSchema");
 
-        // <xs:element name="name"   type="xs:string"/>
-        XmlSchemaElement^ elementName = gcnew XmlSchemaElement();
-        sequence->Items->Add(elementName);
-        elementName->Name = "name";
-        elementName->SchemaTypeName = gcnew XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema");
+        // <xs:totalDigits value="2"/>
+        XmlSchemaTotalDigitsFacet^ totalDigits = gcnew XmlSchemaTotalDigitsFacet();
+        totalDigits->Value = "2";
+        restriction->Facets->Add(totalDigits);
 
-        // <xs:element name="street"   type="xs:string"/>
-        XmlSchemaElement^ elementStreet = gcnew XmlSchemaElement();
-        sequence->Items->Add(elementStreet);
-        elementStreet->Name = "street";
-        elementStreet->SchemaTypeName = gcnew XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema");
+        // <xs:fractionDigits value="1"/>
+        XmlSchemaFractionDigitsFacet^ fractionDigits = gcnew XmlSchemaFractionDigitsFacet();
+        fractionDigits->Value = "1";
+        restriction->Facets->Add(fractionDigits);
 
-        // <xs:element name="city"   type="xs:string"/>
-        XmlSchemaElement^ elementCity = gcnew XmlSchemaElement();
-        sequence->Items->Add(elementCity);
-        elementCity->Name = "city";
-        elementCity->SchemaTypeName = gcnew XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema");
+        RatingType->Content = restriction;
 
-        // <xs:complexType name="USAddress">
-        XmlSchemaComplexType^ USAddress = gcnew XmlSchemaComplexType();
-        schema->Items->Add(USAddress);
-        USAddress->Name = "USAddress";
+        schema->Items->Add(RatingType);
 
-        // <xs:complexContent>
-        XmlSchemaComplexContent^ complexContent = gcnew XmlSchemaComplexContent();
-        USAddress->ContentModel = complexContent;
+        // <xs:element name="movie">
+        XmlSchemaElement^ element = gcnew XmlSchemaElement();
+        element->Name = "movie";
 
-        // <xs:extension base="address">
-        XmlSchemaComplexContentExtension^ extensionAddress = gcnew XmlSchemaComplexContentExtension();
-        complexContent->Content = extensionAddress;
-        extensionAddress->BaseTypeName = gcnew XmlQualifiedName("address");
+        // <xs:complexType>
+        XmlSchemaComplexType^ complexType = gcnew XmlSchemaComplexType();
 
-        // <xs:sequence>
-        XmlSchemaSequence^ sequence2 = gcnew XmlSchemaSequence();
-        extensionAddress->Particle = sequence2;
+        // <xs:attribute name="rating" type="RatingType"/>
+        XmlSchemaAttribute^ ratingAttribute = gcnew XmlSchemaAttribute();
+        ratingAttribute->Name = "rating";
+        ratingAttribute->SchemaTypeName = gcnew XmlQualifiedName("RatingType", "");
+        complexType->Attributes->Add(ratingAttribute);
 
-        // <xs:element name="state" type="xs:string"/>
-        XmlSchemaElement^ elementUSState = gcnew XmlSchemaElement();
-        sequence2->Items->Add(elementUSState);
-        elementUSState->Name = "state";
-        elementUSState->SchemaTypeName = gcnew XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema");
+        element->SchemaType = complexType;
 
-
-        // <xs:element name="zipcode" type="xs:positiveInteger"/>
-        XmlSchemaElement^ elementZipcode = gcnew XmlSchemaElement();
-        sequence2->Items->Add(elementZipcode);
-        elementZipcode->Name = "zipcode";
-        elementZipcode->SchemaTypeName = gcnew XmlQualifiedName("positiveInteger", "http://www.w3.org/2001/XMLSchema");
+        schema->Items->Add(element);
 
         XmlSchemaSet^ schemaSet = gcnew XmlSchemaSet();
         schemaSet->ValidationEventHandler += gcnew ValidationEventHandler(ValidationCallbackOne);

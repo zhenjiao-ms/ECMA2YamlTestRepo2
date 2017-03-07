@@ -1,15 +1,10 @@
-    private void AddLinkColumn()
-    {
-        DataGridViewLinkColumn links = new DataGridViewLinkColumn();
-
-        links.UseColumnTextForLinkValue = true;
-        links.HeaderText = ColumnName.ReportsTo.ToString();
-        links.DataPropertyName = ColumnName.ReportsTo.ToString();
-        links.ActiveLinkColor = Color.White;
-        links.LinkBehavior = LinkBehavior.SystemDefault;
-        links.LinkColor = Color.Blue;
-        links.TrackVisitedState = true;
-        links.VisitedLinkColor = Color.YellowGreen;
-
-        DataGridView1.Columns.Add(links);
-    }
+            // Determine the foreground color.
+            if ((e.State & DataGridViewElementStates.Selected) ==
+                DataGridViewElementStates.Selected)
+            {
+                forebrush = new SolidBrush(e.InheritedRowStyle.SelectionForeColor);
+            }
+            else
+            {
+                forebrush = new SolidBrush(e.InheritedRowStyle.ForeColor);
+            }

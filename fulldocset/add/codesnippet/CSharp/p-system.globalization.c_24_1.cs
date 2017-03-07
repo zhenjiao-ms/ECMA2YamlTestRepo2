@@ -1,44 +1,47 @@
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Runtime.Versioning;
-using System.Threading;
-using System.Threading.Tasks;
 
-[assembly:TargetFramework(".NETFramework,Version=v4.6")]
-
-public class Example
+public class SamplesCultureInfo
 {
+
    public static void Main()
    {
-      var tasks = new List<Task>();
-      Console.WriteLine("The current culture is {0}", 
-                        Thread.CurrentThread.CurrentCulture.Name);
-      Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
-      // Change the current culture to Portuguese (Brazil).
-      Console.WriteLine("Current culture changed to {0}",
-                        Thread.CurrentThread.CurrentCulture.Name);
-      Console.WriteLine("Application thread is thread {0}",
-                        Thread.CurrentThread.ManagedThreadId);
-      // Launch six tasks and display their current culture.
-      for (int ctr = 0; ctr <= 5; ctr++)
-         tasks.Add(Task.Run( () => {
-                               Console.WriteLine("Culture of task {0} on thread {1} is {2}",
-                                                 Task.CurrentId, 
-                                                 Thread.CurrentThread.ManagedThreadId,
-                                                 Thread.CurrentThread.CurrentCulture.Name);
-                            } ));                     
 
-      Task.WaitAll(tasks.ToArray());
+      // Displays several properties of the neutral cultures.
+      Console.WriteLine("CULTURE ISO ISO WIN DISPLAYNAME                              ENGLISHNAME");
+      foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.NeutralCultures))
+      {
+         Console.Write("{0,-7}", ci.Name);
+         Console.Write(" {0,-3}", ci.TwoLetterISOLanguageName);
+         Console.Write(" {0,-3}", ci.ThreeLetterISOLanguageName);
+         Console.Write(" {0,-3}", ci.ThreeLetterWindowsLanguageName);
+         Console.Write(" {0,-40}", ci.DisplayName);
+         Console.WriteLine(" {0,-40}", ci.EnglishName);
+      }
+
    }
+
 }
-// The example displays output like the following:
-//     The current culture is en-US
-//     Current culture changed to pt-BR
-//     Application thread is thread 9
-//     Culture of task 2 on thread 11 is pt-BR
-//     Culture of task 1 on thread 10 is pt-BR
-//     Culture of task 3 on thread 11 is pt-BR
-//     Culture of task 5 on thread 11 is pt-BR
-//     Culture of task 6 on thread 11 is pt-BR
-//     Culture of task 4 on thread 10 is pt-BR
+
+
+/*
+This code produces the following output.  This output has been cropped for brevity.
+
+CULTURE ISO ISO WIN DISPLAYNAME                              ENGLISHNAME
+ar      ar  ara ARA Arabic                                   Arabic                                  
+bg      bg  bul BGR Bulgarian                                Bulgarian                               
+ca      ca  cat CAT Catalan                                  Catalan                                 
+zh-Hans zh  zho CHS Chinese (Simplified)                     Chinese (Simplified)                    
+cs      cs  ces CSY Czech                                    Czech                                   
+da      da  dan DAN Danish                                   Danish                                  
+de      de  deu DEU German                                   German                                  
+el      el  ell ELL Greek                                    Greek                                   
+en      en  eng ENU English                                  English                                 
+es      es  spa ESP Spanish                                  Spanish                                 
+fi      fi  fin FIN Finnish                                  Finnish                                 
+zh      zh  zho CHS Chinese                                  Chinese                                 
+zh-Hant zh  zho CHT Chinese (Traditional)                    Chinese (Traditional)                   
+zh-CHS  zh  zho CHS Chinese (Simplified) Legacy              Chinese (Simplified) Legacy             
+zh-CHT  zh  zho CHT Chinese (Traditional) Legacy             Chinese (Traditional) Legacy            
+
+*/

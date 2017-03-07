@@ -13,39 +13,39 @@ private:
     }
 
 public:
-	static void Main()
+    static void Main()
     {
         XmlSchema^ schema = gcnew XmlSchema();
 
-        // <xs:simpleType name="OrderQuantityType">
-        XmlSchemaSimpleType^ OrderQuantityType = gcnew XmlSchemaSimpleType();
-        OrderQuantityType->Name = "OrderQuantityType";
+        // <xs:simpleType name="WaitQueueLengthType">
+        XmlSchemaSimpleType^ WaitQueueLengthType = gcnew XmlSchemaSimpleType();
+        WaitQueueLengthType->Name = "WaitQueueLengthType";
 
         // <xs:restriction base="xs:int">
         XmlSchemaSimpleTypeRestriction^ restriction = gcnew XmlSchemaSimpleTypeRestriction();
         restriction->BaseTypeName = gcnew XmlQualifiedName("int", "http://www.w3.org/2001/XMLSchema");
 
-        // <xs:minExclusive value="5"/>
-        XmlSchemaMinExclusiveFacet^ MinExclusive = gcnew XmlSchemaMinExclusiveFacet();
-        MinExclusive->Value = "5";
-        restriction->Facets->Add(MinExclusive);
+        // <xs:maxInclusive value="5"/>
+        XmlSchemaMaxInclusiveFacet^ maxInclusive = gcnew XmlSchemaMaxInclusiveFacet();
+        maxInclusive->Value = "5";
+        restriction->Facets->Add(maxInclusive);
 
-        OrderQuantityType->Content = restriction;
+        WaitQueueLengthType->Content = restriction;
 
-        schema->Items->Add(OrderQuantityType);
+        schema->Items->Add(WaitQueueLengthType);
 
-        // <xs:element name="item">
+        // <xs:element name="Lobby">
         XmlSchemaElement^ element = gcnew XmlSchemaElement();
-        element->Name = "item";
+        element->Name = "Lobby";
 
         // <xs:complexType>
         XmlSchemaComplexType^ complexType = gcnew XmlSchemaComplexType();
 
-        // <xs:attribute name="OrderQuantity" type="OrderQuantityType"/>
-        XmlSchemaAttribute^ OrderQuantityAttribute = gcnew XmlSchemaAttribute();
-        OrderQuantityAttribute->Name = "OrderQuantity";
-        OrderQuantityAttribute->SchemaTypeName = gcnew XmlQualifiedName("OrderQuantityType", "");
-        complexType->Attributes->Add(OrderQuantityAttribute);
+        // <xs:attribute name="WaitQueueLength" type="WaitQueueLengthType"/>
+        XmlSchemaAttribute^ WaitQueueLengthAttribute = gcnew XmlSchemaAttribute();
+        WaitQueueLengthAttribute->Name = "WaitQueueLength";
+        WaitQueueLengthAttribute->SchemaTypeName = gcnew XmlQualifiedName("WaitQueueLengthType", "");
+        complexType->Attributes->Add(WaitQueueLengthAttribute);
 
         element->SchemaType = complexType;
 

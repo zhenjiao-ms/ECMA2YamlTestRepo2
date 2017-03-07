@@ -1,69 +1,62 @@
-Imports System.IO
-Imports System.Collections.Generic
-Imports System.Windows.Forms
+    Private Sub ListDragTarget_DragOver(ByVal sender As Object, ByVal e As DragEventArgs) Handles ListDragTarget.DragOver
+        ' Determine whether string data exists in the drop data. If not, then
+        ' the drop effect reflects that the drop cannot occur.
+        If Not (e.Data.GetDataPresent(GetType(System.String))) Then
 
-Public Class TriValueVirtualCheckBox
-    Inherits System.Windows.Forms.Form
+            e.Effect = DragDropEffects.None
+            DropLocationLabel.Text = "None - no string data."
+            Return
+        End If
 
-    Dim WithEvents dataGridView1 As New DataGridView
+        ' Set the effect based upon the KeyState.
+        If ((e.KeyState And (8 + 32)) = (8 + 32) And _
+            (e.AllowedEffect And DragDropEffects.Link) = DragDropEffects.Link) Then
+            ' KeyState 8 + 32 = CTL + ALT
 
-    Const initialSize As Integer = 500
+            ' Link drag-and-drop effect.
+            e.Effect = DragDropEffects.Link
 
-    Dim store As New Dictionary(Of Integer, LightStatus)
+        ElseIf ((e.KeyState And 32) = 32 And _
+            (e.AllowedEffect And DragDropEffects.Link) = DragDropEffects.Link) Then
 
-    Public Sub New()
-        MyBase.New()
-        Text = Me.GetType().Name
+            ' ALT KeyState for link.
+            e.Effect = DragDropEffects.Link
 
-        Dim index As Integer = 0
-        For index = 0 To initialSize
-            store.Add(index, LightStatus.Unknown)
-        Next
+        ElseIf ((e.KeyState And 4) = 4 And _
+            (e.AllowedEffect And DragDropEffects.Move) = DragDropEffects.Move) Then
 
-        Controls.Add(dataGridView1)
-        dataGridView1.VirtualMode = True
-        dataGridView1.AllowUserToDeleteRows = False
-        dataGridView1.Columns.Add(CreateCheckBoxColumn())
-        dataGridView1.Rows.AddCopies(0, initialSize)
+            ' SHIFT KeyState for move.
+            e.Effect = DragDropEffects.Move
+
+        ElseIf ((e.KeyState And 8) = 8 And _
+            (e.AllowedEffect And DragDropEffects.Copy) = DragDropEffects.Copy) Then
+
+            ' CTL KeyState for copy.
+            e.Effect = DragDropEffects.Copy
+
+        ElseIf ((e.AllowedEffect And DragDropEffects.Move) = DragDropEffects.Move) Then
+
+            ' By default, the drop action should be move, if allowed.
+            e.Effect = DragDropEffects.Move
+
+        Else
+            e.Effect = DragDropEffects.None
+        End If
+
+        ' Gets the index of the item the mouse is below. 
+
+        ' The mouse locations are relative to the screen, so they must be 
+        ' converted to client coordinates.
+
+        indexOfItemUnderMouseToDrop = _
+            ListDragTarget.IndexFromPoint(ListDragTarget.PointToClient(New Point(e.X, e.Y)))
+
+        ' Updates the label text.
+        If (indexOfItemUnderMouseToDrop <> ListBox.NoMatches) Then
+
+            DropLocationLabel.Text = "Drops before item #" & (indexOfItemUnderMouseToDrop + 1)
+        Else
+            DropLocationLabel.Text = "Drops at the end."
+        End If
+
     End Sub
-
-    Private Function CreateCheckBoxColumn() As DataGridViewCheckBoxColumn
-        Dim dataGridViewCheckBoxColumn1 _
-            As New DataGridViewCheckBoxColumn()
-        dataGridViewCheckBoxColumn1.HeaderText = "Lights On"
-        dataGridViewCheckBoxColumn1.TrueValue = LightStatus.TurnedOn
-        dataGridViewCheckBoxColumn1.FalseValue = LightStatus.TurnedOff
-        dataGridViewCheckBoxColumn1.IndeterminateValue = _
-            LightStatus.Unknown
-        dataGridViewCheckBoxColumn1.ThreeState = True
-        dataGridViewCheckBoxColumn1.ValueType = GetType(LightStatus)
-        Return dataGridViewCheckBoxColumn1
-    End Function
-
-#Region "data store maintance"
-    Private Sub dataGridView1_CellValueNeeded(ByVal sender As Object, _
-        ByVal e As DataGridViewCellValueEventArgs) _
-        Handles dataGridView1.CellValueNeeded
-
-        e.Value = store(e.RowIndex)
-    End Sub
-
-    Private Sub dataGridView1_CellValuePushed(ByVal sender As Object, _
-        ByVal e As DataGridViewCellValueEventArgs) _
-        Handles dataGridView1.CellValuePushed
-
-        store.Item(e.RowIndex) = CType(e.Value, LightStatus)
-    End Sub
-#End Region
-
-    <STAThreadAttribute()> _
-    Public Shared Sub Main()
-        Application.Run(New TriValueVirtualCheckBox())
-    End Sub
-End Class
-
-Public Enum LightStatus
-    Unknown
-    TurnedOn
-    TurnedOff
-End Enum

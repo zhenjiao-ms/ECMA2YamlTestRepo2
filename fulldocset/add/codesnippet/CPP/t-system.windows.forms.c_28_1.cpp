@@ -1,58 +1,36 @@
-   // This example demonstrates the use of the ControlAdded and
-   // ControlRemoved events. This example assumes that two Button controls
-   // are added to the form and connected to the addControl_Click and
-   // removeControl_Click event-handler methods.
+   // Declare comboBox1 as a ComboBox.
+internal:
+   System::Windows::Forms::ComboBox^ ComboBox1;
+
 private:
-   void Form1_Load( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   // This method initializes the combo box, adding a large string array
+   // but limiting the drop-down size to six rows so the combo box doesn't 
+   // cover other controls when it expands.
+   void InitializeComboBox()
    {
-      // Connect the ControlRemoved and ControlAdded event handlers
-      // to the event-handler methods.
-      // ControlRemoved and ControlAdded are not available at design time.
-      this->ControlRemoved += gcnew System::Windows::Forms::ControlEventHandler( this, &Form1::Control_Removed );
-      this->ControlAdded += gcnew System::Windows::Forms::ControlEventHandler( this, &Form1::Control_Added );
-   }
-
-   void Control_Added( Object^ /*sender*/, System::Windows::Forms::ControlEventArgs^ e )
-   {
-      MessageBox::Show( String::Format( "The control named {0} has been added to the form.", e->Control->Name ) );
-   }
-
-   void Control_Removed( Object^ /*sender*/, System::Windows::Forms::ControlEventArgs^ e )
-   {
-      MessageBox::Show( String::Format( "The control named {0} has been removed from the form.", e->Control->Name ) );
-   }
-
-   // Click event handler for a Button control. Adds a TextBox to the form.
-   void addControl_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      // Create a new TextBox control and add it to the form.
-      TextBox^ textBox1 = gcnew TextBox;
-      textBox1->Size = System::Drawing::Size( 100, 10 );
-      textBox1->Location = Point(10,10);
-
-      // Name the control in order to remove it later. The name must be specified
-      // if a control is added at run time.
-      textBox1->Name = "textBox1";
-
-      // Add the control to the form's control collection.
-      this->Controls->Add( textBox1 );
-   }
-
-   // Click event handler for a Button control.
-   // Removes the previously added TextBox from the form.
-   void removeControl_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      // Loop through all controls in the form's control collection.
-      IEnumerator^ myEnum = this->Controls->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         Control^ tempCtrl = safe_cast<Control^>(myEnum->Current);
-         
-         // Determine whether the control is textBox1,
-         // and if it is, remove it.
-         if ( tempCtrl->Name->Equals( "textBox1" ) )
-         {
-            this->Controls->Remove( tempCtrl );
-         }
-      }
+      this->ComboBox1 = gcnew System::Windows::Forms::ComboBox;
+      array<String^>^ employees = {"Hamilton, David","Hensien, Kari",
+         "Hammond, Maria","Harris, Keith","Henshaw, Jeff D.",
+         "Hanson, Mark","Harnpadoungsataya, Sariya",
+         "Harrington, Mark","Harris, Keith","Hartwig, Doris",
+         "Harui, Roger","Hassall, Mark","Hasselberg, Jonas",
+         "Harnpadoungsataya, Sariya","Henshaw, Jeff D.",
+         "Henshaw, Jeff D.","Hensien, Kari","Harris, Keith",
+         "Henshaw, Jeff D.","Hensien, Kari","Hasselberg, Jonas",
+         "Harrington, Mark","Hedlund, Magnus","Hay, Jeff",
+         "Heidepriem, Brandon D."};
+      ComboBox1->Items->AddRange( employees );
+      this->ComboBox1->Location = System::Drawing::Point( 136, 32 );
+      this->ComboBox1->IntegralHeight = false;
+      this->ComboBox1->MaxDropDownItems = 5;
+      this->ComboBox1->DropDownStyle = ComboBoxStyle::DropDownList;
+      this->ComboBox1->Name = "ComboBox1";
+      this->ComboBox1->Size = System::Drawing::Size( 136, 81 );
+      this->ComboBox1->TabIndex = 0;
+      this->Controls->Add( this->ComboBox1 );
+      
+      // Associate the event-handling method with the 
+      // SelectedIndexChanged event.
+      this->ComboBox1->SelectedIndexChanged +=
+         gcnew System::EventHandler( this, &Form1::ComboBox1_SelectedIndexChanged );
    }

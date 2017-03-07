@@ -2,32 +2,19 @@ Imports System.Globalization
 
 Module Example
    Public Sub Main()
-      Dim cultures() As CultureInfo = {CultureInfo.InvariantCulture, _
-                                       New CultureInfo("en-us"), _
-                                       New CultureInfo("fr-fr"), _
-                                       New CultureInfo("de-DE"), _
-                                       New CultureInfo("es-ES"), _
-                                       New CultureInfo("ja-JP")}
-      
-      Dim thisDate As Date =#5/1/2009 9:00AM#                                            
-      
-      For Each culture As CultureInfo In cultures
-         Dim cultureName As String 
-         If String.IsNullOrEmpty(culture.Name) Then
-            cultureName = culture.NativeName
-         Else
-            cultureName = culture.Name
-         End If
+      Dim jaJP As New CultureInfo("ja-JP")
+      jaJP.DateTimeFormat.Calendar = New JapaneseCalendar() 
+      Dim date1 As Date = #01/01/1867#
 
-         Console.WriteLine("In {0}, {1}", _
-                           cultureName, thisDate.ToString(culture))
-      Next                                            
+      Try
+         Console.WriteLine(date1.ToString(jaJP))
+      Catch e As ArgumentOutOfRangeException
+         Console.WriteLine("{0:d} is earlier than {1:d} or later than {2:d}", _
+                           date1, _
+                           jaJP.DateTimeFormat.Calendar.MinSupportedDateTime, _ 
+                           jaJP.DateTimeFormat.Calendar.MaxSupportedDateTime) 
+      End Try
    End Sub
 End Module
-' The example produces the following output:
-'    In Invariant Language (Invariant Country), 05/01/2009 09:00:00
-'    In en-US, 5/1/2009 9:00:00 AM
-'    In fr-FR, 01/05/2009 09:00:00
-'    In de-DE, 01.05.2009 09:00:00
-'    In es-ES, 01/05/2009 9:00:00
-'    In ja-JP, 2009/05/01 9:00:00
+' The example displays the following output:
+'    1/1/1867 is earlier than 9/8/1868 or later than 12/31/9999

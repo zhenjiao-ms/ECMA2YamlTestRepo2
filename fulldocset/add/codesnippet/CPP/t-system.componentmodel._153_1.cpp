@@ -1,4 +1,28 @@
-         UInt64 myUInt64(123456789123);
-         String^ myUInt64String = "184467440737095551";
-         Console::WriteLine( TypeDescriptor::GetConverter( myUInt64 )->ConvertTo( myUInt64, String::typeid ) );
-         Console::WriteLine( TypeDescriptor::GetConverter( myUInt64 )->ConvertFrom( myUInt64String ) );
+[ProvideProperty("MyProperty",Control::typeid)]
+public ref class MyClass: public IExtenderProvider
+{
+protected:
+   CultureInfo^ ciMine;
+
+public:
+   // Provides the Get portion of MyProperty. 
+   CultureInfo^ GetMyProperty( Control^ myControl )
+   {
+      // Insert code here.
+      return ciMine;
+   }
+
+   // Provides the Set portion of MyProperty.
+   void SetMyProperty( Control^ myControl, String^ value )
+   {
+      // Insert code here.
+   }
+
+   /* When you inherit from IExtenderProvider, you must implement the 
+        * CanExtend method. */
+   virtual bool CanExtend( Object^ target )
+   {
+      return dynamic_cast<Control^>(target) != nullptr;
+   }
+   // Insert additional code here.
+};

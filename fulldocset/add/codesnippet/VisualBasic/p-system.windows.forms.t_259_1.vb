@@ -1,22 +1,17 @@
-Imports System.Windows.Forms
-
-Public Class Form1
-    Inherits Form
-
-    Public Sub New()
-        Dim tabText As String() = {"tabPage1", "tabPage2"}
-        Dim tabControl1 As New TabControl()
-        Dim tabPage1 As New TabPage(tabText(0))
-        Dim tabPage2 As New TabPage(tabText(1))
-
-        ' Sets the tabs to appear as buttons.
-        tabControl1.Appearance = TabAppearance.Buttons
-
-        tabControl1.Controls.AddRange(New TabPage() {tabPage1, tabPage2})
-        Controls.Add(tabControl1)
+    Public Sub CreateMyMultilineTextBox()
+        ' Create an instance of a TextBox control.
+        Dim textBox1 As New TextBox()
+        
+        ' Set the Multiline property to true.
+        textBox1.Multiline = True
+        ' Add vertical scroll bars to the TextBox control.
+        textBox1.ScrollBars = ScrollBars.Vertical
+        ' Allow the RETURN key to be entered in the TextBox control.
+        textBox1.AcceptsReturn = True
+        ' Allow the TAB key to be entered in the TextBox control.
+        textBox1.AcceptsTab = True
+        ' Set WordWrap to true to allow text to wrap to the next line.
+        textBox1.WordWrap = True
+        ' Set the default text of the control.
+        textBox1.Text = "Welcome!"
     End Sub
-
-    Shared Sub Main()
-        Application.Run(New Form1())
-    End Sub
-End Class

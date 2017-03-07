@@ -1,1 +1,1 @@
-		int maxBufferSize = binding.MaxBufferSize;
+	    bool transactionFlow = binding.TransactionFlow;

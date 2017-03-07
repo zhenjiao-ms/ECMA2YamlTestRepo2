@@ -1,60 +1,29 @@
-using System;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-
-public class CertSelect
-{
-    public static void Main()
-    {
-        try
-        {
-            X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
-            store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
-
-            X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
-            for (int i = 0; i < collection.Count; i++)
-            {
-                foreach (X509Extension extension in collection[i].Extensions)
-                {
-                    Console.WriteLine(extension.Oid.FriendlyName + "(" + extension.Oid.Value + ")");
-   
-
-                    if (extension.Oid.FriendlyName == "Key Usage")
-                    {
-                        X509KeyUsageExtension ext = (X509KeyUsageExtension)extension;
-                        Console.WriteLine(ext.KeyUsages);
-                    }
-
-                    if (extension.Oid.FriendlyName == "Basic Constraints")
-                    {
-                        X509BasicConstraintsExtension ext = (X509BasicConstraintsExtension)extension;
-                        Console.WriteLine(ext.CertificateAuthority);
-                        Console.WriteLine(ext.HasPathLengthConstraint);
-                        Console.WriteLine(ext.PathLengthConstraint);
-                    }
-
-                    if (extension.Oid.FriendlyName == "Subject Key Identifier")
-                    {
-                        X509SubjectKeyIdentifierExtension ext = (X509SubjectKeyIdentifierExtension)extension;
-                        Console.WriteLine(ext.SubjectKeyIdentifier);
-                    }
-
-                    if (extension.Oid.FriendlyName == "Enhanced Key Usage")
-                    {
-                        X509EnhancedKeyUsageExtension ext = (X509EnhancedKeyUsageExtension)extension;
-                        OidCollection oids = ext.EnhancedKeyUsages;
-                        foreach (Oid oid in oids)
-                        {
-                            Console.WriteLine(oid.FriendlyName + "(" + oid.Value + ")");
-                        }
-                    }
-                }
-            }
-            store.Close();
-        }
-        catch (CryptographicException)
-        {
-            Console.WriteLine("Information could not be written out for this certificate.");
-        }
-    }
-}
+ private static void EncryptData(String inName, String outName, byte[] tdesKey, byte[] tdesIV)
+ {    
+     //Create the file streams to handle the input and output files.
+     FileStream fin = new FileStream(inName, FileMode.Open, FileAccess.Read);
+     FileStream fout = new FileStream(outName, FileMode.OpenOrCreate, FileAccess.Write);
+     fout.SetLength(0);
+       
+     //Create variables to help with read and write.
+     byte[] bin = new byte[100]; //This is intermediate storage for the encryption.
+     long rdlen = 0;              //This is the total number of bytes written.
+     long totlen = fin.Length;    //This is the total length of the input file.
+     int len;                     //This is the number of bytes to be written at a time.
+ 
+     TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();          
+     CryptoStream encStream = new CryptoStream(fout, tdes.CreateEncryptor(tdesKey, tdesIV), CryptoStreamMode.Write);
+                
+     Console.WriteLine("Encrypting...");
+ 
+     //Read from the input file, then encrypt and write to the output file.
+     while(rdlen < totlen)
+     {
+         len = fin.Read(bin, 0, 100);
+         encStream.Write(bin, 0, len);
+         rdlen = rdlen + len;
+         Console.WriteLine("{0} bytes processed", rdlen);
+     }
+ 
+     encStream.Close();                     
+ }

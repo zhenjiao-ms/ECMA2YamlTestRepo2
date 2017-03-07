@@ -1,53 +1,73 @@
-private:
-   void Menu_Copy( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      // Ensure that text is selected in the text box.   
-      if ( textBox1->SelectionLength > 0 )
-      {
-         // Copy the selected text to the Clipboard.
-         textBox1->Copy();
-      }
-   }
+using namespace System;
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
+using namespace System::Security::Permissions;
 
-   void Menu_Cut( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
+namespace csTempWindowsApplication1
+{
+   public ref class Form1: public System::Windows::Forms::Form
    {
-      // Ensure that text is currently selected in the text box.   
-      if (  !textBox1->SelectedText->Equals( "" ) )
-      {
-         // Cut the selected text in the control and paste it into the Clipboard.
-         textBox1->Cut();
-      }
-   }
+   private:
 
-   void Menu_Paste( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      // Determine if there is any text in the Clipboard to paste into the text box.
-      if ( Clipboard::GetDataObject()->GetDataPresent( DataFormats::Text ) == true )
+      // Constant value was found in the "windows.h" header file.
+      static const Int32 WM_ACTIVATEAPP = 0x001C;
+      Boolean appActive;
+
+   public:
+      Form1()
       {
-         // Determine if any text is selected in the text box.
-         if ( textBox1->SelectionLength > 0 )
+         appActive = true;
+         this->Size = System::Drawing::Size( 300, 300 );
+         this->Text = "Form1";
+         this->Font = gcnew System::Drawing::Font( "Microsoft Sans Serif",18.0F,System::Drawing::FontStyle::Bold,System::Drawing::GraphicsUnit::Point,((System::Byte)(0)) );
+      }
+
+
+   protected:
+      virtual void OnPaint( PaintEventArgs^ e ) override
+      {
+         
+         // Paint a string in different styles depending on whether the
+         // application is active.
+         if ( appActive )
          {
-            // Ask user if they want to paste over currently selected text.
-            if ( MessageBox::Show( "Do you want to paste over current selection?",
-               "Cut Example", MessageBoxButtons::YesNo ) == ::DialogResult::No )
-            {
-               // Move selection to the point after the current selection and paste.
-               textBox1->SelectionStart = textBox1->SelectionStart + textBox1->SelectionLength;
-            }
+            e->Graphics->FillRectangle( SystemBrushes::ActiveCaption, 20, 20, 260, 50 );
+            e->Graphics->DrawString( "Application is active", this->Font, SystemBrushes::ActiveCaptionText, 20, 20 );
          }
-         // Paste current text in Clipboard into text box.
-         textBox1->Paste();
+         else
+         {
+            e->Graphics->FillRectangle( SystemBrushes::InactiveCaption, 20, 20, 260, 50 );
+            e->Graphics->DrawString( "Application is Inactive", this->Font, SystemBrushes::ActiveCaptionText, 20, 20 );
+         }
       }
-   }
 
-   void Menu_Undo( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      // Determine if last operation can be undone in text box.   
-      if ( textBox1->CanUndo == true )
+
+      [SecurityPermission(SecurityAction::Demand, Flags=SecurityPermissionFlag::UnmanagedCode)]
+      virtual void WndProc( Message% m ) override
       {
-         // Undo the last operation.
-         textBox1->Undo();
-         // Clear the undo buffer to prevent last action from being redone.
-         textBox1->ClearUndo();
+         
+         // Listen for operating system messages.
+         switch ( m.Msg )
+         {
+            case WM_ACTIVATEAPP:
+               
+               // The WParam value identifies what is occurring.
+               appActive = (int)m.WParam != 0;
+               
+               // Invalidate to get new text painted.
+               this->Invalidate();
+               break;
+         }
+         Form::WndProc( m );
       }
-   }
+
+   };
+
+}
+
+
+[STAThread]
+int main()
+{
+   Application::Run( gcnew csTempWindowsApplication1::Form1 );
+}

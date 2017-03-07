@@ -25,10 +25,8 @@ int main()
       StreamReader^ sr = gcnew StreamReader( path );
       try
       {
-         while ( sr->Peek() >= 0 )
-         {
-            Console::Write( (Char)sr->Read() );
-         }
+         //This allows you to do one Read operation.
+         Console::WriteLine( sr->ReadToEnd() );
       }
       finally
       {

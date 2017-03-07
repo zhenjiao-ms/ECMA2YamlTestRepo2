@@ -1,53 +1,112 @@
+#include <windows.h>
+
+#using <System.dll>
+#using <System.Drawing.dll>
+#using <System.Windows.Forms.dll>
+
+using namespace System;
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
+using namespace System::Runtime::InteropServices;
+using namespace System::Diagnostics;
+using namespace System::IO;
+
+public ref class MyIconButton: public Button
+{
+private:
+   Icon^ icon;
+
 public:
-   Form1()
+   MyIconButton()
    {
-      InitializeComponent();    
-      //Set button2 to be non-validating.
-      this->button2->CausesValidation = false;
+      
+      // Set the button's FlatStyle property.
+      FlatStyle = ::FlatStyle::System;
    }
+
+   MyIconButton( Icon^ ButtonIcon )
+   {
+      
+      // Set the button's FlatStyle property.
+      FlatStyle = ::FlatStyle::System;
+      
+      // Assign the icon to the private field.
+      this->icon = ButtonIcon;
+      
+      // Size the button to 4 pixels larger than the icon.
+      this->Height = icon->Height + 4;
+      this->Width = icon->Width + 4;
+   }
+
+
+protected:
+
+   property System::Windows::Forms::CreateParams^ CreateParams 
+   {
+
+      virtual System::Windows::Forms::CreateParams^ get() override
+      {
+         
+         // Extend the CreateParams property of the Button class.
+         System::Windows::Forms::CreateParams^ cp = __super::CreateParams;
+
+         // Update the button Style.
+         cp->Style |= 0x00000040; // BS_ICON value
+         return cp;
+      }
+   }
+
+public:
+   property System::Drawing::Icon^ Icon
+   {
+      System::Drawing::Icon^ get()
+      {
+         return icon;
+      }
+      void set(System::Drawing::Icon^ value)
+      {
+         icon = value;
+         UpdateIcon();
+         this->Height = icon->Height + 4;
+         this->Width = icon->Width + 4;
+      }
+   }
+
+protected:
+   virtual void OnHandleCreated( EventArgs^ e ) override
+   {
+      Button::OnHandleCreated( e );
+      
+      // Update the icon on the button if there is currently an icon assigned to the icon field.
+      if ( icon != nullptr )
+      {
+         UpdateIcon();
+      }
+   }
+
 
 private:
-   void textBox1_Validating( Object^ sender, System::ComponentModel::CancelEventArgs^ e )
+   void UpdateIcon()
    {
-      String^ errorMsg;
-      if ( !ValidEmailAddress( textBox1->Text, &errorMsg ) )
+      IntPtr iconHandle = IntPtr::Zero;
+      
+      // Get the icon's handle.
+      if ( icon != nullptr )
       {
-         // Cancel the event and select the text to be corrected by the user.
-         e->Cancel = true;
-         textBox1->Select( 0, textBox1->Text->Length );
-         
-         // Set the ErrorProvider error with the text to display.
-         this->errorProvider1->SetError( textBox1, errorMsg );
-      }
-   }
-
-   void textBox1_Validated( Object^ sender, System::EventArgs^ e )
-   {
-      // If all conditions have been met, clear the ErrorProvider of errors.
-      errorProvider1->SetError( textBox1, "" );
-   }
-
-public:
-   bool ValidEmailAddress( String^ emailAddress, [Out]interior_ptr<String^> errorMessage )
-   {
-      // Confirm that the e-mail address String* is not empty.
-      if ( emailAddress->Length == 0 )
-      {
-         *errorMessage = "e-mail address is required.";
-         return false;
+         iconHandle = icon->Handle;
       }
 
-      // Confirm that there is an "@" and a "." in the e-mail address, and in the correct order.
-      if ( emailAddress->IndexOf( "@" ) > -1 )
-      {
-         if ( emailAddress->IndexOf( ".", emailAddress->IndexOf( "@" ) ) > emailAddress->IndexOf( "@" ) )
-         {
-            *errorMessage = "";
-            return true;
-         }
-      }
-
-      *errorMessage = "e-mail address must be valid e-mail address format.\n" +
-         "For example 'someone@example.com' ";
-      return false;
+      
+      // Send Windows the message to update the button.
+      SendMessage( (HWND)Handle.ToPointer(), 0x00F7, 1, (int)iconHandle );
+      
+      /*BM_SETIMAGE value*/
+      /*IMAGE_ICON value*/
    }
+
+   public:
+	[DllImport("user32.dll")]
+	static LRESULT SendMessage(HWND hWnd, int msg, int wParam, int lParam);
+
+};
+

@@ -1,73 +1,37 @@
-using namespace System;
-using namespace System::Drawing;
-using namespace System::Windows::Forms;
-using namespace System::Security::Permissions;
-
-namespace csTempWindowsApplication1
-{
-   public ref class Form1: public System::Windows::Forms::Form
+private:
+   // The following event handler would be connected to three menu items.
+   void MyMenuClick( Object^ sender, EventArgs^ e )
    {
-   private:
-
-      // Constant value was found in the "windows.h" header file.
-      static const Int32 WM_ACTIVATEAPP = 0x001C;
-      Boolean appActive;
-
-   public:
-      Form1()
+      // Determine if clicked menu item is the Blue menu item.
+      if ( sender == menuItemBlue )
       {
-         appActive = true;
-         this->Size = System::Drawing::Size( 300, 300 );
-         this->Text = "Form1";
-         this->Font = gcnew System::Drawing::Font( "Microsoft Sans Serif",18.0F,System::Drawing::FontStyle::Bold,System::Drawing::GraphicsUnit::Point,((System::Byte)(0)) );
+         // Set the checkmark for the menuItemBlue menu item.
+         menuItemBlue->Checked = true;
+         // Uncheck the menuItemRed and menuItemGreen menu items.
+         menuItemRed->Checked = false;
+         menuItemGreen->Checked = false;
+         // Set the color of the text in the TextBox control to Blue.
+         textBox1->ForeColor = Color::Blue;
       }
-
-
-   protected:
-      virtual void OnPaint( PaintEventArgs^ e ) override
+      else if ( sender == menuItemRed )
       {
          
-         // Paint a string in different styles depending on whether the
-         // application is active.
-         if ( appActive )
-         {
-            e->Graphics->FillRectangle( SystemBrushes::ActiveCaption, 20, 20, 260, 50 );
-            e->Graphics->DrawString( "Application is active", this->Font, SystemBrushes::ActiveCaptionText, 20, 20 );
-         }
-         else
-         {
-            e->Graphics->FillRectangle( SystemBrushes::InactiveCaption, 20, 20, 260, 50 );
-            e->Graphics->DrawString( "Application is Inactive", this->Font, SystemBrushes::ActiveCaptionText, 20, 20 );
-         }
+         // Set the checkmark for the menuItemRed menu item.
+         menuItemRed->Checked = true;
+         // Uncheck the menuItemBlue and menuItemGreen menu items.
+         menuItemBlue->Checked = false;
+         menuItemGreen->Checked = false;
+         // Set the color of the text in the TextBox control to Red.
+         textBox1->ForeColor = Color::Red;
       }
-
-
-      [SecurityPermission(SecurityAction::Demand, Flags=SecurityPermissionFlag::UnmanagedCode)]
-      virtual void WndProc( Message% m ) override
+      else
       {
-         
-         // Listen for operating system messages.
-         switch ( m.Msg )
-         {
-            case WM_ACTIVATEAPP:
-               
-               // The WParam value identifies what is occurring.
-               appActive = (int)m.WParam != 0;
-               
-               // Invalidate to get new text painted.
-               this->Invalidate();
-               break;
-         }
-         Form::WndProc( m );
+         // Set the checkmark for the menuItemGreen.
+         menuItemGreen->Checked = true;
+         // Uncheck the menuItemRed and menuItemBlue menu items.
+         menuItemBlue->Checked = false;
+         menuItemRed->Checked = false;
+         // Set the color of the text in the TextBox control to Blue.
+         textBox1->ForeColor = Color::Green;
       }
-
-   };
-
-}
-
-
-[STAThread]
-int main()
-{
-   Application::Run( gcnew csTempWindowsApplication1::Form1 );
-}
+   }

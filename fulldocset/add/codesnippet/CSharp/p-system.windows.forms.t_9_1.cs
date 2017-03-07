@@ -1,36 +1,10 @@
-    private void growStyleNoneBtn_CheckedChanged(
-		System.Object sender, 
-		System.EventArgs e)
-    {
-        this.tlpGrowStyle = TableLayoutPanelGrowStyle.FixedSize;
-    }
-
-    private void growStyleAddRowBtn_CheckedChanged(
-		System.Object sender, 
-		System.EventArgs e)
-    {
-        this.tlpGrowStyle = TableLayoutPanelGrowStyle.AddRows;
-    }
-
-    private void growStyleAddColumnBtn_CheckedChanged(
-		System.Object sender, 
-		System.EventArgs e)
-    {
-        this.tlpGrowStyle = TableLayoutPanelGrowStyle.AddColumns;
-    }
-
-    private void testGrowStyleBtn_Click(
-		System.Object sender, 
-		System.EventArgs e)
-    {
-        this.TableLayoutPanel1.GrowStyle = this.tlpGrowStyle;
-
-        try
-        {
-            this.TableLayoutPanel1.Controls.Add(new Button());
-        }
-        catch(ArgumentException ex)
-        {
-            Trace.WriteLine(ex.Message);
-        }
-    }
+public void ClearMyToolBar()
+ {
+    int btns;
+    // Get the count before the Clear method is called.
+    btns = toolBar1.Buttons.Count;
+    toolBar1.Buttons.Clear();
+    MessageBox.Show("Count Before Clear: " + btns.ToString() +
+                    "\nCount After Clear: " + toolBar1.Buttons.Count.ToString());
+ }
+ 

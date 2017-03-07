@@ -1,4 +1,23 @@
-         TimeSpan ts(133333330);
-         String^ myTSStr = "5000000";
-         Console::WriteLine( TypeDescriptor::GetConverter( ts )->ConvertTo( ts, String::typeid ) );
-         Console::WriteLine( TypeDescriptor::GetConverter( ts )->ConvertFrom( myTSStr ) );
+    [DefaultEvent("CollectionChanged")]
+    public ref class TestCollection: public BaseCollection
+    {
+    private:
+        CollectionChangeEventHandler^ onCollectionChanged;
+        
+    public:
+        event CollectionChangeEventHandler^ CollectionChanged 
+        {
+        public:
+            void add(CollectionChangeEventHandler^ eventHandler)
+            { 
+                onCollectionChanged += eventHandler; 
+            }
+
+        protected:
+            void remove(CollectionChangeEventHandler^ eventHandler) 
+            { 
+                onCollectionChanged -= eventHandler; 
+            }
+        }
+        // Insert additional code.
+    };

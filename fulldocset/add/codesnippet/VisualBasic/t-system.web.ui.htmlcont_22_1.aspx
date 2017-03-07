@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
-
+  
   Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
 
     Dim i As Integer
@@ -32,9 +32,9 @@
         ' Create a new cell and add it to the Cells collection.
         cell = New HtmlTableCell()
         cell.Controls.Add(New LiteralControl("row " & _
-                                          j.ToString() & _
-                                          ", cell " & _
-                                          i.ToString()))
+                          j.ToString() & _
+                          ", cell " & _
+                          i.ToString()))
         row.Cells.Add(cell)
             
       Next i
@@ -49,18 +49,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-   <title>HtmlTableRowCollection Example</title>
+   <title>HtmlTableCellCollection Example</title>
 </head>
 <body>
 
    <form id="form1" runat="server">
 
-      <h3>HtmlTableRowCollection Example</h3>
+      <h3>HtmlTableCellCollection Example</h3>
 
       <table id="Table1" 
              style="border-width:1; border-color:Black; padding:5"
-             cellspacing="0"
-             runat="server" />
+             cellspacing="0" 
+             runat="server"/>
         
       <hr />
 

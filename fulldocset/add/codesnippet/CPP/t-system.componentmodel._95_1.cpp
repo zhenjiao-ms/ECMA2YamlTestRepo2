@@ -1,4 +1,7 @@
-[RunInstallerAttribute(true)]
-ref class MyProjectInstaller: public Installer{
-   // Insert code here.
-};
+      [ReadOnly(true)]
+      int get()
+      {
+         // Insert code here.
+         return 0;
+      }
+   }

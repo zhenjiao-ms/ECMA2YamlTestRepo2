@@ -1,12 +1,17 @@
-      [Localizable(true)]
-      int get()
+private:
+   void MatchesAttribute()
+   {
+      // Creates a new collection and assigns it the attributes for button1.
+      AttributeCollection^ attributes;
+      attributes = TypeDescriptor::GetAttributes( button1 );
+      
+      // Checks to see if the browsable attribute is true.
+      if ( attributes->Matches( BrowsableAttribute::Yes ) )
       {
-         // Insert code here.
-         return 0;
+         textBox1->Text = "button1 is browsable.";
       }
-
-      void set( int value )
+      else
       {
-         // Insert code here.
+         textBox1->Text = "button1 is not browsable.";
       }
    }

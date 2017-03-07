@@ -1,47 +1,26 @@
-public class Customer
+private void AddToolBar()
 {
-   public ArrayList CustomerOrders;
-   public string CustomerName;
-   public Customer(string myName)
-   {
-      CustomerName = myName;
-      CustomerOrders = new ArrayList(); 
-   }
-}
-public class Order
-{
-   public string OrderID;
-   public Order(string myOrderID )
-   {
-      this.OrderID = myOrderID;
-   }
-}
+   // Add a toolbar and set some of its properties.
+   toolBar1 = new ToolBar();
+   toolBar1.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
+   toolBar1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+   toolBar1.Buttons.Add(this.toolBarButton1);
+   toolBar1.ButtonSize = new System.Drawing.Size(24, 24);
+   toolBar1.Divider = true;
+   toolBar1.DropDownArrows = true;
+   toolBar1.ImageList = this.imageList1;
+   toolBar1.ShowToolTips = true;
+   toolBar1.Size = new System.Drawing.Size(292, 25);
+   toolBar1.TabIndex = 0;
+   toolBar1.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
+   toolBar1.Wrappable = false;
+   
+   // Add handlers for the ButtonClick and ButtonDropDown events.
+   toolBar1.ButtonDropDown += 
+     new ToolBarButtonClickEventHandler(toolBar1_ButtonDropDown);
+   toolBar1.ButtonClick += 
+     new ToolBarButtonClickEventHandler(toolBar1_ButtonClicked);
 
-public void AddRootNodes()
-{
-   // Add a root node to assign the customer nodes to.
-   TreeNode rootNode = new TreeNode();
-   rootNode.Text = "CustomerList";
-   // Add a main root treenode.
-   myTreeView.Nodes.Add(rootNode);
-
-   // Add a root treenode for each 'Customer' object in the ArrayList.
-   foreach(Customer myCustomer in customerArray)
-   {
-      // Add a child treenode for each Order object.
-      int i = 0;
-      TreeNode[] myTreeNodeArray = new TreeNode[5];
-      foreach(Order myOrder in myCustomer.CustomerOrders)
-      {
-         myTreeNodeArray[i] = new TreeNode(myOrder.OrderID);
-         i++;
-      }
-      TreeNode customerNode = new TreeNode(myCustomer.CustomerName,
-        myTreeNodeArray);
-		// Display the customer names with and Orange font.
-		customerNode.ForeColor = Color.Orange;
-		// Store the Customer object in the Tag property of the TreeNode.
-		customerNode.Tag = myCustomer;
-      myTreeView.Nodes[0].Nodes.Add(customerNode);
-   }
+   // Add the toolbar to the form.
+   this.Controls.Add(toolBar1);
 }

@@ -1,41 +1,128 @@
-   // Declare the TreeView control.
-internal:
-   System::Windows::Forms::TreeView^ TreeView1;
+      // The basic Customer class.
+      ref class Customer: public System::Object
+      {
+      private:
+         String^ custName;
 
-private:
-   // Initialize the TreeView to blend with the form, giving it the 
-   // same color as the form and no border.
-   void InitializeTreeView()
-   {
-      // Create a new TreeView control and set the location and size.
-      this->TreeView1 = gcnew System::Windows::Forms::TreeView;
-      this->TreeView1->Location = System::Drawing::Point( 72, 48 );
-      this->TreeView1->Size = System::Drawing::Size( 200, 200 );
+      protected:
+         ArrayList^ custOrders;
 
-      // Set the BorderStyle property to none, the BackColor property to  
-      // the form's backcolor, and the Scrollable property to false.  
-      // This allows the TreeView to blend in form.
-      this->TreeView1->BorderStyle = BorderStyle::None;
-      this->TreeView1->BackColor = this->BackColor;
-      this->TreeView1->Scrollable = false;
+      public:
+         Customer( String^ customername )
+         {
+            custName = "";
+            custOrders = gcnew ArrayList;
+            this->custName = customername;
+         }
 
-      // Set the HideSelection property to false to keep the 
-      // selection highlighted when the user leaves the control. 
-      // This helps it blend with form.
-      this->TreeView1->HideSelection = false;
 
-      // Set the ShowRootLines and ShowLines properties to false to 
-      // give the TreeView a list-like appearance.
-      this->TreeView1->ShowRootLines = false;
-      this->TreeView1->ShowLines = false;
+         property String^ CustomerName 
+         {
+            String^ get()
+            {
+               return this->custName;
+            }
 
-      // Add the nodes.
-      array<TreeNode^>^temp0 = {gcnew TreeNode( "Full Color" ),gcnew TreeNode( "Project Wizards" ),gcnew TreeNode( "Visual C# and Visual Basic Support" )};
-      array<TreeNode^>^temp1 = {gcnew TreeNode( "Pentium 133 MHz or faster processor " ),gcnew TreeNode( "Windows 98 or later" ),gcnew TreeNode( "100 MB Disk space" )};
-      array<TreeNode^>^temp2 = {gcnew TreeNode( "Features",temp0 ),gcnew TreeNode( "System Requirements",temp1 )};
-      this->TreeView1->Nodes->AddRange( temp2 );
+            void set( String^ value )
+            {
+               this->custName = value;
+            }
 
-      // Set the tab index and add the TreeView to the form.
-      this->TreeView1->TabIndex = 0;
-      this->Controls->Add( this->TreeView1 );
-   }
+         }
+
+         property ArrayList^ CustomerOrders 
+         {
+            ArrayList^ get()
+            {
+               return this->custOrders;
+            }
+
+         }
+
+      };
+
+
+      // End Customer class
+      // The basic customer Order class.
+      ref class Order: public System::Object
+      {
+      private:
+         String^ ordID;
+
+      public:
+         Order( String^ orderid )
+         {
+            ordID = "";
+            this->ordID = orderid;
+         }
+
+
+         property String^ OrderID 
+         {
+            String^ get()
+            {
+               return this->ordID;
+            }
+
+            void set( String^ value )
+            {
+               this->ordID = value;
+            }
+
+         }
+
+      };
+      // End Order class
+
+
+
+      void FillMyTreeView()
+      {
+         // Add customers to the ArrayList of Customer objects.
+         for ( int x = 0; x < 1000; x++ )
+         {
+            customerArray->Add( gcnew Customer( "Customer " + x ) );
+         }
+         
+         // Add orders to each Customer object in the ArrayList.
+         IEnumerator^ myEnum = customerArray->GetEnumerator();
+         while ( myEnum->MoveNext() )
+         {
+            Customer^ customer1 = safe_cast<Customer^>(myEnum->Current);
+            for ( int y = 0; y < 15; y++ )
+            {
+               customer1->CustomerOrders->Add( gcnew Order( "Order " + y ) );
+            }
+         }
+
+         // Display a wait cursor while the TreeNodes are being created.
+         ::Cursor::Current = gcnew System::Windows::Forms::Cursor( "MyWait.cur" );
+         
+         // Suppress repainting the TreeView until all the objects have been created.
+         treeView1->BeginUpdate();
+         
+         // Clear the TreeView each time the method is called.
+         treeView1->Nodes->Clear();
+         
+         // Add a root TreeNode for each Customer object in the ArrayList.
+         myEnum = customerArray->GetEnumerator();
+         while ( myEnum->MoveNext() )
+         {
+            Customer^ customer2 = safe_cast<Customer^>(myEnum->Current);
+            treeView1->Nodes->Add( gcnew TreeNode( customer2->CustomerName ) );
+            
+            // Add a child treenode for each Order object in the current Customer object.
+            IEnumerator^ myEnum = customer2->CustomerOrders->GetEnumerator();
+            while ( myEnum->MoveNext() )
+            {
+               Order^ order1 = safe_cast<Order^>(myEnum->Current);
+               treeView1->Nodes[ customerArray->IndexOf( customer2 ) ]->Nodes->Add( gcnew TreeNode( customer2->CustomerName + "." + order1->OrderID ) );
+            }
+         }
+         
+         // Reset the cursor to the default for all controls.
+         ::Cursor::Current = Cursors::Default;
+         
+         // Begin repainting the TreeView.
+         treeView1->EndUpdate();
+      }

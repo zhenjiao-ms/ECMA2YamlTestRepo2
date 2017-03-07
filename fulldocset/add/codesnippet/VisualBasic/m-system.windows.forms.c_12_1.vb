@@ -1,14 +1,19 @@
-    ' Demonstrates SetText, ContainsText, and GetText.
-    Public Function SwapClipboardHtmlText( _
-        ByVal replacementHtmlText As String) As String
+Protected Overrides Sub OnTextChanged(e As System.EventArgs)
+   Try
+      ' Convert the text to a Double and determine
+      ' if it is a negative number.
+      If Double.Parse(Me.Text) < 0 Then
+         ' If the number is negative, display it in Red.
+         Me.ForeColor = Color.Red
+      Else
+         ' If the number is not negative, display it in Black.
+         Me.ForeColor = Color.Black
+      End If
+   Catch
+      ' If there is an error, display the
+      ' text using the system colors.
+      Me.ForeColor = SystemColors.ControlText
+   End Try
 
-        Dim returnHtmlText As String = Nothing
-
-        If (Clipboard.ContainsText(TextDataFormat.Html)) Then
-            returnHtmlText = Clipboard.GetText(TextDataFormat.Html)
-            Clipboard.SetText(replacementHtmlText, TextDataFormat.Html)
-        End If
-
-        Return returnHtmlText
-
-    End Function
+   MyBase.OnTextChanged(e)
+End Sub

@@ -1,16 +1,4 @@
-        [Category("Data")]
-        [Description("Indicates the source of data for the control.")]
-        [RefreshProperties(RefreshProperties.Repaint)]
-        [AttributeProvider(typeof(IListSource))]
-        public object DataSource
-        {
-            get
-            {
-                return this.dataGridView1.DataSource;
-            }
-
-            set
-            {
-                this.dataGridView1.DataSource = value;
-            }
-        }
+            short myInt16 = -10000;
+            string myInt16String = "+20000";
+            Console.WriteLine(TypeDescriptor.GetConverter(myInt16).ConvertTo(myInt16, typeof(string))); 
+            Console.WriteLine(TypeDescriptor.GetConverter(myInt16).ConvertFrom(myInt16String));    

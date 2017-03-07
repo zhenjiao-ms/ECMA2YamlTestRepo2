@@ -1,11 +1,22 @@
-   // Swap the last column with the first.
-   void Button10_Click( Object^ /*sender*/, EventArgs^ /*args*/ )
-   {
-      DataGridViewColumnCollection^ columnCollection = dataGridView->Columns;
-      DataGridViewColumn^ firstDisplayedColumn = columnCollection->GetFirstColumn( DataGridViewElementStates::Visible );
-      DataGridViewColumn^ lastDisplayedColumn = columnCollection->GetLastColumn( DataGridViewElementStates::Visible, DataGridViewElementStates::None );
-      int firstColumn_sIndex = firstDisplayedColumn->DisplayIndex;
-      firstDisplayedColumn->DisplayIndex = lastDisplayedColumn->DisplayIndex;
-      lastDisplayedColumn->DisplayIndex = firstColumn_sIndex;
-   }
+private:
+    void SetAlternateChoicesUsingItems(
+        DataGridViewComboBoxColumn^ comboboxColumn)
+    {
+        comboboxColumn->Items->AddRange("Mr.", "Ms.", "Mrs.", "Dr.");
+    }
 
+private:
+    DataGridViewComboBoxColumn^ CreateComboBoxColumn()
+    {
+        DataGridViewComboBoxColumn^ column =
+            gcnew DataGridViewComboBoxColumn();
+        {
+            column->DataPropertyName = ColumnName::TitleOfCourtesy.ToString();
+            column->HeaderText = ColumnName::TitleOfCourtesy.ToString();
+            column->DropDownWidth = 160;
+            column->Width = 90;
+            column->MaxDropDownItems = 3;
+            column->FlatStyle = FlatStyle::Flat;
+        }
+        return column;
+    }

@@ -1,102 +1,172 @@
 using System;
+using System.Xml;
 using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
 
-namespace Contoso
+	class Program
+	{
+		static void Main(string[] args)
+		{
+
+			// Create an XmlDocument object.
+			XmlDocument xmlDoc = new XmlDocument();
+
+			// Load an XML file into the XmlDocument object.
+			try
+			{
+				xmlDoc.PreserveWhitespace = true;
+				xmlDoc.Load("test.xml");
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e.Message);
+				return;
+			}
+
+			// Create a new TripleDES key. 
+			TripleDESCryptoServiceProvider tDESkey = new TripleDESCryptoServiceProvider();
+
+			// Create a new instance of the TrippleDESDocumentEncryption object
+			// defined in this sample.
+			TrippleDESDocumentEncryption xmlTDES = new TrippleDESDocumentEncryption(xmlDoc, tDESkey);
+			
+			try
+			{
+				// Encrypt the "creditcard" element.
+				xmlTDES.Encrypt("creditcard");
+
+				// Display the encrypted XML to the console.
+				Console.WriteLine("Encrypted XML:");
+				Console.WriteLine();
+				Console.WriteLine(xmlTDES.Doc.OuterXml);
+
+				// Decrypt the "creditcard" element.
+				xmlTDES.Decrypt();
+
+				// Display the encrypted XML to the console.
+				Console.WriteLine();
+				Console.WriteLine("Decrypted XML:");
+				Console.WriteLine();
+				Console.WriteLine(xmlTDES.Doc.OuterXml);
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e.Message);
+			}
+			finally
+			{
+				// Clear the TripleDES key.
+				xmlTDES.Clear();
+			}
+
+		}
+
+	}
+
+class TrippleDESDocumentEncryption
 {
-    class MaskGenerator : System.Security.Cryptography.MaskGenerationMethod
-    {
-        private String HashNameValue;
+	protected XmlDocument docValue;
+	protected TripleDES algValue;
 
-        // Initialize a mask to encrypt using the SHA1 algorithm.
-        public MaskGenerator() 
-        {
-            HashNameValue = "SHA1";
-        }
+	public TrippleDESDocumentEncryption(XmlDocument Doc, TripleDES Key)
+	{
+		if (Doc != null)
+		{
+			docValue = Doc;
+		}
+		else
+		{
+			throw new ArgumentNullException("Doc");
+		}
 
-        // Create a mask with the specified seed.
-        override public byte[] GenerateMask(byte[] seed, int maskLength)
-        {
-            HashAlgorithm hash;
-            byte[] rgbCounter = new byte[4];
-            byte[] targetRgb = new byte[maskLength];
-            uint counter = 0;
+		if (Key != null)
+		{
 
-            for (int inc = 0; inc < targetRgb.Length; )
-            {
-                ConvertIntToByteArray(counter++, ref rgbCounter);
-                hash = (HashAlgorithm)
-                    CryptoConfig.CreateFromName(HashNameValue);
+			algValue = Key;
+		}
+		else
+		{
+			throw new ArgumentNullException("Key");
+		}
+	}
 
-                byte[] temp = new byte[4 + seed.Length];
-                Buffer.BlockCopy(rgbCounter, 0, temp, 0, 4);
-                Buffer.BlockCopy(seed, 0, temp, 4, seed.Length);
-                hash.ComputeHash(temp);
+	public XmlDocument Doc { set { docValue = value; } get { return docValue; } }
+	public TripleDES Alg { set { algValue = value; } get { return algValue; } }
 
-                if (targetRgb.Length - inc > hash.HashSize/8) 
-                {
-                    Buffer.BlockCopy(
-                        hash.Hash,
-                        0,
-                        targetRgb,
-                        inc,
-                        hash.Hash.Length);
-                }
-                else
-                {
-                    Buffer.BlockCopy(
-                        hash.Hash,
-                        0,
-                        targetRgb,
-                        inc,
-                        targetRgb.Length - inc);
-                }
-                inc += hash.Hash.Length;
-            }
-            return targetRgb;
-        }
+	public void Clear()
+	{
+		if (algValue != null)
+		{
+			algValue.Clear();
+		}
+		else
+		{
+			throw new Exception("No TripleDES key was found to clear.");
+		}
+	}
 
-        // Convert the specified integer to the byte array.
-        private void ConvertIntToByteArray(
-            uint sourceInt,
-            ref byte[] targetBytes)
-        {
-            uint remainder;
-            int inc = 0;
+	public void Encrypt(string Element)
+	{
+		// Find the element by name and create a new
+		// XmlElement object.
+		XmlElement inputElement = docValue.GetElementsByTagName(Element)[0] as XmlElement;
 
-            // Clear the array prior to filling it.
-            Array.Clear(targetBytes, 0, targetBytes.Length);
+		// If the element was not found, throw an exception.
+		if (inputElement == null)
+		{
+			throw new Exception("The element was not found.");
+		}
 
-            while (sourceInt > 0) 
-            {
-                remainder = sourceInt % 256;
-                targetBytes[3 - inc] = (byte) remainder;
-                sourceInt = (sourceInt - remainder)/256;
-                inc++;
-            }
-        }
-    }
-// This class demonstrates how to create the MaskGenerator class 
-// and call its GenerateMask member.
-    class MaskGeneratorImpl
-    {
-      public static void Main(string[] args)
-      {
-          byte[] seed = new byte[] {0x01, 0x02, 0x03, 0x04};
-          int length = 16;
-          MaskGenerator maskGenerator = new MaskGenerator();
-          byte[] mask = maskGenerator.GenerateMask(seed, length);
-          Console.WriteLine("Generated the following mask:");
-          Console.WriteLine(System.Text.Encoding.ASCII.GetString(mask));
+		// Create a new EncryptedXml object.
+		EncryptedXml exml = new EncryptedXml(docValue);
 
-          Console.WriteLine("This sample completed successfully; " +
-                "press Enter to exit.");
-          Console.ReadLine();
-      }
-  }
+		// Encrypt the element using the symmetric key.
+		byte[] rgbOutput = exml.EncryptData(inputElement, algValue, false);
+
+		// Create an EncryptedData object and populate it.
+		EncryptedData ed = new EncryptedData();
+
+		// Specify the namespace URI for XML encryption elements.
+		ed.Type = EncryptedXml.XmlEncElementUrl;
+
+		// Specify the namespace URI for the TrippleDES algorithm.
+		ed.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncTripleDESUrl);
+
+		// Create a CipherData element.
+		ed.CipherData = new CipherData();
+
+		// Set the CipherData element to the value of the encrypted XML element.
+		ed.CipherData.CipherValue = rgbOutput;
+
+		// Replace the plaintext XML elemnt with an EncryptedData element.
+		EncryptedXml.ReplaceElement(inputElement, ed, false);
+	}
+
+	public void Decrypt()
+	{
+
+		// XmlElement object.
+		XmlElement encryptedElement = docValue.GetElementsByTagName("EncryptedData")[0] as XmlElement;
+
+		// If the EncryptedData element was not found, throw an exception.
+		if (encryptedElement == null)
+		{
+			throw new Exception("The EncryptedData element was not found.");
+		}
+
+		// Create an EncryptedData object and populate it.
+		EncryptedData ed = new EncryptedData();
+		ed.LoadXml(encryptedElement);
+
+		// Create a new EncryptedXml object.
+		EncryptedXml exml = new EncryptedXml();
+
+		// Decrypt the element using the symmetric key.
+		byte[] rgbOutput = exml.DecryptData(ed, algValue);
+
+		// Replace the encryptedData element with the plaintext XML elemnt.
+		exml.ReplaceData(encryptedElement, rgbOutput);
+
+	}
+
 }
-//
-// This sample produces the following output:
-//
-// Generated the following mask:
-// ?"TFd(?~OtO?
-// This sample completed successfully; press Enter to exit.

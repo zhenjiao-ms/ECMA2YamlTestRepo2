@@ -3,35 +3,35 @@ Imports System.Windows.Forms
 
 Public Class Form1
     Inherits Form
-    Private tabControl1 As TabControl
-    Private myTabRect As Rectangle
 
     Public Sub New()
-        tabControl1 = New TabControl()
+        Dim tabControl1 As New TabControl()
         Dim tabPage1 As New TabPage()
+        Dim tabPage2 As New TabPage()
+        Dim tabPage3 As New TabPage()
+        Dim tabPage4 As New TabPage()
+        Dim tabPage5 As New TabPage()
+        Dim label1 As New Label()
 
-        ' Sets the tabs to be drawn by the parent window Form1.
-        ' OwnerDrawFixed allows access to DrawItem. 
-        tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed
+        ' Allows multiple rows of tabs in the tabControl1 tab strip.
+        tabControl1.Multiline = True
 
-        tabControl1.Controls.Add(tabPage1)
-        tabControl1.Location = New Point(25, 25)
-        tabControl1.Size = New Size(250, 250)
+        tabControl1.SizeMode = TabSizeMode.FillToRight
+        tabControl1.Padding = New Point(15, 5)
+        tabControl1.Controls.AddRange(New Control() {tabPage1, tabPage2, tabPage3, tabPage4, tabPage5})
+        tabControl1.Location = New Point(35, 65)
+        tabControl1.Size = New Size(220, 180)
 
-        tabPage1.TabIndex = 0
+        ' Gets the number of rows currently in the tabControl1 tab strip.
+        ' Assigns int value to the rows variable.
+        Dim rows As Integer = tabControl1.RowCount
 
-        myTabRect = tabControl1.GetTabRect(0)
+        label1.Text = "There are " + rows.ToString() + " rows of tabs in the tabControl1 tab strip."
+        label1.Location = New Point(35, 25)
+        label1.Size = New Size(220, 30)
 
-        ClientSize = New Size(300, 300)
-        Controls.Add(tabControl1)
-
-        AddHandler tabControl1.DrawItem, AddressOf OnDrawItem
-    End Sub
-
-    Private Sub OnDrawItem(ByVal sender As Object, ByVal e As DrawItemEventArgs)
-        Dim g As Graphics = e.Graphics
-        Dim p As New Pen(Color.Blue)
-        g.DrawRectangle(p, myTabRect)
+        Size = New Size(300, 300)
+        Controls.AddRange(New Control() {label1, tabControl1})
     End Sub
 
     Shared Sub Main()

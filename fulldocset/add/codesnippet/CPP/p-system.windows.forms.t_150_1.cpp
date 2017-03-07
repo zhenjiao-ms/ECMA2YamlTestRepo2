@@ -1,19 +1,39 @@
+using namespace System::Drawing;
+using namespace System::ComponentModel;
+using namespace System::Windows::Forms;
+using namespace System::Resources;
+public ref class Form1: public Form
+{
 public:
-   void CreateMyMultilineTextBox()
+   Form1()
    {
-      // Create an instance of a TextBox control.
-      TextBox^ textBox1 = gcnew TextBox;
+      IContainer^ components = gcnew System::ComponentModel::Container;
+      ResourceManager^ resources = gcnew ResourceManager( Form1::typeid );
+      TabControl^ tabControl1 = gcnew TabControl;
+      TabPage^ tabPage1 = gcnew TabPage;
       
-      // Set the Multiline property to true.
-      textBox1->Multiline = true;
-      // Add vertical scroll bars to the TextBox control.
-      textBox1->ScrollBars = ScrollBars::Vertical;
-      // Allow the RETURN key in the TextBox control.
-      textBox1->AcceptsReturn = true;
-      // Allow the TAB key to be entered in the TextBox control.
-      textBox1->AcceptsTab = true;
-      // Set WordWrap to true to allow text to wrap to the next line.
-      textBox1->WordWrap = true;
-      // Set the default text of the control.
-      textBox1->Text = "Welcome!" + Environment::NewLine + "Second Line";
+      // Declares and instantiates the ImageList Object*.
+      ImageList^ myImages = gcnew ImageList( components );
+      tabControl1->Controls->Add( tabPage1 );
+      
+      // Sets the images in myImages to display on the tabs of tabControl1. 
+      tabControl1->ImageList = myImages;
+      tabPage1->ImageIndex = 0;
+      tabPage1->Text = "tabPage1";
+      
+      // Gets the handle that provides the data of myImages.
+      myImages->ImageStream = (dynamic_cast<ImageListStreamer^>(resources->GetObject( "myImages.ImageStream" )));
+      
+      // Sets properties of myImages. 
+      myImages->ColorDepth = ColorDepth::Depth8Bit;
+      myImages->ImageSize = System::Drawing::Size( 16, 16 );
+      myImages->TransparentColor = Color::Transparent;
+      this->Controls->Add( tabControl1 );
    }
+
+};
+
+int main()
+{
+   Application::Run( gcnew Form1 );
+}

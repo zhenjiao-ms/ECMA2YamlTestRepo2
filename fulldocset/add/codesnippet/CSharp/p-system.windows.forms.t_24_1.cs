@@ -1,18 +1,55 @@
-      // This example assumes that the Form_Load event handling method
-      // is connected to the Load event of the form.
-      private void Form1_Load(object sender, System.EventArgs e)
-      {
-         // Create the ToolTip and associate with the Form container.
-         ToolTip toolTip1 = new ToolTip();
+        // This method defines the painting behavior of the control.
+        // It performs the following operations:
+        //
+        // Computes the layout of the item's image and text.
+        // Draws the item's background image.
+        // Draws the item's image.
+        // Draws the item's text.
+        //
+        // Drawing operations are implemented in the 
+        // RolloverItemRenderer class.
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
 
-         // Set up the delays for the ToolTip.
-         toolTip1.AutoPopDelay = 5000;
-         toolTip1.InitialDelay = 1000;
-         toolTip1.ReshowDelay = 500;
-         // Force the ToolTip text to be displayed whether or not the form is active.
-         toolTip1.ShowAlways = true;
-			
-         // Set up the ToolTip text for the Button and Checkbox.
-         toolTip1.SetToolTip(this.button1, "My button1");
-         toolTip1.SetToolTip(this.checkBox1, "My checkBox1");
-      }
+            if (this.Owner != null)
+            {
+                // Find the dimensions of the image and the text 
+                // areas of the item. 
+                this.ComputeImageAndTextLayout();
+
+                // Draw the background. This includes drawing a highlighted 
+                // border when the mouse is in the client area.
+                ToolStripItemRenderEventArgs ea = new ToolStripItemRenderEventArgs(
+                     e.Graphics,
+                     this);
+                this.Owner.Renderer.DrawItemBackground(ea);
+
+                // Draw the item's image. 
+                ToolStripItemImageRenderEventArgs irea =
+                    new ToolStripItemImageRenderEventArgs(
+                    e.Graphics,
+                    this,
+                    imageRect );
+                this.Owner.Renderer.DrawItemImage(irea);
+
+                // If the item is on a drop-down, give its
+                // text a different highlighted color.
+                Color highlightColor = 
+                    this.IsOnDropDown ?
+                    Color.Salmon : SystemColors.ControlLightLight;
+
+                // Draw the text, and highlight it if the 
+                // the rollover state is true.
+                ToolStripItemTextRenderEventArgs rea =
+                    new ToolStripItemTextRenderEventArgs(
+                    e.Graphics,
+                    this,
+                    base.Text,
+                    textRect,
+                    this.rolloverValue ? highlightColor : base.ForeColor,
+                    base.Font,
+                    base.TextAlign);
+                this.Owner.Renderer.DrawItemText(rea);
+            }
+        }

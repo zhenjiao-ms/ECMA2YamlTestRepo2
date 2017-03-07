@@ -1,51 +1,31 @@
-' Get the tree node under the mouse pointer and
-' save it in the mySelectedNode variable. 
-Private Sub treeView1_MouseDown(sender As Object, _
-  e As System.Windows.Forms.MouseEventArgs)
-        
-   mySelectedNode = treeView1.GetNodeAt(e.X, e.Y)
-End Sub    
-    
-Private Sub menuItem1_Click(sender As Object, e As System.EventArgs)
-   If Not (mySelectedNode Is Nothing) And _
-     Not (mySelectedNode.Parent Is Nothing) Then
-      treeView1.SelectedNode = mySelectedNode
-      treeView1.LabelEdit = True
-      If Not mySelectedNode.IsEditing Then
-         mySelectedNode.BeginEdit()
-      End If
-   Else
-      MessageBox.Show("No tree node selected or selected node is a root node." & _
-        Microsoft.VisualBasic.ControlChars.Cr & _
-        "Editing of root nodes is not allowed.", "Invalid selection")
-   End If
-End Sub    
-    
-Private Sub treeView1_AfterLabelEdit(sender As Object, _
-  e As System.Windows.Forms.NodeLabelEditEventArgs)
-   If Not (e.Label Is Nothing) Then
-      If e.Label.Length > 0 Then
-         If e.Label.IndexOfAny(New Char() {"@"c, "."c, ","c, "!"c}) = -1 Then
-            ' Stop editing without canceling the label change.
-            e.Node.EndEdit(False)
-         Else
-            ' Cancel the label edit action, inform the user, and
-            ' place the node in edit mode again. 
-            e.CancelEdit = True
-            MessageBox.Show("Invalid tree node label." & _
-              Microsoft.VisualBasic.ControlChars.Cr & _
-              "The invalid characters are: '@','.', ',', '!'", _
-              "Node Label Edit")
-            e.Node.BeginEdit()
-         End If
-      Else
-         ' Cancel the label edit action, inform the user, and
-         ' place the node in edit mode again. 
-         e.CancelEdit = True
-         MessageBox.Show("Invalid tree node label." & _
-           Microsoft.VisualBasic.ControlChars.Cr & _
-           "The label cannot be blank", "Node Label Edit")
-           e.Node.BeginEdit()
-      End If
-   End If
-End Sub 
+Public Class DemoTableLayoutPanel
+    Inherits TableLayoutPanel
+
+    Protected Overrides Sub OnCellPaint( _
+    ByVal e As System.Windows.Forms.TableLayoutCellPaintEventArgs)
+
+        MyBase.OnCellPaint(e)
+
+        Dim c As Control = Me.GetControlFromPosition(e.Column, e.Row)
+
+        If c IsNot Nothing Then
+            Dim g As Graphics = e.Graphics
+
+            g.DrawRectangle( _
+            Pens.Red, _
+            e.CellBounds.Location.X + 1, _
+            e.CellBounds.Location.Y + 1, _
+            e.CellBounds.Width - 2, _
+            e.CellBounds.Height - 2)
+
+            g.FillRectangle( _
+            Brushes.Blue, _
+            e.CellBounds.Location.X + 1, _
+            e.CellBounds.Location.Y + 1, _
+            e.CellBounds.Width - 2, _
+            e.CellBounds.Height - 2)
+        End If
+
+    End Sub
+
+End Class

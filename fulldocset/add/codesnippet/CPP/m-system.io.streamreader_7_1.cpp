@@ -1,40 +1,42 @@
-   void getNewStreamReader()
+using namespace System;
+using namespace System::IO;
+int main()
+{
+   String^ path = "c:\\temp\\MyTest.txt";
+   try
    {
-      
-      //Get a new StreamReader in ASCII format from a
-      //file using a buffer and byte order mark detection
-      StreamReader^ srAsciiFromFileFalse512 = gcnew StreamReader(  "C:\\Temp\\Test.txt",System::Text::Encoding::ASCII,false,512 );
-      
-      //Get a new StreamReader in ASCII format from a
-      //file with byte order mark detection = false
-      StreamReader^ srAsciiFromFileFalse = gcnew StreamReader(  "C:\\Temp\\Test.txt",System::Text::Encoding::ASCII,false );
-      
-      //Get a new StreamReader in ASCII format from a file 
-      StreamReader^ srAsciiFromFile = gcnew StreamReader(  "C:\\Temp\\Test.txt",System::Text::Encoding::ASCII );
-      
-      //Get a new StreamReader from a
-      //file with byte order mark detection = false
-      StreamReader^ srFromFileFalse = gcnew StreamReader(  "C:\\Temp\\Test.txt",false );
-      
-      //Get a new StreamReader from a file
-      StreamReader^ srFromFile = gcnew StreamReader(  "C:\\Temp\\Test.txt" );
-      
-      //Get a new StreamReader in ASCII format from a
-      //FileStream with byte order mark detection = false and a buffer
-      StreamReader^ srAsciiFromStreamFalse512 = gcnew StreamReader( File::OpenRead(  "C:\\Temp\\Test.txt" ),System::Text::Encoding::ASCII,false,512 );
-      
-      //Get a new StreamReader in ASCII format from a
-      //FileStream with byte order mark detection = false
-      StreamReader^ srAsciiFromStreamFalse = gcnew StreamReader( File::OpenRead(  "C:\\Temp\\Test.txt" ),System::Text::Encoding::ASCII,false );
-      
-      //Get a new StreamReader in ASCII format from a FileStream
-      StreamReader^ srAsciiFromStream = gcnew StreamReader( File::OpenRead(  "C:\\Temp\\Test.txt" ),System::Text::Encoding::ASCII );
-      
-      //Get a new StreamReader from a
-      //FileStream with byte order mark detection = false
-      StreamReader^ srFromStreamFalse = gcnew StreamReader( File::OpenRead(  "C:\\Temp\\Test.txt" ),false );
-      
-      //Get a new StreamReader from a FileStream
-      StreamReader^ srFromStream = gcnew StreamReader( File::OpenRead(  "C:\\Temp\\Test.txt" ) );
-   }
+      if ( File::Exists( path ) )
+      {
+         File::Delete( path );
+      }
+      StreamWriter^ sw = gcnew StreamWriter( path );
+      try
+      {
+         sw->WriteLine( "This" );
+         sw->WriteLine( "is some text" );
+         sw->WriteLine( "to test" );
+         sw->WriteLine( "Reading" );
+      }
+      finally
+      {
+         delete sw;
+      }
 
+      StreamReader^ sr = gcnew StreamReader( path );
+      try
+      {
+         while ( sr->Peek() >= 0 )
+         {
+            Console::WriteLine( sr->ReadLine() );
+         }
+      }
+      finally
+      {
+         delete sr;
+      }
+   }
+   catch ( Exception^ e ) 
+   {
+      Console::WriteLine( "The process failed: {0}", e );
+   }
+}

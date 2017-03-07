@@ -1,15 +1,20 @@
-    private void dataGridView1_CellBeginEdit(object sender,
-        DataGridViewCellCancelEventArgs e)
+    // Freeze the first row.
+    private void Button4_Click(object sender, System.EventArgs e)
     {
-        string msg = String.Format("Editing Cell at ({0}, {1})",
-            e.ColumnIndex, e.RowIndex);
-        this.Text = msg;
+
+        FreezeBand(dataGridView.Rows[0]);
     }
 
-    private void dataGridView1_CellEndEdit(object sender,
-        DataGridViewCellEventArgs e)
+    private void Button5_Click(object sender, System.EventArgs e)
     {
-        string msg = String.Format("Finished Editing Cell at ({0}, {1})",
-            e.ColumnIndex, e.RowIndex);
-        this.Text = msg;
+
+        FreezeBand(dataGridView.Columns[1]);
+    }
+
+    private static void FreezeBand(DataGridViewBand band)
+    {
+        band.Frozen = true;
+        DataGridViewCellStyle style = new DataGridViewCellStyle();
+        style.BackColor = Color.WhiteSmoke;
+        band.DefaultCellStyle = style;
     }

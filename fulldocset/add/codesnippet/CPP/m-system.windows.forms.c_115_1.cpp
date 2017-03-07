@@ -1,7 +1,5 @@
-   public:
-      bool DoubleBufferingEnabled()
-      {
-         
-         // Get the value of the double-buffering style bits.
-         return this->GetStyle( static_cast<ControlStyles>(ControlStyles::DoubleBuffer | ControlStyles::UserPaint | ControlStyles::AllPaintingInWmPaint) );
-      }
+   void findButton_Click( Object^ sender, System::EventArgs^ e )
+   {
+      int index = comboBox1->FindString( textBox2->Text );
+      comboBox1->SelectedIndex = index;
+   }

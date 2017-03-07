@@ -1,30 +1,19 @@
-        private OpenFileDialog openFileDialog1;
-        private Button button1;
-        
-        private void InitializeDialogAndButton()
-        {
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button1.Location = new System.Drawing.Point(53, 37);
-            this.button1.AutoSize = true;
-            this.button1.Text = "Show dialog with custom places.";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.Controls.Add(this.button1);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Add Pictures custom place using GUID.
-            openFileDialog1.CustomPlaces.Add("33E28130-4E1E-4676-835A-98395C3BC3BB");
-
-            // Add Links custom place using GUID
-            openFileDialog1.CustomPlaces.Add(
-                new FileDialogCustomPlace(
-                new Guid("BFB9D5E0-C6A9-404C-B2B2-AE6DB6AF4968")));
-
-            // Add Windows custom place using file path.
-            openFileDialog1.CustomPlaces.Add(@"c:\Windows");
-
-            openFileDialog1.ShowDialog();
-        }
+public void AddMyControls()
+ {
+    TextBox textBox1 = new TextBox();
+    Label label1 = new Label();
+    
+    // Initialize the controls and their bounds.
+    label1.Text = "First Name";
+    label1.Location = new Point(48,48);
+    label1.Size = new Size (104, 16);
+    textBox1.Text = "";
+    textBox1.Location = new Point(48, 64);
+    textBox1.Size = new Size(104,16);
+ 
+    // Add the TextBox control to the form's control collection.
+    Controls.Add(textBox1);
+    // Add the Label control to the form's control collection.
+    Controls.Add(label1);
+ }
+ 

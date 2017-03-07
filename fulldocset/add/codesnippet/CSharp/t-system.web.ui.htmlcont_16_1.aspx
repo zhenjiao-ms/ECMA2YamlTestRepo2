@@ -1,75 +1,64 @@
+
 <%@ Page Language="C#" AutoEventWireup="True" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <script runat="server">
- 
-  void Button1_Click(object Source, EventArgs e)
-  {
 
-    if (Text1.Value == "")
+    void Button_Click (Object sender, EventArgs e)
     {
-      Span1.InnerHtml = "Error: You must enter a file name.";
-      return;
+        
+        Label1.Text = "You selected:";
+
+        for (int i = 0; i <= Select1.Items.Count - 1; i++)
+        {
+           if (Select1.Items[i].Selected)
+              Label1.Text += "<br /> &nbsp;&nbsp; -" + Select1.Items[i].Text;
+        }
+
     }
 
-    if (File1.PostedFile.ContentLength > 0)
-    {
-      try
-      {
-        File1.PostedFile.SaveAs("c:\\temp\\" + Text1.Value);
-        Span1.InnerHtml = "File uploaded successfully to <b>c:\\temp\\" +
-                           Text1.Value + "</b> on the Web server.";
-      }
-      catch (Exception exc)
-      {
-        Span1.InnerHtml = "Error saving file <b>c:\\temp\\" +
-                           Text1.Value + "</b><br />" + exc.ToString() + ".";
-      }
-    }
-  }
- 
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head>
-    <title>HtmlInputFile Example</title>
-  </head>
- <body>
- 
-    <h3>HtmlInputFile Example</h3>
- 
-    <form id="form1" enctype="multipart/form-data" 
-          runat="server">
-       
-       Select File to Upload: 
-       <input id="File1" 
-              type="file" 
-              runat="server" />
- 
-       <p>
-       Save as file name (no path): 
-       <input id="Text1" 
-              type="text" 
-              runat="server" />
 
-       </p>
-       <p>
-       <span id="Span1" 
-             style="font: 8pt verdana;" 
-             runat="server" />
- 
-       </p>
-       <p>
-       <input type="button" 
-              id="Button1" 
-              value="Upload" 
-              onserverclick="Button1_Click" 
-              runat="server" />
+<head>
+    <title> HtmlSelect Example </title>
+</head>
+<body>
+<form id="form1" runat="server">
+    
+    <h3> HtmlSelect Example </h3>
 
-       </p>
- 
-    </form>
- 
- </body>
- </html>
+    Select items from the list: <br /><br />
+
+    <select id="Select1" 
+            multiple="true"
+            runat="server">
+
+        <option value="1" selected="selected"> Item 1 </option>
+        <option value="2"> Item 2 </option>
+        <option value="3"> Item 3 </option>
+        <option value="4"> Item 4 </option>
+        <option value="5"> Item 5 </option>
+        <option value="6"> Item 6 </option>
+
+    </select>
+    <br /><br />
+
+    <button id="Button1"
+            onserverclick="Button_Click"
+            runat="server">
+
+        Submit
+
+    </button>
+    <br /><br />
+
+    <asp:Label id="Label1"
+         runat="server"/>
+
+   </form>
+</body>
+</html>

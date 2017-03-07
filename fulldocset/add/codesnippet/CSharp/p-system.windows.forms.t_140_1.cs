@@ -1,11 +1,32 @@
-private void ToolStripRenderer1_RenderToolStripPanelBackground(Object sender, ToolStripPanelRenderEventArgs e) {
+        // Draw the track bar.
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (!TrackBarRenderer.IsSupported)
+            {
+                this.Parent.Text = "CustomTrackBar Disabled";
+                return;
+            }
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ToolStripPanel", e.ToolStripPanel );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Handled", e.Handled );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "RenderToolStripPanelBackground Event" );
-}
+            this.Parent.Text = "CustomTrackBar Enabled";
+            TrackBarRenderer.DrawHorizontalTrack(e.Graphics,
+                trackRectangle);
+            TrackBarRenderer.DrawTopPointingThumb(e.Graphics,
+                thumbRectangle, thumbState);
+            TrackBarRenderer.DrawHorizontalTicks(e.Graphics,
+                ticksRectangle, numberTicks, EdgeStyle.Raised);
+        }
+
+        // Determine whether the user has clicked the track bar thumb.
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            if (!TrackBarRenderer.IsSupported)
+                return;
+
+            if (this.thumbRectangle.Contains(e.Location))
+            {
+                thumbClicked = true;
+                thumbState = TrackBarThumbState.Pressed;
+            }
+
+            this.Invalidate();
+        }

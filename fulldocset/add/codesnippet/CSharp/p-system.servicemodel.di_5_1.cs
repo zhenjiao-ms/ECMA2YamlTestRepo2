@@ -8,5 +8,6 @@
 
             serviceHost.Open();
 
-            ChannelDispatcher dispatcher = (ChannelDispatcher)serviceHost.ChannelDispatchers[0];
-            IChannelListener listener = dispatcher.Listener;
+            IChannelListener icl = serviceHost.ChannelDispatchers[0].Listener;
+            ChannelDispatcher dispatcher = new ChannelDispatcher(icl);
+            dispatcher.TransactionIsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;            

@@ -1,44 +1,35 @@
-Imports System
-Imports System.ComponentModel
-Imports System.ComponentModel.Design
+    ' This method starts an asynchronous calculation. 
+    ' First, it checks the supplied task ID for uniqueness.
+    ' If taskId is unique, it creates a new WorkerEventHandler 
+    ' and calls its BeginInvoke method to start the calculation.
+    Public Overridable Sub CalculatePrimeAsync( _
+        ByVal numberToTest As Integer, _
+        ByVal taskId As Object)
 
-Namespace VbMenuCommand
-    <Designer(GetType(CDesigner))> _
-    Public Class Component1
-        Inherits System.ComponentModel.Component
-        Private components As System.ComponentModel.Container = Nothing
+        ' Create an AsyncOperation for taskId.
+        Dim asyncOp As AsyncOperation = _
+            AsyncOperationManager.CreateOperation(taskId)
 
-        Public Sub New(ByVal container As System.ComponentModel.IContainer)
-            container.Add(Me)
-            InitializeComponent()
-        End Sub
+        ' Multiple threads will access the task dictionary,
+        ' so it must be locked to serialize access.
+        SyncLock userStateToLifetime.SyncRoot
+            If userStateToLifetime.Contains(taskId) Then
+                Throw New ArgumentException( _
+                    "Task ID parameter must be unique", _
+                    "taskId")
+            End If
 
-        Public Sub New()
-            InitializeComponent()
-        End Sub
+            userStateToLifetime(taskId) = asyncOp
+        End SyncLock
 
-        Private Sub InitializeComponent()
-        End Sub
-    End Class
+        ' Start the asynchronous operation.
+        Dim workerDelegate As New WorkerEventHandler( _
+            AddressOf CalculateWorker)
 
-    <System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name:="FullTrust")> _
-    Public Class CDesigner
-        Inherits System.ComponentModel.Design.ComponentDesigner
+        workerDelegate.BeginInvoke( _
+            numberToTest, _
+            asyncOp, _
+            Nothing, _
+            Nothing)
 
-        Public Overrides Sub Initialize(ByVal comp As IComponent)
-            MyBase.Initialize(comp)
-
-            Dim mcs As IMenuCommandService = CType(comp.Site.GetService(GetType(IMenuCommandService)), IMenuCommandService)
-            Dim mc As New MenuCommand(New EventHandler(AddressOf OnF1Help), StandardCommands.F1Help)
-            mc.Enabled = True
-            mc.Visible = True
-            mc.Supported = True
-            mcs.AddCommand(mc)
-            System.Windows.Forms.MessageBox.Show("Initialize() has been invoked.")
-        End Sub
-
-        Private Sub OnF1Help(ByVal sender As Object, ByVal e As EventArgs)
-            System.Windows.Forms.MessageBox.Show("F1Help has been invoked.")
-        End Sub
-    End Class
-End Namespace
+    End Sub

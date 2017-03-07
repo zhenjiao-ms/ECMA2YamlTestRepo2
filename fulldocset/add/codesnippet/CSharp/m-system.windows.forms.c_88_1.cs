@@ -1,26 +1,78 @@
-protected override void OnTextChanged(System.EventArgs e)
+private Image picture;
+private Point pictureLocation;
+
+public Form1()
 {
-   try
+   // Enable drag-and-drop operations and 
+   // add handlers for DragEnter and DragDrop.
+   this.AllowDrop = true;
+   this.DragDrop += new DragEventHandler(this.Form1_DragDrop);
+   this.DragEnter += new DragEventHandler(this.Form1_DragEnter);
+}
+
+protected override void OnPaint(PaintEventArgs e)
+{
+   // If there is an image and it has a location, 
+   // paint it when the Form is repainted.
+   base.OnPaint(e);
+   if(this.picture != null && this.pictureLocation != Point.Empty)
    {
-      // Convert the text to a Double and determine
-      // if it is a negative number.
-      if(double.Parse(this.Text) < 0)
+      e.Graphics.DrawImage(this.picture, this.pictureLocation);
+   }
+}
+
+private void Form1_DragDrop(object sender, DragEventArgs e)
+{
+   // Handle FileDrop data.
+   if(e.Data.GetDataPresent(DataFormats.FileDrop) )
+   {
+      // Assign the file names to a string array, in 
+      // case the user has selected multiple files.
+      string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+      try
       {
-         // If the number is negative, display it in Red.
-         this.ForeColor = Color.Red;
+         // Assign the first image to the picture variable.
+         this.picture = Image.FromFile(files[0]);
+         // Set the picture location equal to the drop point.
+         this.pictureLocation = this.PointToClient(new Point(e.X, e.Y) );
       }
-      else
+      catch(Exception ex)
       {
-         // If the number is not negative, display it in Black.
-         this.ForeColor = Color.Black;
+         MessageBox.Show(ex.Message);
+         return;
       }
    }
-   catch
+
+   // Handle Bitmap data.
+   if(e.Data.GetDataPresent(DataFormats.Bitmap) )
    {
-      // If there is an error, display the 
-      // text using the system colors.
-      this.ForeColor = SystemColors.ControlText;
+      try
+      {
+         // Create an Image and assign it to the picture variable.
+         this.picture = (Image)e.Data.GetData(DataFormats.Bitmap);
+         // Set the picture location equal to the drop point.
+         this.pictureLocation = this.PointToClient(new Point(e.X, e.Y) );
+      }
+      catch(Exception ex)
+      {
+         MessageBox.Show(ex.Message);
+         return;
+      }
    }
-   
-   base.OnTextChanged(e);
+   // Force the form to be redrawn with the image.
+   this.Invalidate();
+}
+
+private void Form1_DragEnter(object sender, DragEventArgs e)
+{
+   // If the data is a file or a bitmap, display the copy cursor.
+   if (e.Data.GetDataPresent(DataFormats.Bitmap) || 
+      e.Data.GetDataPresent(DataFormats.FileDrop) ) 
+   {
+      e.Effect = DragDropEffects.Copy;
+   }
+   else
+   {
+      e.Effect = DragDropEffects.None;
+   }
 }

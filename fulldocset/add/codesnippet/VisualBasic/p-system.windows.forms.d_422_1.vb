@@ -1,11 +1,25 @@
-Private Sub DataGridView1_RowStateChanged(sender as Object, e as DataGridViewRowStateChangedEventArgs) _ 
-     Handles DataGridView1.RowStateChanged
+        ' Determine whether the cell should be painted with the 
+        ' custom selection background.
+        If (e.State And DataGridViewElementStates.Selected) = _
+            DataGridViewElementStates.Selected Then
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "Row", e.Row)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "StateChanged", e.StateChanged)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"RowStateChanged Event")
+            ' Calculate the bounds of the row.
+            Dim rowBounds As New Rectangle( _
+                Me.dataGridView1.RowHeadersWidth, e.RowBounds.Top, _
+                Me.dataGridView1.Columns.GetColumnsWidth( _
+                DataGridViewElementStates.Visible) - _
+                Me.dataGridView1.HorizontalScrollingOffset + 1, _
+                e.RowBounds.Height)
 
-End Sub
+            ' Paint the custom selection background.
+            Dim backbrush As New _
+                System.Drawing.Drawing2D.LinearGradientBrush(rowBounds, _
+                Me.dataGridView1.DefaultCellStyle.SelectionBackColor, _
+                e.InheritedRowStyle.ForeColor, _
+                System.Drawing.Drawing2D.LinearGradientMode.Horizontal)
+            Try
+                e.Graphics.FillRectangle(backbrush, rowBounds)
+            Finally
+                backbrush.Dispose()
+            End Try
+        End If

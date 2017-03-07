@@ -1,27 +1,42 @@
+Imports System.Threading
 Imports System.Threading.Tasks
 
 Module Example
    Public Sub Main()
-      Dim t As Task = Task.Run( Sub()
-                                   Dim rnd As New Random()
-                                   Dim sum As Long
-                                   Dim n As Integer = 5000000
-                                   For ctr As Integer = 1 To n
-                                      Dim number As Integer = rnd.Next(0, 101)
-                                      sum += number
+      Console.WriteLine("Application executing on thread {0}",
+                        Thread.CurrentThread.ManagedThreadId)
+      Dim asyncTask = Task.Run( Function()
+                                   Console.WriteLine("Task {0} (asyncTask) executing on Thread {1}",
+                                                     Task.CurrentId,
+                                                     Thread.CurrentThread.ManagedThreadId)
+                                   Dim sum As Long = 0
+                                   For ctr As Integer = 1 To 1000000
+                                      sum += ctr
                                    Next
-                                   Console.WriteLine("Total:   {0:N0}", sum)
-                                   Console.WriteLine("Mean:    {0:N2}", sum/n)
-                                   Console.WriteLine("N:       {0:N0}", n)   
-                                End Sub)
-     If Not t.Wait(150) Then
-        Console.WriteLine("The timeout interval elapsed.")
-     End If
+                                   Return sum
+                                End Function)
+      Dim syncTask As New Task(Of Long)( Function()
+                                            Console.WriteLine("Task {0} (syncTask) executing on Thread {1}",
+                                                              Task.CurrentId,
+                                                              Thread.CurrentThread.ManagedThreadId)
+                                            Dim sum As Long = 0
+                                            For ctr As Integer = 1 To 1000000
+                                               sum += ctr
+                                            Next
+                                            Return sum
+                                         End Function)
+      syncTask.RunSynchronously()
+      Console.WriteLine()
+      Console.WriteLine("Task {0} returned {1:N0}", syncTask.Id, syncTask.Result)
+      Console.WriteLine("Task {0} returned {1:N0}", asyncTask.Id, asyncTask.Result)
    End Sub
 End Module
-' The example displays output similar to the following:
-'       Total:   50,015,714
-'       Mean:    50.02
-'       N:       1,000,000
-' Or it displays the following output:
-'       The timeout interval elapsed.
+' The example displays the following output:
+'       Application executing on thread 1
+'       Task 1 (syncTask) executing on Thread 1
+'       Task 2 (asyncTask) executing on Thread 3
+'       1 status: RanToCompletion
+'       2 status: RanToCompletion
+'
+'       Task 2 returned 500,000,500,000
+'       Task 1 returned 500,000,500,000

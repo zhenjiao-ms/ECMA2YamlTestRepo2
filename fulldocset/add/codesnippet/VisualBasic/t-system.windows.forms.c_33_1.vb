@@ -1,33 +1,50 @@
-    Private Sub toggleColumnStylesBtn_Click( _
-    ByVal sender As System.Object, _
-    ByVal e As System.EventArgs) _
-    Handles toggleColumnStylesBtn.Click
+    ' This example demonstrates the use of the ControlAdded and
+    ' ControlRemoved events. This example assumes that two Button controls 
+    ' are added to the form and connected to the addControl_Click and 
+    ' removeControl_Click event-handler methods.
+    Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        ' Connect the ControlRemoved and ControlAdded event handlers to the event-handler methods.
+        ' ControlRemoved and ControlAdded are not available at design time.
+        AddHandler Me.ControlRemoved, AddressOf Me.Control_Removed
+        AddHandler Me.ControlAdded, AddressOf Me.Control_Added
+    End Sub 'Form1_Load
 
-        Dim styles As TableLayoutColumnStyleCollection = _
-        Me.TableLayoutPanel1.ColumnStyles
 
-        For Each style As ColumnStyle In styles
+    Private Sub Control_Added(ByVal sender As Object, ByVal e As System.Windows.Forms.ControlEventArgs)
+        MessageBox.Show(("The control named " + e.Control.Name + " has been added to the form."))
+    End Sub
 
-            If style.SizeType = SizeType.Absolute Then
 
-                style.SizeType = SizeType.AutoSize
+    Private Sub Control_Removed(ByVal sender As Object, ByVal e As System.Windows.Forms.ControlEventArgs)
+        MessageBox.Show(("The control named " + e.Control.Name + " has been removed from the form."))
+    End Sub
 
-            ElseIf style.SizeType = SizeType.AutoSize Then
 
-                style.SizeType = SizeType.Percent
+    ' Click event handler for a Button control. Adds a TextBox to the form.
+    Private Sub addControl_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles button1.Click
+        ' Create a new TextBox control and add it to the form.
+        Dim textBox1 As New TextBox()
+        textBox1.Size = New Size(100, 10)
+        textBox1.Location = New Point(10, 10)
+        ' Name the control in order to remove it later. 
+        ' The name must be specified if a control is added at run time.
+        textBox1.Name = "textBox1"
 
-                ' Set the column width to be a percentage
-                ' of the TableLayoutPanel control's width.
-                style.Width = 33
+        ' Add the control to the form's control collection.
+        Me.Controls.Add(textBox1)
+    End Sub
 
-            Else
 
-                ' Set the column width to 50 pixels.
-                style.SizeType = SizeType.Absolute
-                style.Width = 50
-
+    ' Click event handler for a Button control.
+    ' Removes the previously added TextBox from the form.
+    Private Sub removeControl_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles button2.Click
+        ' Loop through all controls in the form's control collection.
+        Dim tempCtrl As Control
+        For Each tempCtrl In Me.Controls
+            ' Determine whether the control is textBox1,
+            ' and if it is, remove it.
+            If tempCtrl.Name = "textBox1" Then
+                Me.Controls.Remove(tempCtrl)
             End If
-
-        Next
-
+        Next tempCtrl
     End Sub

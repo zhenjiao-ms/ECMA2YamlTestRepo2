@@ -1,2 +1,1 @@
-            MsmqTransportBindingElement transportBindingElement = new MsmqTransportBindingElement();
-            transportBindingElement.UseActiveDirectory = true;
+            msgVersion = MessageVersion.Soap12;

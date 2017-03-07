@@ -1,18 +1,27 @@
-    private void dataGridView1_UserDeletingRow(object sender,
-        System.Windows.Forms.DataGridViewRowCancelEventArgs e)
-    {
-        if (e.Row.Index < this.customers.Count)
-        {
-            // If the user has deleted an existing row, remove the 
-            // corresponding Customer object from the data store.
-            this.customers.RemoveAt(e.Row.Index);
-        }
 
-        if (e.Row.Index == this.rowInEdit)
-        {
-            // If the user has deleted a newly created row, release
-            // the corresponding Customer object. 
-            this.rowInEdit = -1;
-            this.customerInEdit = null;
-        }
-    }
+	// Declare the DateTimePicker.
+	internal System.Windows.Forms.DateTimePicker DateTimePicker1;
+
+
+	private void InitializeDateTimePicker()
+	{
+		// Construct the DateTimePicker.
+		this.DateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+
+		//Set size and location.
+		this.DateTimePicker1.Location = new System.Drawing.Point(40, 88);
+		this.DateTimePicker1.Size = new System.Drawing.Size(160, 21);
+        
+		// Set the alignment of the drop-down MonthCalendar to right.
+		this.DateTimePicker1.DropDownAlign = LeftRightAlignment.Right;
+
+		// Set the Value property to 50 years before today.
+		DateTimePicker1.Value = System.DateTime.Now.AddYears(-50);
+
+		//Set a custom format containing the string "of the year"
+		DateTimePicker1.Format = DateTimePickerFormat.Custom;
+		DateTimePicker1.CustomFormat = "MMM dd, 'of the year' yyyy ";
+
+		// Add the DateTimePicker to the form.
+		this.Controls.Add(this.DateTimePicker1);
+	}

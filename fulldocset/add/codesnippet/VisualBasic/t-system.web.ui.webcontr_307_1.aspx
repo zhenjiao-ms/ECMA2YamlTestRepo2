@@ -1,54 +1,33 @@
-<%@ outputcache duration="60" varybyparam="none" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<script runat="server" language="VB">  
-  
-  Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)
-    ' Display the current date and time in the label.
-    ' Output caching applies to this section of the page.
-    CachedDateLabel.Text = DateTime.Now.ToString()
-  End Sub
-  
-  ' The Substitution control calls this method to retrieve
-  ' the current date and time. This section of the page
-  ' is exempt from output caching. 
-  Shared Function GetCurrentDateTime(ByVal context As HttpContext) As String
-    Return DateTime.Now.ToString()
-  End Function
-  
-</script>
+<%@ Page Language="C#" %>
+<%@ Register TagPrefix="control"  TagName="colorcontrol" Src="~/color.ascx"%>
+<%@Register TagPrefix="pmode" TagName="persmode" Src="~/persMode.ascx" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head id="Head1" runat="server">
-  <title>Substitution Class Example</title>
+<head runat="server">
+    <title>Untitled Page</title>
 </head>
 <body>
-  <form id="Form1" runat="server">
-  
-    <h3>Substitution Class Example</h3>  
-    
-    <p>This section of the page is not cached:</p>
-    
-    <asp:substitution id="Substitution1"
-      methodname="GetCurrentDateTime"
-      runat="Server">
-    </asp:substitution>
-    
-    <br />
-    
-    <p>This section of the page is cached:</p>
-    
-    <asp:label id="CachedDateLabel"
-      runat="Server">
-    </asp:label>
-    
-    <br /><br />
-    
-    <asp:button id="RefreshButton"
-      text="Refresh Page"
-      runat="Server">
-    </asp:button>     
-
-  </form>
+    <form id="form1" runat="server">
+        <!-- Create Web Part manager and zone for the color user control. -->
+        <asp:WebPartManager ID="WebPartManager1" runat="server"></asp:WebPartManager>
+            <asp:WebPartZone ID="WebPartZone1" runat="server" HeaderText="Color Change Zone">
+                <ZoneTemplate>
+                <!-- Note that the control is Shared since it is declared on the page. -->
+                    <control:colorcontrol id="color1" title="Color Control" runat="server" />
+                </ZoneTemplate>
+            </asp:WebPartZone>
+        
+        <br />
+            <!-- Create Web Part zone for the personalization mode user control. -->
+            <asp:WebPartZone ID="WebPartZone2" runat="server" HeaderText="Scope Change Zone" Height="109px">
+                <ZoneTemplate>
+                    <pmode:persmode  ID="Persmode1" runat="server" title="Scope Tool"/>
+                </ZoneTemplate>
+            </asp:WebPartZone>
+   
+    </form>
 </body>
 </html>

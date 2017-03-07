@@ -1,16 +1,23 @@
-      private void PopupMyMenu(object sender, System.EventArgs e)
-      {
-         if (textBox1.Enabled == false || textBox1.Focused == false ||
-            textBox1.SelectedText.Length == 0)
-         {
-            menuCut.Enabled = false;
-            menuCopy.Enabled = false;
-            menuDelete.Enabled = false;
-         }
-         else
-         {
-            menuCut.Enabled = true;
-            menuCopy.Enabled = true;
-            menuDelete.Enabled = true;
-         }
-      }
+		private void InitializeMyMainMenu()
+		{
+			// Create the 2 menus and the menu items to add.
+			MainMenu mainMenu1 = new MainMenu();
+			MainMenu mainMenu2 = new MainMenu();
+
+			MenuItem menuItem1 = new MenuItem();
+			MenuItem menuItem2 = new MenuItem();
+  
+			// Set the caption for the menu items.
+			menuItem1.Text = "File";
+			menuItem2.Text = "Edit";
+
+			// Add a menu item to each menu for displaying.
+			mainMenu1.MenuItems.Add(menuItem1);
+			mainMenu2.MenuItems.Add(menuItem2);
+
+			// Merge mainMenu2 with mainMenu1
+			mainMenu1.MergeMenu(mainMenu2);
+
+			// Assign mainMenu1 to the form.
+			this.Menu = mainMenu1;
+		}

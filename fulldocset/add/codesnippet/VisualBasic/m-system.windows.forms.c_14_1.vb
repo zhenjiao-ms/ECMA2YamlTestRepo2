@@ -1,16 +1,19 @@
-Private Sub AddButtons()
-   ' Suspend the form layout and add two buttons.
-   Me.SuspendLayout()
-   Dim buttonOK As New Button()
-   buttonOK.Location = New Point(10, 10)
-   buttonOK.Size = New Size(75, 25)
-   buttonOK.Text = "OK"
-   
-   Dim buttonCancel As New Button()
-   buttonCancel.Location = New Point(90, 10)
-   buttonCancel.Size = New Size(75, 25)
-   buttonCancel.Text = "Cancel"
-   
-   Me.Controls.AddRange(New Control() {buttonOK, buttonCancel})
-   Me.ResumeLayout()
+Protected Overrides Sub OnTextChanged(e As System.EventArgs)
+   Try
+      ' Convert the text to a Double and determine
+      ' if it is a negative number.
+      If Double.Parse(Me.Text) < 0 Then
+         ' If the number is negative, display it in Red.
+         Me.ForeColor = Color.Red
+      Else
+         ' If the number is not negative, display it in Black.
+         Me.ForeColor = Color.Black
+      End If
+   Catch
+      ' If there is an error, display the
+      ' text using the system colors.
+      Me.ForeColor = SystemColors.ControlText
+   End Try
+
+   MyBase.OnTextChanged(e)
 End Sub

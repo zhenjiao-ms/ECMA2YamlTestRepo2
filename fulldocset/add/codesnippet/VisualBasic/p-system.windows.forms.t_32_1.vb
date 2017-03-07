@@ -1,16 +1,17 @@
-      ' The following code example demonstrates the syntax for setting
-      ' various ToolStripComboBox properties.
+      ' This code example demonstrates the syntax for setting
+      ' various ToolStripTextBox properties.
       ' 
-      toolStripComboBox1.AutoCompleteCustomSource.AddRange(New String() {"aaa", "bbb", "ccc"})
-      toolStripComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-      toolStripComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-      toolStripComboBox1.DropDownHeight = 110
-      toolStripComboBox1.DropDownWidth = 122
-      toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard
-      toolStripComboBox1.IntegralHeight = False
-      toolStripComboBox1.Items.AddRange(New Object() {"xxx", "yyy", "zzz"})
-      toolStripComboBox1.MaxDropDownItems = 9
-      toolStripComboBox1.MergeAction = System.Windows.Forms.MergeAction.Insert
-      toolStripComboBox1.Name = "toolStripComboBox1"
-      toolStripComboBox1.Size = New System.Drawing.Size(121, 25)
-      toolStripComboBox1.Sorted = True
+      toolStripTextBox1.AcceptsReturn = True
+      toolStripTextBox1.AcceptsTab = True
+      toolStripTextBox1.AutoCompleteCustomSource.AddRange(New String() {"This is line one.", "Second line.", "Another line."})
+      toolStripTextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+      toolStripTextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+      toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+      toolStripTextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+      toolStripTextBox1.HideSelection = False
+      toolStripTextBox1.MaxLength = 32000
+      toolStripTextBox1.Name = "toolStripTextBox1"
+      toolStripTextBox1.ShortcutsEnabled = False
+      toolStripTextBox1.Size = New System.Drawing.Size(100, 25)
+      toolStripTextBox1.Text = "STRING1" + ControlChars.Cr + ControlChars.Lf + "STRING2" + ControlChars.Cr + ControlChars.Lf + "STRING3" + ControlChars.Cr + ControlChars.Lf + "STRING4"
+      toolStripTextBox1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center

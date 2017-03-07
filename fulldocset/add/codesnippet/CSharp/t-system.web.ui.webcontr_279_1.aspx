@@ -3,62 +3,51 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<script runat="server">
- 
-  void ValueHiddenField_ValueChanged (Object sender, EventArgs e)
-  {
-    
-    // Display the value of the HiddenField control.
-    Message.Text = "The value of the HiddenField control is " + ValueHiddenField.Value + ".";
-    
-  }
-  
-</script>
-
 <html xmlns="http://www.w3.org/1999/xhtml" >
-    <head runat="server">
-    <title>HiddenField Example</title>
+  <head runat="server">
+    <title>CommandField Example</title>
 </head>
 <body>
-        <form id="Form1" runat="server">
+    <form id="form1" runat="server">
+      
+      <h3>CommandField Example</h3>
+
+      <asp:gridview id="CustomersGridView" 
+        datasourceid="CustomersSqlDataSource" 
+        autogeneratecolumns="false"
+        datakeynames="CustomerID"  
+        runat="server">
         
-            <h3>HiddenField Example</h3>
-
-            Please enter a value and click the submit button.<br/>
+        <columns>
+          <asp:commandfield showeditbutton="true"
+            headertext="Edit Controls"/>
+          <asp:boundfield datafield="CustomerID"
+            headertext="Customer ID" />
+          <asp:boundfield datafield="CompanyName"
+            headertext="Company Name"/>
+          <asp:boundfield datafield="Address"
+            headertext="Address"/>
+          <asp:boundfield datafield="City"
+            headertext="City"/>
+          <asp:boundfield datafield="PostalCode"
+            headertext="ZIP Code"/>
+          <asp:boundfield datafield="Country"
+            headertext="Country"/>
+        </columns>
+        
+      </asp:gridview>
             
-            <asp:Textbox id="ValueTextBox"
-              runat="server"/>
-              
-            <br/>  
-              
-            <input type="submit" name="SubmitButton"
-             value="Submit"
-             onclick="PageLoad()" />
-             
-            <br/>
+      <!-- This example uses Microsoft SQL Server and connects  -->
+      <!-- to the Northwind sample database. Use an ASP.NET     -->
+      <!-- expression to retrieve the connection string value   -->
+      <!-- from the Web.config file.                            -->
+      <asp:sqldatasource id="CustomersSqlDataSource"  
+        selectcommand="Select [CustomerID], [CompanyName], [Address], [City], [PostalCode], [Country] From [Customers]"
+        updatecommand="Update Customers Set CompanyName=@CompanyName, Address=@Address, City=@City, PostalCode=@PostalCode, Country=@Country Where (CustomerID = @CustomerID)"
+        connectionstring="<%$ ConnectionStrings:NorthWindConnectionString%>"
+        runat="server">
+      </asp:sqldatasource>
             
-            <asp:label id="Message" runat="server"/>    
-            
-            <asp:hiddenfield id="ValueHiddenField"
-              onvaluechanged="ValueHiddenField_ValueChanged"
-              value="" 
-              runat="server"/>
-            
-        </form>
-    </body>
+    </form>
+  </body>
 </html>
-
-<script type="text/javascript">
-
-  <!--
-  function PageLoad()
-  {
-  
-    // Set the value of the HiddenField control with the
-    // value from the TextBox.
-    Form1.ValueHiddenField.value = Form1.ValueTextBox.value;
-    
-  }
-  -->
-  
-</script>

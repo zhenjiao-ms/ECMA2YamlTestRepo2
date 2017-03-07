@@ -1,121 +1,63 @@
-   public class Form1 : System.Windows.Forms.Form
-   {
-      private System.Windows.Forms.ListBox listBox1;
-      private System.ComponentModel.Container components = null;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
+namespace csTempWindowsApplication1
+{
+    public class Form1 : System.Windows.Forms.Form
+    {
+        // Constant value was found in the "windows.h" header file.
+        private const int WM_ACTIVATEAPP = 0x001C;
+        private bool appActive = true;
 
-      protected override void Dispose(bool disposing)
-      {
-         if( disposing )
-         {
-            if ( components != null ) 
-               components.Dispose();
+        [STAThread]
+        static void Main() 
+        {
+            Application.Run(new Form1());
+        }
+        
+        public Form1()
+        {
+            this.Size = new System.Drawing.Size(300,300);
+            this.Text = "Form1";
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+        }
 
-            if ( foreColorBrush != null )
-               foreColorBrush.Dispose();
-         }
-         base.Dispose(disposing);
-      }
+        protected override void OnPaint(PaintEventArgs e) 
+        {
+            // Paint a string in different styles depending on whether the
+            // application is active.
+            if (appActive) 
+            {
+                e.Graphics.FillRectangle(SystemBrushes.ActiveCaption,20,20,260,50);
+                e.Graphics.DrawString("Application is active", this.Font, SystemBrushes.ActiveCaptionText, 20,20);
+            }
+            else 
+            {
+                e.Graphics.FillRectangle(SystemBrushes.InactiveCaption,20,20,260,50);
+                e.Graphics.DrawString("Application is Inactive", this.Font, SystemBrushes.ActiveCaptionText, 20,20);
+            }
+        }
 
-		#region Windows Form Designer generated code
-      /// <summary>
-      /// Required method for Designer support - do not modify
-      /// the contents of this method with the code editor.
-      /// </summary>
-      private void InitializeComponent()
-      {
-         this.listBox1 = new System.Windows.Forms.ListBox();
-         this.SuspendLayout();
-         // 
-         // listBox1
-         // 
-         this.listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-         this.listBox1.Location = new System.Drawing.Point(16, 48);
-         this.listBox1.Name = "listBox1";
-         this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-         this.listBox1.Size = new System.Drawing.Size(256, 134);
-         this.listBox1.TabIndex = 0;
-         this.listBox1.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.listBox1_MeasureItem);
-         this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox1_DrawItem);
-         // 
-         // Form1
-         // 
-         this.ClientSize = new System.Drawing.Size(292, 273);
-         this.Controls.AddRange(new System.Windows.Forms.Control[] {
-                                                                      this.listBox1});
-         this.Name = "Form1";
-         this.Text = "Form1";
-         this.ResumeLayout(false);
+	[System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name="FullTrust")]
+        protected override void WndProc(ref Message m) 
+        {
+            // Listen for operating system messages.
+            switch (m.Msg)
+            {
+                // The WM_ACTIVATEAPP message occurs when the application
+                // becomes the active application or becomes inactive.
+                case WM_ACTIVATEAPP:
 
-      }
-		#endregion
+                    // The WParam value identifies what is occurring.
+                    appActive = (((int)m.WParam != 0));
 
-      [STAThread]
-      static void Main() 
-      {
-         Application.Run(new Form1());
-      }
+                    // Invalidate to get new text painted.
+                    this.Invalidate();
 
-      private void listBox1_MeasureItem(object sender, System.Windows.Forms.MeasureItemEventArgs e)
-      {
-         Font font = ((ListBoxFontItem)listBox1.Items[e.Index]).Font;
-         SizeF stringSize = e.Graphics.MeasureString(font.Name, font);
-
-         // Set the height and width of the item
-         e.ItemHeight = (int)stringSize.Height;
-         e.ItemWidth = (int)stringSize.Width;
-      }
-
-      // For efficiency, cache the brush to use for drawing.
-      private SolidBrush foreColorBrush;
-
-      private void listBox1_DrawItem(object sender, System.Windows.Forms.DrawItemEventArgs e)
-      {
-         Brush brush;
-
-         // Create the brush using the ForeColor specified by the DrawItemEventArgs
-         if ( foreColorBrush == null )
-            foreColorBrush = new SolidBrush(e.ForeColor);
-         else if ( foreColorBrush.Color != e.ForeColor )
-         {
-            // The control's ForeColor has changed, so dispose of the cached brush and
-            // create a new one.
-            foreColorBrush.Dispose();
-            foreColorBrush = new SolidBrush(e.ForeColor);
-         }
-
-         // Select the appropriate brush depending on if the item is selected.
-         // Since State can be a combinateion (bit-flag) of enum values, you can't use
-         // "==" to compare them.
-         if ( (e.State & DrawItemState.Selected) == DrawItemState.Selected )
-            brush = SystemBrushes.HighlightText;
-         else
-            brush = foreColorBrush;
-
-         // Perform the painting.
-         Font font = ((ListBoxFontItem)listBox1.Items[e.Index]).Font;
-         e.DrawBackground();
-         e.Graphics.DrawString(font.Name, font, brush, e.Bounds);
-         e.DrawFocusRectangle();
-      }
-
-      /// <summary>
-      ///  A wrapper class for use with storing Fonts in a ListBox.  Since ListBox uses the
-      ///  ToString() of its items for the text it displays, this class is needed to return
-      ///  the name of the font, rather than its ToString() value.
-      /// </summary>
-      public class ListBoxFontItem 
-      {
-         public Font Font;
-
-         public ListBoxFontItem(Font f) 
-         {
-            Font = f;
-         }
-
-         public override string ToString() 
-         {
-            return Font.Name;
-         }
-      }
-   }
+                    break;                
+            }
+            base.WndProc(ref m);
+        }
+    }
+}

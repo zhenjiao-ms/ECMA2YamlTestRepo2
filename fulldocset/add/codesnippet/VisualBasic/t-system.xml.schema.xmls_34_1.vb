@@ -7,35 +7,35 @@ Class XMLSchemaExamples
 
         Dim schema As New XmlSchema()
 
-        ' <xs:simpleType name="OrderQuantityType">
-        Dim OrderQuantityType As New XmlSchemaSimpleType()
-        OrderQuantityType.Name = "OrderQuantityType"
+        ' <xs:simpleType name="WaitQueueLengthType">
+        Dim WaitQueueLengthType As New XmlSchemaSimpleType()
+        WaitQueueLengthType.Name = "WaitQueueLengthType"
 
         ' <xs:restriction base="xs:int">
         Dim restriction As New XmlSchemaSimpleTypeRestriction()
         restriction.BaseTypeName = New XmlQualifiedName("int", "http://www.w3.org/2001/XMLSchema")
 
-        ' <xs:minExclusive value="5"/>
-        Dim MinExclusive As New XmlSchemaMinExclusiveFacet()
-        MinExclusive.Value = "5"
-        restriction.Facets.Add(MinExclusive)
+        ' <xs:maxInclusive value="5"/>
+        Dim maxInclusive As New XmlSchemaMaxInclusiveFacet()
+        maxInclusive.Value = "5"
+        restriction.Facets.Add(maxInclusive)
 
-        OrderQuantityType.Content = restriction
+        WaitQueueLengthType.Content = restriction
 
-        schema.Items.Add(OrderQuantityType)
+        schema.Items.Add(WaitQueueLengthType)
 
-        ' <xs:element name="item">
+        ' <xs:element name="Lobby">
         Dim element As New XmlSchemaElement()
-        element.Name = "item"
+        element.Name = "Lobby"
 
         ' <xs:complexType>
         Dim complexType As New XmlSchemaComplexType()
 
-        ' <xs:attribute name="OrderQuantity" type="OrderQuantityType"/>
-        Dim OrderQuantityAttribute As New XmlSchemaAttribute()
-        OrderQuantityAttribute.Name = "OrderQuantity"
-        OrderQuantityAttribute.SchemaTypeName = New XmlQualifiedName("OrderQuantityType", "")
-        complexType.Attributes.Add(OrderQuantityAttribute)
+        ' <xs:attribute name="WaitQueueLength" type="WaitQueueLengthType"/>
+        Dim WaitQueueLengthAttribute As New XmlSchemaAttribute()
+        WaitQueueLengthAttribute.Name = "WaitQueueLength"
+        WaitQueueLengthAttribute.SchemaTypeName = New XmlQualifiedName("WaitQueueLengthType", "")
+        complexType.Attributes.Add(WaitQueueLengthAttribute)
 
         element.SchemaType = complexType
 

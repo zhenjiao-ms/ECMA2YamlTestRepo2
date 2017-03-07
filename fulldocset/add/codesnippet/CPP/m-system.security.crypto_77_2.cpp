@@ -1,159 +1,192 @@
-// This example signs an XML file using an
-// envelope signature. It then verifies the 
-// signed XML.
 #using <System.Security.dll>
+#using <System.dll>
 #using <System.Xml.dll>
 
 using namespace System;
+using namespace System::Xml;
 using namespace System::Security::Cryptography;
 using namespace System::Security::Cryptography::Xml;
-using namespace System::Text;
-using namespace System::Xml;
-
-// Sign an XML file and save the signature in a new file.
-void SignXmlFile( String^ FileName, String^ SignedFileName, RSA^ Key )
+static void Encrypt( XmlDocument^ Doc, String^ ElementToEncrypt, SymmetricAlgorithm^ Alg )
 {
-   
-   // Create a new XML document.
-   XmlDocument^ doc = gcnew XmlDocument;
-   
-   // Format the document to ignore white spaces.
-   doc->PreserveWhitespace = false;
-   
-   // Load the passed XML file using it's name.
-   doc->Load( gcnew XmlTextReader( FileName ) );
-   
-   // Create a SignedXml Object*.
-   SignedXml^ signedXml = gcnew SignedXml( doc );
-   
-   // Add the key to the SignedXml document. 
-   signedXml->SigningKey = Key;
-   
-   // Create a reference to be signed.
-   Reference^ reference = gcnew Reference;
-   reference->Uri = "";
-   
-   // Add an enveloped transformation to the reference.
-   XmlDsigEnvelopedSignatureTransform^ env = gcnew XmlDsigEnvelopedSignatureTransform;
-   reference->AddTransform( env );
-   
-   // Add the reference to the SignedXml Object*.
-   signedXml->AddReference( reference );
-   
-   // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-   KeyInfo^ keyInfo = gcnew KeyInfo;
-   keyInfo->AddClause( gcnew RSAKeyValue( safe_cast<RSA^>(Key) ) );
-   signedXml->KeyInfo = keyInfo;
-   
-   // Compute the signature.
-   signedXml->ComputeSignature();
-   
-   // Get the XML representation of the signature and save
-   // it to an XmlElement Object*.
-   XmlElement^ xmlDigitalSignature = signedXml->GetXml();
-   
-   // Append the element to the XML document.
-   doc->DocumentElement->AppendChild( doc->ImportNode( xmlDigitalSignature, true ) );
-   if ( (doc->FirstChild)->GetType() == XmlDeclaration::typeid )
+
+   // Check the arguments.
+   if ( Doc == nullptr )
+      throw gcnew ArgumentNullException( L"Doc" );
+
+   if ( ElementToEncrypt == nullptr )
+      throw gcnew ArgumentNullException( L"ElementToEncrypt" );
+
+   if ( Alg == nullptr )
+      throw gcnew ArgumentNullException( L"Alg" );
+
+
+   ////////////////////////////////////////////////
+   // Find the specified element in the XmlDocument
+   // object and create a new XmlElemnt object.
+   ////////////////////////////////////////////////
+   XmlElement^ elementToEncrypt = dynamic_cast<XmlElement^>(Doc->GetElementsByTagName( ElementToEncrypt )->Item( 0 ));
+
+   // Throw an XmlException if the element was not found.
+   if ( elementToEncrypt == nullptr )
    {
-      doc->RemoveChild( doc->FirstChild );
+      throw gcnew XmlException( L"The specified element was not found" );
    }
 
-   
-   // Save the signed XML document to a file specified
-   // using the passed String*.
-   XmlTextWriter^ xmltw = gcnew XmlTextWriter( SignedFileName,gcnew UTF8Encoding( false ) );
-   doc->WriteTo( xmltw );
-   xmltw->Close();
+
+   //////////////////////////////////////////////////
+   // Create a new instance of the EncryptedXml class
+   // and use it to encrypt the XmlElement with the
+   // symmetric key.
+   //////////////////////////////////////////////////
+   EncryptedXml^ eXml = gcnew EncryptedXml;
+   array<Byte>^encryptedElement = eXml->EncryptData( elementToEncrypt, Alg, false );
+
+   ////////////////////////////////////////////////
+   // Construct an EncryptedData object and populate
+   // it with the desired encryption information.
+   ////////////////////////////////////////////////
+   EncryptedData^ edElement = gcnew EncryptedData;
+   edElement->Type = EncryptedXml::XmlEncElementUrl;
+
+   // Create an EncryptionMethod element so that the
+   // receiver knows which algorithm to use for decryption.
+   // Determine what kind of algorithm is being used and
+   // supply the appropriate URL to the EncryptionMethod element.
+   String^ encryptionMethod = nullptr;
+   if ( dynamic_cast<TripleDES^>(Alg) )
+   {
+      encryptionMethod = EncryptedXml::XmlEncTripleDESUrl;
+   }
+   else
+   if ( dynamic_cast<DES^>(Alg) )
+   {
+      encryptionMethod = EncryptedXml::XmlEncDESUrl;
+   }
+   else
+   if ( dynamic_cast<Rijndael^>(Alg) )
+   {
+      switch ( Alg->KeySize )
+      {
+         case 128:
+            encryptionMethod = EncryptedXml::XmlEncAES128Url;
+            break;
+
+         case 192:
+            encryptionMethod = EncryptedXml::XmlEncAES192Url;
+            break;
+
+         case 256:
+            encryptionMethod = EncryptedXml::XmlEncAES256Url;
+            break;
+      }
+   }
+   else
+   {
+
+      // Throw an exception if the transform is not in the previous categories
+      throw gcnew CryptographicException( L"The specified algorithm is not supported for XML Encryption." );
+   }
+
+
+
+   edElement->EncryptionMethod = gcnew EncryptionMethod( encryptionMethod );
+
+   // Add the encrypted element data to the
+   // EncryptedData object.
+   edElement->CipherData->CipherValue = encryptedElement;
+
+   ////////////////////////////////////////////////////
+   // Replace the element from the original XmlDocument
+   // object with the EncryptedData element.
+   ////////////////////////////////////////////////////
+   EncryptedXml::ReplaceElement( elementToEncrypt, edElement, false );
 }
 
-
-// Verify the signature of an XML file and return the result.
-Boolean VerifyXmlFile( String^ Name )
+static void Decrypt( XmlDocument^ Doc, SymmetricAlgorithm^ Alg )
 {
-   
-   // Create a new XML document.
-   XmlDocument^ xmlDocument = gcnew XmlDocument;
-   
-   // Format using white spaces.
-   xmlDocument->PreserveWhitespace = true;
-   
-   // Load the passed XML file into the document. 
-   xmlDocument->Load( Name );
-   
-   // Create a new SignedXml Object* and pass it
-   // the XML document class.
-   SignedXml^ signedXml = gcnew SignedXml( xmlDocument );
-   
-   // Find the S"Signature" node and create a new
-   // XmlNodeList Object*.
-   XmlNodeList^ nodeList = xmlDocument->GetElementsByTagName( "Signature" );
-   
-   // Load the signature node.
-   signedXml->LoadXml( safe_cast<XmlElement^>(nodeList->Item( 0 )) );
-   
-   // Check the signature and return the result.
-   return signedXml->CheckSignature();
+
+   // Check the arguments.
+   if ( Doc == nullptr )
+      throw gcnew ArgumentNullException( L"Doc" );
+
+   if ( Alg == nullptr )
+      throw gcnew ArgumentNullException( L"Alg" );
+
+
+   // Find the EncryptedData element in the XmlDocument.
+   XmlElement^ encryptedElement = dynamic_cast<XmlElement^>(Doc->GetElementsByTagName( L"EncryptedData" )->Item( 0 ));
+
+   // If the EncryptedData element was not found, throw an exception.
+   if ( encryptedElement == nullptr )
+   {
+      throw gcnew XmlException( L"The EncryptedData element was not found." );
+   }
+
+
+   // Create an EncryptedData object and populate it.
+   EncryptedData^ edElement = gcnew EncryptedData;
+   edElement->LoadXml( encryptedElement );
+
+   // Create a new EncryptedXml object.
+   EncryptedXml^ exml = gcnew EncryptedXml;
+
+   // Decrypt the element using the symmetric key.
+   array<Byte>^rgbOutput = exml->DecryptData( edElement, Alg );
+
+   // Replace the encryptedData element with the plaintext XML element.
+   exml->ReplaceData( encryptedElement, rgbOutput );
 }
 
-
-// Create example data to sign.
-void CreateSomeXml( String^ FileName )
+int main()
 {
-   
-   // Create a new XmlDocument Object*.
-   XmlDocument^ document = gcnew XmlDocument;
-   
-   // Create a new XmlNode Object*.
-   XmlNode^ node = document->CreateNode( XmlNodeType::Element, "", "MyElement", "samples" );
-   
-   // Add some text to the node.
-   node->InnerText = "Example text to be signed.";
-   
-   // Append the node to the document.
-   document->AppendChild( node );
-   
-   // Save the XML document to the file name specified.
-   XmlTextWriter^ xmltw = gcnew XmlTextWriter( FileName,gcnew UTF8Encoding( false ) );
-   document->WriteTo( xmltw );
-   xmltw->Close();
-}
 
-void main()
-{
+   // Create an XmlDocument object.
+   XmlDocument^ xmlDoc = gcnew XmlDocument;
+
+   // Load an XML file into the XmlDocument object.
    try
    {
-      
-      // Generate a signing key.
-      RSACryptoServiceProvider^ Key = gcnew RSACryptoServiceProvider;
-      
-      // Create an XML file to sign.
-      CreateSomeXml( "Example.xml" );
-      Console::WriteLine( "New XML file created." );
-      
-      // Sign the XML that was just created and save it in a 
-      // new file.
-      SignXmlFile( "Example.xml", "SignedExample.xml", Key );
-      Console::WriteLine( "XML file signed." );
-      
-      // Verify the signature of the signed XML.
-      Console::WriteLine( "Verifying signature..." );
-      bool result = VerifyXmlFile( "SignedExample.xml" );
-      
-      // Display the results of the signature verification to
-      // the console.
-      if ( result )
-      {
-         Console::WriteLine( "The XML signature is valid." );
-      }
-      else
-      {
-         Console::WriteLine( "The XML signature is not valid." );
-      }
+      xmlDoc->PreserveWhitespace = true;
+      xmlDoc->Load( L"test.xml" );
    }
-   catch ( CryptographicException^ e ) 
+   catch ( Exception^ e )
    {
       Console::WriteLine( e->Message );
+      return 0;
+   }
+
+
+   // Create a new TripleDES key.
+   TripleDESCryptoServiceProvider^ tDESkey = gcnew TripleDESCryptoServiceProvider;
+   try
+   {
+
+      // Encrypt the "creditcard" element.
+      Encrypt( xmlDoc, L"creditcard", tDESkey );
+
+      // Display the encrypted XML to the console.
+      Console::WriteLine( L"Encrypted XML:" );
+      Console::WriteLine();
+      Console::WriteLine( xmlDoc->OuterXml );
+
+      // Decrypt the "creditcard" element.
+      Decrypt( xmlDoc, tDESkey );
+
+      // Display the encrypted XML to the console.
+      Console::WriteLine();
+      Console::WriteLine( L"Decrypted XML:" );
+      Console::WriteLine();
+      Console::WriteLine( xmlDoc->OuterXml );
+   }
+   catch ( Exception^ e )
+   {
+      Console::WriteLine( e->Message );
+   }
+   finally
+   {
+
+      // Clear the TripleDES key.
+      tDESkey->Clear();
    }
 
 }

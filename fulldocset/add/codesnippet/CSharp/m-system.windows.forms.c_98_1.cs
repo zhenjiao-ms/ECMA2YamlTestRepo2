@@ -1,12 +1,13 @@
-    // Demonstrates SetAudio, ContainsAudio, and GetAudioStream.
-    public System.IO.Stream SwapClipboardAudio(
-        System.IO.Stream replacementAudioStream)
+    // Demonstrates SetFileDropList, ContainsFileDroList, and GetFileDropList
+    public System.Collections.Specialized.StringCollection
+        SwapClipboardFileDropList(
+        System.Collections.Specialized.StringCollection replacementList)
     {
-        System.IO.Stream returnAudioStream = null;
-        if (Clipboard.ContainsAudio())
+        System.Collections.Specialized.StringCollection returnList = null;
+        if (Clipboard.ContainsFileDropList())
         {
-            returnAudioStream = Clipboard.GetAudioStream();
-            Clipboard.SetAudio(replacementAudioStream);
+            returnList = Clipboard.GetFileDropList();
+            Clipboard.SetFileDropList(replacementList);
         }
-        return returnAudioStream;
+        return returnList;
     }

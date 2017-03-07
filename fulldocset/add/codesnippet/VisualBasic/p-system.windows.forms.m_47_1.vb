@@ -1,140 +1,107 @@
-' The following code example demonstrates using the MenuItem 
-' Merge-Order property to control the way a merged menu is displayed.
-
-
-
+Imports System
+Imports System.Drawing
 Imports System.Windows.Forms
 
-Public Class Form1
+Public NotInheritable Class Form1
     Inherits System.Windows.Forms.Form
 
-    'Declare a MainMenu object and its items.
-    Friend WithEvents mainMenu1 As System.Windows.Forms.MainMenu
-    Friend WithEvents fileItem As System.Windows.Forms.MenuItem
-    Friend WithEvents newItem As System.Windows.Forms.MenuItem
-    Friend WithEvents openItem As System.Windows.Forms.MenuItem
-    Friend WithEvents saveItem As System.Windows.Forms.MenuItem
-    Friend WithEvents optionsMenu As System.Windows.Forms.MenuItem
-    Friend WithEvents viewItem As System.Windows.Forms.MenuItem
-    Friend WithEvents toolsItem As System.Windows.Forms.MenuItem
+    Friend WithEvents MonthCalendar1 As System.Windows.Forms.MonthCalendar
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
 
-    ' Declare a ContextMenu object and its items.
-    Friend WithEvents contextMenu1 As System.Windows.Forms.ContextMenu
-    Friend WithEvents cutItem As System.Windows.Forms.MenuItem
-    Friend WithEvents copyItem As System.Windows.Forms.MenuItem
-    Friend WithEvents pasteItem As System.Windows.Forms.MenuItem
+    <System.STAThread()> _
+    Public Shared Sub Main()
+        System.Windows.Forms.Application.Run(New Form1)
+    End Sub 'Main
 
-   
     Public Sub New()
         MyBase.New()
-        Me.mainMenu1 = New System.Windows.Forms.MainMenu
-        Me.fileItem = New System.Windows.Forms.MenuItem
-        Me.newItem = New System.Windows.Forms.MenuItem
-        Me.openItem = New System.Windows.Forms.MenuItem
-        Me.saveItem = New System.Windows.Forms.MenuItem
 
-        Me.viewItem = New System.Windows.Forms.MenuItem
-        Me.toolsItem = New System.Windows.Forms.MenuItem
+        Me.TextBox1 = New System.Windows.Forms.TextBox
+        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TextBox1.Location = New System.Drawing.Point(48, 488)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(824, 32)
 
+        ' Create the calendar.
+        Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar
 
-        Me.optionsMenu = New System.Windows.Forms.MenuItem
-        Me.toolsItem = New System.Windows.Forms.MenuItem
-        Me.viewItem = New System.Windows.Forms.MenuItem
+        ' Set the calendar location.
+        Me.MonthCalendar1.Location = New System.Drawing.Point(47, 16)
 
-        Me.contextMenu1 = New System.Windows.Forms.ContextMenu
-        Me.cutItem = New System.Windows.Forms.MenuItem
-        Me.copyItem = New System.Windows.Forms.MenuItem
-        Me.pasteItem = New System.Windows.Forms.MenuItem
+        ' Change the color.
+        Me.MonthCalendar1.BackColor = System.Drawing.SystemColors.Info
+        Me.MonthCalendar1.ForeColor = System.Drawing.Color.FromArgb( _
+                                CType(192, System.Byte), CType(0, System.Byte), CType(192, System.Byte))
+        Me.MonthCalendar1.TitleBackColor = System.Drawing.Color.Purple
+        Me.MonthCalendar1.TitleForeColor = System.Drawing.Color.Yellow
+        Me.MonthCalendar1.TrailingForeColor = System.Drawing.Color.FromArgb( _
+                                CType(192, System.Byte), CType(192, System.Byte), CType(0, System.Byte))
 
-        'Add file menu item and options menu item to the MainMenu.
-        Me.mainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() _
-             {Me.fileItem, Me.optionsMenu})
+        ' Add dates to the AnnuallyBoldedDates array.
+        Me.MonthCalendar1.AnnuallyBoldedDates = New System.DateTime() _
+                     {New System.DateTime(2002, 4, 20, 0, 0, 0, 0), _
+                      New System.DateTime(2002, 4, 28, 0, 0, 0, 0), _
+                      New System.DateTime(2002, 5, 5, 0, 0, 0, 0), _
+                      New System.DateTime(2002, 7, 4, 0, 0, 0, 0), _
+                      New System.DateTime(2002, 12, 15, 0, 0, 0, 0), _ 
+                      New System.DateTime(2002, 12, 18, 0, 0, 0, 0)}
 
-        ' Initialize the file menu and its contents.
-        Me.fileItem.Index = 0
-        Me.fileItem.Text = "File"
-        Me.newItem.Index = 0
-        Me.newItem.Text = "New"
-        Me.openItem.Index = 1
-        Me.openItem.Text = "Open"
-        Me.saveItem.Index = 2
-        Me.saveItem.Text = "Save"
+        ' Add dates to BoldedDates array.
+        Me.MonthCalendar1.BoldedDates = New System.DateTime() {New System.DateTime(2002, 9, 26, 0, 0, 0, 0)}
 
+        ' Add dates to MonthlyBoldedDates array.
+        Me.MonthCalendar1.MonthlyBoldedDates = New System.DateTime() _
+                     {New System.DateTime(2002, 1, 15, 0, 0, 0, 0), _
+                      New System.DateTime(2002, 1, 30, 0, 0, 0, 0)}
 
-        ' Set the merge order of fileItem to 2 so it has a lower priority 
-        ' on the merged menu.
-        Me.fileItem.MergeOrder = 2
+        ' Configure the calendar to display 3 rows by 4 columns of months.
+        Me.MonthCalendar1.CalendarDimensions = New System.Drawing.Size(4, 3)
 
-        'Add the new items to the fileItem menu item collection.
-        Me.fileItem.MenuItems.AddRange(New MenuItem() _
-           {Me.newItem, Me.openItem, Me.saveItem})
-        '
+        ' Set the week to begin on Monday.
+        Me.MonthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday
 
-        ' Initalize the optionsMenu item and its contents.
-        Me.optionsMenu.Index = 1
-        Me.optionsMenu.Text = "Options"
+        ' Sets the maximum visible date on the calendar to 12/31/2010.
+        Me.MonthCalendar1.MaxDate = New System.DateTime(2010, 12, 31, 0, 0, 0, 0)
 
-        Me.viewItem.Index = 0
-        Me.viewItem.Text = "View"
-        Me.toolsItem.Index = 1
-        Me.toolsItem.Text = "Tools"
+        ' Set the minimum visible date on the calendar to 12/31/2010.
+        Me.MonthCalendar1.MinDate = New System.DateTime(1999, 1, 1, 0, 0, 0, 0)
 
-        ' Set mergeOrder property to 1, so it has a higher priority than
-        ' the fileItem on the merged menu.
-        Me.optionsMenu.MergeOrder = 1
+        ' Only allow 21 days to be selected at the same time.
+        Me.MonthCalendar1.MaxSelectionCount = 21
 
-        'Add view and tool items to the optionsItem menu item.
-        Me.optionsMenu.MenuItems.AddRange _
-            (New MenuItem() {Me.viewItem, Me.toolsItem})
+        ' Set the calendar to move one month at a time when navigating using the arrows.
+        Me.MonthCalendar1.ScrollChange = 1
 
-        ' Initialize the menu items for the shortcut menu.
-        Me.cutItem.Index = 0
-        Me.cutItem.Text = "Cut"
-        Me.cutItem.MergeOrder = 0
-        Me.copyItem.Index = 1
-        Me.copyItem.Text = "Copy"
-        Me.copyItem.MergeOrder = 0
-        Me.pasteItem.Index = 2
-        Me.pasteItem.Text = "Paste"
-        Me.pasteItem.MergeOrder = 0
+        ' Do not show the "Today" banner.
+        Me.MonthCalendar1.ShowToday = False
 
-        ' Add menu items to the shortcut menu.
-        contextMenu1.MenuItems.AddRange _
-            (New MenuItem() {cutItem, copyItem, pasteItem})
+        ' Do not circle today's date.
+        Me.MonthCalendar1.ShowTodayCircle = False
 
-        ' Add the mainMenu1 items to the shortcut menu as well, by
-        ' calling the MergeMenu method.
-        contextMenu1.MergeMenu(mainMenu1)
+        ' Show the week numbers to the left of each week.
+        Me.MonthCalendar1.ShowWeekNumbers = True
 
-        'Initialize the form.
-        Me.ClientSize = New System.Drawing.Size(292, 266)
-        Me.Name = "Form1"
-        Me.Text = "Right click on form for merged menu."
-
-        ' Add mainMenu1 to the form.
-        Me.Menu = mainMenu1
-
+        ' Set up how the form should be displayed and add the controls to the form.
+        Me.ClientSize = New System.Drawing.Size(920, 566)
+        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.TextBox1, Me.MonthCalendar1})
+        Me.Text = "Month Calendar Example"
 
     End Sub
 
+    Private Sub monthCalendar1_DateSelected(ByVal sender As Object, _
+                    ByVal e As System.Windows.Forms.DateRangeEventArgs) Handles MonthCalendar1.DateSelected
 
-    Private Sub Form1_MouseDown(ByVal sender As Object, _
-        ByVal e As MouseEventArgs) Handles MyBase.MouseDown
-
-        ' Check for a right mouse click.
-        If (e.Button = MouseButtons.Right) Then
-
-            ' Display a merged menu containing items from mainMenu1 
-            ' and contextMenu1.
-            contextMenu1.Show(Me, New System.Drawing.Point(30, 30))
-        End If
+        ' Show the start and end dates in the text box.
+        Me.TextBox1.Text = "Date Selected: Start = " + _
+                e.Start.ToShortDateString() + " : End = " + e.End.ToShortDateString()
     End Sub
 
-    <System.STAThreadAttribute()> Public Shared Sub Main()
-        Application.Run(New Form1)
+    Private Sub monthCalendar1_DateChanged(ByVal sender As Object, _
+                    ByVal e As System.Windows.Forms.DateRangeEventArgs) Handles MonthCalendar1.DateChanged
+
+        ' Show the start and end dates in the text box.
+        Me.TextBox1.Text = "Date Changed: Start = " + _
+                e.Start.ToShortDateString() + " : End = " + e.End.ToShortDateString()
     End Sub
-
-
-    
-
 End Class

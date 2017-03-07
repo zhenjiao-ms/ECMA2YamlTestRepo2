@@ -1,73 +1,132 @@
-<%@ Page Language="VB"%>
- 
+
+<%@ Page Language="VB" AutoEventWireup="True" %>
+<%@ Import Namespace="System.Data" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<script runat="server">
- 
-  Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
- 
-    DisplayCalendar.VisibleDate = DisplayCalendar.TodaysDate
-    
-  End Sub
-
-  Sub SelectButton_Click(ByVal sender As Object, ByVal e As EventArgs)
-
-    Dim current_day As Integer = DisplayCalendar.VisibleDate.Day
-    Dim current_month As Integer = DisplayCalendar.VisibleDate.Month
-    Dim current_year As Integer = DisplayCalendar.VisibleDate.Year
-
-    DisplayCalendar.SelectedDates.Clear()
-   
-    ' Iterate through the current month and add all Wednesdays to the 
-    ' SelectedDates collection of the Calendar control.
-    Dim i As Integer
-    For i = 1 To System.DateTime.DaysInMonth(current_year, current_month)
-    
-      Dim currentDate As New DateTime(current_year, current_month, i)
-      If currentDate.DayOfWeek = DayOfWeek.Wednesday Then
-       
-        DisplayCalendar.SelectedDates.Add(currentDate)
-        
-      End If
-      
-    Next
-
-    MessageLabel.Text = "Selection Count = " + DisplayCalendar.SelectedDates.Count.ToString()
- 
-  End Sub
-
-  Sub DisplayCalendar_SelectionChanged(ByVal sender As Object, ByVal e As EventArgs)
-  
-    MessageLabel.Text = "Selection Count = " & DisplayCalendar.SelectedDates.Count.ToString()
-  
-  End Sub
- 
-</script> 
- 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head runat="server">
-    <title>ASP.NET Example</title>
-</head>
-<body>
-    <form id="form1" runat="server">
+
+<head runat="server">
+    <title>BaseDataList DataKeys and DataKeyField Example</title>
+<script runat="server">
+
+      Function CreateDataSource() As ICollection 
+      
+         ' Create sample data for the DataGrid control.
+         Dim dt As DataTable = New DataTable()
+         Dim dr As DataRow
  
-      <asp:calendar id="DisplayCalendar" runat="server"  
-        selectionmode="DayWeekMonth" 
-        onselectionchanged="DisplayCalendar_SelectionChanged" />
+         ' Define the columns of the table.
+         dt.Columns.Add(new DataColumn("IntegerValue", GetType(Integer)))
+         dt.Columns.Add(new DataColumn("StringValue", GetType(String)))
+         dt.Columns.Add(new DataColumn("CurrencyValue", GetType(Double)))
+
+         ' Define the primary key for the table as the IntegerValue 
+         ' column (column 0). To do this, first create an array of 
+         ' DataColumns to represent the primary key. The primary key can
+         ' consist of multiple columns, but in this example, only
+         ' one column is used.
+         Dim keys(1) As DataColumn
+         keys(0) = dt.Columns(0)
+
+         ' Then assign the array to the PrimaryKey property of the DataTable. 
+         dt.PrimaryKey = keys
  
-      <hr />
+         ' Populate the table with sample values.
+         Dim i As Integer
+
+         For i = 0 To 8 
+     
+            dr = dt.NewRow()
  
-      <asp:button id="SelectButton"
-        text="Select All Weds in Month" 
-        onclick="SelectButton_Click"  
-        runat="server"/> 
+            dr(0) = i
+            dr(1) = "Item " & i.ToString()
+            dr(2) = 1.23 * (i + 1)
+ 
+            dt.Rows.Add(dr)
+
+         Next
+
+         ' To persist the data source between posts to the server, 
+         ' store it in session state.  
+         Session("Source") = dt
+ 
+         Dim dv As DataView = New DataView(dt)
+         Return dv
+
+      End Function
+ 
+      Sub Page_Load(sender As Object, e As EventArgs) 
+ 
+         ' Load sample data only once, when the page is first loaded.
+         If Not IsPostBack Then 
         
-      <br/>
- 
-      <asp:label id="MessageLabel" 
-        runat="server" />
- 
-    </form>
-  </body>
+            ItemsGrid.DataSource = CreateDataSource()
+            ItemsGrid.DataBind()
+         
+         End If
+
+      End Sub
+
+      Sub Delete_Command(sender As Object, e As DataGridCommandEventArgs)
+
+         ' Retrieve the data table from session state.
+         Dim dt As DataTable = CType(Session("Source"), DataTable)
+
+         ' Retrieve the data row to delete from the data table. 
+         ' Use the DataKeys property of the DataGrid control to get 
+         ' the primary key value of the selected row. 
+         ' Search the Rows collection of the data table for this value. 
+         Dim row As DataRow
+         row = dt.Rows.Find(ItemsGrid.DataKeys(e.Item.ItemIndex))
+
+         ' Delete the item selected in the DataGrid from the data source.
+         If Not row is Nothing Then
+         
+            dt.Rows.Remove(row)
+         
+         End If
+
+         ' Save the data source.
+         Session("Source") = dt
+
+         ' Create a DataView and bind it to the DataGrid control.
+         Dim dv As DataView = New DataView(dt)
+         ItemsGrid.DataSource = dv
+         ItemsGrid.DataBind()
+
+      End Sub
+
+   </script>
+
+</head>
+
+<body>
+
+   <form id="form1" runat="server">
+
+      <h3>BaseDataList DataKeys and DataKeyField Example</h3>
+
+      <asp:DataGrid id="ItemsGrid" 
+           BorderColor="Black"
+           ShowFooter="False" 
+           CellPadding="3" 
+           CellSpacing="0"
+           HeaderStyle-BackColor="#aaaadd"
+           DataKeyField="IntegerValue"
+           OnDeleteCommand="Delete_Command"
+           runat="server">
+
+         <Columns>
+
+            <asp:ButtonColumn Text="Delete"
+                 CommandName="Delete"/>
+
+         </Columns>
+
+      </asp:DataGrid>
+
+   </form>
+
+</body>
 </html>
-   

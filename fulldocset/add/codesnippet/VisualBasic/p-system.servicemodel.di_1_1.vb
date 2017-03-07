@@ -7,4 +7,4 @@
 
 			Dim icl As IChannelListener = serviceHost.ChannelDispatchers(0).Listener
 			Dim dispatcher As New ChannelDispatcher(icl)
-			dispatcher.MessageVersion = MessageVersion.Default
+			dispatcher.TransactionTimeout = New TimeSpan(100)

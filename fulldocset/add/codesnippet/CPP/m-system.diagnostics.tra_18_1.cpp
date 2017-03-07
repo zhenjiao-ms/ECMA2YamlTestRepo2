@@ -1,25 +1,28 @@
-// Class-level declaration.
-// Create a TraceSwitch.
-private:
-   static TraceSwitch^ generalSwitch = 
-      gcnew TraceSwitch( "General", "Entire Application" );
+// Specify /DTRACE when compiling.
 
-public:
-   static void MyErrorMethod( Object^ myObject )
-   {
-      #if defined(TRACE)
-      // Write the message if the TraceSwitch level 
-      // is set to Error or higher.
-      if ( generalSwitch->TraceError )
-      {
-         Trace::Write( "Invalid object. " );
-      }
-      
-      // Write a second message if the TraceSwitch level
-      // is set to Verbose.
-      if ( generalSwitch->TraceVerbose )
-      {
-         Trace::WriteLine( myObject );
-      }
-      #endif
-   }
+#using <System.dll>
+using namespace System;
+using namespace System::IO;
+using namespace System::Diagnostics;
+
+void main()
+{
+     #if defined(TRACE)
+    // Create a file for output named TestFile.txt.
+    FileStream^ myFileStream = 
+        gcnew FileStream( "TestFile.txt", FileMode::Append );
+   
+    // Create a new text writer using the output stream 
+    // and add it to the trace listeners.
+    TextWriterTraceListener^ myTextListener = 
+        gcnew TextWriterTraceListener( myFileStream );
+    Trace::Listeners->Add( myTextListener );
+   
+    // Write output to the file.
+    Trace::WriteLine( "Test output" );
+   
+    // Flush and close the output stream.
+    Trace::Flush();
+    Trace::Close();
+    #endif
+}

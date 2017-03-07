@@ -1,35 +1,23 @@
-    Private Sub dataGridView1_CellMouseEnter(ByVal sender As Object, _
-        ByVal e As DataGridViewCellEventArgs) _
-        Handles dataGridView1.CellMouseEnter
+Private Sub DataGridView1_ColumnDividerDoubleClick(sender as Object, e as DataGridViewColumnDividerDoubleClickEventArgs) _ 
+     Handles DataGridView1.ColumnDividerDoubleClick
 
-        Dim markingUnderMouse As Bitmap = _
-            CType(dataGridView1.Rows(e.RowIndex). _
-                Cells(e.ColumnIndex).Value, Bitmap)
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "ColumnIndex", e.ColumnIndex)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Handled", e.Handled)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Button", e.Button)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Clicks", e.Clicks)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "X", e.X)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Y", e.Y)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Delta", e.Delta)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Location", e.Location)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"ColumnDividerDoubleClick Event")
 
-        If markingUnderMouse Is blank Then
-            dataGridView1.Cursor = Cursors.Default
-        ElseIf markingUnderMouse Is o OrElse markingUnderMouse Is x Then
-            dataGridView1.Cursor = Cursors.No
-            ToolTip(e)
-        End If
-    End Sub
-
-    Private Sub ToolTip( _
-        ByVal e As DataGridViewCellEventArgs)
-
-        Dim cell As DataGridViewImageCell = _
-            CType(dataGridView1.Rows(e.RowIndex). _
-            Cells(e.ColumnIndex), DataGridViewImageCell)
-        Dim imageColumn As DataGridViewImageColumn = _
-            CType(dataGridView1.Columns(cell.ColumnIndex), _
-            DataGridViewImageColumn)
-
-        cell.ToolTipText = imageColumn.Description
-    End Sub
-
-    Private Sub dataGridView1_CellMouseLeave(ByVal sender As Object, _
-        ByVal e As DataGridViewCellEventArgs) _
-        Handles dataGridView1.CellMouseLeave
-
-        dataGridView1.Cursor = Cursors.Default
-    End Sub
+End Sub

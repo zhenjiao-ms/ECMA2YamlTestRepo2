@@ -1,29 +1,16 @@
-// Adds the LicenseProviderAttribute to the control.
-
-[LicenseProvider(LicFileLicenseProvider::typeid)]
-public ref class MyControl: public Control
-{
-   // Creates a new, null license.
-private:
-   License^ license;
-
-public:
-   MyControl()
-   {
-      
-      // Adds Validate to the control's constructor.
-      license = LicenseManager::Validate( MyControl::typeid, this );
-
-      // Insert code to perform other instance creation tasks here.
-   }
-
-public:
-   ~MyControl()
-   {
-      if ( license != nullptr )
+   public:
+      property array<Object^>^ componentArray 
       {
-         delete license;
-         license = nullptr;
+         [EditorAttribute(System::ComponentModel::Design::ArrayEditor::typeid,
+            System::Drawing::Design::UITypeEditor::typeid)]
+         array<Object^>^ get()
+         {
+            return compArray;
+         }
+         void set( array<Object^>^ value )
+         {
+            compArray = value;
+         }
       }
-   }
-};
+   private:
+      array<Object^>^compArray;

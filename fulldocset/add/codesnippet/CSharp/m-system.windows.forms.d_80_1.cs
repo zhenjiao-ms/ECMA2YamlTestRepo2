@@ -1,7 +1,12 @@
-            // Draw the ToolTip using default values if the ToolTip is for button3.
-            else if (e.AssociatedControl == button3)
+            private void SetHeaderText(object sender, System.EventArgs e)
             {
-                e.DrawBackground();
-                e.DrawBorder();
-                e.DrawText();
-            }
+               // Set the HeaderText property.
+               myDataGridColumnStyle.HeaderText = "Emp ID";
+               myDataGrid.Invalidate();
+            } 
+            private void ResetHeaderText(object sender, System.EventArgs e)
+            {
+               // Reset the HeaderText property to its default value.
+               myDataGridColumnStyle.ResetHeaderText();
+               myDataGrid.Invalidate();
+               }

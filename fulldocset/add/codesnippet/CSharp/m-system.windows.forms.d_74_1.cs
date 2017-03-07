@@ -1,18 +1,19 @@
-public void CreateMyDateTimePicker()
-{
-   // Create a new DateTimePicker control and initialize it.
-   DateTimePicker dateTimePicker1 = new DateTimePicker();
+         private void AddCustomColumnStyle()
+         {
+            // Set the TableStyle Mapping name.
+            myTableStyle.MappingName = "customerTable";
+            myTableStyle.BackColor = Color.Pink;
 
-   // Set the MinDate and MaxDate.
-   dateTimePicker1.MinDate = new DateTime(1985, 6, 20);
-   dateTimePicker1.MaxDate = DateTime.Today;
+            // Set the ColumnStyle properties and add to TableStyle.
+            myColumnStyle.MappingName = "Customers";
+            myColumnStyle.HeaderText = "Customer Name";
+            myColumnStyle.Width = 250;
+            myTableStyle.GridColumnStyles.Add(myColumnStyle);
+            myDataGrid.TableStyles.Add(myTableStyle);
+         }
 
-   // Set the CustomFormat string.
-   dateTimePicker1.CustomFormat = "MMMM dd, yyyy - dddd";
-   dateTimePicker1.Format = DateTimePickerFormat.Custom;
-
-   // Show the CheckBox and display the control as an up-down control.
-   dateTimePicker1.ShowCheckBox = true;
-   dateTimePicker1.ShowUpDown = true;
-}
-   
+         private void myButton1_Click(object sender, EventArgs e)
+         {
+            // Reset the background color.
+            myTableStyle.ResetBackColor();
+         }

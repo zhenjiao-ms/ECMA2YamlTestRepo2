@@ -1,8 +1,11 @@
-        // This method hides the drop-down for the first item
-        // in the form's ToolStrip.
-        private void hideButton_Click(object sender, EventArgs e)
+        // This method defines the behavior of the MouseLeave event.
+        // It sets the state of the rolloverValue field to false and
+        // tells the control to repaint.
+        protected override void OnMouseLeave(EventArgs e)
         {
-            ToolStripDropDownItem item = this.toolStrip1.Items[0] as ToolStripDropDownItem;
+            base.OnMouseLeave(e);
 
-            item.HideDropDown();
+            this.rolloverValue = false;
+
+            this.Invalidate();
         }

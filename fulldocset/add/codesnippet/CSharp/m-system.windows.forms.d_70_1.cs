@@ -1,10 +1,21 @@
-            private void myButton1_Click(object sender,EventArgs e)
-            {
-               //Set the 'AlternatingBackColor'.
-               myDataGridTableStyle.AlternatingBackColor=Color.Blue;
-            }
-            private void myButton2_Click(object sender,EventArgs e)
-            {
-               // Reset the 'AlternatingBackColor'.
-               myDataGridTableStyle.ResetAlternatingBackColor();
-            }
+      // Check if the first row is selected.
+      private void button8_Click(object sender, EventArgs e)
+      {         
+         if(myDataGrid.IsSelected(0))
+         {
+            MessageBox.Show("Row selected",
+               "Message",   MessageBoxButtons.OK,
+               MessageBoxIcon.Exclamation);
+         }
+         else
+         {
+            MessageBox.Show("Row not selected",
+               "Message",   MessageBoxButtons.OK,
+               MessageBoxIcon.Exclamation);
+         }         
+      }
+      // Deselect the first row.
+      private void button11_Click(object sender, EventArgs e)
+      {
+         myDataGrid.UnSelect(0);
+      }

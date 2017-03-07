@@ -1,16 +1,17 @@
-Private Sub AddButtons()
-   ' Suspend the form layout and add two buttons.
-   Me.SuspendLayout()
-   Dim buttonOK As New Button()
-   buttonOK.Location = New Point(10, 10)
-   buttonOK.Size = New Size(75, 25)
-   buttonOK.Text = "OK"
+   Delegate Sub MyDelegate(myControl As Label, myArg2 As String)
    
-   Dim buttonCancel As New Button()
-   buttonCancel.Location = New Point(90, 10)
-   buttonCancel.Size = New Size(75, 25)
-   buttonCancel.Text = "Cancel"
+   Private Sub Button_Click(sender As Object, e As EventArgs)
+      Dim myArray(1) As Object
+      
+      myArray(0) = New Label()
+      myArray(1) = "Enter a Value"
+      myTextBox.BeginInvoke(New MyDelegate(AddressOf DelegateMethod), myArray)
+   End Sub 'Button_Click
    
-   Me.Controls.AddRange(New Control() {buttonOK, buttonCancel})
-   Me.ResumeLayout()
-End Sub
+   Public Sub DelegateMethod(myControl As Label, myCaption As String)
+      myControl.Location = New Point(16, 16)
+      myControl.Size = New Size(80, 25)
+      myControl.Text = myCaption
+      Me.Controls.Add(myControl)
+   End Sub 'DelegateMethod
+   

@@ -1,95 +1,83 @@
-' Example of the Decimal.CompareTo and Decimal.Equals instance methods.
-Imports System
-Imports Microsoft.VisualBasic
+Module Example
+   Dim value As Decimal = 112d
+   
+   Public Sub Main()
+      Dim byte1 As Byte = 112
+      Console.WriteLine("value = byte1: {0,17}", value.Equals(byte1))
+      TestObjectForEquality(byte1)
+      
+      Dim short1 As Short = 112
+      Console.WriteLine("value = short1: {0,17}", value.Equals(short1))
+      TestObjectForEquality(short1)
 
-Module DecCompToEqualsObjDemo
-    
-    ' Get the exception type name; remove the namespace prefix.
-    Function GetExceptionType( ex As Exception ) As String
+      Dim int1 As Integer = 112
+      Console.WriteLine("value = int1: {0,19}", value.Equals(int1))
+      TestObjectForEquality(int1)
 
-        Dim exceptionType   As String = ex.GetType( ).ToString( )
-        Return exceptionType.Substring( _
-            exceptionType.LastIndexOf( "."c ) + 1 )
-    End Function
+      Dim long1 As Long = 112
+      Console.WriteLine("value = long1: {0,18}", value.Equals(long1))
+      TestObjectForEquality(long1)
 
-    ' Compare the Decimal to the Object parameters, 
-    ' and display the Object parameters with the results.
-    Sub CompDecimalToObject( Left as Decimal, Right as Object, _
-        RightText as String )
+      Dim sbyte1 As SByte = 112
+      Console.WriteLine("value = sbyte1: {0,17}", value.Equals(sbyte1))
+      TestObjectForEquality(sbyte1)
+      
+      Dim ushort1 As UShort = 112
+      Console.WriteLine("value = ushort1: {0,17}", value.Equals(ushort1))
+      TestObjectForEquality(ushort1)
 
-        Console.WriteLine( "{0,-46}{1}", "Object: " & RightText, _
-            Right )
-        Console.WriteLine( "{0,-46}{1}", "Left.Equals( Object )", _
-            Left.Equals( Right ) )
-        Console.Write( "{0,-46}", "Left.CompareTo( Object )" )
+      Dim uint1 As UInteger = 112
+      Console.WriteLine("value = uint1: {0,19}", value.Equals(uint1))
+      TestObjectForEquality(uint1)
 
-        ' Catch the exception if CompareTo( ) throws one.
-        Try
-            Console.WriteLine( "{0}" & vbCrLf, _
-                Left.CompareTo( Right ) )
-        Catch ex As Exception
-            Console.WriteLine( "{0}" & vbCrLf, _
-                GetExceptionType( ex ) )
-        End Try
-    End Sub
+      Dim ulong1 As ULong = 112
+      Console.WriteLine("value = ulong1: {0,18}", value.Equals(ulong1))
+      TestObjectForEquality(ulong1)
 
-    Sub Main( )
-        Console.WriteLine( _
-            "This example of the Decimal.Equals( Object ) " & _
-            "and " & vbCrLf & "Decimal.CompareTo( Object ) " & _
-            "methods generates the " & vbCrLf & _
-            "following output. It creates several different " & _
-            "Decimal " & vbCrLf & "values and compares them " & _
-            "with the following reference value." & vbCrLf )
+      Dim sng1 As Single = 112
+      Console.WriteLine("value = sng1: {0,21}", value.Equals(sng1))
+      TestObjectForEquality(sng1)
 
-        ' Create a reference Decimal value.
-        Dim Left as New Decimal( 987.654 )
-
-        Console.WriteLine( "{0,-46}{1}" & vbCrLf, _
-            "Left: Decimal( 987.654 )", Left )
-
-        ' Create objects to compare with the reference.
-        CompDecimalToObject( Left, New Decimal( 9.8765400E+2 ), _
-            "Decimal( 9.8765400E+2 )" )
-        CompDecimalToObject( Left, 987.6541D, "987.6541D" )
-        CompDecimalToObject( Left, 987.6539D, "987.6539D" )
-        CompDecimalToObject( Left, _
-            New Decimal( 987654000, 0, 0, false, 6 ), _
-            "Decimal( 987654000, 0, 0, false, 6 )" )
-        CompDecimalToObject( Left, 9.8765400E+2, _
-            "Double 9.8765400E+2" )
-        CompDecimalToObject( Left, "987.654", _
-            "String ""987.654""" )
-    End Sub
-End Module 
-
-' This example of the Decimal.Equals( Object ) and
-' Decimal.CompareTo( Object ) methods generates the
-' following output. It creates several different Decimal
-' values and compares them with the following reference value.
-' 
-' Left: Decimal( 987.654 )                      987.654
-' 
-' Object: Decimal( 9.8765400E+2 )               987.654
-' Left.Equals( Object )                         True
-' Left.CompareTo( Object )                      0
-' 
-' Object: 987.6541D                             987.6541
-' Left.Equals( Object )                         False
-' Left.CompareTo( Object )                      -1
-' 
-' Object: 987.6539D                             987.6539
-' Left.Equals( Object )                         False
-' Left.CompareTo( Object )                      1
-' 
-' Object: Decimal( 987654000, 0, 0, false, 6 )  987.654000
-' Left.Equals( Object )                         True
-' Left.CompareTo( Object )                      0
-' 
-' Object: Double 9.8765400E+2                   987.654
-' Left.Equals( Object )                         False
-' Left.CompareTo( Object )                      ArgumentException
-' 
-' Object: String "987.654"                      987.654
-' Left.Equals( Object )                         False
-' Left.CompareTo( Object )                      ArgumentException
+      Dim dbl1 As Double = 112
+      Console.WriteLine("value = dbl1: {0,21}", value.Equals(dbl1))
+      TestObjectForEquality(dbl1)
+   End Sub
+   
+   Private Sub TestObjectForEquality(obj As Object)
+      Console.WriteLine("{0} ({1}) = {2} ({3}): {4}",
+                        value, value.GetType().Name,
+                        obj, obj.GetType().Name,
+                        value.Equals(obj))
+      Console.WriteLine()
+   End Sub
+End Module
+' The example displays the following output:
+'       value = byte1:             True
+'       112 (Double) = 112 (Byte): False
+'
+'       value = short1:             True
+'       112 (Double) = 112 (Int16): False
+'
+'       value = int1:               True
+'       112 (Double) = 112 (Int32): False
+'
+'       value = long1:              True
+'       112 (Double) = 112 (Int64): False
+'
+'       value = sbyte1:             True
+'       112 (Double) = 112 (SByte): False
+'
+'       value = ushort1:             True
+'       112 (Double) = 112 (UInt16): False
+'
+'       value = uint1:               True
+'       112 (Double) = 112 (UInt32): False
+'
+'       value = ulong1:              True
+'       112 (Double) = 112 (UInt64): False
+'
+'       value = dec1:                 True
+'       112 (Double) = 112 (Decimal): False
+'
+'       value = sng1:                True
+'       112 (Double) = 112 (Single): False

@@ -1,14 +1,17 @@
-    ' Demonstrates SetData, ContainsData, and GetData.
-    Public Function SwapClipboardFormattedData( _
-        ByVal format As String, ByVal data As Object) As Object
+    ' Demonstrates SetFileDropList, ContainsFileDroList, and GetFileDropList
+    Public Function SwapClipboardFileDropList(ByVal replacementList _
+        As System.Collections.Specialized.StringCollection) _
+        As System.Collections.Specialized.StringCollection
 
-        Dim returnObject As Object = Nothing
+        Dim returnList As System.Collections.Specialized.StringCollection _
+            = Nothing
 
-        If (Clipboard.ContainsData(format)) Then
-            returnObject = Clipboard.GetData(format)
-            Clipboard.SetData(format, data)
+        If Clipboard.ContainsFileDropList() Then
+
+            returnList = Clipboard.GetFileDropList()
+            Clipboard.SetFileDropList(replacementList)
         End If
 
-        Return returnObject
+        Return returnList
 
     End Function

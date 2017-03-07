@@ -1,18 +1,38 @@
-protected:
-   Object^ source;
+#pragma region Data store maintance
 
-private:
-   void SetSourceAndMember()
-   {
-      DataSet^ myDataSet = gcnew DataSet( "myDataSet" );
-      DataTable^ tableCustomers = gcnew DataTable( "Customers" );
-      myDataSet->Tables->Add( tableCustomers );
-      // Insert code to populate the DataSet.
+    void VirtualConnector::dataGridView1_CellValueNeeded
+        (Object^ sender, DataGridViewCellValueEventArgs^ e)
+    {
+        if (store->ContainsKey(e->RowIndex))
+        {
+            // Use the store if the e value has been modified 
+            // and stored.            
+            e->Value = gcnew Int32(store->default[e->RowIndex]); 
+        }
+        else if (newRowNeeded && e->RowIndex == numberOfRows)
+        {
+            if (dataGridView1->IsCurrentCellInEditMode)
+            {
+                e->Value = initialValue;
+            }
+            else
+            {
+                // Show a blank e if the cursor is just loitering
+                // over(the) last row.
+                e->Value = String::Empty;
+            }
+        }
+        else
+        {
+            e->Value = e->RowIndex;
+        }
+    }
 
-      // Set DataSource and DataMember with SetDataBinding method.
-      String^ member;
-      
-      // The name of a DataTable is Customers.
-      member = "Customers";
-      dataGrid1->SetDataBinding( myDataSet, member );
-   }
+    void VirtualConnector::dataGridView1_CellValuePushed
+        (Object^ sender, DataGridViewCellValueEventArgs^ e)
+    {
+        String^ value = e->Value->ToString();
+        store[e->RowIndex] = Int32::Parse(value, 
+            CultureInfo::CurrentCulture);
+    }
+#pragma endregion

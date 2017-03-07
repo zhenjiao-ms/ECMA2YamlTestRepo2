@@ -1,62 +1,71 @@
-	private StatusBar StatusBar1;
+	
+	internal System.Windows.Forms.StatusBar statusBar1;
 
 	private void InitializeStatusBarPanels()
 	{
-		StatusBar1 = new StatusBar();
 
-		// Create two StatusBarPanel objects.
+		// Create a StatusBar control.
+		statusBar1 = new StatusBar();
+
+		// Dock the status bar at the top of the form. 
+		statusBar1.Dock = DockStyle.Top;
+
+		// Set the SizingGrip property to false so the user cannot 
+		// resize the status bar.
+		statusBar1.SizingGrip = false;
+
+		// Associate the event-handling method with the 
+		// PanelClick event.
+		statusBar1.PanelClick += 
+			new StatusBarPanelClickEventHandler(statusBar1_PanelClick);
+
+		// Create two StatusBarPanel objects to display in statusBar1.
 		StatusBarPanel panel1 = new StatusBarPanel();
 		StatusBarPanel panel2 = new StatusBarPanel();
 
-		// Set the style of the panels.  
-		// panel1 will be owner-drawn.
-		panel1.Style = StatusBarPanelStyle.OwnerDraw;
+		// Set the width of panel2 explicitly and set
+		// panel1 to fill in the remaining space.
+		panel2.Width = 80;
+		panel1.AutoSize = StatusBarPanelAutoSize.Spring;
 
-		// The panel2 object will be drawn by the operating system.
-		panel2.Style = StatusBarPanelStyle.Text;
+		// Set the text alignment within each panel.
+		panel1.Alignment = HorizontalAlignment.Left;
+		panel2.Alignment = HorizontalAlignment.Right;
 
-		// Set the text of both panels to the same date string.
-		panel1.Text = System.DateTime.Today.ToShortDateString();
-		panel2.Text = System.DateTime.Today.ToShortDateString();
+		// Display the first panel without a border and the second
+		// with a raised border.
+		panel1.BorderStyle = StatusBarPanelBorderStyle.None;
+		panel2.BorderStyle = StatusBarPanelBorderStyle.Raised;
 
-		// Add both panels to the StatusBar.
-		StatusBar1.Panels.Add(panel1);
-		StatusBar1.Panels.Add(panel2);
+		// Set the text of the panels. The panel1 object is reserved
+		// for line numbers, while panel2 is set to the current time.
+		panel1.Text = "Reserved for important information.";
+		panel2.Text = System.DateTime.Now.ToShortTimeString();
 
-		// Make panels visible by setting the ShowPanels 
-		// property to True.
-		StatusBar1.ShowPanels = true;
+		// Set a tooltip for panel2
+		panel2.ToolTipText = "Click time to display seconds";
 
-		// Associate the event-handling method with the DrawItem event 
-		// for the owner-drawn panel.
-		StatusBar1.DrawItem += 
-			new StatusBarDrawItemEventHandler(DrawCustomStatusBarPanel);
-            
-		this.Controls.Add(StatusBar1);
+		// Display panels in statusBar1 and add them to the
+		// status bar's StatusBarPanelCollection.
+		statusBar1.ShowPanels = true;
+		statusBar1.Panels.Add(panel1);
+		statusBar1.Panels.Add(panel2);
+
+		// Add the StatusBar to the form.
+		this.Controls.Add(statusBar1);
 	}
+	
 
-	// Draw the panel.
-	private void DrawCustomStatusBarPanel(object sender, 
-		StatusBarDrawItemEventArgs e)
+	// If the user clicks the status bar, check the text of the 
+	// StatusBarPanel.  If the text equals a short time string,
+	// change it to long time display.
+	private void statusBar1_PanelClick(object sender, 
+		StatusBarPanelClickEventArgs e)
 	{
-
-		// Draw a blue background in the owner-drawn panel.
-		e.Graphics.FillRectangle(Brushes.AliceBlue, e.Bounds);
-
-		// Create a StringFormat object to align text in the panel.
-		StringFormat textFormat = new StringFormat();
-
-		// Center the text in the middle of the line.
-		textFormat.LineAlignment = StringAlignment.Center;
-
-		// Align the text to the left.
-		textFormat.Alignment = StringAlignment.Far;
-
-		// Draw the panel's text in dark blue using the Panel 
-		// and Bounds properties of the StatusBarEventArgs object 
-		// and the StringFormat object.
-		e.Graphics.DrawString(e.Panel.Text, StatusBar1.Font, 
-			Brushes.DarkBlue, new RectangleF(e.Bounds.X, 
-			e.Bounds.Y, e.Bounds.Width, e.Bounds.Height), textFormat);
-
+		if (e.StatusBarPanel.Text == 
+			System.DateTime.Now.ToShortTimeString())
+		{
+			e.StatusBarPanel.Text = 
+				System.DateTime.Now.ToLongTimeString();
+		}
 	}

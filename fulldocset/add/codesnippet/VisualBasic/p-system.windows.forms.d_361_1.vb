@@ -1,13 +1,18 @@
-Private Sub DataGridView1_RowHeightInfoNeeded(sender as Object, e as DataGridViewRowHeightInfoNeededEventArgs) _ 
-     Handles DataGridView1.RowHeightInfoNeeded
+        ' Check if the 'FlatMode' property is changed.
+        Private Sub myDataGrid_FlatModeChanged(ByVal sender As Object, ByVal e As EventArgs) Handles myDataGrid.FlatModeChanged
+            Dim strMessage As String = "false"
+            If myDataGrid.FlatMode = True Then
+                strMessage = "true"
+            End If
+            MessageBox.Show("Flat mode changed to " + strMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End Sub 'myDataGrid_FlatModeChanged
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "Height", e.Height)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "MinimumHeight", e.MinimumHeight)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "RowIndex", e.RowIndex)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"RowHeightInfoNeeded Event")
 
-End Sub
+        ' Toggle the 'FlatMode'.
+        Private Sub button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles button1.Click
+            If myDataGrid.FlatMode = True Then
+                myDataGrid.FlatMode = False
+            Else
+                myDataGrid.FlatMode = True
+            End If
+        End Sub 'button1_Click

@@ -1,11 +1,6 @@
-    Private Sub CreateDefaultDataObject()
-        ' Creates a data object.
-        Dim myDataObject As DataObject
-        
-        ' Assigns the string to the data object.
-        Dim myString As String = "My text string"
-        myDataObject = New DataObject(myString)
-        
-        ' Prints the string in a text box.
-        textBox1.Text = myDataObject.GetData(DataFormats.Text).ToString()
-    End Sub 'CreateDefaultDataObject
+        ElseIf (e.AssociatedControl Is button3) Then
+            ' Draw the ToolTip using default values if the ToolTip is for button3.
+            e.DrawBackground()
+            e.DrawBorder()
+            e.DrawText()
+        End If

@@ -1,76 +1,74 @@
-    private void UpdateLabelText()
+    private DataGridViewComboBoxColumn CreateComboBoxColumn()
     {
-        int WithdrawalTotal = 0;
-        int DepositTotal = 0;
-        int SelectedCellTotal = 0;
-        int counter;
-
-        // Iterate through all the rows and sum up the appropriate columns.
-        for (counter = 0; counter < (DataGridView1.Rows.Count);
-            counter++)
+        DataGridViewComboBoxColumn column =
+            new DataGridViewComboBoxColumn();
         {
-            if (DataGridView1.Rows[counter].Cells["Withdrawals"].Value
-                != null)
-            {
-                if (DataGridView1.Rows[counter].
-                    Cells["Withdrawals"].Value.ToString().Length != 0)
-                {
-                    WithdrawalTotal += int.Parse(DataGridView1.Rows[counter].
-                        Cells["Withdrawals"].Value.ToString());
-                }
-            }
-
-            if (DataGridView1.Rows[counter].Cells["Deposits"].Value != null)
-            {
-                if (DataGridView1.Rows[counter]
-                    .Cells["Deposits"].Value.ToString().Length != 0)
-                {
-                    DepositTotal += int.Parse(DataGridView1.Rows[counter]
-                        .Cells["Deposits"].Value.ToString());
-                }
-            }
+            column.DataPropertyName = ColumnName.TitleOfCourtesy.ToString();
+            column.HeaderText = ColumnName.TitleOfCourtesy.ToString();
+            column.DropDownWidth = 160;
+            column.Width = 90;
+            column.MaxDropDownItems = 3;
+            column.FlatStyle = FlatStyle.Flat;
         }
-
-        // Iterate through the SelectedCells collection and sum up the values.
-        for (counter = 0;
-            counter < (DataGridView1.SelectedCells.Count); counter++)
-        {
-            if (DataGridView1.SelectedCells[counter].FormattedValueType ==
-                Type.GetType("System.String"))
-            {
-                string value = null;
-
-                // If the cell contains a value that has not been commited,
-                // use the modified value.
-                if (DataGridView1.IsCurrentCellDirty == true)
-                {
-
-                    value = DataGridView1.SelectedCells[counter]
-                        .EditedFormattedValue.ToString();
-                }
-                else
-                {
-                    value = DataGridView1.SelectedCells[counter]
-                        .FormattedValue.ToString();
-                }
-                if (value != null)
-                {
-                    // Ignore cells in the Description column.
-                    if (DataGridView1.SelectedCells[counter].ColumnIndex !=
-                        DataGridView1.Columns["Description"].Index)
-                    {
-                        if (value.Length != 0)
-                        {
-                            SelectedCellTotal += int.Parse(value);
-                        }
-                    }
-                }
-            }
-        }
-
-        // Set the labels to reflect the current state of the DataGridView.
-        Label1.Text = "Withdrawals Total: " + WithdrawalTotal.ToString();
-        Label2.Text = "Deposits Total: " + DepositTotal.ToString();
-        Label3.Text = "Selected Cells Total: " + SelectedCellTotal.ToString();
-        Label4.Text = "Total entries: " + DataGridView1.RowCount.ToString();
+        return column;
     }
+
+    private void SetAlternateChoicesUsingDataSource(DataGridViewComboBoxColumn comboboxColumn)
+    {
+        {
+            comboboxColumn.DataSource = RetrieveAlternativeTitles();
+            comboboxColumn.ValueMember = ColumnName.TitleOfCourtesy.ToString();
+            comboboxColumn.DisplayMember = comboboxColumn.ValueMember;
+        }
+    }
+
+    private DataTable RetrieveAlternativeTitles()
+    {
+        return Populate("SELECT distinct TitleOfCourtesy FROM Employees");
+    }
+
+    string connectionString =
+        "Integrated Security=SSPI;Persist Security Info=False;" +
+        "Initial Catalog=Northwind;Data Source=localhost";
+
+    private DataTable Populate(string sqlCommand)
+    {
+        SqlConnection northwindConnection = new SqlConnection(connectionString);
+        northwindConnection.Open();
+
+        SqlCommand command = new SqlCommand(sqlCommand, northwindConnection);
+        SqlDataAdapter adapter = new SqlDataAdapter();
+        adapter.SelectCommand = command;
+
+        DataTable table = new DataTable();
+        table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+        adapter.Fill(table);
+
+        return table;
+    }
+
+    // Using an enum provides some abstraction between column index
+    // and column name along with compile time checking, and gives
+    // a handy place to store the column names.
+    enum ColumnName
+    {
+        EmployeeId,
+        LastName,
+        FirstName,
+        Title,
+        TitleOfCourtesy,
+        BirthDate,
+        HireDate,
+        Address,
+        City,
+        Region,
+        PostalCode,
+        Country,
+        HomePhone,
+        Extension,
+        Photo,
+        Notes,
+        ReportsTo,
+        PhotoPath,
+        OutOfOffice
+    };

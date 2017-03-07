@@ -1,66 +1,86 @@
-		private void CreateMyListView()
+	private void PopulateListView()
+	{
+		ListView1.Width = 270;
+		ListView1.Location = new System.Drawing.Point(10, 10);
+
+		// Declare and construct the ColumnHeader objects.
+		ColumnHeader header1, header2;
+		header1 = new ColumnHeader();
+		header2 = new ColumnHeader();
+
+		// Set the text, alignment and width for each column header.
+		header1.Text = "File name";
+		header1.TextAlign = HorizontalAlignment.Left;
+		header1.Width = 70;
+
+		header2.TextAlign = HorizontalAlignment.Left;
+		header2.Text = "Location";
+		header2.Width = 200;
+
+		// Add the headers to the ListView control.
+		ListView1.Columns.Add(header1);
+		ListView1.Columns.Add(header2);
+
+        // Specify that each item appears on a separate line.
+        ListView1.View = View.Details;
+        
+        // Populate the ListView.Items property.
+		// Set the directory to the sample picture directory.
+		System.IO.DirectoryInfo dirInfo = 
+			new System.IO.DirectoryInfo(
+			"C:\\Documents and Settings\\All Users" +
+			"\\Documents\\My Pictures\\Sample Pictures");
+		
+
+		// Get the .jpg files from the directory
+		System.IO.FileInfo[] files = dirInfo.GetFiles("*.jpg");
+
+		// Add each file name and full name including path
+		// to the ListView.
+		if (files != null)
 		{
-			// Create a new ListView control.
-			ListView listView1 = new ListView();
-			listView1.Bounds = new Rectangle(new Point(10,10), new Size(300,200));
-
-			// Set the view to show details.
-			listView1.View = View.Details;
-			// Allow the user to edit item text.
-			listView1.LabelEdit = true;
-			// Allow the user to rearrange columns.
-			listView1.AllowColumnReorder = true;
-			// Display check boxes.
-			listView1.CheckBoxes = true;
-			// Select the item and subitems when selection is made.
-			listView1.FullRowSelect = true;
-			// Display grid lines.
-			listView1.GridLines = true;
-			// Sort the items in the list in ascending order.
-			listView1.Sorting = SortOrder.Ascending;
-            			
-			// Create three items and three sets of subitems for each item.
-			ListViewItem item1 = new ListViewItem("item1",0);
-			// Place a check mark next to the item.
-			item1.Checked = true;
-			item1.SubItems.Add("1");
-			item1.SubItems.Add("2");
-			item1.SubItems.Add("3");
-			ListViewItem item2 = new ListViewItem("item2",1);
-			item2.SubItems.Add("4");
-			item2.SubItems.Add("5");
-			item2.SubItems.Add("6");
-			ListViewItem item3 = new ListViewItem("item3",0);
-			// Place a check mark next to the item.
-			item3.Checked = true;
-			item3.SubItems.Add("7");
-			item3.SubItems.Add("8");
-			item3.SubItems.Add("9");
-
-			// Create columns for the items and subitems.
-			// Width of -2 indicates auto-size.
-			listView1.Columns.Add("Item Column", -2, HorizontalAlignment.Left);
-			listView1.Columns.Add("Column 2", -2, HorizontalAlignment.Left);
-			listView1.Columns.Add("Column 3", -2, HorizontalAlignment.Left);
-			listView1.Columns.Add("Column 4", -2, HorizontalAlignment.Center);
-
-			//Add the items to the ListView.
-            		listView1.Items.AddRange(new ListViewItem[]{item1,item2,item3});
-
-			// Create two ImageList objects.
-			ImageList imageListSmall = new ImageList();
-			ImageList imageListLarge = new ImageList();
-
-			// Initialize the ImageList objects with bitmaps.
-			imageListSmall.Images.Add(Bitmap.FromFile("C:\\MySmallImage1.bmp"));
-			imageListSmall.Images.Add(Bitmap.FromFile("C:\\MySmallImage2.bmp"));
-			imageListLarge.Images.Add(Bitmap.FromFile("C:\\MyLargeImage1.bmp"));
-			imageListLarge.Images.Add(Bitmap.FromFile("C:\\MyLargeImage2.bmp"));
-
-			//Assign the ImageList objects to the ListView.
-			listView1.LargeImageList = imageListLarge;
-			listView1.SmallImageList = imageListSmall;
-
-			// Add the ListView to the control collection.
-			this.Controls.Add(listView1);
+			foreach ( System.IO.FileInfo file in files )
+			{
+				ListViewItem item = new ListViewItem(file.Name);
+				item.SubItems.Add(file.FullName);
+				ListView1.Items.Add(item);
+			}
 		}
+	}
+
+	private void InitializePictureBox()
+	{
+		PictureBox1 = new PictureBox();
+
+		// Set the location and size of the PictureBox control.
+		this.PictureBox1.Location = new System.Drawing.Point(70, 120);
+		this.PictureBox1.Size = new System.Drawing.Size(140, 140);
+		this.PictureBox1.TabStop = false;
+
+		// Set the SizeMode property to the StretchImage value.  This
+		// will shrink or enlarge the image as needed to fit into
+		// the PictureBox.
+		this.PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+
+		// Set the border style to a three-dimensional border.
+		this.PictureBox1.BorderStyle = BorderStyle.Fixed3D;
+
+		// Add the PictureBox to the form.
+		this.Controls.Add(this.PictureBox1);
+
+	}
+
+
+	private void ListView1_MouseDown(object sender, MouseEventArgs e)
+	{
+
+		ListViewItem selection = ListView1.GetItemAt(e.X, e.Y);
+
+		// If the user selects an item in the ListView, display
+		// the image in the PictureBox.
+		if (selection != null)
+		{
+			PictureBox1.Image = System.Drawing.Image.FromFile(
+				selection.SubItems[1].Text);
+		}
+	}

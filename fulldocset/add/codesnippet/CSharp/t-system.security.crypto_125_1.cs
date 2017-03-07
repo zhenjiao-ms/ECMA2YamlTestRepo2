@@ -1,171 +1,85 @@
 using System;
-using System.Security;
+using System.IO;
 using System.Security.Cryptography;
+using System.Text;
 
-class SignatureDescriptionImpl
+
+class Alice
 {
-    [STAThread]
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
-        // Create a digital signature based on RSA encryption.
-        SignatureDescription rsaSignature = CreateRSAPKCS1Signature();
-        ShowProperties(rsaSignature);
-
-        // Create a digital signature based on DSA encryption.
-        SignatureDescription dsaSignature = CreateDSASignature();
-        ShowProperties(dsaSignature);
-
-        // Create a HashAlgorithm using the digest algorithm of the signature.
-        HashAlgorithm hashAlgorithm = dsaSignature.CreateDigest();
-        Console.WriteLine("\nHash algorithm for the DigestAlgorithm property:"
-            + " " + hashAlgorithm.ToString());
-
-        // Create an AsymmetricSignatureFormatter instance using the DSA key.
-        DSA dsa = DSA.Create();
-        AsymmetricSignatureFormatter asymmetricFormatter =
-            CreateDSAFormatter(dsa);
-        
-        // Create an AsymmetricSignatureDeformatter instance using the
-        // DSA key.
-        AsymmetricSignatureDeformatter asymmetricDeformatter =
-            CreateDSADeformatter(dsa);
-
-        Console.WriteLine("This sample completed successfully; " +
-            "press Enter to exit.");
-        Console.ReadLine();
+        using (Bob bob = new Bob())
+        {
+            using (RSACryptoServiceProvider rsaKey = new RSACryptoServiceProvider())
+            {
+                // Get Bob's public key
+                rsaKey.ImportCspBlob(bob.key);
+                byte[] encryptedSessionKey = null;
+                byte[] encryptedMessage = null;
+                byte[] iv = null;
+                Send(rsaKey, "Secret message", out iv, out encryptedSessionKey, out encryptedMessage);
+                bob.Receive(iv, encryptedSessionKey, encryptedMessage);
+            }
+        }
     }
 
-    // Create a SignatureDescription for RSA encryption.
-    private static SignatureDescription CreateRSAPKCS1Signature()
+    private static void Send(RSA key, string secretMessage, out byte[] iv, out byte[] encryptedSessionKey, out byte[] encryptedMessage)
     {
-        SignatureDescription signatureDescription = 
-            new SignatureDescription();
+        using (Aes aes = new AesCryptoServiceProvider())
+        {
+            iv = aes.IV;
 
-        // Set the key algorithm property for RSA encryption.
-        signatureDescription.KeyAlgorithm =
-            "System.Security.Cryptography.RSACryptoServiceProvider";
+            // Encrypt the session key
+            RSAOAEPKeyExchangeFormatter keyFormatter = new RSAOAEPKeyExchangeFormatter(key);
+            encryptedSessionKey = keyFormatter.CreateKeyExchange(aes.Key, typeof(Aes));
 
-        // Set the digest algorithm for RSA encryption using the
-        // SHA1 provider.
-        signatureDescription.DigestAlgorithm =
-            "System.Security.Cryptography.SHA1CryptoServiceProvider";
+            // Encrypt the message
+            using (MemoryStream ciphertext = new MemoryStream())
+            using (CryptoStream cs = new CryptoStream(ciphertext, aes.CreateEncryptor(), CryptoStreamMode.Write))
+            {
+                byte[] plaintextMessage = Encoding.UTF8.GetBytes(secretMessage);
+                cs.Write(plaintextMessage, 0, plaintextMessage.Length);
+                cs.Close();
 
-        // Set the formatter algorithm with the RSAPKCS1 formatter.
-        signatureDescription.FormatterAlgorithm =
-            "System.Security.Cryptography.RSAPKCS1SignatureFormatter";
-
-        // Set the formatter algorithm with the RSAPKCS1 deformatter.
-        signatureDescription.DeformatterAlgorithm =
-            "System.Security.Cryptography.RSAPKCS1SignatureDeformatter";
-
-        return signatureDescription;
+                encryptedMessage = ciphertext.ToArray();
+            }
+        }
     }
 
-    // Create a SignatureDescription using a constructed SecurityElement for 
-    // DSA encryption.
-    private static SignatureDescription CreateDSASignature()
+}
+public class Bob : IDisposable
+{
+    public byte[] key;
+    private RSACryptoServiceProvider rsaKey = new RSACryptoServiceProvider();
+    public Bob()
     {
-        SecurityElement securityElement = new SecurityElement("DSASignature");
-
-        // Create new security elements for the four algorithms.
-        securityElement.AddChild(new SecurityElement(
-            "Key",
-            "System.Security.Cryptography.DSACryptoServiceProvider"));
-        securityElement.AddChild(new SecurityElement(
-            "Digest",
-            "System.Security.Cryptography.SHA1CryptoServiceProvider")); 
-        securityElement.AddChild(new SecurityElement(
-            "Formatter",
-            "System.Security.Cryptography.DSASignatureFormatter"));
-        securityElement.AddChild(new SecurityElement(
-            "Deformatter",
-            "System.Security.Cryptography.DSASignatureDeformatter"));
-
-        SignatureDescription signatureDescription = 
-            new SignatureDescription(securityElement);
-
-        return signatureDescription;
+        key = rsaKey.ExportCspBlob(false);
     }
-
-    // Create a signature formatter for DSA encryption.
-    private static AsymmetricSignatureFormatter CreateDSAFormatter(DSA dsa)
+    public void Receive(byte[] iv, byte[] encryptedSessionKey, byte[] encryptedMessage)
     {
-        // Create a DSA signature formatter for encryption.
-        SignatureDescription signatureDescription = 
-            new SignatureDescription();
-        signatureDescription.FormatterAlgorithm =
-            "System.Security.Cryptography.DSASignatureFormatter";
 
-        AsymmetricSignatureFormatter asymmetricFormatter =
-            signatureDescription.CreateFormatter(dsa);
+        using (Aes aes = new AesCryptoServiceProvider())
+        {
+            aes.IV = iv;
 
-        Console.WriteLine("\nCreated formatter : " + 
-            asymmetricFormatter.ToString());
-        return asymmetricFormatter;
+            // Decrypt the session key
+            RSAOAEPKeyExchangeDeformatter keyDeformatter = new RSAOAEPKeyExchangeDeformatter(rsaKey);
+            aes.Key = keyDeformatter.DecryptKeyExchange(encryptedSessionKey);
+
+            // Decrypt the message
+            using (MemoryStream plaintext = new MemoryStream())
+            using (CryptoStream cs = new CryptoStream(plaintext, aes.CreateDecryptor(), CryptoStreamMode.Write))
+            {
+                cs.Write(encryptedMessage, 0, encryptedMessage.Length);
+                cs.Close();
+
+                string message = Encoding.UTF8.GetString(plaintext.ToArray());
+                Console.WriteLine(message);
+            }
+        }
     }
-
-    // Create a signature deformatter for DSA decryption.
-    private static AsymmetricSignatureDeformatter CreateDSADeformatter(
-        DSA dsa)
+    public void Dispose()
     {
-        // Create a DSA signature deformatter to verify the signature.
-        SignatureDescription signatureDescription = 
-            new SignatureDescription();
-        signatureDescription.DeformatterAlgorithm =
-            "System.Security.Cryptography.DSASignatureDeformatter";
-
-        AsymmetricSignatureDeformatter asymmetricDeformatter =
-            signatureDescription.CreateDeformatter(dsa);
-
-        Console.WriteLine("\nCreated deformatter : " + 
-            asymmetricDeformatter.ToString());
-        return asymmetricDeformatter;
-    }
-
-    // Display to the console the properties of the specified
-    // SignatureDescription.
-    private static void ShowProperties(
-        SignatureDescription signatureDescription)
-    {
-        // Retrieve the class path for the specified SignatureDescription.
-        string classDescription = signatureDescription.ToString();
-
-        string deformatterAlgorithm = 
-            signatureDescription.DeformatterAlgorithm;
-        string formatterAlgorithm = signatureDescription.FormatterAlgorithm;
-        string digestAlgorithm = signatureDescription.DigestAlgorithm;
-        string keyAlgorithm = signatureDescription.KeyAlgorithm;
-
-        Console.WriteLine("\n** " + classDescription + " **");
-        Console.WriteLine("DeformatterAlgorithm : " + deformatterAlgorithm);
-        Console.WriteLine("FormatterAlgorithm : " + formatterAlgorithm);
-        Console.WriteLine("DigestAlgorithm : " + digestAlgorithm);
-        Console.WriteLine("KeyAlgorithm : " + keyAlgorithm);
+        rsaKey.Dispose();
     }
 }
-//
-// This sample produces the following output:
-// 
-// ** System.Security.Cryptography.SignatureDescription **
-// DeformatterAlgorithm : System.Security.Cryptography.
-// RSAPKCS1SignatureDeformatter
-// 
-// FormatterAlgorithm : System.Security.Cryptography.
-// RSAPKCS1SignatureFormatter
-// DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
-// KeyAlgorithm : System.Security.Cryptography.RSACryptoServiceProvider
-// 
-// ** System.Security.Cryptography.SignatureDescription **
-// DeformatterAlgorithm : System.Security.Cryptography.DSASignatureDeformatter
-// FormatterAlgorithm : System.Security.Cryptography.DSASignatureFormatter
-// DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
-// KeyAlgorithm : System.Security.Cryptography.DSACryptoServiceProvider
-// 
-// Hash algorithm for the DigestAlgorithm property: 
-// System.Security.Cryptography.SH
-// A1CryptoServiceProvider
-// 
-// Created formatter : System.Security.Cryptography.DSASignatureFormatter
-// 
-// Created deformatter : System.Security.Cryptography.DSASignatureDeformatter
-// This sample completed successfully; press Enter to exit.

@@ -1,8 +1,10 @@
-      Private Sub treeView1_MouseUp(sender As Object, _
-        e As MouseEventArgs) Handles treeView1.MouseUp
-         ' If the right mouse button was clicked and released,
-         ' display the shortcut menu assigned to the TreeView. 
-         If e.Button = MouseButtons.Right Then
-            treeView1.ContextMenu.Show(treeView1, New Point(e.X, e.Y))
-         End If
-      End Sub
+Private Sub Grid_Navigate(sender As Object, e As NavigateEventArgs)
+   If e.Forward Then
+      Dim ds As DataSet = CType(grid.DataSource, DataSet)
+      Dim cm As CurrencyManager = _
+      CType(BindingContext(ds,"Customers.CustOrders"), CurrencyManager)
+      ' Cast the IList to a DataView to set the AllowNew property.
+      Dim dv As DataView = CType(cm.List, DataView)
+      dv.AllowNew = false
+   End If
+End Sub

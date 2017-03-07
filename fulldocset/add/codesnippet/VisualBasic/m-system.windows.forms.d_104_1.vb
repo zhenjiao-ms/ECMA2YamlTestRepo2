@@ -1,9 +1,19 @@
-Private Sub GetRect()
-    Dim rect As Rectangle
-    Dim dgc As DataGridCell
-    dgc.ColumnNumber = 0
-    dgc.RowNumber = 0
-    rect = DataGrid1.GetCellBounds(dgc)
-    Console.WriteLine(rect.ToString())
- End Sub
- 
+Public Class Form1
+   Inherits Form
+   Protected dataGrid1 As DataGrid
+    
+   Private Sub GetHeight()
+      Dim myGridColumn As MyGridColumn = _
+      CType(dataGrid1.TableStyles(1).GridColumnStyles(0), _
+      MyGridColumn)
+      Console.WriteLine(myGridColumn.GetMinHeight())
+   End Sub 
+
+End Class 
+
+Public Class MyGridColumn
+Inherits DataGridBoolColumn
+   Public Function GetMinHeight() As Integer
+      return me.GetMinimumHeight()
+   End Function
+End Class

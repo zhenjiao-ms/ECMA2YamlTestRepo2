@@ -1,25 +1,24 @@
 private:
-   void AddMyData3()
+
+   void EnterNull()
    {
-      // Creates a component to store in the data object.
-      Component^ myComponent = gcnew Component;
       
-      // Creates a new data object.
-      DataObject^ myDataObject = gcnew DataObject;
-      
-      // Adds the component to the DataObject.
-      myDataObject->SetData( myComponent );
-      
-      // Prints whether data of the specified type is in the DataObject.
-      Type^ myType = myComponent->GetType();
-      if ( myDataObject->GetDataPresent( myType ) )
-      {
-         textBox1->Text = String::Concat( "Data of type ", myType->Name,
-           " is present in the DataObject" );
-      }
-      else
-      {
-         textBox1->Text = String::Concat( "Data of type ", myType->Name,
-           " is not present in the DataObject" );
-      }
+      // Creates an instance of a class derived from DataGridBoolColumn.
+      MyDataGridBoolColumn^ colBool;
+      colBool = dynamic_cast<MyDataGridBoolColumn^>(dataGrid1->TableStyles[ 0 ]->GridColumnStyles[ 2 ]);
+      colBool->CallEnterNullValue();
    }
+
+
+internal:
+
+   // Class derived from DataGridBoolColumn.
+   ref class MyDataGridBoolColumn: public DataGridBoolColumn
+   {
+   public:
+      void CallEnterNullValue()
+      {
+         this->EnterNullValue();
+      }
+
+   };

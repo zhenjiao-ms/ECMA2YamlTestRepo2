@@ -1,42 +1,23 @@
-using System.Drawing;
-using System.Windows.Forms;
+private void ToolStripRenderer1_RenderItemText(Object sender, ToolStripItemTextRenderEventArgs e) {
 
-public class Form1 : Form
-{
-    private TabControl tabControl1;
-    private TabPage tabPage1;
-    private TabPage tabPage2;
-
-    private void MyTabs()
-    {
-        this.tabControl1 = new TabControl();
-        this.tabPage1 = new TabPage();
-        this.tabPage2 = new TabPage();
-
-        this.tabControl1.Multiline = true;
-        this.tabControl1.Controls.AddRange(new Control[] {
-            this.tabPage1,
-            this.tabPage2});
-        this.tabControl1.Location = new Point(35, 25);
-        this.tabControl1.Size = new Size(220, 220);
-
-        // Creates a cushion of 22 pixels around TabPage.Text strings.
-        this.tabControl1.Padding = new System.Drawing.Point(22, 22);
-        this.tabPage1.Text = "myTabPage1";
-        this.tabPage2.Text = "myTabPage2";
-
-        this.Size = new Size(300, 300);
-        this.Controls.AddRange(new Control[] {
-            this.tabControl1});
-    }
-    
-    public Form1()
-    {
-        MyTabs();
-    }
-
-    static void Main() 
-    {
-        Application.Run(new Form1());
-    }
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "Text", e.Text );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "TextColor", e.TextColor );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "TextFont", e.TextFont );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "TextRectangle", e.TextRectangle );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "TextFormat", e.TextFormat );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "TextDirection", e.TextDirection );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Item", e.Item );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "ToolStrip", e.ToolStrip );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "RenderItemText Event" );
 }

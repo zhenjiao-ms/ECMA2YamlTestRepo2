@@ -4,6 +4,8 @@
                 new BasicHttpBinding(),
                 new EndpointAddress(new Uri("http://localhost/DataflowControl.xaml")));
 
+            controlClient.Unsuspend(instanceId);
+            
             // ...
 
-            controlClient.Run(instanceId);
+            controlClient.Terminate(instanceId);

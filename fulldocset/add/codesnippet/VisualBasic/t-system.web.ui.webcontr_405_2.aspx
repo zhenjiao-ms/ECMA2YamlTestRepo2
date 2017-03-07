@@ -1,89 +1,73 @@
-<%@ Page Language="VB" %>
+<%@ page language="VB" %>
+<%@ register TagPrefix="uc1" 
+  TagName="DisplayModeMenuVB" 
+  Src="DisplayModeMenuVB.ascx" %>
+<%@ register tagprefix="aspSample" 
+  Namespace="Samples.AspNet.VB.Controls" 
+  Assembly="UserInfoWebPartVB" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-    <title>MultiView Class Example</title>
-<script runat="server">
-
-        Sub Index_Changed(ByVal Sender As Object, ByVal e As EventArgs)
-            ' Set the active view to
-            ' the view selected by the user.
-            Dim text As String = ViewListBox.SelectedItem.Text
-            Select Case (text)
-                Case "View1"
-                    MultiView1.SetActiveView(View1)
-                Case "View2"
-                    MultiView1.SetActiveView(View2)
-                Case "View3"
-                    MultiView1.SetActiveView(View3)
-                Case Else
-                    Throw New Exception("You did not select a valid view.")
-            End Select
-
-        End Sub
-
-    </script>
-</head>
-<body>
-    <form id="Form1" runat="server">
-        
-        <h3>MultiView Class Example</h3>
-        
-        <h4>Select a View to display in a MultiView control:</h4>
-
-        <asp:ListBox id="ViewListBox" 
-            Rows="1"
-            SelectionMode="Single"
-            AutoPostBack="True"
-            OnselectedIndexChanged="Index_Changed"
-            runat="Server">             
-                <asp:ListItem Value="0">View1</asp:ListItem>
-                <asp:ListItem Value="1">View2</asp:ListItem>
-                <asp:ListItem Value="2">View3</asp:ListItem>
-        </asp:ListBox><br /><br />
-       
-        <hr />
-
-        <asp:MultiView id="MultiView1"
-            runat="Server">
-
-            <asp:View id="View1" 
-                runat="Server">              
-                    <asp:Label id="View1Label" 
-                        Font-bold="true"
-                        Font-size="14" 
-                        Text="This is the content for View1."
-                        runat="Server"
-                        AssociatedControlID="View1">
-                    </asp:Label>               
-            </asp:View>
-            
-            <asp:View id="View2" 
-                runat="Server">              
-                    <asp:Label id="View2Label" 
-                        Font-bold="true"
-                        Font-size="14" 
-                        Text="This is the content for View2."
-                        runat="Server"
-                        AssociatedControlID="View2">
-                    </asp:Label>               
-            </asp:View>
-            
-            <asp:View id="View3" 
-                runat="Server">              
-                    <asp:Label id="View3Label" 
-                        Font-bold="true"
-                        Font-size="14" 
-                        Text="This is the content for View3."
-                        runat="Server"
-                        AssociatedControlID="View3">
-                    </asp:Label>               
-            </asp:View>
-
-        </asp:MultiView>
-
+  <head id="Head1" runat="server">
+    <title>
+      PageCatalogPart Control
+    </title>
+  </head>
+  <body>
+    <form id="form1" runat="server">
+      <asp:webpartmanager id="WebPartManager1" runat="server"  />
+      <uc1:DisplayModeMenuVB ID="DisplayModeMenu1" runat="server" />
+      <asp:webpartzone id="zone1" runat="server" >
+        <PartTitleStyle BorderWidth="1" 
+          Font-Names="Verdana, Arial"
+          Font-Size="110%"
+          BackColor="LightBlue" />
+        <zonetemplate>
+          <asp:BulletedList ID="BulletedList1" 
+            Runat="server"
+            DisplayMode="HyperLink"
+            Title="Favorites">
+            <asp:ListItem Value="http://msdn.microsoft.com">
+              MSDN
+            </asp:ListItem>
+            <asp:ListItem Value="http://www.asp.net">
+              ASP.NET
+            </asp:ListItem>
+            <asp:ListItem Value="http://www.msn.com">
+              MSN
+            </asp:ListItem>
+          </asp:BulletedList>
+        </zonetemplate>
+      </asp:webpartzone> 
+      <asp:CatalogZone ID="CatalogZone1" runat="server">
+        <ZoneTemplate>
+          <asp:PageCatalogPart ID="PageCatalogPart1" runat="server" 
+            Title="My Page Catalog" 
+            ChromeType="TitleOnly" />
+          <asp:DeclarativeCatalogPart ID="DeclarativeCatalogPart1"  
+            runat="server" 
+            Description="Contains a user control with Web Parts and 
+              an ASP.NET Calendar control.">
+            <WebPartsTemplate>
+              <asp:Calendar ID="Calendar1" runat="server" 
+                Title="My Calendar" 
+                Description="ASP.NET Calendar control used as a personal calendar." />
+              <aspSample:UserInfoWebPart 
+                runat="server"   
+                id="userinfo1" 
+                title = "User Information WebPart"
+                Description ="Contains custom, editable user information 
+                  for display on a page." />
+              <aspSample:TextDisplayWebPart 
+                runat="server"   
+                id="TextDisplayWebPart1" 
+                title = "Text Display WebPart" 
+                Description="Contains a label that users can dynamically update." />
+            </WebPartsTemplate>              
+          </asp:DeclarativeCatalogPart>
+        </ZoneTemplate>
+      </asp:CatalogZone>
     </form>
-</body>
+  </body>
 </html>

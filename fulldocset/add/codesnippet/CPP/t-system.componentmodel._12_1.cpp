@@ -1,14 +1,9 @@
-public:
-   [RecommendedAsConfigurable(true)]
-   property int MyProperty 
+   [DesignerSerializerAttribute(ExampleSerializer::typeid,CodeDomSerializer::typeid)]
+   public ref class ExampleControl: public UserControl
    {
-      int get()
+   public:
+      ExampleControl()
       {
-         // Insert code here.
-         return 0;
+
       }
-      void set( int /*value*/ )
-      {
-         // Insert code here.
-      }
-   }
+   };

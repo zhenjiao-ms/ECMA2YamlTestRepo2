@@ -1,64 +1,61 @@
-Option Explicit
-Option Strict
-
-Imports System
-Imports System.Security.Permissions
 Imports System.Threading
+Imports System.Windows.Forms
 
-Public Class ThreadInterrupt
+' Create a form with a button that, when clicked, throws an exception.
+Public Class ErrorForm : Inherits Form
+    Friend WithEvents button1 As Button
 
-    <MTAThread> _
-    Shared Sub Main()
-        Dim stayAwake As New StayAwake()
-        Dim newThread As New Thread(AddressOf stayAwake.ThreadMethod)
-        newThread.Start()
+    Public Sub New()
+       ' Add the button to the form.
+      Me.button1 = New System.Windows.Forms.Button()
+      Me.SuspendLayout()
+      Me.button1.Location = New System.Drawing.Point(100, 43)
+      Me.button1.Size = New System.Drawing.Size(75, 23)
+      Me.button1.Text = "Click!"
+      Me.Controls.Add(Me.button1)
 
-        ' The following line causes an exception to be thrown 
-        ' in ThreadMethod if newThread is currently blocked
-        ' or becomes blocked in the future.
-        newThread.Interrupt()
-        Console.WriteLine("Main thread calls Interrupt on newThread.")
+      Me.Text = "ThreadException"
+      Me.ResumeLayout(False)
+   End Sub
 
-        ' Tell newThread to go to sleep.
-        stayAwake.SleepSwitch = True
-
-        ' Wait for newThread to end.
-        newThread.Join()
+    ' Throw an exception when the button is clicked.
+    Private Sub button1_Click(sender As Object, e As System.EventArgs) _
+                Handles button1.Click
+        Throw New ArgumentException("The parameter was invalid.")
     End Sub
-
+    
+    Public Shared Sub Main()
+        ' Add the event handler.
+        AddHandler Application.ThreadException,
+                   AddressOf CustomExceptionHandler.OnThreadException
+        
+        ' Start the example.
+        Application.Run(New ErrorForm())
+    End Sub
 End Class
 
-Public Class StayAwake
+' Create a class to handle the exception event.
+Friend Class CustomExceptionHandler
+    'Handle the exception event.
+    Public Shared Sub OnThreadException(sender As Object, t As ThreadExceptionEventArgs)
+        Dim result As DialogResult = ShowThreadExceptionDialog(t.Exception)
 
-    Dim sleepSwitchValue As Boolean = False
-
-    WriteOnly Property SleepSwitch As Boolean
-        Set
-            sleepSwitchValue = Value
-        End Set
-    End Property 
-
-    Sub New()
+        ' Exit the program when the user clicks Abort.
+        If result = DialogResult.Abort Then
+            Application.Exit()
+        End If
     End Sub
+     
+    ' Create and display the error message.
+    Private Shared Function ShowThreadExceptionDialog(e As Exception) As DialogResult
+        Dim errorMsg As String = "An error occurred.  Please contact the " &
+            "adminstrator with the following information:" &
+            vbCrLf & vbCrLf
+        errorMsg &= "Exception Type: " & e.GetType().Name & vbCrLf & vbCrLf
+        errorMsg &= e.Message & vbCrLf & vbCrLf
+        errorMsg &= "Stack Trace: " & vbCrLf & e.StackTrace
 
-    Sub ThreadMethod()
-        Console.WriteLine("newThread is executing ThreadMethod.")
-        While Not sleepSwitchValue
-
-            ' Use SpinWait instead of Sleep to demonstrate the 
-            ' effect of calling Interrupt on a running thread.
-            Thread.SpinWait(10000000)
-        End While
-        Try
-            Console.WriteLine("newThread going to sleep.")
-
-            ' When newThread goes to sleep, it is immediately 
-            ' woken up by a ThreadInterruptedException.
-            Thread.Sleep(Timeout.Infinite)
-        Catch ex As ThreadInterruptedException
-            Console.WriteLine("newThread cannot go to " & _
-                "sleep - interrupted by main thread.")
-        End Try
-    End Sub
-
+        Return MessageBox.Show(errorMsg, "Application Error",
+               MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Stop)
+    End Function
 End Class

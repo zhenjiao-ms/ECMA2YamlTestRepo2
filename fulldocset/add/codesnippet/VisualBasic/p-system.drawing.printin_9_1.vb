@@ -1,23 +1,14 @@
- Public Sub Printing(printer As String)
-     Try
-         streamToPrint = New StreamReader(filePath)
-         Try
-             printFont = New Font("Arial", 10)
-             Dim pd As New PrintDocument()
-             AddHandler pd.PrintPage, AddressOf pd_PrintPage
-             ' Specify the printer to use.
-             pd.PrinterSettings.PrinterName = printer
+        ' Add list of supported paper sizes found on the printer. 
+        ' The DisplayMember property is used to identify the property that will provide the display string.
+        comboPaperSize.DisplayMember = "PaperName"
 
-             If pd.PrinterSettings.IsValid then
-                pd.Print()
-             Else
-                MessageBox.Show("Printer is invalid.")
-             End If
-         Finally
-             streamToPrint.Close()
-         End Try
-     Catch ex As Exception
-         MessageBox.Show(ex.Message)
-     End Try
- End Sub
-    
+        Dim pkSize As PaperSize
+        For i = 0 to printDoc.PrinterSettings.PaperSizes.Count - 1
+            pkSize = printDoc.PrinterSettings.PaperSizes.Item(i)
+            comboPaperSize.Items.Add(pkSize)
+        Next
+
+        ' Create a PaperSize and specify the custom paper size through the constructor and add to combobox.
+        Dim pkCustomSize1 As New PaperSize("Custom Paper Size", 100, 200)
+
+        comboPaperSize.Items.Add(pkCustomSize1)

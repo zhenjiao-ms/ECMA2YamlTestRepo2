@@ -1,12 +1,12 @@
-protected void TextExpanded(DataGrid myGrid){
-    // Get the DataTable of the grid
-    DataTable myTable;
-    // Assuming the grid is bound to a DataTable
-    myTable = (DataTable) myGrid.DataSource;
-    for(int i = 0;i < myTable.Rows.Count ;i++) {
-       if(myGrid.IsExpanded(i)) {
-          Console.WriteLine("Row " + i + " was expanded");
-       }
-    }
+private void CreateDefaultDataObject() {
+    // Creates a data object.
+    DataObject myDataObject;
+ 
+    // Assigns the string to the data object.
+    string myString = "My text string";
+    myDataObject = new DataObject(myString);
+ 
+    // Prints the string in a text box.
+    textBox1.Text = myDataObject.GetData(DataFormats.Text).ToString();
  }
-    
+ 

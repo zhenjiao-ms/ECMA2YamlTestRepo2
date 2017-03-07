@@ -1,140 +1,127 @@
-Class CalendarEditingControl
-    Inherits DateTimePicker
-    Implements IDataGridViewEditingControl
+Imports System
+Imports System.Drawing
+Imports System.Windows.Forms
 
-    Private dataGridViewControl As DataGridView
-    Private valueIsChanged As Boolean = False
-    Private rowIndexNum As Integer
+Public Class Form1
+    Inherits Form
+    Private treeView1 As TreeView
 
     Public Sub New()
-        Me.Format = DateTimePickerFormat.Short
-    End Sub
+        treeView1 = New TreeView()
+        
+        Me.SuspendLayout()
+        
+        ' Initialize treeView1.
+        treeView1.AllowDrop = True
+        treeView1.Dock = DockStyle.Fill
+        
+        ' Add nodes to treeView1.
+        Dim node As TreeNode
+        Dim x As Integer
+        For x = 0 To 3
+            ' Add a root node to treeView1.
+            node = treeView1.Nodes.Add(String.Format("Node{0}", x * 4))
+            Dim y As Integer
+            For y = 1 To 4
+                ' Add a child node to the previously added node.
+                node = node.Nodes.Add(String.Format("Node{0}", x * 4 + y))
+            Next y
+        Next x
 
-    Public Property EditingControlFormattedValue() As Object _
-        Implements IDataGridViewEditingControl.EditingControlFormattedValue
+        ' Add event handlers for the required drag events.
+        AddHandler treeView1.ItemDrag, AddressOf treeView1_ItemDrag
+        AddHandler treeView1.DragEnter, AddressOf treeView1_DragEnter
+        AddHandler treeView1.DragOver, AddressOf treeView1_DragOver
+        AddHandler treeView1.DragDrop, AddressOf treeView1_DragDrop
 
-        Get
-            Return Me.Value.ToShortDateString()
-        End Get
+        ' Initialize the form.
+        Me.ClientSize = New Size(292, 273)
+        Me.Controls.Add(treeView1)
 
-        Set(ByVal value As Object)
-            Try
-                ' This will throw an exception of the string is 
-                ' null, empty, or not in the format of a date.
-                Me.Value = DateTime.Parse(CStr(value))
-            Catch
-                ' In the case of an exception, just use the default
-                ' value so we're not left with a null value.
-                Me.Value = DateTime.Now
-            End Try
-        End Set
+        Me.ResumeLayout(False)
+    End Sub 'New
 
-    End Property
+    Shared Sub Main()
+        Application.Run(New Form1)
+    End Sub 'Main
 
-    Public Function GetEditingControlFormattedValue(ByVal context _
-        As DataGridViewDataErrorContexts) As Object _
-        Implements IDataGridViewEditingControl.GetEditingControlFormattedValue
+    Private Sub treeView1_ItemDrag(ByVal sender As Object, ByVal e As ItemDragEventArgs)
 
-        Return Me.Value.ToShortDateString()
+        ' Move the dragged node when the left mouse button is used.
+        If e.Button = MouseButtons.Left Then
+            DoDragDrop(e.Item, DragDropEffects.Move)
 
-    End Function
+        ' Copy the dragged node when the right mouse button is used.
+        ElseIf e.Button = MouseButtons.Right Then
+            DoDragDrop(e.Item, DragDropEffects.Copy)
+        End If
+    End Sub 'treeView1_ItemDrag
 
-    Public Sub ApplyCellStyleToEditingControl(ByVal dataGridViewCellStyle As _
-        DataGridViewCellStyle) _
-        Implements IDataGridViewEditingControl.ApplyCellStyleToEditingControl
+    ' Set the target drop effect to the effect 
+    ' specified in the ItemDrag event handler.
+    Private Sub treeView1_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs)
+        e.Effect = e.AllowedEffect
+    End Sub 'treeView1_DragEnter
 
-        Me.Font = dataGridViewCellStyle.Font
-        Me.CalendarForeColor = dataGridViewCellStyle.ForeColor
-        Me.CalendarMonthBackground = dataGridViewCellStyle.BackColor
+    ' Select the node under the mouse pointer to indicate the 
+    ' expected drop location.
+    Private Sub treeView1_DragOver(ByVal sender As Object, ByVal e As DragEventArgs)
+        ' Retrieve the client coordinates of the mouse position.
+        Dim targetPoint As Point = treeView1.PointToClient(new Point(e.X, e.Y))
 
-    End Sub
+        ' Select the node at the mouse position.
+        treeView1.SelectedNode = treeView1.GetNodeAt(targetPoint)
+    End Sub 'treeView1_DragOver
 
-    Public Property EditingControlRowIndex() As Integer _
-        Implements IDataGridViewEditingControl.EditingControlRowIndex
+    Private Sub treeView1_DragDrop(ByVal sender As Object, ByVal e As DragEventArgs)
 
-        Get
-            Return rowIndexNum
-        End Get
-        Set(ByVal value As Integer)
-            rowIndexNum = value
-        End Set
+        ' Retrieve the client coordinates of the drop location.
+        Dim targetPoint As Point = treeView1.PointToClient(New Point(e.X, e.Y))
 
-    End Property
+        ' Retrieve the node at the drop location.
+        Dim targetNode As TreeNode = treeView1.GetNodeAt(targetPoint)
 
-    Public Function EditingControlWantsInputKey(ByVal key As Keys, _
-        ByVal dataGridViewWantsInputKey As Boolean) As Boolean _
-        Implements IDataGridViewEditingControl.EditingControlWantsInputKey
+        ' Retrieve the node that was dragged.
+        Dim draggedNode As TreeNode = CType(e.Data.GetData(GetType(TreeNode)), TreeNode)
 
-        ' Let the DateTimePicker handle the keys listed.
-        Select Case key And Keys.KeyCode
-            Case Keys.Left, Keys.Up, Keys.Down, Keys.Right, _
-                Keys.Home, Keys.End, Keys.PageDown, Keys.PageUp
+        ' Confirm that the node at the drop location is not 
+        ' the dragged node or a descendant of the dragged node.
+        If Not draggedNode.Equals(targetNode) AndAlso Not ContainsNode(draggedNode, targetNode) Then
 
-                Return True
+            ' If it is a move operation, remove the node from its current 
+            ' location and add it to the node at the drop location.
+            If e.Effect = DragDropEffects.Move Then
+                draggedNode.Remove()
+                targetNode.Nodes.Add(draggedNode)
 
-            Case Else
-                Return Not dataGridViewWantsInputKey
-        End Select
+            ' If it is a copy operation, clone the dragged node 
+            ' and add it to the node at the drop location.
+            ElseIf e.Effect = DragDropEffects.Copy Then
+                targetNode.Nodes.Add(CType(draggedNode.Clone(), TreeNode))
+            End If
 
-    End Function
+            ' Expand the node at the location 
+            ' to show the dropped node.
+            targetNode.Expand()
+        End If
+    End Sub 'treeView1_DragDrop
 
-    Public Sub PrepareEditingControlForEdit(ByVal selectAll As Boolean) _
-        Implements IDataGridViewEditingControl.PrepareEditingControlForEdit
+    ' Determine whether one node is a parent 
+    ' or ancestor of a second node.
+    Private Function ContainsNode(ByVal node1 As TreeNode, ByVal node2 As TreeNode) As Boolean
 
-        ' No preparation needs to be done.
-
-    End Sub
-
-    Public ReadOnly Property RepositionEditingControlOnValueChange() _
-        As Boolean Implements _
-        IDataGridViewEditingControl.RepositionEditingControlOnValueChange
-
-        Get
+        ' Check the parent node of the second node.
+        If node2.Parent Is Nothing Then
             Return False
-        End Get
+        End If
+        If node2.Parent.Equals(node1) Then
+            Return True
+        End If
 
-    End Property
+        ' If the parent node is not null or equal to the first node, 
+        ' call the ContainsNode method recursively using the parent of 
+        ' the second node.
+        Return ContainsNode(node1, node2.Parent)
+    End Function 'ContainsNode
 
-    Public Property EditingControlDataGridView() As DataGridView _
-        Implements IDataGridViewEditingControl.EditingControlDataGridView
-
-        Get
-            Return dataGridViewControl
-        End Get
-        Set(ByVal value As DataGridView)
-            dataGridViewControl = value
-        End Set
-
-    End Property
-
-    Public Property EditingControlValueChanged() As Boolean _
-        Implements IDataGridViewEditingControl.EditingControlValueChanged
-
-        Get
-            Return valueIsChanged
-        End Get
-        Set(ByVal value As Boolean)
-            valueIsChanged = value
-        End Set
-
-    End Property
-
-    Public ReadOnly Property EditingControlCursor() As Cursor _
-        Implements IDataGridViewEditingControl.EditingPanelCursor
-
-        Get
-            Return MyBase.Cursor
-        End Get
-
-    End Property
-
-    Protected Overrides Sub OnValueChanged(ByVal eventargs As EventArgs)
-
-        ' Notify the DataGridView that the contents of the cell have changed.
-        valueIsChanged = True
-        Me.EditingControlDataGridView.NotifyCurrentCellDirty(True)
-        MyBase.OnValueChanged(eventargs)
-
-    End Sub
-
-End Class
+End Class 'Form1 

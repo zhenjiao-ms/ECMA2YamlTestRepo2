@@ -1,21 +1,29 @@
-private void ToolStripRenderer1_RenderGrip(Object sender, ToolStripGripRenderEventArgs e) {
-
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "GripBounds", e.GripBounds );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "GripDisplayStyle", e.GripDisplayStyle );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "GripStyle", e.GripStyle );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "AffectedBounds", e.AffectedBounds );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "BackColor", e.BackColor );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ToolStrip", e.ToolStrip );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "ConnectedArea", e.ConnectedArea );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "RenderGrip Event" );
-}
+	private void SelectNode(TreeNode node)
+	{
+		if(node.IsSelected)
+		{
+			// Determine which TreeNode to select.
+			switch(myComboBox.Text)
+			{
+				case "Previous":
+					node.TreeView.SelectedNode = node.PrevNode;
+					break;
+				case "PreviousVisible":
+					node.TreeView.SelectedNode = node.PrevVisibleNode;
+					break;
+				case "Next":
+					node.TreeView.SelectedNode = node.NextNode;
+					break;
+				case "NextVisible":
+					node.TreeView.SelectedNode = node.NextVisibleNode;
+					break;
+				case "First":
+					node.TreeView.SelectedNode = node.FirstNode;
+					break;
+				case "Last":
+					node.TreeView.SelectedNode = node.LastNode;
+					break;
+			}
+		}
+		node.TreeView.Focus();
+	}

@@ -1,23 +1,11 @@
-Private Sub DataGridView1_ColumnDividerDoubleClick(sender as Object, e as DataGridViewColumnDividerDoubleClickEventArgs) _ 
-     Handles DataGridView1.ColumnDividerDoubleClick
+Private Sub DataGridView1_ColumnStateChanged(sender as Object, e as DataGridViewColumnStateChangedEventArgs) _ 
+     Handles DataGridView1.ColumnStateChanged
 
     Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "ColumnIndex", e.ColumnIndex)
+    messageBoxVB.AppendFormat("{0} = {1}", "Column", e.Column)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Handled", e.Handled)
+    messageBoxVB.AppendFormat("{0} = {1}", "StateChanged", e.StateChanged)
     messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Button", e.Button)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Clicks", e.Clicks)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "X", e.X)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Y", e.Y)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Delta", e.Delta)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Location", e.Location)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"ColumnDividerDoubleClick Event")
+    MessageBox.Show(messageBoxVB.ToString(),"ColumnStateChanged Event")
 
 End Sub

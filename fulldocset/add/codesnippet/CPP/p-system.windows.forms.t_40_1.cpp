@@ -1,28 +1,14 @@
-   void SelectNode( TreeNode^ node )
-   {
-      if ( node->IsSelected )
+   private:
+      void treeView1_AfterSelect( Object^ /*sender*/, TreeViewEventArgs^ e )
       {
-         
-         // Determine which TreeNode to select.
-         String^ str = myComboBox->Text;
-         if ( str->Equals( "Previous" ) )
-                  node->TreeView->SelectedNode = node->PrevNode;
+         /* Display the Text and Index of the
+               * selected tree node's Parent. */
+         if ( e->Node->Parent != nullptr && e->Node->Parent->GetType() == TreeNode::typeid )
+         {
+            statusBar1->Text = String::Format( "Parent: {0}\n Index Position: {1}", e->Node->Parent->Text, e->Node->Parent->Index );
+         }
          else
-         if ( str->Equals( "PreviousVisible" ) )
-                  node->TreeView->SelectedNode = node->PrevVisibleNode;
-         else
-         if ( str->Equals( "Next" ) )
-                  node->TreeView->SelectedNode = node->NextNode;
-         else
-         if ( str->Equals( "NextVisible" ) )
-                  node->TreeView->SelectedNode = node->NextVisibleNode;
-         else
-         if ( str->Equals( "First" ) )
-                  node->TreeView->SelectedNode = node->FirstNode;
-         else
-         if ( str->Equals( "Last" ) )
-                  node->TreeView->SelectedNode = node->LastNode;
+         {
+            statusBar1->Text = "No parent node.";
+         }
       }
-
-      node->TreeView->Focus();
-   }

@@ -1,13 +1,20 @@
-    Private treeViewWithToolTips As TreeView
-    
-    Private Sub InitializeTreeViewWithToolTips() 
-        treeViewWithToolTips = New TreeView()
-        Dim node1 As New TreeNode("Node1")
-        node1.ToolTipText = "Help for Node1"
-        Dim node2 As New TreeNode("Node2")
-        node2.ToolTipText = "A Tip for Node2"
-        treeViewWithToolTips.Nodes.AddRange(New TreeNode() {node1, node2})
-        treeViewWithToolTips.ShowNodeToolTips = True
-        Me.Controls.Add(treeViewWithToolTips)
-    
+    Public Sub InitializeMyToolBar()
+        ' Create and initialize the ToolBarButton controls and ToolBar.
+        Dim toolBar1 As New ToolBar()
+        Dim toolBarButton1 As New ToolBarButton()
+        Dim toolBarButton2 As New ToolBarButton()
+        Dim toolBarButton3 As New ToolBarButton()
+        
+        ' Set the Text properties of the ToolBarButton controls.
+        toolBarButton1.Text = "Open"
+        toolBarButton2.Text = "Save"
+        toolBarButton3.Text = "Print"
+        
+        ' Add the ToolBarButton controls to the ToolBar.
+        toolBar1.Buttons.Add(toolBarButton1)
+        toolBar1.Buttons.Add(toolBarButton2)
+        toolBar1.Buttons.Add(toolBarButton3)
+        
+        ' Add the ToolBar to the Form.
+        Controls.Add(toolBar1)
     End Sub

@@ -1,45 +1,126 @@
-    ' This method adds two columns to the ListView, setting the Text 
-    ' and TextAlign, and Width properties of each ColumnHeader.  The 
-    ' HeaderStyle property is set to NonClickable since the ColumnClick 
-    ' event is not handled.  Finally the method adds ListViewItems and 
-    ' SubItems to each column.
-    Private Sub InitializeListView()
-        Me.ListView1 = New System.Windows.Forms.ListView
-        Me.ListView1.BackColor = System.Drawing.SystemColors.Control
-        Me.ListView1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.ListView1.Location = New System.Drawing.Point(0, 0)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(292, 130)
-        Me.ListView1.TabIndex = 0
-        Me.ListView1.View = System.Windows.Forms.View.Details
-        Me.ListView1.MultiSelect = True
-        Me.ListView1.HideSelection = False
-        ListView1.HeaderStyle = ColumnHeaderStyle.Nonclickable
-        Dim columnHeader1 As New ColumnHeader
-        With columnHeader1
-            .Text = "Breakfast Item"
-            .TextAlign = HorizontalAlignment.Left
-            .Width = 146
-        End With
-        Dim columnHeader2 As New ColumnHeader
-        With columnHeader2
-            .Text = "Price Each"
-            .TextAlign = HorizontalAlignment.Center
-            .Width = 142
-        End With
+Imports System
+Imports System.Drawing
+Imports System.Windows.Forms
+Imports System.Windows.Forms.VisualStyles
 
-        Me.ListView1.Columns.Add(columnHeader1)
-        Me.ListView1.Columns.Add(columnHeader2)
-        Dim foodList() As String = New String() {"Juice", "Coffee", _
-            "Cereal & Milk", "Fruit Plate", "Toast & Jelly", _
-            "Bagel & Cream Cheese"}
-        Dim foodPrice() As String = New String() {"1.09", "1.09", _
-            "2.19", "2.49", "1.49", "1.49"}
-        Dim count As Integer
-        For count = 0 To foodList.Length - 1
-            Dim listItem As New ListViewItem(foodList(count))
-            listItem.SubItems.Add(foodPrice(count))
-            ListView1.Items.Add(listItem)
-        Next
-        Me.Controls.Add(Me.ListView1)
-    End Sub
+Namespace CheckBoxRendererSample
+
+    Class Form1
+        Inherits Form
+
+        Public Sub New()
+            Dim CheckBox1 As New CustomCheckBox()
+            Controls.Add(CheckBox1)
+
+            If Application.RenderWithVisualStyles Then
+                Me.Text = "Visual Styles Enabled"
+            Else
+                Me.Text = "Visual Styles Disabled"
+            End If
+        End Sub
+
+        <STAThread()> _
+        Shared Sub Main()
+            ' If you do not call EnableVisualStyles below, then 
+            ' CheckBoxRenderer.DrawCheckBox automatically detects   
+            ' this and draws the check box without visual styles.
+            Application.EnableVisualStyles()
+            Application.Run(New Form1())
+        End Sub
+    End Class
+
+    Public Class CustomCheckBox
+        Inherits Control
+
+        Private textRectangleValue As New Rectangle()
+        Private clickedLocationValue As New Point()
+        Private clicked As Boolean = False
+        Private state As CheckBoxState = CheckBoxState.UncheckedNormal
+
+        Public Sub New()
+            With Me
+                .Location = New Point(50, 50)
+                .Size = New Size(100, 20)
+                .Text = "Click here"
+                .Font = SystemFonts.IconTitleFont
+            End With
+        End Sub
+
+        ' Calculate the text bounds, exluding the check box.
+        Public ReadOnly Property TextRectangle() As Rectangle
+            Get
+                Using g As Graphics = Me.CreateGraphics()
+                    With textRectangleValue
+                        .X = Me.ClientRectangle.X + _
+                            CheckBoxRenderer.GetGlyphSize(g, _
+                            CheckBoxState.UncheckedNormal).Width
+                        .Y = Me.ClientRectangle.Y
+                        .Width = Me.ClientRectangle.Width - _
+                            CheckBoxRenderer.GetGlyphSize(g, _
+                            CheckBoxState.UncheckedNormal).Width
+                        .Height = Me.ClientRectangle.Height
+                    End With
+                End Using
+                Return textRectangleValue
+            End Get
+        End Property
+
+        ' Draw the check box in the current state.
+        Protected Overrides Sub OnPaint(ByVal e As PaintEventArgs)
+            MyBase.OnPaint(e)
+            CheckBoxRenderer.DrawCheckBox(e.Graphics, _
+                Me.ClientRectangle.Location, TextRectangle, Me.Text, _
+                Me.Font, TextFormatFlags.HorizontalCenter, _
+                clicked, state)
+        End Sub
+
+        ' Draw the check box in the checked or unchecked state, alternately.
+        Protected Overrides Sub OnMouseDown(ByVal e As MouseEventArgs)
+            MyBase.OnMouseDown(e)
+            If Not clicked Then
+                With Me
+                    .clicked = True
+                    .Text = "Clicked!"
+                    .state = CheckBoxState.CheckedPressed
+                End With
+                Invalidate()
+            Else
+                With Me
+                    .clicked = False
+                    .Text = "Click here"
+                    .state = CheckBoxState.UncheckedNormal
+                End With
+                Invalidate()
+            End If
+        End Sub
+
+        ' Draw the check box in the hot state. 
+        Protected Overrides Sub OnMouseHover(ByVal e As EventArgs)
+            MyBase.OnMouseHover(e)
+            If clicked Then
+                state = CheckBoxState.CheckedHot
+            Else
+                state = CheckBoxState.UncheckedHot
+            End If
+            Invalidate()
+        End Sub
+
+        ' Draw the check box in the hot state. 
+        Protected Overrides Sub OnMouseUp(ByVal e As MouseEventArgs)
+            MyBase.OnMouseUp(e)
+            Me.OnMouseHover(e)
+        End Sub
+
+        ' Draw the check box in the unpressed state.
+        Protected Overrides Sub OnMouseLeave(ByVal e As EventArgs)
+            MyBase.OnMouseLeave(e)
+            If clicked Then
+                state = CheckBoxState.CheckedNormal
+            Else
+                state = CheckBoxState.UncheckedNormal
+            End If
+            Invalidate()
+        End Sub
+
+    End Class
+End Namespace

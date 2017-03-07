@@ -1,10 +1,15 @@
-    Private Sub SetReadOnly()
-        Dim myColumn As DataGridColumnStyle
-        Dim myDataColumns As DataColumnCollection
-        ' Get the columns for a table bound to a DataGrid.
-        myDataColumns = dataSet1.Tables("Suppliers").Columns
-        Dim dataColumn As DataColumn
-        For Each dataColumn In myDataColumns
-            dataGrid1.TableStyles(0).GridColumnStyles(dataColumn.ColumnName).ReadOnly = dataColumn.ReadOnly
-        Next dataColumn
-    End Sub 'SetReadOnly
+    Private Sub AddLinkColumn()
+
+        Dim links As New DataGridViewLinkColumn()
+        With links
+            .UseColumnTextForLinkValue = True
+            .HeaderText = ColumnName.ReportsTo.ToString()
+            .DataPropertyName = ColumnName.ReportsTo.ToString()
+            .ActiveLinkColor = Color.White
+            .LinkBehavior = LinkBehavior.SystemDefault
+            .LinkColor = Color.Blue
+            .TrackVisitedState = True
+            .VisitedLinkColor = Color.YellowGreen
+        End With
+        DataGridView1.Columns.Add(links)
+    End Sub

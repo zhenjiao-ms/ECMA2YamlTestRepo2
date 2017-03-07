@@ -1,6 +1,10 @@
-public static void MyMethod(Type type, Type baseType) {
-    Trace.Assert(type != null, "Type parameter is null", 
-       "Can't get object for null type");
+// Create an index for an array.
+ protected int index;
  
-   // Perform some processing.
- }
+ protected void Method()
+ { 
+ // Perform some action that sets the index.
+ 
+ // Test that the index value is valid. 
+ Trace.Assert(index > -1);
+ }  

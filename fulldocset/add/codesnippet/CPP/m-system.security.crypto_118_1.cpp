@@ -1,73 +1,103 @@
 using namespace System;
-using namespace System::IO;
 using namespace System::Security::Cryptography;
-
-// Print the byte array in a readable format.
-void PrintByteArray( array<Byte>^array )
+using namespace System::Text;
+array<Byte>^ RSAEncrypt( array<Byte>^DataToEncrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding )
 {
-   int i;
-   for ( i = 0; i < array->Length; i++ )
+   try
    {
-      Console::Write( String::Format( "{0:X2}", array[ i ] ) );
-      if ( (i % 4) == 3 )
-            Console::Write( " " );
+      
+      //Create a new instance of RSACryptoServiceProvider.
+      RSACryptoServiceProvider^ RSA = gcnew RSACryptoServiceProvider;
+      
+      //Import the RSA Key information. This only needs
+      //toinclude the public key information.
+      RSA->ImportParameters( RSAKeyInfo );
+      
+      //Encrypt the passed byte array and specify OAEP padding.  
+      //OAEP padding is only available on Microsoft Windows XP or
+      //later.  
 
+      array<Byte>^encryptedData = RSA->Encrypt( DataToEncrypt, DoOAEPPadding );
+	  delete RSA;
+	  return encryptedData;
    }
-   Console::WriteLine();
+   //Catch and display a CryptographicException  
+   //to the console.
+   catch ( CryptographicException^ e ) 
+   {
+      Console::WriteLine( e->Message );
+      return nullptr;
+   }
+
+}
+
+array<Byte>^ RSADecrypt( array<Byte>^DataToDecrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding )
+{
+   try
+   {
+      
+      //Create a new instance of RSACryptoServiceProvider.
+      RSACryptoServiceProvider^ RSA = gcnew RSACryptoServiceProvider;
+      
+      //Import the RSA Key information. This needs
+      //to include the private key information.
+      RSA->ImportParameters( RSAKeyInfo );
+      
+      //Decrypt the passed byte array and specify OAEP padding.  
+      //OAEP padding is only available on Microsoft Windows XP or
+      //later.  
+	  
+      array<Byte>^decryptedData = RSA->Decrypt( DataToDecrypt, DoOAEPPadding );
+      delete RSA;
+	  return decryptedData;
+   }
+   //Catch and display a CryptographicException  
+   //to the console.
+   catch ( CryptographicException^ e ) 
+   {
+      Console::WriteLine( e );
+      return nullptr;
+   }
+
 }
 
 int main()
 {
-   array<String^>^args = Environment::GetCommandLineArgs();
-   if ( args->Length < 2 )
-   {
-      Console::WriteLine( "Usage: hashdir <directory>" );
-      return 0;
-   }
-
    try
    {
       
-      // Create a DirectoryInfo object representing the specified directory.
-      DirectoryInfo^ dir = gcnew DirectoryInfo( args[ 1 ] );
+      //Create a UnicodeEncoder to convert between byte array and string.
+      UnicodeEncoding^ ByteConverter = gcnew UnicodeEncoding;
       
-      // Get the FileInfo objects for every file in the directory.
-      array<FileInfo^>^files = dir->GetFiles();
+      //Create byte arrays to hold original, encrypted, and decrypted data.
+      array<Byte>^dataToEncrypt = ByteConverter->GetBytes( "Data to Encrypt" );
+      array<Byte>^encryptedData;
+      array<Byte>^decryptedData;
       
-      // Initialize a RIPE160 hash object.
-      RIPEMD160 ^ myRIPEMD160 = RIPEMD160Managed::Create();
-      array<Byte>^hashValue;
+      //Create a new instance of RSACryptoServiceProvider to generate
+      //public and private key data.
+      RSACryptoServiceProvider^ RSA = gcnew RSACryptoServiceProvider;
       
-      // Compute and print the hash values for each file in directory.
-      System::Collections::IEnumerator^ myEnum = files->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         FileInfo^ fInfo = safe_cast<FileInfo^>(myEnum->Current);
-         
-         // Create a fileStream for the file.
-         FileStream^ fileStream = fInfo->Open( FileMode::Open );
-         
-         // Compute the hash of the fileStream.
-         hashValue = myRIPEMD160->ComputeHash( fileStream );
-         
-         // Write the name of the file to the Console.
-         Console::Write( "{0}: ", fInfo->Name );
-         
-         // Write the hash value to the Console.
-         PrintByteArray( hashValue );
-         
-         // Close the file.
-         fileStream->Close();
-      }
-      return 0;
+      //Pass the data to ENCRYPT, the public key information 
+      //(using RSACryptoServiceProvider.ExportParameters(false),
+      //and a boolean flag specifying no OAEP padding.
+      encryptedData = RSAEncrypt( dataToEncrypt, RSA->ExportParameters( false ), false );
+      
+      //Pass the data to DECRYPT, the private key information 
+      //(using RSACryptoServiceProvider.ExportParameters(true),
+      //and a boolean flag specifying no OAEP padding.
+      decryptedData = RSADecrypt( encryptedData, RSA->ExportParameters( true ), false );
+      
+      //Display the decrypted plaintext to the console. 
+      Console::WriteLine( "Decrypted plaintext: {0}", ByteConverter->GetString( decryptedData ) );
+	  delete RSA;
    }
-   catch ( DirectoryNotFoundException^ ) 
+   catch ( ArgumentNullException^ ) 
    {
-      Console::WriteLine( "Error: The directory specified could not be found." );
-   }
-   catch ( IOException^ ) 
-   {
-      Console::WriteLine( "Error: A file in the directory could not be accessed." );
+      
+      //Catch this exception in case the encryption did
+      //not succeed.
+      Console::WriteLine( "Encryption failed." );
    }
 
 }

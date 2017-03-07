@@ -30,8 +30,50 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a selectable item inside a <see cref="T:System.Windows.Controls.Menu" />.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ MenuItem is a <xref:System.Windows.Controls.HeaderedItemsControl>, which means its header and collection of objects can be of any type (such as string, image, or panel). For more information, see the <xref:System.Windows.Controls.HeaderedItemsControl> class.  
+  
+ A MenuItem can have submenus. The submenu of the MenuItem is made up of the objects within the <xref:System.Windows.Controls.ItemCollection> of a MenuItem.  It is common for a MenuItem to contain other MenuItem objects to create nested submenus.  
+  
+ A MenuItem can have one of several functions:  
+  
+-   It can be selected to invoke a command.  
+  
+-   It can be a separator for other menu items.  
+  
+-   It can be a header for a submenu.  
+  
+-   It can be checked or unchecked.  
+  
+> [!NOTE]
+>  By default, the <xref:System.Windows.FrameworkElement.HorizontalAlignment%2A> of a MenuItem is set to <xref:System.Windows.HorizontalAlignment?displayProperty=fullName>. The default horizontal position of a <xref:System.Windows.Controls.StackPanel> is <xref:System.Windows.HorizontalAlignment?displayProperty=fullName>. If you set the <xref:System.Windows.FrameworkElement.Width%2A> property of a MenuItem through a <xref:System.Windows.Controls.StackPanel>, the stack panel's default is applied and the item is centered.  
+  
+ TheMenuItem handles the <xref:System.Windows.UIElement.MouseDown> event, so if you attach an event handler to <xref:System.Windows.UIElement.MouseDown>, your handler will never be called.  To add your own handler, subscribe to the <xref:System.Windows.UIElement.PreviewMouseDown> event or subscribe to <xref:System.Windows.UIElement.MouseDown> by calling <xref:System.Windows.UIElement.AddHandler%28System.Windows.RoutedEvent%2CSystem.Delegate%2CSystem.Boolean%29> with `handledEventsToo` set to `true`.  
+  
+## Customizing the MenuItem Control  
+ To apply the same property settings to multiple MenuItem controls, use the <xref:System.Windows.FrameworkElement.Style%2A> property. You can modify the default <xref:System.Windows.Controls.ControlTemplate> to give the control a unique appearance. For more information about creating a <xref:System.Windows.Controls.ControlTemplate>, see [Customizing the Appearance of an Existing Control by Creating a ControlTemplate](../Topic/Customizing%20the%20Appearance%20of%20an%20Existing%20Control%20by%20Creating%20a%20ControlTemplate.md).  To see the parts and states that are specific to the MenuItem, see [Menu Styles and Templates](../Topic/Menu%20Styles%20and%20Templates.md).  
+  
+ Dependency properties for this control might be set by the control’s default style.  If a property is set by a default style, the property might change from its default value when the control appears in the application. The default style is determined by which desktop theme is used when the application is running.  For more information, see [Default WPF Themes](http://go.microsoft.com/fwlink/?LinkID=158252).  
+  
+> [!NOTE]
+>  Setting a visual property will only have an effect if that property is both present in MenuItem control's default template and is set by using a . You can find a list of visual properties in the "Changing the Visual Structure of a Control" section in [Customizing the Appearance of an Existing Control by Creating a ControlTemplate](../Topic/Customizing%20the%20Appearance%20of%20an%20Existing%20Control%20by%20Creating%20a%20ControlTemplate.md).  
+  
+   
+  
+## Examples  
+ The following example creates a <xref:System.Windows.Controls.Menu> to manipulate text in a <xref:System.Windows.Controls.TextBox>. The <xref:System.Windows.Controls.Menu> contains MenuItem objects that use the <xref:System.Windows.Controls.MenuItem.Command%2A>, <xref:System.Windows.Controls.MenuItem.IsCheckable%2A>, and <xref:System.Windows.Controls.HeaderedItemsControl.Header%2A> properties and the <xref:System.Windows.Controls.MenuItem.Checked>, <xref:System.Windows.Controls.MenuItem.Unchecked>, and <xref:System.Windows.Controls.MenuItem.Click> events.  
+  
+ [!code-xml[MenuItemCommandsAndEvents#1](~/add/codesnippet/xaml/MenuItemCommandsAndEvents/Window1.xaml#1)]  
+  
+ [!code-cs[MenuItemCommandsAndEvents#2](~/add/codesnippet/csharp/MenuItemCommandsAndEvents/Window1.xaml.cs#2)]
+ [!code-vb[MenuItemCommandsAndEvents#2](~/add/codesnippet/visualbasic/MenuItemCommandsAndEvents/Window1.xaml.vb#2)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -46,7 +88,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.Windows.Controls.MenuItem" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -69,8 +111,33 @@
         <ReturnType>System.Windows.RoutedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Occurs when a menu item is checked.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="routedEventInfo_Checked"></a>   
+## Routed Event Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.CheckedEvent>|  
+|Routing strategy|Bubbling|  
+|Delegate|<xref:System.Windows.RoutedEventHandler>|  
+  
+   
+  
+## Examples  
+ The following example demonstrates handling the Checked event.  
+  
+ [!code-xml[MenuItemCommandsAndEvents#3](~/add/codesnippet/xaml/MenuItemCommandsAndEvents/Window1.xaml#3)]  
+  
+ [!code-cs[MenuItemCommandsAndEvents#4](~/add/codesnippet/csharp/MenuItemCommandsAndEvents/Window1.xaml.cs#4)]
+ [!code-vb[MenuItemCommandsAndEvents#4](~/add/codesnippet/visualbasic/MenuItemCommandsAndEvents/Window1.xaml.vb#4)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CheckedEvent">
@@ -87,7 +154,7 @@
         <ReturnType>System.Windows.RoutedEvent</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="E:System.Windows.Controls.MenuItem.Checked" /> routed event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -110,8 +177,34 @@
         <ReturnType>System.Windows.RoutedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Occurs when a <see cref="T:System.Windows.Controls.MenuItem" /> is clicked.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The Click event does not occur if the <xref:System.Windows.Controls.MenuItem> has a submenu.  
+  
+<a name="routedEventInfo_Click"></a>   
+## Routed Event Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.ClickEvent>|  
+|Routing strategy|Bubbling|  
+|Delegate|<xref:System.Windows.RoutedEventHandler>|  
+  
+   
+  
+## Examples  
+ The following example creates a <xref:System.Windows.Controls.Menu> to manipulate text in a <xref:System.Windows.Controls.TextBox>. The <xref:System.Windows.Controls.Menu> contains <xref:System.Windows.Controls.MenuItem> objects that use the <xref:System.Windows.Controls.MenuItem.Command%2A>, <xref:System.Windows.Controls.MenuItem.IsCheckable%2A>, and <xref:System.Windows.Controls.HeaderedItemsControl.Header%2A> properties and the <xref:System.Windows.Controls.MenuItem.Checked>, <xref:System.Windows.Controls.MenuItem.Unchecked>, and Click events.  
+  
+ [!code-xml[MenuItemCommandsAndEvents#1](~/add/codesnippet/xaml/MenuItemCommandsAndEvents/Window1.xaml#1)]  
+  
+ [!code-cs[MenuItemCommandsAndEvents#2](~/add/codesnippet/csharp/MenuItemCommandsAndEvents/Window1.xaml.cs#2)]
+ [!code-vb[MenuItemCommandsAndEvents#2](~/add/codesnippet/visualbasic/MenuItemCommandsAndEvents/Window1.xaml.vb#2)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ClickEvent">
@@ -128,8 +221,15 @@
         <ReturnType>System.Windows.RoutedEvent</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Identifies the <see cref="E:System.Windows.Controls.MenuItem.Click" /> routed event.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This event corresponds to a left mouse button click.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Command">
@@ -157,9 +257,45 @@
         <ReturnType>System.Windows.Input.ICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the command associated with the menu item.</summary>
+        <value>The command associated with the <see cref="T:System.Windows.Controls.MenuItem" />.  The default is <see langword="null" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This property is used to associate a command with a particular <xref:System.Windows.Controls.MenuItem> instance. The following example associates the **Copy** command with a <xref:System.Windows.Controls.MenuItem> and automatically supplies the input gesture text **Ctrl+C**. The example does not set the <xref:System.Windows.Controls.HeaderedItemsControl.Header%2A> property, but the <xref:System.Windows.Controls.HeaderedItemsControl.Header%2A> for the <xref:System.Windows.Controls.MenuItem> is "Copy" at run time.  You can specify another header for the <xref:System.Windows.Controls.MenuItem> if you want it to be different. For information on how to bind to the desired command, see [Add a Command to a MenuItem](http://msdn.microsoft.com/en-us/013d68a0-5373-4a68-bd91-5de574307370).  
+  
+ [!code-xml[MenuItems_snip#MenuItemCommand](~/add/codesnippet/xaml/MenuItems_snip.Menus/Pane1.xaml#menuitemcommand)]  
+  
+ A command is raised when a <xref:System.Windows.Controls.MenuItem> is clicked—just after the <xref:System.Windows.Controls.MenuItem.Click> event. The command is raised on the element according to the following priorities:  
+  
+1.  If <xref:System.Windows.Controls.MenuItem.CommandTarget%2A> is set on the <xref:System.Windows.Controls.MenuItem>, that element is used.  
+  
+2.  The <xref:System.Windows.Controls.ContextMenu.PlacementTarget%2A> of a <xref:System.Windows.Controls.ContextMenu> that contains the <xref:System.Windows.Controls.MenuItem>.  
+  
+3.  The focus target of the main window that contains a <xref:System.Windows.Controls.Menu>.  
+  
+4.  The <xref:System.Windows.Controls.MenuItem> that was clicked.  
+  
+<a name="dependencyPropertyInfo_Command"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.CommandProperty>|  
+|Metadata properties set to `true`|None|  
+  
+   
+  
+## Examples  
+ The following examples show how to use the command property to associate commands with menu items.  
+  
+ [!code-xml[MenuEvent#8](~/add/codesnippet/xaml/MenuEvent.Menus/Pane1.xaml#8)]  
+  
+ [!code-cs[MenuEvent#9](~/add/codesnippet/csharp/MenuEvent.Menus/Pane1.xaml.cs#9)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CommandParameter">
@@ -187,9 +323,23 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the parameter to pass to the <see cref="System.Windows.Controls.MenuItem.Command%2A" /> property of a <see cref="T:System.Windows.Controls.MenuItem" />.</summary>
+        <value>The parameter to pass to the <see cref="System.Windows.Controls.MenuItem.Command%2A" /> property of a <see cref="T:System.Windows.Controls.MenuItem" />. The default is <see langword="null" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="dependencyPropertyInfo_CommandParameter"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.CommandParameterProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CommandParameterProperty">
@@ -206,7 +356,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.CommandParameter%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -224,7 +374,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.Command%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -250,9 +400,24 @@
         <ReturnType>System.Windows.IInputElement</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the target element on which to raise the specified command.</summary>
+        <value>The element on which to raise the specified command. The default is <see langword="null" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The CommandTarget property specifies the element where the command occurs. If CommandTarget is not set, the element that has keyboard focus will receive the command.  
+  
+<a name="dependencyPropertyInfo_CommandTarget"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.CommandTargetProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CommandTargetProperty">
@@ -269,7 +434,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.CommandTarget%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -288,8 +453,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Creates or identifies the element used to display a specified item.</summary>
+        <returns>The element used to display a specified item.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -307,9 +472,17 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets whether the control supports scrolling.</summary>
+        <value>
+          <see langword="true" /> in all cases.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If the control has a <xref:System.Windows.Controls.ScrollViewer> in its style and has a custom keyboard scrolling behavior, <xref:System.Windows.Controls.ListBox.HandlesScrolling%2A> should return `true`.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Icon">
@@ -331,9 +504,31 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the icon that appears in a <see cref="T:System.Windows.Controls.MenuItem" />.</summary>
+        <value>The icon that appears in a <see cref="T:System.Windows.Controls.MenuItem" />. The default value is <see langword="null" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Many <xref:System.Windows.Controls.Menu> controls have more than just text in the <xref:System.Windows.Controls.MenuItem> elements. Often there are icons, check marks, accelerators, and arrows to indicate submenus.  
+  
+<a name="dependencyPropertyInfo_Icon"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.IconProperty>|  
+|Metadata properties set to `true`|None|  
+  
+   
+  
+## Examples  
+ The following example creates a menu item with an icon.  
+  
+ [!code-xml[MenuItems_snip#MenuItemIcon](~/add/codesnippet/xaml/MenuItems_snip.Menus/Pane1.xaml#menuitemicon)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IconProperty">
@@ -350,7 +545,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.Icon%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -373,9 +568,33 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Sets the text describing an input gesture that will call the command tied to the specified item.</summary>
+        <value>The text that describes the input gesture, such as **Ctrl+C** for the **Copy** command. The default is an empty string ("").</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This property does not associate the input gesture with the menu item; it simply adds text to the menu item. The application must handle the user's input to carry out the action.  For information on how to associate a command with a menu item, see <xref:System.Windows.Controls.MenuItem.Command%2A>.  
+  
+<a name="dependencyPropertyInfo_InputGestureText"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.InputGestureTextProperty>|  
+|Metadata properties set to `true`|None|  
+  
+   
+  
+## Examples  
+ The following examples show how to use the InputGestureText property to assign keyboard shortcuts text to menu items.  
+  
+ [!code-xml[MenuEvent#6](~/add/codesnippet/xaml/MenuEvent.Menus/Pane1.xaml#6)]  
+  
+ [!code-cs[MenuEvent#7](~/add/codesnippet/csharp/MenuEvent.Menus/Pane1.xaml.cs#7)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InputGestureTextProperty">
@@ -392,7 +611,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.InputGestureText%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -418,9 +637,31 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether a <see cref="T:System.Windows.Controls.MenuItem" /> can be checked.</summary>
+        <value>
+          <see langword="true" /> if the menu item can be checked; otherwise, <see langword="false" />.  The default is <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="dependencyPropertyInfo_IsCheckable"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.IsCheckableProperty>|  
+|Metadata properties set to `true`|None|  
+  
+   
+  
+## Examples  
+ The following example shows how to make <xref:System.Windows.Controls.MenuItem> controls that are checked when a user clicks them.  
+  
+ [!code-xml[MenuEvent#11](~/add/codesnippet/xaml/MenuEvent.Menus/Pane1.xaml#11)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsCheckableProperty">
@@ -437,7 +678,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.IsCheckable%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -463,9 +704,32 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets a value that indicates whether the <see cref="T:System.Windows.Controls.MenuItem" /> is checked.</summary>
+        <value>
+          <see langword="true" /> if a <see cref="T:System.Windows.Controls.MenuItem" /> is checked; otherwise, <see langword="false" />. The default is <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="dependencyPropertyInfo_IsChecked"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.IsCheckedProperty>|  
+|Metadata properties set to `true`|<xref:System.Windows.FrameworkPropertyMetadata.BindsTwoWayByDefault%2A>, <xref:System.Windows.FrameworkPropertyMetadata.Journal%2A>|  
+  
+   
+  
+## Examples  
+ The following example shows how the IsChecked property can be used to place a check mark in front of a menu item.  
+  
+ [!code-xml[MenuStyles#6](~/add/codesnippet/xaml/p-system.windows.control_358_1.xaml)]
+ [!code-xml[MenuStyles#6](~/add/codesnippet/xaml/p-system.windows.control_358_1.xaml)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsCheckedProperty">
@@ -482,7 +746,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.IsChecked%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -500,8 +764,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value that indicates whether the <see cref="System.Windows.ContentElement.IsEnabled%2A" /> property is <see langword="true" /> for the current menu item.</summary>
+        <value>
+          <see langword="true" /> if the <see cref="T:System.Windows.Controls.MenuItem" /> can be selected; otherwise,<see langword=" false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -527,9 +792,33 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether a <see cref="T:System.Windows.Controls.MenuItem" /> is highlighted.</summary>
+        <value>
+          <see langword="true" /> if a <see cref="T:System.Windows.Controls.MenuItem" /> is highlighted; otherwise, <see langword="false" />. The default is <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Starting with the .NET Framework version 3.0 Service Pack 1, the IsHighlighted property has a protected setter. To use this functionality, your application should target the .NET Framework version 3.5.  For more information, see [.NET Framework Versions and Dependencies](../Topic/.NET%20Framework%20Versions%20and%20Dependencies.md).  
+  
+<a name="dependencyPropertyInfo_IsHighlighted"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.IsHighlightedProperty>|  
+|Metadata properties set to `true`|None|  
+  
+   
+  
+## Examples  
+ The following example shows how to determine whether a menu item is highlighted.  
+  
+ [!code-cs[MenuItems_snip#MenuItemIsHighlighted](~/add/codesnippet/csharp/MenuItems_snip.Menus/Pane1.xaml.cs#menuitemishighlighted)]
+ [!code-vb[MenuItems_snip#MenuItemIsHighlighted](~/add/codesnippet/visualbasic/menus/pane1.xaml.vb#menuitemishighlighted)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsHighlightedProperty">
@@ -546,7 +835,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.IsHighlighted%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -567,9 +856,10 @@
         <Parameter Name="item" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="item">Specified item.</param>
+        <summary>Determines if the specified item is (or is eligible to be) its own <c>ItemContainer</c>.</summary>
+        <returns>
+          <see langword="true" /> if the item is its own <c>ItemContainer</c>; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -595,9 +885,32 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether a <see cref="T:System.Windows.Controls.MenuItem" /> is pressed.</summary>
+        <value>
+          <see langword="true" /> if a <see cref="T:System.Windows.Controls.MenuItem" /> is pressed; otherwise, <see langword="false" />. The default is <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Starting with the .NET Framework version 3.0 Service Pack 1, the IsPressed property has a protected setter. To use this functionality, your application should target the .NET Framework version 3.5.  For more information, see [.NET Framework Versions and Dependencies](../Topic/.NET%20Framework%20Versions%20and%20Dependencies.md).  
+  
+<a name="dependencyPropertyInfo_IsPressed"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.IsPressedProperty>|  
+|Metadata properties set to `true`|None|  
+  
+   
+  
+## Examples  
+ The following example shows how to use the IsPressed property in a menu item style. When the menu item is pressed, the style of its foreground, text size, and text style change.  
+  
+ [!code-xml[MenuItemsStyle_snip#MenuItemsIsPressed](~/add/codesnippet/xaml/MenuStyles/MyApp.xaml#menuitemsispressed)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsPressedProperty">
@@ -614,7 +927,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.IsPressed%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -646,9 +959,35 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets a value that indicates whether the submenu of the <see cref="T:System.Windows.Controls.MenuItem" /> is open.</summary>
+        <value>
+          <see langword="true" /> if the submenu of the <see cref="T:System.Windows.Controls.MenuItem" /> is open; otherwise, <see langword="false" />. The default is <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ When IsSubmenuOpen is set to `true`, mouse capture is set to the <xref:System.Windows.Controls.MenuItem> and its subtree.  
+  
+<a name="dependencyPropertyInfo_IsSubmenuOpen"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.IsSubmenuOpenProperty>|  
+|Metadata properties set to `true`|<xref:System.Windows.FrameworkPropertyMetadata.BindsTwoWayByDefault%2A>|  
+  
+   
+  
+## Examples  
+ The following example shows how to open a submenu of a <xref:System.Windows.Controls.MenuItem>.  In this example, the <xref:System.Windows.Controls.MenuItem> called `fileMenu` contains a <xref:System.Windows.Controls.MenuItem> called `recentFiles` that has a submenu. When `fileMenu` is opened, the <xref:System.Windows.Controls.MenuItem.SubmenuOpened> event is raised and the `FileMenu_Opened` event handler opens the submenu of `recentFiles`.  
+  
+ [!code-xml[MenuItems_snip#IsSubMenuOpenMenu](~/add/codesnippet/xaml/MenuItems_snip.Menus/Pane1.xaml#issubmenuopenmenu)]  
+  
+ [!code-cs[MenuItems_snip#IsSubMenuOpen](~/add/codesnippet/csharp/MenuItems_snip.Menus/Pane1.xaml.cs#issubmenuopen)]
+ [!code-vb[MenuItems_snip#IsSubMenuOpen](~/add/codesnippet/visualbasic/menus/pane1.xaml.vb#issubmenuopen)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsSubmenuOpenProperty">
@@ -665,7 +1004,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.IsSubmenuOpen%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -688,9 +1027,24 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets whether a menu suspends animations on its <see cref="T:System.Windows.Controls.Primitives.Popup" /> control.</summary>
+        <value>
+          <see langword="true" /> if the menu should suspend animations on its popup; otherwise, <see langword="false" />. The default is <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="dependencyPropertyInfo_IsSuspendingPopupAnimation"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.IsSuspendingPopupAnimationProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsSuspendingPopupAnimationProperty">
@@ -707,7 +1061,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.IsSuspendingPopupAnimation%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -724,9 +1078,24 @@
         <ReturnType>System.Windows.Controls.ItemContainerTemplateSelector</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the custom logic for choosing a template used to display each item.</summary>
+        <value>A custom object that provides logic and returns an item container.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use an <xref:System.Windows.Controls.ItemContainerTemplateSelector> to choose different item containers if the items in your collection are the same type and you need to provide custom logic to choose the item container.  
+  
+<a name="dependencyPropertyInfo_ItemContainerTemplateSelector"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.ItemContainerTemplateSelectorProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ItemContainerTemplateSelectorProperty">
@@ -742,7 +1111,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.ItemContainerTemplateSelector%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -768,8 +1137,8 @@
         <Parameter Name="e" Type="System.Windows.Input.AccessKeyEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data for the <see cref="System.Windows.Input.AccessKeyManager.AccessKeyPressed" /> event.</param>
+        <summary>Responds when the <see cref="System.Windows.Controls.AccessText.AccessKey%2A" /> for this control is invoked.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -788,7 +1157,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Called when the template's tree is generated.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -809,9 +1178,16 @@
         <Parameter Name="e" Type="System.Windows.RoutedEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="e">The event data for the <see cref="E:System.Windows.Controls.MenuItem.Checked" /> event.</param>
+        <summary>Called when the <see cref="System.Windows.Controls.MenuItem.IsChecked%2A" /> property becomes <see langword="true" />. This method raises the <see cref="E:System.Windows.Controls.MenuItem.Checked" /> routed event.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The control raises the <xref:System.Windows.Controls.MenuItem.Checked> event by calling <xref:System.Windows.UIElement.RaiseEvent%2A>. For more information, see [Routed Events Overview](../Topic/Routed%20Events%20Overview.md).  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OnClick">
@@ -837,8 +1213,23 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Called when a <see cref="T:System.Windows.Controls.MenuItem" /> is clicked and raises a <see cref="E:System.Windows.Controls.Primitives.ButtonBase.Click" /> event.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ If you inherit from <xref:System.Windows.Controls.MenuItem>, be sure to call the base class to get the following behavior.  
+  
+-   Toggling of the <xref:System.Windows.Controls.MenuItem.IsChecked%2A> property.  
+  
+-   Focus being set to the menu item.  
+  
+-   Automation invoke event.  
+  
+-   <xref:System.Windows.Controls.MenuItem.Click> event.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OnCreateAutomationPeer">
@@ -856,8 +1247,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Provides an appropriate <see cref="T:System.Windows.Automation.Peers.MenuItemAutomationPeer" /> implementation for this control, as part of the [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] automation infrastructure.</summary>
+        <returns>A <see cref="T:System.Windows.Automation.Peers.MenuItemAutomationPeer" /> for this <see cref="T:System.Windows.Controls.MenuItem" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -878,8 +1269,8 @@
         <Parameter Name="e" Type="System.Windows.Input.KeyboardFocusChangedEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data for the <see cref="E:System.Windows.UIElement.GotFocus" /> event.</param>
+        <summary>Announces that the keyboard is focused on this element.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -900,8 +1291,8 @@
         <Parameter Name="e" Type="System.EventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data for the <see cref="E:System.Windows.FrameworkElement.Initialized" /> event.</param>
+        <summary>Called when the <see cref="System.Windows.FrameworkElement.IsInitialized%2A" /> property is set to <see langword="true" /> and raises an <see cref="E:System.Windows.FrameworkElement.Initialized" /> event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -922,8 +1313,8 @@
         <Parameter Name="e" Type="System.Windows.DependencyPropertyChangedEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data for the <see cref="E:System.Windows.ContentElement.IsKeyboardFocusWithinChanged" /> event.</param>
+        <summary>Called when the focus is no longer on or within a <see cref="T:System.Windows.Controls.MenuItem" />.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -944,8 +1335,8 @@
         <Parameter Name="e" Type="System.Collections.Specialized.NotifyCollectionChangedEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data for the <see cref="E:System.Windows.Controls.ItemContainerGenerator.ItemsChanged" /> event.</param>
+        <summary>Called when the <see cref="System.Windows.Controls.ItemsControl.Items%2A" /> property changes.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -971,8 +1362,8 @@
         <Parameter Name="e" Type="System.Windows.Input.KeyEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data for the <see cref="E:System.Windows.UIElement.KeyDown" /> event.</param>
+        <summary>Responds to the <see cref="E:System.Windows.UIElement.KeyDown" /> event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -993,8 +1384,8 @@
         <Parameter Name="e" Type="System.Windows.Input.MouseEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data for the <see cref="System.Windows.Input.Mouse.MouseEnter" /> event.</param>
+        <summary>Called whenever the mouse enters a <see cref="T:System.Windows.Controls.MenuItem" />.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1015,8 +1406,8 @@
         <Parameter Name="e" Type="System.Windows.Input.MouseEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data for the <see cref="System.Windows.Input.Mouse.MouseLeave" /> event.</param>
+        <summary>Called whenever the mouse leaves a <see cref="T:System.Windows.Controls.MenuItem" />.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1045,8 +1436,8 @@
         <Parameter Name="e" Type="System.Windows.Input.MouseButtonEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data for the <see cref="E:System.Windows.UIElement.MouseLeftButtonDown" /> event.</param>
+        <summary>Called when the left mouse button is pressed.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1075,8 +1466,8 @@
         <Parameter Name="e" Type="System.Windows.Input.MouseButtonEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data for the <see cref="E:System.Windows.UIElement.MouseLeftButtonUp" /> event.</param>
+        <summary>Called when the left mouse button is released.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1097,8 +1488,8 @@
         <Parameter Name="e" Type="System.Windows.Input.MouseEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data for the <see cref="System.Windows.Input.Mouse.MouseMove" /> event.</param>
+        <summary>Called when the mouse is moved over a menu item.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1127,8 +1518,8 @@
         <Parameter Name="e" Type="System.Windows.Input.MouseButtonEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data for the <see cref="E:System.Windows.UIElement.MouseRightButtonDown" /> event.</param>
+        <summary>Called when the right mouse button is pressed.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1157,8 +1548,8 @@
         <Parameter Name="e" Type="System.Windows.Input.MouseButtonEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data for the <see cref="E:System.Windows.UIElement.MouseRightButtonUp" /> event.</param>
+        <summary>Called when the right mouse button is released.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1179,9 +1570,19 @@
         <Parameter Name="e" Type="System.Windows.RoutedEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="e">The event data for the <see cref="E:System.Windows.Controls.MenuItem.SubmenuClosed" /> event.</param>
+        <summary>Called when the submenu of a <see cref="T:System.Windows.Controls.MenuItem" /> is closed.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ This example shows how to use the OnSubmenuClosed method.  
+  
+ [!code-cs[MenuItems_snip#SubmenuEventClosed2](~/add/codesnippet/csharp/MenuItems_snip.Menus/Pane1.xaml.cs#submenueventclosed2)]
+ [!code-vb[MenuItems_snip#SubmenuEventClosed2](~/add/codesnippet/visualbasic/menus/pane1.xaml.vb#submenueventclosed2)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OnSubmenuOpened">
@@ -1201,9 +1602,19 @@
         <Parameter Name="e" Type="System.Windows.RoutedEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="e">The event data for the <see cref="E:System.Windows.Controls.MenuItem.SubmenuOpened" /> event.</param>
+        <summary>Called when the submenu of a <see cref="T:System.Windows.Controls.MenuItem" /> is opened.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ This example shows how to use the OnSubmenuOpened method.  
+  
+ [!code-cs[MenuItems_snip#SubmenuEventOpened2](~/add/codesnippet/csharp/MenuItems_snip.Menus/Pane1.xaml.cs#submenueventopened2)]
+ [!code-vb[MenuItems_snip#SubmenuEventOpened2](~/add/codesnippet/visualbasic/menus/pane1.xaml.vb#submenueventopened2)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OnUnchecked">
@@ -1223,9 +1634,16 @@
         <Parameter Name="e" Type="System.Windows.RoutedEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="e">The event data for the <see cref="E:System.Windows.Controls.MenuItem.Unchecked" /> event.</param>
+        <summary>Called when the <see cref="System.Windows.Controls.MenuItem.IsChecked%2A" /> property becomes <see langword="false" />. This method raises the <see cref="E:System.Windows.Controls.MenuItem.Unchecked" /> routed event.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The control raises the <xref:System.Windows.Controls.MenuItem.Unchecked> event by calling <xref:System.Windows.UIElement.RaiseEvent%2A>. For more information, see [Routed Events Overview](../Topic/Routed%20Events%20Overview.md).  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OnVisualParentChanged">
@@ -1245,8 +1663,8 @@
         <Parameter Name="oldParent" Type="System.Windows.DependencyObject" />
       </Parameters>
       <Docs>
-        <param name="oldParent">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="oldParent">Old value of the parent of the visual, or null if the visual did not have a parent.</param>
+        <summary>Called when the parent of the visual <see cref="T:System.Windows.Controls.MenuItem" /> changes.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1268,10 +1686,17 @@
         <Parameter Name="item" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="element">To be added.</param>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="element">Element used to display the specified item.</param>
+        <param name="item">Specified item.</param>
+        <summary>Prepares the specified element to display the specified item.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Preparing the element may involve applying styles, setting bindings, and so on.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Role">
@@ -1293,9 +1718,24 @@
         <ReturnType>System.Windows.Controls.MenuItemRole</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates the role of a <see cref="T:System.Windows.Controls.MenuItem" />.</summary>
+        <value>One of the <see cref="T:System.Windows.Controls.MenuItemRole" /> values. The default is <see cref="T:System.Windows.Controls.MenuItemRole" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The value of Role depends on the relationship to the <xref:System.Windows.Controls.Menu> and other <xref:System.Windows.Controls.MenuItem> objects.  
+  
+<a name="dependencyPropertyInfo_Role"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.RoleProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RoleProperty">
@@ -1312,7 +1752,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.Role%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1330,9 +1770,28 @@
         <ReturnType>System.Windows.ResourceKey</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the resource key for a style applied to a <see cref="T:System.Windows.Controls.MenuItem" /> when the <see cref="T:System.Windows.Controls.MenuItem" /> is a <see cref="T:System.Windows.Controls.Separator" />.</summary>
+        <value>The resource key for a style applied to a <see cref="T:System.Windows.Controls.MenuItem" /> when the <see cref="T:System.Windows.Controls.MenuItem" /> is a <see cref="T:System.Windows.Controls.Separator" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use this property to change the style of a <xref:System.Windows.Controls.Separator> in a menu.  
+  
+<a name="xamlAttributeUsage_SeparatorStyleKey"></a>   
+## XAML Attribute Usage  
+ <*object* *property*={ **MenuItem.SeparatorStyleKey**}`"`/>  
+  
+   
+  
+## Examples  
+ The following example shows how to use this property to style a <xref:System.Windows.Controls.Separator> in a <xref:System.Windows.Controls.Menu>.  
+  
+ [!code-xml[MenuStyles#4](~/add/codesnippet/xaml/p-system.windows.control_229_1.xaml)]
+ [!code-xml[MenuStyles#4](~/add/codesnippet/xaml/p-system.windows.control_229_1.xaml)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ShouldApplyItemContainerStyle">
@@ -1353,10 +1812,11 @@
         <Parameter Name="item" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="container">To be added.</param>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="container">Container to which the style will be applied.</param>
+        <param name="item">Item to which the container belongs.</param>
+        <summary>Used to determine whether to apply a style to the item container.</summary>
+        <returns>
+          <see langword="true" /> if the <see cref="T:System.Windows.Controls.MenuItem" /> is not a <see cref="T:System.Windows.Controls.Separator" />; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1382,9 +1842,31 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets a value that indicates that the submenu in which this <see cref="T:System.Windows.Controls.MenuItem" /> is located should not close when this item is clicked.</summary>
+        <value>
+          <see langword="true" /> if the submenu in which this <see cref="T:System.Windows.Controls.MenuItem" /> is located should not close when this item is clicked; otherwise, <see langword="false" />. The default is <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="dependencyPropertyInfo_StaysOpenOnClick"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.StaysOpenOnClickProperty>|  
+|Metadata properties set to `true`|None|  
+  
+   
+  
+## Examples  
+ The following example uses the StaysOpenOnClick property to create an item in a submenu that does not close when the item is clicked.  
+  
+ [!code-xml[MenuItems_snip#SubmenuStaysOpen](~/add/codesnippet/xaml/MenuItems_snip.Menus/Pane1.xaml#submenustaysopen)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="StaysOpenOnClickProperty">
@@ -1401,7 +1883,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.StaysOpenOnClick%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1424,8 +1906,33 @@
         <ReturnType>System.Windows.RoutedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Occurs when the state of the <see cref="System.Windows.Controls.MenuItem.IsSubmenuOpen%2A" /> property changes to <see langword="false" />.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="routedEventInfo_SubmenuClosed"></a>   
+## Routed Event Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.SubmenuClosedEvent>|  
+|Routing strategy|Bubbling|  
+|Delegate|<xref:System.Windows.RoutedEventHandler>|  
+  
+   
+  
+## Examples  
+ The following examples demonstrate calling and handling the SubmenuClosed event.  
+  
+ [!code-xml[MenuItems_snip#SubmenuEvents1](~/add/codesnippet/xaml/MenuItems_snip.Menus/Pane1.xaml#submenuevents1)]  
+  
+ [!code-cs[MenuItems_snip#SubmenuEventClosed2](~/add/codesnippet/csharp/MenuItems_snip.Menus/Pane1.xaml.cs#submenueventclosed2)]
+ [!code-vb[MenuItems_snip#SubmenuEventClosed2](~/add/codesnippet/visualbasic/menus/pane1.xaml.vb#submenueventclosed2)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SubmenuClosedEvent">
@@ -1442,7 +1949,7 @@
         <ReturnType>System.Windows.RoutedEvent</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="E:System.Windows.Controls.MenuItem.SubmenuClosed" /> routed event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1460,9 +1967,20 @@
         <ReturnType>System.Windows.ResourceKey</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the resource key for a style applied to a <see cref="T:System.Windows.Controls.MenuItem" /> when the <see cref="T:System.Windows.Controls.MenuItem" /> is a header of a submenu.</summary>
+        <value>The resource key for a style applied to a <see cref="T:System.Windows.Controls.MenuItem" /> when the <see cref="T:System.Windows.Controls.MenuItem" /> is a header of a submenu.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use this property to change the style of a <xref:System.Windows.Controls.MenuItem> whose <xref:System.Windows.Controls.MenuItem.Role%2A> property is set to <xref:System.Windows.Controls.MenuItemRole?displayProperty=fullName>.  
+  
+<a name="xamlAttributeUsage_SubmenuHeaderTemplateKey"></a>   
+## XAML Attribute Usage  
+ <*object* *property*={ **MenuItem.SubmenuHeaderTemplateKey**}`"`/>  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SubmenuItemTemplateKey">
@@ -1479,9 +1997,20 @@
         <ReturnType>System.Windows.ResourceKey</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the resource key for a style applied to a <see cref="T:System.Windows.Controls.MenuItem" /> when the <see cref="T:System.Windows.Controls.MenuItem" /> is a submenu.</summary>
+        <value>The resource key for a style applied to a <see cref="T:System.Windows.Controls.MenuItem" /> when the <see cref="T:System.Windows.Controls.MenuItem" /> is a submenu.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use this property to change the style of a <xref:System.Windows.Controls.MenuItem> whose <xref:System.Windows.Controls.MenuItem.Role%2A> property is set to <xref:System.Windows.Controls.MenuItemRole?displayProperty=fullName>.  
+  
+<a name="xamlAttributeUsage_SubmenuItemTemplateKey"></a>   
+## XAML Attribute Usage  
+ <*object* *property*={ **MenuItem.SubmenuItemTemplateKey**}`"`/>  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SubmenuOpened">
@@ -1503,8 +2032,33 @@
         <ReturnType>System.Windows.RoutedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Occurs when the state of the <see cref="System.Windows.Controls.MenuItem.IsSubmenuOpen%2A" /> property changes to <see langword="true" />.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="routedEventInfo_SubmenuOpened"></a>   
+## Routed Event Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.SubmenuOpenedEvent>|  
+|Routing strategy|Bubbling|  
+|Delegate|<xref:System.Windows.RoutedEventHandler>|  
+  
+   
+  
+## Examples  
+ The following examples demonstrate calling and handling the SubmenuOpened event.  
+  
+ [!code-xml[MenuItems_snip#SubmenuEvents1](~/add/codesnippet/xaml/MenuItems_snip.Menus/Pane1.xaml#submenuevents1)]  
+  
+ [!code-cs[MenuItems_snip#SubmenuEventOpened2](~/add/codesnippet/csharp/MenuItems_snip.Menus/Pane1.xaml.cs#submenueventopened2)]
+ [!code-vb[MenuItems_snip#SubmenuEventOpened2](~/add/codesnippet/visualbasic/menus/pane1.xaml.vb#submenueventopened2)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SubmenuOpenedEvent">
@@ -1521,7 +2075,7 @@
         <ReturnType>System.Windows.RoutedEvent</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="E:System.Windows.Controls.MenuItem.SubmenuOpened" /> routed event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1539,9 +2093,20 @@
         <ReturnType>System.Windows.ResourceKey</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the resource key for a style applied to a <see cref="T:System.Windows.Controls.MenuItem" /> when the <see cref="T:System.Windows.Controls.MenuItem" /> is a header of a top-level menu.</summary>
+        <value>The resource key for a style applied to a <see cref="T:System.Windows.Controls.MenuItem" /> when the <see cref="T:System.Windows.Controls.MenuItem" /> is a header of a top-level menu.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use this property to change the style of a <xref:System.Windows.Controls.MenuItem> whose <xref:System.Windows.Controls.MenuItem.Role%2A> property is set to <xref:System.Windows.Controls.MenuItemRole?displayProperty=fullName>.  
+  
+<a name="xamlAttributeUsage_TopLevelHeaderTemplateKey"></a>   
+## XAML Attribute Usage  
+ <*object* *property*={ **MenuItem.TopLevelHeaderTemplateKey**}`"`/>  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="TopLevelItemTemplateKey">
@@ -1558,9 +2123,20 @@
         <ReturnType>System.Windows.ResourceKey</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the resource key for a style applied to a <see cref="T:System.Windows.Controls.MenuItem" /> when it is a top-level <see cref="T:System.Windows.Controls.MenuItem" /> that can invoke commands.</summary>
+        <value>The resource key for a style applied to a <see cref="T:System.Windows.Controls.MenuItem" /> when it is a top-level <see cref="T:System.Windows.Controls.MenuItem" /> that can invoke commands.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use this property to change the style of a <xref:System.Windows.Controls.MenuItem> whose <xref:System.Windows.Controls.MenuItem.Role%2A> property is set to <xref:System.Windows.Controls.MenuItemRole?displayProperty=fullName>.  
+  
+<a name="xamlAttributeUsage_TopLevelItemTemplateKey"></a>   
+## XAML Attribute Usage  
+ <*object* *property*={ **MenuItem.TopLevelItemTemplateKey**}`"`/>  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Unchecked">
@@ -1582,8 +2158,33 @@
         <ReturnType>System.Windows.RoutedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Occurs when a <see cref="T:System.Windows.Controls.MenuItem" /> is unchecked.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="routedEventInfo_Unchecked"></a>   
+## Routed Event Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.UncheckedEvent>|  
+|Routing strategy|Bubbling|  
+|Delegate|<xref:System.Windows.RoutedEventHandler>|  
+  
+   
+  
+## Examples  
+ The following example demonstrates handling the Unchecked event.  
+  
+ [!code-xml[MenuItemCommandsAndEvents#3](~/add/codesnippet/xaml/MenuItemCommandsAndEvents/Window1.xaml#3)]  
+  
+ [!code-cs[MenuItemCommandsAndEvents#4](~/add/codesnippet/csharp/MenuItemCommandsAndEvents/Window1.xaml.cs#4)]
+ [!code-vb[MenuItemCommandsAndEvents#4](~/add/codesnippet/visualbasic/MenuItemCommandsAndEvents/Window1.xaml.vb#4)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="UncheckedEvent">
@@ -1600,7 +2201,7 @@
         <ReturnType>System.Windows.RoutedEvent</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="E:System.Windows.Controls.MenuItem.Unchecked" /> routed event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1617,9 +2218,27 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets a value that indicates whether the menu selects different item containers, depending on the type of the item in the underlying collection or some other heuristic.</summary>
+        <value>
+          <see langword="true" /> the menu selects different item containers; otherwise, <see langword="false" />.  
+  
+ The registered default is <see langword="false" />. For more information about what can influence the value, see [Dependency Property Value Precedence](../Topic/Dependency%20Property%20Value%20Precedence.md).</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This property is useful if you want to create a menu by binding to a collection.  The item container is the UI element that displays the object in a collection. If you want to bind to a collection to create a menu that contains <xref:System.Windows.Controls.MenuItem> objects and <xref:System.Windows.Controls.Separator> objects, set the <xref:System.Windows.Controls.Primitives.MenuBase.UsesItemContainerTemplate%2A> property to true and create an <xref:System.Windows.Controls.ItemContainerTemplate> for each type of object in your collection.  Each <xref:System.Windows.Controls.ItemContainerTemplate> must contain either a <xref:System.Windows.Controls.MenuItem> or a <xref:System.Windows.Controls.Separator>.  
+  
+<a name="dependencyPropertyInfo_UsesItemContainerTemplate"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.MenuItem.UsesItemContainerTemplateProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="UsesItemContainerTemplateProperty">
@@ -1635,7 +2254,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.MenuItem.UsesItemContainerTemplate%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -1,69 +1,21 @@
-Imports System.IO
-Imports System.Collections.Generic
-Imports System.Windows.Forms
+    Private Sub dataGridView1_ColumnHeaderMouseClick( _
+        ByVal sender As Object, ByVal e As DataGridViewCellMouseEventArgs) _
+        Handles dataGridView1.ColumnHeaderMouseClick
 
-Public Class TriValueVirtualCheckBox
-    Inherits System.Windows.Forms.Form
+        Me.dataGridView1.SelectionMode = _
+            DataGridViewSelectionMode.ColumnHeaderSelect
+        Me.dataGridView1.Columns(e.ColumnIndex).HeaderCell _
+            .SortGlyphDirection = SortOrder.None
+        Me.dataGridView1.Columns(e.ColumnIndex).Selected = True
 
-    Dim WithEvents dataGridView1 As New DataGridView
-
-    Const initialSize As Integer = 500
-
-    Dim store As New Dictionary(Of Integer, LightStatus)
-
-    Public Sub New()
-        MyBase.New()
-        Text = Me.GetType().Name
-
-        Dim index As Integer = 0
-        For index = 0 To initialSize
-            store.Add(index, LightStatus.Unknown)
-        Next
-
-        Controls.Add(dataGridView1)
-        dataGridView1.VirtualMode = True
-        dataGridView1.AllowUserToDeleteRows = False
-        dataGridView1.Columns.Add(CreateCheckBoxColumn())
-        dataGridView1.Rows.AddCopies(0, initialSize)
     End Sub
 
-    Private Function CreateCheckBoxColumn() As DataGridViewCheckBoxColumn
-        Dim dataGridViewCheckBoxColumn1 _
-            As New DataGridViewCheckBoxColumn()
-        dataGridViewCheckBoxColumn1.HeaderText = "Lights On"
-        dataGridViewCheckBoxColumn1.TrueValue = LightStatus.TurnedOn
-        dataGridViewCheckBoxColumn1.FalseValue = LightStatus.TurnedOff
-        dataGridViewCheckBoxColumn1.IndeterminateValue = _
-            LightStatus.Unknown
-        dataGridViewCheckBoxColumn1.ThreeState = True
-        dataGridViewCheckBoxColumn1.ValueType = GetType(LightStatus)
-        Return dataGridViewCheckBoxColumn1
-    End Function
+    Private Sub dataGridView1_RowHeaderMouseClick( _
+        ByVal sender As Object, ByVal e As DataGridViewCellMouseEventArgs) _
+        Handles dataGridView1.RowHeaderMouseClick
 
-#Region "data store maintance"
-    Private Sub dataGridView1_CellValueNeeded(ByVal sender As Object, _
-        ByVal e As DataGridViewCellValueEventArgs) _
-        Handles dataGridView1.CellValueNeeded
+        Me.dataGridView1.SelectionMode = _
+            DataGridViewSelectionMode.RowHeaderSelect
+        Me.dataGridView1.Rows(e.RowIndex).Selected = True
 
-        e.Value = store(e.RowIndex)
     End Sub
-
-    Private Sub dataGridView1_CellValuePushed(ByVal sender As Object, _
-        ByVal e As DataGridViewCellValueEventArgs) _
-        Handles dataGridView1.CellValuePushed
-
-        store.Item(e.RowIndex) = CType(e.Value, LightStatus)
-    End Sub
-#End Region
-
-    <STAThreadAttribute()> _
-    Public Shared Sub Main()
-        Application.Run(New TriValueVirtualCheckBox())
-    End Sub
-End Class
-
-Public Enum LightStatus
-    Unknown
-    TurnedOn
-    TurnedOff
-End Enum

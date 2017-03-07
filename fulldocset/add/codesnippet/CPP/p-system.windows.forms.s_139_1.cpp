@@ -1,38 +1,109 @@
-      // Basic SplitContainer properties.
-      // This is a vertical splitter that moves in 10-pixel increments.
-      // This splitter needs no explicit Orientation property because Vertical is the default.
-      splitContainer1->Dock = System::Windows::Forms::DockStyle::Fill;
-      splitContainer1->ForeColor = System::Drawing::SystemColors::Control;
-      splitContainer1->Location = System::Drawing::Point( 0, 0 );
-      splitContainer1->Name = "splitContainer1";
+#using <System.Windows.Forms.dll>
+#using <System.Drawing.dll>
+#using <System.dll>
+
+using namespace System;
+using namespace System::Collections;
+using namespace System::ComponentModel;
+using namespace System::Drawing;
+using namespace System::Reflection;
+using namespace System::Windows::Forms;
+public ref class SystemInfoBrowserForm: public System::Windows::Forms::Form
+{
+private:
+   System::Windows::Forms::ListBox^ listBox1;
+   System::Windows::Forms::TextBox^ textBox1;
+
+public:
+   SystemInfoBrowserForm()
+   {
+      this->SuspendLayout();
+      InitForm();
       
-      // You can drag the splitter no nearer than 30 pixels from the left edge of the container.
-      splitContainer1->Panel1MinSize = 30;
+      // Add each property of the SystemInformation class to the list box.
+      Type^ t = System::Windows::Forms::SystemInformation::typeid;
+      array<PropertyInfo^>^pi = t->GetProperties();
+      for ( int i = 0; i < pi->Length; i++ )
+         listBox1->Items->Add( pi[ i ]->Name );
+      textBox1->Text = String::Format( "The SystemInformation class has {0} properties.\r\n", pi->Length );
       
-      // You can drag the splitter no nearer than 20 pixels from the right edge of the container.
-      splitContainer1->Panel2MinSize = 20;
-      splitContainer1->Size = System::Drawing::Size( 292, 273 );
-      splitContainer1->SplitterDistance = 79;
+      // Configure the list item selected handler for the list box to invoke a 
+      // method that displays the value of each property.
+      listBox1->SelectedIndexChanged += gcnew EventHandler( this, &SystemInfoBrowserForm::listBox1_SelectedIndexChanged );
+      this->ResumeLayout( false );
+   }
+
+
+private:
+   void listBox1_SelectedIndexChanged( Object^ /*sender*/, EventArgs^ /*e*/ )
+   {
       
-      // This splitter moves in 10-pixel increments.
-      splitContainer1->SplitterIncrement = 10;
-      splitContainer1->SplitterWidth = 6;
+      // Return if no list item is selected.
+      if ( listBox1->SelectedIndex == -1 )
+            return;
+
       
-      // splitContainer1 is the first control in the tab order.
-      splitContainer1->TabIndex = 0;
-      splitContainer1->Text = "splitContainer1";
+      // Get the property name from the list item.
+      String^ propname = listBox1->Text;
+      if ( propname->Equals( "PowerStatus" ) )
+      {
+         
+         // Cycle and display the values of each property of the PowerStatus property.
+         textBox1->Text = String::Concat( textBox1->Text, "\r\nThe value of the PowerStatus property is:" );
+         Type^ t = System::Windows::Forms::PowerStatus::typeid;
+         array<PropertyInfo^>^pi = t->GetProperties();
+         for ( int i = 0; i < pi->Length; i++ )
+         {
+            Object^ propval = pi[ i ]->GetValue( SystemInformation::PowerStatus, nullptr );
+            textBox1->Text = String::Format( "{0}\r\n    PowerStatus.{1} is: {2}", textBox1->Text, pi[ i ]->Name, propval );
+
+         }
+      }
+      else
+      {
+         
+         // Display the value of the selected property of the SystemInformation type.
+         Type^ t = System::Windows::Forms::SystemInformation::typeid;
+         array<PropertyInfo^>^pi = t->GetProperties();
+         PropertyInfo^ prop = nullptr;
+         for ( int i = 0; i < pi->Length; i++ )
+            if ( pi[ i ]->Name == propname )
+            {
+               prop = pi[ i ];
+               break;
+            }
+         Object^ propval = prop->GetValue( nullptr, nullptr );
+         textBox1->Text = String::Format( "{0}\r\nThe value of the {1} property is: {2}", textBox1->Text, propname, propval );
+      }
+   }
+
+   void InitForm()
+   {
       
-      // When the splitter moves, the cursor changes shape.
-      splitContainer1->SplitterMoved += gcnew System::Windows::Forms::SplitterEventHandler( this, &Form1::splitContainer1_SplitterMoved );
-      splitContainer1->SplitterMoving += gcnew System::Windows::Forms::SplitterCancelEventHandler( this, &Form1::splitContainer1_SplitterMoving );
-      
-      // Add a TreeView control to the left panel.
-      splitContainer1->Panel1->BackColor = System::Drawing::SystemColors::Control;
-      
-      // Add a TreeView control to Panel1.
-      splitContainer1->Panel1->Controls->Add( treeView1 );
-      splitContainer1->Panel1->Name = "splitterPanel1";
-      
-      // Controls placed on Panel1 support right-to-left fonts.
-      splitContainer1->Panel1->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-      
+      // Initialize the form settings
+      this->listBox1 = gcnew System::Windows::Forms::ListBox;
+      this->textBox1 = gcnew System::Windows::Forms::TextBox;
+      this->listBox1->Anchor = (System::Windows::Forms::AnchorStyles)(System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right);
+      this->listBox1->Location = System::Drawing::Point( 8, 16 );
+      this->listBox1->Size = System::Drawing::Size( 172, 496 );
+      this->listBox1->TabIndex = 0;
+      this->textBox1->Anchor = (System::Windows::Forms::AnchorStyles)(System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right);
+      this->textBox1->Location = System::Drawing::Point( 188, 16 );
+      this->textBox1->Multiline = true;
+      this->textBox1->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
+      this->textBox1->Size = System::Drawing::Size( 420, 496 );
+      this->textBox1->TabIndex = 1;
+      this->ClientSize = System::Drawing::Size( 616, 525 );
+      this->Controls->Add( this->textBox1 );
+      this->Controls->Add( this->listBox1 );
+      this->Text = "Select a SystemInformation property to get the value of";
+   }
+
+};
+
+
+[STAThread]
+int main()
+{
+   Application::Run( gcnew SystemInfoBrowserForm );
+}

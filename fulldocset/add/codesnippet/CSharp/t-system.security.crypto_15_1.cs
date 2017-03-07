@@ -1,68 +1,75 @@
-//The following sample uses the Cryptography class to simulate the roll of a dice.
-
 using System;
 using System.IO;
-using System.Text;
 using System.Security.Cryptography;
+using System.Windows.Forms;
 
-class RNGCSP
+public class HashDirectory
 {
-    private static RNGCryptoServiceProvider rngCsp = new RNGCryptoServiceProvider();
-    // Main method.
-    public static void Main()
-    {
-        const int totalRolls = 25000;
-        int[] results = new int[6];
 
-        // Roll the dice 25000 times and display
-        // the results to the console.
-        for (int x = 0; x < totalRolls; x++)
+    [STAThreadAttribute]
+    public static void Main(String[] args)
+    {
+        string directory = "";
+        if (args.Length < 1)
         {
-            byte roll = RollDice((byte)results.Length);
-            results[roll - 1]++;
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            DialogResult dr = fbd.ShowDialog();
+            if (dr == DialogResult.OK)
+                directory = fbd.SelectedPath;
+            else
+            {
+                Console.WriteLine("No directory selected.");
+                return;
+            }
         }
-        for (int i = 0; i < results.Length; ++i)
+        else
+            directory = args[0];
+        try
         {
-            Console.WriteLine("{0}: {1} ({2:p1})", i + 1, results[i], (double)results[i] / (double)totalRolls);
+            // Create a DirectoryInfo object representing the specified directory.
+            DirectoryInfo dir = new DirectoryInfo(directory);
+            // Get the FileInfo objects for every file in the directory.
+            FileInfo[] files = dir.GetFiles();
+            // Initialize a SHA256 hash object.
+            SHA256 mySHA256 = SHA256Managed.Create();
+           
+            byte[] hashValue;
+            // Compute and print the hash values for each file in directory.
+            foreach (FileInfo fInfo in files)
+            {
+                // Create a fileStream for the file.
+                FileStream fileStream = fInfo.Open(FileMode.Open);
+                // Be sure it's positioned to the beginning of the stream.
+                fileStream.Position = 0;
+                // Compute the hash of the fileStream.
+                hashValue = mySHA256.ComputeHash(fileStream);
+                // Write the name of the file to the Console.
+                Console.Write(fInfo.Name + ": ");
+                // Write the hash value to the Console.
+                PrintByteArray(hashValue);
+                // Close the file.
+                fileStream.Close();
+            }
+            return;
         }
-        rngCsp.Dispose();
-        Console.ReadLine();
+        catch (DirectoryNotFoundException)
+        {
+            Console.WriteLine("Error: The directory specified could not be found.");
+        }
+        catch (IOException)
+        {
+            Console.WriteLine("Error: A file in the directory could not be accessed.");
+        }
     }
-
-    // This method simulates a roll of the dice. The input parameter is the
-    // number of sides of the dice.
-
-    public static byte RollDice(byte numberSides)
+    // Print the byte array in a readable format.
+    public static void PrintByteArray(byte[] array)
     {
-        if (numberSides <= 0)
-            throw new ArgumentOutOfRangeException("numberSides");
-
-        // Create a byte array to hold the random value.
-        byte[] randomNumber = new byte[1];
-        do
+        int i;
+        for (i = 0; i < array.Length; i++)
         {
-            // Fill the array with a random value.
-            rngCsp.GetBytes(randomNumber);
+            Console.Write(String.Format("{0:X2}", array[i]));
+            if ((i % 4) == 3) Console.Write(" ");
         }
-        while (!IsFairRoll(randomNumber[0], numberSides));
-        // Return the random number mod the number
-        // of sides.  The possible values are zero-
-        // based, so we add one.
-        return (byte)((randomNumber[0] % numberSides) + 1);
-    }
-
-    private static bool IsFairRoll(byte roll, byte numSides)
-    {
-        // There are MaxValue / numSides full sets of numbers that can come up
-        // in a single byte.  For instance, if we have a 6 sided die, there are
-        // 42 full sets of 1-6 that come up.  The 43rd set is incomplete.
-        int fullSetsOfValues = Byte.MaxValue / numSides;
-
-        // If the roll is within this range of fair values, then we let it continue.
-        // In the 6 sided die case, a roll between 0 and 251 is allowed.  (We use
-        // < rather than <= since the = portion allows through an extra 0 value).
-        // 252 through 255 would provide an extra 0, 1, 2, 3 so they are not fair
-        // to use.
-        return roll < numSides * fullSetsOfValues;
+        Console.WriteLine();
     }
 }

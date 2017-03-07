@@ -1,11 +1,10 @@
-   ' This method hides the drop-down for the first item
-   ' in the form's ToolStrip.
-    Private Sub hideButton_Click( _
-    ByVal sender As Object, _
-    ByVal e As EventArgs) _
-    Handles hideButton.Click
-
-        Dim item As ToolStripDropDownItem = CType(Me.toolStrip1.Items(0), ToolStripDropDownItem)
-
-        item.HideDropDown()
+   ' This method defines the behavior of the MouseLeave event.
+   ' It sets the state of the rolloverValue field to false and
+   ' tells the control to repaint.
+   Protected Overrides Sub OnMouseLeave(e As EventArgs)
+      MyBase.OnMouseLeave(e)
+      
+      Me.rolloverValue = False
+      
+      Me.Invalidate()
     End Sub

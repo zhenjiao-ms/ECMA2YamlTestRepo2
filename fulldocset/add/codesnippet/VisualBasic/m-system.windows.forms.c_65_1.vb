@@ -1,15 +1,19 @@
-    ' Demonstrates SetAudio, ContainsAudio, and GetAudioStream.
-    Public Function SwapClipboardAudio( _
-        ByVal replacementAudioStream As System.IO.Stream) _
-        As System.IO.Stream
+Protected Overrides Sub OnTextChanged(e As System.EventArgs)
+   Try
+      ' Convert the text to a Double and determine
+      ' if it is a negative number.
+      If Double.Parse(Me.Text) < 0 Then
+         ' If the number is negative, display it in Red.
+         Me.ForeColor = Color.Red
+      Else
+         ' If the number is not negative, display it in Black.
+         Me.ForeColor = Color.Black
+      End If
+   Catch
+      ' If there is an error, display the
+      ' text using the system colors.
+      Me.ForeColor = SystemColors.ControlText
+   End Try
 
-        Dim returnAudioStream As System.IO.Stream = Nothing
-
-        If (Clipboard.ContainsAudio()) Then
-            returnAudioStream = Clipboard.GetAudioStream()
-            Clipboard.SetAudio(replacementAudioStream)
-        End If
-
-        Return returnAudioStream
-
-    End Function
+   MyBase.OnTextChanged(e)
+End Sub

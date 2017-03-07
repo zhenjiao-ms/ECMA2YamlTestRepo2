@@ -1,35 +1,31 @@
-using System;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Text;
-
-namespace Examples.System.Net.NetworkInformation.PingTest
-{
-    public class PingExample
-    {
-        // args[0] can be an IPaddress or host name.
-        public static void Main (string[] args)
+        public static void ShowUdpStatistics(NetworkInterfaceComponent version)
         {
-            Ping pingSender = new Ping ();
-            PingOptions options = new PingOptions ();
-
-            // Use the default Ttl value which is 128,
-            // but change the fragmentation behavior.
-            options.DontFragment = true;
-
-            // Create a buffer of 32 bytes of data to be transmitted.
-            string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            byte[] buffer = Encoding.ASCII.GetBytes (data);
-            int timeout = 120;
-            PingReply reply = pingSender.Send (args[0], timeout, buffer, options);
-            if (reply.Status == IPStatus.Success)
+            IPGlobalProperties properties = IPGlobalProperties.GetIPGlobalProperties();
+            UdpStatistics udpStat = null;
+            
+            switch (version)
             {
-                Console.WriteLine ("Address: {0}", reply.Address.ToString ());
-                Console.WriteLine ("RoundTrip time: {0}", reply.RoundtripTime);
-                Console.WriteLine ("Time to live: {0}", reply.Options.Ttl);
-                Console.WriteLine ("Don't fragment: {0}", reply.Options.DontFragment);
-                Console.WriteLine ("Buffer size: {0}", reply.Buffer.Length);
+                case NetworkInterfaceComponent.IPv4:
+                    udpStat = properties.GetUdpIPv4Statistics();
+                    Console.WriteLine("UDP IPv4 Statistics");
+                    break;
+                case NetworkInterfaceComponent.IPv6:
+                    udpStat = properties.GetUdpIPv6Statistics();
+                    Console.WriteLine("UDP IPv6 Statistics");
+                    break;
+                default:
+                    throw new ArgumentException("version");
+                //    break;
             }
+            Console.WriteLine("  Datagrams Received ...................... : {0}", 
+                udpStat.DatagramsReceived);
+            Console.WriteLine("  Datagrams Sent .......................... : {0}", 
+                udpStat.DatagramsSent);
+            Console.WriteLine("  Incoming Datagrams Discarded ............ : {0}", 
+                udpStat.IncomingDatagramsDiscarded);
+            Console.WriteLine("  Incoming Datagrams With Errors .......... : {0}", 
+                udpStat.IncomingDatagramsWithErrors);
+            Console.WriteLine("  UDP Listeners ........................... : {0}", 
+                udpStat.UdpListeners);
+            Console.WriteLine("");
         }
-    }
-}

@@ -1,30 +1,29 @@
-    private void toggleRowStylesBtn_Click(
-		System.Object sender, 
-		System.EventArgs e)
-    {
-		TableLayoutRowStyleCollection styles = 
-			this.TableLayoutPanel1.RowStyles;
-
-        foreach( RowStyle style in styles )
-        {
-            if (style.SizeType==SizeType.Absolute)
-            {
-                style.SizeType = SizeType.AutoSize;
-            }
-            else if(style.SizeType==SizeType.AutoSize)
-            {
-                style.SizeType = SizeType.Percent;
-
-                // Set the row height to be a percentage
-                // of the TableLayoutPanel control's height.
-                style.Height = 33;
-            }
-            else
-            {
-
-                // Set the row height to 50 pixels.
-                style.SizeType = SizeType.Absolute;
-                style.Height = 50;
-            }
-        }
-    }
+	private void SelectNode(TreeNode node)
+	{
+		if(node.IsSelected)
+		{
+			// Determine which TreeNode to select.
+			switch(myComboBox.Text)
+			{
+				case "Previous":
+					node.TreeView.SelectedNode = node.PrevNode;
+					break;
+				case "PreviousVisible":
+					node.TreeView.SelectedNode = node.PrevVisibleNode;
+					break;
+				case "Next":
+					node.TreeView.SelectedNode = node.NextNode;
+					break;
+				case "NextVisible":
+					node.TreeView.SelectedNode = node.NextVisibleNode;
+					break;
+				case "First":
+					node.TreeView.SelectedNode = node.FirstNode;
+					break;
+				case "Last":
+					node.TreeView.SelectedNode = node.LastNode;
+					break;
+			}
+		}
+		node.TreeView.Focus();
+	}

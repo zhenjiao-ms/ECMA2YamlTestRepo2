@@ -1,28 +1,18 @@
-public:
-   void HighlightCheckedNodes()
+   // This example assumes that the Form_Load event handling method
+   // is connected to the Load event of the form.
+   void Form1_Load( Object^ sender, System::EventArgs^ e )
    {
-      int countIndex = 0;
-      String^ selectedNode = "Selected customer nodes are : ";
-      IEnumerator^ myEnum = myTreeView->Nodes[ 0 ]->Nodes->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         TreeNode^ myNode = safe_cast<TreeNode^>(myEnum->Current);
-         
-         // Check whether the tree node is checked.
-         if ( myNode->Checked )
-         {
-            
-            // Set the node's backColor.
-            myNode->BackColor = Color::Yellow;
-            selectedNode = String::Concat( selectedNode, myNode->Text, " " );
-            countIndex++;
-         }
-         else
-                  myNode->BackColor = Color::White;
-      }
-
-      if ( countIndex > 0 )
-            MessageBox::Show( selectedNode );
-      else
-            MessageBox::Show( "No nodes are selected" );
+      // Create the ToolTip and associate with the Form container.
+      ToolTip^ toolTip1 = gcnew ToolTip;
+      
+      // Set up the delays for the ToolTip.
+      toolTip1->AutoPopDelay = 5000;
+      toolTip1->InitialDelay = 1000;
+      toolTip1->ReshowDelay = 500;
+      // Force the ToolTip text to be displayed whether or not the form is active.
+      toolTip1->ShowAlways = true;
+      
+      // Set up the ToolTip text for the Button and Checkbox.
+      toolTip1->SetToolTip( this->button1, "My button1" );
+      toolTip1->SetToolTip( this->checkBox1, "My checkBox1" );
    }

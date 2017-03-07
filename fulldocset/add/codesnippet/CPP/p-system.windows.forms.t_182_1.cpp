@@ -1,34 +1,61 @@
+ref class Customer
+{
 public:
-   void InitializeMyToolBar()
+   ArrayList^ CustomerOrders;
+   String^ CustomerName;
+   Customer( String^ myName )
    {
-      // Create the ToolBar, ToolBarButton controls, and menus.
-      ToolBarButton^ toolBarButton1 = gcnew ToolBarButton( "Open" );
-      ToolBarButton^ toolBarButton2 = gcnew ToolBarButton;
-      ToolBarButton^ toolBarButton3 = gcnew ToolBarButton;
-      ToolBar^ toolBar1 = gcnew ToolBar;
-      MenuItem^ menuItem1 = gcnew MenuItem( "Print" );
-      array<MenuItem^>^ temp1 = {menuItem1};
-      System::Windows::Forms::ContextMenu^ contextMenu1 =
-         gcnew System::Windows::Forms::ContextMenu( temp1 );
+      CustomerName = myName;
+      CustomerOrders = gcnew ArrayList;
+   }
+
+};
+
+ref class Order
+{
+public:
+   String^ OrderID;
+   Order( String^ myOrderID )
+   {
+      this->OrderID = myOrderID;
+   }
+
+};
+
+
+   void AddRootNodes()
+   {
       
-      // Add the ToolBarButton controls to the ToolBar.
-      toolBar1->Buttons->Add( toolBarButton1 );
-      toolBar1->Buttons->Add( toolBarButton2 );
-      toolBar1->Buttons->Add( toolBarButton3 );
+      // Add a root node to assign the customer nodes to.
+      TreeNode^ rootNode = gcnew TreeNode;
+      rootNode->Text = "CustomerList";
       
-      // Assign an ImageList to the ToolBar and show ToolTips.
-      toolBar1->ImageList = imageList1;
-      toolBar1->ShowToolTips = true;
+      // Add a main root treenode.
+      myTreeView->Nodes->Add( rootNode );
       
-      /* Assign ImageIndex, ContextMenu, Text, ToolTip, and 
-         Style properties of the ToolBarButton controls. */
-      toolBarButton2->Style = ToolBarButtonStyle::Separator;
-      toolBarButton3->Text = "Print";
-      toolBarButton3->Style = ToolBarButtonStyle::DropDownButton;
-      toolBarButton3->ToolTipText = "Print";
-      toolBarButton3->ImageIndex = 0;
-      toolBarButton3->DropDownMenu = contextMenu1;
-      
-      // Add the ToolBar to a form.
-      Controls->Add( toolBar1 );
+      // Add a root treenode for each 'Customer' object in the ArrayList.
+      IEnumerator^ myEnum = customerArray->GetEnumerator();
+      while ( myEnum->MoveNext() )
+      {
+         Customer^ myCustomer = safe_cast<Customer^>(myEnum->Current);
+         
+         // Add a child treenode for each Order object.
+         int i = 0;
+         array<TreeNode^>^myTreeNodeArray = gcnew array<TreeNode^>(5);
+         IEnumerator^ myEnum = myCustomer->CustomerOrders->GetEnumerator();
+         while ( myEnum->MoveNext() )
+         {
+            Order^ myOrder = safe_cast<Order^>(myEnum->Current);
+            myTreeNodeArray[ i ] = gcnew TreeNode( myOrder->OrderID );
+            i++;
+         }
+         TreeNode^ customerNode = gcnew TreeNode( myCustomer->CustomerName,myTreeNodeArray );
+         
+         // Display the customer names with and Orange font.
+         customerNode->ForeColor = Color::Orange;
+         
+         // Store the Customer Object* in the Tag property of the TreeNode.
+         customerNode->Tag = myCustomer;
+         myTreeView->Nodes[ 0 ]->Nodes->Add( customerNode );
+      }
    }

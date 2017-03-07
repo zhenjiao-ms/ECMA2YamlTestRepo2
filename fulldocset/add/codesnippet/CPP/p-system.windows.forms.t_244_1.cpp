@@ -1,43 +1,62 @@
-public ref class CustomizedTreeView: public TreeView
-{
-public:
-   CustomizedTreeView()
+   /* Get the tree node under the mouse pointer and 
+      save it in the mySelectedNode variable. */
+private:
+   void treeView1_MouseDown( Object^ /*sender*/, System::Windows::Forms::MouseEventArgs^ e )
    {
-
-      // Customize the TreeView control by setting various properties.
-      BackColor = System::Drawing::Color::CadetBlue;
-      FullRowSelect = true;
-      HotTracking = true;
-      Indent = 34;
-      ShowPlusMinus = false;
-
-      // The ShowLines property must be false for the FullRowSelect
-      // property to work.
-      ShowLines = false;
+      mySelectedNode = treeView1->GetNodeAt( e->X, e->Y );
    }
 
-protected:
-   virtual void OnAfterSelect( TreeViewEventArgs^ e ) override
+   void menuItem1_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
    {
-      // Confirm that the user initiated the selection.
-      // This prevents the first node from expanding when it is
-      // automatically selected during the initialization of
-      // the TreeView control.
-      if ( e->Action != TreeViewAction::Unknown )
+      if ( mySelectedNode != nullptr && mySelectedNode->Parent != nullptr )
       {
-         if ( e->Node->IsExpanded )
+         treeView1->SelectedNode = mySelectedNode;
+         treeView1->LabelEdit = true;
+         if (  !mySelectedNode->IsEditing )
          {
-            e->Node->Collapse();
+            mySelectedNode->BeginEdit();
+         }
+      }
+      else
+      {
+         MessageBox::Show( String::Concat( "No tree node selected or selected node is a root node.\n",
+            "Editing of root nodes is not allowed." ), "Invalid selection" );
+      }
+   }
+
+   void treeView1_AfterLabelEdit( Object^ /*sender*/,
+      System::Windows::Forms::NodeLabelEditEventArgs^ e )
+   {
+      if ( e->Label != nullptr )
+      {
+         if ( e->Label->Length > 0 )
+         {
+            array<Char>^ temp0 = {'@','.',',','!'};
+            if ( e->Label->IndexOfAny( temp0 ) == -1 )
+            {
+               
+               // Stop editing without canceling the label change.
+               e->Node->EndEdit( false );
+            }
+            else
+            {
+               /* Cancel the label edit action, inform the user, and 
+                  place the node in edit mode again. */
+               e->CancelEdit = true;
+               MessageBox::Show( String::Concat( "Invalid tree node label.\n",
+                  "The invalid characters are: '@','.', ',', '!'" ),
+                  "Node Label Edit" );
+               e->Node->BeginEdit();
+            }
          }
          else
          {
-            e->Node->Expand();
+            /* Cancel the label edit action, inform the user, and 
+               place the node in edit mode again. */
+            e->CancelEdit = true;
+            MessageBox::Show( "Invalid tree node label.\nThe label cannot be blank",
+               "Node Label Edit" );
+            e->Node->BeginEdit();
          }
       }
-
-      
-      // Remove the selection. This allows the same node to be
-      // clicked twice in succession to toggle the expansion state.
-      SelectedNode = nullptr;
    }
-};

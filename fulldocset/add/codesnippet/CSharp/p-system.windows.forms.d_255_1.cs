@@ -1,15 +1,31 @@
-    private void AddLinkColumn()
+    private void DataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs anError)
     {
-        DataGridViewLinkColumn links = new DataGridViewLinkColumn();
 
-        links.UseColumnTextForLinkValue = true;
-        links.HeaderText = ColumnName.ReportsTo.ToString();
-        links.DataPropertyName = ColumnName.ReportsTo.ToString();
-        links.ActiveLinkColor = Color.White;
-        links.LinkBehavior = LinkBehavior.SystemDefault;
-        links.LinkColor = Color.Blue;
-        links.TrackVisitedState = true;
-        links.VisitedLinkColor = Color.YellowGreen;
+        MessageBox.Show("Error happened " + anError.Context.ToString());
 
-        DataGridView1.Columns.Add(links);
+        if (anError.Context == DataGridViewDataErrorContexts.Commit)
+        {
+            MessageBox.Show("Commit error");
+        }
+        if (anError.Context == DataGridViewDataErrorContexts.CurrentCellChange)
+        {
+            MessageBox.Show("Cell change");
+        }
+        if (anError.Context == DataGridViewDataErrorContexts.Parsing)
+        {
+            MessageBox.Show("parsing error");
+        }
+        if (anError.Context == DataGridViewDataErrorContexts.LeaveControl)
+        {
+            MessageBox.Show("leave control error");
+        }
+
+        if ((anError.Exception) is ConstraintException)
+        {
+            DataGridView view = (DataGridView)sender;
+            view.Rows[anError.RowIndex].ErrorText = "an error";
+            view.Rows[anError.RowIndex].Cells[anError.ColumnIndex].ErrorText = "an error";
+
+            anError.ThrowException = false;
+        }
     }

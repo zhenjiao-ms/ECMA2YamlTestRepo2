@@ -1,28 +1,43 @@
-        ToolStripButton^ boldButton;
+public ref class CustomizedTreeView: public TreeView
+{
+public:
+   CustomizedTreeView()
+   {
 
-        void InitializeBoldButton()
-        {
-            boldButton = gcnew ToolStripButton;
-            boldButton->Text = "B";
-            boldButton->CheckOnClick = true;
-            boldButton->CheckedChanged  += gcnew EventHandler(this, 
-                &Form1::boldButtonCheckedChanged);
-            toolStrip1->Items->Add(boldButton);
-        }
+      // Customize the TreeView control by setting various properties.
+      BackColor = System::Drawing::Color::CadetBlue;
+      FullRowSelect = true;
+      HotTracking = true;
+      Indent = 34;
+      ShowPlusMinus = false;
 
-        void boldButtonCheckedChanged(Object^ sender, EventArgs^ e)
-        {
-            if (boldButton->Checked)
-            { 
-                this->Font= gcnew System::Drawing::Font(this->Font, 
-                    FontStyle::Bold);
-            }
-            else
-            { 
-                this->Font = gcnew System::Drawing::Font(this->Font, 
-                    FontStyle::Regular);
-            }
-        }
+      // The ShowLines property must be false for the FullRowSelect
+      // property to work.
+      ShowLines = false;
+   }
 
+protected:
+   virtual void OnAfterSelect( TreeViewEventArgs^ e ) override
+   {
+      // Confirm that the user initiated the selection.
+      // This prevents the first node from expanding when it is
+      // automatically selected during the initialization of
+      // the TreeView control.
+      if ( e->Action != TreeViewAction::Unknown )
+      {
+         if ( e->Node->IsExpanded )
+         {
+            e->Node->Collapse();
+         }
+         else
+         {
+            e->Node->Expand();
+         }
+      }
 
-        //   internal:
+      
+      // Remove the selection. This allows the same node to be
+      // clicked twice in succession to toggle the expansion state.
+      SelectedNode = nullptr;
+   }
+};

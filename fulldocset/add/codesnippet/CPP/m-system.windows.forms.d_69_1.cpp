@@ -1,19 +1,7 @@
-   // Check if the first row is selected.
-private:
-   void button8_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
-   {
-      if ( myDataGrid->IsSelected( 0 ) )
+      // Draw the ToolTip using default values if the ToolTip is for button3.
+      else if ( e->AssociatedControl == button3 )
       {
-         MessageBox::Show( "Row selected", "Message", MessageBoxButtons::OK, MessageBoxIcon::Exclamation );
+         e->DrawBackground();
+         e->DrawBorder();
+         e->DrawText();
       }
-      else
-      {
-         MessageBox::Show( "Row not selected", "Message", MessageBoxButtons::OK, MessageBoxIcon::Exclamation );
-      }
-   }
-
-   // Deselect the first row.
-   void button11_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
-   {
-      myDataGrid->UnSelect( 0 );
-   }

@@ -1,27 +1,23 @@
-      ' This is an example of some common ToolStrip property settings.
-      ' 
-      toolStrip1.AllowDrop = False
-      toolStrip1.AllowItemReorder = True
-      toolStrip1.AllowMerge = False
-      toolStrip1.Anchor = CType(System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right, System.Windows.Forms.AnchorStyles)
-      toolStrip1.AutoSize = False
-      toolStrip1.CanOverflow = False
-      toolStrip1.Cursor = Cursors.Cross
-      toolStrip1.Dock = System.Windows.Forms.DockStyle.None
-      toolStrip1.DefaultDropDownDirection = ToolStripDropDownDirection.BelowRight
-      toolStrip1.GripMargin = New System.Windows.Forms.Padding(3)
-      toolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-      toolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {toolStripButton1})
-      toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
-      toolStrip1.Location = New System.Drawing.Point(0, 0)
-      toolStrip1.Margin = New System.Windows.Forms.Padding(1)
-      toolStrip1.Name = "toolStrip1"
-      toolStrip1.Padding = New System.Windows.Forms.Padding(0, 0, 2, 0)
-      toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-      toolStrip1.ShowItemToolTips = False
-      toolStrip1.Size = New System.Drawing.Size(109, 273)
-      toolStrip1.Stretch = True
-      toolStrip1.TabIndex = 0
-      toolStrip1.TabStop = True
-      toolStrip1.Text = "toolStrip1"
-      toolStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90
+Private Sub AddToolBar()
+   ' Add a toolbar and set some of its properties.
+   toolBar1 = New ToolBar()
+   toolBar1.Appearance = System.Windows.Forms.ToolBarAppearance.Flat
+   toolBar1.BorderStyle = System.Windows.Forms.BorderStyle.None
+   toolBar1.Buttons.Add(Me.toolBarButton1)
+   toolBar1.ButtonSize = New System.Drawing.Size(24, 24)
+   toolBar1.Divider = True
+   toolBar1.DropDownArrows = True
+   toolBar1.ImageList = Me.imageList1
+   toolBar1.ShowToolTips = True
+   toolBar1.Size = New System.Drawing.Size(292, 25)
+   toolBar1.TabIndex = 0
+   toolBar1.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right
+   toolBar1.Wrappable = False
+
+   ' Add handlers for the ButtonClick and ButtonDropDown events.
+   AddHandler toolBar1.ButtonDropDown, AddressOf toolBar1_ButtonDropDown
+   AddHandler toolBar1.ButtonClick, AddressOf toolBar1_ButtonClicked
+
+   ' Add the toolbar to the form.
+   Me.Controls.Add(toolBar1)
+End Sub

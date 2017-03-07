@@ -1,35 +1,34 @@
-   public Form1()
+private void button1_Click(object sender, System.EventArgs e)
+{
+   // Create an instance of the ListBox.
+   ListBox listBox1 = new ListBox();
+   // Set the size and location of the ListBox.
+   listBox1.Size = new System.Drawing.Size(200, 100);
+   listBox1.Location = new System.Drawing.Point(10,10);
+   // Add the ListBox to the form.
+   this.Controls.Add(listBox1);
+   // Set the ListBox to display items in multiple columns.
+   listBox1.MultiColumn = true;
+   // Set the selection mode to multiple and extended.
+   listBox1.SelectionMode = SelectionMode.MultiExtended;
+ 
+   // Shutdown the painting of the ListBox as items are added.
+   listBox1.BeginUpdate();
+   // Loop through and add 50 items to the ListBox.
+   for (int x = 1; x <= 50; x++)
    {
-      InitializeComponent();
-      // Sets the control to allow drops, and then adds the necessary event handlers.
-      this.richTextBox1.AllowDrop = true;
+      listBox1.Items.Add("Item " + x.ToString());
    }
-	
-   private void listBox1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-   {
-      // Determines which item was selected.
-      ListBox lb =( (ListBox)sender);
-      Point pt = new Point(e.X,e.Y);
-      //Retrieve the item at the specified location within the ListBox.
-      int index = lb.IndexFromPoint(pt);
+   // Allow the ListBox to repaint and display the new items.
+   listBox1.EndUpdate();
+      
+   // Select three items from the ListBox.
+   listBox1.SetSelected(1, true);
+   listBox1.SetSelected(3, true);
+   listBox1.SetSelected(5, true);
 
-      // Starts a drag-and-drop operation.
-      if(index>=0) 
-      {
-         // Retrieve the selected item text to drag into the RichTextBox.
-         lb.DoDragDrop(lb.Items[index].ToString(), DragDropEffects.Copy);
-      }
-   }
-
-   private void richTextBox1_DragEnter(object sender, DragEventArgs e)
-   {
-      // If the data is text, copy the data to the RichTextBox control.
-      if(e.Data.GetDataPresent("Text"))
-         e.Effect = DragDropEffects.Copy;
-   }
-
-   private void richTextBox1_DragDrop(object sender, DragEventArgs e) 
-   {
-      // Paste the text into the RichTextBox where at selection location.
-      richTextBox1.SelectedText =  e.Data.GetData("System.String", true).ToString();
-   }
+   // Display the second selected item in the ListBox to the console.
+   System.Diagnostics.Debug.WriteLine(listBox1.SelectedItems[1].ToString());
+   // Display the index of the first selected item in the ListBox.
+   System.Diagnostics.Debug.WriteLine(listBox1.SelectedIndices[0].ToString());             
+}

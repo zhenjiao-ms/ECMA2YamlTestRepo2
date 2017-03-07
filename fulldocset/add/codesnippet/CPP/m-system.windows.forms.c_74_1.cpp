@@ -1,35 +1,24 @@
-// To use this example create a new form and paste this class 
-// forming the same file, after the form class in the same file.  
-// Add a button of type FunButton to the form. 
-public ref class FunButton: public Button
+// This button is a simple extension of the button class that overrides
+// the ProcessMnemonic method.  If the mnemonic is correctly entered,  
+// the message box will appear and the click event will be raised.  
+// This method makes sure the control is selectable and the 
+// mnemonic is correct before displaying the message box
+// and triggering the click event.
+public ref class MyMnemonicButton: public Button
 {
 protected:
-   virtual void OnMouseHover( System::EventArgs^ e ) override
+   bool ProcessMnemonic( char inputChar )
    {
-      
-      // Get the font size in Points, add one to the
-      // size, and reset the button's font to the larger
-      // size.
-      float fontSize = Font->SizeInPoints;
-      fontSize += 1;
-      System::Drawing::Size buttonSize = Size;
-      this->Font = gcnew System::Drawing::Font( Font->FontFamily,fontSize,Font->Style );
-      
-      // Increase the size width and height of the button 
-      // by 5 points each.
-      Size = System::Drawing::Size( Size.Width + 5, Size.Height + 5 );
-      
-      // Call myBase.OnMouseHover to activate the delegate.
-      Button::OnMouseHover( e );
+      if ( CanSelect && IsMnemonic( inputChar, this->Text ) )
+      {
+         MessageBox::Show( "You've raised the click event "
+         "using the mnemonic." );
+         this->PerformClick();
+         return true;
+      }
+
+      return false;
    }
 
-   virtual void OnMouseMove( MouseEventArgs^ e ) override
-   {
-      
-      // Make the cursor the Hand cursor when the mouse moves 
-      // over the button.
-      Cursor = Cursors::Hand;
-      
-      // Call MyBase.OnMouseMove to activate the delegate.
-      Button::OnMouseMove( e );
-   }
+};
+

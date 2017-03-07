@@ -19,8 +19,27 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Describes the area of the designer that contains the point passed to a <see cref="System.Workflow.ComponentModel.Design.ActivityDesigner.HitTest%2A" /> method.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+> [!NOTE]
+>  [!INCLUDE[DeprecatedContent](~/add/includes/deprecatedcontent-md.md)]  
+  
+ HitTestLocations is used by <xref:System.Workflow.ComponentModel.Design.ActivityDesigner.HitTest%2A> methods to describe the area of the designer hit by mouse clicks and drag and drop operations. Use the HitTestLocations to decide what kind of action to take in response to a successful hit test.  
+  
+   
+  
+## Examples  
+ The following example shows the addition of a new branch using a designer based off of the <xref:System.Workflow.ComponentModel.Design.CompositeActivityDesigner> class. If <xref:System.Workflow.ComponentModel.Design.CompositeActivityDesigner.CanInsertActivities%2A> returns `true`, a new branch is created using the <xref:System.Workflow.ComponentModel.Design.CompositeActivityDesigner.InsertActivities%2A> method. A <xref:System.Workflow.ComponentModel.Design.ConnectorHitTestInfo> object is created as a parameter to the <xref:System.Workflow.ComponentModel.Design.CompositeActivityDesigner.InsertActivities%2A> method using the location of the workflow designer by specifying the Designer flag. When this is finished, the <xref:System.Workflow.ComponentModel.Design.CompositeActivityDesigner.EnsureVisibleContainedDesigner%2A> method is used to ensure that the newly added branch is displayed in the workflow designer.  
+  
+ [!code-cs[Wf_samples#29](~/add/codesnippet/csharp/wf_snippets/snippets.cs#29)]
+ [!code-vb[Wf_samples#29](~/add/codesnippet/visualbasic/wf_snippets/snippets.vb#29)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="ActionArea">
@@ -37,7 +56,7 @@
         <ReturnType>System.Workflow.ComponentModel.Design.HitTestLocations</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Indicates the area contained by the expand button was hit.</summary>
       </Docs>
     </Member>
     <Member MemberName="Bottom">
@@ -54,7 +73,7 @@
         <ReturnType>System.Workflow.ComponentModel.Design.HitTestLocations</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Indicates that the bottom of the designer was hit.</summary>
       </Docs>
     </Member>
     <Member MemberName="Connector">
@@ -71,7 +90,7 @@
         <ReturnType>System.Workflow.ComponentModel.Design.HitTestLocations</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Indicates that a connector on the designer was hit.</summary>
       </Docs>
     </Member>
     <Member MemberName="Designer">
@@ -88,7 +107,7 @@
         <ReturnType>System.Workflow.ComponentModel.Design.HitTestLocations</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Indicates that any part of the designer was hit.</summary>
       </Docs>
     </Member>
     <Member MemberName="Left">
@@ -105,7 +124,7 @@
         <ReturnType>System.Workflow.ComponentModel.Design.HitTestLocations</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Indicates that the left part of the designer was hit.</summary>
       </Docs>
     </Member>
     <Member MemberName="None">
@@ -122,7 +141,7 @@
         <ReturnType>System.Workflow.ComponentModel.Design.HitTestLocations</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Indicates that no part of the designer was hit.</summary>
       </Docs>
     </Member>
     <Member MemberName="Right">
@@ -139,7 +158,7 @@
         <ReturnType>System.Workflow.ComponentModel.Design.HitTestLocations</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Indicates the right part of the designer was hit.</summary>
       </Docs>
     </Member>
     <Member MemberName="Top">
@@ -156,7 +175,7 @@
         <ReturnType>System.Workflow.ComponentModel.Design.HitTestLocations</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Indicates the top of the designer was hit.</summary>
       </Docs>
     </Member>
   </Members>

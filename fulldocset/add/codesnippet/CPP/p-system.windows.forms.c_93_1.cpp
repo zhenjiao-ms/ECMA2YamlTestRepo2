@@ -1,88 +1,58 @@
-   private:
-      Image^ picture;
-      Point pictureLocation;
+   // This example demonstrates the use of the ControlAdded and
+   // ControlRemoved events. This example assumes that two Button controls
+   // are added to the form and connected to the addControl_Click and
+   // removeControl_Click event-handler methods.
+private:
+   void Form1_Load( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      // Connect the ControlRemoved and ControlAdded event handlers
+      // to the event-handler methods.
+      // ControlRemoved and ControlAdded are not available at design time.
+      this->ControlRemoved += gcnew System::Windows::Forms::ControlEventHandler( this, &Form1::Control_Removed );
+      this->ControlAdded += gcnew System::Windows::Forms::ControlEventHandler( this, &Form1::Control_Added );
+   }
 
-   public:
-      Form1()
+   void Control_Added( Object^ /*sender*/, System::Windows::Forms::ControlEventArgs^ e )
+   {
+      MessageBox::Show( String::Format( "The control named {0} has been added to the form.", e->Control->Name ) );
+   }
+
+   void Control_Removed( Object^ /*sender*/, System::Windows::Forms::ControlEventArgs^ e )
+   {
+      MessageBox::Show( String::Format( "The control named {0} has been removed from the form.", e->Control->Name ) );
+   }
+
+   // Click event handler for a Button control. Adds a TextBox to the form.
+   void addControl_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      // Create a new TextBox control and add it to the form.
+      TextBox^ textBox1 = gcnew TextBox;
+      textBox1->Size = System::Drawing::Size( 100, 10 );
+      textBox1->Location = Point(10,10);
+
+      // Name the control in order to remove it later. The name must be specified
+      // if a control is added at run time.
+      textBox1->Name = "textBox1";
+
+      // Add the control to the form's control collection.
+      this->Controls->Add( textBox1 );
+   }
+
+   // Click event handler for a Button control.
+   // Removes the previously added TextBox from the form.
+   void removeControl_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      // Loop through all controls in the form's control collection.
+      IEnumerator^ myEnum = this->Controls->GetEnumerator();
+      while ( myEnum->MoveNext() )
       {
+         Control^ tempCtrl = safe_cast<Control^>(myEnum->Current);
          
-         // Enable drag-and-drop operations and
-         // add handlers for DragEnter and DragDrop.
-         this->AllowDrop = true;
-         this->DragDrop += gcnew DragEventHandler( this, &Form1::Form1_DragDrop );
-         this->DragEnter += gcnew DragEventHandler( this, &Form1::Form1_DragEnter );
-      }
-
-   protected:
-      virtual void OnPaint( PaintEventArgs^ e ) override
-      {
-         
-         // If there is an image and it has a location,
-         // paint it when the Form is repainted.
-         Form::OnPaint( e );
-         if ( this->picture != nullptr && this->pictureLocation != Point::Empty )
+         // Determine whether the control is textBox1,
+         // and if it is, remove it.
+         if ( tempCtrl->Name->Equals( "textBox1" ) )
          {
-            e->Graphics->DrawImage( this->picture, this->pictureLocation );
-         }
-      }
-
-   private:
-      void Form1_DragDrop( Object^ /*sender*/, DragEventArgs^ e )
-      {
-         
-         // Handle FileDrop data.
-         if ( e->Data->GetDataPresent( DataFormats::FileDrop ) )
-         {
-            // Assign the file names to a String* array, in
-            // case the user has selected multiple files.
-            array<String^>^files = (array<String^>^)e->Data->GetData( DataFormats::FileDrop );
-            try
-            {
-               // Assign the first image to the picture variable.
-               this->picture = Image::FromFile( files[ 0 ] );
-               
-               // Set the picture location equal to the drop point.
-               this->pictureLocation = this->PointToClient( Point(e->X,e->Y) );
-            }
-            catch ( Exception^ ex ) 
-            {
-               MessageBox::Show( ex->Message );
-               return;
-            }
-
-         }
-         
-         // Handle Bitmap data.
-         if ( e->Data->GetDataPresent( DataFormats::Bitmap ) )
-         {
-            try
-            {
-               // Create an Image and assign it to the picture variable.
-               this->picture = dynamic_cast<Image^>(e->Data->GetData( DataFormats::Bitmap ));
-
-               // Set the picture location equal to the drop point.
-               this->pictureLocation = this->PointToClient( Point(e->X,e->Y) );
-            }
-            catch ( Exception^ ex ) 
-            {
-               MessageBox::Show( ex->Message );
-               return;
-            }
-         }
-         
-         // Force the form to be redrawn with the image.
-         this->Invalidate();
-      }
-
-      void Form1_DragEnter( Object^ /*sender*/, DragEventArgs^ e )
-      {
-         // If the data is a file or a bitmap, display the copy cursor.
-         if ( e->Data->GetDataPresent( DataFormats::Bitmap ) || e->Data->GetDataPresent( DataFormats::FileDrop ) )
-         {
-            e->Effect = DragDropEffects::Copy;
-         }
-         else
-         {
-            e->Effect = DragDropEffects::None;
+            this->Controls->Remove( tempCtrl );
          }
       }
+   }

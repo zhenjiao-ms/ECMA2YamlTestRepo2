@@ -1,15 +1,17 @@
-            // Create an EndpointAddress with a specified address.
-            EndpointAddress epa1 = new EndpointAddress("http://localhost/ServiceModelSamples");
-            Console.WriteLine("The URI of the EndpointAddress is {0}:", epa1.Uri);
-            Console.WriteLine();
+            EndpointAddressBuilder eab = new EndpointAddressBuilder();
+            eab.Uri = new Uri("http://localhost/Uri");
+            eab.Headers.Add(AddressHeader.CreateAddressHeader("n", "ns", "val"));
 
-            //Initialize an EndpointAddress10 from the endpointAddress.
-            EndpointAddress10 epa10 = EndpointAddress10.FromEndpointAddress(epa1);
+            eab.Identity = EndpointIdentity.CreateUpnIdentity("identity");
 
-            //Serialize and then deserializde the Endpoint10 type.
+            XmlDictionaryReader xdrExtensions = eab.GetReaderAtExtensions();
 
-            //Convert the EndpointAddress10 back into an EndpointAddress.
-            EndpointAddress epa2 = epa10.ToEndpointAddress();
+            StringReader sr = new StringReader(@"<myExtension xmlns=""myExtNs"" />");
+            eab.SetExtensionReader(XmlDictionaryReader.CreateDictionaryReader(XmlReader.Create(sr)));
 
-            Console.WriteLine("The URI of the EndpointAddress is still {0}:", epa2.Uri);
-            Console.WriteLine();
+            EndpointAddress ea = eab.ToEndpointAddress();
+
+            sr = new StringReader(@"<myMetadata xmlns=""myMetaNs"" />");
+            XmlDictionaryReader xdrMetaData = eab.GetReaderAtMetadata();
+
+            eab.SetMetadataReader(XmlDictionaryReader.CreateDictionaryReader(XmlReader.Create(sr)));

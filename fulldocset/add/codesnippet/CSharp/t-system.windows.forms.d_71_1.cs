@@ -1,65 +1,72 @@
-    private void ValidateByRow(Object sender, 
-        DataGridViewCellCancelEventArgs data) 
+    // Paints the content that spans multiple columns and the focus rectangle.
+    void dataGridView1_RowPostPaint(object sender,
+        DataGridViewRowPostPaintEventArgs e)
     {
-        DataGridViewRow row = 
-            songsDataGridView.Rows[data.RowIndex];
-        DataGridViewCell trackCell = 
-            row.Cells[songsDataGridView.Columns["Track"].Index];
-        DataGridViewCell dateCell = 
-            row.Cells[songsDataGridView.Columns["Release Date"].Index];
-        data.Cancel = !(IsTrackGood(trackCell) && IsDateGood(dateCell));
-    }
+        // Calculate the bounds of the row.
+        Rectangle rowBounds = new Rectangle(
+            this.dataGridView1.RowHeadersWidth, e.RowBounds.Top,
+            this.dataGridView1.Columns.GetColumnsWidth(
+                DataGridViewElementStates.Visible) -
+            this.dataGridView1.HorizontalScrollingOffset + 1,
+            e.RowBounds.Height);
 
-    private Boolean IsTrackGood(DataGridViewCell cell)
-    {
-        Int32 cellValueAsInt;
-        if (cell.Value.ToString().Length == 0)
-		{
-            cell.ErrorText = "Please enter a track";
-            songsDataGridView.Rows[cell.RowIndex].ErrorText = 
-                "Please enter a track";
-            return false;
-        }
-        else if (cell.Value.ToString().Equals("0"))
+        SolidBrush forebrush = null;
+        try
         {
-            cell.ErrorText = "Zero is not a valid track";
-            songsDataGridView.Rows[cell.RowIndex].ErrorText =
-                "Zero is not a valid track";
-            return false;
-        }
-        else if (!Int32.TryParse(cell.Value.ToString(), out cellValueAsInt))
-        {
-            cell.ErrorText = "A Track must be a number";
-            songsDataGridView.Rows[cell.RowIndex].ErrorText =
-                "A Track must be a number";
-            return false;
-        }
-        return true;
-    }
-
-    private Boolean IsDateGood(DataGridViewCell cell) 
-    {
-        if (cell.Value == null)
-		{
-            cell.ErrorText = "Missing date";
-            songsDataGridView.Rows[cell.RowIndex].ErrorText = 
-                "Missing date";
-            return false;
-        }
-        else
-        {
-            try
+            // Determine the foreground color.
+            if ((e.State & DataGridViewElementStates.Selected) ==
+                DataGridViewElementStates.Selected)
             {
-                DateTime.Parse(cell.Value.ToString());
+                forebrush = new SolidBrush(e.InheritedRowStyle.SelectionForeColor);
             }
-            catch (FormatException)
+            else
             {
-                cell.ErrorText = "Invalid format";
-                songsDataGridView.Rows[cell.RowIndex].ErrorText = 
-                    "Invalid format";
+                forebrush = new SolidBrush(e.InheritedRowStyle.ForeColor);
+            }
 
-                return false;
+            // Get the content that spans multiple columns.
+            object recipe =
+                this.dataGridView1.Rows.SharedRow(e.RowIndex).Cells[2].Value;
+
+            if (recipe != null)
+            {
+                String text = recipe.ToString();
+
+                // Calculate the bounds for the content that spans multiple 
+                // columns, adjusting for the horizontal scrolling position 
+                // and the current row height, and displaying only whole
+                // lines of text.
+                Rectangle textArea = rowBounds;
+                textArea.X -= this.dataGridView1.HorizontalScrollingOffset;
+                textArea.Width += this.dataGridView1.HorizontalScrollingOffset;
+                textArea.Y += rowBounds.Height - e.InheritedRowStyle.Padding.Bottom;
+                textArea.Height -= rowBounds.Height -
+                    e.InheritedRowStyle.Padding.Bottom;
+                textArea.Height = (textArea.Height / e.InheritedRowStyle.Font.Height) *
+                    e.InheritedRowStyle.Font.Height;
+
+                // Calculate the portion of the text area that needs painting.
+                RectangleF clip = textArea;
+                clip.Width -= this.dataGridView1.RowHeadersWidth + 1 - clip.X;
+                clip.X = this.dataGridView1.RowHeadersWidth + 1;
+                RectangleF oldClip = e.Graphics.ClipBounds;
+                e.Graphics.SetClip(clip);
+
+                // Draw the content that spans multiple columns.
+                e.Graphics.DrawString(
+                    text, e.InheritedRowStyle.Font, forebrush, textArea);
+
+                e.Graphics.SetClip(oldClip);
             }
         }
-        return true;
+        finally
+        {
+            forebrush.Dispose();
+        }
+
+        if (this.dataGridView1.CurrentCellAddress.Y == e.RowIndex)
+        {
+            // Paint the focus rectangle.
+            e.DrawFocus(rowBounds, true);
+        }
     }

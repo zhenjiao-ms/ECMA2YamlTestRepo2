@@ -1,11 +1,11 @@
-private void button3_Click(object sender, System.EventArgs e)
-{
-   TreeNode lastNode = treeView1.Nodes[treeView1.Nodes.Count - 1].
-     Nodes[treeView1.Nodes[treeView1.Nodes.Count - 1].Nodes.Count - 1];
+private void TabControl1_Selected(Object sender, TabControlEventArgs e) {
 
-   if (!lastNode.IsVisible)
-   {
-      lastNode.EnsureVisible();
-      MessageBox.Show(lastNode.Text + " tree node is visible.");
-   }
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "TabPage", e.TabPage );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "TabPageIndex", e.TabPageIndex );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Action", e.Action );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "Selected Event" );
 }

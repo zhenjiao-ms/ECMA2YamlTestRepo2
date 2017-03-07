@@ -7,17 +7,14 @@ private:
 public:
    static void MyErrorMethod()
    {
-      // Write the message if the TraceSwitch level is set
-      // to Error or higher.
-      if ( generalSwitch->TraceError )
-      {
-         Trace::Write( "My error message. " );
-      }
+      #if defined(TRACE)
+      // Write the message if the TraceSwitch level is set to
+      // Error or higher.
+      Trace::WriteIf( generalSwitch->TraceError, "My error message. " );
       
       // Write a second message if the TraceSwitch level is set
       // to Verbose.
-      if ( generalSwitch->TraceVerbose )
-      {
-          Trace::WriteLine( "My second error message." );
-      }
+      Trace::WriteLineIf( generalSwitch->TraceVerbose, 
+         "My second error message." );
+      #endif
    }

@@ -1,20 +1,12 @@
-      Public Shared Sub Main()
-
-         System.Console.WriteLine("Enter the file path:")
-         Dim filePath As String
-         filePath = System.Console.ReadLine()
-
-         If System.IO.File.Exists(filePath) Then
-            Dim fileCreationDateTime As System.DateTime
-            fileCreationDateTime = System.IO.File.GetCreationTime(filePath)
-
-            Dim fileCreationFileTime As Long
-            fileCreationFileTime = fileCreationDateTime.ToFileTime()
-
-            System.Console.WriteLine("{0} in file time is {1}.", _
-                                     fileCreationDateTime, _
-                                     fileCreationFileTime)
-         Else
-            System.Console.WriteLine("{0} is an invalid file", filePath)
-         End If
-      End Sub
+Module Example
+   Public Sub Main()
+      Dim date1 As New DateTime(2010, 3, 14, 2, 30, 00)
+      Console.WriteLine("Invalid Time: {0}", TimeZoneInfo.Local.IsInvalidTime(date1))
+      Dim ft As Long = date1.ToFileTime()
+      Dim date2 As DateTime = DateTime.FromFileTime(ft)
+      Console.WriteLine("{0} -> {1}", date1, date2) 
+   End Sub
+End Module
+' The example displays the following output:
+'       Invalid Time: True
+'       3/14/2010 2:30:00 AM -> 3/14/2010 3:30:00 AM

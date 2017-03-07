@@ -1,25 +1,26 @@
-// This button is a simple extension of the button class that overrides
-// the ProcessMnemonic method.  If the mnemonic is correctly entered,  
-// the message box will appear and the click event will be raised.  
-public class MyMnemonicButton:Button
-
-	// This method makes sure the control is selectable and the 
-	// mneumonic is correct before displaying the message box
-	// and triggering the click event.
+protected override void OnTextChanged(System.EventArgs e)
 {
-	[UIPermission(
-        SecurityAction.Demand, Window = UIPermissionWindow.AllWindows)]
-        protected override bool ProcessMnemonic(char inputChar)
-	{
-
-		if (CanSelect&&IsMnemonic(inputChar, this.Text))
-		{
-			MessageBox.Show("You've raised the click event " +
-				"using the mnemonic.");
-			this.PerformClick();
-			return true;
-		}
-		return false;
-	}
-
+   try
+   {
+      // Convert the text to a Double and determine
+      // if it is a negative number.
+      if(double.Parse(this.Text) < 0)
+      {
+         // If the number is negative, display it in Red.
+         this.ForeColor = Color.Red;
+      }
+      else
+      {
+         // If the number is not negative, display it in Black.
+         this.ForeColor = Color.Black;
+      }
+   }
+   catch
+   {
+      // If there is an error, display the 
+      // text using the system colors.
+      this.ForeColor = SystemColors.ControlText;
+   }
+   
+   base.OnTextChanged(e);
 }

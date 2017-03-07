@@ -1,29 +1,41 @@
-            ' Ensure that the source has already been registered using
-            ' EventLogInstaller or EventLog.CreateEventSource.
-            Dim sourceName as String = "SampleApplicationSource"
-            If EventLog.SourceExists(sourceName)
-                
-                ' Define an informational event with no category.
-                ' The message identifier corresponds to the message text in the
-                ' message resource file defined for the source.
-                Dim myEvent As EventInstance = New EventInstance(UpdateCycleCompleteMsgId, 0)
-                ' Write the event to the event log using the registered source.
-                EventLog.WriteEvent(sourceName, myEvent)
+#Const NOCONFIGFILE = True
+Imports System
+Imports System.IO
+Imports System.Xml
+Imports System.Xml.XPath
+Imports System.Diagnostics
 
-                ' Reuse the event data instance for another event entry.
-                ' Set the entry category and message identifiers for
-                ' the appropriate resource identifiers in the resource files
-                ' for the registered source.  Set the event type to Warning.
+Class testClass
 
-                myEvent.CategoryId = RefreshCategoryMsgId
-                myEvent.EntryType = EventLogEntryType.Warning
-                myEvent.InstanceId = ServerConnectionDownMsgId
+    <STAThreadAttribute()> _
+    Shared Sub Main()
+        File.Delete("TraceOutput.xml")
+        Dim ts As New TraceSource("TestSource")
+#If NOCONFIGFILE Then
+        ts.Listeners.Add(New EventSchemaTraceListener("TraceOutput.xml", "eventListener", 65536, TraceLogRetentionOption.LimitedCircularFiles, 20480000, 2))
+        ts.Listeners("eventListener").TraceOutputOptions = TraceOptions.DateTime Or TraceOptions.ProcessId Or TraceOptions.Timestamp
+#End If
+        ts.Switch.Level = SourceLevels.All
+        Dim testString As String = "<Test><InnerElement Val=""1"" /><InnerElement Val=""Data""/><AnotherElement>11</AnotherElement></Test>"
+        Dim unXData As New UnescapedXmlDiagnosticData(testString)
+        ts.TraceData(TraceEventType.Error, 38, unXData)
+        ts.TraceEvent(TraceEventType.Error, 38, testString)
+        ts.Flush()
+        ts.Close()
+        DisplayProperties(ts)
+        Process.Start("notepad.exe", "TraceOutput.xml")
+        Console.WriteLine("Press the enter key to exit")
+        Console.ReadLine()
 
-                ' Write the event to the event log using the registered source.
-                ' Insert the machine name into the event message text.
-                EventLog.WriteEvent(sourceName, myEvent, Environment.MachineName)
+    End Sub 'Main
 
-            Else 
-                Console.WriteLine("Warning - event source {0} not registered", _
-                    sourceName)
-            End If
+    Private Shared Sub DisplayProperties(ByVal ts As TraceSource)
+        Console.WriteLine("IsThreadSafe? " + CType(ts.Listeners("eventListener"), EventSchemaTraceListener).IsThreadSafe.ToString())
+        Console.WriteLine("BufferSize =  " + CType(ts.Listeners("eventListener"), EventSchemaTraceListener).BufferSize.ToString())
+        Console.WriteLine("MaximumFileSize =  " + CType(ts.Listeners("eventListener"), EventSchemaTraceListener).MaximumFileSize.ToString())
+        Console.WriteLine("MaximumNumberOfFiles =  " + CType(ts.Listeners("eventListener"), EventSchemaTraceListener).MaximumNumberOfFiles.ToString())
+        Console.WriteLine("Name =  " + CType(ts.Listeners("eventListener"), EventSchemaTraceListener).Name)
+        Console.WriteLine("TraceLogRetentionOption =  " + CType(ts.Listeners("eventListener"), EventSchemaTraceListener).TraceLogRetentionOption.ToString())
+        Console.WriteLine("TraceOutputOptions =  " + CType(ts.Listeners("eventListener"), EventSchemaTraceListener).TraceOutputOptions.ToString())
+    End Sub
+End Class 'testClass

@@ -1,27 +1,15 @@
-        public static Binding CreateCustomBinding()
-        {
-            // Create an empty BindingElementCollection to populate, 
-            // then create a custom binding from it.
-            BindingElementCollection outputBec = new BindingElementCollection();
+            AsymmetricSecurityBindingElement abe =
+                (AsymmetricSecurityBindingElement)SecurityBindingElement.
+                CreateMutualCertificateBindingElement(
+                MessageSecurityVersion.
+                WSSecurity10WSTrustFebruary2005WSSecureConversationFebruary2005WSSecurityPolicy11BasicSecurityProfile10);
 
-            // Create a SymmetricSecurityBindingElement.
-            SymmetricSecurityBindingElement ssbe = 
-                new SymmetricSecurityBindingElement();
-
-            // Set the algorithm suite to one that uses 128-bit keys.
-            ssbe.DefaultAlgorithmSuite = SecurityAlgorithmSuite.Basic128;
-
-               // Set MessageProtectionOrder to SignBeforeEncrypt.
-            ssbe.MessageProtectionOrder = MessageProtectionOrder.SignBeforeEncrypt;
-
-            // Use a Kerberos token as the protection token.
-            ssbe.ProtectionTokenParameters = new KerberosSecurityTokenParameters();
+            abe.SetKeyDerivation(false);
             
-            // Add the SymmetricSecurityBindingElement to the BindingElementCollection.
-            outputBec.Add ( ssbe );
-            outputBec.Add(new TextMessageEncodingBindingElement());
-            outputBec.Add(new HttpTransportBindingElement());
-
-            // Create a CustomBinding and return it; otherwise, return null.
-            return new CustomBinding(outputBec);
-        }
+            X509SecurityTokenParameters istp =
+               abe.InitiatorTokenParameters as X509SecurityTokenParameters;
+            if (istp != null)
+            {
+                istp.X509ReferenceStyle =
+                X509KeyIdentifierClauseType.IssuerSerial;
+            }

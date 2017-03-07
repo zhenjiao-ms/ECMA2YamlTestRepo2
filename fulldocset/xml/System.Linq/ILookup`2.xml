@@ -17,10 +17,27 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <typeparam name="TKey">To be added.</typeparam>
-    <typeparam name="TElement">To be added.</typeparam>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <typeparam name="TKey">The type of the keys in the ILookup(TKey,.</typeparam>
+    <typeparam name="TElement">The type of the elements in the <see cref="System.Collections.Generic.IEnumerable%601" /> sequences that make up the values in the ILookup(TKey,.</typeparam>
+    <summary>Defines an indexer, size property, and Boolean search method for data structures that map keys to <see cref="System.Collections.Generic.IEnumerable%601" /> sequences of values.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The type <xref:System.Linq.Lookup%602> implements the ILookup(TKey, interface.  
+  
+ The extension method <xref:System.Linq.Enumerable.ToLookup%2A>, which can be appended to the end of a LINQ query, returns an object of type ILookup(TKey,.  
+  
+   
+  
+## Examples  
+ The following code example creates an ILookup(TKey, object and iterates through its contents.  
+  
+ [!code-cs[System.Linq.ILookup#1](~/add/codesnippet/csharp/t-system.linq.ilookup`2_1.cs)]
+ [!code-vb[System.Linq.ILookup#1](~/add/codesnippet/visualbasic/t-system.linq.ilookup`2_1.vb)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Contains">
@@ -40,9 +57,10 @@
         <Parameter Name="key" Type="TKey" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="key">The key to search for in the <see cref="System.Linq.ILookup%602" />.</param>
+        <summary>Determines whether a specified key exists in the <see cref="System.Linq.ILookup%602" />.</summary>
+        <returns>
+          <see langword="true" /> if <paramref name="key" /> is in the <see cref="System.Linq.ILookup%602" />; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -60,8 +78,8 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the number of key/value collection pairs in the <see cref="System.Linq.ILookup%602" />.</summary>
+        <value>The number of key/value collection pairs in the <see cref="System.Linq.ILookup%602" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -82,9 +100,9 @@
         <Parameter Name="key" Type="TKey" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <param name="key">The key of the desired sequence of values.</param>
+        <summary>Gets the <see cref="System.Collections.Generic.IEnumerable%601" /> sequence of values indexed by a specified key.</summary>
+        <value>The <see cref="System.Collections.Generic.IEnumerable%601" /> sequence of values indexed by the specified key.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

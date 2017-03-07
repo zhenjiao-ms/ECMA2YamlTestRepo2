@@ -1,6 +1,10 @@
-    [Designer("System.Windows.Forms.Design.DocumentDesigner, System.Windows.Forms.Design.DLL", 
-        typeof(IRootDesigner)),
-        DesignerCategory("Form")]
-    public class MyForm : ContainerControl {
-        // Insert code here.
+[Bindable(true)]
+ public int MyProperty {
+    get {
+       // Insert code here.
+       return 0;
     }
+    set {
+       // Insert code here.
+    }
+ }

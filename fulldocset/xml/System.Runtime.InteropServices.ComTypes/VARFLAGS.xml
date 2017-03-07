@@ -16,8 +16,17 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Identifies the constants that define the properties of a variable.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ For additional information about `VARFLAGS`, see the MSDN Library.  
+  
+ The common language runtime throws an exception when a COM method in native code returns an HRESULT. For more information, see [How to: Map HRESULTs and Exceptions](../Topic/How%20to:%20Map%20HRESULTs%20and%20Exceptions.md).  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="VARFLAG_FBINDABLE">
@@ -34,7 +43,7 @@
         <ReturnType>System.Runtime.InteropServices.ComTypes.VARFLAGS</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The variable supports data binding.</summary>
       </Docs>
     </Member>
     <Member MemberName="VARFLAG_FDEFAULTBIND">
@@ -51,7 +60,7 @@
         <ReturnType>System.Runtime.InteropServices.ComTypes.VARFLAGS</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The variable is the single property that best represents the object. Only one variable in type information can have this attribute.</summary>
       </Docs>
     </Member>
     <Member MemberName="VARFLAG_FDEFAULTCOLLELEM">
@@ -68,7 +77,7 @@
         <ReturnType>System.Runtime.InteropServices.ComTypes.VARFLAGS</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Permits an optimization in which the compiler looks for a member named "xyz" on the type of "abc". If such a member is found and is flagged as an accessor function for an element of the default collection, then a call is generated to that member function. Permitted on members in dispinterfaces and interfaces; not permitted on modules.</summary>
       </Docs>
     </Member>
     <Member MemberName="VARFLAG_FDISPLAYBIND">
@@ -85,7 +94,7 @@
         <ReturnType>System.Runtime.InteropServices.ComTypes.VARFLAGS</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The variable is displayed to the user as bindable. <see cref="T:System.Runtime.InteropServices.VARFLAGS" /> must also be set.</summary>
       </Docs>
     </Member>
     <Member MemberName="VARFLAG_FHIDDEN">
@@ -102,7 +111,7 @@
         <ReturnType>System.Runtime.InteropServices.ComTypes.VARFLAGS</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The variable should not be displayed to the user in a browser, although it exists and is bindable.</summary>
       </Docs>
     </Member>
     <Member MemberName="VARFLAG_FIMMEDIATEBIND">
@@ -119,7 +128,7 @@
         <ReturnType>System.Runtime.InteropServices.ComTypes.VARFLAGS</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The variable is mapped as individual bindable properties.</summary>
       </Docs>
     </Member>
     <Member MemberName="VARFLAG_FNONBROWSABLE">
@@ -136,7 +145,7 @@
         <ReturnType>System.Runtime.InteropServices.ComTypes.VARFLAGS</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The variable appears in an object browser, but not in a properties browser.</summary>
       </Docs>
     </Member>
     <Member MemberName="VARFLAG_FREADONLY">
@@ -153,7 +162,7 @@
         <ReturnType>System.Runtime.InteropServices.ComTypes.VARFLAGS</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Assignment to the variable should not be allowed.</summary>
       </Docs>
     </Member>
     <Member MemberName="VARFLAG_FREPLACEABLE">
@@ -170,7 +179,7 @@
         <ReturnType>System.Runtime.InteropServices.ComTypes.VARFLAGS</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Tags the interface as having default behaviors.</summary>
       </Docs>
     </Member>
     <Member MemberName="VARFLAG_FREQUESTEDIT">
@@ -187,7 +196,7 @@
         <ReturnType>System.Runtime.InteropServices.ComTypes.VARFLAGS</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When set, any attempt to directly change the property results in a call to <see langword="IPropertyNotifySink::OnRequestEdit" />. The implementation of <see langword="OnRequestEdit" /> determines if the change is accepted.</summary>
       </Docs>
     </Member>
     <Member MemberName="VARFLAG_FRESTRICTED">
@@ -204,7 +213,7 @@
         <ReturnType>System.Runtime.InteropServices.ComTypes.VARFLAGS</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The variable should not be accessible from macro languages. This flag is intended for system-level variables or variables that you do not want type browsers to display.</summary>
       </Docs>
     </Member>
     <Member MemberName="VARFLAG_FSOURCE">
@@ -221,7 +230,7 @@
         <ReturnType>System.Runtime.InteropServices.ComTypes.VARFLAGS</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The variable returns an object that is a source of events.</summary>
       </Docs>
     </Member>
     <Member MemberName="VARFLAG_FUIDEFAULT">
@@ -238,7 +247,7 @@
         <ReturnType>System.Runtime.InteropServices.ComTypes.VARFLAGS</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The variable is the default display in the user interface.</summary>
       </Docs>
     </Member>
   </Members>

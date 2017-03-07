@@ -1,13 +1,21 @@
-    TreeView treeViewWithToolTips;
-    private void InitializeTreeViewWithToolTips()
-    {
-        treeViewWithToolTips = new TreeView();
-        TreeNode node1 = new TreeNode("Node1");
-        node1.ToolTipText = "Help for Node1";
-        TreeNode node2 = new TreeNode("Node2");
-        node2.ToolTipText = "A Tip for Node2";
-        treeViewWithToolTips.Nodes.AddRange(new TreeNode[] { node1, node2 });
-        treeViewWithToolTips.ShowNodeToolTips = true;
-        this.Controls.Add(treeViewWithToolTips);
-
-    }
+public void InitializeMyToolBar()
+ {
+    // Create and initialize the ToolBarButton controls and ToolBar.
+    ToolBar toolBar1 = new ToolBar();
+    ToolBarButton toolBarButton1 = new ToolBarButton();
+    ToolBarButton toolBarButton2 = new ToolBarButton();
+    ToolBarButton toolBarButton3 = new ToolBarButton();
+ 
+    // Set the Text properties of the ToolBarButton controls.
+    toolBarButton1.Text = "Open";
+    toolBarButton2.Text = "Save";
+    toolBarButton3.Text = "Print";
+ 
+    // Add the ToolBarButton controls to the ToolBar.
+    toolBar1.Buttons.Add(toolBarButton1);
+    toolBar1.Buttons.Add(toolBarButton2);
+    toolBar1.Buttons.Add(toolBarButton3);
+ 
+    // Add the ToolBar to the Form.
+    Controls.Add(toolBar1);
+ }

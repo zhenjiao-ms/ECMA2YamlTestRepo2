@@ -1,17 +1,13 @@
 using namespace System;
+using namespace System::IO;
 
-int main()
+void main()
 {
-   Console::WriteLine();
-   
-   //  Invoke this sample with an arbitrary set of command line arguments.
-   array<String^>^ arguments = Environment::GetCommandLineArgs();
-   Console::WriteLine( "GetCommandLineArgs: {0}", String::Join( ", ", arguments ) );
+      // Change the directory to %WINDIR%
+      Environment::CurrentDirectory = Environment::GetEnvironmentVariable( "windir" );
+      DirectoryInfo^ info = gcnew DirectoryInfo( "." );
+
+      Console::WriteLine("Directory Info:   {0}", info->FullName);
 }
-/*
-This example produces output like the following:
-    
-    C:\>GetCommandLineArgs ARBITRARY TEXT
-    
-      GetCommandLineArgs: GetCommandLineArgs, ARBITRARY, TEXT
-*/
+// The example displays output like the following:
+//        Directory Info:   C:\windows

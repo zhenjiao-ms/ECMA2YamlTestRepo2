@@ -1,72 +1,43 @@
-Public Class Customer
-   Public CustomerOrders As ArrayList
-   Public CustomerName As String
-   
-   Public Sub New(myName As String)
-      CustomerName = myName
-      CustomerOrders = New ArrayList()
-   End Sub 'New
-End Class 'Customer
-
-
-Public Class Order
-   Public OrderID As String
-   
-   Public Sub New(myOrderID As String)
-      Me.OrderID = myOrderID
-   End Sub 'New
-End Class 'Order
-
-Private Sub FillTreeView()
-   ' Load the images in an ImageList.
-   Dim myImageList As New ImageList()
-   myImageList.Images.Add(Image.FromFile("Default.gif"))
-   myImageList.Images.Add(Image.FromFile("SelectedDefault.gif"))
-   myImageList.Images.Add(Image.FromFile("Root.gif"))
-   myImageList.Images.Add(Image.FromFile("UnselectedCustomer.gif"))
-   myImageList.Images.Add(Image.FromFile("SelectedCustomer.gif"))
-   myImageList.Images.Add(Image.FromFile("UnselectedOrder.gif"))
-   myImageList.Images.Add(Image.FromFile("SelectedOrder.gif"))
-   
-   ' Assign the ImageList to the TreeView.
-   myTreeView.ImageList = myImageList
-   
-   ' Set the TreeView control's default image and selected image indexes.
-   myTreeView.ImageIndex = 0
-   myTreeView.SelectedImageIndex = 1
-   
-   ' Set the index of image from the 
-   ' ImageList for selected and unselected tree nodes.
-   Me.rootImageIndex = 2
-   Me.selectedCustomerImageIndex = 3
-   Me.unselectedCustomerImageIndex = 4
-   Me.selectedOrderImageIndex = 5
-   Me.unselectedOrderImageIndex = 6
-   
-   ' Create the root tree node.
-   Dim rootNode As New TreeNode("CustomerList")
-   rootNode.ImageIndex = rootImageIndex
-   rootNode.SelectedImageIndex = rootImageIndex
-   
-   ' Add a main root tree node.
-   myTreeView.Nodes.Add(rootNode)
-   
-   ' Add a root tree node for each Customer object in the ArrayList.
-   Dim myCustomer As Customer
-   For Each myCustomer In  customerArray
-      ' Add a child tree node for each Order object.
-      Dim countIndex As Integer = 0
-      Dim myTreeNodeArray(myCustomer.CustomerOrders.Count) As TreeNode
-      Dim myOrder As Order
-      For Each myOrder In  myCustomer.CustomerOrders
-         ' Add the Order tree node to the array.
-         myTreeNodeArray(countIndex) = New TreeNode(myOrder.OrderID, _
-            unselectedOrderImageIndex, selectedOrderImageIndex)
-         countIndex += 1
-      Next myOrder
-      ' Add the Customer tree node.
-      Dim customerNode As New TreeNode(myCustomer.CustomerName, _
-         unselectedCustomerImageIndex, selectedCustomerImageIndex, myTreeNodeArray)
-      myTreeView.Nodes(0).Nodes.Add(customerNode)
-   Next myCustomer
-End Sub
+    Private Sub Menu_Copy(sender As System.Object, e As System.EventArgs)
+        ' Ensure that text is selected in the text box.   
+        If textBox1.SelectionLength > 0 Then
+            ' Copy the selected text to the Clipboard.
+            textBox1.Copy()
+        End If
+    End Sub
+     
+    Private Sub Menu_Cut(sender As System.Object, e As System.EventArgs)
+        ' Ensure that text is currently selected in the text box.   
+        If textBox1.SelectedText <> "" Then
+            ' Cut the selected text in the control and paste it into the Clipboard.
+            textBox1.Cut()
+        End If
+    End Sub
+     
+    Private Sub Menu_Paste(sender As System.Object, e As System.EventArgs)
+        ' Determine if there is any text in the Clipboard to paste into the text box.
+        If Clipboard.GetDataObject().GetDataPresent(DataFormats.Text) = True Then
+            ' Determine if any text is selected in the text box.
+            If textBox1.SelectionLength > 0 Then
+                ' Ask user if they want to paste over currently selected text.
+                If MessageBox.Show("Do you want to paste over current selection?", _
+                    "Cut Example", MessageBoxButtons.YesNo) = DialogResult.No Then
+                    ' Move selection to the point after the current selection and paste.
+                    textBox1.SelectionStart = textBox1.SelectionStart + _
+                        textBox1.SelectionLength
+                End If
+            End If 
+            ' Paste current text in Clipboard into text box.
+            textBox1.Paste()
+        End If
+    End Sub
+    
+    Private Sub Menu_Undo(sender As System.Object, e As System.EventArgs)
+        ' Determine if last operation can be undone in text box.   
+        If textBox1.CanUndo = True Then
+            ' Undo the last operation.
+            textBox1.Undo()
+            ' Clear the undo buffer to prevent last action from being redone.
+            textBox1.ClearUndo()
+        End If
+    End Sub

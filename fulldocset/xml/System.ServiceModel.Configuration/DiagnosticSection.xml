@@ -12,7 +12,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Represents the configuration section that defines settings that can be used by an administrator for run-time inspection and control.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -28,7 +28,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.Configuration.DiagnosticSection" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -50,8 +50,8 @@
         <ReturnType>System.ServiceModel.Configuration.EndToEndTracingElement</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the End-to-End tracing configuration settings specified in a <see cref="T:System.ServiceModel.Configuration.EndToEndTracingElement" /> instance.</summary>
+        <value>Returns <see cref="T:System.ServiceModel.Configuration.EndToEndTracingElement" />, which contains End-to-End tracing configuration settings.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -76,8 +76,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the identifier for the Event-Tracing provider, which writes events to ETW sessions.</summary>
+        <value>Returns <see cref="T:System.String" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -100,8 +100,8 @@
         <ReturnType>System.ServiceModel.Configuration.MessageLoggingElement</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Describes the settings for [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] message logging.</summary>
+        <value>A <see cref="T:System.ServiceModel.Configuration.MessageLoggingElement" /> that describes the settings for [!INCLUDE[indigo2](~/add/includes/indigo2-md.md)] message logging.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -124,8 +124,8 @@
         <ReturnType>System.ServiceModel.Diagnostics.PerformanceCounterScope</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets a value that specifies whether performance counters for the assembly are enabled.</summary>
+        <value>A valid <see cref="T:System.ServiceModel.Diagnostics.PerformanceCounterScope" /> value that specifies what kind of performance counters for the assembly are enabled.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -167,9 +167,17 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets a value that specifies whether the WMI provider for the assembly is enabled.</summary>
+        <value>
+          <see langword="true" /> if the WMI provider for the assembly is enabled; otherwise, <see langword="false" />. The default is <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The WMI provider is required for users to gain runtime access to the inspection and control features of [!INCLUDE[indigo2](~/add/includes/indigo2-md.md)].  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
   </Members>

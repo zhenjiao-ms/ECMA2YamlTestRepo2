@@ -1,12 +1,46 @@
-    // Demonstrates SetImage, ContainsImage, and GetImage.
-    public System.Drawing.Image SwapClipboardImage(
-        System.Drawing.Image replacementImage)
+using System.Windows.Forms;
+
+public class Form1 : Form
+{
+    public Form1()
     {
-        System.Drawing.Image returnImage = null;
-        if (Clipboard.ContainsImage())
-        {
-            returnImage = Clipboard.GetImage();
-            Clipboard.SetImage(replacementImage);
-        }
-        return returnImage;
+        FlowLayoutPanel panel = new FlowLayoutPanel();
+
+        TabTextBox tabTextBox1 = new TabTextBox();
+        tabTextBox1.Text = "TabTextBox";
+        panel.Controls.Add(tabTextBox1);
+
+        TextBox textBox1 = new TextBox();
+        textBox1.Text = "Normal TextBox";
+        panel.Controls.Add(textBox1);
+
+        this.Controls.Add(panel);
     }
+}
+
+class TabTextBox : TextBox
+{
+    protected override bool IsInputKey(Keys keyData)
+    {
+        if (keyData == Keys.Tab)
+        {
+            return true;
+        }
+        else
+        {
+            return base.IsInputKey(keyData);
+        }
+    }
+
+    protected override void OnKeyDown(KeyEventArgs e)
+    {
+        if (e.KeyData == Keys.Tab)
+        {
+            this.SelectedText = "    ";                
+        }
+        else
+        {
+            base.OnKeyDown(e);
+        }
+    }
+}

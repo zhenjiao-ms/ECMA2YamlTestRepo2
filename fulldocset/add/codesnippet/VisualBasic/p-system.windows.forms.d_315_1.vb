@@ -1,11 +1,11 @@
-Private Sub DataGridView1_ColumnStateChanged(sender as Object, e as DataGridViewColumnStateChangedEventArgs) _ 
-     Handles DataGridView1.ColumnStateChanged
+    ' Updated the criteria label.
+    Private Sub dataGridView_AutoSizeColumnCriteriaChanged( _
+        ByVal sender As Object, _
+        ByVal args As DataGridViewAutoSizeColumnModeEventArgs) _
+        Handles DataGridView.AutoSizeColumnModeChanged
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "Column", e.Column)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "StateChanged", e.StateChanged)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"ColumnStateChanged Event")
-
-End Sub
+        args.Column.DataGridView.Parent. _
+        Controls("flowlayoutpanel"). _
+        Controls(criteriaLabel).Text = _
+            criteriaLabel & args.Column.AutoSizeMode.ToString
+    End Sub

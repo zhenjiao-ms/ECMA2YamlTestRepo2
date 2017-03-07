@@ -1,22 +1,13 @@
 using namespace System;
+using namespace System::Reflection;
 using namespace System::Runtime::InteropServices;
-public ref class MyClassThatNeedsToRegister
+
+[assembly: AssemblyVersion("3.0.0.0")];
+[assembly: ComCompatibleVersion(1,0,0,0)];
+namespace MyNamespace
 {
-public:
-
-   [ComRegisterFunctionAttribute]
-   static void RegisterFunction( Type^ t )
-   {
-      
-      //Insert code here.
-   }
-
-
-   [ComUnregisterFunctionAttribute]
-   static void UnregisterFunction( Type^ t )
-   {
-      
-      //Insert code here.
-   }
-
+    public ref class TheClass
+    {
+        // Insert code.
+    };
 };

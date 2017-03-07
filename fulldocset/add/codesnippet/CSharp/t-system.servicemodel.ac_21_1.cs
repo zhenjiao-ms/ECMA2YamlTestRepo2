@@ -1,18 +1,23 @@
-            
-            //sharing a channel cache between two workflow applications in a single app-domain.
-            sharedChannelCache = new SendMessageChannelCache(new ChannelCacheSettings { MaxItemsInCache = 5 }, new ChannelCacheSettings { MaxItemsInCache = 5 });
+	public class DerivedFactory : ServiceHostFactory 
+	{ 
 
-            WorkflowApplication workflowApp1 = new WorkflowApplication(workflow);
-            workflowApp1.Completed = new Action<WorkflowApplicationCompletedEventArgs>(OnCompleted);
-            workflowApp1.Extensions.Add(sharedChannelCache);
+		protected override ServiceHost CreateServiceHost( Type t, Uri[] baseAddresses ) 
+		{ 
+			return new DerivedHost( t, baseAddresses ); 
+		}
 
-            WorkflowApplication workflowApp2 = new WorkflowApplication(workflow);
-            workflowApp2.Completed = new Action<WorkflowApplicationCompletedEventArgs>(OnCompleted);
-            workflowApp2.Extensions.Add(sharedChannelCache);
+		//Then in the CreateServiceHost method, we can do all of the
+		//things that we can do in a self-hosted case:
+		public override ServiceHostBase CreateServiceHost
+				(string service, Uri[] baseAddresses)
 
-            //disabling the channel cache so that channels are closed after being used.
-            SendMessageChannelCache disabledChannelCache = new SendMessageChannelCache(new ChannelCacheSettings { MaxItemsInCache = 0 }, new ChannelCacheSettings { MaxItemsInCache = 0 });
-            
-            WorkflowApplication workflowApp3 = new WorkflowApplication(workflow);
-            workflowApp3.Completed = new Action<WorkflowApplicationCompletedEventArgs>(OnCompleted);
-            workflowApp3.Extensions.Add(disabledChannelCache);
+		{
+
+			// The service parameter is ignored here because we know our service.
+			ServiceHost serviceHost = new ServiceHost(typeof(HelloService),
+				baseAddresses);
+			return serviceHost;
+
+		}
+
+	}

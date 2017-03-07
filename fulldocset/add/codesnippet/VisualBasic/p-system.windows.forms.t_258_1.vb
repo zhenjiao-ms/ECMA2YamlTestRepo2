@@ -1,16 +1,15 @@
-Private Sub myButton_Click(ByVal sender As Object, _
-  ByVal e As System.EventArgs) Handles myButton.Click
-   ' Set the tree view's PathSeparator property.
-   myTreeView.PathSeparator = "."
+Private Sub ToolStripRenderer1_RenderSeparator(sender as Object, e as ToolStripSeparatorRenderEventArgs) _ 
+     Handles ToolStripRenderer1.RenderSeparator
 
-   ' Get the count of the child tree nodes contained in the SelectedNode.
-   Dim myNodeCount As Integer = myTreeView.SelectedNode.GetNodeCount(True)
-   Dim myChildPercentage As Decimal = CDec(myNodeCount) / _
-      CDec(myTreeView.GetNodeCount(True)) * 100
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "Vertical", e.Vertical)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Item", e.Item)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ToolStrip", e.ToolStrip)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"RenderSeparator Event")
 
-   ' Display the tree node path and the number of child nodes it and the tree view have.
-   MessageBox.Show(("The '" + myTreeView.SelectedNode.FullPath + "' node has " _
-      + myNodeCount.ToString() + " child nodes." + Microsoft.VisualBasic.ControlChars.Lf _
-      + "That is " + String.Format("{0:###.##}", myChildPercentage) _
-      + "% of the total tree nodes in the tree view control."))
 End Sub

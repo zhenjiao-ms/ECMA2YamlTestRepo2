@@ -1,155 +1,107 @@
 Imports System
 Imports System.IO
-Imports System.Xml
 Imports System.Xml.Serialization
+Imports Microsoft.VisualBasic
 
-' The SoapType is overridden when the
-' SerializeOverride  method is called.
-<SoapType("SoapGroupType", "http://www.cohowinery.com")> _
-Public class Group
-   Public GroupName As String
-   Public Employees() As Employee
+
+Public Class Orchestra
+    Public Instruments() As Instrument
 End Class
 
-<SoapType("EmployeeType")> _
-Public Class Employee
-   Public Name As String
+Public Class Instrument
+    Public Name As String
 End Class
-   
-Public class Run
-   Public Shared Sub Main()
-      Dim test As Run = New Run()
-      test.SerializeOriginal("SoapType.xml")
-      test.SerializeOverride("SoapType2.xml")
-      test.DeserializeObject("SoapType2.xml")
-   End Sub
 
-   Public Sub SerializeOriginal(filename As String )
-      ' Create an instance of the XmlSerializer class that
-      ' can be used for serializing as a SOAP message.
-     Dim mapp  As XmlTypeMapping = _
-      (New SoapReflectionImporter()).ImportTypeMapping(GetType(Group))
-      Dim mySerializer As XmlSerializer =  _
-      New XmlSerializer(mapp)
-      
-      ' Writing the file requires a TextWriter.
-      Dim writer As TextWriter = New StreamWriter(filename)
+Public Class Brass
+    Inherits Instrument
+    Public IsValved As Boolean
+End Class
 
-      ' Create an XML text writer.
-      Dim xmlWriter As XmlTextWriter = New XmlTextWriter(writer)
-      xmlWriter.Formatting = Formatting.Indented
-      xmlWriter.Indentation = 2
 
-      ' Create an instance of the class that will be serialized.
-      Dim myGroup As Group = New Group()
-
-      ' Set the object properties.
-      myGroup.GroupName = ".NET"
-      Dim e1 As Employee = New Employee()
-      e1.Name = "Pat"
-      myGroup.Employees=New Employee(){e1}
-
-      ' Write the root element.
-      xmlWriter.WriteStartElement("root")
-
-      ' Serialize the class.
-      mySerializer.Serialize(xmlWriter, myGroup)
-
-      ' Close the root tag.
-      xmlWriter.WriteEndElement()
-
-      ' Close the XmlWriter.
-      xmlWriter.Close()
-
-      ' Close the TextWriter.
-      writer.Close()
-   End Sub
-
-   Public Sub SerializeOverride(filename As string )
-   
-      ' Create an instance of the XmlSerializer class that
-      ' uses a SoapAttributeOverrides object.
-      Dim mySerializer As XmlSerializer =  CreateOverrideSerializer()
-
-      ' Writing the file requires a TextWriter.
-      Dim writer As TextWriter = New StreamWriter(filename)
-
-      ' Create an XML text writer.
-      Dim xmlWriter As XmlTextWriter = New XmlTextWriter(writer)
-      xmlWriter.Formatting = Formatting.Indented
-      xmlWriter.Indentation = 2
-
-      ' Create an instance of the class that will be serialized.
-      Dim myGroup As Group = New Group()
-
-      ' Set the object properties.
-      myGroup.GroupName = ".NET"
-      Dim e1 As Employee = New Employee()
-      e1.Name = "Pat"
-      myGroup.Employees = New Employee(){e1}
-
-      ' Write the root element.
-      xmlWriter.WriteStartElement("root")
-
-      ' Serialize the class.
-      mySerializer.Serialize(xmlWriter, myGroup)
-
-      ' Close the root tag.
-      xmlWriter.WriteEndElement()
-
-      ' Close the XmlWriter.
-      xmlWriter.Close()
-
-      ' Close the TextWriter.
-      writer.Close()
-   End Sub
-
-   Private Function CreateOverrideSerializer() As XmlSerializer 
-      ' Create and return an XmlSerializer instance used to
-      ' override and create SOAP messages.
-      Dim mySoapAttributeOverrides As SoapAttributeOverrides = _
-      	New SoapAttributeOverrides()
-      Dim soapAtts As SoapAttributes = New SoapAttributes()
-
-      ' Override the SoapTypeAttribute.
-      Dim soapType As SoapTypeAttribute = New SoapTypeAttribute()
-      soapType.TypeName = "Team"
-      soapType.IncludeInSchema = false
-      soapType.Namespace = "http://www.microsoft.com"
-      soapAtts.SoapType = soapType
-      
-      mySoapAttributeOverrides.Add(GetType(Group),soapAtts)
-
-      ' Create an XmlTypeMapping that is used to create an instance 
-      ' of the XmlSerializer. Then return the XmlSerializer object.
-      Dim myMapping As XmlTypeMapping = (New SoapReflectionImporter( _
-      mySoapAttributeOverrides)).ImportTypeMapping(GetType(Group))
-	
-      Dim  ser As XmlSerializer = New XmlSerializer(myMapping)
-      
-      return ser
-   End Function
-
-   Public Sub DeserializeObject(filename As String)
-      ' Create an instance of the XmlSerializer class.
-      Dim mySerializer As XmlSerializer =  CreateOverrideSerializer()
-
-      ' Reading the file requires a TextReader.
-      Dim reader As TextReader = New StreamReader(filename)
-
-      ' Create an XML text reader.
-      Dim xmlReader As XmlTextReader = New XmlTextReader(reader)
-      xmlReader.ReadStartElement()
-
-      ' Deserialize and cast the object.
-      Dim myGroup As Group = CType(mySerializer.Deserialize(xmlReader), Group)
-      xmlReader.ReadEndElement()
-      Console.WriteLine("The GroupName is " + myGroup.GroupName)
-      Console.WriteLine("Look at the SoapType.xml and SoapType2.xml " + _
-        "files for the generated XML.")
-
-      ' Close the readers.
-      xmlReader.Close()
-      reader.Close()
-   End Sub
+Public Class Run
+    
+    Public Shared Sub Main()
+        Dim test As New Run()
+        test.SerializeObject("Override.xml")
+        test.DeserializeObject("Override.xml")
+    End Sub    
+    
+    Public Sub SerializeObject(ByVal filename As String)
+        ' Each overridden field, property, or type requires
+        ' an XmlAttributes object. 
+        Dim attrs As New XmlAttributes()
+        
+        ' Create an XmlElementAttribute to override the
+        ' field that returns Instrument objects. The overridden field
+        ' returns Brass objects instead. 
+        Dim attr As New XmlElementAttribute()
+        attr.ElementName = "Brass"
+        attr.Type = GetType(Brass)
+        
+        ' Add the element to the collection of elements.
+        attrs.XmlElements.Add(attr)
+        
+        ' Create the XmlAttributeOverrides object.
+        Dim attrOverrides As New XmlAttributeOverrides()
+        
+        ' Add the type of the class that contains the overridden
+        ' member and the XmlAttributes to override it with to the
+        ' XmlAttributeOverrides object. 
+        attrOverrides.Add(GetType(Orchestra), "Instruments", attrs)
+        
+        ' Create the XmlSerializer using the XmlAttributeOverrides.
+        Dim s As New XmlSerializer(GetType(Orchestra), attrOverrides)
+        
+        ' Writing the file requires a TextWriter.
+        Dim writer As New StreamWriter(filename)
+        
+        ' Create the object that will be serialized.
+        Dim band As New Orchestra()
+        
+        ' Create an object of the derived type.
+        Dim i As New Brass()
+        i.Name = "Trumpet"
+        i.IsValved = True
+        Dim myInstruments() As Instrument = {i}
+        band.Instruments = myInstruments
+        
+        ' Serialize the object.
+        s.Serialize(writer, band)
+        writer.Close()
+    End Sub
+    
+    
+    Public Sub DeserializeObject(ByVal filename As String)
+        Dim attrOverrides As New XmlAttributeOverrides()
+        Dim attrs As New XmlAttributes()
+        
+        ' Create an XmlElementAttribute to override the Instrument.
+        Dim attr As New XmlElementAttribute()
+        attr.ElementName = "Brass"
+        attr.Type = GetType(Brass)
+        
+        ' Add the element to the collection of elements.
+        attrs.XmlElements.Add(attr)
+        
+        attrOverrides.Add(GetType(Orchestra), "Instruments", attrs)
+        
+        ' Create the XmlSerializer using the XmlAttributeOverrides.
+        Dim s As New XmlSerializer(GetType(Orchestra), attrOverrides)
+        
+        Dim fs As New FileStream(filename, FileMode.Open)
+        Dim band As Orchestra = CType(s.Deserialize(fs), Orchestra)
+        Console.WriteLine("Brass:")
+        
+        ' The difference between deserializing the overridden
+        ' XML document and serializing it is this: To read the derived
+        ' object values, you must declare an object of the derived type
+        ' (Brass), and cast the Instrument instance to it. 
+        Dim b As Brass
+        Dim i As Instrument
+        For Each i In  band.Instruments
+            b = CType(i, Brass)
+            Console.WriteLine(b.Name + ControlChars.Cr + _
+                              b.IsValved.ToString())
+        Next i
+    End Sub
 End Class

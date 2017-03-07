@@ -1,5 +1,6 @@
-                // Create a new auditing behavior and set the log location.
-                ServiceSecurityAuditBehavior newAudit = 
-                    new ServiceSecurityAuditBehavior();
-                newAudit.AuditLogLocation = 
-                    AuditLogLocation.Application;
+            bool hasProtectionLevel = cd.HasProtectionLevel;
+            if (hasProtectionLevel)
+            {
+                ProtectionLevel protectionLevel = cd.ProtectionLevel;
+                Console.WriteLine("\tProtection Level: {0}", protectionLevel.ToString());
+            }

@@ -1,85 +1,133 @@
-<%@ page language="VB" %>
-<%@ Import Namespace="System.Drawing" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+<%@ Page Language="VB" AutoEventWireup="True" %>
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<script runat="server">
-    Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)
-        ' Create a TableItemStyle object that can be
-        ' set as the default style for all cells
-        ' in the table.
-        Dim tableStyle As New TableItemStyle()
-        tableStyle.HorizontalAlign = HorizontalAlign.Center
-        tableStyle.VerticalAlign = VerticalAlign.Middle
-        tableStyle.Width = Unit.Pixel(100)
-        ' Create more rows for the table.
-        Dim rowNum As Integer
-        For rowNum = 2 To 9
-            Dim tempRow As New TableRow()
-            Dim cellNum As Integer
-            For cellNum = 0 To 2
-                Dim tempCell As New TableCell()
-                tempCell.Text = _
-                    String.Format("({0},{1})", rowNum, cellNum)
-                tempRow.Cells.Add(tempCell)
-            Next
-            Table1.Rows.Add(tempRow)
-        Next
-
-        ' Apply the TableItemStyle to all rows in the table.
-        Dim rw As TableRow
-        For Each rw In Table1.Rows
-            Dim cel As TableCell
-            For Each cel In rw.Cells
-                cel.ApplyStyle(tableStyle)
-            Next
-        Next
-
-        ' Create a header for the table.
-        Dim header As New TableHeaderCell()
-        header.RowSpan = 1
-        header.ColumnSpan = 3
-        header.Text = "Table of (x,y) Values"
-        header.Font.Bold = True
-        header.BackColor = Color.Gray
-        header.HorizontalAlign = HorizontalAlign.Center
-        header.VerticalAlign = VerticalAlign.Middle
-
-        ' Add the header to a new row.
-        Dim headerRow As New TableRow()
-        headerRow.Cells.Add(header)
-
-        ' Add the header row to the table.
-        Table1.Rows.AddAt(0, headerRow)
-    End Sub
-</script>
-
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head id="Head1" runat="server">
-    <title>TableCell Example</title>
+<head>
+    <title>CompareValidator Example</title>
+<script runat="server">
+ 
+      Sub Button_Click(sender As Object, e As EventArgs) 
+ 
+         If Page.IsValid Then 
+         
+            lblOutput.Text = "Result: Valid!"
+         
+         Else 
+         
+            lblOutput.Text = "Result: Not valid!"
+         
+         End If
+
+      End Sub
+ 
+      Sub Operator_Index_Changed(sender As Object, e As EventArgs) 
+
+         Compare1.Operator = CType(ListOperator.SelectedIndex, ValidationCompareOperator)
+         Compare1.Validate()
+
+      End Sub
+
+      Sub Type_Index_Changed(sender As Object, e As EventArgs) 
+
+         Compare1.Type = CType(ListType.SelectedIndex, ValidationDataType)
+         Compare1.Validate()
+
+      End Sub
+ 
+   </script>
+ 
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
+ 
+   <form id="form1" runat="server">
 
-    <h1>TableCell Example</h1>
-    <asp:table id="Table1" runat="server" 
-        CellPadding="3" CellSpacing="3"
-        Gridlines="both">
-        <asp:TableRow>
-            <asp:TableCell Text="(0,0)" />
-            <asp:TableCell Text="(0,1)" />
-            <asp:TableCell Text="(0,2)" />
-        </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell Text="(1,0)" />
-            <asp:TableCell Text="(1,1)" />
-            <asp:TableCell Text="(1,2)" />
-        </asp:TableRow>
-    </asp:table>
+      <h3>CompareValidator Example</h3>
+      <br />
+      Enter a value in each textbox. Select a comparison operator<br />
+      and data type. Click "Validate" to compare values.
+ 
+      <table style="background-color:#eeeeee; padding:10">
 
-    </div>
-    </form>
-  </body>
+         <tr valign="top">
+
+            <td>
+
+               <h5>String 1:</h5>
+               <asp:TextBox id="TextBox1" 
+                    runat="server"/>
+
+            </td>
+
+            <td>
+
+               <h5>Comparison Operator:</h5>
+ 
+               <asp:ListBox id="ListOperator" 
+                    OnSelectedIndexChanged="Operator_Index_Changed" 
+                    runat="server">
+
+                  <asp:ListItem Selected="True" Value="Equal">Equal</asp:ListItem>
+                  <asp:ListItem Value="NotEqual">NotEqual</asp:ListItem>
+                  <asp:ListItem Value="GreaterThan">GreaterThan</asp:ListItem>
+                  <asp:ListItem Value="GreaterThanEqual">GreaterThanEqual</asp:ListItem>
+                  <asp:ListItem Value="LessThan">LessThan</asp:ListItem>
+                  <asp:ListItem Value="LessThanEqual">LessThanEqual</asp:ListItem>
+                  <asp:ListItem Value="DataTypeCheck">DataTypeCheck</asp:ListItem>
+
+               </asp:ListBox>
+
+            </td>
+
+            <td>
+
+               <h5>String 2:</h5>
+               <asp:TextBox id="TextBox2" 
+                    runat="server"/>
+               <br />
+               <asp:Button id="Button1"
+                    Text="Validate"  
+                    OnClick="Button_Click" 
+                    runat="server"/>
+
+            </td>
+         </tr>
+
+         <tr>
+            <td colspan="3" align="center">
+
+               <h5>Data Type:</h5>
+
+               <asp:ListBox id="ListType" 
+                    OnSelectedIndexChanged="Type_Index_Changed" 
+                    runat="server">
+
+                  <asp:ListItem Selected="true" Value="String" >String</asp:ListItem>
+                  <asp:ListItem Value="Integer" >Integer</asp:ListItem>
+                  <asp:ListItem Value="Double" >Double</asp:ListItem>
+                  <asp:ListItem Value="Date" >Date</asp:ListItem>
+                  <asp:ListItem Value="Currency" >Currency</asp:ListItem>
+
+               </asp:ListBox>
+            </td>
+         </tr>
+      </table>
+ 
+      <asp:CompareValidator id="Compare1" 
+           ControlToValidate="TextBox1" 
+           ControlToCompare="TextBox2"
+           EnableClientScript="False" 
+           Type="String" 
+           runat="server"/>
+ 
+      <br />
+       
+      <asp:Label id="lblOutput" 
+           Font-Names="verdana" 
+           Font-Size="10pt" 
+           runat="server"/>
+ 
+   </form>
+ 
+</body>
 </html>

@@ -1,28 +1,20 @@
-        ToolStripButton^ imageButton;
+   //Declare a textbox called TextBox1.
+internal:
+   System::Windows::Forms::TextBox^ TextBox1;
 
-        void InitializeImageButtonWithToolTip()
-        {
+private:
 
-            // Construct the button and set the image-related properties.
-            imageButton = gcnew ToolStripButton;
-            imageButton->Image = 
-                gcnew Bitmap(Timer::typeid,"Timer.bmp");
-            imageButton->ImageScaling = 
-				ToolStripItemImageScaling::SizeToFit;
-
-            // Set the background color of the image to be transparent.
-            imageButton->ImageTransparentColor = 
-                Color::FromArgb(0, 255, 0);
-
-            // Show ToolTip text, set custom ToolTip text, and turn
-            // off the automatic ToolTips.
-            toolStrip1->ShowItemToolTips = true;
-            imageButton->ToolTipText = "Click for the current time";
-            imageButton->AutoToolTip = false;
-
-            // Add the button to the ToolStrip.
-            toolStrip1->Items->Add(imageButton);
-        }
-
-
-        //   internal:
+   //Initialize TextBox1.
+   void InitializeTextBox()
+   {
+      this->TextBox1 = gcnew TextBox;
+      this->TextBox1->Location = System::Drawing::Point( 32, 24 );
+      this->TextBox1->Name = "TextBox1";
+      this->TextBox1->Size = System::Drawing::Size( 136, 20 );
+      this->TextBox1->TabIndex = 1;
+      this->TextBox1->Text = "Type and hit enter here...";
+      
+      //Keep the selection highlighted, even after textbox loses focus.
+      TextBox1->HideSelection = false;
+      this->Controls->Add( TextBox1 );
+   }

@@ -1,95 +1,47 @@
 
-<%@ Page Language="C#" AutoEventWireup="True" %>
+<%@ Page Language="C#" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-    <title>CustomValidator ServerValidate Example</title>
-<script runat="server">
-
-      void ValidateBtn_OnClick(object sender, EventArgs e) 
-      { 
-
-         // Display whether the page passed validation.
-         if (Page.IsValid) 
-         {
-
-            Message.Text = "Page is valid.";
-
-         }
-
-         else 
-         {
-
-            Message.Text = "Page is not valid!";
-
-         }
-
-      }
-
-      void ServerValidation(object source, ServerValidateEventArgs args)
-      {
-
-         try 
-         {
-
-            // Test whether the value entered into the text box is even.
-            int i = int.Parse(args.Value);
-            args.IsValid = ((i%2) == 0);
-
-         }
-
-         catch(Exception ex)
-         {
-
-            args.IsValid = false;
-
-         }
-
-      }
-
-   </script>    
-
+  <head runat="server">
+    <title>Menu DataBindings Example</title>
 </head>
 <body>
-
-   <form id="form1" runat="server">
-  
-      <h3>CustomValidator ServerValidate Example</h3>
-
-      <asp:Label id="Message"  
-           Text="Enter an even number:" 
-           Font-Names="Verdana" 
-           Font-Size="10pt" 
-           runat="server"
-           AssociatedControlID="Text1"/>
-
-      <br />
-
-      <asp:TextBox id="Text1" 
-           runat="server" />
+    <form id="form1" runat="server">
     
-      &nbsp;&nbsp;
+      <h3>Menu DataBindings Example</h3>
+    
+      <asp:menu id="NavigationMenu"
+        staticdisplaylevels="1"
+        staticsubmenuindent="10" 
+        orientation="Vertical"
+        target="_blank"
+        datasourceid="MenuSource"
+        runat="server">
+        
+       <DataBindings>
+        
+          <asp:menuitembinding datamember="MapHomeNode" 
+            depth="0"
+            textfield="title" 
+            navigateurlfield="url"/>
+          <asp:menuitembinding datamember="MapNode" 
+            depth="1"
+            textfield="title" 
+            navigateurlfield="url"/>
+          <asp:menuitembinding datamember="MapNode" 
+            depth="2"
+            textfield="title" 
+            navigateurlfield="url"/>
+        </DataBindings>
+        
+      </asp:menu>
+      
+      <asp:XmlDataSource id="MenuSource"
+        datafile="Map.xml"
+        runat="server"/>        
 
-      <asp:CustomValidator id="CustomValidator1"
-           ControlToValidate="Text1"
-           Display="Static"
-           ErrorMessage="Not an even number!"
-           ForeColor="green"
-           Font-Names="verdana" 
-           Font-Size="10pt"
-           OnServerValidate="ServerValidation"
-           runat="server"/>
-
-      <br />
- 
-      <asp:Button id="Button1"
-           Text="Validate" 
-           OnClick="ValidateBtn_OnClick" 
-           runat="server"/>
-
-   </form>
-  
-</body>
+    </form>
+  </body>
 </html>

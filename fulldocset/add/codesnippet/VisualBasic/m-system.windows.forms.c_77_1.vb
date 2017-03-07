@@ -1,13 +1,5 @@
-    Private Sub dataGrid1_KeyUp(ByVal sender As Object, _
-    ByVal e As System.Windows.Forms.KeyEventArgs)
-
-        If e.KeyCode = System.Windows.Forms.Keys.Escape Then
-            ' Escape key pressed.
-            Dim gridCurrencyManager As CurrencyManager = _
-                CType(Me.BindingContext(dataGrid1.DataSource, _
-                dataGrid1.DataMember), CurrencyManager)
-
-            gridCurrencyManager.CancelCurrentEdit()
-            MessageBox.Show("Escape!")
-        End If
-    End Sub 'dataGrid1_KeyUp
+    ' The following example displays the location of the form in screen coordinates
+    ' on the caption bar of the form.
+    Private Sub Form1_Move(sender As Object, e As System.EventArgs) Handles MyBase.Move
+        Me.Text = "Form screen position = " + Me.Location.ToString()
+    End Sub

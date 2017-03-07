@@ -1,60 +1,42 @@
-      Private Sub AddCustomDataTableStyle()
-         myDataGridTableStyle1 = New DataGridTableStyle()
-         myDataGridTableStyle2 = New DataGridTableStyle()
+    Private WithEvents ListBox1 As New ListBox()
 
-         MessageBox.Show("LinkColor Before : " & myDataGridTableStyle1.LinkColor.ToString)
-         MessageBox.Show("HeaderFont Before : " & myDataGridTableStyle1.HeaderFont.ToString)
+    Private Sub InitializeListBox() 
+        ListBox1.Items.AddRange(New Object() _
+            {"Red Item", "Orange Item", "Purple Item"})
+        ListBox1.Location = New System.Drawing.Point(81, 69)
+        ListBox1.Size = New System.Drawing.Size(120, 95)
+        ListBox1.DrawMode = DrawMode.OwnerDrawFixed
+        Controls.Add(ListBox1)
+    
+    End Sub
 
-         AddHandler myDataGridTableStyle1.LinkColorChanged, AddressOf LinkColorChanged_Handler
-         AddHandler myDataGridTableStyle1.HeaderFontChanged, AddressOf HeaderFontChanged_Handler
-         myDataGridTableStyle1.MappingName = "Customers"
+    Private Sub ListBox1_DrawItem(ByVal sender As Object, _
+     ByVal e As System.Windows.Forms.DrawItemEventArgs) _
+     Handles ListBox1.DrawItem
 
-         ' Set other properties.
-         myDataGridTableStyle1.AlternatingBackColor = Color.LightGray
-         myDataGridTableStyle1.LinkColor = Color.Red
-         myDataGridTableStyle1.HeaderFont = New System.Drawing.Font _
-                  ("Verdana", 8.25F, System.Drawing.FontStyle.Bold, _
-                   System.Drawing.GraphicsUnit.Point, CType(0, System.Byte))
+        ' Draw the background of the ListBox control for each item.
+        e.DrawBackground()
 
-         ' Add a GridColumnStyle and set its MappingName.
-         Dim myBoolCol = New DataGridBoolColumn()
-         myBoolCol.MappingName = "Current"
-         myBoolCol.HeaderText = "IsCurrent Customer"
-         myBoolCol.Width = 150
-         myDataGridTableStyle1.GridColumnStyles.Add(myBoolCol)
+        ' Define the default color of the brush as black.
+        Dim myBrush As Brush = Brushes.Black
 
-         ' Add a second column style.
-         Dim myTextCol = New DataGridTextBoxColumn()
-         myTextCol.MappingName = "custName"
-         myTextCol.HeaderText = "Customer Name"
-         myTextCol.Width = 250
-         myDataGridTableStyle1.GridColumnStyles.Add(myTextCol)
+        ' Determine the color of the brush to draw each item based on   
+        ' the index of the item to draw.
+        Select Case e.Index
+            Case 0
+                myBrush = Brushes.Red
+            Case 1
+                myBrush = Brushes.Orange
+            Case 2
+                myBrush = Brushes.Purple
+        End Select
 
-         ' Create new ColumnStyle objects
-         Dim cOrderDate = New DataGridTextBoxColumn()
-         cOrderDate.MappingName = "OrderDate"
-         cOrderDate.HeaderText = "Order Date"
-         cOrderDate.Width = 100
+        ' Draw the current item text based on the current 
+        ' Font and the custom brush settings.
+        e.Graphics.DrawString(ListBox1.Items(e.Index).ToString(), _
+            e.Font, myBrush, e.Bounds, StringFormat.GenericDefault)
 
-         ' PropertyDescriptor to create a formatted column.
-         Dim myPropertyDescriptorCollection As PropertyDescriptorCollection = _
-                  Me.BindingContext(myDataSet, "Customers.custToOrders").GetItemProperties()
-
-         Dim csOrderAmount = New DataGridTextBoxColumn(myPropertyDescriptorCollection _
-                                 ("OrderAmount"), "c", True)
-         csOrderAmount.MappingName = "OrderAmount"
-         csOrderAmount.HeaderText = "Total"
-         csOrderAmount.Width = 100
-
-         ' Add the DataGridTableStyle instances to GridTableStylesCollection.
-         myDataGrid.TableStyles.Add(myDataGridTableStyle1)
-      End Sub 'AddCustomDataTableStyle
-
-      Private Sub LinkColorChanged_Handler(ByVal sender As Object, ByVal e As EventArgs)
-         MessageBox.Show("LinkColor changed to 'RED'", "DataGridTableStyle")
-      End Sub 'LinkColorChanged_Handler
-
-
-      Private Sub HeaderFontChanged_Handler(ByVal sender As Object, ByVal e As EventArgs)
-         MessageBox.Show("HeaderFont changed to 'VERDANA'", "DataGridTableStyle")
-      End Sub 'HeaderFontChanged_Handler
+        ' If the ListBox has focus, draw a focus rectangle around  _ 
+        ' the selected item.
+        e.DrawFocusRectangle()
+    End Sub

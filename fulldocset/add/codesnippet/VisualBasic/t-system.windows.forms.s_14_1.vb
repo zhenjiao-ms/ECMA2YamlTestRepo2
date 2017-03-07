@@ -1,33 +1,39 @@
-    Private Sub toggleColumnStylesBtn_Click( _
-    ByVal sender As System.Object, _
-    ByVal e As System.EventArgs) _
-    Handles toggleColumnStylesBtn.Click
+   Private Sub CreateMyStatusBar()
+      ' Create a StatusBar control.
+      Dim statusBar1 As New StatusBar()
 
-        Dim styles As TableLayoutColumnStyleCollection = _
-        Me.TableLayoutPanel1.ColumnStyles
+      ' Create two StatusBarPanel objects to display in the StatusBar.
+      Dim panel1 As New StatusBarPanel()
+      Dim panel2 As New StatusBarPanel()
 
-        For Each style As ColumnStyle In styles
+      ' Display the first panel with a sunken border style.
+      panel1.BorderStyle = StatusBarPanelBorderStyle.Sunken
 
-            If style.SizeType = SizeType.Absolute Then
+      ' Initialize the text of the panel.
+      panel1.Text = "Ready..."
 
-                style.SizeType = SizeType.AutoSize
+      ' Set the AutoSize property to use all remaining space on the StatusBar.
+      panel1.AutoSize = StatusBarPanelAutoSize.Spring
+      
+      ' Display the second panel with a raised border style.
+      panel2.BorderStyle = StatusBarPanelBorderStyle.Raised
+      
+      ' Create ToolTip text that displays the time the application was started.
+      panel2.ToolTipText = "Started: " & System.DateTime.Now.ToShortTimeString()
 
-            ElseIf style.SizeType = SizeType.AutoSize Then
+      ' Set the text of the panel to the current date.
+      panel2.Text = System.DateTime.Today.ToLongDateString()
 
-                style.SizeType = SizeType.Percent
+      ' Set the AutoSize property to size the panel to the size of the contents.
+      panel2.AutoSize = StatusBarPanelAutoSize.Contents
 
-                ' Set the column width to be a percentage
-                ' of the TableLayoutPanel control's width.
-                style.Width = 33
+      ' Display panels in the StatusBar control.
+      statusBar1.ShowPanels = True
 
-            Else
+      ' Add both panels to the StatusBarPanelCollection of the StatusBar.			
+      statusBar1.Panels.Add(panel1)
+      statusBar1.Panels.Add(panel2)
 
-                ' Set the column width to 50 pixels.
-                style.SizeType = SizeType.Absolute
-                style.Width = 50
-
-            End If
-
-        Next
-
-    End Sub
+      ' Add the StatusBar to the form.
+      Me.Controls.Add(statusBar1)
+   End Sub

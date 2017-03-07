@@ -1,2 +1,4 @@
-            MsmqTransportBindingElement transportBindingElement = new MsmqTransportBindingElement();
-            BindingElement bindingElement = transportBindingElement.Clone();
+            CustomBinding binding = new CustomBinding();
+            BindingParameterCollection bpCol = new BindingParameterCollection();
+            BindingContext context = new BindingContext(binding, bpCol);
+            context.BuildInnerChannelListener<IDuplexChannel>();

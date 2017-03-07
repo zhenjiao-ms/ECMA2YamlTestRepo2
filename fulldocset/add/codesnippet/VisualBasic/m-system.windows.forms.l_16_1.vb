@@ -1,13 +1,16 @@
-   Private Sub FindMySpecificString(ByVal searchString As String)
-      ' Ensure we have a proper string to search for.
-      If searchString <> String.Empty Then
-         ' Find the item in the list and store the index to the item.
-         Dim index As Integer = listBox1.FindStringExact(searchString)
-         ' Determine if a valid index is returned. Select the item if it is valid.
-         If index <> ListBox.NoMatches Then
-            listBox1.SetSelected(index, True)
-         Else
-            MessageBox.Show("The search string did not find any items in the ListBox that exactly match the specified search string")
-         End If
+   Private Sub RemoveTopItems()
+      ' Determine if the currently selected item in the ListBox 
+      ' is the item displayed at the top in the ListBox.
+      If listBox1.TopIndex <> listBox1.SelectedIndex Then
+         ' Make the currently selected item the top item in the ListBox.
+         listBox1.TopIndex = listBox1.SelectedIndex
       End If
-   End Sub
+      ' Remove all items before the top item in the ListBox.
+      Dim x As Integer
+      For x = listBox1.SelectedIndex - 1 To 0 Step -1
+         listBox1.Items.RemoveAt(x)
+      Next x
+
+      ' Clear all selections in the ListBox.
+      listBox1.ClearSelected()
+   End Sub 'RemoveTopItems

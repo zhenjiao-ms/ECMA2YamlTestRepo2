@@ -1,78 +1,128 @@
-
 <%@ Page language="C#" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
   
-  void CustomerDetailsView_PageIndexChanging(Object sender, DetailsViewPageEventArgs e)
+  void AuthorsGridView_RowUpdating (Object sender, GridViewUpdateEventArgs e)
   {
-    // Cancel the paging operation if the DetailsView control 
-    // in edit mode.
-    if (CustomerDetailsView.CurrentMode == DetailsViewMode.Edit)
-    {
-      e.Cancel = true;
-      
-      // Display an error message.
-      int newPage = e.NewPageIndex + 1;
-      MessageLabel.Text = "Please update the current record before to moving to page " + 
-        newPage.ToString() + ".";
-    }
+    
+    // In this example, the GridView control will not automatically extract 
+    // updated values from TemplateField column fields because they are not
+    // using a two-way binding expression. So, the updated
+    // values must be added manually to the NewValues dictionary.
+    
+    // Get the GridViewRow object that represents the row being edited
+    // from the Rows collection of the GridView control.
+    int index = AuthorsGridView.EditIndex;
+    GridViewRow row = AuthorsGridView.Rows[index];
+    
+    // Get the controls that contain the updated values. In this
+    // example, the updated values are contained in the TextBox 
+    // controls declared in the EditItemTemplates of the TemplateField 
+    // column fields in the GridView control.
+    TextBox lastName = (TextBox)row.FindControl("LastNameTextBox");
+    TextBox firstName = (TextBox)row.FindControl("FirstNameTextBox");
+    
+    // Add the updated values to the NewValues dictionary. Use the
+    // parameter names declared in the parameterized update query 
+    // string for the key names.
+    e.NewValues["au_lname"] = lastName.Text;
+    e.NewValues["au_fname"] = firstName.Text;    
+          
   }
 
-  void CustomerDetailsView_ModeChanging(Object sender, DetailsViewModeEventArgs e)
-  {
-    // Clear the message label when the user changes mode.
-    MessageLabel.Text = "";
-  }
-  
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
   <head runat="server">
-    <title>DetailsViewPageEventHandler Example</title>
+    <title>GridViewRow Example</title>
 </head>
 <body>
     <form id="form1" runat="server">
         
-      <h3>DetailsViewPageEventHandler Example</h3>
-                       
-        <asp:detailsview id="CustomerDetailsView"
-          datasourceid="DetailsViewSource"
-          autogeneraterows="true"
-          autogenerateeditbutton="true"
-          datakeynames="CustomerID"  
-          allowpaging="true"
-          onpageindexchanging="CustomerDetailsView_PageIndexChanging" 
-          onmodechanging="CustomerDetailsView_ModeChanging"
-          runat="server">
-            
-          <pagersettings position="Bottom"/> 
-                    
-        </asp:detailsview>
+      <h3>GridViewRow Example</h3>
+
+      <!-- The GridView control automatically sets the columns     -->
+      <!-- specified in the datakeynames attribute as read-only    -->
+      <!-- No input controls are rendered for these columns in     -->
+      <!-- edit mode.                                              -->
+      <asp:gridview id="AuthorsGridView" 
+        datasourceid="AuthorsSqlDataSource" 
+        autogeneratecolumns="false"
+        autogenerateeditbutton="true"
+        datakeynames="au_id"
+        cellpadding="10"
+        onrowupdating="AuthorsGridView_RowUpdating"      
+        runat="server">
+                
+        <columns>
         
-        <br/>
-        
-        <asp:label id="MessageLabel"
-          forecolor="Red"
-          runat="server"/>
+          <asp:boundfield datafield="au_id"
+            headertext="Author ID"
+            readonly="true"/>
             
-        <!-- This example uses Microsoft SQL Server and connects  -->
-        <!-- to the Northwind sample database. Use an ASP.NET     -->
-        <!-- expression to retrieve the connection string value   -->
-        <!-- from the web.config file.                            -->
-        <asp:sqldatasource id="DetailsViewSource"
-          selectcommand="Select [CustomerID], [CompanyName], [Address], 
-            [City], [PostalCode], [Country] From [Customers]"
-          updatecommand="Update [Customers] Set 
-          [CompanyName]=@CompanyName, [Address]=@Address, 
-          [City]=@City, [PostalCode]=@PostalCode, 
-          [Country]=@Country 
-          Where [CustomerID]=@CustomerID"
-          connectionstring=
-          "<%$ ConnectionStrings:NorthWindConnectionString%>" 
-          runat="server"/>
+          <asp:templatefield headertext="Last Name"
+            itemstyle-verticalalign="Top">
             
-      </form>
+            <itemtemplate>
+              <%#Eval("au_lname")%>
+            </itemtemplate>
+            
+            <edititemtemplate>
+              <asp:textbox id="LastNameTextBox"
+                text='<%#Eval("au_lname")%>'
+                width="90"
+                runat="server"/>
+              <br/>
+              <asp:requiredfieldvalidator id="LastNameRequiredValidator"
+                controltovalidate="LastNameTextBox"
+                display="Dynamic"
+                text="Please enter a last name." 
+                runat="server" />                                      
+            </edititemtemplate>
+            
+          </asp:templatefield>
+          
+          <asp:templatefield headertext="First Name"
+            itemstyle-verticalalign="Top">
+            
+            <itemtemplate>
+              <%#Eval("au_fname")%>
+            </itemtemplate>
+            
+            <edititemtemplate>
+              <asp:textbox id="FirstNameTextBox"
+                text='<%#Eval("au_fname")%>'
+                width="90"
+                runat="server"/>
+              <br/>
+              <asp:requiredfieldvalidator id="FirstNameRequiredValidator"
+                controltovalidate="FirstNameTextBox"
+                display="Dynamic"
+                text="Please enter a first name."
+                runat="server" />                      
+            </edititemtemplate>
+            
+          </asp:templatefield>
+          
+          <asp:checkboxfield datafield="contract" 
+            headertext="Contract"
+            readonly="true"/>
+            
+        </columns>
+                
+      </asp:gridview>
+            
+      <!-- This example uses Microsoft SQL Server and connects -->
+      <!-- to the Pubs sample database.                        -->
+      <asp:sqldatasource id="AuthorsSqlDataSource"  
+        selectcommand="SELECT [au_id], [au_lname], [au_fname], [contract] FROM [authors]"             
+        updatecommand="UPDATE authors SET au_lname=@au_lname, au_fname=@au_fname WHERE (authors.au_id = @au_id)" 
+        connectionstring="server=localhost;database=pubs;integrated security=SSPI"
+        runat="server">
+      </asp:sqldatasource>
+            
+    </form>
   </body>
 </html>

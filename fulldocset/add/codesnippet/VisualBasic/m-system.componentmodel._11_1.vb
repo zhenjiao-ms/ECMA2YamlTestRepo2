@@ -1,12 +1,35 @@
-	Private Sub MatchesAttribute
-		' Creates a new collection and assigns it the attributes for button
-		Dim attributes As AttributeCollection
-		attributes = TypeDescriptor.GetAttributes(button1)
+    ' This method starts an asynchronous calculation. 
+    ' First, it checks the supplied task ID for uniqueness.
+    ' If taskId is unique, it creates a new WorkerEventHandler 
+    ' and calls its BeginInvoke method to start the calculation.
+    Public Overridable Sub CalculatePrimeAsync( _
+        ByVal numberToTest As Integer, _
+        ByVal taskId As Object)
 
-		' Checks to see if the browsable attribute is true.
-		If attributes.Matches(BrowsableAttribute.Yes) Then
-			textBox1.Text = "button1 is browsable."
-		Else
-			textBox1.Text = "button1 is not browsable."
-		End If
+        ' Create an AsyncOperation for taskId.
+        Dim asyncOp As AsyncOperation = _
+            AsyncOperationManager.CreateOperation(taskId)
+
+        ' Multiple threads will access the task dictionary,
+        ' so it must be locked to serialize access.
+        SyncLock userStateToLifetime.SyncRoot
+            If userStateToLifetime.Contains(taskId) Then
+                Throw New ArgumentException( _
+                    "Task ID parameter must be unique", _
+                    "taskId")
+            End If
+
+            userStateToLifetime(taskId) = asyncOp
+        End SyncLock
+
+        ' Start the asynchronous operation.
+        Dim workerDelegate As New WorkerEventHandler( _
+            AddressOf CalculateWorker)
+
+        workerDelegate.BeginInvoke( _
+            numberToTest, _
+            asyncOp, _
+            Nothing, _
+            Nothing)
+
     End Sub

@@ -1,78 +1,107 @@
-Imports System.Data
-Imports System.Data.SqlClient
+Imports System.IO
+Imports System.Collections.Generic
 Imports System.Windows.Forms
-Imports System.Drawing
-Imports System
 
-Public Class Form1
+Public Class VirtualModeDemo
     Inherits System.Windows.Forms.Form
 
-    Private WithEvents dataGridView1 As New DataGridView()
-    Private bindingSource1 As New BindingSource()
+    Dim WithEvents dataGridView1 As New DataGridView
 
     Public Sub New()
 
-        Me.dataGridView1.Dock = DockStyle.Fill
-        Me.Controls.Add(Me.dataGridView1)
-        InitializeDataGridView()
+        MyBase.New()
+
+        Text = "DataGridView virtual-mode demo (cell-level commit scope)"
+
+        Controls.Add(dataGridView1)
+        dataGridView1.VirtualMode = True
+        dataGridView1.AllowUserToDeleteRows = False
+        dataGridView1.Columns.Add("Numbers", "Positive Numbers")
+        dataGridView1.Rows.AddCopies(0, initialSize)
 
     End Sub
 
-    Private Sub InitializeDataGridView()
-        Try
-            ' Set up the DataGridView.
-            With Me.dataGridView1
-                ' Automatically generate the DataGridView columns.
-                .AutoGenerateColumns = True
+    Dim newRowNeeded As Boolean
 
-                ' Set up the data source.
-                bindingSource1.DataSource = GetData("Select * From Products")
-                .DataSource = bindingSource1
+    Private Sub dataGridView1_NewRowNeeded(ByVal sender As Object, _
+        ByVal e As DataGridViewRowEventArgs) _
+        Handles dataGridView1.NewRowNeeded
 
-                ' Automatically resize the visible rows.
-                .AutoSizeRowsMode = _
-                    DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders
-
-                ' Set the DataGridView control's border.
-                .BorderStyle = BorderStyle.Fixed3D
-
-                ' Put the cells in edit mode when user enters them.
-                .EditMode = DataGridViewEditMode.EditOnEnter
-            End With
-        Catch ex As SqlException
-            MessageBox.Show("To run this sample replace " _
-                & "connection.ConnectionString with a valid connection string" _
-                & "  to a Northwind database accessible to your system.", _
-                "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            System.Threading.Thread.CurrentThread.Abort()
-        End Try
+        newRowNeeded = True
     End Sub
 
-    Private Shared Function GetData(ByVal sqlCommand As String) _
-        As DataTable
+    Const initialSize As Integer = 5000000
+    Dim numberOfRows As Integer = initialSize
 
-        Dim connectionString As String = _
-            "Integrated Security=SSPI;Persist Security Info=False;" _
-            & "Initial Catalog=Northwind;Data Source=localhost"
+    Private Sub dataGridView1_RowsAdded(ByVal sender As Object, _
+        ByVal e As DataGridViewRowsAddedEventArgs) _
+        Handles dataGridView1.RowsAdded
 
-        Dim northwindConnection As SqlConnection = _
-            New SqlConnection(connectionString)
+        If newRowNeeded Then
+            newRowNeeded = False
+            numberOfRows = numberOfRows + 1
+        End If
+    End Sub
 
-        Dim command As New SqlCommand(sqlCommand, northwindConnection)
-        Dim adapter As SqlDataAdapter = New SqlDataAdapter()
-        adapter.SelectCommand = command
+#Region "data store maintance"
+    Const initialValue As Integer = -1
 
-        Dim table As New DataTable
-        table.Locale = System.Globalization.CultureInfo.InvariantCulture
-        adapter.Fill(table)
+    Private Sub dataGridView1_CellValueNeeded(ByVal sender As Object, _
+        ByVal e As DataGridViewCellValueEventArgs) _
+        Handles dataGridView1.CellValueNeeded
 
-        Return table
+        If store.ContainsKey(e.RowIndex) Then
+            ' Use the store if the e value has been modified 
+            ' and stored.
+            e.Value = store(e.RowIndex)
+        ElseIf newRowNeeded AndAlso e.RowIndex = numberOfRows Then
+            If dataGridView1.IsCurrentCellInEditMode Then
+                e.Value = initialValue
+            Else
+                ' Show a blank value if the cursor is just resting
+                ' on the last row.
+                e.Value = String.Empty
+            End If
+        Else
+            e.Value = e.RowIndex
+        End If
+    End Sub
 
-    End Function
+    Private Sub dataGridView1_CellValuePushed(ByVal sender As Object, _
+        ByVal e As DataGridViewCellValueEventArgs) _
+        Handles dataGridView1.CellValuePushed
+
+        store.Add(e.RowIndex, CInt(e.Value))
+
+    End Sub
+#End Region
+
+    Dim store As System.Collections.Generic.Dictionary(Of Integer, Integer) = _
+        New Dictionary(Of Integer, Integer)
+
+    Private Sub dataGridView1_CellValidating(ByVal sender As Object, _
+        ByVal e _
+        As DataGridViewCellValidatingEventArgs) _
+        Handles dataGridView1.CellValidating
+
+        Me.dataGridView1.Rows(e.RowIndex).ErrorText = ""
+        Dim newInteger As Integer
+
+        ' Don't try to validate the 'new row' until finished 
+        ' editing since there
+        ' is not any point in validating its initial value.
+        If dataGridView1.Rows(e.RowIndex).IsNewRow Then Return
+        If Not Integer.TryParse(e.FormattedValue.ToString(), newInteger) _
+            OrElse newInteger < 0 Then
+
+            e.Cancel = True
+            Me.dataGridView1.Rows(e.RowIndex).ErrorText = "the value must be a non-negative integer"
+
+        End If
+    End Sub
 
     <STAThreadAttribute()> _
     Public Shared Sub Main()
-        Application.Run(New Form1)
+        Application.Run(New VirtualModeDemo())
     End Sub
-
 End Class

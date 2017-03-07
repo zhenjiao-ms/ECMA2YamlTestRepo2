@@ -1,5 +1,4 @@
 Imports System
-Imports System.Text
 Imports System.Security.Cryptography
 Imports System.Runtime.Serialization
 
@@ -19,81 +18,85 @@ Public Class Form1
 
         ' Reset the cursor and conclude application.
         tbxOutput.AppendText(vbCrLf + "This sample completed " + _
-            "successfully; Exit to continue.")
+            "successfully; press Exit to continue.")
         tbxOutput.Cursor = Cursors.Default
     End Sub
 
-    ' Test each public implementation of the CryptographicException
-    ' constructors.
+    ' Test each public implementation of the
+    ' CryptographicUnexpectedOperationException constructors.
     Private Sub TestConstructors()
         EmptyConstructor()
-        IntConstructor()
         StringConstructor()
         StringExceptionConstructor()
         StringStringConstructor()
     End Sub
 
     Private Sub EmptyConstructor()
-        ' Construct a CryptographicException with no parameters.
-        Dim cryptographicException As New CryptographicException
-        WriteLine("Created an empty CryptographicException.")
-    End Sub
-
-    Private Sub IntConstructor()
-        ' Construct a CryptographicException using the error code for an
-        ' unexpected operation exception.
-        Dim exceptionNumber As Integer = &H80131431
+        ' Construct a CryptographicUnexpectedOperationException
+        ' with no parameters.
         Dim cryptographicException As _
-            New CryptographicException(exceptionNumber)
-        WriteLine("Created a CryptographicException with the " + _
-            "following error code: " + exceptionNumber.ToString())
+            New CryptographicUnexpectedOperationException
+        WriteLine("Created an empty " + _
+            "CryptographicUnexpectedOperationException.")
     End Sub
 
     Private Sub StringConstructor()
-        ' Construct a CryptographicException using a custom error message.
-        Dim errorMessage As String = "Unexpected Operation exception."
-        Dim cryptographicException As New CryptographicException(errorMessage)
-        WriteLine("Created a CryptographicException with the " + _
-            "following error message: " + errorMessage)
+        ' Construct a CryptographicUnexpectedOperationException using a custom
+        ' error message.
+        Dim errorMessage As String = "Unexpected operation exception."
+        Dim cryptographicException As _
+            New CryptographicUnexpectedOperationException(errorMessage)
+        WriteLine("Created a CryptographicUnexpectedOperationException " + _
+            "with the following error message: " + errorMessage)
     End Sub
 
     Private Sub StringExceptionConstructor()
-        ' Construct a CryptographicException using a custom error message
-        ' and an inner exception.
+        ' Construct a CryptographicUnexpectedOperationException using a
+        ' custom error message and an inner exception.
         Dim errorMessage As String = "The current operation is not supported."
         Dim nullException As New NullReferenceException
         Dim cryptographicException As _
-            New CryptographicException(errorMessage, nullException)
-        Write("Created a CryptographicException with the following error ")
-        Write("message: " + errorMessage + " and the inner exception of ")
-        WriteLine(nullException.ToString())
+            New CryptographicUnexpectedOperationException( _
+            errorMessage, nullException)
+        Write("Created a CryptographicUnexpectedOperationException ")
+        Write("with the following error message: " + errorMessage)
+        WriteLine(" and inner exception: " + nullException.ToString())
     End Sub
 
     Private Sub StringStringConstructor()
-        ' Create a CryptographicException using a time format and a the 
-        ' current date.
+        ' Create a CryptographicUnexpectedOperationException using
+        ' a time format and the current date.
         Dim dateFormat As String = "{0:t}"
         Dim timeStamp As String = DateTime.Now.ToString()
-        Dim cryptographicException As _
-            New CryptographicException(dateFormat, timeStamp)
-        Write("Created a CryptographicException with (" + dateFormat)
-        WriteLine(") as the format and (" + timeStamp + ") as the message.")
+        Dim cryptographicException As New _
+            CryptographicUnexpectedOperationException(dateFormat, timeStamp)
+        Write("Created a CryptographicUnexpectedOperationException with ")
+        Write(dateFormat + " as the format and " + timeStamp)
+        WriteLine(" as the message.")
     End Sub
 
     ' Construct an invalid DSACryptoServiceProvider to throw a
-    ' CryptographicException for introspection.
+    ' CryptographicUnexpectedOperationException for introspection.
     Private Sub ShowProperties()
+        ' Attempting to encode an OID greater than 127 bytes is not supported
+        ' and will throw an exception.
+        Dim veryLongNumber As String = "1234567890.1234567890."
+
+        For i As Int16 = 0 To 4 Step 1
+            veryLongNumber += veryLongNumber
+        Next
+        veryLongNumber += "0"
+
         Try
-            ' Create a DSACryptoServiceProvider with invalid provider type
-            ' code to throw a CryptographicException exception.
-            Dim cspParams As New CspParameters(44)
-            Dim DSAalg As New DSACryptoServiceProvider(cspParams)
-        Catch ex As CryptographicException
-            ' Retrieve the link to the help file for the exception.
+            Dim tooLongOID() As Byte
+            tooLongOID = CryptoConfig.EncodeOID(veryLongNumber)
+
+        Catch ex As CryptographicUnexpectedOperationException
+            ' Retrieve the link to the Help file for the exception.
             Dim helpLink As String = ex.HelpLink
 
             ' Retrieve the exception that caused the current
-            ' CryptographicException exception.
+            ' CryptographicUnexpectedOperationException.
             Dim innerException As System.Exception = ex.InnerException
             Dim innerExceptionMessage As String = ""
             If (Not innerException Is Nothing) Then
@@ -106,7 +109,7 @@ Public Class Form1
             ' Retrieve the name of the application that caused the exception.
             Dim exceptionSource As String = ex.Source
 
-            ' Retrieve the call stack at the time the exception occured.
+            ' Retrieve the call stack at the time the exception occurred.
             Dim stackTrace As String = ex.StackTrace
 
             ' Retrieve the method that threw the exception.
@@ -121,7 +124,7 @@ Public Class Form1
             setSerializationInfo(ex)
 
             ' Get the root exception that caused the current
-            ' CryptographicException exception.
+            ' CryptographicUnexpectedOperationException.
             Dim baseException As System.Exception = ex.GetBaseException()
             Dim baseExceptionMessage As String = ""
             If (Not baseException Is Nothing) Then
@@ -143,7 +146,9 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub setSerializationInfo(ByRef ex As CryptographicException)
+    Private Sub setSerializationInfo( _
+        ByRef ex As CryptographicUnexpectedOperationException)
+
         ' Insert information about the exception into a serialized object.
         Dim formatConverter As New FormatterConverter
         Dim serializationInfo As _
@@ -230,8 +235,7 @@ Public Class Form1
         '
         Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
         Me.Button1.Font = New System.Drawing.Font( _
-            "Microsoft Sans Serif", _
-            9.0!, _
+            "Microsoft Sans Serif", 9.0!, _
             System.Drawing.FontStyle.Regular, _
             System.Drawing.GraphicsUnit.Point, _
             CType(0, Byte))
@@ -244,8 +248,7 @@ Public Class Form1
         'Button2
         '
         Me.Button2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button2.Font = New System.Drawing.Font( _
-            "Microsoft Sans Serif", _
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", _
             9.0!, _
             System.Drawing.FontStyle.Regular, _
             System.Drawing.GraphicsUnit.Point, _
@@ -285,7 +288,7 @@ Public Class Form1
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.Name = "Form1"
-        Me.Text = "CryptographicException"
+        Me.Text = "CryptographicUnexpectedOperationException"
         Me.Panel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -297,40 +300,32 @@ End Class
 '
 ' This sample produces the following output:
 '
-' Created an empty CryptographicException.
-' Created a CryptographicException with the following error code: -2146233295
-' Created a CryptographicException with the following error message:
-' Unexpected Operation exception.
-' Created a CryptographicException with the following error message:
-' The current operation is not supported. and the inner exception of 
+' Created an empty CryptographicUnexpectedOperationException.
+' Created a CryptographicUnexpectedOperationException with the following error
+' message: Unexpected operation exception.
+' Created a CryptographicUnexpectedOperationException with the following error
+' message: The current operation is not supported. and inner exception:
 ' System.NullReferenceException: Object reference not set to an instance of an
 ' object.
-' Created a CryptographicException with ({0:t}) as the format and (2/24/2004 
-' 2:19:32 PM) as the message.
+' Created a CryptographicUnexpectedOperationException with {0:t} as the format
+' and 2/24/2004 2:29:32 PM as the message.
 ' Caught an expected exception:
-' System.Security.Cryptography.CryptographicException: CryptoAPI cryptographic
-' service provider (CSP) for this implementation could not be acquired.
-'  at System.Security.Cryptography.DSACryptoServiceProvider..ctor(
-' Int32 dwKeySize, CspParameters parameters)
-'  at System.Security.Cryptography.DSACryptoServiceProvider..ctor(
-' CspParameters parameters)
+' System.Security.Cryptography.CryptographicUnexpectedOperationException:
+' Encoded OID length is too large (greater than 0x7f bytes).
+'  at System.Security.Cryptography.CryptoConfig.EncodeOID(String str)
 '  at WindowsApplication1.Form1.ShowProperties() in 
 ' C:\WindowsApplication1\Form1.vb:line 103
 '
 ' Properties of the exception are as follows:
-' Message: CryptoAPI cryptographic service provider (CSP) for this
-' implementation could not be acquired.
+' Message: Encoded OID length is too large (greater than 0x7f bytes).
 ' Source: mscorlib
-' Stack trace:    at System.Security.Cryptography.DSACryptoServiceProvider..
-' ctor(Int32 dwKeySize, CspParameters parameters)
-'  at System.Security.Cryptography.DSACryptoServiceProvider..ctor(
-' CspParameters parameters)
-'  at WindowsApplication1.Form1.ShowProperties() in 
+' Stack trace:    at System.Security.Cryptography.CryptoConfig.EncodeOID(
+' String str) at WindowsApplication1.Form1.ShowProperties() in
 ' C:\WindowsApplication1\Form1.vb:line 103
 ' Help link: 
-' Target site's name: .ctor
-' Base exception message: CryptoAPI cryptographic service provider (CSP) for
-' this implementation could not be acquired.
+' Target site's name: EncodeOID
+' Base exception message: Encoded OID length is too large (greater than 0x7f
+' bytes).
 ' Inner exception message: 
 ' 
-' This sample completed successfully; Exit to continue
+' This sample completed successfully; press Exit to continue.

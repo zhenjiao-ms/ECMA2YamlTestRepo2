@@ -1,34 +1,36 @@
-        ToolStripButton^ changeDirectionButton;
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
+public ref class Form1: public Form
+{
+private:
+   TabControl^ tabControl1;
+   TabPage^ tabPage1;
+   void MyTabs()
+   {
+      this->tabControl1 = gcnew TabControl;
+      this->tabPage1 = gcnew TabPage;
+      array<Control^>^tabControl1Controls = {this->tabPage1};
+      this->tabControl1->Controls->AddRange( tabControl1Controls );
+      this->tabControl1->Location = Point(25,25);
+      this->tabControl1->Size = System::Drawing::Size( 250, 250 );
+      
+      // Displays a string, myTabPage, on tabPage1.
+      this->tabPage1->Text = "myTabPage";
+      this->ClientSize = System::Drawing::Size( 300, 300 );
+      array<Control^>^formControls = {this->tabControl1};
+      this->Controls->AddRange( formControls );
+   }
 
-        void InitializeMovingToolStrip()
-        {
-            changeDirectionButton = gcnew ToolStripButton;
-            movingToolStrip->AutoSize = true;
-            movingToolStrip->RenderMode = ToolStripRenderMode::System;
-            changeDirectionButton->TextDirection = 
-                ToolStripTextDirection::Vertical270;
-            changeDirectionButton->Overflow = 
-                ToolStripItemOverflow::Never;
-            changeDirectionButton->Text = "Change Alignment";
-            movingToolStrip->Items->Add(changeDirectionButton);
-            changeDirectionButton->Click += gcnew EventHandler(this, 
-                &Form1::changeDirectionButtonClick);
-        }
 
-        void changeDirectionButtonClick(Object^ sender, EventArgs^ e)
-        {
-            ToolStripItem^ item = (ToolStripItem^) sender;
-            if ((item->TextDirection == ToolStripTextDirection::Vertical270) 
-                || (item->TextDirection == ToolStripTextDirection::Vertical90))
-            {
-                item->TextDirection = ToolStripTextDirection::Horizontal;
-                movingToolStrip->Raft = RaftingSides::Top;
-            }
-            else
-            {
-                item->TextDirection = 
-                    ToolStripTextDirection::Vertical270;
-                movingToolStrip->Raft = RaftingSides::Left;
-            }
-        }
+public:
+   Form1()
+   {
+      MyTabs();
+   }
 
+};
+
+int main()
+{
+   Application::Run( gcnew Form1 );
+}

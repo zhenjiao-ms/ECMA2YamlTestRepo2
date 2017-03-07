@@ -1,9 +1,12 @@
-private void DataGridView1_AutoSizeColumnModeChanged(Object sender, DataGridViewAutoSizeColumnModeEventArgs e) {
-
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "Column", e.Column );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "PreviousMode", e.PreviousMode );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "AutoSizeColumnModeChanged Event" );
+private void dataGrid1_MouseDown
+(object sender, System.Windows.Forms.MouseEventArgs e)
+{
+   string newLine = "\n";
+   Console.WriteLine(newLine);
+   System.Windows.Forms.DataGrid.HitTestInfo myHitTest;
+   // Use the DataGrid control's HitTest method with the x and y properties.
+   myHitTest = dataGrid1.HitTest(e.X,e.Y);
+   Console.WriteLine("Column " + myHitTest.Column);
+   Console.WriteLine("Row " + myHitTest.Row);
 }
+   

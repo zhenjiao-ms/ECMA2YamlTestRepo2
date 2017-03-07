@@ -1,20 +1,20 @@
 Imports System.Threading.Tasks
-Module Module1
 
-    Sub Main()
-        Dim N As Integer = 1000
-
-        ' Using a named method
-        Parallel.For(0, N, AddressOf Method2)
-
-        ' Using a lambda expression.
-        Parallel.For(0, N, Sub(i)
-                               ' Do Work
-                           End Sub)
-    End Sub
-
-    Sub Method2(ByVal i As Integer)
-        ' Do work.
-    End Sub
-
+Module Example
+   Public Sub Main()
+      Dim t As Task(Of Integer) = Task.Run(Function()
+                                  Dim max As Integer = 1000000
+                                  Dim ctr As Integer
+                                  For ctr = 0 to max
+                                     If ctr = max \ 2 And Date.Now.Hour <= 12 Then
+                                        ctr += 1
+                                        Exit For
+                                     End If
+                                  Next
+                                  Return ctr
+                               End Function)
+      Console.WriteLine("Finished {0:N0} iterations.", t.Result)
+   End Sub
 End Module
+' The example displays the following output:
+'       Finished 1,000,001 loop iterations

@@ -1,34 +1,25 @@
-public:
-   void InitializeMyToolBar()
+   void AddToolBar()
    {
-      // Create the ToolBar, ToolBarButton controls, and menus.
-      ToolBarButton^ toolBarButton1 = gcnew ToolBarButton( "Open" );
-      ToolBarButton^ toolBarButton2 = gcnew ToolBarButton;
-      ToolBarButton^ toolBarButton3 = gcnew ToolBarButton;
-      ToolBar^ toolBar1 = gcnew ToolBar;
-      MenuItem^ menuItem1 = gcnew MenuItem( "Print" );
-      array<MenuItem^>^ temp1 = {menuItem1};
-      System::Windows::Forms::ContextMenu^ contextMenu1 =
-         gcnew System::Windows::Forms::ContextMenu( temp1 );
       
-      // Add the ToolBarButton controls to the ToolBar.
-      toolBar1->Buttons->Add( toolBarButton1 );
-      toolBar1->Buttons->Add( toolBarButton2 );
-      toolBar1->Buttons->Add( toolBarButton3 );
-      
-      // Assign an ImageList to the ToolBar and show ToolTips.
-      toolBar1->ImageList = imageList1;
+      // Add a toolbar and set some of its properties.
+      toolBar1 = gcnew ToolBar;
+      toolBar1->Appearance = System::Windows::Forms::ToolBarAppearance::Flat;
+      toolBar1->BorderStyle = System::Windows::Forms::BorderStyle::None;
+      toolBar1->Buttons->Add( this->toolBarButton1 );
+      toolBar1->ButtonSize = System::Drawing::Size( 24, 24 );
+      toolBar1->Divider = true;
+      toolBar1->DropDownArrows = true;
+      toolBar1->ImageList = this->imageList1;
       toolBar1->ShowToolTips = true;
+      toolBar1->Size = System::Drawing::Size( 292, 25 );
+      toolBar1->TabIndex = 0;
+      toolBar1->TextAlign = System::Windows::Forms::ToolBarTextAlign::Right;
+      toolBar1->Wrappable = false;
       
-      /* Assign ImageIndex, ContextMenu, Text, ToolTip, and 
-         Style properties of the ToolBarButton controls. */
-      toolBarButton2->Style = ToolBarButtonStyle::Separator;
-      toolBarButton3->Text = "Print";
-      toolBarButton3->Style = ToolBarButtonStyle::DropDownButton;
-      toolBarButton3->ToolTipText = "Print";
-      toolBarButton3->ImageIndex = 0;
-      toolBarButton3->DropDownMenu = contextMenu1;
+      // Add handlers for the ButtonClick and ButtonDropDown events.
+      toolBar1->ButtonDropDown += gcnew ToolBarButtonClickEventHandler( this, &MyToolBar::toolBar1_ButtonDropDown );
+      toolBar1->ButtonClick += gcnew ToolBarButtonClickEventHandler( this, &MyToolBar::toolBar1_ButtonClicked );
       
-      // Add the ToolBar to a form.
-      Controls->Add( toolBar1 );
+      // Add the toolbar to the form.
+      this->Controls->Add( toolBar1 );
    }

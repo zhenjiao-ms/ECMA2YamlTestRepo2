@@ -1,37 +1,27 @@
-   private:
-      void MyButtonPrint_OnClick( Object^ sender, System::EventArgs^ e )
+public:
+   void Printing()
+   {
+      try
       {
-         // Set the printer name and ensure it is valid. If not, provide a message to the user.
-         printDoc->PrinterSettings->PrinterName = "\\mynetworkprinter";
-         if ( printDoc->PrinterSettings->IsValid )
+         streamToPrint = gcnew StreamReader( filePath );
+         try
          {
-            // If the printer supports printing in color, then override the printer's default behavior.
-            if ( printDoc->PrinterSettings->SupportsColor )
-            {
-               // Set the page default's to not print in color.
-               printDoc->DefaultPageSettings->Color = false;
-            }
-
-            // Provide a friendly name, set the page number, and print the document.
-            printDoc->DocumentName = "My Presentation";
-            currentPageNumber = 1;
-            printDoc->Print();
+            printFont = gcnew System::Drawing::Font( "Arial",10 );
+            PrintDocument^ pd = gcnew PrintDocument;
+            pd->PrintPage += gcnew PrintPageEventHandler(
+               this, &Form1::pd_PrintPage );
+            pd->PrinterSettings->PrinterName = printer;
+            // Set the page orientation to landscape.
+            pd->DefaultPageSettings->Landscape = true;
+            pd->Print();
          }
-         else
+         finally
          {
-            MessageBox::Show( "Printer is not valid" );
+            streamToPrint->Close();
          }
       }
-
-      void MyPrintQueryPageSettingsEvent( Object^ sender, QueryPageSettingsEventArgs^ e )
+      catch ( Exception^ ex ) 
       {
-         // Determines if the printer supports printing in color.
-         if ( printDoc->PrinterSettings->SupportsColor )
-         {
-            // If the printer supports color printing, use color.
-            if ( currentPageNumber == 1 )
-            {
-               e->PageSettings->Color = true;
-            }
-         }
+         MessageBox::Show( ex->Message );
       }
+   }

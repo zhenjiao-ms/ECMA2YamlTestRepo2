@@ -1,68 +1,192 @@
 Imports System
+Imports System.Xml
 Imports System.Security.Cryptography
-Imports System.Security.Permissions
-Imports System.IO
-Imports System.Security.Cryptography.X509Certificates
-Imports Microsoft.VisualBasic
+Imports System.Security.Cryptography.Xml
 
 
 
+Module Program
 
-Class CertInfo
+    Sub Main(ByVal args() As String)
 
-    'Reads a file.
-    Friend Shared Function ReadFile(ByVal fileName As String) As Byte()
-        Dim f As New FileStream(fileName, FileMode.Open, FileAccess.Read)
-        Dim size As Integer = Fix(f.Length)
-        Dim data(size) As Byte
-        size = f.Read(data, 0, size)
-        f.Close()
-        Return data
+        ' Create an XmlDocument object.
+        Dim xmlDoc As New XmlDocument()
 
-    End Function 
-
-    <SecurityPermission(SecurityAction.LinkDemand, Unrestricted:=True)> _
-    Shared Sub Main(ByVal args() As String)
-        'Test for correct number of arguments.
-        If args.Length < 1 Then
-            Console.WriteLine("Usage: CertInfo <filename>")
-            Return
-        End If
+        ' Load an XML file into the XmlDocument object.
         Try
-            Dim x509 As New X509Certificate2()
-            'Create X509Certificate2 object from .cer file.
-            Dim rawData As Byte() = ReadFile(args(0))
-            
-            x509.Import(rawData)
+            xmlDoc.PreserveWhitespace = True
+            xmlDoc.Load("test.xml")
+        Catch e As Exception
+            Console.WriteLine(e.Message)
+        End Try
 
-            'Print to console information contained in the certificate.
-            Console.WriteLine("{0}Subject: {1}{0}", Environment.NewLine, x509.Subject)
-            Console.WriteLine("{0}Issuer: {1}{0}", Environment.NewLine, x509.Issuer)
-            Console.WriteLine("{0}Version: {1}{0}", Environment.NewLine, x509.Version)
-            Console.WriteLine("{0}Valid Date: {1}{0}", Environment.NewLine, x509.NotBefore)
-            Console.WriteLine("{0}Expiry Date: {1}{0}", Environment.NewLine, x509.NotAfter)
-            Console.WriteLine("{0}Thumbprint: {1}{0}", Environment.NewLine, x509.Thumbprint)
-            Console.WriteLine("{0}Serial Number: {1}{0}", Environment.NewLine, x509.SerialNumber)
-            Console.WriteLine("{0}Friendly Name: {1}{0}", Environment.NewLine, x509.PublicKey.Oid.FriendlyName)
-            Console.WriteLine("{0}Public Key Format: {1}{0}", Environment.NewLine, x509.PublicKey.EncodedKeyValue.Format(True))
-            Console.WriteLine("{0}Raw Data Length: {1}{0}", Environment.NewLine, x509.RawData.Length)
-            Console.WriteLine("{0}Certificate to string: {1}{0}", Environment.NewLine, x509.ToString(True))
+        ' Create a new RSA key.  This key will encrypt a symmetric key,
+        ' which will then be imbedded in the XML document.  
+        Dim rsaKey As New RSACryptoServiceProvider()
 
-            Console.WriteLine("{0}Certificate to XML String: {1}{0}", Environment.NewLine, x509.PublicKey.Key.ToXmlString(False))
 
-            'Add the certificate to a X509Store.
-            Dim store As New X509Store()
-            store.Open(OpenFlags.MaxAllowed)
-            store.Add(x509)
-            store.Close()
+        Try
+            ' Encrypt the "creditcard" element.
+            Encrypt(xmlDoc, "creditcard", rsaKey, "rsaKey")
 
-        Catch dnfExcept As DirectoryNotFoundException
-            Console.WriteLine("Error: The directory specified could not be found.")
-        Catch ioExpcept As IOException
-            Console.WriteLine("Error: A file in the directory could not be accessed.")
-        Catch nrExcept As NullReferenceException
-            Console.WriteLine("File must be a .cer file. Program does not have access to that type of file.")
+            ' Inspect the EncryptedKey element.
+            InspectElement(xmlDoc)
+
+            ' Decrypt the "creditcard" element.
+            Decrypt(xmlDoc, rsaKey, "rsaKey")
+
+        Catch e As Exception
+            Console.WriteLine(e.Message)
+        Finally
+            ' Clear the RSA key.
+            rsaKey.Clear()
         End Try
 
     End Sub
-End Class
+
+
+    Sub Encrypt(ByVal Doc As XmlDocument, ByVal ElementToEncryptParam As String, ByVal Alg As RSA, ByVal KeyName As String)
+        ' Check the arguments.  
+        If Doc Is Nothing Then
+            Throw New ArgumentNullException("Doc")
+        End If
+        If ElementToEncryptParam Is Nothing Then
+            Throw New ArgumentNullException("ElementToEncrypt")
+        End If
+        If Alg Is Nothing Then
+            Throw New ArgumentNullException("Alg")
+        End If
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Find the specified element in the XmlDocument
+        ' object and create a new XmlElemnt object.
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''
+        Dim elementToEncrypt As XmlElement = Doc.GetElementsByTagName(ElementToEncryptParam)(0)
+
+
+        ' Throw an XmlException if the element was not found.
+        If elementToEncrypt Is Nothing Then
+            Throw New XmlException("The specified element was not found")
+        End If
+
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Create a new instance of the EncryptedXml class 
+        ' and use it to encrypt the XmlElement with the 
+        ' a new random symmetric key.
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Create a 256 bit Rijndael key.
+        Dim sessionKey As New RijndaelManaged()
+        sessionKey.KeySize = 256
+
+        Dim eXml As New EncryptedXml()
+
+        Dim encryptedElement As Byte() = eXml.EncryptData(elementToEncrypt, sessionKey, False)
+
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Construct an EncryptedData object and populate
+        ' it with the desired encryption information.
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+        Dim edElement As New EncryptedData()
+        edElement.Type = EncryptedXml.XmlEncElementUrl
+
+        ' Create an EncryptionMethod element so that the 
+        ' receiver knows which algorithm to use for decryption.
+        edElement.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncAES256Url)
+
+        ' Encrypt the session key and add it to an EncryptedKey element.
+        Dim ek As New EncryptedKey()
+
+        Dim encryptedKey As Byte() = EncryptedXml.EncryptKey(sessionKey.Key, Alg, False)
+
+        ek.CipherData = New CipherData(encryptedKey)
+
+        ek.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncRSA15Url)
+
+        ' Set the KeyInfo element to specify the
+        ' name of the RSA key.
+        ' Create a new KeyInfo element.
+        edElement.KeyInfo = New KeyInfo()
+
+        ' Create a new KeyInfoName element.
+        Dim kin As New KeyInfoName()
+
+        ' Specify a name for the key.
+        kin.Value = KeyName
+
+        ' Add the KeyInfoName element to the 
+        ' EncryptedKey object.
+        ek.KeyInfo.AddClause(kin)
+
+        ' Add the encrypted key to the 
+        ' EncryptedData object.
+        edElement.KeyInfo.AddClause(New KeyInfoEncryptedKey(ek))
+
+        ' Add the encrypted element data to the 
+        ' EncryptedData object.
+        edElement.CipherData.CipherValue = encryptedElement
+
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Replace the element from the original XmlDocument
+        ' object with the EncryptedData element.
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''
+        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, False)
+
+    End Sub
+
+
+    Sub Decrypt(ByVal Doc As XmlDocument, ByVal Alg As RSA, ByVal KeyName As String)
+        ' Check the arguments.  
+        If Doc Is Nothing Then
+            Throw New ArgumentNullException("Doc")
+        End If
+        If Alg Is Nothing Then
+            Throw New ArgumentNullException("Alg")
+        End If
+        If KeyName Is Nothing Then
+            Throw New ArgumentNullException("KeyName")
+        End If
+        ' Create a new EncryptedXml object.
+        Dim exml As New EncryptedXml(Doc)
+
+        ' Add a key-name mapping.
+        ' This method can only decrypt documents
+        ' that present the specified key name.
+        exml.AddKeyNameMapping(KeyName, Alg)
+
+        ' Decrypt the element.
+        exml.DecryptDocument()
+
+    End Sub
+
+
+    Sub InspectElement(ByVal Doc As XmlDocument)
+        ' Get the EncryptedKey element from the XMLDocument object.
+        Dim encryptedKey As XmlElement = Doc.GetElementsByTagName("EncryptedKey")(0)
+
+        ' Create a new EncryptedKey object.
+        Dim k As New EncryptedKey()
+
+        ' Load the XML from the document to
+        ' initialize the EncryptedKey object.
+        k.LoadXml(encryptedKey)
+
+        ' Display the properties.
+        ' Most values are Null by default.
+        Console.WriteLine("EncryptedKey.KeyInfo: " + k.KeyInfo.GetXml().InnerXml)
+        Console.WriteLine("EncryptedKey.Id: " + k.Id)
+        Console.WriteLine("EncryptedKey.CarriedKeyName: " + k.CarriedKeyName)
+        Console.WriteLine("EncryptedKey.CipherData: " + k.CipherData.GetXml().InnerXml)
+        Console.WriteLine("EncryptedKey.Encoding: " + k.Encoding)
+        Console.WriteLine("EncryptedKey.EncryptionMethod: " + k.EncryptionMethod.GetXml().InnerXml)
+        If k.EncryptionProperties.Count >= 1 Then
+            Console.WriteLine("EncryptedKey.EncryptionProperties: " + k.EncryptionProperties(0).GetXml().InnerXml)
+        End If
+        Console.WriteLine("EncryptedKey.MimeType: " + k.MimeType)
+        Console.WriteLine("EncryptedKey.Recipient: " + k.Recipient)
+
+        If k.ReferenceList.Count >= 1 Then
+            Console.WriteLine("EncryptedKey.ReferenceList: " + k.ReferenceList(0).GetXml().InnerXml)
+        End If
+
+    End Sub
+End Module

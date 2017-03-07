@@ -1,12 +1,25 @@
 private:
-   void AddMyData()
+   void AddMyData3()
    {
-      // Creates a new data object using a string and the text format.
+      // Creates a component to store in the data object.
+      Component^ myComponent = gcnew Component;
+      
+      // Creates a new data object.
       DataObject^ myDataObject = gcnew DataObject;
       
-      // Stores a string, specifying the Unicode format.
-      myDataObject->SetData( DataFormats::UnicodeText, "Text string" );
+      // Adds the component to the DataObject.
+      myDataObject->SetData( myComponent );
       
-      // Retrieves the data by specifying Text.
-      textBox1->Text = myDataObject->GetData( DataFormats::Text )->GetType()->Name;
+      // Prints whether data of the specified type is in the DataObject.
+      Type^ myType = myComponent->GetType();
+      if ( myDataObject->GetDataPresent( myType ) )
+      {
+         textBox1->Text = String::Concat( "Data of type ", myType->Name,
+           " is present in the DataObject" );
+      }
+      else
+      {
+         textBox1->Text = String::Concat( "Data of type ", myType->Name,
+           " is not present in the DataObject" );
+      }
    }

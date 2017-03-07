@@ -1,18 +1,12 @@
-    Private Sub GetData3()
-        ' Creates a new data object using a text string.
-        Dim myString As String = "Hello World!"
+    Private Sub TestDataObject()
+        ' Creates a new data object using a string and the Text format.
+        Dim myString As New String("Hello World!")
         Dim myDataObject As New DataObject(DataFormats.Text, myString)
 
-        ' Displays the string with autoConvert equal to false.
-        If (myDataObject.GetData("System.String", False) IsNot Nothing) Then
-            ' Displays the string in a message box.
-            MessageBox.Show(myDataObject.GetData("System.String", False).ToString() + ".", "Message #1")
-            ' Displays a not found message in a message box.
+        ' Checks whether the data is present in the Text format and displays the result.
+        If (myDataObject.GetDataPresent(DataFormats.Text)) Then
+            MessageBox.Show("The stored data is in the Text format.", "Test Result")
         Else
-            MessageBox.Show("Could not find data of the specified format.", "Message #1")
+            MessageBox.Show("The stored data is not in the Text format.", "Test Result")
         End If
-
-        ' Displays the string in a text box with autoConvert equal to true.
-        Dim myData As String = "The data is " + myDataObject.GetData("System.String", True).ToString()
-        MessageBox.Show(myData, "Message #2")
-    End Sub 'GetData3
+    End Sub 'TestDataObject

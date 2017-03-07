@@ -1,20 +1,70 @@
-            // This code example demonstrates the syntax for setting
-            // various ToolStripTextBox properties.
-            // 
-            toolStripTextBox1.AcceptsReturn = true;
-            toolStripTextBox1.AcceptsTab = true;
-            toolStripTextBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            "This is line one.",
-            "Second line.",
-            "Another line."});
-            toolStripTextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            toolStripTextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            toolStripTextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            toolStripTextBox1.HideSelection = false;
-            toolStripTextBox1.MaxLength = 32000;
-            toolStripTextBox1.Name = "toolStripTextBox1";
-            toolStripTextBox1.ShortcutsEnabled = false;
-            toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
-            toolStripTextBox1.Text = "STRING1\r\nSTRING2\r\nSTRING3\r\nSTRING4";
-            toolStripTextBox1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // This method draws a border around the button's image. If the background
+            // to be rendered belongs to the empty cell, a string is drawn. Otherwise,
+            // a border is drawn at the edges of the button.
+            protected override void OnRenderButtonBackground(
+                ToolStripItemRenderEventArgs e)
+            {
+                base.OnRenderButtonBackground(e);
+
+                // Define some local variables for convenience.
+                Graphics g = e.Graphics;
+                GridStrip gs = e.ToolStrip as GridStrip;
+                ToolStripButton gsb = e.Item as ToolStripButton;
+
+                // Calculate the rectangle around which the border is painted.
+                Rectangle imageRectangle = new Rectangle(
+                    borderThickness, 
+                    borderThickness, 
+                    e.Item.Width - 2 * borderThickness, 
+                    e.Item.Height - 2 * borderThickness);
+
+                // If rendering the empty cell background, draw an 
+                // explanatory string, centered in the ToolStripButton.
+                if (gsb == gs.EmptyCell)
+                {
+                    e.Graphics.DrawString(
+                        "Drag to here",
+                        gsb.Font, 
+                        SystemBrushes.ControlDarkDark,
+                        imageRectangle, style);
+                }
+                else
+                {
+                    // If the button can be a drag source, paint its border red.
+                    // otherwise, paint its border a dark color.
+                    Brush b = gs.IsValidDragSource(gsb) ? b = 
+                        Brushes.Red : SystemBrushes.ControlDarkDark;
+
+                    // Draw the top segment of the border.
+                    Rectangle borderSegment = new Rectangle(
+                        0, 
+                        0, 
+                        e.Item.Width, 
+                        imageRectangle.Top);
+                    g.FillRectangle(b, borderSegment);
+
+                    // Draw the right segment.
+                    borderSegment = new Rectangle(
+                        imageRectangle.Right,
+                        0,
+                        e.Item.Bounds.Right - imageRectangle.Right,
+                        imageRectangle.Bottom);
+                    g.FillRectangle(b, borderSegment);
+
+                    // Draw the left segment.
+                    borderSegment = new Rectangle(
+                        0,
+                        0,
+                        imageRectangle.Left,
+                        e.Item.Height);
+                    g.FillRectangle(b, borderSegment);
+
+                    // Draw the bottom segment.
+                    borderSegment = new Rectangle(
+                        0,
+                        imageRectangle.Bottom,
+                        e.Item.Width,
+                        e.Item.Bounds.Bottom - imageRectangle.Bottom);
+                    g.FillRectangle(b, borderSegment);
+                }
+            }

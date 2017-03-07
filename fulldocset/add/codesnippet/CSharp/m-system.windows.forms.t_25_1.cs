@@ -7,15 +7,12 @@ public class Form1 : Form
 
     public void MyTabs()
     {
-        // Invokes the TabControl() constructor to create the tabControl1 object.
-        this.tabControl1 = new System.Windows.Forms.TabControl();
+        this.tabControl1 = new TabControl();
 
-        // Creates a new tab page and adds it to the tab control
-        this.tabPage1 = new TabPage();
-                
-        this.tabControl1.TabPages.Add(tabPage1);
+        // Invokes the TabPage() constructor to create the tabPage1.
+        this.tabPage1 = new System.Windows.Forms.TabPage();
 
-        // Adds the tab control to the form
+        this.tabControl1.Controls.Add(tabPage1);
         this.Controls.Add(tabControl1);
     }
 

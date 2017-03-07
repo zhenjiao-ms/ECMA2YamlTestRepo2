@@ -20,8 +20,22 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a document viewing control that can host paginated <see cref="T:System.Windows.Documents.FixedDocument" /> content such as an <see cref="T:System.Windows.Xps.Packaging.XpsDocument" />.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+## Customizing the DocumentViewer Control  
+ To apply the same property settings to multiple DocumentViewer controls, use the <xref:System.Windows.FrameworkElement.Style%2A> property. You can modify the default <xref:System.Windows.Controls.ControlTemplate> to give the control a unique appearance. For more information about creating a <xref:System.Windows.Controls.ControlTemplate>, see [Customizing the Appearance of an Existing Control by Creating a ControlTemplate](../Topic/Customizing%20the%20Appearance%20of%20an%20Existing%20Control%20by%20Creating%20a%20ControlTemplate.md).  To see the parts and states that are specific to the DocumentViewer, see [DocumentViewer Styles and Templates](../Topic/DocumentViewer%20Styles%20and%20Templates.md).  
+  
+ Dependency properties for this control might be set by the control’s default style.  If a property is set by a default style, the property might change from its default value when the control appears in the application. The default style is determined by which desktop theme is used when the application is running.  For more information, see [Default WPF Themes](http://go.microsoft.com/fwlink/?LinkID=158252).  
+  
+> [!NOTE]
+>  Setting a visual property will only have an effect if that property is both present in DocumentViewer control's default template and is set by using a . You can find a list of visual properties in the "Changing the Visual Structure of a Control" section in [Customizing the Appearance of an Existing Control by Creating a ControlTemplate](../Topic/Customizing%20the%20Appearance%20of%20an%20Existing%20Control%20by%20Creating%20a%20ControlTemplate.md).  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -36,7 +50,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.Windows.Controls.DocumentViewer" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -54,9 +68,25 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether the <see cref="T:System.Windows.Controls.DocumentViewer" /> can zoom out more.</summary>
+        <value>
+          <see langword="true" /> if the control can zoom out more; otherwise, <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The minimum zoom value is 5%.  The CanDecreaseZoom property becomes `false` when the minimum zoom level is reached.  
+  
+<a name="dependencyPropertyInfo_CanDecreaseZoom"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.CanDecreaseZoomProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanDecreaseZoomProperty">
@@ -73,7 +103,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.CanDecreaseZoom%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -91,9 +121,25 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether the <see cref="T:System.Windows.Controls.DocumentViewer" /> can zoom in more.</summary>
+        <value>
+          <see langword="true" /> if the control can zoom in more; otherwise, <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The maximum zoom value is 5000%.  CanIncreaseZoom becomes `false` when the maximum zoom level is reached.  
+  
+<a name="dependencyPropertyInfo_CanIncreaseZoom"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.CanIncreaseZoomProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanIncreaseZoomProperty">
@@ -110,7 +156,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.CanIncreaseZoom%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -128,9 +174,24 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether the <see cref="T:System.Windows.Controls.DocumentViewer" /> can move down more in the document.</summary>
+        <value>
+          <see langword="true" /> if the control can move down more in the document; otherwise, <see langword="false" /> if the document is at the bottom.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="dependencyPropertyInfo_CanMoveDown"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.CanMoveDownProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanMoveDownProperty">
@@ -147,7 +208,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.CanMoveDown%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -165,9 +226,24 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether the <see cref="T:System.Windows.Controls.DocumentViewer" /> can move more to the left in the document.</summary>
+        <value>
+          <see langword="true" /> if the control can move more left in the document; otherwise, <see langword="false" /> if the document is at the leftmost edge.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="dependencyPropertyInfo_CanMoveLeft"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.CanMoveLeftProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanMoveLeftProperty">
@@ -184,7 +260,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.CanMoveLeft%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -202,9 +278,24 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether the <see cref="T:System.Windows.Controls.DocumentViewer" /> can move more to the right in the document.</summary>
+        <value>
+          <see langword="true" /> if the control can move more to the right in the document; otherwise, <see langword="false" /> if the document is at the rightmost edge.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="dependencyPropertyInfo_CanMoveRight"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.CanMoveRightProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanMoveRightProperty">
@@ -221,7 +312,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.CanMoveRight%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -239,9 +330,24 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that indicates whether the <see cref="T:System.Windows.Controls.DocumentViewer" /> can move up more in the document.</summary>
+        <value>
+          <see langword="true" /> if the control can move up more in the document; otherwise, <see langword="false" /> if the document is at the topmost edge.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="dependencyPropertyInfo_CanMoveUp"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.CanMoveUpProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanMoveUpProperty">
@@ -258,7 +364,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.CanMoveUp%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -277,8 +383,35 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Zooms out of the document content by one zoom step.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The following are the zoom level increments.  
+  
+ `5%   100%   1200%`  
+  
+ `10%   125%   1600%`  
+  
+ `25%   150%   2000%`  
+  
+ `33%   175%   2400%`  
+  
+ `50%   200%   3200%`  
+  
+ `66%   300%   4000%`  
+  
+ `75%   400%   5000%`  
+  
+ `800%`  
+  
+ The minimum zoom level is 5%.  After the minimum zoom level is reached, DecreaseZoom has no more effect.  
+  
+ The <xref:System.Windows.Controls.DocumentViewer.CanDecreaseZoom%2A> property returns `false` when the minimum zoom level is reached.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ExtentHeight">
@@ -295,9 +428,24 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the overall vertical height of the paginated document.</summary>
+        <value>The overall vertical height of the paginated content specified in device independent pixels.  The default is 0.0.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ For vertical page arrangements, ExtentHeight is the sum of all the page heights and includes the space between pages.  
+  
+<a name="dependencyPropertyInfo_ExtentHeight"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.ExtentHeightProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ExtentHeightProperty">
@@ -314,7 +462,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.ExtentHeight%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -332,9 +480,24 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the overall horizontal width of the paginated document.</summary>
+        <value>The current horizontal width of the content layout area specified in device independent pixels.  The default is 0.0.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ For horizontal page arrangements, ExtentWidth is the sum of all the page widths and includes the space between pages.  
+  
+<a name="dependencyPropertyInfo_ExtentWidth"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.ExtentWidthProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ExtentWidthProperty">
@@ -351,7 +514,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.ExtentWidth%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -370,7 +533,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Moves focus to the find toolbar to search the document content.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -389,7 +552,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Fits a single page to the height of the current viewport.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -407,8 +570,8 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Windows.Input.RoutedUICommand" /> that performs the <see cref="System.Windows.Controls.DocumentViewer.FitToHeight%2A" /> operation.</summary>
+        <value>The routed command that performs the <see cref="System.Windows.Controls.DocumentViewer.FitToHeight%2A" /> operation.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -427,7 +590,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Fits the document to the current <see cref="System.Windows.Controls.DocumentViewer.MaxPagesAcross%2A" /> property setting.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -448,8 +611,8 @@
         <Parameter Name="pagesAcross" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="pagesAcross">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="pagesAcross">The maximum number of pages to fit in the current <see cref="System.Windows.Controls.DocumentViewer.ExtentWidth%2A" />.</param>
+        <summary>Fits the document to a specified maximum number of page widths.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -467,8 +630,8 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see cref="T:System.Windows.Input.RoutedUICommand" /> that performs the <see cref="System.Windows.Controls.DocumentViewer.MaxPagesAcross%2A" /> operation.</summary>
+        <value>The routed command that performs the <see cref="System.Windows.Controls.DocumentViewer.MaxPagesAcross%2A" /> operation.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -487,7 +650,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Fits a single page to the width of the current viewport.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -505,9 +668,16 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the <see cref="T:System.Windows.Input.RoutedUICommand" /> that performs the <see cref="System.Windows.Controls.DocumentViewer.FitToWidth%2A" /> operation.</summary>
+        <value>The routed command that performs the <see cref="System.Windows.Controls.DocumentViewer.FitToWidth%2A" /> operation.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ <xref:System.Windows.Controls.DocumentViewer.FitToWidth%2A> sets the <xref:System.Windows.Controls.DocumentViewer> control to display a single page width with pages zoomed to the width of the current viewport.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetPageViewsCollection">
@@ -527,9 +697,9 @@
         <Parameter Name="changed" Type="System.Boolean&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="changed">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="changed">When this method returns, contains <see langword="true" /> if the collection of <see cref="T:System.Windows.Controls.Primitives.DocumentPageView" /> elements changed after the last call to GetPageViewsCollection; otherwise, <see langword="false" />.</param>
+        <summary>Returns a collection of <see cref="T:System.Windows.Controls.Primitives.DocumentPageView" /> elements that are currently displayed.</summary>
+        <returns>The collection of <see cref="T:System.Windows.Controls.Primitives.DocumentPageView" /> elements that are currently displayed in the <see cref="T:System.Windows.Controls.DocumentViewer" /> control.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -547,9 +717,29 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the horizontal scroll position.</summary>
+        <value>The current horizontal scroll position specified in device independent pixels.  The initial default is 0.0.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Setting the HorizontalOffset property causes the <xref:System.Windows.Controls.DocumentViewer> control to scroll to the specified horizontal offset.  
+  
+ The horizontal offset is measured from the left edge of the visible content area.  
+  
+ When setting this property in [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)], you cannot use the unit qualifiers (such as `in` or `cm`) that are enabled for many other "Width" or "Horizontal" properties.  
+  
+<a name="dependencyPropertyInfo_HorizontalOffset"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.HorizontalOffsetProperty>|  
+|Metadata properties set to **true**|<xref:System.Windows.FrameworkPropertyMetadata.BindsTwoWayByDefault%2A>|  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">The value specified to set is negative.</exception>
       </Docs>
     </Member>
     <Member MemberName="HorizontalOffsetProperty">
@@ -566,7 +756,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.HorizontalOffset%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -584,9 +774,27 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the horizontal space between pages.</summary>
+        <value>The horizontal space between displayed pages specified in device independent pixels.  The default is 10.0.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Setting the HorizontalPageSpacing property adjusts the horizontal spacing between pages.  
+  
+ When setting this property in [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)], you cannot use the unit qualifiers (such as `in` or `cm`) that are enabled for many other "Width" or "Horizontal" properties.  
+  
+<a name="dependencyPropertyInfo_HorizontalPageSpacing"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.HorizontalPageSpacingProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentException">The value specified to set is negative.</exception>
       </Docs>
     </Member>
     <Member MemberName="HorizontalPageSpacingProperty">
@@ -603,7 +811,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.HorizontalPageSpacing%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -622,8 +830,35 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Zooms in on the document content by one zoom step.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The following are the zoom level increments.  
+  
+ `5%   100%   1200%`  
+  
+ `10%   125%   1600%`  
+  
+ `25%   150%   2000%`  
+  
+ `33%   175%   2400%`  
+  
+ `50%   200%   3200%`  
+  
+ `66%   300%   4000%`  
+  
+ `75%   400%   5000%`  
+  
+ `800%`  
+  
+ The maximum zoom value is 5000%.  After the maximum zoom level is reached, IncreaseZoom has no more effect.  
+  
+ The <xref:System.Windows.Controls.DocumentViewer.CanIncreaseZoom%2A> property returns `false` when the maximum zoom level is reached.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="MaxPagesAcross">
@@ -640,9 +875,24 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets a value defining the maximum number of page columns to display.</summary>
+        <value>The maximum number of page columns to be displayed.  The default is 1.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ MaxPagesAcross can be set to a positive integer value from 1 to 32, inclusive.  
+  
+<a name="dependencyPropertyInfo_MaxPagesAcross"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.MaxPagesAcrossProperty>|  
+|Metadata properties set to `true`|<xref:System.Windows.FrameworkPropertyMetadata.BindsTwoWayByDefault%2A>|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="MaxPagesAcrossProperty">
@@ -659,7 +909,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.MaxPagesAcross%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -678,7 +928,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Scrolls the document content down 16 device independent pixels.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -697,7 +947,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Scrolls the document content left 16 device independent pixels.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -716,7 +966,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Scrolls the document content right 16 device independent pixels.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -735,7 +985,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Scrolls the document content up 16 device independent pixels.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -754,7 +1004,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.FrameworkElement.ApplyTemplate%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -777,11 +1027,18 @@
         <Parameter Name="pageNumber" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="element">To be added.</param>
-        <param name="rect">To be added.</param>
-        <param name="pageNumber">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="element">The object to make visible.</param>
+        <param name="rect">The rectangular region of the <c>element</c> to make visible.</param>
+        <param name="pageNumber">The number of the page to be viewed.</param>
+        <summary>Responds to the <see cref="System.Windows.Controls.Primitives.DocumentViewerBase.OnBringIntoView%2A" /> method from the <see cref="T:System.Windows.Controls.Primitives.DocumentViewerBase" /> implementation.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The base implementation will move the master page to the page on which the element occurs.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OnCreateAutomationPeer">
@@ -799,8 +1056,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Creates and returns an <see cref="T:System.Windows.Automation.Peers.AutomationPeer" /> for this <see cref="T:System.Windows.Controls.DocumentViewer" /> control.</summary>
+        <returns>The new <see cref="T:System.Windows.Automation.Peers.DocumentViewerAutomationPeer" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -819,7 +1076,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.DecreaseZoom%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -846,8 +1103,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Responds to calls when the document to display is changed.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ OnDocumentChanged responds to calls when the <xref:System.Windows.Controls.Primitives.DocumentViewerBase.Document%2A> property of the <xref:System.Windows.Controls.DocumentViewer> control is set to display a new document.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OnFindCommand">
@@ -865,7 +1129,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.Find%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -884,7 +1148,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.Primitives.DocumentViewerBase.FirstPage%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -903,7 +1167,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.FitToHeight%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -922,7 +1186,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.FitToMaxPagesAcross%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -943,8 +1207,8 @@
         <Parameter Name="pagesAcross" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="pagesAcross">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="pagesAcross">The number of pages to fit across the content area.</param>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.FitToMaxPagesAcross%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -963,7 +1227,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.FitToWidth%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -984,9 +1248,16 @@
         <Parameter Name="pageNumber" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="pageNumber">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="pageNumber">The page number to position to.</param>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.Primitives.DocumentViewerBase.GoToPage%2A" /> method.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ `pageNumber` is a positive (non-negative, non-zero) page number that starts at one (1).  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OnIncreaseZoomCommand">
@@ -1004,7 +1275,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.IncreaseZoom%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1025,8 +1296,8 @@
         <Parameter Name="e" Type="System.Windows.Input.KeyEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data.</param>
+        <summary>Responds to <see cref="E:System.Windows.UIElement.KeyDown" /> events.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1045,7 +1316,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.Primitives.DocumentViewerBase.LastPage%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1066,8 +1337,8 @@
         <Parameter Name="e" Type="System.Windows.Input.MouseButtonEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data.</param>
+        <summary>Responds to <see cref="E:System.Windows.UIElement.MouseLeftButtonDown" /> events.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1086,7 +1357,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.MoveDown%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1105,7 +1376,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.MoveLeft%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1124,7 +1395,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.MoveRight%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1143,7 +1414,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.MoveUp%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1162,7 +1433,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.Primitives.DocumentViewerBase.NextPage%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1183,8 +1454,8 @@
         <Parameter Name="e" Type="System.Windows.Input.MouseWheelEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">The event data.</param>
+        <summary>Responds to <see cref="E:System.Windows.UIElement.PreviewMouseWheel" /> events.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1203,7 +1474,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.Primitives.DocumentViewerBase.PreviousPage%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1222,7 +1493,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.ScrollPageDown%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1241,7 +1512,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.ScrollPageLeft%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1260,7 +1531,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.ScrollPageRight%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1279,7 +1550,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.ScrollPageUp%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1298,7 +1569,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Responds to calls to the <see cref="System.Windows.Controls.DocumentViewer.ViewThumbnails%2A" /> method.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1317,7 +1588,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Scrolls down one viewport.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1336,7 +1607,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Scrolls left one viewport.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1355,7 +1626,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Scrolls right one viewport.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1374,7 +1645,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Scrolls up one viewport.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1392,9 +1663,24 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets a value that indicates whether drop-shadow page borders are displayed.</summary>
+        <value>
+          <see langword="true" /> if drop-shadow borders are displayed; otherwise, <see langword="false" />.  The default is <see langword="true" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="dependencyPropertyInfo_ShowPageBorders"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.ShowPageBordersProperty>|  
+|Metadata properties set to `true`|<xref:System.Windows.FrameworkPropertyMetadata.BindsTwoWayByDefault%2A>|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ShowPageBordersProperty">
@@ -1411,7 +1697,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.ShowPageBorders%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1429,9 +1715,28 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the vertical scroll position.</summary>
+        <value>The current vertical scroll position offset in device independent pixels.  The default is 0.0.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ VerticalOffset must be set with non-negative offset values.  Setting a negative value raises an <xref:System.ArgumentException> exception.  
+  
+ The vertical offset is measured from the top of the visible content area.  
+  
+ When setting this property in [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)], you cannot use the unit qualifiers (such as `in` or `cm`) that are enabled for many other "Height" or "Vertical" properties.  
+  
+<a name="dependencyPropertyInfo_VerticalOffset"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.VerticalOffsetProperty>|  
+|Metadata properties set to `true`|<xref:System.Windows.FrameworkPropertyMetadata.BindsTwoWayByDefault%2A>|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="VerticalOffsetProperty">
@@ -1448,7 +1753,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.VerticalOffset%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1466,9 +1771,28 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the vertical spacing between displayed pages.</summary>
+        <value>The vertical space between displayed pages in device independent pixels.  The default is 10.0.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Setting the VerticalPageSpacing property adjusts the vertical spacing between pages to the specified value.  
+  
+ The VerticalPageSpacing value must be non-negative.  Setting this property to a negative value will raise an <xref:System.ArgumentException> exception.  
+  
+ When setting this property in [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)], you cannot use the unit qualifiers (such as `in` or `cm`) that are enabled for many other "Height" or "Vertical" properties.  
+  
+<a name="dependencyPropertyInfo_VerticalPageSpacing"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.VerticalPageSpacingProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="VerticalPageSpacingProperty">
@@ -1485,7 +1809,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.VerticalPageSpacing%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1503,9 +1827,23 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the vertical size of the scrollable content area.</summary>
+        <value>The vertical size of the scrollable content area  in device independent pixels.  The default is 0.0.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="dependencyPropertyInfo_ViewportHeight"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.ViewportHeightProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ViewportHeightProperty">
@@ -1522,7 +1860,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.ViewportHeight%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1540,9 +1878,23 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the horizontal size of the scrollable content area.</summary>
+        <value>The horizontal size of the scrollable content area in device independent pixels.  The default is 0.0.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+  
+<a name="dependencyPropertyInfo_ViewportWidth"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.ViewportWidthProperty>|  
+|Metadata properties set to `true`|None|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ViewportWidthProperty">
@@ -1559,7 +1911,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.ViewportWidth%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1578,7 +1930,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Displays a thumbnail representation of the pages.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1596,9 +1948,22 @@
         <ReturnType>System.Windows.Input.RoutedUICommand</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the <see cref="T:System.Windows.Input.RoutedUICommand" /> that performs the <see cref="System.Windows.Controls.DocumentViewer.ViewThumbnails%2A" /> operation.</summary>
+        <value>The routed command that performs the <see cref="System.Windows.Controls.DocumentViewer.ViewThumbnails%2A" /> operation.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ ViewThumbnailsCommand sizes and arranges the view to display a thumbnail preview of each page.  
+  
+ The following table shows the keyboard shortcut key associated with this command.  
+  
+|||  
+|-|-|  
+|Shortcut Key|[none]|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Zoom">
@@ -1615,9 +1980,28 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the document zoom percentage.</summary>
+        <value>The zoom percentage expressed as a value, 5.0 to 5000.0.  The default is 100.0, which corresponds to 100.0%.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Setting this property causes the <xref:System.Windows.Controls.DocumentViewer> control to zoom to the specified value.  
+  
+ The Zoom property must be a value between 5.0 to 5000.0 (inclusive), which corresponds to a percentage range 5.0% to 5000.0%.  
+  
+ Actions or commands that require a layout update may change the Zoom property setting.  For example, changing the value of <xref:System.Windows.Controls.DocumentViewer.MaxPagesAcross%2A>, calling the <xref:System.Windows.Controls.DocumentViewer.FitToHeight%2A> method, or invoking the <xref:System.Windows.Controls.DocumentViewer.FitToHeightCommand%2A> can cause the Zoom setting to change.  
+  
+<a name="dependencyPropertyInfo_Zoom"></a>   
+## Dependency Property Information  
+  
+|||  
+|-|-|  
+|Identifier field|<xref:System.Windows.Controls.DocumentViewer.ZoomProperty>|  
+|Metadata properties set to `true`|<xref:System.Windows.FrameworkPropertyMetadata.BindsTwoWayByDefault%2A>|  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ZoomProperty">
@@ -1634,7 +2018,7 @@
         <ReturnType>System.Windows.DependencyProperty</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Identifies the <see cref="System.Windows.Controls.DocumentViewer.Zoom%2A" /> dependency property.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

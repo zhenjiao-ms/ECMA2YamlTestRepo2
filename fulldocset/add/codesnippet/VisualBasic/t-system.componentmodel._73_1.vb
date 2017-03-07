@@ -1,62 +1,72 @@
-Imports System
-Imports System.CodeDom
 Imports System.ComponentModel
-Imports System.ComponentModel.Design
-Imports System.ComponentModel.Design.Serialization
-Imports System.Drawing
-Imports System.Windows.Forms
 
-Namespace CodeDomSerializerSample
-   Friend Class MyCodeDomSerializer
-      Inherits CodeDomSerializer
+Public Class EmployeeListSource
+    Inherits Component
+    Implements IListSource
 
-      Public Overrides Function Deserialize(ByVal manager As IDesignerSerializationManager, _
-                                                ByVal codeObject As Object) As Object
-         ' This is how we associate the component with the serializer.
-         Dim baseClassSerializer As CodeDomSerializer = CType(manager.GetSerializer( _
-                GetType(MyComponent).BaseType, GetType(CodeDomSerializer)), CodeDomSerializer)
+    <System.Diagnostics.DebuggerNonUserCode()> _
+Public Sub New(ByVal Container As System.ComponentModel.IContainer)
+        MyClass.New()
 
-         ' This is the simplest case, in which the class just calls the base class
-         '  to do the work. 
-         Return baseClassSerializer.Deserialize(manager, codeObject)
-      End Function 'Deserialize
+        'Required for Windows.Forms Class Composition Designer support
+        Container.Add(Me)
 
-      Public Overrides Function Serialize(ByVal manager As IDesignerSerializationManager, _
-                                            ByVal value As Object) As Object
-         ' Associate the component with the serializer in the same manner as with
-         '  Deserialize
-         Dim baseClassSerializer As CodeDomSerializer = CType(manager.GetSerializer( _
-                GetType(MyComponent).BaseType, GetType(CodeDomSerializer)), CodeDomSerializer)
+    End Sub
 
-         Dim codeObject As Object = baseClassSerializer.Serialize(manager, value)
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Public Sub New()
+        MyBase.New()
 
-         ' Anything could be in the codeObject.  This sample operates on a
-         '  CodeStatementCollection.
-         If TypeOf codeObject Is CodeStatementCollection Then
-            Dim statements As CodeStatementCollection = CType(codeObject, CodeStatementCollection)
+        'This call is required by the Component Designer.
+        InitializeComponent()
 
-            ' The code statement collection is valid, so add a comment.
-            Dim commentText As String = "This comment was added to this object by a custom serializer."
-            Dim comment As New CodeCommentStatement(commentText)
-            statements.Insert(0, comment)
-         End If
-         Return codeObject
-      End Function 'Serialize
-   End Class 'MyCodeDomSerializer
+    End Sub
 
-   <DesignerSerializer(GetType(MyCodeDomSerializer), GetType(CodeDomSerializer))> _
-   Public Class MyComponent
-      Inherits Component
-      Private localProperty As String = "Component Property Value"
+    'Component overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing AndAlso components IsNot Nothing Then
+            components.Dispose()
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
 
-      Public Property LocalProp() As String
-         Get
-            Return localProperty
-         End Get
-         Set(ByVal Value As String)
-            localProperty = Value
-         End Set
-      End Property
-   End Class 'MyComponent
+    'Required by the Component Designer
+    Private components As System.ComponentModel.IContainer
 
-End Namespace
+    'NOTE: The following procedure is required by the Component Designer
+    'It can be modified using the Component Designer.
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        components = New System.ComponentModel.Container()
+    End Sub
+
+#Region "IListSource Members"
+
+    Public ReadOnly Property ContainsListCollection() As Boolean Implements System.ComponentModel.IListSource.ContainsListCollection
+        Get
+            Return False
+        End Get
+    End Property
+
+    Public Function GetList() As System.Collections.IList Implements System.ComponentModel.IListSource.GetList
+
+        Dim ble As New BindingList(Of Employee)
+
+        If Not Me.DesignMode Then
+            ble.Add(New Employee("Aaberg, Jesper", 26000000))
+            ble.Add(New Employee("Cajhen, Janko", 19600000))
+            ble.Add(New Employee("Furse, Kari", 19000000))
+            ble.Add(New Employee("Langhorn, Carl", 16000000))
+            ble.Add(New Employee("Todorov, Teodor", 15700000))
+            ble.Add(New Employee("Vereb�lyi, �gnes", 15700000))
+        End If
+
+        Return ble
+
+    End Function
+
+#End Region
+
+End Class

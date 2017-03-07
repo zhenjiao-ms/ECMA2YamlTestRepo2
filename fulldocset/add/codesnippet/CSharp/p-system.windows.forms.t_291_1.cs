@@ -1,59 +1,50 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
 
-namespace WindowsApplication7
-{
-	public class Form1 : Form
+	// Declare the TreeView control.
+	internal System.Windows.Forms.TreeView TreeView1;
+
+	// Initialize the TreeView to blend with the form, giving it the 
+	// same color as the form and no border.
+	private void InitializeTreeView()
 	{
-		private ToolStripButton toolStripButton1;
-		private ToolStrip toolStrip1;
-	
-		public Form1()
-		{
-			InitializeComponent();
-		}
-		[STAThread]
-		static void Main()
-		{
-			Application.EnableVisualStyles();
-			Application.Run(new Form1());
-		}
 
-		private void InitializeComponent()
-		{
-			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-			this.toolStrip1.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// toolStrip1
-			// 
-			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
-			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.TabIndex = 0;
-			this.toolStrip1.Text = "toolStrip1";
-			// 
-			// toolStripButton1
-			this.toolStripButton1.AutoToolTip = false;
-			this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-			this.toolStripButton1.Name = "toolStripButton1";
-			this.toolStripButton1.Text = "Button1";
-			this.toolStripButton1.ToolTipText = "ToolTip for Button1.";
-			// Form1
-			// 
-			this.ClientSize = new System.Drawing.Size(292, 273);
-			this.Controls.Add(this.toolStrip1);
-			this.Name = "Form1";
-			this.toolStrip1.ResumeLayout(false);
-			this.ResumeLayout(false);
-			this.PerformLayout();
+		// Create a new TreeView control and set the location and size.
+		this.TreeView1 = new System.Windows.Forms.TreeView();
+		this.TreeView1.Location = new System.Drawing.Point(72, 48);
+		this.TreeView1.Size = new System.Drawing.Size(200, 200);
 
-		}
+		// Set the BorderStyle property to none, the BackColor property to  
+		// the form's backcolor, and the Scrollable property to false.  
+		// This allows the TreeView to blend in form.
+
+		this.TreeView1.BorderStyle = BorderStyle.None;
+		this.TreeView1.BackColor = this.BackColor;
+		this.TreeView1.Scrollable = false;
+
+		// Set the HideSelection property to false to keep the 
+		// selection highlighted when the user leaves the control. 
+		// This helps it blend with form.
+		this.TreeView1.HideSelection = false;
+
+		// Set the ShowRootLines and ShowLines properties to false to 
+		// give the TreeView a list-like appearance.
+		this.TreeView1.ShowRootLines = false;
+		this.TreeView1.ShowLines = false;
+
+		// Add the nodes.
+		this.TreeView1.Nodes.AddRange(new TreeNode[]
+			{new TreeNode("Features", 
+				new TreeNode[]{
+				new TreeNode("Full Color"), 
+				new TreeNode("Project Wizards"), 
+				new TreeNode("Visual C# and Visual Basic Support")}), 
+				new TreeNode("System Requirements", 
+				new TreeNode[]{
+					new TreeNode("Pentium 133 MHz or faster processor "),
+					new TreeNode("Windows 98 or later"), 
+					new TreeNode("100 MB Disk space")})
+			});
+
+		// Set the tab index and add the TreeView to the form.
+		this.TreeView1.TabIndex = 0;
+		this.Controls.Add(this.TreeView1);
 	}
-}

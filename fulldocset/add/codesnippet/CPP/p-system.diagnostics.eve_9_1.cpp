@@ -1,50 +1,52 @@
-   EventSourceCreationData ^ mySourceData = gcnew EventSourceCreationData( "","" );
-   bool registerSource = true;
-   
-   // Process input parameters.
-   if ( args->Length > 1 )
+#using <System.dll>
+#using <System.Configuration.Install.dll>
+
+using namespace System;
+using namespace System::Configuration::Install;
+using namespace System::Diagnostics;
+using namespace System::ComponentModel;
+
+[RunInstaller(true)]
+public ref class SampleEventLogInstaller : public Installer
+{
+private:
+   EventLogInstaller^ myEventLogInstaller;
+
+public:
+   SampleEventLogInstaller()
    {
       
-      // Require at least the source name.
-      mySourceData->Source = args[ 1 ];
-      if ( args->Length > 2 )
-      {
-         mySourceData->LogName = args[ 2 ];
-      }
-
-      if ( args->Length > 3 )
-      {
-         mySourceData->MachineName = args[ 3 ];
-      }
-
-      if ( (args->Length > 4) && (args[ 4 ]->Length > 0) )
-      {
-         mySourceData->MessageResourceFile = args[ 4 ];
-      }
-   }
-   else
-   {
+      // Create an instance of an EventLogInstaller.
+      myEventLogInstaller = gcnew EventLogInstaller;
       
-      // Display a syntax help message.
-      Console::WriteLine( "Input:" );
-      Console::WriteLine( " source [event log] [machine name] [resource file]" );
-      registerSource = false;
-   }
-
-   
-   // Set defaults for parameters missing input.
-   if ( mySourceData->MachineName->Length == 0 )
-   {
+      // Set the source name of the event log.
+      myEventLogInstaller->Source = "ApplicationEventSource";
       
-      // Default to the local computer.
-      mySourceData->MachineName = ".";
-   }
-
-   if ( mySourceData->LogName->Length == 0 )
-   {
+      // Set the event log into which the source writes entries.
+      //myEventLogInstaller.Log = "MyCustomLog";
+      myEventLogInstaller->Log = "myNewLog";
       
-      // Default to the Application log.
-      mySourceData->LogName = "Application";
+      // Set the resource file for the event log.
+      // The message strings are defined in EventLogMsgs.mc; the message 
+      // identifiers used in the application must match those defined in the
+      // corresponding message resource file. The messages must be built
+      // into a Win32 resource library and copied to the target path on the
+      // system.  
+      myEventLogInstaller->CategoryResourceFile =
+             Environment::SystemDirectory + "\\eventlogmsgs.dll";
+      myEventLogInstaller->CategoryCount = 3;
+      myEventLogInstaller->MessageResourceFile =
+             Environment::SystemDirectory + "\\eventlogmsgs.dll";
+      myEventLogInstaller->ParameterResourceFile =
+             Environment::SystemDirectory + "\\eventlogmsgs.dll";
+
+      // Add myEventLogInstaller to the installer collection.
+      Installers->Add( myEventLogInstaller );
    }
 
-   
+};
+
+int main()
+{
+   Console::WriteLine( "Usage: InstallUtil.exe [<install>.exe | <install>.dll]" );
+}

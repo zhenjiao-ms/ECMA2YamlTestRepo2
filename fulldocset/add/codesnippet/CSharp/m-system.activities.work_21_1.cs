@@ -53,7 +53,7 @@
                     e.Reason.GetType().FullName,
                     e.Reason.Message);
             };
-
+            
             wfApp.Idle = delegate(WorkflowApplicationIdleEventArgs e)
             {
                 // Perform any processing that should occur
@@ -89,7 +89,3 @@
 
             // Run the workflow.
             wfApp.Run();
-
-            Thread.Sleep(TimeSpan.FromSeconds(1));
-
-            wfApp.Abort();

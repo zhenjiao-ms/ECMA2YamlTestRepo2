@@ -1,32 +1,67 @@
-Imports System.Drawing
-Imports System.Windows.Forms
+    ' Declare the TreeView.
+    Private WithEvents treeView1 As TreeView
+    Private textBox1 As TextBox
+    Private WithEvents button1 As Button
+    
+    
+    Private Sub InitializeTreeView1()
 
-Public Class Form1
-    Inherits Form
-    Private tabControl1 As TabControl
-    Private tabPage1 As TabPage
-    Private tabPage2 As TabPage
+        ' Create the TreeView
+        treeView1 = New TreeView()
+        treeView1.Size = New Size(200, 200)
 
-    Public Sub New()
-        Me.tabControl1 = New TabControl()
-        Me.tabPage1 = New TabPage()
-        Me.tabPage2 = New TabPage()
+        ' Create the button and set some basic properties. 
+        button1 = New Button()
+        button1.Location = New Point(205, 138)
+        button1.Text = "Set Sorter"
 
-        ' Sizes the tabs of tabControl1.
-        Me.tabControl1.ItemSize = New Size(90, 50)
+        ' Create the root nodes.
+        Dim docNode As New TreeNode("Documents")
+        Dim spreadSheetNode As New TreeNode("Spreadsheets")
 
-        ' Makes the tab width definable. 
-        Me.tabControl1.SizeMode = TabSizeMode.Fixed
+        ' Add some additional nodes.
+        spreadSheetNode.Nodes.Add("payroll.xls")
+        spreadSheetNode.Nodes.Add("checking.xls")
+        spreadSheetNode.Nodes.Add("tracking.xls")
+        docNode.Nodes.Add("phoneList.doc")
+        docNode.Nodes.Add("resume.doc")
 
-        Me.tabControl1.Controls.AddRange(New Control() {tabPage1, tabPage2})
-        Me.tabControl1.Location = New Point(35, 25)
-        Me.tabControl1.Size = New Size(220, 220)
+        ' Add the root nodes to the TreeView.
+        treeView1.Nodes.Add(spreadSheetNode)
+        treeView1.Nodes.Add(docNode)
 
-        Me.Size = New Size(300, 300)
-        Me.Controls.Add(tabControl1)
+        ' Add the TreeView to the form.
+        Controls.Add(treeView1)
+        Controls.Add(button1)
+
     End Sub
+    
+    
+    ' Set the TreeViewNodeSorter property to a new instance
+    ' of the custom sorter.
+    Private Sub button1_Click(ByVal sender As Object, _
+        ByVal e As EventArgs) Handles button1.Click
 
-    Shared Sub Main()
-        Application.Run(New Form1())
-    End Sub
-End Class
+        treeView1.TreeViewNodeSorter = New NodeSorter()
+
+    End Sub 'button1_Click
+    
+    ' Create a node sorter that implements the IComparer interface.
+    
+    Public Class NodeSorter
+        Implements IComparer
+        
+        ' Compare the length of the strings, or the strings
+        ' themselves, if they are the same length.
+        Public Function Compare(ByVal x As Object, ByVal y As Object) _
+            As Integer Implements IComparer.Compare
+            Dim tx As TreeNode = CType(x, TreeNode)
+            Dim ty As TreeNode = CType(y, TreeNode)
+           
+            If tx.Text.Length <> ty.Text.Length Then
+                Return tx.Text.Length - ty.Text.Length
+            End If
+            Return String.Compare(tx.Text, ty.Text)
+
+        End Function
+    End Class

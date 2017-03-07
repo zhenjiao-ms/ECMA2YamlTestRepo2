@@ -1,9 +1,20 @@
-Private Sub Form1_FormClosed(sender as Object, e as FormClosedEventArgs) _ 
-     Handles Form1.FormClosed
-
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "CloseReason", e.CloseReason)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"FormClosed Event")
-
-End Sub
+ Private Sub LayeredWindows()
+     ' Gets the version of the layered windows feature.
+     Dim myVersion As Version = _
+        OSFeature.Feature.GetVersionPresent(OSFeature.LayeredWindows)
+        
+     ' Prints whether the feature is available.
+     If (myVersion IsNot Nothing) Then
+         textBox1.Text = "Layered windows feature is installed." & _
+            ControlChars.CrLf
+     Else
+         textBox1.Text = "Layered windows feature is not installed." & _
+            ControlChars.CrLf
+     End If 
+     'This is an alternate way to check whether a feature is present.
+     If OSFeature.Feature.IsPresent(OSFeature.LayeredWindows) Then
+         textBox1.Text &= "Again, layered windows feature is installed."
+     Else
+         textBox1.Text &= "Again, layered windows feature is not installed."
+     End If
+ End Sub

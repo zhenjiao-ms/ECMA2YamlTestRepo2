@@ -12,8 +12,15 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Defines the smallest unit of a code access security permission that is set for a <see cref="T:System.Diagnostics.PerformanceCounter" />.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ For more information on code access security, see [Code Access Security](../Topic/Code%20Access%20Security.md).  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -32,11 +39,23 @@
         <Parameter Name="categoryName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="permissionAccess">To be added.</param>
-        <param name="machineName">To be added.</param>
-        <param name="categoryName">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="permissionAccess">A bitwise combination of the <see cref="T:System.Diagnostics.PerformanceCounterPermissionAccess" /> values. The <see cref="System.Diagnostics.PerformanceCounterPermissionEntry.PermissionAccess%2A" /> property is set to this value.</param>
+        <param name="machineName">The server on which the category of the performance counter resides.</param>
+        <param name="categoryName">The name of the performance counter category (performance object) with which this performance counter is associated.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.Diagnostics.PerformanceCounterPermissionEntry" /> class.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="categoryName" /> is <see langword="null" />.  
+  
+ -or-  
+  
+ <paramref name="machineName" /> is <see langword="null" />.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="permissionAccess" /> is not a valid <see cref="T:System.Diagnostics.PerformanceCounterPermissionAccess" /> value.  
+  
+ -or-  
+  
+ <paramref name="machineName" /> is not a valid computer name.</exception>
       </Docs>
     </Member>
     <Member MemberName="CategoryName">
@@ -53,8 +72,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the name of the performance counter category (performance object).</summary>
+        <value>The name of the performance counter category (performance object).</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -72,8 +91,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the name of the server on which the category of the performance counter resides.</summary>
+        <value>The name of the server on which the category resides.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -91,8 +110,8 @@
         <ReturnType>System.Diagnostics.PerformanceCounterPermissionAccess</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the permission access level of the entry.</summary>
+        <value>A bitwise combination of the <see cref="T:System.Diagnostics.PerformanceCounterPermissionAccess" /> values.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

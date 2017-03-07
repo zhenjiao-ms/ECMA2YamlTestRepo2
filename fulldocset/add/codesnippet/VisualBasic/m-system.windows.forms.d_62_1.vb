@@ -1,15 +1,18 @@
-    Private Sub GetMyData3()
-        ' Creates a new data object using a string and the text format.
-        Dim myString As String = "My new text string"
-        Dim myDataObject As New DataObject(DataFormats.Text, myString)
-        
-        ' Prints the string in a text box with autoconvert = false.
-        If (myDataObject.GetData("System.String", False) IsNot Nothing) Then
-            ' Prints the string in a text box.
-            textBox1.Text = myDataObject.GetData("System.String", False).ToString() & ControlChars.Cr
-        Else
-            textBox1.Text = "Could not find data of the specified format" & ControlChars.Cr
-        End If 
-        ' Prints the string in a text box with autoconvert = true.
-        textBox1.Text += myDataObject.GetData("System.String", True).ToString()
-    End Sub 'GetMyData3
+        Private Sub button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles button1.Click
+            Dim myColorDialog As New ColorDialog()
+            ' Disable selecting a custom color.
+            myColorDialog.AllowFullOpen = False
+            ' Enable the help button.
+            myColorDialog.ShowHelp = True
+            ' Set the initial color to the current color.
+            myColorDialog.Color = myDataGrid.HeaderBackColor
+            ' Show color dialog box.
+            myColorDialog.ShowDialog()
+            ' Set the header background color.   
+            myDataGrid.HeaderBackColor = myColorDialog.Color
+        End Sub 'button1_Click
+
+        ' Reset the header background color.
+        Private Sub button2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles button2.Click
+            myDataGrid.ResetHeaderBackColor()
+        End Sub 'button2_Click

@@ -1,70 +1,42 @@
-      private void AddCustomDataTableStyle()
-      {
-         myDataGridTableStyle1 = new DataGridTableStyle();
-         myDataGridTableStyle2 = new DataGridTableStyle();
+        private ListBox ListBox1 = new ListBox();
+        private void InitializeListBox()
+        {
+            ListBox1.Items.AddRange(new Object[] 
+                { "Red Item", "Orange Item", "Purple Item" });
+            ListBox1.Location = new System.Drawing.Point(81, 69);
+            ListBox1.Size = new System.Drawing.Size(120, 95);
+            ListBox1.DrawMode = DrawMode.OwnerDrawFixed;
+            ListBox1.DrawItem += new DrawItemEventHandler(ListBox1_DrawItem);
+            Controls.Add(ListBox1);
+        }
 
-         MessageBox.Show("LinkColor Before : "
-            +myDataGridTableStyle1.LinkColor);
-         MessageBox.Show("HeaderFont Before : "
-            +myDataGridTableStyle1.HeaderFont);
-         
-         myDataGridTableStyle1.LinkColorChanged +=
-            new System.EventHandler(LinkColorChanged_Handler);
-         myDataGridTableStyle1.HeaderFontChanged 
-            += new System.EventHandler(HeaderFontChanged_Handler);
-         myDataGridTableStyle1.MappingName = "Customers";
+        private void ListBox1_DrawItem(object sender, 
+            System.Windows.Forms.DrawItemEventArgs e)
+        {
+            // Draw the background of the ListBox control for each item.
+            e.DrawBackground();
+            // Define the default color of the brush as black.
+            Brush myBrush = Brushes.Black;
 
-         // Set other properties.
-         myDataGridTableStyle1.AlternatingBackColor = Color.LightGray;
-         myDataGridTableStyle1.LinkColor = Color.Red;         
-         myDataGridTableStyle1.HeaderFont = 
-            new System.Drawing.Font("Verdana",
-               8.25F,
-               System.Drawing.FontStyle.Bold, 
-               System.Drawing.GraphicsUnit.Point,
-               ((System.Byte)(0)));
+            // Determine the color of the brush to draw each item based 
+            // on the index of the item to draw.
+            switch (e.Index)
+            {
+                case 0:
+                    myBrush = Brushes.Red;
+                    break;
+                case 1:
+                    myBrush = Brushes.Orange;
+                    break;
+                case 2:
+                    myBrush = Brushes.Purple;
+                    break;
+            }
 
-         // Add a GridColumnStyle and set its MappingName.             
-         DataGridColumnStyle myBoolCol = new DataGridBoolColumn();
-         myBoolCol.MappingName = "Current";
-         myBoolCol.HeaderText = "IsCurrent Customer";
-         myBoolCol.Width = 150;
-         myDataGridTableStyle1.GridColumnStyles.Add(myBoolCol);
-      
-         // Add a second column style.
-         DataGridColumnStyle myTextCol = new DataGridTextBoxColumn();
-         myTextCol.MappingName = "custName";
-         myTextCol.HeaderText = "Customer Name";
-         myTextCol.Width = 250;
-         myDataGridTableStyle1.GridColumnStyles.Add(myTextCol);
-
-         // Create new ColumnStyle objects
-         DataGridColumnStyle cOrderDate = new DataGridTextBoxColumn();
-         cOrderDate.MappingName = "OrderDate";
-         cOrderDate.HeaderText = "Order Date";
-         cOrderDate.Width = 100;
-
-         // PropertyDescriptor to create a formatted column.
-         PropertyDescriptorCollection myPropertyDescriptorCollection = this.BindingContext
-            [myDataSet, "Customers.custToOrders"].GetItemProperties(); 
-         
-         DataGridColumnStyle csOrderAmount = 
-            new DataGridTextBoxColumn(myPropertyDescriptorCollection["OrderAmount"], "c", true);
-         csOrderAmount.MappingName = "OrderAmount";
-         csOrderAmount.HeaderText = "Total";
-         csOrderAmount.Width = 100;
-              
-         // Add the DataGridTableStyle instances to GridTableStylesCollection.
-         myDataGrid.TableStyles.Add(myDataGridTableStyle1);
-      
-      }
-      private void LinkColorChanged_Handler(object sender,EventArgs e)
-      {         
-        MessageBox.Show("LinkColor changed to 'RED'", "DataGridTableStyle");
-      }
-
-      private void HeaderFontChanged_Handler(object sender,EventArgs e)
-      {                  
-         MessageBox.Show("HeaderFont changed to 'VERDANA'",
-            "DataGridTableStyle");
-      }
+            // Draw the current item text based on the current Font 
+            // and the custom brush settings.
+            e.Graphics.DrawString(ListBox1.Items[e.Index].ToString(), 
+                e.Font, myBrush, e.Bounds, StringFormat.GenericDefault);
+            // If the ListBox has focus, draw a focus rectangle around the selected item.
+            e.DrawFocusRectangle();
+        }

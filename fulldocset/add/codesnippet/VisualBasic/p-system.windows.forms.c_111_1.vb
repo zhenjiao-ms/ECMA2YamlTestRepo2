@@ -1,9 +1,13 @@
-        Private Sub showSelectedButton_Click(ByVal sender As Object, ByVal e As System.EventArgs)
-            Dim selectedIndex As Integer
-            selectedIndex = comboBox1.SelectedIndex
-            Dim selectedItem As Object
-            selectedItem = comboBox1.SelectedItem
-
-            MessageBox.Show("Selected Item Text: " & selectedItem.ToString() & Microsoft.VisualBasic.Constants.vbCrLf & _
-                                "Index: " & selectedIndex.ToString())
-        End Sub
+    Public Sub InstantiateMyCheckBox()
+        ' Create and initialize a CheckBox.   
+        Dim checkBox1 As New CheckBox()
+        
+        ' Make the check box control appear as a toggle button.
+        checkBox1.Appearance = Appearance.Button
+        
+        ' Turn off the update of the display on the click of the control.
+        checkBox1.AutoCheck = False
+        
+        ' Add the check box control to the form.
+        Controls.Add(checkBox1)
+    End Sub 'InstantiateMyCheckBox

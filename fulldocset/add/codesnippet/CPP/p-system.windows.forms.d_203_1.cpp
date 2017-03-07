@@ -1,16 +1,32 @@
-   // Style and number columns.
-   void Button8_Click( Object^ /*sender*/, EventArgs^ /*args*/ )
-   {
-      DataGridViewCellStyle^ style = gcnew DataGridViewCellStyle;
-      style->Alignment = DataGridViewContentAlignment::MiddleCenter;
-      style->ForeColor = Color::IndianRed;
-      style->BackColor = Color::Ivory;
-      IEnumerator^ myEnum1 = dataGridView->Columns->GetEnumerator();
-      while ( myEnum1->MoveNext() )
-      {
-         DataGridViewColumn^ column = safe_cast<DataGridViewColumn^>(myEnum1->Current);
-         column->HeaderCell->Value = column->Index.ToString();
-         column->HeaderCell->Style = style;
-      }
-   }
+private:
+    void DataGridView1_DataError(Object^ sender, DataGridViewDataErrorEventArgs^ anError)
+    {
 
+        MessageBox::Show("Error happened " + anError->Context.ToString());
+
+        if (anError->Context == DataGridViewDataErrorContexts::Commit)
+        {
+            MessageBox::Show("Commit error");
+        }
+        if (anError->Context == DataGridViewDataErrorContexts::CurrentCellChange)
+        {
+            MessageBox::Show("Cell change");
+        }
+        if (anError->Context == DataGridViewDataErrorContexts::Parsing)
+        {
+            MessageBox::Show("parsing error");
+        }
+        if (anError->Context == DataGridViewDataErrorContexts::LeaveControl)
+        {
+            MessageBox::Show("leave control error");
+        }
+
+        if (dynamic_cast<ConstraintException^>(anError->Exception) != nullptr)
+        {
+            DataGridView^ view = (DataGridView^)sender;
+            view->Rows[anError->RowIndex]->ErrorText = "an error";
+            view->Rows[anError->RowIndex]->Cells[anError->ColumnIndex]->ErrorText = "an error";
+
+            anError->ThrowException = false;
+        }
+    }

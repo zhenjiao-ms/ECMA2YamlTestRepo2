@@ -1,1 +1,2 @@
-		int maxConnections = binding.MaxConnections;
+		TransferMode transferMode =
+			binding.TransferMode;

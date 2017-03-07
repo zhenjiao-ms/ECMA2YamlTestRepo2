@@ -1,23 +1,26 @@
 private:
-   void GetDataPresent2()
+   void GetFormats2()
    {
-      // Creates a component to store in the data object.
-      Component^ myComponent = gcnew Component;
-
-      // Creates a new data object and assigns it the component.
-      DataObject^ myDataObject = gcnew DataObject( myComponent );
-
-      // Creates a type to store the type of data.
-      Type^ myType = myComponent->GetType();
-
-      // Checks whether the specified data type exists in the object.
-      if ( myDataObject->GetDataPresent( myType ) )
-      {
-         MessageBox::Show( "The specified data is stored in the data object." );
-
-         // Displays the type of data.
-         textBox1->Text = "The data type is " + myDataObject->GetData( myType )->GetType()->Name + ".";
-      }
-      else
-            MessageBox::Show( "The specified data is not stored in the data object." );
+      // Creates a new data object using a string and the UnicodeText format.
+      DataObject^ myDataObject = gcnew DataObject( DataFormats::UnicodeText,"My text string" );
+      
+      // Gets the original data formats in the data object by setting the automatic
+      // conversion parameter to false.
+      array<String^>^myFormatsArray = myDataObject->GetFormats( false );
+      
+      // Stores the results in a string.
+      String^ theResult = "The original format associated with the data is:\n";
+      for ( int i = 0; i < myFormatsArray->Length; i++ )
+         theResult = theResult + myFormatsArray[ i ] + "\n";
+      
+      // Gets all data formats and data conversion formats for the data object.
+      myFormatsArray = myDataObject->GetFormats( true );
+      
+      // Stores the results in the string.
+      theResult = theResult + "\nThe data format(s) and conversion format(s) associated with the data are:\n";
+      for ( int i = 0; i < myFormatsArray->Length; i++ )
+         theResult = theResult + myFormatsArray[ i ] + "\n";
+      
+      // Displays the results.
+      MessageBox::Show( theResult );
    }

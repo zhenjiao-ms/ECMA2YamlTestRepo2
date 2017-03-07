@@ -1,26 +1,18 @@
-protected override void OnTextChanged(System.EventArgs e)
-{
-   try
-   {
-      // Convert the text to a Double and determine
-      // if it is a negative number.
-      if(double.Parse(this.Text) < 0)
-      {
-         // If the number is negative, display it in Red.
-         this.ForeColor = Color.Red;
-      }
-      else
-      {
-         // If the number is not negative, display it in Black.
-         this.ForeColor = Color.Black;
-      }
-   }
-   catch
-   {
-      // If there is an error, display the 
-      // text using the system colors.
-      this.ForeColor = SystemColors.ControlText;
-   }
-   
-   base.OnTextChanged(e);
-}
+private void DemonstrateRefresh(){
+    // Create an array with ten elements and bind to a TextBox.
+    string[] myArray= new string[10];
+    for(int i = 0; i <10; i++){
+       myArray[i] = "item " + i;
+    }
+    textBox1.DataBindings.Add ("Text",myArray,"");
+    // Change one value.
+    myArray[0]= "New value";
+
+    // Uncomment the next line to refresh the CurrencyManager.
+    // RefreshGrid(myArray);
+ }
+ private void RefreshGrid(object dataSource){
+    CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataSource];
+    myCurrencyManager.Refresh();
+ }
+      

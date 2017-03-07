@@ -1,28 +1,24 @@
-    using System.Threading.Tasks;   
-    class Test
-    {
-        static int N = 1000;
+using System;
+using System.Threading.Tasks;
 
-        static void TestMethod()
-        {
-            // Using a named method.
-            Parallel.For(0, N, Method2);
-
-            // Using an anonymous method.
-            Parallel.For(0, N, delegate(int i)
-            {
-                // Do Work.
-            });
-
-            // Using a lambda expression.
-            Parallel.For(0, N, i =>
-            {
-                // Do Work.
-            });
-        }
-
-        static void Method2(int i)
-        {
-            // Do work.
-        }
-    }
+public class Example
+{
+   public static void Main()
+   {
+      var t = Task<int>.Run( () => {
+                                      // Just loop.
+                                      int max = 1000000;
+                                      int ctr = 0;
+                                      for (ctr = 0; ctr <= max; ctr++) {
+                                         if (ctr == max / 2 && DateTime.Now.Hour <= 12) {
+                                            ctr++;
+                                            break;
+                                         }
+                                      }
+                                      return ctr;
+                                    } );
+      Console.WriteLine("Finished {0:N0} iterations.", t.Result);
+   }
+}
+// The example displays output like the following:
+//        Finished 1,000,001 loop iterations.

@@ -1,53 +1,193 @@
+//
+// This example signs an XML file using an
+// envelope signature. It then verifies the 
+// signed XML.
+//
 using System;
 using System.Security.Cryptography;
-public class OidSample
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography.Xml;
+using System.Text;
+using System.Xml;
+
+public class SignVerifyEnvelope
 {
-	public static void Main()
-	{
-		// Assign values to strings.
-		string Value1 = "1.2.840.113549.1.1.1";
-		string Name1 = "3DES";
-		string Value2 = "1.3.6.1.4.1.311.20.2";
-		string InvalidName = "This name is not a valid name";
-		string InvalidValue = "1.1.1.1.1.1.1.1";
 
-		// Create new Oid objects using the specified values.
-		// Note that the corresponding Value or Friendly Name property is automatically added to the object.
-		Oid o1 = new Oid(Value1);
-		Oid o2 = new Oid(Name1);
+    public static void Main(String[] args)
+    {
+        // Generate a signing key.
+        RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
 
-		// Create a new Oid object using the specified Value and Friendly Name properties.
-		// Note that the two are not compared to determine if the Value is associated 
-		//  with the Friendly Name.
-		Oid o3 = new Oid(Value2, InvalidName);
+        string xsl = @"
+    <xs:transform xmlns:xs='http://www.w3.org/1999/XSL/Transform' version='1.0'>
+        <xs:template match='/'>
+            <xs:apply-templates/>
+        </xs:template>
+        <xs:template match='ElementToTransform'> 
+            <transformedElement/>
+        </xs:template>
+    </xs:transform>";
 
-		//Create a new Oid object using the specified Value. Note that if the value
-		//  is invalid or not known, no value is assigned to the Friendly Name property.
-		Oid o4 = new Oid(InvalidValue);
+        try
+        {
+            // Create an XML file to sign.
+            CreateSomeXml("Example.xml");
+            Console.WriteLine("New XML file created.");
 
-		//Write out the property information of the Oid objects.
-		Console.WriteLine("Oid1: Automatically assigned Friendly Name: {0}, {1}", o1.FriendlyName, o1.Value);
-		Console.WriteLine("Oid2: Automatically assigned Value: {0}, {1}", o2.FriendlyName, o2.Value);
-		Console.WriteLine("Oid3: Name and Value not compared: {0}, {1}", o3.FriendlyName, o3.Value);
-		Console.WriteLine("Oid4: Invalid Value used: {0}, {1} {2}", o4.FriendlyName, o4.Value, Environment.NewLine);
+            // Sign the XML that was just created and save it in a 
+            // new file.
+            SignXmlFile("Example.xml", "SignedExample.xml", Key, xsl);
+            Console.WriteLine("XML file signed.");
 
-		//Create an Oid collection and add several Oid objects.
-		OidCollection oc = new OidCollection();
-		oc.Add(o1);
-		oc.Add(o2);
-		oc.Add(o3);
-		Console.WriteLine("Number of Oids in the collection: {0}", oc.Count);
-		Console.WriteLine("Is synchronized: {0} {1}", oc.IsSynchronized, Environment.NewLine);
+            // Verify the signature of the signed XML.
+            Console.WriteLine("Verifying signature...");
+            bool result = VerifyXmlFile("SignedExample.xml");
 
-		//Create an enumerator for moving through the collection.
-		OidEnumerator oe = oc.GetEnumerator();
-		//You must execute a MoveNext() to get to the first item in the collection.
-		oe.MoveNext();
-		// Write out Oids in the collection.
-		Console.WriteLine("First Oid in collection: {0},{1}", oe.Current.FriendlyName,oe.Current.Value);
-		oe.MoveNext();
-		Console.WriteLine("Second Oid in collection: {0},{1}", oe.Current.FriendlyName, oe.Current.Value);
-		//Return index in the collection to the beginning.
-		oe.Reset();
-	}
+            // Display the results of the signature verification to \
+            // the console.
+            if (result)
+            {
+                Console.WriteLine("The XML signature is valid.");
+            }
+            else
+            {
+                Console.WriteLine("The XML signature is not valid.");
+            }
+        }
+        catch (CryptographicException e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            Key.Clear();
+        }
+
+    }
+
+    // Sign an XML file and save the signature in a new file.
+    public static void SignXmlFile(string FileName, string SignedFileName, RSA Key, string XSLString)
+    {
+        // Create a new XML document.
+        XmlDocument doc = new XmlDocument();
+
+        // Format the document to ignore white spaces.
+        doc.PreserveWhitespace = false;
+
+        // Load the passed XML file using it's name.
+        doc.Load(new XmlTextReader(FileName));
+
+        // Create a SignedXml object.
+        SignedXml signedXml = new SignedXml(doc);
+
+        // Add the key to the SignedXml document. 
+        signedXml.SigningKey = Key;
+
+        // Create a reference to be signed.
+        Reference reference = new Reference();
+        reference.Uri = "";
+
+        // Add an enveloped transformation to the reference.
+        XmlDsigEnvelopedSignatureTransform env = new XmlDsigEnvelopedSignatureTransform();
+        reference.AddTransform(env);
+
+        // Create an XmlDsigXPathTransform object using 
+        // the helper method 'CreateXPathTransform' defined
+        // later in this sample.
+
+        XmlDsigXsltTransform XsltTransform = CreateXsltTransform(XSLString);
+
+        // Add the transform to the reference.
+        reference.AddTransform(XsltTransform);
+
+        // Add the reference to the SignedXml object.
+        signedXml.AddReference(reference);
+
+        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+        KeyInfo keyInfo = new KeyInfo();
+        keyInfo.AddClause(new RSAKeyValue((RSA)Key));
+        signedXml.KeyInfo = keyInfo;
+
+        // Compute the signature.
+        signedXml.ComputeSignature();
+
+        // Get the XML representation of the signature and save
+        // it to an XmlElement object.
+        XmlElement xmlDigitalSignature = signedXml.GetXml();
+
+        // Append the element to the XML document.
+        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, true));
+
+        // Save the signed XML document to a file specified
+        // using the passed string.
+        XmlTextWriter xmltw = new XmlTextWriter(SignedFileName, new UTF8Encoding(false));
+        doc.WriteTo(xmltw);
+        xmltw.Close();
+    }
+    // Verify the signature of an XML file and return the result.
+    public static Boolean VerifyXmlFile(String Name)
+    {
+        // Create a new XML document.
+        XmlDocument xmlDocument = new XmlDocument();
+
+        // Format using white spaces.
+        xmlDocument.PreserveWhitespace = true;
+
+        // Load the passed XML file into the document. 
+        xmlDocument.Load(Name);
+
+        // Create a new SignedXml object and pass it
+        // the XML document class.
+        SignedXml signedXml = new SignedXml(xmlDocument);
+
+        // Find the "Signature" node and create a new
+        // XmlNodeList object.
+        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
+
+        // Load the signature node.
+        signedXml.LoadXml((XmlElement)nodeList[0]);
+
+        // Check the signature and return the result.
+        return signedXml.CheckSignature();
+
+    }
+
+    // Create the XML that represents the transform.
+    public static XmlDsigXsltTransform CreateXsltTransform(string xsl)
+    {
+        XmlDocument doc = new XmlDocument();
+        doc.LoadXml(xsl);
+
+        XmlDsigXsltTransform xform = new XmlDsigXsltTransform();
+        xform.LoadInnerXml(doc.ChildNodes);
+
+        return xform;
+    }
+
+    // Create example data to sign.
+    public static void CreateSomeXml(string FileName)
+    {
+        // Create a new XmlDocument object.
+        XmlDocument document = new XmlDocument();
+
+        // Create a new XmlNode object.
+        XmlNode node = document.CreateNode(XmlNodeType.Element, "", "MyXML", "Don't_Sign");
+
+        // Append the node to the document.
+        document.AppendChild(node);
+
+        // Create a new XmlNode object.
+        XmlNode subnode = document.CreateNode(XmlNodeType.Element, "", "ElementToTransform", "Sign");
+
+        // Add some text to the node.
+        subnode.InnerText = "Here is some data to sign.";
+
+        // Append the node to the document.
+        document.DocumentElement.AppendChild(subnode);
+
+        // Save the XML document to the file name specified.
+        XmlTextWriter xmltw = new XmlTextWriter(FileName, new UTF8Encoding(false));
+        document.WriteTo(xmltw);
+        xmltw.Close();
+    }
 }

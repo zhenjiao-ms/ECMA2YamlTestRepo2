@@ -1,45 +1,46 @@
 
-<%@ Page Language="VB" AutoEventWireup="True" %>
+<%@ Page Language="VB" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-
-<head>
-    <title>PlaceHolder Example</title>
 <script runat="server">
 
-      Sub Page_Load(Sender As Object, e As EventArgs)
+  Sub MenuItemDataBound_NavigationMenu(ByVal sender As Object, ByVal e As MenuEventArgs)
+  
+    ' Display an image for the Home menu item only by
+    ' setting its ImageUrl property.
+    If e.Item.Text = "Home" Then
+    
+      e.Item.ImageUrl = "Images\Home.jpg"
+      
+    End If
+      
+  End Sub
 
-         Dim myButton As HtmlButton = New HtmlButton()
+</script>
 
-         myButton.InnerText = "Button 1"
-         PlaceHolder1.Controls.Add(myButton)
-
-         myButton = New HtmlButton()
-         myButton.InnerText = "Button 2"
-         PlaceHolder1.Controls.Add(myButton)
-
-         myButton = New HtmlButton()
-         myButton.InnerText = "Button 3"
-         PlaceHolder1.Controls.Add(myButton)
-
-         myButton = New HtmlButton()
-         myButton.InnerText = "Button 4"
-         PlaceHolder1.Controls.Add(myButton)
-
-      End Sub
-
-   </script>
-
+<html xmlns="http://www.w3.org/1999/xhtml" >
+  <head runat="server">
+    <title>MenuEventArgs Example</title>
 </head>
-
 <body>
-   <form id="form1" runat="server">
-      <h3>PlaceHolder Example</h3>
+    <form id="Form1" runat="server">
+    
+      <h3>MenuEventArgs Example</h3>
+    
+      <asp:menu id="NavigationMenu"
+        staticdisplaylevels="2"
+        staticsubmenuindent="10" 
+        orientation="Vertical"
+        datasourceid="menusource" 
+        onmenuitemdatabound="MenuItemDataBound_NavigationMenu" 
+        runat="server">
 
-      <asp:PlaceHolder id="PlaceHolder1" 
-           runat="server"/>
-   </form>
-</body>
+      </asp:menu>
+      
+      <asp:SiteMapDataSource id="MenuSource"
+        Runat="server"/>
+
+    </form>
+  </body>
 </html>

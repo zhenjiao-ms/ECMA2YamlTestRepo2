@@ -1,13 +1,9 @@
-    Public Sub InstantiateMyCheckBox()
-        ' Create and initialize a CheckBox.   
-        Dim checkBox1 As New CheckBox()
-        
-        ' Make the check box control appear as a toggle button.
-        checkBox1.Appearance = Appearance.Button
-        
-        ' Turn off the update of the display on the click of the control.
-        checkBox1.AutoCheck = False
-        
-        ' Add the check box control to the form.
-        Controls.Add(checkBox1)
-    End Sub 'InstantiateMyCheckBox
+    ' The event handler on Form1.
+    Private Sub button1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Button1.Click
+        ' Create an instance of Form2.
+        Dim f2 As New Form2()
+        ' Make this form the parent of f2.
+        f2.MdiParent = Me
+        ' Display the form.
+        f2.Show()
+    End Sub 'button1_Click

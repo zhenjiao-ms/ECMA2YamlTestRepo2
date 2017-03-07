@@ -1,59 +1,143 @@
-   void dataGridView1_CellFormatting( Object^ /*sender*/, DataGridViewCellFormattingEventArgs^ e )
-   {
-      // If the column is the Artist column, check the
-      // value.
-      if ( this->dataGridView1->Columns[ e->ColumnIndex ]->Name->Equals( "Artist" ) )
-      {
-         if ( e->Value != nullptr )
-         {
-            // Check for the string "pink" in the cell.
-            String^ stringValue = dynamic_cast<String^>(e->Value);
-            stringValue = stringValue->ToLower();
-            if ( (stringValue->IndexOf( "pink" ) > -1) )
-            {
-               DataGridViewCellStyle^ pinkStyle = gcnew DataGridViewCellStyle;
+#using <System.dll>
+#using <System.Windows.Forms.dll>
+#using <System.Drawing.dll>
 
-               //Change the style of the cell.
-               pinkStyle->BackColor = Color::Pink;
-               pinkStyle->ForeColor = Color::Black;
-               pinkStyle->Font = gcnew System::Drawing::Font( "Times New Roman",8,FontStyle::Bold );
-               e->CellStyle = pinkStyle;
-            }
-            
-         }
-      }
-      else
-      if ( this->dataGridView1->Columns[ e->ColumnIndex ]->Name->Equals( "Release Date" ) )
+using namespace System;
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
+using namespace System::Windows::Forms::VisualStyles;
+
+// Form for the ToolTip example.
+public ref class ToolTipExampleForm: public System::Windows::Forms::Form
+{
+private:
+   System::Windows::Forms::ToolTip^ toolTip1;
+   System::Windows::Forms::Button^ button1;
+   System::Windows::Forms::Button^ button2;
+   System::Windows::Forms::Button^ button3;
+
+public:
+   ToolTipExampleForm()
+   {
+      // Create the ToolTip and set initial values.
+      this->toolTip1 = gcnew System::Windows::Forms::ToolTip;
+      this->toolTip1->AutoPopDelay = 5000;
+      this->toolTip1->InitialDelay = 500;
+      this->toolTip1->OwnerDraw = true;
+      this->toolTip1->ReshowDelay = 10;
+      this->toolTip1->Draw += gcnew DrawToolTipEventHandler( this, &ToolTipExampleForm::toolTip1_Draw );
+      
+      // Create button1 and set initial values.
+      this->button1 = gcnew System::Windows::Forms::Button;
+      this->button1->Location = System::Drawing::Point( 8, 8 );
+      this->button1->Text = "Button 1";
+      this->toolTip1->SetToolTip( this->button1, "Button1 tip text" );
+      
+      // Create button2 and set initial values.
+      this->button2 = gcnew System::Windows::Forms::Button;
+      this->button2->Location = System::Drawing::Point( 8, 32 );
+      this->button2->Text = "Button 2";
+      this->toolTip1->SetToolTip( this->button2, "Button2 tip text" );
+      
+      // Create button3 and set initial values.
+      this->button3 = gcnew System::Windows::Forms::Button;
+      this->button3->Location = System::Drawing::Point( 8, 56 );
+      this->button3->Text = "Button 3";
+      this->toolTip1->SetToolTip( this->button3, "Button3 tip text" );
+      
+      // Set up the Form.
+      array<Control^>^temp0 = {this->button1,this->button2,this->button3};
+      this->Controls->AddRange( temp0 );
+      this->Text = "owner drawn ToolTip example";
+   }
+
+protected:
+
+   ~ToolTipExampleForm()
+   {
+      if ( toolTip1 != nullptr )
       {
-         ShortFormDateFormat( e );
+         delete toolTip1;
       }
    }
 
-
-   //Even though the date internaly stores the year as YYYY, using formatting, the
-   //UI can have the format in YY.  
-   void ShortFormDateFormat( DataGridViewCellFormattingEventArgs^ formatting )
+   // Handles drawing the ToolTip.
+private:
+   void toolTip1_Draw( System::Object^ /*sender*/, System::Windows::Forms::DrawToolTipEventArgs^ e )
    {
-      if ( formatting->Value != nullptr )
+      // Draw the ToolTip differently depending on which 
+      // control this ToolTip is for.
+      // Draw a custom 3D border if the ToolTip is for button1.
+      if ( e->AssociatedControl == button1 )
       {
+         // Draw the standard background.
+         e->DrawBackground();
+         
+         // Draw the custom border to appear 3-dimensional.
+         array<Point>^ temp1 = {Point(0,e->Bounds.Height - 1),Point(0,0),Point(e->Bounds.Width - 1,0)};
+         e->Graphics->DrawLines( SystemPens::ControlLightLight, temp1 );
+         array<Point>^ temp2 = {Point(0,e->Bounds.Height - 1),Point(e->Bounds.Width - 1,e->Bounds.Height - 1),Point(e->Bounds.Width - 1,0)};
+         e->Graphics->DrawLines( SystemPens::ControlDarkDark, temp2 );
+         
+         // Specify custom text formatting flags.
+         TextFormatFlags sf = static_cast<TextFormatFlags>(TextFormatFlags::VerticalCenter | TextFormatFlags::HorizontalCenter | TextFormatFlags::NoFullWidthCharacterBreak);
+         
+         // Draw the standard text with customized formatting options.
+         e->DrawText( sf );
+      }
+      // Draw a custom background and text if the ToolTip is for button2.
+      else
+      
+      // Draw a custom background and text if the ToolTip is for button2.
+      if ( e->AssociatedControl == button2 )
+      {
+         // Draw the custom background.
+         e->Graphics->FillRectangle( SystemBrushes::ActiveCaption, e->Bounds );
+         
+         // Draw the standard border.
+         e->DrawBorder();
+         
+         // Draw the custom text.
+         // The using block will dispose the StringFormat automatically.
+         StringFormat^ sf = gcnew StringFormat;
          try
          {
-            System::Text::StringBuilder^ dateString = gcnew System::Text::StringBuilder;
-            DateTime theDate = DateTime::Parse( formatting->Value->ToString() );
-            dateString->Append( theDate.Month );
-            dateString->Append( "/" );
-            dateString->Append( theDate.Day );
-            dateString->Append( "/" );
-            dateString->Append( theDate.Year.ToString()->Substring( 2 ) );
-            formatting->Value = dateString->ToString();
-            formatting->FormattingApplied = true;
-         }
-         catch ( Exception^ /*notInDateFormat*/ ) 
-         {
-            // Set to false in case there are other handlers interested trying to
-            // format this DataGridViewCellFormattingEventArgs instance.
-            formatting->FormattingApplied = false;
-         }
+            sf->Alignment = StringAlignment::Center;
+            sf->LineAlignment = StringAlignment::Center;
+            sf->HotkeyPrefix = System::Drawing::Text::HotkeyPrefix::None;
+            sf->FormatFlags = StringFormatFlags::NoWrap;
+            System::Drawing::Font^ f = gcnew System::Drawing::Font( "Tahoma",9 );
+            try
+            {
+               e->Graphics->DrawString( e->ToolTipText, f, SystemBrushes::ActiveCaptionText, e->Bounds, sf );
+            }
+            finally
+            {
+               if ( f )
+                  delete safe_cast<IDisposable^>(f);
+            }
 
+         }
+         finally
+         {
+            if ( sf )
+               delete safe_cast<IDisposable^>(sf);
+         }
+      }
+      // Draw the ToolTip using default values if the ToolTip is for button3.
+      else if ( e->AssociatedControl == button3 )
+      {
+         e->DrawBackground();
+         e->DrawBorder();
+         e->DrawText();
       }
    }
+};
+
+// The main entry point for the application.
+
+[STAThread]
+int main()
+{
+   Application::Run( gcnew ToolTipExampleForm );
+}

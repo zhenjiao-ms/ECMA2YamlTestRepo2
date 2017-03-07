@@ -1,20 +1,13 @@
-    Private Sub DemonstrateRefresh()
-        ' Create an array with ten elements and bind to a TextBox.
-        Dim myArray(9) As String
-        Dim i As Integer
-        For i = 0 To 9
-            myArray(i) = "item " & i
-        Next i
-        textBox1.DataBindings.Add("Text", myArray, "")
-        ' Change one value.
-        myArray(0) = "New value"
+' This is a custom TextBox control that overrides the OnClick method
+' to allow one-click selection of the text in the text box.
 
-        ' Uncomment the next line to refresh the CurrencyManager.
-        ' RefreshGrid(myArray);
+Public Class SingleClickTextBox
+    Inherits TextBox
 
-    End Sub 'DemonstrateRefresh
+    Protected Overrides Sub OnClick(ByVal e As EventArgs)
+        Me.SelectAll()
+        MyBase.OnClick(e)
+    End Sub
 
-    Private Sub RefreshGrid(dataSource As Object)
-        Dim myCurrencyManager As CurrencyManager = CType(Me.BindingContext(dataSource), CurrencyManager)
-        myCurrencyManager.Refresh()
-    End Sub 'RefreshGrid
+
+End Class

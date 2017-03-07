@@ -1,80 +1,161 @@
-#using <System.Security.dll>
-
 using namespace System;
+using namespace System::Security;
 using namespace System::Security::Cryptography;
 
-public ref class DataProtectionSample
+ref class SignatureDescriptionImpl
 {
-private:
-
-   // Create byte array for additional entropy when using Protect method.
-   static array<Byte>^s_aditionalEntropy = {9,8,7,6,5};
-
 public:
+   [STAThread]
    static void Main()
    {
+      // Create a digital signature based on RSA encryption.
+      SignatureDescription^ rsaSignature = CreateRSAPKCS1Signature();
+      ShowProperties( rsaSignature );
       
-      // Create a simple byte array containing data to be encrypted.
-      array<Byte>^secret = {0,1,2,3,4,1,2,3,4};
+      // Create a digital signature based on DSA encryption.
+      SignatureDescription^ dsaSignature = CreateDSASignature();
+      ShowProperties( dsaSignature );
       
-      //Encrypt the data.
-      array<Byte>^encryptedSecret = Protect( secret );
-      Console::WriteLine( "The encrypted byte array is:" );
-      PrintValues( encryptedSecret );
+      // Create a HashAlgorithm using the digest algorithm of the signature.
+      HashAlgorithm^ hashAlgorithm = dsaSignature->CreateDigest();
+
+      Console::WriteLine( L"\nHash algorithm for the DigestAlgorithm property:"
+         L" {0}", hashAlgorithm );
       
-      // Decrypt the data and store in a byte array.
-      array<Byte>^originalData = Unprotect( encryptedSecret );
-      Console::WriteLine( "{0}The original data is:", Environment::NewLine );
-      PrintValues( originalData );
+      // Create an AsymmetricSignatureFormatter instance using the DSA key.
+      DSA^ dsa = DSA::Create();
+      AsymmetricSignatureFormatter^ asymmetricFormatter = CreateDSAFormatter( dsa );
+      
+      // Create an AsymmetricSignatureDeformatter instance using the
+      // DSA key.
+      AsymmetricSignatureDeformatter^ asymmetricDeformatter =
+         CreateDSADeformatter( dsa );
+      Console::WriteLine( L"This sample completed successfully; "
+         L"press Enter to exit." );
+      Console::ReadLine();
    }
 
-   static array<Byte>^ Protect( array<Byte>^data )
+private:
+   // Create a SignatureDescription for RSA encryption.
+   static SignatureDescription^ CreateRSAPKCS1Signature()
    {
-      try
-      {
-         
-         // Encrypt the data using DataProtectionScope.CurrentUser. The result can be decrypted
-         //  only by the same current user.
-         return ProtectedData::Protect( data, s_aditionalEntropy, DataProtectionScope::CurrentUser );
-      }
-      catch ( CryptographicException^ e ) 
-      {
-         Console::WriteLine( "Data was not encrypted. An error occurred." );
-         Console::WriteLine( e );
-         return nullptr;
-      }
+      SignatureDescription^ signatureDescription = gcnew SignatureDescription;
+
+      // Set the key algorithm property for RSA encryption.
+      signatureDescription->KeyAlgorithm = L"System.Security.Cryptography.RSACryptoServiceProvider";
+
+      // Set the digest algorithm for RSA encryption using the
+      // SHA1 provider.
+      signatureDescription->DigestAlgorithm = L"System.Security.Cryptography.SHA1CryptoServiceProvider";
+
+      // Set the formatter algorithm with the RSAPKCS1 formatter.
+      signatureDescription->FormatterAlgorithm = L"System.Security.Cryptography.RSAPKCS1SignatureFormatter";
+
+      // Set the formatter algorithm with the RSAPKCS1 deformatter.
+      signatureDescription->DeformatterAlgorithm = L"System.Security.Cryptography.RSAPKCS1SignatureDeformatter";
+
+      return signatureDescription;
    }
 
-   static array<Byte>^ Unprotect( array<Byte>^data )
+   // Create a SignatureDescription using a constructed SecurityElement for
+   // DSA encryption.
+   static SignatureDescription^ CreateDSASignature()
    {
-      try
-      {
-         
-         //Decrypt the data using DataProtectionScope.CurrentUser.
-         return ProtectedData::Unprotect( data, s_aditionalEntropy, DataProtectionScope::CurrentUser );
-      }
-      catch ( CryptographicException^ e ) 
-      {
-         Console::WriteLine( "Data was not decrypted. An error occurred." );
-         Console::WriteLine( e );
-         return nullptr;
-      }
+      SecurityElement^ securityElement = gcnew SecurityElement( L"DSASignature" );
+      // Create new security elements for the four algorithms.
+      securityElement->AddChild( gcnew SecurityElement(
+         L"Key",L"System.Security.Cryptography.DSACryptoServiceProvider" ) );
+      securityElement->AddChild( gcnew SecurityElement(
+         L"Digest",L"System.Security.Cryptography.SHA1CryptoServiceProvider" ) );
+      securityElement->AddChild( gcnew SecurityElement(
+         L"Formatter",L"System.Security.Cryptography.DSASignatureFormatter" ) );
+      securityElement->AddChild( gcnew SecurityElement(
+         L"Deformatter",L"System.Security.Cryptography.DSASignatureDeformatter" ) );
+      SignatureDescription^ signatureDescription =
+         gcnew SignatureDescription( securityElement );
+
+      return signatureDescription;
    }
 
-   static void PrintValues( array<Byte>^myArr )
+   // Create a signature formatter for DSA encryption.
+   static AsymmetricSignatureFormatter^ CreateDSAFormatter( DSA^ dsa )
    {
-      System::Collections::IEnumerator^ myEnum = myArr->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         Byte i = safe_cast<Byte>(myEnum->Current);
-         Console::Write( "\t{0}", i );
-      }
+      // Create a DSA signature formatter for encryption.
+      SignatureDescription^ signatureDescription =
+         gcnew SignatureDescription;
+      signatureDescription->FormatterAlgorithm =
+         L"System.Security.Cryptography.DSASignatureFormatter";
+      AsymmetricSignatureFormatter^ asymmetricFormatter =
+         signatureDescription->CreateFormatter( dsa );
 
-      Console::WriteLine();
+      Console::WriteLine( L"\nCreated formatter : {0}",
+         asymmetricFormatter );
+      return asymmetricFormatter;
+   }
+
+   // Create a signature deformatter for DSA decryption.
+   static AsymmetricSignatureDeformatter^ CreateDSADeformatter( DSA^ dsa )
+   {
+      // Create a DSA signature deformatter to verify the signature.
+      SignatureDescription^ signatureDescription =
+         gcnew SignatureDescription;
+      signatureDescription->DeformatterAlgorithm =
+         L"System.Security.Cryptography.DSASignatureDeformatter";
+      AsymmetricSignatureDeformatter^ asymmetricDeformatter =
+         signatureDescription->CreateDeformatter( dsa );
+
+      Console::WriteLine( L"\nCreated deformatter : {0}",
+         asymmetricDeformatter );
+      return asymmetricDeformatter;
+   }
+
+   // Display to the console the properties of the specified
+   // SignatureDescription.
+   static void ShowProperties( SignatureDescription^ signatureDescription )
+   {
+      // Retrieve the class path for the specified SignatureDescription.
+      String^ classDescription = signatureDescription->ToString();
+
+      String^ deformatterAlgorithm = signatureDescription->DeformatterAlgorithm;
+      String^ formatterAlgorithm = signatureDescription->FormatterAlgorithm;
+      String^ digestAlgorithm = signatureDescription->DigestAlgorithm;
+      String^ keyAlgorithm = signatureDescription->KeyAlgorithm;
+      Console::WriteLine( L"\n** {0} **", classDescription );
+      Console::WriteLine( L"DeformatterAlgorithm : {0}", deformatterAlgorithm );
+      Console::WriteLine( L"FormatterAlgorithm : {0}", formatterAlgorithm );
+      Console::WriteLine( L"DigestAlgorithm : {0}", digestAlgorithm );
+      Console::WriteLine( L"KeyAlgorithm : {0}", keyAlgorithm );
    }
 };
 
 int main()
 {
-   DataProtectionSample::Main();
+   SignatureDescriptionImpl::Main();
 }
+
+//
+// This sample produces the following output:
+//
+// ** System.Security.Cryptography.SignatureDescription **
+// DeformatterAlgorithm : System.Security.Cryptography.
+// RSAPKCS1SignatureDeformatter
+//
+// FormatterAlgorithm : System.Security.Cryptography.
+// RSAPKCS1SignatureFormatter
+// DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
+// KeyAlgorithm : System.Security.Cryptography.RSACryptoServiceProvider
+//
+// ** System.Security.Cryptography.SignatureDescription **
+// DeformatterAlgorithm : System.Security.Cryptography.DSASignatureDeformatter
+// FormatterAlgorithm : System.Security.Cryptography.DSASignatureFormatter
+// DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
+// KeyAlgorithm : System.Security.Cryptography.DSACryptoServiceProvider
+//
+// Hash algorithm for the DigestAlgorithm property:
+// System.Security.Cryptography.SH
+// A1CryptoServiceProvider
+//
+// Created formatter : System.Security.Cryptography.DSASignatureFormatter
+//
+// Created deformatter : System.Security.Cryptography.DSASignatureDeformatter
+// This sample completed successfully; press Enter to exit.

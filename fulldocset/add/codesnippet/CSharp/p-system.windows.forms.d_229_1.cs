@@ -1,16 +1,15 @@
-    private void CreateUnboundButtonColumn()
+    private void DataGridView1_UserDeletingRow(object sender,
+        DataGridViewRowCancelEventArgs e)
     {
-        // Initialize the button column.
-        DataGridViewButtonColumn buttonColumn =
-            new DataGridViewButtonColumn();
-        buttonColumn.Name = "Details";
-        buttonColumn.HeaderText = "Details";
-        buttonColumn.Text = "View Details";
+        DataGridViewRow startingBalanceRow = DataGridView1.Rows[0];
 
-        // Use the Text property for the button text for all cells rather
-        // than using each cell's value as the text for its own button.
-        buttonColumn.UseColumnTextForButtonValue = true;
+        // Check if the Starting Balance row is included in the selected rows
+        if (DataGridView1.SelectedRows.Contains(startingBalanceRow))
+        {
+            // Do not allow the user to delete the Starting Balance row.
+            MessageBox.Show("Cannot delete Starting Balance row!");
 
-        // Add the button column to the control.
-        dataGridView1.Columns.Insert(0, buttonColumn);
+            // Cancel the deletion if the Starting Balance row is included.
+            e.Cancel = true;
+        }
     }

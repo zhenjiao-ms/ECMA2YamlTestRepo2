@@ -1,81 +1,60 @@
-Imports System
-Imports System.Drawing
-Imports System.Windows.Forms
+            ' Gets or sets the location for the curve legend.            
+            Public Property Location() As Point
+                Get
+                    Return m_location
+                End Get
+                Set
+                    m_location = value
+                    chart.Invalidate()
 
-Public Class Form1
-    Inherits Form
+                    ' Notifies the chart of the location change. This is used for
+                    ' the accessibility information. AccessibleEvents.LocationChange
+                    ' tells the chart the reason for the notification.
+                    chart.ExposeAccessibilityNotifyClients(AccessibleEvents.LocationChange, _
+                            CType(AccessibilityObject, CurveLegendAccessibleObject).ID)
+                End Set
+            End Property
+            
+            ' Gets or sets the Name for the curve legend.            
+            Public Property Name() As String
+                Get
+                    Return m_name
+                End Get
+                Set
+                    If m_name <> value Then
+                        m_name = value
+                        chart.Invalidate()
 
-    'Entry point which delegates to C-style main Private Function
-    Public Overloads Shared Sub Main()
-        Main(System.Environment.GetCommandLineArgs())
-    End Sub
+                        ' Notifies the chart of the name change. This is used for
+                        ' the accessibility information. AccessibleEvents.NameChange
+                        ' tells the chart the reason for the notification. 
+                        chart.ExposeAccessibilityNotifyClients(AccessibleEvents.NameChange, _
+                                CType(AccessibilityObject, CurveLegendAccessibleObject).ID)
+                    End If
+                End Set
+            End Property
+            
+            ' Gets or sets the Selected state for the curve legend.            
+            Public Property Selected() As Boolean
+                Get
+                    Return m_selected
+                End Get
+                Set
+                    If m_selected <> value Then
+                        m_selected = value
+                        chart.Invalidate()
 
-    Private Overloads Shared Sub Main(ByVal args() As String)
-        Application.EnableVisualStyles()
-        Application.Run(New Form1())
-    End Sub 'Main
-
-    Private WithEvents FirstNameBox, LastNameBox As TextBox
-    Private WithEvents ValidateButton As Button
-    Private FlowLayout1 As FlowLayoutPanel
-
-    Private Sub New()
-    End Sub
-
-    Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
-        ' Turn off validation when a control loses focus. This will be inherited by child
-        ' controls on the form, enabling us to validate the entire form when the 
-        ' button is clicked instead of one control at a time.
-        Me.AutoValidate = System.Windows.Forms.AutoValidate.Disable
-
-        FlowLayout1 = New FlowLayoutPanel()
-        FlowLayout1.Dock = DockStyle.Fill
-
-        FirstNameBox = New TextBox()
-        FirstNameBox.Name = "FirstNameBox"
-        FirstNameBox.Location = New Point(10, 10)
-        FirstNameBox.Size = New Size(75, FirstNameBox.Size.Height)
-        FirstNameBox.CausesValidation = True
-        FlowLayout1.Controls.Add(FirstNameBox)
-
-        LastNameBox = New TextBox()
-        LastNameBox.Name = "LastNameBox"
-        LastNameBox.Location = New Point(90, 10)
-        LastNameBox.Size = New Size(75, LastNameBox.Size.Height)
-        LastNameBox.CausesValidation = True
-        FlowLayout1.Controls.Add(LastNameBox)
-
-        ValidateButton = New Button()
-        ValidateButton.Text = "Validate"
-        ValidateButton.Location = New Point(170, 10)
-        ValidateButton.Size = New Size(75, ValidateButton.Size.Height)
-        FlowLayout1.Controls.Add(ValidateButton)
-
-        Me.Text = "Test Validation"
-
-        Me.Controls.Add(FlowLayout1)
-    End Sub
-
-
-    Private Sub FirstNameBox_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles FirstNameBox.Validating
-        If FirstNameBox.Text.Length = 0 Then
-            e.Cancel = True
-        Else
-            e.Cancel = False
-        End If
-    End Sub
-
-
-    Private Sub LastNameBox_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles LastNameBox.Validating
-        e.Cancel = False
-    End Sub
-
-
-    Private Sub ValidateButton_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ValidateButton.Click
-        If ValidateChildren() Then
-            MessageBox.Show("Validation succeeded!")
-        Else
-            MessageBox.Show("Validation failed.")
-        End If
-    End Sub
-End Class
+                        ' Notifies the chart of the selection value change. This is used for
+                        ' the accessibility information. The AccessibleEvents value varies
+                        ' on whether the selection is true (AccessibleEvents.SelectionAdd) or 
+                        ' false (AccessibleEvents.SelectionRemove). 
+                        If m_selected Then
+                            chart.ExposeAccessibilityNotifyClients(AccessibleEvents.SelectionAdd, _
+                                    CType(AccessibilityObject, CurveLegendAccessibleObject).ID) 
+                        Else
+                            chart.ExposeAccessibilityNotifyClients(AccessibleEvents.SelectionRemove, _
+                                    CType(AccessibilityObject, CurveLegendAccessibleObject).ID) 
+                        End If
+                    End If
+                End Set
+            End Property

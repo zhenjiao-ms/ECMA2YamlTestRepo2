@@ -1,38 +1,18 @@
-#pragma region Data store maintance
-
-    void VirtualConnector::dataGridView1_CellValueNeeded
-        (Object^ sender, DataGridViewCellValueEventArgs^ e)
-    {
-        if (store->ContainsKey(e->RowIndex))
-        {
-            // Use the store if the e value has been modified 
-            // and stored.            
-            e->Value = gcnew Int32(store->default[e->RowIndex]); 
-        }
-        else if (newRowNeeded && e->RowIndex == numberOfRows)
-        {
-            if (dataGridView1->IsCurrentCellInEditMode)
-            {
-                e->Value = initialValue;
-            }
-            else
-            {
-                // Show a blank e if the cursor is just loitering
-                // over(the) last row.
-                e->Value = String::Empty;
-            }
-        }
-        else
-        {
-            e->Value = e->RowIndex;
-        }
-    }
-
-    void VirtualConnector::dataGridView1_CellValuePushed
-        (Object^ sender, DataGridViewCellValueEventArgs^ e)
-    {
-        String^ value = e->Value->ToString();
-        store[e->RowIndex] = Int32::Parse(value, 
-            CultureInfo::CurrentCulture);
-    }
-#pragma endregion
+      // Draw a custom 3D border if the ToolTip is for button1.
+      if ( e->AssociatedControl == button1 )
+      {
+         // Draw the standard background.
+         e->DrawBackground();
+         
+         // Draw the custom border to appear 3-dimensional.
+         array<Point>^ temp1 = {Point(0,e->Bounds.Height - 1),Point(0,0),Point(e->Bounds.Width - 1,0)};
+         e->Graphics->DrawLines( SystemPens::ControlLightLight, temp1 );
+         array<Point>^ temp2 = {Point(0,e->Bounds.Height - 1),Point(e->Bounds.Width - 1,e->Bounds.Height - 1),Point(e->Bounds.Width - 1,0)};
+         e->Graphics->DrawLines( SystemPens::ControlDarkDark, temp2 );
+         
+         // Specify custom text formatting flags.
+         TextFormatFlags sf = static_cast<TextFormatFlags>(TextFormatFlags::VerticalCenter | TextFormatFlags::HorizontalCenter | TextFormatFlags::NoFullWidthCharacterBreak);
+         
+         // Draw the standard text with customized formatting options.
+         e->DrawText( sf );
+      }

@@ -44,48 +44,14 @@
                 }
             };
 
-            wfApp.Aborted = delegate(WorkflowApplicationAbortedEventArgs e)
-            {
-                // Display the exception that caused the workflow
-                // to abort.
-                Console.WriteLine("Workflow {0} Aborted.", e.InstanceId);
-                Console.WriteLine("Exception: {0}\n{1}",
-                    e.Reason.GetType().FullName,
-                    e.Reason.Message);
-            };
-            
-            wfApp.Idle = delegate(WorkflowApplicationIdleEventArgs e)
-            {
-                // Perform any processing that should occur
-                // when a workflow goes idle. If the workflow can persist,
-                // both Idle and PersistableIdle are called in that order.
-                Console.WriteLine("Workflow {0} Idle.", e.InstanceId);
-            };
-
-            wfApp.PersistableIdle = delegate(WorkflowApplicationIdleEventArgs e)
-            {
-                // Instruct the runtime to persist and unload the workflow
-                return PersistableIdleAction.Unload;
-            };
-
             wfApp.Unloaded = delegate(WorkflowApplicationEventArgs e)
             {
-                Console.WriteLine("Workflow {0} Unloaded.", e.InstanceId);
-            };
-
-            wfApp.OnUnhandledException = delegate(WorkflowApplicationUnhandledExceptionEventArgs e)
-            {
-                // Display the unhandled exception.
-                Console.WriteLine("OnUnhandledException in Workflow {0}\n{1}",
-                    e.InstanceId, e.UnhandledException.Message);
-
-                Console.WriteLine("ExceptionSource: {0} - {1}",
-                    e.ExceptionSource.DisplayName, e.ExceptionSourceInstanceId);
-
-                // Instruct the runtime to terminate the workflow.
-                // Other choices are Abort and Cancel
-                return UnhandledExceptionAction.Terminate;
+                Console.WriteLine("Workflow {0} unloaded.", e.InstanceId);
             };
 
             // Run the workflow.
             wfApp.Run();
+
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+
+            wfApp.Terminate("Terminating the workflow.");

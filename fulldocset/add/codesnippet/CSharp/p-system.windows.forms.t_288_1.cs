@@ -1,35 +1,55 @@
-		internal ToolStripButton changeDirectionButton;
+        // This method defines the painting behavior of the control.
+        // It performs the following operations:
+        //
+        // Computes the layout of the item's image and text.
+        // Draws the item's background image.
+        // Draws the item's image.
+        // Draws the item's text.
+        //
+        // Drawing operations are implemented in the 
+        // RolloverItemRenderer class.
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
 
-		private void InitializeMovingToolStrip()
-		{
-            movingToolStrip = new ToolStrip();
+            if (this.Owner != null)
+            {
+                // Find the dimensions of the image and the text 
+                // areas of the item. 
+                this.ComputeImageAndTextLayout();
 
-			changeDirectionButton = new ToolStripButton();
+                // Draw the background. This includes drawing a highlighted 
+                // border when the mouse is in the client area.
+                ToolStripItemRenderEventArgs ea = new ToolStripItemRenderEventArgs(
+                     e.Graphics,
+                     this);
+                this.Owner.Renderer.DrawItemBackground(ea);
 
-			movingToolStrip.AutoSize = true;
-			movingToolStrip.RenderMode = ToolStripRenderMode.System;
+                // Draw the item's image. 
+                ToolStripItemImageRenderEventArgs irea =
+                    new ToolStripItemImageRenderEventArgs(
+                    e.Graphics,
+                    this,
+                    imageRect );
+                this.Owner.Renderer.DrawItemImage(irea);
 
-			changeDirectionButton.TextDirection = ToolStripTextDirection.Vertical270;
-			changeDirectionButton.Overflow = ToolStripItemOverflow.Never;
-			changeDirectionButton.Text = "Change Alignment";
-				movingToolStrip.Items.Add(changeDirectionButton);
-		}
+                // If the item is on a drop-down, give its
+                // text a different highlighted color.
+                Color highlightColor = 
+                    this.IsOnDropDown ?
+                    Color.Salmon : SystemColors.ControlLightLight;
 
-
-		private void changeDirectionButton_Click(object sender, EventArgs e)
-		{
-
-			ToolStripItem item = (ToolStripItem)sender;
-
-			if (item.TextDirection == ToolStripTextDirection.Vertical270 || item.TextDirection == ToolStripTextDirection.Vertical90)
-			{
-				item.TextDirection = ToolStripTextDirection.Horizontal;
-				movingToolStrip.Dock = System.Windows.Forms.DockStyle.Top;
-			}
-			else
-			{
-				item.TextDirection = ToolStripTextDirection.Vertical270;
-				movingToolStrip.Dock = System.Windows.Forms.DockStyle.Left;
-			}
-
-		}
+                // Draw the text, and highlight it if the 
+                // the rollover state is true.
+                ToolStripItemTextRenderEventArgs rea =
+                    new ToolStripItemTextRenderEventArgs(
+                    e.Graphics,
+                    this,
+                    base.Text,
+                    textRect,
+                    this.rolloverValue ? highlightColor : base.ForeColor,
+                    base.Font,
+                    base.TextAlign);
+                this.Owner.Renderer.DrawItemText(rea);
+            }
+        }

@@ -1,3 +1,115 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Text;
+using System.Windows.Forms.Design;
+using System.Windows.Forms.Design.Behavior;
+
+namespace BehaviorServiceSample
+{
+    class Form1 : Form
+    {
+        private UserControl1 userControl;
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private System.ComponentModel.IContainer components = null;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private void InitializeComponent()
+        {
+            this.userControl = new BehaviorServiceSample.UserControl1();
+            this.SuspendLayout();
+
+            this.userControl.Location = new System.Drawing.Point(12, 13);
+            this.userControl.Name = "userControl";
+            this.userControl.Size = new System.Drawing.Size(143, 110);
+            this.userControl.TabIndex = 0;
+            
+            this.ClientSize = new System.Drawing.Size(184, 153);
+            this.Controls.Add(this.userControl);
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.ResumeLayout(false);
+
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Form1());
+        }
+    }
+
+    [Designer(typeof(MyDesigner))]
+    public class UserControl1 : UserControl
+    {
+        private System.ComponentModel.IContainer components = null;
+
+        public UserControl1()
+        {
+            InitializeComponent();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private void InitializeComponent()
+        {
+            this.Name = "UserControl1";
+            this.Size = new System.Drawing.Size(170, 156);
+        }
+    }
+
+    class MyDesigner : ControlDesigner
+    {
+        private Adorner myAdorner;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && myAdorner != null)
+            {
+                BehaviorService b = BehaviorService;
+                if (b != null)
+                {
+                    b.Adorners.Remove(myAdorner);
+                }
+            }
+        }
+
+        public override void Initialize(IComponent component)
+        {
+            base.Initialize(component);
+
+            // Add the custom set of glyphs using the BehaviorService. 
+            // Glyphs live on adornders.
+            myAdorner = new Adorner();
+            BehaviorService.Adorners.Add(myAdorner);
+            myAdorner.Glyphs.Add(new MyGlyph(BehaviorService, Control));
+        }
+    }
+
     class MyGlyph : Glyph
     {
         Control control;
@@ -67,3 +179,4 @@
             }
         }
     }
+}

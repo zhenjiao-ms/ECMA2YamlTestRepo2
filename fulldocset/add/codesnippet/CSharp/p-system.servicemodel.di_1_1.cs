@@ -10,4 +10,4 @@
 
             IChannelListener icl = serviceHost.ChannelDispatchers[0].Listener;
             ChannelDispatcher dispatcher = new ChannelDispatcher(icl);
-            dispatcher.MessageVersion = MessageVersion.Default;
+            dispatcher.TransactionTimeout = new TimeSpan(100);

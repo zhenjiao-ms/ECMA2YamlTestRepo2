@@ -1,20 +1,23 @@
-private void button1_Click(object sender, System.EventArgs e)
-{
-   // Create a SelectionRange object and set its Start and End properties.
-   SelectionRange sr = new SelectionRange();
-   sr.Start = DateTime.Parse(this.textBox1.Text);
-   sr.End = DateTime.Parse(this.textBox2.Text);
-   /* Assign the SelectionRange object to the 
-      SelectionRange property of the MonthCalendar control. */
-   this.monthCalendar1.SelectionRange = sr;
-}
+	// Initialize a single-panel status bar.  This is done
+	// by setting the Text property and setting ShowPanels to False.
 
-private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
-{
-   /* Display the Start and End property values of 
-      the SelectionRange object in the text boxes. */
-   this.textBox1.Text = 
-     monthCalendar1.SelectionRange.Start.Date.ToShortDateString();
-   this.textBox2.Text = 
-     monthCalendar1.SelectionRange.End.Date.ToShortDateString();
-}
+	private void InitializeSimpleStatusBar()
+	{
+
+		// Declare the StatusBar control
+		StatusBar simpleStatusBar = new StatusBar();
+
+		// Set the ShowPanels property to False.
+		simpleStatusBar.ShowPanels = false;
+
+		// Set the text.
+		simpleStatusBar.Text = "This is a single-panel status bar";
+
+		// Set the width and anchor the StatusBar
+		simpleStatusBar.Width = 200;
+		simpleStatusBar.Anchor = AnchorStyles.Top;
+
+		// Add the StatusBar to the form.
+		this.Controls.Add(simpleStatusBar);
+
+	}

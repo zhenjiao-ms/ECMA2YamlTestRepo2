@@ -1,15 +1,31 @@
-    private void AddLinkColumn()
+    // Paints the custom selection background for selected rows.
+    void dataGridView1_RowPrePaint(object sender,
+            DataGridViewRowPrePaintEventArgs e)
     {
-        DataGridViewLinkColumn links = new DataGridViewLinkColumn();
+        // Do not automatically paint the focus rectangle.
+        e.PaintParts &= ~DataGridViewPaintParts.Focus;
 
-        links.UseColumnTextForLinkValue = true;
-        links.HeaderText = ColumnName.ReportsTo.ToString();
-        links.DataPropertyName = ColumnName.ReportsTo.ToString();
-        links.ActiveLinkColor = Color.White;
-        links.LinkBehavior = LinkBehavior.SystemDefault;
-        links.LinkColor = Color.Blue;
-        links.TrackVisitedState = true;
-        links.VisitedLinkColor = Color.YellowGreen;
+        // Determine whether the cell should be painted
+        // with the custom selection background.
+        if ((e.State & DataGridViewElementStates.Selected) ==
+                    DataGridViewElementStates.Selected)
+        {
+            // Calculate the bounds of the row.
+            Rectangle rowBounds = new Rectangle(
+                this.dataGridView1.RowHeadersWidth, e.RowBounds.Top,
+                this.dataGridView1.Columns.GetColumnsWidth(
+                    DataGridViewElementStates.Visible) -
+                this.dataGridView1.HorizontalScrollingOffset + 1,
+                e.RowBounds.Height);
 
-        DataGridView1.Columns.Add(links);
+            // Paint the custom selection background.
+            using (Brush backbrush =
+                new System.Drawing.Drawing2D.LinearGradientBrush(rowBounds,
+                    this.dataGridView1.DefaultCellStyle.SelectionBackColor,
+                    e.InheritedRowStyle.ForeColor,
+                    System.Drawing.Drawing2D.LinearGradientMode.Horizontal))
+            {
+                e.Graphics.FillRectangle(backbrush, rowBounds);
+            }
+        }
     }

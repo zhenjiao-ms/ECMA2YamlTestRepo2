@@ -20,7 +20,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Describes base functionality common to both file references and assembly references.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -39,7 +39,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Tasks.Deployment.ManifestUtilities.BaseReference" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -60,8 +60,8 @@
         <Parameter Name="path" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="path">The path for the assembly base reference.</param>
+        <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Tasks.Deployment.ManifestUtilities.BaseReference" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -87,8 +87,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the group for on-demand download functionality.</summary>
+        <value>A string indicating the group for on-demand download functionality. A blank string indicates a primary file.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -114,8 +114,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the SHA1 hash of the file.</summary>
+        <value>A string indicating the SHA1 hash of the file.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -141,8 +141,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets whether the file is optional for on-demand download functionality.</summary>
+        <value>A Boolean value indicating whether the file is optional for on-demand download functionality.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -168,8 +168,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the resolved path to the file. This path is determined by the Resolve method, and is used to compute the file information by the <see cref="Microsoft.Build.Tasks.Deployment.ManifestUtilities.Manifest.UpdateFileInfo%2A" /> method.</summary>
+        <value>A string indicating the resolved path to the file.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -195,8 +195,8 @@
         <ReturnType>System.Int64</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the file size in bytes.</summary>
+        <value>The file size in bytes.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -217,9 +217,16 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value that is used to sort the referenced assemblies in the application manifest.</summary>
+        <value>The name to sort by.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This property is used to sort the referenced assemblies in the application manifest. The manifest lists prerequisite assemblies in alphabetical order first, followed by installed assemblies in alphabetical order. The assemblies are sorted according to the SortName of the reference.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SourcePath">
@@ -244,8 +251,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the source path of the file.</summary>
+        <value>A string indicating the source path of the file.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -271,8 +278,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the target path of the file. This is the path that is used for specification in the generated manifest.</summary>
+        <value>A string indicating the target path of the file.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -294,8 +301,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns the base reference name.</summary>
+        <returns>A string indicating the base reference name.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -327,7 +334,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets or sets the group for on-demand download functionality.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -360,8 +367,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets a property that is used to serialize the <see cref="Microsoft.Build.Tasks.Deployment.ManifestUtilities.BaseReference.Hash%2A" /> property to an XML file.</summary>
+        <value>The value of the <see cref="Microsoft.Build.Tasks.Deployment.ManifestUtilities.BaseReference.Hash%2A" /> property.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -393,8 +400,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets a property that is used to serialize the hash algorithm to an XML file.</summary>
+        <value>The hash algorithm.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -426,8 +433,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets a property that is used to serialize the <see cref="Microsoft.Build.Tasks.Deployment.ManifestUtilities.BaseReference.IsOptional%2A" /> property to an XML file.</summary>
+        <value>The value of the <see cref="Microsoft.Build.Tasks.Deployment.ManifestUtilities.BaseReference.IsOptional%2A" /> property.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -459,8 +466,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets a property that is used to serialize the path to an XML file.</summary>
+        <value>The path of the reference.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -492,8 +499,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets a property that is used to serialize the <see cref="Microsoft.Build.Tasks.Deployment.ManifestUtilities.BaseReference.Size%2A" /> property to an XML file.</summary>
+        <value>The value of the <see cref="Microsoft.Build.Tasks.Deployment.ManifestUtilities.BaseReference.Size%2A" /> property.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -1,59 +1,62 @@
 using System;
+using System.Security.Permissions;
 using System.Threading;
-using Timers = System.Timers;
 
-class Test
+class ThreadInterrupt
 {
     static void Main()
     {
-        PriorityTest priorityTest = new PriorityTest();
+        StayAwake stayAwake = new StayAwake();
+        Thread newThread = 
+            new Thread(new ThreadStart(stayAwake.ThreadMethod));
+        newThread.Start();
 
-        Thread thread1 = new Thread(priorityTest.ThreadMethod);
-        thread1.Name = "ThreadOne";
-        Thread thread2 = new Thread(priorityTest.ThreadMethod);
-        thread2.Name = "ThreadTwo";
-        thread2.Priority = ThreadPriority.BelowNormal;
-        Thread thread3 = new Thread(priorityTest.ThreadMethod);
-        thread3.Name = "ThreadThree";
-        thread3.Priority = ThreadPriority.AboveNormal;
+        // The following line causes an exception to be thrown 
+        // in ThreadMethod if newThread is currently blocked
+        // or becomes blocked in the future.
+        newThread.Interrupt();
+        Console.WriteLine("Main thread calls Interrupt on newThread.");
 
-        thread1.Start();
-        thread2.Start();
-        thread3.Start();
-        // Allow counting for 10 seconds.
-        Thread.Sleep(10000);
-        priorityTest.LoopSwitch = false;
+        // Tell newThread to go to sleep.
+        stayAwake.SleepSwitch = true;
+
+        // Wait for newThread to end.
+        newThread.Join();
     }
 }
 
-class PriorityTest
+class StayAwake
 {
-    static bool loopSwitch;
-    [ThreadStatic] static long threadCount = 0;
+    bool sleepSwitch = false;
 
-    public PriorityTest()
+    public bool SleepSwitch
     {
-        loopSwitch = true;
+        set{ sleepSwitch = value; }
     }
 
-    public bool LoopSwitch
-    {
-        set{ loopSwitch = value; }
-    }
+    public StayAwake(){}
 
     public void ThreadMethod()
     {
-        while(loopSwitch)
+        Console.WriteLine("newThread is executing ThreadMethod.");
+        while(!sleepSwitch)
         {
-            threadCount++;
+            // Use SpinWait instead of Sleep to demonstrate the 
+            // effect of calling Interrupt on a running thread.
+            Thread.SpinWait(10000000);
         }
-        Console.WriteLine("{0,-11} with {1,11} priority " +
-            "has a count = {2,13}", Thread.CurrentThread.Name, 
-            Thread.CurrentThread.Priority.ToString(), 
-            threadCount.ToString("N0")); 
+        try
+        {
+            Console.WriteLine("newThread going to sleep.");
+
+            // When newThread goes to sleep, it is immediately 
+            // woken up by a ThreadInterruptedException.
+            Thread.Sleep(Timeout.Infinite);
+        }
+        catch(ThreadInterruptedException e)
+        {
+            Console.WriteLine("newThread cannot go to sleep - " +
+                "interrupted by main thread.");
+        }
     }
 }
-// The example displays output like the following:
-//    ThreadOne   with      Normal priority has a count =   755,897,581
-//    ThreadThree with AboveNormal priority has a count =   778,099,094
-//    ThreadTwo   with BelowNormal priority has a count =     7,840,984

@@ -1,7 +1,10 @@
-private void RemoveFromList(){
-    // Get the CurrencyManager of a TextBox control.
-    CurrencyManager myCurrencyManager = (CurrencyManager)textBox1.BindingContext[0];
-    // If the count is 0, exit the function.
-    if(myCurrencyManager.Count > 1)
-    myCurrencyManager.RemoveAt(0);
-}
+   public delegate void InvokeDelegate();
+
+   private void Invoke_Click(object sender, EventArgs e)
+   {
+      myTextBox.BeginInvoke(new InvokeDelegate(InvokeMethod));
+   }
+   public void InvokeMethod()
+   {
+      myTextBox.Text = "Executed the given delegate";
+   }

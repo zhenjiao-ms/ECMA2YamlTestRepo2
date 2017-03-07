@@ -1,19 +1,22 @@
 using namespace System;
 using namespace System::Runtime::InteropServices;
-
-ref class ClassB
+public ref class MyClassThatNeedsToRegister
 {
-private:
-   static bool IsHiddenInterface( Type^ InterfaceType )
-   {
-      array<Object^>^InterfaceAttributes = InterfaceType->GetCustomAttributes( TypeLibTypeAttribute::typeid, false );
-      if ( InterfaceAttributes->Length > 0 )
-      {
-         TypeLibTypeAttribute^ tlt = dynamic_cast<TypeLibTypeAttribute^>(InterfaceAttributes[ 0 ]);
-         TypeLibTypeFlags flags = tlt->Value;
-         return (flags & TypeLibTypeFlags::FHidden) != TypeLibTypeFlags(0);
-      }
+public:
 
-      return false;
+   [ComRegisterFunctionAttribute]
+   static void RegisterFunction( Type^ t )
+   {
+      
+      //Insert code here.
    }
+
+
+   [ComUnregisterFunctionAttribute]
+   static void UnregisterFunction( Type^ t )
+   {
+      
+      //Insert code here.
+   }
+
 };

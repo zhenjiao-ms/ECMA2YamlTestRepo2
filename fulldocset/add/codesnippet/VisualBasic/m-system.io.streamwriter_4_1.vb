@@ -4,19 +4,16 @@ Imports System.Text
 Module Module1
 
     Sub Main()
-        Dim fileName As String = "test.txt"
-        Dim textToAdd As String = "Example text in file"
-        Dim fs As FileStream = Nothing
-        Try
-            fs = New FileStream(fileName, FileMode.CreateNew)
-            Using writer As StreamWriter = New StreamWriter(fs, Encoding.Default)
-                writer.Write(textToAdd)
-            End Using
-        Finally
-            If Not fs Is Nothing Then
-                fs.Dispose()
-            End If
-        End Try
+        WriteCharacters()
     End Sub
 
+    Async Sub WriteCharacters()
+        Dim ue As UnicodeEncoding = New UnicodeEncoding()
+        Dim charsToAdd() = ue.GetChars(ue.GetBytes("First line and second line"))
+
+        Using writer As StreamWriter = File.CreateText("newfile.txt")
+            Await writer.WriteLineAsync(charsToAdd, 0, 11)
+            Await writer.WriteLineAsync(charsToAdd, 11, charsToAdd.Length - 11)
+        End Using
+    End Sub
 End Module

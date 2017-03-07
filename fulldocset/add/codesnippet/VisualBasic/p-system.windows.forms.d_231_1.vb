@@ -1,28 +1,16 @@
-        ElseIf (e.AssociatedControl Is button2) Then
-            ' Draw a custom background and text if the ToolTip is for button2.
+    Private Sub ChangeColumnAlignment()
+        songsDataGridView.Columns("Title").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomCenter
+        songsDataGridView.Columns("Title").Name = DataGridViewContentAlignment.BottomCenter.ToString()
 
-            ' Draw the custom background.
-            e.Graphics.FillRectangle(SystemBrushes.ActiveCaption, e.Bounds)
+        songsDataGridView.Columns("Artist").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomLeft
+        songsDataGridView.Columns("Artist").Name = DataGridViewContentAlignment.BottomLeft.ToString()
 
-            ' Draw the standard border.
-            e.DrawBorder()
+        songsDataGridView.Columns("Album").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
+        songsDataGridView.Columns("Album").Name = DataGridViewContentAlignment.BottomRight.ToString()
 
-            ' Draw the custom text.
-            Dim sf As StringFormat = New StringFormat
-            Try
-                sf.Alignment = StringAlignment.Center
-                sf.LineAlignment = StringAlignment.Center
-                sf.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None
-                sf.FormatFlags = StringFormatFlags.NoWrap
+        songsDataGridView.Columns("Release Date").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        songsDataGridView.Columns("Release Date").Name = DataGridViewContentAlignment.MiddleCenter.ToString()
 
-                Dim f As Font = New Font("Tahoma", 9)
-                Try
-                    e.Graphics.DrawString(e.ToolTipText, f, _
-                        SystemBrushes.ActiveCaptionText, _
-                        RectangleF.op_Implicit(e.Bounds), sf)
-                Finally
-                    f.Dispose()
-                End Try
-            Finally
-                sf.Dispose()
-            End Try
+        songsDataGridView.Columns("Track").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        songsDataGridView.Columns("Track").Name = DataGridViewContentAlignment.MiddleLeft.ToString()
+    End Sub

@@ -1,26 +1,10 @@
 private:
-   void AddColumn()
+   void CreateTextDataObject()
    {
-      DataTable^ myTable = gcnew DataTable;
+      // Creates a new data object using a string.
+      String^ myString = "My text string";
+      DataObject^ myDataObject = gcnew DataObject( myString );
       
-      // Add a new DataColumn to the DataTable.
-      DataColumn^ myColumn = gcnew DataColumn( "myTextBoxColumn" );
-      myColumn->DataType = System::Type::GetType( "System::String" );
-      myColumn->DefaultValue = "default string";
-      myTable->Columns->Add( myColumn );
-      
-      // Get the CurrencyManager for the DataTable.
-      CurrencyManager^ cm = dynamic_cast<CurrencyManager^>(this->BindingContext[ myTable ]);
-      
-      // Use the CurrencyManager to get the PropertyDescriptor for the new column.
-      System::ComponentModel::PropertyDescriptor^ pd = cm->GetItemProperties()[ "myTextBoxColumn" ];
-      DataGridTextBoxColumn^ myColumnTextColumn;
-      
-      // Create the DataGridTextBoxColumn with the PropertyDescriptor.
-      myColumnTextColumn = gcnew DataGridTextBoxColumn( pd );
-      
-      // Add the new DataGridColumn to the GridColumnsCollection.
-      dataGrid1->DataSource = myTable;
-      dataGrid1->TableStyles->Add( gcnew DataGridTableStyle );
-      dataGrid1->TableStyles[ 0 ]->GridColumnStyles->Add( myColumnTextColumn );
+      // Prints the string in a text box.
+      textBox1->Text = myDataObject->GetData( DataFormats::Text )->ToString();
    }

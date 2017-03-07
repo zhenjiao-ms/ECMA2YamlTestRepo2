@@ -1,86 +1,57 @@
 using System;
 using System.IO;
-using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Xml.Schema;
 
-// You must use the SoapIncludeAttribute to inform the XmlSerializer
-// that the Vehicle type should be recognized when deserializing.
-[SoapInclude(typeof(Vehicle))]
 public class Group
 {
+   [XmlAttribute (Namespace = "http://www.cpandl.com")]
    public string GroupName;
-   public Vehicle GroupVehicle;
-}
- [SoapInclude(typeof(Vehicle))]
-public class Vehicle
-{
-   public string licenseNumber;
+   
+   [XmlAttribute(DataType = "base64Binary")]
+   public Byte [] GroupNumber;
+
+   [XmlAttribute(DataType = "date", AttributeName = "CreationDate")]
+   public DateTime Today;
 }
 
+
+ 
 public class Run
 {
    public static void Main()
    {
       Run test = new Run();
-      test.DeserializeObject("UnrefObj.xml");
+      test.SerializeObject("Attributes.xml");
    }
-   
-   public void DeserializeObject(string filename)
+
+
+   public void SerializeObject(string filename)
    {
       // Create an instance of the XmlSerializer class.
-      XmlTypeMapping myMapping = 
-      (new SoapReflectionImporter().ImportTypeMapping(
-      typeof(Group)));
       XmlSerializer mySerializer =  
-      new XmlSerializer(myMapping);
- 
-      mySerializer.UnreferencedObject += 
-      new UnreferencedObjectEventHandler
-      (Serializer_UnreferencedObject);
+      new XmlSerializer(typeof(Group));
 
-      // Reading the file requires an  XmlTextReader.
-      XmlTextReader reader= 
-      new XmlTextReader(filename);
-      reader.ReadStartElement();
+      // Writing the file requires a TextWriter.
+      TextWriter writer = new StreamWriter(filename);
 
-      // Deserialize and cast the object.
-      Group myGroup; 
-      myGroup = (Group) mySerializer.Deserialize(reader);
-      reader.ReadEndElement();
-      reader.Close();
-   }
+      // Create an instance of the class that will be serialized.
+      Group myGroup = new Group();
 
-   private void Serializer_UnreferencedObject
-   (object sender, UnreferencedObjectEventArgs e){
-      Console.WriteLine("UnreferencedObject:");
-      Console.WriteLine("ID: " + e.UnreferencedId);
-      Console.WriteLine("UnreferencedObject: " + e.UnreferencedObject);
-      Vehicle myVehicle = (Vehicle) e.UnreferencedObject;
-      Console.WriteLine("License: " + myVehicle.licenseNumber);
+      // Set the object properties.
+      myGroup.GroupName = ".NET";
+
+      Byte [] hexByte = new Byte[2]{Convert.ToByte(100),
+      Convert.ToByte(50)};
+      myGroup.GroupNumber = hexByte;
+
+      DateTime myDate = new DateTime(2001,1,10);
+      myGroup.Today = myDate;
+
+      // Serialize the class, and close the TextWriter.
+      mySerializer.Serialize(writer, myGroup);
+       writer.Close();
    }
 }
-
-// The file named "UnrefObj.xml" should contain this XML:
-
-// <wrapper>
-
-//  <Group xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-//xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="id1" 
-//n1:GroupName=".NET" xmlns:n1="http://www.cpandl.com">
-//   </Group>
-
-//<Vehicle id="id2" n1:type="Vehicle" 
-//xmlns:n1="http://www.w3.org/2001/XMLSchema-instance">
-//   <licenseNumber xmlns:q1="http://www.w3.org/2001/XMLSchema" 
-//n1:type="q1:string">ABCD</licenseNumber>
-//   </Vehicle>
-
-//<Vehicle id="id3" n1:type="Vehicle" 
-//xmlns:n1="http://www.w3.org/2001/XMLSchema-instance">
-//    <licenseNumber xmlns:q1="http://www.w3.org/2001/XMLSchema" 
-//n1:type="q1:string">1234</licenseNumber>
-//  </Vehicle>
-
-//</wrapper>
+   

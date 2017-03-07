@@ -1,20 +1,14 @@
-private:
-   delegate void MyDelegate(
-   Label^ myControl, String^ myArg2 );
-   void Button_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
+   void comboBox1_SelectionChangeCommitted( Object^ sender, EventArgs^ /*e*/ )
    {
-      array<Object^>^myArray = gcnew array<Object^>(2);
-      myArray[ 0 ] = gcnew Label;
-      myArray[ 1 ] = "Enter a Value";
-      myTextBox->BeginInvoke( gcnew MyDelegate( this, &MyForm::DelegateMethod ), myArray );
+      ComboBox^ senderComboBox = dynamic_cast<ComboBox^>(sender);
+      
+      // Change the length of the text box depending on what the user has 
+      // selected and committed using the SelectionLength property.
+      if ( senderComboBox->SelectionLength > 0 )
+      {
+		  textbox1->Width = 
+			  senderComboBox->SelectedItem->ToString()->Length * 
+			  ((int)this->textbox1->Font->SizeInPoints);
+		  textbox1->Text = senderComboBox->SelectedItem->ToString();				
+      }
    }
-
-   void DelegateMethod( Label^ myControl, String^ myCaption )
-   {
-      myControl->Location = Point(16,16);
-      myControl->Size = System::Drawing::Size( 80, 25 );
-      myControl->Text = myCaption;
-      this->Controls->Add( myControl );
-   }
-
-   delegate void InvokeDelegate();

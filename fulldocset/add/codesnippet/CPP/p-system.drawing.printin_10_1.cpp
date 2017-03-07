@@ -1,24 +1,33 @@
-   private:
-      void MyButtonPrint_Click( Object^ sender, System::EventArgs^ e )
+public:
+   void Printing( String^ printer )
+   {
+      try
       {
-         // Set the paper size based upon the selection in the combo box.
-         if ( comboPaperSize->SelectedIndex != -1 )
+         streamToPrint = gcnew StreamReader( filePath );
+         try
          {
-            printDoc->DefaultPageSettings->PaperSize = printDoc->PrinterSettings->PaperSizes[ comboPaperSize->SelectedIndex ];
+            printFont = gcnew System::Drawing::Font( "Arial",10 );
+            PrintDocument^ pd = gcnew PrintDocument;
+            pd->PrintPage += gcnew PrintPageEventHandler(
+               this, &Form1::pd_PrintPage );
+            // Specify the printer to use.
+            pd->PrinterSettings->PrinterName = printer;
+            if ( pd->PrinterSettings->IsValid )
+            {
+               pd->Print();
+            }
+            else
+            {
+               MessageBox::Show( "Printer is invalid." );
+            }
          }
-
-         // Set the paper source based upon the selection in the combo box.
-         if ( comboPaperSource->SelectedIndex != -1 )
+         finally
          {
-            printDoc->DefaultPageSettings->PaperSource = printDoc->PrinterSettings->PaperSources[ comboPaperSource->SelectedIndex ];
+            streamToPrint->Close();
          }
-
-         // Set the printer resolution based upon the selection in the combo box.
-         if ( comboPrintResolution->SelectedIndex != -1 )
-         {
-            printDoc->DefaultPageSettings->PrinterResolution = printDoc->PrinterSettings->PrinterResolutions[ comboPrintResolution->SelectedIndex ];
-         }
-
-         // Print the document with the specified paper size, source, and print resolution.
-         printDoc->Print();
       }
+      catch ( Exception^ ex ) 
+      {
+         MessageBox::Show( ex->Message );
+      }
+   }

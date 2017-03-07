@@ -1,40 +1,35 @@
-    Private WithEvents dataGridView1 As New DataGridView()
+#Region "data store maintance"
+    Const initialValue As Integer = -1
 
-    Private Sub AddColorColumn()
+    Private Sub dataGridView1_CellValueNeeded(ByVal sender As Object, _
+        ByVal e As DataGridViewCellValueEventArgs) _
+        Handles dataGridView1.CellValueNeeded
 
-        Dim comboBoxColumn As New DataGridViewComboBoxColumn()
-        comboBoxColumn.Items.AddRange( _
-            Color.Red, Color.Yellow, Color.Green, Color.Blue)
-        comboBoxColumn.ValueType = GetType(Color)
-        dataGridView1.Columns.Add(comboBoxColumn)
-
-    End Sub
-
-    Private Sub dataGridView1_EditingControlShowing(ByVal sender As Object, _
-        ByVal e As DataGridViewEditingControlShowingEventArgs) _
-        Handles dataGridView1.EditingControlShowing
-
-        Dim combo As ComboBox = CType(e.Control, ComboBox)
-        If (combo IsNot Nothing) Then
-
-            ' Remove an existing event-handler, if present, to avoid 
-            ' adding multiple handlers when the editing control is reused.
-            RemoveHandler combo.SelectedIndexChanged, _
-                New EventHandler(AddressOf ComboBox_SelectedIndexChanged)
-
-            ' Add the event handler. 
-            AddHandler combo.SelectedIndexChanged, _
-                New EventHandler(AddressOf ComboBox_SelectedIndexChanged)
-
+        If store.ContainsKey(e.RowIndex) Then
+            ' Use the store if the e value has been modified 
+            ' and stored.
+            e.Value = store(e.RowIndex)
+        ElseIf newRowNeeded AndAlso e.RowIndex = numberOfRows Then
+            If dataGridView1.IsCurrentCellInEditMode Then
+                e.Value = initialValue
+            Else
+                ' Show a blank value if the cursor is just resting
+                ' on the last row.
+                e.Value = String.Empty
+            End If
+        Else
+            e.Value = e.RowIndex
         End If
-
     End Sub
 
-    Private Sub ComboBox_SelectedIndexChanged( _
-        ByVal sender As Object, ByVal e As EventArgs)
+    Private Sub dataGridView1_CellValuePushed(ByVal sender As Object, _
+        ByVal e As DataGridViewCellValueEventArgs) _
+        Handles dataGridView1.CellValuePushed
 
-        Dim comboBox1 As ComboBox = CType(sender, ComboBox)
-        comboBox1.BackColor = _
-            CType(CType(sender, ComboBox).SelectedItem, Color)
+        store.Add(e.RowIndex, CInt(e.Value))
 
     End Sub
+#End Region
+
+    Dim store As System.Collections.Generic.Dictionary(Of Integer, Integer) = _
+        New Dictionary(Of Integer, Integer)

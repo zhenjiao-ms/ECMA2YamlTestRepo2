@@ -1,46 +1,43 @@
-    Private Sub dataGridView1_CellFormatting(ByVal sender As Object, _
-        ByVal e As DataGridViewCellFormattingEventArgs) _
-        Handles dataGridView1.CellFormatting
-        ' If the column is the Artist column, check the
-        ' value.
-        If Me.dataGridView1.Columns(e.ColumnIndex).Name _
-            = "Artist" Then
-            If e.Value IsNot Nothing Then
-
-                ' Check for the string "pink" in the cell.
-                Dim stringValue As String = _
-                CType(e.Value, String)
-                stringValue = stringValue.ToLower()
-                If ((stringValue.IndexOf("pink") > -1)) Then
-                    e.CellStyle.BackColor = Color.Pink
-                End If
-
-            End If
-        ElseIf Me.dataGridView1.Columns(e.ColumnIndex).Name _
-            = "Release Date" Then
-            ShortFormDateFormat(e)
+    Protected domainUpDown1 As DomainUpDown
+    
+    
+    Private Sub MySub()
+        ' Create and initialize the DomainUpDown control.
+        domainUpDown1 = New System.Windows.Forms.DomainUpDown()
+        
+        ' Add the DomainUpDown control to the form.
+        Controls.Add(domainUpDown1)
+    End Sub 'MySub
+    
+    
+    Private Sub button1_Click(sender As System.Object, e As System.EventArgs)
+        ' Add the text box contents and initial location in the collection
+        ' to the DomainUpDown control.
+        domainUpDown1.Items.Add((textBox1.Text.Trim() & " - " & myCounter))
+        
+        ' Increment the counter variable.
+        myCounter = myCounter + 1
+        
+        ' Clear the TextBox.
+        textBox1.Text = ""
+    End Sub 'button1_Click
+    
+    
+    Private Sub checkBox1_Click(sender As System.Object, e As System.EventArgs)
+        ' If Sorted is set to true, set it to false; 
+        ' otherwise set it to true.
+        If domainUpDown1.Sorted Then
+            domainUpDown1.Sorted = False
+        Else
+            domainUpDown1.Sorted = True
         End If
-    End Sub
-
-    'Even though the date internaly stores the year as YYYY, using formatting, the
-    'UI can have the format in YY.  
-    Private Shared Sub ShortFormDateFormat(ByVal formatting As DataGridViewCellFormattingEventArgs)
-        If formatting.Value IsNot Nothing Then
-            Try
-                Dim dateString As System.Text.StringBuilder = New System.Text.StringBuilder()
-                Dim theDate As Date = DateTime.Parse(formatting.Value.ToString())
-
-                dateString.Append(theDate.Month)
-                dateString.Append("/")
-                dateString.Append(theDate.Day)
-                dateString.Append("/")
-                dateString.Append(theDate.Year.ToString().Substring(2))
-                formatting.Value = dateString.ToString()
-                formatting.FormattingApplied = True
-            Catch notInDateFormat As FormatException
-                ' Set to false in case there are other handlers interested trying to
-                ' format this DataGridViewCellFormattingEventArgs instance.
-                formatting.FormattingApplied = False
-            End Try
-        End If
-    End Sub
+    End Sub 'checkBox1_Click
+    
+    
+    Private Sub domainUpDown1_SelectedItemChanged _
+        (sender As System.Object, e As System.EventArgs)
+        
+        ' Display the SelectedIndex and SelectedItem property values in a MessageBox.
+        MessageBox.Show(("SelectedIndex: " & domainUpDown1.SelectedIndex.ToString() & _
+            ControlChars.Cr & "SelectedItem: " & domainUpDown1.SelectedItem.ToString()))
+    End Sub 'domainUpDown1_SelectedItemChanged

@@ -1,16 +1,19 @@
-    Private Sub ChangeColumnAlignment()
-        songsDataGridView.Columns("Title").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomCenter
-        songsDataGridView.Columns("Title").Name = DataGridViewContentAlignment.BottomCenter.ToString()
+    Private Sub CreateUnboundButtonColumn()
 
-        songsDataGridView.Columns("Artist").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomLeft
-        songsDataGridView.Columns("Artist").Name = DataGridViewContentAlignment.BottomLeft.ToString()
+        ' Initialize the button column.
+        Dim buttonColumn As New DataGridViewButtonColumn
 
-        songsDataGridView.Columns("Album").DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight
-        songsDataGridView.Columns("Album").Name = DataGridViewContentAlignment.BottomRight.ToString()
+        With buttonColumn
+            .HeaderText = "Details"
+            .Name = "Details"
+            .Text = "View Details"
 
-        songsDataGridView.Columns("Release Date").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        songsDataGridView.Columns("Release Date").Name = DataGridViewContentAlignment.MiddleCenter.ToString()
+            ' Use the Text property for the button text for all cells rather
+            ' than using each cell's value as the text for its own button.
+            .UseColumnTextForButtonValue = True
+        End With
 
-        songsDataGridView.Columns("Track").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        songsDataGridView.Columns("Track").Name = DataGridViewContentAlignment.MiddleLeft.ToString()
+        ' Add the button column to the control.
+        dataGridView1.Columns.Insert(0, buttonColumn)
+
     End Sub

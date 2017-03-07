@@ -12,8 +12,15 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents an <see langword="abstract" /> class that provides properties for objects that do not have properties.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ For an example on this class, see the example in <xref:System.ComponentModel.PropertyDescriptor>.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -32,10 +39,10 @@
         <Parameter Name="propertyType" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="componentType">To be added.</param>
-        <param name="name">To be added.</param>
-        <param name="propertyType">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="componentType">A <see cref="T:System.Type" /> that represents the type of component to which this property descriptor binds.</param>
+        <param name="name">The name of the property.</param>
+        <param name="propertyType">A <see cref="T:System.Type" /> that represents the data type for this property.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.TypeConverter.SimplePropertyDescriptor" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -56,11 +63,11 @@
         <Parameter Name="attributes" Type="System.Attribute[]" />
       </Parameters>
       <Docs>
-        <param name="componentType">To be added.</param>
-        <param name="name">To be added.</param>
-        <param name="propertyType">To be added.</param>
-        <param name="attributes">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="componentType">A <see cref="T:System.Type" /> that represents the type of component to which this property descriptor binds.</param>
+        <param name="name">The name of the property.</param>
+        <param name="propertyType">A <see cref="T:System.Type" /> that represents the data type for this property.</param>
+        <param name="attributes">An <see cref="T:System.Attribute" /> array with the attributes to associate with the property.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.TypeConverter.SimplePropertyDescriptor" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -81,10 +88,18 @@
         <Parameter Name="component" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="component">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="component">The component to test for reset capability.</param>
+        <summary>Returns whether resetting the component changes the value of the component.</summary>
+        <returns>
+          <see langword="true" /> if resetting the component changes the value of the component; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This method looks for a <xref:System.ComponentModel.DefaultValueAttribute>. If it finds one, it compares the value of the attribute with the current value of the property. It returns `true` when the default value does not match the current value of the property. If this method cannot find a <xref:System.ComponentModel.DefaultValueAttribute>, it looks for a `ShouldSerializeMyProperty` method. If it finds a `ShouldSerializeMyProperty` method, it returns what `ShouldSerializeMyProperty` returns. If this method cannot find a `ShouldSerializeMyProperty` method, it looks for a `ResetMyProperty` method. If it finds a `ResetMyProperty` method, it returns `true`. If this method cannot find a <xref:System.ComponentModel.DefaultValueAttribute>, a `ShouldSerializeMyProperty` method, or a `ResetMyProperty` method, then it returns `false`.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ComponentType">
@@ -101,8 +116,8 @@
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the type of component to which this property description binds.</summary>
+        <value>A <see cref="T:System.Type" /> that represents the type of component to which this property binds.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -120,8 +135,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value indicating whether this property is read-only.</summary>
+        <value>
+          <see langword="true" /> if the property is read-only; <see langword="false" /> if the property is read/write.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -139,8 +155,8 @@
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the type of the property.</summary>
+        <value>A <see cref="T:System.Type" /> that represents the type of the property.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -161,9 +177,16 @@
         <Parameter Name="component" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="component">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="component">The component with the property value to be reset.</param>
+        <summary>Resets the value for this property of the component.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This method looks for a <xref:System.ComponentModel.DefaultValueAttribute>. If it finds one, it sets the value of the property to the value specified in the attribute. If this method cannot find a <xref:System.ComponentModel.DefaultValueAttribute>, it looks for a `ResetMyProperty` method. If it finds a `ResetMyProperty` method, it invokes it. If this method cannot find a <xref:System.ComponentModel.DefaultValueAttribute> or a `ResetMyProperty` method, then it does not perform an operation.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ShouldSerializeValue">
@@ -183,10 +206,18 @@
         <Parameter Name="component" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="component">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="component">The component with the property that is to be examined for persistence.</param>
+        <summary>Returns whether the value of this property can persist.</summary>
+        <returns>
+          <see langword="true" /> if the value of the property can persist; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ As implemented in this class, this method returns `false`.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
   </Members>

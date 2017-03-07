@@ -12,8 +12,15 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents the transport-level security settings for the <see cref="T:System.ServiceModel.WSHttpBinding" />.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This class is used by <xref:System.ServiceModel.WSHttpSecurity.Transport%2A> to set the transport-level security settings for a binding.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,7 +34,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.HttpTransportSecurity" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -45,9 +52,37 @@
         <ReturnType>System.ServiceModel.HttpClientCredentialType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the type of client credential to be used for authentication.</summary>
+        <value>Returns the <see cref="T:System.ServiceModel.HttpClientCredentialType" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The return value can be one of the following enumeration members:  
+  
+-   <xref:System.ServiceModel.HttpClientCredentialType>  
+  
+-   <xref:System.ServiceModel.HttpClientCredentialType>  
+  
+-   <xref:System.ServiceModel.HttpClientCredentialType>  
+  
+-   <xref:System.ServiceModel.HttpClientCredentialType>  
+  
+-   <xref:System.ServiceModel.HttpClientCredentialType>  
+  
+-   <xref:System.ServiceModel.HttpClientCredentialType>  
+  
+   
+  
+## Examples  
+ The following code shows how to access and set this property.  
+  
+ [!code-vb[c_ProgrammingSecurity#11](~/add/codesnippet/visualbasic/p-system.servicemodel.ht_1.vb)]
+ [!code-cs[c_ProgrammingSecurity#11](~/add/codesnippet/csharp/p-system.servicemodel.ht_1.cs)]  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">Setting the property to an undefined value.</exception>
       </Docs>
     </Member>
     <Member MemberName="ExtendedProtectionPolicy">
@@ -63,8 +98,8 @@
         <ReturnType>System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the extended protection policy.</summary>
+        <value>The extended protection policy.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -82,9 +117,27 @@
         <ReturnType>System.ServiceModel.HttpProxyCredentialType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the type of client credential to be used for authentication against the proxy.</summary>
+        <value>Returns the <see cref="T:System.ServiceModel.HttpProxyCredentialType" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The return value can be one of the following enumeration members:  
+  
+-   <xref:System.ServiceModel.HttpClientCredentialType>  
+  
+-   <xref:System.ServiceModel.HttpClientCredentialType>  
+  
+-   <xref:System.ServiceModel.HttpClientCredentialType>  
+  
+-   <xref:System.ServiceModel.HttpClientCredentialType>  
+  
+-   <xref:System.ServiceModel.HttpClientCredentialType>  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">Setting the property to an undefined value.</exception>
       </Docs>
     </Member>
     <Member MemberName="Realm">
@@ -101,9 +154,16 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets or sets the authentication realm for digest or basic authentication.</summary>
+        <value>The authentication realm. The default value is "".</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ An *authentication realm* is a string that contains at least the name of the host performing the authentication and can additionally indicate the collection of users who might have access. An example might be "registered_someone@example.com". The authentication realm is displayed to a user to show which one of several possible user names and passwords can be used.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ShouldSerializeClientCredentialType">
@@ -125,8 +185,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns a value that indicates whether the <see cref="System.ServiceModel.HttpTransportSecurity.ClientCredentialType%2A" /> property has changed from its default value and should be serialized. . Used by WCF for XAML integration.</summary>
+        <returns>
+          <see langword="true" /> if the <see cref="System.ServiceModel.HttpTransportSecurity.ClientCredentialType%2A" /> property value should be serialized; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -149,8 +210,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns a value that indicates whether the <see cref="System.ServiceModel.HttpTransportSecurity.ExtendedProtectionPolicy%2A" /> property has changed from its default value and should be serialized. Used by WCF for XAML integration.</summary>
+        <returns>
+          <see langword="true" /> if the <see cref="System.ServiceModel.HttpTransportSecurity.ExtendedProtectionPolicy%2A" /> property value should be serialized; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -173,8 +235,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns a value that indicates whether the <see cref="System.ServiceModel.HttpTransportSecurity.ProxyCredentialType%2A" /> property has changed from its default value and should be serialized. Used by WCF for XAML integration.</summary>
+        <returns>
+          <see langword="true" /> if the <see cref="System.ServiceModel.HttpTransportSecurity.ProxyCredentialType%2A" /> property value should be serialized; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -197,8 +260,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns a value that indicates whether the <see cref="System.ServiceModel.HttpTransportSecurity.Realm%2A" /> property has changed from its default value and should be serialized. . Used by WCF for XAML integration.</summary>
+        <returns>
+          <see langword="true" /> if the <see cref="System.ServiceModel.HttpTransportSecurity.Realm%2A" /> property value should be serialized; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

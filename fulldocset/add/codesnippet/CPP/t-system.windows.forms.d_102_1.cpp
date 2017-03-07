@@ -1,413 +1,248 @@
-#using <System.Drawing.dll>
-#using <System.dll>
+#using <system.dll>
+#using <system.data.dll>
+#using <system.drawing.dll>
 #using <system.windows.forms.dll>
+#using <system.xml.dll>
 
 using namespace System;
-using namespace System::Windows::Forms;
+using namespace System::ComponentModel;
+using namespace System::Data;
 using namespace System::Drawing;
-using namespace System::Collections;
-public ref class DataGridViewColumnDemo: public Form
+using namespace System::Windows::Forms;
+
+#define null 0
+public ref class Form1: public System::Windows::Forms::Form
 {
 private:
-
-#pragma region S "set up form" 
+   System::ComponentModel::Container^ components;
+   Button^ button1;
+   Button^ button2;
+   DataGrid^ myDataGrid;
+   DataSet^ myDataSet;
+   bool TablesAlreadyAdded;
 
 public:
-   DataGridViewColumnDemo()
+   Form1()
    {
-      Button1 = gcnew Button;
-      Button2 = gcnew Button;
-      Button3 = gcnew Button;
-      Button4 = gcnew Button;
-      Button5 = gcnew Button;
-      Button6 = gcnew Button;
-      Button7 = gcnew Button;
-      Button8 = gcnew Button;
-      Button9 = gcnew Button;
-      Button10 = gcnew Button;
-      FlowLayoutPanel1 = gcnew FlowLayoutPanel;
-      thirdColumnHeader = L"Main Ingredients";
-      boringMeatloaf = L"ground beef";
-      boringMeatloafRanking = L"*";
-      toolStripItem1 = gcnew ToolStripMenuItem;
+      // Required for Windows Form Designer support.
       InitializeComponent();
-      AddButton( Button1, L"Reset", gcnew EventHandler( this, &DataGridViewColumnDemo::ResetToDisorder ) );
-      AddButton( Button2, L"Change Column 3 Header", gcnew EventHandler( this, &DataGridViewColumnDemo::ChangeColumn3Header ) );
-      AddButton( Button3, L"Change Meatloaf Recipe", gcnew EventHandler( this, &DataGridViewColumnDemo::ChangeMeatloafRecipe ) );
-      AddAdditionalButtons();
-      InitializeDataGridView();
+
+      // Call SetUp to bind the controls.
+      SetUp();
    }
 
-   DataGridView^ dataGridView;
-   Button^ Button1;
-   Button^ Button2;
-   Button^ Button3;
-   Button^ Button4;
-   Button^ Button5;
-   Button^ Button6;
-   Button^ Button7;
-   Button^ Button8;
-   Button^ Button9;
-   Button^ Button10;
-   FlowLayoutPanel^ FlowLayoutPanel1;
+public:
+   ~Form1()
+   {
+      if ( components != nullptr )
+      {
+         delete components;
+      }
+   }
 
 private:
    void InitializeComponent()
    {
-      FlowLayoutPanel1->Location = Point(454,0);
-      FlowLayoutPanel1->AutoSize = true;
-      FlowLayoutPanel1->FlowDirection = FlowDirection::TopDown;
-      AutoSize = true;
-      ClientSize = System::Drawing::Size( 614, 360 );
-      FlowLayoutPanel1->Name = L"flowlayoutpanel";
-      Controls->Add( this->FlowLayoutPanel1 );
-      Text = this->GetType()->Name;
+      // Create the form and its controls.
+      this->components = gcnew System::ComponentModel::Container;
+      this->button1 = gcnew System::Windows::Forms::Button;
+      this->button2 = gcnew System::Windows::Forms::Button;
+      this->myDataGrid = gcnew DataGrid;
+      this->Text = "DataGrid Control Sample";
+      this->ClientSize = System::Drawing::Size( 450, 330 );
+      button1->Location = System::Drawing::Point( 24, 16 );
+      button1->Size = System::Drawing::Size( 120, 24 );
+      button1->Text = "Change Appearance";
+      button1->Click += gcnew System::EventHandler( this, &Form1::button1_Click );
+      button2->Location = System::Drawing::Point( 150, 16 );
+      button2->Size = System::Drawing::Size( 120, 24 );
+      button2->Text = "Get Binding Manager";
+      button2->Click += gcnew System::EventHandler( this, &Form1::button2_Click );
+      myDataGrid->Location = System::Drawing::Point( 24, 50 );
+      myDataGrid->Size = System::Drawing::Size( 300, 200 );
+      myDataGrid->CaptionText = "Microsoft DataGrid Control";
+      myDataGrid->MouseUp += gcnew MouseEventHandler( this, &Form1::Grid_MouseUp );
+      this->Controls->Add( button1 );
+      this->Controls->Add( button2 );
+      this->Controls->Add( myDataGrid );
    }
 
-
-#pragma endregion 
-#pragma region S " set up DataGridView " 
-   String^ thirdColumnHeader;
-   String^ boringMeatloaf;
-   String^ boringMeatloafRanking;
-   bool boringRecipe;
-   bool shortMode;
-   void InitializeDataGridView()
+   void SetUp()
    {
-      dataGridView = gcnew System::Windows::Forms::DataGridView;
-      Controls->Add( dataGridView );
-      dataGridView->Size = System::Drawing::Size( 300, 200 );
-      
-      // Create an unbound DataGridView by declaring a
-      // column count.
-      dataGridView->ColumnCount = 4;
-      AdjustDataGridViewSizing();
-      
-      // Set the column header style.
-      DataGridViewCellStyle^ columnHeaderStyle = gcnew DataGridViewCellStyle;
-      columnHeaderStyle->BackColor = Color::Aqua;
-      columnHeaderStyle->Font = gcnew System::Drawing::Font( L"Verdana",10,FontStyle::Bold );
-      dataGridView->ColumnHeadersDefaultCellStyle = columnHeaderStyle;
-      
-      // Set the column header names.
-      dataGridView->Columns[ 0 ]->Name = L"Recipe";
-      dataGridView->Columns[ 1 ]->Name = L"Category";
-      dataGridView->Columns[ 2 ]->Name = thirdColumnHeader;
-      dataGridView->Columns[ 3 ]->Name = L"Rating";
-      criteriaLabel = L"Column 3 sizing criteria: ";
-      PostColumnCreation();
-      
-      // Populate the rows.
-      array<String^>^row1 = gcnew array<String^>{
-         L"Meatloaf",L"Main Dish",boringMeatloaf,boringMeatloafRanking
-      };
-      array<String^>^row2 = gcnew array<String^>{
-         L"Key Lime Pie",L"Dessert",L"lime juice, evaporated milk",L"****"
-      };
-      array<String^>^row3 = gcnew array<String^>{
-         L"Orange-Salsa Pork Chops",L"Main Dish",L"pork chops, salsa, orange juice",L"****"
-      };
-      array<String^>^row4 = gcnew array<String^>{
-         L"Black Bean and Rice Salad",L"Salad",L"black beans, brown rice",L"****"
-      };
-      array<String^>^row5 = gcnew array<String^>{
-         L"Chocolate Cheesecake",L"Dessert",L"cream cheese",L"***"
-      };
-      array<String^>^row6 = gcnew array<String^>{
-         L"Black Bean Dip",L"Appetizer",L"black beans, sour cream",L"***"
-      };
-      array<Object^>^rows = gcnew array<Object^>{
-         row1,row2,row3,row4,row5,row6
-      };
-      System::Collections::IEnumerator^ myEnum = rows->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         array<String^>^rowArray = safe_cast<array<String^>^>(myEnum->Current);
-         dataGridView->Rows->Add( rowArray );
-      }
+      // Create a DataSet with two tables and one relation.
+      MakeDataSet();
 
-      shortMode = false;
-      boringRecipe = true;
+      /* Bind the DataGrid to the DataSet. The dataMember
+        specifies that the Customers table should be displayed.*/
+      myDataGrid->SetDataBinding( myDataSet, "Customers" );
    }
-
-   void AddButton( Button^ button, String^ buttonLabel, EventHandler^ handler )
-   {
-      FlowLayoutPanel1->Controls->Add( button );
-      button->TabIndex = FlowLayoutPanel1->Controls->Count;
-      button->Text = buttonLabel;
-      button->AutoSize = true;
-      button->Click += handler;
-   }
-
-   void ResetToDisorder( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      Controls->Remove( dataGridView );
-      dataGridView->~DataGridView();
-      InitializeDataGridView();
-   }
-
-   void ChangeColumn3Header( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      Toggle(  &shortMode );
-      if ( shortMode )
-      {
-         dataGridView->Columns[ 2 ]->HeaderText = L"S";
-      }
-      else
-      {
-         dataGridView->Columns[ 2 ]->HeaderText = thirdColumnHeader;
-      }
-   }
-
-   void Toggle( interior_ptr<Boolean> toggleThis )
-   {
-       *toggleThis =  ! *toggleThis;
-   }
-
-   void ChangeMeatloafRecipe( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      Toggle(  &boringRecipe );
-      if ( boringRecipe )
-      {
-         SetMeatloaf( boringMeatloaf, boringMeatloafRanking );
-      }
-      else
-      {
-         String^ greatMeatloafRecipe = L"1 lb. lean ground beef, "
-         L"1/2 cup bread crumbs, 1/4 cup ketchup,"
-         L"1/3 tsp onion powder, "
-         L"1 clove of garlic, 1/2 pack onion soup mix "
-         L" dash of your favorite BBQ Sauce";
-         SetMeatloaf( greatMeatloafRecipe, L"***" );
-      }
-   }
-
-   void SetMeatloaf( String^ recipe, String^ rating )
-   {
-      dataGridView->Rows[ 0 ]->Cells[ 2 ]->Value = recipe;
-      dataGridView->Rows[ 0 ]->Cells[ 3 ]->Value = rating;
-   }
-
-
-#pragma endregion 
-
-public:
-   static void Main()
-   {
-      Application::Run( gcnew DataGridViewColumnDemo );
-   }
-
-
-#pragma region S " demonstration code " 
 
 private:
-   void PostColumnCreation()
+   void button1_Click( Object^ sender, System::EventArgs^ e )
    {
-      AddContextLabel();
-      AddCriteriaLabel();
-      CustomizeCellsInThirdColumn();
-      AddContextMenu();
-      SetDefaultCellInFirstColumn();
-      ToolTips();
-      dataGridView->CellMouseEnter += gcnew DataGridViewCellEventHandler( this, &DataGridViewColumnDemo::dataGridView_CellMouseEnter );
-      dataGridView->AutoSizeColumnModeChanged += gcnew DataGridViewAutoSizeColumnModeEventHandler( this, &DataGridViewColumnDemo::dataGridView_AutoSizeColumnModeChanged );
+      if ( TablesAlreadyAdded )
+            return;
+
+      AddCustomDataTableStyle();
    }
 
-   String^ criteriaLabel;
-   void AddCriteriaLabel()
+private:
+   void AddCustomDataTableStyle()
    {
-      AddLabelToPanelIfNotAlreadyThere( criteriaLabel, String::Concat( criteriaLabel, dataGridView->Columns[ 2 ]->AutoSizeMode, L"." ) );
+      DataGridTableStyle^ ts1 = gcnew DataGridTableStyle;
+      ts1->MappingName = "Customers";
+
+      // Set other properties.
+      ts1->AlternatingBackColor = Color::LightGray;
+
+      /* Add a GridColumnStyle and set its MappingName 
+        to the name of a DataColumn in the DataTable. 
+        Set the HeaderText and Width properties. */
+      DataGridColumnStyle^ boolCol = gcnew DataGridBoolColumn;
+      boolCol->MappingName = "Current";
+      boolCol->HeaderText = "IsCurrent Customer";
+      boolCol->Width = 150;
+      ts1->GridColumnStyles->Add( boolCol );
+
+      // Add a second column style.
+      DataGridColumnStyle^ TextCol = gcnew DataGridTextBoxColumn;
+      TextCol->MappingName = "custName";
+      TextCol->HeaderText = "Customer Name";
+      TextCol->Width = 250;
+      ts1->GridColumnStyles->Add( TextCol );
+
+      // Create the second table style with columns.
+      DataGridTableStyle^ ts2 = gcnew DataGridTableStyle;
+      ts2->MappingName = "Orders";
+
+      // Set other properties.
+      ts2->AlternatingBackColor = Color::LightBlue;
+
+      // Create new ColumnStyle objects
+      DataGridColumnStyle^ cOrderDate = gcnew DataGridTextBoxColumn;
+      cOrderDate->MappingName = "OrderDate";
+      cOrderDate->HeaderText = "Order Date";
+      cOrderDate->Width = 100;
+      ts2->GridColumnStyles->Add( cOrderDate );
+
+      /* Use a PropertyDescriptor to create a formatted
+        column. First get the PropertyDescriptorCollection
+        for the data source and data member. */
+      PropertyDescriptorCollection^ pcol = this->BindingContext[myDataSet, "Customers.custToOrders"]->GetItemProperties();
+
+      /* Create a formatted column using a PropertyDescriptor.
+        The formatting character "c" specifies a currency format. */
+      DataGridColumnStyle^ csOrderAmount = gcnew DataGridTextBoxColumn( pcol[ "OrderAmount" ],"c",true );
+      csOrderAmount->MappingName = "OrderAmount";
+      csOrderAmount->HeaderText = "Total";
+      csOrderAmount->Width = 100;
+      ts2->GridColumnStyles->Add( csOrderAmount );
+
+      /* Add the DataGridTableStyle instances to 
+        the GridTableStylesCollection. */
+      myDataGrid->TableStyles->Add( ts1 );
+      myDataGrid->TableStyles->Add( ts2 );
+
+      // Sets the TablesAlreadyAdded to true so this doesn't happen again.
+      TablesAlreadyAdded = true;
    }
 
-   void AddContextLabel()
+private:
+   void button2_Click( Object^ sender, System::EventArgs^ e )
    {
-      String^ labelName = L"label";
-      AddLabelToPanelIfNotAlreadyThere( labelName, L"Use shortcut menu to change cell color." );
+      BindingManagerBase^ bmGrid;
+      bmGrid = BindingContext[myDataSet, "Customers"];
+      MessageBox::Show( String::Concat( "Current BindingManager Position: ", bmGrid->Position )->ToString() );
    }
 
-   void AddLabelToPanelIfNotAlreadyThere( String^ labelName, String^ labelText )
+private:
+   void Grid_MouseUp( Object^ sender, MouseEventArgs^ e )
    {
-      Label^ label;
-      if ( FlowLayoutPanel1->Controls[ labelName ] == nullptr )
+      // Create a HitTestInfo object using the HitTest method.
+      // Get the DataGrid by casting sender.
+      DataGrid^ myGrid = dynamic_cast<DataGrid^>(sender);
+      DataGrid::HitTestInfo ^ myHitInfo = myGrid->HitTest( e->X, e->Y );
+      Console::WriteLine( myHitInfo );
+      Console::WriteLine( myHitInfo->Type );
+      Console::WriteLine( myHitInfo->Row );
+      Console::WriteLine( myHitInfo->Column );
+   }
+
+   // Create a DataSet with two tables and populate it.
+   void MakeDataSet()
+   {
+      // Create a DataSet.
+      myDataSet = gcnew DataSet( "myDataSet" );
+
+      // Create two DataTables.
+      DataTable^ tCust = gcnew DataTable( "Customers" );
+      DataTable^ tOrders = gcnew DataTable( "Orders" );
+
+      // Create two columns, and add them to the first table.
+      DataColumn^ cCustID = gcnew DataColumn( "CustID",__int32::typeid );
+      DataColumn^ cCustName = gcnew DataColumn( "CustName" );
+      DataColumn^ cCurrent = gcnew DataColumn( "Current",bool::typeid );
+      tCust->Columns->Add( cCustID );
+      tCust->Columns->Add( cCustName );
+      tCust->Columns->Add( cCurrent );
+
+      // Create three columns, and add them to the second table.
+      DataColumn^ cID = gcnew DataColumn( "CustID",__int32::typeid );
+      DataColumn^ cOrderDate = gcnew DataColumn( "orderDate",DateTime::typeid );
+      DataColumn^ cOrderAmount = gcnew DataColumn( "OrderAmount",Decimal::typeid );
+      tOrders->Columns->Add( cOrderAmount );
+      tOrders->Columns->Add( cID );
+      tOrders->Columns->Add( cOrderDate );
+
+      // Add the tables to the DataSet.
+      myDataSet->Tables->Add( tCust );
+      myDataSet->Tables->Add( tOrders );
+
+      // Create a DataRelation, and add it to the DataSet.
+      DataRelation^ dr = gcnew DataRelation( "custToOrders",cCustID,cID );
+      myDataSet->Relations->Add( dr );
+
+      /* Populate the tables. For each customer and order, 
+        create need two DataRow variables. */
+      DataRow^ newRow1;
+      DataRow^ newRow2;
+
+      // Create three customers in the Customers Table.
+      for ( int i = 1; i < 4; i++ )
       {
-         label = gcnew Label;
-         label->AutoSize = true;
-         label->Name = labelName;
-         label->BackColor = Color::Bisque;
-         FlowLayoutPanel1->Controls->Add( label );
+         newRow1 = tCust->NewRow();
+         newRow1[ "custID" ] = i;
+         
+         // Add the row to the Customers table.
+         tCust->Rows->Add( newRow1 );
       }
-      else
+      tCust->Rows[ 0 ][ "custName" ] = "Customer1";
+      tCust->Rows[ 1 ][ "custName" ] = "Customer2";
+      tCust->Rows[ 2 ][ "custName" ] = "Customer3";
+
+      // Give the Current column a value.
+      tCust->Rows[ 0 ][ "Current" ] = true;
+      tCust->Rows[ 1 ][ "Current" ] = true;
+      tCust->Rows[ 2 ][ "Current" ] = false;
+
+      // For each customer, create five rows in the Orders table.
+      for ( int i = 1; i < 4; i++ )
       {
-         label = dynamic_cast<Label^>(FlowLayoutPanel1->Controls[ labelName ]);
-      }
-
-      label->Text = labelText;
-   }
-
-
-   void CustomizeCellsInThirdColumn()
-   {
-      int thirdColumn = 2;
-      DataGridViewColumn^ column = dataGridView->Columns[ thirdColumn ];
-      DataGridViewCell^ cell = gcnew DataGridViewTextBoxCell;
-      cell->Style->BackColor = Color::Wheat;
-      column->CellTemplate = cell;
-   }
-
-
-   ToolStripMenuItem^ toolStripItem1;
-   void AddContextMenu()
-   {
-      toolStripItem1->Text = L"Redden";
-      toolStripItem1->Click += gcnew EventHandler( this, &DataGridViewColumnDemo::toolStripItem1_Click );
-      System::Windows::Forms::ContextMenuStrip^ strip = gcnew System::Windows::Forms::ContextMenuStrip;
-      IEnumerator^ myEnum = dataGridView->Columns->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         DataGridViewColumn^ column = safe_cast<DataGridViewColumn^>(myEnum->Current);
-         column->ContextMenuStrip = strip;
-         column->ContextMenuStrip->Items->Add( toolStripItem1 );
-      }
-   }
-
-   DataGridViewCellEventArgs^ mouseLocation;
-
-   // Change the cell's color.
-   void toolStripItem1_Click( Object^ /*sender*/, EventArgs^ /*args*/ )
-   {
-      dataGridView->Rows[ mouseLocation->RowIndex ]->Cells[ mouseLocation->ColumnIndex ]->Style->BackColor = Color::Red;
-   }
-
-
-   // Deal with hovering over a cell.
-   void dataGridView_CellMouseEnter( Object^ /*sender*/, DataGridViewCellEventArgs^ location )
-   {
-      mouseLocation = location;
-   }
-
-
-   void SetDefaultCellInFirstColumn()
-   {
-      DataGridViewColumn^ firstColumn = dataGridView->Columns[ 0 ];
-      DataGridViewCellStyle^ cellStyle = gcnew DataGridViewCellStyle;
-      cellStyle->BackColor = Color::Thistle;
-      firstColumn->DefaultCellStyle = cellStyle;
-   }
-
-
-   void ToolTips()
-   {
-      DataGridViewColumn^ firstColumn = dataGridView->Columns[ 0 ];
-      DataGridViewColumn^ thirdColumn = dataGridView->Columns[ 2 ];
-      firstColumn->ToolTipText = L"This column uses a default cell.";
-      thirdColumn->ToolTipText = L"This column uses a template cell."
-      L" Style changes to one cell apply to all cells.";
-   }
-
-
-   void AddAdditionalButtons()
-   {
-      AddButton( Button4, L"Set Minimum Width of Column Two", gcnew EventHandler( this, &DataGridViewColumnDemo::Button4_Click ) );
-      AddButton( Button5, L"Set Width of Column One", gcnew EventHandler( this, &DataGridViewColumnDemo::Button5_Click ) );
-      AddButton( Button6, L"Autosize Third Column", gcnew EventHandler( this, &DataGridViewColumnDemo::Button6_Click ) );
-      AddButton( Button7, L"Add Thick Vertical Edge", gcnew EventHandler( this, &DataGridViewColumnDemo::Button7_Click ) );
-      AddButton( Button8, L"Style and Number Columns", gcnew EventHandler( this, &DataGridViewColumnDemo::Button8_Click ) );
-      AddButton( Button9, L"Change Column Header Text", gcnew EventHandler( this, &DataGridViewColumnDemo::Button9_Click ) );
-      AddButton( Button10, L"Swap First and Last Columns", gcnew EventHandler( this, &DataGridViewColumnDemo::Button10_Click ) );
-   }
-
-   void AdjustDataGridViewSizing()
-   {
-      dataGridView->ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-   }
-
-
-   //Set the minimum width.
-   void Button4_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      DataGridViewColumn^ column = dataGridView->Columns[ 1 ];
-      column->MinimumWidth = 40;
-   }
-
-
-   // Set the width.
-   void Button5_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      DataGridViewColumn^ column = dataGridView->Columns[ 0 ];
-      column->Width = 60;
-   }
-
-
-   // AutoSize the third column.
-   void Button6_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      DataGridViewColumn^ column = dataGridView->Columns[ 2 ];
-      column->AutoSizeMode = DataGridViewAutoSizeColumnMode::DisplayedCells;
-   }
-
-
-   // Set the vertical edge.
-   void Button7_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      int thirdColumn = 2;
-      
-      //        int edgeThickness = 5;
-      DataGridViewColumn^ column = dataGridView->Columns[ thirdColumn ];
-      column->DividerWidth = 10;
-   }
-
-
-   // Style and number columns.
-   void Button8_Click( Object^ /*sender*/, EventArgs^ /*args*/ )
-   {
-      DataGridViewCellStyle^ style = gcnew DataGridViewCellStyle;
-      style->Alignment = DataGridViewContentAlignment::MiddleCenter;
-      style->ForeColor = Color::IndianRed;
-      style->BackColor = Color::Ivory;
-      IEnumerator^ myEnum1 = dataGridView->Columns->GetEnumerator();
-      while ( myEnum1->MoveNext() )
-      {
-         DataGridViewColumn^ column = safe_cast<DataGridViewColumn^>(myEnum1->Current);
-         column->HeaderCell->Value = column->Index.ToString();
-         column->HeaderCell->Style = style;
+         for ( int j = 1; j < 6; j++ )
+         {
+            newRow2 = tOrders->NewRow();
+            newRow2[ "CustID" ] = i;
+            newRow2[ "orderDate" ] = DateTime(2001,i,j * 2);
+            newRow2[ "OrderAmount" ] = i * 10 + j * .1;
+            
+            // Add the row to the Orders table.
+            tOrders->Rows->Add( newRow2 );
+         }
       }
    }
-
-
-   // Change the text in the column header.
-   void Button9_Click( Object^ /*sender*/, EventArgs^ /*args*/ )
-   {
-      IEnumerator^ myEnum2 = dataGridView->Columns->GetEnumerator();
-      while ( myEnum2->MoveNext() )
-      {
-         DataGridViewColumn^ column = safe_cast<DataGridViewColumn^>(myEnum2->Current);
-         column->HeaderText = String::Concat( L"Column ", column->Index.ToString() );
-      }
-   }
-
-
-   // Swap the last column with the first.
-   void Button10_Click( Object^ /*sender*/, EventArgs^ /*args*/ )
-   {
-      DataGridViewColumnCollection^ columnCollection = dataGridView->Columns;
-      DataGridViewColumn^ firstDisplayedColumn = columnCollection->GetFirstColumn( DataGridViewElementStates::Visible );
-      DataGridViewColumn^ lastDisplayedColumn = columnCollection->GetLastColumn( DataGridViewElementStates::Visible, DataGridViewElementStates::None );
-      int firstColumn_sIndex = firstDisplayedColumn->DisplayIndex;
-      firstDisplayedColumn->DisplayIndex = lastDisplayedColumn->DisplayIndex;
-      lastDisplayedColumn->DisplayIndex = firstColumn_sIndex;
-   }
-
-
-   // Updated the criteria label.
-   void dataGridView_AutoSizeColumnModeChanged( Object^ /*sender*/, DataGridViewAutoSizeColumnModeEventArgs^ args )
-   {
-      args->Column->DataGridView->Parent->Controls[ L"flowlayoutpanel" ]->Controls[ criteriaLabel ]->Text = String::Concat( criteriaLabel, args->Column->AutoSizeMode );
-   }
-#pragma endregion 
-
 };
 
 int main()
 {
-   DataGridViewColumnDemo::Main();
+   Application::Run( gcnew Form1 );
 }

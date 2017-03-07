@@ -1,32 +1,92 @@
-<%@ Page language="C#"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<%@ Page Language="C#" AutoEventWireup="True" %>
+<%@ Import Namespace="System.Data" %>
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head runat="server">
-    <title>ASP.NET Example</title>
+   <script language="C#" runat="server">
+ 
+      ICollection CreateDataSource() 
+      {
+         DataTable dt = new DataTable();
+         DataRow dr;
+ 
+         dt.Columns.Add(new DataColumn("IntegerValue", typeof(Int32)));
+         dt.Columns.Add(new DataColumn("StringValue", typeof(string)));
+         dt.Columns.Add(new DataColumn("CurrencyValue", typeof(double)));
+ 
+         for (int i = 0; i < 9; i++) 
+         {
+            dr = dt.NewRow();
+ 
+            dr[0] = i;
+            dr[1] = "Item " + i.ToString();
+            dr[2] = 1.23 * (i + 1);
+ 
+            dt.Rows.Add(dr);
+         }
+ 
+         DataView dv = new DataView(dt);
+         return dv;
+      }
+ 
+      void Page_Load(Object sender, EventArgs e) 
+      {
+ 
+         if (!IsPostBack) 
+         {
+            // Load this data only once.
+            ItemsGrid.DataSource= CreateDataSource();
+            ItemsGrid.DataBind();
+         }
+      }
+ 
+   </script>
+ 
+<head runat="server">
+    <title>BoundColumn Example</title>
 </head>
 <body>
-    <form id="Form1" method="post" runat="server">
+ 
+   <form id="form1" runat="server">
+ 
+      <h3>BoundColumn Example</h3>
+ 
+      <b>Product List</b>
+ 
+      <asp:DataGrid id="ItemsGrid"
+           BorderColor="black"
+           BorderWidth="1"
+           CellPadding="3"
+           AutoGenerateColumns="false"
+           runat="server">
 
-      <!-- Use a Query String with country=USA -->
-      <asp:gridview
-        id ="GridView1"
-        runat="server"
-        datasourceid="MyAccessDataSource" />
+         <HeaderStyle BackColor="#00aaaa">
+         </HeaderStyle>
 
-<!-- Security Note: The AccessDataSource uses a QueryStringParameter,
-     Security Note: which does not perform validation of input from the client. -->
+         <Columns>
 
-      <asp:accessdatasource
-        id="MyAccessDataSource"
-        runat="server"
-        datafile="Northwind.mdb"
-        selectcommand="SELECT EmployeeID, LastName, Address, PostalCode, Country FROM Employees"
-        filterexpression="Country = '{0}'">
-        <filterparameters>
-          <asp:querystringparameter name="country" type="String" querystringfield="country" />
-        </filterparameters>
-      </asp:accessdatasource>
-    </form>
-  </body>
+            <asp:BoundColumn
+                 HeaderText="Number" 
+                 DataField="IntegerValue">
+            </asp:BoundColumn>
+
+            <asp:BoundColumn
+                 HeaderText="Description" 
+                 DataField="StringValue">
+            </asp:BoundColumn>
+
+            <asp:BoundColumn
+                 HeaderText="Price" 
+                 DataField="CurrencyValue" 
+                 DataFormatString="{0:c}">
+            </asp:BoundColumn>
+
+         </Columns>
+ 
+      </asp:DataGrid>
+ 
+   </form>
+ 
+</body>
 </html>

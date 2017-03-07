@@ -1,73 +1,62 @@
-using namespace System;
-using namespace System::Drawing;
-using namespace System::Windows::Forms;
-using namespace System::Security::Permissions;
-
-namespace csTempWindowsApplication1
-{
-   public ref class Form1: public System::Windows::Forms::Form
+   /* Get the tree node under the mouse pointer and 
+      save it in the mySelectedNode variable. */
+private:
+   void treeView1_MouseDown( Object^ /*sender*/, System::Windows::Forms::MouseEventArgs^ e )
    {
-   private:
+      mySelectedNode = treeView1->GetNodeAt( e->X, e->Y );
+   }
 
-      // Constant value was found in the "windows.h" header file.
-      static const Int32 WM_ACTIVATEAPP = 0x001C;
-      Boolean appActive;
-
-   public:
-      Form1()
+   void menuItem1_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      if ( mySelectedNode != nullptr && mySelectedNode->Parent != nullptr )
       {
-         appActive = true;
-         this->Size = System::Drawing::Size( 300, 300 );
-         this->Text = "Form1";
-         this->Font = gcnew System::Drawing::Font( "Microsoft Sans Serif",18.0F,System::Drawing::FontStyle::Bold,System::Drawing::GraphicsUnit::Point,((System::Byte)(0)) );
-      }
-
-
-   protected:
-      virtual void OnPaint( PaintEventArgs^ e ) override
-      {
-         
-         // Paint a string in different styles depending on whether the
-         // application is active.
-         if ( appActive )
+         treeView1->SelectedNode = mySelectedNode;
+         treeView1->LabelEdit = true;
+         if (  !mySelectedNode->IsEditing )
          {
-            e->Graphics->FillRectangle( SystemBrushes::ActiveCaption, 20, 20, 260, 50 );
-            e->Graphics->DrawString( "Application is active", this->Font, SystemBrushes::ActiveCaptionText, 20, 20 );
+            mySelectedNode->BeginEdit();
+         }
+      }
+      else
+      {
+         MessageBox::Show( String::Concat( "No tree node selected or selected node is a root node.\n",
+            "Editing of root nodes is not allowed." ), "Invalid selection" );
+      }
+   }
+
+   void treeView1_AfterLabelEdit( Object^ /*sender*/,
+      System::Windows::Forms::NodeLabelEditEventArgs^ e )
+   {
+      if ( e->Label != nullptr )
+      {
+         if ( e->Label->Length > 0 )
+         {
+            array<Char>^ temp0 = {'@','.',',','!'};
+            if ( e->Label->IndexOfAny( temp0 ) == -1 )
+            {
+               
+               // Stop editing without canceling the label change.
+               e->Node->EndEdit( false );
+            }
+            else
+            {
+               /* Cancel the label edit action, inform the user, and 
+                  place the node in edit mode again. */
+               e->CancelEdit = true;
+               MessageBox::Show( String::Concat( "Invalid tree node label.\n",
+                  "The invalid characters are: '@','.', ',', '!'" ),
+                  "Node Label Edit" );
+               e->Node->BeginEdit();
+            }
          }
          else
          {
-            e->Graphics->FillRectangle( SystemBrushes::InactiveCaption, 20, 20, 260, 50 );
-            e->Graphics->DrawString( "Application is Inactive", this->Font, SystemBrushes::ActiveCaptionText, 20, 20 );
+            /* Cancel the label edit action, inform the user, and 
+               place the node in edit mode again. */
+            e->CancelEdit = true;
+            MessageBox::Show( "Invalid tree node label.\nThe label cannot be blank",
+               "Node Label Edit" );
+            e->Node->BeginEdit();
          }
       }
-
-
-      [SecurityPermission(SecurityAction::Demand, Flags=SecurityPermissionFlag::UnmanagedCode)]
-      virtual void WndProc( Message% m ) override
-      {
-         
-         // Listen for operating system messages.
-         switch ( m.Msg )
-         {
-            case WM_ACTIVATEAPP:
-               
-               // The WParam value identifies what is occurring.
-               appActive = (int)m.WParam != 0;
-               
-               // Invalidate to get new text painted.
-               this->Invalidate();
-               break;
-         }
-         Form::WndProc( m );
-      }
-
-   };
-
-}
-
-
-[STAThread]
-int main()
-{
-   Application::Run( gcnew csTempWindowsApplication1::Form1 );
-}
+   }

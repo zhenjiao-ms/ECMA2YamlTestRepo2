@@ -1,20 +1,22 @@
+   // Initialize a single-panel status bar.  This is done
+   // by setting the Text property and setting ShowPanels to False.
 private:
-   void button1_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   void InitializeSimpleStatusBar()
    {
-      // Create a SelectionRange object and set its Start and End properties.
-      SelectionRange^ sr = gcnew SelectionRange;
-      sr->Start = DateTime::Parse( this->textBox1->Text );
-      sr->End = DateTime::Parse( this->textBox2->Text );
       
-      /* Assign the SelectionRange object to the
-            SelectionRange property of the MonthCalendar control. */
-      this->monthCalendar1->SelectionRange = sr;
-   }
-
-   void monthCalendar1_DateChanged( Object^ /*sender*/, DateRangeEventArgs^ /*e*/ )
-   {
-      /* Display the Start and End property values of
-            the SelectionRange object in the text boxes. */
-      this->textBox1->Text = monthCalendar1->SelectionRange->Start.Date.ToShortDateString();
-      this->textBox2->Text = monthCalendar1->SelectionRange->End.Date.ToShortDateString();
+      // Declare the StatusBar control
+      StatusBar^ simpleStatusBar = gcnew StatusBar;
+      
+      // Set the ShowPanels property to False.
+      simpleStatusBar->ShowPanels = false;
+      
+      // Set the text.
+      simpleStatusBar->Text = "This is a single-panel status bar";
+      
+      // Set the width and anchor the StatusBar
+      simpleStatusBar->Width = 200;
+      simpleStatusBar->Anchor = AnchorStyles::Top;
+      
+      // Add the StatusBar to the form.
+      this->Controls->Add( simpleStatusBar );
    }

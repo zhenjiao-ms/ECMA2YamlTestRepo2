@@ -1,55 +1,77 @@
-    Private Sub InitializeListView()
-        Me.ListView1 = New System.Windows.Forms.ListView
+    Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
 
-        ' Set properties such as BackColor, Location and Size
-        Me.ListView1.BackColor = System.Drawing.SystemColors.Control
-        Me.ListView1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.ListView1.Location = New System.Drawing.Point(0, 0)
-        Me.ListView1.Size = New System.Drawing.Size(292, 130)
-        Me.ListView1.View = System.Windows.Forms.View.Details
-        Me.ListView1.HideSelection = False
+    Private Sub InitializeOwnerDrawnListBox()
+        Me.ListBox1 = New System.Windows.Forms.ListBox
 
-        ' Allow user to select multiple items.
-        Me.ListView1.MultiSelect = True
+        ' Set the location and size.
+        ListBox1.Location = New Point(20, 20)
+        ListBox1.Size = New Size(240, 240)
 
-        ' Show check boxes in the ListView.
-        Me.ListView1.CheckBoxes = True
+        ' Populate the ListBox.ObjectCollection property 
+        ' with several strings, using the AddRange method.
+        Me.ListBox1.Items.AddRange(New Object() _
+            {"System.Windows.Forms", "System.Drawing", "System.Xml", _
+            "System.Net", "System.Runtime.Remoting", "System.Web"})
 
-        'Set the column headers and populate the columns.
-        ListView1.HeaderStyle = ColumnHeaderStyle.Nonclickable
-        Dim columnHeader1 As New ColumnHeader
-        With columnHeader1
-            .Text = "Breakfast Choices"
-            .TextAlign = HorizontalAlignment.Left
-            .Width = 146
-        End With
-        Dim columnHeader2 As New ColumnHeader
-        With columnHeader2
-            .Text = "Price Each"
-            .TextAlign = HorizontalAlignment.Center
-            .Width = 142
-        End With
-        Me.ListView1.Columns.Add(columnHeader1)
-        Me.ListView1.Columns.Add(columnHeader2)
-        Dim foodList() As String = New String() {"Juice", "Coffee", _
-            "Cereal & Milk", "Fruit Plate", "Toast & Jelly", _
-            "Bagel & Cream Cheese"}
+        ' Turn off the scrollbar.
+        ListBox1.ScrollAlwaysVisible = False
 
-        Dim foodPrice() As String = New String() {"1.09", "1.09", "2.19", _
-            "2.79", "2.09", "2.69"}
-        Dim count As Integer
+        ' Set the border style to a single, flat border.
+        ListBox1.BorderStyle = BorderStyle.FixedSingle
 
-        ' Members are added one at a time, so call BeginUpdate to ensure 
-        ' the list is painted only once, rather than as each list item is added.
-        ListView1.BeginUpdate()
+        ' Set the DrawMode property to the OwnerDrawVariable value. 
+        ' This means the MeasureItem and DrawItem events must be 
+        ' handled.
+        ListBox1.DrawMode = DrawMode.OwnerDrawVariable
+        Me.Controls.Add(Me.ListBox1)
+    End Sub
 
-        For count = 0 To foodList.Length - 1
-            Dim listItem As New ListViewItem(foodList(count))
-            listItem.SubItems.Add(foodPrice(count))
-            ListView1.Items.Add(listItem)
-        Next
 
-        'Call EndUpdate when you finish adding items to the ListView.
-        ListView1.EndUpdate()
-        Me.Controls.Add(Me.ListView1)
+    ' Handle the DrawItem event for an owner-drawn ListBox.
+    Private Sub ListBox1_DrawItem(ByVal sender As Object, _
+        ByVal e As DrawItemEventArgs) Handles ListBox1.DrawItem
+
+        ' If the item is the selected item, then draw the rectangle filled in
+        ' blue. The item is selected when a bitwise And of the State property
+        ' and the DrawItemState.Selected property is true. 
+        If (e.State And DrawItemState.Selected = DrawItemState.Selected) Then
+            e.Graphics.FillRectangle(Brushes.CornflowerBlue, e.Bounds)
+        Else
+            ' Otherwise, draw the rectangle filled in beige.
+            e.Graphics.FillRectangle(Brushes.Beige, e.Bounds)
+        End If
+
+        ' Draw a rectangle in blue around each item.
+        e.Graphics.DrawRectangle(Pens.Blue, e.Bounds)
+
+        ' Draw the text in the item.
+        e.Graphics.DrawString(Me.ListBox1.Items(e.Index), Me.Font, _
+            Brushes.Black, e.Bounds.X, e.Bounds.Y)
+
+        ' Draw the focus rectangle around the selected item.
+        e.DrawFocusRectangle()
+    End Sub
+
+    ' Handle the MeasureItem event for an owner-drawn ListBox.
+    Private Sub ListBox1_MeasureItem(ByVal sender As Object, _
+        ByVal e As MeasureItemEventArgs) Handles ListBox1.MeasureItem
+
+        ' Cast the sender object back to ListBox type.
+        Dim theListBox As ListBox = CType(sender, ListBox)
+
+        ' Get the string contained in each item.
+        Dim itemString As String = CType(theListBox.Items(e.Index), String)
+
+        ' Split the string at the " . "  character.
+        Dim resultStrings() As String = itemString.Split(".")
+
+        ' If the string contains more than one period, increase the 
+        ' height by ten pixels; otherwise, increase the height by 
+        ' five pixels.
+        If (resultStrings.Length > 2) Then
+            e.ItemHeight += 10
+        Else
+            e.ItemHeight += 5
+        End If
+
     End Sub

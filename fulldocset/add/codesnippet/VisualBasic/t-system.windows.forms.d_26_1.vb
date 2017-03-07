@@ -1,62 +1,51 @@
-    Private Sub ListDragTarget_DragOver(ByVal sender As Object, ByVal e As DragEventArgs) Handles ListDragTarget.DragOver
-        ' Determine whether string data exists in the drop data. If not, then
-        ' the drop effect reflects that the drop cannot occur.
-        If Not (e.Data.GetDataPresent(GetType(System.String))) Then
+    Private Sub AddCustomDataTableStyle()
+        ' Create a new DataGridTableStyle and set
+        ' its MappingName to the TableName of a DataTable. 
+        Dim ts1 As New DataGridTableStyle()
+        ts1.MappingName = "Customers"
+        
+        ' Add a GridColumnStyle and set its MappingName
+        ' to the name of a DataColumn in the DataTable.
+        ' Set the HeaderText and Width properties. 
+        
+        Dim boolCol As New DataGridBoolColumn()
+        boolCol.MappingName = "Current"
+        boolCol.HeaderText = "IsCurrent Customer"
+        boolCol.Width = 150
+        ts1.GridColumnStyles.Add(boolCol)
+        
+        ' Add a second column style.
+        Dim TextCol As New DataGridTextBoxColumn()
+        TextCol.MappingName = "custName"
+        TextCol.HeaderText = "Customer Name"
+        TextCol.Width = 250
+        ts1.GridColumnStyles.Add(TextCol)
 
-            e.Effect = DragDropEffects.None
-            DropLocationLabel.Text = "None - no string data."
-            Return
-        End If
+        ' Create the second table style with columns.
+        Dim ts2 As New DataGridTableStyle()
+        ts2.MappingName = "Orders"
 
-        ' Set the effect based upon the KeyState.
-        If ((e.KeyState And (8 + 32)) = (8 + 32) And _
-            (e.AllowedEffect And DragDropEffects.Link) = DragDropEffects.Link) Then
-            ' KeyState 8 + 32 = CTL + ALT
+        ' Change the colors.
+        ts2.ForeColor = Color.Yellow
+        ts2.AlternatingBackColor = Color.Blue
+        ts2.BackColor = Color.Blue
+        
+        ' Create new DataGridColumnStyle objects.
+        Dim cOrderDate As New DataGridTextBoxColumn()
+        cOrderDate.MappingName = "OrderDate"
+        cOrderDate.HeaderText = "Order Date"
+        cOrderDate.Width = 100
+        ts2.GridColumnStyles.Add(cOrderDate)
+        
+        Dim pcol As PropertyDescriptorCollection = Me.BindingContext(myDataSet, "Customers.custToOrders").GetItemProperties()
+        
+        Dim csOrderAmount As New DataGridTextBoxColumn(pcol("OrderAmount"), "c", True)
+        csOrderAmount.MappingName = "OrderAmount"
+        csOrderAmount.HeaderText = "Total"
+        csOrderAmount.Width = 100
+        ts2.GridColumnStyles.Add(csOrderAmount)
 
-            ' Link drag-and-drop effect.
-            e.Effect = DragDropEffects.Link
-
-        ElseIf ((e.KeyState And 32) = 32 And _
-            (e.AllowedEffect And DragDropEffects.Link) = DragDropEffects.Link) Then
-
-            ' ALT KeyState for link.
-            e.Effect = DragDropEffects.Link
-
-        ElseIf ((e.KeyState And 4) = 4 And _
-            (e.AllowedEffect And DragDropEffects.Move) = DragDropEffects.Move) Then
-
-            ' SHIFT KeyState for move.
-            e.Effect = DragDropEffects.Move
-
-        ElseIf ((e.KeyState And 8) = 8 And _
-            (e.AllowedEffect And DragDropEffects.Copy) = DragDropEffects.Copy) Then
-
-            ' CTL KeyState for copy.
-            e.Effect = DragDropEffects.Copy
-
-        ElseIf ((e.AllowedEffect And DragDropEffects.Move) = DragDropEffects.Move) Then
-
-            ' By default, the drop action should be move, if allowed.
-            e.Effect = DragDropEffects.Move
-
-        Else
-            e.Effect = DragDropEffects.None
-        End If
-
-        ' Gets the index of the item the mouse is below. 
-
-        ' The mouse locations are relative to the screen, so they must be 
-        ' converted to client coordinates.
-
-        indexOfItemUnderMouseToDrop = _
-            ListDragTarget.IndexFromPoint(ListDragTarget.PointToClient(New Point(e.X, e.Y)))
-
-        ' Updates the label text.
-        If (indexOfItemUnderMouseToDrop <> ListBox.NoMatches) Then
-
-            DropLocationLabel.Text = "Drops before item #" & (indexOfItemUnderMouseToDrop + 1)
-        Else
-            DropLocationLabel.Text = "Drops at the end."
-        End If
-
-    End Sub
+        ' Add the DataGridTableStyle objects to the collection.
+        myDataGrid.TableStyles.Add(ts1)
+        myDataGrid.TableStyles.Add(ts2)
+    End Sub 'AddCustomDataTableStyle

@@ -1,33 +1,26 @@
-public void InitializeMyToolBar()
- {
-    // Create the ToolBar, ToolBarButton controls, and menus.
-    ToolBarButton toolBarButton1 = new ToolBarButton("Open");
-    ToolBarButton toolBarButton2 = new ToolBarButton();
-    ToolBarButton toolBarButton3 = new ToolBarButton();
-    ToolBar toolBar1 = new ToolBar();
-    MenuItem menuItem1 = new MenuItem("Print");
-    ContextMenu contextMenu1 = new ContextMenu(new MenuItem[]{menuItem1});
+private void AddToolBar()
+{
+   // Add a toolbar and set some of its properties.
+   toolBar1 = new ToolBar();
+   toolBar1.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
+   toolBar1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+   toolBar1.Buttons.Add(this.toolBarButton1);
+   toolBar1.ButtonSize = new System.Drawing.Size(24, 24);
+   toolBar1.Divider = true;
+   toolBar1.DropDownArrows = true;
+   toolBar1.ImageList = this.imageList1;
+   toolBar1.ShowToolTips = true;
+   toolBar1.Size = new System.Drawing.Size(292, 25);
+   toolBar1.TabIndex = 0;
+   toolBar1.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
+   toolBar1.Wrappable = false;
+   
+   // Add handlers for the ButtonClick and ButtonDropDown events.
+   toolBar1.ButtonDropDown += 
+     new ToolBarButtonClickEventHandler(toolBar1_ButtonDropDown);
+   toolBar1.ButtonClick += 
+     new ToolBarButtonClickEventHandler(toolBar1_ButtonClicked);
 
-     
-    // Add the ToolBarButton controls to the ToolBar.
-    toolBar1.Buttons.Add(toolBarButton1);
-    toolBar1.Buttons.Add(toolBarButton2);
-    toolBar1.Buttons.Add(toolBarButton3);
- 
-    // Assign an ImageList to the ToolBar and show ToolTips.
-    toolBar1.ImageList = imageList1;
-    toolBar1.ShowToolTips = true;
- 
-    /* Assign ImageIndex, ContextMenu, Text, ToolTip, and 
-       Style properties of the ToolBarButton controls. */
-    toolBarButton2.Style = ToolBarButtonStyle.Separator;
-    toolBarButton3.Text = "Print";
-    toolBarButton3.Style = ToolBarButtonStyle.DropDownButton;
-    toolBarButton3.ToolTipText = "Print";
-    toolBarButton3.ImageIndex = 0;
-    toolBarButton3.DropDownMenu = contextMenu1;
- 
-    // Add the ToolBar to a form.
-    Controls.Add(toolBar1);
- }
- 
+   // Add the toolbar to the form.
+   this.Controls.Add(toolBar1);
+}

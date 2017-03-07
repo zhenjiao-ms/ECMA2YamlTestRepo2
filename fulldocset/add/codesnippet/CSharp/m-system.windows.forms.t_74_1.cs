@@ -1,15 +1,9 @@
-private void button1_Click(object sender, System.EventArgs e)
+private void button2_Click(object sender, EventArgs e)
 {
-   if (treeView1.SelectedNode.IsExpanded)
+   // Delete the first TreeNode in the collection 
+   // if the Text property is "Node0." 
+   if(this.treeView1.Nodes[0].Text == "Node0")
    {
-      treeView1.SelectedNode.Collapse();
-      MessageBox.Show(treeView1.SelectedNode.Text + 
-        " tree node collapsed.");
-   }
-   else
-   {
-      treeView1.SelectedNode.Expand();
-      MessageBox.Show(treeView1.SelectedNode.Text + 
-        " tree node expanded.");
+      this.treeView1.Nodes.RemoveAt(0);
    }
 }

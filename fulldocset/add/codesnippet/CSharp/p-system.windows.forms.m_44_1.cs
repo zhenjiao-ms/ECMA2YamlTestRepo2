@@ -1,9 +1,20 @@
-private void MaskedTextBox1_MaskInputRejected(Object sender, MaskInputRejectedEventArgs e) {
+            // Create a MenuStrip control with a new window.
+            MenuStrip ms = new MenuStrip();
+            ToolStripMenuItem windowMenu = new ToolStripMenuItem("Window");
+            ToolStripMenuItem windowNewMenu = new ToolStripMenuItem("New", null, new EventHandler(windowNewMenu_Click));
+            windowMenu.DropDownItems.Add(windowNewMenu);
+            ((ToolStripDropDownMenu)(windowMenu.DropDown)).ShowImageMargin = false;
+            ((ToolStripDropDownMenu)(windowMenu.DropDown)).ShowCheckMargin = true;
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "Position", e.Position );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "RejectionHint", e.RejectionHint );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "MaskInputRejected Event" );
-}
+            // Assign the ToolStripMenuItem that displays 
+            // the list of child forms.
+            ms.MdiWindowListItem = windowMenu;
+
+            // Add the window ToolStripMenuItem to the MenuStrip.
+            ms.Items.Add(windowMenu);
+
+            // Dock the MenuStrip to the top of the form.
+            ms.Dock = DockStyle.Top;
+
+            // The Form.MainMenuStrip property determines the merge target.
+            this.MainMenuStrip = ms;

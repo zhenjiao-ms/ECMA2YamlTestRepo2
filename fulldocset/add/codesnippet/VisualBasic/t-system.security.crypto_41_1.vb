@@ -1,31 +1,15 @@
-Imports System
-Imports System.Security.Cryptography
+        'Create new X509 store from local certificate store.
+        Dim store As New X509Store("MY", StoreLocation.CurrentUser)
+        store.Open(OpenFlags.OpenExistingOnly Or OpenFlags.ReadWrite)
 
- _
+        'Output store information.
+        Console.WriteLine("Store Information")
+        Console.WriteLine("Number of certificates in the store: {0}", store.Certificates.Count)
+        Console.WriteLine("Store location: {0}", store.Location)
+        Console.WriteLine("Store name: {0} {1}", store.Name, Environment.NewLine)
 
-Class DSASample
-
-
-    Shared Sub Main()
-        Try
-            'Create a new instance of DSACryptoServiceProvider.
-            Dim DSA As New DSACryptoServiceProvider()
-
-            'The hash to sign.
-            Dim Hash As Byte() = {59, 4, 248, 102, 77, 97, 142, 201, 210, 12, 224, 93, 25, 41, 100, 197, 213, 134, 130, 135}
-
-            'Create an DSASignatureFormatter object and pass it the 
-            'DSACryptoServiceProvider to transfer the key information.
-            Dim DSAFormatter As New DSASignatureFormatter(DSA)
-
-            'Set the hash algorithm to SHA1.
-            DSAFormatter.SetHashAlgorithm("SHA1")
-
-            'Create a signature for HashValue and return it.
-            Dim SignedHash As Byte() = DSAFormatter.CreateSignature(Hash)
-
-        Catch e As CryptographicException
-            Console.WriteLine(e.Message)
-        End Try
-    End Sub
-End Class
+        'Put certificates from the store into a collection so user can select one.
+        Dim fcollection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+        Dim collection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Select an X509 Certificate", "Choose a certificate to examine.", X509SelectionFlag.SingleSelection)
+        Dim certificate As X509Certificate2 = collection(0)
+        X509Certificate2UI.DisplayCertificate(certificate)

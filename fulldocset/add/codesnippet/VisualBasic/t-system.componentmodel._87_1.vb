@@ -1,11 +1,4 @@
-    <LicenseProvider(GetType(LicFileLicenseProvider))> _
-    Public Class MyControl
-        Inherits Control
-        
-        ' Insert code here.
-        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-            ' All components must dispose of the licenses they grant.
-            ' Insert code here to dispose of the license.
-        End Sub        
-
-    End Class
+            Dim chrA As [Char] = "a"c
+            Dim strB As String = "b"
+            Console.WriteLine(TypeDescriptor.GetConverter(chrA).ConvertTo(chrA, GetType(String)))
+            Console.WriteLine(TypeDescriptor.GetConverter(chrA).ConvertFrom(strB))

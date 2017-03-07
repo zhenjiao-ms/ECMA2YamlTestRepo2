@@ -1,94 +1,33 @@
-Imports System
-Imports System.Windows.Forms
-Imports System.Drawing
-Imports System.Collections
-
-Public Class ListBoxSample3
-    Inherits Form
-
-    Private ListBox1 As New ListBox()
-    Private label1 As New Label()
-    Private textBox1 As New TextBox()
-
-    <STAThread()> _
-    Shared Sub Main()
-        Application.Run(New ListBoxSample3())
-    End Sub 'Main
-
-    Public Sub New()
-        Me.ClientSize = New Size(307, 206)
-        Me.Text = "ListBox Sample3"
-
-        ListBox1.Location = New Point(54, 16)
-        ListBox1.Name = "ListBox1"
-        ListBox1.Size = New Size(240, 130)
-
-        label1.Location = New Point(14, 150)
-        label1.Name = "label1"
-        label1.Size = New Size(40, 24)
-        label1.Text = "Value"
-
-        textBox1.Location = New Point(54, 150)
-        textBox1.Name = "textBox1"
-        textBox1.Size = New Size(240, 24)
-
-        Me.Controls.AddRange(New Control() {ListBox1, label1, textBox1})
-
-        ' Populate the list box using an array as DataSource. 
-        Dim USStates As New ArrayList()
-        USStates.Add(New USState("Alabama", "AL"))
-        USStates.Add(New USState("Washington", "WA"))
-        USStates.Add(New USState("West Virginia", "WV"))
-        USStates.Add(New USState("Wisconsin", "WI"))
-        USStates.Add(New USState("Wyoming", "WY"))
-        ListBox1.DataSource = USStates
-
-        ' Set the long name as the property to be displayed and the short
-        ' name as the value to be returned when a row is selected.  Here
-        ' these are properties; if we were binding to a database table or
-        ' query these could be column names.
-        ListBox1.DisplayMember = "LongName"
-        ListBox1.ValueMember = "ShortName"
-
-        ' Bind the SelectedValueChanged event to our handler for it.
-        AddHandler ListBox1.SelectedValueChanged, AddressOf ListBox1_SelectedValueChanged
-
-        ' Ensure the form opens with no rows selected.
-        ListBox1.ClearSelected()
-    End Sub 'New
-
-    Private Sub InitializeComponent()
-    End Sub 'InitializeComponent
-
-    Private Sub ListBox1_SelectedValueChanged(ByVal sender As Object, ByVal e As EventArgs)
-        If ListBox1.SelectedIndex <> -1 Then
-            textBox1.Text = ListBox1.SelectedValue.ToString()
-            ' If we also wanted to get the displayed text we could use
-            ' the SelectedItem item property:
-            ' Dim s = CType(ListBox1.SelectedItem, USState).LongName
-        End If
-    End Sub 'ListBox1_SelectedValueChanged
-End Class 'ListBoxSample3
-
-Public Class USState
-    Private myShortName As String
-    Private myLongName As String
-
-    Public Sub New(ByVal strLongName As String, ByVal strShortName As String)
-        Me.myShortName = strShortName
-        Me.myLongName = strLongName
-    End Sub 'New
-
-    Public ReadOnly Property ShortName() As String
-        Get
-            Return myShortName
-        End Get
-    End Property
-
-    Public ReadOnly Property LongName() As String
-        Get
-            Return myLongName
-        End Get
-    End Property
-
-End Class 'USState
+ Private Sub button1_Click(sender As Object, e As System.EventArgs)
+     ' Create an instance of the ListBox.
+     Dim listBox1 As New ListBox()
+     ' Set the size and location of the ListBox.
+     listBox1.Size = New System.Drawing.Size(200, 100)
+     listBox1.Location = New System.Drawing.Point(10, 10)
+     ' Add the ListBox to the form.
+     Me.Controls.Add(listBox1)
+     ' Set the ListBox to display items in multiple columns.
+     listBox1.MultiColumn = True
+     ' Set the selection mode to multiple and extended.
+     listBox1.SelectionMode = SelectionMode.MultiExtended
+     
+     ' Shutdown the painting of the ListBox as items are added.
+     listBox1.BeginUpdate()
+     ' Loop through and add 50 items to the ListBox.
+     Dim x As Integer
+     For x = 1 To 50
+         listBox1.Items.Add("Item " & x.ToString())
+     Next x
+     ' Allow the ListBox to repaint and display the new items.
+     listBox1.EndUpdate()
+     
+     ' Select three items from the ListBox.
+     listBox1.SetSelected(1, True)
+     listBox1.SetSelected(3, True)
+     listBox1.SetSelected(5, True)
+        
+     ' Display the second selected item in the ListBox to the console.
+     System.Diagnostics.Debug.WriteLine(listBox1.SelectedItems(1).ToString())
+     ' Display the index of the first selected item in the ListBox.
+     System.Diagnostics.Debug.WriteLine(listBox1.SelectedIndices(0).ToString())
+ End Sub

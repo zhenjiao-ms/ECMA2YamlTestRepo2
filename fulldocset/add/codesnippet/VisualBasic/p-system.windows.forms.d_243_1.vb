@@ -1,11 +1,11 @@
-Private Sub DataGridView1_RowStateChanged(sender as Object, e as DataGridViewRowStateChangedEventArgs) _ 
-     Handles DataGridView1.RowStateChanged
+    ' Change the text in the column header.
+    Private Sub Button9_Click(ByVal sender As Object, _
+        ByVal args As EventArgs) Handles Button9.Click
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "Row", e.Row)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "StateChanged", e.StateChanged)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"RowStateChanged Event")
+        For Each column As DataGridViewColumn _
+            In dataGridView.Columns
 
-End Sub
+            column.HeaderText = String.Concat("Column ", _
+                column.Index.ToString)
+        Next
+    End Sub

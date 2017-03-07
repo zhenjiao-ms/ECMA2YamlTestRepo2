@@ -1,64 +1,50 @@
-Private picture As Image
-Private pictureLocation As Point
+    ' This example demonstrates the use of the ControlAdded and
+    ' ControlRemoved events. This example assumes that two Button controls 
+    ' are added to the form and connected to the addControl_Click and 
+    ' removeControl_Click event-handler methods.
+    Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        ' Connect the ControlRemoved and ControlAdded event handlers to the event-handler methods.
+        ' ControlRemoved and ControlAdded are not available at design time.
+        AddHandler Me.ControlRemoved, AddressOf Me.Control_Removed
+        AddHandler Me.ControlAdded, AddressOf Me.Control_Added
+    End Sub 'Form1_Load
 
-Public Sub New()
-   ' Enable drag-and-drop operations.
-   Me.AllowDrop = True
-End Sub
 
-Protected Overrides Sub OnPaint(ByVal e As PaintEventArgs)
-   MyBase.OnPaint(e)
+    Private Sub Control_Added(ByVal sender As Object, ByVal e As System.Windows.Forms.ControlEventArgs)
+        MessageBox.Show(("The control named " + e.Control.Name + " has been added to the form."))
+    End Sub
 
-   ' If there is an image and it has a location, 
-   ' paint it when the Form is repainted.
-   If (Me.picture IsNot Nothing) And _
-     Not (Me.pictureLocation.Equals(Point.Empty)) Then
-      e.Graphics.DrawImage(Me.picture, Me.pictureLocation)
-   End If
-End Sub
 
-Private Sub Form1_DragDrop(ByVal sender As Object, _
-  ByVal e As DragEventArgs) Handles MyBase.DragDrop
-   ' Handle FileDrop data.
-   If e.Data.GetDataPresent(DataFormats.FileDrop) Then
-      ' Assign the file names to a string array, in 
-      ' case the user has selected multiple files.
-      Dim files As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
-      Try
-         ' Assign the first image to the 'picture' variable.
-         Me.picture = Image.FromFile(files(0))
-         ' Set the picture location equal to the drop point.
-         Me.pictureLocation = Me.PointToClient(New Point(e.X, e.Y))
-      Catch ex As Exception
-         MessageBox.Show(ex.Message)
-         Return
-      End Try
-   End If
+    Private Sub Control_Removed(ByVal sender As Object, ByVal e As System.Windows.Forms.ControlEventArgs)
+        MessageBox.Show(("The control named " + e.Control.Name + " has been removed from the form."))
+    End Sub
 
-   ' Handle Bitmap data.
-   If e.Data.GetDataPresent(DataFormats.Bitmap) Then
-      Try
-         ' Create an Image and assign it to the picture variable.
-         Me.picture = CType(e.Data.GetData(DataFormats.Bitmap), Image)
-         ' Set the picture location equal to the drop point.
-         Me.pictureLocation = Me.PointToClient(New Point(e.X, e.Y))
-      Catch ex As Exception
-         MessageBox.Show(ex.Message)
-         Return
-      End Try
-   End If
 
-   ' Force the form to be redrawn with the image.
-   Me.Invalidate()
-End Sub
+    ' Click event handler for a Button control. Adds a TextBox to the form.
+    Private Sub addControl_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles button1.Click
+        ' Create a new TextBox control and add it to the form.
+        Dim textBox1 As New TextBox()
+        textBox1.Size = New Size(100, 10)
+        textBox1.Location = New Point(10, 10)
+        ' Name the control in order to remove it later. 
+        ' The name must be specified if a control is added at run time.
+        textBox1.Name = "textBox1"
 
-Private Sub Form1_DragEnter(ByVal sender As Object, _
-  ByVal e As DragEventArgs) Handles MyBase.DragEnter
-   ' If the data is a file or a bitmap, display the copy cursor.
-   If e.Data.GetDataPresent(DataFormats.Bitmap) _
-      Or e.Data.GetDataPresent(DataFormats.FileDrop) Then
-      e.Effect = DragDropEffects.Copy
-   Else
-      e.Effect = DragDropEffects.None
-   End If
-End Sub
+        ' Add the control to the form's control collection.
+        Me.Controls.Add(textBox1)
+    End Sub
+
+
+    ' Click event handler for a Button control.
+    ' Removes the previously added TextBox from the form.
+    Private Sub removeControl_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles button2.Click
+        ' Loop through all controls in the form's control collection.
+        Dim tempCtrl As Control
+        For Each tempCtrl In Me.Controls
+            ' Determine whether the control is textBox1,
+            ' and if it is, remove it.
+            If tempCtrl.Name = "textBox1" Then
+                Me.Controls.Remove(tempCtrl)
+            End If
+        Next tempCtrl
+    End Sub

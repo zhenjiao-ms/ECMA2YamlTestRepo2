@@ -1,34 +1,53 @@
-        ToolStripButton^ changeDirectionButton;
+private:
+   void Menu_Copy( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      // Ensure that text is selected in the text box.   
+      if ( textBox1->SelectionLength > 0 )
+      {
+         // Copy the selected text to the Clipboard.
+         textBox1->Copy();
+      }
+   }
 
-        void InitializeMovingToolStrip()
-        {
-            changeDirectionButton = gcnew ToolStripButton;
-            movingToolStrip->AutoSize = true;
-            movingToolStrip->RenderMode = ToolStripRenderMode::System;
-            changeDirectionButton->TextDirection = 
-                ToolStripTextDirection::Vertical270;
-            changeDirectionButton->Overflow = 
-                ToolStripItemOverflow::Never;
-            changeDirectionButton->Text = "Change Alignment";
-            movingToolStrip->Items->Add(changeDirectionButton);
-            changeDirectionButton->Click += gcnew EventHandler(this, 
-                &Form1::changeDirectionButtonClick);
-        }
+   void Menu_Cut( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      // Ensure that text is currently selected in the text box.   
+      if (  !textBox1->SelectedText->Equals( "" ) )
+      {
+         // Cut the selected text in the control and paste it into the Clipboard.
+         textBox1->Cut();
+      }
+   }
 
-        void changeDirectionButtonClick(Object^ sender, EventArgs^ e)
-        {
-            ToolStripItem^ item = (ToolStripItem^) sender;
-            if ((item->TextDirection == ToolStripTextDirection::Vertical270) 
-                || (item->TextDirection == ToolStripTextDirection::Vertical90))
+   void Menu_Paste( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      // Determine if there is any text in the Clipboard to paste into the text box.
+      if ( Clipboard::GetDataObject()->GetDataPresent( DataFormats::Text ) == true )
+      {
+         // Determine if any text is selected in the text box.
+         if ( textBox1->SelectionLength > 0 )
+         {
+            // Ask user if they want to paste over currently selected text.
+            if ( MessageBox::Show( "Do you want to paste over current selection?",
+               "Cut Example", MessageBoxButtons::YesNo ) == ::DialogResult::No )
             {
-                item->TextDirection = ToolStripTextDirection::Horizontal;
-                movingToolStrip->Raft = RaftingSides::Top;
+               // Move selection to the point after the current selection and paste.
+               textBox1->SelectionStart = textBox1->SelectionStart + textBox1->SelectionLength;
             }
-            else
-            {
-                item->TextDirection = 
-                    ToolStripTextDirection::Vertical270;
-                movingToolStrip->Raft = RaftingSides::Left;
-            }
-        }
+         }
+         // Paste current text in Clipboard into text box.
+         textBox1->Paste();
+      }
+   }
 
+   void Menu_Undo( System::Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      // Determine if last operation can be undone in text box.   
+      if ( textBox1->CanUndo == true )
+      {
+         // Undo the last operation.
+         textBox1->Undo();
+         // Clear the undo buffer to prevent last action from being redone.
+         textBox1->ClearUndo();
+      }
+   }

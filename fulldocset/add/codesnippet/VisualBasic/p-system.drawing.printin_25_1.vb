@@ -1,22 +1,31 @@
-    ' Specifies what happens when the user clicks the Button.
-    Private Sub printButton_Click(sender As Object, e As EventArgs) _
-	Handles printButton.Click
-        Try
-           pd.Print()
-        Catch ex As Exception
-            MessageBox.Show("An error occurred while printing", _
-                ex.ToString())
-        End Try
-    End Sub    
+ Public Sub Printing()
+     Try
+         ' This assumes that a variable of type string, named filePath,
+         ' has been set to the path of the file to print. 
+         streamToPrint = New StreamReader(filePath)
+         Try
+             printFont = New Font("Arial", 10)
+             Dim pd As New PrintDocument()
+             ' This assumes that a method, named pd_PrintPage, has been
+             ' defined. pd_PrintPage handles the PrintPage event. 
+             AddHandler pd.PrintPage, AddressOf pd_PrintPage
+             ' This assumes that a variable of type string, named
+             ' printer, has been set to the printer's name. 
+             pd.PrinterSettings.PrinterName = printer
+                
+             ' Set the left and right margins to 1 inch.
+             pd.DefaultPageSettings.Margins.Left = 100
+             pd.DefaultPageSettings.Margins.Right = 100
+             ' Set the top and bottom margins to 1.5 inches.
+             pd.DefaultPageSettings.Margins.Top = 150
+             pd.DefaultPageSettings.Margins.Bottom = 150
+                
+             pd.Print()
+         Finally
+             streamToPrint.Close()
+         End Try
+     Catch ex As Exception
+         MessageBox.Show("An error occurred printing the file - " & ex.Message)
+     End Try
+ End Sub    
     
-    ' Specifies what happens when the PrintPage event is raised.
-    Private Sub pd_PrintPage(sender As Object, ev As PrintPageEventArgs) _
-	Handles pd.PrintPage
-
-        ' Draw a picture.
-        ev.Graphics.DrawImage(Image.FromFile("C:\My Folder\MyFile.bmp"), _
-            ev.Graphics.VisibleClipBounds)
-        
-        ' Indicate that this is the last page to print.
-        ev.HasMorePages = False
-    End Sub

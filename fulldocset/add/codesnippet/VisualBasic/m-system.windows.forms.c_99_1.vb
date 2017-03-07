@@ -1,11 +1,14 @@
-Private Sub myButton_MouseEnter(sender As Object, e As System.EventArgs) Handles myButton.MouseEnter
-   ' Hide the cursor when the mouse pointer enters the button.
-   Cursor.Hide()
-End Sub 'myButton_MouseEnter
-      
-      
-Private Sub myButton_MouseLeave(sender As Object, e As System.EventArgs) Handles myButton.MouseLeave
-   ' Show the cursor when the mouse pointer leaves the button.
-   Cursor.Show()
-End Sub 'myButton_MouseLeave
-      
+    ' Demonstrates SetText, ContainsText, and GetText.
+    Public Function SwapClipboardHtmlText( _
+        ByVal replacementHtmlText As String) As String
+
+        Dim returnHtmlText As String = Nothing
+
+        If (Clipboard.ContainsText(TextDataFormat.Html)) Then
+            returnHtmlText = Clipboard.GetText(TextDataFormat.Html)
+            Clipboard.SetText(replacementHtmlText, TextDataFormat.Html)
+        End If
+
+        Return returnHtmlText
+
+    End Function

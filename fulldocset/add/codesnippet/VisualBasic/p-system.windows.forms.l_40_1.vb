@@ -1,22 +1,53 @@
-   Private Sub DisplayHScroll()
-        ' Make sure no items are displayed partially.
-      listBox1.IntegralHeight = True
-      Dim x As Integer
 
-      ' Add items that are wide to the ListBox.
-      For x = 0 To 10
-         listBox1.Items.Add("Item  " + x.ToString() + " is a very large value that requires scroll bars")
-      Next x
+    ' Declare the Listview object.
+    Friend WithEvents myListView As System.Windows.Forms.ListView
 
-      ' Display a horizontal scroll bar.
-      listBox1.HorizontalScrollbar = True
+    ' Initialize the ListView object with subitems of a different
+    ' style than the default styles for the ListView.
+    Private Sub InitializeListView()
 
-      ' Create a Graphics object to use when determining the size of the largest item in the ListBox.
-      Dim g As System.Drawing.Graphics = listBox1.CreateGraphics()
+        ' Set the Location, View and Width properties for the 
+        ' ListView object. 
+        myListView = New ListView
+        With (myListView)
+            .Location = New System.Drawing.Point(20, 20)
 
+            ' The View property must be set to Details for the 
+            ' subitems to be visible.
+            .View = View.Details
+            .Width = 250
+        End With
 
-      ' Determine the size for HorizontalExtent using the MeasureString method using the last item in the list.
-      Dim hzSize As Integer = g.MeasureString(listBox1.Items(listBox1.Items.Count - 1).ToString(), listBox1.Font).Width
-      ' Set the HorizontalExtent property.
-      listBox1.HorizontalExtent = hzSize
-   End Sub
+        ' Each SubItem object requires a column, so add three columns.
+        Me.myListView.Columns.Add("Key", 50, HorizontalAlignment.Left)
+        Me.myListView.Columns.Add("A", 100, HorizontalAlignment.Left)
+        Me.myListView.Columns.Add("B", 100, HorizontalAlignment.Left)
+
+        ' Add a ListItem object to the ListView.
+        Dim entryListItem As ListViewItem = myListView.Items.Add("Items")
+
+        ' Set UseItemStyleForSubItems property to false to change 
+        ' look of subitems.
+        entryListItem.UseItemStyleForSubItems = False
+
+        ' Add the expense subitem.
+        Dim expenseItem As ListViewItem.ListViewSubItem = _
+            entryListItem.SubItems.Add("Expense")
+
+        ' Change the expenseItem object's color and font.
+        expenseItem.ForeColor = System.Drawing.Color.Red
+        expenseItem.Font = New System.Drawing.Font _
+            ("Arial", 10, System.Drawing.FontStyle.Italic)
+
+        ' Add a subitem called revenueItem 
+        Dim revenueItem As ListViewItem.ListViewSubItem = _
+            entryListItem.SubItems.Add("Revenue")
+
+        ' Change the revenueItem object's color and font.
+        revenueItem.ForeColor = System.Drawing.Color.Blue
+        revenueItem.Font = New System.Drawing.Font _
+            ("Times New Roman", 10, System.Drawing.FontStyle.Bold)
+
+        ' Add the ListView to the form.
+        Me.Controls.Add(Me.myListView)
+    End Sub

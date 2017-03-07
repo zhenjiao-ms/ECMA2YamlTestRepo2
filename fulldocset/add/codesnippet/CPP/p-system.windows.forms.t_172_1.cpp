@@ -1,82 +1,25 @@
-ref class Customer
-{
-public:
-   ArrayList^ CustomerOrders;
-   String^ CustomerName;
-   Customer( String^ myName )
-   {
-      CustomerName = myName;
-      CustomerOrders = gcnew ArrayList;
-   }
-
-};
-
-ref class Order
-{
-public:
-   String^ OrderID;
-   Order( String^ myOrderID )
-   {
-      this->OrderID = myOrderID;
-   }
-
-};
-
-   void FillTreeView()
+   void AddToolBar()
    {
       
-      // Load the images in an ImageList.
-      ImageList^ myImageList = gcnew ImageList;
-      myImageList->Images->Add( Image::FromFile( "Default.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "SelectedDefault.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "Root.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "UnselectedCustomer.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "SelectedCustomer.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "UnselectedOrder.gif" ) );
-      myImageList->Images->Add( Image::FromFile( "SelectedOrder.gif" ) );
+      // Add a toolbar and set some of its properties.
+      toolBar1 = gcnew ToolBar;
+      toolBar1->Appearance = System::Windows::Forms::ToolBarAppearance::Flat;
+      toolBar1->BorderStyle = System::Windows::Forms::BorderStyle::None;
+      toolBar1->Buttons->Add( this->toolBarButton1 );
+      toolBar1->ButtonSize = System::Drawing::Size( 24, 24 );
+      toolBar1->Divider = true;
+      toolBar1->DropDownArrows = true;
+      toolBar1->ImageList = this->imageList1;
+      toolBar1->ShowToolTips = true;
+      toolBar1->Size = System::Drawing::Size( 292, 25 );
+      toolBar1->TabIndex = 0;
+      toolBar1->TextAlign = System::Windows::Forms::ToolBarTextAlign::Right;
+      toolBar1->Wrappable = false;
       
-      // Assign the ImageList to the TreeView.
-      myTreeView->ImageList = myImageList;
+      // Add handlers for the ButtonClick and ButtonDropDown events.
+      toolBar1->ButtonDropDown += gcnew ToolBarButtonClickEventHandler( this, &MyToolBar::toolBar1_ButtonDropDown );
+      toolBar1->ButtonClick += gcnew ToolBarButtonClickEventHandler( this, &MyToolBar::toolBar1_ButtonClicked );
       
-      // Set the TreeView control's default image and selected image indexes.
-      myTreeView->ImageIndex = 0;
-      myTreeView->SelectedImageIndex = 1;
-      
-      /* Set the index of image from the
-        ImageList for selected and unselected tree nodes.*/
-      this->rootImageIndex = 2;
-      this->selectedCustomerImageIndex = 3;
-      this->unselectedCustomerImageIndex = 4;
-      this->selectedOrderImageIndex = 5;
-      this->unselectedOrderImageIndex = 6;
-      
-      // Create the root tree node.
-      TreeNode^ rootNode = gcnew TreeNode( "CustomerList" );
-      rootNode->ImageIndex = rootImageIndex;
-      rootNode->SelectedImageIndex = rootImageIndex;
-      
-      // Add a main root tree node.
-      myTreeView->Nodes->Add( rootNode );
-      
-      // Add a root tree node for each Customer object in the ArrayList.
-      IEnumerator^ myEnum = customerArray->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         Customer^ myCustomer = safe_cast<Customer^>(myEnum->Current);
-         
-         // Add a child tree node for each Order object.
-         int countIndex = 0;
-         array<TreeNode^>^myTreeNodeArray = gcnew array<TreeNode^>(myCustomer->CustomerOrders->Count);
-         IEnumerator^ myEnum = myCustomer->CustomerOrders->GetEnumerator();
-         while ( myEnum->MoveNext() )
-         {
-            Order^ myOrder = safe_cast<Order^>(myEnum->Current);
-            
-            // Add the Order tree node to the array.
-            myTreeNodeArray[ countIndex ] = gcnew TreeNode( myOrder->OrderID,unselectedOrderImageIndex,selectedOrderImageIndex );
-            countIndex++;
-         }
-         TreeNode^ customerNode = gcnew TreeNode( myCustomer->CustomerName,unselectedCustomerImageIndex,selectedCustomerImageIndex,myTreeNodeArray );
-         myTreeView->Nodes[ 0 ]->Nodes->Add( customerNode );
-      }
+      // Add the toolbar to the form.
+      this->Controls->Add( toolBar1 );
    }

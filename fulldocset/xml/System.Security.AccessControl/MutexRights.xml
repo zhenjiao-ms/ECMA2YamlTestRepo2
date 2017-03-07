@@ -16,8 +16,29 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Specifies the access control rights that can be applied to named system mutex objects.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use the MutexRights enumeration to specify access control rights when you create <xref:System.Security.AccessControl.MutexSecurity> objects. To apply access rights to a named system mutex, use <xref:System.Security.AccessControl.MutexSecurity> objects with the <xref:System.Threading.Mutex.%23ctor%28System.Boolean%2CSystem.String%2CSystem.Boolean%40%2CSystem.Security.AccessControl.MutexSecurity%29> constructor and the <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName> method.  
+  
+> [!NOTE]
+>  Security on synchronization objects is not supported for Windows 98 or Windows Millennium Edition.  
+  
+   
+  
+## Examples  
+ The following code example demonstrates the use of MutexRights values when creating and using <xref:System.Security.AccessControl.MutexAccessRule> objects. The example creates an <xref:System.Security.AccessControl.MutexSecurity> object, adds rules that allow and deny various rights for the current user, and displays the resulting pair of rules. The example then allows new rights for the current user and displays the result, showing that the new rights are merged with the existing <xref:System.Security.AccessControl.AccessControlType?displayProperty=fullName>rule.  
+  
+> [!NOTE]
+>  This example does not attach the security object to a <xref:System.Threading.Mutex> object; see <xref:System.Security.AccessControl.MutexSecurity>, <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> method, and <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>.  
+  
+ [!code-vb[System.Security.AccessControl.MutexSecurity.AddAccessRule#1](~/add/codesnippet/visualbasic/t-system.security.access_17_1.vb)]
+ [!code-cs[System.Security.AccessControl.MutexSecurity.AddAccessRule#1](~/add/codesnippet/csharp/t-system.security.access_17_1.cs)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="ChangePermissions">
@@ -34,7 +55,7 @@
         <ReturnType>System.Security.AccessControl.MutexRights</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The right to change the security and audit rules associated with a named mutex.</summary>
       </Docs>
     </Member>
     <Member MemberName="Delete">
@@ -51,7 +72,7 @@
         <ReturnType>System.Security.AccessControl.MutexRights</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The right to delete a named mutex.</summary>
       </Docs>
     </Member>
     <Member MemberName="FullControl">
@@ -68,7 +89,7 @@
         <ReturnType>System.Security.AccessControl.MutexRights</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The right to exert full control over a named mutex, and to modify its access rules and audit rules.</summary>
       </Docs>
     </Member>
     <Member MemberName="Modify">
@@ -85,7 +106,7 @@
         <ReturnType>System.Security.AccessControl.MutexRights</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The right to release a named mutex.</summary>
       </Docs>
     </Member>
     <Member MemberName="ReadPermissions">
@@ -102,7 +123,7 @@
         <ReturnType>System.Security.AccessControl.MutexRights</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The right to open and copy the access rules and audit rules for a named mutex.</summary>
       </Docs>
     </Member>
     <Member MemberName="Synchronize">
@@ -119,7 +140,7 @@
         <ReturnType>System.Security.AccessControl.MutexRights</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The right to wait on a named mutex.</summary>
       </Docs>
     </Member>
     <Member MemberName="TakeOwnership">
@@ -136,7 +157,7 @@
         <ReturnType>System.Security.AccessControl.MutexRights</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The right to change the owner of a named mutex.</summary>
       </Docs>
     </Member>
   </Members>

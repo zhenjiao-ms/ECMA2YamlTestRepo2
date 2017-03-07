@@ -1,2 +1,1 @@
-		long maxReceivedMessageSize =
-		    binding.MaxReceivedMessageSize;
+            MessageSecurityOverMsmq msgSecurity = security.Message;

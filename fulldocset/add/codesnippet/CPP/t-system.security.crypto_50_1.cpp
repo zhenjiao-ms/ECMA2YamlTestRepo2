@@ -5,70 +5,61 @@ using namespace System;
 using namespace System::Security::Cryptography;
 using namespace System::Security::Cryptography::X509Certificates;
 using namespace System::IO;
+
 int main()
 {
-   
-   //Create new X509 store called teststore from the local certificate store.
-   X509Store ^ store = gcnew X509Store( "teststore",StoreLocation::CurrentUser );
-   store->Open( OpenFlags::ReadWrite );
-   X509Certificate2 ^ certificate = gcnew X509Certificate2;
-   
-   //Create certificates from certificate files.
-   //You must put in a valid path to three certificates in the following constructors.
-   X509Certificate2 ^ certificate1 = gcnew X509Certificate2( "c:\\mycerts\\*****.cer" );
-   X509Certificate2 ^ certificate2 = gcnew X509Certificate2( "c:\\mycerts\\*****.cer" );
-   X509Certificate2 ^ certificate5 = gcnew X509Certificate2( "c:\\mycerts\\*****.cer" );
-   
-   //Create a collection and add two of the certificates.
-   X509Certificate2Collection ^ collection = gcnew X509Certificate2Collection;
-   collection->Add( certificate2 );
-   collection->Add( certificate5 );
-   
-   //Add certificates to the store.
-   store->Add( certificate1 );
-   store->AddRange( collection );
-   X509Certificate2Collection ^ storecollection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-   Console::WriteLine( "Store name: {0}", store->Name );
+   //Create new X509 store from local certificate store.
+   X509Store ^ store = gcnew X509Store( "MY",StoreLocation::CurrentUser );
+   store->Open( static_cast<OpenFlags>(OpenFlags::OpenExistingOnly | OpenFlags::ReadWrite) );
+
+   //Output store information.
+   Console::WriteLine( "Store Information" );
+   Console::WriteLine( "Number of certificates in the store: {0}", store->Certificates->Count );
    Console::WriteLine( "Store location: {0}", store->Location );
-   System::Collections::IEnumerator^ myEnum = storecollection->GetEnumerator();
+   Console::WriteLine( "Store name: {0} {1}", store->Name, Environment::NewLine );
+
+   //Put certificates from the store into a collection so user can select one.
+   X509Certificate2Collection ^ fcollection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
+   X509Certificate2Collection ^ collection = X509Certificate2UI::SelectFromCollection(fcollection, "Select an X509 Certificate","Choose a certificate to examine.",X509SelectionFlag::SingleSelection);
+   X509Certificate2 ^ certificate = collection[ 0 ];
+   X509Certificate2UI::DisplayCertificate(certificate);
+
+   //Output chain information of the selected certificate.
+   X509Chain ^ ch = gcnew X509Chain;
+   ch->Build( certificate );
+   Console::WriteLine( "Chain Information" );
+   ch->ChainPolicy->RevocationMode = X509RevocationMode::Online;
+   Console::WriteLine( "Chain revocation flag: {0}", ch->ChainPolicy->RevocationFlag );
+   Console::WriteLine( "Chain revocation mode: {0}", ch->ChainPolicy->RevocationMode );
+   Console::WriteLine( "Chain verification flag: {0}", ch->ChainPolicy->VerificationFlags );
+   Console::WriteLine( "Chain verification time: {0}", ch->ChainPolicy->VerificationTime );
+   Console::WriteLine( "Chain status length: {0}", ch->ChainStatus->Length );
+   Console::WriteLine( "Chain application policy count: {0}", ch->ChainPolicy->ApplicationPolicy->Count );
+   Console::WriteLine( "Chain certificate policy count: {0} {1}", ch->ChainPolicy->CertificatePolicy->Count, Environment::NewLine );
+
+   //Output chain element information.
+   Console::WriteLine( "Chain Element Information" );
+   Console::WriteLine( "Number of chain elements: {0}", ch->ChainElements->Count );
+   Console::WriteLine( "Chain elements synchronized? {0} {1}", ch->ChainElements->IsSynchronized, Environment::NewLine );
+   System::Collections::IEnumerator^ myEnum = ch->ChainElements->GetEnumerator();
    while ( myEnum->MoveNext() )
    {
-      X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum->Current);
-      Console::WriteLine( "certificate name: {0}", x509->Subject );
-   }
-
-   
-   //Remove a certificate.
-   store->Remove( certificate1 );
-   X509Certificate2Collection ^ storecollection2 = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-   Console::WriteLine( "{1}Store name: {0}", store->Name, Environment::NewLine );
-   System::Collections::IEnumerator^ myEnum1 = storecollection2->GetEnumerator();
-   while ( myEnum1->MoveNext() )
-   {
-      X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum1->Current);
-      Console::WriteLine( "certificate name: {0}", x509->Subject );
-   }
-
-   
-   //Remove a range of certificates.
-   store->RemoveRange( collection );
-   X509Certificate2Collection ^ storecollection3 = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-   Console::WriteLine( "{1}Store name: {0}", store->Name, Environment::NewLine );
-   if ( storecollection3->Count == 0 )
-   {
-      Console::WriteLine( "Store contains no certificates." );
-   }
-   else
-   {
-      System::Collections::IEnumerator^ myEnum2 = storecollection3->GetEnumerator();
-      while ( myEnum2->MoveNext() )
+      X509ChainElement ^ element = safe_cast<X509ChainElement ^>(myEnum->Current);
+      Console::WriteLine( "Element issuer name: {0}", element->Certificate->Issuer );
+      Console::WriteLine( "Element certificate valid until: {0}", element->Certificate->NotAfter );
+      Console::WriteLine( "Element certificate is valid: {0}", element->Certificate->Verify() );
+      Console::WriteLine( "Element error status length: {0}", element->ChainElementStatus->Length );
+      Console::WriteLine( "Element information: {0}", element->Information );
+      Console::WriteLine( "Number of element extensions: {0}{1}", element->Certificate->Extensions->Count, Environment::NewLine );
+      if ( ch->ChainStatus->Length > 1 )
       {
-         X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum2->Current);
-         Console::WriteLine( "certificate name: {0}", x509->Subject );
+         for ( int index = 0; index < element->ChainElementStatus->Length; index++ )
+         {
+            Console::WriteLine( element->ChainElementStatus[ index ].Status );
+            Console::WriteLine( element->ChainElementStatus[ index ].StatusInformation );
+         }
       }
    }
 
-   
-   //Close the store.
    store->Close();
 }

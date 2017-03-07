@@ -1,85 +1,54 @@
-    Private Sub SetupGrid()
-        knights = New List(Of Knight)
-        knights.Add(New Knight(Title.King, "Uther", True))
-        knights.Add(New Knight(Title.King, "Arthur", True))
-        knights.Add(New Knight(Title.Sir, "Mordred", False))
-        knights.Add(New Knight(Title.Sir, "Gawain", True))
-        knights.Add(New Knight(Title.Sir, "Galahad", True))
+    Public Sub dataGridView1_CellToolTipTextNeeded(ByVal sender As Object, _
+        ByVal e As DataGridViewCellToolTipTextNeededEventArgs) _
+        Handles dataGridView1.CellToolTipTextNeeded
 
-        ' Initialize the DataGridView.
-        dataGridView1.AutoGenerateColumns = False
-        dataGridView1.AutoSize = True
-        dataGridView1.DataSource = knights
+        Dim newLine As String = Environment.NewLine
+        If e.RowIndex > -1 Then
+            Dim dataGridViewRow1 As DataGridViewRow = _
+            dataGridView1.Rows(e.RowIndex)
 
-        dataGridView1.Columns.Add(CreateComboBoxWithEnums())
+            ' Add the employee's ID to the ToolTipText.
+            e.ToolTipText = String.Format("EmployeeID {0}: {1}", _
+                dataGridViewRow1.Cells("EmployeeID").Value.ToString(), _
+                newLine)
 
-        ' Initialize and add a text box column.
-        Dim column As DataGridViewColumn = _
-            New DataGridViewTextBoxColumn()
-        column.DataPropertyName = "Name"
-        column.Name = "Knight"
-        dataGridView1.Columns.Add(column)
+            ' Add the employee's name to the ToolTipText.
+            e.ToolTipText += String.Format("{0} {1} {2} {3}", _
+                dataGridViewRow1.Cells("TitleOfCourtesy").Value.ToString(), _
+                dataGridViewRow1.Cells("FirstName").Value.ToString(), _
+                dataGridViewRow1.Cells("LastName").Value.ToString(), _
+                newLine)
 
-        ' Initialize and add a check box column.
-        column = New DataGridViewCheckBoxColumn()
-        column.DataPropertyName = "GoodGuy"
-        column.Name = "Good"
-        dataGridView1.Columns.Add(column)
+            ' Add the employee's title to the ToolTipText.
+            e.ToolTipText += String.Format("{0}{1}{2}", _
+                dataGridViewRow1.Cells("Title").Value.ToString(), _
+                newLine, newLine)
 
-        ' Initialize the form.
-        Controls.Add(dataGridView1)
-        Me.AutoSize = True
-        Me.Text = "DataGridView object binding demo"
+            ' Add the employee's contact information to the ToolTipText.
+            e.ToolTipText += String.Format("{0}{1}{2}, ", _
+                dataGridViewRow1.Cells("Address").Value.ToString(), newLine, _
+                dataGridViewRow1.Cells("City").Value.ToString())
+            If Not String.IsNullOrEmpty( _
+                dataGridViewRow1.Cells("Region").Value.ToString())
+
+                e.ToolTipText += String.Format("{0}, ", _
+                   dataGridViewRow1.Cells("Region").Value.ToString())
+            End If
+            e.ToolTipText += String.Format("{0}, {1}{2}{3} EXT:{4}{5}{6}", _
+                dataGridViewRow1.Cells("Country").Value.ToString(), _
+                dataGridViewRow1.Cells("PostalCode").Value.ToString(), _
+                newLine, _
+                dataGridViewRow1.Cells("HomePhone").Value.ToString(), _
+                dataGridViewRow1.Cells("Extension").Value.ToString(), _
+                newLine, newLine)
+
+            ' Add employee information to the ToolTipText.
+            Dim HireDate As DateTime = _
+                CType(dataGridViewRow1.Cells("HireDate").Value, DateTime)
+            e.ToolTipText += _
+                String.Format("Employee since: {0}/{1}/{2}{3}Manager: {4}", _
+                    HireDate.Month.ToString(), HireDate.Day.ToString(), _
+                    HireDate.Year.ToString(), newLine, _
+                    dataGridViewRow1.Cells("Manager").Value.ToString())
+        End If
     End Sub
-
-    Private Function CreateComboBoxWithEnums() As DataGridViewComboBoxColumn
-        Dim combo As New DataGridViewComboBoxColumn()
-        combo.DataSource = [Enum].GetValues(GetType(Title))
-        combo.DataPropertyName = "Title"
-        combo.Name = "Title"
-        Return combo
-    End Function
-
-#Region "business object"
-    Private Class Knight
-        Private hisName As String
-        Private good As Boolean
-        Private hisTitle As Title
-
-        Public Sub New(ByVal title As Title, ByVal name As String, _
-            ByVal good As Boolean)
-
-            hisTitle = title
-            hisName = name
-            Me.good = good
-        End Sub
-
-        Public Property Name() As String
-            Get
-                Return hisName
-            End Get
-
-            Set(ByVal Value As String)
-                hisName = Value
-            End Set
-        End Property
-
-        Public Property GoodGuy() As Boolean
-            Get
-                Return good
-            End Get
-            Set(ByVal Value As Boolean)
-                good = Value
-            End Set
-        End Property
-
-        Public Property Title() As Title
-            Get
-                Return hisTitle
-            End Get
-            Set(ByVal Value As Title)
-                hisTitle = Value
-            End Set
-        End Property
-    End Class
-#End Region

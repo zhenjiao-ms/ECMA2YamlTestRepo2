@@ -1,37 +1,48 @@
+<%@ Page Language="VB" %>
 
-<%@ Page Language="VB" AutoEventWireup="true"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
+  Protected Sub SubmitButton_Click(ByVal sender As Object, ByVal e As System.EventArgs)
 
-
-  Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)
-  
-    If (Page.Header IsNot Nothing) Then
-
-      Page.Header.Title = "Welcome!  The time is: " & System.DateTime.Now
-
-    End If
+    Message.InnerText = "You entered: " + Server.HtmlEncode(Input1.Value)
 
   End Sub
-  
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-
-  <head id="Head1" runat="server">
-    <title>HtmlTitle Example</title>
+<head id="Head1" runat="server">
+    <title>HtmlInputButton Example</title>
 </head>
-
-  <body>
-
-    <form id="form1" runat="server">
-
-      <h3>HtmlTitle Example</h3>
-
+<body>
+    <form id="myform"
+          method="post"
+          enctype="application/x-www-form-urlencoded"
+          runat="server">
+    <div>
+      <input id="Input1"
+             type="Text" 
+             maxlength="40"
+             runat="server"/>
+      <input id="SubmitButton"
+             type="submit"
+             value="Submit"
+             onserverclick="SubmitButton_Click"
+             runat="server" />
+      <input id="ResetButton"
+             type="reset"
+             value="Reset"
+             runat="server" />
+      <input id="Button"
+             type="button"
+             value="Button"
+             onclick="alert('Hello from the client side.');"
+             runat="server" />
+      <br />
+      <span  id="Message" 
+             runat="server"/>
+    
+    </div>
     </form>
-
-  </body>
-
+</body>
 </html>

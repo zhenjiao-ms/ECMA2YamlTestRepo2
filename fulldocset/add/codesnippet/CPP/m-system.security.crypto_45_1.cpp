@@ -1,115 +1,87 @@
+#using <System.dll>
+#using <System.Security.dll>
+
 using namespace System;
 using namespace System::Security::Cryptography;
-using namespace System::Text;
-using namespace System::IO;
-void EncryptTextToFile( String^ Data, String^ FileName, array<Byte>^Key, array<Byte>^IV )
-{
-   try
-   {
-      
-      // Create or open the specified file.
-      FileStream^ fStream = File::Open( FileName, FileMode::OpenOrCreate );
-      
-      // Create a new RC2 object.
-      RC2^ RC2alg = RC2::Create();
-      
-      // Create a CryptoStream using the FileStream 
-      // and the passed key and initialization vector (IV).
-      CryptoStream^ cStream = gcnew CryptoStream( fStream,RC2alg->CreateEncryptor( Key, IV ),CryptoStreamMode::Write );
-      
-      // Create a StreamWriter using the CryptoStream.
-      StreamWriter^ sWriter = gcnew StreamWriter( cStream );
-      
-      // Write the data to the stream 
-      // to encrypt it.
-      sWriter->WriteLine( Data );
-      
-      // Close the streams and
-      // close the file.
-      sWriter->Close();
-      cStream->Close();
-      fStream->Close();
-   }
-   catch ( CryptographicException^ e ) 
-   {
-      Console::WriteLine( "A Cryptographic error occurred: {0}", e->Message );
-   }
-   catch ( UnauthorizedAccessException^ e ) 
-   {
-      Console::WriteLine( "A file error occurred: {0}", e->Message );
-   }
-
-}
-
-String^ DecryptTextFromFile( String^ FileName, array<Byte>^Key, array<Byte>^IV )
-{
-   try
-   {
-      
-      // Create or open the specified file. 
-      FileStream^ fStream = File::Open( FileName, FileMode::OpenOrCreate );
-      
-      // Create a new RC2 object.
-      RC2^ RC2alg = RC2::Create();
-      
-      // Create a CryptoStream using the FileStream 
-      // and the passed key and initialization vector (IV).
-      CryptoStream^ cStream = gcnew CryptoStream( fStream,RC2alg->CreateDecryptor( Key, IV ),CryptoStreamMode::Read );
-      
-      // Create a StreamReader using the CryptoStream.
-      StreamReader^ sReader = gcnew StreamReader( cStream );
-      
-      // Read the data from the stream 
-      // to decrypt it.
-      String^ val = sReader->ReadLine();
-      
-      // Close the streams and
-      // close the file.
-      sReader->Close();
-      cStream->Close();
-      fStream->Close();
-      
-      // Return the string. 
-      return val;
-   }
-   catch ( CryptographicException^ e ) 
-   {
-      Console::WriteLine( "A Cryptographic error occurred: {0}", e->Message );
-      return nullptr;
-   }
-   catch ( UnauthorizedAccessException^ e ) 
-   {
-      Console::WriteLine( "A file error occurred: {0}", e->Message );
-      return nullptr;
-   }
-
-}
+using namespace System::Security::Cryptography::X509Certificates;
 
 int main()
 {
+   
+   //The following example demonstrates the usage of the AsnEncodedData classes.
+   // Asn encoded data is read from the extensions of an X509 certificate.
    try
    {
       
-      // Create a new RC2 object to generate a key
-      // and initialization vector (IV).
-      RC2^ RC2alg = RC2::Create();
+      // Open the certificate store.
+      X509Store^ store = gcnew X509Store( L"MY",StoreLocation::CurrentUser );
+      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
+      X509Certificate2Collection^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
+      X509Certificate2Collection^ fcollection = dynamic_cast<X509Certificate2Collection^>(collection->Find( X509FindType::FindByTimeValid, DateTime::Now, false ));
       
-      // Create a string to encrypt.
-      String^ sData = "Here is some data to encrypt.";
-      String^ FileName = "CText.txt";
+      // Select one or more certificates to display extensions information.
+      X509Certificate2Collection^ scollection = X509Certificate2UI::SelectFromCollection(fcollection, L"Certificate Select",L"Select certificates from the following list to get extension information on that certificate",X509SelectionFlag::MultiSelection);
       
-      // Encrypt text to a file using the file name, key, and IV.
-      EncryptTextToFile( sData, FileName, RC2alg->Key, RC2alg->IV );
+      // Create a new AsnEncodedDataCollection object.
+      AsnEncodedDataCollection^ asncoll = gcnew AsnEncodedDataCollection;
+      for ( int i = 0; i < scollection->Count; i++ )
+      {
+         
+         // Display certificate information.
+         Console::ForegroundColor = ConsoleColor::Red;
+         Console::WriteLine( L"Certificate name: {0}", scollection[i]->GetName() );
+         Console::ResetColor();
+         
+         // Display extensions information.
+         System::Collections::IEnumerator^ myEnum = scollection[i]->Extensions->GetEnumerator();
+         while ( myEnum->MoveNext() )
+         {
+            X509Extension^ extension = safe_cast<X509Extension ^>(myEnum->Current);
+            
+            // Create an AsnEncodedData object using the extensions information.
+            AsnEncodedData^ asndata = gcnew AsnEncodedData( extension->Oid,extension->RawData );
+            Console::ForegroundColor = ConsoleColor::Green;
+            Console::WriteLine( L"Extension type: {0}", extension->Oid->FriendlyName );
+            Console::WriteLine( L"Oid value: {0}", asndata->Oid->Value );
+            Console::WriteLine( L"Raw data length: {0} {1}", asndata->RawData->Length, Environment::NewLine );
+            Console::ResetColor();
+            Console::WriteLine( asndata->Format(true) );
+            Console::WriteLine( Environment::NewLine );
+            
+            // Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+            asncoll->Add( asndata );
+         }
+
+         Console::WriteLine( Environment::NewLine );
+
+      }
+      Console::ForegroundColor = ConsoleColor::Red;
+      Console::WriteLine( L"Number of AsnEncodedData items in the collection: {0} {1}", asncoll->Count, Environment::NewLine );
+      Console::ResetColor();
+      store->Close();
       
-      // Decrypt the text from a file using the file name, key, and IV.
-      String^ Final = DecryptTextFromFile( FileName, RC2alg->Key, RC2alg->IV );
+      //Create an enumerator for moving through the collection.
+      AsnEncodedDataEnumerator^ asne = asncoll->GetEnumerator();
       
-      // Display the decrypted string to the console.
-      Console::WriteLine( Final );
+      //You must execute a MoveNext() to get to the first item in the collection.
+      asne->MoveNext();
+      
+      // Write out AsnEncodedData in the collection.
+      Console::ForegroundColor = ConsoleColor::Blue;
+      Console::WriteLine( L"First AsnEncodedData in the collection: {0}", asne->Current->Format(true) );
+      Console::ResetColor();
+      asne->MoveNext();
+      Console::ForegroundColor = ConsoleColor::DarkBlue;
+      Console::WriteLine( L"Second AsnEncodedData in the collection: {0}", asne->Current->Format(true) );
+      Console::ResetColor();
+      
+      //Return index in the collection to the beginning.
+      asne->Reset();
    }
-   catch ( Exception^ e ) 
+   catch ( CryptographicException^ ) 
    {
-      Console::WriteLine( e->Message );
+      Console::WriteLine( L"Information could not be written out for this certificate." );
    }
 
+   return 1;
 }

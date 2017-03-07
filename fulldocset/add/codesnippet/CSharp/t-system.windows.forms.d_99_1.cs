@@ -1,22 +1,7 @@
-    void dataGridView1_RowContextMenuStripNeeded(object sender,
-        DataGridViewRowContextMenuStripNeededEventArgs e)
-    {
-        DataGridViewRow dataGridViewRow1 = dataGridView1.Rows[e.RowIndex];
+private void DataGridView1_AutoSizeColumnsModeChanged(Object sender, DataGridViewAutoSizeColumnsModeEventArgs e) {
 
-        toolStripMenuItem1.Enabled = true;
-
-        // Show the appropriate ContextMenuStrip based on the employees title.
-        if ((dataGridViewRow1.Cells["Title"].Value.ToString() ==
-            "Sales Manager") ||
-            (dataGridViewRow1.Cells["Title"].Value.ToString() ==
-            "Vice President, Sales"))
-        {
-            e.ContextMenuStrip = managerMenuStrip;
-        }
-        else
-        {
-            e.ContextMenuStrip = employeeMenuStrip;
-        }
-
-        contextMenuRowIndex = e.RowIndex;
-    }
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "PreviousModes", e.PreviousModes );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "AutoSizeColumnsModeChanged Event" );
+}

@@ -1,12 +1,16 @@
-        // This example method creates a ComponentRenameEventArgs using the specified arguments.
-        // Typically, this type of event args is created by a design mode subsystem.  
-        public ComponentRenameEventArgs CreateComponentRenameEventArgs(object component, string oldName, string newName)
+        [Category("Data")]
+        [Description("Indicates the source of data for the control.")]
+        [RefreshProperties(RefreshProperties.Repaint)]
+        [AttributeProvider(typeof(IListSource))]
+        public object DataSource
         {
-            ComponentRenameEventArgs args = new ComponentRenameEventArgs(component, oldName, newName);
+            get
+            {
+                return this.dataGridView1.DataSource;
+            }
 
-            // The component that was renamed:          args.Component
-            // The previous name of the component:      args.OldName
-            // The new name of the component:           args.NewName            
-
-            return args;
+            set
+            {
+                this.dataGridView1.DataSource = value;
+            }
         }

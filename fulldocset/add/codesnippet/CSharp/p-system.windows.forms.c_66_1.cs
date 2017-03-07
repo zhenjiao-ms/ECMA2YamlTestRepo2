@@ -1,51 +1,96 @@
-public Form1()
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
+using System.IO;
+using System.Security.Permissions;
+
+[SecurityPermission(SecurityAction.Demand, UnmanagedCode = true)]
+public class MyIconButton : Button
 {
-    InitializeComponent();
-    //Set button2 to be non-validating.
-    this.button2.CausesValidation = false;
-}
+
+    private Icon icon;
+
+    public MyIconButton()
+    {
+        // Set the button's FlatStyle property.
+        FlatStyle = FlatStyle.System;
+    }
+
+    public MyIconButton(Icon ButtonIcon)
+        : this()
+    {
+        // Assign the icon to the private field.   
+        this.icon = ButtonIcon;
 
 
-private void textBox1_Validating(object sender, 
- 				System.ComponentModel.CancelEventArgs e)
-{
-   string errorMsg;
-   if(!ValidEmailAddress(textBox1.Text, out errorMsg))
-   {
-      // Cancel the event and select the text to be corrected by the user.
-      e.Cancel = true;
-      textBox1.Select(0, textBox1.Text.Length);
+        // Size the button to 4 pixels larger than the icon.
+        this.Height = icon.Height + 4;
+        this.Width = icon.Width + 4;
+    }
 
-      // Set the ErrorProvider error with the text to display. 
-      this.errorProvider1.SetError(textBox1, errorMsg);
-   }
-}
+    protected override CreateParams CreateParams
+    {
+        get
+        {
+            new SecurityPermission(SecurityPermissionFlag.UnmanagedCode).Demand();
 
-private void textBox1_Validated(object sender, System.EventArgs e)
-{
-   // If all conditions have been met, clear the ErrorProvider of errors.
-   errorProvider1.SetError(textBox1, "");
-}
-public bool ValidEmailAddress(string emailAddress, out string errorMessage)
-{
-   // Confirm that the e-mail address string is not empty.
-   if(emailAddress.Length == 0)
-   {
-      errorMessage = "e-mail address is required.";
-         return false;
-   }
+            // Extend the CreateParams property of the Button class.
+            CreateParams cp = base.CreateParams;
+            // Update the button Style.
+            cp.Style |= 0x00000040; // BS_ICON value
 
-   // Confirm that there is an "@" and a "." in the e-mail address, and in the correct order.
-   if(emailAddress.IndexOf("@") > -1)
-   {
-      if(emailAddress.IndexOf(".", emailAddress.IndexOf("@") ) > emailAddress.IndexOf("@") )
-      {
-         errorMessage = "";
-         return true;
-      }
-   }
-   
-   errorMessage = "e-mail address must be valid e-mail address format.\n" +
-      "For example 'someone@example.com' ";
-      return false;
+            return cp;
+        }
+    }
+
+    public Icon Icon
+    {
+        get
+        {
+            return icon;
+        }
+
+        set
+        {
+            icon = value;
+            UpdateIcon();
+            // Size the button to 4 pixels larger than the icon.
+            this.Height = icon.Height + 4;
+            this.Width = icon.Width + 4;
+        }
+    }
+
+    [SecurityPermission(SecurityAction.Demand, UnmanagedCode = true)]
+    protected override void OnHandleCreated(EventArgs e)
+    {
+        base.OnHandleCreated(e);
+
+        // Update the icon on the button if there is currently an icon assigned to the icon field.
+        if (icon != null)
+        {
+            UpdateIcon();
+        }
+    }
+
+    private void UpdateIcon()
+    {
+        IntPtr iconHandle = IntPtr.Zero;
+
+        // Get the icon's handle.
+        if (icon != null)
+        {
+            iconHandle = icon.Handle;
+        }
+
+        // Send Windows the message to update the button. 
+        SendMessage(Handle, 0x00F7 /*BM_SETIMAGE value*/, 1 /*IMAGE_ICON value*/, (int)iconHandle);
+    }
+
+
+    // Import the SendMessage method of the User32 DLL.   
+    [DllImport("user32.dll", CharSet = CharSet.Auto)]
+    public static extern IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
+
 }

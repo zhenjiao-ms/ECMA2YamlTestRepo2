@@ -1,51 +1,51 @@
-    ' Draws a node.
-    Private Sub myTreeView_DrawNode(ByVal sender As Object, _
-        ByVal e As DrawTreeNodeEventArgs) Handles myTreeView.DrawNode
+      Private Sub AddCustomDataTableStyle()
+         myDataGridTableStyle1 = New DataGridTableStyle()
 
-        ' Draw the background and node text for a selected node.
-        If (e.State And TreeNodeStates.Selected) <> 0 Then
+         ' EventHandlers
+         AddHandler myDataGridTableStyle1.GridLineColorChanged, AddressOf GridLineColorChanged_Handler
+         myDataGridTableStyle1.MappingName = "Customers"
 
-            ' Draw the background of the selected node. The NodeBounds
-            ' method makes the highlight rectangle large enough to
-            ' include the text of a node tag, if one is present.
-            e.Graphics.FillRectangle(Brushes.Green, NodeBounds(e.Node))
+         ' Set other properties.
+         myDataGridTableStyle1.AlternatingBackColor = System.Drawing.Color.Gold
+         myDataGridTableStyle1.BackColor = System.Drawing.Color.White
+         myDataGridTableStyle1.GridLineStyle = System.Windows.Forms.DataGridLineStyle.Solid
+         myDataGridTableStyle1.GridLineColor = Color.Red
 
-            ' Retrieve the node font. If the node font has not been set,
-            ' use the TreeView font.
-            Dim nodeFont As Font = e.Node.NodeFont
-            If nodeFont Is Nothing Then
-                nodeFont = CType(sender, TreeView).Font
-            End If
+         ' Set the HeaderText and Width properties.
+         Dim myBoolCol = New DataGridBoolColumn()
+         myBoolCol.MappingName = "Current"
+         myBoolCol.HeaderText = "IsCurrent Customer"
+         myBoolCol.Width = 150
+         myDataGridTableStyle1.GridColumnStyles.Add(myBoolCol)
 
-            ' Draw the node text.
-            e.Graphics.DrawString(e.Node.Text, nodeFont, Brushes.White, _
-                e.Bounds.Left - 2, e.Bounds.Top)
+         ' Add a second column style.
+         Dim myTextCol = New DataGridTextBoxColumn()
+         myTextCol.MappingName = "custName"
+         myTextCol.HeaderText = "Customer Name"
+         myTextCol.Width = 250
+         myDataGridTableStyle1.GridColumnStyles.Add(myTextCol)
 
-        ' Use the default background and node text.
-        Else
-            e.DrawDefault = True
-        End If
+         ' Create new ColumnStyle objects
+         Dim cOrderDate = New DataGridTextBoxColumn()
+         cOrderDate.MappingName = "OrderDate"
+         cOrderDate.HeaderText = "Order Date"
+         cOrderDate.Width = 100
 
-        ' If a node tag is present, draw its string representation 
-        ' to the right of the label text.
-        If (e.Node.Tag IsNot Nothing) Then
-            e.Graphics.DrawString(e.Node.Tag.ToString(), tagFont, _
-                Brushes.Yellow, e.Bounds.Right + 2, e.Bounds.Top)
-        End If
+         ' Use a PropertyDescriptor to create a formatted column.
+         Dim myPropertyDescriptorCollection As PropertyDescriptorCollection = _
+                        BindingContext(myDataSet, "Customers.custToOrders").GetItemProperties()
 
-        ' If the node has focus, draw the focus rectangle large, making
-        ' it large enough to include the text of the node tag, if present.
-        If (e.State And TreeNodeStates.Focused) <> 0 Then
-            Dim focusPen As New Pen(Color.Black)
-            Try
-                focusPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot
-                Dim focusBounds As Rectangle = NodeBounds(e.Node)
-                focusBounds.Size = New Size(focusBounds.Width - 1, _
-                    focusBounds.Height - 1)
-                e.Graphics.DrawRectangle(focusPen, focusBounds)
-            Finally
-                focusPen.Dispose()
-            End Try
-        End If
+         ' Create a formatted column using a PropertyDescriptor.
+         Dim csOrderAmount = New DataGridTextBoxColumn(myPropertyDescriptorCollection( _
+                                                      "OrderAmount"), "c", True)
+         csOrderAmount.MappingName = "OrderAmount"
+         csOrderAmount.HeaderText = "Total"
+         csOrderAmount.Width = 100
 
-    End Sub 'myTreeView_DrawNode
+         ' Add the DataGridTableStyle instances to the GridTableStylesCollection.
+         myDataGrid.TableStyles.Add(myDataGridTableStyle1)
+      End Sub 'AddCustomDataTableStyle
+
+      Private Sub GridLineColorChanged_Handler(ByVal sender As Object, ByVal e As EventArgs)
+         MessageBox.Show("GridLineColor Changed", "DataGridTableStyle")
+      End Sub 'GridLineColorChanged_Handler

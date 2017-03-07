@@ -1,55 +1,45 @@
 using System;
+using System.Collections;
+using System.IO;
 using System.Xml;
+using System.Xml.Xsl;
 using System.Xml.Schema;
 
-class XMLSchemaExamples
+public class ImportIncludeSample
 {
+
+    private static void ValidationCallBack(object sender, ValidationEventArgs args)
+    {
+
+        if (args.Severity == XmlSeverityType.Warning)
+            Console.Write("WARNING: ");
+        else if (args.Severity == XmlSeverityType.Error)
+            Console.Write("ERROR: ");
+
+        Console.WriteLine(args.Message);
+    }
+
+
     public static void Main()
     {
 
+
         XmlSchema schema = new XmlSchema();
+        schema.ElementFormDefault = XmlSchemaForm.Qualified;
+        schema.TargetNamespace = "http://www.w3.org/2001/05/XMLInfoset";
 
-        // <xs:simpleType name="RatingType">
-        XmlSchemaSimpleType RatingType = new XmlSchemaSimpleType();
-        RatingType.Name = "RatingType";
+        // <xs:import namespace="http://www.example.com/IPO" />                            
+        XmlSchemaImport import = new XmlSchemaImport();
+        import.Namespace = "http://www.example.com/IPO";
+        schema.Includes.Add(import);
 
-        // <xs:restriction base="xs:number">
-        XmlSchemaSimpleTypeRestriction restriction = new XmlSchemaSimpleTypeRestriction();
-        restriction.BaseTypeName = new XmlQualifiedName("decimal", "http://www.w3.org/2001/XMLSchema");
-
-        // <xs:totalDigits value="2"/>
-        XmlSchemaTotalDigitsFacet totalDigits = new XmlSchemaTotalDigitsFacet();
-        totalDigits.Value = "2";
-        restriction.Facets.Add(totalDigits);
-
-        // <xs:fractionDigits value="1"/>
-        XmlSchemaFractionDigitsFacet fractionDigits = new XmlSchemaFractionDigitsFacet();
-        fractionDigits.Value = "1";
-        restriction.Facets.Add(fractionDigits);
-
-        RatingType.Content = restriction;
-
-        schema.Items.Add(RatingType);
-
-        // <xs:element name="movie">
-        XmlSchemaElement element = new XmlSchemaElement();
-        element.Name = "movie";
-
-        // <xs:complexType>
-        XmlSchemaComplexType complexType = new XmlSchemaComplexType();
-
-        // <xs:attribute name="rating" type="RatingType"/>
-        XmlSchemaAttribute ratingAttribute = new XmlSchemaAttribute();
-        ratingAttribute.Name = "rating";
-        ratingAttribute.SchemaTypeName = new XmlQualifiedName("RatingType", "");
-        complexType.Attributes.Add(ratingAttribute);
-
-        element.SchemaType = complexType;
-
-        schema.Items.Add(element);
+        // <xs:include schemaLocation="example.xsd" />               
+        XmlSchemaInclude include = new XmlSchemaInclude();
+        include.SchemaLocation = "example.xsd";
+        schema.Includes.Add(include);
 
         XmlSchemaSet schemaSet = new XmlSchemaSet();
-        schemaSet.ValidationEventHandler += new ValidationEventHandler(ValidationCallbackOne);
+        schemaSet.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
         schemaSet.Add(schema);
         schemaSet.Compile();
 
@@ -63,10 +53,7 @@ class XMLSchemaExamples
         XmlNamespaceManager nsmgr = new XmlNamespaceManager(new NameTable());
         nsmgr.AddNamespace("xs", "http://www.w3.org/2001/XMLSchema");
         compiledSchema.Write(Console.Out, nsmgr);
-    }
 
-    public static void ValidationCallbackOne(object sender, ValidationEventArgs args)
-    {
-        Console.WriteLine(args.Message);
-    }
-}
+    }/* Main() */
+
+} //ImportIncludeSample

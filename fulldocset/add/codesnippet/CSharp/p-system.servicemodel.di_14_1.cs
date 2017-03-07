@@ -8,5 +8,5 @@
 
             serviceHost.Open();
 
-            ChannelDispatcher dispatcher = (ChannelDispatcher) serviceHost.ChannelDispatchers[0];
-            SynchronizedCollection<IChannelInitializer> col = dispatcher.ChannelInitializers;
+            ChannelDispatcher dispatcher = (ChannelDispatcher)serviceHost.ChannelDispatchers[0];
+            Collection<IErrorHandler> col = dispatcher.ErrorHandlers;

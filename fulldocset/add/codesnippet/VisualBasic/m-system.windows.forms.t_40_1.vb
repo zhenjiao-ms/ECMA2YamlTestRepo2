@@ -1,51 +1,11 @@
-' Get the tree node under the mouse pointer and
-' save it in the mySelectedNode variable. 
-Private Sub treeView1_MouseDown(sender As Object, _
-  e As System.Windows.Forms.MouseEventArgs)
-        
-   mySelectedNode = treeView1.GetNodeAt(e.X, e.Y)
-End Sub    
-    
-Private Sub menuItem1_Click(sender As Object, e As System.EventArgs)
-   If Not (mySelectedNode Is Nothing) And _
-     Not (mySelectedNode.Parent Is Nothing) Then
-      treeView1.SelectedNode = mySelectedNode
-      treeView1.LabelEdit = True
-      If Not mySelectedNode.IsEditing Then
-         mySelectedNode.BeginEdit()
-      End If
+Private Sub myCheckBox_CheckedChanged(ByVal sender As Object, _
+   ByVal e As System.EventArgs) Handles myCheckBox.CheckedChanged
+   ' If the check box is checked, expand all the tree nodes.
+   If myCheckBox.Checked = True Then
+      myTreeView.ExpandAll()
    Else
-      MessageBox.Show("No tree node selected or selected node is a root node." & _
-        Microsoft.VisualBasic.ControlChars.Cr & _
-        "Editing of root nodes is not allowed.", "Invalid selection")
+      ' If the check box is not cheked, collapse the first tree node.
+      myTreeView.Nodes(0).FirstNode.Collapse()
+      MessageBox.Show("The first and last node of CutomerList root node is collapsed")
    End If
-End Sub    
-    
-Private Sub treeView1_AfterLabelEdit(sender As Object, _
-  e As System.Windows.Forms.NodeLabelEditEventArgs)
-   If Not (e.Label Is Nothing) Then
-      If e.Label.Length > 0 Then
-         If e.Label.IndexOfAny(New Char() {"@"c, "."c, ","c, "!"c}) = -1 Then
-            ' Stop editing without canceling the label change.
-            e.Node.EndEdit(False)
-         Else
-            ' Cancel the label edit action, inform the user, and
-            ' place the node in edit mode again. 
-            e.CancelEdit = True
-            MessageBox.Show("Invalid tree node label." & _
-              Microsoft.VisualBasic.ControlChars.Cr & _
-              "The invalid characters are: '@','.', ',', '!'", _
-              "Node Label Edit")
-            e.Node.BeginEdit()
-         End If
-      Else
-         ' Cancel the label edit action, inform the user, and
-         ' place the node in edit mode again. 
-         e.CancelEdit = True
-         MessageBox.Show("Invalid tree node label." & _
-           Microsoft.VisualBasic.ControlChars.Cr & _
-           "The label cannot be blank", "Node Label Edit")
-           e.Node.BeginEdit()
-      End If
-   End If
-End Sub 
+End Sub

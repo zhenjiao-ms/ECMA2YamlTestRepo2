@@ -1,12 +1,19 @@
+   // Check if the first row is selected.
 private:
-   void myButton1_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
+   void button8_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
    {
-      //Set the 'AlternatingBackColor'.
-      myDataGridTableStyle->AlternatingBackColor = Color::Blue;
+      if ( myDataGrid->IsSelected( 0 ) )
+      {
+         MessageBox::Show( "Row selected", "Message", MessageBoxButtons::OK, MessageBoxIcon::Exclamation );
+      }
+      else
+      {
+         MessageBox::Show( "Row not selected", "Message", MessageBoxButtons::OK, MessageBoxIcon::Exclamation );
+      }
    }
 
-   void myButton2_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
+   // Deselect the first row.
+   void button11_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
    {
-      // Reset the 'AlternatingBackColor'.
-      myDataGridTableStyle->ResetAlternatingBackColor();
+      myDataGrid->UnSelect( 0 );
    }

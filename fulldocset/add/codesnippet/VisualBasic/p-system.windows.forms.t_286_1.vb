@@ -1,44 +1,91 @@
+      Public Class Customer
+         Inherits [Object]
+         Private custName As String = ""
+         Friend custOrders As New ArrayList()
 
-    ' Declare the TreeView control.
-    Friend WithEvents TreeView1 As System.Windows.Forms.TreeView
+         Public Sub New(ByVal customername As String)
+            Me.custName = customername
+         End Sub
 
-    ' Initialize the TreeView to blend with the form, giving it the 
-    ' same color as the form and no border.
-    Private Sub InitializeTreeView()
+         Public Property CustomerName() As String
+            Get
+               Return Me.custName
+            End Get
+            Set(ByVal Value As String)
+               Me.custName = Value
+            End Set
+         End Property
 
-        ' Create a new TreeView control and set the location and size.
-        Me.TreeView1 = New System.Windows.Forms.TreeView
-        Me.TreeView1.Location = New System.Drawing.Point(72, 48)
-        Me.TreeView1.Size = New System.Drawing.Size(200, 200)
+         Public ReadOnly Property CustomerOrders() As ArrayList
+            Get
+               Return Me.custOrders
+            End Get
+         End Property
+      End Class 'End Customer class
 
-        ' Set the BorderStyle property to none, the BackColor property to  
-        ' the form's backcolor, and the Scrollable property to false.  
-        ' This allows the TreeView to blend in form.
-        Me.TreeView1.BorderStyle = BorderStyle.None
-        Me.TreeView1.BackColor = Me.BackColor
-        Me.TreeView1.Scrollable = False
 
-        
-        ' Set the ShowRootLines and ShowLines properties to false to 
-        ' give the TreeView a list-like appearance.
-        Me.TreeView1.ShowRootLines = False
-        Me.TreeView1.ShowLines = False
+      Public Class Order
+         Inherits [Object]
+         Private ordID As String
 
-        ' Add the nodes.
-        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() _
-            {New System.Windows.Forms.TreeNode("Features", _
-            New System.Windows.Forms.TreeNode() _
-            {New System.Windows.Forms.TreeNode("Full Color"), _
-            New System.Windows.Forms.TreeNode("Project Wizards"), _
-            New System.Windows.Forms.TreeNode("Visual C# and Visual Basic Support")}), _
-            New System.Windows.Forms.TreeNode("System Requirements", _
-            New System.Windows.Forms.TreeNode() _
-            {New System.Windows.Forms.TreeNode _
-            ("Pentium 133 MHz or faster processor "), _
-            New System.Windows.Forms.TreeNode("Windows 98 or later"), _
-            New System.Windows.Forms.TreeNode("100 MB Disk space")})})
+         Public Sub New(ByVal orderid As String)
+            Me.ordID = orderid
+         End Sub 'New
 
-        ' Set the tab index and add the TreeView to the form.
-        Me.TreeView1.TabIndex = 0
-        Me.Controls.Add(Me.TreeView1)
-    End Sub
+         Public Property OrderID() As String
+            Get
+               Return Me.ordID
+            End Get
+            Set(ByVal Value As String)
+               Me.ordID = Value
+            End Set
+         End Property
+      End Class ' End Order class
+
+      ' Create a new ArrayList to hold the Customer objects.
+      Private customerArray As New ArrayList()
+
+      Private Sub FillMyTreeView()
+         ' Add customers to the ArrayList of Customer objects.
+         Dim x As Integer
+         For x = 0 To 999
+            customerArray.Add(New Customer("Customer" + x.ToString()))
+         Next x
+
+         ' Add orders to each Customer object in the ArrayList.
+         Dim customer1 As Customer
+         For Each customer1 In customerArray
+            Dim y As Integer
+            For y = 0 To 14
+               customer1.CustomerOrders.Add(New Order("Order" + y.ToString()))
+            Next y
+         Next customer1
+
+         ' Display a wait cursor while the TreeNodes are being created.
+         Cursor.Current = New Cursor("MyWait.cur")
+
+         ' Suppress repainting the TreeView until all the objects have been created.
+         treeView1.BeginUpdate()
+
+         ' Clear the TreeView each time the method is called.
+         treeView1.Nodes.Clear()
+
+         ' Add a root TreeNode for each Customer object in the ArrayList.
+         Dim customer2 As Customer
+         For Each customer2 In customerArray
+            treeView1.Nodes.Add(New TreeNode(customer2.CustomerName))
+
+            ' Add a child TreeNode for each Order object in the current Customer object.
+            Dim order1 As Order
+            For Each order1 In customer2.CustomerOrders
+               treeView1.Nodes(customerArray.IndexOf(customer2)).Nodes.Add( _
+          New TreeNode(customer2.CustomerName + "." + order1.OrderID))
+            Next order1
+         Next customer2
+
+         ' Reset the cursor to the default for all controls.
+         Cursor.Current = System.Windows.Forms.Cursors.Default
+
+         ' Begin repainting the TreeView.
+         treeView1.EndUpdate()
+      End Sub 'FillMyTreeView

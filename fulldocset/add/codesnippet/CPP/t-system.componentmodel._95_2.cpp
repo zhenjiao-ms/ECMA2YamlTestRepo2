@@ -1,14 +1,15 @@
-int main()
-{
-   // Creates a new installer.
-   MyProjectInstaller^ myNewProjectInstaller = gcnew MyProjectInstaller;
+      // Gets the attributes for the property.
+      AttributeCollection^ attributes = TypeDescriptor::GetProperties( this )[ "MyProperty" ]->Attributes;
 
-   // Gets the attributes for the collection.
-   AttributeCollection^ attributes = TypeDescriptor::GetAttributes( myNewProjectInstaller );
+      // Checks to see whether the value of the ReadOnlyAttribute is Yes.
+      if ( attributes[ ReadOnlyAttribute::typeid ]->Equals( ReadOnlyAttribute::Yes ) )
+      {
+         // Insert code here.
+      }
 
-   /* Prints whether to run the installer by retrieving the 
-       * RunInstallerAttribute from the AttributeCollection. */
-   RunInstallerAttribute^ myAttribute = dynamic_cast<RunInstallerAttribute^>(attributes[ RunInstallerAttribute::typeid ]);
-   Console::WriteLine( "Run the installer? {0}", myAttribute->RunInstaller );
-   return 0;
-}
+      // This is another way to see whether the property is read-only.
+      ReadOnlyAttribute^ myAttribute = dynamic_cast<ReadOnlyAttribute^>(attributes[ ReadOnlyAttribute::typeid ]);
+      if ( myAttribute->IsReadOnly )
+      {
+         // Insert code here.
+      }

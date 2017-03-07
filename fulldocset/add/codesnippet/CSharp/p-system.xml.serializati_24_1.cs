@@ -3,28 +3,48 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-// The name of this type will be overridden using
-// the SoapTypeAttribute.
+// This is the class that will be serialized.
 public class Group
 {
-   public string GroupName;
+   // This field will be overridden.
+   public Member [] Members;
 }
-  
+
+public class Member
+{
+   public string MemberName;
+}
+
 public class Run
 {
    public static void Main()
    {
       Run test = new Run();
-
-      test.SerializeOverride("GetSoapAttributes2.xml");
-      
+      test.SerializeObject("OverrideArray.xml");
+      test.DeserializeObject("OverrideArray.xml");
    }
-   public void SerializeOverride(string filename)
+   // Return an XmlSerializer used for overriding. 
+   public XmlSerializer CreateOverrider()
    {
-      // Create an instance of the XmlSerializer class
-      // that overrides the serialization.
-      XmlSerializer overRideSerializer = CreateOverrideSerializer();
+      // Creating XmlAttributeOverrides and XmlAttributes objects.
+      XmlAttributeOverrides xOver = new XmlAttributeOverrides();
+      XmlAttributes xAttrs = new XmlAttributes();
 
+      // Add an override for the XmlArray.    
+      XmlArrayAttribute xArray = new XmlArrayAttribute("Staff");
+      xArray.Namespace = "http://www.cpandl.com";
+      xAttrs.XmlArray = xArray;
+      xOver.Add(typeof(Group), "Members", xAttrs);
+
+      // Create the XmlSerializer and return it.
+      return new XmlSerializer(typeof(Group), xOver);
+   }
+   
+ 
+   public void SerializeObject(string filename)
+   {
+      // Create an instance of the XmlSerializer class.
+      XmlSerializer mySerializer =  CreateOverrider();
       // Writing the file requires a TextWriter.
       TextWriter writer = new StreamWriter(filename);
 
@@ -32,38 +52,25 @@ public class Run
       Group myGroup = new Group();
 
       // Set the object properties.
-      myGroup.GroupName = ".NET";
-
+      Member m = new Member();
+      m.MemberName = "Paul";
+      myGroup.Members = new Member[1] {m};
+      
       // Serialize the class, and close the TextWriter.
-      overRideSerializer.Serialize(writer, myGroup);
-       writer.Close();
+      mySerializer.Serialize(writer, myGroup);
+      writer.Close();
    }
 
-   private XmlSerializer CreateOverrideSerializer()
+   public void DeserializeObject(string filename)
    {
-      SoapAttributeOverrides mySoapAttributeOverrides = 
-      new SoapAttributeOverrides();
-      SoapAttributes mySoapAttributes = new SoapAttributes();
-
-      SoapTypeAttribute mySoapType = new SoapTypeAttribute();
-      mySoapType.TypeName= "Team";
-      mySoapAttributes.SoapType = mySoapType;
-      // Add the SoapAttributes to the 
-      // mySoapAttributeOverridesrides object.
-      mySoapAttributeOverrides.Add(typeof(Group), mySoapAttributes);
-      // Get the SoapAttributes with the Item property.
-      SoapAttributes thisSoapAtts = 
-      mySoapAttributeOverrides[typeof(Group)];
-      Console.WriteLine("New serialized type name: " + 
-      thisSoapAtts.SoapType.TypeName);
-
-      // Create an XmlTypeMapping that is used to create an instance 
-      // of the XmlSerializer. Then return the XmlSerializer object.
-      XmlTypeMapping myMapping = (new SoapReflectionImporter(
-      mySoapAttributeOverrides)).ImportTypeMapping(typeof(Group));
-	
-      XmlSerializer ser = new XmlSerializer(myMapping);
-      return ser;
+      XmlSerializer mySerializer = CreateOverrider();
+      FileStream fs = new FileStream(filename, FileMode.Open);
+      Group myGroup = (Group) 
+      mySerializer.Deserialize(fs);
+      foreach(Member m in myGroup.Members)
+      {
+         Console.WriteLine(m.MemberName);
+      }
    }
-
 }
+   

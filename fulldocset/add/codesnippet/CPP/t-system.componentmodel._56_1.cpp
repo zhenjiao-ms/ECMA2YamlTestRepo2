@@ -1,2 +1,5 @@
-         // Requests an IDesignerHost service from the design time environment using Component.Site.GetService()
-         IDesignerHost^ dh = static_cast<IDesignerHost^>(this->Component->Site->GetService( IDesignerHost::typeid ));
+ActiveDesignerEventArgs^ CreateActiveDesignerEventArgs( IDesignerHost^ losingFocus, IDesignerHost^ gainingFocus )
+{
+   ActiveDesignerEventArgs^ e = gcnew ActiveDesignerEventArgs( losingFocus, gainingFocus );
+   return e;
+}

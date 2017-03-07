@@ -1,206 +1,120 @@
-#using <System.dll>
-#using <System.Data.dll>
-#using <System.Drawing.dll>
-#using <System.Windows.Forms.dll>
-#using <System.Design.dll>
-
-using namespace System;
-using namespace System::Collections::Generic;
-using namespace System::ComponentModel;
-using namespace System::Data;
-using namespace System::Drawing;
-using namespace System::Windows::Forms;
-using namespace System::Windows::Forms::Design;
-using namespace System::Windows::Forms::Design::Behavior;
-using namespace System::Text;
-
-namespace BehaviorServiceSample
+public ref class Form1: public System::Windows::Forms::Form
 {
+private:
+   System::Windows::Forms::ListBox^ listBox1;
+   System::ComponentModel::Container^ components;
 
-    public ref class UserControl1 : public UserControl
-    {
-    private:
-        System::ComponentModel::IContainer^ components;
+public:
+   ~Form1()
+   {
+      if ( components != nullptr )
+      {
+         delete components;
+      }
+   }
 
-    public:
-        UserControl1()
-        {
-            InitializeComponent();
-        }
+private:
 
-    protected:
-        ~UserControl1()
-        {
-            if (components != nullptr)
-            {
-                delete components;
-            }
-        }
+   /// <summary>
+   /// Required method for Designer support - do not modify
+   /// the contents of this method with the code editor.
+   /// </summary>
+   void InitializeComponent()
+   {
+      this->listBox1 = gcnew System::Windows::Forms::ListBox;
+      this->SuspendLayout();
 
-    private:
-        void InitializeComponent()
-        {
-            this->Name = "UserControl1";
-            this->Size = System::Drawing::Size(170, 156);
-        }
-    };
+      // 
+      // listBox1
+      // 
+      this->listBox1->DrawMode = System::Windows::Forms::DrawMode::OwnerDrawVariable;
+      this->listBox1->Location = System::Drawing::Point( 16, 48 );
+      this->listBox1->Name = "listBox1";
+      this->listBox1->SelectionMode = System::Windows::Forms::SelectionMode::MultiExtended;
+      this->listBox1->Size = System::Drawing::Size( 256, 134 );
+      this->listBox1->TabIndex = 0;
+      this->listBox1->MeasureItem += gcnew System::Windows::Forms::MeasureItemEventHandler( this, &Form1::listBox1_MeasureItem );
+      this->listBox1->DrawItem += gcnew System::Windows::Forms::DrawItemEventHandler( this, &Form1::listBox1_DrawItem );
 
-    public ref class Form1 : public Form
-    {
-    private:
-        UserControl1^ userControl;
+      // 
+      // Form1
+      // 
+      this->ClientSize = System::Drawing::Size( 292, 273 );
+      array<System::Windows::Forms::Control^>^temp0 = {this->listBox1};
+      this->Controls->AddRange( temp0 );
+      this->Name = "Form1";
+      this->Text = "Form1";
+      this->ResumeLayout( false );
+   }
 
-    public:
-        Form1()
-        {
-            InitializeComponent();
-        }
+   void listBox1_MeasureItem( Object^ /*sender*/, MeasureItemEventArgs^ e )
+   {
+      System::Drawing::Font^ font = (dynamic_cast<ListBoxFontItem^>(listBox1->Items[ e->Index ]))->Font;
+      SizeF stringSize = e->Graphics->MeasureString( font->Name, font );
+      
+      // Set the height and width of the item
+      e->ItemHeight = (int)stringSize.Height;
+      e->ItemWidth = (int)stringSize.Width;
+   }
 
-    private:
-        System::ComponentModel::IContainer^ components;
+   // For efficiency, cache the brush to use for drawing.
+   SolidBrush^ foreColorBrush;
+   void listBox1_DrawItem( Object^ /*sender*/, DrawItemEventArgs^ e )
+   {
+      Brush^ brush;
 
-    protected:
-        ~Form1()
-        {
-            if (components != nullptr)
-            {
-                delete components;
-            }
-        }
+      // Create the brush using the ForeColor specified by the DrawItemEventArgs
+      if ( foreColorBrush == nullptr )
+            foreColorBrush = gcnew SolidBrush( e->ForeColor );
+      else
+      if ( foreColorBrush->Color != e->ForeColor )
+      {
+         // The control's ForeColor has changed, so dispose of the cached brush and
+         // create a new one.
+         delete foreColorBrush;
+         foreColorBrush = gcnew SolidBrush( e->ForeColor );
+      }
 
-    private:
-        void InitializeComponent()
-        {
-            this->userControl = gcnew UserControl1();
-            this->SuspendLayout();
+      // Select the appropriate brush depending on if the item is selected.
+      // Since State can be a combinateion (bit-flag) of enum values, you can't use
+      // "==" to compare them.
+      if ( (e->State & DrawItemState::Selected) == DrawItemState::Selected )
+            brush = SystemBrushes::HighlightText;
+      else
+            brush = foreColorBrush;
 
-            this->userControl->Location = System::Drawing::Point(12,13);
-            this->userControl->Name = "userControl";
-            this->userControl->Size = System::Drawing::Size(143,110);
-            this->userControl->TabIndex = 0;
+      // Perform the painting.
+      System::Drawing::Font^ font = (dynamic_cast<ListBoxFontItem^>(listBox1->Items[ e->Index ]))->Font;
+      e->DrawBackground();
+      e->Graphics->DrawString( font->Name, font, brush, e->Bounds );
+      e->DrawFocusRectangle();
+   }
 
-            this->AutoScaleBaseSize = System::Drawing::Size(5, 13);
-            this->ClientSize = System::Drawing::Size(184, 153);
-            this->Controls->Add(this->userControl);
-            this->Name = "Form1";
-            this->Text = "Form1";
-            this->ResumeLayout(false);
-        }
-    };
+public:
 
+   /// <summary>
+   ///  A wrapper class for use with storing Fonts in a ListBox.  Since ListBox uses the
+   ///  ToString() of its items for the text it displays, this class is needed to return
+   ///  the name of the font, rather than its ToString() value.
+   /// </summary>
+   ref class ListBoxFontItem
+   {
+   public:
+      System::Drawing::Font^ Font;
+      ListBoxFontItem( System::Drawing::Font^ f )
+      {
+         Font = f;
+      }
 
-    // By providing our own behavior we can do something
-    // interesting when the user clicks or manipulates our glyph.
-    public  ref class DemoBehavior : public Behavior
-    {
-    public:
-        bool OnMouseUp(Glyph^ g, MouseButtons^ button)
-        {
-            MessageBox::Show("Hey, you clicked the mouse here");
-
-            // indicating we processed this event.
-            return true;
-        }
-    };
-
-    public ref class DemoGlyph : public Glyph
-    {
-        Control^ control;
-        BehaviorService^ behavior;
-
-    public:
-        DemoGlyph(BehaviorService^ behavior, Control^ control):
-          Glyph(gcnew BehaviorServiceSample::DemoBehavior)
-          {
-              this->behavior = behavior;
-              this->control = control;
-          }
-
-    public:
-        virtual property Rectangle Bounds
-        {
-            Rectangle get() override
-            {
-                // Create a glyph that is 10x10 and sitting
-                // in the middle of the control.  Glyph coordinates
-                // are in adorner window coordinates, so we must map
-                // using the behavior service.
-                Point edge = behavior->ControlToAdornerWindow(control);
-                Size size = control->Size;
-                Point center = Point(edge.X + (size.Width / 2),
-                    edge.Y + (size.Height / 2));
-
-                Rectangle bounds = Rectangle(center.X - 5,
-                    center.Y - 5, 10, 10);
-
-                return bounds;
-            }
-        }
-
-    public:
-        virtual Cursor^ GetHitTest(Point p) override
-        {
-            // GetHitTest is called to see if the point is
-            // within this glyph.  This gives us a chance to decide
-            // what cursor to show.  Returning null from here means
-            // the mouse pointer is not currently inside of the
-            // glyph.  Returning a valid cursor here indicates the
-            // pointer is inside the glyph, and also enables our
-            // Behavior property as the active behavior.
-            if (Bounds.Contains(p))
-            {
-                return Cursors::Hand;
-            }
-            return nullptr;
-        }
-
-    public:
-        virtual void Paint(PaintEventArgs^ pe) override
-        {
-            // Draw our glyph.  Our's is simple:  a blue ellipse.
-            pe->Graphics->FillEllipse(Brushes::Blue, Bounds);
-        }
-    };
-
-
-    public ref class DemoDesigner : public ControlDesigner
-    {
-    private:
-        Adorner^ demoAdorner;
-
-    protected:
-        ~DemoDesigner()
-        {
-            if (demoAdorner != nullptr)
-            {
-                System::Windows::Forms::Design::Behavior::BehaviorService^ b = 
-                    this->BehaviorService;
-                if (b != nullptr)
-                {
-                    b->Adorners->Remove(demoAdorner);
-                }
-            }
-        }
-
-    public:
-        virtual void Initialize(IComponent^ component) override
-        {
-            __super::Initialize(component);
-
-            // Get a hold of the behavior service and add our own set
-            // of glyphs.  Glyphs live on adorners.
-            demoAdorner = gcnew Adorner();
-            BehaviorService->Adorners->Add(demoAdorner);
-            demoAdorner->Glyphs->Add 
-                (gcnew DemoGlyph(BehaviorService, Control));
-        }
-    };
-}
+      virtual String^ ToString() override
+      {
+         return Font->Name;
+      }
+   };
+};
 
 [STAThread]
 int main()
 {
-    Application::EnableVisualStyles();
-    Application::Run(gcnew BehaviorServiceSample::Form1());
+   Application::Run( gcnew Form1 );
 }
-

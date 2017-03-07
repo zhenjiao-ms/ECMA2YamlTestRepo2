@@ -1,40 +1,41 @@
-    public class CustomizedTreeView : TreeView
-    {
-        public CustomizedTreeView()
-        {
-            // Customize the TreeView control by setting various properties.
-            BackColor = System.Drawing.Color.CadetBlue;
-            FullRowSelect = true;
-            HotTracking = true;
-            Indent = 34;
-            ShowPlusMinus = false;
-
-            // The ShowLines property must be false for the FullRowSelect 
-            // property to work.
-            ShowLines = false;
-        }
-
-        protected override void OnAfterSelect(TreeViewEventArgs e)
-        {
-            // Confirm that the user initiated the selection.
-            // This prevents the first node from expanding when it is
-            // automatically selected during the initialization of 
-            // the TreeView control.
-            if (e.Action != TreeViewAction.Unknown)
-            {
-                if (e.Node.IsExpanded) 
-                {
-                    e.Node.Collapse();
-                }
-                else 
-                {
-                    e.Node.Expand();
-                }
-            }
-
-            // Remove the selection. This allows the same node to be
-            // clicked twice in succession to toggle the expansion state.
-            SelectedNode = null;
-        }
-
+public class Class1 {
+    static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
+    static int alarmCounter = 1;
+    static bool exitFlag = false;
+ 
+    // This is the method to run when the timer is raised.
+    private static void TimerEventProcessor(Object myObject,
+                                            EventArgs myEventArgs) {
+       myTimer.Stop();
+ 
+       // Displays a message box asking whether to continue running the timer.
+       if(MessageBox.Show("Continue running?", "Count is: " + alarmCounter, 
+          MessageBoxButtons.YesNo) == DialogResult.Yes) {
+          // Restarts the timer and increments the counter.
+          alarmCounter +=1;
+          myTimer.Enabled = true;
+       }
+       else {
+          // Stops the timer.
+          exitFlag = true;
+       }
     }
+ 
+    public static int Main() {
+       /* Adds the event and the event handler for the method that will 
+          process the timer event to the timer. */
+       myTimer.Tick += new EventHandler(TimerEventProcessor);
+ 
+       // Sets the timer interval to 5 seconds.
+       myTimer.Interval = 5000;
+       myTimer.Start();
+ 
+       // Runs the timer, and raises the event.
+       while(exitFlag == false) {
+          // Processes all the events in the queue.
+          Application.DoEvents();
+       }
+    return 0;
+    }
+ }
+    

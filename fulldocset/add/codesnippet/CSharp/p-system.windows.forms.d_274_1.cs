@@ -1,10 +1,8 @@
-    private void CustomizeCellsInThirdColumn()
+    // Make the the entire DataGridView read only.
+    private void Button8_Click(object sender, System.EventArgs e)
     {
-        int thirdColumn = 2;
-        DataGridViewColumn column =
-            dataGridView.Columns[thirdColumn];
-        DataGridViewCell cell = new DataGridViewTextBoxCell();
-
-        cell.Style.BackColor = Color.Wheat;
-        column.CellTemplate = cell;
+        foreach (DataGridViewBand band in dataGridView.Columns)
+        {
+            band.ReadOnly = true;
+        }
     }

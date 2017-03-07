@@ -1,181 +1,131 @@
-Imports System
-Imports System.Collections.Generic
-Imports System.ComponentModel
-Imports System.Data
-Imports System.Drawing
-Imports System.Windows.Forms
-Imports System.Text
-Imports System.Windows.Forms.Design
-Imports System.Windows.Forms.Design.Behavior
+   Public Class Form1
+      Inherits System.Windows.Forms.Form
+      Private WithEvents listBox1 As System.Windows.Forms.ListBox
+      Private components As System.ComponentModel.Container = Nothing
 
-Namespace BehaviorServiceSample
+      Private FontSize As Single = 12.0F
 
-    Public Class Form1
-        Inherits System.Windows.Forms.Form
+      '
+      '  This sample displays a ListBox that contains a list of all the fonts
+      '  installed on the system and draws each item in its respective font.
+      '
+      Public Sub New()
+         InitializeComponent()
 
-        Private userControl As UserControl1
-        Private components As System.ComponentModel.IContainer = Nothing
+         ' Populate control with the fonts installed on the system.
+         Dim families As FontFamily() = FontFamily.Families
 
-        Public Sub New()
-            MyBase.New()
-            InitializeComponent()
-        End Sub
+         Dim family As FontFamily
+         For Each family In families
+            Dim style As FontStyle = FontStyle.Regular
 
-        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-            If disposing AndAlso (components IsNot Nothing) Then
-                components.Dispose()
-            End If
-            MyBase.Dispose(disposing)
-        End Sub
-
-
-        Private Sub InitializeComponent()
-            Me.userControl = New UserControl1()
-            Me.SuspendLayout()
-
-            Me.userControl.Location = New System.Drawing.Point(12, 13)
-            Me.userControl.Name = "userControl"
-            Me.userControl.Size = New System.Drawing.Size(143, 110)
-            Me.userControl.TabIndex = 0
-
-            Me.ClientSize = New System.Drawing.Size(184, 153)
-            Me.Controls.Add(userControl)
-            Me.Name = "Form1"
-            Me.Text = "Form1"
-            Me.ResumeLayout(False)
-        End Sub
-
-        <STAThread()> _
-        Shared Sub Main()
-            Application.EnableVisualStyles()
-            Application.Run(New Form1())
-        End Sub
-
-    End Class
-
-    <Designer(GetType(MyDesigner))> _
-    Public Class UserControl1
-        Inherits UserControl
-        Private components As System.ComponentModel.IContainer = Nothing
-
-
-        Public Sub New()
-            InitializeComponent()
-        End Sub
-
-
-        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-            If disposing AndAlso (components IsNot Nothing) Then
-                components.Dispose()
-            End If
-            MyBase.Dispose(disposing)
-        End Sub
-
-
-        Private Sub InitializeComponent()
-            Me.Name = "UserControl1"
-            Me.Size = New System.Drawing.Size(170, 156)
-        End Sub 'InitializeComponent
-    End Class
-
-    Class MyDesigner
-        Inherits ControlDesigner
-        Private myAdorner As Adorner
-
-
-        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-            If disposing AndAlso (myAdorner IsNot Nothing) Then
-                Dim b As System.Windows.Forms.Design.Behavior.BehaviorService _
-                    = BehaviorService
-                If (b IsNot Nothing) Then
-                    b.Adorners.Remove(myAdorner)
-                End If
+            ' Monotype Corsiva is only available in italic
+            If family.Name = "Monotype Corsiva" Then
+               style = style Or FontStyle.Italic
             End If
 
-        End Sub
+            listBox1.Items.Add(New ListBoxFontItem(New Font(family.Name, FontSize, style, GraphicsUnit.Point)))
+         Next family
+      End Sub
 
 
-        Public Overrides Sub Initialize(ByVal component As IComponent)
-            MyBase.Initialize(component)
-
-            ' Add the custom set of glyphs using the BehaviorService.  
-            ' Glyphs live on adornders.
-            myAdorner = New Adorner()
-            BehaviorService.Adorners.Add(myAdorner)
-            myAdorner.Glyphs.Add(New MyGlyph(BehaviorService, Control))
-
-        End Sub
-    End Class
-
-    Class MyGlyph
-        Inherits Glyph
-        Private control As Control
-        Private behaviorSvc As _
-            System.Windows.Forms.Design.Behavior.BehaviorService
-
-        Public Sub New(ByVal behaviorSvc As _
-            System.Windows.Forms.Design.Behavior.BehaviorService, _
-            ByVal control As Control)
-
-            MyBase.New(New MyBehavior())
-            Me.behaviorSvc = behaviorSvc
-            Me.control = control
-        End Sub
-
-        Public Overrides ReadOnly Property Bounds() As Rectangle
-            Get
-                ' Create a glyph that is 10x10 and sitting
-                ' in the middle of the control.  Glyph coordinates
-                ' are in adorner window coordinates, so we must map
-                ' using the behavior service.
-                Dim edge As Point = behaviorSvc.ControlToAdornerWindow(control)
-                Dim size As Size = control.Size
-                Dim center As New Point(edge.X + size.Width / 2, edge.Y + _
-                    size.Height / 2)
-
-                Dim bounds1 As New Rectangle(center.X - 5, center.Y - 5, 10, 10)
-
-                Return bounds1
-            End Get
-        End Property
-
-        Public Overrides Function GetHitTest(ByVal p As Point) As Cursor
-            ' GetHitTest is called to see if the point is
-            ' within this glyph.  This gives us a chance to decide
-            ' what cursor to show.  Returning null from here means
-            ' the mouse pointer is not currently inside of the glyph.
-            ' Returning a valid cursor here indicates the pointer is
-            ' inside the glyph,and also enables our Behavior property
-            ' as the active behavior.
-            If Bounds.Contains(p) Then
-                Return Cursors.Hand
+      Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+         If disposing Then
+            If (components IsNot Nothing) Then
+               components.Dispose()
             End If
 
-            Return Nothing
+            If (foreColorBrush IsNot Nothing) Then
+               foreColorBrush.Dispose()
+            End If
+         End If
 
-        End Function
+         MyBase.Dispose(disposing)
+      End Sub
 
+      Private Sub InitializeComponent()
+         Me.listBox1 = New System.Windows.Forms.ListBox()
+         Me.SuspendLayout()
+         ' 
+         ' listBox1
+         ' 
+         Me.listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable
+         Me.listBox1.Location = New System.Drawing.Point(16, 48)
+         Me.listBox1.Name = "listBox1"
+         Me.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
+         Me.listBox1.Size = New System.Drawing.Size(256, 134)
+         Me.listBox1.TabIndex = 0
+         ' 
+         ' Form1
+         ' 
+         Me.ClientSize = New System.Drawing.Size(292, 273)
+         Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.listBox1})
+         Me.Name = "Form1"
+         Me.Text = "Form1"
+         Me.ResumeLayout(False)
+      End Sub
 
-        Public Overrides Sub Paint(ByVal pe As PaintEventArgs)
-            ' Draw our glyph.  It is simply a blue ellipse.
-            pe.Graphics.FillEllipse(Brushes.Blue, Bounds)
+      <STAThread()> Shared Sub Main()
+         Application.Run(New Form1())
+      End Sub
 
-        End Sub
+      Private Sub listBox1_MeasureItem(ByVal sender As Object, ByVal e As System.Windows.Forms.MeasureItemEventArgs) Handles listBox1.MeasureItem
+         Dim font As Font = CType(listBox1.Items(e.Index), ListBoxFontItem).Font
+         Dim stringSize As SizeF = e.Graphics.MeasureString(font.Name, font)
 
-        ' By providing our own behavior we can do something interesting
-        ' when the user clicks or manipulates our glyph.
+         ' Set the height and width of the item
+         e.ItemHeight = CInt(stringSize.Height)
+         e.ItemWidth = CInt(stringSize.Width)
+      End Sub
 
-        Class MyBehavior
-            Inherits System.Windows.Forms.Design.Behavior.Behavior
+      ' For efficiency, cache the brush used for drawing.
+      Private foreColorBrush As SolidBrush
 
-            Public Overrides Function OnMouseUp(ByVal g As Glyph, _
-                ByVal button As MouseButtons) As Boolean
-                MessageBox.Show("Hey, you clicked the mouse here")
-                Return True
-                ' indicating we processed this event.
-            End Function 'OnMouseUp
-        End Class
+      Private Sub listBox1_DrawItem(ByVal sender As Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles listBox1.DrawItem
+         Dim brush As Brush
 
-    End Class
+         ' Create the brush using the ForeColor specified by the DrawItemEventArgs
+         If foreColorBrush Is Nothing Then
+            foreColorBrush = New SolidBrush(e.ForeColor)
+         Else
+            If Not foreColorBrush.Color.Equals(e.ForeColor) Then
+               ' The control's ForeColor has changed, so dispose of the cached brush and
+               ' create a new one.
+               foreColorBrush.Dispose()
+               foreColorBrush = New SolidBrush(e.ForeColor)
+            End If
+         End If
 
-End Namespace
+         ' Select the appropriate brush depending on if the item is selected.
+         ' Since State can be a combinateion (bit-flag) of enum values, you can't use
+         ' "==" to compare them.
+         If (e.State And DrawItemState.Selected) = DrawItemState.Selected Then
+            brush = SystemBrushes.HighlightText
+         Else
+            brush = foreColorBrush
+         End If
+
+         ' Perform the painting.
+         Dim font As Font = CType(listBox1.Items(e.Index), ListBoxFontItem).Font
+         e.DrawBackground()
+         e.Graphics.DrawString(font.Name, font, brush, e.Bounds.X, e.Bounds.Y)
+         e.DrawFocusRectangle()
+      End Sub
+
+      '
+      '  A wrapper class for use with storing Fonts in a ListBox.  Since ListBox uses the
+      '  ToString() of its items for the text it displays, this class is needed to return
+      '  the name of the font, rather than its ToString() value.
+      '
+      Public Class ListBoxFontItem
+         Public Font As Font
+
+         Public Sub New(ByVal f As Font)
+            Font = f
+         End Sub
+
+         Public Overrides Function ToString() As String
+            Return Font.Name
+         End Function
+      End Class
+   End Class

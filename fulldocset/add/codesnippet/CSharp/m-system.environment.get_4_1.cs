@@ -1,19 +1,16 @@
 using System;
+using System.IO;
 
-class Sample 
+public class Example
 {
-    public static void Main() 
-    {
-    Console.WriteLine();
-    //  Invoke this sample with an arbitrary set of command line arguments.
-    String[] arguments = Environment.GetCommandLineArgs();
-    Console.WriteLine("GetCommandLineArgs: {0}", String.Join(", ", arguments));
-    }
+   public static void Main()
+   {
+      // Change the directory to %WINDIR%
+      Environment.CurrentDirectory = Environment.GetEnvironmentVariable("windir");
+      DirectoryInfo info = new DirectoryInfo(".");
+
+      Console.WriteLine("Directory Info:   " + info.FullName);
+   }
 }
-/*
-This example produces output like the following:
-    
-    C:\>GetCommandLineArgs ARBITRARY TEXT
-    
-      GetCommandLineArgs: GetCommandLineArgs, ARBITRARY, TEXT
-*/
+// The example displays output like the following:
+//        Directory Info:   C:\windows

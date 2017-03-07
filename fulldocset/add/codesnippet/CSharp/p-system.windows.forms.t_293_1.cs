@@ -1,23 +1,35 @@
-		internal ToolStripButton boldButton;
+		internal ToolStripButton changeDirectionButton;
 
-		private void InitializeBoldButton()
+		private void InitializeMovingToolStrip()
 		{
-			boldButton = new ToolStripButton();
-			boldButton.Text = "B";
-			boldButton.CheckOnClick = true;
-			toolStrip1.Items.Add(boldButton);
+            movingToolStrip = new ToolStrip();
 
+			changeDirectionButton = new ToolStripButton();
+
+			movingToolStrip.AutoSize = true;
+			movingToolStrip.RenderMode = ToolStripRenderMode.System;
+
+			changeDirectionButton.TextDirection = ToolStripTextDirection.Vertical270;
+			changeDirectionButton.Overflow = ToolStripItemOverflow.Never;
+			changeDirectionButton.Text = "Change Alignment";
+				movingToolStrip.Items.Add(changeDirectionButton);
 		}
 
-		private void boldButton_CheckedChanged(object sender, EventArgs e)
+
+		private void changeDirectionButton_Click(object sender, EventArgs e)
 		{
-			if (boldButton.Checked)
+
+			ToolStripItem item = (ToolStripItem)sender;
+
+			if (item.TextDirection == ToolStripTextDirection.Vertical270 || item.TextDirection == ToolStripTextDirection.Vertical90)
 			{
-				this.Font = new Font(this.Font, FontStyle.Bold);
+				item.TextDirection = ToolStripTextDirection.Horizontal;
+				movingToolStrip.Dock = System.Windows.Forms.DockStyle.Top;
 			}
 			else
 			{
-				this.Font = new Font(this.Font, FontStyle.Regular);
+				item.TextDirection = ToolStripTextDirection.Vertical270;
+				movingToolStrip.Dock = System.Windows.Forms.DockStyle.Left;
 			}
 
 		}

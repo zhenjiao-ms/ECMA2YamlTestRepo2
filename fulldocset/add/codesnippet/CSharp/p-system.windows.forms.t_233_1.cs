@@ -1,41 +1,29 @@
-public class Class1 {
-    static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-    static int alarmCounter = 1;
-    static bool exitFlag = false;
- 
-    // This is the method to run when the timer is raised.
-    private static void TimerEventProcessor(Object myObject,
-                                            EventArgs myEventArgs) {
-       myTimer.Stop();
- 
-       // Displays a message box asking whether to continue running the timer.
-       if(MessageBox.Show("Continue running?", "Count is: " + alarmCounter, 
-          MessageBoxButtons.YesNo) == DialogResult.Yes) {
-          // Restarts the timer and increments the counter.
-          alarmCounter +=1;
-          myTimer.Enabled = true;
-       }
-       else {
-          // Stops the timer.
-          exitFlag = true;
-       }
-    }
- 
-    public static int Main() {
-       /* Adds the event and the event handler for the method that will 
-          process the timer event to the timer. */
-       myTimer.Tick += new EventHandler(TimerEventProcessor);
- 
-       // Sets the timer interval to 5 seconds.
-       myTimer.Interval = 5000;
-       myTimer.Start();
- 
-       // Runs the timer, and raises the event.
-       while(exitFlag == false) {
-          // Processes all the events in the queue.
-          Application.DoEvents();
-       }
-    return 0;
-    }
- }
-    
+            // This is an example of some common ToolStrip property settings.
+            // 
+            toolStrip1.AllowDrop = false;
+            toolStrip1.AllowItemReorder = true;
+            toolStrip1.AllowMerge = false;
+            toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            toolStrip1.AutoSize = false;
+            toolStrip1.CanOverflow = false;
+            toolStrip1.Cursor = System.Windows.Forms.Cursors.Cross;
+            toolStrip1.DefaultDropDownDirection = System.Windows.Forms.ToolStripDropDownDirection.BelowRight;
+            toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            toolStrip1.GripMargin = new System.Windows.Forms.Padding(3);
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            toolStripButton1});
+            toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            toolStrip1.Location = new System.Drawing.Point(0, 0);
+            toolStrip1.Margin = new System.Windows.Forms.Padding(1);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            toolStrip1.ShowItemToolTips = false;
+            toolStrip1.Size = new System.Drawing.Size(109, 273);
+            toolStrip1.Stretch = true;
+            toolStrip1.TabIndex = 0;
+            toolStrip1.TabStop = true;
+            toolStrip1.Text = "toolStrip1";
+            toolStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90;

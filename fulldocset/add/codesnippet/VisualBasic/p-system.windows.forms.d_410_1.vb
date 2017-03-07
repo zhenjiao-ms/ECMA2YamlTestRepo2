@@ -1,26 +1,43 @@
-    Private Sub dataGridView1_CellValidating(ByVal sender As Object, _
-        ByVal e As DataGridViewCellValidatingEventArgs) _
-        Handles dataGridView1.CellValidating
-
-        Dim headerText As String = _
-            dataGridView1.Columns(e.ColumnIndex).HeaderText
-
-        ' Abort validation if cell is not in the CompanyName column.
-        If Not headerText.Equals("CompanyName") Then Return
-
-        ' Confirm that the cell is not empty.
-        If (String.IsNullOrEmpty(e.FormattedValue.ToString())) Then
-            dataGridView1.Rows(e.RowIndex).ErrorText = _
-                "Company Name must not be empty"
-            e.Cancel = True
+    Protected domainUpDown1 As DomainUpDown
+    
+    
+    Private Sub MySub()
+        ' Create and initialize the DomainUpDown control.
+        domainUpDown1 = New System.Windows.Forms.DomainUpDown()
+        
+        ' Add the DomainUpDown control to the form.
+        Controls.Add(domainUpDown1)
+    End Sub 'MySub
+    
+    
+    Private Sub button1_Click(sender As System.Object, e As System.EventArgs)
+        ' Add the text box contents and initial location in the collection
+        ' to the DomainUpDown control.
+        domainUpDown1.Items.Add((textBox1.Text.Trim() & " - " & myCounter))
+        
+        ' Increment the counter variable.
+        myCounter = myCounter + 1
+        
+        ' Clear the TextBox.
+        textBox1.Text = ""
+    End Sub 'button1_Click
+    
+    
+    Private Sub checkBox1_Click(sender As System.Object, e As System.EventArgs)
+        ' If Sorted is set to true, set it to false; 
+        ' otherwise set it to true.
+        If domainUpDown1.Sorted Then
+            domainUpDown1.Sorted = False
+        Else
+            domainUpDown1.Sorted = True
         End If
-    End Sub
-
-    Private Sub dataGridView1_CellEndEdit(ByVal sender As Object, _
-        ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) _
-        Handles dataGridView1.CellEndEdit
-
-        ' Clear the row error in case the user presses ESC.   
-        dataGridView1.Rows(e.RowIndex).ErrorText = String.Empty
-
-    End Sub
+    End Sub 'checkBox1_Click
+    
+    
+    Private Sub domainUpDown1_SelectedItemChanged _
+        (sender As System.Object, e As System.EventArgs)
+        
+        ' Display the SelectedIndex and SelectedItem property values in a MessageBox.
+        MessageBox.Show(("SelectedIndex: " & domainUpDown1.SelectedIndex.ToString() & _
+            ControlChars.Cr & "SelectedItem: " & domainUpDown1.SelectedItem.ToString()))
+    End Sub 'domainUpDown1_SelectedItemChanged

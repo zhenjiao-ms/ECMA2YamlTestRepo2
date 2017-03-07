@@ -1,40 +1,36 @@
-    public class MyServiceCredentials : ServiceCredentials
-    {
-        X509Certificate2 additionalCertificate;
+using System;
+using System.ServiceModel;
 
-        public MyServiceCredentials()
-        {
-        }
+[ServiceContract]
+interface ICalculatorService
+{
+  [OperationBehavior()]
+  int Add(int a, int b);  
 
-        protected MyServiceCredentials(MyServiceCredentials other)
-            : base(other)
-        {
-            this.additionalCertificate = other.additionalCertificate;
-        }
+  [OperationContract]
+  int Subtract(int a, int b);
+}
 
-        public X509Certificate2 AdditionalCertificate
-        {
-            get
-            {
-                return this.additionalCertificate;
-            }
-            set
-            {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("value");
-                }
-                this.additionalCertificate = value;
-            }
-        }
-
-        public override SecurityTokenManager CreateSecurityTokenManager()
-        {
-            return base.CreateSecurityTokenManager();
-        }
-
-        protected override ServiceCredentials CloneCore()
-        {
-            return new MyServiceCredentials(this);
-        }
-    }
+[DeliveryRequirementsAttribute(
+  QueuedDeliveryRequirements=QueuedDeliveryRequirementsMode.NotAllowed,
+  RequireOrderedDelivery=true
+)]
+class CalculatorService: ICalculatorService
+{
+  public int Add(int a, int b)
+  {
+    Console.WriteLine("Add called.");
+    return a + b; 
+  }
+  
+  public int Subtract(int a, int b)
+  {
+    Console.WriteLine("Subtract called.");
+    return a - b;
+  }
+  
+  public int Multiply(int a, int b)
+  {
+    return a * b;
+  }
+}

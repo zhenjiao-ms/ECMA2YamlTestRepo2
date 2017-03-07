@@ -20,9 +20,18 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <typeparam name="C">To be added.</typeparam>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <typeparam name="C">The type of elements in the array. <c>C</c> must implement the <see cref="T:System.AddIn.Contract.IContract" /> interface.</typeparam>
+    <summary>Represents a generic array of <see cref="T:System.AddIn.Contract.IContract" /> objects.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use an IArrayContract(C) to pass an array of <xref:System.AddIn.Contract.IContract> objects between contracts by reference.  
+  
+ An IArrayContract(C) does not dynamically resize itself.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="GetCount">
@@ -40,8 +49,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns the number of elements contained in the <see cref="System.AddIn.Contract.Collections.IArrayContract%601" />.</summary>
+        <returns>The number of elements contained in the <see cref="System.AddIn.Contract.Collections.IArrayContract%601" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -62,10 +71,16 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="index">The zero-based index of the element to return.</param>
+        <summary>Returns the element at the specified index.</summary>
+        <returns>The element at the specified index.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.IndexOutOfRangeException">
+          <paramref name="index" /> is less than zero.  
+  
+ -or-  
+  
+ <paramref name="index" /> is equal to or greater than the return value of <see cref="System.AddIn.Contract.Collections.IArrayContract%601.GetCount%2A" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="SetItem">
@@ -86,10 +101,16 @@
         <Parameter Name="value" Type="C" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="index">The zero-based index of the element to replace.</param>
+        <param name="value">The new value for the element at the specified index.</param>
+        <summary>Replaces the element at the specified index with the specified <see cref="T:System.AddIn.Contract.IContract" />.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.IndexOutOfRangeException">
+          <paramref name="index" /> is less than zero.  
+  
+ -or-  
+  
+ <paramref name="index" /> is equal to or greater than the return value of <see cref="System.AddIn.Contract.Collections.IArrayContract%601.GetCount%2A" />.</exception>
       </Docs>
     </Member>
   </Members>

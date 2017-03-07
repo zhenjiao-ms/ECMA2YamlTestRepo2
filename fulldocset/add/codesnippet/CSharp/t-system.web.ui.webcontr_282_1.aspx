@@ -1,75 +1,100 @@
-
 <%@ Page Language="C#" AutoEventWireup="True" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
-
-<head runat="server">
-    <title> CheckBoxList Example </title>
-<script runat="server">
-
-      void Check_Clicked(Object sender, EventArgs e) 
-      {
-
-         Message.Text = "Selected Item(s):<br /><br />";
-
-         // Iterate through the Items collection of the CheckBoxList 
-         // control and display the selected items.
-         for (int i=0; i<checkboxlist1.Items.Count; i++)
-         {
-
-            if (checkboxlist1.Items[i].Selected)
-            {
-
-               Message.Text += checkboxlist1.Items[i].Text + "<br />";
-
-            }
-
-         }
-
-      }
-
-   </script>
+ <head>
+    <title>Repeater Example</title>
+<script language="C#" runat="server">
+       void Page_Load(Object Sender, EventArgs e) {
+          if (!IsPostBack) {
+             ArrayList values = new ArrayList();
  
-</head>
-
-<body>
-   
-   <form id="form1" runat="server">
+             values.Add(new PositionData("Microsoft", "Msft"));
+             values.Add(new PositionData("Intel", "Intc"));
+             values.Add(new PositionData("Dell", "Dell"));
  
-      <h3> CheckBoxList Example </h3>
-
-      Select items from the CheckBoxList.
-
-      <br /><br />
-
-      <asp:CheckBoxList id="checkboxlist1" 
-           AutoPostBack="True"
-           CellPadding="5"
-           CellSpacing="5"
-           RepeatColumns="2"
-           RepeatDirection="Vertical"
-           RepeatLayout="Flow"
-           TextAlign="Right"
-           OnSelectedIndexChanged="Check_Clicked"
-           runat="server">
+             Repeater1.DataSource = values;
+             Repeater1.DataBind();
+                 
+             Repeater2.DataSource = values;
+             Repeater2.DataBind();
+          }
+       }
  
-         <asp:ListItem>Item 1</asp:ListItem>
-         <asp:ListItem>Item 2</asp:ListItem>
-         <asp:ListItem>Item 3</asp:ListItem>
-         <asp:ListItem>Item 4</asp:ListItem>
-         <asp:ListItem>Item 5</asp:ListItem>
-         <asp:ListItem>Item 6</asp:ListItem>
+       public class PositionData {
+         
+          private string name;
+          private string ticker;
  
-      </asp:CheckBoxList>
+          public PositionData(string name, string ticker) {
+             this.name = name;
+             this.ticker = ticker;
+          }
  
-      <br /><br />
-
-      <asp:label id="Message" runat="server" AssociatedControlID="checkboxlist1"/>
+          public string Name {
+             get {
+                return name;
+             }
+          }
+ 
+          public string Ticker {
+             get {
+                return ticker;
+             }
+          }
+       }
+ 
+    </script>
+ 
+ </head>
+ <body>
+ 
+    <h3>Repeater Example</h3>
+ 
+    <form id="form1" runat="server">
+ 
+       <b>Repeater1:</b>
+         
+       <br />
+         
+       <asp:Repeater id="Repeater1" runat="server">
+          <HeaderTemplate>
+             <table border="1">
+                <tr>
+                   <td><b>Company</b></td>
+                   <td><b>Symbol</b></td>
+                </tr>
+          </HeaderTemplate>
              
-   </form>
-          
-</body>
-
-</html>
+          <ItemTemplate>
+             <tr>
+                <td> <%# DataBinder.Eval(Container.DataItem, "Name") %> </td>
+                <td> <%# DataBinder.Eval(Container.DataItem, "Ticker") %> </td>
+             </tr>
+          </ItemTemplate>
+             
+          <FooterTemplate>
+             </table>
+          </FooterTemplate>
+             
+       </asp:Repeater>
+       <br />
+         
+       <b>Repeater2:</b>
+       <br />
+       <asp:Repeater id="Repeater2" runat="server">
+         
+          <HeaderTemplate>
+             Company data:
+          </HeaderTemplate>
+             
+          <ItemTemplate>
+             <%# DataBinder.Eval(Container.DataItem, "Name") %> (<%# DataBinder.Eval(Container.DataItem, "Ticker") %>)
+          </ItemTemplate>
+             
+          <SeparatorTemplate>, </SeparatorTemplate>
+       </asp:Repeater>
+    </form>
+ </body>
+ </html>
+ 

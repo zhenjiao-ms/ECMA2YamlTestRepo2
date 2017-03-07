@@ -1,19 +1,26 @@
-    TreeView checkTreeView;
-    private void InitializeCheckTreeView()
-    {
-        checkTreeView = new TreeView();
-        
-        // Show check boxes for the TreeView. This
-        // will cause the StateImageList to be used.
-        checkTreeView.CheckBoxes = true;
+private void AddToolBar()
+{
+   // Add a toolbar and set some of its properties.
+   toolBar1 = new ToolBar();
+   toolBar1.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
+   toolBar1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+   toolBar1.Buttons.Add(this.toolBarButton1);
+   toolBar1.ButtonSize = new System.Drawing.Size(24, 24);
+   toolBar1.Divider = true;
+   toolBar1.DropDownArrows = true;
+   toolBar1.ImageList = this.imageList1;
+   toolBar1.ShowToolTips = true;
+   toolBar1.Size = new System.Drawing.Size(292, 25);
+   toolBar1.TabIndex = 0;
+   toolBar1.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
+   toolBar1.Wrappable = false;
+   
+   // Add handlers for the ButtonClick and ButtonDropDown events.
+   toolBar1.ButtonDropDown += 
+     new ToolBarButtonClickEventHandler(toolBar1_ButtonDropDown);
+   toolBar1.ButtonClick += 
+     new ToolBarButtonClickEventHandler(toolBar1_ButtonClicked);
 
-        // Create the StateImageList and add two images.
-        checkTreeView.StateImageList = new ImageList();
-        checkTreeView.StateImageList.Images.Add(SystemIcons.Question);
-        checkTreeView.StateImageList.Images.Add(SystemIcons.Exclamation);
-        
-        // Add some nodes to the TreeView and the TreeView to the form.
-        checkTreeView.Nodes.Add("Node1");
-        checkTreeView.Nodes.Add("Node2");
-        this.Controls.Add(checkTreeView);
-    }
+   // Add the toolbar to the form.
+   this.Controls.Add(toolBar1);
+}

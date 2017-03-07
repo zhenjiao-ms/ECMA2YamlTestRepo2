@@ -1,10 +1,7 @@
-   private:
-      void button1_Click( Object^ sender, System::EventArgs^ /*e*/ )
+   public:
+      void EnableDoubleBuffering()
       {
-         /* If the CTRL key is pressed when the
-            * control is clicked, hide the control. */
-         if ( Control::ModifierKeys == Keys::Control )
-         {
-            (dynamic_cast<Control^>(sender))->Hide();
-         }
+         // Set the value of the double-buffering style bits to true.
+         this->SetStyle( static_cast<ControlStyles>(ControlStyles::DoubleBuffer | ControlStyles::UserPaint | ControlStyles::AllPaintingInWmPaint), true );
+         this->UpdateStyles();
       }

@@ -1,24 +1,33 @@
-// This button is a simple extension of the button class that overrides
-// the ProcessMnemonic method.  If the mnemonic is correctly entered,  
-// the message box will appear and the click event will be raised.  
-// This method makes sure the control is selectable and the 
-// mnemonic is correct before displaying the message box
-// and triggering the click event.
-public ref class MyMnemonicButton: public Button
+using namespace System::Windows::Forms;
+public ref class Form1: public Form
 {
-protected:
-   bool ProcessMnemonic( char inputChar )
-   {
-      if ( CanSelect && IsMnemonic( inputChar, this->Text ) )
-      {
-         MessageBox::Show( "You've raised the click event "
-         "using the mnemonic." );
-         this->PerformClick();
-         return true;
-      }
+private:
+   TabControl^ tabControl1;
+   TabPage^ tabPage1;
 
-      return false;
+public:
+   void MyTabs()
+   {
+      
+      // Invokes the TabControl() constructor to create the tabControl1 object.
+      this->tabControl1 = gcnew System::Windows::Forms::TabControl;
+      
+      // Creates a new tab page and adds it to the tab control
+      this->tabPage1 = gcnew TabPage;
+      this->tabControl1->TabPages->Add( tabPage1 );
+      
+      // Adds the tab control to the form
+      this->Controls->Add( tabControl1 );
+   }
+
+   Form1()
+   {
+      MyTabs();
    }
 
 };
 
+int main()
+{
+   Application::Run( gcnew Form1 );
+}

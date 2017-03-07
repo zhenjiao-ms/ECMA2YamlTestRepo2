@@ -1,102 +1,214 @@
+Imports System
+Imports System.Xml
 Imports System.Security.Cryptography
-Imports System.Text
-Imports System.IO
+Imports System.Security.Cryptography.Xml
 
-Module DESSample
 
-    Sub Main()
+Module Program
+
+    Sub Main(ByVal args() As String)
+
+        ' Create an XmlDocument object.
+        Dim xmlDoc As New XmlDocument()
+
+        ' Load an XML file into the XmlDocument object.
         Try
-            ' Create a new DES object to generate a key
-            ' and initialization vector (IV).
-            Dim DESalg As DES = DES.Create
-
-            ' Create a string to encrypt.
-            Dim sData As String = "Here is some data to encrypt."
-            Dim FileName As String = "CText.txt"
-
-            ' Encrypt text to a file using the file name, key, and IV.
-            EncryptTextToFile(sData, FileName, DESalg.Key, DESalg.IV)
-
-            ' Decrypt the text from a file using the file name, key, and IV.
-            Dim Final As String = DecryptTextFromFile(FileName, DESalg.Key, DESalg.IV)
-
-            ' Display the decrypted string to the console.
-            Console.WriteLine(Final)
+            xmlDoc.PreserveWhitespace = True
+            xmlDoc.Load("test.xml")
         Catch e As Exception
             Console.WriteLine(e.Message)
         End Try
-    End Sub
+
+        ' Create a new RSA key.  This key will encrypt a symmetric key,
+        ' which will then be imbedded in the XML document.  
+        Dim rsaKey As New RSACryptoServiceProvider
 
 
-    Sub EncryptTextToFile(ByVal Data As String, ByVal FileName As String, ByVal Key() As Byte, ByVal IV() As Byte)
         Try
-            ' Create or open the specified file.
-            Dim fStream As FileStream = File.Open(FileName, FileMode.OpenOrCreate)
+            ' Encrypt the "creditcard" element.
+            Encrypt(xmlDoc, "creditcard", "EncryptedElement1", rsaKey, "rsaKey")
 
-            ' Create a new DES object.
-            Dim DESalg As DES = DES.Create
+            ' Encrypt the "creditcard2" element.
+            Encrypt(xmlDoc, "creditcard2", "EncryptedElement2", rsaKey, "rsaKey")
 
-            ' Create a CryptoStream using the FileStream 
-            ' and the passed key and initialization vector (IV).
-            Dim cStream As New CryptoStream(fStream, _
-                                           DESalg.CreateEncryptor(Key, IV), _
-                                           CryptoStreamMode.Write)
+            ' Display the encrypted XML to the console.
+            Console.WriteLine("Encrypted XML:")
+            Console.WriteLine()
+            Console.WriteLine(xmlDoc.OuterXml)
 
-            ' Create a StreamWriter using the CryptoStream.
-            Dim sWriter As New StreamWriter(cStream)
+            ' Decrypt the "creditcard" element.
+            Decrypt(xmlDoc, rsaKey, "rsaKey")
 
-            ' Write the data to the stream 
-            ' to encrypt it.
-            sWriter.WriteLine(Data)
-
-            ' Close the streams and
-            ' close the file.
-            sWriter.Close()
-            cStream.Close()
-            fStream.Close()
-        Catch e As CryptographicException
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
-        Catch e As UnauthorizedAccessException
-            Console.WriteLine("A file error occurred: {0}", e.Message)
+            ' Display the encrypted XML to the console.
+            Console.WriteLine()
+            Console.WriteLine("Decrypted XML:")
+            Console.WriteLine()
+            Console.WriteLine(xmlDoc.OuterXml)
+        Catch e As Exception
+            Console.WriteLine(e.Message)
+        Finally
+            ' Clear the RSA key.
+            rsaKey.Clear()
         End Try
-    End Sub
+
+        Console.ReadLine()
+
+    End Sub 'Main
+
+End Module 'Program
 
 
-    Function DecryptTextFromFile(ByVal FileName As String, ByVal Key() As Byte, ByVal IV() As Byte) As String
-        Try
-            ' Create or open the specified file. 
-            Dim fStream As FileStream = File.Open(FileName, FileMode.OpenOrCreate)
+Module XMLEncryptionSubs
 
-            ' Create a new DES object.
-            Dim DESalg As DES = DES.Create
+    Sub Encrypt(ByVal Doc As XmlDocument, ByVal ElementToEncryptName As String, ByVal EncryptionElementID As String, ByVal Alg As RSA, ByVal KeyName As String)
+        ' Check the arguments.  
+        If Doc Is Nothing Then
+            Throw New ArgumentNullException("Doc")
+        End If
+        If ElementToEncryptName Is Nothing Then
+            Throw New ArgumentNullException("ElementToEncrypt")
+        End If
+        If EncryptionElementID Is Nothing Then
+            Throw New ArgumentNullException("EncryptionElementID")
+        End If
+        If Alg Is Nothing Then
+            Throw New ArgumentNullException("Alg")
+        End If
+        If KeyName Is Nothing Then
+            Throw New ArgumentNullException("KeyName")
+        End If
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Find the specified element in the XmlDocument
+        ' object and create a new XmlElemnt object.
+        ''''''''''''''''''''''''''''''''''''''''''''''''
 
-            ' Create a CryptoStream using the FileStream 
-            ' and the passed key and initialization vector (IV).
-            Dim cStream As New CryptoStream(fStream, _
-                                            DESalg.CreateDecryptor(Key, IV), _
-                                            CryptoStreamMode.Read)
+        Dim elementToEncrypt As XmlElement = Doc.GetElementsByTagName(ElementToEncryptName)(0)
 
-            ' Create a StreamReader using the CryptoStream.
-            Dim sReader As New StreamReader(cStream)
 
-            ' Read the data from the stream 
-            ' to decrypt it.
-            Dim val As String = sReader.ReadLine()
+        ' Throw an XmlException if the element was not found.
+        If elementToEncrypt Is Nothing Then
+            Throw New XmlException("The specified element was not found")
+        End If
 
-            ' Close the streams and
-            ' close the file.
-            sReader.Close()
-            cStream.Close()
-            fStream.Close()
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Create a new instance of the EncryptedXml class 
+        ' and use it to encrypt the XmlElement with the 
+        ' a new random symmetric key.
+        ''''''''''''''''''''''''''''''''''''''''''''''''
 
-            ' Return the string. 
-            Return val
-        Catch e As CryptographicException
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
-            Return Nothing
-        Catch e As UnauthorizedAccessException
-            Console.WriteLine("A file error occurred: {0}", e.Message)
-            Return Nothing
-        End Try
-    End Function
-End Module
+        ' Create a 256 bit Rijndael key.
+        Dim sessionKey As New RijndaelManaged()
+        sessionKey.KeySize = 256
+
+        Dim eXml As New EncryptedXml()
+
+        Dim encryptedElement As Byte() = eXml.EncryptData(elementToEncrypt, sessionKey, False)
+
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Construct an EncryptedData object and populate
+        ' it with the desired encryption information.
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+
+        Dim edElement As New EncryptedData()
+        edElement.Type = EncryptedXml.XmlEncElementUrl
+        edElement.Id = EncryptionElementID
+
+        ' Create an EncryptionMethod element so that the 
+        ' receiver knows which algorithm to use for decryption.
+        edElement.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncAES256Url)
+
+        ' Encrypt the session key and add it to an EncryptedKey element.
+        Dim ek As New EncryptedKey()
+
+        Dim encryptedKey As Byte() = EncryptedXml.EncryptKey(sessionKey.Key, Alg, False)
+
+        ek.CipherData = New CipherData(encryptedKey)
+
+        ek.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncRSA15Url)
+
+        ' Set the KeyInfo element to specify the
+        ' name of the RSA key.
+        ' Create a new KeyInfo element.
+        edElement.KeyInfo = New KeyInfo()
+
+        ' Create a new KeyInfoName element.
+        Dim kin As New KeyInfoName()
+
+        ' Specify a name for the key.
+        kin.Value = KeyName
+
+        ' Add the KeyInfoName element to the 
+        ' EncryptedKey object.
+        ek.KeyInfo.AddClause(kin)
+
+        ' Create a new DataReference element
+        ' for the KeyInfo element.  This optional
+        ' element specifies which EncryptedData 
+        ' uses this key.  An XML document can have
+        ' multiple EncryptedData elements that use
+        ' different keys.
+        Dim dRef As New DataReference()
+
+        ' Specify the EncryptedData URI. 
+        dRef.Uri = "#" + EncryptionElementID
+
+        ' Add the DataReference to the EncryptedKey.
+        ek.AddReference(dRef)
+
+        ' Add the encrypted key to the 
+        ' EncryptedData object.
+        edElement.KeyInfo.AddClause(New KeyInfoEncryptedKey(ek))
+
+        ' Add the encrypted element data to the 
+        ' EncryptedData object.
+        edElement.CipherData.CipherValue = encryptedElement
+
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Replace the element from the original XmlDocument
+        ' object with the EncryptedData element.
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, False)
+
+    End Sub 'Encrypt
+
+
+    Sub Decrypt(ByVal Doc As XmlDocument, ByVal Alg As RSA, ByVal KeyName As String)
+        ' Check the arguments.  
+        If Doc Is Nothing Then
+            Throw New ArgumentNullException("Doc")
+        End If
+        If Alg Is Nothing Then
+            Throw New ArgumentNullException("Alg")
+        End If
+        If KeyName Is Nothing Then
+            Throw New ArgumentNullException("KeyName")
+        End If
+        ' Create a new EncryptedXml object.
+        Dim exml As New EncryptedXml(Doc)
+
+        ' Add a key-name mapping.
+        ' This method can only decrypt documents
+        ' that present the specified key name.
+        exml.AddKeyNameMapping(KeyName, Alg)
+
+        ' Decrypt the element.
+        exml.DecryptDocument()
+
+    End Sub 'Decrypt 
+End Module 'XMLEncryptionSubs
+
+
+' To run this sample, place the following XML
+' in a file called test.xml.  Put test.xml
+' in the same directory as your compiled program.
+' 
+'  <root>
+'     <creditcard xmlns="myNamespace" Id="tag1">
+'         <number>19834209</number>
+'         <expiry>02/02/2002</expiry>
+'     </creditcard>
+'     <creditcard2 xmlns="myNamespace" Id="tag2">
+'         <number>19834208</number>
+'         <expiry>02/02/2002</expiry>
+'     </creditcard2>
+' </root>

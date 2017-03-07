@@ -1,5 +1,5 @@
         AttributeCollection attributes = 
-            TypeDescriptor.GetAttributes(MyProperty);
-         if(attributes[typeof(BrowsableAttribute)].Equals(BrowsableAttribute.Yes)) {
-            // Insert code here.
-         }
+           TypeDescriptor.GetAttributes(MyProperty);
+        if(attributes[typeof(RecommendedAsConfigurableAttribute)].Equals(RecommendedAsConfigurableAttribute.Yes)) {
+           // Insert code here.
+        }

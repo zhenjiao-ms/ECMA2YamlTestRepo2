@@ -1,9 +1,12 @@
-public:
-   static void MyMethod( Type^ type, Type^ baseType )
+protected:
+   // Create an index for an array.
+   int index;
+
+   void Method()
    {
+      // Perform some action that sets the index.
+      // Test that the index value is valid.
       #if defined(TRACE)
-      Trace::Assert( type != nullptr, "Type parameter is null", "Can't get object for null type" );
+      Trace::Assert( index > -1 );
       #endif
-      
-      // Perform some processing.
    }

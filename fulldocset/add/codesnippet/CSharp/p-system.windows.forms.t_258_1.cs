@@ -1,16 +1,13 @@
-private void myButton_Click(object sender, System.EventArgs e)
-{
-   // Set the tree view's PathSeparator property.
-   myTreeView.PathSeparator = ".";
+private void ToolStripRenderer1_RenderSeparator(Object sender, ToolStripSeparatorRenderEventArgs e) {
 
-   // Get the count of the child tree nodes contained in the SelectedNode.
-   int myNodeCount = myTreeView.SelectedNode.GetNodeCount(true);
-   decimal myChildPercentage = ((decimal)myNodeCount/
-     (decimal)myTreeView.GetNodeCount(true)) * 100;
-
-   // Display the tree node path and the number of child nodes it and the tree view have.
-   MessageBox.Show("The '" + myTreeView.SelectedNode.FullPath + "' node has " 
-     + myNodeCount.ToString() + " child nodes.\nThat is " 
-     + string.Format("{0:###.##}", myChildPercentage) 
-     + "% of the total tree nodes in the tree view control.");
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "Vertical", e.Vertical );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Item", e.Item );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "ToolStrip", e.ToolStrip );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "RenderSeparator Event" );
 }

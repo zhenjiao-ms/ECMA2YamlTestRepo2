@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Specifies settings for NetHttpsBinding.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -26,7 +26,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.NetHttpsBinding" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -43,8 +43,8 @@
         <Parameter Name="securityMode" Type="System.ServiceModel.BasicHttpsSecurityMode" />
       </Parameters>
       <Docs>
-        <param name="securityMode">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="securityMode">The type of security used with the binding.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.NetHttpsBinding" /> class with the type of security used.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -61,8 +61,8 @@
         <Parameter Name="configurationName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="configurationName">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="configurationName">The binding configuration name.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.NetHttpsBinding" /> class with a specified configuration name.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -80,9 +80,10 @@
         <Parameter Name="reliableSessionEnabled" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="securityMode">To be added.</param>
-        <param name="reliableSessionEnabled">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="securityMode">The type of security used with the binding.</param>
+        <param name="reliableSessionEnabled">
+          <see langword="True" /> if reliable sessions are enabled; otherwise, <see langword="false" />.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.NetHttpsBinding" /> class with the type of security used and with the value that indicates whether reliable sessions are explicitly enabled.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -105,10 +106,10 @@
         <Parameter Name="parameters" Type="System.ServiceModel.Channels.BindingParameterCollection" />
       </Parameters>
       <Docs>
-        <typeparam name="TChannel">To be added.</typeparam>
-        <param name="parameters">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <typeparam name="TChannel">The type of channel the channel factory produces.</typeparam>
+        <param name="parameters">Specifies the requirements for the channel factory built.</param>
+        <summary>Builds the channel factory stack on the client that creates a specified type of channel and that satisfies the features specified by a collection of binding parameters.</summary>
+        <returns>An <see cref="System.ServiceModel.Channels.IChannelFactory%601" /> of type TChannel that satisfies the features specified by the collection.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -126,8 +127,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Creates a collection with the binding elements for the binding.</summary>
+        <returns>A collection with the binding elements for the binding.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -149,8 +150,8 @@
         <ReturnType>System.ServiceModel.NetHttpMessageEncoding</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the message encoding associated with the binding.</summary>
+        <value>The message encoding associated with the binding.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -167,8 +168,8 @@
         <ReturnType>System.ServiceModel.OptionalReliableSession</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the reliable session that is established between channel endpoints.</summary>
+        <value>The reliable session that is established between channel endpoints.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -185,8 +186,8 @@
         <ReturnType>System.ServiceModel.BasicHttpsSecurity</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the type of security used with services configured with this binding.</summary>
+        <value>The type of security used with services configured with this binding.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -209,8 +210,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Indicates whether the reliable session property has changed from its default value and should be serialized.</summary>
+        <returns>
+          <see langword="True" /> if the reliable session property value should be serialized; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -233,8 +235,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Indicates whether the security property has changed from its default value and should be serialized.</summary>
+        <returns>
+          <see langword="True" /> if the security property value should be serialized; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -251,8 +254,8 @@
         <ReturnType>System.ServiceModel.Channels.WebSocketTransportSettings</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the web socket settings.</summary>
+        <value>The web socket settings.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

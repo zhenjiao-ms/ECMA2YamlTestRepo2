@@ -1,98 +1,87 @@
-// Example of the decimal.CompareTo and decimal.Equals instance 
-// methods.
 using System;
 
-class DecCompToEqualsObjDemo
+public class Example
 {
-    // Get the exception type name; remove the namespace prefix.
-    public static string GetExceptionType( Exception ex )
-    {
-        string exceptionType = ex.GetType( ).ToString( );
-        return exceptionType.Substring( 
-            exceptionType.LastIndexOf( '.' ) + 1 );
-    }
+   static decimal value = 112m;
+   
+   public static void Main()
+   {
+      byte byte1= 112;
+      Console.WriteLine("value = byte1: {0,17}", value.Equals(byte1));
+      TestObjectForEquality(byte1);
 
-    // Compare the decimal to the object parameters, 
-    // and display the object parameters with the results.
-    public static void CompDecimalToObject( decimal Left, 
-        object Right, string RightText )
-    {
+      short short1 = 112;
+      Console.WriteLine("value = short1: {0,17}", value.Equals(short1));
+      TestObjectForEquality(short1);
 
-        Console.WriteLine( "{0,-46}{1}", "object: "+RightText, 
-            Right );
-        Console.WriteLine( "{0,-46}{1}", "Left.Equals( object )", 
-            Left.Equals( Right ) );
-        Console.Write( "{0,-46}", "Left.CompareTo( object )" );
+      int int1 = 112;
+      Console.WriteLine("value = int1: {0,19}", value.Equals(int1));
+      TestObjectForEquality(int1);
 
-        try
-        {
-            // Catch the exception if CompareTo( ) throws one.
-            Console.WriteLine( "{0}\n", Left.CompareTo( Right ) );
-        }
-        catch( Exception ex )
-        {
-            Console.WriteLine( "{0}\n", GetExceptionType( ex ) );
-        }
-    }
+      long long1 = 112;
+      Console.WriteLine("value = long1: {0,18}", value.Equals(long1));
+      TestObjectForEquality(long1);
+      
+      sbyte sbyte1 = 112;
+      Console.WriteLine("value = sbyte1: {0,17}", value.Equals(sbyte1));
+      TestObjectForEquality(sbyte1);
 
-    public static void Main( )
-    {
-        Console.WriteLine( 
-            "This example of the decimal.Equals( object ) and \n" +
-            "decimal.CompareTo( object ) methods generates the \n" +
-            "following output. It creates several different " +
-            "decimal \nvalues and compares them with the following " +
-            "reference value.\n" );
+      ushort ushort1 = 112;
+      Console.WriteLine("value = ushort1: {0,17}", value.Equals(ushort1));
+      TestObjectForEquality(ushort1);
 
-        // Create a reference decimal value.
-        decimal Left = new decimal( 987.654 );
+      uint uint1 = 112;
+      Console.WriteLine("value = uint1: {0,19}", value.Equals(uint1));
+      TestObjectForEquality(uint1);
 
-        Console.WriteLine( "{0,-46}{1}\n", 
-            "Left: decimal( 987.654 )", Left );
+      ulong ulong1 = 112;
+      Console.WriteLine("value = ulong1: {0,18}", value.Equals(ulong1));
+      TestObjectForEquality(ulong1);
 
-        // Create objects to compare with the reference.
-        CompDecimalToObject( Left, new decimal( 9.8765400E+2 ), 
-            "decimal( 9.8765400E+2 )" );
-        CompDecimalToObject( Left, 987.6541M, "987.6541D" );
-        CompDecimalToObject( Left, 987.6539M, "987.6539D" );
-        CompDecimalToObject( Left, 
-            new decimal( 987654000, 0, 0, false, 6 ), 
-            "decimal( 987654000, 0, 0, false, 6 )" );
-        CompDecimalToObject( Left, 9.8765400E+2, 
-            "Double 9.8765400E+2" );
-        CompDecimalToObject( Left, "987.654", "String \"987.654\"" );
-    }
+      float sng1 = 112;
+      Console.WriteLine("value = sng1: {0,21}", value.Equals(sng1));
+      TestObjectForEquality(sng1);
+
+      double dbl1 = 112;
+      Console.WriteLine("value = dbl1: {0,21}", value.Equals(dbl1));
+      TestObjectForEquality(dbl1);
+   }
+
+   private static void TestObjectForEquality(Object obj)
+   {
+      Console.WriteLine("{0} ({1}) = {2} ({3}): {4}\n",
+                        value, value.GetType().Name,
+                        obj, obj.GetType().Name,
+                        value.Equals(obj));
+   }
 }
-
-/*
-This example of the decimal.Equals( object ) and
-decimal.CompareTo( object ) methods generates the
-following output. It creates several different decimal
-values and compares them with the following reference value.
-
-Left: decimal( 987.654 )                      987.654
-
-object: decimal( 9.8765400E+2 )               987.654
-Left.Equals( object )                         True
-Left.CompareTo( object )                      0
-
-object: 987.6541D                             987.6541
-Left.Equals( object )                         False
-Left.CompareTo( object )                      -1
-
-object: 987.6539D                             987.6539
-Left.Equals( object )                         False
-Left.CompareTo( object )                      1
-
-object: decimal( 987654000, 0, 0, false, 6 )  987.654000
-Left.Equals( object )                         True
-Left.CompareTo( object )                      0
-
-object: Double 9.8765400E+2                   987.654
-Left.Equals( object )                         False
-Left.CompareTo( object )                      ArgumentException
-
-object: String "987.654"                      987.654
-Left.Equals( object )                         False
-Left.CompareTo( object )                      ArgumentException
-*/ 
+// The example displays the following output:
+//       value = byte1:             True
+//       112 (Double) = 112 (Byte): False
+//
+//       value = short1:             True
+//       112 (Double) = 112 (Int16): False
+//
+//       value = int1:               True
+//       112 (Double) = 112 (Int32): False
+//
+//       value = long1:              True
+//       112 (Double) = 112 (Int64): False
+//
+//       value = sbyte1:             True
+//       112 (Double) = 112 (SByte): False
+//
+//       value = ushort1:             True
+//       112 (Double) = 112 (UInt16): False
+//
+//       value = uint1:               True
+//       112 (Double) = 112 (UInt32): False
+//
+//       value = ulong1:              True
+//       112 (Double) = 112 (UInt64): False
+//
+//       value = dec1:                 False
+//       112 (Double) = 112 (Decimal): False
+//
+//       value = sng1:                True
+//       112 (Double) = 112 (Single): False

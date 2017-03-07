@@ -1,6 +1,9 @@
-Private Sub DataGrid1_CurrentCellChange(ByVal sender As Object, ByVal e As EventArgs)
+Private Sub GetRect()
     Dim rect As Rectangle
-    rect = DataGrid1.GetCurrentCellBounds()
-    Console.WriteLine(rect.ToString)
+    Dim dgc As DataGridCell
+    dgc.ColumnNumber = 0
+    dgc.RowNumber = 0
+    rect = DataGrid1.GetCellBounds(dgc)
+    Console.WriteLine(rect.ToString())
  End Sub
  

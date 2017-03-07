@@ -1,27 +1,23 @@
-    class MyDesigner : ControlDesigner
-    {
-        private Adorner myAdorner;
-
-        protected override void Dispose(bool disposing)
+        // Determine whether the cell should be painted
+        // with the custom selection background.
+        if ((e.State & DataGridViewElementStates.Selected) ==
+                    DataGridViewElementStates.Selected)
         {
-            if (disposing && myAdorner != null)
+            // Calculate the bounds of the row.
+            Rectangle rowBounds = new Rectangle(
+                this.dataGridView1.RowHeadersWidth, e.RowBounds.Top,
+                this.dataGridView1.Columns.GetColumnsWidth(
+                    DataGridViewElementStates.Visible) -
+                this.dataGridView1.HorizontalScrollingOffset + 1,
+                e.RowBounds.Height);
+
+            // Paint the custom selection background.
+            using (Brush backbrush =
+                new System.Drawing.Drawing2D.LinearGradientBrush(rowBounds,
+                    this.dataGridView1.DefaultCellStyle.SelectionBackColor,
+                    e.InheritedRowStyle.ForeColor,
+                    System.Drawing.Drawing2D.LinearGradientMode.Horizontal))
             {
-                BehaviorService b = BehaviorService;
-                if (b != null)
-                {
-                    b.Adorners.Remove(myAdorner);
-                }
+                e.Graphics.FillRectangle(backbrush, rowBounds);
             }
         }
-
-        public override void Initialize(IComponent component)
-        {
-            base.Initialize(component);
-
-            // Add the custom set of glyphs using the BehaviorService. 
-            // Glyphs live on adornders.
-            myAdorner = new Adorner();
-            BehaviorService.Adorners.Add(myAdorner);
-            myAdorner.Glyphs.Add(new MyGlyph(BehaviorService, Control));
-        }
-    }

@@ -1,16 +1,27 @@
-    'Declare a textbox called TextBox1.
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-
-    'Initialize TextBox1.
-    Private Sub InitializeTextBox()
-        Me.TextBox1 = New TextBox
-        Me.TextBox1.Location = New System.Drawing.Point(32, 24)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(136, 20)
-        Me.TextBox1.TabIndex = 1
-        Me.TextBox1.Text = "Type and hit enter here..."
-
-        'Keep the selection highlighted, even after textbox loses focus.
-        TextBox1.HideSelection = False
-        Me.Controls.Add(TextBox1)
-    End Sub
+      ' This is an example of some common ToolStrip property settings.
+      ' 
+      toolStrip1.AllowDrop = False
+      toolStrip1.AllowItemReorder = True
+      toolStrip1.AllowMerge = False
+      toolStrip1.Anchor = CType(System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right, System.Windows.Forms.AnchorStyles)
+      toolStrip1.AutoSize = False
+      toolStrip1.CanOverflow = False
+      toolStrip1.Cursor = Cursors.Cross
+      toolStrip1.Dock = System.Windows.Forms.DockStyle.None
+      toolStrip1.DefaultDropDownDirection = ToolStripDropDownDirection.BelowRight
+      toolStrip1.GripMargin = New System.Windows.Forms.Padding(3)
+      toolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+      toolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {toolStripButton1})
+      toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
+      toolStrip1.Location = New System.Drawing.Point(0, 0)
+      toolStrip1.Margin = New System.Windows.Forms.Padding(1)
+      toolStrip1.Name = "toolStrip1"
+      toolStrip1.Padding = New System.Windows.Forms.Padding(0, 0, 2, 0)
+      toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+      toolStrip1.ShowItemToolTips = False
+      toolStrip1.Size = New System.Drawing.Size(109, 273)
+      toolStrip1.Stretch = True
+      toolStrip1.TabIndex = 0
+      toolStrip1.TabStop = True
+      toolStrip1.Text = "toolStrip1"
+      toolStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90

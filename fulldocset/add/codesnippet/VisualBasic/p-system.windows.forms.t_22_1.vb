@@ -1,44 +1,43 @@
-   ' This method defines the painting behavior of the control.
-   ' It performs the following operations:
-   '
-   ' Computes the layout of the item's image and text.
-   ' Draws the item's background image.
-   ' Draws the item's image.
-   ' Draws the item's text.
-   '
-   ' Drawing operations are implemented in the 
-   ' RolloverItemRenderer class.
-   Protected Overrides Sub OnPaint(e As PaintEventArgs)
-      MyBase.OnPaint(e)
-      
-      If (Me.Owner IsNot Nothing) Then
-         ' Find the dimensions of the image and the text 
-         ' areas of the item. 
-         Me.ComputeImageAndTextLayout()
-         
-         ' Draw the background. This includes drawing a highlighted 
-         ' border when the mouse is in the client area.
-         Dim ea As New ToolStripItemRenderEventArgs(e.Graphics, Me)
-         Me.Owner.Renderer.DrawItemBackground(ea)
-         
-         ' Draw the item's image. 
-         Dim irea As New ToolStripItemImageRenderEventArgs(e.Graphics, Me, imageRect)
-         Me.Owner.Renderer.DrawItemImage(irea)
-         
-         ' If the item is on a drop-down, give its
-         ' text a different highlighted color.
-            Dim highlightColor As Color = CType(IIf(Me.IsOnDropDown, Color.Salmon, SystemColors.ControlLightLight), Color)
-         
-         ' Draw the text, and highlight it if the 
-         ' the rollover state is true.
-            Dim rea As New ToolStripItemTextRenderEventArgs( _
-               e.Graphics, _
-               Me, _
-               MyBase.Text, _
-               textRect, _
-               CType(IIf(Me.rolloverValue, highlightColor, MyBase.ForeColor), Color), _
-               MyBase.Font, _
-               MyBase.TextAlign)
-         Me.Owner.Renderer.DrawItemText(rea)
-      End If
-    End Sub
+ Private Sub Menu_Copy(sender As System.Object, e As System.EventArgs)
+     ' Ensure that text is selected in the text box.   
+     If textBox1.SelectionLength > 0 Then
+         ' Copy the selected text to the Clipboard.
+         textBox1.Copy()
+     End If
+ End Sub
+     
+ Private Sub Menu_Cut(sender As System.Object, e As System.EventArgs)
+     ' Ensure that text is currently selected in the text box.   
+     If textBox1.SelectedText <> "" Then
+         ' Cut the selected text in the control and paste it into the Clipboard.
+         textBox1.Cut()
+     End If
+ End Sub
+     
+ Private Sub Menu_Paste(sender As System.Object, e As System.EventArgs)
+     ' Determine if there is any text in the Clipboard to paste into the text box.
+     If Clipboard.GetDataObject().GetDataPresent(DataFormats.Text) = True Then
+         ' Determine if any text is selected in the text box.
+         If textBox1.SelectionLength > 0 Then
+             ' Ask user if they want to paste over currently selected text.
+             If MessageBox.Show("Do you want to paste over current selection?", _
+                "Cut Example", MessageBoxButtons.YesNo) = DialogResult.No Then
+                 ' Move selection to the point after the current selection and paste.
+                 textBox1.SelectionStart = textBox1.SelectionStart + _
+                    textBox1.SelectionLength
+             End If
+         End If 
+         ' Paste current text in Clipboard into text box.
+         textBox1.Paste()
+     End If
+ End Sub
+    
+ Private Sub Menu_Undo(sender As System.Object, e As System.EventArgs)
+     ' Determine if last operation can be undone in text box.   
+     If textBox1.CanUndo = True Then
+         ' Undo the last operation.
+         textBox1.Undo()
+         ' Clear the undo buffer to prevent last action from being redone.
+         textBox1.ClearUndo()
+     End If
+ End Sub

@@ -1,9 +1,6 @@
-   void CustomizeCellsInThirdColumn()
+private:
+   void SetGridLineColor(
+      DataGrid^ myGrid, System::Drawing::Color newcolor )
    {
-      int thirdColumn = 2;
-      DataGridViewColumn^ column = dataGridView->Columns[ thirdColumn ];
-      DataGridViewCell^ cell = gcnew DataGridViewTextBoxCell;
-      cell->Style->BackColor = Color::Wheat;
-      column->CellTemplate = cell;
+      myGrid->GridLineColor = newcolor;
    }
-

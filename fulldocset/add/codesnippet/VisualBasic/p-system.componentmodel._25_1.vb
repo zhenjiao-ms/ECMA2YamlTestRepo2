@@ -1,7 +1,15 @@
-    Private Sub GetCount()
-        ' Creates a new collection and assigns it the events for button1.
-        Dim events As EventDescriptorCollection = TypeDescriptor.GetEvents(button1)
-        
-        ' Prints the number of events on button1 in a text box.
-        textBox1.Text = events.Count.ToString()
-    End Sub 'GetCount
+Imports System
+Imports System.Web.DynamicData
+Imports System.ComponentModel.DataAnnotations
+
+
+<MetadataType(GetType(ProductMetadata))> _
+Partial Public Class Product
+
+End Class
+
+Partial Public Class ProductMetadata
+    <UIHint("UnitsInStock")> _
+    <Range(100, 10000)> _
+    Public UnitsInStock As Object
+End Class

@@ -1,2 +1,1 @@
-            NetMsmqBinding binding = new NetMsmqBinding();
-            binding.QueueTransferProtocol = QueueTransferProtocol.Native;
+	    NetTcpSecurity security = binding.Security;

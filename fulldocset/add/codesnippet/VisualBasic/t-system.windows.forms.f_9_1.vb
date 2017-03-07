@@ -1,14 +1,25 @@
-Public Sub InitMyForm()
-   ' Adds a label to the form.
-   Dim label1 As New Label()
-   label1.Location = New System.Drawing.Point(54, 128)
-   label1.Name = "label1"
-   label1.Size = New System.Drawing.Size(220, 80)
-   label1.Text = "Start position information"
-   Me.Controls.Add(label1)
-   
-   ' Moves the start position to the center of the screen.
-   StartPosition = FormStartPosition.CenterScreen
-   ' Displays the position information.
-   label1.Text = "The start position is " + StartPosition
-End Sub 'InitMyForm
+    Private Sub button1_Click(ByVal sender As Object, ByVal e As System.EventArgs)
+        Dim myStream As Stream = Nothing
+        Dim openFileDialog1 As New OpenFileDialog()
+
+        openFileDialog1.InitialDirectory = "c:\"
+        openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        openFileDialog1.FilterIndex = 2
+        openFileDialog1.RestoreDirectory = True
+
+        If openFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            Try
+                myStream = openFileDialog1.OpenFile()
+                If (myStream IsNot Nothing) Then
+                    ' Insert code to read the stream here.
+                End If
+            Catch Ex As Exception
+                MessageBox.Show("Cannot read file from disk. Original error: " & Ex.Message)
+            Finally
+                ' Check this again, since we need to make sure we didn't throw an exception on open.
+                If (myStream IsNot Nothing) Then
+                    myStream.Close()
+                End If
+            End Try
+        End If
+    End Sub

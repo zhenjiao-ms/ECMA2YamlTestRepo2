@@ -1,46 +1,58 @@
-using System;
-using System.Configuration.Install;
-using System.Diagnostics;
-using System.ComponentModel;
+        static void CreateEventSourceSample1(string messageFile)
+        {
+            string myLogName;
+            string sourceName = "SampleApplicationSource";
 
-[RunInstaller(true)]
-public class SampleEventLogInstaller : Installer
-{
-    private EventLogInstaller myEventLogInstaller;
+            // Create the event source if it does not exist.
+            if(!EventLog.SourceExists(sourceName))
+            {
+                // Create a new event source for the custom event log
+                // named "myNewLog."  
 
-    public SampleEventLogInstaller() 
-    {
-        // Create an instance of an EventLogInstaller.
-        myEventLogInstaller = new EventLogInstaller();
+                myLogName = "myNewLog";
+                EventSourceCreationData mySourceData = new EventSourceCreationData(sourceName, myLogName);
 
-        // Set the source name of the event log.
-        myEventLogInstaller.Source = "ApplicationEventSource";
+                // Set the message resource file that the event source references.
+                // All event resource identifiers correspond to text in this file.
+                if (!System.IO.File.Exists(messageFile))
+                {
+                    Console.WriteLine("Input message resource file does not exist - {0}", 
+                        messageFile);
+                    messageFile = "";
+                }
+                else 
+                {
+                    // Set the specified file as the resource
+                    // file for message text, category text, and 
+                    // message parameter strings.  
 
-        // Set the event log into which the source writes entries.
-        //myEventLogInstaller.Log = "MyCustomLog";
-        myEventLogInstaller.Log = "myNewLog";
+                    mySourceData.MessageResourceFile = messageFile;
+                    mySourceData.CategoryResourceFile = messageFile;
+                    mySourceData.CategoryCount = CategoryCount;
+                    mySourceData.ParameterResourceFile = messageFile;
 
-        // Set the resource file for the event log.
-        // The message strings are defined in EventLogMsgs.mc; the message 
-        // identifiers used in the application must match those defined in the
-        // corresponding message resource file. The messages must be built
-        // into a Win32 resource library and copied to the target path on the
-        // system.  
+                    Console.WriteLine("Event source message resource file set to {0}", 
+                        messageFile);
+                }
+
+                Console.WriteLine("Registering new source for event log.");
+                EventLog.CreateEventSource(mySourceData);
+            }
+            else
+            {
+                // Get the event log corresponding to the existing source.
+                myLogName = EventLog.LogNameFromSourceName(sourceName,".");
+            }
+
+            // Register the localized name of the event log.
+            // For example, the actual name of the event log is "myNewLog," but
+            // the event log name displayed in the Event Viewer might be
+            // "Sample Application Log" or some other application-specific
+            // text.
+            EventLog myEventLog = new EventLog(myLogName, ".", sourceName);
             
-        myEventLogInstaller.CategoryResourceFile =
-             Environment.SystemDirectory + "\\eventlogmsgs.dll";
-        myEventLogInstaller.CategoryCount = 3;
-        myEventLogInstaller.MessageResourceFile =
-             Environment.SystemDirectory + "\\eventlogmsgs.dll";
-        myEventLogInstaller.ParameterResourceFile =
-             Environment.SystemDirectory + "\\eventlogmsgs.dll";
-
-        // Add myEventLogInstaller to the installer collection.
-        Installers.Add(myEventLogInstaller); 
-    }
-
-    public static void Main()
-    {
-        Console.WriteLine("Usage: InstallUtil.exe [<install>.exe | <install>.dll]");
-    }
-}
+            if (messageFile.Length > 0)
+            {
+                myEventLog.RegisterDisplayName(messageFile, DisplayNameMsgId);
+            }
+        }

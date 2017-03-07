@@ -1,29 +1,17 @@
-   // This method initializes CheckedListBox1 with a list of all 
-   // the controls on the form. It sets the selection mode
-   // to single selection and allows selection with a single click.
-   // It adds itself to the list before adding itself to the form.
-internal:
-   System::Windows::Forms::CheckedListBox^ CheckedListBox1;
+         System::Windows::Forms::ColorDialog^ MyDialog = gcnew ColorDialog;
 
-private:
-   void InitializeCheckedListBox()
-   {
-      this->CheckedListBox1 = gcnew CheckedListBox;
-      this->CheckedListBox1->Location = System::Drawing::Point( 40, 90 );
-      this->CheckedListBox1->CheckOnClick = true;
-      this->CheckedListBox1->Name = "CheckedListBox1";
-      this->CheckedListBox1->Size = System::Drawing::Size( 120, 94 );
-      this->CheckedListBox1->TabIndex = 1;
-      this->CheckedListBox1->SelectionMode = SelectionMode::One;
-      this->CheckedListBox1->ThreeDCheckBoxes = true;
-      System::Collections::IEnumerator^ myEnum = this->Controls->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         Control^ aControl = safe_cast<Control^>(myEnum->Current);
-         this->CheckedListBox1->Items->Add( aControl, false );
-      }
+         // Allows the user to select or edit a custom color.
+         MyDialog->AllowFullOpen = true;
 
-      this->CheckedListBox1->DisplayMember = "Name";
-      this->CheckedListBox1->Items->Add( CheckedListBox1 );
-      this->Controls->Add( this->CheckedListBox1 );
-   }
+         // Assigns an array of custom colors to the CustomColors property
+         array<int>^temp0 = {6916092,15195440,16107657,1836924,3758726,12566463,7526079,7405793,6945974,241502,2296476,5130294,3102017,7324121,14993507,11730944};
+         MyDialog->CustomColors = temp0;
+
+         // Allows the user to get help. (The default is false.)
+         MyDialog->ShowHelp = true;
+
+         // Sets the initial color select to the current text color,
+         // so that if the user cancels out, the original color is restored.
+         MyDialog->Color = this->BackColor;
+         MyDialog->ShowDialog();
+         this->BackColor = MyDialog->Color;

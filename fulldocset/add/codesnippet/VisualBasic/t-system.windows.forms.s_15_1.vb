@@ -1,17 +1,33 @@
-Private Sub SplitContainer1_SplitterMoving(sender as Object, e as SplitterCancelEventArgs) _ 
-     Handles SplitContainer1.SplitterMoving
+    Private Sub toggleColumnStylesBtn_Click( _
+    ByVal sender As System.Object, _
+    ByVal e As System.EventArgs) _
+    Handles toggleColumnStylesBtn.Click
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "MouseCursorX", e.MouseCursorX)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "MouseCursorY", e.MouseCursorY)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "SplitX", e.SplitX)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "SplitY", e.SplitY)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Cancel", e.Cancel)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"SplitterMoving Event")
+        Dim styles As TableLayoutColumnStyleCollection = _
+        Me.TableLayoutPanel1.ColumnStyles
 
-End Sub
+        For Each style As ColumnStyle In styles
+
+            If style.SizeType = SizeType.Absolute Then
+
+                style.SizeType = SizeType.AutoSize
+
+            ElseIf style.SizeType = SizeType.AutoSize Then
+
+                style.SizeType = SizeType.Percent
+
+                ' Set the column width to be a percentage
+                ' of the TableLayoutPanel control's width.
+                style.Width = 33
+
+            Else
+
+                ' Set the column width to 50 pixels.
+                style.SizeType = SizeType.Absolute
+                style.Width = 50
+
+            End If
+
+        Next
+
+    End Sub

@@ -1,35 +1,40 @@
-Imports System.Drawing
-Imports System.Windows.Forms
-
-Public Class Form1
-    Inherits Form
-    Private tabControl1 As TabControl
-    Private tabPage1 As TabPage
-
-    Private Sub MyTabs()
-        Me.tabControl1 = New TabControl()
-        Me.tabPage1 = New TabPage()
-
-        Me.tabControl1.Controls.Add(tabPage1)
-        Me.tabControl1.Location = New Point(25, 25)
-        Me.tabControl1.Size = New Size(250, 250)
-        Me.tabControl1.ShowToolTips = True
-
-        Me.tabPage1.Text = "myTabPage1"
-
-        ' Creates a string showing the Text value for tabPage1. 
-        ' Then assigns the string to ToolTipText.  
-        Me.tabPage1.ToolTipText = tabPage1.ToString()
-
-        Me.ClientSize = New Size(300, 300)
-        Me.Controls.Add(tabControl1)
+Public Class Class1
+    Private Shared WithEvents myTimer As New System.Windows.Forms.Timer()
+    Private Shared alarmCounter As Integer = 1
+    Private Shared exitFlag As Boolean = False    
+    
+    ' This is the method to run when the timer is raised.
+    Private Shared Sub TimerEventProcessor(myObject As Object, _
+                                           ByVal myEventArgs As EventArgs) _
+                                       Handles myTimer.Tick
+        myTimer.Stop()
+        
+        ' Displays a message box asking whether to continue running the timer.
+        If MessageBox.Show("Continue running?", "Count is: " & alarmCounter, _
+                            MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            ' Restarts the timer and increments the counter.
+            alarmCounter += 1
+            myTimer.Enabled = True
+        Else
+            ' Stops the timer.
+            exitFlag = True
+        End If
     End Sub
+    
+    Public Shared Sub Main()
+        ' Adds the event and the event handler for the method that will
+        ' process the timer event to the timer.
+        
+        ' Sets the timer interval to 5 seconds.
+        myTimer.Interval = 5000
+        myTimer.Start()
+        
+        ' Runs the timer, and raises the event.
+        While exitFlag = False
+            ' Processes all the events in the queue.
+            Application.DoEvents()
+        End While
 
-    Public Sub New()
-        MyTabs()
-    End Sub
+    End Sub    
 
-    Shared Sub Main()
-        Application.Run(New Form1())
-    End Sub
 End Class

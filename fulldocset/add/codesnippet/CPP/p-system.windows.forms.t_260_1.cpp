@@ -1,19 +1,43 @@
+public ref class CustomizedTreeView: public TreeView
+{
 public:
-   void CreateMyMultilineTextBox()
+   CustomizedTreeView()
    {
-      // Create an instance of a TextBox control.
-      TextBox^ textBox1 = gcnew TextBox;
-      
-      // Set the Multiline property to true.
-      textBox1->Multiline = true;
-      // Add vertical scroll bars to the TextBox control.
-      textBox1->ScrollBars = ScrollBars::Vertical;
-      // Allow the RETURN key to be entered in the TextBox control.
-      textBox1->AcceptsReturn = true;
-      // Allow the TAB key to be entered in the TextBox control.
-      textBox1->AcceptsTab = true;
-      // Set WordWrap to true to allow text to wrap to the next line.
-      textBox1->WordWrap = true;
-      // Set the default text of the control.
-      textBox1->Text = "Welcome!";
+
+      // Customize the TreeView control by setting various properties.
+      BackColor = System::Drawing::Color::CadetBlue;
+      FullRowSelect = true;
+      HotTracking = true;
+      Indent = 34;
+      ShowPlusMinus = false;
+
+      // The ShowLines property must be false for the FullRowSelect
+      // property to work.
+      ShowLines = false;
    }
+
+protected:
+   virtual void OnAfterSelect( TreeViewEventArgs^ e ) override
+   {
+      // Confirm that the user initiated the selection.
+      // This prevents the first node from expanding when it is
+      // automatically selected during the initialization of
+      // the TreeView control.
+      if ( e->Action != TreeViewAction::Unknown )
+      {
+         if ( e->Node->IsExpanded )
+         {
+            e->Node->Collapse();
+         }
+         else
+         {
+            e->Node->Expand();
+         }
+      }
+
+      
+      // Remove the selection. This allows the same node to be
+      // clicked twice in succession to toggle the expansion state.
+      SelectedNode = nullptr;
+   }
+};

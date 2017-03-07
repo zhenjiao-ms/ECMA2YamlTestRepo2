@@ -1,91 +1,62 @@
-    private ToolStripMenuItem wholeTable = new ToolStripMenuItem();
-    private ToolStripMenuItem lookUp = new ToolStripMenuItem();
-    private ContextMenuStrip strip;
-    private string cellErrorText;
-
-    private void dataGridView1_CellContextMenuStripNeeded(object sender,
-        DataGridViewCellContextMenuStripNeededEventArgs e)
-    {
-        cellErrorText = String.Empty;
-
-        if (strip == null)
+        private void ListDragTarget_DragOver(object sender, System.Windows.Forms.DragEventArgs e) 
         {
-            strip = new ContextMenuStrip();
-            lookUp.Text = "Look Up";
-            wholeTable.Text = "See Whole Table";
-            strip.Items.Add(lookUp);
-            strip.Items.Add(wholeTable);
-        }
-        e.ContextMenuStrip = strip;
-    }
 
-    private void wholeTable_Click(object sender, EventArgs e)
-    {
-        dataGridView1.DataSource = Populate("Select * from employees", true);
-    }
+            // Determine whether string data exists in the drop data. If not, then
+            // the drop effect reflects that the drop cannot occur.
+            if (!e.Data.GetDataPresent(typeof(System.String))) {
 
-    private DataGridViewCellEventArgs theCellImHoveringOver;
-
-    private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-    {
-        theCellImHoveringOver = e;
-    }
-
-    private DataGridViewCellEventArgs cellErrorLocation;
-
-    private void lookUp_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            dataGridView1.DataSource = Populate("Select * from employees where " +
-                dataGridView1.Columns[theCellImHoveringOver.ColumnIndex].Name + " = '" +
-                dataGridView1.Rows[theCellImHoveringOver.RowIndex].
-                Cells[theCellImHoveringOver.ColumnIndex].Value + "'",
-                true);
-        }
-        catch (SqlException)
-        {
-            cellErrorText = "Can't look this cell up";
-            cellErrorLocation = theCellImHoveringOver;
-        }
-    }
-
-    private void dataGridView1_CellErrorTextNeeded(object sender,
-        DataGridViewCellErrorTextNeededEventArgs e)
-    {
-        if (cellErrorLocation != null)
-        {
-            if (e.ColumnIndex == cellErrorLocation.ColumnIndex &&
-                e.RowIndex == cellErrorLocation.RowIndex)
-            {
-                e.ErrorText = cellErrorText;
+                e.Effect = DragDropEffects.None;
+                DropLocationLabel.Text = "None - no string data.";
+                return;
             }
+
+            // Set the effect based upon the KeyState.
+            if ((e.KeyState & (8+32)) == (8+32) && 
+                (e.AllowedEffect & DragDropEffects.Link) == DragDropEffects.Link) {
+                // KeyState 8 + 32 = CTL + ALT
+
+                // Link drag-and-drop effect.
+                e.Effect = DragDropEffects.Link;
+
+            } else if ((e.KeyState & 32) == 32 && 
+                (e.AllowedEffect & DragDropEffects.Link) == DragDropEffects.Link) {
+
+                // ALT KeyState for link.
+                e.Effect = DragDropEffects.Link;
+
+            } else if ((e.KeyState & 4) == 4 && 
+                (e.AllowedEffect & DragDropEffects.Move) == DragDropEffects.Move) {
+
+                // SHIFT KeyState for move.
+                e.Effect = DragDropEffects.Move;
+
+            } else if ((e.KeyState & 8) == 8 && 
+                (e.AllowedEffect & DragDropEffects.Copy) == DragDropEffects.Copy) {
+
+                // CTL KeyState for copy.
+                e.Effect = DragDropEffects.Copy;
+
+            } else if ((e.AllowedEffect & DragDropEffects.Move) == DragDropEffects.Move)  {
+
+                // By default, the drop action should be move, if allowed.
+                e.Effect = DragDropEffects.Move;
+
+            } else
+                e.Effect = DragDropEffects.None;
+                
+            // Get the index of the item the mouse is below. 
+
+            // The mouse locations are relative to the screen, so they must be 
+            // converted to client coordinates.
+
+            indexOfItemUnderMouseToDrop = 
+                ListDragTarget.IndexFromPoint(ListDragTarget.PointToClient(new Point(e.X, e.Y)));
+
+            // Updates the label text.
+            if (indexOfItemUnderMouseToDrop != ListBox.NoMatches){
+
+                DropLocationLabel.Text = "Drops before item #" + (indexOfItemUnderMouseToDrop + 1);
+            } else
+                DropLocationLabel.Text = "Drops at the end.";
+
         }
-    }
-
-    private DataTable Populate(string query, bool resetUnsharedCounter)
-    {
-        if (resetUnsharedCounter)
-        {
-            ResetCounter();
-        }
-
-        // Alter the data source as necessary
-        SqlDataAdapter adapter = new SqlDataAdapter(query,
-            new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;" +
-            "Initial Catalog=Northwind;Data Source=localhost"));
-
-        DataTable table = new DataTable();
-        table.Locale = System.Globalization.CultureInfo.InvariantCulture;
-        adapter.Fill(table);
-        return table;
-    }
-
-    private Label count = new Label();
-    private int unsharedRowCounter;
-
-    private void ResetCounter()
-    {
-        unsharedRowCounter = 0;
-        count.Text = unsharedRowCounter.ToString();
-    }

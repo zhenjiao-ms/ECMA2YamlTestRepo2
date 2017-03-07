@@ -1,26 +1,20 @@
-   void WhatIsChecked_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
-   {
-      
-      // Display in a message box all the items that are checked.
-      // First show the index and check state of all selected items.
-      IEnumerator^ myEnum1 = checkedListBox1->CheckedIndices->GetEnumerator();
-      while ( myEnum1->MoveNext() )
+      // Add a GroupBox to a form and set some of its common properties.
+   private:
+      void AddMyGroupBox()
       {
-         Int32 indexChecked =  *safe_cast<Int32^>(myEnum1->Current);
-         
-         // The indexChecked variable contains the index of the item.
-         MessageBox::Show( String::Concat( "Index#: ", indexChecked, ", is checked. Checked state is: ", checkedListBox1->GetItemCheckState( indexChecked ), "." ) );
-      }
+         // Create a GroupBox and add a TextBox to it.
+         GroupBox^ groupBox1 = gcnew GroupBox;
+         TextBox^ textBox1 = gcnew TextBox;
+         textBox1->Location = Point(15,15);
+         groupBox1->Controls->Add( textBox1 );
 
-      
-      // Next show the Object* title and check state for each item selected.
-      IEnumerator^ myEnum2 = checkedListBox1->CheckedItems->GetEnumerator();
-      while ( myEnum2->MoveNext() )
-      {
-         Object^ itemChecked = safe_cast<Object^>(myEnum2->Current);
-         
-         // Use the IndexOf method to get the index of an item.
-         MessageBox::Show( String::Concat( "Item with title: \"", itemChecked, "\", is checked. Checked state is: ", checkedListBox1->GetItemCheckState( checkedListBox1->Items->IndexOf( itemChecked ) ), "." ) );
-      }
-   }
+         // Set the Text and Dock properties of the GroupBox.
+         groupBox1->Text = "MyGroupBox";
+         groupBox1->Dock = DockStyle::Top;
 
+         // Disable the GroupBox (which disables all its child controls)
+         groupBox1->Enabled = false;
+
+         // Add the Groupbox to the form.
+         this->Controls->Add( groupBox1 );
+      }

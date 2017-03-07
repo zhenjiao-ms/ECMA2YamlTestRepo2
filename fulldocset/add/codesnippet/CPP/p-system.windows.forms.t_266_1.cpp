@@ -1,19 +1,18 @@
-public:
-   void CreateMyMultilineTextBox()
+   // This example assumes that the Form_Load event handling method
+   // is connected to the Load event of the form.
+   void Form1_Load( Object^ sender, System::EventArgs^ e )
    {
-      // Create an instance of a TextBox control.
-      TextBox^ textBox1 = gcnew TextBox;
+      // Create the ToolTip and associate with the Form container.
+      ToolTip^ toolTip1 = gcnew ToolTip;
       
-      // Set the Multiline property to true.
-      textBox1->Multiline = true;
-      // Add vertical scroll bars to the TextBox control.
-      textBox1->ScrollBars = ScrollBars::Vertical;
-      // Allow the RETURN key in the TextBox control.
-      textBox1->AcceptsReturn = true;
-      // Allow the TAB key to be entered in the TextBox control.
-      textBox1->AcceptsTab = true;
-      // Set WordWrap to true to allow text to wrap to the next line.
-      textBox1->WordWrap = true;
-      // Set the default text of the control.
-      textBox1->Text = "Welcome!" + Environment::NewLine + "Second Line";
+      // Set up the delays for the ToolTip.
+      toolTip1->AutoPopDelay = 5000;
+      toolTip1->InitialDelay = 1000;
+      toolTip1->ReshowDelay = 500;
+      // Force the ToolTip text to be displayed whether or not the form is active.
+      toolTip1->ShowAlways = true;
+      
+      // Set up the ToolTip text for the Button and Checkbox.
+      toolTip1->SetToolTip( this->button1, "My button1" );
+      toolTip1->SetToolTip( this->checkBox1, "My checkBox1" );
    }

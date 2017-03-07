@@ -1,10 +1,10 @@
     ' Class-level declaration.
     ' Create a TraceSwitch to use in the entire application. 
-    Private Shared mySwitch As New TraceSwitch("General", "Entire Application")
-       
+    Private Shared mySwitch As New TraceSwitch("General", "Entire Application")    
+    
     Public Shared Sub MyMethod()
-        ' Write the message if the TraceSwitch level is set to Info or higher.
-        If mySwitch.TraceInfo Then
+        ' Write the message if the TraceSwitch level is set to Error or higher.
+        If mySwitch.TraceError Then
             Console.WriteLine("My error message.")
         End If 
         ' Write the message if the TraceSwitch level is set to Verbose.

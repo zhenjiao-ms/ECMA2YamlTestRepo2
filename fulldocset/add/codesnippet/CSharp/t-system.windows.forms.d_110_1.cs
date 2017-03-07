@@ -1,277 +1,409 @@
 using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Security.Permissions;
 
-// This example shows how to create your own column style that
-// hosts a control, in this case, a DateTimePicker.
-public class DataGridTimePickerColumn : DataGridColumnStyle
+public class Employees : Form
 {
-    private CustomDateTimePicker customDateTimePicker1 = 
-        new CustomDateTimePicker();
+    private DataGridView DataGridView1 = new DataGridView();
+    private DataGridView DataGridView2 = new DataGridView();
 
-    // The isEditing field tracks whether or not the user is
-    // editing data with the hosted control.
-    private bool isEditing;
-
-    public DataGridTimePickerColumn() : base()
-    {
-        customDateTimePicker1.Visible = false;
-    }
-
-    protected override void Abort(int rowNum)
-    {
-        isEditing = false;
-        customDateTimePicker1.ValueChanged -=
-            new EventHandler(TimePickerValueChanged);
-        Invalidate();
-    }
-
-    protected override bool Commit
-        (CurrencyManager dataSource, int rowNum)
-    {
-        customDateTimePicker1.Bounds = Rectangle.Empty;
-
-        customDateTimePicker1.ValueChanged -=
-            new EventHandler(TimePickerValueChanged);
-
-        if (!isEditing)
-            return true;
-
-        isEditing = false;
-
-        try
-        {
-            DateTime value = customDateTimePicker1.Value;
-            SetColumnValueAtRow(dataSource, rowNum, value);
-        }
-        catch (Exception)
-        {
-            Abort(rowNum);
-            return false;
-        }
-
-        Invalidate();
-        return true;
-    }
-
-    protected override void Edit(
-        CurrencyManager source,
-        int rowNum,
-        Rectangle bounds,
-        bool readOnly,
-        string displayText,
-        bool cellIsVisible)
-    {
-        DateTime value = (DateTime)
-            GetColumnValueAtRow(source, rowNum);
-        if (cellIsVisible)
-        {
-            customDateTimePicker1.Bounds = new Rectangle
-                (bounds.X + 2, bounds.Y + 2,
-                bounds.Width - 4, bounds.Height - 4);
-            customDateTimePicker1.Value = value;
-            customDateTimePicker1.Visible = true;
-            customDateTimePicker1.ValueChanged +=
-                new EventHandler(TimePickerValueChanged);
-        }
-        else
-        {
-            customDateTimePicker1.Value = value;
-            customDateTimePicker1.Visible = false;
-        }
-
-        if (customDateTimePicker1.Visible)
-            DataGridTableStyle.DataGrid.Invalidate(bounds);
-
-        customDateTimePicker1.Focus();
-    }
-
-    protected override Size GetPreferredSize(
-        Graphics g,
-        object value)
-    {
-        return new Size(100, customDateTimePicker1.PreferredHeight + 4);
-    }
-
-    protected override int GetMinimumHeight()
-    {
-        return customDateTimePicker1.PreferredHeight + 4;
-    }
-
-    protected override int GetPreferredHeight(Graphics g,
-        object value)
-    {
-        return customDateTimePicker1.PreferredHeight + 4;
-    }
-
-    protected override void Paint(Graphics g,
-        Rectangle bounds,
-        CurrencyManager source,
-        int rowNum)
-    {
-        Paint(g, bounds, source, rowNum, false);
-    }
-
-    protected override void Paint(
-        Graphics g,
-        Rectangle bounds,
-        CurrencyManager source,
-        int rowNum,
-        bool alignToRight)
-    {
-        Paint(
-            g, bounds,
-            source,
-            rowNum,
-            Brushes.Red,
-            Brushes.Blue,
-            alignToRight);
-    }
-
-    protected override void Paint(
-        Graphics g,
-        Rectangle bounds,
-        CurrencyManager source,
-        int rowNum,
-        Brush backBrush,
-        Brush foreBrush,
-        bool alignToRight)
-    {
-        DateTime date = (DateTime)
-            GetColumnValueAtRow(source, rowNum);
-        Rectangle rect = bounds;
-        g.FillRectangle(backBrush, rect);
-        rect.Offset(0, 2);
-        rect.Height -= 2;
-        g.DrawString(date.ToString("d"),
-            this.DataGridTableStyle.DataGrid.Font,
-            foreBrush, rect);
-    }
-
-    protected override void SetDataGridInColumn(DataGrid value)
-    {
-        base.SetDataGridInColumn(value);
-        if (customDateTimePicker1.Parent != null)
-        {
-            customDateTimePicker1.Parent.Controls.Remove
-                (customDateTimePicker1);
-        }
-        if (value != null)
-        {
-            value.Controls.Add(customDateTimePicker1);
-        }
-    }
-
-    private void TimePickerValueChanged(object sender, EventArgs e)
-    {
-        // Remove the handler to prevent it from being called twice in a row.
-        customDateTimePicker1.ValueChanged -=
-            new EventHandler(TimePickerValueChanged);
-        this.isEditing = true;
-        base.ColumnStartedEditing(customDateTimePicker1);
-    }
-}
-
-public class CustomDateTimePicker : DateTimePicker
-{
-    [SecurityPermissionAttribute(
-    SecurityAction.LinkDemand, Flags=SecurityPermissionFlag.UnmanagedCode)]
-    protected override bool ProcessKeyMessage(ref Message m)
-    {
-        // Keep all the keys for the DateTimePicker.
-        return ProcessKeyEventArgs(ref m);
-    }
-}
-
-public class MyForm : Form
-{
-    private DataTable namesDataTable;
-    private DataGrid grid = new DataGrid();
-    public MyForm() : base()
-    {
-        InitForm();
-
-        namesDataTable = new DataTable("NamesTable");
-        namesDataTable.Columns.Add(new DataColumn("Name"));
-        DataColumn dateColumn = new DataColumn
-            ("Date", typeof(DateTime));
-        dateColumn.DefaultValue = DateTime.Today;
-        namesDataTable.Columns.Add(dateColumn);
-        DataSet namesDataSet = new DataSet();
-        namesDataSet.Tables.Add(namesDataTable);
-        grid.DataSource = namesDataSet;
-        grid.DataMember = "NamesTable";
-        AddGridStyle();
-        AddData();
-    }
-
-    private void AddGridStyle()
-    {
-        DataGridTableStyle myGridStyle = new DataGridTableStyle();
-        myGridStyle.MappingName = "NamesTable";
-
-        DataGridTextBoxColumn nameColumnStyle =
-            new DataGridTextBoxColumn();
-        nameColumnStyle.MappingName = "Name";
-        nameColumnStyle.HeaderText = "Name";
-        myGridStyle.GridColumnStyles.Add(nameColumnStyle);
-
-        DataGridTimePickerColumn timePickerColumnStyle =
-            new DataGridTimePickerColumn();
-        timePickerColumnStyle.MappingName = "Date";
-        timePickerColumnStyle.HeaderText = "Date";
-        timePickerColumnStyle.Width = 100;
-        myGridStyle.GridColumnStyles.Add(timePickerColumnStyle);
-
-        grid.TableStyles.Add(myGridStyle);
-    }
-
-    private void AddData()
-    {
-
-        DataRow dRow = namesDataTable.NewRow();
-        dRow["Name"] = "Name 1";
-        dRow["Date"] = new DateTime(2001, 12, 01);
-        namesDataTable.Rows.Add(dRow);
-
-        dRow = namesDataTable.NewRow();
-        dRow["Name"] = "Name 2";
-        dRow["Date"] = new DateTime(2001, 12, 04);
-        namesDataTable.Rows.Add(dRow);
-
-        dRow = namesDataTable.NewRow();
-        dRow["Name"] = "Name 3";
-        dRow["Date"] = new DateTime(2001, 12, 29);
-        namesDataTable.Rows.Add(dRow);
-
-        dRow = namesDataTable.NewRow();
-        dRow["Name"] = "Name 4";
-        dRow["Date"] = new DateTime(2001, 12, 13);
-        namesDataTable.Rows.Add(dRow);
-
-        dRow = namesDataTable.NewRow();
-        dRow["Name"] = "Name 5";
-        dRow["Date"] = new DateTime(2001, 12, 21);
-        namesDataTable.Rows.Add(dRow);
-
-        namesDataTable.AcceptChanges();
-    }
-
-    private void InitForm()
-    {
-        this.Size = new Size(500, 500);
-        grid.Size = new Size(350, 250);
-        grid.TabStop = true;
-        grid.TabIndex = 1;
-        this.StartPosition = FormStartPosition.CenterScreen;
-        this.Controls.Add(grid);
-    }
- 
     [STAThread]
     public static void Main()
     {
-        Application.Run(new MyForm());
+        try
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Employees());
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message + e.StackTrace);
+        }
     }
+
+    public Employees()
+    {
+        this.Load += new EventHandler(Form1_Load);
+    }
+
+    private void Form1_Load(System.Object sender, System.EventArgs e)
+    {
+        try
+        {
+            SetUpForm();
+            SetUpDataGridView1();
+            SetUpDataGridView2();
+        }
+        catch (SqlException)
+        {
+            MessageBox.Show("The connection string <"
+                + connectionString
+                + "> failed to connect.  Modify it "
+                + "to connect to a Northwind database accessible to "
+                + "your system.",
+                "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            Application.Exit();
+        }
+    }
+
+    private void SetUpForm()
+    {
+        Size = new Size(800, 600);
+        FlowLayoutPanel flowLayout = new FlowLayoutPanel();
+        flowLayout.FlowDirection = FlowDirection.TopDown;
+        flowLayout.Dock = DockStyle.Fill;
+        Controls.Add(flowLayout);
+        Text = "DataGridView columns demo";
+
+        flowLayout.Controls.Add(DataGridView1);
+        flowLayout.Controls.Add(DataGridView2);
+    }
+
+    private void SetUpDataGridView2()
+    {
+        DataGridView2.Dock = DockStyle.Bottom;
+        DataGridView2.TopLeftHeaderCell.Value = "Sales Details";
+        DataGridView2.RowHeadersWidthSizeMode = 
+            DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+    }
+
+    private void SetUpDataGridView1()
+    {
+        DataGridView1.DataError += new 
+            DataGridViewDataErrorEventHandler(DataGridView1_DataError);
+        DataGridView1.CellContentClick += new 
+            DataGridViewCellEventHandler(DataGridView1_CellContentClick);
+        DataGridView1.CellValuePushed += new 
+            DataGridViewCellValueEventHandler(DataGridView1_CellValuePushed);
+        DataGridView1.CellValueNeeded += new 
+            DataGridViewCellValueEventHandler(DataGridView1_CellValueNeeded);
+
+        // Virtual mode is turned on so that the
+        // unbound DataGridViewCheckBoxColumn will
+        // keep its state when the bound columns are
+        // sorted.       
+        DataGridView1.VirtualMode = true;
+        DataGridView1.AutoSize = true;
+        DataGridView1.DataSource = Populate("SELECT * FROM Employees");
+        DataGridView1.TopLeftHeaderCell.Value = "Employees";
+        DataGridView1.RowHeadersWidthSizeMode = 
+            DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+        DataGridView1.ColumnHeadersHeightSizeMode = 
+            DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        DataGridView1.AutoSizeColumnsMode = 
+            DataGridViewAutoSizeColumnsMode.AllCells;
+        DataGridView1.AllowUserToAddRows = false;
+        DataGridView1.AllowUserToDeleteRows = false;
+
+        // The below autogenerated column is removed so 
+        // a DataGridViewComboboxColumn could be used instead.
+        DataGridView1.Columns.Remove(ColumnName.TitleOfCourtesy.ToString());
+        DataGridView1.Columns.Remove(ColumnName.ReportsTo.ToString());
+
+        AddLinkColumn();
+        AddComboBoxColumns();
+        AddButtonColumn();
+        AddOutOfOfficeColumn();
+    }
+
+    private void AddComboBoxColumns()
+    {
+        DataGridViewComboBoxColumn comboboxColumn;
+        comboboxColumn = CreateComboBoxColumn();
+        SetAlternateChoicesUsingDataSource(comboboxColumn);
+        comboboxColumn.HeaderText = "TitleOfCourtesy (via DataSource property)";
+        DataGridView1.Columns.Insert(0, comboboxColumn);
+
+        comboboxColumn = CreateComboBoxColumn();
+        SetAlternateChoicesUsingItems(comboboxColumn);
+        comboboxColumn.HeaderText = "TitleOfCourtesy (via Items property)";
+        // Tack this example column onto the end.
+        DataGridView1.Columns.Add(comboboxColumn);
+    }
+
+    private void AddLinkColumn()
+    {
+        DataGridViewLinkColumn links = new DataGridViewLinkColumn();
+
+        links.UseColumnTextForLinkValue = true;
+        links.HeaderText = ColumnName.ReportsTo.ToString();
+        links.DataPropertyName = ColumnName.ReportsTo.ToString();
+        links.ActiveLinkColor = Color.White;
+        links.LinkBehavior = LinkBehavior.SystemDefault;
+        links.LinkColor = Color.Blue;
+        links.TrackVisitedState = true;
+        links.VisitedLinkColor = Color.YellowGreen;
+
+        DataGridView1.Columns.Add(links);
+    }
+
+    private static void SetAlternateChoicesUsingItems(
+        DataGridViewComboBoxColumn comboboxColumn)
+    {
+        comboboxColumn.Items.AddRange("Mr.", "Ms.", "Mrs.", "Dr.");
+    }
+
+    private DataGridViewComboBoxColumn CreateComboBoxColumn()
+    {
+        DataGridViewComboBoxColumn column =
+            new DataGridViewComboBoxColumn();
+        {
+            column.DataPropertyName = ColumnName.TitleOfCourtesy.ToString();
+            column.HeaderText = ColumnName.TitleOfCourtesy.ToString();
+            column.DropDownWidth = 160;
+            column.Width = 90;
+            column.MaxDropDownItems = 3;
+            column.FlatStyle = FlatStyle.Flat;
+        }
+        return column;
+    }
+
+    private void SetAlternateChoicesUsingDataSource(DataGridViewComboBoxColumn comboboxColumn)
+    {
+        {
+            comboboxColumn.DataSource = RetrieveAlternativeTitles();
+            comboboxColumn.ValueMember = ColumnName.TitleOfCourtesy.ToString();
+            comboboxColumn.DisplayMember = comboboxColumn.ValueMember;
+        }
+    }
+
+    private DataTable RetrieveAlternativeTitles()
+    {
+        return Populate("SELECT distinct TitleOfCourtesy FROM Employees");
+    }
+
+    string connectionString =
+        "Integrated Security=SSPI;Persist Security Info=False;" +
+        "Initial Catalog=Northwind;Data Source=localhost";
+
+    private DataTable Populate(string sqlCommand)
+    {
+        SqlConnection northwindConnection = new SqlConnection(connectionString);
+        northwindConnection.Open();
+
+        SqlCommand command = new SqlCommand(sqlCommand, northwindConnection);
+        SqlDataAdapter adapter = new SqlDataAdapter();
+        adapter.SelectCommand = command;
+
+        DataTable table = new DataTable();
+        table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+        adapter.Fill(table);
+
+        return table;
+    }
+
+    // Using an enum provides some abstraction between column index
+    // and column name along with compile time checking, and gives
+    // a handy place to store the column names.
+    enum ColumnName
+    {
+        EmployeeId,
+        LastName,
+        FirstName,
+        Title,
+        TitleOfCourtesy,
+        BirthDate,
+        HireDate,
+        Address,
+        City,
+        Region,
+        PostalCode,
+        Country,
+        HomePhone,
+        Extension,
+        Photo,
+        Notes,
+        ReportsTo,
+        PhotoPath,
+        OutOfOffice
+    };
+
+    private void AddButtonColumn()
+    {
+        DataGridViewButtonColumn buttons = new DataGridViewButtonColumn();
+        {
+            buttons.HeaderText = "Sales";
+            buttons.Text = "Sales";
+            buttons.UseColumnTextForButtonValue = true;
+            buttons.AutoSizeMode =
+                DataGridViewAutoSizeColumnMode.AllCells;
+            buttons.FlatStyle = FlatStyle.Standard;
+            buttons.CellTemplate.Style.BackColor = Color.Honeydew;
+            buttons.DisplayIndex = 0;
+        }
+
+        DataGridView1.Columns.Add(buttons);
+
+    }
+
+    private void AddOutOfOfficeColumn()
+    {
+        DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn();
+        {
+            column.HeaderText = ColumnName.OutOfOffice.ToString();
+            column.Name = ColumnName.OutOfOffice.ToString();
+            column.AutoSizeMode = 
+                DataGridViewAutoSizeColumnMode.DisplayedCells;
+            column.FlatStyle = FlatStyle.Standard;
+            column.ThreeState = true;
+            column.CellTemplate = new DataGridViewCheckBoxCell();
+            column.CellTemplate.Style.BackColor = Color.Beige;
+        }
+
+        DataGridView1.Columns.Insert(0, column);
+    }
+
+    private void PopulateSales(DataGridViewCellEventArgs buttonClick)
+    {
+
+        string employeeId = DataGridView1.Rows[buttonClick.RowIndex]
+            .Cells[ColumnName.EmployeeId.ToString()].Value.ToString();
+        DataGridView2.DataSource = Populate("SELECT * FROM Orders WHERE EmployeeId = " + employeeId);
+    }
+
+    #region "SQL Error handling"
+    private void DataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs anError)
+    {
+
+        MessageBox.Show("Error happened " + anError.Context.ToString());
+
+        if (anError.Context == DataGridViewDataErrorContexts.Commit)
+        {
+            MessageBox.Show("Commit error");
+        }
+        if (anError.Context == DataGridViewDataErrorContexts.CurrentCellChange)
+        {
+            MessageBox.Show("Cell change");
+        }
+        if (anError.Context == DataGridViewDataErrorContexts.Parsing)
+        {
+            MessageBox.Show("parsing error");
+        }
+        if (anError.Context == DataGridViewDataErrorContexts.LeaveControl)
+        {
+            MessageBox.Show("leave control error");
+        }
+
+        if ((anError.Exception) is ConstraintException)
+        {
+            DataGridView view = (DataGridView)sender;
+            view.Rows[anError.RowIndex].ErrorText = "an error";
+            view.Rows[anError.RowIndex].Cells[anError.ColumnIndex].ErrorText = "an error";
+
+            anError.ThrowException = false;
+        }
+    }
+    #endregion
+
+    private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+
+        if (IsANonHeaderLinkCell(e))
+        {
+            MoveToLinked(e);
+        }
+        else if (IsANonHeaderButtonCell(e))
+        {
+            PopulateSales(e);
+        }
+    }
+
+    private void MoveToLinked(DataGridViewCellEventArgs e)
+    {
+        string employeeId;
+        object value = DataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+        if (value is DBNull) { return; }
+
+        employeeId = value.ToString();
+        DataGridViewCell boss = RetrieveSuperiorsLastNameCell(employeeId);
+        if (boss != null)
+        {
+            DataGridView1.CurrentCell = boss;
+        }
+    }
+
+    private bool IsANonHeaderLinkCell(DataGridViewCellEventArgs cellEvent)
+    {
+        if (DataGridView1.Columns[cellEvent.ColumnIndex] is
+            DataGridViewLinkColumn &&
+            cellEvent.RowIndex != -1)
+        { return true; }
+        else { return false; }
+    }
+
+    private bool IsANonHeaderButtonCell(DataGridViewCellEventArgs cellEvent)
+    {
+        if (DataGridView1.Columns[cellEvent.ColumnIndex] is
+            DataGridViewButtonColumn &&
+            cellEvent.RowIndex != -1)
+        { return true; }
+        else { return (false); }
+    }
+
+    private DataGridViewCell RetrieveSuperiorsLastNameCell(string employeeId)
+    {
+
+        foreach (DataGridViewRow row in DataGridView1.Rows)
+        {
+            if (row.IsNewRow) { return null; }
+            if (row.Cells[ColumnName.EmployeeId.ToString()].Value.ToString().Equals(employeeId))
+            {
+                return row.Cells[ColumnName.LastName.ToString()];
+            }
+        }
+        return null;
+    }
+
+    #region "checkbox state"
+    Dictionary<string, bool> inOffice = new Dictionary<string, bool>();
+    private void DataGridView1_CellValuePushed(object sender,
+        DataGridViewCellValueEventArgs e)
+    {
+        if (IsCheckBoxColumn(e.ColumnIndex))
+        {
+            string employeeId = GetKey(e);
+            if (!inOffice.ContainsKey(employeeId))
+            {
+                inOffice.Add(employeeId, (Boolean)e.Value);
+            }
+            else
+            {
+                inOffice[employeeId] = (Boolean)e.Value;
+            }
+        }
+    }
+
+    private string GetKey(DataGridViewCellValueEventArgs cell)
+    {
+        return DataGridView1.Rows[cell.RowIndex].
+            Cells[ColumnName.EmployeeId.ToString()].Value.ToString();
+    }
+
+    private void DataGridView1_CellValueNeeded(object sender,
+        DataGridViewCellValueEventArgs e)
+    {
+
+        if (IsCheckBoxColumn(e.ColumnIndex))
+        {
+            string employeeId = GetKey(e);
+            if (!inOffice.ContainsKey(employeeId))
+            {
+                bool defaultValue = false;
+                inOffice.Add(employeeId, defaultValue);
+            }
+
+            e.Value = inOffice[employeeId];
+        }
+    }
+
+    private bool IsCheckBoxColumn(int columnIndex)
+    {
+        DataGridViewColumn outOfOfficeColumn =
+            DataGridView1.Columns[ColumnName.OutOfOffice.ToString()];
+        return (DataGridView1.Columns[columnIndex] == outOfOfficeColumn);
+    }
+    #endregion
 }

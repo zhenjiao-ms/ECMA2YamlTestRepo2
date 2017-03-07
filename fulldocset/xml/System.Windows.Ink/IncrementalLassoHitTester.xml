@@ -12,8 +12,23 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Dynamically hit tests a <see cref="T:System.Windows.Ink.Stroke" /> with a lasso.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The IncrementalLassoHitTester hit tests strokes by determining whether a lasso path surrounds it. Use the <xref:System.Windows.Ink.IncrementalHitTester.AddPoints%2A> method in the stylus events to add the points to the IncrementalLassoHitTester. When the points added to the IncrementalLassoHitTester selects or unselects a <xref:System.Windows.Ink.Stroke>, the IncrementalLassoHitTester raises the <xref:System.Windows.Ink.IncrementalLassoHitTester.SelectionChanged> event  
+  
+   
+  
+## Examples  
+ The following example demonstrates how to dynamically select strokes in a custom control. For the entire sample, see [How to: Select Ink from a Custom Control](../Topic/How%20to:%20Select%20Ink%20from%20a%20Custom%20Control.md)  
+  
+ [!code-cs[StrokeCollectionMethods#18](~/add/codesnippet/csharp/StrokeCollectionMethods/InkSelector.cs#18)]
+ [!code-vb[StrokeCollectionMethods#18](~/add/codesnippet/visualbasic/StrokeCollectionMethods/InkSelector.vb#18)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="AddPointsCore">
@@ -33,8 +48,8 @@
         <Parameter Name="points" Type="System.Collections.Generic.IEnumerable&lt;System.Windows.Point&gt;" />
       </Parameters>
       <Docs>
-        <param name="points">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="points">The points to add</param>
+        <summary>Adds points to the <see cref="T:System.Windows.Ink.IncrementalHitTester" />.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -55,8 +70,8 @@
         <Parameter Name="eventArgs" Type="System.Windows.Ink.LassoSelectionChangedEventArgs" />
       </Parameters>
       <Docs>
-        <param name="eventArgs">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="eventArgs">Event data.</param>
+        <summary>Raises the <see cref="E:System.Windows.Ink.IncrementalLassoHitTester.SelectionChanged" /> event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -74,8 +89,18 @@
         <ReturnType>System.Windows.Ink.LassoSelectionChangedEventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Occurs when the lasso path selects or unselects an ink <see cref="T:System.Windows.Ink.Stroke" />.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Examples  
+ The following example demonstrates how to dynamically select strokes in a custom control. For the entire sample, see [How to: Select Ink from a Custom Control](../Topic/How%20to:%20Select%20Ink%20from%20a%20Custom%20Control.md)  
+  
+ [!code-cs[StrokeCollectionMethods#18](~/add/codesnippet/csharp/StrokeCollectionMethods/InkSelector.cs#18)]
+ [!code-vb[StrokeCollectionMethods#18](~/add/codesnippet/visualbasic/StrokeCollectionMethods/InkSelector.vb#18)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
   </Members>

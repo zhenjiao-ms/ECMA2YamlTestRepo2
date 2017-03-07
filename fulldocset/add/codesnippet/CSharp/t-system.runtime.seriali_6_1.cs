@@ -1,309 +1,159 @@
-// Note: You must compile this file using the C# /unsafe switch.
 using System;
-using System.IO;
-using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
-using System.Runtime.InteropServices;
-using System.Security.Permissions;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Soap;
+using System.Security;
 
-[assembly: SecurityPermission(
-SecurityAction.RequestMinimum, Execution = true)]
-// This class includes several Win32 interop definitions.
-internal class Win32
+// [assembly: SecurityCritical(SecurityCriticalScope.Everything)] 
+// Using the SecurityCriticalAttribute prohibits usage of the 
+// ISafeSerializationData interface.
+[assembly: AllowPartiallyTrustedCallers]
+namespace ISafeSerializationDataExample
 {
-    public static readonly IntPtr InvalidHandleValue = new IntPtr(-1);
-    public const UInt32 FILE_MAP_WRITE = 2;
-    public const UInt32 PAGE_READWRITE = 0x04;
-
-    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
-    public static extern IntPtr CreateFileMapping(IntPtr hFile,
-        IntPtr pAttributes, UInt32 flProtect,
-        UInt32 dwMaximumSizeHigh, UInt32 dwMaximumSizeLow, String pName);
-
-    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
-    public static extern IntPtr OpenFileMapping(UInt32 dwDesiredAccess,
-        Boolean bInheritHandle, String name);
-
-    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
-    public static extern Boolean CloseHandle(IntPtr handle);
-
-    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
-    public static extern IntPtr MapViewOfFile(IntPtr hFileMappingObject,
-        UInt32 dwDesiredAccess,
-        UInt32 dwFileOffsetHigh, UInt32 dwFileOffsetLow,
-        IntPtr dwNumberOfBytesToMap);
-
-    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
-    public static extern Boolean UnmapViewOfFile(IntPtr address);
-
-    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
-    public static extern Boolean DuplicateHandle(IntPtr hSourceProcessHandle,
-        IntPtr hSourceHandle,
-        IntPtr hTargetProcessHandle, ref IntPtr lpTargetHandle,
-        UInt32 dwDesiredAccess, Boolean bInheritHandle, UInt32 dwOptions);
-    public const UInt32 DUPLICATE_CLOSE_SOURCE = 0x00000001;
-    public const UInt32 DUPLICATE_SAME_ACCESS = 0x00000002;
-
-    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
-    public static extern IntPtr GetCurrentProcess();
-}
-
-
-// This class wraps memory that can be simultaneously 
-// shared by multiple AppDomains and Processes.
-[Serializable]
-public sealed class SharedMemory : ISerializable, IDisposable
-{
-    // The handle and string that identify 
-    // the Windows file-mapping object.
-    private IntPtr m_hFileMap = IntPtr.Zero;
-    private String m_name;
-
-    // The address of the memory-mapped file-mapping object.
-    private IntPtr m_address;
-
-    public unsafe Byte* Address
+    class Test
     {
-        get { return (Byte*)m_address; }
-    }
-
-    // The constructors.
-    public SharedMemory(Int32 size) : this(size, null) { }
-
-    public SharedMemory(Int32 size, String name)
-    {
-        m_hFileMap = Win32.CreateFileMapping(Win32.InvalidHandleValue,
-            IntPtr.Zero, Win32.PAGE_READWRITE,
-            0, unchecked((UInt32)size), name);
-        if (m_hFileMap == IntPtr.Zero)
-            throw new Exception("Could not create memory-mapped file.");
-        m_name = name;
-        m_address = Win32.MapViewOfFile(m_hFileMap, Win32.FILE_MAP_WRITE,
-            0, 0, IntPtr.Zero);
-    }
-
-    // The cleanup methods.
-    public void Dispose()
-    {
-        GC.SuppressFinalize(this);
-        Dispose(true);
-    }
-
-    private void Dispose(Boolean disposing)
-    {
-        Win32.UnmapViewOfFile(m_address);
-        Win32.CloseHandle(m_hFileMap);
-        m_address = IntPtr.Zero;
-        m_hFileMap = IntPtr.Zero;
-    }
-
-    ~SharedMemory()
-    {
-        Dispose(false);
-    }
-
-    // Private helper methods.
-    private static Boolean AllFlagsSet(Int32 flags, Int32 flagsToTest)
-    {
-        return (flags & flagsToTest) == flagsToTest;
-    }
-
-    private static Boolean AnyFlagsSet(Int32 flags, Int32 flagsToTest)
-    {
-        return (flags & flagsToTest) != 0;
-    }
-
-
-    // The security attribute demands that code that calls  
-    // this method have permission to perform serialization.
-    [SecurityPermissionAttribute(SecurityAction.Demand, SerializationFormatter = true)]
-    void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
-    {
-        // The context's State member indicates
-        // where the object will be deserialized.
-
-        // A SharedMemory object cannot be serialized 
-        // to any of the following destinations.
-        const StreamingContextStates InvalidDestinations =
-                  StreamingContextStates.CrossMachine |
-                  StreamingContextStates.File |
-                  StreamingContextStates.Other |
-                  StreamingContextStates.Persistence |
-                  StreamingContextStates.Remoting;
-        if (AnyFlagsSet((Int32)context.State, (Int32)InvalidDestinations))
-            throw new SerializationException("The SharedMemory object " +
-                "cannot be serialized to any of the following streaming contexts: " +
-                InvalidDestinations);
-
-        const StreamingContextStates DeserializableByHandle =
-                  StreamingContextStates.Clone |
-            // The same process.
-                  StreamingContextStates.CrossAppDomain;
-        if (AnyFlagsSet((Int32)context.State, (Int32)DeserializableByHandle))
-            info.AddValue("hFileMap", m_hFileMap);
-
-        const StreamingContextStates DeserializableByName =
-            // The same computer.
-                  StreamingContextStates.CrossProcess;
-        if (AnyFlagsSet((Int32)context.State, (Int32)DeserializableByName))
-        {
-            if (m_name == null)
-                throw new SerializationException("The SharedMemory object " +
-                    "cannot be serialized CrossProcess because it was not constructed " +
-                    "with a String name.");
-            info.AddValue("name", m_name);
-        }
-    }
-
-
-    // The security attribute demands that code that calls  
-    // this method have permission to perform serialization.
-    [SecurityPermissionAttribute(SecurityAction.Demand, SerializationFormatter = true)]
-    private SharedMemory(SerializationInfo info, StreamingContext context)
-    {
-        // The context's State member indicates 
-        // where the object was serialized from.
-
-        const StreamingContextStates InvalidSources =
-                  StreamingContextStates.CrossMachine |
-                  StreamingContextStates.File |
-                  StreamingContextStates.Other |
-                  StreamingContextStates.Persistence |
-                  StreamingContextStates.Remoting;
-        if (AnyFlagsSet((Int32)context.State, (Int32)InvalidSources))
-            throw new SerializationException("The SharedMemory object " +
-                "cannot be deserialized from any of the following stream contexts: " +
-                InvalidSources);
-
-        const StreamingContextStates SerializedByHandle =
-                  StreamingContextStates.Clone |
-            // The same process.
-                  StreamingContextStates.CrossAppDomain;
-        if (AnyFlagsSet((Int32)context.State, (Int32)SerializedByHandle))
+        public static void Main()
         {
             try
             {
-                Win32.DuplicateHandle(Win32.GetCurrentProcess(),
-                    (IntPtr)info.GetValue("hFileMap", typeof(IntPtr)),
-                    Win32.GetCurrentProcess(), ref m_hFileMap, 0, false,
-                    Win32.DUPLICATE_SAME_ACCESS);
+                // This code forces a division by 0 and catches the 
+                // resulting exception.
+                try
+                {
+                    int zero = 0;
+                    int ecks = 1 / zero;
+                }
+                catch (Exception ex)
+                {
+                    // Create a new exception to throw.
+                    NewException newExcept = new NewException("Divided by", 0);
+
+                    // This FileStream is used for the serialization.
+                    FileStream fs =
+                        new FileStream("NewException.dat",
+                            FileMode.Create);
+
+                    try
+                    {
+                        // Serialize the exception.
+                        BinaryFormatter formatter = new BinaryFormatter();
+                        formatter.Serialize(fs, newExcept);
+
+                        // Rewind the stream and deserialize the exception.
+                        fs.Position = 0;
+                        NewException deserExcept =
+                            (NewException)formatter.Deserialize(fs);
+                        Console.WriteLine(
+                        "Forced a division by 0, caught the resulting exception, \n" +
+                        "and created a derived exception with custom data. \n" +
+                        "Serialized the exception and deserialized it:\n");
+                        Console.WriteLine("StringData: {0}", deserExcept.StringData);
+                        Console.WriteLine("intData:   {0}", deserExcept.IntData);
+                    }
+                    catch (SerializationException se)
+                    {
+                        Console.WriteLine("Failed to serialize: {0}",
+                            se.ToString());
+                    }
+                    finally
+                    {
+                        fs.Close();
+                        Console.ReadLine();
+                    }
+                }
             }
-            catch (SerializationException)
+            catch (NewException ex)
             {
-                throw new SerializationException("A SharedMemory was not serialized " +
-                    "using any of the following streaming contexts: " +
-                    SerializedByHandle);
+                Console.WriteLine("StringData: {0}", ex.StringData);
+                Console.WriteLine("IntData:   {0}", ex.IntData);
             }
-        }
-
-        const StreamingContextStates SerializedByName =
-            // The same computer.
-                  StreamingContextStates.CrossProcess;
-        if (AnyFlagsSet((Int32)context.State, (Int32)SerializedByName))
-        {
-            try
-            {
-                m_name = info.GetString("name");
-            }
-            catch (SerializationException)
-            {
-                throw new SerializationException("A SharedMemory object was not " +
-                    "serialized using any of the following streaming contexts: " +
-                    SerializedByName);
-            }
-            m_hFileMap = Win32.OpenFileMapping(Win32.FILE_MAP_WRITE, false, m_name);
-        }
-        if (m_hFileMap != IntPtr.Zero)
-        {
-            m_address = Win32.MapViewOfFile(m_hFileMap, Win32.FILE_MAP_WRITE,
-                0, 0, IntPtr.Zero);
-        }
-        else
-        {
-            throw new SerializationException("A SharedMemory object could not " +
-                "be deserialized.");
-        }
-    }
-}
-
-
-class App
-{
-    [STAThread]
-    static void Main(string[] args)
-    {
-        Serialize();
-        Console.WriteLine();
-        Deserialize();
-    }
-
-    unsafe static void Serialize()
-    {
-        // Create a hashtable of values that will eventually be serialized.
-        SharedMemory sm = new SharedMemory(1024, "JeffMemory");
-        for (Int32 x = 0; x < 100; x++)
-            *(sm.Address + x) = (Byte)x;
-
-        Byte[] b = new Byte[10];
-        for (Int32 x = 0; x < b.Length; x++) b[x] = *(sm.Address + x);
-        Console.WriteLine(BitConverter.ToString(b));
-
-        // To serialize the SharedMemory object, 
-        // you must first open a stream for writing. 
-        // Use a file stream here.
-        FileStream fs = new FileStream("DataFile.dat", FileMode.Create);
-
-        // Construct a BinaryFormatter and tell it where 
-        // the objects will be serialized to.
-        BinaryFormatter formatter = new BinaryFormatter(null,
-            new StreamingContext(StreamingContextStates.CrossAppDomain));
-        try
-        {
-            formatter.Serialize(fs, sm);
-        }
-        catch (SerializationException e)
-        {
-            Console.WriteLine("Failed to serialize. Reason: " + e.Message);
-            throw;
-        }
-        finally
-        {
-            fs.Close();
         }
     }
 
-
-    unsafe static void Deserialize()
+    [Serializable]
+    public class NewException : Exception
     {
-        // Declare a SharedMemory reference.
-        SharedMemory sm = null;
+        // Because we don't want the exception state to be serialized normally, 
+        // we take care of that in the constructor.
+        [NonSerialized]
+        private NewExceptionState m_state = new NewExceptionState();
 
-        // Open the file containing the data that you want to deserialize.
-        FileStream fs = new FileStream("DataFile.dat", FileMode.Open);
-        try
+        public NewException(string stringData, int intData)
         {
-            BinaryFormatter formatter = new BinaryFormatter(null,
-                new StreamingContext(StreamingContextStates.CrossAppDomain));
+            // Instance data is stored directly in the exception state object.
+            m_state.StringData = stringData;
+            m_state.IntData = intData;
 
-            // Deserialize the SharedMemory object from the file and 
-            // assign the reference to the local variable.
-            sm = (SharedMemory)formatter.Deserialize(fs);
+            // In response to SerializeObjectState, we need to provide 
+            // any state to serialize with the exception.  In this 
+            // case, since our state is already stored in an
+            // ISafeSerializationData implementation, we can 
+            // just provide that.
+
+            SerializeObjectState += delegate(object exception,
+                SafeSerializationEventArgs eventArgs)
+            {
+                eventArgs.AddSerializedState(m_state);
+            };
+            // An alternate implementation would be to store the state 
+            // as local member variables, and in response to this 
+            // method create a new instance of an ISafeSerializationData
+            // object and populate it with the local state here before 
+            // passing it through to AddSerializedState.        
+
         }
-        catch (SerializationException e)
+        // There is no need to supply a deserialization constructor 
+        // (with SerializationInfo and StreamingContext parameters), 
+        // and no need to supply a GetObjectData implementation.
+
+
+        // Data access is through the state object (m_State).
+        public string StringData
         {
-            Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
-            throw;
-        }
-        finally
-        {
-            fs.Close();
+            get { return m_state.StringData; }
         }
 
-        // To prove that the SharedMemory object deserialized correctly, 
-        // display some of its bytes to the console.
-        Byte[] b = new Byte[10];
-        for (Int32 x = 0; x < b.Length; x++) b[x] = *(sm.Address + x);
-        Console.WriteLine(BitConverter.ToString(b));
+        public int IntData
+        {
+            get { return m_state.IntData; }
+        }
+
+        // Implement the ISafeSerializationData interface 
+        // to contain custom  exception data in a partially trusted 
+       // assembly. Use this interface to replace the 
+       // Exception.GetObjectData method, 
+        // which is now marked with the SecurityCriticalAttribute.
+        [Serializable]
+        private struct NewExceptionState : ISafeSerializationData
+        {
+            private string m_stringData;
+            private int m_intData;
+
+            public string StringData
+            {
+                get { return m_stringData; }
+                set { m_stringData = value; }
+            }
+
+            public int IntData
+            {
+                get { return m_intData; }
+                set { m_intData = value; }
+            }
+
+            // This method is called when deserialization of the 
+            // exception is complete.
+            void ISafeSerializationData.CompleteDeserialization
+                (object obj)
+            {
+                // Since the exception simply contains an instance of 
+                // the exception state object, we can repopulate it 
+                // here by just setting its instance field to be equal 
+                // to this deserialized state instance.
+                NewException exception = obj as NewException;
+                exception.m_state = this;
+            }
+        }
     }
 }

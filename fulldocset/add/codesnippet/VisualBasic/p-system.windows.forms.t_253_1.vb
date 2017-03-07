@@ -1,15 +1,6 @@
-Private Sub ToolStripRenderer1_RenderSeparator(sender as Object, e as ToolStripSeparatorRenderEventArgs) _ 
-     Handles ToolStripRenderer1.RenderSeparator
-
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "Vertical", e.Vertical)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Item", e.Item)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "ToolStrip", e.ToolStrip)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"RenderSeparator Event")
-
-End Sub
+      Me.toolStripButton1.Image = Bitmap.FromFile("c:\NewItem.bmp")
+      Me.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.ImageAndText
+      Me.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+      Me.toolStripButton1.Name = "toolStripButton1"
+      Me.toolStripButton1.Text = "&New"
+      Me.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight

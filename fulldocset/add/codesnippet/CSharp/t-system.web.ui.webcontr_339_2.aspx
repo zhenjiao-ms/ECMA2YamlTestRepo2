@@ -1,129 +1,80 @@
+<%@ Page Language="C#" %>
 
-<%@ Page Language="C#" AutoEventWireup="True" %>
-<%@ Import Namespace="System.Data" %>
- 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<script runat="server">
+
+    protected void UploadButton_Click(object sender, EventArgs e)
+    {
+        // Save the uploaded file to an "Uploads" directory
+        // that already exists in the file system of the 
+        // currently executing ASP.NET application.  
+        // Creating an "Uploads" directory isolates uploaded 
+        // files in a separate directory. This helps prevent
+        // users from overwriting existing application files by
+        // uploading files with names like "Web.config".
+        string saveDir = @"\Uploads\";
+
+        // Get the physical file system path for the currently
+        // executing application.
+        string appPath = Request.PhysicalApplicationPath;
+
+        // Before attempting to save the file, verify
+        // that the FileUpload control contains a file.
+        if (FileUpload1.HasFile)
+        {
+            string savePath = appPath + saveDir +
+                Server.HtmlEncode(FileUpload1.FileName);
+            
+            // Call the SaveAs method to save the 
+            // uploaded file to the specified path.
+            // This example does not perform all
+            // the necessary error checking.               
+            // If a file with the same name
+            // already exists in the specified path,  
+            // the uploaded file overwrites it.
+            FileUpload1.SaveAs(savePath);
+
+            // Notify the user that the file was uploaded successfully.
+            UploadStatusLabel.Text = "Your file was uploaded successfully.";
+
+        }
+        else
+        {
+            // Notify the user that a file was not uploaded.
+            UploadStatusLabel.Text = "You did not specify a file to upload.";   
+        }
+    }
+</script>
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
-   <script runat="server">
- 
-      ICollection CreateDataSource() 
-      {
-      
-         // Create sample data for the DataList control.
-         DataTable dt = new DataTable();
-         DataRow dr;
- 
-         // Define the columns of the table.
-         dt.Columns.Add(new DataColumn("IntegerValue", typeof(Int32)));
-         dt.Columns.Add(new DataColumn("StringValue", typeof(String)));
-         dt.Columns.Add(new DataColumn("CurrencyValue", typeof(double)));
- 
-         // Populate the table with sample values.
-         for (int i = 0; i < 9; i++) 
-         {
-            dr = dt.NewRow();
- 
-            dr[0] = i;
-            dr[1] = "Description for item " + i.ToString();
-            dr[2] = 1.23 * (i + 1);
- 
-            dt.Rows.Add(dr);
-         }
- 
-         DataView dv = new DataView(dt);
-         return dv;
-
-      }
- 
- 
-      void Page_Load(Object sender, EventArgs e) 
-      {
-
-         // Manually register the event-handling method for the 
-         // ItemCommand event.
-         ItemsList.ItemDataBound += 
-             new DataListItemEventHandler(this.Item_Bound);
-
-         // Load sample data only once, when the page is first loaded.
-         if (!IsPostBack) 
-         {
-            ItemsList.DataSource = CreateDataSource();
-            ItemsList.DataBind();
-         }
-
-      }
-
-      void Item_Bound(Object sender, DataListItemEventArgs e)
-      {
-
-         if (e.Item.ItemType == ListItemType.Item || 
-             e.Item.ItemType == ListItemType.AlternatingItem)
-         {
-
-            // Retrieve the Label control in the current DataListItem.
-            Label PriceLabel = (Label)e.Item.FindControl("PriceLabel");
-
-            // Retrieve the text of the CurrencyColumn from the DataListItem
-            // and convert the value to a Double.
-            Double Price = Convert.ToDouble(
-                ((DataRowView)e.Item.DataItem).Row.ItemArray[2].ToString());
-
-            // Format the value as currency and redisplay it in the DataList.
-            PriceLabel.Text = Price.ToString("c");
-
-         }
-
-      }
- 
-   </script>
- 
 <head runat="server">
-    <title>DataList ItemDataBound Example</title>
+    <title>FileUpload Class Example</title>
 </head>
 <body>
- 
-   <form id="form1" runat="server">
-
-      <h3>DataList ItemDataBound Example</h3>
- 
-      <asp:DataList id="ItemsList"
-           BorderColor="black"
-           CellPadding="5"
-           CellSpacing="5"
-           RepeatDirection="Vertical"
-           RepeatLayout="Table"
-           RepeatColumns="3"
+    <h3>FileUpload Class Example: Save To Application Directory</h3>
+    <form id="form1" runat="server">
+    <div>
+       <h4>Select a file to upload:</h4>
+   
+       <asp:FileUpload id="FileUpload1"                 
            runat="server">
-
-         <HeaderStyle BackColor="#aaaadd">
-         </HeaderStyle>
-
-         <AlternatingItemStyle BackColor="Gainsboro">
-         </AlternatingItemStyle>
-
-         <HeaderTemplate>
-
-            List of items
-
-         </HeaderTemplate>
-               
-         <ItemTemplate>
-
-            Description: <br />
-            <%# DataBinder.Eval(Container.DataItem, "StringValue") %>
-
-            <br />
-
-            Price: 
-            <asp:Label id="PriceLabel"
-                 runat="server"/>
-
-         </ItemTemplate>
- 
-      </asp:DataList>
- 
-   </form>
- 
+       </asp:FileUpload>
+            
+       <br/><br/>
+       
+       <asp:Button id="UploadButton" 
+           Text="Upload file"
+           OnClick="UploadButton_Click"
+           runat="server">
+       </asp:Button>    
+       
+       <hr />
+       
+       <asp:Label id="UploadStatusLabel"
+           runat="server">
+       </asp:Label>           
+    </div>
+    </form>
 </body>
 </html>

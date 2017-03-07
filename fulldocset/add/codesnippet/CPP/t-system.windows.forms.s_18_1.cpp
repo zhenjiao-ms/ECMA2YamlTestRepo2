@@ -1,31 +1,48 @@
-private:
-   void CreateMySplitControls()
+   void SetDockPadding()
    {
-      // Create TreeView, ListView, and Splitter controls.
-      TreeView^ treeView1 = gcnew TreeView;
-      ListView^ listView1 = gcnew ListView;
-      Splitter^ splitter1 = gcnew Splitter;
+      // Dock the button in the panel.
+      button1->Dock = System::Windows::Forms::DockStyle::Fill;
 
-      // Set the TreeView control to dock to the left side of the form.
-      treeView1->Dock = DockStyle::Left;
+      // Reset the counter if it is greater than 5.
+      if ( myCounter > 5 )
+      {
+         myCounter = 0;
+      }
 
-      // Set the Splitter to dock to the left side of the TreeView control.
-      splitter1->Dock = DockStyle::Left;
 
-      // Set the minimum size the ListView control can be sized to.
-      splitter1->MinExtra = 100;
+      /* Set the appropriate DockPadding and display
+             which one was set on the button face. */
+      switch ( myCounter )
+      {
+         case 0:
+            panel1->DockPadding->All = 0;
+            button1->Text = "Start";
+            break;
 
-      // Set the minimum size the TreeView control can be sized to.
-      splitter1->MinSize = 75;
+         case 1:
+            panel1->DockPadding->Top = 10;
+            button1->Text = "Top";
+            break;
 
-      // Set the ListView control to fill the remaining space on the form.
-      listView1->Dock = DockStyle::Fill;
+         case 2:
+            panel1->DockPadding->Bottom = 10;
+            button1->Text = "Bottom";
+            break;
 
-      // Add a TreeView and a ListView item to identify the controls on the form.
-      treeView1->Nodes->Add( "TreeView Node" );
-      listView1->Items->Add( "ListView Item" );
+         case 3:
+            panel1->DockPadding->Left = 10;
+            button1->Text = "Left";
+            break;
 
-      // Add the controls in reverse order to the form to ensure proper location.
-      array<Control^>^temp0 = {listView1,splitter1,treeView1};
-      this->Controls->AddRange( temp0 );
+         case 4:
+            panel1->DockPadding->Right = 10;
+            button1->Text = "Right";
+            break;
+
+         case 5:
+            panel1->DockPadding->All = 20;
+            button1->Text = "All";
+            break;
+      }
+      myCounter++;
    }

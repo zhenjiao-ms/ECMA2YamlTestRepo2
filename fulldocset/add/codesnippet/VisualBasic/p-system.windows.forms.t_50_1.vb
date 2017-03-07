@@ -1,32 +1,17 @@
-Imports System.Drawing
-Imports System.Windows.Forms
+Private Sub ToolStripRenderer1_RenderArrow(sender as Object, e as ToolStripArrowRenderEventArgs) _ 
+     Handles ToolStripRenderer1.RenderArrow
 
-Public Class Form1
-    Inherits Form
-    Private tabControl1 As TabControl
-    Private tabPage1 As TabPage
+    Dim messageBoxVB as New System.Text.StringBuilder()
+    messageBoxVB.AppendFormat("{0} = {1}", "ArrowRectangle", e.ArrowRectangle)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "ArrowColor", e.ArrowColor)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Direction", e.Direction)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
+    messageBoxVB.AppendLine()
+    messageBoxVB.AppendFormat("{0} = {1}", "Item", e.Item)
+    messageBoxVB.AppendLine()
+    MessageBox.Show(messageBoxVB.ToString(),"RenderArrow Event")
 
-
-    Private Sub MyTabs()
-        Me.tabControl1 = New TabControl()
-        Me.tabPage1 = New TabPage()
-
-        Me.tabControl1.Controls.AddRange(New Control() {Me.tabPage1})
-        Me.tabControl1.Location = New Point(25, 25)
-        Me.tabControl1.Size = New Size(250, 250)
-
-        ' Displays a string, myTabPage, on tabPage1.
-        Me.tabPage1.Text = "myTabPage"
-
-        Me.ClientSize = New Size(300, 300)
-        Me.Controls.AddRange(New Control() {Me.tabControl1})
-    End Sub
-
-    Public Sub New()
-        MyTabs()
-    End Sub
-
-    Shared Sub Main()
-        Application.Run(New Form1())
-    End Sub
-End Class
+End Sub

@@ -1,53 +1,28 @@
-[ContractClassFor(typeof(IArray))]
-internal abstract class IArrayContract : IArray
-{
-    int IArray.Add(Object value)
-    {
-        // Returns the index in which an item was inserted.
-        Contract.Ensures(Contract.Result<int>() >= -1);
-        Contract.Ensures(Contract.Result<int>() < ((IArray)this).Count);
-        return default(int);
-    }
-    Object IArray.this[int index]
-    {
-        get
-        {
-            Contract.Requires(index >= 0);
-            Contract.Requires(index < ((IArray)this).Count);
-            return default(int);
-        }
-        set
-        {
-            Contract.Requires(index >= 0);
-            Contract.Requires(index < ((IArray)this).Count);
-        }
-    }
-    public int Count
-    {
-        get
-        {
-            Contract.Requires(Count >= 0);
-            Contract.Requires(Count <= ((IArray)this).Count);
-            return default(int);
-        }
-    }
+        // Define a trace listener to direct trace output from this method
+        // to the console.
+        ConsoleTraceListener consoleTracer;
 
-    void IArray.Clear()
-    {
-        Contract.Ensures(((IArray)this).Count == 0);
-    }
+        // Check the command line arguments to determine which
+        // console stream should be used for trace output.
+        if ((CmdArgs.Length>0)&&(CmdArgs[0].ToString().ToLower().Equals("/stderr")))
+            // Initialize the console trace listener to write
+            // trace output to the standard error stream.
+        {
+            consoleTracer = new ConsoleTraceListener(true);
+        }
+        else
+        {
+            // Initialize the console trace listener to write
+            // trace output to the standard output stream.
+            consoleTracer = new ConsoleTraceListener();
+        }
+        // Set the name of the trace listener, which helps identify this 
+        // particular instance within the trace listener collection.
+        consoleTracer.Name = "mainConsoleTracer";
 
-    void IArray.Insert(int index, Object value)
-    {
-        Contract.Requires(index >= 0);
-        Contract.Requires(index <= ((IArray)this).Count);  // For inserting immediately after the end.
-        Contract.Ensures(((IArray)this).Count == Contract.OldValue(((IArray)this).Count) + 1);
-    }
+        // Write the initial trace message to the console trace listener.
+        consoleTracer.WriteLine(DateTime.Now.ToString()+" ["+consoleTracer.Name+"] - Starting output to trace listener.");
 
-    void IArray.RemoveAt(int index)
-    {
-        Contract.Requires(index >= 0);
-        Contract.Requires(index < ((IArray)this).Count);
-        Contract.Ensures(((IArray)this).Count == Contract.OldValue(((IArray)this).Count) - 1);
-    }
-}
+        // Add the new console trace listener to 
+        // the collection of trace listeners.
+        Trace.Listeners.Add(consoleTracer);

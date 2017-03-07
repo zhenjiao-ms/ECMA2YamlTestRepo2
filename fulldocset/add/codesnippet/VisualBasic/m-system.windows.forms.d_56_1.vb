@@ -1,11 +1,6 @@
-    Private Sub BindControls()
-        ' Create a DataSet named SuppliersProducts.
-        Dim SuppliersProducts As New DataSet("SuppliersProducts")
-        ' Adds two DataTable objects, Suppliers and Products.
-        SuppliersProducts.Tables.Add(New DataTable("Suppliers"))
-        SuppliersProducts.Tables.Add(New DataTable("Products"))
-        ' Insert code to add DataColumn objects.
-        ' Insert code to fill tables with columns and data.
-        ' Binds the DataGrid to the DataSet, displaying the Suppliers table.
-        dataGrid1.SetDataBinding(SuppliersProducts, "Suppliers")
-    End Sub 'BindControls
+    Private Sub SizeAllColumns(ByVal sender As Object, _
+        ByVal e As System.EventArgs) Handles Button6.Click
+
+        DataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells)
+
+    End Sub

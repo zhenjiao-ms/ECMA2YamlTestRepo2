@@ -1,26 +1,31 @@
 private:
-   void GetFormats2()
+   void SetData3()
    {
-      // Creates a new data object using a string and the UnicodeText format.
-      DataObject^ myDataObject = gcnew DataObject( DataFormats::UnicodeText,"My text string" );
+      // Creates a component.
+      Component^ myComponent = gcnew Component;
       
-      // Gets the original data formats in the data object by setting the automatic
-      // conversion parameter to false.
-      array<String^>^myFormatsArray = myDataObject->GetFormats( false );
+      // Gets the type of the component.
+      Type^ myType = myComponent->GetType();
       
-      // Stores the results in a string.
-      String^ theResult = "The original format associated with the data is:\n";
-      for ( int i = 0; i < myFormatsArray->Length; i++ )
-         theResult = theResult + myFormatsArray[ i ] + "\n";
+      // Creates a data object.
+      DataObject^ myDataObject = gcnew DataObject;
       
-      // Gets all data formats and data conversion formats for the data object.
-      myFormatsArray = myDataObject->GetFormats( true );
+      // Stores the component in the data object.
+      myDataObject->SetData( myType, myComponent );
       
-      // Stores the results in the string.
-      theResult = theResult + "\nThe data format(s) and conversion format(s) associated with the data are:\n";
-      for ( int i = 0; i < myFormatsArray->Length; i++ )
-         theResult = theResult + myFormatsArray[ i ] + "\n";
+      // Checks whether data of the specified type is in the data object.
+      String^ myMessageText;
+      if ( myDataObject->GetDataPresent( myType ) )
+      {
+         myMessageText = "Data of type " + myType->Name +
+            " is stored in the data object";
+      }
+      else
+      {
+         myMessageText = "No data of type " + myType->Name +
+            " is stored in the data object";
+      }
       
-      // Displays the results.
-      MessageBox::Show( theResult );
+      // Displays the result.
+      MessageBox::Show( myMessageText, "The Test Result" );
    }

@@ -1,31 +1,31 @@
-public class CustomDataGridView : DataGridView
-{
-    [System.Security.Permissions.UIPermission(
-        System.Security.Permissions.SecurityAction.LinkDemand,
-        Window = System.Security.Permissions.UIPermissionWindow.AllWindows)]
-    protected override bool ProcessDialogKey(Keys keyData)
+    // Draws column headers.
+    private void listView1_DrawColumnHeader(object sender,
+        DrawListViewColumnHeaderEventArgs e)
     {
-        // Extract the key code from the key value. 
-        Keys key = (keyData & Keys.KeyCode);
-
-        // Handle the ENTER key as if it were a RIGHT ARROW key. 
-        if (key == Keys.Enter)
+        using (StringFormat sf = new StringFormat())
         {
-            return this.ProcessRightKey(keyData);
-        }
-        return base.ProcessDialogKey(keyData);
-    }
+            // Store the column text alignment, letting it default
+            // to Left if it has not been set to Center or Right.
+            switch (e.Header.TextAlign)
+            {
+                case HorizontalAlignment.Center:
+                    sf.Alignment = StringAlignment.Center;
+                    break;
+                case HorizontalAlignment.Right:
+                    sf.Alignment = StringAlignment.Far;
+                    break;
+            }
 
-    [System.Security.Permissions.SecurityPermission(
-        System.Security.Permissions.SecurityAction.LinkDemand, Flags = 
-        System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode)]
-    protected override bool ProcessDataGridViewKey(KeyEventArgs e)
-    {
-        // Handle the ENTER key as if it were a RIGHT ARROW key. 
-        if (e.KeyCode == Keys.Enter)
-        {
-            return this.ProcessRightKey(e.KeyData);
+            // Draw the standard header background.
+            e.DrawBackground();
+
+            // Draw the header text.
+            using (Font headerFont =
+                        new Font("Helvetica", 10, FontStyle.Bold))
+            {
+                e.Graphics.DrawString(e.Header.Text, headerFont,
+                    Brushes.Black, e.Bounds, sf);
+            }
         }
-        return base.ProcessDataGridViewKey(e);
+        return;
     }
-}

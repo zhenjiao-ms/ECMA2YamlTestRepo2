@@ -1,149 +1,197 @@
-'
-' This example signs an XML file using an
-' envelope signature. It then verifies the 
-' signed XML.
-'
 Imports System
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.X509Certificates
-Imports System.Security.Cryptography.Xml
-Imports System.Text
-Imports System.Xml
 
+Public Class Form1
+    Inherits System.Windows.Forms.Form
 
+    ' Event handler for Run button.
+    Private Sub Button1_Click( _
+        ByVal sender As System.Object, _
+        ByVal e As System.EventArgs) Handles Button1.Click
 
-Public Class SignVerifyEnvelope
-   
-   Overloads Public Shared Sub Main(args() As [String])
-      Try
-         ' Generate a signing key.
-         Dim Key As New RSACryptoServiceProvider()
-         
-         ' Create an XML file to sign.
-         CreateSomeXml("Example.xml")
-         Console.WriteLine("New XML file created.")
-         
-         ' Sign the XML that was just created and save it in a 
-         ' new file.
-         SignXmlFile("Example.xml", "SignedExample.xml", Key)
-         Console.WriteLine("XML file signed.")
-         
-         ' Verify the signature of the signed XML.
-         Console.WriteLine("Verifying signature...")
-         Dim result As Boolean = VerifyXmlFile("SignedExample.xml")
-         
-         ' Display the results of the signature verification to \
-         ' the console.
-         If result Then
-            Console.WriteLine("The XML signature is valid.")
-         Else
-            Console.WriteLine("The XML signature is not valid.")
-         End If
-      Catch e As CryptographicException
-         Console.WriteLine(e.Message)
-      End Try
-   End Sub 
-   
-   
-   ' Sign an XML file and save the signature in a new file.
-   Public Shared Sub SignXmlFile(FileName As String, SignedFileName As String, Key As RSA)
-      ' Create a new XML document.
-      Dim doc As New XmlDocument()
-      
-      ' Format the document to ignore white spaces.
-      doc.PreserveWhitespace = False
-      
-      ' Load the passed XML file using it's name.
-      doc.Load(New XmlTextReader(FileName))
-      
-      ' Create a SignedXml object.
-      Dim signedXml As New SignedXml(doc)
-      
-      ' Add the key to the SignedXml document. 
-      signedXml.SigningKey = Key
-      
-      ' Create a reference to be signed.
-      Dim reference As New Reference()
-      reference.Uri = ""
-      
-      ' Add an enveloped transformation to the reference.
-      Dim env As New XmlDsigEnvelopedSignatureTransform()
-      reference.AddTransform(env)
-      
-      ' Add the reference to the SignedXml object.
-      signedXml.AddReference(reference)
-      
-      
-      ' Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-      Dim keyInfo As New KeyInfo()
-      keyInfo.AddClause(New RSAKeyValue(CType(Key, RSA)))
-      signedXml.KeyInfo = keyInfo
-      
-      ' Compute the signature.
-      signedXml.ComputeSignature()
-      
-      ' Get the XML representation of the signature and save
-      ' it to an XmlElement object.
-      Dim xmlDigitalSignature As XmlElement = signedXml.GetXml()
-      
-      ' Append the element to the XML document.
-      doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, True))
-      
-      
-      If TypeOf doc.FirstChild Is XmlDeclaration Then
-         doc.RemoveChild(doc.FirstChild)
-      End If
-      
-      ' Save the signed XML document to a file specified
-      ' using the passed string.
-      Dim xmltw As New XmlTextWriter(SignedFileName, New UTF8Encoding(False))
-      doc.WriteTo(xmltw)
-      xmltw.Close()
-   End Sub 
-   ' Verify the signature of an XML file and return the result.
-   Public Shared Function VerifyXmlFile(Name As [String]) As [Boolean]
-      ' Create a new XML document.
-      Dim xmlDocument As New XmlDocument()
-      
-      ' Format using white spaces.
-      xmlDocument.PreserveWhitespace = True
-      
-      ' Load the passed XML file into the document. 
-      xmlDocument.Load(Name)
-      
-      ' Create a new SignedXml object and pass it
-      ' the XML document class.
-      Dim signedXml As New SignedXml(xmlDocument)
-      
-      ' Find the "Signature" node and create a new
-      ' XmlNodeList object.
-      Dim nodeList As XmlNodeList = xmlDocument.GetElementsByTagName("Signature")
-      
-      ' Load the signature node.
-      signedXml.LoadXml(CType(nodeList(0), XmlElement))
-      
-      ' Check the signature and return the result.
-      Return signedXml.CheckSignature()
-   End Function 
-   
-   
-   ' Create example data to sign.
-   Public Shared Sub CreateSomeXml(FileName As String)
-      ' Create a new XmlDocument object.
-      Dim document As New XmlDocument()
-      
-      ' Create a new XmlNode object.
-      Dim node As XmlNode = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples")
-      
-      ' Add some text to the node.
-      node.InnerText = "Example text to be signed."
-      
-      ' Append the node to the document.
-      document.AppendChild(node)
-      
-      ' Save the XML document to the file name specified.
-      Dim xmltw As New XmlTextWriter(FileName, New UTF8Encoding(False))
-      document.WriteTo(xmltw)
-      xmltw.Close()
-   End Sub 
+        tbxOutput.Cursor = Cursors.WaitCursor
+        tbxOutput.Text = ""
+
+        ' Create a CryptoConfig object to store configuration information.
+        Dim cryptoConfig As New CryptoConfig
+
+        ' Retrieve the class path for CryptoConfig.
+        Dim classDescription As String = cryptoConfig.ToString()
+
+        ' Create a new SHA1 provider.
+        Dim SHA1alg As SHA1CryptoServiceProvider
+        SHA1alg = CType( _
+            cryptoConfig.CreateFromName("SHA1"), SHA1CryptoServiceProvider)
+
+        ' Create an RSAParameters with the TestContainer key container.
+        Dim parameters As New CspParameters
+        parameters.KeyContainerName = "TestContainer"
+        Dim argsArray() = New Object() {parameters}
+
+        ' Instantiate the RSA provider instance accessing the key container
+        '  TestContainer.
+        Dim rsaProvider As New RSACryptoServiceProvider
+        rsaProvider = CType(cryptoConfig.CreateFromName( _
+            "RSA", argsArray), _
+            RSACryptoServiceProvider)
+
+        ' Use the MapNameToOID method to get an object identifier.
+        ' (OID) from the string name of the SHA1 algorithm.
+        Dim sha1Oid As String = cryptoConfig.MapNameToOID("SHA1")
+
+        ' Encode the specified object identifier.
+        Dim encodedMessage() As Byte = cryptoConfig.EncodeOID(sha1Oid)
+
+        ' Display the results to the console.
+        tbxOutput.AppendText("** " + classDescription + " **" + vbCrLf)
+        tbxOutput.AppendText("Created an RSA provider with a ")
+        tbxOutput.AppendText("KeyContainerName called ")
+        tbxOutput.AppendText(parameters.KeyContainerName + "." + vbCrLf)
+        tbxOutput.AppendText("Object identifier from the SHA1 name:")
+        tbxOutput.AppendText(sha1Oid + vbCrLf)
+        tbxOutput.AppendText("The object identifier encoded: ")
+        tbxOutput.AppendText( _
+            System.Text.Encoding.ASCII.GetString(encodedMessage))
+
+        ' Reset the cursor and conclude application.
+        tbxOutput.AppendText(vbCrLf + "This sample completed " + _
+            "successfully; press Exit to continue.")
+        tbxOutput.Cursor = Cursors.Default
+    End Sub
+    ' Event handler for Exit button.
+    Private Sub Button2_Click( _
+        ByVal sender As System.Object, _
+        ByVal e As System.EventArgs) Handles Button2.Click
+
+        Application.Exit()
+    End Sub
+#Region " Windows Form Designer generated code "
+
+    Public Sub New()
+        MyBase.New()
+
+        'This call is required by the Windows Form Designer.
+        InitializeComponent()
+
+        'Add any initialization after the InitializeComponent() call
+
+    End Sub
+
+    'Form overrides dispose to clean up the component list.
+    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing Then
+            If Not (components Is Nothing) Then
+                components.Dispose()
+            End If
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents tbxOutput As System.Windows.Forms.RichTextBox
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Me.Panel2 = New System.Windows.Forms.Panel
+        Me.Button1 = New System.Windows.Forms.Button
+        Me.Button2 = New System.Windows.Forms.Button
+        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.tbxOutput = New System.Windows.Forms.RichTextBox
+        Me.Panel2.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Button1)
+        Me.Panel2.Controls.Add(Me.Button2)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel2.DockPadding.All = 20
+        Me.Panel2.Location = New System.Drawing.Point(0, 320)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(616, 64)
+        Me.Panel2.TabIndex = 1
+        '
+        'Button1
+        '
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button1.Font = New System.Drawing.Font( _
+            "Microsoft Sans Serif", 9.0!, _
+            System.Drawing.FontStyle.Regular, _
+            System.Drawing.GraphicsUnit.Point, _
+            CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(446, 20)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 24)
+        Me.Button1.TabIndex = 2
+        Me.Button1.Text = "&Run"
+        '
+        'Button2
+        '
+        Me.Button2.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button2.Font = New System.Drawing.Font( _
+            "Microsoft Sans Serif", _
+            9.0!, _
+            System.Drawing.FontStyle.Regular, _
+            System.Drawing.GraphicsUnit.Point, _
+            CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(521, 20)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 24)
+        Me.Button2.TabIndex = 3
+        Me.Button2.Text = "E&xit"
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.tbxOutput)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.DockPadding.All = 20
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(616, 320)
+        Me.Panel1.TabIndex = 2
+        '
+        'tbxOutput
+        '
+        Me.tbxOutput.AccessibleDescription = _
+            "Displays output from application."
+        Me.tbxOutput.AccessibleName = "Output textbox."
+        Me.tbxOutput.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tbxOutput.Location = New System.Drawing.Point(20, 20)
+        Me.tbxOutput.Name = "tbxOutput"
+        Me.tbxOutput.Size = New System.Drawing.Size(576, 280)
+        Me.tbxOutput.TabIndex = 1
+        Me.tbxOutput.Text = "Click the Run button to run the application."
+        '
+        'Form1
+        '
+        Me.AutoScaleBaseSize = New System.Drawing.Size(6, 15)
+        Me.ClientSize = New System.Drawing.Size(616, 384)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Panel2)
+        Me.Name = "Form1"
+        Me.Text = "CryptoConfig"
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
+        Me.ResumeLayout(False)
+
+    End Sub
+
+#End Region
 End Class
+'
+' This sample produces the following output:
+'
+' ** System.Security.Cryptography.CryptoConfig **
+' Created an RSA provider with a KeyContainerName called TestContainer.
+' Object identifier from the SHA1 name:1.3.14.3.2.26
+' The object identifier encoded: 6767gG&*(*
+' This sample completed successfully; press Exit to continue.

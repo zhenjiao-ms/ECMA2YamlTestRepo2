@@ -1,15 +1,63 @@
-        'Create new X509 store from local certificate store.
-        Dim store As New X509Store("MY", StoreLocation.CurrentUser)
-        store.Open(OpenFlags.OpenExistingOnly Or OpenFlags.ReadWrite)
+Imports System
+Imports System.Security.Cryptography
 
-        'Output store information.
-        Console.WriteLine("Store Information")
-        Console.WriteLine("Number of certificates in the store: {0}", store.Certificates.Count)
-        Console.WriteLine("Store location: {0}", store.Location)
-        Console.WriteLine("Store name: {0} {1}", store.Name, Environment.NewLine)
 
-        'Put certificates from the store into a collection so user can select one.
-        Dim fcollection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-        Dim collection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Select an X509 Certificate", "Choose a certificate to examine.", X509SelectionFlag.SingleSelection)
-        Dim certificate As X509Certificate2 = collection(0)
-        X509Certificate2UI.DisplayCertificate(certificate)
+
+Public Class DataProtectionSample
+    ' Create byte array for additional entropy when using Protect method.
+    Private Shared s_aditionalEntropy As Byte() = {9, 8, 7, 6, 5}
+
+
+    Public Shared Sub Main()
+        ' Create a simple byte array containing data to be encrypted.
+        Dim secret As Byte() = {0, 1, 2, 3, 4, 1, 2, 3, 4}
+
+        'Encrypt the data.
+        Dim encryptedSecret As Byte() = Protect(secret)
+        Console.WriteLine("The encrypted byte array is:")
+        PrintValues(encryptedSecret)
+
+        ' Decrypt the data and store in a byte array.
+        Dim originalData As Byte() = Unprotect(encryptedSecret)
+        Console.WriteLine("{0}The original data is:", Environment.NewLine)
+        PrintValues(originalData)
+
+    End Sub
+
+
+    Public Shared Function Protect(ByVal data() As Byte) As Byte()
+        Try
+            ' Encrypt the data using DataProtectionScope.CurrentUser. The result can be decrypted
+            '  only by the same current user.
+            Return ProtectedData.Protect(data, s_aditionalEntropy, DataProtectionScope.CurrentUser)
+        Catch e As CryptographicException
+            Console.WriteLine("Data was not encrypted. An error occurred.")
+            Console.WriteLine(e.ToString())
+            Return Nothing
+        End Try
+
+    End Function
+
+
+    Public Shared Function Unprotect(ByVal data() As Byte) As Byte()
+        Try
+            'Decrypt the data using DataProtectionScope.CurrentUser.
+            Return ProtectedData.Unprotect(data, s_aditionalEntropy, DataProtectionScope.CurrentUser)
+        Catch e As CryptographicException
+            Console.WriteLine("Data was not decrypted. An error occurred.")
+            Console.WriteLine(e.ToString())
+            Return Nothing
+        End Try
+
+    End Function
+
+
+    Public Shared Sub PrintValues(ByVal myArr() As [Byte])
+        Dim i As [Byte]
+        For Each i In myArr
+            Console.Write(vbTab + "{0}", i)
+        Next i
+        Console.WriteLine()
+
+    End Sub
+End Class

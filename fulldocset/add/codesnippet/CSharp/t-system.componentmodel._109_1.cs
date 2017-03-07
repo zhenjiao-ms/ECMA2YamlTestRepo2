@@ -1,12 +1,16 @@
-        public void LinkComponentChangingEvent(IComponentChangeService changeService)
+        public void LinkActiveDesignerEvent(IDesignerEventService eventService)
         {
-            // Registers an event handler for the ComponentChanging event.
-            changeService.ComponentChanging += new ComponentChangingEventHandler(this.OnComponentChanging);            
+            // Registers an event handler for the ActiveDesignerChanged event.
+            eventService.ActiveDesignerChanged += new ActiveDesignerEventHandler(this.OnActiveDesignerEvent);
         }
 
-        private void OnComponentChanging(object sender, ComponentChangingEventArgs e)
+        private void OnActiveDesignerEvent(object sender, ActiveDesignerEventArgs e)
         {
-            // Displays changing component information on the console.
-            Console.WriteLine("Type of the component that is about to change: "+e.Component.GetType().FullName);      
-            Console.WriteLine("Name of the member of the component that is about to change: "+e.Member.Name);                        
+            // Displays changed designer information on the console.
+            if( e.NewDesigner.RootComponent.Site != null )
+                Console.WriteLine("Name of the component of the new active designer: "+e.NewDesigner.RootComponent.Site.Name);            
+            Console.WriteLine("Type of the component of the new active designer: "+e.NewDesigner.RootComponentClassName);
+            if( e.OldDesigner.RootComponent.Site != null )
+                Console.WriteLine("Name of the component of the previously active designer: "+e.OldDesigner.RootComponent.Site.Name);
+            Console.WriteLine("Type of the component of the previously active designer: "+e.OldDesigner.RootComponentClassName);
         }

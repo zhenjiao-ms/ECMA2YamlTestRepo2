@@ -1,69 +1,57 @@
-<%@ Page Language="VB" AutoEventWireup="True" %>
+
+<%@ Page language="VB" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script runat="server">
+
+  Sub CustomerDetailsView_DataBound(ByVal sender As Object, ByVal e As EventArgs) Handles CustomerDetailsView.DataBound
+
+    ' Get the DataKey object for the current record.
+    Dim key As DataKey = CustomerDetailsView.DataKey
+    
+    ' Display the the value of the key field.
+    MessageLabel.Text = "The key field value for the displayed record is " & _
+      key.Value.ToString() & "."
+    
+  End Sub
+  
+</script>
+
 <html xmlns="http://www.w3.org/1999/xhtml" >
- <head>
-    <title>RadioButtonList Example</title>
-<script language="VB" runat="server">
 
-    Sub Button1_Click(Source As Object, e As EventArgs)
-        If RadioButtonList1.SelectedIndex > - 1 Then
-            Label1.Text = "You selected: " & RadioButtonList1.SelectedItem.Text
-        End If
-    End Sub
-
-    Sub chkLayout_CheckedChanged(sender As Object, e As EventArgs)        
-        If chkLayout.Checked = True Then
-            RadioButtonList1.RepeatLayout = RepeatLayout.Table
-        Else
-            RadioButtonList1.RepeatLayout = RepeatLayout.Flow
-        End If
-    End Sub
-
-    Sub chkDirection_CheckedChanged(sender As Object, e As EventArgs)        
-        If chkDirection.Checked = True Then
-            RadioButtonList1.RepeatDirection = RepeatDirection.Horizontal
-        Else
-            RadioButtonList1.RepeatDirection = RepeatDirection.Vertical
-        End If
-    End Sub
- 
-     </script>
- 
- </head>
- <body>
- 
-     <h3>RadioButtonList Example</h3>
- 
-     <form id="form1" runat="server">
- 
-         <asp:RadioButtonList id="RadioButtonList1" runat="server">
-            <asp:ListItem>Item 1</asp:ListItem>
-            <asp:ListItem>Item 2</asp:ListItem>
-            <asp:ListItem>Item 3</asp:ListItem>
-            <asp:ListItem>Item 4</asp:ListItem>
-            <asp:ListItem>Item 5</asp:ListItem>
-            <asp:ListItem>Item 6</asp:ListItem>
-         </asp:RadioButtonList>
- 
-         <br />
-         
-         <asp:CheckBox id="chkLayout" OnCheckedChanged="chkLayout_CheckedChanged" Text="Display Table Layout" Checked="true" AutoPostBack="true" runat="server" />
- 
-         <br />
-         
-         <asp:CheckBox id="chkDirection" OnCheckedChanged="chkDirection_CheckedChanged" Text="Display Horizontally" AutoPostBack="true" runat="server" />
- 
-         <br />
-         
-         <asp:Button id="Button1" Text="Submit" onclick="Button1_Click" runat="server"/>
- 
-         <br />
-         
-         <asp:Label id="Label1" font-names="Verdana" font-size="8pt" runat="server"/>
- 
-     </form>
- 
- </body>
- </html>
-   
+  <head runat="server">
+    <title>DataKey Example</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        
+      <h3>DataKey Example</h3>
+                       
+        <asp:detailsview id="CustomerDetailsView"
+          datasourceid="DetailsViewSource"
+          autogeneraterows="true"
+          datakeynames="CustomerID"  
+          allowpaging="true"
+          runat="server">
+            
+        </asp:detailsview>
+        
+        <br/>
+        
+        <asp:label id="MessageLabel"
+          forecolor="Red"
+          runat="server"/>
+            
+        <!-- This example uses Microsoft SQL Server and connects  -->
+        <!-- to the Northwind sample database. Use an ASP.NET     -->
+        <!-- expression to retrieve the connection string value   -->
+        <!-- from the Web.config file.                            -->
+        <asp:sqldatasource id="DetailsViewSource"
+          selectcommand="Select [CustomerID], [CompanyName], [Address], [City], [PostalCode], [Country] From [Customers]"
+          connectionstring="<%$ ConnectionStrings:NorthWindConnectionString%>" 
+          runat="server"/>
+            
+      </form>
+  </body>
+</html>

@@ -1,22 +1,55 @@
-            // Create a service host.
-            Uri httpUri = new Uri("http://localhost/Calculator");
-            ServiceHost sh = new ServiceHost(typeof(Calculator), httpUri);
-            
-            // Get a reference to the authentication object.
-            X509ClientCertificateAuthentication myAuthProperties =
-                sh.Credentials.ClientCertificate.Authentication;
-            
-            // Configure peer trust.
-            myAuthProperties.CertificateValidationMode =
-                X509CertificateValidationMode.PeerTrust;
-            // Configure chain trust.
-            myAuthProperties.CertificateValidationMode =
-                X509CertificateValidationMode.ChainTrust;
-            // Configure custom certificate validation.
-            myAuthProperties.CertificateValidationMode =
-                X509CertificateValidationMode.Custom;
+    public class CreditCardTokenParameters : SecurityTokenParameters
+    {
+        public CreditCardTokenParameters()
+        {
+        }
 
-            // Specify a custom certificate validator (not shown here) that inherits 
-            // from the X509CertificateValidator class. 
-            // creds.ClientCertificate.Authentication.CustomCertificateValidator =
-            //    new MyCertificateValidator();
+        protected CreditCardTokenParameters(CreditCardTokenParameters other)
+            : base(other)
+        {
+        }
+
+        protected override SecurityTokenParameters CloneCore()
+        {
+            return new CreditCardTokenParameters(this);
+        }
+
+        protected override void InitializeSecurityTokenRequirement(SecurityTokenRequirement requirement)
+        {
+            requirement.TokenType = Constants.CreditCardTokenType;
+            return;
+        }
+
+        // A credit card token has no cryptography, no windows identity, and supports only client authentication.
+        protected override bool HasAsymmetricKey 
+        { 
+            get { return false; } 
+        }
+        
+        protected override bool SupportsClientAuthentication 
+        { 
+            get { return true; } 
+        }
+        
+        protected override bool SupportsClientWindowsIdentity 
+        { 
+            get { return false; } 
+        }
+        
+        protected override bool SupportsServerAuthentication 
+        { 
+            get { return false; } 
+        }
+
+        protected override SecurityKeyIdentifierClause CreateKeyIdentifierClause(SecurityToken token, SecurityTokenReferenceStyle referenceStyle)
+        {
+            if (referenceStyle == SecurityTokenReferenceStyle.Internal)
+            {
+                return token.CreateKeyIdentifierClause<LocalIdKeyIdentifierClause>();
+            }
+            else
+            {
+                throw new NotSupportedException("External references are not supported for credit card tokens");
+            }
+        }
+    }

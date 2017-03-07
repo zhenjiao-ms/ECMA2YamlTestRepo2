@@ -1,12 +1,7 @@
-private:
-   void WriteMappingNames()
+   // Set height.
+   void Button5_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
    {
-      for each ( DataGridTableStyle^ dgt in myDataGrid->TableStyles )
-      {
-         Console::WriteLine( dgt->MappingName );
-         for each ( DataGridColumnStyle^ dgc in dgt->GridColumnStyles )
-         {
-            Console::WriteLine( dgc->MappingName );
-         }
-      }
+      DataGridViewRow^ row = dataGridView->Rows[ 0 ];
+      row->Height = 15;
    }
+

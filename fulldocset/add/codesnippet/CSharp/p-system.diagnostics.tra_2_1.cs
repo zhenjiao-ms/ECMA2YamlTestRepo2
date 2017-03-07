@@ -1,4 +1,2 @@
-        /* Create a ConsoleTraceListener and add it to the trace listeners. */
-        ConsoleTraceListener myWriter = new
-           ConsoleTraceListener();
-        Trace.Listeners.Add(myWriter);
+        [Event(1, Message = "Application Failure: {0}", Level = EventLevel.Error, Keywords = Keywords.Diagnostic)]
+        public void Failure(string message) { WriteEvent(1, message); }

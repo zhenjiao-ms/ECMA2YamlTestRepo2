@@ -1,23 +1,19 @@
-using System.Windows.Forms;
-
-public class Form1 : Form
-{
-    public Form1()
-    {
-        string[] tabText = {"tabPage1", "tabPage2"};
-        TabControl tabControl1 = new TabControl();
-        TabPage tabPage1 = new TabPage(tabText[0]);
-        TabPage tabPage2 = new TabPage(tabText[1]);
-
-        // Sets the tabs to appear as buttons.
-        tabControl1.Appearance = TabAppearance.Buttons;
-
-        tabControl1.Controls.AddRange(new TabPage[] {tabPage1, tabPage2});
-        Controls.Add(tabControl1);
-    }
-
-    static void Main() 
-    {
-        Application.Run(new Form1());
-    }
-}
+public void CreateMyMultilineTextBox()
+ {
+    // Create an instance of a TextBox control.
+    TextBox textBox1 = new TextBox();
+       
+    // Set the Multiline property to true.
+    textBox1.Multiline = true;
+    // Add vertical scroll bars to the TextBox control.
+    textBox1.ScrollBars = ScrollBars.Vertical;
+    // Allow the RETURN key to be entered in the TextBox control.
+    textBox1.AcceptsReturn = true;
+    // Allow the TAB key to be entered in the TextBox control.
+    textBox1.AcceptsTab = true;
+    // Set WordWrap to true to allow text to wrap to the next line.
+    textBox1.WordWrap = true;
+    // Set the default text of the control.
+    textBox1.Text = "Welcome!";
+ }
+ 

@@ -11,17 +11,18 @@ private:
       this->tabControl1 = gcnew TabControl;
       this->tabPage1 = gcnew TabPage;
       this->tabPage2 = gcnew TabPage;
-      array<Control^>^tabPages = {this->tabPage1,this->tabPage2};
-      this->tabControl1->Controls->AddRange( tabPages );
+      array<Control^>^tabControls = {this->tabPage1,this->tabPage2};
+      this->tabControl1->Controls->AddRange( tabControls );
+      this->tabControl1->Padding = Point(15,10);
       this->tabControl1->Location = Point(35,25);
       this->tabControl1->Size = System::Drawing::Size( 220, 220 );
       
-      // Shows ToolTipText when the mouse passes over tabs.
-      this->tabControl1->ShowToolTips = true;
-      
-      // Assigns String* values to ToolTipText.
-      this->tabPage1->ToolTipText = "myTabPage1";
-      this->tabPage2->ToolTipText = "myTabPage2";
+      // Selects tabPage2 using SelectedIndex.
+      this->tabControl1->SelectedIndex = 1;
+      this->tabPage1->Text = "myTabPage1";
+      this->tabPage1->TabIndex = 0;
+      this->tabPage2->Text = "myTabPage2";
+      this->tabPage2->TabIndex = 1;
       this->Size = System::Drawing::Size( 300, 300 );
       array<Control^>^formControls = {this->tabControl1};
       this->Controls->AddRange( formControls );

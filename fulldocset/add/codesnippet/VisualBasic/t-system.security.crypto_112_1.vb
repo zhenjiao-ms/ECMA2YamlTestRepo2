@@ -1,71 +1,149 @@
+'
+' This example signs an XML file using an
+' envelope signature. It then verifies the 
+' signed XML.
+'
 Imports System
-Imports System.IO
-Imports System.Text
 Imports System.Security.Cryptography
+Imports System.Security.Cryptography.X509Certificates
+Imports System.Security.Cryptography.Xml
+Imports System.Text
+Imports System.Xml
 
 
 
-Public Class rfc2898test
-    ' Generate a key k1 with password pwd1 and salt salt1.
-    ' Generate a key k2 with password pwd1 and salt salt1.
-    ' Encrypt data1 with key k1 using symmetric encryption, creating edata1.
-    ' Decrypt edata1 with key k2 using symmetric decryption, creating data2.
-    ' data2 should equal data1.
-    Private Const usageText As String = "Usage: RFC2898 <password>" + vbLf + "You must specify the password for encryption." + vbLf
-
-    Public Shared Sub Main(ByVal passwordargs() As String)
-        'If no file name is specified, write usage text.
-        If passwordargs.Length = 0 Then
-            Console.WriteLine(usageText)
-        Else
-            Dim pwd1 As String = passwordargs(0)
-
-            Dim salt1(8) As Byte
-            Using rngCsp As New RNGCryptoServiceProvider()
-                rngCsp.GetBytes(salt1)
-            End Using
-            'data1 can be a string or contents of a file.
-            Dim data1 As String = "Some test data"
-            'The default iteration count is 1000 so the two methods use the same iteration count.
-            Dim myIterations As Integer = 1000
-            Try
-                Dim k1 As New Rfc2898DeriveBytes(pwd1, salt1, myIterations)
-                Dim k2 As New Rfc2898DeriveBytes(pwd1, salt1)
-                ' Encrypt the data.
-                Dim encAlg As TripleDES = TripleDES.Create()
-                encAlg.Key = k1.GetBytes(16)
-                Dim encryptionStream As New MemoryStream()
-                Dim encrypt As New CryptoStream(encryptionStream, encAlg.CreateEncryptor(), CryptoStreamMode.Write)
-                Dim utfD1 As Byte() = New System.Text.UTF8Encoding(False).GetBytes(data1)
-                encrypt.Write(utfD1, 0, utfD1.Length)
-                encrypt.FlushFinalBlock()
-                encrypt.Close()
-                Dim edata1 As Byte() = encryptionStream.ToArray()
-                k1.Reset()
-
-                ' Try to decrypt, thus showing it can be round-tripped.
-                Dim decAlg As TripleDES = TripleDES.Create()
-                decAlg.Key = k2.GetBytes(16)
-                decAlg.IV = encAlg.IV
-                Dim decryptionStreamBacking As New MemoryStream()
-                Dim decrypt As New CryptoStream(decryptionStreamBacking, decAlg.CreateDecryptor(), CryptoStreamMode.Write)
-                decrypt.Write(edata1, 0, edata1.Length)
-                decrypt.Flush()
-                decrypt.Close()
-                k2.Reset()
-                Dim data2 As String = New UTF8Encoding(False).GetString(decryptionStreamBacking.ToArray())
-
-                If Not data1.Equals(data2) Then
-                    Console.WriteLine("Error: The two values are not equal.")
-                Else
-                    Console.WriteLine("The two values are equal.")
-                    Console.WriteLine("k1 iterations: {0}", k1.IterationCount)
-                    Console.WriteLine("k2 iterations: {0}", k2.IterationCount)
-                End If
-            Catch e As Exception
-                Console.WriteLine("Error: ", e)
-            End Try
-        End If
-
-    End Sub
+Public Class SignVerifyEnvelope
+   
+   Overloads Public Shared Sub Main(args() As [String])
+      Try
+         ' Generate a signing key.
+         Dim Key As New RSACryptoServiceProvider()
+         
+         ' Create an XML file to sign.
+         CreateSomeXml("Example.xml")
+         Console.WriteLine("New XML file created.")
+         
+         ' Sign the XML that was just created and save it in a 
+         ' new file.
+         SignXmlFile("Example.xml", "SignedExample.xml", Key)
+         Console.WriteLine("XML file signed.")
+         
+         ' Verify the signature of the signed XML.
+         Console.WriteLine("Verifying signature...")
+         Dim result As Boolean = VerifyXmlFile("SignedExample.xml")
+         
+         ' Display the results of the signature verification to \
+         ' the console.
+         If result Then
+            Console.WriteLine("The XML signature is valid.")
+         Else
+            Console.WriteLine("The XML signature is not valid.")
+         End If
+      Catch e As CryptographicException
+         Console.WriteLine(e.Message)
+      End Try
+   End Sub 
+   
+   
+   ' Sign an XML file and save the signature in a new file.
+   Public Shared Sub SignXmlFile(FileName As String, SignedFileName As String, Key As RSA)
+      ' Create a new XML document.
+      Dim doc As New XmlDocument()
+      
+      ' Format the document to ignore white spaces.
+      doc.PreserveWhitespace = False
+      
+      ' Load the passed XML file using it's name.
+      doc.Load(New XmlTextReader(FileName))
+      
+      ' Create a SignedXml object.
+      Dim signedXml As New SignedXml(doc)
+      
+      ' Add the key to the SignedXml document. 
+      signedXml.SigningKey = Key
+      
+      ' Create a reference to be signed.
+      Dim reference As New Reference()
+      reference.Uri = ""
+      
+      ' Add an enveloped transformation to the reference.
+      Dim env As New XmlDsigEnvelopedSignatureTransform()
+      reference.AddTransform(env)
+      
+      ' Add the reference to the SignedXml object.
+      signedXml.AddReference(reference)
+      
+      
+      ' Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+      Dim keyInfo As New KeyInfo()
+      keyInfo.AddClause(New RSAKeyValue(CType(Key, RSA)))
+      signedXml.KeyInfo = keyInfo
+      
+      ' Compute the signature.
+      signedXml.ComputeSignature()
+      
+      ' Get the XML representation of the signature and save
+      ' it to an XmlElement object.
+      Dim xmlDigitalSignature As XmlElement = signedXml.GetXml()
+      
+      ' Append the element to the XML document.
+      doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, True))
+      
+      
+      If TypeOf doc.FirstChild Is XmlDeclaration Then
+         doc.RemoveChild(doc.FirstChild)
+      End If
+      
+      ' Save the signed XML document to a file specified
+      ' using the passed string.
+      Dim xmltw As New XmlTextWriter(SignedFileName, New UTF8Encoding(False))
+      doc.WriteTo(xmltw)
+      xmltw.Close()
+   End Sub 
+   ' Verify the signature of an XML file and return the result.
+   Public Shared Function VerifyXmlFile(Name As [String]) As [Boolean]
+      ' Create a new XML document.
+      Dim xmlDocument As New XmlDocument()
+      
+      ' Format using white spaces.
+      xmlDocument.PreserveWhitespace = True
+      
+      ' Load the passed XML file into the document. 
+      xmlDocument.Load(Name)
+      
+      ' Create a new SignedXml object and pass it
+      ' the XML document class.
+      Dim signedXml As New SignedXml(xmlDocument)
+      
+      ' Find the "Signature" node and create a new
+      ' XmlNodeList object.
+      Dim nodeList As XmlNodeList = xmlDocument.GetElementsByTagName("Signature")
+      
+      ' Load the signature node.
+      signedXml.LoadXml(CType(nodeList(0), XmlElement))
+      
+      ' Check the signature and return the result.
+      Return signedXml.CheckSignature()
+   End Function 
+   
+   
+   ' Create example data to sign.
+   Public Shared Sub CreateSomeXml(FileName As String)
+      ' Create a new XmlDocument object.
+      Dim document As New XmlDocument()
+      
+      ' Create a new XmlNode object.
+      Dim node As XmlNode = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples")
+      
+      ' Add some text to the node.
+      node.InnerText = "Example text to be signed."
+      
+      ' Append the node to the document.
+      document.AppendChild(node)
+      
+      ' Save the XML document to the file name specified.
+      Dim xmltw As New XmlTextWriter(FileName, New UTF8Encoding(False))
+      document.WriteTo(xmltw)
+      xmltw.Close()
+   End Sub 
 End Class

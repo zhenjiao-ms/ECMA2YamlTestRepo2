@@ -1,27 +1,17 @@
-    // Draws the backgrounds for entire ListView items.
-    private void listView1_DrawItem(object sender,
-        DrawListViewItemEventArgs e)
+    private void ChangeColumnAlignment()
     {
-        if ((e.State & ListViewItemStates.Selected) != 0)
-        {
-            // Draw the background and focus rectangle for a selected item.
-            e.Graphics.FillRectangle(Brushes.Maroon, e.Bounds);
-            e.DrawFocusRectangle();
-        }
-        else
-        {
-            // Draw the background for an unselected item.
-            using (LinearGradientBrush brush =
-                new LinearGradientBrush(e.Bounds, Color.Orange,
-                Color.Maroon, LinearGradientMode.Horizontal))
-            {
-                e.Graphics.FillRectangle(brush, e.Bounds);
-            }
-        }
+        songsDataGridView.Columns["Title"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomCenter;
+        songsDataGridView.Columns["Title"].Name = DataGridViewContentAlignment.BottomCenter.ToString();
 
-        // Draw the item text for views other than the Details view.
-        if (listView1.View != View.Details)
-        {
-            e.DrawText();
-        }
+        songsDataGridView.Columns["Artist"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomLeft;
+        songsDataGridView.Columns["Artist"].Name = DataGridViewContentAlignment.BottomLeft.ToString();
+
+        songsDataGridView.Columns["Album"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
+        songsDataGridView.Columns["Album"].Name = DataGridViewContentAlignment.BottomRight.ToString();
+
+        songsDataGridView.Columns["Release Date"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        songsDataGridView.Columns["Release Date"].Name = DataGridViewContentAlignment.MiddleCenter.ToString();
+
+        songsDataGridView.Columns["Track"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        songsDataGridView.Columns["Track"].Name = DataGridViewContentAlignment.MiddleLeft.ToString();
     }

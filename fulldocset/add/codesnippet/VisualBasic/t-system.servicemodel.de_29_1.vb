@@ -1,37 +1,32 @@
-Public Class MyServiceCredentials
-    Inherits ServiceCredentials
-    Private additionalCertificateValue As X509Certificate2
+Imports System
+Imports System.ServiceModel
 
-    Public Sub New() 
-    
-    End Sub
+<ServiceContract()> _
+Public Interface ICalculatorService
 
-    Protected Sub New(ByVal other As MyServiceCredentials) 
-        MyBase.New(other)
-        Me.additionalCertificate = other.additionalCertificate
-    End Sub
-    
-    
-    Public Property AdditionalCertificate() As X509Certificate2 
-        Get
-            Return Me.additionalCertificateValue
-        End Get
-        Set
-            If value Is Nothing Then
-                Throw New ArgumentNullException("value")
-            End If
-            Me.additionalCertificateValue = value
-        End Set
-    End Property
+    <OperationBehavior()> _
+    Function Add(ByVal a As Integer, ByVal b As Integer) As Integer
 
-    Public Overrides Function CreateSecurityTokenManager() As SecurityTokenManager 
-        Return MyBase.CreateSecurityTokenManager()
-    
+    <OperationContract()> _
+    Function Subtract(ByVal a As Integer, ByVal b As Integer) As Integer
+End Interface
+
+<DeliveryRequirements( _
+    QueuedDeliveryRequirements:=QueuedDeliveryRequirementsMode.NotAllowed, _
+    RequireOrderedDelivery:=True _
+)> _
+Class CalculatorService
+    Public Function add(ByVal a As Integer, ByVal b As Integer) As Integer
+        Console.WriteLine("Add called")
+        Return a + b
     End Function
-    
-    
-    Protected Overrides Function CloneCore() As ServiceCredentials 
-        Return New MyServiceCredentials(Me)
-    
+
+    Public Function Subtract(ByVal a As Integer, ByVal b As Integer) As Integer
+        Console.WriteLine("Subtract called.")
+        Return a - b
+    End Function
+
+    Public Function Multiply(ByVal a As Integer, ByVal b As Integer) As Integer
+        Return a * b
     End Function
 End Class

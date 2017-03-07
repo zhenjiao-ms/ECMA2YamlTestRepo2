@@ -12,8 +12,15 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Used by the code generation command line tools and tools in Visual Studio to generate strongly typed client-side objects for communicating with data services.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This class is not intended for public use and is used by the code generation command line tools and tools in Visual Studio to generate strongly typed client-side objects for communicating with data services.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,7 +35,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.Data.Services.Design.EntityClassGenerator" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -46,8 +53,8 @@
         <Parameter Name="languageOption" Type="System.Data.Services.Design.LanguageOption" />
       </Parameters>
       <Docs>
-        <param name="languageOption">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="languageOption">Selects the programming language.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.Data.Services.Design.EntityClassGenerator" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -65,8 +72,9 @@
         <ReturnType>System.Data.Services.Design.EdmToObjectNamespaceMap</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the <see langword="EdmToObjectNamespaceMap" /> object used in entity class generation.</summary>
+        <value>
+          <see langword="EdmToObjectNamespaceMap" /> object.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -88,10 +96,10 @@
         <Parameter Name="targetFilePath" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="sourceReader">To be added.</param>
-        <param name="targetFilePath">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="sourceReader">The XML reader object.</param>
+        <param name="targetFilePath">The string that contains the path to the target file.</param>
+        <summary>Generates code for the object model.</summary>
+        <returns>The list of schema errors that occurred during generation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -114,12 +122,19 @@
         <Parameter Name="namespacePrefix" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="sourceReader">To be added.</param>
-        <param name="targetWriter">To be added.</param>
-        <param name="namespacePrefix">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="sourceReader">The XML reader object.</param>
+        <param name="targetWriter">The text writer object.</param>
+        <param name="namespacePrefix">The string that contains the namespace prefix.</param>
+        <summary>Generates code for the data model from switches identified by parameters.</summary>
+        <returns>The list of schema errors that occurred during generation.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The `namespacePrefix` is used as the only namespace for types in the same namespace as the default container, or as a prefix for the server-provided namespace in all other cases. If `namespacePrefix` is `null`, the server-provided namespaces are used for all types.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="LanguageOption">
@@ -136,8 +151,8 @@
         <ReturnType>System.Data.Services.Design.LanguageOption</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the language option used in generation of the data model.</summary>
+        <value>Language option.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -155,7 +170,7 @@
         <ReturnType>System.EventHandler&lt;System.Data.Services.Design.PropertyGeneratedEventArgs&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a property is generated.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -173,7 +188,7 @@
         <ReturnType>System.EventHandler&lt;System.Data.Services.Design.TypeGeneratedEventArgs&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Occurs when a type is generated.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -191,8 +206,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets whether code generation should include the code that is required to support data binding.</summary>
+        <value>A <see cref="T:System.Boolean" /> value that is <see langword="true" /> when data binding code is required; otherwise <see langword="false" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -210,8 +225,8 @@
         <ReturnType>System.Data.Services.Design.DataServiceCodeVersion</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets and sets the version of [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] that the generated code targets.</summary>
+        <value>A <see cref="T:System.Data.Services.Design.DataServiceCodeVersion" /> value that indicates the version of the generated code.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

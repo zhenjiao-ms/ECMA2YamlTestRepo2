@@ -1,31 +1,18 @@
-	private void validateUserEntry5()
-	{
+    private void dataGridView1_UserDeletingRow(object sender,
+        System.Windows.Forms.DataGridViewRowCancelEventArgs e)
+    {
+        if (e.Row.Index < this.customers.Count)
+        {
+            // If the user has deleted an existing row, remove the 
+            // corresponding Customer object from the data store.
+            this.customers.RemoveAt(e.Row.Index);
+        }
 
-		// Checks the value of the text.
-
-		if(serverName.Text.Length == 0)
-		{
-
-			// Initializes the variables to pass to the MessageBox.Show method.
-
-			string message = "You did not enter a server name. Cancel this operation?";
-			string caption = "No Server Name Specified";
-			MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-			DialogResult result;
-
-			// Displays the MessageBox.
-
-			result = MessageBox.Show(this, message, caption, buttons);
-
-			if(result == DialogResult.Yes)
-			{
-
-				// Closes the parent form.
-
-				this.Close();
-
-			}
-
-		}
-
-	}
+        if (e.Row.Index == this.rowInEdit)
+        {
+            // If the user has deleted a newly created row, release
+            // the corresponding Customer object. 
+            this.rowInEdit = -1;
+            this.customerInEdit = null;
+        }
+    }

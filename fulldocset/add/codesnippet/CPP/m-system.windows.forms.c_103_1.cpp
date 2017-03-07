@@ -1,27 +1,12 @@
-   protected:
-      virtual void OnTextChanged( System::EventArgs^ e ) override
+   private:
+      void myButton_MouseEnter( Object^ /*sender*/, System::EventArgs^ /*e*/ )
       {
-         try
-         {
-            // Convert the text to a Double and determine
-            // if it is a negative number.
-            if ( Double::Parse( this->Text ) < 0 )
-            {
-               // If the number is negative, display it in Red.
-               this->ForeColor = Color::Red;
-            }
-            else
-            {
-               // If the number is not negative, display it in Black.
-               this->ForeColor = Color::Black;
-            }
-         }
-         catch ( Exception^ ) 
-         {
-            // If there is an error, display the
-            // text using the system colors.
-            this->ForeColor = SystemColors::ControlText;
-         }
+         // Hide the cursor when the mouse pointer enters the button.
+         ::Cursor::Hide();
+      }
 
-         TextBox::OnTextChanged( e );
+      void myButton_MouseLeave( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+      {
+         // Show the cursor when the mouse pointer leaves the button.
+         ::Cursor::Show();
       }

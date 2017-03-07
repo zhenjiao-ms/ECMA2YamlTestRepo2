@@ -1,169 +1,203 @@
+#using <System.Security.dll>
 #using <System.dll>
+#using <System.Xml.dll>
 
 using namespace System;
-using namespace System::IO;
+using namespace System::Xml;
 using namespace System::Security::Cryptography;
+using namespace System::Security::Cryptography::Xml;
 
-
-class RijndaelMemoryExample
+ref class TrippleDESDocumentEncryption
 {
+protected:
+   XmlDocument^ docValue;
+   TripleDES^ algValue;
+
 public:
-    static array<Byte>^ encryptStringToBytes_AES(String^ plainText, array<Byte>^ Key, array<Byte>^ IV)
-    {
-        // Check arguments.
-        if (!plainText || plainText->Length <= 0)
-            throw gcnew ArgumentNullException("plainText");
-        if (!Key || Key->Length <= 0)
-            throw gcnew ArgumentNullException("Key");
-        if (!IV  || IV->Length <= 0)
-            throw gcnew ArgumentNullException("IV");
+   TrippleDESDocumentEncryption( XmlDocument^ Doc, TripleDES^ Key )
+   {
+      if ( Doc != nullptr )
+      {
+         docValue = Doc;
+      }
+      else
+      {
+         throw gcnew ArgumentNullException( L"Doc" );
+      }
 
-        // Declare the streams used
-        // to encrypt to an in memory
-        // array of bytes.
-		MemoryStream^   msEncrypt;
-        CryptoStream^   csEncrypt;
-        StreamWriter^   swEncrypt;
-
-        // Declare the RijndaelManaged object
-        // used to encrypt the data.
-        RijndaelManaged^ aesAlg;
-
-        try
-        {
-            // Create a RijndaelManaged object
-            // with the specified key and IV.
-            aesAlg = gcnew RijndaelManaged();
-			aesAlg->Padding = PaddingMode::PKCS7;
-            aesAlg->Key = Key;
-            aesAlg->IV = IV;
-
-            // Create an encryptor to perform the stream transform.
-            ICryptoTransform^ encryptor = aesAlg->CreateEncryptor(aesAlg->Key, aesAlg->IV);
-
-            // Create the streams used for encryption.
-            msEncrypt = gcnew MemoryStream();
-			csEncrypt = gcnew CryptoStream(msEncrypt, encryptor, CryptoStreamMode::Write);
-            swEncrypt = gcnew StreamWriter(csEncrypt);
-
-            //Write all data to the stream.
-            swEncrypt->Write(plainText);
-			swEncrypt->Flush();
-			csEncrypt->FlushFinalBlock();
-			msEncrypt->Flush();
-        }
-        finally
-        {
-            // Clean things up.
-
-            // Close the streams.
-            if(swEncrypt)
-                swEncrypt->Close();
-            if (csEncrypt)
-                csEncrypt->Close();
+      if ( Key != nullptr )
+      {
+         algValue = Key;
+      }
+      else
+      {
+         throw gcnew ArgumentNullException( L"Key" );
+      }
+   }
 
 
-            // Clear the RijndaelManaged object.
-            if (aesAlg)
-                aesAlg->Clear();
-        }
+   property XmlDocument^ Doc
+   {
+      XmlDocument^ get()
+      {
+         return docValue;
+      }
 
-        // Return the encrypted bytes from the memory stream.
-        return msEncrypt->ToArray();
-    }
+      void set( XmlDocument^ value )
+      {
+         docValue = value;
+      }
 
-    static String^ decryptStringFromBytes_AES(array<Byte>^ cipherText, array<Byte>^ Key, array<Byte>^ IV)
-    {
-        // Check arguments.
-        if (!cipherText || cipherText->Length <= 0)
-            throw gcnew ArgumentNullException("cipherText");
-        if (!Key || Key->Length <= 0)
-            throw gcnew ArgumentNullException("Key");
-        if (!IV || IV->Length <= 0)
-            throw gcnew ArgumentNullException("IV");
+   }
 
-        // TDeclare the streams used
-        // to decrypt to an in memory
-        // array of bytes.
-        MemoryStream^ msDecrypt;
-        CryptoStream^ csDecrypt;
-        StreamReader^ srDecrypt;
+   property TripleDES^ Alg
+   {
+      TripleDES^ get()
+      {
+         return algValue;
+      }
 
-        // Declare the RijndaelManaged object
-        // used to decrypt the data.
-        RijndaelManaged^ aesAlg;
+      void set( TripleDES^ value )
+      {
+         algValue = value;
+      }
 
-        // Declare the string used to hold
-        // the decrypted text.
-        String^ plaintext;
+   }
+   void Clear()
+   {
+      if ( algValue != nullptr )
+      {
+         algValue->Clear();
+      }
+      else
+      {
+         throw gcnew Exception( L"No TripleDES key was found to clear." );
+      }
+   }
 
-        try
-        {
-            // Create a RijndaelManaged object
-            // with the specified key and IV.
-            aesAlg = gcnew RijndaelManaged();
-			aesAlg->Padding = PaddingMode::PKCS7;
-            aesAlg->Key = Key;
-            aesAlg->IV = IV;
+   void Encrypt( String^ Element )
+   {
 
-            // Create a decrytor to perform the stream transform.
-			ICryptoTransform^ decryptor = aesAlg->CreateDecryptor(aesAlg->Key, aesAlg->IV);
+      // Find the element by name and create a new
+      // XmlElement object.
+      XmlElement^ inputElement = dynamic_cast<XmlElement^>(docValue->GetElementsByTagName( Element )->Item( 0 ));
 
-            // Create the streams used for decryption.
-            msDecrypt = gcnew MemoryStream(cipherText);
-			csDecrypt = gcnew CryptoStream(msDecrypt, decryptor, CryptoStreamMode::Read);
-            srDecrypt = gcnew StreamReader(csDecrypt);
+      // If the element was not found, throw an exception.
+      if ( inputElement == nullptr )
+      {
+         throw gcnew Exception( L"The element was not found." );
+      }
 
-            // Read the decrypted bytes from the decrypting stream
-            // and place them in a string.
-            plaintext = srDecrypt->ReadToEnd();
-        }
-        finally
-        {
-            // Clean things up.
 
-            // Close the streams.
-            if (srDecrypt)
-                srDecrypt->Close();
-            if (csDecrypt)
-                csDecrypt->Close();
-            if (msDecrypt)
-                msDecrypt->Close();
+      // Create a new EncryptedXml object.
+      EncryptedXml^ exml = gcnew EncryptedXml( docValue );
 
-            // Clear the RijndaelManaged object.
-            if (aesAlg)
-                aesAlg->Clear();
-        }
+      // Encrypt the element using the symmetric key.
+      array<Byte>^rgbOutput = exml->EncryptData( inputElement, algValue, false );
 
-        return plaintext;
-    }
+      // Create an EncryptedData object and populate it.
+      EncryptedData^ ed = gcnew EncryptedData;
+
+      // Specify the namespace URI for XML encryption elements.
+      ed->Type = EncryptedXml::XmlEncElementUrl;
+
+      // Specify the namespace URI for the TrippleDES algorithm.
+      ed->EncryptionMethod = gcnew EncryptionMethod( EncryptedXml::XmlEncTripleDESUrl );
+
+      // Create a CipherData element.
+      ed->CipherData = gcnew CipherData;
+
+      // Set the CipherData element to the value of the encrypted XML element.
+      ed->CipherData->CipherValue = rgbOutput;
+
+      // Replace the plaintext XML elemnt with an EncryptedData element.
+      EncryptedXml::ReplaceElement( inputElement, ed, false );
+   }
+
+   void Decrypt()
+   {
+
+      // XmlElement object.
+      XmlElement^ encryptedElement = dynamic_cast<XmlElement^>(docValue->GetElementsByTagName( L"EncryptedData" )->Item( 0 ));
+
+      // If the EncryptedData element was not found, throw an exception.
+      if ( encryptedElement == nullptr )
+      {
+         throw gcnew Exception( L"The EncryptedData element was not found." );
+      }
+
+
+      // Create an EncryptedData object and populate it.
+      EncryptedData^ ed = gcnew EncryptedData;
+      ed->LoadXml( encryptedElement );
+
+      // Create a new EncryptedXml object.
+      EncryptedXml^ exml = gcnew EncryptedXml;
+
+      // Decrypt the element using the symmetric key.
+      array<Byte>^rgbOutput = exml->DecryptData( ed, algValue );
+
+      // Replace the encryptedData element with the plaintext XML elemnt.
+      exml->ReplaceData( encryptedElement, rgbOutput );
+   }
+
 };
 
 int main()
 {
-    try
-    {
-        String^ original = "Here is some data to encrypt!";
 
-        // Create a new instance of the RijndaelManaged
-        // class.  This generates a new key and initialization
-        // vector (IV).
-        RijndaelManaged^ myRijndael = gcnew RijndaelManaged();
+   // Create an XmlDocument object.
+   XmlDocument^ xmlDoc = gcnew XmlDocument;
 
-        // Encrypt the string to an array of bytes.
-		array<Byte>^ encrypted = RijndaelMemoryExample::encryptStringToBytes_AES(original, myRijndael->Key, myRijndael->IV);
+   // Load an XML file into the XmlDocument object.
+   try
+   {
+      xmlDoc->PreserveWhitespace = true;
+      xmlDoc->Load( L"test.xml" );
+   }
+   catch ( Exception^ e )
+   {
+      Console::WriteLine( e->Message );
+      return 0;
+   }
 
-        // Decrypt the bytes to a string.
-        String^ roundtrip = RijndaelMemoryExample::decryptStringFromBytes_AES(encrypted, myRijndael->Key, myRijndael->IV);
 
-        //Display the original data and the decrypted data.
-		Console::WriteLine("Original:   {0}", original);
-		Console::WriteLine("Round Trip: {0}", roundtrip);
-    }
-    catch (Exception^ e)
-    {
-		Console::WriteLine("Error: {0}", e->Message);
-    }
+   // Create a new TripleDES key.
+   TripleDESCryptoServiceProvider^ tDESkey = gcnew TripleDESCryptoServiceProvider;
 
-	return 0;
+   // Create a new instance of the TrippleDESDocumentEncryption object
+   // defined in this sample.
+   TrippleDESDocumentEncryption^ xmlTDES = gcnew TrippleDESDocumentEncryption( xmlDoc,tDESkey );
+   try
+   {
+
+      // Encrypt the "creditcard" element.
+      xmlTDES->Encrypt( L"creditcard" );
+
+      // Display the encrypted XML to the console.
+      Console::WriteLine( L"Encrypted XML:" );
+      Console::WriteLine();
+      Console::WriteLine( xmlTDES->Doc->OuterXml );
+
+      // Decrypt the "creditcard" element.
+      xmlTDES->Decrypt();
+
+      // Display the encrypted XML to the console.
+      Console::WriteLine();
+      Console::WriteLine( L"Decrypted XML:" );
+      Console::WriteLine();
+      Console::WriteLine( xmlTDES->Doc->OuterXml );
+   }
+   catch ( Exception^ e )
+   {
+      Console::WriteLine( e->Message );
+   }
+   finally
+   {
+
+      // Clear the TripleDES key.
+      xmlTDES->Clear();
+   }
+
+   return 1;
 }

@@ -1,67 +1,26 @@
-   // Declare ToolBar1.
-internal:
-   System::Windows::Forms::ToolBar^ ToolBar1;
-
-private:
-
-   // Initialize ToolBar1 with Bold(B), Italic(I), and 
-   // Underline(U) buttons.
-   void InitializeToolBar()
+   ToolStripControlHost^ dateTimePickerHost;
+   void InitializeDateTimePickerHost()
    {
-      ToolBar1 = gcnew ToolBar;
+      // Create a new ToolStripControlHost, passing in a control.
+      dateTimePickerHost = gcnew ToolStripControlHost( gcnew DateTimePicker );
       
-      // Set the appearance to Flat.
-      ToolBar1->Appearance = ToolBarAppearance::Flat;
+      // Set the font on the ToolStripControlHost, this will affect the hosted control.
+      dateTimePickerHost->Font =
+         gcnew System::Drawing::Font( L"Arial",7.0F,FontStyle::Italic );
       
-      // Set the toolbar to dock at the bottom of the form.
-      ToolBar1->Dock = DockStyle::Bottom;
+      // Set the Width property, this will also affect the hosted control.
+      dateTimePickerHost->Width = 100;
+      dateTimePickerHost->DisplayStyle = ToolStripItemDisplayStyle::Text;
       
-      // Set the toolbar font to 14 points and bold.
-      ToolBar1->Font = gcnew System::Drawing::Font( FontFamily::GenericSansSerif,14,FontStyle::Bold );
+      // Setting the Text property requires a string that converts to a
+      // DateTime type since that is what the hosted control requires.
+      dateTimePickerHost->Text = L"12/23/2005";
       
-      // Declare fontstyle array with the three font styles.
-      array<FontStyle>^ fonts = {FontStyle::Bold,FontStyle::Italic,FontStyle::Underline};
-      int count;
+      // Cast the Control property back to the original type to set a
+      // type-specific property.
+      (dynamic_cast<DateTimePicker^>(dateTimePickerHost->Control))->Format =
+         DateTimePickerFormat::Short;
       
-      // Create a button for each value in the array, setting its 
-      // text to the first letter of the style and its 
-      // button's tag property.
-      for ( count = 0; count < fonts->Length; count++ )
-      {
-         ToolBarButton^ fontButton = gcnew ToolBarButton( fonts[ count ].ToString()->Substring( 0, 1 ) );
-         fontButton->Style = ToolBarButtonStyle::ToggleButton;
-         fontButton->Tag = fonts[ count ];
-         ToolBar1->Buttons->Add( fontButton );
-
-      }
-      this->ToolBar1->ButtonClick += gcnew ToolBarButtonClickEventHandler( this, &Form1::ToolBar1_ButtonClick );
-      this->Controls->Add( this->ToolBar1 );
-   }
-
-   // Declare FontStyle object, which defaults to the Regular
-   // FontStyle.
-   FontStyle style;
-   void ToolBar1_ButtonClick( Object^ /*sender*/, System::Windows::Forms::ToolBarButtonClickEventArgs^ e )
-   {
-      // If a button is pushed, use a bitwise Or combination 
-      // of the style variable and the button tag, to set style to 
-      // the correct FontStyle. Set the button's PartialPush 
-      // property to true for a Windows XP-like appearance.
-      if ( e->Button->Pushed )
-      {
-         e->Button->PartialPush = true;
-         style = (FontStyle)(style | safe_cast<FontStyle>(e->Button->Tag));
-      }
-      else
-      {
-         // If the button was not pushed, use a bitwise XOR 
-         // combination to turn off that style 
-         // and set the PartialPush property to false.
-         e->Button->PartialPush = false;
-         style = (FontStyle)(style ^ safe_cast<FontStyle>(e->Button->Tag));
-      }
-
-      // Set the font using the existing RichTextBox font and the new
-      // style.
-      RichTextBox1->Font = gcnew System::Drawing::Font( RichTextBox1->Font,style );
+      // Add the control host to the ToolStrip.
+      toolStrip1->Items->Add( dateTimePickerHost );
    }

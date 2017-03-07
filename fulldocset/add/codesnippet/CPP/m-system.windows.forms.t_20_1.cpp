@@ -1,19 +1,39 @@
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
+public ref class Form1: public Form
+{
 private:
-   void MyButtonAddAllClick( Object^ /*sender*/, EventArgs^ /*e*/ )
+   TabControl^ tabControl1;
+   TabPage^ tabPage1;
+   TabPage^ tabPage2;
+   TabPage^ tabPage3;
+
+public:
+   Form1()
    {
+      this->tabControl1 = gcnew TabControl;
+      this->tabPage1 = gcnew TabPage( "tabPage1" );
+      this->tabPage2 = gcnew TabPage( "tabPage2" );
+      this->tabPage3 = gcnew TabPage( "tabPage3" );
       
-      // Get the 'myTreeNodeCollection' from the 'myTreeViewBase' TreeView.
-      TreeNodeCollection^ myTreeNodeCollection = myTreeViewBase->Nodes;
+      // Populates the tabControl1 with three tab pages.
+      array<TabPage^>^tabPages = {tabPage1,tabPage2,tabPage3};
+      this->tabControl1->TabPages->AddRange( tabPages );
       
-      // Create an array of 'TreeNodes'.
-      array<TreeNode^>^myTreeNodeArray = gcnew array<TreeNode^>(myTreeViewBase->Nodes->Count);
+      // Removes all the tab pages from tabControl1.
+      this->tabControl1->TabPages->Clear();
       
-      // Copy the tree nodes to the 'myTreeNodeArray' array.
-      myTreeViewBase->Nodes->CopyTo( myTreeNodeArray, 0 );
-      
-      // Remove all the tree nodes from the 'myTreeViewBase' TreeView.
-      myTreeViewBase->Nodes->Clear();
-      
-      // Add the 'myTreeNodeArray' to the 'myTreeViewCustom' TreeView.
-      myTreeViewCustom->Nodes->AddRange( myTreeNodeArray );
+      // Adds the tabPage1 back to tabControl1.
+      this->tabControl1->TabPages->Add( tabPage2 );
+      this->tabControl1->Location = Point(25,25);
+      this->tabControl1->Size = System::Drawing::Size( 250, 250 );
+      this->ClientSize = System::Drawing::Size( 300, 300 );
+      this->Controls->Add( tabControl1 );
    }
+
+};
+
+int main()
+{
+   Application::Run( gcnew Form1 );
+}

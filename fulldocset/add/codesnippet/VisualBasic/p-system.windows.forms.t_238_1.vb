@@ -1,36 +1,40 @@
-Public Class CustomizedTreeView
-    Inherits TreeView
-
-    Public Sub New()
-        ' Customize the TreeView control by setting various properties.
-        BackColor = System.Drawing.Color.CadetBlue
-        FullRowSelect = True
-        HotTracking = True
-        Indent = 34
-        ShowPlusMinus = False
-
-        ' The ShowLines property must be false for the FullRowSelect 
-        ' property to work.
-        ShowLines = False
-    End Sub 'New
-
-
-    Protected Overrides Sub OnAfterSelect(ByVal e As TreeViewEventArgs)
-        ' Confirm that the user initiated the selection.
-        ' This prevents the first node from expanding when it is
-        ' automatically selected during the initialization of 
-        ' the TreeView control.
-        If e.Action <> TreeViewAction.Unknown Then
-            If e.Node.IsExpanded Then
-                e.Node.Collapse()
-            Else
-                e.Node.Expand()
-            End If
+Public Class Class1
+    Private Shared WithEvents myTimer As New System.Windows.Forms.Timer()
+    Private Shared alarmCounter As Integer = 1
+    Private Shared exitFlag As Boolean = False    
+    
+    ' This is the method to run when the timer is raised.
+    Private Shared Sub TimerEventProcessor(myObject As Object, _
+                                           ByVal myEventArgs As EventArgs) _
+                                       Handles myTimer.Tick
+        myTimer.Stop()
+        
+        ' Displays a message box asking whether to continue running the timer.
+        If MessageBox.Show("Continue running?", "Count is: " & alarmCounter, _
+                            MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            ' Restarts the timer and increments the counter.
+            alarmCounter += 1
+            myTimer.Enabled = True
+        Else
+            ' Stops the timer.
+            exitFlag = True
         End If
+    End Sub
+    
+    Public Shared Sub Main()
+        ' Adds the event and the event handler for the method that will
+        ' process the timer event to the timer.
+        
+        ' Sets the timer interval to 5 seconds.
+        myTimer.Interval = 5000
+        myTimer.Start()
+        
+        ' Runs the timer, and raises the event.
+        While exitFlag = False
+            ' Processes all the events in the queue.
+            Application.DoEvents()
+        End While
 
-        ' Remove the selection. This allows the same node to be
-        ' clicked twice in succession to toggle the expansion state.
-        SelectedNode = Nothing
-    End Sub 'OnAfterSelect
+    End Sub    
 
-End Class 'CustomizedTreeView 
+End Class

@@ -1,12 +1,11 @@
- // Gets the attributes for the property.
- AttributeCollection attributes = 
-    TypeDescriptor.GetProperties(this)["MyProperty"].Attributes;
+ private void PrintIndexItem2() {
+    // Creates a new collection and assigns it the properties for button1.
+    PropertyDescriptorCollection properties =
+        TypeDescriptor.GetProperties(button1);
  
- // Checks to see whether the property is read-only.
- ReadOnlyAttribute myAttribute = 
-    (ReadOnlyAttribute)attributes[typeof(ReadOnlyAttribute)];
+    // Sets a PropertyDescriptor to the specific property.
+    PropertyDescriptor myProperty = properties["Opacity"];
  
- if(myAttribute.IsReadOnly) {
-    // Insert code here.
+    // Prints the display name for the property.
+    textBox1.Text = myProperty.DisplayName;
  }
- 

@@ -1,55 +1,31 @@
 using System;
-using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
-class Members
+
+public class X509
 {
-    static void Main(string[] args)
+
+    public static void Main()
     {
-        // Create a CryptoConfig object to store configuration information.
-        CryptoConfig cryptoConfig = new CryptoConfig();
 
-        // Retrieve the class path for CryptoConfig.
-        string classDescription = cryptoConfig.ToString();
+        // The path to the certificate.
+        string Certificate = "Certificate.cer";
 
-        // Create a new SHA1 provider.
-        SHA1CryptoServiceProvider SHA1alg = 
-            (SHA1CryptoServiceProvider)CryptoConfig.CreateFromName("SHA1");
+        // Load the certificate into an X509Certificate object.
+        X509Certificate cert = new X509Certificate(Certificate);
 
-        // Create an RSAParameters with the TestContainer key container.
-        CspParameters parameters = new CspParameters();
-        parameters.KeyContainerName = "TestContainer";
-        Object[] argsArray = new Object[] {parameters};
+        // Get the value.
+        string resultsTrue = cert.ToString(true);
 
-        // Instantiate the RSA provider instance accessing the TestContainer
-        // key container.
-        RSACryptoServiceProvider rsaProvider = (RSACryptoServiceProvider) 
-            CryptoConfig.CreateFromName("RSA",argsArray);
+        // Display the value to the console.
+        Console.WriteLine(resultsTrue);
 
-        // Use the MapNameToOID method to get an object identifier  
-        // (OID) from the string name of the SHA1 algorithm.
-        string sha1Oid = CryptoConfig.MapNameToOID("SHA1");
+        // Get the value.
+        string resultsFalse = cert.ToString(false);
 
-        // Encode the specified object identifier.
-        byte[] encodedMessage = CryptoConfig.EncodeOID(sha1Oid);
+        // Display the value to the console.
+        Console.WriteLine(resultsFalse);
 
-        // Display the results to the console.
-        Console.WriteLine("** " + classDescription + " **");
-        Console.WriteLine("Created an RSA provider " + 
-            "with a KeyContainerName called " + parameters.KeyContainerName +
-            ".");
-        Console.WriteLine("Object identifier from the SHA1 name:" + sha1Oid);
-        Console.WriteLine("The object identifier encoded: " + 
-            System.Text.Encoding.ASCII.GetString(encodedMessage));
-        Console.WriteLine("This sample completed successfully; " +
-            "press Enter to exit.");
-        Console.ReadLine();
     }
+
 }
-//
-// This sample produces the following output:
-//
-// ** System.Security.Cryptography.CryptoConfig **
-// Created an RSA provider with a KeyContainerName called TestContainer.
-// Object identifier from the SHA1 name:1.3.14.3.2.26
-// The object identifier encoded: HH*((*H9
-// This sample completed successfully; press Enter to exit.

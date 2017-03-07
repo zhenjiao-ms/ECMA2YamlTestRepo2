@@ -1,15 +1,19 @@
-// Gets the attributes for the property.
- AttributeCollection attributes = 
-    TypeDescriptor.GetProperties(this)["MyProperty"].Attributes;
- 
- // Checks to see if the value of the DesignerSerializationVisibilityAttribute is set to Content.
- if(attributes[typeof(DesignerSerializationVisibilityAttribute)].Equals(DesignerSerializationVisibilityAttribute.Content)) {
-    // Insert code here.
- }
- 
- // This is another way to see whether the property is marked as serializing content.
- DesignerSerializationVisibilityAttribute myAttribute = 
-    (DesignerSerializationVisibilityAttribute)attributes[typeof(DesignerSerializationVisibilityAttribute)];
- if(myAttribute.Visibility == DesignerSerializationVisibility.Content) {
-    // Insert code here.
- }
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            // Do not access the form's BackgroundWorker reference directly.
+            // Instead, use the reference provided by the sender parameter.
+            BackgroundWorker bw = sender as BackgroundWorker;
+
+            // Extract the argument.
+            int arg = (int)e.Argument;
+
+            // Start the time-consuming operation.
+            e.Result = TimeConsumingOperation(bw, arg);
+
+            // If the operation was canceled by the user, 
+            // set the DoWorkEventArgs.Cancel property to true.
+            if (bw.CancellationPending)
+            {
+                e.Cancel = true;
+            }
+        }

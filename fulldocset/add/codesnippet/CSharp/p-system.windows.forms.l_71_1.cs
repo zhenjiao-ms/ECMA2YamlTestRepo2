@@ -1,36 +1,32 @@
-    public ListViewInsertionMarkExample()
+    // Moves the insertion mark as the item is dragged.
+    private void myListView_DragOver(object sender, DragEventArgs e)
     {
-        // Initialize myListView.
-        myListView = new ListView();
-        myListView.Dock = DockStyle.Fill;
-        myListView.View = View.LargeIcon;
-        myListView.MultiSelect = false;
-        myListView.ListViewItemSorter = new ListViewIndexComparer();
+        // Retrieve the client coordinates of the mouse pointer.
+        Point targetPoint = 
+            myListView.PointToClient(new Point(e.X, e.Y));
 
-        // Initialize the insertion mark.
-        myListView.InsertionMark.Color = Color.Green;
+        // Retrieve the index of the item closest to the mouse pointer.
+        int targetIndex = myListView.InsertionMark.NearestIndex(targetPoint);
 
-        // Add items to myListView.
-        myListView.Items.Add("zero");
-        myListView.Items.Add("one");
-        myListView.Items.Add("two");
-        myListView.Items.Add("three");
-        myListView.Items.Add("four");
-        myListView.Items.Add("five");
-        
-        // Initialize the drag-and-drop operation when running
-        // under Windows XP or a later operating system.
-        if (OSFeature.Feature.IsPresent(OSFeature.Themes))
+        // Confirm that the mouse pointer is not over the dragged item.
+        if (targetIndex > -1) 
         {
-            myListView.AllowDrop = true;
-            myListView.ItemDrag += new ItemDragEventHandler(myListView_ItemDrag);
-            myListView.DragEnter += new DragEventHandler(myListView_DragEnter);
-            myListView.DragOver += new DragEventHandler(myListView_DragOver);
-            myListView.DragLeave += new EventHandler(myListView_DragLeave);
-            myListView.DragDrop += new DragEventHandler(myListView_DragDrop);
+            // Determine whether the mouse pointer is to the left or
+            // the right of the midpoint of the closest item and set
+            // the InsertionMark.AppearsAfterItem property accordingly.
+            Rectangle itemBounds = myListView.GetItemRect(targetIndex);
+            if ( targetPoint.X > itemBounds.Left + (itemBounds.Width / 2) )
+            {
+                myListView.InsertionMark.AppearsAfterItem = true;
+            }
+            else
+            {
+                myListView.InsertionMark.AppearsAfterItem = false;
+            }
         }
 
-        // Initialize the form.
-        this.Text = "ListView Insertion Mark Example";
-        this.Controls.Add(myListView);
+        // Set the location of the insertion mark. If the mouse is
+        // over the dragged item, the targetIndex value is -1 and
+        // the insertion mark disappears.
+        myListView.InsertionMark.Index = targetIndex;
     }

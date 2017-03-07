@@ -1,69 +1,58 @@
-<%@ page language="C#" %>
-<%@ register TagPrefix="uc1" 
-  TagName="DisplayModeMenuCS" 
-  Src="DisplayModeMenuCS.ascx" %>
-<%@ register tagprefix="aspSample" 
-  Namespace="Samples.AspNet.CS.Controls" 
-  Assembly="TextDisplayWebPartCS"%>
+<%@ Page Language="C#" AutoEventWireup="True" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<script runat="server">
-void Button1_Click(object sender, EventArgs e)
-{
-  WebPartManager1.DisplayMode = WebPartManager.CatalogDisplayMode;
-}
-</script>
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head id="Head1" runat="server">
-  <title>Web Parts Display Modes</title>
+<head runat="server">
+    <title>Calendar DayRender Example</title>
+<script runat="server">
+   
+      void DayRender(Object sender, DayRenderEventArgs e) 
+      {
+
+         // Change the background color of the days in the month
+         // to yellow.
+         if (!e.Day.IsOtherMonth && !e.Day.IsWeekend)
+         {
+            e.Cell.BackColor=System.Drawing.Color.Yellow;
+         }
+
+         // Add custom text to cell in the Calendar control.
+         if (e.Day.Date.Day == 18)
+         {
+            e.Cell.Controls.Add(new LiteralControl("<br />Holiday"));
+         }
+
+      }
+
+      void Page_Load(Object sender, EventArgs e)
+      {
+
+         // Manually register the event-handling method for the DayRender  
+         // event of the Calendar control.
+         Calendar1.DayRender += new DayRenderEventHandler(this.DayRender);
+
+      }
+
+   </script>
+ 
 </head>
+ 
 <body>
-  <form id="Form2" runat="server">
-    <asp:webpartmanager id="WebPartManager1" runat="server" />
-    <uc1:DisplayModeMenuCS ID="DisplayModeMenu1" runat="server" />
-    <asp:webpartzone
-      id="WebPartZone1"
-      runat="server" BackImageUrl="~/MyImage.gif">
-        <zonetemplate>
-          <asp:Calendar 
-            ID="Calendar1" 
-            Runat="server" 
-            Title="My Calendar" />
-        </zonetemplate>
-    </asp:webpartzone>
-    <asp:WebPartZone ID="WebPartZone2" Runat="server">
-    </asp:WebPartZone>
-    <asp:EditorZone ID="editzone1" Runat="server">
-      <ZoneTemplate>
-        <asp:AppearanceEditorPart 
-          ID="appearanceeditor1" 
-          Runat="server" />
-        <asp:LayoutEditorPart 
-          ID="LayoutEditorPart1" 
-          Runat="server" />
-      </ZoneTemplate>
-    </asp:EditorZone>
-    <asp:CatalogZone ID="catalogzone1" Runat="server">
-      <ZoneTemplate>
-        <asp:DeclarativeCatalogPart 
-          ID="declarativepart1" 
-          Runat="server">
-          <WebPartsTemplate>
-          <aspSample:TextDisplayWebPart 
-            runat="server"   
-            id="textwebpart" 
-            title = "Text Content WebPart" AllowClose="true"/>  
-          </WebPartsTemplate>
-        </asp:DeclarativeCatalogPart>
-      </ZoneTemplate>
-    </asp:CatalogZone>
-    <br />
-    <asp:button
-      id="button1"
-      runat="server"
-      text="Catalog Mode"
-      OnClick="Button1_Click"
-    />
-  </form>
+ 
+   <form id="form1" runat="server">
+
+      <h3>Calendar DayRender Example</h3>
+ 
+      <asp:Calendar id="Calendar1" 
+                    runat="server">
+
+         <WeekendDayStyle BackColor="gray">
+         </WeekendDayStyle>
+
+      </asp:Calendar>
+                   
+   </form>
+          
 </body>
 </html>
+   

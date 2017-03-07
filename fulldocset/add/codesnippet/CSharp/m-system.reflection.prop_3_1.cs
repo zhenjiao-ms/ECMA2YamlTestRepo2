@@ -1,85 +1,57 @@
 using System;
 using System.Reflection;
- 
-// Define a property.
-public class ClassWithProperty
-{
-    private string _caption = "A Default caption";
 
-    public string Caption
-    {
-        get { return _caption; }
-        set { if(_caption != value) _caption = value; }
-    }
-}
- 
 class Example
 {
-    public static void Main()
+    private static int _staticProperty = 41;
+    private int _instanceProperty = 42;
+
+    // Declare a public static property.
+    public static int StaticProperty
     {
-        ClassWithProperty test = new ClassWithProperty();
-        Console.WriteLine("The Caption property: {0}", test.Caption);
-        Console.WriteLine("----------");
-        // Get the type and PropertyInfo.
-        Type t = Type.GetType("ClassWithProperty");
-        PropertyInfo propInfo = t.GetProperty("Caption");
- 
-        // Get the public GetAccessors method.
-        MethodInfo[] methInfos = propInfo.GetAccessors();
-        Console.WriteLine("There are {0} accessors.",
-                          methInfos.Length);
-        for(int ctr = 0; ctr < methInfos.Length; ctr++) {
-           MethodInfo m = methInfos[ctr];
-           Console.WriteLine("Accessor #{0}:", ctr + 1);
-           Console.WriteLine("   Name: {0}", m.Name);
-           Console.WriteLine("   Visibility: {0}", GetVisibility(m));
-           Console.Write("   Property Type: ");
-           // Determine if this is the property getter or setter.
-           if (m.ReturnType == typeof(void)) {
-              Console.WriteLine("Setter");
-              Console.WriteLine("   Setting the property value.");
-              //  Set the value of the property.
-              m.Invoke(test, new object[] { "The Modified Caption" } );
-           }
-           else {
-              Console.WriteLine("Getter");
-              // Get the value of the property.
-              Console.WriteLine("   Property Value: {0}",
-                                m.Invoke(test, new object[] {} ));
-           }
-        }
-        Console.WriteLine("----------");
-        Console.WriteLine("The Caption property: {0}", test.Caption);
+        get { return _staticProperty; }
+        set { _staticProperty = value; }
     }
 
-    static string GetVisibility(MethodInfo m)
+    // Declare a public instance property.
+    public int InstanceProperty
     {
-       string visibility = "";
-       if (m.IsPublic)
-          return "Public";
-       else if (m.IsPrivate)
-          return "Private";
-       else
-          if (m.IsFamily)
-             visibility = "Protected ";
-          else if (m.IsAssembly)
-             visibility += "Assembly";
-       return visibility;
+        get { return _instanceProperty; }
+        set { _instanceProperty = value; }
+    }
+
+    public static void Main()
+    {
+        Console.WriteLine("Initial value of static property: {0}",
+            Example.StaticProperty);
+
+        // Get a type object that represents the Example type.
+        Type examType = typeof(Example);
+
+        // Change the static property value.
+        PropertyInfo piShared = examType.GetProperty("StaticProperty");
+        piShared.SetValue(null, 76);
+                 
+        Console.WriteLine("New value of static property: {0}",
+                          Example.StaticProperty);
+
+        // Create an instance of the Example class.
+        Example exam = new Example();
+
+        Console.WriteLine("\nInitial value of instance property: {0}", 
+                          exam.InstanceProperty);
+
+        // Change the instance property value.
+        PropertyInfo piInstance = examType.GetProperty("InstanceProperty");
+        piInstance.SetValue(exam, 37);
+                 
+        Console.WriteLine("New value of instance property: {0}",
+                          exam.InstanceProperty);
     }
 }
 // The example displays the following output:
-//       The Caption property: A Default caption
-//       ----------
-//       There are 2 accessors.
-//       Accessor #1:
-//          Name: get_Caption
-//          Visibility: Public
-//          Property Type: Getter
-//          Property Value: A Default caption
-//       Accessor #2:
-//          Name: set_Caption
-//          Visibility: Public
-//          Property Type: Setter
-//          Setting the property value.
-//       ----------
-//       The Caption property: The Modified Caption
+//       Initial value of static property: 41
+//       New value of static property: 76
+//
+//       Initial value of instance property: 42
+//       New value of instance property: 37

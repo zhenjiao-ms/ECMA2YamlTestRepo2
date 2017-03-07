@@ -1,30 +1,21 @@
-    Private Sub ValidateUserEntry5()
+    Private Sub dataGridView1_UserDeletingRow(ByVal sender As Object, _
+        ByVal e As System.Windows.Forms.DataGridViewRowCancelEventArgs) _
+        Handles dataGridView1.UserDeletingRow
 
-        ' Checks the value of the text.
+        If e.Row.Index < Me.customers.Count Then
 
-        If ServerName.Text.Length = 0 Then
+            ' If the user has deleted an existing row, remove the 
+            ' corresponding Customer object from the data store.
+            Me.customers.RemoveAt(e.Row.Index)
 
-            ' Initializes variables to pass to the MessageBox.Show method.
+        End If
 
-            Dim Message As String = "You did not enter a server name. Cancel this operation?"
-            Dim Caption As String = "No Server Name Specified"
-            Dim Buttons As Integer = MessageBoxButtons.YesNo
+        If e.Row.Index = Me.rowInEdit Then
 
-            Dim Result As DialogResult
-
-            'Displays a MessageBox using the Question icon and specifying the No button as the default.
-
-            Result = MessageBox.Show(Me, Message, Caption, MessageBoxButtons.YesNo)
-
-            ' Gets the result of the MessageBox display.
-
-            If Result = System.Windows.Forms.DialogResult.Yes Then
-
-                ' Closes the parent form.
-
-                Me.Close()
-
-            End If
+            ' If the user has deleted a newly created row, release
+            ' the corresponding Customer object. 
+            Me.rowInEdit = -1
+            Me.customerInEdit = Nothing
 
         End If
 

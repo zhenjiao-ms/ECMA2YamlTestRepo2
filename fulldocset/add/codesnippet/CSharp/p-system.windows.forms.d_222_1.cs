@@ -1,23 +1,31 @@
-   private void AddDataGridTableStyle()
-   {
-      // Create a new DataGridTableStyle and set MappingName.
-      DataGridTableStyle myGridStyle = 
-      new DataGridTableStyle();
-      myGridStyle.MappingName = "Customers";
+    // Draws column headers.
+    private void listView1_DrawColumnHeader(object sender,
+        DrawListViewColumnHeaderEventArgs e)
+    {
+        using (StringFormat sf = new StringFormat())
+        {
+            // Store the column text alignment, letting it default
+            // to Left if it has not been set to Center or Right.
+            switch (e.Header.TextAlign)
+            {
+                case HorizontalAlignment.Center:
+                    sf.Alignment = StringAlignment.Center;
+                    break;
+                case HorizontalAlignment.Right:
+                    sf.Alignment = StringAlignment.Far;
+                    break;
+            }
 
-      // Create two DataGridColumnStyle objects.
-      DataGridColumnStyle colStyle1 =
-      new DataGridTextBoxColumn();
-      colStyle1.MappingName = "firstName";
-      
-      DataGridColumnStyle colStyle2 =
-      new DataGridBoolColumn();
-      colStyle2.MappingName = "Current";
+            // Draw the standard header background.
+            e.DrawBackground();
 
-      // Add column styles to table style.
-      myGridStyle.GridColumnStyles.Add(colStyle1);
-      myGridStyle.GridColumnStyles.Add(colStyle2);   
-
-      // Add the grid style to the GridStylesCollection.
-      myDataGrid.TableStyles.Add(myGridStyle);
-   }
+            // Draw the header text.
+            using (Font headerFont =
+                        new Font("Helvetica", 10, FontStyle.Bold))
+            {
+                e.Graphics.DrawString(e.Header.Text, headerFont,
+                    Brushes.Black, e.Bounds, sf);
+            }
+        }
+        return;
+    }

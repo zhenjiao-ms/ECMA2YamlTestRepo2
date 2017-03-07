@@ -1,20 +1,14 @@
- Public Sub Printing()
-     Try
-         streamToPrint = New StreamReader(filePath)
-         Try
-             printFont = New Font("Arial", 10)
-             Dim pd As New PrintDocument()
-             AddHandler pd.PrintPage, AddressOf pd_PrintPage
-             pd.PrinterSettings.PrinterName = printer
-             ' Create a new instance of Margins with 1-inch margins.
-             Dim margins As New Margins(100, 100, 100, 100)
-             pd.DefaultPageSettings.Margins = margins
-             pd.Print()
-         Finally
-             streamToPrint.Close()
-         End Try
-     Catch ex As Exception
-         MessageBox.Show(ex.Message)
-     End Try
- End Sub 'Printing
-       
+        ' Add list of supported paper sizes found on the printer. 
+        ' The DisplayMember property is used to identify the property that will provide the display string.
+        comboPaperSize.DisplayMember = "PaperName"
+
+        Dim pkSize As PaperSize
+        For i = 0 to printDoc.PrinterSettings.PaperSizes.Count - 1
+            pkSize = printDoc.PrinterSettings.PaperSizes.Item(i)
+            comboPaperSize.Items.Add(pkSize)
+        Next
+
+        ' Create a PaperSize and specify the custom paper size through the constructor and add to combobox.
+        Dim pkCustomSize1 As New PaperSize("Custom Paper Size", 100, 200)
+
+        comboPaperSize.Items.Add(pkCustomSize1)

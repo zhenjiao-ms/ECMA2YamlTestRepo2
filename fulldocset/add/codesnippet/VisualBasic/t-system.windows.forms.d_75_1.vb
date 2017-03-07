@@ -1,13 +1,11 @@
-    Private Sub AddOutOfOfficeColumn()
-        Dim column As New DataGridViewCheckBoxColumn()
-        With column
-            .HeaderText = ColumnName.OutOfOffice.ToString()
-            .Name = ColumnName.OutOfOffice.ToString()
-            .AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
-            .FlatStyle = FlatStyle.Standard
-            .CellTemplate = New DataGridViewCheckBoxCell()
-            .CellTemplate.Style.BackColor = Color.Beige
-        End With
+    ' Updated the criteria label.
+    Private Sub dataGridView_AutoSizeColumnCriteriaChanged( _
+        ByVal sender As Object, _
+        ByVal args As DataGridViewAutoSizeColumnModeEventArgs) _
+        Handles DataGridView.AutoSizeColumnModeChanged
 
-        DataGridView1.Columns.Insert(0, column)
+        args.Column.DataGridView.Parent. _
+        Controls("flowlayoutpanel"). _
+        Controls(criteriaLabel).Text = _
+            criteriaLabel & args.Column.AutoSizeMode.ToString
     End Sub

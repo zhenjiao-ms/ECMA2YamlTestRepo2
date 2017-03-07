@@ -1,43 +1,44 @@
 using System;
-using System.Text;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.Versioning;
+using System.Threading;
+using System.Threading.Tasks;
 
-public sealed class App
+[assembly:TargetFramework(".NETFramework,Version=v4.6")]
+
+public class Example
 {
-    static void Main(string[] args)
-    {
-        String[] sign = new String[] { "<", "=", ">" };
+   public static void Main()
+   {
+      var tasks = new List<Task>();
+      Console.WriteLine("The current culture is {0}", 
+                        Thread.CurrentThread.CurrentCulture.Name);
+      Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
+      // Change the current culture to Portuguese (Brazil).
+      Console.WriteLine("Current culture changed to {0}",
+                        Thread.CurrentThread.CurrentCulture.Name);
+      Console.WriteLine("Application thread is thread {0}",
+                        Thread.CurrentThread.ManagedThreadId);
+      // Launch six tasks and display their current culture.
+      for (int ctr = 0; ctr <= 5; ctr++)
+         tasks.Add(Task.Run( () => {
+                               Console.WriteLine("Culture of task {0} on thread {1} is {2}",
+                                                 Task.CurrentId, 
+                                                 Thread.CurrentThread.ManagedThreadId,
+                                                 Thread.CurrentThread.CurrentCulture.Name);
+                            } ));                     
 
-        // The code below demonstrates how strings compare 
-        // differently for different cultures.
-        String s1 = "Coté", s2 = "coté", s3 = "côte";
-
-        // Set sort order of strings for French in France.
-        CompareInfo ci = new CultureInfo("fr-FR").CompareInfo;
-        Console.WriteLine("The LCID for {0} is {1}.", ci.Name, ci.LCID);
-      
-        // Display the result using fr-FR Compare of Coté = coté.  	
-        Console.WriteLine("fr-FR Compare: {0} {2} {1}",
-            s1, s2, sign[ci.Compare(s1, s2, CompareOptions.IgnoreCase) + 1]);
-
-        // Display the result using fr-FR Compare of coté > côte.
-        Console.WriteLine("fr-FR Compare: {0} {2} {1}",
-            s2, s3, sign[ci.Compare(s2, s3, CompareOptions.None) + 1]);
-
-        // Set sort order of strings for Japanese as spoken in Japan.
-        ci = new CultureInfo("ja-JP").CompareInfo;
-        Console.WriteLine("The LCID for {0} is {1}.", ci.Name, ci.LCID);
-
-        // Display the result using ja-JP Compare of coté < côte. 
-        Console.WriteLine("ja-JP Compare: {0} {2} {1}",
-            s2, s3, sign[ci.Compare(s2, s3) + 1]);
-    }
+      Task.WaitAll(tasks.ToArray());
+   }
 }
-
-// This code produces the following output.
-// 
-// The LCID for fr-FR is 1036.
-// fr-FR Compare: Coté = coté
-// fr-FR Compare: coté > côte
-// The LCID for ja-JP is 1041.
-// ja-JP Compare: coté < côte
+// The example displays output like the following:
+//     The current culture is en-US
+//     Current culture changed to pt-BR
+//     Application thread is thread 9
+//     Culture of task 2 on thread 11 is pt-BR
+//     Culture of task 1 on thread 10 is pt-BR
+//     Culture of task 3 on thread 11 is pt-BR
+//     Culture of task 5 on thread 11 is pt-BR
+//     Culture of task 6 on thread 11 is pt-BR
+//     Culture of task 4 on thread 10 is pt-BR

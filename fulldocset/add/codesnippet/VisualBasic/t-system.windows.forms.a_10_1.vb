@@ -1,86 +1,81 @@
-        ' Inner Class ChartControlAccessibleObject represents accessible information 
-        ' associated with the ChartControl.
-        ' The ChartControlAccessibleObject is returned in the         ' ChartControl.CreateAccessibilityInstance override.
-        Public Class ChartControlAccessibleObject
-            Inherits Control.ControlAccessibleObject
+Imports System
+Imports System.Drawing
+Imports System.Windows.Forms
 
-            Private chartControl As ChartControl
-            
-            Public Sub New(ctrl As ChartControl)
-                MyBase.New(ctrl)
-                chartControl = ctrl
-            End Sub 'New
-            
-            ' Get the role for the Chart. This is used by accessibility programs.            
-            Public Overrides ReadOnly Property Role() As AccessibleRole
-                Get
-                    Return System.Windows.Forms.AccessibleRole.Chart
-                End Get
-            End Property
-            
-            ' Get the state for the Chart. This is used by accessibility programs.            
-            Public Overrides ReadOnly Property State() As AccessibleStates
-                Get
-                    Return AccessibleStates.ReadOnly
-                End Get
-            End Property                        
-            
-            ' The CurveLegend objects are "child" controls in terms of accessibility so 
-            ' return the number of ChartLengend objects.            
-            Public Overrides Function GetChildCount() As Integer
-                Return chartControl.Legends.Length
-            End Function 
-            
-            ' Get the Accessibility object of the child CurveLegend idetified by index.
-            Public Overrides Function GetChild(index As Integer) As AccessibleObject
-                If index >= 0 And index < chartControl.Legends.Length Then
-                    Return chartControl.Legends(index).AccessibilityObject
-                End If
-                Return Nothing
-            End Function 
-            
-            ' Helper function that is used by the CurveLegend's accessibility object
-            ' to navigate between sibiling controls. Specifically, this function is used in
-            ' the CurveLegend.CurveLegendAccessibleObject.Navigate function.
-            Friend Function NavigateFromChild(child As CurveLegend.CurveLegendAccessibleObject, _
-                                            navdir As AccessibleNavigation) As AccessibleObject
-                Select Case navdir
-                    Case AccessibleNavigation.Down, AccessibleNavigation.Next
-                            Return GetChild(child.ID + 1)
-                    
-                    Case AccessibleNavigation.Up, AccessibleNavigation.Previous
-                            Return GetChild(child.ID - 1)
-                End Select
-                Return Nothing
-            End Function            
+Public Class Form1
+    Inherits Form
 
-            ' Helper function that is used by the CurveLegend's accessibility object
-            ' to select a specific CurveLegend control. Specifically, this function is used 
-            ' in the CurveLegend.CurveLegendAccessibleObject.Select function.            
-            Friend Sub SelectChild(child As CurveLegend.CurveLegendAccessibleObject, selection As AccessibleSelection)
-                Dim childID As Integer = child.ID
-                
-                ' Determine which selection action should occur, based on the
-                ' AccessibleSelection value.
-                If (selection And AccessibleSelection.TakeSelection) <> 0 Then
-                    Dim i As Integer
-                    For i = 0 To chartControl.Legends.Length - 1
-                        If i = childID Then
-                            chartControl.Legends(i).Selected = True
-                        Else
-                            chartControl.Legends(i).Selected = False
-                        End If
-                    Next i
-                    
-                    ' AccessibleSelection.AddSelection means that the CurveLegend will be selected.
-                    If (selection And AccessibleSelection.AddSelection) <> 0 Then
-                        chartControl.Legends(childID).Selected = True
-                    End If
+    'Entry point which delegates to C-style main Private Function
+    Public Overloads Shared Sub Main()
+        Main(System.Environment.GetCommandLineArgs())
+    End Sub
 
-                    ' AccessibleSelection.AddSelection means that the CurveLegend will be unselected.                    
-                    If (selection And AccessibleSelection.RemoveSelection) <> 0 Then
-                        chartControl.Legends(childID).Selected = False
-                    End If
-                End If
-            End Sub 'SelectChild
-        End Class 'ChartControlAccessibleObject
+    Private Overloads Shared Sub Main(ByVal args() As String)
+        Application.EnableVisualStyles()
+        Application.Run(New Form1())
+    End Sub 'Main
+
+    Private WithEvents FirstNameBox, LastNameBox As TextBox
+    Private WithEvents ValidateButton As Button
+    Private FlowLayout1 As FlowLayoutPanel
+
+    Private Sub New()
+    End Sub
+
+    Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
+        ' Turn off validation when a control loses focus. This will be inherited by child
+        ' controls on the form, enabling us to validate the entire form when the 
+        ' button is clicked instead of one control at a time.
+        Me.AutoValidate = System.Windows.Forms.AutoValidate.Disable
+
+        FlowLayout1 = New FlowLayoutPanel()
+        FlowLayout1.Dock = DockStyle.Fill
+
+        FirstNameBox = New TextBox()
+        FirstNameBox.Name = "FirstNameBox"
+        FirstNameBox.Location = New Point(10, 10)
+        FirstNameBox.Size = New Size(75, FirstNameBox.Size.Height)
+        FirstNameBox.CausesValidation = True
+        FlowLayout1.Controls.Add(FirstNameBox)
+
+        LastNameBox = New TextBox()
+        LastNameBox.Name = "LastNameBox"
+        LastNameBox.Location = New Point(90, 10)
+        LastNameBox.Size = New Size(75, LastNameBox.Size.Height)
+        LastNameBox.CausesValidation = True
+        FlowLayout1.Controls.Add(LastNameBox)
+
+        ValidateButton = New Button()
+        ValidateButton.Text = "Validate"
+        ValidateButton.Location = New Point(170, 10)
+        ValidateButton.Size = New Size(75, ValidateButton.Size.Height)
+        FlowLayout1.Controls.Add(ValidateButton)
+
+        Me.Text = "Test Validation"
+
+        Me.Controls.Add(FlowLayout1)
+    End Sub
+
+
+    Private Sub FirstNameBox_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles FirstNameBox.Validating
+        If FirstNameBox.Text.Length = 0 Then
+            e.Cancel = True
+        Else
+            e.Cancel = False
+        End If
+    End Sub
+
+
+    Private Sub LastNameBox_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles LastNameBox.Validating
+        e.Cancel = False
+    End Sub
+
+
+    Private Sub ValidateButton_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ValidateButton.Click
+        If ValidateChildren() Then
+            MessageBox.Show("Validation succeeded!")
+        Else
+            MessageBox.Show("Validation failed.")
+        End If
+    End Sub
+End Class

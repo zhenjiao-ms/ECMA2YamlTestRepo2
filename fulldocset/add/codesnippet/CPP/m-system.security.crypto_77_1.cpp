@@ -1,125 +1,203 @@
-//
-// This example signs a file specified by a URI 
-// using a detached signature. It then verifies  
-// the signed XML.
-//
 #using <System.Security.dll>
+#using <System.dll>
 #using <System.Xml.dll>
 
 using namespace System;
+using namespace System::Xml;
 using namespace System::Security::Cryptography;
 using namespace System::Security::Cryptography::Xml;
-using namespace System::Text;
-using namespace System::Xml;
 
-// Sign an XML file and save the signature in a new file.
-void SignDetachedResource( String^ URIString, String^ XmlSigFileName, RSA^ RSAKey )
+ref class TrippleDESDocumentEncryption
 {
-   
-   // Create a SignedXml object.
-   SignedXml^ signedXml = gcnew SignedXml;
-   
-   // Assign the key to the SignedXml object.
-   signedXml->SigningKey = RSAKey;
-   
-   // Create a reference to be signed.
-   Reference^ reference = gcnew Reference;
-   
-   // Add the passed URI to the reference object.
-   reference->Uri = URIString;
-   
-   // Add a transformation if the URI is an XML file.
-   if ( URIString->EndsWith( "xml" ) )
+protected:
+   XmlDocument^ docValue;
+   TripleDES^ algValue;
+
+public:
+   TrippleDESDocumentEncryption( XmlDocument^ Doc, TripleDES^ Key )
    {
-      
-      // Add the reference to the SignedXml object.
-      signedXml->AddReference( reference );
-      
-      // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-      KeyInfo^ keyInfo = gcnew KeyInfo;
-      keyInfo->AddClause( gcnew RSAKeyValue( safe_cast<RSA^>(RSAKey) ) );
-      signedXml->KeyInfo = keyInfo;
-      
-      // Compute the signature.
-      signedXml->ComputeSignature();
-      
-      // Get the XML representation of the signature and save
-      // it to an XmlElement object.
-      XmlElement^ xmlDigitalSignature = signedXml->GetXml();
-      
-      // Save the signed XML document to a file specified
-      // using the passed string.
-      XmlTextWriter^ xmltw = gcnew XmlTextWriter( XmlSigFileName,gcnew UTF8Encoding( false ) );
-      xmlDigitalSignature->WriteTo( xmltw );
-      xmltw->Close();
-   }
-}
-
-
-// Verify the signature of an XML file and return the result.
-Boolean VerifyDetachedSignature( String^ XmlSigFileName )
-{
-   
-   // Create a new XML document.
-   XmlDocument^ xmlDocument = gcnew XmlDocument;
-   
-   // Load the passed XML file into the document.
-   xmlDocument->Load( XmlSigFileName );
-   
-   // Create a new SignedXMl object.
-   SignedXml^ signedXml = gcnew SignedXml;
-   
-   // Find the S"Signature" node and create a new
-   // XmlNodeList object.
-   XmlNodeList^ nodeList = xmlDocument->GetElementsByTagName( "Signature" );
-   
-   // Load the signature node.
-   signedXml->LoadXml( safe_cast<XmlElement^>(nodeList->Item( 0 )) );
-   
-   // Check the signature and return the result.
-   return signedXml->CheckSignature();
-}
-
-
-int main()
-{
-   
-   // The URI to sign.
-   String^ resourceToSign = "http://www.microsoft.com";
-   
-   // The name of the file to which to save the XML signature.
-   String^ XmlFileName = "xmldsig.xml";
-   try
-   {
-      
-      // Generate a signing key.
-      RSACryptoServiceProvider^ Key = gcnew RSACryptoServiceProvider;
-      Console::WriteLine( "Signing: {0}", resourceToSign );
-      
-      // Sign the detached resourceand save the signature in an XML file.
-      SignDetachedResource( resourceToSign, XmlFileName, Key );
-      Console::WriteLine( "XML signature was succesfully computed and saved to {0}.", XmlFileName );
-      
-      // Verify the signature of the signed XML.
-      Console::WriteLine( "Verifying signature..." );
-      
-      //Verify the XML signature in the XML file.
-      bool result = VerifyDetachedSignature( XmlFileName );
-      
-      // Display the results of the signature verification to 
-      // the console.
-      if ( result )
+      if ( Doc != nullptr )
       {
-         Console::WriteLine( "The XML signature is valid." );
+         docValue = Doc;
       }
       else
       {
-         Console::WriteLine( "The XML signature is not valid." );
+         throw gcnew ArgumentNullException( L"Doc" );
+      }
+
+      if ( Key != nullptr )
+      {
+         algValue = Key;
+      }
+      else
+      {
+         throw gcnew ArgumentNullException( L"Key" );
       }
    }
-   catch ( CryptographicException^ e ) 
+
+
+   property XmlDocument^ Doc
+   {
+      XmlDocument^ get()
+      {
+         return docValue;
+      }
+
+      void set( XmlDocument^ value )
+      {
+         docValue = value;
+      }
+
+   }
+
+   property TripleDES^ Alg
+   {
+      TripleDES^ get()
+      {
+         return algValue;
+      }
+
+      void set( TripleDES^ value )
+      {
+         algValue = value;
+      }
+
+   }
+   void Clear()
+   {
+      if ( algValue != nullptr )
+      {
+         algValue->Clear();
+      }
+      else
+      {
+         throw gcnew Exception( L"No TripleDES key was found to clear." );
+      }
+   }
+
+   void Encrypt( String^ Element )
+   {
+
+      // Find the element by name and create a new
+      // XmlElement object.
+      XmlElement^ inputElement = dynamic_cast<XmlElement^>(docValue->GetElementsByTagName( Element )->Item( 0 ));
+
+      // If the element was not found, throw an exception.
+      if ( inputElement == nullptr )
+      {
+         throw gcnew Exception( L"The element was not found." );
+      }
+
+
+      // Create a new EncryptedXml object.
+      EncryptedXml^ exml = gcnew EncryptedXml( docValue );
+
+      // Encrypt the element using the symmetric key.
+      array<Byte>^rgbOutput = exml->EncryptData( inputElement, algValue, false );
+
+      // Create an EncryptedData object and populate it.
+      EncryptedData^ ed = gcnew EncryptedData;
+
+      // Specify the namespace URI for XML encryption elements.
+      ed->Type = EncryptedXml::XmlEncElementUrl;
+
+      // Specify the namespace URI for the TrippleDES algorithm.
+      ed->EncryptionMethod = gcnew EncryptionMethod( EncryptedXml::XmlEncTripleDESUrl );
+
+      // Create a CipherData element.
+      ed->CipherData = gcnew CipherData;
+
+      // Set the CipherData element to the value of the encrypted XML element.
+      ed->CipherData->CipherValue = rgbOutput;
+
+      // Replace the plaintext XML elemnt with an EncryptedData element.
+      EncryptedXml::ReplaceElement( inputElement, ed, false );
+   }
+
+   void Decrypt()
+   {
+
+      // XmlElement object.
+      XmlElement^ encryptedElement = dynamic_cast<XmlElement^>(docValue->GetElementsByTagName( L"EncryptedData" )->Item( 0 ));
+
+      // If the EncryptedData element was not found, throw an exception.
+      if ( encryptedElement == nullptr )
+      {
+         throw gcnew Exception( L"The EncryptedData element was not found." );
+      }
+
+
+      // Create an EncryptedData object and populate it.
+      EncryptedData^ ed = gcnew EncryptedData;
+      ed->LoadXml( encryptedElement );
+
+      // Create a new EncryptedXml object.
+      EncryptedXml^ exml = gcnew EncryptedXml;
+
+      // Decrypt the element using the symmetric key.
+      array<Byte>^rgbOutput = exml->DecryptData( ed, algValue );
+
+      // Replace the encryptedData element with the plaintext XML elemnt.
+      exml->ReplaceData( encryptedElement, rgbOutput );
+   }
+
+};
+
+int main()
+{
+
+   // Create an XmlDocument object.
+   XmlDocument^ xmlDoc = gcnew XmlDocument;
+
+   // Load an XML file into the XmlDocument object.
+   try
+   {
+      xmlDoc->PreserveWhitespace = true;
+      xmlDoc->Load( L"test.xml" );
+   }
+   catch ( Exception^ e )
+   {
+      Console::WriteLine( e->Message );
+      return 0;
+   }
+
+
+   // Create a new TripleDES key.
+   TripleDESCryptoServiceProvider^ tDESkey = gcnew TripleDESCryptoServiceProvider;
+
+   // Create a new instance of the TrippleDESDocumentEncryption object
+   // defined in this sample.
+   TrippleDESDocumentEncryption^ xmlTDES = gcnew TrippleDESDocumentEncryption( xmlDoc,tDESkey );
+   try
+   {
+
+      // Encrypt the "creditcard" element.
+      xmlTDES->Encrypt( L"creditcard" );
+
+      // Display the encrypted XML to the console.
+      Console::WriteLine( L"Encrypted XML:" );
+      Console::WriteLine();
+      Console::WriteLine( xmlTDES->Doc->OuterXml );
+
+      // Decrypt the "creditcard" element.
+      xmlTDES->Decrypt();
+
+      // Display the encrypted XML to the console.
+      Console::WriteLine();
+      Console::WriteLine( L"Decrypted XML:" );
+      Console::WriteLine();
+      Console::WriteLine( xmlTDES->Doc->OuterXml );
+   }
+   catch ( Exception^ e )
    {
       Console::WriteLine( e->Message );
    }
+   finally
+   {
 
+      // Clear the TripleDES key.
+      xmlTDES->Clear();
+   }
+
+   return 1;
 }

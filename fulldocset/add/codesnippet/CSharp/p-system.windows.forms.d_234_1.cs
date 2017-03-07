@@ -1,8 +1,18 @@
-    // Make the the entire DataGridView read only.
-    private void Button8_Click(object sender, System.EventArgs e)
+    public override void InitializeEditingControl(int rowIndex, object 
+        initialFormattedValue, DataGridViewCellStyle dataGridViewCellStyle)
     {
-        foreach (DataGridViewBand band in dataGridView.Columns)
+        // Set the value of the editing control to the current cell value.
+        base.InitializeEditingControl(rowIndex, initialFormattedValue, 
+            dataGridViewCellStyle);
+        CalendarEditingControl ctl = 
+            DataGridView.EditingControl as CalendarEditingControl;
+        // Use the default row value when Value property is null.
+        if (this.Value == null)
         {
-            band.ReadOnly = true;
+            ctl.Value = (DateTime)this.DefaultNewRowValue;
+        }
+        else
+        {
+            ctl.Value = (DateTime)this.Value;
         }
     }

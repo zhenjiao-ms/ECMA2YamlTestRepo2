@@ -1,18 +1,12 @@
-        ' Select the first row.
-        Private Sub button7_Click(ByVal sender As Object, ByVal e As EventArgs) Handles button7.Click
-            myDataGrid.Select(0)
-        End Sub 'button7_Click
-
-        ' Check if the first row is selected.
-        Private Sub button8_Click(ByVal sender As Object, ByVal e As EventArgs) Handles button8.Click
-            If myDataGrid.IsSelected(0) Then
-                MessageBox.Show("Row selected", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            Else
-                MessageBox.Show("Row not selected", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+    Protected Sub TextExpanded(myGrid As DataGrid)
+        ' Get the DataTable of the grid
+        Dim myTable As DataTable
+        ' Assuming the grid is bound to a DataTable
+        myTable = CType(myGrid.DataSource, DataTable)
+        Dim i As Integer
+        For i = 0 To myTable.Rows.Count - 1
+            If myGrid.IsExpanded(i) Then
+                Console.WriteLine(("Row " & i & " was expanded"))
             End If
-        End Sub 'button8_Click
-
-        ' Deselect the first row.
-        Private Sub button11_Click(ByVal sender As Object, ByVal e As EventArgs) Handles button11.Click
-            myDataGrid.UnSelect(0)
-        End Sub 'button11_Click
+        Next i
+    End Sub 'TextExpanded

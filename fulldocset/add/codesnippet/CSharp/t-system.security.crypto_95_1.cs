@@ -1,114 +1,202 @@
 using System;
+using System.Xml;
 using System.Security.Cryptography;
-using System.Text;
-using System.IO;
+using System.Security.Cryptography.Xml;
 
-class TrippleDESCSPSample
+class Program
 {
+	static void Main(string[] args)
+	{
 
-    static void Main()
-    {
-        try
-        {
-            // Create a new TripleDESCryptoServiceProvider object
-            // to generate a key and initialization vector (IV).
-            TripleDESCryptoServiceProvider tDESalg = new TripleDESCryptoServiceProvider();
+		// Create an XmlDocument object.
+		XmlDocument xmlDoc = new XmlDocument();
 
-            // Create a string to encrypt.
-            string sData = "Here is some data to encrypt.";
-            string FileName = "CText.txt";
+		// Load an XML file into the XmlDocument object.
+		try
+		{
+			xmlDoc.PreserveWhitespace = true;
+			xmlDoc.Load("test.xml");
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e.Message);
+		}
 
-            // Encrypt text to a file using the file name, key, and IV.
-            EncryptTextToFile(sData, FileName, tDESalg.Key, tDESalg.IV);
+		// Create a new RSA key.  This key will encrypt a symmetric key,
+		// which will then be imbedded in the XML document.  
+		RSA rsaKey = new RSACryptoServiceProvider();
 
-            // Decrypt the text from a file using the file name, key, and IV.
-            string Final = DecryptTextFromFile(FileName, tDESalg.Key, tDESalg.IV);
-            
-            // Display the decrypted string to the console.
-            Console.WriteLine(Final);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-       
-    }
 
-    public static void EncryptTextToFile(String Data, String FileName, byte[] Key, byte[] IV)
-    {
-        try
-        {
-            // Create or open the specified file.
-            FileStream fStream = File.Open(FileName,FileMode.OpenOrCreate);
+		try
+		{
+			// Encrypt the "creditcard" element.
+			Encrypt(xmlDoc, "creditcard", rsaKey, "rsaKey");
 
-            // Create a CryptoStream using the FileStream 
-            // and the passed key and initialization vector (IV).
-            CryptoStream cStream = new CryptoStream(fStream, 
-                new TripleDESCryptoServiceProvider().CreateEncryptor(Key,IV), 
-                CryptoStreamMode.Write); 
+			// Inspect the EncryptedKey element.
+			InspectElement(xmlDoc);
 
-            // Create a StreamWriter using the CryptoStream.
-            StreamWriter sWriter = new StreamWriter(cStream);
+			// Decrypt the "creditcard" element.
+			Decrypt(xmlDoc, rsaKey, "rsaKey");
 
-            // Write the data to the stream 
-            // to encrypt it.
-            sWriter.WriteLine(Data);
-  
-            // Close the streams and
-            // close the file.
-            sWriter.Close();
-            cStream.Close();
-            fStream.Close();
-        }
-        catch(CryptographicException e)
-        {
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
-        }
-        catch(UnauthorizedAccessException  e)
-        {
-            Console.WriteLine("A file access error occurred: {0}", e.Message);
-        }
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e.Message);
+		}
+		finally
+		{
+			// Clear the RSA key.
+			rsaKey.Clear();
+		}
 
-    }
+	}
 
-    public static string DecryptTextFromFile(String FileName, byte[] Key, byte[] IV)
-    {
-        try
-        {
-            // Create or open the specified file. 
-            FileStream fStream = File.Open(FileName, FileMode.OpenOrCreate);
-  
-            // Create a CryptoStream using the FileStream 
-            // and the passed key and initialization vector (IV).
-            CryptoStream cStream = new CryptoStream(fStream, 
-                new TripleDESCryptoServiceProvider().CreateDecryptor(Key,IV), 
-                CryptoStreamMode.Read); 
+	public static void Encrypt(XmlDocument Doc, string ElementToEncrypt, RSA Alg, string KeyName)
+	{
+		// Check the arguments.  
+		if (Doc == null)
+			throw new ArgumentNullException("Doc");
+		if (ElementToEncrypt == null)
+			throw new ArgumentNullException("ElementToEncrypt");
+		if (Alg == null)
+			throw new ArgumentNullException("Alg");
 
-            // Create a StreamReader using the CryptoStream.
-            StreamReader sReader = new StreamReader(cStream);
+		////////////////////////////////////////////////
+		// Find the specified element in the XmlDocument
+		// object and create a new XmlElemnt object.
+		////////////////////////////////////////////////
 
-            // Read the data from the stream 
-            // to decrypt it.
-            string val = sReader.ReadLine();
-    
-            // Close the streams and
-            // close the file.
-            sReader.Close();
-            cStream.Close();
-            fStream.Close();
+		XmlElement elementToEncrypt = Doc.GetElementsByTagName(ElementToEncrypt)[0] as XmlElement;
 
-            // Return the string. 
-            return val;
-        }
-        catch(CryptographicException e)
-        {
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
-            return null;
-        }
-        catch(UnauthorizedAccessException  e)
-        {
-            Console.WriteLine("A file access error occurred: {0}", e.Message);
-            return null;
-        }
-    }
+		// Throw an XmlException if the element was not found.
+		if (elementToEncrypt == null)
+		{
+			throw new XmlException("The specified element was not found");
+
+		}
+
+		//////////////////////////////////////////////////
+		// Create a new instance of the EncryptedXml class 
+		// and use it to encrypt the XmlElement with the 
+		// a new random symmetric key.
+		//////////////////////////////////////////////////
+
+		// Create a 256 bit Rijndael key.
+		RijndaelManaged sessionKey = new RijndaelManaged();
+		sessionKey.KeySize = 256;
+
+		EncryptedXml eXml = new EncryptedXml();
+
+		byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, sessionKey, false);
+
+		////////////////////////////////////////////////
+		// Construct an EncryptedData object and populate
+		// it with the desired encryption information.
+		////////////////////////////////////////////////
+
+
+		EncryptedData edElement = new EncryptedData();
+		edElement.Type = EncryptedXml.XmlEncElementUrl;
+
+		// Create an EncryptionMethod element so that the 
+		// receiver knows which algorithm to use for decryption.
+
+		edElement.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncAES256Url);
+
+		// Encrypt the session key and add it to an EncryptedKey element.
+		EncryptedKey ek = new EncryptedKey();
+
+		byte[] encryptedKey = EncryptedXml.EncryptKey(sessionKey.Key, Alg, false);
+
+		ek.CipherData = new CipherData(encryptedKey);
+
+		ek.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncRSA15Url);
+
+		// Set the KeyInfo element to specify the
+		// name of the RSA key.
+
+		// Create a new KeyInfo element.
+		edElement.KeyInfo = new KeyInfo();
+
+		// Create a new KeyInfoName element.
+		KeyInfoName kin = new KeyInfoName();
+
+		// Specify a name for the key.
+		kin.Value = KeyName;
+
+		// Add the KeyInfoName element to the 
+		// EncryptedKey object.
+		ek.KeyInfo.AddClause(kin);
+
+		// Add the encrypted key to the 
+		// EncryptedData object.
+
+		edElement.KeyInfo.AddClause(new KeyInfoEncryptedKey(ek));
+
+		// Add the encrypted element data to the 
+		// EncryptedData object.
+		edElement.CipherData.CipherValue = encryptedElement;
+
+		////////////////////////////////////////////////////
+		// Replace the element from the original XmlDocument
+		// object with the EncryptedData element.
+		////////////////////////////////////////////////////
+
+		EncryptedXml.ReplaceElement(elementToEncrypt, edElement, false);
+
+	}
+
+	public static void Decrypt(XmlDocument Doc, RSA Alg, string KeyName)
+	{
+		// Check the arguments.  
+		if (Doc == null)
+			throw new ArgumentNullException("Doc");
+		if (Alg == null)
+			throw new ArgumentNullException("Alg");
+		if (KeyName == null)
+			throw new ArgumentNullException("KeyName");
+
+		// Create a new EncryptedXml object.
+		EncryptedXml exml = new EncryptedXml(Doc);
+
+		// Add a key-name mapping.
+		// This method can only decrypt documents
+		// that present the specified key name.
+		exml.AddKeyNameMapping(KeyName, Alg);
+
+		// Decrypt the element.
+		exml.DecryptDocument();
+
+	}
+
+	static void InspectElement(XmlDocument Doc)
+	{
+		// Get the EncryptedData element from the XMLDocument object.
+		XmlElement encryptedData = Doc.GetElementsByTagName("EncryptedData")[0] as XmlElement;
+
+		// Create a new EncryptedData object.
+		EncryptedData encData = new EncryptedData();
+
+		// Load the XML from the document to
+		// initialize the EncryptedData object.
+		encData.LoadXml(encryptedData);
+
+		// Display the properties.
+		// Most values are Null by default.
+
+
+		
+		Console.WriteLine("EncryptedData.CipherData: " + encData.CipherData.GetXml().InnerXml);
+		Console.WriteLine("EncryptedData.Encoding: " + encData.Encoding);
+		Console.WriteLine("EncryptedData.EncryptionMethod: " + encData.EncryptionMethod.GetXml().InnerXml);
+		if (encData.EncryptionProperties.Count >= 1)
+		{
+			Console.WriteLine("EncryptedData.EncryptionProperties: " + encData.EncryptionProperties[0].GetXml().InnerXml);
+		}
+
+		Console.WriteLine("EncryptedData.Id: " + encData.Id);
+		Console.WriteLine("EncryptedData.KeyInfo: " + encData.KeyInfo.GetXml().InnerXml);
+		Console.WriteLine("EncryptedData.MimeType: " + encData.MimeType);
+	}
+
 }

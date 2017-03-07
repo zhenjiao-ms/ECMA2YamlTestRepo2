@@ -1,5 +1,6 @@
-                // Create a new auditing behavior and set the log location.
-                ServiceSecurityAuditBehavior newAudit = 
-                    new ServiceSecurityAuditBehavior();
-                newAudit.AuditLogLocation = 
-                    AuditLogLocation.Application;
+            KeyedByTypeCollection<IContractBehavior> behaviors = cd.Behaviors;
+            Console.WriteLine("\tDisplay all behaviors:");
+            foreach (IContractBehavior behavior in behaviors)
+            {
+                Console.WriteLine("\t\t" + behavior.ToString());
+            }

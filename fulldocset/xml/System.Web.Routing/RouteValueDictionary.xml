@@ -30,8 +30,25 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a case-insensitive collection of key/value pairs that you use in various places in the routing framework, such as when you define the default values for a route or when you generate a URL that is based on a route.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The RouteValueDictionary class enables you to work with collections of key/value pairs that are required in order to use ASP.NET routing. You use the RouteValueDictionary object to define values for the <xref:System.Web.Routing.Route.Constraints%2A>, <xref:System.Web.Routing.Route.DataTokens%2A>, and <xref:System.Web.Routing.Route.Defaults%2A> properties. You also use a RouteValueDictionary object when you generate a URL by calling the <xref:System.Web.Routing.RouteCollection.GetVirtualPath%2A> method and passing a RouteValueDictionary object as a parameter.  
+  
+ Every key in a RouteValueDictionary object must be unique. The RouteValueDictionary class uses case-insensitive ordinal comparison. For more information, see <xref:System.StringComparer.OrdinalIgnoreCase%2A>. A key cannot be `null`.  
+  
+   
+  
+## Examples  
+ The following example shows how to create a <xref:System.Web.Routing.Route> object and how to set the <xref:System.Web.Routing.Route.Constraints%2A>, <xref:System.Web.Routing.Route.DataTokens%2A>, and <xref:System.Web.Routing.Route.Defaults%2A> properties.  
+  
+ [!code-cs[System.Web.Routing.Route.ctor#1](~/add/codesnippet/csharp/t-system.web.routing.rou_1_1.asax)]
+ [!code-vb[System.Web.Routing.Route.ctor#1](~/add/codesnippet/visualbasic/t-system.web.routing.rou_1_1.asax)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -49,8 +66,15 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Initializes a new instance of the <see cref="T:System.Web.Routing.RouteValueDictionary" /> class that is empty.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ You can add elements to a <xref:System.Web.Routing.RouteValueDictionary> object by calling the <xref:System.Web.Routing.RouteValueDictionary.Add%2A> method.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -70,9 +94,20 @@
         <Parameter Name="dictionary" Type="System.Collections.Generic.IDictionary&lt;System.String,System.Object&gt;" />
       </Parameters>
       <Docs>
-        <param name="dictionary">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="dictionary">A collection whose elements are copied to the new collection.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.Web.Routing.RouteValueDictionary" /> class and adds elements from the specified collection.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Every key in a <xref:System.Web.Routing.RouteValueDictionary> object must be unique. The <xref:System.Web.Routing.RouteValueDictionary> class uses case-insensitive ordinal comparison. For more information, see <xref:System.StringComparer.OrdinalIgnoreCase%2A>. A key cannot be `null`.  
+  
+ ]]></format>
+        </remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="dictionary" /> is <see langword="null" />.</exception>
+        <exception cref="T:System.ArgumentException">
+          <paramref name="dictionary" /> contains one or more duplicate keys.</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -92,9 +127,24 @@
         <Parameter Name="values" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="values">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="values">An object that contains properties that will be added as elements to the new collection.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.Web.Routing.RouteValueDictionary" /> class and adds values that are based on properties from the specified object.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Every key in a <xref:System.Web.Routing.RouteValueDictionary> object must be unique according to the dictionary's equality comparer. The <xref:System.Web.Routing.RouteValueDictionary> class uses case-insensitive ordinal comparison. For more information, see <xref:System.StringComparer.OrdinalIgnoreCase%2A>. A key cannot be `null`.  
+  
+   
+  
+## Examples  
+ The following example shows how to create a <xref:System.Web.Routing.Route> object and how to set the <xref:System.Web.Routing.Route.Constraints%2A>, <xref:System.Web.Routing.Route.DataTokens%2A>, and <xref:System.Web.Routing.Route.Defaults%2A> properties.  
+  
+ [!code-cs[System.Web.Routing.Route.ctor#1](~/add/codesnippet/csharp/m-system.web.routing.rou_0_1.asax)]
+ [!code-vb[System.Web.Routing.Route.ctor#1](~/add/codesnippet/visualbasic/m-system.web.routing.rou_0_1.asax)]  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Add">
@@ -118,9 +168,9 @@
         <Parameter Name="value" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="key">The key of the element to add.</param>
+        <param name="value">The value of the element to add.</param>
+        <summary>Adds the specified value to the dictionary by using the specified key.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -142,7 +192,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Removes all keys and values from the dictionary.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -166,9 +216,10 @@
         <Parameter Name="key" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="key">The key to locate in the dictionary.</param>
+        <summary>Determines whether the dictionary contains the specified key.</summary>
+        <returns>
+          <see langword="true" /> if the dictionary contains an element that has the specified key; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -192,9 +243,10 @@
         <Parameter Name="value" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="value">The value to locate in the dictionary.</param>
+        <summary>Determines whether the dictionary contains a specific value.</summary>
+        <returns>
+          <see langword="true" /> if the dictionary contains an element that has the specified value; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -215,8 +267,8 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the number of key/value pairs that are in the collection.</summary>
+        <value>The number of key/value pairs that are in the collection.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -238,8 +290,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns an enumerator that you can use to iterate through the dictionary.</summary>
+        <returns>A structure for reading data in the dictionary.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -263,9 +315,9 @@
         <Parameter Name="key" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <param name="key">The key of the value to get or set.</param>
+        <summary>Gets or sets the value that is associated with the specified key.</summary>
+        <value>The value that is associated with the specified key, or <see langword="null" /> if the key does not exist in the collection.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -286,8 +338,8 @@
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.Object&gt;+KeyCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a collection that contains the keys in the dictionary.</summary>
+        <value>A collection that contains the keys in the dictionary.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -311,9 +363,10 @@
         <Parameter Name="key" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="key">The key of the element to remove.</param>
+        <summary>Removes the value that has the specified key from the dictionary.</summary>
+        <returns>
+          <see langword="true" /> if the element is found and removed; otherwise, <see langword="false" />. This method returns <see langword="false" /> if <paramref name="key" /> is not found in the dictionary.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -528,9 +581,16 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>For a description of this member, see <see cref="System.Collections.IEnumerable.GetEnumerator%2A" />.</summary>
+        <returns>A structure for reading data in the dictionary.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This member is an explicit interface member implementation. It can be used only when the <xref:System.Web.Routing.RouteValueDictionary> instance is cast to an <xref:System.Collections.IEnumerable> interface.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="TryGetValue">
@@ -554,11 +614,21 @@
         <Parameter Name="value" Type="System.Object&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="key">The key of the value to get.</param>
+        <param name="value">When this method returns, contains the value that is associated with the specified key, if the key is found; otherwise, contains the appropriate default value for the type of the <c>value</c> parameter that you provided as an <see langword="out" /> parameter. This parameter is passed uninitialized.</param>
+        <summary>Gets a value that indicates whether a value is associated with the specified key.</summary>
+        <returns>
+          <see langword="true" /> if the dictionary contains an element that has the specified key; otherwise, <see langword="false" />.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This method combines the functionality of the <xref:System.Web.Routing.RouteValueDictionary.ContainsKey%2A> method and the <xref:System.Web.Routing.RouteValueDictionary.Item%2A> property.  
+  
+ If the key is not found, the `value` parameter is assigned the appropriate default value for the type, such as 0 (zero) for integer types, `false` for Boolean types, and `null` for reference types.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Values">
@@ -578,8 +648,8 @@
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.Object&gt;+ValueCollection</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a collection that contains the values in the dictionary.</summary>
+        <value>A collection that contains the values in the dictionary.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

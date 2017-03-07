@@ -1,16 +1,20 @@
-private void GetMyData3() {
-    // Creates a new data object using a string and the text format.
-    string myString = "My new text string";
-    DataObject myDataObject = new DataObject(DataFormats.Text, myString);
- 
-    // Prints the string in a text box with autoconvert = false.
-    if(myDataObject.GetData("System.String", false) != null) {
-       // Prints the string in a text box.
-       textBox1.Text = myDataObject.GetData("System.String", false).ToString() + '\n';
-    } else
-       textBox1.Text = "Could not find data of the specified format" + '\n';
- 
-    // Prints the string in a text box with autoconvert = true.
-    textBox1.Text += myDataObject.GetData("System.String", true).ToString();
- }
- 
+      private void button1_Click(object sender, EventArgs e)
+      {
+         ColorDialog myColorDialog = new ColorDialog();
+         // Disable selecting a custom color.
+         myColorDialog.AllowFullOpen = false ;
+         // Enable the help button.
+         myColorDialog.ShowHelp = true ;
+         // Set the initial color to the current color.
+         myColorDialog.Color = myDataGrid.HeaderBackColor;
+         // Show color dialog box.
+         myColorDialog.ShowDialog();
+         // Set the header background color.   
+         myDataGrid.HeaderBackColor  = myColorDialog.Color;
+         
+      }
+      // Reset the header background color.
+      private void button2_Click(object sender, EventArgs e)
+      {           
+         myDataGrid.ResetHeaderBackColor();
+      }

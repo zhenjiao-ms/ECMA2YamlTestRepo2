@@ -1,18 +1,33 @@
-    Private Sub DataGridView1_SortCompare( _
-        ByVal sender As Object, ByVal e As DataGridViewSortCompareEventArgs) _
-        Handles DataGridView1.SortCompare
+    Private Sub DataGridView1_DataError(ByVal sender As Object, _
+    ByVal e As DataGridViewDataErrorEventArgs) _
+    Handles DataGridView1.DataError
 
-        ' Try to sort based on the contents of the cell in the current column.
-        e.SortResult = System.String.Compare(e.CellValue1.ToString(), _
-            e.CellValue2.ToString())
+        MessageBox.Show("Error happened " _
+            & e.Context.ToString())
 
-        ' If the cells are equal, sort based on the ID column.
-        If (e.SortResult = 0) AndAlso Not (e.Column.Name = "ID") Then
-            e.SortResult = System.String.Compare( _
-                DataGridView1.Rows(e.RowIndex1).Cells("ID").Value.ToString(), _
-                DataGridView1.Rows(e.RowIndex2).Cells("ID").Value.ToString())
+        If (e.Context = DataGridViewDataErrorContexts.Commit) _
+            Then
+            MessageBox.Show("Commit error")
+        End If
+        If (e.Context = DataGridViewDataErrorContexts _
+            .CurrentCellChange) Then
+            MessageBox.Show("Cell change")
+        End If
+        If (e.Context = DataGridViewDataErrorContexts.Parsing) _
+            Then
+            MessageBox.Show("parsing error")
+        End If
+        If (e.Context = _
+            DataGridViewDataErrorContexts.LeaveControl) Then
+            MessageBox.Show("leave control error")
         End If
 
-        e.Handled = True
+        If (TypeOf (e.Exception) Is ConstraintException) Then
+            Dim view As DataGridView = CType(sender, DataGridView)
+            view.Rows(e.RowIndex).ErrorText = "an error"
+            view.Rows(e.RowIndex).Cells(e.ColumnIndex) _
+                .ErrorText = "an error"
 
+            e.ThrowException = False
+        End If
     End Sub

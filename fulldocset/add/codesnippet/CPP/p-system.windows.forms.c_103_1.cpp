@@ -1,41 +1,29 @@
-      // Create three buttons and place them on a form using
-      // several size and location related properties.
-      void AddOKCancelButtons()
+      // Add a button to a form and set some of its common properties.
+   private:
+      void AddMyButton()
       {
-         
-         // Set the button size and location using
-         // the Size and Location properties.
-         Button^ buttonOK = gcnew Button;
-         buttonOK->Location = Point(136,248);
-         buttonOK->Size = System::Drawing::Size( 75, 25 );
-         
-         // Set the Text property and make the
-         // button the form's default button.
-         buttonOK->Text = "&OK";
-         this->AcceptButton = buttonOK;
-         
-         // Set the button size and location using the Top,
-         // Left, Width, and Height properties.
-         Button^ buttonCancel = gcnew Button;
-         buttonCancel->Top = buttonOK->Top;
-         buttonCancel->Left = buttonOK->Right + 5;
-         buttonCancel->Width = buttonOK->Width;
-         buttonCancel->Height = buttonOK->Height;
-         
-         // Set the Text property and make the
-         // button the form's cancel button.
-         buttonCancel->Text = "&Cancel";
-         this->CancelButton = buttonCancel;
-         
-         // Set the button size and location using
-         // the Bounds property.
-         Button^ buttonHelp = gcnew Button;
-         buttonHelp->Bounds = Rectangle(10,10,75,25);
-         
-         // Set the Text property of the button.
-         buttonHelp->Text = "&Help";
-         
-         // Add the buttons to the form.
-         array<Control^>^temp1 = {buttonOK,buttonCancel,buttonHelp};
-         this->Controls->AddRange( temp1 );
+         // Create a button and add it to the form.
+         Button^ button1 = gcnew Button;
+
+         // Anchor the button to the bottom right corner of the form
+         button1->Anchor = static_cast<AnchorStyles>(AnchorStyles::Bottom | AnchorStyles::Right);
+
+         // Assign a background image.
+         button1->BackgroundImage = imageList1->Images[ 0 ];
+
+         // Specify the layout style of the background image. Tile is the default.
+         button1->BackgroundImageLayout = ImageLayout::Center;
+
+         // Make the button the same size as the image.
+         button1->Size = button1->BackgroundImage->Size;
+
+         // Set the button's TabIndex and TabStop properties.
+         button1->TabIndex = 1;
+         button1->TabStop = true;
+
+         // Add a delegate to handle the Click event.
+         button1->Click += gcnew System::EventHandler( this, &Form1::button1_Click );
+
+         // Add the button to the form.
+         this->Controls->Add( button1 );
       }

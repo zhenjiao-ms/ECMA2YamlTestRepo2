@@ -1,36 +1,85 @@
 using System;
 using System.IO;
-using System.Xml.Serialization;
 using System.Xml;
-using System.Xml.Schema;
+using System.Xml.Serialization; 
 
-public class Group{
-   public string GroupName;
+public class Student
+{
+    [XmlAttributeAttribute]
+    public string Name;
+
+    [XmlNamespaceDeclarationsAttribute]
+    public XmlSerializerNamespaces myNamespaces;
+
 }
+    
+public class Run
+{
+    public static void Main()
+    {
+        Run test = new Run();
+        test.SerializeStudent("Student.xml");
+        test.DeserializeStudent("Student.xml");
+    }
 
-public class Test{
-   static void Main(){
-      Test t = new Test();
-      // Deserialize the file containing unknown elements.
-      t.DeserializeObject("UnknownElements.xml");
-   }
-   private void Serializer_UnknownElement(object sender, XmlElementEventArgs e){
-      Console.WriteLine("Unknown Element");
-      Console.WriteLine("\t" + e.Element.Name + " " + e.Element.InnerXml);
-      Console.WriteLine("\t LineNumber: " + e.LineNumber);
-      Console.WriteLine("\t LinePosition: " + e.LinePosition);
-      
-      Group x  = (Group) e.ObjectBeingDeserialized;
-      Console.WriteLine (x.GroupName);
-      Console.WriteLine (sender.ToString());
-   }
-   private void DeserializeObject(string filename){
-      XmlSerializer ser = new XmlSerializer(typeof(Group));
-      // Add a delegate to handle unknown element events.
-      ser.UnknownElement+=new XmlElementEventHandler(Serializer_UnknownElement);
-      // A FileStream is needed to read the XML document.
-     FileStream fs = new FileStream(filename, FileMode.Open);
-     Group g = (Group) ser.Deserialize(fs);
-     fs.Close();
-   	}
+    public void SerializeStudent(string filename)
+    {
+        XmlAttributes atts = new XmlAttributes();
+        // Set to true to preserve namespaces, 
+	// or false to ignore them.
+        atts.Xmlns=true;
+
+        XmlAttributeOverrides xover = new XmlAttributeOverrides();
+        // Add the XmlAttributes and specify the name of the element 
+	// containing namespaces.
+        xover.Add(typeof(Student),"myNamespaces", atts);
+        // Create the XmlSerializer using the 
+		// XmlAttributeOverrides object.
+        XmlSerializer xser = new XmlSerializer(typeof (Student),xover);
+
+        Student myStudent = new Student();
+        XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
+        ns.Add("myns1", "http://www.cpandl.com");
+        ns.Add("myns2", "http://www.cohowinery.com");
+        myStudent.myNamespaces= ns;
+        myStudent.Name= "Student1";
+
+        FileStream fs = new FileStream(filename,FileMode.Create);
+
+        xser.Serialize(fs,myStudent);
+        fs.Close();
+
+    }
+
+    private void DeserializeStudent(string filename)
+    {
+        XmlAttributes atts = new XmlAttributes();
+        // Set to true to preserve namespaces, or false to ignore them.
+        atts.Xmlns=true;
+
+        XmlAttributeOverrides xover = new XmlAttributeOverrides();
+        // Add the XmlAttributes and specify the name of the 
+        // element containing namespaces.
+        xover.Add(typeof(Student),"myNamespaces", atts);
+
+        // Create the XmlSerializer using the 
+        // XmlAttributeOverrides object.
+        XmlSerializer xser = 
+        new XmlSerializer(typeof (Student),xover);
+
+        FileStream fs = new FileStream(filename,FileMode.Open);
+
+        Student myStudent;
+        myStudent= (Student) xser.Deserialize(fs);
+        fs.Close();
+
+        // Use the ToArray method to get an array of 
+        // XmlQualifiedName objects.
+        XmlQualifiedName[] qNames= myStudent.myNamespaces.ToArray();
+        for(int i = 0; i < qNames.Length;i++)
+        {
+            Console.WriteLine("{0}:{1}", 
+	    qNames[i].Name,qNames[i].Namespace);
+        }
+    }
 }

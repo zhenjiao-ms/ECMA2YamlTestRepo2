@@ -1,3 +1,1 @@
-            // Create a SymmetricSecurityBindingElement.
-            SymmetricSecurityBindingElement ssbe = 
-                new SymmetricSecurityBindingElement();
+            BasicHttpBinding binding = new BasicHttpBinding();

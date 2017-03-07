@@ -1,15 +1,22 @@
-        ' From textReaderText, create a continuous paragraph 
-        ' with two spaces between each sentence.
-        Dim aLine, aParagraph As String
-        Dim strReader As New StringReader(textReaderText)
-        While True
-            aLine = strReader.ReadLine()
-            If aLine Is Nothing Then
-                aParagraph = aParagraph & vbCrLf
-                Exit While
-            Else
-                aParagraph = aParagraph & aLine & " "
-            End If
-        End While
-        Console.WriteLine("Modified text:" & vbCrLf & vbCrLf & _ 
-            aParagraph)
+Imports System.IO
+
+Module Module1
+
+    Sub Main()
+        ReadCharacters()
+    End Sub
+
+    Async Sub ReadCharacters()
+        Dim stringToRead = "Some characters to read but not all"
+        Dim charsRead(stringToRead.Length) As Char
+
+        Using reader As StringReader = New StringReader(stringToRead)
+            Await reader.ReadAsync(charsRead, 0, 23)
+            Console.WriteLine(charsRead)
+        End Using
+    End Sub
+
+End Module
+' The example displays the following output:
+' Some characters to read
+'

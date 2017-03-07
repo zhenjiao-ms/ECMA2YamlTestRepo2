@@ -1,23 +1,12 @@
-private:
-   void InitializeMyMainMenu()
+   void CloneMyMenu()
    {
-      // Create the 2 menus and the menu items to add.
-      MainMenu^ mainMenu1 = gcnew MainMenu;
-      MainMenu^ mainMenu2 = gcnew MainMenu;
-      MenuItem^ menuItem1 = gcnew MenuItem;
-      MenuItem^ menuItem2 = gcnew MenuItem;
+      // Determine if mainMenu1 is currently hosted on the form.
+      if ( mainMenu1->GetForm() != nullptr )
+      {
+         // Create a copy of the MainMenu that is hosted on the form.
+         MainMenu^ mainMenu2 = mainMenu1->CloneMenu();
 
-      // Set the caption for the menu items.
-      menuItem1->Text = "File";
-      menuItem2->Text = "Edit";
-
-      // Add a menu item to each menu for displaying.
-      mainMenu1->MenuItems->Add( menuItem1 );
-      mainMenu2->MenuItems->Add( menuItem2 );
-
-      // Merge mainMenu2 with mainMenu1
-      mainMenu1->MergeMenu( mainMenu2 );
-
-      // Assign mainMenu1 to the form.
-      this->Menu = mainMenu1;
+         // Set the RightToLeft property for mainMenu2.
+         mainMenu2->RightToLeft = ::RightToLeft::Yes;
+      }
    }

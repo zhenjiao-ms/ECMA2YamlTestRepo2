@@ -1,65 +1,37 @@
-Imports System.Collections
+Imports System
 Imports System.Globalization
-Imports System.Reflection
 
-Module Example
-   Public Sub Main()
-      Dim assem As Assembly = Assembly.GetAssembly(GetType(Calendar))
-      Dim types() As Type = assem.GetExportedTypes()
-      Dim calendars() As Type = Array.FindAll(types, AddressOf IsValidCalendar)
-      Array.Sort(calendars, New CalendarComparer())
 
-      Console.WriteLine("{0,-30} {1}", "Calendar", "Algorithm Type")
-      Console.WriteLine()
-      For Each cal In calendars
-         ' Instantiate a calendar object.
-         Dim ctor As ConstructorInfo = cal.GetConstructor( {} )
-         Dim calObj As Calendar = CType(ctor.Invoke( {} ), Calendar) 
-
-         Console.WriteLine("{0,-30} {1}", 
-                          cal.ToString().Replace("System.Globalization.", ""),
-                          cal.InvokeMember("AlgorithmType", 
-                                           BindingFlags.Public Or BindingFlags.Instance Or BindingFlags.GetProperty,
-                                           Nothing, calObj, Nothing))
-      Next
-   End Sub
+Public Class SamplesCultureInfo
    
-   Private Function IsValidCalendar(ByVal t As Type) As Boolean
-        If t.IsSubClassOf(GetType(Calendar)) Then
-            If t.IsAbstract Then
-                Return False
-            Else
-                Return True
-            End If
-        Else
-            Return False
-        End If
-    End Function
-End Module
+   Public Shared Sub Main()
+      
+      ' Creates and initializes a CultureInfo.
+      Dim myCI As New CultureInfo("en-US", False)
+      
+      ' Clones myCI and modifies the DTFI and NFI instances associated with the clone.
+      Dim myCIclone As CultureInfo = CType(myCI.Clone(), CultureInfo)
+      myCIclone.DateTimeFormat.AMDesignator = "a.m."
+      myCIclone.DateTimeFormat.DateSeparator = "-"
+      myCIclone.NumberFormat.CurrencySymbol = "USD"
+      myCIclone.NumberFormat.NumberDecimalDigits = 4
+      
+      ' Displays the properties of the DTFI and NFI instances associated with the original and with the clone. 
+      Console.WriteLine("DTFI/NFI PROPERTY" + ControlChars.Tab + "ORIGINAL" + ControlChars.Tab + "MODIFIED CLONE")
+      Console.WriteLine("DTFI.AMDesignator" + ControlChars.Tab + "{0}" + ControlChars.Tab + ControlChars.Tab + "{1}", myCI.DateTimeFormat.AMDesignator, myCIclone.DateTimeFormat.AMDesignator)
+      Console.WriteLine("DTFI.DateSeparator" + ControlChars.Tab + "{0}" + ControlChars.Tab + ControlChars.Tab + "{1}", myCI.DateTimeFormat.DateSeparator, myCIclone.DateTimeFormat.DateSeparator)
+      Console.WriteLine("NFI.CurrencySymbol" + ControlChars.Tab + "{0}" + ControlChars.Tab + ControlChars.Tab + "{1}", myCI.NumberFormat.CurrencySymbol, myCIclone.NumberFormat.CurrencySymbol)
+      Console.WriteLine("NFI.NumberDecimalDigits" + ControlChars.Tab + "{0}" + ControlChars.Tab + ControlChars.Tab + "{1}", myCI.NumberFormat.NumberDecimalDigits, myCIclone.NumberFormat.NumberDecimalDigits)
 
-Public Class CalendarComparer : Implements IComparer
-   Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer _
-                  Implements IComparer.Compare
-      Dim tX As Type = DirectCast(x, Type)
-      Dim tY As Type = DirectCast(y, Type)
+   End Sub 'Main 
 
-      Return tX.Name.CompareTo(tY.Name)
-   End Function
-End Class
-' The example displays the following output:
-'       Calendar                       Algorithm Type
-'       
-'       ChineseLunisolarCalendar       LunisolarCalendar
-'       GregorianCalendar              SolarCalendar
-'       HebrewCalendar                 LunisolarCalendar
-'       HijriCalendar                  LunarCalendar
-'       JapaneseCalendar               SolarCalendar
-'       JapaneseLunisolarCalendar      LunisolarCalendar
-'       JulianCalendar                 SolarCalendar
-'       KoreanCalendar                 SolarCalendar
-'       KoreanLunisolarCalendar        LunisolarCalendar
-'       PersianCalendar                SolarCalendar
-'       TaiwanCalendar                 SolarCalendar
-'       TaiwanLunisolarCalendar        LunisolarCalendar
-'       ThaiBuddhistCalendar           SolarCalendar
-'       UmAlQuraCalendar               LunarCalendar
+End Class 'SamplesCultureInfo
+
+
+' This code produces the following output.
+'
+' DTFI/NFI PROPERTY       ORIGINAL        MODIFIED CLONE
+' DTFI.AMDesignator       AM              a.m.
+' DTFI.DateSeparator      /               -
+' NFI.CurrencySymbol      $               USD
+' NFI.NumberDecimalDigits 2               4

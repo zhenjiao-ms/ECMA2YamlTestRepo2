@@ -1,9 +1,11 @@
-   void CustomizeCellsInThirdColumn()
+   // Make the the entire DataGridView read only.
+   void Button8_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
    {
-      int thirdColumn = 2;
-      DataGridViewColumn^ column = dataGridView->Columns[ thirdColumn ];
-      DataGridViewCell^ cell = gcnew DataGridViewTextBoxCell;
-      cell->Style->BackColor = Color::Wheat;
-      column->CellTemplate = cell;
+      System::Collections::IEnumerator^ myEnum = dataGridView->Columns->GetEnumerator();
+      while ( myEnum->MoveNext() )
+      {
+         DataGridViewBand^ band = safe_cast<DataGridViewBand^>(myEnum->Current);
+         band->ReadOnly = true;
+      }
    }
 

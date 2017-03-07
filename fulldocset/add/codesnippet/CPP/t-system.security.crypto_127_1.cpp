@@ -1,66 +1,80 @@
-#using <System.Xml.dll>
 #using <System.Security.dll>
-#using <System.dll>
 
 using namespace System;
-using namespace System::Security::Cryptography::Xml;
-using namespace System::Xml;
-using namespace System::IO;
+using namespace System::Security::Cryptography;
 
-/// This sample used the EncryptedData class to create an encrypted data element
-/// and write it to an XML file. It demonstrates the use of CipherReference.
+public ref class DataProtectionSample
+{
+private:
 
-[STAThread]
+   // Create byte array for additional entropy when using Protect method.
+   static array<Byte>^s_aditionalEntropy = {9,8,7,6,5};
+
+public:
+   static void Main()
+   {
+      
+      // Create a simple byte array containing data to be encrypted.
+      array<Byte>^secret = {0,1,2,3,4,1,2,3,4};
+      
+      //Encrypt the data.
+      array<Byte>^encryptedSecret = Protect( secret );
+      Console::WriteLine( "The encrypted byte array is:" );
+      PrintValues( encryptedSecret );
+      
+      // Decrypt the data and store in a byte array.
+      array<Byte>^originalData = Unprotect( encryptedSecret );
+      Console::WriteLine( "{0}The original data is:", Environment::NewLine );
+      PrintValues( originalData );
+   }
+
+   static array<Byte>^ Protect( array<Byte>^data )
+   {
+      try
+      {
+         
+         // Encrypt the data using DataProtectionScope.CurrentUser. The result can be decrypted
+         //  only by the same current user.
+         return ProtectedData::Protect( data, s_aditionalEntropy, DataProtectionScope::CurrentUser );
+      }
+      catch ( CryptographicException^ e ) 
+      {
+         Console::WriteLine( "Data was not encrypted. An error occurred." );
+         Console::WriteLine( e );
+         return nullptr;
+      }
+   }
+
+   static array<Byte>^ Unprotect( array<Byte>^data )
+   {
+      try
+      {
+         
+         //Decrypt the data using DataProtectionScope.CurrentUser.
+         return ProtectedData::Unprotect( data, s_aditionalEntropy, DataProtectionScope::CurrentUser );
+      }
+      catch ( CryptographicException^ e ) 
+      {
+         Console::WriteLine( "Data was not decrypted. An error occurred." );
+         Console::WriteLine( e );
+         return nullptr;
+      }
+   }
+
+   static void PrintValues( array<Byte>^myArr )
+   {
+      System::Collections::IEnumerator^ myEnum = myArr->GetEnumerator();
+      while ( myEnum->MoveNext() )
+      {
+         Byte i = safe_cast<Byte>(myEnum->Current);
+         Console::Write( "\t{0}", i );
+      }
+
+      Console::WriteLine();
+   }
+};
+
 int main()
 {
-   
-   //Create a URI string.
-   String^ uri = "http://www.woodgrovebank.com/document.xml";
-   
-   // Create a Base64 transform. The input content retrieved from the
-   // URI should be Base64-decoded before other processing.
-   Transform^ base64 = gcnew XmlDsigBase64Transform;
-   
-   //Create a transform chain and add the transform to it.
-   TransformChain^ tc = gcnew TransformChain;
-   tc->Add( base64 );
-   
-   //Create <CipherReference> information.
-   CipherReference ^ reference = gcnew CipherReference( uri,tc );
-   
-   // Create a new CipherData object using the CipherReference information.
-   // Note that you cannot assign both a CipherReference and a CipherValue
-   // to a CipherData object.
-   CipherData ^ cd = gcnew CipherData( reference );
-   
-   // Create a new EncryptedData object.
-   EncryptedData^ ed = gcnew EncryptedData;
-   
-   //Add an encryption method to the object.
-   ed->Id = "ED";
-   ed->EncryptionMethod = gcnew EncryptionMethod( "http://www.w3.org/2001/04/xmlenc#aes128-cbc" );
-   ed->CipherData = cd;
-   
-   //Add key information to the object.
-   KeyInfo^ ki = gcnew KeyInfo;
-   ki->AddClause( gcnew KeyInfoRetrievalMethod( "#EK","http://www.w3.org/2001/04/xmlenc#EncryptedKey" ) );
-   ed->KeyInfo = ki;
-   
-   // Create new XML document and put encrypted data into it.
-   XmlDocument^ doc = gcnew XmlDocument;
-   XmlElement^ encryptionPropertyElement = dynamic_cast<XmlElement^>(doc->CreateElement( "EncryptionProperty", EncryptedXml::XmlEncNamespaceUrl ));
-   EncryptionProperty ^ ep = gcnew EncryptionProperty( encryptionPropertyElement );
-   ed->AddProperty( ep );
-   
-   // Output the resulting XML information into a file.
-   try
-   {
-      String^ path = "c:\\test\\MyTest.xml";
-      File::WriteAllText( path, ed->GetXml()->OuterXml );
-   }
-   catch ( IOException^ e ) 
-   {
-      Console::WriteLine( "File IO error. {0}", e );
-   }
-
+   DataProtectionSample::Main();
 }

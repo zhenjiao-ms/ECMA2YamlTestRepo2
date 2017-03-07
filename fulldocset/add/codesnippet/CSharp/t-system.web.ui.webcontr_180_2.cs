@@ -2,126 +2,79 @@ namespace Samples.AspNet.CS {
 
 using System;
 using System.Collections;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
-using System.Web.UI;
 using System.Web.UI.WebControls;
   //
-  // EmployeeLogic is a stateless business object that encapsulates
+  // EmployeeLogic is a stateless business object that encapsulates 
   // the operations you can perform on a NorthwindEmployee object.
   //
   public class EmployeeLogic {
-
+  
+    
     // Returns a collection of NorthwindEmployee objects.
     public static ICollection GetAllEmployees () {
-      ArrayList al = new ArrayList();
-
-      ConnectionStringSettings cts = ConfigurationManager.ConnectionStrings["NorthwindConnection"];
-
-      SqlDataSource sds
-        = new SqlDataSource(cts.ConnectionString,
-                            "SELECT EmployeeID FROM Employees");
-      try {
-        IEnumerable IDs = sds.Select(DataSourceSelectArguments.Empty);
-
-        // Iterate through the Enumeration and create a
-        // NorthwindEmployee object for each ID.
-        IEnumerator enumerator = IDs.GetEnumerator();
-        while (enumerator.MoveNext()) {
-          // The IEnumerable contains DataRowView objects.
-          DataRowView row = enumerator.Current as DataRowView;
-          string id = row["EmployeeID"].ToString();
-          NorthwindEmployee nwe = new NorthwindEmployee(id);
-          // Add the NorthwindEmployee object to the collection.
-          al.Add(nwe);
-        }
-      }
-      finally {
-        // If anything strange happens, clean up.
-        sds.Dispose();
-      }
-
-      return al;
+      ArrayList data = new ArrayList();
+           
+      data.Add(new NorthwindEmployee(1,"Nancy","Davolio","507 - 20th Ave. E. Apt. 2A"));
+      data.Add(new NorthwindEmployee(2,"Andrew","Fuller","908 W. Capital Way"));
+      data.Add(new NorthwindEmployee(3,"Janet","Leverling","722 Moss Bay Blvd."));
+      data.Add(new NorthwindEmployee(4,"Margaret","Peacock","4110 Old Redmond Rd."));
+      data.Add(new NorthwindEmployee(5,"Steven","Buchanan","14 Garrett Hill"));
+      data.Add(new NorthwindEmployee(6,"Michael","Suyama","Coventry House Miner Rd."));
+      data.Add(new NorthwindEmployee(7,"Robert","King","Edgeham Hollow Winchester Way"));
+      
+      return data;
     }
-
+    
     public static NorthwindEmployee GetEmployee(object anID) {
-      if (anID.Equals("-1") ||
-          anID.Equals(DBNull.Value) ) {
-        return new NorthwindEmployee();
-      }
-      else {
-        return new NorthwindEmployee(anID);
-      }
+      ArrayList data = GetAllEmployees() as ArrayList;     
+      int empID = Int32.Parse(anID.ToString());      
+      return data[empID] as NorthwindEmployee;
     }
 
-    public static void UpdateEmployeeInfo(NorthwindEmployee ne) {
-      bool retval = ne.Save();
-      if (! retval) { throw new NorthwindDataException("UpdateEmployee failed."); }
-    }
-
-    public static void DeleteEmployee(NorthwindEmployee ne) {
-      bool retval = ne.Delete();
-      if (! retval) { throw new NorthwindDataException("DeleteEmployee failed."); }
-    }
-
-    // And so on...
+    // 
+    // To support basic filtering, the employees cannot
+    // be returned as an array of objects, rather as a 
+    // DataSet of the raw data values. 
+    public static DataSet GetAllEmployeesAsDataSet () {
+      ICollection employees = GetAllEmployees();
+      
+      DataSet ds = new DataSet("Table");
+      
+      // Create the schema of the DataTable.
+      DataTable dt = new DataTable();
+      DataColumn dc;
+      dc = new DataColumn("EmpID",   typeof(int));    dt.Columns.Add(dc);
+      dc = new DataColumn("FullName",typeof(string)); dt.Columns.Add(dc);
+      dc = new DataColumn("Address", typeof(string)); dt.Columns.Add(dc);
+      
+      // Add rows to the DataTable.
+      DataRow row;
+            
+      foreach (NorthwindEmployee ne in employees) {                
+        row = dt.NewRow();
+        row["EmpID"]    = ne.EmpID;
+        row["FullName"] = ne.FullName;
+        row["Address"]  = ne.Address;
+        dt.Rows.Add(row);
+      } 
+      // Add the complete DataTable to the DataSet.
+      ds.Tables.Add(dt);
+      
+      return ds;
+    }    
   }
 
   public class NorthwindEmployee {
 
-    public NorthwindEmployee () {
-      ID = DBNull.Value;
-      lastName = "";
-      firstName = "";
-      title="";
-      titleOfCourtesy = "";
-      reportsTo = -1;
-    }
-
-    public NorthwindEmployee (object anID) {
-      this.ID = anID;
-
-      SqlConnection conn
-        = new SqlConnection (ConfigurationManager.ConnectionStrings["NorthwindConnection"].ConnectionString);
-      SqlCommand sc =
-        new SqlCommand(" SELECT FirstName,LastName,Title,TitleOfCourtesy,ReportsTo " +
-                       " FROM Employees " +
-                       " WHERE EmployeeID = @empId",
-                       conn);
-      // Add the employee ID parameter and set its value.
-      sc.Parameters.Add(new SqlParameter("@empId",SqlDbType.Int)).Value = Int32.Parse(anID.ToString());
-      SqlDataReader sdr = null;
-
-      try {
-        conn.Open();
-        sdr = sc.ExecuteReader();
-
-        // Only loop once.
-        if (sdr != null && sdr.Read()) {
-          // The IEnumerable contains DataRowView objects.
-          this.firstName        = sdr["FirstName"].ToString();
-          this.lastName         = sdr["LastName"].ToString();
-          this.title            = sdr["Title"].ToString();
-          this.titleOfCourtesy  = sdr["TitleOfCourtesy"].ToString();
-          if (! sdr.IsDBNull(4)) {
-            this.reportsTo        = sdr.GetInt32(4);
-          }
-        }
-        else {
-          throw new NorthwindDataException("Data not loaded for employee id.");
-        }
-      }
-      finally {
-        try {
-          if (sdr != null) sdr.Close();
-          conn.Close();
-        }
-        catch (SqlException) {
-          // Log an event in the Application Event Log.
-          throw;
-        }
-      }
+    public NorthwindEmployee (int anID, 
+                              string aFirstName,
+                              string aLastName,
+                              string anAddress) {
+      ID = anID;
+      firstName = aFirstName;
+      lastName = aLastName;   
+      address = anAddress;
     }
 
     private object ID;
@@ -140,41 +93,16 @@ using System.Web.UI.WebControls;
       get { return firstName; }
       set { firstName = value;  }
     }
-
+    
     public string FullName {
-      get { return FirstName + " " + LastName; }
+      get { return FirstName  + " " +  LastName; }
     }
-
-    private string title;
-    public String Title {
-      get { return title; }
-      set { title = value; }
-    }
-
-    private string titleOfCourtesy;
-    public string Courtesy {
-      get { return titleOfCourtesy; }
-      set { titleOfCourtesy = value; }
-    }
-
-    private int    reportsTo;
-    public int Supervisor {
-      get { return reportsTo; }
-      set { reportsTo = value; }
-    }
-
-    public bool Save () {
-      // Implement persistence logic.
-      return true;
-    }
-
-    public bool Delete () {
-      // Implement delete logic.
-      return true;
-    }
-  }
-
-  internal class NorthwindDataException: Exception {
-    public NorthwindDataException(string msg) : base (msg) { }
+    
+    private string address;
+    public string Address {
+      get { return address; }
+      set { address = value;  }
+    }    
+    
   }
 }

@@ -1,4 +1,17 @@
-            Dim s As [Single] = 3.402823E+10F
-            Dim mySStr As String = "3.402823E+10"
-            Console.WriteLine(TypeDescriptor.GetConverter(s).ConvertTo(s, GetType(String)))
-            Console.WriteLine(TypeDescriptor.GetConverter(s).ConvertFrom(mySStr))
+Imports System
+Imports System.Web.DynamicData
+Imports System.ComponentModel.DataAnnotations
+
+<MetadataType(GetType(CustomerMetadata))> _
+Partial Public Class Customer
+
+End Class
+
+Public Class CustomerMetadata
+
+    ' Apply RequitedAttribute.
+    <Required(ErrorMessage:="Title is required.")> _
+    Public Title As Object
+
+   
+End Class

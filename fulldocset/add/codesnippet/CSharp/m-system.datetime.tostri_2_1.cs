@@ -5,32 +5,20 @@ public class Example
 {
    public static void Main()
    {
-      CultureInfo[] cultures = new CultureInfo[] {CultureInfo.InvariantCulture, 
-                                                  new CultureInfo("en-us"), 
-                                                  new CultureInfo("fr-fr"), 
-                                                  new CultureInfo("de-DE"), 
-                                                  new CultureInfo("es-ES"),
-                                                  new CultureInfo("ja-JP")};
+      CultureInfo jaJP = new CultureInfo("ja-JP");
+      jaJP.DateTimeFormat.Calendar = new JapaneseCalendar(); 
+      DateTime date1 = new DateTime(1867, 1, 1);
 
-      DateTime thisDate = new DateTime(2009, 5, 1, 9, 0, 0);                                            
-
-      foreach (CultureInfo culture in cultures)
-      {
-         string cultureName; 
-         if (string.IsNullOrEmpty(culture.Name))
-            cultureName = culture.NativeName;
-         else
-            cultureName = culture.Name;
-      
-         Console.WriteLine("In {0}, {1}", 
-                           cultureName, thisDate.ToString(culture));
-      }                                            
+      try {
+         Console.WriteLine(date1.ToString(jaJP));
       }
+      catch (ArgumentOutOfRangeException) {
+         Console.WriteLine("{0:d} is earlier than {1:d} or later than {2:d}", 
+                           date1, 
+                           jaJP.DateTimeFormat.Calendar.MinSupportedDateTime,  
+                           jaJP.DateTimeFormat.Calendar.MaxSupportedDateTime); 
+      }
+   }
 }
-// The example produces the following output:
-//    In Invariant Language (Invariant Country), 05/01/2009 09:00:00
-//    In en-US, 5/1/2009 9:00:00 AM
-//    In fr-FR, 01/05/2009 09:00:00
-//    In de-DE, 01.05.2009 09:00:00
-//    In es-ES, 01/05/2009 9:00:00
-//    In ja-JP, 2009/05/01 9:00:00
+// The example displays the following output:
+//    1/1/1867 is earlier than 9/8/1868 or later than 12/31/9999   }

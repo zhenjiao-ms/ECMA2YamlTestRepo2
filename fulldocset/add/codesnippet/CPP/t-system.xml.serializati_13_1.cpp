@@ -4,49 +4,106 @@
 using namespace System;
 using namespace System::IO;
 using namespace System::Xml::Serialization;
-using namespace System::Xml;
-using namespace System::Xml::Schema;
 
-public ref class Group
+public ref class Instrument
 {
 public:
-   String^ GroupName;
+   String^ Name;
 };
 
-public ref class Test
+public ref class Brass: public Instrument
 {
-private:
-   void Serializer_UnknownElement( Object^ sender, XmlElementEventArgs^ e )
-   {
-      Console::WriteLine( "Unknown Element" );
-      Console::Write( "\t {0}", e->Element->Name );
-      Console::WriteLine( " {0}", e->Element->InnerXml );
-      Console::WriteLine( "\t LineNumber: {0}", e->LineNumber );
-      Console::WriteLine( "\t LinePosition: {0}", e->LinePosition );
-      Group^ x = dynamic_cast<Group^>(e->ObjectBeingDeserialized);
-      Console::WriteLine( x->GroupName );
-      Console::WriteLine( sender );
-   }
-
 public:
-   void DeserializeObject( String^ filename )
-   {
-      XmlSerializer^ ser = gcnew XmlSerializer( Group::typeid );
-
-      // Add a delegate to handle unknown element events.
-      ser->UnknownElement += gcnew XmlElementEventHandler( this, &Test::Serializer_UnknownElement );
-
-      // A FileStream is needed to read the XML document.
-      FileStream^ fs = gcnew FileStream( filename,FileMode::Open );
-      Group^ g = dynamic_cast<Group^>(ser->Deserialize( fs ));
-      fs->Close();
-   }
+   bool IsValved;
 };
+
+public ref class Orchestra
+{
+public:
+   array<Instrument^>^Instruments;
+};
+
+void SerializeObject( String^ filename )
+{
+   /* Each overridden field, property, or type requires 
+      an XmlAttributes object. */
+   XmlAttributes^ attrs = gcnew XmlAttributes;
+
+   /* Create an XmlElementAttribute to override the 
+      field that returns Instrument objects. The overridden field
+      returns Brass objects instead. */
+   XmlElementAttribute^ attr = gcnew XmlElementAttribute;
+   attr->ElementName = "Brass";
+   attr->Type = Brass::typeid;
+
+   // Add the element to the collection of elements.
+   attrs->XmlElements->Add( attr );
+
+   // Create the XmlAttributeOverrides object.
+   XmlAttributeOverrides^ attrOverrides = gcnew XmlAttributeOverrides;
+
+   /* Add the type of the class that contains the overridden 
+      member and the XmlAttributes to override it with to the 
+      XmlAttributeOverrides object. */
+   attrOverrides->Add( Orchestra::typeid, "Instruments", attrs );
+
+   // Create the XmlSerializer using the XmlAttributeOverrides.
+   XmlSerializer^ s = gcnew XmlSerializer( Orchestra::typeid,attrOverrides );
+
+   // Writing the file requires a TextWriter.
+   TextWriter^ writer = gcnew StreamWriter( filename );
+
+   // Create the object that will be serialized.
+   Orchestra^ band = gcnew Orchestra;
+
+   // Create an object of the derived type.
+   Brass^ i = gcnew Brass;
+   i->Name = "Trumpet";
+   i->IsValved = true;
+   array<Instrument^>^myInstruments = {i};
+   band->Instruments = myInstruments;
+
+   // Serialize the object.
+   s->Serialize( writer, band );
+   writer->Close();
+}
+
+void DeserializeObject( String^ filename )
+{
+   XmlAttributeOverrides^ attrOverrides = gcnew XmlAttributeOverrides;
+   XmlAttributes^ attrs = gcnew XmlAttributes;
+
+   // Create an XmlElementAttribute to override the Instrument.
+   XmlElementAttribute^ attr = gcnew XmlElementAttribute;
+   attr->ElementName = "Brass";
+   attr->Type = Brass::typeid;
+
+   // Add the XmlElementAttribute to the collection of objects.
+   attrs->XmlElements->Add( attr );
+   attrOverrides->Add( Orchestra::typeid, "Instruments", attrs );
+
+   // Create the XmlSerializer using the XmlAttributeOverrides.
+   XmlSerializer^ s = gcnew XmlSerializer( Orchestra::typeid,attrOverrides );
+   FileStream^ fs = gcnew FileStream( filename,FileMode::Open );
+   Orchestra^ band = dynamic_cast<Orchestra^>(s->Deserialize( fs ));
+   Console::WriteLine( "Brass:" );
+
+   /* The difference between deserializing the overridden 
+      XML document and serializing it is this: To read the derived 
+      object values, you must declare an object of the derived type 
+      (Brass), and cast the Instrument instance to it. */
+   Brass^ b;
+   System::Collections::IEnumerator^ myEnum = band->Instruments->GetEnumerator();
+   while ( myEnum->MoveNext() )
+   {
+      Instrument^ i = safe_cast<Instrument^>(myEnum->Current);
+      b = dynamic_cast<Brass^>(i);
+      Console::WriteLine( "{0}\n{1}", b->Name, b->IsValved );
+   }
+}
 
 int main()
 {
-   Test^ t = gcnew Test;
-
-   // Deserialize the file containing unknown elements.
-   t->DeserializeObject( "UnknownElements.xml" );
+   SerializeObject( "Override.xml" );
+   DeserializeObject( "Override.xml" );
 }

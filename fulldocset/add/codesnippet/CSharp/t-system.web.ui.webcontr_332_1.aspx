@@ -1,73 +1,69 @@
-<%@ Page Language="C#" %>
-
+<%@ Page Language="C#"%>
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
  
-  void Button_Click(Object sender, EventArgs e) 
+  void Page_Load(Object sender, EventArgs e) 
   {
-    if (Page.IsValid)
+    DisplayCalendar.VisibleDate = DisplayCalendar.TodaysDate;
+  }
+
+  void SelectButton_Click(Object sender, EventArgs e) 
+  {
+
+    int current_day = DisplayCalendar.VisibleDate.Day;
+    int current_month = DisplayCalendar.VisibleDate.Month;
+    int current_year = DisplayCalendar.VisibleDate.Year;
+
+    DisplayCalendar.SelectedDates.Clear();
+   
+    // Iterate through the current month and add all Wednesdays to the 
+    // SelectedDates collection of the Calendar control.
+    for (int i = 1; i <= System.DateTime.DaysInMonth(current_year, current_month); i++)
     {
-      MessageLabel.Text = "Page submitted successfully.";
+       DateTime currentDate = new DateTime(current_year, current_month, i);
+       if (currentDate.DayOfWeek == DayOfWeek.Wednesday)
+       {
+         DisplayCalendar.SelectedDates.Add(currentDate);
+       }
     }
-    else
-    {
-      MessageLabel.Text = "There is an error on the page.";
-    }
+
+     MessageLabel.Text = "Selection Count = " + DisplayCalendar.SelectedDates.Count.ToString();
+ 
+  }
+
+  void DisplayCalendar_SelectionChanged(Object sender, EventArgs e) 
+  {
+    MessageLabel.Text = "Selection Count = " + DisplayCalendar.SelectedDates.Count.ToString();
   }
  
-</script>
-
+</script> 
+ 
 <html xmlns="http://www.w3.org/1999/xhtml" >
   <head runat="server">
-    <title>Validator Example</title>
+    <title>ASP.NET Example</title>
 </head>
 <body>
     <form id="form1" runat="server">
-
-      <h3>Validator Example</h3>
-     
-      Enter a number from 1 to 10.
-      <asp:textbox id="NumberTextBox" 
-        runat="server"/>
-
-      <asp:rangevalidator id="NumberCompareValidator" 
-        controltovalidate="NumberTextBox"
-        enableclientscript="False"  
-        type="Integer"
-        display="Dynamic" 
-        errormessage="Please enter a value from 1 to 10."
-        maximumvalue="10"
-        minimumvalue="1"  
-        text="*"
-        runat="server"/>
-
-      <asp:requiredfieldvalidator id="TextBoxRequiredValidator" 
-        controltovalidate="NumberTextBox"
-        enableclientscript="False"
-        display="Dynamic" 
-        errormessage="Please enter a value."
-        text="*"
-        runat="server"/>
-
-      <br /><br />
-
-      <asp:button id="SubmitButton"
-        text="Submit"
-        onclick="Button_Click"
-        runat="server"/>
  
-      <br /><br />
-       
+      <asp:calendar id="DisplayCalendar" runat="server"  
+        selectionmode="DayWeekMonth" 
+        onselectionchanged="DisplayCalendar_SelectionChanged" />
+ 
+      <hr />
+ 
+      <asp:button id="SelectButton"
+        text="Select All Weds in Month" 
+        onclick="SelectButton_Click"  
+        runat="server"/> 
+        
+      <br/>
+ 
       <asp:label id="MessageLabel" 
-        runat="server"/>
-
-      <br /><br />
-
-      <asp:validationsummary
-        id="ErrorSummary"
-        runat="server"/>
+        runat="server" />
  
     </form>
   </body>
 </html>
+   

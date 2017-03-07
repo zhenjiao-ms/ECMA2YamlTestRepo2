@@ -1,22 +1,27 @@
-    Private Sub dataGridView1_UserDeletingRow(ByVal sender As Object, _
-        ByVal e As System.Windows.Forms.DataGridViewRowCancelEventArgs) _
-        Handles dataGridView1.UserDeletingRow
 
-        If e.Row.Index < Me.customers.Count Then
+    ' Declare the DateTimePicker.
+    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
 
-            ' If the user has deleted an existing row, remove the 
-            ' corresponding Customer object from the data store.
-            Me.customers.RemoveAt(e.Row.Index)
 
-        End If
+    Private Sub InitializeDateTimePicker()
 
-        If e.Row.Index = Me.rowInEdit Then
+        ' Construct the DateTimePicker.
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
 
-            ' If the user has deleted a newly created row, release
-            ' the corresponding Customer object. 
-            Me.rowInEdit = -1
-            Me.customerInEdit = Nothing
+        'Set size and location.
+        Me.DateTimePicker1.Location = New System.Drawing.Point(40, 88)
+        Me.DateTimePicker1.Size = New Size(160, 21)
+        
+        ' Set the alignment of the drop-down MonthCalendar to right.
+        Me.DateTimePicker1.DropDownAlign = LeftRightAlignment.Right
 
-        End If
+        ' Set the Value property to 50 years before today.
+        DateTimePicker1.Value = (DateTime.Now.AddYears(-50))
 
+        'Set a custom format containing the string "of the year"
+        DateTimePicker1.Format = DateTimePickerFormat.Custom
+        DateTimePicker1.CustomFormat = "MMM dd, 'of the year' yyyy "
+
+        ' Add the DateTimePicker to the form.
+        Me.Controls.Add(Me.DateTimePicker1)
     End Sub

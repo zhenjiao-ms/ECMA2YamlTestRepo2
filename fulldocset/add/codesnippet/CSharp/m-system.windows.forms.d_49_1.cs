@@ -1,11 +1,8 @@
-         // String variable used to show message.
-         string myString = "Selection backgound color changed from: ";
-         // Store current foreground color of selected cells.
-         Color myCurrentColor = myDataGrid.SelectionBackColor;
-         myString += myCurrentColor.ToString();
-         // Reset selection background color to default.
-         myDataGrid.ResetSelectionBackColor();
-         myString += "  to ";
-         myString += myDataGrid.SelectionBackColor.ToString();
-         // Show information about changes in color setting.  
-         MessageBox.Show(myString, "Selection background color information");
+private void CreateMyFormat2() {
+    DataFormats.Format myFormat = new DataFormats.Format("AnotherNewFormat", 20916);
+ 
+    // Displays the contents of myFormat.
+    textBox1.Text = "ID value: " + myFormat.Id + '\n' +
+       "Format name: " + myFormat.Name;
+ }
+ 

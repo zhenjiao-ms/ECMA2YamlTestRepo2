@@ -1,18 +1,21 @@
-      // This example assumes that the Form_Load event handling method
-      // is connected to the Load event of the form.
-      private void Form1_Load(object sender, System.EventArgs e)
-      {
-         // Create the ToolTip and associate with the Form container.
-         ToolTip toolTip1 = new ToolTip();
+private void ToolStripRenderer1_RenderGrip(Object sender, ToolStripGripRenderEventArgs e) {
 
-         // Set up the delays for the ToolTip.
-         toolTip1.AutoPopDelay = 5000;
-         toolTip1.InitialDelay = 1000;
-         toolTip1.ReshowDelay = 500;
-         // Force the ToolTip text to be displayed whether or not the form is active.
-         toolTip1.ShowAlways = true;
-			
-         // Set up the ToolTip text for the Button and Checkbox.
-         toolTip1.SetToolTip(this.button1, "My button1");
-         toolTip1.SetToolTip(this.checkBox1, "My checkBox1");
-      }
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "GripBounds", e.GripBounds );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "GripDisplayStyle", e.GripDisplayStyle );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "GripStyle", e.GripStyle );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "AffectedBounds", e.AffectedBounds );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "BackColor", e.BackColor );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Graphics", e.Graphics );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "ToolStrip", e.ToolStrip );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "ConnectedArea", e.ConnectedArea );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "RenderGrip Event" );
+}

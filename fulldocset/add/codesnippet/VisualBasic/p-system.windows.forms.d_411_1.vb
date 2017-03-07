@@ -1,73 +1,36 @@
-    Private Sub UpdateLabelText()
-        Dim WithdrawalTotal As Integer = 0
-        Dim DepositTotal As Integer = 0
-        Dim SelectedCellTotal As Integer = 0
-        Dim counter As Integer
+    Private Sub SetupDataGridView()
 
-        ' Iterate through all the rows and sum up the appropriate columns.
-        For counter = 0 To (DataGridView1.Rows.Count - 1)
-            If Not DataGridView1.Rows(counter) _
-                .Cells("Withdrawals").Value Is Nothing Then
+        Me.Controls.Add(songsDataGridView)
 
-                If Not DataGridView1.Rows(counter) _
-                    .Cells("Withdrawals").Value.ToString().Length = 0 Then
+        songsDataGridView.ColumnCount = 5
+        With songsDataGridView.ColumnHeadersDefaultCellStyle
+            .BackColor = Color.Navy
+            .ForeColor = Color.White
+            .Font = New Font(songsDataGridView.Font, FontStyle.Bold)
+        End With
 
-                    WithdrawalTotal += _
-                        Integer.Parse(DataGridView1.Rows(counter) _
-                        .Cells("Withdrawals").Value.ToString())
-                End If
-            End If
+        With songsDataGridView
+            .Name = "songsDataGridView"
+            .Location = New Point(8, 8)
+            .Size = New Size(500, 250)
+            .AutoSizeRowsMode = _
+                DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+            .CellBorderStyle = DataGridViewCellBorderStyle.Single
+            .GridColor = Color.Black
+            .RowHeadersVisible = False
 
-            If Not DataGridView1.Rows(counter) _
-                .Cells("Deposits").Value Is Nothing Then
+            .Columns(0).Name = "Release Date"
+            .Columns(1).Name = "Track"
+            .Columns(2).Name = "Title"
+            .Columns(3).Name = "Artist"
+            .Columns(4).Name = "Album"
+            .Columns(4).DefaultCellStyle.Font = _
+                New Font(Me.songsDataGridView.DefaultCellStyle.Font, FontStyle.Italic)
 
-                If Not DataGridView1.Rows(counter) _
-                    .Cells("Deposits").Value.ToString().Length = 0 Then
+            .SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            .MultiSelect = False
+            .Dock = DockStyle.Fill
+        End With
 
-                    DepositTotal += _
-                        Integer.Parse(DataGridView1.Rows(counter) _
-                        .Cells("Deposits").Value.ToString())
-                End If
-            End If
-        Next
-
-        ' Iterate through the SelectedCells collection and sum up the values.
-        For counter = 0 To (DataGridView1.SelectedCells.Count - 1)
-            If DataGridView1.SelectedCells(counter).FormattedValueType Is _
-            Type.GetType("System.String") Then
-
-                Dim value As String = Nothing
-
-                ' If the cell contains a value that has not been commited,
-                ' use the modified value.
-                If (DataGridView1.IsCurrentCellDirty = True) Then
-
-                    value = DataGridView1.SelectedCells(counter) _
-                        .EditedFormattedValue.ToString()
-                Else
-
-                    value = DataGridView1.SelectedCells(counter) _
-                        .FormattedValue.ToString()
-                End If
-
-                If value IsNot Nothing Then
-
-                    ' Ignore cells in the Description column.
-                    If Not DataGridView1.SelectedCells(counter).ColumnIndex = _
-                        DataGridView1.Columns("Description").Index Then
-
-                        If Not value.Length = 0 Then
-                            SelectedCellTotal += Integer.Parse(value)
-                        End If
-                    End If
-                End If
-            End If
-
-        Next
-
-        ' Set the labels to reflect the current state of the DataGridView.
-        Label1.Text = "Withdrawals Total: " & WithdrawalTotal.ToString()
-        Label2.Text = "Deposits Total: " & DepositTotal.ToString()
-        Label3.Text = "Selected Cells Total: " & SelectedCellTotal.ToString()
-        Label4.Text = "Total entries: " & DataGridView1.RowCount.ToString()
     End Sub

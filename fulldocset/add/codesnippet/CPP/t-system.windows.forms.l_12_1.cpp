@@ -1,96 +1,119 @@
 #using <System.dll>
-#using <System.Windows.Forms.dll>
 #using <System.Drawing.dll>
+#using <System.Windows.Forms.dll>
 
 using namespace System;
-using namespace System::Drawing;
 using namespace System::Windows::Forms;
-public ref class Form1: public System::Windows::Forms::Form
+using namespace System::Drawing;
+using namespace System::Collections;
+
+// Implements the manual sorting of items by columns.
+ref class ListViewItemComparer: public IComparer
 {
 private:
-   System::Windows::Forms::LinkLabel^ linkLabel1;
+   int col;
 
 public:
-   Form1()
+   ListViewItemComparer()
    {
-      
-      // Create the LinkLabel.
-      this->linkLabel1 = gcnew System::Windows::Forms::LinkLabel;
-      
-      // Configure the LinkLabel's size and location. Specify that the
-      // size should be automatically determined by the content.
-      this->linkLabel1->Location = System::Drawing::Point( 34, 56 );
-      this->linkLabel1->Size = System::Drawing::Size( 224, 16 );
-      this->linkLabel1->AutoSize = true;
-      
-      // Configure the appearance.
-      this->linkLabel1->DisabledLinkColor = System::Drawing::Color::Red;
-      this->linkLabel1->VisitedLinkColor = System::Drawing::Color::Blue;
-      this->linkLabel1->LinkBehavior = System::Windows::Forms::LinkBehavior::HoverUnderline;
-      this->linkLabel1->LinkColor = System::Drawing::Color::Navy;
-      this->linkLabel1->TabIndex = 0;
-      this->linkLabel1->TabStop = true;
-      
-      // Add an event handler to do something when the links are clicked.
-      this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler( this, &Form1::linkLabel1_LinkClicked );
-      
-      // Identify what the first Link is.
-      this->linkLabel1->LinkArea = System::Windows::Forms::LinkArea( 0, 8 );
-      
-      // Identify that the first link is visited already.
-      this->linkLabel1->Links[ 0 ]->Visited = true;
-      
-      // Set the Text property to a String*.
-      this->linkLabel1->Text = "Register Online.  Visit Microsoft.  Visit MSN.";
-      
-      // Create new links using the Add method of the LinkCollection class.
-      // Underline the appropriate words in the LinkLabel's Text property.
-      // The words 'Register', 'Microsoft', and 'MSN' will
-      // all be underlined and behave as hyperlinks.
-      // First check that the Text property is long enough to accommodate
-      // the desired hyperlinked areas.  If it's not, don't add hyperlinks.
-      if ( this->linkLabel1->Text->Length >= 45 )
-      {
-         this->linkLabel1->Links[ 0 ]->LinkData = "Register";
-         this->linkLabel1->Links->Add( 24, 9, "www.microsoft.com" );
-         this->linkLabel1->Links->Add( 42, 3, "www.msn.com" );
-         this->linkLabel1->Links[ 1 ]->Enabled = false;
-      }
-
-      
-      // Set up how the form should be displayed and add the controls to the form.
-      this->ClientSize = System::Drawing::Size( 292, 266 );
-      array<System::Windows::Forms::Control^>^temp0 = {this->linkLabel1};
-      this->Controls->AddRange( temp0 );
-      this->Text = "Link Label Example";
+      col = 0;
    }
 
-
-private:
-   void linkLabel1_LinkClicked( Object^ /*sender*/, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e )
+   ListViewItemComparer( int column )
    {
-      // Determine which link was clicked within the LinkLabel.
-      this->linkLabel1->Links[ linkLabel1->Links->IndexOf( e->Link ) ]->Visited = true;
-      
-      // Display the appropriate link based on the value of the
-      // LinkData property of the Link Object*.
-      String^ target = dynamic_cast<String^>(e->Link->LinkData);
-      
-      // If the value looks like a URL, navigate to it.
-      // Otherwise, display it in a message box.
-      if ( nullptr != target && target->StartsWith( "www" ) )
-      {
-         System::Diagnostics::Process::Start( target );
-      }
-      else
-      {
-         MessageBox::Show( "Item clicked: {0}", target );
-      }
+      col = column;
+   }
+
+   virtual int Compare( Object^ x, Object^ y )
+   {
+      return String::Compare( (dynamic_cast<ListViewItem^>(x))->SubItems[ col ]->Text,
+                              (dynamic_cast<ListViewItem^>(y))->SubItems[ col ]->Text );
    }
 };
 
-[STAThread]
+public ref class ListViewSortForm: public Form
+{
+private:
+   ListView^ listView1;
+
+public:
+   ListViewSortForm()
+   {
+      // Create ListView items to add to the control.
+      array<String^>^temp0 = {"Banana","a","b","c"};
+      ListViewItem^ listViewItem1 = gcnew ListViewItem( temp0,-1,Color::Empty,Color::Yellow,nullptr );
+      array<String^>^temp1 = {"Cherry","v","g","t"};
+      ListViewItem^ listViewItem2 = gcnew ListViewItem( temp1,-1,Color::Empty,Color::Red,
+                 gcnew System::Drawing::Font( "Microsoft Sans Serif",8.25F,FontStyle::Regular,GraphicsUnit::Point,0 ) );
+      array<String^>^temp2 = {"Apple","h","j","n"};
+      ListViewItem^ listViewItem3 = gcnew ListViewItem( temp2,-1,Color::Empty,Color::Lime,nullptr );
+      array<String^>^temp3 = {"Pear","y","u","i"};
+      ListViewItem^ listViewItem4 = gcnew ListViewItem( temp3,-1,Color::Empty,Color::FromArgb( 192, 128, 156 ),nullptr );
+
+      //Initialize the ListView control and add columns to it.
+      this->listView1 = gcnew ListView;
+
+      // Set the initial sorting type for the ListView.
+      this->listView1->Sorting = SortOrder::None;
+
+      // Disable automatic sorting to enable manual sorting.
+      this->listView1->View = View::Details;
+
+      // Add columns and set their text.
+      this->listView1->Columns->Add( gcnew ColumnHeader );
+      this->listView1->Columns[ 0 ]->Text = "Column 1";
+      this->listView1->Columns[ 0 ]->Width = 100;
+      listView1->Columns->Add( gcnew ColumnHeader );
+      listView1->Columns[ 1 ]->Text = "Column 2";
+      listView1->Columns->Add( gcnew ColumnHeader );
+      listView1->Columns[ 2 ]->Text = "Column 3";
+      listView1->Columns->Add( gcnew ColumnHeader );
+      listView1->Columns[ 3 ]->Text = "Column 4";
+
+      // Suspend control logic until form is done configuring form.
+      this->SuspendLayout();
+
+      // Add Items to the ListView control.
+      array<ListViewItem^>^temp4 = {listViewItem1,listViewItem2,listViewItem3,listViewItem4};
+      this->listView1->Items->AddRange( temp4 );
+
+      // Set the location and size of the ListView control.
+      this->listView1->Location = Point(10,10);
+      this->listView1->Name = "listView1";
+      this->listView1->Size = System::Drawing::Size( 300, 100 );
+      this->listView1->TabIndex = 0;
+
+      // Enable editing of the items in the ListView.
+      this->listView1->LabelEdit = true;
+
+      // Connect the ListView::ColumnClick event to the ColumnClick event handler.
+      this->listView1->ColumnClick += gcnew ColumnClickEventHandler( this, &ListViewSortForm::ColumnClick );
+
+      // Initialize the form.
+      this->ClientSize = System::Drawing::Size( 400, 400 );
+      array<Control^>^temp5 = {this->listView1};
+      this->Controls->AddRange( temp5 );
+      this->Name = "ListViewSortForm";
+      this->Text = "Sorted ListView Control";
+
+      // Resume lay[Out] of* the form.
+      this->ResumeLayout( false );
+   }
+
+private:
+
+   // ColumnClick event handler.
+   void ColumnClick( Object^ /*o*/, ColumnClickEventArgs^ e )
+   {
+      // Set the ListViewItemSorter property to a new ListViewItemComparer 
+      // object. Setting this property immediately sorts the 
+      // ListView using the ListViewItemComparer object.
+      this->listView1->ListViewItemSorter = gcnew ListViewItemComparer( e->Column );
+   }
+};
+
+[System::STAThreadAttribute]
 int main()
 {
-   Application::Run( gcnew Form1 );
+   Application::Run( gcnew ListViewSortForm );
 }

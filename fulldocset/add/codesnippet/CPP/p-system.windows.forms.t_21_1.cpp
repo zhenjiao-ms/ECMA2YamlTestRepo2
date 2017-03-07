@@ -1,51 +1,30 @@
 private:
-   void Menu_Copy( System::Object^ sender, System::EventArgs^ e )
+   void Button1_Click( Object^ /*sender*/, EventArgs^ /*e*/ )
    {
-      // Ensure that text is selected in the text box.   
-      if ( textBox1->SelectionLength > 0 )
-         // Copy the selected text to the Clipboard.
-         textBox1->Copy();
-   }
-
-   void Menu_Cut( System::Object^ sender, System::EventArgs^ e )
-   {
-      // Ensure that text is currently selected in the text box.   
-      if ( !textBox1->SelectedText->Equals( "" ) )
+      myTreeView->ItemHeight = 5;
+      myTreeView->SelectedNode->NodeFont = gcnew System::Drawing::Font( "Arial",5 );
+      
+      // Get the font size from combobox.
+      String^ selectedString = myComboBox->SelectedItem->ToString();
+      int myNodeFontSize = Int32::Parse( selectedString );
+      
+      // Set the font of root node.
+      myTreeView->SelectedNode->NodeFont = gcnew System::Drawing::Font( "Arial",(float)myNodeFontSize );
+      for ( int i = 0; i < myTreeView->Nodes[ 0 ]->Nodes->Count; i++ )
       {
-         // Cut the selected text in the control and paste it into the Clipboard.
-         textBox1->Cut();
-      }
-   }
+         
+         // Set the font of child nodes.
+         myTreeView->Nodes[ 0 ]->Nodes[ i ]->NodeFont = gcnew System::Drawing::Font( "Arial",(float)myNodeFontSize );
 
-   void Menu_Paste( System::Object^ sender, System::EventArgs^ e )
-   {
-      // Determine if there is any text in the Clipboard to paste into the text box.
-      if ( Clipboard::GetDataObject()->GetDataPresent( DataFormats::Text ) == true )
-      {
-         // Determine if any text is selected in the text box.
-         if ( textBox1->SelectionLength > 0 )
-         {
-            // Ask user if they want to paste over currently selected text.
-            if ( MessageBox::Show( "Do you want to paste over current selection?",
-               "Cut Example", MessageBoxButtons::YesNo ) == ::DialogResult::No )
-            {
-               // Move selection to the point after the current selection and paste.
-               textBox1->SelectionStart = textBox1->SelectionStart + textBox1->SelectionLength;
-            }
-         }
-         // Paste current text in Clipboard into text box.
-         textBox1->Paste();
       }
-   }
+      
+      // Get the bounds of the tree node.
+      Rectangle myRectangle = myTreeView->SelectedNode->Bounds;
+      int myNodeHeight = myRectangle.Height;
+      if ( myNodeHeight < myNodeFontSize )
+      {
+         myNodeHeight = myNodeFontSize;
+      }
 
-   void Menu_Undo( System::Object^ sender, System::EventArgs^ e )
-   {
-      // Determine if last operation can be undone in text box.   
-      if ( textBox1->CanUndo == true )
-      {
-         // Undo the last operation.
-         textBox1->Undo();
-         // Clear the undo buffer to prevent last action from being redone.
-         textBox1->ClearUndo();
-      }
+      myTreeView->ItemHeight = myNodeHeight + 4;
    }

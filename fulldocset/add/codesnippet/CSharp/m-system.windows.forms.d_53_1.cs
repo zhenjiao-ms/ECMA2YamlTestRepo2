@@ -1,32 +1,27 @@
-    private void selectedCellsButton_Click(object sender, System.EventArgs e)
+    // Draws the backgrounds for entire ListView items.
+    private void listView1_DrawItem(object sender,
+        DrawListViewItemEventArgs e)
     {
-        Int32 selectedCellCount =
-            dataGridView1.GetCellCount(DataGridViewElementStates.Selected);
-        if (selectedCellCount > 0)
+        if ((e.State & ListViewItemStates.Selected) != 0)
         {
-            if (dataGridView1.AreAllCellsSelected(true))
+            // Draw the background and focus rectangle for a selected item.
+            e.Graphics.FillRectangle(Brushes.Maroon, e.Bounds);
+            e.DrawFocusRectangle();
+        }
+        else
+        {
+            // Draw the background for an unselected item.
+            using (LinearGradientBrush brush =
+                new LinearGradientBrush(e.Bounds, Color.Orange,
+                Color.Maroon, LinearGradientMode.Horizontal))
             {
-                MessageBox.Show("All cells are selected", "Selected Cells");
+                e.Graphics.FillRectangle(brush, e.Bounds);
             }
-            else
-            {
-                System.Text.StringBuilder sb =
-                    new System.Text.StringBuilder();
+        }
 
-                for (int i = 0;
-                    i < selectedCellCount; i++)
-                {
-                    sb.Append("Row: ");
-                    sb.Append(dataGridView1.SelectedCells[i].RowIndex
-                        .ToString());
-                    sb.Append(", Column: ");
-                    sb.Append(dataGridView1.SelectedCells[i].ColumnIndex
-                        .ToString());
-                    sb.Append(Environment.NewLine);
-                }
-
-                sb.Append("Total: " + selectedCellCount.ToString());
-                MessageBox.Show(sb.ToString(), "Selected Cells");
-            }
+        // Draw the item text for views other than the Details view.
+        if (listView1.View != View.Details)
+        {
+            e.DrawText();
         }
     }

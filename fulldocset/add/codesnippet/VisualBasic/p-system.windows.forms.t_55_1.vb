@@ -1,5 +1,13 @@
-      requestedCountControl = New NumericUpDown()
-      requestedCountControl.Maximum = 1000
-      requestedCountControl.Minimum = 1
-      requestedCountControl.Value = 100
-      flp.Controls.Add(requestedCountControl)
+    Private treeViewWithToolTips As TreeView
+    
+    Private Sub InitializeTreeViewWithToolTips() 
+        treeViewWithToolTips = New TreeView()
+        Dim node1 As New TreeNode("Node1")
+        node1.ToolTipText = "Help for Node1"
+        Dim node2 As New TreeNode("Node2")
+        node2.ToolTipText = "A Tip for Node2"
+        treeViewWithToolTips.Nodes.AddRange(New TreeNode() {node1, node2})
+        treeViewWithToolTips.ShowNodeToolTips = True
+        Me.Controls.Add(treeViewWithToolTips)
+    
+    End Sub

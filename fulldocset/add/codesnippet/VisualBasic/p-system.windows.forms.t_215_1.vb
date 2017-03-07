@@ -1,36 +1,22 @@
-Public Class CustomizedTreeView
-    Inherits TreeView
+    Friend WithEvents imageButton As ToolStripButton
 
-    Public Sub New()
-        ' Customize the TreeView control by setting various properties.
-        BackColor = System.Drawing.Color.CadetBlue
-        FullRowSelect = True
-        HotTracking = True
-        Indent = 34
-        ShowPlusMinus = False
+    Private Sub InitializeImageButtonWithToolTip()
 
-        ' The ShowLines property must be false for the FullRowSelect 
-        ' property to work.
-        ShowLines = False
-    End Sub 'New
+        ' Construct the button and set the image-related properties.
+        imageButton = New ToolStripButton()
+        imageButton.Image = New Bitmap(GetType(Timer), "Timer.bmp")
+        imageButton.ImageScaling = ToolStripItemImageScaling.SizeToFit
 
+        ' Set the background color of the image to be transparent.
+        imageButton.ImageTransparentColor = Color.FromArgb(0, 255, 0)
 
-    Protected Overrides Sub OnAfterSelect(ByVal e As TreeViewEventArgs)
-        ' Confirm that the user initiated the selection.
-        ' This prevents the first node from expanding when it is
-        ' automatically selected during the initialization of 
-        ' the TreeView control.
-        If e.Action <> TreeViewAction.Unknown Then
-            If e.Node.IsExpanded Then
-                e.Node.Collapse()
-            Else
-                e.Node.Expand()
-            End If
-        End If
+        ' Show ToolTip text, set custom ToolTip text, and turn
+        ' off the automatic ToolTips.
+        toolStrip1.ShowItemToolTips = True
+        imageButton.ToolTipText = "Click for the current time"
+        imageButton.AutoToolTip = False
 
-        ' Remove the selection. This allows the same node to be
-        ' clicked twice in succession to toggle the expansion state.
-        SelectedNode = Nothing
-    End Sub 'OnAfterSelect
+        ' Add the button to the ToolStrip.
+        toolStrip1.Items.Add(imageButton)
 
-End Class 'CustomizedTreeView 
+    End Sub

@@ -16,8 +16,24 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Specifies the way to open the X.509 certificate store.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The ReadOnly, ReadWrite, and MaxAllowed flags are mutually exclusive. The OpenExistingOnly flag is the only flag that does not require the <xref:System.Security.Permissions.StorePermissionFlags> permission to be granted.  
+  
+   
+  
+## Examples  
+ The following code example opens an X.509 certificate store, adds and deletes certificates, and then closes the store. It assumes you have three certificates to add to and remove from a local store.  
+  
+ [!code-cs[x509store2#1](~/add/codesnippet/csharp/t-system.security.crypto_23_1.cs)]
+ [!code-cpp[x509store2#1](~/add/codesnippet/cpp/t-system.security.crypto_23_1.cpp)]
+ [!code-vb[x509store2#1](~/add/codesnippet/visualbasic/t-system.security.crypto_23_1.vb)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="IncludeArchived">
@@ -34,7 +50,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.OpenFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Open the X.509 certificate store and include archived certificates.</summary>
       </Docs>
     </Member>
     <Member MemberName="MaxAllowed">
@@ -51,7 +67,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.OpenFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Open the X.509 certificate store for the highest access allowed.</summary>
       </Docs>
     </Member>
     <Member MemberName="OpenExistingOnly">
@@ -68,7 +84,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.OpenFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Opens only existing stores; if no store exists, the <see cref="System.Security.Cryptography.X509Certificates.X509Store.Open%2A" /> method will not create a new store.</summary>
       </Docs>
     </Member>
     <Member MemberName="ReadOnly">
@@ -85,7 +101,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.OpenFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Open the X.509 certificate store for reading only.</summary>
       </Docs>
     </Member>
     <Member MemberName="ReadWrite">
@@ -102,7 +118,7 @@
         <ReturnType>System.Security.Cryptography.X509Certificates.OpenFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Open the X.509 certificate store for both reading and writing.</summary>
       </Docs>
     </Member>
   </Members>

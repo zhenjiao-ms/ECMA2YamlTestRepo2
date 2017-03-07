@@ -1,11 +1,17 @@
-// This is a custom TextBox control that overrides the OnClick method
-// to allow one-click selection of the text in the text box.
-public ref class SingleClickTextBox: public TextBox
-{
-protected:
-   virtual void OnClick( EventArgs^ e ) override
-   {
-      this->SelectAll();
-      TextBox::OnClick( e );
-   }
-};
+   private:
+      void AddButtons()
+      {
+         // Suspend the form layout and add two buttons.
+         this->SuspendLayout();
+         Button^ buttonOK = gcnew Button;
+         buttonOK->Location = Point(10,10);
+         buttonOK->Size = System::Drawing::Size( 75, 25 );
+         buttonOK->Text = "OK";
+         Button^ buttonCancel = gcnew Button;
+         buttonCancel->Location = Point(90,10);
+         buttonCancel->Size = System::Drawing::Size( 75, 25 );
+         buttonCancel->Text = "Cancel";
+         array<Control^>^temp5 = {buttonOK,buttonCancel};
+         this->Controls->AddRange( temp5 );
+         this->ResumeLayout();
+      }

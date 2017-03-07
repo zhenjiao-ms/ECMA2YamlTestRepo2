@@ -1,20 +1,8 @@
-    Private Sub AddColumn()
-        Dim myTable As New DataTable()
+    Private Sub CreateTextDataObject()
+        ' Creates a new data object using a string.
+        Dim myString As String = "My text string"
+        Dim myDataObject As New DataObject(myString)
         
-        ' Add a new DataColumn to the DataTable.
-        Dim myColumn As New DataColumn("myTextBoxColumn")
-        myColumn.DataType = System.Type.GetType("System.String")
-        myColumn.DefaultValue = "default string"
-        myTable.Columns.Add(myColumn)
-        ' Get the CurrencyManager for the DataTable.
-        Dim cm As CurrencyManager = CType(Me.BindingContext(myTable), CurrencyManager)
-        ' Use the CurrencyManager to get the PropertyDescriptor for the new column.
-        Dim pd As PropertyDescriptor = cm.GetItemProperties()("myTextBoxColumn")
-        Dim myColumnTextColumn As DataGridTextBoxColumn
-        ' Create the DataGridTextBoxColumn with the PropertyDescriptor.
-        myColumnTextColumn = New DataGridTextBoxColumn(pd)
-        ' Add the new DataGridColumn to the GridColumnsCollection.
-        dataGrid1.DataSource = myTable
-        dataGrid1.TableStyles.Add(New DataGridTableStyle())
-        dataGrid1.TableStyles(0).GridColumnStyles.Add(myColumnTextColumn)
-    End Sub 'AddColumn
+        ' Prints the string in a text box.
+        textBox1.Text = myDataObject.GetData(DataFormats.Text).ToString()
+    End Sub 'CreateTextDataObject

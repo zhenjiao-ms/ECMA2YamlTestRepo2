@@ -1,101 +1,87 @@
+<%@ Page Language="C#" %>
 
-<%@ Page language="C#" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <script runat="server">
-
-  void CustomersGridView_SelectedIndexChanged(Object sender, EventArgs e)
-  {
-    // Get the currently selected row using the SelectedRow property.
-    GridViewRow row = CustomersGridView.SelectedRow;
-        
-    // Display the first name from the selected row.
-    // In this example, the third column (index 2) contains
-    // the first name.
-    MessageLabel.Text = "You selected " + row.Cells[2].Text + ".";
-  }
-
-  void CustomersGridView_SelectedIndexChanging(Object sender, GridViewSelectEventArgs e)
-  {
-    // Get the currently selected row. Because the SelectedIndexChanging event
-    // occurs before the select operation in the GridView control, the
-    // SelectedRow property cannot be used. Instead, use the Rows collection
-    // and the NewSelectedIndex property of the e argument passed to this 
-    // event handler.
-    GridViewRow row = CustomersGridView.Rows[e.NewSelectedIndex];
-
-    // You can cancel the select operation by using the Cancel
-    // property. For this example, if the user selects a customer with 
-    // the ID "ANATR", the select operation is canceled and an error message
-    // is displayed.
-    if (row.Cells[1].Text == "ANATR")
+    private void Page_Load(object sender, EventArgs e)
     {
-      e.Cancel = true;
-      MessageLabel.Text = "You cannot select " + row.Cells[2].Text + "."; 
-    }
-  }
+        // Add more rows and columns to the table than can
+        // be displayed in the panel area.
+        // Scroll bars will be required to view all the data.
 
+        // Add rows and columns to the table.
+        for (int rowNum = 0; rowNum < 51; rowNum++)
+        {
+            TableRow tempRow = new TableRow();
+            for (int cellNum = 0; cellNum < 11; cellNum++)
+            {
+                TableCell tempCell = new TableCell();
+                tempCell.Text = 
+                    String.Format("({0}, {1})", rowNum, cellNum);
+                tempRow.Cells.Add(tempCell);
+            }
+            Table1.Rows.Add(tempRow);
+        }
+    }
+
+    private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        // Determine which list item was clicked.
+        // Display the selected scroll bars in the panel.
+        switch (ListBox1.SelectedIndex)
+        {
+            case 0:
+                Panel1.ScrollBars = ScrollBars.None;
+                break;
+            case 1:
+                Panel1.ScrollBars = ScrollBars.Horizontal;
+                break;
+            case 2:
+                Panel1.ScrollBars = ScrollBars.Vertical;
+                break;
+            case 3:
+                Panel1.ScrollBars = ScrollBars.Both;
+                break;
+            case 4:
+                Panel1.ScrollBars = ScrollBars.Auto;
+                break;
+            default:
+                throw new Exception("Select a valid list item.");
+        }
+    }
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-  <head runat="server">
-    <title>GridView Select Example</title>
+<head id="Head2" runat="server">
+    <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
-        
-     <h3>GridView Select Example</h3>
+    <div>
 
-     <asp:gridview id="CustomersGridView" 
-       datasourceid="CustomersSource" 
-       autogeneratecolumns="False"
-       autogenerateselectbutton="True"
-       selectedindex="1"
-       onselectedindexchanged="CustomersGridView_SelectedIndexChanged"
-       onselectedindexchanging="CustomersGridView_SelectedIndexChanging"   
-       runat="server" DataKeyNames="CustomerID">
-                
-         <Columns>
-             <asp:BoundField DataField="CustomerID" 
-                 HeaderText="CustomerID" 
-                 InsertVisible="False" ReadOnly="True" 
-                 SortExpression="CustomerID" />
-             <asp:BoundField DataField="FirstName" 
-                 HeaderText="FirstName" 
-                 SortExpression="FirstName" />
-             <asp:BoundField DataField="MiddleName" 
-                 HeaderText="MiddleName" 
-                 SortExpression="MiddleName" />
-             <asp:BoundField DataField="LastName" 
-                 HeaderText="LastName" 
-                 SortExpression="LastName" />
-             <asp:BoundField DataField="Phone" 
-                 HeaderText="Phone" 
-                 SortExpression="Phone" />
-         </Columns>
-                
-       <selectedrowstyle backcolor="LightCyan"
-         forecolor="DarkBlue"
-         font-bold="true"/>  
-                
-     </asp:gridview>
-            
-      <br/>
-            
-      <asp:label id="MessageLabel"
-        forecolor="Red"
-        runat="server"/>
-            
-      <!-- This example uses Microsoft SQL Server and connects  -->
-      <!-- to the sample database. Use an ASP.NET     -->
-      <!-- expression to retrieve the connection string value   -->
-      <!-- from the Web.config file.                            -->
-      <asp:sqldatasource id="CustomersSource"
-        selectcommand="SELECT CustomerID, FirstName, MiddleName, LastName, Phone FROM SalesLT.Customer"
-        connectionstring="<%$ ConnectionStrings:AdventureWorksLTConnectionString %>" 
-        runat="server"/>
-            
+    <h3>Panel.ScrollBars Property Example</h3>
+
+    <h4>Select the scrollbars to display in the panel.</h4>
+    <asp:ListBox ID="ListBox1" runat="Server"
+      Rows="5" AutoPostBack="True"
+      SelectionMode="Single"
+      OnSelectedIndexChanged="ListBox1_SelectedIndexChanged">
+      <asp:ListItem>None</asp:ListItem>
+      <asp:ListItem>Horizontal</asp:ListItem> 
+      <asp:ListItem>Vertical</asp:ListItem>
+      <asp:ListItem>Both</asp:ListItem> 
+      <asp:ListItem>Auto</asp:ListItem>              
+    </asp:ListBox>
+
+    <hr />              
+
+    <asp:Panel ID="Panel1" runat="Server"
+      Height="300px" Width="400px" BackColor="Aqua">
+      <asp:Table ID="Table1" runat="Server" />
+    </asp:Panel>           
+         
+    </div>
     </form>
-  </body>
+</body>
 </html>

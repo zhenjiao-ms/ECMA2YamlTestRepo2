@@ -1,25 +1,31 @@
-// This button is a simple extension of the button class that overrides
-// the ProcessMnemonic method.  If the mnemonic is correctly entered,  
-// the message box will appear and the click event will be raised.  
-public class MyMnemonicButton:Button
+using System.Windows.Forms;
 
-	// This method makes sure the control is selectable and the 
-	// mneumonic is correct before displaying the message box
-	// and triggering the click event.
+public class Form1 : Form
 {
-	[UIPermission(
-        SecurityAction.Demand, Window = UIPermissionWindow.AllWindows)]
-        protected override bool ProcessMnemonic(char inputChar)
-	{
+    private TabControl tabControl1;
+    private TabPage tabPage1;
 
-		if (CanSelect&&IsMnemonic(inputChar, this.Text))
-		{
-			MessageBox.Show("You've raised the click event " +
-				"using the mnemonic.");
-			this.PerformClick();
-			return true;
-		}
-		return false;
-	}
+    public void MyTabs()
+    {
+        // Invokes the TabControl() constructor to create the tabControl1 object.
+        this.tabControl1 = new System.Windows.Forms.TabControl();
 
+        // Creates a new tab page and adds it to the tab control
+        this.tabPage1 = new TabPage();
+                
+        this.tabControl1.TabPages.Add(tabPage1);
+
+        // Adds the tab control to the form
+        this.Controls.Add(tabControl1);
+    }
+
+    public Form1()
+    {
+        MyTabs();
+    }
+
+    static void Main() 
+    {
+        Application.Run(new Form1());
+    }
 }

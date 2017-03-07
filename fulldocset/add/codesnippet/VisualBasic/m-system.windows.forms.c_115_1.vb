@@ -1,6 +1,5 @@
-Public Function DoubleBufferingEnabled() As Boolean
-   ' Get the value of the double-buffering style bits.
-   Return Me.GetStyle((ControlStyles.DoubleBuffer _
-     Or ControlStyles.UserPaint _
-     Or ControlStyles.AllPaintingInWmPaint))
-End Function
+        Private Sub findButton_Click(ByVal sender As Object, ByVal e As System.EventArgs)
+            Dim index As Integer
+            index = comboBox1.FindString(textBox2.Text)
+            comboBox1.SelectedIndex = index
+        End Sub

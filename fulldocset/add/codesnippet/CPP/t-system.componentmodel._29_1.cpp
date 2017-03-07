@@ -1,42 +1,94 @@
-         // Creates an empty DesignerVerbCollection.
-         DesignerVerbCollection^ collection = gcnew DesignerVerbCollection;
+#using <System.dll>
 
-         // Adds a DesignerVerb to the collection.
-         collection->Add( gcnew DesignerVerb( "Example designer verb",gcnew EventHandler( this, &Class1::ExampleEvent ) ) );
+using namespace System;
+using namespace System::ComponentModel::Design;
+using namespace System::ComponentModel::Design::Serialization;
+using namespace System::Globalization;
 
-         // Adds an array of DesignerVerb objects to the collection.
-         array<DesignerVerb^>^ verbs = {
-            gcnew DesignerVerb( "Example designer verb", gcnew EventHandler( this, &Class1::ExampleEvent ) ),
-            gcnew DesignerVerb( "Example designer verb", gcnew EventHandler( this, &Class1::ExampleEvent ) )};
-         collection->AddRange( verbs );
-         
-         // Adds a collection of DesignerVerb objects to the collection.
-         DesignerVerbCollection^ verbsCollection = gcnew DesignerVerbCollection;
-         verbsCollection->Add( gcnew DesignerVerb( "Example designer verb", gcnew EventHandler( this, &Class1::ExampleEvent ) ) );
-         verbsCollection->Add( gcnew DesignerVerb( "Example designer verb", gcnew EventHandler( this, &Class1::ExampleEvent ) ) );
-         collection->AddRange( verbsCollection );
+namespace NameCreationServiceExample
+{
+   public ref class NameCreationService: public System::ComponentModel::Design::Serialization::INameCreationService
+   {
+   public:
+      NameCreationService(){}
 
-         // Tests for the presence of a DesignerVerb in the collection,
-         // and retrieves its index if it is found.
-         DesignerVerb^ testVerb = gcnew DesignerVerb( "Example designer verb", gcnew EventHandler( this, &Class1::ExampleEvent ) );
-         int itemIndex = -1;
-         if ( collection->Contains( testVerb ) )
-                  itemIndex = collection->IndexOf( testVerb );
+      // Creates an identifier for a particular data type that does not conflict 
+      // with the identifiers of any components in the specified collection.
+      virtual String^ CreateName( System::ComponentModel::IContainer^ container, System::Type^ dataType )
+      {
+         // Create a basic type name string.
+         String^ baseName = dataType->Name;
+         int uniqueID = 1;
+         bool unique = false;
 
-         // Copies the contents of the collection, beginning at index 0,
-         // to the specified DesignerVerb array.
-         // 'verbs' is a DesignerVerb array.
-         collection->CopyTo( verbs, 0 );
+         // Continue to increment uniqueID numeral until a 
+         // unique ID is located.
+         while (  !unique )
+         {
+            unique = true;
 
-         // Retrieves the count of the items in the collection.
-         int collectionCount = collection->Count;
+            // Check each component in the container for a matching 
+            // base type name and unique ID.
+            for ( int i = 0; i < container->Components->Count; i++ )
+            {
+               // Check component name for match with unique ID string.
+               if ( container->Components[ i ]->Site->Name->StartsWith( String::Concat( baseName, uniqueID ) ) )
+               {
+                  // If a match is encountered, set flag to recycle 
+                  // collection, increment ID numeral, and restart.
+                  unique = false;
+                  uniqueID++;
+                  break;
+               }
+            }
+         }
 
-         // Inserts a DesignerVerb at index 0 of the collection.
-         collection->Insert( 0, gcnew DesignerVerb( "Example designer verb", gcnew EventHandler( this, &Class1::ExampleEvent ) ) );
+         return String::Concat( baseName, uniqueID );
+      }
 
-         // Removes the specified DesignerVerb from the collection.
-         DesignerVerb^ verb = gcnew DesignerVerb( "Example designer verb", gcnew EventHandler( this, &Class1::ExampleEvent ) );
-         collection->Remove( verb );
+      // Returns whether the specified name contains 
+      // all valid character types.
+      virtual bool IsValidName( String^ name )
+      {
+         for ( int i = 0; i < name->Length; i++ )
+         {
+            Char ch = name[ i ];
+            UnicodeCategory uc = Char::GetUnicodeCategory( ch );
+            switch ( uc )
+            {
+               case UnicodeCategory::UppercaseLetter:
+               case UnicodeCategory::LowercaseLetter:
+               case UnicodeCategory::TitlecaseLetter:
+               case UnicodeCategory::DecimalDigitNumber:
+                  break;
 
-         // Removes the DesignerVerb at index 0.
-         collection->RemoveAt( 0 );
+               default:
+                  return false;
+            }
+         }
+         return true;
+      }
+
+      // Throws an exception if the specified name does not contain 
+      // all valid character types.
+      virtual void ValidateName( String^ name )
+      {
+         for ( int i = 0; i < name->Length; i++ )
+         {
+            Char ch = name[ i ];
+            UnicodeCategory uc = Char::GetUnicodeCategory( ch );
+            switch ( uc )
+            {
+               case UnicodeCategory::UppercaseLetter:
+               case UnicodeCategory::LowercaseLetter:
+               case UnicodeCategory::TitlecaseLetter:
+               case UnicodeCategory::DecimalDigitNumber:
+                  break;
+
+               default:
+                  throw gcnew Exception( String::Format( "The name '{0}' is not a valid identifier.", name ) );
+            }
+         }
+      }
+   };
+}

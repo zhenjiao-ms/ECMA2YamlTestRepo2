@@ -1,35 +1,47 @@
-using System;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Text;
-
-namespace Examples.System.Net.NetworkInformation.PingTest
-{
-    public class PingExample
-    {
-        // args[0] can be an IPaddress or host name.
-        public static void Main (string[] args)
+        public static void DisplayUnicastAddresses()
         {
-            Ping pingSender = new Ping ();
-            PingOptions options = new PingOptions ();
-
-            // Use the default Ttl value which is 128,
-            // but change the fragmentation behavior.
-            options.DontFragment = true;
-
-            // Create a buffer of 32 bytes of data to be transmitted.
-            string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            byte[] buffer = Encoding.ASCII.GetBytes (data);
-            int timeout = 120;
-            PingReply reply = pingSender.Send (args[0], timeout, buffer, options);
-            if (reply.Status == IPStatus.Success)
+            Console.WriteLine("Unicast Addresses");
+            NetworkInterface[] adapters  = NetworkInterface.GetAllNetworkInterfaces();
+            foreach (NetworkInterface adapter in adapters)
             {
-                Console.WriteLine ("Address: {0}", reply.Address.ToString ());
-                Console.WriteLine ("RoundTrip time: {0}", reply.RoundtripTime);
-                Console.WriteLine ("Time to live: {0}", reply.Options.Ttl);
-                Console.WriteLine ("Don't fragment: {0}", reply.Options.DontFragment);
-                Console.WriteLine ("Buffer size: {0}", reply.Buffer.Length);
+                IPInterfaceProperties adapterProperties = adapter.GetIPProperties();
+                UnicastIPAddressInformationCollection uniCast = adapterProperties.UnicastAddresses;
+                if (uniCast.Count >0)
+                {
+                    Console.WriteLine(adapter.Description);
+                    string lifeTimeFormat = "dddd, MMMM dd, yyyy  hh:mm:ss tt";
+                    foreach (UnicastIPAddressInformation uni in uniCast)
+                    {
+                        DateTime when;
+                        
+                        Console.WriteLine("  Unicast Address ......................... : {0}", uni.Address);
+                        Console.WriteLine("     Prefix Origin ........................ : {0}", uni.PrefixOrigin);
+                        Console.WriteLine("     Suffix Origin ........................ : {0}", uni.SuffixOrigin);
+                        Console.WriteLine("     Duplicate Address Detection .......... : {0}", 
+                            uni.DuplicateAddressDetectionState);
+                            
+                        // Format the lifetimes as Sunday, February 16, 2003 11:33:44 PM
+                        // if en-us is the current culture.
+                        
+                        // Calculate the date and time at the end of the lifetimes.    
+                        when = DateTime.UtcNow + TimeSpan.FromSeconds(uni.AddressValidLifetime);
+                        when = when.ToLocalTime();    
+                        Console.WriteLine("     Valid Life Time ...................... : {0}", 
+                            when.ToString(lifeTimeFormat,System.Globalization.CultureInfo.CurrentCulture)
+                        );
+                        when = DateTime.UtcNow + TimeSpan.FromSeconds(uni.AddressPreferredLifetime);   
+                        when = when.ToLocalTime();
+                        Console.WriteLine("     Preferred life time .................. : {0}", 
+                            when.ToString(lifeTimeFormat,System.Globalization.CultureInfo.CurrentCulture)
+                        ); 
+                        
+                        when = DateTime.UtcNow + TimeSpan.FromSeconds(uni.DhcpLeaseLifetime);
+                        when = when.ToLocalTime(); 
+                        Console.WriteLine("     DHCP Leased Life Time ................ : {0}", 
+                            when.ToString(lifeTimeFormat,System.Globalization.CultureInfo.CurrentCulture)
+                        );
+                    }
+                    Console.WriteLine();
+                }
             }
         }
-    }
-}

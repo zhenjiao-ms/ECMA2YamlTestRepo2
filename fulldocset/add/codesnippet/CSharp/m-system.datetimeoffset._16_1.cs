@@ -1,16 +1,25 @@
-      DateTimeOffset outputDate = new DateTimeOffset(2007, 11, 1, 9, 0, 0, 
-                                           new TimeSpan(-7, 0, 0)); 
-      string format = "dddd, MMM dd yyyy HH:mm:ss zzz";
-      
-      // Output date and time using custom format specification
-      Console.WriteLine(outputDate.ToString(format, null as DateTimeFormatInfo));
-      Console.WriteLine(outputDate.ToString(format, CultureInfo.InvariantCulture));
-      Console.WriteLine(outputDate.ToString(format, 
-                                            new CultureInfo("fr-FR")));
-      Console.WriteLine(outputDate.ToString(format, 
-                                            new CultureInfo("es-ES")));
-      // The example displays the following output to the console:
-      //    Thursday, Nov 01 2007 09:00:00 -07:00
-      //    Thursday, Nov 01 2007 09:00:00 -07:00
-      //    jeudi, nov. 01 2007 09:00:00 -07:00
-      //    jueves, nov 01 2007 09:00:00 -07:00
+using System;
+using System.Globalization;
+
+public class Example
+{
+   public static void Main()
+   {
+      CultureInfo arSA = new CultureInfo("ar-SA");
+      arSA.DateTimeFormat.Calendar = new UmAlQuraCalendar(); 
+      DateTimeOffset date1 = new DateTimeOffset(new DateTime(1890, 9, 10),
+                                                TimeSpan.Zero);
+
+      try {
+         Console.WriteLine(date1.ToString("d", arSA));
+      }   
+      catch (ArgumentOutOfRangeException) {
+         Console.WriteLine("{0:d} is earlier than {1:d} or later than {2:d}", 
+                           date1, 
+                           arSA.DateTimeFormat.Calendar.MinSupportedDateTime,  
+                           arSA.DateTimeFormat.Calendar.MaxSupportedDateTime); 
+      }
+   }
+}
+// The example displays the following output:
+//    9/10/1890 is earlier than 4/30/1900 or later than 5/13/2029

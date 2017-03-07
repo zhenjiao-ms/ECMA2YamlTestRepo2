@@ -1,34 +1,64 @@
+using namespace System;
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
+public ref class Form1: public System::Windows::Forms::Form
+{
+private:
+   System::Windows::Forms::TrackBar^ trackBar1;
+   System::Windows::Forms::TextBox^ textBox1;
+
 public:
-   void InitializeMyToolBar()
+   Form1()
    {
-      // Create the ToolBar, ToolBarButton controls, and menus.
-      ToolBarButton^ toolBarButton1 = gcnew ToolBarButton( "Open" );
-      ToolBarButton^ toolBarButton2 = gcnew ToolBarButton;
-      ToolBarButton^ toolBarButton3 = gcnew ToolBarButton;
-      ToolBar^ toolBar1 = gcnew ToolBar;
-      MenuItem^ menuItem1 = gcnew MenuItem( "Print" );
-      array<MenuItem^>^ temp1 = {menuItem1};
-      System::Windows::Forms::ContextMenu^ contextMenu1 =
-         gcnew System::Windows::Forms::ContextMenu( temp1 );
+      this->textBox1 = gcnew System::Windows::Forms::TextBox;
+      this->trackBar1 = gcnew System::Windows::Forms::TrackBar;
       
-      // Add the ToolBarButton controls to the ToolBar.
-      toolBar1->Buttons->Add( toolBarButton1 );
-      toolBar1->Buttons->Add( toolBarButton2 );
-      toolBar1->Buttons->Add( toolBarButton3 );
+      // TextBox for TrackBar::Value update.
+      this->textBox1->Location = System::Drawing::Point( 240, 16 );
+      this->textBox1->Size = System::Drawing::Size( 48, 20 );
       
-      // Assign an ImageList to the ToolBar and show ToolTips.
-      toolBar1->ImageList = imageList1;
-      toolBar1->ShowToolTips = true;
+      // Set up how the form should be displayed and add the controls to the form.
+      this->ClientSize = System::Drawing::Size( 296, 62 );
+      array<System::Windows::Forms::Control^>^formControls = {this->textBox1,this->trackBar1};
+      this->Controls->AddRange( formControls );
+      this->Text = "TrackBar Example";
       
-      /* Assign ImageIndex, ContextMenu, Text, ToolTip, and 
-         Style properties of the ToolBarButton controls. */
-      toolBarButton2->Style = ToolBarButtonStyle::Separator;
-      toolBarButton3->Text = "Print";
-      toolBarButton3->Style = ToolBarButtonStyle::DropDownButton;
-      toolBarButton3->ToolTipText = "Print";
-      toolBarButton3->ImageIndex = 0;
-      toolBarButton3->DropDownMenu = contextMenu1;
+      // Set up the TrackBar.
+      this->trackBar1->Location = System::Drawing::Point( 8, 8 );
+      this->trackBar1->Size = System::Drawing::Size( 224, 45 );
+      this->trackBar1->Scroll += gcnew System::EventHandler( this, &Form1::trackBar1_Scroll );
       
-      // Add the ToolBar to a form.
-      Controls->Add( toolBar1 );
+      // The Maximum property sets the value of the track bar when
+      // the slider is all the way to the right.
+      trackBar1->Maximum = 30;
+      
+      // The TickFrequency property establishes how many positions
+      // are between each tick-mark.
+      trackBar1->TickFrequency = 5;
+      
+      // The LargeChange property sets how many positions to move
+      // if the bar is clicked on either side of the slider.
+      trackBar1->LargeChange = 3;
+      
+      // The SmallChange property sets how many positions to move
+      // if the keyboard arrows are used to move the slider.
+      trackBar1->SmallChange = 2;
    }
+
+
+private:
+   void trackBar1_Scroll( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      
+      // Display the trackbar value in the text box.
+      textBox1->Text = String::Concat( "", trackBar1->Value );
+   }
+
+};
+
+
+[STAThread]
+int main()
+{
+   Application::Run( gcnew Form1 );
+}

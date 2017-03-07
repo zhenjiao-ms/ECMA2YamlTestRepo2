@@ -1,25 +1,16 @@
-Private Sub ToolStripRenderer1_RenderItemText(sender as Object, e as ToolStripItemTextRenderEventArgs) _ 
-     Handles ToolStripRenderer1.RenderItemText
+    'Declare a textbox called TextBox1.
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "Text", e.Text)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextColor", e.TextColor)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextFont", e.TextFont)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextRectangle", e.TextRectangle)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextFormat", e.TextFormat)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TextDirection", e.TextDirection)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Graphics", e.Graphics)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Item", e.Item)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "ToolStrip", e.ToolStrip)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"RenderItemText Event")
+    'Initialize TextBox1.
+    Private Sub InitializeTextBox()
+        Me.TextBox1 = New TextBox
+        Me.TextBox1.Location = New System.Drawing.Point(32, 24)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(136, 20)
+        Me.TextBox1.TabIndex = 1
+        Me.TextBox1.Text = "Type and hit enter here..."
 
-End Sub
+        'Keep the selection highlighted, even after textbox loses focus.
+        TextBox1.HideSelection = False
+        Me.Controls.Add(TextBox1)
+    End Sub

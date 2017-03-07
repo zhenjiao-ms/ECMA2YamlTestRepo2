@@ -1,9 +1,12 @@
- private void GetMyFormatInfomation() {
-    // Creates a DataFormats.Format for the Unicode data format.
-    DataFormats.Format myFormat = DataFormats.GetFormat(DataFormats.UnicodeText);
- 
-    // Displays the contents of myFormat.
-    textBox1.Text = "ID value: " + myFormat.Id + '\n' +
-       "Format name: " + myFormat.Name;
+private void BindControls(){
+    // Creates a DataSet named SuppliersProducts.
+    DataSet SuppliersProducts = new DataSet("SuppliersProducts");
+    // Adds two DataTable objects, Suppliers and Products.
+    SuppliersProducts.Tables.Add(new DataTable("Suppliers"));
+    SuppliersProducts.Tables.Add(new DataTable("Products"));
+    // Insert code to add DataColumn objects.
+    // Insert code to fill tables with columns and data.
+    // Binds the DataGrid to the DataSet, displaying the Suppliers table.
+    dataGrid1.SetDataBinding(SuppliersProducts, "Suppliers");
  }
- 
+   

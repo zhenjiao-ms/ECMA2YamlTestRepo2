@@ -1,36 +1,47 @@
-    private DataGridView dataGridView1 = new DataGridView();
+protected DomainUpDown domainUpDown1;
 
-    private void AddColorColumn()
+private void MySub()
+ {
+    // Create and initialize the DomainUpDown control.
+    domainUpDown1 = new System.Windows.Forms.DomainUpDown();
+    
+    // Add the DomainUpDown control to the form.
+    Controls.Add(domainUpDown1);
+ }
+ 
+ private void button1_Click(System.Object sender, 
+                           System.EventArgs e)
+ {   
+    // Add the text box contents and initial location in the collection
+    // to the DomainUpDown control.
+    domainUpDown1.Items.Add((textBox1.Text.Trim()) + " - " + myCounter);
+    
+    // Increment the counter variable.
+    myCounter = myCounter + 1;
+ 
+    // Clear the TextBox.
+    textBox1.Text = "";
+ }
+ 
+ private void checkBox1_Click(System.Object sender, 
+                             System.EventArgs e)
+ {
+    // If Sorted is set to true, set it to false; 
+    // otherwise set it to true.
+    if (domainUpDown1.Sorted)
     {
-        DataGridViewComboBoxColumn comboBoxColumn =
-            new DataGridViewComboBoxColumn();
-        comboBoxColumn.Items.AddRange(
-            Color.Red, Color.Yellow, Color.Green, Color.Blue);
-        comboBoxColumn.ValueType = typeof(Color);
-        dataGridView1.Columns.Add(comboBoxColumn);
-        dataGridView1.EditingControlShowing +=
-            new DataGridViewEditingControlShowingEventHandler(
-            dataGridView1_EditingControlShowing);
+       domainUpDown1.Sorted = false;
     }
-
-    private void dataGridView1_EditingControlShowing(object sender,
-        DataGridViewEditingControlShowingEventArgs e)
+    else
     {
-        ComboBox combo = e.Control as ComboBox;
-        if (combo != null)
-        {
-            // Remove an existing event-handler, if present, to avoid 
-            // adding multiple handlers when the editing control is reused.
-            combo.SelectedIndexChanged -=
-                new EventHandler(ComboBox_SelectedIndexChanged);
-
-            // Add the event handler. 
-            combo.SelectedIndexChanged +=
-                new EventHandler(ComboBox_SelectedIndexChanged);
-        }
+       domainUpDown1.Sorted = true;
     }
-
-    private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        ((ComboBox)sender).BackColor = (Color)((ComboBox)sender).SelectedItem;
-    }
+ }
+ 
+ private void domainUpDown1_SelectedItemChanged(System.Object sender, 
+                                               System.EventArgs e)
+ {
+    // Display the SelectedIndex and SelectedItem property values in a MessageBox.
+    MessageBox.Show("SelectedIndex: " + domainUpDown1.SelectedIndex.ToString() 
+       + "\n" + "SelectedItem: " + domainUpDown1.SelectedItem.ToString());
+ }

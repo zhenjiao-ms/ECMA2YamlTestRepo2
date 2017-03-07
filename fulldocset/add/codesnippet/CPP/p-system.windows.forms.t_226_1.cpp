@@ -1,34 +1,82 @@
+ref class Customer
+{
 public:
-   void InitializeMyToolBar()
+   ArrayList^ CustomerOrders;
+   String^ CustomerName;
+   Customer( String^ myName )
    {
-      // Create the ToolBar, ToolBarButton controls, and menus.
-      ToolBarButton^ toolBarButton1 = gcnew ToolBarButton( "Open" );
-      ToolBarButton^ toolBarButton2 = gcnew ToolBarButton;
-      ToolBarButton^ toolBarButton3 = gcnew ToolBarButton;
-      ToolBar^ toolBar1 = gcnew ToolBar;
-      MenuItem^ menuItem1 = gcnew MenuItem( "Print" );
-      array<MenuItem^>^ temp1 = {menuItem1};
-      System::Windows::Forms::ContextMenu^ contextMenu1 =
-         gcnew System::Windows::Forms::ContextMenu( temp1 );
+      CustomerName = myName;
+      CustomerOrders = gcnew ArrayList;
+   }
+
+};
+
+ref class Order
+{
+public:
+   String^ OrderID;
+   Order( String^ myOrderID )
+   {
+      this->OrderID = myOrderID;
+   }
+
+};
+
+   void FillTreeView()
+   {
       
-      // Add the ToolBarButton controls to the ToolBar.
-      toolBar1->Buttons->Add( toolBarButton1 );
-      toolBar1->Buttons->Add( toolBarButton2 );
-      toolBar1->Buttons->Add( toolBarButton3 );
+      // Load the images in an ImageList.
+      ImageList^ myImageList = gcnew ImageList;
+      myImageList->Images->Add( Image::FromFile( "Default.gif" ) );
+      myImageList->Images->Add( Image::FromFile( "SelectedDefault.gif" ) );
+      myImageList->Images->Add( Image::FromFile( "Root.gif" ) );
+      myImageList->Images->Add( Image::FromFile( "UnselectedCustomer.gif" ) );
+      myImageList->Images->Add( Image::FromFile( "SelectedCustomer.gif" ) );
+      myImageList->Images->Add( Image::FromFile( "UnselectedOrder.gif" ) );
+      myImageList->Images->Add( Image::FromFile( "SelectedOrder.gif" ) );
       
-      // Assign an ImageList to the ToolBar and show ToolTips.
-      toolBar1->ImageList = imageList1;
-      toolBar1->ShowToolTips = true;
+      // Assign the ImageList to the TreeView.
+      myTreeView->ImageList = myImageList;
       
-      /* Assign ImageIndex, ContextMenu, Text, ToolTip, and 
-         Style properties of the ToolBarButton controls. */
-      toolBarButton2->Style = ToolBarButtonStyle::Separator;
-      toolBarButton3->Text = "Print";
-      toolBarButton3->Style = ToolBarButtonStyle::DropDownButton;
-      toolBarButton3->ToolTipText = "Print";
-      toolBarButton3->ImageIndex = 0;
-      toolBarButton3->DropDownMenu = contextMenu1;
+      // Set the TreeView control's default image and selected image indexes.
+      myTreeView->ImageIndex = 0;
+      myTreeView->SelectedImageIndex = 1;
       
-      // Add the ToolBar to a form.
-      Controls->Add( toolBar1 );
+      /* Set the index of image from the
+        ImageList for selected and unselected tree nodes.*/
+      this->rootImageIndex = 2;
+      this->selectedCustomerImageIndex = 3;
+      this->unselectedCustomerImageIndex = 4;
+      this->selectedOrderImageIndex = 5;
+      this->unselectedOrderImageIndex = 6;
+      
+      // Create the root tree node.
+      TreeNode^ rootNode = gcnew TreeNode( "CustomerList" );
+      rootNode->ImageIndex = rootImageIndex;
+      rootNode->SelectedImageIndex = rootImageIndex;
+      
+      // Add a main root tree node.
+      myTreeView->Nodes->Add( rootNode );
+      
+      // Add a root tree node for each Customer object in the ArrayList.
+      IEnumerator^ myEnum = customerArray->GetEnumerator();
+      while ( myEnum->MoveNext() )
+      {
+         Customer^ myCustomer = safe_cast<Customer^>(myEnum->Current);
+         
+         // Add a child tree node for each Order object.
+         int countIndex = 0;
+         array<TreeNode^>^myTreeNodeArray = gcnew array<TreeNode^>(myCustomer->CustomerOrders->Count);
+         IEnumerator^ myEnum = myCustomer->CustomerOrders->GetEnumerator();
+         while ( myEnum->MoveNext() )
+         {
+            Order^ myOrder = safe_cast<Order^>(myEnum->Current);
+            
+            // Add the Order tree node to the array.
+            myTreeNodeArray[ countIndex ] = gcnew TreeNode( myOrder->OrderID,unselectedOrderImageIndex,selectedOrderImageIndex );
+            countIndex++;
+         }
+         TreeNode^ customerNode = gcnew TreeNode( myCustomer->CustomerName,unselectedCustomerImageIndex,selectedCustomerImageIndex,myTreeNodeArray );
+         myTreeView->Nodes[ 0 ]->Nodes->Add( customerNode );
+      }
    }

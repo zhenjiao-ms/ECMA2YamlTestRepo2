@@ -1,14 +1,72 @@
+Option Strict On
+Option Explicit On
+
 Imports System
 Imports System.Xml
 Imports System.Xml.Schema
 
- _
-
 Class XMLSchemaExamples
 
     Public Shared Sub Main()
-        Dim xtr As New XmlTextReader("example.xsd")
-        Dim schema As XmlSchema = XmlSchema.Read(xtr, New ValidationEventHandler(AddressOf ValidationCallbackOne))
+        Dim schema As New XmlSchema()
+
+        ' <xs:complexType name="address">
+        Dim address As New XmlSchemaComplexType()
+        schema.Items.Add(address)
+        address.Name = "address"
+
+        ' <xs:sequence>
+        Dim sequence As New XmlSchemaSequence()
+        address.Particle = sequence
+
+        ' <xs:element name="name"   type="xs:string"/>
+        Dim elementName As New XmlSchemaElement()
+        sequence.Items.Add(elementName)
+        elementName.Name = "name"
+        elementName.SchemaTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
+
+        ' <xs:element name="street"   type="xs:string"/>
+        Dim elementStreet As New XmlSchemaElement()
+        sequence.Items.Add(elementStreet)
+        elementStreet.Name = "street"
+        elementStreet.SchemaTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
+
+        ' <xs:element name="city"   type="xs:string"/>
+        Dim elementCity As New XmlSchemaElement()
+        sequence.Items.Add(elementCity)
+        elementCity.Name = "city"
+        elementCity.SchemaTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
+
+        ' <xs:complexType name="USAddress">
+        Dim USAddress As New XmlSchemaComplexType()
+        schema.Items.Add(USAddress)
+        USAddress.Name = "USAddress"
+
+        ' <xs:complexContent>
+        Dim complexContent As New XmlSchemaComplexContent()
+        USAddress.ContentModel = complexContent
+
+        ' <xs:extension base="address">
+        Dim extensionAddress As New XmlSchemaComplexContentExtension()
+        complexContent.Content = extensionAddress
+        extensionAddress.BaseTypeName = New XmlQualifiedName("address")
+
+        ' <xs:sequence>
+        Dim sequence2 As New XmlSchemaSequence()
+        extensionAddress.Particle = sequence2
+
+        ' <xs:element name="state" type="xs:string"/>
+        Dim elementUSState As New XmlSchemaElement()
+        sequence2.Items.Add(elementUSState)
+        elementUSState.Name = "state"
+        elementUSState.SchemaTypeName = New XmlQualifiedName("string", "http://www.w3.org/2001/XMLSchema")
+
+
+        ' <xs:element name="zipcode" type="xs:positiveInteger"/>
+        Dim elementZipcode As New XmlSchemaElement()
+        sequence2.Items.Add(elementZipcode)
+        elementZipcode.Name = "zipcode"
+        elementZipcode.SchemaTypeName = New XmlQualifiedName("positiveInteger", "http://www.w3.org/2001/XMLSchema")
 
         Dim schemaSet As New XmlSchemaSet()
         AddHandler schemaSet.ValidationEventHandler, AddressOf ValidationCallbackOne
@@ -22,22 +80,14 @@ Class XMLSchemaExamples
             compiledSchema = schema1
         Next
 
-        Dim schemaObject As XmlSchemaObject
-        For Each schemaObject In compiledSchema.Items
-            If schemaObject.GetType() Is GetType(XmlSchemaSimpleType) Then
-                Dim simpleType As XmlSchemaSimpleType = CType(schemaObject, XmlSchemaSimpleType)
-                Console.WriteLine("{0} {1}", simpleType.Name, simpleType.Datatype.ValueType)
-            End If
-            If schemaObject.GetType() Is GetType(XmlSchemaComplexType) Then
-                Dim complexType As XmlSchemaComplexType = CType(schemaObject, XmlSchemaComplexType)
-                Console.WriteLine("{0} {1}", complexType.Name, complexType.Datatype.ValueType)
-            End If
-        Next schemaObject
-        xtr.Close()
+        Dim nsmgr As New XmlNamespaceManager(New NameTable())
+        nsmgr.AddNamespace("xs", "http://www.w3.org/2001/XMLSchema")
+        compiledSchema.Write(Console.Out, nsmgr)
     End Sub 'Main
 
 
     Public Shared Sub ValidationCallbackOne(ByVal sender As Object, ByVal args As ValidationEventArgs)
+
         Console.WriteLine(args.Message)
     End Sub 'ValidationCallbackOne
 End Class 'XMLSchemaExamples

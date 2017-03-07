@@ -1,15 +1,11 @@
-public class Form1: Form
-{
- protected DataGrid dataGrid1;
+    // Force the cell to repaint itself when the mouse pointer enters it.
+    protected override void OnMouseEnter(int rowIndex)
+    {
+        this.DataGridView.InvalidateCell(this);
+    }
 
-private void GetHeight(){
-    MyGridColumn myGridColumn = (MyGridColumn)dataGrid1.TableStyles[1].GridColumnStyles[0];
-    Console.WriteLine(myGridColumn.GetMinHeight());
- }
-}
-
-public class MyGridColumn:DataGridBoolColumn{
-   public int GetMinHeight(){
-   return this.GetMinimumHeight();
-   }
-}
+    // Force the cell to repaint itself when the mouse pointer leaves it.
+    protected override void OnMouseLeave(int rowIndex)
+    {
+        this.DataGridView.InvalidateCell(this);
+    }

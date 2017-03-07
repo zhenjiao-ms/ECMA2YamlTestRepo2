@@ -111,9 +111,9 @@ void main()
     /////////////////////////////////////////////////
     /////////////////////////////////////////////////
 
-    array<Type^>^fType = {IsImplicitlyDereferenced::typeid};
+    array<Type^>^fType = {IsByValue::typeid};
 
-    mainClass->DefineField("modifiedInteger", Type::GetType("System.IntPtr"), fType, nullptr, FieldAttributes::Private);
+    mainClass->DefineField("modifiedInteger", Type::GetType("System.Int32"), fType, nullptr, FieldAttributes::Private);
 
     // Create the type.
     mainClass->CreateType();

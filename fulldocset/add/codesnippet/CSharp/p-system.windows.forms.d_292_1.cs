@@ -1,49 +1,34 @@
-    // Draws subitem text and applies content-based formatting.
-    private void listView1_DrawSubItem(object sender,
-        DrawListViewSubItemEventArgs e)
-    {
-        TextFormatFlags flags = TextFormatFlags.Left;
+            // Get the content that spans multiple columns.
+            object recipe =
+                this.dataGridView1.Rows.SharedRow(e.RowIndex).Cells[2].Value;
 
-        using (StringFormat sf = new StringFormat())
-        {
-            // Store the column text alignment, letting it default
-            // to Left if it has not been set to Center or Right.
-            switch (e.Header.TextAlign)
+            if (recipe != null)
             {
-                case HorizontalAlignment.Center:
-                    sf.Alignment = StringAlignment.Center;
-                    flags = TextFormatFlags.HorizontalCenter;
-                    break;
-                case HorizontalAlignment.Right:
-                    sf.Alignment = StringAlignment.Far;
-                    flags = TextFormatFlags.Right;
-                    break;
+                String text = recipe.ToString();
+
+                // Calculate the bounds for the content that spans multiple 
+                // columns, adjusting for the horizontal scrolling position 
+                // and the current row height, and displaying only whole
+                // lines of text.
+                Rectangle textArea = rowBounds;
+                textArea.X -= this.dataGridView1.HorizontalScrollingOffset;
+                textArea.Width += this.dataGridView1.HorizontalScrollingOffset;
+                textArea.Y += rowBounds.Height - e.InheritedRowStyle.Padding.Bottom;
+                textArea.Height -= rowBounds.Height -
+                    e.InheritedRowStyle.Padding.Bottom;
+                textArea.Height = (textArea.Height / e.InheritedRowStyle.Font.Height) *
+                    e.InheritedRowStyle.Font.Height;
+
+                // Calculate the portion of the text area that needs painting.
+                RectangleF clip = textArea;
+                clip.Width -= this.dataGridView1.RowHeadersWidth + 1 - clip.X;
+                clip.X = this.dataGridView1.RowHeadersWidth + 1;
+                RectangleF oldClip = e.Graphics.ClipBounds;
+                e.Graphics.SetClip(clip);
+
+                // Draw the content that spans multiple columns.
+                e.Graphics.DrawString(
+                    text, e.InheritedRowStyle.Font, forebrush, textArea);
+
+                e.Graphics.SetClip(oldClip);
             }
-
-            // Draw the text and background for a subitem with a 
-            // negative value. 
-            double subItemValue;
-            if (e.ColumnIndex > 0 && Double.TryParse(
-                e.SubItem.Text, NumberStyles.Currency,
-                NumberFormatInfo.CurrentInfo, out subItemValue) &&
-                subItemValue < 0)
-            {
-                // Unless the item is selected, draw the standard 
-                // background to make it stand out from the gradient.
-                if ((e.ItemState & ListViewItemStates.Selected) == 0)
-                {
-                    e.DrawBackground();
-                }
-
-                // Draw the subitem text in red to highlight it. 
-                e.Graphics.DrawString(e.SubItem.Text,
-                    listView1.Font, Brushes.Red, e.Bounds, sf);
-
-                return;
-            }
-
-            // Draw normal text for a subitem with a nonnegative 
-            // or nonnumerical value.
-            e.DrawText(flags);
-        }
-    }

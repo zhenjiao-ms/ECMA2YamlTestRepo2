@@ -1,1 +1,1 @@
-        Dim cryptographicException As New CryptographicException
+        Dim xmlTransform As New XmlDsigBase64Transform

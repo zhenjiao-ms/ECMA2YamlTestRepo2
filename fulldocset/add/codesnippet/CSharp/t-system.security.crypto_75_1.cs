@@ -1,125 +1,72 @@
 using System;
-using System.IO;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
-namespace RijndaelManaged_Example
+class AsnEncodedDataSample
 {
-    class RijndaelExample
-    {
-        public static void Main()
-        {
-            try
-            {
+	static void Main()
+	{		
+		//The following example demonstrates the usage the AsnEncodedData classes.
+		// Asn encoded data is read from the extensions of an X509 certificate.
+		try
+		{
+			// Open the certificate store.
+			X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
+			store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+			X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
+			X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
+			// Select one or more certificates to display extensions information.
+			X509Certificate2Collection scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection);
 
-                string original = "Here is some data to encrypt!";
+			// Create a new AsnEncodedDataCollection object.
+			AsnEncodedDataCollection asncoll = new AsnEncodedDataCollection();
+			for (int i = 0; i < scollection.Count; i++)
+			{
+				// Display certificate information.
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Certificate name: {0}", scollection[i].GetName());
+				Console.ResetColor();
+				// Display extensions information.
+				foreach (X509Extension extension in scollection[i].Extensions)
+				{
+					// Create an AsnEncodedData object using the extensions information.
+					AsnEncodedData asndata = new AsnEncodedData(extension.Oid, extension.RawData);
+					Console.ForegroundColor = ConsoleColor.Green;
+					Console.WriteLine("Extension type: {0}", extension.Oid.FriendlyName);
+					Console.WriteLine("Oid value: {0}",asndata.Oid.Value);
+					Console.WriteLine("Raw data length: {0} {1}", asndata.RawData.Length, Environment.NewLine);
+					Console.ResetColor();
+					Console.WriteLine(asndata.Format(true));
+					Console.WriteLine(Environment.NewLine);
+					// Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+					asncoll.Add(asndata);
+				}
+				Console.WriteLine(Environment.NewLine);
+			}
+			Console.ForegroundColor = ConsoleColor.Red;
+			Console.WriteLine("Number of AsnEncodedData items in the collection: {0} {1}", asncoll.Count, Environment.NewLine);
+			Console.ResetColor();
 
-                // Create a new instance of the Rijndael
-                // class.  This generates a new key and initialization 
-                // vector (IV).
-                using (Rijndael myRijndael = Rijndael.Create())
-                {
-                    // Encrypt the string to an array of bytes.
-                    byte[] encrypted = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV);
+			store.Close();
+			//Create an enumerator for moving through the collection.
+			AsnEncodedDataEnumerator asne = asncoll.GetEnumerator();
+			//You must execute a MoveNext() to get to the first item in the collection.
+			asne.MoveNext();
+			// Write out AsnEncodedData in the collection.
+			Console.ForegroundColor = ConsoleColor.Blue;
+			Console.WriteLine("First AsnEncodedData in the collection: {0}", asne.Current.Format(true));
+			Console.ResetColor();
 
-                    // Decrypt the bytes to a string.
-                    string roundtrip = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV);
-
-                    //Display the original data and the decrypted data.
-                    Console.WriteLine("Original:   {0}", original);
-                    Console.WriteLine("Round Trip: {0}", roundtrip);
-                }
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: {0}", e.Message);
-            }
-        }
-        static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
-        {
-            // Check arguments.
-            if (plainText == null || plainText.Length <= 0)
-                throw new ArgumentNullException("plainText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("IV");
-            byte[] encrypted;
-            // Create an Rijndael object
-            // with the specified key and IV.
-            using (Rijndael rijAlg = Rijndael.Create())
-            {
-                rijAlg.Key = Key;
-                rijAlg.IV = IV;
-
-                // Create an encryptor to perform the stream transform.
-                ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
-
-                // Create the streams used for encryption.
-                using (MemoryStream msEncrypt = new MemoryStream())
-                {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                        {
-
-                            //Write all data to the stream.
-                            swEncrypt.Write(plainText);
-                        }
-                        encrypted = msEncrypt.ToArray();
-                    }
-                }
-            }
-
-
-            // Return the encrypted bytes from the memory stream.
-            return encrypted;
-
-        }
-
-        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
-        {
-            // Check arguments.
-            if (cipherText == null || cipherText.Length <= 0)
-                throw new ArgumentNullException("cipherText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("IV");
-
-            // Declare the string used to hold
-            // the decrypted text.
-            string plaintext = null;
-
-            // Create an Rijndael object
-            // with the specified key and IV.
-            using (Rijndael rijAlg = Rijndael.Create())
-            {
-                rijAlg.Key = Key;
-                rijAlg.IV = IV;
-
-                // Create a decryptor to perform the stream transform.
-                ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
-
-                // Create the streams used for decryption.
-                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
-                {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-                        {
-
-                            // Read the decrypted bytes from the decrypting stream
-                            // and place them in a string.
-                            plaintext = srDecrypt.ReadToEnd();
-                        }
-                    }
-                }
-
-            }
-
-            return plaintext;
-
-        }
-    }
+			asne.MoveNext();
+			Console.ForegroundColor = ConsoleColor.DarkBlue;
+			Console.WriteLine("Second AsnEncodedData in the collection: {0}", asne.Current.Format(true));
+			Console.ResetColor();
+			//Return index in the collection to the beginning.
+			asne.Reset();
+		}
+		catch (CryptographicException)
+		{
+			Console.WriteLine("Information could not be written out for this certificate.");
+		}
+	}
 }

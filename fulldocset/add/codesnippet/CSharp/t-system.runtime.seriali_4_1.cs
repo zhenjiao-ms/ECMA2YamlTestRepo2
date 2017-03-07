@@ -1,159 +1,84 @@
 using System;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
 using System.IO;
+using System.Collections;
+using System.Runtime.Serialization;
+
+// Note: When building this code, you must reference the
+// System.Runtime.Serialization.Formatters.Soap.dll assembly.
 using System.Runtime.Serialization.Formatters.Soap;
-using System.Security;
 
-// [assembly: SecurityCritical(SecurityCriticalScope.Everything)] 
-// Using the SecurityCriticalAttribute prohibits usage of the 
-// ISafeSerializationData interface.
-[assembly: AllowPartiallyTrustedCallers]
-namespace ISafeSerializationDataExample
+
+class App 
 {
-    class Test
+    [STAThread]
+    static void Main() 
     {
-        public static void Main()
+        Serialize();
+        Deserialize();
+    }
+
+    static void Serialize() 
+    {
+        // Create a hashtable of values that will eventually be serialized.
+        Hashtable addresses = new Hashtable();
+        addresses.Add("Jeff", "123 Main Street, Redmond, WA 98052");
+        addresses.Add("Fred", "987 Pine Road, Phila., PA 19116");
+        addresses.Add("Mary", "PO Box 112233, Palo Alto, CA 94301");
+
+        // To serialize the hashtable (and its key/value pairs), 
+        // you must first open a stream for writing.
+        // Use a file stream here.
+        FileStream fs = new FileStream("DataFile.soap", FileMode.Create);
+
+        // Construct a SoapFormatter and use it 
+        // to serialize the data to the stream.
+        SoapFormatter formatter = new SoapFormatter();
+        try 
         {
-            try
-            {
-                // This code forces a division by 0 and catches the 
-                // resulting exception.
-                try
-                {
-                    int zero = 0;
-                    int ecks = 1 / zero;
-                }
-                catch (Exception ex)
-                {
-                    // Create a new exception to throw.
-                    NewException newExcept = new NewException("Divided by", 0);
-
-                    // This FileStream is used for the serialization.
-                    FileStream fs =
-                        new FileStream("NewException.dat",
-                            FileMode.Create);
-
-                    try
-                    {
-                        // Serialize the exception.
-                        BinaryFormatter formatter = new BinaryFormatter();
-                        formatter.Serialize(fs, newExcept);
-
-                        // Rewind the stream and deserialize the exception.
-                        fs.Position = 0;
-                        NewException deserExcept =
-                            (NewException)formatter.Deserialize(fs);
-                        Console.WriteLine(
-                        "Forced a division by 0, caught the resulting exception, \n" +
-                        "and created a derived exception with custom data. \n" +
-                        "Serialized the exception and deserialized it:\n");
-                        Console.WriteLine("StringData: {0}", deserExcept.StringData);
-                        Console.WriteLine("intData:   {0}", deserExcept.IntData);
-                    }
-                    catch (SerializationException se)
-                    {
-                        Console.WriteLine("Failed to serialize: {0}",
-                            se.ToString());
-                    }
-                    finally
-                    {
-                        fs.Close();
-                        Console.ReadLine();
-                    }
-                }
-            }
-            catch (NewException ex)
-            {
-                Console.WriteLine("StringData: {0}", ex.StringData);
-                Console.WriteLine("IntData:   {0}", ex.IntData);
-            }
+            formatter.Serialize(fs, addresses);
+        }
+        catch (SerializationException e) 
+        {
+            Console.WriteLine("Failed to serialize. Reason: " + e.Message);
+            throw;
+        }
+        finally 
+        {
+            fs.Close();
         }
     }
 
-    [Serializable]
-    public class NewException : Exception
+   
+    static void Deserialize() 
     {
-        // Because we don't want the exception state to be serialized normally, 
-        // we take care of that in the constructor.
-        [NonSerialized]
-        private NewExceptionState m_state = new NewExceptionState();
+        // Declare the hashtable reference.
+        Hashtable addresses  = null;
 
-        public NewException(string stringData, int intData)
+        // Open the file containing the data that you want to deserialize.
+        FileStream fs = new FileStream("DataFile.soap", FileMode.Open);
+        try 
         {
-            // Instance data is stored directly in the exception state object.
-            m_state.StringData = stringData;
-            m_state.IntData = intData;
+            SoapFormatter formatter = new SoapFormatter();
 
-            // In response to SerializeObjectState, we need to provide 
-            // any state to serialize with the exception.  In this 
-            // case, since our state is already stored in an
-            // ISafeSerializationData implementation, we can 
-            // just provide that.
-
-            SerializeObjectState += delegate(object exception,
-                SafeSerializationEventArgs eventArgs)
-            {
-                eventArgs.AddSerializedState(m_state);
-            };
-            // An alternate implementation would be to store the state 
-            // as local member variables, and in response to this 
-            // method create a new instance of an ISafeSerializationData
-            // object and populate it with the local state here before 
-            // passing it through to AddSerializedState.        
-
+            // Deserialize the hashtable from the file and 
+            // assign the reference to the local variable.
+            addresses = (Hashtable) formatter.Deserialize(fs);
         }
-        // There is no need to supply a deserialization constructor 
-        // (with SerializationInfo and StreamingContext parameters), 
-        // and no need to supply a GetObjectData implementation.
-
-
-        // Data access is through the state object (m_State).
-        public string StringData
+        catch (SerializationException e) 
         {
-            get { return m_state.StringData; }
+            Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
+            throw;
+        }
+        finally 
+        {
+            fs.Close();
         }
 
-        public int IntData
+        // To prove that the table deserialized correctly, 
+        // display the key/value pairs to the console.
+        foreach (DictionaryEntry de in addresses) 
         {
-            get { return m_state.IntData; }
-        }
-
-        // Implement the ISafeSerializationData interface 
-        // to contain custom  exception data in a partially trusted 
-       // assembly. Use this interface to replace the 
-       // Exception.GetObjectData method, 
-        // which is now marked with the SecurityCriticalAttribute.
-        [Serializable]
-        private struct NewExceptionState : ISafeSerializationData
-        {
-            private string m_stringData;
-            private int m_intData;
-
-            public string StringData
-            {
-                get { return m_stringData; }
-                set { m_stringData = value; }
-            }
-
-            public int IntData
-            {
-                get { return m_intData; }
-                set { m_intData = value; }
-            }
-
-            // This method is called when deserialization of the 
-            // exception is complete.
-            void ISafeSerializationData.CompleteDeserialization
-                (object obj)
-            {
-                // Since the exception simply contains an instance of 
-                // the exception state object, we can repopulate it 
-                // here by just setting its instance field to be equal 
-                // to this deserialized state instance.
-                NewException exception = obj as NewException;
-                exception.m_state = this;
-            }
+            Console.WriteLine("{0} lives at {1}.", de.Key, de.Value);
         }
     }
 }

@@ -1,26 +1,35 @@
-private void AddToolBar()
-{
-   // Add a toolbar and set some of its properties.
-   toolBar1 = new ToolBar();
-   toolBar1.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
-   toolBar1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-   toolBar1.Buttons.Add(this.toolBarButton1);
-   toolBar1.ButtonSize = new System.Drawing.Size(24, 24);
-   toolBar1.Divider = true;
-   toolBar1.DropDownArrows = true;
-   toolBar1.ImageList = this.imageList1;
-   toolBar1.ShowToolTips = true;
-   toolBar1.Size = new System.Drawing.Size(292, 25);
-   toolBar1.TabIndex = 0;
-   toolBar1.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
-   toolBar1.Wrappable = false;
-   
-   // Add handlers for the ButtonClick and ButtonDropDown events.
-   toolBar1.ButtonDropDown += 
-     new ToolBarButtonClickEventHandler(toolBar1_ButtonDropDown);
-   toolBar1.ButtonClick += 
-     new ToolBarButtonClickEventHandler(toolBar1_ButtonClicked);
 
-   // Add the toolbar to the form.
-   this.Controls.Add(toolBar1);
-}
+	//Declare a new TrackBar object.
+	internal System.Windows.Forms.TrackBar TrackBar1;
+
+	// Initalize the TrackBar and add it to the form.
+	private void InitializeTrackBar()
+	{
+		this.TrackBar1 = new System.Windows.Forms.TrackBar();
+		TrackBar1.Location = new System.Drawing.Point(75, 30);
+
+		// Set the TickStyle property so there are ticks on both sides
+		// of the TrackBar.
+		TrackBar1.TickStyle = TickStyle.Both;
+
+		// Set the minimum and maximum number of ticks.
+		TrackBar1.Minimum = 10;
+		TrackBar1.Maximum = 100;
+
+		// Set the tick frequency to one tick every ten units.
+		TrackBar1.TickFrequency = 10;
+
+		// Associate the event-handling method with the 
+		// ValueChanged event.
+		TrackBar1.ValueChanged += 
+			new System.EventHandler(TrackBar1_ValueChanged);
+		this.Controls.Add(this.TrackBar1);
+	}
+	
+
+	// Handle the TrackBar.ValueChanged event by calculating a value for
+	// TextBox1 based on the TrackBar value.  
+	private void TrackBar1_ValueChanged(object sender, System.EventArgs e)
+	{
+		TextBox1.Text = (System.Math.Round(TrackBar1.Value/10.0)).ToString();
+	}

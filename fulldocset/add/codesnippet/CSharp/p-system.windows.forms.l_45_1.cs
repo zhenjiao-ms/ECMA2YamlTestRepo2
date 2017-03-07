@@ -1,34 +1,42 @@
-        private ListView positionListView;
-        private ListViewItem moveItem;
-        private Button button1;
-
-        private void InitializePositionedListViewItems()
+        private ListBox ListBox1 = new ListBox();
+        private void InitializeListBox()
         {
-            // Set some basic properties on the ListView and button.
-            positionListView = new ListView();
-            positionListView.Height = 200;
-            button1 = new Button();
-            button1.Location = new Point(160, 30);
-            button1.AutoSize = true;
-            button1.Text = "Click to reposition";
-            button1.Click += new System.EventHandler(button1_Click);
-
-            // View must be set to icon view to use the Position property.
-            positionListView.View = View.LargeIcon;
-          
-            // Create the items and add them to the ListView.
-            ListViewItem item1 = new ListViewItem("Click");
-            ListViewItem item2 = new ListViewItem("OK");
-            moveItem = new ListViewItem("Move");
-            positionListView.Items.AddRange(new ListViewItem[] 
-                { item1, item2, moveItem });
-
-            // Add the controls to the form.
-            this.Controls.Add(positionListView);
-            this.Controls.Add(button1);
+            ListBox1.Items.AddRange(new Object[] 
+                { "Red Item", "Orange Item", "Purple Item" });
+            ListBox1.Location = new System.Drawing.Point(81, 69);
+            ListBox1.Size = new System.Drawing.Size(120, 95);
+            ListBox1.DrawMode = DrawMode.OwnerDrawFixed;
+            ListBox1.DrawItem += new DrawItemEventHandler(ListBox1_DrawItem);
+            Controls.Add(ListBox1);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ListBox1_DrawItem(object sender, 
+            System.Windows.Forms.DrawItemEventArgs e)
         {
-            moveItem.Position = new Point(30, 30);
+            // Draw the background of the ListBox control for each item.
+            e.DrawBackground();
+            // Define the default color of the brush as black.
+            Brush myBrush = Brushes.Black;
+
+            // Determine the color of the brush to draw each item based 
+            // on the index of the item to draw.
+            switch (e.Index)
+            {
+                case 0:
+                    myBrush = Brushes.Red;
+                    break;
+                case 1:
+                    myBrush = Brushes.Orange;
+                    break;
+                case 2:
+                    myBrush = Brushes.Purple;
+                    break;
+            }
+
+            // Draw the current item text based on the current Font 
+            // and the custom brush settings.
+            e.Graphics.DrawString(ListBox1.Items[e.Index].ToString(), 
+                e.Font, myBrush, e.Bounds, StringFormat.GenericDefault);
+            // If the ListBox has focus, draw a focus rectangle around the selected item.
+            e.DrawFocusRectangle();
         }

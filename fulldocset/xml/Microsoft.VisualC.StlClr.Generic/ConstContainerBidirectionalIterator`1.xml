@@ -19,9 +19,16 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <typeparam name="TValue">To be added.</typeparam>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <typeparam name="TValue">[!INCLUDE[cpp_iter_arg](~/add/includes/cpp-iter-arg-md.md)]</typeparam>
+    <summary>Defines an iterator that can access elements in a container in the forward direction by using the increment operator and in the backward direction by using the decrement operator. The element that the iterator points to cannot be modified. Bidirectional iterators can be used anywhere that a constant input or constant output iterator is required.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ [!INCLUDE[unnamed_parm](~/add/includes/unnamed-parm-md.md)]  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -36,7 +43,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Allocates and initializes a new <see cref="Microsoft.VisualC.StlClr.Generic.ConstContainerBidirectionalIterator%601" /> object.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -92,8 +99,8 @@
         <Parameter Name="_Node" Type="Microsoft.VisualC.StlClr.Generic.INode&lt;TValue&gt;" />
       </Parameters>
       <Docs>
-        <param name="_Node">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="_Node">The node that the iterator will point to.</param>
+        <summary>Allocates and initializes a new <see cref="Microsoft.VisualC.StlClr.Generic.ConstContainerBidirectionalIterator%601" /> object that points to the given node.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -112,8 +119,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns a copy of the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstContainerBidirectionalIterator%601" /> object.</summary>
+        <returns>A copy of the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstContainerBidirectionalIterator%601" /> object.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -132,8 +139,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Gets the container that the iterator is traversing.</summary>
+        <returns>The container that the iterator is traversing.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -177,9 +184,10 @@
         <Parameter Name="_Right" Type="Microsoft.VisualC.StlClr.Generic.IInputIterator&lt;TValue&gt;" />
       </Parameters>
       <Docs>
-        <param name="_Right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="_Right">The <see cref="Microsoft.VisualC.StlClr.Generic.IInputIterator%601" /> object to compare with the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstContainerBidirectionalIterator%601" /> object.</param>
+        <summary>Determines whether the given <see cref="Microsoft.VisualC.StlClr.Generic.IInputIterator%601" /> object is the same as the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstContainerBidirectionalIterator%601" /> object.</summary>
+        <returns>
+          <see langword="true" /> if the two iterators are the same object; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -198,7 +206,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Increments the iterator to the next position in the underlying container, or to the first position beyond the end of container if the container has been completely traversed.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -266,8 +274,8 @@
       </Parameters>
       <Docs>
         <param name="">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Decrements the iterator by one element. This is the prefix version of the decrement operator.</summary>
+        <returns>An iterator.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -289,9 +297,9 @@
       </Parameters>
       <Docs>
         <param name="">To be added.</param>
-        <param name="A_0">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="A_0">An unused parameter that indicates this is the postfix version of the decrement operator.</param>
+        <summary>Decrements the iterator by one element. This is the postfix version of the decrement operator.</summary>
+        <returns>An iterator.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -345,9 +353,10 @@
         <Parameter Name="_Right" Type="Microsoft.VisualC.StlClr.Generic.IInputIterator&lt;TValue&gt;" />
       </Parameters>
       <Docs>
-        <param name="_Right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="_Right">The <see cref="Microsoft.VisualC.StlClr.Generic.IInputIterator%601" /> object to compare with the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstContainerBidirectionalIterator%601" /> object.</param>
+        <summary>Determines whether the given <see cref="Microsoft.VisualC.StlClr.Generic.IInputIterator%601" /> object is the same as the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstContainerBidirectionalIterator%601" /> object.</summary>
+        <returns>
+          <see langword="true" /> if the two iterators are the same object; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -389,8 +398,8 @@
       </Parameters>
       <Docs>
         <param name="">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Increments the iterator by one element. This is the prefix version of the increment operator.</summary>
+        <returns>An iterator.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -413,8 +422,8 @@
       <Docs>
         <param name="">To be added.</param>
         <param name="A_0">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Increments the iterator by one element. This is the postfix version of the increment operator.</summary>
+        <returns>An iterator.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -458,9 +467,10 @@
         <Parameter Name="_Right" Type="Microsoft.VisualC.StlClr.Generic.IInputIterator&lt;TValue&gt;" />
       </Parameters>
       <Docs>
-        <param name="_Right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="_Right">The <see cref="Microsoft.VisualC.StlClr.Generic.IInputIterator%601" /> object to compare with the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstContainerBidirectionalIterator%601" /> object.</param>
+        <summary>Determines whether the given <see cref="Microsoft.VisualC.StlClr.Generic.IInputIterator%601" /> object differs from the current <see cref="Microsoft.VisualC.StlClr.Generic.ConstContainerBidirectionalIterator%601" /> object.</summary>
+        <returns>
+          <see langword="true" /> if the two iterators are different objects; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -541,7 +551,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Positions the iterator to the element immediately before the current element.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -560,8 +570,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Determines whether the iterator is valid and can be safely used to traverse the underlying container.</summary>
+        <returns>
+          <see langword="true" /> if the iterator is valid and safe to use; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

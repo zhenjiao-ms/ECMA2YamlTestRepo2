@@ -1,147 +1,62 @@
-Imports System
-Imports System.Drawing
-Imports System.Windows.Forms
-Imports System.Windows.Forms.VisualStyles
+    Private Sub ListDragTarget_DragOver(ByVal sender As Object, ByVal e As DragEventArgs) Handles ListDragTarget.DragOver
+        ' Determine whether string data exists in the drop data. If not, then
+        ' the drop effect reflects that the drop cannot occur.
+        If Not (e.Data.GetDataPresent(GetType(System.String))) Then
 
-Public Module ToolTipExampleApp
-    ' The main entry point for the application.
-    <STAThread()> _
-    Sub Main()
-        Application.Run(New ToolTipExampleForm)
-    End Sub
-End Module
-
-' Form for the ToolTip example.
-Public Class ToolTipExampleForm
-    Inherits System.Windows.Forms.Form
-
-    Private WithEvents toolTip1 As System.Windows.Forms.ToolTip
-    Private WithEvents button1 As System.Windows.Forms.Button
-    Private WithEvents button2 As System.Windows.Forms.Button
-    Private WithEvents button3 As System.Windows.Forms.Button
-
-    Public Sub New()
-        ' Create the ToolTip and set initial values.
-        Me.toolTip1 = New System.Windows.Forms.ToolTip
-        Me.toolTip1.AutoPopDelay = 5000
-        Me.toolTip1.InitialDelay = 500
-        Me.toolTip1.OwnerDraw = True
-        Me.toolTip1.ReshowDelay = 10
-
-        ' Create button1 and set initial values.
-        Me.button1 = New System.Windows.Forms.Button
-        Me.button1.Location = New System.Drawing.Point(8, 8)
-        Me.button1.Text = "Button 1"
-        Me.toolTip1.SetToolTip(Me.button1, "Button1 tip text")
-
-        ' Create button2 and set initial values.
-        Me.button2 = New System.Windows.Forms.Button
-        Me.button2.Location = New System.Drawing.Point(8, 32)
-        Me.button2.Text = "Button 2"
-        Me.toolTip1.SetToolTip(Me.button2, "Button2 tip text")
-
-        ' Create button3 and set initial values.
-        Me.button3 = New System.Windows.Forms.Button
-        Me.button3.Location = New System.Drawing.Point(8, 56)
-        Me.button3.Text = "Button 3"
-        Me.toolTip1.SetToolTip(Me.button3, "Button3 tip text")
-
-        ' Set up the Form.
-        Me.Controls.AddRange(New Control() {Me.button1, _
-                                            Me.button2, _
-                                            Me.button3})
-        Me.Text = "owner drawn ToolTip example"
-    End Sub
-
-    ' Clean up any resources being used.        
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
-        If (disposing) Then
-            toolTip1.Dispose()
+            e.Effect = DragDropEffects.None
+            DropLocationLabel.Text = "None - no string data."
+            Return
         End If
 
-        MyBase.Dispose(disposing)
-    End Sub
+        ' Set the effect based upon the KeyState.
+        If ((e.KeyState And (8 + 32)) = (8 + 32) And _
+            (e.AllowedEffect And DragDropEffects.Link) = DragDropEffects.Link) Then
+            ' KeyState 8 + 32 = CTL + ALT
 
-    ' Determines the correct size for the button2 ToolTip.
-    Private Sub toolTip1_Popup(ByVal sender As System.Object, _
-        ByVal e As PopupEventArgs) Handles toolTip1.Popup
+            ' Link drag-and-drop effect.
+            e.Effect = DragDropEffects.Link
 
-        If e.AssociatedControl Is button2 Then
+        ElseIf ((e.KeyState And 32) = 32 And _
+            (e.AllowedEffect And DragDropEffects.Link) = DragDropEffects.Link) Then
 
-            Dim f As New Font("Tahoma", 9)
-            Try
-                e.ToolTipSize = TextRenderer.MeasureText( _
-                    toolTip1.GetToolTip(e.AssociatedControl), f)
-            Finally
-                f.Dispose()
-            End Try
+            ' ALT KeyState for link.
+            e.Effect = DragDropEffects.Link
 
+        ElseIf ((e.KeyState And 4) = 4 And _
+            (e.AllowedEffect And DragDropEffects.Move) = DragDropEffects.Move) Then
+
+            ' SHIFT KeyState for move.
+            e.Effect = DragDropEffects.Move
+
+        ElseIf ((e.KeyState And 8) = 8 And _
+            (e.AllowedEffect And DragDropEffects.Copy) = DragDropEffects.Copy) Then
+
+            ' CTL KeyState for copy.
+            e.Effect = DragDropEffects.Copy
+
+        ElseIf ((e.AllowedEffect And DragDropEffects.Move) = DragDropEffects.Move) Then
+
+            ' By default, the drop action should be move, if allowed.
+            e.Effect = DragDropEffects.Move
+
+        Else
+            e.Effect = DragDropEffects.None
         End If
-    End Sub
 
-    ' Handles drawing the ToolTip.
-    Private Sub toolTip1_Draw(ByVal sender As System.Object, _
-        ByVal e As DrawToolTipEventArgs) Handles toolTip1.Draw
-        ' Draw the ToolTip differently depending on which 
-        ' control this ToolTip is for.
+        ' Gets the index of the item the mouse is below. 
 
-        ' Draw a custom 3D border if the ToolTip is for button1.
-        If (e.AssociatedControl Is button1) Then
-            ' Draw the standard background.
-            e.DrawBackground()
+        ' The mouse locations are relative to the screen, so they must be 
+        ' converted to client coordinates.
 
-            ' Draw the custom border to appear 3-dimensional.
-            e.Graphics.DrawLines( _
-                SystemPens.ControlLightLight, New Point() { _
-                New Point(0, e.Bounds.Height - 1), _
-                New Point(0, 0), _
-                New Point(e.Bounds.Width - 1, 0)})
-            e.Graphics.DrawLines( _
-                SystemPens.ControlDarkDark, New Point() { _
-                New Point(0, e.Bounds.Height - 1), _
-                New Point(e.Bounds.Width - 1, e.Bounds.Height - 1), _
-                New Point(e.Bounds.Width - 1, 0)})
+        indexOfItemUnderMouseToDrop = _
+            ListDragTarget.IndexFromPoint(ListDragTarget.PointToClient(New Point(e.X, e.Y)))
 
-            ' Specify custom text formatting flags.
-            Dim sf As TextFormatFlags = TextFormatFlags.VerticalCenter Or _
-                                 TextFormatFlags.HorizontalCenter Or _
-                                 TextFormatFlags.NoFullWidthCharacterBreak
+        ' Updates the label text.
+        If (indexOfItemUnderMouseToDrop <> ListBox.NoMatches) Then
 
-            ' Draw standard text with customized formatting options.
-            e.DrawText(sf)
-        ElseIf (e.AssociatedControl Is button2) Then
-            ' Draw a custom background and text if the ToolTip is for button2.
-
-            ' Draw the custom background.
-            e.Graphics.FillRectangle(SystemBrushes.ActiveCaption, e.Bounds)
-
-            ' Draw the standard border.
-            e.DrawBorder()
-
-            ' Draw the custom text.
-            Dim sf As StringFormat = New StringFormat
-            Try
-                sf.Alignment = StringAlignment.Center
-                sf.LineAlignment = StringAlignment.Center
-                sf.HotkeyPrefix = System.Drawing.Text.HotkeyPrefix.None
-                sf.FormatFlags = StringFormatFlags.NoWrap
-
-                Dim f As Font = New Font("Tahoma", 9)
-                Try
-                    e.Graphics.DrawString(e.ToolTipText, f, _
-                        SystemBrushes.ActiveCaptionText, _
-                        RectangleF.op_Implicit(e.Bounds), sf)
-                Finally
-                    f.Dispose()
-                End Try
-            Finally
-                sf.Dispose()
-            End Try
-        ElseIf (e.AssociatedControl Is button3) Then
-            ' Draw the ToolTip using default values if the ToolTip is for button3.
-            e.DrawBackground()
-            e.DrawBorder()
-            e.DrawText()
+            DropLocationLabel.Text = "Drops before item #" & (indexOfItemUnderMouseToDrop + 1)
+        Else
+            DropLocationLabel.Text = "Drops at the end."
         End If
+
     End Sub
-End Class

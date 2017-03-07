@@ -12,8 +12,15 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Encapsulates a unit of work that a user can undo.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The UndoEngine.UndoUnit class is a nested class within <xref:System.ComponentModel.Design.UndoEngine.UndoUnit.UndoEngine%2A> that encapsulates an action that a user can undo. The default UndoEngine.UndoUnit implementation monitors change notifications and builds up a list of events for each change. It saves these events using <xref:System.ComponentModel.Design.Serialization.IDesignerSerializationService>. An UndoEngine.UndoUnit receives event notifications for changes directly from <xref:System.ComponentModel.Design.UndoEngine.UndoUnit.UndoEngine%2A> through several `public``virtual` methods. You can derive from UndoEngine.UndoUnit and perform any additional logic. If desired, you can completely bypass the default UndoEngine.UndoUnit implementation.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -31,10 +38,12 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="engine">To be added.</param>
-        <param name="name">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="engine">The undo engine that owns this undo unit.</param>
+        <param name="name">The name for this undo unit.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" /> class.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentNullException">
+          <paramref name="engine" /> is <see langword="null" />.</exception>
       </Docs>
     </Member>
     <Member MemberName="Close">
@@ -52,8 +61,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Receives a call from the undo engine to close this unit.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ When a unit is closed, no more events can come into its various event methods. The <xref:System.ComponentModel.Design.UndoEngine.UndoUnit> itself may take action here to ensure that any events that are currently open are closed.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ComponentAdded">
@@ -73,8 +89,8 @@
         <Parameter Name="e" Type="System.ComponentModel.Design.ComponentEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">A <see cref="T:System.ComponentModel.Design.ComponentEventArgs" /> that contains the event data.</param>
+        <summary>Receives a call from the <see cref="T:System.ComponentModel.Design.UndoEngine" /> in response to a <see cref="E:System.ComponentModel.Design.IComponentChangeService.ComponentAdded" /> event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -95,8 +111,8 @@
         <Parameter Name="e" Type="System.ComponentModel.Design.ComponentEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">A <see cref="T:System.ComponentModel.Design.ComponentEventArgs" /> that contains the event data.</param>
+        <summary>Receives a call from the <see cref="T:System.ComponentModel.Design.UndoEngine" /> in response to a <see cref="E:System.ComponentModel.Design.IComponentChangeService.ComponentAdding" /> event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -117,8 +133,8 @@
         <Parameter Name="e" Type="System.ComponentModel.Design.ComponentChangedEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">A <see cref="T:System.ComponentModel.Design.ComponentChangedEventArgs" /> that contains the event data.</param>
+        <summary>Receives a call from the <see cref="T:System.ComponentModel.Design.UndoEngine" /> in response to a <see cref="E:System.ComponentModel.Design.IComponentChangeService.ComponentChanged" /> event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -139,8 +155,8 @@
         <Parameter Name="e" Type="System.ComponentModel.Design.ComponentChangingEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">A <see cref="T:System.ComponentModel.Design.ComponentChangedEventArgs" /> that contains the event data.</param>
+        <summary>Receives a call from the <see cref="T:System.ComponentModel.Design.UndoEngine" /> in response to a <see cref="E:System.ComponentModel.Design.IComponentChangeService.ComponentChanging" /> event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -161,8 +177,8 @@
         <Parameter Name="e" Type="System.ComponentModel.Design.ComponentEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">A <see cref="T:System.ComponentModel.Design.ComponentEventArgs" /> that contains the event data.</param>
+        <summary>Receives a call from the <see cref="T:System.ComponentModel.Design.UndoEngine" /> in response to a <see cref="E:System.ComponentModel.Design.IComponentChangeService.ComponentRemoved" /> event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -183,8 +199,8 @@
         <Parameter Name="e" Type="System.ComponentModel.Design.ComponentEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">A <see cref="T:System.ComponentModel.Design.ComponentEventArgs" /> that contains the event data.</param>
+        <summary>Receives a call from the <see cref="T:System.ComponentModel.Design.UndoEngine" /> in response to a <see cref="E:System.ComponentModel.Design.IComponentChangeService.ComponentRemoving" /> event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -205,8 +221,8 @@
         <Parameter Name="e" Type="System.ComponentModel.Design.ComponentRenameEventArgs" />
       </Parameters>
       <Docs>
-        <param name="e">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="e">A <see cref="T:System.ComponentModel.Design.ComponentRenameEventArgs" /> that contains the event data.</param>
+        <summary>Receives a call from the <see cref="T:System.ComponentModel.Design.UndoEngine" /> in response to a <see cref="E:System.ComponentModel.Design.IComponentChangeService.ComponentRename" /> event.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -227,9 +243,9 @@
         <Parameter Name="serviceType" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="serviceType">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="serviceType">The type of service to retrieve.</param>
+        <summary>Gets an instance of the requested service.</summary>
+        <returns>An instance of the given service, or <see langword="null" /> if the service cannot be resolved.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -247,9 +263,17 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets a value indicating whether the <see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" /> contains no events.</summary>
+        <value>
+          <see langword="true" /> if the <see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" /> contains no events; otherwise, <see langword="false" />.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The undo engine may discard empty units.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Name">
@@ -266,8 +290,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the name of the <see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />.</summary>
+        <value>The name of the <see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -286,8 +310,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns a <see cref="T:System.String" /> that represents the current name of the unit.</summary>
+        <returns>A <see cref="T:System.String" /> that represents the current name of the unit.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -306,8 +330,19 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Performs an undo or redo action.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Undo actions toggle themselves between undo and redo states, so calling Undo twice sets the object back to its original state.  
+  
+ The <xref:System.ComponentModel.Design.UndoEngine.UndoUnit> class initially assumes that the undoable work has already been done, so the first call to Undo undoes the work. The next call undoes the previous undo operation, performing a redo.  
+  
+ The Undo method calls the <xref:System.ComponentModel.Design.UndoEngine.UndoUnit.UndoCore%2A> method to perform an undo operation. The Undo method itself works to maintain consistent state within the <xref:System.ComponentModel.Design.UndoEngine.UndoUnit>, even in the event of an exception thrown by <xref:System.ComponentModel.Design.UndoEngine.UndoUnit.UndoCore%2A>.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="UndoCore">
@@ -325,8 +360,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Called by <see cref="System.ComponentModel.Design.UndoEngine.UndoUnit.Undo%2A" /> to perform an undo action.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ The <xref:System.ComponentModel.Design.UndoEngine.UndoUnit.Undo%2A> method calls the UndoCore method to perform an undo operation. The <xref:System.ComponentModel.Design.UndoEngine.UndoUnit.Undo%2A> method itself works to maintain consistent state within the <xref:System.ComponentModel.Design.UndoEngine.UndoUnit>, even in the event of an exception thrown by UndoCore.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="UndoEngine">
@@ -343,8 +385,8 @@
         <ReturnType>System.ComponentModel.Design.UndoEngine</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the parent UndoEngine.</summary>
+        <value>The UndoEngine to which this <see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" /> is attached.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -1,49 +1,44 @@
-Public Class CalendarCell
-    Inherits DataGridViewTextBoxCell
+        Private Sub Create_Table()
+            ' Create a DataSet.
+            myDataSet = New DataSet("myDataSet")
+            ' Create DataTable.
+            Dim myCustomerTable As New DataTable("Customers")
+            ' Create two columns, and add to the table.
+            Dim CustID As New DataColumn("CustID", GetType(Integer))
+            Dim CustName As New DataColumn("CustName")
+            myCustomerTable.Columns.Add(CustID)
+            myCustomerTable.Columns.Add(CustName)
+            Dim newRow1 As DataRow
+            ' Create three customers in the Customers Table.
+            Dim i As Integer
+            For i = 1 To 2
+                newRow1 = myCustomerTable.NewRow()
+                newRow1("custID") = i
+                ' Add row to the Customers table.
+                myCustomerTable.Rows.Add(newRow1)
+            Next i
+            ' Give each customer a distinct name.
+            myCustomerTable.Rows(0)("custName") = "Alpha"
+            myCustomerTable.Rows(1)("custName") = "Beta"
+            ' Add table to DataSet.
+            myDataSet.Tables.Add(myCustomerTable)
+            dataGrid1.SetDataBinding(myDataSet, "Customers")
+            myTableStyle = New DataGridTableStyle()
+            myTableStyle.MappingName = "Customers"
+            myTableStyle.ForeColor = Color.DarkMagenta
+            dataGrid1.TableStyles.Add(myTableStyle)
+        End Sub 'Create_Table
 
-    Public Sub New()
-        ' Use the short date format.
-        Me.Style.Format = "d"
-    End Sub
-
-    Public Overrides Sub InitializeEditingControl(ByVal rowIndex As Integer, _
-        ByVal initialFormattedValue As Object, _
-        ByVal dataGridViewCellStyle As DataGridViewCellStyle)
-
-        ' Set the value of the editing control to the current cell value.
-        MyBase.InitializeEditingControl(rowIndex, initialFormattedValue, _
-            dataGridViewCellStyle)
-
-        Dim ctl As CalendarEditingControl = _
-            CType(DataGridView.EditingControl, CalendarEditingControl)
-
-        ' Use the default row value when Value property is null.
-        If (Me.Value Is Nothing) Then
-            ctl.Value = CType(Me.DefaultNewRowValue, DateTime)
-        Else
-            ctl.Value = CType(Me.Value, DateTime)
-        End If
-    End Sub
-
-    Public Overrides ReadOnly Property EditType() As Type
-        Get
-            ' Return the type of the editing control that CalendarCell uses.
-            Return GetType(CalendarEditingControl)
-        End Get
-    End Property
-
-    Public Overrides ReadOnly Property ValueType() As Type
-        Get
-            ' Return the type of the value that CalendarCell contains.
-            Return GetType(DateTime)
-        End Get
-    End Property
-
-    Public Overrides ReadOnly Property DefaultNewRowValue() As Object
-        Get
-            ' Use the current date and time as the default value.
-            Return DateTime.Now
-        End Get
-    End Property
-
-End Class
+        ' Set table's forecolor.
+        Private Sub OnForeColor_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles button2.Click
+            dataGrid1.TableStyles.Clear()
+            Select Case myComboBox.SelectedItem.ToString()
+                Case "Green"
+                    myTableStyle.ForeColor = Color.Green
+                Case "Red"
+                    myTableStyle.ForeColor = Color.Red
+                Case "Violet"
+                    myTableStyle.ForeColor = Color.Violet
+            End Select
+            dataGrid1.TableStyles.Add(myTableStyle)
+        End Sub 'OnForeColor_Click

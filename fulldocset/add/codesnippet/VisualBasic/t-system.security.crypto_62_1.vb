@@ -1,55 +1,30 @@
-Imports System
-Imports System.Security.Cryptography
-Imports System.Security.Cryptography.X509Certificates
-
-
-
-Module CertSelect
-
-    Sub Main()
-        Try
-            Dim store As New X509Store("MY", StoreLocation.CurrentUser)
-            store.Open(OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly)
-
-            Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-            Dim i As Integer
-            For i = 0 To collection.Count
-                Dim extension As X509Extension
-                For Each extension In collection(i).Extensions
-                    Console.WriteLine(extension.Oid.FriendlyName + "(" + extension.Oid.Value + ")")
-
-
-                    If extension.Oid.FriendlyName = "Key Usage" Then
-                        Dim ext As X509KeyUsageExtension = CType(extension, X509KeyUsageExtension)
-                        Console.WriteLine(ext.KeyUsages)
-                    End If
-
-                    If extension.Oid.FriendlyName = "Basic Constraints" Then
-                        Dim ext As X509BasicConstraintsExtension = CType(extension, X509BasicConstraintsExtension)
-                        Console.WriteLine(ext.CertificateAuthority)
-                        Console.WriteLine(ext.HasPathLengthConstraint)
-                        Console.WriteLine(ext.PathLengthConstraint)
-                    End If
-
-                    If extension.Oid.FriendlyName = "Subject Key Identifier" Then
-                        Dim ext As X509SubjectKeyIdentifierExtension = CType(extension, X509SubjectKeyIdentifierExtension)
-                        Console.WriteLine(ext.SubjectKeyIdentifier)
-                    End If
-
-                    If extension.Oid.FriendlyName = "Enhanced Key Usage" Then
-                        Dim ext As X509EnhancedKeyUsageExtension = CType(extension, X509EnhancedKeyUsageExtension)
-                        Dim oids As OidCollection = ext.EnhancedKeyUsages
-                        Dim oid As Oid
-                        For Each oid In oids
-                            Console.WriteLine(oid.FriendlyName + "(" + oid.Value + ")")
-                        Next oid
-                    End If
-                Next extension
-            Next i
-            store.Close()
-        Catch
-            Console.WriteLine("Information could not be written out for this certificate.")
-        End Try
-
-    End Sub
-End Module
+Private Shared Sub EncryptData(inName As String, outName As String, _
+   tdesKey() As Byte, tdesIV() As Byte)
+   
+    'Create the file streams to handle the input and output files.
+    Dim fin As New FileStream(inName, FileMode.Open, FileAccess.Read)
+    Dim fout As New FileStream(outName, FileMode.OpenOrCreate, _
+       FileAccess.Write)
+    fout.SetLength(0)
+        
+    'Create variables to help with read and write.
+    Dim bin(100) As Byte 'This is intermediate storage for the encryption.
+    Dim rdlen As Long = 0 'This is the total number of bytes written.
+    Dim totlen As Long = fin.Length 'This is the total length of the input file.
+    Dim len As Integer 'This is the number of bytes to be written at a time.
+    Dim tdes As New TripleDESCryptoServiceProvider()
+    Dim encStream As New CryptoStream(fout, _
+       tdes.CreateEncryptor(tdesKey, tdesIV), CryptoStreamMode.Write)
+        
+    Console.WriteLine("Encrypting...")
+        
+    'Read from the input file, then encrypt and write to the output file.
+    While rdlen < totlen
+        len = fin.Read(bin, 0, 100)
+        encStream.Write(bin, 0, len)
+        rdlen = rdlen + len
+        Console.WriteLine("{0} bytes processed", rdlen)
+    End While
+        
+    encStream.Close()
+End Sub

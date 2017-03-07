@@ -1,46 +1,39 @@
 using System;
 using System.Globalization;
 
-public class SamplesCultureInfo
-{
 
-   public static void Main()
-   {
+public class SamplesCultureInfo  {
 
-      // Lists the cultures that use the Chinese language and determines if each is a neutral culture.
-      foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures))
-      {
-         if (ci.TwoLetterISOLanguageName == "zh")
-         {
-            Console.Write("{0,-7} {1,-40}", ci.Name, ci.EnglishName);
-            if (ci.IsNeutralCulture)
-            {
-               Console.WriteLine(": neutral");
-                }
-            else
-            {
-               Console.WriteLine(": specific");
-            }
-         }
-      }
+   public static void Main()  {
 
+      // Creates and initializes a CultureInfo.
+      CultureInfo myCI = new CultureInfo("en-US", false);
+
+      // Clones myCI and modifies the DTFI and NFI instances associated with the clone.
+      CultureInfo myCIclone = (CultureInfo) myCI.Clone();
+      myCIclone.DateTimeFormat.AMDesignator = "a.m.";
+      myCIclone.DateTimeFormat.DateSeparator = "-";
+      myCIclone.NumberFormat.CurrencySymbol = "USD";
+      myCIclone.NumberFormat.NumberDecimalDigits = 4;
+
+      // Displays the properties of the DTFI and NFI instances associated with the original and with the clone. 
+      Console.WriteLine( "DTFI/NFI PROPERTY\tORIGINAL\tMODIFIED CLONE" );
+      Console.WriteLine( "DTFI.AMDesignator\t{0}\t\t{1}", myCI.DateTimeFormat.AMDesignator, myCIclone.DateTimeFormat.AMDesignator );
+      Console.WriteLine( "DTFI.DateSeparator\t{0}\t\t{1}", myCI.DateTimeFormat.DateSeparator, myCIclone.DateTimeFormat.DateSeparator );
+      Console.WriteLine( "NFI.CurrencySymbol\t{0}\t\t{1}", myCI.NumberFormat.CurrencySymbol, myCIclone.NumberFormat.CurrencySymbol );
+      Console.WriteLine( "NFI.NumberDecimalDigits\t{0}\t\t{1}", myCI.NumberFormat.NumberDecimalDigits, myCIclone.NumberFormat.NumberDecimalDigits );
+      
    }
 
 }
 
-
 /*
 This code produces the following output.
 
-zh-Hans Chinese (Simplified)                    : neutral
-zh-TW   Chinese (Traditional, Taiwan)           : specific
-zh-CN   Chinese (Simplified, PRC)               : specific
-zh-HK   Chinese (Traditional, Hong Kong S.A.R.) : specific
-zh-SG   Chinese (Simplified, Singapore)         : specific
-zh-MO   Chinese (Traditional, Macao S.A.R.)     : specific
-zh      Chinese                                 : neutral
-zh-Hant Chinese (Traditional)                   : neutral
-zh-CHS  Chinese (Simplified) Legacy             : neutral
-zh-CHT  Chinese (Traditional) Legacy            : neutral
+DTFI/NFI PROPERTY       ORIGINAL        MODIFIED CLONE
+DTFI.AMDesignator       AM              a.m.
+DTFI.DateSeparator      /               -
+NFI.CurrencySymbol      $               USD
+NFI.NumberDecimalDigits 2               4
 
 */

@@ -1,19 +1,27 @@
-   // Computes a week one month from today.
-   void ShowAWeeksVacationOneMonthFromToday()
+public:
+   void InitializeMyMenu()
    {
-      System::DateTime today = this->MonthCalendar1->TodayDate;
-      int vacationMonth = today.Month + 1;
-      int vacationYear = today.Year;
-
-      if ( today.Month == 12 )
-      {
-         vacationMonth = 1;
-         ++vacationYear;
-      }
+      // Create the MainMenu Object*.
+      MainMenu^ myMainMenu = gcnew MainMenu;
       
-      // Select the week using SelectionStart and SelectionEnd.
-      this->MonthCalendar1->SelectionStart =
-         System::DateTime( today.Year, vacationMonth, today.Day - 1 );
-      this->MonthCalendar1->SelectionEnd =
-         System::DateTime( today.Year, vacationMonth, today.Day + 6 );
+      // Create the MenuItem objects.
+      MenuItem^ fileMenu = gcnew MenuItem( "&File" );
+      MenuItem^ newFile = gcnew MenuItem( "&New" );
+      MenuItem^ openFile = gcnew MenuItem( "&Open" );
+      MenuItem^ exitProgram = gcnew MenuItem( "E&xit" );
+      
+      // Add the File menu item to myMainMenu.
+      myMainMenu->MenuItems->Add( fileMenu );
+      
+      // Add three submenus to the File menu.
+      fileMenu->MenuItems->Add( newFile );
+      fileMenu->MenuItems->Add( openFile );
+      fileMenu->MenuItems->Add( exitProgram );
+      
+      // Assign myMainMenu to the form.
+      this->Menu = myMainMenu;
+      
+      // Count the number of objects in the File menu and display the result.
+      String^ objectNumber = fileMenu->MenuItems->Count.ToString();
+      MessageBox::Show( "Number of objects in the File menu = " + objectNumber );
    }

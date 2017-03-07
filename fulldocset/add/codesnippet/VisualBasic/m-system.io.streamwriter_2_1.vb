@@ -4,12 +4,13 @@ Imports System.Text
 Module Module1
 
     Sub Main()
-        Dim fileName As String = "test.txt"
-        Dim textToAdd As String = "Example text in file"
-
-        Using writer As StreamWriter = New StreamWriter(fileName)
-            writer.Write(textToAdd)
-        End Using
+        WriteCharacters()
     End Sub
 
+    Async Sub WriteCharacters()
+
+        Using writer As StreamWriter = File.CreateText("newfile.txt")
+            Await writer.WriteAsync("Example text as string")
+        End Using
+    End Sub
 End Module

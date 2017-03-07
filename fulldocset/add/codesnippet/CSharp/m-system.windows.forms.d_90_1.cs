@@ -1,20 +1,31 @@
-private void GetIfPresent2() {
-    // Creates a component to store in the data object.
-    Component myComponent = new Component();
- 
-    // Creates a new data object and assigns it the component.
-    DataObject myDataObject = new DataObject(myComponent);
- 
-    // Creates a type to store the type of data.
-    Type myType = myComponent.GetType();
- 
-    // Determines if the DataObject has data of the Type format.
-    textBox1.Text = "Is the specified data type available in the " +
-       "DataObject? " + myDataObject.GetDataPresent(myType).ToString() + '\n';
- 
-    // Retrieves the data using its type format, and displays the type.
-    Object myObject = myDataObject.GetData(myType);
-    textBox1.Text += "The data type stored in the DataObject is: " +
-       myObject.GetType().Name;
- }
- 
+public class CustomDataGridView : DataGridView
+{
+    [System.Security.Permissions.UIPermission(
+        System.Security.Permissions.SecurityAction.LinkDemand,
+        Window = System.Security.Permissions.UIPermissionWindow.AllWindows)]
+    protected override bool ProcessDialogKey(Keys keyData)
+    {
+        // Extract the key code from the key value. 
+        Keys key = (keyData & Keys.KeyCode);
+
+        // Handle the ENTER key as if it were a RIGHT ARROW key. 
+        if (key == Keys.Enter)
+        {
+            return this.ProcessRightKey(keyData);
+        }
+        return base.ProcessDialogKey(keyData);
+    }
+
+    [System.Security.Permissions.SecurityPermission(
+        System.Security.Permissions.SecurityAction.LinkDemand, Flags = 
+        System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode)]
+    protected override bool ProcessDataGridViewKey(KeyEventArgs e)
+    {
+        // Handle the ENTER key as if it were a RIGHT ARROW key. 
+        if (e.KeyCode == Keys.Enter)
+        {
+            return this.ProcessRightKey(e.KeyData);
+        }
+        return base.ProcessDataGridViewKey(e);
+    }
+}

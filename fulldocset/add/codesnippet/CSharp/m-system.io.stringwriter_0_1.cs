@@ -1,24 +1,36 @@
 using System;
-using System.IO;
 using System.Text;
+using System.IO;
 
-class StrWriter
+namespace ConsoleApplication
 {
-    static void Main()
+    class Program
     {
-        StringBuilder strBuilder = 
-            new StringBuilder("file path characters are: ");
-        StringWriter strWriter = new StringWriter(strBuilder);
+        static void Main(string[] args)
+        {
+            WriteCharacters();
+        }
 
-        strWriter.Write(
-            Path.InvalidPathChars, 0, Path.InvalidPathChars.Length);
+        static async void WriteCharacters()
+        {
+            StringBuilder stringToWrite = new StringBuilder("Characters in StringBuilder");
+            stringToWrite.AppendLine();
 
-        strWriter.Close();
-
-        // Since the StringWriter is closed, an exception will 
-        // be thrown if the Write method is called. However, 
-        // the StringBuilder can still manipulate the string.
-        strBuilder.Insert(0, "Invalid ");
-        Console.WriteLine(strWriter.ToString());
+            using (StringWriter writer = new StringWriter(stringToWrite))
+            {
+                UnicodeEncoding ue = new UnicodeEncoding();
+                char[] charsToAdd = ue.GetChars(ue.GetBytes("and chars to add"));
+                foreach (char c in charsToAdd)
+                {
+                    await writer.WriteAsync(c);
+                }
+                Console.WriteLine(stringToWrite.ToString());
+            }
+        }
     }
 }
+// The example displays the following output:
+//
+// Characters in StringBuilder
+// and chars to add
+//

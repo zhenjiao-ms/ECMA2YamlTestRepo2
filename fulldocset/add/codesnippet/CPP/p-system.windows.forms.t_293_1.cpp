@@ -1,28 +1,34 @@
-        ToolStripButton^ boldButton;
+        ToolStripButton^ changeDirectionButton;
 
-        void InitializeBoldButton()
+        void InitializeMovingToolStrip()
         {
-            boldButton = gcnew ToolStripButton;
-            boldButton->Text = "B";
-            boldButton->CheckOnClick = true;
-            boldButton->CheckedChanged  += gcnew EventHandler(this, 
-                &Form1::boldButtonCheckedChanged);
-            toolStrip1->Items->Add(boldButton);
+            changeDirectionButton = gcnew ToolStripButton;
+            movingToolStrip->AutoSize = true;
+            movingToolStrip->RenderMode = ToolStripRenderMode::System;
+            changeDirectionButton->TextDirection = 
+                ToolStripTextDirection::Vertical270;
+            changeDirectionButton->Overflow = 
+                ToolStripItemOverflow::Never;
+            changeDirectionButton->Text = "Change Alignment";
+            movingToolStrip->Items->Add(changeDirectionButton);
+            changeDirectionButton->Click += gcnew EventHandler(this, 
+                &Form1::changeDirectionButtonClick);
         }
 
-        void boldButtonCheckedChanged(Object^ sender, EventArgs^ e)
+        void changeDirectionButtonClick(Object^ sender, EventArgs^ e)
         {
-            if (boldButton->Checked)
-            { 
-                this->Font= gcnew System::Drawing::Font(this->Font, 
-                    FontStyle::Bold);
+            ToolStripItem^ item = (ToolStripItem^) sender;
+            if ((item->TextDirection == ToolStripTextDirection::Vertical270) 
+                || (item->TextDirection == ToolStripTextDirection::Vertical90))
+            {
+                item->TextDirection = ToolStripTextDirection::Horizontal;
+                movingToolStrip->Raft = RaftingSides::Top;
             }
             else
-            { 
-                this->Font = gcnew System::Drawing::Font(this->Font, 
-                    FontStyle::Regular);
+            {
+                item->TextDirection = 
+                    ToolStripTextDirection::Vertical270;
+                movingToolStrip->Raft = RaftingSides::Left;
             }
         }
 
-
-        //   internal:

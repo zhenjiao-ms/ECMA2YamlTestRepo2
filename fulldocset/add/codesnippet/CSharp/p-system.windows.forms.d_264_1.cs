@@ -1,15 +1,39 @@
-protected object source;
+    #region "data store maintance"
+    const int initialValue = -1;
 
-private void SetSourceAndMember(){
+    private void dataGridView1_CellValueNeeded(object sender,
+        DataGridViewCellValueEventArgs e)
+    {
+        if (store.ContainsKey(e.RowIndex))
+        {
+            // Use the store if the e value has been modified 
+            // and stored.            
+            e.Value = store[e.RowIndex];
+        }
+        else if (newRowNeeded && e.RowIndex == numberOfRows)
+        {
+            if (dataGridView1.IsCurrentCellInEditMode)
+            {
+                e.Value = initialValue;
+            }
+            else
+            {
+                // Show a blank value if the cursor is just resting
+                // on the last row.
+                e.Value = String.Empty;
+            }
+        }
+        else
+        {
+            e.Value = e.RowIndex;
+        }
+    }
 
-   DataSet myDataSet = new DataSet("myDataSet");
-   DataTable tableCustomers = new DataTable("Customers");
-   myDataSet.Tables.Add(tableCustomers);
-   // Insert code to populate the DataSet.
+    private void dataGridView1_CellValuePushed(object sender,
+        DataGridViewCellValueEventArgs e)
+    {
+        store.Add(e.RowIndex, int.Parse(e.Value.ToString()));
+    }
+    #endregion
 
-   // Set DataSource and DataMember with SetDataBinding method.
-   string member;
-   // The name of a DataTable is Customers.
-   member = "Customers";
-   dataGrid1.SetDataBinding(myDataSet, member);
-}
+    private Dictionary<int, int> store = new Dictionary<int, int>();

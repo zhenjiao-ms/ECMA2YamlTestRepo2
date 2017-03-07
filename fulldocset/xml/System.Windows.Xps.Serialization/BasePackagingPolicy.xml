@@ -16,8 +16,15 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Defines the base class for [!INCLUDE[TLA2#tla_xps](~/add/includes/tla2sharptla-xps-md.md)] package serialization policies. This class is abstract.</summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Packaging policy classes provide methods for acquiring serialization readers and writers for different types of parts in an <xref:System.Windows.Xps.Packaging.XpsDocument>.  
+  
+ ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -32,7 +39,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When overridden in a derived class, initializes a new instance of the <see cref="T:System.Windows.Xps.Serialization.BasePackagingPolicy" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -53,9 +60,9 @@
         <Parameter Name="resourceId" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="resourceId">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="resourceId">The [!INCLUDE[TLA2#tla_id](~/add/includes/tla2sharptla-id-md.md)] of the object.</param>
+        <summary>When overridden in a derived class, acquires a resource stream for an <see cref="T:System.Windows.Xps.Packaging.XpsColorContext" /> object.</summary>
+        <returns>The <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> for the <see cref="T:System.Windows.Xps.Packaging.XpsColorContext" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -74,8 +81,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>When overridden in a derived class, acquires a resource stream for an <see cref="T:System.Windows.Xps.Packaging.XpsFont" /> object.</summary>
+        <returns>An <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> for the <see cref="T:System.Windows.Xps.Packaging.XpsFont" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -96,9 +103,9 @@
         <Parameter Name="resourceId" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="resourceId">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="resourceId">The resource [!INCLUDE[TLA2#tla_id](~/add/includes/tla2sharptla-id-md.md)] of the <see cref="T:System.Windows.Xps.Packaging.XpsFont" /> resource stream to acquire.</param>
+        <summary>When overridden in a derived class, acquires an <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> for an <see cref="T:System.Windows.Xps.Packaging.XpsFont" /> with a specified resource [!INCLUDE[TLA2#tla_id](~/add/includes/tla2sharptla-id-md.md)].</summary>
+        <returns>The [!INCLUDE[TLA#tla_metro](~/add/includes/tlasharptla-metro-md.md)] resource stream for the <see cref="T:System.Windows.Xps.Packaging.XpsFont" /> with the specified <paramref name="resourceID" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -119,9 +126,9 @@
         <Parameter Name="resourceId" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="resourceId">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="resourceId">The [!INCLUDE[TLA2#tla_id](~/add/includes/tla2sharptla-id-md.md)] of the object.</param>
+        <summary>When overridden in a derived class, acquires a resource stream for an <see cref="T:System.Windows.Xps.Packaging.XpsImage" /> object.</summary>
+        <returns>The <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> for the <see cref="T:System.Windows.Xps.Packaging.XpsImage" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -142,9 +149,9 @@
         <Parameter Name="resourceId" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="resourceId">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="resourceId">The [!INCLUDE[TLA2#tla_id](~/add/includes/tla2sharptla-id-md.md)] of the object.</param>
+        <summary>When overridden in a derived class, acquires a resource stream for an <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" /> object.</summary>
+        <returns>The <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> for the <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -163,9 +170,20 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>When overridden in a derived class, gets a list of strings, each expressing a <see cref="T:System.Windows.Documents.LinkTarget" /> element.</summary>
+        <returns>An <see cref="System.Collections.Generic.IList%601" /> of <see cref="T:System.String" /> objects that represent the linkable targets for a page.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ Use the list to compose `LinkTarget` elements that can be inserted into the <xref:System.Windows.Documents.PageContent.LinkTargets%2A?displayProperty=fullName>element for the corresponding page. Wrap each string in the list in markup by using the following form:  
+  
+ `<LinkTarget Name=\"` *target name* `\" />`, where *target name* is the string.  
+  
+ For more information about the `\<PageContent.LinkTargets>` and <xref:System.Windows.Documents.LinkTarget> elements, see chapter 3 in the [!INCLUDE[TLA#tla_xps](~/add/includes/tlasharptla-xps-md.md)] specification, which you can obtain at [XPS: Specification and License Downloads](http://www.microsoft.com/whdc/xps/downloads.mspx).  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AcquireXmlWriterForFixedDocument">
@@ -183,8 +201,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>When overridden in a derived class, returns an <see cref="T:System.Xml.XmlWriter" /> for a <see cref="T:System.Windows.Documents.FixedDocument" />.</summary>
+        <returns>The <see cref="T:System.Xml.XmlWriter" /> for the <see cref="T:System.Windows.Documents.FixedDocument" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -203,8 +221,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>When overridden in a derived class, returns an <see cref="T:System.Xml.XmlWriter" /> for a <see cref="T:System.Windows.Documents.FixedDocumentSequence" />.</summary>
+        <returns>The <see cref="T:System.Xml.XmlWriter" /> for a <see cref="T:System.Windows.Documents.FixedDocumentSequence" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -223,8 +241,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>When overridden in a derived class, returns an <see cref="T:System.Xml.XmlWriter" /> for a <see cref="T:System.Windows.Documents.FixedPage" />.</summary>
+        <returns>The <see cref="T:System.Xml.XmlWriter" /> for a <see cref="T:System.Windows.Documents.FixedPage" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -243,8 +261,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>When overridden in a derived class, returns an <see cref="T:System.Xml.XmlWriter" /> for the current page.</summary>
+        <returns>The <see cref="T:System.Xml.XmlWriter" /> for the current page.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -263,8 +281,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>When overridden in a derived class, returns an <see cref="T:System.Xml.XmlWriter" /> for an <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" />.</summary>
+        <returns>The <see cref="T:System.Xml.XmlWriter" /> for an <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -282,8 +300,8 @@
         <ReturnType>System.Uri</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>When overridden in a derived class, gets the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] of the fixed document that is processing.</summary>
+        <value>The <see cref="T:System.Uri" /> of the current document.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -301,8 +319,8 @@
         <ReturnType>System.Uri</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>When overridden in a derived class, gets the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] of the fixed page that is processing.</summary>
+        <value>The <see cref="T:System.Uri" /> of the current page.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -323,9 +341,16 @@
         <Parameter Name="printTicket" Type="System.Printing.PrintTicket" />
       </Parameters>
       <Docs>
-        <param name="printTicket">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="printTicket">An object that provides information about how a print job prints.</param>
+        <summary>When overridden in a derived class, writes a print ticket to a package or to a part of the package.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ This method does not validate or modify the specified `printTicket` for a particular <xref:System.Printing.PrintQueue>. If necessary, use the <xref:System.Printing.PrintQueue.MergeAndValidatePrintTicket%2A> method to create a <xref:System.Printing.PrintTicket> that is specific to the <xref:System.Printing.PrintQueue> and is valid for a specified printer.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="PreCommitCurrentPage">
@@ -343,7 +368,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When overridden in a derived class, performs any required maintenance tasks before the page is committed, for example, flushes streams.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -365,10 +390,17 @@
         <Parameter Name="relationshipName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="targetUri">To be added.</param>
-        <param name="relationshipName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="targetUri">The [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] of the resource.</param>
+        <param name="relationshipName">A name for the relationship.</param>
+        <summary>When overridden in a derived class, adds a relationship from the current page to some internal or external resource.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ For more information about [!INCLUDE[TLA#tla_xml](~/add/includes/tlasharptla-xml-md.md)] relationship parts in packages, see chapter 1 of the [Open Packaging Conventions](http://www.microsoft.com/whdc/xps/xpspkg.mspx) schema.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RelateRestrictedFontToCurrentDocument">
@@ -388,9 +420,16 @@
         <Parameter Name="targetUri" Type="System.Uri" />
       </Parameters>
       <Docs>
-        <param name="targetUri">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="targetUri">The [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] of the font.</param>
+        <summary>When overridden in a derived class, adds a relationship from the current page to a font.</summary>
+        <remarks>
+          <format type="text/markdown"><![CDATA[  
+  
+## Remarks  
+ For more information about [!INCLUDE[TLA#tla_xml](~/add/includes/tlasharptla-xml-md.md)] relationship parts in packages, see chapter 1 of the [Open Packaging Conventions](http://www.microsoft.com/whdc/xps/xpspkg.mspx) schema.  
+  
+ ]]></format>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ReleaseResourceStreamForXpsColorContext">
@@ -408,7 +447,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When overridden in a derived class, releases the <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> for the current <see cref="T:System.Windows.Xps.Packaging.XpsColorContext" /> object.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -427,7 +466,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When overridden in a derived class, releases the <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> for the current <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" /> object.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -448,8 +487,8 @@
         <Parameter Name="resourceId" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="resourceId">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="resourceId">The [!INCLUDE[TLA2#tla_id](~/add/includes/tla2sharptla-id-md.md)] of the resource that is released.</param>
+        <summary>When overridden in a derived class, releases the <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> for the current <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" /> object.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -468,7 +507,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When overridden in a derived class, releases the <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> for the current <see cref="T:System.Windows.Xps.Packaging.XpsImage" /> object.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -487,7 +526,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When overridden in a derived class, releases the <see cref="T:System.Windows.Xps.Serialization.XpsResourceStream" /> for the current <see cref="T:System.Windows.Xps.Packaging.XpsResourceDictionary" /> object.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -506,7 +545,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When overridden in a derived class, releases the <see cref="T:System.Xml.XmlWriter" /> for the current <see cref="T:System.Windows.Documents.FixedDocument" />.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -525,7 +564,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When overridden in a derived class, releases the <see cref="T:System.Xml.XmlWriter" /> for the current <see cref="T:System.Windows.Documents.FixedDocumentSequence" />.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -544,7 +583,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>When overridden in a derived class, releases the <see cref="T:System.Xml.XmlWriter" /> for the current <see cref="T:System.Windows.Documents.FixedPage" />.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -563,7 +602,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>This member supports the [!INCLUDE[TLA#tla_winclient](~/add/includes/tlasharptla-winclient-md.md)] infrastructure and is not intended to be used directly from your code.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

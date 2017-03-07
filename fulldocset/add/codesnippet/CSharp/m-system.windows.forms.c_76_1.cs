@@ -1,63 +1,78 @@
-using System;
-using System.Drawing;
-using System.Windows.Forms;
+private Image picture;
+private Point pictureLocation;
 
-namespace csTempWindowsApplication1
+public Form1()
 {
-    public class Form1 : System.Windows.Forms.Form
-    {
-        // Constant value was found in the "windows.h" header file.
-        private const int WM_ACTIVATEAPP = 0x001C;
-        private bool appActive = true;
+   // Enable drag-and-drop operations and 
+   // add handlers for DragEnter and DragDrop.
+   this.AllowDrop = true;
+   this.DragDrop += new DragEventHandler(this.Form1_DragDrop);
+   this.DragEnter += new DragEventHandler(this.Form1_DragEnter);
+}
 
-        [STAThread]
-        static void Main() 
-        {
-            Application.Run(new Form1());
-        }
-        
-        public Form1()
-        {
-            this.Size = new System.Drawing.Size(300,300);
-            this.Text = "Form1";
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-        }
+protected override void OnPaint(PaintEventArgs e)
+{
+   // If there is an image and it has a location, 
+   // paint it when the Form is repainted.
+   base.OnPaint(e);
+   if(this.picture != null && this.pictureLocation != Point.Empty)
+   {
+      e.Graphics.DrawImage(this.picture, this.pictureLocation);
+   }
+}
 
-        protected override void OnPaint(PaintEventArgs e) 
-        {
-            // Paint a string in different styles depending on whether the
-            // application is active.
-            if (appActive) 
-            {
-                e.Graphics.FillRectangle(SystemBrushes.ActiveCaption,20,20,260,50);
-                e.Graphics.DrawString("Application is active", this.Font, SystemBrushes.ActiveCaptionText, 20,20);
-            }
-            else 
-            {
-                e.Graphics.FillRectangle(SystemBrushes.InactiveCaption,20,20,260,50);
-                e.Graphics.DrawString("Application is Inactive", this.Font, SystemBrushes.ActiveCaptionText, 20,20);
-            }
-        }
+private void Form1_DragDrop(object sender, DragEventArgs e)
+{
+   // Handle FileDrop data.
+   if(e.Data.GetDataPresent(DataFormats.FileDrop) )
+   {
+      // Assign the file names to a string array, in 
+      // case the user has selected multiple files.
+      string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+      try
+      {
+         // Assign the first image to the picture variable.
+         this.picture = Image.FromFile(files[0]);
+         // Set the picture location equal to the drop point.
+         this.pictureLocation = this.PointToClient(new Point(e.X, e.Y) );
+      }
+      catch(Exception ex)
+      {
+         MessageBox.Show(ex.Message);
+         return;
+      }
+   }
 
-	[System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name="FullTrust")]
-        protected override void WndProc(ref Message m) 
-        {
-            // Listen for operating system messages.
-            switch (m.Msg)
-            {
-                // The WM_ACTIVATEAPP message occurs when the application
-                // becomes the active application or becomes inactive.
-                case WM_ACTIVATEAPP:
+   // Handle Bitmap data.
+   if(e.Data.GetDataPresent(DataFormats.Bitmap) )
+   {
+      try
+      {
+         // Create an Image and assign it to the picture variable.
+         this.picture = (Image)e.Data.GetData(DataFormats.Bitmap);
+         // Set the picture location equal to the drop point.
+         this.pictureLocation = this.PointToClient(new Point(e.X, e.Y) );
+      }
+      catch(Exception ex)
+      {
+         MessageBox.Show(ex.Message);
+         return;
+      }
+   }
+   // Force the form to be redrawn with the image.
+   this.Invalidate();
+}
 
-                    // The WParam value identifies what is occurring.
-                    appActive = (((int)m.WParam != 0));
-
-                    // Invalidate to get new text painted.
-                    this.Invalidate();
-
-                    break;                
-            }
-            base.WndProc(ref m);
-        }
-    }
+private void Form1_DragEnter(object sender, DragEventArgs e)
+{
+   // If the data is a file or a bitmap, display the copy cursor.
+   if (e.Data.GetDataPresent(DataFormats.Bitmap) || 
+      e.Data.GetDataPresent(DataFormats.FileDrop) ) 
+   {
+      e.Effect = DragDropEffects.Copy;
+   }
+   else
+   {
+      e.Effect = DragDropEffects.None;
+   }
 }

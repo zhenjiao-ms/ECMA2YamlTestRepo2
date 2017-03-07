@@ -1,15 +1,13 @@
-Private Sub TabControl1_Selecting(sender as Object, e as TabControlCancelEventArgs) _ 
-     Handles TabControl1.Selecting
+    Private Sub enumerateChildrenBtn_Click( _
+    ByVal sender As System.Object, _
+    ByVal e As System.EventArgs) _
+    Handles enumerateChildrenBtn.Click
 
-    Dim messageBoxVB as New System.Text.StringBuilder()
-    messageBoxVB.AppendFormat("{0} = {1}", "TabPage", e.TabPage)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "TabPageIndex", e.TabPageIndex)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Action", e.Action)
-    messageBoxVB.AppendLine()
-    messageBoxVB.AppendFormat("{0} = {1}", "Cancel", e.Cancel)
-    messageBoxVB.AppendLine()
-    MessageBox.Show(messageBoxVB.ToString(),"Selecting Event")
+        Dim c As Control
+        For Each c In Me.TableLayoutPanel1.Controls
 
-End Sub
+            Trace.WriteLine(c.ToString())
+
+        Next
+
+    End Sub

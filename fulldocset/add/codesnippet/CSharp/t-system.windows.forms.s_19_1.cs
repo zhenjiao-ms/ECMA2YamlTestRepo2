@@ -1,13 +1,18 @@
-private void SplitContainer1_SplitterMoved(Object sender, SplitterEventArgs e) {
-
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "X", e.X );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "Y", e.Y );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "SplitX", e.SplitX );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "SplitY", e.SplitY );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "SplitterMoved Event" );
-}
+private void button1_Click(object sender, System.EventArgs e)
+ {
+     Stream myStream ;
+     SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+ 
+     saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"  ;
+     saveFileDialog1.FilterIndex = 2 ;
+     saveFileDialog1.RestoreDirectory = true ;
+ 
+     if(saveFileDialog1.ShowDialog() == DialogResult.OK)
+     {
+         if((myStream = saveFileDialog1.OpenFile()) != null)
+         {
+             // Code to write the stream goes here.
+             myStream.Close();
+         }
+     }
+ }

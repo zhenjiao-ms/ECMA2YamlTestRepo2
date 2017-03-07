@@ -1,11 +1,13 @@
 private:
-   void GetMyFormatInfomation()
+   void BindControls()
    {
-      // Creates a DataFormats.Format for the Unicode data format.
-      DataFormats::Format^ myFormat = DataFormats::GetFormat(
-         DataFormats::UnicodeText );
-      
-      // Displays the contents of myFormat.
-      textBox1->Text = String::Format( "ID value: {0}\nFormat name: {1}",
-         myFormat->Id, myFormat->Name );
+      // Creates a DataSet named SuppliersProducts.
+      DataSet^ SuppliersProducts = gcnew DataSet( "SuppliersProducts" );
+      // Adds two DataTable objects, Suppliers and Products.
+      SuppliersProducts->Tables->Add( gcnew DataTable( "Suppliers" ) );
+      SuppliersProducts->Tables->Add( gcnew DataTable( "Products" ) );
+      // Insert code to add DataColumn objects.
+      // Insert code to fill tables with columns and data.
+      // Binds the DataGrid to the DataSet, displaying the Suppliers table.
+      dataGrid1->SetDataBinding( SuppliersProducts, "Suppliers" );
    }

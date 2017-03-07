@@ -1,14 +1,14 @@
     ' Class-level declaration.
     ' Create a TraceSwitch.
-    Private Shared generalSwitch As New TraceSwitch("General", "Entire Application")    
+    Private Shared generalSwitch As New TraceSwitch("General", "Entire Application")
     
-    Public Shared Sub MyErrorMethod(myObject As Object)
+    Public Shared Sub MyErrorMethod(category As String)
         ' Write the message if the TraceSwitch level is set to Error or higher.
         If generalSwitch.TraceError Then
-            Trace.Write(myObject)
+            Trace.Write("My error message. ")
         End If 
         ' Write a second message if the TraceSwitch level is set to Verbose.
         If generalSwitch.TraceVerbose Then
-            Trace.WriteLine(" is not a valid value for this method.")
+            Trace.WriteLine("My second error message.", category)
         End If
     End Sub

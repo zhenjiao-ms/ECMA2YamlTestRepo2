@@ -1,10 +1,8 @@
-    Private Sub myButton1_Click(ByVal sender As Object, ByVal e As EventArgs)
-        ' Set the 'HeaderForeColor' property.
-        myDataTableStyle.HeaderForeColor = Color.Blue
-    End Sub 'myButton1_Click
-   
-    Private Sub myButton2_Click(ByVal sender As Object, ByVal e As EventArgs)
-        ' Reset the 'HeaderForeColor' property to its default value.
-        myDataTableStyle.ResetHeaderForeColor()
-    End Sub 'myButton2_Click
-   
+    Private Sub SizeThirdRow(ByVal sender As Object, _
+        ByVal e As System.EventArgs) Handles Button7.Click
+
+        Dim thirdRow As Integer = 2
+        DataGridView1.AutoResizeRow( _
+            2, DataGridViewAutoSizeRowMode.AllCellsExceptHeader)
+
+    End Sub

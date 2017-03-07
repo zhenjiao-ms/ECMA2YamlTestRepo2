@@ -6,4 +6,4 @@
 
             // ...
 
-            controlClient.Suspend(instanceId);
+            controlClient.Run(instanceId);

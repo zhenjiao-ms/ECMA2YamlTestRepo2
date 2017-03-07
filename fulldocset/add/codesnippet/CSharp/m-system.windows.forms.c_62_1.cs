@@ -1,26 +1,9 @@
-protected override void OnTextChanged(System.EventArgs e)
+private void MakeLabelVisible()
 {
-   try
+   /* If the panel contains label1, bring it 
+   * to the front to make sure it is visible. */
+   if(panel1.Contains(label1))
    {
-      // Convert the text to a Double and determine
-      // if it is a negative number.
-      if(double.Parse(this.Text) < 0)
-      {
-         // If the number is negative, display it in Red.
-         this.ForeColor = Color.Red;
-      }
-      else
-      {
-         // If the number is not negative, display it in Black.
-         this.ForeColor = Color.Black;
-      }
+      label1.BringToFront();
    }
-   catch
-   {
-      // If there is an error, display the 
-      // text using the system colors.
-      this.ForeColor = SystemColors.ControlText;
-   }
-   
-   base.OnTextChanged(e);
 }

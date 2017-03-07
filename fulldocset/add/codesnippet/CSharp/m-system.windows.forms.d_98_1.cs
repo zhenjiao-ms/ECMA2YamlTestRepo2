@@ -1,11 +1,6 @@
-    // Force the cell to repaint itself when the mouse pointer enters it.
-    protected override void OnMouseEnter(int rowIndex)
-    {
-        this.DataGridView.InvalidateCell(this);
-    }
-
-    // Force the cell to repaint itself when the mouse pointer leaves it.
-    protected override void OnMouseLeave(int rowIndex)
-    {
-        this.DataGridView.InvalidateCell(this);
-    }
+private void AddDataGridBoolColumnStyle(){
+   DataGridBoolColumn myColumn = new DataGridBoolColumn();
+   myColumn.MappingName = "Current";
+   myColumn.Width = 200;
+   dataGrid1.TableStyles["Customers"].GridColumnStyles.Add(myColumn);
+} 

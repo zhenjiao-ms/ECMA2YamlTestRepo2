@@ -1,93 +1,87 @@
-//
-// This example signs a file specified by a URI 
-// using a detached signature. It then verifies  
-// the signed XML.
-//
+#using <System.dll>
 #using <System.Security.dll>
-#using <System.Xml.dll>
 
 using namespace System;
 using namespace System::Security::Cryptography;
-using namespace System::Security::Cryptography::Xml;
 using namespace System::Security::Cryptography::X509Certificates;
-using namespace System::Text;
-using namespace System::Xml;
 
-// Sign an XML file and save the signature in a new file.
-void SignDetachedResource( String^ URIString, String^ XmlSigFileName, RSA^ Key, String^ Certificate )
-{
-   
-   // Create a SignedXml object.
-   SignedXml^ signedXml = gcnew SignedXml;
-   
-   // Assign the key to the SignedXml object.
-   signedXml->SigningKey = Key;
-   
-   // Create a reference to be signed.
-   Reference^ reference = gcnew Reference;
-   
-   // Add the passed URI to the reference object.
-   reference->Uri = URIString;
-   
-   // Add the reference to the SignedXml object.
-   signedXml->AddReference( reference );
-   
-   // Create a new KeyInfo object.
-   KeyInfo^ keyInfo = gcnew KeyInfo;
-   
-   // Load the X509 certificate.
-   X509Certificate^ MSCert = X509Certificate::CreateFromCertFile( Certificate );
-   
-   // Load the certificate into a KeyInfoX509Data object
-   // and add it to the KeyInfo object.
-   keyInfo->AddClause( gcnew KeyInfoX509Data( MSCert ) );
-   
-   // Add the KeyInfo object to the SignedXml object.
-   signedXml->KeyInfo = keyInfo;
-   
-   // Compute the signature.
-   signedXml->ComputeSignature();
-   
-   // Get the XML representation of the signature and save
-   // it to an XmlElement object.
-   XmlElement^ xmlDigitalSignature = signedXml->GetXml();
-   
-   // Save the signed XML document to a file specified
-   // using the passed string.
-   XmlTextWriter^ xmltw = gcnew XmlTextWriter( XmlSigFileName,gcnew UTF8Encoding( false ) );
-   xmlDigitalSignature->WriteTo( xmltw );
-   xmltw->Close();
-}
-
-
-
-[STAThread]
 int main()
 {
-   array<String^>^args = Environment::GetCommandLineArgs();
    
-   // The URI to sign.
-   String^ resourceToSign = "http://www.microsoft.com";
-   
-   // The name of the file to which to save the XML signature.
-   String^ XmlFileName = "xmldsig.xml";
-   
-   // The name of the X509 certificate
-   String^ Certificate = "microsoft.cer";
+   //The following example demonstrates the usage of the AsnEncodedData classes.
+   // Asn encoded data is read from the extensions of an X509 certificate.
    try
    {
       
-      // Generate a signing key. This key should match the certificate.
-      RSACryptoServiceProvider^ Key = gcnew RSACryptoServiceProvider;
-      Console::WriteLine( "Signing: {0}", resourceToSign );
+      // Open the certificate store.
+      X509Store^ store = gcnew X509Store( L"MY",StoreLocation::CurrentUser );
+      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
+      X509Certificate2Collection^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
+      X509Certificate2Collection^ fcollection = dynamic_cast<X509Certificate2Collection^>(collection->Find( X509FindType::FindByTimeValid, DateTime::Now, false ));
       
-      // Sign the detached resource and save the signature in an XML file.
-      SignDetachedResource( resourceToSign, XmlFileName, Key, Certificate );
-      Console::WriteLine( "XML signature was succesfully computed and saved to {0}.", XmlFileName );
+      // Select one or more certificates to display extensions information.
+      X509Certificate2Collection^ scollection = X509Certificate2UI::SelectFromCollection(fcollection, L"Certificate Select",L"Select certificates from the following list to get extension information on that certificate",X509SelectionFlag::MultiSelection);
+      
+      // Create a new AsnEncodedDataCollection object.
+      AsnEncodedDataCollection^ asncoll = gcnew AsnEncodedDataCollection;
+      for ( int i = 0; i < scollection->Count; i++ )
+      {
+         
+         // Display certificate information.
+         Console::ForegroundColor = ConsoleColor::Red;
+         Console::WriteLine( L"Certificate name: {0}", scollection[i]->GetName() );
+         Console::ResetColor();
+         
+         // Display extensions information.
+         System::Collections::IEnumerator^ myEnum = scollection[i]->Extensions->GetEnumerator();
+         while ( myEnum->MoveNext() )
+         {
+            X509Extension^ extension = safe_cast<X509Extension ^>(myEnum->Current);
+            
+            // Create an AsnEncodedData object using the extensions information.
+            AsnEncodedData^ asndata = gcnew AsnEncodedData( extension->Oid,extension->RawData );
+            Console::ForegroundColor = ConsoleColor::Green;
+            Console::WriteLine( L"Extension type: {0}", extension->Oid->FriendlyName );
+            Console::WriteLine( L"Oid value: {0}", asndata->Oid->Value );
+            Console::WriteLine( L"Raw data length: {0} {1}", asndata->RawData->Length, Environment::NewLine );
+            Console::ResetColor();
+            Console::WriteLine( asndata->Format(true) );
+            Console::WriteLine( Environment::NewLine );
+            
+            // Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+            asncoll->Add( asndata );
+         }
+
+         Console::WriteLine( Environment::NewLine );
+
+      }
+      Console::ForegroundColor = ConsoleColor::Red;
+      Console::WriteLine( L"Number of AsnEncodedData items in the collection: {0} {1}", asncoll->Count, Environment::NewLine );
+      Console::ResetColor();
+      store->Close();
+      
+      //Create an enumerator for moving through the collection.
+      AsnEncodedDataEnumerator^ asne = asncoll->GetEnumerator();
+      
+      //You must execute a MoveNext() to get to the first item in the collection.
+      asne->MoveNext();
+      
+      // Write out AsnEncodedData in the collection.
+      Console::ForegroundColor = ConsoleColor::Blue;
+      Console::WriteLine( L"First AsnEncodedData in the collection: {0}", asne->Current->Format(true) );
+      Console::ResetColor();
+      asne->MoveNext();
+      Console::ForegroundColor = ConsoleColor::DarkBlue;
+      Console::WriteLine( L"Second AsnEncodedData in the collection: {0}", asne->Current->Format(true) );
+      Console::ResetColor();
+      
+      //Return index in the collection to the beginning.
+      asne->Reset();
    }
-   catch ( CryptographicException^ e ) 
+   catch ( CryptographicException^ ) 
    {
-      Console::WriteLine( e->Message );
+      Console::WriteLine( L"Information could not be written out for this certificate." );
    }
 
+   return 1;
 }

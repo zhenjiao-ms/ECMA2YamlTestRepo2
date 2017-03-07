@@ -1,95 +1,40 @@
-' This example component editor page type provides an example 
-' ComponentEditorPage implementation.
-Friend Class ExampleComponentEditorPage
-    Inherits System.Windows.Forms.Design.ComponentEditorPage
-    Private l1 As Label
-    Private b1 As Button
-    Private pg1 As PropertyGrid
+    Private WithEvents dataGridView1 As New DataGridView()
 
-    ' Base64-encoded serialized image data for the required component editor page icon.
-    Private icondata As String = "AAEAAAD/////AQAAAAAAAAAMAgAAAFRTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj0xLjAuNTAwMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABNTeXN0ZW0uRHJhd2luZy5JY29uAgAAAAhJY29uRGF0YQhJY29uU2l6ZQcEAhNTeXN0ZW0uRHJhd2luZy5TaXplAgAAAAIAAAAJAwAAAAX8////E1N5c3RlbS5EcmF3aW5nLlNpemUCAAAABXdpZHRoBmhlaWdodAAACAgCAAAAAAAAAAAAAAAPAwAAAD4BAAACAAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgADExAAAgICAAMDAwAA+iPcAY77gACh9kwD/AAAAndPoADpw6wD///8AAAAAAAAAAAAHd3d3d3d3d8IiIiIiIiLHKIiIiIiIiCco///////4Jyj5mfIvIvgnKPnp////+Cco+en7u7v4Jyj56f////gnKPmZ8i8i+Cco///////4JyiIiIiIiIgnJmZmZmZmZifCIiIiIiIiwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACw=="
+    Private Sub AddColorColumn()
 
-    Public Sub New()
-        ' Initialize the page, which inherits from Panel, and its controls.
-        Me.Size = New Size(400, 250)
-        Me.Icon = DeserializeIconFromBase64Text(icondata)
-        Me.Text = "Example Page"
+        Dim comboBoxColumn As New DataGridViewComboBoxColumn()
+        comboBoxColumn.Items.AddRange( _
+            Color.Red, Color.Yellow, Color.Green, Color.Blue)
+        comboBoxColumn.ValueType = GetType(Color)
+        dataGridView1.Columns.Add(comboBoxColumn)
 
-        b1 = New Button
-        b1.Size = New Size(200, 20)
-        b1.Location = New Point(200, 0)
-        b1.Text = "Set a random background color"
-        AddHandler b1.Click, AddressOf Me.randomBackColor
-        Me.Controls.Add(b1)
-
-        l1 = New Label
-        l1.Size = New Size(190, 20)
-        l1.Location = New Point(4, 2)
-        l1.Text = "Example Component Editor Page"
-        Me.Controls.Add(l1)
-
-        pg1 = New PropertyGrid
-        pg1.Size = New Size(400, 280)
-        pg1.Location = New Point(0, 30)
-        Me.Controls.Add(pg1)
     End Sub
 
-    ' This method indicates that the Help button should be enabled for this 
-    ' component editor page.
-    Public Overrides Function SupportsHelp() As Boolean
-        Return True
-    End Function
+    Private Sub dataGridView1_EditingControlShowing(ByVal sender As Object, _
+        ByVal e As DataGridViewEditingControlShowingEventArgs) _
+        Handles dataGridView1.EditingControlShowing
 
-    ' This method is called when the Help button for this component editor page is pressed.
-    ' This implementation uses the IHelpService to show the Help topic for a sample keyword.
-    Public Overrides Sub ShowHelp()
-        ' The GetSelectedComponent method of a ComponentEditorPage retrieves the
-        ' IComponent associated with the WindowsFormsComponentEditor.
-        Dim selectedComponent As IComponent = Me.GetSelectedComponent()
+        Dim combo As ComboBox = CType(e.Control, ComboBox)
+        If (combo IsNot Nothing) Then
 
-        ' Retrieve the Site of the component, and return if null.
-        Dim componentSite As ISite = selectedComponent.Site
-        If componentSite Is Nothing Then
-            Return
+            ' Remove an existing event-handler, if present, to avoid 
+            ' adding multiple handlers when the editing control is reused.
+            RemoveHandler combo.SelectedIndexChanged, _
+                New EventHandler(AddressOf ComboBox_SelectedIndexChanged)
+
+            ' Add the event handler. 
+            AddHandler combo.SelectedIndexChanged, _
+                New EventHandler(AddressOf ComboBox_SelectedIndexChanged)
+
         End If
-        ' Acquire the IHelpService to display a help topic using a indexed keyword lookup.
-        Dim helpService As IHelpService = CType(componentSite.GetService(GetType(IHelpService)), IHelpService)
-        If (helpService IsNot Nothing) Then
-            helpService.ShowHelpFromKeyword("System.Windows.Forms.ComboBox")
-        End If
+
     End Sub
 
-    ' The LoadComponent method is raised when the ComponentEditorPage is displayed.
-    Protected Overrides Sub LoadComponent()
-        Me.pg1.SelectedObject = Me.Component
-    End Sub
+    Private Sub ComboBox_SelectedIndexChanged( _
+        ByVal sender As Object, ByVal e As EventArgs)
 
-    ' The SaveComponent method is raised when the WindowsFormsComponentEditor is closing 
-    ' or the current ComponentEditorPage is closing.
-    Protected Overrides Sub SaveComponent()
-    End Sub
+        Dim comboBox1 As ComboBox = CType(sender, ComboBox)
+        comboBox1.BackColor = _
+            CType(CType(sender, ComboBox).SelectedItem, Color)
 
-    ' If the associated component is a Control, this method sets the BackColor to a random color.
-    ' This method is invoked by the button on this ComponentEditorPage.
-    Private Sub randomBackColor(ByVal sender As Object, ByVal e As EventArgs)
-        If GetType(System.Windows.Forms.Control).IsAssignableFrom(CType(Me.Component, Object).GetType()) Then
-            ' Sets the background color of the Control associated with the
-            ' WindowsFormsComponentEditor to a random color.
-            Dim rnd As New Random
-            CType(Me.Component, System.Windows.Forms.Control).BackColor = Color.FromArgb(rnd.Next(255), rnd.Next(255), rnd.Next(255))
-            pg1.Refresh()
-        End If
     End Sub
-
-    ' This method can be used to retrieve an Icon from a block 
-    ' of Base64-encoded text.
-    Private Function DeserializeIconFromBase64Text(ByVal [text] As String) As icon
-        Dim img As Icon = Nothing
-        Dim memBytes As Byte() = Convert.FromBase64String([text])
-        Dim formatter As New BinaryFormatter
-        Dim stream As New MemoryStream(memBytes)
-        img = CType(formatter.Deserialize(stream), Icon)
-        stream.Close()
-        Return img
-    End Function
-End Class

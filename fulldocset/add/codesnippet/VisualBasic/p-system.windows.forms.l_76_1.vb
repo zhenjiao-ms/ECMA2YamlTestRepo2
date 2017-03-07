@@ -1,23 +1,34 @@
- Public Sub CreateMyLabel()
-     ' Create an instance of a Label.
-     Dim label1 As New Label()
+    Public Sub New()
+        ' Initialize myListView.
+        myListView = New ListView()
+        myListView.Dock = DockStyle.Fill
+        myListView.View = View.LargeIcon
+        myListView.MultiSelect = False
+        myListView.ListViewItemSorter = New ListViewIndexComparer()
         
-     ' Set the border to a three-dimensional border.
-     label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-     ' Set the ImageList to use for displaying an image.
-     label1.ImageList = imageList1
-     ' Use the second image in imageList1.
-     label1.ImageIndex = 1
-     ' Align the image to the top left corner.
-     label1.ImageAlign = ContentAlignment.TopLeft
-      
-     ' Specify that the text can display mnemonic characters.
-     label1.UseMnemonic = True
-     ' Set the text of the control and specify a mnemonic character.
-     label1.Text = "First &Name:"
+        ' Initialize the insertion mark.
+        myListView.InsertionMark.Color = Color.Green
         
-     ' Set the size of the control based on the PreferredHeight and PreferredWidth values. 
-     label1.Size = New Size(label1.PreferredWidth, label1.PreferredHeight)
+        ' Add items to myListView.
+        myListView.Items.Add("zero")
+        myListView.Items.Add("one")
+        myListView.Items.Add("two")
+        myListView.Items.Add("three")
+        myListView.Items.Add("four")
+        myListView.Items.Add("five")
+        
+        ' Initialize the drag-and-drop operation when running
+        ' under Windows XP or a later operating system.
+        If OSFeature.Feature.IsPresent(OSFeature.Themes)
+            myListView.AllowDrop = True
+            AddHandler myListView.ItemDrag, AddressOf myListView_ItemDrag
+            AddHandler myListView.DragEnter, AddressOf myListView_DragEnter
+            AddHandler myListView.DragOver, AddressOf myListView_DragOver
+            AddHandler myListView.DragLeave, AddressOf myListView_DragLeave
+            AddHandler myListView.DragDrop, AddressOf myListView_DragDrop
+        End If 
 
-     '...Code to add the control to the form...
- End Sub
+        ' Initialize the form.
+        Me.Text = "ListView Insertion Mark Example"
+        Me.Controls.Add(myListView)
+    End Sub 'New

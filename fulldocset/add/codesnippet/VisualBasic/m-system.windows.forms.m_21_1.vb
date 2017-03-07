@@ -1,9 +1,16 @@
- Public Sub CloneMyMenu()
-     ' Determine if mainMenu1 is currently hosted on the form.
-     If (mainMenu1.GetForm() IsNot Nothing) Then
-         ' Create a copy of the MainMenu that is hosted on the form.
-         Dim mainMenu2 As MainMenu = mainMenu1.CloneMenu()
-         ' Set the RightToLeft property for mainMenu2.
-         mainMenu2.RightToLeft = RightToLeft.Yes
-     End If
- End Sub
+   Private Sub MenuSelected(ByVal sender As Object, ByVal e As System.EventArgs) _
+                        Handles menuOpen.Select, menuExit.Select, menuSave.Select
+      If sender Is menuOpen Then
+         StatusBar1.Panels(0).Text = "Opens a file to edit"
+      Else
+         If sender Is menuSave Then
+            StatusBar1.Panels(0).Text = "Saves the current file"
+         Else
+            If sender Is menuExit Then
+               StatusBar1.Panels(0).Text = "Exits the application"
+            Else
+               StatusBar1.Panels(0).Text = "Ready"
+            End If
+         End If
+      End If
+   End Sub

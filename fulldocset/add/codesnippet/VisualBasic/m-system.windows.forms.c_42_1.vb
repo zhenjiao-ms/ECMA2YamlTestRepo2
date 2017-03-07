@@ -1,8 +1,8 @@
-Private Sub button1_Click(sender As Object, _
-  e As EventArgs) Handles button1.Click
-   ' If the CTRL key is pressed when the 
-   ' control is clicked, hide the control. 
-   If Control.ModifierKeys = Keys.Control Then
-      CType(sender, Control).Hide()
-   End If
+Public Sub EnableDoubleBuffering()
+   ' Set the value of the double-buffering style bits to true.
+   Me.SetStyle(ControlStyles.DoubleBuffer _
+     Or ControlStyles.UserPaint _
+     Or ControlStyles.AllPaintingInWmPaint, _
+     True)
+   Me.UpdateStyles()
 End Sub

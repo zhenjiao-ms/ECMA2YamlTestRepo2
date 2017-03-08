@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.MtomMessageEncodingBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.MtomMessageEncodingBindingElement.ShouldSerializeWriteEncoding
 internalonly: False
 ---
@@ -34,7 +39,17 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.MtomMessageEncodingBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.MtomMessageEncodingBindingElement.MessageVersion
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.MtomMessageEncodingBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 
@@ -64,12 +79,22 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.MtomMessageEncodingBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.MtomMessageEncodingBindingElement.System#ServiceModel#Description#IWsdlExportExtension#ExportEndpoint(System.ServiceModel.Description.WsdlExporter,System.ServiceModel.Description.WsdlEndpointConversionContext)
 internalonly: False
 ---
 
 ---
 uid: System.ServiceModel.Channels.MtomMessageEncodingBindingElement.#ctor
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.MtomMessageEncodingBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 

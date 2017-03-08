@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Security.Tokens.SecurityContextSecurityToken.CreateKeyIdentifierClause``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Security.Tokens.SecurityContextSecurityToken.KeyExpirationTime
 internalonly: False
 ---
@@ -95,6 +100,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Security.Tokens.SecurityContextSecurityToken.CreateCookieSecurityContextToken(System.Xml.UniqueId,System.String,System.Byte[],System.DateTime,System.DateTime,System.Collections.ObjectModel.ReadOnlyCollection{System.IdentityModel.Policy.IAuthorizationPolicy},System.ServiceModel.Security.SecurityStateEncoder)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Security.Tokens.SecurityContextSecurityToken.CanCreateKeyIdentifierClause``1
 internalonly: False
 ---
 

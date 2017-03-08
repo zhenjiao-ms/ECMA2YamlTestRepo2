@@ -224,6 +224,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.Emit.AssemblyBuilder.DefineDynamicAssembly(System.Reflection.AssemblyName,System.Reflection.Emit.AssemblyBuilderAccess,System.Collections.Generic.IEnumerable{System.Reflection.Emit.CustomAttributeBuilder})
+internalonly: False
+---
+
+---
 uid: System.Reflection.Emit.AssemblyBuilder.DefineDynamicModule(System.String)
 internalonly: False
 ---
@@ -245,6 +250,11 @@ internalonly: False
 
 ---
 uid: System.Reflection.Emit.AssemblyBuilder.GetSatelliteAssembly(System.Globalization.CultureInfo)
+internalonly: False
+---
+
+---
+uid: System.Reflection.Emit.AssemblyBuilder.DefineDynamicAssembly(System.Reflection.AssemblyName,System.Reflection.Emit.AssemblyBuilderAccess)
 internalonly: False
 ---
 

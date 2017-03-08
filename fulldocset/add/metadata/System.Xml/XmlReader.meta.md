@@ -49,6 +49,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlReader.MoveToContentAsync
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlReader.ReadElementContentAsDecimal
 internalonly: False
 ---
@@ -59,7 +64,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlReader.ReadInnerXmlAsync
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlReader.EOF
+internalonly: False
+---
+
+---
+uid: System.Xml.XmlReader.ReadContentAsBase64Async(System.Byte[],System.Int32,System.Int32)
 internalonly: False
 ---
 
@@ -119,6 +134,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlReader.ReadElementContentAsBinHexAsync(System.Byte[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlReader.ReadContentAsBase64(System.Byte[],System.Int32,System.Int32)
 internalonly: False
 ---
@@ -139,6 +159,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlReader.ReadContentAsObjectAsync
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlReader.ReadElementContentAsDouble(System.String,System.String)
 internalonly: False
 ---
@@ -150,6 +175,11 @@ internalonly: False
 
 ---
 uid: System.Xml.XmlReader.ReadElementContentAsLong(System.String,System.String)
+internalonly: False
+---
+
+---
+uid: System.Xml.XmlReader.ReadElementContentAsObjectAsync
 internalonly: False
 ---
 
@@ -239,7 +269,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlReader.GetValueAsync
+internalonly: False
+---
+
+---
+uid: System.Xml.XmlReader.ReadContentAsDateTimeOffset
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlReader.ReadAttributeValue
+internalonly: False
+---
+
+---
+uid: System.Xml.XmlReader.ReadAsync
 internalonly: False
 ---
 
@@ -264,6 +309,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlReader.ReadValueChunkAsync(System.Char[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlReader.ReadContentAsDateTime
 internalonly: False
 ---
@@ -280,6 +330,11 @@ internalonly: False
 
 ---
 uid: System.Xml.XmlReader.IsStartElement
+internalonly: False
+---
+
+---
+uid: System.Xml.XmlReader.ReadContentAsAsync(System.Type,System.Xml.IXmlNamespaceResolver)
 internalonly: False
 ---
 
@@ -309,6 +364,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlReader.SkipAsync
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlReader.ReadElementContentAsFloat(System.String,System.String)
 internalonly: False
 ---
@@ -325,6 +385,11 @@ internalonly: False
 
 ---
 uid: System.Xml.XmlReader.Create(System.IO.TextReader)
+internalonly: False
+---
+
+---
+uid: System.Xml.XmlReader.ReadContentAsBinHexAsync(System.Byte[],System.Int32,System.Int32)
 internalonly: False
 ---
 
@@ -394,12 +459,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlReader.ReadElementContentAsAsync(System.Type,System.Xml.IXmlNamespaceResolver)
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlReader.Item(System.String)
 internalonly: False
 ---
 
 ---
 uid: System.Xml.XmlReader.Prefix
+internalonly: False
+---
+
+---
+uid: System.Xml.XmlReader.Dispose
 internalonly: False
 ---
 
@@ -504,6 +579,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlReader.ReadOuterXmlAsync
+internalonly: False
+---
+
+---
+uid: System.Xml.XmlReader.ReadElementContentAsBase64Async(System.Byte[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlReader.ReadToFollowing(System.String)
 internalonly: False
 ---
@@ -539,12 +624,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlReader.ReadElementContentAsStringAsync
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlReader.ReadSubtree
 internalonly: False
 ---
 
 ---
 uid: System.Xml.XmlReader.Item(System.String,System.String)
+internalonly: False
+---
+
+---
+uid: System.Xml.XmlReader.ReadContentAsStringAsync
 internalonly: False
 ---
 

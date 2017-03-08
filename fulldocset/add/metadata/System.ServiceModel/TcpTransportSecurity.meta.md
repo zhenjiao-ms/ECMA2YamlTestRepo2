@@ -27,3 +27,8 @@ internalonly: False
 uid: System.ServiceModel.TcpTransportSecurity.#ctor
 internalonly: False
 ---
+
+---
+uid: System.ServiceModel.TcpTransportSecurity.SslProtocols
+internalonly: False
+---

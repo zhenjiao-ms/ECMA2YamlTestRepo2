@@ -19,6 +19,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Cryptography.Oid.FromFriendlyName(System.String,System.Security.Cryptography.OidGroup)
+internalonly: False
+---
+
+---
+uid: System.Security.Cryptography.Oid.FromOidValue(System.String,System.Security.Cryptography.OidGroup)
+internalonly: False
+---
+
+---
 uid: System.Security.Cryptography.Oid.#ctor(System.String,System.String)
 internalonly: False
 ---

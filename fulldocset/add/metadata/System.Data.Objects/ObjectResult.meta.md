@@ -27,3 +27,8 @@ internalonly: False
 uid: System.Data.Objects.ObjectResult.System#ComponentModel#IListSource#ContainsListCollection
 internalonly: False
 ---
+
+---
+uid: System.Data.Objects.ObjectResult.GetNextResult``1
+internalonly: False
+---

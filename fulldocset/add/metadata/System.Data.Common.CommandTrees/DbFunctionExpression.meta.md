@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Common.CommandTrees.DbFunctionExpression.Accept``1(System.Data.Common.CommandTrees.DbExpressionVisitor{``0})
+internalonly: False
+---
+
+---
 uid: System.Data.Common.CommandTrees.DbFunctionExpression.Arguments
 internalonly: False
 ---

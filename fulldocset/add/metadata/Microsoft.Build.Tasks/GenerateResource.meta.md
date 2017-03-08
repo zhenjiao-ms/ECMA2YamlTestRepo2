@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Tasks.GenerateResource.OutputDirectory
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Tasks.GenerateResource.ExecuteAsTool
 internalonly: False
 ---
@@ -35,6 +40,11 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Tasks.GenerateResource.StronglyTypedFileName
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Tasks.GenerateResource.ExtractResWFiles
 internalonly: False
 ---
 

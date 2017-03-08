@@ -69,7 +69,17 @@ internalonly: False
 ---
 
 ---
+uid: System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByLogonTime``1(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)
+internalonly: False
+---
+
+---
 uid: System.DirectoryServices.AccountManagement.AuthenticablePrincipal.AccountExpirationDate
+internalonly: False
+---
+
+---
+uid: System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByBadPasswordAttempt``1(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)
 internalonly: False
 ---
 
@@ -129,6 +139,16 @@ internalonly: False
 ---
 
 ---
+uid: System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByExpirationTime``1(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)
+internalonly: False
+---
+
+---
+uid: System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByPasswordSetTime``1(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)
+internalonly: False
+---
+
+---
 uid: System.DirectoryServices.AccountManagement.AuthenticablePrincipal.Enabled
 internalonly: False
 ---
@@ -155,6 +175,11 @@ internalonly: False
 
 ---
 uid: System.DirectoryServices.AccountManagement.AuthenticablePrincipal.HomeDrive
+internalonly: False
+---
+
+---
+uid: System.DirectoryServices.AccountManagement.AuthenticablePrincipal.FindByLockoutTime``1(System.DirectoryServices.AccountManagement.PrincipalContext,System.DateTime,System.DirectoryServices.AccountManagement.MatchType)
 internalonly: False
 ---
 

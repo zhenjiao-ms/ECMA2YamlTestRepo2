@@ -19,6 +19,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Threading.CancellationTokenSource.#ctor(System.TimeSpan)
+internalonly: False
+---
+
+---
+uid: System.Threading.CancellationTokenSource.Dispose(System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.Threading.CancellationTokenSource.Cancel(System.Boolean)
 internalonly: False
 ---
@@ -30,6 +40,21 @@ internalonly: False
 
 ---
 uid: System.Threading.CancellationTokenSource.Dispose
+internalonly: False
+---
+
+---
+uid: System.Threading.CancellationTokenSource.CancelAfter(System.TimeSpan)
+internalonly: False
+---
+
+---
+uid: System.Threading.CancellationTokenSource.CancelAfter(System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Threading.CancellationTokenSource.#ctor(System.Int32)
 internalonly: False
 ---
 

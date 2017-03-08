@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Threading.DispatcherHooks.OperationStarted
+internalonly: False
+---
+
+---
 uid: System.Windows.Threading.DispatcherHooks.OperationPosted
 internalonly: False
 ---

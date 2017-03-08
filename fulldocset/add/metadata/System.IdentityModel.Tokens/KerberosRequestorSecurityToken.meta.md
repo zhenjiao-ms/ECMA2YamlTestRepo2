@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Tokens.KerberosRequestorSecurityToken.CanCreateKeyIdentifierClause``1
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Tokens.KerberosRequestorSecurityToken.Id
 internalonly: False
 ---
@@ -50,5 +55,10 @@ internalonly: False
 
 ---
 uid: System.IdentityModel.Tokens.KerberosRequestorSecurityToken.#ctor(System.String)
+internalonly: False
+---
+
+---
+uid: System.IdentityModel.Tokens.KerberosRequestorSecurityToken.CreateKeyIdentifierClause``1
 internalonly: False
 ---

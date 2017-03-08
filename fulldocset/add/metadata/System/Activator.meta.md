@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activator.CreateInstance``1
+internalonly: False
+---
+
+---
 uid: System.Activator.CreateInstance(System.ActivationContext)
 internalonly: False
 ---

@@ -14,6 +14,16 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Dispatcher.ClientOperation.TaskTResult
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Dispatcher.ClientOperation.TaskMethod
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Dispatcher.ClientOperation.IsInitiating
 internalonly: False
 ---
@@ -60,6 +70,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Dispatcher.ClientOperation.#ctor(System.ServiceModel.Dispatcher.ClientRuntime,System.String,System.String)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Dispatcher.ClientOperation.ClientParameterInspectors
 internalonly: False
 ---
 

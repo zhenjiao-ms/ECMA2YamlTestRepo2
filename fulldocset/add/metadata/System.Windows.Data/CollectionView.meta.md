@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Data.CollectionView.IsInUse
+internalonly: False
+---
+
+---
 uid: System.Windows.Data.CollectionView.IsEmpty
 internalonly: False
 ---
@@ -39,6 +44,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Data.CollectionView.OnAllowsCrossThreadChangesChanged
+internalonly: False
+---
+
+---
 uid: System.Windows.Data.CollectionView.IsRefreshDeferred
 internalonly: False
 ---
@@ -60,6 +70,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Data.CollectionView.MoveCurrentToFirst
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.CollectionView.AllowsCrossThreadChanges
 internalonly: False
 ---
 
@@ -155,6 +170,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Data.CollectionView.MoveCurrentToPosition(System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.CollectionView.ProcessPendingChanges
 internalonly: False
 ---
 
@@ -269,7 +289,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Data.CollectionView.DetachFromSourceCollection
+internalonly: False
+---
+
+---
 uid: System.Windows.Data.CollectionView.CollectionChanged
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.CollectionView.ClearPendingChanges
 internalonly: False
 ---
 

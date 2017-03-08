@@ -94,6 +94,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.NetworkInformation.IPGlobalProperties.GetUnicastAddressesAsync
+internalonly: False
+---
+
+---
 uid: System.Net.NetworkInformation.IPGlobalProperties.GetIcmpV4Statistics
 internalonly: False
 ---

@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Forms.ListViewItem.#ctor(System.Windows.Forms.ListViewItem.ListViewSubItem[],System.Int32)
+internalonly: False
+---
+
+---
 uid: System.Windows.Forms.ListViewItem.ImageList
 internalonly: False
 ---
@@ -44,6 +49,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Forms.ListViewItem.#ctor(System.Windows.Forms.ListViewItem.ListViewSubItem[],System.String,System.Windows.Forms.ListViewGroup)
+internalonly: False
+---
+
+---
 uid: System.Windows.Forms.ListViewItem.Bounds
 internalonly: False
 ---
@@ -55,6 +65,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Forms.ListViewItem.ListView
+internalonly: False
+---
+
+---
+uid: System.Windows.Forms.ListViewItem.#ctor(System.Windows.Forms.ListViewItem.ListViewSubItem[],System.String)
 internalonly: False
 ---
 
@@ -125,6 +140,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Forms.ListViewItem.Tag
+internalonly: False
+---
+
+---
+uid: System.Windows.Forms.ListViewItem.#ctor(System.Windows.Forms.ListViewItem.ListViewSubItem[],System.Int32,System.Windows.Forms.ListViewGroup)
 internalonly: False
 ---
 

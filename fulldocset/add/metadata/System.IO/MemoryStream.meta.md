@@ -39,7 +39,22 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.MemoryStream.CopyToAsync(System.IO.Stream,System.Int32,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
+uid: System.IO.MemoryStream.TryGetBuffer(System.ArraySegment{System.Byte}@)
+internalonly: False
+---
+
+---
 uid: System.IO.MemoryStream.GetBuffer
+internalonly: False
+---
+
+---
+uid: System.IO.MemoryStream.FlushAsync(System.Threading.CancellationToken)
 internalonly: False
 ---
 
@@ -50,6 +65,11 @@ internalonly: False
 
 ---
 uid: System.IO.MemoryStream.Flush
+internalonly: False
+---
+
+---
+uid: System.IO.MemoryStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
 internalonly: False
 ---
 
@@ -110,6 +130,11 @@ internalonly: False
 
 ---
 uid: System.IO.MemoryStream.#ctor(System.Byte[],System.Int32,System.Int32,System.Boolean,System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.IO.MemoryStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
 internalonly: False
 ---
 

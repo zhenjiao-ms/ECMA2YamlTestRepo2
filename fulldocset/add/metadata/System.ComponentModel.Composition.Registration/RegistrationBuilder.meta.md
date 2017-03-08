@@ -9,7 +9,17 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Composition.Registration.RegistrationBuilder.ForType``1
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Composition.Registration.RegistrationBuilder.ForTypesDerivedFrom(System.Type)
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Composition.Registration.RegistrationBuilder.ForTypesMatching``1(System.Predicate{System.Type})
 internalonly: False
 ---
 
@@ -25,6 +35,11 @@ internalonly: False
 
 ---
 uid: System.ComponentModel.Composition.Registration.RegistrationBuilder.#ctor
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Composition.Registration.RegistrationBuilder.ForTypesDerivedFrom``1
 internalonly: False
 ---
 

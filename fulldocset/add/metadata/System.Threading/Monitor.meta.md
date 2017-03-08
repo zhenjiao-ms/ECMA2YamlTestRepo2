@@ -69,6 +69,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Threading.Monitor.IsEntered(System.Object)
+internalonly: False
+---
+
+---
 uid: System.Threading.Monitor.PulseAll(System.Object)
 internalonly: False
 ---

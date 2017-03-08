@@ -39,6 +39,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.Media3D.Point3DCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#Media3D#Point3D}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.Media3D.Point3DCollection.CopyTo(System.Windows.Media.Media3D.Point3D[],System.Int32)
 internalonly: False
 ---
@@ -135,6 +140,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.Media3D.Point3DCollection.#ctor(System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.Media3D.Point3DCollection.System#Collections#Generic#ICollection{System#Windows#Media#Media3D#Point3D}#IsReadOnly
 internalonly: False
 ---
 

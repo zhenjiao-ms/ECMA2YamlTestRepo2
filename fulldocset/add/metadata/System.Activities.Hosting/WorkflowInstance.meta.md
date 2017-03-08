@@ -14,7 +14,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Hosting.WorkflowInstance.DefinitionIdentity
+internalonly: False
+---
+
+---
 uid: System.Activities.Hosting.WorkflowInstance.OnBeginResumeBookmark(System.Activities.Bookmark,System.Object,System.TimeSpan,System.AsyncCallback,System.Object)
+internalonly: False
+---
+
+---
+uid: System.Activities.Hosting.WorkflowInstance.FlushTrackingRecords(System.TimeSpan)
+internalonly: False
+---
+
+---
+uid: System.Activities.Hosting.WorkflowInstance.GetActivitiesBlockingUpdate(System.Object,System.Activities.DynamicUpdate.DynamicUpdateMap)
 internalonly: False
 ---
 
@@ -40,6 +55,16 @@ internalonly: False
 
 ---
 uid: System.Activities.Hosting.WorkflowInstance.Initialize(System.Object)
+internalonly: False
+---
+
+---
+uid: System.Activities.Hosting.WorkflowInstance.#ctor(System.Activities.Activity,System.Activities.WorkflowIdentity)
+internalonly: False
+---
+
+---
+uid: System.Activities.Hosting.WorkflowInstance.GetExtension``1
 internalonly: False
 ---
 
@@ -84,12 +109,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Hosting.WorkflowInstance.GetExtensions``1
+internalonly: False
+---
+
+---
 uid: System.Activities.Hosting.WorkflowInstance.RegisterExtensionManager(System.Activities.Hosting.WorkflowInstanceExtensionManager)
 internalonly: False
 ---
 
 ---
 uid: System.Activities.Hosting.WorkflowInstance.OnDisassociateKeys(System.Collections.Generic.ICollection{System.Runtime.DurableInstancing.InstanceKey})
+internalonly: False
+---
+
+---
+uid: System.Activities.Hosting.WorkflowInstance.EndFlushTrackingRecords(System.IAsyncResult)
 internalonly: False
 ---
 
@@ -114,12 +149,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Hosting.WorkflowInstance.BeginFlushTrackingRecords(System.TimeSpan,System.AsyncCallback,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Activities.Hosting.WorkflowInstance.OnNotifyPaused
 internalonly: False
 ---
 
 ---
 uid: System.Activities.Hosting.WorkflowInstance.OnEndFlushTrackingRecords(System.IAsyncResult)
+internalonly: False
+---
+
+---
+uid: System.Activities.Hosting.WorkflowInstance.Initialize(System.Object,System.Activities.DynamicUpdate.DynamicUpdateMap)
 internalonly: False
 ---
 

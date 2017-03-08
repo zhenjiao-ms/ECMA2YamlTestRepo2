@@ -4,6 +4,21 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelListener``1
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.BindingContext.BuildInnerChannelListener``1
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.BindingContext.GetInnerProperty``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.BindingContext.ListenUriMode
 internalonly: False
 ---
@@ -15,6 +30,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Channels.BindingContext.#ctor(System.ServiceModel.Channels.CustomBinding,System.ServiceModel.Channels.BindingParameterCollection)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.BindingContext.BuildInnerChannelFactory``1
 internalonly: False
 ---
 
@@ -40,6 +60,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Channels.BindingContext.Clone
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelFactory``1
 internalonly: False
 ---
 

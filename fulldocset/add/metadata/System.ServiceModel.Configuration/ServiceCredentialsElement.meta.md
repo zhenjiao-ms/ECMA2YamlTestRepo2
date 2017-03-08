@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Configuration.ServiceCredentialsElement.UseIdentityConfiguration
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Configuration.ServiceCredentialsElement.ServiceCertificate
 internalonly: False
 ---
@@ -40,6 +45,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Configuration.ServiceCredentialsElement.IssuedTokenAuthentication
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Configuration.ServiceCredentialsElement.IdentityConfiguration
 internalonly: False
 ---
 

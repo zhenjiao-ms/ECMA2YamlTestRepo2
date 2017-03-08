@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Forms.Design.AxImporter.#ctor(System.Windows.Forms.Design.AxImporter.Options)
+internalonly: False
+---
+
+---
 uid: System.Windows.Forms.Design.AxImporter.GeneratedAssemblies
 internalonly: False
 ---

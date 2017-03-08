@@ -44,6 +44,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.Media3D.Model3DCollection.System#Collections#Generic#ICollection{System#Windows#Media#Media3D#Model3D}#IsReadOnly
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.Media3D.Model3DCollection.System#Collections#IList#Contains(System.Object)
 internalonly: False
 ---
@@ -110,6 +115,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.Media3D.Model3DCollection.#ctor(System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.Media3D.Model3DCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#Media3D#Model3D}#GetEnumerator
 internalonly: False
 ---
 

@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ItemCollection.LiveSortingProperties
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ItemCollection.Remove(System.Object)
 internalonly: False
 ---
@@ -124,6 +129,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ItemCollection.CanChangeLiveFiltering
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ItemCollection.System#Collections#ICollection#SyncRoot
 internalonly: False
 ---
@@ -174,12 +184,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ItemCollection.CanChangeLiveGrouping
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ItemCollection.System#ComponentModel#IEditableCollectionView#CancelEdit
 internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ItemCollection.CanChangeLiveSorting
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ItemCollection.CurrentItem
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.ItemCollection.IsLiveSorting
 internalonly: False
 ---
 
@@ -229,6 +254,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ItemCollection.LiveFilteringProperties
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ItemCollection.System#ComponentModel#IEditableCollectionView#CanCancelEdit
 internalonly: False
 ---
@@ -255,6 +285,21 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.ItemCollection.DeferRefresh
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.ItemCollection.IsLiveGrouping
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.ItemCollection.LiveGroupingProperties
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.ItemCollection.IsLiveFiltering
 internalonly: False
 ---
 

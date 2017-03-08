@@ -49,6 +49,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.WorkflowInvoker.Invoke``1(System.Activities.Activity{``0},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object}@,System.TimeSpan)
+internalonly: False
+---
+
+---
 uid: System.Activities.WorkflowInvoker.InvokeAsync(System.Collections.Generic.IDictionary{System.String,System.Object},System.Object)
 internalonly: False
 ---
@@ -69,6 +74,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.WorkflowInvoker.Invoke``1(System.Activities.Activity{``0},System.Collections.Generic.IDictionary{System.String,System.Object},System.TimeSpan)
+internalonly: False
+---
+
+---
 uid: System.Activities.WorkflowInvoker.Invoke(System.TimeSpan)
 internalonly: False
 ---
@@ -80,6 +90,11 @@ internalonly: False
 
 ---
 uid: System.Activities.WorkflowInvoker.InvokeAsync
+internalonly: False
+---
+
+---
+uid: System.Activities.WorkflowInvoker.Invoke``1(System.Activities.Activity{``0})
 internalonly: False
 ---
 
@@ -105,6 +120,11 @@ internalonly: False
 
 ---
 uid: System.Activities.WorkflowInvoker.InvokeAsync(System.Object)
+internalonly: False
+---
+
+---
+uid: System.Activities.WorkflowInvoker.Invoke``1(System.Activities.Activity{``0},System.Collections.Generic.IDictionary{System.String,System.Object})
 internalonly: False
 ---
 

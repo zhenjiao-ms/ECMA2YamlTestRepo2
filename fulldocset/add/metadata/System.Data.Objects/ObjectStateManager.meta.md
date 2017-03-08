@@ -29,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Objects.ObjectStateManager.ChangeRelationshipState``1(``0,System.Object,System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Data.EntityState)
+internalonly: False
+---
+
+---
 uid: System.Data.Objects.ObjectStateManager.ChangeObjectState(System.Object,System.Data.EntityState)
 internalonly: False
 ---

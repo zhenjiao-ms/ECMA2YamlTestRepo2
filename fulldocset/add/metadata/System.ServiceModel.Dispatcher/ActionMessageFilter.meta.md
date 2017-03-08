@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Dispatcher.ActionMessageFilter.CreateFilterTable``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Dispatcher.ActionMessageFilter.Match(System.ServiceModel.Channels.MessageBuffer)
 internalonly: False
 ---

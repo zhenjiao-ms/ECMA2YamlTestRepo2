@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlConnection.OpenAsync(System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlConnection.FireInfoMessageEventOnUserErrors
 internalonly: False
 ---
@@ -49,6 +54,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlConnection.ColumnEncryptionQueryMetadataCacheEnabled
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlConnection.EnlistDistributedTransaction(System.EnterpriseServices.ITransaction)
 internalonly: False
 ---
@@ -59,7 +69,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlConnection.RegisterColumnEncryptionKeyStoreProviders(System.Collections.Generic.IDictionary{System.String,System.Data.SqlClient.SqlColumnEncryptionKeyStoreProvider})
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlConnection.Open
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlConnection.#ctor(System.String,System.Data.SqlClient.SqlCredential)
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlConnection.ColumnEncryptionKeyCacheTtl
 internalonly: False
 ---
 
@@ -89,6 +114,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlConnection.ColumnEncryptionTrustedMasterKeyPaths
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlConnection.ConnectionTimeout
 internalonly: False
 ---
@@ -109,12 +139,32 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlConnection.Credential
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlConnection.AccessToken
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlConnection.ClientConnectionId
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlConnection.System#ICloneable#Clone
 internalonly: False
 ---
 
 ---
 uid: System.Data.SqlClient.SqlConnection.ResetStatistics
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlConnection.ChangePassword(System.String,System.Data.SqlClient.SqlCredential,System.Security.SecureString)
 internalonly: False
 ---
 

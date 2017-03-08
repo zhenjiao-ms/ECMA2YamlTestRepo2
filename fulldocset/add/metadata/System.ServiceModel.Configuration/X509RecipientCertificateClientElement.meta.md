@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Configuration.X509RecipientCertificateClientElement.SslCertificateAuthentication
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Configuration.X509RecipientCertificateClientElement.ScopedCertificates
 internalonly: False
 ---

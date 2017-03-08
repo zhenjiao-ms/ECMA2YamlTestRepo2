@@ -39,6 +39,16 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Tokens.KerberosReceiverSecurityToken.CreateKeyIdentifierClause``1
+internalonly: False
+---
+
+---
+uid: System.IdentityModel.Tokens.KerberosReceiverSecurityToken.CanCreateKeyIdentifierClause``1
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Tokens.KerberosReceiverSecurityToken.ValueTypeUri
 internalonly: False
 ---

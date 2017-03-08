@@ -24,6 +24,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Common.DbEnumerator.#ctor(System.Data.Common.DbDataReader)
+internalonly: False
+---
+
+---
 uid: System.Data.Common.DbEnumerator.Reset
+internalonly: False
+---
+
+---
+uid: System.Data.Common.DbEnumerator.#ctor(System.Data.Common.DbDataReader,System.Boolean)
 internalonly: False
 ---

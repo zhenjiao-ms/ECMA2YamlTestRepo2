@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Threading.DispatcherSynchronizationContext.#ctor(System.Windows.Threading.Dispatcher,System.Windows.Threading.DispatcherPriority)
+internalonly: False
+---
+
+---
 uid: System.Windows.Threading.DispatcherSynchronizationContext.Post(System.Threading.SendOrPostCallback,System.Object)
 internalonly: False
 ---

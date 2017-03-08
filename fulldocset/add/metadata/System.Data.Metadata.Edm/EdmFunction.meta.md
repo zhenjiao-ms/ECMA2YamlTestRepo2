@@ -27,3 +27,13 @@ internalonly: False
 uid: System.Data.Metadata.Edm.EdmFunction.CommandTextAttribute
 internalonly: False
 ---
+
+---
+uid: System.Data.Metadata.Edm.EdmFunction.IsComposableAttribute
+internalonly: False
+---
+
+---
+uid: System.Data.Metadata.Edm.EdmFunction.ReturnParameters
+internalonly: False
+---

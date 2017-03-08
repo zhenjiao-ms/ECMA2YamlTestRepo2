@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Argument.Get``1(System.Activities.ActivityContext)
+internalonly: False
+---
+
+---
 uid: System.Activities.Argument.EvaluationOrder
 internalonly: False
 ---

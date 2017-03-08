@@ -39,6 +39,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Tasks.Windows.MarkupCompilePass1.IsRunningInVisualStudio
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Tasks.Windows.MarkupCompilePass1.HostInBrowser
 internalonly: False
 ---

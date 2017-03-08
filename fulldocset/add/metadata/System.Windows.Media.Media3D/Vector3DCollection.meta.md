@@ -69,6 +69,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.Media3D.Vector3DCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#Media3D#Vector3D}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.Media3D.Vector3DCollection.ToString
 internalonly: False
 ---
@@ -155,6 +160,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.Media3D.Vector3DCollection.System#Collections#IEnumerable#GetEnumerator
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.Media3D.Vector3DCollection.System#Collections#Generic#ICollection{System#Windows#Media#Media3D#Vector3D}#IsReadOnly
 internalonly: False
 ---
 

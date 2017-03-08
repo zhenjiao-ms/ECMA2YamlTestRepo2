@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.TextDecorationCollection.System#Collections#Generic#IEnumerable{System#Windows#TextDecoration}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.TextDecorationCollection.System#Collections#IList#IsReadOnly
 internalonly: False
 ---
@@ -35,6 +40,16 @@ internalonly: False
 
 ---
 uid: System.Windows.TextDecorationCollection.System#Collections#IList#Insert(System.Int32,System.Object)
+internalonly: False
+---
+
+---
+uid: System.Windows.TextDecorationCollection.System#Collections#Generic#ICollection{System#Windows#TextDecoration}#IsReadOnly
+internalonly: False
+---
+
+---
+uid: System.Windows.TextDecorationCollection.TryRemove(System.Collections.Generic.IEnumerable{System.Windows.TextDecoration},System.Windows.TextDecorationCollection@)
 internalonly: False
 ---
 

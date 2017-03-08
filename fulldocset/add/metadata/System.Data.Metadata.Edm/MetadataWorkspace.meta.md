@@ -9,12 +9,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Metadata.Edm.MetadataWorkspace.GetObjectSpaceType(System.Data.Metadata.Edm.EnumType)
+internalonly: False
+---
+
+---
 uid: System.Data.Metadata.Edm.MetadataWorkspace.TryGetType(System.String,System.String,System.Data.Metadata.Edm.DataSpace,System.Data.Metadata.Edm.EdmType@)
 internalonly: False
 ---
 
 ---
 uid: System.Data.Metadata.Edm.MetadataWorkspace.TryGetType(System.String,System.String,System.Boolean,System.Data.Metadata.Edm.DataSpace,System.Data.Metadata.Edm.EdmType@)
+internalonly: False
+---
+
+---
+uid: System.Data.Metadata.Edm.MetadataWorkspace.TryGetItem``1(System.String,System.Data.Metadata.Edm.DataSpace,``0@)
+internalonly: False
+---
+
+---
+uid: System.Data.Metadata.Edm.MetadataWorkspace.GetItem``1(System.String,System.Data.Metadata.Edm.DataSpace)
 internalonly: False
 ---
 
@@ -34,7 +49,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Metadata.Edm.MetadataWorkspace.TryGetItem``1(System.String,System.Boolean,System.Data.Metadata.Edm.DataSpace,``0@)
+internalonly: False
+---
+
+---
 uid: System.Data.Metadata.Edm.MetadataWorkspace.GetType(System.String,System.String,System.Data.Metadata.Edm.DataSpace)
+internalonly: False
+---
+
+---
+uid: System.Data.Metadata.Edm.MetadataWorkspace.GetItem``1(System.String,System.Boolean,System.Data.Metadata.Edm.DataSpace)
 internalonly: False
 ---
 
@@ -49,7 +74,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Metadata.Edm.MetadataWorkspace.GetRelevantMembersForUpdate(System.Data.Metadata.Edm.EntitySetBase,System.Data.Metadata.Edm.EntityTypeBase,System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.Data.Metadata.Edm.MetadataWorkspace.GetItems``1(System.Data.Metadata.Edm.DataSpace)
+internalonly: False
+---
+
+---
 uid: System.Data.Metadata.Edm.MetadataWorkspace.#ctor
+internalonly: False
+---
+
+---
+uid: System.Data.Metadata.Edm.MetadataWorkspace.CreateQueryCommandTree(System.Data.Common.CommandTrees.DbExpression)
 internalonly: False
 ---
 
@@ -65,6 +105,11 @@ internalonly: False
 
 ---
 uid: System.Data.Metadata.Edm.MetadataWorkspace.GetType(System.String,System.String,System.Boolean,System.Data.Metadata.Edm.DataSpace)
+internalonly: False
+---
+
+---
+uid: System.Data.Metadata.Edm.MetadataWorkspace.GetEdmSpaceType(System.Data.Metadata.Edm.EnumType)
 internalonly: False
 ---
 
@@ -99,6 +144,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Metadata.Edm.MetadataWorkspace.TryGetEdmSpaceType(System.Data.Metadata.Edm.EnumType,System.Data.Metadata.Edm.EnumType@)
+internalonly: False
+---
+
+---
 uid: System.Data.Metadata.Edm.MetadataWorkspace.GetEntityContainer(System.String,System.Data.Metadata.Edm.DataSpace)
 internalonly: False
 ---
@@ -124,11 +174,21 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Metadata.Edm.MetadataWorkspace.CreateEntitySqlParser
+internalonly: False
+---
+
+---
 uid: System.Data.Metadata.Edm.MetadataWorkspace.ClearCache
 internalonly: False
 ---
 
 ---
 uid: System.Data.Metadata.Edm.MetadataWorkspace.GetRequiredOriginalValueMembers(System.Data.Metadata.Edm.EntitySetBase,System.Data.Metadata.Edm.EntityTypeBase)
+internalonly: False
+---
+
+---
+uid: System.Data.Metadata.Edm.MetadataWorkspace.TryGetObjectSpaceType(System.Data.Metadata.Edm.EnumType,System.Data.Metadata.Edm.EnumType@)
 internalonly: False
 ---

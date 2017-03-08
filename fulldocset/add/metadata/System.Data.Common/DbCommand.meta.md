@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Common.DbCommand.ExecuteNonQueryAsync
+internalonly: False
+---
+
+---
 uid: System.Data.Common.DbCommand.Connection
 internalonly: False
 ---
@@ -40,6 +45,11 @@ internalonly: False
 
 ---
 uid: System.Data.Common.DbCommand.System#Data#IDbCommand#Parameters
+internalonly: False
+---
+
+---
+uid: System.Data.Common.DbCommand.ExecuteReaderAsync
 internalonly: False
 ---
 
@@ -74,7 +84,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Common.DbCommand.ExecuteNonQueryAsync(System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.Data.Common.DbCommand.CommandType
+internalonly: False
+---
+
+---
+uid: System.Data.Common.DbCommand.ExecuteScalarAsync
 internalonly: False
 ---
 
@@ -90,6 +110,11 @@ internalonly: False
 
 ---
 uid: System.Data.Common.DbCommand.ExecuteReader
+internalonly: False
+---
+
+---
+uid: System.Data.Common.DbCommand.ExecuteReaderAsync(System.Threading.CancellationToken)
 internalonly: False
 ---
 
@@ -114,7 +139,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Common.DbCommand.ExecuteReaderAsync(System.Data.CommandBehavior,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.Data.Common.DbCommand.DbParameterCollection
+internalonly: False
+---
+
+---
+uid: System.Data.Common.DbCommand.ExecuteDbDataReaderAsync(System.Data.CommandBehavior,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
+uid: System.Data.Common.DbCommand.ExecuteScalarAsync(System.Threading.CancellationToken)
 internalonly: False
 ---
 
@@ -125,6 +165,11 @@ internalonly: False
 
 ---
 uid: System.Data.Common.DbCommand.DesignTimeVisible
+internalonly: False
+---
+
+---
+uid: System.Data.Common.DbCommand.ExecuteReaderAsync(System.Data.CommandBehavior)
 internalonly: False
 ---
 

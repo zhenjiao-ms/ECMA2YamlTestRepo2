@@ -119,6 +119,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.Imaging.BitmapMetadata.System#Collections#Generic#IEnumerable{System#String}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.Imaging.BitmapMetadata.CloneCurrentValueCore(System.Windows.Freezable)
 internalonly: False
 ---

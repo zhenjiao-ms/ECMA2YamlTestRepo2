@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Documents.DocumentStructures.StoryFragments.System#Collections#Generic#IEnumerable{System#Windows#Documents#DocumentStructures#StoryFragment}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Documents.DocumentStructures.StoryFragments.#ctor
 internalonly: False
 ---

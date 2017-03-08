@@ -14,6 +14,16 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Construction.ProjectUsingTaskBodyElement.EvaluateLocation
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Construction.ProjectUsingTaskBodyElement.ConditionLocation
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Construction.ProjectUsingTaskBodyElement.TaskBody
 internalonly: False
 ---

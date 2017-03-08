@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Entity.Design.EntityModelSchemaGenerator.#ctor(System.Data.Metadata.Edm.StoreItemCollection,System.String,System.String)
+internalonly: False
+---
+
+---
 uid: System.Data.Entity.Design.EntityModelSchemaGenerator.EdmItemCollection
 internalonly: False
 ---

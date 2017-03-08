@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Activities.Tracking.Configuration.ProfileWorkflowElement.StateMachineStateQueries
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Activities.Tracking.Configuration.ProfileWorkflowElement.ActivityStateQueries
 internalonly: False
 ---

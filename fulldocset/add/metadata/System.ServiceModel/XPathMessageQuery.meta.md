@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.XPathMessageQuery.Evaluate``1(System.ServiceModel.Channels.MessageBuffer)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.XPathMessageQuery.Namespaces
 internalonly: False
 ---
@@ -35,5 +40,10 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.XPathMessageQuery.#ctor(System.String)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.XPathMessageQuery.Evaluate``1(System.ServiceModel.Channels.Message)
 internalonly: False
 ---

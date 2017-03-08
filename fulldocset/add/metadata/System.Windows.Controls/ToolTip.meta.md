@@ -104,6 +104,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ToolTip.OnContentChanged(System.Object,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ToolTip.IsOpen
 internalonly: False
 ---

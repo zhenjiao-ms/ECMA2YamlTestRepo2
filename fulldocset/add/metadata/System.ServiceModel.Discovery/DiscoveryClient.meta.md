@@ -19,6 +19,16 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Discovery.DiscoveryClient.ResolveTaskAsync(System.ServiceModel.Discovery.ResolveCriteria)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Discovery.DiscoveryClient.FindTaskAsync(System.ServiceModel.Discovery.FindCriteria,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#BeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)
 internalonly: False
 ---
@@ -144,6 +154,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Discovery.DiscoveryClient.ResolveTaskAsync(System.ServiceModel.Discovery.ResolveCriteria,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Discovery.DiscoveryClient.System#IDisposable#Dispose
 internalonly: False
 ---
@@ -165,5 +180,10 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Discovery.DiscoveryClient.InnerChannel
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Discovery.DiscoveryClient.FindTaskAsync(System.ServiceModel.Discovery.FindCriteria)
 internalonly: False
 ---

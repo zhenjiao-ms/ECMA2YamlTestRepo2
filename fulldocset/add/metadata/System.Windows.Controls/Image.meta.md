@@ -4,12 +4,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.Image.DpiChangedEvent
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.Image.#ctor
 internalonly: False
 ---
 
 ---
 uid: System.Windows.Controls.Image.SourceProperty
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.Image.DpiChanged
 internalonly: False
 ---
 
@@ -70,6 +80,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.Image.StretchDirection
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.Image.OnDpiChanged(System.Windows.DpiScale,System.Windows.DpiScale)
 internalonly: False
 ---
 

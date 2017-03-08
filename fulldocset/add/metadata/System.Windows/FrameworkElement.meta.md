@@ -344,6 +344,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.FrameworkElement.UpdateDefaultStyle
+internalonly: False
+---
+
+---
 uid: System.Windows.FrameworkElement.SetBinding(System.Windows.DependencyProperty,System.String)
 internalonly: False
 ---

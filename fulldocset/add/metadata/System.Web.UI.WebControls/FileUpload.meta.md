@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.WebControls.FileUpload.PostedFiles
+internalonly: False
+---
+
+---
 uid: System.Web.UI.WebControls.FileUpload.OnPreRender(System.EventArgs)
 internalonly: False
 ---
@@ -39,12 +44,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.WebControls.FileUpload.HasFiles
+internalonly: False
+---
+
+---
 uid: System.Web.UI.WebControls.FileUpload.Render(System.Web.UI.HtmlTextWriter)
 internalonly: False
 ---
 
 ---
 uid: System.Web.UI.WebControls.FileUpload.AddAttributesToRender(System.Web.UI.HtmlTextWriter)
+internalonly: False
+---
+
+---
+uid: System.Web.UI.WebControls.FileUpload.AllowMultiple
 internalonly: False
 ---
 

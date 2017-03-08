@@ -24,12 +24,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.DynamicData.DynamicFilter.System#Web#DynamicData#IFilterExpressionProvider#Initialize(System.Web.UI.WebControls.IQueryableDataSource)
+internalonly: False
+---
+
+---
 uid: System.Web.DynamicData.DynamicFilter.FilterTemplate
 internalonly: False
 ---
 
 ---
 uid: System.Web.DynamicData.DynamicFilter.FilterChanged
+internalonly: False
+---
+
+---
+uid: System.Web.DynamicData.DynamicFilter.System#Web#DynamicData#IFilterExpressionProvider#GetQueryable(System.Linq.IQueryable)
 internalonly: False
 ---
 

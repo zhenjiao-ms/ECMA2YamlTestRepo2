@@ -129,6 +129,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.Serialization.DataContractSerializer.SerializeReadOnlyTypes
+internalonly: False
+---
+
+---
+uid: System.Runtime.Serialization.DataContractSerializer.#ctor(System.Type,System.Runtime.Serialization.DataContractSerializerSettings)
+internalonly: False
+---
+
+---
 uid: System.Runtime.Serialization.DataContractSerializer.PreserveObjectReferences
 internalonly: False
 ---

@@ -24,6 +24,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Input.Cursor.#ctor(System.IO.Stream,System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.Windows.Input.Cursor.#ctor(System.IO.Stream)
+internalonly: False
+---
+
+---
+uid: System.Windows.Input.Cursor.#ctor(System.String,System.Boolean)
 internalonly: False
 ---

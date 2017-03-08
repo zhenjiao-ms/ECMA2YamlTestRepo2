@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.NetHttpsBinding.BuildChannelFactory``1(System.ServiceModel.Channels.BindingParameterCollection)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.NetHttpsBinding.ReliableSession
 internalonly: False
 ---

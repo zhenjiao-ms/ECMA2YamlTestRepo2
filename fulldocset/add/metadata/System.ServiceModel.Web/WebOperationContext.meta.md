@@ -34,6 +34,16 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Web.WebOperationContext.CreateXmlResponse``1(``0,System.Runtime.Serialization.XmlObjectSerializer)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Web.WebOperationContext.CreateXmlResponse``1(``0,System.Xml.Serialization.XmlSerializer)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Web.WebOperationContext.CreateTextResponse(System.String,System.String,System.Text.Encoding)
 internalonly: False
 ---
@@ -49,6 +59,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Web.WebOperationContext.CreateJsonResponse``1(``0,System.Runtime.Serialization.Json.DataContractJsonSerializer)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Web.WebOperationContext.OutgoingRequest
 internalonly: False
 ---
@@ -60,6 +75,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Web.WebOperationContext.Current
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Web.WebOperationContext.CreateXmlResponse``1(``0)
 internalonly: False
 ---
 
@@ -90,6 +110,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Web.WebOperationContext.CreateAtom10Response(System.ServiceModel.Syndication.ServiceDocument)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Web.WebOperationContext.CreateJsonResponse``1(``0)
 internalonly: False
 ---
 

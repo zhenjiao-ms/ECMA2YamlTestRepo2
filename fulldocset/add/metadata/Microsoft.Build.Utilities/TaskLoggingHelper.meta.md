@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessage(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,Microsoft.Build.Framework.MessageImportance,System.String,System.Object[])
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessageFromResources(Microsoft.Build.Framework.MessageImportance,System.String,System.Object[])
 internalonly: False
 ---
@@ -149,12 +154,27 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Utilities.TaskLoggingHelper.MarkAsInactive
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessage(System.String,System.Object[])
 internalonly: False
 ---
 
 ---
 uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogExternalProjectFinished(System.String,System.String,System.String,System.Boolean)
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogCriticalMessage(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Object[])
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Utilities.TaskLoggingHelper.InitializeLifetimeService
 internalonly: False
 ---
 

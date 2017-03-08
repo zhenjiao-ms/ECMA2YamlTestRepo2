@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.PrivacyNoticeBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.PrivacyNoticeBindingElement.Version
 internalonly: False
 ---

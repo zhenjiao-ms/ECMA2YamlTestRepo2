@@ -79,6 +79,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.ParameterInfo.CustomAttributes
+internalonly: False
+---
+
+---
 uid: System.Reflection.ParameterInfo.GetCustomAttributes(System.Type,System.Boolean)
 internalonly: False
 ---
@@ -145,6 +150,11 @@ internalonly: False
 
 ---
 uid: System.Reflection.ParameterInfo.GetRealObject(System.Runtime.Serialization.StreamingContext)
+internalonly: False
+---
+
+---
+uid: System.Reflection.ParameterInfo.HasDefaultValue
 internalonly: False
 ---
 

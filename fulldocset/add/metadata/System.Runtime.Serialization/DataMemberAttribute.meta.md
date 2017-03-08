@@ -27,3 +27,8 @@ internalonly: False
 uid: System.Runtime.Serialization.DataMemberAttribute.Name
 internalonly: False
 ---
+
+---
+uid: System.Runtime.Serialization.DataMemberAttribute.IsNameSetExplicitly
+internalonly: False
+---

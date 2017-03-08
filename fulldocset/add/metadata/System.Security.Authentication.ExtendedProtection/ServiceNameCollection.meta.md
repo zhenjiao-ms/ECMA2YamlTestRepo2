@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Authentication.ExtendedProtection.ServiceNameCollection.Contains(System.String)
+internalonly: False
+---
+
+---
 uid: System.Security.Authentication.ExtendedProtection.ServiceNameCollection.#ctor(System.Collections.ICollection)
 internalonly: False
 ---

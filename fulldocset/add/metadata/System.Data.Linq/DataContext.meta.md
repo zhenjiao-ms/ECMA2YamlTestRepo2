@@ -59,6 +59,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Linq.DataContext.CreateMethodCallQuery``1(System.Object,System.Reflection.MethodInfo,System.Object[])
+internalonly: False
+---
+
+---
 uid: System.Data.Linq.DataContext.LoadOptions
 internalonly: False
 ---
@@ -75,6 +80,11 @@ internalonly: False
 
 ---
 uid: System.Data.Linq.DataContext.CommandTimeout
+internalonly: False
+---
+
+---
+uid: System.Data.Linq.DataContext.GetTable``1
 internalonly: False
 ---
 
@@ -159,6 +169,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Linq.DataContext.ExecuteQuery``1(System.String,System.Object[])
+internalonly: False
+---
+
+---
 uid: System.Data.Linq.DataContext.Dispose
 internalonly: False
 ---
@@ -170,5 +185,10 @@ internalonly: False
 
 ---
 uid: System.Data.Linq.DataContext.Refresh(System.Data.Linq.RefreshMode,System.Object[])
+internalonly: False
+---
+
+---
+uid: System.Data.Linq.DataContext.Translate``1(System.Data.Common.DbDataReader)
 internalonly: False
 ---

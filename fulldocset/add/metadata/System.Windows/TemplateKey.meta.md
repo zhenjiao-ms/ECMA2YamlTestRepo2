@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.TemplateKey.#ctor(System.Windows.TemplateKey.TemplateType)
+internalonly: False
+---
+
+---
 uid: System.Windows.TemplateKey.DataType
 internalonly: False
 ---
@@ -25,6 +30,11 @@ internalonly: False
 
 ---
 uid: System.Windows.TemplateKey.Equals(System.Object)
+internalonly: False
+---
+
+---
+uid: System.Windows.TemplateKey.#ctor(System.Windows.TemplateKey.TemplateType,System.Object)
 internalonly: False
 ---
 

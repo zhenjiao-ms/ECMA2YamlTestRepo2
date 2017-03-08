@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.CustomAttributeData.AttributeType
+internalonly: False
+---
+
+---
 uid: System.Reflection.CustomAttributeData.Equals(System.Object)
 internalonly: False
 ---

@@ -14,7 +14,17 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Tokens.SecurityKeyIdentifier.TryFind``1(``0@)
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Tokens.SecurityKeyIdentifier.System#Collections#IEnumerable#GetEnumerator
+internalonly: False
+---
+
+---
+uid: System.IdentityModel.Tokens.SecurityKeyIdentifier.Find``1
 internalonly: False
 ---
 

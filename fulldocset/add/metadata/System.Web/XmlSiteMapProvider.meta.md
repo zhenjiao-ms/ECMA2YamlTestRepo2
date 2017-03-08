@@ -44,6 +44,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.XmlSiteMapProvider.CurrentNode
+internalonly: False
+---
+
+---
+uid: System.Web.XmlSiteMapProvider.GetChildNodes(System.Web.SiteMapNode)
+internalonly: False
+---
+
+---
 uid: System.Web.XmlSiteMapProvider.BuildSiteMap
 internalonly: False
 ---
@@ -55,6 +65,11 @@ internalonly: False
 
 ---
 uid: System.Web.XmlSiteMapProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)
+internalonly: False
+---
+
+---
+uid: System.Web.XmlSiteMapProvider.GetParentNode(System.Web.SiteMapNode)
 internalonly: False
 ---
 

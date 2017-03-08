@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ContextMenuService.RemoveContextMenuOpeningHandler(System.Windows.DependencyObject,System.Windows.Controls.ContextMenuEventHandler)
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ContextMenuService.PlacementTargetProperty
 internalonly: False
 ---
@@ -50,6 +55,16 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.ContextMenuService.ShowOnDisabledProperty
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.ContextMenuService.AddContextMenuClosingHandler(System.Windows.DependencyObject,System.Windows.Controls.ContextMenuEventHandler)
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.ContextMenuService.AddContextMenuOpeningHandler(System.Windows.DependencyObject,System.Windows.Controls.ContextMenuEventHandler)
 internalonly: False
 ---
 
@@ -140,6 +155,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.ContextMenuService.HasDropShadowProperty
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.ContextMenuService.RemoveContextMenuClosingHandler(System.Windows.DependencyObject,System.Windows.Controls.ContextMenuEventHandler)
 internalonly: False
 ---
 

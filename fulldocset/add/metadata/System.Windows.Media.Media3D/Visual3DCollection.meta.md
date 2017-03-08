@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.Media3D.Visual3DCollection.System#Collections#Generic#ICollection{System#Windows#Media#Media3D#Visual3D}#IsReadOnly
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.Media3D.Visual3DCollection.CopyTo(System.Windows.Media.Media3D.Visual3D[],System.Int32)
 internalonly: False
 ---
@@ -75,6 +80,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.Media3D.Visual3DCollection.System#Collections#IList#IsFixedSize
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.Media3D.Visual3DCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#Media3D#Visual3D}#GetEnumerator
 internalonly: False
 ---
 

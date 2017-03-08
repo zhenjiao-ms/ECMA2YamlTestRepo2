@@ -44,6 +44,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.FormattedText.#ctor(System.String,System.Globalization.CultureInfo,System.Windows.FlowDirection,System.Windows.Media.Typeface,System.Double,System.Windows.Media.Brush,System.Windows.Media.NumberSubstitution,System.Double)
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.FormattedText.SetFontWeight(System.Windows.FontWeight,System.Int32,System.Int32)
 internalonly: False
 ---
@@ -60,6 +65,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.FormattedText.#ctor(System.String,System.Globalization.CultureInfo,System.Windows.FlowDirection,System.Windows.Media.Typeface,System.Double,System.Windows.Media.Brush,System.Windows.Media.NumberSubstitution,System.Windows.Media.TextFormattingMode)
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.FormattedText.#ctor(System.String,System.Globalization.CultureInfo,System.Windows.FlowDirection,System.Windows.Media.Typeface,System.Double,System.Windows.Media.Brush,System.Windows.Media.NumberSubstitution,System.Windows.Media.TextFormattingMode,System.Double)
 internalonly: False
 ---
 
@@ -105,6 +115,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.FormattedText.Baseline
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.FormattedText.#ctor(System.String,System.Globalization.CultureInfo,System.Windows.FlowDirection,System.Windows.Media.Typeface,System.Double,System.Windows.Media.Brush,System.Double)
 internalonly: False
 ---
 
@@ -215,6 +230,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.FormattedText.#ctor(System.String,System.Globalization.CultureInfo,System.Windows.FlowDirection,System.Windows.Media.Typeface,System.Double,System.Windows.Media.Brush)
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.FormattedText.PixelsPerDip
 internalonly: False
 ---
 

@@ -44,6 +44,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.ChannelFactory.GetProperty``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.ChannelFactory.OnOpening
 internalonly: False
 ---

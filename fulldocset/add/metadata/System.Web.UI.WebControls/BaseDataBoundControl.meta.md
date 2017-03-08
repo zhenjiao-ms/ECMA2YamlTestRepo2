@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.WebControls.BaseDataBoundControl.IsUsingModelBinders
+internalonly: False
+---
+
+---
 uid: System.Web.UI.WebControls.BaseDataBoundControl.RequiresDataBinding
 internalonly: False
 ---
@@ -55,6 +60,11 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.BaseDataBoundControl.#ctor
+internalonly: False
+---
+
+---
+uid: System.Web.UI.WebControls.BaseDataBoundControl.IsDataBindingAutomatic
 internalonly: False
 ---
 

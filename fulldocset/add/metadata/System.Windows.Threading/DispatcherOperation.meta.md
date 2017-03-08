@@ -24,6 +24,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Threading.DispatcherOperation.GetAwaiter
+internalonly: False
+---
+
+---
+uid: System.Windows.Threading.DispatcherOperation.InvokeDelegateCore
+internalonly: False
+---
+
+---
 uid: System.Windows.Threading.DispatcherOperation.Result
 internalonly: False
 ---
@@ -35,6 +45,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Threading.DispatcherOperation.Wait(System.TimeSpan)
+internalonly: False
+---
+
+---
+uid: System.Windows.Threading.DispatcherOperation.Task
 internalonly: False
 ---
 

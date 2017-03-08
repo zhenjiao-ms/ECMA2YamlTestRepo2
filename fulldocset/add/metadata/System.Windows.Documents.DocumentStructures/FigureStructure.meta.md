@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Documents.DocumentStructures.FigureStructure.System#Collections#Generic#IEnumerable{System#Windows#Documents#DocumentStructures#NamedElement}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Documents.DocumentStructures.FigureStructure.System#Collections#IEnumerable#GetEnumerator
 internalonly: False
 ---

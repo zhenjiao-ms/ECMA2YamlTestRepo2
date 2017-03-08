@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Description.ServiceEndpoint.EndpointBehaviors
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Description.ServiceEndpoint.IsSystemEndpoint
 internalonly: False
 ---

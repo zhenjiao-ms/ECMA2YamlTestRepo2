@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Threading.Mutex.TryOpenExisting(System.String,System.Security.AccessControl.MutexRights,System.Threading.Mutex@)
+internalonly: False
+---
+
+---
 uid: System.Threading.Mutex.#ctor(System.Boolean,System.String,System.Boolean@,System.Security.AccessControl.MutexSecurity)
 internalonly: False
 ---
@@ -40,6 +45,11 @@ internalonly: False
 
 ---
 uid: System.Threading.Mutex.#ctor(System.Boolean,System.String,System.Boolean@)
+internalonly: False
+---
+
+---
+uid: System.Threading.Mutex.TryOpenExisting(System.String,System.Threading.Mutex@)
 internalonly: False
 ---
 

@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpRequest.Abort
+internalonly: False
+---
+
+---
 uid: System.Web.HttpRequest.HttpMethod
 internalonly: False
 ---
@@ -34,6 +39,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpRequest.TimedOutToken
+internalonly: False
+---
+
+---
 uid: System.Web.HttpRequest.AnonymousID
 internalonly: False
 ---
@@ -44,7 +54,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpRequest.TlsTokenBindingInfo
+internalonly: False
+---
+
+---
 uid: System.Web.HttpRequest.Params
+internalonly: False
+---
+
+---
+uid: System.Web.HttpRequest.ReadEntityBodyMode
+internalonly: False
+---
+
+---
+uid: System.Web.HttpRequest.GetBufferlessInputStream(System.Boolean)
 internalonly: False
 ---
 
@@ -159,7 +184,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpRequest.GetBufferedInputStream
+internalonly: False
+---
+
+---
 uid: System.Web.HttpRequest.QueryString
+internalonly: False
+---
+
+---
+uid: System.Web.HttpRequest.Unvalidated
 internalonly: False
 ---
 
@@ -245,6 +280,11 @@ internalonly: False
 
 ---
 uid: System.Web.HttpRequest.ContentType
+internalonly: False
+---
+
+---
+uid: System.Web.HttpRequest.MapRawImageCoordinates(System.String)
 internalonly: False
 ---
 

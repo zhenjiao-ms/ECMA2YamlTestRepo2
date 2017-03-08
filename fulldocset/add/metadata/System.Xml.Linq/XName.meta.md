@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.Linq.XName.System#IEquatable{System#Xml#Linq#XName}#Equals(System.Xml.Linq.XName)
+internalonly: False
+---
+
+---
 uid: System.Xml.Linq.XName.Namespace
 internalonly: False
 ---

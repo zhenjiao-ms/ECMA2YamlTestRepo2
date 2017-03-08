@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Tasks.Xaml.GenerateTemporaryAssemblyTask.GeneratedResourcesFiles
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Tasks.Xaml.GenerateTemporaryAssemblyTask.SourceCodeFiles
 internalonly: False
 ---

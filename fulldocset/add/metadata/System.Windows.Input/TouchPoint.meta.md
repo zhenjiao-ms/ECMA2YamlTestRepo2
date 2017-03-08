@@ -32,3 +32,8 @@ internalonly: False
 uid: System.Windows.Input.TouchPoint.TouchDevice
 internalonly: False
 ---
+
+---
+uid: System.Windows.Input.TouchPoint.System#IEquatable{System#Windows#Input#TouchPoint}#Equals(System.Windows.Input.TouchPoint)
+internalonly: False
+---

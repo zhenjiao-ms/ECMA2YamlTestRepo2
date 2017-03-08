@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Validation.ValidationResults.#ctor(System.Collections.Generic.IList{System.Activities.Validation.ValidationError})
+internalonly: False
+---
+
+---
 uid: System.Activities.Validation.ValidationResults.Errors
 internalonly: False
 ---

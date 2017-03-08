@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.HttpResponseMessageProperty.System#ServiceModel#Channels#IMessageProperty#CreateCopy
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.HttpResponseMessageProperty.StatusDescription
 internalonly: False
 ---

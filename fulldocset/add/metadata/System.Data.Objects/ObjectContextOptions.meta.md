@@ -14,6 +14,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Objects.ObjectContextOptions.UseConsistentNullReferenceBehavior
+internalonly: False
+---
+
+---
+uid: System.Data.Objects.ObjectContextOptions.UseCSharpNullComparisonBehavior
+internalonly: False
+---
+
+---
 uid: System.Data.Objects.ObjectContextOptions.UseLegacyPreserveChangesBehavior
 internalonly: False
 ---

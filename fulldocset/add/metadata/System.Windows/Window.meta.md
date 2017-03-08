@@ -34,12 +34,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Window.DpiChanged
+internalonly: False
+---
+
+---
 uid: System.Windows.Window.ArrangeOverride(System.Windows.Size)
 internalonly: False
 ---
 
 ---
 uid: System.Windows.Window.GetWindow(System.Windows.DependencyObject)
+internalonly: False
+---
+
+---
+uid: System.Windows.Window.OnDpiChanged(System.Windows.DpiScale,System.Windows.DpiScale)
 internalonly: False
 ---
 
@@ -305,6 +315,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Window.OwnedWindows
+internalonly: False
+---
+
+---
+uid: System.Windows.Window.DpiChangedEvent
 internalonly: False
 ---
 

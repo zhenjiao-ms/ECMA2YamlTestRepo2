@@ -54,6 +54,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpApplication.RequestCompleted
+internalonly: False
+---
+
+---
 uid: System.Web.HttpApplication.PostAuthorizeRequest
 internalonly: False
 ---
@@ -70,6 +75,11 @@ internalonly: False
 
 ---
 uid: System.Web.HttpApplication.AuthorizeRequest
+internalonly: False
+---
+
+---
+uid: System.Web.HttpApplication.RegisterModule(System.Type)
 internalonly: False
 ---
 

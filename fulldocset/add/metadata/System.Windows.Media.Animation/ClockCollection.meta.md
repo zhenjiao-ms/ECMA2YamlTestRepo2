@@ -49,6 +49,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.Animation.ClockCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#Animation#Clock}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.Animation.ClockCollection.Equals(System.Object)
 internalonly: False
 ---

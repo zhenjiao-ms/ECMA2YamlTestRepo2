@@ -54,6 +54,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Design.Serialization.BasicDesignerLoader.Reload(System.ComponentModel.Design.Serialization.BasicDesignerLoader.ReloadOptions)
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad(System.Boolean,System.Collections.ICollection)
 internalonly: False
 ---

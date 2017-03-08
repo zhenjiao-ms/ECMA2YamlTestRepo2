@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Services.FederatedAuthentication.GetHttpModule``1
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Services.FederatedAuthentication.WSFederationAuthenticationModule
 internalonly: False
 ---

@@ -69,6 +69,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Workflow.Activities.HandleExternalEventActivity.System#Workflow#ComponentModel#IActivityEventListener{System#Workflow#ComponentModel#QueueEventArgs}#OnEvent(System.Object,System.Workflow.ComponentModel.QueueEventArgs)
+internalonly: False
+---
+
+---
 uid: System.Workflow.Activities.HandleExternalEventActivity.#ctor
 internalonly: False
 ---

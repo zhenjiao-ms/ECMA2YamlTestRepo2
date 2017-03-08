@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.Sockets.UdpClient.SendAsync(System.Byte[],System.Int32)
+internalonly: False
+---
+
+---
 uid: System.Net.Sockets.UdpClient.Connect(System.Net.IPEndPoint)
 internalonly: False
 ---
@@ -35,6 +40,11 @@ internalonly: False
 
 ---
 uid: System.Net.Sockets.UdpClient.#ctor(System.Int32,System.Net.Sockets.AddressFamily)
+internalonly: False
+---
+
+---
+uid: System.Net.Sockets.UdpClient.ReceiveAsync
 internalonly: False
 ---
 
@@ -109,6 +119,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.Sockets.UdpClient.Dispose
+internalonly: False
+---
+
+---
 uid: System.Net.Sockets.UdpClient.AllowNatTraversal(System.Boolean)
 internalonly: False
 ---
@@ -175,6 +190,16 @@ internalonly: False
 
 ---
 uid: System.Net.Sockets.UdpClient.Connect(System.String,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Net.Sockets.UdpClient.SendAsync(System.Byte[],System.Int32,System.String,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Net.Sockets.UdpClient.SendAsync(System.Byte[],System.Int32,System.Net.IPEndPoint)
 internalonly: False
 ---
 

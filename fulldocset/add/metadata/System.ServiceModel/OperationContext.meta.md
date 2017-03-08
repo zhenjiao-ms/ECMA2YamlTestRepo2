@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.OperationContext.GetCallbackChannel``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.OperationContext.OutgoingMessageHeaders
 internalonly: False
 ---
@@ -70,6 +75,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.OperationContext.IncomingMessageVersion
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.OperationContext.ClaimsPrincipal
 internalonly: False
 ---
 

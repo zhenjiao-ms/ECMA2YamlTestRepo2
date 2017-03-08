@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Security.Tokens.WrappedKeySecurityToken.CreateKeyIdentifierClause``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Security.Tokens.WrappedKeySecurityToken.ValidFrom
 internalonly: False
 ---
@@ -50,5 +55,10 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Security.Tokens.WrappedKeySecurityToken.WrappingAlgorithm
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Security.Tokens.WrappedKeySecurityToken.CanCreateKeyIdentifierClause``1
 internalonly: False
 ---

@@ -84,7 +84,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.Media3D.GeneralTransform3DCollection.System#Collections#Generic#ICollection{System#Windows#Media#Media3D#GeneralTransform3D}#IsReadOnly
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.Media3D.GeneralTransform3DCollection.Add(System.Windows.Media.Media3D.GeneralTransform3D)
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.Media3D.GeneralTransform3DCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#Media3D#GeneralTransform3D}#GetEnumerator
 internalonly: False
 ---
 

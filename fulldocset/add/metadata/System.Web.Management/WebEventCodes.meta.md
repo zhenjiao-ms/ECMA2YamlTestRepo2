@@ -159,6 +159,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Management.WebEventCodes.RuntimeErrorWebResourceFailure
+internalonly: False
+---
+
+---
 uid: System.Web.Management.WebEventCodes.ApplicationDetailCodeBase
 internalonly: False
 ---

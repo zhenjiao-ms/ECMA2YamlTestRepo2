@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.Serialization.Configuration.XmlSerializerSection.UseLegacySerializerGeneration
+internalonly: False
+---
+
+---
 uid: System.Xml.Serialization.Configuration.XmlSerializerSection.#ctor
 internalonly: False
 ---

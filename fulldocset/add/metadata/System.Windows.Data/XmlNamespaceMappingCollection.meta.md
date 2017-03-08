@@ -59,6 +59,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Data.XmlNamespaceMappingCollection.System#Collections#Generic#IEnumerable{System#Windows#Data#XmlNamespaceMapping}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Data.XmlNamespaceMappingCollection.ProtectedGetEnumerator
 internalonly: False
 ---

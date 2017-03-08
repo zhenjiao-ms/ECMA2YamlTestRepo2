@@ -14,6 +14,21 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.Dns.GetHostEntryAsync(System.String)
+internalonly: False
+---
+
+---
+uid: System.Net.Dns.GetHostEntryAsync(System.Net.IPAddress)
+internalonly: False
+---
+
+---
+uid: System.Net.Dns.GetHostAddressesAsync(System.String)
+internalonly: False
+---
+
+---
 uid: System.Net.Dns.GetHostEntry(System.Net.IPAddress)
 internalonly: False
 ---

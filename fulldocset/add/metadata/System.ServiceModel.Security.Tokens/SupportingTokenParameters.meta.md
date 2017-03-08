@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Security.Tokens.SupportingTokenParameters.CloneCore
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Security.Tokens.SupportingTokenParameters.ToString
 internalonly: False
 ---

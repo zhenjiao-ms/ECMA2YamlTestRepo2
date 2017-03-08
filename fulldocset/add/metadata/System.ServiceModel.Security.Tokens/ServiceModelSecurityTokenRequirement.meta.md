@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Security.Tokens.ServiceModelSecurityTokenRequirement.PreferSslCertificateAuthenticatorProperty
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Security.Tokens.ServiceModelSecurityTokenRequirement.SecurityBindingElementProperty
 internalonly: False
 ---

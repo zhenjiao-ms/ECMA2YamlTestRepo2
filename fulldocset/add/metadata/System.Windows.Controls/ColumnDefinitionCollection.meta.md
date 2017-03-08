@@ -44,6 +44,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ColumnDefinitionCollection.System#Collections#Generic#IEnumerable{System#Windows#Controls#ColumnDefinition}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ColumnDefinitionCollection.System#Collections#IList#IsFixedSize
 internalonly: False
 ---

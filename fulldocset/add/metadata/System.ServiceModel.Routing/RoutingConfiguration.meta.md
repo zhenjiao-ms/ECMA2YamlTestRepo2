@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Routing.RoutingConfiguration.EnsureOrderedDispatch
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Routing.RoutingConfiguration.RouteOnHeadersOnly
 internalonly: False
 ---

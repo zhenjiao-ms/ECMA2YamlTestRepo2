@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.DataGridRow.IsNewItem
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.DataGridRow.IsSelectedProperty
 internalonly: False
 ---
@@ -45,6 +50,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.DataGridRow.OnSelected(System.Windows.RoutedEventArgs)
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.DataGridRow.IsNewItemProperty
 internalonly: False
 ---
 

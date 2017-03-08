@@ -409,6 +409,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Diagnostics.Process.SafeHandle
+internalonly: False
+---
+
+---
 uid: System.Diagnostics.Process.MainWindowTitle
 internalonly: False
 ---

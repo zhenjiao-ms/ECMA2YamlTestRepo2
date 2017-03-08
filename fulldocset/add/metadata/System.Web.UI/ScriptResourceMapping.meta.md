@@ -9,12 +9,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.ScriptResourceMapping.GetDefinition(System.String)
+internalonly: False
+---
+
+---
 uid: System.Web.UI.ScriptResourceMapping.Clear
 internalonly: False
 ---
 
 ---
 uid: System.Web.UI.ScriptResourceMapping.RemoveDefinition(System.String,System.Reflection.Assembly)
+internalonly: False
+---
+
+---
+uid: System.Web.UI.ScriptResourceMapping.RemoveDefinition(System.String)
 internalonly: False
 ---
 

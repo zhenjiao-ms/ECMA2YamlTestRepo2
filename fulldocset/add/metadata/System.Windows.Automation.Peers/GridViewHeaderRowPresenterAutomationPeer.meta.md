@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Automation.Peers.GridViewHeaderRowPresenterAutomationPeer.IsContentElementCore
+internalonly: False
+---
+
+---
 uid: System.Windows.Automation.Peers.GridViewHeaderRowPresenterAutomationPeer.GetChildrenCore
 internalonly: False
 ---

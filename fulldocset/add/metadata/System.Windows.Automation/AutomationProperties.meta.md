@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Automation.AutomationProperties.IsOffscreenBehaviorProperty
+internalonly: False
+---
+
+---
 uid: System.Windows.Automation.AutomationProperties.ItemStatusProperty
 internalonly: False
 ---
@@ -60,6 +65,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Automation.AutomationProperties.SetAcceleratorKey(System.Windows.DependencyObject,System.String)
+internalonly: False
+---
+
+---
+uid: System.Windows.Automation.AutomationProperties.GetIsOffscreenBehavior(System.Windows.DependencyObject)
 internalonly: False
 ---
 
@@ -130,6 +140,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Automation.AutomationProperties.ItemTypeProperty
+internalonly: False
+---
+
+---
+uid: System.Windows.Automation.AutomationProperties.SetIsOffscreenBehavior(System.Windows.DependencyObject,System.Windows.Automation.IsOffscreenBehavior)
 internalonly: False
 ---
 

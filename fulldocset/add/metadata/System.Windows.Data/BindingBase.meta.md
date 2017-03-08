@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Data.BindingBase.Delay
+internalonly: False
+---
+
+---
 uid: System.Windows.Data.BindingBase.FallbackValue
 internalonly: False
 ---

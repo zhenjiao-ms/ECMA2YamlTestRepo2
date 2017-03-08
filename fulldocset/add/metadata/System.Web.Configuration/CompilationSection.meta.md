@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.CompilationSection.ControlBuilderInterceptorType
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.CompilationSection.Strict
 internalonly: False
 ---
@@ -64,6 +69,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.CompilationSection.MaxConcurrentCompilations
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.CompilationSection.EnablePrefetchOptimization
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.CompilationSection.BuildProviders
 internalonly: False
 ---
@@ -94,12 +109,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.CompilationSection.DisableObsoleteWarnings
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.CompilationSection.OptimizeCompilations
 internalonly: False
 ---
 
 ---
 uid: System.Web.Configuration.CompilationSection.MaxBatchGeneratedFileSize
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.CompilationSection.ProfileGuidedOptimizations
 internalonly: False
 ---
 

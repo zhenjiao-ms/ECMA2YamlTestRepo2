@@ -29,7 +29,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Threading.SemaphoreSlim.WaitAsync(System.TimeSpan)
+internalonly: False
+---
+
+---
 uid: System.Threading.SemaphoreSlim.Wait(System.Int32,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
+uid: System.Threading.SemaphoreSlim.WaitAsync(System.Int32)
 internalonly: False
 ---
 
@@ -40,6 +50,11 @@ internalonly: False
 
 ---
 uid: System.Threading.SemaphoreSlim.Wait(System.TimeSpan,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
+uid: System.Threading.SemaphoreSlim.WaitAsync(System.Int32,System.Threading.CancellationToken)
 internalonly: False
 ---
 
@@ -60,6 +75,21 @@ internalonly: False
 
 ---
 uid: System.Threading.SemaphoreSlim.Release
+internalonly: False
+---
+
+---
+uid: System.Threading.SemaphoreSlim.WaitAsync
+internalonly: False
+---
+
+---
+uid: System.Threading.SemaphoreSlim.WaitAsync(System.TimeSpan,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
+uid: System.Threading.SemaphoreSlim.WaitAsync(System.Threading.CancellationToken)
 internalonly: False
 ---
 

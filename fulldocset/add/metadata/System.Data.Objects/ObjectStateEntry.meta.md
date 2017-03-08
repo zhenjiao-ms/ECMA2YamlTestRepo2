@@ -54,6 +54,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Objects.ObjectStateEntry.RejectPropertyChanges(System.String)
+internalonly: False
+---
+
+---
 uid: System.Data.Objects.ObjectStateEntry.System#Data#Objects#DataClasses#IEntityChangeTracker#EntityState
 internalonly: False
 ---
@@ -115,5 +120,10 @@ internalonly: False
 
 ---
 uid: System.Data.Objects.ObjectStateEntry.EntitySet
+internalonly: False
+---
+
+---
+uid: System.Data.Objects.ObjectStateEntry.IsPropertyChanged(System.String)
 internalonly: False
 ---

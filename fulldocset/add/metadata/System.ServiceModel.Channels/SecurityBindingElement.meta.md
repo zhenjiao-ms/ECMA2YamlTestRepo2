@@ -19,7 +19,17 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.SecurityBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.SecurityBindingElement.EnableUnsecuredResponse
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.SecurityBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 
@@ -30,6 +40,16 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Channels.SecurityBindingElement.CreateSslNegotiationBindingElement(System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.SecurityBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.SecurityBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 
@@ -89,6 +109,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.SecurityBindingElement.BuildChannelFactoryCore``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.SecurityBindingElement.CreateCertificateOverTransportBindingElement
 internalonly: False
 ---
@@ -124,6 +149,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.SecurityBindingElement.ProtectTokens
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.SecurityBindingElement.CreateSslNegotiationBindingElement(System.Boolean,System.Boolean)
 internalonly: False
 ---
@@ -135,6 +165,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Channels.SecurityBindingElement.SetKeyDerivation(System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.SecurityBindingElement.BuildChannelListenerCore``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 
@@ -185,6 +220,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Channels.SecurityBindingElement.OptionalEndpointSupportingTokenParameters
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.SecurityBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 

@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.Sockets.NetworkStream.FlushAsync(System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.Net.Sockets.NetworkStream.#ctor(System.Net.Sockets.Socket)
 internalonly: False
 ---

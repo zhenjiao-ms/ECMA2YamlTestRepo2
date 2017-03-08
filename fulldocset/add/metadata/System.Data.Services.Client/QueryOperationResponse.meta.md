@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Services.Client.QueryOperationResponse.GetContinuation``1(System.Collections.Generic.IEnumerable{``0})
+internalonly: False
+---
+
+---
 uid: System.Data.Services.Client.QueryOperationResponse.Query
 internalonly: False
 ---

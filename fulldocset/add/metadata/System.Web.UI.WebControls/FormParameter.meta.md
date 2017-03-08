@@ -42,3 +42,8 @@ internalonly: False
 uid: System.Web.UI.WebControls.FormParameter.#ctor(System.String,System.Data.DbType,System.String)
 internalonly: False
 ---
+
+---
+uid: System.Web.UI.WebControls.FormParameter.ValidateInput
+internalonly: False
+---

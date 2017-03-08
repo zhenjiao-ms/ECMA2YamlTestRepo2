@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.MessageEncodingBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.MessageEncodingBindingElement.#ctor
 internalonly: False
 ---

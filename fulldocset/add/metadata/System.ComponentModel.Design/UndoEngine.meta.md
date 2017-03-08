@@ -4,7 +4,17 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Design.UndoEngine.DiscardUndoUnit(System.ComponentModel.Design.UndoEngine.UndoUnit)
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Design.UndoEngine.GetRequiredService(System.Type)
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Design.UndoEngine.AddUndoUnit(System.ComponentModel.Design.UndoEngine.UndoUnit)
 internalonly: False
 ---
 

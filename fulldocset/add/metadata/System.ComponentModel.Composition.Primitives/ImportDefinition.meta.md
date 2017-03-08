@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Composition.Primitives.ImportDefinition.Metadata
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Composition.Primitives.ImportDefinition.Cardinality
 internalonly: False
 ---
@@ -35,6 +40,11 @@ internalonly: False
 
 ---
 uid: System.ComponentModel.Composition.Primitives.ImportDefinition.IsConstraintSatisfiedBy(System.ComponentModel.Composition.Primitives.ExportDefinition)
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Composition.Primitives.ImportDefinition.#ctor(System.Linq.Expressions.Expression{System.Func{System.ComponentModel.Composition.Primitives.ExportDefinition,System.Boolean}},System.String,System.ComponentModel.Composition.Primitives.ImportCardinality,System.Boolean,System.Boolean,System.Collections.Generic.IDictionary{System.String,System.Object})
 internalonly: False
 ---
 

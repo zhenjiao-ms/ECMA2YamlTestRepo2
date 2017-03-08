@@ -4,12 +4,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.ContextItemManager.Contains``1
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.ContextItemManager.SetValue(System.Activities.Presentation.ContextItem)
 internalonly: False
 ---
 
 ---
 uid: System.Activities.Presentation.ContextItemManager.Subscribe(System.Type,System.Activities.Presentation.SubscribeContextCallback)
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.ContextItemManager.GetValue``1
 internalonly: False
 ---
 
@@ -49,7 +59,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.ContextItemManager.Unsubscribe``1(System.Activities.Presentation.SubscribeContextCallback{``0})
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.ContextItemManager.GetEnumerator
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.ContextItemManager.Subscribe``1(System.Activities.Presentation.SubscribeContextCallback{``0})
 internalonly: False
 ---
 

@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.UnmanagedMemoryAccessor.Read``1(System.Int64,``0@)
+internalonly: False
+---
+
+---
 uid: System.IO.UnmanagedMemoryAccessor.#ctor(System.Runtime.InteropServices.SafeBuffer,System.Int64,System.Int64,System.IO.FileAccess)
 internalonly: False
 ---
@@ -29,12 +34,22 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.UnmanagedMemoryAccessor.ReadArray``1(System.Int64,``0[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
 uid: System.IO.UnmanagedMemoryAccessor.Write(System.Int64,System.Int32)
 internalonly: False
 ---
 
 ---
 uid: System.IO.UnmanagedMemoryAccessor.ReadDecimal(System.Int64)
+internalonly: False
+---
+
+---
+uid: System.IO.UnmanagedMemoryAccessor.WriteArray``1(System.Int64,``0[],System.Int32,System.Int32)
 internalonly: False
 ---
 
@@ -70,6 +85,11 @@ internalonly: False
 
 ---
 uid: System.IO.UnmanagedMemoryAccessor.Dispose(System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.IO.UnmanagedMemoryAccessor.Write``1(System.Int64,``0@)
 internalonly: False
 ---
 

@@ -29,7 +29,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.AsyncCodeActivity.ImplementationVersion
+internalonly: False
+---
+
+---
 uid: System.Activities.AsyncCodeActivity.CacheMetadata(System.Activities.ActivityMetadata)
+internalonly: False
+---
+
+---
+uid: System.Activities.AsyncCodeActivity.OnCreateDynamicUpdateMap(System.Activities.DynamicUpdate.UpdateMapMetadata,System.Activities.Activity)
 internalonly: False
 ---
 

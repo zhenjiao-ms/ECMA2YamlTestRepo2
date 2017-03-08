@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.ServicePointManager.ReusePort
+internalonly: False
+---
+
+---
 uid: System.Net.ServicePointManager.FindServicePoint(System.Uri,System.Net.IWebProxy)
 internalonly: False
 ---

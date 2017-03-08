@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.Media3D.Transform3DCollection.System#Collections#Generic#ICollection{System#Windows#Media#Media3D#Transform3D}#IsReadOnly
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.Media3D.Transform3DCollection.System#Collections#IList#Add(System.Object)
 internalonly: False
 ---
@@ -105,6 +110,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.Media3D.Transform3DCollection.System#Collections#IList#Remove(System.Object)
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.Media3D.Transform3DCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#Media3D#Transform3D}#GetEnumerator
 internalonly: False
 ---
 

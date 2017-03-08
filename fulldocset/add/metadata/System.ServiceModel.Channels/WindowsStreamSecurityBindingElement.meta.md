@@ -4,12 +4,32 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.WindowsStreamSecurityBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.WindowsStreamSecurityBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.WindowsStreamSecurityBindingElement.System#ServiceModel#Description#IPolicyExportExtension#ExportPolicy(System.ServiceModel.Description.MetadataExporter,System.ServiceModel.Description.PolicyConversionContext)
 internalonly: False
 ---
 
 ---
 uid: System.ServiceModel.Channels.WindowsStreamSecurityBindingElement.BuildServerStreamUpgradeProvider(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.WindowsStreamSecurityBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.WindowsStreamSecurityBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 
@@ -30,6 +50,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Channels.WindowsStreamSecurityBindingElement.Clone
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.WindowsStreamSecurityBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 

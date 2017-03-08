@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.FileWebResponse.SupportsHeaders
+internalonly: False
+---
+
+---
 uid: System.Net.FileWebResponse.ContentType
 internalonly: False
 ---

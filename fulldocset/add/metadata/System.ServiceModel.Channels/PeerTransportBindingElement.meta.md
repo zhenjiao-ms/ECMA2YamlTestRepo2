@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.PeerTransportBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.PeerTransportBindingElement.ListenIPAddress
 internalonly: False
 ---
@@ -20,6 +25,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Channels.PeerTransportBindingElement.Scheme
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.PeerTransportBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 
@@ -49,6 +59,21 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.PeerTransportBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.PeerTransportBindingElement.Port
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.PeerTransportBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.PeerTransportBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---

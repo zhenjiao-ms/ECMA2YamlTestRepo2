@@ -49,6 +49,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.TransformCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#Transform}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.TransformCollection.Clear
 internalonly: False
 ---
@@ -125,6 +130,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.TransformCollection.System#Collections#ICollection#SyncRoot
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.TransformCollection.System#Collections#Generic#ICollection{System#Windows#Media#Transform}#IsReadOnly
 internalonly: False
 ---
 

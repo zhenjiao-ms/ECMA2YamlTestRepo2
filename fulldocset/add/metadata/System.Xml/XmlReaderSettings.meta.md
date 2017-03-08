@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlReaderSettings.#ctor(System.Xml.XmlResolver)
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlReaderSettings.#ctor
 internalonly: False
 ---
@@ -85,6 +90,11 @@ internalonly: False
 
 ---
 uid: System.Xml.XmlReaderSettings.DtdProcessing
+internalonly: False
+---
+
+---
+uid: System.Xml.XmlReaderSettings.Async
 internalonly: False
 ---
 

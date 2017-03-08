@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.Emit.GenericTypeParameterBuilder.GenericParameterAttributes
+internalonly: False
+---
+
+---
 uid: System.Reflection.Emit.GenericTypeParameterBuilder.SetGenericParameterAttributes(System.Reflection.GenericParameterAttributes)
 internalonly: False
 ---
@@ -45,6 +50,11 @@ internalonly: False
 
 ---
 uid: System.Reflection.Emit.GenericTypeParameterBuilder.IsSubclassOf(System.Type)
+internalonly: False
+---
+
+---
+uid: System.Reflection.Emit.GenericTypeParameterBuilder.IsConstructedGenericType
 internalonly: False
 ---
 
@@ -200,6 +210,11 @@ internalonly: False
 
 ---
 uid: System.Reflection.Emit.GenericTypeParameterBuilder.MakeArrayType
+internalonly: False
+---
+
+---
+uid: System.Reflection.Emit.GenericTypeParameterBuilder.IsAssignableFrom(System.Reflection.TypeInfo)
 internalonly: False
 ---
 

@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.Model.ModelItem.BeginEdit(System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.Model.ModelItem.Sources
 internalonly: False
 ---
@@ -65,6 +70,11 @@ internalonly: False
 
 ---
 uid: System.Activities.Presentation.Model.ModelItem.Source
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.Model.ModelItem.BeginEdit(System.String,System.Boolean)
 internalonly: False
 ---
 

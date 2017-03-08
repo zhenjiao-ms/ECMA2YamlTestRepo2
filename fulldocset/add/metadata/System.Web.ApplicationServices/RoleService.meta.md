@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.ApplicationServices.RoleService.#ctor
+internalonly: False
+---
+
+---
 uid: System.Web.ApplicationServices.RoleService.GetRolesForCurrentUser
 internalonly: False
 ---

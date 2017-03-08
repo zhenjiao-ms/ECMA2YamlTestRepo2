@@ -84,6 +84,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.VisualBasic.Conversion.CTypeDynamic``1(System.Object)
+internalonly: False
+---
+
+---
 uid: Microsoft.VisualBasic.Conversion.Val(System.Object)
 internalonly: False
 ---

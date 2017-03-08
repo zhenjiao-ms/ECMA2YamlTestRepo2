@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.DataAnnotations.ValidationAttribute.RequiresValidationContext
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.DataAnnotations.ValidationAttribute.#ctor(System.Func{System.String})
 internalonly: False
 ---

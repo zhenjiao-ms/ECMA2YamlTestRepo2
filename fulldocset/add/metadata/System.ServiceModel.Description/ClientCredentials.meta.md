@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Description.ClientCredentials.UseIdentityConfiguration
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Description.ClientCredentials.Clone
 internalonly: False
 ---
@@ -50,6 +55,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Description.ClientCredentials.Peer
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Description.ClientCredentials.SecurityTokenHandlerCollectionManager
 internalonly: False
 ---
 

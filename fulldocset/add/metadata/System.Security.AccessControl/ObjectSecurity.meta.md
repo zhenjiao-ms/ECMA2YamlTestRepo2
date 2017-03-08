@@ -69,6 +69,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.AccessControl.ObjectSecurity.#ctor
+internalonly: False
+---
+
+---
 uid: System.Security.AccessControl.ObjectSecurity.AccessRightType
 internalonly: False
 ---
@@ -200,6 +205,11 @@ internalonly: False
 
 ---
 uid: System.Security.AccessControl.ObjectSecurity.AreAccessRulesProtected
+internalonly: False
+---
+
+---
+uid: System.Security.AccessControl.ObjectSecurity.#ctor(System.Security.AccessControl.CommonSecurityDescriptor)
 internalonly: False
 ---
 

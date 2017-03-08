@@ -32,3 +32,8 @@ internalonly: False
 uid: System.ComponentModel.DataAnnotations.ValidationResult.Success
 internalonly: False
 ---
+
+---
+uid: System.ComponentModel.DataAnnotations.ValidationResult.ToString
+internalonly: False
+---

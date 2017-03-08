@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Composition.Hosting.ScopingExtensions.ContainsPartMetadata``1(System.ComponentModel.Composition.Primitives.ComposablePartDefinition,System.String,``0)
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Composition.Hosting.ScopingExtensions.ContainsPartMetadataWithKey(System.ComponentModel.Composition.Primitives.ComposablePartDefinition,System.String)
 internalonly: False
 ---

@@ -19,7 +19,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.Panel.HasLogicalOrientationPublic
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.Panel.GetZIndex(System.Windows.UIElement)
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.Panel.LogicalOrientationPublic
 internalonly: False
 ---
 

@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Selectors.SecurityTokenRequirement.GetProperty``1(System.String)
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Selectors.SecurityTokenRequirement.KeyTypeProperty
 internalonly: False
 ---
@@ -44,12 +49,22 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Selectors.SecurityTokenRequirement.IsOptionalTokenProperty
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Selectors.SecurityTokenRequirement.RequireCryptographicTokenProperty
 internalonly: False
 ---
 
 ---
 uid: System.IdentityModel.Selectors.SecurityTokenRequirement.PeerAuthenticationMode
+internalonly: False
+---
+
+---
+uid: System.IdentityModel.Selectors.SecurityTokenRequirement.TryGetProperty``1(System.String,``0@)
 internalonly: False
 ---
 

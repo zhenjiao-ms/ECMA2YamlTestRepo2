@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Services.Providers.DataServiceProviderMethods.GetSequenceValue``1(System.Object,System.Data.Services.Providers.ResourceProperty)
+internalonly: False
+---
+
+---
 uid: System.Data.Services.Providers.DataServiceProviderMethods.Compare(System.Nullable{System.Boolean},System.Nullable{System.Boolean})
 internalonly: False
 ---

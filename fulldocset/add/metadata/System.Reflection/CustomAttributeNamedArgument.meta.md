@@ -14,6 +14,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.CustomAttributeNamedArgument.MemberName
+internalonly: False
+---
+
+---
+uid: System.Reflection.CustomAttributeNamedArgument.IsField
+internalonly: False
+---
+
+---
 uid: System.Reflection.CustomAttributeNamedArgument.#ctor(System.Reflection.MemberInfo,System.Object)
 internalonly: False
 ---

@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.CodeActivityMetadata.RequireExtension``1
+internalonly: False
+---
+
+---
 uid: System.Activities.CodeActivityMetadata.AddValidationError(System.Activities.Validation.ValidationError)
 internalonly: False
 ---
@@ -70,5 +75,10 @@ internalonly: False
 
 ---
 uid: System.Activities.CodeActivityMetadata.SetArgumentsCollection(System.Collections.ObjectModel.Collection{System.Activities.RuntimeArgument})
+internalonly: False
+---
+
+---
+uid: System.Activities.CodeActivityMetadata.AddDefaultExtensionProvider``1(System.Func{``0})
 internalonly: False
 ---

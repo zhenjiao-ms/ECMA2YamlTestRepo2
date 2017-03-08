@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Caching.AggregateCacheDependency.GetFileDependencies
+internalonly: False
+---
+
+---
 uid: System.Web.Caching.AggregateCacheDependency.GetUniqueID
 internalonly: False
 ---

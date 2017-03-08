@@ -9,12 +9,37 @@ internalonly: False
 ---
 
 ---
+uid: System.Transactions.TransactionScope.#ctor(System.Transactions.TransactionScopeOption,System.Transactions.TransactionOptions,System.Transactions.TransactionScopeAsyncFlowOption)
+internalonly: False
+---
+
+---
 uid: System.Transactions.TransactionScope.#ctor(System.Transactions.Transaction)
 internalonly: False
 ---
 
 ---
+uid: System.Transactions.TransactionScope.#ctor(System.Transactions.Transaction,System.TimeSpan,System.Transactions.TransactionScopeAsyncFlowOption)
+internalonly: False
+---
+
+---
+uid: System.Transactions.TransactionScope.#ctor(System.Transactions.TransactionScopeAsyncFlowOption)
+internalonly: False
+---
+
+---
 uid: System.Transactions.TransactionScope.#ctor(System.Transactions.TransactionScopeOption,System.TimeSpan)
+internalonly: False
+---
+
+---
+uid: System.Transactions.TransactionScope.#ctor(System.Transactions.TransactionScopeOption,System.TimeSpan,System.Transactions.TransactionScopeAsyncFlowOption)
+internalonly: False
+---
+
+---
+uid: System.Transactions.TransactionScope.#ctor(System.Transactions.Transaction,System.Transactions.TransactionScopeAsyncFlowOption)
 internalonly: False
 ---
 
@@ -25,6 +50,11 @@ internalonly: False
 
 ---
 uid: System.Transactions.TransactionScope.#ctor(System.Transactions.TransactionScopeOption,System.Transactions.TransactionOptions)
+internalonly: False
+---
+
+---
+uid: System.Transactions.TransactionScope.#ctor(System.Transactions.TransactionScopeOption,System.Transactions.TransactionScopeAsyncFlowOption)
 internalonly: False
 ---
 

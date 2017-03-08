@@ -54,6 +54,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.LocalServiceSecuritySettings.NonceCache
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.LocalServiceSecuritySettings.SessionKeyRenewalInterval
 internalonly: False
 ---

@@ -4,6 +4,16 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.ReliableSessionBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.ReliableSessionBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.ReliableSessionBindingElement.InactivityTimeout
 internalonly: False
 ---
@@ -24,7 +34,17 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.ReliableSessionBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.ReliableSessionBindingElement.#ctor
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.ReliableSessionBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 
@@ -60,5 +80,10 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxTransferWindowSize
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.ReliableSessionBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---

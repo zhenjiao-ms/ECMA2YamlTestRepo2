@@ -4,7 +4,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Data.BindingExpressionBase.Target
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.BindingExpressionBase.ValidationErrors
+internalonly: False
+---
+
+---
 uid: System.Windows.Data.BindingExpressionBase.Status
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.BindingExpressionBase.HasValidationError
 internalonly: False
 ---
 
@@ -29,7 +44,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Data.BindingExpressionBase.TargetProperty
+internalonly: False
+---
+
+---
 uid: System.Windows.Data.BindingExpressionBase.ValidateWithoutUpdate
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.BindingExpressionBase.IsDirty
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.BindingExpressionBase.BindingGroup
 internalonly: False
 ---
 

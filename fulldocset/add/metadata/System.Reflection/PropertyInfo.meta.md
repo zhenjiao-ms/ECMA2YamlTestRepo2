@@ -44,6 +44,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.PropertyInfo.GetValue(System.Object)
+internalonly: False
+---
+
+---
 uid: System.Reflection.PropertyInfo.op_Inequality(System.Reflection.PropertyInfo,System.Reflection.PropertyInfo)
 internalonly: False
 ---
@@ -79,6 +84,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.PropertyInfo.SetMethod
+internalonly: False
+---
+
+---
 uid: System.Reflection.PropertyInfo.GetOptionalCustomModifiers
 internalonly: False
 ---
@@ -94,6 +104,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.PropertyInfo.SetValue(System.Object,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Reflection.PropertyInfo.GetGetMethod(System.Boolean)
 internalonly: False
 ---
@@ -105,6 +120,11 @@ internalonly: False
 
 ---
 uid: System.Reflection.PropertyInfo.System#Runtime#InteropServices#_PropertyInfo#GetType
+internalonly: False
+---
+
+---
+uid: System.Reflection.PropertyInfo.GetMethod
 internalonly: False
 ---
 

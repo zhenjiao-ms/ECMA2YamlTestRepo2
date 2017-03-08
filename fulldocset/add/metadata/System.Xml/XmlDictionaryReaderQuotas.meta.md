@@ -39,6 +39,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlDictionaryReaderQuotas.ModifiedQuotas
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlDictionaryReaderQuotas.MaxBytesPerRead
 internalonly: False
 ---

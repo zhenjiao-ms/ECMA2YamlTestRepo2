@@ -14,12 +14,37 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Common.DbProviderServices.GetDbSpatialDataReader(System.Data.Common.DbDataReader,System.String)
+internalonly: False
+---
+
+---
+uid: System.Data.Common.DbProviderServices.GetSpatialServices(System.String)
+internalonly: False
+---
+
+---
+uid: System.Data.Common.DbProviderServices.GetSpatialDataReader(System.Data.Common.DbDataReader,System.String)
+internalonly: False
+---
+
+---
 uid: System.Data.Common.DbProviderServices.GetDbProviderManifest(System.String)
 internalonly: False
 ---
 
 ---
+uid: System.Data.Common.DbProviderServices.SetDbParameterValue(System.Data.Common.DbParameter,System.Data.Metadata.Edm.TypeUsage,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Data.Common.DbProviderServices.CreateCommandDefinition(System.Data.Common.DbCommand)
+internalonly: False
+---
+
+---
+uid: System.Data.Common.DbProviderServices.DbGetSpatialServices(System.String)
 internalonly: False
 ---
 

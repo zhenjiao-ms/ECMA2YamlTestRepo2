@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Hosting.WorkflowInstanceExtensionManager.Add``1(System.Func{``0})
+internalonly: False
+---
+
+---
 uid: System.Activities.Hosting.WorkflowInstanceExtensionManager.Add(System.Object)
 internalonly: False
 ---

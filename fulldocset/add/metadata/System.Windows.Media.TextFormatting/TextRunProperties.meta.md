@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.TextFormatting.TextRunProperties.PixelsPerDip
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.TextFormatting.TextRunProperties.BackgroundBrush
 internalonly: False
 ---

@@ -74,6 +74,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup(System.Runtime.CompilerServices.RuntimeHelpers.TryCode,System.Runtime.CompilerServices.RuntimeHelpers.CleanupCode,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Runtime.CompilerServices.RuntimeHelpers.ProbeForSufficientStack
 internalonly: False
 ---

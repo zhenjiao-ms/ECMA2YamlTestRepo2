@@ -39,6 +39,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.Linq.XObject.Annotation``1
+internalonly: False
+---
+
+---
 uid: System.Xml.Linq.XObject.RemoveAnnotations(System.Type)
 internalonly: False
 ---
@@ -49,12 +54,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.Linq.XObject.Annotations``1
+internalonly: False
+---
+
+---
 uid: System.Xml.Linq.XObject.Changing
 internalonly: False
 ---
 
 ---
 uid: System.Xml.Linq.XObject.Annotations(System.Type)
+internalonly: False
+---
+
+---
+uid: System.Xml.Linq.XObject.RemoveAnnotations``1
 internalonly: False
 ---
 

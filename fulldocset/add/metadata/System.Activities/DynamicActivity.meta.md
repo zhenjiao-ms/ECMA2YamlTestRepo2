@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.DynamicActivity.ImplementationVersion
+internalonly: False
+---
+
+---
 uid: System.Activities.DynamicActivity.System#ComponentModel#ICustomTypeDescriptor#GetEvents(System.Attribute[])
 internalonly: False
 ---

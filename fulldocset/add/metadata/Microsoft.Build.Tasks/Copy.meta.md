@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Tasks.Copy.Cancel
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Tasks.Copy.OverwriteReadOnlyFiles
 internalonly: False
 ---

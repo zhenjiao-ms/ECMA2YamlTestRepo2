@@ -39,6 +39,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Description.OperationDescription.TaskMethod
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Description.OperationDescription.IsOneWay
 internalonly: False
 ---
@@ -75,6 +80,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Description.OperationDescription.#ctor(System.String,System.ServiceModel.Description.ContractDescription)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Description.OperationDescription.OperationBehaviors
 internalonly: False
 ---
 

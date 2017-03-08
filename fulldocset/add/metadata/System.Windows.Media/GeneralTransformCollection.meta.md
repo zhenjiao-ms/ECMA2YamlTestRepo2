@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.GeneralTransformCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#GeneralTransform}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.GeneralTransformCollection.Insert(System.Int32,System.Windows.Media.GeneralTransform)
 internalonly: False
 ---
@@ -85,6 +90,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.GeneralTransformCollection.System#Collections#IList#IsFixedSize
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.GeneralTransformCollection.System#Collections#Generic#ICollection{System#Windows#Media#GeneralTransform}#IsReadOnly
 internalonly: False
 ---
 

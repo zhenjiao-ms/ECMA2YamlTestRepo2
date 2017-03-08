@@ -74,6 +74,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.EntityClient.EntityCommand.CommandTree
+internalonly: False
+---
+
+---
 uid: System.Data.EntityClient.EntityCommand.Transaction
 internalonly: False
 ---

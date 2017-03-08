@@ -34,7 +34,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpContext.AcceptWebSocketRequest(System.Func{System.Web.WebSockets.AspNetWebSocketContext,System.Threading.Tasks.Task})
+internalonly: False
+---
+
+---
 uid: System.Web.HttpContext.Server
+internalonly: False
+---
+
+---
+uid: System.Web.HttpContext.IsWebSocketRequestUpgrading
 internalonly: False
 ---
 
@@ -59,12 +69,37 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpContext.AcceptWebSocketRequest(System.Func{System.Web.WebSockets.AspNetWebSocketContext,System.Threading.Tasks.Task},System.Web.WebSockets.AspNetWebSocketOptions)
+internalonly: False
+---
+
+---
+uid: System.Web.HttpContext.ThreadAbortOnTimeout
+internalonly: False
+---
+
+---
 uid: System.Web.HttpContext.ClearError
 internalonly: False
 ---
 
 ---
+uid: System.Web.HttpContext.PageInstrumentation
+internalonly: False
+---
+
+---
 uid: System.Web.HttpContext.PreviousHandler
+internalonly: False
+---
+
+---
+uid: System.Web.HttpContext.DisposeOnPipelineCompleted(System.IDisposable)
+internalonly: False
+---
+
+---
+uid: System.Web.HttpContext.WebSocketRequestedProtocols
 internalonly: False
 ---
 
@@ -75,6 +110,11 @@ internalonly: False
 
 ---
 uid: System.Web.HttpContext.User
+internalonly: False
+---
+
+---
+uid: System.Web.HttpContext.IsWebSocketRequest
 internalonly: False
 ---
 
@@ -99,7 +139,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpContext.AsyncPreloadMode
+internalonly: False
+---
+
+---
 uid: System.Web.HttpContext.RewritePath(System.String,System.String,System.String)
+internalonly: False
+---
+
+---
+uid: System.Web.HttpContext.AddOnRequestCompleted(System.Action{System.Web.HttpContext})
 internalonly: False
 ---
 
@@ -124,7 +174,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpContext.WebSocketNegotiatedProtocol
+internalonly: False
+---
+
+---
 uid: System.Web.HttpContext.AddError(System.Exception)
+internalonly: False
+---
+
+---
+uid: System.Web.HttpContext.AllowAsyncDuringSyncStages
 internalonly: False
 ---
 

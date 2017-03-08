@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Policy.Evidence.AddAssemblyEvidence``1(``0)
+internalonly: False
+---
+
+---
 uid: System.Security.Policy.Evidence.#ctor(System.Object[],System.Object[])
 internalonly: False
 ---
@@ -54,6 +59,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Policy.Evidence.GetHostEvidence``1
+internalonly: False
+---
+
+---
+uid: System.Security.Policy.Evidence.AddHostEvidence``1(``0)
+internalonly: False
+---
+
+---
 uid: System.Security.Policy.Evidence.AddHost(System.Object)
 internalonly: False
 ---
@@ -65,6 +80,11 @@ internalonly: False
 
 ---
 uid: System.Security.Policy.Evidence.GetAssemblyEnumerator
+internalonly: False
+---
+
+---
+uid: System.Security.Policy.Evidence.GetAssemblyEvidence``1
 internalonly: False
 ---
 

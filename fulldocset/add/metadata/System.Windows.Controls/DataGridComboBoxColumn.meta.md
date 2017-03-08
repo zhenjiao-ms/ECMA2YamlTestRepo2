@@ -99,6 +99,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.DataGridComboBoxColumn.CancelCellEdit(System.Windows.FrameworkElement,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.DataGridComboBoxColumn.TextBlockComboBoxStyleKey
 internalonly: False
 ---
@@ -125,6 +130,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.DataGridComboBoxColumn.DefaultEditingElementStyle
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.DataGridComboBoxColumn.CommitCellEdit(System.Windows.FrameworkElement)
 internalonly: False
 ---
 

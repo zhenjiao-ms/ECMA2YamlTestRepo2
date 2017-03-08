@@ -14,7 +14,22 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Construction.ProjectOutputElement.PropertyNameLocation
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Construction.ProjectOutputElement.PropertyName
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Construction.ProjectOutputElement.TaskParameterLocation
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Construction.ProjectOutputElement.ItemTypeLocation
 internalonly: False
 ---
 

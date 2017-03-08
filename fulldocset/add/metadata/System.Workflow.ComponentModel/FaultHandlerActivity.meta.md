@@ -47,3 +47,8 @@ internalonly: False
 uid: System.Workflow.ComponentModel.FaultHandlerActivity.#ctor
 internalonly: False
 ---
+
+---
+uid: System.Workflow.ComponentModel.FaultHandlerActivity.System#Workflow#ComponentModel#IActivityEventListener{System#Workflow#ComponentModel#ActivityExecutionStatusChangedEventArgs}#OnEvent(System.Object,System.Workflow.ComponentModel.ActivityExecutionStatusChangedEventArgs)
+internalonly: False
+---

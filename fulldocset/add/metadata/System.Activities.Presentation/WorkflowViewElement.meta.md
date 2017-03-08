@@ -4,7 +4,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowViewElement.GetAutomationItemStatus
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowViewElement.OnMouseUp(System.Windows.Input.MouseButtonEventArgs)
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowViewElement.DragHandle
 internalonly: False
 ---
 
@@ -180,6 +190,11 @@ internalonly: False
 
 ---
 uid: System.Activities.Presentation.WorkflowViewElement.ShowExpandedProperty
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowViewElement.OnEditAnnotation
 internalonly: False
 ---
 

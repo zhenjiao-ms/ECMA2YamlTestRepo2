@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Composition.Registration.ImportBuilder.AsContractType``1
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Composition.Registration.ImportBuilder.AsContractName(System.String)
 internalonly: False
 ---

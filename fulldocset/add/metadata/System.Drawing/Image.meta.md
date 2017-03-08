@@ -89,6 +89,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Image.GetThumbnailImage(System.Int32,System.Int32,System.Drawing.Image.GetThumbnailImageAbort,System.IntPtr)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Image.FrameDimensionsList
 internalonly: False
 ---

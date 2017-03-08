@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Dispatcher.EndpointAddressMessageFilter.CreateFilterTable``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Dispatcher.EndpointAddressMessageFilter.Address
 internalonly: False
 ---

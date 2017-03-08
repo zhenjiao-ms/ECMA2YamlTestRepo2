@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlCommand.#ctor(System.String,System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlTransaction,System.Data.SqlClient.SqlCommandColumnEncryptionSetting)
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlCommand.BeginExecuteReader
 internalonly: False
 ---
@@ -34,7 +39,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlCommand.ExecuteXmlReaderAsync(System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlCommand.Cancel
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlCommand.ExecuteNonQueryAsync(System.Threading.CancellationToken)
 internalonly: False
 ---
 
@@ -49,12 +64,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlCommand.ExecuteReaderAsync
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlCommand.BeginExecuteXmlReader(System.AsyncCallback,System.Object)
 internalonly: False
 ---
 
 ---
 uid: System.Data.SqlClient.SqlCommand.BeginExecuteReader(System.AsyncCallback,System.Object,System.Data.CommandBehavior)
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlCommand.ExecuteReaderAsync(System.Data.CommandBehavior,System.Threading.CancellationToken)
 internalonly: False
 ---
 
@@ -84,7 +109,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlCommand.ExecuteScalarAsync(System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlCommand.ColumnEncryptionSetting
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlCommand.ExecuteReader
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlCommand.ExecuteReaderAsync(System.Data.CommandBehavior)
 internalonly: False
 ---
 
@@ -129,6 +169,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlCommand.ExecuteXmlReaderAsync
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlCommand.DesignTimeVisible
 internalonly: False
 ---
@@ -155,6 +200,11 @@ internalonly: False
 
 ---
 uid: System.Data.SqlClient.SqlCommand.CommandText
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlCommand.ExecuteReaderAsync(System.Threading.CancellationToken)
 internalonly: False
 ---
 

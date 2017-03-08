@@ -59,12 +59,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.TextEffectCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#TextEffect}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.TextEffectCollection.Contains(System.Windows.Media.TextEffect)
 internalonly: False
 ---
 
 ---
 uid: System.Windows.Media.TextEffectCollection.RemoveAt(System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.TextEffectCollection.System#Collections#Generic#ICollection{System#Windows#Media#TextEffect}#IsReadOnly
 internalonly: False
 ---
 

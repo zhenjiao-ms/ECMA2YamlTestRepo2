@@ -4,12 +4,27 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Composition.Hosting.CompositionContainer.#ctor(System.ComponentModel.Composition.Hosting.CompositionOptions,System.ComponentModel.Composition.Hosting.ExportProvider[])
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Composition.Hosting.CompositionContainer.Providers
 internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Composition.Hosting.CompositionContainer.#ctor(System.ComponentModel.Composition.Primitives.ComposablePartCatalog,System.ComponentModel.Composition.Hosting.CompositionOptions,System.ComponentModel.Composition.Hosting.ExportProvider[])
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Composition.Hosting.CompositionContainer.#ctor
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Composition.Hosting.CompositionContainer.ReleaseExport``1(System.Lazy{``0})
 internalonly: False
 ---
 
@@ -45,6 +60,16 @@ internalonly: False
 
 ---
 uid: System.ComponentModel.Composition.Hosting.CompositionContainer.#ctor(System.ComponentModel.Composition.Hosting.ExportProvider[])
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Composition.Hosting.CompositionContainer.ReleaseExports``2(System.Collections.Generic.IEnumerable{System.Lazy{``0,``1}})
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Composition.Hosting.CompositionContainer.ReleaseExports``1(System.Collections.Generic.IEnumerable{System.Lazy{``0}})
 internalonly: False
 ---
 

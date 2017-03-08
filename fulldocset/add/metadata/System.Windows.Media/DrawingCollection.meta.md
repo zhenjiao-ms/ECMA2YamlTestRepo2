@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.DrawingCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#Drawing}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.DrawingCollection.RemoveAt(System.Int32)
 internalonly: False
 ---
@@ -70,6 +75,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.DrawingCollection.CloneCurrentValue
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.DrawingCollection.System#Collections#Generic#ICollection{System#Windows#Media#Drawing}#IsReadOnly
 internalonly: False
 ---
 

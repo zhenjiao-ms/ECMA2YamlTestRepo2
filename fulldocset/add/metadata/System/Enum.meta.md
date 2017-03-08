@@ -119,6 +119,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Enum.TryParse``1(System.String,``0@)
+internalonly: False
+---
+
+---
 uid: System.Enum.ToString
 internalonly: False
 ---
@@ -155,6 +160,11 @@ internalonly: False
 
 ---
 uid: System.Enum.System#IConvertible#ToUInt16(System.IFormatProvider)
+internalonly: False
+---
+
+---
+uid: System.Enum.TryParse``1(System.String,System.Boolean,``0@)
 internalonly: False
 ---
 

@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.ScriptResourceDefinition.LoadSuccessExpression
+internalonly: False
+---
+
+---
 uid: System.Web.UI.ScriptResourceDefinition.ResourceName
 internalonly: False
 ---

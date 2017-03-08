@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.LocalClientSecuritySettings.NonceCache
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.LocalClientSecuritySettings.DetectReplays
 internalonly: False
 ---

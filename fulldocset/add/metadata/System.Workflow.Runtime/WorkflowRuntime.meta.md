@@ -89,6 +89,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Workflow.Runtime.WorkflowRuntime.GetAllServices``1
+internalonly: False
+---
+
+---
 uid: System.Workflow.Runtime.WorkflowRuntime.#ctor
 internalonly: False
 ---
@@ -105,6 +110,11 @@ internalonly: False
 
 ---
 uid: System.Workflow.Runtime.WorkflowRuntime.RemoveService(System.Object)
+internalonly: False
+---
+
+---
+uid: System.Workflow.Runtime.WorkflowRuntime.GetService``1
 internalonly: False
 ---
 

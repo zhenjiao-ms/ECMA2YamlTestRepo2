@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Tasks.Vbc.Execute
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Tasks.Vbc.LangVersion
 internalonly: False
 ---
@@ -84,6 +89,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Tasks.Vbc.VBRuntime
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Tasks.Vbc.WarningsNotAsErrors
 internalonly: False
 ---
@@ -114,12 +124,22 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Tasks.Vbc.VBRuntimePath
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Tasks.Vbc.GenerateDocumentation
 internalonly: False
 ---
 
 ---
 uid: Microsoft.Build.Tasks.Vbc.AddResponseFileCommands(Microsoft.Build.Tasks.CommandLineBuilderExtension)
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Tasks.Vbc.PdbFile
 internalonly: False
 ---
 

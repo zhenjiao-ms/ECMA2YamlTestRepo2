@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.Serialization.XmlSerializationReader.AddFixup(System.Xml.Serialization.XmlSerializationReader.Fixup)
+internalonly: False
+---
+
+---
 uid: System.Xml.Serialization.XmlSerializationReader.AddTarget(System.String,System.Object)
 internalonly: False
 ---
@@ -230,6 +235,11 @@ internalonly: False
 
 ---
 uid: System.Xml.Serialization.XmlSerializationReader.ReadXmlNode(System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.Xml.Serialization.XmlSerializationReader.AddFixup(System.Xml.Serialization.XmlSerializationReader.CollectionFixup)
 internalonly: False
 ---
 

@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlWriterSettings.Async
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlWriterSettings.#ctor
 internalonly: False
 ---
@@ -54,7 +59,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlWriterSettings.DoNotEscapeUriAttributes
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlWriterSettings.OutputMethod
+internalonly: False
+---
+
+---
+uid: System.Xml.XmlWriterSettings.WriteEndDocumentOnClose
 internalonly: False
 ---
 

@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Dispatcher.DispatchRuntime.ImpersonateOnSerializingReply
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Dispatcher.DispatchRuntime.ServiceAuthenticationManager
 internalonly: False
 ---
@@ -65,6 +70,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Dispatcher.DispatchRuntime.ChannelDispatcher
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Dispatcher.DispatchRuntime.EnsureOrderedDispatch
 internalonly: False
 ---
 

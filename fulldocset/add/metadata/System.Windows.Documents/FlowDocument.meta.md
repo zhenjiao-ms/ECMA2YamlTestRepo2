@@ -154,6 +154,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Documents.FlowDocument.SetDpi(System.Windows.DpiScale)
+internalonly: False
+---
+
+---
 uid: System.Windows.Documents.FlowDocument.MaxPageHeightProperty
 internalonly: False
 ---

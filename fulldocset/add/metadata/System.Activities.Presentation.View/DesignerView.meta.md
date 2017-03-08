@@ -29,7 +29,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.View.DesignerView.InPanModeProperty
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.View.DesignerView.ResetZoomCommand
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.View.DesignerView.OnPreviewMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)
 internalonly: False
 ---
 
@@ -109,7 +119,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.View.DesignerView.CollapseAllCommand
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.View.DesignerView.CustomMenuItemsSeparatorCommand
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.View.DesignerView.RestoreCommand
 internalonly: False
 ---
 
@@ -119,7 +139,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.View.DesignerView.WorkflowShellHeaderItemsVisibility
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.View.DesignerView.FitToScreenCommand
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.View.DesignerView.EditAnnotationCommand
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.View.DesignerView.DeleteAnnotationCommand
 internalonly: False
 ---
 
@@ -174,6 +209,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.View.DesignerView.RegisterViewElement(System.Activities.Presentation.WorkflowViewElement)
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.View.DesignerView.MenuSeparatorStyleProperty
 internalonly: False
 ---
@@ -199,6 +239,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.View.DesignerView.ShowAllAnnotationCommand
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.View.DesignerView.SaveAsImageCommand
 internalonly: False
 ---
@@ -214,6 +259,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.View.DesignerView.HideAllAnnotationCommand
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.View.DesignerView.AddAnnotationCommand
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.View.DesignerView.Context
 internalonly: False
 ---
@@ -224,7 +279,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.View.DesignerView.ZoomFactor
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.View.DesignerView.CopyAsImageCommand
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.View.DesignerView.DeleteAllAnnotationCommand
 internalonly: False
 ---
 
@@ -285,6 +350,11 @@ internalonly: False
 
 ---
 uid: System.Activities.Presentation.View.DesignerView.ToggleImportsDesignerCommand
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.View.DesignerView.UnregisterViewElement(System.Activities.Presentation.WorkflowViewElement)
 internalonly: False
 ---
 

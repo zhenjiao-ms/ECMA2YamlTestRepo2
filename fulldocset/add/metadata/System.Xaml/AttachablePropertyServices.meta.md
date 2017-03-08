@@ -27,3 +27,8 @@ internalonly: False
 uid: System.Xaml.AttachablePropertyServices.CopyPropertiesTo(System.Object,System.Collections.Generic.KeyValuePair{System.Xaml.AttachableMemberIdentifier,System.Object}[],System.Int32)
 internalonly: False
 ---
+
+---
+uid: System.Xaml.AttachablePropertyServices.TryGetProperty``1(System.Object,System.Xaml.AttachableMemberIdentifier,``0@)
+internalonly: False
+---

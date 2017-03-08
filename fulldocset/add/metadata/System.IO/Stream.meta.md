@@ -14,12 +14,27 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.Stream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.IO.Stream.BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
 internalonly: False
 ---
 
 ---
+uid: System.IO.Stream.CopyToAsync(System.IO.Stream,System.Int32,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.IO.Stream.CopyTo(System.IO.Stream)
+internalonly: False
+---
+
+---
+uid: System.IO.Stream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
 internalonly: False
 ---
 
@@ -39,7 +54,17 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.Stream.FlushAsync(System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.IO.Stream.ReadByte
+internalonly: False
+---
+
+---
+uid: System.IO.Stream.CopyToAsync(System.IO.Stream)
 internalonly: False
 ---
 
@@ -84,6 +109,21 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.Stream.CopyToAsync(System.IO.Stream,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.IO.Stream.ReadAsync(System.Byte[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.IO.Stream.WriteAsync(System.Byte[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
 uid: System.IO.Stream.CopyTo(System.IO.Stream,System.Int32)
 internalonly: False
 ---
@@ -120,6 +160,11 @@ internalonly: False
 
 ---
 uid: System.IO.Stream.Write(System.Byte[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.IO.Stream.FlushAsync
 internalonly: False
 ---
 

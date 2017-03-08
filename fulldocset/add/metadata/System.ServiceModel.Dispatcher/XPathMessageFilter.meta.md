@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Dispatcher.XPathMessageFilter.CreateFilterTable``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Dispatcher.XPathMessageFilter.Match(System.Xml.XPath.XPathNavigator)
 internalonly: False
 ---

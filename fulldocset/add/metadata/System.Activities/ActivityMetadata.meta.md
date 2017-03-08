@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.ActivityMetadata.AddImportedChild(System.Activities.Activity,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Activities.ActivityMetadata.SetImportedDelegatesCollection(System.Collections.ObjectModel.Collection{System.Activities.ActivityDelegate})
 internalonly: False
 ---
@@ -29,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.ActivityMetadata.RequireExtension``1
+internalonly: False
+---
+
+---
 uid: System.Activities.ActivityMetadata.op_Equality(System.Activities.ActivityMetadata,System.Activities.ActivityMetadata)
 internalonly: False
 ---
@@ -45,6 +55,11 @@ internalonly: False
 
 ---
 uid: System.Activities.ActivityMetadata.AddVariable(System.Activities.Variable)
+internalonly: False
+---
+
+---
+uid: System.Activities.ActivityMetadata.AddImportedDelegate(System.Activities.ActivityDelegate,System.Object)
 internalonly: False
 ---
 
@@ -99,6 +114,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.ActivityMetadata.AddVariable(System.Activities.Variable,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Activities.ActivityMetadata.RequireExtension(System.Type)
 internalonly: False
 ---
@@ -115,5 +135,10 @@ internalonly: False
 
 ---
 uid: System.Activities.ActivityMetadata.HasViolations
+internalonly: False
+---
+
+---
+uid: System.Activities.ActivityMetadata.AddDefaultExtensionProvider``1(System.Func{``0})
 internalonly: False
 ---

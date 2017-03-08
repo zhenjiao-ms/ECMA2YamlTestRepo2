@@ -159,6 +159,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Common.CommandTrees.ExpressionBuilder.DbExpressionBuilder.Join``1(System.Data.Common.CommandTrees.DbExpression,System.Data.Common.CommandTrees.DbExpression,System.Func{System.Data.Common.CommandTrees.DbExpression,System.Data.Common.CommandTrees.DbExpression},System.Func{System.Data.Common.CommandTrees.DbExpression,System.Data.Common.CommandTrees.DbExpression},System.Func{System.Data.Common.CommandTrees.DbExpression,System.Data.Common.CommandTrees.DbExpression,``0})
+internalonly: False
+---
+
+---
 uid: System.Data.Common.CommandTrees.ExpressionBuilder.DbExpressionBuilder.GreaterThan(System.Data.Common.CommandTrees.DbExpression,System.Data.Common.CommandTrees.DbExpression)
 internalonly: False
 ---
@@ -454,6 +459,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Common.CommandTrees.ExpressionBuilder.DbExpressionBuilder.Select``1(System.Data.Common.CommandTrees.DbExpression,System.Func{System.Data.Common.CommandTrees.DbExpression,``0})
+internalonly: False
+---
+
+---
 uid: System.Data.Common.CommandTrees.ExpressionBuilder.DbExpressionBuilder.Invoke(System.Data.Common.CommandTrees.DbLambda,System.Data.Common.CommandTrees.DbExpression[])
 internalonly: False
 ---
@@ -490,6 +500,11 @@ internalonly: False
 
 ---
 uid: System.Data.Common.CommandTrees.ExpressionBuilder.DbExpressionBuilder.LeftOuterJoin(System.Data.Common.CommandTrees.DbExpression,System.Data.Common.CommandTrees.DbExpression,System.Func{System.Data.Common.CommandTrees.DbExpression,System.Data.Common.CommandTrees.DbExpression,System.Data.Common.CommandTrees.DbExpression})
+internalonly: False
+---
+
+---
+uid: System.Data.Common.CommandTrees.ExpressionBuilder.DbExpressionBuilder.SelectMany``1(System.Data.Common.CommandTrees.DbExpression,System.Func{System.Data.Common.CommandTrees.DbExpression,System.Data.Common.CommandTrees.DbExpression},System.Func{System.Data.Common.CommandTrees.DbExpression,System.Data.Common.CommandTrees.DbExpression,``0})
 internalonly: False
 ---
 

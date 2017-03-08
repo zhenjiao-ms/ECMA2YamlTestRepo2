@@ -124,6 +124,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Interop.D3DImage.SetBackBuffer(System.Windows.Interop.D3DResourceType,System.IntPtr,System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.Windows.Interop.D3DImage.GetAsFrozenCore(System.Windows.Freezable)
 internalonly: False
 ---

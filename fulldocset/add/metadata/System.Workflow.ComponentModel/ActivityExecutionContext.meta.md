@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Workflow.ComponentModel.ActivityExecutionContext.GetService``1
+internalonly: False
+---
+
+---
 uid: System.Workflow.ComponentModel.ActivityExecutionContext.ContextGuid
 internalonly: False
 ---

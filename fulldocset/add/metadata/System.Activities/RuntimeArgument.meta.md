@@ -29,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.RuntimeArgument.Get``1(System.Activities.ActivityContext)
+internalonly: False
+---
+
+---
 uid: System.Activities.RuntimeArgument.OverloadGroupNames
 internalonly: False
 ---

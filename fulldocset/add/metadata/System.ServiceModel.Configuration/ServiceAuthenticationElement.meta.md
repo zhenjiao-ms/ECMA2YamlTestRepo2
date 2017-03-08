@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Configuration.ServiceAuthenticationElement.AuthenticationSchemes
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Configuration.ServiceAuthenticationElement.ServiceAuthenticationManagerType
 internalonly: False
 ---

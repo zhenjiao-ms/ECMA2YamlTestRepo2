@@ -109,6 +109,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Construction.ProjectRootElement.ProjectFileLocation
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Construction.ProjectRootElement.Properties
 internalonly: False
 ---
@@ -159,7 +164,17 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Construction.ProjectRootElement.CreateUsingTaskElement(System.String,System.String,System.String,System.String,System.String)
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Construction.ProjectRootElement.CreateOtherwiseElement
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Construction.ProjectRootElement.ConditionLocation
 internalonly: False
 ---
 
@@ -185,6 +200,11 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Construction.ProjectRootElement.Create(System.Xml.XmlReader,Microsoft.Build.Evaluation.ProjectCollection)
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Construction.ProjectRootElement.InitialTargetsLocation
 internalonly: False
 ---
 
@@ -249,6 +269,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Construction.ProjectRootElement.TreatAsLocalProperty
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Construction.ProjectRootElement.ImportGroupsReversed
 internalonly: False
 ---
@@ -265,6 +290,11 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Construction.ProjectRootElement.CreateImportGroupElement
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Construction.ProjectRootElement.ToolsVersionLocation
 internalonly: False
 ---
 
@@ -319,6 +349,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Construction.ProjectRootElement.TreatAsLocalPropertyLocation
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Construction.ProjectRootElement.CreateItemDefinitionElement(System.String)
 internalonly: False
 ---
@@ -345,6 +380,11 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Construction.ProjectRootElement.CreateTargetElement(System.String)
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Construction.ProjectRootElement.DefaultTargetsLocation
 internalonly: False
 ---
 

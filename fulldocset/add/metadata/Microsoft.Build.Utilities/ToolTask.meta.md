@@ -129,6 +129,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Utilities.ToolTask.ResponseFileEscape(System.String)
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Utilities.ToolTask.ValidateParameters
 internalonly: False
 ---

@@ -214,6 +214,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.VisualBasic.CompilerServices.Conversions.ToGenericParameter``1(System.Object)
+internalonly: False
+---
+
+---
 uid: Microsoft.VisualBasic.CompilerServices.Conversions.ToChar(System.String)
 internalonly: False
 ---

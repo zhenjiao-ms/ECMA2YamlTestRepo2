@@ -79,6 +79,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Forms.RichTextBox.CanPaste(System.Windows.Forms.DataFormats.Format)
+internalonly: False
+---
+
+---
 uid: System.Windows.Forms.RichTextBox.LinkClicked
 internalonly: False
 ---
@@ -400,6 +405,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Forms.RichTextBox.SelectionRightIndent
+internalonly: False
+---
+
+---
+uid: System.Windows.Forms.RichTextBox.Paste(System.Windows.Forms.DataFormats.Format)
 internalonly: False
 ---
 

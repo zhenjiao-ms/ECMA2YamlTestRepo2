@@ -29,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpRuntime.IISVersion
+internalonly: False
+---
+
+---
 uid: System.Web.HttpRuntime.#ctor
 internalonly: False
 ---
@@ -50,6 +55,11 @@ internalonly: False
 
 ---
 uid: System.Web.HttpRuntime.AspClientScriptPhysicalPath
+internalonly: False
+---
+
+---
+uid: System.Web.HttpRuntime.TargetFramework
 internalonly: False
 ---
 

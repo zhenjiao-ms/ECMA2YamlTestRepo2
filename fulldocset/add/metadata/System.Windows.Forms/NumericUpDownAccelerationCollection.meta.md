@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Forms.NumericUpDownAccelerationCollection.System#Collections#Generic#IEnumerable{System#Windows#Forms#NumericUpDownAcceleration}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Forms.NumericUpDownAccelerationCollection.Remove(System.Windows.Forms.NumericUpDownAcceleration)
 internalonly: False
 ---

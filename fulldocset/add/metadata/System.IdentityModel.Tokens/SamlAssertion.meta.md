@@ -49,6 +49,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Tokens.SamlAssertion.CanWriteSourceData
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Tokens.SamlAssertion.MajorVersion
 internalonly: False
 ---
@@ -85,5 +90,10 @@ internalonly: False
 
 ---
 uid: System.IdentityModel.Tokens.SamlAssertion.ReadXml(System.Xml.XmlDictionaryReader,System.IdentityModel.Tokens.SamlSerializer,System.IdentityModel.Selectors.SecurityTokenSerializer,System.IdentityModel.Selectors.SecurityTokenResolver)
+internalonly: False
+---
+
+---
+uid: System.IdentityModel.Tokens.SamlAssertion.WriteSourceData(System.Xml.XmlWriter)
 internalonly: False
 ---

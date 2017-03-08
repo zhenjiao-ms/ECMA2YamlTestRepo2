@@ -29,6 +29,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.Animation.TimelineCollection.System#Collections#Generic#ICollection{System#Windows#Media#Animation#Timeline}#IsReadOnly
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.Animation.TimelineCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#Animation#Timeline}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.Animation.TimelineCollection.System#Collections#IList#IsFixedSize
 internalonly: False
 ---

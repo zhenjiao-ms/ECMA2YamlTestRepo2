@@ -14,7 +14,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.GlyphRun.PixelsPerDip
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.GlyphRun.Language
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.GlyphRun.#ctor(System.Single)
 internalonly: False
 ---
 
@@ -35,6 +45,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.GlyphRun.GetCaretCharacterHitFromDistance(System.Double,System.Boolean@)
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.GlyphRun.#ctor(System.Windows.Media.GlyphTypeface,System.Int32,System.Boolean,System.Double,System.Single,System.Collections.Generic.IList{System.UInt16},System.Windows.Point,System.Collections.Generic.IList{System.Double},System.Collections.Generic.IList{System.Windows.Point},System.Collections.Generic.IList{System.Char},System.String,System.Collections.Generic.IList{System.UInt16},System.Collections.Generic.IList{System.Boolean},System.Windows.Markup.XmlLanguage)
 internalonly: False
 ---
 

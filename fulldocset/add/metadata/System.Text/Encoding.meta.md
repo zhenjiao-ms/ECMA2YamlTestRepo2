@@ -79,6 +79,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Text.Encoding.RegisterProvider(System.Text.EncodingProvider)
+internalonly: False
+---
+
+---
 uid: System.Text.Encoding.BigEndianUnicode
 internalonly: False
 ---
@@ -119,6 +124,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Text.Encoding.GetString(System.Byte*,System.Int32)
+internalonly: False
+---
+
+---
 uid: System.Text.Encoding.GetCharCount(System.Byte*,System.Int32)
 internalonly: False
 ---
@@ -135,6 +145,11 @@ internalonly: False
 
 ---
 uid: System.Text.Encoding.GetCharCount(System.Byte[])
+internalonly: False
+---
+
+---
+uid: System.Text.Encoding.#ctor(System.Int32,System.Text.EncoderFallback,System.Text.DecoderFallback)
 internalonly: False
 ---
 

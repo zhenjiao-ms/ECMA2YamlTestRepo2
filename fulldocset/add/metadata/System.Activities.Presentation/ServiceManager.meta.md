@@ -4,7 +4,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.ServiceManager.Publish``1(System.Activities.Presentation.PublishServiceCallback{``0})
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.ServiceManager.Publish``1(``0)
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.ServiceManager.System#Collections#IEnumerable#GetEnumerator
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.ServiceManager.Contains``1
 internalonly: False
 ---
 
@@ -19,7 +34,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.ServiceManager.GetService``1
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.ServiceManager.Unsubscribe(System.Type,System.Activities.Presentation.SubscribeServiceCallback)
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.ServiceManager.Unsubscribe``1(System.Activities.Presentation.SubscribeServiceCallback{``0})
 internalonly: False
 ---
 
@@ -34,7 +59,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.ServiceManager.Subscribe``1(System.Activities.Presentation.SubscribeServiceCallback{``0})
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.ServiceManager.Contains(System.Type)
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.ServiceManager.GetRequiredService``1
 internalonly: False
 ---
 

@@ -9,6 +9,21 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.SslStreamSecurityBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.SslStreamSecurityBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.SslStreamSecurityBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.SslStreamSecurityBindingElement.RequireClientCertificate
 internalonly: False
 ---
@@ -19,12 +34,27 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.SslStreamSecurityBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.SslStreamSecurityBindingElement.SslProtocols
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.SslStreamSecurityBindingElement.#ctor(System.ServiceModel.Channels.SslStreamSecurityBindingElement)
 internalonly: False
 ---
 
 ---
 uid: System.ServiceModel.Channels.SslStreamSecurityBindingElement.System#ServiceModel#Description#IPolicyExportExtension#ExportPolicy(System.ServiceModel.Description.MetadataExporter,System.ServiceModel.Description.PolicyConversionContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.SslStreamSecurityBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 

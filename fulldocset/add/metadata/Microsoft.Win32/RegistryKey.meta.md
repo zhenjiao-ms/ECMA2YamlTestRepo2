@@ -39,6 +39,16 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Win32.RegistryKey.CreateSubKey(System.String,System.Boolean)
+internalonly: False
+---
+
+---
+uid: Microsoft.Win32.RegistryKey.CreateSubKey(System.String,System.Boolean,Microsoft.Win32.RegistryOptions)
+internalonly: False
+---
+
+---
 uid: Microsoft.Win32.RegistryKey.SubKeyCount
 internalonly: False
 ---
@@ -170,6 +180,11 @@ internalonly: False
 
 ---
 uid: Microsoft.Win32.RegistryKey.OpenSubKey(System.String)
+internalonly: False
+---
+
+---
+uid: Microsoft.Win32.RegistryKey.OpenSubKey(System.String,System.Security.AccessControl.RegistryRights)
 internalonly: False
 ---
 

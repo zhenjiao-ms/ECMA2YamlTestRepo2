@@ -29,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.FileStream.FlushAsync(System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.IO.FileStream.#ctor(System.IntPtr,System.IO.FileAccess,System.Boolean)
 internalonly: False
 ---
@@ -69,6 +74,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.FileStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.IO.FileStream.SetLength(System.Int64)
 internalonly: False
 ---
@@ -95,6 +105,11 @@ internalonly: False
 
 ---
 uid: System.IO.FileStream.#ctor(System.String,System.IO.FileMode,System.Security.AccessControl.FileSystemRights,System.IO.FileShare,System.Int32,System.IO.FileOptions,System.Security.AccessControl.FileSecurity)
+internalonly: False
+---
+
+---
+uid: System.IO.FileStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
 internalonly: False
 ---
 

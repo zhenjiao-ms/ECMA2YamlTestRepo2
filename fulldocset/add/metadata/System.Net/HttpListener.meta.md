@@ -14,12 +14,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.HttpListener.TimeoutManager
+internalonly: False
+---
+
+---
 uid: System.Net.HttpListener.EndGetContext(System.IAsyncResult)
 internalonly: False
 ---
 
 ---
 uid: System.Net.HttpListener.DefaultServiceNames
+internalonly: False
+---
+
+---
+uid: System.Net.HttpListener.GetContextAsync
 internalonly: False
 ---
 

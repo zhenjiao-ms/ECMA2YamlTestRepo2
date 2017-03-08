@@ -64,6 +64,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Configuration.RsaProtectedConfigurationProvider.UseFIPS
+internalonly: False
+---
+
+---
 uid: System.Configuration.RsaProtectedConfigurationProvider.UseMachineContainer
 internalonly: False
 ---

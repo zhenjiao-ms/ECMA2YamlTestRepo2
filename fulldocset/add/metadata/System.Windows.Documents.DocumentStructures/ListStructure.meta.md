@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Documents.DocumentStructures.ListStructure.System#Collections#Generic#IEnumerable{System#Windows#Documents#DocumentStructures#ListItemStructure}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Documents.DocumentStructures.ListStructure.System#Windows#Markup#IAddChild#AddText(System.String)
 internalonly: False
 ---

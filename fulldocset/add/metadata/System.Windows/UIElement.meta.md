@@ -604,6 +604,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.UIElement.HasEffectiveKeyboardFocus
+internalonly: False
+---
+
+---
 uid: System.Windows.UIElement.MouseLeftButtonDownEvent
 internalonly: False
 ---

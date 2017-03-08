@@ -54,6 +54,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpCookie.Shareable
+internalonly: False
+---
+
+---
 uid: System.Web.HttpCookie.Value
 internalonly: False
 ---

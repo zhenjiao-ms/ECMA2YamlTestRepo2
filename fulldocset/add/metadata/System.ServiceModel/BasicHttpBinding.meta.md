@@ -4,7 +4,17 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.BasicHttpBinding.BuildChannelFactory``1(System.ServiceModel.Channels.BindingParameterCollection)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.BasicHttpBinding.ShouldSerializeSecurity
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.BasicHttpBinding.EnableHttpCookieContainer
 internalonly: False
 ---
 
@@ -30,6 +40,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.BasicHttpBinding.MessageEncoding
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.BasicHttpBinding.ShouldSerializeEnableHttpCookieContainer
 internalonly: False
 ---
 

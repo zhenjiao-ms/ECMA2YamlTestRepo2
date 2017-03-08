@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Globalization.ChineseLunisolarCalendar.DaysInYearBeforeMinSupportedYear
+internalonly: False
+---
+
+---
 uid: System.Globalization.ChineseLunisolarCalendar.ChineseEra
 internalonly: False
 ---

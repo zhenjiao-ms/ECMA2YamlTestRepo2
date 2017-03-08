@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpResponse.ClientDisconnectedToken
+internalonly: False
+---
+
+---
 uid: System.Web.HttpResponse.AddFileDependencies(System.String[])
 internalonly: False
 ---
@@ -29,12 +34,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpResponse.SuppressDefaultCacheControlHeader
+internalonly: False
+---
+
+---
 uid: System.Web.HttpResponse.WriteFile(System.String,System.Boolean)
 internalonly: False
 ---
 
 ---
 uid: System.Web.HttpResponse.RedirectToRoutePermanent(System.Web.Routing.RouteValueDictionary)
+internalonly: False
+---
+
+---
+uid: System.Web.HttpResponse.PushPromise(System.String,System.String,System.Collections.Specialized.NameValueCollection)
 internalonly: False
 ---
 
@@ -70,6 +85,11 @@ internalonly: False
 
 ---
 uid: System.Web.HttpResponse.RedirectToRoutePermanent(System.String,System.Object)
+internalonly: False
+---
+
+---
+uid: System.Web.HttpResponse.HeadersWritten
 internalonly: False
 ---
 
@@ -139,6 +159,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpResponse.SupportsAsyncFlush
+internalonly: False
+---
+
+---
 uid: System.Web.HttpResponse.Cache
 internalonly: False
 ---
@@ -194,12 +219,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpResponse.DisableUserCache
+internalonly: False
+---
+
+---
 uid: System.Web.HttpResponse.SuppressContent
 internalonly: False
 ---
 
 ---
 uid: System.Web.HttpResponse.AddCacheItemDependency(System.String)
+internalonly: False
+---
+
+---
+uid: System.Web.HttpResponse.EndFlush(System.IAsyncResult)
+internalonly: False
+---
+
+---
+uid: System.Web.HttpResponse.SuppressFormsAuthenticationRedirect
 internalonly: False
 ---
 
@@ -279,6 +319,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpResponse.PushPromise(System.String)
+internalonly: False
+---
+
+---
 uid: System.Web.HttpResponse.DisableKernelCache
 internalonly: False
 ---
@@ -314,6 +359,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpResponse.FlushAsync
+internalonly: False
+---
+
+---
 uid: System.Web.HttpResponse.AppendCookie(System.Web.HttpCookie)
 internalonly: False
 ---
@@ -339,6 +389,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpResponse.BeginFlush(System.AsyncCallback,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Web.HttpResponse.TransmitFile(System.String)
 internalonly: False
 ---
@@ -350,6 +405,11 @@ internalonly: False
 
 ---
 uid: System.Web.HttpResponse.RedirectPermanent(System.String,System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.Web.HttpResponse.AddOnSendingHeaders(System.Action{System.Web.HttpContext})
 internalonly: False
 ---
 

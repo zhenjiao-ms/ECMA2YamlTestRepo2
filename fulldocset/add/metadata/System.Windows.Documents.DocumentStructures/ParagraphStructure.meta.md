@@ -27,3 +27,8 @@ internalonly: False
 uid: System.Windows.Documents.DocumentStructures.ParagraphStructure.System#Windows#Markup#IAddChild#AddText(System.String)
 internalonly: False
 ---
+
+---
+uid: System.Windows.Documents.DocumentStructures.ParagraphStructure.System#Collections#Generic#IEnumerable{System#Windows#Documents#DocumentStructures#NamedElement}#GetEnumerator
+internalonly: False
+---

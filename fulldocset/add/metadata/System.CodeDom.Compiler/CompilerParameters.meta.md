@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.CodeDom.Compiler.CompilerParameters.CoreAssemblyFileName
+internalonly: False
+---
+
+---
 uid: System.CodeDom.Compiler.CompilerParameters.GenerateInMemory
 internalonly: False
 ---

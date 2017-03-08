@@ -54,6 +54,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.DataGridHyperlinkColumn.CommitCellEdit(System.Windows.FrameworkElement)
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.DataGridHyperlinkColumn.CancelCellEdit(System.Windows.FrameworkElement,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.DataGridHyperlinkColumn.DefaultEditingElementStyle
 internalonly: False
 ---

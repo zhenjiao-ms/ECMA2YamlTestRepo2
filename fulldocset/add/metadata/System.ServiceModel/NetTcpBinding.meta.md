@@ -94,6 +94,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.NetTcpBinding.ShouldSerializeListenBacklog
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.NetTcpBinding.ShouldSerializeSecurity
 internalonly: False
 ---
@@ -105,6 +110,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.NetTcpBinding.Scheme
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.NetTcpBinding.ShouldSerializeMaxConnections
 internalonly: False
 ---
 

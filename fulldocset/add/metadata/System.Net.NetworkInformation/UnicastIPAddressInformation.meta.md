@@ -42,3 +42,8 @@ internalonly: False
 uid: System.Net.NetworkInformation.UnicastIPAddressInformation.DuplicateAddressDetectionState
 internalonly: False
 ---
+
+---
+uid: System.Net.NetworkInformation.UnicastIPAddressInformation.PrefixLength
+internalonly: False
+---

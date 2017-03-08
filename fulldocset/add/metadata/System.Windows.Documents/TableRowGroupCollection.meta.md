@@ -119,6 +119,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Documents.TableRowGroupCollection.System#Collections#Generic#IEnumerable{System#Windows#Documents#TableRowGroup}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Documents.TableRowGroupCollection.IsReadOnly
 internalonly: False
 ---

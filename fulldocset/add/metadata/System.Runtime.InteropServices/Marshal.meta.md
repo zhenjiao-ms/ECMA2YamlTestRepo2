@@ -29,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.InteropServices.Marshal.DestroyStructure``1(System.IntPtr)
+internalonly: False
+---
+
+---
 uid: System.Runtime.InteropServices.Marshal.StringToBSTR(System.String)
 internalonly: False
 ---
@@ -94,6 +99,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.InteropServices.Marshal.GetTypeFromCLSID(System.Guid)
+internalonly: False
+---
+
+---
+uid: System.Runtime.InteropServices.Marshal.CreateWrapperOfType``2(``0)
+internalonly: False
+---
+
+---
 uid: System.Runtime.InteropServices.Marshal.GetStartComSlot(System.Type)
 internalonly: False
 ---
@@ -119,7 +134,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.InteropServices.Marshal.GetDelegateForFunctionPointer``1(System.IntPtr)
+internalonly: False
+---
+
+---
 uid: System.Runtime.InteropServices.Marshal.FreeBSTR(System.IntPtr)
+internalonly: False
+---
+
+---
+uid: System.Runtime.InteropServices.Marshal.GetObjectForNativeVariant``1(System.IntPtr)
 internalonly: False
 ---
 
@@ -189,6 +214,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.InteropServices.Marshal.GetComInterfaceForObject``2(``0)
+internalonly: False
+---
+
+---
 uid: System.Runtime.InteropServices.Marshal.OffsetOf(System.Type,System.String)
 internalonly: False
 ---
@@ -210,6 +240,11 @@ internalonly: False
 
 ---
 uid: System.Runtime.InteropServices.Marshal.StringToCoTaskMemUni(System.String)
+internalonly: False
+---
+
+---
+uid: System.Runtime.InteropServices.Marshal.UnsafeAddrOfPinnedArrayElement``1(``0[],System.Int32)
 internalonly: False
 ---
 
@@ -304,6 +339,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.InteropServices.Marshal.SizeOf``1(``0)
+internalonly: False
+---
+
+---
 uid: System.Runtime.InteropServices.Marshal.GetIDispatchForObjectInContext(System.Object)
 internalonly: False
 ---
@@ -320,6 +360,11 @@ internalonly: False
 
 ---
 uid: System.Runtime.InteropServices.Marshal.WriteInt16(System.IntPtr,System.Char)
+internalonly: False
+---
+
+---
+uid: System.Runtime.InteropServices.Marshal.CreateAggregatedObject``1(System.IntPtr,``0)
 internalonly: False
 ---
 
@@ -354,6 +399,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.InteropServices.Marshal.PtrToStructure``1(System.IntPtr,``0)
+internalonly: False
+---
+
+---
 uid: System.Runtime.InteropServices.Marshal.GetTypedObjectForIUnknown(System.IntPtr,System.Type)
 internalonly: False
 ---
@@ -375,6 +425,11 @@ internalonly: False
 
 ---
 uid: System.Runtime.InteropServices.Marshal.SystemDefaultCharSize
+internalonly: False
+---
+
+---
+uid: System.Runtime.InteropServices.Marshal.PtrToStructure``1(System.IntPtr)
 internalonly: False
 ---
 
@@ -499,6 +554,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.InteropServices.Marshal.GetNativeVariantForObject``1(``0,System.IntPtr)
+internalonly: False
+---
+
+---
 uid: System.Runtime.InteropServices.Marshal.GetActiveObject(System.String)
 internalonly: False
 ---
@@ -539,6 +599,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.InteropServices.Marshal.GetFunctionPointerForDelegate``1(``0)
+internalonly: False
+---
+
+---
 uid: System.Runtime.InteropServices.Marshal.GetTypeLibName(System.Runtime.InteropServices.UCOMITypeLib)
 internalonly: False
 ---
@@ -574,6 +639,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.InteropServices.Marshal.SizeOf``1
+internalonly: False
+---
+
+---
 uid: System.Runtime.InteropServices.Marshal.SetComObjectData(System.Object,System.Object,System.Object)
 internalonly: False
 ---
@@ -605,6 +675,11 @@ internalonly: False
 
 ---
 uid: System.Runtime.InteropServices.Marshal.GetComSlotForMethodInfo(System.Reflection.MemberInfo)
+internalonly: False
+---
+
+---
+uid: System.Runtime.InteropServices.Marshal.GetObjectsForNativeVariants``1(System.IntPtr,System.Int32)
 internalonly: False
 ---
 
@@ -669,6 +744,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.InteropServices.Marshal.OffsetOf``1(System.String)
+internalonly: False
+---
+
+---
 uid: System.Runtime.InteropServices.Marshal.GetIUnknownForObjectInContext(System.Object)
 internalonly: False
 ---
@@ -680,6 +760,11 @@ internalonly: False
 
 ---
 uid: System.Runtime.InteropServices.Marshal.SystemMaxDBCSCharSize
+internalonly: False
+---
+
+---
+uid: System.Runtime.InteropServices.Marshal.StructureToPtr``1(``0,System.IntPtr,System.Boolean)
 internalonly: False
 ---
 

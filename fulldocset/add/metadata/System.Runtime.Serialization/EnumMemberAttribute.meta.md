@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.Serialization.EnumMemberAttribute.IsValueSetExplicitly
+internalonly: False
+---
+
+---
 uid: System.Runtime.Serialization.EnumMemberAttribute.#ctor
 internalonly: False
 ---

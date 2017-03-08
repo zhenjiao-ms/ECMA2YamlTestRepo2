@@ -124,6 +124,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.Sockets.SocketAsyncEventArgs.SocketClientAccessPolicyProtocol
+internalonly: False
+---
+
+---
 uid: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsSendSize
 internalonly: False
 ---

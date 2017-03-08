@@ -104,6 +104,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.Primitives.DocumentPageView.OnDpiChanged(System.Windows.DpiScale,System.Windows.DpiScale)
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.Primitives.DocumentPageView.Dispose
 internalonly: False
 ---

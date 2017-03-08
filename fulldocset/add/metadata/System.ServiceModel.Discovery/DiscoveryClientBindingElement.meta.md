@@ -4,7 +4,22 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Discovery.DiscoveryClientBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Discovery.DiscoveryClientBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Discovery.DiscoveryClientBindingElement.DiscoveryEndpointProvider
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Discovery.DiscoveryClientBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 
@@ -24,7 +39,17 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Discovery.DiscoveryClientBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Discovery.DiscoveryClientBindingElement.FindCriteria
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Discovery.DiscoveryClientBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 

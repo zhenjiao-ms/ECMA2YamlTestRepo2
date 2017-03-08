@@ -69,6 +69,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Workflow.ComponentModel.Compiler.CompileWorkflowTask.BuildingProject
+internalonly: False
+---
+
+---
 uid: System.Workflow.ComponentModel.Compiler.CompileWorkflowTask.ReferenceFiles
 internalonly: False
 ---

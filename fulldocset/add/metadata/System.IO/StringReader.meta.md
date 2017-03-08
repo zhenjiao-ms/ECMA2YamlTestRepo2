@@ -9,6 +9,21 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.StringReader.ReadLineAsync
+internalonly: False
+---
+
+---
+uid: System.IO.StringReader.ReadAsync(System.Char[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.IO.StringReader.ReadBlockAsync(System.Char[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
 uid: System.IO.StringReader.#ctor(System.String)
 internalonly: False
 ---
@@ -20,6 +35,11 @@ internalonly: False
 
 ---
 uid: System.IO.StringReader.Dispose(System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.IO.StringReader.ReadToEndAsync
 internalonly: False
 ---
 

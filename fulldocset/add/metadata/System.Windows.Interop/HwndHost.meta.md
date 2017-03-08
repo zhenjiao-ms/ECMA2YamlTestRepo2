@@ -29,12 +29,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Interop.HwndHost.OnDpiChanged(System.Windows.DpiScale,System.Windows.DpiScale)
+internalonly: False
+---
+
+---
 uid: System.Windows.Interop.HwndHost.System#Windows#Interop#IKeyboardInputSink#OnMnemonic(System.Windows.Interop.MSG@,System.Windows.Input.ModifierKeys)
 internalonly: False
 ---
 
 ---
 uid: System.Windows.Interop.HwndHost.DestroyWindowCore(System.Runtime.InteropServices.HandleRef)
+internalonly: False
+---
+
+---
+uid: System.Windows.Interop.HwndHost.DpiChanged
 internalonly: False
 ---
 
@@ -50,6 +60,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Interop.HwndHost.OnMnemonicCore(System.Windows.Interop.MSG@,System.Windows.Input.ModifierKeys)
+internalonly: False
+---
+
+---
+uid: System.Windows.Interop.HwndHost.DpiChangedEvent
 internalonly: False
 ---
 

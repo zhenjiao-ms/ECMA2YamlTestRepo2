@@ -39,6 +39,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.Emit.EnumBuilder.IsAssignableFrom(System.Reflection.TypeInfo)
+internalonly: False
+---
+
+---
 uid: System.Reflection.Emit.EnumBuilder.FullName
 internalonly: False
 ---
@@ -174,6 +179,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.Emit.EnumBuilder.IsConstructedGenericType
+internalonly: False
+---
+
+---
 uid: System.Reflection.Emit.EnumBuilder.BaseType
 internalonly: False
 ---
@@ -185,6 +195,11 @@ internalonly: False
 
 ---
 uid: System.Reflection.Emit.EnumBuilder.GetInterfaces
+internalonly: False
+---
+
+---
+uid: System.Reflection.Emit.EnumBuilder.CreateTypeInfo
 internalonly: False
 ---
 

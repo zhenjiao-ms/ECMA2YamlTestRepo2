@@ -29,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.TextFormatting.TextLine.PixelsPerDip
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.TextFormatting.TextLine.Dispose
 internalonly: False
 ---
@@ -75,6 +80,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.TextFormatting.TextLine.TextHeight
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.TextFormatting.TextLine.#ctor(System.Double)
 internalonly: False
 ---
 

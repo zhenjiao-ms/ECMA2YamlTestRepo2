@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.AddressHeader.GetValue``1(System.Runtime.Serialization.XmlObjectSerializer)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.AddressHeader.CreateAddressHeader(System.Object,System.Runtime.Serialization.XmlObjectSerializer)
 internalonly: False
 ---
@@ -50,6 +55,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Channels.AddressHeader.WriteAddressHeaderContents(System.Xml.XmlDictionaryWriter)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.AddressHeader.GetValue``1
 internalonly: False
 ---
 

@@ -49,6 +49,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.MobileControls.Adapters.WmlMobileTextWriter.OpenCharacterFormat(System.Web.UI.MobileControls.Adapters.WmlMobileTextWriter.WmlFormat,System.Boolean,System.Boolean,System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.Web.UI.MobileControls.Adapters.WmlMobileTextWriter.WriteTextEncodedAttribute(System.String,System.String)
 internalonly: False
 ---
@@ -130,6 +135,11 @@ internalonly: False
 
 ---
 uid: System.Web.UI.MobileControls.Adapters.WmlMobileTextWriter.RenderBeginSelect(System.String,System.String,System.String,System.String,System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.Web.UI.MobileControls.Adapters.WmlMobileTextWriter.OpenParagraph(System.Web.UI.MobileControls.Adapters.WmlMobileTextWriter.WmlLayout,System.Boolean,System.Boolean)
 internalonly: False
 ---
 

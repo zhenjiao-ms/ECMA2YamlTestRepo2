@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.PathFigureCollection.System#Collections#Generic#ICollection{System#Windows#Media#PathFigure}#IsReadOnly
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.PathFigureCollection.CopyTo(System.Windows.Media.PathFigure[],System.Int32)
 internalonly: False
 ---
@@ -45,6 +50,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.PathFigureCollection.RemoveAt(System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.PathFigureCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#PathFigure}#GetEnumerator
 internalonly: False
 ---
 

@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.MessageEncoder.GetProperty``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.MessageEncoder.WriteMessage(System.ServiceModel.Channels.Message,System.IO.Stream)
 internalonly: False
 ---
@@ -59,11 +64,21 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.MessageEncoder.BeginWriteMessage(System.ServiceModel.Channels.Message,System.IO.Stream,System.AsyncCallback,System.Object)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.MessageEncoder.#ctor
 internalonly: False
 ---
 
 ---
 uid: System.ServiceModel.Channels.MessageEncoder.WriteMessage(System.ServiceModel.Channels.Message,System.Int32,System.ServiceModel.Channels.BufferManager,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.MessageEncoder.EndWriteMessage(System.IAsyncResult)
 internalonly: False
 ---

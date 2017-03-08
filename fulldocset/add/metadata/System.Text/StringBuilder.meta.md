@@ -74,6 +74,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Text.StringBuilder.AppendFormat(System.IFormatProvider,System.String,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Text.StringBuilder.Append(System.Byte)
 internalonly: False
 ---
@@ -239,6 +244,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Text.StringBuilder.Append(System.Char*,System.Int32)
+internalonly: False
+---
+
+---
 uid: System.Text.StringBuilder.CopyTo(System.Int32,System.Char[],System.Int32,System.Int32)
 internalonly: False
 ---
@@ -299,6 +309,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Text.StringBuilder.AppendFormat(System.IFormatProvider,System.String,System.Object,System.Object,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Text.StringBuilder.Remove(System.Int32,System.Int32)
 internalonly: False
 ---
@@ -315,6 +330,11 @@ internalonly: False
 
 ---
 uid: System.Text.StringBuilder.Insert(System.Int32,System.Char[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Text.StringBuilder.AppendFormat(System.IFormatProvider,System.String,System.Object,System.Object)
 internalonly: False
 ---
 

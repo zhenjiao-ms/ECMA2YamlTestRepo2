@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Cryptography.RSACryptoServiceProvider.Decrypt(System.Byte[],System.Security.Cryptography.RSAEncryptionPadding)
+internalonly: False
+---
+
+---
 uid: System.Security.Cryptography.RSACryptoServiceProvider.ImportParameters(System.Security.Cryptography.RSAParameters)
 internalonly: False
 ---
@@ -35,6 +40,11 @@ internalonly: False
 
 ---
 uid: System.Security.Cryptography.RSACryptoServiceProvider.#ctor(System.Security.Cryptography.CspParameters)
+internalonly: False
+---
+
+---
+uid: System.Security.Cryptography.RSACryptoServiceProvider.Encrypt(System.Byte[],System.Security.Cryptography.RSAEncryptionPadding)
 internalonly: False
 ---
 
@@ -94,6 +104,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Cryptography.RSACryptoServiceProvider.SignHash(System.Byte[],System.Security.Cryptography.HashAlgorithmName,System.Security.Cryptography.RSASignaturePadding)
+internalonly: False
+---
+
+---
 uid: System.Security.Cryptography.RSACryptoServiceProvider.UseMachineKeyStore
 internalonly: False
 ---
@@ -125,5 +140,10 @@ internalonly: False
 
 ---
 uid: System.Security.Cryptography.RSACryptoServiceProvider.SignatureAlgorithm
+internalonly: False
+---
+
+---
+uid: System.Security.Cryptography.RSACryptoServiceProvider.VerifyHash(System.Byte[],System.Byte[],System.Security.Cryptography.HashAlgorithmName,System.Security.Cryptography.RSASignaturePadding)
 internalonly: False
 ---

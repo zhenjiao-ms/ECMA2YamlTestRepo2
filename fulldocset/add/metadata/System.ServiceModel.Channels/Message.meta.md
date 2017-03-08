@@ -24,12 +24,27 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.Message.EndWriteMessage(System.IAsyncResult)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.Message.OnEndWriteBodyContents(System.IAsyncResult)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.Message.WriteBody(System.Xml.XmlDictionaryWriter)
 internalonly: False
 ---
 
 ---
 uid: System.ServiceModel.Channels.Message.OnBodyToString(System.Xml.XmlDictionaryWriter)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.Message.OnBeginWriteBodyContents(System.Xml.XmlDictionaryWriter,System.AsyncCallback,System.Object)
 internalonly: False
 ---
 
@@ -49,12 +64,22 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.Message.OnEndWriteMessage(System.IAsyncResult)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.Message.ToString
 internalonly: False
 ---
 
 ---
 uid: System.ServiceModel.Channels.Message.OnGetReaderAtBodyContents
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.Message.OnGetBody``1(System.Xml.XmlDictionaryReader)
 internalonly: False
 ---
 
@@ -109,6 +134,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.Message.BeginWriteBodyContents(System.Xml.XmlDictionaryWriter,System.AsyncCallback,System.Object)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.Message.State
 internalonly: False
 ---
@@ -149,12 +179,27 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.Message.BeginWriteMessage(System.Xml.XmlDictionaryWriter,System.AsyncCallback,System.Object)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.Message.IsFault
 internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.Message.GetBody``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.Message.WriteStartEnvelope(System.Xml.XmlDictionaryWriter)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.Message.OnBeginWriteMessage(System.Xml.XmlDictionaryWriter,System.AsyncCallback,System.Object)
 internalonly: False
 ---
 
@@ -179,12 +224,22 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.Message.EndWriteBodyContents(System.IAsyncResult)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.Message.WriteStartBody(System.Xml.XmlDictionaryWriter)
 internalonly: False
 ---
 
 ---
 uid: System.ServiceModel.Channels.Message.WriteMessage(System.Xml.XmlDictionaryWriter)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.Message.GetBody``1(System.Runtime.Serialization.XmlObjectSerializer)
 internalonly: False
 ---
 

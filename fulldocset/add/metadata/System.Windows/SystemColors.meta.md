@@ -79,6 +79,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.SystemColors.InactiveSelectionHighlightTextBrush
+internalonly: False
+---
+
+---
 uid: System.Windows.SystemColors.WindowTextBrush
 internalonly: False
 ---
@@ -95,6 +100,11 @@ internalonly: False
 
 ---
 uid: System.Windows.SystemColors.HighlightTextColor
+internalonly: False
+---
+
+---
+uid: System.Windows.SystemColors.InactiveSelectionHighlightBrushKey
 internalonly: False
 ---
 
@@ -419,6 +429,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.SystemColors.InactiveSelectionHighlightTextBrushKey
+internalonly: False
+---
+
+---
 uid: System.Windows.SystemColors.ControlBrush
 internalonly: False
 ---
@@ -450,6 +465,11 @@ internalonly: False
 
 ---
 uid: System.Windows.SystemColors.InfoBrushKey
+internalonly: False
+---
+
+---
+uid: System.Windows.SystemColors.InactiveSelectionHighlightBrush
 internalonly: False
 ---
 

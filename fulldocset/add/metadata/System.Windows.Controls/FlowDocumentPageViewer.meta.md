@@ -49,6 +49,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.FlowDocumentPageViewer.IsInactiveSelectionHighlightEnabled
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.FlowDocumentPageViewer.Selection
 internalonly: False
 ---
@@ -115,6 +120,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.FlowDocumentPageViewer.ZoomProperty
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.FlowDocumentPageViewer.IsSelectionActive
 internalonly: False
 ---
 
@@ -189,6 +199,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.FlowDocumentPageViewer.IsSelectionActiveProperty
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.FlowDocumentPageViewer.OnFindCommand
 internalonly: False
 ---
@@ -205,5 +220,10 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.FlowDocumentPageViewer.OnContextMenuOpening(System.Windows.Controls.ContextMenuEventArgs)
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.FlowDocumentPageViewer.IsInactiveSelectionHighlightEnabledProperty
 internalonly: False
 ---

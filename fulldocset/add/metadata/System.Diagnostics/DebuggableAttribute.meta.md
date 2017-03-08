@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Diagnostics.DebuggableAttribute.#ctor(System.Diagnostics.DebuggableAttribute.DebuggingModes)
+internalonly: False
+---
+
+---
 uid: System.Diagnostics.DebuggableAttribute.IsJITTrackingEnabled
 internalonly: False
 ---

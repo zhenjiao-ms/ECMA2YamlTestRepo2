@@ -44,6 +44,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Diagnostics.SymbolStore.SymWriter.Dispose(System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.Diagnostics.SymbolStore.SymWriter.#ctor(System.Boolean)
 internalonly: False
 ---
@@ -65,6 +70,11 @@ internalonly: False
 
 ---
 uid: System.Diagnostics.SymbolStore.SymWriter.Finalize
+internalonly: False
+---
+
+---
+uid: System.Diagnostics.SymbolStore.SymWriter.Dispose
 internalonly: False
 ---
 

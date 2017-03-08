@@ -27,3 +27,8 @@ internalonly: False
 uid: System.Windows.Documents.DocumentStructures.TableRowGroupStructure.Add(System.Windows.Documents.DocumentStructures.TableRowStructure)
 internalonly: False
 ---
+
+---
+uid: System.Windows.Documents.DocumentStructures.TableRowGroupStructure.System#Collections#Generic#IEnumerable{System#Windows#Documents#DocumentStructures#TableRowStructure}#GetEnumerator
+internalonly: False
+---

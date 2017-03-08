@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Workflow.Runtime.Hosting.SharedConnectionWorkflowCommitWorkBatchService.CommitWorkBatch(System.Workflow.Runtime.Hosting.WorkflowCommitWorkBatchService.CommitWorkBatchCallback)
+internalonly: False
+---
+
+---
 uid: System.Workflow.Runtime.Hosting.SharedConnectionWorkflowCommitWorkBatchService.EnableRetries
 internalonly: False
 ---

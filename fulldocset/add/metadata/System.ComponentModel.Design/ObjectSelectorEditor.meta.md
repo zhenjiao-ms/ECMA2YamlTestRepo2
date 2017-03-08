@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Design.ObjectSelectorEditor.FillTreeWithData(System.ComponentModel.Design.ObjectSelectorEditor.Selector,System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider)
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Design.ObjectSelectorEditor.#ctor(System.Boolean)
 internalonly: False
 ---

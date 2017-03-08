@@ -74,6 +74,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.BinaryWriter.#ctor(System.IO.Stream,System.Text.Encoding,System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.IO.BinaryWriter.Write(System.Byte)
 internalonly: False
 ---

@@ -19,12 +19,22 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Framework.XamlTypes.DataSource.SourceOfDefaultValue
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Framework.XamlTypes.DataSource.Label
 internalonly: False
 ---
 
 ---
 uid: Microsoft.Build.Framework.XamlTypes.DataSource.EndInit
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Framework.XamlTypes.DataSource.MSBuildTarget
 internalonly: False
 ---
 

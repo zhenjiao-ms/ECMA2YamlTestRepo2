@@ -74,6 +74,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.Primitives.TextBoxBase.IsInactiveSelectionHighlightEnabledProperty
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.Primitives.TextBoxBase.DeclareChangeBlock
 internalonly: False
 ---
@@ -135,6 +140,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.Primitives.TextBoxBase.ExtentWidth
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.Primitives.TextBoxBase.IsSelectionActive
 internalonly: False
 ---
 
@@ -204,6 +214,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.Primitives.TextBoxBase.IsInactiveSelectionHighlightEnabled
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.Primitives.TextBoxBase.LineRight
 internalonly: False
 ---
@@ -220,6 +235,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.Primitives.TextBoxBase.SelectionChangedEvent
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.Primitives.TextBoxBase.IsSelectionActiveProperty
 internalonly: False
 ---
 

@@ -89,6 +89,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Globalization.CompareInfo.Version
+internalonly: False
+---
+
+---
 uid: System.Globalization.CompareInfo.GetCompareInfo(System.String,System.Reflection.Assembly)
 internalonly: False
 ---
@@ -205,6 +210,11 @@ internalonly: False
 
 ---
 uid: System.Globalization.CompareInfo.Compare(System.String,System.Int32,System.Int32,System.String,System.Int32,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Globalization.CompareInfo.GetHashCode(System.String,System.Globalization.CompareOptions)
 internalonly: False
 ---
 

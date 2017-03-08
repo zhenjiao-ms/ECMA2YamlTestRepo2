@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.Design.ContainerControlDesigner.NoWrap
+internalonly: False
+---
+
+---
 uid: System.Web.UI.Design.ContainerControlDesigner.GetPersistenceContent
 internalonly: False
 ---

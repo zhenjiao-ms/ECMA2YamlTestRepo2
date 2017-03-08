@@ -4,7 +4,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.UcbrowserProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.Opera10ProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.Firefox3plusProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
@@ -24,12 +34,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.WebkitProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.IemobileProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
 ---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.Opera10ProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.InternetexplorerProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
@@ -59,6 +79,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.Safari3plusProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.Platformwin2000aProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
@@ -69,7 +94,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.Opera8plusProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.PlatformProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.Ie6plusProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
@@ -90,6 +125,11 @@ internalonly: False
 
 ---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.PlatformunixProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.WebkitProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
@@ -139,6 +179,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.Ie10plusProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.DefaultXhtmlmpProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
@@ -164,6 +209,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.WindowsphoneProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.Firefox3ProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
@@ -179,12 +229,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.WindowsphoneProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.OSProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
 ---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.Safari3to4ProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.InternetexplorerProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
@@ -209,6 +269,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.Safari3plusProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.OperaProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
@@ -224,12 +289,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.OperamobileProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.Platformwin16ProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
 ---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.GenericdownlevelProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.WebkitmobileProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
@@ -245,6 +320,11 @@ internalonly: False
 
 ---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.WinProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.Ie9ProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
@@ -279,12 +359,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.Opera8plusProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.MozillaProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
 ---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.IpodProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.Ie6plusProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
@@ -329,12 +419,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.UcbrowserProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.IpadProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.BlackberryProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
 ---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.GenericdownlevelProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.Firefox3plusProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
@@ -364,12 +469,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.WebkitmobileProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.Ie10plusProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.Platformwin95ProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
 ---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.Platformmac68kProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.OperaminiProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
@@ -394,12 +514,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.Ie9ProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.OperaminiProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.Win16ProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
 ---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.PlatformwinceProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.OperamobileProcessGateways(System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 
@@ -430,6 +565,11 @@ internalonly: False
 
 ---
 uid: System.Web.Configuration.BrowserCapabilitiesFactory.ChromeProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.BrowserCapabilitiesFactory.IpadProcessBrowsers(System.Boolean,System.Collections.Specialized.NameValueCollection,System.Web.HttpBrowserCapabilities)
 internalonly: False
 ---
 

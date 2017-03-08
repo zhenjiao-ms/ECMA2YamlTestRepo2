@@ -84,6 +84,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Clipboard.Flush
+internalonly: False
+---
+
+---
 uid: System.Windows.Clipboard.ContainsText
 internalonly: False
 ---

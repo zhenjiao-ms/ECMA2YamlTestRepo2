@@ -14,7 +14,17 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.StreamReader.ReadBlock(System.Char[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
 uid: System.IO.StreamReader.DiscardBufferedData
+internalonly: False
+---
+
+---
+uid: System.IO.StreamReader.#ctor(System.IO.Stream,System.Text.Encoding,System.Boolean,System.Int32,System.Boolean)
 internalonly: False
 ---
 
@@ -39,6 +49,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.StreamReader.ReadBlockAsync(System.Char[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
 uid: System.IO.StreamReader.#ctor(System.IO.Stream)
 internalonly: False
 ---
@@ -55,6 +70,11 @@ internalonly: False
 
 ---
 uid: System.IO.StreamReader.#ctor(System.String,System.Text.Encoding,System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.IO.StreamReader.ReadToEndAsync
 internalonly: False
 ---
 
@@ -80,6 +100,16 @@ internalonly: False
 
 ---
 uid: System.IO.StreamReader.EndOfStream
+internalonly: False
+---
+
+---
+uid: System.IO.StreamReader.ReadAsync(System.Char[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.IO.StreamReader.ReadLineAsync
 internalonly: False
 ---
 

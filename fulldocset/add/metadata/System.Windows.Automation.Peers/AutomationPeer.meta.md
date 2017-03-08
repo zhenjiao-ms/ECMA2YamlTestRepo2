@@ -79,6 +79,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Automation.Peers.AutomationPeer.GetPeerFromPointCore(System.Windows.Point)
+internalonly: False
+---
+
+---
 uid: System.Windows.Automation.Peers.AutomationPeer.GetClickablePoint
 internalonly: False
 ---
@@ -205,6 +210,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Automation.Peers.AutomationPeer.GetName
+internalonly: False
+---
+
+---
+uid: System.Windows.Automation.Peers.AutomationPeer.GetPeerFromPoint(System.Windows.Point)
 internalonly: False
 ---
 

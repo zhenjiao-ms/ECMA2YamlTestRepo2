@@ -29,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.#ctor(System.ComponentModel.Composition.Hosting.CompositionOptions)
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.#ctor(System.Boolean)
 internalonly: False
 ---

@@ -109,6 +109,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.Mail.MailMessage.BodyTransferEncoding
+internalonly: False
+---
+
+---
 uid: System.Net.Mail.MailMessage.ReplyTo
 internalonly: False
 ---

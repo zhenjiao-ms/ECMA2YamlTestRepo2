@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.GradientStopCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#GradientStop}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.GradientStopCollection.System#Collections#IList#IsFixedSize
 internalonly: False
 ---
@@ -130,6 +135,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.GradientStopCollection.System#Collections#ICollection#IsSynchronized
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.GradientStopCollection.System#Collections#Generic#ICollection{System#Windows#Media#GradientStop}#IsReadOnly
 internalonly: False
 ---
 

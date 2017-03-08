@@ -169,6 +169,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.Emit.TypeBuilder.CreateTypeInfo
+internalonly: False
+---
+
+---
 uid: System.Reflection.Emit.TypeBuilder.IsDefined(System.Type,System.Boolean)
 internalonly: False
 ---
@@ -429,6 +434,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.Emit.TypeBuilder.IsConstructedGenericType
+internalonly: False
+---
+
+---
+uid: System.Reflection.Emit.TypeBuilder.IsAssignableFrom(System.Reflection.TypeInfo)
+internalonly: False
+---
+
+---
 uid: System.Reflection.Emit.TypeBuilder.DefinePInvokeMethod(System.String,System.String,System.Reflection.MethodAttributes,System.Reflection.CallingConventions,System.Type,System.Type[],System.Runtime.InteropServices.CallingConvention,System.Runtime.InteropServices.CharSet)
 internalonly: False
 ---
@@ -460,6 +475,11 @@ internalonly: False
 
 ---
 uid: System.Reflection.Emit.TypeBuilder.MakeGenericType(System.Type[])
+internalonly: False
+---
+
+---
+uid: System.Reflection.Emit.TypeBuilder.DefineNestedType(System.String,System.Reflection.TypeAttributes,System.Type,System.Reflection.Emit.PackingSize,System.Int32)
 internalonly: False
 ---
 

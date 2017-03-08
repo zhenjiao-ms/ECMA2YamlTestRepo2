@@ -64,6 +64,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ItemsControl.IsItemItsOwnContainer(System.Object)
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ItemsControl.ShouldSerializeGroupStyle
 internalonly: False
 ---
@@ -164,7 +169,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ItemsControl.System#Windows#Controls#Primitives#IContainItemStorage#ReadItemValue(System.Object,System.Windows.DependencyProperty)
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ItemsControl.HasItemsProperty
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.ItemsControl.System#Windows#Controls#Primitives#IContainItemStorage#ClearValue(System.Windows.DependencyProperty)
 internalonly: False
 ---
 
@@ -274,6 +289,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ItemsControl.System#Windows#Controls#Primitives#IContainItemStorage#Clear
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ItemsControl.ItemBindingGroupProperty
 internalonly: False
 ---
@@ -319,6 +339,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ItemsControl.System#Windows#Controls#Primitives#IContainItemStorage#StoreItemValue(System.Object,System.Windows.DependencyProperty,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ItemsControl.EndInit
 internalonly: False
 ---
@@ -345,5 +370,10 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.ItemsControl.IsItemItsOwnContainerOverride(System.Object)
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.ItemsControl.System#Windows#Controls#Primitives#IContainItemStorage#ClearItemValue(System.Object,System.Windows.DependencyProperty)
 internalonly: False
 ---

@@ -134,6 +134,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlParameter.ForceColumnEncryption
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlParameter.TypeName
 internalonly: False
 ---

@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Tasks.Exec.ConsoleOutput
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Tasks.Exec.ValidateParameters
 internalonly: False
 ---
@@ -100,6 +105,11 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Tasks.Exec.AddCommandLineCommands(Microsoft.Build.Tasks.CommandLineBuilderExtension)
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Tasks.Exec.ConsoleToMSBuild
 internalonly: False
 ---
 

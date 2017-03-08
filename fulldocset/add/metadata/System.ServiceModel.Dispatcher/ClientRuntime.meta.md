@@ -59,12 +59,22 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Dispatcher.ClientRuntime.ClientMessageInspectors
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Dispatcher.ClientRuntime.InteractiveChannelInitializers
 internalonly: False
 ---
 
 ---
 uid: System.ServiceModel.Dispatcher.ClientRuntime.MessageVersionNoneFaultsEnabled
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Dispatcher.ClientRuntime.ClientOperations
 internalonly: False
 ---
 

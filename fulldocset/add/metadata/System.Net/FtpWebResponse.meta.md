@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.FtpWebResponse.SupportsHeaders
+internalonly: False
+---
+
+---
 uid: System.Net.FtpWebResponse.Close
 internalonly: False
 ---

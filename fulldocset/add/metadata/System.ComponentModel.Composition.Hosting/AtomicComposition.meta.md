@@ -9,7 +9,17 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Composition.Hosting.AtomicComposition.TryGetValue``1(System.Object,System.Boolean,``0@)
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Composition.Hosting.AtomicComposition.SetValue(System.Object,System.Object)
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Composition.Hosting.AtomicComposition.TryGetValue``1(System.Object,``0@)
 internalonly: False
 ---
 

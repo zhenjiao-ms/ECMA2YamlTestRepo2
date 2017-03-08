@@ -19,12 +19,27 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.StreamWriter.WriteAsync(System.Char[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.IO.StreamWriter.WriteAsync(System.String)
+internalonly: False
+---
+
+---
 uid: System.IO.StreamWriter.Write(System.Char[],System.Int32,System.Int32)
 internalonly: False
 ---
 
 ---
 uid: System.IO.StreamWriter.BaseStream
+internalonly: False
+---
+
+---
+uid: System.IO.StreamWriter.FlushAsync
 internalonly: False
 ---
 
@@ -54,7 +69,17 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.StreamWriter.WriteLineAsync(System.Char[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
 uid: System.IO.StreamWriter.#ctor(System.String)
+internalonly: False
+---
+
+---
+uid: System.IO.StreamWriter.WriteLineAsync(System.String)
 internalonly: False
 ---
 
@@ -69,7 +94,27 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.StreamWriter.#ctor(System.IO.Stream,System.Text.Encoding,System.Int32,System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.IO.StreamWriter.WriteLineAsync
+internalonly: False
+---
+
+---
 uid: System.IO.StreamWriter.Flush
+internalonly: False
+---
+
+---
+uid: System.IO.StreamWriter.WriteLineAsync(System.Char)
+internalonly: False
+---
+
+---
+uid: System.IO.StreamWriter.WriteAsync(System.Char)
 internalonly: False
 ---
 

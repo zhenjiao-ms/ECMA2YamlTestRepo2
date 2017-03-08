@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Compilation.ClientBuildManagerParameter.ExcludedVirtualPaths
+internalonly: False
+---
+
+---
 uid: System.Web.Compilation.ClientBuildManagerParameter.StrongNameKeyContainer
 internalonly: False
 ---

@@ -164,6 +164,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Security.WSTrustChannel.GetProperty``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Security.WSTrustChannel.EndRenew(System.IAsyncResult)
 internalonly: False
 ---

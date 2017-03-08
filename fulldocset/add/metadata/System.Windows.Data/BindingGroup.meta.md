@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Data.BindingGroup.ValidationErrors
+internalonly: False
+---
+
+---
 uid: System.Windows.Data.BindingGroup.#ctor
 internalonly: False
 ---
@@ -20,6 +25,16 @@ internalonly: False
 
 ---
 uid: System.Windows.Data.BindingGroup.CommitEdit
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.BindingGroup.IsDirty
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.BindingGroup.ValidatesOnNotifyDataError
 internalonly: False
 ---
 
@@ -49,12 +64,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Data.BindingGroup.HasValidationError
+internalonly: False
+---
+
+---
 uid: System.Windows.Data.BindingGroup.Items
 internalonly: False
 ---
 
 ---
 uid: System.Windows.Data.BindingGroup.CancelEdit
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.BindingGroup.Owner
 internalonly: False
 ---
 

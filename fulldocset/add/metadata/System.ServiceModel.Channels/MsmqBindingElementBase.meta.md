@@ -49,6 +49,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.MsmqBindingElementBase.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.MsmqBindingElementBase.DeadLetterQueue
 internalonly: False
 ---

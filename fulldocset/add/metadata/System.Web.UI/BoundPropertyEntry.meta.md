@@ -29,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.BoundPropertyEntry.IsEncoded
+internalonly: False
+---
+
+---
 uid: System.Web.UI.BoundPropertyEntry.ControlType
 internalonly: False
 ---

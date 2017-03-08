@@ -109,6 +109,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ContextMenu.OnIsKeyboardFocusWithinChanged(System.Windows.DependencyPropertyChangedEventArgs)
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ContextMenu.CustomPopupPlacementCallback
 internalonly: False
 ---

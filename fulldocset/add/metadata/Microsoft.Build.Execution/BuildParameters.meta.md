@@ -39,7 +39,17 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Execution.BuildParameters.BuildProcessEnvironment
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Execution.BuildParameters.Loggers
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Execution.BuildParameters.LogInitialPropertiesAndItems
 internalonly: False
 ---
 
@@ -79,6 +89,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Execution.BuildParameters.LogTaskInputs
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Execution.BuildParameters.OnlyLogCriticalEvents
 internalonly: False
 ---
@@ -89,12 +104,22 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Execution.BuildParameters.DisableInProcNode
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Execution.BuildParameters.UseSynchronousLogging
 internalonly: False
 ---
 
 ---
 uid: Microsoft.Build.Execution.BuildParameters.ResetCaches
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Execution.BuildParameters.ShutdownInProcNodeOnBuildFinish
 internalonly: False
 ---
 

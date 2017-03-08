@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.Int32Collection.System#Collections#Generic#IEnumerable{System#Int32}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.Int32Collection.ToString
 internalonly: False
 ---
@@ -145,6 +150,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.Int32Collection.Count
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.Int32Collection.System#Collections#Generic#ICollection{System#Int32}#IsReadOnly
 internalonly: False
 ---
 

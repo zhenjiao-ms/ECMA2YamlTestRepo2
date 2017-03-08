@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Description.ServiceAuthorizationBehavior.ImpersonateOnSerializingReply
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Description.ServiceAuthorizationBehavior.ExternalAuthorizationPolicies
 internalonly: False
 ---

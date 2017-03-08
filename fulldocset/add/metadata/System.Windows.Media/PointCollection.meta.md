@@ -44,6 +44,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.PointCollection.System#Collections#Generic#ICollection{System#Windows#Point}#IsReadOnly
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.PointCollection.System#Collections#IEnumerable#GetEnumerator
 internalonly: False
 ---
@@ -100,6 +105,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.PointCollection.Parse(System.String)
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.PointCollection.System#Collections#Generic#IEnumerable{System#Windows#Point}#GetEnumerator
 internalonly: False
 ---
 

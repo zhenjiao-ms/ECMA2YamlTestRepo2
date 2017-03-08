@@ -64,12 +64,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.Sockets.TcpClient.ConnectAsync(System.String,System.Int32)
+internalonly: False
+---
+
+---
 uid: System.Net.Sockets.TcpClient.#ctor(System.String,System.Int32)
 internalonly: False
 ---
 
 ---
 uid: System.Net.Sockets.TcpClient.Connected
+internalonly: False
+---
+
+---
+uid: System.Net.Sockets.TcpClient.ConnectAsync(System.Net.IPAddress,System.Int32)
 internalonly: False
 ---
 
@@ -95,6 +105,11 @@ internalonly: False
 
 ---
 uid: System.Net.Sockets.TcpClient.Dispose(System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.Net.Sockets.TcpClient.ConnectAsync(System.Net.IPAddress[],System.Int32)
 internalonly: False
 ---
 
@@ -125,6 +140,11 @@ internalonly: False
 
 ---
 uid: System.Net.Sockets.TcpClient.#ctor
+internalonly: False
+---
+
+---
+uid: System.Net.Sockets.TcpClient.Dispose
 internalonly: False
 ---
 

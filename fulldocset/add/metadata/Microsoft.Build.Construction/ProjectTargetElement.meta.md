@@ -29,7 +29,17 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Construction.ProjectTargetElement.InputsLocation
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Construction.ProjectTargetElement.PropertyGroups
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Construction.ProjectTargetElement.OutputsLocation
 internalonly: False
 ---
 
@@ -59,12 +69,37 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Construction.ProjectTargetElement.AfterTargetsLocation
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Construction.ProjectTargetElement.KeepDuplicateOutputsLocation
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Construction.ProjectTargetElement.BeforeTargetsLocation
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Construction.ProjectTargetElement.AddTask(System.String)
 internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Construction.ProjectTargetElement.NameLocation
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Construction.ProjectTargetElement.Tasks
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Construction.ProjectTargetElement.ReturnsLocation
 internalonly: False
 ---
 
@@ -75,5 +110,10 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Construction.ProjectTargetElement.OnErrors
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Construction.ProjectTargetElement.DependsOnTargetsLocation
 internalonly: False
 ---

@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.Emit.ModuleBuilder.GetConstructorToken(System.Reflection.ConstructorInfo,System.Collections.Generic.IEnumerable{System.Type})
+internalonly: False
+---
+
+---
 uid: System.Reflection.Emit.ModuleBuilder.ResolveMethod(System.Int32,System.Type[],System.Type[])
 internalonly: False
 ---
@@ -195,6 +200,11 @@ internalonly: False
 
 ---
 uid: System.Reflection.Emit.ModuleBuilder.GetConstructorToken(System.Reflection.ConstructorInfo)
+internalonly: False
+---
+
+---
+uid: System.Reflection.Emit.ModuleBuilder.GetMethodToken(System.Reflection.MethodInfo,System.Collections.Generic.IEnumerable{System.Type})
 internalonly: False
 ---
 

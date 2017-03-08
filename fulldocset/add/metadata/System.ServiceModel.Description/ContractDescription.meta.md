@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Description.ContractDescription.ContractBehaviors
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Description.ContractDescription.HasProtectionLevel
 internalonly: False
 ---

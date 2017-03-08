@@ -192,3 +192,8 @@ internalonly: False
 uid: System.Drawing.Design.ToolboxItem.GetHashCode
 internalonly: False
 ---
+
+---
+uid: System.Drawing.Design.ToolboxItem.OriginalBitmap
+internalonly: False
+---

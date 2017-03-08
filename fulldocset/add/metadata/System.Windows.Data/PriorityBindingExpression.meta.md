@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Data.PriorityBindingExpression.HasValidationError
+internalonly: False
+---
+
+---
 uid: System.Windows.Data.PriorityBindingExpression.ParentPriorityBinding
 internalonly: False
 ---

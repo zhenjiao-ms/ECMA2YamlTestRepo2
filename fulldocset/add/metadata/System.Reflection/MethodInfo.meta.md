@@ -29,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.MethodInfo.CreateDelegate(System.Type,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Reflection.MethodInfo.GetGenericMethodDefinition
 internalonly: False
 ---
@@ -90,5 +95,10 @@ internalonly: False
 
 ---
 uid: System.Reflection.MethodInfo.GetGenericArguments
+internalonly: False
+---
+
+---
+uid: System.Reflection.MethodInfo.CreateDelegate(System.Type)
 internalonly: False
 ---

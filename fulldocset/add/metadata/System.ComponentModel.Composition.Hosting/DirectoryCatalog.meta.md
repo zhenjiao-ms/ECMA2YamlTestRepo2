@@ -9,7 +9,17 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor(System.String,System.Reflection.ReflectionContext,System.ComponentModel.Composition.Primitives.ICompositionElement)
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.OnChanging(System.ComponentModel.Composition.Hosting.ComposablePartCatalogChangeEventArgs)
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor(System.String,System.String,System.ComponentModel.Composition.Primitives.ICompositionElement)
 internalonly: False
 ---
 
@@ -49,6 +59,26 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor(System.String,System.String,System.Reflection.ReflectionContext)
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor(System.String,System.ComponentModel.Composition.Primitives.ICompositionElement)
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.GetEnumerator
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor(System.String,System.Reflection.ReflectionContext)
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.Changed
 internalonly: False
 ---
@@ -60,6 +90,11 @@ internalonly: False
 
 ---
 uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.FullPath
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor(System.String,System.String,System.Reflection.ReflectionContext,System.ComponentModel.Composition.Primitives.ICompositionElement)
 internalonly: False
 ---
 

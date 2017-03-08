@@ -69,6 +69,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.ServiceBehaviorAttribute.EnsureOrderedDispatch
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.ServiceBehaviorAttribute.MaxItemsInObjectGraph
 internalonly: False
 ---

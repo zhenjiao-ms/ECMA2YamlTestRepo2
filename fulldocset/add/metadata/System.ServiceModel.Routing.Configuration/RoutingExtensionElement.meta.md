@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Routing.Configuration.RoutingExtensionElement.EnsureOrderedDispatch
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Routing.Configuration.RoutingExtensionElement.RouteOnHeadersOnly
 internalonly: False
 ---

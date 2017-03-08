@@ -84,6 +84,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Environment.CurrentManagedThreadId
+internalonly: False
+---
+
+---
+uid: System.Environment.GetFolderPath(System.Environment.SpecialFolder)
+internalonly: False
+---
+
+---
 uid: System.Environment.SystemPageSize
 internalonly: False
 ---
@@ -115,6 +125,11 @@ internalonly: False
 
 ---
 uid: System.Environment.MachineName
+internalonly: False
+---
+
+---
+uid: System.Environment.GetFolderPath(System.Environment.SpecialFolder,System.Environment.SpecialFolderOption)
 internalonly: False
 ---
 

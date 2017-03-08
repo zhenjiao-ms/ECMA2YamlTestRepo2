@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: Accessibility.CAccPropServicesClass.DecomposeHmenuIdentityString(System.Byte@,System.UInt32,System.IntPtr,System.UInt32@)
+internalonly: False
+---
+
+---
 uid: Accessibility.CAccPropServicesClass.SetPropServer(System.Byte@,System.UInt32,System.Guid@,System.Int32,Accessibility.IAccPropServer,Accessibility.AnnoScope)
 internalonly: False
 ---
@@ -65,6 +70,11 @@ internalonly: False
 
 ---
 uid: Accessibility.CAccPropServicesClass.SetHwndProp(Accessibility._RemotableHandle@,System.UInt32,System.UInt32,System.Guid,System.Object)
+internalonly: False
+---
+
+---
+uid: Accessibility.CAccPropServicesClass.DecomposeHwndIdentityString(System.Byte@,System.UInt32,System.IntPtr,System.UInt32@,System.UInt32@)
 internalonly: False
 ---
 

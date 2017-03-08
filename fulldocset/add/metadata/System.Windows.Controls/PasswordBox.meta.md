@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.PasswordBox.IsInactiveSelectionHighlightEnabled
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.PasswordBox.SelectionOpacityProperty
 internalonly: False
 ---
@@ -30,6 +35,16 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.PasswordBox.CaretBrush
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.PasswordBox.IsSelectionActiveProperty
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.PasswordBox.IsSelectionActive
 internalonly: False
 ---
 
@@ -70,6 +85,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.PasswordBox.SelectionBrushProperty
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.PasswordBox.IsInactiveSelectionHighlightEnabledProperty
 internalonly: False
 ---
 

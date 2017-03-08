@@ -22,3 +22,13 @@ internalonly: False
 uid: System.ServiceModel.Dispatcher.XPathMessageQueryCollection.#ctor
 internalonly: False
 ---
+
+---
+uid: System.ServiceModel.Dispatcher.XPathMessageQueryCollection.Evaluate``1(System.ServiceModel.Channels.Message)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Dispatcher.XPathMessageQueryCollection.Evaluate``1(System.ServiceModel.Channels.MessageBuffer)
+internalonly: False
+---

@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Documents.DocumentStructures.TableRowStructure.System#Collections#Generic#IEnumerable{System#Windows#Documents#DocumentStructures#TableCellStructure}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Documents.DocumentStructures.TableRowStructure.System#Windows#Markup#IAddChild#AddChild(System.Object)
 internalonly: False
 ---

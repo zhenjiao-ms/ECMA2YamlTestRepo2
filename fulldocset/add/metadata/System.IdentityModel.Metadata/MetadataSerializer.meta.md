@@ -9,12 +9,22 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Metadata.MetadataSerializer.WriteCustomElements``1(System.Xml.XmlWriter,``0)
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Metadata.MetadataSerializer.#ctor
 internalonly: False
 ---
 
 ---
 uid: System.IdentityModel.Metadata.MetadataSerializer.ReadRoleDescriptorElement(System.Xml.XmlReader,System.IdentityModel.Metadata.RoleDescriptor)
+internalonly: False
+---
+
+---
+uid: System.IdentityModel.Metadata.MetadataSerializer.ReadCustomElement``1(System.Xml.XmlReader,``0)
 internalonly: False
 ---
 
@@ -89,12 +99,22 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Metadata.MetadataSerializer.ReadCustomAttributes``1(System.Xml.XmlReader,``0)
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Metadata.MetadataSerializer.ReadWebServiceDescriptorElement(System.Xml.XmlReader,System.IdentityModel.Metadata.WebServiceDescriptor)
 internalonly: False
 ---
 
 ---
 uid: System.IdentityModel.Metadata.MetadataSerializer.ValidateSigningCredential(System.IdentityModel.Tokens.SigningCredentials)
+internalonly: False
+---
+
+---
+uid: System.IdentityModel.Metadata.MetadataSerializer.WriteCustomAttributes``1(System.Xml.XmlWriter,``0)
 internalonly: False
 ---
 

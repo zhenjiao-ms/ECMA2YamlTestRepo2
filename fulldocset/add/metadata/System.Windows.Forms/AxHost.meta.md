@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Forms.AxHost.SetAboutBoxDelegate(System.Windows.Forms.AxHost.AboutBoxDelegate)
+internalonly: False
+---
+
+---
 uid: System.Windows.Forms.AxHost.System#ComponentModel#ICustomTypeDescriptor#GetProperties(System.Attribute[])
 internalonly: False
 ---

@@ -209,6 +209,11 @@ internalonly: False
 ---
 
 ---
+uid: System.DateTimeOffset.FromUnixTimeMilliseconds(System.Int64)
+internalonly: False
+---
+
+---
 uid: System.DateTimeOffset.AddTicks(System.Int64)
 internalonly: False
 ---
@@ -294,6 +299,11 @@ internalonly: False
 ---
 
 ---
+uid: System.DateTimeOffset.ToUnixTimeMilliseconds
+internalonly: False
+---
+
+---
 uid: System.DateTimeOffset.ToUniversalTime
 internalonly: False
 ---
@@ -304,12 +314,22 @@ internalonly: False
 ---
 
 ---
+uid: System.DateTimeOffset.ToUnixTimeSeconds
+internalonly: False
+---
+
+---
 uid: System.DateTimeOffset.op_Inequality(System.DateTimeOffset,System.DateTimeOffset)
 internalonly: False
 ---
 
 ---
 uid: System.DateTimeOffset.op_Subtraction(System.DateTimeOffset,System.DateTimeOffset)
+internalonly: False
+---
+
+---
+uid: System.DateTimeOffset.FromUnixTimeSeconds(System.Int64)
 internalonly: False
 ---
 

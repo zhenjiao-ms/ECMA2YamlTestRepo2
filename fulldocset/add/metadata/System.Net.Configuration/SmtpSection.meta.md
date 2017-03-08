@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.Configuration.SmtpSection.DeliveryFormat
+internalonly: False
+---
+
+---
 uid: System.Net.Configuration.SmtpSection.SpecifiedPickupDirectory
 internalonly: False
 ---

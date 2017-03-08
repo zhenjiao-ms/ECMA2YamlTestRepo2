@@ -27,3 +27,8 @@ internalonly: False
 uid: System.Workflow.Runtime.Hosting.DefaultWorkflowCommitWorkBatchService.OnStopped
 internalonly: False
 ---
+
+---
+uid: System.Workflow.Runtime.Hosting.DefaultWorkflowCommitWorkBatchService.CommitWorkBatch(System.Workflow.Runtime.Hosting.WorkflowCommitWorkBatchService.CommitWorkBatchCallback)
+internalonly: False
+---

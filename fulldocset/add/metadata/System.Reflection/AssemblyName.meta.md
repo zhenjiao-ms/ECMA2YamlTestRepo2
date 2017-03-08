@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.AssemblyName.CultureName
+internalonly: False
+---
+
+---
 uid: System.Reflection.AssemblyName.CodeBase
 internalonly: False
 ---
@@ -85,6 +90,11 @@ internalonly: False
 
 ---
 uid: System.Reflection.AssemblyName.ProcessorArchitecture
+internalonly: False
+---
+
+---
+uid: System.Reflection.AssemblyName.ContentType
 internalonly: False
 ---
 

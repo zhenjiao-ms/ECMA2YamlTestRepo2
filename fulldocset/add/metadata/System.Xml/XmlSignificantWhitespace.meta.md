@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlSignificantWhitespace.PreviousText
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlSignificantWhitespace.Value
 internalonly: False
 ---

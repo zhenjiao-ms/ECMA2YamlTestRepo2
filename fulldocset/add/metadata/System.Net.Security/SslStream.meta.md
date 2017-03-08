@@ -109,6 +109,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.Security.SslStream.AuthenticateAsServerAsync(System.Security.Cryptography.X509Certificates.X509Certificate,System.Boolean,System.Security.Authentication.SslProtocols,System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.Net.Security.SslStream.AuthenticateAsServer(System.Security.Cryptography.X509Certificates.X509Certificate,System.Boolean,System.Security.Authentication.SslProtocols,System.Boolean)
 internalonly: False
 ---
@@ -125,6 +130,11 @@ internalonly: False
 
 ---
 uid: System.Net.Security.SslStream.BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
+internalonly: False
+---
+
+---
+uid: System.Net.Security.SslStream.AuthenticateAsClientAsync(System.String)
 internalonly: False
 ---
 
@@ -199,7 +209,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.Security.SslStream.AuthenticateAsClientAsync(System.String,System.Security.Cryptography.X509Certificates.X509CertificateCollection,System.Security.Authentication.SslProtocols,System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.Net.Security.SslStream.Position
+internalonly: False
+---
+
+---
+uid: System.Net.Security.SslStream.AuthenticateAsServerAsync(System.Security.Cryptography.X509Certificates.X509Certificate)
 internalonly: False
 ---
 

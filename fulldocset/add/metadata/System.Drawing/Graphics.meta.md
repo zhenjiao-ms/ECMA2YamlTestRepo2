@@ -44,6 +44,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.RectangleF,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.ExcludeClip(System.Drawing.Region)
 internalonly: False
 ---
@@ -65,6 +70,11 @@ internalonly: False
 
 ---
 uid: System.Drawing.Graphics.SetClip(System.Drawing.RectangleF,System.Drawing.Drawing2D.CombineMode)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Point[],System.Drawing.Rectangle,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)
 internalonly: False
 ---
 
@@ -134,7 +144,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Point[],System.Drawing.Graphics.EnumerateMetafileProc)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.DrawLines(System.Drawing.Pen,System.Drawing.Point[])
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.DrawImage(System.Drawing.Image,System.Drawing.Point[],System.Drawing.Rectangle,System.Drawing.GraphicsUnit,System.Drawing.Imaging.ImageAttributes,System.Drawing.Graphics.DrawImageAbort,System.Int32)
 internalonly: False
 ---
 
@@ -179,6 +199,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.PointF[],System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr,System.Drawing.Imaging.ImageAttributes)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.DrawImage(System.Drawing.Image,System.Drawing.Rectangle,System.Int32,System.Int32,System.Int32,System.Int32,System.Drawing.GraphicsUnit,System.Drawing.Imaging.ImageAttributes)
 internalonly: False
 ---
@@ -210,6 +235,16 @@ internalonly: False
 
 ---
 uid: System.Drawing.Graphics.FillClosedCurve(System.Drawing.Brush,System.Drawing.Point[],System.Drawing.Drawing2D.FillMode)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.RectangleF,System.Drawing.Graphics.EnumerateMetafileProc)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Rectangle,System.Drawing.Rectangle,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc)
 internalonly: False
 ---
 
@@ -284,6 +319,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Point[],System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr,System.Drawing.Imaging.ImageAttributes)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.DrawImage(System.Drawing.Image,System.Drawing.Rectangle,System.Drawing.Rectangle,System.Drawing.GraphicsUnit)
 internalonly: False
 ---
@@ -299,6 +339,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.PointF,System.Drawing.Graphics.EnumerateMetafileProc)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.MeasureString(System.String,System.Drawing.Font,System.Drawing.PointF,System.Drawing.StringFormat)
 internalonly: False
 ---
@@ -309,7 +354,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.DrawImage(System.Drawing.Image,System.Drawing.Point[],System.Drawing.Rectangle,System.Drawing.GraphicsUnit,System.Drawing.Imaging.ImageAttributes,System.Drawing.Graphics.DrawImageAbort)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.FillPath(System.Drawing.Brush,System.Drawing.Drawing2D.GraphicsPath)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Point,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr,System.Drawing.Imaging.ImageAttributes)
 internalonly: False
 ---
 
@@ -344,6 +399,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.RectangleF,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr,System.Drawing.Imaging.ImageAttributes)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.ReleaseHdcInternal(System.IntPtr)
 internalonly: False
 ---
@@ -364,7 +424,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Rectangle,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr,System.Drawing.Imaging.ImageAttributes)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.DrawImage(System.Drawing.Image,System.Int32,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.PointF[],System.Drawing.RectangleF,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr,System.Drawing.Imaging.ImageAttributes)
 internalonly: False
 ---
 
@@ -375,6 +445,11 @@ internalonly: False
 
 ---
 uid: System.Drawing.Graphics.ReleaseHdc(System.IntPtr)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.PointF[],System.Drawing.Graphics.EnumerateMetafileProc)
 internalonly: False
 ---
 
@@ -405,6 +480,21 @@ internalonly: False
 
 ---
 uid: System.Drawing.Graphics.FillClosedCurve(System.Drawing.Brush,System.Drawing.Point[],System.Drawing.Drawing2D.FillMode,System.Single)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Point,System.Drawing.Rectangle,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Rectangle,System.Drawing.Graphics.EnumerateMetafileProc)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Rectangle,System.Drawing.Rectangle,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr,System.Drawing.Imaging.ImageAttributes)
 internalonly: False
 ---
 
@@ -449,7 +539,32 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.PointF,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr,System.Drawing.Imaging.ImageAttributes)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.PointF[],System.Drawing.RectangleF,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Point,System.Drawing.Rectangle,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr,System.Drawing.Imaging.ImageAttributes)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.PointF,System.Drawing.RectangleF,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr,System.Drawing.Imaging.ImageAttributes)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.DrawString(System.String,System.Drawing.Font,System.Drawing.Brush,System.Drawing.PointF,System.Drawing.StringFormat)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Point,System.Drawing.Graphics.EnumerateMetafileProc)
 internalonly: False
 ---
 
@@ -460,6 +575,11 @@ internalonly: False
 
 ---
 uid: System.Drawing.Graphics.Finalize
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Point,System.Drawing.Rectangle,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc)
 internalonly: False
 ---
 
@@ -510,6 +630,16 @@ internalonly: False
 
 ---
 uid: System.Drawing.Graphics.BeginContainer(System.Drawing.Rectangle,System.Drawing.Rectangle,System.Drawing.GraphicsUnit)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.RectangleF,System.Drawing.RectangleF,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.DrawImage(System.Drawing.Image,System.Drawing.Rectangle,System.Int32,System.Int32,System.Int32,System.Int32,System.Drawing.GraphicsUnit,System.Drawing.Imaging.ImageAttributes,System.Drawing.Graphics.DrawImageAbort)
 internalonly: False
 ---
 
@@ -709,12 +839,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.RectangleF,System.Drawing.RectangleF,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr,System.Drawing.Imaging.ImageAttributes)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Point,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.IntersectClip(System.Drawing.Rectangle)
 internalonly: False
 ---
 
 ---
 uid: System.Drawing.Graphics.IsVisibleClipEmpty
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.DrawImage(System.Drawing.Image,System.Drawing.Rectangle,System.Single,System.Single,System.Single,System.Single,System.Drawing.GraphicsUnit,System.Drawing.Imaging.ImageAttributes,System.Drawing.Graphics.DrawImageAbort)
 internalonly: False
 ---
 
@@ -734,7 +879,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Rectangle,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.TranslateClip(System.Int32,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Point[],System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)
 internalonly: False
 ---
 
@@ -775,6 +930,26 @@ internalonly: False
 
 ---
 uid: System.Drawing.Graphics.DrawEllipse(System.Drawing.Pen,System.Drawing.Rectangle)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.DrawImage(System.Drawing.Image,System.Drawing.Rectangle,System.Int32,System.Int32,System.Int32,System.Int32,System.Drawing.GraphicsUnit,System.Drawing.Imaging.ImageAttributes,System.Drawing.Graphics.DrawImageAbort,System.IntPtr)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Rectangle,System.Drawing.Rectangle,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.PointF,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.DrawImage(System.Drawing.Image,System.Drawing.PointF[],System.Drawing.RectangleF,System.Drawing.GraphicsUnit,System.Drawing.Imaging.ImageAttributes,System.Drawing.Graphics.DrawImageAbort)
 internalonly: False
 ---
 
@@ -854,6 +1029,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.DrawImage(System.Drawing.Image,System.Drawing.Rectangle,System.Single,System.Single,System.Single,System.Single,System.Drawing.GraphicsUnit,System.Drawing.Imaging.ImageAttributes,System.Drawing.Graphics.DrawImageAbort,System.IntPtr)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.SetClip(System.Drawing.Graphics)
 internalonly: False
 ---
@@ -865,6 +1045,11 @@ internalonly: False
 
 ---
 uid: System.Drawing.Graphics.DrawImage(System.Drawing.Image,System.Drawing.Point[])
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.DrawImage(System.Drawing.Image,System.Drawing.PointF[],System.Drawing.RectangleF,System.Drawing.GraphicsUnit,System.Drawing.Imaging.ImageAttributes,System.Drawing.Graphics.DrawImageAbort,System.Int32)
 internalonly: False
 ---
 
@@ -889,6 +1074,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Point[],System.Drawing.Rectangle,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr,System.Drawing.Imaging.ImageAttributes)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.Flush
 internalonly: False
 ---
@@ -909,7 +1099,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.PointF[],System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.DrawPolygon(System.Drawing.Pen,System.Drawing.PointF[])
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.PointF[],System.Drawing.RectangleF,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)
 internalonly: False
 ---
 
@@ -929,6 +1129,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Point[],System.Drawing.Rectangle,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc)
+internalonly: False
+---
+
+---
 uid: System.Drawing.Graphics.FillClosedCurve(System.Drawing.Brush,System.Drawing.PointF[],System.Drawing.Drawing2D.FillMode,System.Single)
 internalonly: False
 ---
@@ -940,6 +1145,11 @@ internalonly: False
 
 ---
 uid: System.Drawing.Graphics.DrawLine(System.Drawing.Pen,System.Int32,System.Int32,System.Int32,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.RectangleF,System.Drawing.RectangleF,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)
 internalonly: False
 ---
 
@@ -965,6 +1175,16 @@ internalonly: False
 
 ---
 uid: System.Drawing.Graphics.DrawClosedCurve(System.Drawing.Pen,System.Drawing.PointF[],System.Single,System.Drawing.Drawing2D.FillMode)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.PointF,System.Drawing.RectangleF,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc)
+internalonly: False
+---
+
+---
+uid: System.Drawing.Graphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.PointF,System.Drawing.RectangleF,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)
 internalonly: False
 ---
 

@@ -229,6 +229,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.Sockets.Socket.#ctor(System.Net.Sockets.SocketType,System.Net.Sockets.ProtocolType)
+internalonly: False
+---
+
+---
 uid: System.Net.Sockets.Socket.DuplicateAndClose(System.Int32)
 internalonly: False
 ---
@@ -335,6 +340,11 @@ internalonly: False
 
 ---
 uid: System.Net.Sockets.Socket.EndConnect(System.IAsyncResult)
+internalonly: False
+---
+
+---
+uid: System.Net.Sockets.Socket.DualMode
 internalonly: False
 ---
 

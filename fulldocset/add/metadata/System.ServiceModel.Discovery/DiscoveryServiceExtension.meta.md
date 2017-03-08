@@ -17,3 +17,13 @@ internalonly: False
 uid: System.ServiceModel.Discovery.DiscoveryServiceExtension.#ctor
 internalonly: False
 ---
+
+---
+uid: System.ServiceModel.Discovery.DiscoveryServiceExtension.System#ServiceModel#IExtension{System#ServiceModel#ServiceHostBase}#Attach(System.ServiceModel.ServiceHostBase)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Discovery.DiscoveryServiceExtension.System#ServiceModel#IExtension{System#ServiceModel#ServiceHostBase}#Detach(System.ServiceModel.ServiceHostBase)
+internalonly: False
+---

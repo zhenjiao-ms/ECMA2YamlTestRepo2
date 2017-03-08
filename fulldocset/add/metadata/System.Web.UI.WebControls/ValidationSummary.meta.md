@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.WebControls.ValidationSummary.ShowModelStateErrors
+internalonly: False
+---
+
+---
 uid: System.Web.UI.WebControls.ValidationSummary.SupportsDisabledAttribute
 internalonly: False
 ---
@@ -40,6 +45,11 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.ValidationSummary.OnPreRender(System.EventArgs)
+internalonly: False
+---
+
+---
+uid: System.Web.UI.WebControls.ValidationSummary.ShowValidationErrors
 internalonly: False
 ---
 

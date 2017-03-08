@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.SessionState.SessionStateModule.ReleaseSessionStateAsync(System.Web.HttpContext)
+internalonly: False
+---
+
+---
 uid: System.Web.SessionState.SessionStateModule.Dispose
 internalonly: False
 ---
@@ -25,5 +30,10 @@ internalonly: False
 
 ---
 uid: System.Web.SessionState.SessionStateModule.#ctor
+internalonly: False
+---
+
+---
+uid: System.Web.SessionState.SessionStateModule.ReleaseSessionState(System.Web.HttpContext)
 internalonly: False
 ---

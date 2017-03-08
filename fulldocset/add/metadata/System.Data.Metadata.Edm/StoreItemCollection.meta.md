@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Metadata.Edm.StoreItemCollection.StoreSchemaVersion
+internalonly: False
+---
+
+---
 uid: System.Data.Metadata.Edm.StoreItemCollection.GetPrimitiveTypes
 internalonly: False
 ---

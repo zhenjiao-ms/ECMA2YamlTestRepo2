@@ -4,6 +4,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Linq.DataLoadOptions.AssociateWith``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+internalonly: False
+---
+
+---
+uid: System.Data.Linq.DataLoadOptions.LoadWith``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+internalonly: False
+---
+
+---
 uid: System.Data.Linq.DataLoadOptions.#ctor
 internalonly: False
 ---

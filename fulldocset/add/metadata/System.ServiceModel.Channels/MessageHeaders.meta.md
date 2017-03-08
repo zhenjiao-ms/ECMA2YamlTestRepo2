@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.MessageHeaders.GetHeader``1(System.String,System.String)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.MessageHeaders.SetAction(System.Xml.XmlDictionaryString)
 internalonly: False
 ---
@@ -54,6 +59,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.MessageHeaders.GetHeader``1(System.Int32)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.MessageHeaders.Item(System.Int32)
 internalonly: False
 ---
@@ -99,6 +109,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.MessageHeaders.GetHeader``1(System.String,System.String,System.Runtime.Serialization.XmlObjectSerializer)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.MessageHeaders.Action
 internalonly: False
 ---
@@ -119,7 +134,17 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.MessageHeaders.GetHeader``1(System.String,System.String,System.String[])
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.MessageHeaders.CopyHeaderFrom(System.ServiceModel.Channels.Message,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.MessageHeaders.GetHeader``1(System.Int32,System.Runtime.Serialization.XmlObjectSerializer)
 internalonly: False
 ---
 

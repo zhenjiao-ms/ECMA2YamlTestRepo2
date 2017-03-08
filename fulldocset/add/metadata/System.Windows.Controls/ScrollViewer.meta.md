@@ -104,7 +104,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ScrollViewer.ArrangeOverride(System.Windows.Size)
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ScrollViewer.HorizontalScrollBarVisibilityProperty
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.ScrollViewer.OnStylusSystemGesture(System.Windows.Input.StylusSystemGestureEventArgs)
 internalonly: False
 ---
 

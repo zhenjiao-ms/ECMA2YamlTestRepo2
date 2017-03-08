@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.GC.TryStartNoGCRegion(System.Int64,System.Int64,System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.GC.SuppressFinalize(System.Object)
 internalonly: False
 ---
@@ -34,12 +39,22 @@ internalonly: False
 ---
 
 ---
+uid: System.GC.TryStartNoGCRegion(System.Int64)
+internalonly: False
+---
+
+---
 uid: System.GC.WaitForFullGCComplete(System.Int32)
 internalonly: False
 ---
 
 ---
 uid: System.GC.GetGeneration(System.Object)
+internalonly: False
+---
+
+---
+uid: System.GC.EndNoGCRegion
 internalonly: False
 ---
 
@@ -55,6 +70,11 @@ internalonly: False
 
 ---
 uid: System.GC.MaxGeneration
+internalonly: False
+---
+
+---
+uid: System.GC.TryStartNoGCRegion(System.Int64,System.Boolean)
 internalonly: False
 ---
 
@@ -79,6 +99,11 @@ internalonly: False
 ---
 
 ---
+uid: System.GC.Collect(System.Int32,System.GCCollectionMode,System.Boolean,System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.GC.CancelFullGCNotification
 internalonly: False
 ---
@@ -90,6 +115,16 @@ internalonly: False
 
 ---
 uid: System.GC.AddMemoryPressure(System.Int64)
+internalonly: False
+---
+
+---
+uid: System.GC.Collect(System.Int32,System.GCCollectionMode,System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.GC.TryStartNoGCRegion(System.Int64,System.Int64)
 internalonly: False
 ---
 

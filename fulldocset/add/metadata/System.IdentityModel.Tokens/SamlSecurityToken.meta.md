@@ -19,6 +19,16 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Tokens.SamlSecurityToken.CreateKeyIdentifierClause``1
+internalonly: False
+---
+
+---
+uid: System.IdentityModel.Tokens.SamlSecurityToken.CanCreateKeyIdentifierClause``1
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Tokens.SamlSecurityToken.ValidTo
 internalonly: False
 ---

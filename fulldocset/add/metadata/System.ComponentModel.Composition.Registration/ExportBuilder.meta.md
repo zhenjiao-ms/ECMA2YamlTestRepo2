@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Composition.Registration.ExportBuilder.AsContractType``1
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Composition.Registration.ExportBuilder.Inherited
 internalonly: False
 ---

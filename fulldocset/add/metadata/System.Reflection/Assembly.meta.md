@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.Assembly.Modules
+internalonly: False
+---
+
+---
 uid: System.Reflection.Assembly.Load(System.String,System.Security.Policy.Evidence)
 internalonly: False
 ---
@@ -80,6 +85,11 @@ internalonly: False
 
 ---
 uid: System.Reflection.Assembly.GetType(System.String,System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.Reflection.Assembly.CustomAttributes
 internalonly: False
 ---
 
@@ -264,6 +274,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.Assembly.ExportedTypes
+internalonly: False
+---
+
+---
 uid: System.Reflection.Assembly.GetSatelliteAssembly(System.Globalization.CultureInfo,System.Version)
 internalonly: False
 ---
@@ -325,6 +340,11 @@ internalonly: False
 
 ---
 uid: System.Reflection.Assembly.GetName(System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.Reflection.Assembly.DefinedTypes
 internalonly: False
 ---
 

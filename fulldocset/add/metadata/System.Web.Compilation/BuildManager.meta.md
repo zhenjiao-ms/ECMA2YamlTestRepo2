@@ -59,6 +59,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Compilation.BuildManager.IsPrecompiledApp
+internalonly: False
+---
+
+---
 uid: System.Web.Compilation.BuildManager.GetCachedBuildDependencySet(System.Web.HttpContext,System.String,System.Boolean)
 internalonly: False
 ---
@@ -80,6 +85,16 @@ internalonly: False
 
 ---
 uid: System.Web.Compilation.BuildManager.GetReferencedAssemblies
+internalonly: False
+---
+
+---
+uid: System.Web.Compilation.BuildManager.IsUpdatablePrecompiledApp
+internalonly: False
+---
+
+---
+uid: System.Web.Compilation.BuildManager.AddCompilationDependency(System.String)
 internalonly: False
 ---
 

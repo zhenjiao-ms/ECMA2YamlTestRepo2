@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Principal.WindowsIdentity.DeviceClaims
+internalonly: False
+---
+
+---
 uid: System.Security.Principal.WindowsIdentity.Name
 internalonly: False
 ---
@@ -50,6 +55,11 @@ internalonly: False
 
 ---
 uid: System.Security.Principal.WindowsIdentity.IsAnonymous
+internalonly: False
+---
+
+---
+uid: System.Security.Principal.WindowsIdentity.Claims
 internalonly: False
 ---
 
@@ -74,7 +84,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Principal.WindowsIdentity.DefaultIssuer
+internalonly: False
+---
+
+---
 uid: System.Security.Principal.WindowsIdentity.#ctor(System.IntPtr,System.String,System.Security.Principal.WindowsAccountType,System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.Security.Principal.WindowsIdentity.RunImpersonated``1(Microsoft.Win32.SafeHandles.SafeAccessTokenHandle,System.Func{``0})
 internalonly: False
 ---
 
@@ -85,6 +105,11 @@ internalonly: False
 
 ---
 uid: System.Security.Principal.WindowsIdentity.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+internalonly: False
+---
+
+---
+uid: System.Security.Principal.WindowsIdentity.UserClaims
 internalonly: False
 ---
 
@@ -114,12 +139,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Principal.WindowsIdentity.AccessToken
+internalonly: False
+---
+
+---
 uid: System.Security.Principal.WindowsIdentity.GetCurrent(System.Boolean)
 internalonly: False
 ---
 
 ---
+uid: System.Security.Principal.WindowsIdentity.RunImpersonated(Microsoft.Win32.SafeHandles.SafeAccessTokenHandle,System.Action)
+internalonly: False
+---
+
+---
 uid: System.Security.Principal.WindowsIdentity.GetCurrent
+internalonly: False
+---
+
+---
+uid: System.Security.Principal.WindowsIdentity.Clone
 internalonly: False
 ---
 
@@ -135,6 +175,11 @@ internalonly: False
 
 ---
 uid: System.Security.Principal.WindowsIdentity.IsSystem
+internalonly: False
+---
+
+---
+uid: System.Security.Principal.WindowsIdentity.#ctor(System.Security.Principal.WindowsIdentity)
 internalonly: False
 ---
 

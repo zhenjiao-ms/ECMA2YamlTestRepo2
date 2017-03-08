@@ -9,12 +9,27 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.BinaryMessageEncodingBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.BinaryMessageEncodingBindingElement.System#ServiceModel#Description#IPolicyExportExtension#ExportPolicy(System.ServiceModel.Description.MetadataExporter,System.ServiceModel.Description.PolicyConversionContext)
 internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.BinaryMessageEncodingBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.BinaryMessageEncodingBindingElement.#ctor
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.BinaryMessageEncodingBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 
@@ -40,6 +55,16 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Channels.BinaryMessageEncodingBindingElement.MessageVersion
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.BinaryMessageEncodingBindingElement.CompressionFormat
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.BinaryMessageEncodingBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 

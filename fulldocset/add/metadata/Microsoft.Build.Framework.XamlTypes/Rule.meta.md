@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Framework.XamlTypes.Rule.OverrideMode
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Framework.XamlTypes.Rule.Properties
 internalonly: False
 ---
@@ -49,6 +54,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Framework.XamlTypes.Rule.GetProperty(System.String)
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Framework.XamlTypes.Rule.SwitchPrefix
 internalonly: False
 ---
@@ -65,6 +75,11 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Framework.XamlTypes.Rule.ShowOnlyRuleProperties
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Framework.XamlTypes.Rule.Metadata
 internalonly: False
 ---
 
@@ -115,6 +130,11 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Framework.XamlTypes.Rule.Categories
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Framework.XamlTypes.Rule.PropertyPagesHidden
 internalonly: False
 ---
 

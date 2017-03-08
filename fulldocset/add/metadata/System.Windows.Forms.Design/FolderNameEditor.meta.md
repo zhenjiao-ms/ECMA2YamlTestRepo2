@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Forms.Design.FolderNameEditor.InitializeDialog(System.Windows.Forms.Design.FolderNameEditor.FolderBrowser)
+internalonly: False
+---
+
+---
 uid: System.Windows.Forms.Design.FolderNameEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)
 internalonly: False
 ---

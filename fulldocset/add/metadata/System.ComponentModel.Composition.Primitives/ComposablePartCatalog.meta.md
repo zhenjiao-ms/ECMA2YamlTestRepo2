@@ -24,6 +24,16 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Composition.Primitives.ComposablePartCatalog.GetEnumerator
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Composition.Primitives.ComposablePartCatalog.System#Collections#IEnumerable#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Composition.Primitives.ComposablePartCatalog.Dispose(System.Boolean)
 internalonly: False
 ---

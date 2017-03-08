@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.DataRowView.CreateChildView(System.Data.DataRelation,System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.Data.DataRowView.Item(System.String)
 internalonly: False
 ---
@@ -65,6 +70,11 @@ internalonly: False
 
 ---
 uid: System.Data.DataRowView.BeginEdit
+internalonly: False
+---
+
+---
+uid: System.Data.DataRowView.CreateChildView(System.String,System.Boolean)
 internalonly: False
 ---
 

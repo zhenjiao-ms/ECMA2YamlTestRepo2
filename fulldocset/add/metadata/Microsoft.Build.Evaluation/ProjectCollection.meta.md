@@ -89,6 +89,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Evaluation.ProjectCollection.ProjectAdded
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Evaluation.ProjectCollection.LoadProject(System.String,System.String)
 internalonly: False
 ---
@@ -134,6 +139,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Evaluation.ProjectCollection.ProjectChanged
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Evaluation.ProjectCollection.UnloadAllProjects
 internalonly: False
 ---
@@ -150,6 +160,11 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Evaluation.ProjectCollection.LoadedProjects
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Evaluation.ProjectCollection.ProjectXmlChanged
 internalonly: False
 ---
 
@@ -210,6 +225,11 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Evaluation.ProjectCollection.#ctor
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Evaluation.ProjectCollection.ProjectCollectionChanged
 internalonly: False
 ---
 

@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.Control.EndRenderTracing(System.IO.TextWriter,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Web.UI.Control.MapPathSecure(System.String)
 internalonly: False
 ---
@@ -154,6 +159,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.Control.ValidateRequestMode
+internalonly: False
+---
+
+---
 uid: System.Web.UI.Control.EnsureID
 internalonly: False
 ---
@@ -279,6 +289,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.Control.BeginRenderTracing(System.IO.TextWriter,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Web.UI.Control.UniqueID
 internalonly: False
 ---
@@ -344,6 +359,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.Control.SetTraceData(System.Object,System.Object,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Web.UI.Control.ClearCachedClientID
 internalonly: False
 ---
@@ -370,6 +390,11 @@ internalonly: False
 
 ---
 uid: System.Web.UI.Control.RenderChildren(System.Web.UI.HtmlTextWriter)
+internalonly: False
+---
+
+---
+uid: System.Web.UI.Control.SetTraceData(System.Object,System.Object)
 internalonly: False
 ---
 

@@ -49,6 +49,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Tokens.SecurityAlgorithms.StrTransform
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Tokens.SecurityAlgorithms.RsaOaepKeyWrap
 internalonly: False
 ---

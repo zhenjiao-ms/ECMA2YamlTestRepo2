@@ -9,6 +9,16 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.UdpTransportBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.UdpTransportBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.UdpTransportBindingElement.TimeToLive
 internalonly: False
 ---
@@ -44,6 +54,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.UdpTransportBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.UdpTransportBindingElement.SocketReceiveBufferSize
 internalonly: False
 ---
@@ -54,12 +69,22 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.UdpTransportBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.UdpTransportBindingElement.System#ServiceModel#Description#IWsdlExportExtension#ExportEndpoint(System.ServiceModel.Description.WsdlExporter,System.ServiceModel.Description.WsdlEndpointConversionContext)
 internalonly: False
 ---
 
 ---
 uid: System.ServiceModel.Channels.UdpTransportBindingElement.#ctor
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.UdpTransportBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 

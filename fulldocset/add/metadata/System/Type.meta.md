@@ -229,6 +229,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Type.IsConstructedGenericType
+internalonly: False
+---
+
+---
 uid: System.Type.IsSerializable
 internalonly: False
 ---
@@ -775,6 +780,11 @@ internalonly: False
 
 ---
 uid: System.Type.FilterNameIgnoreCase
+internalonly: False
+---
+
+---
+uid: System.Type.GenericTypeArguments
 internalonly: False
 ---
 

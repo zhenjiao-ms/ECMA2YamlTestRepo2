@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.DataAnnotations.RegularExpressionAttribute.MatchTimeoutInMilliseconds
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.DataAnnotations.RegularExpressionAttribute.#ctor(System.String)
 internalonly: False
 ---

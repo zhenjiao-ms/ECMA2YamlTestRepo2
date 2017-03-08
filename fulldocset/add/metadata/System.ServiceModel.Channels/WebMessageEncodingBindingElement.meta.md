@@ -49,6 +49,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.WebMessageEncodingBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.WebMessageEncodingBindingElement.MaxReadPoolSize
 internalonly: False
 ---
@@ -64,6 +69,21 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.WebMessageEncodingBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.WebMessageEncodingBindingElement.ContentTypeMapper
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.WebMessageEncodingBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.WebMessageEncodingBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---

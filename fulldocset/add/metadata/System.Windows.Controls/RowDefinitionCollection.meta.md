@@ -49,6 +49,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.RowDefinitionCollection.System#Collections#Generic#IEnumerable{System#Windows#Controls#RowDefinition}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.RowDefinitionCollection.Count
 internalonly: False
 ---

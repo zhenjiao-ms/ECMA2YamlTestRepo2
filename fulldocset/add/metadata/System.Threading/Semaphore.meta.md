@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Threading.Semaphore.TryOpenExisting(System.String,System.Threading.Semaphore@)
+internalonly: False
+---
+
+---
 uid: System.Threading.Semaphore.OpenExisting(System.String,System.Security.AccessControl.SemaphoreRights)
 internalonly: False
 ---
@@ -25,6 +30,11 @@ internalonly: False
 
 ---
 uid: System.Threading.Semaphore.SetAccessControl(System.Security.AccessControl.SemaphoreSecurity)
+internalonly: False
+---
+
+---
+uid: System.Threading.Semaphore.TryOpenExisting(System.String,System.Security.AccessControl.SemaphoreRights,System.Threading.Semaphore@)
 internalonly: False
 ---
 

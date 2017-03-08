@@ -14,12 +14,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.ActivityDesigner.OnModelItemChanged(System.Object)
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.ActivityDesigner.GetAutomationIdMemberName
 internalonly: False
 ---
 
 ---
 uid: System.Activities.Presentation.ActivityDesigner.#ctor
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.ActivityDesigner.OnEditAnnotation
 internalonly: False
 ---
 
@@ -35,5 +45,10 @@ internalonly: False
 
 ---
 uid: System.Activities.Presentation.ActivityDesigner.OnPreviewMouseDown(System.Windows.Input.MouseButtonEventArgs)
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.ActivityDesigner.GetAutomationItemStatus
 internalonly: False
 ---

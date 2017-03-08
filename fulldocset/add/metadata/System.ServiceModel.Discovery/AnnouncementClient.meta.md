@@ -99,6 +99,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Discovery.AnnouncementClient.AnnounceOfflineTaskAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Discovery.AnnouncementClient.ChannelFactory
 internalonly: False
 ---
@@ -175,5 +180,10 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Discovery.AnnouncementClient.BeginAnnounceOnline(System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Discovery.AnnouncementClient.AnnounceOnlineTaskAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)
 internalonly: False
 ---

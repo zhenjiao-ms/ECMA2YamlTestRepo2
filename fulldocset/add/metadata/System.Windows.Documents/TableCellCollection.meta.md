@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Documents.TableCellCollection.System#Collections#Generic#IEnumerable{System#Windows#Documents#TableCell}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Documents.TableCellCollection.CopyTo(System.Array,System.Int32)
 internalonly: False
 ---

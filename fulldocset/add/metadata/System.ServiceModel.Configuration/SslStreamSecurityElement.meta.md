@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Configuration.SslStreamSecurityElement.SslProtocols
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Configuration.SslStreamSecurityElement.CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement)
 internalonly: False
 ---

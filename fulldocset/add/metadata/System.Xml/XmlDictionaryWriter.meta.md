@@ -89,12 +89,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlDictionaryWriter.WriteBase64Async(System.Byte[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlDictionaryWriter.WriteValue(System.TimeSpan)
 internalonly: False
 ---
 
 ---
 uid: System.Xml.XmlDictionaryWriter.WriteAttributeString(System.Xml.XmlDictionaryString,System.Xml.XmlDictionaryString,System.String)
+internalonly: False
+---
+
+---
+uid: System.Xml.XmlDictionaryWriter.WriteValueAsync(System.Xml.IStreamProvider)
 internalonly: False
 ---
 

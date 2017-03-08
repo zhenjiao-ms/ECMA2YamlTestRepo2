@@ -9,7 +9,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsKeyNameSetExplicitly
+internalonly: False
+---
+
+---
 uid: System.Runtime.Serialization.CollectionDataContractAttribute.Namespace
+internalonly: False
+---
+
+---
+uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsNamespaceSetExplicitly
 internalonly: False
 ---
 
@@ -29,7 +39,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsValueNameSetExplicitly
+internalonly: False
+---
+
+---
+uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsItemNameSetExplicitly
+internalonly: False
+---
+
+---
+uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsNameSetExplicitly
+internalonly: False
+---
+
+---
 uid: System.Runtime.Serialization.CollectionDataContractAttribute.ValueName
+internalonly: False
+---
+
+---
+uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsReferenceSetExplicitly
 internalonly: False
 ---
 

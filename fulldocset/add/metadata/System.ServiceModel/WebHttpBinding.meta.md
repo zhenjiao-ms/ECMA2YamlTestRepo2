@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.WebHttpBinding.BuildChannelFactory``1(System.ServiceModel.Channels.BindingParameterCollection)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.WebHttpBinding.BypassProxyOnLocal
 internalonly: False
 ---

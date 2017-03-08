@@ -14,6 +14,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.HttpCacheVaryByHeaders.SetHeaders(System.String[])
+internalonly: False
+---
+
+---
+uid: System.Web.HttpCacheVaryByHeaders.GetHeaders
+internalonly: False
+---
+
+---
 uid: System.Web.HttpCacheVaryByHeaders.AcceptTypes
 internalonly: False
 ---

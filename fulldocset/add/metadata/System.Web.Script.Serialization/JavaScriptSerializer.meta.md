@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Script.Serialization.JavaScriptSerializer.Deserialize``1(System.String)
+internalonly: False
+---
+
+---
 uid: System.Web.Script.Serialization.JavaScriptSerializer.Deserialize(System.String,System.Type)
 internalonly: False
 ---
@@ -35,6 +40,11 @@ internalonly: False
 
 ---
 uid: System.Web.Script.Serialization.JavaScriptSerializer.Serialize(System.Object,System.Text.StringBuilder)
+internalonly: False
+---
+
+---
+uid: System.Web.Script.Serialization.JavaScriptSerializer.ConvertToType``1(System.Object)
 internalonly: False
 ---
 

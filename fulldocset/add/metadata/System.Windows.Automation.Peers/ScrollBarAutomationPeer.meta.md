@@ -27,3 +27,8 @@ internalonly: False
 uid: System.Windows.Automation.Peers.ScrollBarAutomationPeer.#ctor(System.Windows.Controls.Primitives.ScrollBar)
 internalonly: False
 ---
+
+---
+uid: System.Windows.Automation.Peers.ScrollBarAutomationPeer.IsContentElementCore
+internalonly: False
+---

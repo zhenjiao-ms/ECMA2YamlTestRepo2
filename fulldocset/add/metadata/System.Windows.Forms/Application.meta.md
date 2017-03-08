@@ -99,6 +99,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Forms.Application.RegisterMessageLoop(System.Windows.Forms.Application.MessageLoopCallback)
+internalonly: False
+---
+
+---
 uid: System.Windows.Forms.Application.SetUnhandledExceptionMode(System.Windows.Forms.UnhandledExceptionMode,System.Boolean)
 internalonly: False
 ---

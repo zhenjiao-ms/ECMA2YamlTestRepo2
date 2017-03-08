@@ -59,6 +59,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Description.ServiceCredentials.UseIdentityConfiguration
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Description.ServiceCredentials.Peer
 internalonly: False
 ---
@@ -69,11 +74,21 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Description.ServiceCredentials.ExceptionMapper
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Description.ServiceCredentials.System#ServiceModel#Description#IServiceBehavior#AddBindingParameters(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase,System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint},System.ServiceModel.Channels.BindingParameterCollection)
 internalonly: False
 ---
 
 ---
 uid: System.ServiceModel.Description.ServiceCredentials.ServiceCertificate
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Description.ServiceCredentials.IdentityConfiguration
 internalonly: False
 ---

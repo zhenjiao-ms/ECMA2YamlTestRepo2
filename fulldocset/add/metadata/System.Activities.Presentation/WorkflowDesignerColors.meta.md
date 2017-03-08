@@ -4,7 +4,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewItemTextColor
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationBackgroundGradientEndColor
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.FontFamilyKey
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationBackgroundGradientEndColorKey
 internalonly: False
 ---
 
@@ -14,7 +29,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewExpandedArrowColorKey
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.DesignerViewExpandAllCollapseAllButtonColorKey
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationDockButtonHoverBorderColor
 internalonly: False
 ---
 
@@ -54,6 +79,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewItemTextColorKey
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.ContextMenuBorderColorKey
 internalonly: False
 ---
@@ -64,7 +94,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationBorderColorKey
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationBorderColor
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationBackgroundGradientMiddleColorKey
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.PropertyInspectorSelectedForegroundBrushKey
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationDockTextColor
 internalonly: False
 ---
 
@@ -99,6 +149,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationBackgroundGradientBeginColor
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.ContextMenuBackgroundGradientBeginColor
 internalonly: False
 ---
@@ -114,6 +169,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationBackgroundGradientBeginColorKey
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.DesignerViewStatusBarBackgroundColorKey
 internalonly: False
 ---
@@ -124,12 +184,42 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewCollapsedArrowBorderColorKey
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewExpandedArrowBorderColor
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.ContextMenuIconAreaColorKey
 internalonly: False
 ---
 
 ---
 uid: System.Activities.Presentation.WorkflowDesignerColors.ContextMenuItemTextSelectedColor
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationDockButtonHoverColorKey
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationUndockTextColorKey
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewItemSelectedTextColor
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewCollapsedArrowHoverBorderColorKey
 internalonly: False
 ---
 
@@ -199,6 +289,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewCollapsedArrowBorderColor
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.PropertyInspectorToolBarItemSelectedBorderBrushKey
 internalonly: False
 ---
@@ -244,7 +339,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.RubberBandRectangleColorKey
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.WorkflowViewElementBackgroundColorKey
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationDockButtonHoverBorderColorKey
 internalonly: False
 ---
 
@@ -294,6 +399,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationUndockTextColor
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.DesignerViewShellBarSelectedColorGradientEndColor
 internalonly: False
 ---
@@ -304,12 +414,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationDockButtonHoverBackgroundColor
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.PropertyInspectorToolBarTextBoxBorderBrushKey
 internalonly: False
 ---
 
 ---
 uid: System.Activities.Presentation.WorkflowDesignerColors.ContextMenuBackgroundGradientBeginColorKey
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewItemSelectedTextColorKey
 internalonly: False
 ---
 
@@ -349,7 +469,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewItemHighlightBackgroundColor
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.ContextMenuMouseOverMiddle1Color
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationBackgroundGradientMiddleColor
 internalonly: False
 ---
 
@@ -359,7 +489,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewBackgroundColor
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.FlowchartExpressionButtonColorKey
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationDockButtonColorKey
 internalonly: False
 ---
 
@@ -379,6 +519,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewItemHighlightBackgroundColorKey
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.GridViewRowHoverColor
 internalonly: False
 ---
@@ -394,7 +539,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationDockButtonHoverColor
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.FlowchartExpressionButtonPressedColorKey
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewExpandedArrowBorderColorKey
 internalonly: False
 ---
 
@@ -409,6 +564,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationDockTextColorKey
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.ContextMenuMouseOverMiddle2Color
 internalonly: False
 ---
@@ -419,12 +579,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationDockButtonColor
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesignerColors.WorkflowViewElementBorderColorKey
 internalonly: False
 ---
 
 ---
 uid: System.Activities.Presentation.WorkflowDesignerColors.ContextMenuItemTextDisabledColor
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.AnnotationDockButtonHoverBackgroundColorKey
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewCollapsedArrowHoverBorderColor
 internalonly: False
 ---
 
@@ -440,6 +615,11 @@ internalonly: False
 
 ---
 uid: System.Activities.Presentation.WorkflowDesignerColors.DesignerViewBackgroundColor
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewBackgroundColorKey
 internalonly: False
 ---
 
@@ -460,6 +640,11 @@ internalonly: False
 
 ---
 uid: System.Activities.Presentation.WorkflowDesignerColors.WorkflowViewElementBorderColor
+internalonly: False
+---
+
+---
+uid: System.Activities.Presentation.WorkflowDesignerColors.OutlineViewExpandedArrowColor
 internalonly: False
 ---
 

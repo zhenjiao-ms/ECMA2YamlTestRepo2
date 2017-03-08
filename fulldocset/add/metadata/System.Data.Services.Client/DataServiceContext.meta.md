@@ -24,6 +24,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Services.Client.DataServiceContext.Execute``1(System.Uri)
+internalonly: False
+---
+
+---
+uid: System.Data.Services.Client.DataServiceContext.CreateQuery``1(System.String)
+internalonly: False
+---
+
+---
 uid: System.Data.Services.Client.DataServiceContext.LoadProperty(System.Object,System.String)
 internalonly: False
 ---
@@ -69,6 +79,21 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Services.Client.DataServiceContext.BeginExecute``1(System.Uri,System.AsyncCallback,System.Object)
+internalonly: False
+---
+
+---
+uid: System.Data.Services.Client.DataServiceContext.Execute``1(System.Data.Services.Client.DataServiceQueryContinuation{``0})
+internalonly: False
+---
+
+---
+uid: System.Data.Services.Client.DataServiceContext.TryGetEntity``1(System.Uri,``0@)
+internalonly: False
+---
+
+---
 uid: System.Data.Services.Client.DataServiceContext.EndLoadProperty(System.IAsyncResult)
 internalonly: False
 ---
@@ -105,6 +130,11 @@ internalonly: False
 
 ---
 uid: System.Data.Services.Client.DataServiceContext.GetReadStream(System.Object,System.String)
+internalonly: False
+---
+
+---
+uid: System.Data.Services.Client.DataServiceContext.EndExecute``1(System.IAsyncResult)
 internalonly: False
 ---
 
@@ -194,6 +224,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Services.Client.DataServiceContext.BeginExecute``1(System.Data.Services.Client.DataServiceQueryContinuation{``0},System.AsyncCallback,System.Object)
+internalonly: False
+---
+
+---
 uid: System.Data.Services.Client.DataServiceContext.MergeOption
 internalonly: False
 ---
@@ -230,6 +265,11 @@ internalonly: False
 
 ---
 uid: System.Data.Services.Client.DataServiceContext.IgnoreMissingProperties
+internalonly: False
+---
+
+---
+uid: System.Data.Services.Client.DataServiceContext.LoadProperty``1(System.Object,System.String,System.Data.Services.Client.DataServiceQueryContinuation{``0})
 internalonly: False
 ---
 

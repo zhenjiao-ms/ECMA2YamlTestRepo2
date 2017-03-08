@@ -27,3 +27,8 @@ internalonly: False
 uid: System.Web.ApplicationServices.ProfileService.ValidatingProperties
 internalonly: False
 ---
+
+---
+uid: System.Web.ApplicationServices.ProfileService.#ctor
+internalonly: False
+---

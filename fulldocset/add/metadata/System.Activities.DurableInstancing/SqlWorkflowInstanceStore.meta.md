@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.DurableInstancing.SqlWorkflowInstanceStore.MaxConnectionRetries
+internalonly: False
+---
+
+---
 uid: System.Activities.DurableInstancing.SqlWorkflowInstanceStore.HostLockRenewalPeriod
 internalonly: False
 ---

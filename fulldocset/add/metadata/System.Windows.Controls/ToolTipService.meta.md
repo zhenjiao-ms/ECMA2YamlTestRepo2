@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ToolTipService.AddToolTipOpeningHandler(System.Windows.DependencyObject,System.Windows.Controls.ToolTipEventHandler)
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ToolTipService.GetIsEnabled(System.Windows.DependencyObject)
 internalonly: False
 ---
@@ -54,6 +59,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ToolTipService.RemoveToolTipOpeningHandler(System.Windows.DependencyObject,System.Windows.Controls.ToolTipEventHandler)
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ToolTipService.VerticalOffsetProperty
 internalonly: False
 ---
@@ -65,6 +75,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.ToolTipService.ToolTipProperty
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.ToolTipService.AddToolTipClosingHandler(System.Windows.DependencyObject,System.Windows.Controls.ToolTipEventHandler)
 internalonly: False
 ---
 
@@ -85,6 +100,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.ToolTipService.GetVerticalOffset(System.Windows.DependencyObject)
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.ToolTipService.RemoveToolTipClosingHandler(System.Windows.DependencyObject,System.Windows.Controls.ToolTipEventHandler)
 internalonly: False
 ---
 

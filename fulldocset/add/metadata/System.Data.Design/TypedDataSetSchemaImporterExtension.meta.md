@@ -17,3 +17,8 @@ internalonly: False
 uid: System.Data.Design.TypedDataSetSchemaImporterExtension.#ctor
 internalonly: False
 ---
+
+---
+uid: System.Data.Design.TypedDataSetSchemaImporterExtension.#ctor(System.Data.Design.TypedDataSetGenerator.GenerateOption)
+internalonly: False
+---

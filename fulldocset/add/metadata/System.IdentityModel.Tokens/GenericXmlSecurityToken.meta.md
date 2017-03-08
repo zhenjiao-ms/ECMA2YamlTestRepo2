@@ -59,6 +59,16 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Tokens.GenericXmlSecurityToken.CreateKeyIdentifierClause``1
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Tokens.GenericXmlSecurityToken.#ctor(System.Xml.XmlElement,System.IdentityModel.Tokens.SecurityToken,System.DateTime,System.DateTime,System.IdentityModel.Tokens.SecurityKeyIdentifierClause,System.IdentityModel.Tokens.SecurityKeyIdentifierClause,System.Collections.ObjectModel.ReadOnlyCollection{System.IdentityModel.Policy.IAuthorizationPolicy})
+internalonly: False
+---
+
+---
+uid: System.IdentityModel.Tokens.GenericXmlSecurityToken.CanCreateKeyIdentifierClause``1
 internalonly: False
 ---

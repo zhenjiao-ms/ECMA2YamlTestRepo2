@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.ScriptManager.RegisterNamedClientScriptResource(System.Web.UI.Control,System.String)
+internalonly: False
+---
+
+---
 uid: System.Web.UI.ScriptManager.RegisterDataItem(System.Web.UI.Control,System.String)
 internalonly: False
 ---
@@ -194,6 +199,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.ScriptManager.RegisterNamedClientScriptResource(System.Web.UI.Page,System.String)
+internalonly: False
+---
+
+---
 uid: System.Web.UI.ScriptManager.RegisterClientScriptResource(System.Web.UI.Page,System.Type,System.String)
 internalonly: False
 ---
@@ -299,6 +309,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.ScriptManager.RegisterScriptControl``1(``0)
+internalonly: False
+---
+
+---
 uid: System.Web.UI.ScriptManager.RegisterScriptDescriptors(System.Web.UI.IExtenderControl)
 internalonly: False
 ---
@@ -344,6 +359,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.ScriptManager.EnableCdnFallback
+internalonly: False
+---
+
+---
 uid: System.Web.UI.ScriptManager.GetRegisteredExpandoAttributes
 internalonly: False
 ---
@@ -355,6 +375,11 @@ internalonly: False
 
 ---
 uid: System.Web.UI.ScriptManager.GetRegisteredClientScriptBlocks
+internalonly: False
+---
+
+---
+uid: System.Web.UI.ScriptManager.RegisterExtenderControl``1(``0,System.Web.UI.Control)
 internalonly: False
 ---
 

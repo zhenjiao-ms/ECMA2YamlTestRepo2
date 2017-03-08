@@ -44,6 +44,21 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Cryptography.CryptoStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
+uid: System.Security.Cryptography.CryptoStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
+uid: System.Security.Cryptography.CryptoStream.FlushAsync(System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.Security.Cryptography.CryptoStream.Read(System.Byte[],System.Int32,System.Int32)
 internalonly: False
 ---

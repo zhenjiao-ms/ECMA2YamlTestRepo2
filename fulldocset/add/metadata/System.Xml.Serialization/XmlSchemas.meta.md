@@ -59,6 +59,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.Serialization.XmlSchemas.System#Collections#Generic#IEnumerable{System#Xml#Schema#XmlSchema}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Xml.Serialization.XmlSchemas.OnInsert(System.Int32,System.Object)
 internalonly: False
 ---

@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Caching.CacheDependency.GetFileDependencies
+internalonly: False
+---
+
+---
 uid: System.Web.Caching.CacheDependency.#ctor(System.String[],System.String[],System.Web.Caching.CacheDependency,System.DateTime)
 internalonly: False
 ---

@@ -209,6 +209,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.MethodBase.MethodImplementationFlags
+internalonly: False
+---
+
+---
 uid: System.Reflection.MethodBase.IsAssembly
 internalonly: False
 ---

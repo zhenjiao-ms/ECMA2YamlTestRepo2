@@ -59,6 +59,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlDataReader.NextResultAsync(System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlDataReader.GetTimeSpan(System.Int32)
 internalonly: False
 ---
@@ -70,6 +75,11 @@ internalonly: False
 
 ---
 uid: System.Data.SqlClient.SqlDataReader.System#Data#IDataRecord#GetData(System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlDataReader.GetStream(System.Int32)
 internalonly: False
 ---
 
@@ -89,7 +99,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlDataReader.GetTextReader(System.Int32)
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlDataReader.NextResult
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlDataReader.IsDBNullAsync(System.Int32,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlDataReader.GetFieldValue``1(System.Int32)
 internalonly: False
 ---
 
@@ -209,6 +234,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlDataReader.ReadAsync(System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlDataReader.GetInt32(System.Int32)
 internalonly: False
 ---
@@ -254,6 +284,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlDataReader.GetFieldValueAsync``1(System.Int32,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlDataReader.IsClosed
 internalonly: False
 ---
@@ -295,6 +330,11 @@ internalonly: False
 
 ---
 uid: System.Data.SqlClient.SqlDataReader.GetSqlValue(System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlDataReader.GetXmlReader(System.Int32)
 internalonly: False
 ---
 

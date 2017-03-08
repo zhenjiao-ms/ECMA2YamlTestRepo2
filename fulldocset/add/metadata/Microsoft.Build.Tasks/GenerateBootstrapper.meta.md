@@ -74,6 +74,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Tasks.GenerateBootstrapper.VisualStudioVersion
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Tasks.GenerateBootstrapper.SupportUrl
 internalonly: False
 ---

@@ -99,6 +99,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.MemberInfo.CustomAttributes
+internalonly: False
+---
+
+---
 uid: System.Reflection.MemberInfo.#ctor
 internalonly: False
 ---

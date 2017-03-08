@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Presentation.WorkflowDesigner.OutlineView
+internalonly: False
+---
+
+---
 uid: System.Activities.Presentation.WorkflowDesigner.ContextMenu
 internalonly: False
 ---

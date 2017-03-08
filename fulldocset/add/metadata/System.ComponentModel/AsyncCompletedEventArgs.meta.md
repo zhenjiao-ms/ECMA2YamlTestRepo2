@@ -27,3 +27,8 @@ internalonly: False
 uid: System.ComponentModel.AsyncCompletedEventArgs.UserState
 internalonly: False
 ---
+
+---
+uid: System.ComponentModel.AsyncCompletedEventArgs.#ctor
+internalonly: False
+---

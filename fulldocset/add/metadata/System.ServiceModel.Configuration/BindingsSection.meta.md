@@ -29,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Configuration.BindingsSection.NetHttpBinding
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Configuration.BindingsSection.BindingCollections
 internalonly: False
 ---
@@ -49,6 +54,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Configuration.BindingsSection.NetHttpsBinding
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Configuration.BindingsSection.NetTcpBinding
 internalonly: False
 ---
@@ -60,6 +70,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Configuration.BindingsSection.#ctor
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Configuration.BindingsSection.BasicHttpsBinding
 internalonly: False
 ---
 

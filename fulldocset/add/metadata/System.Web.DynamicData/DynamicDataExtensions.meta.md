@@ -39,6 +39,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.DynamicData.DynamicDataExtensions.LoadWith``1(System.Web.UI.WebControls.LinqDataSource)
+internalonly: False
+---
+
+---
 uid: System.Web.DynamicData.DynamicDataExtensions.SetMetaTable(System.Web.UI.INamingContainer,System.Web.DynamicData.MetaTable,System.Collections.Generic.IDictionary{System.String,System.Object})
 internalonly: False
 ---

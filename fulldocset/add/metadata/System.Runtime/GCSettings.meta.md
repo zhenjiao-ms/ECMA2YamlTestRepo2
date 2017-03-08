@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.GCSettings.LargeObjectHeapCompactionMode
+internalonly: False
+---
+
+---
 uid: System.Runtime.GCSettings.IsServerGC
 internalonly: False
 ---

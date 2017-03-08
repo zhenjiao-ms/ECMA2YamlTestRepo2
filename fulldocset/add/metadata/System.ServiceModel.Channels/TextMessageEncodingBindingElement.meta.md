@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.TextMessageEncodingBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.TextMessageEncodingBindingElement.MaxWritePoolSize
 internalonly: False
 ---
@@ -49,6 +54,16 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.TextMessageEncodingBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.TextMessageEncodingBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.TextMessageEncodingBindingElement.CreateMessageEncoderFactory
 internalonly: False
 ---
@@ -60,6 +75,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Channels.TextMessageEncodingBindingElement.MessageVersion
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.TextMessageEncodingBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 

@@ -54,6 +54,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.TypeDelegator.IsConstructedGenericType
+internalonly: False
+---
+
+---
 uid: System.Reflection.TypeDelegator.GetEvents(System.Reflection.BindingFlags)
 internalonly: False
 ---
@@ -220,6 +225,11 @@ internalonly: False
 
 ---
 uid: System.Reflection.TypeDelegator.Namespace
+internalonly: False
+---
+
+---
+uid: System.Reflection.TypeDelegator.IsAssignableFrom(System.Reflection.TypeInfo)
 internalonly: False
 ---
 

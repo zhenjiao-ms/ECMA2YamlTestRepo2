@@ -99,6 +99,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Security.Tokens.IssuedSecurityTokenParameters.UseStrTransform
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Security.Tokens.IssuedSecurityTokenParameters.SupportsServerAuthentication
 internalonly: False
 ---

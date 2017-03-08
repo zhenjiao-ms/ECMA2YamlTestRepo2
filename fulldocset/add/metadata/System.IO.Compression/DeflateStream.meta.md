@@ -74,6 +74,16 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.Compression.DeflateStream.#ctor(System.IO.Stream,System.IO.Compression.CompressionLevel)
+internalonly: False
+---
+
+---
+uid: System.IO.Compression.DeflateStream.#ctor(System.IO.Stream,System.IO.Compression.CompressionLevel,System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.IO.Compression.DeflateStream.EndRead(System.IAsyncResult)
 internalonly: False
 ---

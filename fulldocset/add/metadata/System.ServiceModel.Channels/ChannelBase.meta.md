@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.ChannelBase.GetProperty``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.ChannelBase.#ctor(System.ServiceModel.Channels.ChannelManagerBase)
 internalonly: False
 ---

@@ -4,6 +4,16 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Design.DesignerOptionService.ShowDialog(System.ComponentModel.Design.DesignerOptionService.DesignerOptionCollection,System.Object)
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Design.DesignerOptionService.CreateOptionCollection(System.ComponentModel.Design.DesignerOptionService.DesignerOptionCollection,System.String,System.Object)
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Design.DesignerOptionService.#ctor
 internalonly: False
 ---
@@ -15,6 +25,11 @@ internalonly: False
 
 ---
 uid: System.ComponentModel.Design.DesignerOptionService.Options
+internalonly: False
+---
+
+---
+uid: System.ComponentModel.Design.DesignerOptionService.PopulateOptionCollection(System.ComponentModel.Design.DesignerOptionService.DesignerOptionCollection)
 internalonly: False
 ---
 

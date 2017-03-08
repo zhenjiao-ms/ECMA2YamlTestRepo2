@@ -29,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Tasks.ResolveAssemblyReference.IgnoreTargetFrameworkAttributeVersionMismatch
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Tasks.ResolveAssemblyReference.SerializationAssemblyFiles
 internalonly: False
 ---
@@ -74,6 +79,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Tasks.ResolveAssemblyReference.IgnoreVersionForFrameworkReferences
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Tasks.ResolveAssemblyReference.FindSerializationAssemblies
 internalonly: False
 ---
@@ -95,6 +105,11 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Tasks.ResolveAssemblyReference.Execute
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Tasks.ResolveAssemblyReference.WarnOrErrorOnTargetArchitectureMismatch
 internalonly: False
 ---
 
@@ -160,6 +175,11 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Tasks.ResolveAssemblyReference.LatestTargetFrameworkDirectories
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Tasks.ResolveAssemblyReference.ResolvedSDKReferences
 internalonly: False
 ---
 

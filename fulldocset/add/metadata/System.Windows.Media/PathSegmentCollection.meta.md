@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.PathSegmentCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#PathSegment}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.PathSegmentCollection.Remove(System.Windows.Media.PathSegment)
 internalonly: False
 ---
@@ -45,6 +50,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.PathSegmentCollection.Item(System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.PathSegmentCollection.System#Collections#Generic#ICollection{System#Windows#Media#PathSegment}#IsReadOnly
 internalonly: False
 ---
 

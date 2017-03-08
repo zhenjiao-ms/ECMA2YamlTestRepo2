@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Globalization.CultureInfo.DefaultThreadCurrentCulture
+internalonly: False
+---
+
+---
 uid: System.Globalization.CultureInfo.ThreeLetterISOLanguageName
 internalonly: False
 ---
@@ -215,5 +220,10 @@ internalonly: False
 
 ---
 uid: System.Globalization.CultureInfo.InstalledUICulture
+internalonly: False
+---
+
+---
+uid: System.Globalization.CultureInfo.DefaultThreadCurrentUICulture
 internalonly: False
 ---

@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Configuration.HttpTransportElement.WebSocketSettings
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Configuration.HttpTransportElement.InitializeFrom(System.ServiceModel.Channels.BindingElement)
 internalonly: False
 ---
@@ -64,6 +69,16 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Configuration.HttpTransportElement.MessageHandlerFactory
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Configuration.HttpTransportElement.MaxPendingAccepts
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Configuration.HttpTransportElement.KeepAliveEnabled
 internalonly: False
 ---
@@ -80,6 +95,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Configuration.HttpTransportElement.HostNameComparisonMode
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Configuration.HttpTransportElement.RequestInitializationTimeout
 internalonly: False
 ---
 

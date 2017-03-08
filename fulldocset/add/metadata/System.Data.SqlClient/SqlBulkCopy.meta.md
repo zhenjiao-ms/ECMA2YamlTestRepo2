@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlBulkCopy.WriteToServerAsync(System.Data.Common.DbDataReader,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlBulkCopy.DestinationTableName
 internalonly: False
 ---
@@ -34,7 +39,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlBulkCopy.WriteToServerAsync(System.Data.DataRow[],System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlBulkCopy.WriteToServer(System.Data.DataTable)
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlBulkCopy.WriteToServerAsync(System.Data.IDataReader)
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlBulkCopy.WriteToServer(System.Data.Common.DbDataReader)
 internalonly: False
 ---
 
@@ -54,7 +74,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlBulkCopy.WriteToServerAsync(System.Data.Common.DbDataReader)
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlBulkCopy.System#IDisposable#Dispose
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlBulkCopy.WriteToServerAsync(System.Data.DataTable,System.Data.DataRowState)
 internalonly: False
 ---
 
@@ -64,7 +94,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlBulkCopy.WriteToServerAsync(System.Data.IDataReader,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlBulkCopy.WriteToServer(System.Data.DataTable,System.Data.DataRowState)
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlBulkCopy.WriteToServerAsync(System.Data.DataTable,System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlBulkCopy.WriteToServerAsync(System.Data.DataTable,System.Data.DataRowState,System.Threading.CancellationToken)
 internalonly: False
 ---
 
@@ -74,7 +119,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.SqlClient.SqlBulkCopy.EnableStreaming
+internalonly: False
+---
+
+---
 uid: System.Data.SqlClient.SqlBulkCopy.Close
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlBulkCopy.WriteToServerAsync(System.Data.DataTable)
+internalonly: False
+---
+
+---
+uid: System.Data.SqlClient.SqlBulkCopy.WriteToServerAsync(System.Data.DataRow[])
 internalonly: False
 ---
 

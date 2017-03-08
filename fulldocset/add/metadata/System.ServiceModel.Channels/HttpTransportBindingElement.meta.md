@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.HttpTransportBindingElement.MaxPendingAccepts
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.HttpTransportBindingElement.System#ServiceModel#Description#IPolicyExportExtension#ExportPolicy(System.ServiceModel.Description.MetadataExporter,System.ServiceModel.Description.PolicyConversionContext)
 internalonly: False
 ---
@@ -24,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.HttpTransportBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.HttpTransportBindingElement.Realm
 internalonly: False
 ---
@@ -34,7 +44,17 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.HttpTransportBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.HttpTransportBindingElement.System#ServiceModel#Description#IWsdlExportExtension#ExportContract(System.ServiceModel.Description.WsdlExporter,System.ServiceModel.Description.WsdlContractConversionContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.HttpTransportBindingElement.WebSocketSettings
 internalonly: False
 ---
 
@@ -50,6 +70,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Channels.HttpTransportBindingElement.UnsafeConnectionNtlmAuthentication
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.HttpTransportBindingElement.UpdateAuthenticationSchemes(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 
@@ -74,12 +99,37 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.HttpTransportBindingElement.MessageHandlerFactory
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.HttpTransportBindingElement.ShouldSerializeWebSocketSettings
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.HttpTransportBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.HttpTransportBindingElement.ShouldSerializeMessageHandlerFactory
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.HttpTransportBindingElement.DecompressionEnabled
 internalonly: False
 ---
 
 ---
 uid: System.ServiceModel.Channels.HttpTransportBindingElement.ProxyAddress
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.HttpTransportBindingElement.RequestInitializationTimeout
 internalonly: False
 ---
 
@@ -94,12 +144,22 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.HttpTransportBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.HttpTransportBindingElement.ProxyAuthenticationScheme
 internalonly: False
 ---
 
 ---
 uid: System.ServiceModel.Channels.HttpTransportBindingElement.#ctor(System.ServiceModel.Channels.HttpTransportBindingElement)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.HttpTransportBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 

@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Selectors.SecurityTokenResolver.LoadCustomConfiguration(System.Xml.XmlNodeList)
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken(System.IdentityModel.Tokens.SecurityKeyIdentifierClause)
 internalonly: False
 ---

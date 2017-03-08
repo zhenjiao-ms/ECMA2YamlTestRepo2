@@ -19,6 +19,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Objects.ObjectParameterCollection.System#Collections#Generic#IEnumerable{System#Data#Objects#ObjectParameter}#GetEnumerator
+internalonly: False
+---
+
+---
+uid: System.Data.Objects.ObjectParameterCollection.System#Collections#Generic#ICollection{System#Data#Objects#ObjectParameter}#IsReadOnly
+internalonly: False
+---
+
+---
 uid: System.Data.Objects.ObjectParameterCollection.Clear
 internalonly: False
 ---

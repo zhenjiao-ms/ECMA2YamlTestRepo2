@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA256Url
+internalonly: False
+---
+
+---
 uid: System.Security.Cryptography.Xml.SignedXml.XmlDsigXsltTransformUrl
 internalonly: False
 ---
@@ -69,6 +74,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Cryptography.Xml.SignedXml.SafeCanonicalizationMethods
+internalonly: False
+---
+
+---
+uid: System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA384Url
+internalonly: False
+---
+
+---
 uid: System.Security.Cryptography.Xml.SignedXml.XmlDecryptionTransformUrl
 internalonly: False
 ---
@@ -90,6 +105,11 @@ internalonly: False
 
 ---
 uid: System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA1Url
+internalonly: False
+---
+
+---
+uid: System.Security.Cryptography.Xml.SignedXml.XmlDsigSHA256Url
 internalonly: False
 ---
 
@@ -184,12 +204,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA512Url
+internalonly: False
+---
+
+---
+uid: System.Security.Cryptography.Xml.SignedXml.XmlDsigSHA512Url
+internalonly: False
+---
+
+---
 uid: System.Security.Cryptography.Xml.SignedXml.EncryptedXml
 internalonly: False
 ---
 
 ---
 uid: System.Security.Cryptography.Xml.SignedXml.CheckSignature(System.Security.Cryptography.AsymmetricAlgorithm)
+internalonly: False
+---
+
+---
+uid: System.Security.Cryptography.Xml.SignedXml.XmlDsigSHA384Url
 internalonly: False
 ---
 

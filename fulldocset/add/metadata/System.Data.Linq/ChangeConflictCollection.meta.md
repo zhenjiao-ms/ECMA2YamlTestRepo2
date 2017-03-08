@@ -39,6 +39,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Linq.ChangeConflictCollection.System#Collections#Generic#ICollection{System#Data#Linq#ObjectChangeConflict}#Add(System.Data.Linq.ObjectChangeConflict)
+internalonly: False
+---
+
+---
 uid: System.Data.Linq.ChangeConflictCollection.Count
 internalonly: False
 ---
@@ -50,6 +55,11 @@ internalonly: False
 
 ---
 uid: System.Data.Linq.ChangeConflictCollection.CopyTo(System.Data.Linq.ObjectChangeConflict[],System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Data.Linq.ChangeConflictCollection.System#Collections#Generic#ICollection{System#Data#Linq#ObjectChangeConflict}#IsReadOnly
 internalonly: False
 ---
 

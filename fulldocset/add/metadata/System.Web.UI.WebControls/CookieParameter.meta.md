@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.WebControls.CookieParameter.ValidateInput
+internalonly: False
+---
+
+---
 uid: System.Web.UI.WebControls.CookieParameter.#ctor(System.String,System.TypeCode,System.String)
 internalonly: False
 ---

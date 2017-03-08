@@ -44,12 +44,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Common.DbConnection.OpenAsync(System.Threading.CancellationToken)
+internalonly: False
+---
+
+---
 uid: System.Data.Common.DbConnection.ConnectionTimeout
 internalonly: False
 ---
 
 ---
 uid: System.Data.Common.DbConnection.ChangeDatabase(System.String)
+internalonly: False
+---
+
+---
+uid: System.Data.Common.DbConnection.OpenAsync
 internalonly: False
 ---
 

@@ -49,6 +49,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.Effects.BitmapEffectCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#Effects#BitmapEffect}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.Effects.BitmapEffectCollection.IndexOf(System.Windows.Media.Effects.BitmapEffect)
 internalonly: False
 ---
@@ -75,6 +80,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.Effects.BitmapEffectCollection.System#Collections#IList#Contains(System.Object)
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.Effects.BitmapEffectCollection.System#Collections#Generic#ICollection{System#Windows#Media#Effects#BitmapEffect}#IsReadOnly
 internalonly: False
 ---
 

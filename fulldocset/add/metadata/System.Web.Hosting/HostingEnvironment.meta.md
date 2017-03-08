@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Hosting.HostingEnvironment.StopListening
+internalonly: False
+---
+
+---
 uid: System.Web.Hosting.HostingEnvironment.InitializeLifetimeService
 internalonly: False
 ---
@@ -45,6 +50,11 @@ internalonly: False
 
 ---
 uid: System.Web.Hosting.HostingEnvironment.SiteName
+internalonly: False
+---
+
+---
+uid: System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem(System.Action{System.Threading.CancellationToken})
 internalonly: False
 ---
 
@@ -109,6 +119,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task})
+internalonly: False
+---
+
+---
 uid: System.Web.Hosting.HostingEnvironment.InClientBuildManager
 internalonly: False
 ---
@@ -120,6 +135,11 @@ internalonly: False
 
 ---
 uid: System.Web.Hosting.HostingEnvironment.RegisterObject(System.Web.Hosting.IRegisteredObject)
+internalonly: False
+---
+
+---
+uid: System.Web.Hosting.HostingEnvironment.IsDevelopmentEnvironment
 internalonly: False
 ---
 

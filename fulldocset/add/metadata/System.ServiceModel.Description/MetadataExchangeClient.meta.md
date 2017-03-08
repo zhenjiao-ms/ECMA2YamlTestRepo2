@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Description.MetadataExchangeClient.GetMetadataAsync(System.ServiceModel.EndpointAddress)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Description.MetadataExchangeClient.SoapCredentials
 internalonly: False
 ---
@@ -54,6 +59,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Description.MetadataExchangeClient.GetMetadataAsync(System.Uri,System.ServiceModel.Description.MetadataExchangeClientMode)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Description.MetadataExchangeClient.GetChannelFactory(System.ServiceModel.EndpointAddress,System.String,System.String)
 internalonly: False
 ---
@@ -65,6 +75,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Description.MetadataExchangeClient.GetWebRequest(System.Uri,System.String,System.String)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Description.MetadataExchangeClient.GetMetadataAsync(System.ServiceModel.EndpointAddress,System.Uri)
 internalonly: False
 ---
 
@@ -95,6 +110,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Description.MetadataExchangeClient.MaximumResolvedReferences
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Description.MetadataExchangeClient.GetMetadataAsync
 internalonly: False
 ---
 

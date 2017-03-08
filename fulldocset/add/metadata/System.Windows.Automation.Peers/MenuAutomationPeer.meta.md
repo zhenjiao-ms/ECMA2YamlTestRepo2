@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Automation.Peers.MenuAutomationPeer.IsContentElementCore
+internalonly: False
+---
+
+---
 uid: System.Windows.Automation.Peers.MenuAutomationPeer.#ctor(System.Windows.Controls.Menu)
 internalonly: False
 ---

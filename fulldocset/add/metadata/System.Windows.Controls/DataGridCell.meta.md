@@ -109,6 +109,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.DataGridCell.OnPreviewKeyDown(System.Windows.Input.KeyEventArgs)
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.DataGridCell.OnSelected(System.Windows.RoutedEventArgs)
 internalonly: False
 ---

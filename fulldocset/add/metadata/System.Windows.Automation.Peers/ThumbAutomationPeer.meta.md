@@ -17,3 +17,8 @@ internalonly: False
 uid: System.Windows.Automation.Peers.ThumbAutomationPeer.GetAutomationControlTypeCore
 internalonly: False
 ---
+
+---
+uid: System.Windows.Automation.Peers.ThumbAutomationPeer.IsContentElementCore
+internalonly: False
+---

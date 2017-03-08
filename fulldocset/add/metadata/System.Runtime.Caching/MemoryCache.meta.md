@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.Caching.MemoryCache.Add(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)
+internalonly: False
+---
+
+---
 uid: System.Runtime.Caching.MemoryCache.Trim(System.Int32)
 internalonly: False
 ---

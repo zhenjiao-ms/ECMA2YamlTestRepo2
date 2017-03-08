@@ -79,6 +79,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Forms.MonthCalendar.DefWndProc(System.Windows.Forms.Message@)
+internalonly: False
+---
+
+---
 uid: System.Windows.Forms.MonthCalendar.MouseDoubleClick
 internalonly: False
 ---

@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Workflow.ComponentModel.Activity.Invoke``1(System.Workflow.ComponentModel.IActivityEventListener{``0},``0)
+internalonly: False
+---
+
+---
 uid: System.Workflow.ComponentModel.Activity.ExecutingEvent
 internalonly: False
 ---
@@ -174,7 +179,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Workflow.ComponentModel.Activity.RaiseGenericEvent``1(System.Workflow.ComponentModel.DependencyProperty,System.Object,``0)
+internalonly: False
+---
+
+---
 uid: System.Workflow.ComponentModel.Activity.Executing
+internalonly: False
+---
+
+---
+uid: System.Workflow.ComponentModel.Activity.Invoke``1(System.EventHandler{``0},``0)
 internalonly: False
 ---
 

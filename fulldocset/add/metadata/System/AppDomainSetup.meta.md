@@ -44,6 +44,11 @@ internalonly: False
 ---
 
 ---
+uid: System.AppDomainSetup.TargetFrameworkName
+internalonly: False
+---
+
+---
 uid: System.AppDomainSetup.SetConfigurationBytes(System.Byte[])
 internalonly: False
 ---
@@ -55,6 +60,11 @@ internalonly: False
 
 ---
 uid: System.AppDomainSetup.ShadowCopyDirectories
+internalonly: False
+---
+
+---
+uid: System.AppDomainSetup.SetNativeFunction(System.String,System.Int32,System.IntPtr)
 internalonly: False
 ---
 

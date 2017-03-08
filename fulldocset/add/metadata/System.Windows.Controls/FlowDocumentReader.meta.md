@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.FlowDocumentReader.IsSelectionActiveProperty
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.FlowDocumentReader.ViewingModeProperty
 internalonly: False
 ---
@@ -75,6 +80,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.FlowDocumentReader.OnSwitchViewingModeCommand(System.Windows.Controls.FlowDocumentReaderViewingMode)
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.FlowDocumentReader.IsInactiveSelectionHighlightEnabledProperty
 internalonly: False
 ---
 
@@ -199,6 +209,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.FlowDocumentReader.IsInactiveSelectionHighlightEnabled
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.FlowDocumentReader.CanDecreaseZoomProperty
 internalonly: False
 ---
@@ -280,6 +295,16 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.FlowDocumentReader.IncreaseZoom
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.FlowDocumentReader.OnDpiChanged(System.Windows.DpiScale,System.Windows.DpiScale)
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.FlowDocumentReader.IsSelectionActive
 internalonly: False
 ---
 

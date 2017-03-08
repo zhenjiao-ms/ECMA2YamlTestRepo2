@@ -19,6 +19,16 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Tokens.X509SecurityToken.CreateKeyIdentifierClause``1
+internalonly: False
+---
+
+---
+uid: System.IdentityModel.Tokens.X509SecurityToken.CanCreateKeyIdentifierClause``1
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Tokens.X509SecurityToken.ThrowIfDisposed
 internalonly: False
 ---

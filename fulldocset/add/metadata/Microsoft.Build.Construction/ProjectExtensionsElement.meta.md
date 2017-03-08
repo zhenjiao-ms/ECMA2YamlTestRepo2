@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Construction.ProjectExtensionsElement.ConditionLocation
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Construction.ProjectExtensionsElement.Content
 internalonly: False
 ---

@@ -29,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Documents.TableRowCollection.System#Collections#Generic#IEnumerable{System#Windows#Documents#TableRow}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Documents.TableRowCollection.System#Collections#IList#Clear
 internalonly: False
 ---

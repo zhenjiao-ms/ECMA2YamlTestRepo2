@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlSecureResolver.GetEntityAsync(System.Uri,System.String,System.Type)
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlSecureResolver.#ctor(System.Xml.XmlResolver,System.Security.PermissionSet)
 internalonly: False
 ---

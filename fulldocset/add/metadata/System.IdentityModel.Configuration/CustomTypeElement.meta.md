@@ -17,3 +17,8 @@ internalonly: False
 uid: System.IdentityModel.Configuration.CustomTypeElement.#ctor
 internalonly: False
 ---
+
+---
+uid: System.IdentityModel.Configuration.CustomTypeElement.Resolve``1(System.IdentityModel.Configuration.CustomTypeElement)
+internalonly: False
+---

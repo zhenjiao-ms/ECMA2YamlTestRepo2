@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.OpenParagraph(System.Web.UI.MobileControls.Adapters.WmlMobileTextWriter.WmlLayout,System.Boolean,System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.PostAnalyzeForm
 internalonly: False
 ---

@@ -54,6 +54,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.Media3D.MaterialCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#Media3D#Material}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.Media3D.MaterialCollection.Clear
 internalonly: False
 ---
@@ -85,6 +90,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.Media3D.MaterialCollection.GetEnumerator
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.Media3D.MaterialCollection.System#Collections#Generic#ICollection{System#Windows#Media#Media3D#Material}#IsReadOnly
 internalonly: False
 ---
 

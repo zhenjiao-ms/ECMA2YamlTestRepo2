@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.StringWriter.WriteAsync(System.Char)
+internalonly: False
+---
+
+---
 uid: System.IO.StringWriter.#ctor(System.Text.StringBuilder)
 internalonly: False
 ---
@@ -34,7 +39,27 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.StringWriter.FlushAsync
+internalonly: False
+---
+
+---
+uid: System.IO.StringWriter.WriteLineAsync(System.Char)
+internalonly: False
+---
+
+---
 uid: System.IO.StringWriter.ToString
+internalonly: False
+---
+
+---
+uid: System.IO.StringWriter.WriteAsync(System.String)
+internalonly: False
+---
+
+---
+uid: System.IO.StringWriter.WriteAsync(System.Char[],System.Int32,System.Int32)
 internalonly: False
 ---
 
@@ -45,6 +70,16 @@ internalonly: False
 
 ---
 uid: System.IO.StringWriter.#ctor(System.IFormatProvider)
+internalonly: False
+---
+
+---
+uid: System.IO.StringWriter.WriteLineAsync(System.String)
+internalonly: False
+---
+
+---
+uid: System.IO.StringWriter.WriteLineAsync(System.Char[],System.Int32,System.Int32)
 internalonly: False
 ---
 

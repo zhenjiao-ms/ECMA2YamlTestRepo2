@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Documents.DocumentStructures.SectionStructure.System#Collections#Generic#IEnumerable{System#Windows#Documents#DocumentStructures#BlockElement}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Documents.DocumentStructures.SectionStructure.System#Windows#Markup#IAddChild#AddChild(System.Object)
 internalonly: False
 ---

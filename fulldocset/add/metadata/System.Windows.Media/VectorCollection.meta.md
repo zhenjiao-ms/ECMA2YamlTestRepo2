@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.VectorCollection.System#Collections#Generic#ICollection{System#Windows#Vector}#IsReadOnly
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.VectorCollection.Contains(System.Windows.Vector)
 internalonly: False
 ---
@@ -140,6 +145,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.VectorCollection.IndexOf(System.Windows.Vector)
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.VectorCollection.System#Collections#Generic#IEnumerable{System#Windows#Vector}#GetEnumerator
 internalonly: False
 ---
 

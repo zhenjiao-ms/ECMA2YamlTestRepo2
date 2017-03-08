@@ -84,6 +84,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.GeometryCollection.System#Collections#Generic#IEnumerable{System#Windows#Media#Geometry}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.GeometryCollection.Count
 internalonly: False
 ---
@@ -130,6 +135,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.GeometryCollection.System#Collections#IList#Insert(System.Int32,System.Object)
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.GeometryCollection.System#Collections#Generic#ICollection{System#Windows#Media#Geometry}#IsReadOnly
 internalonly: False
 ---
 

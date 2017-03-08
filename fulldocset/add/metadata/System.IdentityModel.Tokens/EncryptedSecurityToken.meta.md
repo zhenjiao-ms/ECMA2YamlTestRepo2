@@ -19,6 +19,16 @@ internalonly: False
 ---
 
 ---
+uid: System.IdentityModel.Tokens.EncryptedSecurityToken.CreateKeyIdentifierClause``1
+internalonly: False
+---
+
+---
+uid: System.IdentityModel.Tokens.EncryptedSecurityToken.CanCreateKeyIdentifierClause``1
+internalonly: False
+---
+
+---
 uid: System.IdentityModel.Tokens.EncryptedSecurityToken.SecurityKeys
 internalonly: False
 ---

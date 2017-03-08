@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Execution.BuildResult.ProjectStateAfterBuild
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Execution.BuildResult.HasResultsForTarget(System.String)
 internalonly: False
 ---

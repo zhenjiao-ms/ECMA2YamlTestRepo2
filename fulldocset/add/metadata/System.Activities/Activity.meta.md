@@ -19,6 +19,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Activity.OnCreateDynamicUpdateMap(System.Activities.DynamicUpdate.UpdateMapMetadata,System.Activities.Activity)
+internalonly: False
+---
+
+---
+uid: System.Activities.Activity.ImplementationVersion
+internalonly: False
+---
+
+---
 uid: System.Activities.Activity.ShouldSerializeDisplayName
 internalonly: False
 ---

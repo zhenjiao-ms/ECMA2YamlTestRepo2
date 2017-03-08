@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.Compression.GZipStream.#ctor(System.IO.Stream,System.IO.Compression.CompressionLevel)
+internalonly: False
+---
+
+---
 uid: System.IO.Compression.GZipStream.Position
 internalonly: False
 ---
@@ -60,6 +65,11 @@ internalonly: False
 
 ---
 uid: System.IO.Compression.GZipStream.BeginWrite(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
+internalonly: False
+---
+
+---
+uid: System.IO.Compression.GZipStream.#ctor(System.IO.Stream,System.IO.Compression.CompressionLevel,System.Boolean)
 internalonly: False
 ---
 

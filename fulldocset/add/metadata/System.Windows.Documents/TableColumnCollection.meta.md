@@ -139,6 +139,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Documents.TableColumnCollection.System#Collections#Generic#IEnumerable{System#Windows#Documents#TableColumn}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Documents.TableColumnCollection.RemoveAt(System.Int32)
 internalonly: False
 ---

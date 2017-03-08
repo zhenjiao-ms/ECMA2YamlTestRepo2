@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.TextWriter.WriteAsync(System.String)
+internalonly: False
+---
+
+---
 uid: System.IO.TextWriter.Write(System.String,System.Object,System.Object,System.Object)
 internalonly: False
 ---
@@ -54,6 +59,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.TextWriter.WriteLineAsync
+internalonly: False
+---
+
+---
 uid: System.IO.TextWriter.Write(System.String,System.Object,System.Object)
 internalonly: False
 ---
@@ -65,6 +75,16 @@ internalonly: False
 
 ---
 uid: System.IO.TextWriter.Dispose(System.Boolean)
+internalonly: False
+---
+
+---
+uid: System.IO.TextWriter.WriteLineAsync(System.Char)
+internalonly: False
+---
+
+---
+uid: System.IO.TextWriter.WriteLineAsync(System.Char[])
 internalonly: False
 ---
 
@@ -129,7 +149,27 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.TextWriter.WriteLineAsync(System.Char[],System.Int32,System.Int32)
+internalonly: False
+---
+
+---
+uid: System.IO.TextWriter.WriteAsync(System.Char)
+internalonly: False
+---
+
+---
+uid: System.IO.TextWriter.FlushAsync
+internalonly: False
+---
+
+---
 uid: System.IO.TextWriter.FormatProvider
+internalonly: False
+---
+
+---
+uid: System.IO.TextWriter.WriteLineAsync(System.String)
 internalonly: False
 ---
 
@@ -219,12 +259,22 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.TextWriter.WriteAsync(System.Char[])
+internalonly: False
+---
+
+---
 uid: System.IO.TextWriter.Write(System.Object)
 internalonly: False
 ---
 
 ---
 uid: System.IO.TextWriter.#ctor
+internalonly: False
+---
+
+---
+uid: System.IO.TextWriter.WriteAsync(System.Char[],System.Int32,System.Int32)
 internalonly: False
 ---
 

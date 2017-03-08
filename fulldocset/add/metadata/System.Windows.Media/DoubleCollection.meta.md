@@ -114,6 +114,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Media.DoubleCollection.System#Collections#Generic#IEnumerable{System#Double}#GetEnumerator
+internalonly: False
+---
+
+---
 uid: System.Windows.Media.DoubleCollection.#ctor(System.Int32)
 internalonly: False
 ---
@@ -155,6 +160,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.DoubleCollection.System#Collections#IEnumerable#GetEnumerator
+internalonly: False
+---
+
+---
+uid: System.Windows.Media.DoubleCollection.System#Collections#Generic#ICollection{System#Double}#IsReadOnly
 internalonly: False
 ---
 

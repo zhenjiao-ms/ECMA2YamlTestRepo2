@@ -129,6 +129,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Cryptography.X509Certificates.X509Certificate.Dispose(System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.Security.Cryptography.X509Certificates.X509Certificate.GetCertHashString
 internalonly: False
 ---
@@ -215,6 +220,11 @@ internalonly: False
 
 ---
 uid: System.Security.Cryptography.X509Certificates.X509Certificate.GetFormat
+internalonly: False
+---
+
+---
+uid: System.Security.Cryptography.X509Certificates.X509Certificate.Dispose
 internalonly: False
 ---
 

@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xml.XmlUrlResolver.GetEntityAsync(System.Uri,System.String,System.Type)
+internalonly: False
+---
+
+---
 uid: System.Xml.XmlUrlResolver.ResolveUri(System.Uri,System.String)
 internalonly: False
 ---

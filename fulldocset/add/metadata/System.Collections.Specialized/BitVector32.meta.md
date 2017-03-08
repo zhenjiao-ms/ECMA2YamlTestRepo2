@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Collections.Specialized.BitVector32.Item(System.Collections.Specialized.BitVector32.Section)
+internalonly: False
+---
+
+---
 uid: System.Collections.Specialized.BitVector32.Data
 internalonly: False
 ---
@@ -55,5 +60,10 @@ internalonly: False
 
 ---
 uid: System.Collections.Specialized.BitVector32.Equals(System.Object)
+internalonly: False
+---
+
+---
+uid: System.Collections.Specialized.BitVector32.CreateSection(System.Int16,System.Collections.Specialized.BitVector32.Section)
 internalonly: False
 ---

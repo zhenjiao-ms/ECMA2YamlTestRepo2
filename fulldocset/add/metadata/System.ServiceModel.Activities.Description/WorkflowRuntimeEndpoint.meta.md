@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Activities.Description.WorkflowRuntimeEndpoint.GetService``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Activities.Description.WorkflowRuntimeEndpoint.#ctor
 internalonly: False
 ---

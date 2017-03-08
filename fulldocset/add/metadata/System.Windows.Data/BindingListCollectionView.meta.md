@@ -24,7 +24,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Data.BindingListCollectionView.LiveSortingProperties
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.BindingListCollectionView.IsLiveGrouping
+internalonly: False
+---
+
+---
 uid: System.Windows.Data.BindingListCollectionView.CancelEdit
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.BindingListCollectionView.CanChangeLiveFiltering
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.BindingListCollectionView.IsLiveSorting
 internalonly: False
 ---
 
@@ -54,12 +74,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Data.BindingListCollectionView.CanChangeLiveSorting
+internalonly: False
+---
+
+---
 uid: System.Windows.Data.BindingListCollectionView.IsAddingNew
 internalonly: False
 ---
 
 ---
 uid: System.Windows.Data.BindingListCollectionView.#ctor(System.ComponentModel.IBindingList)
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.BindingListCollectionView.IsLiveFiltering
 internalonly: False
 ---
 
@@ -74,12 +104,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Data.BindingListCollectionView.LiveFilteringProperties
+internalonly: False
+---
+
+---
 uid: System.Windows.Data.BindingListCollectionView.ItemProperties
 internalonly: False
 ---
 
 ---
 uid: System.Windows.Data.BindingListCollectionView.CanAddNew
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.BindingListCollectionView.DetachFromSourceCollection
 internalonly: False
 ---
 
@@ -134,6 +174,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Data.BindingListCollectionView.LiveGroupingProperties
+internalonly: False
+---
+
+---
 uid: System.Windows.Data.BindingListCollectionView.AddNew
 internalonly: False
 ---
@@ -160,6 +205,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Data.BindingListCollectionView.CanSort
+internalonly: False
+---
+
+---
+uid: System.Windows.Data.BindingListCollectionView.CanChangeLiveGrouping
 internalonly: False
 ---
 

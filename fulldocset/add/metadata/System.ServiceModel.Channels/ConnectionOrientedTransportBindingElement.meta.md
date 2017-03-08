@@ -4,12 +4,22 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.ConnectionOrientedTransportBindingElement.ShouldSerializeMaxPendingConnections
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.ConnectionOrientedTransportBindingElement.System#ServiceModel#Description#IWsdlExportExtension#ExportEndpoint(System.ServiceModel.Description.WsdlExporter,System.ServiceModel.Description.WsdlEndpointConversionContext)
 internalonly: False
 ---
 
 ---
 uid: System.ServiceModel.Channels.ConnectionOrientedTransportBindingElement.TransferMode
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.ConnectionOrientedTransportBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 
@@ -49,11 +59,26 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.ConnectionOrientedTransportBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.ConnectionOrientedTransportBindingElement.MaxBufferSize
 internalonly: False
 ---
 
 ---
 uid: System.ServiceModel.Channels.ConnectionOrientedTransportBindingElement.MaxPendingConnections
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.ConnectionOrientedTransportBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.ConnectionOrientedTransportBindingElement.ShouldSerializeMaxPendingAccepts
 internalonly: False
 ---

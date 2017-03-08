@@ -4,7 +4,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.XamlIntegration.CompiledDataContext.GetLocation``1(System.Func{``0},System.Action{``0},System.Int32,System.Activities.Activity,System.Activities.ActivityContext)
+internalonly: False
+---
+
+---
 uid: System.Activities.XamlIntegration.CompiledDataContext.GetValueTypeValues
+internalonly: False
+---
+
+---
+uid: System.Activities.XamlIntegration.CompiledDataContext.GetLocation``1(System.Func{``0},System.Action{``0})
 internalonly: False
 ---
 

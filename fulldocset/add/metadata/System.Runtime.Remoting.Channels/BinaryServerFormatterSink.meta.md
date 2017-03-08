@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Runtime.Remoting.Channels.BinaryServerFormatterSink.#ctor(System.Runtime.Remoting.Channels.BinaryServerFormatterSink.Protocol,System.Runtime.Remoting.Channels.IServerChannelSink,System.Runtime.Remoting.Channels.IChannelReceiver)
+internalonly: False
+---
+
+---
 uid: System.Runtime.Remoting.Channels.BinaryServerFormatterSink.GetResponseStream(System.Runtime.Remoting.Channels.IServerResponseChannelSinkStack,System.Object,System.Runtime.Remoting.Messaging.IMessage,System.Runtime.Remoting.Channels.ITransportHeaders)
 internalonly: False
 ---

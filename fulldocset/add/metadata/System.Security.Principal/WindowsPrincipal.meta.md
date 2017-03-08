@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Security.Principal.WindowsPrincipal.DeviceClaims
+internalonly: False
+---
+
+---
 uid: System.Security.Principal.WindowsPrincipal.IsInRole(System.Security.Principal.SecurityIdentifier)
 internalonly: False
 ---
@@ -25,6 +30,11 @@ internalonly: False
 
 ---
 uid: System.Security.Principal.WindowsPrincipal.IsInRole(System.Int32)
+internalonly: False
+---
+
+---
+uid: System.Security.Principal.WindowsPrincipal.UserClaims
 internalonly: False
 ---
 

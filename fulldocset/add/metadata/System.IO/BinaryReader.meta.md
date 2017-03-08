@@ -19,6 +19,11 @@ internalonly: False
 ---
 
 ---
+uid: System.IO.BinaryReader.#ctor(System.IO.Stream,System.Text.Encoding,System.Boolean)
+internalonly: False
+---
+
+---
 uid: System.IO.BinaryReader.Read(System.Byte[],System.Int32,System.Int32)
 internalonly: False
 ---

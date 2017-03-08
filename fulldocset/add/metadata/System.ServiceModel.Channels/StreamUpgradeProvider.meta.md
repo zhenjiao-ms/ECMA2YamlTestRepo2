@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.StreamUpgradeProvider.GetProperty``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.StreamUpgradeProvider.#ctor(System.ServiceModel.IDefaultCommunicationTimeouts)
 internalonly: False
 ---

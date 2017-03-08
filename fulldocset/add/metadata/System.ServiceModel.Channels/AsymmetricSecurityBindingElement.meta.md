@@ -29,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.AsymmetricSecurityBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.AsymmetricSecurityBindingElement.MessageProtectionOrder
 internalonly: False
 ---

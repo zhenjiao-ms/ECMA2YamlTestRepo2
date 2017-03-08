@@ -44,6 +44,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Text.RegularExpressions.Regex.Matches(System.String,System.String,System.Text.RegularExpressions.RegexOptions,System.TimeSpan)
+internalonly: False
+---
+
+---
 uid: System.Text.RegularExpressions.Regex.Matches(System.String,System.Int32)
 internalonly: False
 ---
@@ -60,6 +65,11 @@ internalonly: False
 
 ---
 uid: System.Text.RegularExpressions.Regex.RightToLeft
+internalonly: False
+---
+
+---
+uid: System.Text.RegularExpressions.Regex.InfiniteMatchTimeout
 internalonly: False
 ---
 
@@ -109,6 +119,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Text.RegularExpressions.Regex.IsMatch(System.String,System.String,System.Text.RegularExpressions.RegexOptions,System.TimeSpan)
+internalonly: False
+---
+
+---
 uid: System.Text.RegularExpressions.Regex.IsMatch(System.String,System.String,System.Text.RegularExpressions.RegexOptions)
 internalonly: False
 ---
@@ -134,12 +149,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Text.RegularExpressions.Regex.MatchTimeout
+internalonly: False
+---
+
+---
 uid: System.Text.RegularExpressions.Regex.Match(System.String,System.Int32)
 internalonly: False
 ---
 
 ---
+uid: System.Text.RegularExpressions.Regex.Match(System.String,System.String,System.Text.RegularExpressions.RegexOptions,System.TimeSpan)
+internalonly: False
+---
+
+---
 uid: System.Text.RegularExpressions.Regex.Split(System.String,System.String,System.Text.RegularExpressions.RegexOptions)
+internalonly: False
+---
+
+---
+uid: System.Text.RegularExpressions.Regex.Replace(System.String,System.String,System.String,System.Text.RegularExpressions.RegexOptions,System.TimeSpan)
 internalonly: False
 ---
 
@@ -155,6 +185,11 @@ internalonly: False
 
 ---
 uid: System.Text.RegularExpressions.Regex.CompileToAssembly(System.Text.RegularExpressions.RegexCompilationInfo[],System.Reflection.AssemblyName,System.Reflection.Emit.CustomAttributeBuilder[],System.String)
+internalonly: False
+---
+
+---
+uid: System.Text.RegularExpressions.Regex.Split(System.String,System.String,System.Text.RegularExpressions.RegexOptions,System.TimeSpan)
 internalonly: False
 ---
 
@@ -189,6 +224,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Text.RegularExpressions.Regex.internalMatchTimeout
+internalonly: False
+---
+
+---
 uid: System.Text.RegularExpressions.Regex.Matches(System.String,System.String,System.Text.RegularExpressions.RegexOptions)
 internalonly: False
 ---
@@ -209,12 +249,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Text.RegularExpressions.Regex.ValidateMatchTimeout(System.TimeSpan)
+internalonly: False
+---
+
+---
 uid: System.Text.RegularExpressions.Regex.Replace(System.String,System.Text.RegularExpressions.MatchEvaluator)
 internalonly: False
 ---
 
 ---
 uid: System.Text.RegularExpressions.Regex.CacheSize
+internalonly: False
+---
+
+---
+uid: System.Text.RegularExpressions.Regex.#ctor(System.String,System.Text.RegularExpressions.RegexOptions,System.TimeSpan)
 internalonly: False
 ---
 
@@ -240,6 +290,11 @@ internalonly: False
 
 ---
 uid: System.Text.RegularExpressions.Regex.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+internalonly: False
+---
+
+---
+uid: System.Text.RegularExpressions.Regex.Replace(System.String,System.String,System.Text.RegularExpressions.MatchEvaluator,System.Text.RegularExpressions.RegexOptions,System.TimeSpan)
 internalonly: False
 ---
 

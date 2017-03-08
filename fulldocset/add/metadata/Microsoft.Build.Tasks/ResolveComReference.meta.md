@@ -14,6 +14,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Tasks.ResolveComReference.Silent
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Tasks.ResolveComReference.#ctor
 internalonly: False
 ---

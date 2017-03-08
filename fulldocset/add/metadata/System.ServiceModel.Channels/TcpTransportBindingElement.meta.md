@@ -14,6 +14,16 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.TcpTransportBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.TcpTransportBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.TcpTransportBindingElement.TeredoEnabled
 internalonly: False
 ---
@@ -24,7 +34,17 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.TcpTransportBindingElement.ShouldSerializeListenBacklog
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.TcpTransportBindingElement.#ctor
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.TcpTransportBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
 internalonly: False
 ---
 

@@ -102,3 +102,8 @@ internalonly: False
 uid: System.ServiceModel.NetNamedPipeBinding.CreateBindingElements
 internalonly: False
 ---
+
+---
+uid: System.ServiceModel.NetNamedPipeBinding.ShouldSerializeMaxConnections
+internalonly: False
+---

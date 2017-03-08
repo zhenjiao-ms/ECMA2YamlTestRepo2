@@ -59,6 +59,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.WebControls.DetailsView.UpdateMethod
+internalonly: False
+---
+
+---
 uid: System.Web.UI.WebControls.DetailsView.SetPageIndex(System.Int32)
 internalonly: False
 ---
@@ -474,6 +479,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.WebControls.DetailsView.InsertMethod
+internalonly: False
+---
+
+---
 uid: System.Web.UI.WebControls.DetailsView.FooterStyle
 internalonly: False
 ---
@@ -545,6 +555,11 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.DetailsView.ModeChanging
+internalonly: False
+---
+
+---
+uid: System.Web.UI.WebControls.DetailsView.DeleteMethod
 internalonly: False
 ---
 

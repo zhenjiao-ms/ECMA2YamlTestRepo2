@@ -39,6 +39,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Workflow.ComponentModel.DependencyObject.GetInvocationList``1(System.Workflow.ComponentModel.DependencyProperty)
+internalonly: False
+---
+
+---
 uid: System.Workflow.ComponentModel.DependencyObject.DesignMode
 internalonly: False
 ---

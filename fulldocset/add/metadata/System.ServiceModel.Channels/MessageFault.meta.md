@@ -59,6 +59,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.MessageFault.GetDetail``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.MessageFault.CreateFault(System.ServiceModel.FaultCode,System.ServiceModel.FaultReason,System.Object)
 internalonly: False
 ---
@@ -85,6 +90,11 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Channels.MessageFault.GetReaderAtDetailContents
+internalonly: False
+---
+
+---
+uid: System.ServiceModel.Channels.MessageFault.GetDetail``1(System.Runtime.Serialization.XmlObjectSerializer)
 internalonly: False
 ---
 

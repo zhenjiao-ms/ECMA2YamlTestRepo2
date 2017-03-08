@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Design.DesignerActionItem.ShowInSourceView
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Design.DesignerActionItem.AllowAssociate
 internalonly: False
 ---

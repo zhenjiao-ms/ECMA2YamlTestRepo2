@@ -234,6 +234,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.WebControls.ObjectDataSource.ParsingCulture
+internalonly: False
+---
+
+---
 uid: System.Web.UI.WebControls.ObjectDataSource.Deleting
 internalonly: False
 ---

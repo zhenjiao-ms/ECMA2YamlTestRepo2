@@ -12,3 +12,8 @@ internalonly: False
 uid: System.Net.Configuration.HttpListenerElement.UnescapeRequestUrl
 internalonly: False
 ---
+
+---
+uid: System.Net.Configuration.HttpListenerElement.Timeouts
+internalonly: False
+---

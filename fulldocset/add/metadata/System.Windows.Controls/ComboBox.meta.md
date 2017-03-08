@@ -89,6 +89,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Windows.Controls.ComboBox.ShouldPreserveUserEnteredPrefixProperty
+internalonly: False
+---
+
+---
 uid: System.Windows.Controls.ComboBox.IsEditable
 internalonly: False
 ---
@@ -110,6 +115,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.ComboBox.SelectionBoxItemTemplateProperty
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.ComboBox.ShouldPreserveUserEnteredPrefix
 internalonly: False
 ---
 
@@ -155,6 +165,11 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.ComboBox.MaxDropDownHeight
+internalonly: False
+---
+
+---
+uid: System.Windows.Controls.ComboBox.HasEffectiveKeyboardFocus
 internalonly: False
 ---
 

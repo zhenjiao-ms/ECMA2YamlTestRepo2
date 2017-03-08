@@ -124,6 +124,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Globalization.Calendar.DaysInYearBeforeMinSupportedYear
+internalonly: False
+---
+
+---
 uid: System.Globalization.Calendar.AddMilliseconds(System.DateTime,System.Double)
 internalonly: False
 ---

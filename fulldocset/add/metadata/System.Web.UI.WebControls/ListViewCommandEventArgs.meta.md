@@ -17,3 +17,8 @@ internalonly: False
 uid: System.Web.UI.WebControls.ListViewCommandEventArgs.Item
 internalonly: False
 ---
+
+---
+uid: System.Web.UI.WebControls.ListViewCommandEventArgs.Handled
+internalonly: False
+---

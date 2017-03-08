@@ -34,6 +34,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.HttpRuntimeSection.DefaultRegexMatchTimeout
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.HttpRuntimeSection.FcnMode
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.HttpRuntimeSection.MaxRequestLength
 internalonly: False
 ---
@@ -55,6 +65,11 @@ internalonly: False
 
 ---
 uid: System.Web.Configuration.HttpRuntimeSection.EnableHeaderChecking
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.HttpRuntimeSection.TargetFramework
 internalonly: False
 ---
 
@@ -84,6 +99,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.Configuration.HttpRuntimeSection.AsyncPreloadMode
+internalonly: False
+---
+
+---
 uid: System.Web.Configuration.HttpRuntimeSection.MinFreeThreads
 internalonly: False
 ---
@@ -100,6 +120,11 @@ internalonly: False
 
 ---
 uid: System.Web.Configuration.HttpRuntimeSection.ShutdownTimeout
+internalonly: False
+---
+
+---
+uid: System.Web.Configuration.HttpRuntimeSection.AllowDynamicModuleRegistration
 internalonly: False
 ---
 

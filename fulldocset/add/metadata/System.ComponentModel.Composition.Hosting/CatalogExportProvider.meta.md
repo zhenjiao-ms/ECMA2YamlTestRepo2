@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Composition.Hosting.CatalogExportProvider.#ctor(System.ComponentModel.Composition.Primitives.ComposablePartCatalog,System.ComponentModel.Composition.Hosting.CompositionOptions)
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Composition.Hosting.CatalogExportProvider.Dispose
 internalonly: False
 ---

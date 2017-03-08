@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.WebControls.DataControlFieldCell.ValidateRequestMode
+internalonly: False
+---
+
+---
 uid: System.Web.UI.WebControls.DataControlFieldCell.ContainingField
 internalonly: False
 ---

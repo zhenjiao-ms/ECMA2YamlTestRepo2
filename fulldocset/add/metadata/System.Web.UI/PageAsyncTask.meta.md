@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.PageAsyncTask.#ctor(System.Func{System.Threading.Tasks.Task})
+internalonly: False
+---
+
+---
 uid: System.Web.UI.PageAsyncTask.ExecuteInParallel
 internalonly: False
 ---
@@ -35,5 +40,10 @@ internalonly: False
 
 ---
 uid: System.Web.UI.PageAsyncTask.State
+internalonly: False
+---
+
+---
+uid: System.Web.UI.PageAsyncTask.#ctor(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task})
 internalonly: False
 ---

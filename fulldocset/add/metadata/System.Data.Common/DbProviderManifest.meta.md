@@ -44,12 +44,27 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Common.DbProviderManifest.StoreSchemaDefinitionVersion3
+internalonly: False
+---
+
+---
+uid: System.Data.Common.DbProviderManifest.ConceptualSchemaDefinitionVersion3
+internalonly: False
+---
+
+---
 uid: System.Data.Common.DbProviderManifest.GetDbInformation(System.String)
 internalonly: False
 ---
 
 ---
 uid: System.Data.Common.DbProviderManifest.GetEdmType(System.Data.Metadata.Edm.TypeUsage)
+internalonly: False
+---
+
+---
+uid: System.Data.Common.DbProviderManifest.StoreSchemaMappingVersion3
 internalonly: False
 ---
 

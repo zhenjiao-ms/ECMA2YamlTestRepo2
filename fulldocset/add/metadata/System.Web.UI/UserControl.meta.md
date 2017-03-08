@@ -4,12 +4,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.UserControl.UpdateModel``1(``0,System.Web.ModelBinding.IValueProvider)
+internalonly: False
+---
+
+---
 uid: System.Web.UI.UserControl.IsPostBack
 internalonly: False
 ---
 
 ---
 uid: System.Web.UI.UserControl.MapPath(System.String)
+internalonly: False
+---
+
+---
+uid: System.Web.UI.UserControl.UpdateModel``1(``0)
 internalonly: False
 ---
 
@@ -44,6 +54,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.UserControl.TryUpdateModel``1(``0)
+internalonly: False
+---
+
+---
 uid: System.Web.UI.UserControl.InitializeAsUserControl(System.Web.UI.Page)
 internalonly: False
 ---
@@ -70,6 +85,11 @@ internalonly: False
 
 ---
 uid: System.Web.UI.UserControl.OnInit(System.EventArgs)
+internalonly: False
+---
+
+---
+uid: System.Web.UI.UserControl.TryUpdateModel``1(``0,System.Web.ModelBinding.IValueProvider)
 internalonly: False
 ---
 

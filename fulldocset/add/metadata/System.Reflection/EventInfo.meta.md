@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Reflection.EventInfo.RemoveMethod
+internalonly: False
+---
+
+---
 uid: System.Reflection.EventInfo.System#Runtime#InteropServices#_EventInfo#GetTypeInfoCount(System.UInt32@)
 internalonly: False
 ---
@@ -35,6 +40,11 @@ internalonly: False
 
 ---
 uid: System.Reflection.EventInfo.EventHandlerType
+internalonly: False
+---
+
+---
+uid: System.Reflection.EventInfo.RaiseMethod
 internalonly: False
 ---
 
@@ -120,6 +130,11 @@ internalonly: False
 
 ---
 uid: System.Reflection.EventInfo.GetRemoveMethod
+internalonly: False
+---
+
+---
+uid: System.Reflection.EventInfo.AddMethod
 internalonly: False
 ---
 

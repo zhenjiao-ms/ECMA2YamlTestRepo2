@@ -29,6 +29,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Activities.Configuration.SqlWorkflowInstanceStoreElement.MaxConnectionRetries
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Activities.Configuration.SqlWorkflowInstanceStoreElement.ConnectionStringName
 internalonly: False
 ---

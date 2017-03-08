@@ -52,3 +52,8 @@ internalonly: False
 uid: System.ServiceModel.Channels.ChannelFactoryBase.OnBeginClose(System.TimeSpan,System.AsyncCallback,System.Object)
 internalonly: False
 ---
+
+---
+uid: System.ServiceModel.Channels.ChannelFactoryBase.GetProperty``1
+internalonly: False
+---

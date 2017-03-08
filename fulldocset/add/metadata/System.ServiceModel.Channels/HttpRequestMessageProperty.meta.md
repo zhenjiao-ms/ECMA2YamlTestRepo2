@@ -24,6 +24,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.HttpRequestMessageProperty.System#ServiceModel#Channels#IMessageProperty#CreateCopy
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.HttpRequestMessageProperty.SuppressEntityBody
 internalonly: False
 ---

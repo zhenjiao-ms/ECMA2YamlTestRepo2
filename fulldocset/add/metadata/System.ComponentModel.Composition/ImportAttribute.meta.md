@@ -34,6 +34,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ComponentModel.Composition.ImportAttribute.Source
+internalonly: False
+---
+
+---
 uid: System.ComponentModel.Composition.ImportAttribute.ContractName
 internalonly: False
 ---

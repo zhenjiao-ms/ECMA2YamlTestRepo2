@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.ChannelListenerBase.GetProperty``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.ChannelListenerBase.DefaultCloseTimeout
 internalonly: False
 ---

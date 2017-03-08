@@ -9,7 +9,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Debugger.XamlDebuggerXmlReader.#ctor(System.IO.TextReader,System.Xaml.XamlSchemaContext)
+internalonly: False
+---
+
+---
 uid: System.Activities.Debugger.XamlDebuggerXmlReader.Type
+internalonly: False
+---
+
+---
+uid: System.Activities.Debugger.XamlDebuggerXmlReader.CollectNonActivitySourceLocation
 internalonly: False
 ---
 
@@ -59,6 +69,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Activities.Debugger.XamlDebuggerXmlReader.SourceLocationFound
+internalonly: False
+---
+
+---
 uid: System.Activities.Debugger.XamlDebuggerXmlReader.SetStartColumn(System.Object,System.Object)
 internalonly: False
 ---
@@ -90,6 +105,11 @@ internalonly: False
 
 ---
 uid: System.Activities.Debugger.XamlDebuggerXmlReader.SetEndColumn(System.Object,System.Object)
+internalonly: False
+---
+
+---
+uid: System.Activities.Debugger.XamlDebuggerXmlReader.#ctor(System.IO.TextReader)
 internalonly: False
 ---
 
@@ -145,5 +165,10 @@ internalonly: False
 
 ---
 uid: System.Activities.Debugger.XamlDebuggerXmlReader.SetStartLine(System.Object,System.Object)
+internalonly: False
+---
+
+---
+uid: System.Activities.Debugger.XamlDebuggerXmlReader.Dispose(System.Boolean)
 internalonly: False
 ---

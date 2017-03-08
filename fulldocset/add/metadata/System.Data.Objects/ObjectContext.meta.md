@@ -34,6 +34,16 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Objects.ObjectContext.ExecuteStoreQuery``1(System.String,System.String,System.Data.Objects.MergeOption,System.Object[])
+internalonly: False
+---
+
+---
+uid: System.Data.Objects.ObjectContext.CreateObjectSet``1(System.String)
+internalonly: False
+---
+
+---
 uid: System.Data.Objects.ObjectContext.AttachTo(System.String,System.Object)
 internalonly: False
 ---
@@ -59,6 +69,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Objects.ObjectContext.LoadProperty``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})
+internalonly: False
+---
+
+---
 uid: System.Data.Objects.ObjectContext.DatabaseExists
 internalonly: False
 ---
@@ -74,12 +89,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Objects.ObjectContext.ExecuteFunction``1(System.String,System.Data.Objects.MergeOption,System.Data.Objects.ObjectParameter[])
+internalonly: False
+---
+
+---
 uid: System.Data.Objects.ObjectContext.Refresh(System.Data.Objects.RefreshMode,System.Collections.IEnumerable)
 internalonly: False
 ---
 
 ---
 uid: System.Data.Objects.ObjectContext.DeleteObject(System.Object)
+internalonly: False
+---
+
+---
+uid: System.Data.Objects.ObjectContext.LoadProperty``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Data.Objects.MergeOption)
 internalonly: False
 ---
 
@@ -104,6 +129,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Objects.ObjectContext.CreateObjectSet``1
+internalonly: False
+---
+
+---
 uid: System.Data.Objects.ObjectContext.ApplyPropertyChanges(System.String,System.Object)
 internalonly: False
 ---
@@ -119,7 +149,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Objects.ObjectContext.ExecuteFunction``1(System.String,System.Data.Objects.ObjectParameter[])
+internalonly: False
+---
+
+---
 uid: System.Data.Objects.ObjectContext.DefaultContainerName
+internalonly: False
+---
+
+---
+uid: System.Data.Objects.ObjectContext.ApplyCurrentValues``1(System.String,``0)
+internalonly: False
+---
+
+---
+uid: System.Data.Objects.ObjectContext.ApplyOriginalValues``1(System.String,``0)
 internalonly: False
 ---
 
@@ -149,6 +194,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Objects.ObjectContext.CreateQuery``1(System.String,System.Data.Objects.ObjectParameter[])
+internalonly: False
+---
+
+---
 uid: System.Data.Objects.ObjectContext.Dispose
 internalonly: False
 ---
@@ -159,7 +209,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Objects.ObjectContext.Translate``1(System.Data.Common.DbDataReader)
+internalonly: False
+---
+
+---
 uid: System.Data.Objects.ObjectContext.AcceptAllChanges
+internalonly: False
+---
+
+---
+uid: System.Data.Objects.ObjectContext.CreateObject``1
 internalonly: False
 ---
 
@@ -194,12 +254,22 @@ internalonly: False
 ---
 
 ---
+uid: System.Data.Objects.ObjectContext.ExecuteStoreQuery``1(System.String,System.Object[])
+internalonly: False
+---
+
+---
 uid: System.Data.Objects.ObjectContext.TryGetObjectByKey(System.Data.EntityKey,System.Object@)
 internalonly: False
 ---
 
 ---
 uid: System.Data.Objects.ObjectContext.AddObject(System.String,System.Object)
+internalonly: False
+---
+
+---
+uid: System.Data.Objects.ObjectContext.Translate``1(System.Data.Common.DbDataReader,System.String,System.Data.Objects.MergeOption)
 internalonly: False
 ---
 

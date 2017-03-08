@@ -9,6 +9,11 @@ internalonly: False
 ---
 
 ---
+uid: System.ServiceModel.Channels.IChannelListener.GetProperty``1
+internalonly: False
+---
+
+---
 uid: System.ServiceModel.Channels.IChannelListener.BeginWaitForChannel(System.TimeSpan,System.AsyncCallback,System.Object)
 internalonly: False
 ---

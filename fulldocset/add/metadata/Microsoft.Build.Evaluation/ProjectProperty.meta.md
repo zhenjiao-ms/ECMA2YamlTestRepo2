@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Evaluation.ProjectProperty.System#IEquatable{Microsoft#Build#Evaluation#ProjectProperty}#Equals(Microsoft.Build.Evaluation.ProjectProperty)
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Evaluation.ProjectProperty.EvaluatedValue
 internalonly: False
 ---

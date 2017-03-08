@@ -39,6 +39,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.WebControls.GridView.VirtualItemCount
+internalonly: False
+---
+
+---
 uid: System.Web.UI.WebControls.GridView.BottomPagerRow
 internalonly: False
 ---
@@ -65,6 +70,11 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.GridView.FooterStyle
+internalonly: False
+---
+
+---
+uid: System.Web.UI.WebControls.GridView.UpdateMethod
 internalonly: False
 ---
 
@@ -274,6 +284,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Web.UI.WebControls.GridView.DeleteMethod
+internalonly: False
+---
+
+---
 uid: System.Web.UI.WebControls.GridView.IsBindableType(System.Type)
 internalonly: False
 ---
@@ -445,6 +460,11 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.GridView.CellSpacing
+internalonly: False
+---
+
+---
+uid: System.Web.UI.WebControls.GridView.AllowCustomPaging
 internalonly: False
 ---
 

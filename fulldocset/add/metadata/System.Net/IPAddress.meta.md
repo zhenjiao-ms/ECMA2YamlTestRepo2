@@ -54,6 +54,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.IPAddress.MapToIPv6
+internalonly: False
+---
+
+---
 uid: System.Net.IPAddress.Equals(System.Object)
 internalonly: False
 ---
@@ -84,7 +89,17 @@ internalonly: False
 ---
 
 ---
+uid: System.Net.IPAddress.IsIPv4MappedToIPv6
+internalonly: False
+---
+
+---
 uid: System.Net.IPAddress.Loopback
+internalonly: False
+---
+
+---
+uid: System.Net.IPAddress.MapToIPv4
 internalonly: False
 ---
 

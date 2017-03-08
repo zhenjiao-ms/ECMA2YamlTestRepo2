@@ -39,6 +39,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.Build.Tasks.AssignProjectConfiguration.AddSyntheticProjectReferencesForSolutionDependencies
+internalonly: False
+---
+
+---
 uid: Microsoft.Build.Tasks.AssignProjectConfiguration.OnlyReferenceAndBuildProjectsEnabledInSolutionConfiguration
 internalonly: False
 ---
@@ -65,5 +70,10 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Tasks.AssignProjectConfiguration.DefaultToVcxPlatformMapping
+internalonly: False
+---
+
+---
+uid: Microsoft.Build.Tasks.AssignProjectConfiguration.CurrentProject
 internalonly: False
 ---

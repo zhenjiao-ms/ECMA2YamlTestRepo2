@@ -169,6 +169,11 @@ internalonly: False
 ---
 
 ---
+uid: Microsoft.JScript.Vsa.BaseVsaEngine.Preconditions(Microsoft.JScript.Vsa.BaseVsaEngine.Pre)
+internalonly: False
+---
+
+---
 uid: Microsoft.JScript.Vsa.BaseVsaEngine.compiledRootNamespace
 internalonly: False
 ---

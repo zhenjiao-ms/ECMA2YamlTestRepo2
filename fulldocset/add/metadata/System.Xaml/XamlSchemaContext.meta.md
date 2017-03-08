@@ -4,6 +4,11 @@ internalonly: False
 ---
 
 ---
+uid: System.Xaml.XamlSchemaContext.GetValueConverter``1(System.Type,System.Xaml.XamlType)
+internalonly: False
+---
+
+---
 uid: System.Xaml.XamlSchemaContext.GetXamlType(System.String,System.String,System.Xaml.XamlType[])
 internalonly: False
 ---

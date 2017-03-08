@@ -1,15 +1,32 @@
 {
-  "build": {
+  "merge": {
     "content": [
       {
         "files": [
-          "**/*.md",
-          "**/*.yml"
+          "*.yml"
         ],
         "exclude": [
           "add/includes/**/*.md",
           "add/metadata/**/*.md",
           "**/obj/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE"
+        ]
+      }
+    ],
+    "tocMetadata": "version"
+  },
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.md",
+          "obj/*.yml"
+        ],
+        "exclude": [
+          "add/includes/**/*.md",
+          "add/metadata/**/*.md",
           "README.md",
           "LICENSE",
           "LICENSE-CODE"

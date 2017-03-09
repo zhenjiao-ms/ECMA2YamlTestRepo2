@@ -15,7 +15,13 @@
         "RestApi": "Content"
       },
       "build_entry_point": "docs",
-      "template_folder": "_themes"
+      "template_folder": "_themes",
+      "customized_tasks": {
+        "docset_prebuild": [
+          "_dependentPackages/ECMA2Yaml/tools/Run.ps1",
+          "_dependentPackages/splitToc/tools/run.ps1"
+        ]
+      }
     }
   ],
   "notification_subscribers": [],
@@ -33,7 +39,7 @@
   "dependent_packages": [
     {
       "id": "Microsoft.DocAsCode.ECMA2Yaml",
-      "nuget_feed": "https://www.nuget.org/api/v2",
+      "nuget_feed": "https://www.myget.org/F/op-dev/api/v2",
       "path_to_root": "_dependentPackages/ECMA2Yaml",
       "target_framework": "net45",
       "version": "latest"
@@ -51,14 +57,6 @@
       "path_to_root": "_dependentPackages/splitToc",
       "target_framework": "net45",
       "version": "latest-prerelease"
-    }
-  ],
-  "customized_tasks": [
-    {
-      "repo_setup": [
-        "_dependentPackages/ECMA2Yaml/tools/Run.ps1",
-        "_dependentPackages/splitToc/tools/run.ps1"
-      ]
     }
   ],
   "need_generate_pdf_url_template": false,

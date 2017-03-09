@@ -15,6 +15,7 @@
         ]
       }
     ],
+    "dest": "_merged",
     "tocMetadata": "version"
   },
   "build": {
@@ -22,11 +23,13 @@
       {
         "files": [
           "**/*.md",
-          "obj/*.yml"
+          "_merged/**/*.yml",
+          "breadcrumb/toc.yml"
         ],
         "exclude": [
           "add/includes/**/*.md",
           "add/metadata/**/*.md",
+          "**/obj/**",
           "README.md",
           "LICENSE",
           "LICENSE-CODE"

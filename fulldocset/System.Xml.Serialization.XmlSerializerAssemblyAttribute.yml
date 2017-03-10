@@ -1,0 +1,316 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  id: XmlSerializerAssemblyAttribute
+  children:
+  - System.Xml.Serialization.XmlSerializerAssemblyAttribute.#ctor
+  - System.Xml.Serialization.XmlSerializerAssemblyAttribute.#ctor(System.String)
+  - System.Xml.Serialization.XmlSerializerAssemblyAttribute.#ctor(System.String,System.String)
+  - System.Xml.Serialization.XmlSerializerAssemblyAttribute.AssemblyName
+  - System.Xml.Serialization.XmlSerializerAssemblyAttribute.CodeBase
+  langs:
+  - csharp
+  name: XmlSerializerAssemblyAttribute
+  nameWithType: XmlSerializerAssemblyAttribute
+  fullName: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  type: Class
+  summary: Applied to a Web service client proxy, enables you to specify an assembly that contains custom-made serializers.
+  remarks: "Use the XmlSerializerAssemblyAttribute to increase the performance of a Web service client application.  \n  \n A typical method of using this attribute is as follows:  \n  \n1.  Create a client proxy for a Web service.  \n  \n2.  Open the machine.config file.  \n  \n3.  Under the system.diagnostics element, add a value under the `<switches>` element to keep the compiled files:  \n  \n    ```  \n    <system.diagnostics>  \n       <switches>  \n          <add name=\"XmlSerialization.Compilation\" value=\"4\"/>  \n       </switches>  \n    </system.diagnostics>  \n    ```  \n  \n4.  Compile the proxy.  \n  \n5.  Run the proxy application.  \n  \n6.  Open a command window and navigate to the \\Temp directory used by the <xref:System.Xml.Serialization.XmlSerializer> to cache files.  \n  \n    ```  \n    cd %temp%  \n    ```  \n  \n7.  Find the last file created using the **dir** command with the **/OD** switch.  \n  \n    ```  \n    dir *.vb /OD   \n    ```  \n  \n8.  Compile the file into an assembly. Name the assembly.  \n  \n9. Edit the original proxy code by applying the XmlSerializerAssemblyAttribute to the class. Specify the assembly name, as shown in the following C# code.  \n  \n    ```c#  \n    [XmlSerializerAssemblyAttribute(AssemblyName=\"hello.serializer\")]  \n    public class Hello: System.Web.Services.Protocols.SoapHttpClientProtocol {  \n       // Proxy code not shown.  \n    }  \n    ```  \n  \n```vb#  \n<XmlSerializerAssemblyAttribute(AssemblyName:=\"hello.serializer\")> _  \nPublic Class Hello  \nImplements System.Web.Services.Protocols.SoapHttpClientProtocol   \n   ' Proxy code not shown.  \nEnd Class  \n```"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Class | System.AttributeTargets.Struct | System.AttributeTargets.Enum | System.AttributeTargets.Interface, AllowMultiple=false)]
+
+      public sealed class XmlSerializerAssemblyAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializerAssemblyAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializerAssemblyAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializerAssemblyAttribute.#ctor
+  id: '#ctor'
+  parent: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  langs:
+  - csharp
+  name: XmlSerializerAssemblyAttribute()
+  nameWithType: XmlSerializerAssemblyAttribute.XmlSerializerAssemblyAttribute()
+  fullName: System.Xml.Serialization.XmlSerializerAssemblyAttribute.XmlSerializerAssemblyAttribute()
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlSerializerAssemblyAttribute"></xref> class.
+  syntax:
+    content: public XmlSerializerAssemblyAttribute ();
+    parameters: []
+  overload: System.Xml.Serialization.XmlSerializerAssemblyAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializerAssemblyAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializerAssemblyAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializerAssemblyAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  langs:
+  - csharp
+  name: XmlSerializerAssemblyAttribute(String)
+  nameWithType: XmlSerializerAssemblyAttribute.XmlSerializerAssemblyAttribute(String)
+  fullName: System.Xml.Serialization.XmlSerializerAssemblyAttribute.XmlSerializerAssemblyAttribute(String)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlSerializerAssemblyAttribute"></xref> class with the specified assembly name.
+  syntax:
+    content: public XmlSerializerAssemblyAttribute (string assemblyName);
+    parameters:
+    - id: assemblyName
+      type: System.String
+      description: The simple, unencrypted name of the assembly.
+  overload: System.Xml.Serialization.XmlSerializerAssemblyAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializerAssemblyAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializerAssemblyAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializerAssemblyAttribute.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  langs:
+  - csharp
+  name: XmlSerializerAssemblyAttribute(String,String)
+  nameWithType: XmlSerializerAssemblyAttribute.XmlSerializerAssemblyAttribute(String,String)
+  fullName: System.Xml.Serialization.XmlSerializerAssemblyAttribute.XmlSerializerAssemblyAttribute(String,String)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlSerializerAssemblyAttribute"></xref> class with the specified assembly name and location of the assembly.
+  syntax:
+    content: public XmlSerializerAssemblyAttribute (string assemblyName, string codeBase);
+    parameters:
+    - id: assemblyName
+      type: System.String
+      description: The simple, unencrypted name of the assembly.
+    - id: codeBase
+      type: System.String
+      description: A string that is the URL location of the assembly.
+  overload: System.Xml.Serialization.XmlSerializerAssemblyAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializerAssemblyAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializerAssemblyAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializerAssemblyAttribute.AssemblyName
+  id: AssemblyName
+  parent: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  langs:
+  - csharp
+  name: AssemblyName
+  nameWithType: XmlSerializerAssemblyAttribute.AssemblyName
+  fullName: System.Xml.Serialization.XmlSerializerAssemblyAttribute.AssemblyName
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets the name of the assembly that contains serializers for a specific set of types.
+  syntax:
+    content: public string AssemblyName { get; set; }
+    return:
+      type: System.String
+      description: The simple, unencrypted name of the assembly.
+  overload: System.Xml.Serialization.XmlSerializerAssemblyAttribute.AssemblyName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializerAssemblyAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializerAssemblyAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializerAssemblyAttribute.CodeBase
+  id: CodeBase
+  parent: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  langs:
+  - csharp
+  name: CodeBase
+  nameWithType: XmlSerializerAssemblyAttribute.CodeBase
+  fullName: System.Xml.Serialization.XmlSerializerAssemblyAttribute.CodeBase
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets the location of the assembly that contains the serializers.
+  syntax:
+    content: public string CodeBase { get; set; }
+    return:
+      type: System.String
+      description: A location, such as a path or URI, that points to the assembly.
+  overload: System.Xml.Serialization.XmlSerializerAssemblyAttribute.CodeBase*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializerAssemblyAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializerAssemblyAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Xml.Serialization.XmlSerializerAssemblyAttribute.#ctor
+  parent: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  isExternal: false
+  name: XmlSerializerAssemblyAttribute()
+  nameWithType: XmlSerializerAssemblyAttribute.XmlSerializerAssemblyAttribute()
+  fullName: System.Xml.Serialization.XmlSerializerAssemblyAttribute.XmlSerializerAssemblyAttribute()
+- uid: System.Xml.Serialization.XmlSerializerAssemblyAttribute.#ctor(System.String)
+  parent: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  isExternal: false
+  name: XmlSerializerAssemblyAttribute(String)
+  nameWithType: XmlSerializerAssemblyAttribute.XmlSerializerAssemblyAttribute(String)
+  fullName: System.Xml.Serialization.XmlSerializerAssemblyAttribute.XmlSerializerAssemblyAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Xml.Serialization.XmlSerializerAssemblyAttribute.#ctor(System.String,System.String)
+  parent: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  isExternal: false
+  name: XmlSerializerAssemblyAttribute(String,String)
+  nameWithType: XmlSerializerAssemblyAttribute.XmlSerializerAssemblyAttribute(String,String)
+  fullName: System.Xml.Serialization.XmlSerializerAssemblyAttribute.XmlSerializerAssemblyAttribute(String,String)
+- uid: System.Xml.Serialization.XmlSerializerAssemblyAttribute.AssemblyName
+  parent: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  isExternal: false
+  name: AssemblyName
+  nameWithType: XmlSerializerAssemblyAttribute.AssemblyName
+  fullName: System.Xml.Serialization.XmlSerializerAssemblyAttribute.AssemblyName
+- uid: System.Xml.Serialization.XmlSerializerAssemblyAttribute.CodeBase
+  parent: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  isExternal: false
+  name: CodeBase
+  nameWithType: XmlSerializerAssemblyAttribute.CodeBase
+  fullName: System.Xml.Serialization.XmlSerializerAssemblyAttribute.CodeBase
+- uid: System.Xml.Serialization.XmlSerializerAssemblyAttribute.#ctor*
+  parent: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  isExternal: false
+  name: XmlSerializerAssemblyAttribute
+  nameWithType: XmlSerializerAssemblyAttribute.XmlSerializerAssemblyAttribute
+- uid: System.Xml.Serialization.XmlSerializerAssemblyAttribute.AssemblyName*
+  parent: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  isExternal: false
+  name: AssemblyName
+  nameWithType: XmlSerializerAssemblyAttribute.AssemblyName
+- uid: System.Xml.Serialization.XmlSerializerAssemblyAttribute.CodeBase*
+  parent: System.Xml.Serialization.XmlSerializerAssemblyAttribute
+  isExternal: false
+  name: CodeBase
+  nameWithType: XmlSerializerAssemblyAttribute.CodeBase

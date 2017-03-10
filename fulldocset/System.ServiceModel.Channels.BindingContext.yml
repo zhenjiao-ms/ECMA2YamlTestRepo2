@@ -1,0 +1,862 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.Channels.BindingContext
+  id: BindingContext
+  children:
+  - System.ServiceModel.Channels.BindingContext.#ctor(System.ServiceModel.Channels.CustomBinding,System.ServiceModel.Channels.BindingParameterCollection)
+  - System.ServiceModel.Channels.BindingContext.#ctor(System.ServiceModel.Channels.CustomBinding,System.ServiceModel.Channels.BindingParameterCollection,System.Uri,System.String,System.ServiceModel.Description.ListenUriMode)
+  - System.ServiceModel.Channels.BindingContext.Binding
+  - System.ServiceModel.Channels.BindingContext.BindingParameters
+  - System.ServiceModel.Channels.BindingContext.BuildInnerChannelFactory``1
+  - System.ServiceModel.Channels.BindingContext.BuildInnerChannelListener``1
+  - System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelFactory``1
+  - System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelListener``1
+  - System.ServiceModel.Channels.BindingContext.Clone
+  - System.ServiceModel.Channels.BindingContext.GetInnerProperty``1
+  - System.ServiceModel.Channels.BindingContext.ListenUriBaseAddress
+  - System.ServiceModel.Channels.BindingContext.ListenUriMode
+  - System.ServiceModel.Channels.BindingContext.ListenUriRelativeAddress
+  - System.ServiceModel.Channels.BindingContext.RemainingBindingElements
+  langs:
+  - csharp
+  name: BindingContext
+  nameWithType: BindingContext
+  fullName: System.ServiceModel.Channels.BindingContext
+  type: Class
+  summary: Provides information about the addresses, bindings, binding elements and binding parameters required to build the channel listeners and channel factories.
+  remarks: The channel listeners and channel factories, in turn, construct the channel stacks used to process incoming and outgoing messages. The binding context also provides the linkage to the inner channel factories and channel listeners that are used to construct the channel and listener stacks. The binding context basically stores all of the dynamic information needed during the construction of the channel stack.
+  syntax:
+    content: public class BindingContext
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.BindingContext.#ctor(System.ServiceModel.Channels.CustomBinding,System.ServiceModel.Channels.BindingParameterCollection)
+  id: '#ctor(System.ServiceModel.Channels.CustomBinding,System.ServiceModel.Channels.BindingParameterCollection)'
+  parent: System.ServiceModel.Channels.BindingContext
+  langs:
+  - csharp
+  name: BindingContext(CustomBinding,BindingParameterCollection)
+  nameWithType: BindingContext.BindingContext(CustomBinding,BindingParameterCollection)
+  fullName: System.ServiceModel.Channels.BindingContext.BindingContext(CustomBinding,BindingParameterCollection)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Channels.BindingContext"></xref> class for a specified binding and collection of binding parameters.
+  remarks: The value of <xref:System.ServiceModel.Description.ListenUriMode> is set to <xref:System.ServiceModel.Description.ListenUriMode> by this constructor, the relative address is set to <xref:System.String.Empty>, and the base address is set to `null`.
+  example:
+  - >-
+    [!code-cs[S_UE_BindingContext#1](~/add/codesnippet/csharp/a31011cc-e037-442b-938a-_1.cs)]
+     [!code-vb[S_UE_BindingContext#1](~/add/codesnippet/visualbasic/a31011cc-e037-442b-938a-_1.vb)]
+  syntax:
+    content: public BindingContext (System.ServiceModel.Channels.CustomBinding binding, System.ServiceModel.Channels.BindingParameterCollection parameters);
+    parameters:
+    - id: binding
+      type: System.ServiceModel.Channels.CustomBinding
+      description: The <xref href="System.ServiceModel.Channels.CustomBinding"></xref> for the channel.
+    - id: parameters
+      type: System.ServiceModel.Channels.BindingParameterCollection
+      description: The <xref href="System.ServiceModel.Channels.BindingParameterCollection"></xref> for the channel.
+  overload: System.ServiceModel.Channels.BindingContext.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>binding</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.BindingContext.#ctor(System.ServiceModel.Channels.CustomBinding,System.ServiceModel.Channels.BindingParameterCollection,System.Uri,System.String,System.ServiceModel.Description.ListenUriMode)
+  id: '#ctor(System.ServiceModel.Channels.CustomBinding,System.ServiceModel.Channels.BindingParameterCollection,System.Uri,System.String,System.ServiceModel.Description.ListenUriMode)'
+  parent: System.ServiceModel.Channels.BindingContext
+  langs:
+  - csharp
+  name: BindingContext(CustomBinding,BindingParameterCollection,Uri,String,ListenUriMode)
+  nameWithType: BindingContext.BindingContext(CustomBinding,BindingParameterCollection,Uri,String,ListenUriMode)
+  fullName: System.ServiceModel.Channels.BindingContext.BindingContext(CustomBinding,BindingParameterCollection,Uri,String,ListenUriMode)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Channels.BindingContext"></xref> class for a specified binding, collection of binding parameters, and address for the endpoint at which the service listens.
+  remarks: ''
+  example:
+  - >-
+    [!code-cs[S_UE_BindingContext#2](~/add/codesnippet/csharp/7b3b48c1-52a1-434c-9f90-_1.cs)]
+     [!code-vb[S_UE_BindingContext#2](~/add/codesnippet/visualbasic/7b3b48c1-52a1-434c-9f90-_1.vb)]
+  syntax:
+    content: public BindingContext (System.ServiceModel.Channels.CustomBinding binding, System.ServiceModel.Channels.BindingParameterCollection parameters, Uri listenUriBaseAddress, string listenUriRelativeAddress, System.ServiceModel.Description.ListenUriMode listenUriMode);
+    parameters:
+    - id: binding
+      type: System.ServiceModel.Channels.CustomBinding
+      description: The <xref href="System.ServiceModel.Channels.CustomBinding"></xref> for the channel.
+    - id: parameters
+      type: System.ServiceModel.Channels.BindingParameterCollection
+      description: The <xref href="System.ServiceModel.Channels.BindingParameterCollection"></xref> for the channel.
+    - id: listenUriBaseAddress
+      type: System.Uri
+      description: The <xref href="System.Uri"></xref> at which the service endpoint listens.
+    - id: listenUriRelativeAddress
+      type: System.String
+      description: The relative address at which the service endpoint listens.
+    - id: listenUriMode
+      type: System.ServiceModel.Description.ListenUriMode
+      description: The <xref href="System.ServiceModel.Description.ListenUriMode"></xref> that indicates whether the transport must ensure that the URI provided for the service to listen on is unique.
+  overload: System.ServiceModel.Channels.BindingContext.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>binding</code> is `null`.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: The <xref href="System.ServiceModel.Description.ListenUriMode"></xref> is not defined.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.BindingContext.Binding
+  id: Binding
+  parent: System.ServiceModel.Channels.BindingContext
+  langs:
+  - csharp
+  name: Binding
+  nameWithType: BindingContext.Binding
+  fullName: System.ServiceModel.Channels.BindingContext.Binding
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Gets the binding for the channel built in the current context.
+  remarks: ''
+  example:
+  - >-
+    [!code-cs[S_UE_BindingContext#3](~/add/codesnippet/csharp/p-system.servicemodel.ch_32_1.cs)]
+     [!code-vb[S_UE_BindingContext#3](~/add/codesnippet/visualbasic/p-system.servicemodel.ch_32_1.vb)]
+  syntax:
+    content: public System.ServiceModel.Channels.CustomBinding Binding { get; }
+    return:
+      type: System.ServiceModel.Channels.CustomBinding
+      description: The <xref href="System.ServiceModel.Channels.CustomBinding"></xref> for the channel built in the current context.
+  overload: System.ServiceModel.Channels.BindingContext.Binding*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.BindingContext.BindingParameters
+  id: BindingParameters
+  parent: System.ServiceModel.Channels.BindingContext
+  langs:
+  - csharp
+  name: BindingParameters
+  nameWithType: BindingContext.BindingParameters
+  fullName: System.ServiceModel.Channels.BindingContext.BindingParameters
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Gets the collection of binding parameters for the channel built in the current context.
+  remarks: This collection holds the settings encountered when building the channel stack from the bindings. Settings that need to be pushed down the channel stack during creation are put into the collection until a channel lower in the stack needs them.
+  example:
+  - >-
+    [!code-cs[S_UE_BindingContext#4](~/add/codesnippet/csharp/p-system.servicemodel.ch_36_1.cs)]
+     [!code-vb[S_UE_BindingContext#4](~/add/codesnippet/visualbasic/p-system.servicemodel.ch_36_1.vb)]
+  syntax:
+    content: public System.ServiceModel.Channels.BindingParameterCollection BindingParameters { get; }
+    return:
+      type: System.ServiceModel.Channels.BindingParameterCollection
+      description: The <xref href="System.ServiceModel.Channels.BindingParameterCollection"></xref> for the channel built in the current context.
+  overload: System.ServiceModel.Channels.BindingContext.BindingParameters*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.BindingContext.BuildInnerChannelFactory``1
+  id: BuildInnerChannelFactory``1
+  parent: System.ServiceModel.Channels.BindingContext
+  langs:
+  - csharp
+  name: BuildInnerChannelFactory<TChannel>()
+  nameWithType: BindingContext.BuildInnerChannelFactory<TChannel>()
+  fullName: System.ServiceModel.Channels.BindingContext.BuildInnerChannelFactory<TChannel>()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Builds the inner channel factory for channels of a specified type below the current channel factory.
+  remarks: ''
+  example:
+  - >-
+    [!code-cs[S_UE_BindingContext#9](~/add/codesnippet/csharp/m-system.servicemodel.ch_20_1.cs)]
+     [!code-vb[S_UE_BindingContext#9](~/add/codesnippet/visualbasic/m-system.servicemodel.ch_20_1.vb)]
+  syntax:
+    content: public System.ServiceModel.Channels.IChannelFactory<TChannel> BuildInnerChannelFactory<TChannel> ();
+    parameters: []
+    return:
+      type: System.ServiceModel.Channels.IChannelFactory`1
+      description: The <xref href="stem.ServiceModel.Channels.IChannelFactory%601"></xref> of type <xref href="System.ServiceModel.Channels.IChannel"></xref> that represents the inner channel factory of the current channel factory.
+  overload: System.ServiceModel.Channels.BindingContext.BuildInnerChannelFactory<TChannel>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.BindingContext.BuildInnerChannelListener``1
+  id: BuildInnerChannelListener``1
+  parent: System.ServiceModel.Channels.BindingContext
+  langs:
+  - csharp
+  name: BuildInnerChannelListener<TChannel>()
+  nameWithType: BindingContext.BuildInnerChannelListener<TChannel>()
+  fullName: System.ServiceModel.Channels.BindingContext.BuildInnerChannelListener<TChannel>()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Builds an inner channel listener that listens for a specified type of channel.
+  remarks: ''
+  example:
+  - >-
+    [!code-cs[S_UE_BindingContext#10](~/add/codesnippet/csharp/m-system.servicemodel.ch_2_1.cs)]
+     [!code-vb[S_UE_BindingContext#10](~/add/codesnippet/visualbasic/m-system.servicemodel.ch_2_1.vb)]
+  syntax:
+    content: 'public System.ServiceModel.Channels.IChannelListener<TChannel> BuildInnerChannelListener<TChannel> () where TChannel : class, System.ServiceModel.Channels.IChannel;'
+    parameters: []
+    return:
+      type: System.ServiceModel.Channels.IChannelListener`1
+      description: The <xref href="stem.ServiceModel.Channels.IChannelListener%601"></xref> of type <xref href="System.ServiceModel.Channels.IChannel"></xref> that represents the inner channel listener of the current channel factory.
+  overload: System.ServiceModel.Channels.BindingContext.BuildInnerChannelListener<TChannel>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelFactory``1
+  id: CanBuildInnerChannelFactory``1
+  parent: System.ServiceModel.Channels.BindingContext
+  langs:
+  - csharp
+  name: CanBuildInnerChannelFactory<TChannel>()
+  nameWithType: BindingContext.CanBuildInnerChannelFactory<TChannel>()
+  fullName: System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelFactory<TChannel>()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Returns a value that indicates whether the inner channel factory can produce a specified type of channel.
+  remarks: ''
+  example:
+  - >-
+    [!code-cs[S_UE_BindingContext#11](~/add/codesnippet/csharp/m-system.servicemodel.ch_37_1.cs)]
+     [!code-vb[S_UE_BindingContext#11](~/add/codesnippet/visualbasic/m-system.servicemodel.ch_37_1.vb)]
+  syntax:
+    content: public bool CanBuildInnerChannelFactory<TChannel> ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: '`true` if the inner channel factory can produce the specified <code>TChannel</code>; otherwise, `false`.'
+  overload: System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelFactory<TChannel>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelListener``1
+  id: CanBuildInnerChannelListener``1
+  parent: System.ServiceModel.Channels.BindingContext
+  langs:
+  - csharp
+  name: CanBuildInnerChannelListener<TChannel>()
+  nameWithType: BindingContext.CanBuildInnerChannelListener<TChannel>()
+  fullName: System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelListener<TChannel>()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Returns a value that indicates whether the inner channel listener can be built to listen for a specified type of channel.
+  remarks: ''
+  example:
+  - >-
+    [!code-cs[S_UE_BindingContext#12](~/add/codesnippet/csharp/m-system.servicemodel.ch_1_1.cs)]
+     [!code-vb[S_UE_BindingContext#12](~/add/codesnippet/visualbasic/m-system.servicemodel.ch_1_1.vb)]
+  syntax:
+    content: 'public bool CanBuildInnerChannelListener<TChannel> () where TChannel : class, System.ServiceModel.Channels.IChannel;'
+    parameters: []
+    return:
+      type: System.Boolean
+      description: '`true` if the inner channel listener can be built to listen for the <code>TChannel</code> specified; otherwise, `false`.'
+  overload: System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelListener<TChannel>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.BindingContext.Clone
+  id: Clone
+  parent: System.ServiceModel.Channels.BindingContext
+  langs:
+  - csharp
+  name: Clone()
+  nameWithType: BindingContext.Clone()
+  fullName: System.ServiceModel.Channels.BindingContext.Clone()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Returns a copy of the current channel build context.
+  remarks: This method returns a copy that is a deep clone of your binding context. A deep clone of an object creates a copy of the object and a copy of everything directly or indirectly referenced by that object. (This is also called copying the entire object graph.) A shallow clone of an object, by contrast, is a copy of the object only. If the object contains references to other objects, the shallow copy does not create copies of the referred objects; instead, it copies only the references to the original objects.
+  example:
+  - >-
+    [!code-cs[S_UE_BindingContext#13](~/add/codesnippet/csharp/m-system.servicemodel.ch_31_1.cs)]
+     [!code-vb[S_UE_BindingContext#13](~/add/codesnippet/visualbasic/m-system.servicemodel.ch_31_1.vb)]
+  syntax:
+    content: public System.ServiceModel.Channels.BindingContext Clone ();
+    parameters: []
+    return:
+      type: System.ServiceModel.Channels.BindingContext
+      description: A <xref href="System.ServiceModel.Channels.BindingContext"></xref> object that is a copy of the current channel build context.
+  overload: System.ServiceModel.Channels.BindingContext.Clone*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.BindingContext.GetInnerProperty``1
+  id: GetInnerProperty``1
+  parent: System.ServiceModel.Channels.BindingContext
+  langs:
+  - csharp
+  name: GetInnerProperty<T>()
+  nameWithType: BindingContext.GetInnerProperty<T>()
+  fullName: System.ServiceModel.Channels.BindingContext.GetInnerProperty<T>()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Returns a typed object requested, if present, from the appropriate layer in the binding stack.
+  remarks: Clones the binding context and calls <xref:System.ServiceModel.Channels.BindingElement.GetProperty%60%601%28System.ServiceModel.Channels.BindingContext%29> on the next binding element stored in the binding context.
+  example:
+  - >-
+    [!code-cs[S_UE_BindingContext#14](~/add/codesnippet/csharp/m-system.servicemodel.ch_11_1.cs)]
+     [!code-vb[S_UE_BindingContext#14](~/add/codesnippet/visualbasic/m-system.servicemodel.ch_11_1.vb)]
+  syntax:
+    content: 'public T GetInnerProperty<T> () where T : class;'
+    parameters: []
+    return:
+      type: T
+      description: The typed object <code>T</code> requested if it is present or `null` if it is not.
+  overload: System.ServiceModel.Channels.BindingContext.GetInnerProperty<T>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.BindingContext.ListenUriBaseAddress
+  id: ListenUriBaseAddress
+  parent: System.ServiceModel.Channels.BindingContext
+  langs:
+  - csharp
+  name: ListenUriBaseAddress
+  nameWithType: BindingContext.ListenUriBaseAddress
+  fullName: System.ServiceModel.Channels.BindingContext.ListenUriBaseAddress
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Gets or sets the URI that provides the base address at which the service endpoint listens.
+  remarks: The address for the endpoint at which a service listens is obtained by appending the <xref:System.ServiceModel.Channels.BindingContext.ListenUriRelativeAddress%2A> to the ListenUriBaseAddress. This absolute address can be set using the <xref:System.ServiceModel.Description.ServiceEndpoint.ListenUri%2A> property.
+  example:
+  - >-
+    [!code-cs[S_UE_BindingContext#5](~/add/codesnippet/csharp/p-system.servicemodel.ch_35_1.cs)]
+     [!code-vb[S_UE_BindingContext#5](~/add/codesnippet/visualbasic/p-system.servicemodel.ch_35_1.vb)]
+  syntax:
+    content: public Uri ListenUriBaseAddress { get; set; }
+    return:
+      type: System.Uri
+      description: The <xref href="System.Uri"></xref> at which the service endpoint listens.
+  overload: System.ServiceModel.Channels.BindingContext.ListenUriBaseAddress*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.BindingContext.ListenUriMode
+  id: ListenUriMode
+  parent: System.ServiceModel.Channels.BindingContext
+  langs:
+  - csharp
+  name: ListenUriMode
+  nameWithType: BindingContext.ListenUriMode
+  fullName: System.ServiceModel.Channels.BindingContext.ListenUriMode
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Gets or sets a value that indicates whether the transport must ensure that the URI provided for the service to listen on is unique.
+  remarks: ''
+  example:
+  - >-
+    [!code-cs[S_UE_BindingContext#6](~/add/codesnippet/csharp/p-system.servicemodel.ch_12_1.cs)]
+     [!code-vb[S_UE_BindingContext#6](~/add/codesnippet/visualbasic/p-system.servicemodel.ch_12_1.vb)]
+  syntax:
+    content: public System.ServiceModel.Description.ListenUriMode ListenUriMode { get; set; }
+    return:
+      type: System.ServiceModel.Description.ListenUriMode
+      description: The <xref href="System.ServiceModel.Description.ListenUriMode"></xref> that indicates whether the transport must ensure that the URI provided for the service to listen on is unique.
+  overload: System.ServiceModel.Channels.BindingContext.ListenUriMode*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.BindingContext.ListenUriRelativeAddress
+  id: ListenUriRelativeAddress
+  parent: System.ServiceModel.Channels.BindingContext
+  langs:
+  - csharp
+  name: ListenUriRelativeAddress
+  nameWithType: BindingContext.ListenUriRelativeAddress
+  fullName: System.ServiceModel.Channels.BindingContext.ListenUriRelativeAddress
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Gets or sets the URI that provides the relative address at which the service endpoint listens.
+  remarks: The address for the endpoint at which a service listens is obtained by appending the ListenUriRelativeAddress to the <xref:System.ServiceModel.Channels.BindingContext.ListenUriBaseAddress%2A>. This absolute address can be set using the <xref:System.ServiceModel.Description.ServiceEndpoint.ListenUri%2A> property.
+  example:
+  - >-
+    [!code-cs[S_UE_BindingContext#7](~/add/codesnippet/csharp/p-system.servicemodel.ch_64_1.cs)]
+     [!code-vb[S_UE_BindingContext#7](~/add/codesnippet/visualbasic/p-system.servicemodel.ch_64_1.vb)]
+  syntax:
+    content: public string ListenUriRelativeAddress { get; set; }
+    return:
+      type: System.String
+      description: The relative address at which the service endpoint listens.
+  overload: System.ServiceModel.Channels.BindingContext.ListenUriRelativeAddress*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.BindingContext.RemainingBindingElements
+  id: RemainingBindingElements
+  parent: System.ServiceModel.Channels.BindingContext
+  langs:
+  - csharp
+  name: RemainingBindingElements
+  nameWithType: BindingContext.RemainingBindingElements
+  fullName: System.ServiceModel.Channels.BindingContext.RemainingBindingElements
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Gets the binding elements that are used by other binding elements to construct the channel stack.
+  remarks: The binding elements that are put into this collection are those elements that do not correspond directly to a listener or factory in one of the channel stacks. The encoder binding element, for example, ends up in this collection and is then used by the transport channel to construct a message encoder.
+  example:
+  - >-
+    [!code-cs[S_UE_BindingContext#8](~/add/codesnippet/csharp/p-system.servicemodel.ch_24_1.cs)]
+     [!code-vb[S_UE_BindingContext#8](~/add/codesnippet/visualbasic/p-system.servicemodel.ch_24_1.vb)]
+  syntax:
+    content: public System.ServiceModel.Channels.BindingElementCollection RemainingBindingElements { get; }
+    return:
+      type: System.ServiceModel.Channels.BindingElementCollection
+      description: The <xref href="System.ServiceModel.Channels.BindingElementCollection"></xref> that contains the binding elements that are used by other binding elements to construct the channel stack.
+  overload: System.ServiceModel.Channels.BindingContext.RemainingBindingElements*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\BindingContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/BindingContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.ServiceModel.Channels.BindingContext.#ctor(System.ServiceModel.Channels.CustomBinding,System.ServiceModel.Channels.BindingParameterCollection)
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: BindingContext(CustomBinding,BindingParameterCollection)
+  nameWithType: BindingContext.BindingContext(CustomBinding,BindingParameterCollection)
+  fullName: System.ServiceModel.Channels.BindingContext.BindingContext(CustomBinding,BindingParameterCollection)
+- uid: System.ServiceModel.Channels.CustomBinding
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: CustomBinding
+  nameWithType: CustomBinding
+  fullName: System.ServiceModel.Channels.CustomBinding
+- uid: System.ServiceModel.Channels.BindingParameterCollection
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: BindingParameterCollection
+  nameWithType: BindingParameterCollection
+  fullName: System.ServiceModel.Channels.BindingParameterCollection
+- uid: System.ServiceModel.Channels.BindingContext.#ctor(System.ServiceModel.Channels.CustomBinding,System.ServiceModel.Channels.BindingParameterCollection,System.Uri,System.String,System.ServiceModel.Description.ListenUriMode)
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: BindingContext(CustomBinding,BindingParameterCollection,Uri,String,ListenUriMode)
+  nameWithType: BindingContext.BindingContext(CustomBinding,BindingParameterCollection,Uri,String,ListenUriMode)
+  fullName: System.ServiceModel.Channels.BindingContext.BindingContext(CustomBinding,BindingParameterCollection,Uri,String,ListenUriMode)
+- uid: System.Uri
+  parent: System
+  isExternal: false
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.ServiceModel.Description.ListenUriMode
+  parent: System.ServiceModel.Description
+  isExternal: false
+  name: ListenUriMode
+  nameWithType: ListenUriMode
+  fullName: System.ServiceModel.Description.ListenUriMode
+- uid: System.ServiceModel.Channels.BindingContext.Binding
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: Binding
+  nameWithType: BindingContext.Binding
+  fullName: System.ServiceModel.Channels.BindingContext.Binding
+- uid: System.ServiceModel.Channels.BindingContext.BindingParameters
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: BindingParameters
+  nameWithType: BindingContext.BindingParameters
+  fullName: System.ServiceModel.Channels.BindingContext.BindingParameters
+- uid: System.ServiceModel.Channels.BindingContext.BuildInnerChannelFactory``1
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: BuildInnerChannelFactory<TChannel>()
+  nameWithType: BindingContext.BuildInnerChannelFactory<TChannel>()
+  fullName: System.ServiceModel.Channels.BindingContext.BuildInnerChannelFactory<TChannel>()
+- uid: System.ServiceModel.Channels.IChannelFactory`1
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: IChannelFactory<TChannel>
+  nameWithType: IChannelFactory<TChannel>
+  fullName: System.ServiceModel.Channels.IChannelFactory<TChannel>
+- uid: System.ServiceModel.Channels.BindingContext.BuildInnerChannelListener``1
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: BuildInnerChannelListener<TChannel>()
+  nameWithType: BindingContext.BuildInnerChannelListener<TChannel>()
+  fullName: System.ServiceModel.Channels.BindingContext.BuildInnerChannelListener<TChannel>()
+- uid: System.ServiceModel.Channels.IChannelListener`1
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: IChannelListener<TChannel>
+  nameWithType: IChannelListener<TChannel>
+  fullName: System.ServiceModel.Channels.IChannelListener<TChannel>
+- uid: System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelFactory``1
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: CanBuildInnerChannelFactory<TChannel>()
+  nameWithType: BindingContext.CanBuildInnerChannelFactory<TChannel>()
+  fullName: System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelFactory<TChannel>()
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelListener``1
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: CanBuildInnerChannelListener<TChannel>()
+  nameWithType: BindingContext.CanBuildInnerChannelListener<TChannel>()
+  fullName: System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelListener<TChannel>()
+- uid: System.ServiceModel.Channels.BindingContext.Clone
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: Clone()
+  nameWithType: BindingContext.Clone()
+  fullName: System.ServiceModel.Channels.BindingContext.Clone()
+- uid: System.ServiceModel.Channels.BindingContext
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: BindingContext
+  nameWithType: BindingContext
+  fullName: System.ServiceModel.Channels.BindingContext
+- uid: System.ServiceModel.Channels.BindingContext.GetInnerProperty``1
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: GetInnerProperty<T>()
+  nameWithType: BindingContext.GetInnerProperty<T>()
+  fullName: System.ServiceModel.Channels.BindingContext.GetInnerProperty<T>()
+- uid: T
+  isExternal: true
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.ServiceModel.Channels.BindingContext.ListenUriBaseAddress
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: ListenUriBaseAddress
+  nameWithType: BindingContext.ListenUriBaseAddress
+  fullName: System.ServiceModel.Channels.BindingContext.ListenUriBaseAddress
+- uid: System.ServiceModel.Channels.BindingContext.ListenUriMode
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: ListenUriMode
+  nameWithType: BindingContext.ListenUriMode
+  fullName: System.ServiceModel.Channels.BindingContext.ListenUriMode
+- uid: System.ServiceModel.Channels.BindingContext.ListenUriRelativeAddress
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: ListenUriRelativeAddress
+  nameWithType: BindingContext.ListenUriRelativeAddress
+  fullName: System.ServiceModel.Channels.BindingContext.ListenUriRelativeAddress
+- uid: System.ServiceModel.Channels.BindingContext.RemainingBindingElements
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: RemainingBindingElements
+  nameWithType: BindingContext.RemainingBindingElements
+  fullName: System.ServiceModel.Channels.BindingContext.RemainingBindingElements
+- uid: System.ServiceModel.Channels.BindingElementCollection
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: BindingElementCollection
+  nameWithType: BindingElementCollection
+  fullName: System.ServiceModel.Channels.BindingElementCollection
+- uid: System.ServiceModel.Channels.BindingContext.#ctor*
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: BindingContext
+  nameWithType: BindingContext.BindingContext
+- uid: System.ServiceModel.Channels.BindingContext.Binding*
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: Binding
+  nameWithType: BindingContext.Binding
+- uid: System.ServiceModel.Channels.BindingContext.BindingParameters*
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: BindingParameters
+  nameWithType: BindingContext.BindingParameters
+- uid: System.ServiceModel.Channels.BindingContext.BuildInnerChannelFactory<TChannel>*
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: BuildInnerChannelFactory<TChannel>
+  nameWithType: BindingContext.BuildInnerChannelFactory<TChannel>
+- uid: System.ServiceModel.Channels.BindingContext.BuildInnerChannelListener<TChannel>*
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: BuildInnerChannelListener<TChannel>
+  nameWithType: BindingContext.BuildInnerChannelListener<TChannel>
+- uid: System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelFactory<TChannel>*
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: CanBuildInnerChannelFactory<TChannel>
+  nameWithType: BindingContext.CanBuildInnerChannelFactory<TChannel>
+- uid: System.ServiceModel.Channels.BindingContext.CanBuildInnerChannelListener<TChannel>*
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: CanBuildInnerChannelListener<TChannel>
+  nameWithType: BindingContext.CanBuildInnerChannelListener<TChannel>
+- uid: System.ServiceModel.Channels.BindingContext.Clone*
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: Clone
+  nameWithType: BindingContext.Clone
+- uid: System.ServiceModel.Channels.BindingContext.GetInnerProperty<T>*
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: GetInnerProperty<T>
+  nameWithType: BindingContext.GetInnerProperty<T>
+- uid: System.ServiceModel.Channels.BindingContext.ListenUriBaseAddress*
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: ListenUriBaseAddress
+  nameWithType: BindingContext.ListenUriBaseAddress
+- uid: System.ServiceModel.Channels.BindingContext.ListenUriMode*
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: ListenUriMode
+  nameWithType: BindingContext.ListenUriMode
+- uid: System.ServiceModel.Channels.BindingContext.ListenUriRelativeAddress*
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: ListenUriRelativeAddress
+  nameWithType: BindingContext.ListenUriRelativeAddress
+- uid: System.ServiceModel.Channels.BindingContext.RemainingBindingElements*
+  parent: System.ServiceModel.Channels.BindingContext
+  isExternal: false
+  name: RemainingBindingElements
+  nameWithType: BindingContext.RemainingBindingElements

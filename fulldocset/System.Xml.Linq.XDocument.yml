@@ -1,0 +1,1420 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.Linq.XDocument
+  id: XDocument
+  children:
+  - System.Xml.Linq.XDocument.#ctor
+  - System.Xml.Linq.XDocument.#ctor(System.Object[])
+  - System.Xml.Linq.XDocument.#ctor(System.Xml.Linq.XDocument)
+  - System.Xml.Linq.XDocument.#ctor(System.Xml.Linq.XDeclaration,System.Object[])
+  - System.Xml.Linq.XDocument.Declaration
+  - System.Xml.Linq.XDocument.DocumentType
+  - System.Xml.Linq.XDocument.Load(System.IO.Stream)
+  - System.Xml.Linq.XDocument.Load(System.IO.TextReader)
+  - System.Xml.Linq.XDocument.Load(System.String)
+  - System.Xml.Linq.XDocument.Load(System.Xml.XmlReader)
+  - System.Xml.Linq.XDocument.Load(System.IO.Stream,System.Xml.Linq.LoadOptions)
+  - System.Xml.Linq.XDocument.Load(System.IO.TextReader,System.Xml.Linq.LoadOptions)
+  - System.Xml.Linq.XDocument.Load(System.String,System.Xml.Linq.LoadOptions)
+  - System.Xml.Linq.XDocument.Load(System.Xml.XmlReader,System.Xml.Linq.LoadOptions)
+  - System.Xml.Linq.XDocument.NodeType
+  - System.Xml.Linq.XDocument.Parse(System.String)
+  - System.Xml.Linq.XDocument.Parse(System.String,System.Xml.Linq.LoadOptions)
+  - System.Xml.Linq.XDocument.Root
+  - System.Xml.Linq.XDocument.Save(System.IO.Stream)
+  - System.Xml.Linq.XDocument.Save(System.IO.TextWriter)
+  - System.Xml.Linq.XDocument.Save(System.String)
+  - System.Xml.Linq.XDocument.Save(System.Xml.XmlWriter)
+  - System.Xml.Linq.XDocument.Save(System.IO.Stream,System.Xml.Linq.SaveOptions)
+  - System.Xml.Linq.XDocument.Save(System.IO.TextWriter,System.Xml.Linq.SaveOptions)
+  - System.Xml.Linq.XDocument.Save(System.String,System.Xml.Linq.SaveOptions)
+  - System.Xml.Linq.XDocument.WriteTo(System.Xml.XmlWriter)
+  langs:
+  - csharp
+  name: XDocument
+  nameWithType: XDocument
+  fullName: System.Xml.Linq.XDocument
+  type: Class
+  summary: "Represents an XML document. For the components and usage of an XDocument object, see [XDocument Class Overview](../Topic/XDocument%20Class%20Overview.md).  \n  \n To browse the .NET Framework source code for this type, see the [Reference Source](http://referencesource.microsoft.com/#System.Xml.Linq/XLinq.cs#3354dac0913e417b)."
+  remarks: "> [!NOTE]\n>  To view the .NET Framework source code for this type, see the [Reference Source](http://referencesource.microsoft.com/#System.Xml.Linq/XLinq.cs#3354dac0913e417b). You can browse through the source code online, download the reference for offline viewing, and step through the sources (including patches and updates) during debugging; see [instructions](http://referencesource.microsoft.com/).  \n  \n For details about the valid content of an XDocument, see [Valid Content of XElement and XDocument Objects](../Topic/Valid%20Content%20of%20XElement%20and%20XDocument%20Objects1.md)."
+  example:
+  - "The following example creates a document, and then adds a comment and an element to it. It then composes another document using the results of a query.  \n  \n```c#  \n  \n                XDocument srcTree = new XDocument(  \n    new XComment(\"This is a comment\"),  \n    new XElement(\"Root\",  \n        new XElement(\"Child1\", \"data1\"),  \n        new XElement(\"Child2\", \"data2\"),  \n        new XElement(\"Child3\", \"data3\"),  \n        new XElement(\"Child2\", \"data4\"),  \n        new XElement(\"Info5\", \"info5\"),  \n        new XElement(\"Info6\", \"info6\"),  \n        new XElement(\"Info7\", \"info7\"),  \n        new XElement(\"Info8\", \"info8\")  \n    )  \n);  \n  \nXDocument doc = new XDocument(  \n    new XComment(\"This is a comment\"),  \n    new XElement(\"Root\",  \n        from el in srcTree.Element(\"Root\").Elements()  \n        where ((string)el).StartsWith(\"data\")  \n        select el  \n    )  \n);  \nConsole.WriteLine(doc);  \n```  \n  \n```vb  \n  \n                Dim srcTree As XDocument = _   \n    <?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>  \n        <!--This is a comment-->  \n        <Root>  \n            <Child1>data1</Child1>  \n            <Child2>data2</Child2>  \n            <Child3>data3</Child3>  \n            <Child2>data4</Child2>  \n            <Info5>info5</Info5>  \n            <Info6>info6</Info6>  \n            <Info7>info7</Info7>  \n            <Info8>info8</Info8>  \n        </Root>  \nDim doc As XDocument = _   \n    <?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>  \n        <!--This is a comment-->  \n        <Root>  \n            <%= From el In srcTree.<Root>.Elements _  \n                Where CStr(el).StartsWith(\"data\") _  \n                Select el %>  \n        </Root>  \nConsole.WriteLine(doc)  \n```  \n  \n This example produces the following output:  \n  \n```xml  \n  \n                <!--This is a comment-->  \n<Root>  \n  <Child1>data1</Child1>  \n  <Child2>data2</Child2>  \n  <Child3>data3</Child3>  \n  <Child2>data4</Child2>  \n</Root>  \n```"
+  syntax:
+    content: 'public class XDocument : System.Xml.Linq.XContainer'
+  inheritance:
+  - System.Object
+  - System.Xml.Linq.XObject
+  - System.Xml.Linq.XNode
+  - System.Xml.Linq.XContainer
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Xml.Linq.XContainer.Add(System.Object)
+  - System.Xml.Linq.XContainer.Add(System.Object[])
+  - System.Xml.Linq.XContainer.AddFirst(System.Object)
+  - System.Xml.Linq.XContainer.AddFirst(System.Object[])
+  - System.Xml.Linq.XContainer.CreateWriter
+  - System.Xml.Linq.XContainer.DescendantNodes
+  - System.Xml.Linq.XContainer.Descendants
+  - System.Xml.Linq.XContainer.Descendants(System.Xml.Linq.XName)
+  - System.Xml.Linq.XContainer.Element(System.Xml.Linq.XName)
+  - System.Xml.Linq.XContainer.Elements
+  - System.Xml.Linq.XContainer.Elements(System.Xml.Linq.XName)
+  - System.Xml.Linq.XContainer.FirstNode
+  - System.Xml.Linq.XContainer.LastNode
+  - System.Xml.Linq.XContainer.Nodes
+  - System.Xml.Linq.XContainer.RemoveNodes
+  - System.Xml.Linq.XContainer.ReplaceNodes(System.Object)
+  - System.Xml.Linq.XContainer.ReplaceNodes(System.Object[])
+  - System.Xml.Linq.XNode.AddAfterSelf(System.Object)
+  - System.Xml.Linq.XNode.AddAfterSelf(System.Object[])
+  - System.Xml.Linq.XNode.AddBeforeSelf(System.Object)
+  - System.Xml.Linq.XNode.AddBeforeSelf(System.Object[])
+  - System.Xml.Linq.XNode.Ancestors
+  - System.Xml.Linq.XNode.Ancestors(System.Xml.Linq.XName)
+  - System.Xml.Linq.XNode.CompareDocumentOrder(System.Xml.Linq.XNode,System.Xml.Linq.XNode)
+  - System.Xml.Linq.XNode.CreateReader
+  - System.Xml.Linq.XNode.CreateReader(System.Xml.Linq.ReaderOptions)
+  - System.Xml.Linq.XNode.DeepEquals(System.Xml.Linq.XNode,System.Xml.Linq.XNode)
+  - System.Xml.Linq.XNode.DocumentOrderComparer
+  - System.Xml.Linq.XNode.ElementsAfterSelf
+  - System.Xml.Linq.XNode.ElementsAfterSelf(System.Xml.Linq.XName)
+  - System.Xml.Linq.XNode.ElementsBeforeSelf
+  - System.Xml.Linq.XNode.ElementsBeforeSelf(System.Xml.Linq.XName)
+  - System.Xml.Linq.XNode.EqualityComparer
+  - System.Xml.Linq.XNode.IsAfter(System.Xml.Linq.XNode)
+  - System.Xml.Linq.XNode.IsBefore(System.Xml.Linq.XNode)
+  - System.Xml.Linq.XNode.NextNode
+  - System.Xml.Linq.XNode.NodesAfterSelf
+  - System.Xml.Linq.XNode.NodesBeforeSelf
+  - System.Xml.Linq.XNode.PreviousNode
+  - System.Xml.Linq.XNode.ReadFrom(System.Xml.XmlReader)
+  - System.Xml.Linq.XNode.Remove
+  - System.Xml.Linq.XNode.ReplaceWith(System.Object)
+  - System.Xml.Linq.XNode.ReplaceWith(System.Object[])
+  - System.Xml.Linq.XNode.ToString
+  - System.Xml.Linq.XNode.ToString(System.Xml.Linq.SaveOptions)
+  - System.Xml.Linq.XObject.AddAnnotation(System.Object)
+  - System.Xml.Linq.XObject.Annotation(System.Type)
+  - System.Xml.Linq.XObject.Annotation``1
+  - System.Xml.Linq.XObject.Annotations(System.Type)
+  - System.Xml.Linq.XObject.Annotations``1
+  - System.Xml.Linq.XObject.BaseUri
+  - System.Xml.Linq.XObject.Changed
+  - System.Xml.Linq.XObject.Changing
+  - System.Xml.Linq.XObject.Document
+  - System.Xml.Linq.XObject.Parent
+  - System.Xml.Linq.XObject.RemoveAnnotations(System.Type)
+  - System.Xml.Linq.XObject.RemoveAnnotations``1
+  - System.Xml.Linq.XObject.System#Xml#IXmlLineInfo#HasLineInfo
+  - System.Xml.Linq.XObject.System#Xml#IXmlLineInfo#LineNumber
+  - System.Xml.Linq.XObject.System#Xml#IXmlLineInfo#LinePosition
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.#ctor
+  id: '#ctor'
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: XDocument()
+  nameWithType: XDocument.XDocument()
+  fullName: System.Xml.Linq.XDocument.XDocument()
+  type: Constructor
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Initializes a new instance of the <xref href="System.Xml.Linq.XDocument"></xref> class.
+  remarks: "There are not many scenarios that require you to create an <xref:System.Xml.Linq.XDocument>. Instead, you can usually create your XML trees with an <xref:System.Xml.Linq.XElement> root node. Unless you have a specific requirement to create a document (for example, because you have to create processing instructions and comments at the top level, or you have to support document types), it is often more convenient to use <xref:System.Xml.Linq.XElement> as your root node.  \n  \n For details about the valid content of an <xref:System.Xml.Linq.XDocument>, see [Valid Content of XElement and XDocument Objects](../Topic/Valid%20Content%20of%20XElement%20and%20XDocument%20Objects1.md)."
+  example:
+  - "The following example creates a new document, and then adds a comment and an element to it.  \n  \n```c#  \n  \n                XDocument doc = new XDocument();  \ndoc.Add(new XComment(\"This is a comment\"));  \ndoc.Add(new XElement(\"Root\", \"content\"));  \nConsole.WriteLine(doc);  \n```  \n  \n```vb  \n  \n                Dim doc As XDocument = New XDocument()  \ndoc.Add(<!--This is a comment-->)  \ndoc.Add(<Root>content</Root>)  \nConsole.WriteLine(doc)  \n  \n```  \n  \n This example produces the following output:  \n  \n```xml  \n  \n                <!--This is a comment-->  \n<Root>content</Root>  \n```"
+  syntax:
+    content: public XDocument ();
+    parameters: []
+  overload: System.Xml.Linq.XDocument.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.#ctor(System.Object[])
+  id: '#ctor(System.Object[])'
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: XDocument(Object[])
+  nameWithType: XDocument.XDocument(Object[])
+  fullName: System.Xml.Linq.XDocument.XDocument(Object[])
+  type: Constructor
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Initializes a new instance of the <xref href="System.Xml.Linq.XDocument"></xref> class with the specified content.
+  remarks: "There are not many scenarios that require you to create an <xref:System.Xml.Linq.XDocument>. Instead, you can usually create your XML trees with an <xref:System.Xml.Linq.XElement> root node. Unless you have a specific requirement to create a document (for example, because you have to create processing instructions and comments at the top level, or you have to support document types), it is often more convenient to use <xref:System.Xml.Linq.XElement> as your root node.  \n  \n For details about the valid content of an <xref:System.Xml.Linq.XDocument>, see [Valid Content of XElement and XDocument Objects](../Topic/Valid%20Content%20of%20XElement%20and%20XDocument%20Objects1.md)."
+  example:
+  - "The following example creates a document, and then adds a comment and an element to it. It then composes another document using the results of a query.  \n  \n```c#  \n  \n                XDocument srcTree = new XDocument(  \n    new XComment(\"This is a comment\"),  \n    new XElement(\"Root\",  \n        new XElement(\"Child1\", \"data1\"),  \n        new XElement(\"Child2\", \"data2\"),  \n        new XElement(\"Child3\", \"data3\"),  \n        new XElement(\"Child2\", \"data4\"),  \n        new XElement(\"Info5\", \"info5\"),  \n        new XElement(\"Info6\", \"info6\"),  \n        new XElement(\"Info7\", \"info7\"),  \n        new XElement(\"Info8\", \"info8\")  \n    )  \n);  \n  \nXDocument doc = new XDocument(  \n    new XComment(\"This is a comment\"),  \n    new XElement(\"Root\",  \n        from el in srcTree.Element(\"Root\").Elements()  \n        where ((string)el).StartsWith(\"data\")  \n        select el  \n    )  \n);  \nConsole.WriteLine(doc);  \n```  \n  \n```vb  \n  \n                Dim srcTree As XDocument = _  \n    <?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>  \n        <!--This is a comment-->  \n        <Root>  \n            <Child1>data1</Child1>  \n            <Child2>data2</Child2>  \n            <Child3>data3</Child3>  \n            <Child2>data4</Child2>  \n            <Info5>info5</Info5>  \n            <Info6>info6</Info6>  \n            <Info7>info7</Info7>  \n            <Info8>info8</Info8>  \n        </Root>  \nDim doc As XDocument = _   \n    <?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>  \n        <!--This is a comment-->  \n        <Root>  \n            <%= From el In srcTree.<Root>.Elements _  \n                Where CStr(el).StartsWith(\"data\") _  \n                Select el %>  \n        </Root>  \nConsole.WriteLine(doc)  \n```  \n  \n This example produces the following output:  \n  \n```xml  \n  \n                <!--This is a comment-->  \n<Root>  \n  <Child1>data1</Child1>  \n  <Child2>data2</Child2>  \n  <Child3>data3</Child3>  \n  <Child2>data4</Child2>  \n</Root>  \n```"
+  syntax:
+    content: public XDocument (object[] content);
+    parameters:
+    - id: content
+      type: System.Object[]
+      description: A parameter list of content objects to add to this document.
+  overload: System.Xml.Linq.XDocument.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.#ctor(System.Xml.Linq.XDocument)
+  id: '#ctor(System.Xml.Linq.XDocument)'
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: XDocument(XDocument)
+  nameWithType: XDocument.XDocument(XDocument)
+  fullName: System.Xml.Linq.XDocument.XDocument(XDocument)
+  type: Constructor
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Initializes a new instance of the <xref href="System.Xml.Linq.XDocument"></xref> class from an existing <xref href="System.Xml.Linq.XDocument"></xref> object.
+  remarks: "You use this constructor to make a deep copy of an <xref:System.Xml.Linq.XDocument>.  \n  \n This constructor traverses all nodes and attributes in the document specified in the `other` parameter, and creates copies of all nodes as it assembles the newly initialized <xref:System.Xml.Linq.XDocument>."
+  syntax:
+    content: public XDocument (System.Xml.Linq.XDocument other);
+    parameters:
+    - id: other
+      type: System.Xml.Linq.XDocument
+      description: The <xref href="System.Xml.Linq.XDocument"></xref> object that will be copied.
+  overload: System.Xml.Linq.XDocument.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.#ctor(System.Xml.Linq.XDeclaration,System.Object[])
+  id: '#ctor(System.Xml.Linq.XDeclaration,System.Object[])'
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: XDocument(XDeclaration,Object[])
+  nameWithType: XDocument.XDocument(XDeclaration,Object[])
+  fullName: System.Xml.Linq.XDocument.XDocument(XDeclaration,Object[])
+  type: Constructor
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Initializes a new instance of the <xref href="System.Xml.Linq.XDocument"></xref> class with the specified <xref href="System.Xml.Linq.XDeclaration"></xref> and content.
+  remarks: "There are not many scenarios that require you to create an <xref:System.Xml.Linq.XDocument>. Instead, you can usually create your XML trees with an <xref:System.Xml.Linq.XElement> root node. Unless you have a specific requirement to create a document (for example, because you have to create processing instructions and comments at the top level, or you have to support document types), it is often more convenient to use <xref:System.Xml.Linq.XElement> as your root node.  \n  \n For details about the valid content of an <xref:System.Xml.Linq.XDocument>, see [Valid Content of XElement and XDocument Objects](../Topic/Valid%20Content%20of%20XElement%20and%20XDocument%20Objects1.md)."
+  example:
+  - "The following example uses this constructor to create a document.  \n  \n```c#  \n  \n                XDocument srcTree = new XDocument(  \n    new XComment(\"This is a comment\"),  \n    new XElement(\"Root\",  \n        new XElement(\"Child1\", \"data1\"),  \n        new XElement(\"Child2\", \"data2\"),  \n        new XElement(\"Child3\", \"data3\"),  \n        new XElement(\"Child2\", \"data4\"),  \n        new XElement(\"Info5\", \"info5\"),  \n        new XElement(\"Info6\", \"info6\"),  \n        new XElement(\"Info7\", \"info7\"),  \n        new XElement(\"Info8\", \"info8\")  \n    )  \n);  \n  \nXDocument doc = new XDocument(  \n    new XDeclaration(\"1.0\", \"utf-8\", \"yes\"),  \n    new XComment(\"This is a new comment\"),  \n    new XElement(\"Root\",  \n        from el in srcTree.Element(\"Root\").Elements()  \n        where ((string)el).StartsWith(\"data\")  \n        select el  \n    )  \n);  \ndoc.Save(\"Test.xml\");  \nConsole.WriteLine(File.ReadAllText(\"Test.xml\"));  \n```  \n  \n```vb  \n  \n                Dim srcTree As XDocument = _   \n    <?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>  \n        <!--This is a comment-->  \n        <Root>  \n            <Child1>data1</Child1>  \n            <Child2>data2</Child2>  \n            <Child3>data3</Child3>  \n            <Child2>data4</Child2>  \n            <Info5>info5</Info5>  \n            <Info6>info6</Info6>  \n            <Info7>info7</Info7>  \n            <Info8>info8</Info8>  \n        </Root>  \nDim doc As XDocument = _   \n    <?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>  \n        <!--This is a new comment-->  \n        <Root>  \n            <%= From el In srcTree.<Root>.Elements _  \n                Where CStr(el).StartsWith(\"data\") _  \n                Select el %>  \n        </Root>  \ndoc.Save(\"Test.xml\")  \nConsole.WriteLine(File.ReadAllText(\"Test.xml\"))  \n```  \n  \n This example produces the following output:  \n  \n```xml  \n  \n                <?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>  \n<!--This is a new comment-->  \n<Root>  \n  <Child1>data1</Child1>  \n  <Child2>data2</Child2>  \n  <Child3>data3</Child3>  \n  <Child2>data4</Child2>  \n</Root>  \n```"
+  syntax:
+    content: public XDocument (System.Xml.Linq.XDeclaration declaration, object[] content);
+    parameters:
+    - id: declaration
+      type: System.Xml.Linq.XDeclaration
+      description: An <xref href="System.Xml.Linq.XDeclaration"></xref> for the document.
+    - id: content
+      type: System.Object[]
+      description: The content of the document.
+  overload: System.Xml.Linq.XDocument.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Declaration
+  id: Declaration
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Declaration
+  nameWithType: XDocument.Declaration
+  fullName: System.Xml.Linq.XDocument.Declaration
+  type: Property
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Gets or sets the XML declaration for this document.
+  remarks: Sometimes you have to create an XML declaration for a document. If you want to indicate that a document is standalone, you must use this property. If you want to encode your document with an encoding other than utf-8, you can specify an encoding through the <xref:System.Xml.Linq.XDeclaration>. Another approach for encoding a document is to specify the encoding on an <xref:System.Xml.XmlWriter> that you pass to LINQ to XML for writing.
+  example:
+  - "The following example uses this property to retrieve the XML declaration of a document.  \n  \n```c#  \n  \n                XDocument doc = new XDocument(  \n    new XDeclaration(\"1.0\", \"utf-8\", \"yes\"),  \n    new XComment(\"This is a comment\"),  \n    new XElement(\"Root\", \"content\")  \n);  \n  \nConsole.WriteLine(doc.Declaration);  \n```  \n  \n```vb  \n  \n                Dim doc As XDocument = _  \n    <?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>  \n        <!--This is a comment-->  \n        <Root>content</Root>  \n  \nConsole.WriteLine(doc.Declaration)  \n```  \n  \n This example produces the following output:  \n  \n```  \n  \n<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>  \n```"
+  syntax:
+    content: public System.Xml.Linq.XDeclaration Declaration { get; set; }
+    return:
+      type: System.Xml.Linq.XDeclaration
+      description: An <xref href="System.Xml.Linq.XDeclaration"></xref> that contains the XML declaration for this document.
+  overload: System.Xml.Linq.XDocument.Declaration*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.DocumentType
+  id: DocumentType
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: DocumentType
+  nameWithType: XDocument.DocumentType
+  fullName: System.Xml.Linq.XDocument.DocumentType
+  type: Property
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Gets the Document Type Definition (DTD) for this document.
+  remarks: "[!INCLUDE[sqltecxlinq](~/add/includes/sqltecxlinq-md.md)] provides limited support for DTDs.  \n  \n You can populate an XML tree with an XML document that contains a DTD. The XML tree will then contain a DocumentType node. When you serialize or save the tree, the DTD will also be serialized. [!INCLUDE[sqltecxlinq](~/add/includes/sqltecxlinq-md.md)] will expand any entities in the DTD. When you serialize or save the XML tree, the entity references are not saved; instead, the nodes are saved with the entity references replaced by the text of the entity.  \n  \n If the DTD contains default attributes, the attributes are created in the XML tree as ordinary attributes.  \n  \n By default, [!INCLUDE[sqltecxlinq](~/add/includes/sqltecxlinq-md.md)] does not validate a document based on its DTD. To validate a document based on a DTD, create an <xref:System.Xml.XmlReader> that will validate based on a DTD, and then create an XML tree from the <xref:System.Xml.XmlReader>."
+  example:
+  - "The following example creates a document that contains an <xref:System.Xml.Linq.XDocumentType>.  \n  \n Visual Basic does not support document types within XML literals. However, it is possible to create a document that contains a document type by first creating the document using XML literals, and then creating and adding an <xref:System.Xml.Linq.XDocumentType> node in the appropriate place in the XML tree.  \n  \n```c#  \n  \n                string internalSubset = @\"<!ELEMENT Pubs (Book+)>  \n<!ELEMENT Book (Title, Author)>  \n<!ELEMENT Title (#PCDATA)>  \n<!ELEMENT Author (#PCDATA)>\";  \n  \nstring target = \"xml-stylesheet\";  \nstring data = \"href='mystyle.css' title='Compact' type='text/css'\";  \n  \nXDocument doc = new XDocument(  \n    new XComment(\"This is a comment.\"),  \n    new XProcessingInstruction(target, data),  \n    new XDocumentType(\"Pubs\", null, null, internalSubset),  \n    new XElement(\"Pubs\",   \n        new XElement(\"Book\",  \n            new XElement(\"Title\", \"Artifacts of Roman Civilization\"),  \n            new XElement(\"Author\", \"Moreno, Jordao\")  \n        ),  \n        new XElement(\"Book\",  \n            new XElement(\"Title\", \"Midieval Tools and Implements\"),  \n            new XElement(\"Author\", \"Gazit, Inbar\")  \n        )  \n    ),  \n    new XComment(\"This is another comment.\")  \n);  \ndoc.Declaration = new XDeclaration(\"1.0\", \"utf-8\", \"true\");  \nConsole.WriteLine(doc);  \n  \ndoc.Save(\"test.xml\");  \n```  \n  \n```vb  \n  \n                Dim internalSubset = _  \n        \"<!ELEMENT Pubs (Book+)>\" & Environment.NewLine & _  \n        \"<!ELEMENT Book (Title, Author)>\" & Environment.NewLine & _  \n        \"<!ELEMENT Title (#PCDATA)>\" & Environment.NewLine & _  \n        \"<!ELEMENT Author (#PCDATA)>\"  \n  \nDim doc As XDocument = _  \n    <?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>  \n    <!--This is a comment.-->  \n    <?xml-stylesheet href='mystyle.css' title='Compact' type='text/css'?>  \n    <Pubs>  \n        <Book>  \n            <Title>Artifacts of Roman Civilization</Title>  \n            <Author>Moreno, Jordao</Author>  \n        </Book>  \n        <Book>  \n            <Title>Midieval Tools and Implements</Title>  \n            <Author>Gazit, Inbar</Author>  \n        </Book>  \n    </Pubs>  \n    <!--This is another comment.-->  \n  \ndoc.Nodes().Skip(1).First().AddAfterSelf(New XDocumentType(\"Pubs\", Nothing, Nothing, internalSubset))  \nConsole.WriteLine(doc)  \n```  \n  \n This example produces the following output:  \n  \n```xml  \n  \n                <!--This is a comment.-->  \n<?xml-stylesheet href='mystyle.css' title='Compact' type='text/css'?>  \n<!DOCTYPE Pubs [<!ELEMENT Pubs (Book+)>  \n<!ELEMENT Book (Title, Author)>  \n<!ELEMENT Title (#PCDATA)>  \n<!ELEMENT Author (#PCDATA)>]>  \n<Pubs>  \n  <Book>  \n    <Title>Artifacts of Roman Civilization</Title>  \n    <Author>Moreno, Jordao</Author>  \n  </Book>  \n  <Book>  \n    <Title>Midieval Tools and Implements</Title>  \n    <Author>Gazit, Inbar</Author>  \n  </Book>  \n</Pubs>  \n<!--This is another comment.-->  \n```"
+  syntax:
+    content: public System.Xml.Linq.XDocumentType DocumentType { get; }
+    return:
+      type: System.Xml.Linq.XDocumentType
+      description: A <xref href="System.Xml.Linq.XDocumentType"></xref> that contains the DTD for this document.
+  overload: System.Xml.Linq.XDocument.DocumentType*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Load(System.IO.Stream)
+  id: Load(System.IO.Stream)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Load(Stream)
+  nameWithType: XDocument.Load(Stream)
+  fullName: System.Xml.Linq.XDocument.Load(Stream)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Creates a new <xref href="System.Xml.Linq.XDocument"></xref> instance by using the specified stream.
+  remarks: "If you want to control load options, use the <xref:System.Xml.Linq.XDocument.Load%2A> overload that takes <xref:System.Xml.Linq.LoadOptions> as a parameter.  \n  \n The loading functionality of LINQ to XML is built upon <xref:System.Xml.XmlReader>. Therefore, you might catch any exceptions that are thrown by the <xref:System.Xml.XmlReader.Create%2A?displayProperty=fullName> overload methods and the <xref:System.Xml.XmlReader> methods that read and parse the document.  \n  \n If you have to modify <xref:System.Xml.XmlReaderSettings>, follow these steps:  \n  \n1.  Create an <xref:System.Xml.XmlReader> by calling one of the <xref:System.Xml.XmlReader.Create%2A> overloads that take <xref:System.Xml.XmlReaderSettings> as a parameter.  \n  \n2.  Pass the <xref:System.Xml.XmlReader> to one of the <xref:System.Xml.Linq.XDocument.Load%2A> overloads of <xref:System.Xml.Linq.XDocument> that takes <xref:System.Xml.XmlReader> as a parameter."
+  syntax:
+    content: public static System.Xml.Linq.XDocument Load (System.IO.Stream stream);
+    parameters:
+    - id: stream
+      type: System.IO.Stream
+      description: The stream that contains the XML data.
+    return:
+      type: System.Xml.Linq.XDocument
+      description: An <xref href="System.Xml.Linq.XDocument"></xref> object that reads the data that is contained in the stream.
+  overload: System.Xml.Linq.XDocument.Load*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Load(System.IO.TextReader)
+  id: Load(System.IO.TextReader)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Load(TextReader)
+  nameWithType: XDocument.Load(TextReader)
+  fullName: System.Xml.Linq.XDocument.Load(TextReader)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Creates a new <xref href="System.Xml.Linq.XDocument"></xref> from a <xref href="System.IO.TextReader"></xref>.
+  remarks: LINQ to XML's loading functionality is built upon <xref:System.Xml.XmlReader>. Therefore, you might catch any exceptions that are thrown by the <xref:System.Xml.XmlReader.Create%2A?displayProperty=fullName> overload methods and the <xref:System.Xml.XmlReader> methods that read and parse the document.
+  example:
+  - "The following example creates a document from a <xref:System.IO.StringReader>.  \n  \n```c#  \n  \n                TextReader tr = new StringReader(\"<Root>Content</Root>\");  \nXDocument doc = XDocument.Load(tr);  \nConsole.WriteLine(doc);  \n```  \n  \n```vb  \n  \n                Dim tr As TextReader = New StringReader(\"<Root>Content</Root>\")  \nDim doc As XDocument = XDocument.Load(tr)  \nConsole.WriteLine(doc)  \n  \n```  \n  \n This example produces the following output:  \n  \n```xml  \n  \n<Root>Content</Root>  \n```"
+  syntax:
+    content: public static System.Xml.Linq.XDocument Load (System.IO.TextReader textReader);
+    parameters:
+    - id: textReader
+      type: System.IO.TextReader
+      description: A <xref href="System.IO.TextReader"></xref> that contains the content for the <xref href="System.Xml.Linq.XDocument"></xref>.
+    return:
+      type: System.Xml.Linq.XDocument
+      description: An <xref href="System.Xml.Linq.XDocument"></xref> that contains the contents of the specified <xref href="System.IO.TextReader"></xref>.
+  overload: System.Xml.Linq.XDocument.Load*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Load(System.String)
+  id: Load(System.String)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Load(String)
+  nameWithType: XDocument.Load(String)
+  fullName: System.Xml.Linq.XDocument.Load(String)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Creates a new <xref href="System.Xml.Linq.XDocument"></xref> from a file.
+  remarks: "This method uses an underlying <xref:System.Xml.XmlReader> to read the XML into an XML tree.  \n  \n Use <xref:System.Xml.Linq.XDocument.Parse%2A> to create an <xref:System.Xml.Linq.XDocument> from a string that contains XML.  \n  \n LINQ to XML's loading functionality is built upon <xref:System.Xml.XmlReader>. Therefore, you might catch any exceptions that are thrown by the <xref:System.Xml.XmlReader.Create%2A?displayProperty=fullName> overload methods and the <xref:System.Xml.XmlReader> methods that read and parse the document."
+  example:
+  - "The following example shows how to load an <xref:System.Xml.Linq.XDocument> from a file.  \n  \n This example uses the following XML document:  \n  \n [Sample XML File: Typical Purchase Order (LINQ to XML)](../Topic/Sample%20XML%20File:%20Typical%20Purchase%20Order%20\\(LINQ%20to%20XML\\)3.md)  \n  \n```c#  \n  \n                XDocument doc = XDocument.Load(\"PurchaseOrder.xml\");  \nConsole.WriteLine(doc);  \n```  \n  \n```vb  \n  \n                Dim doc As XDocument = XDocument.Load(\"PurchaseOrder.xml\")  \nConsole.WriteLine(doc)  \n```  \n  \n This example produces the following output:  \n  \n```  \n  \n                <PurchaseOrder PurchaseOrderNumber=\"99503\" OrderDate=\"1999-10-20\">  \n  <Address Type=\"Shipping\">  \n    <Name>Ellen Adams</Name>  \n    <Street>123 Maple Street</Street>  \n    <City>Mill Valley</City>  \n    <State>CA</State>  \n    <Zip>10999</Zip>  \n    <Country>USA</Country>  \n  </Address>  \n  <Address Type=\"Billing\">  \n    <Name>Tai Yee</Name>  \n    <Street>8 Oak Avenue</Street>  \n    <City>Old Town</City>  \n    <State>PA</State>  \n    <Zip>95819</Zip>  \n    <Country>USA</Country>  \n  </Address>  \n  <DeliveryNotes>Please leave packages in shed by driveway.</DeliveryNotes>  \n  <Items>  \n    <Item PartNumber=\"872-AA\">  \n      <ProductName>Lawnmower</ProductName>  \n      <Quantity>1</Quantity>  \n      <USPrice>148.95</USPrice>  \n      <Comment>Confirm this is electric</Comment>  \n    </Item>  \n    <Item PartNumber=\"926-AA\">  \n      <ProductName>Baby Monitor</ProductName>  \n      <Quantity>2</Quantity>  \n      <USPrice>39.98</USPrice>  \n      <ShipDate>1999-05-21</ShipDate>  \n    </Item>  \n  </Items>  \n</PurchaseOrder>  \n```"
+  syntax:
+    content: public static System.Xml.Linq.XDocument Load (string uri);
+    parameters:
+    - id: uri
+      type: System.String
+      description: A URI string that references the file to load into a new <xref href="System.Xml.Linq.XDocument"></xref>.
+    return:
+      type: System.Xml.Linq.XDocument
+      description: An <xref href="System.Xml.Linq.XDocument"></xref> that contains the contents of the specified file.
+  overload: System.Xml.Linq.XDocument.Load*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Load(System.Xml.XmlReader)
+  id: Load(System.Xml.XmlReader)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Load(XmlReader)
+  nameWithType: XDocument.Load(XmlReader)
+  fullName: System.Xml.Linq.XDocument.Load(XmlReader)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Creates a new <xref href="System.Xml.Linq.XDocument"></xref> from an <xref href="System.Xml.XmlReader"></xref>.
+  remarks: "One possible use for this method is to create a copy of a DOM document in a LINQ to XML tree. To do this, you create an <xref:System.Xml.XmlNodeReader> from a DOM document, and then use the <xref:System.Xml.XmlNodeReader> to create an <xref:System.Xml.Linq.XDocument>.  \n  \n LINQ to XML's loading functionality is built upon <xref:System.Xml.XmlReader>. Therefore, you might catch any exceptions that are thrown by the <xref:System.Xml.XmlReader.Create%2A?displayProperty=fullName> overload methods and the <xref:System.Xml.XmlReader> methods that read and parse the document."
+  example:
+  - "The following example creates a DOM document, creates an <xref:System.Xml.XmlNodeReader> from the DOM document, creates an <xref:System.Xml.Linq.XDocument> using the <xref:System.Xml.XmlNodeReader>.  \n  \n```c#  \n  \n                // Create a DOM document with some content.  \nXmlDocument doc = new XmlDocument();  \nXmlElement child = doc.CreateElement(\"Child\");  \nchild.InnerText = \"child contents\";  \nXmlElement root = doc.CreateElement(\"Root\");  \nroot.AppendChild(child);  \ndoc.AppendChild(root);  \n  \n// create a reader and move to the content  \nusing (XmlNodeReader nodeReader = new XmlNodeReader(doc)) {  \n    // the reader must be in the Interactive state in order to  \n    // create a LINQ to XML tree from it.  \n    nodeReader.MoveToContent();  \n  \n    XDocument xRoot = XDocument.Load(nodeReader);  \n    Console.WriteLine(xRoot);  \n}  \n```  \n  \n```vb  \n' Create a DOM document with some content.  \nDim doc As XmlDocument = New XmlDocument()  \nDim child As XmlElement = doc.CreateElement(\"Child\")  \nchild.InnerText = \"child contents\"  \nDim root As XmlElement = doc.CreateElement(\"Root\")  \nroot.AppendChild(child)  \ndoc.AppendChild(root)  \n  \n' create a reader and move to the content  \nUsing nodeReader = New XmlNodeReader(doc)  \n    ' the reader must be in the Interactive state in order to  \n    ' create a LINQ to XML tree from it.  \n    nodeReader.MoveToContent()  \n  \n    Dim xRoot As XDocument = XDocument.Load(nodeReader)  \n    Console.WriteLine(xRoot)  \nEnd Using  \n  \n```  \n  \n This example produces the following output:  \n  \n```xml  \n  \n                <Root>  \n  <Child>child contents</Child>  \n</Root>  \n```"
+  syntax:
+    content: public static System.Xml.Linq.XDocument Load (System.Xml.XmlReader reader);
+    parameters:
+    - id: reader
+      type: System.Xml.XmlReader
+      description: A <xref href="System.Xml.XmlReader"></xref> that contains the content for the <xref href="System.Xml.Linq.XDocument"></xref>.
+    return:
+      type: System.Xml.Linq.XDocument
+      description: An <xref href="System.Xml.Linq.XDocument"></xref> that contains the contents of the specified <xref href="System.Xml.XmlReader"></xref>.
+  overload: System.Xml.Linq.XDocument.Load*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Load(System.IO.Stream,System.Xml.Linq.LoadOptions)
+  id: Load(System.IO.Stream,System.Xml.Linq.LoadOptions)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Load(Stream,LoadOptions)
+  nameWithType: XDocument.Load(Stream,LoadOptions)
+  fullName: System.Xml.Linq.XDocument.Load(Stream,LoadOptions)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Creates a new <xref href="System.Xml.Linq.XDocument"></xref> instance by using the specified stream, optionally preserving white space, setting the base URI, and retaining line information.
+  remarks: "The loading functionality of LINQ to XML is built upon <xref:System.Xml.XmlReader>. Therefore, you might catch any exceptions that are thrown by the <xref:System.Xml.XmlReader.Create%2A?displayProperty=fullName> overload methods and the <xref:System.Xml.XmlReader> methods that read and parse the document.  \n  \n If you have to modify <xref:System.Xml.XmlReaderSettings>, follow these steps:  \n  \n1.  Create an <xref:System.Xml.XmlReader> by calling one of the <xref:System.Xml.XmlReader.Create%2A> overloads that takes <xref:System.Xml.XmlReaderSettings> as a parameter.  \n  \n2.  Pass the <xref:System.Xml.XmlReader> to one of the <xref:System.Xml.Linq.XDocument.Load%2A> overloads of <xref:System.Xml.Linq.XDocument> that takes <xref:System.Xml.XmlReader> as a parameter."
+  syntax:
+    content: public static System.Xml.Linq.XDocument Load (System.IO.Stream stream, System.Xml.Linq.LoadOptions options);
+    parameters:
+    - id: stream
+      type: System.IO.Stream
+      description: The stream containing the XML data.
+    - id: options
+      type: System.Xml.Linq.LoadOptions
+      description: A <xref href="System.Xml.Linq.LoadOptions"></xref> that specifies whether to load base URI and line information.
+    return:
+      type: System.Xml.Linq.XDocument
+      description: An <xref href="System.Xml.Linq.XDocument"></xref> object that reads the data that is contained in the stream.
+  overload: System.Xml.Linq.XDocument.Load*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Load(System.IO.TextReader,System.Xml.Linq.LoadOptions)
+  id: Load(System.IO.TextReader,System.Xml.Linq.LoadOptions)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Load(TextReader,LoadOptions)
+  nameWithType: XDocument.Load(TextReader,LoadOptions)
+  fullName: System.Xml.Linq.XDocument.Load(TextReader,LoadOptions)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Creates a new <xref href="System.Xml.Linq.XDocument"></xref> from a <xref href="System.IO.TextReader"></xref>, optionally preserving white space, setting the base URI, and retaining line information.
+  remarks: "If the source XML is indented, setting the <xref:System.Xml.Linq.LoadOptions> flag in `options` causes the reader to read all white space in the source XML. Nodes of type <xref:System.Xml.Linq.XText> are created for both significant and insignificant white space.  \n  \n If the source XML is indented, not setting the <xref:System.Xml.Linq.LoadOptions> flag in `options` causes the reader to ignore all of the insignificant white space in the source XML. The XML tree is created without any text nodes for insignificant white space.  \n  \n If the source XML is not indented, setting the <xref:System.Xml.Linq.LoadOptions> flag in `options` has no effect. Significant white space is still preserved, and there are no spans of insignificant white space that could cause the creation of more white space text nodes.  \n  \n For more information, see [Preserving White Space while Loading or Parsing XML](../Topic/Preserving%20White%20Space%20while%20Loading%20or%20Parsing%20XML3.md) and [Preserving White Space While Serializing](../Topic/Preserving%20White%20Space%20While%20Serializing1.md).  \n  \n Use <xref:System.Xml.Linq.XDocument.Parse%2A> to create an <xref:System.Xml.Linq.XElement> from a string that contains XML.  \n  \n Setting <xref:System.Xml.Linq.LoadOptions> is not valid when loading from a <xref:System.IO.TextReader>.  \n  \n There is a performance penalty if you set the <xref:System.Xml.Linq.LoadOptions> flag.  \n  \n The line information is accurate immediately after loading the XML document. If you modify the XML tree after loading the document, the line information may become meaningless.  \n  \n LINQ to XML's loading functionality is built upon <xref:System.Xml.XmlReader>. Therefore, you might catch any exceptions that are thrown by the <xref:System.Xml.XmlReader.Create%2A?displayProperty=fullName> overload methods and the <xref:System.Xml.XmlReader> methods that read and parse the document."
+  example:
+  - "The following example creates a document from a <xref:System.IO.StringReader>.  \n  \n```c#  \n  \n                TextReader sr;  \nint whiteSpaceNodes;  \n  \nsr = new StringReader(\"<Root> <Child> </Child> </Root>\");  \nXDocument xmlTree1 = XDocument.Load(sr, LoadOptions.None);  \nsr.Close();  \nwhiteSpaceNodes = xmlTree1  \n    .Element(\"Root\")  \n    .DescendantNodesAndSelf()  \n    .OfType<XText>()  \n    .Where(tNode => tNode.ToString().Trim().Length == 0)  \n    .Count();  \nConsole.WriteLine(\"Count of white space nodes (not preserving whitespace): {0}\", whiteSpaceNodes);  \n  \nsr = new StringReader(\"<Root> <Child> </Child> </Root>\");  \nXDocument xmlTree2 = XDocument.Load(sr, LoadOptions.PreserveWhitespace);  \nsr.Close();  \nwhiteSpaceNodes = xmlTree2  \n    .Element(\"Root\")  \n    .DescendantNodesAndSelf()  \n    .OfType<XText>()  \n    .Where(tNode => tNode.ToString().Trim().Length == 0)  \n    .Count();  \nConsole.WriteLine(\"Count of white space nodes (preserving whitespace): {0}\", whiteSpaceNodes);  \n```  \n  \n```vb  \n  \n                Dim sr As TextReader  \nDim whiteSpaceNodes As Integer  \n  \nsr = New StringReader(\"<Root> <Child> </Child> </Root>\")  \nDim xmlTree1 As XDocument = XDocument.Load(sr, LoadOptions.None)  \nsr.Close()  \nwhiteSpaceNodes = xmlTree1 _  \n              .Element(\"Root\") _  \n              .DescendantNodesAndSelf() _  \n              .OfType(Of XText)() _  \n              .Where(Function(ByVal tNode As XNode) tNode. _  \n                  ToString().Trim().Length = 0).Count()  \nConsole.WriteLine(\"Count of white space nodes (not preserving whitespace): {0}\", whiteSpaceNodes)  \n  \nsr = New StringReader(\"<Root> <Child> </Child> </Root>\")  \nDim xmlTree2 As XDocument = XDocument.Load(sr, LoadOptions.PreserveWhitespace)  \nsr.Close()  \nwhiteSpaceNodes = xmlTree2 _  \n              .Element(\"Root\") _  \n              .DescendantNodesAndSelf() _  \n              .OfType(Of XText)() _  \n              .Where(Function(ByVal tNode As XNode) tNode. _  \n                  ToString().Trim().Length = 0).Count()  \nConsole.WriteLine(\"Count of white space nodes (preserving whitespace): {0}\", whiteSpaceNodes)  \n```  \n  \n This example produces the following output:  \n  \n```  \n  \n                Count of white space nodes (not preserving whitespace): 0  \nCount of white space nodes (preserving whitespace): 3  \n```"
+  syntax:
+    content: public static System.Xml.Linq.XDocument Load (System.IO.TextReader textReader, System.Xml.Linq.LoadOptions options);
+    parameters:
+    - id: textReader
+      type: System.IO.TextReader
+      description: A <xref href="System.IO.TextReader"></xref> that contains the content for the <xref href="System.Xml.Linq.XDocument"></xref>.
+    - id: options
+      type: System.Xml.Linq.LoadOptions
+      description: A <xref href="System.Xml.Linq.LoadOptions"></xref> that specifies white space behavior, and whether to load base URI and line information.
+    return:
+      type: System.Xml.Linq.XDocument
+      description: An <xref href="System.Xml.Linq.XDocument"></xref> that contains the XML that was read from the specified <xref href="System.IO.TextReader"></xref>.
+  overload: System.Xml.Linq.XDocument.Load*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Load(System.String,System.Xml.Linq.LoadOptions)
+  id: Load(System.String,System.Xml.Linq.LoadOptions)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Load(String,LoadOptions)
+  nameWithType: XDocument.Load(String,LoadOptions)
+  fullName: System.Xml.Linq.XDocument.Load(String,LoadOptions)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Creates a new <xref href="System.Xml.Linq.XDocument"></xref> from a file, optionally preserving white space, setting the base URI, and retaining line information.
+  remarks: "If the source XML is indented, setting the <xref:System.Xml.Linq.LoadOptions> flag in `options` causes the reader to read all white space in the source XML. Nodes of type <xref:System.Xml.Linq.XText> are created for both significant and insignificant white space.  \n  \n If the source XML is indented, not setting the <xref:System.Xml.Linq.LoadOptions> flag in `options` causes the reader to ignore all of the insignificant white space in the source XML. The XML tree is created without any text nodes for insignificant white space.  \n  \n If the source XML is not indented, setting the <xref:System.Xml.Linq.LoadOptions> flag in `options` has no effect. Significant white space is still preserved, and there are no spans of insignificant white space that could cause the creation of more white space text nodes.  \n  \n For more information, see [Preserving White Space while Loading or Parsing XML](../Topic/Preserving%20White%20Space%20while%20Loading%20or%20Parsing%20XML3.md) and [Preserving White Space While Serializing](../Topic/Preserving%20White%20Space%20While%20Serializing1.md).  \n  \n Use <xref:System.Xml.Linq.XDocument.Parse%2A> to create an <xref:System.Xml.Linq.XDocument> from a string that contains XML.  \n  \n There is a performance penalty if you set the <xref:System.Xml.Linq.LoadOptions> and the <xref:System.Xml.Linq.LoadOptions> flags.  \n  \n The base URI and the line information are accurate immediately after loading the XML document. If you modify the XML tree after loading the document, the base URI and line information may become meaningless.  \n  \n LINQ to XML's loading functionality is built upon <xref:System.Xml.XmlReader>. Therefore, you might catch any exceptions that are thrown by the <xref:System.Xml.XmlReader.Create%2A?displayProperty=fullName> overload methods and the <xref:System.Xml.XmlReader> methods that read and parse the document."
+  example:
+  - "The following example shows how to load an <xref:System.Xml.Linq.XDocument> from a file.  \n  \n This example uses the following XML document:  \n  \n [Sample XML File: Typical Purchase Order (LINQ to XML)](../Topic/Sample%20XML%20File:%20Typical%20Purchase%20Order%20\\(LINQ%20to%20XML\\)3.md)  \n  \n```c#  \n  \n                XDocument doc1 = XDocument.Load(\"PurchaseOrder.xml\", LoadOptions.None);  \nConsole.WriteLine(\"nodes if not preserving whitespace: {0}\", doc1.DescendantNodes().Count());  \n  \nXDocument doc2 = XDocument.Load(\"PurchaseOrder.xml\", LoadOptions.PreserveWhitespace);  \nConsole.WriteLine(\"nodes if preserving whitespace: {0}\", doc2.DescendantNodes().Count());  \n```  \n  \n```vb  \n  \n                Dim doc1 As XDocument = XDocument.Load(\"PurchaseOrder.xml\", LoadOptions.None)  \nConsole.WriteLine(\"nodes if not preserving whitespace: {0}\", doc1.DescendantNodes().Count())  \n  \nDim doc2 As XDocument = XDocument.Load(\"PurchaseOrder.xml\", LoadOptions.PreserveWhitespace)  \nConsole.WriteLine(\"nodes if preserving whitespace: {0}\", doc2.DescendantNodes().Count())  \n  \n```  \n  \n This example produces the following output:  \n  \n```  \n  \n                nodes if not preserving whitespace: 48  \nnodes if preserving whitespace: 82  \n```"
+  syntax:
+    content: public static System.Xml.Linq.XDocument Load (string uri, System.Xml.Linq.LoadOptions options);
+    parameters:
+    - id: uri
+      type: System.String
+      description: A URI string that references the file to load into a new <xref href="System.Xml.Linq.XDocument"></xref>.
+    - id: options
+      type: System.Xml.Linq.LoadOptions
+      description: A <xref href="System.Xml.Linq.LoadOptions"></xref> that specifies white space behavior, and whether to load base URI and line information.
+    return:
+      type: System.Xml.Linq.XDocument
+      description: An <xref href="System.Xml.Linq.XDocument"></xref> that contains the contents of the specified file.
+  overload: System.Xml.Linq.XDocument.Load*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Load(System.Xml.XmlReader,System.Xml.Linq.LoadOptions)
+  id: Load(System.Xml.XmlReader,System.Xml.Linq.LoadOptions)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Load(XmlReader,LoadOptions)
+  nameWithType: XDocument.Load(XmlReader,LoadOptions)
+  fullName: System.Xml.Linq.XDocument.Load(XmlReader,LoadOptions)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Loads an <xref href="System.Xml.Linq.XDocument"></xref> from an <xref href="System.Xml.XmlReader"></xref>, optionally setting the base URI, and retaining line information.
+  remarks: "By creating an <xref:System.Xml.XmlNodeReader> from a DOM document, and then using the <xref:System.Xml.XmlNodeReader> to create an <xref:System.Xml.Linq.XElement>, this method can be used to create a copy of a DOM document in a LINQ to XML tree.  \n  \n Use <xref:System.Xml.Linq.XDocument.Parse%2A> to create an <xref:System.Xml.Linq.XDocument> from a string that contains XML.  \n  \n Setting <xref:System.Xml.Linq.LoadOptions> is not valid when loading from a <xref:System.Xml.XmlReader>. The <xref:System.Xml.XmlReader> will be configured to either read whitespace or not. The LINQ to XML tree will be populated with the whitespace nodes that the reader surfaces. This will be the behavior regardless of whether <xref:System.Xml.Linq.LoadOptions> is set or not.  \n  \n The <xref:System.Xml.XmlReader> may have a valid base URI or not. If you set <xref:System.Xml.Linq.LoadOptions>, the base URI will be set in the XML tree from the base URI that is reported by the <xref:System.Xml.XmlReader>.  \n  \n The <xref:System.Xml.XmlReader> may have a valid line information or not. If you set <xref:System.Xml.Linq.LoadOptions>, the line information will be set in the XML tree from the line information that is reported by the <xref:System.Xml.XmlReader>.  \n  \n There is a performance penalty if you set the <xref:System.Xml.Linq.LoadOptions> flag.  \n  \n The line information is accurate immediately after loading the XML document. If you modify the XML tree after loading the document, the line information may become meaningless.  \n  \n LINQ to XML's loading functionality is built upon <xref:System.Xml.XmlReader>. Therefore, you might catch any exceptions that are thrown by the <xref:System.Xml.XmlReader.Create%2A?displayProperty=fullName> overload methods and the <xref:System.Xml.XmlReader> methods that read and parse the document."
+  example:
+  - "The following example loads the line information that it loads from the <xref:System.Xml.XmlReader>. It then prints the line information.  \n  \n```c#  \n  \n                string markup =  \n@\"<Root>  \n    <Child>  \n        <GrandChild/>  \n    </Child>  \n</Root>\";  \n  \n// Create a reader and move to the content.  \nusing (XmlReader nodeReader = XmlReader.Create(new StringReader(markup)))  \n{  \n    // the reader must be in the Interactive state in order to  \n    // Create a LINQ to XML tree from it.  \n    nodeReader.MoveToContent();  \n  \n    XDocument xRoot = XDocument.Load(nodeReader, LoadOptions.SetLineInfo);  \n    Console.WriteLine(\"{0}{1}{2}\",  \n        \"Element Name\".PadRight(20),  \n        \"Line\".PadRight(5),  \n        \"Position\");  \n    Console.WriteLine(\"{0}{1}{2}\",  \n        \"------------\".PadRight(20),  \n        \"----\".PadRight(5),  \n        \"--------\");  \n    foreach (XElement e in xRoot.Elements(\"Root\").DescendantsAndSelf())  \n        Console.WriteLine(\"{0}{1}{2}\",  \n            (\"\".PadRight(e.Ancestors().Count() * 2) + e.Name).PadRight(20),  \n            ((IXmlLineInfo)e).LineNumber.ToString().PadRight(5),  \n            ((IXmlLineInfo)e).LinePosition);  \n}  \n```  \n  \n```vb  \n  \n                Dim markup As String = _  \n    \"<Root>\" & Environment.NewLine & _  \n    \"    <Child>\" & Environment.NewLine & _  \n    \"        <GrandChild/>\" & Environment.NewLine & _  \n    \"    </Child>\" & Environment.NewLine & _  \n    \"</Root>\"  \n  \n' Create a reader and move to the content.  \nUsing nodeReader As XmlReader = XmlReader.Create(New StringReader(markup))  \n  \n    ' The reader must be in the Interactive state in order to  \n    ' create a LINQ to XML tree from it.  \n    nodeReader.MoveToContent()  \n  \n    Dim xRoot As XDocument = XDocument.Load(nodeReader, LoadOptions.SetLineInfo)  \n    Console.WriteLine(\"{0}{1}{2}\", _  \n        \"Element Name\".PadRight(20), _  \n        \"Line\".PadRight(5), _  \n        \"Position\")  \n    Console.WriteLine(\"{0}{1}{2}\", _  \n        \"------------\".PadRight(20), _  \n        \"----\".PadRight(5), _  \n        \"--------\")  \n    For Each e As XElement In xRoot.Elements(\"Root\").DescendantsAndSelf()  \n        Console.WriteLine(\"{0}{1}{2}\", _  \n            (\"\".PadRight(e.Ancestors().Count() * 2) & e.Name.ToString()).PadRight(20), _  \n            (DirectCast(e, IXmlLineInfo)).LineNumber.ToString().PadRight(5), _  \n            (DirectCast(e, IXmlLineInfo)).LinePosition)  \n    Next  \nEnd Using  \n```  \n  \n This example produces the following output:  \n  \n```  \n  \n                Element Name        Line Position  \n------------        ---- --------  \nRoot                1    2  \n  Child             2    6  \n    GrandChild      3    10  \n```"
+  syntax:
+    content: public static System.Xml.Linq.XDocument Load (System.Xml.XmlReader reader, System.Xml.Linq.LoadOptions options);
+    parameters:
+    - id: reader
+      type: System.Xml.XmlReader
+      description: A <xref href="System.Xml.XmlReader"></xref> that will be read for the content of the <xref href="System.Xml.Linq.XDocument"></xref>.
+    - id: options
+      type: System.Xml.Linq.LoadOptions
+      description: A <xref href="System.Xml.Linq.LoadOptions"></xref> that specifies whether to load base URI and line information.
+    return:
+      type: System.Xml.Linq.XDocument
+      description: An <xref href="System.Xml.Linq.XDocument"></xref> that contains the XML that was read from the specified <xref href="System.Xml.XmlReader"></xref>.
+  overload: System.Xml.Linq.XDocument.Load*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.NodeType
+  id: NodeType
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: NodeType
+  nameWithType: XDocument.NodeType
+  fullName: System.Xml.Linq.XDocument.NodeType
+  type: Property
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Gets the node type for this node.
+  remarks: Because all classes that derive from <xref:System.Xml.Linq.XObject> contain a <xref:System.Xml.Linq.XObject.NodeType%2A> property, you can write code that operates on collections of objects where the type of each is a subclass of <xref:System.Xml.Linq.XObject>. Your code can then test for the node type of each object in the collection.
+  example:
+  - "The following example shows the use of this property.  \n  \n```c#  \n  \n                // Note that this property uses XmlNodeType, which is in the System.Xml namespace.  \nXDocument xmlTree = new XDocument(  \n    new XDeclaration(\"1.0\", \"utf-8\", \"yes\"),  \n    new XElement(\"Root\", \"content\")  \n);  \nConsole.WriteLine(xmlTree.NodeType);  \n```  \n  \n```vb  \n  \n                ' Note that this property uses XmlNodeType, which is in the System.Xml namespace.  \nDim xmlTree As XDocument = _  \n    <?xml version='1.0' encoding='utf-8' standalone='yes'?>  \n        <Root>content</Root>  \nConsole.WriteLine(\"{0}\", xmlTree.NodeType)  \n```  \n  \n This example produces the following output:  \n  \n```  \n  \nDocument  \n```"
+  syntax:
+    content: public override System.Xml.XmlNodeType NodeType { get; }
+    return:
+      type: System.Xml.XmlNodeType
+      description: The node type. For <xref href="System.Xml.Linq.XDocument"></xref> objects, this value is <xref href="System.Xml.XmlNodeType"></xref>.
+  overload: System.Xml.Linq.XDocument.NodeType*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Parse(System.String)
+  id: Parse(System.String)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Parse(String)
+  nameWithType: XDocument.Parse(String)
+  fullName: System.Xml.Linq.XDocument.Parse(String)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Creates a new <xref href="System.Xml.Linq.XDocument"></xref> from a string.
+  remarks: "This method does not preserve white space. If you want to preserve white space in the XML tree, use the overload of <xref:System.Xml.Linq.XDocument.Parse%2A> that takes <xref:System.Xml.Linq.LoadOptions> as a parameter.  \n  \n For more information, see [Preserving White Space while Loading or Parsing XML](../Topic/Preserving%20White%20Space%20while%20Loading%20or%20Parsing%20XML3.md) and [Preserving White Space While Serializing](../Topic/Preserving%20White%20Space%20While%20Serializing1.md).  \n  \n LINQ to XML's loading functionality is built upon <xref:System.Xml.XmlReader>. Therefore, you might catch any exceptions that are thrown by the <xref:System.Xml.XmlReader.Create%2A?displayProperty=fullName> overload methods and the <xref:System.Xml.XmlReader> methods that read and parse the document."
+  example:
+  - "The following example creates a string that contains XML. It then parses the string into an <xref:System.Xml.Linq.XDocument>.  \n  \n```c#  \n  \n                string str =  \n@\"<?xml version=\"\"1.0\"\"?>  \n<!-- comment at the root level -->  \n<Root>  \n    <Child>Content</Child>  \n</Root>\";  \nXDocument doc = XDocument.Parse(str);  \nConsole.WriteLine(doc);  \n```  \n  \n```vb  \n  \n                Dim str As String = _  \n    \"<?xml version= '1.0'?>\" & _  \n    \"<!-- comment at the root level -->\" & _  \n    \"<Root>\" & _  \n    \"  <Child>Content</Child>\" & _  \n    \"</Root>\"  \n  \nDim doc As XDocument = XDocument.Parse(str)  \nConsole.WriteLine(doc)  \n  \n```  \n  \n This example produces the following output:  \n  \n```xml  \n  \n                <!-- comment at the root level -->  \n<Root>  \n  <Child>Content</Child>  \n</Root>  \n```"
+  syntax:
+    content: public static System.Xml.Linq.XDocument Parse (string text);
+    parameters:
+    - id: text
+      type: System.String
+      description: A string that contains XML.
+    return:
+      type: System.Xml.Linq.XDocument
+      description: An <xref href="System.Xml.Linq.XDocument"></xref> populated from the string that contains XML.
+  overload: System.Xml.Linq.XDocument.Parse*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Parse(System.String,System.Xml.Linq.LoadOptions)
+  id: Parse(System.String,System.Xml.Linq.LoadOptions)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Parse(String,LoadOptions)
+  nameWithType: XDocument.Parse(String,LoadOptions)
+  fullName: System.Xml.Linq.XDocument.Parse(String,LoadOptions)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Creates a new <xref href="System.Xml.Linq.XDocument"></xref> from a string, optionally preserving white space, setting the base URI, and retaining line information.
+  remarks: "If the source XML is indented, setting the <xref:System.Xml.Linq.LoadOptions> flag in `options` causes the reader to read all white space in the source XML. Nodes of type <xref:System.Xml.Linq.XText> are created for both significant and insignificant white space.  \n  \n If the source XML is indented, not setting the <xref:System.Xml.Linq.LoadOptions> flag in `options` causes the reader to ignore all of the insignificant white space in the source XML. The XML tree is created without any text nodes for insignificant white space.  \n  \n If the source XML is not indented, setting the <xref:System.Xml.Linq.LoadOptions> flag in `options` has no effect. Significant white space is still preserved, and there are no spans of insignificant white space that could cause the creation of more white space text nodes.  \n  \n For more information, see [Preserving White Space while Loading or Parsing XML](../Topic/Preserving%20White%20Space%20while%20Loading%20or%20Parsing%20XML3.md) and [Preserving White Space While Serializing](../Topic/Preserving%20White%20Space%20While%20Serializing1.md).  \n  \n Setting <xref:System.Xml.Linq.LoadOptions> is not valid when parsing from a <xref:System.String>.  \n  \n There is a performance penalty if you set the <xref:System.Xml.Linq.LoadOptions> flag.  \n  \n The line information is accurate immediately after loading the XML document. If you modify the XML tree after loading the document, the line information may become meaningless.  \n  \n LINQ to XML's loading functionality is built upon <xref:System.Xml.XmlReader>. Therefore, you might catch any exceptions that are thrown by the <xref:System.Xml.XmlReader.Create%2A?displayProperty=fullName> overload methods and the <xref:System.Xml.XmlReader> methods that read and parse the document."
+  example:
+  - "The following example parses a string into an <xref:System.Xml.Linq.XDocument>.  \n  \n```c#  \n  \n                string str =  \n@\"<?xml version=\"\"1.0\"\"?>  \n<!-- comment at the root level -->  \n<Root>  \n    <Child>Content</Child>  \n</Root>\";  \nXDocument doc1 = XDocument.Parse(str, LoadOptions.PreserveWhitespace);  \nConsole.WriteLine(\"nodes when preserving whitespace: {0}\", doc1.DescendantNodes().Count());  \nXDocument doc2 = XDocument.Parse(str, LoadOptions.None);  \nConsole.WriteLine(\"nodes when not preserving whitespace: {0}\", doc2.DescendantNodes().Count());  \n```  \n  \n```vb  \n  \n                Dim str As String = _  \n\"<?xml version= '1.0'?>\" & Environment.NewLine & _  \n\"<!-- comment at the root level -->\" & Environment.NewLine & _  \n\"<Root>\" & Environment.NewLine & _  \n\"    <Child>Content</Child>\"  & Environment.NewLine & _  \n\"</Root>\"  \n  \nDim doc1 As XDocument = XDocument.Parse(str, LoadOptions.PreserveWhitespace)  \nConsole.WriteLine(\"nodes when preserving whitespace: {0}\", doc1.DescendantNodes().Count())  \nDim doc2 As XDocument = XDocument.Parse(str, LoadOptions.None)  \nConsole.WriteLine(\"nodes when not preserving whitespace: {0}\", doc2.DescendantNodes().Count())  \n  \n```  \n  \n This example produces the following output:  \n  \n```  \n  \n                nodes when preserving whitespace: 8  \nnodes when not preserving whitespace: 4  \n```"
+  syntax:
+    content: public static System.Xml.Linq.XDocument Parse (string text, System.Xml.Linq.LoadOptions options);
+    parameters:
+    - id: text
+      type: System.String
+      description: A string that contains XML.
+    - id: options
+      type: System.Xml.Linq.LoadOptions
+      description: A <xref href="System.Xml.Linq.LoadOptions"></xref> that specifies white space behavior, and whether to load base URI and line information.
+    return:
+      type: System.Xml.Linq.XDocument
+      description: An <xref href="System.Xml.Linq.XDocument"></xref> populated from the string that contains XML.
+  overload: System.Xml.Linq.XDocument.Parse*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Root
+  id: Root
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Root
+  nameWithType: XDocument.Root
+  fullName: System.Xml.Linq.XDocument.Root
+  type: Property
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Gets the root element of the XML Tree for this document.
+  remarks: This property is useful when you want to compose [!INCLUDE[sqltecxlinq](~/add/includes/sqltecxlinq-md.md)] queries in the same context as when composing them for a tree rooted in <xref:System.Xml.Linq.XElement>. See [Querying an XDocument vs. Querying an XElement](../Topic/Querying%20an%20XDocument%20vs.%20Querying%20an%20XElement.md) for more details.
+  example:
+  - "The following example uses this property to get the root element of a document.  \n  \n```c#  \n  \n                XDocument doc = new XDocument(  \n    new XComment(\"This is a comment.\"),  \n    new XElement(\"Pubs\",   \n        new XElement(\"Book\",  \n            new XElement(\"Title\", \"Artifacts of Roman Civilization\"),  \n            new XElement(\"Author\", \"Moreno, Jordao\")  \n        ),  \n        new XElement(\"Book\",  \n            new XElement(\"Title\", \"Midieval Tools and Implements\"),  \n            new XElement(\"Author\", \"Gazit, Inbar\")  \n        )  \n    ),  \n    new XComment(\"This is another comment.\")  \n);  \nConsole.WriteLine(doc.Root.Name.ToString());  \n```  \n  \n```vb  \n  \n                Dim doc As XDocument = _  \n    <?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>  \n    <!--This is a comment.-->  \n    <Pubs>  \n        <Book>  \n            <Title>Artifacts of Roman Civilization</Title>  \n            <Author>Moreno, Jordao</Author>  \n        </Book>  \n        <Book>  \n            <Title>Midieval Tools and Implements</Title>  \n            <Author>Gazit, Inbar</Author>  \n        </Book>  \n        <!--This is another comment.-->  \n    </Pubs>  \n  \nConsole.WriteLine(doc.Root.Name.ToString())  \n  \n```  \n  \n This example produces the following output:  \n  \n```  \n  \nPubs  \n```"
+  syntax:
+    content: public System.Xml.Linq.XElement Root { get; }
+    return:
+      type: System.Xml.Linq.XElement
+      description: The root <xref href="System.Xml.Linq.XElement"></xref> of the XML tree.
+  overload: System.Xml.Linq.XDocument.Root*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Save(System.IO.Stream)
+  id: Save(System.IO.Stream)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Save(Stream)
+  nameWithType: XDocument.Save(Stream)
+  fullName: System.Xml.Linq.XDocument.Save(Stream)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Outputs this <xref href="System.Xml.Linq.XDocument"></xref> to the specified <xref href="System.IO.Stream"></xref>.
+  remarks: "The serialized XML will be indented. All insignificant white space will be removed, and additional white space will be added so that the XML will be properly indented. The behavior of this method is that insignificant white space will not be preserved.  \n  \n If you want to control white space, use the overload of <xref:System.Xml.Linq.XDocument.Save%2A> that takes <xref:System.Xml.Linq.SaveOptions> as a parameter. Use the <xref:System.Xml.Linq.SaveOptions> option to save unindented XML. This will cause the writer to write all white spaces exactly as represented in the XML tree.  \n  \n Use <xref:System.Xml.Linq.SaveOptions> option if you want to remove duplicate namespace declarations."
+  syntax:
+    content: public void Save (System.IO.Stream stream);
+    parameters:
+    - id: stream
+      type: System.IO.Stream
+      description: The stream to output this <xref href="System.Xml.Linq.XDocument"></xref> to.
+  overload: System.Xml.Linq.XDocument.Save*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Save(System.IO.TextWriter)
+  id: Save(System.IO.TextWriter)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Save(TextWriter)
+  nameWithType: XDocument.Save(TextWriter)
+  fullName: System.Xml.Linq.XDocument.Save(TextWriter)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Serialize this <xref href="System.Xml.Linq.XDocument"></xref> to a <xref href="System.IO.TextWriter"></xref>.
+  remarks: "The serialized XML will be indented. All insignificant white space will be removed, and additional white space will be added so that the XML will be properly indented. The behavior of this method is that insignificant white space will not be preserved.  \n  \n If you want to control white space, use the overload of <xref:System.Xml.Linq.XDocument.Save%2A> that takes <xref:System.Xml.Linq.SaveOptions> as a parameter. For more information, see [Preserving White Space while Loading or Parsing XML](../Topic/Preserving%20White%20Space%20while%20Loading%20or%20Parsing%20XML3.md) and [Preserving White Space While Serializing](../Topic/Preserving%20White%20Space%20While%20Serializing1.md)."
+  example:
+  - "The following example creates an <xref:System.Xml.Linq.XDocument>, saves the document to a <xref:System.IO.StringWriter>, and then prints the string to the console.  \n  \n```c#  \n  \n                StringBuilder sb = new StringBuilder();  \n  \nXDocument doc = new XDocument(  \n    new XElement(\"Root\",  \n        new XElement(\"Child\", \"content\")  \n    )  \n);  \nTextWriter tr = new StringWriter(sb);  \ndoc.Save(tr);  \nConsole.WriteLine(sb.ToString());  \n```  \n  \n```vb  \n  \n                Dim sb As StringBuilder = New StringBuilder()  \n  \nDim doc As XDocument = _   \n    <?xml version=\"1.0\" encoding=\"utf-8\"?>  \n        <Root><Child>content</Child></Root>  \n  \nDim tr As TextWriter = New StringWriter(sb)  \ndoc.Save(tr)  \nConsole.WriteLine(sb.ToString())  \n  \n```  \n  \n This example produces the following output:  \n  \n```xml  \n  \n                <?xml version=\"1.0\" encoding=\"utf-16\"?>  \n<Root>  \n  <Child>content</Child>  \n</Root>  \n```"
+  syntax:
+    content: public void Save (System.IO.TextWriter textWriter);
+    parameters:
+    - id: textWriter
+      type: System.IO.TextWriter
+      description: A <xref href="System.IO.TextWriter"></xref> that the <xref href="System.Xml.Linq.XDocument"></xref> will be written to.
+  overload: System.Xml.Linq.XDocument.Save*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Save(System.String)
+  id: Save(System.String)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Save(String)
+  nameWithType: XDocument.Save(String)
+  fullName: System.Xml.Linq.XDocument.Save(String)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Serialize this <xref href="System.Xml.Linq.XDocument"></xref> to a file, overwriting an existing file, if it exists.
+  remarks: "The serialized XML will be indented. All insignificant white space will be removed, and additional white space will be added so that the XML will be properly indented. The behavior of this method is that insignificant white space will not be preserved.  \n  \n If you want to control white space, use the overload of <xref:System.Xml.Linq.XDocument.Save%2A> that takes <xref:System.Xml.Linq.SaveOptions> as a parameter. For more information, see [Preserving White Space while Loading or Parsing XML](../Topic/Preserving%20White%20Space%20while%20Loading%20or%20Parsing%20XML3.md) and [Preserving White Space While Serializing](../Topic/Preserving%20White%20Space%20While%20Serializing1.md)."
+  example:
+  - "The following example creates an <xref:System.Xml.Linq.XDocument>, saves the document to a file, and then prints the file to the console.  \n  \n```c#  \n  \n                XDocument doc = new XDocument(  \n    new XElement(\"Root\",  \n        new XElement(\"Child\", \"content\")  \n    )  \n);  \ndoc.Save(\"Root.xml\");  \nConsole.WriteLine(File.ReadAllText(\"Root.xml\"));  \n```  \n  \n```vb  \n  \n                Dim doc As XDocument = _   \n    <?xml version=\"1.0\" encoding=\"utf-8\"?>  \n        <Root><Child>content</Child></Root>  \n  \ndoc.Save(\"Root.xml\")  \nConsole.WriteLine(File.ReadAllText(\"Root.xml\"))  \n  \n```  \n  \n This example produces the following output:  \n  \n```xml  \n  \n                <?xml version=\"1.0\" encoding=\"utf-8\"?>  \n<Root>  \n  <Child>content</Child>  \n</Root>  \n```"
+  syntax:
+    content: public void Save (string fileName);
+    parameters:
+    - id: fileName
+      type: System.String
+      description: A string that contains the name of the file.
+  overload: System.Xml.Linq.XDocument.Save*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Save(System.Xml.XmlWriter)
+  id: Save(System.Xml.XmlWriter)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Save(XmlWriter)
+  nameWithType: XDocument.Save(XmlWriter)
+  fullName: System.Xml.Linq.XDocument.Save(XmlWriter)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Serialize this <xref href="System.Xml.Linq.XDocument"></xref> to an <xref href="System.Xml.XmlWriter"></xref>.
+  remarks: ''
+  example:
+  - "The following example shows how to save an <xref:System.Xml.Linq.XDocument> to an <xref:System.Xml.XmlWriter>.  \n  \n```c#  \n  \n                StringBuilder sb = new StringBuilder();  \nXmlWriterSettings xws = new XmlWriterSettings();  \nxws.OmitXmlDeclaration = true;  \nxws.Indent = true;  \n  \nusing (XmlWriter xw = XmlWriter.Create(sb, xws)) {  \n    XDocument doc = new XDocument(  \n        new XElement(\"Child\",  \n            new XElement(\"GrandChild\", \"some content\")  \n        )  \n    );  \n    doc.Save(xw);  \n}  \n  \nConsole.WriteLine(sb.ToString());  \n```  \n  \n```vb  \n  \n                Dim sb As StringBuilder = New StringBuilder()  \nDim xws As XmlWriterSettings = New XmlWriterSettings()  \nxws.OmitXmlDeclaration = True  \nxws.Indent = True  \n  \nUsing xw = XmlWriter.Create(sb, xws)  \n    Dim doc As XDocument = New XDocument(<Child><GrandChild>some content</GrandChild></Child>)  \n    doc.Save(xw)  \n  \nEnd Using  \n  \nConsole.WriteLine(sb.ToString())  \n  \n```  \n  \n This example produces the following output:  \n  \n```xml  \n  \n                <Child>  \n  <GrandChild>some content</GrandChild>  \n</Child>  \n```"
+  syntax:
+    content: public void Save (System.Xml.XmlWriter writer);
+    parameters:
+    - id: writer
+      type: System.Xml.XmlWriter
+      description: A <xref href="System.Xml.XmlWriter"></xref> that the <xref href="System.Xml.Linq.XDocument"></xref> will be written to.
+  overload: System.Xml.Linq.XDocument.Save*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Save(System.IO.Stream,System.Xml.Linq.SaveOptions)
+  id: Save(System.IO.Stream,System.Xml.Linq.SaveOptions)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Save(Stream,SaveOptions)
+  nameWithType: XDocument.Save(Stream,SaveOptions)
+  fullName: System.Xml.Linq.XDocument.Save(Stream,SaveOptions)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Outputs this <xref href="System.Xml.Linq.XDocument"></xref> to the specified <xref href="System.IO.Stream"></xref>, optionally specifying formatting behavior.
+  remarks: "By default the `options` are set to <xref:System.Xml.Linq.SaveOptions>. This option will remove all extraneous insignificant white space, and add appropriate insignificant white space so that the XML is properly indented.  \n  \n If you want to save unindented XML, specify the <xref:System.Xml.Linq.SaveOptions> flag for `options`. This will cause the writer to write all white spaces exactly as represented in the XML tree.  \n  \n Use <xref:System.Xml.Linq.SaveOptions> option if you want to remove duplicate namespace declarations."
+  syntax:
+    content: public void Save (System.IO.Stream stream, System.Xml.Linq.SaveOptions options);
+    parameters:
+    - id: stream
+      type: System.IO.Stream
+      description: The stream to output this <xref href="System.Xml.Linq.XDocument"></xref> to.
+    - id: options
+      type: System.Xml.Linq.SaveOptions
+      description: A <xref href="System.Xml.Linq.SaveOptions"></xref> that specifies formatting behavior.
+  overload: System.Xml.Linq.XDocument.Save*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Save(System.IO.TextWriter,System.Xml.Linq.SaveOptions)
+  id: Save(System.IO.TextWriter,System.Xml.Linq.SaveOptions)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Save(TextWriter,SaveOptions)
+  nameWithType: XDocument.Save(TextWriter,SaveOptions)
+  fullName: System.Xml.Linq.XDocument.Save(TextWriter,SaveOptions)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Serialize this <xref href="System.Xml.Linq.XDocument"></xref> to a <xref href="System.IO.TextWriter"></xref>, optionally disabling formatting.
+  remarks: "If you want to save unindented XML, specify the <xref:System.Xml.Linq.SaveOptions> flag for `options`. This will cause the writer to write all white space exactly as represented in the XML tree.  \n  \n If you want to save indented XML, do not specify the <xref:System.Xml.Linq.SaveOptions> flag for `options`. This will remove all extraneous insignificant white space, and add appropriate insignificant white space so that the XML is properly indented. This is the default behavior, and the behavior of the overloads of the <xref:System.Xml.Linq.XDocument.Save%2A> methods that do not take `options` as a parameter.  \n  \n For more information, see [Preserving White Space while Loading or Parsing XML](../Topic/Preserving%20White%20Space%20while%20Loading%20or%20Parsing%20XML3.md) and [Preserving White Space While Serializing](../Topic/Preserving%20White%20Space%20While%20Serializing1.md)."
+  example:
+  - "The following example shows two uses of this method. The first use serializes the <xref:System.Xml.Linq.XDocument> with formatting. The second preserves white space. Because the document has no white space in it as constructed, preserving white space outputs the XML without any indenting.  \n  \n```c#  \n  \n                XDocument doc = new XDocument(  \n    new XElement(\"Root\",  \n        new XElement(\"Child\", \"content\")  \n    )  \n);  \nStringBuilder sb1 = new StringBuilder();  \nusing (StringWriter sr1 = new StringWriter(sb1)) {  \n    doc.Save(sr1, SaveOptions.None);  \n    Console.WriteLine(sb1.ToString());  \n}  \n  \nStringBuilder sb2 = new StringBuilder();  \nusing (StringWriter sr2 = new StringWriter(sb2)) {  \n    doc.Save(sr2, SaveOptions.DisableFormatting);  \n    Console.WriteLine(sb2.ToString());  \n}  \n```  \n  \n```vb  \n  \n                Dim doc As XDocument = _   \n    <?xml version=\"1.0\" encoding=\"utf-8\"?>  \n        <Root><Child>content</Child></Root>  \n  \nDim sb1 As StringBuilder = New StringBuilder()  \n  \nUsing sr1 = New StringWriter(sb1)  \n    doc.Save(sr1, SaveOptions.None)  \n    Console.WriteLine(sb1.ToString())  \nEnd Using  \n  \nDim sb2 As StringBuilder = New StringBuilder()  \n  \nUsing sr2 = New StringWriter(sb2)  \n    doc.Save(sr2, SaveOptions.DisableFormatting)  \n    Console.WriteLine(sb2.ToString())  \nEnd Using  \n  \n```  \n  \n This example produces the following output:  \n  \n```  \n  \n                <?xml version=\"1.0\" encoding=\"utf-16\"?>  \n<Root>  \n  <Child>content</Child>  \n</Root>  \n<?xml version=\"1.0\" encoding=\"utf-16\"?><Root><Child>content</Child></Root>  \n```"
+  syntax:
+    content: public void Save (System.IO.TextWriter textWriter, System.Xml.Linq.SaveOptions options);
+    parameters:
+    - id: textWriter
+      type: System.IO.TextWriter
+      description: The <xref href="System.IO.TextWriter"></xref> to output the XML to.
+    - id: options
+      type: System.Xml.Linq.SaveOptions
+      description: A <xref href="System.Xml.Linq.SaveOptions"></xref> that specifies formatting behavior.
+  overload: System.Xml.Linq.XDocument.Save*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.Save(System.String,System.Xml.Linq.SaveOptions)
+  id: Save(System.String,System.Xml.Linq.SaveOptions)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: Save(String,SaveOptions)
+  nameWithType: XDocument.Save(String,SaveOptions)
+  fullName: System.Xml.Linq.XDocument.Save(String,SaveOptions)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Serialize this <xref href="System.Xml.Linq.XDocument"></xref> to a file, optionally disabling formatting.
+  remarks: "If you want to save unindented XML, specify the <xref:System.Xml.Linq.SaveOptions> flag for `options`. This will cause the writer to write all white space exactly as represented in the XML tree.  \n  \n If you want to save indented XML, do not specify the <xref:System.Xml.Linq.SaveOptions> flag for `options`. This will remove all extraneous insignificant white space, and add appropriate insignificant white space so that the XML is properly indented. This is the default behavior, and the behavior of the overloads of the <xref:System.Xml.Linq.XDocument.Save%2A> methods that do not take `options` as a parameter.  \n  \n For more information, see [Preserving White Space while Loading or Parsing XML](../Topic/Preserving%20White%20Space%20while%20Loading%20or%20Parsing%20XML3.md) and [Preserving White Space While Serializing](../Topic/Preserving%20White%20Space%20While%20Serializing1.md)."
+  example:
+  - "The following example shows two uses of this method. The first use preserves white space. The second one serializes the <xref:System.Xml.Linq.XDocument> with indenting.  \n  \n```c#  \n  \n                XDocument doc = new XDocument(  \n    new XElement(\"Root\",  \n        new XElement(\"Child\", \"content\")  \n    )  \n);  \ndoc.Save(\"Root1.xml\", SaveOptions.DisableFormatting);  \nConsole.WriteLine(File.ReadAllText(\"Root1.xml\"));  \ndoc.Save(\"Root2.xml\", SaveOptions.None);  \nConsole.WriteLine(File.ReadAllText(\"Root2.xml\"));  \n```  \n  \n```vb  \n  \n                Dim doc As XDocument = _   \n    <?xml version=\"1.0\" encoding=\"utf-8\"?>  \n        <Root><Child>content</Child></Root>  \n  \ndoc.Save(\"Root1.xml\", SaveOptions.DisableFormatting)  \nConsole.WriteLine(File.ReadAllText(\"Root1.xml\"))  \ndoc.Save(\"Root2.xml\", SaveOptions.None)  \nConsole.WriteLine(File.ReadAllText(\"Root2.xml\"))  \n  \n```  \n  \n This example produces the following output:  \n  \n```  \n  \n                <?xml version=\"1.0\" encoding=\"utf-8\"?><Root><Child>content</Child></Root>  \n<?xml version=\"1.0\" encoding=\"utf-8\"?>  \n<Root>  \n  <Child>content</Child>  \n</Root>  \n```"
+  syntax:
+    content: public void Save (string fileName, System.Xml.Linq.SaveOptions options);
+    parameters:
+    - id: fileName
+      type: System.String
+      description: A string that contains the name of the file.
+    - id: options
+      type: System.Xml.Linq.SaveOptions
+      description: A <xref href="System.Xml.Linq.SaveOptions"></xref> that specifies formatting behavior.
+  overload: System.Xml.Linq.XDocument.Save*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.XDocument.WriteTo(System.Xml.XmlWriter)
+  id: WriteTo(System.Xml.XmlWriter)
+  parent: System.Xml.Linq.XDocument
+  langs:
+  - csharp
+  name: WriteTo(XmlWriter)
+  nameWithType: XDocument.WriteTo(XmlWriter)
+  fullName: System.Xml.Linq.XDocument.WriteTo(XmlWriter)
+  type: Method
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Write this document to an <xref href="System.Xml.XmlWriter"></xref>.
+  remarks: ''
+  example:
+  - "The following example shows how to write an <xref:System.Xml.Linq.XDocument> to an <xref:System.Xml.XmlWriter>. Note that the example did not write an XML declaration.  \n  \n```c#  \n  \n                StringBuilder sb = new StringBuilder();  \nXmlWriterSettings xws = new XmlWriterSettings();  \nxws.OmitXmlDeclaration = true;  \nxws.Indent = true;  \n  \nusing (XmlWriter xw = XmlWriter.Create(sb, xws))  \n{  \n    XDocument doc = new XDocument(  \n        new XElement(\"Child\",  \n            new XElement(\"GrandChild\", \"some content\")  \n        )  \n    );  \n    doc.WriteTo(xw);  \n}  \n  \nConsole.WriteLine(sb.ToString());  \n```  \n  \n```vb  \n  \n                Dim sb As StringBuilder = New StringBuilder()  \nDim xws As XmlWriterSettings = New XmlWriterSettings()  \nxws.OmitXmlDeclaration = True  \nxws.Indent = True  \n  \nUsing xw = XmlWriter.Create(sb, xws)  \n    Dim doc As XDocument = New XDocument(<Child><GrandChild>some content</GrandChild></Child>)  \n    doc.WriteTo(xw)  \nEnd Using  \n  \nConsole.WriteLine(sb.ToString())  \n  \n```  \n  \n This example produces the following output:  \n  \n```xml  \n  \n                <Child>  \n  <GrandChild>some content</GrandChild>  \n</Child>  \n```"
+  syntax:
+    content: public override void WriteTo (System.Xml.XmlWriter writer);
+    parameters:
+    - id: writer
+      type: System.Xml.XmlWriter
+      description: An <xref href="System.Xml.XmlWriter"></xref> into which this method will write.
+  overload: System.Xml.Linq.XDocument.WriteTo*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\XDocument.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/XDocument.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Xml.Linq.XContainer
+  isExternal: false
+  name: System.Xml.Linq.XContainer
+- uid: System.Xml.Linq.XDocument.#ctor
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: XDocument()
+  nameWithType: XDocument.XDocument()
+  fullName: System.Xml.Linq.XDocument.XDocument()
+- uid: System.Xml.Linq.XDocument.#ctor(System.Object[])
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: XDocument(Object[])
+  nameWithType: XDocument.XDocument(Object[])
+  fullName: System.Xml.Linq.XDocument.XDocument(Object[])
+- uid: System.Object[]
+  parent: System
+  isExternal: false
+  name: Object[]
+  nameWithType: Object[]
+  fullName: System.Object[]
+  spec.csharp:
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: Object[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Xml.Linq.XDocument.#ctor(System.Xml.Linq.XDocument)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: XDocument(XDocument)
+  nameWithType: XDocument.XDocument(XDocument)
+  fullName: System.Xml.Linq.XDocument.XDocument(XDocument)
+- uid: System.Xml.Linq.XDocument
+  parent: System.Xml.Linq
+  isExternal: false
+  name: XDocument
+  nameWithType: XDocument
+  fullName: System.Xml.Linq.XDocument
+- uid: System.Xml.Linq.XDocument.#ctor(System.Xml.Linq.XDeclaration,System.Object[])
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: XDocument(XDeclaration,Object[])
+  nameWithType: XDocument.XDocument(XDeclaration,Object[])
+  fullName: System.Xml.Linq.XDocument.XDocument(XDeclaration,Object[])
+- uid: System.Xml.Linq.XDeclaration
+  parent: System.Xml.Linq
+  isExternal: false
+  name: XDeclaration
+  nameWithType: XDeclaration
+  fullName: System.Xml.Linq.XDeclaration
+- uid: System.Xml.Linq.XDocument.Declaration
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Declaration
+  nameWithType: XDocument.Declaration
+  fullName: System.Xml.Linq.XDocument.Declaration
+- uid: System.Xml.Linq.XDocument.DocumentType
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: DocumentType
+  nameWithType: XDocument.DocumentType
+  fullName: System.Xml.Linq.XDocument.DocumentType
+- uid: System.Xml.Linq.XDocumentType
+  parent: System.Xml.Linq
+  isExternal: false
+  name: XDocumentType
+  nameWithType: XDocumentType
+  fullName: System.Xml.Linq.XDocumentType
+- uid: System.Xml.Linq.XDocument.Load(System.IO.Stream)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Load(Stream)
+  nameWithType: XDocument.Load(Stream)
+  fullName: System.Xml.Linq.XDocument.Load(Stream)
+- uid: System.IO.Stream
+  parent: System.IO
+  isExternal: false
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.Xml.Linq.XDocument.Load(System.IO.TextReader)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Load(TextReader)
+  nameWithType: XDocument.Load(TextReader)
+  fullName: System.Xml.Linq.XDocument.Load(TextReader)
+- uid: System.IO.TextReader
+  parent: System.IO
+  isExternal: false
+  name: TextReader
+  nameWithType: TextReader
+  fullName: System.IO.TextReader
+- uid: System.Xml.Linq.XDocument.Load(System.String)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Load(String)
+  nameWithType: XDocument.Load(String)
+  fullName: System.Xml.Linq.XDocument.Load(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Xml.Linq.XDocument.Load(System.Xml.XmlReader)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Load(XmlReader)
+  nameWithType: XDocument.Load(XmlReader)
+  fullName: System.Xml.Linq.XDocument.Load(XmlReader)
+- uid: System.Xml.XmlReader
+  parent: System.Xml
+  isExternal: false
+  name: XmlReader
+  nameWithType: XmlReader
+  fullName: System.Xml.XmlReader
+- uid: System.Xml.Linq.XDocument.Load(System.IO.Stream,System.Xml.Linq.LoadOptions)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Load(Stream,LoadOptions)
+  nameWithType: XDocument.Load(Stream,LoadOptions)
+  fullName: System.Xml.Linq.XDocument.Load(Stream,LoadOptions)
+- uid: System.Xml.Linq.LoadOptions
+  parent: System.Xml.Linq
+  isExternal: false
+  name: LoadOptions
+  nameWithType: LoadOptions
+  fullName: System.Xml.Linq.LoadOptions
+- uid: System.Xml.Linq.XDocument.Load(System.IO.TextReader,System.Xml.Linq.LoadOptions)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Load(TextReader,LoadOptions)
+  nameWithType: XDocument.Load(TextReader,LoadOptions)
+  fullName: System.Xml.Linq.XDocument.Load(TextReader,LoadOptions)
+- uid: System.Xml.Linq.XDocument.Load(System.String,System.Xml.Linq.LoadOptions)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Load(String,LoadOptions)
+  nameWithType: XDocument.Load(String,LoadOptions)
+  fullName: System.Xml.Linq.XDocument.Load(String,LoadOptions)
+- uid: System.Xml.Linq.XDocument.Load(System.Xml.XmlReader,System.Xml.Linq.LoadOptions)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Load(XmlReader,LoadOptions)
+  nameWithType: XDocument.Load(XmlReader,LoadOptions)
+  fullName: System.Xml.Linq.XDocument.Load(XmlReader,LoadOptions)
+- uid: System.Xml.Linq.XDocument.NodeType
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: NodeType
+  nameWithType: XDocument.NodeType
+  fullName: System.Xml.Linq.XDocument.NodeType
+- uid: System.Xml.XmlNodeType
+  parent: System.Xml
+  isExternal: false
+  name: XmlNodeType
+  nameWithType: XmlNodeType
+  fullName: System.Xml.XmlNodeType
+- uid: System.Xml.Linq.XDocument.Parse(System.String)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Parse(String)
+  nameWithType: XDocument.Parse(String)
+  fullName: System.Xml.Linq.XDocument.Parse(String)
+- uid: System.Xml.Linq.XDocument.Parse(System.String,System.Xml.Linq.LoadOptions)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Parse(String,LoadOptions)
+  nameWithType: XDocument.Parse(String,LoadOptions)
+  fullName: System.Xml.Linq.XDocument.Parse(String,LoadOptions)
+- uid: System.Xml.Linq.XDocument.Root
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Root
+  nameWithType: XDocument.Root
+  fullName: System.Xml.Linq.XDocument.Root
+- uid: System.Xml.Linq.XElement
+  parent: System.Xml.Linq
+  isExternal: false
+  name: XElement
+  nameWithType: XElement
+  fullName: System.Xml.Linq.XElement
+- uid: System.Xml.Linq.XDocument.Save(System.IO.Stream)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Save(Stream)
+  nameWithType: XDocument.Save(Stream)
+  fullName: System.Xml.Linq.XDocument.Save(Stream)
+- uid: System.Xml.Linq.XDocument.Save(System.IO.TextWriter)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Save(TextWriter)
+  nameWithType: XDocument.Save(TextWriter)
+  fullName: System.Xml.Linq.XDocument.Save(TextWriter)
+- uid: System.IO.TextWriter
+  parent: System.IO
+  isExternal: false
+  name: TextWriter
+  nameWithType: TextWriter
+  fullName: System.IO.TextWriter
+- uid: System.Xml.Linq.XDocument.Save(System.String)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Save(String)
+  nameWithType: XDocument.Save(String)
+  fullName: System.Xml.Linq.XDocument.Save(String)
+- uid: System.Xml.Linq.XDocument.Save(System.Xml.XmlWriter)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Save(XmlWriter)
+  nameWithType: XDocument.Save(XmlWriter)
+  fullName: System.Xml.Linq.XDocument.Save(XmlWriter)
+- uid: System.Xml.XmlWriter
+  parent: System.Xml
+  isExternal: false
+  name: XmlWriter
+  nameWithType: XmlWriter
+  fullName: System.Xml.XmlWriter
+- uid: System.Xml.Linq.XDocument.Save(System.IO.Stream,System.Xml.Linq.SaveOptions)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Save(Stream,SaveOptions)
+  nameWithType: XDocument.Save(Stream,SaveOptions)
+  fullName: System.Xml.Linq.XDocument.Save(Stream,SaveOptions)
+- uid: System.Xml.Linq.SaveOptions
+  parent: System.Xml.Linq
+  isExternal: false
+  name: SaveOptions
+  nameWithType: SaveOptions
+  fullName: System.Xml.Linq.SaveOptions
+- uid: System.Xml.Linq.XDocument.Save(System.IO.TextWriter,System.Xml.Linq.SaveOptions)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Save(TextWriter,SaveOptions)
+  nameWithType: XDocument.Save(TextWriter,SaveOptions)
+  fullName: System.Xml.Linq.XDocument.Save(TextWriter,SaveOptions)
+- uid: System.Xml.Linq.XDocument.Save(System.String,System.Xml.Linq.SaveOptions)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Save(String,SaveOptions)
+  nameWithType: XDocument.Save(String,SaveOptions)
+  fullName: System.Xml.Linq.XDocument.Save(String,SaveOptions)
+- uid: System.Xml.Linq.XDocument.WriteTo(System.Xml.XmlWriter)
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: WriteTo(XmlWriter)
+  nameWithType: XDocument.WriteTo(XmlWriter)
+  fullName: System.Xml.Linq.XDocument.WriteTo(XmlWriter)
+- uid: System.Xml.Linq.XDocument.#ctor*
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: XDocument
+  nameWithType: XDocument.XDocument
+- uid: System.Xml.Linq.XDocument.Declaration*
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Declaration
+  nameWithType: XDocument.Declaration
+- uid: System.Xml.Linq.XDocument.DocumentType*
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: DocumentType
+  nameWithType: XDocument.DocumentType
+- uid: System.Xml.Linq.XDocument.Load*
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Load
+  nameWithType: XDocument.Load
+- uid: System.Xml.Linq.XDocument.NodeType*
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: NodeType
+  nameWithType: XDocument.NodeType
+- uid: System.Xml.Linq.XDocument.Parse*
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Parse
+  nameWithType: XDocument.Parse
+- uid: System.Xml.Linq.XDocument.Root*
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Root
+  nameWithType: XDocument.Root
+- uid: System.Xml.Linq.XDocument.Save*
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: Save
+  nameWithType: XDocument.Save
+- uid: System.Xml.Linq.XDocument.WriteTo*
+  parent: System.Xml.Linq.XDocument
+  isExternal: false
+  name: WriteTo
+  nameWithType: XDocument.WriteTo

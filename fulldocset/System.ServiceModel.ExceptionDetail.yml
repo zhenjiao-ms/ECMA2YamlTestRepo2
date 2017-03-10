@@ -1,0 +1,402 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.ExceptionDetail
+  id: ExceptionDetail
+  children:
+  - System.ServiceModel.ExceptionDetail.#ctor(System.Exception)
+  - System.ServiceModel.ExceptionDetail.HelpLink
+  - System.ServiceModel.ExceptionDetail.InnerException
+  - System.ServiceModel.ExceptionDetail.Message
+  - System.ServiceModel.ExceptionDetail.StackTrace
+  - System.ServiceModel.ExceptionDetail.ToString
+  - System.ServiceModel.ExceptionDetail.Type
+  langs:
+  - csharp
+  name: ExceptionDetail
+  nameWithType: ExceptionDetail
+  fullName: System.ServiceModel.ExceptionDetail
+  type: Class
+  summary: Represents fault detail information.
+  remarks: "The ExceptionDetail class is the type parameter used as the fault detail object when a <xref:System.ServiceModel.FaultException?displayProperty=fullName> is sent by a service as a result of setting the <xref:System.ServiceModel.ServiceBehaviorAttribute.IncludeExceptionDetailInFaults%2A?displayProperty=fullName> or the <xref:System.ServiceModel.Description.ServiceDebugBehavior.IncludeExceptionDetailInFaults%2A?displayProperty=fullName> property to `true`.  \n  \n To send a ExceptionDetail object the type must be serializable. For more information on serialization options, see [Specifying Data Transfer in Service Contracts](../Topic/Specifying%20Data%20Transfer%20in%20Service%20Contracts.md)."
+  syntax:
+    content: >-
+      [System.Runtime.Serialization.DataContract]
+
+      public class ExceptionDetail
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ExceptionDetail.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ExceptionDetail.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.ExceptionDetail.#ctor(System.Exception)
+  id: '#ctor(System.Exception)'
+  parent: System.ServiceModel.ExceptionDetail
+  langs:
+  - csharp
+  name: ExceptionDetail(Exception)
+  nameWithType: ExceptionDetail.ExceptionDetail(Exception)
+  fullName: System.ServiceModel.ExceptionDetail.ExceptionDetail(Exception)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.ExceptionDetail"></xref> class from the exception.
+  remarks: The help link, message, stack trace, and type name information is extracted and added to the equivalent properties in <xref:System.ServiceModel.ExceptionDetail>.
+  syntax:
+    content: public ExceptionDetail (Exception exception);
+    parameters:
+    - id: exception
+      type: System.Exception
+      description: The exception to be serialized as an <xref href="System.ServiceModel.ExceptionDetail"></xref> object.
+  overload: System.ServiceModel.ExceptionDetail.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>exception</code> parameter is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ExceptionDetail.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ExceptionDetail.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.ExceptionDetail.HelpLink
+  id: HelpLink
+  parent: System.ServiceModel.ExceptionDetail
+  langs:
+  - csharp
+  name: HelpLink
+  nameWithType: ExceptionDetail.HelpLink
+  fullName: System.ServiceModel.ExceptionDetail.HelpLink
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets the help link from the exception passed to the constructor.
+  remarks: The return value, which represents a help file, is a URN or URL.
+  syntax:
+    content: public string HelpLink { get; set; }
+    return:
+      type: System.String
+      description: The help link information of the exception.
+  overload: System.ServiceModel.ExceptionDetail.HelpLink*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ExceptionDetail.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ExceptionDetail.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.ExceptionDetail.InnerException
+  id: InnerException
+  parent: System.ServiceModel.ExceptionDetail
+  langs:
+  - csharp
+  name: InnerException
+  nameWithType: ExceptionDetail.InnerException
+  fullName: System.ServiceModel.ExceptionDetail.InnerException
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets the <xref href="System.ServiceModel.ExceptionDetail"></xref> object that represents the inner exception.
+  remarks: Use the InnerException property to obtain the set of exceptions that led to the current exception.
+  syntax:
+    content: public System.ServiceModel.ExceptionDetail InnerException { get; set; }
+    return:
+      type: System.ServiceModel.ExceptionDetail
+      description: The inner exception information.
+  overload: System.ServiceModel.ExceptionDetail.InnerException*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ExceptionDetail.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ExceptionDetail.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.ExceptionDetail.Message
+  id: Message
+  parent: System.ServiceModel.ExceptionDetail
+  langs:
+  - csharp
+  name: Message
+  nameWithType: ExceptionDetail.Message
+  fullName: System.ServiceModel.ExceptionDetail.Message
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets the message from the exception passed to the constructor.
+  remarks: The text of Message should completely describe the error and should, when possible, explain how to correct it.
+  syntax:
+    content: public string Message { get; set; }
+    return:
+      type: System.String
+      description: The exception message.
+  overload: System.ServiceModel.ExceptionDetail.Message*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ExceptionDetail.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ExceptionDetail.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.ExceptionDetail.StackTrace
+  id: StackTrace
+  parent: System.ServiceModel.ExceptionDetail
+  langs:
+  - csharp
+  name: StackTrace
+  nameWithType: ExceptionDetail.StackTrace
+  fullName: System.ServiceModel.ExceptionDetail.StackTrace
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets the stack trace information from the exception passed to the constructor.
+  remarks: The execution stack keeps track of all the methods that are in execution at a given instant. A trace of the method calls is called a stack trace.
+  syntax:
+    content: public string StackTrace { get; set; }
+    return:
+      type: System.String
+      description: The stack trace of the exception.
+  overload: System.ServiceModel.ExceptionDetail.StackTrace*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ExceptionDetail.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ExceptionDetail.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.ExceptionDetail.ToString
+  id: ToString
+  parent: System.ServiceModel.ExceptionDetail
+  langs:
+  - csharp
+  name: ToString()
+  nameWithType: ExceptionDetail.ToString()
+  fullName: System.ServiceModel.ExceptionDetail.ToString()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Returns the exception detail information for the exception passed to the constructor.
+  syntax:
+    content: public override string ToString ();
+    parameters: []
+    return:
+      type: System.String
+      description: The message and stack trace of the exception.
+  overload: System.ServiceModel.ExceptionDetail.ToString*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ExceptionDetail.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ExceptionDetail.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.ExceptionDetail.Type
+  id: Type
+  parent: System.ServiceModel.ExceptionDetail
+  langs:
+  - csharp
+  name: Type
+  nameWithType: ExceptionDetail.Type
+  fullName: System.ServiceModel.ExceptionDetail.Type
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets the type string for the exception passed to the constructor.
+  syntax:
+    content: public string Type { get; set; }
+    return:
+      type: System.String
+      description: The type string for the exception passed to the constructor.
+  overload: System.ServiceModel.ExceptionDetail.Type*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ExceptionDetail.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ExceptionDetail.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ServiceModel.ExceptionDetail.#ctor(System.Exception)
+  parent: System.ServiceModel.ExceptionDetail
+  isExternal: false
+  name: ExceptionDetail(Exception)
+  nameWithType: ExceptionDetail.ExceptionDetail(Exception)
+  fullName: System.ServiceModel.ExceptionDetail.ExceptionDetail(Exception)
+- uid: System.Exception
+  parent: System
+  isExternal: false
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System.ServiceModel.ExceptionDetail.HelpLink
+  parent: System.ServiceModel.ExceptionDetail
+  isExternal: false
+  name: HelpLink
+  nameWithType: ExceptionDetail.HelpLink
+  fullName: System.ServiceModel.ExceptionDetail.HelpLink
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.ServiceModel.ExceptionDetail.InnerException
+  parent: System.ServiceModel.ExceptionDetail
+  isExternal: false
+  name: InnerException
+  nameWithType: ExceptionDetail.InnerException
+  fullName: System.ServiceModel.ExceptionDetail.InnerException
+- uid: System.ServiceModel.ExceptionDetail
+  parent: System.ServiceModel
+  isExternal: false
+  name: ExceptionDetail
+  nameWithType: ExceptionDetail
+  fullName: System.ServiceModel.ExceptionDetail
+- uid: System.ServiceModel.ExceptionDetail.Message
+  parent: System.ServiceModel.ExceptionDetail
+  isExternal: false
+  name: Message
+  nameWithType: ExceptionDetail.Message
+  fullName: System.ServiceModel.ExceptionDetail.Message
+- uid: System.ServiceModel.ExceptionDetail.StackTrace
+  parent: System.ServiceModel.ExceptionDetail
+  isExternal: false
+  name: StackTrace
+  nameWithType: ExceptionDetail.StackTrace
+  fullName: System.ServiceModel.ExceptionDetail.StackTrace
+- uid: System.ServiceModel.ExceptionDetail.ToString
+  parent: System.ServiceModel.ExceptionDetail
+  isExternal: false
+  name: ToString()
+  nameWithType: ExceptionDetail.ToString()
+  fullName: System.ServiceModel.ExceptionDetail.ToString()
+- uid: System.ServiceModel.ExceptionDetail.Type
+  parent: System.ServiceModel.ExceptionDetail
+  isExternal: false
+  name: Type
+  nameWithType: ExceptionDetail.Type
+  fullName: System.ServiceModel.ExceptionDetail.Type
+- uid: System.ServiceModel.ExceptionDetail.#ctor*
+  parent: System.ServiceModel.ExceptionDetail
+  isExternal: false
+  name: ExceptionDetail
+  nameWithType: ExceptionDetail.ExceptionDetail
+- uid: System.ServiceModel.ExceptionDetail.HelpLink*
+  parent: System.ServiceModel.ExceptionDetail
+  isExternal: false
+  name: HelpLink
+  nameWithType: ExceptionDetail.HelpLink
+- uid: System.ServiceModel.ExceptionDetail.InnerException*
+  parent: System.ServiceModel.ExceptionDetail
+  isExternal: false
+  name: InnerException
+  nameWithType: ExceptionDetail.InnerException
+- uid: System.ServiceModel.ExceptionDetail.Message*
+  parent: System.ServiceModel.ExceptionDetail
+  isExternal: false
+  name: Message
+  nameWithType: ExceptionDetail.Message
+- uid: System.ServiceModel.ExceptionDetail.StackTrace*
+  parent: System.ServiceModel.ExceptionDetail
+  isExternal: false
+  name: StackTrace
+  nameWithType: ExceptionDetail.StackTrace
+- uid: System.ServiceModel.ExceptionDetail.ToString*
+  parent: System.ServiceModel.ExceptionDetail
+  isExternal: false
+  name: ToString
+  nameWithType: ExceptionDetail.ToString
+- uid: System.ServiceModel.ExceptionDetail.Type*
+  parent: System.ServiceModel.ExceptionDetail
+  isExternal: false
+  name: Type
+  nameWithType: ExceptionDetail.Type

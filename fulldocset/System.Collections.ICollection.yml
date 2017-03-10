@@ -1,0 +1,276 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Collections.ICollection
+  id: ICollection
+  children:
+  - System.Collections.ICollection.CopyTo(System.Array,System.Int32)
+  - System.Collections.ICollection.Count
+  - System.Collections.ICollection.IsSynchronized
+  - System.Collections.ICollection.SyncRoot
+  langs:
+  - csharp
+  name: ICollection
+  nameWithType: ICollection
+  fullName: System.Collections.ICollection
+  type: Interface
+  summary: Defines size, enumerators, and synchronization methods for all nongeneric collections.
+  remarks: "The ICollection interface is the base interface for classes in the <xref:System.Collections> namespace.  \n  \n The ICollection interface extends <xref:System.Collections.IEnumerable>; <xref:System.Collections.IDictionary> and <xref:System.Collections.IList> are more specialized interfaces that extend ICollection. An <xref:System.Collections.IDictionary> implementation is a collection of key/value pairs, like the <xref:System.Collections.Hashtable> class. An <xref:System.Collections.IList> implementation is a collection of values and its members can be accessed by index, like the <xref:System.Collections.ArrayList> class.  \n  \n Some collections that limit access to their elements, such as the <xref:System.Collections.Queue> class and the <xref:System.Collections.Stack> class, directly implement the ICollection interface.  \n  \n If neither the <xref:System.Collections.IDictionary> interface nor the <xref:System.Collections.IList> interface meet the requirements of the required collection, derive the new collection class from the ICollection interface instead for more flexibility.  \n  \n For the generic version of this interface, see <xref:System.Collections.Generic.ICollection%601?displayProperty=fullName>."
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public interface ICollection : System.Collections.IEnumerable
+  implements:
+  - System.Collections.IEnumerable
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections\ICollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections/ICollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ICollection.CopyTo(System.Array,System.Int32)
+  id: CopyTo(System.Array,System.Int32)
+  parent: System.Collections.ICollection
+  langs:
+  - csharp
+  name: CopyTo(Array,Int32)
+  nameWithType: ICollection.CopyTo(Array,Int32)
+  fullName: System.Collections.ICollection.CopyTo(Array,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Collections
+  summary: Copies the elements of the <xref href="System.Collections.ICollection"></xref> to an <xref href="System.Array"></xref>, starting at a particular <xref href="System.Array"></xref> index.
+  syntax:
+    content: public void CopyTo (Array array, int index);
+    parameters:
+    - id: array
+      type: System.Array
+      description: The one-dimensional <xref href="System.Array"></xref> that is the destination of the elements copied from <xref href="System.Collections.ICollection"></xref>. The <xref href="System.Array"></xref> must have zero-based indexing.
+    - id: index
+      type: System.Int32
+      description: The zero-based index in <code>array</code> at which copying begins.
+  overload: System.Collections.ICollection.CopyTo*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>array</code> is `null`.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>index</code> is less than zero.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: "<code>array</code> is multidimensional.  \n  \n -or-  \n  \n The number of elements in the source <xref href=\"System.Collections.ICollection\"></xref> is greater than the available space from <code>index</code> to the end of the destination <code>array</code>.  \n  \n -or-  \n  \n The type of the source <xref href=\"System.Collections.ICollection\"></xref> cannot be cast automatically to the type of the destination <code>array</code>."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections\ICollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections/ICollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ICollection.Count
+  id: Count
+  parent: System.Collections.ICollection
+  langs:
+  - csharp
+  name: Count
+  nameWithType: ICollection.Count
+  fullName: System.Collections.ICollection.Count
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Collections
+  summary: Gets the number of elements contained in the <xref href="System.Collections.ICollection"></xref>.
+  syntax:
+    content: public int Count { get; }
+    return:
+      type: System.Int32
+      description: The number of elements contained in the <xref href="System.Collections.ICollection"></xref>.
+  overload: System.Collections.ICollection.Count*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections\ICollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections/ICollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ICollection.IsSynchronized
+  id: IsSynchronized
+  parent: System.Collections.ICollection
+  langs:
+  - csharp
+  name: IsSynchronized
+  nameWithType: ICollection.IsSynchronized
+  fullName: System.Collections.ICollection.IsSynchronized
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Collections
+  summary: Gets a value indicating whether access to the <xref href="System.Collections.ICollection"></xref> is synchronized (thread safe).
+  remarks: "<xref:System.Collections.ICollection.SyncRoot%2A> returns an object, which can be used to synchronize access to the <xref:System.Collections.ICollection>.  \n  \n Most collection classes in the <xref:System.Collections?displayProperty=fullName> namespace also implement a Synchronized method, which provides a synchronized wrapper around the underlying collection.  \n  \n Enumerating through a collection is intrinsically not a thread-safe procedure. Even when a collection is synchronized, other threads can still modify the collection, which causes the enumerator to throw an exception. To guarantee thread safety during enumeration, you can either lock the collection during the entire enumeration or catch the exceptions resulting from changes made by other threads.  \n  \n The following code example shows how to lock the collection using the <xref:System.Collections.ICollection.SyncRoot%2A> property during the entire enumeration.  \n  \n [!code-cpp[System.Collections.ICollection#1](~/add/codesnippet/cpp/p-system.collections.ico_1_1.cpp)]\n [!code-cs[System.Collections.ICollection#1](~/add/codesnippet/csharp/p-system.collections.ico_1_1.cs)]\n [!code-vb[System.Collections.ICollection#1](~/add/codesnippet/visualbasic/p-system.collections.ico_1_1.vb)]"
+  syntax:
+    content: public bool IsSynchronized { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if access to the <xref href="System.Collections.ICollection"></xref> is synchronized (thread safe); otherwise, `false`.'
+  overload: System.Collections.ICollection.IsSynchronized*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections\ICollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections/ICollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ICollection.SyncRoot
+  id: SyncRoot
+  parent: System.Collections.ICollection
+  langs:
+  - csharp
+  name: SyncRoot
+  nameWithType: ICollection.SyncRoot
+  fullName: System.Collections.ICollection.SyncRoot
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Collections
+  summary: Gets an object that can be used to synchronize access to the <xref href="System.Collections.ICollection"></xref>.
+  remarks: "For collections whose underlying store is not publicly available, the expected implementation is to return the current instance. Note that the pointer to the current instance might not be sufficient for collections that wrap other collections; those should return the underlying collection's `SyncRoot` property.  \n  \n Most collection classes in the <xref:System.Collections?displayProperty=fullName> namespace also implement a `Synchronized` method, which provides a synchronized wrapper around the underlying collection. However, derived classes can provide their own synchronized version of the collection using the SyncRoot property. The synchronizing code must perform operations on the SyncRoot property of the collection, not directly on the collection. This ensures proper operation of collections that are derived from other objects. Specifically, it maintains proper synchronization with other threads that might be simultaneously modifying the collection instance.  \n  \n In the absence of a `Synchronized` method on a collection, the expected usage for SyncRoot looks as follows:  \n  \n [!code-cpp[System.Collections.ICollection#2](~/add/codesnippet/cpp/p-system.collections.ico_0_1.cpp)]\n [!code-cs[System.Collections.ICollection#2](~/add/codesnippet/csharp/p-system.collections.ico_0_1.cs)]\n [!code-vb[System.Collections.ICollection#2](~/add/codesnippet/visualbasic/p-system.collections.ico_0_1.vb)]  \n  \n Enumerating through a collection is intrinsically not a thread-safe procedure. Even when a collection is synchronized, other threads can still modify the collection, which causes the enumerator to throw an exception. To guarantee thread safety during enumeration, you can either lock the collection during the entire enumeration or catch the exceptions resulting from changes made by other threads.  \n  \n The following code example shows how to lock the collection using the SyncRoot property during the entire enumeration.  \n  \n [!code-cpp[System.Collections.ICollection#1](~/add/codesnippet/cpp/p-system.collections.ico_0_2.cpp)]\n [!code-cs[System.Collections.ICollection#1](~/add/codesnippet/csharp/p-system.collections.ico_0_2.cs)]\n [!code-vb[System.Collections.ICollection#1](~/add/codesnippet/visualbasic/p-system.collections.ico_0_2.vb)]"
+  syntax:
+    content: public object SyncRoot { get; }
+    return:
+      type: System.Object
+      description: An object that can be used to synchronize access to the <xref href="System.Collections.ICollection"></xref>.
+  overload: System.Collections.ICollection.SyncRoot*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections\ICollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections/ICollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.Collections.ICollection.CopyTo(System.Array,System.Int32)
+  parent: System.Collections.ICollection
+  isExternal: false
+  name: CopyTo(Array,Int32)
+  nameWithType: ICollection.CopyTo(Array,Int32)
+  fullName: System.Collections.ICollection.CopyTo(Array,Int32)
+- uid: System.Array
+  parent: System
+  isExternal: false
+  name: Array
+  nameWithType: Array
+  fullName: System.Array
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Collections.ICollection.Count
+  parent: System.Collections.ICollection
+  isExternal: false
+  name: Count
+  nameWithType: ICollection.Count
+  fullName: System.Collections.ICollection.Count
+- uid: System.Collections.ICollection.IsSynchronized
+  parent: System.Collections.ICollection
+  isExternal: false
+  name: IsSynchronized
+  nameWithType: ICollection.IsSynchronized
+  fullName: System.Collections.ICollection.IsSynchronized
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Collections.ICollection.SyncRoot
+  parent: System.Collections.ICollection
+  isExternal: false
+  name: SyncRoot
+  nameWithType: ICollection.SyncRoot
+  fullName: System.Collections.ICollection.SyncRoot
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Collections.ICollection.CopyTo*
+  parent: System.Collections.ICollection
+  isExternal: false
+  name: CopyTo
+  nameWithType: ICollection.CopyTo
+- uid: System.Collections.ICollection.Count*
+  parent: System.Collections.ICollection
+  isExternal: false
+  name: Count
+  nameWithType: ICollection.Count
+- uid: System.Collections.ICollection.IsSynchronized*
+  parent: System.Collections.ICollection
+  isExternal: false
+  name: IsSynchronized
+  nameWithType: ICollection.IsSynchronized
+- uid: System.Collections.ICollection.SyncRoot*
+  parent: System.Collections.ICollection
+  isExternal: false
+  name: SyncRoot
+  nameWithType: ICollection.SyncRoot

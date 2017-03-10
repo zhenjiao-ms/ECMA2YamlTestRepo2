@@ -1,0 +1,636 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.CompilerServices.CallSiteOps
+  id: CallSiteOps
+  children:
+  - System.Runtime.CompilerServices.CallSiteOps.AddRule``1(System.Runtime.CompilerServices.CallSite{``0},``0)
+  - System.Runtime.CompilerServices.CallSiteOps.Bind``1(System.Runtime.CompilerServices.CallSiteBinder,System.Runtime.CompilerServices.CallSite{``0},System.Object[])
+  - System.Runtime.CompilerServices.CallSiteOps.ClearMatch(System.Runtime.CompilerServices.CallSite)
+  - System.Runtime.CompilerServices.CallSiteOps.CreateMatchmaker``1(System.Runtime.CompilerServices.CallSite{``0})
+  - System.Runtime.CompilerServices.CallSiteOps.GetCachedRules``1(System.Runtime.CompilerServices.RuleCache{``0})
+  - System.Runtime.CompilerServices.CallSiteOps.GetMatch(System.Runtime.CompilerServices.CallSite)
+  - System.Runtime.CompilerServices.CallSiteOps.GetRuleCache``1(System.Runtime.CompilerServices.CallSite{``0})
+  - System.Runtime.CompilerServices.CallSiteOps.GetRules``1(System.Runtime.CompilerServices.CallSite{``0})
+  - System.Runtime.CompilerServices.CallSiteOps.MoveRule``1(System.Runtime.CompilerServices.RuleCache{``0},``0,System.Int32)
+  - System.Runtime.CompilerServices.CallSiteOps.SetNotMatched(System.Runtime.CompilerServices.CallSite)
+  - System.Runtime.CompilerServices.CallSiteOps.UpdateRules``1(System.Runtime.CompilerServices.CallSite{``0},System.Int32)
+  langs:
+  - csharp
+  name: CallSiteOps
+  nameWithType: CallSiteOps
+  fullName: System.Runtime.CompilerServices.CallSiteOps
+  type: Class
+  summary: Creates and caches binding rules.
+  syntax:
+    content: >-
+      [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+
+      [System.Diagnostics.DebuggerStepThrough]
+
+      public static class CallSiteOps
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.CompilerServices\CallSiteOps.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.CompilerServices/CallSiteOps.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.CompilerServices.CallSiteOps.AddRule``1(System.Runtime.CompilerServices.CallSite{``0},``0)
+  id: AddRule``1(System.Runtime.CompilerServices.CallSite{``0},``0)
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  langs:
+  - csharp
+  name: AddRule<T>(CallSite<T>,T)
+  nameWithType: CallSiteOps.AddRule<T>(CallSite<T>,T)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.AddRule<T>(CallSite<T>,T)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Runtime.CompilerServices
+  summary: Adds a rule to the cache maintained on the dynamic call site.
+  syntax:
+    content: 'public static void AddRule<T> (System.Runtime.CompilerServices.CallSite<T> site, T rule) where T : class;'
+    parameters:
+    - id: site
+      type: System.Runtime.CompilerServices.CallSite`1
+      description: An instance of the dynamic call site.
+    - id: rule
+      type: T
+      description: An instance of the call site rule.
+  overload: System.Runtime.CompilerServices.CallSiteOps.AddRule<T>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.CompilerServices\CallSiteOps.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.CompilerServices/CallSiteOps.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.CompilerServices.CallSiteOps.Bind``1(System.Runtime.CompilerServices.CallSiteBinder,System.Runtime.CompilerServices.CallSite{``0},System.Object[])
+  id: Bind``1(System.Runtime.CompilerServices.CallSiteBinder,System.Runtime.CompilerServices.CallSite{``0},System.Object[])
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  langs:
+  - csharp
+  name: Bind<T>(CallSiteBinder,CallSite<T>,Object[])
+  nameWithType: CallSiteOps.Bind<T>(CallSiteBinder,CallSite<T>,Object[])
+  fullName: System.Runtime.CompilerServices.CallSiteOps.Bind<T>(CallSiteBinder,CallSite<T>,Object[])
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Runtime.CompilerServices
+  summary: Updates the call site target with a new rule based on the arguments.
+  syntax:
+    content: 'public static T Bind<T> (System.Runtime.CompilerServices.CallSiteBinder binder, System.Runtime.CompilerServices.CallSite<T> site, object[] args) where T : class;'
+    parameters:
+    - id: binder
+      type: System.Runtime.CompilerServices.CallSiteBinder
+      description: The call site binder.
+    - id: site
+      type: System.Runtime.CompilerServices.CallSite`1
+      description: An instance of the dynamic call site.
+    - id: args
+      type: System.Object[]
+      description: Arguments to the call site.
+    return:
+      type: T
+      description: The new call site target.
+  overload: System.Runtime.CompilerServices.CallSiteOps.Bind<T>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.CompilerServices\CallSiteOps.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.CompilerServices/CallSiteOps.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.CompilerServices.CallSiteOps.ClearMatch(System.Runtime.CompilerServices.CallSite)
+  id: ClearMatch(System.Runtime.CompilerServices.CallSite)
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  langs:
+  - csharp
+  name: ClearMatch(CallSite)
+  nameWithType: CallSiteOps.ClearMatch(CallSite)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.ClearMatch(CallSite)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Runtime.CompilerServices
+  summary: Clears the match flag on the matchmaker call site.
+  syntax:
+    content: public static void ClearMatch (System.Runtime.CompilerServices.CallSite site);
+    parameters:
+    - id: site
+      type: System.Runtime.CompilerServices.CallSite
+      description: An instance of the dynamic call site.
+  overload: System.Runtime.CompilerServices.CallSiteOps.ClearMatch*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.CompilerServices\CallSiteOps.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.CompilerServices/CallSiteOps.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.CompilerServices.CallSiteOps.CreateMatchmaker``1(System.Runtime.CompilerServices.CallSite{``0})
+  id: CreateMatchmaker``1(System.Runtime.CompilerServices.CallSite{``0})
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  langs:
+  - csharp
+  name: CreateMatchmaker<T>(CallSite<T>)
+  nameWithType: CallSiteOps.CreateMatchmaker<T>(CallSite<T>)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.CreateMatchmaker<T>(CallSite<T>)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Runtime.CompilerServices
+  summary: Creates an instance of a dynamic call site used for cache lookup.
+  syntax:
+    content: 'public static System.Runtime.CompilerServices.CallSite<T> CreateMatchmaker<T> (System.Runtime.CompilerServices.CallSite<T> site) where T : class;'
+    parameters:
+    - id: site
+      type: System.Runtime.CompilerServices.CallSite`1
+      description: An instance of the dynamic call site.
+    return:
+      type: System.Runtime.CompilerServices.CallSite`1
+      description: The new call site.
+  overload: System.Runtime.CompilerServices.CallSiteOps.CreateMatchmaker<T>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.CompilerServices\CallSiteOps.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.CompilerServices/CallSiteOps.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.CompilerServices.CallSiteOps.GetCachedRules``1(System.Runtime.CompilerServices.RuleCache{``0})
+  id: GetCachedRules``1(System.Runtime.CompilerServices.RuleCache{``0})
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  langs:
+  - csharp
+  name: GetCachedRules<T>(RuleCache<T>)
+  nameWithType: CallSiteOps.GetCachedRules<T>(RuleCache<T>)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.GetCachedRules<T>(RuleCache<T>)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Runtime.CompilerServices
+  summary: Searches the dynamic rule cache for rules applicable to the dynamic operation.
+  syntax:
+    content: 'public static T[] GetCachedRules<T> (System.Runtime.CompilerServices.RuleCache<T> cache) where T : class;'
+    parameters:
+    - id: cache
+      type: System.Runtime.CompilerServices.RuleCache`1
+      description: The cache.
+    return:
+      type: T[]
+      description: The collection of applicable rules.
+  overload: System.Runtime.CompilerServices.CallSiteOps.GetCachedRules<T>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.CompilerServices\CallSiteOps.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.CompilerServices/CallSiteOps.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.CompilerServices.CallSiteOps.GetMatch(System.Runtime.CompilerServices.CallSite)
+  id: GetMatch(System.Runtime.CompilerServices.CallSite)
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  langs:
+  - csharp
+  name: GetMatch(CallSite)
+  nameWithType: CallSiteOps.GetMatch(CallSite)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.GetMatch(CallSite)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Runtime.CompilerServices
+  summary: Checks whether the executed rule matched
+  syntax:
+    content: public static bool GetMatch (System.Runtime.CompilerServices.CallSite site);
+    parameters:
+    - id: site
+      type: System.Runtime.CompilerServices.CallSite
+      description: An instance of the dynamic call site.
+    return:
+      type: System.Boolean
+      description: true if rule matched, false otherwise.
+  overload: System.Runtime.CompilerServices.CallSiteOps.GetMatch*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.CompilerServices\CallSiteOps.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.CompilerServices/CallSiteOps.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.CompilerServices.CallSiteOps.GetRuleCache``1(System.Runtime.CompilerServices.CallSite{``0})
+  id: GetRuleCache``1(System.Runtime.CompilerServices.CallSite{``0})
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  langs:
+  - csharp
+  name: GetRuleCache<T>(CallSite<T>)
+  nameWithType: CallSiteOps.GetRuleCache<T>(CallSite<T>)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.GetRuleCache<T>(CallSite<T>)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Runtime.CompilerServices
+  summary: Retrieves binding rule cache.
+  syntax:
+    content: 'public static System.Runtime.CompilerServices.RuleCache<T> GetRuleCache<T> (System.Runtime.CompilerServices.CallSite<T> site) where T : class;'
+    parameters:
+    - id: site
+      type: System.Runtime.CompilerServices.CallSite`1
+      description: An instance of the dynamic call site.
+    return:
+      type: System.Runtime.CompilerServices.RuleCache`1
+      description: The cache.
+  overload: System.Runtime.CompilerServices.CallSiteOps.GetRuleCache<T>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.CompilerServices\CallSiteOps.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.CompilerServices/CallSiteOps.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.CompilerServices.CallSiteOps.GetRules``1(System.Runtime.CompilerServices.CallSite{``0})
+  id: GetRules``1(System.Runtime.CompilerServices.CallSite{``0})
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  langs:
+  - csharp
+  name: GetRules<T>(CallSite<T>)
+  nameWithType: CallSiteOps.GetRules<T>(CallSite<T>)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.GetRules<T>(CallSite<T>)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Runtime.CompilerServices
+  summary: Gets the dynamic binding rules from the call site.
+  syntax:
+    content: 'public static T[] GetRules<T> (System.Runtime.CompilerServices.CallSite<T> site) where T : class;'
+    parameters:
+    - id: site
+      type: System.Runtime.CompilerServices.CallSite`1
+      description: An instance of the dynamic call site.
+    return:
+      type: T[]
+      description: An array of dynamic binding rules.
+  overload: System.Runtime.CompilerServices.CallSiteOps.GetRules<T>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.CompilerServices\CallSiteOps.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.CompilerServices/CallSiteOps.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.CompilerServices.CallSiteOps.MoveRule``1(System.Runtime.CompilerServices.RuleCache{``0},``0,System.Int32)
+  id: MoveRule``1(System.Runtime.CompilerServices.RuleCache{``0},``0,System.Int32)
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  langs:
+  - csharp
+  name: MoveRule<T>(RuleCache<T>,T,Int32)
+  nameWithType: CallSiteOps.MoveRule<T>(RuleCache<T>,T,Int32)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.MoveRule<T>(RuleCache<T>,T,Int32)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Runtime.CompilerServices
+  summary: Moves the binding rule within the cache.
+  syntax:
+    content: 'public static void MoveRule<T> (System.Runtime.CompilerServices.RuleCache<T> cache, T rule, int i) where T : class;'
+    parameters:
+    - id: cache
+      type: System.Runtime.CompilerServices.RuleCache`1
+      description: The call site rule cache.
+    - id: rule
+      type: T
+      description: An instance of the call site rule.
+    - id: i
+      type: System.Int32
+      description: An index of the call site rule.
+  overload: System.Runtime.CompilerServices.CallSiteOps.MoveRule<T>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.CompilerServices\CallSiteOps.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.CompilerServices/CallSiteOps.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.CompilerServices.CallSiteOps.SetNotMatched(System.Runtime.CompilerServices.CallSite)
+  id: SetNotMatched(System.Runtime.CompilerServices.CallSite)
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  langs:
+  - csharp
+  name: SetNotMatched(CallSite)
+  nameWithType: CallSiteOps.SetNotMatched(CallSite)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.SetNotMatched(CallSite)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Runtime.CompilerServices
+  summary: Checks if a dynamic site requires an update.
+  syntax:
+    content: public static bool SetNotMatched (System.Runtime.CompilerServices.CallSite site);
+    parameters:
+    - id: site
+      type: System.Runtime.CompilerServices.CallSite
+      description: An instance of the dynamic call site.
+    return:
+      type: System.Boolean
+      description: true if rule does not need updating, false otherwise.
+  overload: System.Runtime.CompilerServices.CallSiteOps.SetNotMatched*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.CompilerServices\CallSiteOps.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.CompilerServices/CallSiteOps.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.CompilerServices.CallSiteOps.UpdateRules``1(System.Runtime.CompilerServices.CallSite{``0},System.Int32)
+  id: UpdateRules``1(System.Runtime.CompilerServices.CallSite{``0},System.Int32)
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  langs:
+  - csharp
+  name: UpdateRules<T>(CallSite<T>,Int32)
+  nameWithType: CallSiteOps.UpdateRules<T>(CallSite<T>,Int32)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.UpdateRules<T>(CallSite<T>,Int32)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Runtime.CompilerServices
+  summary: Updates rules in the cache.
+  syntax:
+    content: 'public static void UpdateRules<T> (System.Runtime.CompilerServices.CallSite<T> this, int matched) where T : class;'
+    parameters:
+    - id: this
+      type: System.Runtime.CompilerServices.CallSite`1
+      description: An instance of the dynamic call site.
+    - id: matched
+      type: System.Int32
+      description: The matched rule index.
+  overload: System.Runtime.CompilerServices.CallSiteOps.UpdateRules<T>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.CompilerServices\CallSiteOps.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.CompilerServices/CallSiteOps.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.Runtime.CompilerServices.CallSiteOps.AddRule``1(System.Runtime.CompilerServices.CallSite{``0},``0)
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: AddRule<T>(CallSite<T>,T)
+  nameWithType: CallSiteOps.AddRule<T>(CallSite<T>,T)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.AddRule<T>(CallSite<T>,T)
+- uid: System.Runtime.CompilerServices.CallSite`1
+  parent: System.Runtime.CompilerServices
+  isExternal: false
+  name: CallSite<T>
+  nameWithType: CallSite<T>
+  fullName: System.Runtime.CompilerServices.CallSite<T>
+- uid: T
+  isExternal: true
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Runtime.CompilerServices.CallSiteOps.Bind``1(System.Runtime.CompilerServices.CallSiteBinder,System.Runtime.CompilerServices.CallSite{``0},System.Object[])
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: Bind<T>(CallSiteBinder,CallSite<T>,Object[])
+  nameWithType: CallSiteOps.Bind<T>(CallSiteBinder,CallSite<T>,Object[])
+  fullName: System.Runtime.CompilerServices.CallSiteOps.Bind<T>(CallSiteBinder,CallSite<T>,Object[])
+- uid: System.Runtime.CompilerServices.CallSiteBinder
+  parent: System.Runtime.CompilerServices
+  isExternal: false
+  name: CallSiteBinder
+  nameWithType: CallSiteBinder
+  fullName: System.Runtime.CompilerServices.CallSiteBinder
+- uid: System.Object[]
+  parent: System
+  isExternal: false
+  name: Object[]
+  nameWithType: Object[]
+  fullName: System.Object[]
+  spec.csharp:
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: Object[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Runtime.CompilerServices.CallSiteOps.ClearMatch(System.Runtime.CompilerServices.CallSite)
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: ClearMatch(CallSite)
+  nameWithType: CallSiteOps.ClearMatch(CallSite)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.ClearMatch(CallSite)
+- uid: System.Runtime.CompilerServices.CallSite
+  parent: System.Runtime.CompilerServices
+  isExternal: false
+  name: CallSite
+  nameWithType: CallSite
+  fullName: System.Runtime.CompilerServices.CallSite
+- uid: System.Runtime.CompilerServices.CallSiteOps.CreateMatchmaker``1(System.Runtime.CompilerServices.CallSite{``0})
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: CreateMatchmaker<T>(CallSite<T>)
+  nameWithType: CallSiteOps.CreateMatchmaker<T>(CallSite<T>)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.CreateMatchmaker<T>(CallSite<T>)
+- uid: System.Runtime.CompilerServices.CallSiteOps.GetCachedRules``1(System.Runtime.CompilerServices.RuleCache{``0})
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: GetCachedRules<T>(RuleCache<T>)
+  nameWithType: CallSiteOps.GetCachedRules<T>(RuleCache<T>)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.GetCachedRules<T>(RuleCache<T>)
+- uid: T[]
+  isExternal: true
+  name: T[]
+  nameWithType: T[]
+  fullName: T[]
+  spec.csharp:
+  - uid: T
+    name: T
+    nameWithType: T
+    fullName: T[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Runtime.CompilerServices.RuleCache`1
+  parent: System.Runtime.CompilerServices
+  isExternal: false
+  name: RuleCache<T>
+  nameWithType: RuleCache<T>
+  fullName: System.Runtime.CompilerServices.RuleCache<T>
+- uid: System.Runtime.CompilerServices.CallSiteOps.GetMatch(System.Runtime.CompilerServices.CallSite)
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: GetMatch(CallSite)
+  nameWithType: CallSiteOps.GetMatch(CallSite)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.GetMatch(CallSite)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Runtime.CompilerServices.CallSiteOps.GetRuleCache``1(System.Runtime.CompilerServices.CallSite{``0})
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: GetRuleCache<T>(CallSite<T>)
+  nameWithType: CallSiteOps.GetRuleCache<T>(CallSite<T>)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.GetRuleCache<T>(CallSite<T>)
+- uid: System.Runtime.CompilerServices.CallSiteOps.GetRules``1(System.Runtime.CompilerServices.CallSite{``0})
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: GetRules<T>(CallSite<T>)
+  nameWithType: CallSiteOps.GetRules<T>(CallSite<T>)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.GetRules<T>(CallSite<T>)
+- uid: System.Runtime.CompilerServices.CallSiteOps.MoveRule``1(System.Runtime.CompilerServices.RuleCache{``0},``0,System.Int32)
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: MoveRule<T>(RuleCache<T>,T,Int32)
+  nameWithType: CallSiteOps.MoveRule<T>(RuleCache<T>,T,Int32)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.MoveRule<T>(RuleCache<T>,T,Int32)
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Runtime.CompilerServices.CallSiteOps.SetNotMatched(System.Runtime.CompilerServices.CallSite)
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: SetNotMatched(CallSite)
+  nameWithType: CallSiteOps.SetNotMatched(CallSite)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.SetNotMatched(CallSite)
+- uid: System.Runtime.CompilerServices.CallSiteOps.UpdateRules``1(System.Runtime.CompilerServices.CallSite{``0},System.Int32)
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: UpdateRules<T>(CallSite<T>,Int32)
+  nameWithType: CallSiteOps.UpdateRules<T>(CallSite<T>,Int32)
+  fullName: System.Runtime.CompilerServices.CallSiteOps.UpdateRules<T>(CallSite<T>,Int32)
+- uid: System.Runtime.CompilerServices.CallSiteOps.AddRule<T>*
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: AddRule<T>
+  nameWithType: CallSiteOps.AddRule<T>
+- uid: System.Runtime.CompilerServices.CallSiteOps.Bind<T>*
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: Bind<T>
+  nameWithType: CallSiteOps.Bind<T>
+- uid: System.Runtime.CompilerServices.CallSiteOps.ClearMatch*
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: ClearMatch
+  nameWithType: CallSiteOps.ClearMatch
+- uid: System.Runtime.CompilerServices.CallSiteOps.CreateMatchmaker<T>*
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: CreateMatchmaker<T>
+  nameWithType: CallSiteOps.CreateMatchmaker<T>
+- uid: System.Runtime.CompilerServices.CallSiteOps.GetCachedRules<T>*
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: GetCachedRules<T>
+  nameWithType: CallSiteOps.GetCachedRules<T>
+- uid: System.Runtime.CompilerServices.CallSiteOps.GetMatch*
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: GetMatch
+  nameWithType: CallSiteOps.GetMatch
+- uid: System.Runtime.CompilerServices.CallSiteOps.GetRuleCache<T>*
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: GetRuleCache<T>
+  nameWithType: CallSiteOps.GetRuleCache<T>
+- uid: System.Runtime.CompilerServices.CallSiteOps.GetRules<T>*
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: GetRules<T>
+  nameWithType: CallSiteOps.GetRules<T>
+- uid: System.Runtime.CompilerServices.CallSiteOps.MoveRule<T>*
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: MoveRule<T>
+  nameWithType: CallSiteOps.MoveRule<T>
+- uid: System.Runtime.CompilerServices.CallSiteOps.SetNotMatched*
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: SetNotMatched
+  nameWithType: CallSiteOps.SetNotMatched
+- uid: System.Runtime.CompilerServices.CallSiteOps.UpdateRules<T>*
+  parent: System.Runtime.CompilerServices.CallSiteOps
+  isExternal: false
+  name: UpdateRules<T>
+  nameWithType: CallSiteOps.UpdateRules<T>

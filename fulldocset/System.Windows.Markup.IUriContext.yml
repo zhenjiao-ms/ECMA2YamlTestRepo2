@@ -1,0 +1,67 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Windows.Markup.IUriContext
+  id: IUriContext
+  children:
+  - System.Windows.Markup.IUriContext.BaseUri
+  langs:
+  - csharp
+  name: IUriContext
+  nameWithType: IUriContext
+  fullName: System.Windows.Markup.IUriContext
+  type: Interface
+  summary: Represents a service that can use application context to resolve a provided relative URI to an absolute URI.
+  remarks: "IUriContext implemented as a service enables type converters to use an application-specific context that might be able to complete a URI-type property.  \n  \n Type converters and markup extensions can query for IUriContext as a service on the service context that is provided by a XAML object writer, when the XAML object writer invokes value conversion behavior. For more information, see [Type Converters and Markup Extensions for XAML](../Topic/Type%20Converters%20and%20Markup%20Extensions%20for%20XAML.md) and [Service Contexts Available to Type Converters and Markup Extensions](../Topic/Service%20Contexts%20Available%20to%20Type%20Converters%20and%20Markup%20Extensions.md).  \n  \n IUriContext is not just for value conversion and service context. Class logic for UI elements or other classes that support containment might also implement IUriContext services as a recognized pattern that child elements can call for base URI information, or store base URI information that is obtained from XAML parsing of the root element.  \n  \n In previous versions of the .NET Framework, this interface existed in the WPF-specific assembly PresentationCore. In [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], IUriContext is in the System.Xaml assembly. For more information, see [Types Migrated from WPF to System.Xaml](../Topic/Types%20Migrated%20from%20WPF%20to%20System.Xaml.md).  \n  \n## WPF Usage Notes  \n Example scenarios for IUriContext exist in WPF.  \n  \n As an example of a value converter, the <xref:System.Windows.Media.FontFamilyConverter> class can use a relative URI that is provided for properties such as <xref:System.Windows.Controls.Page.FontFamily%2A?displayProperty=fullName>, if IUriContext is available as a service on the <xref:System.ComponentModel.ITypeDescriptorContext> input.  \n  \n As an example of the element case, <xref:System.Windows.Documents.Hyperlink> implements IUriContext so that it can pass through base URI values when parsed, which then modifies <xref:System.Windows.Documents.Hyperlink.NavigateUri%2A>."
+  syntax:
+    content: public interface IUriContext
+  implements: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\IUriContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/IUriContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+- uid: System.Windows.Markup.IUriContext.BaseUri
+  id: BaseUri
+  parent: System.Windows.Markup.IUriContext
+  langs:
+  - csharp
+  name: BaseUri
+  nameWithType: IUriContext.BaseUri
+  fullName: System.Windows.Markup.IUriContext.BaseUri
+  type: Property
+  assemblies:
+  - PresentationCore
+  namespace: System.Windows.Markup
+  summary: Gets or sets the base URI of the current application context.
+  syntax:
+    content: public Uri BaseUri { get; set; }
+    return:
+      type: System.Uri
+      description: The base URI of the application context.
+  overload: System.Windows.Markup.IUriContext.BaseUri*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\IUriContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/IUriContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+references:
+- uid: System.Windows.Markup.IUriContext.BaseUri
+  parent: System.Windows.Markup.IUriContext
+  isExternal: false
+  name: BaseUri
+  nameWithType: IUriContext.BaseUri
+  fullName: System.Windows.Markup.IUriContext.BaseUri
+- uid: System.Uri
+  parent: System
+  isExternal: false
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: System.Windows.Markup.IUriContext.BaseUri*
+  parent: System.Windows.Markup.IUriContext
+  isExternal: false
+  name: BaseUri
+  nameWithType: IUriContext.BaseUri

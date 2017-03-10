@@ -1,0 +1,455 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Web.Routing.UrlRoutingHandler
+  id: UrlRoutingHandler
+  children:
+  - System.Web.Routing.UrlRoutingHandler.#ctor
+  - System.Web.Routing.UrlRoutingHandler.IsReusable
+  - System.Web.Routing.UrlRoutingHandler.ProcessRequest(System.Web.HttpContext)
+  - System.Web.Routing.UrlRoutingHandler.ProcessRequest(System.Web.HttpContextBase)
+  - System.Web.Routing.UrlRoutingHandler.RouteCollection
+  - System.Web.Routing.UrlRoutingHandler.System#Web#IHttpHandler#IsReusable
+  - System.Web.Routing.UrlRoutingHandler.System#Web#IHttpHandler#ProcessRequest(System.Web.HttpContext)
+  - System.Web.Routing.UrlRoutingHandler.VerifyAndProcessRequest(System.Web.IHttpHandler,System.Web.HttpContextBase)
+  langs:
+  - csharp
+  name: UrlRoutingHandler
+  nameWithType: UrlRoutingHandler
+  fullName: System.Web.Routing.UrlRoutingHandler
+  type: Class
+  summary: Serves as base class for classes that enable you to customize how ASP.NET routing processes a request.
+  remarks: "You can customize how ASP.NET routing handles requests by mapping a file name extension to a particular routing handler instead of by using the <xref:System.Web.Routing.UrlRoutingModule> class as the routing handler for every request.  \n  \n To customize how ASP.NET routing handles a request for a URL with a specific file name extension, you create a class that derives from the UrlRoutingHandler class. For example, you can create a customized routing handler that processes requests for a file that has the extension `.abc`.  \n  \n To register a customized handler for a particular file name extension, you must add that handler in the Web.config file. The following example shows how to register a customized handler for an ASP.NET Web site that is running in IIS 6.0 or [!INCLUDE[iisver](~/add/includes/iisver-md.md)] in Classic mode.  \n  \n```  \n<system.web>  \n  <httpHandlers>  \n    <add verb=\"*\" path=\"*.abc\"   \n        type=\"Contoso.Routing.CustomRoutingHandler\" />  \n  </httpHandlers>  \n</system.web>  \n```  \n  \n The following example shows how to register the same handler for an ASP.NET Web site that is running in [!INCLUDE[iisver](~/add/includes/iisver-md.md)].  \n  \n```  \n<system.webServer>  \n  <handlers>  \n    <add verb=\"*\" path=\"*.abc\"  \n        type=\"Contoso.Routing.CustomRoutingHandler\"   \n        resourceType=\"Unspecified\" />  \n  </handlers>  \n</system.webServer>  \n```"
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("System.Web.Routing, Version=3.5.0.0, Culture=Neutral, PublicKeyToken=31bf3856ad364e35")]
+
+      public abstract class UrlRoutingHandler : System.Web.IHttpHandler
+  inheritance:
+  - System.Object
+  implements:
+  - System.Web.IHttpHandler
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Routing\UrlRoutingHandler.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Routing/UrlRoutingHandler.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Routing.UrlRoutingHandler.#ctor
+  id: '#ctor'
+  parent: System.Web.Routing.UrlRoutingHandler
+  langs:
+  - csharp
+  name: UrlRoutingHandler()
+  nameWithType: UrlRoutingHandler.UrlRoutingHandler()
+  fullName: System.Web.Routing.UrlRoutingHandler.UrlRoutingHandler()
+  type: Constructor
+  assemblies:
+  - System.Web.Routing
+  - System.Web
+  namespace: System.Web.Routing
+  summary: Initializes a new instance of the <xref href="System.Web.Routing.UrlRoutingHandler"></xref> class.
+  syntax:
+    content: protected UrlRoutingHandler ();
+    parameters: []
+  overload: System.Web.Routing.UrlRoutingHandler.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Routing\UrlRoutingHandler.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Routing/UrlRoutingHandler.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Routing.UrlRoutingHandler.IsReusable
+  id: IsReusable
+  parent: System.Web.Routing.UrlRoutingHandler
+  langs:
+  - csharp
+  name: IsReusable
+  nameWithType: UrlRoutingHandler.IsReusable
+  fullName: System.Web.Routing.UrlRoutingHandler.IsReusable
+  type: Property
+  assemblies:
+  - System.Web.Routing
+  - System.Web
+  namespace: System.Web.Routing
+  summary: Gets a value that indicates whether another request can use the <xref href="System.Web.Routing.UrlRoutingHandler"></xref> instance.
+  syntax:
+    content: protected virtual bool IsReusable { get; }
+    return:
+      type: System.Boolean
+      description: Always `false`.
+  overload: System.Web.Routing.UrlRoutingHandler.IsReusable*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Routing\UrlRoutingHandler.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Routing/UrlRoutingHandler.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Routing.UrlRoutingHandler.ProcessRequest(System.Web.HttpContext)
+  id: ProcessRequest(System.Web.HttpContext)
+  parent: System.Web.Routing.UrlRoutingHandler
+  langs:
+  - csharp
+  name: ProcessRequest(HttpContext)
+  nameWithType: UrlRoutingHandler.ProcessRequest(HttpContext)
+  fullName: System.Web.Routing.UrlRoutingHandler.ProcessRequest(HttpContext)
+  type: Method
+  assemblies:
+  - System.Web.Routing
+  - System.Web
+  namespace: System.Web.Routing
+  summary: Processes an HTTP request that matches a route.
+  syntax:
+    content: protected virtual void ProcessRequest (System.Web.HttpContext httpContext);
+    parameters:
+    - id: httpContext
+      type: System.Web.HttpContext
+      description: An object that provides references to the intrinsic server objects (for example, <xref href="stem.Web.HttpContext.Request%2A"></xref>, <xref href="stem.Web.HttpContext.Response%2A"></xref>, <xref href="stem.Web.HttpContext.Session%2A"></xref>, and <xref href="stem.Web.HttpContext.Server%2A"></xref>).
+  overload: System.Web.Routing.UrlRoutingHandler.ProcessRequest*
+  exceptions:
+  - type: System.Web.HttpException
+    commentId: T:System.Web.HttpException
+    description: The request does not match any route.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: No handler is defined for the route.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Routing\UrlRoutingHandler.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Routing/UrlRoutingHandler.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Routing.UrlRoutingHandler.ProcessRequest(System.Web.HttpContextBase)
+  id: ProcessRequest(System.Web.HttpContextBase)
+  parent: System.Web.Routing.UrlRoutingHandler
+  langs:
+  - csharp
+  name: ProcessRequest(HttpContextBase)
+  nameWithType: UrlRoutingHandler.ProcessRequest(HttpContextBase)
+  fullName: System.Web.Routing.UrlRoutingHandler.ProcessRequest(HttpContextBase)
+  type: Method
+  assemblies:
+  - System.Web.Routing
+  - System.Web
+  namespace: System.Web.Routing
+  summary: Processes an HTTP request that matches a route.
+  syntax:
+    content: protected virtual void ProcessRequest (System.Web.HttpContextBase httpContext);
+    parameters:
+    - id: httpContext
+      type: System.Web.HttpContextBase
+      description: An object that provides references to the intrinsic server objects (for example, <xref href="stem.Web.HttpContext.Request%2A"></xref>, <xref href="stem.Web.HttpContext.Response%2A"></xref>, <xref href="stem.Web.HttpContext.Session%2A"></xref>, and <xref href="stem.Web.HttpContext.Server%2A"></xref>).
+  overload: System.Web.Routing.UrlRoutingHandler.ProcessRequest*
+  exceptions:
+  - type: System.Web.HttpException
+    commentId: T:System.Web.HttpException
+    description: The request does not match any route.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: No handler is defined for the route.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Routing\UrlRoutingHandler.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Routing/UrlRoutingHandler.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Routing.UrlRoutingHandler.RouteCollection
+  id: RouteCollection
+  parent: System.Web.Routing.UrlRoutingHandler
+  langs:
+  - csharp
+  name: RouteCollection
+  nameWithType: UrlRoutingHandler.RouteCollection
+  fullName: System.Web.Routing.UrlRoutingHandler.RouteCollection
+  type: Property
+  assemblies:
+  - System.Web.Routing
+  - System.Web
+  namespace: System.Web.Routing
+  summary: Gets or sets the collection of defined routes for the ASP.NET application.
+  syntax:
+    content: public System.Web.Routing.RouteCollection RouteCollection { get; set; }
+    return:
+      type: System.Web.Routing.RouteCollection
+      description: An object that contains the routes.
+  overload: System.Web.Routing.UrlRoutingHandler.RouteCollection*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Routing\UrlRoutingHandler.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Routing/UrlRoutingHandler.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Routing.UrlRoutingHandler.System#Web#IHttpHandler#IsReusable
+  id: System#Web#IHttpHandler#IsReusable
+  isEii: true
+  parent: System.Web.Routing.UrlRoutingHandler
+  langs:
+  - csharp
+  name: IHttpHandler.IsReusable
+  nameWithType: UrlRoutingHandler.IHttpHandler.IsReusable
+  fullName: System.Web.Routing.UrlRoutingHandler.IHttpHandler.IsReusable
+  type: Property
+  assemblies:
+  - System.Web.Routing
+  - System.Web
+  namespace: System.Web.Routing
+  summary: Gets a value that indicates whether another request can use the <xref href="System.Web.Routing.UrlRoutingHandler"></xref> instance.
+  remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Web.Routing.UrlRoutingHandler> instance is cast to an <xref:System.Web.IHttpHandler> interface.
+  syntax:
+    content: bool System.Web.IHttpHandler.IsReusable { get; }
+    return:
+      type: System.Boolean
+      description: Always `false`.
+  overload: System.Web.Routing.UrlRoutingHandler.System#Web#IHttpHandler#IsReusable*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Routing\UrlRoutingHandler.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Routing/UrlRoutingHandler.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Routing.UrlRoutingHandler.System#Web#IHttpHandler#ProcessRequest(System.Web.HttpContext)
+  id: System#Web#IHttpHandler#ProcessRequest(System.Web.HttpContext)
+  isEii: true
+  parent: System.Web.Routing.UrlRoutingHandler
+  langs:
+  - csharp
+  name: IHttpHandler.ProcessRequest(HttpContext)
+  nameWithType: UrlRoutingHandler.IHttpHandler.ProcessRequest(HttpContext)
+  fullName: System.Web.Routing.UrlRoutingHandler.IHttpHandler.ProcessRequest(HttpContext)
+  type: Method
+  assemblies:
+  - System.Web.Routing
+  - System.Web
+  namespace: System.Web.Routing
+  summary: Processes an HTTP request that matches a route.
+  remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Web.Routing.UrlRoutingHandler> instance is cast to an <xref:System.Web.IHttpHandler> interface.
+  syntax:
+    content: void IHttpHandler.ProcessRequest (System.Web.HttpContext context);
+    parameters:
+    - id: context
+      type: System.Web.HttpContext
+      description: An object that provides references to the intrinsic server objects (for example, <xref href="stem.Web.HttpContext.Request%2A"></xref>, <xref href="stem.Web.HttpContext.Response%2A"></xref>, <xref href="stem.Web.HttpContext.Session%2A"></xref>, and <xref href="stem.Web.HttpContext.Server%2A"></xref>).
+  overload: System.Web.Routing.UrlRoutingHandler.System#Web#IHttpHandler#ProcessRequest*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Routing\UrlRoutingHandler.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Routing/UrlRoutingHandler.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Routing.UrlRoutingHandler.VerifyAndProcessRequest(System.Web.IHttpHandler,System.Web.HttpContextBase)
+  id: VerifyAndProcessRequest(System.Web.IHttpHandler,System.Web.HttpContextBase)
+  parent: System.Web.Routing.UrlRoutingHandler
+  langs:
+  - csharp
+  name: VerifyAndProcessRequest(IHttpHandler,HttpContextBase)
+  nameWithType: UrlRoutingHandler.VerifyAndProcessRequest(IHttpHandler,HttpContextBase)
+  fullName: System.Web.Routing.UrlRoutingHandler.VerifyAndProcessRequest(IHttpHandler,HttpContextBase)
+  type: Method
+  assemblies:
+  - System.Web.Routing
+  - System.Web
+  namespace: System.Web.Routing
+  summary: When overridden in a derived class, validates the HTTP handler and performs the steps that are required to process the request.
+  syntax:
+    content: protected abstract void VerifyAndProcessRequest (System.Web.IHttpHandler httpHandler, System.Web.HttpContextBase httpContext);
+    parameters:
+    - id: httpHandler
+      type: System.Web.IHttpHandler
+      description: The object that is used to process an HTTP request.
+    - id: httpContext
+      type: System.Web.HttpContextBase
+      description: An object that provides references to the intrinsic server objects (for example, <xref href="stem.Web.HttpContext.Request%2A"></xref>, <xref href="stem.Web.HttpContext.Response%2A"></xref>, <xref href="stem.Web.HttpContext.Session%2A"></xref>, and <xref href="stem.Web.HttpContext.Server%2A"></xref>).
+  overload: System.Web.Routing.UrlRoutingHandler.VerifyAndProcessRequest*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Routing\UrlRoutingHandler.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Routing/UrlRoutingHandler.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.Web.HttpException
+  parent: System.Web
+  isExternal: false
+  name: HttpException
+  nameWithType: HttpException
+  fullName: System.Web.HttpException
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.Web.Routing.UrlRoutingHandler.#ctor
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: UrlRoutingHandler()
+  nameWithType: UrlRoutingHandler.UrlRoutingHandler()
+  fullName: System.Web.Routing.UrlRoutingHandler.UrlRoutingHandler()
+- uid: System.Web.Routing.UrlRoutingHandler.IsReusable
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: IsReusable
+  nameWithType: UrlRoutingHandler.IsReusable
+  fullName: System.Web.Routing.UrlRoutingHandler.IsReusable
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Web.Routing.UrlRoutingHandler.ProcessRequest(System.Web.HttpContext)
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: ProcessRequest(HttpContext)
+  nameWithType: UrlRoutingHandler.ProcessRequest(HttpContext)
+  fullName: System.Web.Routing.UrlRoutingHandler.ProcessRequest(HttpContext)
+- uid: System.Web.HttpContext
+  parent: System.Web
+  isExternal: false
+  name: HttpContext
+  nameWithType: HttpContext
+  fullName: System.Web.HttpContext
+- uid: System.Web.Routing.UrlRoutingHandler.ProcessRequest(System.Web.HttpContextBase)
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: ProcessRequest(HttpContextBase)
+  nameWithType: UrlRoutingHandler.ProcessRequest(HttpContextBase)
+  fullName: System.Web.Routing.UrlRoutingHandler.ProcessRequest(HttpContextBase)
+- uid: System.Web.HttpContextBase
+  parent: System.Web
+  isExternal: false
+  name: HttpContextBase
+  nameWithType: HttpContextBase
+  fullName: System.Web.HttpContextBase
+- uid: System.Web.Routing.UrlRoutingHandler.RouteCollection
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: RouteCollection
+  nameWithType: UrlRoutingHandler.RouteCollection
+  fullName: System.Web.Routing.UrlRoutingHandler.RouteCollection
+- uid: System.Web.Routing.RouteCollection
+  parent: System.Web.Routing
+  isExternal: false
+  name: RouteCollection
+  nameWithType: RouteCollection
+  fullName: System.Web.Routing.RouteCollection
+- uid: System.Web.Routing.UrlRoutingHandler.System#Web#IHttpHandler#IsReusable
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: IHttpHandler.IsReusable
+  nameWithType: UrlRoutingHandler.IHttpHandler.IsReusable
+  fullName: System.Web.Routing.UrlRoutingHandler.IHttpHandler.IsReusable
+- uid: System.Web.Routing.UrlRoutingHandler.System#Web#IHttpHandler#ProcessRequest(System.Web.HttpContext)
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: IHttpHandler.ProcessRequest(HttpContext)
+  nameWithType: UrlRoutingHandler.IHttpHandler.ProcessRequest(HttpContext)
+  fullName: System.Web.Routing.UrlRoutingHandler.IHttpHandler.ProcessRequest(HttpContext)
+- uid: System.Web.Routing.UrlRoutingHandler.VerifyAndProcessRequest(System.Web.IHttpHandler,System.Web.HttpContextBase)
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: VerifyAndProcessRequest(IHttpHandler,HttpContextBase)
+  nameWithType: UrlRoutingHandler.VerifyAndProcessRequest(IHttpHandler,HttpContextBase)
+  fullName: System.Web.Routing.UrlRoutingHandler.VerifyAndProcessRequest(IHttpHandler,HttpContextBase)
+- uid: System.Web.IHttpHandler
+  parent: System.Web
+  isExternal: false
+  name: IHttpHandler
+  nameWithType: IHttpHandler
+  fullName: System.Web.IHttpHandler
+- uid: System.Web.Routing.UrlRoutingHandler.#ctor*
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: UrlRoutingHandler
+  nameWithType: UrlRoutingHandler.UrlRoutingHandler
+- uid: System.Web.Routing.UrlRoutingHandler.IsReusable*
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: IsReusable
+  nameWithType: UrlRoutingHandler.IsReusable
+- uid: System.Web.Routing.UrlRoutingHandler.ProcessRequest*
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: ProcessRequest
+  nameWithType: UrlRoutingHandler.ProcessRequest
+- uid: System.Web.Routing.UrlRoutingHandler.RouteCollection*
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: RouteCollection
+  nameWithType: UrlRoutingHandler.RouteCollection
+- uid: System.Web.Routing.UrlRoutingHandler.System#Web#IHttpHandler#IsReusable*
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: System.Web.IHttpHandler.IsReusable
+  nameWithType: UrlRoutingHandler.System.Web.IHttpHandler.IsReusable
+- uid: System.Web.Routing.UrlRoutingHandler.System#Web#IHttpHandler#ProcessRequest*
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: System.Web.IHttpHandler.ProcessRequest
+  nameWithType: UrlRoutingHandler.System.Web.IHttpHandler.ProcessRequest
+- uid: System.Web.Routing.UrlRoutingHandler.VerifyAndProcessRequest*
+  parent: System.Web.Routing.UrlRoutingHandler
+  isExternal: false
+  name: VerifyAndProcessRequest
+  nameWithType: UrlRoutingHandler.VerifyAndProcessRequest

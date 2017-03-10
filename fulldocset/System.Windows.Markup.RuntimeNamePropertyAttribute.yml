@@ -1,0 +1,191 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Windows.Markup.RuntimeNamePropertyAttribute
+  id: RuntimeNamePropertyAttribute
+  children:
+  - System.Windows.Markup.RuntimeNamePropertyAttribute.#ctor(System.String)
+  - System.Windows.Markup.RuntimeNamePropertyAttribute.Name
+  langs:
+  - csharp
+  name: RuntimeNamePropertyAttribute
+  nameWithType: RuntimeNamePropertyAttribute
+  fullName: System.Windows.Markup.RuntimeNamePropertyAttribute
+  type: Class
+  summary: Represents a type-level attribute that reports which property of the type maps to the XAML [x:Name attribute](../Topic/x:Name%20Directive.md).
+  remarks: "The property that is specified in the RuntimeNamePropertyAttribute must be of type <xref:System.String> and must be read/write.  \n  \n Frameworks might attribute a certain property of one its architectural base elements to be the XAML name equivalent. This is done so that the concept of a XAML name in a XAML namescope set at XAML load time is available to a framework's programming model at run time.  \n  \n A XAML name value must use the [XamlName Grammar](../Topic/XamlName%20Grammar.md).  \n  \n In previous versions of the .NET Framework, this class existed in the WPF-specific assembly WindowsBase. In [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], RuntimeNamePropertyAttribute is in the System.Xaml assembly. For more information, see [Types Migrated from WPF to System.Xaml](../Topic/Types%20Migrated%20from%20WPF%20to%20System.Xaml.md).  \n  \n## WPF Usage Notes  \n An example of an existing class in [!INCLUDE[TLA#tla_winclient](~/add/includes/tlasharptla-winclient-md.md)] where the RuntimeNamePropertyAttribute is applied is <xref:System.Windows.FrameworkElement>.  The <xref:System.Windows.FrameworkElement.Name%2A> property on <xref:System.Windows.FrameworkElement> is attributed with RuntimeNamePropertyAttribute, which results in any <xref:System.Windows.FrameworkElement> derived class also using <xref:System.Windows.FrameworkElement.Name%2A> as its run-time name property.  \n  \n In general, you do not typically need to apply this attribute in WPF unless you are implementing a new or <xref:System.Windows.FrameworkElement>-parallel framework-level class. `x:Name` should take precedence over the run-time name property if both exist as attributes on an element, and a XAML processor implementation generally throws in this case."
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Class)]
+
+      [System.Runtime.CompilerServices.TypeForwardedFrom("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+
+      public sealed class RuntimeNamePropertyAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\RuntimeNamePropertyAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/RuntimeNamePropertyAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Windows.Markup.RuntimeNamePropertyAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Windows.Markup.RuntimeNamePropertyAttribute
+  langs:
+  - csharp
+  name: RuntimeNamePropertyAttribute(String)
+  nameWithType: RuntimeNamePropertyAttribute.RuntimeNamePropertyAttribute(String)
+  fullName: System.Windows.Markup.RuntimeNamePropertyAttribute.RuntimeNamePropertyAttribute(String)
+  type: Constructor
+  assemblies:
+  - WindowsBase
+  - System.Xaml
+  namespace: System.Windows.Markup
+  summary: Initializes a new instance of the <xref href="System.Windows.Markup.RuntimeNamePropertyAttribute"></xref> class.
+  remarks: The specified property must be of type <xref:System.String> and have get and set access.
+  syntax:
+    content: public RuntimeNamePropertyAttribute (string name);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the property to use as the `x:Name` equivalent of the class.
+  overload: System.Windows.Markup.RuntimeNamePropertyAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\RuntimeNamePropertyAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/RuntimeNamePropertyAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Windows.Markup.RuntimeNamePropertyAttribute.Name
+  id: Name
+  parent: System.Windows.Markup.RuntimeNamePropertyAttribute
+  langs:
+  - csharp
+  name: Name
+  nameWithType: RuntimeNamePropertyAttribute.Name
+  fullName: System.Windows.Markup.RuntimeNamePropertyAttribute.Name
+  type: Property
+  assemblies:
+  - WindowsBase
+  - System.Xaml
+  namespace: System.Windows.Markup
+  summary: Gets the name of the runtime name property that is specified by this <xref href="System.Windows.Markup.RuntimeNamePropertyAttribute"></xref>.
+  syntax:
+    content: public string Name { get; }
+    return:
+      type: System.String
+      description: The name of the property.
+  overload: System.Windows.Markup.RuntimeNamePropertyAttribute.Name*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\RuntimeNamePropertyAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/RuntimeNamePropertyAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Windows.Markup.RuntimeNamePropertyAttribute.#ctor(System.String)
+  parent: System.Windows.Markup.RuntimeNamePropertyAttribute
+  isExternal: false
+  name: RuntimeNamePropertyAttribute(String)
+  nameWithType: RuntimeNamePropertyAttribute.RuntimeNamePropertyAttribute(String)
+  fullName: System.Windows.Markup.RuntimeNamePropertyAttribute.RuntimeNamePropertyAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Windows.Markup.RuntimeNamePropertyAttribute.Name
+  parent: System.Windows.Markup.RuntimeNamePropertyAttribute
+  isExternal: false
+  name: Name
+  nameWithType: RuntimeNamePropertyAttribute.Name
+  fullName: System.Windows.Markup.RuntimeNamePropertyAttribute.Name
+- uid: System.Windows.Markup.RuntimeNamePropertyAttribute.#ctor*
+  parent: System.Windows.Markup.RuntimeNamePropertyAttribute
+  isExternal: false
+  name: RuntimeNamePropertyAttribute
+  nameWithType: RuntimeNamePropertyAttribute.RuntimeNamePropertyAttribute
+- uid: System.Windows.Markup.RuntimeNamePropertyAttribute.Name*
+  parent: System.Windows.Markup.RuntimeNamePropertyAttribute
+  isExternal: false
+  name: Name
+  nameWithType: RuntimeNamePropertyAttribute.Name

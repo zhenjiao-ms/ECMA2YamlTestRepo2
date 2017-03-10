@@ -1,0 +1,1068 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Web.HttpSessionStateWrapper
+  id: HttpSessionStateWrapper
+  children:
+  - System.Web.HttpSessionStateWrapper.#ctor(System.Web.SessionState.HttpSessionState)
+  - System.Web.HttpSessionStateWrapper.Abandon
+  - System.Web.HttpSessionStateWrapper.Add(System.String,System.Object)
+  - System.Web.HttpSessionStateWrapper.Clear
+  - System.Web.HttpSessionStateWrapper.CodePage
+  - System.Web.HttpSessionStateWrapper.Contents
+  - System.Web.HttpSessionStateWrapper.CookieMode
+  - System.Web.HttpSessionStateWrapper.CopyTo(System.Array,System.Int32)
+  - System.Web.HttpSessionStateWrapper.Count
+  - System.Web.HttpSessionStateWrapper.GetEnumerator
+  - System.Web.HttpSessionStateWrapper.IsCookieless
+  - System.Web.HttpSessionStateWrapper.IsNewSession
+  - System.Web.HttpSessionStateWrapper.IsReadOnly
+  - System.Web.HttpSessionStateWrapper.IsSynchronized
+  - System.Web.HttpSessionStateWrapper.Item(System.Int32)
+  - System.Web.HttpSessionStateWrapper.Item(System.String)
+  - System.Web.HttpSessionStateWrapper.Keys
+  - System.Web.HttpSessionStateWrapper.LCID
+  - System.Web.HttpSessionStateWrapper.Mode
+  - System.Web.HttpSessionStateWrapper.Remove(System.String)
+  - System.Web.HttpSessionStateWrapper.RemoveAll
+  - System.Web.HttpSessionStateWrapper.RemoveAt(System.Int32)
+  - System.Web.HttpSessionStateWrapper.SessionID
+  - System.Web.HttpSessionStateWrapper.StaticObjects
+  - System.Web.HttpSessionStateWrapper.SyncRoot
+  - System.Web.HttpSessionStateWrapper.Timeout
+  langs:
+  - csharp
+  name: HttpSessionStateWrapper
+  nameWithType: HttpSessionStateWrapper
+  fullName: System.Web.HttpSessionStateWrapper
+  type: Class
+  summary: Encapsulates the HTTP intrinsic object that provides access to session-state values, session-level settings, and lifetime management methods.
+  remarks: The HttpSessionStateWrapper class derives from the <xref:System.Web.HttpSessionStateBase> class and serves as a wrapper for the <xref:System.Web.SessionState.HttpSessionState> class. This class exposes the functionality of the <xref:System.Web.SessionState.HttpSessionState> class and exposes the <xref:System.Web.HttpSessionStateBase> type. The <xref:System.Web.HttpSessionStateBase> class lets you replace the original implementation of the <xref:System.Web.SessionState.HttpSessionState> class in your application with a custom implementation, such as when you perform unit testing outside the ASP.NET pipeline.
+  syntax:
+    content: 'public class HttpSessionStateWrapper : System.Web.HttpSessionStateBase'
+  inheritance:
+  - System.Object
+  - System.Web.HttpSessionStateBase
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.#ctor(System.Web.SessionState.HttpSessionState)
+  id: '#ctor(System.Web.SessionState.HttpSessionState)'
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: HttpSessionStateWrapper(HttpSessionState)
+  nameWithType: HttpSessionStateWrapper.HttpSessionStateWrapper(HttpSessionState)
+  fullName: System.Web.HttpSessionStateWrapper.HttpSessionStateWrapper(HttpSessionState)
+  type: Constructor
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Initializes a new instance of the <xref href="System.Web.HttpSessionStateWrapper"></xref> class.
+  syntax:
+    content: public HttpSessionStateWrapper (System.Web.SessionState.HttpSessionState httpSessionState);
+    parameters:
+    - id: httpSessionState
+      type: System.Web.SessionState.HttpSessionState
+      description: The object that this wrapper class provides access to.
+  overload: System.Web.HttpSessionStateWrapper.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>httpSessionState</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.Abandon
+  id: Abandon
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: Abandon()
+  nameWithType: HttpSessionStateWrapper.Abandon()
+  fullName: System.Web.HttpSessionStateWrapper.Abandon()
+  type: Method
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Cancels the current session.
+  syntax:
+    content: public override void Abandon ();
+    parameters: []
+  overload: System.Web.HttpSessionStateWrapper.Abandon*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.Add(System.String,System.Object)
+  id: Add(System.String,System.Object)
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: Add(String,Object)
+  nameWithType: HttpSessionStateWrapper.Add(String,Object)
+  fullName: System.Web.HttpSessionStateWrapper.Add(String,Object)
+  type: Method
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Adds an item to the session-state collection.
+  syntax:
+    content: public override void Add (string name, object value);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the item to add to the session-state collection.
+    - id: value
+      type: System.Object
+      description: The value of the item to add to the session-state collection.
+  overload: System.Web.HttpSessionStateWrapper.Add*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.Clear
+  id: Clear
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: Clear()
+  nameWithType: HttpSessionStateWrapper.Clear()
+  fullName: System.Web.HttpSessionStateWrapper.Clear()
+  type: Method
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Removes all keys and values from the session-state collection.
+  syntax:
+    content: public override void Clear ();
+    parameters: []
+  overload: System.Web.HttpSessionStateWrapper.Clear*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.CodePage
+  id: CodePage
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: CodePage
+  nameWithType: HttpSessionStateWrapper.CodePage
+  fullName: System.Web.HttpSessionStateWrapper.CodePage
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets or sets the character-set identifier for the current session.
+  syntax:
+    content: public override int CodePage { get; set; }
+    return:
+      type: System.Int32
+      description: The character-set identifier for the current session.
+  overload: System.Web.HttpSessionStateWrapper.CodePage*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.Contents
+  id: Contents
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: Contents
+  nameWithType: HttpSessionStateWrapper.Contents
+  fullName: System.Web.HttpSessionStateWrapper.Contents
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets a reference to the current session-state object.
+  syntax:
+    content: public override System.Web.HttpSessionStateBase Contents { get; }
+    return:
+      type: System.Web.HttpSessionStateBase
+      description: The current session-state object.
+  overload: System.Web.HttpSessionStateWrapper.Contents*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.CookieMode
+  id: CookieMode
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: CookieMode
+  nameWithType: HttpSessionStateWrapper.CookieMode
+  fullName: System.Web.HttpSessionStateWrapper.CookieMode
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets a value that indicates whether the application is configured for cookieless sessions.
+  syntax:
+    content: public override System.Web.HttpCookieMode CookieMode { get; }
+    return:
+      type: System.Web.HttpCookieMode
+      description: One of the cookie-mode values that indicate whether the application is configured for cookieless sessions. The default is <xref href="System.Web.HttpCookieMode"></xref>.
+  overload: System.Web.HttpSessionStateWrapper.CookieMode*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.CopyTo(System.Array,System.Int32)
+  id: CopyTo(System.Array,System.Int32)
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: CopyTo(Array,Int32)
+  nameWithType: HttpSessionStateWrapper.CopyTo(Array,Int32)
+  fullName: System.Web.HttpSessionStateWrapper.CopyTo(Array,Int32)
+  type: Method
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Copies the collection of session-state values to a one-dimensional array, starting at the specified index in the array.
+  syntax:
+    content: public override void CopyTo (Array array, int index);
+    parameters:
+    - id: array
+      type: System.Array
+      description: The array to copy session values to
+    - id: index
+      type: System.Int32
+      description: The zero-based index in <code>array</code> at which copying starts.
+  overload: System.Web.HttpSessionStateWrapper.CopyTo*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.Count
+  id: Count
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: Count
+  nameWithType: HttpSessionStateWrapper.Count
+  fullName: System.Web.HttpSessionStateWrapper.Count
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets the number of items in the session-state collection.
+  syntax:
+    content: public override int Count { get; }
+    return:
+      type: System.Int32
+      description: The number of items in the collection.
+  overload: System.Web.HttpSessionStateWrapper.Count*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.GetEnumerator
+  id: GetEnumerator
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: GetEnumerator()
+  nameWithType: HttpSessionStateWrapper.GetEnumerator()
+  fullName: System.Web.HttpSessionStateWrapper.GetEnumerator()
+  type: Method
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Returns an enumerator that can be used to read all the session-state variable names in the current session.
+  syntax:
+    content: public override System.Collections.IEnumerator GetEnumerator ();
+    parameters: []
+    return:
+      type: System.Collections.IEnumerator
+      description: An enumerator that can iterate through the variable names in the session-state collection.
+  overload: System.Web.HttpSessionStateWrapper.GetEnumerator*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.IsCookieless
+  id: IsCookieless
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: IsCookieless
+  nameWithType: HttpSessionStateWrapper.IsCookieless
+  fullName: System.Web.HttpSessionStateWrapper.IsCookieless
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets a value that indicates whether the session ID is embedded in the URL.
+  syntax:
+    content: public override bool IsCookieless { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the session ID is embedded in the URL; otherwise, `false`.'
+  overload: System.Web.HttpSessionStateWrapper.IsCookieless*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.IsNewSession
+  id: IsNewSession
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: IsNewSession
+  nameWithType: HttpSessionStateWrapper.IsNewSession
+  fullName: System.Web.HttpSessionStateWrapper.IsNewSession
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets a value that indicates whether the session was created during the current request.
+  syntax:
+    content: public override bool IsNewSession { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the session was created during the current request; otherwise, `false`.'
+  overload: System.Web.HttpSessionStateWrapper.IsNewSession*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.IsReadOnly
+  id: IsReadOnly
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: IsReadOnly
+  nameWithType: HttpSessionStateWrapper.IsReadOnly
+  fullName: System.Web.HttpSessionStateWrapper.IsReadOnly
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets a value that indicates whether the session is read-only.
+  syntax:
+    content: public override bool IsReadOnly { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the session is read-only; otherwise, `false`.'
+  overload: System.Web.HttpSessionStateWrapper.IsReadOnly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.IsSynchronized
+  id: IsSynchronized
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: IsSynchronized
+  nameWithType: HttpSessionStateWrapper.IsSynchronized
+  fullName: System.Web.HttpSessionStateWrapper.IsSynchronized
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets a value that indicates whether access to the collection of session-state values is synchronized (thread safe).
+  syntax:
+    content: public override bool IsSynchronized { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if access to the collection is synchronized (thread safe); otherwise, `false`.'
+  overload: System.Web.HttpSessionStateWrapper.IsSynchronized*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.Item(System.Int32)
+  id: Item(System.Int32)
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: Item(Int32)
+  nameWithType: HttpSessionStateWrapper.Item(Int32)
+  fullName: System.Web.HttpSessionStateWrapper.Item(Int32)
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets or sets a session value by using the specified index.
+  syntax:
+    content: public override object this[int index] { get; set; }
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index of the session value.
+    return:
+      type: System.Object
+      description: The session-state value that is stored at the specified index.
+  overload: System.Web.HttpSessionStateWrapper.Item*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>index</code> is outside the valid range of indexes for the collection.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.Item(System.String)
+  id: Item(System.String)
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: Item(String)
+  nameWithType: HttpSessionStateWrapper.Item(String)
+  fullName: System.Web.HttpSessionStateWrapper.Item(String)
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets or sets a session value by using the specified name.
+  syntax:
+    content: public override object this[string name] { get; set; }
+    parameters:
+    - id: name
+      type: System.String
+      description: The key name of the session value.
+    return:
+      type: System.Object
+      description: The session-state value that has the specified name, or `null` if the item does not exist.
+  overload: System.Web.HttpSessionStateWrapper.Item*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.Keys
+  id: Keys
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: Keys
+  nameWithType: HttpSessionStateWrapper.Keys
+  fullName: System.Web.HttpSessionStateWrapper.Keys
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets a collection of the keys for all values that are stored in the session-state collection.
+  syntax:
+    content: public override System.Collections.Specialized.NameObjectCollectionBase.KeysCollection Keys { get; }
+    return:
+      type: System.Collections.Specialized.NameObjectCollectionBase.KeysCollection
+      description: The session keys.
+  overload: System.Web.HttpSessionStateWrapper.Keys*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.LCID
+  id: LCID
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: LCID
+  nameWithType: HttpSessionStateWrapper.LCID
+  fullName: System.Web.HttpSessionStateWrapper.LCID
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets or sets the locale identifier (LCID) of the current session.
+  syntax:
+    content: public override int LCID { get; set; }
+    return:
+      type: System.Int32
+      description: The LCID (culture) of the current session.
+  overload: System.Web.HttpSessionStateWrapper.LCID*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.Mode
+  id: Mode
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: Mode
+  nameWithType: HttpSessionStateWrapper.Mode
+  fullName: System.Web.HttpSessionStateWrapper.Mode
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets the current session-state mode.
+  syntax:
+    content: public override System.Web.SessionState.SessionStateMode Mode { get; }
+    return:
+      type: System.Web.SessionState.SessionStateMode
+      description: The session-state mode.
+  overload: System.Web.HttpSessionStateWrapper.Mode*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.Remove(System.String)
+  id: Remove(System.String)
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: Remove(String)
+  nameWithType: HttpSessionStateWrapper.Remove(String)
+  fullName: System.Web.HttpSessionStateWrapper.Remove(String)
+  type: Method
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Deletes an item from the session-state collection.
+  syntax:
+    content: public override void Remove (string name);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the item to delete from the session-state collection.
+  overload: System.Web.HttpSessionStateWrapper.Remove*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.RemoveAll
+  id: RemoveAll
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: RemoveAll()
+  nameWithType: HttpSessionStateWrapper.RemoveAll()
+  fullName: System.Web.HttpSessionStateWrapper.RemoveAll()
+  type: Method
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Removes all keys and values from the session-state collection.
+  remarks: This method performs the same function as the <xref:System.Web.HttpSessionStateWrapper.Clear%2A> method.
+  syntax:
+    content: public override void RemoveAll ();
+    parameters: []
+  overload: System.Web.HttpSessionStateWrapper.RemoveAll*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.RemoveAt(System.Int32)
+  id: RemoveAt(System.Int32)
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: RemoveAt(Int32)
+  nameWithType: HttpSessionStateWrapper.RemoveAt(Int32)
+  fullName: System.Web.HttpSessionStateWrapper.RemoveAt(Int32)
+  type: Method
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Deletes the item at the specified index from the session-state collection.
+  syntax:
+    content: public override void RemoveAt (int index);
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index of the item to remove from the session-state collection.
+  overload: System.Web.HttpSessionStateWrapper.RemoveAt*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>index</code> is less than zero.  \n  \n \\- or -  \n  \n <code>index</code> is equal to or greater than <xref href=\"stem.Web.SessionState.HttpSessionState.Count%2A\"></xref>."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.SessionID
+  id: SessionID
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: SessionID
+  nameWithType: HttpSessionStateWrapper.SessionID
+  fullName: System.Web.HttpSessionStateWrapper.SessionID
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets the unique identifier for the session.
+  syntax:
+    content: public override string SessionID { get; }
+    return:
+      type: System.String
+      description: The unique session identifier.
+  overload: System.Web.HttpSessionStateWrapper.SessionID*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.StaticObjects
+  id: StaticObjects
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: StaticObjects
+  nameWithType: HttpSessionStateWrapper.StaticObjects
+  fullName: System.Web.HttpSessionStateWrapper.StaticObjects
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets a collection of objects that are declared by `object` elements that are marked as server controls and scoped to the current session in the application's Global.asax file.
+  syntax:
+    content: public override System.Web.HttpStaticObjectsCollectionBase StaticObjects { get; }
+    return:
+      type: System.Web.HttpStaticObjectsCollectionBase
+      description: The objects that are declared in the Global.asax file.
+  overload: System.Web.HttpSessionStateWrapper.StaticObjects*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.SyncRoot
+  id: SyncRoot
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: SyncRoot
+  nameWithType: HttpSessionStateWrapper.SyncRoot
+  fullName: System.Web.HttpSessionStateWrapper.SyncRoot
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets an object that can be used to synchronize access to the collection of session-state values.
+  syntax:
+    content: public override object SyncRoot { get; }
+    return:
+      type: System.Object
+      description: An object that can be used to synchronize access to the collection.
+  overload: System.Web.HttpSessionStateWrapper.SyncRoot*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+- uid: System.Web.HttpSessionStateWrapper.Timeout
+  id: Timeout
+  parent: System.Web.HttpSessionStateWrapper
+  langs:
+  - csharp
+  name: Timeout
+  nameWithType: HttpSessionStateWrapper.Timeout
+  fullName: System.Web.HttpSessionStateWrapper.Timeout
+  type: Property
+  assemblies:
+  - System.Web.Abstractions
+  namespace: System.Web
+  summary: Gets or sets the time, in minutes, that can elapse between requests before the session-state provider ends the session.
+  syntax:
+    content: public override int Timeout { get; set; }
+    return:
+      type: System.Int32
+      description: The time-out period, in minutes.
+  overload: System.Web.HttpSessionStateWrapper.Timeout*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\HttpSessionStateWrapper.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/HttpSessionStateWrapper.xml
+  version:
+  - netframework-3.5
+references:
+- uid: System.Web.HttpSessionStateBase
+  isExternal: false
+  name: System.Web.HttpSessionStateBase
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.Web.HttpSessionStateWrapper.#ctor(System.Web.SessionState.HttpSessionState)
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: HttpSessionStateWrapper(HttpSessionState)
+  nameWithType: HttpSessionStateWrapper.HttpSessionStateWrapper(HttpSessionState)
+  fullName: System.Web.HttpSessionStateWrapper.HttpSessionStateWrapper(HttpSessionState)
+- uid: System.Web.SessionState.HttpSessionState
+  parent: System.Web.SessionState
+  isExternal: false
+  name: HttpSessionState
+  nameWithType: HttpSessionState
+  fullName: System.Web.SessionState.HttpSessionState
+- uid: System.Web.HttpSessionStateWrapper.Abandon
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Abandon()
+  nameWithType: HttpSessionStateWrapper.Abandon()
+  fullName: System.Web.HttpSessionStateWrapper.Abandon()
+- uid: System.Web.HttpSessionStateWrapper.Add(System.String,System.Object)
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Add(String,Object)
+  nameWithType: HttpSessionStateWrapper.Add(String,Object)
+  fullName: System.Web.HttpSessionStateWrapper.Add(String,Object)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Web.HttpSessionStateWrapper.Clear
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Clear()
+  nameWithType: HttpSessionStateWrapper.Clear()
+  fullName: System.Web.HttpSessionStateWrapper.Clear()
+- uid: System.Web.HttpSessionStateWrapper.CodePage
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: CodePage
+  nameWithType: HttpSessionStateWrapper.CodePage
+  fullName: System.Web.HttpSessionStateWrapper.CodePage
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Web.HttpSessionStateWrapper.Contents
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Contents
+  nameWithType: HttpSessionStateWrapper.Contents
+  fullName: System.Web.HttpSessionStateWrapper.Contents
+- uid: System.Web.HttpSessionStateWrapper.CookieMode
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: CookieMode
+  nameWithType: HttpSessionStateWrapper.CookieMode
+  fullName: System.Web.HttpSessionStateWrapper.CookieMode
+- uid: System.Web.HttpCookieMode
+  parent: System.Web
+  isExternal: false
+  name: HttpCookieMode
+  nameWithType: HttpCookieMode
+  fullName: System.Web.HttpCookieMode
+- uid: System.Web.HttpSessionStateWrapper.CopyTo(System.Array,System.Int32)
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: CopyTo(Array,Int32)
+  nameWithType: HttpSessionStateWrapper.CopyTo(Array,Int32)
+  fullName: System.Web.HttpSessionStateWrapper.CopyTo(Array,Int32)
+- uid: System.Array
+  parent: System
+  isExternal: false
+  name: Array
+  nameWithType: Array
+  fullName: System.Array
+- uid: System.Web.HttpSessionStateWrapper.Count
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Count
+  nameWithType: HttpSessionStateWrapper.Count
+  fullName: System.Web.HttpSessionStateWrapper.Count
+- uid: System.Web.HttpSessionStateWrapper.GetEnumerator
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: GetEnumerator()
+  nameWithType: HttpSessionStateWrapper.GetEnumerator()
+  fullName: System.Web.HttpSessionStateWrapper.GetEnumerator()
+- uid: System.Collections.IEnumerator
+  parent: System.Collections
+  isExternal: false
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+- uid: System.Web.HttpSessionStateWrapper.IsCookieless
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: IsCookieless
+  nameWithType: HttpSessionStateWrapper.IsCookieless
+  fullName: System.Web.HttpSessionStateWrapper.IsCookieless
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Web.HttpSessionStateWrapper.IsNewSession
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: IsNewSession
+  nameWithType: HttpSessionStateWrapper.IsNewSession
+  fullName: System.Web.HttpSessionStateWrapper.IsNewSession
+- uid: System.Web.HttpSessionStateWrapper.IsReadOnly
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: IsReadOnly
+  nameWithType: HttpSessionStateWrapper.IsReadOnly
+  fullName: System.Web.HttpSessionStateWrapper.IsReadOnly
+- uid: System.Web.HttpSessionStateWrapper.IsSynchronized
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: IsSynchronized
+  nameWithType: HttpSessionStateWrapper.IsSynchronized
+  fullName: System.Web.HttpSessionStateWrapper.IsSynchronized
+- uid: System.Web.HttpSessionStateWrapper.Item(System.Int32)
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Item(Int32)
+  nameWithType: HttpSessionStateWrapper.Item(Int32)
+  fullName: System.Web.HttpSessionStateWrapper.Item(Int32)
+- uid: System.Web.HttpSessionStateWrapper.Item(System.String)
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Item(String)
+  nameWithType: HttpSessionStateWrapper.Item(String)
+  fullName: System.Web.HttpSessionStateWrapper.Item(String)
+- uid: System.Web.HttpSessionStateWrapper.Keys
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Keys
+  nameWithType: HttpSessionStateWrapper.Keys
+  fullName: System.Web.HttpSessionStateWrapper.Keys
+- uid: System.Collections.Specialized.NameObjectCollectionBase.KeysCollection
+  parent: System.Collections.Specialized
+  isExternal: false
+  name: NameObjectCollectionBase+KeysCollection
+  nameWithType: NameObjectCollectionBase+KeysCollection
+  fullName: System.Collections.Specialized.NameObjectCollectionBase+KeysCollection
+- uid: System.Web.HttpSessionStateWrapper.LCID
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: LCID
+  nameWithType: HttpSessionStateWrapper.LCID
+  fullName: System.Web.HttpSessionStateWrapper.LCID
+- uid: System.Web.HttpSessionStateWrapper.Mode
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Mode
+  nameWithType: HttpSessionStateWrapper.Mode
+  fullName: System.Web.HttpSessionStateWrapper.Mode
+- uid: System.Web.SessionState.SessionStateMode
+  parent: System.Web.SessionState
+  isExternal: false
+  name: SessionStateMode
+  nameWithType: SessionStateMode
+  fullName: System.Web.SessionState.SessionStateMode
+- uid: System.Web.HttpSessionStateWrapper.Remove(System.String)
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Remove(String)
+  nameWithType: HttpSessionStateWrapper.Remove(String)
+  fullName: System.Web.HttpSessionStateWrapper.Remove(String)
+- uid: System.Web.HttpSessionStateWrapper.RemoveAll
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: RemoveAll()
+  nameWithType: HttpSessionStateWrapper.RemoveAll()
+  fullName: System.Web.HttpSessionStateWrapper.RemoveAll()
+- uid: System.Web.HttpSessionStateWrapper.RemoveAt(System.Int32)
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: RemoveAt(Int32)
+  nameWithType: HttpSessionStateWrapper.RemoveAt(Int32)
+  fullName: System.Web.HttpSessionStateWrapper.RemoveAt(Int32)
+- uid: System.Web.HttpSessionStateWrapper.SessionID
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: SessionID
+  nameWithType: HttpSessionStateWrapper.SessionID
+  fullName: System.Web.HttpSessionStateWrapper.SessionID
+- uid: System.Web.HttpSessionStateWrapper.StaticObjects
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: StaticObjects
+  nameWithType: HttpSessionStateWrapper.StaticObjects
+  fullName: System.Web.HttpSessionStateWrapper.StaticObjects
+- uid: System.Web.HttpStaticObjectsCollectionBase
+  parent: System.Web
+  isExternal: false
+  name: HttpStaticObjectsCollectionBase
+  nameWithType: HttpStaticObjectsCollectionBase
+  fullName: System.Web.HttpStaticObjectsCollectionBase
+- uid: System.Web.HttpSessionStateWrapper.SyncRoot
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: SyncRoot
+  nameWithType: HttpSessionStateWrapper.SyncRoot
+  fullName: System.Web.HttpSessionStateWrapper.SyncRoot
+- uid: System.Web.HttpSessionStateWrapper.Timeout
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Timeout
+  nameWithType: HttpSessionStateWrapper.Timeout
+  fullName: System.Web.HttpSessionStateWrapper.Timeout
+- uid: System.Web.HttpSessionStateWrapper.#ctor*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: HttpSessionStateWrapper
+  nameWithType: HttpSessionStateWrapper.HttpSessionStateWrapper
+- uid: System.Web.HttpSessionStateWrapper.Abandon*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Abandon
+  nameWithType: HttpSessionStateWrapper.Abandon
+- uid: System.Web.HttpSessionStateWrapper.Add*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Add
+  nameWithType: HttpSessionStateWrapper.Add
+- uid: System.Web.HttpSessionStateWrapper.Clear*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Clear
+  nameWithType: HttpSessionStateWrapper.Clear
+- uid: System.Web.HttpSessionStateWrapper.CodePage*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: CodePage
+  nameWithType: HttpSessionStateWrapper.CodePage
+- uid: System.Web.HttpSessionStateWrapper.Contents*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Contents
+  nameWithType: HttpSessionStateWrapper.Contents
+- uid: System.Web.HttpSessionStateWrapper.CookieMode*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: CookieMode
+  nameWithType: HttpSessionStateWrapper.CookieMode
+- uid: System.Web.HttpSessionStateWrapper.CopyTo*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: CopyTo
+  nameWithType: HttpSessionStateWrapper.CopyTo
+- uid: System.Web.HttpSessionStateWrapper.Count*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Count
+  nameWithType: HttpSessionStateWrapper.Count
+- uid: System.Web.HttpSessionStateWrapper.GetEnumerator*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: GetEnumerator
+  nameWithType: HttpSessionStateWrapper.GetEnumerator
+- uid: System.Web.HttpSessionStateWrapper.IsCookieless*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: IsCookieless
+  nameWithType: HttpSessionStateWrapper.IsCookieless
+- uid: System.Web.HttpSessionStateWrapper.IsNewSession*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: IsNewSession
+  nameWithType: HttpSessionStateWrapper.IsNewSession
+- uid: System.Web.HttpSessionStateWrapper.IsReadOnly*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: IsReadOnly
+  nameWithType: HttpSessionStateWrapper.IsReadOnly
+- uid: System.Web.HttpSessionStateWrapper.IsSynchronized*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: IsSynchronized
+  nameWithType: HttpSessionStateWrapper.IsSynchronized
+- uid: System.Web.HttpSessionStateWrapper.Item*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Item
+  nameWithType: HttpSessionStateWrapper.Item
+- uid: System.Web.HttpSessionStateWrapper.Keys*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Keys
+  nameWithType: HttpSessionStateWrapper.Keys
+- uid: System.Web.HttpSessionStateWrapper.LCID*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: LCID
+  nameWithType: HttpSessionStateWrapper.LCID
+- uid: System.Web.HttpSessionStateWrapper.Mode*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Mode
+  nameWithType: HttpSessionStateWrapper.Mode
+- uid: System.Web.HttpSessionStateWrapper.Remove*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Remove
+  nameWithType: HttpSessionStateWrapper.Remove
+- uid: System.Web.HttpSessionStateWrapper.RemoveAll*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: RemoveAll
+  nameWithType: HttpSessionStateWrapper.RemoveAll
+- uid: System.Web.HttpSessionStateWrapper.RemoveAt*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: RemoveAt
+  nameWithType: HttpSessionStateWrapper.RemoveAt
+- uid: System.Web.HttpSessionStateWrapper.SessionID*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: SessionID
+  nameWithType: HttpSessionStateWrapper.SessionID
+- uid: System.Web.HttpSessionStateWrapper.StaticObjects*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: StaticObjects
+  nameWithType: HttpSessionStateWrapper.StaticObjects
+- uid: System.Web.HttpSessionStateWrapper.SyncRoot*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: SyncRoot
+  nameWithType: HttpSessionStateWrapper.SyncRoot
+- uid: System.Web.HttpSessionStateWrapper.Timeout*
+  parent: System.Web.HttpSessionStateWrapper
+  isExternal: false
+  name: Timeout
+  nameWithType: HttpSessionStateWrapper.Timeout

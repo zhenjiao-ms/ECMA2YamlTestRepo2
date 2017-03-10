@@ -1,0 +1,136 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.Serialization.XmlIgnoreAttribute
+  id: XmlIgnoreAttribute
+  children:
+  - System.Xml.Serialization.XmlIgnoreAttribute.#ctor
+  langs:
+  - csharp
+  name: XmlIgnoreAttribute
+  nameWithType: XmlIgnoreAttribute
+  fullName: System.Xml.Serialization.XmlIgnoreAttribute
+  type: Class
+  summary: Instructs the <xref href="stem.Xml.Serialization.XmlSerializer.Serialize%2A"></xref> method of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> not to serialize the public field or public read/write property value.
+  remarks: "The XmlIgnoreAttribute belongs to a family of attributes that controls how the <xref:System.Xml.Serialization.XmlSerializer> serializes or deserializes an object. If you apply the XmlIgnoreAttribute to any member of a class, the <xref:System.Xml.Serialization.XmlSerializer> ignores the member when serializing or deserializing an instance of the class. For a complete list of similar attributes, see [Attributes That Control XML Serialization](../Topic/Attributes%20That%20Control%20XML%20Serialization.md).  \n  \n You can override the behavior caused by the XmlIgnoreAttribute by creating an <xref:System.Xml.Serialization.XmlAttributes> object, and setting its <xref:System.Xml.Serialization.XmlAttributes.XmlIgnore%2A> property to `false`. You must <xref:System.Xml.Serialization.XmlAttributeOverrides.Add%2A> the <xref:System.Xml.Serialization.XmlAttributes> object to an instance of the <xref:System.Xml.Serialization.XmlAttributeOverrides> class. Lastly, you must use the <xref:System.Xml.Serialization.XmlAttributeOverrides> object to construct an instance of the <xref:System.Xml.Serialization.XmlSerializer> class before you call the <xref:System.Xml.Serialization.XmlSerializer.Serialize%2A> or <xref:System.Xml.Serialization.XmlSerializer.Deserialize%2A> methods.  \n  \n The [XML Schema Definition Tool (Xsd.exe)](../Topic/XML%20Schema%20Definition%20Tool%20\\(Xsd.exe\\).md) occasionally generates the XmlIgnoreAttribute when creating classes from a schema file (.xsd). This behavior occurs because value types cannot be set to `null`, but all XML data types can be. Therefore, the tool creates two fields when it encounters an XML type that maps to a value type: one to hold the value and another special field that takes the form of `fieldnameSpecified`, where the `fieldname` is replaced by the name of the field or property. Notice, however, that this special field is generated only when the schema specifies that the element has no minimum occurrence (minOccurs = \"0\") and that the element has no default value. The <xref:System.Xml.Serialization.XmlSerializer> sets and checks this special field to determine whether a value has been set for the field or property. Because the special field must not be serialized, the tool applies the XmlIgnoreAttribute to it.  \n  \n For more information about using attributes, see [Attributes](../Topic/Extending%20Metadata%20Using%20Attributes.md).  \n  \n> [!NOTE]\n>  You can use the word `XmlIgnore` in your code instead of the longer XmlIgnoreAttribute."
+  example:
+  - "The following example shows a class named `Group`, which contains a field named `Comment`. The example assigns the XmlIgnoreAttribute to the field, thereby instructing the <xref:System.Xml.Serialization.XmlSerializer> to ignore the field when serializing or deserializing an instance of the class.  \n  \n [!code-vb[Classic XmlIgnoreAttribute.XmlIgnoreAttribute Example#1](~/add/codesnippet/visualbasic/t-system.xml.serializati_32_1.vb)]\n [!code-cs[Classic XmlIgnoreAttribute.XmlIgnoreAttribute Example#1](~/add/codesnippet/csharp/t-system.xml.serializati_32_1.cs)]\n [!code-cpp[Classic XmlIgnoreAttribute.XmlIgnoreAttribute Example#1](~/add/codesnippet/cpp/t-system.xml.serializati_32_1.cpp)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field | System.AttributeTargets.Parameter | System.AttributeTargets.ReturnValue)]
+
+      public class XmlIgnoreAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlIgnoreAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlIgnoreAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlIgnoreAttribute.#ctor
+  id: '#ctor'
+  parent: System.Xml.Serialization.XmlIgnoreAttribute
+  langs:
+  - csharp
+  name: XmlIgnoreAttribute()
+  nameWithType: XmlIgnoreAttribute.XmlIgnoreAttribute()
+  fullName: System.Xml.Serialization.XmlIgnoreAttribute.XmlIgnoreAttribute()
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlIgnoreAttribute"></xref> class.
+  remarks: ''
+  example:
+  - "The following example shows a class named `Group`, which contains a field named `Comment`. The example assigns the <xref:System.Xml.Serialization.XmlIgnoreAttribute> to the field, thereby instructing the <xref:System.Xml.Serialization.XmlSerializer> to ignore the field when serializing or deserializing an instance of the class.  \n  \n [!code-vb[Classic XmlIgnoreAttribute.XmlIgnoreAttribute Example#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_40_1.vb)]\n [!code-cs[Classic XmlIgnoreAttribute.XmlIgnoreAttribute Example#1](~/add/codesnippet/csharp/m-system.xml.serializati_40_1.cs)]\n [!code-cpp[Classic XmlIgnoreAttribute.XmlIgnoreAttribute Example#1](~/add/codesnippet/cpp/m-system.xml.serializati_40_1.cpp)]"
+  syntax:
+    content: public XmlIgnoreAttribute ();
+    parameters: []
+  overload: System.Xml.Serialization.XmlIgnoreAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlIgnoreAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlIgnoreAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Xml.Serialization.XmlIgnoreAttribute.#ctor
+  parent: System.Xml.Serialization.XmlIgnoreAttribute
+  isExternal: false
+  name: XmlIgnoreAttribute()
+  nameWithType: XmlIgnoreAttribute.XmlIgnoreAttribute()
+  fullName: System.Xml.Serialization.XmlIgnoreAttribute.XmlIgnoreAttribute()
+- uid: System.Xml.Serialization.XmlIgnoreAttribute.#ctor*
+  parent: System.Xml.Serialization.XmlIgnoreAttribute
+  isExternal: false
+  name: XmlIgnoreAttribute
+  nameWithType: XmlIgnoreAttribute.XmlIgnoreAttribute

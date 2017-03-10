@@ -1,0 +1,86 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.IExtensibleObject`1
+  id: IExtensibleObject`1
+  children:
+  - System.ServiceModel.IExtensibleObject`1.Extensions
+  langs:
+  - csharp
+  name: IExtensibleObject<T>
+  nameWithType: IExtensibleObject<T>
+  fullName: System.ServiceModel.IExtensibleObject<T>
+  type: Interface
+  summary: Enable an object to participate in custom behavior, such as registering for events, or watching state transitions.
+  remarks: "Implement IExtensibleObject(T) to enable aggregation of extensions.  \n  \n For example, if you are implementing a `TreeNode` class and want to allow external code to add annotations and methods to some instances of `TreeNode`, you can have `TreeNode` implement `IExtensibleObject<TreeNode>`. This enables code that uses `TreeNode` to add objects that implement `IExtensibleObject<TreeNode>` to the <xref:System.ServiceModel.IExtensibleObject%601.Extensions%2A> collection.  \n  \n There are four extensible objects in [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)]:  \n  \n-   <xref:System.ServiceModel.ServiceHostBase?displayProperty=fullName>  \n  \n-   <xref:System.ServiceModel.InstanceContext?displayProperty=fullName>  \n  \n-   <xref:System.ServiceModel.IContextChannel?displayProperty=fullName>  \n  \n-   <xref:System.ServiceModel.OperationContext?displayProperty=fullName>  \n  \n For a discussion about how to create extension to work with these objects, see [Extensible Objects](../Topic/Extensible%20Objects.md)."
+  syntax:
+    content: 'public interface IExtensibleObject<T> where T : IExtensibleObject<T>'
+    typeParameters:
+    - id: T
+      description: The type of the extension class.
+  implements: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\IExtensibleObject`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/IExtensibleObject`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.IExtensibleObject`1.Extensions
+  id: Extensions
+  parent: System.ServiceModel.IExtensibleObject`1
+  langs:
+  - csharp
+  name: Extensions
+  nameWithType: IExtensibleObject<T>.Extensions
+  fullName: System.ServiceModel.IExtensibleObject<T>.Extensions
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets a collection of extension objects for this extensible object.
+  syntax:
+    content: public System.ServiceModel.IExtensionCollection<T> Extensions { get; }
+    return:
+      type: System.ServiceModel.IExtensionCollection`1
+      description: A <xref href="stem.ServiceModel.IExtensionCollection%601"></xref> of extension objects.
+  overload: System.ServiceModel.IExtensibleObject`1.Extensions*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\IExtensibleObject`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/IExtensibleObject`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.ServiceModel.IExtensibleObject`1.Extensions
+  parent: System.ServiceModel.IExtensibleObject`1
+  isExternal: false
+  name: Extensions
+  nameWithType: IExtensibleObject<T>.Extensions
+  fullName: System.ServiceModel.IExtensibleObject<T>.Extensions
+- uid: System.ServiceModel.IExtensionCollection`1
+  parent: System.ServiceModel
+  isExternal: false
+  name: IExtensionCollection<T>
+  nameWithType: IExtensionCollection<T>
+  fullName: System.ServiceModel.IExtensionCollection<T>
+- uid: System.ServiceModel.IExtensibleObject`1.Extensions*
+  parent: System.ServiceModel.IExtensibleObject`1
+  isExternal: false
+  name: Extensions
+  nameWithType: IExtensibleObject<T>.Extensions

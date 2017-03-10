@@ -1,0 +1,125 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Diagnostics.Contracts.ContractAbbreviatorAttribute
+  id: ContractAbbreviatorAttribute
+  children:
+  - System.Diagnostics.Contracts.ContractAbbreviatorAttribute.#ctor
+  langs:
+  - csharp
+  name: ContractAbbreviatorAttribute
+  nameWithType: ContractAbbreviatorAttribute
+  fullName: System.Diagnostics.Contracts.ContractAbbreviatorAttribute
+  type: Class
+  summary: Defines abbreviations that you can use in place of the full contract syntax.
+  remarks: ''
+  example:
+  - "The following example demonstrates how to create abbreviated names for code contracts that are repeated in several methods.  \n  \n```c#  \n  \nusing System.Diagnostics.Contracts;  \n  \npublic class MyClass   \n{  \n   public int State { get; }  \n   public int Data { get; }  \n  \n   [ ContractAbbreviator ]  \n   private void DataAndStateUnchanged()   \n   {  \n      Contract.Ensures( this .State == Contract.OldValue(this.State));  \n      Contract.Ensures( this .Data == Contract.OldValue(this.Data));  \n   }  \n  \n   [ ContractAbbreviator ]  \n   private void InStateZeroAndUnchanged()   \n   {  \n      Contract.Requires( this.State == 0);  \n      DataAndStateUnchanged();  \n   }  \n  \n   public void Method1(...)   \n   {  \n      InStateZeroAndUnchanged();  \n      ...  \n   }  \n  \n   public void Method2(...)   \n   {  \n      InStateZeroAndUnchanged();  \n      ...  \n   }  \n  \n   public void Method3(...)  \n   {  \n      Contract.Requires(this .State == 1);  \n      DataAndStateUnchanged();  \n   }  \n}  \n  \n```"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Method, AllowMultiple=false)]
+
+      [System.Diagnostics.Conditional("CONTRACTS_FULL")]
+
+      public sealed class ContractAbbreviatorAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics.Contracts\ContractAbbreviatorAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics.Contracts/ContractAbbreviatorAttribute.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Contracts.ContractAbbreviatorAttribute.#ctor
+  id: '#ctor'
+  parent: System.Diagnostics.Contracts.ContractAbbreviatorAttribute
+  langs:
+  - csharp
+  name: ContractAbbreviatorAttribute()
+  nameWithType: ContractAbbreviatorAttribute.ContractAbbreviatorAttribute()
+  fullName: System.Diagnostics.Contracts.ContractAbbreviatorAttribute.ContractAbbreviatorAttribute()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics.Contracts
+  summary: Initializes a new instance of the <xref href="System.Diagnostics.Contracts.ContractAbbreviatorAttribute"></xref> class.
+  syntax:
+    content: public ContractAbbreviatorAttribute ();
+    parameters: []
+  overload: System.Diagnostics.Contracts.ContractAbbreviatorAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics.Contracts\ContractAbbreviatorAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics.Contracts/ContractAbbreviatorAttribute.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Diagnostics.Contracts.ContractAbbreviatorAttribute.#ctor
+  parent: System.Diagnostics.Contracts.ContractAbbreviatorAttribute
+  isExternal: false
+  name: ContractAbbreviatorAttribute()
+  nameWithType: ContractAbbreviatorAttribute.ContractAbbreviatorAttribute()
+  fullName: System.Diagnostics.Contracts.ContractAbbreviatorAttribute.ContractAbbreviatorAttribute()
+- uid: System.Diagnostics.Contracts.ContractAbbreviatorAttribute.#ctor*
+  parent: System.Diagnostics.Contracts.ContractAbbreviatorAttribute
+  isExternal: false
+  name: ContractAbbreviatorAttribute
+  nameWithType: ContractAbbreviatorAttribute.ContractAbbreviatorAttribute

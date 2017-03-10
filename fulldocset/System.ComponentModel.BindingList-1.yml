@@ -1,0 +1,2357 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ComponentModel.BindingList`1
+  id: BindingList`1
+  children:
+  - System.ComponentModel.BindingList`1.#ctor
+  - System.ComponentModel.BindingList`1.#ctor(System.Collections.Generic.IList{`0})
+  - System.ComponentModel.BindingList`1.AddingNew
+  - System.ComponentModel.BindingList`1.AddNew
+  - System.ComponentModel.BindingList`1.AddNewCore
+  - System.ComponentModel.BindingList`1.AllowEdit
+  - System.ComponentModel.BindingList`1.AllowNew
+  - System.ComponentModel.BindingList`1.AllowRemove
+  - System.ComponentModel.BindingList`1.ApplySortCore(System.ComponentModel.PropertyDescriptor,System.ComponentModel.ListSortDirection)
+  - System.ComponentModel.BindingList`1.CancelNew(System.Int32)
+  - System.ComponentModel.BindingList`1.ClearItems
+  - System.ComponentModel.BindingList`1.EndNew(System.Int32)
+  - System.ComponentModel.BindingList`1.FindCore(System.ComponentModel.PropertyDescriptor,System.Object)
+  - System.ComponentModel.BindingList`1.InsertItem(System.Int32,`0)
+  - System.ComponentModel.BindingList`1.IsSortedCore
+  - System.ComponentModel.BindingList`1.ListChanged
+  - System.ComponentModel.BindingList`1.OnAddingNew(System.ComponentModel.AddingNewEventArgs)
+  - System.ComponentModel.BindingList`1.OnListChanged(System.ComponentModel.ListChangedEventArgs)
+  - System.ComponentModel.BindingList`1.RaiseListChangedEvents
+  - System.ComponentModel.BindingList`1.RemoveItem(System.Int32)
+  - System.ComponentModel.BindingList`1.RemoveSortCore
+  - System.ComponentModel.BindingList`1.ResetBindings
+  - System.ComponentModel.BindingList`1.ResetItem(System.Int32)
+  - System.ComponentModel.BindingList`1.SetItem(System.Int32,`0)
+  - System.ComponentModel.BindingList`1.SortDirectionCore
+  - System.ComponentModel.BindingList`1.SortPropertyCore
+  - System.ComponentModel.BindingList`1.SupportsChangeNotificationCore
+  - System.ComponentModel.BindingList`1.SupportsSearchingCore
+  - System.ComponentModel.BindingList`1.SupportsSortingCore
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AddIndex(System.ComponentModel.PropertyDescriptor)
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AddNew
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowEdit
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowNew
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowRemove
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#ApplySort(System.ComponentModel.PropertyDescriptor,System.ComponentModel.ListSortDirection)
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#Find(System.ComponentModel.PropertyDescriptor,System.Object)
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#IsSorted
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#RemoveIndex(System.ComponentModel.PropertyDescriptor)
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#RemoveSort
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SortDirection
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SortProperty
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsChangeNotification
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsSearching
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsSorting
+  - System.ComponentModel.BindingList`1.System#ComponentModel#IRaiseItemChangedEvents#RaisesItemChangedEvents
+  langs:
+  - csharp
+  name: BindingList<T>
+  nameWithType: BindingList<T>
+  fullName: System.ComponentModel.BindingList<T>
+  type: Class
+  summary: Provides a generic collection that supports data binding.
+  remarks: "The BindingList(T) class can be used as a base class to create a two-way data-binding mechanism. BindingList(T) provides a concrete, generic implementation of the <xref:System.ComponentModel.IBindingList> interface. This is an alternative to implementing the complete <xref:System.ComponentModel.IBindingList> interface, which can be difficult because of the subtle interaction between <xref:System.ComponentModel.IBindingList>, <xref:System.ComponentModel.IEditableObject>, and the associated <xref:System.Windows.Forms.CurrencyManager>. However, the typical solutions programmer will use a class that provides data binding functionality, such as <xref:System.Windows.Forms.BindingSource>, instead of directly using BindingList(T).  \n  \n BindingList(T) supports factory-created instances through the extensible <xref:System.ComponentModel.BindingList%601.AddNew%2A> method. (This same type of extensibility is also found in other classes, such as <xref:System.Windows.Forms.BindingSource>) In addition, since this class implements the <xref:System.ComponentModel.ICancelAddNew> interface, it enables transactional commits or rollbacks of the new item through the <xref:System.ComponentModel.BindingList%601.EndNew%2A> and <xref:System.ComponentModel.BindingList%601.CancelNew%2A> methods."
+  example:
+  - "The following code example demonstrates binding to a BindingList(T) component containing a business object. This is a complete example that contains a `Main` method.  \n  \n [!code-vb[System.ComponentModel.BindingListOfTExample#1](~/add/codesnippet/visualbasic/t-system.componentmodel._136_1.vb)]\n [!code-cs[System.ComponentModel.BindingListOfTExample#1](~/add/codesnippet/csharp/t-system.componentmodel._136_1.cs)]"
+  syntax:
+    content: 'public class BindingList<T> : System.Collections.ObjectModel.Collection<T>, System.ComponentModel.IBindingList, System.ComponentModel.ICancelAddNew, System.ComponentModel.IRaiseItemChangedEvents'
+    typeParameters:
+    - id: T
+      description: The type of elements in the list.
+  inheritance:
+  - System.Object
+  - System.Collections.ObjectModel.Collection`1
+  implements:
+  - System.ComponentModel.IBindingList
+  - System.ComponentModel.ICancelAddNew
+  - System.ComponentModel.IRaiseItemChangedEvents
+  inheritedMembers:
+  - System.Collections.ObjectModel.Collection`1.Add(`0)
+  - System.Collections.ObjectModel.Collection`1.Clear
+  - System.Collections.ObjectModel.Collection`1.Contains(`0)
+  - System.Collections.ObjectModel.Collection`1.CopyTo(`0[],System.Int32)
+  - System.Collections.ObjectModel.Collection`1.Count
+  - System.Collections.ObjectModel.Collection`1.GetEnumerator
+  - System.Collections.ObjectModel.Collection`1.IndexOf(`0)
+  - System.Collections.ObjectModel.Collection`1.Insert(System.Int32,`0)
+  - System.Collections.ObjectModel.Collection`1.Item(System.Int32)
+  - System.Collections.ObjectModel.Collection`1.Items
+  - System.Collections.ObjectModel.Collection`1.Remove(`0)
+  - System.Collections.ObjectModel.Collection`1.RemoveAt(System.Int32)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#Generic#ICollection{T}#IsReadOnly
+  - System.Collections.ObjectModel.Collection`1.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#ICollection#IsSynchronized
+  - System.Collections.ObjectModel.Collection`1.System#Collections#ICollection#SyncRoot
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IEnumerable#GetEnumerator
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Add(System.Object)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Contains(System.Object)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#IndexOf(System.Object)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Insert(System.Int32,System.Object)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#IsFixedSize
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#IsReadOnly
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Item(System.Int32)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Remove(System.Object)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.#ctor
+  id: '#ctor'
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: BindingList<T>()
+  nameWithType: BindingList<T>.BindingList<T>()
+  fullName: System.ComponentModel.BindingList<T>.BindingList<T>()
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Initializes a new instance of the <xref href="stem.ComponentModel.BindingList%601"></xref> class using default values.
+  remarks: "The following table shows initial property values for an instance of <xref:System.ComponentModel.BindingList%601> class.  \n  \n|Property|Initial Value|  \n|--------------|-------------------|  \n|<xref:System.ComponentModel.BindingList%601.AllowEdit%2A>|`true`|  \n|<xref:System.ComponentModel.BindingList%601.AllowNew%2A>|`true` if the list type has a default constructor; otherwise, `false`.|  \n|<xref:System.ComponentModel.BindingList%601.AllowRemove%2A>|`true`|  \n|<xref:System.ComponentModel.BindingList%601.RaiseListChangedEvents%2A>|`true`|"
+  example:
+  - "The following code example demonstrates how to construct a new <xref:System.ComponentModel.BindingList%601>. For the complete example, see the <xref:System.ComponentModel.BindingList%601> class overview topic.  \n  \n [!code-vb[System.ComponentModel.BindingListOfTExample#2](~/add/codesnippet/visualbasic/m-system.componentmodel._8_1.vb)]\n [!code-cs[System.ComponentModel.BindingListOfTExample#2](~/add/codesnippet/csharp/m-system.componentmodel._8_1.cs)]"
+  syntax:
+    content: public BindingList ();
+    parameters: []
+  overload: System.ComponentModel.BindingList`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.#ctor(System.Collections.Generic.IList{`0})
+  id: '#ctor(System.Collections.Generic.IList{`0})'
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: BindingList<T>(IList<T>)
+  nameWithType: BindingList<T>.BindingList<T>(IList<T>)
+  fullName: System.ComponentModel.BindingList<T>.BindingList<T>(IList<T>)
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Initializes a new instance of the <xref href="stem.ComponentModel.BindingList%601"></xref> class with the specified list.
+  remarks: "Use this BindingList(T) to create a <xref:System.ComponentModel.BindingList%601> that is backed by `list`, which ensures that changes to `list` are reflected in the <xref:System.ComponentModel.BindingList%601>.  \n  \n The following table shows initial property values for an instance of <xref:System.ComponentModel.BindingList%601> class.  \n  \n|Property|Initial Value|  \n|--------------|-------------------|  \n|<xref:System.ComponentModel.BindingList%601.AllowEdit%2A>|`true`|  \n|<xref:System.ComponentModel.BindingList%601.AllowNew%2A>|`true` if the list type has a default constructor; otherwise, `false`.|  \n|<xref:System.ComponentModel.BindingList%601.AllowRemove%2A>|`true`|  \n|<xref:System.ComponentModel.BindingList%601.RaiseListChangedEvents%2A>|`true`|"
+  syntax:
+    content: public BindingList (System.Collections.Generic.IList<T> list);
+    parameters:
+    - id: list
+      type: System.Collections.Generic.IList`1
+      description: An <xref href="stem.Collections.Generic.IList%601"></xref> of items to be contained in the <xref href="stem.ComponentModel.BindingList%601"></xref>.
+  overload: System.ComponentModel.BindingList`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.AddingNew
+  id: AddingNew
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: AddingNew
+  nameWithType: BindingList<T>.AddingNew
+  fullName: System.ComponentModel.BindingList<T>.AddingNew
+  type: Event
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Occurs before an item is added to the list.
+  remarks: "The AddingNew event occurs before a new object is added to the collection represented by the <xref:System.Collections.ObjectModel.Collection%601.Items%2A> property. This event is raised after the <xref:System.ComponentModel.BindingList%601.AddNew%2A> method is called, but before the new item is created and added to the internal list. By handling this event, the programmer can provide custom item creation and insertion behavior without being forced to derive from the <xref:System.ComponentModel.BindingList%601> class.  \n  \n For more information about supplying custom new item functionality, see the <xref:System.ComponentModel.BindingList%601.AddNew%2A> method. For more information about handling events, see [NIB: Consuming Events](http://msdn.microsoft.com/en-us/01e4f1bc-e55e-413f-98c7-6588493e5f67)."
+  example:
+  - "The following code example demonstrates how to handle the AddingNew event. For the complete example, see the <xref:System.ComponentModel.BindingList%601> class overview topic.  \n  \n [!code-vb[System.ComponentModel.BindingListOfTExample#3](~/add/codesnippet/visualbasic/e-system.componentmodel._6_1.vb)]\n [!code-cs[System.ComponentModel.BindingListOfTExample#3](~/add/codesnippet/csharp/e-system.componentmodel._6_1.cs)]"
+  syntax:
+    content: public event System.ComponentModel.AddingNewEventHandler AddingNew;
+    return:
+      type: System.ComponentModel.AddingNewEventHandler
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.AddNew
+  id: AddNew
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: AddNew()
+  nameWithType: BindingList<T>.AddNew()
+  fullName: System.ComponentModel.BindingList<T>.AddNew()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Adds a new item to the collection.
+  remarks: "The AddNew method adds a new item to the collection represented by the <xref:System.Collections.ObjectModel.Collection%601.Items%2A> property. To add a new item, the following logic is used:  \n  \n1.  The <xref:System.ComponentModel.BindingList%601.AddingNew> event is automatically raised.  \n  \n     This event can be programmatically handled to construct a new custom item. This is accomplished in the event handler by setting the <xref:System.ComponentModel.AddingNewEventArgs.NewObject%2A> property of the <xref:System.ComponentModel.AddingNewEventArgs> parameter to the new item.  \n  \n     Otherwise, the new item is automatically created through its public default constructor.  \n  \n2.  The position of the new item is tracked, but it is not added to the list until one of the following conditions are met:  \n  \n    -   The item is explicitly committed by a call to <xref:System.ComponentModel.BindingList%601.EndNew%2A>.  \n  \n    -   The item is implicitly committed by some other operation that changed the contents of the list, such as an insertion or removal of an item.  \n  \n In contrast, calling the <xref:System.ComponentModel.BindingList%601.CancelNew%2A> method before the item is committed will cause the new item to be discarded.  \n  \n This method raises the <xref:System.ComponentModel.BindingList%601.ListChanged> event when the new item is committed."
+  example:
+  - "The following code example demonstrates how to use the AddNew method. <xref:System.ComponentModel.BindingList%601>. For the complete example, see the <xref:System.ComponentModel.BindingList%601> class overview topic.  \n  \n [!code-vb[System.ComponentModel.BindingListOfTExample#4](~/add/codesnippet/visualbasic/m-system.componentmodel._41_1.vb)]\n [!code-cs[System.ComponentModel.BindingListOfTExample#4](~/add/codesnippet/csharp/m-system.componentmodel._41_1.cs)]"
+  syntax:
+    content: public T AddNew ();
+    parameters: []
+    return:
+      type: T
+      description: The item added to the list.
+  overload: System.ComponentModel.BindingList`1.AddNew*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: "The <xref href=\"stem.Windows.Forms.BindingSource.AllowNew%2A\"></xref> property is set to `false`.  \n  \n -or-  \n  \n A public default constructor could not be found for the current item type."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.AddNewCore
+  id: AddNewCore
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: AddNewCore()
+  nameWithType: BindingList<T>.AddNewCore()
+  fullName: System.ComponentModel.BindingList<T>.AddNewCore()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Adds a new item to the end of the collection.
+  remarks: The AddNewCore method adds a new item to the collection represented by the <xref:System.Collections.ObjectModel.Collection%601.Items%2A> property. AddNewCore raises the <xref:System.ComponentModel.BindingList%601.AddingNew> event. This allows you to add a new item by setting the <xref:System.ComponentModel.AddingNewEventArgs.NewObject%2A> property of the <xref:System.ComponentModel.AddingNewEventArgs> parameter to the new item. Otherwise, the new item is automatically created through its public default constructor.
+  syntax:
+    content: protected virtual object AddNewCore ();
+    parameters: []
+    return:
+      type: System.Object
+      description: The item that was added to the collection.
+  overload: System.ComponentModel.BindingList`1.AddNewCore*
+  exceptions:
+  - type: System.InvalidCastException
+    commentId: T:System.InvalidCastException
+    description: The new item is not the same type as the objects contained in the <xref href="stem.ComponentModel.BindingList%601"></xref>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.AllowEdit
+  id: AllowEdit
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: AllowEdit
+  nameWithType: BindingList<T>.AllowEdit
+  fullName: System.ComponentModel.BindingList<T>.AllowEdit
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets or sets a value indicating whether items in the list can be edited.
+  remarks: The AllowEdit property is typically used by other components to determine if editing of items in the list is allowed. When AllowEdit is set to a new value, a <xref:System.ComponentModel.BindingList%601.ListChanged> event of type <xref:System.ComponentModel.ListChangedType> will occur.
+  example:
+  - "The following code example demonstrates how to set the AllowEdit property. For the complete example, see the <xref:System.ComponentModel.BindingList%601> class overview topic.  \n  \n [!code-vb[System.ComponentModel.BindingListOfTExample#2](~/add/codesnippet/visualbasic/p-system.componentmodel._17_1.vb)]\n [!code-cs[System.ComponentModel.BindingListOfTExample#2](~/add/codesnippet/csharp/p-system.componentmodel._17_1.cs)]"
+  syntax:
+    content: public bool AllowEdit { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if list items can be edited; otherwise, `false`. The default is `true`.'
+  overload: System.ComponentModel.BindingList`1.AllowEdit*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.AllowNew
+  id: AllowNew
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: AllowNew
+  nameWithType: BindingList<T>.AllowNew
+  fullName: System.ComponentModel.BindingList<T>.AllowNew
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets or sets a value indicating whether you can add items to the list using the <xref href="stem.ComponentModel.BindingList%601.AddNew%2A"></xref> method.
+  remarks: "The AllowNew property is typically used by other components to determine if the creation of new items is allowed. AllowNew defaults to `true` if the type contained in the list has a default constructor or the <xref:System.ComponentModel.BindingList%601.AddingNew> event is handled. If the <xref:System.ComponentModel.BindingList%601.AddingNew> event is not handled or the list type does not have a default constructor, then AllowNew defaults to `false`.  \n  \n If AllowNew is explicitly set, the set value will always be used by bound objects to determine if new items can be added to the list. Whether AllowNew is `true` or `false`, new items can be added by explicitly calling <xref:System.ComponentModel.BindingList%601.AddNew%2A> if the list type has a default constructor or the <xref:System.ComponentModel.BindingList%601.AddingNew> event is handled. In addition, setting AllowNew causes a <xref:System.ComponentModel.BindingList%601.ListChanged> event of type <xref:System.ComponentModel.ListChangedType> to occur."
+  example:
+  - "The following code example demonstrates how to set the AllowNew property. For the complete example, see the <xref:System.ComponentModel.BindingList%601> class overview topic.  \n  \n [!code-vb[System.ComponentModel.BindingListOfTExample#2](~/add/codesnippet/visualbasic/p-system.componentmodel._30_1.vb)]\n [!code-cs[System.ComponentModel.BindingListOfTExample#2](~/add/codesnippet/csharp/p-system.componentmodel._30_1.cs)]"
+  syntax:
+    content: public bool AllowNew { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if you can add items to the list with the <xref href="stem.ComponentModel.BindingList%601.AddNew%2A"></xref> method; otherwise, `false`. The default depends on the underlying type contained in the list.'
+  overload: System.ComponentModel.BindingList`1.AllowNew*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.AllowRemove
+  id: AllowRemove
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: AllowRemove
+  nameWithType: BindingList<T>.AllowRemove
+  fullName: System.ComponentModel.BindingList<T>.AllowRemove
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets or sets a value indicating whether you can remove items from the collection.
+  remarks: "The AllowRemove property is typically used by other components to determine if the removal of items is allowed.  \n  \n When AllowRemove is set to a new value, a <xref:System.ComponentModel.BindingList%601.ListChanged> event of type <xref:System.ComponentModel.ListChangedType> occurs."
+  example:
+  - "The following code example demonstrates how to set the AllowRemove property. For the complete example, see the <xref:System.ComponentModel.BindingList%601> class overview topic.  \n  \n [!code-vb[System.ComponentModel.BindingListOfTExample#2](~/add/codesnippet/visualbasic/p-system.componentmodel._46_1.vb)]\n [!code-cs[System.ComponentModel.BindingListOfTExample#2](~/add/codesnippet/csharp/p-system.componentmodel._46_1.cs)]"
+  syntax:
+    content: public bool AllowRemove { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if you can remove items from the list with the <xref href="stem.ComponentModel.BindingList%601.RemoveItem%2A"></xref> method otherwise, `false`. The default is `true`.'
+  overload: System.ComponentModel.BindingList`1.AllowRemove*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.ApplySortCore(System.ComponentModel.PropertyDescriptor,System.ComponentModel.ListSortDirection)
+  id: ApplySortCore(System.ComponentModel.PropertyDescriptor,System.ComponentModel.ListSortDirection)
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: ApplySortCore(PropertyDescriptor,ListSortDirection)
+  nameWithType: BindingList<T>.ApplySortCore(PropertyDescriptor,ListSortDirection)
+  fullName: System.ComponentModel.BindingList<T>.ApplySortCore(PropertyDescriptor,ListSortDirection)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Sorts the items if overridden in a derived class; otherwise, throws a <xref href="System.NotSupportedException"></xref>.
+  remarks: "The <xref:System.ComponentModel.BindingList%601> class does not provide a base implementation of sorting, so ApplySortCore always throws a <xref:System.NotSupportedException> by default. To enable sorting, derive from <xref:System.ComponentModel.BindingList%601> and perform the following tasks:  \n  \n-   Override ApplySortCore and implement sorting, raising the <xref:System.ComponentModel.BindingList%601.ListChanged> event when sorting is complete.  \n  \n-   Override <xref:System.ComponentModel.BindingList%601.RemoveSortCore%2A> and implement sort removal.  \n  \n-   Override <xref:System.ComponentModel.BindingList%601.SupportsSortingCore%2A> and set <xref:System.ComponentModel.BindingList%601.SupportsSortingCore%2A> to `true`.  \n  \n In addition, you may want to implement the supplemental <xref:System.ComponentModel.BindingList%601.SortDirectionCore%2A> and <xref:System.ComponentModel.BindingList%601.SortPropertyCore%2A> sorting properties."
+  syntax:
+    content: protected virtual void ApplySortCore (System.ComponentModel.PropertyDescriptor prop, System.ComponentModel.ListSortDirection direction);
+    parameters:
+    - id: prop
+      type: System.ComponentModel.PropertyDescriptor
+      description: A <xref href="System.ComponentModel.PropertyDescriptor"></xref> that specifies the property to sort on.
+    - id: direction
+      type: System.ComponentModel.ListSortDirection
+      description: One of the <xref href="System.ComponentModel.ListSortDirection"></xref> values.
+  overload: System.ComponentModel.BindingList`1.ApplySortCore*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: Method is not overridden in a derived class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.CancelNew(System.Int32)
+  id: CancelNew(System.Int32)
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: CancelNew(Int32)
+  nameWithType: BindingList<T>.CancelNew(Int32)
+  fullName: System.ComponentModel.BindingList<T>.CancelNew(Int32)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Discards a pending new item.
+  remarks: "The CancelNew method rolls back a pending new item that was added through the <xref:System.ComponentModel.BindingList%601.AddNew%2A> method, but has not yet been committed.  \n  \n For more information about adding and committing new items, see the <xref:System.ComponentModel.BindingList%601.AddNew%2A> method"
+  example:
+  - "The following code example demonstrates how use the CancelNew method. For the complete example, see the <xref:System.ComponentModel.BindingList%601> class overview topic.  \n  \n [!code-vb[System.ComponentModel.BindingListOfTExample#4](~/add/codesnippet/visualbasic/m-system.componentmodel._32_1.vb)]\n [!code-cs[System.ComponentModel.BindingListOfTExample#4](~/add/codesnippet/csharp/m-system.componentmodel._32_1.cs)]"
+  syntax:
+    content: public virtual void CancelNew (int itemIndex);
+    parameters:
+    - id: itemIndex
+      type: System.Int32
+      description: The index of the of the new item to be added
+  overload: System.ComponentModel.BindingList`1.CancelNew*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.ClearItems
+  id: ClearItems
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: ClearItems()
+  nameWithType: BindingList<T>.ClearItems()
+  fullName: System.ComponentModel.BindingList<T>.ClearItems()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Removes all elements from the collection.
+  remarks: "The ClearItems method removes all the items from the collection represented by the <xref:System.Collections.ObjectModel.Collection%601.Items%2A> property.  \n  \n ClearItems calls the <xref:System.ComponentModel.BindingList%601.EndNew%2A> method before clearing out the collection and raises the <xref:System.ComponentModel.BindingList%601.ListChanged> event after it has been cleared."
+  syntax:
+    content: protected override void ClearItems ();
+    parameters: []
+  overload: System.ComponentModel.BindingList`1.ClearItems*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.EndNew(System.Int32)
+  id: EndNew(System.Int32)
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: EndNew(Int32)
+  nameWithType: BindingList<T>.EndNew(Int32)
+  fullName: System.ComponentModel.BindingList<T>.EndNew(Int32)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Commits a pending new item to the collection.
+  remarks: "The EndNew method commits a pending new item that was added through the <xref:System.ComponentModel.BindingList%601.AddNew%2A> method. If there is no new item waiting to be committed, then this method does nothing.  \n  \n For more information about adding and committing new items, see the <xref:System.ComponentModel.BindingList%601.AddNew%2A> method."
+  syntax:
+    content: public virtual void EndNew (int itemIndex);
+    parameters:
+    - id: itemIndex
+      type: System.Int32
+      description: The index of the new item to be added.
+  overload: System.ComponentModel.BindingList`1.EndNew*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.FindCore(System.ComponentModel.PropertyDescriptor,System.Object)
+  id: FindCore(System.ComponentModel.PropertyDescriptor,System.Object)
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: FindCore(PropertyDescriptor,Object)
+  nameWithType: BindingList<T>.FindCore(PropertyDescriptor,Object)
+  fullName: System.ComponentModel.BindingList<T>.FindCore(PropertyDescriptor,Object)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Searches for the index of the item that has the specified property descriptor with the specified value, if searching is implemented in a derived class; otherwise, a <xref href="System.NotSupportedException"></xref>.
+  remarks: "The <xref:System.ComponentModel.BindingList%601> class does not provide a base implementation of searching, and so FindCore always throws a <xref:System.NotSupportedException> by default. To enable searching, derive from <xref:System.ComponentModel.BindingList%601> and perform the following tasks:  \n  \n-   Override <xref:System.ComponentModel.BindingList%601.SupportsSearchingCore%2A> to set the <xref:System.ComponentModel.BindingList%601.SupportsSearchingCore%2A> property to `true`.  \n  \n-   Override FindCore to implement the find algorithm."
+  example:
+  - "The following code example demonstrates how to use the FindCore member.  \n  \n [!code-cs[System.Windows.Forms.BindingSourceAndBindingListOfT#3](~/add/codesnippet/csharp/cf9f216b-50bc-4335-a06e-_1.cs)]\n [!code-vb[System.Windows.Forms.BindingSourceAndBindingListOfT#3](~/add/codesnippet/visualbasic/cf9f216b-50bc-4335-a06e-_1.vb)]"
+  syntax:
+    content: protected virtual int FindCore (System.ComponentModel.PropertyDescriptor prop, object key);
+    parameters:
+    - id: prop
+      type: System.ComponentModel.PropertyDescriptor
+      description: The <xref href="System.ComponentModel.PropertyDescriptor"></xref> to search for.
+    - id: key
+      type: System.Object
+      description: The value of <code>property</code> to match.
+    return:
+      type: System.Int32
+      description: The zero-based index of the item that matches the property descriptor and contains the specified value.
+  overload: System.ComponentModel.BindingList`1.FindCore*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: FindCore is not overridden in a derived class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.InsertItem(System.Int32,`0)
+  id: InsertItem(System.Int32,`0)
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: InsertItem(Int32,T)
+  nameWithType: BindingList<T>.InsertItem(Int32,T)
+  fullName: System.ComponentModel.BindingList<T>.InsertItem(Int32,T)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Inserts the specified item in the list at the specified index.
+  remarks: "InsertItem performs the following operations:  \n  \n-   Calls <xref:System.ComponentModel.BindingList%601.EndNew%2A> to commit any uncommitted items added through the <xref:System.ComponentModel.BindingList%601.AddingNew> event.  \n  \n-   Inserts the item at the specified index  \n  \n-   Raises a <xref:System.ComponentModel.BindingList%601.ListChanged> event of type <xref:System.ComponentModel.ListChangedType> indicating the index of the item that was inserted."
+  syntax:
+    content: protected override void InsertItem (int index, T item);
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The zero-based index where the item is to be inserted.
+    - id: item
+      type: T
+      description: The item to insert in the list.
+  overload: System.ComponentModel.BindingList`1.InsertItem*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.IsSortedCore
+  id: IsSortedCore
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IsSortedCore
+  nameWithType: BindingList<T>.IsSortedCore
+  fullName: System.ComponentModel.BindingList<T>.IsSortedCore
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets a value indicating whether the list is sorted.
+  remarks: "The <xref:System.ComponentModel.BindingList%601> class does not provide a base implementation of sorting, so IsSortedCore always returns `false` by default.  \n  \n The <xref:System.ComponentModel.BindingList%601> class does not provide a base implementation of sorting. To enable sorting, derive a class from <xref:System.ComponentModel.BindingList%601> and:  \n  \n-   Override <xref:System.ComponentModel.BindingList%601.ApplySortCore%2A> and implement sorting raising the <xref:System.ComponentModel.BindingList%601.ListChanged> event when sorting is complete.  \n  \n-   Override <xref:System.ComponentModel.BindingList%601.RemoveSortCore%2A> and implement sort removal.  \n  \n-   Override <xref:System.ComponentModel.BindingList%601.SupportsSortingCore%2A> and set <xref:System.ComponentModel.BindingList%601.SupportsSortingCore%2A> to `true`.  \n  \n In addition, you may want to implement the supplemental <xref:System.ComponentModel.BindingList%601.SortDirectionCore%2A> and <xref:System.ComponentModel.BindingList%601.SortPropertyCore%2A>s sorting properties."
+  syntax:
+    content: protected virtual bool IsSortedCore { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the list is sorted; otherwise, `false`. The default is `false`.'
+  overload: System.ComponentModel.BindingList`1.IsSortedCore*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.ListChanged
+  id: ListChanged
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: ListChanged
+  nameWithType: BindingList<T>.ListChanged
+  fullName: System.ComponentModel.BindingList<T>.ListChanged
+  type: Event
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Occurs when the list or an item in the list changes.
+  remarks: "ListChanged notifications for item value changes are only raised if the list item type implements the <xref:System.ComponentModel.INotifyPropertyChanged> interface.  \n  \n For more information about handling events, see [NIB: Consuming Events](http://msdn.microsoft.com/en-us/01e4f1bc-e55e-413f-98c7-6588493e5f67)."
+  example:
+  - "The following code example demonstrates how handle the ListChanged event. For the complete example, see the <xref:System.ComponentModel.BindingList%601> class overview topic.  \n  \n [!code-cs[System.ComponentModel.BindingListOfTExample#5](~/add/codesnippet/csharp/e-system.componentmodel._7_1.cs)]"
+  syntax:
+    content: public event System.ComponentModel.ListChangedEventHandler ListChanged;
+    return:
+      type: System.ComponentModel.ListChangedEventHandler
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.OnAddingNew(System.ComponentModel.AddingNewEventArgs)
+  id: OnAddingNew(System.ComponentModel.AddingNewEventArgs)
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: OnAddingNew(AddingNewEventArgs)
+  nameWithType: BindingList<T>.OnAddingNew(AddingNewEventArgs)
+  fullName: System.ComponentModel.BindingList<T>.OnAddingNew(AddingNewEventArgs)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Raises the <xref href="stem.ComponentModel.BindingList%601.AddingNew"></xref> event.
+  remarks: "The <xref:System.ComponentModel.BindingList%601.AddingNew> event and the <xref:System.ComponentModel.BindingList%601.AddNew%2A> method allow custom-created items to be added to the list.  \n  \n Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).  \n  \n The OnAddingNew method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  syntax:
+    content: protected virtual void OnAddingNew (System.ComponentModel.AddingNewEventArgs e);
+    parameters:
+    - id: e
+      type: System.ComponentModel.AddingNewEventArgs
+      description: An <xref href="System.ComponentModel.AddingNewEventArgs"></xref> that contains the event data.
+  overload: System.ComponentModel.BindingList`1.OnAddingNew*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.OnListChanged(System.ComponentModel.ListChangedEventArgs)
+  id: OnListChanged(System.ComponentModel.ListChangedEventArgs)
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: OnListChanged(ListChangedEventArgs)
+  nameWithType: BindingList<T>.OnListChanged(ListChangedEventArgs)
+  fullName: System.ComponentModel.BindingList<T>.OnListChanged(ListChangedEventArgs)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Raises the <xref href="stem.ComponentModel.BindingList%601.ListChanged"></xref> event.
+  remarks: The OnListChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class.
+  syntax:
+    content: protected virtual void OnListChanged (System.ComponentModel.ListChangedEventArgs e);
+    parameters:
+    - id: e
+      type: System.ComponentModel.ListChangedEventArgs
+      description: A <xref href="System.ComponentModel.ListChangedEventArgs"></xref> that contains the event data.
+  overload: System.ComponentModel.BindingList`1.OnListChanged*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.RaiseListChangedEvents
+  id: RaiseListChangedEvents
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: RaiseListChangedEvents
+  nameWithType: BindingList<T>.RaiseListChangedEvents
+  fullName: System.ComponentModel.BindingList<T>.RaiseListChangedEvents
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets or sets a value indicating whether adding or removing items within the list raises <xref href="stem.ComponentModel.BindingList%601.ListChanged"></xref> events.
+  remarks: Set the RaiseListChangedEvents property to `false` if you wish to suppress <xref:System.ComponentModel.BindingList%601.ListChanged> events from occurring on the list.
+  example:
+  - "The following code example demonstrates how use the RaiseListChangedEvents method. For the complete example, see the <xref:System.ComponentModel.BindingList%601> class overview topic.  \n  \n [!code-vb[System.ComponentModel.BindingListOfTExample#2](~/add/codesnippet/visualbasic/p-system.componentmodel._6_1.vb)]\n [!code-cs[System.ComponentModel.BindingListOfTExample#2](~/add/codesnippet/csharp/p-system.componentmodel._6_1.cs)]"
+  syntax:
+    content: public bool RaiseListChangedEvents { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if adding or removing items raises <xref href="stem.ComponentModel.BindingList%601.ListChanged"></xref> events; otherwise, `false`. The default is `true`.'
+  overload: System.ComponentModel.BindingList`1.RaiseListChangedEvents*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.RemoveItem(System.Int32)
+  id: RemoveItem(System.Int32)
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: RemoveItem(Int32)
+  nameWithType: BindingList<T>.RemoveItem(Int32)
+  fullName: System.ComponentModel.BindingList<T>.RemoveItem(Int32)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Removes the item at the specified index.
+  remarks: This method raises the <xref:System.ComponentModel.BindingList%601.ListChanged> event of type <xref:System.ComponentModel.ListChangedType>.
+  syntax:
+    content: protected override void RemoveItem (int index);
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The zero-based index of the item to remove.
+  overload: System.ComponentModel.BindingList`1.RemoveItem*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: You are removing a newly added item and <xref href="stem.ComponentModel.IBindingList.AllowRemove%2A"></xref> is set to `false`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.RemoveSortCore
+  id: RemoveSortCore
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: RemoveSortCore()
+  nameWithType: BindingList<T>.RemoveSortCore()
+  fullName: System.ComponentModel.BindingList<T>.RemoveSortCore()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Removes any sort applied with <xref href="stem.ComponentModel.BindingList%601.ApplySortCore%2A"></xref> if sorting is implemented in a derived class; otherwise, raises <xref href="System.NotSupportedException"></xref>.
+  remarks: The <xref:System.ComponentModel.BindingList%601> class does not provide a base implementation of sorting, so RemoveSortCore always throws a <xref:System.NotSupportedException> by default. For more information about sorting, see the <xref:System.ComponentModel.BindingList%601.ApplySortCore%2A> method.
+  syntax:
+    content: protected virtual void RemoveSortCore ();
+    parameters: []
+  overload: System.ComponentModel.BindingList`1.RemoveSortCore*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: Method is not overridden in a derived class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.ResetBindings
+  id: ResetBindings
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: ResetBindings()
+  nameWithType: BindingList<T>.ResetBindings()
+  fullName: System.ComponentModel.BindingList<T>.ResetBindings()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Raises a <xref href="stem.ComponentModel.BindingList%601.ListChanged"></xref> event of type <xref href="System.ComponentModel.ListChangedType"></xref>.
+  remarks: When the <xref:System.ComponentModel.BindingList%601> is bound to Windows Forms controls, the ResetBindings method causes a refresh of all controls bound to the list.
+  syntax:
+    content: public void ResetBindings ();
+    parameters: []
+  overload: System.ComponentModel.BindingList`1.ResetBindings*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.ResetItem(System.Int32)
+  id: ResetItem(System.Int32)
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: ResetItem(Int32)
+  nameWithType: BindingList<T>.ResetItem(Int32)
+  fullName: System.ComponentModel.BindingList<T>.ResetItem(Int32)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Raises a <xref href="stem.ComponentModel.BindingList%601.ListChanged"></xref> event of type <xref href="System.ComponentModel.ListChangedType"></xref> for the item at the specified position.
+  remarks: When the <xref:System.ComponentModel.BindingList%601> is bound to Windows Forms controls, the ResetItem method causes a refresh of controls bound to the item at the specified position.
+  syntax:
+    content: public void ResetItem (int position);
+    parameters:
+    - id: position
+      type: System.Int32
+      description: A zero-based index of the item to be reset.
+  overload: System.ComponentModel.BindingList`1.ResetItem*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.SetItem(System.Int32,`0)
+  id: SetItem(System.Int32,`0)
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: SetItem(Int32,T)
+  nameWithType: BindingList<T>.SetItem(Int32,T)
+  fullName: System.ComponentModel.BindingList<T>.SetItem(Int32,T)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Replaces the item at the specified index with the specified item.
+  remarks: After the item is set, SetItem raises a <xref:System.ComponentModel.BindingList%601.ListChanged> event of type <xref:System.ComponentModel.ListChangedType> indicating the index of the item that was set.
+  syntax:
+    content: protected override void SetItem (int index, T item);
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The zero-based index of the item to replace.
+    - id: item
+      type: T
+      description: The new value for the item at the specified index. The value can be `null` for reference types.
+  overload: System.ComponentModel.BindingList`1.SetItem*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>index</code> is less than zero.  \n  \n -or-  \n  \n <code>index</code> is greater than <xref href=\"stem.Collections.ObjectModel.Collection%601.Count%2A\"></xref>."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.SortDirectionCore
+  id: SortDirectionCore
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: SortDirectionCore
+  nameWithType: BindingList<T>.SortDirectionCore
+  fullName: System.ComponentModel.BindingList<T>.SortDirectionCore
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets the direction the list is sorted.
+  remarks: The <xref:System.ComponentModel.BindingList%601> class does not provide a base implementation of sorting, so SortDirectionCore always returns <xref:System.ComponentModel.ListSortDirection> by default. For more information about sorting, see the <xref:System.ComponentModel.IBindingList.ApplySort%2A> method.
+  syntax:
+    content: protected virtual System.ComponentModel.ListSortDirection SortDirectionCore { get; }
+    return:
+      type: System.ComponentModel.ListSortDirection
+      description: One of the <xref href="System.ComponentModel.ListSortDirection"></xref> values. The default is <xref href="System.ComponentModel.ListSortDirection"></xref>.
+  overload: System.ComponentModel.BindingList`1.SortDirectionCore*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.SortPropertyCore
+  id: SortPropertyCore
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: SortPropertyCore
+  nameWithType: BindingList<T>.SortPropertyCore
+  fullName: System.ComponentModel.BindingList<T>.SortPropertyCore
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets the property descriptor that is used for sorting the list if sorting is implemented in a derived class; otherwise, returns `null`.
+  remarks: "SortPropertyCore returns `null` by default because the <xref:System.ComponentModel.BindingList%601> class does not provide a base implementation of sorting. To enable sorting, derive a class from <xref:System.ComponentModel.BindingList%601> and:  \n  \n-   Override <xref:System.ComponentModel.BindingList%601.ApplySortCore%2A> and implement sorting.  \n  \n-   Override <xref:System.ComponentModel.BindingList%601.RemoveSortCore%2A> and implement sort removal.  \n  \n-   Override <xref:System.ComponentModel.BindingList%601.SupportsSortingCore%2A> and set <xref:System.ComponentModel.BindingList%601.SupportsSortingCore%2A> to `true`.  \n  \n-   Optionally, override the SortPropertyCore to return the <xref:System.ComponentModel.PropertyDescriptor> used for sorting."
+  syntax:
+    content: protected virtual System.ComponentModel.PropertyDescriptor SortPropertyCore { get; }
+    return:
+      type: System.ComponentModel.PropertyDescriptor
+      description: The <xref href="System.ComponentModel.PropertyDescriptor"></xref> used for sorting the list.
+  overload: System.ComponentModel.BindingList`1.SortPropertyCore*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.SupportsChangeNotificationCore
+  id: SupportsChangeNotificationCore
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: SupportsChangeNotificationCore
+  nameWithType: BindingList<T>.SupportsChangeNotificationCore
+  fullName: System.ComponentModel.BindingList<T>.SupportsChangeNotificationCore
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets a value indicating whether <xref href="stem.ComponentModel.BindingList%601.ListChanged"></xref> events are enabled.
+  remarks: SupportsChangeNotificationCore provides the implementation for <xref:System.ComponentModel.IBindingList.SupportsChangeNotification%2A>. You can derive a class from <xref:System.ComponentModel.BindingList%601> and override the default value.
+  syntax:
+    content: protected virtual bool SupportsChangeNotificationCore { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if <xref href="stem.ComponentModel.BindingList%601.ListChanged"></xref> events are supported; otherwise, `false`. The default is `true`.'
+  overload: System.ComponentModel.BindingList`1.SupportsChangeNotificationCore*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.SupportsSearchingCore
+  id: SupportsSearchingCore
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: SupportsSearchingCore
+  nameWithType: BindingList<T>.SupportsSearchingCore
+  fullName: System.ComponentModel.BindingList<T>.SupportsSearchingCore
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets a value indicating whether the list supports searching.
+  remarks: The <xref:System.ComponentModel.BindingList%601> class does not provide a base implementation of searching, so SupportsSearchingCore always returns `false` by default. For more information about implementing searching, see the <xref:System.ComponentModel.BindingList%601.System%23ComponentModel%23IBindingList%23Find%2A> method.
+  example:
+  - "The following code example demonstrates how to use the SupportsSearchingCore member.  \n  \n [!code-cs[System.Windows.Forms.BindingSourceAndBindingListOfT#3](~/add/codesnippet/csharp/p-system.componentmodel._36_1.cs)]\n [!code-vb[System.Windows.Forms.BindingSourceAndBindingListOfT#3](~/add/codesnippet/visualbasic/p-system.componentmodel._36_1.vb)]"
+  syntax:
+    content: protected virtual bool SupportsSearchingCore { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the list supports searching; otherwise, `false`. The default is `false`.'
+  overload: System.ComponentModel.BindingList`1.SupportsSearchingCore*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.SupportsSortingCore
+  id: SupportsSortingCore
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: SupportsSortingCore
+  nameWithType: BindingList<T>.SupportsSortingCore
+  fullName: System.ComponentModel.BindingList<T>.SupportsSortingCore
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets a value indicating whether the list supports sorting.
+  remarks: "The SupportsSortingCore property indicates whether the <xref:System.ComponentModel.BindingList%601> supports sorting with the <xref:System.ComponentModel.BindingList%601.ApplySortCore%2A> method.  \n  \n The <xref:System.ComponentModel.BindingList%601> class does not provide a base implementation of sorting, so SupportsSortingCore always returns `false` by default. For more information about implementing sorting, see the <xref:System.ComponentModel.BindingList%601.ApplySortCore%2A> method."
+  syntax:
+    content: protected virtual bool SupportsSortingCore { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the list supports sorting; otherwise, `false`. The default is `false`.'
+  overload: System.ComponentModel.BindingList`1.SupportsSortingCore*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AddIndex(System.ComponentModel.PropertyDescriptor)
+  id: System#ComponentModel#IBindingList#AddIndex(System.ComponentModel.PropertyDescriptor)
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.AddIndex(PropertyDescriptor)
+  nameWithType: BindingList<T>.IBindingList.AddIndex(PropertyDescriptor)
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.AddIndex(PropertyDescriptor)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: For a description of this member, see <xref href="stem.ComponentModel.IBindingList.AddIndex%2A"></xref>.
+  remarks: "The base implementation of this method does nothing. If this functionality is desired, a derived class must implement it.  \n  \n This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.BindingList%601> instance is cast to an <xref:System.ComponentModel.IBindingList> interface."
+  syntax:
+    content: void IBindingList.AddIndex (System.ComponentModel.PropertyDescriptor prop);
+    parameters:
+    - id: prop
+      type: System.ComponentModel.PropertyDescriptor
+      description: The <xref href="System.ComponentModel.PropertyDescriptor"></xref> to add as a search criteria.
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AddIndex*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AddNew
+  id: System#ComponentModel#IBindingList#AddNew
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.AddNew()
+  nameWithType: BindingList<T>.IBindingList.AddNew()
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.AddNew()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Adds a new item to the list. For more information, see <xref href="stem.ComponentModel.IBindingList.AddNew%2A"></xref>.
+  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.BindingList%601> instance is cast to an <xref:System.ComponentModel.IBindingList> interface.  \n  \n This implementation calls <xref:System.ComponentModel.BindingList%601.AddNewCore%2A> to add a new item to the list."
+  syntax:
+    content: object IBindingList.AddNew ();
+    parameters: []
+    return:
+      type: System.Object
+      description: The item added to the list.
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AddNew*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: This method is not supported.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowEdit
+  id: System#ComponentModel#IBindingList#AllowEdit
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.AllowEdit
+  nameWithType: BindingList<T>.IBindingList.AllowEdit
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.AllowEdit
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets a value indicating whether items in the list can be edited.
+  remarks: The <xref:System.ComponentModel.BindingList%601.AllowEdit%2A> property is typically used by other components to determine if editing of items in the list is allowed.
+  syntax:
+    content: bool System.ComponentModel.IBindingList.AllowEdit { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if list items can be edited; otherwise, `false`. The default is `true`.'
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowEdit*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowNew
+  id: System#ComponentModel#IBindingList#AllowNew
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.AllowNew
+  nameWithType: BindingList<T>.IBindingList.AllowNew
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.AllowNew
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets a value indicating whether new items can be added to the list using the <xref href="stem.ComponentModel.BindingList%601.AddNew%2A"></xref> method.
+  syntax:
+    content: bool System.ComponentModel.IBindingList.AllowNew { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if you can add items to the list with the <xref href="stem.ComponentModel.BindingList%601.AddNew%2A"></xref> method; otherwise, `false`. The default depends on the underlying type contained in the list.'
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowNew*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowRemove
+  id: System#ComponentModel#IBindingList#AllowRemove
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.AllowRemove
+  nameWithType: BindingList<T>.IBindingList.AllowRemove
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.AllowRemove
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets a value indicating whether items can be removed from the list.
+  syntax:
+    content: bool System.ComponentModel.IBindingList.AllowRemove { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if you can remove items from the list with the <xref href="stem.ComponentModel.BindingList%601.RemoveItem%2A"></xref> method; otherwise, `false`. The default is `true`.'
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowRemove*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#ApplySort(System.ComponentModel.PropertyDescriptor,System.ComponentModel.ListSortDirection)
+  id: System#ComponentModel#IBindingList#ApplySort(System.ComponentModel.PropertyDescriptor,System.ComponentModel.ListSortDirection)
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.ApplySort(PropertyDescriptor,ListSortDirection)
+  nameWithType: BindingList<T>.IBindingList.ApplySort(PropertyDescriptor,ListSortDirection)
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.ApplySort(PropertyDescriptor,ListSortDirection)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Sorts the list based on a <xref href="System.ComponentModel.PropertyDescriptor"></xref> and a <xref href="System.ComponentModel.ListSortDirection"></xref>. For a complete description of this member, see <xref href="stem.ComponentModel.IBindingList.ApplySort%2A"></xref>.
+  remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.BindingList%601> instance is cast to an <xref:System.ComponentModel.IBindingList> interface.
+  syntax:
+    content: void IBindingList.ApplySort (System.ComponentModel.PropertyDescriptor prop, System.ComponentModel.ListSortDirection direction);
+    parameters:
+    - id: prop
+      type: System.ComponentModel.PropertyDescriptor
+      description: The <xref href="System.ComponentModel.PropertyDescriptor"></xref> to sort by.
+    - id: direction
+      type: System.ComponentModel.ListSortDirection
+      description: One of the <xref href="System.ComponentModel.ListSortDirection"></xref> values.
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#ApplySort*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#Find(System.ComponentModel.PropertyDescriptor,System.Object)
+  id: System#ComponentModel#IBindingList#Find(System.ComponentModel.PropertyDescriptor,System.Object)
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.Find(PropertyDescriptor,Object)
+  nameWithType: BindingList<T>.IBindingList.Find(PropertyDescriptor,Object)
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.Find(PropertyDescriptor,Object)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: For a description of this member, see <xref href="stem.ComponentModel.IBindingList.Find%2A"></xref>.
+  remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.BindingList%601> instance is cast to an <xref:System.ComponentModel.IBindingList> interface.
+  syntax:
+    content: int IBindingList.Find (System.ComponentModel.PropertyDescriptor prop, object key);
+    parameters:
+    - id: prop
+      type: System.ComponentModel.PropertyDescriptor
+      description: The <xref href="System.ComponentModel.PropertyDescriptor"></xref> to search on.
+    - id: key
+      type: System.Object
+      description: The value of the <code>property</code> parameter to search for.
+    return:
+      type: System.Int32
+      description: The index of the row that has the given <xref href="System.ComponentModel.PropertyDescriptor"></xref> .
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#Find*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#IsSorted
+  id: System#ComponentModel#IBindingList#IsSorted
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.IsSorted
+  nameWithType: BindingList<T>.IBindingList.IsSorted
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.IsSorted
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: For a description of this member, see <xref href="stem.ComponentModel.IBindingList.IsSorted%2A"></xref>.
+  remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.BindingList%601> instance is cast to an <xref:System.ComponentModel.IBindingList> interface.
+  syntax:
+    content: bool System.ComponentModel.IBindingList.IsSorted { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if <xref href="stem.ComponentModel.IBindingListView.ApplySort%2A"></xref> has been called and <xref href="stem.ComponentModel.IBindingList.RemoveSort%2A"></xref> has not been called; otherwise, `false`.'
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#IsSorted*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#RemoveIndex(System.ComponentModel.PropertyDescriptor)
+  id: System#ComponentModel#IBindingList#RemoveIndex(System.ComponentModel.PropertyDescriptor)
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.RemoveIndex(PropertyDescriptor)
+  nameWithType: BindingList<T>.IBindingList.RemoveIndex(PropertyDescriptor)
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.RemoveIndex(PropertyDescriptor)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: For a description of this member, see <xref href="stem.ComponentModel.IBindingList.RemoveIndex%2A"></xref>.
+  remarks: "The base implementation of this method does nothing. If this functionality is desired, a derived class must implement it.  \n  \n This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.BindingList%601> instance is cast to an <xref:System.ComponentModel.IBindingList> interface."
+  syntax:
+    content: void IBindingList.RemoveIndex (System.ComponentModel.PropertyDescriptor prop);
+    parameters:
+    - id: prop
+      type: System.ComponentModel.PropertyDescriptor
+      description: A <xref href="System.ComponentModel.PropertyDescriptor"></xref> to remove from the indexes used for searching.
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#RemoveIndex*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#RemoveSort
+  id: System#ComponentModel#IBindingList#RemoveSort
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.RemoveSort()
+  nameWithType: BindingList<T>.IBindingList.RemoveSort()
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.RemoveSort()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: For a description of this member, see <xref href="stem.ComponentModel.IBindingList.RemoveSort%2A"></xref>
+  remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.BindingList%601> instance is cast to an <xref:System.ComponentModel.IBindingList> interface.
+  syntax:
+    content: void IBindingList.RemoveSort ();
+    parameters: []
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#RemoveSort*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SortDirection
+  id: System#ComponentModel#IBindingList#SortDirection
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.SortDirection
+  nameWithType: BindingList<T>.IBindingList.SortDirection
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.SortDirection
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: For a description of this member, see <xref href="stem.ComponentModel.IBindingList.SortDirection%2A"></xref>.
+  remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.BindingList%601> instance is cast to an <xref:System.ComponentModel.IBindingList> interface.
+  syntax:
+    content: System.ComponentModel.ListSortDirection System.ComponentModel.IBindingList.SortDirection { get; }
+    return:
+      type: System.ComponentModel.ListSortDirection
+      description: One of the <xref href="System.ComponentModel.ListSortDirection"></xref> values.
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SortDirection*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SortProperty
+  id: System#ComponentModel#IBindingList#SortProperty
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.SortProperty
+  nameWithType: BindingList<T>.IBindingList.SortProperty
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.SortProperty
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: For a description of this member, see <xref href="stem.ComponentModel.IBindingList.SortProperty%2A"></xref>.
+  remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.BindingList%601> instance is cast to an <xref:System.ComponentModel.IBindingList> interface.
+  syntax:
+    content: System.ComponentModel.PropertyDescriptor System.ComponentModel.IBindingList.SortProperty { get; }
+    return:
+      type: System.ComponentModel.PropertyDescriptor
+      description: The <xref href="System.ComponentModel.PropertyDescriptor"></xref> that is being used for sorting.
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SortProperty*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsChangeNotification
+  id: System#ComponentModel#IBindingList#SupportsChangeNotification
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.SupportsChangeNotification
+  nameWithType: BindingList<T>.IBindingList.SupportsChangeNotification
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.SupportsChangeNotification
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: For a description of this member, see <xref href="stem.ComponentModel.IBindingList.SupportsChangeNotification%2A"></xref>.
+  remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.BindingList%601> instance is cast to an <xref:System.ComponentModel.IBindingList> interface.
+  syntax:
+    content: bool System.ComponentModel.IBindingList.SupportsChangeNotification { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if a <xref href="System.ComponentModel.IBindingList.ListChanged"></xref> event is raised when the list changes or when an item changes; otherwise, `false`.'
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsChangeNotification*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsSearching
+  id: System#ComponentModel#IBindingList#SupportsSearching
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.SupportsSearching
+  nameWithType: BindingList<T>.IBindingList.SupportsSearching
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.SupportsSearching
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: For a description of this member, see <xref href="stem.ComponentModel.IBindingList.SupportsSearching%2A"></xref>.
+  remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.BindingList%601> instance is cast to an <xref:System.ComponentModel.IBindingList> interface.
+  syntax:
+    content: bool System.ComponentModel.IBindingList.SupportsSearching { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the list supports searching using the <xref href="stem.ComponentModel.IBindingList.Find%2A"></xref> method; otherwise, `false`.'
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsSearching*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsSorting
+  id: System#ComponentModel#IBindingList#SupportsSorting
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IBindingList.SupportsSorting
+  nameWithType: BindingList<T>.IBindingList.SupportsSorting
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.SupportsSorting
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: For a description of this member, see <xref href="stem.ComponentModel.IBindingList.SupportsSorting%2A"></xref>.
+  remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.BindingList%601> instance is cast to an <xref:System.ComponentModel.IBindingList> interface.
+  syntax:
+    content: bool System.ComponentModel.IBindingList.SupportsSorting { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the list supports sorting; otherwise, `false`.'
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsSorting*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IRaiseItemChangedEvents#RaisesItemChangedEvents
+  id: System#ComponentModel#IRaiseItemChangedEvents#RaisesItemChangedEvents
+  isEii: true
+  parent: System.ComponentModel.BindingList`1
+  langs:
+  - csharp
+  name: IRaiseItemChangedEvents.RaisesItemChangedEvents
+  nameWithType: BindingList<T>.IRaiseItemChangedEvents.RaisesItemChangedEvents
+  fullName: System.ComponentModel.BindingList<T>.IRaiseItemChangedEvents.RaisesItemChangedEvents
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets a value indicating whether item property value changes raise <xref href="stem.ComponentModel.BindingList%601.ListChanged"></xref> events of type <xref href="System.ComponentModel.ListChangedType"></xref>. This member cannot be overridden in a derived class.
+  remarks: IRaiseItemChangedEvents.RaisesItemChangedEvents checks the list type to see if it implements the <xref:System.ComponentModel.INotifyPropertyChanged> interface to indicate that it raises <xref:System.ComponentModel.BindingList%601.ListChanged> events of <xref:System.ComponentModel.ListChangedType> when property values are changed on individual list items. This member cannot be overridden in a derived class.
+  syntax:
+    content: bool System.ComponentModel.IRaiseItemChangedEvents.RaisesItemChangedEvents { get; }
+    return:
+      type: System.Boolean
+      description: '`true `if the list type implements <xref href="System.ComponentModel.INotifyPropertyChanged"></xref>, otherwise, `false`. The default is `false`.'
+  overload: System.ComponentModel.BindingList`1.System#ComponentModel#IRaiseItemChangedEvents#RaisesItemChangedEvents*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\BindingList`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/BindingList`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Collections.ObjectModel.Collection`1
+  isExternal: false
+  name: System.Collections.ObjectModel.Collection<T>
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.InvalidCastException
+  parent: System
+  isExternal: false
+  name: InvalidCastException
+  nameWithType: InvalidCastException
+  fullName: System.InvalidCastException
+- uid: System.NotSupportedException
+  parent: System
+  isExternal: false
+  name: NotSupportedException
+  nameWithType: NotSupportedException
+  fullName: System.NotSupportedException
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.ComponentModel.BindingList`1.#ctor
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: BindingList<T>()
+  nameWithType: BindingList<T>.BindingList<T>()
+  fullName: System.ComponentModel.BindingList<T>.BindingList<T>()
+- uid: System.ComponentModel.BindingList`1.#ctor(System.Collections.Generic.IList{`0})
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: BindingList<T>(IList<T>)
+  nameWithType: BindingList<T>.BindingList<T>(IList<T>)
+  fullName: System.ComponentModel.BindingList<T>.BindingList<T>(IList<T>)
+- uid: System.Collections.Generic.IList`1
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+- uid: System.ComponentModel.BindingList`1.AddingNew
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: AddingNew
+  nameWithType: BindingList<T>.AddingNew
+  fullName: System.ComponentModel.BindingList<T>.AddingNew
+- uid: System.ComponentModel.AddingNewEventHandler
+  parent: System.ComponentModel
+  isExternal: false
+  name: AddingNewEventHandler
+  nameWithType: AddingNewEventHandler
+  fullName: System.ComponentModel.AddingNewEventHandler
+- uid: System.ComponentModel.BindingList`1.AddNew
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: AddNew()
+  nameWithType: BindingList<T>.AddNew()
+  fullName: System.ComponentModel.BindingList<T>.AddNew()
+- uid: T
+  isExternal: true
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.ComponentModel.BindingList`1.AddNewCore
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: AddNewCore()
+  nameWithType: BindingList<T>.AddNewCore()
+  fullName: System.ComponentModel.BindingList<T>.AddNewCore()
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.ComponentModel.BindingList`1.AllowEdit
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: AllowEdit
+  nameWithType: BindingList<T>.AllowEdit
+  fullName: System.ComponentModel.BindingList<T>.AllowEdit
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ComponentModel.BindingList`1.AllowNew
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: AllowNew
+  nameWithType: BindingList<T>.AllowNew
+  fullName: System.ComponentModel.BindingList<T>.AllowNew
+- uid: System.ComponentModel.BindingList`1.AllowRemove
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: AllowRemove
+  nameWithType: BindingList<T>.AllowRemove
+  fullName: System.ComponentModel.BindingList<T>.AllowRemove
+- uid: System.ComponentModel.BindingList`1.ApplySortCore(System.ComponentModel.PropertyDescriptor,System.ComponentModel.ListSortDirection)
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: ApplySortCore(PropertyDescriptor,ListSortDirection)
+  nameWithType: BindingList<T>.ApplySortCore(PropertyDescriptor,ListSortDirection)
+  fullName: System.ComponentModel.BindingList<T>.ApplySortCore(PropertyDescriptor,ListSortDirection)
+- uid: System.ComponentModel.PropertyDescriptor
+  parent: System.ComponentModel
+  isExternal: false
+  name: PropertyDescriptor
+  nameWithType: PropertyDescriptor
+  fullName: System.ComponentModel.PropertyDescriptor
+- uid: System.ComponentModel.ListSortDirection
+  parent: System.ComponentModel
+  isExternal: false
+  name: ListSortDirection
+  nameWithType: ListSortDirection
+  fullName: System.ComponentModel.ListSortDirection
+- uid: System.ComponentModel.BindingList`1.CancelNew(System.Int32)
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: CancelNew(Int32)
+  nameWithType: BindingList<T>.CancelNew(Int32)
+  fullName: System.ComponentModel.BindingList<T>.CancelNew(Int32)
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.ComponentModel.BindingList`1.ClearItems
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: ClearItems()
+  nameWithType: BindingList<T>.ClearItems()
+  fullName: System.ComponentModel.BindingList<T>.ClearItems()
+- uid: System.ComponentModel.BindingList`1.EndNew(System.Int32)
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: EndNew(Int32)
+  nameWithType: BindingList<T>.EndNew(Int32)
+  fullName: System.ComponentModel.BindingList<T>.EndNew(Int32)
+- uid: System.ComponentModel.BindingList`1.FindCore(System.ComponentModel.PropertyDescriptor,System.Object)
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: FindCore(PropertyDescriptor,Object)
+  nameWithType: BindingList<T>.FindCore(PropertyDescriptor,Object)
+  fullName: System.ComponentModel.BindingList<T>.FindCore(PropertyDescriptor,Object)
+- uid: System.ComponentModel.BindingList`1.InsertItem(System.Int32,`0)
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: InsertItem(Int32,T)
+  nameWithType: BindingList<T>.InsertItem(Int32,T)
+  fullName: System.ComponentModel.BindingList<T>.InsertItem(Int32,T)
+- uid: System.ComponentModel.BindingList`1.IsSortedCore
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IsSortedCore
+  nameWithType: BindingList<T>.IsSortedCore
+  fullName: System.ComponentModel.BindingList<T>.IsSortedCore
+- uid: System.ComponentModel.BindingList`1.ListChanged
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: ListChanged
+  nameWithType: BindingList<T>.ListChanged
+  fullName: System.ComponentModel.BindingList<T>.ListChanged
+- uid: System.ComponentModel.ListChangedEventHandler
+  parent: System.ComponentModel
+  isExternal: false
+  name: ListChangedEventHandler
+  nameWithType: ListChangedEventHandler
+  fullName: System.ComponentModel.ListChangedEventHandler
+- uid: System.ComponentModel.BindingList`1.OnAddingNew(System.ComponentModel.AddingNewEventArgs)
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: OnAddingNew(AddingNewEventArgs)
+  nameWithType: BindingList<T>.OnAddingNew(AddingNewEventArgs)
+  fullName: System.ComponentModel.BindingList<T>.OnAddingNew(AddingNewEventArgs)
+- uid: System.ComponentModel.AddingNewEventArgs
+  parent: System.ComponentModel
+  isExternal: false
+  name: AddingNewEventArgs
+  nameWithType: AddingNewEventArgs
+  fullName: System.ComponentModel.AddingNewEventArgs
+- uid: System.ComponentModel.BindingList`1.OnListChanged(System.ComponentModel.ListChangedEventArgs)
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: OnListChanged(ListChangedEventArgs)
+  nameWithType: BindingList<T>.OnListChanged(ListChangedEventArgs)
+  fullName: System.ComponentModel.BindingList<T>.OnListChanged(ListChangedEventArgs)
+- uid: System.ComponentModel.ListChangedEventArgs
+  parent: System.ComponentModel
+  isExternal: false
+  name: ListChangedEventArgs
+  nameWithType: ListChangedEventArgs
+  fullName: System.ComponentModel.ListChangedEventArgs
+- uid: System.ComponentModel.BindingList`1.RaiseListChangedEvents
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: RaiseListChangedEvents
+  nameWithType: BindingList<T>.RaiseListChangedEvents
+  fullName: System.ComponentModel.BindingList<T>.RaiseListChangedEvents
+- uid: System.ComponentModel.BindingList`1.RemoveItem(System.Int32)
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: RemoveItem(Int32)
+  nameWithType: BindingList<T>.RemoveItem(Int32)
+  fullName: System.ComponentModel.BindingList<T>.RemoveItem(Int32)
+- uid: System.ComponentModel.BindingList`1.RemoveSortCore
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: RemoveSortCore()
+  nameWithType: BindingList<T>.RemoveSortCore()
+  fullName: System.ComponentModel.BindingList<T>.RemoveSortCore()
+- uid: System.ComponentModel.BindingList`1.ResetBindings
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: ResetBindings()
+  nameWithType: BindingList<T>.ResetBindings()
+  fullName: System.ComponentModel.BindingList<T>.ResetBindings()
+- uid: System.ComponentModel.BindingList`1.ResetItem(System.Int32)
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: ResetItem(Int32)
+  nameWithType: BindingList<T>.ResetItem(Int32)
+  fullName: System.ComponentModel.BindingList<T>.ResetItem(Int32)
+- uid: System.ComponentModel.BindingList`1.SetItem(System.Int32,`0)
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: SetItem(Int32,T)
+  nameWithType: BindingList<T>.SetItem(Int32,T)
+  fullName: System.ComponentModel.BindingList<T>.SetItem(Int32,T)
+- uid: System.ComponentModel.BindingList`1.SortDirectionCore
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: SortDirectionCore
+  nameWithType: BindingList<T>.SortDirectionCore
+  fullName: System.ComponentModel.BindingList<T>.SortDirectionCore
+- uid: System.ComponentModel.BindingList`1.SortPropertyCore
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: SortPropertyCore
+  nameWithType: BindingList<T>.SortPropertyCore
+  fullName: System.ComponentModel.BindingList<T>.SortPropertyCore
+- uid: System.ComponentModel.BindingList`1.SupportsChangeNotificationCore
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: SupportsChangeNotificationCore
+  nameWithType: BindingList<T>.SupportsChangeNotificationCore
+  fullName: System.ComponentModel.BindingList<T>.SupportsChangeNotificationCore
+- uid: System.ComponentModel.BindingList`1.SupportsSearchingCore
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: SupportsSearchingCore
+  nameWithType: BindingList<T>.SupportsSearchingCore
+  fullName: System.ComponentModel.BindingList<T>.SupportsSearchingCore
+- uid: System.ComponentModel.BindingList`1.SupportsSortingCore
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: SupportsSortingCore
+  nameWithType: BindingList<T>.SupportsSortingCore
+  fullName: System.ComponentModel.BindingList<T>.SupportsSortingCore
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AddIndex(System.ComponentModel.PropertyDescriptor)
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.AddIndex(PropertyDescriptor)
+  nameWithType: BindingList<T>.IBindingList.AddIndex(PropertyDescriptor)
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.AddIndex(PropertyDescriptor)
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AddNew
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.AddNew()
+  nameWithType: BindingList<T>.IBindingList.AddNew()
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.AddNew()
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowEdit
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.AllowEdit
+  nameWithType: BindingList<T>.IBindingList.AllowEdit
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.AllowEdit
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowNew
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.AllowNew
+  nameWithType: BindingList<T>.IBindingList.AllowNew
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.AllowNew
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowRemove
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.AllowRemove
+  nameWithType: BindingList<T>.IBindingList.AllowRemove
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.AllowRemove
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#ApplySort(System.ComponentModel.PropertyDescriptor,System.ComponentModel.ListSortDirection)
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.ApplySort(PropertyDescriptor,ListSortDirection)
+  nameWithType: BindingList<T>.IBindingList.ApplySort(PropertyDescriptor,ListSortDirection)
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.ApplySort(PropertyDescriptor,ListSortDirection)
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#Find(System.ComponentModel.PropertyDescriptor,System.Object)
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.Find(PropertyDescriptor,Object)
+  nameWithType: BindingList<T>.IBindingList.Find(PropertyDescriptor,Object)
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.Find(PropertyDescriptor,Object)
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#IsSorted
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.IsSorted
+  nameWithType: BindingList<T>.IBindingList.IsSorted
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.IsSorted
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#RemoveIndex(System.ComponentModel.PropertyDescriptor)
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.RemoveIndex(PropertyDescriptor)
+  nameWithType: BindingList<T>.IBindingList.RemoveIndex(PropertyDescriptor)
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.RemoveIndex(PropertyDescriptor)
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#RemoveSort
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.RemoveSort()
+  nameWithType: BindingList<T>.IBindingList.RemoveSort()
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.RemoveSort()
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SortDirection
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.SortDirection
+  nameWithType: BindingList<T>.IBindingList.SortDirection
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.SortDirection
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SortProperty
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.SortProperty
+  nameWithType: BindingList<T>.IBindingList.SortProperty
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.SortProperty
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsChangeNotification
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.SupportsChangeNotification
+  nameWithType: BindingList<T>.IBindingList.SupportsChangeNotification
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.SupportsChangeNotification
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsSearching
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.SupportsSearching
+  nameWithType: BindingList<T>.IBindingList.SupportsSearching
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.SupportsSearching
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsSorting
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IBindingList.SupportsSorting
+  nameWithType: BindingList<T>.IBindingList.SupportsSorting
+  fullName: System.ComponentModel.BindingList<T>.IBindingList.SupportsSorting
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IRaiseItemChangedEvents#RaisesItemChangedEvents
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IRaiseItemChangedEvents.RaisesItemChangedEvents
+  nameWithType: BindingList<T>.IRaiseItemChangedEvents.RaisesItemChangedEvents
+  fullName: System.ComponentModel.BindingList<T>.IRaiseItemChangedEvents.RaisesItemChangedEvents
+- uid: System.ComponentModel.BindingList`1.#ctor*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: BindingList<T>
+  nameWithType: BindingList<T>.BindingList<T>
+- uid: System.ComponentModel.BindingList`1.AddNew*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: AddNew
+  nameWithType: BindingList<T>.AddNew
+- uid: System.ComponentModel.BindingList`1.AddNewCore*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: AddNewCore
+  nameWithType: BindingList<T>.AddNewCore
+- uid: System.ComponentModel.BindingList`1.AllowEdit*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: AllowEdit
+  nameWithType: BindingList<T>.AllowEdit
+- uid: System.ComponentModel.BindingList`1.AllowNew*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: AllowNew
+  nameWithType: BindingList<T>.AllowNew
+- uid: System.ComponentModel.BindingList`1.AllowRemove*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: AllowRemove
+  nameWithType: BindingList<T>.AllowRemove
+- uid: System.ComponentModel.BindingList`1.ApplySortCore*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: ApplySortCore
+  nameWithType: BindingList<T>.ApplySortCore
+- uid: System.ComponentModel.BindingList`1.CancelNew*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: CancelNew
+  nameWithType: BindingList<T>.CancelNew
+- uid: System.ComponentModel.BindingList`1.ClearItems*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: ClearItems
+  nameWithType: BindingList<T>.ClearItems
+- uid: System.ComponentModel.BindingList`1.EndNew*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: EndNew
+  nameWithType: BindingList<T>.EndNew
+- uid: System.ComponentModel.BindingList`1.FindCore*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: FindCore
+  nameWithType: BindingList<T>.FindCore
+- uid: System.ComponentModel.BindingList`1.InsertItem*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: InsertItem
+  nameWithType: BindingList<T>.InsertItem
+- uid: System.ComponentModel.BindingList`1.IsSortedCore*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: IsSortedCore
+  nameWithType: BindingList<T>.IsSortedCore
+- uid: System.ComponentModel.BindingList`1.OnAddingNew*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: OnAddingNew
+  nameWithType: BindingList<T>.OnAddingNew
+- uid: System.ComponentModel.BindingList`1.OnListChanged*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: OnListChanged
+  nameWithType: BindingList<T>.OnListChanged
+- uid: System.ComponentModel.BindingList`1.RaiseListChangedEvents*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: RaiseListChangedEvents
+  nameWithType: BindingList<T>.RaiseListChangedEvents
+- uid: System.ComponentModel.BindingList`1.RemoveItem*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: RemoveItem
+  nameWithType: BindingList<T>.RemoveItem
+- uid: System.ComponentModel.BindingList`1.RemoveSortCore*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: RemoveSortCore
+  nameWithType: BindingList<T>.RemoveSortCore
+- uid: System.ComponentModel.BindingList`1.ResetBindings*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: ResetBindings
+  nameWithType: BindingList<T>.ResetBindings
+- uid: System.ComponentModel.BindingList`1.ResetItem*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: ResetItem
+  nameWithType: BindingList<T>.ResetItem
+- uid: System.ComponentModel.BindingList`1.SetItem*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: SetItem
+  nameWithType: BindingList<T>.SetItem
+- uid: System.ComponentModel.BindingList`1.SortDirectionCore*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: SortDirectionCore
+  nameWithType: BindingList<T>.SortDirectionCore
+- uid: System.ComponentModel.BindingList`1.SortPropertyCore*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: SortPropertyCore
+  nameWithType: BindingList<T>.SortPropertyCore
+- uid: System.ComponentModel.BindingList`1.SupportsChangeNotificationCore*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: SupportsChangeNotificationCore
+  nameWithType: BindingList<T>.SupportsChangeNotificationCore
+- uid: System.ComponentModel.BindingList`1.SupportsSearchingCore*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: SupportsSearchingCore
+  nameWithType: BindingList<T>.SupportsSearchingCore
+- uid: System.ComponentModel.BindingList`1.SupportsSortingCore*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: SupportsSortingCore
+  nameWithType: BindingList<T>.SupportsSortingCore
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AddIndex*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.AddIndex
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.AddIndex
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AddNew*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.AddNew
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.AddNew
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowEdit*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.AllowEdit
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.AllowEdit
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowNew*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.AllowNew
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.AllowNew
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#AllowRemove*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.AllowRemove
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.AllowRemove
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#ApplySort*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.ApplySort
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.ApplySort
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#Find*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.Find
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.Find
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#IsSorted*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.IsSorted
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.IsSorted
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#RemoveIndex*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.RemoveIndex
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.RemoveIndex
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#RemoveSort*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.RemoveSort
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.RemoveSort
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SortDirection*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.SortDirection
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.SortDirection
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SortProperty*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.SortProperty
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.SortProperty
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsChangeNotification*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.SupportsChangeNotification
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.SupportsChangeNotification
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsSearching*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.SupportsSearching
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.SupportsSearching
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IBindingList#SupportsSorting*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IBindingList.SupportsSorting
+  nameWithType: BindingList<T>.System.ComponentModel.IBindingList.SupportsSorting
+- uid: System.ComponentModel.BindingList`1.System#ComponentModel#IRaiseItemChangedEvents#RaisesItemChangedEvents*
+  parent: System.ComponentModel.BindingList`1
+  isExternal: false
+  name: System.ComponentModel.IRaiseItemChangedEvents.RaisesItemChangedEvents
+  nameWithType: BindingList<T>.System.ComponentModel.IRaiseItemChangedEvents.RaisesItemChangedEvents

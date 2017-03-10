@@ -1,0 +1,520 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  id: IMessageFilterTable`1
+  children:
+  - System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilter(System.ServiceModel.Channels.Message,System.ServiceModel.Dispatcher.MessageFilter@)
+  - System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilter(System.ServiceModel.Channels.MessageBuffer,System.ServiceModel.Dispatcher.MessageFilter@)
+  - System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilters(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  - System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilters(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  - System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValue(System.ServiceModel.Channels.Message,`0@)
+  - System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValue(System.ServiceModel.Channels.MessageBuffer,`0@)
+  - System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValues(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{`0})
+  - System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValues(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{`0})
+  langs:
+  - csharp
+  name: IMessageFilterTable<TFilterData>
+  nameWithType: IMessageFilterTable<TFilterData>
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>
+  type: Interface
+  summary: An `interface` that defines the contract that a filter table must implement to inspect messages with query criteria derived from one or more filters.
+  remarks: "The filter table is a core component of the filter engine. The primary use of the filter engine in [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] is to match application logic to messages by finding all the filters that match a message.  \n  \n A filter table allows multiple filters to be matched against a single message more efficiently than they can be matched separately. A filter table associates filter data with filters. The table is a collection of key-value pairs, where the key is the <xref:System.ServiceModel.Dispatcher.MessageFilter>, and the value is the associated filter data. Filter data can be any data of the type specified in the generic parameter and can be used to specify what actions to take if a message is matched by a filter in the table.  \n  \n Filter table entries can be accessed using the <xref:System.Collections.Generic.IDictionary%602> functionality that IMessageFilterTable(TFilterData) inherits.  \n  \n Note that a filter instance can only be added to a given IMessageFilterTable(TFilterData) once. To add multiple instances of this filter to the same filter table, use a filter constructor to create additional instances.  \n  \n A filter matches a message when the message satisfies the query criteria of the filter. There are four overloaded matching methods. The data returned is either the filter data or the <xref:System.ServiceModel.Dispatcher.MessageFilter> objects themselves. This data is returned whether multiple matches are allowed or only a single match. The following table shows this information for each overload.  \n  \n|Method Name|Matches|Data Returned|  \n|-----------------|-------------|-------------------|  \n|<xref:System.ServiceModel.Dispatcher.IMessageFilterTable%601.GetMatchingValue%2A>|Single|`FilterData`|  \n|<xref:System.ServiceModel.Dispatcher.IMessageFilterTable%601.GetMatchingFilter%2A>|Single|<xref:System.ServiceModel.Dispatcher.MessageFilter>|  \n|<xref:System.ServiceModel.Dispatcher.IMessageFilterTable%601.GetMatchingValues%2A>|Multiple|`FilterData`|  \n|<xref:System.ServiceModel.Dispatcher.IMessageFilterTable%601.GetMatchingFilters%2A>|Multiple|<xref:System.ServiceModel.Dispatcher.MessageFilter> objects|  \n  \n Each method contains two overloads. The difference between the two overloads is that one takes a <xref:System.ServiceModel.Channels.Message> parameter and is not permitted to examine the contents of the body; the other takes a <xref:System.ServiceModel.Channels.MessageBuffer> parameter and can examine any part of the message. If you call a method with the message parameter, and the filter table contains a filter that examines the content of the message body, an exception is thrown. If you are unsure about the filters in a table, call the overload that takes a message buffer.  \n  \n Message headers are automatically buffered and can be inspected by a filter without being consumed. But if the body is to be inspected by a filter, then the entire message must be buffered because an unbuffered message body is consumed by a query and its contents destroyed.  \n  \n The following classes implement IMessageFilterTable(TFilterData):  \n  \n-   <xref:System.ServiceModel.Dispatcher.MessageFilterTable%601>  \n  \n-   <xref:System.ServiceModel.Dispatcher.XPathMessageFilterTable%601>"
+  syntax:
+    content: 'public interface IMessageFilterTable<TFilterData> : System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>>, System.Collections.Generic.IDictionary<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>>'
+    typeParameters:
+    - id: TFilterData
+      description: The type of data associated with each filter in the table.
+  implements:
+  - System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>>
+  - System.Collections.Generic.IDictionary<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>
+  - System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>>
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\IMessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/IMessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilter(System.ServiceModel.Channels.Message,System.ServiceModel.Dispatcher.MessageFilter@)
+  id: GetMatchingFilter(System.ServiceModel.Channels.Message,System.ServiceModel.Dispatcher.MessageFilter@)
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingFilter(Message,MessageFilter)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingFilter(Message,MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingFilter(Message,MessageFilter)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of exactly one filter in the table is satisfied by the specified message, and returns that filter in an `out` parameter.
+  remarks: "Use this method when a single filter is expected to match the message and the matching filter is required.  \n  \n If the body of the message must be inspected by a filter in the filter table, use the <xref:System.ServiceModel.Dispatcher.IMessageFilterTable%601.GetMatchingFilter%2A> version of the method."
+  syntax:
+    content: public bool GetMatchingFilter (System.ServiceModel.Channels.Message message, out System.ServiceModel.Dispatcher.MessageFilter filter);
+    parameters:
+    - id: message
+      type: System.ServiceModel.Channels.Message
+      description: The <xref href="System.ServiceModel.Channels.Message"></xref> to test.
+    - id: filter
+      type: System.ServiceModel.Dispatcher.MessageFilter
+      description: '`out` parameter that stores the filter that is satisfied by the <code>message</code>. If no filter was found, the parameter is set to its default value.'
+    return:
+      type: System.Boolean
+      description: '`true` if the match criterion of at least one filter in the table is satisfied by <code>message</code>; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilter*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\IMessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/IMessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilter(System.ServiceModel.Channels.MessageBuffer,System.ServiceModel.Dispatcher.MessageFilter@)
+  id: GetMatchingFilter(System.ServiceModel.Channels.MessageBuffer,System.ServiceModel.Dispatcher.MessageFilter@)
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingFilter(MessageBuffer,MessageFilter)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingFilter(MessageBuffer,MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingFilter(MessageBuffer,MessageFilter)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of exactly one filter in the table is satisfied by the specified message or buffered message, and returns that filter in an `out` parameter.
+  remarks: Use this method when a single filter is expected to match the buffered message, the matching filter must be returned, and the body of the message may have to be inspected.
+  syntax:
+    content: public bool GetMatchingFilter (System.ServiceModel.Channels.MessageBuffer messageBuffer, out System.ServiceModel.Dispatcher.MessageFilter filter);
+    parameters:
+    - id: messageBuffer
+      type: System.ServiceModel.Channels.MessageBuffer
+      description: The <xref href="System.ServiceModel.Channels.MessageBuffer"></xref> to test.
+    - id: filter
+      type: System.ServiceModel.Dispatcher.MessageFilter
+      description: '`out` parameter that stores the filter that is satisfied by the <code>message</code>. If no filter was found, the parameter is set to its default value.'
+    return:
+      type: System.Boolean
+      description: '`true` if the match criterion of at least one filter in the table is satisfied by <code>messageBuffer</code>; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilter*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\IMessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/IMessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilters(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  id: GetMatchingFilters(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingFilters(Message,ICollection<MessageFilter>)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingFilters(Message,ICollection<MessageFilter>)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingFilters(Message,ICollection<MessageFilter>)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of a filter in the table is satisfied by the specified message, and adds the matching filters to a collection.
+  remarks: Use this method when more than one filter is expected to match the message, the matching filters are required, and the body of the message does not have to be inspected.
+  syntax:
+    content: public bool GetMatchingFilters (System.ServiceModel.Channels.Message message, System.Collections.Generic.ICollection<System.ServiceModel.Dispatcher.MessageFilter> results);
+    parameters:
+    - id: message
+      type: System.ServiceModel.Channels.Message
+      description: The <xref href="System.ServiceModel.Channels.Message"></xref> to test.
+    - id: results
+      type: System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter}
+      description: Reference parameter that stores the <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> objects that match in <xref href="stem.Collections.Generic.ICollection%601"></xref><Filter>.
+    return:
+      type: System.Boolean
+      description: '`true` if the match criterion of at least one filter in the table is satisfied by <code>message</code>; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilters*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\IMessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/IMessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilters(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  id: GetMatchingFilters(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingFilters(MessageBuffer,ICollection<MessageFilter>)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingFilters(MessageBuffer,ICollection<MessageFilter>)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingFilters(MessageBuffer,ICollection<MessageFilter>)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of a filter in the table is satisfied by the specified buffered message, and adds the matching filters to a collection.
+  remarks: Use this method when more than one filter is expected to match the buffered message, the matching filter is required, and the body of the message may have to be inspected.
+  syntax:
+    content: public bool GetMatchingFilters (System.ServiceModel.Channels.MessageBuffer messageBuffer, System.Collections.Generic.ICollection<System.ServiceModel.Dispatcher.MessageFilter> results);
+    parameters:
+    - id: messageBuffer
+      type: System.ServiceModel.Channels.MessageBuffer
+      description: The <xref href="System.ServiceModel.Channels.MessageBuffer"></xref> to test.
+    - id: results
+      type: System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter}
+      description: Reference parameter that stores the <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> objects that match in <xref href="stem.Collections.Generic.ICollection%601"></xref><Filter>.
+    return:
+      type: System.Boolean
+      description: '`true` if the match criterion of at least one filter in the table is satisfied by <code>messageBuffer</code>; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilters*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\IMessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/IMessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValue(System.ServiceModel.Channels.Message,`0@)
+  id: GetMatchingValue(System.ServiceModel.Channels.Message,`0@)
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingValue(Message,TFilterData)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingValue(Message,TFilterData)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingValue(Message,TFilterData)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of exactly one filter in the table is satisfied by the specified message, and adds the matching filter data to a collection.
+  remarks: "Use this method when a single filter is expected to match the message and only the filter data from the matching filter must be recovered.  \n  \n This method expects at most a single matching filter. If more than one filter matches, a <xref:System.ServiceModel.Dispatcher.MultipleFilterMatchesException> must be thrown.  \n  \n If the body of the message must be inspected by a filter in the filter table, buffer the message using <xref:System.ServiceModel.Channels.Message.CreateBufferedCopy%2A> and pass it to the <xref:System.ServiceModel.Dispatcher.IMessageFilterTable%601.GetMatchingValue%2A> version of the method."
+  syntax:
+    content: public bool GetMatchingValue (System.ServiceModel.Channels.Message message, out TFilterData value);
+    parameters:
+    - id: message
+      type: System.ServiceModel.Channels.Message
+      description: The <xref href="System.ServiceModel.Channels.Message"></xref> to test.
+    - id: value
+      type: TFilterData
+      description: '`out` parameter that stores the <code>FilterData</code> that matches the <code>message</code>.'
+    return:
+      type: System.Boolean
+      description: '`true` if the match criterion of exactly one filter in the table is satisfied by the message; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValue*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\IMessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/IMessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValue(System.ServiceModel.Channels.MessageBuffer,`0@)
+  id: GetMatchingValue(System.ServiceModel.Channels.MessageBuffer,`0@)
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingValue(MessageBuffer,TFilterData)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingValue(MessageBuffer,TFilterData)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingValue(MessageBuffer,TFilterData)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of exactly one filter in the table is satisfied by the specified buffered message, and adds the matching filter data to a collection.
+  remarks: Use this method when a single filter is expected to match the buffered message, only the filter data from the matching filter must be recovered, and the body of the message may have to be inspected.
+  syntax:
+    content: public bool GetMatchingValue (System.ServiceModel.Channels.MessageBuffer messageBuffer, out TFilterData value);
+    parameters:
+    - id: messageBuffer
+      type: System.ServiceModel.Channels.MessageBuffer
+      description: The <xref href="System.ServiceModel.Channels.MessageBuffer"></xref> to test.
+    - id: value
+      type: TFilterData
+      description: '`out` parameter that stores the <code>FilterData</code> that matches the <code>messageBuffer</code>.'
+    return:
+      type: System.Boolean
+      description: '`true` if the match criterion of exactly one filter in the table is satisfied by the message; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValue*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\IMessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/IMessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValues(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{`0})
+  id: GetMatchingValues(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{`0})
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingValues(Message,ICollection<TFilterData>)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingValues(Message,ICollection<TFilterData>)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingValues(Message,ICollection<TFilterData>)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of at least one filter in the table is satisfied by the specified message, and adds the <code>FilterData</code> of the matching filters to a collection.
+  remarks: "Use this method when one or more filters are expected to match the message, only the filter data is required, and the contents of the body of the message are not to be inspected.  \n  \n The filter data of the matching <xref:System.ServiceModel.Dispatcher.MessageFilter> objects is stored in the `results` parameter.  \n  \n If the body of the message is inspected by a filter in the filter table, buffer the message and pass it to the <xref:System.ServiceModel.Dispatcher.IMessageFilterTable%601.GetMatchingValues%2A> version of the method."
+  syntax:
+    content: public bool GetMatchingValues (System.ServiceModel.Channels.Message message, System.Collections.Generic.ICollection<TFilterData> results);
+    parameters:
+    - id: message
+      type: System.ServiceModel.Channels.Message
+      description: The <xref href="System.ServiceModel.Channels.Message"></xref> to test.
+    - id: results
+      type: System.Collections.Generic.ICollection{TFilterData}
+      description: Reference parameter that stores the filter data of the matching filters in a generic collection.
+    return:
+      type: System.Boolean
+      description: '`true` if the match criterion of at least one filter in the table is satisfied by <code>message</code>; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValues*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\IMessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/IMessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValues(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{`0})
+  id: GetMatchingValues(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{`0})
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingValues(MessageBuffer,ICollection<TFilterData>)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingValues(MessageBuffer,ICollection<TFilterData>)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingValues(MessageBuffer,ICollection<TFilterData>)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of at least one filter in the table is satisfied by the specified buffered message, and adds the <code>FilterData</code> of the matching filters to a collection.
+  remarks: "Use this method when one or more filters are expected to match the buffered message, only the filter data is required, and the body of the message may require inspection.  \n  \n The filter data of the matching <xref:System.ServiceModel.Dispatcher.MessageFilter> objects is stored in the `results` parameter."
+  syntax:
+    content: public bool GetMatchingValues (System.ServiceModel.Channels.MessageBuffer messageBuffer, System.Collections.Generic.ICollection<TFilterData> results);
+    parameters:
+    - id: messageBuffer
+      type: System.ServiceModel.Channels.MessageBuffer
+      description: The <xref href="System.ServiceModel.Channels.MessageBuffer"></xref> to test.
+    - id: results
+      type: System.Collections.Generic.ICollection{TFilterData}
+      description: Reference parameter that stores the filter data of the matching filters in a generic <xref href="stem.Collections.Generic.ICollection%601"></xref><<code>FilterData</code>>.
+    return:
+      type: System.Boolean
+      description: '`true` if the match criterion of at least one filter in the table is satisfied by <code>messageBuffer</code>; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValues*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\IMessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/IMessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilter(System.ServiceModel.Channels.Message,System.ServiceModel.Dispatcher.MessageFilter@)
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  isExternal: false
+  name: GetMatchingFilter(Message,MessageFilter)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingFilter(Message,MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingFilter(Message,MessageFilter)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ServiceModel.Channels.Message
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: Message
+  nameWithType: Message
+  fullName: System.ServiceModel.Channels.Message
+- uid: System.ServiceModel.Dispatcher.MessageFilter
+  parent: System.ServiceModel.Dispatcher
+  isExternal: false
+  name: MessageFilter
+  nameWithType: MessageFilter
+  fullName: System.ServiceModel.Dispatcher.MessageFilter
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilter(System.ServiceModel.Channels.MessageBuffer,System.ServiceModel.Dispatcher.MessageFilter@)
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  isExternal: false
+  name: GetMatchingFilter(MessageBuffer,MessageFilter)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingFilter(MessageBuffer,MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingFilter(MessageBuffer,MessageFilter)
+- uid: System.ServiceModel.Channels.MessageBuffer
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: MessageBuffer
+  nameWithType: MessageBuffer
+  fullName: System.ServiceModel.Channels.MessageBuffer
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilters(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  isExternal: false
+  name: GetMatchingFilters(Message,ICollection<MessageFilter>)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingFilters(Message,ICollection<MessageFilter>)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingFilters(Message,ICollection<MessageFilter>)
+- uid: System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: ICollection<MessageFilter>
+  nameWithType: ICollection<MessageFilter>
+  fullName: System.Collections.Generic.ICollection<System.ServiceModel.Dispatcher.MessageFilter>
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    nameWithType: ICollection
+    fullName: ICollection<System.ServiceModel.Dispatcher.MessageFilter>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.ServiceModel.Dispatcher.MessageFilter
+    name: MessageFilter
+    nameWithType: MessageFilter
+    fullName: MessageFilter
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilters(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  isExternal: false
+  name: GetMatchingFilters(MessageBuffer,ICollection<MessageFilter>)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingFilters(MessageBuffer,ICollection<MessageFilter>)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingFilters(MessageBuffer,ICollection<MessageFilter>)
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValue(System.ServiceModel.Channels.Message,`0@)
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  isExternal: false
+  name: GetMatchingValue(Message,TFilterData)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingValue(Message,TFilterData)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingValue(Message,TFilterData)
+- uid: TFilterData
+  isExternal: true
+  name: TFilterData
+  nameWithType: TFilterData
+  fullName: TFilterData
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValue(System.ServiceModel.Channels.MessageBuffer,`0@)
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  isExternal: false
+  name: GetMatchingValue(MessageBuffer,TFilterData)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingValue(MessageBuffer,TFilterData)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingValue(MessageBuffer,TFilterData)
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValues(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{`0})
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  isExternal: false
+  name: GetMatchingValues(Message,ICollection<TFilterData>)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingValues(Message,ICollection<TFilterData>)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingValues(Message,ICollection<TFilterData>)
+- uid: System.Collections.Generic.ICollection{TFilterData}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: ICollection<TFilterData>
+  nameWithType: ICollection<TFilterData>
+  fullName: System.Collections.Generic.ICollection<TFilterData>
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    nameWithType: ICollection
+    fullName: ICollection<TFilterData>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TFilterData
+    name: TFilterData
+    nameWithType: TFilterData
+    fullName: TFilterData
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValues(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{`0})
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  isExternal: false
+  name: GetMatchingValues(MessageBuffer,ICollection<TFilterData>)
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingValues(MessageBuffer,ICollection<TFilterData>)
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>.GetMatchingValues(MessageBuffer,ICollection<TFilterData>)
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilter*
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  isExternal: false
+  name: GetMatchingFilter
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingFilter
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingFilters*
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  isExternal: false
+  name: GetMatchingFilters
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingFilters
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValue*
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  isExternal: false
+  name: GetMatchingValue
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingValue
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1.GetMatchingValues*
+  parent: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  isExternal: false
+  name: GetMatchingValues
+  nameWithType: IMessageFilterTable<TFilterData>.GetMatchingValues

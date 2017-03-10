@@ -1,0 +1,44 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Func`2
+  id: Func`2
+  langs:
+  - csharp
+  name: Func<T,TResult>
+  nameWithType: Func<T,TResult>
+  fullName: System.Func<T,TResult>
+  type: Delegate
+  summary: "Encapsulates a method that has one parameter and returns a value of the type specified by the <code>TResult</code> parameter.  \n  \n To browse the .NET Framework source code for this type, see the [Reference Source](http://referencesource.microsoft.com/#mscorlib/system/action.cs#7a86aba051da82dd)."
+  remarks: "> [!NOTE]\n>  To view the .NET Framework source code for this type, see the [Reference Source](http://referencesource.microsoft.com/#mscorlib/system/action.cs#7a86aba051da82dd). You can browse through the source code online, download the reference for offline viewing, and step through the sources (including patches and updates) during debugging; see [instructions](http://referencesource.microsoft.com/).  \n  \n You can use this delegate to represent a method that can be passed as a parameter without explicitly declaring a custom delegate. The encapsulated method must correspond to the method signature that is defined by this delegate. This means that the encapsulated method must have one parameter that is passed to it by value, and that it must return a value.  \n  \n> [!NOTE]\n>  To reference a method that has one parameter and returns `void` (or in Visual Basic, that is declared as a `Sub` rather than as a `Function`), use the generic <xref:System.Action%601> delegate instead.  \n  \n When you use the Func(T, delegate, you do not have to explicitly define a delegate that encapsulates a method with a single parameter. For example, the following code explicitly declares a delegate named `ConvertMethod` and assigns a reference to the `UppercaseString` method to its delegate instance.  \n  \n [!code-cs[System.Func~2#1](~/add/codesnippet/csharp/t-system.func`2_1.cs)]\n [!code-vb[System.Func~2#1](~/add/codesnippet/visualbasic/t-system.func`2_1.vb)]  \n  \n The following example simplifies this code by instantiating the Func(T, delegate instead of explicitly defining a new delegate and assigning a named method to it.  \n  \n [!code-vb[System.Func~2#2](~/add/codesnippet/visualbasic/t-system.func`2_2.vb)]\n [!code-cs[System.Func~2#2](~/add/codesnippet/csharp/t-system.func`2_2.cs)]  \n  \n You can also use the Func(T, delegate with anonymous methods in C#, as the following example illustrates. (For an introduction to anonymous methods, see [Anonymous Methods](../Topic/Anonymous%20Methods%20\\(C%23%20Programming%20Guide\\).md).)  \n  \n [!code-cs[System.Func~2#3](~/add/codesnippet/csharp/t-system.func`2_3.cs)]  \n  \n You can also assign a lambda expression to a Func(T, delegate, as the following example illustrates. (For an introduction to lambda expressions, see [Lambda Expressions](../Topic/Lambda%20Expressions%20\\(Visual%20Basic\\).md) and [Lambda Expressions](../Topic/Lambda%20Expressions%20\\(C%23%20Programming%20Guide\\).md).)  \n  \n [!code-cs[System.Func~2#4](~/add/codesnippet/csharp/t-system.func`2_4.cs)]\n [!code-vb[System.Func~2#4](~/add/codesnippet/visualbasic/t-system.func`2_4.vb)]  \n  \n The underlying type of a lambda expression is one of the generic `Func` delegates. This makes it possible to pass a lambda expression as a parameter without explicitly assigning it to a delegate. In particular, because many methods of types in the <xref:System.Linq> namespace have Func(T, parameters, you can pass these methods a lambda expression without explicitly instantiating a Func(T, delegate."
+  example:
+  - "The following example demonstrates how to declare and use a Func(T, delegate. This example declares a Func(T, variable and assigns it a lambda expression that converts the characters in a string to uppercase. The delegate that encapsulates this method is subsequently passed to the <xref:System.Linq.Enumerable.Select%2A?displayProperty=fullName> method to change the strings in an array of strings to uppercase.  \n  \n [!code-cs[System.Func~2#5](~/add/codesnippet/csharp/t-system.func`2_5.cs)]\n [!code-vb[System.Func~2#5](~/add/codesnippet/visualbasic/t-system.func`2_5.vb)]"
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("System.Core, Version=3.5.0.0, Culture=Neutral, PublicKeyToken=b77a5c561934e089")]
+
+      public delegate TResult Func<in T,out TResult>(T arg);
+    typeParameters:
+    - id: T
+      description: The type of the parameter of the method that this delegate encapsulates.
+    - id: TResult
+      description: The type of the return value of the method that this delegate encapsulates.
+  inheritance:
+  - System.Object
+  - System.Delegate
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\Func`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/Func`2.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Delegate
+  isExternal: false
+  name: System.Delegate

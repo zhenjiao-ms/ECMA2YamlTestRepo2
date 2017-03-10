@@ -1,0 +1,1265 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Reflection.TypeInfo
+  id: TypeInfo
+  children:
+  - System.Reflection.TypeInfo.AsType
+  - System.Reflection.TypeInfo.DeclaredConstructors
+  - System.Reflection.TypeInfo.DeclaredEvents
+  - System.Reflection.TypeInfo.DeclaredFields
+  - System.Reflection.TypeInfo.DeclaredMembers
+  - System.Reflection.TypeInfo.DeclaredMethods
+  - System.Reflection.TypeInfo.DeclaredNestedTypes
+  - System.Reflection.TypeInfo.DeclaredProperties
+  - System.Reflection.TypeInfo.GenericTypeParameters
+  - System.Reflection.TypeInfo.GetDeclaredEvent(System.String)
+  - System.Reflection.TypeInfo.GetDeclaredField(System.String)
+  - System.Reflection.TypeInfo.GetDeclaredMethod(System.String)
+  - System.Reflection.TypeInfo.GetDeclaredMethods(System.String)
+  - System.Reflection.TypeInfo.GetDeclaredNestedType(System.String)
+  - System.Reflection.TypeInfo.GetDeclaredProperty(System.String)
+  - System.Reflection.TypeInfo.ImplementedInterfaces
+  - System.Reflection.TypeInfo.IsAssignableFrom(System.Reflection.TypeInfo)
+  - System.Reflection.TypeInfo.System#Reflection#IReflectableType#GetTypeInfo
+  langs:
+  - csharp
+  name: TypeInfo
+  nameWithType: TypeInfo
+  fullName: System.Reflection.TypeInfo
+  type: Class
+  summary: Represents type declarations for class types, interface types, array types, value types, enumeration types, type parameters, generic type definitions, and open or closed constructed generic types.
+  remarks: "Starting with the [!INCLUDE[net_v45](~/add/includes/net-v45-md.md)], the TypeInfo class is included in the [!INCLUDE[net_win8_profile](~/add/includes/net-win8-profile-md.md)] subset for use in creating Windows Store apps. TypeInfo is available in the full .NET Framework as well. For more information about reflection for Windows Store apps, see [System.Reflection namespaces](http://msdn.microsoft.com/library/windows/apps/hh441595\\(v=vs.110\\).aspx) in the Windows Dev Center and [Reflection in the .NET Framework for Windows Store Apps](../Topic/Reflection%20in%20the%20.NET%20Framework%20for%20Windows%20Store%20Apps.md) in the MSDN Library.  \n  \n TypeInfo contains many of the members available in the <xref:System.Type> class, and many of the reflection properties in the [!INCLUDE[net_win8_profile](~/add/includes/net-win8-profile-md.md)] return collections of TypeInfo objects. To get a TypeInfo object from a <xref:System.Type> object, use the <xref:System.Reflection.IntrospectionExtensions.GetTypeInfo%28System.Type%29?displayProperty=fullName> extension method.  \n  \n A TypeInfo object represents the type definition itself, whereas a <xref:System.Type> object represents a reference to the type definition. Getting a TypeInfo object forces the assembly that contains that type to load. In comparison, you can manipulate <xref:System.Type> objects without necessarily requiring the runtime to load the assembly they reference.  \n  \n In the [!INCLUDE[net_win8_profile](~/add/includes/net-win8-profile-md.md)], you use the reflection properties of TypeInfo that return <xref:System.Collections.Generic.IEnumerable%601> collections instead of methods that return arrays. For example, use the <xref:System.Reflection.TypeInfo.DeclaredMembers%2A> property to get all declared members, or the <xref:System.Reflection.TypeInfo.DeclaredProperties%2A> property to get all declared properties. Reflection contexts can implement lazy traversal of these collections for large assemblies or types. To get specific members, use methods such as <xref:System.Reflection.TypeInfo.GetDeclaredMethod%2A> and <xref:System.Reflection.TypeInfo.GetDeclaredProperty%2A>, and pass the name of the method or property you would like to retrieve.  \n  \n To filter the results of TypeInfo properties, use LINQ queries. For reflection objects that originate with the runtime (for example, as the result of `typeof(Object)`), you can traverse the inheritance tree by using the methods in the <xref:System.Reflection.RuntimeReflectionExtensions> class. Consumers of objects from customized reflection contexts cannot use these methods and must traverse the inheritance tree themselves."
+  example:
+  - "This example uses the reflection types and members in the [!INCLUDE[net_win8_profile](~/add/includes/net-win8-profile-md.md)] subset to retrieve the methods and properties of the <xref:System.Globalization.Calendar> type, including inherited methods and properties. To run this code, paste it into the code file for a [!INCLUDE[win8_appname_long](~/add/includes/win8-appname-long-md.md)] XAML app that contains a [Windows.UI.Xaml.Controls.Textblock](http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.textblock.aspx) control named `textblock1`.  \n  \n [!code-vb[System.ReflectionWinStoreApp#1](~/add/codesnippet/visualbasic/reflectionvb/mainpage.xaml.vb#1)]\n [!code-cs[System.ReflectionWinStoreApp#1](~/add/codesnippet/csharp/reflection/mainpage.xaml.cs#1)]"
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public abstract class TypeInfo : Type, System.Reflection.IReflectableType
+  inheritance:
+  - System.Object
+  - System.Reflection.MemberInfo
+  - System.Type
+  implements:
+  - System.Reflection.IReflectableType
+  inheritedMembers:
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Reflection.MemberInfo.CustomAttributes
+  - System.Reflection.MemberInfo.GetCustomAttributes(System.Boolean)
+  - System.Reflection.MemberInfo.GetCustomAttributes(System.Type,System.Boolean)
+  - System.Reflection.MemberInfo.GetCustomAttributesData
+  - System.Reflection.MemberInfo.IsDefined(System.Type,System.Boolean)
+  - System.Reflection.MemberInfo.MetadataToken
+  - System.Reflection.MemberInfo.Name
+  - System.Reflection.MemberInfo.op_Equality(System.Reflection.MemberInfo,System.Reflection.MemberInfo)
+  - System.Reflection.MemberInfo.op_Inequality(System.Reflection.MemberInfo,System.Reflection.MemberInfo)
+  - System.Reflection.MemberInfo.System#Runtime#InteropServices#_MemberInfo#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Reflection.MemberInfo.System#Runtime#InteropServices#_MemberInfo#GetType
+  - System.Reflection.MemberInfo.System#Runtime#InteropServices#_MemberInfo#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Reflection.MemberInfo.System#Runtime#InteropServices#_MemberInfo#GetTypeInfoCount(System.UInt32@)
+  - System.Reflection.MemberInfo.System#Runtime#InteropServices#_MemberInfo#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Type.Assembly
+  - System.Type.AssemblyQualifiedName
+  - System.Type.Attributes
+  - System.Type.BaseType
+  - System.Type.ContainsGenericParameters
+  - System.Type.DeclaringMethod
+  - System.Type.DeclaringType
+  - System.Type.DefaultBinder
+  - System.Type.Delimiter
+  - System.Type.EmptyTypes
+  - System.Type.Equals(System.Object)
+  - System.Type.Equals(System.Type)
+  - System.Type.FilterAttribute
+  - System.Type.FilterName
+  - System.Type.FilterNameIgnoreCase
+  - System.Type.FindInterfaces(System.Reflection.TypeFilter,System.Object)
+  - System.Type.FindMembers(System.Reflection.MemberTypes,System.Reflection.BindingFlags,System.Reflection.MemberFilter,System.Object)
+  - System.Type.FullName
+  - System.Type.GenericParameterAttributes
+  - System.Type.GenericParameterPosition
+  - System.Type.GenericTypeArguments
+  - System.Type.GetArrayRank
+  - System.Type.GetAttributeFlagsImpl
+  - System.Type.GetConstructor(System.Reflection.BindingFlags,System.Reflection.Binder,System.Reflection.CallingConventions,System.Type[],System.Reflection.ParameterModifier[])
+  - System.Type.GetConstructor(System.Reflection.BindingFlags,System.Reflection.Binder,System.Type[],System.Reflection.ParameterModifier[])
+  - System.Type.GetConstructor(System.Type[])
+  - System.Type.GetConstructorImpl(System.Reflection.BindingFlags,System.Reflection.Binder,System.Reflection.CallingConventions,System.Type[],System.Reflection.ParameterModifier[])
+  - System.Type.GetConstructors
+  - System.Type.GetConstructors(System.Reflection.BindingFlags)
+  - System.Type.GetDefaultMembers
+  - System.Type.GetElementType
+  - System.Type.GetEnumName(System.Object)
+  - System.Type.GetEnumNames
+  - System.Type.GetEnumUnderlyingType
+  - System.Type.GetEnumValues
+  - System.Type.GetEvent(System.String)
+  - System.Type.GetEvent(System.String,System.Reflection.BindingFlags)
+  - System.Type.GetEvents
+  - System.Type.GetEvents(System.Reflection.BindingFlags)
+  - System.Type.GetField(System.String)
+  - System.Type.GetField(System.String,System.Reflection.BindingFlags)
+  - System.Type.GetFields
+  - System.Type.GetFields(System.Reflection.BindingFlags)
+  - System.Type.GetGenericArguments
+  - System.Type.GetGenericParameterConstraints
+  - System.Type.GetGenericTypeDefinition
+  - System.Type.GetHashCode
+  - System.Type.GetInterface(System.String)
+  - System.Type.GetInterface(System.String,System.Boolean)
+  - System.Type.GetInterfaceMap(System.Type)
+  - System.Type.GetInterfaces
+  - System.Type.GetMember(System.String)
+  - System.Type.GetMember(System.String,System.Reflection.BindingFlags)
+  - System.Type.GetMember(System.String,System.Reflection.MemberTypes,System.Reflection.BindingFlags)
+  - System.Type.GetMembers
+  - System.Type.GetMembers(System.Reflection.BindingFlags)
+  - System.Type.GetMethod(System.String)
+  - System.Type.GetMethod(System.String,System.Reflection.BindingFlags)
+  - System.Type.GetMethod(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Reflection.CallingConventions,System.Type[],System.Reflection.ParameterModifier[])
+  - System.Type.GetMethod(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Type[],System.Reflection.ParameterModifier[])
+  - System.Type.GetMethod(System.String,System.Type[])
+  - System.Type.GetMethod(System.String,System.Type[],System.Reflection.ParameterModifier[])
+  - System.Type.GetMethodImpl(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Reflection.CallingConventions,System.Type[],System.Reflection.ParameterModifier[])
+  - System.Type.GetMethods
+  - System.Type.GetMethods(System.Reflection.BindingFlags)
+  - System.Type.GetNestedType(System.String)
+  - System.Type.GetNestedType(System.String,System.Reflection.BindingFlags)
+  - System.Type.GetNestedTypes
+  - System.Type.GetNestedTypes(System.Reflection.BindingFlags)
+  - System.Type.GetProperties
+  - System.Type.GetProperties(System.Reflection.BindingFlags)
+  - System.Type.GetProperty(System.String)
+  - System.Type.GetProperty(System.String,System.Reflection.BindingFlags)
+  - System.Type.GetProperty(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Type,System.Type[],System.Reflection.ParameterModifier[])
+  - System.Type.GetProperty(System.String,System.Type)
+  - System.Type.GetProperty(System.String,System.Type,System.Type[])
+  - System.Type.GetProperty(System.String,System.Type,System.Type[],System.Reflection.ParameterModifier[])
+  - System.Type.GetProperty(System.String,System.Type[])
+  - System.Type.GetPropertyImpl(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Type,System.Type[],System.Reflection.ParameterModifier[])
+  - System.Type.GetType
+  - System.Type.GetType(System.String)
+  - System.Type.GetType(System.String,System.Boolean)
+  - System.Type.GetType(System.String,System.Boolean,System.Boolean)
+  - System.Type.GetType(System.String,System.Func{System.Reflection.AssemblyName,System.Reflection.Assembly},System.Func{System.Reflection.Assembly,System.String,System.Boolean,System.Type})
+  - System.Type.GetType(System.String,System.Func{System.Reflection.AssemblyName,System.Reflection.Assembly},System.Func{System.Reflection.Assembly,System.String,System.Boolean,System.Type},System.Boolean)
+  - System.Type.GetType(System.String,System.Func{System.Reflection.AssemblyName,System.Reflection.Assembly},System.Func{System.Reflection.Assembly,System.String,System.Boolean,System.Type},System.Boolean,System.Boolean)
+  - System.Type.GetTypeArray(System.Object[])
+  - System.Type.GetTypeCode(System.Type)
+  - System.Type.GetTypeCodeImpl
+  - System.Type.GetTypeFromCLSID(System.Guid)
+  - System.Type.GetTypeFromCLSID(System.Guid,System.Boolean)
+  - System.Type.GetTypeFromCLSID(System.Guid,System.String)
+  - System.Type.GetTypeFromCLSID(System.Guid,System.String,System.Boolean)
+  - System.Type.GetTypeFromHandle(System.RuntimeTypeHandle)
+  - System.Type.GetTypeFromProgID(System.String)
+  - System.Type.GetTypeFromProgID(System.String,System.Boolean)
+  - System.Type.GetTypeFromProgID(System.String,System.String)
+  - System.Type.GetTypeFromProgID(System.String,System.String,System.Boolean)
+  - System.Type.GetTypeHandle(System.Object)
+  - System.Type.GUID
+  - System.Type.HasElementType
+  - System.Type.HasElementTypeImpl
+  - System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[])
+  - System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Globalization.CultureInfo)
+  - System.Type.InvokeMember(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object,System.Object[],System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[])
+  - System.Type.IsAbstract
+  - System.Type.IsAnsiClass
+  - System.Type.IsArray
+  - System.Type.IsArrayImpl
+  - System.Type.IsAssignableFrom(System.Type)
+  - System.Type.IsAutoClass
+  - System.Type.IsAutoLayout
+  - System.Type.IsByRef
+  - System.Type.IsByRefImpl
+  - System.Type.IsClass
+  - System.Type.IsCOMObject
+  - System.Type.IsCOMObjectImpl
+  - System.Type.IsConstructedGenericType
+  - System.Type.IsContextful
+  - System.Type.IsContextfulImpl
+  - System.Type.IsEnum
+  - System.Type.IsEnumDefined(System.Object)
+  - System.Type.IsEquivalentTo(System.Type)
+  - System.Type.IsExplicitLayout
+  - System.Type.IsGenericParameter
+  - System.Type.IsGenericType
+  - System.Type.IsGenericTypeDefinition
+  - System.Type.IsImport
+  - System.Type.IsInstanceOfType(System.Object)
+  - System.Type.IsInterface
+  - System.Type.IsLayoutSequential
+  - System.Type.IsMarshalByRef
+  - System.Type.IsMarshalByRefImpl
+  - System.Type.IsNested
+  - System.Type.IsNestedAssembly
+  - System.Type.IsNestedFamANDAssem
+  - System.Type.IsNestedFamily
+  - System.Type.IsNestedFamORAssem
+  - System.Type.IsNestedPrivate
+  - System.Type.IsNestedPublic
+  - System.Type.IsNotPublic
+  - System.Type.IsPointer
+  - System.Type.IsPointerImpl
+  - System.Type.IsPrimitive
+  - System.Type.IsPrimitiveImpl
+  - System.Type.IsPublic
+  - System.Type.IsSealed
+  - System.Type.IsSecurityCritical
+  - System.Type.IsSecuritySafeCritical
+  - System.Type.IsSecurityTransparent
+  - System.Type.IsSerializable
+  - System.Type.IsSpecialName
+  - System.Type.IsSubclassOf(System.Type)
+  - System.Type.IsUnicodeClass
+  - System.Type.IsValueType
+  - System.Type.IsValueTypeImpl
+  - System.Type.IsVisible
+  - System.Type.MakeArrayType
+  - System.Type.MakeArrayType(System.Int32)
+  - System.Type.MakeByRefType
+  - System.Type.MakeGenericType(System.Type[])
+  - System.Type.MakePointerType
+  - System.Type.MemberType
+  - System.Type.Missing
+  - System.Type.Module
+  - System.Type.Namespace
+  - System.Type.op_Equality(System.Type,System.Type)
+  - System.Type.op_Inequality(System.Type,System.Type)
+  - System.Type.ReflectedType
+  - System.Type.ReflectionOnlyGetType(System.String,System.Boolean,System.Boolean)
+  - System.Type.StructLayoutAttribute
+  - System.Type.System#Runtime#InteropServices#_Type#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Type.System#Runtime#InteropServices#_Type#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Type.System#Runtime#InteropServices#_Type#GetTypeInfoCount(System.UInt32@)
+  - System.Type.System#Runtime#InteropServices#_Type#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Type.ToString
+  - System.Type.TypeHandle
+  - System.Type.TypeInitializer
+  - System.Type.UnderlyingSystemType
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.AsType
+  id: AsType
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: AsType()
+  nameWithType: TypeInfo.AsType()
+  fullName: System.Reflection.TypeInfo.AsType()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Returns the current type as a <xref href="System.Type"></xref> object.
+  syntax:
+    content: public virtual Type AsType ();
+    parameters: []
+    return:
+      type: System.Type
+      description: The current type.
+  overload: System.Reflection.TypeInfo.AsType*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.DeclaredConstructors
+  id: DeclaredConstructors
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: DeclaredConstructors
+  nameWithType: TypeInfo.DeclaredConstructors
+  fullName: System.Reflection.TypeInfo.DeclaredConstructors
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Gets a collection of the constructors declared by the current type.
+  remarks: To filter the results of the DeclaredConstructors property, use LINQ queries. For reflection objects that originate with the runtime (for example, as the result of `typeof(Object)`), you can traverse the inheritance tree by using the methods in the <xref:System.Reflection.RuntimeReflectionExtensions> class. Consumers of objects from customized reflection contexts cannot use these methods and must traverse the inheritance tree themselves.
+  syntax:
+    content: public virtual System.Collections.Generic.IEnumerable<System.Reflection.ConstructorInfo> DeclaredConstructors { get; }
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Reflection.ConstructorInfo}
+      description: A collection of the constructors declared by the current type.
+  overload: System.Reflection.TypeInfo.DeclaredConstructors*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.DeclaredEvents
+  id: DeclaredEvents
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: DeclaredEvents
+  nameWithType: TypeInfo.DeclaredEvents
+  fullName: System.Reflection.TypeInfo.DeclaredEvents
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Gets a collection of the events defined by the current type.
+  remarks: To filter the results of the DeclaredEvents property, use LINQ queries. For reflection objects that originate with the runtime (for example, as the result of `typeof(Object)`), you can traverse the inheritance tree by using the methods in the <xref:System.Reflection.RuntimeReflectionExtensions> class. Consumers of objects from customized reflection contexts cannot use these methods and must traverse the inheritance tree themselves.
+  syntax:
+    content: public virtual System.Collections.Generic.IEnumerable<System.Reflection.EventInfo> DeclaredEvents { get; }
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Reflection.EventInfo}
+      description: A collection of the events defined by the current type.
+  overload: System.Reflection.TypeInfo.DeclaredEvents*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.DeclaredFields
+  id: DeclaredFields
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: DeclaredFields
+  nameWithType: TypeInfo.DeclaredFields
+  fullName: System.Reflection.TypeInfo.DeclaredFields
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Gets a collection of the fields defined by the current type.
+  remarks: To filter the results of the DeclaredFields property, use LINQ queries. For reflection objects that originate with the runtime (for example, as the result of `typeof(Object)`), you can traverse the inheritance tree by using the methods in the <xref:System.Reflection.RuntimeReflectionExtensions> class. Consumers of objects from customized reflection contexts cannot use these methods and must traverse the inheritance tree themselves.
+  syntax:
+    content: public virtual System.Collections.Generic.IEnumerable<System.Reflection.FieldInfo> DeclaredFields { get; }
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Reflection.FieldInfo}
+      description: A collection of the fields defined by the current type.
+  overload: System.Reflection.TypeInfo.DeclaredFields*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.DeclaredMembers
+  id: DeclaredMembers
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: DeclaredMembers
+  nameWithType: TypeInfo.DeclaredMembers
+  fullName: System.Reflection.TypeInfo.DeclaredMembers
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Gets a collection of the members defined by the current type.
+  remarks: To filter the results of the DeclaredMembers property, use LINQ queries. For reflection objects that originate with the runtime (for example, as the result of `typeof(Object)`), you can traverse the inheritance tree by using the methods in the <xref:System.Reflection.RuntimeReflectionExtensions> class. Consumers of objects from customized reflection contexts cannot use these methods and must traverse the inheritance tree themselves.
+  syntax:
+    content: public virtual System.Collections.Generic.IEnumerable<System.Reflection.MemberInfo> DeclaredMembers { get; }
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Reflection.MemberInfo}
+      description: A collection of the members defined by the current type.
+  overload: System.Reflection.TypeInfo.DeclaredMembers*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.DeclaredMethods
+  id: DeclaredMethods
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: DeclaredMethods
+  nameWithType: TypeInfo.DeclaredMethods
+  fullName: System.Reflection.TypeInfo.DeclaredMethods
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Gets a collection of the methods defined by the current type.
+  remarks: To filter the results of the DeclaredMethods property, use LINQ queries. For reflection objects that originate with the runtime (for example, as the result of `typeof(Object)`), you can traverse the inheritance tree by using the methods in the <xref:System.Reflection.RuntimeReflectionExtensions> class. Consumers of objects from customized reflection contexts cannot use these methods and must traverse the inheritance tree themselves.
+  example:
+  - "This example uses the reflection types and members in the [!INCLUDE[net_win8_profile](~/add/includes/net-win8-profile-md.md)] subset to retrieve the methods and properties of the <xref:System.Globalization.Calendar> type, including inherited methods and properties. To run this code, paste it into the code file for a [!INCLUDE[win8_appname_long](~/add/includes/win8-appname-long-md.md)] XAML app that contains a [Windows.UI.Xaml.Controls.Textblock](http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.textblock.aspx) control named `textblock1`.  \n  \n [!code-vb[System.ReflectionWinStoreApp#1](~/add/codesnippet/visualbasic/reflectionvb/mainpage.xaml.vb#1)]\n [!code-cs[System.ReflectionWinStoreApp#1](~/add/codesnippet/csharp/reflection/mainpage.xaml.cs#1)]"
+  syntax:
+    content: public virtual System.Collections.Generic.IEnumerable<System.Reflection.MethodInfo> DeclaredMethods { get; }
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Reflection.MethodInfo}
+      description: A collection of the methods defined by the current type.
+  overload: System.Reflection.TypeInfo.DeclaredMethods*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.DeclaredNestedTypes
+  id: DeclaredNestedTypes
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: DeclaredNestedTypes
+  nameWithType: TypeInfo.DeclaredNestedTypes
+  fullName: System.Reflection.TypeInfo.DeclaredNestedTypes
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Gets a collection of the nested types defined by the current type.
+  remarks: To filter the results of the DeclaredNestedTypes property, use LINQ queries. For reflection objects that originate with the runtime (for example, as the result of `typeof(Object)`), you can traverse the inheritance tree by using the methods in the <xref:System.Reflection.RuntimeReflectionExtensions> class. Consumers of objects from customized reflection contexts cannot use these methods and must traverse the inheritance tree themselves.
+  syntax:
+    content: public virtual System.Collections.Generic.IEnumerable<System.Reflection.TypeInfo> DeclaredNestedTypes { get; }
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Reflection.TypeInfo}
+      description: A collection of nested types defined by the current type.
+  overload: System.Reflection.TypeInfo.DeclaredNestedTypes*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.DeclaredProperties
+  id: DeclaredProperties
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: DeclaredProperties
+  nameWithType: TypeInfo.DeclaredProperties
+  fullName: System.Reflection.TypeInfo.DeclaredProperties
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Gets a collection of the properties defined by the current type.
+  remarks: ''
+  example:
+  - "This example uses the reflection types and members in the [!INCLUDE[net_win8_profile](~/add/includes/net-win8-profile-md.md)] subset to retrieve the methods and properties of the <xref:System.Globalization.Calendar> type, including inherited methods and properties. To run this code, paste it into the code file for a [!INCLUDE[win8_appname_long](~/add/includes/win8-appname-long-md.md)] XAML app that contains a [Windows.UI.Xaml.Controls.Textblock](http://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.textblock.aspx) control named `textblock1`.  \n  \n [!code-vb[System.ReflectionWinStoreApp#1](~/add/codesnippet/visualbasic/reflectionvb/mainpage.xaml.vb#1)]\n [!code-cs[System.ReflectionWinStoreApp#1](~/add/codesnippet/csharp/reflection/mainpage.xaml.cs#1)]"
+  syntax:
+    content: public virtual System.Collections.Generic.IEnumerable<System.Reflection.PropertyInfo> DeclaredProperties { get; }
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo}
+      description: A collection of the properties defined by the current type.
+  overload: System.Reflection.TypeInfo.DeclaredProperties*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.GenericTypeParameters
+  id: GenericTypeParameters
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: GenericTypeParameters
+  nameWithType: TypeInfo.GenericTypeParameters
+  fullName: System.Reflection.TypeInfo.GenericTypeParameters
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Gets an array of the generic type parameters of the current instance.
+  syntax:
+    content: public virtual Type[] GenericTypeParameters { get; }
+    return:
+      type: System.Type[]
+      description: An array that contains the current instance's generic type parameters, or an array of <xref href="stem.Array.Length%2A"></xref> zero if the current instance has no generic type parameters.
+  overload: System.Reflection.TypeInfo.GenericTypeParameters*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.GetDeclaredEvent(System.String)
+  id: GetDeclaredEvent(System.String)
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: GetDeclaredEvent(String)
+  nameWithType: TypeInfo.GetDeclaredEvent(String)
+  fullName: System.Reflection.TypeInfo.GetDeclaredEvent(String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Returns an object that represents the specified public event declared by the current type.
+  syntax:
+    content: public virtual System.Reflection.EventInfo GetDeclaredEvent (string name);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the event.
+    return:
+      type: System.Reflection.EventInfo
+      description: An object that represents the specified event, if found; otherwise, `null`.
+  overload: System.Reflection.TypeInfo.GetDeclaredEvent*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>name</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.GetDeclaredField(System.String)
+  id: GetDeclaredField(System.String)
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: GetDeclaredField(String)
+  nameWithType: TypeInfo.GetDeclaredField(String)
+  fullName: System.Reflection.TypeInfo.GetDeclaredField(String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Returns an object that represents the specified public field declared by the current type.
+  syntax:
+    content: public virtual System.Reflection.FieldInfo GetDeclaredField (string name);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the field.
+    return:
+      type: System.Reflection.FieldInfo
+      description: An object that represents the specified field, if found; otherwise, `null`.
+  overload: System.Reflection.TypeInfo.GetDeclaredField*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>name</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.GetDeclaredMethod(System.String)
+  id: GetDeclaredMethod(System.String)
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: GetDeclaredMethod(String)
+  nameWithType: TypeInfo.GetDeclaredMethod(String)
+  fullName: System.Reflection.TypeInfo.GetDeclaredMethod(String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Returns an object that represents the specified public method declared by the current type.
+  syntax:
+    content: public virtual System.Reflection.MethodInfo GetDeclaredMethod (string name);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the method.
+    return:
+      type: System.Reflection.MethodInfo
+      description: An object that represents the specified method, if found; otherwise, `null`.
+  overload: System.Reflection.TypeInfo.GetDeclaredMethod*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>name</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.GetDeclaredMethods(System.String)
+  id: GetDeclaredMethods(System.String)
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: GetDeclaredMethods(String)
+  nameWithType: TypeInfo.GetDeclaredMethods(String)
+  fullName: System.Reflection.TypeInfo.GetDeclaredMethods(String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Returns a collection that contains all public methods declared on the current type that match the specified name.
+  syntax:
+    content: public virtual System.Collections.Generic.IEnumerable<System.Reflection.MethodInfo> GetDeclaredMethods (string name);
+    parameters:
+    - id: name
+      type: System.String
+      description: The method name to search for.
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Reflection.MethodInfo}
+      description: A collection that contains methods that match <code>name</code>.
+  overload: System.Reflection.TypeInfo.GetDeclaredMethods*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>name</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.GetDeclaredNestedType(System.String)
+  id: GetDeclaredNestedType(System.String)
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: GetDeclaredNestedType(String)
+  nameWithType: TypeInfo.GetDeclaredNestedType(String)
+  fullName: System.Reflection.TypeInfo.GetDeclaredNestedType(String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Returns an object that represents the specified public nested type declared by the current type.
+  syntax:
+    content: public virtual System.Reflection.TypeInfo GetDeclaredNestedType (string name);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the nested type.
+    return:
+      type: System.Reflection.TypeInfo
+      description: An object that represents the specified nested type, if found; otherwise, `null`.
+  overload: System.Reflection.TypeInfo.GetDeclaredNestedType*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>name</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.GetDeclaredProperty(System.String)
+  id: GetDeclaredProperty(System.String)
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: GetDeclaredProperty(String)
+  nameWithType: TypeInfo.GetDeclaredProperty(String)
+  fullName: System.Reflection.TypeInfo.GetDeclaredProperty(String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Returns an object that represents the specified public property declared by the current type.
+  syntax:
+    content: public virtual System.Reflection.PropertyInfo GetDeclaredProperty (string name);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the property.
+    return:
+      type: System.Reflection.PropertyInfo
+      description: An object that represents the specified property, if found; otherwise, `null`.
+  overload: System.Reflection.TypeInfo.GetDeclaredProperty*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>name</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.ImplementedInterfaces
+  id: ImplementedInterfaces
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: ImplementedInterfaces
+  nameWithType: TypeInfo.ImplementedInterfaces
+  fullName: System.Reflection.TypeInfo.ImplementedInterfaces
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Gets a collection of the interfaces implemented by the current type.
+  syntax:
+    content: public virtual System.Collections.Generic.IEnumerable<Type> ImplementedInterfaces { get; }
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Type}
+      description: A collection of the interfaces implemented by the current type.
+  overload: System.Reflection.TypeInfo.ImplementedInterfaces*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.IsAssignableFrom(System.Reflection.TypeInfo)
+  id: IsAssignableFrom(System.Reflection.TypeInfo)
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: IsAssignableFrom(TypeInfo)
+  nameWithType: TypeInfo.IsAssignableFrom(TypeInfo)
+  fullName: System.Reflection.TypeInfo.IsAssignableFrom(TypeInfo)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Returns a value that indicates whether the specified type can be assigned to the current type.
+  syntax:
+    content: public virtual bool IsAssignableFrom (System.Reflection.TypeInfo typeInfo);
+    parameters:
+    - id: typeInfo
+      type: System.Reflection.TypeInfo
+      description: The type to check.
+    return:
+      type: System.Boolean
+      description: '`true` if the specified type can be assigned to this type; otherwise, `false`.'
+  overload: System.Reflection.TypeInfo.IsAssignableFrom*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.TypeInfo.System#Reflection#IReflectableType#GetTypeInfo
+  id: System#Reflection#IReflectableType#GetTypeInfo
+  isEii: true
+  parent: System.Reflection.TypeInfo
+  langs:
+  - csharp
+  name: IReflectableType.GetTypeInfo()
+  nameWithType: TypeInfo.IReflectableType.GetTypeInfo()
+  fullName: System.Reflection.TypeInfo.IReflectableType.GetTypeInfo()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Returns a representation of the current type as a <xref href="System.Reflection.TypeInfo"></xref> object.
+  remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.TypeInfo> instance is cast to an <xref:System.Reflection.IReflectableType> interface.
+  syntax:
+    content: System.Reflection.TypeInfo IReflectableType.GetTypeInfo ();
+    parameters: []
+    return:
+      type: System.Reflection.TypeInfo
+      description: A reference to the current type.
+  overload: System.Reflection.TypeInfo.System#Reflection#IReflectableType#GetTypeInfo*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\TypeInfo.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/TypeInfo.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Type
+  isExternal: false
+  name: System.Type
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.Reflection.TypeInfo.AsType
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: AsType()
+  nameWithType: TypeInfo.AsType()
+  fullName: System.Reflection.TypeInfo.AsType()
+- uid: System.Reflection.TypeInfo.DeclaredConstructors
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: DeclaredConstructors
+  nameWithType: TypeInfo.DeclaredConstructors
+  fullName: System.Reflection.TypeInfo.DeclaredConstructors
+- uid: System.Collections.Generic.IEnumerable{System.Reflection.ConstructorInfo}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<ConstructorInfo>
+  nameWithType: IEnumerable<ConstructorInfo>
+  fullName: System.Collections.Generic.IEnumerable<System.Reflection.ConstructorInfo>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<System.Reflection.ConstructorInfo>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Reflection.ConstructorInfo
+    name: ConstructorInfo
+    nameWithType: ConstructorInfo
+    fullName: ConstructorInfo
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Reflection.TypeInfo.DeclaredEvents
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: DeclaredEvents
+  nameWithType: TypeInfo.DeclaredEvents
+  fullName: System.Reflection.TypeInfo.DeclaredEvents
+- uid: System.Collections.Generic.IEnumerable{System.Reflection.EventInfo}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<EventInfo>
+  nameWithType: IEnumerable<EventInfo>
+  fullName: System.Collections.Generic.IEnumerable<System.Reflection.EventInfo>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<System.Reflection.EventInfo>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Reflection.EventInfo
+    name: EventInfo
+    nameWithType: EventInfo
+    fullName: EventInfo
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Reflection.TypeInfo.DeclaredFields
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: DeclaredFields
+  nameWithType: TypeInfo.DeclaredFields
+  fullName: System.Reflection.TypeInfo.DeclaredFields
+- uid: System.Collections.Generic.IEnumerable{System.Reflection.FieldInfo}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<FieldInfo>
+  nameWithType: IEnumerable<FieldInfo>
+  fullName: System.Collections.Generic.IEnumerable<System.Reflection.FieldInfo>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<System.Reflection.FieldInfo>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Reflection.FieldInfo
+    name: FieldInfo
+    nameWithType: FieldInfo
+    fullName: FieldInfo
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Reflection.TypeInfo.DeclaredMembers
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: DeclaredMembers
+  nameWithType: TypeInfo.DeclaredMembers
+  fullName: System.Reflection.TypeInfo.DeclaredMembers
+- uid: System.Collections.Generic.IEnumerable{System.Reflection.MemberInfo}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<MemberInfo>
+  nameWithType: IEnumerable<MemberInfo>
+  fullName: System.Collections.Generic.IEnumerable<System.Reflection.MemberInfo>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<System.Reflection.MemberInfo>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Reflection.MemberInfo
+    name: MemberInfo
+    nameWithType: MemberInfo
+    fullName: MemberInfo
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Reflection.TypeInfo.DeclaredMethods
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: DeclaredMethods
+  nameWithType: TypeInfo.DeclaredMethods
+  fullName: System.Reflection.TypeInfo.DeclaredMethods
+- uid: System.Collections.Generic.IEnumerable{System.Reflection.MethodInfo}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<MethodInfo>
+  nameWithType: IEnumerable<MethodInfo>
+  fullName: System.Collections.Generic.IEnumerable<System.Reflection.MethodInfo>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<System.Reflection.MethodInfo>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Reflection.MethodInfo
+    name: MethodInfo
+    nameWithType: MethodInfo
+    fullName: MethodInfo
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Reflection.TypeInfo.DeclaredNestedTypes
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: DeclaredNestedTypes
+  nameWithType: TypeInfo.DeclaredNestedTypes
+  fullName: System.Reflection.TypeInfo.DeclaredNestedTypes
+- uid: System.Collections.Generic.IEnumerable{System.Reflection.TypeInfo}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<TypeInfo>
+  nameWithType: IEnumerable<TypeInfo>
+  fullName: System.Collections.Generic.IEnumerable<System.Reflection.TypeInfo>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<System.Reflection.TypeInfo>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Reflection.TypeInfo
+    name: TypeInfo
+    nameWithType: TypeInfo
+    fullName: TypeInfo
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Reflection.TypeInfo.DeclaredProperties
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: DeclaredProperties
+  nameWithType: TypeInfo.DeclaredProperties
+  fullName: System.Reflection.TypeInfo.DeclaredProperties
+- uid: System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<PropertyInfo>
+  nameWithType: IEnumerable<PropertyInfo>
+  fullName: System.Collections.Generic.IEnumerable<System.Reflection.PropertyInfo>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<System.Reflection.PropertyInfo>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Reflection.PropertyInfo
+    name: PropertyInfo
+    nameWithType: PropertyInfo
+    fullName: PropertyInfo
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Reflection.TypeInfo.GenericTypeParameters
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: GenericTypeParameters
+  nameWithType: TypeInfo.GenericTypeParameters
+  fullName: System.Reflection.TypeInfo.GenericTypeParameters
+- uid: System.Type[]
+  parent: System
+  isExternal: false
+  name: Type[]
+  nameWithType: Type[]
+  fullName: System.Type[]
+  spec.csharp:
+  - uid: System.Type
+    name: Type
+    nameWithType: Type
+    fullName: Type[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Reflection.TypeInfo.GetDeclaredEvent(System.String)
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: GetDeclaredEvent(String)
+  nameWithType: TypeInfo.GetDeclaredEvent(String)
+  fullName: System.Reflection.TypeInfo.GetDeclaredEvent(String)
+- uid: System.Reflection.EventInfo
+  parent: System.Reflection
+  isExternal: false
+  name: EventInfo
+  nameWithType: EventInfo
+  fullName: System.Reflection.EventInfo
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Reflection.TypeInfo.GetDeclaredField(System.String)
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: GetDeclaredField(String)
+  nameWithType: TypeInfo.GetDeclaredField(String)
+  fullName: System.Reflection.TypeInfo.GetDeclaredField(String)
+- uid: System.Reflection.FieldInfo
+  parent: System.Reflection
+  isExternal: false
+  name: FieldInfo
+  nameWithType: FieldInfo
+  fullName: System.Reflection.FieldInfo
+- uid: System.Reflection.TypeInfo.GetDeclaredMethod(System.String)
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: GetDeclaredMethod(String)
+  nameWithType: TypeInfo.GetDeclaredMethod(String)
+  fullName: System.Reflection.TypeInfo.GetDeclaredMethod(String)
+- uid: System.Reflection.MethodInfo
+  parent: System.Reflection
+  isExternal: false
+  name: MethodInfo
+  nameWithType: MethodInfo
+  fullName: System.Reflection.MethodInfo
+- uid: System.Reflection.TypeInfo.GetDeclaredMethods(System.String)
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: GetDeclaredMethods(String)
+  nameWithType: TypeInfo.GetDeclaredMethods(String)
+  fullName: System.Reflection.TypeInfo.GetDeclaredMethods(String)
+- uid: System.Reflection.TypeInfo.GetDeclaredNestedType(System.String)
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: GetDeclaredNestedType(String)
+  nameWithType: TypeInfo.GetDeclaredNestedType(String)
+  fullName: System.Reflection.TypeInfo.GetDeclaredNestedType(String)
+- uid: System.Reflection.TypeInfo
+  parent: System.Reflection
+  isExternal: false
+  name: TypeInfo
+  nameWithType: TypeInfo
+  fullName: System.Reflection.TypeInfo
+- uid: System.Reflection.TypeInfo.GetDeclaredProperty(System.String)
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: GetDeclaredProperty(String)
+  nameWithType: TypeInfo.GetDeclaredProperty(String)
+  fullName: System.Reflection.TypeInfo.GetDeclaredProperty(String)
+- uid: System.Reflection.PropertyInfo
+  parent: System.Reflection
+  isExternal: false
+  name: PropertyInfo
+  nameWithType: PropertyInfo
+  fullName: System.Reflection.PropertyInfo
+- uid: System.Reflection.TypeInfo.ImplementedInterfaces
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: ImplementedInterfaces
+  nameWithType: TypeInfo.ImplementedInterfaces
+  fullName: System.Reflection.TypeInfo.ImplementedInterfaces
+- uid: System.Collections.Generic.IEnumerable{System.Type}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<Type>
+  nameWithType: IEnumerable<Type>
+  fullName: System.Collections.Generic.IEnumerable<System.Type>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<System.Type>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Type
+    name: Type
+    nameWithType: Type
+    fullName: Type
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Reflection.TypeInfo.IsAssignableFrom(System.Reflection.TypeInfo)
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: IsAssignableFrom(TypeInfo)
+  nameWithType: TypeInfo.IsAssignableFrom(TypeInfo)
+  fullName: System.Reflection.TypeInfo.IsAssignableFrom(TypeInfo)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Reflection.TypeInfo.System#Reflection#IReflectableType#GetTypeInfo
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: IReflectableType.GetTypeInfo()
+  nameWithType: TypeInfo.IReflectableType.GetTypeInfo()
+  fullName: System.Reflection.TypeInfo.IReflectableType.GetTypeInfo()
+- uid: System.Reflection.TypeInfo.AsType*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: AsType
+  nameWithType: TypeInfo.AsType
+- uid: System.Reflection.TypeInfo.DeclaredConstructors*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: DeclaredConstructors
+  nameWithType: TypeInfo.DeclaredConstructors
+- uid: System.Reflection.TypeInfo.DeclaredEvents*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: DeclaredEvents
+  nameWithType: TypeInfo.DeclaredEvents
+- uid: System.Reflection.TypeInfo.DeclaredFields*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: DeclaredFields
+  nameWithType: TypeInfo.DeclaredFields
+- uid: System.Reflection.TypeInfo.DeclaredMembers*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: DeclaredMembers
+  nameWithType: TypeInfo.DeclaredMembers
+- uid: System.Reflection.TypeInfo.DeclaredMethods*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: DeclaredMethods
+  nameWithType: TypeInfo.DeclaredMethods
+- uid: System.Reflection.TypeInfo.DeclaredNestedTypes*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: DeclaredNestedTypes
+  nameWithType: TypeInfo.DeclaredNestedTypes
+- uid: System.Reflection.TypeInfo.DeclaredProperties*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: DeclaredProperties
+  nameWithType: TypeInfo.DeclaredProperties
+- uid: System.Reflection.TypeInfo.GenericTypeParameters*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: GenericTypeParameters
+  nameWithType: TypeInfo.GenericTypeParameters
+- uid: System.Reflection.TypeInfo.GetDeclaredEvent*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: GetDeclaredEvent
+  nameWithType: TypeInfo.GetDeclaredEvent
+- uid: System.Reflection.TypeInfo.GetDeclaredField*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: GetDeclaredField
+  nameWithType: TypeInfo.GetDeclaredField
+- uid: System.Reflection.TypeInfo.GetDeclaredMethod*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: GetDeclaredMethod
+  nameWithType: TypeInfo.GetDeclaredMethod
+- uid: System.Reflection.TypeInfo.GetDeclaredMethods*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: GetDeclaredMethods
+  nameWithType: TypeInfo.GetDeclaredMethods
+- uid: System.Reflection.TypeInfo.GetDeclaredNestedType*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: GetDeclaredNestedType
+  nameWithType: TypeInfo.GetDeclaredNestedType
+- uid: System.Reflection.TypeInfo.GetDeclaredProperty*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: GetDeclaredProperty
+  nameWithType: TypeInfo.GetDeclaredProperty
+- uid: System.Reflection.TypeInfo.ImplementedInterfaces*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: ImplementedInterfaces
+  nameWithType: TypeInfo.ImplementedInterfaces
+- uid: System.Reflection.TypeInfo.IsAssignableFrom*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: IsAssignableFrom
+  nameWithType: TypeInfo.IsAssignableFrom
+- uid: System.Reflection.TypeInfo.System#Reflection#IReflectableType#GetTypeInfo*
+  parent: System.Reflection.TypeInfo
+  isExternal: false
+  name: System.Reflection.IReflectableType.GetTypeInfo
+  nameWithType: TypeInfo.System.Reflection.IReflectableType.GetTypeInfo

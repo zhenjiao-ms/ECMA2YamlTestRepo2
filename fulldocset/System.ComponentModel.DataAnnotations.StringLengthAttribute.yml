@@ -1,0 +1,362 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  id: StringLengthAttribute
+  children:
+  - System.ComponentModel.DataAnnotations.StringLengthAttribute.#ctor(System.Int32)
+  - System.ComponentModel.DataAnnotations.StringLengthAttribute.FormatErrorMessage(System.String)
+  - System.ComponentModel.DataAnnotations.StringLengthAttribute.IsValid(System.Object)
+  - System.ComponentModel.DataAnnotations.StringLengthAttribute.MaximumLength
+  - System.ComponentModel.DataAnnotations.StringLengthAttribute.MinimumLength
+  langs:
+  - csharp
+  name: StringLengthAttribute
+  nameWithType: StringLengthAttribute
+  fullName: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  type: Class
+  summary: Specifies the minimum and maximum length of characters that are allowed in a data field.
+  remarks: ASP.NET Dynamic Data enables CRUD (Create, Read, Update and Delete) operations in a data model. You can specify the minimum and maximum length of characters for each field when data is being inserted or updated. For character data types, the <xref:System.ComponentModel.DataAnnotations.StringLengthAttribute.MinimumLength%2A> and <xref:System.ComponentModel.DataAnnotations.StringLengthAttribute.MaximumLength%2A> properties identify the largest number of bytes that are required in order to store a string.
+  example:
+  - "The following example shows how to limit the number of characters in a field. This example works with the ThumbnailPhotoFileName field in the Products table in the AdventureWorksLT database. The field is limited 4 characters by applying the StringLengthAttribute attribute to the partial class that represents the Product entity.  \n  \n [!CODE [System.ComponentModel.DataAnnotations.StringLengthAttribute#1](System.ComponentModel.DataAnnotations.StringLengthAttribute#1)]  \n  \n```vb#  \n<MetadataType(GetType(ProductMetadata))> _   \nPublic Partial Class Product   \n  \nEnd Class   \n  \nPublic Class ProductMetadata   \n  \n    <ScaffoldColumn(True)> _   \n    <StringLength(4, ErrorMessage := \"The ThumbnailPhotoFileName value cannot exceed 4 characters. \")> _   \n    Public ThumbnailPhotoFileName As Object   \n  \nEnd Class  \n  \n```  \n  \n```c#  \n[MetadataType(typeof(ProductMetadata))]  \npublic partial class Product  \n{  \n  \n}  \n  \npublic class ProductMetadata  \n{  \n  \n    [ScaffoldColumn(true)]  \n    [StringLength(4, ErrorMessage = \"The ThumbnailPhotoFileName value cannot exceed 4 characters. \")]  \n    public object ThumbnailPhotoFileName;  \n  \n}  \n```"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field | System.AttributeTargets.Parameter, AllowMultiple=false)]
+
+      public class StringLengthAttribute : System.ComponentModel.DataAnnotations.ValidationAttribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  - System.ComponentModel.DataAnnotations.ValidationAttribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.ErrorMessage
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.ErrorMessageResourceName
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.ErrorMessageResourceType
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.ErrorMessageString
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.GetValidationResult(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.RequiresValidationContext
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.Validate(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.Validate(System.Object,System.String)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel.DataAnnotations\StringLengthAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel.DataAnnotations/StringLengthAttribute.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  langs:
+  - csharp
+  name: StringLengthAttribute(Int32)
+  nameWithType: StringLengthAttribute.StringLengthAttribute(Int32)
+  fullName: System.ComponentModel.DataAnnotations.StringLengthAttribute.StringLengthAttribute(Int32)
+  type: Constructor
+  assemblies:
+  - System.ComponentModel.DataAnnotations
+  namespace: System.ComponentModel.DataAnnotations
+  summary: Initializes a new instance of the <xref href="System.ComponentModel.DataAnnotations.StringLengthAttribute"></xref> class by using a specified maximum length.
+  syntax:
+    content: public StringLengthAttribute (int maximumLength);
+    parameters:
+    - id: maximumLength
+      type: System.Int32
+      description: The maximum length of a string.
+  overload: System.ComponentModel.DataAnnotations.StringLengthAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel.DataAnnotations\StringLengthAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel.DataAnnotations/StringLengthAttribute.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.FormatErrorMessage(System.String)
+  id: FormatErrorMessage(System.String)
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  langs:
+  - csharp
+  name: FormatErrorMessage(String)
+  nameWithType: StringLengthAttribute.FormatErrorMessage(String)
+  fullName: System.ComponentModel.DataAnnotations.StringLengthAttribute.FormatErrorMessage(String)
+  type: Method
+  assemblies:
+  - System.ComponentModel.DataAnnotations
+  namespace: System.ComponentModel.DataAnnotations
+  summary: Applies formatting to a specified error message.
+  syntax:
+    content: public override string FormatErrorMessage (string name);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the field that caused the validation failure.
+    return:
+      type: System.String
+      description: The formatted error message.
+  overload: System.ComponentModel.DataAnnotations.StringLengthAttribute.FormatErrorMessage*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>maximumLength</code> is negative.  \n  \n -or-  \n  \n <code>maximumLength</code> is less than <code>minimumLength</code>."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel.DataAnnotations\StringLengthAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel.DataAnnotations/StringLengthAttribute.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.IsValid(System.Object)
+  id: IsValid(System.Object)
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  langs:
+  - csharp
+  name: IsValid(Object)
+  nameWithType: StringLengthAttribute.IsValid(Object)
+  fullName: System.ComponentModel.DataAnnotations.StringLengthAttribute.IsValid(Object)
+  type: Method
+  assemblies:
+  - System.ComponentModel.DataAnnotations
+  namespace: System.ComponentModel.DataAnnotations
+  summary: Determines whether a specified object is valid.
+  remarks: This method determines whether an object is valid. If the value of the object is `null`, the method automatically validates object.
+  syntax:
+    content: public override bool IsValid (object value);
+    parameters:
+    - id: value
+      type: System.Object
+      description: The object to validate.
+    return:
+      type: System.Boolean
+      description: '`true` if the specified object is valid; otherwise, `false`.'
+  overload: System.ComponentModel.DataAnnotations.StringLengthAttribute.IsValid*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>maximumLength</code> is negative.  \n  \n -or-  \n  \n <code>maximumLength</code> is less than <xref href=\"stem.ComponentModel.DataAnnotations.StringLengthAttribute.MinimumLength%2A\"></xref>."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel.DataAnnotations\StringLengthAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel.DataAnnotations/StringLengthAttribute.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.MaximumLength
+  id: MaximumLength
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  langs:
+  - csharp
+  name: MaximumLength
+  nameWithType: StringLengthAttribute.MaximumLength
+  fullName: System.ComponentModel.DataAnnotations.StringLengthAttribute.MaximumLength
+  type: Property
+  assemblies:
+  - System.ComponentModel.DataAnnotations
+  namespace: System.ComponentModel.DataAnnotations
+  summary: Gets or sets the maximum length of a string.
+  syntax:
+    content: public int MaximumLength { get; }
+    return:
+      type: System.Int32
+      description: The maximum length a string.
+  overload: System.ComponentModel.DataAnnotations.StringLengthAttribute.MaximumLength*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel.DataAnnotations\StringLengthAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel.DataAnnotations/StringLengthAttribute.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.MinimumLength
+  id: MinimumLength
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  langs:
+  - csharp
+  name: MinimumLength
+  nameWithType: StringLengthAttribute.MinimumLength
+  fullName: System.ComponentModel.DataAnnotations.StringLengthAttribute.MinimumLength
+  type: Property
+  assemblies:
+  - System.ComponentModel.DataAnnotations
+  namespace: System.ComponentModel.DataAnnotations
+  summary: Gets or sets the minimum length of a string.
+  syntax:
+    content: public int MinimumLength { get; set; }
+    return:
+      type: System.Int32
+      description: The minimum length of a string.
+  overload: System.ComponentModel.DataAnnotations.StringLengthAttribute.MinimumLength*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel.DataAnnotations\StringLengthAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel.DataAnnotations/StringLengthAttribute.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.ComponentModel.DataAnnotations.ValidationAttribute
+  isExternal: false
+  name: System.ComponentModel.DataAnnotations.ValidationAttribute
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.#ctor(System.Int32)
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  isExternal: false
+  name: StringLengthAttribute(Int32)
+  nameWithType: StringLengthAttribute.StringLengthAttribute(Int32)
+  fullName: System.ComponentModel.DataAnnotations.StringLengthAttribute.StringLengthAttribute(Int32)
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.FormatErrorMessage(System.String)
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  isExternal: false
+  name: FormatErrorMessage(String)
+  nameWithType: StringLengthAttribute.FormatErrorMessage(String)
+  fullName: System.ComponentModel.DataAnnotations.StringLengthAttribute.FormatErrorMessage(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.IsValid(System.Object)
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  isExternal: false
+  name: IsValid(Object)
+  nameWithType: StringLengthAttribute.IsValid(Object)
+  fullName: System.ComponentModel.DataAnnotations.StringLengthAttribute.IsValid(Object)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.MaximumLength
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  isExternal: false
+  name: MaximumLength
+  nameWithType: StringLengthAttribute.MaximumLength
+  fullName: System.ComponentModel.DataAnnotations.StringLengthAttribute.MaximumLength
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.MinimumLength
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  isExternal: false
+  name: MinimumLength
+  nameWithType: StringLengthAttribute.MinimumLength
+  fullName: System.ComponentModel.DataAnnotations.StringLengthAttribute.MinimumLength
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.#ctor*
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  isExternal: false
+  name: StringLengthAttribute
+  nameWithType: StringLengthAttribute.StringLengthAttribute
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.FormatErrorMessage*
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  isExternal: false
+  name: FormatErrorMessage
+  nameWithType: StringLengthAttribute.FormatErrorMessage
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.IsValid*
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  isExternal: false
+  name: IsValid
+  nameWithType: StringLengthAttribute.IsValid
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.MaximumLength*
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  isExternal: false
+  name: MaximumLength
+  nameWithType: StringLengthAttribute.MaximumLength
+- uid: System.ComponentModel.DataAnnotations.StringLengthAttribute.MinimumLength*
+  parent: System.ComponentModel.DataAnnotations.StringLengthAttribute
+  isExternal: false
+  name: MinimumLength
+  nameWithType: StringLengthAttribute.MinimumLength

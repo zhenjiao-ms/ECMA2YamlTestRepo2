@@ -1,0 +1,204 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Net.IWebProxy
+  id: IWebProxy
+  children:
+  - System.Net.IWebProxy.Credentials
+  - System.Net.IWebProxy.GetProxy(System.Uri)
+  - System.Net.IWebProxy.IsBypassed(System.Uri)
+  langs:
+  - csharp
+  name: IWebProxy
+  nameWithType: IWebProxy
+  fullName: System.Net.IWebProxy
+  type: Interface
+  summary: Provides the base interface for implementation of proxy access for the <xref href="System.Net.WebRequest"></xref> class.
+  remarks: "The IWebProxy interface provides the methods and properties that are required by the <xref:System.Net.WebRequest> class to access proxy servers.  \n  \n The <xref:System.Net.WebProxy> class is the base implementation of the IWebProxy interface."
+  syntax:
+    content: public interface IWebProxy
+  implements: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\IWebProxy.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/IWebProxy.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.IWebProxy.Credentials
+  id: Credentials
+  parent: System.Net.IWebProxy
+  langs:
+  - csharp
+  name: Credentials
+  nameWithType: IWebProxy.Credentials
+  fullName: System.Net.IWebProxy.Credentials
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: The credentials to submit to the proxy server for authentication.
+  remarks: The Credentials property is an <xref:System.Net.ICredentials> instance that contains the authorization credentials to send to the proxy server in response to an HTTP 407 (proxy authorization) status code.
+  example:
+  - "The following example uses the <xref:System.Net.WebProxy.Credentials%2A> property to set the credentials that will be submitted to the proxy server for authentication.  \n  \n [!code-cs[IWebProxy_Interface#1](~/add/codesnippet/csharp/p-system.net.iwebproxy.c_1.cs)]\n [!code-vb[IWebProxy_Interface#1](~/add/codesnippet/visualbasic/p-system.net.iwebproxy.c_1.vb)]\n [!code-cpp[IWebProxy_Interface#1](~/add/codesnippet/cpp/p-system.net.iwebproxy.c_1.cpp)]"
+  syntax:
+    content: public System.Net.ICredentials Credentials { get; set; }
+    return:
+      type: System.Net.ICredentials
+      description: An <xref href="System.Net.ICredentials"></xref> instance that contains the credentials that are needed to authenticate a request to the proxy server.
+  overload: System.Net.IWebProxy.Credentials*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\IWebProxy.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/IWebProxy.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.IWebProxy.GetProxy(System.Uri)
+  id: GetProxy(System.Uri)
+  parent: System.Net.IWebProxy
+  langs:
+  - csharp
+  name: GetProxy(Uri)
+  nameWithType: IWebProxy.GetProxy(Uri)
+  fullName: System.Net.IWebProxy.GetProxy(Uri)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Returns the URI of a proxy.
+  remarks: The GetProxy method returns the URI of the proxy server that handles requests to the Internet resource that is specified in the `destination` parameter.
+  example:
+  - "The following example uses the <xref:System.Net.WebProxy.GetProxy%2A> method to return the URI that the <xref:System.Net.WebRequest> uses to access the Internet resource.  \n  \n [!code-cs[IWebProxy_Interface#4](~/add/codesnippet/csharp/m-system.net.iwebproxy.g_1.cs)]\n [!code-vb[IWebProxy_Interface#4](~/add/codesnippet/visualbasic/m-system.net.iwebproxy.g_1.vb)]\n [!code-cpp[IWebProxy_Interface#4](~/add/codesnippet/cpp/m-system.net.iwebproxy.g_1.cpp)]"
+  syntax:
+    content: public Uri GetProxy (Uri destination);
+    parameters:
+    - id: destination
+      type: System.Uri
+      description: A <xref href="System.Uri"></xref> that specifies the requested Internet resource.
+    return:
+      type: System.Uri
+      description: A <xref href="System.Uri"></xref> instance that contains the URI of the proxy used to contact <code>destination</code>.
+  overload: System.Net.IWebProxy.GetProxy*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\IWebProxy.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/IWebProxy.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.IWebProxy.IsBypassed(System.Uri)
+  id: IsBypassed(System.Uri)
+  parent: System.Net.IWebProxy
+  langs:
+  - csharp
+  name: IsBypassed(Uri)
+  nameWithType: IWebProxy.IsBypassed(Uri)
+  fullName: System.Net.IWebProxy.IsBypassed(Uri)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Indicates that the proxy should not be used for the specified host.
+  remarks: The IsBypassed method indicates whether to use the proxy server to access the host that is specified in the `host` parameter. If IsBypassed is `true`, the proxy is not used to contact the host and the request is passed directly to the server.
+  example:
+  - "The following example uses the <xref:System.Net.WebProxy.IsBypassed%2A> property to determine whether the proxy server should be used for the specified host.  \n  \n [!code-cs[IWebProxy_Interface#4](~/add/codesnippet/csharp/m-system.net.iwebproxy.i_1.cs)]\n [!code-vb[IWebProxy_Interface#4](~/add/codesnippet/visualbasic/m-system.net.iwebproxy.i_1.vb)]\n [!code-cpp[IWebProxy_Interface#4](~/add/codesnippet/cpp/m-system.net.iwebproxy.i_1.cpp)]"
+  syntax:
+    content: public bool IsBypassed (Uri host);
+    parameters:
+    - id: host
+      type: System.Uri
+      description: The <xref href="System.Uri"></xref> of the host to check for proxy use.
+    return:
+      type: System.Boolean
+      description: '`true` if the proxy server should not be used for <code>host</code>; otherwise, `false`.'
+  overload: System.Net.IWebProxy.IsBypassed*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\IWebProxy.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/IWebProxy.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Net.IWebProxy.Credentials
+  parent: System.Net.IWebProxy
+  isExternal: false
+  name: Credentials
+  nameWithType: IWebProxy.Credentials
+  fullName: System.Net.IWebProxy.Credentials
+- uid: System.Net.ICredentials
+  parent: System.Net
+  isExternal: false
+  name: ICredentials
+  nameWithType: ICredentials
+  fullName: System.Net.ICredentials
+- uid: System.Net.IWebProxy.GetProxy(System.Uri)
+  parent: System.Net.IWebProxy
+  isExternal: false
+  name: GetProxy(Uri)
+  nameWithType: IWebProxy.GetProxy(Uri)
+  fullName: System.Net.IWebProxy.GetProxy(Uri)
+- uid: System.Uri
+  parent: System
+  isExternal: false
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: System.Net.IWebProxy.IsBypassed(System.Uri)
+  parent: System.Net.IWebProxy
+  isExternal: false
+  name: IsBypassed(Uri)
+  nameWithType: IWebProxy.IsBypassed(Uri)
+  fullName: System.Net.IWebProxy.IsBypassed(Uri)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Net.IWebProxy.Credentials*
+  parent: System.Net.IWebProxy
+  isExternal: false
+  name: Credentials
+  nameWithType: IWebProxy.Credentials
+- uid: System.Net.IWebProxy.GetProxy*
+  parent: System.Net.IWebProxy
+  isExternal: false
+  name: GetProxy
+  nameWithType: IWebProxy.GetProxy
+- uid: System.Net.IWebProxy.IsBypassed*
+  parent: System.Net.IWebProxy
+  isExternal: false
+  name: IsBypassed
+  nameWithType: IWebProxy.IsBypassed

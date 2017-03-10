@@ -1,0 +1,989 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.Description.OperationDescription
+  id: OperationDescription
+  children:
+  - System.ServiceModel.Description.OperationDescription.#ctor(System.String,System.ServiceModel.Description.ContractDescription)
+  - System.ServiceModel.Description.OperationDescription.BeginMethod
+  - System.ServiceModel.Description.OperationDescription.Behaviors
+  - System.ServiceModel.Description.OperationDescription.DeclaringContract
+  - System.ServiceModel.Description.OperationDescription.EndMethod
+  - System.ServiceModel.Description.OperationDescription.Faults
+  - System.ServiceModel.Description.OperationDescription.HasProtectionLevel
+  - System.ServiceModel.Description.OperationDescription.IsInitiating
+  - System.ServiceModel.Description.OperationDescription.IsOneWay
+  - System.ServiceModel.Description.OperationDescription.IsTerminating
+  - System.ServiceModel.Description.OperationDescription.KnownTypes
+  - System.ServiceModel.Description.OperationDescription.Messages
+  - System.ServiceModel.Description.OperationDescription.Name
+  - System.ServiceModel.Description.OperationDescription.OperationBehaviors
+  - System.ServiceModel.Description.OperationDescription.ProtectionLevel
+  - System.ServiceModel.Description.OperationDescription.ShouldSerializeProtectionLevel
+  - System.ServiceModel.Description.OperationDescription.SyncMethod
+  - System.ServiceModel.Description.OperationDescription.TaskMethod
+  langs:
+  - csharp
+  name: OperationDescription
+  nameWithType: OperationDescription
+  fullName: System.ServiceModel.Description.OperationDescription
+  type: Class
+  summary: Represents the description of a contract operation that provides a description of the messages that make up the operation.
+  remarks: "A [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] contract is a collection of operations that specifies what the endpoint communicates to the outside world. Each operation is a message exchange. For example, a request message and an associated reply message forming a request/reply message exchange.  \n  \n A <xref:System.ServiceModel.Description.ContractDescription> object is used to describe contracts and their operations. Within a <xref:System.ServiceModel.Description.ContractDescription>, each contract operation has a corresponding OperationDescription that describes aspects of the operation, such as whether the operation is one-way or request/reply. Each OperationDescription also describes the messages that make up the operation using a collection of <xref:System.ServiceModel.Description.MessageDescription> objects. <xref:System.ServiceModel.Description.ContractDescription> contains a reference to an interface that defines the contract using the programming model. This interface is marked with <xref:System.ServiceModel.ServiceContractAttribute>, and its methods that correspond to endpoint operations are marked with <xref:System.ServiceModel.OperationContractAttribute>.  \n  \n Many of the properties on OperationDescription have corresponding properties in the [!INCLUDE[indigo2](~/add/includes/indigo2-md.md)] programming model on <xref:System.ServiceModel.OperationContractAttribute>, for example, <xref:System.ServiceModel.OperationContractAttribute.IsTerminating%2A>."
+  example:
+  - "The following example uses the OperationDescription returned from the collection returned by the <xref:System.ServiceModel.Description.ContractDescription.Operations%2A> property of the <xref:System.ServiceModel.Description.ContractDescription> class.  The code iterates through the collection of endpoints and prints each endpoint name, as well as the name of each operation in the endpoint.  \n  \n [!code-cs[DataContractSerializerOperationBehavior#2](~/add/codesnippet/csharp/t-system.servicemodel.de_42_1.cs)]\n [!code-vb[DataContractSerializerOperationBehavior#2](~/add/codesnippet/visualbasic/t-system.servicemodel.de_42_1.vb)]"
+  syntax:
+    content: >-
+      [System.Diagnostics.DebuggerDisplay("Name={name}, IsInitiating={isInitiating}, IsTerminating={isTerminating}")]
+
+      public class OperationDescription
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.#ctor(System.String,System.ServiceModel.Description.ContractDescription)
+  id: '#ctor(System.String,System.ServiceModel.Description.ContractDescription)'
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: OperationDescription(String,ContractDescription)
+  nameWithType: OperationDescription.OperationDescription(String,ContractDescription)
+  fullName: System.ServiceModel.Description.OperationDescription.OperationDescription(String,ContractDescription)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Description.OperationDescription"></xref> class with a specified name and contract description.
+  syntax:
+    content: public OperationDescription (string name, System.ServiceModel.Description.ContractDescription declaringContract);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the operation description.
+    - id: declaringContract
+      type: System.ServiceModel.Description.ContractDescription
+      description: The <xref href="System.ServiceModel.Description.ContractDescription"></xref> used to initialize the operation description.
+  overload: System.ServiceModel.Description.OperationDescription.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.BeginMethod
+  id: BeginMethod
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: BeginMethod
+  nameWithType: OperationDescription.BeginMethod
+  fullName: System.ServiceModel.Description.OperationDescription.BeginMethod
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets or sets the begin method of the operation.
+  syntax:
+    content: public System.Reflection.MethodInfo BeginMethod { get; set; }
+    return:
+      type: System.Reflection.MethodInfo
+      description: The <xref href="System.Reflection.MethodInfo"></xref> that provides access to the attributes and metadata of the method.
+  overload: System.ServiceModel.Description.OperationDescription.BeginMethod*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.Behaviors
+  id: Behaviors
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: Behaviors
+  nameWithType: OperationDescription.Behaviors
+  fullName: System.ServiceModel.Description.OperationDescription.Behaviors
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets or sets the operation behaviors associated with the operation.
+  remarks: The <xref:System.ServiceModel.Description.IOperationBehavior> interface is implemented to modify, examine, or extend some aspect of operation-wide execution at the application level for either client or service applications.
+  syntax:
+    content: public System.Collections.Generic.KeyedByTypeCollection<System.ServiceModel.Description.IOperationBehavior> Behaviors { get; }
+    return:
+      type: System.Collections.Generic.KeyedByTypeCollection{System.ServiceModel.Description.IOperationBehavior}
+      description: A <xref href="stem.Collections.Generic.KeyedByTypeCollection%601"></xref> that contains the <xref href="System.ServiceModel.Description.IOperationBehavior"></xref> objects associated with the operation.
+  overload: System.ServiceModel.Description.OperationDescription.Behaviors*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.DeclaringContract
+  id: DeclaringContract
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: DeclaringContract
+  nameWithType: OperationDescription.DeclaringContract
+  fullName: System.ServiceModel.Description.OperationDescription.DeclaringContract
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets or sets the contract to which the operation belongs.
+  syntax:
+    content: public System.ServiceModel.Description.ContractDescription DeclaringContract { get; set; }
+    return:
+      type: System.ServiceModel.Description.ContractDescription
+      description: The <xref href="System.ServiceModel.Description.ContractDescription"></xref> for the operation.
+  overload: System.ServiceModel.Description.OperationDescription.DeclaringContract*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.EndMethod
+  id: EndMethod
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: EndMethod
+  nameWithType: OperationDescription.EndMethod
+  fullName: System.ServiceModel.Description.OperationDescription.EndMethod
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets or sets the end method of the operation.
+  syntax:
+    content: public System.Reflection.MethodInfo EndMethod { get; set; }
+    return:
+      type: System.Reflection.MethodInfo
+      description: The <xref href="System.Reflection.MethodInfo"></xref> that provides access to the attributes and metadata of the method.
+  overload: System.ServiceModel.Description.OperationDescription.EndMethod*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.Faults
+  id: Faults
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: Faults
+  nameWithType: OperationDescription.Faults
+  fullName: System.ServiceModel.Description.OperationDescription.Faults
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets the descriptions of the faults associated with the operation description.
+  syntax:
+    content: public System.ServiceModel.Description.FaultDescriptionCollection Faults { get; }
+    return:
+      type: System.ServiceModel.Description.FaultDescriptionCollection
+      description: The <xref href="System.ServiceModel.Description.FaultDescriptionCollection"></xref> that contains details about the faults associated with the operation description.
+  overload: System.ServiceModel.Description.OperationDescription.Faults*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.HasProtectionLevel
+  id: HasProtectionLevel
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: HasProtectionLevel
+  nameWithType: OperationDescription.HasProtectionLevel
+  fullName: System.ServiceModel.Description.OperationDescription.HasProtectionLevel
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets a value that indicates whether the operation has had a protection level set.
+  remarks: "When the <xref:System.ServiceModel.Description.OperationDescription.ProtectionLevel%2A> is set, the HasProtectionLevel property is set to `true`.  \n  \n HasProtectionLevel corresponds to the <xref:System.ServiceModel.OperationContractAttribute.HasProtectionLevel%2A> property in the [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] programming model.  \n  \n Use the HasProtectionLevel property to indicate that a specific protection level is required by the messages of this operation."
+  syntax:
+    content: public bool HasProtectionLevel { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the protection level has been set; otherwise, `false`.'
+  overload: System.ServiceModel.Description.OperationDescription.HasProtectionLevel*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.IsInitiating
+  id: IsInitiating
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: IsInitiating
+  nameWithType: OperationDescription.IsInitiating
+  fullName: System.ServiceModel.Description.OperationDescription.IsInitiating
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets or sets a value that indicates whether the method implements an operation that can initiate a session on the server (if such a session exists).
+  remarks: "The <xref:System.ServiceModel.OperationContractAttribute.IsInitiating%2A> property controls whether an operation can be the first operation called when a session is created.  \n  \n> [!NOTE]\n>  The value of <xref:System.ServiceModel.ServiceContractAttribute.SessionMode%2A?displayProperty=fullName> must be `true` and the binding used must support sessions for the <xref:System.ServiceModel.OperationContractAttribute.IsInitiating%2A> property to work properly.  \n  \n The default is `true`, which means that an operation can be the first one called on a channel. Subsequent calls to the initiating method have no effect, other than to call the method. No other sessions are created.  \n  \n Typically, you set <xref:System.ServiceModel.OperationContractAttribute.IsInitiating%2A> to `false` to force clients to call another method on the service before they can invoke this one.  \n  \n IsInitiating corresponds to the <xref:System.ServiceModel.OperationContractAttribute.IsInitiating%2A> property in the [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] programming model."
+  syntax:
+    content: public bool IsInitiating { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if the operation is permitted to initiate a session on the server, otherwise, `false`. The default is `true`.'
+  overload: System.ServiceModel.Description.OperationDescription.IsInitiating*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.IsOneWay
+  id: IsOneWay
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: IsOneWay
+  nameWithType: OperationDescription.IsOneWay
+  fullName: System.ServiceModel.Description.OperationDescription.IsOneWay
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets or sets a value that indicates whether an operation returns a reply message.
+  remarks: "Use the IsOneWay property to indicate that an operation does not return a reply message. This type of operation is useful for notifications or event-style communication, especially in two-way communication.  \n  \n If the IsOneWay property is set to `false` (the default), even methods that return `void` result in a reply message. In this case, the infrastructure creates and sends an empty message to indicate to the caller that the method has returned.  \n  \n <xref:System.ServiceModel.Description.OperationDescription.IsTerminating%2A> corresponds to the <xref:System.ServiceModel.OperationContractAttribute.IsOneWay%2A> property in the [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] programming model."
+  syntax:
+    content: public bool IsOneWay { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if this method receives a request message and returns no reply message; otherwise, `false`. The default is `false`.'
+  overload: System.ServiceModel.Description.OperationDescription.IsOneWay*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.IsTerminating
+  id: IsTerminating
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: IsTerminating
+  nameWithType: OperationDescription.IsTerminating
+  fullName: System.ServiceModel.Description.OperationDescription.IsTerminating
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets or sets a value that indicates whether the service operation causes the server to close the session after the reply message, if any, is sent.
+  remarks: "Use the IsTerminating property to indicate that calling a service operation terminates the communication session.  \n  \n IsTerminating corresponds to the <xref:System.ServiceModel.OperationContractAttribute.IsTerminating%2A> property in the [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] programming model."
+  syntax:
+    content: public bool IsTerminating { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if the operation causes the server to close the session, otherwise, `false`. The default is `false`.'
+  overload: System.ServiceModel.Description.OperationDescription.IsTerminating*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.KnownTypes
+  id: KnownTypes
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: KnownTypes
+  nameWithType: OperationDescription.KnownTypes
+  fullName: System.ServiceModel.Description.OperationDescription.KnownTypes
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets the known types associated with the operation description.
+  remarks: The *known types* are types which may be present in an object graph when serialization or deserialization occurs. For more information about known types, see [Data Contract Known Types](../Topic/Data%20Contract%20Known%20Types.md).
+  syntax:
+    content: public System.Collections.ObjectModel.Collection<Type> KnownTypes { get; }
+    return:
+      type: System.Collections.ObjectModel.Collection{System.Type}
+      description: The collection of known types associated with the operation description.
+  overload: System.ServiceModel.Description.OperationDescription.KnownTypes*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.Messages
+  id: Messages
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: Messages
+  nameWithType: OperationDescription.Messages
+  fullName: System.ServiceModel.Description.OperationDescription.Messages
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets or sets the descriptions of the messages that make up the operation.
+  syntax:
+    content: public System.ServiceModel.Description.MessageDescriptionCollection Messages { get; }
+    return:
+      type: System.ServiceModel.Description.MessageDescriptionCollection
+      description: A <xref href="System.ServiceModel.Description.MessageDescriptionCollection"></xref> that contains descriptions of the messages that makes up the operation.
+  overload: System.ServiceModel.Description.OperationDescription.Messages*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.Name
+  id: Name
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: Name
+  nameWithType: OperationDescription.Name
+  fullName: System.ServiceModel.Description.OperationDescription.Name
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets or sets the name of the operation description.
+  remarks: The Name property overrides the <`operation`> element name in WSDL. The default operation name is the name of the implementing method.
+  syntax:
+    content: public string Name { get; }
+    return:
+      type: System.String
+      description: The name of the operation description.
+  overload: System.ServiceModel.Description.OperationDescription.Name*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.OperationBehaviors
+  id: OperationBehaviors
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: OperationBehaviors
+  nameWithType: OperationDescription.OperationBehaviors
+  fullName: System.ServiceModel.Description.OperationDescription.OperationBehaviors
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets the set of behaviors for the operation.
+  syntax:
+    content: public System.Collections.ObjectModel.KeyedCollection<Type,System.ServiceModel.Description.IOperationBehavior> OperationBehaviors { get; }
+    return:
+      type: System.Collections.ObjectModel.KeyedCollection{System.Type,System.ServiceModel.Description.IOperationBehavior}
+      description: The set of behaviors for the operation.
+  overload: System.ServiceModel.Description.OperationDescription.OperationBehaviors*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.ProtectionLevel
+  id: ProtectionLevel
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: ProtectionLevel
+  nameWithType: OperationDescription.ProtectionLevel
+  fullName: System.ServiceModel.Description.OperationDescription.ProtectionLevel
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets or sets the protection level for the operation.
+  remarks: "The ProtectionLevel property controls whether the messages of an operation must be encrypted, signed, or both. The value set here is the default value for all messages specified for this operation unless a narrower scope overrides this value.  \n  \n ProtectionLevel corresponds to the <xref:System.ServiceModel.OperationContractAttribute.ProtectionLevel%2A> property in the [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] programming model.  \n  \n When the ProtectionLevel is set, the <xref:System.ServiceModel.Description.OperationDescription.HasProtectionLevel%2A> property is set to `true`."
+  syntax:
+    content: public System.Net.Security.ProtectionLevel ProtectionLevel { get; set; }
+    return:
+      type: System.Net.Security.ProtectionLevel
+      description: The <xref href="System.Net.Security.ProtectionLevel"></xref> for the operation.
+  overload: System.ServiceModel.Description.OperationDescription.ProtectionLevel*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.ShouldSerializeProtectionLevel
+  id: ShouldSerializeProtectionLevel
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: ShouldSerializeProtectionLevel()
+  nameWithType: OperationDescription.ShouldSerializeProtectionLevel()
+  fullName: System.ServiceModel.Description.OperationDescription.ShouldSerializeProtectionLevel()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Returns a value that indicates whether the <xref href="stem.ServiceModel.Description.OperationDescription.ProtectionLevel%2A"></xref> property has changed from its default value and should be serialized.
+  syntax:
+    content: public bool ShouldSerializeProtectionLevel ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="stem.ServiceModel.Description.OperationDescription.ProtectionLevel%2A"></xref> property value should be serialized; otherwise, `false`.'
+  overload: System.ServiceModel.Description.OperationDescription.ShouldSerializeProtectionLevel*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.SyncMethod
+  id: SyncMethod
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: SyncMethod
+  nameWithType: OperationDescription.SyncMethod
+  fullName: System.ServiceModel.Description.OperationDescription.SyncMethod
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets or sets the service synchronization method of the operation description.
+  syntax:
+    content: public System.Reflection.MethodInfo SyncMethod { get; set; }
+    return:
+      type: System.Reflection.MethodInfo
+      description: The <xref href="System.Reflection.MethodInfo"></xref> that provides access the attributes and metadata of the method.
+  overload: System.ServiceModel.Description.OperationDescription.SyncMethod*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Description.OperationDescription.TaskMethod
+  id: TaskMethod
+  parent: System.ServiceModel.Description.OperationDescription
+  langs:
+  - csharp
+  name: TaskMethod
+  nameWithType: OperationDescription.TaskMethod
+  fullName: System.ServiceModel.Description.OperationDescription.TaskMethod
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets or sets the method used for the task operation.
+  syntax:
+    content: public System.Reflection.MethodInfo TaskMethod { get; set; }
+    return:
+      type: System.Reflection.MethodInfo
+      description: The method used for the task operation.
+  overload: System.ServiceModel.Description.OperationDescription.TaskMethod*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Description\OperationDescription.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Description/OperationDescription.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ServiceModel.Description.OperationDescription.#ctor(System.String,System.ServiceModel.Description.ContractDescription)
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: OperationDescription(String,ContractDescription)
+  nameWithType: OperationDescription.OperationDescription(String,ContractDescription)
+  fullName: System.ServiceModel.Description.OperationDescription.OperationDescription(String,ContractDescription)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.ServiceModel.Description.ContractDescription
+  parent: System.ServiceModel.Description
+  isExternal: false
+  name: ContractDescription
+  nameWithType: ContractDescription
+  fullName: System.ServiceModel.Description.ContractDescription
+- uid: System.ServiceModel.Description.OperationDescription.BeginMethod
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: BeginMethod
+  nameWithType: OperationDescription.BeginMethod
+  fullName: System.ServiceModel.Description.OperationDescription.BeginMethod
+- uid: System.Reflection.MethodInfo
+  parent: System.Reflection
+  isExternal: false
+  name: MethodInfo
+  nameWithType: MethodInfo
+  fullName: System.Reflection.MethodInfo
+- uid: System.ServiceModel.Description.OperationDescription.Behaviors
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: Behaviors
+  nameWithType: OperationDescription.Behaviors
+  fullName: System.ServiceModel.Description.OperationDescription.Behaviors
+- uid: System.Collections.Generic.KeyedByTypeCollection{System.ServiceModel.Description.IOperationBehavior}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: KeyedByTypeCollection<IOperationBehavior>
+  nameWithType: KeyedByTypeCollection<IOperationBehavior>
+  fullName: System.Collections.Generic.KeyedByTypeCollection<System.ServiceModel.Description.IOperationBehavior>
+  spec.csharp:
+  - uid: System.Collections.Generic.KeyedByTypeCollection`1
+    name: KeyedByTypeCollection
+    nameWithType: KeyedByTypeCollection
+    fullName: KeyedByTypeCollection<System.ServiceModel.Description.IOperationBehavior>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.ServiceModel.Description.IOperationBehavior
+    name: IOperationBehavior
+    nameWithType: IOperationBehavior
+    fullName: IOperationBehavior
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.ServiceModel.Description.OperationDescription.DeclaringContract
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: DeclaringContract
+  nameWithType: OperationDescription.DeclaringContract
+  fullName: System.ServiceModel.Description.OperationDescription.DeclaringContract
+- uid: System.ServiceModel.Description.OperationDescription.EndMethod
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: EndMethod
+  nameWithType: OperationDescription.EndMethod
+  fullName: System.ServiceModel.Description.OperationDescription.EndMethod
+- uid: System.ServiceModel.Description.OperationDescription.Faults
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: Faults
+  nameWithType: OperationDescription.Faults
+  fullName: System.ServiceModel.Description.OperationDescription.Faults
+- uid: System.ServiceModel.Description.FaultDescriptionCollection
+  parent: System.ServiceModel.Description
+  isExternal: false
+  name: FaultDescriptionCollection
+  nameWithType: FaultDescriptionCollection
+  fullName: System.ServiceModel.Description.FaultDescriptionCollection
+- uid: System.ServiceModel.Description.OperationDescription.HasProtectionLevel
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: HasProtectionLevel
+  nameWithType: OperationDescription.HasProtectionLevel
+  fullName: System.ServiceModel.Description.OperationDescription.HasProtectionLevel
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ServiceModel.Description.OperationDescription.IsInitiating
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: IsInitiating
+  nameWithType: OperationDescription.IsInitiating
+  fullName: System.ServiceModel.Description.OperationDescription.IsInitiating
+- uid: System.ServiceModel.Description.OperationDescription.IsOneWay
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: IsOneWay
+  nameWithType: OperationDescription.IsOneWay
+  fullName: System.ServiceModel.Description.OperationDescription.IsOneWay
+- uid: System.ServiceModel.Description.OperationDescription.IsTerminating
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: IsTerminating
+  nameWithType: OperationDescription.IsTerminating
+  fullName: System.ServiceModel.Description.OperationDescription.IsTerminating
+- uid: System.ServiceModel.Description.OperationDescription.KnownTypes
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: KnownTypes
+  nameWithType: OperationDescription.KnownTypes
+  fullName: System.ServiceModel.Description.OperationDescription.KnownTypes
+- uid: System.Collections.ObjectModel.Collection{System.Type}
+  parent: System.Collections.ObjectModel
+  isExternal: false
+  name: Collection<Type>
+  nameWithType: Collection<Type>
+  fullName: System.Collections.ObjectModel.Collection<System.Type>
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.Collection`1
+    name: Collection
+    nameWithType: Collection
+    fullName: Collection<System.Type>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Type
+    name: Type
+    nameWithType: Type
+    fullName: Type
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.ServiceModel.Description.OperationDescription.Messages
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: Messages
+  nameWithType: OperationDescription.Messages
+  fullName: System.ServiceModel.Description.OperationDescription.Messages
+- uid: System.ServiceModel.Description.MessageDescriptionCollection
+  parent: System.ServiceModel.Description
+  isExternal: false
+  name: MessageDescriptionCollection
+  nameWithType: MessageDescriptionCollection
+  fullName: System.ServiceModel.Description.MessageDescriptionCollection
+- uid: System.ServiceModel.Description.OperationDescription.Name
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: Name
+  nameWithType: OperationDescription.Name
+  fullName: System.ServiceModel.Description.OperationDescription.Name
+- uid: System.ServiceModel.Description.OperationDescription.OperationBehaviors
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: OperationBehaviors
+  nameWithType: OperationDescription.OperationBehaviors
+  fullName: System.ServiceModel.Description.OperationDescription.OperationBehaviors
+- uid: System.Collections.ObjectModel.KeyedCollection{System.Type,System.ServiceModel.Description.IOperationBehavior}
+  parent: System.Collections.ObjectModel
+  isExternal: false
+  name: KeyedCollection<Type,IOperationBehavior>
+  nameWithType: KeyedCollection<Type,IOperationBehavior>
+  fullName: System.Collections.ObjectModel.KeyedCollection<System.Type,System.ServiceModel.Description.IOperationBehavior>
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.KeyedCollection`2
+    name: KeyedCollection
+    nameWithType: KeyedCollection
+    fullName: KeyedCollection<System.Type,System.ServiceModel.Description.IOperationBehavior>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Type
+    name: Type
+    nameWithType: Type
+    fullName: Type
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: System.ServiceModel.Description.IOperationBehavior
+    name: IOperationBehavior
+    nameWithType: IOperationBehavior
+    fullName: IOperationBehavior
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.ServiceModel.Description.OperationDescription.ProtectionLevel
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: ProtectionLevel
+  nameWithType: OperationDescription.ProtectionLevel
+  fullName: System.ServiceModel.Description.OperationDescription.ProtectionLevel
+- uid: System.Net.Security.ProtectionLevel
+  parent: System.Net.Security
+  isExternal: false
+  name: ProtectionLevel
+  nameWithType: ProtectionLevel
+  fullName: System.Net.Security.ProtectionLevel
+- uid: System.ServiceModel.Description.OperationDescription.ShouldSerializeProtectionLevel
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: ShouldSerializeProtectionLevel()
+  nameWithType: OperationDescription.ShouldSerializeProtectionLevel()
+  fullName: System.ServiceModel.Description.OperationDescription.ShouldSerializeProtectionLevel()
+- uid: System.ServiceModel.Description.OperationDescription.SyncMethod
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: SyncMethod
+  nameWithType: OperationDescription.SyncMethod
+  fullName: System.ServiceModel.Description.OperationDescription.SyncMethod
+- uid: System.ServiceModel.Description.OperationDescription.TaskMethod
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: TaskMethod
+  nameWithType: OperationDescription.TaskMethod
+  fullName: System.ServiceModel.Description.OperationDescription.TaskMethod
+- uid: System.ServiceModel.Description.OperationDescription.#ctor*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: OperationDescription
+  nameWithType: OperationDescription.OperationDescription
+- uid: System.ServiceModel.Description.OperationDescription.BeginMethod*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: BeginMethod
+  nameWithType: OperationDescription.BeginMethod
+- uid: System.ServiceModel.Description.OperationDescription.Behaviors*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: Behaviors
+  nameWithType: OperationDescription.Behaviors
+- uid: System.ServiceModel.Description.OperationDescription.DeclaringContract*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: DeclaringContract
+  nameWithType: OperationDescription.DeclaringContract
+- uid: System.ServiceModel.Description.OperationDescription.EndMethod*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: EndMethod
+  nameWithType: OperationDescription.EndMethod
+- uid: System.ServiceModel.Description.OperationDescription.Faults*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: Faults
+  nameWithType: OperationDescription.Faults
+- uid: System.ServiceModel.Description.OperationDescription.HasProtectionLevel*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: HasProtectionLevel
+  nameWithType: OperationDescription.HasProtectionLevel
+- uid: System.ServiceModel.Description.OperationDescription.IsInitiating*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: IsInitiating
+  nameWithType: OperationDescription.IsInitiating
+- uid: System.ServiceModel.Description.OperationDescription.IsOneWay*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: IsOneWay
+  nameWithType: OperationDescription.IsOneWay
+- uid: System.ServiceModel.Description.OperationDescription.IsTerminating*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: IsTerminating
+  nameWithType: OperationDescription.IsTerminating
+- uid: System.ServiceModel.Description.OperationDescription.KnownTypes*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: KnownTypes
+  nameWithType: OperationDescription.KnownTypes
+- uid: System.ServiceModel.Description.OperationDescription.Messages*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: Messages
+  nameWithType: OperationDescription.Messages
+- uid: System.ServiceModel.Description.OperationDescription.Name*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: Name
+  nameWithType: OperationDescription.Name
+- uid: System.ServiceModel.Description.OperationDescription.OperationBehaviors*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: OperationBehaviors
+  nameWithType: OperationDescription.OperationBehaviors
+- uid: System.ServiceModel.Description.OperationDescription.ProtectionLevel*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: ProtectionLevel
+  nameWithType: OperationDescription.ProtectionLevel
+- uid: System.ServiceModel.Description.OperationDescription.ShouldSerializeProtectionLevel*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: ShouldSerializeProtectionLevel
+  nameWithType: OperationDescription.ShouldSerializeProtectionLevel
+- uid: System.ServiceModel.Description.OperationDescription.SyncMethod*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: SyncMethod
+  nameWithType: OperationDescription.SyncMethod
+- uid: System.ServiceModel.Description.OperationDescription.TaskMethod*
+  parent: System.ServiceModel.Description.OperationDescription
+  isExternal: false
+  name: TaskMethod
+  nameWithType: OperationDescription.TaskMethod

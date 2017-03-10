@@ -1,0 +1,3188 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Reflection.Emit.MethodBuilder
+  id: MethodBuilder
+  children:
+  - System.Reflection.Emit.MethodBuilder.AddDeclarativeSecurity(System.Security.Permissions.SecurityAction,System.Security.PermissionSet)
+  - System.Reflection.Emit.MethodBuilder.Attributes
+  - System.Reflection.Emit.MethodBuilder.CallingConvention
+  - System.Reflection.Emit.MethodBuilder.ContainsGenericParameters
+  - System.Reflection.Emit.MethodBuilder.CreateMethodBody(System.Byte[],System.Int32)
+  - System.Reflection.Emit.MethodBuilder.DeclaringType
+  - System.Reflection.Emit.MethodBuilder.DefineGenericParameters(System.String[])
+  - System.Reflection.Emit.MethodBuilder.DefineParameter(System.Int32,System.Reflection.ParameterAttributes,System.String)
+  - System.Reflection.Emit.MethodBuilder.Equals(System.Object)
+  - System.Reflection.Emit.MethodBuilder.GetBaseDefinition
+  - System.Reflection.Emit.MethodBuilder.GetCustomAttributes(System.Boolean)
+  - System.Reflection.Emit.MethodBuilder.GetCustomAttributes(System.Type,System.Boolean)
+  - System.Reflection.Emit.MethodBuilder.GetGenericArguments
+  - System.Reflection.Emit.MethodBuilder.GetGenericMethodDefinition
+  - System.Reflection.Emit.MethodBuilder.GetHashCode
+  - System.Reflection.Emit.MethodBuilder.GetILGenerator
+  - System.Reflection.Emit.MethodBuilder.GetILGenerator(System.Int32)
+  - System.Reflection.Emit.MethodBuilder.GetMethodImplementationFlags
+  - System.Reflection.Emit.MethodBuilder.GetModule
+  - System.Reflection.Emit.MethodBuilder.GetParameters
+  - System.Reflection.Emit.MethodBuilder.GetToken
+  - System.Reflection.Emit.MethodBuilder.InitLocals
+  - System.Reflection.Emit.MethodBuilder.Invoke(System.Object,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo)
+  - System.Reflection.Emit.MethodBuilder.IsDefined(System.Type,System.Boolean)
+  - System.Reflection.Emit.MethodBuilder.IsGenericMethod
+  - System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition
+  - System.Reflection.Emit.MethodBuilder.IsSecurityCritical
+  - System.Reflection.Emit.MethodBuilder.IsSecuritySafeCritical
+  - System.Reflection.Emit.MethodBuilder.IsSecurityTransparent
+  - System.Reflection.Emit.MethodBuilder.MakeGenericMethod(System.Type[])
+  - System.Reflection.Emit.MethodBuilder.MethodHandle
+  - System.Reflection.Emit.MethodBuilder.Module
+  - System.Reflection.Emit.MethodBuilder.Name
+  - System.Reflection.Emit.MethodBuilder.ReflectedType
+  - System.Reflection.Emit.MethodBuilder.ReturnParameter
+  - System.Reflection.Emit.MethodBuilder.ReturnType
+  - System.Reflection.Emit.MethodBuilder.ReturnTypeCustomAttributes
+  - System.Reflection.Emit.MethodBuilder.SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder)
+  - System.Reflection.Emit.MethodBuilder.SetCustomAttribute(System.Reflection.ConstructorInfo,System.Byte[])
+  - System.Reflection.Emit.MethodBuilder.SetImplementationFlags(System.Reflection.MethodImplAttributes)
+  - System.Reflection.Emit.MethodBuilder.SetMarshal(System.Reflection.Emit.UnmanagedMarshal)
+  - System.Reflection.Emit.MethodBuilder.SetMethodBody(System.Byte[],System.Int32,System.Byte[],System.Collections.Generic.IEnumerable{System.Reflection.Emit.ExceptionHandler},System.Collections.Generic.IEnumerable{System.Int32})
+  - System.Reflection.Emit.MethodBuilder.SetParameters(System.Type[])
+  - System.Reflection.Emit.MethodBuilder.SetReturnType(System.Type)
+  - System.Reflection.Emit.MethodBuilder.SetSignature(System.Type,System.Type[],System.Type[],System.Type[],System.Type[][],System.Type[][])
+  - System.Reflection.Emit.MethodBuilder.SetSymCustomAttribute(System.String,System.Byte[])
+  - System.Reflection.Emit.MethodBuilder.Signature
+  - System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetTypeInfoCount(System.UInt32@)
+  - System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Reflection.Emit.MethodBuilder.ToString
+  langs:
+  - csharp
+  name: MethodBuilder
+  nameWithType: MethodBuilder
+  fullName: System.Reflection.Emit.MethodBuilder
+  type: Class
+  summary: Defines and represents a method (or constructor) on a dynamic class.
+  remarks: "The MethodBuilder class is used to fully describe a method in Microsoft intermediate language (MSIL), including the name, attributes, signature, and method body. It is used in conjunction with the <xref:System.Reflection.Emit.TypeBuilder> class to create classes at runtime.  \n  \n## Global methods and methods as type members  \n You can use reflection emit to define global methods and to define methods as type members. The APIs that define methods return MethodBuilder objects.  \n  \n### Global methods  \n A global method is defined by using the <xref:System.Reflection.Emit.ModuleBuilder.DefineGlobalMethod%2A?displayProperty=fullName> method, which returns a **MethodBuilder** object.  \n  \n Global methods must be static. If a dynamic module contains global methods, the <xref:System.Reflection.Emit.ModuleBuilder.CreateGlobalFunctions%2A?displayProperty=fullName> method must be called before persisting the dynamic module or the containing dynamic assembly because the common language runtime postpones fixing up the dynamic module until all global functions have been defined.  \n  \n A global native method is defined by using the <xref:System.Reflection.Emit.ModuleBuilder.DefinePInvokeMethod%2A?displayProperty=fullName> method. Platform invoke (PInvoke) methods must not be declared abstract or virtual. The runtime sets the <xref:System.Reflection.MethodAttributes?displayProperty=fullName> attribute for a platform invoke method.  \n  \n### Methods as members of types  \n A method is defined as a type member by using the <xref:System.Reflection.Emit.TypeBuilder.DefineMethod%2A?displayProperty=fullName> method, which returns a MethodBuilder object.  \n  \n The <xref:System.Reflection.Emit.MethodBuilder.DefineParameter%2A> method is used to set the name and parameter attributes of a parameter, or of the return value. The<xref:System.Reflection.Emit.ParameterBuilder> object returned by this method represents a parameter or the return value. The <xref:System.Reflection.Emit.ParameterBuilder> object can be used to set the marshaling, to set the constant value, and to apply custom attributes.  \n  \n## Attributes  \n Members of the <xref:System.Reflection.MethodAttributes> enumeration define the precise character of a dynamic method:  \n  \n-   Static methods are specified using the <xref:System.Reflection.MethodAttributes?displayProperty=fullName> attribute.  \n  \n-   Final methods (methods that cannot be overridden) are specified using the <xref:System.Reflection.MethodAttributes?displayProperty=fullName> attribute.  \n  \n-   Virtual methods are specified using the <xref:System.Reflection.MethodAttributes?displayProperty=fullName> attribute.  \n  \n-   Abstract methods are specified using the <xref:System.Reflection.MethodAttributes?displayProperty=fullName> attribute.  \n  \n-   Several attributes determine method visibility. See the description of the <xref:System.Reflection.MethodAttributes> enumeration.  \n  \n-   Methods that implement overloaded operators must set the <xref:System.Reflection.MethodAttributes?displayProperty=fullName> attribute.  \n  \n-   Finalizers must set the <xref:System.Reflection.MethodAttributes?displayProperty=fullName> attribute.  \n  \n## Known Issues  \n  \n-   Although MethodBuilder is derived from <xref:System.Reflection.MethodInfo>, some of the abstract methods defined in the <xref:System.Reflection.MethodInfo> class are not fully implemented in MethodBuilder. These MethodBuilder methods throw the <xref:System.NotSupportedException>. For example the <xref:System.Reflection.Emit.MethodBuilder.Invoke%2A?displayProperty=fullName> method is not fully implemented. You can reflect on these methods by retrieving the enclosing type using the <xref:System.Type.GetType%2A?displayProperty=fullName> or <xref:System.Reflection.Assembly.GetType%2A?displayProperty=fullName> methods.  \n  \n-   Custom modifiers are supported starting with the .NET Framework version 2.0. They are not supported in earlier versions."
+  example:
+  - "The following example uses the MethodBuilder class to create a method within a dynamic type.  \n  \n [!code-cpp[System.Reflection.Emit.MethodBuilder Example#1](~/add/codesnippet/cpp/t-system.reflection.emit_0_1.cpp)]\n [!code-vb[System.Reflection.Emit.MethodBuilder Example#1](~/add/codesnippet/visualbasic/t-system.reflection.emit_0_1.vb)]\n [!code-cs[System.Reflection.Emit.MethodBuilder Example#1](~/add/codesnippet/csharp/t-system.reflection.emit_0_1.cs)]"
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ClassInterface(System.Runtime.InteropServices.ClassInterfaceType.None)]
+
+      [System.Runtime.InteropServices.ComDefaultInterface(typeof(System.Runtime.InteropServices._MethodBuilder))]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class MethodBuilder : System.Reflection.MethodInfo, System.Runtime.InteropServices._MethodBuilder
+  inheritance:
+  - System.Object
+  - System.Reflection.MemberInfo
+  - System.Reflection.MethodBase
+  - System.Reflection.MethodInfo
+  implements:
+  - System.Runtime.InteropServices._MethodBuilder
+  inheritedMembers:
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Reflection.MemberInfo.CustomAttributes
+  - System.Reflection.MemberInfo.GetCustomAttributesData
+  - System.Reflection.MemberInfo.MetadataToken
+  - System.Reflection.MemberInfo.op_Equality(System.Reflection.MemberInfo,System.Reflection.MemberInfo)
+  - System.Reflection.MemberInfo.op_Inequality(System.Reflection.MemberInfo,System.Reflection.MemberInfo)
+  - System.Reflection.MemberInfo.System#Runtime#InteropServices#_MemberInfo#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Reflection.MemberInfo.System#Runtime#InteropServices#_MemberInfo#GetType
+  - System.Reflection.MemberInfo.System#Runtime#InteropServices#_MemberInfo#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Reflection.MemberInfo.System#Runtime#InteropServices#_MemberInfo#GetTypeInfoCount(System.UInt32@)
+  - System.Reflection.MemberInfo.System#Runtime#InteropServices#_MemberInfo#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Reflection.MethodBase.GetCurrentMethod
+  - System.Reflection.MethodBase.GetMethodBody
+  - System.Reflection.MethodBase.GetMethodFromHandle(System.RuntimeMethodHandle)
+  - System.Reflection.MethodBase.GetMethodFromHandle(System.RuntimeMethodHandle,System.RuntimeTypeHandle)
+  - System.Reflection.MethodBase.Invoke(System.Object,System.Object[])
+  - System.Reflection.MethodBase.IsAbstract
+  - System.Reflection.MethodBase.IsAssembly
+  - System.Reflection.MethodBase.IsConstructor
+  - System.Reflection.MethodBase.IsFamily
+  - System.Reflection.MethodBase.IsFamilyAndAssembly
+  - System.Reflection.MethodBase.IsFamilyOrAssembly
+  - System.Reflection.MethodBase.IsFinal
+  - System.Reflection.MethodBase.IsHideBySig
+  - System.Reflection.MethodBase.IsPrivate
+  - System.Reflection.MethodBase.IsPublic
+  - System.Reflection.MethodBase.IsSpecialName
+  - System.Reflection.MethodBase.IsStatic
+  - System.Reflection.MethodBase.IsVirtual
+  - System.Reflection.MethodBase.MethodImplementationFlags
+  - System.Reflection.MethodBase.op_Equality(System.Reflection.MethodBase,System.Reflection.MethodBase)
+  - System.Reflection.MethodBase.op_Inequality(System.Reflection.MethodBase,System.Reflection.MethodBase)
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#GetType
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#GetTypeInfoCount(System.UInt32@)
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsAbstract
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsAssembly
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsConstructor
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsFamily
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsFamilyAndAssembly
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsFamilyOrAssembly
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsFinal
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsHideBySig
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsPrivate
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsPublic
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsSpecialName
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsStatic
+  - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsVirtual
+  - System.Reflection.MethodInfo.CreateDelegate(System.Type)
+  - System.Reflection.MethodInfo.CreateDelegate(System.Type,System.Object)
+  - System.Reflection.MethodInfo.MemberType
+  - System.Reflection.MethodInfo.op_Equality(System.Reflection.MethodInfo,System.Reflection.MethodInfo)
+  - System.Reflection.MethodInfo.op_Inequality(System.Reflection.MethodInfo,System.Reflection.MethodInfo)
+  - System.Reflection.MethodInfo.System#Runtime#InteropServices#_MethodInfo#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Reflection.MethodInfo.System#Runtime#InteropServices#_MethodInfo#GetType
+  - System.Reflection.MethodInfo.System#Runtime#InteropServices#_MethodInfo#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Reflection.MethodInfo.System#Runtime#InteropServices#_MethodInfo#GetTypeInfoCount(System.UInt32@)
+  - System.Reflection.MethodInfo.System#Runtime#InteropServices#_MethodInfo#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.AddDeclarativeSecurity(System.Security.Permissions.SecurityAction,System.Security.PermissionSet)
+  id: AddDeclarativeSecurity(System.Security.Permissions.SecurityAction,System.Security.PermissionSet)
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: AddDeclarativeSecurity(SecurityAction,PermissionSet)
+  nameWithType: MethodBuilder.AddDeclarativeSecurity(SecurityAction,PermissionSet)
+  fullName: System.Reflection.Emit.MethodBuilder.AddDeclarativeSecurity(SecurityAction,PermissionSet)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Adds declarative security to this method.
+  remarks: "AddDeclarativeSecurity can be called several times, with each call specifying a security action (such as `Demand`, `Assert`, and `Deny`) and a set of permissions that the action applies to.  \n  \n> [!NOTE]\n>  In the .NET Framework versions 1.0, 1.1, and 2.0, the declarative security attributes applied to a method by using the AddDeclarativeSecurity method are stored in the old XML metadata format. See Emitting Declarative Security Attributes."
+  example:
+  - "The code sample below illustrates the contextual use of `AddDeclarativeSecurity` to require the caller of a method to have unrestricted permissions.  \n  \n [!code-cs[System.Reflection.Emit.MethodBuilder.AddDeclarativeSecurity Example#1](~/add/codesnippet/csharp/afdcab08-40e3-4eee-8928-_1.cs)]\n [!code-vb[System.Reflection.Emit.MethodBuilder.AddDeclarativeSecurity Example#1](~/add/codesnippet/visualbasic/afdcab08-40e3-4eee-8928-_1.vb)]\n [!code-cpp[System.Reflection.Emit.MethodBuilder.AddDeclarativeSecurity Example#1](~/add/codesnippet/cpp/afdcab08-40e3-4eee-8928-_1.cpp)]"
+  syntax:
+    content: public void AddDeclarativeSecurity (System.Security.Permissions.SecurityAction action, System.Security.PermissionSet pset);
+    parameters:
+    - id: action
+      type: System.Security.Permissions.SecurityAction
+      description: The security action to be taken (Demand, Assert, and so on).
+    - id: pset
+      type: System.Security.PermissionSet
+      description: The set of permissions the action applies to.
+  overload: System.Reflection.Emit.MethodBuilder.AddDeclarativeSecurity*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: The <code>action</code> is invalid (`RequestMinimum`, `RequestOptional`, and `RequestRefuse` are invalid).
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: "The containing type has been created using <xref href=\"stem.Reflection.Emit.TypeBuilder.CreateType%2A\"></xref>.  \n  \n -or-  \n  \n The permission set <code>pset</code> contains an action that was added earlier by AddDeclarativeSecurity.  \n  \n -or-  \n  \n For the current method, the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A\"></xref> property is `true`, but the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition%2A\"></xref> property is `false`."
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>pset</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.Attributes
+  id: Attributes
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: Attributes
+  nameWithType: MethodBuilder.Attributes
+  fullName: System.Reflection.Emit.MethodBuilder.Attributes
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Retrieves the attributes for this method.
+  syntax:
+    content: public override System.Reflection.MethodAttributes Attributes { get; }
+    return:
+      type: System.Reflection.MethodAttributes
+      description: Read-only. Retrieves the `MethodAttributes` for this method.
+  overload: System.Reflection.Emit.MethodBuilder.Attributes*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.CallingConvention
+  id: CallingConvention
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: CallingConvention
+  nameWithType: MethodBuilder.CallingConvention
+  fullName: System.Reflection.Emit.MethodBuilder.CallingConvention
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns the calling convention of the method.
+  syntax:
+    content: public override System.Reflection.CallingConventions CallingConvention { get; }
+    return:
+      type: System.Reflection.CallingConventions
+      description: Read-only. The calling convention of the method.
+  overload: System.Reflection.Emit.MethodBuilder.CallingConvention*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.ContainsGenericParameters
+  id: ContainsGenericParameters
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: ContainsGenericParameters
+  nameWithType: MethodBuilder.ContainsGenericParameters
+  fullName: System.Reflection.Emit.MethodBuilder.ContainsGenericParameters
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Not supported for this type.
+  remarks: "A <xref:System.Reflection.Emit.MethodBuilder> always represents a generic method definition, and thus cannot be invoked.  \n  \n For more information, see <xref:System.Reflection.MethodInfo.IsGenericMethod%2A?displayProperty=fullName> and <xref:System.Reflection.MethodInfo.ContainsGenericParameters%2A?displayProperty=fullName>. For information on generic types, see <xref:System.Type.IsGenericType%2A?displayProperty=fullName>."
+  syntax:
+    content: public override bool ContainsGenericParameters { get; }
+    return:
+      type: System.Boolean
+      description: Not supported.
+  overload: System.Reflection.Emit.MethodBuilder.ContainsGenericParameters*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The invoked method is not supported in the base class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.CreateMethodBody(System.Byte[],System.Int32)
+  id: CreateMethodBody(System.Byte[],System.Int32)
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: CreateMethodBody(Byte[],Int32)
+  nameWithType: MethodBuilder.CreateMethodBody(Byte[],Int32)
+  fullName: System.Reflection.Emit.MethodBuilder.CreateMethodBody(Byte[],Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Creates the body of the method using a supplied byte array of Microsoft intermediate language (MSIL) instructions.
+  remarks: "This method creates the method's body from `il`, an array containing MSIL instructions as opcodes. The number of bytes of valid MSIL is given by count.  \n  \n> [!NOTE]\n>  This is currently not fully supported. The user cannot supply the location of token fix ups and exception handlers."
+  example:
+  - "In the example provided below, a simple method that adds two integers is generated via opcode using `CreateMethodBody`.  \n  \n [!code-vb[System.Refelction.Emit.MethodBuilder.CreateMethodBody Example#1](~/add/codesnippet/visualbasic/53634c86-79db-405e-a743-_1.vb)]\n [!code-cs[System.Refelction.Emit.MethodBuilder.CreateMethodBody Example#1](~/add/codesnippet/csharp/53634c86-79db-405e-a743-_1.cs)]\n [!code-cpp[System.Refelction.Emit.MethodBuilder.CreateMethodBody Example#1](~/add/codesnippet/cpp/53634c86-79db-405e-a743-_1.cpp)]"
+  syntax:
+    content: public void CreateMethodBody (byte[] il, int count);
+    parameters:
+    - id: il
+      type: System.Byte[]
+      description: An array containing valid MSIL instructions. If this parameter is `null`, the method's body is cleared.
+    - id: count
+      type: System.Int32
+      description: The number of valid bytes in the MSIL array. This value is ignored if MSIL is `null`.
+  overload: System.Reflection.Emit.MethodBuilder.CreateMethodBody*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: The <code>count</code> is not within the range of indexes of the supplied MSIL instruction array and <code>il</code> is not `null`.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: "The containing type was previously created using <xref href=\"stem.Reflection.Emit.TypeBuilder.CreateType%2A\"></xref>.  \n  \n -or-  \n  \n This method was called previously on this `MethodBuilder` with an <code>il</code> argument that was not `null`.  \n  \n -or-  \n  \n For the current method, the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A\"></xref> property is `true`, but the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition%2A\"></xref> property is `false`."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.DeclaringType
+  id: DeclaringType
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: DeclaringType
+  nameWithType: MethodBuilder.DeclaringType
+  fullName: System.Reflection.Emit.MethodBuilder.DeclaringType
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns the type that declares this method.
+  remarks: ''
+  example:
+  - "The following code illustrates the use of the `Type` property.  \n  \n [!code-cs[MethodBuilderClass_TypeSample#1](~/add/codesnippet/csharp/p-system.reflection.emit_12_1.cs)]\n [!code-vb[MethodBuilderClass_TypeSample#1](~/add/codesnippet/visualbasic/p-system.reflection.emit_12_1.vb)]\n [!code-cpp[MethodBuilderClass_TypeSample#1](~/add/codesnippet/cpp/p-system.reflection.emit_12_1.cpp)]"
+  syntax:
+    content: public override Type DeclaringType { get; }
+    return:
+      type: System.Type
+      description: Read-only. The type that declares this method.
+  overload: System.Reflection.Emit.MethodBuilder.DeclaringType*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.DefineGenericParameters(System.String[])
+  id: DefineGenericParameters(System.String[])
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: DefineGenericParameters(String[])
+  nameWithType: MethodBuilder.DefineGenericParameters(String[])
+  fullName: System.Reflection.Emit.MethodBuilder.DefineGenericParameters(String[])
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Sets the number of generic type parameters for the current method, specifies their names, and returns an array of <xref href="System.Reflection.Emit.GenericTypeParameterBuilder"></xref> objects that can be used to define their constraints.
+  remarks: "Calling the DefineGenericParameters method makes the current method generic. There is no way to undo this change. Calling this method a second time causes an <xref:System.InvalidOperationException>.  \n  \n The type parameters of the generic method can be retrieved later by using the <xref:System.Reflection.Emit.MethodBuilder.GetGenericArguments%2A> method.  \n  \n By convention, a type parameter name is a single uppercase letter.  \n  \n For more information, see <xref:System.Reflection.MethodInfo.IsGenericMethod%2A?displayProperty=fullName> and <xref:System.Reflection.MethodInfo.GetGenericMethodDefinition%2A?displayProperty=fullName>. For information on generic types, see <xref:System.Type.IsGenericType%2A?displayProperty=fullName>."
+  example:
+  - "The following code example creates a dynamic type, `DemoType`, which contains the dynamic generic method `DemoMethod`. This method has two generic type parameters, one of which is used as a parameter, and the other as the return type.  \n  \n When the code is executed, the dynamic assembly is saved as DemoGenericMethod1.dll, and can be examined using the [Ildasm.exe (IL Disassembler)](../Topic/Ildasm.exe%20\\(IL%20Disassembler\\).md).  \n  \n> [!NOTE]\n>  This code example generates a simple method body that merely returns a null reference. For a code example with a more fully developed method body that creates and uses generic types, see [How to: Define a Generic Method with Reflection Emit](../Topic/How%20to:%20Define%20a%20Generic%20Method%20with%20Reflection%20Emit.md).  \n  \n [!code-cs[GenericMethodBuilder#1](~/add/codesnippet/csharp/m-system.reflection.emit_4_1.cs)]\n [!code-cpp[GenericMethodBuilder#1](~/add/codesnippet/cpp/m-system.reflection.emit_4_1.cpp)]\n [!code-vb[GenericMethodBuilder#1](~/add/codesnippet/visualbasic/m-system.reflection.emit_4_1.vb)]"
+  syntax:
+    content: public System.Reflection.Emit.GenericTypeParameterBuilder[] DefineGenericParameters (string[] names);
+    parameters:
+    - id: names
+      type: System.String[]
+      description: An array of strings that represent the names of the generic type parameters.
+    return:
+      type: System.Reflection.Emit.GenericTypeParameterBuilder[]
+      description: An array of <xref href="System.Reflection.Emit.GenericTypeParameterBuilder"></xref> objects representing the type parameters of the generic method.
+  overload: System.Reflection.Emit.MethodBuilder.DefineGenericParameters*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: "Generic type parameters have already been defined for this method.  \n  \n -or-  \n  \n The method has been completed already.  \n  \n -or-  \n  \n The <xref href=\"stem.Reflection.Emit.MethodBuilder.SetImplementationFlags%2A\"></xref> method has been called for the current method."
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: "<code>names</code> is `null`.  \n  \n -or-  \n  \n An element of <code>names</code> is `null`."
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>names</code> is an empty array.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.DefineParameter(System.Int32,System.Reflection.ParameterAttributes,System.String)
+  id: DefineParameter(System.Int32,System.Reflection.ParameterAttributes,System.String)
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: DefineParameter(Int32,ParameterAttributes,String)
+  nameWithType: MethodBuilder.DefineParameter(Int32,ParameterAttributes,String)
+  fullName: System.Reflection.Emit.MethodBuilder.DefineParameter(Int32,ParameterAttributes,String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Sets the parameter attributes and the name of a parameter of this method, or of the return value of this method. Returns a ParameterBuilder that can be used to apply custom attributes.
+  remarks: "The <xref:System.Reflection.Emit.ParameterBuilder> object returned by this method can be used to set the default value for a parameter or to apply custom attributes.  \n  \n Parameter numbering begins with 1, so `position` is 1 for the first parameter. If `position` is zero, this method affects the return value.  \n  \n> [!NOTE]\n>  In the .NET Framework versions 1.0 and 1.1, an exception is thrown if `position` is zero, so this method cannot be used to modify attributes of the return value in those versions."
+  syntax:
+    content: public System.Reflection.Emit.ParameterBuilder DefineParameter (int position, System.Reflection.ParameterAttributes attributes, string strParamName);
+    parameters:
+    - id: position
+      type: System.Int32
+      description: The position of the parameter in the parameter list. Parameters are indexed beginning with the number 1 for the first parameter; the number 0 represents the return value of the method.
+    - id: attributes
+      type: System.Reflection.ParameterAttributes
+      description: The parameter attributes of the parameter.
+    - id: strParamName
+      type: System.String
+      description: The name of the parameter. The name can be the null string.
+    return:
+      type: System.Reflection.Emit.ParameterBuilder
+      description: Returns a `ParameterBuilder` object that represents a parameter of this method or the return value of this method.
+  overload: System.Reflection.Emit.MethodBuilder.DefineParameter*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "The method has no parameters.  \n  \n -or-  \n  \n <code>position</code> is less than zero.  \n  \n -or-  \n  \n <code>position</code> is greater than the number of the method's parameters."
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: "The containing type was previously created using <xref href=\"stem.Reflection.Emit.TypeBuilder.CreateType%2A\"></xref>.  \n  \n -or-  \n  \n For the current method, the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A\"></xref> property is `true`, but the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition%2A\"></xref> property is `false`."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: Equals(Object)
+  nameWithType: MethodBuilder.Equals(Object)
+  fullName: System.Reflection.Emit.MethodBuilder.Equals(Object)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Determines whether the given object is equal to this instance.
+  remarks: Equality is determined by having the same name, attributes, and signature.
+  syntax:
+    content: public override bool Equals (object obj);
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to compare with this `MethodBuilder` instance.
+    return:
+      type: System.Boolean
+      description: '`true` if <code>obj</code> is an instance of `MethodBuilder` and is equal to this object; otherwise, `false`.'
+  overload: System.Reflection.Emit.MethodBuilder.Equals*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.GetBaseDefinition
+  id: GetBaseDefinition
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: GetBaseDefinition()
+  nameWithType: MethodBuilder.GetBaseDefinition()
+  fullName: System.Reflection.Emit.MethodBuilder.GetBaseDefinition()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Return the base implementation for a method.
+  remarks: This always returns the current `MethodBuilder` object.
+  syntax:
+    content: public override System.Reflection.MethodInfo GetBaseDefinition ();
+    parameters: []
+    return:
+      type: System.Reflection.MethodInfo
+      description: The base implementation of this method.
+  overload: System.Reflection.Emit.MethodBuilder.GetBaseDefinition*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.GetCustomAttributes(System.Boolean)
+  id: GetCustomAttributes(System.Boolean)
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: GetCustomAttributes(Boolean)
+  nameWithType: MethodBuilder.GetCustomAttributes(Boolean)
+  fullName: System.Reflection.Emit.MethodBuilder.GetCustomAttributes(Boolean)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns all the custom attributes defined for this method.
+  syntax:
+    content: public override object[] GetCustomAttributes (bool inherit);
+    parameters:
+    - id: inherit
+      type: System.Boolean
+      description: Specifies whether to search this member's inheritance chain to find the custom attributes.
+    return:
+      type: System.Object[]
+      description: Returns an array of objects representing all the custom attributes of this method.
+  overload: System.Reflection.Emit.MethodBuilder.GetCustomAttributes*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: This method is not currently supported. Retrieve the method using <xref href="stem.Type.GetMethod%2A"></xref> and call <xref href="stem.Reflection.MemberInfo.GetCustomAttributes%2A"></xref> on the returned <xref href="System.Reflection.MethodInfo"></xref>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.GetCustomAttributes(System.Type,System.Boolean)
+  id: GetCustomAttributes(System.Type,System.Boolean)
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: GetCustomAttributes(Type,Boolean)
+  nameWithType: MethodBuilder.GetCustomAttributes(Type,Boolean)
+  fullName: System.Reflection.Emit.MethodBuilder.GetCustomAttributes(Type,Boolean)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns the custom attributes identified by the given type.
+  syntax:
+    content: public override object[] GetCustomAttributes (Type attributeType, bool inherit);
+    parameters:
+    - id: attributeType
+      type: System.Type
+      description: The custom attribute type.
+    - id: inherit
+      type: System.Boolean
+      description: Specifies whether to search this member's inheritance chain to find the custom attributes.
+    return:
+      type: System.Object[]
+      description: Returns an array of objects representing the attributes of this method that are of type <code>attributeType</code>.
+  overload: System.Reflection.Emit.MethodBuilder.GetCustomAttributes*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: This method is not currently supported. Retrieve the method using <xref href="stem.Type.GetMethod%2A"></xref> and call <xref href="stem.Reflection.MemberInfo.GetCustomAttributes%2A"></xref> on the returned <xref href="System.Reflection.MethodInfo"></xref>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.GetGenericArguments
+  id: GetGenericArguments
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: GetGenericArguments()
+  nameWithType: MethodBuilder.GetGenericArguments()
+  fullName: System.Reflection.Emit.MethodBuilder.GetGenericArguments()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns an array of <xref href="System.Reflection.Emit.GenericTypeParameterBuilder"></xref> objects that represent the type parameters of the method, if it is generic.
+  remarks: "The type parameters of a generic method also are returned by the <xref:System.Reflection.Emit.MethodBuilder.DefineGenericParameters%2A> method that is used to define them.  \n  \n For more information, see <xref:System.Reflection.MethodInfo.IsGenericMethod%2A?displayProperty=fullName> and <xref:System.Reflection.MethodInfo.GetGenericArguments%2A?displayProperty=fullName>. For information on generic types, see <xref:System.Type.IsGenericType%2A?displayProperty=fullName>."
+  syntax:
+    content: public override Type[] GetGenericArguments ();
+    parameters: []
+    return:
+      type: System.Type[]
+      description: An array of <xref href="System.Reflection.Emit.GenericTypeParameterBuilder"></xref> objects representing the type parameters, if the method is generic, or `null` if the method is not generic.
+  overload: System.Reflection.Emit.MethodBuilder.GetGenericArguments*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.GetGenericMethodDefinition
+  id: GetGenericMethodDefinition
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: GetGenericMethodDefinition()
+  nameWithType: MethodBuilder.GetGenericMethodDefinition()
+  fullName: System.Reflection.Emit.MethodBuilder.GetGenericMethodDefinition()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns this method.
+  remarks: "A <xref:System.Reflection.Emit.MethodBuilder> cannot be used to emit a constructed generic method directly. The emitted method is a generic method definition.  \n  \n For more information, see <xref:System.Reflection.MethodInfo.IsGenericMethod%2A?displayProperty=fullName> and <xref:System.Reflection.MethodInfo.GetGenericMethodDefinition%2A?displayProperty=fullName>. For information on generic types, see <xref:System.Type.IsGenericType%2A?displayProperty=fullName>."
+  syntax:
+    content: public override System.Reflection.MethodInfo GetGenericMethodDefinition ();
+    parameters: []
+    return:
+      type: System.Reflection.MethodInfo
+      description: The current instance of <xref href="System.Reflection.Emit.MethodBuilder"></xref>.
+  overload: System.Reflection.Emit.MethodBuilder.GetGenericMethodDefinition*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The current method is not generic. That is, the <xref href="stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A"></xref> property returns `false`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.GetHashCode
+  id: GetHashCode
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: GetHashCode()
+  nameWithType: MethodBuilder.GetHashCode()
+  fullName: System.Reflection.Emit.MethodBuilder.GetHashCode()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Gets the hash code for this method.
+  syntax:
+    content: public override int GetHashCode ();
+    parameters: []
+    return:
+      type: System.Int32
+      description: The hash code for this method.
+  overload: System.Reflection.Emit.MethodBuilder.GetHashCode*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.GetILGenerator
+  id: GetILGenerator
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: GetILGenerator()
+  nameWithType: MethodBuilder.GetILGenerator()
+  fullName: System.Reflection.Emit.MethodBuilder.GetILGenerator()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns an `ILGenerator` for this method with a default Microsoft intermediate language (MSIL) stream size of 64 bytes.
+  remarks: ''
+  example:
+  - "The code sample below demonstrates the contextual usage of the `GetILGenerator` method, creating and emitting a dynamic assembly that will calculate the dot product of two points in 3D space.  \n  \n [!code-cpp[System.Reflection.Emit ILGenerator Example#1](~/add/codesnippet/cpp/m-system.reflection.emit_19_1.cpp)]\n [!code-vb[System.Reflection.Emit ILGenerator Example#1](~/add/codesnippet/visualbasic/m-system.reflection.emit_19_1.vb)]\n [!code-cs[System.Reflection.Emit ILGenerator Example#1](~/add/codesnippet/csharp/m-system.reflection.emit_19_1.cs)]"
+  syntax:
+    content: public System.Reflection.Emit.ILGenerator GetILGenerator ();
+    parameters: []
+    return:
+      type: System.Reflection.Emit.ILGenerator
+      description: Returns an `ILGenerator` object for this method.
+  overload: System.Reflection.Emit.MethodBuilder.GetILGenerator*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: "The method should not have a body because of its <xref href=\"System.Reflection.MethodAttributes\"></xref> or <xref href=\"System.Reflection.MethodImplAttributes\"></xref> flags, for example because it has the <xref href=\"System.Reflection.MethodAttributes\"></xref> flag.  \n  \n -or-  \n  \n The method is a generic method, but not a generic method definition. That is, the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A\"></xref> property is `true`, but the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition%2A\"></xref> property is `false`."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.GetILGenerator(System.Int32)
+  id: GetILGenerator(System.Int32)
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: GetILGenerator(Int32)
+  nameWithType: MethodBuilder.GetILGenerator(Int32)
+  fullName: System.Reflection.Emit.MethodBuilder.GetILGenerator(Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns an `ILGenerator` for this method with the specified Microsoft intermediate language (MSIL) stream size.
+  remarks: ''
+  example:
+  - "The code sample below demonstrates the contextual usage of the `GetILGenerator` method, creating and emitting a dynamic assembly that will calculate the dot product of two points in 3D space.  \n  \n [!code-cpp[System.Reflection.Emit ILGenerator Example#1](~/add/codesnippet/cpp/m-system.reflection.emit_42_1.cpp)]\n [!code-vb[System.Reflection.Emit ILGenerator Example#1](~/add/codesnippet/visualbasic/m-system.reflection.emit_42_1.vb)]\n [!code-cs[System.Reflection.Emit ILGenerator Example#1](~/add/codesnippet/csharp/m-system.reflection.emit_42_1.cs)]"
+  syntax:
+    content: public System.Reflection.Emit.ILGenerator GetILGenerator (int size);
+    parameters:
+    - id: size
+      type: System.Int32
+      description: The size of the MSIL stream, in bytes.
+    return:
+      type: System.Reflection.Emit.ILGenerator
+      description: Returns an `ILGenerator` object for this method.
+  overload: System.Reflection.Emit.MethodBuilder.GetILGenerator*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: "The method should not have a body because of its <xref href=\"System.Reflection.MethodAttributes\"></xref> or <xref href=\"System.Reflection.MethodImplAttributes\"></xref> flags, for example because it has the <xref href=\"System.Reflection.MethodAttributes\"></xref> flag.  \n  \n -or-  \n  \n The method is a generic method, but not a generic method definition. That is, the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A\"></xref> property is `true`, but the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition%2A\"></xref> property is `false`."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.GetMethodImplementationFlags
+  id: GetMethodImplementationFlags
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: GetMethodImplementationFlags()
+  nameWithType: MethodBuilder.GetMethodImplementationFlags()
+  fullName: System.Reflection.Emit.MethodBuilder.GetMethodImplementationFlags()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns the implementation flags for the method.
+  syntax:
+    content: public override System.Reflection.MethodImplAttributes GetMethodImplementationFlags ();
+    parameters: []
+    return:
+      type: System.Reflection.MethodImplAttributes
+      description: Returns the implementation flags for the method.
+  overload: System.Reflection.Emit.MethodBuilder.GetMethodImplementationFlags*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.GetModule
+  id: GetModule
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: GetModule()
+  nameWithType: MethodBuilder.GetModule()
+  fullName: System.Reflection.Emit.MethodBuilder.GetModule()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns a reference to the module that contains this method.
+  remarks: ''
+  example:
+  - "The sample code below illustrates the usage of the `GetModule` method to retrieve information about a dynamically-generated module.  \n  \n [!code-cs[System.Reflection.Emit.MethodBuilder.GetModule#1](~/add/codesnippet/csharp/m-system.reflection.emit_2_1.cs)]\n [!code-vb[System.Reflection.Emit.MethodBuilder.GetModule#1](~/add/codesnippet/visualbasic/m-system.reflection.emit_2_1.vb)]\n [!code-cpp[System.Reflection.Emit.MethodBuilder.GetModule#1](~/add/codesnippet/cpp/m-system.reflection.emit_2_1.cpp)]"
+  syntax:
+    content: public System.Reflection.Module GetModule ();
+    parameters: []
+    return:
+      type: System.Reflection.Module
+      description: Returns a reference to the module that contains this method.
+  overload: System.Reflection.Emit.MethodBuilder.GetModule*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.GetParameters
+  id: GetParameters
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: GetParameters()
+  nameWithType: MethodBuilder.GetParameters()
+  fullName: System.Reflection.Emit.MethodBuilder.GetParameters()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns the parameters of this method.
+  remarks: ''
+  example:
+  - "The code sample below illustrates the use of `GetParameters` to discover information on the parameters passed to a dynamically-generated method.  \n  \n [!code-cpp[System.Reflection.Emit.MethodBuilder.GetParameters Example#1](~/add/codesnippet/cpp/m-system.reflection.emit_18_1.cpp)]\n [!code-vb[System.Reflection.Emit.MethodBuilder.GetParameters Example#1](~/add/codesnippet/visualbasic/m-system.reflection.emit_18_1.vb)]\n [!code-cs[System.Reflection.Emit.MethodBuilder.GetParameters Example#1](~/add/codesnippet/csharp/m-system.reflection.emit_18_1.cs)]"
+  syntax:
+    content: public override System.Reflection.ParameterInfo[] GetParameters ();
+    parameters: []
+    return:
+      type: System.Reflection.ParameterInfo[]
+      description: An array of `ParameterInfo` objects that represent the parameters of the method.
+  overload: System.Reflection.Emit.MethodBuilder.GetParameters*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: This method is not currently supported. Retrieve the method using <xref href="stem.Type.GetMethod%2A"></xref> and call `GetParameters` on the returned <xref href="System.Reflection.MethodInfo"></xref>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.GetToken
+  id: GetToken
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: GetToken()
+  nameWithType: MethodBuilder.GetToken()
+  fullName: System.Reflection.Emit.MethodBuilder.GetToken()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns the `MethodToken` that represents the token for this method.
+  syntax:
+    content: public System.Reflection.Emit.MethodToken GetToken ();
+    parameters: []
+    return:
+      type: System.Reflection.Emit.MethodToken
+      description: Returns the `MethodToken` of this method.
+  overload: System.Reflection.Emit.MethodBuilder.GetToken*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.InitLocals
+  id: InitLocals
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: InitLocals
+  nameWithType: MethodBuilder.InitLocals
+  fullName: System.Reflection.Emit.MethodBuilder.InitLocals
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Gets or sets a Boolean value that specifies whether the local variables in this method are zero initialized. The default value of this property is `true`.
+  remarks: If this property is set to `true`, the emitted MSIL includes initialization of local variables. If it is set to `false`, local variables are not initialized and the generated code is unverifiable.
+  syntax:
+    content: public bool InitLocals { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if the local variables in this method should be zero initialized; otherwise `false`.'
+  overload: System.Reflection.Emit.MethodBuilder.InitLocals*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: For the current method, the <xref href="stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A"></xref> property is `true`, but the <xref href="stem.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition%2A"></xref> property is `false`. (Get or set.)
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.Invoke(System.Object,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo)
+  id: Invoke(System.Object,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo)
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: Invoke(Object,BindingFlags,Binder,Object[],CultureInfo)
+  nameWithType: MethodBuilder.Invoke(Object,BindingFlags,Binder,Object[],CultureInfo)
+  fullName: System.Reflection.Emit.MethodBuilder.Invoke(Object,BindingFlags,Binder,Object[],CultureInfo)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Dynamically invokes the method reflected by this instance on the given object, passing along the specified parameters, and under the constraints of the given binder.
+  remarks: "If the method is static, the `obj` parameter is ignored. For non-static methods, `obj` should be an instance of a class that inherits or declares the method and must be the same type as this class. If the method has no parameters, the value of `parameters` should be `null`. Otherwise the number, type, and order of elements in the parameters array should be identical to the number, type, and order of parameters for the method reflected by this instance.  \n  \n> [!NOTE]\n>  Access restrictions are ignored for fully-trusted code. That is, private constructors, methods, fields, and properties can be accessed and invoked using Reflection whenever the code is fully-trusted."
+  syntax:
+    content: public override object Invoke (object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object[] parameters, System.Globalization.CultureInfo culture);
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object on which to invoke the specified method. If the method is static, this parameter is ignored.
+    - id: invokeAttr
+      type: System.Reflection.BindingFlags
+      description: 'This must be a bit flag from <xref href="System.Reflection.BindingFlags"></xref> : `InvokeMethod`, `NonPublic`, and so on.'
+    - id: binder
+      type: System.Reflection.Binder
+      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of MemberInfo objects via reflection. If binder is `null`, the default binder is used. For more details, see <xref href="System.Reflection.Binder"></xref>.
+    - id: parameters
+      type: System.Object[]
+      description: An argument list. This is an array of arguments with the same number, order, and type as the parameters of the method to be invoked. If there are no parameters this should be `null`.
+    - id: culture
+      type: System.Globalization.CultureInfo
+      description: An instance of <xref href="System.Globalization.CultureInfo"></xref> used to govern the coercion of types. If this is null, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used. (Note that this is necessary to, for example, convert a <xref href="System.String"></xref> that represents 1000 to a <xref href="System.Double"></xref> value, since 1000 is represented differently by different cultures.)
+    return:
+      type: System.Object
+      description: Returns an object containing the return value of the invoked method.
+  overload: System.Reflection.Emit.MethodBuilder.Invoke*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: This method is not currently supported. Retrieve the method using <xref href="stem.Type.GetMethod%2A"></xref> and call <xref href="stem.Type.InvokeMember%2A"></xref> on the returned <xref href="System.Reflection.MethodInfo"></xref>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.IsDefined(System.Type,System.Boolean)
+  id: IsDefined(System.Type,System.Boolean)
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: IsDefined(Type,Boolean)
+  nameWithType: MethodBuilder.IsDefined(Type,Boolean)
+  fullName: System.Reflection.Emit.MethodBuilder.IsDefined(Type,Boolean)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Checks if the specified custom attribute type is defined.
+  syntax:
+    content: public override bool IsDefined (Type attributeType, bool inherit);
+    parameters:
+    - id: attributeType
+      type: System.Type
+      description: The custom attribute type.
+    - id: inherit
+      type: System.Boolean
+      description: Specifies whether to search this member's inheritance chain to find the custom attributes.
+    return:
+      type: System.Boolean
+      description: '`true` if the specified custom attribute type is defined; otherwise, `false`.'
+  overload: System.Reflection.Emit.MethodBuilder.IsDefined*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: This method is not currently supported. Retrieve the method using <xref href="stem.Type.GetMethod%2A"></xref> and call <xref href="stem.Reflection.MemberInfo.IsDefined%2A"></xref> on the returned <xref href="System.Reflection.MethodInfo"></xref>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.IsGenericMethod
+  id: IsGenericMethod
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: IsGenericMethod
+  nameWithType: MethodBuilder.IsGenericMethod
+  fullName: System.Reflection.Emit.MethodBuilder.IsGenericMethod
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Gets a value indicating whether the method is a generic method.
+  remarks: A method is generic if it has type parameters. You can make a method generic by calling the <xref:System.Reflection.Emit.MethodBuilder.DefineGenericParameters%2A> method to add type parameters. This change cannot be reversed.
+  example:
+  - "The following code example displays the status of a method. This code is part of a larger example provided for the <xref:System.Reflection.Emit.MethodBuilder.DefineGenericParameters%2A> method.  \n  \n [!code-cs[GenericMethodBuilder#7](~/add/codesnippet/csharp/p-system.reflection.emit_6_1.cs)]\n [!code-cpp[GenericMethodBuilder#7](~/add/codesnippet/cpp/p-system.reflection.emit_6_1.cpp)]\n [!code-vb[GenericMethodBuilder#7](~/add/codesnippet/visualbasic/p-system.reflection.emit_6_1.vb)]"
+  syntax:
+    content: public override bool IsGenericMethod { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the method is generic; otherwise, `false`.'
+  overload: System.Reflection.Emit.MethodBuilder.IsGenericMethod*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition
+  id: IsGenericMethodDefinition
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: IsGenericMethodDefinition
+  nameWithType: MethodBuilder.IsGenericMethodDefinition
+  fullName: System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Gets a value indicating whether the current <xref href="System.Reflection.Emit.MethodBuilder"></xref> object represents the definition of a generic method.
+  remarks: A <xref:System.Reflection.Emit.MethodBuilder> can only be used to create generic method definitions; it cannot be used to create a constructed generic method directly. However, a subclass of <xref:System.Reflection.Emit.MethodBuilder> might represent a constructed generic method.
+  example:
+  - "The following code example displays the status of a method. This code is part of a larger example provided for the <xref:System.Reflection.Emit.MethodBuilder.DefineGenericParameters%2A> method.  \n  \n [!code-cs[GenericMethodBuilder#7](~/add/codesnippet/csharp/p-system.reflection.emit_2_1.cs)]\n [!code-cpp[GenericMethodBuilder#7](~/add/codesnippet/cpp/p-system.reflection.emit_2_1.cpp)]\n [!code-vb[GenericMethodBuilder#7](~/add/codesnippet/visualbasic/p-system.reflection.emit_2_1.vb)]"
+  syntax:
+    content: public override bool IsGenericMethodDefinition { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the current <xref href="System.Reflection.Emit.MethodBuilder"></xref> object represents the definition of a generic method; otherwise, `false`.'
+  overload: System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.IsSecurityCritical
+  id: IsSecurityCritical
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: IsSecurityCritical
+  nameWithType: MethodBuilder.IsSecurityCritical
+  fullName: System.Reflection.Emit.MethodBuilder.IsSecurityCritical
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Throws a <xref href="System.NotSupportedException"></xref> in all cases.
+  remarks: To determine whether a method in a dynamic assembly is security-critical, complete the type by calling <xref:System.Reflection.Emit.TypeBuilder.CreateType%2A?displayProperty=fullName>, call the <xref:System.Type.GetMethod%2A> method on the completed type, and get the <xref:System.Reflection.MethodBase.IsSecurityCritical%2A> property on the resulting <xref:System.Reflection.MethodInfo>.
+  syntax:
+    content: public override bool IsSecurityCritical { get; }
+    return:
+      type: System.Boolean
+      description: Throws a <xref href="System.NotSupportedException"></xref> in all cases.
+  overload: System.Reflection.Emit.MethodBuilder.IsSecurityCritical*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: In all cases. This property is not supported in dynamic assemblies. See Remarks.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.IsSecuritySafeCritical
+  id: IsSecuritySafeCritical
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: IsSecuritySafeCritical
+  nameWithType: MethodBuilder.IsSecuritySafeCritical
+  fullName: System.Reflection.Emit.MethodBuilder.IsSecuritySafeCritical
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Throws a <xref href="System.NotSupportedException"></xref> in all cases.
+  remarks: To determine whether a method in a dynamic assembly is security-safe-critical, complete the type by calling <xref:System.Reflection.Emit.TypeBuilder.CreateType%2A?displayProperty=fullName>, call the <xref:System.Type.GetMethod%2A> method on the completed type, and get the <xref:System.Reflection.MethodBase.IsSecuritySafeCritical%2A> property on the resulting <xref:System.Reflection.MethodInfo>.
+  syntax:
+    content: public override bool IsSecuritySafeCritical { get; }
+    return:
+      type: System.Boolean
+      description: Throws a <xref href="System.NotSupportedException"></xref> in all cases.
+  overload: System.Reflection.Emit.MethodBuilder.IsSecuritySafeCritical*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: In all cases. This property is not supported in dynamic assemblies. See Remarks.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.IsSecurityTransparent
+  id: IsSecurityTransparent
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: IsSecurityTransparent
+  nameWithType: MethodBuilder.IsSecurityTransparent
+  fullName: System.Reflection.Emit.MethodBuilder.IsSecurityTransparent
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Throws a <xref href="System.NotSupportedException"></xref> in all cases.
+  remarks: To determine whether a method in a dynamic assembly is security-transparent, complete the type by calling <xref:System.Reflection.Emit.TypeBuilder.CreateType%2A?displayProperty=fullName>, call the <xref:System.Type.GetMethod%2A> method on the completed type, and get the <xref:System.Reflection.MethodBase.IsSecurityTransparent%2A> property on the resulting <xref:System.Reflection.MethodInfo>.
+  syntax:
+    content: public override bool IsSecurityTransparent { get; }
+    return:
+      type: System.Boolean
+      description: Throws a <xref href="System.NotSupportedException"></xref> in all cases.
+  overload: System.Reflection.Emit.MethodBuilder.IsSecurityTransparent*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: In all cases. This property is not supported in dynamic assemblies. See Remarks.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.MakeGenericMethod(System.Type[])
+  id: MakeGenericMethod(System.Type[])
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: MakeGenericMethod(Type[])
+  nameWithType: MethodBuilder.MakeGenericMethod(Type[])
+  fullName: System.Reflection.Emit.MethodBuilder.MakeGenericMethod(Type[])
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns a generic method constructed from the current generic method definition using the specified generic type arguments.
+  remarks: When you are emitting dynamic code, you might need to emit a call to a method constructed from the generic method definition represented by a <xref:System.Reflection.Emit.MethodBuilder>, before the enclosing type has been completed. You can use the MakeGenericMethod method to create a <xref:System.Reflection.MethodInfo> for such a constructed method, and use the <xref:System.Reflection.MethodInfo> in the emitted call.
+  example:
+  - "The following code example creates a constructed method from an incomplete generic method definition in an incomplete type.  \n  \n The example creates a transient assembly and module with a single type, adds a method `M`, and makes the method generic by adding a type parameter T using the <xref:System.Reflection.Emit.MethodBuilder.DefineGenericParameters%2A> method. The type parameter is used as the type of the method's parameter, and also as its return type. The generic method definition is not given a body, and the enclosing type is not completed. The MakeGenericMethod method is then used to make the constructed method `M<String>` (`M(Of String)` in Visual Basic). The example code has no output, because the subclass of <xref:System.Reflection.MethodInfo> returned by the MakeGenericMethod method does not allow reflection over its parameters.  \n  \n> [!NOTE]\n>  For another code example that uses MakeGenericMethod, see <xref:System.Reflection.Emit.MethodBuilder.DefineGenericParameters%2A>. MakeGenericMethod is also used extensively when emitting code that uses generic types. See [How to: Define a Generic Method with Reflection Emit](../Topic/How%20to:%20Define%20a%20Generic%20Method%20with%20Reflection%20Emit.md).  \n  \n [!code-cs[MethodBuilder.MakeGenericMethod#1](~/add/codesnippet/csharp/m-system.reflection.emit_6_1.cs)]\n [!code-vb[MethodBuilder.MakeGenericMethod#1](~/add/codesnippet/visualbasic/m-system.reflection.emit_6_1.vb)]\n [!code-cpp[MethodBuilder.MakeGenericMethod#1](~/add/codesnippet/cpp/m-system.reflection.emit_6_1.cpp)]"
+  syntax:
+    content: public override System.Reflection.MethodInfo MakeGenericMethod (Type[] typeArguments);
+    parameters:
+    - id: typeArguments
+      type: System.Type[]
+      description: An array of <xref href="System.Type"></xref> objects that represent the type arguments for the generic method.
+    return:
+      type: System.Reflection.MethodInfo
+      description: A <xref href="System.Reflection.MethodInfo"></xref> representing the generic method constructed from the current generic method definition using the specified generic type arguments.
+  overload: System.Reflection.Emit.MethodBuilder.MakeGenericMethod*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.MethodHandle
+  id: MethodHandle
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: MethodHandle
+  nameWithType: MethodBuilder.MethodHandle
+  fullName: System.Reflection.Emit.MethodBuilder.MethodHandle
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Retrieves the internal handle for the method. Use this handle to access the underlying metadata handle.
+  syntax:
+    content: public override RuntimeMethodHandle MethodHandle { get; }
+    return:
+      type: System.RuntimeMethodHandle
+      description: Read-only. The internal handle for the method. Use this handle to access the underlying metadata handle.
+  overload: System.Reflection.Emit.MethodBuilder.MethodHandle*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: This method is not currently supported. Retrieve the method using <xref href="stem.Type.GetMethod%2A"></xref> and call <xref href="stem.Reflection.MethodBase.MethodHandle%2A"></xref> on the returned <xref href="System.Reflection.MethodInfo"></xref>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.Module
+  id: Module
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: Module
+  nameWithType: MethodBuilder.Module
+  fullName: System.Reflection.Emit.MethodBuilder.Module
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Gets the module in which the current method is being defined.
+  remarks: "This property is provided as a convenience. It is equivalent to using the <xref:System.Reflection.Emit.MethodBuilder.DeclaringType%2A> property to get the type in which the method is being declared, and then calling the <xref:System.Type.Module%2A> property of the resulting <xref:System.Type> object.  \n  \n This property is also equivalent to calling <xref:System.Reflection.Emit.MethodBuilder.GetModule%2A>."
+  syntax:
+    content: public override System.Reflection.Module Module { get; }
+    return:
+      type: System.Reflection.Module
+      description: The <xref href="System.Reflection.Module"></xref> in which the member represented by the current <xref href="System.Reflection.MemberInfo"></xref> is being defined.
+  overload: System.Reflection.Emit.MethodBuilder.Module*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.Name
+  id: Name
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: Name
+  nameWithType: MethodBuilder.Name
+  fullName: System.Reflection.Emit.MethodBuilder.Name
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Retrieves the name of this method.
+  syntax:
+    content: public override string Name { get; }
+    return:
+      type: System.String
+      description: Read-only. Retrieves a string containing the simple name of this method.
+  overload: System.Reflection.Emit.MethodBuilder.Name*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.ReflectedType
+  id: ReflectedType
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: ReflectedType
+  nameWithType: MethodBuilder.ReflectedType
+  fullName: System.Reflection.Emit.MethodBuilder.ReflectedType
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Retrieves the class that was used in reflection to obtain this object.
+  syntax:
+    content: public override Type ReflectedType { get; }
+    return:
+      type: System.Type
+      description: Read-only. The type used to obtain this method.
+  overload: System.Reflection.Emit.MethodBuilder.ReflectedType*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.ReturnParameter
+  id: ReturnParameter
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: ReturnParameter
+  nameWithType: MethodBuilder.ReturnParameter
+  fullName: System.Reflection.Emit.MethodBuilder.ReturnParameter
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Gets a <xref href="System.Reflection.ParameterInfo"></xref> object that contains information about the return type of the method, such as whether the return type has custom modifiers.
+  remarks: Compiler designers can use the <xref:System.Reflection.ParameterInfo> object returned by this property to discover whether custom modifiers, such as <xref:Microsoft.VisualC.IsConstModifier>, have been applied to the return type.
+  syntax:
+    content: public override System.Reflection.ParameterInfo ReturnParameter { get; }
+    return:
+      type: System.Reflection.ParameterInfo
+      description: A <xref href="System.Reflection.ParameterInfo"></xref> object that contains information about the return type.
+  overload: System.Reflection.Emit.MethodBuilder.ReturnParameter*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The declaring type has not been created.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.ReturnType
+  id: ReturnType
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: ReturnType
+  nameWithType: MethodBuilder.ReturnType
+  fullName: System.Reflection.Emit.MethodBuilder.ReturnType
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Gets the return type of the method represented by this <xref href="System.Reflection.Emit.MethodBuilder"></xref>.
+  remarks: >-
+    > [!NOTE]
+
+    >  Starting with the .NET Framework 2.0 and the .NET Compact Framework 2.0, this member is inherited from the base class, <xref:System.Reflection.MethodInfo>. See <xref:System.Reflection.MethodInfo.ReturnType%2A?displayProperty=fullName>.
+  syntax:
+    content: public override Type ReturnType { get; }
+    return:
+      type: System.Type
+      description: The return type of the method.
+  overload: System.Reflection.Emit.MethodBuilder.ReturnType*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.ReturnTypeCustomAttributes
+  id: ReturnTypeCustomAttributes
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: ReturnTypeCustomAttributes
+  nameWithType: MethodBuilder.ReturnTypeCustomAttributes
+  fullName: System.Reflection.Emit.MethodBuilder.ReturnTypeCustomAttributes
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns the custom attributes of the method's return type.
+  remarks: This method always returns `null`. Get the <xref:System.Reflection.MethodInfo> after the containing <xref:System.Type> has been created and invoked <xref:System.Reflection.MethodInfo.ReturnTypeCustomAttributes%2A> on the <xref:System.Reflection.MethodInfo>.
+  syntax:
+    content: public override System.Reflection.ICustomAttributeProvider ReturnTypeCustomAttributes { get; }
+    return:
+      type: System.Reflection.ICustomAttributeProvider
+      description: Read-only. The custom attributes of the method's return type.
+  overload: System.Reflection.Emit.MethodBuilder.ReturnTypeCustomAttributes*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder)
+  id: SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder)
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: SetCustomAttribute(CustomAttributeBuilder)
+  nameWithType: MethodBuilder.SetCustomAttribute(CustomAttributeBuilder)
+  fullName: System.Reflection.Emit.MethodBuilder.SetCustomAttribute(CustomAttributeBuilder)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Sets a custom attribute using a custom attribute builder.
+  remarks: The <xref:System.Reflection.Emit.MethodBuilder.SetCustomAttribute%2A> method can interact with the <xref:System.Reflection.Emit.MethodBuilder.SetImplementationFlags%2A> method when the two methods are used in combination. See the Remarks section of the <xref:System.Reflection.Emit.MethodBuilder.SetImplementationFlags%2A> method for details.
+  syntax:
+    content: public void SetCustomAttribute (System.Reflection.Emit.CustomAttributeBuilder customBuilder);
+    parameters:
+    - id: customBuilder
+      type: System.Reflection.Emit.CustomAttributeBuilder
+      description: An instance of a helper class to describe the custom attribute.
+  overload: System.Reflection.Emit.MethodBuilder.SetCustomAttribute*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>customBuilder</code> is `null`.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: For the current method, the <xref href="stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A"></xref> property is `true`, but the <xref href="stem.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition%2A"></xref> property is `false`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.SetCustomAttribute(System.Reflection.ConstructorInfo,System.Byte[])
+  id: SetCustomAttribute(System.Reflection.ConstructorInfo,System.Byte[])
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: SetCustomAttribute(ConstructorInfo,Byte[])
+  nameWithType: MethodBuilder.SetCustomAttribute(ConstructorInfo,Byte[])
+  fullName: System.Reflection.Emit.MethodBuilder.SetCustomAttribute(ConstructorInfo,Byte[])
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Sets a custom attribute using a specified custom attribute blob.
+  remarks: "For details on how to format `binaryAttribute`, see the Common Language Infrastructure (CLI) documentation, especially \"Partition II: Metadata Definition and Semantics\". The documentation is available online; see [ECMA C# and Common Language Infrastructure Standards](http://go.microsoft.com/fwlink/?LinkID=99212) on MSDN and [Standard ECMA-335 - Common Language Infrastructure (CLI)](http://go.microsoft.com/fwlink/?LinkID=65552) on the Ecma International Web site.  \n  \n The <xref:System.Reflection.Emit.MethodBuilder.SetCustomAttribute%2A> method can interact with the <xref:System.Reflection.Emit.MethodBuilder.SetImplementationFlags%2A> method when the two methods are used in combination. See the Remarks section of the <xref:System.Reflection.Emit.MethodBuilder.SetImplementationFlags%2A> method for details."
+  syntax:
+    content: public void SetCustomAttribute (System.Reflection.ConstructorInfo con, byte[] binaryAttribute);
+    parameters:
+    - id: con
+      type: System.Reflection.ConstructorInfo
+      description: The constructor for the custom attribute.
+    - id: binaryAttribute
+      type: System.Byte[]
+      description: A byte blob representing the attributes.
+  overload: System.Reflection.Emit.MethodBuilder.SetCustomAttribute*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>con</code> or <code>binaryAttribute</code> is `null`.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: For the current method, the <xref href="stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A"></xref> property is `true`, but the <xref href="stem.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition%2A"></xref> property is `false`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.SetImplementationFlags(System.Reflection.MethodImplAttributes)
+  id: SetImplementationFlags(System.Reflection.MethodImplAttributes)
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: SetImplementationFlags(MethodImplAttributes)
+  nameWithType: MethodBuilder.SetImplementationFlags(MethodImplAttributes)
+  fullName: System.Reflection.Emit.MethodBuilder.SetImplementationFlags(MethodImplAttributes)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Sets the implementation flags for this method.
+  remarks: "When you use the SetImplementationFlags method in combination with the <xref:System.Reflection.Emit.MethodBuilder.SetCustomAttribute%2A> method, be aware of potential interactions. For example, using the <xref:System.Reflection.Emit.MethodBuilder.SetCustomAttribute%2A> method to add the <xref:System.Runtime.InteropServices.DllImportAttribute> attribute also sets the <xref:System.Reflection.MethodImplAttributes?displayProperty=fullName> flag. If you subsequently call the SetImplementationFlags method, the <xref:System.Reflection.MethodImplAttributes> flag is overwritten. There are two ways to avoid this:  \n  \n-   Call the SetImplementationFlags method before you call the <xref:System.Reflection.Emit.MethodBuilder.SetCustomAttribute%2A> method. The <xref:System.Reflection.Emit.MethodBuilder.SetCustomAttribute%2A> method always respects existing method implementation flags.  \n  \n-   When you set implementation flags, call the <xref:System.Reflection.Emit.MethodBuilder.GetMethodImplementationFlags%2A> method to retrieve the existing flags, use bitwise OR to add your flag, and then call the SetImplementationFlags method."
+  example:
+  - "The code sample below illustrates the contextual use of the `SetImplementationFlags` method to describe the implementation of MSIL in a method body.  \n  \n [!code-cpp[System.Reflection.Emit.MethodBuilder.SetImplementationFlags Example#1](~/add/codesnippet/cpp/276d8c8c-bf7e-4693-a1e5-_1.cpp)]\n [!code-cs[System.Reflection.Emit.MethodBuilder.SetImplementationFlags Example#1](~/add/codesnippet/csharp/276d8c8c-bf7e-4693-a1e5-_1.cs)]\n [!code-vb[System.Reflection.Emit.MethodBuilder.SetImplementationFlags Example#1](~/add/codesnippet/visualbasic/276d8c8c-bf7e-4693-a1e5-_1.vb)]"
+  syntax:
+    content: public void SetImplementationFlags (System.Reflection.MethodImplAttributes attributes);
+    parameters:
+    - id: attributes
+      type: System.Reflection.MethodImplAttributes
+      description: The implementation flags to set.
+  overload: System.Reflection.Emit.MethodBuilder.SetImplementationFlags*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: "The containing type was previously created using <xref href=\"stem.Reflection.Emit.TypeBuilder.CreateType%2A\"></xref>.  \n  \n -or-  \n  \n For the current method, the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A\"></xref> property is `true`, but the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition%2A\"></xref> property is `false`."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.SetMarshal(System.Reflection.Emit.UnmanagedMarshal)
+  id: SetMarshal(System.Reflection.Emit.UnmanagedMarshal)
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: SetMarshal(UnmanagedMarshal)
+  nameWithType: MethodBuilder.SetMarshal(UnmanagedMarshal)
+  fullName: System.Reflection.Emit.MethodBuilder.SetMarshal(UnmanagedMarshal)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Sets marshaling information for the return type of this method.
+  remarks: ''
+  example:
+  - "The code sample below illustrates the contextual usage of the `SetMarshal` method to marshal the results of a method call as a different type.  \n  \n [!code-cpp[System.Reflection.Emit.MethodBuilder.SetMarshal Example#1](~/add/codesnippet/cpp/5f3cb244-bd9a-43a4-8378-_1.cpp)]\n [!code-cs[System.Reflection.Emit.MethodBuilder.SetMarshal Example#1](~/add/codesnippet/csharp/5f3cb244-bd9a-43a4-8378-_1.cs)]\n [!code-vb[System.Reflection.Emit.MethodBuilder.SetMarshal Example#1](~/add/codesnippet/visualbasic/5f3cb244-bd9a-43a4-8378-_1.vb)]"
+  syntax:
+    content: public void SetMarshal (System.Reflection.Emit.UnmanagedMarshal unmanagedMarshal);
+    parameters:
+    - id: unmanagedMarshal
+      type: System.Reflection.Emit.UnmanagedMarshal
+      description: Marshaling information for the return type of this method.
+  overload: System.Reflection.Emit.MethodBuilder.SetMarshal*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: "The containing type was previously created using <xref href=\"stem.Reflection.Emit.TypeBuilder.CreateType%2A\"></xref>.  \n  \n -or-  \n  \n For the current method, the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A\"></xref> property is `true`, but the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition%2A\"></xref> property is `false`."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.SetMethodBody(System.Byte[],System.Int32,System.Byte[],System.Collections.Generic.IEnumerable{System.Reflection.Emit.ExceptionHandler},System.Collections.Generic.IEnumerable{System.Int32})
+  id: SetMethodBody(System.Byte[],System.Int32,System.Byte[],System.Collections.Generic.IEnumerable{System.Reflection.Emit.ExceptionHandler},System.Collections.Generic.IEnumerable{System.Int32})
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: SetMethodBody(Byte[],Int32,Byte[],IEnumerable<ExceptionHandler>,IEnumerable<Int32>)
+  nameWithType: MethodBuilder.SetMethodBody(Byte[],Int32,Byte[],IEnumerable<ExceptionHandler>,IEnumerable<Int32>)
+  fullName: System.Reflection.Emit.MethodBuilder.SetMethodBody(Byte[],Int32,Byte[],IEnumerable<ExceptionHandler>,IEnumerable<Int32>)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Creates the body of the method by using a specified byte array of Microsoft intermediate language (MSIL) instructions.
+  syntax:
+    content: public void SetMethodBody (byte[] il, int maxStack, byte[] localSignature, System.Collections.Generic.IEnumerable<System.Reflection.Emit.ExceptionHandler> exceptionHandlers, System.Collections.Generic.IEnumerable<int> tokenFixups);
+    parameters:
+    - id: il
+      type: System.Byte[]
+      description: An array that contains valid MSIL instructions.
+    - id: maxStack
+      type: System.Int32
+      description: The maximum stack evaluation depth.
+    - id: localSignature
+      type: System.Byte[]
+      description: An array of bytes that contain the serialized local variable structure. Specify `null` if the method has no local variables.
+    - id: exceptionHandlers
+      type: System.Collections.Generic.IEnumerable{System.Reflection.Emit.ExceptionHandler}
+      description: A collection that contains the exception handlers for the method. Specify `null` if the method has no exception handlers.
+    - id: tokenFixups
+      type: System.Collections.Generic.IEnumerable{System.Int32}
+      description: A collection of values that represent offsets in <code>il</code>, each of which specifies the beginning of a token that may be modified. Specify `null` if the method has no tokens that have to be modified.
+  overload: System.Reflection.Emit.MethodBuilder.SetMethodBody*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>il</code> is `null`.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>maxStack</code> is negative.  \n  \n -or-  \n  \n One of <code>exceptionHandlers</code> specifies an offset outside of <code>il</code>.  \n  \n -or-  \n  \n One of <code>tokenFixups</code> specifies an offset that is outside the <code>il</code> array."
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: "The containing type was previously created using the <xref href=\"stem.Reflection.Emit.TypeBuilder.CreateType%2A\"></xref> method.  \n  \n -or-  \n  \n This method was called previously on this <xref href=\"System.Reflection.Emit.MethodBuilder\"></xref> object."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.SetParameters(System.Type[])
+  id: SetParameters(System.Type[])
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: SetParameters(Type[])
+  nameWithType: MethodBuilder.SetParameters(Type[])
+  fullName: System.Reflection.Emit.MethodBuilder.SetParameters(Type[])
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Sets the number and types of parameters for a method.
+  remarks: "If the number and types of the parameters are known when the method is defined, they can be set using any overload of the <xref:System.Reflection.Emit.TypeBuilder.DefineMethod%2A?displayProperty=fullName> method that accepts an array of parameter types. However, a generic method can have parameters whose types are specified by one or more of its own generic type parameters, which cannot be defined until after the method has been defined. Use this method to set the parameter types in that case.  \n  \n If the return type has optional or required custom modifiers, such as <xref:System.Runtime.CompilerServices.IsConst>, use the [SetSignature(Type, Type\\[\\], Type\\[\\], Type\\[\\], Type\\[\\]\\[\\], Type\\[\\]\\<xref:System.Reflection.Emit.MethodBuilder.SetSignature%28System.Type%2CSystem.Type%5B%5D%2CSystem.Type%5B%5D%2CSystem.Type%5B%5D%2CSystem.Type%5B%5D%5B%5D%2CSystem.Type%5B%5D%5B%5D%29> method overload.  \n  \n Calling this method replaces any parameter types that were set using the <xref:System.Reflection.Emit.TypeBuilder.DefineMethod%2A?displayProperty=fullName> method."
+  example:
+  - "The following code example uses the <xref:System.Reflection.Emit.MethodBuilder.DefineGenericParameters%2A> method to make a method generic. The SetParameters method is used to give the method one parameter, whose type will be specified by the first generic type parameter. The <xref:System.Reflection.Emit.MethodBuilder.SetReturnType%2A> method is used to give the method a return type, specified by the second generic type parameter.  \n  \n This code is part of a larger example provided for the <xref:System.Reflection.Emit.MethodBuilder.DefineGenericParameters%2A> method.  \n  \n [!code-cs[GenericMethodBuilder#3](~/add/codesnippet/csharp/m-system.reflection.emit_36_1.cs)]\n [!code-cpp[GenericMethodBuilder#3](~/add/codesnippet/cpp/m-system.reflection.emit_36_1.cpp)]\n [!code-vb[GenericMethodBuilder#3](~/add/codesnippet/visualbasic/m-system.reflection.emit_36_1.vb)]  \n[!code-cs[GenericMethodBuilder#5](~/add/codesnippet/csharp/m-system.reflection.emit_36_2.cs)]\n[!code-cpp[GenericMethodBuilder#5](~/add/codesnippet/cpp/m-system.reflection.emit_36_2.cpp)]\n[!code-vb[GenericMethodBuilder#5](~/add/codesnippet/visualbasic/m-system.reflection.emit_36_2.vb)]"
+  syntax:
+    content: public void SetParameters (Type[] parameterTypes);
+    parameters:
+    - id: parameterTypes
+      type: System.Type[]
+      description: An array of <xref href="System.Type"></xref> objects representing the parameter types.
+  overload: System.Reflection.Emit.MethodBuilder.SetParameters*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The current method is generic, but is not a generic method definition. That is, the <xref href="stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A"></xref> property is `true`, but the <xref href="stem.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition%2A"></xref> property is `false`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.SetReturnType(System.Type)
+  id: SetReturnType(System.Type)
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: SetReturnType(Type)
+  nameWithType: MethodBuilder.SetReturnType(Type)
+  fullName: System.Reflection.Emit.MethodBuilder.SetReturnType(Type)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Sets the return type of the method.
+  remarks: "Use this method to set the return type of a generic method, when the return type is specified by one of the generic type parameters of the method. If the return type has optional or required custom modifiers, such as <xref:System.Runtime.CompilerServices.IsConst>, use the [SetSignature(Type, Type\\[\\], Type\\[\\], Type\\[\\], Type\\[\\]\\[\\], Type\\[\\]\\<xref:System.Reflection.Emit.MethodBuilder.SetSignature%28System.Type%2CSystem.Type%5B%5D%2CSystem.Type%5B%5D%2CSystem.Type%5B%5D%2CSystem.Type%5B%5D%5B%5D%2CSystem.Type%5B%5D%5B%5D%29> method overload.  \n  \n Calling this method replaces a return type established using the <xref:System.Reflection.Emit.TypeBuilder.DefineMethod%2A?displayProperty=fullName> method."
+  example:
+  - "The following code example uses the <xref:System.Reflection.Emit.MethodBuilder.DefineGenericParameters%2A> method to make a method generic. The <xref:System.Reflection.Emit.MethodBuilder.SetParameters%2A> method is used to give the method one parameter, whose type will be specified by the first generic type parameter. The SetReturnType method is used to give the method a return type, specified by the second generic type parameter.  \n  \n This code is part of a larger example provided for the <xref:System.Reflection.Emit.MethodBuilder.DefineGenericParameters%2A> method.  \n  \n [!code-cs[GenericMethodBuilder#3](~/add/codesnippet/csharp/m-system.reflection.emit_40_1.cs)]\n [!code-cpp[GenericMethodBuilder#3](~/add/codesnippet/cpp/m-system.reflection.emit_40_1.cpp)]\n [!code-vb[GenericMethodBuilder#3](~/add/codesnippet/visualbasic/m-system.reflection.emit_40_1.vb)]  \n[!code-cs[GenericMethodBuilder#5](~/add/codesnippet/csharp/m-system.reflection.emit_40_2.cs)]\n[!code-cpp[GenericMethodBuilder#5](~/add/codesnippet/cpp/m-system.reflection.emit_40_2.cpp)]\n[!code-vb[GenericMethodBuilder#5](~/add/codesnippet/visualbasic/m-system.reflection.emit_40_2.vb)]"
+  syntax:
+    content: public void SetReturnType (Type returnType);
+    parameters:
+    - id: returnType
+      type: System.Type
+      description: A <xref href="System.Type"></xref> object that represents the return type of the method.
+  overload: System.Reflection.Emit.MethodBuilder.SetReturnType*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The current method is generic, but is not a generic method definition. That is, the <xref href="stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A"></xref> property is `true`, but the <xref href="stem.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition%2A"></xref> property is `false`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.SetSignature(System.Type,System.Type[],System.Type[],System.Type[],System.Type[][],System.Type[][])
+  id: SetSignature(System.Type,System.Type[],System.Type[],System.Type[],System.Type[][],System.Type[][])
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: SetSignature(Type,Type[],Type[],Type[],Type[][],Type[][])
+  nameWithType: MethodBuilder.SetSignature(Type,Type[],Type[],Type[],Type[][],Type[][])
+  fullName: System.Reflection.Emit.MethodBuilder.SetSignature(Type,Type[],Type[],Type[],Type[][],Type[][])
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Sets the method signature, including the return type, the parameter types, and the required and optional custom modifiers of the return type and parameter types.
+  remarks: "If the return type and the number and types of the parameters are known when the method is defined, they can be established using any overload of the <xref:System.Reflection.Emit.TypeBuilder.DefineMethod%2A?displayProperty=fullName> method that accepts an array of parameter types. However, a generic method can have parameters whose types are specified by one or more of its own generic type parameters, which cannot be defined until after the method has been defined. Use this method to set the parameter types in that case.  \n  \n If neither the return type nor the parameter types have optional or required custom modifiers, such as <xref:Microsoft.VisualC.IsConstModifier>, you can use the <xref:System.Reflection.Emit.MethodBuilder.SetReturnType%2A> and <xref:System.Reflection.Emit.MethodBuilder.SetParameters%2A> methods.  \n  \n Calling this method replaces the parameters and return type established using the <xref:System.Reflection.Emit.TypeBuilder.DefineMethod%2A?displayProperty=fullName> method."
+  example:
+  - "The following code example contains source code for a generic class named Sample that has a type parameter `T`. The class has a field named `Field`, of type `T`, and a generic method `GM` with its own type parameter, `U`. Method `GM` creates an instance of Sample, substituting its own type parameter `U` for the type parameter of Sample, and stores its input parameter in `Field`. This source code is compiled but not used; you can view it with the [Ildasm.exe (IL Disassembler)](../Topic/Ildasm.exe%20\\(IL%20Disassembler\\).md), and compare it to the code emitted by class `Example`.  \n  \n The code in class `Example` demonstrates the use of the SetSignature method in emitting generic code. The `Main` method of class `Example` creates a dynamic assembly containing a class named `Sample`, and uses the <xref:System.Reflection.Emit.TypeBuilder.DefineGenericParameters%2A?displayProperty=fullName> method to make it generic by adding a type parameter named `T`. A default constructor and a field named `Field`, of type `T`, are added to class `Sample`. A method `GM` is added, and turned into a generic method using the <xref:System.Reflection.Emit.MethodBuilder.DefineGenericParameters%2A> method. The type parameter of `GM` is named `U`. Once the type parameter is defined, the signature of `GM` is added, using the SetSignature method. There is no return type, and no required or custom modifiers, so all the parameters of this method are `null` except `parameterTypes`, which sets the type of the only parameter of the method; this is set to the method's type parameter, `U`. The body of the method creates an instance of the constructed type `Sample<U>` (`Sample(Of U)` in Visual Basic), assigns the method's parameter to `Field`, and then prints the value of `Field`. A dummy type is defined, to hold the entry point method `Main`. In the body of `Main`, the static `GM` method is invoked on the constructed generic type `Sample<int>` (`Sample(Of Integer)` in Visual Basic), with type <xref:System.String> substituted for `U`. The <xref:System.Reflection.Emit.TypeBuilder.GetMethod%2A?displayProperty=fullName> method is used to create a <xref:System.Reflection.MethodInfo> for the static `GM` method of the constructed generic type `Sample<U>`, and the <xref:System.Reflection.MethodInfo.MakeGenericMethod%2A?displayProperty=fullName> method is then used to create a <xref:System.Reflection.MethodInfo> that can emitted in a method call.  \n  \n When the code example is run, it saves the emitted assembly as TypeBuilderGetFieldExample.exe. You can run TypeBuilderGetFieldExample.exe, and you can use the [Ildasm.exe (IL Disassembler)](../Topic/Ildasm.exe%20\\(IL%20Disassembler\\).md) to compare the emitted code with the code for the `Sample` class that is compiled into the code example itself.  \n  \n [!code-cs[TypeBuilder.GetField_Generic#1](~/add/codesnippet/csharp/537c5633-409d-4996-9042-_1.cs)]\n [!code-vb[TypeBuilder.GetField_Generic#1](~/add/codesnippet/visualbasic/537c5633-409d-4996-9042-_1.vb)]"
+  syntax:
+    content: public void SetSignature (Type returnType, Type[] returnTypeRequiredCustomModifiers, Type[] returnTypeOptionalCustomModifiers, Type[] parameterTypes, Type[][] parameterTypeRequiredCustomModifiers, Type[][] parameterTypeOptionalCustomModifiers);
+    parameters:
+    - id: returnType
+      type: System.Type
+      description: The return type of the method.
+    - id: returnTypeRequiredCustomModifiers
+      type: System.Type[]
+      description: An array of types representing the required custom modifiers, such as <xref href="System.Runtime.CompilerServices.IsConst"></xref>, for the return type of the method. If the return type has no required custom modifiers, specify `null`.
+    - id: returnTypeOptionalCustomModifiers
+      type: System.Type[]
+      description: An array of types representing the optional custom modifiers, such as <xref href="System.Runtime.CompilerServices.IsConst"></xref>, for the return type of the method. If the return type has no optional custom modifiers, specify `null`.
+    - id: parameterTypes
+      type: System.Type[]
+      description: The types of the parameters of the method.
+    - id: parameterTypeRequiredCustomModifiers
+      type: System.Type[][]
+      description: An array of arrays of types. Each array of types represents the required custom modifiers for the corresponding parameter, such as <xref href="System.Runtime.CompilerServices.IsConst"></xref>. If a particular parameter has no required custom modifiers, specify `null` instead of an array of types. If none of the parameters have required custom modifiers, specify `null` instead of an array of arrays.
+    - id: parameterTypeOptionalCustomModifiers
+      type: System.Type[][]
+      description: An array of arrays of types. Each array of types represents the optional custom modifiers for the corresponding parameter, such as <xref href="System.Runtime.CompilerServices.IsConst"></xref>. If a particular parameter has no optional custom modifiers, specify `null` instead of an array of types. If none of the parameters have optional custom modifiers, specify `null` instead of an array of arrays.
+  overload: System.Reflection.Emit.MethodBuilder.SetSignature*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The current method is generic, but is not a generic method definition. That is, the <xref href="stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A"></xref> property is `true`, but the <xref href="stem.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition%2A"></xref> property is `false`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.SetSymCustomAttribute(System.String,System.Byte[])
+  id: SetSymCustomAttribute(System.String,System.Byte[])
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: SetSymCustomAttribute(String,Byte[])
+  nameWithType: MethodBuilder.SetSymCustomAttribute(String,Byte[])
+  fullName: System.Reflection.Emit.MethodBuilder.SetSymCustomAttribute(String,Byte[])
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Set a symbolic custom attribute using a blob.
+  remarks: Unlike the metadata custom attribute, this custom attribute is associated with a symbol writer.
+  example:
+  - "The code sample below illustrates the contextual usage of the `SetSymCustomAttribute` method to set the byte values for the name and key of a custom attribute attached to a method.  \n  \n [!code-cpp[System.Reflection.Emit.MethodBuilder.SetSymCustomAttribute Example#1](~/add/codesnippet/cpp/d091f1aa-affb-45c2-a2e1-_1.cpp)]\n [!code-cs[System.Reflection.Emit.MethodBuilder.SetSymCustomAttribute Example#1](~/add/codesnippet/csharp/d091f1aa-affb-45c2-a2e1-_1.cs)]\n [!code-vb[System.Reflection.Emit.MethodBuilder.SetSymCustomAttribute Example#1](~/add/codesnippet/visualbasic/d091f1aa-affb-45c2-a2e1-_1.vb)]"
+  syntax:
+    content: public void SetSymCustomAttribute (string name, byte[] data);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the symbolic custom attribute.
+    - id: data
+      type: System.Byte[]
+      description: The byte blob that represents the value of the symbolic custom attribute.
+  overload: System.Reflection.Emit.MethodBuilder.SetSymCustomAttribute*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: "The containing type was previously created using <xref href=\"stem.Reflection.Emit.TypeBuilder.CreateType%2A\"></xref>.  \n  \n -or-  \n  \n The module that contains this method is not a debug module.  \n  \n -or-  \n  \n For the current method, the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethod%2A\"></xref> property is `true`, but the <xref href=\"stem.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition%2A\"></xref> property is `false`."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.Signature
+  id: Signature
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: Signature
+  nameWithType: MethodBuilder.Signature
+  fullName: System.Reflection.Emit.MethodBuilder.Signature
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Retrieves the signature of the method.
+  syntax:
+    content: public string Signature { get; }
+    return:
+      type: System.String
+      description: Read-only. A String containing the signature of the method reflected by this `MethodBase` instance.
+  overload: System.Reflection.Emit.MethodBuilder.Signature*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  id: System#Runtime#InteropServices#_MethodBuilder#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  isEii: true
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: _MethodBuilder.GetIDsOfNames(Guid,IntPtr,UInt32,UInt32,IntPtr)
+  nameWithType: MethodBuilder._MethodBuilder.GetIDsOfNames(Guid,IntPtr,UInt32,UInt32,IntPtr)
+  fullName: System.Reflection.Emit.MethodBuilder._MethodBuilder.GetIDsOfNames(Guid,IntPtr,UInt32,UInt32,IntPtr)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Maps a set of names to a corresponding set of dispatch identifiers.
+  remarks: This method is for access to managed classes from unmanaged code, and should not be called from managed code. For more information about `IDispatch::GetIDsOfNames`, see the MSDN Library.
+  syntax:
+    content: void _MethodBuilder.GetIDsOfNames (ref Guid riid, IntPtr rgszNames, uint cNames, uint lcid, IntPtr rgDispId);
+    parameters:
+    - id: riid
+      type: System.Guid
+      description: Reserved for future use. Must be IID_NULL.
+    - id: rgszNames
+      type: System.IntPtr
+      description: Passed-in array of names to be mapped.
+    - id: cNames
+      type: System.UInt32
+      description: Count of the names to be mapped.
+    - id: lcid
+      type: System.UInt32
+      description: The locale context in which to interpret the names.
+    - id: rgDispId
+      type: System.IntPtr
+      description: Caller-allocated array that receives the IDs corresponding to the names.
+  overload: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetIDsOfNames*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Late-bound access using the COM <code>IDispatch</code> interface is not supported.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  id: System#Runtime#InteropServices#_MethodBuilder#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  isEii: true
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: _MethodBuilder.GetTypeInfo(UInt32,UInt32,IntPtr)
+  nameWithType: MethodBuilder._MethodBuilder.GetTypeInfo(UInt32,UInt32,IntPtr)
+  fullName: System.Reflection.Emit.MethodBuilder._MethodBuilder.GetTypeInfo(UInt32,UInt32,IntPtr)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Retrieves the type information for an object, which can then be used to get the type information for an interface.
+  remarks: This method is for access to managed classes from unmanaged code, and should not be called from managed code. For more information about `IDispatch::GetTypeInfo`, see the MSDN Library.
+  syntax:
+    content: void _MethodBuilder.GetTypeInfo (uint iTInfo, uint lcid, IntPtr ppTInfo);
+    parameters:
+    - id: iTInfo
+      type: System.UInt32
+      description: The type information to return.
+    - id: lcid
+      type: System.UInt32
+      description: The locale identifier for the type information.
+    - id: ppTInfo
+      type: System.IntPtr
+      description: Receives a pointer to the requested type information object.
+  overload: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetTypeInfo*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Late-bound access using the COM <code>IDispatch</code> interface is not supported.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetTypeInfoCount(System.UInt32@)
+  id: System#Runtime#InteropServices#_MethodBuilder#GetTypeInfoCount(System.UInt32@)
+  isEii: true
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: _MethodBuilder.GetTypeInfoCount(UInt32)
+  nameWithType: MethodBuilder._MethodBuilder.GetTypeInfoCount(UInt32)
+  fullName: System.Reflection.Emit.MethodBuilder._MethodBuilder.GetTypeInfoCount(UInt32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Retrieves the number of type information interfaces that an object provides (either 0 or 1).
+  remarks: This method is for access to managed classes from unmanaged code, and should not be called from managed code. For more information about `IDispatch::GetTypeInfoCount`, see the MSDN Library.
+  syntax:
+    content: void _MethodBuilder.GetTypeInfoCount (out uint pcTInfo);
+    parameters:
+    - id: pcTInfo
+      type: System.UInt32
+      description: Points to a location that receives the number of type information interfaces provided by the object.
+  overload: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetTypeInfoCount*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Late-bound access using the COM <code>IDispatch</code> interface is not supported.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  id: System#Runtime#InteropServices#_MethodBuilder#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  isEii: true
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: _MethodBuilder.Invoke(UInt32,Guid,UInt32,Int16,IntPtr,IntPtr,IntPtr,IntPtr)
+  nameWithType: MethodBuilder._MethodBuilder.Invoke(UInt32,Guid,UInt32,Int16,IntPtr,IntPtr,IntPtr,IntPtr)
+  fullName: System.Reflection.Emit.MethodBuilder._MethodBuilder.Invoke(UInt32,Guid,UInt32,Int16,IntPtr,IntPtr,IntPtr,IntPtr)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Provides access to properties and methods exposed by an object.
+  remarks: This method is for access to managed classes from unmanaged code, and should not be called from managed code. For more information about `IDispatch::Invoke`, see the MSDN Library.
+  syntax:
+    content: void _MethodBuilder.Invoke (uint dispIdMember, ref Guid riid, uint lcid, short wFlags, IntPtr pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, IntPtr puArgErr);
+    parameters:
+    - id: dispIdMember
+      type: System.UInt32
+      description: Identifies the member.
+    - id: riid
+      type: System.Guid
+      description: Reserved for future use. Must be IID_NULL.
+    - id: lcid
+      type: System.UInt32
+      description: The locale context in which to interpret arguments.
+    - id: wFlags
+      type: System.Int16
+      description: Flags describing the context of the call.
+    - id: pDispParams
+      type: System.IntPtr
+      description: Pointer to a structure containing an array of arguments, an array of argument DispIDs for named arguments, and counts for the number of elements in the arrays.
+    - id: pVarResult
+      type: System.IntPtr
+      description: Pointer to the location where the result is to be stored.
+    - id: pExcepInfo
+      type: System.IntPtr
+      description: Pointer to a structure that contains exception information.
+    - id: puArgErr
+      type: System.IntPtr
+      description: The index of the first argument that has an error.
+  overload: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#Invoke*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Late-bound access using the COM <code>IDispatch</code> interface is not supported.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.Emit.MethodBuilder.ToString
+  id: ToString
+  parent: System.Reflection.Emit.MethodBuilder
+  langs:
+  - csharp
+  name: ToString()
+  nameWithType: MethodBuilder.ToString()
+  fullName: System.Reflection.Emit.MethodBuilder.ToString()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection.Emit
+  summary: Returns this `MethodBuilder` instance as a string.
+  syntax:
+    content: public override string ToString ();
+    parameters: []
+    return:
+      type: System.String
+      description: Returns a string containing the name, attributes, method signature, exceptions, and local signature of this method followed by the current Microsoft intermediate language (MSIL) stream.
+  overload: System.Reflection.Emit.MethodBuilder.ToString*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection.Emit\MethodBuilder.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection.Emit/MethodBuilder.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Reflection.MethodInfo
+  isExternal: false
+  name: System.Reflection.MethodInfo
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.NotSupportedException
+  parent: System
+  isExternal: false
+  name: NotSupportedException
+  nameWithType: NotSupportedException
+  fullName: System.NotSupportedException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.NotImplementedException
+  parent: System
+  isExternal: false
+  name: NotImplementedException
+  nameWithType: NotImplementedException
+  fullName: System.NotImplementedException
+- uid: System.Reflection.Emit.MethodBuilder.AddDeclarativeSecurity(System.Security.Permissions.SecurityAction,System.Security.PermissionSet)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: AddDeclarativeSecurity(SecurityAction,PermissionSet)
+  nameWithType: MethodBuilder.AddDeclarativeSecurity(SecurityAction,PermissionSet)
+  fullName: System.Reflection.Emit.MethodBuilder.AddDeclarativeSecurity(SecurityAction,PermissionSet)
+- uid: System.Security.Permissions.SecurityAction
+  parent: System.Security.Permissions
+  isExternal: false
+  name: SecurityAction
+  nameWithType: SecurityAction
+  fullName: System.Security.Permissions.SecurityAction
+- uid: System.Security.PermissionSet
+  parent: System.Security
+  isExternal: false
+  name: PermissionSet
+  nameWithType: PermissionSet
+  fullName: System.Security.PermissionSet
+- uid: System.Reflection.Emit.MethodBuilder.Attributes
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: Attributes
+  nameWithType: MethodBuilder.Attributes
+  fullName: System.Reflection.Emit.MethodBuilder.Attributes
+- uid: System.Reflection.MethodAttributes
+  parent: System.Reflection
+  isExternal: false
+  name: MethodAttributes
+  nameWithType: MethodAttributes
+  fullName: System.Reflection.MethodAttributes
+- uid: System.Reflection.Emit.MethodBuilder.CallingConvention
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: CallingConvention
+  nameWithType: MethodBuilder.CallingConvention
+  fullName: System.Reflection.Emit.MethodBuilder.CallingConvention
+- uid: System.Reflection.CallingConventions
+  parent: System.Reflection
+  isExternal: false
+  name: CallingConventions
+  nameWithType: CallingConventions
+  fullName: System.Reflection.CallingConventions
+- uid: System.Reflection.Emit.MethodBuilder.ContainsGenericParameters
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: ContainsGenericParameters
+  nameWithType: MethodBuilder.ContainsGenericParameters
+  fullName: System.Reflection.Emit.MethodBuilder.ContainsGenericParameters
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Reflection.Emit.MethodBuilder.CreateMethodBody(System.Byte[],System.Int32)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: CreateMethodBody(Byte[],Int32)
+  nameWithType: MethodBuilder.CreateMethodBody(Byte[],Int32)
+  fullName: System.Reflection.Emit.MethodBuilder.CreateMethodBody(Byte[],Int32)
+- uid: System.Byte[]
+  parent: System
+  isExternal: false
+  name: Byte[]
+  nameWithType: Byte[]
+  fullName: System.Byte[]
+  spec.csharp:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: Byte[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Reflection.Emit.MethodBuilder.DeclaringType
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: DeclaringType
+  nameWithType: MethodBuilder.DeclaringType
+  fullName: System.Reflection.Emit.MethodBuilder.DeclaringType
+- uid: System.Type
+  parent: System
+  isExternal: false
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Reflection.Emit.MethodBuilder.DefineGenericParameters(System.String[])
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: DefineGenericParameters(String[])
+  nameWithType: MethodBuilder.DefineGenericParameters(String[])
+  fullName: System.Reflection.Emit.MethodBuilder.DefineGenericParameters(String[])
+- uid: System.Reflection.Emit.GenericTypeParameterBuilder[]
+  parent: System.Reflection.Emit
+  isExternal: false
+  name: GenericTypeParameterBuilder[]
+  nameWithType: GenericTypeParameterBuilder[]
+  fullName: System.Reflection.Emit.GenericTypeParameterBuilder[]
+  spec.csharp:
+  - uid: System.Reflection.Emit.GenericTypeParameterBuilder
+    name: GenericTypeParameterBuilder
+    nameWithType: GenericTypeParameterBuilder
+    fullName: GenericTypeParameterBuilder[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.String[]
+  parent: System
+  isExternal: false
+  name: String[]
+  nameWithType: String[]
+  fullName: System.String[]
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Reflection.Emit.MethodBuilder.DefineParameter(System.Int32,System.Reflection.ParameterAttributes,System.String)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: DefineParameter(Int32,ParameterAttributes,String)
+  nameWithType: MethodBuilder.DefineParameter(Int32,ParameterAttributes,String)
+  fullName: System.Reflection.Emit.MethodBuilder.DefineParameter(Int32,ParameterAttributes,String)
+- uid: System.Reflection.Emit.ParameterBuilder
+  parent: System.Reflection.Emit
+  isExternal: false
+  name: ParameterBuilder
+  nameWithType: ParameterBuilder
+  fullName: System.Reflection.Emit.ParameterBuilder
+- uid: System.Reflection.ParameterAttributes
+  parent: System.Reflection
+  isExternal: false
+  name: ParameterAttributes
+  nameWithType: ParameterAttributes
+  fullName: System.Reflection.ParameterAttributes
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Reflection.Emit.MethodBuilder.Equals(System.Object)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: Equals(Object)
+  nameWithType: MethodBuilder.Equals(Object)
+  fullName: System.Reflection.Emit.MethodBuilder.Equals(Object)
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Reflection.Emit.MethodBuilder.GetBaseDefinition
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetBaseDefinition()
+  nameWithType: MethodBuilder.GetBaseDefinition()
+  fullName: System.Reflection.Emit.MethodBuilder.GetBaseDefinition()
+- uid: System.Reflection.Emit.MethodBuilder.GetCustomAttributes(System.Boolean)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetCustomAttributes(Boolean)
+  nameWithType: MethodBuilder.GetCustomAttributes(Boolean)
+  fullName: System.Reflection.Emit.MethodBuilder.GetCustomAttributes(Boolean)
+- uid: System.Object[]
+  parent: System
+  isExternal: false
+  name: Object[]
+  nameWithType: Object[]
+  fullName: System.Object[]
+  spec.csharp:
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: Object[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Reflection.Emit.MethodBuilder.GetCustomAttributes(System.Type,System.Boolean)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetCustomAttributes(Type,Boolean)
+  nameWithType: MethodBuilder.GetCustomAttributes(Type,Boolean)
+  fullName: System.Reflection.Emit.MethodBuilder.GetCustomAttributes(Type,Boolean)
+- uid: System.Reflection.Emit.MethodBuilder.GetGenericArguments
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetGenericArguments()
+  nameWithType: MethodBuilder.GetGenericArguments()
+  fullName: System.Reflection.Emit.MethodBuilder.GetGenericArguments()
+- uid: System.Type[]
+  parent: System
+  isExternal: false
+  name: Type[]
+  nameWithType: Type[]
+  fullName: System.Type[]
+  spec.csharp:
+  - uid: System.Type
+    name: Type
+    nameWithType: Type
+    fullName: Type[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Reflection.Emit.MethodBuilder.GetGenericMethodDefinition
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetGenericMethodDefinition()
+  nameWithType: MethodBuilder.GetGenericMethodDefinition()
+  fullName: System.Reflection.Emit.MethodBuilder.GetGenericMethodDefinition()
+- uid: System.Reflection.Emit.MethodBuilder.GetHashCode
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetHashCode()
+  nameWithType: MethodBuilder.GetHashCode()
+  fullName: System.Reflection.Emit.MethodBuilder.GetHashCode()
+- uid: System.Reflection.Emit.MethodBuilder.GetILGenerator
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetILGenerator()
+  nameWithType: MethodBuilder.GetILGenerator()
+  fullName: System.Reflection.Emit.MethodBuilder.GetILGenerator()
+- uid: System.Reflection.Emit.ILGenerator
+  parent: System.Reflection.Emit
+  isExternal: false
+  name: ILGenerator
+  nameWithType: ILGenerator
+  fullName: System.Reflection.Emit.ILGenerator
+- uid: System.Reflection.Emit.MethodBuilder.GetILGenerator(System.Int32)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetILGenerator(Int32)
+  nameWithType: MethodBuilder.GetILGenerator(Int32)
+  fullName: System.Reflection.Emit.MethodBuilder.GetILGenerator(Int32)
+- uid: System.Reflection.Emit.MethodBuilder.GetMethodImplementationFlags
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetMethodImplementationFlags()
+  nameWithType: MethodBuilder.GetMethodImplementationFlags()
+  fullName: System.Reflection.Emit.MethodBuilder.GetMethodImplementationFlags()
+- uid: System.Reflection.MethodImplAttributes
+  parent: System.Reflection
+  isExternal: false
+  name: MethodImplAttributes
+  nameWithType: MethodImplAttributes
+  fullName: System.Reflection.MethodImplAttributes
+- uid: System.Reflection.Emit.MethodBuilder.GetModule
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetModule()
+  nameWithType: MethodBuilder.GetModule()
+  fullName: System.Reflection.Emit.MethodBuilder.GetModule()
+- uid: System.Reflection.Module
+  parent: System.Reflection
+  isExternal: false
+  name: Module
+  nameWithType: Module
+  fullName: System.Reflection.Module
+- uid: System.Reflection.Emit.MethodBuilder.GetParameters
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetParameters()
+  nameWithType: MethodBuilder.GetParameters()
+  fullName: System.Reflection.Emit.MethodBuilder.GetParameters()
+- uid: System.Reflection.ParameterInfo[]
+  parent: System.Reflection
+  isExternal: false
+  name: ParameterInfo[]
+  nameWithType: ParameterInfo[]
+  fullName: System.Reflection.ParameterInfo[]
+  spec.csharp:
+  - uid: System.Reflection.ParameterInfo
+    name: ParameterInfo
+    nameWithType: ParameterInfo
+    fullName: ParameterInfo[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Reflection.Emit.MethodBuilder.GetToken
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetToken()
+  nameWithType: MethodBuilder.GetToken()
+  fullName: System.Reflection.Emit.MethodBuilder.GetToken()
+- uid: System.Reflection.Emit.MethodToken
+  parent: System.Reflection.Emit
+  isExternal: false
+  name: MethodToken
+  nameWithType: MethodToken
+  fullName: System.Reflection.Emit.MethodToken
+- uid: System.Reflection.Emit.MethodBuilder.InitLocals
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: InitLocals
+  nameWithType: MethodBuilder.InitLocals
+  fullName: System.Reflection.Emit.MethodBuilder.InitLocals
+- uid: System.Reflection.Emit.MethodBuilder.Invoke(System.Object,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: Invoke(Object,BindingFlags,Binder,Object[],CultureInfo)
+  nameWithType: MethodBuilder.Invoke(Object,BindingFlags,Binder,Object[],CultureInfo)
+  fullName: System.Reflection.Emit.MethodBuilder.Invoke(Object,BindingFlags,Binder,Object[],CultureInfo)
+- uid: System.Reflection.BindingFlags
+  parent: System.Reflection
+  isExternal: false
+  name: BindingFlags
+  nameWithType: BindingFlags
+  fullName: System.Reflection.BindingFlags
+- uid: System.Reflection.Binder
+  parent: System.Reflection
+  isExternal: false
+  name: Binder
+  nameWithType: Binder
+  fullName: System.Reflection.Binder
+- uid: System.Globalization.CultureInfo
+  parent: System.Globalization
+  isExternal: false
+  name: CultureInfo
+  nameWithType: CultureInfo
+  fullName: System.Globalization.CultureInfo
+- uid: System.Reflection.Emit.MethodBuilder.IsDefined(System.Type,System.Boolean)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: IsDefined(Type,Boolean)
+  nameWithType: MethodBuilder.IsDefined(Type,Boolean)
+  fullName: System.Reflection.Emit.MethodBuilder.IsDefined(Type,Boolean)
+- uid: System.Reflection.Emit.MethodBuilder.IsGenericMethod
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: IsGenericMethod
+  nameWithType: MethodBuilder.IsGenericMethod
+  fullName: System.Reflection.Emit.MethodBuilder.IsGenericMethod
+- uid: System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: IsGenericMethodDefinition
+  nameWithType: MethodBuilder.IsGenericMethodDefinition
+  fullName: System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition
+- uid: System.Reflection.Emit.MethodBuilder.IsSecurityCritical
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: IsSecurityCritical
+  nameWithType: MethodBuilder.IsSecurityCritical
+  fullName: System.Reflection.Emit.MethodBuilder.IsSecurityCritical
+- uid: System.Reflection.Emit.MethodBuilder.IsSecuritySafeCritical
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: IsSecuritySafeCritical
+  nameWithType: MethodBuilder.IsSecuritySafeCritical
+  fullName: System.Reflection.Emit.MethodBuilder.IsSecuritySafeCritical
+- uid: System.Reflection.Emit.MethodBuilder.IsSecurityTransparent
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: IsSecurityTransparent
+  nameWithType: MethodBuilder.IsSecurityTransparent
+  fullName: System.Reflection.Emit.MethodBuilder.IsSecurityTransparent
+- uid: System.Reflection.Emit.MethodBuilder.MakeGenericMethod(System.Type[])
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: MakeGenericMethod(Type[])
+  nameWithType: MethodBuilder.MakeGenericMethod(Type[])
+  fullName: System.Reflection.Emit.MethodBuilder.MakeGenericMethod(Type[])
+- uid: System.Reflection.Emit.MethodBuilder.MethodHandle
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: MethodHandle
+  nameWithType: MethodBuilder.MethodHandle
+  fullName: System.Reflection.Emit.MethodBuilder.MethodHandle
+- uid: System.RuntimeMethodHandle
+  parent: System
+  isExternal: false
+  name: RuntimeMethodHandle
+  nameWithType: RuntimeMethodHandle
+  fullName: System.RuntimeMethodHandle
+- uid: System.Reflection.Emit.MethodBuilder.Module
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: Module
+  nameWithType: MethodBuilder.Module
+  fullName: System.Reflection.Emit.MethodBuilder.Module
+- uid: System.Reflection.Emit.MethodBuilder.Name
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: Name
+  nameWithType: MethodBuilder.Name
+  fullName: System.Reflection.Emit.MethodBuilder.Name
+- uid: System.Reflection.Emit.MethodBuilder.ReflectedType
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: ReflectedType
+  nameWithType: MethodBuilder.ReflectedType
+  fullName: System.Reflection.Emit.MethodBuilder.ReflectedType
+- uid: System.Reflection.Emit.MethodBuilder.ReturnParameter
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: ReturnParameter
+  nameWithType: MethodBuilder.ReturnParameter
+  fullName: System.Reflection.Emit.MethodBuilder.ReturnParameter
+- uid: System.Reflection.ParameterInfo
+  parent: System.Reflection
+  isExternal: false
+  name: ParameterInfo
+  nameWithType: ParameterInfo
+  fullName: System.Reflection.ParameterInfo
+- uid: System.Reflection.Emit.MethodBuilder.ReturnType
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: ReturnType
+  nameWithType: MethodBuilder.ReturnType
+  fullName: System.Reflection.Emit.MethodBuilder.ReturnType
+- uid: System.Reflection.Emit.MethodBuilder.ReturnTypeCustomAttributes
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: ReturnTypeCustomAttributes
+  nameWithType: MethodBuilder.ReturnTypeCustomAttributes
+  fullName: System.Reflection.Emit.MethodBuilder.ReturnTypeCustomAttributes
+- uid: System.Reflection.ICustomAttributeProvider
+  parent: System.Reflection
+  isExternal: false
+  name: ICustomAttributeProvider
+  nameWithType: ICustomAttributeProvider
+  fullName: System.Reflection.ICustomAttributeProvider
+- uid: System.Reflection.Emit.MethodBuilder.SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetCustomAttribute(CustomAttributeBuilder)
+  nameWithType: MethodBuilder.SetCustomAttribute(CustomAttributeBuilder)
+  fullName: System.Reflection.Emit.MethodBuilder.SetCustomAttribute(CustomAttributeBuilder)
+- uid: System.Reflection.Emit.CustomAttributeBuilder
+  parent: System.Reflection.Emit
+  isExternal: false
+  name: CustomAttributeBuilder
+  nameWithType: CustomAttributeBuilder
+  fullName: System.Reflection.Emit.CustomAttributeBuilder
+- uid: System.Reflection.Emit.MethodBuilder.SetCustomAttribute(System.Reflection.ConstructorInfo,System.Byte[])
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetCustomAttribute(ConstructorInfo,Byte[])
+  nameWithType: MethodBuilder.SetCustomAttribute(ConstructorInfo,Byte[])
+  fullName: System.Reflection.Emit.MethodBuilder.SetCustomAttribute(ConstructorInfo,Byte[])
+- uid: System.Reflection.ConstructorInfo
+  parent: System.Reflection
+  isExternal: false
+  name: ConstructorInfo
+  nameWithType: ConstructorInfo
+  fullName: System.Reflection.ConstructorInfo
+- uid: System.Reflection.Emit.MethodBuilder.SetImplementationFlags(System.Reflection.MethodImplAttributes)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetImplementationFlags(MethodImplAttributes)
+  nameWithType: MethodBuilder.SetImplementationFlags(MethodImplAttributes)
+  fullName: System.Reflection.Emit.MethodBuilder.SetImplementationFlags(MethodImplAttributes)
+- uid: System.Reflection.Emit.MethodBuilder.SetMarshal(System.Reflection.Emit.UnmanagedMarshal)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetMarshal(UnmanagedMarshal)
+  nameWithType: MethodBuilder.SetMarshal(UnmanagedMarshal)
+  fullName: System.Reflection.Emit.MethodBuilder.SetMarshal(UnmanagedMarshal)
+- uid: System.Reflection.Emit.UnmanagedMarshal
+  parent: System.Reflection.Emit
+  isExternal: false
+  name: UnmanagedMarshal
+  nameWithType: UnmanagedMarshal
+  fullName: System.Reflection.Emit.UnmanagedMarshal
+- uid: System.Reflection.Emit.MethodBuilder.SetMethodBody(System.Byte[],System.Int32,System.Byte[],System.Collections.Generic.IEnumerable{System.Reflection.Emit.ExceptionHandler},System.Collections.Generic.IEnumerable{System.Int32})
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetMethodBody(Byte[],Int32,Byte[],IEnumerable<ExceptionHandler>,IEnumerable<Int32>)
+  nameWithType: MethodBuilder.SetMethodBody(Byte[],Int32,Byte[],IEnumerable<ExceptionHandler>,IEnumerable<Int32>)
+  fullName: System.Reflection.Emit.MethodBuilder.SetMethodBody(Byte[],Int32,Byte[],IEnumerable<ExceptionHandler>,IEnumerable<Int32>)
+- uid: System.Collections.Generic.IEnumerable{System.Reflection.Emit.ExceptionHandler}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<ExceptionHandler>
+  nameWithType: IEnumerable<ExceptionHandler>
+  fullName: System.Collections.Generic.IEnumerable<System.Reflection.Emit.ExceptionHandler>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<System.Reflection.Emit.ExceptionHandler>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Reflection.Emit.ExceptionHandler
+    name: ExceptionHandler
+    nameWithType: ExceptionHandler
+    fullName: ExceptionHandler
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Collections.Generic.IEnumerable{System.Int32}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<Int32>
+  nameWithType: IEnumerable<Int32>
+  fullName: System.Collections.Generic.IEnumerable<System.Int32>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<System.Int32>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: Int32
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Reflection.Emit.MethodBuilder.SetParameters(System.Type[])
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetParameters(Type[])
+  nameWithType: MethodBuilder.SetParameters(Type[])
+  fullName: System.Reflection.Emit.MethodBuilder.SetParameters(Type[])
+- uid: System.Reflection.Emit.MethodBuilder.SetReturnType(System.Type)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetReturnType(Type)
+  nameWithType: MethodBuilder.SetReturnType(Type)
+  fullName: System.Reflection.Emit.MethodBuilder.SetReturnType(Type)
+- uid: System.Reflection.Emit.MethodBuilder.SetSignature(System.Type,System.Type[],System.Type[],System.Type[],System.Type[][],System.Type[][])
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetSignature(Type,Type[],Type[],Type[],Type[][],Type[][])
+  nameWithType: MethodBuilder.SetSignature(Type,Type[],Type[],Type[],Type[][],Type[][])
+  fullName: System.Reflection.Emit.MethodBuilder.SetSignature(Type,Type[],Type[],Type[],Type[][],Type[][])
+- uid: System.Type[][]
+  parent: System
+  isExternal: false
+  name: Type[][]
+  nameWithType: Type[][]
+  fullName: System.Type[][]
+  spec.csharp:
+  - uid: System.Type
+    name: Type
+    nameWithType: Type
+    fullName: Type[][]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Reflection.Emit.MethodBuilder.SetSymCustomAttribute(System.String,System.Byte[])
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetSymCustomAttribute(String,Byte[])
+  nameWithType: MethodBuilder.SetSymCustomAttribute(String,Byte[])
+  fullName: System.Reflection.Emit.MethodBuilder.SetSymCustomAttribute(String,Byte[])
+- uid: System.Reflection.Emit.MethodBuilder.Signature
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: Signature
+  nameWithType: MethodBuilder.Signature
+  fullName: System.Reflection.Emit.MethodBuilder.Signature
+- uid: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: _MethodBuilder.GetIDsOfNames(Guid,IntPtr,UInt32,UInt32,IntPtr)
+  nameWithType: MethodBuilder._MethodBuilder.GetIDsOfNames(Guid,IntPtr,UInt32,UInt32,IntPtr)
+  fullName: System.Reflection.Emit.MethodBuilder._MethodBuilder.GetIDsOfNames(Guid,IntPtr,UInt32,UInt32,IntPtr)
+- uid: System.Guid
+  parent: System
+  isExternal: false
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: System.IntPtr
+  parent: System
+  isExternal: false
+  name: IntPtr
+  nameWithType: IntPtr
+  fullName: System.IntPtr
+- uid: System.UInt32
+  parent: System
+  isExternal: false
+  name: UInt32
+  nameWithType: UInt32
+  fullName: System.UInt32
+- uid: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: _MethodBuilder.GetTypeInfo(UInt32,UInt32,IntPtr)
+  nameWithType: MethodBuilder._MethodBuilder.GetTypeInfo(UInt32,UInt32,IntPtr)
+  fullName: System.Reflection.Emit.MethodBuilder._MethodBuilder.GetTypeInfo(UInt32,UInt32,IntPtr)
+- uid: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetTypeInfoCount(System.UInt32@)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: _MethodBuilder.GetTypeInfoCount(UInt32)
+  nameWithType: MethodBuilder._MethodBuilder.GetTypeInfoCount(UInt32)
+  fullName: System.Reflection.Emit.MethodBuilder._MethodBuilder.GetTypeInfoCount(UInt32)
+- uid: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: _MethodBuilder.Invoke(UInt32,Guid,UInt32,Int16,IntPtr,IntPtr,IntPtr,IntPtr)
+  nameWithType: MethodBuilder._MethodBuilder.Invoke(UInt32,Guid,UInt32,Int16,IntPtr,IntPtr,IntPtr,IntPtr)
+  fullName: System.Reflection.Emit.MethodBuilder._MethodBuilder.Invoke(UInt32,Guid,UInt32,Int16,IntPtr,IntPtr,IntPtr,IntPtr)
+- uid: System.Int16
+  parent: System
+  isExternal: false
+  name: Int16
+  nameWithType: Int16
+  fullName: System.Int16
+- uid: System.Reflection.Emit.MethodBuilder.ToString
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: ToString()
+  nameWithType: MethodBuilder.ToString()
+  fullName: System.Reflection.Emit.MethodBuilder.ToString()
+- uid: System.Reflection.Emit.MethodBuilder.AddDeclarativeSecurity*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: AddDeclarativeSecurity
+  nameWithType: MethodBuilder.AddDeclarativeSecurity
+- uid: System.Reflection.Emit.MethodBuilder.Attributes*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: Attributes
+  nameWithType: MethodBuilder.Attributes
+- uid: System.Reflection.Emit.MethodBuilder.CallingConvention*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: CallingConvention
+  nameWithType: MethodBuilder.CallingConvention
+- uid: System.Reflection.Emit.MethodBuilder.ContainsGenericParameters*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: ContainsGenericParameters
+  nameWithType: MethodBuilder.ContainsGenericParameters
+- uid: System.Reflection.Emit.MethodBuilder.CreateMethodBody*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: CreateMethodBody
+  nameWithType: MethodBuilder.CreateMethodBody
+- uid: System.Reflection.Emit.MethodBuilder.DeclaringType*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: DeclaringType
+  nameWithType: MethodBuilder.DeclaringType
+- uid: System.Reflection.Emit.MethodBuilder.DefineGenericParameters*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: DefineGenericParameters
+  nameWithType: MethodBuilder.DefineGenericParameters
+- uid: System.Reflection.Emit.MethodBuilder.DefineParameter*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: DefineParameter
+  nameWithType: MethodBuilder.DefineParameter
+- uid: System.Reflection.Emit.MethodBuilder.Equals*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: Equals
+  nameWithType: MethodBuilder.Equals
+- uid: System.Reflection.Emit.MethodBuilder.GetBaseDefinition*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetBaseDefinition
+  nameWithType: MethodBuilder.GetBaseDefinition
+- uid: System.Reflection.Emit.MethodBuilder.GetCustomAttributes*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetCustomAttributes
+  nameWithType: MethodBuilder.GetCustomAttributes
+- uid: System.Reflection.Emit.MethodBuilder.GetGenericArguments*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetGenericArguments
+  nameWithType: MethodBuilder.GetGenericArguments
+- uid: System.Reflection.Emit.MethodBuilder.GetGenericMethodDefinition*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetGenericMethodDefinition
+  nameWithType: MethodBuilder.GetGenericMethodDefinition
+- uid: System.Reflection.Emit.MethodBuilder.GetHashCode*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetHashCode
+  nameWithType: MethodBuilder.GetHashCode
+- uid: System.Reflection.Emit.MethodBuilder.GetILGenerator*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetILGenerator
+  nameWithType: MethodBuilder.GetILGenerator
+- uid: System.Reflection.Emit.MethodBuilder.GetMethodImplementationFlags*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetMethodImplementationFlags
+  nameWithType: MethodBuilder.GetMethodImplementationFlags
+- uid: System.Reflection.Emit.MethodBuilder.GetModule*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetModule
+  nameWithType: MethodBuilder.GetModule
+- uid: System.Reflection.Emit.MethodBuilder.GetParameters*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetParameters
+  nameWithType: MethodBuilder.GetParameters
+- uid: System.Reflection.Emit.MethodBuilder.GetToken*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: GetToken
+  nameWithType: MethodBuilder.GetToken
+- uid: System.Reflection.Emit.MethodBuilder.InitLocals*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: InitLocals
+  nameWithType: MethodBuilder.InitLocals
+- uid: System.Reflection.Emit.MethodBuilder.Invoke*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: Invoke
+  nameWithType: MethodBuilder.Invoke
+- uid: System.Reflection.Emit.MethodBuilder.IsDefined*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: IsDefined
+  nameWithType: MethodBuilder.IsDefined
+- uid: System.Reflection.Emit.MethodBuilder.IsGenericMethod*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: IsGenericMethod
+  nameWithType: MethodBuilder.IsGenericMethod
+- uid: System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: IsGenericMethodDefinition
+  nameWithType: MethodBuilder.IsGenericMethodDefinition
+- uid: System.Reflection.Emit.MethodBuilder.IsSecurityCritical*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: IsSecurityCritical
+  nameWithType: MethodBuilder.IsSecurityCritical
+- uid: System.Reflection.Emit.MethodBuilder.IsSecuritySafeCritical*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: IsSecuritySafeCritical
+  nameWithType: MethodBuilder.IsSecuritySafeCritical
+- uid: System.Reflection.Emit.MethodBuilder.IsSecurityTransparent*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: IsSecurityTransparent
+  nameWithType: MethodBuilder.IsSecurityTransparent
+- uid: System.Reflection.Emit.MethodBuilder.MakeGenericMethod*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: MakeGenericMethod
+  nameWithType: MethodBuilder.MakeGenericMethod
+- uid: System.Reflection.Emit.MethodBuilder.MethodHandle*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: MethodHandle
+  nameWithType: MethodBuilder.MethodHandle
+- uid: System.Reflection.Emit.MethodBuilder.Module*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: Module
+  nameWithType: MethodBuilder.Module
+- uid: System.Reflection.Emit.MethodBuilder.Name*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: Name
+  nameWithType: MethodBuilder.Name
+- uid: System.Reflection.Emit.MethodBuilder.ReflectedType*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: ReflectedType
+  nameWithType: MethodBuilder.ReflectedType
+- uid: System.Reflection.Emit.MethodBuilder.ReturnParameter*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: ReturnParameter
+  nameWithType: MethodBuilder.ReturnParameter
+- uid: System.Reflection.Emit.MethodBuilder.ReturnType*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: ReturnType
+  nameWithType: MethodBuilder.ReturnType
+- uid: System.Reflection.Emit.MethodBuilder.ReturnTypeCustomAttributes*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: ReturnTypeCustomAttributes
+  nameWithType: MethodBuilder.ReturnTypeCustomAttributes
+- uid: System.Reflection.Emit.MethodBuilder.SetCustomAttribute*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetCustomAttribute
+  nameWithType: MethodBuilder.SetCustomAttribute
+- uid: System.Reflection.Emit.MethodBuilder.SetImplementationFlags*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetImplementationFlags
+  nameWithType: MethodBuilder.SetImplementationFlags
+- uid: System.Reflection.Emit.MethodBuilder.SetMarshal*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetMarshal
+  nameWithType: MethodBuilder.SetMarshal
+- uid: System.Reflection.Emit.MethodBuilder.SetMethodBody*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetMethodBody
+  nameWithType: MethodBuilder.SetMethodBody
+- uid: System.Reflection.Emit.MethodBuilder.SetParameters*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetParameters
+  nameWithType: MethodBuilder.SetParameters
+- uid: System.Reflection.Emit.MethodBuilder.SetReturnType*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetReturnType
+  nameWithType: MethodBuilder.SetReturnType
+- uid: System.Reflection.Emit.MethodBuilder.SetSignature*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetSignature
+  nameWithType: MethodBuilder.SetSignature
+- uid: System.Reflection.Emit.MethodBuilder.SetSymCustomAttribute*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: SetSymCustomAttribute
+  nameWithType: MethodBuilder.SetSymCustomAttribute
+- uid: System.Reflection.Emit.MethodBuilder.Signature*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: Signature
+  nameWithType: MethodBuilder.Signature
+- uid: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetIDsOfNames*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: System.Runtime.InteropServices._MethodBuilder.GetIDsOfNames
+  nameWithType: MethodBuilder.System.Runtime.InteropServices._MethodBuilder.GetIDsOfNames
+- uid: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetTypeInfo*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: System.Runtime.InteropServices._MethodBuilder.GetTypeInfo
+  nameWithType: MethodBuilder.System.Runtime.InteropServices._MethodBuilder.GetTypeInfo
+- uid: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#GetTypeInfoCount*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: System.Runtime.InteropServices._MethodBuilder.GetTypeInfoCount
+  nameWithType: MethodBuilder.System.Runtime.InteropServices._MethodBuilder.GetTypeInfoCount
+- uid: System.Reflection.Emit.MethodBuilder.System#Runtime#InteropServices#_MethodBuilder#Invoke*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: System.Runtime.InteropServices._MethodBuilder.Invoke
+  nameWithType: MethodBuilder.System.Runtime.InteropServices._MethodBuilder.Invoke
+- uid: System.Reflection.Emit.MethodBuilder.ToString*
+  parent: System.Reflection.Emit.MethodBuilder
+  isExternal: false
+  name: ToString
+  nameWithType: MethodBuilder.ToString

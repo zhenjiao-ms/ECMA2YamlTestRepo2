@@ -1,0 +1,399 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Collections.Generic.EqualityComparer`1
+  id: EqualityComparer`1
+  children:
+  - System.Collections.Generic.EqualityComparer`1.#ctor
+  - System.Collections.Generic.EqualityComparer`1.Default
+  - System.Collections.Generic.EqualityComparer`1.Equals(`0,`0)
+  - System.Collections.Generic.EqualityComparer`1.GetHashCode(`0)
+  - System.Collections.Generic.EqualityComparer`1.System#Collections#IEqualityComparer#Equals(System.Object,System.Object)
+  - System.Collections.Generic.EqualityComparer`1.System#Collections#IEqualityComparer#GetHashCode(System.Object)
+  langs:
+  - csharp
+  name: EqualityComparer<T>
+  nameWithType: EqualityComparer<T>
+  fullName: System.Collections.Generic.EqualityComparer<T>
+  type: Class
+  summary: Provides a base class for implementations of the <xref href="stem.Collections.Generic.IEqualityComparer%601"></xref> generic interface.
+  remarks: "Derive from this class to provide a custom implementation of the <xref:System.Collections.Generic.IEqualityComparer%601> generic interface for use with collection classes such as the <xref:System.Collections.Generic.Dictionary%602> generic class, or with methods such as <xref:System.Collections.Generic.List%601.Sort%2A?displayProperty=fullName>.  \n  \n The <xref:System.Collections.Generic.EqualityComparer%601.Default%2A> property checks whether type `T` implements the <xref:System.IEquatable%601?displayProperty=fullName> generic interface and, if so, returns an EqualityComparer(T) that invokes the implementation of the <xref:System.IEquatable%601.Equals%2A?displayProperty=fullName> method. Otherwise, it returns an EqualityComparer(T), as provided by `T`.  \n  \n We recommend that you derive from the EqualityComparer(T) class instead of implementing the <xref:System.Collections.Generic.IEqualityComparer%601> interface, because the EqualityComparer(T) class tests for equality using the <xref:System.IEquatable%601.Equals%2A?displayProperty=fullName> method instead of the <xref:System.Object.Equals%2A?displayProperty=fullName> method. This is consistent with the `Contains`, `IndexOf`, `LastIndexOf`, and `Remove` methods of the <xref:System.Collections.Generic.Dictionary%602> class and other generic collections."
+  example:
+  - "The following example creates a dictionary collection of objects of type `Box` with an equality comparer. Two boxes are considered equal if their dimensions are the same. It then adds the boxes to the collection.  \n  \n The dictionary is recreated with an equality comparer that defines equality in a different way: Two boxes are considered equal if their volumes are the same.  \n  \n [!code-vb[System.Collections.Generic.EqualityComparer#1](~/add/codesnippet/visualbasic/t-system.collections.gen_3_1.vb)]\n [!code-cs[System.Collections.Generic.EqualityComparer#1](~/add/codesnippet/csharp/t-system.collections.gen_3_1.cs)]"
+  syntax:
+    content: 'public abstract class EqualityComparer<T> : System.Collections.Generic.IEqualityComparer<T>, System.Collections.IEqualityComparer'
+    typeParameters:
+    - id: T
+      description: The type of objects to compare.
+  inheritance:
+  - System.Object
+  implements:
+  - System.Collections.Generic.IEqualityComparer<T>
+  - System.Collections.IEqualityComparer
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\EqualityComparer`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/EqualityComparer`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.EqualityComparer`1.#ctor
+  id: '#ctor'
+  parent: System.Collections.Generic.EqualityComparer`1
+  langs:
+  - csharp
+  name: EqualityComparer<T>()
+  nameWithType: EqualityComparer<T>.EqualityComparer<T>()
+  fullName: System.Collections.Generic.EqualityComparer<T>.EqualityComparer<T>()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: Initializes a new instance of the <xref href="stem.Collections.Generic.EqualityComparer%601"></xref> class.
+  syntax:
+    content: protected EqualityComparer ();
+    parameters: []
+  overload: System.Collections.Generic.EqualityComparer`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\EqualityComparer`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/EqualityComparer`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.EqualityComparer`1.Default
+  id: Default
+  parent: System.Collections.Generic.EqualityComparer`1
+  langs:
+  - csharp
+  name: Default
+  nameWithType: EqualityComparer<T>.Default
+  fullName: System.Collections.Generic.EqualityComparer<T>.Default
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: Returns a default equality comparer for the type specified by the generic argument.
+  remarks: The Default property checks whether type `T` implements the <xref:System.IEquatable%601?displayProperty=fullName> interface and, if so, returns an <xref:System.Collections.Generic.EqualityComparer%601> that uses that implementation. Otherwise, it returns an <xref:System.Collections.Generic.EqualityComparer%601> that uses the overrides of <xref:System.Object.Equals%2A?displayProperty=fullName> and <xref:System.Object.GetHashCode%2A?displayProperty=fullName> provided by `T`.
+  example:
+  - "The following example creates two dictionary collections of type `Box`. Both dictionaries are created with the constructor that takes an <xref:System.Collections.Generic.EqualityComparer%601> as a parameter.  \n  \n To determine the equality of dictionary keys, the `boxesByDim` dictionary uses an equality comparer (`BoxEqDimensions`) that uses the implementation of the <xref:System.IEquatable%601.Equals%2A?displayProperty=fullName> method in the `Box` class. Two boxes are considered equal if their dimensions are the same.  \n  \n The `boxesByVol` dictionary uses an equality comparer (`BoxEqVolume`) that defines equality by volume. Two boxes are considered equal if their volumes are the same.  \n  \n [!code-cpp[System.Collections.Generic.EqualityComparer.Default#1](~/add/codesnippet/cpp/p-system.collections.gen_19_1.cpp)]\n [!code-cs[System.Collections.Generic.EqualityComparer.Default#1](~/add/codesnippet/csharp/p-system.collections.gen_19_1.cs)]\n [!code-vb[System.Collections.Generic.EqualityComparer.Default#1](~/add/codesnippet/visualbasic/p-system.collections.gen_19_1.vb)]"
+  syntax:
+    content: public static System.Collections.Generic.EqualityComparer<T> Default { get; }
+    return:
+      type: System.Collections.Generic.EqualityComparer`1
+      description: The default instance of the <xref href="stem.Collections.Generic.EqualityComparer%601"></xref> class for type <code>T</code>.
+  overload: System.Collections.Generic.EqualityComparer`1.Default*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\EqualityComparer`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/EqualityComparer`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.EqualityComparer`1.Equals(`0,`0)
+  id: Equals(`0,`0)
+  parent: System.Collections.Generic.EqualityComparer`1
+  langs:
+  - csharp
+  name: Equals(T,T)
+  nameWithType: EqualityComparer<T>.Equals(T,T)
+  fullName: System.Collections.Generic.EqualityComparer<T>.Equals(T,T)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: When overridden in a derived class, determines whether two objects of type <code>T</code> are equal.
+  remarks: The Equals method is reflexive, symmetric, and transitive. That is, it returns `true` if used to compare an object with itself; `true` for two objects `x` and `y` if it is `true` for `y` and `x`; and `true` for two objects `x` and `z` if it is `true` for `x` and `y` and also `true` for `y` and `z`.
+  syntax:
+    content: public abstract bool Equals (T x, T y);
+    parameters:
+    - id: x
+      type: T
+      description: The first object to compare.
+    - id: y
+      type: T
+      description: The second object to compare.
+    return:
+      type: System.Boolean
+      description: '`true` if the specified objects are equal; otherwise, `false`.'
+  overload: System.Collections.Generic.EqualityComparer`1.Equals*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\EqualityComparer`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/EqualityComparer`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.EqualityComparer`1.GetHashCode(`0)
+  id: GetHashCode(`0)
+  parent: System.Collections.Generic.EqualityComparer`1
+  langs:
+  - csharp
+  name: GetHashCode(T)
+  nameWithType: EqualityComparer<T>.GetHashCode(T)
+  fullName: System.Collections.Generic.EqualityComparer<T>.GetHashCode(T)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: When overridden in a derived class, serves as a hash function for the specified object for hashing algorithms and data structures, such as a hash table.
+  syntax:
+    content: public abstract int GetHashCode (T obj);
+    parameters:
+    - id: obj
+      type: T
+      description: The object for which to get a hash code.
+    return:
+      type: System.Int32
+      description: A hash code for the specified object.
+  overload: System.Collections.Generic.EqualityComparer`1.GetHashCode*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The type of <code>obj</code> is a reference type and <code>obj</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\EqualityComparer`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/EqualityComparer`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.EqualityComparer`1.System#Collections#IEqualityComparer#Equals(System.Object,System.Object)
+  id: System#Collections#IEqualityComparer#Equals(System.Object,System.Object)
+  isEii: true
+  parent: System.Collections.Generic.EqualityComparer`1
+  langs:
+  - csharp
+  name: IEqualityComparer.Equals(Object,Object)
+  nameWithType: EqualityComparer<T>.IEqualityComparer.Equals(Object,Object)
+  fullName: System.Collections.Generic.EqualityComparer<T>.IEqualityComparer.Equals(Object,Object)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: Determines whether the specified objects are equal.
+  remarks: "This method is a wrapper for the <xref:System.Collections.Generic.EqualityComparer%601.Equals%28%600%2C%600%29> method, so `obj` must be cast to the type specified by the generic argument `T` of the current instance. If it cannot be cast to `T`, an <xref:System.ArgumentException> is thrown.  \n  \n Comparing `null` is allowed and does not generate an exception."
+  syntax:
+    content: bool IEqualityComparer.Equals (object x, object y);
+    parameters:
+    - id: x
+      type: System.Object
+      description: The first object to compare.
+    - id: y
+      type: System.Object
+      description: The second object to compare.
+    return:
+      type: System.Boolean
+      description: '`true` if the specified objects are equal; otherwise, `false`.'
+  overload: System.Collections.Generic.EqualityComparer`1.System#Collections#IEqualityComparer#Equals*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>x</code> or <code>y</code> is of a type that cannot be cast to type <code>T</code>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\EqualityComparer`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/EqualityComparer`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.EqualityComparer`1.System#Collections#IEqualityComparer#GetHashCode(System.Object)
+  id: System#Collections#IEqualityComparer#GetHashCode(System.Object)
+  isEii: true
+  parent: System.Collections.Generic.EqualityComparer`1
+  langs:
+  - csharp
+  name: IEqualityComparer.GetHashCode(Object)
+  nameWithType: EqualityComparer<T>.IEqualityComparer.GetHashCode(Object)
+  fullName: System.Collections.Generic.EqualityComparer<T>.IEqualityComparer.GetHashCode(Object)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: Returns a hash code for the specified object.
+  remarks: This method is a wrapper for the <xref:System.Collections.Generic.EqualityComparer%601.GetHashCode%28%600%29> method, so `obj` must be a type that can be cast to the type specified by the generic type argument `T` of the current instance.
+  syntax:
+    content: int IEqualityComparer.GetHashCode (object obj);
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The <xref href="System.Object"></xref> for which a hash code is to be returned.
+    return:
+      type: System.Int32
+      description: A hash code for the specified object.
+  overload: System.Collections.Generic.EqualityComparer`1.System#Collections#IEqualityComparer#GetHashCode*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: "The type of <code>obj</code> is a reference type and <code>obj</code> is `null`.  \n  \n -or-  \n  \n <code>obj</code> is of a type that cannot be cast to type <code>T</code>."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\EqualityComparer`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/EqualityComparer`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.Collections.Generic.EqualityComparer`1.#ctor
+  parent: System.Collections.Generic.EqualityComparer`1
+  isExternal: false
+  name: EqualityComparer<T>()
+  nameWithType: EqualityComparer<T>.EqualityComparer<T>()
+  fullName: System.Collections.Generic.EqualityComparer<T>.EqualityComparer<T>()
+- uid: System.Collections.Generic.EqualityComparer`1.Default
+  parent: System.Collections.Generic.EqualityComparer`1
+  isExternal: false
+  name: Default
+  nameWithType: EqualityComparer<T>.Default
+  fullName: System.Collections.Generic.EqualityComparer<T>.Default
+- uid: System.Collections.Generic.EqualityComparer`1
+  parent: System.Collections.Generic
+  isExternal: false
+  name: EqualityComparer<T>
+  nameWithType: EqualityComparer<T>
+  fullName: System.Collections.Generic.EqualityComparer<T>
+- uid: System.Collections.Generic.EqualityComparer`1.Equals(`0,`0)
+  parent: System.Collections.Generic.EqualityComparer`1
+  isExternal: false
+  name: Equals(T,T)
+  nameWithType: EqualityComparer<T>.Equals(T,T)
+  fullName: System.Collections.Generic.EqualityComparer<T>.Equals(T,T)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: T
+  isExternal: true
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Collections.Generic.EqualityComparer`1.GetHashCode(`0)
+  parent: System.Collections.Generic.EqualityComparer`1
+  isExternal: false
+  name: GetHashCode(T)
+  nameWithType: EqualityComparer<T>.GetHashCode(T)
+  fullName: System.Collections.Generic.EqualityComparer<T>.GetHashCode(T)
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Collections.Generic.EqualityComparer`1.System#Collections#IEqualityComparer#Equals(System.Object,System.Object)
+  parent: System.Collections.Generic.EqualityComparer`1
+  isExternal: false
+  name: IEqualityComparer.Equals(Object,Object)
+  nameWithType: EqualityComparer<T>.IEqualityComparer.Equals(Object,Object)
+  fullName: System.Collections.Generic.EqualityComparer<T>.IEqualityComparer.Equals(Object,Object)
+- uid: System.Collections.Generic.EqualityComparer`1.System#Collections#IEqualityComparer#GetHashCode(System.Object)
+  parent: System.Collections.Generic.EqualityComparer`1
+  isExternal: false
+  name: IEqualityComparer.GetHashCode(Object)
+  nameWithType: EqualityComparer<T>.IEqualityComparer.GetHashCode(Object)
+  fullName: System.Collections.Generic.EqualityComparer<T>.IEqualityComparer.GetHashCode(Object)
+- uid: System.Collections.Generic.EqualityComparer`1.#ctor*
+  parent: System.Collections.Generic.EqualityComparer`1
+  isExternal: false
+  name: EqualityComparer<T>
+  nameWithType: EqualityComparer<T>.EqualityComparer<T>
+- uid: System.Collections.Generic.EqualityComparer`1.Default*
+  parent: System.Collections.Generic.EqualityComparer`1
+  isExternal: false
+  name: Default
+  nameWithType: EqualityComparer<T>.Default
+- uid: System.Collections.Generic.EqualityComparer`1.Equals*
+  parent: System.Collections.Generic.EqualityComparer`1
+  isExternal: false
+  name: Equals
+  nameWithType: EqualityComparer<T>.Equals
+- uid: System.Collections.Generic.EqualityComparer`1.GetHashCode*
+  parent: System.Collections.Generic.EqualityComparer`1
+  isExternal: false
+  name: GetHashCode
+  nameWithType: EqualityComparer<T>.GetHashCode
+- uid: System.Collections.Generic.EqualityComparer`1.System#Collections#IEqualityComparer#Equals*
+  parent: System.Collections.Generic.EqualityComparer`1
+  isExternal: false
+  name: System.Collections.IEqualityComparer.Equals
+  nameWithType: EqualityComparer<T>.System.Collections.IEqualityComparer.Equals
+- uid: System.Collections.Generic.EqualityComparer`1.System#Collections#IEqualityComparer#GetHashCode*
+  parent: System.Collections.Generic.EqualityComparer`1
+  isExternal: false
+  name: System.Collections.IEqualityComparer.GetHashCode
+  nameWithType: EqualityComparer<T>.System.Collections.IEqualityComparer.GetHashCode

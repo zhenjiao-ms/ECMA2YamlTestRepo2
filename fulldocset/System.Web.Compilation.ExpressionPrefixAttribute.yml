@@ -1,0 +1,193 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Web.Compilation.ExpressionPrefixAttribute
+  id: ExpressionPrefixAttribute
+  children:
+  - System.Web.Compilation.ExpressionPrefixAttribute.#ctor(System.String)
+  - System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefix
+  langs:
+  - csharp
+  name: ExpressionPrefixAttribute
+  nameWithType: ExpressionPrefixAttribute
+  fullName: System.Web.Compilation.ExpressionPrefixAttribute
+  type: Class
+  summary: Specifies the prefix attribute to use for the expression builder. This class cannot be inherited.
+  remarks: "The ExpressionPrefixAttribute class is used at design time with expressions that are not defined in the configuration file. Use the <xref:System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefix%2A> property to get the name of the prefix that is associated with the ExpressionPrefixAttribute object. An expression builder looks for any statements with the following form:  \n  \n `<%$ [expressionPrefix]:[expressionValue] %>`  \n  \n Then the expression builder, based on the prefix of the expression, generates code for the property assignment. The `expressionPrefix` parameter refers to a configured expression builder, which is defined in the configuration file or through an ExpressionPrefixAttribute object."
+  example:
+  - "The following code examples demonstrate how to use the ExpressionPrefixAttribute class. The attribute is applied to a custom expression builder that implements the <xref:System.Web.Compilation.ExpressionBuilder> abstract class. This implementation of <xref:System.Web.Compilation.ExpressionBuilder> returns an evaluated statement that is passed to the expression. To run this example, you must first register the custom expression builder in the Web.config file. The first code example demonstrates how to register the custom expression builder in the Web.config file.  \n  \n```  \n<configuration>  \n    <system.web>  \n       <compilation>  \n          <expressionBuilders>  \n              <add expressionPrefix=\"MyCustomExpression\"  \n               type=\"MyCustomExpressionBuilder\"/>  \n          </expressionBuilders>  \n       </compilation>  \n    </system.web>  \n</configuration>  \n```  \n  \n The second code example demonstrates how to reference the expression in an .aspx file.  \n  \n```  \n<asp:Label ID=\"Label1\" runat=\"server\"   \nText=\"<%$ MyCustomExpression:Hello, world! %>\" />  \n```  \n  \n The third code example demonstrates how to develop a customized expression builder by deriving from <xref:System.Web.Compilation.ExpressionBuilder>. To run this code example, you must place the class in the App_Code folder.  \n  \n [!CODE [System.Web.Compilation.ExpressionBuilder#1](../CodeSnippet/VS_Snippets_WebNet/System.Web.Compilation.ExpressionBuilder#1)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple=false)]
+
+      public sealed class ExpressionPrefixAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Compilation\ExpressionPrefixAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Compilation/ExpressionPrefixAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Compilation.ExpressionPrefixAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Web.Compilation.ExpressionPrefixAttribute
+  langs:
+  - csharp
+  name: ExpressionPrefixAttribute(String)
+  nameWithType: ExpressionPrefixAttribute.ExpressionPrefixAttribute(String)
+  fullName: System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefixAttribute(String)
+  type: Constructor
+  assemblies:
+  - System.Web
+  namespace: System.Web.Compilation
+  summary: Initializes a new instance of the <xref href="System.Web.Compilation.ExpressionPrefixAttribute"></xref> class.
+  remarks: Use the ExpressionPrefixAttribute constructor to initialize an instance of the <xref:System.Web.Compilation.ExpressionPrefixAttribute> class using a prefix identifier. The ExpressionPrefixAttribute is the default constructor for the <xref:System.Web.Compilation.ExpressionPrefixAttribute> class.
+  syntax:
+    content: public ExpressionPrefixAttribute (string expressionPrefix);
+    parameters:
+    - id: expressionPrefix
+      type: System.String
+      description: The prefix of the current <xref href="System.Web.Compilation.ExpressionBuilder"></xref>.
+  overload: System.Web.Compilation.ExpressionPrefixAttribute.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>expressionPrefix</code> is null or an empty string ("").
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Compilation\ExpressionPrefixAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Compilation/ExpressionPrefixAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefix
+  id: ExpressionPrefix
+  parent: System.Web.Compilation.ExpressionPrefixAttribute
+  langs:
+  - csharp
+  name: ExpressionPrefix
+  nameWithType: ExpressionPrefixAttribute.ExpressionPrefix
+  fullName: System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefix
+  type: Property
+  assemblies:
+  - System.Web
+  namespace: System.Web.Compilation
+  summary: Gets the prefix value for the current <xref href="System.Web.Compilation.ExpressionBuilder"></xref> object.
+  remarks: Use the ExpressionPrefix property to retrieve the name of the prefix that is associated with a given attribute.
+  syntax:
+    content: public string ExpressionPrefix { get; }
+    return:
+      type: System.String
+      description: The expression prefix for the configured <xref href="System.Web.Compilation.ExpressionBuilder"></xref>.
+  overload: System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefix*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Compilation\ExpressionPrefixAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Compilation/ExpressionPrefixAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.Web.Compilation.ExpressionPrefixAttribute.#ctor(System.String)
+  parent: System.Web.Compilation.ExpressionPrefixAttribute
+  isExternal: false
+  name: ExpressionPrefixAttribute(String)
+  nameWithType: ExpressionPrefixAttribute.ExpressionPrefixAttribute(String)
+  fullName: System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefixAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefix
+  parent: System.Web.Compilation.ExpressionPrefixAttribute
+  isExternal: false
+  name: ExpressionPrefix
+  nameWithType: ExpressionPrefixAttribute.ExpressionPrefix
+  fullName: System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefix
+- uid: System.Web.Compilation.ExpressionPrefixAttribute.#ctor*
+  parent: System.Web.Compilation.ExpressionPrefixAttribute
+  isExternal: false
+  name: ExpressionPrefixAttribute
+  nameWithType: ExpressionPrefixAttribute.ExpressionPrefixAttribute
+- uid: System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefix*
+  parent: System.Web.Compilation.ExpressionPrefixAttribute
+  isExternal: false
+  name: ExpressionPrefix
+  nameWithType: ExpressionPrefixAttribute.ExpressionPrefix

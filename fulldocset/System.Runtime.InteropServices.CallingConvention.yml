@@ -1,0 +1,248 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.InteropServices.CallingConvention
+  id: CallingConvention
+  children:
+  - System.Runtime.InteropServices.CallingConvention.Cdecl
+  - System.Runtime.InteropServices.CallingConvention.FastCall
+  - System.Runtime.InteropServices.CallingConvention.StdCall
+  - System.Runtime.InteropServices.CallingConvention.ThisCall
+  - System.Runtime.InteropServices.CallingConvention.Winapi
+  langs:
+  - csharp
+  name: CallingConvention
+  nameWithType: CallingConvention
+  fullName: System.Runtime.InteropServices.CallingConvention
+  type: Enum
+  summary: Specifies the calling convention required to call methods implemented in unmanaged code.
+  remarks: Always use the CallingConvention enumeration rather than the <xref:System.Runtime.InteropServices.CALLCONV> enumeration to specify a calling convention in managed code. The latter exists only for the sake of COM definitions. The CallingConvention enumeration is used by <xref:System.Runtime.InteropServices.DllImportAttribute> and several classes in <xref:System.Reflection.Emit> to dynamically emit platform invoke signatures.
+  example:
+  - "The following example demonstrates how to apply the `Cdecl` calling convention, which you must use because the stack is cleaned up by the caller.  \n  \n [!code-cs[Interop CallingConvention#1](~/add/codesnippet/csharp/t-system.runtime.interop_26_1.cs)]\n [!code-cpp[Interop CallingConvention#1](~/add/codesnippet/cpp/t-system.runtime.interop_26_1.cpp)]\n [!code-vb[Interop CallingConvention#1](~/add/codesnippet/visualbasic/t-system.runtime.interop_26_1.vb)]"
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public enum CallingConvention
+  inheritance:
+  - System.Object
+  - System.ValueType
+  - System.Enum
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\CallingConvention.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/CallingConvention.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.CallingConvention.Cdecl
+  id: Cdecl
+  parent: System.Runtime.InteropServices.CallingConvention
+  langs:
+  - csharp
+  name: Cdecl
+  nameWithType: CallingConvention.Cdecl
+  fullName: System.Runtime.InteropServices.CallingConvention.Cdecl
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.InteropServices
+  summary: The caller cleans the stack. This enables calling functions with `varargs`, which makes it appropriate to use for methods that accept a variable number of parameters, such as `Printf`.
+  syntax:
+    content: Cdecl
+    return:
+      type: System.Runtime.InteropServices.CallingConvention
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\CallingConvention.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/CallingConvention.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.CallingConvention.FastCall
+  id: FastCall
+  parent: System.Runtime.InteropServices.CallingConvention
+  langs:
+  - csharp
+  name: FastCall
+  nameWithType: CallingConvention.FastCall
+  fullName: System.Runtime.InteropServices.CallingConvention.FastCall
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.InteropServices
+  summary: This calling convention is not supported.
+  syntax:
+    content: FastCall
+    return:
+      type: System.Runtime.InteropServices.CallingConvention
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\CallingConvention.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/CallingConvention.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.CallingConvention.StdCall
+  id: StdCall
+  parent: System.Runtime.InteropServices.CallingConvention
+  langs:
+  - csharp
+  name: StdCall
+  nameWithType: CallingConvention.StdCall
+  fullName: System.Runtime.InteropServices.CallingConvention.StdCall
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.InteropServices
+  summary: The callee cleans the stack. This is the default convention for calling unmanaged functions with platform invoke.
+  syntax:
+    content: StdCall
+    return:
+      type: System.Runtime.InteropServices.CallingConvention
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\CallingConvention.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/CallingConvention.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.CallingConvention.ThisCall
+  id: ThisCall
+  parent: System.Runtime.InteropServices.CallingConvention
+  langs:
+  - csharp
+  name: ThisCall
+  nameWithType: CallingConvention.ThisCall
+  fullName: System.Runtime.InteropServices.CallingConvention.ThisCall
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.InteropServices
+  summary: The first parameter is the `this` pointer and is stored in register ECX. Other parameters are pushed on the stack. This calling convention is used to call methods on classes exported from an unmanaged DLL.
+  syntax:
+    content: ThisCall
+    return:
+      type: System.Runtime.InteropServices.CallingConvention
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\CallingConvention.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/CallingConvention.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.CallingConvention.Winapi
+  id: Winapi
+  parent: System.Runtime.InteropServices.CallingConvention
+  langs:
+  - csharp
+  name: Winapi
+  nameWithType: CallingConvention.Winapi
+  fullName: System.Runtime.InteropServices.CallingConvention.Winapi
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.InteropServices
+  summary: This member is not actually a calling convention, but instead uses the default platform calling convention. For example, on Windows the default is StdCall and on Windows CE.NET it is Cdecl.
+  syntax:
+    content: Winapi
+    return:
+      type: System.Runtime.InteropServices.CallingConvention
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\CallingConvention.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/CallingConvention.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Enum
+  isExternal: false
+  name: System.Enum
+- uid: System.Runtime.InteropServices.CallingConvention.Cdecl
+  parent: System.Runtime.InteropServices.CallingConvention
+  isExternal: false
+  name: Cdecl
+  nameWithType: CallingConvention.Cdecl
+  fullName: System.Runtime.InteropServices.CallingConvention.Cdecl
+- uid: System.Runtime.InteropServices.CallingConvention
+  parent: System.Runtime.InteropServices
+  isExternal: false
+  name: CallingConvention
+  nameWithType: CallingConvention
+  fullName: System.Runtime.InteropServices.CallingConvention
+- uid: System.Runtime.InteropServices.CallingConvention.FastCall
+  parent: System.Runtime.InteropServices.CallingConvention
+  isExternal: false
+  name: FastCall
+  nameWithType: CallingConvention.FastCall
+  fullName: System.Runtime.InteropServices.CallingConvention.FastCall
+- uid: System.Runtime.InteropServices.CallingConvention.StdCall
+  parent: System.Runtime.InteropServices.CallingConvention
+  isExternal: false
+  name: StdCall
+  nameWithType: CallingConvention.StdCall
+  fullName: System.Runtime.InteropServices.CallingConvention.StdCall
+- uid: System.Runtime.InteropServices.CallingConvention.ThisCall
+  parent: System.Runtime.InteropServices.CallingConvention
+  isExternal: false
+  name: ThisCall
+  nameWithType: CallingConvention.ThisCall
+  fullName: System.Runtime.InteropServices.CallingConvention.ThisCall
+- uid: System.Runtime.InteropServices.CallingConvention.Winapi
+  parent: System.Runtime.InteropServices.CallingConvention
+  isExternal: false
+  name: Winapi
+  nameWithType: CallingConvention.Winapi
+  fullName: System.Runtime.InteropServices.CallingConvention.Winapi

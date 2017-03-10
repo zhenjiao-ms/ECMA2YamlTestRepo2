@@ -1,0 +1,199 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Data.SqlClient.SqlRowsCopiedEventArgs
+  id: SqlRowsCopiedEventArgs
+  children:
+  - System.Data.SqlClient.SqlRowsCopiedEventArgs.#ctor(System.Int64)
+  - System.Data.SqlClient.SqlRowsCopiedEventArgs.Abort
+  - System.Data.SqlClient.SqlRowsCopiedEventArgs.RowsCopied
+  langs:
+  - csharp
+  name: SqlRowsCopiedEventArgs
+  nameWithType: SqlRowsCopiedEventArgs
+  fullName: System.Data.SqlClient.SqlRowsCopiedEventArgs
+  type: Class
+  summary: Represents the set of arguments passed to the <xref href="System.Data.SqlClient.SqlRowsCopiedEventHandler"></xref>.
+  syntax:
+    content: 'public class SqlRowsCopiedEventArgs : EventArgs'
+  inheritance:
+  - System.Object
+  - System.EventArgs
+  implements: []
+  inheritedMembers:
+  - System.EventArgs.Empty
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.SqlClient\SqlRowsCopiedEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.SqlClient/SqlRowsCopiedEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.SqlClient.SqlRowsCopiedEventArgs.#ctor(System.Int64)
+  id: '#ctor(System.Int64)'
+  parent: System.Data.SqlClient.SqlRowsCopiedEventArgs
+  langs:
+  - csharp
+  name: SqlRowsCopiedEventArgs(Int64)
+  nameWithType: SqlRowsCopiedEventArgs.SqlRowsCopiedEventArgs(Int64)
+  fullName: System.Data.SqlClient.SqlRowsCopiedEventArgs.SqlRowsCopiedEventArgs(Int64)
+  type: Constructor
+  assemblies:
+  - System.Data
+  namespace: System.Data.SqlClient
+  summary: Creates a new instance of the <xref href="System.Data.SqlClient.SqlRowsCopiedEventArgs"></xref> object.
+  remarks: The value in the `rowsCopied` parameter is reset on each call to any one of the `SqlBulkCopy.WriteToServer` methods.
+  syntax:
+    content: public SqlRowsCopiedEventArgs (long rowsCopied);
+    parameters:
+    - id: rowsCopied
+      type: System.Int64
+      description: An <xref href="System.Int64"></xref> that indicates the number of rows copied during the current bulk copy operation.
+  overload: System.Data.SqlClient.SqlRowsCopiedEventArgs.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.SqlClient\SqlRowsCopiedEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.SqlClient/SqlRowsCopiedEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.SqlClient.SqlRowsCopiedEventArgs.Abort
+  id: Abort
+  parent: System.Data.SqlClient.SqlRowsCopiedEventArgs
+  langs:
+  - csharp
+  name: Abort
+  nameWithType: SqlRowsCopiedEventArgs.Abort
+  fullName: System.Data.SqlClient.SqlRowsCopiedEventArgs.Abort
+  type: Property
+  assemblies:
+  - System.Data
+  namespace: System.Data.SqlClient
+  summary: Gets or sets a value that indicates whether the bulk copy operation should be aborted.
+  remarks: "Use the Abort property to cancel a bulk copy operation. Set Abort to `true` to abort the bulk copy operation.  \n  \n If you call the **Close** method from <xref:System.Data.SqlClient.SqlBulkCopy.SqlRowsCopied>, an exception is generated, and the <xref:System.Data.SqlClient.SqlBulkCopy> object state does not change.  \n  \n If an application specifically creates a <xref:System.Data.SqlClient.SqlTransaction> object in the <xref:System.Data.SqlClient.SqlCommand> constructor, the transaction is not rolled back. The application is responsible for determining whether it is required to rollback the operation, and if so, it must call the <xref:System.Data.SqlClient.SqlTransaction.Rollback%2A?displayProperty=fullName> method. If the application does not create a transaction, the internal transaction corresponding to the current batch is automatically rolled back. However, changes related to previous batches within the bulk copy operation are retained, because the transactions for them already have been committed."
+  syntax:
+    content: public bool Abort { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if the bulk copy operation should be aborted; otherwise `false`.'
+  overload: System.Data.SqlClient.SqlRowsCopiedEventArgs.Abort*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.SqlClient\SqlRowsCopiedEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.SqlClient/SqlRowsCopiedEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.SqlClient.SqlRowsCopiedEventArgs.RowsCopied
+  id: RowsCopied
+  parent: System.Data.SqlClient.SqlRowsCopiedEventArgs
+  langs:
+  - csharp
+  name: RowsCopied
+  nameWithType: SqlRowsCopiedEventArgs.RowsCopied
+  fullName: System.Data.SqlClient.SqlRowsCopiedEventArgs.RowsCopied
+  type: Property
+  assemblies:
+  - System.Data
+  namespace: System.Data.SqlClient
+  summary: Gets a value that returns the number of rows copied during the current bulk copy operation.
+  remarks: The value in the RowsCopied property is reset on each call to any of the `SqlBulkCopy.WriteToServer` methods.
+  syntax:
+    content: public long RowsCopied { get; }
+    return:
+      type: System.Int64
+      description: '`int` that returns the number of rows copied.'
+  overload: System.Data.SqlClient.SqlRowsCopiedEventArgs.RowsCopied*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.SqlClient\SqlRowsCopiedEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.SqlClient/SqlRowsCopiedEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.EventArgs
+  isExternal: false
+  name: System.EventArgs
+- uid: System.Data.SqlClient.SqlRowsCopiedEventArgs.#ctor(System.Int64)
+  parent: System.Data.SqlClient.SqlRowsCopiedEventArgs
+  isExternal: false
+  name: SqlRowsCopiedEventArgs(Int64)
+  nameWithType: SqlRowsCopiedEventArgs.SqlRowsCopiedEventArgs(Int64)
+  fullName: System.Data.SqlClient.SqlRowsCopiedEventArgs.SqlRowsCopiedEventArgs(Int64)
+- uid: System.Int64
+  parent: System
+  isExternal: false
+  name: Int64
+  nameWithType: Int64
+  fullName: System.Int64
+- uid: System.Data.SqlClient.SqlRowsCopiedEventArgs.Abort
+  parent: System.Data.SqlClient.SqlRowsCopiedEventArgs
+  isExternal: false
+  name: Abort
+  nameWithType: SqlRowsCopiedEventArgs.Abort
+  fullName: System.Data.SqlClient.SqlRowsCopiedEventArgs.Abort
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Data.SqlClient.SqlRowsCopiedEventArgs.RowsCopied
+  parent: System.Data.SqlClient.SqlRowsCopiedEventArgs
+  isExternal: false
+  name: RowsCopied
+  nameWithType: SqlRowsCopiedEventArgs.RowsCopied
+  fullName: System.Data.SqlClient.SqlRowsCopiedEventArgs.RowsCopied
+- uid: System.Data.SqlClient.SqlRowsCopiedEventArgs.#ctor*
+  parent: System.Data.SqlClient.SqlRowsCopiedEventArgs
+  isExternal: false
+  name: SqlRowsCopiedEventArgs
+  nameWithType: SqlRowsCopiedEventArgs.SqlRowsCopiedEventArgs
+- uid: System.Data.SqlClient.SqlRowsCopiedEventArgs.Abort*
+  parent: System.Data.SqlClient.SqlRowsCopiedEventArgs
+  isExternal: false
+  name: Abort
+  nameWithType: SqlRowsCopiedEventArgs.Abort
+- uid: System.Data.SqlClient.SqlRowsCopiedEventArgs.RowsCopied*
+  parent: System.Data.SqlClient.SqlRowsCopiedEventArgs
+  isExternal: false
+  name: RowsCopied
+  nameWithType: SqlRowsCopiedEventArgs.RowsCopied

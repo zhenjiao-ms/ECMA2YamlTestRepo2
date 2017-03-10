@@ -1,0 +1,947 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.UriTemplate
+  id: UriTemplate
+  children:
+  - System.UriTemplate.#ctor(System.String)
+  - System.UriTemplate.#ctor(System.String,System.Boolean)
+  - System.UriTemplate.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String})
+  - System.UriTemplate.#ctor(System.String,System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String})
+  - System.UriTemplate.BindByName(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  - System.UriTemplate.BindByName(System.Uri,System.Collections.Specialized.NameValueCollection)
+  - System.UriTemplate.BindByName(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean)
+  - System.UriTemplate.BindByName(System.Uri,System.Collections.Specialized.NameValueCollection,System.Boolean)
+  - System.UriTemplate.BindByPosition(System.Uri,System.String[])
+  - System.UriTemplate.Defaults
+  - System.UriTemplate.IgnoreTrailingSlash
+  - System.UriTemplate.IsEquivalentTo(System.UriTemplate)
+  - System.UriTemplate.Match(System.Uri,System.Uri)
+  - System.UriTemplate.PathSegmentVariableNames
+  - System.UriTemplate.QueryValueVariableNames
+  - System.UriTemplate.ToString
+  langs:
+  - csharp
+  name: UriTemplate
+  nameWithType: UriTemplate
+  fullName: System.UriTemplate
+  type: Class
+  summary: A class that represents a Uniform Resource Identifier (URI) template.
+  remarks: "A URI template allows you to define a set of structurally similar URIs. Templates are composed of two parts, a path and a query. A path consists of a series of segments delimited by a slash (/). Each segment can have a literal value, a variable value (written within curly braces [{ }], constrained to match the contents of exactly one segment), or a wildcard (written as an asterisk [*], which matches \"the rest of the path\"), which must appear at the end of the path. The query expression can be omitted entirely. If present, it specifies an unordered series of name/value pairs. Elements of the query expression can be either literal pairs (?x=2) or variable pairs (?x={val}). Unpaired values are not permitted. The following examples show valid template strings:  \n  \n-   \"weather/WA/Seattle\"  \n  \n-   \"weather/{state}/{city}\"  \n  \n-   \"weather/*\"  \n  \n-   \"weather/{state}/{city}?forecast=today  \n  \n-   \"weather/{state}/{city}?forecast={day}  \n  \n The preceding URI templates might be used for organizing weather reports. Segments enclosed in curly braces are variables, everything else is a literal. You can convert a UriTemplate instance into a <xref:System.Uri> by replacing variables with actual values. For example, taking the template \"weather/{state}/{city}\" and putting in values for the variables \"{state}\" and \"{city}\" gives you \"weather/WA/Seattle\". Given a candidate URI, you can test whether it matches a given URI template by calling <xref:System.UriTemplate.Match%28System.Uri%2CSystem.Uri%29>. You can also use UriTemplate instances to create a <xref:System.Uri> from a set of variable values by calling <xref:System.UriTemplate.BindByName%28System.Uri%2CSystem.Collections.Specialized.NameValueCollection%29> or [BindByPosition(Uri, String\\<xref:System.UriTemplate.BindByPosition%28System.Uri%2CSystem.String%5B%5D%29>."
+  example:
+  - "The following code demonstrates how to create a UriTemplate instance, and bind and match it to a candidate URI.  \n  \n [!code-cs[UriTemplate#0](~/add/codesnippet/csharp/t-system.uritemplate_1.cs)]\n [!code-vb[UriTemplate#0](~/add/codesnippet/visualbasic/t-system.uritemplate_1.vb)]"
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+
+      public class UriTemplate
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: UriTemplate(String)
+  nameWithType: UriTemplate.UriTemplate(String)
+  fullName: System.UriTemplate.UriTemplate(String)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.UriTemplate"></xref> class with the specified template string.
+  remarks: ''
+  example:
+  - "The following example shows how to call the constructor.  \n  \n [!code-cs[UriTemplate#1](~/add/codesnippet/csharp/m-system.uritemplate.sha_1.cs)]\n [!code-vb[UriTemplate#1](~/add/codesnippet/visualbasic/m-system.uritemplate.sha_1.vb)]"
+  syntax:
+    content: public UriTemplate (string template);
+    parameters:
+    - id: template
+      type: System.String
+      description: The template.
+  overload: System.UriTemplate.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.#ctor(System.String,System.Boolean)
+  id: '#ctor(System.String,System.Boolean)'
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: UriTemplate(String,Boolean)
+  nameWithType: UriTemplate.UriTemplate(String,Boolean)
+  fullName: System.UriTemplate.UriTemplate(String,Boolean)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.UriTemplate"></xref> class.
+  remarks: "When the `ignoreTrailingSlash` is set to `true`, trailing slashes on the end of template are ignored when matching a candidate URI. For example, a template such as “http://www.microsoft.com/customer/” would match the following candidate URIs:  \n  \n-   \"http://www.microsoft.com/customer/\"  \n  \n-   \"http://www.microsoft.com/customer\"  \n  \n-   \"http://www.microsoft.com/customer/?wsdl\"  \n  \n-   \"http://www.microsoft.com/customer?wsdl\""
+  syntax:
+    content: public UriTemplate (string template, bool ignoreTrailingSlash);
+    parameters:
+    - id: template
+      type: System.String
+      description: The template string.
+    - id: ignoreTrailingSlash
+      type: System.Boolean
+      description: A value that specifies whether trailing slash “/” characters should be ignored.
+  overload: System.UriTemplate.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String})
+  id: '#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String})'
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: UriTemplate(String,IDictionary<String,String>)
+  nameWithType: UriTemplate.UriTemplate(String,IDictionary<String,String>)
+  fullName: System.UriTemplate.UriTemplate(String,IDictionary<String,String>)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.UriTemplate"></xref> class.
+  syntax:
+    content: public UriTemplate (string template, System.Collections.Generic.IDictionary<string,string> additionalDefaults);
+    parameters:
+    - id: template
+      type: System.String
+      description: The template string.
+    - id: additionalDefaults
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: A dictionary that contains a list of default values for the template parameters.
+  overload: System.UriTemplate.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.#ctor(System.String,System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String})
+  id: '#ctor(System.String,System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String})'
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: UriTemplate(String,Boolean,IDictionary<String,String>)
+  nameWithType: UriTemplate.UriTemplate(String,Boolean,IDictionary<String,String>)
+  fullName: System.UriTemplate.UriTemplate(String,Boolean,IDictionary<String,String>)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.UriTemplate"></xref> class.
+  syntax:
+    content: public UriTemplate (string template, bool ignoreTrailingSlash, System.Collections.Generic.IDictionary<string,string> additionalDefaults);
+    parameters:
+    - id: template
+      type: System.String
+      description: The template string.
+    - id: ignoreTrailingSlash
+      type: System.Boolean
+      description: '`true` if the trailing slash “/” characters are ignored; otherwise `false`.'
+    - id: additionalDefaults
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: A dictionary that contains a list of default values for the template parameters.
+  overload: System.UriTemplate.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.BindByName(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  id: BindByName(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: BindByName(Uri,IDictionary<String,String>)
+  nameWithType: UriTemplate.BindByName(Uri,IDictionary<String,String>)
+  fullName: System.UriTemplate.BindByName(Uri,IDictionary<String,String>)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Creates a new URI from the template and the collection of parameters.
+  remarks: "The <xref:System.Collections.Generic.IDictionary%7BSystem.String%2CSystem.String%7D> parameter contains a collection of parameter name and value pairs. The parameters are matched up against the variables within the template by a case-insensitive comparison.  \n  \n> [!NOTE]\n>  The name/value collection passed to this method must contain a key for every template variable. Extra name/value pairs that do not match template variables are appended to the query string of the final URI.  \n  \n> [!IMPORTANT]\n>  It is possible to pass in text within the name/value pairs that prevent the generated URI from matching the template that is used to generate it. Examples of such text includes: '/', '..', '*', '{', and '}'."
+  syntax:
+    content: public Uri BindByName (Uri baseAddress, System.Collections.Generic.IDictionary<string,string> parameters);
+    parameters:
+    - id: baseAddress
+      type: System.Uri
+      description: The base address.
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: A dictionary that contains a collection of parameter name/value pairs.
+    return:
+      type: System.Uri
+      description: A URI.
+  overload: System.UriTemplate.BindByName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.BindByName(System.Uri,System.Collections.Specialized.NameValueCollection)
+  id: BindByName(System.Uri,System.Collections.Specialized.NameValueCollection)
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: BindByName(Uri,NameValueCollection)
+  nameWithType: UriTemplate.BindByName(Uri,NameValueCollection)
+  fullName: System.UriTemplate.BindByName(Uri,NameValueCollection)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Creates a new URI from the template and the collection of parameters.
+  remarks: "The <xref:System.Collections.Specialized.NameValueCollection> parameter contains a collection of parameter name/value pairs. The parameters are matched up against the variables within the template by a case-insensitive comparison. Values passed in this collection are escaped.  \n  \n> [!NOTE]\n>  The name/value collection passed to BindByName must contain a key for every template variable. Extra name/value pairs that do not match template variables are appended to the query string of the final URI.  \n  \n> [!NOTE]\n>  It is possible to pass in text within the name/value pairs that prevent the generated URI from matching the template that is used to generate it. Examples of such text includes: '/', '..', '*', '{', and '}'."
+  example:
+  - "The following example shows how to call the BindByName method.  \n  \n [!code-cs[UriTemplate#4](~/add/codesnippet/csharp/58e2d4af-e6e1-4438-b258-_1.cs)]\n [!code-vb[UriTemplate#4](~/add/codesnippet/visualbasic/58e2d4af-e6e1-4438-b258-_1.vb)]"
+  syntax:
+    content: public Uri BindByName (Uri baseAddress, System.Collections.Specialized.NameValueCollection parameters);
+    parameters:
+    - id: baseAddress
+      type: System.Uri
+      description: The base address.
+    - id: parameters
+      type: System.Collections.Specialized.NameValueCollection
+      description: The parameter values.
+    return:
+      type: System.Uri
+      description: A new instance.
+  overload: System.UriTemplate.BindByName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.BindByName(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean)
+  id: BindByName(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean)
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: BindByName(Uri,IDictionary<String,String>,Boolean)
+  nameWithType: UriTemplate.BindByName(Uri,IDictionary<String,String>,Boolean)
+  fullName: System.UriTemplate.BindByName(Uri,IDictionary<String,String>,Boolean)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Creates a new URI from the template and the collection of parameters.
+  syntax:
+    content: public Uri BindByName (Uri baseAddress, System.Collections.Generic.IDictionary<string,string> parameters, bool omitDefaults);
+    parameters:
+    - id: baseAddress
+      type: System.Uri
+      description: A URI that contains the base address.
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: A dictionary that contains a collection of parameter name/value pairs.
+    - id: omitDefaults
+      type: System.Boolean
+      description: '`true` is the default values are ignored; otherwise `false`.'
+    return:
+      type: System.Uri
+      description: A URI.
+  overload: System.UriTemplate.BindByName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.BindByName(System.Uri,System.Collections.Specialized.NameValueCollection,System.Boolean)
+  id: BindByName(System.Uri,System.Collections.Specialized.NameValueCollection,System.Boolean)
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: BindByName(Uri,NameValueCollection,Boolean)
+  nameWithType: UriTemplate.BindByName(Uri,NameValueCollection,Boolean)
+  fullName: System.UriTemplate.BindByName(Uri,NameValueCollection,Boolean)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Creates a new URI from the template and the collection of parameters.
+  syntax:
+    content: public Uri BindByName (Uri baseAddress, System.Collections.Specialized.NameValueCollection parameters, bool omitDefaults);
+    parameters:
+    - id: baseAddress
+      type: System.Uri
+      description: The base address.
+    - id: parameters
+      type: System.Collections.Specialized.NameValueCollection
+      description: A collection of parameter name/value pairs.
+    - id: omitDefaults
+      type: System.Boolean
+      description: '`true` if the default values are ignored; otherwise `false`.'
+    return:
+      type: System.Uri
+      description: A URI.
+  overload: System.UriTemplate.BindByName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.BindByPosition(System.Uri,System.String[])
+  id: BindByPosition(System.Uri,System.String[])
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: BindByPosition(Uri,String[])
+  nameWithType: UriTemplate.BindByPosition(Uri,String[])
+  fullName: System.UriTemplate.BindByPosition(Uri,String[])
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Creates a new URI from the template and an array of parameter values.
+  remarks: "The parameter values are bound by position left to right. The first parameter value replaces the first variable found in the template, the second parameter value replaces the second variable, and so on. Variables passed to this method are escaped.  \n  \n> [!NOTE]\n>  The number of parameters passed in the values parameter must match the number of variables in the template. If not, a <xref:System.FormatException> is thrown.  \n  \n> [!NOTE]\n>  It is possible to pass in text within the parameter values array that prevents the generated URI from matching the template that is used to generate it. Examples of such text includes: '/', '.','..', '*', '{', and '}'. The following code demonstrates this.  \n  \n `UriTemplate template = new UriTemplate(\"far/{bat}/baz\");`  \n  \n `Uri uri = new Uri(\"http://localhost/Base\");`  \n  \n `Uri result = template.BindByPosition(uri, \".\");   // returns Base/form/baz`  \n  \n `Uri result = template.BindByPosition(uri, \"..\");  // returns Base/baz`  \n  \n `Uri result = template.BindByPosition(uri, \"x/y\");  // returns Base/form/x/y/baz`  \n  \n `Uri result = template.BindByPosition(uri, \"{x}\");  // returns Base/form/{x}/baz`  \n  \n `Uri result = template.BindByPosition(uri, \"*\");  // returns Base/form/*/baz`"
+  example:
+  - "The following example shows how to call the BindByPosition.  \n  \n [!code-cs[UriTemplate#5](~/add/codesnippet/csharp/m-system.uritemplate.bin_1.cs)]\n [!code-vb[UriTemplate#5](~/add/codesnippet/visualbasic/m-system.uritemplate.bin_1.vb)]"
+  syntax:
+    content: public Uri BindByPosition (Uri baseAddress, string[] values);
+    parameters:
+    - id: baseAddress
+      type: System.Uri
+      description: A <xref href="System.Uri"></xref> that contains the base address.
+    - id: values
+      type: System.String[]
+      description: The parameter values.
+    return:
+      type: System.Uri
+      description: A new <xref href="System.Uri"></xref> instance.
+  overload: System.UriTemplate.BindByPosition*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.Defaults
+  id: Defaults
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: Defaults
+  nameWithType: UriTemplate.Defaults
+  fullName: System.UriTemplate.Defaults
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Gets a collection of name/value pairs for any default parameter values.
+  syntax:
+    content: public System.Collections.Generic.IDictionary<string,string> Defaults { get; }
+    return:
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: A generic dictionary.
+  overload: System.UriTemplate.Defaults*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.IgnoreTrailingSlash
+  id: IgnoreTrailingSlash
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: IgnoreTrailingSlash
+  nameWithType: UriTemplate.IgnoreTrailingSlash
+  fullName: System.UriTemplate.IgnoreTrailingSlash
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Specifies whether trailing slashes “/” in the template should be ignored when matching candidate URIs.
+  syntax:
+    content: public bool IgnoreTrailingSlash { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if trailing slashes “/” should be ignored, otherwise `false`.'
+  overload: System.UriTemplate.IgnoreTrailingSlash*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.IsEquivalentTo(System.UriTemplate)
+  id: IsEquivalentTo(System.UriTemplate)
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: IsEquivalentTo(UriTemplate)
+  nameWithType: UriTemplate.IsEquivalentTo(UriTemplate)
+  fullName: System.UriTemplate.IsEquivalentTo(UriTemplate)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Indicates whether a <xref href="System.UriTemplate"></xref> is structurally equivalent to another.
+  remarks: Two <xref:System.UriTemplate> instances are equivalent if their literal strings are identical and the variables appear in the same segments. For example "weather/{state}/{city}" is equivalent to "weather/{country}/{village}".
+  example:
+  - "The following example shows how to call the IsEquivalentTo.  \n  \n [!code-cs[UriTemplate#6](~/add/codesnippet/csharp/m-system.uritemplate.ise_1.cs)]\n [!code-vb[UriTemplate#6](~/add/codesnippet/visualbasic/m-system.uritemplate.ise_1.vb)]"
+  syntax:
+    content: public bool IsEquivalentTo (UriTemplate other);
+    parameters:
+    - id: other
+      type: System.UriTemplate
+      description: The <xref href="System.UriTemplate"></xref> to compare.
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="System.UriTemplate"></xref> is structurally equivalent to another; otherwise `false`.'
+  overload: System.UriTemplate.IsEquivalentTo*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.Match(System.Uri,System.Uri)
+  id: Match(System.Uri,System.Uri)
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: Match(Uri,Uri)
+  nameWithType: UriTemplate.Match(Uri,Uri)
+  fullName: System.UriTemplate.Match(Uri,Uri)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Attempts to match a <xref href="stem.URI"></xref> to a <xref href="System.UriTemplate"></xref>.
+  remarks: If the match is successful the <xref:System.UriTemplateMatch> is populated with the URI segments, variable values, query string values, and wildcard segments from the candidate URI. If the match is unsuccessful, `null` is returned.
+  example:
+  - "The following example shows how to call the Match method.  \n  \n [!code-cs[UriTemplate#7](~/add/codesnippet/csharp/m-system.uritemplate.mat_1.cs)]\n [!code-vb[UriTemplate#7](~/add/codesnippet/visualbasic/m-system.uritemplate.mat_1.vb)]"
+  syntax:
+    content: public UriTemplateMatch Match (Uri baseAddress, Uri candidate);
+    parameters:
+    - id: baseAddress
+      type: System.Uri
+      description: The base address.
+    - id: candidate
+      type: System.Uri
+      description: The <xref href="System.Uri"></xref> to match against the template.
+    return:
+      type: System.UriTemplateMatch
+      description: An instance.
+  overload: System.UriTemplate.Match*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.PathSegmentVariableNames
+  id: PathSegmentVariableNames
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: PathSegmentVariableNames
+  nameWithType: UriTemplate.PathSegmentVariableNames
+  fullName: System.UriTemplate.PathSegmentVariableNames
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Gets a collection of variable names used within path segments in the template.
+  remarks: The collection excludes the names of variables that appear in the query portion of the template.
+  example:
+  - "The following example shows how to access the PathSegmentVariableNames property.  \n  \n [!code-cs[UriTemplate#2](~/add/codesnippet/csharp/p-system.uritemplate.pat_1.cs)]\n [!code-vb[UriTemplate#2](~/add/codesnippet/visualbasic/p-system.uritemplate.pat_1.vb)]"
+  syntax:
+    content: public System.Collections.ObjectModel.ReadOnlyCollection<string> PathSegmentVariableNames { get; }
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{System.String}
+      description: A collection of variable names that appear within the template's path segment.
+  overload: System.UriTemplate.PathSegmentVariableNames*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.QueryValueVariableNames
+  id: QueryValueVariableNames
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: QueryValueVariableNames
+  nameWithType: UriTemplate.QueryValueVariableNames
+  fullName: System.UriTemplate.QueryValueVariableNames
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Gets a collection of variable names used within the query string in the template.
+  remarks: This collection excludes variable names that appear in the path section of the template string.
+  example:
+  - "The following example shows how to access the QueryValueVariableNames property.  \n  \n [!code-cs[UriTemplate#3](~/add/codesnippet/csharp/p-system.uritemplate.que_1.cs)]\n [!code-vb[UriTemplate#3](~/add/codesnippet/visualbasic/p-system.uritemplate.que_1.vb)]"
+  syntax:
+    content: public System.Collections.ObjectModel.ReadOnlyCollection<string> QueryValueVariableNames { get; }
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{System.String}
+      description: A collection of template variable names that appear in the query portion of the template string.
+  overload: System.UriTemplate.QueryValueVariableNames*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplate.ToString
+  id: ToString
+  parent: System.UriTemplate
+  langs:
+  - csharp
+  name: ToString()
+  nameWithType: UriTemplate.ToString()
+  fullName: System.UriTemplate.ToString()
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Returns a string representation of the <xref href="System.UriTemplate"></xref> instance.
+  remarks: ''
+  example:
+  - "The following example shows how to call the ToString method.  \n  \n [!code-cs[UriTemplate#8](~/add/codesnippet/csharp/m-system.uritemplate.tos_1.cs)]\n [!code-vb[UriTemplate#8](~/add/codesnippet/visualbasic/m-system.uritemplate.tos_1.vb)]"
+  syntax:
+    content: public override string ToString ();
+    parameters: []
+    return:
+      type: System.String
+      description: The representation of the <xref href="System.UriTemplate"></xref> instance.
+  overload: System.UriTemplate.ToString*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplate.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplate.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.UriTemplate.#ctor(System.String)
+  parent: System.UriTemplate
+  isExternal: false
+  name: UriTemplate(String)
+  nameWithType: UriTemplate.UriTemplate(String)
+  fullName: System.UriTemplate.UriTemplate(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.UriTemplate.#ctor(System.String,System.Boolean)
+  parent: System.UriTemplate
+  isExternal: false
+  name: UriTemplate(String,Boolean)
+  nameWithType: UriTemplate.UriTemplate(String,Boolean)
+  fullName: System.UriTemplate.UriTemplate(String,Boolean)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.UriTemplate.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String})
+  parent: System.UriTemplate
+  isExternal: false
+  name: UriTemplate(String,IDictionary<String,String>)
+  nameWithType: UriTemplate.UriTemplate(String,IDictionary<String,String>)
+  fullName: System.UriTemplate.UriTemplate(String,IDictionary<String,String>)
+- uid: System.Collections.Generic.IDictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IDictionary<String,String>
+  nameWithType: IDictionary<String,String>
+  fullName: System.Collections.Generic.IDictionary<System.String,System.String>
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: IDictionary<System.String,System.String>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.UriTemplate.#ctor(System.String,System.Boolean,System.Collections.Generic.IDictionary{System.String,System.String})
+  parent: System.UriTemplate
+  isExternal: false
+  name: UriTemplate(String,Boolean,IDictionary<String,String>)
+  nameWithType: UriTemplate.UriTemplate(String,Boolean,IDictionary<String,String>)
+  fullName: System.UriTemplate.UriTemplate(String,Boolean,IDictionary<String,String>)
+- uid: System.UriTemplate.BindByName(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  parent: System.UriTemplate
+  isExternal: false
+  name: BindByName(Uri,IDictionary<String,String>)
+  nameWithType: UriTemplate.BindByName(Uri,IDictionary<String,String>)
+  fullName: System.UriTemplate.BindByName(Uri,IDictionary<String,String>)
+- uid: System.Uri
+  parent: System
+  isExternal: false
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: System.UriTemplate.BindByName(System.Uri,System.Collections.Specialized.NameValueCollection)
+  parent: System.UriTemplate
+  isExternal: false
+  name: BindByName(Uri,NameValueCollection)
+  nameWithType: UriTemplate.BindByName(Uri,NameValueCollection)
+  fullName: System.UriTemplate.BindByName(Uri,NameValueCollection)
+- uid: System.Collections.Specialized.NameValueCollection
+  parent: System.Collections.Specialized
+  isExternal: false
+  name: NameValueCollection
+  nameWithType: NameValueCollection
+  fullName: System.Collections.Specialized.NameValueCollection
+- uid: System.UriTemplate.BindByName(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean)
+  parent: System.UriTemplate
+  isExternal: false
+  name: BindByName(Uri,IDictionary<String,String>,Boolean)
+  nameWithType: UriTemplate.BindByName(Uri,IDictionary<String,String>,Boolean)
+  fullName: System.UriTemplate.BindByName(Uri,IDictionary<String,String>,Boolean)
+- uid: System.UriTemplate.BindByName(System.Uri,System.Collections.Specialized.NameValueCollection,System.Boolean)
+  parent: System.UriTemplate
+  isExternal: false
+  name: BindByName(Uri,NameValueCollection,Boolean)
+  nameWithType: UriTemplate.BindByName(Uri,NameValueCollection,Boolean)
+  fullName: System.UriTemplate.BindByName(Uri,NameValueCollection,Boolean)
+- uid: System.UriTemplate.BindByPosition(System.Uri,System.String[])
+  parent: System.UriTemplate
+  isExternal: false
+  name: BindByPosition(Uri,String[])
+  nameWithType: UriTemplate.BindByPosition(Uri,String[])
+  fullName: System.UriTemplate.BindByPosition(Uri,String[])
+- uid: System.String[]
+  parent: System
+  isExternal: false
+  name: String[]
+  nameWithType: String[]
+  fullName: System.String[]
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.UriTemplate.Defaults
+  parent: System.UriTemplate
+  isExternal: false
+  name: Defaults
+  nameWithType: UriTemplate.Defaults
+  fullName: System.UriTemplate.Defaults
+- uid: System.UriTemplate.IgnoreTrailingSlash
+  parent: System.UriTemplate
+  isExternal: false
+  name: IgnoreTrailingSlash
+  nameWithType: UriTemplate.IgnoreTrailingSlash
+  fullName: System.UriTemplate.IgnoreTrailingSlash
+- uid: System.UriTemplate.IsEquivalentTo(System.UriTemplate)
+  parent: System.UriTemplate
+  isExternal: false
+  name: IsEquivalentTo(UriTemplate)
+  nameWithType: UriTemplate.IsEquivalentTo(UriTemplate)
+  fullName: System.UriTemplate.IsEquivalentTo(UriTemplate)
+- uid: System.UriTemplate
+  parent: System
+  isExternal: false
+  name: UriTemplate
+  nameWithType: UriTemplate
+  fullName: System.UriTemplate
+- uid: System.UriTemplate.Match(System.Uri,System.Uri)
+  parent: System.UriTemplate
+  isExternal: false
+  name: Match(Uri,Uri)
+  nameWithType: UriTemplate.Match(Uri,Uri)
+  fullName: System.UriTemplate.Match(Uri,Uri)
+- uid: System.UriTemplateMatch
+  parent: System
+  isExternal: false
+  name: UriTemplateMatch
+  nameWithType: UriTemplateMatch
+  fullName: System.UriTemplateMatch
+- uid: System.UriTemplate.PathSegmentVariableNames
+  parent: System.UriTemplate
+  isExternal: false
+  name: PathSegmentVariableNames
+  nameWithType: UriTemplate.PathSegmentVariableNames
+  fullName: System.UriTemplate.PathSegmentVariableNames
+- uid: System.Collections.ObjectModel.ReadOnlyCollection{System.String}
+  parent: System.Collections.ObjectModel
+  isExternal: false
+  name: ReadOnlyCollection<String>
+  nameWithType: ReadOnlyCollection<String>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<System.String>
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: ReadOnlyCollection<System.String>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.UriTemplate.QueryValueVariableNames
+  parent: System.UriTemplate
+  isExternal: false
+  name: QueryValueVariableNames
+  nameWithType: UriTemplate.QueryValueVariableNames
+  fullName: System.UriTemplate.QueryValueVariableNames
+- uid: System.UriTemplate.ToString
+  parent: System.UriTemplate
+  isExternal: false
+  name: ToString()
+  nameWithType: UriTemplate.ToString()
+  fullName: System.UriTemplate.ToString()
+- uid: System.UriTemplate.#ctor*
+  parent: System.UriTemplate
+  isExternal: false
+  name: UriTemplate
+  nameWithType: UriTemplate.UriTemplate
+- uid: System.UriTemplate.BindByName*
+  parent: System.UriTemplate
+  isExternal: false
+  name: BindByName
+  nameWithType: UriTemplate.BindByName
+- uid: System.UriTemplate.BindByPosition*
+  parent: System.UriTemplate
+  isExternal: false
+  name: BindByPosition
+  nameWithType: UriTemplate.BindByPosition
+- uid: System.UriTemplate.Defaults*
+  parent: System.UriTemplate
+  isExternal: false
+  name: Defaults
+  nameWithType: UriTemplate.Defaults
+- uid: System.UriTemplate.IgnoreTrailingSlash*
+  parent: System.UriTemplate
+  isExternal: false
+  name: IgnoreTrailingSlash
+  nameWithType: UriTemplate.IgnoreTrailingSlash
+- uid: System.UriTemplate.IsEquivalentTo*
+  parent: System.UriTemplate
+  isExternal: false
+  name: IsEquivalentTo
+  nameWithType: UriTemplate.IsEquivalentTo
+- uid: System.UriTemplate.Match*
+  parent: System.UriTemplate
+  isExternal: false
+  name: Match
+  nameWithType: UriTemplate.Match
+- uid: System.UriTemplate.PathSegmentVariableNames*
+  parent: System.UriTemplate
+  isExternal: false
+  name: PathSegmentVariableNames
+  nameWithType: UriTemplate.PathSegmentVariableNames
+- uid: System.UriTemplate.QueryValueVariableNames*
+  parent: System.UriTemplate
+  isExternal: false
+  name: QueryValueVariableNames
+  nameWithType: UriTemplate.QueryValueVariableNames
+- uid: System.UriTemplate.ToString*
+  parent: System.UriTemplate
+  isExternal: false
+  name: ToString
+  nameWithType: UriTemplate.ToString

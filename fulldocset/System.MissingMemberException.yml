@@ -1,0 +1,554 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.MissingMemberException
+  id: MissingMemberException
+  children:
+  - System.MissingMemberException.#ctor
+  - System.MissingMemberException.#ctor(System.String)
+  - System.MissingMemberException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.MissingMemberException.#ctor(System.String,System.Exception)
+  - System.MissingMemberException.#ctor(System.String,System.String)
+  - System.MissingMemberException.ClassName
+  - System.MissingMemberException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.MissingMemberException.MemberName
+  - System.MissingMemberException.Message
+  - System.MissingMemberException.Signature
+  langs:
+  - csharp
+  name: MissingMemberException
+  nameWithType: MissingMemberException
+  fullName: System.MissingMemberException
+  type: Class
+  summary: The exception that is thrown when there is an attempt to dynamically access a class member that does not exist or that is not declared as public. If a member in a class library has been removed or renamed, recompile any assemblies that reference that library.
+  remarks: "Normally a compilation error is generated if the code attempts to access a nonexistent member of a class. MissingMemberException is designed to handle cases where a field or a method is deleted or renamed in one assembly and the change is not reflected in a second assembly. At runtime, MissingMemberException will be thrown when the code in the second assembly attempts to access the missing member in the first assembly.  \n  \n MissingMemberException is the base class for <xref:System.MissingFieldException> and <xref:System.MissingMethodException>. In general it is better to use one of the derived classes of MissingMemberException to more precisely indicate the exact nature of the error. Throw a MissingMemberException if you are only interested in capturing the general case of a missing member error.  \n  \n MissingMemberException uses the HRESULT COR_E_MISSINGMEMBER, that has the value 0x80131512.  \n  \n For a list of initial property values for an instance of MissingMemberException, see the <xref:System.MissingMemberException.%23ctor%2A> constructors."
+  example:
+  - "This example shows what happens if you attempt to use reflection to call a method that does not exist and access a field that does not exist. The application recovers by catching the <xref:System.MissingMethodException>, <xref:System.MissingFieldException>, and MissingMemberException.  \n  \n [!code-vb[MissingMethodException#1](~/add/codesnippet/visualbasic/t-system.missingmemberex_1.vb)]\n [!code-cpp[MissingMethodException#1](~/add/codesnippet/cpp/t-system.missingmemberex_1.cpp)]\n [!code-cs[MissingMethodException#1](~/add/codesnippet/csharp/t-system.missingmemberex_1.cs)]"
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public class MissingMemberException : MemberAccessException
+  inheritance:
+  - System.Object
+  - System.Exception
+  - System.SystemException
+  - System.MemberAccessException
+  implements: []
+  inheritedMembers:
+  - System.Exception.Data
+  - System.Exception.GetBaseException
+  - System.Exception.GetType
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.SerializeObjectState
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\MissingMemberException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/MissingMemberException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.MissingMemberException.#ctor
+  id: '#ctor'
+  parent: System.MissingMemberException
+  langs:
+  - csharp
+  name: MissingMemberException()
+  nameWithType: MissingMemberException.MissingMemberException()
+  fullName: System.MissingMemberException.MissingMemberException()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.MissingMemberException"></xref> class.
+  remarks: "This constructor initializes the <xref:System.MissingMemberException.Message%2A> property of the new instance to a system-supplied message that describes the error, such as \"Attempted to access a missing member.\" This message takes into account the current system culture.  \n  \n The following table shows the initial property values for an instance of <xref:System.MissingMemberException>.  \n  \n|Property|Value|  \n|--------------|-----------|  \n|<xref:System.Exception.InnerException%2A>|A null reference (`Nothing` in Visual Basic).|  \n|<xref:System.MissingMemberException.Message%2A>|The localized error message string.|"
+  syntax:
+    content: public MissingMemberException ();
+    parameters: []
+  overload: System.MissingMemberException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\MissingMemberException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/MissingMemberException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.MissingMemberException.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.MissingMemberException
+  langs:
+  - csharp
+  name: MissingMemberException(String)
+  nameWithType: MissingMemberException.MissingMemberException(String)
+  fullName: System.MissingMemberException.MissingMemberException(String)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.MissingMemberException"></xref> class with a specified error message.
+  remarks: "The content of the `message` parameter should be understandable by the user. The caller of this constructor is required to ensure that this string has been localized for the current system culture.  \n  \n The following table shows the initial property values for an instance of <xref:System.MissingMemberException>.  \n  \n|Property|Value|  \n|--------------|-----------|  \n|<xref:System.Exception.InnerException%2A>|A null reference (`Nothing` in Visual Basic).|  \n|<xref:System.MissingMemberException.Message%2A>|The error message string.|"
+  syntax:
+    content: public MissingMemberException (string message);
+    parameters:
+    - id: message
+      type: System.String
+      description: The message that describes the error.
+  overload: System.MissingMemberException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\MissingMemberException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/MissingMemberException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.MissingMemberException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: '#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)'
+  parent: System.MissingMemberException
+  langs:
+  - csharp
+  name: MissingMemberException(SerializationInfo,StreamingContext)
+  nameWithType: MissingMemberException.MissingMemberException(SerializationInfo,StreamingContext)
+  fullName: System.MissingMemberException.MissingMemberException(SerializationInfo,StreamingContext)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.MissingMemberException"></xref> class with serialized data.
+  remarks: This constructor is called during deserialization to reconstitute the exception object transmitted over a stream. For more information, see [XML and SOAP Serialization](../Topic/XML%20and%20SOAP%20Serialization.md).
+  syntax:
+    content: protected MissingMemberException (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+    parameters:
+    - id: info
+      type: System.Runtime.Serialization.SerializationInfo
+      description: The object that holds the serialized object data.
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+      description: The contextual information about the source or destination.
+  overload: System.MissingMemberException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\MissingMemberException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/MissingMemberException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.MissingMemberException.#ctor(System.String,System.Exception)
+  id: '#ctor(System.String,System.Exception)'
+  parent: System.MissingMemberException
+  langs:
+  - csharp
+  name: MissingMemberException(String,Exception)
+  nameWithType: MissingMemberException.MissingMemberException(String,Exception)
+  fullName: System.MissingMemberException.MissingMemberException(String,Exception)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.MissingMemberException"></xref> class with a specified error message and a reference to the inner exception that is the root cause of this exception.
+  remarks: "An exception that is thrown as a direct result of a previous exception can include a reference to the previous exception in the <xref:System.Exception.InnerException%2A> property. The <xref:System.Exception.InnerException%2A> property returns the same value that is passed into the constructor, or a null reference (`Nothing` in Visual Basic) if the <xref:System.Exception.InnerException%2A> property does not supply the inner exception value to the constructor.  \n  \n The following table shows the initial property values for an instance of <xref:System.MissingMemberException>.  \n  \n|Property|Value|  \n|--------------|-----------|  \n|<xref:System.Exception.InnerException%2A>|The inner exception reference.|  \n|<xref:System.MissingMemberException.Message%2A>|The error message string.|"
+  syntax:
+    content: public MissingMemberException (string message, Exception inner);
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message that explains the reason for the exception.
+    - id: inner
+      type: System.Exception
+      description: An instance of <xref href="System.Exception"></xref> that is the cause of the current `Exception`. If <code>inner</code> is not a null reference (`Nothing` in Visual Basic), then the current `Exception` is raised in a catch block handling <code>inner</code>.
+  overload: System.MissingMemberException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\MissingMemberException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/MissingMemberException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.MissingMemberException.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: System.MissingMemberException
+  langs:
+  - csharp
+  name: MissingMemberException(String,String)
+  nameWithType: MissingMemberException.MissingMemberException(String,String)
+  fullName: System.MissingMemberException.MissingMemberException(String,String)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.MissingMemberException"></xref> class with the specified class name and member name.
+  syntax:
+    content: public MissingMemberException (string className, string memberName);
+    parameters:
+    - id: className
+      type: System.String
+      description: The name of the class in which access to a nonexistent member was attempted.
+    - id: memberName
+      type: System.String
+      description: The name of the member that cannot be accessed.
+  overload: System.MissingMemberException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\MissingMemberException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/MissingMemberException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.MissingMemberException.ClassName
+  id: ClassName
+  parent: System.MissingMemberException
+  langs:
+  - csharp
+  name: ClassName
+  nameWithType: MissingMemberException.ClassName
+  fullName: System.MissingMemberException.ClassName
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Holds the class name of the missing member.
+  syntax:
+    content: protected string ClassName;
+    return:
+      type: System.String
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\MissingMemberException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/MissingMemberException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.MissingMemberException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.MissingMemberException
+  langs:
+  - csharp
+  name: GetObjectData(SerializationInfo,StreamingContext)
+  nameWithType: MissingMemberException.GetObjectData(SerializationInfo,StreamingContext)
+  fullName: System.MissingMemberException.GetObjectData(SerializationInfo,StreamingContext)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Sets the <xref href="System.Runtime.Serialization.SerializationInfo"></xref> object with the class name, the member name, the signature of the missing member, and additional exception information.
+  remarks: "<xref:System.TypeLoadException.GetObjectData%2A> sets a <xref:System.Runtime.Serialization.SerializationInfo> with all the exception object data targeted for serialization. During deserialization, the exception object is reconstituted from the <xref:System.Runtime.Serialization.SerializationInfo> transmitted over the stream.  \n  \n For more information, see <xref:System.Runtime.Serialization.SerializationInfo>."
+  syntax:
+    content: public override void GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+    parameters:
+    - id: info
+      type: System.Runtime.Serialization.SerializationInfo
+      description: The object that holds the serialized object data.
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+      description: The contextual information about the source or destination.
+  overload: System.MissingMemberException.GetObjectData*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>info</code> object is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\MissingMemberException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/MissingMemberException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.MissingMemberException.MemberName
+  id: MemberName
+  parent: System.MissingMemberException
+  langs:
+  - csharp
+  name: MemberName
+  nameWithType: MissingMemberException.MemberName
+  fullName: System.MissingMemberException.MemberName
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Holds the name of the missing member.
+  syntax:
+    content: protected string MemberName;
+    return:
+      type: System.String
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\MissingMemberException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/MissingMemberException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.MissingMemberException.Message
+  id: Message
+  parent: System.MissingMemberException
+  langs:
+  - csharp
+  name: Message
+  nameWithType: MissingMemberException.Message
+  fullName: System.MissingMemberException.Message
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets the text string showing the class name, the member name, and the signature of the missing member.
+  remarks: "If the class name is not specified when the object is constructed, the default text string inherited from the base class is returned.  \n  \n This property overrides <xref:System.Exception.Message%2A>. The error message should be localized.  \n  \n This property is read-only."
+  example:
+  - "The following example demonstrates the Message property. This code example is part of a larger example provided for the <xref:System.MissingMemberException> class.  \n  \n [!code-vb[MissingMethodException#4](~/add/codesnippet/visualbasic/p-system.missingmemberex_1.vb)]\n [!code-cpp[MissingMethodException#4](~/add/codesnippet/cpp/p-system.missingmemberex_1.cpp)]\n [!code-cs[MissingMethodException#4](~/add/codesnippet/csharp/p-system.missingmemberex_1.cs)]"
+  syntax:
+    content: public override string Message { get; }
+    return:
+      type: System.String
+      description: The error message string.
+  overload: System.MissingMemberException.Message*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\MissingMemberException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/MissingMemberException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.MissingMemberException.Signature
+  id: Signature
+  parent: System.MissingMemberException
+  langs:
+  - csharp
+  name: Signature
+  nameWithType: MissingMemberException.Signature
+  fullName: System.MissingMemberException.Signature
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Holds the signature of the missing member.
+  remarks: "Signature contains a <xref:System.Byte> value that represents the signature of the missing member.  \n  \n <xref:System.String.Format%2A> is used to format the signature. For additional information, see <xref:System.Reflection.Emit.SignatureHelper>, <xref:System.Reflection.Emit.SignatureToken>, and <xref:System.String>."
+  syntax:
+    content: protected byte[] Signature;
+    return:
+      type: System.Byte[]
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\MissingMemberException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/MissingMemberException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.MemberAccessException
+  isExternal: false
+  name: System.MemberAccessException
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.MissingMemberException.#ctor
+  parent: System.MissingMemberException
+  isExternal: false
+  name: MissingMemberException()
+  nameWithType: MissingMemberException.MissingMemberException()
+  fullName: System.MissingMemberException.MissingMemberException()
+- uid: System.MissingMemberException.#ctor(System.String)
+  parent: System.MissingMemberException
+  isExternal: false
+  name: MissingMemberException(String)
+  nameWithType: MissingMemberException.MissingMemberException(String)
+  fullName: System.MissingMemberException.MissingMemberException(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.MissingMemberException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.MissingMemberException
+  isExternal: false
+  name: MissingMemberException(SerializationInfo,StreamingContext)
+  nameWithType: MissingMemberException.MissingMemberException(SerializationInfo,StreamingContext)
+  fullName: System.MissingMemberException.MissingMemberException(SerializationInfo,StreamingContext)
+- uid: System.Runtime.Serialization.SerializationInfo
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: SerializationInfo
+  nameWithType: SerializationInfo
+  fullName: System.Runtime.Serialization.SerializationInfo
+- uid: System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext
+- uid: System.MissingMemberException.#ctor(System.String,System.Exception)
+  parent: System.MissingMemberException
+  isExternal: false
+  name: MissingMemberException(String,Exception)
+  nameWithType: MissingMemberException.MissingMemberException(String,Exception)
+  fullName: System.MissingMemberException.MissingMemberException(String,Exception)
+- uid: System.Exception
+  parent: System
+  isExternal: false
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System.MissingMemberException.#ctor(System.String,System.String)
+  parent: System.MissingMemberException
+  isExternal: false
+  name: MissingMemberException(String,String)
+  nameWithType: MissingMemberException.MissingMemberException(String,String)
+  fullName: System.MissingMemberException.MissingMemberException(String,String)
+- uid: System.MissingMemberException.ClassName
+  parent: System.MissingMemberException
+  isExternal: false
+  name: ClassName
+  nameWithType: MissingMemberException.ClassName
+  fullName: System.MissingMemberException.ClassName
+- uid: System.MissingMemberException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.MissingMemberException
+  isExternal: false
+  name: GetObjectData(SerializationInfo,StreamingContext)
+  nameWithType: MissingMemberException.GetObjectData(SerializationInfo,StreamingContext)
+  fullName: System.MissingMemberException.GetObjectData(SerializationInfo,StreamingContext)
+- uid: System.MissingMemberException.MemberName
+  parent: System.MissingMemberException
+  isExternal: false
+  name: MemberName
+  nameWithType: MissingMemberException.MemberName
+  fullName: System.MissingMemberException.MemberName
+- uid: System.MissingMemberException.Message
+  parent: System.MissingMemberException
+  isExternal: false
+  name: Message
+  nameWithType: MissingMemberException.Message
+  fullName: System.MissingMemberException.Message
+- uid: System.MissingMemberException.Signature
+  parent: System.MissingMemberException
+  isExternal: false
+  name: Signature
+  nameWithType: MissingMemberException.Signature
+  fullName: System.MissingMemberException.Signature
+- uid: System.Byte[]
+  parent: System
+  isExternal: false
+  name: Byte[]
+  nameWithType: Byte[]
+  fullName: System.Byte[]
+  spec.csharp:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: Byte[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.MissingMemberException.#ctor*
+  parent: System.MissingMemberException
+  isExternal: false
+  name: MissingMemberException
+  nameWithType: MissingMemberException.MissingMemberException
+- uid: System.MissingMemberException.GetObjectData*
+  parent: System.MissingMemberException
+  isExternal: false
+  name: GetObjectData
+  nameWithType: MissingMemberException.GetObjectData
+- uid: System.MissingMemberException.Message*
+  parent: System.MissingMemberException
+  isExternal: false
+  name: Message
+  nameWithType: MissingMemberException.Message

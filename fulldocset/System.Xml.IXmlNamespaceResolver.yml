@@ -1,0 +1,223 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.IXmlNamespaceResolver
+  id: IXmlNamespaceResolver
+  children:
+  - System.Xml.IXmlNamespaceResolver.GetNamespacesInScope(System.Xml.XmlNamespaceScope)
+  - System.Xml.IXmlNamespaceResolver.LookupNamespace(System.String)
+  - System.Xml.IXmlNamespaceResolver.LookupPrefix(System.String)
+  langs:
+  - csharp
+  name: IXmlNamespaceResolver
+  nameWithType: IXmlNamespaceResolver
+  fullName: System.Xml.IXmlNamespaceResolver
+  type: Interface
+  summary: Provides read-only access to a set of prefix and namespace mappings.
+  syntax:
+    content: public interface IXmlNamespaceResolver
+  implements: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\IXmlNamespaceResolver.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/IXmlNamespaceResolver.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.IXmlNamespaceResolver.GetNamespacesInScope(System.Xml.XmlNamespaceScope)
+  id: GetNamespacesInScope(System.Xml.XmlNamespaceScope)
+  parent: System.Xml.IXmlNamespaceResolver
+  langs:
+  - csharp
+  name: GetNamespacesInScope(XmlNamespaceScope)
+  nameWithType: IXmlNamespaceResolver.GetNamespacesInScope(XmlNamespaceScope)
+  fullName: System.Xml.IXmlNamespaceResolver.GetNamespacesInScope(XmlNamespaceScope)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Gets a collection of defined prefix-namespace mappings that are currently in scope.
+  remarks: "The collection is keyed by prefix and can be used to enumerate the namespaces currently in scope. The collection is a disconnected copy of the current namespace list.  \n  \n The following table lists the <xref:System.Xml.XmlNamespaceScope> values and how it affects the whether or not the default and built-in namespaces are returned by the GetNamespacesInScope method.  \n  \n|XmlNamespaceScope value|xmlns:xml|xmlns:xmlns|xmlns=\"\"|  \n|-----------------------------|---------------|-----------------|---------------|  \n|<xref:System.Xml.XmlNamespaceScope>|yes|no|no|  \n|<xref:System.Xml.XmlNamespaceScope>|no|no|no|  \n|<xref:System.Xml.XmlNamespaceScope>|no|no|yes|"
+  syntax:
+    content: public System.Collections.Generic.IDictionary<string,string> GetNamespacesInScope (System.Xml.XmlNamespaceScope scope);
+    parameters:
+    - id: scope
+      type: System.Xml.XmlNamespaceScope
+      description: An <xref href="System.Xml.XmlNamespaceScope"></xref> value that specifies the type of namespace nodes to return.
+    return:
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: An <xref href="System.Collections.IDictionary"></xref> that contains the current in-scope namespaces.
+  overload: System.Xml.IXmlNamespaceResolver.GetNamespacesInScope*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\IXmlNamespaceResolver.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/IXmlNamespaceResolver.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.IXmlNamespaceResolver.LookupNamespace(System.String)
+  id: LookupNamespace(System.String)
+  parent: System.Xml.IXmlNamespaceResolver
+  langs:
+  - csharp
+  name: LookupNamespace(String)
+  nameWithType: IXmlNamespaceResolver.LookupNamespace(String)
+  fullName: System.Xml.IXmlNamespaceResolver.LookupNamespace(String)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Gets the namespace URI mapped to the specified prefix.
+  remarks: "> [!NOTE]\n>  Namespace URI-to-prefix mappings can change from node to node in an XML document. You cannot depend on the result of a lookup being consistent from one node to the next.  \n  \n The following table describes how the default and built-in namespaces are handled by the LookupNamespace method.  \n  \n|Prefix|Return Value|  \n|------------|------------------|  \n|xml|http://www.w3.org/XML/1998/namespace|  \n|xmlns|http://www.w3.org/2000/xmlns/|  \n|`String.Empty` (A default namespace has been assigned).|The currently assigned default namespace.|  \n|`String.Empty` (The default namespace has not been explicitly assigned).|`String.Empty` (The blank prefix is associated with elements that are not in any namespace).|"
+  syntax:
+    content: public string LookupNamespace (string prefix);
+    parameters:
+    - id: prefix
+      type: System.String
+      description: The prefix whose namespace URI you wish to find.
+    return:
+      type: System.String
+      description: The namespace URI that is mapped to the prefix; `null` if the prefix is not mapped to a namespace URI.
+  overload: System.Xml.IXmlNamespaceResolver.LookupNamespace*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\IXmlNamespaceResolver.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/IXmlNamespaceResolver.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.IXmlNamespaceResolver.LookupPrefix(System.String)
+  id: LookupPrefix(System.String)
+  parent: System.Xml.IXmlNamespaceResolver
+  langs:
+  - csharp
+  name: LookupPrefix(String)
+  nameWithType: IXmlNamespaceResolver.LookupPrefix(String)
+  fullName: System.Xml.IXmlNamespaceResolver.LookupPrefix(String)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Gets the prefix that is mapped to the specified namespace URI.
+  remarks: "It is possible for a namespace URI to be mapped to multiple prefixes. Because the prefixes are not mapped in a predictable manner, you should not depend on getting back a particular prefix when a namespace URI is mapped to more than one prefix.  \n  \n> [!NOTE]\n>  Namespace URI to prefix mappings can change from node to node in an XML document. You cannot depend on the result of a lookup being consistent from one node to the next.  \n  \n The following table describes how the default and built-in namespaces are handled by the LookupPrefix method.  \n  \n|Namespace|Return value|  \n|---------------|------------------|  \n|http://www.w3.org/XML/1998/namespace|xml|  \n|http://www.w3.org/2000/xmlns/|xmlns|  \n|An empty namespace.|A default namespace that has not been defined.|"
+  syntax:
+    content: public string LookupPrefix (string namespaceName);
+    parameters:
+    - id: namespaceName
+      type: System.String
+      description: The namespace URI whose prefix you wish to find.
+    return:
+      type: System.String
+      description: The prefix that is mapped to the namespace URI; `null` if the namespace URI is not mapped to a prefix.
+  overload: System.Xml.IXmlNamespaceResolver.LookupPrefix*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\IXmlNamespaceResolver.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/IXmlNamespaceResolver.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Xml.IXmlNamespaceResolver.GetNamespacesInScope(System.Xml.XmlNamespaceScope)
+  parent: System.Xml.IXmlNamespaceResolver
+  isExternal: false
+  name: GetNamespacesInScope(XmlNamespaceScope)
+  nameWithType: IXmlNamespaceResolver.GetNamespacesInScope(XmlNamespaceScope)
+  fullName: System.Xml.IXmlNamespaceResolver.GetNamespacesInScope(XmlNamespaceScope)
+- uid: System.Collections.Generic.IDictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IDictionary<String,String>
+  nameWithType: IDictionary<String,String>
+  fullName: System.Collections.Generic.IDictionary<System.String,System.String>
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: IDictionary<System.String,System.String>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Xml.XmlNamespaceScope
+  parent: System.Xml
+  isExternal: false
+  name: XmlNamespaceScope
+  nameWithType: XmlNamespaceScope
+  fullName: System.Xml.XmlNamespaceScope
+- uid: System.Xml.IXmlNamespaceResolver.LookupNamespace(System.String)
+  parent: System.Xml.IXmlNamespaceResolver
+  isExternal: false
+  name: LookupNamespace(String)
+  nameWithType: IXmlNamespaceResolver.LookupNamespace(String)
+  fullName: System.Xml.IXmlNamespaceResolver.LookupNamespace(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Xml.IXmlNamespaceResolver.LookupPrefix(System.String)
+  parent: System.Xml.IXmlNamespaceResolver
+  isExternal: false
+  name: LookupPrefix(String)
+  nameWithType: IXmlNamespaceResolver.LookupPrefix(String)
+  fullName: System.Xml.IXmlNamespaceResolver.LookupPrefix(String)
+- uid: System.Xml.IXmlNamespaceResolver.GetNamespacesInScope*
+  parent: System.Xml.IXmlNamespaceResolver
+  isExternal: false
+  name: GetNamespacesInScope
+  nameWithType: IXmlNamespaceResolver.GetNamespacesInScope
+- uid: System.Xml.IXmlNamespaceResolver.LookupNamespace*
+  parent: System.Xml.IXmlNamespaceResolver
+  isExternal: false
+  name: LookupNamespace
+  nameWithType: IXmlNamespaceResolver.LookupNamespace
+- uid: System.Xml.IXmlNamespaceResolver.LookupPrefix*
+  parent: System.Xml.IXmlNamespaceResolver
+  isExternal: false
+  name: LookupPrefix
+  nameWithType: IXmlNamespaceResolver.LookupPrefix

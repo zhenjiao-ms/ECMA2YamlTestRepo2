@@ -1,0 +1,195 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Reflection.AssemblyKeyFileAttribute
+  id: AssemblyKeyFileAttribute
+  children:
+  - System.Reflection.AssemblyKeyFileAttribute.#ctor(System.String)
+  - System.Reflection.AssemblyKeyFileAttribute.KeyFile
+  langs:
+  - csharp
+  name: AssemblyKeyFileAttribute
+  nameWithType: AssemblyKeyFileAttribute
+  fullName: System.Reflection.AssemblyKeyFileAttribute
+  type: Class
+  summary: Specifies the name of a file containing the key pair used to generate a strong name.
+  remarks: "When building a strong-named assembly, the author must supply either this attribute or <xref:System.Reflection.AssemblyKeyNameAttribute>. If <xref:System.Reflection.AssemblyDelaySignAttribute> has also been specified, it is likely that this file will only contain the public key.  \n  \n An example of the syntax is `[assembly:AssemblyKeyFileAttribute(\"myKey.snk\")]`.  \n  \n> [!CAUTION]\n>  Since the path and file name persist, ensure that the string you use with `AssemblyKeyFileAttribute` does not contain sensitive information."
+  example:
+  - "The following code example shows the use of the <xref:System.Reflection.AssemblyDelaySignAttribute> attribute with the AssemblyKeyFileAttribute. To compile this example, you must create a strong-name key file named TestPublicKey.snk using the [Sn.exe (Strong Name Tool)](../Topic/Sn.exe%20\\(Strong%20Name%20Tool\\).md):  \n  \n```  \nsn -k TestPublicKey.snk   \n```  \n  \n Compile the example as a .dll. If you compile from the command line, use the `/t:library` option for C# or Visual Basic, or the `/LD` linker option for Visual C++.  \n  \n [!code-cpp[AssemblyDelaySignattribute#1](~/add/codesnippet/cpp/t-system.reflection.asse_5_1.cpp)]\n [!code-cs[AssemblyDelaySignattribute#1](~/add/codesnippet/csharp/t-system.reflection.asse_5_1.cs)]\n [!code-vb[AssemblyDelaySignattribute#1](~/add/codesnippet/visualbasic/t-system.reflection.asse_5_1.vb)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Assembly, Inherited=false)]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class AssemblyKeyFileAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\AssemblyKeyFileAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/AssemblyKeyFileAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.AssemblyKeyFileAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Reflection.AssemblyKeyFileAttribute
+  langs:
+  - csharp
+  name: AssemblyKeyFileAttribute(String)
+  nameWithType: AssemblyKeyFileAttribute.AssemblyKeyFileAttribute(String)
+  fullName: System.Reflection.AssemblyKeyFileAttribute.AssemblyKeyFileAttribute(String)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Initializes a new instance of the `AssemblyKeyFileAttribute` class with the name of the file containing the key pair to generate a strong name for the assembly being attributed.
+  remarks: "There is no default path for the <xref:System.Reflection.AssemblyKeyFileAttribute> constructor. The value set by the constructor is interpreted by the linker, or by [!INCLUDE[vsprvsext](~/add/includes/vsprvsext-md.md)], that invokes the linker.  \n  \n The default setting for the [Al.exe (Assembly Linker)](../Topic/Al.exe%20\\(Assembly%20Linker\\).md) tool assumes that the key file is in the current directory. In [!INCLUDE[vsprvslong](~/add/includes/vsprvslong-md.md)], the Visual Basic and Visual C# compilers build and link to subdirectories of the project directory, so if you put the key file in the project directory the relative path might be \"..\\\\..\\keyfile.snk\" or \"..\\keyfile.snk\" in Visual Basic, or \"..\\\\\\\\..\\\\\\keyfile.snk\" or \"..\\\\\\keyfile.snk\" in C#. For C#, this attribute can be set in the project properties.  \n  \n> [!CAUTION]\n>  Because the path and file name persist, ensure that the string you use with `AssemblyKeyFileAttribute` does not contain sensitive information."
+  syntax:
+    content: public AssemblyKeyFileAttribute (string keyFile);
+    parameters:
+    - id: keyFile
+      type: System.String
+      description: The name of the file containing the key pair.
+  overload: System.Reflection.AssemblyKeyFileAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\AssemblyKeyFileAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/AssemblyKeyFileAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.AssemblyKeyFileAttribute.KeyFile
+  id: KeyFile
+  parent: System.Reflection.AssemblyKeyFileAttribute
+  langs:
+  - csharp
+  name: KeyFile
+  nameWithType: AssemblyKeyFileAttribute.KeyFile
+  fullName: System.Reflection.AssemblyKeyFileAttribute.KeyFile
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Gets the name of the file containing the key pair used to generate a strong name for the attributed assembly.
+  remarks: >-
+    > [!CAUTION]
+
+    >  Because the path and file name persist, ensure that the string you use with `AssemblyKeyFileAttribute` does not contain sensitive information.
+  syntax:
+    content: public string KeyFile { get; }
+    return:
+      type: System.String
+      description: A string containing the name of the file that contains the key pair.
+  overload: System.Reflection.AssemblyKeyFileAttribute.KeyFile*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\AssemblyKeyFileAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/AssemblyKeyFileAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Reflection.AssemblyKeyFileAttribute.#ctor(System.String)
+  parent: System.Reflection.AssemblyKeyFileAttribute
+  isExternal: false
+  name: AssemblyKeyFileAttribute(String)
+  nameWithType: AssemblyKeyFileAttribute.AssemblyKeyFileAttribute(String)
+  fullName: System.Reflection.AssemblyKeyFileAttribute.AssemblyKeyFileAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Reflection.AssemblyKeyFileAttribute.KeyFile
+  parent: System.Reflection.AssemblyKeyFileAttribute
+  isExternal: false
+  name: KeyFile
+  nameWithType: AssemblyKeyFileAttribute.KeyFile
+  fullName: System.Reflection.AssemblyKeyFileAttribute.KeyFile
+- uid: System.Reflection.AssemblyKeyFileAttribute.#ctor*
+  parent: System.Reflection.AssemblyKeyFileAttribute
+  isExternal: false
+  name: AssemblyKeyFileAttribute
+  nameWithType: AssemblyKeyFileAttribute.AssemblyKeyFileAttribute
+- uid: System.Reflection.AssemblyKeyFileAttribute.KeyFile*
+  parent: System.Reflection.AssemblyKeyFileAttribute
+  isExternal: false
+  name: KeyFile
+  nameWithType: AssemblyKeyFileAttribute.KeyFile

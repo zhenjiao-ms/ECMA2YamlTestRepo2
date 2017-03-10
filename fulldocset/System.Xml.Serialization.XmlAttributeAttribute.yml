@@ -1,0 +1,534 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.Serialization.XmlAttributeAttribute
+  id: XmlAttributeAttribute
+  children:
+  - System.Xml.Serialization.XmlAttributeAttribute.#ctor
+  - System.Xml.Serialization.XmlAttributeAttribute.#ctor(System.String)
+  - System.Xml.Serialization.XmlAttributeAttribute.#ctor(System.Type)
+  - System.Xml.Serialization.XmlAttributeAttribute.#ctor(System.String,System.Type)
+  - System.Xml.Serialization.XmlAttributeAttribute.AttributeName
+  - System.Xml.Serialization.XmlAttributeAttribute.DataType
+  - System.Xml.Serialization.XmlAttributeAttribute.Form
+  - System.Xml.Serialization.XmlAttributeAttribute.Namespace
+  - System.Xml.Serialization.XmlAttributeAttribute.Type
+  langs:
+  - csharp
+  name: XmlAttributeAttribute
+  nameWithType: XmlAttributeAttribute
+  fullName: System.Xml.Serialization.XmlAttributeAttribute
+  type: Class
+  summary: Specifies that the <xref href="System.Xml.Serialization.XmlSerializer"></xref> must serialize the class member as an XML attribute.
+  remarks: "The XmlAttributeAttribute belongs to a family of attributes that controls how the <xref:System.Xml.Serialization.XmlSerializer> serializes, or deserializes, an object. For a complete list of similar attributes, see [Attributes That Control XML Serialization](../Topic/Attributes%20That%20Control%20XML%20Serialization.md).  \n  \n When applied to a public field or property, the XmlAttributeAttribute informs the <xref:System.Xml.Serialization.XmlSerializer> to serialize the member as an XML attribute. By default, the <xref:System.Xml.Serialization.XmlSerializer> serializes public fields and properties as XML elements.  \n  \n You can assign the XmlAttributeAttribute only to public fields or public properties that return a value (or array of values) that can be mapped to one of the XML Schema definition language (XSD) simple types (including all built-in datatypes derived from the XSD `anySimpleType` type). The possible types include any that can be mapped to the XSD simple types, including <xref:System.Guid>, <xref:System.Char>, and enumerations. See the <xref:System.Xml.Serialization.XmlAttributeAttribute.DataType%2A> property for a list of XSD types and how they are mapped to.NET data types.  \n  \n There are two special attributes that can be set with the XmlAttributeAttribute : the `xml:lang` (specifies language) and `xml:space` (specifies how to handle white space) attributes. These attributes are intended to convey information that is relevant only to an application processing the XML. Examples of setting these are shown in the following code.  \n  \n```c#  \n[XmlAttribute(\"xml:lang\")]  \n public string Lang;  \n // Set this to 'default' or 'preserve'.  \n [XmlAttribute(\"space\",   \n Namespace = \"http://www.w3.org/XML/1998/namespace\")]  \n public string Space   \n [Visual Basic]  \n <XmlAttribute(\"xml:lang\")> _  \n Public Lang As String   \n ' Set this to 'default' or 'preserve'.  \n <XmlAttribute(\"space\", _  \n Namespace:= \"http://www.w3.org/XML/1998/namespace\")> _  \n Public Space As String  \n```  \n  \n For more information about using attributes, see [Attributes](../Topic/Extending%20Metadata%20Using%20Attributes.md).  \n  \n> [!NOTE]\n>  You can use the word `XmlAttribute` in your code instead of the longer XmlAttributeAttribute."
+  example:
+  - "The following example serializes a class that contains several fields to which the XmlAttributeAttribute is applied.  \n  \n [!code-cs[Classic XmlAttributeAttribute Example#1](~/add/codesnippet/csharp/t-system.xml.serializati_2_1.cs)]\n [!code-vb[Classic XmlAttributeAttribute Example#1](~/add/codesnippet/visualbasic/t-system.xml.serializati_2_1.vb)]\n [!code-cpp[Classic XmlAttributeAttribute Example#1](~/add/codesnippet/cpp/t-system.xml.serializati_2_1.cpp)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field | System.AttributeTargets.Parameter | System.AttributeTargets.ReturnValue)]
+
+      public class XmlAttributeAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAttributeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAttributeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAttributeAttribute.#ctor
+  id: '#ctor'
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  langs:
+  - csharp
+  name: XmlAttributeAttribute()
+  nameWithType: XmlAttributeAttribute.XmlAttributeAttribute()
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.XmlAttributeAttribute()
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlAttributeAttribute"></xref> class.
+  remarks: ''
+  example:
+  - >-
+    [!code-cpp[XMLAttributeAttribute_ctr1_2#1](~/add/codesnippet/cpp/m-system.xml.serializati_44_1.cpp)]
+     [!code-vb[XMLAttributeAttribute_ctr1_2#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_44_1.vb)]
+     [!code-cs[XMLAttributeAttribute_ctr1_2#1](~/add/codesnippet/csharp/m-system.xml.serializati_44_1.cs)]
+  syntax:
+    content: public XmlAttributeAttribute ();
+    parameters: []
+  overload: System.Xml.Serialization.XmlAttributeAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAttributeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAttributeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAttributeAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  langs:
+  - csharp
+  name: XmlAttributeAttribute(String)
+  nameWithType: XmlAttributeAttribute.XmlAttributeAttribute(String)
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.XmlAttributeAttribute(String)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlAttributeAttribute"></xref> class and specifies the name of the generated XML attribute.
+  remarks: ''
+  example:
+  - >-
+    [!code-cpp[XMLAttributeAttribute_ctr1_2#2](~/add/codesnippet/cpp/m-system.xml.serializati_28_1.cpp)]
+     [!code-vb[XMLAttributeAttribute_ctr1_2#2](~/add/codesnippet/visualbasic/m-system.xml.serializati_28_1.vb)]
+     [!code-cs[XMLAttributeAttribute_ctr1_2#2](~/add/codesnippet/csharp/m-system.xml.serializati_28_1.cs)]
+  syntax:
+    content: public XmlAttributeAttribute (string attributeName);
+    parameters:
+    - id: attributeName
+      type: System.String
+      description: The name of the XML attribute that the <xref href="System.Xml.Serialization.XmlSerializer"></xref> generates.
+  overload: System.Xml.Serialization.XmlAttributeAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAttributeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAttributeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAttributeAttribute.#ctor(System.Type)
+  id: '#ctor(System.Type)'
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  langs:
+  - csharp
+  name: XmlAttributeAttribute(Type)
+  nameWithType: XmlAttributeAttribute.XmlAttributeAttribute(Type)
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.XmlAttributeAttribute(Type)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlAttributeAttribute"></xref> class.
+  syntax:
+    content: public XmlAttributeAttribute (Type type);
+    parameters:
+    - id: type
+      type: System.Type
+      description: The <xref href="System.Type"></xref> used to store the attribute.
+  overload: System.Xml.Serialization.XmlAttributeAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAttributeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAttributeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAttributeAttribute.#ctor(System.String,System.Type)
+  id: '#ctor(System.String,System.Type)'
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  langs:
+  - csharp
+  name: XmlAttributeAttribute(String,Type)
+  nameWithType: XmlAttributeAttribute.XmlAttributeAttribute(String,Type)
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.XmlAttributeAttribute(String,Type)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlAttributeAttribute"></xref> class.
+  syntax:
+    content: public XmlAttributeAttribute (string attributeName, Type type);
+    parameters:
+    - id: attributeName
+      type: System.String
+      description: The name of the XML attribute that is generated.
+    - id: type
+      type: System.Type
+      description: The <xref href="System.Type"></xref> used to store the attribute.
+  overload: System.Xml.Serialization.XmlAttributeAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAttributeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAttributeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAttributeAttribute.AttributeName
+  id: AttributeName
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  langs:
+  - csharp
+  name: AttributeName
+  nameWithType: XmlAttributeAttribute.AttributeName
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.AttributeName
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets the name of the XML attribute.
+  remarks: Use the AttributeName property to specify an XML attribute name when the default value cannot be used. For example, if the XML attribute name is invalid as a member identifier, you can use a valid name for the identifier while setting the AttributeName to an invalid name.
+  example:
+  - "The following example sets the AttributeName property of an <xref:System.Xml.Serialization.XmlAttributeAttribute>.  \n  \n [!code-vb[Classic XmlAttributeAttribute.AttributeName Example#1](~/add/codesnippet/visualbasic/p-system.xml.serializati_14_1.vb)]\n [!code-cs[Classic XmlAttributeAttribute.AttributeName Example#1](~/add/codesnippet/csharp/p-system.xml.serializati_14_1.cs)]\n [!code-cpp[Classic XmlAttributeAttribute.AttributeName Example#1](~/add/codesnippet/cpp/p-system.xml.serializati_14_1.cpp)]"
+  syntax:
+    content: public string AttributeName { get; set; }
+    return:
+      type: System.String
+      description: The name of the XML attribute. The default is the member name.
+  overload: System.Xml.Serialization.XmlAttributeAttribute.AttributeName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAttributeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAttributeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAttributeAttribute.DataType
+  id: DataType
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  langs:
+  - csharp
+  name: DataType
+  nameWithType: XmlAttributeAttribute.DataType
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.DataType
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets the XSD data type of the XML attribute generated by the <xref href="System.Xml.Serialization.XmlSerializer"></xref>.
+  remarks: "The following table lists the XSD simple data types with their.NET equivalents.  \n  \n For the XSD `base64Binary` and `hexBinary` data types, use an array of <xref:System.Byte> structures, and apply a <xref:System.Xml.Serialization.XmlArrayItemAttribute> with the DataType property set to \"base64Binary\" or \"hexBinary\", as appropriate. For the XSD `time` and `date` data types, use the <xref:System.DateTime> type and apply the <xref:System.Xml.Serialization.XmlAttributeAttribute> with the DataType set to \"date\" or \"time\".  \n  \n For every XSD type that is mapped to a string, apply the <xref:System.Xml.Serialization.XmlAttributeAttribute> with its DataType property set to the XSD type. However, this does not change the serialization format, only the schema for the member.  \n  \n> [!NOTE]\n>  The property is case-sensitive, so you must set it exactly to one of the XSD data types.  \n  \n> [!NOTE]\n>  Passing binary data as an XML element is more efficient than passing it as an XML attribute.  \n  \n For more information about XML data types, see the World Wide Web Consortium (www.w3.org) document named \"XML Schema Part 2: Datatypes\".  \n  \n|XSD data type|.NET data type|  \n|-------------------|--------------------|  \n|anyURI|<xref:System.String>|  \n|base64Binary|Array of <xref:System.Byte> objects|  \n|boolean|<xref:System.Boolean>|  \n|byte|<xref:System.SByte>|  \n|date|<xref:System.DateTime>|  \n|dateTime|<xref:System.DateTime>|  \n|decimal|<xref:System.Decimal>|  \n|double|<xref:System.Double>|  \n|ENTITY|<xref:System.String>|  \n|ENTITIES|<xref:System.String>|  \n|float|<xref:System.Single>|  \n|gDay|<xref:System.String>|  \n|gMonth|<xref:System.String>|  \n|gMonthDay|<xref:System.String>|  \n|gYear|<xref:System.String>|  \n|gYearMonth|<xref:System.String>|  \n|hexBinary|Array of <xref:System.Byte> objects|  \n|ID|<xref:System.String>|  \n|IDREF|<xref:System.String>|  \n|IDREFS|<xref:System.String>|  \n|int|<xref:System.Int32>|  \n|integer|<xref:System.String>|  \n|language|<xref:System.String>|  \n|long|<xref:System.Int64>|  \n|Name|<xref:System.String>|  \n|NCName|<xref:System.String>|  \n|negativeInteger|<xref:System.String>|  \n|NMTOKEN|<xref:System.String>|  \n|NMTOKENS|<xref:System.String>|  \n|normalizedString|<xref:System.String>|  \n|nonNegativeInteger|<xref:System.String>|  \n|nonPositiveInteger|<xref:System.String>|  \n|NOTATION|<xref:System.String>|  \n|positiveInteger|<xref:System.String>|  \n|QName|<xref:System.Xml.XmlQualifiedName>|  \n|duration|<xref:System.String>|  \n|string|<xref:System.String>|  \n|short|<xref:System.Int16>|  \n|time|<xref:System.DateTime>|  \n|token|<xref:System.String>|  \n|unsignedByte|<xref:System.Byte>|  \n|unsignedInt|<xref:System.UInt32>|  \n|unsignedLong|<xref:System.UInt64>|  \n|unsignedShort|<xref:System.UInt16>|"
+  example:
+  - "The following example applies the <xref:System.Xml.Serialization.XmlAttributeAttribute> to two members, and sets the DataType property set to different values.  \n  \n [!code-cs[Classic XmlAttributeAttribute.DataType Example#1](~/add/codesnippet/csharp/p-system.xml.serializati_52_1.cs)]\n [!code-vb[Classic XmlAttributeAttribute.DataType Example#1](~/add/codesnippet/visualbasic/p-system.xml.serializati_52_1.vb)]\n [!code-cpp[Classic XmlAttributeAttribute.DataType Example#1](~/add/codesnippet/cpp/p-system.xml.serializati_52_1.cpp)]"
+  syntax:
+    content: public string DataType { get; set; }
+    return:
+      type: System.String
+      description: 'An XSD (XML Schema Document) data type, as defined by the World Wide Web Consortium (www.w3.org) document named "XML Schema: DataTypes".'
+  overload: System.Xml.Serialization.XmlAttributeAttribute.DataType*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAttributeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAttributeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAttributeAttribute.Form
+  id: Form
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  langs:
+  - csharp
+  name: Form
+  nameWithType: XmlAttributeAttribute.Form
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.Form
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets a value that indicates whether the XML attribute name generated by the <xref href="System.Xml.Serialization.XmlSerializer"></xref> is qualified.
+  remarks: "The Form property determines whether an XML element is qualified or unqualified. The Form property conforms to the 1999 http://www.w3.org specification `Namespaces in XML`.  \n  \n If the <xref:System.Xml.Serialization.XmlAttributeAttribute.Namespace%2A> property is set to any value, attempting to set the <xref:System.Xml.Serialization.XmlElementAttribute.Form%2A> property to `XmlSchemaForm.Unqualified` throws an exception.  \n  \n The default setting, `XmlSchemaForm.None`, instructs the <xref:System.Xml.Serialization.XmlSerializer> to check the schema for the XML document to determine whether the namespace is qualified. If the schema does not specify a value for an individual element or attribute, the <xref:System.Xml.Serialization.XmlSerializer> uses the `elementFormDefault` and `attributeFormDefault` values to determine whether an element or attribute is qualified. The following XML code shows a schema:  \n  \n```  \n<schema elementFormDefault=\"qualified\"   \nattributeFormDefault=\"unqualified\"... >  \n   <element name=\"Name\"/>  \n   <attribute name=\"Number\"/>  \n</schema>  \n```  \n  \n When the <xref:System.Xml.Serialization.XmlSerializer> reads the schema, the Form value for both the `Name` and `Number` is `XmlSchemaForm.None`, but the `Name` element is qualified, while the `Number` element is unqualified."
+  example:
+  - "The following example applies the <xref:System.Xml.Serialization.XmlAttributeAttribute> to two fields contained in a class.  \n  \n [!code-cpp[Classic XmlAttributeAttribute.Form Example#1](~/add/codesnippet/cpp/p-system.xml.serializati_35_1.cpp)]\n [!code-vb[Classic XmlAttributeAttribute.Form Example#1](~/add/codesnippet/visualbasic/p-system.xml.serializati_35_1.vb)]\n [!code-cs[Classic XmlAttributeAttribute.Form Example#1](~/add/codesnippet/csharp/p-system.xml.serializati_35_1.cs)]"
+  syntax:
+    content: public System.Xml.Schema.XmlSchemaForm Form { get; set; }
+    return:
+      type: System.Xml.Schema.XmlSchemaForm
+      description: One of the <xref href="System.Xml.Schema.XmlSchemaForm"></xref> values. The default is `XmlForm.None`.
+  overload: System.Xml.Serialization.XmlAttributeAttribute.Form*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAttributeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAttributeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAttributeAttribute.Namespace
+  id: Namespace
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  langs:
+  - csharp
+  name: Namespace
+  nameWithType: XmlAttributeAttribute.Namespace
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.Namespace
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets the XML namespace of the XML attribute.
+  remarks: "The Namespace property conforms to the http://www.w3.org specification `Namespaces in XML`.  \n  \n To create namespaces that are associated with prefixes, you must create an <xref:System.Xml.Serialization.XmlSerializerNamespaces> object that contains the namespaces and prefixes used in the XML document. The namespace you set for each <xref:System.Xml.Serialization.XmlAttributeAttribute> must match one of the namespaces in the <xref:System.Xml.Serialization.XmlSerializerNamespaces> object. When the <xref:System.Xml.Serialization.XmlSerializer> generates the XML code, it correctly prefixes each attribute name."
+  example:
+  - "The following example applies the <xref:System.Xml.Serialization.XmlAttributeAttribute> to two fields contained in a class. The example sets the Namespace property for each attribute to a value different from the member identifier.  \n  \n [!code-cpp[Classic XmlAttributeAttribute.Namespace Example#1](~/add/codesnippet/cpp/p-system.xml.serializati_68_1.cpp)]\n [!code-cs[Classic XmlAttributeAttribute.Namespace Example#1](~/add/codesnippet/csharp/p-system.xml.serializati_68_1.cs)]\n [!code-vb[Classic XmlAttributeAttribute.Namespace Example#1](~/add/codesnippet/visualbasic/p-system.xml.serializati_68_1.vb)]"
+  syntax:
+    content: public string Namespace { get; set; }
+    return:
+      type: System.String
+      description: The XML namespace of the XML attribute.
+  overload: System.Xml.Serialization.XmlAttributeAttribute.Namespace*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAttributeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAttributeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAttributeAttribute.Type
+  id: Type
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  langs:
+  - csharp
+  name: Type
+  nameWithType: XmlAttributeAttribute.Type
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.Type
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets the complex type of the XML attribute.
+  syntax:
+    content: public Type Type { get; set; }
+    return:
+      type: System.Type
+      description: The type of the XML attribute.
+  overload: System.Xml.Serialization.XmlAttributeAttribute.Type*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAttributeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAttributeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Xml.Serialization.XmlAttributeAttribute.#ctor
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: XmlAttributeAttribute()
+  nameWithType: XmlAttributeAttribute.XmlAttributeAttribute()
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.XmlAttributeAttribute()
+- uid: System.Xml.Serialization.XmlAttributeAttribute.#ctor(System.String)
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: XmlAttributeAttribute(String)
+  nameWithType: XmlAttributeAttribute.XmlAttributeAttribute(String)
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.XmlAttributeAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Xml.Serialization.XmlAttributeAttribute.#ctor(System.Type)
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: XmlAttributeAttribute(Type)
+  nameWithType: XmlAttributeAttribute.XmlAttributeAttribute(Type)
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.XmlAttributeAttribute(Type)
+- uid: System.Type
+  parent: System
+  isExternal: false
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Xml.Serialization.XmlAttributeAttribute.#ctor(System.String,System.Type)
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: XmlAttributeAttribute(String,Type)
+  nameWithType: XmlAttributeAttribute.XmlAttributeAttribute(String,Type)
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.XmlAttributeAttribute(String,Type)
+- uid: System.Xml.Serialization.XmlAttributeAttribute.AttributeName
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: AttributeName
+  nameWithType: XmlAttributeAttribute.AttributeName
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.AttributeName
+- uid: System.Xml.Serialization.XmlAttributeAttribute.DataType
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: DataType
+  nameWithType: XmlAttributeAttribute.DataType
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.DataType
+- uid: System.Xml.Serialization.XmlAttributeAttribute.Form
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: Form
+  nameWithType: XmlAttributeAttribute.Form
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.Form
+- uid: System.Xml.Schema.XmlSchemaForm
+  parent: System.Xml.Schema
+  isExternal: false
+  name: XmlSchemaForm
+  nameWithType: XmlSchemaForm
+  fullName: System.Xml.Schema.XmlSchemaForm
+- uid: System.Xml.Serialization.XmlAttributeAttribute.Namespace
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: Namespace
+  nameWithType: XmlAttributeAttribute.Namespace
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.Namespace
+- uid: System.Xml.Serialization.XmlAttributeAttribute.Type
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: Type
+  nameWithType: XmlAttributeAttribute.Type
+  fullName: System.Xml.Serialization.XmlAttributeAttribute.Type
+- uid: System.Xml.Serialization.XmlAttributeAttribute.#ctor*
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: XmlAttributeAttribute
+  nameWithType: XmlAttributeAttribute.XmlAttributeAttribute
+- uid: System.Xml.Serialization.XmlAttributeAttribute.AttributeName*
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: AttributeName
+  nameWithType: XmlAttributeAttribute.AttributeName
+- uid: System.Xml.Serialization.XmlAttributeAttribute.DataType*
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: DataType
+  nameWithType: XmlAttributeAttribute.DataType
+- uid: System.Xml.Serialization.XmlAttributeAttribute.Form*
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: Form
+  nameWithType: XmlAttributeAttribute.Form
+- uid: System.Xml.Serialization.XmlAttributeAttribute.Namespace*
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: Namespace
+  nameWithType: XmlAttributeAttribute.Namespace
+- uid: System.Xml.Serialization.XmlAttributeAttribute.Type*
+  parent: System.Xml.Serialization.XmlAttributeAttribute
+  isExternal: false
+  name: Type
+  nameWithType: XmlAttributeAttribute.Type

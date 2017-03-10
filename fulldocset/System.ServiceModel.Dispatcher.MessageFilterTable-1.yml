@@ -1,0 +1,1817 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  id: MessageFilterTable`1
+  children:
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.#ctor
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.#ctor(System.Int32)
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.Add(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0})
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.Add(System.ServiceModel.Dispatcher.MessageFilter,`0)
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.Add(System.ServiceModel.Dispatcher.MessageFilter,`0,System.Int32)
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.Clear
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.Contains(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0})
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.ContainsKey(System.ServiceModel.Dispatcher.MessageFilter)
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.CopyTo(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0}[],System.Int32)
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.Count
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.CreateFilterTable(System.ServiceModel.Dispatcher.MessageFilter)
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.DefaultPriority
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.GetEnumerator
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilter(System.ServiceModel.Channels.Message,System.ServiceModel.Dispatcher.MessageFilter@)
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilter(System.ServiceModel.Channels.MessageBuffer,System.ServiceModel.Dispatcher.MessageFilter@)
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilters(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilters(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValue(System.ServiceModel.Channels.Message,`0@)
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValue(System.ServiceModel.Channels.MessageBuffer,`0@)
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValues(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{`0})
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValues(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{`0})
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.GetPriority(System.ServiceModel.Dispatcher.MessageFilter)
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.IsReadOnly
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.Item(System.ServiceModel.Dispatcher.MessageFilter)
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.Keys
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.Remove(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0})
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.Remove(System.ServiceModel.Dispatcher.MessageFilter)
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.System#Collections#IEnumerable#GetEnumerator
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.TryGetValue(System.ServiceModel.Dispatcher.MessageFilter,`0@)
+  - System.ServiceModel.Dispatcher.MessageFilterTable`1.Values
+  langs:
+  - csharp
+  name: MessageFilterTable<TFilterData>
+  nameWithType: MessageFilterTable<TFilterData>
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>
+  type: Class
+  summary: Provides the generic implementation of a filter table.
+  remarks: "A MessageFilterTable(TFilterData) accepts filters of any type. It groups them internally into tables that contain all the filters of a given type. When a filter is added, it is put into an internal filter table, if one already exists, which contains filters of its type. If no such table exists, <xref:System.ServiceModel.Dispatcher.MessageFilterTable%601.CreateFilterTable%2A> is called to allocate a new filter table of the appropriate type. Its default operation is to call <xref:System.ServiceModel.Dispatcher.MessageFilter.CreateFilterTable%2A>.  \n  \n This default behavior can be overridden to explicitly specify the type of filter table associated with a type of filter. The first time a filter type is added to the table, the filter table type created is permanently associated with the filter type.  \n  \n The priority is an integer value used to group filters into priority buckets and order their processing. The larger the integer assigned to a filter type, the higher its priority for processing. All the filter tables in a priority bucket are evaluated together. Lower priority buckets are only evaluated if higher priority buckets do not provide any matches. A filter table assigns a default priority that can be set to filters being added."
+  syntax:
+    content: >-
+      [System.Runtime.Serialization.DataContract]
+
+      public class MessageFilterTable<TFilterData> : System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>>, System.Collections.Generic.IDictionary<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>>, System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>
+    typeParameters:
+    - id: TFilterData
+      description: The type of the <code>FilterData</code> associated with the filter.
+  inheritance:
+  - System.Object
+  implements:
+  - System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>>
+  - System.Collections.Generic.IDictionary<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>
+  - System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>>
+  - System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.#ctor
+  id: '#ctor'
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: MessageFilterTable<TFilterData>()
+  nameWithType: MessageFilterTable<TFilterData>.MessageFilterTable<TFilterData>()
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.MessageFilterTable<TFilterData>()
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Initializes a new instance of the <xref href="stem.ServiceModel.Dispatcher.MessageFilterTable%601"></xref> class with a default priority of 0.
+  remarks: The larger the integer assigned to a filter table, the higher its priority for use in inspecting messages for a match. The default priority can be specified using <xref:System.ServiceModel.Dispatcher.MessageFilterTable%601.%23ctor%2A>.
+  syntax:
+    content: public MessageFilterTable ();
+    parameters: []
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: MessageFilterTable<TFilterData>(Int32)
+  nameWithType: MessageFilterTable<TFilterData>.MessageFilterTable<TFilterData>(Int32)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.MessageFilterTable<TFilterData>(Int32)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Initializes a new instance of the <xref href="stem.ServiceModel.Dispatcher.MessageFilterTable%601"></xref> class with the specified initial default priority.
+  remarks: The larger the integer assigned to a filter table, the higher its priority for use in inspecting messages for a match. The default constructor assigns a `defaultPriority` of 0.
+  syntax:
+    content: public MessageFilterTable (int defaultPriority);
+    parameters:
+    - id: defaultPriority
+      type: System.Int32
+      description: The default priority for filter table.
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Add(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0})
+  id: Add(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0})
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: Add(KeyValuePair<MessageFilter,TFilterData>)
+  nameWithType: MessageFilterTable<TFilterData>.Add(KeyValuePair<MessageFilter,TFilterData>)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Add(KeyValuePair<MessageFilter,TFilterData>)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Adds a filter/<code>FilterData</code> (key/value) pair to the filter table.
+  syntax:
+    content: public void Add (System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData> item);
+    parameters:
+    - id: item
+      type: System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,TFilterData}
+      description: The <xref href="stem.Collections.Generic.KeyValuePair%602"></xref> <Filter, <code>FilterData</code>> added to the table.
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.Add*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>item</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Add(System.ServiceModel.Dispatcher.MessageFilter,`0)
+  id: Add(System.ServiceModel.Dispatcher.MessageFilter,`0)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: Add(MessageFilter,TFilterData)
+  nameWithType: MessageFilterTable<TFilterData>.Add(MessageFilter,TFilterData)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Add(MessageFilter,TFilterData)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Adds a filter and its associated <code>FilterData</code> to the filter table.
+  remarks: This assigns the filter a default priority. To specify the priority, use <xref:System.ServiceModel.Dispatcher.MessageFilterTable%601.Add%2A>.
+  syntax:
+    content: public void Add (System.ServiceModel.Dispatcher.MessageFilter filter, TFilterData data);
+    parameters:
+    - id: filter
+      type: System.ServiceModel.Dispatcher.MessageFilter
+      description: The <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> used as the key of the pair added.
+    - id: data
+      type: TFilterData
+      description: The <code>FilterData</code> associated with the filter used as the value of the pair added.
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.Add*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>filter</code> is `null`.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>filter</code> is already in the table.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Add(System.ServiceModel.Dispatcher.MessageFilter,`0,System.Int32)
+  id: Add(System.ServiceModel.Dispatcher.MessageFilter,`0,System.Int32)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: Add(MessageFilter,TFilterData,Int32)
+  nameWithType: MessageFilterTable<TFilterData>.Add(MessageFilter,TFilterData,Int32)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Add(MessageFilter,TFilterData,Int32)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Adds a filter and its associated <code>FilterData</code> to the action filter table with a specified priority.
+  remarks: The priority is an integer value used to group filters into priority buckets and order their processing. The larger the integer assigned to a filter type, the higher its priority for processing. All the filter tables in a priority bucket are evaluated together. Lower priority buckets are only evaluated if higher priority buckets do not provide any matches. Use <xref:System.ServiceModel.Dispatcher.MessageFilterTable%601.Add%2A> to add a filter with the default priority. The default priority can be set using <xref:System.ServiceModel.Dispatcher.MessageFilterTable%601.DefaultPriority%2A>. The default is initially set to 0.
+  syntax:
+    content: public void Add (System.ServiceModel.Dispatcher.MessageFilter filter, TFilterData data, int priority);
+    parameters:
+    - id: filter
+      type: System.ServiceModel.Dispatcher.MessageFilter
+      description: The <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> used as the key of the pair added.
+    - id: data
+      type: TFilterData
+      description: The <code>FilterData</code> associated with the filter used as the value of the pair added.
+    - id: priority
+      type: System.Int32
+      description: The priority of the filter added.
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.Add*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>filter</code> cannot be `null`.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>filter</code> already exists in the table.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: <code>filter</code> type does not match table type.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Clear
+  id: Clear
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: Clear()
+  nameWithType: MessageFilterTable<TFilterData>.Clear()
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Clear()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Removes all filters and their associated data from the filter table.
+  remarks: This method implements <xref:System.Collections.Generic.ICollection%601.Clear%2A>.
+  syntax:
+    content: public void Clear ();
+    parameters: []
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.Clear*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Contains(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0})
+  id: Contains(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0})
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: Contains(KeyValuePair<MessageFilter,TFilterData>)
+  nameWithType: MessageFilterTable<TFilterData>.Contains(KeyValuePair<MessageFilter,TFilterData>)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Contains(KeyValuePair<MessageFilter,TFilterData>)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Determines whether the filter table contains a specified filter and its associated <code>FilterData</code>.
+  remarks: This method implements the `Contains` method of <xref:System.Collections.Generic.ICollection%601>.
+  syntax:
+    content: public bool Contains (System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData> item);
+    parameters:
+    - id: item
+      type: System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,TFilterData}
+      description: The <xref href="stem.Collections.Generic.KeyValuePair%602"></xref> <<xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref>, <code>FilterData</code>> to find in the table.
+    return:
+      type: System.Boolean
+      description: '`true` if the <code>filter</code>/<code>FilterData</code> pair is contained in the filter table; otherwise `false`.'
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.Contains*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.ContainsKey(System.ServiceModel.Dispatcher.MessageFilter)
+  id: ContainsKey(System.ServiceModel.Dispatcher.MessageFilter)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: ContainsKey(MessageFilter)
+  nameWithType: MessageFilterTable<TFilterData>.ContainsKey(MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.ContainsKey(MessageFilter)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Determines whether the filter table contains a specified filter.
+  remarks: This method implements the `ContainsKey` method of <xref:System.Collections.Generic.IDictionary%602>.
+  syntax:
+    content: public bool ContainsKey (System.ServiceModel.Dispatcher.MessageFilter filter);
+    parameters:
+    - id: filter
+      type: System.ServiceModel.Dispatcher.MessageFilter
+      description: The <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> being tested for.
+    return:
+      type: System.Boolean
+      description: '`true` if the <code>filter</code> is contained in the filter table; otherwise `false`.'
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.ContainsKey*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.CopyTo(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0}[],System.Int32)
+  id: CopyTo(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0}[],System.Int32)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: CopyTo(KeyValuePair<MessageFilter,TFilterData>[],Int32)
+  nameWithType: MessageFilterTable<TFilterData>.CopyTo(KeyValuePair<MessageFilter,TFilterData>[],Int32)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.CopyTo(KeyValuePair<MessageFilter,TFilterData>[],Int32)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Copies the filter/<code>FilterData</code> pairs to an array that starts at a specified index.
+  remarks: This method implements the `CopyTo` method of <xref:System.Collections.Generic.ICollection%601>.
+  syntax:
+    content: public void CopyTo (System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>[] array, int arrayIndex);
+    parameters:
+    - id: array
+      type: System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,TFilterData}[]
+      description: The zero-based array of type <xref href="stem.Collections.Generic.KeyValuePair%602"></xref> <Filter, <code>FilterData</code>> to which the pairs are being copied.
+    - id: arrayIndex
+      type: System.Int32
+      description: The index at which to begin copying.
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.CopyTo*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Count
+  id: Count
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: Count
+  nameWithType: MessageFilterTable<TFilterData>.Count
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Count
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Gets the number of filter/<code>FilterData</code> pairs in the filter table.
+  remarks: This property implements <xref:System.Collections.Generic.ICollection%601.Count%2A>.
+  syntax:
+    content: public int Count { get; }
+    return:
+      type: System.Int32
+      description: The number of filter/<code>FilterData</code> pairs items in the filter table.
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.Count*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.CreateFilterTable(System.ServiceModel.Dispatcher.MessageFilter)
+  id: CreateFilterTable(System.ServiceModel.Dispatcher.MessageFilter)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: CreateFilterTable(MessageFilter)
+  nameWithType: MessageFilterTable<TFilterData>.CreateFilterTable(MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.CreateFilterTable(MessageFilter)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Instantiates a filter table for a specified type of filter.
+  syntax:
+    content: protected virtual System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData> CreateFilterTable (System.ServiceModel.Dispatcher.MessageFilter filter);
+    parameters:
+    - id: filter
+      type: System.ServiceModel.Dispatcher.MessageFilter
+      description: The <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> to be contained in the filter table created.
+    return:
+      type: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+      description: The <xref href="stem.ServiceModel.Dispatcher.IMessageFilterTable%601"></xref> that is created that contains the specified filter.
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.CreateFilterTable*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.DefaultPriority
+  id: DefaultPriority
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: DefaultPriority
+  nameWithType: MessageFilterTable<TFilterData>.DefaultPriority
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.DefaultPriority
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Gets or sets the default priority for the filter table.
+  remarks: The default priority is the priority automatically assigned a filter added to the filter table if no priority is explicitly specified. The priority of a filter is an integer value used to group filters into buckets that are used to order their processing. The larger the integer assigned to a filter type, the higher its priority for processing. All the filter tables in a priority bucket are evaluated together. Lower priority buckets are only evaluated if higher priority buckets do not provide any matches.
+  syntax:
+    content: public int DefaultPriority { get; set; }
+    return:
+      type: System.Int32
+      description: The default priority assigned by filters added to the filter table. The default value for the default priority is 0.
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.DefaultPriority*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetEnumerator
+  id: GetEnumerator
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: GetEnumerator()
+  nameWithType: MessageFilterTable<TFilterData>.GetEnumerator()
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetEnumerator()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns an enumerator that iterates through the filter table.
+  remarks: This method implements the `GetEnumerator` method of <xref:System.Collections.IEnumerable>.
+  syntax:
+    content: public System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>> GetEnumerator ();
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,TFilterData}}
+      description: An <xref href="stem.Collections.Generic.IEnumerator%601"></xref><KeyValuePair<Filter, <code>FilterData</code>>> that can be used to iterate through the filter table.
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetEnumerator*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilter(System.ServiceModel.Channels.Message,System.ServiceModel.Dispatcher.MessageFilter@)
+  id: GetMatchingFilter(System.ServiceModel.Channels.Message,System.ServiceModel.Dispatcher.MessageFilter@)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingFilter(Message,MessageFilter)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingFilter(Message,MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingFilter(Message,MessageFilter)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of exactly one filter in the table is satisfied by the specified message and returns that filter in an `out` parameter.
+  remarks: "Use this method when a single filter is expected to match the message and the matching filter is required.  \n  \n If the body of the message must be inspected by a filter in the filter table, use the <xref:System.ServiceModel.Dispatcher.IMessageFilterTable%601.GetMatchingFilter%2A> version of the method."
+  syntax:
+    content: public bool GetMatchingFilter (System.ServiceModel.Channels.Message message, out System.ServiceModel.Dispatcher.MessageFilter filter);
+    parameters:
+    - id: message
+      type: System.ServiceModel.Channels.Message
+      description: The <xref href="System.ServiceModel.Channels.Message"></xref> to test.
+    - id: filter
+      type: System.ServiceModel.Dispatcher.MessageFilter
+      description: The `out` parameter that stores the filter that is satisfied by the <code>message</code>. If no filter was found, the parameter is set to its default value.
+    return:
+      type: System.Boolean
+      description: '`true` if match criterion of one <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> in the table is satisfied by the message; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilter*
+  exceptions:
+  - type: System.ServiceModel.Dispatcher.MultipleFilterMatchesException
+    commentId: T:System.ServiceModel.Dispatcher.MultipleFilterMatchesException
+    description: More than one <xref href="System.ServiceModel.Dispatcher.ActionMessageFilter"></xref> matches the <code>messageBuffer</code>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilter(System.ServiceModel.Channels.MessageBuffer,System.ServiceModel.Dispatcher.MessageFilter@)
+  id: GetMatchingFilter(System.ServiceModel.Channels.MessageBuffer,System.ServiceModel.Dispatcher.MessageFilter@)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingFilter(MessageBuffer,MessageFilter)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingFilter(MessageBuffer,MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingFilter(MessageBuffer,MessageFilter)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of exactly one filter in the table is satisfied by the specified message and returns that filter in an `out` parameter.
+  remarks: "Use this method when a single filter is expected to match the message and the matching filter must be returned.  \n  \n This method implements <xref:System.ServiceModel.Dispatcher.IMessageFilterTable%601.GetMatchingFilter%2A>."
+  syntax:
+    content: public bool GetMatchingFilter (System.ServiceModel.Channels.MessageBuffer buffer, out System.ServiceModel.Dispatcher.MessageFilter filter);
+    parameters:
+    - id: buffer
+      type: System.ServiceModel.Channels.MessageBuffer
+      description: The <xref href="System.ServiceModel.Channels.MessageBuffer"></xref> to test.
+    - id: filter
+      type: System.ServiceModel.Dispatcher.MessageFilter
+      description: The `out` parameter that stores the filter that is satisfied by the <code>messageBuffer</code>.
+    return:
+      type: System.Boolean
+      description: '`true` if match criterion of exactly one filter in the table is satisfied by the message; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilter*
+  exceptions:
+  - type: System.ServiceModel.Dispatcher.MultipleFilterMatchesException
+    commentId: T:System.ServiceModel.Dispatcher.MultipleFilterMatchesException
+    description: More than one <xref href="System.ServiceModel.Dispatcher.ActionMessageFilter"></xref> matches the <code>messageBuffer</code>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilters(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  id: GetMatchingFilters(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingFilters(Message,ICollection<MessageFilter>)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingFilters(Message,ICollection<MessageFilter>)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingFilters(Message,ICollection<MessageFilter>)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of an <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> in the table is satisfied by the specified message, and adds the matching filters to a collection.
+  remarks: "Use this method when more than one filter is expected to match the message and the matching filters are required.  \n  \n This method tests for all of the matching filters in the highest priority bucket of filters in which at least one match occurs.  \n  \n The filters in the table are not allowed to inspect the message body.  \n  \n The matching <xref:System.ServiceModel.Dispatcher.MessageFilter> objects are stored in the `results` parameter of <xref:System.Collections.Generic.ICollection%601>. The `FilterData` can then be recovered from the filter table using these filters as keys with the methods provided by <xref:System.Collections.Generic.IDictionary%602>.  \n  \n This method implements <xref:System.ServiceModel.Dispatcher.IMessageFilterTable%601.GetMatchingFilters%2A>."
+  syntax:
+    content: public bool GetMatchingFilters (System.ServiceModel.Channels.Message message, System.Collections.Generic.ICollection<System.ServiceModel.Dispatcher.MessageFilter> results);
+    parameters:
+    - id: message
+      type: System.ServiceModel.Channels.Message
+      description: The <xref href="System.ServiceModel.Channels.Message"></xref> to test.
+    - id: results
+      type: System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter}
+      description: The reference parameter that stores the <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> objects that match in <xref href="stem.Collections.Generic.ICollection%601"></xref><Filter>.
+    return:
+      type: System.Boolean
+      description: '`true` if match criterion of at least one <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> in the table is satisfied by <code>message</code>; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilters*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>results</code> is `null`.
+  - type: System.ServiceModel.Dispatcher.InvalidBodyAccessException
+    commentId: T:System.ServiceModel.Dispatcher.InvalidBodyAccessException
+    description: A filter attempted to examine the contents of the message body.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilters(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  id: GetMatchingFilters(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingFilters(MessageBuffer,ICollection<MessageFilter>)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingFilters(MessageBuffer,ICollection<MessageFilter>)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingFilters(MessageBuffer,ICollection<MessageFilter>)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of at least one filter in the table is satisfied by the specified buffered message and adds the matching filters from the highest priority set of filters in which at least one match is found to a collection.
+  remarks: "Use this method when more than one filter is expected to match the buffered message and the matching filters are required.  \n  \n The filters in the table are allowed to inspect the message body.  \n  \n The matching <xref:System.ServiceModel.Dispatcher.MessageFilter> objects are stored in the `results` parameter of <xref:System.Collections.Generic.ICollection%601>. The `FilterData` can then be recovered from the filter table using these filters as keys with the methods provided by <xref:System.Collections.Generic.IDictionary%602>.  \n  \n This method implements GetMatchingFilters."
+  syntax:
+    content: public bool GetMatchingFilters (System.ServiceModel.Channels.MessageBuffer buffer, System.Collections.Generic.ICollection<System.ServiceModel.Dispatcher.MessageFilter> results);
+    parameters:
+    - id: buffer
+      type: System.ServiceModel.Channels.MessageBuffer
+      description: The <xref href="System.ServiceModel.Channels.MessageBuffer"></xref> to test.
+    - id: results
+      type: System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter}
+      description: The reference parameter that stores the <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> objects that match in <xref href="stem.Collections.Generic.ICollection%601"></xref><Filter>.
+    return:
+      type: System.Boolean
+      description: '`true` if match criterion of at least one filter in the table is satisfied by <code>message</code>; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilters*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>results</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValue(System.ServiceModel.Channels.Message,`0@)
+  id: GetMatchingValue(System.ServiceModel.Channels.Message,`0@)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingValue(Message,TFilterData)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingValue(Message,TFilterData)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingValue(Message,TFilterData)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of exactly one <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> in the table is satisfied by the specified message and adds the matching filter data to a collection.
+  remarks: "Use this method when a single filter is expected to match the message and only the `FilterData` from the matching filter must be recovered.  \n  \n This method implements <xref:System.ServiceModel.Dispatcher.IMessageFilterTable%601.GetMatchingFilter%2A>."
+  syntax:
+    content: public bool GetMatchingValue (System.ServiceModel.Channels.Message message, out TFilterData data);
+    parameters:
+    - id: message
+      type: System.ServiceModel.Channels.Message
+      description: The <xref href="System.ServiceModel.Channels.Message"></xref> to test.
+    - id: data
+      type: TFilterData
+      description: The `out` parameter that stores the <code>FilterData</code> that matches the <code>message</code>.
+    return:
+      type: System.Boolean
+      description: '`true` if the match criterion of one filter in the table is satisfied by the message; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValue*
+  exceptions:
+  - type: System.ServiceModel.Dispatcher.MultipleFilterMatchesException
+    commentId: T:System.ServiceModel.Dispatcher.MultipleFilterMatchesException
+    description: More than one filter matches the <code>message</code>.
+  - type: System.ServiceModel.Dispatcher.InvalidBodyAccessException
+    commentId: T:System.ServiceModel.Dispatcher.InvalidBodyAccessException
+    description: A filter attempted to examine the contents of the message body.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValue(System.ServiceModel.Channels.MessageBuffer,`0@)
+  id: GetMatchingValue(System.ServiceModel.Channels.MessageBuffer,`0@)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingValue(MessageBuffer,TFilterData)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingValue(MessageBuffer,TFilterData)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingValue(MessageBuffer,TFilterData)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of exactly one filter in the table is satisfied by the specified buffered message and adds the matching filter data to a collection.
+  remarks: "Use this method when a single filter is expected to match the buffered message and only the `FilterData` from the matching filter must be recovered. Because the filter is being matched to a buffered message, it can specify conditions on the message body.  \n  \n This method implements <xref:System.ServiceModel.Dispatcher.IMessageFilterTable%601.GetMatchingFilter%2A>."
+  syntax:
+    content: public bool GetMatchingValue (System.ServiceModel.Channels.MessageBuffer buffer, out TFilterData data);
+    parameters:
+    - id: buffer
+      type: System.ServiceModel.Channels.MessageBuffer
+      description: The <xref href="System.ServiceModel.Channels.MessageBuffer"></xref> to test.
+    - id: data
+      type: TFilterData
+      description: The `out` parameter that stores the <code>FilterData</code> that matches the <code>messageBuffer</code>.
+    return:
+      type: System.Boolean
+      description: '`true` if the match criterion of one filter in the table is satisfied by the buffered message; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValue*
+  exceptions:
+  - type: System.ServiceModel.Dispatcher.MultipleFilterMatchesException
+    commentId: T:System.ServiceModel.Dispatcher.MultipleFilterMatchesException
+    description: More than one filter matches the <code>messageBuffer</code>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValues(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{`0})
+  id: GetMatchingValues(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{`0})
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingValues(Message,ICollection<TFilterData>)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingValues(Message,ICollection<TFilterData>)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingValues(Message,ICollection<TFilterData>)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of at least one filter in the table is satisfied by the specified message or buffered message and adds the <code>FilterData</code> of the matching filters to a collection.
+  remarks: "Use this method when more than one filter is expected to match the message, only the `FilterData` is required, and the body of the message is not inspected.  \n  \n The `FilterData` of the matching <xref:System.ServiceModel.Dispatcher.MessageFilter> objects are stored in the `results` parameter of <xref:System.Collections.Generic.ICollection%601>.  \n  \n This method implements <xref:System.ServiceModel.Dispatcher.IMessageFilterTable%601.GetMatchingValues%2A>."
+  syntax:
+    content: public bool GetMatchingValues (System.ServiceModel.Channels.Message message, System.Collections.Generic.ICollection<TFilterData> results);
+    parameters:
+    - id: message
+      type: System.ServiceModel.Channels.Message
+      description: The <xref href="System.ServiceModel.Channels.Message"></xref> to test.
+    - id: results
+      type: System.Collections.Generic.ICollection{TFilterData}
+      description: The reference parameter that stores the <code>FilterData</code> of the matching action filters in a generic <xref href="stem.Collections.Generic.ICollection%601"></xref><<code>FilterData</code>>.
+    return:
+      type: System.Boolean
+      description: '`true` if match criterion of exactly one filter in the table is satisfied by the message; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValues*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>results</code> is `null`.
+  - type: System.ServiceModel.Dispatcher.InvalidBodyAccessException
+    commentId: T:System.ServiceModel.Dispatcher.InvalidBodyAccessException
+    description: A filter attempted to examine the contents of the message body.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValues(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{`0})
+  id: GetMatchingValues(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{`0})
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: GetMatchingValues(MessageBuffer,ICollection<TFilterData>)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingValues(MessageBuffer,ICollection<TFilterData>)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingValues(MessageBuffer,ICollection<TFilterData>)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns a value that indicates whether the match criterion of exactly one filter in the table is satisfied by the specified message buffer and adds the <code>FilterData</code> of the matching filters to the <code>results</code> collection.
+  remarks: "Use this method when more than one filter is expected to match the buffered message and only the `FilterData` is required.  \n  \n The `FilterData` of the matching <xref:System.ServiceModel.Dispatcher.MessageFilter> objects are stored in the `results`<xref:System.Collections.Generic.ICollection%601>.  \n  \n This method implements <xref:System.ServiceModel.Dispatcher.IMessageFilterTable%601.GetMatchingValues%2A>."
+  syntax:
+    content: public bool GetMatchingValues (System.ServiceModel.Channels.MessageBuffer buffer, System.Collections.Generic.ICollection<TFilterData> results);
+    parameters:
+    - id: buffer
+      type: System.ServiceModel.Channels.MessageBuffer
+      description: The <xref href="System.ServiceModel.Channels.MessageBuffer"></xref> to test.
+    - id: results
+      type: System.Collections.Generic.ICollection{TFilterData}
+      description: The reference parameter that stores the filter data of the filters that are satisfied by the <code>messageBuffer</code>.
+    return:
+      type: System.Boolean
+      description: '`true` if the match criterion of exactly one <xref href="System.ServiceModel.Dispatcher.ActionMessageFilter"></xref> in the table is satisfied by the buffered message; `false` if no filter is satisfied.'
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValues*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>results</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetPriority(System.ServiceModel.Dispatcher.MessageFilter)
+  id: GetPriority(System.ServiceModel.Dispatcher.MessageFilter)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: GetPriority(MessageFilter)
+  nameWithType: MessageFilterTable<TFilterData>.GetPriority(MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetPriority(MessageFilter)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns the priority of a given filter in the table.
+  remarks: The priority is an integer value used to group filters into priority buckets and order their processing. The larger the integer assigned to a filter type, the higher its priority for processing. All the filter tables in a priority bucket are evaluated together. Lower priority buckets are only evaluated if higher priority buckets do not provide any matches.
+  syntax:
+    content: public int GetPriority (System.ServiceModel.Dispatcher.MessageFilter filter);
+    parameters:
+    - id: filter
+      type: System.ServiceModel.Dispatcher.MessageFilter
+      description: The <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> contained in the filter table created.
+    return:
+      type: System.Int32
+      description: The priority of the <code>filter</code>.
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetPriority*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The specified filter does not exist in the filter table.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.IsReadOnly
+  id: IsReadOnly
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: IsReadOnly
+  nameWithType: MessageFilterTable<TFilterData>.IsReadOnly
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.IsReadOnly
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Gets a value that indicates whether the filter table is read-only.
+  remarks: A <xref:System.ServiceModel.Dispatcher.MessageFilterTable%601> must not be read-only.
+  syntax:
+    content: public bool IsReadOnly { get; }
+    return:
+      type: System.Boolean
+      description: '`false` for all filter tables.'
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.IsReadOnly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Item(System.ServiceModel.Dispatcher.MessageFilter)
+  id: Item(System.ServiceModel.Dispatcher.MessageFilter)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: Item(MessageFilter)
+  nameWithType: MessageFilterTable<TFilterData>.Item(MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Item(MessageFilter)
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Gets or sets the filter data associated with the specified <code>filter</code>.
+  remarks: "The `Item` property (the indexer in C#) provides the ability to access the filter data associated with a `filter` in the table's filter collection by using the following syntax.  \n  \n<CodeContentPlaceHolder>0</CodeContentPlaceHolder>  \n<CodeContentPlaceHolder>1</CodeContentPlaceHolder>  \n You can also use the `Item` property to add new elements by setting the values of a `filter`/filter data pair that does not exist in the action filter table. However if `filter` is already in the table, setting the `Item` property overwrites the old value. In contrast, the <xref:System.ServiceModel.Dispatcher.MessageFilterTable%601.Add%2A> method does not modify the filter data of an existing `filter`.  \n  \n The dictionary `item` is a filter/`FilterData` pair in the case of <xref:System.ServiceModel.Dispatcher.MessageFilterTable%601>."
+  syntax:
+    content: public TFilterData this[System.ServiceModel.Dispatcher.MessageFilter filter] { get; set; }
+    parameters:
+    - id: filter
+      type: System.ServiceModel.Dispatcher.MessageFilter
+      description: The <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> associated with the filter data to get or set.
+    return:
+      type: TFilterData
+      description: The filter data associated with the <code>filter</code>. If the specified <code>filter</code> is not found, a get operation throws a <xref href="System.Collections.Generic.KeyNotFoundException"></xref>, and a set operation creates a new filter data element with the specified <code>filter</code> as the key.
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.Item*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>filter</code> is `null`.
+  - type: System.Collections.Generic.KeyNotFoundException
+    commentId: T:System.Collections.Generic.KeyNotFoundException
+    description: The property is retrieved, and the <code>filter</code> is not in the table.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Keys
+  id: Keys
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: Keys
+  nameWithType: MessageFilterTable<TFilterData>.Keys
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Keys
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Gets a collection of all the filters contained in the filter table.
+  remarks: "This property implements <xref:System.Collections.Generic.IDictionary%602.Keys%2A>. The <xref:System.Collections.Generic.IDictionary%602><Filter, `FilterData`> that the filter table implements uses the <xref:System.ServiceModel.Dispatcher.MessageFilter> as the key and the `FilterData` as the value of the pair.  \n  \n The order of the filters returned in the collection is unspecified, but it is guaranteed to be the same order as the corresponding `FilterData` in the collection returned by the <xref:System.ServiceModel.Dispatcher.MessageFilterTable%601.Values%2A> property."
+  syntax:
+    content: public System.Collections.Generic.ICollection<System.ServiceModel.Dispatcher.MessageFilter> Keys { get; }
+    return:
+      type: System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter}
+      description: An <xref href="stem.Collections.Generic.ICollection%601"></xref> of all the filters contained in the filter table.
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.Keys*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Remove(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0})
+  id: Remove(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0})
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: Remove(KeyValuePair<MessageFilter,TFilterData>)
+  nameWithType: MessageFilterTable<TFilterData>.Remove(KeyValuePair<MessageFilter,TFilterData>)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Remove(KeyValuePair<MessageFilter,TFilterData>)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Removes a specified filter/<code>FilterData</code> pair from the filter table.
+  remarks: "If the filter key of the `item` is present but is associated with data that differs from the `FilterData`, the method fails to remove the filter and returns `false`.  \n  \n This method implements <xref:System.Collections.Generic.SynchronizedReadOnlyCollection%601.System%23Collections%23Generic%23ICollection%7BT%7D%23Remove%2A>."
+  syntax:
+    content: public bool Remove (System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData> item);
+    parameters:
+    - id: item
+      type: System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,TFilterData}
+      description: The <xref href="stem.Collections.Generic.KeyValuePair%602"></xref> <Filter, <code>FilterData</code>> to remove from the table.
+    return:
+      type: System.Boolean
+      description: '`true` if the filter/<code>FilterData</code> pair was found and removed; `false` if it was not found.'
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.Remove*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>filter</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Remove(System.ServiceModel.Dispatcher.MessageFilter)
+  id: Remove(System.ServiceModel.Dispatcher.MessageFilter)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: Remove(MessageFilter)
+  nameWithType: MessageFilterTable<TFilterData>.Remove(MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Remove(MessageFilter)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Removes a filter and its associated <code>FilterData</code> from the filter table.
+  remarks: This method implements <xref:System.Collections.Generic.SynchronizedReadOnlyCollection%601.System%23Collections%23Generic%23ICollection%7BT%7D%23Remove%2A>.
+  syntax:
+    content: public bool Remove (System.ServiceModel.Dispatcher.MessageFilter filter);
+    parameters:
+    - id: filter
+      type: System.ServiceModel.Dispatcher.MessageFilter
+      description: The <xref href="System.ServiceModel.Dispatcher.MessageFilter"></xref> to remove.
+    return:
+      type: System.Boolean
+      description: '`true` if the filter was found and removed; `false` if it was not found.'
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.Remove*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>filter</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.System#Collections#IEnumerable#GetEnumerator
+  id: System#Collections#IEnumerable#GetEnumerator
+  isEii: true
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: IEnumerable.GetEnumerator()
+  nameWithType: MessageFilterTable<TFilterData>.IEnumerable.GetEnumerator()
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.IEnumerable.GetEnumerator()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Returns an enumerator that iterates through the filter table.
+  remarks: This method implements <xref:System.Collections.IEnumerable.GetEnumerator%2A>.
+  syntax:
+    content: System.Collections.IEnumerator IEnumerable.GetEnumerator ();
+    parameters: []
+    return:
+      type: System.Collections.IEnumerator
+      description: An <xref href="stem.Collections.Generic.IEnumerator%601"></xref> that can be used to iterate through the filter table.
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.System#Collections#IEnumerable#GetEnumerator*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.TryGetValue(System.ServiceModel.Dispatcher.MessageFilter,`0@)
+  id: TryGetValue(System.ServiceModel.Dispatcher.MessageFilter,`0@)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: TryGetValue(MessageFilter,TFilterData)
+  nameWithType: MessageFilterTable<TFilterData>.TryGetValue(MessageFilter,TFilterData)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.TryGetValue(MessageFilter,TFilterData)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Checks whether a filter is stored in the filter table.
+  remarks: This method is an efficient way to check whether a filter is in the filter table because when the filter is not present, it returns `false` instead of throwing an exception. If you try to retrieve the filter from the table and it is not there, an exception is thrown.
+  syntax:
+    content: public bool TryGetValue (System.ServiceModel.Dispatcher.MessageFilter filter, out TFilterData data);
+    parameters:
+    - id: filter
+      type: System.ServiceModel.Dispatcher.MessageFilter
+      description: The <code>filter</code> that is used as a key to retrieve the data.
+    - id: data
+      type: TFilterData
+      description: The <code>data</code> associated with the <code>filter</code>.
+    return:
+      type: System.Boolean
+      description: '`true` if there is a filter in the filter table that has data associated with it; otherwise `false`.'
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.TryGetValue*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Values
+  id: Values
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  langs:
+  - csharp
+  name: Values
+  nameWithType: MessageFilterTable<TFilterData>.Values
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Values
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Gets a collection of all the <code>FilterData</code> contained in the filter table.
+  remarks: "This property implements <xref:System.Collections.Generic.IDictionary%602.Values%2A>. The <xref:System.Collections.Generic.IDictionary%602><Filter, `FilterData`> that the filter table implements uses the <xref:System.ServiceModel.Dispatcher.MessageFilter> as the key and the `FilterData` as the value of the pair.  \n  \n The order of the `FilterData` returned in the collection is unspecified, but it is guaranteed to be the same order as the corresponding filters in the collection returned by the <xref:System.ServiceModel.Dispatcher.MessageFilterTable%601.Keys%2A> property."
+  syntax:
+    content: public System.Collections.Generic.ICollection<TFilterData> Values { get; }
+    return:
+      type: System.Collections.Generic.ICollection{TFilterData}
+      description: An <xref href="stem.Collections.Generic.ICollection%601"></xref> of all the <code>FilterData</code> contained in the filter table.
+  overload: System.ServiceModel.Dispatcher.MessageFilterTable`1.Values*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Dispatcher\MessageFilterTable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Dispatcher/MessageFilterTable`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.ServiceModel.Dispatcher.MultipleFilterMatchesException
+  parent: System.ServiceModel.Dispatcher
+  isExternal: false
+  name: MultipleFilterMatchesException
+  nameWithType: MultipleFilterMatchesException
+  fullName: System.ServiceModel.Dispatcher.MultipleFilterMatchesException
+- uid: System.ServiceModel.Dispatcher.InvalidBodyAccessException
+  parent: System.ServiceModel.Dispatcher
+  isExternal: false
+  name: InvalidBodyAccessException
+  nameWithType: InvalidBodyAccessException
+  fullName: System.ServiceModel.Dispatcher.InvalidBodyAccessException
+- uid: System.Collections.Generic.KeyNotFoundException
+  parent: System.Collections.Generic
+  isExternal: false
+  name: KeyNotFoundException
+  nameWithType: KeyNotFoundException
+  fullName: System.Collections.Generic.KeyNotFoundException
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.#ctor
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: MessageFilterTable<TFilterData>()
+  nameWithType: MessageFilterTable<TFilterData>.MessageFilterTable<TFilterData>()
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.MessageFilterTable<TFilterData>()
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.#ctor(System.Int32)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: MessageFilterTable<TFilterData>(Int32)
+  nameWithType: MessageFilterTable<TFilterData>.MessageFilterTable<TFilterData>(Int32)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.MessageFilterTable<TFilterData>(Int32)
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Add(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0})
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Add(KeyValuePair<MessageFilter,TFilterData>)
+  nameWithType: MessageFilterTable<TFilterData>.Add(KeyValuePair<MessageFilter,TFilterData>)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Add(KeyValuePair<MessageFilter,TFilterData>)
+- uid: System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,TFilterData}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: KeyValuePair<MessageFilter,TFilterData>
+  nameWithType: KeyValuePair<MessageFilter,TFilterData>
+  fullName: System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>
+  spec.csharp:
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    nameWithType: KeyValuePair
+    fullName: KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.ServiceModel.Dispatcher.MessageFilter
+    name: MessageFilter
+    nameWithType: MessageFilter
+    fullName: MessageFilter
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: TFilterData
+    name: TFilterData
+    nameWithType: TFilterData
+    fullName: TFilterData
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Add(System.ServiceModel.Dispatcher.MessageFilter,`0)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Add(MessageFilter,TFilterData)
+  nameWithType: MessageFilterTable<TFilterData>.Add(MessageFilter,TFilterData)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Add(MessageFilter,TFilterData)
+- uid: System.ServiceModel.Dispatcher.MessageFilter
+  parent: System.ServiceModel.Dispatcher
+  isExternal: false
+  name: MessageFilter
+  nameWithType: MessageFilter
+  fullName: System.ServiceModel.Dispatcher.MessageFilter
+- uid: TFilterData
+  isExternal: true
+  name: TFilterData
+  nameWithType: TFilterData
+  fullName: TFilterData
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Add(System.ServiceModel.Dispatcher.MessageFilter,`0,System.Int32)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Add(MessageFilter,TFilterData,Int32)
+  nameWithType: MessageFilterTable<TFilterData>.Add(MessageFilter,TFilterData,Int32)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Add(MessageFilter,TFilterData,Int32)
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Clear
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Clear()
+  nameWithType: MessageFilterTable<TFilterData>.Clear()
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Clear()
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Contains(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0})
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Contains(KeyValuePair<MessageFilter,TFilterData>)
+  nameWithType: MessageFilterTable<TFilterData>.Contains(KeyValuePair<MessageFilter,TFilterData>)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Contains(KeyValuePair<MessageFilter,TFilterData>)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.ContainsKey(System.ServiceModel.Dispatcher.MessageFilter)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: ContainsKey(MessageFilter)
+  nameWithType: MessageFilterTable<TFilterData>.ContainsKey(MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.ContainsKey(MessageFilter)
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.CopyTo(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0}[],System.Int32)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: CopyTo(KeyValuePair<MessageFilter,TFilterData>[],Int32)
+  nameWithType: MessageFilterTable<TFilterData>.CopyTo(KeyValuePair<MessageFilter,TFilterData>[],Int32)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.CopyTo(KeyValuePair<MessageFilter,TFilterData>[],Int32)
+- uid: System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,TFilterData}[]
+  parent: System.Collections.Generic
+  isExternal: false
+  name: KeyValuePair<MessageFilter,TFilterData>[]
+  nameWithType: KeyValuePair<MessageFilter,TFilterData>[]
+  fullName: System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>[]
+  spec.csharp:
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    nameWithType: KeyValuePair
+    fullName: KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>[]
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.ServiceModel.Dispatcher.MessageFilter
+    name: MessageFilter
+    nameWithType: MessageFilter
+    fullName: MessageFilter
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: TFilterData
+    name: TFilterData
+    nameWithType: TFilterData
+    fullName: TFilterData
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Count
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Count
+  nameWithType: MessageFilterTable<TFilterData>.Count
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Count
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.CreateFilterTable(System.ServiceModel.Dispatcher.MessageFilter)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: CreateFilterTable(MessageFilter)
+  nameWithType: MessageFilterTable<TFilterData>.CreateFilterTable(MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.CreateFilterTable(MessageFilter)
+- uid: System.ServiceModel.Dispatcher.IMessageFilterTable`1
+  parent: System.ServiceModel.Dispatcher
+  isExternal: false
+  name: IMessageFilterTable<TFilterData>
+  nameWithType: IMessageFilterTable<TFilterData>
+  fullName: System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.DefaultPriority
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: DefaultPriority
+  nameWithType: MessageFilterTable<TFilterData>.DefaultPriority
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.DefaultPriority
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetEnumerator
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetEnumerator()
+  nameWithType: MessageFilterTable<TFilterData>.GetEnumerator()
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetEnumerator()
+- uid: System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,TFilterData}}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerator<KeyValuePair<MessageFilter,TFilterData>>
+  nameWithType: IEnumerator<KeyValuePair<MessageFilter,TFilterData>>
+  fullName: System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    nameWithType: IEnumerator
+    fullName: IEnumerator<System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    nameWithType: KeyValuePair
+    fullName: KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter,TFilterData>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.ServiceModel.Dispatcher.MessageFilter
+    name: MessageFilter
+    nameWithType: MessageFilter
+    fullName: MessageFilter
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: TFilterData
+    name: TFilterData
+    nameWithType: TFilterData
+    fullName: TFilterData
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilter(System.ServiceModel.Channels.Message,System.ServiceModel.Dispatcher.MessageFilter@)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetMatchingFilter(Message,MessageFilter)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingFilter(Message,MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingFilter(Message,MessageFilter)
+- uid: System.ServiceModel.Channels.Message
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: Message
+  nameWithType: Message
+  fullName: System.ServiceModel.Channels.Message
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilter(System.ServiceModel.Channels.MessageBuffer,System.ServiceModel.Dispatcher.MessageFilter@)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetMatchingFilter(MessageBuffer,MessageFilter)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingFilter(MessageBuffer,MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingFilter(MessageBuffer,MessageFilter)
+- uid: System.ServiceModel.Channels.MessageBuffer
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: MessageBuffer
+  nameWithType: MessageBuffer
+  fullName: System.ServiceModel.Channels.MessageBuffer
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilters(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetMatchingFilters(Message,ICollection<MessageFilter>)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingFilters(Message,ICollection<MessageFilter>)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingFilters(Message,ICollection<MessageFilter>)
+- uid: System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: ICollection<MessageFilter>
+  nameWithType: ICollection<MessageFilter>
+  fullName: System.Collections.Generic.ICollection<System.ServiceModel.Dispatcher.MessageFilter>
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    nameWithType: ICollection
+    fullName: ICollection<System.ServiceModel.Dispatcher.MessageFilter>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.ServiceModel.Dispatcher.MessageFilter
+    name: MessageFilter
+    nameWithType: MessageFilter
+    fullName: MessageFilter
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilters(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{System.ServiceModel.Dispatcher.MessageFilter})
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetMatchingFilters(MessageBuffer,ICollection<MessageFilter>)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingFilters(MessageBuffer,ICollection<MessageFilter>)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingFilters(MessageBuffer,ICollection<MessageFilter>)
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValue(System.ServiceModel.Channels.Message,`0@)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetMatchingValue(Message,TFilterData)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingValue(Message,TFilterData)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingValue(Message,TFilterData)
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValue(System.ServiceModel.Channels.MessageBuffer,`0@)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetMatchingValue(MessageBuffer,TFilterData)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingValue(MessageBuffer,TFilterData)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingValue(MessageBuffer,TFilterData)
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValues(System.ServiceModel.Channels.Message,System.Collections.Generic.ICollection{`0})
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetMatchingValues(Message,ICollection<TFilterData>)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingValues(Message,ICollection<TFilterData>)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingValues(Message,ICollection<TFilterData>)
+- uid: System.Collections.Generic.ICollection{TFilterData}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: ICollection<TFilterData>
+  nameWithType: ICollection<TFilterData>
+  fullName: System.Collections.Generic.ICollection<TFilterData>
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    nameWithType: ICollection
+    fullName: ICollection<TFilterData>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TFilterData
+    name: TFilterData
+    nameWithType: TFilterData
+    fullName: TFilterData
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValues(System.ServiceModel.Channels.MessageBuffer,System.Collections.Generic.ICollection{`0})
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetMatchingValues(MessageBuffer,ICollection<TFilterData>)
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingValues(MessageBuffer,ICollection<TFilterData>)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetMatchingValues(MessageBuffer,ICollection<TFilterData>)
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetPriority(System.ServiceModel.Dispatcher.MessageFilter)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetPriority(MessageFilter)
+  nameWithType: MessageFilterTable<TFilterData>.GetPriority(MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.GetPriority(MessageFilter)
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.IsReadOnly
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: IsReadOnly
+  nameWithType: MessageFilterTable<TFilterData>.IsReadOnly
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.IsReadOnly
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Item(System.ServiceModel.Dispatcher.MessageFilter)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Item(MessageFilter)
+  nameWithType: MessageFilterTable<TFilterData>.Item(MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Item(MessageFilter)
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Keys
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Keys
+  nameWithType: MessageFilterTable<TFilterData>.Keys
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Keys
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Remove(System.Collections.Generic.KeyValuePair{System.ServiceModel.Dispatcher.MessageFilter,`0})
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Remove(KeyValuePair<MessageFilter,TFilterData>)
+  nameWithType: MessageFilterTable<TFilterData>.Remove(KeyValuePair<MessageFilter,TFilterData>)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Remove(KeyValuePair<MessageFilter,TFilterData>)
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Remove(System.ServiceModel.Dispatcher.MessageFilter)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Remove(MessageFilter)
+  nameWithType: MessageFilterTable<TFilterData>.Remove(MessageFilter)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Remove(MessageFilter)
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.System#Collections#IEnumerable#GetEnumerator
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: IEnumerable.GetEnumerator()
+  nameWithType: MessageFilterTable<TFilterData>.IEnumerable.GetEnumerator()
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.IEnumerable.GetEnumerator()
+- uid: System.Collections.IEnumerator
+  parent: System.Collections
+  isExternal: false
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.TryGetValue(System.ServiceModel.Dispatcher.MessageFilter,`0@)
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: TryGetValue(MessageFilter,TFilterData)
+  nameWithType: MessageFilterTable<TFilterData>.TryGetValue(MessageFilter,TFilterData)
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.TryGetValue(MessageFilter,TFilterData)
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Values
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Values
+  nameWithType: MessageFilterTable<TFilterData>.Values
+  fullName: System.ServiceModel.Dispatcher.MessageFilterTable<TFilterData>.Values
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.#ctor*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: MessageFilterTable<TFilterData>
+  nameWithType: MessageFilterTable<TFilterData>.MessageFilterTable<TFilterData>
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Add*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Add
+  nameWithType: MessageFilterTable<TFilterData>.Add
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Clear*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Clear
+  nameWithType: MessageFilterTable<TFilterData>.Clear
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Contains*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Contains
+  nameWithType: MessageFilterTable<TFilterData>.Contains
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.ContainsKey*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: ContainsKey
+  nameWithType: MessageFilterTable<TFilterData>.ContainsKey
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.CopyTo*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: CopyTo
+  nameWithType: MessageFilterTable<TFilterData>.CopyTo
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Count*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Count
+  nameWithType: MessageFilterTable<TFilterData>.Count
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.CreateFilterTable*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: CreateFilterTable
+  nameWithType: MessageFilterTable<TFilterData>.CreateFilterTable
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.DefaultPriority*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: DefaultPriority
+  nameWithType: MessageFilterTable<TFilterData>.DefaultPriority
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetEnumerator*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetEnumerator
+  nameWithType: MessageFilterTable<TFilterData>.GetEnumerator
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilter*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetMatchingFilter
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingFilter
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingFilters*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetMatchingFilters
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingFilters
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValue*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetMatchingValue
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingValue
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetMatchingValues*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetMatchingValues
+  nameWithType: MessageFilterTable<TFilterData>.GetMatchingValues
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.GetPriority*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: GetPriority
+  nameWithType: MessageFilterTable<TFilterData>.GetPriority
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.IsReadOnly*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: IsReadOnly
+  nameWithType: MessageFilterTable<TFilterData>.IsReadOnly
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Item*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Item
+  nameWithType: MessageFilterTable<TFilterData>.Item
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Keys*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Keys
+  nameWithType: MessageFilterTable<TFilterData>.Keys
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Remove*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Remove
+  nameWithType: MessageFilterTable<TFilterData>.Remove
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.System#Collections#IEnumerable#GetEnumerator*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: System.Collections.IEnumerable.GetEnumerator
+  nameWithType: MessageFilterTable<TFilterData>.System.Collections.IEnumerable.GetEnumerator
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.TryGetValue*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: TryGetValue
+  nameWithType: MessageFilterTable<TFilterData>.TryGetValue
+- uid: System.ServiceModel.Dispatcher.MessageFilterTable`1.Values*
+  parent: System.ServiceModel.Dispatcher.MessageFilterTable`1
+  isExternal: false
+  name: Values
+  nameWithType: MessageFilterTable<TFilterData>.Values

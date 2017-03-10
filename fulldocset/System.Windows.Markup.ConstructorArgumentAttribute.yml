@@ -1,0 +1,190 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Windows.Markup.ConstructorArgumentAttribute
+  id: ConstructorArgumentAttribute
+  children:
+  - System.Windows.Markup.ConstructorArgumentAttribute.#ctor(System.String)
+  - System.Windows.Markup.ConstructorArgumentAttribute.ArgumentName
+  langs:
+  - csharp
+  name: ConstructorArgumentAttribute
+  nameWithType: ConstructorArgumentAttribute
+  fullName: System.Windows.Markup.ConstructorArgumentAttribute
+  type: Class
+  summary: Specifies that an object can be initialized by using a non-default constructor syntax, and that a property of the specified name supplies construction information.  This information is primarily for XAML serialization.
+  remarks: "This attribute specifies that the associated property can be initialized by a constructor parameter and should be ignored for XAML serialization if the constructor is used to construct the instance. This provides better round trip representations for parameterized constructor syntax rather than default constructor instantiation plus specific attributes.  \n  \n A framework can potentially support preserving markup extension usages and reconstituting them rather than relying on `ProvideValue` output in the object tree for serialization. In this case, the ConstructorArgumentAttribute information is useful during serialization for producing an accurate representation of the typical markup extension usage. For more information about markup extensions, see [Markup Extensions for XAML Overview](../Topic/Markup%20Extensions%20for%20XAML%20Overview.md).  \n  \n In order to be valid for a ConstructorArgumentAttribute attribution, a type's public non-default constructor must support exactly one parameter. The name of the parameter must correspond to a read/write property. The property must be otherwise serializable. You use this attribute to create the correspondence between the name of the parameter in the constructor, and the property. Specifically, you apply this attribute to the property-level definition of the connecting read/write property.  \n  \n Consumers of ConstructorArgumentAttribute may throw in cases where <xref:System.Windows.Markup.ConstructorArgumentAttribute.ArgumentName%2A> does not resolve to type backing, or when applied to a type that does not have the appropriate construction arguments and arity.  \n  \n In previous versions of the .NET Framework, this class existed in the WPF-specific assembly WindowsBase. In [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], ConstructorArgumentAttribute is in the System.Xaml assembly. For more information, see [Types Migrated from WPF to System.Xaml](../Topic/Types%20Migrated%20from%20WPF%20to%20System.Xaml.md).  \n  \n## WPF Usage Notes  \n For more information about markup extensions and WPF, see [Markup Extensions and WPF XAML](../Topic/Markup%20Extensions%20and%20WPF%20XAML.md)."
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple=false, Inherited=false)]
+
+      [System.Runtime.CompilerServices.TypeForwardedFrom("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+
+      public sealed class ConstructorArgumentAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\ConstructorArgumentAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/ConstructorArgumentAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Windows.Markup.ConstructorArgumentAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Windows.Markup.ConstructorArgumentAttribute
+  langs:
+  - csharp
+  name: ConstructorArgumentAttribute(String)
+  nameWithType: ConstructorArgumentAttribute.ConstructorArgumentAttribute(String)
+  fullName: System.Windows.Markup.ConstructorArgumentAttribute.ConstructorArgumentAttribute(String)
+  type: Constructor
+  assemblies:
+  - WindowsBase
+  - System.Xaml
+  namespace: System.Windows.Markup
+  summary: Initializes a new instance of the <xref href="System.Windows.Markup.ConstructorArgumentAttribute"></xref> class.
+  syntax:
+    content: public ConstructorArgumentAttribute (string argumentName);
+    parameters:
+    - id: argumentName
+      type: System.String
+      description: The name of the constructor that will initialize the associated property.
+  overload: System.Windows.Markup.ConstructorArgumentAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\ConstructorArgumentAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/ConstructorArgumentAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Windows.Markup.ConstructorArgumentAttribute.ArgumentName
+  id: ArgumentName
+  parent: System.Windows.Markup.ConstructorArgumentAttribute
+  langs:
+  - csharp
+  name: ArgumentName
+  nameWithType: ConstructorArgumentAttribute.ArgumentName
+  fullName: System.Windows.Markup.ConstructorArgumentAttribute.ArgumentName
+  type: Property
+  assemblies:
+  - WindowsBase
+  - System.Xaml
+  namespace: System.Windows.Markup
+  summary: Gets the name parameter of the constructor that will initialize the associated property.
+  syntax:
+    content: public string ArgumentName { get; }
+    return:
+      type: System.String
+      description: The name of the constructor. Assuming CLR backing, this corresponds to the <xref href="stem.Reflection.ParameterInfo.Name%2A"></xref> of the relevant constructor parameter.
+  overload: System.Windows.Markup.ConstructorArgumentAttribute.ArgumentName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\ConstructorArgumentAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/ConstructorArgumentAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Windows.Markup.ConstructorArgumentAttribute.#ctor(System.String)
+  parent: System.Windows.Markup.ConstructorArgumentAttribute
+  isExternal: false
+  name: ConstructorArgumentAttribute(String)
+  nameWithType: ConstructorArgumentAttribute.ConstructorArgumentAttribute(String)
+  fullName: System.Windows.Markup.ConstructorArgumentAttribute.ConstructorArgumentAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Windows.Markup.ConstructorArgumentAttribute.ArgumentName
+  parent: System.Windows.Markup.ConstructorArgumentAttribute
+  isExternal: false
+  name: ArgumentName
+  nameWithType: ConstructorArgumentAttribute.ArgumentName
+  fullName: System.Windows.Markup.ConstructorArgumentAttribute.ArgumentName
+- uid: System.Windows.Markup.ConstructorArgumentAttribute.#ctor*
+  parent: System.Windows.Markup.ConstructorArgumentAttribute
+  isExternal: false
+  name: ConstructorArgumentAttribute
+  nameWithType: ConstructorArgumentAttribute.ConstructorArgumentAttribute
+- uid: System.Windows.Markup.ConstructorArgumentAttribute.ArgumentName*
+  parent: System.Windows.Markup.ConstructorArgumentAttribute
+  isExternal: false
+  name: ArgumentName
+  nameWithType: ConstructorArgumentAttribute.ArgumentName

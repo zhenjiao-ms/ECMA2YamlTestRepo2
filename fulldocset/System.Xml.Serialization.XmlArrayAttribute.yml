@@ -1,0 +1,448 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.Serialization.XmlArrayAttribute
+  id: XmlArrayAttribute
+  children:
+  - System.Xml.Serialization.XmlArrayAttribute.#ctor
+  - System.Xml.Serialization.XmlArrayAttribute.#ctor(System.String)
+  - System.Xml.Serialization.XmlArrayAttribute.ElementName
+  - System.Xml.Serialization.XmlArrayAttribute.Form
+  - System.Xml.Serialization.XmlArrayAttribute.IsNullable
+  - System.Xml.Serialization.XmlArrayAttribute.Namespace
+  - System.Xml.Serialization.XmlArrayAttribute.Order
+  langs:
+  - csharp
+  name: XmlArrayAttribute
+  nameWithType: XmlArrayAttribute
+  fullName: System.Xml.Serialization.XmlArrayAttribute
+  type: Class
+  summary: Specifies that the <xref href="System.Xml.Serialization.XmlSerializer"></xref> must serialize a particular class member as an array of XML elements.
+  remarks: "The XmlArrayAttribute belongs to a family of attributes that controls how the <xref:System.Xml.Serialization.XmlSerializer> serializes or deserializes an object. For a complete list of similar attributes, see [Attributes That Control XML Serialization](../Topic/Attributes%20That%20Control%20XML%20Serialization.md).  \n  \n You can apply the XmlArrayAttribute to a public field or read/write property that returns an array of objects. You can also apply it to collections and fields that return an <xref:System.Collections.ArrayList> or any field that returns an object that implements the <xref:System.Collections.IEnumerable> interface.  \n  \n When you apply the XmlArrayAttribute to a class member, the <xref:System.Xml.Serialization.XmlSerializer.Serialize%2A> method of the <xref:System.Xml.Serialization.XmlSerializer> class generates a nested sequence of XML elements from that member. An XML schema document (an .xsd file), indicates such an array as a `complexType`. For example, if the class to be serialized represents a purchase order, you can generate an array of purchased items by applying the XmlArrayAttribute to a public field that returns an array of objects that represent order items.  \n  \n If no attributes are applied to a public field or property that returns an array of complex or primitive type objects, the <xref:System.Xml.Serialization.XmlSerializer> generates a nested sequence of XML elements by default. To more precisely control what XML elements are generated, apply an <xref:System.Xml.Serialization.XmlArrayItemAttribute> and an XmlArrayAttribute to the field or property. For example, by default, the name of the generated XML element is derived from the member identifier You can change the name of the generated XML element by setting the <xref:System.Xml.Serialization.XmlArrayAttribute.ElementName%2A> property.  \n  \n If you serialize an array that contains items of a specific type and all the classes derived from that type, you must use the <xref:System.Xml.Serialization.XmlArrayItemAttribute> to declare each of the types.  \n  \n> [!NOTE]\n>  You can use `XmlArray` in your code instead of the longer XmlArrayAttribute.  \n  \n For more information about using attributes, see [Attributes](../Topic/Extending%20Metadata%20Using%20Attributes.md)."
+  example:
+  - "The following example serializes a class instance into an XML document that contains several object arrays. The XmlArrayAttribute is applied to the members that become XML element arrays.  \n  \n [!code-cpp[Classic XmlArrayAttribute Example#1](~/add/codesnippet/cpp/t-system.xml.serializati_26_1.cpp)]\n [!code-cs[Classic XmlArrayAttribute Example#1](~/add/codesnippet/csharp/t-system.xml.serializati_26_1.cs)]\n [!code-vb[Classic XmlArrayAttribute Example#1](~/add/codesnippet/visualbasic/t-system.xml.serializati_26_1.vb)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field | System.AttributeTargets.Parameter | System.AttributeTargets.ReturnValue, AllowMultiple=false)]
+
+      public class XmlArrayAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlArrayAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlArrayAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlArrayAttribute.#ctor
+  id: '#ctor'
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  langs:
+  - csharp
+  name: XmlArrayAttribute()
+  nameWithType: XmlArrayAttribute.XmlArrayAttribute()
+  fullName: System.Xml.Serialization.XmlArrayAttribute.XmlArrayAttribute()
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlArrayAttribute"></xref> class.
+  remarks: For more information about using attributes, see [Attributes](../Topic/Extending%20Metadata%20Using%20Attributes.md).
+  example:
+  - "The following example assigns the <xref:System.Xml.Serialization.XmlArrayAttribute> to two arrays.  \n  \n [!code-cpp[Classic XmlArrayAttribute.XmlArrayAttribute Example#1](~/add/codesnippet/cpp/m-system.xml.serializati_12_1.cpp)]\n [!code-cs[Classic XmlArrayAttribute.XmlArrayAttribute Example#1](~/add/codesnippet/csharp/m-system.xml.serializati_12_1.cs)]\n [!code-vb[Classic XmlArrayAttribute.XmlArrayAttribute Example#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_12_1.vb)]"
+  syntax:
+    content: public XmlArrayAttribute ();
+    parameters: []
+  overload: System.Xml.Serialization.XmlArrayAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlArrayAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlArrayAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlArrayAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  langs:
+  - csharp
+  name: XmlArrayAttribute(String)
+  nameWithType: XmlArrayAttribute.XmlArrayAttribute(String)
+  fullName: System.Xml.Serialization.XmlArrayAttribute.XmlArrayAttribute(String)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlArrayAttribute"></xref> class and specifies the XML element name generated in the XML document instance.
+  remarks: For more information about using attributes, see [Attributes](../Topic/Extending%20Metadata%20Using%20Attributes.md).
+  example:
+  - "The following example assigns the <xref:System.Xml.Serialization.XmlArrayAttribute> to two arrays, and serializes a class instance that contains those arrays.  \n  \n [!code-xml[Classic XmlArrayAttribute.XmlArrayAttribute1 Example#1](~/add/codesnippet/xml/m-system.xml.serializati_2_1.xml)]\n [!code-vb[Classic XmlArrayAttribute.XmlArrayAttribute1 Example#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_2_1.vb)]\n [!code-cpp[Classic XmlArrayAttribute.XmlArrayAttribute1 Example#1](~/add/codesnippet/cpp/m-system.xml.serializati_2_1.cpp)]\n [!code-cs[Classic XmlArrayAttribute.XmlArrayAttribute1 Example#1](~/add/codesnippet/csharp/m-system.xml.serializati_2_1.cs)]"
+  syntax:
+    content: public XmlArrayAttribute (string elementName);
+    parameters:
+    - id: elementName
+      type: System.String
+      description: The name of the XML element that the <xref href="System.Xml.Serialization.XmlSerializer"></xref> generates.
+  overload: System.Xml.Serialization.XmlArrayAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlArrayAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlArrayAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlArrayAttribute.ElementName
+  id: ElementName
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  langs:
+  - csharp
+  name: ElementName
+  nameWithType: XmlArrayAttribute.ElementName
+  fullName: System.Xml.Serialization.XmlArrayAttribute.ElementName
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets the XML element name given to the serialized array.
+  remarks: "Specify an ElementName when you want the generated XML element name to differ from the member's identifier.  \n  \n You can set the same ElementName value to more than one member as long as the generated XML document uses XML namespaces to distinguish between the identically named members. For more details about using namespaces and creating prefixed names in the XML document, see <xref:System.Xml.Serialization.XmlSerializerNamespaces>."
+  example:
+  - "The following example serializes an instance of the `Library` class that contains a property named `Books` that returns an array of `Book` items. The example uses the ElementName property to specify that the array of XML elements should be named `My_Books` rather than `Books`.  \n  \n [!code-cpp[Classic XmlArrayAttribute.ElementName Example#1](~/add/codesnippet/cpp/p-system.xml.serializati_76_1.cpp)]\n [!code-cs[Classic XmlArrayAttribute.ElementName Example#1](~/add/codesnippet/csharp/p-system.xml.serializati_76_1.cs)]\n [!code-vb[Classic XmlArrayAttribute.ElementName Example#1](~/add/codesnippet/visualbasic/p-system.xml.serializati_76_1.vb)]"
+  syntax:
+    content: public string ElementName { get; set; }
+    return:
+      type: System.String
+      description: The XML element name of the serialized array. The default is the name of the member to which the <xref href="System.Xml.Serialization.XmlArrayAttribute"></xref> is assigned.
+  overload: System.Xml.Serialization.XmlArrayAttribute.ElementName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlArrayAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlArrayAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlArrayAttribute.Form
+  id: Form
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  langs:
+  - csharp
+  name: Form
+  nameWithType: XmlArrayAttribute.Form
+  fullName: System.Xml.Serialization.XmlArrayAttribute.Form
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets a value that indicates whether the XML element name generated by the <xref href="System.Xml.Serialization.XmlSerializer"></xref> is qualified or unqualified.
+  remarks: "The Form property determines whether an XML element name is qualified or unqualified. The Form property conforms to the 1999 World Wide Web Consortium (www.w3.org) document titled \"Namespaces in XML.\"  \n  \n If the <xref:System.Xml.Serialization.XmlAttributeAttribute.Namespace%2A> property is set to any value, attempting to set the <xref:System.Xml.Serialization.XmlElementAttribute.Form%2A> property to `XmlSchemaForm.Unqualified` throws an exception.  \n  \n The default setting, `XmlSchemaForm.None`, instructs the <xref:System.Xml.Serialization.XmlSerializer> to check the schema for the XML document to determine whether the namespace is qualified. If the schema does not specify a value for an individual element or attribute, the <xref:System.Xml.Serialization.XmlSerializer> uses the `elementFormDefault` and `attributeFormDefault` values to determine whether an element or attribute is qualified. The following XML code shows a schema:  \n  \n```  \n<schema elementFormDefault=\"qualified\"   \nattributeFormDefault=\"unqualified\"... >  \n   <element name=\"Name\"/>  \n   <attribute name=\"Number\"/>  \n</schema>  \n```  \n  \n When the <xref:System.Xml.Serialization.XmlSerializer> reads the schema, the <xref:System.Xml.Serialization.XmlAttributeAttribute.Form%2A> value for both the `Name` and `Number` is `XmlSchemaForm.None`, but the `Name` element is qualified, while the `Number` element is unqualified."
+  example:
+  - "The following example serializes an instance of the `Enterprises` class. Two XML elements have the same local name (`Company`) but different prefixes. The example sets the Form property is set to `XmlForm.Qualified` to ensure that the qualified names occur in the XML instance.  \n  \n [!code-cpp[Classic XmlArrayAttribute.Form Example#1](~/add/codesnippet/cpp/p-system.xml.serializati_19_1.cpp)]\n [!code-cs[Classic XmlArrayAttribute.Form Example#1](~/add/codesnippet/csharp/p-system.xml.serializati_19_1.cs)]\n [!code-vb[Classic XmlArrayAttribute.Form Example#1](~/add/codesnippet/visualbasic/p-system.xml.serializati_19_1.vb)]"
+  syntax:
+    content: public System.Xml.Schema.XmlSchemaForm Form { get; set; }
+    return:
+      type: System.Xml.Schema.XmlSchemaForm
+      description: One of the <xref href="System.Xml.Schema.XmlSchemaForm"></xref> values. The default is `XmlSchemaForm.None`.
+  overload: System.Xml.Serialization.XmlArrayAttribute.Form*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlArrayAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlArrayAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlArrayAttribute.IsNullable
+  id: IsNullable
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  langs:
+  - csharp
+  name: IsNullable
+  nameWithType: XmlArrayAttribute.IsNullable
+  fullName: System.Xml.Serialization.XmlArrayAttribute.IsNullable
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets a value that indicates whether the <xref href="System.Xml.Serialization.XmlSerializer"></xref> must serialize a member as an empty XML tag with the `xsi:nil` attribute set to `true`.
+  remarks: "The XML schema specification for structures allows an XML document to explicitly signal that an element's content is missing. Such an element contains the attribute `xsi:nil` set to `true`. For more information, see the World Wide Web Consortium (www.w3.org) specification titled \"XML Schema Part 1: Structures.\"  \n  \n If the IsNullable property is set to `true`, the `xsi:nil` attribute is generated for class members that have been set to `null`. For example, if you set a field named `MyStringArray` to `null`, the <xref:System.Xml.Serialization.XmlSerializer> generates the following XML code.  \n  \n```  \n<MyStringArray xsi:nil = \"true\" />  \n```  \n  \n If the IsNullable property is `false`, no XML element is generated.  \n  \n> [!NOTE]\n>  You cannot apply the IsNullable property to a member typed as a value type because a value type cannot contain `null`."
+  example:
+  - "The following example contains two arrays: one with the IsNullable property set to `true`, and another with the IsNullable property set to `false`.  \n  \n [!code-vb[Classic XmlArrayAttribute.IsNullable Example#1](~/add/codesnippet/visualbasic/p-system.xml.serializati_74_1.vb)]\n [!code-cs[Classic XmlArrayAttribute.IsNullable Example#1](~/add/codesnippet/csharp/p-system.xml.serializati_74_1.cs)]\n [!code-cpp[Classic XmlArrayAttribute.IsNullable Example#1](~/add/codesnippet/cpp/p-system.xml.serializati_74_1.cpp)]"
+  syntax:
+    content: public bool IsNullable { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="System.Xml.Serialization.XmlSerializer"></xref> generates the `xsi:nil` attribute; otherwise, `false`.'
+  overload: System.Xml.Serialization.XmlArrayAttribute.IsNullable*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlArrayAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlArrayAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlArrayAttribute.Namespace
+  id: Namespace
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  langs:
+  - csharp
+  name: Namespace
+  nameWithType: XmlArrayAttribute.Namespace
+  fullName: System.Xml.Serialization.XmlArrayAttribute.Namespace
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets the namespace of the XML element.
+  remarks: "The Namespace property allows you to create qualified XML element names. The Namespace property conforms to the rules for creating an XML namespace as found in the 1999 World Wide Web Consortium (www.w3.org) document titled \"Namespaces in XML.\"  \n  \n To create namespaces that are associated with a prefix, you must create an instance of the <xref:System.Xml.Serialization.XmlSerializerNamespaces> class that contains the namespaces and prefixes used in the XML document. As you set the namespace for each <xref:System.Xml.Serialization.XmlArrayAttribute>, it must match one of the namespaces in the <xref:System.Xml.Serialization.XmlSerializerNamespaces>. When the XML is generated, each array is correctly prefixed with the prefix associated with the specified namespace."
+  example:
+  - "The following example serializes an instance of the `Library` class that contains two members, one that contain book titles, and another that contain periodical titles. Although both XML elements are named `Titles`, each contains a different prefix. The example also includes an instance of the <xref:System.Xml.Serialization.XmlSerializerNamespaces> class that contains the namespaces and prefixes used to qualify the two element names.  \n  \n [!code-cpp[Classic XmlArrayAttribute.Namespace Example#1](~/add/codesnippet/cpp/p-system.xml.serializati_5_1.cpp)]\n [!code-cs[Classic XmlArrayAttribute.Namespace Example#1](~/add/codesnippet/csharp/p-system.xml.serializati_5_1.cs)]\n [!code-vb[Classic XmlArrayAttribute.Namespace Example#1](~/add/codesnippet/visualbasic/p-system.xml.serializati_5_1.vb)]"
+  syntax:
+    content: public string Namespace { get; set; }
+    return:
+      type: System.String
+      description: The namespace of the XML element.
+  overload: System.Xml.Serialization.XmlArrayAttribute.Namespace*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlArrayAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlArrayAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlArrayAttribute.Order
+  id: Order
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  langs:
+  - csharp
+  name: Order
+  nameWithType: XmlArrayAttribute.Order
+  fullName: System.Xml.Serialization.XmlArrayAttribute.Order
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets the explicit order in which the elements are serialized or deserialized.
+  remarks: "Use the <xref:System.Xml.Serialization.CodeGenerationOptions> enumeration to instruct the <xref:System.Web.Services.Description.ServiceDescriptionImporter> to generate code that sets the <xref:System.Xml.Serialization.XmlElementAttribute.Order%2A> property.  \n  \n> [!IMPORTANT]\n>  Once the <xref:System.Xml.Serialization.XmlElementAttribute.Order%2A> property has been used on one public property or field in a type, it must be applied to all public properties and fields for that type and all inherited types."
+  syntax:
+    content: public int Order { get; set; }
+    return:
+      type: System.Int32
+      description: The order of the code generation.
+  overload: System.Xml.Serialization.XmlArrayAttribute.Order*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlArrayAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlArrayAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Xml.Serialization.XmlArrayAttribute.#ctor
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  isExternal: false
+  name: XmlArrayAttribute()
+  nameWithType: XmlArrayAttribute.XmlArrayAttribute()
+  fullName: System.Xml.Serialization.XmlArrayAttribute.XmlArrayAttribute()
+- uid: System.Xml.Serialization.XmlArrayAttribute.#ctor(System.String)
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  isExternal: false
+  name: XmlArrayAttribute(String)
+  nameWithType: XmlArrayAttribute.XmlArrayAttribute(String)
+  fullName: System.Xml.Serialization.XmlArrayAttribute.XmlArrayAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Xml.Serialization.XmlArrayAttribute.ElementName
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  isExternal: false
+  name: ElementName
+  nameWithType: XmlArrayAttribute.ElementName
+  fullName: System.Xml.Serialization.XmlArrayAttribute.ElementName
+- uid: System.Xml.Serialization.XmlArrayAttribute.Form
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  isExternal: false
+  name: Form
+  nameWithType: XmlArrayAttribute.Form
+  fullName: System.Xml.Serialization.XmlArrayAttribute.Form
+- uid: System.Xml.Schema.XmlSchemaForm
+  parent: System.Xml.Schema
+  isExternal: false
+  name: XmlSchemaForm
+  nameWithType: XmlSchemaForm
+  fullName: System.Xml.Schema.XmlSchemaForm
+- uid: System.Xml.Serialization.XmlArrayAttribute.IsNullable
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  isExternal: false
+  name: IsNullable
+  nameWithType: XmlArrayAttribute.IsNullable
+  fullName: System.Xml.Serialization.XmlArrayAttribute.IsNullable
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Xml.Serialization.XmlArrayAttribute.Namespace
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  isExternal: false
+  name: Namespace
+  nameWithType: XmlArrayAttribute.Namespace
+  fullName: System.Xml.Serialization.XmlArrayAttribute.Namespace
+- uid: System.Xml.Serialization.XmlArrayAttribute.Order
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  isExternal: false
+  name: Order
+  nameWithType: XmlArrayAttribute.Order
+  fullName: System.Xml.Serialization.XmlArrayAttribute.Order
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Xml.Serialization.XmlArrayAttribute.#ctor*
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  isExternal: false
+  name: XmlArrayAttribute
+  nameWithType: XmlArrayAttribute.XmlArrayAttribute
+- uid: System.Xml.Serialization.XmlArrayAttribute.ElementName*
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  isExternal: false
+  name: ElementName
+  nameWithType: XmlArrayAttribute.ElementName
+- uid: System.Xml.Serialization.XmlArrayAttribute.Form*
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  isExternal: false
+  name: Form
+  nameWithType: XmlArrayAttribute.Form
+- uid: System.Xml.Serialization.XmlArrayAttribute.IsNullable*
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  isExternal: false
+  name: IsNullable
+  nameWithType: XmlArrayAttribute.IsNullable
+- uid: System.Xml.Serialization.XmlArrayAttribute.Namespace*
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  isExternal: false
+  name: Namespace
+  nameWithType: XmlArrayAttribute.Namespace
+- uid: System.Xml.Serialization.XmlArrayAttribute.Order*
+  parent: System.Xml.Serialization.XmlArrayAttribute
+  isExternal: false
+  name: Order
+  nameWithType: XmlArrayAttribute.Order

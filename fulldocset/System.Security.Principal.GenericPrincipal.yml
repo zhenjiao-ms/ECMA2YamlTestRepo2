@@ -1,0 +1,265 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Security.Principal.GenericPrincipal
+  id: GenericPrincipal
+  children:
+  - System.Security.Principal.GenericPrincipal.#ctor(System.Security.Principal.IIdentity,System.String[])
+  - System.Security.Principal.GenericPrincipal.Identity
+  - System.Security.Principal.GenericPrincipal.IsInRole(System.String)
+  langs:
+  - csharp
+  name: GenericPrincipal
+  nameWithType: GenericPrincipal
+  fullName: System.Security.Principal.GenericPrincipal
+  type: Class
+  summary: Represents a generic principal.
+  remarks: This class represents the roles of the current user.
+  example:
+  - "The following example shows the use of members of the GenericPrincipal class.  \n  \n [!code-cpp[System.Security.Principal.GenericPrincipal2#1](~/add/codesnippet/cpp/t-system.security.princi_0_1.cpp)]\n [!code-cs[System.Security.Principal.GenericPrincipal2#1](~/add/codesnippet/csharp/t-system.security.princi_0_1.cs)]\n [!code-vb[System.Security.Principal.GenericPrincipal2#1](~/add/codesnippet/visualbasic/t-system.security.princi_0_1.vb)]"
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public class GenericPrincipal : System.Security.Claims.ClaimsPrincipal
+  inheritance:
+  - System.Object
+  - System.Security.Claims.ClaimsPrincipal
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  - System.Security.Claims.ClaimsPrincipal.AddIdentities(System.Collections.Generic.IEnumerable{System.Security.Claims.ClaimsIdentity})
+  - System.Security.Claims.ClaimsPrincipal.AddIdentity(System.Security.Claims.ClaimsIdentity)
+  - System.Security.Claims.ClaimsPrincipal.Claims
+  - System.Security.Claims.ClaimsPrincipal.ClaimsPrincipalSelector
+  - System.Security.Claims.ClaimsPrincipal.Clone
+  - System.Security.Claims.ClaimsPrincipal.CreateClaimsIdentity(System.IO.BinaryReader)
+  - System.Security.Claims.ClaimsPrincipal.Current
+  - System.Security.Claims.ClaimsPrincipal.CustomSerializationData
+  - System.Security.Claims.ClaimsPrincipal.FindAll(System.Predicate{System.Security.Claims.Claim})
+  - System.Security.Claims.ClaimsPrincipal.FindAll(System.String)
+  - System.Security.Claims.ClaimsPrincipal.FindFirst(System.Predicate{System.Security.Claims.Claim})
+  - System.Security.Claims.ClaimsPrincipal.FindFirst(System.String)
+  - System.Security.Claims.ClaimsPrincipal.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.Security.Claims.ClaimsPrincipal.HasClaim(System.Predicate{System.Security.Claims.Claim})
+  - System.Security.Claims.ClaimsPrincipal.HasClaim(System.String,System.String)
+  - System.Security.Claims.ClaimsPrincipal.Identities
+  - System.Security.Claims.ClaimsPrincipal.PrimaryIdentitySelector
+  - System.Security.Claims.ClaimsPrincipal.WriteTo(System.IO.BinaryWriter)
+  - System.Security.Claims.ClaimsPrincipal.WriteTo(System.IO.BinaryWriter,System.Byte[])
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Security.Principal\GenericPrincipal.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Security.Principal/GenericPrincipal.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Security.Principal.GenericPrincipal.#ctor(System.Security.Principal.IIdentity,System.String[])
+  id: '#ctor(System.Security.Principal.IIdentity,System.String[])'
+  parent: System.Security.Principal.GenericPrincipal
+  langs:
+  - csharp
+  name: GenericPrincipal(IIdentity,String[])
+  nameWithType: GenericPrincipal.GenericPrincipal(IIdentity,String[])
+  fullName: System.Security.Principal.GenericPrincipal.GenericPrincipal(IIdentity,String[])
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Security.Principal
+  summary: Initializes a new instance of the <xref href="System.Security.Principal.GenericPrincipal"></xref> class from a user identity and an array of role names to which the user represented by that identity belongs.
+  remarks: ''
+  example:
+  - "The following code shows the use of the GenericPrincipal constructor. This code example is part of a larger example provided for the <xref:System.Security.Principal.GenericPrincipal> class.  \n  \n [!code-cpp[System.Security.Principal.GenericPrincipal2#2](~/add/codesnippet/cpp/16b2d72a-1cac-4b7c-9fa2-_1.cpp)]\n [!code-cs[System.Security.Principal.GenericPrincipal2#2](~/add/codesnippet/csharp/16b2d72a-1cac-4b7c-9fa2-_1.cs)]\n [!code-vb[System.Security.Principal.GenericPrincipal2#2](~/add/codesnippet/visualbasic/16b2d72a-1cac-4b7c-9fa2-_1.vb)]"
+  syntax:
+    content: public GenericPrincipal (System.Security.Principal.IIdentity identity, string[] roles);
+    parameters:
+    - id: identity
+      type: System.Security.Principal.IIdentity
+      description: A basic implementation of <xref href="System.Security.Principal.IIdentity"></xref> that represents any user.
+    - id: roles
+      type: System.String[]
+      description: An array of role names to which the user represented by the <code>identity</code> parameter belongs.
+  overload: System.Security.Principal.GenericPrincipal.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>identity</code> parameter is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Security.Principal\GenericPrincipal.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Security.Principal/GenericPrincipal.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Security.Principal.GenericPrincipal.Identity
+  id: Identity
+  parent: System.Security.Principal.GenericPrincipal
+  langs:
+  - csharp
+  name: Identity
+  nameWithType: GenericPrincipal.Identity
+  fullName: System.Security.Principal.GenericPrincipal.Identity
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Security.Principal
+  summary: Gets the <xref href="System.Security.Principal.GenericIdentity"></xref> of the user represented by the current <xref href="System.Security.Principal.GenericPrincipal"></xref>.
+  remarks: ''
+  example:
+  - "The following code shows the use of the Identity property. This code example is part of a larger example provided for the <xref:System.Security.Principal.GenericPrincipal> class.  \n  \n [!code-cpp[System.Security.Principal.GenericPrincipal2#3](~/add/codesnippet/cpp/p-system.security.princi_1_1.cpp)]\n [!code-cs[System.Security.Principal.GenericPrincipal2#3](~/add/codesnippet/csharp/p-system.security.princi_1_1.cs)]\n [!code-vb[System.Security.Principal.GenericPrincipal2#3](~/add/codesnippet/visualbasic/p-system.security.princi_1_1.vb)]"
+  syntax:
+    content: public override System.Security.Principal.IIdentity Identity { get; }
+    return:
+      type: System.Security.Principal.IIdentity
+      description: The <xref href="System.Security.Principal.GenericIdentity"></xref> of the user represented by the <xref href="System.Security.Principal.GenericPrincipal"></xref>.
+  overload: System.Security.Principal.GenericPrincipal.Identity*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Security.Principal\GenericPrincipal.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Security.Principal/GenericPrincipal.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Security.Principal.GenericPrincipal.IsInRole(System.String)
+  id: IsInRole(System.String)
+  parent: System.Security.Principal.GenericPrincipal
+  langs:
+  - csharp
+  name: IsInRole(String)
+  nameWithType: GenericPrincipal.IsInRole(String)
+  fullName: System.Security.Principal.GenericPrincipal.IsInRole(String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Security.Principal
+  summary: Determines whether the current <xref href="System.Security.Principal.GenericPrincipal"></xref> belongs to the specified role.
+  remarks: ''
+  example:
+  - "The following code shows the use of the IsInRole method. This code example is part of a larger example provided for the <xref:System.Security.Principal.GenericPrincipal> class.  \n  \n [!code-cpp[System.Security.Principal.GenericPrincipal2#4](~/add/codesnippet/cpp/m-system.security.princi_4_1.cpp)]\n [!code-cs[System.Security.Principal.GenericPrincipal2#4](~/add/codesnippet/csharp/m-system.security.princi_4_1.cs)]\n [!code-vb[System.Security.Principal.GenericPrincipal2#4](~/add/codesnippet/visualbasic/m-system.security.princi_4_1.vb)]"
+  syntax:
+    content: public override bool IsInRole (string role);
+    parameters:
+    - id: role
+      type: System.String
+      description: The name of the role for which to check membership.
+    return:
+      type: System.Boolean
+      description: '`true` if the current <xref href="System.Security.Principal.GenericPrincipal"></xref> is a member of the specified role; otherwise, `false`.'
+  overload: System.Security.Principal.GenericPrincipal.IsInRole*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Security.Principal\GenericPrincipal.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Security.Principal/GenericPrincipal.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Security.Claims.ClaimsPrincipal
+  isExternal: false
+  name: System.Security.Claims.ClaimsPrincipal
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.Security.Principal.GenericPrincipal.#ctor(System.Security.Principal.IIdentity,System.String[])
+  parent: System.Security.Principal.GenericPrincipal
+  isExternal: false
+  name: GenericPrincipal(IIdentity,String[])
+  nameWithType: GenericPrincipal.GenericPrincipal(IIdentity,String[])
+  fullName: System.Security.Principal.GenericPrincipal.GenericPrincipal(IIdentity,String[])
+- uid: System.Security.Principal.IIdentity
+  parent: System.Security.Principal
+  isExternal: false
+  name: IIdentity
+  nameWithType: IIdentity
+  fullName: System.Security.Principal.IIdentity
+- uid: System.String[]
+  parent: System
+  isExternal: false
+  name: String[]
+  nameWithType: String[]
+  fullName: System.String[]
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Security.Principal.GenericPrincipal.Identity
+  parent: System.Security.Principal.GenericPrincipal
+  isExternal: false
+  name: Identity
+  nameWithType: GenericPrincipal.Identity
+  fullName: System.Security.Principal.GenericPrincipal.Identity
+- uid: System.Security.Principal.GenericPrincipal.IsInRole(System.String)
+  parent: System.Security.Principal.GenericPrincipal
+  isExternal: false
+  name: IsInRole(String)
+  nameWithType: GenericPrincipal.IsInRole(String)
+  fullName: System.Security.Principal.GenericPrincipal.IsInRole(String)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Security.Principal.GenericPrincipal.#ctor*
+  parent: System.Security.Principal.GenericPrincipal
+  isExternal: false
+  name: GenericPrincipal
+  nameWithType: GenericPrincipal.GenericPrincipal
+- uid: System.Security.Principal.GenericPrincipal.Identity*
+  parent: System.Security.Principal.GenericPrincipal
+  isExternal: false
+  name: Identity
+  nameWithType: GenericPrincipal.Identity
+- uid: System.Security.Principal.GenericPrincipal.IsInRole*
+  parent: System.Security.Principal.GenericPrincipal
+  isExternal: false
+  name: IsInRole
+  nameWithType: GenericPrincipal.IsInRole

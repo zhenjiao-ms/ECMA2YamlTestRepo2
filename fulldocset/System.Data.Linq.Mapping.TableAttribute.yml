@@ -1,0 +1,189 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Data.Linq.Mapping.TableAttribute
+  id: TableAttribute
+  children:
+  - System.Data.Linq.Mapping.TableAttribute.#ctor
+  - System.Data.Linq.Mapping.TableAttribute.Name
+  langs:
+  - csharp
+  name: TableAttribute
+  nameWithType: TableAttribute
+  fullName: System.Data.Linq.Mapping.TableAttribute
+  type: Class
+  summary: Designates a class as an entity class that is associated with a database table.
+  remarks: "Use this attribute to designate a class as an entity class that is associated with a database table or view. [!INCLUDE[vbtecdlinq](~/add/includes/vbtecdlinq-md.md)] treats classes that have the TableAttribute attribute as persistent classes.  \n  \n [!INCLUDE[vbtecdlinq](~/add/includes/vbtecdlinq-md.md)] supports only single-table mapping. That is, an entity class must be mapped to exactly one database table, and you cannot map a database table to multiple classes at the same time.  \n  \n You can use the <xref:System.Data.Linq.Mapping.TableAttribute.Name%2A> property of the TableAttribute attribute to specify a name for the table, and you can optionally use the schema name to qualify a table name. If you do not specify a name by using the <xref:System.Data.Linq.Mapping.TableAttribute.Name%2A> property, the table name is assumed to be the same as the class name.  \n  \n## Schema-qualified Names  \n You can optionally use the schema name to qualify a table name. By default, the token to the left of the first period in the <xref:System.Data.Linq.Mapping.TableAttribute.Name%2A> string is considered to be the schema name. The remainder of the name is considered to be the table name. The provider quotes the table name as appropriate. For example, the [!INCLUDE[vbtecdlinq](~/add/includes/vbtecdlinq-md.md)] provider for SQL Server makes sure that brackets are used at least where they are needed.  \n  \n> [!NOTE]\n>  In some cases, you must explicitly quote attributes because the SQL Server provider cannot auto-quote. The following table shows some examples.  \n  \n|Case|Example: Identifier Name|Example: Expected String in Attributes|Otherwise…|  \n|----------|------------------------------|--------------------------------------------|----------------|  \n|Schema name contains a period|Schema: \"A.B\"<br /><br /> Table: \"C\"|\"[A.B].C\"|The first period is assumed to separate the schema name from the table name.|  \n|Schema/Table name starts with `@`|\"@SomeName\"|\"[@SomeName]\"|Assumed to be a parameter name.|  \n|Schema starts with `[` and ends with `]`|\"[Schema.Table]\"|\"[[Schema].[Table]]]\"|The unquoted identifier resembles a quoted identifier.|  \n|Table starts with `[` and ends with `]`|\"[Table]\"|\"[[Table]]]\"|The unquoted identifier resembles a quoted identifier.|"
+  example:
+  - >-
+    [!code-vb[DLinqCustomize#1](~/add/codesnippet/visualbasic/customize/Module1.vb#1)]
+     [!code-cs[DLinqCustomize#1](~/add/codesnippet/csharp/customize/Program.cs#1)]
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple=false, Inherited=false)]
+
+      public sealed class TableAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Linq.Mapping\TableAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Linq.Mapping/TableAttribute.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Linq.Mapping.TableAttribute.#ctor
+  id: '#ctor'
+  parent: System.Data.Linq.Mapping.TableAttribute
+  langs:
+  - csharp
+  name: TableAttribute()
+  nameWithType: TableAttribute.TableAttribute()
+  fullName: System.Data.Linq.Mapping.TableAttribute.TableAttribute()
+  type: Constructor
+  assemblies:
+  - System.Data.Linq
+  namespace: System.Data.Linq.Mapping
+  summary: Initializes a new instance of the <xref href="System.Data.Linq.Mapping.TableAttribute"></xref> class.
+  syntax:
+    content: public TableAttribute ();
+    parameters: []
+  overload: System.Data.Linq.Mapping.TableAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Linq.Mapping\TableAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Linq.Mapping/TableAttribute.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Linq.Mapping.TableAttribute.Name
+  id: Name
+  parent: System.Data.Linq.Mapping.TableAttribute
+  langs:
+  - csharp
+  name: Name
+  nameWithType: TableAttribute.Name
+  fullName: System.Data.Linq.Mapping.TableAttribute.Name
+  type: Property
+  assemblies:
+  - System.Data.Linq
+  namespace: System.Data.Linq.Mapping
+  summary: Gets or sets the name of the table or view.
+  remarks: "If you do not specify a name by using Name, the table name is assumed to be the same as the class name.  \n  \n> [!NOTE]\n>  You can optionally use a schema name to qualify the table name (for example, Schema3.Table5). By default, the token to the left of the first period in the Name string is considered to be the schema name, and the rest to be the table name.  \n  \n In the following example, the default table name, `Customer`, is changed to `Customers`."
+  example:
+  - >-
+    [!code-vb[DLinqCustomize#1](~/add/codesnippet/visualbasic/customize/Module1.vb#1)]
+     [!code-cs[DLinqCustomize#1](~/add/codesnippet/csharp/customize/Program.cs#1)]
+  syntax:
+    content: public string Name { get; set; }
+    return:
+      type: System.String
+      description: By default, the value is the same as the name of the class.
+  overload: System.Data.Linq.Mapping.TableAttribute.Name*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Linq.Mapping\TableAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Linq.Mapping/TableAttribute.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Data.Linq.Mapping.TableAttribute.#ctor
+  parent: System.Data.Linq.Mapping.TableAttribute
+  isExternal: false
+  name: TableAttribute()
+  nameWithType: TableAttribute.TableAttribute()
+  fullName: System.Data.Linq.Mapping.TableAttribute.TableAttribute()
+- uid: System.Data.Linq.Mapping.TableAttribute.Name
+  parent: System.Data.Linq.Mapping.TableAttribute
+  isExternal: false
+  name: Name
+  nameWithType: TableAttribute.Name
+  fullName: System.Data.Linq.Mapping.TableAttribute.Name
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Data.Linq.Mapping.TableAttribute.#ctor*
+  parent: System.Data.Linq.Mapping.TableAttribute
+  isExternal: false
+  name: TableAttribute
+  nameWithType: TableAttribute.TableAttribute
+- uid: System.Data.Linq.Mapping.TableAttribute.Name*
+  parent: System.Data.Linq.Mapping.TableAttribute
+  isExternal: false
+  name: Name
+  nameWithType: TableAttribute.Name

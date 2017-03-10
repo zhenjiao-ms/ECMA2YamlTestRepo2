@@ -1,0 +1,249 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Windows.Markup.XmlnsPrefixAttribute
+  id: XmlnsPrefixAttribute
+  children:
+  - System.Windows.Markup.XmlnsPrefixAttribute.#ctor(System.String,System.String)
+  - System.Windows.Markup.XmlnsPrefixAttribute.Prefix
+  - System.Windows.Markup.XmlnsPrefixAttribute.XmlNamespace
+  langs:
+  - csharp
+  name: XmlnsPrefixAttribute
+  nameWithType: XmlnsPrefixAttribute
+  fullName: System.Windows.Markup.XmlnsPrefixAttribute
+  type: Class
+  summary: Identifies a recommended prefix to associate with a XAML namespace for XAML usage, when writing elements and attributes in a XAML file (serialization) or when interacting with a design environment that has XAML editing features.
+  remarks: "XAML processors or frameworks that incorporate XAML, or any process that performs XAML serialization, should generally honor the recommended prefix. The prefix might be necessary in any case where prefixes from specific mappings in the original XAML source are not somehow preserved in the runtime object graph or otherwise stored by a framework or technology. A framework might have specific preferences for how to serialize its own types that ignore the recommended prefix from its own assemblies; this might be done to consistently promote a default XAML namespace. However, such a framework should still provide recommended prefixes for possible third-party and tool usages of its XAML types. See \"Best Practice for XAML Designer Support or General Serialization\" section below.  \n  \n A general recommendation for prefixes is to use short strings, because the prefix is typically applied to all serialized elements that come from the XAML namespace. The prefix string length can have a noticeable effect on the size of serialized XAML output.  \n  \n If a prefix being requested is already in use by another previously encountered/serialized XAML namespace identifier, the behavior is unspecified (behavior is up to each individual XAML processor implementation).  \n  \n In most cases, you apply XmlnsPrefixAttribute only if you have also applied at least one <xref:System.Windows.Markup.XmlnsDefinitionAttribute> in the assembly for that same XAML namespace.  \n  \n In previous versions of the .NET Framework, this class existed in the WPF-specific assembly WindowsBase. In [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], XmlnsPrefixAttribute is in the System.Xaml assembly. For more information, see [Types Migrated from WPF to System.Xaml](../Topic/Types%20Migrated%20from%20WPF%20to%20System.Xaml.md).  \n  \n## Best Practice for XAML Designer Support or General Serialization  \n Even if you intend the associated XAML namespace to be the default XAML namespace in most usage cases for your framework or library, you should still specify a non-empty string as the recommended prefix for a XAML namespace. Default XAML namespace information is carried in individual XAML files and XAML node streams. The default XAML namespace and how it is defined in a given XAML source can easily be perpetuated for per-case serialization without using XmlnsPrefixAttribute. However, the XmlnsPrefixAttribute is useful for cases where the XAML author has chosen to map the default XAML namespace to something else. In this scenario a XAML text editor embedded in a design environment can use XmlnsPrefixAttribute as a hint for an initial XAML namespace `xmlns` mapping. Or a design environment can add just-in-time mappings to the backing XAML for design metaphors such as dragging objects out of a toolbox and into a visual design surface. Also, it is conceivable that a designer could simultaneously support multiple XAML-enabling frameworks, and has a common XAML serializer that relies on .NET Framework XAML Services rather than framework-specific serialization. Specifying a XmlnsPrefixAttribute for these scenarios helps make the XAML usage for your types more portable and robust if the XAML is exchanged between design tools, or undergoes a round trip between XAML editors and other consumers such as markup compilers or other serialization."
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Assembly, AllowMultiple=true)]
+
+      [System.Runtime.CompilerServices.TypeForwardedFrom("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+
+      public sealed class XmlnsPrefixAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\XmlnsPrefixAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/XmlnsPrefixAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Windows.Markup.XmlnsPrefixAttribute.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: System.Windows.Markup.XmlnsPrefixAttribute
+  langs:
+  - csharp
+  name: XmlnsPrefixAttribute(String,String)
+  nameWithType: XmlnsPrefixAttribute.XmlnsPrefixAttribute(String,String)
+  fullName: System.Windows.Markup.XmlnsPrefixAttribute.XmlnsPrefixAttribute(String,String)
+  type: Constructor
+  assemblies:
+  - WindowsBase
+  - System.Xaml
+  namespace: System.Windows.Markup
+  summary: Initializes a new instance of the <xref href="System.Windows.Markup.XmlnsPrefixAttribute"></xref> class.
+  syntax:
+    content: public XmlnsPrefixAttribute (string xmlNamespace, string prefix);
+    parameters:
+    - id: xmlNamespace
+      type: System.String
+      description: The XAML namespace indentifier.
+    - id: prefix
+      type: System.String
+      description: The recommended prefix string.
+  overload: System.Windows.Markup.XmlnsPrefixAttribute.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>xmlNamespace</code> or <code>prefix</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\XmlnsPrefixAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/XmlnsPrefixAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Windows.Markup.XmlnsPrefixAttribute.Prefix
+  id: Prefix
+  parent: System.Windows.Markup.XmlnsPrefixAttribute
+  langs:
+  - csharp
+  name: Prefix
+  nameWithType: XmlnsPrefixAttribute.Prefix
+  fullName: System.Windows.Markup.XmlnsPrefixAttribute.Prefix
+  type: Property
+  assemblies:
+  - WindowsBase
+  - System.Xaml
+  namespace: System.Windows.Markup
+  summary: Gets the recommended prefix associated with this attribute.
+  syntax:
+    content: public string Prefix { get; }
+    return:
+      type: System.String
+      description: The recommended prefix string.
+  overload: System.Windows.Markup.XmlnsPrefixAttribute.Prefix*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\XmlnsPrefixAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/XmlnsPrefixAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Windows.Markup.XmlnsPrefixAttribute.XmlNamespace
+  id: XmlNamespace
+  parent: System.Windows.Markup.XmlnsPrefixAttribute
+  langs:
+  - csharp
+  name: XmlNamespace
+  nameWithType: XmlnsPrefixAttribute.XmlNamespace
+  fullName: System.Windows.Markup.XmlnsPrefixAttribute.XmlNamespace
+  type: Property
+  assemblies:
+  - WindowsBase
+  - System.Xaml
+  namespace: System.Windows.Markup
+  summary: Gets the XAML namespace identifier associated with this attribute.
+  syntax:
+    content: public string XmlNamespace { get; }
+    return:
+      type: System.String
+      description: The XAML namespace identifier.
+  overload: System.Windows.Markup.XmlnsPrefixAttribute.XmlNamespace*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\XmlnsPrefixAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/XmlnsPrefixAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.Windows.Markup.XmlnsPrefixAttribute.#ctor(System.String,System.String)
+  parent: System.Windows.Markup.XmlnsPrefixAttribute
+  isExternal: false
+  name: XmlnsPrefixAttribute(String,String)
+  nameWithType: XmlnsPrefixAttribute.XmlnsPrefixAttribute(String,String)
+  fullName: System.Windows.Markup.XmlnsPrefixAttribute.XmlnsPrefixAttribute(String,String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Windows.Markup.XmlnsPrefixAttribute.Prefix
+  parent: System.Windows.Markup.XmlnsPrefixAttribute
+  isExternal: false
+  name: Prefix
+  nameWithType: XmlnsPrefixAttribute.Prefix
+  fullName: System.Windows.Markup.XmlnsPrefixAttribute.Prefix
+- uid: System.Windows.Markup.XmlnsPrefixAttribute.XmlNamespace
+  parent: System.Windows.Markup.XmlnsPrefixAttribute
+  isExternal: false
+  name: XmlNamespace
+  nameWithType: XmlnsPrefixAttribute.XmlNamespace
+  fullName: System.Windows.Markup.XmlnsPrefixAttribute.XmlNamespace
+- uid: System.Windows.Markup.XmlnsPrefixAttribute.#ctor*
+  parent: System.Windows.Markup.XmlnsPrefixAttribute
+  isExternal: false
+  name: XmlnsPrefixAttribute
+  nameWithType: XmlnsPrefixAttribute.XmlnsPrefixAttribute
+- uid: System.Windows.Markup.XmlnsPrefixAttribute.Prefix*
+  parent: System.Windows.Markup.XmlnsPrefixAttribute
+  isExternal: false
+  name: Prefix
+  nameWithType: XmlnsPrefixAttribute.Prefix
+- uid: System.Windows.Markup.XmlnsPrefixAttribute.XmlNamespace*
+  parent: System.Windows.Markup.XmlnsPrefixAttribute
+  isExternal: false
+  name: XmlNamespace
+  nameWithType: XmlnsPrefixAttribute.XmlNamespace

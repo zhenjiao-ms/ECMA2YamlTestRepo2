@@ -1,0 +1,2115 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.Syndication.SyndicationItem
+  id: SyndicationItem
+  children:
+  - System.ServiceModel.Syndication.SyndicationItem.#ctor
+  - System.ServiceModel.Syndication.SyndicationItem.#ctor(System.ServiceModel.Syndication.SyndicationItem)
+  - System.ServiceModel.Syndication.SyndicationItem.#ctor(System.String,System.String,System.Uri)
+  - System.ServiceModel.Syndication.SyndicationItem.#ctor(System.String,System.ServiceModel.Syndication.SyndicationContent,System.Uri,System.String,System.DateTimeOffset)
+  - System.ServiceModel.Syndication.SyndicationItem.#ctor(System.String,System.String,System.Uri,System.String,System.DateTimeOffset)
+  - System.ServiceModel.Syndication.SyndicationItem.AddPermalink(System.Uri)
+  - System.ServiceModel.Syndication.SyndicationItem.AttributeExtensions
+  - System.ServiceModel.Syndication.SyndicationItem.Authors
+  - System.ServiceModel.Syndication.SyndicationItem.BaseUri
+  - System.ServiceModel.Syndication.SyndicationItem.Categories
+  - System.ServiceModel.Syndication.SyndicationItem.Clone
+  - System.ServiceModel.Syndication.SyndicationItem.Content
+  - System.ServiceModel.Syndication.SyndicationItem.Contributors
+  - System.ServiceModel.Syndication.SyndicationItem.Copyright
+  - System.ServiceModel.Syndication.SyndicationItem.CreateCategory
+  - System.ServiceModel.Syndication.SyndicationItem.CreateLink
+  - System.ServiceModel.Syndication.SyndicationItem.CreatePerson
+  - System.ServiceModel.Syndication.SyndicationItem.ElementExtensions
+  - System.ServiceModel.Syndication.SyndicationItem.GetAtom10Formatter
+  - System.ServiceModel.Syndication.SyndicationItem.GetRss20Formatter
+  - System.ServiceModel.Syndication.SyndicationItem.GetRss20Formatter(System.Boolean)
+  - System.ServiceModel.Syndication.SyndicationItem.Id
+  - System.ServiceModel.Syndication.SyndicationItem.LastUpdatedTime
+  - System.ServiceModel.Syndication.SyndicationItem.Links
+  - System.ServiceModel.Syndication.SyndicationItem.Load(System.Xml.XmlReader)
+  - System.ServiceModel.Syndication.SyndicationItem.Load``1(System.Xml.XmlReader)
+  - System.ServiceModel.Syndication.SyndicationItem.PublishDate
+  - System.ServiceModel.Syndication.SyndicationItem.SaveAsAtom10(System.Xml.XmlWriter)
+  - System.ServiceModel.Syndication.SyndicationItem.SaveAsRss20(System.Xml.XmlWriter)
+  - System.ServiceModel.Syndication.SyndicationItem.SourceFeed
+  - System.ServiceModel.Syndication.SyndicationItem.Summary
+  - System.ServiceModel.Syndication.SyndicationItem.Title
+  - System.ServiceModel.Syndication.SyndicationItem.TryParseAttribute(System.String,System.String,System.String,System.String)
+  - System.ServiceModel.Syndication.SyndicationItem.TryParseContent(System.Xml.XmlReader,System.String,System.String,System.ServiceModel.Syndication.SyndicationContent@)
+  - System.ServiceModel.Syndication.SyndicationItem.TryParseElement(System.Xml.XmlReader,System.String)
+  - System.ServiceModel.Syndication.SyndicationItem.WriteAttributeExtensions(System.Xml.XmlWriter,System.String)
+  - System.ServiceModel.Syndication.SyndicationItem.WriteElementExtensions(System.Xml.XmlWriter,System.String)
+  langs:
+  - csharp
+  name: SyndicationItem
+  nameWithType: SyndicationItem
+  fullName: System.ServiceModel.Syndication.SyndicationItem
+  type: Class
+  summary: Represents a feed item, for example an RSS `<item>` or an Atom `<entry>`.
+  remarks: "When serialized to Atom 1.0, a SyndicationItem instance is written to an `<entry>` element. The following table shows how each property defined for SyndicationItem is serialized for Atom 1.0.  \n  \n|SyndicationItem property|Serialized form|  \n|------------------------------|---------------------|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.AttributeExtensions%2A>|Attribute in the `<entry>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Authors%2A>|An `<author>` element for each author in the collection.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Categories%2A>|A`<category>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Content%2A>|A`<content>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Contributors%2A>|A`<contributor>` element for each contributor in the collection.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Copyright%2A>|A`<rights>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.ElementExtensions%2A>|Element in the `<entry>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Id%2A>|An `<id>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.LastUpdatedTime%2A>|An `<updated>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Links%2A>|A `<link>` element for each link in the collection.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.PublishDate%2A>|A `<published>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.SourceFeed%2A>|A `<source>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Summary%2A>|A `<summary>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Title%2A>|A `<title>` element.|  \n  \n When serialized to RSS 2.0, a SyndicationItem instance is written to an `<item>` element. The following table shows how each property defined for SyndicationItem is serialized for RSS 2.0.  \n  \n|SyndicationItem property|Serialized form|  \n|------------------------------|---------------------|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.AttributeExtensions%2A>|Attribute in the `<item>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Authors%2A>|A `<managingEditor>` if only one <xref:System.ServiceModel.Syndication.SyndicationPerson> is in the <xref:System.ServiceModel.Syndication.SyndicationItem.Authors%2A> collection; otherwise, the `<a10:author>` element for each author in the collection.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Categories%2A>|A `<category>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Content%2A>|An `<a10:content>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Contributors%2A>|An `<a10:contributor>` element for each <xref:System.ServiceModel.Syndication.SyndicationPerson> in the <xref:System.ServiceModel.Syndication.SyndicationItem.Contributors%2A> collection.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Copyright%2A>|A `<copyright>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.ElementExtensions%2A>|Element in the `<item>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Id%2A>|An `<a10:id>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.LastUpdatedTime%2A>|An `<a10:updated>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Links%2A>|A `<link>` element for each <xref:System.ServiceModel.Syndication.SyndicationLink> in the <xref:System.ServiceModel.Syndication.SyndicationItem.Links%2A> collection.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.PublishDate%2A>|A `<pubDate>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.SourceFeed%2A>|A `<source>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Summary%2A>|A `<description>` element.|  \n|<xref:System.ServiceModel.Syndication.SyndicationItem.Title%2A>|A `<title>` element.|"
+  example:
+  - "The following code shows how to use the SyndicationItem class.  \n  \n [!code-cs[SyndicationItem#0](~/add/codesnippet/csharp/t-system.servicemodel.sy_13_1.cs)]\n [!code-vb[SyndicationItem#0](~/add/codesnippet/visualbasic/t-system.servicemodel.sy_13_1.vb)]"
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+
+      public class SyndicationItem
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.#ctor
+  id: '#ctor'
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: SyndicationItem()
+  nameWithType: SyndicationItem.SyndicationItem()
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SyndicationItem()
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> class.
+  syntax:
+    content: public SyndicationItem ();
+    parameters: []
+  overload: System.ServiceModel.Syndication.SyndicationItem.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.#ctor(System.ServiceModel.Syndication.SyndicationItem)
+  id: '#ctor(System.ServiceModel.Syndication.SyndicationItem)'
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: SyndicationItem(SyndicationItem)
+  nameWithType: SyndicationItem.SyndicationItem(SyndicationItem)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SyndicationItem(SyndicationItem)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> class with the specified <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> instance.
+  syntax:
+    content: protected SyndicationItem (System.ServiceModel.Syndication.SyndicationItem source);
+    parameters:
+    - id: source
+      type: System.ServiceModel.Syndication.SyndicationItem
+      description: A <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> instance used to initialize the new <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> instance.
+  overload: System.ServiceModel.Syndication.SyndicationItem.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.#ctor(System.String,System.String,System.Uri)
+  id: '#ctor(System.String,System.String,System.Uri)'
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: SyndicationItem(String,String,Uri)
+  nameWithType: SyndicationItem.SyndicationItem(String,String,Uri)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SyndicationItem(String,String,Uri)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> class with the specified title, content, and link.
+  remarks: ''
+  example:
+  - "The following example shows how to call this constructor.  \n  \n [!code-cs[SyndicationItem#1](~/add/codesnippet/csharp/5d8e0cf0-a56c-47db-bcba-_1.cs)]\n [!code-vb[SyndicationItem#1](~/add/codesnippet/visualbasic/5d8e0cf0-a56c-47db-bcba-_1.vb)]"
+  syntax:
+    content: public SyndicationItem (string title, string content, Uri itemAlternateLink);
+    parameters:
+    - id: title
+      type: System.String
+      description: The item title.
+    - id: content
+      type: System.String
+      description: The item content.
+    - id: itemAlternateLink
+      type: System.Uri
+      description: The item URL.
+  overload: System.ServiceModel.Syndication.SyndicationItem.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.#ctor(System.String,System.ServiceModel.Syndication.SyndicationContent,System.Uri,System.String,System.DateTimeOffset)
+  id: '#ctor(System.String,System.ServiceModel.Syndication.SyndicationContent,System.Uri,System.String,System.DateTimeOffset)'
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: SyndicationItem(String,SyndicationContent,Uri,String,DateTimeOffset)
+  nameWithType: SyndicationItem.SyndicationItem(String,SyndicationContent,Uri,String,DateTimeOffset)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SyndicationItem(String,SyndicationContent,Uri,String,DateTimeOffset)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> class.
+  remarks: ''
+  example:
+  - "The following code shows how to call this constructor.  \n  \n [!code-cs[SyndicationItem#35](~/add/codesnippet/csharp/e66b736a-8dd0-4292-8b22-_1.cs)]\n [!code-vb[SyndicationItem#35](~/add/codesnippet/visualbasic/e66b736a-8dd0-4292-8b22-_1.vb)]"
+  syntax:
+    content: public SyndicationItem (string title, System.ServiceModel.Syndication.SyndicationContent content, Uri itemAlternateLink, string id, DateTimeOffset lastUpdatedTime);
+    parameters:
+    - id: title
+      type: System.String
+      description: The title of the syndication item.
+    - id: content
+      type: System.ServiceModel.Syndication.SyndicationContent
+      description: A <xref href="System.ServiceModel.Syndication.SyndicationContent"></xref> instance containing the content of the syndication item.
+    - id: itemAlternateLink
+      type: System.Uri
+      description: The alternate URI for the syndication item.
+    - id: id
+      type: System.String
+      description: The ID of the syndication item.
+    - id: lastUpdatedTime
+      type: System.DateTimeOffset
+      description: The <xref href="System.DateTimeOffset"></xref> that contains the last time the syndication item was last updated.
+  overload: System.ServiceModel.Syndication.SyndicationItem.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.#ctor(System.String,System.String,System.Uri,System.String,System.DateTimeOffset)
+  id: '#ctor(System.String,System.String,System.Uri,System.String,System.DateTimeOffset)'
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: SyndicationItem(String,String,Uri,String,DateTimeOffset)
+  nameWithType: SyndicationItem.SyndicationItem(String,String,Uri,String,DateTimeOffset)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SyndicationItem(String,String,Uri,String,DateTimeOffset)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> class.
+  remarks: ''
+  example:
+  - "The following code shows how to call this constructor.  \n  \n [!code-cs[SyndicationItem#34](~/add/codesnippet/csharp/aa86c7c1-4c75-40c3-a914-_1.cs)]\n [!code-vb[SyndicationItem#34](~/add/codesnippet/visualbasic/aa86c7c1-4c75-40c3-a914-_1.vb)]"
+  syntax:
+    content: public SyndicationItem (string title, string content, Uri itemAlternateLink, string id, DateTimeOffset lastUpdatedTime);
+    parameters:
+    - id: title
+      type: System.String
+      description: The title of the syndication item.
+    - id: content
+      type: System.String
+      description: The content of the syndication item.
+    - id: itemAlternateLink
+      type: System.Uri
+      description: The alternate URI for the syndication item.
+    - id: id
+      type: System.String
+      description: The ID of the syndication item.
+    - id: lastUpdatedTime
+      type: System.DateTimeOffset
+      description: The <xref href="System.DateTimeOffset"></xref> that contains the last time the syndication item was last updated.
+  overload: System.ServiceModel.Syndication.SyndicationItem.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.AddPermalink(System.Uri)
+  id: AddPermalink(System.Uri)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: AddPermalink(Uri)
+  nameWithType: SyndicationItem.AddPermalink(Uri)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.AddPermalink(Uri)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Adds a *permalink* to the <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref>.
+  remarks: A permalink is a static URI that points to some content on the Web.
+  example:
+  - "The following code shows how to add a permalink to a syndication item.  \n  \n [!code-cs[SyndicationItem#36](~/add/codesnippet/csharp/m-system.servicemodel.sy_16_1.cs)]\n [!code-vb[SyndicationItem#36](~/add/codesnippet/visualbasic/m-system.servicemodel.sy_16_1.vb)]"
+  syntax:
+    content: public void AddPermalink (Uri permalink);
+    parameters:
+    - id: permalink
+      type: System.Uri
+      description: The <xref href="System.Uri"></xref> that points to the content.
+  overload: System.ServiceModel.Syndication.SyndicationItem.AddPermalink*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.AttributeExtensions
+  id: AttributeExtensions
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: AttributeExtensions
+  nameWithType: SyndicationItem.AttributeExtensions
+  fullName: System.ServiceModel.Syndication.SyndicationItem.AttributeExtensions
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets the attribute extensions for the syndication item.
+  remarks: The Syndication object model allows you to add custom attributes to a <xref:System.ServiceModel.Syndication.SyndicationItem> instance. When serialized for Atom 1.0, the custom attribute is written to an `<entry>` element. When serialized for RSS 2.0, the custom attribute is written to an `<item>` element. For a complete example that shows how to add an attribute extension, see the [Loosely-Typed Extensions](../Topic/Loosely-Typed%20Extensions%20Sample.md) sample.
+  example:
+  - "The following code shows how to add an attribute extension to a syndication feed.  \n  \n [!code-cs[LooselyTypedExtensions#3](~/add/codesnippet/csharp/p-system.servicemodel.sy_33_1.cs)]\n [!code-vb[LooselyTypedExtensions#3](~/add/codesnippet/visualbasic/p-system.servicemodel.sy_33_1.vb)]  \n  \n The following XML code shows an Atom 1.0 serialization of a <xref:System.ServiceModel.Syndication.SyndicationItem> instance with a custom attribute called `itemAttrib`.  \n  \n [!code-xml[SyndicationItem#4](~/add/codesnippet/xml/p-system.servicemodel.sy_33_2.xml)]  \n  \n The following code shows the same <xref:System.ServiceModel.Syndication.SyndicationItem> instance serialized as RSS 2.0.  \n  \n [!code-xml[SyndicationItem#5](~/add/codesnippet/xml/p-system.servicemodel.sy_33_3.xml)]"
+  syntax:
+    content: public System.Collections.Generic.Dictionary<System.Xml.XmlQualifiedName,string> AttributeExtensions { get; }
+    return:
+      type: System.Collections.Generic.Dictionary{System.Xml.XmlQualifiedName,System.String}
+      description: A dictionary that contains a collection of attribute extensions.
+  overload: System.ServiceModel.Syndication.SyndicationItem.AttributeExtensions*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.Authors
+  id: Authors
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: Authors
+  nameWithType: SyndicationItem.Authors
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Authors
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets the authors of the syndication item.
+  remarks: "When serializing to Atom 1.0, an `<author>` element is written for each <xref:System.ServiceModel.Syndication.SyndicationPerson> in the Authors collection.  \n  \n When serializing to RSS 2.0. a `<managingEditor>` element is written if the Authors collection has only one <xref:System.ServiceModel.Syndication.SyndicationPerson>, otherwise a `<a10:author>` element is written for each <xref:System.ServiceModel.Syndication.SyndicationPerson> in the Authors collection."
+  example:
+  - "The following code shows how to add an author to the Authors collection of a <xref:System.ServiceModel.Syndication.SyndicationItem>.  \n  \n [!code-cs[SyndicationItem#22](~/add/codesnippet/csharp/p-system.servicemodel.sy_32_1.cs)]\n [!code-vb[SyndicationItem#22](~/add/codesnippet/visualbasic/p-system.servicemodel.sy_32_1.vb)]  \n  \n The following XML shows how the preceding <xref:System.ServiceModel.Syndication.SyndicationItem> is serialized to Atom 1.0.  \n  \n [!code-xml[SyndicationItem#6](~/add/codesnippet/xml/p-system.servicemodel.sy_32_2.xml)]  \n  \n The following XML shows how the preceding <xref:System.ServiceModel.Syndication.SyndicationItem> is serialized to RSS 2.0.  \n  \n [!code-xml[SyndicationItem#7](~/add/codesnippet/xml/p-system.servicemodel.sy_32_3.xml)]"
+  syntax:
+    content: public System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.SyndicationPerson> Authors { get; }
+    return:
+      type: System.Collections.ObjectModel.Collection{System.ServiceModel.Syndication.SyndicationPerson}
+      description: A collection of <xref href="System.ServiceModel.Syndication.SyndicationPerson"></xref> objects that represent the authors of the syndication item.
+  overload: System.ServiceModel.Syndication.SyndicationItem.Authors*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.BaseUri
+  id: BaseUri
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: BaseUri
+  nameWithType: SyndicationItem.BaseUri
+  fullName: System.ServiceModel.Syndication.SyndicationItem.BaseUri
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets and sets the base Uniform Resource Identifier (URI) for the <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> instance.
+  remarks: ''
+  example:
+  - "The following example shows how to set the base URI of a syndication item.  \n  \n [!code-cs[SyndicationItem#33](~/add/codesnippet/csharp/p-system.servicemodel.sy_4_1.cs)]\n [!code-vb[SyndicationItem#33](~/add/codesnippet/visualbasic/p-system.servicemodel.sy_4_1.vb)]"
+  syntax:
+    content: public Uri BaseUri { get; set; }
+    return:
+      type: System.Uri
+      description: The base URI of the <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref>.
+  overload: System.ServiceModel.Syndication.SyndicationItem.BaseUri*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.Categories
+  id: Categories
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: Categories
+  nameWithType: SyndicationItem.Categories
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Categories
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets the syndication categories for the syndication item.
+  remarks: When serialized to Atom 1.0 or RSS 2.0, a `<category>` element is created for each category in the Categories collection.
+  example:
+  - "The following code shows how to add a category to the Categories collection of a <xref:System.ServiceModel.Syndication.SyndicationItem>.  \n  \n [!code-cs[SyndicationItem#23](~/add/codesnippet/csharp/p-system.servicemodel.sy_8_1.cs)]\n [!code-vb[SyndicationItem#23](~/add/codesnippet/visualbasic/p-system.servicemodel.sy_8_1.vb)]  \n  \n The following XML shows how a <xref:System.ServiceModel.Syndication.SyndicationItem> instance with a category is serialized to Atom 1.0.  \n  \n [!code-xml[SyndicationItem#8](~/add/codesnippet/xml/p-system.servicemodel.sy_8_2.xml)]  \n  \n The following XML shows how a <xref:System.ServiceModel.Syndication.SyndicationItem> instance with a category is serialized to RSS 2.0.  \n  \n [!code-xml[SyndicationItem#9](~/add/codesnippet/xml/p-system.servicemodel.sy_8_3.xml)]"
+  syntax:
+    content: public System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.SyndicationCategory> Categories { get; }
+    return:
+      type: System.Collections.ObjectModel.Collection{System.ServiceModel.Syndication.SyndicationCategory}
+      description: A collection of <xref href="System.ServiceModel.Syndication.SyndicationCategory"></xref> objects that represent the categories of the syndication item.
+  overload: System.ServiceModel.Syndication.SyndicationItem.Categories*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.Clone
+  id: Clone
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: Clone()
+  nameWithType: SyndicationItem.Clone()
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Clone()
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Creates a copy of the <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> instance.
+  remarks: ''
+  example:
+  - "The following code shows how to clone an instance of the <xref:System.ServiceModel.Syndication.SyndicationItem> class.  \n  \n [!code-cs[SyndicationItem#41](~/add/codesnippet/csharp/m-system.servicemodel.sy_8_1.cs)]\n [!code-vb[SyndicationItem#41](~/add/codesnippet/visualbasic/m-system.servicemodel.sy_8_1.vb)]"
+  syntax:
+    content: public virtual System.ServiceModel.Syndication.SyndicationItem Clone ();
+    parameters: []
+    return:
+      type: System.ServiceModel.Syndication.SyndicationItem
+      description: A <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> instance.
+  overload: System.ServiceModel.Syndication.SyndicationItem.Clone*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.Content
+  id: Content
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: Content
+  nameWithType: SyndicationItem.Content
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Content
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets and sets the content of the syndication item.
+  remarks: "<xref:System.ServiceModel.Syndication.SyndicationContent> is a base class for all syndication content types. The [!INCLUDE[netfx35_short](~/add/includes/netfx35-short-md.md)] defines the following syndication content types:  \n  \n-   <xref:System.ServiceModel.Syndication.TextSyndicationContent>  \n  \n-   <xref:System.ServiceModel.Syndication.UrlSyndicationContent>  \n  \n-   <xref:System.ServiceModel.Syndication.XmlSyndicationContent>  \n  \n You can assign this property to any of these content types (or possibly a user-defined type derived from <xref:System.ServiceModel.Syndication.SyndicationContent>).  \n  \n For Atom 1.0, the Content property is serialized to a `<content>` element.  \n  \n For RSS 2.0, the Content property is serialized to a `<description>` element for <xref:System.ServiceModel.Syndication.TextSyndicationContent>, a `<a10:content>` element for <xref:System.ServiceModel.Syndication.UrlSyndicationContent> and <xref:System.ServiceModel.Syndication.XmlSyndicationContent>."
+  example:
+  - "The following code shows how to add content to a <xref:System.ServiceModel.Syndication.SyndicationItem>.  \n  \n [!code-cs[SyndicationItem#24](~/add/codesnippet/csharp/p-system.servicemodel.sy_9_1.cs)]\n [!code-vb[SyndicationItem#24](~/add/codesnippet/visualbasic/p-system.servicemodel.sy_9_1.vb)]  \n  \n The following XML shows how the Content property is serialized for Atom 1.0.  \n  \n <xref:System.ServiceModel.Syndication.TextSyndicationContent> is serialized as shown in the following example.  \n  \n```  \n<content type=\"text\">This is some content</content>  \n```  \n  \n <xref:System.ServiceModel.Syndication.UrlSyndicationContent> is serialized as shown in the following example.  \n  \n```  \n<content type=\"text/html\" src=\"http://myurl/\" />  \n```  \n  \n <xref:System.ServiceModel.Syndication.XmlSyndicationContent> is serialized as shown in the following example.  \n  \n```  \n<content type=\"MyXMLType\">  \n    <mg:MyElement xmlns:mg=\"http://migree/elements\">This is some text</mg:MyElement>  \n</content>  \n```  \n  \n The following XML shows how the Content property is serialized for RSS 2.0.  \n  \n <xref:System.ServiceModel.Syndication.TextSyndicationContent> is serialized as shown in the following example.  \n  \n```  \n<description>This is some content</description>  \n```  \n  \n <xref:System.ServiceModel.Syndication.UrlSyndicationContent> is serialized as shown in the following example.  \n  \n```  \n<a10:content type=\"text/html\" src=\"http://myurl/\" />  \n```  \n  \n <xref:System.ServiceModel.Syndication.XmlSyndicationContent> is serialized as shown in the following example.  \n  \n```  \n<a10:content type=\"MyXMLType\">  \n    <mg:MyElement xmlns:mg=\"http://migree/elements\">This is some text</mg:MyElement>  \n</a10:content>  \n```"
+  syntax:
+    content: public System.ServiceModel.Syndication.SyndicationContent Content { get; set; }
+    return:
+      type: System.ServiceModel.Syndication.SyndicationContent
+      description: A <xref href="System.ServiceModel.Syndication.SyndicationContent"></xref> instance that contains the content of the syndication item.
+  overload: System.ServiceModel.Syndication.SyndicationItem.Content*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.Contributors
+  id: Contributors
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: Contributors
+  nameWithType: SyndicationItem.Contributors
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Contributors
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets the contributors of the syndication item.
+  remarks: "When serialized to Atom 1.0, a `<contributor>` element is created for each <xref:System.ServiceModel.Syndication.SyndicationPerson> in the Contributors collection.  \n  \n When serialized to RSS 2.0, a `<a10:contributor>` element is created for each <xref:System.ServiceModel.Syndication.SyndicationPerson> in the Contributors collection."
+  example:
+  - "The following code shows how to add a contributor to a <xref:System.ServiceModel.Syndication.SyndicationItem>.  \n  \n [!code-cs[SyndicationItem#25](~/add/codesnippet/csharp/p-system.servicemodel.sy_1_1.cs)]\n [!code-vb[SyndicationItem#25](~/add/codesnippet/visualbasic/p-system.servicemodel.sy_1_1.vb)]  \n  \n The following XML shows how this property is serialized to Atom 1.0.  \n  \n [!code-xml[SyndicationItem#10](~/add/codesnippet/xml/p-system.servicemodel.sy_1_2.xml)]  \n  \n The following XML shows how this property is serialized to RSS 2.0.  \n  \n [!code-xml[SyndicationItem#11](~/add/codesnippet/xml/p-system.servicemodel.sy_1_3.xml)]"
+  syntax:
+    content: public System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.SyndicationPerson> Contributors { get; }
+    return:
+      type: System.Collections.ObjectModel.Collection{System.ServiceModel.Syndication.SyndicationPerson}
+      description: A collection of <xref href="System.ServiceModel.Syndication.SyndicationPerson"></xref> objects that represent the contributors of the syndication item.
+  overload: System.ServiceModel.Syndication.SyndicationItem.Contributors*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.Copyright
+  id: Copyright
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: Copyright
+  nameWithType: SyndicationItem.Copyright
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Copyright
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets and sets the copyright information for the syndication item.
+  remarks: When serialized to Atom 1.0, this property is written to a `<rights>` element. When serialized to RSS 2.0, this property is written to a `<a10:rights>` element.
+  example:
+  - "The following code shows how to add copyright information to a <xref:System.ServiceModel.Syndication.SyndicationItem>.  \n  \n [!code-cs[SyndicationItem#26](~/add/codesnippet/csharp/p-system.servicemodel.sy_23_1.cs)]\n [!code-vb[SyndicationItem#26](~/add/codesnippet/visualbasic/p-system.servicemodel.sy_23_1.vb)]  \n  \n The following XML shows how this property is serialized to Atom 1.0.  \n  \n```  \n<rights type=\"text\">Copyright 2007</rights>  \n```  \n  \n The following XML shows how this property is serialized to RSS 2.0.  \n  \n```  \n<a10:rights type=\"text\">Copyright 2007</a10:rights>  \n```"
+  syntax:
+    content: public System.ServiceModel.Syndication.TextSyndicationContent Copyright { get; set; }
+    return:
+      type: System.ServiceModel.Syndication.TextSyndicationContent
+      description: A <xref href="System.ServiceModel.Syndication.TextSyndicationContent"></xref> instance that represents copyright information.
+  overload: System.ServiceModel.Syndication.SyndicationItem.Copyright*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.CreateCategory
+  id: CreateCategory
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: CreateCategory()
+  nameWithType: SyndicationItem.CreateCategory()
+  fullName: System.ServiceModel.Syndication.SyndicationItem.CreateCategory()
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Creates a new category.
+  remarks: This does not add the new <xref:System.ServiceModel.Syndication.SyndicationCategory> object to the <xref:System.ServiceModel.Syndication.SyndicationItem.Categories%2A> collection.
+  syntax:
+    content: protected virtual System.ServiceModel.Syndication.SyndicationCategory CreateCategory ();
+    parameters: []
+    return:
+      type: System.ServiceModel.Syndication.SyndicationCategory
+      description: A new <xref href="System.ServiceModel.Syndication.SyndicationCategory"></xref> object.
+  overload: System.ServiceModel.Syndication.SyndicationItem.CreateCategory*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.CreateLink
+  id: CreateLink
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: CreateLink()
+  nameWithType: SyndicationItem.CreateLink()
+  fullName: System.ServiceModel.Syndication.SyndicationItem.CreateLink()
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Creates a new <xref href="System.ServiceModel.Syndication.SyndicationLink"></xref> instance.
+  remarks: The new <xref:System.ServiceModel.Syndication.SyndicationLink> instance is not automatically added to the <xref:System.ServiceModel.Syndication.SyndicationItem> instance used to call the CreateLink method.
+  syntax:
+    content: protected virtual System.ServiceModel.Syndication.SyndicationLink CreateLink ();
+    parameters: []
+    return:
+      type: System.ServiceModel.Syndication.SyndicationLink
+      description: A new <xref href="System.ServiceModel.Syndication.SyndicationLink"></xref> instance.
+  overload: System.ServiceModel.Syndication.SyndicationItem.CreateLink*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.CreatePerson
+  id: CreatePerson
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: CreatePerson()
+  nameWithType: SyndicationItem.CreatePerson()
+  fullName: System.ServiceModel.Syndication.SyndicationItem.CreatePerson()
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Creates a new person.
+  remarks: This does not add the new <xref:System.ServiceModel.Syndication.SyndicationPerson> object to the <xref:System.ServiceModel.Syndication.SyndicationItem.Authors%2A> or <xref:System.ServiceModel.Syndication.SyndicationItem.Contributors%2A> collection.
+  syntax:
+    content: protected virtual System.ServiceModel.Syndication.SyndicationPerson CreatePerson ();
+    parameters: []
+    return:
+      type: System.ServiceModel.Syndication.SyndicationPerson
+      description: A new <xref href="System.ServiceModel.Syndication.SyndicationPerson"></xref> object.
+  overload: System.ServiceModel.Syndication.SyndicationItem.CreatePerson*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.ElementExtensions
+  id: ElementExtensions
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: ElementExtensions
+  nameWithType: SyndicationItem.ElementExtensions
+  fullName: System.ServiceModel.Syndication.SyndicationItem.ElementExtensions
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets the element extensions contained in the syndication item.
+  remarks: "Element extensions are valid XML elements that are not specified in either the Atom 1.0 or RSS 2.0 specifications. Any valid XML element can be added as an extension provided its namespace is different from the enclosing namespace. When serialized, extensions are written like any other XML element.  \n  \n```  \n<mg:MyElement xmlns:mg=\"http://myserver/elements\" />  \n```  \n  \n For a complete example that shows how to add element extensions, see the [Loosely-Typed Extensions](../Topic/Loosely-Typed%20Extensions%20Sample.md) sample."
+  example:
+  - "The following code shows how to add element extensions to a <xref:System.ServiceModel.Syndication.SyndicationItem> instance.  \n  \n [!code-cs[LooselyTypedExtensions#2](~/add/codesnippet/csharp/p-system.servicemodel.sy_36_1.cs)]\n [!code-vb[LooselyTypedExtensions#2](~/add/codesnippet/visualbasic/p-system.servicemodel.sy_36_1.vb)]"
+  syntax:
+    content: public System.ServiceModel.Syndication.SyndicationElementExtensionCollection ElementExtensions { get; }
+    return:
+      type: System.ServiceModel.Syndication.SyndicationElementExtensionCollection
+      description: A <xref href="System.ServiceModel.Syndication.SyndicationElementExtensionCollection"></xref> that contains the element extensions.
+  overload: System.ServiceModel.Syndication.SyndicationItem.ElementExtensions*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.GetAtom10Formatter
+  id: GetAtom10Formatter
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: GetAtom10Formatter()
+  nameWithType: SyndicationItem.GetAtom10Formatter()
+  fullName: System.ServiceModel.Syndication.SyndicationItem.GetAtom10Formatter()
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets an <xref href="System.ServiceModel.Syndication.Atom10FeedFormatter"></xref> instance.
+  remarks: ''
+  example:
+  - "The following code shows how to write a syndication item in Atom 1.0 format to an XML file.  \n  \n [!code-cs[SyndicationItem#42](~/add/codesnippet/csharp/m-system.servicemodel.sy_20_1.cs)]\n [!code-vb[SyndicationItem#42](~/add/codesnippet/visualbasic/m-system.servicemodel.sy_20_1.vb)]"
+  syntax:
+    content: public System.ServiceModel.Syndication.Atom10ItemFormatter GetAtom10Formatter ();
+    parameters: []
+    return:
+      type: System.ServiceModel.Syndication.Atom10ItemFormatter
+      description: A <xref href="System.ServiceModel.Syndication.Atom10FeedFormatter"></xref> instance.
+  overload: System.ServiceModel.Syndication.SyndicationItem.GetAtom10Formatter*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.GetRss20Formatter
+  id: GetRss20Formatter
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: GetRss20Formatter()
+  nameWithType: SyndicationItem.GetRss20Formatter()
+  fullName: System.ServiceModel.Syndication.SyndicationItem.GetRss20Formatter()
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets an <xref href="System.ServiceModel.Syndication.Rss20FeedFormatter"></xref> instance.
+  remarks: ''
+  example:
+  - "The following code shows how to write a syndication item in RSS 2.0 format to an XML file.  \n  \n [!code-cs[SyndicationItem#43](~/add/codesnippet/csharp/m-system.servicemodel.sy_5_1.cs)]\n [!code-vb[SyndicationItem#43](~/add/codesnippet/visualbasic/m-system.servicemodel.sy_5_1.vb)]"
+  syntax:
+    content: public System.ServiceModel.Syndication.Rss20ItemFormatter GetRss20Formatter ();
+    parameters: []
+    return:
+      type: System.ServiceModel.Syndication.Rss20ItemFormatter
+      description: An <xref href="System.ServiceModel.Syndication.Rss20FeedFormatter"></xref> instance.
+  overload: System.ServiceModel.Syndication.SyndicationItem.GetRss20Formatter*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.GetRss20Formatter(System.Boolean)
+  id: GetRss20Formatter(System.Boolean)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: GetRss20Formatter(Boolean)
+  nameWithType: SyndicationItem.GetRss20Formatter(Boolean)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.GetRss20Formatter(Boolean)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets an <xref href="System.ServiceModel.Syndication.Rss20FeedFormatter"></xref> instance.
+  remarks: RSS 2.0 allows elements and attributes that are not in its specification only if they are within a namespace. When the `serializedExtensionsAsAtom` parameter is `true`, the formatter automatically adds the "a10" namespace to all extensions; otherwise, the extensions are not serialized.
+  example:
+  - "The following code shows how to write a syndication item in RSS 2.0 format to an XML file, serializing attribute and element extensions.  \n  \n [!code-cs[SyndicationItem#44](~/add/codesnippet/csharp/dc0ce6ce-b0c5-40ab-adec-_1.cs)]\n [!code-vb[SyndicationItem#44](~/add/codesnippet/visualbasic/dc0ce6ce-b0c5-40ab-adec-_1.vb)]"
+  syntax:
+    content: public System.ServiceModel.Syndication.Rss20ItemFormatter GetRss20Formatter (bool serializeExtensionsAsAtom);
+    parameters:
+    - id: serializeExtensionsAsAtom
+      type: System.Boolean
+      description: A value that specifies whether to serialize element and attribute extensions with an Atom 1.0 namespace.
+    return:
+      type: System.ServiceModel.Syndication.Rss20ItemFormatter
+      description: An <xref href="System.ServiceModel.Syndication.Rss20FeedFormatter"></xref> instance.
+  overload: System.ServiceModel.Syndication.SyndicationItem.GetRss20Formatter*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.Id
+  id: Id
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: Id
+  nameWithType: SyndicationItem.Id
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Id
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets and sets the ID of the syndication item.
+  remarks: When serialized to Atom 1.0, this property is written to the `<id>` element. When serialized to RSS 2.0, this property is written to the `<guid>` element.
+  example:
+  - "The following code shows how to set the Id property on a <xref:System.ServiceModel.Syndication.SyndicationItem> instance.  \n  \n [!code-cs[SyndicationItem#27](~/add/codesnippet/csharp/p-system.servicemodel.sy_19_1.cs)]\n [!code-vb[SyndicationItem#27](~/add/codesnippet/visualbasic/p-system.servicemodel.sy_19_1.vb)]  \n  \n The following XML shows how this property is serialized to Atom 1.0.  \n  \n```  \n<id>Item ID</id>  \n```  \n  \n The following XML shows how this property is serialized to RSS 2.0.  \n  \n```  \n<guid isPermaLink=\"false\">Item ID</guid>  \n```"
+  syntax:
+    content: public string Id { get; set; }
+    return:
+      type: System.String
+      description: The ID of the syndication item.
+  overload: System.ServiceModel.Syndication.SyndicationItem.Id*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.LastUpdatedTime
+  id: LastUpdatedTime
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: LastUpdatedTime
+  nameWithType: SyndicationItem.LastUpdatedTime
+  fullName: System.ServiceModel.Syndication.SyndicationItem.LastUpdatedTime
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets and sets the last updated time for the syndication item.
+  remarks: When serialized to Atom 1.0, this property is written to an `<updated>` item. When serialized to RSS 2.0, this property is written to an `<a10:updated>` item.
+  example:
+  - "The following code shows how to set the LastUpdatedTime property on a <xref:System.ServiceModel.Syndication.SyndicationItem> instance.  \n  \n [!code-cs[SyndicationItem#28](~/add/codesnippet/csharp/p-system.servicemodel.sy_29_1.cs)]\n [!code-vb[SyndicationItem#28](~/add/codesnippet/visualbasic/p-system.servicemodel.sy_29_1.vb)]  \n  \n The following XML shows how this property is serialized to Atom 1.0.  \n  \n```  \n<updated>2007-03-19T20:34:23Z</updated>  \n```  \n  \n The following XML shows how this property is serialized to RSS 2.0.  \n  \n```  \n<a10:updated>2007-03-19T20:34:23Z</a10:updated>  \n```"
+  syntax:
+    content: public DateTimeOffset LastUpdatedTime { get; set; }
+    return:
+      type: System.DateTimeOffset
+      description: A <xref href="System.DateTimeOffset"></xref> instance that represents the time the syndication item was last updated.
+  overload: System.ServiceModel.Syndication.SyndicationItem.LastUpdatedTime*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.Links
+  id: Links
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: Links
+  nameWithType: SyndicationItem.Links
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Links
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets the links contained in the syndication item.
+  remarks: When serialized to Atom 1.0, a `<link>` element is written for each <xref:System.ServiceModel.Syndication.SyndicationLink> in the collection. When serialized to RSS 2.0, an `<a10:link>` element is written for each <xref:System.ServiceModel.Syndication.SyndicationLink> in the collection.
+  example:
+  - "The following code shows how to add a link to the Links collection of a <xref:System.ServiceModel.Syndication.SyndicationItem> instance.  \n  \n [!code-cs[SyndicationItem#29](~/add/codesnippet/csharp/p-system.servicemodel.sy_27_1.cs)]\n [!code-vb[SyndicationItem#29](~/add/codesnippet/visualbasic/p-system.servicemodel.sy_27_1.vb)]  \n  \n The following XML shows how this property is serialized to Atom 1.0.  \n  \n [!code-xml[SyndicationItem#12](~/add/codesnippet/xml/p-system.servicemodel.sy_27_2.xml)]  \n  \n The following XML shows how this property is serialized to RSS 2.0.  \n  \n [!code-xml[SyndicationItem#13](~/add/codesnippet/xml/p-system.servicemodel.sy_27_3.xml)]"
+  syntax:
+    content: public System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.SyndicationLink> Links { get; }
+    return:
+      type: System.Collections.ObjectModel.Collection{System.ServiceModel.Syndication.SyndicationLink}
+      description: A collection of <xref href="System.ServiceModel.Syndication.SyndicationLink"></xref> objects.
+  overload: System.ServiceModel.Syndication.SyndicationItem.Links*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.Load(System.Xml.XmlReader)
+  id: Load(System.Xml.XmlReader)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: Load(XmlReader)
+  nameWithType: SyndicationItem.Load(XmlReader)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Load(XmlReader)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Loads a <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> instance from the specified <xref href="System.Xml.XmlReader"></xref>.
+  remarks: ''
+  example:
+  - "The following example shows how to load a syndication item into a <xref:System.ServiceModel.Syndication.SyndicationItem> instance.  \n  \n [!code-cs[SyndicationItem#21](~/add/codesnippet/csharp/m-system.servicemodel.sy_15_1.cs)]\n [!code-vb[SyndicationItem#21](~/add/codesnippet/visualbasic/m-system.servicemodel.sy_15_1.vb)]"
+  syntax:
+    content: public static System.ServiceModel.Syndication.SyndicationItem Load (System.Xml.XmlReader reader);
+    parameters:
+    - id: reader
+      type: System.Xml.XmlReader
+      description: The <xref href="System.Xml.XmlReader"></xref> to read from.
+    return:
+      type: System.ServiceModel.Syndication.SyndicationItem
+      description: A <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> instance.
+  overload: System.ServiceModel.Syndication.SyndicationItem.Load*
+  exceptions:
+  - type: System.Xml.XmlException
+    commentId: T:System.Xml.XmlException
+    description: Invalid XML encountered during read.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.Load``1(System.Xml.XmlReader)
+  id: Load``1(System.Xml.XmlReader)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: Load<TSyndicationItem>(XmlReader)
+  nameWithType: SyndicationItem.Load<TSyndicationItem>(XmlReader)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Load<TSyndicationItem>(XmlReader)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Loads a <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> derived object from the specified <xref href="System.Xml.XmlReader"></xref>.
+  remarks: Use this method when you are loading a syndication item into a class derived from <xref:System.ServiceModel.Syndication.SyndicationItem>.
+  example:
+  - "The following code shows how to load a syndication item of the specified type from an XML reader.  \n  \n [!code-cs[SyndicationItem#37](~/add/codesnippet/csharp/m-system.servicemodel.sy_3_1.cs)]\n [!code-vb[SyndicationItem#37](~/add/codesnippet/visualbasic/m-system.servicemodel.sy_3_1.vb)]"
+  syntax:
+    content: 'public static TSyndicationItem Load<TSyndicationItem> (System.Xml.XmlReader reader) where TSyndicationItem : System.ServiceModel.Syndication.SyndicationItemnew();'
+    parameters:
+    - id: reader
+      type: System.Xml.XmlReader
+      description: The <xref href="System.Xml.XmlReader"></xref> to read from.
+    return:
+      type: TSyndicationItem
+      description: A <xref href="System.ServiceModel.Syndication.SyndicationItem"></xref> derived object that contains the syndication item.
+  overload: System.ServiceModel.Syndication.SyndicationItem.Load<TSyndicationItem>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.PublishDate
+  id: PublishDate
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: PublishDate
+  nameWithType: SyndicationItem.PublishDate
+  fullName: System.ServiceModel.Syndication.SyndicationItem.PublishDate
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets and sets the publish date for the syndication item.
+  remarks: When serialized to Atom 1.0, this property is written to a `<published>` element. When serialized to RSS 2.0, this property is written to a `<pubDate>` element.
+  example:
+  - "The following code shows how to set the PublishDate on a <xref:System.ServiceModel.Syndication.SyndicationItem> instance.  \n  \n [!code-cs[SyndicationItem#30](~/add/codesnippet/csharp/p-system.servicemodel.sy_39_1.cs)]\n [!code-vb[SyndicationItem#30](~/add/codesnippet/visualbasic/p-system.servicemodel.sy_39_1.vb)]  \n  \n The following XML shows how this property is serialized to Atom 1.0.  \n  \n```  \n<published>1968-02-23T08:00:00Z</published>  \n```  \n  \n The following XML shows how this property is serialized to RSS 2.0.  \n  \n```  \n<pubDate>Fri, 23 Feb 1968 08:00:00 Z</pubDate>  \n```"
+  syntax:
+    content: public DateTimeOffset PublishDate { get; set; }
+    return:
+      type: System.DateTimeOffset
+      description: A <xref href="System.DateTimeOffset"></xref> object that represents the publish date for the syndication item.
+  overload: System.ServiceModel.Syndication.SyndicationItem.PublishDate*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.SaveAsAtom10(System.Xml.XmlWriter)
+  id: SaveAsAtom10(System.Xml.XmlWriter)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: SaveAsAtom10(XmlWriter)
+  nameWithType: SyndicationItem.SaveAsAtom10(XmlWriter)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SaveAsAtom10(XmlWriter)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Write the syndication item to the specified <xref href="System.Xml.XmlWriter"></xref> in Atom 1.0 format.
+  remarks: ''
+  example:
+  - "The following code shows how to save a syndication item in Atom 1.0 format to the specified XML writer.  \n  \n [!code-cs[SyndicationItem#38](~/add/codesnippet/csharp/94ca143a-4b51-4f47-b09c-_1.cs)]\n [!code-vb[SyndicationItem#38](~/add/codesnippet/visualbasic/94ca143a-4b51-4f47-b09c-_1.vb)]"
+  syntax:
+    content: public void SaveAsAtom10 (System.Xml.XmlWriter writer);
+    parameters:
+    - id: writer
+      type: System.Xml.XmlWriter
+      description: The <xref href="System.Xml.XmlWriter"></xref> to write to.
+  overload: System.ServiceModel.Syndication.SyndicationItem.SaveAsAtom10*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.SaveAsRss20(System.Xml.XmlWriter)
+  id: SaveAsRss20(System.Xml.XmlWriter)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: SaveAsRss20(XmlWriter)
+  nameWithType: SyndicationItem.SaveAsRss20(XmlWriter)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SaveAsRss20(XmlWriter)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Write the syndication item to the specified <xref href="System.Xml.XmlWriter"></xref> in RSS 2.0 format.
+  remarks: ''
+  example:
+  - "The following code shows how to save a syndication item in RSS 2.0 format to the specified XML writer.  \n  \n [!code-cs[SyndicationItem#39](~/add/codesnippet/csharp/9d8c7f85-a61c-4396-8bb7-_1.cs)]\n [!code-vb[SyndicationItem#39](~/add/codesnippet/visualbasic/9d8c7f85-a61c-4396-8bb7-_1.vb)]"
+  syntax:
+    content: public void SaveAsRss20 (System.Xml.XmlWriter writer);
+    parameters:
+    - id: writer
+      type: System.Xml.XmlWriter
+      description: The <xref href="System.Xml.XmlWriter"></xref> to write to.
+  overload: System.ServiceModel.Syndication.SyndicationItem.SaveAsRss20*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.SourceFeed
+  id: SourceFeed
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: SourceFeed
+  nameWithType: SyndicationItem.SourceFeed
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SourceFeed
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets and sets the source feed of the syndication item.
+  remarks: This property is not automatically set when you add a <xref:System.ServiceModel.Syndication.SyndicationItem> to a <xref:System.ServiceModel.Syndication.SyndicationFeed>—you must explicitly set it. When serialized to Atom 1.0 or RSS 2.0, this property is written to a `<source>` element. The contents of that element vary depending on the format you serialize to.
+  example:
+  - "The following XML shows how the SourceFeed property is serialized to Atom 1.0.  \n  \n [!code-xml[SyndicationItem#14](~/add/codesnippet/xml/p-system.servicemodel.sy_14_1.xml)]  \n  \n The following XML shows how the SourceFeed property is serialized to RSS 2.0.  \n  \n [!code-xml[SyndicationItem#15](~/add/codesnippet/xml/p-system.servicemodel.sy_14_2.xml)]"
+  syntax:
+    content: public System.ServiceModel.Syndication.SyndicationFeed SourceFeed { get; set; }
+    return:
+      type: System.ServiceModel.Syndication.SyndicationFeed
+      description: A <xref href="System.ServiceModel.Syndication.SyndicationFeed"></xref> instance where the syndication item is located.
+  overload: System.ServiceModel.Syndication.SyndicationItem.SourceFeed*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.Summary
+  id: Summary
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: Summary
+  nameWithType: SyndicationItem.Summary
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Summary
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets and sets the summary of the syndication item.
+  remarks: When serialized to Atom 1.0, this property is written to a `<summary>` element. When serialized to RSS 2.0, this property is written to a `<description>` element.
+  example:
+  - "The following code shows how to set the Summary property on a <xref:System.ServiceModel.Syndication.SyndicationItem> instance.  \n  \n [!code-cs[SyndicationItem#31](~/add/codesnippet/csharp/p-system.servicemodel.sy_41_1.cs)]\n [!code-vb[SyndicationItem#31](~/add/codesnippet/visualbasic/p-system.servicemodel.sy_41_1.vb)]  \n  \n The following XML shows how the Summary property is serialized to Atom 1.0.  \n  \n [!code-xml[SyndicationItem#16](~/add/codesnippet/xml/p-system.servicemodel.sy_41_2.xml)]  \n  \n The following XML shows how the Summary property is serialized to RSS 2.0.  \n  \n [!code-xml[SyndicationItem#17](~/add/codesnippet/xml/p-system.servicemodel.sy_41_3.xml)]"
+  syntax:
+    content: public System.ServiceModel.Syndication.TextSyndicationContent Summary { get; set; }
+    return:
+      type: System.ServiceModel.Syndication.TextSyndicationContent
+      description: A <xref href="System.ServiceModel.Syndication.TextSyndicationContent"></xref> that contains a summary of the item.
+  overload: System.ServiceModel.Syndication.SyndicationItem.Summary*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.Title
+  id: Title
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: Title
+  nameWithType: SyndicationItem.Title
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Title
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Gets and sets the title of the syndication item.
+  remarks: When serialized to Atom 1.0 or RSS 2.0, this property is written to a `<title>` element.
+  example:
+  - "The following code shows how to set the Title property on a <xref:System.ServiceModel.Syndication.SyndicationItem> instance.  \n  \n [!code-cs[SyndicationItem#32](~/add/codesnippet/csharp/p-system.servicemodel.sy_43_1.cs)]\n [!code-vb[SyndicationItem#32](~/add/codesnippet/visualbasic/p-system.servicemodel.sy_43_1.vb)]  \n  \n The following XML shows how the Title property is serialized to Atom 1.0.  \n  \n [!code-xml[SyndicationItem#18](~/add/codesnippet/xml/p-system.servicemodel.sy_43_2.xml)]  \n  \n The following XML code shows how the Title property is serialized to RSS 2.0.  \n  \n [!code-xml[SyndicationItem#19](~/add/codesnippet/xml/p-system.servicemodel.sy_43_3.xml)]"
+  syntax:
+    content: public System.ServiceModel.Syndication.TextSyndicationContent Title { get; set; }
+    return:
+      type: System.ServiceModel.Syndication.TextSyndicationContent
+      description: A <xref href="System.ServiceModel.Syndication.TextSyndicationContent"></xref> object that contains the title of the syndication item.
+  overload: System.ServiceModel.Syndication.SyndicationItem.Title*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.TryParseAttribute(System.String,System.String,System.String,System.String)
+  id: TryParseAttribute(System.String,System.String,System.String,System.String)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: TryParseAttribute(String,String,String,String)
+  nameWithType: SyndicationItem.TryParseAttribute(String,String,String,String)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.TryParseAttribute(String,String,String,String)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Attempts to parse an attribute extension.
+  remarks: Attribute extensions are custom attributes that are not defined by the Atom 1.0 or RSS 2.0 specifications. They are serialized as an attribute of the `<entry>` (for Atom 1.0) or `<item>` (for RSS 1.0) element, depending upon the syndication version being used. This method is an extension point that allows you to handle the deserialization of a custom attribute extension. To do this, you must derive a class from <xref:System.ServiceModel.Syndication.SyndicationItem> and override this method. This method is called for all unrecognized attribute extensions.
+  syntax:
+    content: protected virtual bool TryParseAttribute (string name, string ns, string value, string version);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the element.
+    - id: ns
+      type: System.String
+      description: The namespace of the element.
+    - id: value
+      type: System.String
+      description: The attribute to parse.
+    - id: version
+      type: System.String
+      description: The syndication version to use when parsing.
+    return:
+      type: System.Boolean
+      description: A value that specifies whether the attribute extension was parsed successfully.
+  overload: System.ServiceModel.Syndication.SyndicationItem.TryParseAttribute*
+  exceptions:
+  - type: System.Xml.XmlException
+    commentId: T:System.Xml.XmlException
+    description: Invalid XML encountered during read.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.TryParseContent(System.Xml.XmlReader,System.String,System.String,System.ServiceModel.Syndication.SyndicationContent@)
+  id: TryParseContent(System.Xml.XmlReader,System.String,System.String,System.ServiceModel.Syndication.SyndicationContent@)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: TryParseContent(XmlReader,String,String,SyndicationContent)
+  nameWithType: SyndicationItem.TryParseContent(XmlReader,String,String,SyndicationContent)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.TryParseContent(XmlReader,String,String,SyndicationContent)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Attempts to parse content.
+  remarks: This method is an extension point that allows you to handle the deserialization of a custom content. To do this, you must derive a class from <xref:System.ServiceModel.Syndication.SyndicationItem> and override this method. This method is called for all unrecognized content.
+  syntax:
+    content: protected virtual bool TryParseContent (System.Xml.XmlReader reader, string contentType, string version, out System.ServiceModel.Syndication.SyndicationContent content);
+    parameters:
+    - id: reader
+      type: System.Xml.XmlReader
+      description: The <xref href="System.Xml.XmlReader"></xref> to read from.
+    - id: contentType
+      type: System.String
+      description: The content type of the content.
+    - id: version
+      type: System.String
+      description: The syndication version to use while parsing.
+    - id: content
+      type: System.ServiceModel.Syndication.SyndicationContent
+      description: The <xref href="System.ServiceModel.Syndication.SyndicationContent"></xref> instance to load the parsed content into.
+    return:
+      type: System.Boolean
+      description: A value that specifies whether the content was parsed successfully.
+  overload: System.ServiceModel.Syndication.SyndicationItem.TryParseContent*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.TryParseElement(System.Xml.XmlReader,System.String)
+  id: TryParseElement(System.Xml.XmlReader,System.String)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: TryParseElement(XmlReader,String)
+  nameWithType: SyndicationItem.TryParseElement(XmlReader,String)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.TryParseElement(XmlReader,String)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Attempts to parse an element extension.
+  remarks: Element extensions are valid XML elements that are not specified in either the Atom 1.0 or RSS 2.0 specifications. You can add any valid XML element as an extension, provided its namespace is different from the enclosing namespace. This method is an extension point that allows you to handle the deserialization of a custom element extension. To do this, you must derive a class from <xref:System.ServiceModel.Syndication.SyndicationItem> and override this method. This method is called for all unrecognized element extensions.
+  syntax:
+    content: protected virtual bool TryParseElement (System.Xml.XmlReader reader, string version);
+    parameters:
+    - id: reader
+      type: System.Xml.XmlReader
+      description: The <xref href="System.Xml.XmlReader"></xref> to read from.
+    - id: version
+      type: System.String
+      description: The syndication version to use while parsing.
+    return:
+      type: System.Boolean
+      description: A value that specifies whether the element extension was parsed successfully.
+  overload: System.ServiceModel.Syndication.SyndicationItem.TryParseElement*
+  exceptions:
+  - type: System.Xml.XmlException
+    commentId: T:System.Xml.XmlException
+    description: Invalid XML encountered during read.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.WriteAttributeExtensions(System.Xml.XmlWriter,System.String)
+  id: WriteAttributeExtensions(System.Xml.XmlWriter,System.String)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: WriteAttributeExtensions(XmlWriter,String)
+  nameWithType: SyndicationItem.WriteAttributeExtensions(XmlWriter,String)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.WriteAttributeExtensions(XmlWriter,String)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Writes the attribute extensions to the specified <xref href="System.Xml.XmlWriter"></xref> using the specified syndication version.
+  remarks: Attribute extensions are custom attributes that are not defined by the Atom 1.0 or RSS 2.0 specifications. They are serialized as an attribute of the `<entry>` (for Atom 1.0) or `<item>` (for RSS 1.0) element, depending upon the syndication version being used. This method is an extension point that allows you to handle the serialization of custom attribute extensions. To do this, you must derive a class from <xref:System.ServiceModel.Syndication.SyndicationItem> and override this method. This method is called for all unrecognized attribute extensions.
+  syntax:
+    content: protected virtual void WriteAttributeExtensions (System.Xml.XmlWriter writer, string version);
+    parameters:
+    - id: writer
+      type: System.Xml.XmlWriter
+      description: The <xref href="System.Xml.XmlReader"></xref> to write to.
+    - id: version
+      type: System.String
+      description: The syndication version to use while writing.
+  overload: System.ServiceModel.Syndication.SyndicationItem.WriteAttributeExtensions*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Syndication.SyndicationItem.WriteElementExtensions(System.Xml.XmlWriter,System.String)
+  id: WriteElementExtensions(System.Xml.XmlWriter,System.String)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  langs:
+  - csharp
+  name: WriteElementExtensions(XmlWriter,String)
+  nameWithType: SyndicationItem.WriteElementExtensions(XmlWriter,String)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.WriteElementExtensions(XmlWriter,String)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System.ServiceModel.Syndication
+  summary: Writes the element extensions to the specified <xref href="System.Xml.XmlWriter"></xref> using the specific syndication version.
+  remarks: Element extensions are valid XML elements that are not specified in either the Atom 1.0 or RSS 2.0 specifications. You can add any valid XML element as an extension, provided its namespace is different from the enclosing namespace. This method is an extension point that allows you to handle the serialization of custom element extensions. To do this, you must derive a class from <xref:System.ServiceModel.Syndication.SyndicationItem> and override this method. This method is called for all unrecognized element extensions.
+  syntax:
+    content: protected virtual void WriteElementExtensions (System.Xml.XmlWriter writer, string version);
+    parameters:
+    - id: writer
+      type: System.Xml.XmlWriter
+      description: The <xref href="System.Xml.XmlReader"></xref> to write to.
+    - id: version
+      type: System.String
+      description: The syndication version to use while writing.
+  overload: System.ServiceModel.Syndication.SyndicationItem.WriteElementExtensions*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Syndication\SyndicationItem.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Syndication/SyndicationItem.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.Xml.XmlException
+  parent: System.Xml
+  isExternal: false
+  name: XmlException
+  nameWithType: XmlException
+  fullName: System.Xml.XmlException
+- uid: System.ServiceModel.Syndication.SyndicationItem.#ctor
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: SyndicationItem()
+  nameWithType: SyndicationItem.SyndicationItem()
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SyndicationItem()
+- uid: System.ServiceModel.Syndication.SyndicationItem.#ctor(System.ServiceModel.Syndication.SyndicationItem)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: SyndicationItem(SyndicationItem)
+  nameWithType: SyndicationItem.SyndicationItem(SyndicationItem)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SyndicationItem(SyndicationItem)
+- uid: System.ServiceModel.Syndication.SyndicationItem
+  parent: System.ServiceModel.Syndication
+  isExternal: false
+  name: SyndicationItem
+  nameWithType: SyndicationItem
+  fullName: System.ServiceModel.Syndication.SyndicationItem
+- uid: System.ServiceModel.Syndication.SyndicationItem.#ctor(System.String,System.String,System.Uri)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: SyndicationItem(String,String,Uri)
+  nameWithType: SyndicationItem.SyndicationItem(String,String,Uri)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SyndicationItem(String,String,Uri)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Uri
+  parent: System
+  isExternal: false
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: System.ServiceModel.Syndication.SyndicationItem.#ctor(System.String,System.ServiceModel.Syndication.SyndicationContent,System.Uri,System.String,System.DateTimeOffset)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: SyndicationItem(String,SyndicationContent,Uri,String,DateTimeOffset)
+  nameWithType: SyndicationItem.SyndicationItem(String,SyndicationContent,Uri,String,DateTimeOffset)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SyndicationItem(String,SyndicationContent,Uri,String,DateTimeOffset)
+- uid: System.ServiceModel.Syndication.SyndicationContent
+  parent: System.ServiceModel.Syndication
+  isExternal: false
+  name: SyndicationContent
+  nameWithType: SyndicationContent
+  fullName: System.ServiceModel.Syndication.SyndicationContent
+- uid: System.DateTimeOffset
+  parent: System
+  isExternal: false
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: System.ServiceModel.Syndication.SyndicationItem.#ctor(System.String,System.String,System.Uri,System.String,System.DateTimeOffset)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: SyndicationItem(String,String,Uri,String,DateTimeOffset)
+  nameWithType: SyndicationItem.SyndicationItem(String,String,Uri,String,DateTimeOffset)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SyndicationItem(String,String,Uri,String,DateTimeOffset)
+- uid: System.ServiceModel.Syndication.SyndicationItem.AddPermalink(System.Uri)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: AddPermalink(Uri)
+  nameWithType: SyndicationItem.AddPermalink(Uri)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.AddPermalink(Uri)
+- uid: System.ServiceModel.Syndication.SyndicationItem.AttributeExtensions
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: AttributeExtensions
+  nameWithType: SyndicationItem.AttributeExtensions
+  fullName: System.ServiceModel.Syndication.SyndicationItem.AttributeExtensions
+- uid: System.Collections.Generic.Dictionary{System.Xml.XmlQualifiedName,System.String}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: Dictionary<XmlQualifiedName,String>
+  nameWithType: Dictionary<XmlQualifiedName,String>
+  fullName: System.Collections.Generic.Dictionary<System.Xml.XmlQualifiedName,System.String>
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: Dictionary<System.Xml.XmlQualifiedName,System.String>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Xml.XmlQualifiedName
+    name: XmlQualifiedName
+    nameWithType: XmlQualifiedName
+    fullName: XmlQualifiedName
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.ServiceModel.Syndication.SyndicationItem.Authors
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Authors
+  nameWithType: SyndicationItem.Authors
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Authors
+- uid: System.Collections.ObjectModel.Collection{System.ServiceModel.Syndication.SyndicationPerson}
+  parent: System.Collections.ObjectModel
+  isExternal: false
+  name: Collection<SyndicationPerson>
+  nameWithType: Collection<SyndicationPerson>
+  fullName: System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.SyndicationPerson>
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.Collection`1
+    name: Collection
+    nameWithType: Collection
+    fullName: Collection<System.ServiceModel.Syndication.SyndicationPerson>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.ServiceModel.Syndication.SyndicationPerson
+    name: SyndicationPerson
+    nameWithType: SyndicationPerson
+    fullName: SyndicationPerson
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.ServiceModel.Syndication.SyndicationItem.BaseUri
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: BaseUri
+  nameWithType: SyndicationItem.BaseUri
+  fullName: System.ServiceModel.Syndication.SyndicationItem.BaseUri
+- uid: System.ServiceModel.Syndication.SyndicationItem.Categories
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Categories
+  nameWithType: SyndicationItem.Categories
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Categories
+- uid: System.Collections.ObjectModel.Collection{System.ServiceModel.Syndication.SyndicationCategory}
+  parent: System.Collections.ObjectModel
+  isExternal: false
+  name: Collection<SyndicationCategory>
+  nameWithType: Collection<SyndicationCategory>
+  fullName: System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.SyndicationCategory>
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.Collection`1
+    name: Collection
+    nameWithType: Collection
+    fullName: Collection<System.ServiceModel.Syndication.SyndicationCategory>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.ServiceModel.Syndication.SyndicationCategory
+    name: SyndicationCategory
+    nameWithType: SyndicationCategory
+    fullName: SyndicationCategory
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.ServiceModel.Syndication.SyndicationItem.Clone
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Clone()
+  nameWithType: SyndicationItem.Clone()
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Clone()
+- uid: System.ServiceModel.Syndication.SyndicationItem.Content
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Content
+  nameWithType: SyndicationItem.Content
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Content
+- uid: System.ServiceModel.Syndication.SyndicationItem.Contributors
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Contributors
+  nameWithType: SyndicationItem.Contributors
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Contributors
+- uid: System.ServiceModel.Syndication.SyndicationItem.Copyright
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Copyright
+  nameWithType: SyndicationItem.Copyright
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Copyright
+- uid: System.ServiceModel.Syndication.TextSyndicationContent
+  parent: System.ServiceModel.Syndication
+  isExternal: false
+  name: TextSyndicationContent
+  nameWithType: TextSyndicationContent
+  fullName: System.ServiceModel.Syndication.TextSyndicationContent
+- uid: System.ServiceModel.Syndication.SyndicationItem.CreateCategory
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: CreateCategory()
+  nameWithType: SyndicationItem.CreateCategory()
+  fullName: System.ServiceModel.Syndication.SyndicationItem.CreateCategory()
+- uid: System.ServiceModel.Syndication.SyndicationCategory
+  parent: System.ServiceModel.Syndication
+  isExternal: false
+  name: SyndicationCategory
+  nameWithType: SyndicationCategory
+  fullName: System.ServiceModel.Syndication.SyndicationCategory
+- uid: System.ServiceModel.Syndication.SyndicationItem.CreateLink
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: CreateLink()
+  nameWithType: SyndicationItem.CreateLink()
+  fullName: System.ServiceModel.Syndication.SyndicationItem.CreateLink()
+- uid: System.ServiceModel.Syndication.SyndicationLink
+  parent: System.ServiceModel.Syndication
+  isExternal: false
+  name: SyndicationLink
+  nameWithType: SyndicationLink
+  fullName: System.ServiceModel.Syndication.SyndicationLink
+- uid: System.ServiceModel.Syndication.SyndicationItem.CreatePerson
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: CreatePerson()
+  nameWithType: SyndicationItem.CreatePerson()
+  fullName: System.ServiceModel.Syndication.SyndicationItem.CreatePerson()
+- uid: System.ServiceModel.Syndication.SyndicationPerson
+  parent: System.ServiceModel.Syndication
+  isExternal: false
+  name: SyndicationPerson
+  nameWithType: SyndicationPerson
+  fullName: System.ServiceModel.Syndication.SyndicationPerson
+- uid: System.ServiceModel.Syndication.SyndicationItem.ElementExtensions
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: ElementExtensions
+  nameWithType: SyndicationItem.ElementExtensions
+  fullName: System.ServiceModel.Syndication.SyndicationItem.ElementExtensions
+- uid: System.ServiceModel.Syndication.SyndicationElementExtensionCollection
+  parent: System.ServiceModel.Syndication
+  isExternal: false
+  name: SyndicationElementExtensionCollection
+  nameWithType: SyndicationElementExtensionCollection
+  fullName: System.ServiceModel.Syndication.SyndicationElementExtensionCollection
+- uid: System.ServiceModel.Syndication.SyndicationItem.GetAtom10Formatter
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: GetAtom10Formatter()
+  nameWithType: SyndicationItem.GetAtom10Formatter()
+  fullName: System.ServiceModel.Syndication.SyndicationItem.GetAtom10Formatter()
+- uid: System.ServiceModel.Syndication.Atom10ItemFormatter
+  parent: System.ServiceModel.Syndication
+  isExternal: false
+  name: Atom10ItemFormatter
+  nameWithType: Atom10ItemFormatter
+  fullName: System.ServiceModel.Syndication.Atom10ItemFormatter
+- uid: System.ServiceModel.Syndication.SyndicationItem.GetRss20Formatter
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: GetRss20Formatter()
+  nameWithType: SyndicationItem.GetRss20Formatter()
+  fullName: System.ServiceModel.Syndication.SyndicationItem.GetRss20Formatter()
+- uid: System.ServiceModel.Syndication.Rss20ItemFormatter
+  parent: System.ServiceModel.Syndication
+  isExternal: false
+  name: Rss20ItemFormatter
+  nameWithType: Rss20ItemFormatter
+  fullName: System.ServiceModel.Syndication.Rss20ItemFormatter
+- uid: System.ServiceModel.Syndication.SyndicationItem.GetRss20Formatter(System.Boolean)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: GetRss20Formatter(Boolean)
+  nameWithType: SyndicationItem.GetRss20Formatter(Boolean)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.GetRss20Formatter(Boolean)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ServiceModel.Syndication.SyndicationItem.Id
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Id
+  nameWithType: SyndicationItem.Id
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Id
+- uid: System.ServiceModel.Syndication.SyndicationItem.LastUpdatedTime
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: LastUpdatedTime
+  nameWithType: SyndicationItem.LastUpdatedTime
+  fullName: System.ServiceModel.Syndication.SyndicationItem.LastUpdatedTime
+- uid: System.ServiceModel.Syndication.SyndicationItem.Links
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Links
+  nameWithType: SyndicationItem.Links
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Links
+- uid: System.Collections.ObjectModel.Collection{System.ServiceModel.Syndication.SyndicationLink}
+  parent: System.Collections.ObjectModel
+  isExternal: false
+  name: Collection<SyndicationLink>
+  nameWithType: Collection<SyndicationLink>
+  fullName: System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.SyndicationLink>
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.Collection`1
+    name: Collection
+    nameWithType: Collection
+    fullName: Collection<System.ServiceModel.Syndication.SyndicationLink>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.ServiceModel.Syndication.SyndicationLink
+    name: SyndicationLink
+    nameWithType: SyndicationLink
+    fullName: SyndicationLink
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.ServiceModel.Syndication.SyndicationItem.Load(System.Xml.XmlReader)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Load(XmlReader)
+  nameWithType: SyndicationItem.Load(XmlReader)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Load(XmlReader)
+- uid: System.Xml.XmlReader
+  parent: System.Xml
+  isExternal: false
+  name: XmlReader
+  nameWithType: XmlReader
+  fullName: System.Xml.XmlReader
+- uid: System.ServiceModel.Syndication.SyndicationItem.Load``1(System.Xml.XmlReader)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Load<TSyndicationItem>(XmlReader)
+  nameWithType: SyndicationItem.Load<TSyndicationItem>(XmlReader)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Load<TSyndicationItem>(XmlReader)
+- uid: TSyndicationItem
+  isExternal: true
+  name: TSyndicationItem
+  nameWithType: TSyndicationItem
+  fullName: TSyndicationItem
+- uid: System.ServiceModel.Syndication.SyndicationItem.PublishDate
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: PublishDate
+  nameWithType: SyndicationItem.PublishDate
+  fullName: System.ServiceModel.Syndication.SyndicationItem.PublishDate
+- uid: System.ServiceModel.Syndication.SyndicationItem.SaveAsAtom10(System.Xml.XmlWriter)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: SaveAsAtom10(XmlWriter)
+  nameWithType: SyndicationItem.SaveAsAtom10(XmlWriter)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SaveAsAtom10(XmlWriter)
+- uid: System.Xml.XmlWriter
+  parent: System.Xml
+  isExternal: false
+  name: XmlWriter
+  nameWithType: XmlWriter
+  fullName: System.Xml.XmlWriter
+- uid: System.ServiceModel.Syndication.SyndicationItem.SaveAsRss20(System.Xml.XmlWriter)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: SaveAsRss20(XmlWriter)
+  nameWithType: SyndicationItem.SaveAsRss20(XmlWriter)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SaveAsRss20(XmlWriter)
+- uid: System.ServiceModel.Syndication.SyndicationItem.SourceFeed
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: SourceFeed
+  nameWithType: SyndicationItem.SourceFeed
+  fullName: System.ServiceModel.Syndication.SyndicationItem.SourceFeed
+- uid: System.ServiceModel.Syndication.SyndicationFeed
+  parent: System.ServiceModel.Syndication
+  isExternal: false
+  name: SyndicationFeed
+  nameWithType: SyndicationFeed
+  fullName: System.ServiceModel.Syndication.SyndicationFeed
+- uid: System.ServiceModel.Syndication.SyndicationItem.Summary
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Summary
+  nameWithType: SyndicationItem.Summary
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Summary
+- uid: System.ServiceModel.Syndication.SyndicationItem.Title
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Title
+  nameWithType: SyndicationItem.Title
+  fullName: System.ServiceModel.Syndication.SyndicationItem.Title
+- uid: System.ServiceModel.Syndication.SyndicationItem.TryParseAttribute(System.String,System.String,System.String,System.String)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: TryParseAttribute(String,String,String,String)
+  nameWithType: SyndicationItem.TryParseAttribute(String,String,String,String)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.TryParseAttribute(String,String,String,String)
+- uid: System.ServiceModel.Syndication.SyndicationItem.TryParseContent(System.Xml.XmlReader,System.String,System.String,System.ServiceModel.Syndication.SyndicationContent@)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: TryParseContent(XmlReader,String,String,SyndicationContent)
+  nameWithType: SyndicationItem.TryParseContent(XmlReader,String,String,SyndicationContent)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.TryParseContent(XmlReader,String,String,SyndicationContent)
+- uid: System.ServiceModel.Syndication.SyndicationItem.TryParseElement(System.Xml.XmlReader,System.String)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: TryParseElement(XmlReader,String)
+  nameWithType: SyndicationItem.TryParseElement(XmlReader,String)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.TryParseElement(XmlReader,String)
+- uid: System.ServiceModel.Syndication.SyndicationItem.WriteAttributeExtensions(System.Xml.XmlWriter,System.String)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: WriteAttributeExtensions(XmlWriter,String)
+  nameWithType: SyndicationItem.WriteAttributeExtensions(XmlWriter,String)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.WriteAttributeExtensions(XmlWriter,String)
+- uid: System.ServiceModel.Syndication.SyndicationItem.WriteElementExtensions(System.Xml.XmlWriter,System.String)
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: WriteElementExtensions(XmlWriter,String)
+  nameWithType: SyndicationItem.WriteElementExtensions(XmlWriter,String)
+  fullName: System.ServiceModel.Syndication.SyndicationItem.WriteElementExtensions(XmlWriter,String)
+- uid: System.ServiceModel.Syndication.SyndicationItem.#ctor*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: SyndicationItem
+  nameWithType: SyndicationItem.SyndicationItem
+- uid: System.ServiceModel.Syndication.SyndicationItem.AddPermalink*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: AddPermalink
+  nameWithType: SyndicationItem.AddPermalink
+- uid: System.ServiceModel.Syndication.SyndicationItem.AttributeExtensions*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: AttributeExtensions
+  nameWithType: SyndicationItem.AttributeExtensions
+- uid: System.ServiceModel.Syndication.SyndicationItem.Authors*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Authors
+  nameWithType: SyndicationItem.Authors
+- uid: System.ServiceModel.Syndication.SyndicationItem.BaseUri*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: BaseUri
+  nameWithType: SyndicationItem.BaseUri
+- uid: System.ServiceModel.Syndication.SyndicationItem.Categories*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Categories
+  nameWithType: SyndicationItem.Categories
+- uid: System.ServiceModel.Syndication.SyndicationItem.Clone*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Clone
+  nameWithType: SyndicationItem.Clone
+- uid: System.ServiceModel.Syndication.SyndicationItem.Content*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Content
+  nameWithType: SyndicationItem.Content
+- uid: System.ServiceModel.Syndication.SyndicationItem.Contributors*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Contributors
+  nameWithType: SyndicationItem.Contributors
+- uid: System.ServiceModel.Syndication.SyndicationItem.Copyright*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Copyright
+  nameWithType: SyndicationItem.Copyright
+- uid: System.ServiceModel.Syndication.SyndicationItem.CreateCategory*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: CreateCategory
+  nameWithType: SyndicationItem.CreateCategory
+- uid: System.ServiceModel.Syndication.SyndicationItem.CreateLink*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: CreateLink
+  nameWithType: SyndicationItem.CreateLink
+- uid: System.ServiceModel.Syndication.SyndicationItem.CreatePerson*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: CreatePerson
+  nameWithType: SyndicationItem.CreatePerson
+- uid: System.ServiceModel.Syndication.SyndicationItem.ElementExtensions*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: ElementExtensions
+  nameWithType: SyndicationItem.ElementExtensions
+- uid: System.ServiceModel.Syndication.SyndicationItem.GetAtom10Formatter*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: GetAtom10Formatter
+  nameWithType: SyndicationItem.GetAtom10Formatter
+- uid: System.ServiceModel.Syndication.SyndicationItem.GetRss20Formatter*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: GetRss20Formatter
+  nameWithType: SyndicationItem.GetRss20Formatter
+- uid: System.ServiceModel.Syndication.SyndicationItem.Id*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Id
+  nameWithType: SyndicationItem.Id
+- uid: System.ServiceModel.Syndication.SyndicationItem.LastUpdatedTime*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: LastUpdatedTime
+  nameWithType: SyndicationItem.LastUpdatedTime
+- uid: System.ServiceModel.Syndication.SyndicationItem.Links*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Links
+  nameWithType: SyndicationItem.Links
+- uid: System.ServiceModel.Syndication.SyndicationItem.Load*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Load
+  nameWithType: SyndicationItem.Load
+- uid: System.ServiceModel.Syndication.SyndicationItem.Load<TSyndicationItem>*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Load<TSyndicationItem>
+  nameWithType: SyndicationItem.Load<TSyndicationItem>
+- uid: System.ServiceModel.Syndication.SyndicationItem.PublishDate*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: PublishDate
+  nameWithType: SyndicationItem.PublishDate
+- uid: System.ServiceModel.Syndication.SyndicationItem.SaveAsAtom10*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: SaveAsAtom10
+  nameWithType: SyndicationItem.SaveAsAtom10
+- uid: System.ServiceModel.Syndication.SyndicationItem.SaveAsRss20*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: SaveAsRss20
+  nameWithType: SyndicationItem.SaveAsRss20
+- uid: System.ServiceModel.Syndication.SyndicationItem.SourceFeed*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: SourceFeed
+  nameWithType: SyndicationItem.SourceFeed
+- uid: System.ServiceModel.Syndication.SyndicationItem.Summary*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Summary
+  nameWithType: SyndicationItem.Summary
+- uid: System.ServiceModel.Syndication.SyndicationItem.Title*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: Title
+  nameWithType: SyndicationItem.Title
+- uid: System.ServiceModel.Syndication.SyndicationItem.TryParseAttribute*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: TryParseAttribute
+  nameWithType: SyndicationItem.TryParseAttribute
+- uid: System.ServiceModel.Syndication.SyndicationItem.TryParseContent*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: TryParseContent
+  nameWithType: SyndicationItem.TryParseContent
+- uid: System.ServiceModel.Syndication.SyndicationItem.TryParseElement*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: TryParseElement
+  nameWithType: SyndicationItem.TryParseElement
+- uid: System.ServiceModel.Syndication.SyndicationItem.WriteAttributeExtensions*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: WriteAttributeExtensions
+  nameWithType: SyndicationItem.WriteAttributeExtensions
+- uid: System.ServiceModel.Syndication.SyndicationItem.WriteElementExtensions*
+  parent: System.ServiceModel.Syndication.SyndicationItem
+  isExternal: false
+  name: WriteElementExtensions
+  nameWithType: SyndicationItem.WriteElementExtensions

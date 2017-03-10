@@ -1,0 +1,42 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Converter`2
+  id: Converter`2
+  langs:
+  - csharp
+  name: Converter<TInput,TOutput>
+  nameWithType: Converter<TInput,TOutput>
+  fullName: System.Converter<TInput,TOutput>
+  type: Delegate
+  summary: Represents a method that converts an object from one type to another type.
+  remarks: This delegate is used by the <xref:System.Array.ConvertAll%2A> method of the <xref:System.Array> class and the <xref:System.Collections.Generic.List%601.ConvertAll%2A> method of the <xref:System.Collections.Generic.List%601>class to convert each element of the collection from one type to another.
+  example:
+  - "This section contains two code examples. The first demonstrates the Converter(TInput, delegate with the <xref:System.Array.ConvertAll%2A> method of the <xref:System.Array> class, and the second demonstrates the delegate with the <xref:System.Collections.Generic.List%601.ConvertAll%2A> method of the <xref:System.Collections.Generic.List%601> generic class.  \n  \n Example 1  \n  \n The following code example defines a method named `PointFToPoint` that converts a <xref:System.Drawing.PointF> structure to a <xref:System.Drawing.Point> structure. The example then creates an array of <xref:System.Drawing.PointF> structures, creates a `Converter\\<PointF, Point>` delegate (`Converter(Of PointF, Point)` in Visual Basic) to represent the `PointFToPoint` method, and passes the delegate to the <xref:System.Array.ConvertAll%2A> method. The <xref:System.Array.ConvertAll%2A> method passes each element of the input list to the `PointFToPoint` method and puts the converted elements into a new list of <xref:System.Drawing.Point> structures. Both lists are displayed.  \n  \n [!code-cpp[Array_ConvertAll#1](~/add/codesnippet/cpp/t-system.converter`2_1.cpp)]\n [!code-vb[Array_ConvertAll#1](~/add/codesnippet/visualbasic/t-system.converter`2_1.vb)]\n [!code-cs[Array_ConvertAll#1](~/add/codesnippet/csharp/t-system.converter`2_1.cs)]  \n  \n Example 2  \n  \n The following code example defines a method named `PointFToPoint` that converts a <xref:System.Drawing.PointF> structure to a <xref:System.Drawing.Point> structure. The example then creates a <xref:System.Collections.Generic.List%601> of <xref:System.Drawing.PointF> structures, creates a `Converter<PointF, Point>` delegate (`Converter(Of PointF, Point)` in Visual Basic) to represent the `PointFToPoint` method, and passes the delegate to the <xref:System.Collections.Generic.List%601.ConvertAll%2A> method. The <xref:System.Collections.Generic.List%601.ConvertAll%2A> method passes each element of the input list to the `PointFToPoint` method and puts the converted elements into a new list of <xref:System.Drawing.Point> structures. Both lists are displayed.  \n  \n [!code-cpp[List`1_ConvertAll#1](~/add/codesnippet/cpp/t-system.converter`2_2.cpp)]\n [!code-vb[List`1_ConvertAll#1](~/add/codesnippet/visualbasic/t-system.converter`2_2.vb)]\n [!code-cs[List`1_ConvertAll#1](~/add/codesnippet/csharp/t-system.converter`2_2.cs)]"
+  syntax:
+    content: public delegate TOutput Converter<in TInput,out TOutput>(TInput input);
+    typeParameters:
+    - id: TInput
+      description: The type of object that is to be converted.
+    - id: TOutput
+      description: The type the input object is to be converted to.
+  inheritance:
+  - System.Object
+  - System.Delegate
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\Converter`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/Converter`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Delegate
+  isExternal: false
+  name: System.Delegate

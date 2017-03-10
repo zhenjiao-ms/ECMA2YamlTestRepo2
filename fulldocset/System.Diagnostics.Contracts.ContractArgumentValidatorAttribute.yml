@@ -1,0 +1,123 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Diagnostics.Contracts.ContractArgumentValidatorAttribute
+  id: ContractArgumentValidatorAttribute
+  children:
+  - System.Diagnostics.Contracts.ContractArgumentValidatorAttribute.#ctor
+  langs:
+  - csharp
+  name: ContractArgumentValidatorAttribute
+  nameWithType: ContractArgumentValidatorAttribute
+  fullName: System.Diagnostics.Contracts.ContractArgumentValidatorAttribute
+  type: Class
+  summary: Enables the factoring of legacy `if-then-throw` code into separate methods for reuse, and provides full control over thrown exceptions and arguments.
+  remarks: "If your code uses explicit `if-then-throw` code to validate parameters, you may be employing helper methods that perform checks and throw particular exceptions on failure, as shown in the following example.  \n  \n [!code-cs[System.Diagnostics.Contracts.ContractArgumentValidatorAttribute#1](~/add/codesnippet/csharp/t-system.diagnostics.con_4_1.cs)]\n [!code-vb[System.Diagnostics.Contracts.ContractArgumentValidatorAttribute#1](~/add/codesnippet/visualbasic/t-system.diagnostics.con_4_1.vb)]  \n  \n In this example, `Execute` has an elective precondition specifying that the parameter value should not be `null`. To enable the contract tools to recognize that the call to `ValidationHelper.NotNull` represents a contract, you can mark the called method with the  ContractArgumentValidatorAttribute attribute. The <xref:System.Diagnostics.Contracts.Contract.EndContractBlock%2A?displayProperty=fullName> method call should be used to enable the tools to extract the proper specifications for document generation and static checking, as follows.  \n  \n [!code-cs[System.Diagnostics.Contracts.ContractArgumentValidatorAttribute#2](~/add/codesnippet/csharp/t-system.diagnostics.con_4_2.cs)]\n [!code-vb[System.Diagnostics.Contracts.ContractArgumentValidatorAttribute#2](~/add/codesnippet/visualbasic/t-system.diagnostics.con_4_2.vb)]  \n  \n In addition to `if-then-throw` statements, the contract section of contract validator methods may contain calls to other contract validator methods. However, no other contracts (such as <xref:System.Diagnostics.Contracts.Contract.Requires%2A?displayProperty=fullName>, or <xref:System.Diagnostics.Contracts.Contract.Ensures%2A?displayProperty=fullName>) are allowed. Code that follows the <xref:System.Diagnostics.Contracts.Contract.EndContractBlock%2A?displayProperty=fullName> call is ignored by all contract tools.  \n  \n The following example shows a range argument validator written in terms of an existing `NotNull` validator method.  \n  \n [!code-cs[System.Diagnostics.Contracts.ContractArgumentValidatorAttribute#3](~/add/codesnippet/csharp/t-system.diagnostics.con_4_3.cs)]\n [!code-vb[System.Diagnostics.Contracts.ContractArgumentValidatorAttribute#3](~/add/codesnippet/visualbasic/t-system.diagnostics.con_4_3.vb)]  \n  \n From a specification point of view, the `Execute` method has the following three contracts:  \n  \n```  \nContract.Requires<ArgumentNullException>(data != null);  \nContract.Requires<ArgumentOutOfRangeException>(position >= 0);  \nContract.Requires<ArgumentOutOfRangeException>(position < data.Length);  \n  \n```  \n  \n In standard methods, calls to contract validator methods can be freely mixed with other contracts such as <xref:System.Diagnostics.Contracts.Contract.Ensures%2A?displayProperty=fullName> or <xref:System.Diagnostics.Contracts.Contract.Requires%2A?displayProperty=fullName>."
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Method, AllowMultiple=false)]
+
+      [System.Diagnostics.Conditional("CONTRACTS_FULL")]
+
+      public sealed class ContractArgumentValidatorAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics.Contracts\ContractArgumentValidatorAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics.Contracts/ContractArgumentValidatorAttribute.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Contracts.ContractArgumentValidatorAttribute.#ctor
+  id: '#ctor'
+  parent: System.Diagnostics.Contracts.ContractArgumentValidatorAttribute
+  langs:
+  - csharp
+  name: ContractArgumentValidatorAttribute()
+  nameWithType: ContractArgumentValidatorAttribute.ContractArgumentValidatorAttribute()
+  fullName: System.Diagnostics.Contracts.ContractArgumentValidatorAttribute.ContractArgumentValidatorAttribute()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics.Contracts
+  summary: Initializes a new instance of the <xref href="System.Diagnostics.Contracts.ContractArgumentValidatorAttribute"></xref> class.
+  syntax:
+    content: public ContractArgumentValidatorAttribute ();
+    parameters: []
+  overload: System.Diagnostics.Contracts.ContractArgumentValidatorAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics.Contracts\ContractArgumentValidatorAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics.Contracts/ContractArgumentValidatorAttribute.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Diagnostics.Contracts.ContractArgumentValidatorAttribute.#ctor
+  parent: System.Diagnostics.Contracts.ContractArgumentValidatorAttribute
+  isExternal: false
+  name: ContractArgumentValidatorAttribute()
+  nameWithType: ContractArgumentValidatorAttribute.ContractArgumentValidatorAttribute()
+  fullName: System.Diagnostics.Contracts.ContractArgumentValidatorAttribute.ContractArgumentValidatorAttribute()
+- uid: System.Diagnostics.Contracts.ContractArgumentValidatorAttribute.#ctor*
+  parent: System.Diagnostics.Contracts.ContractArgumentValidatorAttribute
+  isExternal: false
+  name: ContractArgumentValidatorAttribute
+  nameWithType: ContractArgumentValidatorAttribute.ContractArgumentValidatorAttribute

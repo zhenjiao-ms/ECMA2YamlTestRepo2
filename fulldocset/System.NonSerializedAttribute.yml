@@ -1,0 +1,135 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.NonSerializedAttribute
+  id: NonSerializedAttribute
+  children:
+  - System.NonSerializedAttribute.#ctor
+  langs:
+  - csharp
+  name: NonSerializedAttribute
+  nameWithType: NonSerializedAttribute
+  fullName: System.NonSerializedAttribute
+  type: Class
+  summary: Indicates that a field of a serializable class should not be serialized. This class cannot be inherited.
+  remarks: "When using the <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter> or <xref:System.Runtime.Serialization.Formatters.Soap.SoapFormatter> classes to serialize an object, use the NonSerializedAttribute attribute to prevent a field from being serialized. For example, you can use this attribute to prevent the serialization of sensitive data.  \n  \n The target objects for the NonSerializedAttribute attribute are public and private fields of a serializable class. By default, classes are not serializable unless they are marked with <xref:System.SerializableAttribute>. During the serialization process all the public and private fields of a class are serialized by default. Fields marked with NonSerializedAttribute are excluded during serialization. If you are using the <xref:System.Xml.Serialization.XmlSerializer> class to serialize an object, use the <xref:System.Xml.Serialization.XmlIgnoreAttribute> class to get the same functionality. Alternatively, implement the <xref:System.Runtime.Serialization.ISerializable> interface to explicitly control the serialization process. Note that classes that implement <xref:System.Runtime.Serialization.ISerializable> must still be marked with <xref:System.SerializableAttribute>.  \n  \n To apply the NonSerializedAttribute class to an event, set the attribute location to field, as shown in the following C# code.  \n  \n```  \n[field:NonSerializedAttribute()]   \npublic event ChangedEventHandler Changed;  \n```  \n  \n If a field is not serialized, but it still requires a default value that must be supplied after deserialization, you can create a method that supplies the field with a value, then apply the <xref:System.Runtime.Serialization.OnDeserializedAttribute> to the method.  \n  \n For more information about using attributes, see [Attributes](../Topic/Extending%20Metadata%20Using%20Attributes.md)."
+  example:
+  - "The following example demonstrates serialization of an object marked with the <xref:System.SerializableAttribute> attribute, and the behavior of a field marked with the NonSerializedAttribute in the serialized object.  \n  \n> [!NOTE]\n>  The code uses the <xref:System.Runtime.Serialization.Formatters.Soap.SoapFormatter> class to serialize the object. The class is found in the system.runtime.serialization.formatters.soap.dll, which is not loaded by default into a project. To run the code, you must add a reference to the DLL to your project.  \n  \n [!code-cpp[SerializationAttributes#1](~/add/codesnippet/cpp/t-system.nonserializedat_1.cpp)]\n [!code-cs[SerializationAttributes#1](~/add/codesnippet/csharp/t-system.nonserializedat_1.cs)]\n [!code-vb[SerializationAttributes#1](~/add/codesnippet/visualbasic/t-system.nonserializedat_1.vb)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Field, Inherited=false)]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class NonSerializedAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\NonSerializedAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/NonSerializedAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.NonSerializedAttribute.#ctor
+  id: '#ctor'
+  parent: System.NonSerializedAttribute
+  langs:
+  - csharp
+  name: NonSerializedAttribute()
+  nameWithType: NonSerializedAttribute.NonSerializedAttribute()
+  fullName: System.NonSerializedAttribute.NonSerializedAttribute()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.NonSerializedAttribute"></xref> class.
+  syntax:
+    content: public NonSerializedAttribute ();
+    parameters: []
+  overload: System.NonSerializedAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\NonSerializedAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/NonSerializedAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.NonSerializedAttribute.#ctor
+  parent: System.NonSerializedAttribute
+  isExternal: false
+  name: NonSerializedAttribute()
+  nameWithType: NonSerializedAttribute.NonSerializedAttribute()
+  fullName: System.NonSerializedAttribute.NonSerializedAttribute()
+- uid: System.NonSerializedAttribute.#ctor*
+  parent: System.NonSerializedAttribute
+  isExternal: false
+  name: NonSerializedAttribute
+  nameWithType: NonSerializedAttribute.NonSerializedAttribute

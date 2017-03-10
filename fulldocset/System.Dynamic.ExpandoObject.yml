@@ -1,0 +1,1035 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Dynamic.ExpandoObject
+  id: ExpandoObject
+  children:
+  - System.Dynamic.ExpandoObject.#ctor
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Add(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Clear
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Contains(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.Object}[],System.Int32)
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Count
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#IsReadOnly
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Remove(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Add(System.String,System.Object)
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#ContainsKey(System.String)
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Item(System.String)
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Keys
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Remove(System.String)
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#TryGetValue(System.String,System.Object@)
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Values
+  - System.Dynamic.ExpandoObject.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#GetEnumerator
+  - System.Dynamic.ExpandoObject.System#Collections#IEnumerable#GetEnumerator
+  - System.Dynamic.ExpandoObject.System#Dynamic#IDynamicMetaObjectProvider#GetMetaObject(System.Linq.Expressions.Expression)
+  langs:
+  - csharp
+  name: ExpandoObject
+  nameWithType: ExpandoObject
+  fullName: System.Dynamic.ExpandoObject
+  type: Class
+  summary: Represents an object whose members can be dynamically added and removed at run time.
+  remarks: "The `ExpandoObject` class enables you to add and delete members of its instances at run time and also to set and get values of these members. This class supports dynamic binding, which enables you to use standard syntax like `sampleObject.sampleMember` instead of more complex syntax like `sampleObject.GetAttribute(\"sampleMember\")`.  \n  \n The `ExpandoObject` class implements the standard Dynamic Language Runtime (DLR) interface <xref:System.Dynamic.IDynamicMetaObjectProvider>, which enables you to share instances of the `ExpandoObject` class between languages that support the DLR interoperability model. For example, you can create an instance of the `ExpandoObject` class in C# and then pass it to an IronPython function. For more information, see [Dynamic Language Runtime Overview](../Topic/Dynamic%20Language%20Runtime%20Overview.md) documentation on the [CodePlex](http://go.microsoft.com/fwlink/?LinkId=141028) Web site, and [Introducing the ExpandoObject](http://go.microsoft.com/fwlink/?LinkID=169157) on the C# Frequently Asked Questions Web site.  \n  \n The `ExpandoObject` class is an implementation of the dynamic object concept that enables getting, setting, and invoking members. If you want to define types that have their own dynamic dispatch semantics, use the <xref:System.Dynamic.DynamicObject> class. If you want to define how dynamic objects participate in the interoperability protocol and manage DLR fast dynamic dispatch caching, create your own implementation of the <xref:System.Dynamic.IDynamicMetaObjectProvider> interface.  \n  \n## Creating an Instance  \n In C#, to enable late binding for an instance of the `ExpandoObject` class, you must use the `dynamic` keyword. For more information, see [Using Type dynamic](../Topic/Using%20Type%20dynamic%20\\(C%23%20Programming%20Guide\\).md).  \n  \n In Visual Basic, dynamic operations are supported by late binding. For more information, see [Early and Late Binding](../Topic/Early%20and%20Late%20Binding%20\\(Visual%20Basic\\).md).  \n  \n The following code example demonstrates how to create an instance of the `ExpandoObject` class.  \n  \n [!code-vb[System.Dynamic.ExpandoObject#1](~/add/codesnippet/visualbasic/t-system.dynamic.expando_1.vb)]\n [!code-cs[System.Dynamic.ExpandoObject#1](~/add/codesnippet/csharp/t-system.dynamic.expando_1.cs)]  \n  \n## Adding New Members  \n You can add properties, methods, and events to instances of the `ExpandoObject` class.  \n  \n The following code example demonstrates how to add a new property to an instance of the `ExpandoObject` class.  \n  \n [!code-vb[System.Dynamic.ExpandoObject#2](~/add/codesnippet/visualbasic/t-system.dynamic.expando_2.vb)]\n [!code-cs[System.Dynamic.ExpandoObject#2](~/add/codesnippet/csharp/t-system.dynamic.expando_2.cs)]  \n  \n The methods represent lambda expressions that are stored as delegates, which can be invoked when they are needed. The following code example demonstrates how to add a method that increments a value of the dynamic property.  \n  \n [!code-vb[System.Dynamic.ExpandoObject#3](~/add/codesnippet/visualbasic/t-system.dynamic.expando_3.vb)]\n [!code-cs[System.Dynamic.ExpandoObject#3](~/add/codesnippet/csharp/t-system.dynamic.expando_3.cs)]  \n  \n The following code example demonstrates how to add an event to an instance of the `ExpandoObject` class.  \n  \n```c#  \nclass Program  \n{  \n    static void Main(string[] args)  \n    {  \n        dynamic sampleObject = new ExpandoObject();  \n  \n        // Create a new event and initialize it with null.  \n        sampleObject.sampleEvent = null;  \n  \n        // Add an event handler.  \n        sampleObject.sampleEvent += new EventHandler(SampleHandler);  \n  \n        // Raise an event for testing purposes.  \n        sampleObject.sampleEvent(sampleObject, new EventArgs());  \n   }  \n  \n    // Event handler.  \n    static void SampleHandler(object sender, EventArgs e)  \n    {  \n        Console.WriteLine(\"SampleHandler for {0} event\", sender);  \n    }  \n}  \n// This code example produces the following output:  \n// SampleHandler for System.Dynamic.ExpandoObject event.  \n```  \n  \n```vb#  \nModule Module1  \n  \nSub Main()  \n    Dim sampleObject As Object = New ExpandoObject()  \n  \n    ' Create a new event and initialize it with null.  \n    sampleObject.sampleEvent = Nothing  \n  \n    ' Add an event handler.  \n    Dim handler As EventHandler = AddressOf SampleHandler  \n    sampleObject.sampleEvent =   \n        [Delegate].Combine(sampleObject.sampleEvent, handler)  \n  \n    ' Raise an event for testing purposes.  \n    sampleObject.sampleEvent.Invoke(sampleObject, New EventArgs())  \n  \nEnd Sub  \n  \n' Event handler.  \nSub SampleHandler(ByVal sender As Object, ByVal e As EventArgs)  \n    Console.WriteLine(\"SampleHandler for {0} event\", sender)  \nEnd Sub  \n  \n' This code example produces the following output:  \n' SampleHandler for System.Dynamic.ExpandoObject event.  \n  \nEnd Module  \n```  \n  \n## Passing As a Parameter  \n You can pass instances of the `ExpandoObject` class as parameters. Note that these instances are treated as dynamic objects in C# and late-bound objects in Visual Basic. This means that you do not have IntelliSense for object members and you do not receive compiler errors when you call non-existent members. If you call a member that does not exist, an exception occurs.  \n  \n The following code example demonstrates how you can create and use a method to print the names and values of properties.  \n  \n [!code-vb[System.Dynamic.ExpandoObject#4](~/add/codesnippet/visualbasic/t-system.dynamic.expando_4.vb)]\n [!code-cs[System.Dynamic.ExpandoObject#4](~/add/codesnippet/csharp/t-system.dynamic.expando_4.cs)]  \n  \n## Enumerating and Deleting Members  \n The `ExpandoObject` class implements the `IDictionary<String, Object>` interface. This enables enumeration of members added to the instance of the `ExpandoObject` class at run time. This can be useful if you do not know at compile time what members an instance might have.  \n  \n The following code example shows how you can cast an instance of the `ExpandoObject` class to the <xref:System.Collections.Generic.IDictionary%602> interface and enumerate the instance's members.  \n  \n [!code-vb[System.Dynamic.ExpandoObject#5](~/add/codesnippet/visualbasic/t-system.dynamic.expando_5.vb)]\n [!code-cs[System.Dynamic.ExpandoObject#5](~/add/codesnippet/csharp/t-system.dynamic.expando_5.cs)]  \n  \n In languages that do not have syntax for deleting members (such as C# and Visual Basic), you can delete a member by implicitly casting an instance of the `ExpandoObject` to the `IDictionary\\<String, Object>` interface and then deleting the member as a key/value pair. This is shown in the following example.  \n  \n [!code-vb[System.Dynamic.ExpandoObject#6](~/add/codesnippet/visualbasic/t-system.dynamic.expando_6.vb)]\n [!code-cs[System.Dynamic.ExpandoObject#6](~/add/codesnippet/csharp/t-system.dynamic.expando_6.cs)]  \n  \n## Receiving Notifications of Property Changes  \n The `ExpandoObject` class implements the <xref:System.ComponentModel.INotifyPropertyChanged> interface and can raise a <xref:System.ComponentModel.INotifyPropertyChanged.PropertyChanged> event when a member is added, deleted, or modified. This enables `ExpandoObject` class integration with Windows Presentation Foundation (WPF) data binding and other environments that require notification about changes in the object content.  \n  \n The following code example demonstrates how to create an event handler for the `PropertyChanged` event.  \n  \n [!code-vb[System.Dynamic.ExpandoObject#7](~/add/codesnippet/visualbasic/t-system.dynamic.expando_7.vb)]\n [!code-cs[System.Dynamic.ExpandoObject#7](~/add/codesnippet/csharp/t-system.dynamic.expando_7.cs)]"
+  syntax:
+    content: 'public sealed class ExpandoObject : System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,object>>, System.Collections.Generic.IDictionary<string,object>, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string,object>>, System.ComponentModel.INotifyPropertyChanged, System.Dynamic.IDynamicMetaObjectProvider'
+  inheritance:
+  - System.Object
+  implements:
+  - System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>
+  - System.Collections.Generic.IDictionary<System.String,System.Object>
+  - System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.String,System.Object>>
+  - System.ComponentModel.INotifyPropertyChanged
+  - System.Dynamic.IDynamicMetaObjectProvider
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.#ctor
+  id: '#ctor'
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: ExpandoObject()
+  nameWithType: ExpandoObject.ExpandoObject()
+  fullName: System.Dynamic.ExpandoObject.ExpandoObject()
+  type: Constructor
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  summary: Initializes a new `ExpandoObject` that does not have members.
+  syntax:
+    content: public ExpandoObject ();
+    parameters: []
+  overload: System.Dynamic.ExpandoObject.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Add(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  id: System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Add(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: ICollection<KeyValuePair<String,Object>>.Add(KeyValuePair<String,Object>)
+  nameWithType: ExpandoObject.ICollection<KeyValuePair<String,Object>>.Add(KeyValuePair<String,Object>)
+  fullName: System.Dynamic.ExpandoObject.ICollection<KeyValuePair<String,Object>>.Add(KeyValuePair<String,Object>)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: void ICollection<KeyValuePair<string,object>>.Add (System.Collections.Generic.KeyValuePair<string,object> item);
+    parameters:
+    - id: item
+      type: System.Collections.Generic.KeyValuePair{System.String,System.Object}
+      description: To be added.
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#Add*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Clear
+  id: System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Clear
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: ICollection<KeyValuePair<String,Object>>.Clear()
+  nameWithType: ExpandoObject.ICollection<KeyValuePair<String,Object>>.Clear()
+  fullName: System.Dynamic.ExpandoObject.ICollection<KeyValuePair<String,Object>>.Clear()
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: void ICollection<KeyValuePair<string,object>>.Clear ();
+    parameters: []
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#Clear*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Contains(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  id: System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Contains(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: ICollection<KeyValuePair<String,Object>>.Contains(KeyValuePair<String,Object>)
+  nameWithType: ExpandoObject.ICollection<KeyValuePair<String,Object>>.Contains(KeyValuePair<String,Object>)
+  fullName: System.Dynamic.ExpandoObject.ICollection<KeyValuePair<String,Object>>.Contains(KeyValuePair<String,Object>)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: bool ICollection<KeyValuePair<string,object>>.Contains (System.Collections.Generic.KeyValuePair<string,object> item);
+    parameters:
+    - id: item
+      type: System.Collections.Generic.KeyValuePair{System.String,System.Object}
+      description: To be added.
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#Contains*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.Object}[],System.Int32)
+  id: System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.Object}[],System.Int32)
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: ICollection<KeyValuePair<String,Object>>.CopyTo(KeyValuePair<String,Object>[],Int32)
+  nameWithType: ExpandoObject.ICollection<KeyValuePair<String,Object>>.CopyTo(KeyValuePair<String,Object>[],Int32)
+  fullName: System.Dynamic.ExpandoObject.ICollection<KeyValuePair<String,Object>>.CopyTo(KeyValuePair<String,Object>[],Int32)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: void ICollection<KeyValuePair<string,object>>.CopyTo (System.Collections.Generic.KeyValuePair<string,object>[] array, int arrayIndex);
+    parameters:
+    - id: array
+      type: System.Collections.Generic.KeyValuePair{System.String,System.Object}[]
+      description: To be added.
+    - id: arrayIndex
+      type: System.Int32
+      description: To be added.
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#CopyTo*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Count
+  id: System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Count
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: ICollection<KeyValuePair<String,Object>>.Count
+  nameWithType: ExpandoObject.ICollection<KeyValuePair<String,Object>>.Count
+  fullName: System.Dynamic.ExpandoObject.ICollection<KeyValuePair<String,Object>>.Count
+  type: Property
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: int System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Count { get; }
+    return:
+      type: System.Int32
+      description: To be added.
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#Count*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#IsReadOnly
+  id: System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#IsReadOnly
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: ICollection<KeyValuePair<String,Object>>.IsReadOnly
+  nameWithType: ExpandoObject.ICollection<KeyValuePair<String,Object>>.IsReadOnly
+  fullName: System.Dynamic.ExpandoObject.ICollection<KeyValuePair<String,Object>>.IsReadOnly
+  type: Property
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.IsReadOnly { get; }
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#IsReadOnly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Remove(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  id: System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Remove(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: ICollection<KeyValuePair<String,Object>>.Remove(KeyValuePair<String,Object>)
+  nameWithType: ExpandoObject.ICollection<KeyValuePair<String,Object>>.Remove(KeyValuePair<String,Object>)
+  fullName: System.Dynamic.ExpandoObject.ICollection<KeyValuePair<String,Object>>.Remove(KeyValuePair<String,Object>)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: bool ICollection<KeyValuePair<string,object>>.Remove (System.Collections.Generic.KeyValuePair<string,object> item);
+    parameters:
+    - id: item
+      type: System.Collections.Generic.KeyValuePair{System.String,System.Object}
+      description: To be added.
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#Remove*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Add(System.String,System.Object)
+  id: System#Collections#Generic#IDictionary{System#String,System#Object}#Add(System.String,System.Object)
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: IDictionary<String,Object>.Add(String,Object)
+  nameWithType: ExpandoObject.IDictionary<String,Object>.Add(String,Object)
+  fullName: System.Dynamic.ExpandoObject.IDictionary<String,Object>.Add(String,Object)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: void IDictionary<string,object>.Add (string key, object value);
+    parameters:
+    - id: key
+      type: System.String
+      description: To be added.
+    - id: value
+      type: System.Object
+      description: To be added.
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary<System#String,System#Object>#Add*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#ContainsKey(System.String)
+  id: System#Collections#Generic#IDictionary{System#String,System#Object}#ContainsKey(System.String)
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: IDictionary<String,Object>.ContainsKey(String)
+  nameWithType: ExpandoObject.IDictionary<String,Object>.ContainsKey(String)
+  fullName: System.Dynamic.ExpandoObject.IDictionary<String,Object>.ContainsKey(String)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: bool IDictionary<string,object>.ContainsKey (string key);
+    parameters:
+    - id: key
+      type: System.String
+      description: To be added.
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary<System#String,System#Object>#ContainsKey*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Item(System.String)
+  id: System#Collections#Generic#IDictionary{System#String,System#Object}#Item(System.String)
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: IDictionary<String,Object>.Item(String)
+  nameWithType: ExpandoObject.IDictionary<String,Object>.Item(String)
+  fullName: System.Dynamic.ExpandoObject.IDictionary<String,Object>.Item(String)
+  type: Property
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: object System.Collections.Generic.IDictionary<System.String,System.Object>.Item[string key] { get; set; }
+    parameters:
+    - id: key
+      type: System.String
+      description: To be added.
+    return:
+      type: System.Object
+      description: To be added.
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary<System#String,System#Object>#Item*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Keys
+  id: System#Collections#Generic#IDictionary{System#String,System#Object}#Keys
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: IDictionary<String,Object>.Keys
+  nameWithType: ExpandoObject.IDictionary<String,Object>.Keys
+  fullName: System.Dynamic.ExpandoObject.IDictionary<String,Object>.Keys
+  type: Property
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: System.Collections.Generic.ICollection<string> System.Collections.Generic.IDictionary<System.String,System.Object>.Keys { get; }
+    return:
+      type: System.Collections.Generic.ICollection{System.String}
+      description: To be added.
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary<System#String,System#Object>#Keys*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Remove(System.String)
+  id: System#Collections#Generic#IDictionary{System#String,System#Object}#Remove(System.String)
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: IDictionary<String,Object>.Remove(String)
+  nameWithType: ExpandoObject.IDictionary<String,Object>.Remove(String)
+  fullName: System.Dynamic.ExpandoObject.IDictionary<String,Object>.Remove(String)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: bool IDictionary<string,object>.Remove (string key);
+    parameters:
+    - id: key
+      type: System.String
+      description: To be added.
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary<System#String,System#Object>#Remove*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#TryGetValue(System.String,System.Object@)
+  id: System#Collections#Generic#IDictionary{System#String,System#Object}#TryGetValue(System.String,System.Object@)
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: IDictionary<String,Object>.TryGetValue(String,Object)
+  nameWithType: ExpandoObject.IDictionary<String,Object>.TryGetValue(String,Object)
+  fullName: System.Dynamic.ExpandoObject.IDictionary<String,Object>.TryGetValue(String,Object)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: bool IDictionary<string,object>.TryGetValue (string key, out object value);
+    parameters:
+    - id: key
+      type: System.String
+      description: To be added.
+    - id: value
+      type: System.Object
+      description: To be added.
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary<System#String,System#Object>#TryGetValue*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Values
+  id: System#Collections#Generic#IDictionary{System#String,System#Object}#Values
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: IDictionary<String,Object>.Values
+  nameWithType: ExpandoObject.IDictionary<String,Object>.Values
+  fullName: System.Dynamic.ExpandoObject.IDictionary<String,Object>.Values
+  type: Property
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: System.Collections.Generic.ICollection<object> System.Collections.Generic.IDictionary<System.String,System.Object>.Values { get; }
+    return:
+      type: System.Collections.Generic.ICollection{System.Object}
+      description: To be added.
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary<System#String,System#Object>#Values*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#GetEnumerator
+  id: System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#GetEnumerator
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: IEnumerable<KeyValuePair<String,Object>>.GetEnumerator()
+  nameWithType: ExpandoObject.IEnumerable<KeyValuePair<String,Object>>.GetEnumerator()
+  fullName: System.Dynamic.ExpandoObject.IEnumerable<KeyValuePair<String,Object>>.GetEnumerator()
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  syntax:
+    content: System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string,object>> IEnumerable<KeyValuePair<string,object>>.GetEnumerator ();
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+      description: To be added.
+  overload: System.Dynamic.ExpandoObject.System#Collections#Generic#IEnumerable<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#GetEnumerator*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Collections#IEnumerable#GetEnumerator
+  id: System#Collections#IEnumerable#GetEnumerator
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: IEnumerable.GetEnumerator()
+  nameWithType: ExpandoObject.IEnumerable.GetEnumerator()
+  fullName: System.Dynamic.ExpandoObject.IEnumerable.GetEnumerator()
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  summary: Returns an enumerator that iterates through the collection.
+  syntax:
+    content: System.Collections.IEnumerator IEnumerable.GetEnumerator ();
+    parameters: []
+    return:
+      type: System.Collections.IEnumerator
+      description: An <xref href="System.Collections.IEnumerator"></xref> that can be used to iterate through the collection.
+  overload: System.Dynamic.ExpandoObject.System#Collections#IEnumerable#GetEnumerator*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.ExpandoObject.System#Dynamic#IDynamicMetaObjectProvider#GetMetaObject(System.Linq.Expressions.Expression)
+  id: System#Dynamic#IDynamicMetaObjectProvider#GetMetaObject(System.Linq.Expressions.Expression)
+  isEii: true
+  parent: System.Dynamic.ExpandoObject
+  langs:
+  - csharp
+  name: IDynamicMetaObjectProvider.GetMetaObject(Expression)
+  nameWithType: ExpandoObject.IDynamicMetaObjectProvider.GetMetaObject(Expression)
+  fullName: System.Dynamic.ExpandoObject.IDynamicMetaObjectProvider.GetMetaObject(Expression)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  summary: The provided MetaObject will dispatch to the dynamic virtual methods. The object can be encapsulated inside another MetaObject to provide custom behavior for individual actions.
+  syntax:
+    content: System.Dynamic.DynamicMetaObject IDynamicMetaObjectProvider.GetMetaObject (System.Linq.Expressions.Expression parameter);
+    parameters:
+    - id: parameter
+      type: System.Linq.Expressions.Expression
+      description: The expression that represents the MetaObject to dispatch to the Dynamic virtual methods.
+    return:
+      type: System.Dynamic.DynamicMetaObject
+      description: The object of the <xref href="System.Dynamic.DynamicMetaObject"></xref> type.
+  overload: System.Dynamic.ExpandoObject.System#Dynamic#IDynamicMetaObjectProvider#GetMetaObject*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\ExpandoObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/ExpandoObject.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.Dynamic.ExpandoObject.#ctor
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: ExpandoObject()
+  nameWithType: ExpandoObject.ExpandoObject()
+  fullName: System.Dynamic.ExpandoObject.ExpandoObject()
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Add(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: ICollection<KeyValuePair<String,Object>>.Add(KeyValuePair<String,Object>)
+  nameWithType: ExpandoObject.ICollection<KeyValuePair<String,Object>>.Add(KeyValuePair<String,Object>)
+  fullName: System.Dynamic.ExpandoObject.ICollection<KeyValuePair<String,Object>>.Add(KeyValuePair<String,Object>)
+- uid: System.Collections.Generic.KeyValuePair{System.String,System.Object}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: KeyValuePair<String,Object>
+  nameWithType: KeyValuePair<String,Object>
+  fullName: System.Collections.Generic.KeyValuePair<System.String,System.Object>
+  spec.csharp:
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    nameWithType: KeyValuePair
+    fullName: KeyValuePair<System.String,System.Object>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: Object
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Clear
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: ICollection<KeyValuePair<String,Object>>.Clear()
+  nameWithType: ExpandoObject.ICollection<KeyValuePair<String,Object>>.Clear()
+  fullName: System.Dynamic.ExpandoObject.ICollection<KeyValuePair<String,Object>>.Clear()
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Contains(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: ICollection<KeyValuePair<String,Object>>.Contains(KeyValuePair<String,Object>)
+  nameWithType: ExpandoObject.ICollection<KeyValuePair<String,Object>>.Contains(KeyValuePair<String,Object>)
+  fullName: System.Dynamic.ExpandoObject.ICollection<KeyValuePair<String,Object>>.Contains(KeyValuePair<String,Object>)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.Object}[],System.Int32)
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: ICollection<KeyValuePair<String,Object>>.CopyTo(KeyValuePair<String,Object>[],Int32)
+  nameWithType: ExpandoObject.ICollection<KeyValuePair<String,Object>>.CopyTo(KeyValuePair<String,Object>[],Int32)
+  fullName: System.Dynamic.ExpandoObject.ICollection<KeyValuePair<String,Object>>.CopyTo(KeyValuePair<String,Object>[],Int32)
+- uid: System.Collections.Generic.KeyValuePair{System.String,System.Object}[]
+  parent: System.Collections.Generic
+  isExternal: false
+  name: KeyValuePair<String,Object>[]
+  nameWithType: KeyValuePair<String,Object>[]
+  fullName: System.Collections.Generic.KeyValuePair<System.String,System.Object>[]
+  spec.csharp:
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    nameWithType: KeyValuePair
+    fullName: KeyValuePair<System.String,System.Object>[]
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: Object
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Count
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: ICollection<KeyValuePair<String,Object>>.Count
+  nameWithType: ExpandoObject.ICollection<KeyValuePair<String,Object>>.Count
+  fullName: System.Dynamic.ExpandoObject.ICollection<KeyValuePair<String,Object>>.Count
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#IsReadOnly
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: ICollection<KeyValuePair<String,Object>>.IsReadOnly
+  nameWithType: ExpandoObject.ICollection<KeyValuePair<String,Object>>.IsReadOnly
+  fullName: System.Dynamic.ExpandoObject.ICollection<KeyValuePair<String,Object>>.IsReadOnly
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#Remove(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: ICollection<KeyValuePair<String,Object>>.Remove(KeyValuePair<String,Object>)
+  nameWithType: ExpandoObject.ICollection<KeyValuePair<String,Object>>.Remove(KeyValuePair<String,Object>)
+  fullName: System.Dynamic.ExpandoObject.ICollection<KeyValuePair<String,Object>>.Remove(KeyValuePair<String,Object>)
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Add(System.String,System.Object)
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: IDictionary<String,Object>.Add(String,Object)
+  nameWithType: ExpandoObject.IDictionary<String,Object>.Add(String,Object)
+  fullName: System.Dynamic.ExpandoObject.IDictionary<String,Object>.Add(String,Object)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#ContainsKey(System.String)
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: IDictionary<String,Object>.ContainsKey(String)
+  nameWithType: ExpandoObject.IDictionary<String,Object>.ContainsKey(String)
+  fullName: System.Dynamic.ExpandoObject.IDictionary<String,Object>.ContainsKey(String)
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Item(System.String)
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: IDictionary<String,Object>.Item(String)
+  nameWithType: ExpandoObject.IDictionary<String,Object>.Item(String)
+  fullName: System.Dynamic.ExpandoObject.IDictionary<String,Object>.Item(String)
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Keys
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: IDictionary<String,Object>.Keys
+  nameWithType: ExpandoObject.IDictionary<String,Object>.Keys
+  fullName: System.Dynamic.ExpandoObject.IDictionary<String,Object>.Keys
+- uid: System.Collections.Generic.ICollection{System.String}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: ICollection<String>
+  nameWithType: ICollection<String>
+  fullName: System.Collections.Generic.ICollection<System.String>
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    nameWithType: ICollection
+    fullName: ICollection<System.String>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Remove(System.String)
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: IDictionary<String,Object>.Remove(String)
+  nameWithType: ExpandoObject.IDictionary<String,Object>.Remove(String)
+  fullName: System.Dynamic.ExpandoObject.IDictionary<String,Object>.Remove(String)
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#TryGetValue(System.String,System.Object@)
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: IDictionary<String,Object>.TryGetValue(String,Object)
+  nameWithType: ExpandoObject.IDictionary<String,Object>.TryGetValue(String,Object)
+  fullName: System.Dynamic.ExpandoObject.IDictionary<String,Object>.TryGetValue(String,Object)
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary{System#String,System#Object}#Values
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: IDictionary<String,Object>.Values
+  nameWithType: ExpandoObject.IDictionary<String,Object>.Values
+  fullName: System.Dynamic.ExpandoObject.IDictionary<String,Object>.Values
+- uid: System.Collections.Generic.ICollection{System.Object}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: ICollection<Object>
+  nameWithType: ICollection<Object>
+  fullName: System.Collections.Generic.ICollection<System.Object>
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    nameWithType: ICollection
+    fullName: ICollection<System.Object>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: Object
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#GetEnumerator
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: IEnumerable<KeyValuePair<String,Object>>.GetEnumerator()
+  nameWithType: ExpandoObject.IEnumerable<KeyValuePair<String,Object>>.GetEnumerator()
+  fullName: System.Dynamic.ExpandoObject.IEnumerable<KeyValuePair<String,Object>>.GetEnumerator()
+- uid: System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerator<KeyValuePair<String,Object>>
+  nameWithType: IEnumerator<KeyValuePair<String,Object>>
+  fullName: System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<System.String,System.Object>>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    nameWithType: IEnumerator
+    fullName: IEnumerator<System.Collections.Generic.KeyValuePair<System.String,System.Object>>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    nameWithType: KeyValuePair
+    fullName: KeyValuePair<System.String,System.Object>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: Object
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Dynamic.ExpandoObject.System#Collections#IEnumerable#GetEnumerator
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: IEnumerable.GetEnumerator()
+  nameWithType: ExpandoObject.IEnumerable.GetEnumerator()
+  fullName: System.Dynamic.ExpandoObject.IEnumerable.GetEnumerator()
+- uid: System.Collections.IEnumerator
+  parent: System.Collections
+  isExternal: false
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+- uid: System.Dynamic.ExpandoObject.System#Dynamic#IDynamicMetaObjectProvider#GetMetaObject(System.Linq.Expressions.Expression)
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: IDynamicMetaObjectProvider.GetMetaObject(Expression)
+  nameWithType: ExpandoObject.IDynamicMetaObjectProvider.GetMetaObject(Expression)
+  fullName: System.Dynamic.ExpandoObject.IDynamicMetaObjectProvider.GetMetaObject(Expression)
+- uid: System.Dynamic.DynamicMetaObject
+  parent: System.Dynamic
+  isExternal: false
+  name: DynamicMetaObject
+  nameWithType: DynamicMetaObject
+  fullName: System.Dynamic.DynamicMetaObject
+- uid: System.Linq.Expressions.Expression
+  parent: System.Linq.Expressions
+  isExternal: false
+  name: Expression
+  nameWithType: Expression
+  fullName: System.Linq.Expressions.Expression
+- uid: System.Dynamic.ExpandoObject.#ctor*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: ExpandoObject
+  nameWithType: ExpandoObject.ExpandoObject
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#Add*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Add
+  nameWithType: ExpandoObject.System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Add
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#Clear*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Clear
+  nameWithType: ExpandoObject.System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Clear
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#Contains*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Contains
+  nameWithType: ExpandoObject.System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Contains
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#CopyTo*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.CopyTo
+  nameWithType: ExpandoObject.System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.CopyTo
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#Count*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Count
+  nameWithType: ExpandoObject.System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Count
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#IsReadOnly*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.IsReadOnly
+  nameWithType: ExpandoObject.System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.IsReadOnly
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#Remove*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Remove
+  nameWithType: ExpandoObject.System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Remove
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary<System#String,System#Object>#Add*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.IDictionary<System.String,System.Object>.Add
+  nameWithType: ExpandoObject.System.Collections.Generic.IDictionary<System.String,System.Object>.Add
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary<System#String,System#Object>#ContainsKey*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.IDictionary<System.String,System.Object>.ContainsKey
+  nameWithType: ExpandoObject.System.Collections.Generic.IDictionary<System.String,System.Object>.ContainsKey
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary<System#String,System#Object>#Item*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.IDictionary<System.String,System.Object>.Item
+  nameWithType: ExpandoObject.System.Collections.Generic.IDictionary<System.String,System.Object>.Item
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary<System#String,System#Object>#Keys*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.IDictionary<System.String,System.Object>.Keys
+  nameWithType: ExpandoObject.System.Collections.Generic.IDictionary<System.String,System.Object>.Keys
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary<System#String,System#Object>#Remove*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.IDictionary<System.String,System.Object>.Remove
+  nameWithType: ExpandoObject.System.Collections.Generic.IDictionary<System.String,System.Object>.Remove
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary<System#String,System#Object>#TryGetValue*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.IDictionary<System.String,System.Object>.TryGetValue
+  nameWithType: ExpandoObject.System.Collections.Generic.IDictionary<System.String,System.Object>.TryGetValue
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IDictionary<System#String,System#Object>#Values*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.IDictionary<System.String,System.Object>.Values
+  nameWithType: ExpandoObject.System.Collections.Generic.IDictionary<System.String,System.Object>.Values
+- uid: System.Dynamic.ExpandoObject.System#Collections#Generic#IEnumerable<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#GetEnumerator*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.GetEnumerator
+  nameWithType: ExpandoObject.System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.GetEnumerator
+- uid: System.Dynamic.ExpandoObject.System#Collections#IEnumerable#GetEnumerator*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Collections.IEnumerable.GetEnumerator
+  nameWithType: ExpandoObject.System.Collections.IEnumerable.GetEnumerator
+- uid: System.Dynamic.ExpandoObject.System#Dynamic#IDynamicMetaObjectProvider#GetMetaObject*
+  parent: System.Dynamic.ExpandoObject
+  isExternal: false
+  name: System.Dynamic.IDynamicMetaObjectProvider.GetMetaObject
+  nameWithType: ExpandoObject.System.Dynamic.IDynamicMetaObjectProvider.GetMetaObject

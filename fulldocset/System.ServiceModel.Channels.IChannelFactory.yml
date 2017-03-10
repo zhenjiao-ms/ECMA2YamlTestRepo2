@@ -1,0 +1,85 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.Channels.IChannelFactory
+  id: IChannelFactory
+  children:
+  - System.ServiceModel.Channels.IChannelFactory.GetProperty``1
+  langs:
+  - csharp
+  name: IChannelFactory
+  nameWithType: IChannelFactory
+  fullName: System.ServiceModel.Channels.IChannelFactory
+  type: Interface
+  summary: Defines the interface that must be implemented by a channel factory to produce channels.
+  remarks: "The IChannelFactory interface represents the base interface for channel factories.  \n  \n Channel factories and their associated channels are generally used by the clients of a service that initiate communication. Listener factories that implement the <xref:System.ServiceModel.Channels.IChannelListener> interface and their associated listeners, by contrast, provide the mechanisms used to accept the channels through which communications with a service is initiated."
+  syntax:
+    content: 'public interface IChannelFactory : System.ServiceModel.ICommunicationObject'
+  implements:
+  - System.ServiceModel.ICommunicationObject
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\IChannelFactory.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/IChannelFactory.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.IChannelFactory.GetProperty``1
+  id: GetProperty``1
+  parent: System.ServiceModel.Channels.IChannelFactory
+  langs:
+  - csharp
+  name: GetProperty<T>()
+  nameWithType: IChannelFactory.GetProperty<T>()
+  fullName: System.ServiceModel.Channels.IChannelFactory.GetProperty<T>()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Returns a typed object requested, if present, from the appropriate layer in the channel stack.
+  remarks: "Use this to request a typed object such as an interface for setting properties or getting status from the appropriate layer in the channel stack. If a layer supports returning the requested object, it returns it. If not, it delegates the call down to the next layer in the stack. If it gets to the bottom of the stack and no channel layer supported the requested object, then the method returns `null`.  \n  \n You must implement GetProperty(T) whenever you implement a channel factory. GetProperty(T) is an excellent way to communicate information along the channel factory stack without having to know what channel factories are below you, or what channel factories above you are interested in performing queries. Define interfaces for people to query on for any interesting information you have. Whenever you do not recognize the type argument for GetProperty(T), delegate down to the next channel factory in the stack or return `null` if you are creating a new transport channel at the bottom of the stack."
+  syntax:
+    content: 'public T GetProperty<T> () where T : class;'
+    parameters: []
+    return:
+      type: T
+      description: The typed object <code>T</code> requested, if it is present, or `null` if it is not.
+  overload: System.ServiceModel.Channels.IChannelFactory.GetProperty<T>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\IChannelFactory.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/IChannelFactory.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.ServiceModel.Channels.IChannelFactory.GetProperty``1
+  parent: System.ServiceModel.Channels.IChannelFactory
+  isExternal: false
+  name: GetProperty<T>()
+  nameWithType: IChannelFactory.GetProperty<T>()
+  fullName: System.ServiceModel.Channels.IChannelFactory.GetProperty<T>()
+- uid: T
+  isExternal: true
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.ServiceModel.Channels.IChannelFactory.GetProperty<T>*
+  parent: System.ServiceModel.Channels.IChannelFactory
+  isExternal: false
+  name: GetProperty<T>
+  nameWithType: IChannelFactory.GetProperty<T>

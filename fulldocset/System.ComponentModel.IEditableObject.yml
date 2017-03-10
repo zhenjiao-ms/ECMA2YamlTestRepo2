@@ -1,0 +1,168 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ComponentModel.IEditableObject
+  id: IEditableObject
+  children:
+  - System.ComponentModel.IEditableObject.BeginEdit
+  - System.ComponentModel.IEditableObject.CancelEdit
+  - System.ComponentModel.IEditableObject.EndEdit
+  langs:
+  - csharp
+  name: IEditableObject
+  nameWithType: IEditableObject
+  fullName: System.ComponentModel.IEditableObject
+  type: Interface
+  summary: Provides functionality to commit or rollback changes to an object that is used as a data source.
+  remarks: This interface is typically used to capture the <xref:System.ComponentModel.IEditableObject.BeginEdit%2A>, <xref:System.ComponentModel.IEditableObject.EndEdit%2A>, and <xref:System.ComponentModel.IEditableObject.CancelEdit%2A> semantics of a <xref:System.Data.DataRowView>.
+  example:
+  - "The following sample provides a simple implementation of the IEditableObject interface. The `Customer` class stores customer information and can be used as a collection for a customer database. This sample assumes that you have used the `CustomerList` class that can be found in sample in the <xref:System.ComponentModel.IBindingList> class.  \n  \n [!code-cs[Binding_Editable#1](~/add/codesnippet/csharp/t-system.componentmodel._141_1.cs)]\n [!code-cpp[Binding_Editable#1](~/add/codesnippet/cpp/t-system.componentmodel._141_1.cpp)]\n [!code-vb[Binding_Editable#1](~/add/codesnippet/visualbasic/t-system.componentmodel._141_1.vb)]"
+  syntax:
+    content: public interface IEditableObject
+  implements: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\IEditableObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/IEditableObject.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.IEditableObject.BeginEdit
+  id: BeginEdit
+  parent: System.ComponentModel.IEditableObject
+  langs:
+  - csharp
+  name: BeginEdit()
+  nameWithType: IEditableObject.BeginEdit()
+  fullName: System.ComponentModel.IEditableObject.BeginEdit()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Begins an edit on an object.
+  remarks: "This method is typically used to capture the BeginEdit semantics of a <xref:System.Data.DataRowView>.  \n  \n If BeginEdit is called on an object that is already being edited, the second and subsequent calls are ignored."
+  syntax:
+    content: public void BeginEdit ();
+    parameters: []
+  overload: System.ComponentModel.IEditableObject.BeginEdit*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\IEditableObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/IEditableObject.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.IEditableObject.CancelEdit
+  id: CancelEdit
+  parent: System.ComponentModel.IEditableObject
+  langs:
+  - csharp
+  name: CancelEdit()
+  nameWithType: IEditableObject.CancelEdit()
+  fullName: System.ComponentModel.IEditableObject.CancelEdit()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Discards changes since the last <xref href="stem.ComponentModel.IEditableObject.BeginEdit%2A"></xref> call.
+  remarks: "This method is typically used to capture the CancelEdit semantics of a <xref:System.Data.DataRowView>.  \n  \n This method will be ignored if called on an object that is not being edited.  \n  \n> [!NOTE]\n>  If the owning list implements <xref:System.ComponentModel.IBindingList>, calling CancelEdit on an object created using <xref:System.ComponentModel.IBindingList.AddNew%2A?displayProperty=fullName> discards the object."
+  syntax:
+    content: public void CancelEdit ();
+    parameters: []
+  overload: System.ComponentModel.IEditableObject.CancelEdit*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\IEditableObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/IEditableObject.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.IEditableObject.EndEdit
+  id: EndEdit
+  parent: System.ComponentModel.IEditableObject
+  langs:
+  - csharp
+  name: EndEdit()
+  nameWithType: IEditableObject.EndEdit()
+  fullName: System.ComponentModel.IEditableObject.EndEdit()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Pushes changes since the last <xref href="stem.ComponentModel.IEditableObject.BeginEdit%2A"></xref> or <xref href="stem.ComponentModel.IBindingList.AddNew%2A"></xref> call into the underlying object.
+  remarks: "This method is typically used to capture the EndEdit semantics of a <xref:System.Data.DataRowView>.  \n  \n This method will be ignored if called on an object that is not being edited."
+  syntax:
+    content: public void EndEdit ();
+    parameters: []
+  overload: System.ComponentModel.IEditableObject.EndEdit*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\IEditableObject.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/IEditableObject.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.ComponentModel.IEditableObject.BeginEdit
+  parent: System.ComponentModel.IEditableObject
+  isExternal: false
+  name: BeginEdit()
+  nameWithType: IEditableObject.BeginEdit()
+  fullName: System.ComponentModel.IEditableObject.BeginEdit()
+- uid: System.ComponentModel.IEditableObject.CancelEdit
+  parent: System.ComponentModel.IEditableObject
+  isExternal: false
+  name: CancelEdit()
+  nameWithType: IEditableObject.CancelEdit()
+  fullName: System.ComponentModel.IEditableObject.CancelEdit()
+- uid: System.ComponentModel.IEditableObject.EndEdit
+  parent: System.ComponentModel.IEditableObject
+  isExternal: false
+  name: EndEdit()
+  nameWithType: IEditableObject.EndEdit()
+  fullName: System.ComponentModel.IEditableObject.EndEdit()
+- uid: System.ComponentModel.IEditableObject.BeginEdit*
+  parent: System.ComponentModel.IEditableObject
+  isExternal: false
+  name: BeginEdit
+  nameWithType: IEditableObject.BeginEdit
+- uid: System.ComponentModel.IEditableObject.CancelEdit*
+  parent: System.ComponentModel.IEditableObject
+  isExternal: false
+  name: CancelEdit
+  nameWithType: IEditableObject.CancelEdit
+- uid: System.ComponentModel.IEditableObject.EndEdit*
+  parent: System.ComponentModel.IEditableObject
+  isExternal: false
+  name: EndEdit
+  nameWithType: IEditableObject.EndEdit

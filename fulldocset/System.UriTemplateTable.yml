@@ -1,0 +1,693 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.UriTemplateTable
+  id: UriTemplateTable
+  children:
+  - System.UriTemplateTable.#ctor
+  - System.UriTemplateTable.#ctor(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.UriTemplate,System.Object}})
+  - System.UriTemplateTable.#ctor(System.Uri)
+  - System.UriTemplateTable.#ctor(System.Uri,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.UriTemplate,System.Object}})
+  - System.UriTemplateTable.BaseAddress
+  - System.UriTemplateTable.IsReadOnly
+  - System.UriTemplateTable.KeyValuePairs
+  - System.UriTemplateTable.MakeReadOnly(System.Boolean)
+  - System.UriTemplateTable.Match(System.Uri)
+  - System.UriTemplateTable.MatchSingle(System.Uri)
+  - System.UriTemplateTable.OriginalBaseAddress
+  langs:
+  - csharp
+  name: UriTemplateTable
+  nameWithType: UriTemplateTable
+  fullName: System.UriTemplateTable
+  type: Class
+  summary: A class that represents an associative set of <xref href="System.UriTemplate"></xref> objects.
+  remarks: "A UriTemplateTable is an associative set of <xref:System.UriTemplate> objects bound to an object of the developer's choosing. It allows you to match candidate Uniform Resource Identifiers (URIs) against the templates in the set and retrieve the data associated with the matching templates. The contents of UriTemplateTable can be changed until the <xref:System.UriTemplateTable.MakeReadOnly%28System.Boolean%29> method is called, at which time one of following types of validation occurs:  \n  \n-   When <xref:System.UriTemplateTable.MakeReadOnly%28System.Boolean%29> is called passing in `false`, the UriTemplateTable checks to make sure the table contains no multiple structurally-equivalent templates. If it finds such templates, it throws an exception. This type of validation is used in conjunction with <xref:System.UriTemplateTable.MatchSingle%28System.Uri%29> when you want to ensure only one template matches an incoming URI.  \n  \n-   When <xref:System.UriTemplateTable.MakeReadOnly%28System.Boolean%29> is called passing in `true`, multiple structurally-equivalent templates can be contained within a UriTemplateTable. However, any query strings in the templates must not be ambiguous; identical query strings are allowed. [!INCLUDE[crabout](~/add/includes/crabout-md.md)] ambiguous query strings, see [UriTemplate and UriTemplateTable](../Topic/UriTemplate%20and%20UriTemplateTable.md)."
+  example:
+  - "The following code shows how to create a UriTemplateTable, populate it, and use it to match against a candidate <xref:System.Uri>.  \n  \n [!code-cs[UriTemplateTable#0](~/add/codesnippet/csharp/t-system.uritemplatetable_1.cs)]\n [!code-vb[UriTemplateTable#0](~/add/codesnippet/visualbasic/t-system.uritemplatetable_1.vb)]"
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+
+      public class UriTemplateTable
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplateTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplateTable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplateTable.#ctor
+  id: '#ctor'
+  parent: System.UriTemplateTable
+  langs:
+  - csharp
+  name: UriTemplateTable()
+  nameWithType: UriTemplateTable.UriTemplateTable()
+  fullName: System.UriTemplateTable.UriTemplateTable()
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.UriTemplateTable"></xref> class.
+  remarks: ''
+  example:
+  - "The following example shows how to instantiate the <xref:System.UriTemplateTable> class.  \n  \n [!code-cs[UriTemplateTable#1](~/add/codesnippet/csharp/m-system.uritemplatetabl_2_1.cs)]\n [!code-vb[UriTemplateTable#1](~/add/codesnippet/visualbasic/m-system.uritemplatetabl_2_1.vb)]"
+  syntax:
+    content: public UriTemplateTable ();
+    parameters: []
+  overload: System.UriTemplateTable.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplateTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplateTable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplateTable.#ctor(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.UriTemplate,System.Object}})
+  id: '#ctor(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.UriTemplate,System.Object}})'
+  parent: System.UriTemplateTable
+  langs:
+  - csharp
+  name: UriTemplateTable(IEnumerable<KeyValuePair<UriTemplate,Object>>)
+  nameWithType: UriTemplateTable.UriTemplateTable(IEnumerable<KeyValuePair<UriTemplate,Object>>)
+  fullName: System.UriTemplateTable.UriTemplateTable(IEnumerable<KeyValuePair<UriTemplate,Object>>)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.UriTemplateTable"></xref> class with the specified collection of key/value pairs.
+  remarks: ''
+  example:
+  - "The following example shows how to instantiate the <xref:System.UriTemplateTable> class.  \n  \n [!code-cs[UriTemplateTable#2](~/add/codesnippet/csharp/624802f2-32fa-401a-b3ad-_1.cs)]\n [!code-vb[UriTemplateTable#2](~/add/codesnippet/visualbasic/624802f2-32fa-401a-b3ad-_1.vb)]"
+  syntax:
+    content: public UriTemplateTable (System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<UriTemplate,object>> keyValuePairs);
+    parameters:
+    - id: keyValuePairs
+      type: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.UriTemplate,System.Object}}
+      description: A collection of key/value pairs that consist of URI templates and associated data.
+  overload: System.UriTemplateTable.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplateTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplateTable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplateTable.#ctor(System.Uri)
+  id: '#ctor(System.Uri)'
+  parent: System.UriTemplateTable
+  langs:
+  - csharp
+  name: UriTemplateTable(Uri)
+  nameWithType: UriTemplateTable.UriTemplateTable(Uri)
+  fullName: System.UriTemplateTable.UriTemplateTable(Uri)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.UriTemplateTable"></xref> class with the specified base address.
+  remarks: ''
+  example:
+  - "The following example shows how to call this constructor.  \n  \n [!code-cs[UriTemplateTable#3](~/add/codesnippet/csharp/m-system.uritemplatetabl_3_1.cs)]\n [!code-vb[UriTemplateTable#3](~/add/codesnippet/visualbasic/m-system.uritemplatetabl_3_1.vb)]"
+  syntax:
+    content: public UriTemplateTable (Uri baseAddress);
+    parameters:
+    - id: baseAddress
+      type: System.Uri
+      description: A <xref href="System.Uri"></xref> instance that contains the base address.
+  overload: System.UriTemplateTable.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplateTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplateTable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplateTable.#ctor(System.Uri,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.UriTemplate,System.Object}})
+  id: '#ctor(System.Uri,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.UriTemplate,System.Object}})'
+  parent: System.UriTemplateTable
+  langs:
+  - csharp
+  name: UriTemplateTable(Uri,IEnumerable<KeyValuePair<UriTemplate,Object>>)
+  nameWithType: UriTemplateTable.UriTemplateTable(Uri,IEnumerable<KeyValuePair<UriTemplate,Object>>)
+  fullName: System.UriTemplateTable.UriTemplateTable(Uri,IEnumerable<KeyValuePair<UriTemplate,Object>>)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.UriTemplateTable"></xref> class with the specified base address and collection of key/value pairs.
+  remarks: ''
+  example:
+  - "The following example shows how to call this constructor.  \n  \n [!code-cs[UriTemplateTable#4](~/add/codesnippet/csharp/00279f5f-3cbb-4254-87b6-_1.cs)]\n [!code-vb[UriTemplateTable#4](~/add/codesnippet/visualbasic/00279f5f-3cbb-4254-87b6-_1.vb)]"
+  syntax:
+    content: public UriTemplateTable (Uri baseAddress, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<UriTemplate,object>> keyValuePairs);
+    parameters:
+    - id: baseAddress
+      type: System.Uri
+      description: A <xref href="System.Uri"></xref> instance that contains the base address.
+    - id: keyValuePairs
+      type: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.UriTemplate,System.Object}}
+      description: A collection of key/value pairs that consist of URI templates and associated data.
+  overload: System.UriTemplateTable.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplateTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplateTable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplateTable.BaseAddress
+  id: BaseAddress
+  parent: System.UriTemplateTable
+  langs:
+  - csharp
+  name: BaseAddress
+  nameWithType: UriTemplateTable.BaseAddress
+  fullName: System.UriTemplateTable.BaseAddress
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Gets and sets the base address for the <xref href="System.UriTemplateTable"></xref> instance.
+  remarks: The BaseAddress property can only be set prior to calling <xref:System.UriTemplateTable.MakeReadOnly%28System.Boolean%29> or <xref:System.UriTemplateTable.Match%28System.Uri%29> or <xref:System.UriTemplateTable.MatchSingle%28System.Uri%29> otherwise an <xref:System.InvalidOperationException> is thrown.
+  example:
+  - "The following example shows how to access the BaseAddress property.  \n  \n [!code-cs[UriTemplateTable#5](~/add/codesnippet/csharp/p-system.uritemplatetabl_2_1.cs)]\n [!code-vb[UriTemplateTable#5](~/add/codesnippet/visualbasic/p-system.uritemplatetabl_2_1.vb)]"
+  syntax:
+    content: public Uri BaseAddress { get; set; }
+    return:
+      type: System.Uri
+      description: A <xref href="System.Uri"></xref> that contains the base address.
+  overload: System.UriTemplateTable.BaseAddress*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplateTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplateTable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplateTable.IsReadOnly
+  id: IsReadOnly
+  parent: System.UriTemplateTable
+  langs:
+  - csharp
+  name: IsReadOnly
+  nameWithType: UriTemplateTable.IsReadOnly
+  fullName: System.UriTemplateTable.IsReadOnly
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Gets a value that specifies whether the <xref href="System.UriTemplateTable"></xref> is read only.
+  remarks: A <xref:System.UriTemplateTable> is read only after the <xref:System.UriTemplateTable.MakeReadOnly%28System.Boolean%29> method is called.
+  example:
+  - "The following example shows how to access the IsReadOnly property.  \n  \n [!code-cs[UriTemplateTable#6](~/add/codesnippet/csharp/p-system.uritemplatetabl_0_1.cs)]\n [!code-vb[UriTemplateTable#6](~/add/codesnippet/visualbasic/p-system.uritemplatetabl_0_1.vb)]"
+  syntax:
+    content: public bool IsReadOnly { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="System.UriTemplateTable"></xref> property is read only; otherwise `false`.'
+  overload: System.UriTemplateTable.IsReadOnly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplateTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplateTable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplateTable.KeyValuePairs
+  id: KeyValuePairs
+  parent: System.UriTemplateTable
+  langs:
+  - csharp
+  name: KeyValuePairs
+  nameWithType: UriTemplateTable.KeyValuePairs
+  fullName: System.UriTemplateTable.KeyValuePairs
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Gets a collection of key/value pairs that consist of <xref href="System.UriTemplate"></xref> objects and their associated data.
+  remarks: Each <xref:System.UriTemplate> instance in the table has data associated with it. The KeyValuePairs property contains a collection of key value pairs where the key is a <xref:System.UriTemplate> instance and the value is the data associated with the <xref:System.UriTemplate>. Values can only be added to KeyValuePairs property prior to calling <xref:System.UriTemplateTable.MakeReadOnly%28System.Boolean%29> or <xref:System.UriTemplateTable.Match%28System.Uri%29> or <xref:System.UriTemplateTable.MatchSingle%28System.Uri%29> otherwise a <xref:System.NotSupportedException> is thrown.
+  example:
+  - "The following example shows how to access the KeyValuePairs property.  \n  \n [!code-cs[UriTemplateTable#7](~/add/codesnippet/csharp/p-system.uritemplatetabl_1_1.cs)]\n [!code-vb[UriTemplateTable#7](~/add/codesnippet/visualbasic/p-system.uritemplatetabl_1_1.vb)]"
+  syntax:
+    content: public System.Collections.Generic.IList<System.Collections.Generic.KeyValuePair<UriTemplate,object>> KeyValuePairs { get; }
+    return:
+      type: System.Collections.Generic.IList{System.Collections.Generic.KeyValuePair{System.UriTemplate,System.Object}}
+      description: A collection of key/value pairs that consist of <xref href="System.UriTemplate"></xref> objects and their associated data.
+  overload: System.UriTemplateTable.KeyValuePairs*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplateTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplateTable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplateTable.MakeReadOnly(System.Boolean)
+  id: MakeReadOnly(System.Boolean)
+  parent: System.UriTemplateTable
+  langs:
+  - csharp
+  name: MakeReadOnly(Boolean)
+  nameWithType: UriTemplateTable.MakeReadOnly(Boolean)
+  fullName: System.UriTemplateTable.MakeReadOnly(Boolean)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Makes the <xref href="System.UriTemplateTable"></xref> read only.
+  remarks: "When the MakeReadOnly method is called, one of the following types of validation occurs:  \n  \n-   When MakeReadOnly is called passing in `false`, the <xref:System.UriTemplateTable> checks to make sure the table contains no multiple structurally-equivalent templates. If it finds such templates, an exception is thrown. This type of validation is used in conjunction with <xref:System.UriTemplateTable.MatchSingle%28System.Uri%29> when you want to ensure only one template matches an incoming URI.  \n  \n-   When MakeReadOnly is called passing in `true`, multiple structurally-equivalent templates can be contained within a <xref:System.UriTemplateTable>. However, any query strings in the templates must not be ambiguous; identical query strings are allowed. This type of validation is used in conjunction with <xref:System.UriTemplateTable.Match%28System.Uri%29> when multiple template matches are allowed on the candidate URI.  \n  \n Only the first call to MakeReadOnly is honored, subsequent calls are ignored without any exception being thrown."
+  syntax:
+    content: public void MakeReadOnly (bool allowDuplicateEquivalentUriTemplates);
+    parameters:
+    - id: allowDuplicateEquivalentUriTemplates
+      type: System.Boolean
+      description: Specifies whether to allow duplicate equivalent <xref href="System.UriTemplate"></xref> instances in the <xref href="System.UriTemplateTable"></xref>.
+  overload: System.UriTemplateTable.MakeReadOnly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplateTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplateTable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplateTable.Match(System.Uri)
+  id: Match(System.Uri)
+  parent: System.UriTemplateTable
+  langs:
+  - csharp
+  name: Match(Uri)
+  nameWithType: UriTemplateTable.Match(Uri)
+  fullName: System.UriTemplateTable.Match(Uri)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Attempts to match a candidate <xref href="System.Uri"></xref> to the <xref href="System.UriTemplateTable"></xref>.
+  remarks: This method may return multiple matches.
+  example:
+  - "The following example shows how to call the Match method.  \n  \n [!code-cs[UriTemplateTable#9](~/add/codesnippet/csharp/m-system.uritemplatetabl_0_1.cs)]\n [!code-vb[UriTemplateTable#9](~/add/codesnippet/visualbasic/m-system.uritemplatetabl_0_1.vb)]"
+  syntax:
+    content: public System.Collections.ObjectModel.Collection<UriTemplateMatch> Match (Uri uri);
+    parameters:
+    - id: uri
+      type: System.Uri
+      description: The candidate URI.
+    return:
+      type: System.Collections.ObjectModel.Collection{System.UriTemplateMatch}
+      description: A collection of <xref href="System.UriTemplateMatch"></xref> instances.
+  overload: System.UriTemplateTable.Match*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplateTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplateTable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplateTable.MatchSingle(System.Uri)
+  id: MatchSingle(System.Uri)
+  parent: System.UriTemplateTable
+  langs:
+  - csharp
+  name: MatchSingle(Uri)
+  nameWithType: UriTemplateTable.MatchSingle(Uri)
+  fullName: System.UriTemplateTable.MatchSingle(Uri)
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Attempts to match a candidate <xref href="System.Uri"></xref> to the <xref href="System.UriTemplateTable"></xref>.
+  remarks: This method returns, at most, one match. If more than one match is found, a <xref:System.UriTemplateMatchException> is thrown.
+  example:
+  - "The following example shows how to call the MatchSingle method.  \n  \n [!code-cs[UriTemplateTable#10](~/add/codesnippet/csharp/m-system.uritemplatetabl_1_1.cs)]\n [!code-vb[UriTemplateTable#10](~/add/codesnippet/visualbasic/m-system.uritemplatetabl_1_1.vb)]"
+  syntax:
+    content: public UriTemplateMatch MatchSingle (Uri uri);
+    parameters:
+    - id: uri
+      type: System.Uri
+      description: The candidate URI.
+    return:
+      type: System.UriTemplateMatch
+      description: A single <xref href="System.UriTemplateMatch"></xref> instance.
+  overload: System.UriTemplateTable.MatchSingle*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplateTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplateTable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.UriTemplateTable.OriginalBaseAddress
+  id: OriginalBaseAddress
+  parent: System.UriTemplateTable
+  langs:
+  - csharp
+  name: OriginalBaseAddress
+  nameWithType: UriTemplateTable.OriginalBaseAddress
+  fullName: System.UriTemplateTable.OriginalBaseAddress
+  type: Property
+  assemblies:
+  - System.ServiceModel.Web
+  - System.ServiceModel
+  namespace: System
+  summary: Gets the original base address.
+  syntax:
+    content: public Uri OriginalBaseAddress { get; }
+    return:
+      type: System.Uri
+      description: The original base address.
+  overload: System.UriTemplateTable.OriginalBaseAddress*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\UriTemplateTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/UriTemplateTable.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.UriTemplateTable.#ctor
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: UriTemplateTable()
+  nameWithType: UriTemplateTable.UriTemplateTable()
+  fullName: System.UriTemplateTable.UriTemplateTable()
+- uid: System.UriTemplateTable.#ctor(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.UriTemplate,System.Object}})
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: UriTemplateTable(IEnumerable<KeyValuePair<UriTemplate,Object>>)
+  nameWithType: UriTemplateTable.UriTemplateTable(IEnumerable<KeyValuePair<UriTemplate,Object>>)
+  fullName: System.UriTemplateTable.UriTemplateTable(IEnumerable<KeyValuePair<UriTemplate,Object>>)
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.UriTemplate,System.Object}}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<KeyValuePair<UriTemplate,Object>>
+  nameWithType: IEnumerable<KeyValuePair<UriTemplate,Object>>
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.UriTemplate,System.Object>>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<System.Collections.Generic.KeyValuePair<System.UriTemplate,System.Object>>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    nameWithType: KeyValuePair
+    fullName: KeyValuePair<System.UriTemplate,System.Object>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.UriTemplate
+    name: UriTemplate
+    nameWithType: UriTemplate
+    fullName: UriTemplate
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: Object
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.UriTemplateTable.#ctor(System.Uri)
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: UriTemplateTable(Uri)
+  nameWithType: UriTemplateTable.UriTemplateTable(Uri)
+  fullName: System.UriTemplateTable.UriTemplateTable(Uri)
+- uid: System.Uri
+  parent: System
+  isExternal: false
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: System.UriTemplateTable.#ctor(System.Uri,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.UriTemplate,System.Object}})
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: UriTemplateTable(Uri,IEnumerable<KeyValuePair<UriTemplate,Object>>)
+  nameWithType: UriTemplateTable.UriTemplateTable(Uri,IEnumerable<KeyValuePair<UriTemplate,Object>>)
+  fullName: System.UriTemplateTable.UriTemplateTable(Uri,IEnumerable<KeyValuePair<UriTemplate,Object>>)
+- uid: System.UriTemplateTable.BaseAddress
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: BaseAddress
+  nameWithType: UriTemplateTable.BaseAddress
+  fullName: System.UriTemplateTable.BaseAddress
+- uid: System.UriTemplateTable.IsReadOnly
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: IsReadOnly
+  nameWithType: UriTemplateTable.IsReadOnly
+  fullName: System.UriTemplateTable.IsReadOnly
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.UriTemplateTable.KeyValuePairs
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: KeyValuePairs
+  nameWithType: UriTemplateTable.KeyValuePairs
+  fullName: System.UriTemplateTable.KeyValuePairs
+- uid: System.Collections.Generic.IList{System.Collections.Generic.KeyValuePair{System.UriTemplate,System.Object}}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IList<KeyValuePair<UriTemplate,Object>>
+  nameWithType: IList<KeyValuePair<UriTemplate,Object>>
+  fullName: System.Collections.Generic.IList<System.Collections.Generic.KeyValuePair<System.UriTemplate,System.Object>>
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: IList<System.Collections.Generic.KeyValuePair<System.UriTemplate,System.Object>>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    nameWithType: KeyValuePair
+    fullName: KeyValuePair<System.UriTemplate,System.Object>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.UriTemplate
+    name: UriTemplate
+    nameWithType: UriTemplate
+    fullName: UriTemplate
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: Object
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.UriTemplateTable.MakeReadOnly(System.Boolean)
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: MakeReadOnly(Boolean)
+  nameWithType: UriTemplateTable.MakeReadOnly(Boolean)
+  fullName: System.UriTemplateTable.MakeReadOnly(Boolean)
+- uid: System.UriTemplateTable.Match(System.Uri)
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: Match(Uri)
+  nameWithType: UriTemplateTable.Match(Uri)
+  fullName: System.UriTemplateTable.Match(Uri)
+- uid: System.Collections.ObjectModel.Collection{System.UriTemplateMatch}
+  parent: System.Collections.ObjectModel
+  isExternal: false
+  name: Collection<UriTemplateMatch>
+  nameWithType: Collection<UriTemplateMatch>
+  fullName: System.Collections.ObjectModel.Collection<System.UriTemplateMatch>
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.Collection`1
+    name: Collection
+    nameWithType: Collection
+    fullName: Collection<System.UriTemplateMatch>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.UriTemplateMatch
+    name: UriTemplateMatch
+    nameWithType: UriTemplateMatch
+    fullName: UriTemplateMatch
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.UriTemplateTable.MatchSingle(System.Uri)
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: MatchSingle(Uri)
+  nameWithType: UriTemplateTable.MatchSingle(Uri)
+  fullName: System.UriTemplateTable.MatchSingle(Uri)
+- uid: System.UriTemplateMatch
+  parent: System
+  isExternal: false
+  name: UriTemplateMatch
+  nameWithType: UriTemplateMatch
+  fullName: System.UriTemplateMatch
+- uid: System.UriTemplateTable.OriginalBaseAddress
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: OriginalBaseAddress
+  nameWithType: UriTemplateTable.OriginalBaseAddress
+  fullName: System.UriTemplateTable.OriginalBaseAddress
+- uid: System.UriTemplateTable.#ctor*
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: UriTemplateTable
+  nameWithType: UriTemplateTable.UriTemplateTable
+- uid: System.UriTemplateTable.BaseAddress*
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: BaseAddress
+  nameWithType: UriTemplateTable.BaseAddress
+- uid: System.UriTemplateTable.IsReadOnly*
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: IsReadOnly
+  nameWithType: UriTemplateTable.IsReadOnly
+- uid: System.UriTemplateTable.KeyValuePairs*
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: KeyValuePairs
+  nameWithType: UriTemplateTable.KeyValuePairs
+- uid: System.UriTemplateTable.MakeReadOnly*
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: MakeReadOnly
+  nameWithType: UriTemplateTable.MakeReadOnly
+- uid: System.UriTemplateTable.Match*
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: Match
+  nameWithType: UriTemplateTable.Match
+- uid: System.UriTemplateTable.MatchSingle*
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: MatchSingle
+  nameWithType: UriTemplateTable.MatchSingle
+- uid: System.UriTemplateTable.OriginalBaseAddress*
+  parent: System.UriTemplateTable
+  isExternal: false
+  name: OriginalBaseAddress
+  nameWithType: UriTemplateTable.OriginalBaseAddress

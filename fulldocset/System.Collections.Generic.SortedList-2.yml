@@ -1,0 +1,2685 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Collections.Generic.SortedList`2
+  id: SortedList`2
+  children:
+  - System.Collections.Generic.SortedList`2.#ctor
+  - System.Collections.Generic.SortedList`2.#ctor(System.Collections.Generic.IComparer{`0})
+  - System.Collections.Generic.SortedList`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})
+  - System.Collections.Generic.SortedList`2.#ctor(System.Int32)
+  - System.Collections.Generic.SortedList`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IComparer{`0})
+  - System.Collections.Generic.SortedList`2.#ctor(System.Int32,System.Collections.Generic.IComparer{`0})
+  - System.Collections.Generic.SortedList`2.Add(`0,`1)
+  - System.Collections.Generic.SortedList`2.Capacity
+  - System.Collections.Generic.SortedList`2.Clear
+  - System.Collections.Generic.SortedList`2.Comparer
+  - System.Collections.Generic.SortedList`2.ContainsKey(`0)
+  - System.Collections.Generic.SortedList`2.ContainsValue(`1)
+  - System.Collections.Generic.SortedList`2.Count
+  - System.Collections.Generic.SortedList`2.GetEnumerator
+  - System.Collections.Generic.SortedList`2.IndexOfKey(`0)
+  - System.Collections.Generic.SortedList`2.IndexOfValue(`1)
+  - System.Collections.Generic.SortedList`2.Item(`0)
+  - System.Collections.Generic.SortedList`2.Keys
+  - System.Collections.Generic.SortedList`2.Remove(`0)
+  - System.Collections.Generic.SortedList`2.RemoveAt(System.Int32)
+  - System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Add(System.Collections.Generic.KeyValuePair{`0,`1})
+  - System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+  - System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+  - System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#IsReadOnly
+  - System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+  - System.Collections.Generic.SortedList`2.System#Collections#Generic#IDictionary{TKey,TValue}#Keys
+  - System.Collections.Generic.SortedList`2.System#Collections#Generic#IDictionary{TKey,TValue}#Values
+  - System.Collections.Generic.SortedList`2.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{TKey,TValue}}#GetEnumerator
+  - System.Collections.Generic.SortedList`2.System#Collections#Generic#IReadOnlyDictionary{TKey,TValue}#Keys
+  - System.Collections.Generic.SortedList`2.System#Collections#Generic#IReadOnlyDictionary{TKey,TValue}#Values
+  - System.Collections.Generic.SortedList`2.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  - System.Collections.Generic.SortedList`2.System#Collections#ICollection#IsSynchronized
+  - System.Collections.Generic.SortedList`2.System#Collections#ICollection#SyncRoot
+  - System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Add(System.Object,System.Object)
+  - System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Contains(System.Object)
+  - System.Collections.Generic.SortedList`2.System#Collections#IDictionary#GetEnumerator
+  - System.Collections.Generic.SortedList`2.System#Collections#IDictionary#IsFixedSize
+  - System.Collections.Generic.SortedList`2.System#Collections#IDictionary#IsReadOnly
+  - System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Item(System.Object)
+  - System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Keys
+  - System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Remove(System.Object)
+  - System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Values
+  - System.Collections.Generic.SortedList`2.System#Collections#IEnumerable#GetEnumerator
+  - System.Collections.Generic.SortedList`2.TrimExcess
+  - System.Collections.Generic.SortedList`2.TryGetValue(`0,`1@)
+  - System.Collections.Generic.SortedList`2.Values
+  langs:
+  - csharp
+  name: SortedList<TKey,TValue>
+  nameWithType: SortedList<TKey,TValue>
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>
+  type: Class
+  summary: Represents a collection of key/value pairs that are sorted by key based on the associated <xref href="stem.Collections.Generic.IComparer%601"></xref> implementation.
+  remarks: "The SortedList(TKey, generic class is an array of key/value pairs with O(log `n`) retrieval, where n is the number of elements in the dictionary. In this, it is similar to the <xref:System.Collections.Generic.SortedDictionary%602> generic class. The two classes have similar object models, and both have O(log `n`) retrieval. Where the two classes differ is in memory use and speed of insertion and removal:  \n  \n-   SortedList(TKey, uses less memory than <xref:System.Collections.Generic.SortedDictionary%602>.  \n  \n-   <xref:System.Collections.Generic.SortedDictionary%602> has faster insertion and removal operations for unsorted data, O(log `n`) as opposed to O(`n`) for SortedList(TKey,.  \n  \n-   If the list is populated all at once from sorted data, SortedList(TKey, is faster than <xref:System.Collections.Generic.SortedDictionary%602>.  \n  \n Another difference between the <xref:System.Collections.Generic.SortedDictionary%602> and SortedList(TKey, classes is that SortedList(TKey, supports efficient indexed retrieval of keys and values through the collections returned by the <xref:System.Collections.Generic.SortedList%602.Keys%2A> and <xref:System.Collections.Generic.SortedList%602.Values%2A> properties. It is not necessary to regenerate the lists when the properties are accessed, because the lists are just wrappers for the internal arrays of keys and values. The following code shows the use of the <xref:System.Collections.Generic.SortedList%602.Values%2A> property for indexed retrieval of values from a sorted list of strings:  \n  \n [!code-cs[Generic.SortedList#11](~/add/codesnippet/csharp/t-system.collections.gen_1_1.cs)]\n [!code-cpp[Generic.SortedList#11](~/add/codesnippet/cpp/t-system.collections.gen_1_1.cpp)]\n [!code-vb[Generic.SortedList#11](~/add/codesnippet/visualbasic/t-system.collections.gen_1_1.vb)]  \n  \n SortedList(TKey, is implemented as an array of key/value pairs, sorted by the key.  Each element can be retrieved as a <xref:System.Collections.Generic.KeyValuePair%602> object.  \n  \n Key objects must be immutable as long as they are used as keys in the SortedList(TKey,. Every key in a SortedList(TKey, must be unique. A key cannot be `null`, but a value can be, if the type of values in the list, `TValue`, is a reference type.  \n  \n SortedList(TKey, requires a comparer implementation to sort and to perform comparisons.  The default comparer <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName> checks whether the key type `TKey` implements <xref:System.IComparable%601?displayProperty=fullName> and uses that implementation, if available.  If not, <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName> checks whether the key type `TKey` implements <xref:System.IComparable?displayProperty=fullName>.  If the key type `TKey` does not implement either interface, you can specify a <xref:System.Collections.Generic.IComparer%601?displayProperty=fullName> implementation in a constructor overload that accepts a `comparer` parameter.  \n  \n The capacity of a SortedList(TKey, is the number of elements the SortedList(TKey, can hold. As elements are added to a SortedList(TKey,, the capacity is automatically increased as required by reallocating the internal array. The capacity can be decreased by calling <xref:System.Collections.Generic.SortedList%602.TrimExcess%2A> or by setting the <xref:System.Collections.Generic.SortedList%602.Capacity%2A> property explicitly. Decreasing the capacity reallocates memory and copies all the elements in the SortedList(TKey,.  \n  \n For very large SortedList(TKey, objects, you can increase the maximum capacity to 2 billion elements on a 64-bit system by setting the `enabled` attribute of the  configuration element to `true` in the run-time environment.  \n  \n The `foreach` statement of the C# language (`for each` in C++, `For Each` in Visual Basic) returns an object of the type of the elements in the collection. Since the elements of the SortedList(TKey, are key/value pairs, the element type is not the type of the key or the type of the value. Instead, the element type is <xref:System.Collections.Generic.KeyValuePair%602>. For example:  \n  \n [!code-cs[Generic.SortedList#12](~/add/codesnippet/csharp/t-system.collections.gen_1_2.cs)]\n [!code-cpp[Generic.SortedList#12](~/add/codesnippet/cpp/t-system.collections.gen_1_2.cpp)]\n [!code-vb[Generic.SortedList#12](~/add/codesnippet/visualbasic/t-system.collections.gen_1_2.vb)]  \n  \n The `foreach` statement is a wrapper around the enumerator, which only allows reading from, not writing to, the collection."
+  example:
+  - "The following code example creates an empty SortedList(TKey, of strings with string keys and uses the <xref:System.Collections.Generic.SortedList%602.Add%2A> method to add some elements. The example demonstrates that the <xref:System.Collections.Generic.SortedList%602.Add%2A> method throws an <xref:System.ArgumentException> when attempting to add a duplicate key.  \n  \n The example uses the <xref:System.Collections.Generic.SortedList%602.Item%2A> property (the indexer in C#) to retrieve values, demonstrating that a <xref:System.Collections.Generic.KeyNotFoundException> is thrown when a requested key is not present, and showing that the value associated with a key can be replaced.  \n  \n The example shows how to use the <xref:System.Collections.Generic.SortedList%602.TryGetValue%2A> method as a more efficient way to retrieve values if a program often must try key values that are not in the sorted list, and it shows how to use the <xref:System.Collections.Generic.SortedList%602.ContainsKey%2A> method to test whether a key exists before calling the <xref:System.Collections.Generic.SortedList%602.Add%2A> method.  \n  \n The example shows how to enumerate the keys and values in the sorted list and how to enumerate the keys and values alone using the <xref:System.Collections.Generic.SortedList%602.Keys%2A> property and the <xref:System.Collections.Generic.SortedList%602.Values%2A> property.  \n  \n Finally, the example demonstrates the <xref:System.Collections.Generic.SortedList%602.Remove%2A> method.  \n  \n [!code-vb[Generic.SortedList#1](~/add/codesnippet/visualbasic/t-system.collections.gen_1_3.vb)]\n [!code-cpp[Generic.SortedList#1](~/add/codesnippet/cpp/t-system.collections.gen_1_3.cpp)]\n [!code-cs[Generic.SortedList#1](~/add/codesnippet/csharp/t-system.collections.gen_1_3.cs)]"
+  syntax:
+    content: >-
+      [System.Diagnostics.DebuggerDisplay("Count = {Count}")]
+
+      [System.Diagnostics.DebuggerTypeProxy(typeof(System.Collections.Generic.System_DictionaryDebugView`2))]
+
+      [System.Runtime.InteropServices.ComVisible(false)]
+
+      public class SortedList<TKey,TValue> : System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>, System.Collections.Generic.IDictionary<TKey,TValue>, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<TKey,TValue>>, System.Collections.Generic.IReadOnlyCollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>, System.Collections.Generic.IReadOnlyDictionary<TKey,TValue>, System.Collections.IDictionary
+    typeParameters:
+    - id: TKey
+      description: The type of keys in the collection.
+    - id: TValue
+      description: The type of values in the collection.
+  inheritance:
+  - System.Object
+  implements:
+  - System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>
+  - System.Collections.Generic.IDictionary<TKey,TValue>
+  - System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<TKey,TValue>>
+  - System.Collections.Generic.IReadOnlyCollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>
+  - System.Collections.Generic.IReadOnlyDictionary<TKey,TValue>
+  - System.Collections.IDictionary
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.#ctor
+  id: '#ctor'
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: SortedList<TKey,TValue>()
+  nameWithType: SortedList<TKey,TValue>.SortedList<TKey,TValue>()
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.SortedList<TKey,TValue>()
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Initializes a new instance of the <xref href="stem.Collections.Generic.SortedList%602"></xref> class that is empty, has the default initial capacity, and uses the default <xref href="stem.Collections.Generic.IComparer%601"></xref>.
+  remarks: "Every key in a <xref:System.Collections.Generic.SortedList%602> must be unique according to the default comparer.  \n  \n This constructor uses the default value for the initial capacity of the <xref:System.Collections.Generic.SortedList%602>. To set the initial capacity, use the <xref:System.Collections.Generic.SortedList%602.%23ctor%28System.Int32%29> constructor. If the final size of the collection can be estimated, specifying the initial capacity eliminates the need to perform a number of resizing operations while adding elements to the <xref:System.Collections.Generic.SortedList%602>.  \n  \n This constructor uses the default comparer for `TKey`. To specify a comparer, use the <xref:System.Collections.Generic.SortedList%602.%23ctor%28System.Collections.Generic.IComparer%7B%600%7D%29> constructor. The default comparer <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName> checks whether the key type `TKey` implements <xref:System.IComparable%601?displayProperty=fullName> and uses that implementation, if available.  If not, <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName> checks whether the key type `TKey` implements <xref:System.IComparable?displayProperty=fullName>.  If the key type `TKey` does not implement either interface, you can specify a <xref:System.Collections.Generic.IComparer%601?displayProperty=fullName> implementation in a constructor overload that accepts a `comparer` parameter.  \n  \n This constructor is an O(1) operation."
+  example:
+  - "The following code example creates an empty <xref:System.Collections.Generic.SortedList%602> of strings with string keys and uses the <xref:System.Collections.Generic.SortedList%602.Add%2A> method to add some elements. The example demonstrates that the <xref:System.Collections.Generic.SortedList%602.Add%2A> method throws an <xref:System.ArgumentException> when attempting to add a duplicate key.  \n  \n This code example is part of a larger example provided for the <xref:System.Collections.Generic.SortedList%602> class.  \n  \n [!code-vb[Generic.SortedList#2](~/add/codesnippet/visualbasic/m-system.collections.gen_19_1.vb)]\n [!code-cpp[Generic.SortedList#2](~/add/codesnippet/cpp/m-system.collections.gen_19_1.cpp)]\n [!code-cs[Generic.SortedList#2](~/add/codesnippet/csharp/m-system.collections.gen_19_1.cs)]"
+  syntax:
+    content: public SortedList ();
+    parameters: []
+  overload: System.Collections.Generic.SortedList`2.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.#ctor(System.Collections.Generic.IComparer{`0})
+  id: '#ctor(System.Collections.Generic.IComparer{`0})'
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: SortedList<TKey,TValue>(IComparer<TKey>)
+  nameWithType: SortedList<TKey,TValue>.SortedList<TKey,TValue>(IComparer<TKey>)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.SortedList<TKey,TValue>(IComparer<TKey>)
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Initializes a new instance of the <xref href="stem.Collections.Generic.SortedList%602"></xref> class that is empty, has the default initial capacity, and uses the specified <xref href="stem.Collections.Generic.IComparer%601"></xref>.
+  remarks: "Every key in a <xref:System.Collections.Generic.SortedList%602> must be unique according to the specified comparer.  \n  \n This constructor uses the default value for the initial capacity of the <xref:System.Collections.Generic.SortedList%602>. To set the initial capacity, use the <xref:System.Collections.Generic.SortedList%602.%23ctor%28System.Int32%2CSystem.Collections.Generic.IComparer%7B%600%7D%29> constructor. If the final size of the collection can be estimated, specifying the initial capacity eliminates the need to perform a number of resizing operations while adding elements to the <xref:System.Collections.Generic.SortedList%602>.  \n  \n This constructor is an O(1) operation."
+  example:
+  - "The following code example creates a sorted list with a case-insensitive comparer for the current culture. The example adds four elements, some with lower-case keys and some with upper-case keys. The example then attempts to add an element with a key that differs from an existing key only by case, catches the resulting exception, and displays an error message. Finally, the example displays the elements in case-insensitive sort order.  \n  \n [!code-vb[Generic.SortedList.ctor_IComp#1](~/add/codesnippet/visualbasic/8e9d1f7a-41e0-4d4b-96e3-_1.vb)]\n [!code-cs[Generic.SortedList.ctor_IComp#1](~/add/codesnippet/csharp/8e9d1f7a-41e0-4d4b-96e3-_1.cs)]"
+  syntax:
+    content: public SortedList (System.Collections.Generic.IComparer<TKey> comparer);
+    parameters:
+    - id: comparer
+      type: System.Collections.Generic.IComparer{TKey}
+      description: "The <xref href=\"stem.Collections.Generic.IComparer%601\"></xref> implementation to use when comparing keys.  \n  \n -or-  \n  \n `null` to use the default <xref href=\"stem.Collections.Generic.Comparer%601\"></xref> for the type of the key."
+  overload: System.Collections.Generic.SortedList`2.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})
+  id: '#ctor(System.Collections.Generic.IDictionary{`0,`1})'
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: SortedList<TKey,TValue>(IDictionary<TKey,TValue>)
+  nameWithType: SortedList<TKey,TValue>.SortedList<TKey,TValue>(IDictionary<TKey,TValue>)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.SortedList<TKey,TValue>(IDictionary<TKey,TValue>)
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Initializes a new instance of the <xref href="stem.Collections.Generic.SortedList%602"></xref> class that contains elements copied from the specified <xref href="stem.Collections.Generic.IDictionary%602"></xref>, has sufficient capacity to accommodate the number of elements copied, and uses the default <xref href="stem.Collections.Generic.IComparer%601"></xref>.
+  remarks: "Every key in a <xref:System.Collections.Generic.SortedList%602> must be unique according to the default comparer; likewise, every key in the source `dictionary` must also be unique according to the default comparer.  \n  \n The capacity of the new <xref:System.Collections.Generic.SortedList%602> is set to the number of elements in `dictionary`, so no resizing takes place while the list is being populated.  \n  \n This constructor uses the default comparer for `TKey`. To specify a comparer, use the <xref:System.Collections.Generic.SortedList%602.%23ctor%28System.Collections.Generic.IDictionary%7B%600%2C%601%7D%2CSystem.Collections.Generic.IComparer%7B%600%7D%29> constructor. The default comparer <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName> checks whether the key type `TKey` implements <xref:System.IComparable%601?displayProperty=fullName> and uses that implementation, if available.  If not, <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName> checks whether the key type `TKey` implements <xref:System.IComparable?displayProperty=fullName>.  If the key type `TKey` does not implement either interface, you can specify a <xref:System.Collections.Generic.IComparer%601?displayProperty=fullName> implementation in a constructor overload that accepts a `comparer` parameter.  \n  \n If the data in `dictionary` are sorted, this constructor is an O(`n`) operation, where `n` is the number of elements in `dictionary`. Otherwise it is an O(`n`*`n`) operation."
+  example:
+  - "The following code example shows how to use <xref:System.Collections.Generic.SortedList%602> to create a sorted copy of the information in a <xref:System.Collections.Generic.Dictionary%602>, by passing the <xref:System.Collections.Generic.Dictionary%602> to the SortedList(TKey, constructor.  \n  \n [!code-cs[Generic.SortedList.ctor_IDic#1](~/add/codesnippet/csharp/77633bc1-5f56-489f-95a2-_1.cs)]\n [!code-vb[Generic.SortedList.ctor_IDic#1](~/add/codesnippet/visualbasic/77633bc1-5f56-489f-95a2-_1.vb)]"
+  syntax:
+    content: public SortedList (System.Collections.Generic.IDictionary<TKey,TValue> dictionary);
+    parameters:
+    - id: dictionary
+      type: System.Collections.Generic.IDictionary`2
+      description: The <xref href="stem.Collections.Generic.IDictionary%602"></xref> whose elements are copied to the new <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  overload: System.Collections.Generic.SortedList`2.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>dictionary</code> is `null`.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>dictionary</code> contains one or more duplicate keys.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: SortedList<TKey,TValue>(Int32)
+  nameWithType: SortedList<TKey,TValue>.SortedList<TKey,TValue>(Int32)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.SortedList<TKey,TValue>(Int32)
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Initializes a new instance of the <xref href="stem.Collections.Generic.SortedList%602"></xref> class that is empty, has the specified initial capacity, and uses the default <xref href="stem.Collections.Generic.IComparer%601"></xref>.
+  remarks: "Every key in a <xref:System.Collections.Generic.SortedList%602> must be unique according to the default comparer.  \n  \n The capacity of a <xref:System.Collections.Generic.SortedList%602> is the number of elements that the <xref:System.Collections.Generic.SortedList%602> can hold before resizing. As elements are added to a <xref:System.Collections.Generic.SortedList%602>, the capacity is automatically increased as required by reallocating the internal array.  \n  \n If the size of the collection can be estimated, specifying the initial capacity eliminates the need to perform a number of resizing operations while adding elements to the <xref:System.Collections.Generic.SortedList%602>.  \n  \n The capacity can be decreased by calling <xref:System.Collections.Generic.SortedList%602.TrimExcess%2A> or by setting the <xref:System.Collections.Generic.SortedList%602.Capacity%2A> property explicitly. Decreasing the capacity reallocates memory and copies all the elements in the <xref:System.Collections.Generic.SortedList%602>.  \n  \n This constructor uses the default comparer for `TKey`. To specify a comparer, use the <xref:System.Collections.Generic.SortedList%602.%23ctor%28System.Int32%2CSystem.Collections.Generic.IComparer%7B%600%7D%29> constructor. The default comparer <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName> checks whether the key type `TKey` implements <xref:System.IComparable%601?displayProperty=fullName> and uses that implementation, if available.  If not, <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName> checks whether the key type `TKey` implements <xref:System.IComparable?displayProperty=fullName>.  If the key type `TKey` does not implement either interface, you can specify a <xref:System.Collections.Generic.IComparer%601?displayProperty=fullName> implementation in a constructor overload that accepts a `comparer` parameter.  \n  \n This constructor is an O(`n`) operation, where `n` is `capacity`."
+  example:
+  - "The following code example creates a sorted list with an initial capacity of 4 and populates it with 4 entries.  \n  \n [!code-cs[Generic.SortedList.ctor_Int32#1](~/add/codesnippet/csharp/m-system.collections.gen_0_1.cs)]\n [!code-vb[Generic.SortedList.ctor_Int32#1](~/add/codesnippet/visualbasic/m-system.collections.gen_0_1.vb)]"
+  syntax:
+    content: public SortedList (int capacity);
+    parameters:
+    - id: capacity
+      type: System.Int32
+      description: The initial number of elements that the <xref href="stem.Collections.Generic.SortedList%602"></xref> can contain.
+  overload: System.Collections.Generic.SortedList`2.#ctor*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>capacity</code> is less than zero.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IComparer{`0})
+  id: '#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IComparer{`0})'
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: SortedList<TKey,TValue>(IDictionary<TKey,TValue>,IComparer<TKey>)
+  nameWithType: SortedList<TKey,TValue>.SortedList<TKey,TValue>(IDictionary<TKey,TValue>,IComparer<TKey>)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.SortedList<TKey,TValue>(IDictionary<TKey,TValue>,IComparer<TKey>)
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Initializes a new instance of the <xref href="stem.Collections.Generic.SortedList%602"></xref> class that contains elements copied from the specified <xref href="stem.Collections.Generic.IDictionary%602"></xref>, has sufficient capacity to accommodate the number of elements copied, and uses the specified <xref href="stem.Collections.Generic.IComparer%601"></xref>.
+  remarks: "Every key in a <xref:System.Collections.Generic.SortedList%602> must be unique according to the specified comparer; likewise, every key in the source `dictionary` must also be unique according to the specified comparer.  \n  \n The capacity of the new <xref:System.Collections.Generic.SortedList%602> is set to the number of elements in `dictionary`, so no resizing takes place while the list is being populated.  \n  \n If the data in `dictionary` are sorted, this constructor is an O(`n`) operation, where `n` is the number of elements in `dictionary`. Otherwise it is an O(`n`*`n`) operation."
+  example:
+  - "The following code example shows how to use <xref:System.Collections.Generic.SortedList%602> to create a case-insensitive sorted copy of the information in a case-insensitive <xref:System.Collections.Generic.Dictionary%602>, by passing the <xref:System.Collections.Generic.Dictionary%602> to the SortedList(TKey, constructor. In this example, the case-insensitive comparers are for the current culture.  \n  \n [!code-cs[Generic.SortedList.ctor_IDicIComp#1](~/add/codesnippet/csharp/02d03473-0826-491c-9c43-_1.cs)]\n [!code-vb[Generic.SortedList.ctor_IDicIComp#1](~/add/codesnippet/visualbasic/02d03473-0826-491c-9c43-_1.vb)]"
+  syntax:
+    content: public SortedList (System.Collections.Generic.IDictionary<TKey,TValue> dictionary, System.Collections.Generic.IComparer<TKey> comparer);
+    parameters:
+    - id: dictionary
+      type: System.Collections.Generic.IDictionary`2
+      description: The <xref href="stem.Collections.Generic.IDictionary%602"></xref> whose elements are copied to the new <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+    - id: comparer
+      type: System.Collections.Generic.IComparer{TKey}
+      description: "The <xref href=\"stem.Collections.Generic.IComparer%601\"></xref> implementation to use when comparing keys.  \n  \n -or-  \n  \n `null` to use the default <xref href=\"stem.Collections.Generic.Comparer%601\"></xref> for the type of the key."
+  overload: System.Collections.Generic.SortedList`2.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>dictionary</code> is `null`.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>dictionary</code> contains one or more duplicate keys.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.#ctor(System.Int32,System.Collections.Generic.IComparer{`0})
+  id: '#ctor(System.Int32,System.Collections.Generic.IComparer{`0})'
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: SortedList<TKey,TValue>(Int32,IComparer<TKey>)
+  nameWithType: SortedList<TKey,TValue>.SortedList<TKey,TValue>(Int32,IComparer<TKey>)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.SortedList<TKey,TValue>(Int32,IComparer<TKey>)
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Initializes a new instance of the <xref href="stem.Collections.Generic.SortedList%602"></xref> class that is empty, has the specified initial capacity, and uses the specified <xref href="stem.Collections.Generic.IComparer%601"></xref>.
+  remarks: "Every key in a <xref:System.Collections.Generic.SortedList%602> must be unique according to the specified comparer.  \n  \n The capacity of a <xref:System.Collections.Generic.SortedList%602> is the number of elements that the <xref:System.Collections.Generic.SortedList%602> can hold before resizing. As elements are added to a <xref:System.Collections.Generic.SortedList%602>, the capacity is automatically increased as required by reallocating the internal array.  \n  \n If the size of the collection can be estimated, specifying the initial capacity eliminates the need to perform a number of resizing operations while adding elements to the <xref:System.Collections.Generic.SortedList%602>.  \n  \n The capacity can be decreased by calling <xref:System.Collections.Generic.SortedList%602.TrimExcess%2A> or by setting the <xref:System.Collections.Generic.SortedList%602.Capacity%2A> property explicitly. Decreasing the capacity reallocates memory and copies all the elements in the <xref:System.Collections.Generic.SortedList%602>.  \n  \n This constructor is an O(`n`) operation, where `n` is `capacity`."
+  example:
+  - "The following code example creates a sorted list with an initial capacity of 5 and a case-insensitive comparer for the current culture. The example adds four elements, some with lower-case keys and some with upper-case keys. The example then attempts to add an element with a key that differs from an existing key only by case, catches the resulting exception, and displays an error message. Finally, the example displays the elements in case-insensitive sort order.  \n  \n [!code-vb[Generic.SortedList.ctor_Int32IComp#1](~/add/codesnippet/visualbasic/0a138c5c-497b-40cd-b297-_1.vb)]\n [!code-cs[Generic.SortedList.ctor_Int32IComp#1](~/add/codesnippet/csharp/0a138c5c-497b-40cd-b297-_1.cs)]"
+  syntax:
+    content: public SortedList (int capacity, System.Collections.Generic.IComparer<TKey> comparer);
+    parameters:
+    - id: capacity
+      type: System.Int32
+      description: The initial number of elements that the <xref href="stem.Collections.Generic.SortedList%602"></xref> can contain.
+    - id: comparer
+      type: System.Collections.Generic.IComparer{TKey}
+      description: "The <xref href=\"stem.Collections.Generic.IComparer%601\"></xref> implementation to use when comparing keys.  \n  \n -or-  \n  \n `null` to use the default <xref href=\"stem.Collections.Generic.Comparer%601\"></xref> for the type of the key."
+  overload: System.Collections.Generic.SortedList`2.#ctor*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>capacity</code> is less than zero.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.Add(`0,`1)
+  id: Add(`0,`1)
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: Add(TKey,TValue)
+  nameWithType: SortedList<TKey,TValue>.Add(TKey,TValue)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Add(TKey,TValue)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Adds an element with the specified key and value into the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  remarks: "A key cannot be `null`, but a value can be, if the type of values in the sorted list, `TValue`, is a reference type.  \n  \n You can also use the <xref:System.Collections.Generic.SortedList%602.Item%2A> property to add new elements by setting the value of a key that does not exist in the <xref:System.Collections.Generic.SortedList%602>; for example, `myCollection[\"myNonexistentKey\"] = myValue`. However, if the specified key already exists in the <xref:System.Collections.Generic.SortedList%602>, setting the <xref:System.Collections.Generic.SortedList%602.Item%2A> property overwrites the old value. In contrast, the Add method does not modify existing elements.  \n  \n If <xref:System.Collections.Generic.SortedList%602.Count%2A> already equals <xref:System.Collections.Generic.SortedList%602.Capacity%2A>, the capacity of the <xref:System.Collections.Generic.SortedList%602> is increased by automatically reallocating the internal array, and the existing elements are copied to the new array before the new element is added.  \n  \n This method is an O(`n`) operation for unsorted data, where `n` is <xref:System.Collections.Generic.SortedList%602.Count%2A>. It is an O(log `n`) operation if the new element is added at the end of the list. If insertion causes a resize, the operation is O(`n`)."
+  example:
+  - "The following code example creates an empty <xref:System.Collections.Generic.SortedList%602> of strings with string keys and uses the Add method to add some elements. The example demonstrates that the Add method throws an <xref:System.ArgumentException> when attempting to add a duplicate key.  \n  \n This code example is part of a larger example provided for the <xref:System.Collections.Generic.SortedList%602> class.  \n  \n [!code-vb[Generic.SortedList#2](~/add/codesnippet/visualbasic/m-system.collections.gen_74_1.vb)]\n [!code-cpp[Generic.SortedList#2](~/add/codesnippet/cpp/m-system.collections.gen_74_1.cpp)]\n [!code-cs[Generic.SortedList#2](~/add/codesnippet/csharp/m-system.collections.gen_74_1.cs)]"
+  syntax:
+    content: public void Add (TKey key, TValue value);
+    parameters:
+    - id: key
+      type: TKey
+      description: The key of the element to add.
+    - id: value
+      type: TValue
+      description: The value of the element to add. The value can be `null` for reference types.
+  overload: System.Collections.Generic.SortedList`2.Add*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: An element with the same key already exists in the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.Capacity
+  id: Capacity
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: Capacity
+  nameWithType: SortedList<TKey,TValue>.Capacity
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Capacity
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Gets or sets the number of elements that the <xref href="stem.Collections.Generic.SortedList%602"></xref> can contain.
+  remarks: "Capacity is the number of elements that the <xref:System.Collections.Generic.SortedList%602> can store. <xref:System.Collections.Generic.SortedList%602.Count%2A> is the number of elements that are actually in the <xref:System.Collections.Generic.SortedList%602>.  \n  \n Capacity is always greater than or equal to <xref:System.Collections.Generic.SortedList%602.Count%2A>. If <xref:System.Collections.Generic.SortedList%602.Count%2A> exceeds Capacity while adding elements, the capacity is increased by automatically reallocating the internal array before copying the old elements and adding the new elements.  \n  \n The capacity can be decreased by calling <xref:System.Collections.Generic.SortedList%602.TrimExcess%2A> or by setting the Capacity property explicitly. When the value of Capacity is set explicitly, the internal array is also reallocated to accommodate the specified capacity.  \n  \n Retrieving the value of this property is an O(1) operation; setting the property is an O(`n`) operation, where `n` is the new capacity."
+  syntax:
+    content: public int Capacity { get; set; }
+    return:
+      type: System.Int32
+      description: The number of elements that the <xref href="stem.Collections.Generic.SortedList%602"></xref> can contain.
+  overload: System.Collections.Generic.SortedList`2.Capacity*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Capacity is set to a value that is less than <xref href="stem.Collections.Generic.SortedList%602.Count%2A"></xref>.
+  - type: System.OutOfMemoryException
+    commentId: T:System.OutOfMemoryException
+    description: There is not enough memory available on the system.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.Clear
+  id: Clear
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: Clear()
+  nameWithType: SortedList<TKey,TValue>.Clear()
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Clear()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Removes all elements from the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  remarks: "<xref:System.Collections.Generic.SortedList%602.Count%2A> is set to zero, and references to other objects from elements of the collection are also released.  \n  \n <xref:System.Collections.Generic.SortedList%602.Capacity%2A> remains unchanged. To reset the capacity of the <xref:System.Collections.Generic.SortedList%602>, call <xref:System.Collections.Generic.SortedList%602.TrimExcess%2A> or set the <xref:System.Collections.Generic.SortedList%602.Capacity%2A> property directly. Trimming an empty <xref:System.Collections.Generic.SortedList%602> sets the capacity of the <xref:System.Collections.Generic.SortedList%602> to the default capacity.  \n  \n This method is an O(`n`) operation, where `n` is <xref:System.Collections.Generic.SortedList%602.Count%2A>."
+  syntax:
+    content: public void Clear ();
+    parameters: []
+  overload: System.Collections.Generic.SortedList`2.Clear*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.Comparer
+  id: Comparer
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: Comparer
+  nameWithType: SortedList<TKey,TValue>.Comparer
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Comparer
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Gets the <xref href="stem.Collections.Generic.IComparer%601"></xref> for the sorted list.
+  remarks: Retrieving the value of this property is an O(1) operation.
+  syntax:
+    content: public System.Collections.Generic.IComparer<TKey> Comparer { get; }
+    return:
+      type: System.Collections.Generic.IComparer{TKey}
+      description: The <xref href="stem.IComparable%601"></xref> for the current <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  overload: System.Collections.Generic.SortedList`2.Comparer*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.ContainsKey(`0)
+  id: ContainsKey(`0)
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: ContainsKey(TKey)
+  nameWithType: SortedList<TKey,TValue>.ContainsKey(TKey)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ContainsKey(TKey)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Determines whether the <xref href="stem.Collections.Generic.SortedList%602"></xref> contains a specific key.
+  remarks: This method is an O(log `n`) operation, where `n` is <xref:System.Collections.Generic.SortedList%602.Count%2A>.
+  example:
+  - "The following code example shows how to use the ContainsKey method to test whether a key exists prior to calling the <xref:System.Collections.Generic.SortedList%602.Add%2A> method. It also shows how to use the <xref:System.Collections.Generic.SortedList%602.TryGetValue%2A> method to retrieve values, which is an efficient way to retrieve values when a program frequently tries keys that are not in the sorted list. Finally, it shows the least efficient way to test whether keys exist, by using the <xref:System.Collections.Generic.SortedList%602.Item%2A> property (the indexer in C#).  \n  \n This code example is part of a larger example provided for the <xref:System.Collections.Generic.SortedList%602> class.  \n  \n [!code-vb[Generic.SortedList#6](~/add/codesnippet/visualbasic/m-system.collections.gen_46_1.vb)]\n [!code-cpp[Generic.SortedList#6](~/add/codesnippet/cpp/m-system.collections.gen_46_1.cpp)]\n [!code-cs[Generic.SortedList#6](~/add/codesnippet/csharp/m-system.collections.gen_46_1.cs)]  \n[!code-vb[Generic.SortedList#5](~/add/codesnippet/visualbasic/m-system.collections.gen_46_2.vb)]\n[!code-cpp[Generic.SortedList#5](~/add/codesnippet/cpp/m-system.collections.gen_46_2.cpp)]\n[!code-cs[Generic.SortedList#5](~/add/codesnippet/csharp/m-system.collections.gen_46_2.cs)]  \n[!code-vb[Generic.SortedList#4](~/add/codesnippet/visualbasic/m-system.collections.gen_46_3.vb)]\n[!code-cpp[Generic.SortedList#4](~/add/codesnippet/cpp/m-system.collections.gen_46_3.cpp)]\n[!code-cs[Generic.SortedList#4](~/add/codesnippet/csharp/m-system.collections.gen_46_3.cs)]"
+  syntax:
+    content: public bool ContainsKey (TKey key);
+    parameters:
+    - id: key
+      type: TKey
+      description: The key to locate in the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="stem.Collections.Generic.SortedList%602"></xref> contains an element with the specified key; otherwise, `false`.'
+  overload: System.Collections.Generic.SortedList`2.ContainsKey*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.ContainsValue(`1)
+  id: ContainsValue(`1)
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: ContainsValue(TValue)
+  nameWithType: SortedList<TKey,TValue>.ContainsValue(TValue)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ContainsValue(TValue)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Determines whether the <xref href="stem.Collections.Generic.SortedList%602"></xref> contains a specific value.
+  remarks: "This method determines equality using the default comparer <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName> for the value type `TValue`.  <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName> checks whether the value type `TValue` implements <xref:System.IComparable%601?displayProperty=fullName> and uses that implementation, if available.  If not, <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName> checks whether the value type `TValue` implements <xref:System.IComparable?displayProperty=fullName>.  If the value type `TValue` does not implement either interface, this method uses <xref:System.Object.Equals%2A?displayProperty=fullName>.  \n  \n This method performs a linear search; therefore, the average execution time is proportional to <xref:System.Collections.Generic.SortedList%602.Count%2A>. That is, this method is an O(`n`) operation, where `n` is <xref:System.Collections.Generic.SortedList%602.Count%2A>."
+  syntax:
+    content: public bool ContainsValue (TValue value);
+    parameters:
+    - id: value
+      type: TValue
+      description: The value to locate in the <xref href="stem.Collections.Generic.SortedList%602"></xref>. The value can be `null` for reference types.
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="stem.Collections.Generic.SortedList%602"></xref> contains an element with the specified value; otherwise, `false`.'
+  overload: System.Collections.Generic.SortedList`2.ContainsValue*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.Count
+  id: Count
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: Count
+  nameWithType: SortedList<TKey,TValue>.Count
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Count
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Gets the number of key/value pairs contained in the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  remarks: "<xref:System.Collections.Generic.SortedList%602.Capacity%2A> is the number of elements that the <xref:System.Collections.Generic.SortedList%602> can store. Count is the number of elements that are actually in the <xref:System.Collections.Generic.SortedList%602>.  \n  \n <xref:System.Collections.Generic.SortedList%602.Capacity%2A> is always greater than or equal to Count. If Count exceeds <xref:System.Collections.Generic.SortedList%602.Capacity%2A> while adding elements, the capacity is increased by automatically reallocating the internal array before copying the old elements and adding the new elements.  \n  \n Retrieving the value of this property is an O(1) operation."
+  syntax:
+    content: public int Count { get; }
+    return:
+      type: System.Int32
+      description: The number of key/value pairs contained in the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  overload: System.Collections.Generic.SortedList`2.Count*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.GetEnumerator
+  id: GetEnumerator
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: GetEnumerator()
+  nameWithType: SortedList<TKey,TValue>.GetEnumerator()
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.GetEnumerator()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Returns an enumerator that iterates through the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  remarks: "The `foreach` statement of the C# language (`for each` in C++, `For Each` in Visual Basic) hides the complexity of the enumerators.  Therefore, using `foreach` is recommended, instead of directly manipulating the enumerator.  \n  \n Enumerators can be used to read the data in the collection, but they cannot be used to modify the underlying collection.  \n  \n The dictionary is maintained in a sorted order using an internal tree. Every new element is positioned at the correct sort position, and the tree is adjusted to maintain the sort order whenever an element is removed. While enumerating, the sort order is maintained.  \n  \n Initially, the enumerator is positioned before the first element in the collection. At this position, <xref:System.Collections.Generic.IEnumerator%601.Current%2A> is undefined. Therefore, you must call <xref:System.Collections.IEnumerator.MoveNext%2A> to advance the enumerator to the first element of the collection before reading the value of <xref:System.Collections.Generic.IEnumerator%601.Current%2A>.  \n  \n <xref:System.Collections.Generic.IEnumerator%601.Current%2A> returns the same object until <xref:System.Collections.IEnumerator.MoveNext%2A> is called. <xref:System.Collections.IEnumerator.MoveNext%2A> sets <xref:System.Collections.Generic.IEnumerator%601.Current%2A> to the next element.  \n  \n If <xref:System.Collections.IEnumerator.MoveNext%2A> passes the end of the collection, the enumerator is positioned after the last element in the collection and <xref:System.Collections.IEnumerator.MoveNext%2A> returns `false`. When the enumerator is at this position, subsequent calls to <xref:System.Collections.IEnumerator.MoveNext%2A> return `false`. If the last call to <xref:System.Collections.IEnumerator.MoveNext%2A> returned `false`, <xref:System.Collections.Generic.IEnumerator%601.Current%2A> is undefined. You cannot set <xref:System.Collections.Generic.IEnumerator%601.Current%2A> to the first element of the collection again; you must create a new enumerator instance instead.  \n  \n An enumerator remains valid as long as the collection remains unchanged. If changes are made to the collection, such as adding, modifying, or deleting elements, the enumerator is irrecoverably invalidated and its behavior is undefined.  \n  \n The enumerator does not have exclusive access to the collection; therefore, enumerating through a collection is intrinsically not a thread-safe procedure. To guarantee thread safety during enumeration, you can lock the collection during the entire enumeration.  To allow the collection to be accessed by multiple threads for reading and writing, you must implement your own synchronization.  \n  \n Default implementations of collections in <xref:System.Collections.Generic?displayProperty=fullName> are not synchronized.  \n  \n This method is an O(1) operation."
+  syntax:
+    content: public System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey,TValue>> GetEnumerator ();
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{TKey,TValue}}
+      description: An <xref href="stem.Collections.Generic.IEnumerator%601"></xref> of type <xref href="stem.Collections.Generic.KeyValuePair%602"></xref> for the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  overload: System.Collections.Generic.SortedList`2.GetEnumerator*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.IndexOfKey(`0)
+  id: IndexOfKey(`0)
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IndexOfKey(TKey)
+  nameWithType: SortedList<TKey,TValue>.IndexOfKey(TKey)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IndexOfKey(TKey)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Searches for the specified key and returns the zero-based index within the entire <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  remarks: This method performs a binary search; therefore, this method is an O(log `n`) operation, where `n` is <xref:System.Collections.Generic.SortedList%602.Count%2A>.
+  syntax:
+    content: public int IndexOfKey (TKey key);
+    parameters:
+    - id: key
+      type: TKey
+      description: The key to locate in the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+    return:
+      type: System.Int32
+      description: The zero-based index of <code>key</code> within the entire <xref href="stem.Collections.Generic.SortedList%602"></xref>, if found; otherwise, -1.
+  overload: System.Collections.Generic.SortedList`2.IndexOfKey*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.IndexOfValue(`1)
+  id: IndexOfValue(`1)
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IndexOfValue(TValue)
+  nameWithType: SortedList<TKey,TValue>.IndexOfValue(TValue)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IndexOfValue(TValue)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Searches for the specified value and returns the zero-based index of the first occurrence within the entire <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  remarks: "This method determines equality using the default comparer <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName> for the value type `TValue`.  <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName> checks whether the value type `TValue` implements <xref:System.IComparable%601?displayProperty=fullName> and uses that implementation, if available.  If not, <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName> checks whether the value type `TValue` implements <xref:System.IComparable?displayProperty=fullName>.  If the value type `TValue` does not implement either interface, this method uses <xref:System.Object.Equals%2A?displayProperty=fullName>.  \n  \n This method performs a linear search; therefore, the average execution time is proportional to <xref:System.Collections.Generic.SortedList%602.Count%2A>. That is, this method is an O(`n`) operation, where `n` is <xref:System.Collections.Generic.SortedList%602.Count%2A>."
+  syntax:
+    content: public int IndexOfValue (TValue value);
+    parameters:
+    - id: value
+      type: TValue
+      description: The value to locate in the <xref href="stem.Collections.Generic.SortedList%602"></xref>.  The value can be `null` for reference types.
+    return:
+      type: System.Int32
+      description: The zero-based index of the first occurrence of <code>value</code> within the entire <xref href="stem.Collections.Generic.SortedList%602"></xref>, if found; otherwise, -1.
+  overload: System.Collections.Generic.SortedList`2.IndexOfValue*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.Item(`0)
+  id: Item(`0)
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: Item(TKey)
+  nameWithType: SortedList<TKey,TValue>.Item(TKey)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Item(TKey)
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Gets or sets the value associated with the specified key.
+  remarks: "This property provides the ability to access a specific element in the collection by using the following syntax: `myCollection[key]`.  \n  \n A key cannot be `null`, but a value can be, if the type of values in the list, `TValue`, is a reference type.  \n  \n If the key is not found when a value is being retrieved, <xref:System.Collections.Generic.KeyNotFoundException> is thrown. If the key is not found when a value is being set, the key and value are added.  \n  \n You can also use the Item property to add new elements by setting the value of a key that does not exist in the <xref:System.Collections.Generic.SortedList%602>; for example, `myCollection[\"myNonexistentKey\"] = myValue`. However, if the specified key already exists in the <xref:System.Collections.Generic.SortedList%602>, setting the Item property overwrites the old value. In contrast, the <xref:System.Collections.Generic.SortedList%602.Add%2A> method does not modify existing elements.  \n  \n The C# language uses the  keyword to define the indexers instead of implementing the Item property. Visual Basic implements Item as a default property, which provides the same indexing functionality.  \n  \n Retrieving the value of this property is an O(log `n`) operation, where n is <xref:System.Collections.Generic.SortedList%602.Count%2A>. Setting the property is an O(log `n`) operation if the key is already in the <xref:System.Collections.Generic.SortedList%602>. If the key is not in the list, setting the property is an O(`n`) operation for unsorted data, or O(log `n`) if the new element is added at the end of the list. If insertion causes a resize, the operation is O(`n`)."
+  example:
+  - "The following code example uses the Item property (the indexer in C#) to retrieve values, demonstrating that a <xref:System.Collections.Generic.KeyNotFoundException> is thrown when a requested key is not present, and showing that the value associated with a key can be replaced.  \n  \n The example also shows how to use the <xref:System.Collections.Generic.SortedList%602.TryGetValue%2A> method as a more efficient way to retrieve values if a program often must try key values that are not in the sorted list.  \n  \n This code example is part of a larger example provided for the <xref:System.Collections.Generic.SortedList%602> class.  \n  \n [!code-vb[Generic.SortedList#3](~/add/codesnippet/visualbasic/p-system.collections.gen_14_1.vb)]\n [!code-cpp[Generic.SortedList#3](~/add/codesnippet/cpp/p-system.collections.gen_14_1.cpp)]\n [!code-cs[Generic.SortedList#3](~/add/codesnippet/csharp/p-system.collections.gen_14_1.cs)]  \n[!code-vb[Generic.SortedList#4](~/add/codesnippet/visualbasic/p-system.collections.gen_14_2.vb)]\n[!code-cpp[Generic.SortedList#4](~/add/codesnippet/cpp/p-system.collections.gen_14_2.cpp)]\n[!code-cs[Generic.SortedList#4](~/add/codesnippet/csharp/p-system.collections.gen_14_2.cs)]  \n[!code-vb[Generic.SortedList#5](~/add/codesnippet/visualbasic/p-system.collections.gen_14_3.vb)]\n[!code-cpp[Generic.SortedList#5](~/add/codesnippet/cpp/p-system.collections.gen_14_3.cpp)]\n[!code-cs[Generic.SortedList#5](~/add/codesnippet/csharp/p-system.collections.gen_14_3.cs)]"
+  syntax:
+    content: public TValue this[TKey key] { get; set; }
+    parameters:
+    - id: key
+      type: TKey
+      description: The key whose value to get or set.
+    return:
+      type: TValue
+      description: The value associated with the specified key. If the specified key is not found, a get operation throws a <xref href="System.Collections.Generic.KeyNotFoundException"></xref> and a set operation creates a new element using the specified key.
+  overload: System.Collections.Generic.SortedList`2.Item*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  - type: System.Collections.Generic.KeyNotFoundException
+    commentId: T:System.Collections.Generic.KeyNotFoundException
+    description: The property is retrieved and <code>key</code> does not exist in the collection.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.Keys
+  id: Keys
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: Keys
+  nameWithType: SortedList<TKey,TValue>.Keys
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Keys
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Gets a collection containing the keys in the <xref href="stem.Collections.Generic.SortedList%602"></xref>, in sorted order.
+  remarks: "The order of the keys in the <xref:System.Collections.Generic.IList%601> is the same as the order in the <xref:System.Collections.Generic.SortedList%602>.  \n  \n The returned <xref:System.Collections.Generic.IList%601> is not a static copy; instead, the <xref:System.Collections.Generic.IList%601> refers back to the keys in the original <xref:System.Collections.Generic.SortedList%602>. Therefore, changes to the <xref:System.Collections.Generic.SortedList%602> continue to be reflected in the <xref:System.Collections.Generic.IList%601>.  \n  \n The collection returned by the Keys property provides an efficient way to retrieve keys by index. It is not necessary to regenerate the list when the property is accessed, because the list is just a wrapper for the internal array of keys. The following code shows the use of the Keys property for indexed retrieval of keys from a sorted list of elements with string keys:  \n  \n [!code-cs[Generic.SortedList#11](~/add/codesnippet/csharp/p-system.collections.gen_9_1.cs)]\n [!code-cpp[Generic.SortedList#11](~/add/codesnippet/cpp/p-system.collections.gen_9_1.cpp)]\n [!code-vb[Generic.SortedList#11](~/add/codesnippet/visualbasic/p-system.collections.gen_9_1.vb)]  \n  \n Retrieving the value of this property is an O(1) operation."
+  example:
+  - "The following code example shows how to enumerate the keys in the sorted list using the Keys property, and how to enumerate the keys and values in the sorted list.  \n  \n The example also shows how to use the Keys property for efficient indexed retrieval of keys.  \n  \n This code is part of a larger example that can be compiled and executed. See <xref:System.Collections.Generic.SortedList%602>.  \n  \n [!code-vb[Generic.SortedList#9](~/add/codesnippet/visualbasic/p-system.collections.gen_9_2.vb)]\n [!code-cpp[Generic.SortedList#9](~/add/codesnippet/cpp/p-system.collections.gen_9_2.cpp)]\n [!code-cs[Generic.SortedList#9](~/add/codesnippet/csharp/p-system.collections.gen_9_2.cs)]  \n[!code-vb[Generic.SortedList#7](~/add/codesnippet/visualbasic/p-system.collections.gen_9_3.vb)]\n[!code-cpp[Generic.SortedList#7](~/add/codesnippet/cpp/p-system.collections.gen_9_3.cpp)]\n[!code-cs[Generic.SortedList#7](~/add/codesnippet/csharp/p-system.collections.gen_9_3.cs)]"
+  syntax:
+    content: public System.Collections.Generic.IList<TKey> Keys { get; }
+    return:
+      type: System.Collections.Generic.IList{TKey}
+      description: A <xref href="stem.Collections.Generic.IList%601"></xref> containing the keys in the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  overload: System.Collections.Generic.SortedList`2.Keys*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.Remove(`0)
+  id: Remove(`0)
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: Remove(TKey)
+  nameWithType: SortedList<TKey,TValue>.Remove(TKey)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Remove(TKey)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Removes the element with the specified key from the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  remarks: This method performs a binary search; however, the elements are moved up to fill in the open spot, so this method is an O(`n`) operation, where `n` is <xref:System.Collections.Generic.SortedList%602.Count%2A>.
+  example:
+  - "The following code example shows how to remove a key/value pair from the sorted list using the Remove method.  \n  \n This code example is part of a larger example provided for the <xref:System.Collections.Generic.SortedList%602> class.  \n  \n [!code-vb[Generic.SortedList#10](~/add/codesnippet/visualbasic/m-system.collections.gen_2_1.vb)]\n [!code-cpp[Generic.SortedList#10](~/add/codesnippet/cpp/m-system.collections.gen_2_1.cpp)]\n [!code-cs[Generic.SortedList#10](~/add/codesnippet/csharp/m-system.collections.gen_2_1.cs)]"
+  syntax:
+    content: public bool Remove (TKey key);
+    parameters:
+    - id: key
+      type: TKey
+      description: The key of the element to remove.
+    return:
+      type: System.Boolean
+      description: '`true` if the element is successfully removed; otherwise, `false`.  This method also returns `false` if <code>key</code> was not found in the original <xref href="stem.Collections.Generic.SortedList%602"></xref>.'
+  overload: System.Collections.Generic.SortedList`2.Remove*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.RemoveAt(System.Int32)
+  id: RemoveAt(System.Int32)
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: RemoveAt(Int32)
+  nameWithType: SortedList<TKey,TValue>.RemoveAt(Int32)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.RemoveAt(Int32)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Removes the element at the specified index of the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  remarks: This method performs a binary search; however, the elements are moved up to fill in the open spot, so this method is an O(`n`) operation, where `n` is <xref:System.Collections.Generic.SortedList%602.Count%2A>.
+  syntax:
+    content: public void RemoveAt (int index);
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The zero-based index of the element to remove.
+  overload: System.Collections.Generic.SortedList`2.RemoveAt*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>index</code> is less than zero.  \n  \n -or-  \n  \n <code>index</code> is equal to or greater than <xref href=\"stem.Collections.Generic.SortedList%602.Count%2A\"></xref>."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Add(System.Collections.Generic.KeyValuePair{`0,`1})
+  id: System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Add(System.Collections.Generic.KeyValuePair{`0,`1})
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: ICollection<KeyValuePair<TKey,TValue>>.Add(KeyValuePair<TKey,TValue>)
+  nameWithType: SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.Add(KeyValuePair<TKey,TValue>)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.Add(KeyValuePair<TKey,TValue>)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  syntax:
+    content: void ICollection<KeyValuePair<TKey,TValue>>.Add (System.Collections.Generic.KeyValuePair<TKey,TValue> keyValuePair);
+    parameters:
+    - id: keyValuePair
+      type: System.Collections.Generic.KeyValuePair`2
+      description: To be added.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<TKey,TValue>>#Add*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+  id: System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: ICollection<KeyValuePair<TKey,TValue>>.Contains(KeyValuePair<TKey,TValue>)
+  nameWithType: SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.Contains(KeyValuePair<TKey,TValue>)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.Contains(KeyValuePair<TKey,TValue>)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  syntax:
+    content: bool ICollection<KeyValuePair<TKey,TValue>>.Contains (System.Collections.Generic.KeyValuePair<TKey,TValue> keyValuePair);
+    parameters:
+    - id: keyValuePair
+      type: System.Collections.Generic.KeyValuePair`2
+      description: To be added.
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<TKey,TValue>>#Contains*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+  id: System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: ICollection<KeyValuePair<TKey,TValue>>.CopyTo(KeyValuePair<TKey,TValue>[],Int32)
+  nameWithType: SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.CopyTo(KeyValuePair<TKey,TValue>[],Int32)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.CopyTo(KeyValuePair<TKey,TValue>[],Int32)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  syntax:
+    content: void ICollection<KeyValuePair<TKey,TValue>>.CopyTo (System.Collections.Generic.KeyValuePair<TKey,TValue>[] array, int arrayIndex);
+    parameters:
+    - id: array
+      type: System.Collections.Generic.KeyValuePair{TKey,TValue}[]
+      description: To be added.
+    - id: arrayIndex
+      type: System.Int32
+      description: To be added.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<TKey,TValue>>#CopyTo*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#IsReadOnly
+  id: System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#IsReadOnly
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: ICollection<KeyValuePair<TKey,TValue>>.IsReadOnly
+  nameWithType: SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.IsReadOnly
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.IsReadOnly
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  syntax:
+    content: bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.IsReadOnly { get; }
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<TKey,TValue>>#IsReadOnly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+  id: System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: ICollection<KeyValuePair<TKey,TValue>>.Remove(KeyValuePair<TKey,TValue>)
+  nameWithType: SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.Remove(KeyValuePair<TKey,TValue>)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.Remove(KeyValuePair<TKey,TValue>)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  syntax:
+    content: bool ICollection<KeyValuePair<TKey,TValue>>.Remove (System.Collections.Generic.KeyValuePair<TKey,TValue> keyValuePair);
+    parameters:
+    - id: keyValuePair
+      type: System.Collections.Generic.KeyValuePair`2
+      description: To be added.
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<TKey,TValue>>#Remove*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IDictionary{TKey,TValue}#Keys
+  id: System#Collections#Generic#IDictionary{TKey,TValue}#Keys
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IDictionary<TKey,TValue>.Keys
+  nameWithType: SortedList<TKey,TValue>.IDictionary<TKey,TValue>.Keys
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary<TKey,TValue>.Keys
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  syntax:
+    content: System.Collections.Generic.ICollection<TKey> System.Collections.Generic.IDictionary<TKey,TValue>.Keys { get; }
+    return:
+      type: System.Collections.Generic.ICollection{TKey}
+      description: To be added.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#Generic#IDictionary<TKey,TValue>#Keys*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IDictionary{TKey,TValue}#Values
+  id: System#Collections#Generic#IDictionary{TKey,TValue}#Values
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IDictionary<TKey,TValue>.Values
+  nameWithType: SortedList<TKey,TValue>.IDictionary<TKey,TValue>.Values
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary<TKey,TValue>.Values
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  syntax:
+    content: System.Collections.Generic.ICollection<TValue> System.Collections.Generic.IDictionary<TKey,TValue>.Values { get; }
+    return:
+      type: System.Collections.Generic.ICollection{TValue}
+      description: To be added.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#Generic#IDictionary<TKey,TValue>#Values*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{TKey,TValue}}#GetEnumerator
+  id: System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{TKey,TValue}}#GetEnumerator
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IEnumerable<KeyValuePair<TKey,TValue>>.GetEnumerator()
+  nameWithType: SortedList<TKey,TValue>.IEnumerable<KeyValuePair<TKey,TValue>>.GetEnumerator()
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IEnumerable<KeyValuePair<TKey,TValue>>.GetEnumerator()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  syntax:
+    content: System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey,TValue>> IEnumerable<KeyValuePair<TKey,TValue>>.GetEnumerator ();
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{TKey,TValue}}
+      description: To be added.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#Generic#IEnumerable<System#Collections#Generic#KeyValuePair<TKey,TValue>>#GetEnumerator*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IReadOnlyDictionary{TKey,TValue}#Keys
+  id: System#Collections#Generic#IReadOnlyDictionary{TKey,TValue}#Keys
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IReadOnlyDictionary<TKey,TValue>.Keys
+  nameWithType: SortedList<TKey,TValue>.IReadOnlyDictionary<TKey,TValue>.Keys
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IReadOnlyDictionary<TKey,TValue>.Keys
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  syntax:
+    content: System.Collections.Generic.IEnumerable<TKey> System.Collections.Generic.IReadOnlyDictionary<TKey,TValue>.Keys { get; }
+    return:
+      type: System.Collections.Generic.IEnumerable{TKey}
+      description: To be added.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#Generic#IReadOnlyDictionary<TKey,TValue>#Keys*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IReadOnlyDictionary{TKey,TValue}#Values
+  id: System#Collections#Generic#IReadOnlyDictionary{TKey,TValue}#Values
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IReadOnlyDictionary<TKey,TValue>.Values
+  nameWithType: SortedList<TKey,TValue>.IReadOnlyDictionary<TKey,TValue>.Values
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IReadOnlyDictionary<TKey,TValue>.Values
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  syntax:
+    content: System.Collections.Generic.IEnumerable<TValue> System.Collections.Generic.IReadOnlyDictionary<TKey,TValue>.Values { get; }
+    return:
+      type: System.Collections.Generic.IEnumerable{TValue}
+      description: To be added.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#Generic#IReadOnlyDictionary<TKey,TValue>#Values*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  id: System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: ICollection.CopyTo(Array,Int32)
+  nameWithType: SortedList<TKey,TValue>.ICollection.CopyTo(Array,Int32)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection.CopyTo(Array,Int32)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Copies the elements of the <xref href="System.Collections.ICollection"></xref> to an <xref href="System.Array"></xref>, starting at a particular <xref href="System.Array"></xref> index.
+  remarks: "> [!NOTE]\n>  If the type of the source <xref:System.Collections.ICollection> cannot be cast automatically to the type of the destination `array`, the non-generic implementations of <xref:System.Collections.ICollection.CopyTo%2A?displayProperty=fullName> throw <xref:System.InvalidCastException>, whereas the generic implementations throw <xref:System.ArgumentException>.  \n  \n This method is an O(`n`) operation, where `n` is <xref:System.Collections.Generic.SortedList%602.Count%2A>."
+  syntax:
+    content: void ICollection.CopyTo (Array array, int arrayIndex);
+    parameters:
+    - id: array
+      type: System.Array
+      description: The one-dimensional <xref href="System.Array"></xref> that is the destination of the elements copied from <xref href="System.Collections.ICollection"></xref>. The <xref href="System.Array"></xref> must have zero-based indexing.
+    - id: arrayIndex
+      type: System.Int32
+      description: The zero-based index in <code>array</code> at which copying begins.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#ICollection#CopyTo*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>array</code> is `null`.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>arrayIndex</code> is less than zero.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: "<code>array</code> is multidimensional.  \n  \n -or-  \n  \n <code>array</code> does not have zero-based indexing.  \n  \n -or-  \n  \n The number of elements in the source <xref href=\"System.Collections.ICollection\"></xref> is greater than the available space from <code>arrayIndex</code> to the end of the destination <code>array</code>.  \n  \n -or-  \n  \n The type of the source <xref href=\"System.Collections.ICollection\"></xref> cannot be cast automatically to the type of the destination <code>array</code>."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#ICollection#IsSynchronized
+  id: System#Collections#ICollection#IsSynchronized
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: ICollection.IsSynchronized
+  nameWithType: SortedList<TKey,TValue>.ICollection.IsSynchronized
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection.IsSynchronized
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Gets a value indicating whether access to the <xref href="System.Collections.ICollection"></xref> is synchronized (thread safe).
+  remarks: "Default implementations of collections in <xref:System.Collections.Generic?displayProperty=fullName> are not synchronized.  \n  \n Enumerating through a collection is intrinsically not a thread-safe procedure.  To guarantee thread safety during enumeration, you can lock the collection during the entire enumeration.  To allow the collection to be accessed by multiple threads for reading and writing, you must implement your own synchronization.  \n  \n The <xref:System.Collections.ICollection.SyncRoot%2A> property returns an object that can be used to synchronize access to the <xref:System.Collections.ICollection>. Synchronization is effective only if all threads lock this object before accessing the collection.  \n  \n Retrieving the value of this property is an O(1) operation."
+  syntax:
+    content: bool System.Collections.ICollection.IsSynchronized { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if access to the <xref href="System.Collections.ICollection"></xref> is synchronized (thread safe); otherwise, `false`.  In the default implementation of <xref href="stem.Collections.Generic.SortedList%602"></xref>, this property always returns `false`.'
+  overload: System.Collections.Generic.SortedList`2.System#Collections#ICollection#IsSynchronized*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#ICollection#SyncRoot
+  id: System#Collections#ICollection#SyncRoot
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: ICollection.SyncRoot
+  nameWithType: SortedList<TKey,TValue>.ICollection.SyncRoot
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection.SyncRoot
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Gets an object that can be used to synchronize access to the <xref href="System.Collections.ICollection"></xref>.
+  remarks: "Default implementations of collections in <xref:System.Collections.Generic?displayProperty=fullName> are not synchronized.  \n  \n Enumerating through a collection is intrinsically not a thread-safe procedure. To guarantee thread safety during enumeration, you can lock the collection during the entire enumeration. To allow the collection to be accessed by multiple threads for reading and writing, you must implement your own synchronization.  \n  \n The <xref:System.Collections.ICollection.SyncRoot%2A> property returns an object that can be used to synchronize access to the <xref:System.Collections.ICollection>. Synchronization is effective only if all threads lock this object before accessing the collection. The following code shows the use of the <xref:System.Collections.ICollection.SyncRoot%2A> property for C#, C++, and Visual Basic.  \n  \n```c#  \nICollection ic = ...;  \nlock (ic.SyncRoot) {  \n   // Access the collection.  \n}  \n```  \n  \n```vb#  \nDim ic As ICollection = ...  \nSyncLock ic.SyncRoot  \n   ' Access the collection.  \nEnd SyncLock  \n```  \n  \n```cpp#  \nICollection^ ic = ...;  \ntry {  \n   Monitor::Enter(ic->SyncRoot);  \n   // Access the collection.  \n}  \nfinally {  \n   Monitor::Exit(ic->SyncRoot);  \n}  \n```  \n  \n Retrieving the value of this property is an O(1) operation."
+  syntax:
+    content: object System.Collections.ICollection.SyncRoot { get; }
+    return:
+      type: System.Object
+      description: An object that can be used to synchronize access to the <xref href="System.Collections.ICollection"></xref>.  In the default implementation of <xref href="stem.Collections.Generic.SortedList%602"></xref>, this property always returns the current instance.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#ICollection#SyncRoot*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Add(System.Object,System.Object)
+  id: System#Collections#IDictionary#Add(System.Object,System.Object)
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IDictionary.Add(Object,Object)
+  nameWithType: SortedList<TKey,TValue>.IDictionary.Add(Object,Object)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.Add(Object,Object)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Adds an element with the provided key and value to the <xref href="System.Collections.IDictionary"></xref>.
+  remarks: "You can also use the <xref:System.Collections.IDictionary.Item%2A> property to add new elements by setting the value of a key that does not exist in the dictionary; for example, `myCollection[\"myNonexistentKey\"] = myValue`. However, if the specified key already exists in the dictionary, setting the <xref:System.Collections.IDictionary.Item%2A> property overwrites the old value. In contrast, the <xref:System.Collections.IDictionary.Add%2A> method does not modify existing elements.  \n  \n This method is an O(`n`) operation for unsorted data, where `n` is <xref:System.Collections.Generic.SortedList%602.Count%2A>. It is an O(log `n`) operation if the new element is added at the end of the list. If insertion causes a resize, the operation is O(`n`)."
+  example:
+  - "The following code example shows how to access the <xref:System.Collections.Generic.SortedList%602> class through the <xref:System.Collections.IDictionary?displayProperty=fullName> interface. The code example creates an empty <xref:System.Collections.Generic.SortedList%602> of strings with string keys and uses the IDictionary.Add method to add some elements. The example demonstrates that the IDictionary.Add method throws an <xref:System.ArgumentException> when attempting to add a duplicate key, or when a key or value of the wrong data type is supplied.  \n  \n The code example demonstrates the use of several other members of the <xref:System.Collections.IDictionary?displayProperty=fullName> interface.  \n  \n [!code-cs[Generic.SortedList.IDictionary#1](~/add/codesnippet/csharp/43dbe017-9b56-413c-ac19-_1.cs)]\n [!code-vb[Generic.SortedList.IDictionary#1](~/add/codesnippet/visualbasic/43dbe017-9b56-413c-ac19-_1.vb)]"
+  syntax:
+    content: void IDictionary.Add (object key, object value);
+    parameters:
+    - id: key
+      type: System.Object
+      description: The <xref href="System.Object"></xref> to use as the key of the element to add.
+    - id: value
+      type: System.Object
+      description: The <xref href="System.Object"></xref> to use as the value of the element to add.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Add*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: "<code>key</code> is of a type that is not assignable to the key type <code>TKey</code> of the <xref href=\"System.Collections.IDictionary\"></xref>.  \n  \n -or-  \n  \n <code>value</code> is of a type that is not assignable to the value type <code>TValue</code> of the <xref href=\"System.Collections.IDictionary\"></xref>.  \n  \n -or-  \n  \n An element with the same key already exists in the <xref href=\"System.Collections.IDictionary\"></xref>."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Contains(System.Object)
+  id: System#Collections#IDictionary#Contains(System.Object)
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IDictionary.Contains(Object)
+  nameWithType: SortedList<TKey,TValue>.IDictionary.Contains(Object)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.Contains(Object)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Determines whether the <xref href="System.Collections.IDictionary"></xref> contains an element with the specified key.
+  remarks: "This method returns `false` if `key` is of a type that is not assignable to the key type `TKey` of the <xref:System.Collections.Generic.SortedList%602>.  \n  \n This method is an O(log `n`) operation, where `n` is <xref:System.Collections.Generic.SortedList%602.Count%2A>."
+  example:
+  - "The following code example shows how to use the IDictionary.Contains method of the <xref:System.Collections.IDictionary?displayProperty=fullName> interface with a <xref:System.Collections.Generic.SortedList%602>. The example demonstrates that the method returns `false` if a key of the wrong data type is supplied.  \n  \n The code example is part of a larger example, including output, provided for the <xref:System.Collections.Generic.SortedList%602.System%23Collections%23IDictionary%23Add%2A> method.  \n  \n [!code-cs[Generic.SortedList.IDictionary#31](~/add/codesnippet/csharp/46533639-a6d2-4c95-8c02-_1.cs)]\n [!code-vb[Generic.SortedList.IDictionary#31](~/add/codesnippet/visualbasic/46533639-a6d2-4c95-8c02-_1.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#6](~/add/codesnippet/csharp/46533639-a6d2-4c95-8c02-_2.cs)]\n[!code-vb[Generic.SortedList.IDictionary#6](~/add/codesnippet/visualbasic/46533639-a6d2-4c95-8c02-_2.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#32](~/add/codesnippet/csharp/46533639-a6d2-4c95-8c02-_3.cs)]\n[!code-vb[Generic.SortedList.IDictionary#32](~/add/codesnippet/visualbasic/46533639-a6d2-4c95-8c02-_3.vb)]"
+  syntax:
+    content: bool IDictionary.Contains (object key);
+    parameters:
+    - id: key
+      type: System.Object
+      description: The key to locate in the <xref href="System.Collections.IDictionary"></xref>.
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="System.Collections.IDictionary"></xref> contains an element with the key; otherwise, `false`.'
+  overload: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Contains*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#GetEnumerator
+  id: System#Collections#IDictionary#GetEnumerator
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IDictionary.GetEnumerator()
+  nameWithType: SortedList<TKey,TValue>.IDictionary.GetEnumerator()
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.GetEnumerator()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Returns an <xref href="System.Collections.IDictionaryEnumerator"></xref> for the <xref href="System.Collections.IDictionary"></xref>.
+  remarks: "The `foreach` statement of the C# language (`for each` in C++, `For Each` in Visual Basic) hides the complexity of the enumerators.  Therefore, using `foreach` is recommended, instead of directly manipulating the enumerator.  \n  \n Enumerators can be used to read the data in the collection, but they cannot be used to modify the underlying collection.  \n  \n Initially, the enumerator is positioned before the first element in the collection. <xref:System.Collections.IEnumerator.Reset%2A> also brings the enumerator back to this position.  At this position, <xref:System.Collections.IDictionaryEnumerator.Entry%2A> is undefined. Therefore, you must call <xref:System.Collections.IEnumerator.MoveNext%2A> to advance the enumerator to the first element of the collection before reading the value of <xref:System.Collections.IDictionaryEnumerator.Entry%2A>.  \n  \n <xref:System.Collections.IDictionaryEnumerator.Entry%2A> returns the same object until either <xref:System.Collections.IEnumerator.MoveNext%2A> or <xref:System.Collections.IEnumerator.Reset%2A> is called. <xref:System.Collections.IEnumerator.MoveNext%2A> sets <xref:System.Collections.IDictionaryEnumerator.Entry%2A> to the next element.  \n  \n If <xref:System.Collections.IEnumerator.MoveNext%2A> passes the end of the collection, the enumerator is positioned after the last element in the collection and <xref:System.Collections.IEnumerator.MoveNext%2A> returns `false`. When the enumerator is at this position, subsequent calls to <xref:System.Collections.IEnumerator.MoveNext%2A> also return `false`. If the last call to <xref:System.Collections.IEnumerator.MoveNext%2A> returned `false`, <xref:System.Collections.IDictionaryEnumerator.Entry%2A> is undefined. To set <xref:System.Collections.IDictionaryEnumerator.Entry%2A> to the first element of the collection again, you can call <xref:System.Collections.IEnumerator.Reset%2A> followed by <xref:System.Collections.IEnumerator.MoveNext%2A>.  \n  \n An enumerator remains valid as long as the collection remains unchanged. If changes are made to the collection, such as adding, modifying, or deleting elements, the enumerator is irrecoverably invalidated and its behavior is undefined.  \n  \n The enumerator does not have exclusive access to the collection; therefore, enumerating through a collection is intrinsically not a thread-safe procedure.  To guarantee thread safety during enumeration, you can lock the collection during the entire enumeration.  To allow the collection to be accessed by multiple threads for reading and writing, you must implement your own synchronization.  \n  \n Default implementations of collections in <xref:System.Collections.Generic?displayProperty=fullName> are not synchronized.  \n  \n This method is an O(1) operation."
+  example:
+  - "The following code example shows how to enumerate the key/value pairs in the sorted list by using the `foreach` statement (`For Each` in Visual Basic, `for each` in C++), which hides the use of the enumerator. In particular, note that the enumerator for the <xref:System.Collections.IDictionary?displayProperty=fullName> interface returns <xref:System.Collections.DictionaryEntry> objects rather than <xref:System.Collections.Generic.KeyValuePair%602> objects.  \n  \n The code example is part of a larger example, including output, provided for the <xref:System.Collections.Generic.SortedList%602.System%23Collections%23IDictionary%23Add%2A> method.  \n  \n [!code-cs[Generic.SortedList.IDictionary#31](~/add/codesnippet/csharp/fa00cdc6-9a34-4c47-80f5-_1.cs)]\n [!code-vb[Generic.SortedList.IDictionary#31](~/add/codesnippet/visualbasic/fa00cdc6-9a34-4c47-80f5-_1.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#7](~/add/codesnippet/csharp/fa00cdc6-9a34-4c47-80f5-_2.cs)]\n[!code-vb[Generic.SortedList.IDictionary#7](~/add/codesnippet/visualbasic/fa00cdc6-9a34-4c47-80f5-_2.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#32](~/add/codesnippet/csharp/fa00cdc6-9a34-4c47-80f5-_3.cs)]\n[!code-vb[Generic.SortedList.IDictionary#32](~/add/codesnippet/visualbasic/fa00cdc6-9a34-4c47-80f5-_3.vb)]"
+  syntax:
+    content: System.Collections.IDictionaryEnumerator IDictionary.GetEnumerator ();
+    parameters: []
+    return:
+      type: System.Collections.IDictionaryEnumerator
+      description: An <xref href="System.Collections.IDictionaryEnumerator"></xref> for the <xref href="System.Collections.IDictionary"></xref>.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#GetEnumerator*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#IsFixedSize
+  id: System#Collections#IDictionary#IsFixedSize
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IDictionary.IsFixedSize
+  nameWithType: SortedList<TKey,TValue>.IDictionary.IsFixedSize
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.IsFixedSize
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Gets a value indicating whether the <xref href="System.Collections.IDictionary"></xref> has a fixed size.
+  remarks: "A collection with a fixed size does not allow the addition or removal of elements after the collection is created, but it allows the modification of existing elements.  \n  \n A collection with a fixed size is simply a collection with a wrapper that prevents adding and removing elements; therefore, if changes are made to the underlying collection, including the addition or removal of elements, the fixed-size collection reflects those changes.  \n  \n Retrieving the value of this property is an O(1) operation."
+  syntax:
+    content: bool System.Collections.IDictionary.IsFixedSize { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="System.Collections.IDictionary"></xref> has a fixed size; otherwise, `false`.  In the default implementation of <xref href="stem.Collections.Generic.SortedList%602"></xref>, this property always returns `false`.'
+  overload: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#IsFixedSize*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#IsReadOnly
+  id: System#Collections#IDictionary#IsReadOnly
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IDictionary.IsReadOnly
+  nameWithType: SortedList<TKey,TValue>.IDictionary.IsReadOnly
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.IsReadOnly
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Gets a value indicating whether the <xref href="System.Collections.IDictionary"></xref> is read-only.
+  remarks: "A collection that is read-only does not allow the addition, removal, or modification of elements after the collection is created.  \n  \n A collection that is read-only is simply a collection with a wrapper that prevents modifying the collection; therefore, if changes are made to the underlying collection, the read-only collection reflects those changes.  \n  \n Retrieving the value of this property is an O(1) operation."
+  syntax:
+    content: bool System.Collections.IDictionary.IsReadOnly { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="System.Collections.IDictionary"></xref> is read-only; otherwise, `false`.  In the default implementation of <xref href="stem.Collections.Generic.SortedList%602"></xref>, this property always returns `false`.'
+  overload: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#IsReadOnly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Item(System.Object)
+  id: System#Collections#IDictionary#Item(System.Object)
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IDictionary.Item(Object)
+  nameWithType: SortedList<TKey,TValue>.IDictionary.Item(Object)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.Item(Object)
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Gets or sets the element with the specified key.
+  remarks: "This property returns `null` if `key` is of a type that is not assignable to the key type `TKey` of the <xref:System.Collections.Generic.SortedList%602>.  \n  \n This property provides the ability to access a specific element in the collection by using the following syntax: `myCollection[key]`.  \n  \n You can also use the <xref:System.Collections.IDictionary.Item%2A> property to add new elements by setting the value of a key that does not exist in the dictionary; for example, `myCollection[\"myNonexistentKey\"] = myValue`. However, if the specified key already exists in the dictionary, setting the <xref:System.Collections.IDictionary.Item%2A> property overwrites the old value. In contrast, the <xref:System.Collections.IDictionary.Add%2A> method does not modify existing elements.  \n  \n The C# language uses the [this](../Topic/this%20\\(C%23%20Reference\\).md) keyword to define the indexers instead of implementing the IDictionary.Item property. Visual Basic implements IDictionary.Item as a default property, which provides the same indexing functionality.  \n  \n Retrieving the value of this property is an O(log `n`) operation, where n is <xref:System.Collections.Generic.SortedList%602.Count%2A>. Setting the property is an O(log `n`) operation if the key is already in the <xref:System.Collections.Generic.SortedList%602>. If the key is not in the list, setting the property is an O(`n`) operation for unsorted data, or O(log `n`) if the new element is added at the end of the list. If insertion causes a resize, the operation is O(`n`)."
+  example:
+  - "The following code example shows how to use the IDictionary.Item property (the indexer in C#) of the <xref:System.Collections.IDictionary?displayProperty=fullName> interface with a <xref:System.Collections.Generic.SortedList%602>, and ways the property differs from the <xref:System.Collections.Generic.SortedList%602.Item%2A?displayProperty=fullName> property.  \n  \n The example shows that, like the <xref:System.Collections.Generic.SortedList%602.Item%2A?displayProperty=fullName> property, the IDictionary.Item property can change the value associated with an existing key and can be used to add a new key/value pair if the specified key is not in the sorted list. The example also shows that unlike the <xref:System.Collections.Generic.SortedList%602.Item%2A?displayProperty=fullName> property, the IDictionary.Item property does not throw an exception if `key` is not in the sorted list, returning a null reference instead. Finally, the example demonstrates that getting the IDictionary.Item property returns a null reference if `key` is not the correct data type, and that setting the property throws an exception if `key` is not the correct data type.  \n  \n The code example is part of a larger example, including output, provided for the <xref:System.Collections.Generic.SortedList%602.System%23Collections%23IDictionary%23Add%2A> method.  \n  \n [!code-cs[Generic.SortedList.IDictionary#31](~/add/codesnippet/csharp/544fe728-3b74-44e3-90ed-_1.cs)]\n [!code-vb[Generic.SortedList.IDictionary#31](~/add/codesnippet/visualbasic/544fe728-3b74-44e3-90ed-_1.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#3](~/add/codesnippet/csharp/544fe728-3b74-44e3-90ed-_2.cs)]\n[!code-vb[Generic.SortedList.IDictionary#3](~/add/codesnippet/visualbasic/544fe728-3b74-44e3-90ed-_2.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#4](~/add/codesnippet/csharp/544fe728-3b74-44e3-90ed-_3.cs)]\n[!code-vb[Generic.SortedList.IDictionary#4](~/add/codesnippet/visualbasic/544fe728-3b74-44e3-90ed-_3.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#32](~/add/codesnippet/csharp/544fe728-3b74-44e3-90ed-_4.cs)]\n[!code-vb[Generic.SortedList.IDictionary#32](~/add/codesnippet/visualbasic/544fe728-3b74-44e3-90ed-_4.vb)]"
+  syntax:
+    content: object System.Collections.IDictionary.Item[object key] { get; set; }
+    parameters:
+    - id: key
+      type: System.Object
+      description: The key of the element to get or set.
+    return:
+      type: System.Object
+      description: The element with the specified key, or `null` if <code>key</code> is not in the dictionary or <code>key</code> is of a type that is not assignable to the key type <code>TKey</code> of the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Item*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: "A value is being assigned, and <code>key</code> is of a type that is not assignable to the key type <code>TKey</code> of the <xref href=\"stem.Collections.Generic.SortedList%602\"></xref>.  \n  \n -or-  \n  \n A value is being assigned, and <code>value</code> is of a type that is not assignable to the value type <code>TValue</code> of the <xref href=\"stem.Collections.Generic.SortedList%602\"></xref>."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Keys
+  id: System#Collections#IDictionary#Keys
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IDictionary.Keys
+  nameWithType: SortedList<TKey,TValue>.IDictionary.Keys
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.Keys
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Gets an <xref href="System.Collections.ICollection"></xref> containing the keys of the <xref href="System.Collections.IDictionary"></xref>.
+  remarks: "The order of the keys in the <xref:System.Collections.ICollection> is the same as the order in the <xref:System.Collections.Generic.SortedList%602>.  \n  \n Retrieving the value of this property is an O(1) operation."
+  example:
+  - "The following code example shows how to use the <xref:System.Collections.Generic.SortedList%602.System%23Collections%23Generic%23IDictionary%7BTKey%40TValue%7D%23Keys%2A> property of the <xref:System.Collections.IDictionary?displayProperty=fullName> interface with a <xref:System.Collections.Generic.SortedList%602>, to list the keys in the sorted list. The example also shows how to enumerate the key/value pairs in the sorted list; note that the enumerator for the <xref:System.Collections.IDictionary?displayProperty=fullName> interface returns <xref:System.Collections.DictionaryEntry> objects rather than <xref:System.Collections.Generic.KeyValuePair%602> objects.  \n  \n The code example is part of a larger example, including output, provided for the <xref:System.Collections.Generic.SortedList%602.System%23Collections%23IDictionary%23Add%2A> method.  \n  \n [!code-cs[Generic.SortedList.IDictionary#31](~/add/codesnippet/csharp/c2396c6b-bc19-4802-8b8b-_1.cs)]\n [!code-vb[Generic.SortedList.IDictionary#31](~/add/codesnippet/visualbasic/c2396c6b-bc19-4802-8b8b-_1.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#9](~/add/codesnippet/csharp/c2396c6b-bc19-4802-8b8b-_2.cs)]\n[!code-vb[Generic.SortedList.IDictionary#9](~/add/codesnippet/visualbasic/c2396c6b-bc19-4802-8b8b-_2.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#7](~/add/codesnippet/csharp/c2396c6b-bc19-4802-8b8b-_3.cs)]\n[!code-vb[Generic.SortedList.IDictionary#7](~/add/codesnippet/visualbasic/c2396c6b-bc19-4802-8b8b-_3.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#32](~/add/codesnippet/csharp/c2396c6b-bc19-4802-8b8b-_4.cs)]\n[!code-vb[Generic.SortedList.IDictionary#32](~/add/codesnippet/visualbasic/c2396c6b-bc19-4802-8b8b-_4.vb)]"
+  syntax:
+    content: System.Collections.ICollection System.Collections.IDictionary.Keys { get; }
+    return:
+      type: System.Collections.ICollection
+      description: An <xref href="System.Collections.ICollection"></xref> containing the keys of the <xref href="System.Collections.IDictionary"></xref>.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Keys*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Remove(System.Object)
+  id: System#Collections#IDictionary#Remove(System.Object)
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IDictionary.Remove(Object)
+  nameWithType: SortedList<TKey,TValue>.IDictionary.Remove(Object)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.Remove(Object)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Removes the element with the specified key from the <xref href="System.Collections.IDictionary"></xref>.
+  remarks: This method performs a binary search; however, the elements are moved up to fill in the open spot, so this method is an O(`n`) operation, where `n` is <xref:System.Collections.Generic.SortedList%602.Count%2A>.
+  example:
+  - "The following code example shows how to use the IDictionary.Remove of the <xref:System.Collections.IDictionary?displayProperty=fullName> interface with a <xref:System.Collections.Generic.SortedList%602>.  \n  \n The code example is part of a larger example, including output, provided for the <xref:System.Collections.Generic.SortedList%602.System%23Collections%23IDictionary%23Add%2A> method.  \n  \n [!code-cs[Generic.SortedList.IDictionary#31](~/add/codesnippet/csharp/37f48fe1-c87e-47d2-8faf-_1.cs)]\n [!code-vb[Generic.SortedList.IDictionary#31](~/add/codesnippet/visualbasic/37f48fe1-c87e-47d2-8faf-_1.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#10](~/add/codesnippet/csharp/37f48fe1-c87e-47d2-8faf-_2.cs)]\n[!code-vb[Generic.SortedList.IDictionary#10](~/add/codesnippet/visualbasic/37f48fe1-c87e-47d2-8faf-_2.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#32](~/add/codesnippet/csharp/37f48fe1-c87e-47d2-8faf-_3.cs)]\n[!code-vb[Generic.SortedList.IDictionary#32](~/add/codesnippet/visualbasic/37f48fe1-c87e-47d2-8faf-_3.vb)]"
+  syntax:
+    content: void IDictionary.Remove (object key);
+    parameters:
+    - id: key
+      type: System.Object
+      description: The key of the element to remove.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Remove*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Values
+  id: System#Collections#IDictionary#Values
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IDictionary.Values
+  nameWithType: SortedList<TKey,TValue>.IDictionary.Values
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.Values
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Gets an <xref href="System.Collections.ICollection"></xref> containing the values in the <xref href="System.Collections.IDictionary"></xref>.
+  remarks: "The order of the values in the <xref:System.Collections.ICollection> is the same as the order in the <xref:System.Collections.Generic.SortedList%602>.  \n  \n Retrieving the value of this property is an O(1) operation."
+  example:
+  - "The following code example shows how to use the IDictionary.Values property of the <xref:System.Collections.IDictionary?displayProperty=fullName> interface with a <xref:System.Collections.Generic.SortedList%602>, to list the values in the sorted list. The example also shows how to enumerate the key/value pairs in the sorted list; note that the enumerator for the <xref:System.Collections.IDictionary?displayProperty=fullName> interface returns <xref:System.Collections.DictionaryEntry> objects rather than <xref:System.Collections.Generic.KeyValuePair%602> objects.  \n  \n The code example is part of a larger example, including output, provided for the <xref:System.Collections.Generic.SortedList%602.System%23Collections%23IDictionary%23Add%2A> method.  \n  \n [!code-cs[Generic.SortedList.IDictionary#31](~/add/codesnippet/csharp/325e9b7a-d545-452b-b536-_1.cs)]\n [!code-vb[Generic.SortedList.IDictionary#31](~/add/codesnippet/visualbasic/325e9b7a-d545-452b-b536-_1.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#8](~/add/codesnippet/csharp/325e9b7a-d545-452b-b536-_2.cs)]\n[!code-vb[Generic.SortedList.IDictionary#8](~/add/codesnippet/visualbasic/325e9b7a-d545-452b-b536-_2.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#7](~/add/codesnippet/csharp/325e9b7a-d545-452b-b536-_3.cs)]\n[!code-vb[Generic.SortedList.IDictionary#7](~/add/codesnippet/visualbasic/325e9b7a-d545-452b-b536-_3.vb)]  \n[!code-cs[Generic.SortedList.IDictionary#32](~/add/codesnippet/csharp/325e9b7a-d545-452b-b536-_4.cs)]\n[!code-vb[Generic.SortedList.IDictionary#32](~/add/codesnippet/visualbasic/325e9b7a-d545-452b-b536-_4.vb)]"
+  syntax:
+    content: System.Collections.ICollection System.Collections.IDictionary.Values { get; }
+    return:
+      type: System.Collections.ICollection
+      description: An <xref href="System.Collections.ICollection"></xref> containing the values in the <xref href="System.Collections.IDictionary"></xref>.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Values*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IEnumerable#GetEnumerator
+  id: System#Collections#IEnumerable#GetEnumerator
+  isEii: true
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: IEnumerable.GetEnumerator()
+  nameWithType: SortedList<TKey,TValue>.IEnumerable.GetEnumerator()
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IEnumerable.GetEnumerator()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Returns an enumerator that iterates through a collection.
+  remarks: "The `foreach` statement of the C# language (`for each` in C++, `For Each` in Visual Basic) hides the complexity of the enumerators.  Therefore, using `foreach` is recommended, instead of directly manipulating the enumerator.  \n  \n Enumerators can be used to read the data in the collection, but they cannot be used to modify the underlying collection.  \n  \n Initially, the enumerator is positioned before the first element in the collection. <xref:System.Collections.IEnumerator.Reset%2A> also brings the enumerator back to this position.  At this position, <xref:System.Collections.IEnumerator.Current%2A> is undefined. Therefore, you must call <xref:System.Collections.IEnumerator.MoveNext%2A> to advance the enumerator to the first element of the collection before reading the value of <xref:System.Collections.IEnumerator.Current%2A>.  \n  \n <xref:System.Collections.IEnumerator.Current%2A> returns the same object until either <xref:System.Collections.IEnumerator.MoveNext%2A> or <xref:System.Collections.IEnumerator.Reset%2A> is called. <xref:System.Collections.IEnumerator.MoveNext%2A> sets <xref:System.Collections.IEnumerator.Current%2A> to the next element.  \n  \n If <xref:System.Collections.IEnumerator.MoveNext%2A> passes the end of the collection, the enumerator is positioned after the last element in the collection and <xref:System.Collections.IEnumerator.MoveNext%2A> returns `false`. When the enumerator is at this position, subsequent calls to <xref:System.Collections.IEnumerator.MoveNext%2A> also return `false`. If the last call to <xref:System.Collections.IEnumerator.MoveNext%2A> returned `false`, <xref:System.Collections.IEnumerator.Current%2A> is undefined. To set <xref:System.Collections.IEnumerator.Current%2A> to the first element of the collection again, you can call <xref:System.Collections.IEnumerator.Reset%2A> followed by <xref:System.Collections.IEnumerator.MoveNext%2A>.  \n  \n An enumerator remains valid as long as the collection remains unchanged. If changes are made to the collection, such as adding, modifying, or deleting elements, the enumerator is irrecoverably invalidated and its behavior is undefined.  \n  \n The enumerator does not have exclusive access to the collection; therefore, enumerating through a collection is intrinsically not a thread-safe procedure.  To guarantee thread safety during enumeration, you can lock the collection during the entire enumeration.  To allow the collection to be accessed by multiple threads for reading and writing, you must implement your own synchronization.  \n  \n Default implementations of collections in <xref:System.Collections.Generic?displayProperty=fullName> are not synchronized.  \n  \n This method is an O(1) operation."
+  syntax:
+    content: System.Collections.IEnumerator IEnumerable.GetEnumerator ();
+    parameters: []
+    return:
+      type: System.Collections.IEnumerator
+      description: An <xref href="System.Collections.IEnumerator"></xref> that can be used to iterate through the collection.
+  overload: System.Collections.Generic.SortedList`2.System#Collections#IEnumerable#GetEnumerator*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.TrimExcess
+  id: TrimExcess
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: TrimExcess()
+  nameWithType: SortedList<TKey,TValue>.TrimExcess()
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.TrimExcess()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Sets the capacity to the actual number of elements in the <xref href="stem.Collections.Generic.SortedList%602"></xref>, if that number is less than 90 percent of current capacity.
+  remarks: "This method can be used to minimize a collection's memory overhead if no new elements will be added to the collection. The cost of reallocating and copying a large <xref:System.Collections.Generic.SortedList%602> can be considerable, however, so the TrimExcess method does nothing if the list is at more than 90 percent of capacity. This avoids incurring a large reallocation cost for a relatively small gain.  \n  \n This method is an O(`n`) operation, where `n` is <xref:System.Collections.Generic.SortedList%602.Count%2A>.  \n  \n To reset a <xref:System.Collections.Generic.SortedList%602> to its initial state, call the <xref:System.Collections.Generic.SortedList%602.Clear%2A> method before calling TrimExcess method. Trimming an empty <xref:System.Collections.Generic.SortedList%602> sets the capacity of the <xref:System.Collections.Generic.SortedList%602> to the default capacity.  \n  \n The capacity can also be set using the <xref:System.Collections.Generic.SortedList%602.Capacity%2A> property."
+  syntax:
+    content: public void TrimExcess ();
+    parameters: []
+  overload: System.Collections.Generic.SortedList`2.TrimExcess*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.TryGetValue(`0,`1@)
+  id: TryGetValue(`0,`1@)
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: TryGetValue(TKey,TValue)
+  nameWithType: SortedList<TKey,TValue>.TryGetValue(TKey,TValue)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.TryGetValue(TKey,TValue)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Gets the value associated with the specified key.
+  remarks: "This method combines the functionality of the <xref:System.Collections.Generic.SortedList%602.ContainsKey%2A> method and the <xref:System.Collections.Generic.SortedList%602.Item%2A> property.  \n  \n If the key is not found, then the `value` parameter gets the appropriate default value for the value type `TValue`; for example, zero (0) for integer types, `false` for Boolean types, and `null` for reference types.  \n  \n This method performs a binary search; therefore, this method is an O(log `n`) operation, where `n` is <xref:System.Collections.Generic.SortedList%602.Count%2A>."
+  example:
+  - "The example shows how to use the TryGetValue method as a more efficient way to retrieve values in a program that frequently tries keys that are not in the sorted list. For contrast, the example also shows how the <xref:System.Collections.Generic.SortedList%602.Item%2A> property (the indexer in C#) throws exceptions when attempting to retrieve nonexistent keys.  \n  \n This code example is part of a larger example provided for the <xref:System.Collections.Generic.SortedList%602> class.  \n  \n [!code-vb[Generic.SortedList#5](~/add/codesnippet/visualbasic/m-system.collections.gen_41_1.vb)]\n [!code-cpp[Generic.SortedList#5](~/add/codesnippet/cpp/m-system.collections.gen_41_1.cpp)]\n [!code-cs[Generic.SortedList#5](~/add/codesnippet/csharp/m-system.collections.gen_41_1.cs)]  \n[!code-vb[Generic.SortedList#4](~/add/codesnippet/visualbasic/m-system.collections.gen_41_2.vb)]\n[!code-cpp[Generic.SortedList#4](~/add/codesnippet/cpp/m-system.collections.gen_41_2.cpp)]\n[!code-cs[Generic.SortedList#4](~/add/codesnippet/csharp/m-system.collections.gen_41_2.cs)]"
+  syntax:
+    content: public bool TryGetValue (TKey key, out TValue value);
+    parameters:
+    - id: key
+      type: TKey
+      description: The key whose value to get.
+    - id: value
+      type: TValue
+      description: When this method returns, the value associated with the specified key, if the key is found; otherwise, the default value for the type of the <code>value</code> parameter. This parameter is passed uninitialized.
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="stem.Collections.Generic.SortedList%602"></xref> contains an element with the specified key; otherwise, `false`.'
+  overload: System.Collections.Generic.SortedList`2.TryGetValue*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.SortedList`2.Values
+  id: Values
+  parent: System.Collections.Generic.SortedList`2
+  langs:
+  - csharp
+  name: Values
+  nameWithType: SortedList<TKey,TValue>.Values
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Values
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Generic
+  summary: Gets a collection containing the values in the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  remarks: "The order of the values in the <xref:System.Collections.Generic.IList%601> is the same as the order in the <xref:System.Collections.Generic.SortedList%602>.  \n  \n The returned <xref:System.Collections.Generic.IList%601> is not a static copy; instead, the <xref:System.Collections.Generic.IList%601> refers back to the values in the original <xref:System.Collections.Generic.SortedList%602>. Therefore, changes to the <xref:System.Collections.Generic.SortedList%602> continue to be reflected in the <xref:System.Collections.Generic.IList%601>.  \n  \n The collection returned by the Values property provides an efficient way to retrieve values by index. It is not necessary to regenerate the list when the property is accessed, because the list is just a wrapper for the internal array of values. The following code shows the use of the Values property for indexed retrieval of values from a sorted list of strings:  \n  \n [!code-cs[Generic.SortedList#11](~/add/codesnippet/csharp/p-system.collections.gen_15_1.cs)]\n [!code-cpp[Generic.SortedList#11](~/add/codesnippet/cpp/p-system.collections.gen_15_1.cpp)]\n [!code-vb[Generic.SortedList#11](~/add/codesnippet/visualbasic/p-system.collections.gen_15_1.vb)]  \n  \n Retrieving the value of this property is an O(1) operation."
+  example:
+  - "This code example shows how to enumerate the values in the sorted list using the Values property, and how to enumerate the keys and values in the sorted list.  \n  \n The example also shows how to use the Values property for efficient indexed retrieval of values.  \n  \n This code example is part of a larger example provided for the <xref:System.Collections.Generic.SortedList%602> class.  \n  \n [!code-vb[Generic.SortedList#8](~/add/codesnippet/visualbasic/p-system.collections.gen_15_2.vb)]\n [!code-cpp[Generic.SortedList#8](~/add/codesnippet/cpp/p-system.collections.gen_15_2.cpp)]\n [!code-cs[Generic.SortedList#8](~/add/codesnippet/csharp/p-system.collections.gen_15_2.cs)]  \n[!code-vb[Generic.SortedList#7](~/add/codesnippet/visualbasic/p-system.collections.gen_15_3.vb)]\n[!code-cpp[Generic.SortedList#7](~/add/codesnippet/cpp/p-system.collections.gen_15_3.cpp)]\n[!code-cs[Generic.SortedList#7](~/add/codesnippet/csharp/p-system.collections.gen_15_3.cs)]"
+  syntax:
+    content: public System.Collections.Generic.IList<TValue> Values { get; }
+    return:
+      type: System.Collections.Generic.IList{TValue}
+      description: A <xref href="stem.Collections.Generic.IList%601"></xref> containing the values in the <xref href="stem.Collections.Generic.SortedList%602"></xref>.
+  overload: System.Collections.Generic.SortedList`2.Values*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\SortedList`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/SortedList`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.OutOfMemoryException
+  parent: System
+  isExternal: false
+  name: OutOfMemoryException
+  nameWithType: OutOfMemoryException
+  fullName: System.OutOfMemoryException
+- uid: System.Collections.Generic.KeyNotFoundException
+  parent: System.Collections.Generic
+  isExternal: false
+  name: KeyNotFoundException
+  nameWithType: KeyNotFoundException
+  fullName: System.Collections.Generic.KeyNotFoundException
+- uid: System.Collections.Generic.SortedList`2.#ctor
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: SortedList<TKey,TValue>()
+  nameWithType: SortedList<TKey,TValue>.SortedList<TKey,TValue>()
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.SortedList<TKey,TValue>()
+- uid: System.Collections.Generic.SortedList`2.#ctor(System.Collections.Generic.IComparer{`0})
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: SortedList<TKey,TValue>(IComparer<TKey>)
+  nameWithType: SortedList<TKey,TValue>.SortedList<TKey,TValue>(IComparer<TKey>)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.SortedList<TKey,TValue>(IComparer<TKey>)
+- uid: System.Collections.Generic.IComparer{TKey}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IComparer<TKey>
+  nameWithType: IComparer<TKey>
+  fullName: System.Collections.Generic.IComparer<TKey>
+  spec.csharp:
+  - uid: System.Collections.Generic.IComparer`1
+    name: IComparer
+    nameWithType: IComparer
+    fullName: IComparer<TKey>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TKey
+    name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Collections.Generic.SortedList`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: SortedList<TKey,TValue>(IDictionary<TKey,TValue>)
+  nameWithType: SortedList<TKey,TValue>.SortedList<TKey,TValue>(IDictionary<TKey,TValue>)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.SortedList<TKey,TValue>(IDictionary<TKey,TValue>)
+- uid: System.Collections.Generic.IDictionary`2
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IDictionary<TKey,TValue>
+  nameWithType: IDictionary<TKey,TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>
+- uid: System.Collections.Generic.SortedList`2.#ctor(System.Int32)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: SortedList<TKey,TValue>(Int32)
+  nameWithType: SortedList<TKey,TValue>.SortedList<TKey,TValue>(Int32)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.SortedList<TKey,TValue>(Int32)
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Collections.Generic.SortedList`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IComparer{`0})
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: SortedList<TKey,TValue>(IDictionary<TKey,TValue>,IComparer<TKey>)
+  nameWithType: SortedList<TKey,TValue>.SortedList<TKey,TValue>(IDictionary<TKey,TValue>,IComparer<TKey>)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.SortedList<TKey,TValue>(IDictionary<TKey,TValue>,IComparer<TKey>)
+- uid: System.Collections.Generic.SortedList`2.#ctor(System.Int32,System.Collections.Generic.IComparer{`0})
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: SortedList<TKey,TValue>(Int32,IComparer<TKey>)
+  nameWithType: SortedList<TKey,TValue>.SortedList<TKey,TValue>(Int32,IComparer<TKey>)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.SortedList<TKey,TValue>(Int32,IComparer<TKey>)
+- uid: System.Collections.Generic.SortedList`2.Add(`0,`1)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Add(TKey,TValue)
+  nameWithType: SortedList<TKey,TValue>.Add(TKey,TValue)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Add(TKey,TValue)
+- uid: TKey
+  isExternal: true
+  name: TKey
+  nameWithType: TKey
+  fullName: TKey
+- uid: TValue
+  isExternal: true
+  name: TValue
+  nameWithType: TValue
+  fullName: TValue
+- uid: System.Collections.Generic.SortedList`2.Capacity
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Capacity
+  nameWithType: SortedList<TKey,TValue>.Capacity
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Capacity
+- uid: System.Collections.Generic.SortedList`2.Clear
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Clear()
+  nameWithType: SortedList<TKey,TValue>.Clear()
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Clear()
+- uid: System.Collections.Generic.SortedList`2.Comparer
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Comparer
+  nameWithType: SortedList<TKey,TValue>.Comparer
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Comparer
+- uid: System.Collections.Generic.SortedList`2.ContainsKey(`0)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: ContainsKey(TKey)
+  nameWithType: SortedList<TKey,TValue>.ContainsKey(TKey)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ContainsKey(TKey)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Collections.Generic.SortedList`2.ContainsValue(`1)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: ContainsValue(TValue)
+  nameWithType: SortedList<TKey,TValue>.ContainsValue(TValue)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ContainsValue(TValue)
+- uid: System.Collections.Generic.SortedList`2.Count
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Count
+  nameWithType: SortedList<TKey,TValue>.Count
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Count
+- uid: System.Collections.Generic.SortedList`2.GetEnumerator
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: GetEnumerator()
+  nameWithType: SortedList<TKey,TValue>.GetEnumerator()
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.GetEnumerator()
+- uid: System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{TKey,TValue}}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerator<KeyValuePair<TKey,TValue>>
+  nameWithType: IEnumerator<KeyValuePair<TKey,TValue>>
+  fullName: System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey,TValue>>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    nameWithType: IEnumerator
+    fullName: IEnumerator<System.Collections.Generic.KeyValuePair<TKey,TValue>>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    nameWithType: KeyValuePair
+    fullName: KeyValuePair<TKey,TValue>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TKey
+    name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: TValue
+    name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Collections.Generic.SortedList`2.IndexOfKey(`0)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IndexOfKey(TKey)
+  nameWithType: SortedList<TKey,TValue>.IndexOfKey(TKey)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IndexOfKey(TKey)
+- uid: System.Collections.Generic.SortedList`2.IndexOfValue(`1)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IndexOfValue(TValue)
+  nameWithType: SortedList<TKey,TValue>.IndexOfValue(TValue)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IndexOfValue(TValue)
+- uid: System.Collections.Generic.SortedList`2.Item(`0)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Item(TKey)
+  nameWithType: SortedList<TKey,TValue>.Item(TKey)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Item(TKey)
+- uid: System.Collections.Generic.SortedList`2.Keys
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Keys
+  nameWithType: SortedList<TKey,TValue>.Keys
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Keys
+- uid: System.Collections.Generic.IList{TKey}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IList<TKey>
+  nameWithType: IList<TKey>
+  fullName: System.Collections.Generic.IList<TKey>
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: IList<TKey>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TKey
+    name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Collections.Generic.SortedList`2.Remove(`0)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Remove(TKey)
+  nameWithType: SortedList<TKey,TValue>.Remove(TKey)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Remove(TKey)
+- uid: System.Collections.Generic.SortedList`2.RemoveAt(System.Int32)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: RemoveAt(Int32)
+  nameWithType: SortedList<TKey,TValue>.RemoveAt(Int32)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.RemoveAt(Int32)
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Add(System.Collections.Generic.KeyValuePair{`0,`1})
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: ICollection<KeyValuePair<TKey,TValue>>.Add(KeyValuePair<TKey,TValue>)
+  nameWithType: SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.Add(KeyValuePair<TKey,TValue>)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.Add(KeyValuePair<TKey,TValue>)
+- uid: System.Collections.Generic.KeyValuePair`2
+  parent: System.Collections.Generic
+  isExternal: false
+  name: KeyValuePair<TKey,TValue>
+  nameWithType: KeyValuePair<TKey,TValue>
+  fullName: System.Collections.Generic.KeyValuePair<TKey,TValue>
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: ICollection<KeyValuePair<TKey,TValue>>.Contains(KeyValuePair<TKey,TValue>)
+  nameWithType: SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.Contains(KeyValuePair<TKey,TValue>)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.Contains(KeyValuePair<TKey,TValue>)
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: ICollection<KeyValuePair<TKey,TValue>>.CopyTo(KeyValuePair<TKey,TValue>[],Int32)
+  nameWithType: SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.CopyTo(KeyValuePair<TKey,TValue>[],Int32)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.CopyTo(KeyValuePair<TKey,TValue>[],Int32)
+- uid: System.Collections.Generic.KeyValuePair{TKey,TValue}[]
+  parent: System.Collections.Generic
+  isExternal: false
+  name: KeyValuePair<TKey,TValue>[]
+  nameWithType: KeyValuePair<TKey,TValue>[]
+  fullName: System.Collections.Generic.KeyValuePair<TKey,TValue>[]
+  spec.csharp:
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    nameWithType: KeyValuePair
+    fullName: KeyValuePair<TKey,TValue>[]
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TKey
+    name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: TValue
+    name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#IsReadOnly
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: ICollection<KeyValuePair<TKey,TValue>>.IsReadOnly
+  nameWithType: SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.IsReadOnly
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.IsReadOnly
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: ICollection<KeyValuePair<TKey,TValue>>.Remove(KeyValuePair<TKey,TValue>)
+  nameWithType: SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.Remove(KeyValuePair<TKey,TValue>)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection<KeyValuePair<TKey,TValue>>.Remove(KeyValuePair<TKey,TValue>)
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IDictionary{TKey,TValue}#Keys
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IDictionary<TKey,TValue>.Keys
+  nameWithType: SortedList<TKey,TValue>.IDictionary<TKey,TValue>.Keys
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary<TKey,TValue>.Keys
+- uid: System.Collections.Generic.ICollection{TKey}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: ICollection<TKey>
+  nameWithType: ICollection<TKey>
+  fullName: System.Collections.Generic.ICollection<TKey>
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    nameWithType: ICollection
+    fullName: ICollection<TKey>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TKey
+    name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IDictionary{TKey,TValue}#Values
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IDictionary<TKey,TValue>.Values
+  nameWithType: SortedList<TKey,TValue>.IDictionary<TKey,TValue>.Values
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary<TKey,TValue>.Values
+- uid: System.Collections.Generic.ICollection{TValue}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: ICollection<TValue>
+  nameWithType: ICollection<TValue>
+  fullName: System.Collections.Generic.ICollection<TValue>
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    nameWithType: ICollection
+    fullName: ICollection<TValue>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TValue
+    name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{TKey,TValue}}#GetEnumerator
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IEnumerable<KeyValuePair<TKey,TValue>>.GetEnumerator()
+  nameWithType: SortedList<TKey,TValue>.IEnumerable<KeyValuePair<TKey,TValue>>.GetEnumerator()
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IEnumerable<KeyValuePair<TKey,TValue>>.GetEnumerator()
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IReadOnlyDictionary{TKey,TValue}#Keys
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IReadOnlyDictionary<TKey,TValue>.Keys
+  nameWithType: SortedList<TKey,TValue>.IReadOnlyDictionary<TKey,TValue>.Keys
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IReadOnlyDictionary<TKey,TValue>.Keys
+- uid: System.Collections.Generic.IEnumerable{TKey}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<TKey>
+  nameWithType: IEnumerable<TKey>
+  fullName: System.Collections.Generic.IEnumerable<TKey>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<TKey>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TKey
+    name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IReadOnlyDictionary{TKey,TValue}#Values
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IReadOnlyDictionary<TKey,TValue>.Values
+  nameWithType: SortedList<TKey,TValue>.IReadOnlyDictionary<TKey,TValue>.Values
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IReadOnlyDictionary<TKey,TValue>.Values
+- uid: System.Collections.Generic.IEnumerable{TValue}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<TValue>
+  nameWithType: IEnumerable<TValue>
+  fullName: System.Collections.Generic.IEnumerable<TValue>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<TValue>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TValue
+    name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Collections.Generic.SortedList`2.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: ICollection.CopyTo(Array,Int32)
+  nameWithType: SortedList<TKey,TValue>.ICollection.CopyTo(Array,Int32)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection.CopyTo(Array,Int32)
+- uid: System.Array
+  parent: System
+  isExternal: false
+  name: Array
+  nameWithType: Array
+  fullName: System.Array
+- uid: System.Collections.Generic.SortedList`2.System#Collections#ICollection#IsSynchronized
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: ICollection.IsSynchronized
+  nameWithType: SortedList<TKey,TValue>.ICollection.IsSynchronized
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection.IsSynchronized
+- uid: System.Collections.Generic.SortedList`2.System#Collections#ICollection#SyncRoot
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: ICollection.SyncRoot
+  nameWithType: SortedList<TKey,TValue>.ICollection.SyncRoot
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.ICollection.SyncRoot
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Add(System.Object,System.Object)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IDictionary.Add(Object,Object)
+  nameWithType: SortedList<TKey,TValue>.IDictionary.Add(Object,Object)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.Add(Object,Object)
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Contains(System.Object)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IDictionary.Contains(Object)
+  nameWithType: SortedList<TKey,TValue>.IDictionary.Contains(Object)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.Contains(Object)
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#GetEnumerator
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IDictionary.GetEnumerator()
+  nameWithType: SortedList<TKey,TValue>.IDictionary.GetEnumerator()
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.GetEnumerator()
+- uid: System.Collections.IDictionaryEnumerator
+  parent: System.Collections
+  isExternal: false
+  name: IDictionaryEnumerator
+  nameWithType: IDictionaryEnumerator
+  fullName: System.Collections.IDictionaryEnumerator
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#IsFixedSize
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IDictionary.IsFixedSize
+  nameWithType: SortedList<TKey,TValue>.IDictionary.IsFixedSize
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.IsFixedSize
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#IsReadOnly
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IDictionary.IsReadOnly
+  nameWithType: SortedList<TKey,TValue>.IDictionary.IsReadOnly
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.IsReadOnly
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Item(System.Object)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IDictionary.Item(Object)
+  nameWithType: SortedList<TKey,TValue>.IDictionary.Item(Object)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.Item(Object)
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Keys
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IDictionary.Keys
+  nameWithType: SortedList<TKey,TValue>.IDictionary.Keys
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.Keys
+- uid: System.Collections.ICollection
+  parent: System.Collections
+  isExternal: false
+  name: ICollection
+  nameWithType: ICollection
+  fullName: System.Collections.ICollection
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Remove(System.Object)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IDictionary.Remove(Object)
+  nameWithType: SortedList<TKey,TValue>.IDictionary.Remove(Object)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.Remove(Object)
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Values
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IDictionary.Values
+  nameWithType: SortedList<TKey,TValue>.IDictionary.Values
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IDictionary.Values
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IEnumerable#GetEnumerator
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IEnumerable.GetEnumerator()
+  nameWithType: SortedList<TKey,TValue>.IEnumerable.GetEnumerator()
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.IEnumerable.GetEnumerator()
+- uid: System.Collections.IEnumerator
+  parent: System.Collections
+  isExternal: false
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+- uid: System.Collections.Generic.SortedList`2.TrimExcess
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: TrimExcess()
+  nameWithType: SortedList<TKey,TValue>.TrimExcess()
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.TrimExcess()
+- uid: System.Collections.Generic.SortedList`2.TryGetValue(`0,`1@)
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: TryGetValue(TKey,TValue)
+  nameWithType: SortedList<TKey,TValue>.TryGetValue(TKey,TValue)
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.TryGetValue(TKey,TValue)
+- uid: System.Collections.Generic.SortedList`2.Values
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Values
+  nameWithType: SortedList<TKey,TValue>.Values
+  fullName: System.Collections.Generic.SortedList<TKey,TValue>.Values
+- uid: System.Collections.Generic.IList{TValue}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IList<TValue>
+  nameWithType: IList<TValue>
+  fullName: System.Collections.Generic.IList<TValue>
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: IList<TValue>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TValue
+    name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Collections.Generic.SortedList`2.#ctor*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: SortedList<TKey,TValue>
+  nameWithType: SortedList<TKey,TValue>.SortedList<TKey,TValue>
+- uid: System.Collections.Generic.SortedList`2.Add*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Add
+  nameWithType: SortedList<TKey,TValue>.Add
+- uid: System.Collections.Generic.SortedList`2.Capacity*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Capacity
+  nameWithType: SortedList<TKey,TValue>.Capacity
+- uid: System.Collections.Generic.SortedList`2.Clear*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Clear
+  nameWithType: SortedList<TKey,TValue>.Clear
+- uid: System.Collections.Generic.SortedList`2.Comparer*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Comparer
+  nameWithType: SortedList<TKey,TValue>.Comparer
+- uid: System.Collections.Generic.SortedList`2.ContainsKey*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: ContainsKey
+  nameWithType: SortedList<TKey,TValue>.ContainsKey
+- uid: System.Collections.Generic.SortedList`2.ContainsValue*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: ContainsValue
+  nameWithType: SortedList<TKey,TValue>.ContainsValue
+- uid: System.Collections.Generic.SortedList`2.Count*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Count
+  nameWithType: SortedList<TKey,TValue>.Count
+- uid: System.Collections.Generic.SortedList`2.GetEnumerator*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: GetEnumerator
+  nameWithType: SortedList<TKey,TValue>.GetEnumerator
+- uid: System.Collections.Generic.SortedList`2.IndexOfKey*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IndexOfKey
+  nameWithType: SortedList<TKey,TValue>.IndexOfKey
+- uid: System.Collections.Generic.SortedList`2.IndexOfValue*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: IndexOfValue
+  nameWithType: SortedList<TKey,TValue>.IndexOfValue
+- uid: System.Collections.Generic.SortedList`2.Item*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Item
+  nameWithType: SortedList<TKey,TValue>.Item
+- uid: System.Collections.Generic.SortedList`2.Keys*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Keys
+  nameWithType: SortedList<TKey,TValue>.Keys
+- uid: System.Collections.Generic.SortedList`2.Remove*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Remove
+  nameWithType: SortedList<TKey,TValue>.Remove
+- uid: System.Collections.Generic.SortedList`2.RemoveAt*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: RemoveAt
+  nameWithType: SortedList<TKey,TValue>.RemoveAt
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<TKey,TValue>>#Add*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.Add
+  nameWithType: SortedList<TKey,TValue>.System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.Add
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<TKey,TValue>>#Contains*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.Contains
+  nameWithType: SortedList<TKey,TValue>.System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.Contains
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<TKey,TValue>>#CopyTo*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.CopyTo
+  nameWithType: SortedList<TKey,TValue>.System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.CopyTo
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<TKey,TValue>>#IsReadOnly*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.IsReadOnly
+  nameWithType: SortedList<TKey,TValue>.System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.IsReadOnly
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#ICollection<System#Collections#Generic#KeyValuePair<TKey,TValue>>#Remove*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.Remove
+  nameWithType: SortedList<TKey,TValue>.System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.Remove
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IDictionary<TKey,TValue>#Keys*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.Generic.IDictionary<TKey,TValue>.Keys
+  nameWithType: SortedList<TKey,TValue>.System.Collections.Generic.IDictionary<TKey,TValue>.Keys
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IDictionary<TKey,TValue>#Values*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.Generic.IDictionary<TKey,TValue>.Values
+  nameWithType: SortedList<TKey,TValue>.System.Collections.Generic.IDictionary<TKey,TValue>.Values
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IEnumerable<System#Collections#Generic#KeyValuePair<TKey,TValue>>#GetEnumerator*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<TKey,TValue>>.GetEnumerator
+  nameWithType: SortedList<TKey,TValue>.System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<TKey,TValue>>.GetEnumerator
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IReadOnlyDictionary<TKey,TValue>#Keys*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.Generic.IReadOnlyDictionary<TKey,TValue>.Keys
+  nameWithType: SortedList<TKey,TValue>.System.Collections.Generic.IReadOnlyDictionary<TKey,TValue>.Keys
+- uid: System.Collections.Generic.SortedList`2.System#Collections#Generic#IReadOnlyDictionary<TKey,TValue>#Values*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.Generic.IReadOnlyDictionary<TKey,TValue>.Values
+  nameWithType: SortedList<TKey,TValue>.System.Collections.Generic.IReadOnlyDictionary<TKey,TValue>.Values
+- uid: System.Collections.Generic.SortedList`2.System#Collections#ICollection#CopyTo*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.ICollection.CopyTo
+  nameWithType: SortedList<TKey,TValue>.System.Collections.ICollection.CopyTo
+- uid: System.Collections.Generic.SortedList`2.System#Collections#ICollection#IsSynchronized*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.ICollection.IsSynchronized
+  nameWithType: SortedList<TKey,TValue>.System.Collections.ICollection.IsSynchronized
+- uid: System.Collections.Generic.SortedList`2.System#Collections#ICollection#SyncRoot*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.ICollection.SyncRoot
+  nameWithType: SortedList<TKey,TValue>.System.Collections.ICollection.SyncRoot
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Add*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.IDictionary.Add
+  nameWithType: SortedList<TKey,TValue>.System.Collections.IDictionary.Add
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Contains*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.IDictionary.Contains
+  nameWithType: SortedList<TKey,TValue>.System.Collections.IDictionary.Contains
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#GetEnumerator*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.IDictionary.GetEnumerator
+  nameWithType: SortedList<TKey,TValue>.System.Collections.IDictionary.GetEnumerator
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#IsFixedSize*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.IDictionary.IsFixedSize
+  nameWithType: SortedList<TKey,TValue>.System.Collections.IDictionary.IsFixedSize
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#IsReadOnly*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.IDictionary.IsReadOnly
+  nameWithType: SortedList<TKey,TValue>.System.Collections.IDictionary.IsReadOnly
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Item*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.IDictionary.Item
+  nameWithType: SortedList<TKey,TValue>.System.Collections.IDictionary.Item
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Keys*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.IDictionary.Keys
+  nameWithType: SortedList<TKey,TValue>.System.Collections.IDictionary.Keys
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Remove*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.IDictionary.Remove
+  nameWithType: SortedList<TKey,TValue>.System.Collections.IDictionary.Remove
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IDictionary#Values*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.IDictionary.Values
+  nameWithType: SortedList<TKey,TValue>.System.Collections.IDictionary.Values
+- uid: System.Collections.Generic.SortedList`2.System#Collections#IEnumerable#GetEnumerator*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: System.Collections.IEnumerable.GetEnumerator
+  nameWithType: SortedList<TKey,TValue>.System.Collections.IEnumerable.GetEnumerator
+- uid: System.Collections.Generic.SortedList`2.TrimExcess*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: TrimExcess
+  nameWithType: SortedList<TKey,TValue>.TrimExcess
+- uid: System.Collections.Generic.SortedList`2.TryGetValue*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: TryGetValue
+  nameWithType: SortedList<TKey,TValue>.TryGetValue
+- uid: System.Collections.Generic.SortedList`2.Values*
+  parent: System.Collections.Generic.SortedList`2
+  isExternal: false
+  name: Values
+  nameWithType: SortedList<TKey,TValue>.Values

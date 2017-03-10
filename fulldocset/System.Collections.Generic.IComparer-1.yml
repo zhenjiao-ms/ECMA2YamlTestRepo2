@@ -1,0 +1,103 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Collections.Generic.IComparer`1
+  id: IComparer`1
+  children:
+  - System.Collections.Generic.IComparer`1.Compare(`0,`0)
+  langs:
+  - csharp
+  name: IComparer<T>
+  nameWithType: IComparer<T>
+  fullName: System.Collections.Generic.IComparer<T>
+  type: Interface
+  summary: Defines a method that a type implements to compare two objects.
+  remarks: "This interface is used with the <xref:System.Collections.Generic.List%601.Sort%2A?displayProperty=fullName> and <xref:System.Collections.Generic.List%601.BinarySearch%2A?displayProperty=fullName> methods. It provides a way to customize the sort order of a collection. Classes that implement this interface include the <xref:System.Collections.Generic.SortedDictionary%602> and <xref:System.Collections.Generic.SortedList%602> generic classes.  \n  \n The default implementation of this interface is the <xref:System.Collections.Generic.Comparer%601> class. The <xref:System.StringComparer> class implements this interface for type <xref:System.String>.  \n  \n This interface supports ordering comparisons. That is, when the <xref:System.Collections.Generic.Comparer%601.Compare%2A> method returns 0, it means that two objects sort the same. Implementation of exact equality comparisons is provided by the <xref:System.Collections.Generic.IEqualityComparer%601> generic interface.  \n  \n We recommend that you derive from the <xref:System.Collections.Generic.Comparer%601> class instead of implementing the IComparer(T) interface, because the <xref:System.Collections.Generic.Comparer%601> class provides an explicit interface implementation of the <xref:System.Collections.Generic.Comparer%601.System%23Collections%23IComparer%23Compare%2A> method and the <xref:System.Collections.Generic.Comparer%601.Default%2A> property that gets the default comparer for the object."
+  example:
+  - "The following example implements the IComparer(T) interface to compare objects of type `Box` according to their dimensions. This example is part of a larger example provided for the <xref:System.Collections.Generic.Comparer%601> class.  \n  \n [!code-cs[System.Collections.Generic.BoxCompare#7](~/add/codesnippet/csharp/t-system.collections.gen_0_1.cs)]\n [!code-vb[System.Collections.Generic.BoxCompare#7](~/add/codesnippet/visualbasic/t-system.collections.gen_0_1.vb)]"
+  syntax:
+    content: public interface IComparer<in T>
+    typeParameters:
+    - id: T
+      description: The type of objects to compare.
+  implements: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\IComparer`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/IComparer`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.IComparer`1.Compare(`0,`0)
+  id: Compare(`0,`0)
+  parent: System.Collections.Generic.IComparer`1
+  langs:
+  - csharp
+  name: Compare(T,T)
+  nameWithType: IComparer<T>.Compare(T,T)
+  fullName: System.Collections.Generic.IComparer<T>.Compare(T,T)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: Compares two objects and returns a value indicating whether one is less than, equal to, or greater than the other.
+  remarks: "Implement this method to provide a customized sort order comparison for type `T`.  \n  \n Comparing `null` with any reference type is allowed and does not generate an exception. A null reference is considered to be less than any reference that is not null."
+  example:
+  - "The following example implements the <xref:System.Collections.Generic.IComparer%601> interface to compare objects of type `Box` according to their dimensions. This example is part of a larger example provided for the <xref:System.Collections.Generic.Comparer%601> class.  \n  \n [!code-cs[System.Collections.Generic.BoxCompare#7](~/add/codesnippet/csharp/m-system.collections.gen_24_1.cs)]\n [!code-vb[System.Collections.Generic.BoxCompare#7](~/add/codesnippet/visualbasic/m-system.collections.gen_24_1.vb)]"
+  syntax:
+    content: public int Compare (T x, T y);
+    parameters:
+    - id: x
+      type: T
+      description: The first object to compare.
+    - id: y
+      type: T
+      description: The second object to compare.
+    return:
+      type: System.Int32
+      description: "A signed integer that indicates the relative values of <code>x</code> and <code>y</code>, as shown in the following table.  \n  \n <table><thead><tr><th> Value  \n  \n </th><th> Meaning  \n  \n </th></tr></thead><tbody><tr><td> Less than zero  \n  \n </td><td><code>x</code> is less than <code>y</code>.  \n  \n </td></tr><tr><td> Zero  \n  \n </td><td><code>x</code> equals <code>y</code>.  \n  \n </td></tr><tr><td> Greater than zero  \n  \n </td><td><code>x</code> is greater than <code>y</code>.  \n  \n </td></tr></tbody></table>"
+  overload: System.Collections.Generic.IComparer`1.Compare*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\IComparer`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/IComparer`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Collections.Generic.IComparer`1.Compare(`0,`0)
+  parent: System.Collections.Generic.IComparer`1
+  isExternal: false
+  name: Compare(T,T)
+  nameWithType: IComparer<T>.Compare(T,T)
+  fullName: System.Collections.Generic.IComparer<T>.Compare(T,T)
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: T
+  isExternal: true
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Collections.Generic.IComparer`1.Compare*
+  parent: System.Collections.Generic.IComparer`1
+  isExternal: false
+  name: Compare
+  nameWithType: IComparer<T>.Compare

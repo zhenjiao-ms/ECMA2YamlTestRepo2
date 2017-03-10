@@ -1,0 +1,249 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Configuration.SettingsProviderCollection
+  id: SettingsProviderCollection
+  children:
+  - System.Configuration.SettingsProviderCollection.#ctor
+  - System.Configuration.SettingsProviderCollection.Add(System.Configuration.Provider.ProviderBase)
+  - System.Configuration.SettingsProviderCollection.Item(System.String)
+  langs:
+  - csharp
+  name: SettingsProviderCollection
+  nameWithType: SettingsProviderCollection
+  fullName: System.Configuration.SettingsProviderCollection
+  type: Class
+  summary: Represents a collection of application settings providers.
+  remarks: "The SettingsProviderCollection class is a straightforward extension of the <xref:System.Configuration.Provider.ProviderCollection> class to provide for storage of <xref:System.Configuration.SettingsProvider> objects.  \n  \n The <xref:System.Configuration.ApplicationSettingsBase> class uses this collection to manage the settings providers associated with each of its application settings properties through the <xref:System.Configuration.SettingsProviderAttribute>."
+  syntax:
+    content: 'public class SettingsProviderCollection : System.Configuration.Provider.ProviderCollection'
+  inheritance:
+  - System.Object
+  - System.Configuration.Provider.ProviderCollection
+  implements: []
+  inheritedMembers:
+  - System.Configuration.Provider.ProviderCollection.Clear
+  - System.Configuration.Provider.ProviderCollection.CopyTo(System.Configuration.Provider.ProviderBase[],System.Int32)
+  - System.Configuration.Provider.ProviderCollection.Count
+  - System.Configuration.Provider.ProviderCollection.GetEnumerator
+  - System.Configuration.Provider.ProviderCollection.IsSynchronized
+  - System.Configuration.Provider.ProviderCollection.Remove(System.String)
+  - System.Configuration.Provider.ProviderCollection.SetReadOnly
+  - System.Configuration.Provider.ProviderCollection.SyncRoot
+  - System.Configuration.Provider.ProviderCollection.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Configuration\SettingsProviderCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Configuration/SettingsProviderCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Configuration.SettingsProviderCollection.#ctor
+  id: '#ctor'
+  parent: System.Configuration.SettingsProviderCollection
+  langs:
+  - csharp
+  name: SettingsProviderCollection()
+  nameWithType: SettingsProviderCollection.SettingsProviderCollection()
+  fullName: System.Configuration.SettingsProviderCollection.SettingsProviderCollection()
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.Configuration
+  summary: Initializes a new instance of the <xref href="System.Configuration.SettingsProviderCollection"></xref> class.
+  remarks: This is the default constructor that is implicitly provided.
+  syntax:
+    content: public SettingsProviderCollection ();
+    parameters: []
+  overload: System.Configuration.SettingsProviderCollection.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Configuration\SettingsProviderCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Configuration/SettingsProviderCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Configuration.SettingsProviderCollection.Add(System.Configuration.Provider.ProviderBase)
+  id: Add(System.Configuration.Provider.ProviderBase)
+  parent: System.Configuration.SettingsProviderCollection
+  langs:
+  - csharp
+  name: Add(ProviderBase)
+  nameWithType: SettingsProviderCollection.Add(ProviderBase)
+  fullName: System.Configuration.SettingsProviderCollection.Add(ProviderBase)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Configuration
+  summary: Adds a new settings provider to the collection.
+  remarks: "The <xref:System.Configuration.Provider.ProviderBase.Name%2A> property of the <xref:System.Configuration.SettingsProvider> is used as the storage key.  \n  \n> [!CAUTION]\n>  Although the Add method has a single <xref:System.Configuration.Provider.ProviderBase> parameter to match the signature of this same method in the base class <xref:System.Configuration.Provider.ProviderCollection>, this method will throw an exception if the `provider` parameter is not of type <xref:System.Configuration.SettingsProvider>."
+  syntax:
+    content: public override void Add (System.Configuration.Provider.ProviderBase provider);
+    parameters:
+    - id: provider
+      type: System.Configuration.Provider.ProviderBase
+      description: A <xref href="System.Configuration.Provider.ProviderBase"></xref> to add to the collection.
+  overload: System.Configuration.SettingsProviderCollection.Add*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: "The <code>provider</code> parameter is not of type <xref href=\"System.Configuration.SettingsProvider\"></xref>.  \n  \n -or-  \n  \n The <xref href=\"stem.Configuration.Provider.ProviderBase.Name%2A\"></xref> property of the provider parameter is null or an empty string.  \n  \n -or-  \n  \n A settings provider with the same <xref href=\"stem.Configuration.Provider.ProviderBase.Name%2A\"></xref> already exists in the collection."
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The collection is read-only.
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>provider</code> parameter is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Configuration\SettingsProviderCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Configuration/SettingsProviderCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Configuration.SettingsProviderCollection.Item(System.String)
+  id: Item(System.String)
+  parent: System.Configuration.SettingsProviderCollection
+  langs:
+  - csharp
+  name: Item(String)
+  nameWithType: SettingsProviderCollection.Item(String)
+  fullName: System.Configuration.SettingsProviderCollection.Item(String)
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Configuration
+  summary: Gets the settings provider in the collection that matches the specified name.
+  remarks: You can make a <xref:System.Configuration.SettingsProviderCollection> read-only by using the <xref:System.Configuration.Provider.ProviderCollection.SetReadOnly%2A> method. However, it is invalid to methods such as <xref:System.Configuration.SettingsProviderCollection.Add%2A>, <xref:System.Configuration.Provider.ProviderCollection.Remove%2A>, and <xref:System.Configuration.Provider.ProviderCollection.Clear%2A> on such a collection.
+  syntax:
+    content: public System.Configuration.SettingsProvider this[string name] { get; }
+    parameters:
+    - id: name
+      type: System.String
+      description: A <xref href="System.String"></xref> containing the friendly name of the settings provider.
+    return:
+      type: System.Configuration.SettingsProvider
+      description: If found, the <xref href="System.Configuration.SettingsProvider"></xref> whose name matches that specified by the name parameter; otherwise, `null`.
+  overload: System.Configuration.SettingsProviderCollection.Item*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>name</code> parameter is `null`.
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The collection is read-only when setting this value.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Configuration\SettingsProviderCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Configuration/SettingsProviderCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Configuration.Provider.ProviderCollection
+  isExternal: false
+  name: System.Configuration.Provider.ProviderCollection
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.NotSupportedException
+  parent: System
+  isExternal: false
+  name: NotSupportedException
+  nameWithType: NotSupportedException
+  fullName: System.NotSupportedException
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.Configuration.SettingsProviderCollection.#ctor
+  parent: System.Configuration.SettingsProviderCollection
+  isExternal: false
+  name: SettingsProviderCollection()
+  nameWithType: SettingsProviderCollection.SettingsProviderCollection()
+  fullName: System.Configuration.SettingsProviderCollection.SettingsProviderCollection()
+- uid: System.Configuration.SettingsProviderCollection.Add(System.Configuration.Provider.ProviderBase)
+  parent: System.Configuration.SettingsProviderCollection
+  isExternal: false
+  name: Add(ProviderBase)
+  nameWithType: SettingsProviderCollection.Add(ProviderBase)
+  fullName: System.Configuration.SettingsProviderCollection.Add(ProviderBase)
+- uid: System.Configuration.Provider.ProviderBase
+  parent: System.Configuration.Provider
+  isExternal: false
+  name: ProviderBase
+  nameWithType: ProviderBase
+  fullName: System.Configuration.Provider.ProviderBase
+- uid: System.Configuration.SettingsProviderCollection.Item(System.String)
+  parent: System.Configuration.SettingsProviderCollection
+  isExternal: false
+  name: Item(String)
+  nameWithType: SettingsProviderCollection.Item(String)
+  fullName: System.Configuration.SettingsProviderCollection.Item(String)
+- uid: System.Configuration.SettingsProvider
+  parent: System.Configuration
+  isExternal: false
+  name: SettingsProvider
+  nameWithType: SettingsProvider
+  fullName: System.Configuration.SettingsProvider
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Configuration.SettingsProviderCollection.#ctor*
+  parent: System.Configuration.SettingsProviderCollection
+  isExternal: false
+  name: SettingsProviderCollection
+  nameWithType: SettingsProviderCollection.SettingsProviderCollection
+- uid: System.Configuration.SettingsProviderCollection.Add*
+  parent: System.Configuration.SettingsProviderCollection
+  isExternal: false
+  name: Add
+  nameWithType: SettingsProviderCollection.Add
+- uid: System.Configuration.SettingsProviderCollection.Item*
+  parent: System.Configuration.SettingsProviderCollection
+  isExternal: false
+  name: Item
+  nameWithType: SettingsProviderCollection.Item

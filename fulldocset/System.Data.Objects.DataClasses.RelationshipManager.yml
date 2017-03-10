@@ -1,0 +1,623 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Data.Objects.DataClasses.RelationshipManager
+  id: RelationshipManager
+  children:
+  - System.Data.Objects.DataClasses.RelationshipManager.Create(System.Data.Objects.DataClasses.IEntityWithRelationships)
+  - System.Data.Objects.DataClasses.RelationshipManager.GetAllRelatedEnds
+  - System.Data.Objects.DataClasses.RelationshipManager.GetRelatedCollection``1(System.String,System.String)
+  - System.Data.Objects.DataClasses.RelationshipManager.GetRelatedEnd(System.String,System.String)
+  - System.Data.Objects.DataClasses.RelationshipManager.GetRelatedReference``1(System.String,System.String)
+  - System.Data.Objects.DataClasses.RelationshipManager.InitializeRelatedCollection``1(System.String,System.String,System.Data.Objects.DataClasses.EntityCollection{``0})
+  - System.Data.Objects.DataClasses.RelationshipManager.InitializeRelatedReference``1(System.String,System.String,System.Data.Objects.DataClasses.EntityReference{``0})
+  - System.Data.Objects.DataClasses.RelationshipManager.OnDeserialized(System.Runtime.Serialization.StreamingContext)
+  - System.Data.Objects.DataClasses.RelationshipManager.OnSerializing(System.Runtime.Serialization.StreamingContext)
+  langs:
+  - csharp
+  name: RelationshipManager
+  nameWithType: RelationshipManager
+  fullName: System.Data.Objects.DataClasses.RelationshipManager
+  type: Class
+  summary: Used to track relationships between objects in the object context.
+  remarks: RelationshipManager is used to track relationships between objects in an object context. There is one instance of the RelationshipManager class for each relationship tracked in the object context. Relationships are defined by associations in a conceptual model. For more information, see [Association Element (CSDL)](http://msdn.microsoft.com/en-us/c305169a-8af7-432f-9ba7-800a163aed41).
+  example:
+  - "The example in this topic is based on the [AdventureWorks Sales Model](http://msdn.microsoft.com/en-us/f16cd988-673f-4376-b034-129ca93c7832). The example adds new `SalesOrderHeader` entities to the `Contact` entity. Then it gets all related ends from the `Contact` entity and displays the relationship name, source role name, and target role name for each related end.  \n  \n [!code-vb[DP ObjectServices Concepts#IRelatedEnd](~/add/codesnippet/visualbasic/objectservicesconceptsvb/Source.vb#irelatedend)]\n [!code-cs[DP ObjectServices Concepts#IRelatedEnd](~/add/codesnippet/csharp/objectservicesconceptscs/Source.cs#irelatedend)]"
+  syntax:
+    content: public class RelationshipManager
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Objects.DataClasses\RelationshipManager.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Objects.DataClasses/RelationshipManager.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Objects.DataClasses.RelationshipManager.Create(System.Data.Objects.DataClasses.IEntityWithRelationships)
+  id: Create(System.Data.Objects.DataClasses.IEntityWithRelationships)
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  langs:
+  - csharp
+  name: Create(IEntityWithRelationships)
+  nameWithType: RelationshipManager.Create(IEntityWithRelationships)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.Create(IEntityWithRelationships)
+  type: Method
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Objects.DataClasses
+  summary: Creates a new <xref href="System.Data.Objects.DataClasses.RelationshipManager"></xref> object.
+  remarks: The Create method is used by objects that implement <xref:System.Data.Objects.DataClasses.IEntityWithRelationships>. When Object Services requests the <xref:System.Data.Objects.DataClasses.RelationshipManager> property of an object that implements <xref:System.Data.Objects.DataClasses.IEntityWithRelationships>, the Create method is called if the relationship manager does not already exist for the object.
+  syntax:
+    content: public static System.Data.Objects.DataClasses.RelationshipManager Create (System.Data.Objects.DataClasses.IEntityWithRelationships owner);
+    parameters:
+    - id: owner
+      type: System.Data.Objects.DataClasses.IEntityWithRelationships
+      description: Reference to the entity that is calling this method.
+    return:
+      type: System.Data.Objects.DataClasses.RelationshipManager
+      description: The requested <xref href="System.Data.Objects.DataClasses.RelationshipManager"></xref>.
+  overload: System.Data.Objects.DataClasses.RelationshipManager.Create*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Objects.DataClasses\RelationshipManager.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Objects.DataClasses/RelationshipManager.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Objects.DataClasses.RelationshipManager.GetAllRelatedEnds
+  id: GetAllRelatedEnds
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  langs:
+  - csharp
+  name: GetAllRelatedEnds()
+  nameWithType: RelationshipManager.GetAllRelatedEnds()
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.GetAllRelatedEnds()
+  type: Method
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Objects.DataClasses
+  summary: Returns an enumeration of all the related ends managed by the relationship manager.
+  remarks: The GetAllRelatedEnds method returns an enumeration of <xref:System.Data.Objects.DataClasses.EntityCollection%601> and <xref:System.Data.Objects.DataClasses.EntityReference%601> objects. <xref:System.Data.Objects.DataClasses.EntityCollection%601> and <xref:System.Data.Objects.DataClasses.EntityReference%601> are concrete types that derive from <xref:System.Data.Objects.DataClasses.RelatedEnd>. The <xref:System.Data.Objects.DataClasses.RelatedEnd> abstract class implements the <xref:System.Data.Objects.DataClasses.IRelatedEnd> interface.
+  example:
+  - "The example in this topic is based on the [AdventureWorks Sales Model](http://msdn.microsoft.com/en-us/f16cd988-673f-4376-b034-129ca93c7832). The example adds new `SalesOrderHeader` entities to the `Contact` entity. Then it gets all related ends from the `Contact` entity and displays relationship name, source role name, and target role name for each related end,  \n  \n [!code-vb[DP ObjectServices Concepts#IRelatedEnd](~/add/codesnippet/visualbasic/objectservicesconceptsvb/Source.vb#irelatedend)]\n [!code-cs[DP ObjectServices Concepts#IRelatedEnd](~/add/codesnippet/csharp/objectservicesconceptscs/Source.cs#irelatedend)]"
+  syntax:
+    content: public System.Collections.Generic.IEnumerable<System.Data.Objects.DataClasses.IRelatedEnd> GetAllRelatedEnds ();
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Data.Objects.DataClasses.IRelatedEnd}
+      description: An <xref href="stem.Collections.Generic.IEnumerable%601"></xref> of objects that implement <xref href="System.Data.Objects.DataClasses.IRelatedEnd"></xref>. An empty enumeration is returned when the relationships have not yet been populated.
+  overload: System.Data.Objects.DataClasses.RelationshipManager.GetAllRelatedEnds*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Objects.DataClasses\RelationshipManager.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Objects.DataClasses/RelationshipManager.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedCollection``1(System.String,System.String)
+  id: GetRelatedCollection``1(System.String,System.String)
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  langs:
+  - csharp
+  name: GetRelatedCollection<TTargetEntity>(String,String)
+  nameWithType: RelationshipManager.GetRelatedCollection<TTargetEntity>(String,String)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedCollection<TTargetEntity>(String,String)
+  type: Method
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Objects.DataClasses
+  summary: Gets an <xref href="stem.Data.Objects.DataClasses.EntityCollection%601"></xref> of related objects with the specified relationship name and target role name.
+  remarks: "Gets an <xref:System.Data.Objects.DataClasses.EntityCollection%601> of related objects that have the specified relationship name and target role name.  \n  \n The relationship name should not be namespace qualified. An error occurs when you prepend the namespace to the relationship name."
+  syntax:
+    content: 'public System.Data.Objects.DataClasses.EntityCollection<TTargetEntity> GetRelatedCollection<TTargetEntity> (string relationshipName, string targetRoleName) where TTargetEntity : class;'
+    parameters:
+    - id: relationshipName
+      type: System.String
+      description: Name of the relationship to navigate. The relationship name is not namespace qualified.
+    - id: targetRoleName
+      type: System.String
+      description: Name of the target role for the navigation. Indicates the direction of navigation across the relationship.
+    return:
+      type: System.Data.Objects.DataClasses.EntityCollection{TTargetEntity}
+      description: The <xref href="stem.Data.Objects.DataClasses.EntityCollection%601"></xref> of related objects.
+  overload: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedCollection<TTargetEntity>*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The specified role returned an <xref href="stem.Data.Objects.DataClasses.EntityReference%601"></xref> instead of an <xref href="stem.Data.Objects.DataClasses.EntityCollection%601"></xref>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Objects.DataClasses\RelationshipManager.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Objects.DataClasses/RelationshipManager.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedEnd(System.String,System.String)
+  id: GetRelatedEnd(System.String,System.String)
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  langs:
+  - csharp
+  name: GetRelatedEnd(String,String)
+  nameWithType: RelationshipManager.GetRelatedEnd(String,String)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedEnd(String,String)
+  type: Method
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Objects.DataClasses
+  summary: Returns either an <xref href="stem.Data.Objects.DataClasses.EntityCollection%601"></xref> or <xref href="stem.Data.Objects.DataClasses.EntityReference%601"></xref> of the correct type for the specified target role in a relationship.
+  remarks: "This method is intended to be used in scenarios where the user does not have full metadata, including the static type information for both ends of the relationship. This metadata is specified in the <xref:System.Data.Objects.DataClasses.EdmRelationshipAttribute> object on each entity type in the relationship, so the metadata system can retrieve it based on the supplied relationship name and target role name.  \n  \n The relationship name should not be namespace qualified. An error occurs when you prepend the namespace to the relationship name."
+  syntax:
+    content: public System.Data.Objects.DataClasses.IRelatedEnd GetRelatedEnd (string relationshipName, string targetRoleName);
+    parameters:
+    - id: relationshipName
+      type: System.String
+      description: Name of the relationship in which <code>targetRoleName</code> is defined. The relationship name is not namespace qualified.
+    - id: targetRoleName
+      type: System.String
+      description: Target role to use to retrieve the other end of <code>relationshipName</code>.
+    return:
+      type: System.Data.Objects.DataClasses.IRelatedEnd
+      description: <xref href="System.Data.Objects.DataClasses.IRelatedEnd"></xref> representing the <xref href="stem.Data.Objects.DataClasses.EntityCollection%601"></xref> or <xref href="stem.Data.Objects.DataClasses.EntityReference%601"></xref> that was retrieved.
+  overload: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedEnd*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>relationshipName</code> or <code>targetRoleName</code> is `null`.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The source type does not match the type of the owner.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: "<code>targetRoleName</code> is invalid.  \n  \n -or-  \n  \n Unable to find the relationship type in the metadata."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Objects.DataClasses\RelationshipManager.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Objects.DataClasses/RelationshipManager.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedReference``1(System.String,System.String)
+  id: GetRelatedReference``1(System.String,System.String)
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  langs:
+  - csharp
+  name: GetRelatedReference<TTargetEntity>(String,String)
+  nameWithType: RelationshipManager.GetRelatedReference<TTargetEntity>(String,String)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedReference<TTargetEntity>(String,String)
+  type: Method
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Objects.DataClasses
+  summary: Gets the <xref href="stem.Data.Objects.DataClasses.EntityReference%601"></xref> for a related object by using the specified combination of relationship name and target role name.
+  remarks: The relationship name should not be namespace qualified. An error occurs when you prepend the namespace to the relationship name.
+  syntax:
+    content: 'public System.Data.Objects.DataClasses.EntityReference<TTargetEntity> GetRelatedReference<TTargetEntity> (string relationshipName, string targetRoleName) where TTargetEntity : class;'
+    parameters:
+    - id: relationshipName
+      type: System.String
+      description: Name of the relationship to navigate. The relationship name is not namespace qualified.
+    - id: targetRoleName
+      type: System.String
+      description: Name of the target role for the navigation. Indicates the direction of navigation across the relationship.
+    return:
+      type: System.Data.Objects.DataClasses.EntityReference{TTargetEntity}
+      description: The <xref href="stem.Data.Objects.DataClasses.EntityReference%601"></xref> of a related object.
+  overload: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedReference<TTargetEntity>*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The specified role returned an <xref href="stem.Data.Objects.DataClasses.EntityCollection%601"></xref> instead of an <xref href="stem.Data.Objects.DataClasses.EntityReference%601"></xref>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Objects.DataClasses\RelationshipManager.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Objects.DataClasses/RelationshipManager.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Objects.DataClasses.RelationshipManager.InitializeRelatedCollection``1(System.String,System.String,System.Data.Objects.DataClasses.EntityCollection{``0})
+  id: InitializeRelatedCollection``1(System.String,System.String,System.Data.Objects.DataClasses.EntityCollection{``0})
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  langs:
+  - csharp
+  name: InitializeRelatedCollection<TTargetEntity>(String,String,EntityCollection<TTargetEntity>)
+  nameWithType: RelationshipManager.InitializeRelatedCollection<TTargetEntity>(String,String,EntityCollection<TTargetEntity>)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.InitializeRelatedCollection<TTargetEntity>(String,String,EntityCollection<TTargetEntity>)
+  type: Method
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Objects.DataClasses
+  summary: Initializes an existing <xref href="stem.Data.Objects.DataClasses.EntityCollection%601"></xref> that was created by using the default constructor.
+  remarks: "The InitializeRelatedCollection(TTargetEntity) method initializes an existing <xref:System.Data.Objects.DataClasses.EntityCollection%601> that was created by using the default constructor. The <xref:System.Data.Objects.DataClasses.EntityCollection%601> is initialized by using the provided relationship and target role names.  \n  \n The InitializeRelatedCollection(TTargetEntity) method is used during deserialization only."
+  syntax:
+    content: 'public void InitializeRelatedCollection<TTargetEntity> (string relationshipName, string targetRoleName, System.Data.Objects.DataClasses.EntityCollection<TTargetEntity> entityCollection) where TTargetEntity : class;'
+    parameters:
+    - id: relationshipName
+      type: System.String
+      description: The relationship name.
+    - id: targetRoleName
+      type: System.String
+      description: The role name of the related end.
+    - id: entityCollection
+      type: System.Data.Objects.DataClasses.EntityCollection{TTargetEntity}
+      description: The <xref href="stem.Data.Objects.DataClasses.EntityCollection%601"></xref> to initialize.
+  overload: System.Data.Objects.DataClasses.RelationshipManager.InitializeRelatedCollection<TTargetEntity>*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: "When the provided <xref href=\"stem.Data.Objects.DataClasses.EntityCollection%601\"></xref> is already initialized.  \n  \n -or-  \n  \n When the relationship manager is already attached to an <xref href=\"System.Data.Objects.ObjectContext\"></xref>.  \n  \n -or-  \n  \n When the relationship manager already contains a relationship with this name and target role."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Objects.DataClasses\RelationshipManager.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Objects.DataClasses/RelationshipManager.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Objects.DataClasses.RelationshipManager.InitializeRelatedReference``1(System.String,System.String,System.Data.Objects.DataClasses.EntityReference{``0})
+  id: InitializeRelatedReference``1(System.String,System.String,System.Data.Objects.DataClasses.EntityReference{``0})
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  langs:
+  - csharp
+  name: InitializeRelatedReference<TTargetEntity>(String,String,EntityReference<TTargetEntity>)
+  nameWithType: RelationshipManager.InitializeRelatedReference<TTargetEntity>(String,String,EntityReference<TTargetEntity>)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.InitializeRelatedReference<TTargetEntity>(String,String,EntityReference<TTargetEntity>)
+  type: Method
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Objects.DataClasses
+  summary: Initializes an existing <xref href="stem.Data.Objects.DataClasses.EntityReference%601"></xref> that was created by using the default constructor.
+  remarks: "The InitializeRelatedReference(TTargetEntity) method initializes an existing <xref:System.Data.Objects.DataClasses.EntityReference%601> that was created by using the default constructor. The <xref:System.Data.Objects.DataClasses.EntityReference%601> is initialized by using the provided relationship and target role names.  \n  \n The InitializeRelatedReference(TTargetEntity) method is used during deserialization only."
+  syntax:
+    content: 'public void InitializeRelatedReference<TTargetEntity> (string relationshipName, string targetRoleName, System.Data.Objects.DataClasses.EntityReference<TTargetEntity> entityReference) where TTargetEntity : class;'
+    parameters:
+    - id: relationshipName
+      type: System.String
+      description: The relationship name.
+    - id: targetRoleName
+      type: System.String
+      description: The role name of the related end.
+    - id: entityReference
+      type: System.Data.Objects.DataClasses.EntityReference{TTargetEntity}
+      description: The <xref href="stem.Data.Objects.DataClasses.EntityReference%601"></xref> to initialize.
+  overload: System.Data.Objects.DataClasses.RelationshipManager.InitializeRelatedReference<TTargetEntity>*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: "When the provided <xref href=\"stem.Data.Objects.DataClasses.EntityReference%601\"></xref> is already initialized.  \n  \n -or-  \n  \n When the relationship manager is already attached to an <xref href=\"System.Data.Objects.ObjectContext\"></xref>.  \n  \n -or-  \n  \n When the relationship manager already contains a relationship with this name and target role."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Objects.DataClasses\RelationshipManager.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Objects.DataClasses/RelationshipManager.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Objects.DataClasses.RelationshipManager.OnDeserialized(System.Runtime.Serialization.StreamingContext)
+  id: OnDeserialized(System.Runtime.Serialization.StreamingContext)
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  langs:
+  - csharp
+  name: OnDeserialized(StreamingContext)
+  nameWithType: RelationshipManager.OnDeserialized(StreamingContext)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.OnDeserialized(StreamingContext)
+  type: Method
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Objects.DataClasses
+  summary: Used internally to deserialize entity objects along with the <xref href="System.Data.Objects.DataClasses.RelationshipManager"></xref> instances.
+  syntax:
+    content: public void OnDeserialized (System.Runtime.Serialization.StreamingContext context);
+    parameters:
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+      description: The serialized stream.
+  overload: System.Data.Objects.DataClasses.RelationshipManager.OnDeserialized*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Objects.DataClasses\RelationshipManager.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Objects.DataClasses/RelationshipManager.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Objects.DataClasses.RelationshipManager.OnSerializing(System.Runtime.Serialization.StreamingContext)
+  id: OnSerializing(System.Runtime.Serialization.StreamingContext)
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  langs:
+  - csharp
+  name: OnSerializing(StreamingContext)
+  nameWithType: RelationshipManager.OnSerializing(StreamingContext)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.OnSerializing(StreamingContext)
+  type: Method
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Objects.DataClasses
+  summary: Called by Object Services to prepare an <xref href="System.Data.EntityKey"></xref> for binary serialization with a serialized relationship.
+  remarks: Serialization of relationships is only supported for binary serialization. Complete object graphs, including relationships, is not supported for Windows Communication Foundation and XML serialization. For more information, see [Serializing Objects](http://msdn.microsoft.com/en-us/06c77f9b-5b2e-4c78-b3e3-8c148ba0ea99).
+  syntax:
+    content: public void OnSerializing (System.Runtime.Serialization.StreamingContext context);
+    parameters:
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+      description: Describes the source and destination of a given serialized stream, and provides an additional caller-defined context.
+  overload: System.Data.Objects.DataClasses.RelationshipManager.OnSerializing*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Objects.DataClasses\RelationshipManager.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Objects.DataClasses/RelationshipManager.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.Data.Objects.DataClasses.RelationshipManager.Create(System.Data.Objects.DataClasses.IEntityWithRelationships)
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: Create(IEntityWithRelationships)
+  nameWithType: RelationshipManager.Create(IEntityWithRelationships)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.Create(IEntityWithRelationships)
+- uid: System.Data.Objects.DataClasses.RelationshipManager
+  parent: System.Data.Objects.DataClasses
+  isExternal: false
+  name: RelationshipManager
+  nameWithType: RelationshipManager
+  fullName: System.Data.Objects.DataClasses.RelationshipManager
+- uid: System.Data.Objects.DataClasses.IEntityWithRelationships
+  parent: System.Data.Objects.DataClasses
+  isExternal: false
+  name: IEntityWithRelationships
+  nameWithType: IEntityWithRelationships
+  fullName: System.Data.Objects.DataClasses.IEntityWithRelationships
+- uid: System.Data.Objects.DataClasses.RelationshipManager.GetAllRelatedEnds
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: GetAllRelatedEnds()
+  nameWithType: RelationshipManager.GetAllRelatedEnds()
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.GetAllRelatedEnds()
+- uid: System.Collections.Generic.IEnumerable{System.Data.Objects.DataClasses.IRelatedEnd}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<IRelatedEnd>
+  nameWithType: IEnumerable<IRelatedEnd>
+  fullName: System.Collections.Generic.IEnumerable<System.Data.Objects.DataClasses.IRelatedEnd>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<System.Data.Objects.DataClasses.IRelatedEnd>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Data.Objects.DataClasses.IRelatedEnd
+    name: IRelatedEnd
+    nameWithType: IRelatedEnd
+    fullName: IRelatedEnd
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedCollection``1(System.String,System.String)
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: GetRelatedCollection<TTargetEntity>(String,String)
+  nameWithType: RelationshipManager.GetRelatedCollection<TTargetEntity>(String,String)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedCollection<TTargetEntity>(String,String)
+- uid: System.Data.Objects.DataClasses.EntityCollection{TTargetEntity}
+  parent: System.Data.Objects.DataClasses
+  isExternal: false
+  name: EntityCollection<TTargetEntity>
+  nameWithType: EntityCollection<TTargetEntity>
+  fullName: System.Data.Objects.DataClasses.EntityCollection<TTargetEntity>
+  spec.csharp:
+  - uid: System.Data.Objects.DataClasses.EntityCollection`1
+    name: EntityCollection
+    nameWithType: EntityCollection
+    fullName: EntityCollection<TTargetEntity>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TTargetEntity
+    name: TTargetEntity
+    nameWithType: TTargetEntity
+    fullName: TTargetEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedEnd(System.String,System.String)
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: GetRelatedEnd(String,String)
+  nameWithType: RelationshipManager.GetRelatedEnd(String,String)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedEnd(String,String)
+- uid: System.Data.Objects.DataClasses.IRelatedEnd
+  parent: System.Data.Objects.DataClasses
+  isExternal: false
+  name: IRelatedEnd
+  nameWithType: IRelatedEnd
+  fullName: System.Data.Objects.DataClasses.IRelatedEnd
+- uid: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedReference``1(System.String,System.String)
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: GetRelatedReference<TTargetEntity>(String,String)
+  nameWithType: RelationshipManager.GetRelatedReference<TTargetEntity>(String,String)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedReference<TTargetEntity>(String,String)
+- uid: System.Data.Objects.DataClasses.EntityReference{TTargetEntity}
+  parent: System.Data.Objects.DataClasses
+  isExternal: false
+  name: EntityReference<TTargetEntity>
+  nameWithType: EntityReference<TTargetEntity>
+  fullName: System.Data.Objects.DataClasses.EntityReference<TTargetEntity>
+  spec.csharp:
+  - uid: System.Data.Objects.DataClasses.EntityReference`1
+    name: EntityReference
+    nameWithType: EntityReference
+    fullName: EntityReference<TTargetEntity>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TTargetEntity
+    name: TTargetEntity
+    nameWithType: TTargetEntity
+    fullName: TTargetEntity
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Data.Objects.DataClasses.RelationshipManager.InitializeRelatedCollection``1(System.String,System.String,System.Data.Objects.DataClasses.EntityCollection{``0})
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: InitializeRelatedCollection<TTargetEntity>(String,String,EntityCollection<TTargetEntity>)
+  nameWithType: RelationshipManager.InitializeRelatedCollection<TTargetEntity>(String,String,EntityCollection<TTargetEntity>)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.InitializeRelatedCollection<TTargetEntity>(String,String,EntityCollection<TTargetEntity>)
+- uid: System.Data.Objects.DataClasses.RelationshipManager.InitializeRelatedReference``1(System.String,System.String,System.Data.Objects.DataClasses.EntityReference{``0})
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: InitializeRelatedReference<TTargetEntity>(String,String,EntityReference<TTargetEntity>)
+  nameWithType: RelationshipManager.InitializeRelatedReference<TTargetEntity>(String,String,EntityReference<TTargetEntity>)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.InitializeRelatedReference<TTargetEntity>(String,String,EntityReference<TTargetEntity>)
+- uid: System.Data.Objects.DataClasses.RelationshipManager.OnDeserialized(System.Runtime.Serialization.StreamingContext)
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: OnDeserialized(StreamingContext)
+  nameWithType: RelationshipManager.OnDeserialized(StreamingContext)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.OnDeserialized(StreamingContext)
+- uid: System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext
+- uid: System.Data.Objects.DataClasses.RelationshipManager.OnSerializing(System.Runtime.Serialization.StreamingContext)
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: OnSerializing(StreamingContext)
+  nameWithType: RelationshipManager.OnSerializing(StreamingContext)
+  fullName: System.Data.Objects.DataClasses.RelationshipManager.OnSerializing(StreamingContext)
+- uid: System.Data.Objects.DataClasses.RelationshipManager.Create*
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: Create
+  nameWithType: RelationshipManager.Create
+- uid: System.Data.Objects.DataClasses.RelationshipManager.GetAllRelatedEnds*
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: GetAllRelatedEnds
+  nameWithType: RelationshipManager.GetAllRelatedEnds
+- uid: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedCollection<TTargetEntity>*
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: GetRelatedCollection<TTargetEntity>
+  nameWithType: RelationshipManager.GetRelatedCollection<TTargetEntity>
+- uid: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedEnd*
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: GetRelatedEnd
+  nameWithType: RelationshipManager.GetRelatedEnd
+- uid: System.Data.Objects.DataClasses.RelationshipManager.GetRelatedReference<TTargetEntity>*
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: GetRelatedReference<TTargetEntity>
+  nameWithType: RelationshipManager.GetRelatedReference<TTargetEntity>
+- uid: System.Data.Objects.DataClasses.RelationshipManager.InitializeRelatedCollection<TTargetEntity>*
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: InitializeRelatedCollection<TTargetEntity>
+  nameWithType: RelationshipManager.InitializeRelatedCollection<TTargetEntity>
+- uid: System.Data.Objects.DataClasses.RelationshipManager.InitializeRelatedReference<TTargetEntity>*
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: InitializeRelatedReference<TTargetEntity>
+  nameWithType: RelationshipManager.InitializeRelatedReference<TTargetEntity>
+- uid: System.Data.Objects.DataClasses.RelationshipManager.OnDeserialized*
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: OnDeserialized
+  nameWithType: RelationshipManager.OnDeserialized
+- uid: System.Data.Objects.DataClasses.RelationshipManager.OnSerializing*
+  parent: System.Data.Objects.DataClasses.RelationshipManager
+  isExternal: false
+  name: OnSerializing
+  nameWithType: RelationshipManager.OnSerializing

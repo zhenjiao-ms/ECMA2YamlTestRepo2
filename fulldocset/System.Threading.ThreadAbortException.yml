@@ -1,0 +1,117 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Threading.ThreadAbortException
+  id: ThreadAbortException
+  children:
+  - System.Threading.ThreadAbortException.ExceptionState
+  langs:
+  - csharp
+  name: ThreadAbortException
+  nameWithType: ThreadAbortException
+  fullName: System.Threading.ThreadAbortException
+  type: Class
+  summary: The exception that is thrown when a call is made to the <xref href="stem.Threading.Thread.Abort%2A"></xref> method. This class cannot be inherited.
+  remarks: "When a call is made to the <xref:System.Threading.Thread.Abort%2A> method to destroy a thread, the common language runtime throws a ThreadAbortException. ThreadAbortException is a special exception that can be caught, but it will automatically be raised again at the end of the `catch` block. When this exception is raised, the runtime executes all the `finally` blocks before ending the thread. Because the thread can do an unbounded computation in the `finally` blocks or call <xref:System.Threading.Thread.ResetAbort%2A?displayProperty=fullName> to cancel the abort, there is no guarantee that the thread will ever end. If you want to wait until the aborted thread has ended, you can call the <xref:System.Threading.Thread.Join%2A?displayProperty=fullName> method. <xref:System.Threading.Thread.Join%2A> is a blocking call that does not return until the thread actually stops executing.  \n  \n> [!NOTE]\n>  When the common language runtime (CLR) stops background threadsafter all foreground threads in a managed executable have ended, it does not use <xref:System.Threading.Thread.Abort%2A?displayProperty=fullName>. Therefore, you cannot use ThreadAbortException to detect when background threads are being terminated by the CLR.  \n  \n ThreadAbortException uses the HRESULT COR_E_THREADABORTED, which has the value 0x80131530.  \n  \n> [!NOTE]\n>  The value of the inherited <xref:System.Exception.Data%2A> property is always `null`."
+  example:
+  - "The following example demonstrates aborting a thread. The thread that receives the `ThreadAbortException` uses the <xref:System.Threading.Thread.ResetAbort%2A> method to cancel the abort request and continue executing.  \n  \n [!code-cpp[ThreadAbEx#1](~/add/codesnippet/cpp/t-system.threading.threa_5_1.cpp)]\n [!code-vb[ThreadAbEx#1](~/add/codesnippet/visualbasic/t-system.threading.threa_5_1.vb)]\n [!code-cs[ThreadAbEx#1](~/add/codesnippet/csharp/t-system.threading.threa_5_1.cs)]  \n  \n This code produces the following output:  \n  \n```  \nThread - working.  \nMain - aborting my thread.  \nThread - caught ThreadAbortException - resetting.  \nException message: Thread was being aborted.  \nThread - still alive and working.  \nThread - finished working.  \nMain ending.  \n```"
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class ThreadAbortException : SystemException
+  inheritance:
+  - System.Object
+  - System.Exception
+  - System.SystemException
+  implements: []
+  inheritedMembers:
+  - System.Exception.Data
+  - System.Exception.GetBaseException
+  - System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.Exception.GetType
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.Message
+  - System.Exception.SerializeObjectState
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\ThreadAbortException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/ThreadAbortException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.ThreadAbortException.ExceptionState
+  id: ExceptionState
+  parent: System.Threading.ThreadAbortException
+  langs:
+  - csharp
+  name: ExceptionState
+  nameWithType: ThreadAbortException.ExceptionState
+  fullName: System.Threading.ThreadAbortException.ExceptionState
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Gets an object that contains application-specific information related to the thread abort.
+  remarks: The object returned by this property is specified through the `stateInfo` parameter of the <xref:System.Threading.Thread.Abort%2A> method. The exact content and usage of this object is application defined; it is typically used to convey information that is meaningful to the thread being aborted.
+  example:
+  - "The following code example shows how to pass information to a thread that is being aborted.  \n  \n [!code-cs[System.Threading.Thread.Abort2#1](~/add/codesnippet/csharp/p-system.threading.threa_10_1.cs)]\n [!code-cpp[System.Threading.Thread.Abort2#1](~/add/codesnippet/cpp/p-system.threading.threa_10_1.cpp)]\n [!code-vb[System.Threading.Thread.Abort2#1](~/add/codesnippet/visualbasic/p-system.threading.threa_10_1.vb)]"
+  syntax:
+    content: public object ExceptionState { get; }
+    return:
+      type: System.Object
+      description: An object containing application-specific information.
+  overload: System.Threading.ThreadAbortException.ExceptionState*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\ThreadAbortException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/ThreadAbortException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.SystemException
+  isExternal: false
+  name: System.SystemException
+- uid: System.Threading.ThreadAbortException.ExceptionState
+  parent: System.Threading.ThreadAbortException
+  isExternal: false
+  name: ExceptionState
+  nameWithType: ThreadAbortException.ExceptionState
+  fullName: System.Threading.ThreadAbortException.ExceptionState
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Threading.ThreadAbortException.ExceptionState*
+  parent: System.Threading.ThreadAbortException
+  isExternal: false
+  name: ExceptionState
+  nameWithType: ThreadAbortException.ExceptionState

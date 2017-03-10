@@ -1,0 +1,257 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ComponentModel.DataAnnotations.RequiredAttribute
+  id: RequiredAttribute
+  children:
+  - System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+  - System.ComponentModel.DataAnnotations.RequiredAttribute.AllowEmptyStrings
+  - System.ComponentModel.DataAnnotations.RequiredAttribute.IsValid(System.Object)
+  langs:
+  - csharp
+  name: RequiredAttribute
+  nameWithType: RequiredAttribute
+  fullName: System.ComponentModel.DataAnnotations.RequiredAttribute
+  type: Class
+  summary: Specifies that a data field value is required.
+  remarks: "The RequiredAttribute attribute specifies that when a field on a form is validated, the field must contain a value. A validation exception is raised if the property is `null`, contains an empty string (\"\"), or contains only white-space characters.  \n  \n> [!NOTE]\n>  If the MVC data model or entity partial class contains a field that is annotated with the RequiredAttribute attribute, but the page does not contain the property, an error is not raised. Validation occurs only for fields that are submitted to the server.  \n  \n A Visual Studio project with source code is available to accompany this topic: [Download](http://go.microsoft.com/fwlink/?linkid=158686)."
+  example:
+  - "The following example uses the RequiredAttribute attribute to override the database schema rule that allows a data field to be empty. The example performs the following steps:  \n  \n-   Implements a metadata partial class and the associated metadata class.  \n  \n-   In the associated metadata class, it applies the RequiredAttribute attribute, which specifies the following requirements:  \n  \n    -   The Title data field cannot be empty. If validation fails, the code in the example throws a validation exception and displays an error message. The error message is specified at the time that the attribute is applied to the data field.  \n  \n    -   The MiddleName data field cannot be empty. If validation fails, the code in the example throws a validation exception and displays an error message.  \n  \n [!code-vb[System.ComponentModel.DataAnnotations.RequiredAttribute#1](~/add/codesnippet/visualbasic/t-system.componentmodel._91_1.vb)]\n [!code-cs[System.ComponentModel.DataAnnotations.RequiredAttribute#1](~/add/codesnippet/csharp/t-system.componentmodel._91_1.cs)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field | System.AttributeTargets.Parameter, AllowMultiple=false)]
+
+      public class RequiredAttribute : System.ComponentModel.DataAnnotations.ValidationAttribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  - System.ComponentModel.DataAnnotations.ValidationAttribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.ErrorMessage
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.ErrorMessageResourceName
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.ErrorMessageResourceType
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.ErrorMessageString
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.FormatErrorMessage(System.String)
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.GetValidationResult(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.RequiresValidationContext
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.Validate(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)
+  - System.ComponentModel.DataAnnotations.ValidationAttribute.Validate(System.Object,System.String)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel.DataAnnotations\RequiredAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel.DataAnnotations/RequiredAttribute.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+  id: '#ctor'
+  parent: System.ComponentModel.DataAnnotations.RequiredAttribute
+  langs:
+  - csharp
+  name: RequiredAttribute()
+  nameWithType: RequiredAttribute.RequiredAttribute()
+  fullName: System.ComponentModel.DataAnnotations.RequiredAttribute.RequiredAttribute()
+  type: Constructor
+  assemblies:
+  - System.ComponentModel.DataAnnotations
+  namespace: System.ComponentModel.DataAnnotations
+  summary: Initializes a new instance of the <xref href="System.ComponentModel.DataAnnotations.RequiredAttribute"></xref> class.
+  remarks: ''
+  example:
+  - "The following example shows how to use the RequiredAttribute constructor. If validation fails, the example displays a validation error message that is provided by Dynamic Data.  \n  \n [!code-vb[System.ComponentModel.DataAnnotations.RequiredAttribute#3](~/add/codesnippet/visualbasic/m-system.componentmodel._17_1.vb)]\n [!code-cs[System.ComponentModel.DataAnnotations.RequiredAttribute#3](~/add/codesnippet/csharp/m-system.componentmodel._17_1.cs)]"
+  syntax:
+    content: public RequiredAttribute ();
+    parameters: []
+  overload: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel.DataAnnotations\RequiredAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel.DataAnnotations/RequiredAttribute.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.DataAnnotations.RequiredAttribute.AllowEmptyStrings
+  id: AllowEmptyStrings
+  parent: System.ComponentModel.DataAnnotations.RequiredAttribute
+  langs:
+  - csharp
+  name: AllowEmptyStrings
+  nameWithType: RequiredAttribute.AllowEmptyStrings
+  fullName: System.ComponentModel.DataAnnotations.RequiredAttribute.AllowEmptyStrings
+  type: Property
+  assemblies:
+  - System.ComponentModel.DataAnnotations
+  namespace: System.ComponentModel.DataAnnotations
+  summary: Gets or sets a value that indicates whether an empty string is allowed.
+  remarks: "When you set AllowEmptyStrings to `true` for a data field, Dynamic Data does not perform validation and transforms the empty string to a `null` value. This value is then passed to the database.  \n  \n If the database does not allow `null` values, it raises an error. To avoid this error, you must also set the <xref:System.ComponentModel.DataAnnotations.DisplayFormatAttribute.ConvertEmptyStringToNull%2A> to `false`."
+  syntax:
+    content: public bool AllowEmptyStrings { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if an empty string is allowed; otherwise, `false`. The default value is `false`.'
+  overload: System.ComponentModel.DataAnnotations.RequiredAttribute.AllowEmptyStrings*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel.DataAnnotations\RequiredAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel.DataAnnotations/RequiredAttribute.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.DataAnnotations.RequiredAttribute.IsValid(System.Object)
+  id: IsValid(System.Object)
+  parent: System.ComponentModel.DataAnnotations.RequiredAttribute
+  langs:
+  - csharp
+  name: IsValid(Object)
+  nameWithType: RequiredAttribute.IsValid(Object)
+  fullName: System.ComponentModel.DataAnnotations.RequiredAttribute.IsValid(Object)
+  type: Method
+  assemblies:
+  - System.ComponentModel.DataAnnotations
+  namespace: System.ComponentModel.DataAnnotations
+  summary: Checks that the value of the required data field is not empty.
+  remarks: If the value is an empty string, the method returns `false` and a validation error is displayed.
+  syntax:
+    content: public override bool IsValid (object value);
+    parameters:
+    - id: value
+      type: System.Object
+      description: The data field value to validate.
+    return:
+      type: System.Boolean
+      description: '`true` if validation is successful; otherwise, `false`.'
+  overload: System.ComponentModel.DataAnnotations.RequiredAttribute.IsValid*
+  exceptions:
+  - type: System.ComponentModel.DataAnnotations.ValidationException
+    commentId: T:System.ComponentModel.DataAnnotations.ValidationException
+    description: The data field value was `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel.DataAnnotations\RequiredAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel.DataAnnotations/RequiredAttribute.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.ComponentModel.DataAnnotations.ValidationAttribute
+  isExternal: false
+  name: System.ComponentModel.DataAnnotations.ValidationAttribute
+- uid: System.ComponentModel.DataAnnotations.ValidationException
+  parent: System.ComponentModel.DataAnnotations
+  isExternal: false
+  name: ValidationException
+  nameWithType: ValidationException
+  fullName: System.ComponentModel.DataAnnotations.ValidationException
+- uid: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+  parent: System.ComponentModel.DataAnnotations.RequiredAttribute
+  isExternal: false
+  name: RequiredAttribute()
+  nameWithType: RequiredAttribute.RequiredAttribute()
+  fullName: System.ComponentModel.DataAnnotations.RequiredAttribute.RequiredAttribute()
+- uid: System.ComponentModel.DataAnnotations.RequiredAttribute.AllowEmptyStrings
+  parent: System.ComponentModel.DataAnnotations.RequiredAttribute
+  isExternal: false
+  name: AllowEmptyStrings
+  nameWithType: RequiredAttribute.AllowEmptyStrings
+  fullName: System.ComponentModel.DataAnnotations.RequiredAttribute.AllowEmptyStrings
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ComponentModel.DataAnnotations.RequiredAttribute.IsValid(System.Object)
+  parent: System.ComponentModel.DataAnnotations.RequiredAttribute
+  isExternal: false
+  name: IsValid(Object)
+  nameWithType: RequiredAttribute.IsValid(Object)
+  fullName: System.ComponentModel.DataAnnotations.RequiredAttribute.IsValid(Object)
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor*
+  parent: System.ComponentModel.DataAnnotations.RequiredAttribute
+  isExternal: false
+  name: RequiredAttribute
+  nameWithType: RequiredAttribute.RequiredAttribute
+- uid: System.ComponentModel.DataAnnotations.RequiredAttribute.AllowEmptyStrings*
+  parent: System.ComponentModel.DataAnnotations.RequiredAttribute
+  isExternal: false
+  name: AllowEmptyStrings
+  nameWithType: RequiredAttribute.AllowEmptyStrings
+- uid: System.ComponentModel.DataAnnotations.RequiredAttribute.IsValid*
+  parent: System.ComponentModel.DataAnnotations.RequiredAttribute
+  isExternal: false
+  name: IsValid
+  nameWithType: RequiredAttribute.IsValid

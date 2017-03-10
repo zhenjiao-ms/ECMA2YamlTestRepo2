@@ -1,0 +1,135 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.InteropServices.PreserveSigAttribute
+  id: PreserveSigAttribute
+  children:
+  - System.Runtime.InteropServices.PreserveSigAttribute.#ctor
+  langs:
+  - csharp
+  name: PreserveSigAttribute
+  nameWithType: PreserveSigAttribute
+  fullName: System.Runtime.InteropServices.PreserveSigAttribute
+  type: Class
+  summary: Indicates that the HRESULT or `retval` signature transformation that takes place during COM interop calls should be suppressed.
+  remarks: "You can apply this attribute to methods.  \n  \n By default, the [Tlbexp.exe (Type Library Exporter)](../Topic/Tlbexp.exe%20\\(Type%20Library%20Exporter\\).md) ensures that a call that returns an HRESULT of S_OK is transformed such that the [out, retval] parameter is used as the function return value. The S_OK HRESULT is discarded. For HRESULTs other than S_OK, the runtime throws an exception and discards the [out, retval] parameter. When you apply the PreserveSigAttribute to a managed method signature, the managed and unmanaged signatures of the attributed method are identical.  \n  \n Preserving the original method signature is necessary if the member returns more than one success HRESULT value and you want to detect the different values. Since most COM member return an HRESULT, by applying the PreserveSigAttribute, you can retrieve an integer representing the success or failure HRESULT. Tlbexp.exe preserves any [out, retavl] parameters as out parameters in the managed signature.  \n  \n The [Tlbimp.exe (Type Library Importer)](../Topic/Tlbimp.exe%20\\(Type%20Library%20Importer\\).md) also applies this attribute; it applies the attribute to dispinterfaces when it imports a type library.  \n  \n> [!NOTE]\n>  Return types of <xref:System.Runtime.InteropServices.UnmanagedType>, <xref:System.Guid>, and <xref:System.Object> are not supported by the PreserveSigAttribute class when interoperation occurs from COM to managed code and the managed code is marked with the PreserveSigAttribute class.  When you attempt to use one of these return types with the PreserveSigAttribute class during these conditions, a <xref:System.TypeLoadException> is thrown."
+  example:
+  - "The following example shows how Tlbexp.exe converts a C# method without PreserveSigAttribute when exporting an assembly to a COM type library.  \n  \n Managed signature:  \n  \n```  \nint DoSomething (long l);  \n```  \n  \n Unmanaged signature:  \n  \n```  \nHRESULT DoSomething ([in] long l, [out, retval] int * i);  \n```  \n  \n When you apply PreserveSigAttribute to the same C# method and export the assembly, the method conversion differs from the previous example. Notice that Tlbexp.exe removes the HRESULT and the [out, retval] parameter modifier.  \n  \n Managed signature:  \n  \n```  \n[PreserveSig] int DoSomething (long l);  \n```  \n  \n Unmanaged signature:  \n  \n```  \nint DoSomething ([in] long l);  \n```"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Method, Inherited=false)]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class PreserveSigAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\PreserveSigAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/PreserveSigAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.PreserveSigAttribute.#ctor
+  id: '#ctor'
+  parent: System.Runtime.InteropServices.PreserveSigAttribute
+  langs:
+  - csharp
+  name: PreserveSigAttribute()
+  nameWithType: PreserveSigAttribute.PreserveSigAttribute()
+  fullName: System.Runtime.InteropServices.PreserveSigAttribute.PreserveSigAttribute()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.InteropServices
+  summary: Initializes a new instance of the <xref href="System.Runtime.InteropServices.PreserveSigAttribute"></xref> class.
+  syntax:
+    content: public PreserveSigAttribute ();
+    parameters: []
+  overload: System.Runtime.InteropServices.PreserveSigAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\PreserveSigAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/PreserveSigAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Runtime.InteropServices.PreserveSigAttribute.#ctor
+  parent: System.Runtime.InteropServices.PreserveSigAttribute
+  isExternal: false
+  name: PreserveSigAttribute()
+  nameWithType: PreserveSigAttribute.PreserveSigAttribute()
+  fullName: System.Runtime.InteropServices.PreserveSigAttribute.PreserveSigAttribute()
+- uid: System.Runtime.InteropServices.PreserveSigAttribute.#ctor*
+  parent: System.Runtime.InteropServices.PreserveSigAttribute
+  isExternal: false
+  name: PreserveSigAttribute
+  nameWithType: PreserveSigAttribute.PreserveSigAttribute

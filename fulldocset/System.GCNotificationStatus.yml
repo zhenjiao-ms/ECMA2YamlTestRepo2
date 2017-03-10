@@ -1,0 +1,245 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.GCNotificationStatus
+  id: GCNotificationStatus
+  children:
+  - System.GCNotificationStatus.Canceled
+  - System.GCNotificationStatus.Failed
+  - System.GCNotificationStatus.NotApplicable
+  - System.GCNotificationStatus.Succeeded
+  - System.GCNotificationStatus.Timeout
+  langs:
+  - csharp
+  name: GCNotificationStatus
+  nameWithType: GCNotificationStatus
+  fullName: System.GCNotificationStatus
+  type: Enum
+  summary: Provides information about the current registration for notification of the next full garbage collection.
+  remarks: Use the <xref:System.GC.RegisterForFullGCNotification%2A> method to register for a full garbage collection notification. Then use the <xref:System.GC.WaitForFullGCApproach%2A> method or the <xref:System.GC.WaitForFullGCComplete%2A> method to return a GCNotificationStatus enumeration that contains the status of the notification.
+  example:
+  - "The following example obtains a GCNotificationStatus enumeration from the <xref:System.GC.WaitForFullGCApproach%2A> method. If the enumeration returns Succeeded, it calls the custom method `OnFullGCApproachNotify` to perform actions in response to the approaching full garbage collection. This code example is part of a larger example provided for [Garbage Collection Notifications](../Topic/Garbage%20Collection%20Notifications.md) topic.  \n  \n [!code-cpp[GCNotification#8](~/add/codesnippet/cpp/t-system.gcnotifications_1.cpp)]\n [!code-cs[GCNotification#8](~/add/codesnippet/csharp/t-system.gcnotifications_1.cs)]\n [!code-vb[GCNotification#8](~/add/codesnippet/visualbasic/t-system.gcnotifications_1.vb)]"
+  syntax:
+    content: public enum GCNotificationStatus
+  inheritance:
+  - System.Object
+  - System.ValueType
+  - System.Enum
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\GCNotificationStatus.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/GCNotificationStatus.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.GCNotificationStatus.Canceled
+  id: Canceled
+  parent: System.GCNotificationStatus
+  langs:
+  - csharp
+  name: Canceled
+  nameWithType: GCNotificationStatus.Canceled
+  fullName: System.GCNotificationStatus.Canceled
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: The current registration was canceled by the user.
+  syntax:
+    content: Canceled
+    return:
+      type: System.GCNotificationStatus
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\GCNotificationStatus.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/GCNotificationStatus.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.GCNotificationStatus.Failed
+  id: Failed
+  parent: System.GCNotificationStatus
+  langs:
+  - csharp
+  name: Failed
+  nameWithType: GCNotificationStatus.Failed
+  fullName: System.GCNotificationStatus.Failed
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: The notification failed for any reason.
+  syntax:
+    content: Failed
+    return:
+      type: System.GCNotificationStatus
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\GCNotificationStatus.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/GCNotificationStatus.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.GCNotificationStatus.NotApplicable
+  id: NotApplicable
+  parent: System.GCNotificationStatus
+  langs:
+  - csharp
+  name: NotApplicable
+  nameWithType: GCNotificationStatus.NotApplicable
+  fullName: System.GCNotificationStatus.NotApplicable
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: 'This result can be caused by the following: there is no current registration for a garbage collection notification, concurrent garbage collection is enabled, or the time specified for the <code>millisecondsTimeout</code> parameter has expired and no garbage collection notification was obtained. (See the [<gcConcurrent>](../Topic/%3CgcConcurrent%3E%20Element.md) runtime setting for information about how to disable concurrent garbage collection.)'
+  syntax:
+    content: NotApplicable
+    return:
+      type: System.GCNotificationStatus
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\GCNotificationStatus.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/GCNotificationStatus.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.GCNotificationStatus.Succeeded
+  id: Succeeded
+  parent: System.GCNotificationStatus
+  langs:
+  - csharp
+  name: Succeeded
+  nameWithType: GCNotificationStatus.Succeeded
+  fullName: System.GCNotificationStatus.Succeeded
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: The notification was successful and the registration was not canceled.
+  syntax:
+    content: Succeeded
+    return:
+      type: System.GCNotificationStatus
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\GCNotificationStatus.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/GCNotificationStatus.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.GCNotificationStatus.Timeout
+  id: Timeout
+  parent: System.GCNotificationStatus
+  langs:
+  - csharp
+  name: Timeout
+  nameWithType: GCNotificationStatus.Timeout
+  fullName: System.GCNotificationStatus.Timeout
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: The time specified by the <code>millisecondsTimeout</code> parameter for either <xref href="stem.GC.WaitForFullGCApproach%28System.Int32%29"></xref> or <xref href="stem.GC.WaitForFullGCComplete%28System.Int32%29"></xref> has elapsed.
+  syntax:
+    content: Timeout
+    return:
+      type: System.GCNotificationStatus
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\GCNotificationStatus.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/GCNotificationStatus.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Enum
+  isExternal: false
+  name: System.Enum
+- uid: System.GCNotificationStatus.Canceled
+  parent: System.GCNotificationStatus
+  isExternal: false
+  name: Canceled
+  nameWithType: GCNotificationStatus.Canceled
+  fullName: System.GCNotificationStatus.Canceled
+- uid: System.GCNotificationStatus
+  parent: System
+  isExternal: false
+  name: GCNotificationStatus
+  nameWithType: GCNotificationStatus
+  fullName: System.GCNotificationStatus
+- uid: System.GCNotificationStatus.Failed
+  parent: System.GCNotificationStatus
+  isExternal: false
+  name: Failed
+  nameWithType: GCNotificationStatus.Failed
+  fullName: System.GCNotificationStatus.Failed
+- uid: System.GCNotificationStatus.NotApplicable
+  parent: System.GCNotificationStatus
+  isExternal: false
+  name: NotApplicable
+  nameWithType: GCNotificationStatus.NotApplicable
+  fullName: System.GCNotificationStatus.NotApplicable
+- uid: System.GCNotificationStatus.Succeeded
+  parent: System.GCNotificationStatus
+  isExternal: false
+  name: Succeeded
+  nameWithType: GCNotificationStatus.Succeeded
+  fullName: System.GCNotificationStatus.Succeeded
+- uid: System.GCNotificationStatus.Timeout
+  parent: System.GCNotificationStatus
+  isExternal: false
+  name: Timeout
+  nameWithType: GCNotificationStatus.Timeout
+  fullName: System.GCNotificationStatus.Timeout

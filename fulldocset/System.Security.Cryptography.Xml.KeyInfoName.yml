@@ -1,0 +1,303 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Security.Cryptography.Xml.KeyInfoName
+  id: KeyInfoName
+  children:
+  - System.Security.Cryptography.Xml.KeyInfoName.#ctor
+  - System.Security.Cryptography.Xml.KeyInfoName.#ctor(System.String)
+  - System.Security.Cryptography.Xml.KeyInfoName.GetXml
+  - System.Security.Cryptography.Xml.KeyInfoName.LoadXml(System.Xml.XmlElement)
+  - System.Security.Cryptography.Xml.KeyInfoName.Value
+  langs:
+  - csharp
+  name: KeyInfoName
+  nameWithType: KeyInfoName
+  fullName: System.Security.Cryptography.Xml.KeyInfoName
+  type: Class
+  summary: Represents a `<KeyName>` subelement of an XMLDSIG or XML Encryption `<KeyInfo>` element.
+  remarks: "The `<KeyName>` element contains a string identifier that the party validating or decrypting an XML document uses to identify the corresponding key.  For example, if you receive an encrypted or signed XML document that has a `<KeyName>` element value of \"AsymmetricKey1\", you will use a key that you and the sender have named \"AsymmetricKey1\" to decrypt or verify the document.  Both parties must agree on a key name mapping ahead of time.  Note that the actual key is not imbedded in the XML document.  \n  \n For more information about the `<KeyName>` element, see Section 4.4.1 of the XMLDSIG specification, which is available from the World Wide Web Consortium (W3C) at www.w3.org/TR/xmldsig-core/, or see the XML Encryption specification, which is available from the W3C at www.w3.org/TR/xmlenc-core/."
+  example:
+  - "The following code example uses the KeyInfoName object when signing a resource represented by a Universal Resource Identifier (URI).  This example saves the signature in a new file.  \n  \n [!code-cs[System.Security.Cryptography.XML-XMLDsigDetached#1](~/add/codesnippet/csharp/t-system.security.crypto_39_1.cs)]\n [!code-vb[System.Security.Cryptography.XML-XMLDsigDetached#1](~/add/codesnippet/visualbasic/t-system.security.crypto_39_1.vb)]\n [!code-cpp[System.Security.Cryptography.XML-XMLDsigDetached#1](~/add/codesnippet/cpp/t-system.security.crypto_39_1.cpp)]  \n  \n The following code example uses the KeyInfoName object when signing an XML document.  This example saves the signature in a new file.  \n  \n [!code-cs[System.Security.Cryptography.XML-XMLDsigEnvelope#1](~/add/codesnippet/csharp/t-system.security.crypto_39_2.cs)]\n [!code-cpp[System.Security.Cryptography.XML-XMLDsigEnvelope#1](~/add/codesnippet/cpp/t-system.security.crypto_39_2.cpp)]\n [!code-vb[System.Security.Cryptography.XML-XMLDsigEnvelope#1](~/add/codesnippet/visualbasic/t-system.security.crypto_39_2.vb)]  \n  \n The following code example uses the KeyInfoName object when encrypting an XML document. This example embeds an encrypted key within the encrypted XML document.  \n  \n [!code-cs[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/csharp/t-system.security.crypto_39_3.cs)]\n [!code-vb[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/visualbasic/t-system.security.crypto_39_3.vb)]\n [!code-cpp[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/cpp/t-system.security.crypto_39_3.cpp)]  \n  \n The following code example uses the KeyInfoName object when encrypting an XML document. This example maps a name to a symmetric key to identify it to the decryption method.  \n  \n [!code-vb[Cryptography.XML.XMLEncMapKey#1](~/add/codesnippet/visualbasic/t-system.security.crypto_39_4.vb)]\n [!code-cs[Cryptography.XML.XMLEncMapKey#1](~/add/codesnippet/csharp/t-system.security.crypto_39_4.cs)]\n [!code-cpp[Cryptography.XML.XMLEncMapKey#1](~/add/codesnippet/cpp/t-system.security.crypto_39_4.cpp)]"
+  syntax:
+    content: 'public class KeyInfoName : System.Security.Cryptography.Xml.KeyInfoClause'
+  inheritance:
+  - System.Object
+  - System.Security.Cryptography.Xml.KeyInfoClause
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Security.Cryptography.Xml\KeyInfoName.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Security.Cryptography.Xml/KeyInfoName.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Security.Cryptography.Xml.KeyInfoName.#ctor
+  id: '#ctor'
+  parent: System.Security.Cryptography.Xml.KeyInfoName
+  langs:
+  - csharp
+  name: KeyInfoName()
+  nameWithType: KeyInfoName.KeyInfoName()
+  fullName: System.Security.Cryptography.Xml.KeyInfoName.KeyInfoName()
+  type: Constructor
+  assemblies:
+  - System.Security
+  namespace: System.Security.Cryptography.Xml
+  summary: Initializes a new instance of the <xref href="System.Security.Cryptography.Xml.KeyInfoName"></xref> class.
+  remarks: ''
+  example:
+  - "The following code example uses the <xref:System.Security.Cryptography.Xml.KeyInfoName> object when signing a resource represented by a Universal Resource Identifier (URI).  This example saves the signature in a new file.  \n  \n [!code-cs[System.Security.Cryptography.XML-XMLDsigDetached#1](~/add/codesnippet/csharp/m-system.security.crypto_114_1.cs)]\n [!code-vb[System.Security.Cryptography.XML-XMLDsigDetached#1](~/add/codesnippet/visualbasic/m-system.security.crypto_114_1.vb)]\n [!code-cpp[System.Security.Cryptography.XML-XMLDsigDetached#1](~/add/codesnippet/cpp/m-system.security.crypto_114_1.cpp)]  \n  \n The following code example uses the <xref:System.Security.Cryptography.Xml.KeyInfoName> object when signing an XML document.  This example saves the signature in a new file.  \n  \n [!code-cs[System.Security.Cryptography.XML-XMLDsigEnvelope#1](~/add/codesnippet/csharp/m-system.security.crypto_114_2.cs)]\n [!code-cpp[System.Security.Cryptography.XML-XMLDsigEnvelope#1](~/add/codesnippet/cpp/m-system.security.crypto_114_2.cpp)]\n [!code-vb[System.Security.Cryptography.XML-XMLDsigEnvelope#1](~/add/codesnippet/visualbasic/m-system.security.crypto_114_2.vb)]  \n  \n The following code example uses the <xref:System.Security.Cryptography.Xml.KeyInfoName> object when encrypting an XML document. This example embeds an encrypted key within the encrypted XML document.  \n  \n [!code-cs[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/csharp/m-system.security.crypto_114_3.cs)]\n [!code-vb[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/visualbasic/m-system.security.crypto_114_3.vb)]\n [!code-cpp[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/cpp/m-system.security.crypto_114_3.cpp)]  \n  \n The following code example uses the <xref:System.Security.Cryptography.Xml.KeyInfoName> object when encrypting an XML document. This example maps a name to a symmetric key to identify it to the decryption method.  \n  \n [!code-vb[Cryptography.XML.XMLEncMapKey#1](~/add/codesnippet/visualbasic/m-system.security.crypto_114_4.vb)]\n [!code-cs[Cryptography.XML.XMLEncMapKey#1](~/add/codesnippet/csharp/m-system.security.crypto_114_4.cs)]\n [!code-cpp[Cryptography.XML.XMLEncMapKey#1](~/add/codesnippet/cpp/m-system.security.crypto_114_4.cpp)]"
+  syntax:
+    content: public KeyInfoName ();
+    parameters: []
+  overload: System.Security.Cryptography.Xml.KeyInfoName.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Security.Cryptography.Xml\KeyInfoName.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Security.Cryptography.Xml/KeyInfoName.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Security.Cryptography.Xml.KeyInfoName.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Security.Cryptography.Xml.KeyInfoName
+  langs:
+  - csharp
+  name: KeyInfoName(String)
+  nameWithType: KeyInfoName.KeyInfoName(String)
+  fullName: System.Security.Cryptography.Xml.KeyInfoName.KeyInfoName(String)
+  type: Constructor
+  assemblies:
+  - System.Security
+  namespace: System.Security.Cryptography.Xml
+  summary: Initializes a new instance of the <xref href="System.Security.Cryptography.Xml.KeyInfoName"></xref> class by specifying the string identifier that is the value of the `<KeyName>` element.
+  remarks: "The `keyName` parameter can contain any string; the interpretation of the string is specific to the application. White space is significant in the string value.  \n  \n The `keyName` parameter specifies the value of the <xref:System.Security.Cryptography.Xml.KeyInfoName.Value%2A> property."
+  syntax:
+    content: public KeyInfoName (string keyName);
+    parameters:
+    - id: keyName
+      type: System.String
+      description: The string identifier that is the value of the `<KeyName>` element.
+  overload: System.Security.Cryptography.Xml.KeyInfoName.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Security.Cryptography.Xml\KeyInfoName.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Security.Cryptography.Xml/KeyInfoName.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Security.Cryptography.Xml.KeyInfoName.GetXml
+  id: GetXml
+  parent: System.Security.Cryptography.Xml.KeyInfoName
+  langs:
+  - csharp
+  name: GetXml()
+  nameWithType: KeyInfoName.GetXml()
+  fullName: System.Security.Cryptography.Xml.KeyInfoName.GetXml()
+  type: Method
+  assemblies:
+  - System.Security
+  namespace: System.Security.Cryptography.Xml
+  summary: Returns an XML representation of the <xref href="System.Security.Cryptography.Xml.KeyInfoName"></xref> object.
+  remarks: The <xref:System.Xml.XmlElement> object returned by this method is suitable for use as a subelement of an XMLDSIG or XML Encryption `<KeyInfo>` element.
+  syntax:
+    content: public override System.Xml.XmlElement GetXml ();
+    parameters: []
+    return:
+      type: System.Xml.XmlElement
+      description: An XML representation of the <xref href="System.Security.Cryptography.Xml.KeyInfoName"></xref> object.
+  overload: System.Security.Cryptography.Xml.KeyInfoName.GetXml*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Security.Cryptography.Xml\KeyInfoName.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Security.Cryptography.Xml/KeyInfoName.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Security.Cryptography.Xml.KeyInfoName.LoadXml(System.Xml.XmlElement)
+  id: LoadXml(System.Xml.XmlElement)
+  parent: System.Security.Cryptography.Xml.KeyInfoName
+  langs:
+  - csharp
+  name: LoadXml(XmlElement)
+  nameWithType: KeyInfoName.LoadXml(XmlElement)
+  fullName: System.Security.Cryptography.Xml.KeyInfoName.LoadXml(XmlElement)
+  type: Method
+  assemblies:
+  - System.Security
+  namespace: System.Security.Cryptography.Xml
+  summary: Parses the input <xref href="System.Xml.XmlElement"></xref> object and configures the internal state of the <xref href="System.Security.Cryptography.Xml.KeyInfoName"></xref> object to match.
+  remarks: The LoadXml method is typically used to process a `<KeyName>` subelement of a `<KeyInfo>` element.
+  syntax:
+    content: public override void LoadXml (System.Xml.XmlElement value);
+    parameters:
+    - id: value
+      type: System.Xml.XmlElement
+      description: The <xref href="System.Xml.XmlElement"></xref> object that specifies the state of the <xref href="System.Security.Cryptography.Xml.KeyInfoName"></xref> object.
+  overload: System.Security.Cryptography.Xml.KeyInfoName.LoadXml*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>value</code> parameter is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Security.Cryptography.Xml\KeyInfoName.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Security.Cryptography.Xml/KeyInfoName.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Security.Cryptography.Xml.KeyInfoName.Value
+  id: Value
+  parent: System.Security.Cryptography.Xml.KeyInfoName
+  langs:
+  - csharp
+  name: Value
+  nameWithType: KeyInfoName.Value
+  fullName: System.Security.Cryptography.Xml.KeyInfoName.Value
+  type: Property
+  assemblies:
+  - System.Security
+  namespace: System.Security.Cryptography.Xml
+  summary: Gets or sets the string identifier contained within a `<KeyName>` element.
+  remarks: The Value property can contain any string; the interpretation of the string is specific to the application. White space is significant in the string value.
+  example:
+  - "The following code example uses the <xref:System.Security.Cryptography.Xml.KeyInfoName> object when signing a resource represented by a Universal Resource Identifier (URI).  This example saves the signature in a new file.  \n  \n [!code-cs[System.Security.Cryptography.XML-XMLDsigDetached#1](~/add/codesnippet/csharp/p-system.security.crypto_73_1.cs)]\n [!code-vb[System.Security.Cryptography.XML-XMLDsigDetached#1](~/add/codesnippet/visualbasic/p-system.security.crypto_73_1.vb)]\n [!code-cpp[System.Security.Cryptography.XML-XMLDsigDetached#1](~/add/codesnippet/cpp/p-system.security.crypto_73_1.cpp)]  \n  \n The following code example uses the <xref:System.Security.Cryptography.Xml.KeyInfoName> object when signing an XML document.  This example saves the signature in a new file.  \n  \n [!code-cs[System.Security.Cryptography.XML-XMLDsigEnvelope#1](~/add/codesnippet/csharp/p-system.security.crypto_73_2.cs)]\n [!code-cpp[System.Security.Cryptography.XML-XMLDsigEnvelope#1](~/add/codesnippet/cpp/p-system.security.crypto_73_2.cpp)]\n [!code-vb[System.Security.Cryptography.XML-XMLDsigEnvelope#1](~/add/codesnippet/visualbasic/p-system.security.crypto_73_2.vb)]  \n  \n The following code example uses the <xref:System.Security.Cryptography.Xml.KeyInfoName> object when encrypting an XML document. This example embeds an encrypted key within the encrypted XML document.  \n  \n [!code-cs[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/csharp/p-system.security.crypto_73_3.cs)]\n [!code-vb[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/visualbasic/p-system.security.crypto_73_3.vb)]\n [!code-cpp[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/cpp/p-system.security.crypto_73_3.cpp)]  \n  \n The following code example uses the <xref:System.Security.Cryptography.Xml.KeyInfoName> object when encrypting an XML document. This example maps a name to a symmetric key to identify it to the decryption method.  \n  \n [!code-vb[Cryptography.XML.XMLEncMapKey#1](~/add/codesnippet/visualbasic/p-system.security.crypto_73_4.vb)]\n [!code-cs[Cryptography.XML.XMLEncMapKey#1](~/add/codesnippet/csharp/p-system.security.crypto_73_4.cs)]\n [!code-cpp[Cryptography.XML.XMLEncMapKey#1](~/add/codesnippet/cpp/p-system.security.crypto_73_4.cpp)]"
+  syntax:
+    content: public string Value { get; set; }
+    return:
+      type: System.String
+      description: The string identifier that is the value of the `<KeyName>` element.
+  overload: System.Security.Cryptography.Xml.KeyInfoName.Value*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Security.Cryptography.Xml\KeyInfoName.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Security.Cryptography.Xml/KeyInfoName.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Security.Cryptography.Xml.KeyInfoClause
+  isExternal: false
+  name: System.Security.Cryptography.Xml.KeyInfoClause
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.Security.Cryptography.Xml.KeyInfoName.#ctor
+  parent: System.Security.Cryptography.Xml.KeyInfoName
+  isExternal: false
+  name: KeyInfoName()
+  nameWithType: KeyInfoName.KeyInfoName()
+  fullName: System.Security.Cryptography.Xml.KeyInfoName.KeyInfoName()
+- uid: System.Security.Cryptography.Xml.KeyInfoName.#ctor(System.String)
+  parent: System.Security.Cryptography.Xml.KeyInfoName
+  isExternal: false
+  name: KeyInfoName(String)
+  nameWithType: KeyInfoName.KeyInfoName(String)
+  fullName: System.Security.Cryptography.Xml.KeyInfoName.KeyInfoName(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Security.Cryptography.Xml.KeyInfoName.GetXml
+  parent: System.Security.Cryptography.Xml.KeyInfoName
+  isExternal: false
+  name: GetXml()
+  nameWithType: KeyInfoName.GetXml()
+  fullName: System.Security.Cryptography.Xml.KeyInfoName.GetXml()
+- uid: System.Xml.XmlElement
+  parent: System.Xml
+  isExternal: false
+  name: XmlElement
+  nameWithType: XmlElement
+  fullName: System.Xml.XmlElement
+- uid: System.Security.Cryptography.Xml.KeyInfoName.LoadXml(System.Xml.XmlElement)
+  parent: System.Security.Cryptography.Xml.KeyInfoName
+  isExternal: false
+  name: LoadXml(XmlElement)
+  nameWithType: KeyInfoName.LoadXml(XmlElement)
+  fullName: System.Security.Cryptography.Xml.KeyInfoName.LoadXml(XmlElement)
+- uid: System.Security.Cryptography.Xml.KeyInfoName.Value
+  parent: System.Security.Cryptography.Xml.KeyInfoName
+  isExternal: false
+  name: Value
+  nameWithType: KeyInfoName.Value
+  fullName: System.Security.Cryptography.Xml.KeyInfoName.Value
+- uid: System.Security.Cryptography.Xml.KeyInfoName.#ctor*
+  parent: System.Security.Cryptography.Xml.KeyInfoName
+  isExternal: false
+  name: KeyInfoName
+  nameWithType: KeyInfoName.KeyInfoName
+- uid: System.Security.Cryptography.Xml.KeyInfoName.GetXml*
+  parent: System.Security.Cryptography.Xml.KeyInfoName
+  isExternal: false
+  name: GetXml
+  nameWithType: KeyInfoName.GetXml
+- uid: System.Security.Cryptography.Xml.KeyInfoName.LoadXml*
+  parent: System.Security.Cryptography.Xml.KeyInfoName
+  isExternal: false
+  name: LoadXml
+  nameWithType: KeyInfoName.LoadXml
+- uid: System.Security.Cryptography.Xml.KeyInfoName.Value*
+  parent: System.Security.Cryptography.Xml.KeyInfoName
+  isExternal: false
+  name: Value
+  nameWithType: KeyInfoName.Value

@@ -1,0 +1,273 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Management.ManagementDateTimeConverter
+  id: ManagementDateTimeConverter
+  children:
+  - System.Management.ManagementDateTimeConverter.ToDateTime(System.String)
+  - System.Management.ManagementDateTimeConverter.ToDmtfDateTime(System.DateTime)
+  - System.Management.ManagementDateTimeConverter.ToDmtfTimeInterval(System.TimeSpan)
+  - System.Management.ManagementDateTimeConverter.ToTimeSpan(System.String)
+  langs:
+  - csharp
+  name: ManagementDateTimeConverter
+  nameWithType: ManagementDateTimeConverter
+  fullName: System.Management.ManagementDateTimeConverter
+  type: Class
+  summary: Provides methods to convert DMTF datetime and time intervals to CLR-compliant <xref href="System.DateTime"></xref> and <xref href="System.TimeSpan"></xref> format and vice versa.
+  syntax:
+    content: public sealed class ManagementDateTimeConverter
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Management\ManagementDateTimeConverter.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Management/ManagementDateTimeConverter.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Management.ManagementDateTimeConverter.ToDateTime(System.String)
+  id: ToDateTime(System.String)
+  parent: System.Management.ManagementDateTimeConverter
+  langs:
+  - csharp
+  name: ToDateTime(String)
+  nameWithType: ManagementDateTimeConverter.ToDateTime(String)
+  fullName: System.Management.ManagementDateTimeConverter.ToDateTime(String)
+  type: Method
+  assemblies:
+  - System.Management
+  namespace: System.Management
+  summary: Converts a given DMTF datetime to <xref href="System.DateTime"></xref>. The returned <xref href="System.DateTime"></xref> will be in the current time zone of the system.
+  remarks: "Date and time in WMI is represented in DMTF datetime format. This format is explained in WMI SDK documentation. A DMTF datetime string has an UTC offset which this datetime string represents. During conversion to <xref:System.DateTime>, the UTC offset is used to convert the date to the current time zone. According to DMTF format, a particular field can be represented by the character '*'. This will be converted to the <xref:System.DateTime> value of this field that can be represented in <xref:System.DateTime>.  \n  \n## .NET Framework Security  \n Full trust for the immediate caller. This member cannot be used by partially trusted code. For more information, see [Using Libraries from Partially Trusted Code](../Topic/Using%20Libraries%20from%20Partially%20Trusted%20Code.md)."
+  example:
+  - "The following example converts a DMTF datetime string into a <xref:System.DateTime>.  \n  \n [!code-cs[wminet_ManagementDateTimeConverter_ToDateTime#1](~/add/codesnippet/csharp/m-system.management.mana_7_1.cs)]\n [!code-vb[wminet_ManagementDateTimeConverter_ToDateTime#1](~/add/codesnippet/visualbasic/m-system.management.mana_7_1.vb)]"
+  syntax:
+    content: public static DateTime ToDateTime (string dmtfDate);
+    parameters:
+    - id: dmtfDate
+      type: System.String
+      description: A string representing the datetime in DMTF format.
+    return:
+      type: System.DateTime
+      description: A <xref href="System.DateTime"></xref> that represents the given DMTF datetime.
+  overload: System.Management.ManagementDateTimeConverter.ToDateTime*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Management\ManagementDateTimeConverter.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Management/ManagementDateTimeConverter.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Management.ManagementDateTimeConverter.ToDmtfDateTime(System.DateTime)
+  id: ToDmtfDateTime(System.DateTime)
+  parent: System.Management.ManagementDateTimeConverter
+  langs:
+  - csharp
+  name: ToDmtfDateTime(DateTime)
+  nameWithType: ManagementDateTimeConverter.ToDmtfDateTime(DateTime)
+  fullName: System.Management.ManagementDateTimeConverter.ToDmtfDateTime(DateTime)
+  type: Method
+  assemblies:
+  - System.Management
+  namespace: System.Management
+  summary: Converts a given <xref href="System.DateTime"></xref> to DMTF datetime format.
+  remarks: "Date and time in WMI is represented in DMTF datetime format. This format is explained in WMI SDK documentation. The DMTF datetime string represented will be with respect to the UTC offset of the current time zone. The lowest precision in DMTF is microseconds; in <xref:System.DateTime>, the lowest precision is <xref:System.DateTime.Ticks%2A>, which are equivalent to 100 nanoseconds. During conversion, <xref:System.DateTime.Ticks%2A> are converted to microseconds and rounded off to the nearest microsecond.  \n  \n## .NET Framework Security  \n Full trust for the immediate caller. This member cannot be used by partially trusted code. For more information, see [Using Libraries from Partially Trusted Code](../Topic/Using%20Libraries%20from%20Partially%20Trusted%20Code.md)."
+  example:
+  - "The following example converts a given <xref:System.DateTime> to DMTF datetime format.  \n  \n [!code-vb[wminet_ManagementDateTimeConverter_ToDmtfDateTime#1](~/add/codesnippet/visualbasic/m-system.management.mana_9_1.vb)]\n [!code-cs[wminet_ManagementDateTimeConverter_ToDmtfDateTime#1](~/add/codesnippet/csharp/m-system.management.mana_9_1.cs)]"
+  syntax:
+    content: public static string ToDmtfDateTime (DateTime date);
+    parameters:
+    - id: date
+      type: System.DateTime
+      description: A <xref href="System.DateTime"></xref> representing the datetime to be converted to DMTF datetime.
+    return:
+      type: System.String
+      description: A string that represents the DMTF datetime for the given <xref href="System.DateTime"></xref>.
+  overload: System.Management.ManagementDateTimeConverter.ToDmtfDateTime*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Management\ManagementDateTimeConverter.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Management/ManagementDateTimeConverter.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Management.ManagementDateTimeConverter.ToDmtfTimeInterval(System.TimeSpan)
+  id: ToDmtfTimeInterval(System.TimeSpan)
+  parent: System.Management.ManagementDateTimeConverter
+  langs:
+  - csharp
+  name: ToDmtfTimeInterval(TimeSpan)
+  nameWithType: ManagementDateTimeConverter.ToDmtfTimeInterval(TimeSpan)
+  fullName: System.Management.ManagementDateTimeConverter.ToDmtfTimeInterval(TimeSpan)
+  type: Method
+  assemblies:
+  - System.Management
+  namespace: System.Management
+  summary: Converts a given <xref href="System.TimeSpan"></xref> to DMTF time interval.
+  remarks: "Time interval in WMI is represented in DMTF datetime format. This format is explained in WMI SDK documentation. The lowest precision in DMTF is microseconds; in <xref:System.TimeSpan>, the lowest precision is <xref:System.TimeSpan.Ticks%2A>, which is equivalent to 100 nanoseconds. During conversion, <xref:System.TimeSpan.Ticks%2A> are converted to microseconds and rounded off to the nearest microsecond.  \n  \n## .NET Framework Security  \n Full trust for the immediate caller. This member cannot be used by partially trusted code. For more information, see [Using Libraries from Partially Trusted Code](../Topic/Using%20Libraries%20from%20Partially%20Trusted%20Code.md)."
+  example:
+  - "The following example converts a given <xref:System.TimeSpan> to DMTF time interval.  \n  \n [!code-cs[wminet_ManagementDateTimeConverter_ToDmtfTimeInterval#1](~/add/codesnippet/csharp/2c4b7ba9-1e72-45a8-ab57-_1.cs)]\n [!code-vb[wminet_ManagementDateTimeConverter_ToDmtfTimeInterval#1](~/add/codesnippet/visualbasic/2c4b7ba9-1e72-45a8-ab57-_1.vb)]"
+  syntax:
+    content: public static string ToDmtfTimeInterval (TimeSpan timespan);
+    parameters:
+    - id: timespan
+      type: System.TimeSpan
+      description: A <xref href="System.TimeSpan"></xref> representing the datetime to be converted to DMTF time interval.
+    return:
+      type: System.String
+      description: A string that represents the DMTF time interval for the given <xref href="System.TimeSpan"></xref>.
+  overload: System.Management.ManagementDateTimeConverter.ToDmtfTimeInterval*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Management\ManagementDateTimeConverter.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Management/ManagementDateTimeConverter.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Management.ManagementDateTimeConverter.ToTimeSpan(System.String)
+  id: ToTimeSpan(System.String)
+  parent: System.Management.ManagementDateTimeConverter
+  langs:
+  - csharp
+  name: ToTimeSpan(String)
+  nameWithType: ManagementDateTimeConverter.ToTimeSpan(String)
+  fullName: System.Management.ManagementDateTimeConverter.ToTimeSpan(String)
+  type: Method
+  assemblies:
+  - System.Management
+  namespace: System.Management
+  summary: Converts a given DMTF time interval to a <xref href="System.TimeSpan"></xref>.
+  remarks: "Time interval in WMI is represented in DMTF format. This format is explained in WMI SDK documentation. If the DMTF time interval value is more than that of <xref:System.TimeSpan> then <xref:System.ArgumentOutOfRangeException> is thrown.  \n  \n## .NET Framework Security  \n Full trust for the immediate caller. This member cannot be used by partially trusted code. For more information, see [Using Libraries from Partially Trusted Code](../Topic/Using%20Libraries%20from%20Partially%20Trusted%20Code.md)."
+  example:
+  - "The following example converts a given DMTF time interval to <xref:System.TimeSpan>.  \n  \n [!code-cs[wminet_ManagementDateTimeConverter_ToTimeSpan#1](~/add/codesnippet/csharp/m-system.management.mana_2_1.cs)]\n [!code-vb[wminet_ManagementDateTimeConverter_ToTimeSpan#1](~/add/codesnippet/visualbasic/m-system.management.mana_2_1.vb)]"
+  syntax:
+    content: public static TimeSpan ToTimeSpan (string dmtfTimespan);
+    parameters:
+    - id: dmtfTimespan
+      type: System.String
+      description: A string representation of the DMTF time interval.
+    return:
+      type: System.TimeSpan
+      description: A <xref href="System.TimeSpan"></xref> that represents the given DMTF time interval.
+  overload: System.Management.ManagementDateTimeConverter.ToTimeSpan*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Management\ManagementDateTimeConverter.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Management/ManagementDateTimeConverter.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.Management.ManagementDateTimeConverter.ToDateTime(System.String)
+  parent: System.Management.ManagementDateTimeConverter
+  isExternal: false
+  name: ToDateTime(String)
+  nameWithType: ManagementDateTimeConverter.ToDateTime(String)
+  fullName: System.Management.ManagementDateTimeConverter.ToDateTime(String)
+- uid: System.DateTime
+  parent: System
+  isExternal: false
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Management.ManagementDateTimeConverter.ToDmtfDateTime(System.DateTime)
+  parent: System.Management.ManagementDateTimeConverter
+  isExternal: false
+  name: ToDmtfDateTime(DateTime)
+  nameWithType: ManagementDateTimeConverter.ToDmtfDateTime(DateTime)
+  fullName: System.Management.ManagementDateTimeConverter.ToDmtfDateTime(DateTime)
+- uid: System.Management.ManagementDateTimeConverter.ToDmtfTimeInterval(System.TimeSpan)
+  parent: System.Management.ManagementDateTimeConverter
+  isExternal: false
+  name: ToDmtfTimeInterval(TimeSpan)
+  nameWithType: ManagementDateTimeConverter.ToDmtfTimeInterval(TimeSpan)
+  fullName: System.Management.ManagementDateTimeConverter.ToDmtfTimeInterval(TimeSpan)
+- uid: System.TimeSpan
+  parent: System
+  isExternal: false
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: System.Management.ManagementDateTimeConverter.ToTimeSpan(System.String)
+  parent: System.Management.ManagementDateTimeConverter
+  isExternal: false
+  name: ToTimeSpan(String)
+  nameWithType: ManagementDateTimeConverter.ToTimeSpan(String)
+  fullName: System.Management.ManagementDateTimeConverter.ToTimeSpan(String)
+- uid: System.Management.ManagementDateTimeConverter.ToDateTime*
+  parent: System.Management.ManagementDateTimeConverter
+  isExternal: false
+  name: ToDateTime
+  nameWithType: ManagementDateTimeConverter.ToDateTime
+- uid: System.Management.ManagementDateTimeConverter.ToDmtfDateTime*
+  parent: System.Management.ManagementDateTimeConverter
+  isExternal: false
+  name: ToDmtfDateTime
+  nameWithType: ManagementDateTimeConverter.ToDmtfDateTime
+- uid: System.Management.ManagementDateTimeConverter.ToDmtfTimeInterval*
+  parent: System.Management.ManagementDateTimeConverter
+  isExternal: false
+  name: ToDmtfTimeInterval
+  nameWithType: ManagementDateTimeConverter.ToDmtfTimeInterval
+- uid: System.Management.ManagementDateTimeConverter.ToTimeSpan*
+  parent: System.Management.ManagementDateTimeConverter
+  isExternal: false
+  name: ToTimeSpan
+  nameWithType: ManagementDateTimeConverter.ToTimeSpan

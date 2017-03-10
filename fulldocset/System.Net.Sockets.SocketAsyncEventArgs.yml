@@ -1,0 +1,1450 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Net.Sockets.SocketAsyncEventArgs
+  id: SocketAsyncEventArgs
+  children:
+  - System.Net.Sockets.SocketAsyncEventArgs.#ctor
+  - System.Net.Sockets.SocketAsyncEventArgs.AcceptSocket
+  - System.Net.Sockets.SocketAsyncEventArgs.Buffer
+  - System.Net.Sockets.SocketAsyncEventArgs.BufferList
+  - System.Net.Sockets.SocketAsyncEventArgs.BytesTransferred
+  - System.Net.Sockets.SocketAsyncEventArgs.Completed
+  - System.Net.Sockets.SocketAsyncEventArgs.ConnectByNameError
+  - System.Net.Sockets.SocketAsyncEventArgs.ConnectSocket
+  - System.Net.Sockets.SocketAsyncEventArgs.Count
+  - System.Net.Sockets.SocketAsyncEventArgs.DisconnectReuseSocket
+  - System.Net.Sockets.SocketAsyncEventArgs.Dispose
+  - System.Net.Sockets.SocketAsyncEventArgs.Finalize
+  - System.Net.Sockets.SocketAsyncEventArgs.LastOperation
+  - System.Net.Sockets.SocketAsyncEventArgs.Offset
+  - System.Net.Sockets.SocketAsyncEventArgs.OnCompleted(System.Net.Sockets.SocketAsyncEventArgs)
+  - System.Net.Sockets.SocketAsyncEventArgs.ReceiveMessageFromPacketInfo
+  - System.Net.Sockets.SocketAsyncEventArgs.RemoteEndPoint
+  - System.Net.Sockets.SocketAsyncEventArgs.SendPacketsElements
+  - System.Net.Sockets.SocketAsyncEventArgs.SendPacketsFlags
+  - System.Net.Sockets.SocketAsyncEventArgs.SendPacketsSendSize
+  - System.Net.Sockets.SocketAsyncEventArgs.SetBuffer(System.Int32,System.Int32)
+  - System.Net.Sockets.SocketAsyncEventArgs.SetBuffer(System.Byte[],System.Int32,System.Int32)
+  - System.Net.Sockets.SocketAsyncEventArgs.SocketClientAccessPolicyProtocol
+  - System.Net.Sockets.SocketAsyncEventArgs.SocketError
+  - System.Net.Sockets.SocketAsyncEventArgs.SocketFlags
+  - System.Net.Sockets.SocketAsyncEventArgs.UserToken
+  langs:
+  - csharp
+  name: SocketAsyncEventArgs
+  nameWithType: SocketAsyncEventArgs
+  fullName: System.Net.Sockets.SocketAsyncEventArgs
+  type: Class
+  summary: Represents an asynchronous socket operation.
+  remarks: "The SocketAsyncEventArgs class is part of a set of enhancements to the <xref:System.Net.Sockets.Socket?displayProperty=fullName> class that provide an alternative asynchronous pattern that can be used by specialized high-performance socket applications. This class was specifically designed for network server applications that require high performance. An application can use the enhanced asynchronous pattern exclusively or only in targeted hot areas (for example, when receiving large amounts of data).  \n  \n The main feature of these enhancements is the avoidance of the repeated allocation and synchronization of objects during high-volume asynchronous socket I/O. The Begin/End design pattern currently implemented by the <xref:System.Net.Sockets.Socket?displayProperty=fullName> class requires a <xref:System.IAsyncResult?displayProperty=fullName> object be allocated for each asynchronous socket operation.  \n  \n In the new <xref:System.Net.Sockets.Socket?displayProperty=fullName> class enhancements, asynchronous socket operations are described by reusable SocketAsyncEventArgs objects allocated and maintained by the application. High-performance socket applications know best the amount of overlapped socket operations that must be sustained. The application can create as many of the SocketAsyncEventArgs objects that it needs. For example, if a server application needs to have 15 socket accept operations outstanding at all times to support incoming client connection rates, it can allocate 15 reusable SocketAsyncEventArgs objects for that purpose.  \n  \n The pattern for performing an asynchronous socket operation with this class consists of the following steps:  \n  \n1.  Allocate a new SocketAsyncEventArgs context object, or get a free one from an application pool.  \n  \n2.  Set properties on the context object to the operation about to be performed (the completion callback method, the data buffer, the offset into the buffer, and the maximum amount of data to transfer, for example).  \n  \n3.  Call the appropriate socket method (xxxAsync) to initiate the asynchronous operation.  \n  \n4.  If the asynchronous socket method (xxxAsync) returns true, in the callback, query the context properties for completion status.  \n  \n5.  If the asynchronous socket method (xxxAsync) returns false, the operation completed synchronously. The context properties may be queried for the operation result.  \n  \n6.  Reuse the context for another operation, put it back in the pool, or discard it.  \n  \n The lifetime of the new asynchronous socket operation context object is determined by references by the application code and asynchronous I/O references. It is not necessary for the application to retain a reference to an asynchronous socket operation context object after it is submitted as a parameter to one of the asynchronous socket operation methods. It will remain referenced until the completion callback returns. However it is advantageous for the application to retain the reference to the context so that it can be reused for a future asynchronous socket operation."
+  example:
+  - "The following code example implements the connection logic for the socket server that uses the SocketAsyncEventArgs class. After accepting a connection, all data read from the client is sent back to the client. The read and echo back to the client pattern is continued until the client disconnects. The BufferManager class that is used by this example is displayed in the code example for the [SetBuffer(Byte\\<xref:System.Net.Sockets.SocketAsyncEventArgs.SetBuffer%28System.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32%29> method. The SocketAsyncEventArgsPool class that is used in this example is displayed in the code example for the <xref:System.Net.Sockets.SocketAsyncEventArgs.%23ctor%2A> constructor.  \n  \n [!code-cs[NCLAsyncSocketServer#3](~/add/codesnippet/csharp/t-system.net.sockets.soc_3_1.cs)]"
+  syntax:
+    content: 'public class SocketAsyncEventArgs : EventArgs, IDisposable'
+  inheritance:
+  - System.Object
+  - System.EventArgs
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.EventArgs.Empty
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.#ctor
+  id: '#ctor'
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: SocketAsyncEventArgs()
+  nameWithType: SocketAsyncEventArgs.SocketAsyncEventArgs()
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SocketAsyncEventArgs()
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Creates an empty <xref href="System.Net.Sockets.SocketAsyncEventArgs"></xref> instance.
+  remarks: "After calling this constructor all properties will have their default values:  \n  \n-   Object references will be null  \n  \n-   Properties that return an integer will return zero.  \n  \n-   The <xref:System.Net.Sockets.SocketAsyncEventArgs.LastOperation%2A> property will be equal to <xref:System.Net.Sockets.SocketAsyncOperation>.  \n  \n-   The <xref:System.Net.Sockets.SocketAsyncEventArgs.SendPacketsFlags%2A> property will be equal to <xref:System.Net.Sockets.TransmitFileOptions?displayProperty=fullName>, which specifies no flags will be used.  \n  \n-   The <xref:System.Net.Sockets.SocketAsyncEventArgs.SocketFlags%2A> property will be equal to <xref:System.Net.Sockets.SocketAsyncOperation>.  \n  \n The caller must set the appropriate properties prior to passing the object to the appropriate asynchronous socket (xxxAsync) method."
+  example:
+  - "The following code example represents a collection of reusable <xref:System.Net.Sockets.SocketAsyncEventArgs> objects.  \n  \n [!code-cs[NCLAsyncSocketServer#2](~/add/codesnippet/csharp/m-system.net.sockets.soc_3_1.cs)]"
+  syntax:
+    content: public SocketAsyncEventArgs ();
+    parameters: []
+  overload: System.Net.Sockets.SocketAsyncEventArgs.#ctor*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The platform is not supported.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.AcceptSocket
+  id: AcceptSocket
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: AcceptSocket
+  nameWithType: SocketAsyncEventArgs.AcceptSocket
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.AcceptSocket
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets or sets the socket to use or the socket created for accepting a connection with an asynchronous socket method.
+  remarks: This property can be used to provide an already created <xref:System.Net.Sockets.Socket> that will be used for an asynchronous socket accept operation. Upon completion of the accept operation, it is the socket representing the accepted connection. If not supplied (set to null) before calling the <xref:System.Net.Sockets.Socket.AcceptAsync%2A?displayProperty=fullName> method, a new socket will be created automatically and be accessible in the completion callback with this property.
+  syntax:
+    content: public System.Net.Sockets.Socket AcceptSocket { get; set; }
+    return:
+      type: System.Net.Sockets.Socket
+      description: The <xref href="System.Net.Sockets.Socket"></xref> to use or the socket created for accepting a connection with an asynchronous socket method.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.AcceptSocket*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Buffer
+  id: Buffer
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: Buffer
+  nameWithType: SocketAsyncEventArgs.Buffer
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.Buffer
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets the data buffer to use with an asynchronous socket method.
+  remarks: "This property gets the data buffer currently associated with the <xref:System.Net.Sockets.SocketAsyncEventArgs> instance. To set the buffer, the <xref:System.Net.Sockets.SocketAsyncEventArgs.SetBuffer%2A> method must be used.  \n  \n This property is used with the <xref:System.Net.Sockets.Socket.AcceptAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ConnectAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ReceiveAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ReceiveFromAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ReceiveMessageFromAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.SendAsync%2A?displayProperty=fullName>, and <xref:System.Net.Sockets.Socket.SendToAsync%2A?displayProperty=fullName> methods."
+  syntax:
+    content: public byte[] Buffer { get; }
+    return:
+      type: System.Byte[]
+      description: A <xref href="System.Byte"></xref> array that represents the data buffer to use with an asynchronous socket method.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.Buffer*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.BufferList
+  id: BufferList
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: BufferList
+  nameWithType: SocketAsyncEventArgs.BufferList
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.BufferList
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets or sets an array of data buffers to use with an asynchronous socket method.
+  remarks: "This property is used with the <xref:System.Net.Sockets.Socket.ReceiveAsync%2A?displayProperty=fullName> and <xref:System.Net.Sockets.Socket.SendAsync%2A?displayProperty=fullName> methods.  \n  \n This property is used to provide multiple buffers of data to be sent or to provide multiple buffers in which to store received data for an asynchronous socket operation that can send or receive data. Multiple buffers using the BufferList property are supported by the <xref:System.Net.Sockets.Socket.ReceiveAsync%2A?displayProperty=fullName> and <xref:System.Net.Sockets.Socket.SendAsync%2A?displayProperty=fullName> methods.  \n  \n If the BufferList property is set to a non-null value, the <xref:System.Net.Sockets.SocketAsyncEventArgs.Buffer%2A> property must be null and is ignored by the <xref:System.Net.Sockets.Socket.ReceiveAsync%2A?displayProperty=fullName> and <xref:System.Net.Sockets.Socket.SendAsync%2A?displayProperty=fullName> methods.  \n  \n If the <xref:System.Net.Sockets.SocketAsyncEventArgs.Buffer%2A> was set to a non-null value and an attempt is made to set the BufferList property to a non-null value, an exception is thrown.  \n  \n If the BufferList property is set to a non-null value, the <xref:System.Net.Sockets.Socket.ConnectAsync%2A?displayProperty=fullName> and <xref:System.Net.Sockets.Socket.AcceptAsync%2A?displayProperty=fullName> methods will throw an <xref:System.ArgumentException>.  \n  \n The BufferList parameter is ignored by the <xref:System.Net.Sockets.Socket.DisconnectAsync%2A?displayProperty=fullName> and <xref:System.Net.Sockets.Socket.SendPacketsAsync%2A?displayProperty=fullName> methods."
+  syntax:
+    content: public System.Collections.Generic.IList<ArraySegment<byte>> BufferList { get; set; }
+    return:
+      type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
+      description: An <xref href="System.Collections.IList"></xref> that represents an array of data buffers to use with an asynchronous socket method.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.BufferList*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: There are ambiguous buffers specified on a set operation. This exception occurs if the <xref href="stem.Net.Sockets.SocketAsyncEventArgs.Buffer%2A"></xref> property has been set to a non-null value and an attempt was made to set the BufferList property to a non-null value.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.BytesTransferred
+  id: BytesTransferred
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: BytesTransferred
+  nameWithType: SocketAsyncEventArgs.BytesTransferred
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.BytesTransferred
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets the number of bytes transferred in the socket operation.
+  remarks: "This property provides the number of bytes transferred in an asynchronous socket operation that can receive or send data. If zero is returned from a read operation, the remote end has closed the connection.  \n  \n This property is set by all asynchronous socket operations except the <xref:System.Net.Sockets.Socket.DisconnectAsync%2A?displayProperty=fullName> method."
+  syntax:
+    content: public int BytesTransferred { get; }
+    return:
+      type: System.Int32
+      description: An <xref href="System.Int32"></xref> that contains the number of bytes transferred in the socket operation.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.BytesTransferred*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Completed
+  id: Completed
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: Completed
+  nameWithType: SocketAsyncEventArgs.Completed
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.Completed
+  type: Event
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: The event used to complete an asynchronous operation.
+  remarks: "The Completed event provides a way for client applications to complete an asynchronous socket operation. An event handler should be attached to the event within a <xref:System.Net.Sockets.SocketAsyncEventArgs> instance when an asynchronous socket operation is initiated, otherwise the application will not be able to determine when the operation completes.  \n  \n The completion callback delegates referenced by the Completed event contains program logic to finish processing the asynchronous socket operation for the client.  \n  \n When the event is signaled, the application uses the <xref:System.Net.Sockets.SocketAsyncEventArgs> object parameter to obtain the status of the completed asynchronous socket operation."
+  syntax:
+    content: public event EventHandler<System.Net.Sockets.SocketAsyncEventArgs> Completed;
+    return:
+      type: System.EventHandler{System.Net.Sockets.SocketAsyncEventArgs}
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.ConnectByNameError
+  id: ConnectByNameError
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: ConnectByNameError
+  nameWithType: SocketAsyncEventArgs.ConnectByNameError
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.ConnectByNameError
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets the exception in the case of a connection failure when a <xref href="System.Net.DnsEndPoint"></xref> was used.
+  remarks: "In the case of a connection failure when a <xref:System.Net.DnsEndPoint> was specified for the <xref:System.Net.Sockets.SocketAsyncEventArgs.RemoteEndPoint%2A> property, the ConnectByNameError property will contain the exception that indicates the detailed cause of the socket error.  \n  \n When an <xref:System.Net.IPEndPoint> was specified for the <xref:System.Net.Sockets.SocketAsyncEventArgs.RemoteEndPoint%2A> property and a connection failure occurs, the ConnectByNameError property will be a `null` reference.  \n  \n The <xref:System.Net.Sockets.SocketAsyncEventArgs.SocketError%2A> property is always set in the case of a connection failure. The ConnectByNameError property contains more information about the failure if it was a failure connecting to a <xref:System.Net.DnsEndPoint>. If an application is only interested in whether the connect operation succeeded or failed, then the application only needs to check the <xref:System.Net.Sockets.SocketAsyncEventArgs.SocketError%2A> property."
+  syntax:
+    content: public Exception ConnectByNameError { get; }
+    return:
+      type: System.Exception
+      description: An <xref href="System.Exception"></xref> that indicates the cause of the connection error when a <xref href="System.Net.DnsEndPoint"></xref> was specified for the <xref href="stem.Net.Sockets.SocketAsyncEventArgs.RemoteEndPoint%2A"></xref> property.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.ConnectByNameError*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.ConnectSocket
+  id: ConnectSocket
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: ConnectSocket
+  nameWithType: SocketAsyncEventArgs.ConnectSocket
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.ConnectSocket
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: The created and connected <xref href="System.Net.Sockets.Socket"></xref> object after successful completion of the <xref href="stem.Net.Sockets.Socket.ConnectAsync%2A"></xref> method.
+  remarks: After successful completion of the <xref:System.Net.Sockets.Socket.ConnectAsync%2A> method, this property contains the newly created and connected <xref:System.Net.Sockets.Socket> object.
+  syntax:
+    content: public System.Net.Sockets.Socket ConnectSocket { get; }
+    return:
+      type: System.Net.Sockets.Socket
+      description: The connected <xref href="System.Net.Sockets.Socket"></xref> object.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.ConnectSocket*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Count
+  id: Count
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: Count
+  nameWithType: SocketAsyncEventArgs.Count
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.Count
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets the maximum amount of data, in bytes, to send or receive in an asynchronous operation.
+  remarks: "This property is set by calling the <xref:System.Net.Sockets.SocketAsyncEventArgs.SetBuffer%2A> method.  \n  \n This property is used with the <xref:System.Net.Sockets.Socket.AcceptAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ConnectAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ReceiveAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ReceiveFromAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ReceiveMessageFromAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.SendAsync%2A?displayProperty=fullName>, and <xref:System.Net.Sockets.Socket.SendToAsync%2A?displayProperty=fullName> methods."
+  syntax:
+    content: public int Count { get; }
+    return:
+      type: System.Int32
+      description: An <xref href="System.Int32"></xref> that contains the maximum amount of data, in bytes, to send or receive.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.Count*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.DisconnectReuseSocket
+  id: DisconnectReuseSocket
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: DisconnectReuseSocket
+  nameWithType: SocketAsyncEventArgs.DisconnectReuseSocket
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.DisconnectReuseSocket
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets or sets a value that specifies if socket can be reused after a disconnect operation.
+  remarks: This property is used to alter the behavior of <xref:System.Net.Sockets.Socket.DisconnectAsync%2A?displayProperty=fullName> method. If true, a socket disconnected by the <xref:System.Net.Sockets.Socket.DisconnectAsync%2A?displayProperty=fullName> method can be reused after disconnect completion in subsequent socket accept or connect operations.
+  syntax:
+    content: public bool DisconnectReuseSocket { get; set; }
+    return:
+      type: System.Boolean
+      description: A <xref href="System.Boolean"></xref> that specifies if socket can be reused after a disconnect operation.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.DisconnectReuseSocket*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Dispose
+  id: Dispose
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: Dispose()
+  nameWithType: SocketAsyncEventArgs.Dispose()
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.Dispose()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Releases the unmanaged resources used by the <xref href="System.Net.Sockets.SocketAsyncEventArgs"></xref> instance and optionally disposes of the managed resources.
+  remarks: "This method is called by the public `Dispose()` method and the <xref:System.Object.Finalize%2A> method. `Dispose()` invokes the protected `Dispose(Boolean)` method with the `disposing` parameter set to `true`. <xref:System.Object.Finalize%2A> invokes `Dispose` with `disposing` set to `false`.  \n  \n When the `disposing` parameter is `true`, this method releases all resources held by any managed objects that this <xref:System.Net.Sockets.SocketAsyncEventArgs> references. This method invokes the `Dispose()` method of each referenced object.  \n  \n> [!NOTE]\n>  This member outputs trace information when you enable network tracing in your application. For more information, see [Network Tracing in the .NET Framework](../Topic/Network%20Tracing%20in%20the%20.NET%20Framework.md)."
+  syntax:
+    content: public void Dispose ();
+    parameters: []
+  overload: System.Net.Sockets.SocketAsyncEventArgs.Dispose*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Finalize
+  id: Finalize
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: Finalize()
+  nameWithType: SocketAsyncEventArgs.Finalize()
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.Finalize()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Frees resources used by the <xref href="System.Net.Sockets.SocketAsyncEventArgs"></xref> class.
+  remarks: The <xref:System.Net.Sockets.SocketAsyncEventArgs> class finalizer closes the <xref:System.Net.Sockets.SocketAsyncEventArgs> and free resources associated with the <xref:System.Net.Sockets.SocketAsyncEventArgs>.
+  syntax:
+    content: ~SocketAsyncEventArgs ();
+    parameters: []
+  overload: System.Net.Sockets.SocketAsyncEventArgs.Finalize*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.LastOperation
+  id: LastOperation
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: LastOperation
+  nameWithType: SocketAsyncEventArgs.LastOperation
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.LastOperation
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets the type of socket operation most recently performed with this context object.
+  remarks: "This property describes the asynchronous socket operation that was most recently completed using this <xref:System.Net.Sockets.SocketAsyncEventArgs> object. The value of this property will be <xref:System.Net.Sockets.SocketAsyncOperation?displayProperty=fullName> until the <xref:System.Net.Sockets.SocketAsyncEventArgs> instance is used to begin an asynchronous socket operation. The property will then be set to the type of operation being performed in the methods that take the <xref:System.Net.Sockets.SocketAsyncEventArgs> as a parameter. This property more easily facilitates using a single completion callback delegate for multiple kinds of asynchronous socket operations.  \n  \n This property remains valid in a <xref:System.Net.Sockets.SocketAsyncEventArgs> instance until the <xref:System.Net.Sockets.SocketAsyncEventArgs> instance is used for another asynchronous socket (xxxAsync) operation.  \n  \n This property is set by all asynchronous socket (xxxAsync) methods.  \n  \n Calling an asynchronous socket method (xxxAsync) on the <xref:System.Net.Sockets.Socket?displayProperty=fullName> class sets this property value. This property is intended for use with the SocketAsyncCallback completion routine implemented by the application."
+  syntax:
+    content: public System.Net.Sockets.SocketAsyncOperation LastOperation { get; }
+    return:
+      type: System.Net.Sockets.SocketAsyncOperation
+      description: A <xref href="System.Net.Sockets.SocketAsyncOperation"></xref> instance that indicates the type of socket operation most recently performed with this context object.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.LastOperation*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Offset
+  id: Offset
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: Offset
+  nameWithType: SocketAsyncEventArgs.Offset
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.Offset
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets the offset, in bytes, into the data buffer referenced by the <xref href="stem.Net.Sockets.SocketAsyncEventArgs.Buffer%2A"></xref> property.
+  remarks: "This property describes the starting byte offset of data in the <xref:System.Net.Sockets.SocketAsyncEventArgs.Buffer%2A> property. This value is set by calling the <xref:System.Net.Sockets.SocketAsyncEventArgs.SetBuffer%2A> method.  \n  \n This property does not apply to the <xref:System.Net.Sockets.SocketAsyncEventArgs.BufferList%2A> property.  \n  \n This property is used with the <xref:System.Net.Sockets.Socket.AcceptAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ConnectAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ReceiveAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ReceiveFromAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ReceiveMessageFromAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.SendAsync%2A?displayProperty=fullName>, and <xref:System.Net.Sockets.Socket.SendToAsync%2A?displayProperty=fullName> methods."
+  syntax:
+    content: public int Offset { get; }
+    return:
+      type: System.Int32
+      description: An <xref href="System.Int32"></xref> that contains the offset, in bytes, into the data buffer referenced by the <xref href="stem.Net.Sockets.SocketAsyncEventArgs.Buffer%2A"></xref> property.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.Offset*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.OnCompleted(System.Net.Sockets.SocketAsyncEventArgs)
+  id: OnCompleted(System.Net.Sockets.SocketAsyncEventArgs)
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: OnCompleted(SocketAsyncEventArgs)
+  nameWithType: SocketAsyncEventArgs.OnCompleted(SocketAsyncEventArgs)
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.OnCompleted(SocketAsyncEventArgs)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Represents a method that is called when an asynchronous operation completes.
+  remarks: "This method is not callable by user code. This method gets called by the internals of the <xref:System.Net.Sockets.SocketAsyncEventArgs> object when the current operation is complete. This method is used with all asynchronous socket (xxxAsync) methods.  \n  \n An application that creates a class inheriting from <xref:System.Net.Sockets.SocketAsyncEventArgs> can override this method to hook into this completion notification and clean up any resources that it allocated for the operation. The default implementation just raises the <xref:System.Net.Sockets.SocketAsyncEventArgs.Completed> event.  \n  \n This method is used to hook up an event handler to be used as the completion callback for a subsequent asynchronous socket operation. The caller must implement at least one callback delegate inherited from this method prior to starting an asynchronous socket operation using one of the asynchronous (xxxAsync) methods on the <xref:System.Net.Sockets.Socket?displayProperty=fullName> class.  \n  \n The caller's OnCompleted method provides a way for client applications to complete an asynchronous socket operation. A callback delegate must be implemented when an asynchronous socket operation is initiated. The completion callback delegate(s) inherited from the OnCompleted method must contain program logic to finish processing the asynchronous socket operation for the client.  \n  \n When an asynchronous operation is signaled, the application uses the <xref:System.Net.Sockets.SocketAsyncEventArgs> object parameter to obtain status of the completed asynchronous socket operation."
+  syntax:
+    content: protected virtual void OnCompleted (System.Net.Sockets.SocketAsyncEventArgs e);
+    parameters:
+    - id: e
+      type: System.Net.Sockets.SocketAsyncEventArgs
+      description: The event that is signaled.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.OnCompleted*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.ReceiveMessageFromPacketInfo
+  id: ReceiveMessageFromPacketInfo
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: ReceiveMessageFromPacketInfo
+  nameWithType: SocketAsyncEventArgs.ReceiveMessageFromPacketInfo
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.ReceiveMessageFromPacketInfo
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets the IP address and interface of a received packet.
+  remarks: "This property provides information about a packet received using the <xref:System.Net.Sockets.Socket.ReceiveMessageFromAsync%2A?displayProperty=fullName> method.  \n  \n This property is used with the <xref:System.Net.Sockets.Socket.ReceiveMessageFromAsync%2A?displayProperty=fullName> method."
+  syntax:
+    content: public System.Net.Sockets.IPPacketInformation ReceiveMessageFromPacketInfo { get; }
+    return:
+      type: System.Net.Sockets.IPPacketInformation
+      description: An <xref href="System.Net.Sockets.IPPacketInformation"></xref> instance that contains the destination IP address and interface of a received packet.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.ReceiveMessageFromPacketInfo*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.RemoteEndPoint
+  id: RemoteEndPoint
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: RemoteEndPoint
+  nameWithType: SocketAsyncEventArgs.RemoteEndPoint
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.RemoteEndPoint
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets or sets the remote IP endpoint for an asynchronous operation.
+  remarks: "This property specifies the remote endpoint. This property can specify the remote endpoint to which to connect using the <xref:System.Net.Sockets.Socket.ConnectAsync%2A?displayProperty=fullName> method. This property can specify the remote endpoint to which to send data using <xref:System.Net.Sockets.Socket.SendToAsync%2A?displayProperty=fullName> method. This property can specify the remote endpoint from which data was received using the <xref:System.Net.Sockets.Socket.ReceiveFromAsync%2A?displayProperty=fullName> or <xref:System.Net.Sockets.Socket.ReceiveMessageFromAsync%2A?displayProperty=fullName> methods.  \n  \n This remote endpoint specified by this property can include an IPv4 or IPv6 address.  \n  \n This property is used with the <xref:System.Net.Sockets.Socket.ConnectAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ReceiveFromAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ReceiveMessageFromAsync%2A?displayProperty=fullName>, or <xref:System.Net.Sockets.Socket.SendToAsync%2A?displayProperty=fullName> methods."
+  syntax:
+    content: public System.Net.EndPoint RemoteEndPoint { get; set; }
+    return:
+      type: System.Net.EndPoint
+      description: An <xref href="System.Net.EndPoint"></xref> that represents the remote IP endpoint for an asynchronous operation.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.RemoteEndPoint*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsElements
+  id: SendPacketsElements
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: SendPacketsElements
+  nameWithType: SocketAsyncEventArgs.SendPacketsElements
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsElements
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets or sets an array of buffers to be sent for an asynchronous operation used by the <xref href="stem.Net.Sockets.Socket.SendPacketsAsync%2A"></xref> method.
+  remarks: The array of buffers can represent a file or files in memory or a set of memory data buffers. This property is used with the <xref:System.Net.Sockets.Socket.SendPacketsAsync%2A?displayProperty=fullName> method.
+  syntax:
+    content: public System.Net.Sockets.SendPacketsElement[] SendPacketsElements { get; set; }
+    return:
+      type: System.Net.Sockets.SendPacketsElement[]
+      description: An array of <xref href="System.Net.Sockets.SendPacketsElement"></xref> objects that represent an array of buffers to be sent.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsElements*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsFlags
+  id: SendPacketsFlags
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: SendPacketsFlags
+  nameWithType: SocketAsyncEventArgs.SendPacketsFlags
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsFlags
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets or sets a bitwise combination of <xref href="System.Net.Sockets.TransmitFileOptions"></xref> values for an asynchronous operation used by the <xref href="stem.Net.Sockets.Socket.SendPacketsAsync%2A"></xref> method.
+  remarks: This property specifies the <xref:System.Net.Sockets.TransmitFileOptions> that are used by the <xref:System.Net.Sockets.Socket.SendPacketsAsync%2A?displayProperty=fullName> method.
+  syntax:
+    content: public System.Net.Sockets.TransmitFileOptions SendPacketsFlags { get; set; }
+    return:
+      type: System.Net.Sockets.TransmitFileOptions
+      description: A <xref href="System.Net.Sockets.TransmitFileOptions"></xref> that contains a bitwise combination of values that are used with an asynchronous operation.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsFlags*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsSendSize
+  id: SendPacketsSendSize
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: SendPacketsSendSize
+  nameWithType: SocketAsyncEventArgs.SendPacketsSendSize
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsSendSize
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets or sets the size, in bytes, of the data block used in the send operation.
+  remarks: Set this property to zero to let the sockets layer select a default send size. Setting this property to 0xFFFFFFFF enables the caller to control the size and content of each send request, achieved by using the <xref:System.Net.Sockets.SendPacketsElement.EndOfPacket%2A?displayProperty=fullName> property. This capability is useful for message protocols that place limitations on the size of individual send requests.
+  syntax:
+    content: public int SendPacketsSendSize { get; set; }
+    return:
+      type: System.Int32
+      description: An <xref href="System.Int32"></xref> that contains the size, in bytes, of the data block used in the send operation.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsSendSize*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SetBuffer(System.Int32,System.Int32)
+  id: SetBuffer(System.Int32,System.Int32)
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: SetBuffer(Int32,Int32)
+  nameWithType: SocketAsyncEventArgs.SetBuffer(Int32,Int32)
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SetBuffer(Int32,Int32)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Sets the data buffer to use with an asynchronous socket method.
+  remarks: "The `offset` and `count` parameters can't be negative numbers. The combination of the `offset` and `count` parameters must be in bounds of the buffer array in the <xref:System.Net.Sockets.SocketAsyncEventArgs.Buffer%2A> property.  \n  \n This method sets the <xref:System.Net.Sockets.SocketAsyncEventArgs.Count%2A> property to the `count` parameter and the <xref:System.Net.Sockets.SocketAsyncEventArgs.Offset%2A> property to the `offset` parameter. If the <xref:System.Net.Sockets.SocketAsyncEventArgs.Buffer%2A> property is null, this method ignores the `offset` and `count` parameters and sets the <xref:System.Net.Sockets.SocketAsyncEventArgs.Offset%2A> and <xref:System.Net.Sockets.SocketAsyncEventArgs.Count%2A> properties to 0.  \n  \n This method does not change the <xref:System.Net.Sockets.SocketAsyncEventArgs.Buffer%2A> property."
+  syntax:
+    content: public void SetBuffer (int offset, int count);
+    parameters:
+    - id: offset
+      type: System.Int32
+      description: The offset, in bytes, in the data buffer where the operation starts.
+    - id: count
+      type: System.Int32
+      description: The maximum amount of data, in bytes, to send or receive in the buffer.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.SetBuffer*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: An argument was out of range. This exception occurs if the <code>offset</code> parameter is less than zero or greater than the length of the array in the <xref href="stem.Net.Sockets.SocketAsyncEventArgs.Buffer%2A"></xref> property. This exception also occurs if the <code>count</code> parameter is less than zero or greater than the length of the array in the <xref href="stem.Net.Sockets.SocketAsyncEventArgs.Buffer%2A"></xref> property minus the <code>offset</code> parameter.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SetBuffer(System.Byte[],System.Int32,System.Int32)
+  id: SetBuffer(System.Byte[],System.Int32,System.Int32)
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: SetBuffer(Byte[],Int32,Int32)
+  nameWithType: SocketAsyncEventArgs.SetBuffer(Byte[],Int32,Int32)
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SetBuffer(Byte[],Int32,Int32)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Sets the data buffer to use with an asynchronous socket method.
+  remarks: "The `offset` and `count` parameters can't be negative numbers. The combination of the `offset` and `count` parameters must be in bounds of the data array in the `buffer` parameter.  \n  \n This method sets the <xref:System.Net.Sockets.SocketAsyncEventArgs.Buffer%2A> property to the `buffer` parameter, the <xref:System.Net.Sockets.SocketAsyncEventArgs.Count%2A> property to the `count` parameter, and the <xref:System.Net.Sockets.SocketAsyncEventArgs.Offset%2A> property to the `offset` parameter."
+  example:
+  - "The following code example creates a single large buffer which can be divided up and assigned to <xref:System.Net.Sockets.SocketAsyncEventArgs> objects for use with each socket I/O operation. This enables buffers to be easily reused and guards against fragmenting heap memory.  \n  \n [!code-cs[NCLAsyncSocketServer#1](~/add/codesnippet/csharp/28f8a1ad-ba4e-48bf-8001-_1.cs)]"
+  syntax:
+    content: public void SetBuffer (byte[] buffer, int offset, int count);
+    parameters:
+    - id: buffer
+      type: System.Byte[]
+      description: The data buffer to use with an asynchronous socket method.
+    - id: offset
+      type: System.Int32
+      description: The offset, in bytes, in the data buffer where the operation starts.
+    - id: count
+      type: System.Int32
+      description: The maximum amount of data, in bytes, to send or receive in the buffer.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.SetBuffer*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: There are ambiguous buffers specified. This exception occurs if the <xref href="stem.Net.Sockets.SocketAsyncEventArgs.Buffer%2A"></xref> property is also not null and the <xref href="stem.Net.Sockets.SocketAsyncEventArgs.BufferList%2A"></xref> property is also not null.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: An argument was out of range. This exception occurs if the <code>offset</code> parameter is less than zero or greater than the length of the array in the <xref href="stem.Net.Sockets.SocketAsyncEventArgs.Buffer%2A"></xref> property. This exception also occurs if the <code>count</code> parameter is less than zero or greater than the length of the array in the <xref href="stem.Net.Sockets.SocketAsyncEventArgs.Buffer%2A"></xref> property minus the <code>offset</code> parameter.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SocketClientAccessPolicyProtocol
+  id: SocketClientAccessPolicyProtocol
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: SocketClientAccessPolicyProtocol
+  nameWithType: SocketAsyncEventArgs.SocketClientAccessPolicyProtocol
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SocketClientAccessPolicyProtocol
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets or sets the protocol to use to download the socket client access policy file.
+  remarks: The <xref:System.Net.Sockets.SocketClientAccessPolicyProtocol> specifies the method to download a client access policy file.
+  syntax:
+    content: public System.Net.Sockets.SocketClientAccessPolicyProtocol SocketClientAccessPolicyProtocol { get; set; }
+    return:
+      type: System.Net.Sockets.SocketClientAccessPolicyProtocol
+      description: "Returns <xref href=\"System.Net.Sockets.SocketClientAccessPolicyProtocol\"></xref>.  \n  \n The protocol to use to download the socket client access policy file."
+  overload: System.Net.Sockets.SocketAsyncEventArgs.SocketClientAccessPolicyProtocol*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SocketError
+  id: SocketError
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: SocketError
+  nameWithType: SocketAsyncEventArgs.SocketError
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SocketError
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets or sets the result of the asynchronous socket operation.
+  remarks: "This property provides the completion status of an asynchronous socket operation. A value of <xref:System.Net.Sockets.SocketError?displayProperty=fullName> indicates successful completion of an operation. This property is primarily used in an application’s event handler routine.  \n  \n This property is used with all of the asynchronous socket (xxxAsync) methods."
+  syntax:
+    content: public System.Net.Sockets.SocketError SocketError { get; set; }
+    return:
+      type: System.Net.Sockets.SocketError
+      description: A <xref href="System.Net.Sockets.SocketError"></xref> that represents the result of the asynchronous socket operation.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.SocketError*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SocketFlags
+  id: SocketFlags
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: SocketFlags
+  nameWithType: SocketAsyncEventArgs.SocketFlags
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SocketFlags
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets the results of an asynchronous socket operation or sets the behavior of an asynchronous operation.
+  remarks: "The property specifies the bitwise combination of the <xref:System.Net.Sockets.SocketFlags?displayProperty=fullName> to be used for an asynchronous socket operation.  \n  \n This property is used with the <xref:System.Net.Sockets.Socket.ReceiveAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.ReceiveFromAsync%2A?displayProperty=fullName>, <xref:System.Net.Sockets.Socket.SendAsync%2A?displayProperty=fullName>, and <xref:System.Net.Sockets.Socket.SendToAsync%2A?displayProperty=fullName> methods."
+  syntax:
+    content: public System.Net.Sockets.SocketFlags SocketFlags { get; set; }
+    return:
+      type: System.Net.Sockets.SocketFlags
+      description: A <xref href="System.Net.Sockets.SocketFlags"></xref> that represents the results of an asynchronous socket operation.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.SocketFlags*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.Sockets.SocketAsyncEventArgs.UserToken
+  id: UserToken
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  langs:
+  - csharp
+  name: UserToken
+  nameWithType: SocketAsyncEventArgs.UserToken
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.UserToken
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net.Sockets
+  summary: Gets or sets a user or application object associated with this asynchronous socket operation.
+  remarks: "This property can be used by an application to associate an application state object with the <xref:System.Net.Sockets.SocketAsyncEventArgs> object. Primarily, this property is a way for an application to pass state to the application’s event handler (for example, the asynchronous operation completion method).  \n  \n This property is used with all of the asynchronous socket (xxxAsync) methods."
+  syntax:
+    content: public object UserToken { get; set; }
+    return:
+      type: System.Object
+      description: An object that represents the user or application object associated with this asynchronous socket operation.
+  overload: System.Net.Sockets.SocketAsyncEventArgs.UserToken*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net.Sockets\SocketAsyncEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net.Sockets/SocketAsyncEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.EventArgs
+  isExternal: false
+  name: System.EventArgs
+- uid: System.NotSupportedException
+  parent: System
+  isExternal: false
+  name: NotSupportedException
+  nameWithType: NotSupportedException
+  fullName: System.NotSupportedException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.Net.Sockets.SocketAsyncEventArgs.#ctor
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SocketAsyncEventArgs()
+  nameWithType: SocketAsyncEventArgs.SocketAsyncEventArgs()
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SocketAsyncEventArgs()
+- uid: System.Net.Sockets.SocketAsyncEventArgs.AcceptSocket
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: AcceptSocket
+  nameWithType: SocketAsyncEventArgs.AcceptSocket
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.AcceptSocket
+- uid: System.Net.Sockets.Socket
+  parent: System.Net.Sockets
+  isExternal: false
+  name: Socket
+  nameWithType: Socket
+  fullName: System.Net.Sockets.Socket
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Buffer
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: Buffer
+  nameWithType: SocketAsyncEventArgs.Buffer
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.Buffer
+- uid: System.Byte[]
+  parent: System
+  isExternal: false
+  name: Byte[]
+  nameWithType: Byte[]
+  fullName: System.Byte[]
+  spec.csharp:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: Byte[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Net.Sockets.SocketAsyncEventArgs.BufferList
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: BufferList
+  nameWithType: SocketAsyncEventArgs.BufferList
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.BufferList
+- uid: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IList<ArraySegment<Byte>>
+  nameWithType: IList<ArraySegment<Byte>>
+  fullName: System.Collections.Generic.IList<System.ArraySegment<System.Byte>>
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: IList<System.ArraySegment<System.Byte>>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.ArraySegment`1
+    name: ArraySegment
+    nameWithType: ArraySegment
+    fullName: ArraySegment<System.Byte>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: Byte
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Net.Sockets.SocketAsyncEventArgs.BytesTransferred
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: BytesTransferred
+  nameWithType: SocketAsyncEventArgs.BytesTransferred
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.BytesTransferred
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Completed
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: Completed
+  nameWithType: SocketAsyncEventArgs.Completed
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.Completed
+- uid: System.EventHandler{System.Net.Sockets.SocketAsyncEventArgs}
+  parent: System
+  isExternal: false
+  name: EventHandler<SocketAsyncEventArgs>
+  nameWithType: EventHandler<SocketAsyncEventArgs>
+  fullName: System.EventHandler<System.Net.Sockets.SocketAsyncEventArgs>
+  spec.csharp:
+  - uid: System.EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler<System.Net.Sockets.SocketAsyncEventArgs>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Net.Sockets.SocketAsyncEventArgs
+    name: SocketAsyncEventArgs
+    nameWithType: SocketAsyncEventArgs
+    fullName: SocketAsyncEventArgs
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Net.Sockets.SocketAsyncEventArgs.ConnectByNameError
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: ConnectByNameError
+  nameWithType: SocketAsyncEventArgs.ConnectByNameError
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.ConnectByNameError
+- uid: System.Exception
+  parent: System
+  isExternal: false
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System.Net.Sockets.SocketAsyncEventArgs.ConnectSocket
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: ConnectSocket
+  nameWithType: SocketAsyncEventArgs.ConnectSocket
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.ConnectSocket
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Count
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: Count
+  nameWithType: SocketAsyncEventArgs.Count
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.Count
+- uid: System.Net.Sockets.SocketAsyncEventArgs.DisconnectReuseSocket
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: DisconnectReuseSocket
+  nameWithType: SocketAsyncEventArgs.DisconnectReuseSocket
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.DisconnectReuseSocket
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Dispose
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: Dispose()
+  nameWithType: SocketAsyncEventArgs.Dispose()
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.Dispose()
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Finalize
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: Finalize()
+  nameWithType: SocketAsyncEventArgs.Finalize()
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.Finalize()
+- uid: System.Net.Sockets.SocketAsyncEventArgs.LastOperation
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: LastOperation
+  nameWithType: SocketAsyncEventArgs.LastOperation
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.LastOperation
+- uid: System.Net.Sockets.SocketAsyncOperation
+  parent: System.Net.Sockets
+  isExternal: false
+  name: SocketAsyncOperation
+  nameWithType: SocketAsyncOperation
+  fullName: System.Net.Sockets.SocketAsyncOperation
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Offset
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: Offset
+  nameWithType: SocketAsyncEventArgs.Offset
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.Offset
+- uid: System.Net.Sockets.SocketAsyncEventArgs.OnCompleted(System.Net.Sockets.SocketAsyncEventArgs)
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: OnCompleted(SocketAsyncEventArgs)
+  nameWithType: SocketAsyncEventArgs.OnCompleted(SocketAsyncEventArgs)
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.OnCompleted(SocketAsyncEventArgs)
+- uid: System.Net.Sockets.SocketAsyncEventArgs
+  parent: System.Net.Sockets
+  isExternal: false
+  name: SocketAsyncEventArgs
+  nameWithType: SocketAsyncEventArgs
+  fullName: System.Net.Sockets.SocketAsyncEventArgs
+- uid: System.Net.Sockets.SocketAsyncEventArgs.ReceiveMessageFromPacketInfo
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: ReceiveMessageFromPacketInfo
+  nameWithType: SocketAsyncEventArgs.ReceiveMessageFromPacketInfo
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.ReceiveMessageFromPacketInfo
+- uid: System.Net.Sockets.IPPacketInformation
+  parent: System.Net.Sockets
+  isExternal: false
+  name: IPPacketInformation
+  nameWithType: IPPacketInformation
+  fullName: System.Net.Sockets.IPPacketInformation
+- uid: System.Net.Sockets.SocketAsyncEventArgs.RemoteEndPoint
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: RemoteEndPoint
+  nameWithType: SocketAsyncEventArgs.RemoteEndPoint
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.RemoteEndPoint
+- uid: System.Net.EndPoint
+  parent: System.Net
+  isExternal: false
+  name: EndPoint
+  nameWithType: EndPoint
+  fullName: System.Net.EndPoint
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsElements
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SendPacketsElements
+  nameWithType: SocketAsyncEventArgs.SendPacketsElements
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsElements
+- uid: System.Net.Sockets.SendPacketsElement[]
+  parent: System.Net.Sockets
+  isExternal: false
+  name: SendPacketsElement[]
+  nameWithType: SendPacketsElement[]
+  fullName: System.Net.Sockets.SendPacketsElement[]
+  spec.csharp:
+  - uid: System.Net.Sockets.SendPacketsElement
+    name: SendPacketsElement
+    nameWithType: SendPacketsElement
+    fullName: SendPacketsElement[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsFlags
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SendPacketsFlags
+  nameWithType: SocketAsyncEventArgs.SendPacketsFlags
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsFlags
+- uid: System.Net.Sockets.TransmitFileOptions
+  parent: System.Net.Sockets
+  isExternal: false
+  name: TransmitFileOptions
+  nameWithType: TransmitFileOptions
+  fullName: System.Net.Sockets.TransmitFileOptions
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsSendSize
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SendPacketsSendSize
+  nameWithType: SocketAsyncEventArgs.SendPacketsSendSize
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsSendSize
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SetBuffer(System.Int32,System.Int32)
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SetBuffer(Int32,Int32)
+  nameWithType: SocketAsyncEventArgs.SetBuffer(Int32,Int32)
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SetBuffer(Int32,Int32)
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SetBuffer(System.Byte[],System.Int32,System.Int32)
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SetBuffer(Byte[],Int32,Int32)
+  nameWithType: SocketAsyncEventArgs.SetBuffer(Byte[],Int32,Int32)
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SetBuffer(Byte[],Int32,Int32)
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SocketClientAccessPolicyProtocol
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SocketClientAccessPolicyProtocol
+  nameWithType: SocketAsyncEventArgs.SocketClientAccessPolicyProtocol
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SocketClientAccessPolicyProtocol
+- uid: System.Net.Sockets.SocketClientAccessPolicyProtocol
+  parent: System.Net.Sockets
+  isExternal: false
+  name: SocketClientAccessPolicyProtocol
+  nameWithType: SocketClientAccessPolicyProtocol
+  fullName: System.Net.Sockets.SocketClientAccessPolicyProtocol
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SocketError
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SocketError
+  nameWithType: SocketAsyncEventArgs.SocketError
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SocketError
+- uid: System.Net.Sockets.SocketError
+  parent: System.Net.Sockets
+  isExternal: false
+  name: SocketError
+  nameWithType: SocketError
+  fullName: System.Net.Sockets.SocketError
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SocketFlags
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SocketFlags
+  nameWithType: SocketAsyncEventArgs.SocketFlags
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.SocketFlags
+- uid: System.Net.Sockets.SocketFlags
+  parent: System.Net.Sockets
+  isExternal: false
+  name: SocketFlags
+  nameWithType: SocketFlags
+  fullName: System.Net.Sockets.SocketFlags
+- uid: System.Net.Sockets.SocketAsyncEventArgs.UserToken
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: UserToken
+  nameWithType: SocketAsyncEventArgs.UserToken
+  fullName: System.Net.Sockets.SocketAsyncEventArgs.UserToken
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Net.Sockets.SocketAsyncEventArgs.#ctor*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SocketAsyncEventArgs
+  nameWithType: SocketAsyncEventArgs.SocketAsyncEventArgs
+- uid: System.Net.Sockets.SocketAsyncEventArgs.AcceptSocket*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: AcceptSocket
+  nameWithType: SocketAsyncEventArgs.AcceptSocket
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Buffer*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: Buffer
+  nameWithType: SocketAsyncEventArgs.Buffer
+- uid: System.Net.Sockets.SocketAsyncEventArgs.BufferList*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: BufferList
+  nameWithType: SocketAsyncEventArgs.BufferList
+- uid: System.Net.Sockets.SocketAsyncEventArgs.BytesTransferred*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: BytesTransferred
+  nameWithType: SocketAsyncEventArgs.BytesTransferred
+- uid: System.Net.Sockets.SocketAsyncEventArgs.ConnectByNameError*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: ConnectByNameError
+  nameWithType: SocketAsyncEventArgs.ConnectByNameError
+- uid: System.Net.Sockets.SocketAsyncEventArgs.ConnectSocket*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: ConnectSocket
+  nameWithType: SocketAsyncEventArgs.ConnectSocket
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Count*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: Count
+  nameWithType: SocketAsyncEventArgs.Count
+- uid: System.Net.Sockets.SocketAsyncEventArgs.DisconnectReuseSocket*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: DisconnectReuseSocket
+  nameWithType: SocketAsyncEventArgs.DisconnectReuseSocket
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Dispose*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: Dispose
+  nameWithType: SocketAsyncEventArgs.Dispose
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Finalize*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: Finalize
+  nameWithType: SocketAsyncEventArgs.Finalize
+- uid: System.Net.Sockets.SocketAsyncEventArgs.LastOperation*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: LastOperation
+  nameWithType: SocketAsyncEventArgs.LastOperation
+- uid: System.Net.Sockets.SocketAsyncEventArgs.Offset*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: Offset
+  nameWithType: SocketAsyncEventArgs.Offset
+- uid: System.Net.Sockets.SocketAsyncEventArgs.OnCompleted*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: OnCompleted
+  nameWithType: SocketAsyncEventArgs.OnCompleted
+- uid: System.Net.Sockets.SocketAsyncEventArgs.ReceiveMessageFromPacketInfo*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: ReceiveMessageFromPacketInfo
+  nameWithType: SocketAsyncEventArgs.ReceiveMessageFromPacketInfo
+- uid: System.Net.Sockets.SocketAsyncEventArgs.RemoteEndPoint*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: RemoteEndPoint
+  nameWithType: SocketAsyncEventArgs.RemoteEndPoint
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsElements*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SendPacketsElements
+  nameWithType: SocketAsyncEventArgs.SendPacketsElements
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsFlags*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SendPacketsFlags
+  nameWithType: SocketAsyncEventArgs.SendPacketsFlags
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SendPacketsSendSize*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SendPacketsSendSize
+  nameWithType: SocketAsyncEventArgs.SendPacketsSendSize
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SetBuffer*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SetBuffer
+  nameWithType: SocketAsyncEventArgs.SetBuffer
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SocketClientAccessPolicyProtocol*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SocketClientAccessPolicyProtocol
+  nameWithType: SocketAsyncEventArgs.SocketClientAccessPolicyProtocol
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SocketError*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SocketError
+  nameWithType: SocketAsyncEventArgs.SocketError
+- uid: System.Net.Sockets.SocketAsyncEventArgs.SocketFlags*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: SocketFlags
+  nameWithType: SocketAsyncEventArgs.SocketFlags
+- uid: System.Net.Sockets.SocketAsyncEventArgs.UserToken*
+  parent: System.Net.Sockets.SocketAsyncEventArgs
+  isExternal: false
+  name: UserToken
+  nameWithType: SocketAsyncEventArgs.UserToken

@@ -1,0 +1,293 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.MessageHeaderAttribute
+  id: MessageHeaderAttribute
+  children:
+  - System.ServiceModel.MessageHeaderAttribute.#ctor
+  - System.ServiceModel.MessageHeaderAttribute.Actor
+  - System.ServiceModel.MessageHeaderAttribute.MustUnderstand
+  - System.ServiceModel.MessageHeaderAttribute.Relay
+  langs:
+  - csharp
+  name: MessageHeaderAttribute
+  nameWithType: MessageHeaderAttribute
+  fullName: System.ServiceModel.MessageHeaderAttribute
+  type: Class
+  summary: Specifies that a data member is a SOAP message header.
+  remarks: "The MessageHeaderAttribute attribute allows you to map fields and properties of a type marked with the <xref:System.ServiceModel.MessageContractAttribute> attribute to SOAP message headers. The field or property can be of a simple type or a composite type that can be serialized.  \n  \n For information on controlling the serialization of the contents of a SOAP body without modifying the default SOAP envelope itself, see <xref:System.Runtime.Serialization.DataContractAttribute?displayProperty=fullName>, [Specifying Data Transfer in Service Contracts](../Topic/Specifying%20Data%20Transfer%20in%20Service%20Contracts.md), and [Using Data Contracts](../Topic/Using%20Data%20Contracts.md).  \n  \n For more information about creating message contracts, see [Using Message Contracts](../Topic/Using%20Message%20Contracts.md).  \n  \n The SOAP standard defines the following attributes that can exist on a header:  \n  \n-   `Actor` or `Role` (`Actor` in SOAP 1.1, `Role` in SOAP 1.2)  \n  \n-   `MustUnderstand`  \n  \n-   `Relay`  \n  \n The `Actor` or `Role` attribute specifies the URI of the node for which a given header is intended. The `MustUnderstand` attribute specifies whether the header understands the node processing. The `Relay` attribute specifies whether the header is to be relayed to downstream nodes. [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] does not perform any processing of these attributes on incoming messages, except for the `MustUnderstand` attribute.  \n  \n You can, however, read and write these attributes, even though they are not sent by default. You can set the attribute values in two ways. First, you can change the <xref:System.ServiceModel.MessageHeaderAttribute.Actor%2A>, <xref:System.ServiceModel.MessageHeaderAttribute.MustUnderstand%2A> and <xref:System.ServiceModel.MessageHeaderAttribute.Relay%2A> properties on the MessageHeaderAttribute. (There is no `Role` property – set the <xref:System.ServiceModel.MessageHeaderAttribute.Actor%2A> property and `Role` is passed if SOAP 1.2 is used). For example:  \n  \n [!CODE [MessageHeaderAttribute#7](../CodeSnippet/VS_Snippets_CFX/messageheaderattribute#7)]  \n  \n The second way to control these attributes is by making the desired header type the type parameter of the <xref:System.ServiceModel.MessageHeader%601> class and using the resulting type together with the MessageHeaderAttribute. Then use the <xref:System.ServiceModel.MessageHeader%601> properties programmatically to set the SOAP attributes. For example:  \n  \n [!CODE [MessageHeaderAttribute#7](../CodeSnippet/VS_Snippets_CFX/messageheaderattribute#7)]  \n  \n [!CODE [MessageHeaderAttribute#8](../CodeSnippet/VS_Snippets_CFX/messageheaderattribute#8)]  \n  \n If both the dynamic and the static control mechanisms are used, the static settings are the default but can be overridden using the dynamic mechanism. For example:  \n  \n [!CODE [MessageHeaderAttribute#9](../CodeSnippet/VS_Snippets_CFX/messageheaderattribute#9)]  \n  \n [!CODE [MessageHeaderAttribute#10](../CodeSnippet/VS_Snippets_CFX/messageheaderattribute#10)]  \n  \n Creating repeated headers with dynamic attribute control is allowed. For example:  \n  \n```  \n[MessageHeaderArray] public MessageHeader<Person> documentApprovers[];  \n```  \n  \n On the receiving side, reading these SOAP attributes can only be done if the generic <xref:System.ServiceModel.MessageHeader%601> class is used. Examine the <xref:System.ServiceModel.MessageHeader%601.Actor%2A>, <xref:System.ServiceModel.MessageHeader%601.Relay%2A> or <xref:System.ServiceModel.MessageHeader%601.MustUnderstand%2A> properties of a header of the <xref:System.ServiceModel.MessageHeader%601> type to discover the attribute settings on the received message.  \n  \n When a message is received and then sent back, the SOAP attribute settings only roundtrip for headers of the <xref:System.ServiceModel.MessageHeader%601> type."
+  example:
+  - "The following code example shows the use of the MessageHeaderAttribute to create a SOAP header for the response message with the <xref:System.ServiceModel.MessageContractMemberAttribute.Name%2A>, <xref:System.ServiceModel.MessageContractMemberAttribute.Namespace%2A> and <xref:System.ServiceModel.MessageHeaderAttribute.MustUnderstand%2A> properties set to values appropriate for this header. The code example is followed by an example of the message when sent.  \n  \n [!code-vb[MessageHeaderAttribute#4](~/add/codesnippet/visualbasic/messageheaderattribute.client/services.vb#4)]\n [!code-cs[MessageHeaderAttribute#4](~/add/codesnippet/csharp/messageheaderattribute.client/services.cs#4)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field, AllowMultiple=false, Inherited=false)]
+
+      public class MessageHeaderAttribute : System.ServiceModel.MessageContractMemberAttribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  - System.ServiceModel.MessageContractMemberAttribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  - System.ServiceModel.MessageContractMemberAttribute.HasProtectionLevel
+  - System.ServiceModel.MessageContractMemberAttribute.Name
+  - System.ServiceModel.MessageContractMemberAttribute.Namespace
+  - System.ServiceModel.MessageContractMemberAttribute.ProtectionLevel
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\MessageHeaderAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/MessageHeaderAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.MessageHeaderAttribute.#ctor
+  id: '#ctor'
+  parent: System.ServiceModel.MessageHeaderAttribute
+  langs:
+  - csharp
+  name: MessageHeaderAttribute()
+  nameWithType: MessageHeaderAttribute.MessageHeaderAttribute()
+  fullName: System.ServiceModel.MessageHeaderAttribute.MessageHeaderAttribute()
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.MessageHeaderAttribute"></xref> class.
+  syntax:
+    content: public MessageHeaderAttribute ();
+    parameters: []
+  overload: System.ServiceModel.MessageHeaderAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\MessageHeaderAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/MessageHeaderAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.MessageHeaderAttribute.Actor
+  id: Actor
+  parent: System.ServiceModel.MessageHeaderAttribute
+  langs:
+  - csharp
+  name: Actor
+  nameWithType: MessageHeaderAttribute.Actor
+  fullName: System.ServiceModel.MessageHeaderAttribute.Actor
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets a URI that indicates the node at which this header is targeted. Maps to the role header attribute when SOAP 1.2 is used and the actor header attribute when SOAP 1.1 is used.
+  remarks: For more information, see the Remarks section of <xref:System.ServiceModel.MessageHeaderAttribute> for details.
+  syntax:
+    content: public string Actor { get; set; }
+    return:
+      type: System.String
+      description: A URI that indicates the node at which this header is targeted. This URI maps to the role header attribute when SOAP 1.2 is used and the actor header attribute when SOAP 1.1 is used.
+  overload: System.ServiceModel.MessageHeaderAttribute.Actor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\MessageHeaderAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/MessageHeaderAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.MessageHeaderAttribute.MustUnderstand
+  id: MustUnderstand
+  parent: System.ServiceModel.MessageHeaderAttribute
+  langs:
+  - csharp
+  name: MustUnderstand
+  nameWithType: MessageHeaderAttribute.MustUnderstand
+  fullName: System.ServiceModel.MessageHeaderAttribute.MustUnderstand
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Specifies whether the node acting in the <xref href="stem.ServiceModel.MessageHeaderAttribute.Actor%2A"></xref> role must understand this header. This is mapped to the `mustUnderstand` SOAP header attribute.
+  remarks: "For more information, see the Remarks section of <xref:System.ServiceModel.MessageHeaderAttribute> for details.  \n  \n> [!IMPORTANT]\n>  It is important to remember that if the MustUnderstand property is `true` in a message being sent and the application on the receiving side does not understand the header a fault is generated. Conversely, if a header with the `mustUnderstand` SOAP header attribute set to `true` is received by [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)], it must be a part of the message contract (or must be processed by one of the [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] channels); otherwise, it is assumed that the header is not understood and an exception is thrown."
+  example:
+  - "The following code example shows the use of the <xref:System.ServiceModel.MessageHeaderAttribute> to create a SOAP header for the response message with the <xref:System.ServiceModel.MessageContractMemberAttribute.Name%2A>, <xref:System.ServiceModel.MessageContractMemberAttribute.Namespace%2A> and MustUnderstand properties set to values appropriate for this header. The code example is followed by an example of the message when sent.  \n  \n [!code-vb[MessageHeaderAttribute#4](~/add/codesnippet/visualbasic/messageheaderattribute.client/services.vb#4)]\n [!code-cs[MessageHeaderAttribute#4](~/add/codesnippet/csharp/messageheaderattribute.client/services.cs#4)]"
+  syntax:
+    content: public bool MustUnderstand { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if the node acting in the <xref href="stem.ServiceModel.MessageHeaderAttribute.Actor%2A"></xref> role must understand this header; otherwise, `false`.'
+  overload: System.ServiceModel.MessageHeaderAttribute.MustUnderstand*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\MessageHeaderAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/MessageHeaderAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.MessageHeaderAttribute.Relay
+  id: Relay
+  parent: System.ServiceModel.MessageHeaderAttribute
+  langs:
+  - csharp
+  name: Relay
+  nameWithType: MessageHeaderAttribute.Relay
+  fullName: System.ServiceModel.MessageHeaderAttribute.Relay
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Specifies whether this header is to be relayed to downstream nodes. This is mapped to the `relay` SOAP header attribute.
+  remarks: This property is ignored when SOAP 1.1 is used. For more information, see the Remarks section of <xref:System.ServiceModel.MessageHeaderAttribute> for details.
+  syntax:
+    content: public bool Relay { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if this header is to be relayed to downstream nodes; otherwise, `false`.'
+  overload: System.ServiceModel.MessageHeaderAttribute.Relay*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\MessageHeaderAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/MessageHeaderAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.ServiceModel.MessageContractMemberAttribute
+  isExternal: false
+  name: System.ServiceModel.MessageContractMemberAttribute
+- uid: System.ServiceModel.MessageHeaderAttribute.#ctor
+  parent: System.ServiceModel.MessageHeaderAttribute
+  isExternal: false
+  name: MessageHeaderAttribute()
+  nameWithType: MessageHeaderAttribute.MessageHeaderAttribute()
+  fullName: System.ServiceModel.MessageHeaderAttribute.MessageHeaderAttribute()
+- uid: System.ServiceModel.MessageHeaderAttribute.Actor
+  parent: System.ServiceModel.MessageHeaderAttribute
+  isExternal: false
+  name: Actor
+  nameWithType: MessageHeaderAttribute.Actor
+  fullName: System.ServiceModel.MessageHeaderAttribute.Actor
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.ServiceModel.MessageHeaderAttribute.MustUnderstand
+  parent: System.ServiceModel.MessageHeaderAttribute
+  isExternal: false
+  name: MustUnderstand
+  nameWithType: MessageHeaderAttribute.MustUnderstand
+  fullName: System.ServiceModel.MessageHeaderAttribute.MustUnderstand
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ServiceModel.MessageHeaderAttribute.Relay
+  parent: System.ServiceModel.MessageHeaderAttribute
+  isExternal: false
+  name: Relay
+  nameWithType: MessageHeaderAttribute.Relay
+  fullName: System.ServiceModel.MessageHeaderAttribute.Relay
+- uid: System.ServiceModel.MessageHeaderAttribute.#ctor*
+  parent: System.ServiceModel.MessageHeaderAttribute
+  isExternal: false
+  name: MessageHeaderAttribute
+  nameWithType: MessageHeaderAttribute.MessageHeaderAttribute
+- uid: System.ServiceModel.MessageHeaderAttribute.Actor*
+  parent: System.ServiceModel.MessageHeaderAttribute
+  isExternal: false
+  name: Actor
+  nameWithType: MessageHeaderAttribute.Actor
+- uid: System.ServiceModel.MessageHeaderAttribute.MustUnderstand*
+  parent: System.ServiceModel.MessageHeaderAttribute
+  isExternal: false
+  name: MustUnderstand
+  nameWithType: MessageHeaderAttribute.MustUnderstand
+- uid: System.ServiceModel.MessageHeaderAttribute.Relay*
+  parent: System.ServiceModel.MessageHeaderAttribute
+  isExternal: false
+  name: Relay
+  nameWithType: MessageHeaderAttribute.Relay

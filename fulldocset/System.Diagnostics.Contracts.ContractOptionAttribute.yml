@@ -1,0 +1,352 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute
+  id: ContractOptionAttribute
+  children:
+  - System.Diagnostics.Contracts.ContractOptionAttribute.#ctor(System.String,System.String,System.Boolean)
+  - System.Diagnostics.Contracts.ContractOptionAttribute.#ctor(System.String,System.String,System.String)
+  - System.Diagnostics.Contracts.ContractOptionAttribute.Category
+  - System.Diagnostics.Contracts.ContractOptionAttribute.Enabled
+  - System.Diagnostics.Contracts.ContractOptionAttribute.Setting
+  - System.Diagnostics.Contracts.ContractOptionAttribute.Value
+  langs:
+  - csharp
+  name: ContractOptionAttribute
+  nameWithType: ContractOptionAttribute
+  fullName: System.Diagnostics.Contracts.ContractOptionAttribute
+  type: Class
+  summary: Enables you to set contract and tool options at assembly, type, or method granularity.
+  remarks: "The following table shows the currently supported options.  \n  \n|Category|Setting|Value/effect|  \n|--------------|-------------|-------------------|  \n|contract|inheritance|`true` to turn contract inheritance on; `false` to turn it off.  The default is `true`.|  \n|runtime|checking|`true` to turn run-time checking on; `false` to turn it off. The default is `true`.|  \n  \n You can use this attribute as illustrated in the following examples.  \n  \n To turn off run-time checking for the entire assembly:  \n  \n```  \n[assembly:ContractOption(\"runtime\", \"checking\", false)]  \n```  \n  \n To turn run-time contract checking on for a specific type:  \n  \n```  \n   [ContractOption(\"runtime\", \"checking\", true)]  \n   class TypeWithRuntimeChecking {  \n  \n       ...  \n  \n```  \n  \n To turn run-time checking off for a specific method:  \n  \n```  \n// Turn off all contract inheritance from interface IList<T>  \n[ContractOption(\"contract\", \"inheritance\", false)]  \nclass MyConcurrentList<T> : IList<T> {  \n   ...  \n}  \n  \n[ContractOption(\"runtime\", \"checking\", false)]  \npublic override MyMethod(int x) {  \n   // no inherited contracts checked at runtime,  \n   // no invariants checked at runtime.  \n   ...  \n}  \n  \n       [ContractOption(\"runtime\", \"checking\", false)]  \n       public void MethodWithoutRuntimeChecking(...) {  \n          ...  \n       }  \n   }  \n  \n```"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.All, AllowMultiple=true, Inherited=false)]
+
+      [System.Diagnostics.Conditional("CONTRACTS_FULL")]
+
+      public sealed class ContractOptionAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics.Contracts\ContractOptionAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics.Contracts/ContractOptionAttribute.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.#ctor(System.String,System.String,System.Boolean)
+  id: '#ctor(System.String,System.String,System.Boolean)'
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  langs:
+  - csharp
+  name: ContractOptionAttribute(String,String,Boolean)
+  nameWithType: ContractOptionAttribute.ContractOptionAttribute(String,String,Boolean)
+  fullName: System.Diagnostics.Contracts.ContractOptionAttribute.ContractOptionAttribute(String,String,Boolean)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics.Contracts
+  summary: Initializes a new instance of the <xref href="System.Diagnostics.Contracts.ContractOptionAttribute"></xref> class by using the provided category, setting, and enable/disable value.
+  syntax:
+    content: public ContractOptionAttribute (string category, string setting, bool enabled);
+    parameters:
+    - id: category
+      type: System.String
+      description: The category for the option to be set.
+    - id: setting
+      type: System.String
+      description: The option setting.
+    - id: enabled
+      type: System.Boolean
+      description: '`true` to enable the option; `false` to disable the option.'
+  overload: System.Diagnostics.Contracts.ContractOptionAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics.Contracts\ContractOptionAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics.Contracts/ContractOptionAttribute.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.#ctor(System.String,System.String,System.String)
+  id: '#ctor(System.String,System.String,System.String)'
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  langs:
+  - csharp
+  name: ContractOptionAttribute(String,String,String)
+  nameWithType: ContractOptionAttribute.ContractOptionAttribute(String,String,String)
+  fullName: System.Diagnostics.Contracts.ContractOptionAttribute.ContractOptionAttribute(String,String,String)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics.Contracts
+  summary: Initializes a new instance of the <xref href="System.Diagnostics.Contracts.ContractOptionAttribute"></xref> class by using the provided category, setting, and value.
+  remarks: "There are only two category/setting options, and they can be set by either of the constructor overloads. You can use this overload with the same settings as the <xref:System.Diagnostics.Contracts.ContractOptionAttribute.%23ctor%28System.String%2CSystem.String%2CSystem.Boolean%29> overload by specifying \"true\" or \"false\" in string format; for example:  \n  \n```  \n[ContractOption(\"contract\", \"inheritance\", “false”)]  \nclass MyConcurrentList<T> : IList<T> {  \n   ...  \n}  \n  \n```"
+  syntax:
+    content: public ContractOptionAttribute (string category, string setting, string value);
+    parameters:
+    - id: category
+      type: System.String
+      description: The category of the option to be set.
+    - id: setting
+      type: System.String
+      description: The option setting.
+    - id: value
+      type: System.String
+      description: The value for the setting.
+  overload: System.Diagnostics.Contracts.ContractOptionAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics.Contracts\ContractOptionAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics.Contracts/ContractOptionAttribute.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.Category
+  id: Category
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  langs:
+  - csharp
+  name: Category
+  nameWithType: ContractOptionAttribute.Category
+  fullName: System.Diagnostics.Contracts.ContractOptionAttribute.Category
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics.Contracts
+  summary: Gets the category of the option.
+  syntax:
+    content: public string Category { get; }
+    return:
+      type: System.String
+      description: The category of the option.
+  overload: System.Diagnostics.Contracts.ContractOptionAttribute.Category*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics.Contracts\ContractOptionAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics.Contracts/ContractOptionAttribute.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.Enabled
+  id: Enabled
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  langs:
+  - csharp
+  name: Enabled
+  nameWithType: ContractOptionAttribute.Enabled
+  fullName: System.Diagnostics.Contracts.ContractOptionAttribute.Enabled
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics.Contracts
+  summary: Determines if an option is enabled.
+  syntax:
+    content: public bool Enabled { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the option is enabled; otherwise, `false`.'
+  overload: System.Diagnostics.Contracts.ContractOptionAttribute.Enabled*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics.Contracts\ContractOptionAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics.Contracts/ContractOptionAttribute.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.Setting
+  id: Setting
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  langs:
+  - csharp
+  name: Setting
+  nameWithType: ContractOptionAttribute.Setting
+  fullName: System.Diagnostics.Contracts.ContractOptionAttribute.Setting
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics.Contracts
+  summary: Gets the setting for the option.
+  syntax:
+    content: public string Setting { get; }
+    return:
+      type: System.String
+      description: The setting for the option.
+  overload: System.Diagnostics.Contracts.ContractOptionAttribute.Setting*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics.Contracts\ContractOptionAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics.Contracts/ContractOptionAttribute.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.Value
+  id: Value
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  langs:
+  - csharp
+  name: Value
+  nameWithType: ContractOptionAttribute.Value
+  fullName: System.Diagnostics.Contracts.ContractOptionAttribute.Value
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics.Contracts
+  summary: Gets the value for the option.
+  syntax:
+    content: public string Value { get; }
+    return:
+      type: System.String
+      description: The value for the option.
+  overload: System.Diagnostics.Contracts.ContractOptionAttribute.Value*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics.Contracts\ContractOptionAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics.Contracts/ContractOptionAttribute.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.#ctor(System.String,System.String,System.Boolean)
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  isExternal: false
+  name: ContractOptionAttribute(String,String,Boolean)
+  nameWithType: ContractOptionAttribute.ContractOptionAttribute(String,String,Boolean)
+  fullName: System.Diagnostics.Contracts.ContractOptionAttribute.ContractOptionAttribute(String,String,Boolean)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.#ctor(System.String,System.String,System.String)
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  isExternal: false
+  name: ContractOptionAttribute(String,String,String)
+  nameWithType: ContractOptionAttribute.ContractOptionAttribute(String,String,String)
+  fullName: System.Diagnostics.Contracts.ContractOptionAttribute.ContractOptionAttribute(String,String,String)
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.Category
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  isExternal: false
+  name: Category
+  nameWithType: ContractOptionAttribute.Category
+  fullName: System.Diagnostics.Contracts.ContractOptionAttribute.Category
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.Enabled
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  isExternal: false
+  name: Enabled
+  nameWithType: ContractOptionAttribute.Enabled
+  fullName: System.Diagnostics.Contracts.ContractOptionAttribute.Enabled
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.Setting
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  isExternal: false
+  name: Setting
+  nameWithType: ContractOptionAttribute.Setting
+  fullName: System.Diagnostics.Contracts.ContractOptionAttribute.Setting
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.Value
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  isExternal: false
+  name: Value
+  nameWithType: ContractOptionAttribute.Value
+  fullName: System.Diagnostics.Contracts.ContractOptionAttribute.Value
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.#ctor*
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  isExternal: false
+  name: ContractOptionAttribute
+  nameWithType: ContractOptionAttribute.ContractOptionAttribute
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.Category*
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  isExternal: false
+  name: Category
+  nameWithType: ContractOptionAttribute.Category
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.Enabled*
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  isExternal: false
+  name: Enabled
+  nameWithType: ContractOptionAttribute.Enabled
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.Setting*
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  isExternal: false
+  name: Setting
+  nameWithType: ContractOptionAttribute.Setting
+- uid: System.Diagnostics.Contracts.ContractOptionAttribute.Value*
+  parent: System.Diagnostics.Contracts.ContractOptionAttribute
+  isExternal: false
+  name: Value
+  nameWithType: ContractOptionAttribute.Value

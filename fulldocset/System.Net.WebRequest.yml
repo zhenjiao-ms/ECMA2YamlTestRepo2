@@ -1,0 +1,2221 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Net.WebRequest
+  id: WebRequest
+  children:
+  - System.Net.WebRequest.#ctor
+  - System.Net.WebRequest.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.Net.WebRequest.Abort
+  - System.Net.WebRequest.AuthenticationLevel
+  - System.Net.WebRequest.BeginGetRequestStream(System.AsyncCallback,System.Object)
+  - System.Net.WebRequest.BeginGetResponse(System.AsyncCallback,System.Object)
+  - System.Net.WebRequest.CachePolicy
+  - System.Net.WebRequest.ConnectionGroupName
+  - System.Net.WebRequest.ContentLength
+  - System.Net.WebRequest.ContentType
+  - System.Net.WebRequest.Create(System.String)
+  - System.Net.WebRequest.Create(System.Uri)
+  - System.Net.WebRequest.CreateDefault(System.Uri)
+  - System.Net.WebRequest.CreateHttp(System.String)
+  - System.Net.WebRequest.CreateHttp(System.Uri)
+  - System.Net.WebRequest.CreatorInstance
+  - System.Net.WebRequest.Credentials
+  - System.Net.WebRequest.DefaultCachePolicy
+  - System.Net.WebRequest.DefaultWebProxy
+  - System.Net.WebRequest.EndGetRequestStream(System.IAsyncResult)
+  - System.Net.WebRequest.EndGetResponse(System.IAsyncResult)
+  - System.Net.WebRequest.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.Net.WebRequest.GetRequestStream
+  - System.Net.WebRequest.GetRequestStreamAsync
+  - System.Net.WebRequest.GetResponse
+  - System.Net.WebRequest.GetResponseAsync
+  - System.Net.WebRequest.GetSystemWebProxy
+  - System.Net.WebRequest.Headers
+  - System.Net.WebRequest.ImpersonationLevel
+  - System.Net.WebRequest.Method
+  - System.Net.WebRequest.PreAuthenticate
+  - System.Net.WebRequest.Proxy
+  - System.Net.WebRequest.RegisterPortableWebRequestCreator(System.Net.IWebRequestCreate)
+  - System.Net.WebRequest.RegisterPrefix(System.String,System.Net.IWebRequestCreate)
+  - System.Net.WebRequest.RequestUri
+  - System.Net.WebRequest.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.Net.WebRequest.Timeout
+  - System.Net.WebRequest.UseDefaultCredentials
+  langs:
+  - csharp
+  name: WebRequest
+  nameWithType: WebRequest
+  fullName: System.Net.WebRequest
+  type: Class
+  summary: Makes a request to a Uniform Resource Identifier (URI). This is an `abstract` class.
+  remarks: "WebRequest is the `abstract` base class for the .NET Framework's request/response model for accessing data from the Internet. An application that uses the request/response model can request data from the Internet in a protocol-agnostic manner, in which the application works with instances of the WebRequest class while protocol-specific descendant classes carry out the details of the request.  \n  \n Requests are sent from an application to a particular URI, such as a Web page on a server. The URI determines the proper descendant class to create from a list of WebRequest descendants registered for the application. WebRequest descendants are typically registered to handle a specific protocol, such as HTTP or FTP, but can be registered to handle a request to a specific server or path on a server.  \n  \n The WebRequest class throws a <xref:System.Net.WebException> when errors occur while accessing an Internet resource. The <xref:System.Net.WebException.Status%2A> property is one of the <xref:System.Net.WebExceptionStatus> values that indicates the source of the error. When <xref:System.Net.WebException.Status%2A> is <xref:System.Net.WebExceptionStatus?displayProperty=fullName>, the <xref:System.Net.WebException.Response%2A> property contains the <xref:System.Net.WebResponse> received from the Internet resource.  \n  \n Because the WebRequest class is an `abstract` class, the actual behavior of WebRequest instances at run time is determined by the descendant class returned by <xref:System.Net.WebRequest.Create%2A> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>.  \n  \n> [!NOTE]\n>  Use the <xref:System.Net.WebRequest.Create%2A> method to initialize new WebRequest instances. Do not use the WebRequest constructor.  \n  \n> [!NOTE]\n>  If the application that creates the WebRequest object runs with the credentials of a Normal user, the application will not be able to access certificates installed in the local machine store unless permission has been explicitly given to the user to do so."
+  example:
+  - "The following example shows how to create a WebRequest instance and return the response.  \n  \n [!code-cpp[NclWebRequestSimple#1](~/add/codesnippet/cpp/t-system.net.webrequest_1.cpp)]\n [!code-cs[NclWebRequestSimple#1](~/add/codesnippet/csharp/t-system.net.webrequest_1.cs)]\n [!code-vb[NclWebRequestSimple#1](~/add/codesnippet/visualbasic/t-system.net.webrequest_1.vb)]"
+  syntax:
+    content: 'public abstract class WebRequest : MarshalByRefObject, System.Runtime.Serialization.ISerializable'
+  inheritance:
+  - System.Object
+  - System.MarshalByRefObject
+  implements:
+  - System.Runtime.Serialization.ISerializable
+  inheritedMembers:
+  - System.MarshalByRefObject.CreateObjRef(System.Type)
+  - System.MarshalByRefObject.GetLifetimeService
+  - System.MarshalByRefObject.InitializeLifetimeService
+  - System.MarshalByRefObject.MemberwiseClone(System.Boolean)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.#ctor
+  id: '#ctor'
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: WebRequest()
+  nameWithType: WebRequest.WebRequest()
+  fullName: System.Net.WebRequest.WebRequest()
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Initializes a new instance of the <xref href="System.Net.WebRequest"></xref> class.
+  remarks: Use the <xref:System.Net.WebRequest.Create%2A> method to initialize new <xref:System.Net.WebRequest> instances. Do not use the constructor.
+  example:
+  - "The following example shows how to create a <xref:System.Net.WebRequest> instance by calling the <xref:System.Net.WebRequest.Create%2A> method on the <xref:System.Net.WebRequest> class.  \n  \n [!code-cpp[Classic WebRequest.WebRequest Example#1](~/add/codesnippet/cpp/m-system.net.webrequest._4_1.cpp)]\n [!code-vb[Classic WebRequest.WebRequest Example#1](~/add/codesnippet/visualbasic/m-system.net.webrequest._4_1.vb)]\n [!code-cs[Classic WebRequest.WebRequest Example#1](~/add/codesnippet/csharp/m-system.net.webrequest._4_1.cs)]"
+  syntax:
+    content: protected WebRequest ();
+    parameters: []
+  overload: System.Net.WebRequest.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: '#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)'
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: WebRequest(SerializationInfo,StreamingContext)
+  nameWithType: WebRequest.WebRequest(SerializationInfo,StreamingContext)
+  fullName: System.Net.WebRequest.WebRequest(SerializationInfo,StreamingContext)
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Initializes a new instance of the <xref href="System.Net.WebRequest"></xref> class from the specified instances of the <xref href="System.Runtime.Serialization.SerializationInfo"></xref> and <xref href="System.Runtime.Serialization.StreamingContext"></xref> classes.
+  remarks: "When implemented by a descendant class, this constructor implements the <xref:System.Runtime.Serialization.ISerializable> interface for the <xref:System.Net.WebRequest> descendant.  \n  \n Notice that an application must run in full trust mode when using serialization."
+  syntax:
+    content: protected WebRequest (System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext);
+    parameters:
+    - id: serializationInfo
+      type: System.Runtime.Serialization.SerializationInfo
+      description: A <xref href="System.Runtime.Serialization.SerializationInfo"></xref> that contains the information required to serialize the new <xref href="System.Net.WebRequest"></xref> instance.
+    - id: streamingContext
+      type: System.Runtime.Serialization.StreamingContext
+      description: A <xref href="System.Runtime.Serialization.StreamingContext"></xref> that indicates the source of the serialized stream associated with the new <xref href="System.Net.WebRequest"></xref> instance.
+  overload: System.Net.WebRequest.#ctor*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to access the constructor, when the constructor is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.Abort
+  id: Abort
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: Abort()
+  nameWithType: WebRequest.Abort()
+  fullName: System.Net.WebRequest.Abort()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Aborts the Request
+  remarks: "The Abort method cancels asynchronous requests to Internet resources started with the <xref:System.Net.WebRequest.BeginGetResponse%2A> method.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  syntax:
+    content: public virtual void Abort ();
+    parameters: []
+  overload: System.Net.WebRequest.Abort*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to access the method, when the method is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.AuthenticationLevel
+  id: AuthenticationLevel
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: AuthenticationLevel
+  nameWithType: WebRequest.AuthenticationLevel
+  fullName: System.Net.WebRequest.AuthenticationLevel
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Gets or sets values indicating the level of authentication and impersonation used for this request.
+  remarks: ''
+  example:
+  - "The following code example sets the value of this property.  \n  \n [!code-cpp[NclCredPolicy#1](~/add/codesnippet/cpp/p-system.net.webrequest._2_1.cpp)]\n [!code-cs[NclCredPolicy#1](~/add/codesnippet/csharp/p-system.net.webrequest._2_1.cs)]"
+  syntax:
+    content: public System.Net.Security.AuthenticationLevel AuthenticationLevel { get; set; }
+    return:
+      type: System.Net.Security.AuthenticationLevel
+      description: "A bitwise combination of the <xref href=\"System.Net.Security.AuthenticationLevel\"></xref> values. The default value is <xref href=\"System.Net.Security.AuthenticationLevel\"></xref>.  \n  \n In mutual authentication, both the client and server present credentials to establish their identity. The <xref href=\"System.Net.Security.AuthenticationLevel\"></xref> and <xref href=\"System.Net.Security.AuthenticationLevel\"></xref> values are relevant for Kerberos authentication. Kerberos authentication can be supported directly, or can be used if the Negotiate security protocol is used to select the actual security protocol. For more information about authentication protocols, see [Internet Authentication](../Topic/Internet%20Authentication.md).  \n  \n To determine whether mutual authentication occurred, check the <xref href=\"stem.Net.WebResponse.IsMutuallyAuthenticated%2A\"></xref> property.  \n  \n If you specify the <xref href=\"System.Net.Security.AuthenticationLevel\"></xref> authentication flag value and mutual authentication does not occur, your application will receive an <xref href=\"System.IO.IOException\"></xref> with a <xref href=\"System.Net.ProtocolViolationException\"></xref> inner exception indicating that mutual authentication failed."
+  overload: System.Net.WebRequest.AuthenticationLevel*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.BeginGetRequestStream(System.AsyncCallback,System.Object)
+  id: BeginGetRequestStream(System.AsyncCallback,System.Object)
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: BeginGetRequestStream(AsyncCallback,Object)
+  nameWithType: WebRequest.BeginGetRequestStream(AsyncCallback,Object)
+  fullName: System.Net.WebRequest.BeginGetRequestStream(AsyncCallback,Object)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, provides an asynchronous version of the <xref href="stem.Net.WebRequest.GetRequestStream%2A"></xref> method.
+  remarks: "The BeginGetRequestStream method starts an asynchronous request for a stream used to send data to an Internet resource. The callback method that implements the <xref:System.AsyncCallback> delegate uses the <xref:System.Net.WebRequest.EndGetRequestStream%2A> method to return the request stream.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  example:
+  - "The following example uses the BeginGetRequestStream to asynchronously obtain the request stream.  \n  \n [!code-cpp[WebRequest_BeginGetRequest#3](~/add/codesnippet/cpp/e7e08c14-570b-4125-9daa-_1.cpp)]\n [!code-cs[WebRequest_BeginGetRequest#3](~/add/codesnippet/csharp/e7e08c14-570b-4125-9daa-_1.cs)]\n [!code-vb[WebRequest_BeginGetRequest#3](~/add/codesnippet/visualbasic/e7e08c14-570b-4125-9daa-_1.vb)]"
+  syntax:
+    content: public virtual IAsyncResult BeginGetRequestStream (AsyncCallback callback, object state);
+    parameters:
+    - id: callback
+      type: System.AsyncCallback
+      description: The <xref href="System.AsyncCallback"></xref> delegate.
+    - id: state
+      type: System.Object
+      description: An object containing state information for this asynchronous request.
+    return:
+      type: System.IAsyncResult
+      description: An <xref href="System.IAsyncResult"></xref> that references the asynchronous request.
+  overload: System.Net.WebRequest.BeginGetRequestStream*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to access the method, when the method is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.BeginGetResponse(System.AsyncCallback,System.Object)
+  id: BeginGetResponse(System.AsyncCallback,System.Object)
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: BeginGetResponse(AsyncCallback,Object)
+  nameWithType: WebRequest.BeginGetResponse(AsyncCallback,Object)
+  fullName: System.Net.WebRequest.BeginGetResponse(AsyncCallback,Object)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, begins an asynchronous request for an Internet resource.
+  remarks: "The BeginGetResponse method starts an asynchronous request for a response. The callback method that implements the <xref:System.AsyncCallback> delegate uses the <xref:System.Net.WebRequest.EndGetResponse%2A> method to return the <xref:System.Net.WebResponse> from the Internet resource.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>.  \n  \n> [!NOTE]\n>  If a WebException is thrown, use the <xref:System.Net.WebException.Response%2A> and <xref:System.Net.WebException.Status%2A> properties of the exception to determine the response from the server."
+  example:
+  - "The following example uses BeginGetResponse to asynchronously request the target resource. When the resource has been obtained, the specified callback method will be executed.  \n  \n [!code-vb[WebRequest_BeginGetResponse#2](~/add/codesnippet/visualbasic/m-system.net.webrequest._6_1.vb)]\n [!code-cpp[WebRequest_BeginGetResponse#2](~/add/codesnippet/cpp/m-system.net.webrequest._6_1.cpp)]\n [!code-cs[WebRequest_BeginGetResponse#2](~/add/codesnippet/csharp/m-system.net.webrequest._6_1.cs)]"
+  syntax:
+    content: public virtual IAsyncResult BeginGetResponse (AsyncCallback callback, object state);
+    parameters:
+    - id: callback
+      type: System.AsyncCallback
+      description: The <xref href="System.AsyncCallback"></xref> delegate.
+    - id: state
+      type: System.Object
+      description: An object containing state information for this asynchronous request.
+    return:
+      type: System.IAsyncResult
+      description: An <xref href="System.IAsyncResult"></xref> that references the asynchronous request.
+  overload: System.Net.WebRequest.BeginGetResponse*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to access the method, when the method is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.CachePolicy
+  id: CachePolicy
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: CachePolicy
+  nameWithType: WebRequest.CachePolicy
+  fullName: System.Net.WebRequest.CachePolicy
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Gets or sets the cache policy for this request.
+  remarks: "The current cache policy and the presence of the requested resource in the cache determine whether a response can be retrieved from the cache. Using cached responses usually improves application performance, but there is a risk that the response in the cache does not match the response on the server.  \n  \n Default cache policy can be specified in the Machine.config configuration file or by setting the <xref:System.Net.HttpWebRequest.DefaultCachePolicy%2A> property for requests that use the Hypertext Transfer Protocol (HTTP) or Secure Hypertext Transfer Protocol (HTTPS) URI scheme.  \n  \n A copy of a resource is only added to the cache if the response stream for the resource is retrieved and read to the end of the stream. So another request for the same resource could use a cached copy, depending on the cache policy level for this request."
+  example:
+  - "The following code example demonstrates setting the cache policy for a Web request.  \n  \n [!code-cpp[NCLSimpleCache#2](~/add/codesnippet/cpp/p-system.net.webrequest._11_1.cpp)]\n [!code-cs[NCLSimpleCache#2](~/add/codesnippet/csharp/p-system.net.webrequest._11_1.cs)]"
+  syntax:
+    content: public virtual System.Net.Cache.RequestCachePolicy CachePolicy { get; set; }
+    return:
+      type: System.Net.Cache.RequestCachePolicy
+      description: A <xref href="System.Net.Cache.RequestCachePolicy"></xref> object that defines a cache policy.
+  overload: System.Net.WebRequest.CachePolicy*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.ConnectionGroupName
+  id: ConnectionGroupName
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: ConnectionGroupName
+  nameWithType: WebRequest.ConnectionGroupName
+  fullName: System.Net.WebRequest.ConnectionGroupName
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, gets or sets the name of the connection group for the request.
+  remarks: "The ConnectionGroupName property associates specific requests within an application to one or more connection pools.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  syntax:
+    content: public virtual string ConnectionGroupName { get; set; }
+    return:
+      type: System.String
+      description: The name of the connection group for the request.
+  overload: System.Net.WebRequest.ConnectionGroupName*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to get or set the property, when the property is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.ContentLength
+  id: ContentLength
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: ContentLength
+  nameWithType: WebRequest.ContentLength
+  fullName: System.Net.WebRequest.ContentLength
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, gets or sets the content length of the request data being sent.
+  remarks: "The ContentLength property contains the number of bytes of data sent to the Internet resource by the <xref:System.Net.WebRequest> instance.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  example:
+  - "The following example sets the ContentLength property to the amount of bytes in the outgoing byte buffer.  \n  \n [!code-cs[WebRequest_ContentType#4](~/add/codesnippet/csharp/p-system.net.webrequest._8_1.cs)]\n [!code-cpp[WebRequest_ContentType#4](~/add/codesnippet/cpp/p-system.net.webrequest._8_1.cpp)]\n [!code-vb[WebRequest_ContentType#4](~/add/codesnippet/visualbasic/p-system.net.webrequest._8_1.vb)]"
+  syntax:
+    content: public virtual long ContentLength { get; set; }
+    return:
+      type: System.Int64
+      description: The number of bytes of request data being sent.
+  overload: System.Net.WebRequest.ContentLength*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to get or set the property, when the property is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.ContentType
+  id: ContentType
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: ContentType
+  nameWithType: WebRequest.ContentType
+  fullName: System.Net.WebRequest.ContentType
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, gets or sets the content type of the request data being sent.
+  remarks: "The ContentType property contains the media type of the request. This is typically the MIME encoding of the content.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  example:
+  - "The following example sets the ContentType property to the appropriate media type.  \n  \n [!code-cs[WebRequest_ContentType#4](~/add/codesnippet/csharp/p-system.net.webrequest._0_1.cs)]\n [!code-cpp[WebRequest_ContentType#4](~/add/codesnippet/cpp/p-system.net.webrequest._0_1.cpp)]\n [!code-vb[WebRequest_ContentType#4](~/add/codesnippet/visualbasic/p-system.net.webrequest._0_1.vb)]"
+  syntax:
+    content: public virtual string ContentType { get; set; }
+    return:
+      type: System.String
+      description: The content type of the request data.
+  overload: System.Net.WebRequest.ContentType*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to get or set the property, when the property is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.Create(System.String)
+  id: Create(System.String)
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: Create(String)
+  nameWithType: WebRequest.Create(String)
+  fullName: System.Net.WebRequest.Create(String)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Initializes a new <xref href="System.Net.WebRequest"></xref> instance for the specified URI scheme.
+  remarks: "The <xref:System.Net.WebRequest.Create%2A> method returns a descendant of the <xref:System.Net.WebRequest> class determined at run time as the closest registered match for `requestUri`.  \n  \n For example, when a URI beginning with `http://` or `https://` is passed in `requestUri`, an <xref:System.Net.HttpWebRequest> is returned by <xref:System.Net.WebRequest.Create%2A>. If a URI beginning with `ftp://` is passed instead, the <xref:System.Net.WebRequest.Create%2A> method will return a <xref:System.Net.FileWebRequest> instance. If a URI beginning with `file://` is passed instead, the <xref:System.Net.WebRequest.Create%2A> method will return a <xref:System.Net.FileWebRequest> instance.  \n  \n The pre-registered reserve types already registered include the following:  \n  \n-   `http://`  \n  \n-   `https://`  \n  \n-   `ftp://`  \n  \n-   `file://`  \n  \n The .NET Framework includes support for the `http://`, `https://`, `ftp://`, and `file://` URI schemes. Custom <xref:System.Net.WebRequest> descendants to handle other requests are registered with the <xref:System.Net.WebRequest.RegisterPrefix%2A> method.  \n  \n The <xref:System.Net.WebRequest.Create%2A> method uses the `requestUriString` parameter to create a <xref:System.Uri> instance that it passes to the new <xref:System.Net.WebRequest>.  \n  \n> [!NOTE]\n>  This member outputs trace information when you enable network tracing in your application. For more information, see [Network Tracing in the .NET Framework](../Topic/Network%20Tracing%20in%20the%20.NET%20Framework.md)."
+  example:
+  - "The following example uses <xref:System.Net.WebRequest.Create%2A> to instantiate an <xref:System.Net.HttpWebRequest> instance. A string representing the target URL is used as the constructor parameter.  \n  \n [!code-vb[WebResponse_ResponseUri#1](~/add/codesnippet/visualbasic/m-system.net.webrequest._1_1.vb)]\n [!code-cpp[WebResponse_ResponseUri#1](~/add/codesnippet/cpp/m-system.net.webrequest._1_1.cpp)]\n [!code-cs[WebResponse_ResponseUri#1](~/add/codesnippet/csharp/m-system.net.webrequest._1_1.cs)]"
+  syntax:
+    content: public static System.Net.WebRequest Create (string requestUriString);
+    parameters:
+    - id: requestUriString
+      type: System.String
+      description: The URI that identifies the Internet resource.
+    return:
+      type: System.Net.WebRequest
+      description: A <xref href="System.Net.WebRequest"></xref> descendant for the specific URI scheme.
+  overload: System.Net.WebRequest.Create*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The request scheme specified in <code>requestUriString</code> has not been registered.
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>requestUriString</code> is `null`.
+  - type: System.Security.SecurityException
+    commentId: T:System.Security.SecurityException
+    description: The caller does not have permission to connect to the requested URI or a URI that the request is redirected to.
+  - type: System.UriFormatException
+    commentId: T:System.UriFormatException
+    description: "<div class=\"alert NOTE\">  \n In the [.NET for Windows Store apps](http://go.microsoft.com/fwlink/?LinkID=247912) or the [Portable Class Library](../Topic/Cross-Platform%20Development%20with%20the%20Portable%20Class%20Library.md), catch the base class exception, <xref href=\"System.FormatException\"></xref>, instead.  \n  \n</div>  \n  \n The URI specified in <code>requestUriString</code> is not a valid URI."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.Create(System.Uri)
+  id: Create(System.Uri)
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: Create(Uri)
+  nameWithType: WebRequest.Create(Uri)
+  fullName: System.Net.WebRequest.Create(Uri)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Initializes a new <xref href="System.Net.WebRequest"></xref> instance for the specified URI scheme.
+  remarks: "The Create method returns a descendant of the <xref:System.Net.WebRequest> class determined at run time as the closest registered match for `requestUri`.  \n  \n For example, if you create a <xref:System.Net.WebRequest> descendant, Handler1, to handle requests to `http://www.contoso.com/text/` and another named Handler2 to handle requests to `http://www.contoso.com/code/`, you can use Create method to return the WebRequest descendant associated with either specified URI.  \n  \n To return a descendant of the <xref:System.Net.WebRequest> class based on only the scheme portion of a URI, use the <xref:System.Net.WebRequest.CreateDefault%2A> method.  \n  \n For example, when a URI beginning with `http://` or `https://` is passed in `requestUri`, an <xref:System.Net.HttpWebRequest> is returned by Create. If a URI beginning with `ftp://` is passed instead, the Create method will return a <xref:System.Net.FileWebRequest> instance. If a URI beginning with `file://` is passed instead, the Create method will return a <xref:System.Net.FileWebRequest> instance.  \n  \n The pre-registered reserve types already registered include the following:  \n  \n-   `http://`  \n  \n-   `https://`  \n  \n-   `ftp://`  \n  \n-   `file://`  \n  \n The .NET Framework includes support for the `http://`, `https://`, `ftp://`, and `file://` URI schemes. Custom <xref:System.Net.WebRequest> descendants to handle other requests are registered with the <xref:System.Net.WebRequest.RegisterPrefix%2A> method.  \n  \n> [!NOTE]\n>  This member outputs trace information when you enable network tracing in your application. For more information, see [Network Tracing in the .NET Framework](../Topic/Network%20Tracing%20in%20the%20.NET%20Framework.md)."
+  example:
+  - "The following example uses Create to instantiate an <xref:System.Net.HttpWebRequest> instance. A Uri representing the target URL is used as the constructor parameter.  \n  \n [!code-cpp[WebRequest_Create#1](~/add/codesnippet/cpp/m-system.net.webrequest._0_1.cpp)]\n [!code-vb[WebRequest_Create#1](~/add/codesnippet/visualbasic/m-system.net.webrequest._0_1.vb)]\n [!code-cs[WebRequest_Create#1](~/add/codesnippet/csharp/m-system.net.webrequest._0_1.cs)]"
+  syntax:
+    content: public static System.Net.WebRequest Create (Uri requestUri);
+    parameters:
+    - id: requestUri
+      type: System.Uri
+      description: A <xref href="System.Uri"></xref> containing the URI of the requested resource.
+    return:
+      type: System.Net.WebRequest
+      description: A <xref href="System.Net.WebRequest"></xref> descendant for the specified URI scheme.
+  overload: System.Net.WebRequest.Create*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The request scheme specified in <code>requestUri</code> is not registered.
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>requestUri</code> is `null`.
+  - type: System.Security.SecurityException
+    commentId: T:System.Security.SecurityException
+    description: The caller does not have permission to connect to the requested URI or a URI that the request is redirected to.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.CreateDefault(System.Uri)
+  id: CreateDefault(System.Uri)
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: CreateDefault(Uri)
+  nameWithType: WebRequest.CreateDefault(Uri)
+  fullName: System.Net.WebRequest.CreateDefault(Uri)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Initializes a new <xref href="System.Net.WebRequest"></xref> instance for the specified URI scheme.
+  remarks: "The CreateDefault method returns a <xref:System.Net.WebRequest> descendant instance based on only the scheme portion of a URI.  \n  \n For example, when a URI beginning with `http://` is passed in `requestUri`, an <xref:System.Net.HttpWebRequest> is returned by CreateDefault. If a URI beginning with `file://` is passed instead, the CreateDefault method will return a <xref:System.Net.FileWebRequest>.  \n  \n> [!NOTE]\n>  This member outputs trace information when you enable network tracing in your application. For more information, see [Network Tracing in the .NET Framework](../Topic/Network%20Tracing%20in%20the%20.NET%20Framework.md)."
+  syntax:
+    content: public static System.Net.WebRequest CreateDefault (Uri requestUri);
+    parameters:
+    - id: requestUri
+      type: System.Uri
+      description: A <xref href="System.Uri"></xref> containing the URI of the requested resource.
+    return:
+      type: System.Net.WebRequest
+      description: A <xref href="System.Net.WebRequest"></xref> descendant for the specified URI scheme.
+  overload: System.Net.WebRequest.CreateDefault*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The request scheme specified in <code>requestUri</code> is not registered.
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>requestUri</code> is `null`.
+  - type: System.Security.SecurityException
+    commentId: T:System.Security.SecurityException
+    description: The caller does not have permission to connect to the requested URI or a URI that the request is redirected to.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.CreateHttp(System.String)
+  id: CreateHttp(System.String)
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: CreateHttp(String)
+  nameWithType: WebRequest.CreateHttp(String)
+  fullName: System.Net.WebRequest.CreateHttp(String)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Initializes a new <xref href="System.Net.HttpWebRequest"></xref> instance for the specified URI string.
+  remarks: "The CreateHttp method returns an instance of the <xref:System.Net.HttpWebRequest> class for the `requestUriString`.  \n  \n When a URI that begins with `http://` or `http://` is passed in the `requestUriString` parameter, a <xref:System.Net.HttpWebRequest> is returned by CreateHttp. Another other scheme will throw an <xref:System.NotSupportedException>.  \n  \n The CreateHttp method uses the `requestUriString` parameter to create a <xref:System.Uri> instance that it passes to the new <xref:System.Net.HttpWebRequest>. If the method is successful, the <xref:System.Net.HttpWebRequest.AllowReadStreamBuffering%2A> property on the returned <xref:System.Net.HttpWebRequest> instance is set to `false`.  \n  \n The .NET Framework includes support for the `http://` and  `https://` URI schemes. Custom <xref:System.Net.WebRequest> descendants to handle other requests are registered with the <xref:System.Net.WebRequest.RegisterPrefix%2A> method. The <xref:System.Net.WebRequest.Create%28System.String%29> method can be used to create a descendant of the <xref:System.Net.WebRequest> class for other schemes."
+  syntax:
+    content: public static System.Net.HttpWebRequest CreateHttp (string requestUriString);
+    parameters:
+    - id: requestUriString
+      type: System.String
+      description: A URI string that identifies the Internet resource.
+    return:
+      type: System.Net.HttpWebRequest
+      description: "Returns <xref href=\"System.Net.HttpWebRequest\"></xref>.  \n  \n An <xref href=\"System.Net.HttpWebRequest\"></xref> instance for the specific URI string."
+  overload: System.Net.WebRequest.CreateHttp*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The request scheme specified in <code>requestUriString</code> is the http or https scheme.
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>requestUriString</code> is `null`.
+  - type: System.Security.SecurityException
+    commentId: T:System.Security.SecurityException
+    description: The caller does not have permission to connect to the requested URI or a URI that the request is redirected to.
+  - type: System.UriFormatException
+    commentId: T:System.UriFormatException
+    description: The URI specified in <code>requestUriString</code> is not a valid URI.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.CreateHttp(System.Uri)
+  id: CreateHttp(System.Uri)
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: CreateHttp(Uri)
+  nameWithType: WebRequest.CreateHttp(Uri)
+  fullName: System.Net.WebRequest.CreateHttp(Uri)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Initializes a new <xref href="System.Net.HttpWebRequest"></xref> instance for the specified URI.
+  remarks: "The CreateHttp method returns an instance of the <xref:System.Net.HttpWebRequest> class for the `requestUri`.  \n  \n When a URI that begins with `http://` or `http://` is passed in the `requestUri` parameter, an <xref:System.Net.HttpWebRequest> is returned by CreateHttp. Another other scheme will throw a <xref:System.NotSupportedException>.  \n  \n The CreateHttp method uses the `requestUri` parameter to create a new <xref:System.Net.HttpWebRequest> instance. If the method is successful, the <xref:System.Net.HttpWebRequest.AllowReadStreamBuffering%2A> property on the returned <xref:System.Net.HttpWebRequest> instance is set to `false`.  \n  \n The .NET Framework includes support for the `http://` and  `https://` URI schemes. Custom <xref:System.Net.WebRequest> descendants to handle other requests are registered with the <xref:System.Net.WebRequest.RegisterPrefix%2A> method. The <xref:System.Net.WebRequest.Create%28System.Uri%29> method can be used to create a descendant of the <xref:System.Net.WebRequest> class for other schemes."
+  syntax:
+    content: public static System.Net.HttpWebRequest CreateHttp (Uri requestUri);
+    parameters:
+    - id: requestUri
+      type: System.Uri
+      description: A URI that identifies the Internet resource.
+    return:
+      type: System.Net.HttpWebRequest
+      description: "Returns <xref href=\"System.Net.HttpWebRequest\"></xref>.  \n  \n An <xref href=\"System.Net.HttpWebRequest\"></xref> instance for the specific URI string."
+  overload: System.Net.WebRequest.CreateHttp*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The request scheme specified in <code>requestUri</code> is the http or https scheme.
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>requestUri</code> is `null`.
+  - type: System.Security.SecurityException
+    commentId: T:System.Security.SecurityException
+    description: The caller does not have permission to connect to the requested URI or a URI that the request is redirected to.
+  - type: System.UriFormatException
+    commentId: T:System.UriFormatException
+    description: The URI specified in <code>requestUri</code> is not a valid URI.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.CreatorInstance
+  id: CreatorInstance
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: CreatorInstance
+  nameWithType: WebRequest.CreatorInstance
+  fullName: System.Net.WebRequest.CreatorInstance
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, gets the factory object derived from the <xref href="System.Net.IWebRequestCreate"></xref> class used to create the <xref href="System.Net.WebRequest"></xref> instantiated for making the request to the specified URI.
+  remarks: This property allows an application to determine which <xref:System.Net.IWebRequestCreate> derived factory object was used to create the request. This object may be [System.Net.Browser.WebRequestCreator.BrowserHttp](https://msdn.microsoft.com/subscriptions/index/system.net.browser.webrequestcreator.browserhttp\(v=vs.95\).aspx) or <xref:System.Net.Browser.WebRequestCreator.ClientHttp%2A?displayProperty=fullName>, but it may also be a custom instance derived from <xref:System.Net.IWebRequestCreate>. This allows an application to determine whether the browser hosting [!INCLUDE[silverlight](~/add/includes/silverlight-md.md)], the [!INCLUDE[silverlight](~/add/includes/silverlight-md.md)] client, or some custom object handles HTTP requests and responses for the <xref:System.Net.WebRequest> instance. The <xref:System.Net.WebRequest.RegisterPrefix%2A> method allows an application to configure which derived <xref:System.Net.WebRequest> type will be instantiated when making a request to a specific URI. <xref:System.Net.WebRequest> creators are typically registered to handle a specific protocol, such HTTP or HTTPS, but can be registered to handle a request to a specific server or path on a server. This is useful when more than one derived <xref:System.Net.WebRequest> type can process requests for the same protocol. The [!INCLUDE[sil3_first](~/add/includes/sil3-first-md.md)] and later runtime supports multiple HTTP handlers each having different capabilities. For example, a web service that uses Representational State Transfer (REST) might require the <xref:System.Net.Browser.WebRequestCreator.ClientHttp%2A?displayProperty=fullName> handler while a SOAP web service might be able to use the default [System.Net.Browser.WebRequestCreator.BrowserHttp](https://msdn.microsoft.com/subscriptions/index/system.net.browser.webrequestcreator.browserhttp\(v=vs.95\).aspx) handler.
+  syntax:
+    content: public virtual System.Net.IWebRequestCreate CreatorInstance { get; }
+    return:
+      type: System.Net.IWebRequestCreate
+      description: "Returns <xref href=\"System.Net.IWebRequestCreate\"></xref>.  \n  \n The derived <xref href=\"System.Net.WebRequest\"></xref> type returned by the <xref href=\"stem.Net.IWebRequestCreate.Create%2A\"></xref> method."
+  overload: System.Net.WebRequest.CreatorInstance*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.Credentials
+  id: Credentials
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: Credentials
+  nameWithType: WebRequest.Credentials
+  fullName: System.Net.WebRequest.Credentials
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, gets or sets the network credentials used for authenticating the request with the Internet resource.
+  remarks: "The Credentials property contains the authentication credentials required to access the Internet resource.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  example:
+  - "The following example sets the Credentials property using the default credentials of the current user. When the request is made, credentials stored in this property are used to validate the client. This is identical to setting the <xref:System.Net.WebRequest.UseDefaultCredentials%2A> property to `true`.  \n  \n [!code-cpp[NclWebRequestSimple#2](~/add/codesnippet/cpp/p-system.net.webrequest._10_1.cpp)]\n [!code-cs[NclWebRequestSimple#2](~/add/codesnippet/csharp/p-system.net.webrequest._10_1.cs)]\n [!code-vb[NclWebRequestSimple#2](~/add/codesnippet/visualbasic/p-system.net.webrequest._10_1.vb)]"
+  syntax:
+    content: public virtual System.Net.ICredentials Credentials { get; set; }
+    return:
+      type: System.Net.ICredentials
+      description: An <xref href="System.Net.ICredentials"></xref> containing the authentication credentials associated with the request. The default is `null`.
+  overload: System.Net.WebRequest.Credentials*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to get or set the property, when the property is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.DefaultCachePolicy
+  id: DefaultCachePolicy
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: DefaultCachePolicy
+  nameWithType: WebRequest.DefaultCachePolicy
+  fullName: System.Net.WebRequest.DefaultCachePolicy
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Gets or sets the default cache policy for this request.
+  remarks: "This policy is used for this request if the following conditions exist:  \n  \n-   There is no <xref:System.Net.HttpWebRequest.DefaultCachePolicy%2A> property specified for this request.  \n  \n-   The machine and application configuration files do not specify a cache policy that is applicable to the Uniform Resource Identifier (URI) used to create this request.  \n  \n The cache policy determines whether the requested resource can be taken from a cache instead of sending the request to the resource host computer.  \n  \n A copy of a resource is only added to the cache if the response stream for the resource is retrieved and read to the end of the stream. So another request for the same resource could use a cached copy, depending on the cache policy level for this request."
+  example:
+  - "The following code example demonstrates setting the default cache policy for Web requests.  \n  \n [!code-cpp[NCLSimpleCache#15](~/add/codesnippet/cpp/p-system.net.webrequest._3_1.cpp)]\n [!code-cs[NCLSimpleCache#15](~/add/codesnippet/csharp/p-system.net.webrequest._3_1.cs)]"
+  syntax:
+    content: public static System.Net.Cache.RequestCachePolicy DefaultCachePolicy { get; set; }
+    return:
+      type: System.Net.Cache.RequestCachePolicy
+      description: A <xref href="System.Net.Cache.HttpRequestCachePolicy"></xref> that specifies the cache policy in effect for this request when no other policy is applicable.
+  overload: System.Net.WebRequest.DefaultCachePolicy*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.DefaultWebProxy
+  id: DefaultWebProxy
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: DefaultWebProxy
+  nameWithType: WebRequest.DefaultWebProxy
+  fullName: System.Net.WebRequest.DefaultWebProxy
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Gets or sets the global HTTP proxy.
+  remarks: "The DefaultWebProxy property gets or sets the global proxy. The DefaultWebProxy property determines the default proxy that all <xref:System.Net.WebRequest> instances use if the request supports proxies and no proxy is set explicitly using the <xref:System.Net.HttpWebRequest.Proxy%2A> property. Proxies are currently supported by <xref:System.Net.FtpWebRequest> and <xref:System.Net.HttpWebRequest>.  \n  \n The DefaultWebProxy property reads proxy settings from the app.config file. If there is no config file, the current user's Internet Explorer (IE) proxy settings are used.  \n  \n If the DefaultWebProxy property is set to null, all subsequent instances of the <xref:System.Net.WebRequest> class created by the <xref:System.Net.WebRequest.Create%2A> or <xref:System.Net.WebRequest.CreateDefault%2A> methods do not have a proxy."
+  syntax:
+    content: public static System.Net.IWebProxy DefaultWebProxy { get; set; }
+    return:
+      type: System.Net.IWebProxy
+      description: An <xref href="System.Net.IWebProxy"></xref> used by every call to instances of <xref href="System.Net.WebRequest"></xref>.
+  overload: System.Net.WebRequest.DefaultWebProxy*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.EndGetRequestStream(System.IAsyncResult)
+  id: EndGetRequestStream(System.IAsyncResult)
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: EndGetRequestStream(IAsyncResult)
+  nameWithType: WebRequest.EndGetRequestStream(IAsyncResult)
+  fullName: System.Net.WebRequest.EndGetRequestStream(IAsyncResult)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, returns a <xref href="System.IO.Stream"></xref> for writing data to the Internet resource.
+  remarks: "The EndGetRequestStream method completes an asynchronous stream request that was started by the <xref:System.Net.WebRequest.BeginGetRequestStream%2A> method.  \n  \n> [!NOTE]\n>  To avoid timing issues with garbage collection, be sure to close the response stream by calling the <xref:System.IO.Stream.Close%2A> method on the stream returned by <xref:System.Net.WebResponse.GetResponseStream%2A> after calling <xref:System.Net.WebRequest.EndGetResponse%2A>.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  example:
+  - "The following example obtains and uses the request stream by calling the EndGetRequestStream. The EndGetRequestStream method completes the asynchronous call to <xref:System.Net.WebRequest.BeginGetRequestStream%2A>.  \n  \n [!code-cpp[WebRequest_BeginGetRequest#3](~/add/codesnippet/cpp/m-system.net.webrequest._7_1.cpp)]\n [!code-cs[WebRequest_BeginGetRequest#3](~/add/codesnippet/csharp/m-system.net.webrequest._7_1.cs)]\n [!code-vb[WebRequest_BeginGetRequest#3](~/add/codesnippet/visualbasic/m-system.net.webrequest._7_1.vb)]"
+  syntax:
+    content: public virtual System.IO.Stream EndGetRequestStream (IAsyncResult asyncResult);
+    parameters:
+    - id: asyncResult
+      type: System.IAsyncResult
+      description: An <xref href="System.IAsyncResult"></xref> that references a pending request for a stream.
+    return:
+      type: System.IO.Stream
+      description: A <xref href="System.IO.Stream"></xref> to write data to.
+  overload: System.Net.WebRequest.EndGetRequestStream*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to access the method, when the method is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.EndGetResponse(System.IAsyncResult)
+  id: EndGetResponse(System.IAsyncResult)
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: EndGetResponse(IAsyncResult)
+  nameWithType: WebRequest.EndGetResponse(IAsyncResult)
+  fullName: System.Net.WebRequest.EndGetResponse(IAsyncResult)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, returns a <xref href="System.Net.WebResponse"></xref>.
+  remarks: "The EndGetResponse method completes an asynchronous request for an Internet resource that was started with the <xref:System.Net.WebRequest.BeginGetResponse%2A> method.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  example:
+  - "The following example calls the EndGetResponse to retrieve the target resource.  \n  \n [!code-vb[WebRequest_BeginGetResponse#1](~/add/codesnippet/visualbasic/m-system.net.webrequest._2_1.vb)]\n [!code-cpp[WebRequest_BeginGetResponse#1](~/add/codesnippet/cpp/m-system.net.webrequest._2_1.cpp)]\n [!code-cs[WebRequest_BeginGetResponse#1](~/add/codesnippet/csharp/m-system.net.webrequest._2_1.cs)]"
+  syntax:
+    content: public virtual System.Net.WebResponse EndGetResponse (IAsyncResult asyncResult);
+    parameters:
+    - id: asyncResult
+      type: System.IAsyncResult
+      description: An <xref href="System.IAsyncResult"></xref> that references a pending request for a response.
+    return:
+      type: System.Net.WebResponse
+      description: A <xref href="System.Net.WebResponse"></xref> that contains a response to the Internet request.
+  overload: System.Net.WebRequest.EndGetResponse*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to access the method, when the method is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: GetObjectData(SerializationInfo,StreamingContext)
+  nameWithType: WebRequest.GetObjectData(SerializationInfo,StreamingContext)
+  fullName: System.Net.WebRequest.GetObjectData(SerializationInfo,StreamingContext)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Populates a <xref href="System.Runtime.Serialization.SerializationInfo"></xref> with the data needed to serialize the target object.
+  remarks: Any objects included in the <xref:System.Runtime.Serialization.SerializationInfo> are automatically tracked and serialized by the formatter.
+  syntax:
+    content: protected virtual void GetObjectData (System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext);
+    parameters:
+    - id: serializationInfo
+      type: System.Runtime.Serialization.SerializationInfo
+      description: The <xref href="System.Runtime.Serialization.SerializationInfo"></xref> to populate with data.
+    - id: streamingContext
+      type: System.Runtime.Serialization.StreamingContext
+      description: A <xref href="System.Runtime.Serialization.StreamingContext"></xref> that specifies the destination for this serialization.
+  overload: System.Net.WebRequest.GetObjectData*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.GetRequestStream
+  id: GetRequestStream
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: GetRequestStream()
+  nameWithType: WebRequest.GetRequestStream()
+  fullName: System.Net.WebRequest.GetRequestStream()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, returns a <xref href="System.IO.Stream"></xref> for writing data to the Internet resource.
+  remarks: "The GetRequestStream method initiates a request to send data to the Internet resource and returns a <xref:System.IO.Stream> instance for sending data to the Internet resource.  \n  \n The GetRequestStream method provides synchronous access to the <xref:System.IO.Stream>. For asynchronous access, use the <xref:System.Net.WebRequest.BeginGetRequestStream%2A> and <xref:System.Net.WebRequest.EndGetRequestStream%2A> methods.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  example:
+  - "The following example uses the GetRequestStream method to obtain a stream and then writes data that stream.  \n  \n [!code-cs[WebRequest_ContentType#4](~/add/codesnippet/csharp/m-system.net.webrequest._3_1.cs)]\n [!code-cpp[WebRequest_ContentType#4](~/add/codesnippet/cpp/m-system.net.webrequest._3_1.cpp)]\n [!code-vb[WebRequest_ContentType#4](~/add/codesnippet/visualbasic/m-system.net.webrequest._3_1.vb)]"
+  syntax:
+    content: public virtual System.IO.Stream GetRequestStream ();
+    parameters: []
+    return:
+      type: System.IO.Stream
+      description: A <xref href="System.IO.Stream"></xref> for writing data to the Internet resource.
+  overload: System.Net.WebRequest.GetRequestStream*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to access the method, when the method is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.GetRequestStreamAsync
+  id: GetRequestStreamAsync
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: GetRequestStreamAsync()
+  nameWithType: WebRequest.GetRequestStreamAsync()
+  fullName: System.Net.WebRequest.GetRequestStreamAsync()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, returns a <xref href="System.IO.Stream"></xref> for writing data to the Internet resource as an asynchronous operation.
+  remarks: "This operation will not block. The returned <xref:System.Threading.Tasks.Task%601>object will complete when the <xref:System.IO.Stream> for writing data to the Internet resource is available.  \n  \n After you call GetRequestStreamAsync, make sure you close the request stream before you call <xref:System.Net.WebRequest.GetResponseAsync%2A>."
+  syntax:
+    content: public virtual System.Threading.Tasks.Task<System.IO.Stream> GetRequestStreamAsync ();
+    parameters: []
+    return:
+      type: System.Threading.Tasks.Task{System.IO.Stream}
+      description: "Returns <xref href=\"stem.Threading.Tasks.Task%601\"></xref>.  \n  \n The task object representing the asynchronous operation."
+  overload: System.Net.WebRequest.GetRequestStreamAsync*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.GetResponse
+  id: GetResponse
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: GetResponse()
+  nameWithType: WebRequest.GetResponse()
+  fullName: System.Net.WebRequest.GetResponse()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, returns a response to an Internet request.
+  remarks: "The GetResponse method sends a request to an Internet resource and returns a <xref:System.Net.WebResponse> instance. If the request has already been initiated by a call to <xref:System.Net.WebRequest.GetRequestStream%2A>, the GetResponse method completes the request and returns any response.  \n  \n The GetResponse method provides synchronous access to the <xref:System.Net.WebResponse>. For asynchronous access, use the <xref:System.Net.WebRequest.BeginGetResponse%2A> and <xref:System.Net.WebRequest.EndGetResponse%2A> methods.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>.  \n  \n> [!NOTE]\n>  If a WebException is thrown, use the <xref:System.Net.WebException.Response%2A> and <xref:System.Net.WebException.Status%2A> properties of the exception to determine the response from the server."
+  example:
+  - "The following example sets the <xref:System.Net.WebRequest.Timeout%2A> property to 10000 milliseconds. If the timeout period expires before the resource can be returned, a <xref:System.Net.WebException> is thrown.  \n  \n [!code-cs[WebRequest_Timeout#1](~/add/codesnippet/csharp/m-system.net.webrequest._5_1.cs)]\n [!code-cpp[WebRequest_Timeout#1](~/add/codesnippet/cpp/m-system.net.webrequest._5_1.cpp)]\n [!code-vb[WebRequest_Timeout#1](~/add/codesnippet/visualbasic/m-system.net.webrequest._5_1.vb)]"
+  syntax:
+    content: public virtual System.Net.WebResponse GetResponse ();
+    parameters: []
+    return:
+      type: System.Net.WebResponse
+      description: A <xref href="System.Net.WebResponse"></xref> containing the response to the Internet request.
+  overload: System.Net.WebRequest.GetResponse*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to access the method, when the method is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.GetResponseAsync
+  id: GetResponseAsync
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: GetResponseAsync()
+  nameWithType: WebRequest.GetResponseAsync()
+  fullName: System.Net.WebRequest.GetResponseAsync()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, returns a response to an Internet request as an asynchronous operation.
+  remarks: This operation will not block. The returned <xref:System.Threading.Tasks.Task%601> object will complete after a response to an Internet request is available.
+  syntax:
+    content: public virtual System.Threading.Tasks.Task<System.Net.WebResponse> GetResponseAsync ();
+    parameters: []
+    return:
+      type: System.Threading.Tasks.Task{System.Net.WebResponse}
+      description: "Returns <xref href=\"stem.Threading.Tasks.Task%601\"></xref>.  \n  \n The task object representing the asynchronous operation."
+  overload: System.Net.WebRequest.GetResponseAsync*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.GetSystemWebProxy
+  id: GetSystemWebProxy
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: GetSystemWebProxy()
+  nameWithType: WebRequest.GetSystemWebProxy()
+  fullName: System.Net.WebRequest.GetSystemWebProxy()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Returns a proxy configured with the Internet Explorer settings of the currently impersonated user.
+  remarks: "GetSystemWebProxy method reads the current user's Internet Explorer (IE) proxy settings. This process includes the IE options to automatically detect proxy settings, use an automatic configuration script, manual proxy server settings, and advanced manual proxy server settings.  \n  \n If your application is impersonating several users, you can use the GetSystemWebProxy method to retrieve a proxy for each impersonated user."
+  syntax:
+    content: public static System.Net.IWebProxy GetSystemWebProxy ();
+    parameters: []
+    return:
+      type: System.Net.IWebProxy
+      description: An <xref href="System.Net.IWebProxy"></xref> used by every call to instances of <xref href="System.Net.WebRequest"></xref>.
+  overload: System.Net.WebRequest.GetSystemWebProxy*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.Headers
+  id: Headers
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: Headers
+  nameWithType: WebRequest.Headers
+  fullName: System.Net.WebRequest.Headers
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, gets or sets the collection of header name/value pairs associated with the request.
+  remarks: "The Headers property contains a <xref:System.Net.WebHeaderCollection> instance containing the header information to send to the Internet resource.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  example:
+  - "The following example displays the header name/value pairs associated with this request.  \n  \n [!code-cpp[WebRequest_Headers#1](~/add/codesnippet/cpp/p-system.net.webrequest._7_1.cpp)]\n [!code-cs[WebRequest_Headers#1](~/add/codesnippet/csharp/p-system.net.webrequest._7_1.cs)]\n [!code-vb[WebRequest_Headers#1](~/add/codesnippet/visualbasic/p-system.net.webrequest._7_1.vb)]"
+  syntax:
+    content: public virtual System.Net.WebHeaderCollection Headers { get; set; }
+    return:
+      type: System.Net.WebHeaderCollection
+      description: A <xref href="System.Net.WebHeaderCollection"></xref> containing the header name/value pairs associated with this request.
+  overload: System.Net.WebRequest.Headers*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to get or set the property, when the property is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.ImpersonationLevel
+  id: ImpersonationLevel
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: ImpersonationLevel
+  nameWithType: WebRequest.ImpersonationLevel
+  fullName: System.Net.WebRequest.ImpersonationLevel
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Gets or sets the impersonation level for the current request.
+  remarks: The impersonation level determines how the server can use the client's credentials.
+  syntax:
+    content: public System.Security.Principal.TokenImpersonationLevel ImpersonationLevel { get; set; }
+    return:
+      type: System.Security.Principal.TokenImpersonationLevel
+      description: A <xref href="System.Security.Principal.TokenImpersonationLevel"></xref> value.
+  overload: System.Net.WebRequest.ImpersonationLevel*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.Method
+  id: Method
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: Method
+  nameWithType: WebRequest.Method
+  fullName: System.Net.WebRequest.Method
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, gets or sets the protocol method to use in this request.
+  remarks: "When overridden in a descendant class, the Method property contains the request method to use in this request.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  example:
+  - "The following example sets the Method property to POST to indicate that the request will post data to the target host.  \n  \n [!code-cpp[WebRequest_BeginGetRequest#3](~/add/codesnippet/cpp/p-system.net.webrequest._5_1.cpp)]\n [!code-cs[WebRequest_BeginGetRequest#3](~/add/codesnippet/csharp/p-system.net.webrequest._5_1.cs)]\n [!code-vb[WebRequest_BeginGetRequest#3](~/add/codesnippet/visualbasic/p-system.net.webrequest._5_1.vb)]"
+  syntax:
+    content: public virtual string Method { get; set; }
+    return:
+      type: System.String
+      description: The protocol method to use in this request.
+  overload: System.Net.WebRequest.Method*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: If the property is not overridden in a descendant class, any attempt is made to get or set the property.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.PreAuthenticate
+  id: PreAuthenticate
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: PreAuthenticate
+  nameWithType: WebRequest.PreAuthenticate
+  fullName: System.Net.WebRequest.PreAuthenticate
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, indicates whether to pre-authenticate the request.
+  remarks: "With the exception of the first request, the PreAuthenticate property indicates whether to send authentication information with subsequent requests without waiting to be challenged by the server. When PreAuthenticate is `false`, the <xref:System.Net.WebRequest> waits for an authentication challenge before sending authentication information.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  example:
+  - "The following example sets the PreAuthenticate property to `true` so that the <xref:System.Net.NetworkCredential> stored in the <xref:System.Net.WebRequest.Credentials%2A> property will be sent to along with the resource request.  \n  \n [!code-cpp[WebRequest_PreAuthenticate#1](~/add/codesnippet/cpp/p-system.net.webrequest._1_1.cpp)]\n [!code-cs[WebRequest_PreAuthenticate#1](~/add/codesnippet/csharp/p-system.net.webrequest._1_1.cs)]\n [!code-vb[WebRequest_PreAuthenticate#1](~/add/codesnippet/visualbasic/p-system.net.webrequest._1_1.vb)]"
+  syntax:
+    content: public virtual bool PreAuthenticate { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` to pre-authenticate; otherwise, `false`.'
+  overload: System.Net.WebRequest.PreAuthenticate*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to get or set the property, when the property is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.Proxy
+  id: Proxy
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: Proxy
+  nameWithType: WebRequest.Proxy
+  fullName: System.Net.WebRequest.Proxy
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, gets or sets the network proxy to use to access this Internet resource.
+  remarks: "The Proxy property identifies the network proxy that the request uses to access the Internet resource. The request is made through the proxy server rather than directly to the Internet resource.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  example:
+  - "The following example displays the current network proxy address and allows the user to assign a new network proxy address and port number.  \n  \n [!code-cs[WebRequest_Proxy#1](~/add/codesnippet/csharp/p-system.net.webrequest._9_1.cs)]\n [!code-cpp[WebRequest_Proxy#1](~/add/codesnippet/cpp/p-system.net.webrequest._9_1.cpp)]\n [!code-vb[WebRequest_Proxy#1](~/add/codesnippet/visualbasic/p-system.net.webrequest._9_1.vb)]"
+  syntax:
+    content: public virtual System.Net.IWebProxy Proxy { get; set; }
+    return:
+      type: System.Net.IWebProxy
+      description: The <xref href="System.Net.IWebProxy"></xref> to use to access the Internet resource.
+  overload: System.Net.WebRequest.Proxy*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to get or set the property, when the property is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.RegisterPortableWebRequestCreator(System.Net.IWebRequestCreate)
+  id: RegisterPortableWebRequestCreator(System.Net.IWebRequestCreate)
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: RegisterPortableWebRequestCreator(IWebRequestCreate)
+  nameWithType: WebRequest.RegisterPortableWebRequestCreator(IWebRequestCreate)
+  fullName: System.Net.WebRequest.RegisterPortableWebRequestCreator(IWebRequestCreate)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Register an <xref href="System.Net.IWebRequestCreate"></xref> object.
+  syntax:
+    content: public static void RegisterPortableWebRequestCreator (System.Net.IWebRequestCreate creator);
+    parameters:
+    - id: creator
+      type: System.Net.IWebRequestCreate
+      description: The <xref href="System.Net.IWebRequestCreate"></xref> object to register.
+  overload: System.Net.WebRequest.RegisterPortableWebRequestCreator*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.RegisterPrefix(System.String,System.Net.IWebRequestCreate)
+  id: RegisterPrefix(System.String,System.Net.IWebRequestCreate)
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: RegisterPrefix(String,IWebRequestCreate)
+  nameWithType: WebRequest.RegisterPrefix(String,IWebRequestCreate)
+  fullName: System.Net.WebRequest.RegisterPrefix(String,IWebRequestCreate)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Registers a <xref href="System.Net.WebRequest"></xref> descendant for the specified URI.
+  remarks: "The RegisterPrefix method registers <xref:System.Net.WebRequest> descendants to service requests. <xref:System.Net.WebRequest> descendants are typically registered to handle a specific protocol, such HTTP or FTP, but can be registered to handle a request to a specific server or path on a server.  \n  \n The pre-registered reserve types already registered include the following:  \n  \n-   `http://`  \n  \n-   `https://`  \n  \n-   `ftp://`  \n  \n-   `file://`  \n  \n For more information, see the <xref:System.Net.WebRequest.Create%28System.String%29> and <xref:System.Net.WebRequest.Create%28System.Uri%29> methods.  \n  \n Duplicate prefixes are not allowed. RegisterPrefix returns `false` if an attempt is made to register a duplicate prefix.  \n  \n> [!NOTE]\n>  The <xref:System.Net.HttpWebRequest> class is registered to service requests for HTTP and HTTPS schemes by default. Attempts to register a different <xref:System.Net.WebRequest> descendant for these schemes will fail."
+  syntax:
+    content: public static bool RegisterPrefix (string prefix, System.Net.IWebRequestCreate creator);
+    parameters:
+    - id: prefix
+      type: System.String
+      description: The complete URI or URI prefix that the <xref href="System.Net.WebRequest"></xref> descendant services.
+    - id: creator
+      type: System.Net.IWebRequestCreate
+      description: The create method that the <xref href="System.Net.WebRequest"></xref> calls to create the <xref href="System.Net.WebRequest"></xref> descendant.
+    return:
+      type: System.Boolean
+      description: '`true` if registration is successful; otherwise, `false`.'
+  overload: System.Net.WebRequest.RegisterPrefix*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: "<code>prefix</code> is `null`  \n  \n -or-  \n  \n <code>creator</code> is `null`."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.RequestUri
+  id: RequestUri
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: RequestUri
+  nameWithType: WebRequest.RequestUri
+  fullName: System.Net.WebRequest.RequestUri
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, gets the URI of the Internet resource associated with the request.
+  remarks: "When overridden in a descendant class, the RequestUri property contains the <xref:System.Uri> instance that <xref:System.Net.WebRequest.Create%2A> method uses to create the request.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  example:
+  - "The following example checks the RequestUri property to determine the site originally requested.  \n  \n [!code-cs[WebRequest_RequestUri1#1](~/add/codesnippet/csharp/p-system.net.webrequest._4_1.cs)]\n [!code-cpp[WebRequest_RequestUri1#1](~/add/codesnippet/cpp/p-system.net.webrequest._4_1.cpp)]\n [!code-vb[WebRequest_RequestUri1#1](~/add/codesnippet/visualbasic/p-system.net.webrequest._4_1.vb)]"
+  syntax:
+    content: public virtual Uri RequestUri { get; }
+    return:
+      type: System.Uri
+      description: A <xref href="System.Uri"></xref> representing the resource associated with the request
+  overload: System.Net.WebRequest.RequestUri*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to get or set the property, when the property is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  isEii: true
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: ISerializable.GetObjectData(SerializationInfo,StreamingContext)
+  nameWithType: WebRequest.ISerializable.GetObjectData(SerializationInfo,StreamingContext)
+  fullName: System.Net.WebRequest.ISerializable.GetObjectData(SerializationInfo,StreamingContext)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, populates a <xref href="System.Runtime.Serialization.SerializationInfo"></xref> instance with the data needed to serialize the <xref href="System.Net.WebRequest"></xref>.
+  syntax:
+    content: void ISerializable.GetObjectData (System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext);
+    parameters:
+    - id: serializationInfo
+      type: System.Runtime.Serialization.SerializationInfo
+      description: A <xref href="System.Runtime.Serialization.SerializationInfo"></xref>, which holds the serialized data for the <xref href="System.Net.WebRequest"></xref>.
+    - id: streamingContext
+      type: System.Runtime.Serialization.StreamingContext
+      description: A <xref href="System.Runtime.Serialization.StreamingContext"></xref> that contains the destination of the serialized stream associated with the new <xref href="System.Net.WebRequest"></xref>.
+  overload: System.Net.WebRequest.System#Runtime#Serialization#ISerializable#GetObjectData*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: An attempt is made to serialize the object, when the interface is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.Timeout
+  id: Timeout
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: Timeout
+  nameWithType: WebRequest.Timeout
+  fullName: System.Net.WebRequest.Timeout
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Gets or sets the length of time, in milliseconds, before the request times out.
+  remarks: "The Timeout property indicates the length of time, in milliseconds, until the request times out and throws a <xref:System.Net.WebException>. The Timeout property affects only synchronous requests made with the <xref:System.Net.WebRequest.GetResponse%2A> method. To time out asynchronous requests, use the <xref:System.Net.WebRequest.Abort%2A> method.  \n  \n> [!NOTE]\n>  The <xref:System.Net.WebRequest> class is an `abstract` class. The actual behavior of <xref:System.Net.WebRequest> instances at run time is determined by the descendant class returned by the <xref:System.Net.WebRequest.Create%2A?displayProperty=fullName> method. For more information about default values and exceptions, see the documentation for the descendant classes, such as <xref:System.Net.HttpWebRequest> and <xref:System.Net.FileWebRequest>."
+  example:
+  - "The following example sets the Timeout property to 10000 milliseconds. If the timeout period expires before the resource can be returned, a <xref:System.Net.WebException> is thrown.  \n  \n [!code-cs[WebRequest_Timeout#1](~/add/codesnippet/csharp/p-system.net.webrequest._6_1.cs)]\n [!code-cpp[WebRequest_Timeout#1](~/add/codesnippet/cpp/p-system.net.webrequest._6_1.cpp)]\n [!code-vb[WebRequest_Timeout#1](~/add/codesnippet/visualbasic/p-system.net.webrequest._6_1.vb)]"
+  syntax:
+    content: public virtual int Timeout { get; set; }
+    return:
+      type: System.Int32
+      description: The length of time, in milliseconds, until the request times out, or the value <xref href="System.Threading.Timeout.Infinite"></xref> to indicate that the request does not time out. The default value is defined by the descendant class.
+  overload: System.Net.WebRequest.Timeout*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to get or set the property, when the property is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Net.WebRequest.UseDefaultCredentials
+  id: UseDefaultCredentials
+  parent: System.Net.WebRequest
+  langs:
+  - csharp
+  name: UseDefaultCredentials
+  nameWithType: WebRequest.UseDefaultCredentials
+  fullName: System.Net.WebRequest.UseDefaultCredentials
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: When overridden in a descendant class, gets or sets a <xref href="System.Boolean"></xref> value that controls whether <xref href="stem.Net.CredentialCache.DefaultCredentials%2A"></xref> are sent with requests.
+  remarks: Set this property to `true` when requests made by this <xref:System.Net.WebRequest> object should, if requested by the server, be authenticated using the credentials of the currently logged on user. For client applications, this is the desired behavior in most scenarios. For middle tier applications, such as ASP.NET applications, instead of using this property, you would typically set the <xref:System.Net.WebRequest.Credentials%2A> property to the credentials of the client on whose behalf the request is made.
+  syntax:
+    content: public virtual bool UseDefaultCredentials { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if the default credentials are used; otherwise `false`. The default value is `false`.'
+  overload: System.Net.WebRequest.UseDefaultCredentials*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: You attempted to set this property after the request was sent.
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to access the property, when the property is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\WebRequest.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/WebRequest.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.MarshalByRefObject
+  isExternal: false
+  name: System.MarshalByRefObject
+- uid: System.NotImplementedException
+  parent: System
+  isExternal: false
+  name: NotImplementedException
+  nameWithType: NotImplementedException
+  fullName: System.NotImplementedException
+- uid: System.NotSupportedException
+  parent: System
+  isExternal: false
+  name: NotSupportedException
+  nameWithType: NotSupportedException
+  fullName: System.NotSupportedException
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.Security.SecurityException
+  parent: System.Security
+  isExternal: false
+  name: SecurityException
+  nameWithType: SecurityException
+  fullName: System.Security.SecurityException
+- uid: System.UriFormatException
+  parent: System
+  isExternal: false
+  name: UriFormatException
+  nameWithType: UriFormatException
+  fullName: System.UriFormatException
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.Net.WebRequest.#ctor
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: WebRequest()
+  nameWithType: WebRequest.WebRequest()
+  fullName: System.Net.WebRequest.WebRequest()
+- uid: System.Net.WebRequest.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: WebRequest(SerializationInfo,StreamingContext)
+  nameWithType: WebRequest.WebRequest(SerializationInfo,StreamingContext)
+  fullName: System.Net.WebRequest.WebRequest(SerializationInfo,StreamingContext)
+- uid: System.Runtime.Serialization.SerializationInfo
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: SerializationInfo
+  nameWithType: SerializationInfo
+  fullName: System.Runtime.Serialization.SerializationInfo
+- uid: System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext
+- uid: System.Net.WebRequest.Abort
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Abort()
+  nameWithType: WebRequest.Abort()
+  fullName: System.Net.WebRequest.Abort()
+- uid: System.Net.WebRequest.AuthenticationLevel
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: AuthenticationLevel
+  nameWithType: WebRequest.AuthenticationLevel
+  fullName: System.Net.WebRequest.AuthenticationLevel
+- uid: System.Net.Security.AuthenticationLevel
+  parent: System.Net.Security
+  isExternal: false
+  name: AuthenticationLevel
+  nameWithType: AuthenticationLevel
+  fullName: System.Net.Security.AuthenticationLevel
+- uid: System.Net.WebRequest.BeginGetRequestStream(System.AsyncCallback,System.Object)
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: BeginGetRequestStream(AsyncCallback,Object)
+  nameWithType: WebRequest.BeginGetRequestStream(AsyncCallback,Object)
+  fullName: System.Net.WebRequest.BeginGetRequestStream(AsyncCallback,Object)
+- uid: System.IAsyncResult
+  parent: System
+  isExternal: false
+  name: IAsyncResult
+  nameWithType: IAsyncResult
+  fullName: System.IAsyncResult
+- uid: System.AsyncCallback
+  parent: System
+  isExternal: false
+  name: AsyncCallback
+  nameWithType: AsyncCallback
+  fullName: System.AsyncCallback
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Net.WebRequest.BeginGetResponse(System.AsyncCallback,System.Object)
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: BeginGetResponse(AsyncCallback,Object)
+  nameWithType: WebRequest.BeginGetResponse(AsyncCallback,Object)
+  fullName: System.Net.WebRequest.BeginGetResponse(AsyncCallback,Object)
+- uid: System.Net.WebRequest.CachePolicy
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: CachePolicy
+  nameWithType: WebRequest.CachePolicy
+  fullName: System.Net.WebRequest.CachePolicy
+- uid: System.Net.Cache.RequestCachePolicy
+  parent: System.Net.Cache
+  isExternal: false
+  name: RequestCachePolicy
+  nameWithType: RequestCachePolicy
+  fullName: System.Net.Cache.RequestCachePolicy
+- uid: System.Net.WebRequest.ConnectionGroupName
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: ConnectionGroupName
+  nameWithType: WebRequest.ConnectionGroupName
+  fullName: System.Net.WebRequest.ConnectionGroupName
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Net.WebRequest.ContentLength
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: ContentLength
+  nameWithType: WebRequest.ContentLength
+  fullName: System.Net.WebRequest.ContentLength
+- uid: System.Int64
+  parent: System
+  isExternal: false
+  name: Int64
+  nameWithType: Int64
+  fullName: System.Int64
+- uid: System.Net.WebRequest.ContentType
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: ContentType
+  nameWithType: WebRequest.ContentType
+  fullName: System.Net.WebRequest.ContentType
+- uid: System.Net.WebRequest.Create(System.String)
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Create(String)
+  nameWithType: WebRequest.Create(String)
+  fullName: System.Net.WebRequest.Create(String)
+- uid: System.Net.WebRequest
+  parent: System.Net
+  isExternal: false
+  name: WebRequest
+  nameWithType: WebRequest
+  fullName: System.Net.WebRequest
+- uid: System.Net.WebRequest.Create(System.Uri)
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Create(Uri)
+  nameWithType: WebRequest.Create(Uri)
+  fullName: System.Net.WebRequest.Create(Uri)
+- uid: System.Uri
+  parent: System
+  isExternal: false
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: System.Net.WebRequest.CreateDefault(System.Uri)
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: CreateDefault(Uri)
+  nameWithType: WebRequest.CreateDefault(Uri)
+  fullName: System.Net.WebRequest.CreateDefault(Uri)
+- uid: System.Net.WebRequest.CreateHttp(System.String)
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: CreateHttp(String)
+  nameWithType: WebRequest.CreateHttp(String)
+  fullName: System.Net.WebRequest.CreateHttp(String)
+- uid: System.Net.HttpWebRequest
+  parent: System.Net
+  isExternal: false
+  name: HttpWebRequest
+  nameWithType: HttpWebRequest
+  fullName: System.Net.HttpWebRequest
+- uid: System.Net.WebRequest.CreateHttp(System.Uri)
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: CreateHttp(Uri)
+  nameWithType: WebRequest.CreateHttp(Uri)
+  fullName: System.Net.WebRequest.CreateHttp(Uri)
+- uid: System.Net.WebRequest.CreatorInstance
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: CreatorInstance
+  nameWithType: WebRequest.CreatorInstance
+  fullName: System.Net.WebRequest.CreatorInstance
+- uid: System.Net.IWebRequestCreate
+  parent: System.Net
+  isExternal: false
+  name: IWebRequestCreate
+  nameWithType: IWebRequestCreate
+  fullName: System.Net.IWebRequestCreate
+- uid: System.Net.WebRequest.Credentials
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Credentials
+  nameWithType: WebRequest.Credentials
+  fullName: System.Net.WebRequest.Credentials
+- uid: System.Net.ICredentials
+  parent: System.Net
+  isExternal: false
+  name: ICredentials
+  nameWithType: ICredentials
+  fullName: System.Net.ICredentials
+- uid: System.Net.WebRequest.DefaultCachePolicy
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: DefaultCachePolicy
+  nameWithType: WebRequest.DefaultCachePolicy
+  fullName: System.Net.WebRequest.DefaultCachePolicy
+- uid: System.Net.WebRequest.DefaultWebProxy
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: DefaultWebProxy
+  nameWithType: WebRequest.DefaultWebProxy
+  fullName: System.Net.WebRequest.DefaultWebProxy
+- uid: System.Net.IWebProxy
+  parent: System.Net
+  isExternal: false
+  name: IWebProxy
+  nameWithType: IWebProxy
+  fullName: System.Net.IWebProxy
+- uid: System.Net.WebRequest.EndGetRequestStream(System.IAsyncResult)
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: EndGetRequestStream(IAsyncResult)
+  nameWithType: WebRequest.EndGetRequestStream(IAsyncResult)
+  fullName: System.Net.WebRequest.EndGetRequestStream(IAsyncResult)
+- uid: System.IO.Stream
+  parent: System.IO
+  isExternal: false
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.Net.WebRequest.EndGetResponse(System.IAsyncResult)
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: EndGetResponse(IAsyncResult)
+  nameWithType: WebRequest.EndGetResponse(IAsyncResult)
+  fullName: System.Net.WebRequest.EndGetResponse(IAsyncResult)
+- uid: System.Net.WebResponse
+  parent: System.Net
+  isExternal: false
+  name: WebResponse
+  nameWithType: WebResponse
+  fullName: System.Net.WebResponse
+- uid: System.Net.WebRequest.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: GetObjectData(SerializationInfo,StreamingContext)
+  nameWithType: WebRequest.GetObjectData(SerializationInfo,StreamingContext)
+  fullName: System.Net.WebRequest.GetObjectData(SerializationInfo,StreamingContext)
+- uid: System.Net.WebRequest.GetRequestStream
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: GetRequestStream()
+  nameWithType: WebRequest.GetRequestStream()
+  fullName: System.Net.WebRequest.GetRequestStream()
+- uid: System.Net.WebRequest.GetRequestStreamAsync
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: GetRequestStreamAsync()
+  nameWithType: WebRequest.GetRequestStreamAsync()
+  fullName: System.Net.WebRequest.GetRequestStreamAsync()
+- uid: System.Threading.Tasks.Task{System.IO.Stream}
+  parent: System.Threading.Tasks
+  isExternal: false
+  name: Task<Stream>
+  nameWithType: Task<Stream>
+  fullName: System.Threading.Tasks.Task<System.IO.Stream>
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task<System.IO.Stream>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.IO.Stream
+    name: Stream
+    nameWithType: Stream
+    fullName: Stream
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Net.WebRequest.GetResponse
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: GetResponse()
+  nameWithType: WebRequest.GetResponse()
+  fullName: System.Net.WebRequest.GetResponse()
+- uid: System.Net.WebRequest.GetResponseAsync
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: GetResponseAsync()
+  nameWithType: WebRequest.GetResponseAsync()
+  fullName: System.Net.WebRequest.GetResponseAsync()
+- uid: System.Threading.Tasks.Task{System.Net.WebResponse}
+  parent: System.Threading.Tasks
+  isExternal: false
+  name: Task<WebResponse>
+  nameWithType: Task<WebResponse>
+  fullName: System.Threading.Tasks.Task<System.Net.WebResponse>
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task<System.Net.WebResponse>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Net.WebResponse
+    name: WebResponse
+    nameWithType: WebResponse
+    fullName: WebResponse
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Net.WebRequest.GetSystemWebProxy
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: GetSystemWebProxy()
+  nameWithType: WebRequest.GetSystemWebProxy()
+  fullName: System.Net.WebRequest.GetSystemWebProxy()
+- uid: System.Net.WebRequest.Headers
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Headers
+  nameWithType: WebRequest.Headers
+  fullName: System.Net.WebRequest.Headers
+- uid: System.Net.WebHeaderCollection
+  parent: System.Net
+  isExternal: false
+  name: WebHeaderCollection
+  nameWithType: WebHeaderCollection
+  fullName: System.Net.WebHeaderCollection
+- uid: System.Net.WebRequest.ImpersonationLevel
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: ImpersonationLevel
+  nameWithType: WebRequest.ImpersonationLevel
+  fullName: System.Net.WebRequest.ImpersonationLevel
+- uid: System.Security.Principal.TokenImpersonationLevel
+  parent: System.Security.Principal
+  isExternal: false
+  name: TokenImpersonationLevel
+  nameWithType: TokenImpersonationLevel
+  fullName: System.Security.Principal.TokenImpersonationLevel
+- uid: System.Net.WebRequest.Method
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Method
+  nameWithType: WebRequest.Method
+  fullName: System.Net.WebRequest.Method
+- uid: System.Net.WebRequest.PreAuthenticate
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: PreAuthenticate
+  nameWithType: WebRequest.PreAuthenticate
+  fullName: System.Net.WebRequest.PreAuthenticate
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Net.WebRequest.Proxy
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Proxy
+  nameWithType: WebRequest.Proxy
+  fullName: System.Net.WebRequest.Proxy
+- uid: System.Net.WebRequest.RegisterPortableWebRequestCreator(System.Net.IWebRequestCreate)
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: RegisterPortableWebRequestCreator(IWebRequestCreate)
+  nameWithType: WebRequest.RegisterPortableWebRequestCreator(IWebRequestCreate)
+  fullName: System.Net.WebRequest.RegisterPortableWebRequestCreator(IWebRequestCreate)
+- uid: System.Net.WebRequest.RegisterPrefix(System.String,System.Net.IWebRequestCreate)
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: RegisterPrefix(String,IWebRequestCreate)
+  nameWithType: WebRequest.RegisterPrefix(String,IWebRequestCreate)
+  fullName: System.Net.WebRequest.RegisterPrefix(String,IWebRequestCreate)
+- uid: System.Net.WebRequest.RequestUri
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: RequestUri
+  nameWithType: WebRequest.RequestUri
+  fullName: System.Net.WebRequest.RequestUri
+- uid: System.Net.WebRequest.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: ISerializable.GetObjectData(SerializationInfo,StreamingContext)
+  nameWithType: WebRequest.ISerializable.GetObjectData(SerializationInfo,StreamingContext)
+  fullName: System.Net.WebRequest.ISerializable.GetObjectData(SerializationInfo,StreamingContext)
+- uid: System.Net.WebRequest.Timeout
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Timeout
+  nameWithType: WebRequest.Timeout
+  fullName: System.Net.WebRequest.Timeout
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Net.WebRequest.UseDefaultCredentials
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: UseDefaultCredentials
+  nameWithType: WebRequest.UseDefaultCredentials
+  fullName: System.Net.WebRequest.UseDefaultCredentials
+- uid: System.Net.WebRequest.#ctor*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: WebRequest
+  nameWithType: WebRequest.WebRequest
+- uid: System.Net.WebRequest.Abort*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Abort
+  nameWithType: WebRequest.Abort
+- uid: System.Net.WebRequest.AuthenticationLevel*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: AuthenticationLevel
+  nameWithType: WebRequest.AuthenticationLevel
+- uid: System.Net.WebRequest.BeginGetRequestStream*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: BeginGetRequestStream
+  nameWithType: WebRequest.BeginGetRequestStream
+- uid: System.Net.WebRequest.BeginGetResponse*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: BeginGetResponse
+  nameWithType: WebRequest.BeginGetResponse
+- uid: System.Net.WebRequest.CachePolicy*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: CachePolicy
+  nameWithType: WebRequest.CachePolicy
+- uid: System.Net.WebRequest.ConnectionGroupName*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: ConnectionGroupName
+  nameWithType: WebRequest.ConnectionGroupName
+- uid: System.Net.WebRequest.ContentLength*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: ContentLength
+  nameWithType: WebRequest.ContentLength
+- uid: System.Net.WebRequest.ContentType*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: ContentType
+  nameWithType: WebRequest.ContentType
+- uid: System.Net.WebRequest.Create*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Create
+  nameWithType: WebRequest.Create
+- uid: System.Net.WebRequest.CreateDefault*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: CreateDefault
+  nameWithType: WebRequest.CreateDefault
+- uid: System.Net.WebRequest.CreateHttp*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: CreateHttp
+  nameWithType: WebRequest.CreateHttp
+- uid: System.Net.WebRequest.CreatorInstance*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: CreatorInstance
+  nameWithType: WebRequest.CreatorInstance
+- uid: System.Net.WebRequest.Credentials*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Credentials
+  nameWithType: WebRequest.Credentials
+- uid: System.Net.WebRequest.DefaultCachePolicy*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: DefaultCachePolicy
+  nameWithType: WebRequest.DefaultCachePolicy
+- uid: System.Net.WebRequest.DefaultWebProxy*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: DefaultWebProxy
+  nameWithType: WebRequest.DefaultWebProxy
+- uid: System.Net.WebRequest.EndGetRequestStream*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: EndGetRequestStream
+  nameWithType: WebRequest.EndGetRequestStream
+- uid: System.Net.WebRequest.EndGetResponse*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: EndGetResponse
+  nameWithType: WebRequest.EndGetResponse
+- uid: System.Net.WebRequest.GetObjectData*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: GetObjectData
+  nameWithType: WebRequest.GetObjectData
+- uid: System.Net.WebRequest.GetRequestStream*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: GetRequestStream
+  nameWithType: WebRequest.GetRequestStream
+- uid: System.Net.WebRequest.GetRequestStreamAsync*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: GetRequestStreamAsync
+  nameWithType: WebRequest.GetRequestStreamAsync
+- uid: System.Net.WebRequest.GetResponse*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: GetResponse
+  nameWithType: WebRequest.GetResponse
+- uid: System.Net.WebRequest.GetResponseAsync*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: GetResponseAsync
+  nameWithType: WebRequest.GetResponseAsync
+- uid: System.Net.WebRequest.GetSystemWebProxy*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: GetSystemWebProxy
+  nameWithType: WebRequest.GetSystemWebProxy
+- uid: System.Net.WebRequest.Headers*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Headers
+  nameWithType: WebRequest.Headers
+- uid: System.Net.WebRequest.ImpersonationLevel*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: ImpersonationLevel
+  nameWithType: WebRequest.ImpersonationLevel
+- uid: System.Net.WebRequest.Method*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Method
+  nameWithType: WebRequest.Method
+- uid: System.Net.WebRequest.PreAuthenticate*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: PreAuthenticate
+  nameWithType: WebRequest.PreAuthenticate
+- uid: System.Net.WebRequest.Proxy*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Proxy
+  nameWithType: WebRequest.Proxy
+- uid: System.Net.WebRequest.RegisterPortableWebRequestCreator*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: RegisterPortableWebRequestCreator
+  nameWithType: WebRequest.RegisterPortableWebRequestCreator
+- uid: System.Net.WebRequest.RegisterPrefix*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: RegisterPrefix
+  nameWithType: WebRequest.RegisterPrefix
+- uid: System.Net.WebRequest.RequestUri*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: RequestUri
+  nameWithType: WebRequest.RequestUri
+- uid: System.Net.WebRequest.System#Runtime#Serialization#ISerializable#GetObjectData*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: System.Runtime.Serialization.ISerializable.GetObjectData
+  nameWithType: WebRequest.System.Runtime.Serialization.ISerializable.GetObjectData
+- uid: System.Net.WebRequest.Timeout*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: Timeout
+  nameWithType: WebRequest.Timeout
+- uid: System.Net.WebRequest.UseDefaultCredentials*
+  parent: System.Net.WebRequest
+  isExternal: false
+  name: UseDefaultCredentials
+  nameWithType: WebRequest.UseDefaultCredentials

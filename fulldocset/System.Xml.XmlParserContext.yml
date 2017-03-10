@@ -1,0 +1,812 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.XmlParserContext
+  id: XmlParserContext
+  children:
+  - System.Xml.XmlParserContext.#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.Xml.XmlSpace)
+  - System.Xml.XmlParserContext.#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.Xml.XmlSpace,System.Text.Encoding)
+  - System.Xml.XmlParserContext.#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.String,System.String,System.String,System.String,System.String,System.Xml.XmlSpace)
+  - System.Xml.XmlParserContext.#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.String,System.String,System.String,System.String,System.String,System.Xml.XmlSpace,System.Text.Encoding)
+  - System.Xml.XmlParserContext.BaseURI
+  - System.Xml.XmlParserContext.DocTypeName
+  - System.Xml.XmlParserContext.Encoding
+  - System.Xml.XmlParserContext.InternalSubset
+  - System.Xml.XmlParserContext.NamespaceManager
+  - System.Xml.XmlParserContext.NameTable
+  - System.Xml.XmlParserContext.PublicId
+  - System.Xml.XmlParserContext.SystemId
+  - System.Xml.XmlParserContext.XmlLang
+  - System.Xml.XmlParserContext.XmlSpace
+  langs:
+  - csharp
+  name: XmlParserContext
+  nameWithType: XmlParserContext
+  fullName: System.Xml.XmlParserContext
+  type: Class
+  summary: Provides all the context information required by the <xref href="System.Xml.XmlReader"></xref> to parse an XML fragment.
+  remarks: ''
+  example:
+  - "The following example creates an <xref:System.Xml.XmlReader> object that reads an XML fragment.  \n  \n [!code-vb[XmlReader.Create#1](~/add/codesnippet/visualbasic/t-system.xml.xmlparserco_1.vb)]\n [!code-cs[XmlReader.Create#1](~/add/codesnippet/csharp/t-system.xml.xmlparserco_1.cs)]"
+  syntax:
+    content: public class XmlParserContext
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlParserContext.#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.Xml.XmlSpace)
+  id: '#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.Xml.XmlSpace)'
+  parent: System.Xml.XmlParserContext
+  langs:
+  - csharp
+  name: XmlParserContext(XmlNameTable,XmlNamespaceManager,String,XmlSpace)
+  nameWithType: XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,XmlSpace)
+  fullName: System.Xml.XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,XmlSpace)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Initializes a new instance of the `XmlParserContext` class with the specified <xref href="System.Xml.XmlNameTable"></xref>, <xref href="System.Xml.XmlNamespaceManager"></xref>, `xml:lang`, and `xml:space` values.
+  remarks: ''
+  example:
+  - "The following example reads an XML fragment. It uses an `XmlParserContext` and its `XmlNamespaceManager` to handle namespace matching.  \n  \n [!code-vb[Classic WebData XmlParserContext.XmlParserContext Example#1](~/add/codesnippet/visualbasic/1e3ac7f2-0386-4e1a-aac7-_1.vb)]\n [!code-cs[Classic WebData XmlParserContext.XmlParserContext Example#1](~/add/codesnippet/csharp/1e3ac7f2-0386-4e1a-aac7-_1.cs)]"
+  syntax:
+    content: public XmlParserContext (System.Xml.XmlNameTable nt, System.Xml.XmlNamespaceManager nsMgr, string xmlLang, System.Xml.XmlSpace xmlSpace);
+    parameters:
+    - id: nt
+      type: System.Xml.XmlNameTable
+      description: The <xref href="System.Xml.XmlNameTable"></xref> to use to atomize strings. If this is `null`, the name table used to construct the <code>nsMgr</code> is used instead. For more information about atomized strings, see <xref href="System.Xml.XmlNameTable"></xref>.
+    - id: nsMgr
+      type: System.Xml.XmlNamespaceManager
+      description: The <xref href="System.Xml.XmlNamespaceManager"></xref> to use for looking up namespace information, or `null`.
+    - id: xmlLang
+      type: System.String
+      description: The `xml:lang` scope.
+    - id: xmlSpace
+      type: System.Xml.XmlSpace
+      description: An <xref href="System.Xml.XmlSpace"></xref> value indicating the `xml:space` scope.
+  overload: System.Xml.XmlParserContext.#ctor*
+  exceptions:
+  - type: System.Xml.XmlException
+    commentId: T:System.Xml.XmlException
+    description: <code>nt</code> is not the same `XmlNameTable` used to construct <code>nsMgr</code>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlParserContext.#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.Xml.XmlSpace,System.Text.Encoding)
+  id: '#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.Xml.XmlSpace,System.Text.Encoding)'
+  parent: System.Xml.XmlParserContext
+  langs:
+  - csharp
+  name: XmlParserContext(XmlNameTable,XmlNamespaceManager,String,XmlSpace,Encoding)
+  nameWithType: XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,XmlSpace,Encoding)
+  fullName: System.Xml.XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,XmlSpace,Encoding)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Initializes a new instance of the `XmlParserContext` class with the specified <xref href="System.Xml.XmlNameTable"></xref>, <xref href="System.Xml.XmlNamespaceManager"></xref>, `xml:lang`, `xml:space`, and encoding.
+  syntax:
+    content: public XmlParserContext (System.Xml.XmlNameTable nt, System.Xml.XmlNamespaceManager nsMgr, string xmlLang, System.Xml.XmlSpace xmlSpace, System.Text.Encoding enc);
+    parameters:
+    - id: nt
+      type: System.Xml.XmlNameTable
+      description: The <xref href="System.Xml.XmlNameTable"></xref> to use to atomize strings. If this is `null`, the name table used to construct the <code>nsMgr</code> is used instead. For more information on atomized strings, see <xref href="System.Xml.XmlNameTable"></xref>.
+    - id: nsMgr
+      type: System.Xml.XmlNamespaceManager
+      description: The <xref href="System.Xml.XmlNamespaceManager"></xref> to use for looking up namespace information, or `null`.
+    - id: xmlLang
+      type: System.String
+      description: The `xml:lang` scope.
+    - id: xmlSpace
+      type: System.Xml.XmlSpace
+      description: An <xref href="System.Xml.XmlSpace"></xref> value indicating the `xml:space` scope.
+    - id: enc
+      type: System.Text.Encoding
+      description: An <xref href="System.Text.Encoding"></xref> object indicating the encoding setting.
+  overload: System.Xml.XmlParserContext.#ctor*
+  exceptions:
+  - type: System.Xml.XmlException
+    commentId: T:System.Xml.XmlException
+    description: <code>nt</code> is not the same `XmlNameTable` used to construct <code>nsMgr</code>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlParserContext.#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.String,System.String,System.String,System.String,System.String,System.Xml.XmlSpace)
+  id: '#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.String,System.String,System.String,System.String,System.String,System.Xml.XmlSpace)'
+  parent: System.Xml.XmlParserContext
+  langs:
+  - csharp
+  name: XmlParserContext(XmlNameTable,XmlNamespaceManager,String,String,String,String,String,String,XmlSpace)
+  nameWithType: XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,String,String,String,String,String,XmlSpace)
+  fullName: System.Xml.XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,String,String,String,String,String,XmlSpace)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Initializes a new instance of the `XmlParserContext` class with the specified <xref href="System.Xml.XmlNameTable"></xref>, <xref href="System.Xml.XmlNamespaceManager"></xref>, base URI, `xml:lang`, `xml:space`, and document type values.
+  remarks: "This constructor supplies all `DocumentType` information required by <xref:System.Xml.XmlValidatingReader>. If this `XmlParserContext` is passed to an <xref:System.Xml.XmlTextReader>, all DTD information is ignored.  \n  \n If you pass a DTD as the `internalSubset`, the DTD is used for entity resolution, not for document validation."
+  example:
+  - "The following example uses an `XmlParserContext` to read an XML fragment.  \n  \n [!code-vb[Classic WebData XmlParserContext.XmlParserContext1 Example#1](~/add/codesnippet/visualbasic/d2a8d607-bacc-46f8-9b4c-_1.vb)]\n [!code-cs[Classic WebData XmlParserContext.XmlParserContext1 Example#1](~/add/codesnippet/csharp/d2a8d607-bacc-46f8-9b4c-_1.cs)]"
+  syntax:
+    content: public XmlParserContext (System.Xml.XmlNameTable nt, System.Xml.XmlNamespaceManager nsMgr, string docTypeName, string pubId, string sysId, string internalSubset, string baseURI, string xmlLang, System.Xml.XmlSpace xmlSpace);
+    parameters:
+    - id: nt
+      type: System.Xml.XmlNameTable
+      description: The <xref href="System.Xml.XmlNameTable"></xref> to use to atomize strings. If this is `null`, the name table used to construct the <code>nsMgr</code> is used instead. For more information about atomized strings, see <xref href="System.Xml.XmlNameTable"></xref>.
+    - id: nsMgr
+      type: System.Xml.XmlNamespaceManager
+      description: The <xref href="System.Xml.XmlNamespaceManager"></xref> to use for looking up namespace information, or `null`.
+    - id: docTypeName
+      type: System.String
+      description: The name of the document type declaration.
+    - id: pubId
+      type: System.String
+      description: The public identifier.
+    - id: sysId
+      type: System.String
+      description: The system identifier.
+    - id: internalSubset
+      type: System.String
+      description: The internal DTD subset. The DTD subset is used for entity resolution, not for document validation.
+    - id: baseURI
+      type: System.String
+      description: The base URI for the XML fragment (the location from which the fragment was loaded).
+    - id: xmlLang
+      type: System.String
+      description: The `xml:lang` scope.
+    - id: xmlSpace
+      type: System.Xml.XmlSpace
+      description: An <xref href="System.Xml.XmlSpace"></xref> value indicating the `xml:space` scope.
+  overload: System.Xml.XmlParserContext.#ctor*
+  exceptions:
+  - type: System.Xml.XmlException
+    commentId: T:System.Xml.XmlException
+    description: <code>nt</code> is not the same `XmlNameTable` used to construct <code>nsMgr</code>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlParserContext.#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.String,System.String,System.String,System.String,System.String,System.Xml.XmlSpace,System.Text.Encoding)
+  id: '#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.String,System.String,System.String,System.String,System.String,System.Xml.XmlSpace,System.Text.Encoding)'
+  parent: System.Xml.XmlParserContext
+  langs:
+  - csharp
+  name: XmlParserContext(XmlNameTable,XmlNamespaceManager,String,String,String,String,String,String,XmlSpace,Encoding)
+  nameWithType: XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,String,String,String,String,String,XmlSpace,Encoding)
+  fullName: System.Xml.XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,String,String,String,String,String,XmlSpace,Encoding)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Initializes a new instance of the `XmlParserContext` class with the specified <xref href="System.Xml.XmlNameTable"></xref>, <xref href="System.Xml.XmlNamespaceManager"></xref>, base URI, `xml:lang`, `xml:space`, encoding, and document type values.
+  syntax:
+    content: public XmlParserContext (System.Xml.XmlNameTable nt, System.Xml.XmlNamespaceManager nsMgr, string docTypeName, string pubId, string sysId, string internalSubset, string baseURI, string xmlLang, System.Xml.XmlSpace xmlSpace, System.Text.Encoding enc);
+    parameters:
+    - id: nt
+      type: System.Xml.XmlNameTable
+      description: The <xref href="System.Xml.XmlNameTable"></xref> to use to atomize strings. If this is `null`, the name table used to construct the <code>nsMgr</code> is used instead. For more information about atomized strings, see <xref href="System.Xml.XmlNameTable"></xref>.
+    - id: nsMgr
+      type: System.Xml.XmlNamespaceManager
+      description: The <xref href="System.Xml.XmlNamespaceManager"></xref> to use for looking up namespace information, or `null`.
+    - id: docTypeName
+      type: System.String
+      description: The name of the document type declaration.
+    - id: pubId
+      type: System.String
+      description: The public identifier.
+    - id: sysId
+      type: System.String
+      description: The system identifier.
+    - id: internalSubset
+      type: System.String
+      description: The internal DTD subset. The DTD is used for entity resolution, not for document validation.
+    - id: baseURI
+      type: System.String
+      description: The base URI for the XML fragment (the location from which the fragment was loaded).
+    - id: xmlLang
+      type: System.String
+      description: The `xml:lang` scope.
+    - id: xmlSpace
+      type: System.Xml.XmlSpace
+      description: An <xref href="System.Xml.XmlSpace"></xref> value indicating the `xml:space` scope.
+    - id: enc
+      type: System.Text.Encoding
+      description: An <xref href="System.Text.Encoding"></xref> object indicating the encoding setting.
+  overload: System.Xml.XmlParserContext.#ctor*
+  exceptions:
+  - type: System.Xml.XmlException
+    commentId: T:System.Xml.XmlException
+    description: <code>nt</code> is not the same `XmlNameTable` used to construct <code>nsMgr</code>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlParserContext.BaseURI
+  id: BaseURI
+  parent: System.Xml.XmlParserContext
+  langs:
+  - csharp
+  name: BaseURI
+  nameWithType: XmlParserContext.BaseURI
+  fullName: System.Xml.XmlParserContext.BaseURI
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Gets or sets the base URI.
+  remarks: A networked XML document is comprised of chunks of data aggregated using various W3C standard inclusion mechanisms and therefore may contain nodes that come from different places. `BaseURI` shows where these nodes originated.
+  syntax:
+    content: public string BaseURI { get; set; }
+    return:
+      type: System.String
+      description: The base URI to use to resolve the DTD file.
+  overload: System.Xml.XmlParserContext.BaseURI*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlParserContext.DocTypeName
+  id: DocTypeName
+  parent: System.Xml.XmlParserContext
+  langs:
+  - csharp
+  name: DocTypeName
+  nameWithType: XmlParserContext.DocTypeName
+  fullName: System.Xml.XmlParserContext.DocTypeName
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Gets or sets the name of the document type declaration.
+  remarks: This property, along with <xref:System.Xml.XmlParserContext.PublicId%2A>, <xref:System.Xml.XmlParserContext.SystemId%2A>, and <xref:System.Xml.XmlParserContext.InternalSubset%2A>, provides all the document type declaration information. It is used to find and load the necessary DTD information so that you get all the default attributes and entities defined in the DTD.
+  syntax:
+    content: public string DocTypeName { get; set; }
+    return:
+      type: System.String
+      description: The name of the document type declaration.
+  overload: System.Xml.XmlParserContext.DocTypeName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlParserContext.Encoding
+  id: Encoding
+  parent: System.Xml.XmlParserContext
+  langs:
+  - csharp
+  name: Encoding
+  nameWithType: XmlParserContext.Encoding
+  fullName: System.Xml.XmlParserContext.Encoding
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Gets or sets the encoding type.
+  syntax:
+    content: public System.Text.Encoding Encoding { get; set; }
+    return:
+      type: System.Text.Encoding
+      description: An <xref href="System.Text.Encoding"></xref> object indicating the encoding type.
+  overload: System.Xml.XmlParserContext.Encoding*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlParserContext.InternalSubset
+  id: InternalSubset
+  parent: System.Xml.XmlParserContext
+  langs:
+  - csharp
+  name: InternalSubset
+  nameWithType: XmlParserContext.InternalSubset
+  fullName: System.Xml.XmlParserContext.InternalSubset
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Gets or sets the internal DTD subset.
+  remarks: "This property, along with <xref:System.Xml.XmlParserContext.DocTypeName%2A>, <xref:System.Xml.XmlParserContext.PublicId%2A>, and <xref:System.Xml.XmlParserContext.SystemId%2A>, provides all the document type declaration information. It is used to find and load the necessary DTD information so that you get all the default attributes and entities defined in the DTD.  \n  \n The DTD is used for entity resolution, not for document validation."
+  syntax:
+    content: public string InternalSubset { get; set; }
+    return:
+      type: System.String
+      description: The internal DTD subset. For example, this property returns everything between the square brackets <code><!DOCTYPE doc [...]></code>.
+  overload: System.Xml.XmlParserContext.InternalSubset*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlParserContext.NamespaceManager
+  id: NamespaceManager
+  parent: System.Xml.XmlParserContext
+  langs:
+  - csharp
+  name: NamespaceManager
+  nameWithType: XmlParserContext.NamespaceManager
+  fullName: System.Xml.XmlParserContext.NamespaceManager
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Gets or sets the <xref href="System.Xml.XmlNamespaceManager"></xref>.
+  remarks: The `NamespaceManager` defines the current namespace scope and provides methods for looking up namespace information.
+  syntax:
+    content: public System.Xml.XmlNamespaceManager NamespaceManager { get; set; }
+    return:
+      type: System.Xml.XmlNamespaceManager
+      description: The `XmlNamespaceManager`.
+  overload: System.Xml.XmlParserContext.NamespaceManager*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlParserContext.NameTable
+  id: NameTable
+  parent: System.Xml.XmlParserContext
+  langs:
+  - csharp
+  name: NameTable
+  nameWithType: XmlParserContext.NameTable
+  fullName: System.Xml.XmlParserContext.NameTable
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Gets the <xref href="System.Xml.XmlNameTable"></xref> used to atomize strings. For more information on atomized strings, see <xref href="System.Xml.XmlNameTable"></xref>.
+  syntax:
+    content: public System.Xml.XmlNameTable NameTable { get; set; }
+    return:
+      type: System.Xml.XmlNameTable
+      description: The `XmlNameTable`.
+  overload: System.Xml.XmlParserContext.NameTable*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlParserContext.PublicId
+  id: PublicId
+  parent: System.Xml.XmlParserContext
+  langs:
+  - csharp
+  name: PublicId
+  nameWithType: XmlParserContext.PublicId
+  fullName: System.Xml.XmlParserContext.PublicId
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Gets or sets the public identifier.
+  remarks: This property, along with <xref:System.Xml.XmlParserContext.DocTypeName%2A>, <xref:System.Xml.XmlParserContext.SystemId%2A>, and <xref:System.Xml.XmlParserContext.InternalSubset%2A>, provides all the document type declaration information. It is used to find and load the required DTD information so that you get all the default attributes and entities defined in the DTD.
+  syntax:
+    content: public string PublicId { get; set; }
+    return:
+      type: System.String
+      description: The public identifier.
+  overload: System.Xml.XmlParserContext.PublicId*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlParserContext.SystemId
+  id: SystemId
+  parent: System.Xml.XmlParserContext
+  langs:
+  - csharp
+  name: SystemId
+  nameWithType: XmlParserContext.SystemId
+  fullName: System.Xml.XmlParserContext.SystemId
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Gets or sets the system identifier.
+  remarks: This property, along with <xref:System.Xml.XmlParserContext.DocTypeName%2A>, <xref:System.Xml.XmlParserContext.PublicId%2A>, and <xref:System.Xml.XmlParserContext.InternalSubset%2A>, provides all the document type declaration information. It is used to find and load the necessary DTD information so that you get all the default attributes and entities defined in the DTD.
+  syntax:
+    content: public string SystemId { get; set; }
+    return:
+      type: System.String
+      description: The system identifier.
+  overload: System.Xml.XmlParserContext.SystemId*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlParserContext.XmlLang
+  id: XmlLang
+  parent: System.Xml.XmlParserContext
+  langs:
+  - csharp
+  name: XmlLang
+  nameWithType: XmlParserContext.XmlLang
+  fullName: System.Xml.XmlParserContext.XmlLang
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Gets or sets the current `xml:lang` scope.
+  remarks: For details on valid `xml:lang` values, refer to section 2.12 of the W3C Extensible Markup Language (XML) 1.0 recommendation.
+  syntax:
+    content: public string XmlLang { get; set; }
+    return:
+      type: System.String
+      description: The current `xml:lang` scope. If there is no `xml:lang` in scope, `String.Empty` is returned.
+  overload: System.Xml.XmlParserContext.XmlLang*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlParserContext.XmlSpace
+  id: XmlSpace
+  parent: System.Xml.XmlParserContext
+  langs:
+  - csharp
+  name: XmlSpace
+  nameWithType: XmlParserContext.XmlSpace
+  fullName: System.Xml.XmlParserContext.XmlSpace
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Gets or sets the current `xml:space` scope.
+  syntax:
+    content: public System.Xml.XmlSpace XmlSpace { get; set; }
+    return:
+      type: System.Xml.XmlSpace
+      description: An <xref href="System.Xml.XmlSpace"></xref> value indicating the `xml:space` scope.
+  overload: System.Xml.XmlParserContext.XmlSpace*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlParserContext.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlParserContext.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.Xml.XmlException
+  parent: System.Xml
+  isExternal: false
+  name: XmlException
+  nameWithType: XmlException
+  fullName: System.Xml.XmlException
+- uid: System.Xml.XmlParserContext.#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.Xml.XmlSpace)
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: XmlParserContext(XmlNameTable,XmlNamespaceManager,String,XmlSpace)
+  nameWithType: XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,XmlSpace)
+  fullName: System.Xml.XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,XmlSpace)
+- uid: System.Xml.XmlNameTable
+  parent: System.Xml
+  isExternal: false
+  name: XmlNameTable
+  nameWithType: XmlNameTable
+  fullName: System.Xml.XmlNameTable
+- uid: System.Xml.XmlNamespaceManager
+  parent: System.Xml
+  isExternal: false
+  name: XmlNamespaceManager
+  nameWithType: XmlNamespaceManager
+  fullName: System.Xml.XmlNamespaceManager
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Xml.XmlSpace
+  parent: System.Xml
+  isExternal: false
+  name: XmlSpace
+  nameWithType: XmlSpace
+  fullName: System.Xml.XmlSpace
+- uid: System.Xml.XmlParserContext.#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.Xml.XmlSpace,System.Text.Encoding)
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: XmlParserContext(XmlNameTable,XmlNamespaceManager,String,XmlSpace,Encoding)
+  nameWithType: XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,XmlSpace,Encoding)
+  fullName: System.Xml.XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,XmlSpace,Encoding)
+- uid: System.Text.Encoding
+  parent: System.Text
+  isExternal: false
+  name: Encoding
+  nameWithType: Encoding
+  fullName: System.Text.Encoding
+- uid: System.Xml.XmlParserContext.#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.String,System.String,System.String,System.String,System.String,System.Xml.XmlSpace)
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: XmlParserContext(XmlNameTable,XmlNamespaceManager,String,String,String,String,String,String,XmlSpace)
+  nameWithType: XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,String,String,String,String,String,XmlSpace)
+  fullName: System.Xml.XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,String,String,String,String,String,XmlSpace)
+- uid: System.Xml.XmlParserContext.#ctor(System.Xml.XmlNameTable,System.Xml.XmlNamespaceManager,System.String,System.String,System.String,System.String,System.String,System.String,System.Xml.XmlSpace,System.Text.Encoding)
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: XmlParserContext(XmlNameTable,XmlNamespaceManager,String,String,String,String,String,String,XmlSpace,Encoding)
+  nameWithType: XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,String,String,String,String,String,XmlSpace,Encoding)
+  fullName: System.Xml.XmlParserContext.XmlParserContext(XmlNameTable,XmlNamespaceManager,String,String,String,String,String,String,XmlSpace,Encoding)
+- uid: System.Xml.XmlParserContext.BaseURI
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: BaseURI
+  nameWithType: XmlParserContext.BaseURI
+  fullName: System.Xml.XmlParserContext.BaseURI
+- uid: System.Xml.XmlParserContext.DocTypeName
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: DocTypeName
+  nameWithType: XmlParserContext.DocTypeName
+  fullName: System.Xml.XmlParserContext.DocTypeName
+- uid: System.Xml.XmlParserContext.Encoding
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: Encoding
+  nameWithType: XmlParserContext.Encoding
+  fullName: System.Xml.XmlParserContext.Encoding
+- uid: System.Xml.XmlParserContext.InternalSubset
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: InternalSubset
+  nameWithType: XmlParserContext.InternalSubset
+  fullName: System.Xml.XmlParserContext.InternalSubset
+- uid: System.Xml.XmlParserContext.NamespaceManager
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: NamespaceManager
+  nameWithType: XmlParserContext.NamespaceManager
+  fullName: System.Xml.XmlParserContext.NamespaceManager
+- uid: System.Xml.XmlParserContext.NameTable
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: NameTable
+  nameWithType: XmlParserContext.NameTable
+  fullName: System.Xml.XmlParserContext.NameTable
+- uid: System.Xml.XmlParserContext.PublicId
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: PublicId
+  nameWithType: XmlParserContext.PublicId
+  fullName: System.Xml.XmlParserContext.PublicId
+- uid: System.Xml.XmlParserContext.SystemId
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: SystemId
+  nameWithType: XmlParserContext.SystemId
+  fullName: System.Xml.XmlParserContext.SystemId
+- uid: System.Xml.XmlParserContext.XmlLang
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: XmlLang
+  nameWithType: XmlParserContext.XmlLang
+  fullName: System.Xml.XmlParserContext.XmlLang
+- uid: System.Xml.XmlParserContext.XmlSpace
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: XmlSpace
+  nameWithType: XmlParserContext.XmlSpace
+  fullName: System.Xml.XmlParserContext.XmlSpace
+- uid: System.Xml.XmlParserContext.#ctor*
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: XmlParserContext
+  nameWithType: XmlParserContext.XmlParserContext
+- uid: System.Xml.XmlParserContext.BaseURI*
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: BaseURI
+  nameWithType: XmlParserContext.BaseURI
+- uid: System.Xml.XmlParserContext.DocTypeName*
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: DocTypeName
+  nameWithType: XmlParserContext.DocTypeName
+- uid: System.Xml.XmlParserContext.Encoding*
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: Encoding
+  nameWithType: XmlParserContext.Encoding
+- uid: System.Xml.XmlParserContext.InternalSubset*
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: InternalSubset
+  nameWithType: XmlParserContext.InternalSubset
+- uid: System.Xml.XmlParserContext.NamespaceManager*
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: NamespaceManager
+  nameWithType: XmlParserContext.NamespaceManager
+- uid: System.Xml.XmlParserContext.NameTable*
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: NameTable
+  nameWithType: XmlParserContext.NameTable
+- uid: System.Xml.XmlParserContext.PublicId*
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: PublicId
+  nameWithType: XmlParserContext.PublicId
+- uid: System.Xml.XmlParserContext.SystemId*
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: SystemId
+  nameWithType: XmlParserContext.SystemId
+- uid: System.Xml.XmlParserContext.XmlLang*
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: XmlLang
+  nameWithType: XmlParserContext.XmlLang
+- uid: System.Xml.XmlParserContext.XmlSpace*
+  parent: System.Xml.XmlParserContext
+  isExternal: false
+  name: XmlSpace
+  nameWithType: XmlParserContext.XmlSpace

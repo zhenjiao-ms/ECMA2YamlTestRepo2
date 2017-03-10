@@ -1,0 +1,136 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.Serialization.XmlAnyAttributeAttribute
+  id: XmlAnyAttributeAttribute
+  children:
+  - System.Xml.Serialization.XmlAnyAttributeAttribute.#ctor
+  langs:
+  - csharp
+  name: XmlAnyAttributeAttribute
+  nameWithType: XmlAnyAttributeAttribute
+  fullName: System.Xml.Serialization.XmlAnyAttributeAttribute
+  type: Class
+  summary: Specifies that the member (a field that returns an array of <xref href="System.Xml.XmlAttribute"></xref> objects) can contain any XML attributes.
+  remarks: "Use the XmlAnyAttributeAttribute to contain arbitrary data (as XML attributes) that is sent as part of an XML document, such as, metadata sent as part of the document.  \n  \n Apply the XmlAnyAttributeAttribute to a field that returns an array of <xref:System.Xml.XmlAttribute> or <xref:System.Xml.XmlNode> objects. When the <xref:System.Xml.Serialization.XmlSerializer.Deserialize%2A> method of the <xref:System.Xml.Serialization.XmlSerializer> class is called, all XML attributes that do not have a corresponding member in the class being deserialized are collected in the array. After deserialization, you can iterate through the collection of <xref:System.Xml.XmlAttribute> items to process the data.  \n  \n The <xref:System.Xml.Serialization.XmlSerializer.UnknownNode> and <xref:System.Xml.Serialization.XmlSerializer.UnknownAttribute> events of the <xref:System.Xml.Serialization.XmlSerializer> do not occur if you apply the XmlAnyAttributeAttribute to a member of a class.  \n  \n> [!NOTE]\n>  You can use the word `XmlAnyAttribute` in your code instead of the longer XmlAnyAttributeAttribute.  \n  \n For more information about using attributes, see [Attributes](../Topic/Extending%20Metadata%20Using%20Attributes.md)."
+  example:
+  - "The following example collects all unknown attributes into an array of <xref:System.Xml.XmlAttribute> objects. To try the example, create a file named `UnknownAttributes.xml` that contains the following XML:  \n  \n```  \n<?xml version=\"1.0\" encoding=\"utf-8\"?>  \n<Group xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"   \nxmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"   \nGroupType = 'Technical' GroupNumber = '42' GroupBase = 'Red'>  \n  <GroupName>MyGroup</GroupName>  \n</Group>  \n```  \n  \n [!code-cs[XmlAnyAttributeAttribute Example#1](~/add/codesnippet/csharp/t-system.xml.serializati_38_1.cs)]\n [!code-cpp[XmlAnyAttributeAttribute Example#1](~/add/codesnippet/cpp/t-system.xml.serializati_38_1.cpp)]\n [!code-vb[XmlAnyAttributeAttribute Example#1](~/add/codesnippet/visualbasic/t-system.xml.serializati_38_1.vb)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field | System.AttributeTargets.Parameter | System.AttributeTargets.ReturnValue, AllowMultiple=false)]
+
+      public class XmlAnyAttributeAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAnyAttributeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAnyAttributeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAnyAttributeAttribute.#ctor
+  id: '#ctor'
+  parent: System.Xml.Serialization.XmlAnyAttributeAttribute
+  langs:
+  - csharp
+  name: XmlAnyAttributeAttribute()
+  nameWithType: XmlAnyAttributeAttribute.XmlAnyAttributeAttribute()
+  fullName: System.Xml.Serialization.XmlAnyAttributeAttribute.XmlAnyAttributeAttribute()
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Constructs a new instance of the <xref href="System.Xml.Serialization.XmlAnyAttributeAttribute"></xref> class.
+  remarks: ''
+  example:
+  - "The following example constructs an <xref:System.Xml.Serialization.XmlAnyAttributeAttribute> that is used to override the deserialization of an object. To try the example, create a file named UnknownAttributes.xml that contains the following XML:  \n  \n```  \n<?xml version=\"1.0\" encoding=\"utf-8\"?>  \n<Group xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" GroupType = 'Technical' GroupNumber = '42' GroupBase = 'Red'>  \n  <GroupName>MyGroup</GroupName>  \n</Group>  \n```  \n  \n [!code-cs[XmlAnyAttributeAttribute_ctor Example#1](~/add/codesnippet/csharp/m-system.xml.serializati_16_1.cs)]\n [!code-cpp[XmlAnyAttributeAttribute_ctor Example#1](~/add/codesnippet/cpp/m-system.xml.serializati_16_1.cpp)]\n [!code-vb[XmlAnyAttributeAttribute_ctor Example#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_16_1.vb)]"
+  syntax:
+    content: public XmlAnyAttributeAttribute ();
+    parameters: []
+  overload: System.Xml.Serialization.XmlAnyAttributeAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAnyAttributeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAnyAttributeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Xml.Serialization.XmlAnyAttributeAttribute.#ctor
+  parent: System.Xml.Serialization.XmlAnyAttributeAttribute
+  isExternal: false
+  name: XmlAnyAttributeAttribute()
+  nameWithType: XmlAnyAttributeAttribute.XmlAnyAttributeAttribute()
+  fullName: System.Xml.Serialization.XmlAnyAttributeAttribute.XmlAnyAttributeAttribute()
+- uid: System.Xml.Serialization.XmlAnyAttributeAttribute.#ctor*
+  parent: System.Xml.Serialization.XmlAnyAttributeAttribute
+  isExternal: false
+  name: XmlAnyAttributeAttribute
+  nameWithType: XmlAnyAttributeAttribute.XmlAnyAttributeAttribute

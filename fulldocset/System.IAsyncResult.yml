@@ -1,0 +1,248 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.IAsyncResult
+  id: IAsyncResult
+  children:
+  - System.IAsyncResult.AsyncState
+  - System.IAsyncResult.AsyncWaitHandle
+  - System.IAsyncResult.CompletedSynchronously
+  - System.IAsyncResult.IsCompleted
+  langs:
+  - csharp
+  name: IAsyncResult
+  nameWithType: IAsyncResult
+  fullName: System.IAsyncResult
+  type: Interface
+  summary: Represents the status of an asynchronous operation.
+  remarks: "The IAsyncResult interface is implemented by classes containing methods that can operate asynchronously. It is the return type of methods that initiate an asynchronous operation, such as <xref:System.IO.FileStream.BeginRead%2A?displayProperty=fullName>, and it is passed to methods that conclude an asynchronous operation, such as <xref:System.IO.FileStream.EndRead%2A?displayProperty=fullName>. IAsyncResult objects are also passed to methods invoked by <xref:System.AsyncCallback> delegates when an asynchronous operation completes.  \n  \n An object that supports the IAsyncResult interface stores state information for an asynchronous operation and provides a synchronization object to allow threads to be signaled when the operation completes.  \n  \n> [!NOTE]\n>  The <xref:System.Runtime.Remoting.Messaging.AsyncResult> class is the implementation of IAsyncResult that is returned by the `BeginInvoke` method when you use a delegate to call a method asynchronously.  \n  \n For a detailed description of how the IAsyncResult interface is used, see the [Calling Synchronous Methods Asynchronously](../Topic/Calling%20Synchronous%20Methods%20Asynchronously.md) topic."
+  example:
+  - "The following example demonstrates how to use the <xref:System.Runtime.Remoting.Messaging.AsyncResult.AsyncWaitHandle%2A> property to get a <xref:System.Threading.WaitHandle>, and how to wait for an asynchronous call on a delegate. The <xref:System.Threading.WaitHandle> is signaled when the asynchronous call completes, and you can wait for it by calling the <xref:System.Threading.WaitHandle.WaitOne%2A> method.  \n  \n The example consists of two classes: the class that contains the method that is called asynchronously, and the class that contains the `Main` method that makes the call.  \n  \n For more information and more examples of calling methods asynchronously by using delegates, see [Calling Synchronous Methods Asynchronously](../Topic/Calling%20Synchronous%20Methods%20Asynchronously.md).  \n  \n [!code-vb[AsyncDelegateExamples#1](~/add/codesnippet/visualbasic/t-system.iasyncresult_1.vb)]\n [!code-cs[AsyncDelegateExamples#1](~/add/codesnippet/csharp/t-system.iasyncresult_1.cs)]\n [!code-cpp[AsyncDelegateExamples#1](~/add/codesnippet/cpp/t-system.iasyncresult_1.cpp)]  \n[!code-vb[AsyncDelegateExamples#3](~/add/codesnippet/visualbasic/t-system.iasyncresult_2.vb)]\n[!code-cpp[AsyncDelegateExamples#3](~/add/codesnippet/cpp/t-system.iasyncresult_2.cpp)]\n[!code-cs[AsyncDelegateExamples#3](~/add/codesnippet/csharp/t-system.iasyncresult_2.cs)]"
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public interface IAsyncResult
+  implements: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\IAsyncResult.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/IAsyncResult.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IAsyncResult.AsyncState
+  id: AsyncState
+  parent: System.IAsyncResult
+  langs:
+  - csharp
+  name: AsyncState
+  nameWithType: IAsyncResult.AsyncState
+  fullName: System.IAsyncResult.AsyncState
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets a user-defined object that qualifies or contains information about an asynchronous operation.
+  remarks: This property returns the object that is the last parameter of the method that initiates an asynchronous operation.
+  example:
+  - "The following code example demonstrates how the <xref:System.Runtime.Remoting.Messaging.AsyncResult.AsyncState%2A> property is used to pass information to a callback method. The last parameter of the `BeginInvoke` method call is a format string, which the callback method uses to format an output message.  \n  \n The example consists of two classes: the class that contains the method that is called asynchronously, and the class that contains the `Main` method that makes the call.  \n  \n For more information about how this callback example works, and more examples of calling methods asynchronously by using delegates, see [Calling Synchronous Methods Asynchronously](../Topic/Calling%20Synchronous%20Methods%20Asynchronously.md).  \n  \n [!code-vb[AsyncDelegateExamples#1](~/add/codesnippet/visualbasic/p-system.iasyncresult.as_1_1.vb)]\n [!code-cs[AsyncDelegateExamples#1](~/add/codesnippet/csharp/p-system.iasyncresult.as_1_1.cs)]\n [!code-cpp[AsyncDelegateExamples#1](~/add/codesnippet/cpp/p-system.iasyncresult.as_1_1.cpp)]  \n[!code-cs[AsyncDelegateExamples#5](~/add/codesnippet/csharp/p-system.iasyncresult.as_1_2.cs)]\n[!code-cpp[AsyncDelegateExamples#5](~/add/codesnippet/cpp/p-system.iasyncresult.as_1_2.cpp)]\n[!code-vb[AsyncDelegateExamples#5](~/add/codesnippet/visualbasic/p-system.iasyncresult.as_1_2.vb)]"
+  syntax:
+    content: public object AsyncState { get; }
+    return:
+      type: System.Object
+      description: A user-defined object that qualifies or contains information about an asynchronous operation.
+  overload: System.IAsyncResult.AsyncState*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\IAsyncResult.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/IAsyncResult.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IAsyncResult.AsyncWaitHandle
+  id: AsyncWaitHandle
+  parent: System.IAsyncResult
+  langs:
+  - csharp
+  name: AsyncWaitHandle
+  nameWithType: IAsyncResult.AsyncWaitHandle
+  fullName: System.IAsyncResult.AsyncWaitHandle
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets a <xref href="System.Threading.WaitHandle"></xref> that is used to wait for an asynchronous operation to complete.
+  remarks: "The return value allows the client to wait for an asynchronous operation to complete instead of polling <xref:System.IAsyncResult.IsCompleted%2A> until the operation concludes. The return value can be used to perform a <xref:System.Threading.WaitHandle.WaitOne%2A>, <xref:System.Threading.WaitHandle.WaitAny%2A>, or <xref:System.Threading.WaitHandle.WaitAll%2A> operation.  \n  \n The common language runtime supplies a number of waitable objects, such as <xref:System.Threading.ManualResetEvent>, <xref:System.Threading.AutoResetEvent>, and <xref:System.Threading.Mutex>, all of which mirror Win32 synchronization primitives."
+  example:
+  - "The following example demonstrates how to use the AsyncWaitHandle property to get a <xref:System.Threading.WaitHandle>, and how to wait for an asynchronous call on a delegate. The <xref:System.Threading.WaitHandle> is signaled when the asynchronous call completes, and you can wait for it by calling the <xref:System.Threading.WaitHandle.WaitOne%2A> method.  \n  \n The example consists of two classes: the class that contains the method that is called asynchronously, and the class that contains the `Main` method that makes the call.  \n  \n For more information and more examples of calling methods asynchronously by using delegates, see [Calling Synchronous Methods Asynchronously](../Topic/Calling%20Synchronous%20Methods%20Asynchronously.md).  \n  \n [!code-vb[AsyncDelegateExamples#1](~/add/codesnippet/visualbasic/p-system.iasyncresult.as_0_1.vb)]\n [!code-cs[AsyncDelegateExamples#1](~/add/codesnippet/csharp/p-system.iasyncresult.as_0_1.cs)]\n [!code-cpp[AsyncDelegateExamples#1](~/add/codesnippet/cpp/p-system.iasyncresult.as_0_1.cpp)]  \n[!code-vb[AsyncDelegateExamples#3](~/add/codesnippet/visualbasic/p-system.iasyncresult.as_0_2.vb)]\n[!code-cpp[AsyncDelegateExamples#3](~/add/codesnippet/cpp/p-system.iasyncresult.as_0_2.cpp)]\n[!code-cs[AsyncDelegateExamples#3](~/add/codesnippet/csharp/p-system.iasyncresult.as_0_2.cs)]"
+  syntax:
+    content: public System.Threading.WaitHandle AsyncWaitHandle { get; }
+    return:
+      type: System.Threading.WaitHandle
+      description: A <xref href="System.Threading.WaitHandle"></xref> that is used to wait for an asynchronous operation to complete.
+  overload: System.IAsyncResult.AsyncWaitHandle*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\IAsyncResult.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/IAsyncResult.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IAsyncResult.CompletedSynchronously
+  id: CompletedSynchronously
+  parent: System.IAsyncResult
+  langs:
+  - csharp
+  name: CompletedSynchronously
+  nameWithType: IAsyncResult.CompletedSynchronously
+  fullName: System.IAsyncResult.CompletedSynchronously
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets a value that indicates whether the asynchronous operation completed synchronously.
+  remarks: If the synchronous completion of the call is detected in the <xref:System.AsyncCallback> delegate, it is probable that the thread that initiated the asynchronous operation is the current thread.
+  syntax:
+    content: public bool CompletedSynchronously { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the asynchronous operation completed synchronously; otherwise, `false`.'
+  overload: System.IAsyncResult.CompletedSynchronously*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\IAsyncResult.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/IAsyncResult.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IAsyncResult.IsCompleted
+  id: IsCompleted
+  parent: System.IAsyncResult
+  langs:
+  - csharp
+  name: IsCompleted
+  nameWithType: IAsyncResult.IsCompleted
+  fullName: System.IAsyncResult.IsCompleted
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets a value that indicates whether the asynchronous operation has completed.
+  remarks: When this property is `true`, you can assume it is safe to discard any resources you allocate for use by the asynchronous operation.
+  example:
+  - "The following example shows how to use the IsCompleted property of the <xref:System.IAsyncResult> to discover when an asynchronous call completes. In this case, the asynchronous call is made by using the `BeginInvoke` method of a delegate. You might use the IsCompleted property to poll for completion when making the asynchronous call from a thread that services the user interface. Polling for completion allows the calling thread to continue executing while the asynchronous call executes on a <xref:System.Threading.ThreadPool> thread.  \n  \n The example consists of two classes: the class that contains the method that is called asynchronously, and the class that contains the `Main` method that makes the call.  \n  \n For more information and more examples of calling methods asynchronously by using delegates, see [Calling Synchronous Methods Asynchronously](../Topic/Calling%20Synchronous%20Methods%20Asynchronously.md).  \n  \n [!code-vb[AsyncDelegateExamples#1](~/add/codesnippet/visualbasic/p-system.iasyncresult.is_1.vb)]\n [!code-cs[AsyncDelegateExamples#1](~/add/codesnippet/csharp/p-system.iasyncresult.is_1.cs)]\n [!code-cpp[AsyncDelegateExamples#1](~/add/codesnippet/cpp/p-system.iasyncresult.is_1.cpp)]  \n[!code-cpp[AsyncDelegateExamples#4](~/add/codesnippet/cpp/p-system.iasyncresult.is_2.cpp)]\n[!code-cs[AsyncDelegateExamples#4](~/add/codesnippet/csharp/p-system.iasyncresult.is_2.cs)]\n[!code-vb[AsyncDelegateExamples#4](~/add/codesnippet/visualbasic/p-system.iasyncresult.is_2.vb)]"
+  syntax:
+    content: public bool IsCompleted { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the operation is complete; otherwise, `false`.'
+  overload: System.IAsyncResult.IsCompleted*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\IAsyncResult.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/IAsyncResult.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.IAsyncResult.AsyncState
+  parent: System.IAsyncResult
+  isExternal: false
+  name: AsyncState
+  nameWithType: IAsyncResult.AsyncState
+  fullName: System.IAsyncResult.AsyncState
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.IAsyncResult.AsyncWaitHandle
+  parent: System.IAsyncResult
+  isExternal: false
+  name: AsyncWaitHandle
+  nameWithType: IAsyncResult.AsyncWaitHandle
+  fullName: System.IAsyncResult.AsyncWaitHandle
+- uid: System.Threading.WaitHandle
+  parent: System.Threading
+  isExternal: false
+  name: WaitHandle
+  nameWithType: WaitHandle
+  fullName: System.Threading.WaitHandle
+- uid: System.IAsyncResult.CompletedSynchronously
+  parent: System.IAsyncResult
+  isExternal: false
+  name: CompletedSynchronously
+  nameWithType: IAsyncResult.CompletedSynchronously
+  fullName: System.IAsyncResult.CompletedSynchronously
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.IAsyncResult.IsCompleted
+  parent: System.IAsyncResult
+  isExternal: false
+  name: IsCompleted
+  nameWithType: IAsyncResult.IsCompleted
+  fullName: System.IAsyncResult.IsCompleted
+- uid: System.IAsyncResult.AsyncState*
+  parent: System.IAsyncResult
+  isExternal: false
+  name: AsyncState
+  nameWithType: IAsyncResult.AsyncState
+- uid: System.IAsyncResult.AsyncWaitHandle*
+  parent: System.IAsyncResult
+  isExternal: false
+  name: AsyncWaitHandle
+  nameWithType: IAsyncResult.AsyncWaitHandle
+- uid: System.IAsyncResult.CompletedSynchronously*
+  parent: System.IAsyncResult
+  isExternal: false
+  name: CompletedSynchronously
+  nameWithType: IAsyncResult.CompletedSynchronously
+- uid: System.IAsyncResult.IsCompleted*
+  parent: System.IAsyncResult
+  isExternal: false
+  name: IsCompleted
+  nameWithType: IAsyncResult.IsCompleted

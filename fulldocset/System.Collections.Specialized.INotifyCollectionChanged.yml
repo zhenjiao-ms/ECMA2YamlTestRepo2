@@ -1,0 +1,82 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Collections.Specialized.INotifyCollectionChanged
+  id: INotifyCollectionChanged
+  children:
+  - System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged
+  langs:
+  - csharp
+  name: INotifyCollectionChanged
+  nameWithType: INotifyCollectionChanged
+  fullName: System.Collections.Specialized.INotifyCollectionChanged
+  type: Interface
+  summary: Notifies listeners of dynamic changes, such as when an item is added and removed or the whole list is cleared.
+  remarks: "You can enumerate over any collection that implements the <xref:System.Collections.IEnumerable> interface. However, to set up dynamic bindings so that insertions or deletions in the collection update the [!INCLUDE[TLA2#tla_ui](~/add/includes/tla2sharptla-ui-md.md)] automatically, the collection must implement the INotifyCollectionChanged interface. This interface exposes the <xref:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged> event that must be raised whenever the underlying collection changes.  \n  \n [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] provides the <xref:System.Collections.ObjectModel.ObservableCollection%601> class, which is a built-in implementation of a data collection that exposes the INotifyCollectionChanged interface. For an example, see [How to: Create and Bind to an ObservableCollection](../Topic/How%20to:%20Create%20and%20Bind%20to%20an%20ObservableCollection.md).  \n  \n The individual data objects within the collection must satisfy the requirements described in the [Binding Sources Overview](../Topic/Binding%20Sources%20Overview.md).  \n  \n Before implementing your own collection, consider using <xref:System.Collections.ObjectModel.ObservableCollection%601> or one of the existing collection classes, such as <xref:System.Collections.Generic.List%601>, <xref:System.Collections.ObjectModel.Collection%601>, and <xref:System.ComponentModel.BindingList%601>, among many others.  \n  \n If you have an advanced scenario and want to implement your own collection, consider using <xref:System.Collections.IList>, which provides a non-generic collection of objects that can be individually accessed by index and provides the best performance."
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("WindowsBase, Version=3.0.0.0, Culture=Neutral, PublicKeyToken=31bf3856ad364e35")]
+
+      public interface INotifyCollectionChanged
+  implements: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Specialized\INotifyCollectionChanged.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Specialized/INotifyCollectionChanged.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged
+  id: CollectionChanged
+  parent: System.Collections.Specialized.INotifyCollectionChanged
+  langs:
+  - csharp
+  name: CollectionChanged
+  nameWithType: INotifyCollectionChanged.CollectionChanged
+  fullName: System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged
+  type: Event
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.Specialized
+  summary: Occurs when the collection changes.
+  remarks: The event handler receives an argument of type <xref:System.Collections.Specialized.NotifyCollectionChangedEventArgs>,which contains data that is related to this event.
+  syntax:
+    content: public event System.Collections.Specialized.NotifyCollectionChangedEventHandler CollectionChanged;
+    return:
+      type: System.Collections.Specialized.NotifyCollectionChangedEventHandler
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Specialized\INotifyCollectionChanged.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Specialized/INotifyCollectionChanged.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged
+  parent: System.Collections.Specialized.INotifyCollectionChanged
+  isExternal: false
+  name: CollectionChanged
+  nameWithType: INotifyCollectionChanged.CollectionChanged
+  fullName: System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged
+- uid: System.Collections.Specialized.NotifyCollectionChangedEventHandler
+  parent: System.Collections.Specialized
+  isExternal: false
+  name: NotifyCollectionChangedEventHandler
+  nameWithType: NotifyCollectionChangedEventHandler
+  fullName: System.Collections.Specialized.NotifyCollectionChangedEventHandler

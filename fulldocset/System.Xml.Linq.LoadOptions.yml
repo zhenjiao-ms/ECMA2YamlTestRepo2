@@ -1,0 +1,203 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.Linq.LoadOptions
+  id: LoadOptions
+  children:
+  - System.Xml.Linq.LoadOptions.None
+  - System.Xml.Linq.LoadOptions.PreserveWhitespace
+  - System.Xml.Linq.LoadOptions.SetBaseUri
+  - System.Xml.Linq.LoadOptions.SetLineInfo
+  langs:
+  - csharp
+  name: LoadOptions
+  nameWithType: LoadOptions
+  fullName: System.Xml.Linq.LoadOptions
+  type: Enum
+  summary: Specifies load options when parsing XML.
+  remarks: "If you preserve white space when loading, all insignificant white space in the XML tree is materialized in the XML tree as is. If you do not preserve white space, then all insignificant white space is discarded.  \n  \n There is a performance penalty if you set the SetBaseUri and the SetLineInfo flags.  \n  \n The base URI and the line information are accurate immediately after loading the XML document. If you modify the XML tree after loading the document, the base URI and line information may become meaningless.  \n  \n If the underlying <xref:System.Xml.XmlReader> does not have base URI or line information, setting the SetBaseUri and the SetLineInfo flags will have no effect.  \n  \n This type allows you to control how LINQ to XML handles white space when loading or parsing. For more information, see [Preserving White Space while Loading or Parsing XML](../Topic/Preserving%20White%20Space%20while%20Loading%20or%20Parsing%20XML3.md) and [Preserving White Space While Serializing](../Topic/Preserving%20White%20Space%20While%20Serializing1.md)."
+  example:
+  - "This example loads a small XML tree from a file, setting the options to set base URI and retain line information. It then adds another element that does not have line information. It then prints the line information for each element in the tree.  \n  \n```c#  \n  \n                string markup = @\"<Root>  \n    <Child1 />  \n    <Child2 />  \n    <Child4 />  \n</Root>\";  \n  \nFile.WriteAllText(\"Test.xml\", markup);  \n  \nXElement po = XElement.Load(\"Test.xml\",  \n    LoadOptions.SetBaseUri | LoadOptions.SetLineInfo);  \n  \n// add a node to the tree.  \n// the newly added node will not have line information.  \npo.Element(\"Child2\").AddAfterSelf(new XElement(\"Child3\"));  \n  \nstring[] splitUri = po.BaseUri.Split('/');  \nConsole.WriteLine(\"BaseUri: {0}\", splitUri[splitUri.Length - 1]);  \nConsole.WriteLine();  \nConsole.WriteLine(\"{0}{1}{2}\",  \n    \"Element Name\".PadRight(20),  \n    \"Line\".PadRight(5),  \n    \"Position\");  \nConsole.WriteLine(\"{0}{1}{2}\",  \n    \"------------\".PadRight(20),  \n    \"----\".PadRight(5),  \n    \"--------\");  \nforeach (XElement e in po.DescendantsAndSelf())  \n    Console.WriteLine(\"{0}{1}{2}\",  \n        (\"\".PadRight(e.Ancestors().Count() * 2) + e.Name).PadRight(20),  \n        ((IXmlLineInfo)e).HasLineInfo() ?  \n            ((IXmlLineInfo)e).LineNumber.ToString().PadRight(5) :  \n            \"\",  \n        ((IXmlLineInfo)e).HasLineInfo() ?  \n            ((IXmlLineInfo)e).LinePosition.ToString() :  \n            \"No Line Information\");  \n```  \n  \n```vb  \n  \n                Dim markup As String = _  \n    \"<Root>\" + Environment.NewLine & _  \n    \"    <Child1 />\" + Environment.NewLine & _  \n    \"    <Child2 />\" + Environment.NewLine & _  \n    \"    <Child4 />\" + Environment.NewLine & _  \n    \"</Root>\"  \n  \nFile.WriteAllText(\"Test.xml\", markup)  \n  \nDim po As XElement = XElement.Load(\"Test.xml\", LoadOptions.SetBaseUri Or LoadOptions.SetLineInfo)  \n  \n' add a node to the tree.  \n' the newly added node will not have line information.  \npo.Element(\"Child2\").AddAfterSelf(New XElement(\"Child3\"))  \n  \nDim splitUri() As String = po.BaseUri.Split(\"/\"c)  \nConsole.WriteLine(\"BaseUri: {0}\", splitUri(splitUri.Length - 1))  \nConsole.WriteLine()  \nConsole.WriteLine(\"{0}{1}{2}\", _  \n    \"Element Name\".PadRight(20), _  \n    \"Line\".PadRight(5), _  \n    \"Position\")  \nConsole.WriteLine(\"{0}{1}{2}\", _  \n    \"------------\".PadRight(20), _  \n    \"----\".PadRight(5), _  \n    \"--------\")  \nFor Each e As XElement In po.DescendantsAndSelf()  \n    Console.WriteLine(\"{0}{1}{2}\", _  \n        (\"\".PadRight(e.Ancestors().Count() * 2) & e.Name.ToString).PadRight(20), _  \n        IIf(DirectCast(e, IXmlLineInfo).HasLineInfo(), _  \n            DirectCast(e, IXmlLineInfo).LineNumber.ToString().PadRight(5), _  \n            \"\"), _  \n        IIf(DirectCast(e, IXmlLineInfo).HasLineInfo(), _  \n            DirectCast(e, IXmlLineInfo).LinePosition.ToString(), _  \n            \"No Line Information\"))  \nNext  \n```  \n  \n This example produces the following output:  \n  \n```  \nBaseUri: Test.xml  \n  \nElement Name        Line Position  \n------------        ---- --------  \nRoot                1    2  \n  Child1            2    6  \n  Child2            3    6  \n  Child3            No Line Information  \n  Child4            4    6  \n```"
+  syntax:
+    content: >-
+      [System.Flags]
+
+      public enum LoadOptions
+  inheritance:
+  - System.Object
+  - System.ValueType
+  - System.Enum
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\LoadOptions.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/LoadOptions.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.LoadOptions.None
+  id: None
+  parent: System.Xml.Linq.LoadOptions
+  langs:
+  - csharp
+  name: None
+  nameWithType: LoadOptions.None
+  fullName: System.Xml.Linq.LoadOptions.None
+  type: Field
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Does not preserve insignificant white space or load base URI and line information.
+  syntax:
+    content: None
+    return:
+      type: System.Xml.Linq.LoadOptions
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\LoadOptions.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/LoadOptions.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.LoadOptions.PreserveWhitespace
+  id: PreserveWhitespace
+  parent: System.Xml.Linq.LoadOptions
+  langs:
+  - csharp
+  name: PreserveWhitespace
+  nameWithType: LoadOptions.PreserveWhitespace
+  fullName: System.Xml.Linq.LoadOptions.PreserveWhitespace
+  type: Field
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Preserves insignificant white space while parsing.
+  syntax:
+    content: PreserveWhitespace
+    return:
+      type: System.Xml.Linq.LoadOptions
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\LoadOptions.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/LoadOptions.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.LoadOptions.SetBaseUri
+  id: SetBaseUri
+  parent: System.Xml.Linq.LoadOptions
+  langs:
+  - csharp
+  name: SetBaseUri
+  nameWithType: LoadOptions.SetBaseUri
+  fullName: System.Xml.Linq.LoadOptions.SetBaseUri
+  type: Field
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Requests the base URI information from the <xref href="System.Xml.XmlReader"></xref>, and makes it available via the <xref href="stem.Xml.Linq.XObject.BaseUri%2A"></xref> property.
+  syntax:
+    content: SetBaseUri
+    return:
+      type: System.Xml.Linq.LoadOptions
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\LoadOptions.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/LoadOptions.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Linq.LoadOptions.SetLineInfo
+  id: SetLineInfo
+  parent: System.Xml.Linq.LoadOptions
+  langs:
+  - csharp
+  name: SetLineInfo
+  nameWithType: LoadOptions.SetLineInfo
+  fullName: System.Xml.Linq.LoadOptions.SetLineInfo
+  type: Field
+  assemblies:
+  - System.Xml.Linq
+  namespace: System.Xml.Linq
+  summary: Requests the line information from the <xref href="System.Xml.XmlReader"></xref> and makes it available via properties on <xref href="System.Xml.Linq.XObject"></xref>.
+  syntax:
+    content: SetLineInfo
+    return:
+      type: System.Xml.Linq.LoadOptions
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Linq\LoadOptions.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Linq/LoadOptions.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Enum
+  isExternal: false
+  name: System.Enum
+- uid: System.Xml.Linq.LoadOptions.None
+  parent: System.Xml.Linq.LoadOptions
+  isExternal: false
+  name: None
+  nameWithType: LoadOptions.None
+  fullName: System.Xml.Linq.LoadOptions.None
+- uid: System.Xml.Linq.LoadOptions
+  parent: System.Xml.Linq
+  isExternal: false
+  name: LoadOptions
+  nameWithType: LoadOptions
+  fullName: System.Xml.Linq.LoadOptions
+- uid: System.Xml.Linq.LoadOptions.PreserveWhitespace
+  parent: System.Xml.Linq.LoadOptions
+  isExternal: false
+  name: PreserveWhitespace
+  nameWithType: LoadOptions.PreserveWhitespace
+  fullName: System.Xml.Linq.LoadOptions.PreserveWhitespace
+- uid: System.Xml.Linq.LoadOptions.SetBaseUri
+  parent: System.Xml.Linq.LoadOptions
+  isExternal: false
+  name: SetBaseUri
+  nameWithType: LoadOptions.SetBaseUri
+  fullName: System.Xml.Linq.LoadOptions.SetBaseUri
+- uid: System.Xml.Linq.LoadOptions.SetLineInfo
+  parent: System.Xml.Linq.LoadOptions
+  isExternal: false
+  name: SetLineInfo
+  nameWithType: LoadOptions.SetLineInfo
+  fullName: System.Xml.Linq.LoadOptions.SetLineInfo

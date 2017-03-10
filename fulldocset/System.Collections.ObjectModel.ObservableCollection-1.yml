@@ -1,0 +1,865 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Collections.ObjectModel.ObservableCollection`1
+  id: ObservableCollection`1
+  children:
+  - System.Collections.ObjectModel.ObservableCollection`1.#ctor
+  - System.Collections.ObjectModel.ObservableCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  - System.Collections.ObjectModel.ObservableCollection`1.#ctor(System.Collections.Generic.List{`0})
+  - System.Collections.ObjectModel.ObservableCollection`1.BlockReentrancy
+  - System.Collections.ObjectModel.ObservableCollection`1.CheckReentrancy
+  - System.Collections.ObjectModel.ObservableCollection`1.ClearItems
+  - System.Collections.ObjectModel.ObservableCollection`1.CollectionChanged
+  - System.Collections.ObjectModel.ObservableCollection`1.InsertItem(System.Int32,`0)
+  - System.Collections.ObjectModel.ObservableCollection`1.Move(System.Int32,System.Int32)
+  - System.Collections.ObjectModel.ObservableCollection`1.MoveItem(System.Int32,System.Int32)
+  - System.Collections.ObjectModel.ObservableCollection`1.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)
+  - System.Collections.ObjectModel.ObservableCollection`1.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)
+  - System.Collections.ObjectModel.ObservableCollection`1.PropertyChanged
+  - System.Collections.ObjectModel.ObservableCollection`1.RemoveItem(System.Int32)
+  - System.Collections.ObjectModel.ObservableCollection`1.SetItem(System.Int32,`0)
+  langs:
+  - csharp
+  name: ObservableCollection<T>
+  nameWithType: ObservableCollection<T>
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>
+  type: Class
+  summary: Represents a dynamic data collection that provides notifications when items get added, removed, or when the whole list is refreshed.
+  remarks: "In many cases the data that you work with is a collection of objects. For example, a common scenario in data binding is to use an <xref:System.Windows.Controls.ItemsControl> such as a <xref:System.Windows.Controls.ListBox>, <xref:System.Windows.Controls.ListView>, or <xref:System.Windows.Controls.TreeView> to display a collection of records.  \n  \n You can enumerate over any collection that implements the <xref:System.Collections.IEnumerable> interface. However, to set up dynamic bindings so that insertions or deletions in the collection update the [!INCLUDE[TLA2#tla_ui](~/add/includes/tla2sharptla-ui-md.md)] automatically, the collection must implement the <xref:System.Collections.Specialized.INotifyCollectionChanged> interface. This interface exposes the <xref:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged> event, an event that should be raised whenever the underlying collection changes.  \n  \n [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] provides the ObservableCollection(T) class, which is a built-in implementation of a data collection that implements the <xref:System.Collections.Specialized.INotifyCollectionChanged> interface.  \n  \n Before implementing your own collection, consider using ObservableCollection(T) or one of the existing collection classes, such as <xref:System.Collections.Generic.List%601>, <xref:System.Collections.ObjectModel.Collection%601>, and <xref:System.ComponentModel.BindingList%601>, among many others. If you have an advanced scenario and want to implement your own collection, consider using <xref:System.Collections.IList>, which provides a non-generic collection of objects that can be individually accessed by index. Implementing <xref:System.Collections.IList> provides the best performance with the data binding engine.  \n  \n> [!NOTE]\n>  To fully support transferring data values from binding source objects to binding targets, each object in your collection that supports bindable properties must implement an appropriate property changed notification mechanism such as the <xref:System.ComponentModel.INotifyPropertyChanged> interface.  \n  \n For more information, see \"Binding to Collections\" in [Data Binding Overview](../Topic/Data%20Binding%20Overview.md).  \n  \n## Notes on XAML Usage  \n ObservableCollection(T) can be used as a XAML object element in [!INCLUDE[TLA#tla_winclient](~/add/includes/tlasharptla-winclient-md.md)], in versions 3.0 and 3.5. However, the usage has substantial limitations.  \n  \n-   ObservableCollection(T) must be the root element, because the  that must be used to specify the constrained type of the generic ObservableCollection(T) is only supported on the object element for the root element.  \n  \n-   You must declare an  (which entails that the build action for this XAML file must be `Page` or some other build action that compiles the XAML).  \n  \n-   ObservableCollection(T) is in a namespace and assembly that are not initially mapped to the default XML namespace. You must map a prefix for the namespace and assembly, and then use that prefix on the object element tag for ObservableCollection(T).  \n  \n A more straightforward way to use ObservableCollection(T) capabilities from XAML in an application is to declare your own non-generic custom collection class that derives from ObservableCollection(T), and constrains it to a specific type. Then map the assembly that contains this class, and reference it as an object element in your XAML.  \n  \n<a name=\"xamlTextUsage_ObservableCollection\"></a>   \n## XAML Text Usage  \n See Remarks."
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("WindowsBase, Version=3.0.0.0, Culture=Neutral, PublicKeyToken=31bf3856ad364e35")]
+
+      public class ObservableCollection<T> : System.Collections.ObjectModel.Collection<T>, System.Collections.Specialized.INotifyCollectionChanged, System.ComponentModel.INotifyPropertyChanged
+    typeParameters:
+    - id: T
+      description: The type of elements in the collection.
+  inheritance:
+  - System.Object
+  - System.Collections.ObjectModel.Collection`1
+  implements:
+  - System.Collections.Specialized.INotifyCollectionChanged
+  - System.ComponentModel.INotifyPropertyChanged
+  inheritedMembers:
+  - System.Collections.ObjectModel.Collection`1.Add(`0)
+  - System.Collections.ObjectModel.Collection`1.Clear
+  - System.Collections.ObjectModel.Collection`1.Contains(`0)
+  - System.Collections.ObjectModel.Collection`1.CopyTo(`0[],System.Int32)
+  - System.Collections.ObjectModel.Collection`1.Count
+  - System.Collections.ObjectModel.Collection`1.GetEnumerator
+  - System.Collections.ObjectModel.Collection`1.IndexOf(`0)
+  - System.Collections.ObjectModel.Collection`1.Insert(System.Int32,`0)
+  - System.Collections.ObjectModel.Collection`1.Item(System.Int32)
+  - System.Collections.ObjectModel.Collection`1.Items
+  - System.Collections.ObjectModel.Collection`1.Remove(`0)
+  - System.Collections.ObjectModel.Collection`1.RemoveAt(System.Int32)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#Generic#ICollection{T}#IsReadOnly
+  - System.Collections.ObjectModel.Collection`1.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#ICollection#IsSynchronized
+  - System.Collections.ObjectModel.Collection`1.System#Collections#ICollection#SyncRoot
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IEnumerable#GetEnumerator
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Add(System.Object)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Contains(System.Object)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#IndexOf(System.Object)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Insert(System.Int32,System.Object)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#IsFixedSize
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#IsReadOnly
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Item(System.Int32)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Remove(System.Object)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.#ctor
+  id: '#ctor'
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: ObservableCollection<T>()
+  nameWithType: ObservableCollection<T>.ObservableCollection<T>()
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.ObservableCollection<T>()
+  type: Constructor
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Initializes a new instance of the <xref href="stem.Collections.ObjectModel.ObservableCollection%601"></xref> class.
+  syntax:
+    content: public ObservableCollection ();
+    parameters: []
+  overload: System.Collections.ObjectModel.ObservableCollection`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  id: '#ctor(System.Collections.Generic.IEnumerable{`0})'
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: ObservableCollection<T>(IEnumerable<T>)
+  nameWithType: ObservableCollection<T>.ObservableCollection<T>(IEnumerable<T>)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.ObservableCollection<T>(IEnumerable<T>)
+  type: Constructor
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Initializes a new instance of the <xref href="stem.Collections.ObjectModel.ObservableCollection%601"></xref> class that contains elements copied from the specified collection.
+  remarks: The elements are copied onto the <xref:System.Collections.ObjectModel.ObservableCollection%601> in the same order they are read by the enumerator of the collection.
+  syntax:
+    content: public ObservableCollection (System.Collections.Generic.IEnumerable<T> collection);
+    parameters:
+    - id: collection
+      type: System.Collections.Generic.IEnumerable`1
+      description: The collection from which the elements are copied.
+  overload: System.Collections.ObjectModel.ObservableCollection`1.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>collection</code> parameter cannot be `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.#ctor(System.Collections.Generic.List{`0})
+  id: '#ctor(System.Collections.Generic.List{`0})'
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: ObservableCollection<T>(List<T>)
+  nameWithType: ObservableCollection<T>.ObservableCollection<T>(List<T>)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.ObservableCollection<T>(List<T>)
+  type: Constructor
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Initializes a new instance of the <xref href="stem.Collections.ObjectModel.ObservableCollection%601"></xref> class that contains elements copied from the specified list.
+  remarks: The elements are copied onto the <xref:System.Collections.ObjectModel.ObservableCollection%601> in the same order they are read by the enumerator of the list.
+  syntax:
+    content: public ObservableCollection (System.Collections.Generic.List<T> list);
+    parameters:
+    - id: list
+      type: System.Collections.Generic.List`1
+      description: The list from which the elements are copied.
+  overload: System.Collections.ObjectModel.ObservableCollection`1.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>list</code> parameter cannot be `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.BlockReentrancy
+  id: BlockReentrancy
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: BlockReentrancy()
+  nameWithType: ObservableCollection<T>.BlockReentrancy()
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.BlockReentrancy()
+  type: Method
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Disallows reentrant attempts to change this collection.
+  remarks: ''
+  example:
+  - "The typical usage is to wrap an <xref:System.Collections.ObjectModel.ObservableCollection%601.OnCollectionChanged%2A> call within a `using` scope, as in the following example:  \n  \n [!code-vb[ObservableCollection_snip#BlockReentrancy](~/add/codesnippet/visualbasic/observablecollection/datasource.vb#blockreentrancy)]\n [!code-cs[ObservableCollection_snip#BlockReentrancy](~/add/codesnippet/csharp/ObservableCollection/DataSource.cs#blockreentrancy)]"
+  syntax:
+    content: protected IDisposable BlockReentrancy ();
+    parameters: []
+    return:
+      type: System.IDisposable
+      description: An <xref href="System.IDisposable"></xref> object that can be used to dispose of the object.
+  overload: System.Collections.ObjectModel.ObservableCollection`1.BlockReentrancy*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.CheckReentrancy
+  id: CheckReentrancy
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: CheckReentrancy()
+  nameWithType: ObservableCollection<T>.CheckReentrancy()
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.CheckReentrancy()
+  type: Method
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Checks for reentrant attempts to change this collection.
+  syntax:
+    content: protected void CheckReentrancy ();
+    parameters: []
+  overload: System.Collections.ObjectModel.ObservableCollection`1.CheckReentrancy*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: If there was a call to <xref href="stem.Collections.ObjectModel.ObservableCollection%601.BlockReentrancy%2A"></xref> of which the <xref href="System.IDisposable"></xref> return value has not yet been disposed of. Typically, this means when there are additional attempts to change this collection during a <xref href="stem.Collections.ObjectModel.ObservableCollection%601.CollectionChanged"></xref> event. However, it depends on when derived classes choose to call <xref href="stem.Collections.ObjectModel.ObservableCollection%601.BlockReentrancy%2A"></xref>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.ClearItems
+  id: ClearItems
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: ClearItems()
+  nameWithType: ObservableCollection<T>.ClearItems()
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.ClearItems()
+  type: Method
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Removes all items from the collection.
+  remarks: "The base class calls this method when the list is being cleared. This implementation raises the <xref:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged> event.  \n  \n For more information, see the <xref:System.Collections.ObjectModel.Collection%601.ClearItems%2A> method of the <xref:System.Collections.ObjectModel.Collection%601> base class."
+  syntax:
+    content: protected override void ClearItems ();
+    parameters: []
+  overload: System.Collections.ObjectModel.ObservableCollection`1.ClearItems*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.CollectionChanged
+  id: CollectionChanged
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: CollectionChanged
+  nameWithType: ObservableCollection<T>.CollectionChanged
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.CollectionChanged
+  type: Event
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Occurs when an item is added, removed, changed, moved, or the entire list is refreshed.
+  syntax:
+    content: public virtual event System.Collections.Specialized.NotifyCollectionChangedEventHandler CollectionChanged;
+    return:
+      type: System.Collections.Specialized.NotifyCollectionChangedEventHandler
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.InsertItem(System.Int32,`0)
+  id: InsertItem(System.Int32,`0)
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: InsertItem(Int32,T)
+  nameWithType: ObservableCollection<T>.InsertItem(Int32,T)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.InsertItem(Int32,T)
+  type: Method
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Inserts an item into the collection at the specified index.
+  remarks: "The base class calls this method when an item is added to the collection. This implementation raises the <xref:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged> event.  \n  \n For more information, see the InsertItem method of the <xref:System.Collections.ObjectModel.Collection%601> base class."
+  syntax:
+    content: protected override void InsertItem (int index, T item);
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The zero-based index at which <code>item</code> should be inserted.
+    - id: item
+      type: T
+      description: The object to insert.
+  overload: System.Collections.ObjectModel.ObservableCollection`1.InsertItem*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.Move(System.Int32,System.Int32)
+  id: Move(System.Int32,System.Int32)
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: Move(Int32,Int32)
+  nameWithType: ObservableCollection<T>.Move(Int32,Int32)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.Move(Int32,Int32)
+  type: Method
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Moves the item at the specified index to a new location in the collection.
+  remarks: Subclasses can override the <xref:System.Collections.ObjectModel.ObservableCollection%601.MoveItem%2A> method to provide custom behavior for this method.
+  syntax:
+    content: public void Move (int oldIndex, int newIndex);
+    parameters:
+    - id: oldIndex
+      type: System.Int32
+      description: The zero-based index specifying the location of the item to be moved.
+    - id: newIndex
+      type: System.Int32
+      description: The zero-based index specifying the new location of the item.
+  overload: System.Collections.ObjectModel.ObservableCollection`1.Move*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.MoveItem(System.Int32,System.Int32)
+  id: MoveItem(System.Int32,System.Int32)
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: MoveItem(Int32,Int32)
+  nameWithType: ObservableCollection<T>.MoveItem(Int32,Int32)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.MoveItem(Int32,Int32)
+  type: Method
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Moves the item at the specified index to a new location in the collection.
+  remarks: "This implementation raises the <xref:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged> event.  \n  \n Subclasses can override this protected method to provide custom behavior for the <xref:System.Collections.ObjectModel.ObservableCollection%601.Move%2A> method."
+  syntax:
+    content: protected virtual void MoveItem (int oldIndex, int newIndex);
+    parameters:
+    - id: oldIndex
+      type: System.Int32
+      description: The zero-based index specifying the location of the item to be moved.
+    - id: newIndex
+      type: System.Int32
+      description: The zero-based index specifying the new location of the item.
+  overload: System.Collections.ObjectModel.ObservableCollection`1.MoveItem*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)
+  id: OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: OnCollectionChanged(NotifyCollectionChangedEventArgs)
+  nameWithType: ObservableCollection<T>.OnCollectionChanged(NotifyCollectionChangedEventArgs)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.OnCollectionChanged(NotifyCollectionChangedEventArgs)
+  type: Method
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Raises the <xref href="stem.Collections.ObjectModel.ObservableCollection%601.CollectionChanged"></xref> event with the provided arguments.
+  remarks: Properties and methods that modify this collection raise the <xref:System.Collections.ObjectModel.ObservableCollection%601.CollectionChanged> event through this `virtual` method.
+  example:
+  - "When overriding this method, either call the base implementation or use the <xref:System.Collections.ObjectModel.ObservableCollection%601.BlockReentrancy%2A> method to handle reentrant collection changes, as in the following example:  \n  \n [!code-vb[ObservableCollection_snip#BlockReentrancy](~/add/codesnippet/visualbasic/observablecollection/datasource.vb#blockreentrancy)]\n [!code-cs[ObservableCollection_snip#BlockReentrancy](~/add/codesnippet/csharp/ObservableCollection/DataSource.cs#blockreentrancy)]"
+  syntax:
+    content: protected virtual void OnCollectionChanged (System.Collections.Specialized.NotifyCollectionChangedEventArgs e);
+    parameters:
+    - id: e
+      type: System.Collections.Specialized.NotifyCollectionChangedEventArgs
+      description: Arguments of the event being raised.
+  overload: System.Collections.ObjectModel.ObservableCollection`1.OnCollectionChanged*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)
+  id: OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: OnPropertyChanged(PropertyChangedEventArgs)
+  nameWithType: ObservableCollection<T>.OnPropertyChanged(PropertyChangedEventArgs)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.OnPropertyChanged(PropertyChangedEventArgs)
+  type: Method
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Raises the <xref href="stem.Collections.ObjectModel.ObservableCollection%601.PropertyChanged"></xref> event with the provided arguments.
+  syntax:
+    content: protected virtual void OnPropertyChanged (System.ComponentModel.PropertyChangedEventArgs e);
+    parameters:
+    - id: e
+      type: System.ComponentModel.PropertyChangedEventArgs
+      description: Arguments of the event being raised.
+  overload: System.Collections.ObjectModel.ObservableCollection`1.OnPropertyChanged*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.PropertyChanged
+  id: PropertyChanged
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: PropertyChanged
+  nameWithType: ObservableCollection<T>.PropertyChanged
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.PropertyChanged
+  type: Event
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Occurs when a property value changes.
+  syntax:
+    content: protected virtual event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+    return:
+      type: System.ComponentModel.PropertyChangedEventHandler
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.RemoveItem(System.Int32)
+  id: RemoveItem(System.Int32)
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: RemoveItem(Int32)
+  nameWithType: ObservableCollection<T>.RemoveItem(Int32)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.RemoveItem(Int32)
+  type: Method
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Removes the item at the specified index of the collection.
+  remarks: "The base class calls this method when an item is removed from the collection. This implementation raises the <xref:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged> event.  \n  \n For more information, see the <xref:System.Collections.ObjectModel.Collection%601.RemoveItem%2A> method of the <xref:System.Collections.ObjectModel.Collection%601> base class."
+  syntax:
+    content: protected override void RemoveItem (int index);
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The zero-based index of the element to remove.
+  overload: System.Collections.ObjectModel.ObservableCollection`1.RemoveItem*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.ObjectModel.ObservableCollection`1.SetItem(System.Int32,`0)
+  id: SetItem(System.Int32,`0)
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  langs:
+  - csharp
+  name: SetItem(Int32,T)
+  nameWithType: ObservableCollection<T>.SetItem(Int32,T)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.SetItem(Int32,T)
+  type: Method
+  assemblies:
+  - WindowsBase
+  - System
+  namespace: System.Collections.ObjectModel
+  summary: Replaces the element at the specified index.
+  remarks: "The base class calls this method when an item is set in the collection. This implementation raises the <xref:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged> event.  \n  \n For more information, see the <xref:System.Collections.ObjectModel.Collection%601.SetItem%2A> method of the <xref:System.Collections.ObjectModel.Collection%601> base class."
+  syntax:
+    content: protected override void SetItem (int index, T item);
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The zero-based index of the element to replace.
+    - id: item
+      type: T
+      description: The new value for the element at the specified index.
+  overload: System.Collections.ObjectModel.ObservableCollection`1.SetItem*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.ObjectModel\ObservableCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.ObjectModel/ObservableCollection`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Collections.ObjectModel.Collection`1
+  isExternal: false
+  name: System.Collections.ObjectModel.Collection<T>
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.Collections.ObjectModel.ObservableCollection`1.#ctor
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: ObservableCollection<T>()
+  nameWithType: ObservableCollection<T>.ObservableCollection<T>()
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.ObservableCollection<T>()
+- uid: System.Collections.ObjectModel.ObservableCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: ObservableCollection<T>(IEnumerable<T>)
+  nameWithType: ObservableCollection<T>.ObservableCollection<T>(IEnumerable<T>)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.ObservableCollection<T>(IEnumerable<T>)
+- uid: System.Collections.Generic.IEnumerable`1
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+- uid: System.Collections.ObjectModel.ObservableCollection`1.#ctor(System.Collections.Generic.List{`0})
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: ObservableCollection<T>(List<T>)
+  nameWithType: ObservableCollection<T>.ObservableCollection<T>(List<T>)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.ObservableCollection<T>(List<T>)
+- uid: System.Collections.Generic.List`1
+  parent: System.Collections.Generic
+  isExternal: false
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+- uid: System.Collections.ObjectModel.ObservableCollection`1.BlockReentrancy
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: BlockReentrancy()
+  nameWithType: ObservableCollection<T>.BlockReentrancy()
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.BlockReentrancy()
+- uid: System.IDisposable
+  parent: System
+  isExternal: false
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Collections.ObjectModel.ObservableCollection`1.CheckReentrancy
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: CheckReentrancy()
+  nameWithType: ObservableCollection<T>.CheckReentrancy()
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.CheckReentrancy()
+- uid: System.Collections.ObjectModel.ObservableCollection`1.ClearItems
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: ClearItems()
+  nameWithType: ObservableCollection<T>.ClearItems()
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.ClearItems()
+- uid: System.Collections.ObjectModel.ObservableCollection`1.CollectionChanged
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: CollectionChanged
+  nameWithType: ObservableCollection<T>.CollectionChanged
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.CollectionChanged
+- uid: System.Collections.Specialized.NotifyCollectionChangedEventHandler
+  parent: System.Collections.Specialized
+  isExternal: false
+  name: NotifyCollectionChangedEventHandler
+  nameWithType: NotifyCollectionChangedEventHandler
+  fullName: System.Collections.Specialized.NotifyCollectionChangedEventHandler
+- uid: System.Collections.ObjectModel.ObservableCollection`1.InsertItem(System.Int32,`0)
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: InsertItem(Int32,T)
+  nameWithType: ObservableCollection<T>.InsertItem(Int32,T)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.InsertItem(Int32,T)
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: T
+  isExternal: true
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Collections.ObjectModel.ObservableCollection`1.Move(System.Int32,System.Int32)
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: Move(Int32,Int32)
+  nameWithType: ObservableCollection<T>.Move(Int32,Int32)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.Move(Int32,Int32)
+- uid: System.Collections.ObjectModel.ObservableCollection`1.MoveItem(System.Int32,System.Int32)
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: MoveItem(Int32,Int32)
+  nameWithType: ObservableCollection<T>.MoveItem(Int32,Int32)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.MoveItem(Int32,Int32)
+- uid: System.Collections.ObjectModel.ObservableCollection`1.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: OnCollectionChanged(NotifyCollectionChangedEventArgs)
+  nameWithType: ObservableCollection<T>.OnCollectionChanged(NotifyCollectionChangedEventArgs)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.OnCollectionChanged(NotifyCollectionChangedEventArgs)
+- uid: System.Collections.Specialized.NotifyCollectionChangedEventArgs
+  parent: System.Collections.Specialized
+  isExternal: false
+  name: NotifyCollectionChangedEventArgs
+  nameWithType: NotifyCollectionChangedEventArgs
+  fullName: System.Collections.Specialized.NotifyCollectionChangedEventArgs
+- uid: System.Collections.ObjectModel.ObservableCollection`1.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: OnPropertyChanged(PropertyChangedEventArgs)
+  nameWithType: ObservableCollection<T>.OnPropertyChanged(PropertyChangedEventArgs)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.OnPropertyChanged(PropertyChangedEventArgs)
+- uid: System.ComponentModel.PropertyChangedEventArgs
+  parent: System.ComponentModel
+  isExternal: false
+  name: PropertyChangedEventArgs
+  nameWithType: PropertyChangedEventArgs
+  fullName: System.ComponentModel.PropertyChangedEventArgs
+- uid: System.Collections.ObjectModel.ObservableCollection`1.PropertyChanged
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: PropertyChanged
+  nameWithType: ObservableCollection<T>.PropertyChanged
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.PropertyChanged
+- uid: System.ComponentModel.PropertyChangedEventHandler
+  parent: System.ComponentModel
+  isExternal: false
+  name: PropertyChangedEventHandler
+  nameWithType: PropertyChangedEventHandler
+  fullName: System.ComponentModel.PropertyChangedEventHandler
+- uid: System.Collections.ObjectModel.ObservableCollection`1.RemoveItem(System.Int32)
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: RemoveItem(Int32)
+  nameWithType: ObservableCollection<T>.RemoveItem(Int32)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.RemoveItem(Int32)
+- uid: System.Collections.ObjectModel.ObservableCollection`1.SetItem(System.Int32,`0)
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: SetItem(Int32,T)
+  nameWithType: ObservableCollection<T>.SetItem(Int32,T)
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>.SetItem(Int32,T)
+- uid: System.Collections.ObjectModel.ObservableCollection`1.#ctor*
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: ObservableCollection<T>
+  nameWithType: ObservableCollection<T>.ObservableCollection<T>
+- uid: System.Collections.ObjectModel.ObservableCollection`1.BlockReentrancy*
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: BlockReentrancy
+  nameWithType: ObservableCollection<T>.BlockReentrancy
+- uid: System.Collections.ObjectModel.ObservableCollection`1.CheckReentrancy*
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: CheckReentrancy
+  nameWithType: ObservableCollection<T>.CheckReentrancy
+- uid: System.Collections.ObjectModel.ObservableCollection`1.ClearItems*
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: ClearItems
+  nameWithType: ObservableCollection<T>.ClearItems
+- uid: System.Collections.ObjectModel.ObservableCollection`1.InsertItem*
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: InsertItem
+  nameWithType: ObservableCollection<T>.InsertItem
+- uid: System.Collections.ObjectModel.ObservableCollection`1.Move*
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: Move
+  nameWithType: ObservableCollection<T>.Move
+- uid: System.Collections.ObjectModel.ObservableCollection`1.MoveItem*
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: MoveItem
+  nameWithType: ObservableCollection<T>.MoveItem
+- uid: System.Collections.ObjectModel.ObservableCollection`1.OnCollectionChanged*
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: OnCollectionChanged
+  nameWithType: ObservableCollection<T>.OnCollectionChanged
+- uid: System.Collections.ObjectModel.ObservableCollection`1.OnPropertyChanged*
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: OnPropertyChanged
+  nameWithType: ObservableCollection<T>.OnPropertyChanged
+- uid: System.Collections.ObjectModel.ObservableCollection`1.RemoveItem*
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: RemoveItem
+  nameWithType: ObservableCollection<T>.RemoveItem
+- uid: System.Collections.ObjectModel.ObservableCollection`1.SetItem*
+  parent: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: SetItem
+  nameWithType: ObservableCollection<T>.SetItem

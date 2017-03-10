@@ -1,0 +1,40 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Data.Linq.ISingleResult`1
+  id: ISingleResult`1
+  children: []
+  langs:
+  - csharp
+  name: ISingleResult<T>
+  nameWithType: ISingleResult<T>
+  fullName: System.Data.Linq.ISingleResult<T>
+  type: Interface
+  summary: Represents the result of a mapped function that has a single return sequence.
+  remarks: "The following example represents a stored procedure that returns rows of customers and uses an input parameter to return only those rows that list \"London\" as the customer city. The example assumes an enumerable `CustomersByCityResult` class.  \n  \n```  \nCREATE PROCEDURE [dbo].[Customers By City]  \n    (@param1 NVARCHAR(20))  \nAS  \nBEGIN  \n    -- SET NOCOUNT ON added to prevent extra result sets from  \n    -- interfering with SELECT statements.  \n    SET NOCOUNT ON;  \n    SELECT CustomerID, ContactName, CompanyName, City from Customers  \n        as c where c.City=@param1  \nEND  \n```"
+  example:
+  - >-
+    [!code-vb[DLinqSprox#1](~/add/codesnippet/visualbasic/sprox/northwind-sprox.vb#1)]
+     [!code-cs[DLinqSprox#1](~/add/codesnippet/csharp/sprox/northwind-sprox.cs#1)]
+  syntax:
+    content: 'public interface ISingleResult<T> : IDisposable, System.Collections.Generic.IEnumerable<T>, System.Data.Linq.IFunctionResult'
+    typeParameters:
+    - id: T
+      description: The type of the elements in the return sequence.
+  implements:
+  - System.Collections.Generic.IEnumerable<T>
+  - System.Data.Linq.IFunctionResult
+  - System.IDisposable
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Linq\ISingleResult`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Linq/ISingleResult`1.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references: []

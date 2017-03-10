@@ -1,0 +1,258 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.IO.FileSystemEventArgs
+  id: FileSystemEventArgs
+  children:
+  - System.IO.FileSystemEventArgs.#ctor(System.IO.WatcherChangeTypes,System.String,System.String)
+  - System.IO.FileSystemEventArgs.ChangeType
+  - System.IO.FileSystemEventArgs.FullPath
+  - System.IO.FileSystemEventArgs.Name
+  langs:
+  - csharp
+  name: FileSystemEventArgs
+  nameWithType: FileSystemEventArgs
+  fullName: System.IO.FileSystemEventArgs
+  type: Class
+  summary: 'Provides data for the directory events: <xref href="System.IO.FileSystemWatcher.Changed"></xref>, <xref href="System.IO.FileSystemWatcher.Created"></xref>, <xref href="System.IO.FileSystemWatcher.Deleted"></xref>.'
+  remarks: "The FileSystemEventArgs class is passed as a parameter to event handlers for these events:  \n  \n The <xref:System.IO.FileSystemWatcher.Changed> event occurs when changes are made to the size, system attributes, last write time, last access time, or security permissions in a file or directory in the specified <xref:System.IO.FileSystemWatcher.Path%2A> of a <xref:System.IO.FileSystemWatcher>.  \n  \n The <xref:System.IO.FileSystemWatcher.Created> event occurs when a file or directory in the specified <xref:System.IO.FileSystemWatcher.Path%2A> of a <xref:System.IO.FileSystemWatcher> is created.  \n  \n The <xref:System.IO.FileSystemWatcher.Deleted> event occurs when a file or directory in the specified <xref:System.IO.FileSystemWatcher.Path%2A> of a <xref:System.IO.FileSystemWatcher> is deleted. For more information, see <xref:System.IO.FileSystemWatcher>."
+  example:
+  - "The following example shows how to create a <xref:System.IO.FileSystemWatcher> to monitor file changes (creates, deletes, renames, changes) occurring on a disk drive. The example also shows how to properly receive error notifications.  \n  \n [!code-cs[FileSystemWatcher#1](~/add/codesnippet/csharp/t-system.io.filesystemev_1_1.cs)]\n [!code-vb[FileSystemWatcher#1](~/add/codesnippet/visualbasic/t-system.io.filesystemev_1_1.vb)]"
+  syntax:
+    content: 'public class FileSystemEventArgs : EventArgs'
+  inheritance:
+  - System.Object
+  - System.EventArgs
+  implements: []
+  inheritedMembers:
+  - System.EventArgs.Empty
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.IO\FileSystemEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.IO/FileSystemEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IO.FileSystemEventArgs.#ctor(System.IO.WatcherChangeTypes,System.String,System.String)
+  id: '#ctor(System.IO.WatcherChangeTypes,System.String,System.String)'
+  parent: System.IO.FileSystemEventArgs
+  langs:
+  - csharp
+  name: FileSystemEventArgs(WatcherChangeTypes,String,String)
+  nameWithType: FileSystemEventArgs.FileSystemEventArgs(WatcherChangeTypes,String,String)
+  fullName: System.IO.FileSystemEventArgs.FileSystemEventArgs(WatcherChangeTypes,String,String)
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.IO
+  summary: Initializes a new instance of the <xref href="System.IO.FileSystemEventArgs"></xref> class.
+  syntax:
+    content: public FileSystemEventArgs (System.IO.WatcherChangeTypes changeType, string directory, string name);
+    parameters:
+    - id: changeType
+      type: System.IO.WatcherChangeTypes
+      description: One of the <xref href="System.IO.WatcherChangeTypes"></xref> values, which represents the kind of change detected in the file system.
+    - id: directory
+      type: System.String
+      description: The root directory of the affected file or directory.
+    - id: name
+      type: System.String
+      description: The name of the affected file or directory.
+  overload: System.IO.FileSystemEventArgs.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.IO\FileSystemEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.IO/FileSystemEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IO.FileSystemEventArgs.ChangeType
+  id: ChangeType
+  parent: System.IO.FileSystemEventArgs
+  langs:
+  - csharp
+  name: ChangeType
+  nameWithType: FileSystemEventArgs.ChangeType
+  fullName: System.IO.FileSystemEventArgs.ChangeType
+  type: Property
+  assemblies:
+  - System
+  namespace: System.IO
+  summary: Gets the type of directory event that occurred.
+  remarks: ''
+  example:
+  - "The following example demonstrates the ChangeType property. This code example is part of a larger example provided for the <xref:System.IO.FileSystemEventArgs> class.  \n  \n [!code-cs[FileSystemWatcher#7](~/add/codesnippet/csharp/p-system.io.filesystemev_1_1.cs)]\n [!code-vb[FileSystemWatcher#7](~/add/codesnippet/visualbasic/p-system.io.filesystemev_1_1.vb)]"
+  syntax:
+    content: public System.IO.WatcherChangeTypes ChangeType { get; }
+    return:
+      type: System.IO.WatcherChangeTypes
+      description: One of the <xref href="System.IO.WatcherChangeTypes"></xref> values that represents the kind of change detected in the file system.
+  overload: System.IO.FileSystemEventArgs.ChangeType*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.IO\FileSystemEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.IO/FileSystemEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IO.FileSystemEventArgs.FullPath
+  id: FullPath
+  parent: System.IO.FileSystemEventArgs
+  langs:
+  - csharp
+  name: FullPath
+  nameWithType: FileSystemEventArgs.FullPath
+  fullName: System.IO.FileSystemEventArgs.FullPath
+  type: Property
+  assemblies:
+  - System
+  namespace: System.IO
+  summary: Gets the fully qualifed path of the affected file or directory.
+  remarks: ''
+  example:
+  - "The following example demonstrates the FullPath property. This code example is part of a larger example provided for the <xref:System.IO.FileSystemEventArgs> class.  \n  \n [!code-cs[FileSystemWatcher#7](~/add/codesnippet/csharp/p-system.io.filesystemev_0_1.cs)]\n [!code-vb[FileSystemWatcher#7](~/add/codesnippet/visualbasic/p-system.io.filesystemev_0_1.vb)]"
+  syntax:
+    content: public string FullPath { get; }
+    return:
+      type: System.String
+      description: The path of the affected file or directory.
+  overload: System.IO.FileSystemEventArgs.FullPath*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.IO\FileSystemEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.IO/FileSystemEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IO.FileSystemEventArgs.Name
+  id: Name
+  parent: System.IO.FileSystemEventArgs
+  langs:
+  - csharp
+  name: Name
+  nameWithType: FileSystemEventArgs.Name
+  fullName: System.IO.FileSystemEventArgs.Name
+  type: Property
+  assemblies:
+  - System
+  namespace: System.IO
+  summary: Gets the name of the affected file or directory.
+  remarks: The name returned by the Name property is the relative path of the affected file or directory, with respect to the directory being watched. For example, if a <xref:System.IO.FileSystemWatcher> object is watching the directory "C:\temp" and the file at "C:\temp\test\file.txt" changes, the Name property will return "test\file.txt".
+  syntax:
+    content: public string Name { get; }
+    return:
+      type: System.String
+      description: The name of the affected file or directory.
+  overload: System.IO.FileSystemEventArgs.Name*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.IO\FileSystemEventArgs.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.IO/FileSystemEventArgs.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.EventArgs
+  isExternal: false
+  name: System.EventArgs
+- uid: System.IO.FileSystemEventArgs.#ctor(System.IO.WatcherChangeTypes,System.String,System.String)
+  parent: System.IO.FileSystemEventArgs
+  isExternal: false
+  name: FileSystemEventArgs(WatcherChangeTypes,String,String)
+  nameWithType: FileSystemEventArgs.FileSystemEventArgs(WatcherChangeTypes,String,String)
+  fullName: System.IO.FileSystemEventArgs.FileSystemEventArgs(WatcherChangeTypes,String,String)
+- uid: System.IO.WatcherChangeTypes
+  parent: System.IO
+  isExternal: false
+  name: WatcherChangeTypes
+  nameWithType: WatcherChangeTypes
+  fullName: System.IO.WatcherChangeTypes
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.IO.FileSystemEventArgs.ChangeType
+  parent: System.IO.FileSystemEventArgs
+  isExternal: false
+  name: ChangeType
+  nameWithType: FileSystemEventArgs.ChangeType
+  fullName: System.IO.FileSystemEventArgs.ChangeType
+- uid: System.IO.FileSystemEventArgs.FullPath
+  parent: System.IO.FileSystemEventArgs
+  isExternal: false
+  name: FullPath
+  nameWithType: FileSystemEventArgs.FullPath
+  fullName: System.IO.FileSystemEventArgs.FullPath
+- uid: System.IO.FileSystemEventArgs.Name
+  parent: System.IO.FileSystemEventArgs
+  isExternal: false
+  name: Name
+  nameWithType: FileSystemEventArgs.Name
+  fullName: System.IO.FileSystemEventArgs.Name
+- uid: System.IO.FileSystemEventArgs.#ctor*
+  parent: System.IO.FileSystemEventArgs
+  isExternal: false
+  name: FileSystemEventArgs
+  nameWithType: FileSystemEventArgs.FileSystemEventArgs
+- uid: System.IO.FileSystemEventArgs.ChangeType*
+  parent: System.IO.FileSystemEventArgs
+  isExternal: false
+  name: ChangeType
+  nameWithType: FileSystemEventArgs.ChangeType
+- uid: System.IO.FileSystemEventArgs.FullPath*
+  parent: System.IO.FileSystemEventArgs
+  isExternal: false
+  name: FullPath
+  nameWithType: FileSystemEventArgs.FullPath
+- uid: System.IO.FileSystemEventArgs.Name*
+  parent: System.IO.FileSystemEventArgs
+  isExternal: false
+  name: Name
+  nameWithType: FileSystemEventArgs.Name

@@ -1,0 +1,168 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.InteropServices.LayoutKind
+  id: LayoutKind
+  children:
+  - System.Runtime.InteropServices.LayoutKind.Auto
+  - System.Runtime.InteropServices.LayoutKind.Explicit
+  - System.Runtime.InteropServices.LayoutKind.Sequential
+  langs:
+  - csharp
+  name: LayoutKind
+  nameWithType: LayoutKind
+  fullName: System.Runtime.InteropServices.LayoutKind
+  type: Enum
+  summary: Controls the layout of an object when exported to unmanaged code.
+  remarks: "This enumeration is used with <xref:System.Runtime.InteropServices.StructLayoutAttribute>. The common language runtime uses the `Auto` layout value by default. To reduce layout-related problems associated with the `Auto` value, C#, Visual Basic, and C++ compilers specify `Sequential` layout for value types.  \n  \n> [!IMPORTANT]\n>  The <xref:System.Runtime.InteropServices.StructLayoutAttribute.Pack?displayProperty=fullName> field controls the alignment of data fields, and thus affects the layout regardless of the LayoutKind value you specify. By default, the value of <xref:System.Runtime.InteropServices.StructLayoutAttribute.Pack> is 0, which indicates the default packing size for the current platform. For example, when you use the `Explicit` layout value and specify field alignments on byte boundaries, you must set <xref:System.Runtime.InteropServices.StructLayoutAttribute.Pack> to 1 to get the desired result."
+  example:
+  - "The following example shows the managed declaration of the `PtInRect` function, which checks whether a point lies within a rectangle, and defines a `Point` structure with Sequential layout and a `Rect` structure with Explicit layout.  \n  \n [!code-cs[LayoutKind#1](~/add/codesnippet/csharp/t-system.runtime.interop_8_1.cs)]\n [!code-cpp[LayoutKind#1](~/add/codesnippet/cpp/t-system.runtime.interop_8_1.cpp)]\n [!code-vb[LayoutKind#1](~/add/codesnippet/visualbasic/t-system.runtime.interop_8_1.vb)]"
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public enum LayoutKind
+  inheritance:
+  - System.Object
+  - System.ValueType
+  - System.Enum
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\LayoutKind.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/LayoutKind.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.LayoutKind.Auto
+  id: Auto
+  parent: System.Runtime.InteropServices.LayoutKind
+  langs:
+  - csharp
+  name: Auto
+  nameWithType: LayoutKind.Auto
+  fullName: System.Runtime.InteropServices.LayoutKind.Auto
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.InteropServices
+  summary: The runtime automatically chooses an appropriate layout for the members of an object in unmanaged memory. Objects defined with this enumeration member cannot be exposed outside of managed code. Attempting to do so generates an exception.
+  syntax:
+    content: Auto
+    return:
+      type: System.Runtime.InteropServices.LayoutKind
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\LayoutKind.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/LayoutKind.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.LayoutKind.Explicit
+  id: Explicit
+  parent: System.Runtime.InteropServices.LayoutKind
+  langs:
+  - csharp
+  name: Explicit
+  nameWithType: LayoutKind.Explicit
+  fullName: System.Runtime.InteropServices.LayoutKind.Explicit
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.InteropServices
+  summary: The precise position of each member of an object in unmanaged memory is explicitly controlled, subject to the setting of the <xref href="System.Runtime.InteropServices.StructLayoutAttribute.Pack"></xref> field. Each member must use the <xref href="System.Runtime.InteropServices.FieldOffsetAttribute"></xref> to indicate the position of that field within the type.
+  syntax:
+    content: Explicit
+    return:
+      type: System.Runtime.InteropServices.LayoutKind
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\LayoutKind.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/LayoutKind.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.LayoutKind.Sequential
+  id: Sequential
+  parent: System.Runtime.InteropServices.LayoutKind
+  langs:
+  - csharp
+  name: Sequential
+  nameWithType: LayoutKind.Sequential
+  fullName: System.Runtime.InteropServices.LayoutKind.Sequential
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.InteropServices
+  summary: The members of the object are laid out sequentially, in the order in which they appear when exported to unmanaged memory. The members are laid out according to the packing specified in <xref href="System.Runtime.InteropServices.StructLayoutAttribute.Pack"></xref>, and can be noncontiguous.
+  syntax:
+    content: Sequential
+    return:
+      type: System.Runtime.InteropServices.LayoutKind
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\LayoutKind.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/LayoutKind.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Enum
+  isExternal: false
+  name: System.Enum
+- uid: System.Runtime.InteropServices.LayoutKind.Auto
+  parent: System.Runtime.InteropServices.LayoutKind
+  isExternal: false
+  name: Auto
+  nameWithType: LayoutKind.Auto
+  fullName: System.Runtime.InteropServices.LayoutKind.Auto
+- uid: System.Runtime.InteropServices.LayoutKind
+  parent: System.Runtime.InteropServices
+  isExternal: false
+  name: LayoutKind
+  nameWithType: LayoutKind
+  fullName: System.Runtime.InteropServices.LayoutKind
+- uid: System.Runtime.InteropServices.LayoutKind.Explicit
+  parent: System.Runtime.InteropServices.LayoutKind
+  isExternal: false
+  name: Explicit
+  nameWithType: LayoutKind.Explicit
+  fullName: System.Runtime.InteropServices.LayoutKind.Explicit
+- uid: System.Runtime.InteropServices.LayoutKind.Sequential
+  parent: System.Runtime.InteropServices.LayoutKind
+  isExternal: false
+  name: Sequential
+  nameWithType: LayoutKind.Sequential
+  fullName: System.Runtime.InteropServices.LayoutKind.Sequential

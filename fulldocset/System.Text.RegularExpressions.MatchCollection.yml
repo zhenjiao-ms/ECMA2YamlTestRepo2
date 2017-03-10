@@ -1,0 +1,469 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Text.RegularExpressions.MatchCollection
+  id: MatchCollection
+  children:
+  - System.Text.RegularExpressions.MatchCollection.CopyTo(System.Array,System.Int32)
+  - System.Text.RegularExpressions.MatchCollection.Count
+  - System.Text.RegularExpressions.MatchCollection.GetEnumerator
+  - System.Text.RegularExpressions.MatchCollection.IsReadOnly
+  - System.Text.RegularExpressions.MatchCollection.IsSynchronized
+  - System.Text.RegularExpressions.MatchCollection.Item(System.Int32)
+  - System.Text.RegularExpressions.MatchCollection.SyncRoot
+  langs:
+  - csharp
+  name: MatchCollection
+  nameWithType: MatchCollection
+  fullName: System.Text.RegularExpressions.MatchCollection
+  type: Class
+  summary: Represents the set of successful matches found by iteratively applying a regular expression pattern to the input string.
+  remarks: "The collection is immutable (read-only) and has no public constructor. The <xref:System.Text.RegularExpressions.Regex.Matches%2A?displayProperty=fullName> method returns a MatchCollection object.  \n  \n The collection contains zero or more <xref:System.Text.RegularExpressions.Match?displayProperty=fullName> objects. If the match is successful, the collection is populated with one <xref:System.Text.RegularExpressions.Match?displayProperty=fullName> object for each match found in the input string. If the match is unsuccessful, the collection contains no <xref:System.Text.RegularExpressions.Match?displayProperty=fullName> objects, and its <xref:System.Text.RegularExpressions.MatchCollection.Count%2A> property equals zero.  \n  \n When applying a regular expression pattern to a particular input string, the regular expression engine uses either of two techniques to build the MatchCollection object:  \n  \n-   Direct evaluation.  \n  \n     The MatchCollection object is populated all at once, with all matches resulting from a particular call to the <xref:System.Text.RegularExpressions.Regex.Matches%2A?displayProperty=fullName> method. This technique is used when the collection's <xref:System.Text.RegularExpressions.MatchCollection.Count%2A> property is accessed. It typically is the more expensive method of populating the collection and entails a greater performance hit.  \n  \n-   Lazy evaluation.  \n  \n     The MatchCollection object is populated as needed on a match-by-match basis. It is equivalent to the regular expression engine calling the <xref:System.Text.RegularExpressions.Regex.Match%2A?displayProperty=fullName> method repeatedly and adding each match to the collection. This technique is used when the collection is accessed through its <xref:System.Text.RegularExpressions.MatchCollection.GetEnumerator%2A> method, or when it is accessed using the `foreach` statement (in C#) or the `For Each`...`Next` statement (in Visual Basic).  \n  \n To iterate through the members of the collection, you should use the collection iteration construct provided by your language (such as `foreach` in C# and `For Each`…`Next` in Visual Basic) instead of retrieving the enumerator that is returned by the <xref:System.Text.RegularExpressions.MatchCollection.GetEnumerator%2A> method."
+  example:
+  - "The following example illustrates the use of the MatchCollection class to interrogate a set of <xref:System.Text.RegularExpressions.Match> instances.  \n  \n [!code-cs[Regex_Words#0](~/add/codesnippet/csharp/t-system.text.regularexp_7_1.cs)]\n [!code-vb[Regex_Words#0](~/add/codesnippet/visualbasic/t-system.text.regularexp_7_1.vb)]\n [!code-cpp[Regex_Words#0](~/add/codesnippet/cpp/t-system.text.regularexp_7_1.cpp)]"
+  syntax:
+    content: 'public class MatchCollection : System.Collections.ICollection'
+  inheritance:
+  - System.Object
+  implements:
+  - System.Collections.ICollection
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Text.RegularExpressions\MatchCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Text.RegularExpressions/MatchCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Text.RegularExpressions.MatchCollection.CopyTo(System.Array,System.Int32)
+  id: CopyTo(System.Array,System.Int32)
+  parent: System.Text.RegularExpressions.MatchCollection
+  langs:
+  - csharp
+  name: CopyTo(Array,Int32)
+  nameWithType: MatchCollection.CopyTo(Array,Int32)
+  fullName: System.Text.RegularExpressions.MatchCollection.CopyTo(Array,Int32)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Text.RegularExpressions
+  summary: Copies all the elements of the collection to the given array starting at the given index.
+  remarks: "Because the collection is copied into the array starting at the given index, the destination array must be at least as large as the entire collection.  \n  \n> [!WARNING]\n>  This member is not present in the [!INCLUDE[net_portable](~/add/includes/net-portable-md.md)]. If you are developing applications that target the [!INCLUDE[net_portable](~/add/includes/net-portable-md.md)], use the <xref:System.Text.RegularExpressions.CaptureCollection.System%23Collections%23ICollection%23CopyTo%2A?displayProperty=fullName> method instead.  \n  \n Because the <xref:System.Text.RegularExpressions.MatchCollection> object is generally populated by using lazy evaluation, trying to copy the collection before it has been fully populated may throw a <xref:System.Text.RegularExpressions.RegexMatchTimeoutException> exception. This exception can be thrown if a time-out value for matching operations is in effect, and the attempt to find a single match exceeds that time-out interval."
+  syntax:
+    content: public void CopyTo (Array array, int arrayIndex);
+    parameters:
+    - id: array
+      type: System.Array
+      description: The array the collection is to be copied into.
+    - id: arrayIndex
+      type: System.Int32
+      description: The position in the array where copying is to begin.
+  overload: System.Text.RegularExpressions.MatchCollection.CopyTo*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>array</code> is a multi-dimensional array.
+  - type: System.IndexOutOfRangeException
+    commentId: T:System.IndexOutOfRangeException
+    description: "<code>arrayIndex</code> is outside the bounds of <code>array</code>.  \n  \n -or-  \n  \n <code>arrayIndex</code> plus <xref href=\"stem.Text.RegularExpressions.MatchCollection.Count%2A\"></xref> is outside the bounds of <code>array</code>."
+  - type: System.Text.RegularExpressions.RegexMatchTimeoutException
+    commentId: T:System.Text.RegularExpressions.RegexMatchTimeoutException
+    description: A time-out occurred.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Text.RegularExpressions\MatchCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Text.RegularExpressions/MatchCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Text.RegularExpressions.MatchCollection.Count
+  id: Count
+  parent: System.Text.RegularExpressions.MatchCollection
+  langs:
+  - csharp
+  name: Count
+  nameWithType: MatchCollection.Count
+  fullName: System.Text.RegularExpressions.MatchCollection.Count
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Text.RegularExpressions
+  summary: Gets the number of matches.
+  remarks: "Accessing individual members of the <xref:System.Text.RegularExpressions.MatchCollection> object by retrieving the value of the collection's Count property causes the regular expression engine to populate the collection using direct evaluation. ln contrast, calling the <xref:System.Text.RegularExpressions.MatchCollection.GetEnumerator%2A> method (or using the `foreach` statement in C# and the `For Each`...`Next` statement in Visual Basic) causes the regular expression engine to populate the collection on an as needed basis using lazy evaluation. Direct evaluation can be a much more expensive method of building the collection than lazy evaluation.  \n  \n Because the <xref:System.Text.RegularExpressions.MatchCollection> object is generally populated by using lazy evaluation, trying to determine the number of elements in the collection before it has been fully populated may throw a <xref:System.Text.RegularExpressions.RegexMatchTimeoutException> exception. This exception can be thrown if a time-out value for matching operations is in effect, and the attempt to find a single match exceeds that time-out interval."
+  example:
+  - "The following example uses the Count property to determine whether the call to the <xref:System.Text.RegularExpressions.Regex.Matches%28System.String%2CSystem.String%29?displayProperty=fullName> method found any matches. If not, it indicates that no matches were found. Otherwise, it enumerates the matches and displays their value and the position in the input string at which they were found.  \n  \n [!code-vb[System.Text.RegularExpressions.MatchCollection.Count#1](~/add/codesnippet/visualbasic/p-system.text.regularexp_0_1.vb)]\n [!code-cs[System.Text.RegularExpressions.MatchCollection.Count#1](~/add/codesnippet/csharp/p-system.text.regularexp_0_1.cs)]  \n  \n The regular expression pattern `\\d+` matches one or more decimal characters in an input string."
+  syntax:
+    content: public int Count { get; }
+    return:
+      type: System.Int32
+      description: The number of matches.
+  overload: System.Text.RegularExpressions.MatchCollection.Count*
+  exceptions:
+  - type: System.Text.RegularExpressions.RegexMatchTimeoutException
+    commentId: T:System.Text.RegularExpressions.RegexMatchTimeoutException
+    description: A time-out occurred.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Text.RegularExpressions\MatchCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Text.RegularExpressions/MatchCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Text.RegularExpressions.MatchCollection.GetEnumerator
+  id: GetEnumerator
+  parent: System.Text.RegularExpressions.MatchCollection
+  langs:
+  - csharp
+  name: GetEnumerator()
+  nameWithType: MatchCollection.GetEnumerator()
+  fullName: System.Text.RegularExpressions.MatchCollection.GetEnumerator()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Text.RegularExpressions
+  summary: Provides an enumerator that iterates through the collection.
+  remarks: "Instead of  calling the GetEnumerator method to retrieve an enumerator that lets you iterate through the <xref:System.Text.RegularExpressions.Match> objects in the collection, you should use the group iteration construct (such as `foreach` in C# and `For Each`…`Next` in Visual Basic) provided by your programming language.  \n  \n Iterating the members of the <xref:System.Text.RegularExpressions.MatchCollection> object using the GetEnumerator method (or the `foreach` statement in C# and the `For Each`...`Next` statement in Visual Basic) causes the regular expression engine to populate the collection on an as needed basis using lazy evaluation. This is analogous to repeatedly calling the <xref:System.Text.RegularExpressions.Regex.Match%2A?displayProperty=fullName> method, and then adding the resulting match to the <xref:System.Text.RegularExpressions.MatchCollection> object. In contrast, the regular expression engine uses direct evaluation to populate the collection all at once when the <xref:System.Text.RegularExpressions.MatchCollection.Count%2A> property is accessed. This can be a much more expensive method of building the collection than lazy evaluation.  \n  \n Because the <xref:System.Text.RegularExpressions.MatchCollection> object is generally populated by using lazy evaluation, trying to navigate to the next member of the collection may throw a <xref:System.Text.RegularExpressions.RegexMatchTimeoutException> exception. This exception can be thrown if a time-out value for matching operations is in effect, and the attempt to find the next match exceeds that time-out interval."
+  syntax:
+    content: public System.Collections.IEnumerator GetEnumerator ();
+    parameters: []
+    return:
+      type: System.Collections.IEnumerator
+      description: An object that contains all <xref href="System.Text.RegularExpressions.Match"></xref> objects within the <xref href="System.Text.RegularExpressions.MatchCollection"></xref>.
+  overload: System.Text.RegularExpressions.MatchCollection.GetEnumerator*
+  exceptions:
+  - type: System.Text.RegularExpressions.RegexMatchTimeoutException
+    commentId: T:System.Text.RegularExpressions.RegexMatchTimeoutException
+    description: A time-out occurred.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Text.RegularExpressions\MatchCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Text.RegularExpressions/MatchCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Text.RegularExpressions.MatchCollection.IsReadOnly
+  id: IsReadOnly
+  parent: System.Text.RegularExpressions.MatchCollection
+  langs:
+  - csharp
+  name: IsReadOnly
+  nameWithType: MatchCollection.IsReadOnly
+  fullName: System.Text.RegularExpressions.MatchCollection.IsReadOnly
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Text.RegularExpressions
+  summary: Gets a value that indicates whether the collection is read only.
+  syntax:
+    content: public bool IsReadOnly { get; }
+    return:
+      type: System.Boolean
+      description: '`true` in all cases.'
+  overload: System.Text.RegularExpressions.MatchCollection.IsReadOnly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Text.RegularExpressions\MatchCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Text.RegularExpressions/MatchCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Text.RegularExpressions.MatchCollection.IsSynchronized
+  id: IsSynchronized
+  parent: System.Text.RegularExpressions.MatchCollection
+  langs:
+  - csharp
+  name: IsSynchronized
+  nameWithType: MatchCollection.IsSynchronized
+  fullName: System.Text.RegularExpressions.MatchCollection.IsSynchronized
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Text.RegularExpressions
+  summary: Gets a value indicating whether access to the collection is synchronized (thread-safe).
+  remarks: >-
+    > [!WARNING]
+
+    >  This member is not present in the [!INCLUDE[net_portable](~/add/includes/net-portable-md.md)]. If you are developing applications that target the [!INCLUDE[net_portable](~/add/includes/net-portable-md.md)], use the <xref:System.Text.RegularExpressions.MatchCollection.System%23Collections%23ICollection%23IsSynchronized%2A?displayProperty=fullName> property instead.
+  syntax:
+    content: public bool IsSynchronized { get; }
+    return:
+      type: System.Boolean
+      description: '`false` in all cases.'
+  overload: System.Text.RegularExpressions.MatchCollection.IsSynchronized*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Text.RegularExpressions\MatchCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Text.RegularExpressions/MatchCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Text.RegularExpressions.MatchCollection.Item(System.Int32)
+  id: Item(System.Int32)
+  parent: System.Text.RegularExpressions.MatchCollection
+  langs:
+  - csharp
+  name: Item(Int32)
+  nameWithType: MatchCollection.Item(Int32)
+  fullName: System.Text.RegularExpressions.MatchCollection.Item(Int32)
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Text.RegularExpressions
+  summary: Gets an individual member of the collection.
+  remarks: "In C#, the Item property is an indexer; it is not explicitly referenced in code, but instead allows the <xref:System.Text.RegularExpressions.MatchCollection> collection to be accessed as if it were an array.  \n  \n Typically, individual items in the <xref:System.Text.RegularExpressions.MatchCollection> object are accessed by their index only after the total number of items in the collection has been determined from the <xref:System.Text.RegularExpressions.MatchCollection.Count%2A> property. However, accessing the <xref:System.Text.RegularExpressions.MatchCollection.Count%2A> property causes the regular expression engine to use direct evaluation to build the collection all at once. This is typically more expensive than iterating the collection using the <xref:System.Text.RegularExpressions.MatchCollection.GetEnumerator%2A> method, the C# `foreach` statement, or the Visual Basic `For Each`...`Next` statement.  \n  \n Because the <xref:System.Text.RegularExpressions.MatchCollection> object is generally populated by using lazy evaluation, trying to navigate to a specific match may throw a <xref:System.Text.RegularExpressions.RegexMatchTimeoutException> exception. This exception can be thrown if a time-out value for matching operations is in effect, and the attempt to find a specific match exceeds that time-out interval."
+  example:
+  - "The following example parses the first sentence of Nathaniel Hawthorne's *House of the Seven Gables* and returns a <xref:System.Text.RegularExpressions.MatchCollection> object that contains all words that begin with either an uppercase or lowercase \"h\". The Item property is then used to retrieve each word and display it to the console.  \n  \n [!code-vb[System.Text.RegularExpressions.MatchCollection.Item#1](~/add/codesnippet/visualbasic/p-system.text.regularexp_7_1.vb)]\n [!code-cs[System.Text.RegularExpressions.MatchCollection.Item#1](~/add/codesnippet/csharp/p-system.text.regularexp_7_1.cs)]  \n  \n The example produces the following output:  \n  \n```  \nHalf  \nhouse  \nhuge  \n```"
+  syntax:
+    content: public virtual System.Text.RegularExpressions.Match this[int i] { get; }
+    parameters:
+    - id: i
+      type: System.Int32
+      description: Index into the <xref href="System.Text.RegularExpressions.Match"></xref> collection.
+    return:
+      type: System.Text.RegularExpressions.Match
+      description: The captured substring at position <code>i</code> in the collection.
+  overload: System.Text.RegularExpressions.MatchCollection.Item*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>i</code> is less than 0 or greater than or equal to <xref href="stem.Text.RegularExpressions.MatchCollection.Count%2A"></xref>.
+  - type: System.Text.RegularExpressions.RegexMatchTimeoutException
+    commentId: T:System.Text.RegularExpressions.RegexMatchTimeoutException
+    description: A time-out occurred.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Text.RegularExpressions\MatchCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Text.RegularExpressions/MatchCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Text.RegularExpressions.MatchCollection.SyncRoot
+  id: SyncRoot
+  parent: System.Text.RegularExpressions.MatchCollection
+  langs:
+  - csharp
+  name: SyncRoot
+  nameWithType: MatchCollection.SyncRoot
+  fullName: System.Text.RegularExpressions.MatchCollection.SyncRoot
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Text.RegularExpressions
+  summary: Gets an object that can be used to synchronize access to the collection.
+  remarks: >-
+    > [!WARNING]
+
+    >  This member is not present in the [!INCLUDE[net_portable](~/add/includes/net-portable-md.md)]. If you are developing applications that target the [!INCLUDE[net_portable](~/add/includes/net-portable-md.md)], use the <xref:System.Text.RegularExpressions.MatchCollection.System%23Collections%23ICollection%23SyncRoot%2A?displayProperty=fullName> property instead.
+  syntax:
+    content: public object SyncRoot { get; }
+    return:
+      type: System.Object
+      description: An object that can be used to synchronize access to the collection. This property always returns the object itself.
+  overload: System.Text.RegularExpressions.MatchCollection.SyncRoot*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Text.RegularExpressions\MatchCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Text.RegularExpressions/MatchCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.IndexOutOfRangeException
+  parent: System
+  isExternal: false
+  name: IndexOutOfRangeException
+  nameWithType: IndexOutOfRangeException
+  fullName: System.IndexOutOfRangeException
+- uid: System.Text.RegularExpressions.RegexMatchTimeoutException
+  parent: System.Text.RegularExpressions
+  isExternal: false
+  name: RegexMatchTimeoutException
+  nameWithType: RegexMatchTimeoutException
+  fullName: System.Text.RegularExpressions.RegexMatchTimeoutException
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.Text.RegularExpressions.MatchCollection.CopyTo(System.Array,System.Int32)
+  parent: System.Text.RegularExpressions.MatchCollection
+  isExternal: false
+  name: CopyTo(Array,Int32)
+  nameWithType: MatchCollection.CopyTo(Array,Int32)
+  fullName: System.Text.RegularExpressions.MatchCollection.CopyTo(Array,Int32)
+- uid: System.Array
+  parent: System
+  isExternal: false
+  name: Array
+  nameWithType: Array
+  fullName: System.Array
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Text.RegularExpressions.MatchCollection.Count
+  parent: System.Text.RegularExpressions.MatchCollection
+  isExternal: false
+  name: Count
+  nameWithType: MatchCollection.Count
+  fullName: System.Text.RegularExpressions.MatchCollection.Count
+- uid: System.Text.RegularExpressions.MatchCollection.GetEnumerator
+  parent: System.Text.RegularExpressions.MatchCollection
+  isExternal: false
+  name: GetEnumerator()
+  nameWithType: MatchCollection.GetEnumerator()
+  fullName: System.Text.RegularExpressions.MatchCollection.GetEnumerator()
+- uid: System.Collections.IEnumerator
+  parent: System.Collections
+  isExternal: false
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+- uid: System.Text.RegularExpressions.MatchCollection.IsReadOnly
+  parent: System.Text.RegularExpressions.MatchCollection
+  isExternal: false
+  name: IsReadOnly
+  nameWithType: MatchCollection.IsReadOnly
+  fullName: System.Text.RegularExpressions.MatchCollection.IsReadOnly
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Text.RegularExpressions.MatchCollection.IsSynchronized
+  parent: System.Text.RegularExpressions.MatchCollection
+  isExternal: false
+  name: IsSynchronized
+  nameWithType: MatchCollection.IsSynchronized
+  fullName: System.Text.RegularExpressions.MatchCollection.IsSynchronized
+- uid: System.Text.RegularExpressions.MatchCollection.Item(System.Int32)
+  parent: System.Text.RegularExpressions.MatchCollection
+  isExternal: false
+  name: Item(Int32)
+  nameWithType: MatchCollection.Item(Int32)
+  fullName: System.Text.RegularExpressions.MatchCollection.Item(Int32)
+- uid: System.Text.RegularExpressions.Match
+  parent: System.Text.RegularExpressions
+  isExternal: false
+  name: Match
+  nameWithType: Match
+  fullName: System.Text.RegularExpressions.Match
+- uid: System.Text.RegularExpressions.MatchCollection.SyncRoot
+  parent: System.Text.RegularExpressions.MatchCollection
+  isExternal: false
+  name: SyncRoot
+  nameWithType: MatchCollection.SyncRoot
+  fullName: System.Text.RegularExpressions.MatchCollection.SyncRoot
+- uid: System.Text.RegularExpressions.MatchCollection.CopyTo*
+  parent: System.Text.RegularExpressions.MatchCollection
+  isExternal: false
+  name: CopyTo
+  nameWithType: MatchCollection.CopyTo
+- uid: System.Text.RegularExpressions.MatchCollection.Count*
+  parent: System.Text.RegularExpressions.MatchCollection
+  isExternal: false
+  name: Count
+  nameWithType: MatchCollection.Count
+- uid: System.Text.RegularExpressions.MatchCollection.GetEnumerator*
+  parent: System.Text.RegularExpressions.MatchCollection
+  isExternal: false
+  name: GetEnumerator
+  nameWithType: MatchCollection.GetEnumerator
+- uid: System.Text.RegularExpressions.MatchCollection.IsReadOnly*
+  parent: System.Text.RegularExpressions.MatchCollection
+  isExternal: false
+  name: IsReadOnly
+  nameWithType: MatchCollection.IsReadOnly
+- uid: System.Text.RegularExpressions.MatchCollection.IsSynchronized*
+  parent: System.Text.RegularExpressions.MatchCollection
+  isExternal: false
+  name: IsSynchronized
+  nameWithType: MatchCollection.IsSynchronized
+- uid: System.Text.RegularExpressions.MatchCollection.Item*
+  parent: System.Text.RegularExpressions.MatchCollection
+  isExternal: false
+  name: Item
+  nameWithType: MatchCollection.Item
+- uid: System.Text.RegularExpressions.MatchCollection.SyncRoot*
+  parent: System.Text.RegularExpressions.MatchCollection
+  isExternal: false
+  name: SyncRoot
+  nameWithType: MatchCollection.SyncRoot

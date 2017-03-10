@@ -1,0 +1,136 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Web.IHttpHandler
+  id: IHttpHandler
+  children:
+  - System.Web.IHttpHandler.IsReusable
+  - System.Web.IHttpHandler.ProcessRequest(System.Web.HttpContext)
+  langs:
+  - csharp
+  name: IHttpHandler
+  nameWithType: IHttpHandler
+  fullName: System.Web.IHttpHandler
+  type: Interface
+  summary: Defines the contract that ASP.NET implements to synchronously process HTTP Web requests using custom HTTP handlers.
+  remarks: "You can write custom HTTP handlers to process specific, predefined types of HTTP requests in any Common Language Specification (CLS) compliant language. Executable code defined in the `HttpHandler` classes, rather than conventional ASP or ASP.NET Web pages, responds to these specific requests. HTTP handlers give you a means of interacting with the low-level request and response services of the IIS Web server and provide functionality much like ISAPI extensions but with a simpler programming model.  \n  \n If your handler will access session state values, it must implement the <xref:System.Web.SessionState.IRequiresSessionState> interface (a marker interface with no methods)."
+  syntax:
+    content: public interface IHttpHandler
+  implements: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\IHttpHandler.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/IHttpHandler.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.IHttpHandler.IsReusable
+  id: IsReusable
+  parent: System.Web.IHttpHandler
+  langs:
+  - csharp
+  name: IsReusable
+  nameWithType: IHttpHandler.IsReusable
+  fullName: System.Web.IHttpHandler.IsReusable
+  type: Property
+  assemblies:
+  - System.Web
+  namespace: System.Web
+  summary: Gets a value indicating whether another request can use the <xref href="System.Web.IHttpHandler"></xref> instance.
+  remarks: You explicitly set the IsReusable property to `true` or `false` by code you provide that overrides the IsReusable property accessor (getter).
+  example:
+  - "The following code example writes four lines of text to the HTTP output stream in response to a client request for a page named handler.aspx. All requests for handler.aspx are serviced by the `MyHttpHandler` class in the namespace `HandlerExample` contained in the assembly HandlerTest.dll.  \n  \n [!code-cs[Classic IHttpHandler.ProcessRequest Example#1](~/add/codesnippet/csharp/p-system.web.ihttphandle_1.cs)]\n [!code-vb[Classic IHttpHandler.ProcessRequest Example#1](~/add/codesnippet/visualbasic/p-system.web.ihttphandle_1.vb)]"
+  syntax:
+    content: public bool IsReusable { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="System.Web.IHttpHandler"></xref> instance is reusable; otherwise, `false`.'
+  overload: System.Web.IHttpHandler.IsReusable*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\IHttpHandler.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/IHttpHandler.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.IHttpHandler.ProcessRequest(System.Web.HttpContext)
+  id: ProcessRequest(System.Web.HttpContext)
+  parent: System.Web.IHttpHandler
+  langs:
+  - csharp
+  name: ProcessRequest(HttpContext)
+  nameWithType: IHttpHandler.ProcessRequest(HttpContext)
+  fullName: System.Web.IHttpHandler.ProcessRequest(HttpContext)
+  type: Method
+  assemblies:
+  - System.Web
+  namespace: System.Web
+  summary: Enables processing of HTTP Web requests by a custom `HttpHandler` that implements the <xref href="System.Web.IHttpHandler"></xref> interface.
+  remarks: Place your custom `HttpHandler` code in the ProcessRequest virtual method, as shown in the following example.
+  example:
+  - "The following code example writes four lines of text to the HTTP output stream in response to a client request for a page named handler.aspx. All requests for handler.aspx are serviced by the `MyHttpHandler` class in the namespace `HandlerExample` contained in the assembly HandlerTest.dll.  \n  \n [!code-cs[Classic IHttpHandler.ProcessRequest Example#1](~/add/codesnippet/csharp/m-system.web.ihttphandle_1.cs)]\n [!code-vb[Classic IHttpHandler.ProcessRequest Example#1](~/add/codesnippet/visualbasic/m-system.web.ihttphandle_1.vb)]"
+  syntax:
+    content: public void ProcessRequest (System.Web.HttpContext context);
+    parameters:
+    - id: context
+      type: System.Web.HttpContext
+      description: An <xref href="System.Web.HttpContext"></xref> object that provides references to the intrinsic server objects (for example, `Request`, `Response`, `Session`, and `Server`) used to service HTTP requests.
+  overload: System.Web.IHttpHandler.ProcessRequest*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web\IHttpHandler.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web/IHttpHandler.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Web.IHttpHandler.IsReusable
+  parent: System.Web.IHttpHandler
+  isExternal: false
+  name: IsReusable
+  nameWithType: IHttpHandler.IsReusable
+  fullName: System.Web.IHttpHandler.IsReusable
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Web.IHttpHandler.ProcessRequest(System.Web.HttpContext)
+  parent: System.Web.IHttpHandler
+  isExternal: false
+  name: ProcessRequest(HttpContext)
+  nameWithType: IHttpHandler.ProcessRequest(HttpContext)
+  fullName: System.Web.IHttpHandler.ProcessRequest(HttpContext)
+- uid: System.Web.HttpContext
+  parent: System.Web
+  isExternal: false
+  name: HttpContext
+  nameWithType: HttpContext
+  fullName: System.Web.HttpContext
+- uid: System.Web.IHttpHandler.IsReusable*
+  parent: System.Web.IHttpHandler
+  isExternal: false
+  name: IsReusable
+  nameWithType: IHttpHandler.IsReusable
+- uid: System.Web.IHttpHandler.ProcessRequest*
+  parent: System.Web.IHttpHandler
+  isExternal: false
+  name: ProcessRequest
+  nameWithType: IHttpHandler.ProcessRequest

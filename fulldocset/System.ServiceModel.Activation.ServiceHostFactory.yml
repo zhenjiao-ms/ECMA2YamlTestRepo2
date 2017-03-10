@@ -1,0 +1,259 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.Activation.ServiceHostFactory
+  id: ServiceHostFactory
+  children:
+  - System.ServiceModel.Activation.ServiceHostFactory.#ctor
+  - System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(System.String,System.Uri[])
+  - System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(System.Type,System.Uri[])
+  langs:
+  - csharp
+  name: ServiceHostFactory
+  nameWithType: ServiceHostFactory
+  fullName: System.ServiceModel.Activation.ServiceHostFactory
+  type: Class
+  summary: Factory that provides instances of <xref href="System.ServiceModel.ServiceHost"></xref> in managed hosting environments where the host instance is created dynamically in response to incoming messages.
+  remarks: "The managed hosting environments that support dynamic activation are Internet Information Services (IIS) and Windows Process Activation Service (WAS).  \n  \n If you have implemented a custom derivative of <xref:System.ServiceModel.ServiceHost>, consider also implementing a factory that derives from the ServiceHostFactory class.  \n  \n If you have implemented a custom derivative of <xref:System.ServiceModel.ServiceHostBase> instead, then consider also implementing a factory that derives your factory from <xref:System.ServiceModel.Activation.ServiceHostFactoryBase> directly."
+  example:
+  - "This examples show how to use the ServiceHostFactory class:  \n  \n [!code-cs[ServiceHostFactory#0](~/add/codesnippet/csharp/t-system.servicemodel.ac_21_1.cs)]\n [!code-vb[ServiceHostFactory#0](~/add/codesnippet/visualbasic/t-system.servicemodel.ac_21_1.vb)]"
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
+
+      public class ServiceHostFactory : System.ServiceModel.Activation.ServiceHostFactoryBase
+  inheritance:
+  - System.Object
+  - System.ServiceModel.Activation.ServiceHostFactoryBase
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Activation\ServiceHostFactory.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Activation/ServiceHostFactory.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Activation.ServiceHostFactory.#ctor
+  id: '#ctor'
+  parent: System.ServiceModel.Activation.ServiceHostFactory
+  langs:
+  - csharp
+  name: ServiceHostFactory()
+  nameWithType: ServiceHostFactory.ServiceHostFactory()
+  fullName: System.ServiceModel.Activation.ServiceHostFactory.ServiceHostFactory()
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  - System.ServiceModel.Activation
+  namespace: System.ServiceModel.Activation
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Activation.ServiceHostFactory"></xref> class.
+  remarks: ''
+  example:
+  - "This examples show how to use the ServiceHostFactory:  \n  \n [!code-cs[ServiceHostFactory#1](~/add/codesnippet/csharp/m-system.servicemodel.ac_8_1.cs)]\n [!code-vb[ServiceHostFactory#1](~/add/codesnippet/visualbasic/m-system.servicemodel.ac_8_1.vb)]"
+  syntax:
+    content: public ServiceHostFactory ();
+    parameters: []
+  overload: System.ServiceModel.Activation.ServiceHostFactory.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Activation\ServiceHostFactory.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Activation/ServiceHostFactory.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(System.String,System.Uri[])
+  id: CreateServiceHost(System.String,System.Uri[])
+  parent: System.ServiceModel.Activation.ServiceHostFactory
+  langs:
+  - csharp
+  name: CreateServiceHost(String,Uri[])
+  nameWithType: ServiceHostFactory.CreateServiceHost(String,Uri[])
+  fullName: System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(String,Uri[])
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  - System.ServiceModel.Activation
+  namespace: System.ServiceModel.Activation
+  summary: Creates a <xref href="System.ServiceModel.ServiceHost"></xref> with specific base addresses and initializes it with specified data.
+  remarks: ''
+  example:
+  - "This example shows how to use the CreateServiceHost method:  \n  \n [!code-cs[ServiceHostFactory#3](~/add/codesnippet/csharp/cdfc1085-1841-40fd-90fe-_1.cs)]\n [!code-vb[ServiceHostFactory#3](~/add/codesnippet/visualbasic/cdfc1085-1841-40fd-90fe-_1.vb)]"
+  syntax:
+    content: public override System.ServiceModel.ServiceHostBase CreateServiceHost (string constructorString, Uri[] baseAddresses);
+    parameters:
+    - id: constructorString
+      type: System.String
+      description: The initialization data passed to the <xref href="System.ServiceModel.ServiceHostBase"></xref> instance being constructed by the factory.
+    - id: baseAddresses
+      type: System.Uri[]
+      description: The <xref href="System.Array"></xref> of type <xref href="System.Uri"></xref> that contains the base addresses for the service hosted.
+    return:
+      type: System.ServiceModel.ServiceHostBase
+      description: A <xref href="System.ServiceModel.ServiceHost"></xref> with specific base addresses.
+  overload: System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>baseAddress</code> is `null`.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: There is no hosting context provided or <code>constructorString</code> is `null` or empty.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Activation\ServiceHostFactory.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Activation/ServiceHostFactory.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(System.Type,System.Uri[])
+  id: CreateServiceHost(System.Type,System.Uri[])
+  parent: System.ServiceModel.Activation.ServiceHostFactory
+  langs:
+  - csharp
+  name: CreateServiceHost(Type,Uri[])
+  nameWithType: ServiceHostFactory.CreateServiceHost(Type,Uri[])
+  fullName: System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(Type,Uri[])
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  - System.ServiceModel.Activation
+  namespace: System.ServiceModel.Activation
+  summary: Creates a <xref href="System.ServiceModel.ServiceHost"></xref> for a specified type of service with a specific base address.
+  remarks: ''
+  example:
+  - "This example shows how to create an override implementation of the CreateServiceHost method:  \n  \n [!CODE [ServiceHostFactory#2](../CodeSnippet/VS_Snippets_CFX/servicehostfactory#2)]"
+  syntax:
+    content: protected virtual System.ServiceModel.ServiceHost CreateServiceHost (Type serviceType, Uri[] baseAddresses);
+    parameters:
+    - id: serviceType
+      type: System.Type
+      description: Specifies the type of service to host.
+    - id: baseAddresses
+      type: System.Uri[]
+      description: The <xref href="System.Array"></xref> of type <xref href="System.Uri"></xref> that contains the base addresses for the service hosted.
+    return:
+      type: System.ServiceModel.ServiceHost
+      description: A <xref href="System.ServiceModel.ServiceHost"></xref> for the type of service specified with a specific base address.
+  overload: System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Activation\ServiceHostFactory.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Activation/ServiceHostFactory.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.ServiceModel.Activation.ServiceHostFactoryBase
+  isExternal: false
+  name: System.ServiceModel.Activation.ServiceHostFactoryBase
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.ServiceModel.Activation.ServiceHostFactory.#ctor
+  parent: System.ServiceModel.Activation.ServiceHostFactory
+  isExternal: false
+  name: ServiceHostFactory()
+  nameWithType: ServiceHostFactory.ServiceHostFactory()
+  fullName: System.ServiceModel.Activation.ServiceHostFactory.ServiceHostFactory()
+- uid: System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(System.String,System.Uri[])
+  parent: System.ServiceModel.Activation.ServiceHostFactory
+  isExternal: false
+  name: CreateServiceHost(String,Uri[])
+  nameWithType: ServiceHostFactory.CreateServiceHost(String,Uri[])
+  fullName: System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(String,Uri[])
+- uid: System.ServiceModel.ServiceHostBase
+  parent: System.ServiceModel
+  isExternal: false
+  name: ServiceHostBase
+  nameWithType: ServiceHostBase
+  fullName: System.ServiceModel.ServiceHostBase
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Uri[]
+  parent: System
+  isExternal: false
+  name: Uri[]
+  nameWithType: Uri[]
+  fullName: System.Uri[]
+  spec.csharp:
+  - uid: System.Uri
+    name: Uri
+    nameWithType: Uri
+    fullName: Uri[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(System.Type,System.Uri[])
+  parent: System.ServiceModel.Activation.ServiceHostFactory
+  isExternal: false
+  name: CreateServiceHost(Type,Uri[])
+  nameWithType: ServiceHostFactory.CreateServiceHost(Type,Uri[])
+  fullName: System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost(Type,Uri[])
+- uid: System.ServiceModel.ServiceHost
+  parent: System.ServiceModel
+  isExternal: false
+  name: ServiceHost
+  nameWithType: ServiceHost
+  fullName: System.ServiceModel.ServiceHost
+- uid: System.Type
+  parent: System
+  isExternal: false
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.ServiceModel.Activation.ServiceHostFactory.#ctor*
+  parent: System.ServiceModel.Activation.ServiceHostFactory
+  isExternal: false
+  name: ServiceHostFactory
+  nameWithType: ServiceHostFactory.ServiceHostFactory
+- uid: System.ServiceModel.Activation.ServiceHostFactory.CreateServiceHost*
+  parent: System.ServiceModel.Activation.ServiceHostFactory
+  isExternal: false
+  name: CreateServiceHost
+  nameWithType: ServiceHostFactory.CreateServiceHost

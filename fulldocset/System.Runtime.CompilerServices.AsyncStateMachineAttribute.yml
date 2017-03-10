@@ -1,0 +1,134 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.CompilerServices.AsyncStateMachineAttribute
+  id: AsyncStateMachineAttribute
+  children:
+  - System.Runtime.CompilerServices.AsyncStateMachineAttribute.#ctor(System.Type)
+  langs:
+  - csharp
+  name: AsyncStateMachineAttribute
+  nameWithType: AsyncStateMachineAttribute
+  fullName: System.Runtime.CompilerServices.AsyncStateMachineAttribute
+  type: Class
+  summary: Indicates whether a method is marked with either the [Async](../Topic/Async%20\(Visual%20Basic\).md) or [async](../Topic/async%20\(C%23%20Reference\).md) modifier.
+  remarks: "You shouldn't apply the `AsyncStateMachine` attribute to methods in your code. For methods that have the async modifier, the compiler will apply the `AsyncStateMachine` attribute in the IL that the compiler emits.  \n  \n When a method (*MethodName*) has the Async or async modifier, the compiler emits IL that includes a state machine structure. This structure contains the code in the method. That IL also contains a stub method (*MethodName*) that calls into the state machine. The compiler adds the `AsyncStateMachine` attribute to the stub method so that tools can identify the corresponding state machine. Details of the emitted IL might change in future releases of the compilers.  \n  \n For information about the Async feature, see [Asynchronous Programming with Async and Await](../Topic/Asynchronous%20Programming%20with%20Async%20and%20Await%20\\(C%23%20and%20Visual%20Basic\\).md)."
+  example:
+  - "As the following example shows, you can determine whether a method is marked with [Async](../Topic/Async%20\\(Visual%20Basic\\).md) or [async](../Topic/async%20\\(C%23%20Reference\\).md) modifier. In the example, `IsAsyncMethod` performs the following steps:  \n  \n-   Obtains a <xref:System.Reflection.MethodInfo> object for the method name by using <xref:System.Type.GetMethod%2A?displayProperty=fullName>.  \n  \n-   Obtains a <xref:System.Type> object for the attribute by using [GetType Operator](../Topic/GetType%20Operator%20\\(Visual%20Basic\\).md) or [typeof](../Topic/typeof%20\\(C%23%20Reference\\).md).  \n  \n-   Obtains an attribute object for the method and attribute type by using `MethodInfo.GetCustomAttribute`. If `GetCustomAttribute` returns `Nothing` (Visual Basic) or `null` (C#), the method doesn't contain the attribute.  \n  \n [!code-vb[Runtime.CompilerServices.AsyncStateMachineAttribute#1](~/add/codesnippet/visualbasic/t-system.runtime.compile_22_1.vb)]\n [!code-cs[Runtime.CompilerServices.AsyncStateMachineAttribute#1](~/add/codesnippet/csharp/t-system.runtime.compile_22_1.cs)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Method, AllowMultiple=false, Inherited=false)]
+
+      public sealed class AsyncStateMachineAttribute : System.Runtime.CompilerServices.StateMachineAttribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  - System.Runtime.CompilerServices.StateMachineAttribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  - System.Runtime.CompilerServices.StateMachineAttribute.StateMachineType
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.CompilerServices\AsyncStateMachineAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.CompilerServices/AsyncStateMachineAttribute.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.CompilerServices.AsyncStateMachineAttribute.#ctor(System.Type)
+  id: '#ctor(System.Type)'
+  parent: System.Runtime.CompilerServices.AsyncStateMachineAttribute
+  langs:
+  - csharp
+  name: AsyncStateMachineAttribute(Type)
+  nameWithType: AsyncStateMachineAttribute.AsyncStateMachineAttribute(Type)
+  fullName: System.Runtime.CompilerServices.AsyncStateMachineAttribute.AsyncStateMachineAttribute(Type)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.CompilerServices
+  summary: Initializes a new instance of the <xref href="System.Runtime.CompilerServices.AsyncStateMachineAttribute"></xref> class.
+  syntax:
+    content: public AsyncStateMachineAttribute (Type stateMachineType);
+    parameters:
+    - id: stateMachineType
+      type: System.Type
+      description: The type object for the underlying state machine type that's used to implement a state machine method.
+  overload: System.Runtime.CompilerServices.AsyncStateMachineAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.CompilerServices\AsyncStateMachineAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.CompilerServices/AsyncStateMachineAttribute.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Runtime.CompilerServices.StateMachineAttribute
+  isExternal: false
+  name: System.Runtime.CompilerServices.StateMachineAttribute
+- uid: System.Runtime.CompilerServices.AsyncStateMachineAttribute.#ctor(System.Type)
+  parent: System.Runtime.CompilerServices.AsyncStateMachineAttribute
+  isExternal: false
+  name: AsyncStateMachineAttribute(Type)
+  nameWithType: AsyncStateMachineAttribute.AsyncStateMachineAttribute(Type)
+  fullName: System.Runtime.CompilerServices.AsyncStateMachineAttribute.AsyncStateMachineAttribute(Type)
+- uid: System.Type
+  parent: System
+  isExternal: false
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Runtime.CompilerServices.AsyncStateMachineAttribute.#ctor*
+  parent: System.Runtime.CompilerServices.AsyncStateMachineAttribute
+  isExternal: false
+  name: AsyncStateMachineAttribute
+  nameWithType: AsyncStateMachineAttribute.AsyncStateMachineAttribute

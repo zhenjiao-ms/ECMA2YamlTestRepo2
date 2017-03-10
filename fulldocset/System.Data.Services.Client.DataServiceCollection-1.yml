@@ -1,0 +1,788 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Data.Services.Client.DataServiceCollection`1
+  id: DataServiceCollection`1
+  children:
+  - System.Data.Services.Client.DataServiceCollection`1.#ctor
+  - System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  - System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Data.Services.Client.DataServiceContext)
+  - System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode)
+  - System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Data.Services.Client.DataServiceContext,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})
+  - System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})
+  - System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Data.Services.Client.DataServiceContext,System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})
+  - System.Data.Services.Client.DataServiceCollection`1.Clear(System.Boolean)
+  - System.Data.Services.Client.DataServiceCollection`1.Continuation
+  - System.Data.Services.Client.DataServiceCollection`1.Detach
+  - System.Data.Services.Client.DataServiceCollection`1.InsertItem(System.Int32,`0)
+  - System.Data.Services.Client.DataServiceCollection`1.Load(System.Collections.Generic.IEnumerable{`0})
+  - System.Data.Services.Client.DataServiceCollection`1.Load(`0)
+  langs:
+  - csharp
+  name: DataServiceCollection<T>
+  nameWithType: DataServiceCollection<T>
+  fullName: System.Data.Services.Client.DataServiceCollection<T>
+  type: Class
+  summary: Represents a dynamic entity collection that provides notifications when items get added, removed, or when the list is refreshed.
+  remarks: "[!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] provides the DataServiceCollection(T) class to support binding data to controls in client applications. This class inherits from the <xref:System.Collections.ObjectModel.ObservableCollection%601> class, which implements the <xref:System.Collections.Specialized.INotifyCollectionChanged> interface and is the primary data binding mechanism for Windows Presentation Foundation (WPF) and Silverlight-based applications.  \n  \n You can load an <xref:System.Collections.ObjectModel.ObservableCollection%601> binding collection by using any collection that implements the <xref:System.Collections.Generic.IEnumerable%601> interface. Items loaded into the binding collection must implement the <xref:System.ComponentModel.INotifyPropertyChanged> interface. For more information, see [Binding Data to Controls](../Topic/Binding%20Data%20to%20Controls%20\\(WCF%20Data%20Services\\).md)."
+  example:
+  - "The following example is from the code-behind page for an Extensible Application Markup Language (XAML) page that defines the `SalesOrders` window in WPF. When the window is loaded, an DataServiceCollection(T) is created based on the result of a query that returns customers with related objects, filtered by country. This result is bound to the <xref:System.Windows.FrameworkElement.DataContext%2A> property of the <xref:System.Windows.Controls.StackPanel> that is the root layout control for the WPF window.  \n  \n [!code-cs[Astoria Northwind Client#WpfDataBinding](~/add/codesnippet/csharp/northwindclientcs/customerorderswpf.xaml.cs#wpfdatabinding)]\n [!code-vb[Astoria Northwind Client#WpfDataBinding](~/add/codesnippet/visualbasic/northwindclientvb/customerorderswpf.xaml.vb#wpfdatabinding)]  \n  \n The following is the XAML that defines the `SalesOrders` window in WPF for the previous example.  \n  \n [!code-xml[Astoria Northwind Client#WpfDataBindingXaml](~/add/codesnippet/xaml/northwindclientvb/customerorderswpf.xaml#wpfdatabindingxaml)]"
+  syntax:
+    content: 'public class DataServiceCollection<T> : System.Collections.ObjectModel.ObservableCollection<T>'
+    typeParameters:
+    - id: T
+      description: An entity type.
+  inheritance:
+  - System.Object
+  - System.Collections.ObjectModel.Collection`1
+  - System.Collections.ObjectModel.ObservableCollection`1
+  implements: []
+  inheritedMembers:
+  - System.Collections.ObjectModel.Collection`1.Add(`0)
+  - System.Collections.ObjectModel.Collection`1.Clear
+  - System.Collections.ObjectModel.Collection`1.Contains(`0)
+  - System.Collections.ObjectModel.Collection`1.CopyTo(`0[],System.Int32)
+  - System.Collections.ObjectModel.Collection`1.Count
+  - System.Collections.ObjectModel.Collection`1.GetEnumerator
+  - System.Collections.ObjectModel.Collection`1.IndexOf(`0)
+  - System.Collections.ObjectModel.Collection`1.Insert(System.Int32,`0)
+  - System.Collections.ObjectModel.Collection`1.Item(System.Int32)
+  - System.Collections.ObjectModel.Collection`1.Items
+  - System.Collections.ObjectModel.Collection`1.Remove(`0)
+  - System.Collections.ObjectModel.Collection`1.RemoveAt(System.Int32)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#Generic#ICollection{T}#IsReadOnly
+  - System.Collections.ObjectModel.Collection`1.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#ICollection#IsSynchronized
+  - System.Collections.ObjectModel.Collection`1.System#Collections#ICollection#SyncRoot
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IEnumerable#GetEnumerator
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Add(System.Object)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Contains(System.Object)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#IndexOf(System.Object)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Insert(System.Int32,System.Object)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#IsFixedSize
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#IsReadOnly
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Item(System.Int32)
+  - System.Collections.ObjectModel.Collection`1.System#Collections#IList#Remove(System.Object)
+  - System.Collections.ObjectModel.ObservableCollection`1.BlockReentrancy
+  - System.Collections.ObjectModel.ObservableCollection`1.CheckReentrancy
+  - System.Collections.ObjectModel.ObservableCollection`1.ClearItems
+  - System.Collections.ObjectModel.ObservableCollection`1.CollectionChanged
+  - System.Collections.ObjectModel.ObservableCollection`1.Move(System.Int32,System.Int32)
+  - System.Collections.ObjectModel.ObservableCollection`1.MoveItem(System.Int32,System.Int32)
+  - System.Collections.ObjectModel.ObservableCollection`1.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)
+  - System.Collections.ObjectModel.ObservableCollection`1.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)
+  - System.Collections.ObjectModel.ObservableCollection`1.PropertyChanged
+  - System.Collections.ObjectModel.ObservableCollection`1.RemoveItem(System.Int32)
+  - System.Collections.ObjectModel.ObservableCollection`1.SetItem(System.Int32,`0)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Services.Client\DataServiceCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Services.Client/DataServiceCollection`1.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor
+  id: '#ctor'
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  langs:
+  - csharp
+  name: DataServiceCollection<T>()
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>()
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.DataServiceCollection<T>()
+  type: Constructor
+  assemblies:
+  - System.Data.Services.Client
+  namespace: System.Data.Services.Client
+  summary: Creates a new instance of the <xref href="stem.Data.Services.Client.DataServiceCollection%601"></xref> class.
+  remarks: "By default, automatic change tracking is enabled for a <xref:System.Data.Services.Client.DataServiceCollection%601>. You can create an instance of <xref:System.Data.Services.Client.DataServiceCollection%601> that uses manual change tracking when you create an instance using a constructor that enables you to supply a value of <xref:System.Data.Services.Client.TrackingMode> for <xref:System.Data.Services.Client.TrackingMode>. When you use manual tracking, you must implement <xref:System.ComponentModel.INotifyPropertyChanged> and <xref:System.Collections.Specialized.INotifyCollectionChanged> and handle the raise events to manually report changes to the <xref:System.Data.Services.Client.DataServiceContext>.  \n  \n Automatic change tracking begins after items are loaded into the collection."
+  syntax:
+    content: public DataServiceCollection ();
+    parameters: []
+  overload: System.Data.Services.Client.DataServiceCollection`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Services.Client\DataServiceCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Services.Client/DataServiceCollection`1.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  id: '#ctor(System.Collections.Generic.IEnumerable{`0})'
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  langs:
+  - csharp
+  name: DataServiceCollection<T>(IEnumerable<T>)
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>(IEnumerable<T>)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.DataServiceCollection<T>(IEnumerable<T>)
+  type: Constructor
+  assemblies:
+  - System.Data.Services.Client
+  namespace: System.Data.Services.Client
+  summary: Creates a new instance of the <xref href="stem.Data.Services.Client.DataServiceCollection%601"></xref> class based on query execution.
+  remarks: "The <xref:System.Collections.Generic.IEnumerable%601> collection of objects supplied for `items` is usually a query that returns the items in the collection. However, any <xref:System.Collections.Generic.IEnumerable%601> collection of the correct type can be supplied.  \n  \n By default, automatic change tracking is enabled for a <xref:System.Data.Services.Client.DataServiceCollection%601>. You can create an instance of <xref:System.Data.Services.Client.DataServiceCollection%601> that uses manual change tracking when you create an instance using a constructor that enables you to supply a value of <xref:System.Data.Services.Client.TrackingMode> for <xref:System.Data.Services.Client.TrackingMode>. When you use manual tracking, you must implement <xref:System.ComponentModel.INotifyPropertyChanged> and <xref:System.Collections.Specialized.INotifyCollectionChanged> and handle the raise events to manually report changes to the <xref:System.Data.Services.Client.DataServiceContext>."
+  syntax:
+    content: public DataServiceCollection (System.Collections.Generic.IEnumerable<T> items);
+    parameters:
+    - id: items
+      type: System.Collections.Generic.IEnumerable`1
+      description: A <xref href="stem.Data.Services.Client.DataServiceQuery%601"></xref> or LINQ query that  returns an <xref href="stem.Collections.Generic.IEnumerable%601"></xref> collection of objects that are used to initialize the collection.
+  overload: System.Data.Services.Client.DataServiceCollection`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Services.Client\DataServiceCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Services.Client/DataServiceCollection`1.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Data.Services.Client.DataServiceContext)
+  id: '#ctor(System.Data.Services.Client.DataServiceContext)'
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  langs:
+  - csharp
+  name: DataServiceCollection<T>(DataServiceContext)
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>(DataServiceContext)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.DataServiceCollection<T>(DataServiceContext)
+  type: Constructor
+  assemblies:
+  - System.Data.Services.Client
+  namespace: System.Data.Services.Client
+  summary: Creates a new instance of the <xref href="stem.Data.Services.Client.DataServiceCollection%601"></xref> class that uses the specified <xref href="System.Data.Services.Client.DataServiceContext"></xref>.
+  remarks: "Use this constructor to create an empty <xref:System.Data.Services.Client.DataServiceCollection%601> to which entity objects can be added without executing a query against the service or when an <xref:System.Collections.Generic.IEnumerable%601> is not available.  \n  \n By default, automatic change tracking is enabled for a <xref:System.Data.Services.Client.DataServiceCollection%601>. You can create an instance of <xref:System.Data.Services.Client.DataServiceCollection%601> that uses manual change tracking when you create an instance using a constructor that enables you to supply a value of <xref:System.Data.Services.Client.TrackingMode> for <xref:System.Data.Services.Client.TrackingMode>. When you use manual tracking, you must implement <xref:System.ComponentModel.INotifyPropertyChanged> and <xref:System.Collections.Specialized.INotifyCollectionChanged> and handle the raise events to manually report changes to the <xref:System.Data.Services.Client.DataServiceContext>."
+  syntax:
+    content: public DataServiceCollection (System.Data.Services.Client.DataServiceContext context);
+    parameters:
+    - id: context
+      type: System.Data.Services.Client.DataServiceContext
+      description: The <xref href="System.Data.Services.Client.DataServiceContext"></xref> used to track changes to objects in the collection.
+  overload: System.Data.Services.Client.DataServiceCollection`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Services.Client\DataServiceCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Services.Client/DataServiceCollection`1.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode)
+  id: '#ctor(System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode)'
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  langs:
+  - csharp
+  name: DataServiceCollection<T>(IEnumerable<T>,TrackingMode)
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>(IEnumerable<T>,TrackingMode)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.DataServiceCollection<T>(IEnumerable<T>,TrackingMode)
+  type: Constructor
+  assemblies:
+  - System.Data.Services.Client
+  namespace: System.Data.Services.Client
+  summary: Creates a new instance of the <xref href="stem.Data.Services.Client.DataServiceCollection%601"></xref> class based on query execution and with the specified tracking mode.
+  remarks: "By default, automatic change tracking is enabled for a <xref:System.Data.Services.Client.DataServiceCollection%601>. Use this class constructor and supply a value of <xref:System.Data.Services.Client.TrackingMode> for `trackingMode` to create an instance of <xref:System.Data.Services.Client.DataServiceCollection%601> that uses manual change tracking. When you use manual tracking, you must implement <xref:System.ComponentModel.INotifyPropertyChanged> and <xref:System.Collections.Specialized.INotifyCollectionChanged> and handle the raise events to manually report changes to the <xref:System.Data.Services.Client.DataServiceContext>.  \n  \n The <xref:System.Collections.Generic.IEnumerable%601> collection of objects supplied for `items` is usually a query that returns the items in the collection. However, any <xref:System.Collections.Generic.IEnumerable%601> collection of the correct type can be supplied."
+  syntax:
+    content: public DataServiceCollection (System.Collections.Generic.IEnumerable<T> items, System.Data.Services.Client.TrackingMode trackingMode);
+    parameters:
+    - id: items
+      type: System.Collections.Generic.IEnumerable`1
+      description: A <xref href="stem.Data.Services.Client.DataServiceQuery%601"></xref> or LINQ query that returns an <xref href="stem.Collections.Generic.IEnumerable%601"></xref> collection of objects that are used to initialize the collection.
+    - id: trackingMode
+      type: System.Data.Services.Client.TrackingMode
+      description: A <xref href="System.Data.Services.Client.TrackingMode"></xref> value that indicated whether or not changes made to items in the collection are automatically tracked.
+  overload: System.Data.Services.Client.DataServiceCollection`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Services.Client\DataServiceCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Services.Client/DataServiceCollection`1.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Data.Services.Client.DataServiceContext,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})
+  id: '#ctor(System.Data.Services.Client.DataServiceContext,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})'
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  langs:
+  - csharp
+  name: DataServiceCollection<T>(DataServiceContext,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>(DataServiceContext,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.DataServiceCollection<T>(DataServiceContext,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  type: Constructor
+  assemblies:
+  - System.Data.Services.Client
+  namespace: System.Data.Services.Client
+  summary: Creates a new instance of the <xref href="stem.Data.Services.Client.DataServiceCollection%601"></xref> class with the supplied change method delegates and that uses the specified <xref href="System.Data.Services.Client.DataServiceContext"></xref>.
+  remarks: "Use this constructor to create an empty <xref:System.Data.Services.Client.DataServiceCollection%601> to which entity objects can be added without executing a query against the service or when an <xref:System.Collections.Generic.IEnumerable%601> is not available.  \n  \n By default, automatic change tracking is enabled for a <xref:System.Data.Services.Client.DataServiceCollection%601>. You can create an instance of <xref:System.Data.Services.Client.DataServiceCollection%601> that uses manual change tracking when you create an instance using a constructor that enables you to supply a value of <xref:System.Data.Services.Client.TrackingMode> for <xref:System.Data.Services.Client.TrackingMode>. When you use manual tracking, you must implement <xref:System.ComponentModel.INotifyPropertyChanged> and <xref:System.Collections.Specialized.INotifyCollectionChanged> and handle the raise events to manually report changes to the <xref:System.Data.Services.Client.DataServiceContext>."
+  syntax:
+    content: public DataServiceCollection (System.Data.Services.Client.DataServiceContext context, string entitySetName, Func<System.Data.Services.Client.EntityChangedParams,bool> entityChangedCallback, Func<System.Data.Services.Client.EntityCollectionChangedParams,bool> collectionChangedCallback);
+    parameters:
+    - id: context
+      type: System.Data.Services.Client.DataServiceContext
+      description: The <xref href="System.Data.Services.Client.DataServiceContext"></xref> used to track items in the collection.
+    - id: entitySetName
+      type: System.String
+      description: The entity set of the objects in the collection.
+    - id: entityChangedCallback
+      type: System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean}
+      description: A delegate that encapsulates a method that is called when an entity changes.
+    - id: collectionChangedCallback
+      type: System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean}
+      description: A delegate that encapsulates a method that is called when the collection of entities changes.
+  overload: System.Data.Services.Client.DataServiceCollection`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Services.Client\DataServiceCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Services.Client/DataServiceCollection`1.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})
+  id: '#ctor(System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})'
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  langs:
+  - csharp
+  name: DataServiceCollection<T>(IEnumerable<T>,TrackingMode,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>(IEnumerable<T>,TrackingMode,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.DataServiceCollection<T>(IEnumerable<T>,TrackingMode,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  type: Constructor
+  assemblies:
+  - System.Data.Services.Client
+  namespace: System.Data.Services.Client
+  summary: Creates a new instance of the <xref href="stem.Data.Services.Client.DataServiceCollection%601"></xref> class a based on query execution and with the supplied change method delegates.
+  remarks: "The `entityChanged` and `collectionChanged` functions are invoked by the <xref:System.ComponentModel.INotifyPropertyChanged.PropertyChanged> and <xref:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged> events, respectively. The `entityChanged` method takes an <xref:System.Data.Services.Client.EntityCollectionChangedParams> value and the `collectionChanged` method takes a <xref:System.Data.Services.Client.EntityChangedParams> value. Both methods must return a Boolean value that indicates whether the event was handled by the function. When the method returns `true`, the default behavior still occurs.  \n  \n By default, automatic change tracking is enabled for a <xref:System.Data.Services.Client.DataServiceCollection%601>. You can create an instance of <xref:System.Data.Services.Client.DataServiceCollection%601> that uses manual change tracking when you create an instance using a constructor that enables you to supply a value of <xref:System.Data.Services.Client.TrackingMode> for <xref:System.Data.Services.Client.TrackingMode>. When you use manual tracking, you must implement <xref:System.ComponentModel.INotifyPropertyChanged> and <xref:System.Collections.Specialized.INotifyCollectionChanged> and handle the raise events to manually report changes to the <xref:System.Data.Services.Client.DataServiceContext>."
+  syntax:
+    content: public DataServiceCollection (System.Collections.Generic.IEnumerable<T> items, System.Data.Services.Client.TrackingMode trackingMode, string entitySetName, Func<System.Data.Services.Client.EntityChangedParams,bool> entityChangedCallback, Func<System.Data.Services.Client.EntityCollectionChangedParams,bool> collectionChangedCallback);
+    parameters:
+    - id: items
+      type: System.Collections.Generic.IEnumerable`1
+      description: A <xref href="stem.Data.Services.Client.DataServiceQuery%601"></xref> or LINQ query that returns an <xref href="stem.Collections.Generic.IEnumerable%601"></xref> collection of objects that are used to initialize the collection.
+    - id: trackingMode
+      type: System.Data.Services.Client.TrackingMode
+      description: A <xref href="System.Data.Services.Client.TrackingMode"></xref> value that indicated whether or not changes made to items in the collection are automatically tracked.
+    - id: entitySetName
+      type: System.String
+      description: The entity set of the objects in the collection.
+    - id: entityChangedCallback
+      type: System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean}
+      description: A delegate that encapsulates a method that is called when an entity changes.
+    - id: collectionChangedCallback
+      type: System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean}
+      description: A delegate that encapsulates a method that is called when the collection of entities changes.
+  overload: System.Data.Services.Client.DataServiceCollection`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Services.Client\DataServiceCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Services.Client/DataServiceCollection`1.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Data.Services.Client.DataServiceContext,System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})
+  id: '#ctor(System.Data.Services.Client.DataServiceContext,System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})'
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  langs:
+  - csharp
+  name: DataServiceCollection<T>(DataServiceContext,IEnumerable<T>,TrackingMode,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>(DataServiceContext,IEnumerable<T>,TrackingMode,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.DataServiceCollection<T>(DataServiceContext,IEnumerable<T>,TrackingMode,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  type: Constructor
+  assemblies:
+  - System.Data.Services.Client
+  namespace: System.Data.Services.Client
+  summary: Creates a new instance of the <xref href="stem.Data.Services.Client.DataServiceCollection%601"></xref> class a based on query execution, with the supplied change method delegates, and that uses the supplied <xref href="System.Data.Services.Client.DataServiceContext"></xref>.
+  remarks: "By default, automatic change tracking is enabled for a <xref:System.Data.Services.Client.DataServiceCollection%601>. Use this class constructor to supply a value of <xref:System.Data.Services.Client.TrackingMode> for `trackingMode` to create an instance of <xref:System.Data.Services.Client.DataServiceCollection%601> that uses manual change tracking. When you use manual tracking, you must implement <xref:System.ComponentModel.INotifyPropertyChanged> and <xref:System.Collections.Specialized.INotifyCollectionChanged> and handle the raise events to manually report changes to the <xref:System.Data.Services.Client.DataServiceContext>.  \n  \n The <xref:System.Data.Services.Client.DataServiceContext> must be supplied when `items` is not a <xref:System.Data.Services.Client.DataServiceQuery%601> or <xref:System.Data.Services.Client.QueryOperationResponse%601> that has a reference to a <xref:System.Data.Services.Client.DataServiceContext> instance.  \n  \n The `entityChanged` and `collectionChanged` functions are invoked by the <xref:System.ComponentModel.INotifyPropertyChanged.PropertyChanged> and <xref:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged> events, respectively. The `entityChanged` method takes an <xref:System.Data.Services.Client.EntityCollectionChangedParams> value and the `collectionChanged` method takes a <xref:System.Data.Services.Client.EntityChangedParams> value. Both methods must return a Boolean value that indicates whether the event was handled by the function. When the method returns `true`, the default behavior will still occur."
+  syntax:
+    content: public DataServiceCollection (System.Data.Services.Client.DataServiceContext context, System.Collections.Generic.IEnumerable<T> items, System.Data.Services.Client.TrackingMode trackingMode, string entitySetName, Func<System.Data.Services.Client.EntityChangedParams,bool> entityChangedCallback, Func<System.Data.Services.Client.EntityCollectionChangedParams,bool> collectionChangedCallback);
+    parameters:
+    - id: context
+      type: System.Data.Services.Client.DataServiceContext
+      description: The <xref href="System.Data.Services.Client.DataServiceContext"></xref> used to track items in the collection.
+    - id: items
+      type: System.Collections.Generic.IEnumerable`1
+      description: A <xref href="stem.Data.Services.Client.DataServiceQuery%601"></xref> or LINQ query that returns an <xref href="stem.Collections.Generic.IEnumerable%601"></xref> collection of objects that are used to initialize the collection.
+    - id: trackingMode
+      type: System.Data.Services.Client.TrackingMode
+      description: A <xref href="System.Data.Services.Client.TrackingMode"></xref> value that indicated whether or not changes made to items in the collection are automatically tracked.
+    - id: entitySetName
+      type: System.String
+      description: The entity set of the objects in the collection.
+    - id: entityChangedCallback
+      type: System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean}
+      description: A delegate that encapsulates a method that is called when an entity changes.
+    - id: collectionChangedCallback
+      type: System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean}
+      description: A delegate that encapsulates a method that is called when the collection of entities changes.
+  overload: System.Data.Services.Client.DataServiceCollection`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Services.Client\DataServiceCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Services.Client/DataServiceCollection`1.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Services.Client.DataServiceCollection`1.Clear(System.Boolean)
+  id: Clear(System.Boolean)
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  langs:
+  - csharp
+  name: Clear(Boolean)
+  nameWithType: DataServiceCollection<T>.Clear(Boolean)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.Clear(Boolean)
+  type: Method
+  assemblies:
+  - System.Data.Services.Client
+  namespace: System.Data.Services.Client
+  summary: Removes all items from the collection, and optionally detaches all the items from the <xref href="System.Data.Services.Client.DataServiceContext"></xref>.
+  remarks: When an item is detached, all related objects in the data graph are also detached from the <xref:System.Data.Services.Client.DataServiceContext>.
+  syntax:
+    content: public void Clear (bool stopTracking);
+    parameters:
+    - id: stopTracking
+      type: System.Boolean
+      description: When `true`, detaches all items from the <xref href="System.Data.Services.Client.DataServiceContext"></xref>.
+  overload: System.Data.Services.Client.DataServiceCollection`1.Clear*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Services.Client\DataServiceCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Services.Client/DataServiceCollection`1.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Services.Client.DataServiceCollection`1.Continuation
+  id: Continuation
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  langs:
+  - csharp
+  name: Continuation
+  nameWithType: DataServiceCollection<T>.Continuation
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.Continuation
+  type: Property
+  assemblies:
+  - System.Data.Services.Client
+  namespace: System.Data.Services.Client
+  summary: Gets a continuation object that is used to return the next set of paged results.
+  remarks: "The Continuation property returns a link that is used to access the next set of paged results when paging is enabled in the data service. For more information, see [Configuring the Data Service](../Topic/Configuring%20the%20Data%20Service%20\\(WCF%20Data%20Services\\).md).  \n  \n When loading a paged result into a <xref:System.Data.Services.Client.DataServiceCollection%601>, you must explicitly load pages by calling the <xref:System.Data.Services.Client.DataServiceCollection%601.Load%28System.Collections.Generic.IEnumerable%7B%600%7D%29> method on the <xref:System.Data.Services.Client.DataServiceCollection%601> by passing the result of the execution of the URI that was obtained from the Continuation property."
+  example:
+  - "The following example is from the code-behind page for an Extensible Application Markup Language (XAML) page that defines the `SalesOrders` window in WPF. When the window is loaded, a <xref:System.Data.Services.Client.DataServiceCollection%601> is created based on the result of a query that returns customers, filtered by country. All of the pages of this paged result are loaded, along with the related orders, and are bound to the <xref:System.Windows.FrameworkElement.DataContext%2A> property of the <xref:System.Windows.Controls.StackPanel> that is the root layout control for the WPF window. For more information, see [How to: Bind Data to Windows Presentation Foundation Elements](../Topic/How%20to:%20Bind%20Data%20to%20Windows%20Presentation%20Foundation%20Elements%20\\(WCF%20Data%20Services\\).md).  \n  \n [!code-vb[Astoria Northwind Client#BindPagedData](~/add/codesnippet/visualbasic/northwindclientvb/customerorderswpf3.xaml.vb#bindpageddata)]\n [!code-cs[Astoria Northwind Client#BindPagedData](~/add/codesnippet/csharp/northwindclientcs/customerorderswpf3.xaml.cs#bindpageddata)]"
+  syntax:
+    content: public System.Data.Services.Client.DataServiceQueryContinuation<T> Continuation { get; set; }
+    return:
+      type: System.Data.Services.Client.DataServiceQueryContinuation`1
+      description: A <xref href="stem.Data.Services.Client.DataServiceQueryContinuation%601"></xref> object that contains the URI to return the next set of paged results.
+  overload: System.Data.Services.Client.DataServiceCollection`1.Continuation*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Services.Client\DataServiceCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Services.Client/DataServiceCollection`1.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Services.Client.DataServiceCollection`1.Detach
+  id: Detach
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  langs:
+  - csharp
+  name: Detach()
+  nameWithType: DataServiceCollection<T>.Detach()
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.Detach()
+  type: Method
+  assemblies:
+  - System.Data.Services.Client
+  namespace: System.Data.Services.Client
+  summary: Disables <xref href="System.Data.Services.Client.DataServiceContext"></xref> tracking of all items in the collection.
+  remarks: "The Detach method can only be called when <xref:System.Data.Services.Client.DataServiceCollection%601> is the root collection.  \n  \n When the Detach method is called on a collection that is a root collection, tracking is also stopped for all related objects in the data graph."
+  syntax:
+    content: public void Detach ();
+    parameters: []
+  overload: System.Data.Services.Client.DataServiceCollection`1.Detach*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Services.Client\DataServiceCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Services.Client/DataServiceCollection`1.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Services.Client.DataServiceCollection`1.InsertItem(System.Int32,`0)
+  id: InsertItem(System.Int32,`0)
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  langs:
+  - csharp
+  name: InsertItem(Int32,T)
+  nameWithType: DataServiceCollection<T>.InsertItem(Int32,T)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.InsertItem(Int32,T)
+  type: Method
+  assemblies:
+  - System.Data.Services.Client
+  namespace: System.Data.Services.Client
+  summary: Adds a specified item to the collection at the specified index.
+  remarks: When you are manually tracking changes to the collection, you must override the InsertItem method to prevent items from being automatically added to the collection.
+  syntax:
+    content: protected override void InsertItem (int index, T item);
+    parameters:
+    - id: index
+      type: System.Int32
+      description: Index at which to add the item.
+    - id: item
+      type: T
+      description: The item to add.
+  overload: System.Data.Services.Client.DataServiceCollection`1.InsertItem*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Services.Client\DataServiceCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Services.Client/DataServiceCollection`1.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Services.Client.DataServiceCollection`1.Load(System.Collections.Generic.IEnumerable{`0})
+  id: Load(System.Collections.Generic.IEnumerable{`0})
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  langs:
+  - csharp
+  name: Load(IEnumerable<T>)
+  nameWithType: DataServiceCollection<T>.Load(IEnumerable<T>)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.Load(IEnumerable<T>)
+  type: Method
+  assemblies:
+  - System.Data.Services.Client
+  namespace: System.Data.Services.Client
+  summary: Loads a collection of entity objects into the collection.
+  remarks: "Calling the Load method attaches all objects in the collection, if they are not already attached to the <xref:System.Data.Services.Client.DataServiceContext> that is associated with the <xref:System.Data.Services.Client.DataServiceCollection%601>.  \n  \n When an object is attached by using the <xref:System.Data.Services.Client.DataServiceCollection%601.Load%2A> method, all related objects are also attached."
+  syntax:
+    content: public void Load (System.Collections.Generic.IEnumerable<T> items);
+    parameters:
+    - id: items
+      type: System.Collections.Generic.IEnumerable`1
+      description: Collection of entity objects to be added to the <xref href="stem.Data.Services.Client.DataServiceCollection%601"></xref>.
+  overload: System.Data.Services.Client.DataServiceCollection`1.Load*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Services.Client\DataServiceCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Services.Client/DataServiceCollection`1.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Data.Services.Client.DataServiceCollection`1.Load(`0)
+  id: Load(`0)
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  langs:
+  - csharp
+  name: Load(T)
+  nameWithType: DataServiceCollection<T>.Load(T)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.Load(T)
+  type: Method
+  assemblies:
+  - System.Data.Services.Client
+  namespace: System.Data.Services.Client
+  summary: Loads a single entity object into the collection.
+  remarks: "Calling the Load method attaches the object, if it is not already attached to the <xref:System.Data.Services.Client.DataServiceContext> that is associated with the <xref:System.Data.Services.Client.DataServiceCollection%601>.  \n  \n When an object is attached by using the Load method, all related objects are also attached."
+  syntax:
+    content: public void Load (T item);
+    parameters:
+    - id: item
+      type: T
+      description: Entity object to be added.
+  overload: System.Data.Services.Client.DataServiceCollection`1.Load*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Data.Services.Client\DataServiceCollection`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Data.Services.Client/DataServiceCollection`1.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: false
+  name: System.Collections.ObjectModel.ObservableCollection<T>
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: DataServiceCollection<T>()
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>()
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.DataServiceCollection<T>()
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: DataServiceCollection<T>(IEnumerable<T>)
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>(IEnumerable<T>)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.DataServiceCollection<T>(IEnumerable<T>)
+- uid: System.Collections.Generic.IEnumerable`1
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Data.Services.Client.DataServiceContext)
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: DataServiceCollection<T>(DataServiceContext)
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>(DataServiceContext)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.DataServiceCollection<T>(DataServiceContext)
+- uid: System.Data.Services.Client.DataServiceContext
+  parent: System.Data.Services.Client
+  isExternal: false
+  name: DataServiceContext
+  nameWithType: DataServiceContext
+  fullName: System.Data.Services.Client.DataServiceContext
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode)
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: DataServiceCollection<T>(IEnumerable<T>,TrackingMode)
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>(IEnumerable<T>,TrackingMode)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.DataServiceCollection<T>(IEnumerable<T>,TrackingMode)
+- uid: System.Data.Services.Client.TrackingMode
+  parent: System.Data.Services.Client
+  isExternal: false
+  name: TrackingMode
+  nameWithType: TrackingMode
+  fullName: System.Data.Services.Client.TrackingMode
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Data.Services.Client.DataServiceContext,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: DataServiceCollection<T>(DataServiceContext,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>(DataServiceContext,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.DataServiceCollection<T>(DataServiceContext,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean}
+  parent: System
+  isExternal: false
+  name: Func<EntityChangedParams,Boolean>
+  nameWithType: Func<EntityChangedParams,Boolean>
+  fullName: System.Func<System.Data.Services.Client.EntityChangedParams,System.Boolean>
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func<System.Data.Services.Client.EntityChangedParams,System.Boolean>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Data.Services.Client.EntityChangedParams
+    name: EntityChangedParams
+    nameWithType: EntityChangedParams
+    fullName: EntityChangedParams
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: Boolean
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean}
+  parent: System
+  isExternal: false
+  name: Func<EntityCollectionChangedParams,Boolean>
+  nameWithType: Func<EntityCollectionChangedParams,Boolean>
+  fullName: System.Func<System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean>
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func<System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Data.Services.Client.EntityCollectionChangedParams
+    name: EntityCollectionChangedParams
+    nameWithType: EntityCollectionChangedParams
+    fullName: EntityCollectionChangedParams
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: Boolean
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: DataServiceCollection<T>(IEnumerable<T>,TrackingMode,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>(IEnumerable<T>,TrackingMode,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.DataServiceCollection<T>(IEnumerable<T>,TrackingMode,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor(System.Data.Services.Client.DataServiceContext,System.Collections.Generic.IEnumerable{`0},System.Data.Services.Client.TrackingMode,System.String,System.Func{System.Data.Services.Client.EntityChangedParams,System.Boolean},System.Func{System.Data.Services.Client.EntityCollectionChangedParams,System.Boolean})
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: DataServiceCollection<T>(DataServiceContext,IEnumerable<T>,TrackingMode,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>(DataServiceContext,IEnumerable<T>,TrackingMode,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.DataServiceCollection<T>(DataServiceContext,IEnumerable<T>,TrackingMode,String,Func<EntityChangedParams,Boolean>,Func<EntityCollectionChangedParams,Boolean>)
+- uid: System.Data.Services.Client.DataServiceCollection`1.Clear(System.Boolean)
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: Clear(Boolean)
+  nameWithType: DataServiceCollection<T>.Clear(Boolean)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.Clear(Boolean)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Data.Services.Client.DataServiceCollection`1.Continuation
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: Continuation
+  nameWithType: DataServiceCollection<T>.Continuation
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.Continuation
+- uid: System.Data.Services.Client.DataServiceQueryContinuation`1
+  parent: System.Data.Services.Client
+  isExternal: false
+  name: DataServiceQueryContinuation<T>
+  nameWithType: DataServiceQueryContinuation<T>
+  fullName: System.Data.Services.Client.DataServiceQueryContinuation<T>
+- uid: System.Data.Services.Client.DataServiceCollection`1.Detach
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: Detach()
+  nameWithType: DataServiceCollection<T>.Detach()
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.Detach()
+- uid: System.Data.Services.Client.DataServiceCollection`1.InsertItem(System.Int32,`0)
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: InsertItem(Int32,T)
+  nameWithType: DataServiceCollection<T>.InsertItem(Int32,T)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.InsertItem(Int32,T)
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: T
+  isExternal: true
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Data.Services.Client.DataServiceCollection`1.Load(System.Collections.Generic.IEnumerable{`0})
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: Load(IEnumerable<T>)
+  nameWithType: DataServiceCollection<T>.Load(IEnumerable<T>)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.Load(IEnumerable<T>)
+- uid: System.Data.Services.Client.DataServiceCollection`1.Load(`0)
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: Load(T)
+  nameWithType: DataServiceCollection<T>.Load(T)
+  fullName: System.Data.Services.Client.DataServiceCollection<T>.Load(T)
+- uid: System.Data.Services.Client.DataServiceCollection`1.#ctor*
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: DataServiceCollection<T>
+  nameWithType: DataServiceCollection<T>.DataServiceCollection<T>
+- uid: System.Data.Services.Client.DataServiceCollection`1.Clear*
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: Clear
+  nameWithType: DataServiceCollection<T>.Clear
+- uid: System.Data.Services.Client.DataServiceCollection`1.Continuation*
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: Continuation
+  nameWithType: DataServiceCollection<T>.Continuation
+- uid: System.Data.Services.Client.DataServiceCollection`1.Detach*
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: Detach
+  nameWithType: DataServiceCollection<T>.Detach
+- uid: System.Data.Services.Client.DataServiceCollection`1.InsertItem*
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: InsertItem
+  nameWithType: DataServiceCollection<T>.InsertItem
+- uid: System.Data.Services.Client.DataServiceCollection`1.Load*
+  parent: System.Data.Services.Client.DataServiceCollection`1
+  isExternal: false
+  name: Load
+  nameWithType: DataServiceCollection<T>.Load

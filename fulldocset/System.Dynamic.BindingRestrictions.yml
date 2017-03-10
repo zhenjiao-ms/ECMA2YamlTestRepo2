@@ -1,0 +1,407 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Dynamic.BindingRestrictions
+  id: BindingRestrictions
+  children:
+  - System.Dynamic.BindingRestrictions.Combine(System.Collections.Generic.IList{System.Dynamic.DynamicMetaObject})
+  - System.Dynamic.BindingRestrictions.Empty
+  - System.Dynamic.BindingRestrictions.GetExpressionRestriction(System.Linq.Expressions.Expression)
+  - System.Dynamic.BindingRestrictions.GetInstanceRestriction(System.Linq.Expressions.Expression,System.Object)
+  - System.Dynamic.BindingRestrictions.GetTypeRestriction(System.Linq.Expressions.Expression,System.Type)
+  - System.Dynamic.BindingRestrictions.Merge(System.Dynamic.BindingRestrictions)
+  - System.Dynamic.BindingRestrictions.ToExpression
+  langs:
+  - csharp
+  name: BindingRestrictions
+  nameWithType: BindingRestrictions
+  fullName: System.Dynamic.BindingRestrictions
+  type: Class
+  summary: Represents a set of binding restrictions on the <xref href="System.Dynamic.DynamicMetaObject"></xref> under which the dynamic binding is valid.
+  syntax:
+    content: >-
+      [System.Diagnostics.DebuggerDisplay("{DebugView}")]
+
+      [System.Diagnostics.DebuggerTypeProxy(typeof(System.Dynamic.BindingRestrictions/BindingRestrictionsProxy))]
+
+      public abstract class BindingRestrictions
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\BindingRestrictions.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/BindingRestrictions.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.BindingRestrictions.Combine(System.Collections.Generic.IList{System.Dynamic.DynamicMetaObject})
+  id: Combine(System.Collections.Generic.IList{System.Dynamic.DynamicMetaObject})
+  parent: System.Dynamic.BindingRestrictions
+  langs:
+  - csharp
+  name: Combine(IList<DynamicMetaObject>)
+  nameWithType: BindingRestrictions.Combine(IList<DynamicMetaObject>)
+  fullName: System.Dynamic.BindingRestrictions.Combine(IList<DynamicMetaObject>)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  summary: Combines binding restrictions from the list of <xref href="System.Dynamic.DynamicMetaObject"></xref> instances into one set of restrictions.
+  syntax:
+    content: public static System.Dynamic.BindingRestrictions Combine (System.Collections.Generic.IList<System.Dynamic.DynamicMetaObject> contributingObjects);
+    parameters:
+    - id: contributingObjects
+      type: System.Collections.Generic.IList{System.Dynamic.DynamicMetaObject}
+      description: The list of <xref href="System.Dynamic.DynamicMetaObject"></xref> instances from which to combine restrictions.
+    return:
+      type: System.Dynamic.BindingRestrictions
+      description: The new set of binding restrictions.
+  overload: System.Dynamic.BindingRestrictions.Combine*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\BindingRestrictions.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/BindingRestrictions.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.BindingRestrictions.Empty
+  id: Empty
+  parent: System.Dynamic.BindingRestrictions
+  langs:
+  - csharp
+  name: Empty
+  nameWithType: BindingRestrictions.Empty
+  fullName: System.Dynamic.BindingRestrictions.Empty
+  type: Field
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  summary: Represents an empty set of binding restrictions. This field is read only.
+  syntax:
+    content: public static readonly System.Dynamic.BindingRestrictions Empty;
+    return:
+      type: System.Dynamic.BindingRestrictions
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\BindingRestrictions.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/BindingRestrictions.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.BindingRestrictions.GetExpressionRestriction(System.Linq.Expressions.Expression)
+  id: GetExpressionRestriction(System.Linq.Expressions.Expression)
+  parent: System.Dynamic.BindingRestrictions
+  langs:
+  - csharp
+  name: GetExpressionRestriction(Expression)
+  nameWithType: BindingRestrictions.GetExpressionRestriction(Expression)
+  fullName: System.Dynamic.BindingRestrictions.GetExpressionRestriction(Expression)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  summary: Creates the binding restriction that checks the expression for arbitrary immutable properties.
+  remarks: By convention, the general restrictions created by this method must only test immutable object properties.
+  syntax:
+    content: public static System.Dynamic.BindingRestrictions GetExpressionRestriction (System.Linq.Expressions.Expression expression);
+    parameters:
+    - id: expression
+      type: System.Linq.Expressions.Expression
+      description: The expression representing the restrictions.
+    return:
+      type: System.Dynamic.BindingRestrictions
+      description: The new binding restrictions.
+  overload: System.Dynamic.BindingRestrictions.GetExpressionRestriction*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\BindingRestrictions.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/BindingRestrictions.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.BindingRestrictions.GetInstanceRestriction(System.Linq.Expressions.Expression,System.Object)
+  id: GetInstanceRestriction(System.Linq.Expressions.Expression,System.Object)
+  parent: System.Dynamic.BindingRestrictions
+  langs:
+  - csharp
+  name: GetInstanceRestriction(Expression,Object)
+  nameWithType: BindingRestrictions.GetInstanceRestriction(Expression,Object)
+  fullName: System.Dynamic.BindingRestrictions.GetInstanceRestriction(Expression,Object)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  summary: Creates the binding restriction that checks the expression for object instance identity.
+  syntax:
+    content: public static System.Dynamic.BindingRestrictions GetInstanceRestriction (System.Linq.Expressions.Expression expression, object instance);
+    parameters:
+    - id: expression
+      type: System.Linq.Expressions.Expression
+      description: The expression to test.
+    - id: instance
+      type: System.Object
+      description: The exact object instance to test.
+    return:
+      type: System.Dynamic.BindingRestrictions
+      description: The new binding restrictions.
+  overload: System.Dynamic.BindingRestrictions.GetInstanceRestriction*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\BindingRestrictions.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/BindingRestrictions.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.BindingRestrictions.GetTypeRestriction(System.Linq.Expressions.Expression,System.Type)
+  id: GetTypeRestriction(System.Linq.Expressions.Expression,System.Type)
+  parent: System.Dynamic.BindingRestrictions
+  langs:
+  - csharp
+  name: GetTypeRestriction(Expression,Type)
+  nameWithType: BindingRestrictions.GetTypeRestriction(Expression,Type)
+  fullName: System.Dynamic.BindingRestrictions.GetTypeRestriction(Expression,Type)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  summary: Creates the binding restriction that check the expression for runtime type identity.
+  syntax:
+    content: public static System.Dynamic.BindingRestrictions GetTypeRestriction (System.Linq.Expressions.Expression expression, Type type);
+    parameters:
+    - id: expression
+      type: System.Linq.Expressions.Expression
+      description: The expression to test.
+    - id: type
+      type: System.Type
+      description: The exact type to test.
+    return:
+      type: System.Dynamic.BindingRestrictions
+      description: The new binding restrictions.
+  overload: System.Dynamic.BindingRestrictions.GetTypeRestriction*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\BindingRestrictions.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/BindingRestrictions.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.BindingRestrictions.Merge(System.Dynamic.BindingRestrictions)
+  id: Merge(System.Dynamic.BindingRestrictions)
+  parent: System.Dynamic.BindingRestrictions
+  langs:
+  - csharp
+  name: Merge(BindingRestrictions)
+  nameWithType: BindingRestrictions.Merge(BindingRestrictions)
+  fullName: System.Dynamic.BindingRestrictions.Merge(BindingRestrictions)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  summary: Merges the set of binding restrictions with the current binding restrictions.
+  syntax:
+    content: public System.Dynamic.BindingRestrictions Merge (System.Dynamic.BindingRestrictions restrictions);
+    parameters:
+    - id: restrictions
+      type: System.Dynamic.BindingRestrictions
+      description: The set of restrictions with which to merge the current binding restrictions.
+    return:
+      type: System.Dynamic.BindingRestrictions
+      description: The new set of binding restrictions.
+  overload: System.Dynamic.BindingRestrictions.Merge*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\BindingRestrictions.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/BindingRestrictions.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Dynamic.BindingRestrictions.ToExpression
+  id: ToExpression
+  parent: System.Dynamic.BindingRestrictions
+  langs:
+  - csharp
+  name: ToExpression()
+  nameWithType: BindingRestrictions.ToExpression()
+  fullName: System.Dynamic.BindingRestrictions.ToExpression()
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Dynamic
+  summary: Creates the <xref href="System.Linq.Expressions.Expression"></xref> representing the binding restrictions.
+  syntax:
+    content: public System.Linq.Expressions.Expression ToExpression ();
+    parameters: []
+    return:
+      type: System.Linq.Expressions.Expression
+      description: The expression tree representing the restrictions.
+  overload: System.Dynamic.BindingRestrictions.ToExpression*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Dynamic\BindingRestrictions.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Dynamic/BindingRestrictions.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.Dynamic.BindingRestrictions.Combine(System.Collections.Generic.IList{System.Dynamic.DynamicMetaObject})
+  parent: System.Dynamic.BindingRestrictions
+  isExternal: false
+  name: Combine(IList<DynamicMetaObject>)
+  nameWithType: BindingRestrictions.Combine(IList<DynamicMetaObject>)
+  fullName: System.Dynamic.BindingRestrictions.Combine(IList<DynamicMetaObject>)
+- uid: System.Dynamic.BindingRestrictions
+  parent: System.Dynamic
+  isExternal: false
+  name: BindingRestrictions
+  nameWithType: BindingRestrictions
+  fullName: System.Dynamic.BindingRestrictions
+- uid: System.Collections.Generic.IList{System.Dynamic.DynamicMetaObject}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IList<DynamicMetaObject>
+  nameWithType: IList<DynamicMetaObject>
+  fullName: System.Collections.Generic.IList<System.Dynamic.DynamicMetaObject>
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: IList<System.Dynamic.DynamicMetaObject>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Dynamic.DynamicMetaObject
+    name: DynamicMetaObject
+    nameWithType: DynamicMetaObject
+    fullName: DynamicMetaObject
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Dynamic.BindingRestrictions.Empty
+  parent: System.Dynamic.BindingRestrictions
+  isExternal: false
+  name: Empty
+  nameWithType: BindingRestrictions.Empty
+  fullName: System.Dynamic.BindingRestrictions.Empty
+- uid: System.Dynamic.BindingRestrictions.GetExpressionRestriction(System.Linq.Expressions.Expression)
+  parent: System.Dynamic.BindingRestrictions
+  isExternal: false
+  name: GetExpressionRestriction(Expression)
+  nameWithType: BindingRestrictions.GetExpressionRestriction(Expression)
+  fullName: System.Dynamic.BindingRestrictions.GetExpressionRestriction(Expression)
+- uid: System.Linq.Expressions.Expression
+  parent: System.Linq.Expressions
+  isExternal: false
+  name: Expression
+  nameWithType: Expression
+  fullName: System.Linq.Expressions.Expression
+- uid: System.Dynamic.BindingRestrictions.GetInstanceRestriction(System.Linq.Expressions.Expression,System.Object)
+  parent: System.Dynamic.BindingRestrictions
+  isExternal: false
+  name: GetInstanceRestriction(Expression,Object)
+  nameWithType: BindingRestrictions.GetInstanceRestriction(Expression,Object)
+  fullName: System.Dynamic.BindingRestrictions.GetInstanceRestriction(Expression,Object)
+- uid: System.Dynamic.BindingRestrictions.GetTypeRestriction(System.Linq.Expressions.Expression,System.Type)
+  parent: System.Dynamic.BindingRestrictions
+  isExternal: false
+  name: GetTypeRestriction(Expression,Type)
+  nameWithType: BindingRestrictions.GetTypeRestriction(Expression,Type)
+  fullName: System.Dynamic.BindingRestrictions.GetTypeRestriction(Expression,Type)
+- uid: System.Type
+  parent: System
+  isExternal: false
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Dynamic.BindingRestrictions.Merge(System.Dynamic.BindingRestrictions)
+  parent: System.Dynamic.BindingRestrictions
+  isExternal: false
+  name: Merge(BindingRestrictions)
+  nameWithType: BindingRestrictions.Merge(BindingRestrictions)
+  fullName: System.Dynamic.BindingRestrictions.Merge(BindingRestrictions)
+- uid: System.Dynamic.BindingRestrictions.ToExpression
+  parent: System.Dynamic.BindingRestrictions
+  isExternal: false
+  name: ToExpression()
+  nameWithType: BindingRestrictions.ToExpression()
+  fullName: System.Dynamic.BindingRestrictions.ToExpression()
+- uid: System.Dynamic.BindingRestrictions.Combine*
+  parent: System.Dynamic.BindingRestrictions
+  isExternal: false
+  name: Combine
+  nameWithType: BindingRestrictions.Combine
+- uid: System.Dynamic.BindingRestrictions.GetExpressionRestriction*
+  parent: System.Dynamic.BindingRestrictions
+  isExternal: false
+  name: GetExpressionRestriction
+  nameWithType: BindingRestrictions.GetExpressionRestriction
+- uid: System.Dynamic.BindingRestrictions.GetInstanceRestriction*
+  parent: System.Dynamic.BindingRestrictions
+  isExternal: false
+  name: GetInstanceRestriction
+  nameWithType: BindingRestrictions.GetInstanceRestriction
+- uid: System.Dynamic.BindingRestrictions.GetTypeRestriction*
+  parent: System.Dynamic.BindingRestrictions
+  isExternal: false
+  name: GetTypeRestriction
+  nameWithType: BindingRestrictions.GetTypeRestriction
+- uid: System.Dynamic.BindingRestrictions.Merge*
+  parent: System.Dynamic.BindingRestrictions
+  isExternal: false
+  name: Merge
+  nameWithType: BindingRestrictions.Merge
+- uid: System.Dynamic.BindingRestrictions.ToExpression*
+  parent: System.Dynamic.BindingRestrictions
+  isExternal: false
+  name: ToExpression
+  nameWithType: BindingRestrictions.ToExpression

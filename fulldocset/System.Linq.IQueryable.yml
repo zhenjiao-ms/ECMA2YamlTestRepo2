@@ -1,0 +1,187 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Linq.IQueryable
+  id: IQueryable
+  children:
+  - System.Linq.IQueryable.ElementType
+  - System.Linq.IQueryable.Expression
+  - System.Linq.IQueryable.Provider
+  langs:
+  - csharp
+  name: IQueryable
+  nameWithType: IQueryable
+  fullName: System.Linq.IQueryable
+  type: Interface
+  summary: Provides functionality to evaluate queries against a specific data source wherein the type of the data is not specified.
+  remarks: "The IQueryable interface is intended for implementation by query providers. It is only supposed to be implemented by providers that also implement <xref:System.Linq.IQueryable%601>. If the provider does not also implement <xref:System.Linq.IQueryable%601>, the standard query operators cannot be used on the provider's data source.  \n  \n The IQueryable interface inherits the <xref:System.Collections.IEnumerable> interface so that if it represents a query, the results of that query can be enumerated. Enumeration causes the expression tree associated with an IQueryable object to be executed. The definition of \"executing an expression tree\" is specific to a query provider. For example, it may involve translating the expression tree to an appropriate query language for the underlying data source. Queries that do not return enumerable results are executed when the <xref:System.Linq.IQueryProvider.Execute%2A> method is called.  \n  \n For more information about how to create your own LINQ provider, see [LINQ: Building an IQueryable Provider](http://go.microsoft.com/fwlink/?LinkID=112370) on MSDN Blogs."
+  syntax:
+    content: 'public interface IQueryable : System.Collections.IEnumerable'
+  implements:
+  - System.Collections.IEnumerable
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Linq\IQueryable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Linq/IQueryable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Linq.IQueryable.ElementType
+  id: ElementType
+  parent: System.Linq.IQueryable
+  langs:
+  - csharp
+  name: ElementType
+  nameWithType: IQueryable.ElementType
+  fullName: System.Linq.IQueryable.ElementType
+  type: Property
+  assemblies:
+  - System.Core
+  namespace: System.Linq
+  summary: Gets the type of the element(s) that are returned when the expression tree associated with this instance of <xref href="System.Linq.IQueryable"></xref> is executed.
+  remarks: The ElementType property represents the "T" in `IQueryable<T>` or `IQueryable(Of T)`.
+  syntax:
+    content: public Type ElementType { get; }
+    return:
+      type: System.Type
+      description: A <xref href="System.Type"></xref> that represents the type of the element(s) that are returned when the expression tree associated with this object is executed.
+  overload: System.Linq.IQueryable.ElementType*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Linq\IQueryable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Linq/IQueryable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Linq.IQueryable.Expression
+  id: Expression
+  parent: System.Linq.IQueryable
+  langs:
+  - csharp
+  name: Expression
+  nameWithType: IQueryable.Expression
+  fullName: System.Linq.IQueryable.Expression
+  type: Property
+  assemblies:
+  - System.Core
+  namespace: System.Linq
+  summary: Gets the expression tree that is associated with the instance of <xref href="System.Linq.IQueryable"></xref>.
+  remarks: If an instance of <xref:System.Linq.IQueryable> represents a [!INCLUDE[vbteclinq](~/add/includes/vbteclinq-md.md)] query against a data source, the associated expression tree represents that query.
+  syntax:
+    content: public System.Linq.Expressions.Expression Expression { get; }
+    return:
+      type: System.Linq.Expressions.Expression
+      description: The <xref href="System.Linq.Expressions.Expression"></xref> that is associated with this instance of <xref href="System.Linq.IQueryable"></xref>.
+  overload: System.Linq.IQueryable.Expression*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Linq\IQueryable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Linq/IQueryable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Linq.IQueryable.Provider
+  id: Provider
+  parent: System.Linq.IQueryable
+  langs:
+  - csharp
+  name: Provider
+  nameWithType: IQueryable.Provider
+  fullName: System.Linq.IQueryable.Provider
+  type: Property
+  assemblies:
+  - System.Core
+  namespace: System.Linq
+  summary: Gets the query provider that is associated with this data source.
+  remarks: If an instance of <xref:System.Linq.IQueryable> represents a [!INCLUDE[vbteclinq](~/add/includes/vbteclinq-md.md)] query against a data source, the associated query provider is the provider that created the <xref:System.Linq.IQueryable> instance.
+  syntax:
+    content: public System.Linq.IQueryProvider Provider { get; }
+    return:
+      type: System.Linq.IQueryProvider
+      description: The <xref href="System.Linq.IQueryProvider"></xref> that is associated with this data source.
+  overload: System.Linq.IQueryable.Provider*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Linq\IQueryable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Linq/IQueryable.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Linq.IQueryable.ElementType
+  parent: System.Linq.IQueryable
+  isExternal: false
+  name: ElementType
+  nameWithType: IQueryable.ElementType
+  fullName: System.Linq.IQueryable.ElementType
+- uid: System.Type
+  parent: System
+  isExternal: false
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Linq.IQueryable.Expression
+  parent: System.Linq.IQueryable
+  isExternal: false
+  name: Expression
+  nameWithType: IQueryable.Expression
+  fullName: System.Linq.IQueryable.Expression
+- uid: System.Linq.Expressions.Expression
+  parent: System.Linq.Expressions
+  isExternal: false
+  name: Expression
+  nameWithType: Expression
+  fullName: System.Linq.Expressions.Expression
+- uid: System.Linq.IQueryable.Provider
+  parent: System.Linq.IQueryable
+  isExternal: false
+  name: Provider
+  nameWithType: IQueryable.Provider
+  fullName: System.Linq.IQueryable.Provider
+- uid: System.Linq.IQueryProvider
+  parent: System.Linq
+  isExternal: false
+  name: IQueryProvider
+  nameWithType: IQueryProvider
+  fullName: System.Linq.IQueryProvider
+- uid: System.Linq.IQueryable.ElementType*
+  parent: System.Linq.IQueryable
+  isExternal: false
+  name: ElementType
+  nameWithType: IQueryable.ElementType
+- uid: System.Linq.IQueryable.Expression*
+  parent: System.Linq.IQueryable
+  isExternal: false
+  name: Expression
+  nameWithType: IQueryable.Expression
+- uid: System.Linq.IQueryable.Provider*
+  parent: System.Linq.IQueryable
+  isExternal: false
+  name: Provider
+  nameWithType: IQueryable.Provider

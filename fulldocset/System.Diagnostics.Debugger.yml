@@ -1,0 +1,445 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Diagnostics.Debugger
+  id: Debugger
+  children:
+  - System.Diagnostics.Debugger.#ctor
+  - System.Diagnostics.Debugger.Break
+  - System.Diagnostics.Debugger.DefaultCategory
+  - System.Diagnostics.Debugger.IsAttached
+  - System.Diagnostics.Debugger.IsLogging
+  - System.Diagnostics.Debugger.Launch
+  - System.Diagnostics.Debugger.Log(System.Int32,System.String,System.String)
+  - System.Diagnostics.Debugger.NotifyOfCrossThreadDependency
+  langs:
+  - csharp
+  name: Debugger
+  nameWithType: Debugger
+  fullName: System.Diagnostics.Debugger
+  type: Class
+  summary: Enables communication with a debugger. This class cannot be inherited.
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class Debugger
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics\Debugger.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics/Debugger.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Debugger.#ctor
+  id: '#ctor'
+  parent: System.Diagnostics.Debugger
+  langs:
+  - csharp
+  name: Debugger()
+  nameWithType: Debugger.Debugger()
+  fullName: System.Diagnostics.Debugger.Debugger()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics
+  summary: Initializes a new instance of the <xref href="System.Diagnostics.Debugger"></xref> class.
+  syntax:
+    content: public Debugger ();
+    parameters: []
+  overload: System.Diagnostics.Debugger.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics\Debugger.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics/Debugger.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Debugger.Break
+  id: Break
+  parent: System.Diagnostics.Debugger
+  langs:
+  - csharp
+  name: Break()
+  nameWithType: Debugger.Break()
+  fullName: System.Diagnostics.Debugger.Break()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics
+  summary: Signals a breakpoint to an attached debugger.
+  remarks: "If no debugger is attached, users are asked if they want to attach a debugger. If users say yes, the debugger is started. If a debugger is attached, the debugger is signaled with a user breakpoint event, and the debugger suspends execution of the process just as if a debugger breakpoint had been hit.  \n  \n> [!WARNING]\n>  Starting with [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], the runtime no longer exercises tight control of launching the debugger for the Break method, but instead reports an error to the Windows Error Reporting (WER) subsystem. WER provides many settings to customize the problem reporting experience, so a lot of factors will influence  the way WER responds to an error such as operating system version, process, session, user, machine and domain. If you're having unexpected results when calling  the Break method,  check the  WER settings on your machine. For more information on how to customize WER, see [WER Settings](https://msdn.microsoft.com/library/windows/desktop/bb513638.aspx). If you want to ensure the debugger is launched regardless of the WER settings, be sure to call the <xref:System.Diagnostics.Debugger.Launch%2A> method instead."
+  example:
+  - "The following code example demonstrates how to stop the debugger at the call to <xref:System.Console.WriteLine%2A>.  \n  \n```vb  \nDebugger.Break()  \nConsole.WriteLine(\"Hello, world.\")  \n```  \n  \n```c#  \nDebugger.Break();  \nConsole.WriteLine(\"Hello, world.\");  \n```"
+  syntax:
+    content: public static void Break ();
+    parameters: []
+  overload: System.Diagnostics.Debugger.Break*
+  exceptions:
+  - type: System.Security.SecurityException
+    commentId: T:System.Security.SecurityException
+    description: The <xref href="System.Security.Permissions.UIPermission"></xref> is not set to break into the debugger.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics\Debugger.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics/Debugger.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Debugger.DefaultCategory
+  id: DefaultCategory
+  parent: System.Diagnostics.Debugger
+  langs:
+  - csharp
+  name: DefaultCategory
+  nameWithType: Debugger.DefaultCategory
+  fullName: System.Diagnostics.Debugger.DefaultCategory
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics
+  summary: Represents the default category of message with a constant.
+  remarks: The value of this default constant is `null`. DefaultCategory is used by <xref:System.Diagnostics.Debugger.Log%2A>.
+  syntax:
+    content: public static readonly string DefaultCategory;
+    return:
+      type: System.String
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics\Debugger.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics/Debugger.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Debugger.IsAttached
+  id: IsAttached
+  parent: System.Diagnostics.Debugger
+  langs:
+  - csharp
+  name: IsAttached
+  nameWithType: Debugger.IsAttached
+  fullName: System.Diagnostics.Debugger.IsAttached
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics
+  summary: Gets a value that indicates whether a debugger is attached to the process.
+  syntax:
+    content: public static bool IsAttached { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if a debugger is attached; otherwise, `false`.'
+  overload: System.Diagnostics.Debugger.IsAttached*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics\Debugger.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics/Debugger.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Debugger.IsLogging
+  id: IsLogging
+  parent: System.Diagnostics.Debugger
+  langs:
+  - csharp
+  name: IsLogging()
+  nameWithType: Debugger.IsLogging()
+  fullName: System.Diagnostics.Debugger.IsLogging()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics
+  summary: Checks to see if logging is enabled by an attached debugger.
+  syntax:
+    content: public static bool IsLogging ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: '`true` if a debugger is attached and logging is enabled; otherwise, `false`. The attached debugger is the registered managed debugger in the `DbgManagedDebugger` registry key. For more information on this key, see [Enabling JIT-Attach Debugging](../Topic/Enabling%20JIT-Attach%20Debugging.md).'
+  overload: System.Diagnostics.Debugger.IsLogging*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics\Debugger.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics/Debugger.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Debugger.Launch
+  id: Launch
+  parent: System.Diagnostics.Debugger
+  langs:
+  - csharp
+  name: Launch()
+  nameWithType: Debugger.Launch()
+  fullName: System.Diagnostics.Debugger.Launch()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics
+  summary: Launches and attaches a debugger to the process.
+  remarks: If a debugger is already attached, nothing happens.
+  syntax:
+    content: public static bool Launch ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: '`true` if the startup is successful or if the debugger is already attached; otherwise, `false`.'
+  overload: System.Diagnostics.Debugger.Launch*
+  exceptions:
+  - type: System.Security.SecurityException
+    commentId: T:System.Security.SecurityException
+    description: The <xref href="System.Security.Permissions.UIPermission"></xref> is not set to start the debugger.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics\Debugger.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics/Debugger.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Debugger.Log(System.Int32,System.String,System.String)
+  id: Log(System.Int32,System.String,System.String)
+  parent: System.Diagnostics.Debugger
+  langs:
+  - csharp
+  name: Log(Int32,String,String)
+  nameWithType: Debugger.Log(Int32,String,String)
+  fullName: System.Diagnostics.Debugger.Log(Int32,String,String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics
+  summary: Posts a message for the attached debugger.
+  remarks: "If there is no debugger attached, this method has no effect. The debugger might or might not report the message, depending upon its settings.  \n  \n> [!NOTE]\n>  The category parameter is limited to 256 characters. Strings longer than 256 characters are truncated."
+  syntax:
+    content: public static void Log (int level, string category, string message);
+    parameters:
+    - id: level
+      type: System.Int32
+      description: A description of the importance of the message.
+    - id: category
+      type: System.String
+      description: The category of the message.
+    - id: message
+      type: System.String
+      description: The message to show.
+  overload: System.Diagnostics.Debugger.Log*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics\Debugger.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics/Debugger.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.Debugger.NotifyOfCrossThreadDependency
+  id: NotifyOfCrossThreadDependency
+  parent: System.Diagnostics.Debugger
+  langs:
+  - csharp
+  name: NotifyOfCrossThreadDependency()
+  nameWithType: Debugger.NotifyOfCrossThreadDependency()
+  fullName: System.Diagnostics.Debugger.NotifyOfCrossThreadDependency()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics
+  summary: Notifies a debugger that execution is about to enter a path that involves a cross-thread dependency.
+  remarks: "Debuggers must specifically enable callbacks that they wish to receive. A debugger that wants to receive cross-thread dependency callbacks must call the  method.  \n  \n A debugger that has selected NotifyOfCrossThreadDependency can take appropriate action upon notification. For example, performing a function evaluation typically requires freezing all threads except for the thread that is performing the evaluation. If the function evaluation requires execution on more than one thread, as might occur in remoting scenarios, the evaluation will block. The NotifyOfCrossThreadDependency notification informs the debugger that it has to release a thread or abort the function evaluation. The notification is subject to collection after this method returns."
+  syntax:
+    content: public static void NotifyOfCrossThreadDependency ();
+    parameters: []
+  overload: System.Diagnostics.Debugger.NotifyOfCrossThreadDependency*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics\Debugger.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics/Debugger.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.Security.SecurityException
+  parent: System.Security
+  isExternal: false
+  name: SecurityException
+  nameWithType: SecurityException
+  fullName: System.Security.SecurityException
+- uid: System.Diagnostics.Debugger.#ctor
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: Debugger()
+  nameWithType: Debugger.Debugger()
+  fullName: System.Diagnostics.Debugger.Debugger()
+- uid: System.Diagnostics.Debugger.Break
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: Break()
+  nameWithType: Debugger.Break()
+  fullName: System.Diagnostics.Debugger.Break()
+- uid: System.Diagnostics.Debugger.DefaultCategory
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: DefaultCategory
+  nameWithType: Debugger.DefaultCategory
+  fullName: System.Diagnostics.Debugger.DefaultCategory
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Diagnostics.Debugger.IsAttached
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: IsAttached
+  nameWithType: Debugger.IsAttached
+  fullName: System.Diagnostics.Debugger.IsAttached
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Diagnostics.Debugger.IsLogging
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: IsLogging()
+  nameWithType: Debugger.IsLogging()
+  fullName: System.Diagnostics.Debugger.IsLogging()
+- uid: System.Diagnostics.Debugger.Launch
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: Launch()
+  nameWithType: Debugger.Launch()
+  fullName: System.Diagnostics.Debugger.Launch()
+- uid: System.Diagnostics.Debugger.Log(System.Int32,System.String,System.String)
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: Log(Int32,String,String)
+  nameWithType: Debugger.Log(Int32,String,String)
+  fullName: System.Diagnostics.Debugger.Log(Int32,String,String)
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Diagnostics.Debugger.NotifyOfCrossThreadDependency
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: NotifyOfCrossThreadDependency()
+  nameWithType: Debugger.NotifyOfCrossThreadDependency()
+  fullName: System.Diagnostics.Debugger.NotifyOfCrossThreadDependency()
+- uid: System.Diagnostics.Debugger.#ctor*
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: Debugger
+  nameWithType: Debugger.Debugger
+- uid: System.Diagnostics.Debugger.Break*
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: Break
+  nameWithType: Debugger.Break
+- uid: System.Diagnostics.Debugger.IsAttached*
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: IsAttached
+  nameWithType: Debugger.IsAttached
+- uid: System.Diagnostics.Debugger.IsLogging*
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: IsLogging
+  nameWithType: Debugger.IsLogging
+- uid: System.Diagnostics.Debugger.Launch*
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: Launch
+  nameWithType: Debugger.Launch
+- uid: System.Diagnostics.Debugger.Log*
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: Log
+  nameWithType: Debugger.Log
+- uid: System.Diagnostics.Debugger.NotifyOfCrossThreadDependency*
+  parent: System.Diagnostics.Debugger
+  isExternal: false
+  name: NotifyOfCrossThreadDependency
+  nameWithType: Debugger.NotifyOfCrossThreadDependency

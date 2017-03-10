@@ -1,0 +1,779 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Threading.Tasks.TaskCompletionSource`1
+  id: TaskCompletionSource`1
+  children:
+  - System.Threading.Tasks.TaskCompletionSource`1.#ctor
+  - System.Threading.Tasks.TaskCompletionSource`1.#ctor(System.Object)
+  - System.Threading.Tasks.TaskCompletionSource`1.#ctor(System.Threading.Tasks.TaskCreationOptions)
+  - System.Threading.Tasks.TaskCompletionSource`1.#ctor(System.Object,System.Threading.Tasks.TaskCreationOptions)
+  - System.Threading.Tasks.TaskCompletionSource`1.SetCanceled
+  - System.Threading.Tasks.TaskCompletionSource`1.SetException(System.Collections.Generic.IEnumerable{System.Exception})
+  - System.Threading.Tasks.TaskCompletionSource`1.SetException(System.Exception)
+  - System.Threading.Tasks.TaskCompletionSource`1.SetResult(`0)
+  - System.Threading.Tasks.TaskCompletionSource`1.Task
+  - System.Threading.Tasks.TaskCompletionSource`1.TrySetCanceled
+  - System.Threading.Tasks.TaskCompletionSource`1.TrySetCanceled(System.Threading.CancellationToken)
+  - System.Threading.Tasks.TaskCompletionSource`1.TrySetException(System.Collections.Generic.IEnumerable{System.Exception})
+  - System.Threading.Tasks.TaskCompletionSource`1.TrySetException(System.Exception)
+  - System.Threading.Tasks.TaskCompletionSource`1.TrySetResult(`0)
+  langs:
+  - csharp
+  name: TaskCompletionSource<TResult>
+  nameWithType: TaskCompletionSource<TResult>
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>
+  type: Class
+  summary: Represents the producer side of a <xref href="stem.Threading.Tasks.Task%601"></xref> unbound to a delegate, providing access to the consumer side through the <xref href="stem.Threading.Tasks.TaskCompletionSource%601.Task%2A"></xref> property.
+  remarks: "In many scenarios, it is useful to enable a <xref:System.Threading.Tasks.Task%601> to represent an external asynchronous operation. TaskCompletionSource(TResult) is provided for this purpose. It enables the creation of a task that can be handed out to consumers, and those consumers can use the members of the task as they would any other. However, unlike most tasks, the state of a task created by a TaskCompletionSource is controlled explicitly by the methods on TaskCompletionSource. This enables the completion of the external asynchronous operation to be propagated to the underlying Task. The separation also ensures that consumers are not able to transition the state without access to the corresponding TaskCompletionSource. For more information, see the entry [The Nature of TaskCompletionSource\\<TResult>](http://blogs.msdn.com/b/pfxteam/archive/2009/06/02/9685804.aspx) in the Parallel Programming with .NET blog.  \n  \n The [Parallel Extensions samples](http://go.microsoft.com/fwlink/?LinkID=165717) also contain examples of how to use TaskCompletionSource(TResult)."
+  example:
+  - "The following example shows how to use a TaskCompletionSource(TResult):  \n  \n [!code-vb[System.Threading.Tasks.TaskCompletionSource#01](~/add/codesnippet/visualbasic/t-system.threading.tasks_4_1.vb)]\n [!code-cs[System.Threading.Tasks.TaskCompletionSource#01](~/add/codesnippet/csharp/t-system.threading.tasks_4_1.cs)]"
+  syntax:
+    content: public class TaskCompletionSource<TResult>
+    typeParameters:
+    - id: TResult
+      description: The type of the result value assocatied with this TaskCompletionSource(TResult).
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.Tasks.TaskCompletionSource`1.#ctor
+  id: '#ctor'
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  langs:
+  - csharp
+  name: TaskCompletionSource<TResult>()
+  nameWithType: TaskCompletionSource<TResult>.TaskCompletionSource<TResult>()
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TaskCompletionSource<TResult>()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Creates a <xref href="stem.Threading.Tasks.TaskCompletionSource%601"></xref>.
+  syntax:
+    content: public TaskCompletionSource ();
+    parameters: []
+  overload: System.Threading.Tasks.TaskCompletionSource`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.Tasks.TaskCompletionSource`1.#ctor(System.Object)
+  id: '#ctor(System.Object)'
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  langs:
+  - csharp
+  name: TaskCompletionSource<TResult>(Object)
+  nameWithType: TaskCompletionSource<TResult>.TaskCompletionSource<TResult>(Object)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TaskCompletionSource<TResult>(Object)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Creates a <xref href="stem.Threading.Tasks.TaskCompletionSource%601"></xref> with the specified state.
+  syntax:
+    content: public TaskCompletionSource (object state);
+    parameters:
+    - id: state
+      type: System.Object
+      description: The state to use as the underlying <xref href="stem.Threading.Tasks.Task%601"></xref>'s AsyncState.
+  overload: System.Threading.Tasks.TaskCompletionSource`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.Tasks.TaskCompletionSource`1.#ctor(System.Threading.Tasks.TaskCreationOptions)
+  id: '#ctor(System.Threading.Tasks.TaskCreationOptions)'
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  langs:
+  - csharp
+  name: TaskCompletionSource<TResult>(TaskCreationOptions)
+  nameWithType: TaskCompletionSource<TResult>.TaskCompletionSource<TResult>(TaskCreationOptions)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TaskCompletionSource<TResult>(TaskCreationOptions)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Creates a <xref href="stem.Threading.Tasks.TaskCompletionSource%601"></xref> with the specified options.
+  remarks: The <xref:System.Threading.Tasks.Task%601> created by this instance and accessible through its <xref:System.Threading.Tasks.TaskCompletionSource%601.Task%2A> property will be instantiated using the specified `creationOptions`.
+  syntax:
+    content: public TaskCompletionSource (System.Threading.Tasks.TaskCreationOptions creationOptions);
+    parameters:
+    - id: creationOptions
+      type: System.Threading.Tasks.TaskCreationOptions
+      description: The options to use when creating the underlying <xref href="stem.Threading.Tasks.Task%601"></xref>.
+  overload: System.Threading.Tasks.TaskCompletionSource`1.#ctor*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: The <code>creationOptions</code> represent options invalid for use with a <xref href="stem.Threading.Tasks.TaskCompletionSource%601"></xref>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.Tasks.TaskCompletionSource`1.#ctor(System.Object,System.Threading.Tasks.TaskCreationOptions)
+  id: '#ctor(System.Object,System.Threading.Tasks.TaskCreationOptions)'
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  langs:
+  - csharp
+  name: TaskCompletionSource<TResult>(Object,TaskCreationOptions)
+  nameWithType: TaskCompletionSource<TResult>.TaskCompletionSource<TResult>(Object,TaskCreationOptions)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TaskCompletionSource<TResult>(Object,TaskCreationOptions)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Creates a <xref href="stem.Threading.Tasks.TaskCompletionSource%601"></xref> with the specified state and options.
+  syntax:
+    content: public TaskCompletionSource (object state, System.Threading.Tasks.TaskCreationOptions creationOptions);
+    parameters:
+    - id: state
+      type: System.Object
+      description: The state to use as the underlying <xref href="stem.Threading.Tasks.Task%601"></xref>'s AsyncState.
+    - id: creationOptions
+      type: System.Threading.Tasks.TaskCreationOptions
+      description: The options to use when creating the underlying <xref href="stem.Threading.Tasks.Task%601"></xref>.
+  overload: System.Threading.Tasks.TaskCompletionSource`1.#ctor*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: The <code>creationOptions</code> represent options invalid for use with a <xref href="stem.Threading.Tasks.TaskCompletionSource%601"></xref>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.Tasks.TaskCompletionSource`1.SetCanceled
+  id: SetCanceled
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  langs:
+  - csharp
+  name: SetCanceled()
+  nameWithType: TaskCompletionSource<TResult>.SetCanceled()
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.SetCanceled()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Transitions the underlying <xref href="stem.Threading.Tasks.Task%601"></xref> into the <xref href="System.Threading.Tasks.TaskStatus"></xref> state.
+  syntax:
+    content: public void SetCanceled ();
+    parameters: []
+  overload: System.Threading.Tasks.TaskCompletionSource`1.SetCanceled*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 'The underlying <xref href="stem.Threading.Tasks.Task%601"></xref> is already in one of the three final states: <xref href="System.Threading.Tasks.TaskStatus"></xref>, <xref href="System.Threading.Tasks.TaskStatus"></xref>, or <xref href="System.Threading.Tasks.TaskStatus"></xref>, or if the underlying <xref href="stem.Threading.Tasks.Task%601"></xref> has already been disposed.'
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.Tasks.TaskCompletionSource`1.SetException(System.Collections.Generic.IEnumerable{System.Exception})
+  id: SetException(System.Collections.Generic.IEnumerable{System.Exception})
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  langs:
+  - csharp
+  name: SetException(IEnumerable<Exception>)
+  nameWithType: TaskCompletionSource<TResult>.SetException(IEnumerable<Exception>)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.SetException(IEnumerable<Exception>)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Transitions the underlying <xref href="stem.Threading.Tasks.Task%601"></xref> into the <xref href="System.Threading.Tasks.TaskStatus"></xref> state and binds a collection of exception objects to it.
+  syntax:
+    content: public void SetException (System.Collections.Generic.IEnumerable<Exception> exceptions);
+    parameters:
+    - id: exceptions
+      type: System.Collections.Generic.IEnumerable{System.Exception}
+      description: The collection of exceptions to bind to this <xref href="stem.Threading.Tasks.Task%601"></xref>.
+  overload: System.Threading.Tasks.TaskCompletionSource`1.SetException*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: The <xref href="stem.Threading.Tasks.TaskCompletionSource%601.Task%2A"></xref> was disposed.
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>exceptions</code> argument is null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: There are one or more null elements in <code>exceptions</code>.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 'The underlying <xref href="stem.Threading.Tasks.Task%601"></xref> is already in one of the three final states: <xref href="System.Threading.Tasks.TaskStatus"></xref>, <xref href="System.Threading.Tasks.TaskStatus"></xref>, or <xref href="System.Threading.Tasks.TaskStatus"></xref>.'
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.Tasks.TaskCompletionSource`1.SetException(System.Exception)
+  id: SetException(System.Exception)
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  langs:
+  - csharp
+  name: SetException(Exception)
+  nameWithType: TaskCompletionSource<TResult>.SetException(Exception)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.SetException(Exception)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Transitions the underlying <xref href="stem.Threading.Tasks.Task%601"></xref> into the <xref href="System.Threading.Tasks.TaskStatus"></xref> state and binds it to a specified exception.
+  syntax:
+    content: public void SetException (Exception exception);
+    parameters:
+    - id: exception
+      type: System.Exception
+      description: The exception to bind to this <xref href="stem.Threading.Tasks.Task%601"></xref>.
+  overload: System.Threading.Tasks.TaskCompletionSource`1.SetException*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: The <xref href="stem.Threading.Tasks.TaskCompletionSource%601.Task%2A"></xref> was disposed.
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>exception</code> argument is null.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 'The underlying <xref href="stem.Threading.Tasks.Task%601"></xref> is already in one of the three final states: <xref href="System.Threading.Tasks.TaskStatus"></xref>, <xref href="System.Threading.Tasks.TaskStatus"></xref>, or <xref href="System.Threading.Tasks.TaskStatus"></xref>.'
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.Tasks.TaskCompletionSource`1.SetResult(`0)
+  id: SetResult(`0)
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  langs:
+  - csharp
+  name: SetResult(TResult)
+  nameWithType: TaskCompletionSource<TResult>.SetResult(TResult)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.SetResult(TResult)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Transitions the underlying <xref href="stem.Threading.Tasks.Task%601"></xref> into the <xref href="System.Threading.Tasks.TaskStatus"></xref> state.
+  syntax:
+    content: public void SetResult (TResult result);
+    parameters:
+    - id: result
+      type: TResult
+      description: The result value to bind to this <xref href="stem.Threading.Tasks.Task%601"></xref>.
+  overload: System.Threading.Tasks.TaskCompletionSource`1.SetResult*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: The <xref href="stem.Threading.Tasks.TaskCompletionSource%601.Task%2A"></xref> was disposed.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: 'The underlying <xref href="stem.Threading.Tasks.Task%601"></xref> is already in one of the three final states: <xref href="System.Threading.Tasks.TaskStatus"></xref>, <xref href="System.Threading.Tasks.TaskStatus"></xref>, or <xref href="System.Threading.Tasks.TaskStatus"></xref>.'
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.Tasks.TaskCompletionSource`1.Task
+  id: Task
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  langs:
+  - csharp
+  name: Task
+  nameWithType: TaskCompletionSource<TResult>.Task
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.Task
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Gets the <xref href="stem.Threading.Tasks.Task%601"></xref> created by this <xref href="stem.Threading.Tasks.TaskCompletionSource%601"></xref>.
+  remarks: "This property enables a consumer to access the <xref:System.Threading.Tasks.Task%601> that is controlled by this instance. When you create a <xref:System.Threading.Tasks.TaskCompletionSource%601> object, the <xref:System.Threading.Tasks.Task.Status%2A> property of this <xref:System.Threading.Tasks.Task%601> object returns <xref:System.Threading.Tasks.TaskStatus>  \n  \n The <xref:System.Threading.Tasks.TaskCompletionSource%601.SetResult%2A>, <xref:System.Threading.Tasks.TaskCompletionSource%601.SetException%2A>, <xref:System.Threading.Tasks.TaskCompletionSource%601.SetException%2A>, and <xref:System.Threading.Tasks.TaskCompletionSource%601.SetCanceled%2A> methods (and their \"Try\" variants) on this instance all result in the relevant state transitions on this underlying Task."
+  syntax:
+    content: public System.Threading.Tasks.Task<TResult> Task { get; }
+    return:
+      type: System.Threading.Tasks.Task`1
+      description: Returns the <xref href="stem.Threading.Tasks.Task%601"></xref> created by this <xref href="stem.Threading.Tasks.TaskCompletionSource%601"></xref>.
+  overload: System.Threading.Tasks.TaskCompletionSource`1.Task*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.Tasks.TaskCompletionSource`1.TrySetCanceled
+  id: TrySetCanceled
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  langs:
+  - csharp
+  name: TrySetCanceled()
+  nameWithType: TaskCompletionSource<TResult>.TrySetCanceled()
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TrySetCanceled()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Attempts to transition the underlying <xref href="stem.Threading.Tasks.Task%601"></xref> into the <xref href="System.Threading.Tasks.TaskStatus"></xref> state.
+  remarks: "This operation will return false if the <xref:System.Threading.Tasks.Task%601> is already in one of the three final states: <xref:System.Threading.Tasks.TaskStatus>, <xref:System.Threading.Tasks.TaskStatus>, or <xref:System.Threading.Tasks.TaskStatus>.  \n  \n This method also returns false if the underlying <xref:System.Threading.Tasks.Task%601> has already been disposed."
+  syntax:
+    content: public bool TrySetCanceled ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: True if the operation was successful; false if the operation was unsuccessful or the object has already been disposed.
+  overload: System.Threading.Tasks.TaskCompletionSource`1.TrySetCanceled*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.Tasks.TaskCompletionSource`1.TrySetCanceled(System.Threading.CancellationToken)
+  id: TrySetCanceled(System.Threading.CancellationToken)
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  langs:
+  - csharp
+  name: TrySetCanceled(CancellationToken)
+  nameWithType: TaskCompletionSource<TResult>.TrySetCanceled(CancellationToken)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TrySetCanceled(CancellationToken)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Attempts to transition the underlying <xref href="stem.Threading.Tasks.Task%601"></xref> into the <xref href="System.Threading.Tasks.TaskStatus"></xref> state and enables a cancellation token to be stored in the canceled task.
+  remarks: "The method returns false if the underlying <xref:System.Threading.Tasks.Task%601> object is already in one of the following three final states.  \n  \n-   <xref:System.Threading.Tasks.TaskStatus?displayProperty=fullName>  \n  \n-   <xref:System.Threading.Tasks.TaskStatus?displayProperty=fullName>  \n  \n-   <xref:System.Threading.Tasks.TaskStatus?displayProperty=fullName>  \n  \n This method also returns `false` if the underlying <xref:System.Threading.Tasks.Task%601> object has already been disposed."
+  syntax:
+    content: public bool TrySetCanceled (System.Threading.CancellationToken cancellationToken);
+    parameters:
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token.
+    return:
+      type: System.Boolean
+      description: '`true` if the operation is successful; otherwise, `false`.'
+  overload: System.Threading.Tasks.TaskCompletionSource`1.TrySetCanceled*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.Tasks.TaskCompletionSource`1.TrySetException(System.Collections.Generic.IEnumerable{System.Exception})
+  id: TrySetException(System.Collections.Generic.IEnumerable{System.Exception})
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  langs:
+  - csharp
+  name: TrySetException(IEnumerable<Exception>)
+  nameWithType: TaskCompletionSource<TResult>.TrySetException(IEnumerable<Exception>)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TrySetException(IEnumerable<Exception>)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Attempts to transition the underlying <xref href="stem.Threading.Tasks.Task%601"></xref> into the <xref href="System.Threading.Tasks.TaskStatus"></xref> state and binds a collection of exception objects to it.
+  remarks: 'This operation will return false if the <xref:System.Threading.Tasks.Task%601> is already in one of the three final states: <xref:System.Threading.Tasks.TaskStatus>, <xref:System.Threading.Tasks.TaskStatus>, or <xref:System.Threading.Tasks.TaskStatus>.'
+  syntax:
+    content: public bool TrySetException (System.Collections.Generic.IEnumerable<Exception> exceptions);
+    parameters:
+    - id: exceptions
+      type: System.Collections.Generic.IEnumerable{System.Exception}
+      description: The collection of exceptions to bind to this <xref href="stem.Threading.Tasks.Task%601"></xref>.
+    return:
+      type: System.Boolean
+      description: True if the operation was successful; otherwise, false.
+  overload: System.Threading.Tasks.TaskCompletionSource`1.TrySetException*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: The <xref href="stem.Threading.Tasks.TaskCompletionSource%601.Task%2A"></xref> was disposed.
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>exceptions</code> argument is null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: "There are one or more null elements in <code>exceptions</code>.  \n  \n -or-  \n  \n The <code>exceptions</code> collection is empty."
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.Tasks.TaskCompletionSource`1.TrySetException(System.Exception)
+  id: TrySetException(System.Exception)
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  langs:
+  - csharp
+  name: TrySetException(Exception)
+  nameWithType: TaskCompletionSource<TResult>.TrySetException(Exception)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TrySetException(Exception)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Attempts to transition the underlying <xref href="stem.Threading.Tasks.Task%601"></xref> into the <xref href="System.Threading.Tasks.TaskStatus"></xref> state and binds it to a specified exception.
+  remarks: 'This operation will return false if the <xref:System.Threading.Tasks.Task%601> is already in one of the three final states: <xref:System.Threading.Tasks.TaskStatus>, <xref:System.Threading.Tasks.TaskStatus>, or <xref:System.Threading.Tasks.TaskStatus>.'
+  syntax:
+    content: public bool TrySetException (Exception exception);
+    parameters:
+    - id: exception
+      type: System.Exception
+      description: The exception to bind to this <xref href="stem.Threading.Tasks.Task%601"></xref>.
+    return:
+      type: System.Boolean
+      description: True if the operation was successful; otherwise, false.
+  overload: System.Threading.Tasks.TaskCompletionSource`1.TrySetException*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: The <xref href="stem.Threading.Tasks.TaskCompletionSource%601.Task%2A"></xref> was disposed.
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>exception</code> argument is null.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.Tasks.TaskCompletionSource`1.TrySetResult(`0)
+  id: TrySetResult(`0)
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  langs:
+  - csharp
+  name: TrySetResult(TResult)
+  nameWithType: TaskCompletionSource<TResult>.TrySetResult(TResult)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TrySetResult(TResult)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Attempts to transition the underlying <xref href="stem.Threading.Tasks.Task%601"></xref> into the <xref href="System.Threading.Tasks.TaskStatus"></xref> state.
+  remarks: "This operation will return false if the <xref:System.Threading.Tasks.Task%601> is already in one of the three final states: <xref:System.Threading.Tasks.TaskStatus>, <xref:System.Threading.Tasks.TaskStatus>, or <xref:System.Threading.Tasks.TaskStatus>.  \n  \n This method also returns false if the underlying <xref:System.Threading.Tasks.Task%601> has already been disposed."
+  syntax:
+    content: public bool TrySetResult (TResult result);
+    parameters:
+    - id: result
+      type: TResult
+      description: The result value to bind to this <xref href="stem.Threading.Tasks.Task%601"></xref>.
+    return:
+      type: System.Boolean
+      description: True if the operation was successful; otherwise, false.
+  overload: System.Threading.Tasks.TaskCompletionSource`1.TrySetResult*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading.Tasks\TaskCompletionSource`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading.Tasks/TaskCompletionSource`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.ObjectDisposedException
+  parent: System
+  isExternal: false
+  name: ObjectDisposedException
+  nameWithType: ObjectDisposedException
+  fullName: System.ObjectDisposedException
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.Threading.Tasks.TaskCompletionSource`1.#ctor
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: TaskCompletionSource<TResult>()
+  nameWithType: TaskCompletionSource<TResult>.TaskCompletionSource<TResult>()
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TaskCompletionSource<TResult>()
+- uid: System.Threading.Tasks.TaskCompletionSource`1.#ctor(System.Object)
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: TaskCompletionSource<TResult>(Object)
+  nameWithType: TaskCompletionSource<TResult>.TaskCompletionSource<TResult>(Object)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TaskCompletionSource<TResult>(Object)
+- uid: System.Threading.Tasks.TaskCompletionSource`1.#ctor(System.Threading.Tasks.TaskCreationOptions)
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: TaskCompletionSource<TResult>(TaskCreationOptions)
+  nameWithType: TaskCompletionSource<TResult>.TaskCompletionSource<TResult>(TaskCreationOptions)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TaskCompletionSource<TResult>(TaskCreationOptions)
+- uid: System.Threading.Tasks.TaskCreationOptions
+  parent: System.Threading.Tasks
+  isExternal: false
+  name: TaskCreationOptions
+  nameWithType: TaskCreationOptions
+  fullName: System.Threading.Tasks.TaskCreationOptions
+- uid: System.Threading.Tasks.TaskCompletionSource`1.#ctor(System.Object,System.Threading.Tasks.TaskCreationOptions)
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: TaskCompletionSource<TResult>(Object,TaskCreationOptions)
+  nameWithType: TaskCompletionSource<TResult>.TaskCompletionSource<TResult>(Object,TaskCreationOptions)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TaskCompletionSource<TResult>(Object,TaskCreationOptions)
+- uid: System.Threading.Tasks.TaskCompletionSource`1.SetCanceled
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: SetCanceled()
+  nameWithType: TaskCompletionSource<TResult>.SetCanceled()
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.SetCanceled()
+- uid: System.Threading.Tasks.TaskCompletionSource`1.SetException(System.Collections.Generic.IEnumerable{System.Exception})
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: SetException(IEnumerable<Exception>)
+  nameWithType: TaskCompletionSource<TResult>.SetException(IEnumerable<Exception>)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.SetException(IEnumerable<Exception>)
+- uid: System.Collections.Generic.IEnumerable{System.Exception}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<Exception>
+  nameWithType: IEnumerable<Exception>
+  fullName: System.Collections.Generic.IEnumerable<System.Exception>
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable<System.Exception>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Exception
+    name: Exception
+    nameWithType: Exception
+    fullName: Exception
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Threading.Tasks.TaskCompletionSource`1.SetException(System.Exception)
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: SetException(Exception)
+  nameWithType: TaskCompletionSource<TResult>.SetException(Exception)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.SetException(Exception)
+- uid: System.Exception
+  parent: System
+  isExternal: false
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System.Threading.Tasks.TaskCompletionSource`1.SetResult(`0)
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: SetResult(TResult)
+  nameWithType: TaskCompletionSource<TResult>.SetResult(TResult)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.SetResult(TResult)
+- uid: TResult
+  isExternal: true
+  name: TResult
+  nameWithType: TResult
+  fullName: TResult
+- uid: System.Threading.Tasks.TaskCompletionSource`1.Task
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: Task
+  nameWithType: TaskCompletionSource<TResult>.Task
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.Task
+- uid: System.Threading.Tasks.Task`1
+  parent: System.Threading.Tasks
+  isExternal: false
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+- uid: System.Threading.Tasks.TaskCompletionSource`1.TrySetCanceled
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: TrySetCanceled()
+  nameWithType: TaskCompletionSource<TResult>.TrySetCanceled()
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TrySetCanceled()
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Threading.Tasks.TaskCompletionSource`1.TrySetCanceled(System.Threading.CancellationToken)
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: TrySetCanceled(CancellationToken)
+  nameWithType: TaskCompletionSource<TResult>.TrySetCanceled(CancellationToken)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TrySetCanceled(CancellationToken)
+- uid: System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: false
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.TaskCompletionSource`1.TrySetException(System.Collections.Generic.IEnumerable{System.Exception})
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: TrySetException(IEnumerable<Exception>)
+  nameWithType: TaskCompletionSource<TResult>.TrySetException(IEnumerable<Exception>)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TrySetException(IEnumerable<Exception>)
+- uid: System.Threading.Tasks.TaskCompletionSource`1.TrySetException(System.Exception)
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: TrySetException(Exception)
+  nameWithType: TaskCompletionSource<TResult>.TrySetException(Exception)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TrySetException(Exception)
+- uid: System.Threading.Tasks.TaskCompletionSource`1.TrySetResult(`0)
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: TrySetResult(TResult)
+  nameWithType: TaskCompletionSource<TResult>.TrySetResult(TResult)
+  fullName: System.Threading.Tasks.TaskCompletionSource<TResult>.TrySetResult(TResult)
+- uid: System.Threading.Tasks.TaskCompletionSource`1.#ctor*
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: TaskCompletionSource<TResult>
+  nameWithType: TaskCompletionSource<TResult>.TaskCompletionSource<TResult>
+- uid: System.Threading.Tasks.TaskCompletionSource`1.SetCanceled*
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: SetCanceled
+  nameWithType: TaskCompletionSource<TResult>.SetCanceled
+- uid: System.Threading.Tasks.TaskCompletionSource`1.SetException*
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: SetException
+  nameWithType: TaskCompletionSource<TResult>.SetException
+- uid: System.Threading.Tasks.TaskCompletionSource`1.SetResult*
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: SetResult
+  nameWithType: TaskCompletionSource<TResult>.SetResult
+- uid: System.Threading.Tasks.TaskCompletionSource`1.Task*
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: Task
+  nameWithType: TaskCompletionSource<TResult>.Task
+- uid: System.Threading.Tasks.TaskCompletionSource`1.TrySetCanceled*
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: TrySetCanceled
+  nameWithType: TaskCompletionSource<TResult>.TrySetCanceled
+- uid: System.Threading.Tasks.TaskCompletionSource`1.TrySetException*
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: TrySetException
+  nameWithType: TaskCompletionSource<TResult>.TrySetException
+- uid: System.Threading.Tasks.TaskCompletionSource`1.TrySetResult*
+  parent: System.Threading.Tasks.TaskCompletionSource`1
+  isExternal: false
+  name: TrySetResult
+  nameWithType: TaskCompletionSource<TResult>.TrySetResult

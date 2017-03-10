@@ -1,0 +1,133 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.STAThreadAttribute
+  id: STAThreadAttribute
+  children:
+  - System.STAThreadAttribute.#ctor
+  langs:
+  - csharp
+  name: STAThreadAttribute
+  nameWithType: STAThreadAttribute
+  fullName: System.STAThreadAttribute
+  type: Class
+  summary: Indicates that the COM threading model for an application is single-threaded apartment (STA).
+  remarks: "Apply this attribute to the entry point method (the `Main()` method in C# and Visual Basic). It has no effect on other methods. To set the apartment state of threads you start in your code, use the <xref:System.Threading.Thread.SetApartmentState%2A?displayProperty=fullName> or <xref:System.Threading.Thread.TrySetApartmentState%2A?displayProperty=fullName> method before starting the thread.  \n  \n> [!NOTE]\n>  For an overview of COM threading models, see [Understanding and Using COM Threading Models](http://msdn.microsoft.com/library/ms809971.aspx).  \n  \n COM threading models only apply to applications that use COM interop. The COM threading model can be set to single-threaded apartment or multithreaded apartment. The application thread is only initialized for COM interop if the thread actually makes a call to a COM component. If COM interop is not used, then the thread is not initialized, and the STAThreadAttribute attribute, if it is present, has no effect.  \n  \n Starting with the .NET Framework version 2.0, the default threading model for COM interop depends on the language in which you are developing your application, as the following table shows.  \n  \n|Language|COM apartment model|  \n|--------------|-------------------------|  \n|C#|Multithreaded apartment|  \n|C++|Multithreaded apartment|  \n|Visual Basic|Single-threaded apartment|  \n  \n To change these defaults, you use the STAThreadAttribute attribute to set the threading model for the application, or call the <xref:System.Threading.Thread.SetApartmentState%2A?displayProperty=fullName> or <xref:System.Threading.Thread.TrySetApartmentState%2A?displayProperty=fullName> method before starting the thread to set the threading model for a particular thread. In C++, you can also use the [/CLRTHREADATTRIBUTE](../Topic/-CLRTHREADATTRIBUTE%20\\(Set%20CLR%20Thread%20Attribute\\).md) linker option to specify the apartment model.  \n  \n ASP.NET applications should set the `ASPCompat` attribute of the [@ Page](http://msdn.microsoft.com/en-us/f06cf9e5-22bb-461d-8b8f-549e53ff40a4) directive to `true` to force the page to be serviced by the STA thread pool.  \n  \n Here are some of the cases in which you’ll want to use the STAThreadAttribute attribute to explicitly set the threading model to single-threaded apartment:  \n  \n-   You're developing a Windows Forms app. Windows Forms apps must be single-threaded if they communicate with Windows system components such as the Clipboard or Windows common dialog boxes, or if they use system features such as drag-and-drop functionality. The Windows Forms Application template for C# automatically adds the STAThreadAttribute attribute to C# projects. Because the single-threaded apartment model is the default for Visual Basic, there is no need for the attribute.  \n  \n-   You're developing a C# app that calls a Visual Basic library, which, in turn, relies on COM interop. Because the single-threaded apartment model is the default for Visual Basic, you should change your app's threading model to single-threaded by using the STAThreadAttribute attribute.  \n  \n-   Your application makes calls to COM components that use the single-threaded apartment model."
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Method)]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class STAThreadAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\STAThreadAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/STAThreadAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.STAThreadAttribute.#ctor
+  id: '#ctor'
+  parent: System.STAThreadAttribute
+  langs:
+  - csharp
+  name: STAThreadAttribute()
+  nameWithType: STAThreadAttribute.STAThreadAttribute()
+  fullName: System.STAThreadAttribute.STAThreadAttribute()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.STAThreadAttribute"></xref> class.
+  syntax:
+    content: public STAThreadAttribute ();
+    parameters: []
+  overload: System.STAThreadAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\STAThreadAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/STAThreadAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.STAThreadAttribute.#ctor
+  parent: System.STAThreadAttribute
+  isExternal: false
+  name: STAThreadAttribute()
+  nameWithType: STAThreadAttribute.STAThreadAttribute()
+  fullName: System.STAThreadAttribute.STAThreadAttribute()
+- uid: System.STAThreadAttribute.#ctor*
+  parent: System.STAThreadAttribute
+  isExternal: false
+  name: STAThreadAttribute
+  nameWithType: STAThreadAttribute.STAThreadAttribute

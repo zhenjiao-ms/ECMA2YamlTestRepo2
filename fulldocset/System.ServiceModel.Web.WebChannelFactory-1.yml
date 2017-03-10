@@ -1,0 +1,533 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.Web.WebChannelFactory`1
+  id: WebChannelFactory`1
+  children:
+  - System.ServiceModel.Web.WebChannelFactory`1.#ctor
+  - System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.ServiceModel.Channels.Binding)
+  - System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.ServiceModel.Description.ServiceEndpoint)
+  - System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.String)
+  - System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.Type)
+  - System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.Uri)
+  - System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.ServiceModel.Channels.Binding,System.Uri)
+  - System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.String,System.Uri)
+  - System.ServiceModel.Web.WebChannelFactory`1.OnOpening
+  langs:
+  - csharp
+  name: WebChannelFactory<TChannel>
+  nameWithType: WebChannelFactory<TChannel>
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>
+  type: Class
+  summary: A class for accessing [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] Web services on a client.
+  remarks: "This class is a special <xref:System.ServiceModel.ChannelFactory> that automatically adds the <xref:System.ServiceModel.Description.WebHttpBehavior> to the endpoint if it is not already present. Furthermore, it adds a default <xref:System.ServiceModel.WebHttpBinding> to the endpoint if the binding is not explicitly configured and the address is an HTTP or HTTPS address.  \n  \n If all the operations of the contract have no return value or have a return value of type <xref:System.IO.Stream>, then the WebChannelFactory(TChannel) configures the binding for the appropriate content type."
+  example:
+  - "The following code shows how to use the WebChannelFactory(TChannel) class to call a [!INCLUDE[indigo2](~/add/includes/indigo2-md.md)] service.  \n  \n [!code-cs[BasicWebProgramming#0](~/add/codesnippet/csharp/t-system.servicemodel.we_2_1.cs)]\n [!code-vb[BasicWebProgramming#0](~/add/codesnippet/visualbasic/t-system.servicemodel.we_2_1.vb)]  \n  \n For a full code example, see [Basic WCF REST Programming Model Sample](http://msdn.microsoft.com/en-us/d3265542-febc-4018-84ea-32ddcfd2d874)."
+  syntax:
+    content: 'public class WebChannelFactory<TChannel> : System.ServiceModel.ChannelFactory<TChannel> where TChannel : class'
+    typeParameters:
+    - id: TChannel
+      description: The type of channel to create.
+  inheritance:
+  - System.Object
+  - System.ServiceModel.Channels.CommunicationObject
+  - System.ServiceModel.ChannelFactory
+  - System.ServiceModel.ChannelFactory`1
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  - System.ServiceModel.ChannelFactory.ApplyConfiguration(System.String)
+  - System.ServiceModel.ChannelFactory.CreateFactory
+  - System.ServiceModel.ChannelFactory.Credentials
+  - System.ServiceModel.ChannelFactory.DefaultCloseTimeout
+  - System.ServiceModel.ChannelFactory.DefaultOpenTimeout
+  - System.ServiceModel.ChannelFactory.Endpoint
+  - System.ServiceModel.ChannelFactory.EnsureOpened
+  - System.ServiceModel.ChannelFactory.GetProperty``1
+  - System.ServiceModel.ChannelFactory.InitializeEndpoint(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)
+  - System.ServiceModel.ChannelFactory.InitializeEndpoint(System.ServiceModel.Description.ServiceEndpoint)
+  - System.ServiceModel.ChannelFactory.InitializeEndpoint(System.String,System.ServiceModel.EndpointAddress)
+  - System.ServiceModel.ChannelFactory.OnAbort
+  - System.ServiceModel.ChannelFactory.OnBeginClose(System.TimeSpan,System.AsyncCallback,System.Object)
+  - System.ServiceModel.ChannelFactory.OnBeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)
+  - System.ServiceModel.ChannelFactory.OnClose(System.TimeSpan)
+  - System.ServiceModel.ChannelFactory.OnEndClose(System.IAsyncResult)
+  - System.ServiceModel.ChannelFactory.OnEndOpen(System.IAsyncResult)
+  - System.ServiceModel.ChannelFactory.OnOpen(System.TimeSpan)
+  - System.ServiceModel.ChannelFactory.OnOpened
+  - System.ServiceModel.ChannelFactory.System#IDisposable#Dispose
+  - System.ServiceModel.ChannelFactory`1.CreateChannel
+  - System.ServiceModel.ChannelFactory`1.CreateChannel(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)
+  - System.ServiceModel.ChannelFactory`1.CreateChannel(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress,System.Uri)
+  - System.ServiceModel.ChannelFactory`1.CreateChannel(System.ServiceModel.EndpointAddress)
+  - System.ServiceModel.ChannelFactory`1.CreateChannel(System.ServiceModel.EndpointAddress,System.Uri)
+  - System.ServiceModel.ChannelFactory`1.CreateChannel(System.String)
+  - System.ServiceModel.ChannelFactory`1.CreateChannelWithActAsToken(System.IdentityModel.Tokens.SecurityToken)
+  - System.ServiceModel.ChannelFactory`1.CreateChannelWithActAsToken(System.IdentityModel.Tokens.SecurityToken,System.ServiceModel.EndpointAddress)
+  - System.ServiceModel.ChannelFactory`1.CreateChannelWithActAsToken(System.IdentityModel.Tokens.SecurityToken,System.ServiceModel.EndpointAddress,System.Uri)
+  - System.ServiceModel.ChannelFactory`1.CreateChannelWithIssuedToken(System.IdentityModel.Tokens.SecurityToken)
+  - System.ServiceModel.ChannelFactory`1.CreateChannelWithIssuedToken(System.IdentityModel.Tokens.SecurityToken,System.ServiceModel.EndpointAddress)
+  - System.ServiceModel.ChannelFactory`1.CreateChannelWithIssuedToken(System.IdentityModel.Tokens.SecurityToken,System.ServiceModel.EndpointAddress,System.Uri)
+  - System.ServiceModel.ChannelFactory`1.CreateChannelWithOnBehalfOfToken(System.IdentityModel.Tokens.SecurityToken)
+  - System.ServiceModel.ChannelFactory`1.CreateChannelWithOnBehalfOfToken(System.IdentityModel.Tokens.SecurityToken,System.ServiceModel.EndpointAddress)
+  - System.ServiceModel.ChannelFactory`1.CreateChannelWithOnBehalfOfToken(System.IdentityModel.Tokens.SecurityToken,System.ServiceModel.EndpointAddress,System.Uri)
+  - System.ServiceModel.ChannelFactory`1.CreateDescription
+  - System.ServiceModel.Channels.CommunicationObject.Abort
+  - System.ServiceModel.Channels.CommunicationObject.BeginClose(System.AsyncCallback,System.Object)
+  - System.ServiceModel.Channels.CommunicationObject.BeginClose(System.TimeSpan,System.AsyncCallback,System.Object)
+  - System.ServiceModel.Channels.CommunicationObject.BeginOpen(System.AsyncCallback,System.Object)
+  - System.ServiceModel.Channels.CommunicationObject.BeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)
+  - System.ServiceModel.Channels.CommunicationObject.Close
+  - System.ServiceModel.Channels.CommunicationObject.Close(System.TimeSpan)
+  - System.ServiceModel.Channels.CommunicationObject.Closed
+  - System.ServiceModel.Channels.CommunicationObject.Closing
+  - System.ServiceModel.Channels.CommunicationObject.EndClose(System.IAsyncResult)
+  - System.ServiceModel.Channels.CommunicationObject.EndOpen(System.IAsyncResult)
+  - System.ServiceModel.Channels.CommunicationObject.Fault
+  - System.ServiceModel.Channels.CommunicationObject.Faulted
+  - System.ServiceModel.Channels.CommunicationObject.GetCommunicationObjectType
+  - System.ServiceModel.Channels.CommunicationObject.IsDisposed
+  - System.ServiceModel.Channels.CommunicationObject.OnClosed
+  - System.ServiceModel.Channels.CommunicationObject.OnClosing
+  - System.ServiceModel.Channels.CommunicationObject.OnFaulted
+  - System.ServiceModel.Channels.CommunicationObject.Open
+  - System.ServiceModel.Channels.CommunicationObject.Open(System.TimeSpan)
+  - System.ServiceModel.Channels.CommunicationObject.Opened
+  - System.ServiceModel.Channels.CommunicationObject.Opening
+  - System.ServiceModel.Channels.CommunicationObject.State
+  - System.ServiceModel.Channels.CommunicationObject.ThisLock
+  - System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposed
+  - System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrImmutable
+  - System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Web\WebChannelFactory`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Web/WebChannelFactory`1.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor
+  id: '#ctor'
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  langs:
+  - csharp
+  name: WebChannelFactory<TChannel>()
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>()
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>()
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  namespace: System.ServiceModel.Web
+  summary: Initializes a new instance of the <xref href="stem.ServiceModel.Web.WebChannelFactory%601"></xref> class.
+  syntax:
+    content: public WebChannelFactory ();
+    parameters: []
+  overload: System.ServiceModel.Web.WebChannelFactory`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Web\WebChannelFactory`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Web/WebChannelFactory`1.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.ServiceModel.Channels.Binding)
+  id: '#ctor(System.ServiceModel.Channels.Binding)'
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  langs:
+  - csharp
+  name: WebChannelFactory<TChannel>(Binding)
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Binding)
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Binding)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  namespace: System.ServiceModel.Web
+  summary: Initializes a new instance of the <xref href="stem.ServiceModel.Web.WebChannelFactory%601"></xref> class.
+  remarks: ''
+  example:
+  - "The following code shows how use this constructor to create a <xref:System.ServiceModel.Web.WebChannelFactory%601> and use it to call a [!INCLUDE[indigo2](~/add/includes/indigo2-md.md)] service.  \n  \n [!code-cs[BasicWebProgramming#1](~/add/codesnippet/csharp/b58ebfe5-e3e7-4e90-978c-_1.cs)]\n [!code-vb[BasicWebProgramming#1](~/add/codesnippet/visualbasic/b58ebfe5-e3e7-4e90-978c-_1.vb)]"
+  syntax:
+    content: public WebChannelFactory (System.ServiceModel.Channels.Binding binding);
+    parameters:
+    - id: binding
+      type: System.ServiceModel.Channels.Binding
+      description: The binding to use when creating the channel.
+  overload: System.ServiceModel.Web.WebChannelFactory`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Web\WebChannelFactory`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Web/WebChannelFactory`1.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.ServiceModel.Description.ServiceEndpoint)
+  id: '#ctor(System.ServiceModel.Description.ServiceEndpoint)'
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  langs:
+  - csharp
+  name: WebChannelFactory<TChannel>(ServiceEndpoint)
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(ServiceEndpoint)
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(ServiceEndpoint)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  namespace: System.ServiceModel.Web
+  summary: Initializes a new instance of the <xref href="stem.ServiceModel.Web.WebChannelFactory%601"></xref> class.
+  remarks: ''
+  example:
+  - "The following code shows how use this constructor to create a <xref:System.ServiceModel.Web.WebChannelFactory%601> and use it to call a [!INCLUDE[indigo2](~/add/includes/indigo2-md.md)] service.  \n  \n [!code-cs[BasicWebProgramming#2](~/add/codesnippet/csharp/8d875df8-e129-44de-af50-_1.cs)]\n [!code-vb[BasicWebProgramming#2](~/add/codesnippet/visualbasic/8d875df8-e129-44de-af50-_1.vb)]"
+  syntax:
+    content: public WebChannelFactory (System.ServiceModel.Description.ServiceEndpoint endpoint);
+    parameters:
+    - id: endpoint
+      type: System.ServiceModel.Description.ServiceEndpoint
+      description: The endpoint to use when creating the channel.
+  overload: System.ServiceModel.Web.WebChannelFactory`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Web\WebChannelFactory`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Web/WebChannelFactory`1.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  langs:
+  - csharp
+  name: WebChannelFactory<TChannel>(String)
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(String)
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(String)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  namespace: System.ServiceModel.Web
+  summary: Initializes a new instance of the <xref href="stem.ServiceModel.Web.WebChannelFactory%601"></xref> class.
+  remarks: The `endpointConfigurationName` parameter must be set to the same value as the `name` attribute of the `<endpoint>` element in the application configuration file.
+  example:
+  - "The following code shows how use this constructor to create a <xref:System.ServiceModel.Web.WebChannelFactory%601> instance and use it to call a [!INCLUDE[indigo2](~/add/includes/indigo2-md.md)] service.  \n  \n [!code-cs[BasicWebProgramming#3](~/add/codesnippet/csharp/m-system.servicemodel.we_0_1.cs)]\n [!code-vb[BasicWebProgramming#3](~/add/codesnippet/visualbasic/m-system.servicemodel.we_0_1.vb)]"
+  syntax:
+    content: public WebChannelFactory (string endpointConfigurationName);
+    parameters:
+    - id: endpointConfigurationName
+      type: System.String
+      description: The name within the application configuration file where the channel is configured.
+  overload: System.ServiceModel.Web.WebChannelFactory`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Web\WebChannelFactory`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Web/WebChannelFactory`1.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.Type)
+  id: '#ctor(System.Type)'
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  langs:
+  - csharp
+  name: WebChannelFactory<TChannel>(Type)
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Type)
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Type)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  namespace: System.ServiceModel.Web
+  summary: Initializes a new instance of the <xref href="stem.ServiceModel.Web.WebChannelFactory%601"></xref> class.
+  remarks: The type passed for the type parameter must be an interface.
+  syntax:
+    content: public WebChannelFactory (Type channelType);
+    parameters:
+    - id: channelType
+      type: System.Type
+      description: The channel type to use.
+  overload: System.ServiceModel.Web.WebChannelFactory`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Web\WebChannelFactory`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Web/WebChannelFactory`1.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.Uri)
+  id: '#ctor(System.Uri)'
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  langs:
+  - csharp
+  name: WebChannelFactory<TChannel>(Uri)
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Uri)
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Uri)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  namespace: System.ServiceModel.Web
+  summary: Initializes a new instance of the <xref href="stem.ServiceModel.Web.WebChannelFactory%601"></xref> class with the specified <xref href="System.Uri"></xref>.
+  remarks: ''
+  example:
+  - "The following code shows how to use this constructor to create a <xref:System.ServiceModel.Web.WebChannelFactory%601> instance and call a service.  \n  \n [!code-cs[BasicWebProgramming#4](~/add/codesnippet/csharp/m-system.servicemodel.we_1_1.cs)]\n [!code-vb[BasicWebProgramming#4](~/add/codesnippet/visualbasic/m-system.servicemodel.we_1_1.vb)]"
+  syntax:
+    content: public WebChannelFactory (Uri remoteAddress);
+    parameters:
+    - id: remoteAddress
+      type: System.Uri
+      description: The URI of the Web service that is called.
+  overload: System.ServiceModel.Web.WebChannelFactory`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Web\WebChannelFactory`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Web/WebChannelFactory`1.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.ServiceModel.Channels.Binding,System.Uri)
+  id: '#ctor(System.ServiceModel.Channels.Binding,System.Uri)'
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  langs:
+  - csharp
+  name: WebChannelFactory<TChannel>(Binding,Uri)
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Binding,Uri)
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Binding,Uri)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  namespace: System.ServiceModel.Web
+  summary: Initializes a new instance of the <xref href="stem.ServiceModel.Web.WebChannelFactory%601"></xref> class with the specified binding and <xref href="System.Uri"></xref>.
+  remarks: ''
+  example:
+  - "The following code shows how to use this constructor to create a <xref:System.ServiceModel.Web.WebChannelFactory%601> instance and call a service.  \n  \n [!code-cs[BasicWebProgramming#5](~/add/codesnippet/csharp/326b936a-9252-4f02-91e6-_1.cs)]\n [!code-vb[BasicWebProgramming#5](~/add/codesnippet/visualbasic/326b936a-9252-4f02-91e6-_1.vb)]"
+  syntax:
+    content: public WebChannelFactory (System.ServiceModel.Channels.Binding binding, Uri remoteAddress);
+    parameters:
+    - id: binding
+      type: System.ServiceModel.Channels.Binding
+      description: The binding to use.
+    - id: remoteAddress
+      type: System.Uri
+      description: The URI of the Web service that is called.
+  overload: System.ServiceModel.Web.WebChannelFactory`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Web\WebChannelFactory`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Web/WebChannelFactory`1.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.String,System.Uri)
+  id: '#ctor(System.String,System.Uri)'
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  langs:
+  - csharp
+  name: WebChannelFactory<TChannel>(String,Uri)
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(String,Uri)
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(String,Uri)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Web
+  namespace: System.ServiceModel.Web
+  summary: Initializes a new instance of the <xref href="stem.ServiceModel.Web.WebChannelFactory%601"></xref> class with the specified endpoint configuration and <xref href="System.Uri"></xref>.
+  remarks: The `endpointConfigurationName` parameter must be set to the same value as the `name` attribute of the `<endpoint>` element in the application configuration file.
+  example:
+  - "The following code shows how to use this constructor to create a <xref:System.ServiceModel.Web.WebChannelFactory%601> instance and call a service.  \n  \n [!code-cs[BasicWebProgramming#6](~/add/codesnippet/csharp/117e002d-5876-472d-ab78-_1.cs)]\n [!code-vb[BasicWebProgramming#6](~/add/codesnippet/visualbasic/117e002d-5876-472d-ab78-_1.vb)]"
+  syntax:
+    content: public WebChannelFactory (string endpointConfigurationName, Uri remoteAddress);
+    parameters:
+    - id: endpointConfigurationName
+      type: System.String
+      description: The name within the application configuration file where the channel is configured.
+    - id: remoteAddress
+      type: System.Uri
+      description: The URI of the Web service that is called.
+  overload: System.ServiceModel.Web.WebChannelFactory`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Web\WebChannelFactory`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Web/WebChannelFactory`1.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Web.WebChannelFactory`1.OnOpening
+  id: OnOpening
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  langs:
+  - csharp
+  name: OnOpening()
+  nameWithType: WebChannelFactory<TChannel>.OnOpening()
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.OnOpening()
+  type: Method
+  assemblies:
+  - System.ServiceModel.Web
+  namespace: System.ServiceModel.Web
+  summary: This method is called when the <xref href="stem.ServiceModel.Web.WebChannelFactory%601"></xref> is opened.
+  remarks: When this method is called, if the <xref:System.ServiceModel.Web.WebChannelFactory%601> is not already associated with a binding a new <xref:System.ServiceModel.WebHttpBinding> is created based on the URI scheme of the remote address. Bindings with an HTTPS remote address are appropriately configured with the <xref:System.ServiceModel.WebHttpSecurity.Mode%2A> property set to <xref:System.ServiceModel.WebHttpSecurityMode> and the <xref:System.ServiceModel.WebHttpSecurity.Transport%2A> property set to `None`. The <xref:System.ServiceModel.Web.WebChannelFactory%601> adds an instance of <xref:System.ServiceModel.Description.WebHttpBehavior> to the endpoint if one does not already exist.
+  syntax:
+    content: protected override void OnOpening ();
+    parameters: []
+  overload: System.ServiceModel.Web.WebChannelFactory`1.OnOpening*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Web\WebChannelFactory`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Web/WebChannelFactory`1.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.ServiceModel.ChannelFactory`1
+  isExternal: false
+  name: System.ServiceModel.ChannelFactory<TChannel>
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  isExternal: false
+  name: WebChannelFactory<TChannel>()
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>()
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>()
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.ServiceModel.Channels.Binding)
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  isExternal: false
+  name: WebChannelFactory<TChannel>(Binding)
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Binding)
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Binding)
+- uid: System.ServiceModel.Channels.Binding
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: Binding
+  nameWithType: Binding
+  fullName: System.ServiceModel.Channels.Binding
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.ServiceModel.Description.ServiceEndpoint)
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  isExternal: false
+  name: WebChannelFactory<TChannel>(ServiceEndpoint)
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(ServiceEndpoint)
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(ServiceEndpoint)
+- uid: System.ServiceModel.Description.ServiceEndpoint
+  parent: System.ServiceModel.Description
+  isExternal: false
+  name: ServiceEndpoint
+  nameWithType: ServiceEndpoint
+  fullName: System.ServiceModel.Description.ServiceEndpoint
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.String)
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  isExternal: false
+  name: WebChannelFactory<TChannel>(String)
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(String)
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.Type)
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  isExternal: false
+  name: WebChannelFactory<TChannel>(Type)
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Type)
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Type)
+- uid: System.Type
+  parent: System
+  isExternal: false
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.Uri)
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  isExternal: false
+  name: WebChannelFactory<TChannel>(Uri)
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Uri)
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Uri)
+- uid: System.Uri
+  parent: System
+  isExternal: false
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.ServiceModel.Channels.Binding,System.Uri)
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  isExternal: false
+  name: WebChannelFactory<TChannel>(Binding,Uri)
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Binding,Uri)
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(Binding,Uri)
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor(System.String,System.Uri)
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  isExternal: false
+  name: WebChannelFactory<TChannel>(String,Uri)
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(String,Uri)
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.WebChannelFactory<TChannel>(String,Uri)
+- uid: System.ServiceModel.Web.WebChannelFactory`1.OnOpening
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  isExternal: false
+  name: OnOpening()
+  nameWithType: WebChannelFactory<TChannel>.OnOpening()
+  fullName: System.ServiceModel.Web.WebChannelFactory<TChannel>.OnOpening()
+- uid: System.ServiceModel.Web.WebChannelFactory`1.#ctor*
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  isExternal: false
+  name: WebChannelFactory<TChannel>
+  nameWithType: WebChannelFactory<TChannel>.WebChannelFactory<TChannel>
+- uid: System.ServiceModel.Web.WebChannelFactory`1.OnOpening*
+  parent: System.ServiceModel.Web.WebChannelFactory`1
+  isExternal: false
+  name: OnOpening
+  nameWithType: WebChannelFactory<TChannel>.OnOpening

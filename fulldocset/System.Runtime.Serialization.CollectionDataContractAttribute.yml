@@ -1,0 +1,650 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute
+  id: CollectionDataContractAttribute
+  children:
+  - System.Runtime.Serialization.CollectionDataContractAttribute.#ctor
+  - System.Runtime.Serialization.CollectionDataContractAttribute.IsItemNameSetExplicitly
+  - System.Runtime.Serialization.CollectionDataContractAttribute.IsKeyNameSetExplicitly
+  - System.Runtime.Serialization.CollectionDataContractAttribute.IsNameSetExplicitly
+  - System.Runtime.Serialization.CollectionDataContractAttribute.IsNamespaceSetExplicitly
+  - System.Runtime.Serialization.CollectionDataContractAttribute.IsReference
+  - System.Runtime.Serialization.CollectionDataContractAttribute.IsReferenceSetExplicitly
+  - System.Runtime.Serialization.CollectionDataContractAttribute.IsValueNameSetExplicitly
+  - System.Runtime.Serialization.CollectionDataContractAttribute.ItemName
+  - System.Runtime.Serialization.CollectionDataContractAttribute.KeyName
+  - System.Runtime.Serialization.CollectionDataContractAttribute.Name
+  - System.Runtime.Serialization.CollectionDataContractAttribute.Namespace
+  - System.Runtime.Serialization.CollectionDataContractAttribute.ValueName
+  langs:
+  - csharp
+  name: CollectionDataContractAttribute
+  nameWithType: CollectionDataContractAttribute
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute
+  type: Class
+  summary: When applied to a collection type, enables custom specification of the collection item elements. This attribute can be applied only to types that are recognized by the <xref href="System.Runtime.Serialization.DataContractSerializer"></xref> as valid, serializable collections.
+  remarks: "The CollectionDataContractAttribute is intended to ease interoperability when working with data from non-[!INCLUDE[indigo2](~/add/includes/indigo2-md.md)] providers and to control the exact shape of serialized instances. To this end, the <xref:System.Runtime.Serialization.CollectionDataContractAttribute.ItemName%2A> property enables you to control the names of the repeating items inside a collection. This is especially useful when the provider does not use the XML element type name as the array item name, for example, if a provider uses \"String\" as an element type name instead of the XSD type name \"string\".  \n  \n The CollectionDataContractAttribute is also intended to be used with dictionary types to handle keyed collections. Dictionary types are classes that implement either the <xref:System.Collections.IDictionary> or the <xref:System.Collections.Generic.IDictionary%602> interface, for example, the <xref:System.Collections.Generic.Dictionary%602>. Use the <xref:System.Runtime.Serialization.CollectionDataContractAttribute.KeyName%2A> and <xref:System.Runtime.Serialization.CollectionDataContractAttribute.ValueName%2A> properties to set custom names when using the <xref:System.Collections.Generic.Dictionary%602> class.  \n  \n [!INCLUDE[crabout](~/add/includes/crabout-md.md)] using the <xref:System.Runtime.Serialization.DataContractSerializer>, see [Using Data Contracts](../Topic/Using%20Data%20Contracts.md)."
+  example:
+  - "The following example applies the CollectionDataContractAttribute to a class that inherits from the <xref:System.Collections.Generic.List%601> class. The code sets the <xref:System.Runtime.Serialization.CollectionDataContractAttribute.Name%2A> and <xref:System.Runtime.Serialization.CollectionDataContractAttribute.ItemName%2A> properties to custom values.  \n  \n [!code-cs[CollectionDataContractAttribute#1](~/add/codesnippet/csharp/t-system.runtime.seriali_30_1.cs)]\n [!code-vb[CollectionDataContractAttribute#1](~/add/codesnippet/visualbasic/t-system.runtime.seriali_30_1.vb)]  \n  \n When the [ServiceModel Metadata Utility Tool (Svcutil.exe)](../Topic/ServiceModel%20Metadata%20Utility%20Tool%20\\(Svcutil.exe\\).md) is used to generate code for the client, the code resembles the following example. Notice that the name of the class is changed, as well as the <xref:System.Runtime.Serialization.CollectionDataContractAttribute.ItemName%2A>. When using generics, the type parameter name is used to create the resulting type name.  \n  \n [!code-cs[CollectionDataContractAttribute#2](~/add/codesnippet/csharp/t-system.runtime.seriali_30_2.cs)]\n [!code-vb[CollectionDataContractAttribute#2](~/add/codesnippet/visualbasic/t-system.runtime.seriali_30_2.vb)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Class | System.AttributeTargets.Struct, AllowMultiple=false, Inherited=false)]
+
+      public sealed class CollectionDataContractAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\CollectionDataContractAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/CollectionDataContractAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.#ctor
+  id: '#ctor'
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  langs:
+  - csharp
+  name: CollectionDataContractAttribute()
+  nameWithType: CollectionDataContractAttribute.CollectionDataContractAttribute()
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.CollectionDataContractAttribute()
+  type: Constructor
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Runtime.Serialization
+  summary: Initializes a new instance of the <xref href="System.Runtime.Serialization.CollectionDataContractAttribute"></xref> class.
+  syntax:
+    content: public CollectionDataContractAttribute ();
+    parameters: []
+  overload: System.Runtime.Serialization.CollectionDataContractAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\CollectionDataContractAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/CollectionDataContractAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsItemNameSetExplicitly
+  id: IsItemNameSetExplicitly
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  langs:
+  - csharp
+  name: IsItemNameSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsItemNameSetExplicitly
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.IsItemNameSetExplicitly
+  type: Property
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Runtime.Serialization
+  summary: Gets whether <xref href="stem.Runtime.Serialization.CollectionDataContractAttribute.ItemName%2A"></xref> has been explicitly set.
+  syntax:
+    content: public bool IsItemNameSetExplicitly { get; }
+    return:
+      type: System.Boolean
+      description: Returns `true` if the item name has been explicitly set; otherwise, `false`.
+  overload: System.Runtime.Serialization.CollectionDataContractAttribute.IsItemNameSetExplicitly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\CollectionDataContractAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/CollectionDataContractAttribute.xml
+  version:
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsKeyNameSetExplicitly
+  id: IsKeyNameSetExplicitly
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  langs:
+  - csharp
+  name: IsKeyNameSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsKeyNameSetExplicitly
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.IsKeyNameSetExplicitly
+  type: Property
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Runtime.Serialization
+  summary: Gets whether <xref href="stem.Runtime.Serialization.CollectionDataContractAttribute.KeyName%2A"></xref> has been explicitly set.
+  syntax:
+    content: public bool IsKeyNameSetExplicitly { get; }
+    return:
+      type: System.Boolean
+      description: Returns `true` if the key name has been explicitly set; otherwise, `false`.
+  overload: System.Runtime.Serialization.CollectionDataContractAttribute.IsKeyNameSetExplicitly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\CollectionDataContractAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/CollectionDataContractAttribute.xml
+  version:
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsNameSetExplicitly
+  id: IsNameSetExplicitly
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  langs:
+  - csharp
+  name: IsNameSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsNameSetExplicitly
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.IsNameSetExplicitly
+  type: Property
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Runtime.Serialization
+  summary: Gets whether <xref href="stem.Runtime.Serialization.CollectionDataContractAttribute.Name%2A"></xref> has been explicitly set.
+  syntax:
+    content: public bool IsNameSetExplicitly { get; }
+    return:
+      type: System.Boolean
+      description: Returns `true` if the name has been explicitly set; otherwise, `false`.
+  overload: System.Runtime.Serialization.CollectionDataContractAttribute.IsNameSetExplicitly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\CollectionDataContractAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/CollectionDataContractAttribute.xml
+  version:
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsNamespaceSetExplicitly
+  id: IsNamespaceSetExplicitly
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  langs:
+  - csharp
+  name: IsNamespaceSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsNamespaceSetExplicitly
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.IsNamespaceSetExplicitly
+  type: Property
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Runtime.Serialization
+  summary: Gets whether <xref href="stem.Runtime.Serialization.CollectionDataContractAttribute.Namespace%2A"></xref> has been explicitly set.
+  syntax:
+    content: public bool IsNamespaceSetExplicitly { get; }
+    return:
+      type: System.Boolean
+      description: Returns `true` if the item namespace has been explicitly set; otherwise, `false`.
+  overload: System.Runtime.Serialization.CollectionDataContractAttribute.IsNamespaceSetExplicitly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\CollectionDataContractAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/CollectionDataContractAttribute.xml
+  version:
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsReference
+  id: IsReference
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  langs:
+  - csharp
+  name: IsReference
+  nameWithType: CollectionDataContractAttribute.IsReference
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.IsReference
+  type: Property
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Runtime.Serialization
+  summary: Gets or sets a value that indicates whether to preserve object reference data.
+  remarks: The `IsReference` setting does not apply to the elements of the collection.
+  syntax:
+    content: public bool IsReference { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` to keep object reference data; otherwise, `false`. The default is `false`.'
+  overload: System.Runtime.Serialization.CollectionDataContractAttribute.IsReference*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\CollectionDataContractAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/CollectionDataContractAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsReferenceSetExplicitly
+  id: IsReferenceSetExplicitly
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  langs:
+  - csharp
+  name: IsReferenceSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsReferenceSetExplicitly
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.IsReferenceSetExplicitly
+  type: Property
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Runtime.Serialization
+  summary: Gets whether reference has been explicitly set.
+  syntax:
+    content: public bool IsReferenceSetExplicitly { get; }
+    return:
+      type: System.Boolean
+      description: Returns `true` if the reference has been explicitly set; otherwise, `false`.
+  overload: System.Runtime.Serialization.CollectionDataContractAttribute.IsReferenceSetExplicitly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\CollectionDataContractAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/CollectionDataContractAttribute.xml
+  version:
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsValueNameSetExplicitly
+  id: IsValueNameSetExplicitly
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  langs:
+  - csharp
+  name: IsValueNameSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsValueNameSetExplicitly
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.IsValueNameSetExplicitly
+  type: Property
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Runtime.Serialization
+  summary: Gets whether <xref href="stem.Runtime.Serialization.CollectionDataContractAttribute.ValueName%2A"></xref> has been explicitly set.
+  syntax:
+    content: public bool IsValueNameSetExplicitly { get; }
+    return:
+      type: System.Boolean
+      description: Returns `true` if the value name has been explicitly set; otherwise, `false`.
+  overload: System.Runtime.Serialization.CollectionDataContractAttribute.IsValueNameSetExplicitly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\CollectionDataContractAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/CollectionDataContractAttribute.xml
+  version:
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.ItemName
+  id: ItemName
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  langs:
+  - csharp
+  name: ItemName
+  nameWithType: CollectionDataContractAttribute.ItemName
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.ItemName
+  type: Property
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Runtime.Serialization
+  summary: Gets or sets a custom name for a collection element.
+  syntax:
+    content: public string ItemName { get; set; }
+    return:
+      type: System.String
+      description: The name to apply to collection elements.
+  overload: System.Runtime.Serialization.CollectionDataContractAttribute.ItemName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\CollectionDataContractAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/CollectionDataContractAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.KeyName
+  id: KeyName
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  langs:
+  - csharp
+  name: KeyName
+  nameWithType: CollectionDataContractAttribute.KeyName
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.KeyName
+  type: Property
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Runtime.Serialization
+  summary: Gets or sets the custom name for a dictionary key name.
+  syntax:
+    content: public string KeyName { get; set; }
+    return:
+      type: System.String
+      description: The name to use instead of the default dictionary key name.
+  overload: System.Runtime.Serialization.CollectionDataContractAttribute.KeyName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\CollectionDataContractAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/CollectionDataContractAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.Name
+  id: Name
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  langs:
+  - csharp
+  name: Name
+  nameWithType: CollectionDataContractAttribute.Name
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.Name
+  type: Property
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Runtime.Serialization
+  summary: Gets or sets the data contract name for the collection type.
+  syntax:
+    content: public string Name { get; set; }
+    return:
+      type: System.String
+      description: The data contract name for the collection type.
+  overload: System.Runtime.Serialization.CollectionDataContractAttribute.Name*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\CollectionDataContractAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/CollectionDataContractAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.Namespace
+  id: Namespace
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  langs:
+  - csharp
+  name: Namespace
+  nameWithType: CollectionDataContractAttribute.Namespace
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.Namespace
+  type: Property
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Runtime.Serialization
+  summary: Gets or sets the namespace for the data contract.
+  syntax:
+    content: public string Namespace { get; set; }
+    return:
+      type: System.String
+      description: The namespace of the data contract.
+  overload: System.Runtime.Serialization.CollectionDataContractAttribute.Namespace*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\CollectionDataContractAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/CollectionDataContractAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.ValueName
+  id: ValueName
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  langs:
+  - csharp
+  name: ValueName
+  nameWithType: CollectionDataContractAttribute.ValueName
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.ValueName
+  type: Property
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Runtime.Serialization
+  summary: Gets or sets the custom name for a dictionary value name.
+  syntax:
+    content: public string ValueName { get; set; }
+    return:
+      type: System.String
+      description: The name to use instead of the default dictionary value name.
+  overload: System.Runtime.Serialization.CollectionDataContractAttribute.ValueName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\CollectionDataContractAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/CollectionDataContractAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.#ctor
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: CollectionDataContractAttribute()
+  nameWithType: CollectionDataContractAttribute.CollectionDataContractAttribute()
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.CollectionDataContractAttribute()
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsItemNameSetExplicitly
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: IsItemNameSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsItemNameSetExplicitly
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.IsItemNameSetExplicitly
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsKeyNameSetExplicitly
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: IsKeyNameSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsKeyNameSetExplicitly
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.IsKeyNameSetExplicitly
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsNameSetExplicitly
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: IsNameSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsNameSetExplicitly
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.IsNameSetExplicitly
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsNamespaceSetExplicitly
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: IsNamespaceSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsNamespaceSetExplicitly
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.IsNamespaceSetExplicitly
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsReference
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: IsReference
+  nameWithType: CollectionDataContractAttribute.IsReference
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.IsReference
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsReferenceSetExplicitly
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: IsReferenceSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsReferenceSetExplicitly
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.IsReferenceSetExplicitly
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsValueNameSetExplicitly
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: IsValueNameSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsValueNameSetExplicitly
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.IsValueNameSetExplicitly
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.ItemName
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: ItemName
+  nameWithType: CollectionDataContractAttribute.ItemName
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.ItemName
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.KeyName
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: KeyName
+  nameWithType: CollectionDataContractAttribute.KeyName
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.KeyName
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.Name
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: Name
+  nameWithType: CollectionDataContractAttribute.Name
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.Name
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.Namespace
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: Namespace
+  nameWithType: CollectionDataContractAttribute.Namespace
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.Namespace
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.ValueName
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: ValueName
+  nameWithType: CollectionDataContractAttribute.ValueName
+  fullName: System.Runtime.Serialization.CollectionDataContractAttribute.ValueName
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.#ctor*
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: CollectionDataContractAttribute
+  nameWithType: CollectionDataContractAttribute.CollectionDataContractAttribute
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsItemNameSetExplicitly*
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: IsItemNameSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsItemNameSetExplicitly
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsKeyNameSetExplicitly*
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: IsKeyNameSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsKeyNameSetExplicitly
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsNameSetExplicitly*
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: IsNameSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsNameSetExplicitly
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsNamespaceSetExplicitly*
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: IsNamespaceSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsNamespaceSetExplicitly
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsReference*
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: IsReference
+  nameWithType: CollectionDataContractAttribute.IsReference
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsReferenceSetExplicitly*
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: IsReferenceSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsReferenceSetExplicitly
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.IsValueNameSetExplicitly*
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: IsValueNameSetExplicitly
+  nameWithType: CollectionDataContractAttribute.IsValueNameSetExplicitly
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.ItemName*
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: ItemName
+  nameWithType: CollectionDataContractAttribute.ItemName
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.KeyName*
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: KeyName
+  nameWithType: CollectionDataContractAttribute.KeyName
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.Name*
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: Name
+  nameWithType: CollectionDataContractAttribute.Name
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.Namespace*
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: Namespace
+  nameWithType: CollectionDataContractAttribute.Namespace
+- uid: System.Runtime.Serialization.CollectionDataContractAttribute.ValueName*
+  parent: System.Runtime.Serialization.CollectionDataContractAttribute
+  isExternal: false
+  name: ValueName
+  nameWithType: CollectionDataContractAttribute.ValueName

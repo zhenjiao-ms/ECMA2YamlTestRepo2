@@ -1,0 +1,617 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Threading.ThreadLocal`1
+  id: ThreadLocal`1
+  children:
+  - System.Threading.ThreadLocal`1.#ctor
+  - System.Threading.ThreadLocal`1.#ctor(System.Boolean)
+  - System.Threading.ThreadLocal`1.#ctor(System.Func{`0})
+  - System.Threading.ThreadLocal`1.#ctor(System.Func{`0},System.Boolean)
+  - System.Threading.ThreadLocal`1.Dispose
+  - System.Threading.ThreadLocal`1.Dispose(System.Boolean)
+  - System.Threading.ThreadLocal`1.Finalize
+  - System.Threading.ThreadLocal`1.IsValueCreated
+  - System.Threading.ThreadLocal`1.ToString
+  - System.Threading.ThreadLocal`1.Value
+  - System.Threading.ThreadLocal`1.Values
+  langs:
+  - csharp
+  name: ThreadLocal<T>
+  nameWithType: ThreadLocal<T>
+  fullName: System.Threading.ThreadLocal<T>
+  type: Class
+  summary: Provides thread-local storage of data.
+  remarks: ''
+  example:
+  - "The following example shows how to use ThreadLocal(T):  \n  \n [!code-vb[System.Threading.ThreadLocal#01](~/add/codesnippet/visualbasic/t-system.threading.threa_0_1.vb)]\n [!code-cs[System.Threading.ThreadLocal#01](~/add/codesnippet/csharp/t-system.threading.threa_0_1.cs)]"
+  syntax:
+    content: >-
+      [System.Diagnostics.DebuggerDisplay("IsValueCreated={IsValueCreated}, Value={ValueForDebugDisplay}, Count={ValuesCountForDebugDisplay}")]
+
+      [System.Diagnostics.DebuggerTypeProxy(typeof(System.Threading.SystemThreading_ThreadLocalDebugView`1))]
+
+      public class ThreadLocal<T> : IDisposable
+    typeParameters:
+    - id: T
+      description: Specifies the type of data stored per-thread.
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\ThreadLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/ThreadLocal`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.ThreadLocal`1.#ctor
+  id: '#ctor'
+  parent: System.Threading.ThreadLocal`1
+  langs:
+  - csharp
+  name: ThreadLocal<T>()
+  nameWithType: ThreadLocal<T>.ThreadLocal<T>()
+  fullName: System.Threading.ThreadLocal<T>.ThreadLocal<T>()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Initializes the <xref href="stem.Threading.ThreadLocal%601"></xref> instance.
+  remarks: "The default value of `T` is used to initialize the instance when <xref:System.Threading.ThreadLocal%601.Value%2A> is accessed for the first time.  \n  \n This constructor is equivalent to calling the <xref:System.Threading.ThreadLocal%601.%23ctor%28System.Boolean%29> constructor with a value of `false` for the `trackAllValues` argument."
+  syntax:
+    content: public ThreadLocal ();
+    parameters: []
+  overload: System.Threading.ThreadLocal`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\ThreadLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/ThreadLocal`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.ThreadLocal`1.#ctor(System.Boolean)
+  id: '#ctor(System.Boolean)'
+  parent: System.Threading.ThreadLocal`1
+  langs:
+  - csharp
+  name: ThreadLocal<T>(Boolean)
+  nameWithType: ThreadLocal<T>.ThreadLocal<T>(Boolean)
+  fullName: System.Threading.ThreadLocal<T>.ThreadLocal<T>(Boolean)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Initializes the <xref href="stem.Threading.ThreadLocal%601"></xref> instance and specifies whether all values are accessible from any thread.
+  remarks: If `trackAllValues` is `false`, only the value of this instance for the current thread is accessible. Attempting to use the <xref:System.Threading.ThreadLocal%601.Values%2A> property to retrieve all values throws an <xref:System.InvalidOperationException> exception.
+  syntax:
+    content: public ThreadLocal (bool trackAllValues);
+    parameters:
+    - id: trackAllValues
+      type: System.Boolean
+      description: '`true` to track all values set on the instance and expose them through the <xref href="stem.Threading.ThreadLocal%601.Values%2A"></xref> property; `false` otherwise.'
+  overload: System.Threading.ThreadLocal`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\ThreadLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/ThreadLocal`1.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.ThreadLocal`1.#ctor(System.Func{`0})
+  id: '#ctor(System.Func{`0})'
+  parent: System.Threading.ThreadLocal`1
+  langs:
+  - csharp
+  name: ThreadLocal<T>(Func<T>)
+  nameWithType: ThreadLocal<T>.ThreadLocal<T>(Func<T>)
+  fullName: System.Threading.ThreadLocal<T>.ThreadLocal<T>(Func<T>)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Initializes the <xref href="stem.Threading.ThreadLocal%601"></xref> instance with the specified <code>valueFactory</code> function.
+  syntax:
+    content: public ThreadLocal (Func<T> valueFactory);
+    parameters:
+    - id: valueFactory
+      type: System.Func{T}
+      description: The  <xref href="stem.Func%601"></xref> invoked to produce a lazily-initialized value when an attempt is made to retrieve <xref href="stem.Threading.ThreadLocal%601.Value%2A"></xref> without it having been previously initialized.
+  overload: System.Threading.ThreadLocal`1.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>valueFactory</code> is a null reference (Nothing in Visual Basic).
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\ThreadLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/ThreadLocal`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.ThreadLocal`1.#ctor(System.Func{`0},System.Boolean)
+  id: '#ctor(System.Func{`0},System.Boolean)'
+  parent: System.Threading.ThreadLocal`1
+  langs:
+  - csharp
+  name: ThreadLocal<T>(Func<T>,Boolean)
+  nameWithType: ThreadLocal<T>.ThreadLocal<T>(Func<T>,Boolean)
+  fullName: System.Threading.ThreadLocal<T>.ThreadLocal<T>(Func<T>,Boolean)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Initializes the <xref href="stem.Threading.ThreadLocal%601"></xref> instance with the specified <code>valueFactory</code> function and a flag that indicates whether all values are accessible from any thread.
+  remarks: If `trackAllValues` is `false`, only the value of this instance for the current thread is accessible. Attempting to use the <xref:System.Threading.ThreadLocal%601.Values%2A> property to retrieve all values throws an <xref:System.InvalidOperationException> exception.
+  syntax:
+    content: public ThreadLocal (Func<T> valueFactory, bool trackAllValues);
+    parameters:
+    - id: valueFactory
+      type: System.Func{T}
+      description: The <xref href="stem.Func%601"></xref> invoked to produce a lazily-initialized value when an attempt is made to retrieve <xref href="stem.Threading.ThreadLocal%601.Value%2A"></xref> without it having been previously initialized.
+    - id: trackAllValues
+      type: System.Boolean
+      description: '`true` to track all values set on the instance and expose them through the <xref href="stem.Threading.ThreadLocal%601.Values%2A"></xref> property; `false` otherwise.'
+  overload: System.Threading.ThreadLocal`1.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>valueFactory</code> is a `null` reference (`Nothing` in Visual Basic).
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\ThreadLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/ThreadLocal`1.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.ThreadLocal`1.Dispose
+  id: Dispose
+  parent: System.Threading.ThreadLocal`1
+  langs:
+  - csharp
+  name: Dispose()
+  nameWithType: ThreadLocal<T>.Dispose()
+  fullName: System.Threading.ThreadLocal<T>.Dispose()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Releases all resources used by the current instance of the <xref href="stem.Threading.ThreadLocal%601"></xref> class.
+  remarks: "Call `Dispose` when you are finished using the <xref:System.Threading.ThreadLocal%601>. The `Dispose` method leaves the <xref:System.Threading.ThreadLocal%601> in an unusable state. After calling `Dispose`, you must release all references to the <xref:System.Threading.ThreadLocal%601> so the garbage collector can reclaim the memory that the <xref:System.Threading.ThreadLocal%601> was occupying.  \n  \n For more information, see [Cleaning Up Unmanaged Resources](../Topic/Cleaning%20Up%20Unmanaged%20Resources.md) and [Implementing a Dispose Method](../Topic/Implementing%20a%20Dispose%20Method.md).  \n  \n> [!NOTE]\n>  Always call `Dispose` before you release your last reference to the <xref:System.Threading.ThreadLocal%601>. Otherwise, the resources it is using will not be freed until the garbage collector calls the <xref:System.Threading.ThreadLocal%601> object's `Finalize` method."
+  syntax:
+    content: public void Dispose ();
+    parameters: []
+  overload: System.Threading.ThreadLocal`1.Dispose*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\ThreadLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/ThreadLocal`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.ThreadLocal`1.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: System.Threading.ThreadLocal`1
+  langs:
+  - csharp
+  name: Dispose(Boolean)
+  nameWithType: ThreadLocal<T>.Dispose(Boolean)
+  fullName: System.Threading.ThreadLocal<T>.Dispose(Boolean)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Releases the resources used by this <xref href="stem.Threading.ThreadLocal%601"></xref> instance.
+  remarks: Unlike most of the members of <xref:System.Threading.ThreadLocal%601>, this method is not thread-safe.
+  syntax:
+    content: protected virtual void Dispose (bool disposing);
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: A Boolean value that indicates whether this method is being called due to a call to <xref href="stem.Threading.ThreadLocal%601.Dispose%2A"></xref>.
+  overload: System.Threading.ThreadLocal`1.Dispose*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\ThreadLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/ThreadLocal`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.ThreadLocal`1.Finalize
+  id: Finalize
+  parent: System.Threading.ThreadLocal`1
+  langs:
+  - csharp
+  name: Finalize()
+  nameWithType: ThreadLocal<T>.Finalize()
+  fullName: System.Threading.ThreadLocal<T>.Finalize()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Releases the resources used by this <xref href="stem.Threading.ThreadLocal%601"></xref> instance.
+  syntax:
+    content: ~ThreadLocal`1 ();
+    parameters: []
+  overload: System.Threading.ThreadLocal`1.Finalize*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\ThreadLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/ThreadLocal`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.ThreadLocal`1.IsValueCreated
+  id: IsValueCreated
+  parent: System.Threading.ThreadLocal`1
+  langs:
+  - csharp
+  name: IsValueCreated
+  nameWithType: ThreadLocal<T>.IsValueCreated
+  fullName: System.Threading.ThreadLocal<T>.IsValueCreated
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Gets whether <xref href="stem.Threading.ThreadLocal%601.Value%2A"></xref> is initialized on the current thread.
+  syntax:
+    content: public bool IsValueCreated { get; }
+    return:
+      type: System.Boolean
+      description: true if <xref href="stem.Threading.ThreadLocal%601.Value%2A"></xref> is initialized on the current thread; otherwise false.
+  overload: System.Threading.ThreadLocal`1.IsValueCreated*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: The <xref href="stem.Threading.ThreadLocal%601"></xref> instance has been disposed.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\ThreadLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/ThreadLocal`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.ThreadLocal`1.ToString
+  id: ToString
+  parent: System.Threading.ThreadLocal`1
+  langs:
+  - csharp
+  name: ToString()
+  nameWithType: ThreadLocal<T>.ToString()
+  fullName: System.Threading.ThreadLocal<T>.ToString()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Creates and returns a string representation of this instance for the current thread.
+  remarks: Calling this method forces initialization for the current thread, as is the case with accessing <xref:System.Threading.ThreadLocal%601.Value%2A> directly.
+  syntax:
+    content: public override string ToString ();
+    parameters: []
+    return:
+      type: System.String
+      description: The result of calling <xref href="stem.Object.ToString%2A"></xref> on the <xref href="stem.Threading.ThreadLocal%601.Value%2A"></xref>.
+  overload: System.Threading.ThreadLocal`1.ToString*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: The <xref href="stem.Threading.ThreadLocal%601"></xref> instance has been disposed.
+  - type: System.NullReferenceException
+    commentId: T:System.NullReferenceException
+    description: The <xref href="stem.Threading.ThreadLocal%601.Value%2A"></xref> for the current thread is a null reference (Nothing in Visual Basic).
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The initialization function attempted to reference <xref href="stem.Threading.ThreadLocal%601.Value%2A"></xref> recursively.
+  - type: System.MissingMemberException
+    commentId: T:System.MissingMemberException
+    description: No default constructor is provided and no value factory is supplied.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\ThreadLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/ThreadLocal`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.ThreadLocal`1.Value
+  id: Value
+  parent: System.Threading.ThreadLocal`1
+  langs:
+  - csharp
+  name: Value
+  nameWithType: ThreadLocal<T>.Value
+  fullName: System.Threading.ThreadLocal<T>.Value
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Gets or sets the value of this instance for the current thread.
+  remarks: If this instance was not previously initialized for the current thread, accessing Value will attempt to initialize it. If an initialization function was supplied during the construction, that initialization will happen by invoking the function to retrieve the initial value for Value. Otherwise, the default value of will be used. If an exception is thrown, that exception is cached and thrown on each subsequent access of the property.
+  syntax:
+    content: public T Value { get; set; }
+    return:
+      type: T
+      description: Returns an instance of the object that this ThreadLocal is responsible for initializing.
+  overload: System.Threading.ThreadLocal`1.Value*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: The <xref href="stem.Threading.ThreadLocal%601"></xref> instance has been disposed.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The initialization function attempted to reference Value recursively.
+  - type: System.MissingMemberException
+    commentId: T:System.MissingMemberException
+    description: No default constructor is provided and no value factory is supplied.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\ThreadLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/ThreadLocal`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.ThreadLocal`1.Values
+  id: Values
+  parent: System.Threading.ThreadLocal`1
+  langs:
+  - csharp
+  name: Values
+  nameWithType: ThreadLocal<T>.Values
+  fullName: System.Threading.ThreadLocal<T>.Values
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Gets a list for all of the values currently stored by all of the threads that have accessed this instance.
+  syntax:
+    content: public System.Collections.Generic.IList<T> Values { get; }
+    return:
+      type: System.Collections.Generic.IList`1
+      description: A list for all of the values currently stored by all of the threads that have accessed this instance.
+  overload: System.Threading.ThreadLocal`1.Values*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Values stored by all threads are not available because this instance was initialized with the <code>trackAllValues</code> argument set to `false` in the call to a class constructor.
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: The <xref href="stem.Threading.ThreadLocal%601"></xref> instance has been disposed.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\ThreadLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/ThreadLocal`1.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ObjectDisposedException
+  parent: System
+  isExternal: false
+  name: ObjectDisposedException
+  nameWithType: ObjectDisposedException
+  fullName: System.ObjectDisposedException
+- uid: System.NullReferenceException
+  parent: System
+  isExternal: false
+  name: NullReferenceException
+  nameWithType: NullReferenceException
+  fullName: System.NullReferenceException
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.MissingMemberException
+  parent: System
+  isExternal: false
+  name: MissingMemberException
+  nameWithType: MissingMemberException
+  fullName: System.MissingMemberException
+- uid: System.Threading.ThreadLocal`1.#ctor
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: ThreadLocal<T>()
+  nameWithType: ThreadLocal<T>.ThreadLocal<T>()
+  fullName: System.Threading.ThreadLocal<T>.ThreadLocal<T>()
+- uid: System.Threading.ThreadLocal`1.#ctor(System.Boolean)
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: ThreadLocal<T>(Boolean)
+  nameWithType: ThreadLocal<T>.ThreadLocal<T>(Boolean)
+  fullName: System.Threading.ThreadLocal<T>.ThreadLocal<T>(Boolean)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Threading.ThreadLocal`1.#ctor(System.Func{`0})
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: ThreadLocal<T>(Func<T>)
+  nameWithType: ThreadLocal<T>.ThreadLocal<T>(Func<T>)
+  fullName: System.Threading.ThreadLocal<T>.ThreadLocal<T>(Func<T>)
+- uid: System.Func{T}
+  parent: System
+  isExternal: false
+  name: Func<T>
+  nameWithType: Func<T>
+  fullName: System.Func<T>
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    nameWithType: Func
+    fullName: Func<T>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: T
+    name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Threading.ThreadLocal`1.#ctor(System.Func{`0},System.Boolean)
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: ThreadLocal<T>(Func<T>,Boolean)
+  nameWithType: ThreadLocal<T>.ThreadLocal<T>(Func<T>,Boolean)
+  fullName: System.Threading.ThreadLocal<T>.ThreadLocal<T>(Func<T>,Boolean)
+- uid: System.Threading.ThreadLocal`1.Dispose
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: Dispose()
+  nameWithType: ThreadLocal<T>.Dispose()
+  fullName: System.Threading.ThreadLocal<T>.Dispose()
+- uid: System.Threading.ThreadLocal`1.Dispose(System.Boolean)
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: Dispose(Boolean)
+  nameWithType: ThreadLocal<T>.Dispose(Boolean)
+  fullName: System.Threading.ThreadLocal<T>.Dispose(Boolean)
+- uid: System.Threading.ThreadLocal`1.Finalize
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: Finalize()
+  nameWithType: ThreadLocal<T>.Finalize()
+  fullName: System.Threading.ThreadLocal<T>.Finalize()
+- uid: System.Threading.ThreadLocal`1.IsValueCreated
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: IsValueCreated
+  nameWithType: ThreadLocal<T>.IsValueCreated
+  fullName: System.Threading.ThreadLocal<T>.IsValueCreated
+- uid: System.Threading.ThreadLocal`1.ToString
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: ToString()
+  nameWithType: ThreadLocal<T>.ToString()
+  fullName: System.Threading.ThreadLocal<T>.ToString()
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Threading.ThreadLocal`1.Value
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: Value
+  nameWithType: ThreadLocal<T>.Value
+  fullName: System.Threading.ThreadLocal<T>.Value
+- uid: T
+  isExternal: true
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Threading.ThreadLocal`1.Values
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: Values
+  nameWithType: ThreadLocal<T>.Values
+  fullName: System.Threading.ThreadLocal<T>.Values
+- uid: System.Collections.Generic.IList`1
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+- uid: System.Threading.ThreadLocal`1.#ctor*
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: ThreadLocal<T>
+  nameWithType: ThreadLocal<T>.ThreadLocal<T>
+- uid: System.Threading.ThreadLocal`1.Dispose*
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: Dispose
+  nameWithType: ThreadLocal<T>.Dispose
+- uid: System.Threading.ThreadLocal`1.Finalize*
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: Finalize
+  nameWithType: ThreadLocal<T>.Finalize
+- uid: System.Threading.ThreadLocal`1.IsValueCreated*
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: IsValueCreated
+  nameWithType: ThreadLocal<T>.IsValueCreated
+- uid: System.Threading.ThreadLocal`1.ToString*
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: ToString
+  nameWithType: ThreadLocal<T>.ToString
+- uid: System.Threading.ThreadLocal`1.Value*
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: Value
+  nameWithType: ThreadLocal<T>.Value
+- uid: System.Threading.ThreadLocal`1.Values*
+  parent: System.Threading.ThreadLocal`1
+  isExternal: false
+  name: Values
+  nameWithType: ThreadLocal<T>.Values

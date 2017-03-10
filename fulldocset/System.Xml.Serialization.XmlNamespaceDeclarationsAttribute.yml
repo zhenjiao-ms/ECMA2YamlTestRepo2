@@ -1,0 +1,132 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.Serialization.XmlNamespaceDeclarationsAttribute
+  id: XmlNamespaceDeclarationsAttribute
+  children:
+  - System.Xml.Serialization.XmlNamespaceDeclarationsAttribute.#ctor
+  langs:
+  - csharp
+  name: XmlNamespaceDeclarationsAttribute
+  nameWithType: XmlNamespaceDeclarationsAttribute
+  fullName: System.Xml.Serialization.XmlNamespaceDeclarationsAttribute
+  type: Class
+  summary: Specifies that the target property, parameter, return value, or class member contains prefixes associated with namespaces that are used within an XML document.
+  remarks: "The XmlNamespaceDeclarationsAttribute attribute can only be applied once in a class to a field or property that returns an <xref:System.Xml.Serialization.XmlSerializerNamespaces> object.  \n  \n The XmlNamespaceDeclarationsAttribute allows you to store the prefixes, and the associated namespaces, used in an XML document. For example, one common usage of the attribute is to store XPath data, as it is defined by the World Wide Web Consortium (www.w3.org) document named \"XML Language (XPath) Version 1.0\". In brief, an XPath is a string that contains many namespace prefixes and local names, along with some other syntax.  \n  \n The XPath language allows for the association of a prefix with a path, and using the prefix within the XML document. For example, the following XML document named \"select\" contains a prefix (\"cal\") associated with a specific URI (http://www.cohowinery.com/calendar/). The element contains an attribute named \"path\" that contains the XPath.  \n  \n```  \n<select xmlns:cal =\"http://www.cohowinery.com/calendar/\" path=\"cal:appointments/@startTime\" />  \n```  \n  \n The schema for this might be:  \n  \n```  \n<element name=\"select\">  \n   <complexType>  \n      <simpleContent>  \n         <attribute name=\"path\" />  \n      </simpleContent>  \n   </complexType>  \n</element>  \n```  \n  \n Without the XmlNamespaceDeclarationsAttribute, the association between the prefix and the namespace is lost.  \n  \n To retain the association between the prefix and the namespace URI, add a member that returns an <xref:System.Xml.Serialization.XmlSerializerNamespaces> object and apply the XmlNamespaceDeclarationsAttribute attribute to the member, as shown in the following C# and Visual Basic code:  \n  \n```  \n// C#  \npublic class Select {  \n  [XmlAttribute] public string path;  \n  [XmlNamespaceDeclarations] public XmlSerializerNamespaces xmlns;  \n}  \n' Visual Basic  \nPublic Class Select  \n   <XmlAttribute> Public path As String  \n   <XmlNamespaceDeclarations> Public xmlns As XmlSerializerNamespaces  \nEnd Class  \n```  \n  \n When serialized, the schema for the generated XML document contains the XML Schema definition (XSD) element named `appinfo`. The element further contains a metadata element named `keepNamespaceDeclarations`, set to the name of the member that contains the namespace declarations. The following XML fragment shows the schema:  \n  \n```  \n<xs:element name=\"select\">  \n   <xs:complexType>  \n      <xs:annotation>   \n         <xs:appinfo>  \n          <keepNamespaceDeclarations>xmlns</keepNamespaceDeclarations>  \n         </xs:appinfo>   \n      </xs:annotation>   \n      <xs:simpleContent>  \n         <xs:attribute name=\"path\" />  \n      </xs:simpleContent>  \n   </xs:complexType>  \n</xs:element>  \n```  \n  \n On deserialization, the `xmlns` field contains an <xref:System.Xml.Serialization.XmlSerializerNamespaces> object that contains all namespace prefix definitions.  \n  \n On serialization, the user can add prefix-namespace pairs to the <xref:System.Xml.Serialization.XmlSerializerNamespaces> object using the <xref:System.Xml.Serialization.XmlSerializerNamespaces.Add%2A> method. This is shown in the following C# and Visual Basic code:  \n  \n```  \n// C#  \nusing System;  \nusing System.IO;  \nusing System.Xml.Serialization;  \n[XmlRoot(\"select\")]  \npublic class Select {  \n   [XmlAttribute]  \n   public string xpath;  \n   [XmlNamespaceDeclarations]  \n   public XmlSerializerNamespaces xmlns;  \n}  \npublic class Test {  \n   public static void Main(string[] args) {  \n      Select mySelect = new Select();  \n      mySelect.xpath = \"myNS:ref/@common:y\";  \n      mySelect.xmlns = new XmlSerializerNamespaces();  \n      mySelect.xmlns.Add(\"MyNS\", \"myNS.tempuri.org\");  \n      mySelect.xmlns.Add(\"common\", \"common.tempuri.org\");  \n      XmlSerializer ser = new XmlSerializer(typeof(Select));  \n      ser.Serialize(Console.Out, mySelect);  \n   }  \n}  \n// Output:  \n// <?xml version=\"1.0\" encoding=\"IBM437\"?>  \n// <select xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"   \n// xmlns:common=\"common.tempuri.org\" xmlns:MyNS=\"myNS.tempuri.org\" xpath=\"myNS:ref/@common:y\" />  \n' Visual Basic  \nImports System  \nImports System.IO  \nImports System.Xml.Serialization  \n<XmlRoot(\"select\")> _  \nPublic Class SelectPath  \n   <XmlAttribute> _  \n   Public xpath As String   \n   <XmlNamespaceDeclarations> _  \n   public xmlns As XmlSerializerNamespaces   \nEnd Class  \nPublic Class Test   \n   Public Shared Sub Main()   \n      Dim mySelect As SelectPath = New SelectPath()  \n      mySelect.xpath = \"myNS:ref/@common:y\"  \n      mySelect.xmlns = New XmlSerializerNamespaces()  \n      mySelect.xmlns.Add(\"MyNS\", \"myNS.tempuri.org\")  \n      mySelect.xmlns.Add(\"common\", \"common.tempuri.org\")  \n      Dim ser As XmlSerializer = New XmlSerializer(mySelect.GetType)  \n      ser.Serialize(Console.Out, mySelect)  \n   End Sub  \nEnd Class  \n'Output:  \n' <?xml version=\"1.0\" encoding=\"IBM437\"?>  \n' <select xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"   \n' xmlns:common=\"common.tempuri.org\" xmlns:MyNS=\"myNS.tempuri.org\" xpath=\"myNS:ref/@common:y\" />  \n```  \n  \n Also note that the member to which the attribute is applied contains only the prefix-namespace pairs that belong to the XML element defined by the class. For example, in the following XML document, only the prefix pair \"cal\" is captured, but not the \"x\" prefix. To get that data, add a member with the XmlNamespaceDeclarationsAttribute to the class that represents the `root` element.  \n  \n```  \n<?xml version=\"1.0\"?>  \n<x:root xmlns:x=\"http://www.cohowinery.com/x/\">  \n  <x:select xmlns:cal=\"http://www.cohowinery.com/calendar/\" path=\"cal:appointments/@cal:startTime\" />  \n</x:root>  \n```"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field | System.AttributeTargets.Parameter | System.AttributeTargets.ReturnValue, AllowMultiple=false)]
+
+      public class XmlNamespaceDeclarationsAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlNamespaceDeclarationsAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlNamespaceDeclarationsAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlNamespaceDeclarationsAttribute.#ctor
+  id: '#ctor'
+  parent: System.Xml.Serialization.XmlNamespaceDeclarationsAttribute
+  langs:
+  - csharp
+  name: XmlNamespaceDeclarationsAttribute()
+  nameWithType: XmlNamespaceDeclarationsAttribute.XmlNamespaceDeclarationsAttribute()
+  fullName: System.Xml.Serialization.XmlNamespaceDeclarationsAttribute.XmlNamespaceDeclarationsAttribute()
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlNamespaceDeclarationsAttribute"></xref> class.
+  remarks: The <xref:System.Xml.Serialization.XmlNamespaceDeclarationsAttribute> can only be applied to a target that returns an <xref:System.Xml.Serialization.XmlSerializerNamespaces> object.
+  syntax:
+    content: public XmlNamespaceDeclarationsAttribute ();
+    parameters: []
+  overload: System.Xml.Serialization.XmlNamespaceDeclarationsAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlNamespaceDeclarationsAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlNamespaceDeclarationsAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Xml.Serialization.XmlNamespaceDeclarationsAttribute.#ctor
+  parent: System.Xml.Serialization.XmlNamespaceDeclarationsAttribute
+  isExternal: false
+  name: XmlNamespaceDeclarationsAttribute()
+  nameWithType: XmlNamespaceDeclarationsAttribute.XmlNamespaceDeclarationsAttribute()
+  fullName: System.Xml.Serialization.XmlNamespaceDeclarationsAttribute.XmlNamespaceDeclarationsAttribute()
+- uid: System.Xml.Serialization.XmlNamespaceDeclarationsAttribute.#ctor*
+  parent: System.Xml.Serialization.XmlNamespaceDeclarationsAttribute
+  isExternal: false
+  name: XmlNamespaceDeclarationsAttribute
+  nameWithType: XmlNamespaceDeclarationsAttribute.XmlNamespaceDeclarationsAttribute

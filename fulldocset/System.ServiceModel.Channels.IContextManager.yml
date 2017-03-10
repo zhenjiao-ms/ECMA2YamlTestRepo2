@@ -1,0 +1,210 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.Channels.IContextManager
+  id: IContextManager
+  children:
+  - System.ServiceModel.Channels.IContextManager.Enabled
+  - System.ServiceModel.Channels.IContextManager.GetContext
+  - System.ServiceModel.Channels.IContextManager.SetContext(System.Collections.Generic.IDictionary{System.String,System.String})
+  langs:
+  - csharp
+  name: IContextManager
+  nameWithType: IContextManager
+  fullName: System.ServiceModel.Channels.IContextManager
+  type: Interface
+  summary: Defines an interface that allows you to get and set the context on the channel.
+  remarks: "For channels that use <xref:System.ServiceModel.WSHttpContextBinding> with the <xref:System.ServiceModel.SessionMode> value set, the context cannot be retrieved on the client using IContextManager because a new channel that establishes a session is created each time <xref:System.ServiceModel.Channels.IChannelFactory.GetProperty%2A> is called to enforce <xref:System.ServiceModel.SessionMode> semantics on a channel. This means that even though the context is properly propagated back to the client in this case, it cannot be retrieved using IContextManager. You can still retrieve it using <xref:System.ServiceModel.Channels.ContextMessageProperty> as shown in the following code.  \n  \n```c#  \nusing (new OperationContextScope((IContextChannel)channel))  \n{  \n    channel.MyChannel(\"Test\");  \n    ContextMessageProperty context;  \n    if (ContextMessageProperty.TryGet(OperationContext.Current.IncomingMessageProperties, out context))  \n    {  \n        Console.WriteLine(context.Count);  \n    }  \n}  \n  \n```"
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+
+      public interface IContextManager
+  implements: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\IContextManager.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/IContextManager.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.IContextManager.Enabled
+  id: Enabled
+  parent: System.ServiceModel.Channels.IContextManager
+  langs:
+  - csharp
+  name: Enabled
+  nameWithType: IContextManager.Enabled
+  fullName: System.ServiceModel.Channels.IContextManager.Enabled
+  type: Property
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Gets or sets a value that indicates whether the context management is enabled.
+  remarks: "When context management is enabled the context channel caches the context in its lifetime. Context can be retrieved from the channel through the `IContextManager` channel property by calling <xref:System.ServiceModel.Channels.IContextManager.GetContext%2A> method on it. The channel can also be pre-initialized with context before being opened by calling the <xref:System.ServiceModel.Channels.IContextManager.SetContext%2A> method on the channel property. Once the channel is initialized with context it cannot be reset.  \n  \n The following are invariants in this mode:  \n  \n-   Any call to <xref:System.ServiceModel.Channels.IContextManager.SetContext%2A> after the channel is open throws an `InvalidOperationException`.  \n  \n-   Any attempt to send context through the `ContextMessageProperty` in an outgoing message throws `InvalidOperationException`.  \n  \n-   If a message is received from the server with context, when the channel is already initialized with a context a `ProtocolException` is thrown. Note that you can receive initial context from a server if the channel is opened without explicitly setting the context.  \n  \n-   The `ContextMessageProperty` on an incoming message is always `null`.  \n  \n When context management is not enabled, the context channel does not manage context. It is the application's responsibility to retrieve, manage and apply context through the `ContextMessageProperty`. Any attempt to call <xref:System.ServiceModel.Channels.IContextManager.GetContext%2A> or <xref:System.ServiceModel.Channels.IContextManager.SetContext%2A> using through the `IContextManager` channel property results in `InvalidOperationException`.  \n  \n All HTTP cookies, except for context HTTP cookies, are handled at the channel level. Context HTTP cookies are managed at the application level. This can have unexpected consequences when channels are shared to talk to different instances targeted by <xref:System.ServiceModel.Channels.ContextMessageProperty>. The following table shows how HTTP cookies are affected when Enabled is set to either `true` or `false`.  \n  \n|Binding|IContextManager.Enabled Value|Context HTTP Cookie Scope|Other HTTP Cookies Scope|  \n|-------------|-----------------------------------|-------------------------------|------------------------------|  \n|BasicHttpBinding|n/a|ChannelFactory|ChannelFactory|  \n|BasicHttpContextBinding|true|Channel|Channel|  \n|BasicHttpContextBinding|false|For each message (explicitly managed by application)|Channel|"
+  syntax:
+    content: public bool Enabled { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if the context is enabled; otherwise, `false`.'
+  overload: System.ServiceModel.Channels.IContextManager.Enabled*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\IContextManager.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/IContextManager.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.IContextManager.GetContext
+  id: GetContext
+  parent: System.ServiceModel.Channels.IContextManager
+  langs:
+  - csharp
+  name: GetContext()
+  nameWithType: IContextManager.GetContext()
+  fullName: System.ServiceModel.Channels.IContextManager.GetContext()
+  type: Method
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Gets the context.
+  remarks: ''
+  example:
+  - "The following code shows how the context can be obtained from a typed proxy instance on the client.  \n  \n```  \nIDictionary<string, string> context;  \nCalculatorProxy proxy;  \nIContextManager cm = proxy.InnerChannel.GetProperty<IContextManager>();  \nif (cm != null)  \n    context = cm.GetContext();  \n```"
+  syntax:
+    content: public System.Collections.Generic.IDictionary<string,string> GetContext ();
+    parameters: []
+    return:
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The <xref href="stem.Collections.Generic.IDictionary%602"></xref> of key/value pairs with the namespace and name of the context.
+  overload: System.ServiceModel.Channels.IContextManager.GetContext*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\IContextManager.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/IContextManager.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.IContextManager.SetContext(System.Collections.Generic.IDictionary{System.String,System.String})
+  id: SetContext(System.Collections.Generic.IDictionary{System.String,System.String})
+  parent: System.ServiceModel.Channels.IContextManager
+  langs:
+  - csharp
+  name: SetContext(IDictionary<String,String>)
+  nameWithType: IContextManager.SetContext(IDictionary<String,String>)
+  fullName: System.ServiceModel.Channels.IContextManager.SetContext(IDictionary<String,String>)
+  type: Method
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Sets the context.
+  remarks: ''
+  example:
+  - "The following code shows how the context can be set on the client.  \n  \n```  \nIDictionary<string, string> context;  \nCalculatorProxy proxy;  \nIContextManager cm = proxy.InnerChannel.GetProperty<IContextManager>();  \nif (cm != null)  \n    cm.SetContext(context);  \n```"
+  syntax:
+    content: public void SetContext (System.Collections.Generic.IDictionary<string,string> context);
+    parameters:
+    - id: context
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The <xref href="stem.Collections.Generic.IDictionary%602"></xref> of key/value pairs with the namespace and name of the context that is set.
+  overload: System.ServiceModel.Channels.IContextManager.SetContext*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\IContextManager.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/IContextManager.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.ServiceModel.Channels.IContextManager.Enabled
+  parent: System.ServiceModel.Channels.IContextManager
+  isExternal: false
+  name: Enabled
+  nameWithType: IContextManager.Enabled
+  fullName: System.ServiceModel.Channels.IContextManager.Enabled
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ServiceModel.Channels.IContextManager.GetContext
+  parent: System.ServiceModel.Channels.IContextManager
+  isExternal: false
+  name: GetContext()
+  nameWithType: IContextManager.GetContext()
+  fullName: System.ServiceModel.Channels.IContextManager.GetContext()
+- uid: System.Collections.Generic.IDictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IDictionary<String,String>
+  nameWithType: IDictionary<String,String>
+  fullName: System.Collections.Generic.IDictionary<System.String,System.String>
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: IDictionary<System.String,System.String>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.ServiceModel.Channels.IContextManager.SetContext(System.Collections.Generic.IDictionary{System.String,System.String})
+  parent: System.ServiceModel.Channels.IContextManager
+  isExternal: false
+  name: SetContext(IDictionary<String,String>)
+  nameWithType: IContextManager.SetContext(IDictionary<String,String>)
+  fullName: System.ServiceModel.Channels.IContextManager.SetContext(IDictionary<String,String>)
+- uid: System.ServiceModel.Channels.IContextManager.Enabled*
+  parent: System.ServiceModel.Channels.IContextManager
+  isExternal: false
+  name: Enabled
+  nameWithType: IContextManager.Enabled
+- uid: System.ServiceModel.Channels.IContextManager.GetContext*
+  parent: System.ServiceModel.Channels.IContextManager
+  isExternal: false
+  name: GetContext
+  nameWithType: IContextManager.GetContext
+- uid: System.ServiceModel.Channels.IContextManager.SetContext*
+  parent: System.ServiceModel.Channels.IContextManager
+  isExternal: false
+  name: SetContext
+  nameWithType: IContextManager.SetContext

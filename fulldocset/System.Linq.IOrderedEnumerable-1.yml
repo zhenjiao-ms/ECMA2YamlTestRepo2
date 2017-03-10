@@ -1,0 +1,155 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Linq.IOrderedEnumerable`1
+  id: IOrderedEnumerable`1
+  children:
+  - System.Linq.IOrderedEnumerable`1.CreateOrderedEnumerable``1(System.Func{`0,``0},System.Collections.Generic.IComparer{``0},System.Boolean)
+  langs:
+  - csharp
+  name: IOrderedEnumerable<TElement>
+  nameWithType: IOrderedEnumerable<TElement>
+  fullName: System.Linq.IOrderedEnumerable<TElement>
+  type: Interface
+  summary: Represents a sorted sequence.
+  remarks: "This type is enumerable because it inherits from <xref:System.Collections.Generic.IEnumerable%601>.  \n  \n The extension methods <xref:System.Linq.Enumerable.ThenBy%2A> and <xref:System.Linq.Enumerable.ThenByDescending%2A> operate on objects of type IOrderedEnumerable(TElement). An object of type IOrderedEnumerable(TElement) can be obtained by calling one of the primary sort methods, <xref:System.Linq.Enumerable.OrderBy%2A> or <xref:System.Linq.Enumerable.OrderByDescending%2A>, which return an IOrderedEnumerable(TElement). <xref:System.Linq.Enumerable.ThenBy%2A> and <xref:System.Linq.Enumerable.ThenByDescending%2A>, the subordinate sort methods, in turn also return an object of type IOrderedEnumerable(TElement). This design allows for any number of consecutive calls to <xref:System.Linq.Enumerable.ThenBy%2A> or <xref:System.Linq.Enumerable.ThenByDescending%2A>, where each call performs a subordinate ordering on the sorted data returned from the previous call."
+  example:
+  - "The following example demonstrates how to perform a primary and secondary ordering on an array of strings. It also demonstrates that the resulting IOrderedEnumerable(TElement) is enumerable.  \n  \n [!code-cs[System.Linq.IOrderedEnumerable#1](~/add/codesnippet/csharp/t-system.linq.iordereden_1.cs)]\n [!code-vb[System.Linq.IOrderedEnumerable#1](~/add/codesnippet/visualbasic/t-system.linq.iordereden_1.vb)]"
+  syntax:
+    content: 'public interface IOrderedEnumerable<TElement> : System.Collections.Generic.IEnumerable<TElement>'
+    typeParameters:
+    - id: TElement
+      description: The type of the elements of the sequence.
+  implements:
+  - System.Collections.Generic.IEnumerable<TElement>
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Linq\IOrderedEnumerable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Linq/IOrderedEnumerable`1.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Linq.IOrderedEnumerable`1.CreateOrderedEnumerable``1(System.Func{`0,``0},System.Collections.Generic.IComparer{``0},System.Boolean)
+  id: CreateOrderedEnumerable``1(System.Func{`0,``0},System.Collections.Generic.IComparer{``0},System.Boolean)
+  parent: System.Linq.IOrderedEnumerable`1
+  langs:
+  - csharp
+  name: CreateOrderedEnumerable<TKey>(Func<TElement,TKey>,IComparer<TKey>,Boolean)
+  nameWithType: IOrderedEnumerable<TElement>.CreateOrderedEnumerable<TKey>(Func<TElement,TKey>,IComparer<TKey>,Boolean)
+  fullName: System.Linq.IOrderedEnumerable<TElement>.CreateOrderedEnumerable<TKey>(Func<TElement,TKey>,IComparer<TKey>,Boolean)
+  type: Method
+  assemblies:
+  - System.Core
+  namespace: System.Linq
+  summary: Performs a subsequent ordering on the elements of an <xref href="stem.Linq.IOrderedEnumerable%601"></xref> according to a key.
+  remarks: The functionality provided by this method is like that provided by <xref:System.Linq.Enumerable.ThenBy%2A> or <xref:System.Linq.Enumerable.ThenByDescending%2A>, depending on whether `descending` is `true` or `false`. They both perform a subordinate ordering of an already sorted sequence of type <xref:System.Linq.IOrderedEnumerable%601>.
+  example:
+  - "The following code example demonstrates how to use CreateOrderedEnumerable(TKey) to perform a secondary ordering on an <xref:System.Linq.IOrderedEnumerable%601>.  \n  \n [!code-cs[System.Linq.IOrderedEnumerable#2](~/add/codesnippet/csharp/98b4fcf8-b028-473e-9945-_1.cs)]\n [!code-vb[System.Linq.IOrderedEnumerable#2](~/add/codesnippet/visualbasic/98b4fcf8-b028-473e-9945-_1.vb)]"
+  syntax:
+    content: public System.Linq.IOrderedEnumerable<TElement> CreateOrderedEnumerable<TKey> (Func<TElement,TKey> keySelector, System.Collections.Generic.IComparer<TKey> comparer, bool descending);
+    parameters:
+    - id: keySelector
+      type: System.Func{TElement,TKey}
+      description: The <xref href="stem.Func%602"></xref> used to extract the key for each element.
+    - id: comparer
+      type: System.Collections.Generic.IComparer{TKey}
+      description: The <xref href="stem.Collections.Generic.IComparer%601"></xref> used to compare keys for placement in the returned sequence.
+    - id: descending
+      type: System.Boolean
+      description: '`true` to sort the elements in descending order; `false` to sort the elements in ascending order.'
+    return:
+      type: System.Linq.IOrderedEnumerable`1
+      description: An <xref href="stem.Linq.IOrderedEnumerable%601"></xref> whose elements are sorted according to a key.
+  overload: System.Linq.IOrderedEnumerable`1.CreateOrderedEnumerable<TKey>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Linq\IOrderedEnumerable`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Linq/IOrderedEnumerable`1.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Linq.IOrderedEnumerable`1.CreateOrderedEnumerable``1(System.Func{`0,``0},System.Collections.Generic.IComparer{``0},System.Boolean)
+  parent: System.Linq.IOrderedEnumerable`1
+  isExternal: false
+  name: CreateOrderedEnumerable<TKey>(Func<TElement,TKey>,IComparer<TKey>,Boolean)
+  nameWithType: IOrderedEnumerable<TElement>.CreateOrderedEnumerable<TKey>(Func<TElement,TKey>,IComparer<TKey>,Boolean)
+  fullName: System.Linq.IOrderedEnumerable<TElement>.CreateOrderedEnumerable<TKey>(Func<TElement,TKey>,IComparer<TKey>,Boolean)
+- uid: System.Linq.IOrderedEnumerable`1
+  parent: System.Linq
+  isExternal: false
+  name: IOrderedEnumerable<TElement>
+  nameWithType: IOrderedEnumerable<TElement>
+  fullName: System.Linq.IOrderedEnumerable<TElement>
+- uid: System.Func{TElement,TKey}
+  parent: System
+  isExternal: false
+  name: Func<TElement,TKey>
+  nameWithType: Func<TElement,TKey>
+  fullName: System.Func<TElement,TKey>
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func<TElement,TKey>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TElement
+    name: TElement
+    nameWithType: TElement
+    fullName: TElement
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: TKey
+    name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Collections.Generic.IComparer{TKey}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IComparer<TKey>
+  nameWithType: IComparer<TKey>
+  fullName: System.Collections.Generic.IComparer<TKey>
+  spec.csharp:
+  - uid: System.Collections.Generic.IComparer`1
+    name: IComparer
+    nameWithType: IComparer
+    fullName: IComparer<TKey>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TKey
+    name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Linq.IOrderedEnumerable`1.CreateOrderedEnumerable<TKey>*
+  parent: System.Linq.IOrderedEnumerable`1
+  isExternal: false
+  name: CreateOrderedEnumerable<TKey>
+  nameWithType: IOrderedEnumerable<TElement>.CreateOrderedEnumerable<TKey>

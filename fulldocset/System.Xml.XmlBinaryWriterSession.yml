@@ -1,0 +1,222 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.XmlBinaryWriterSession
+  id: XmlBinaryWriterSession
+  children:
+  - System.Xml.XmlBinaryWriterSession.#ctor
+  - System.Xml.XmlBinaryWriterSession.Reset
+  - System.Xml.XmlBinaryWriterSession.TryAdd(System.Xml.XmlDictionaryString,System.Int32@)
+  langs:
+  - csharp
+  name: XmlBinaryWriterSession
+  nameWithType: XmlBinaryWriterSession
+  fullName: System.Xml.XmlBinaryWriterSession
+  type: Class
+  summary: Enables using a dynamic dictionary to compress common strings that appear in a message and maintain state.
+  remarks: "Session objects (this class together with <xref:System.Xml.XmlBinaryReaderSession>) enable dynamic string atomization that can span an entire conversation. These session objects manage dynamic dictionaries. For more information about dynamic dictionaries see <xref:System.Xml.XmlDictionary>.  \n  \n Due to asynchronous processing, it is possible for messages that arrive synchronously to be processed in a different order than the order in which they were sent. String atomization that spans messages must ensure the messages are processed in the original order or the atomized strings must be conveyed using a different mechanism.  \n  \n To use them, you create a session object and pass it to the constructor or initializer for a binary XML reader or writer.  \n  \n To reuse a dynamic dictionary pass the same session object to all subsequent readers and writers.  \n  \n The session object can be reset to allow pooling."
+  syntax:
+    content: public class XmlBinaryWriterSession
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlBinaryWriterSession.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlBinaryWriterSession.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlBinaryWriterSession.#ctor
+  id: '#ctor'
+  parent: System.Xml.XmlBinaryWriterSession
+  langs:
+  - csharp
+  name: XmlBinaryWriterSession()
+  nameWithType: XmlBinaryWriterSession.XmlBinaryWriterSession()
+  fullName: System.Xml.XmlBinaryWriterSession.XmlBinaryWriterSession()
+  type: Constructor
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Xml
+  summary: Creates an instance of this class.
+  syntax:
+    content: public XmlBinaryWriterSession ();
+    parameters: []
+  overload: System.Xml.XmlBinaryWriterSession.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlBinaryWriterSession.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlBinaryWriterSession.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlBinaryWriterSession.Reset
+  id: Reset
+  parent: System.Xml.XmlBinaryWriterSession
+  langs:
+  - csharp
+  name: Reset()
+  nameWithType: XmlBinaryWriterSession.Reset()
+  fullName: System.Xml.XmlBinaryWriterSession.Reset()
+  type: Method
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Xml
+  summary: Clears out the internal collections.
+  syntax:
+    content: public void Reset ();
+    parameters: []
+  overload: System.Xml.XmlBinaryWriterSession.Reset*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlBinaryWriterSession.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlBinaryWriterSession.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlBinaryWriterSession.TryAdd(System.Xml.XmlDictionaryString,System.Int32@)
+  id: TryAdd(System.Xml.XmlDictionaryString,System.Int32@)
+  parent: System.Xml.XmlBinaryWriterSession
+  langs:
+  - csharp
+  name: TryAdd(XmlDictionaryString,Int32)
+  nameWithType: XmlBinaryWriterSession.TryAdd(XmlDictionaryString,Int32)
+  fullName: System.Xml.XmlBinaryWriterSession.TryAdd(XmlDictionaryString,Int32)
+  type: Method
+  assemblies:
+  - System.Runtime.Serialization
+  namespace: System.Xml
+  summary: Tries to add an <xref href="System.Xml.XmlDictionaryString"></xref> to the internal collection.
+  remarks: When you use this class you must override this method to send the collection of keys along with the message. Without overriding, a new key is added to the collection, which is saved, but not sent with the message.
+  syntax:
+    content: public virtual bool TryAdd (System.Xml.XmlDictionaryString value, out int key);
+    parameters:
+    - id: value
+      type: System.Xml.XmlDictionaryString
+      description: The <xref href="System.Xml.XmlDictionaryString"></xref> to add.
+    - id: key
+      type: System.Int32
+      description: The key of the <xref href="System.Xml.XmlDictionaryString"></xref> that was successfully added.
+    return:
+      type: System.Boolean
+      description: '`true` if the string could be added; otherwise, `false`.'
+  overload: System.Xml.XmlBinaryWriterSession.TryAdd*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>value</code> is `null`.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: An entry with key = <code>key</code> already exists.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlBinaryWriterSession.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlBinaryWriterSession.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.Xml.XmlBinaryWriterSession.#ctor
+  parent: System.Xml.XmlBinaryWriterSession
+  isExternal: false
+  name: XmlBinaryWriterSession()
+  nameWithType: XmlBinaryWriterSession.XmlBinaryWriterSession()
+  fullName: System.Xml.XmlBinaryWriterSession.XmlBinaryWriterSession()
+- uid: System.Xml.XmlBinaryWriterSession.Reset
+  parent: System.Xml.XmlBinaryWriterSession
+  isExternal: false
+  name: Reset()
+  nameWithType: XmlBinaryWriterSession.Reset()
+  fullName: System.Xml.XmlBinaryWriterSession.Reset()
+- uid: System.Xml.XmlBinaryWriterSession.TryAdd(System.Xml.XmlDictionaryString,System.Int32@)
+  parent: System.Xml.XmlBinaryWriterSession
+  isExternal: false
+  name: TryAdd(XmlDictionaryString,Int32)
+  nameWithType: XmlBinaryWriterSession.TryAdd(XmlDictionaryString,Int32)
+  fullName: System.Xml.XmlBinaryWriterSession.TryAdd(XmlDictionaryString,Int32)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Xml.XmlDictionaryString
+  parent: System.Xml
+  isExternal: false
+  name: XmlDictionaryString
+  nameWithType: XmlDictionaryString
+  fullName: System.Xml.XmlDictionaryString
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Xml.XmlBinaryWriterSession.#ctor*
+  parent: System.Xml.XmlBinaryWriterSession
+  isExternal: false
+  name: XmlBinaryWriterSession
+  nameWithType: XmlBinaryWriterSession.XmlBinaryWriterSession
+- uid: System.Xml.XmlBinaryWriterSession.Reset*
+  parent: System.Xml.XmlBinaryWriterSession
+  isExternal: false
+  name: Reset
+  nameWithType: XmlBinaryWriterSession.Reset
+- uid: System.Xml.XmlBinaryWriterSession.TryAdd*
+  parent: System.Xml.XmlBinaryWriterSession
+  isExternal: false
+  name: TryAdd
+  nameWithType: XmlBinaryWriterSession.TryAdd

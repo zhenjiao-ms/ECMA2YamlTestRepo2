@@ -1,0 +1,97 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.InteropServices.ICustomFactory
+  id: ICustomFactory
+  children:
+  - System.Runtime.InteropServices.ICustomFactory.CreateInstance(System.Type)
+  langs:
+  - csharp
+  name: ICustomFactory
+  nameWithType: ICustomFactory
+  fullName: System.Runtime.InteropServices.ICustomFactory
+  type: Interface
+  summary: Enables users to write activation code for managed objects that extend <xref href="System.MarshalByRefObject"></xref>.
+  remarks: You can enable custom activation by providing a proxy class that implements `ICustomFactory` and attributing the <xref:System.MarshalByRefObject> class with the <xref:System.Runtime.Remoting.Proxies.ProxyAttribute>. When the class is activated, the proxy's <xref:System.Runtime.InteropServices.ICustomFactory.CreateInstance%2A> method is called by the common language runtime to activate the class.
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public interface ICustomFactory
+  implements: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\ICustomFactory.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/ICustomFactory.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.ICustomFactory.CreateInstance(System.Type)
+  id: CreateInstance(System.Type)
+  parent: System.Runtime.InteropServices.ICustomFactory
+  langs:
+  - csharp
+  name: CreateInstance(Type)
+  nameWithType: ICustomFactory.CreateInstance(Type)
+  fullName: System.Runtime.InteropServices.ICustomFactory.CreateInstance(Type)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.InteropServices
+  summary: Creates a new instance of the specified type.
+  remarks: '`CreateInstance` is called by the common language runtime when a new object of the specified type needs to be created. Override this method to provide your own custom class factory.'
+  syntax:
+    content: public MarshalByRefObject CreateInstance (Type serverType);
+    parameters:
+    - id: serverType
+      type: System.Type
+      description: The type to activate.
+    return:
+      type: System.MarshalByRefObject
+      description: A <xref href="System.MarshalByRefObject"></xref> associated with the specified type.
+  overload: System.Runtime.InteropServices.ICustomFactory.CreateInstance*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\ICustomFactory.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/ICustomFactory.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Runtime.InteropServices.ICustomFactory.CreateInstance(System.Type)
+  parent: System.Runtime.InteropServices.ICustomFactory
+  isExternal: false
+  name: CreateInstance(Type)
+  nameWithType: ICustomFactory.CreateInstance(Type)
+  fullName: System.Runtime.InteropServices.ICustomFactory.CreateInstance(Type)
+- uid: System.MarshalByRefObject
+  parent: System
+  isExternal: false
+  name: MarshalByRefObject
+  nameWithType: MarshalByRefObject
+  fullName: System.MarshalByRefObject
+- uid: System.Type
+  parent: System
+  isExternal: false
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Runtime.InteropServices.ICustomFactory.CreateInstance*
+  parent: System.Runtime.InteropServices.ICustomFactory
+  isExternal: false
+  name: CreateInstance
+  nameWithType: ICustomFactory.CreateInstance

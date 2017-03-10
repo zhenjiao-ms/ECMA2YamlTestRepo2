@@ -1,0 +1,263 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.InvalidMessageContractException
+  id: InvalidMessageContractException
+  children:
+  - System.ServiceModel.InvalidMessageContractException.#ctor
+  - System.ServiceModel.InvalidMessageContractException.#ctor(System.String)
+  - System.ServiceModel.InvalidMessageContractException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.ServiceModel.InvalidMessageContractException.#ctor(System.String,System.Exception)
+  langs:
+  - csharp
+  name: InvalidMessageContractException
+  nameWithType: InvalidMessageContractException
+  fullName: System.ServiceModel.InvalidMessageContractException
+  type: Class
+  summary: Represents a message contract that is not valid.
+  remarks: The InvalidMessageContractException is thrown when custom attribute usage results in the generation of an invalid service description. For example, if a <xref:System.ServiceModel.MessageContractAttribute?displayProperty=fullName> type has multiple parts with the same name, or a method has multiple parameters with the same name.
+  example:
+  - "The following code example shows a contract and service that throws an InvalidMessageContractException that says `operand` appears more than once in the message.  \n  \n```  \n[ServiceContract(Namespace = \"http://contoso.com/IMath\")]  \npublic interface IMath  \n{  \n    [OperationContract]  \n    void Add(AddMessage a);  \n}  \n  \n[MessageContract]  \npublic class AddMessage   \n{  \n    [MessageBodyMember(Name=\"operand\")]  \n    public int a;  \n  \n    [MessageBodyMember(Name = \"operand\")]  \n    public int b;  \n}  \n```"
+  syntax:
+    content: 'public class InvalidMessageContractException : SystemException'
+  inheritance:
+  - System.Object
+  - System.Exception
+  - System.SystemException
+  implements: []
+  inheritedMembers:
+  - System.Exception.Data
+  - System.Exception.GetBaseException
+  - System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.Exception.GetType
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.Message
+  - System.Exception.SerializeObjectState
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\InvalidMessageContractException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/InvalidMessageContractException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.InvalidMessageContractException.#ctor
+  id: '#ctor'
+  parent: System.ServiceModel.InvalidMessageContractException
+  langs:
+  - csharp
+  name: InvalidMessageContractException()
+  nameWithType: InvalidMessageContractException.InvalidMessageContractException()
+  fullName: System.ServiceModel.InvalidMessageContractException.InvalidMessageContractException()
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.InvalidMessageContractException"></xref> class.
+  remarks: Creates a new <xref:System.ServiceModel.InvalidMessageContractException> object.
+  syntax:
+    content: public InvalidMessageContractException ();
+    parameters: []
+  overload: System.ServiceModel.InvalidMessageContractException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\InvalidMessageContractException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/InvalidMessageContractException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.InvalidMessageContractException.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.ServiceModel.InvalidMessageContractException
+  langs:
+  - csharp
+  name: InvalidMessageContractException(String)
+  nameWithType: InvalidMessageContractException.InvalidMessageContractException(String)
+  fullName: System.ServiceModel.InvalidMessageContractException.InvalidMessageContractException(String)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.InvalidMessageContractException"></xref> class using the specified message.
+  remarks: Creates a new <xref:System.ServiceModel.InvalidMessageContractException> object using the `message`.
+  syntax:
+    content: public InvalidMessageContractException (string message);
+    parameters:
+    - id: message
+      type: System.String
+      description: The message for the exception.
+  overload: System.ServiceModel.InvalidMessageContractException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\InvalidMessageContractException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/InvalidMessageContractException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.InvalidMessageContractException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: '#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)'
+  parent: System.ServiceModel.InvalidMessageContractException
+  langs:
+  - csharp
+  name: InvalidMessageContractException(SerializationInfo,StreamingContext)
+  nameWithType: InvalidMessageContractException.InvalidMessageContractException(SerializationInfo,StreamingContext)
+  fullName: System.ServiceModel.InvalidMessageContractException.InvalidMessageContractException(SerializationInfo,StreamingContext)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.InvalidMessageContractException"></xref> class when deserializing from a stream into an object.
+  remarks: Creates a new <xref:System.ServiceModel.InvalidMessageContractException> object from the stream on deserialization.
+  syntax:
+    content: protected InvalidMessageContractException (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+    parameters:
+    - id: info
+      type: System.Runtime.Serialization.SerializationInfo
+      description: The serialization information.
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+      description: The stream from which to deserialize.
+  overload: System.ServiceModel.InvalidMessageContractException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\InvalidMessageContractException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/InvalidMessageContractException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.InvalidMessageContractException.#ctor(System.String,System.Exception)
+  id: '#ctor(System.String,System.Exception)'
+  parent: System.ServiceModel.InvalidMessageContractException
+  langs:
+  - csharp
+  name: InvalidMessageContractException(String,Exception)
+  nameWithType: InvalidMessageContractException.InvalidMessageContractException(String,Exception)
+  fullName: System.ServiceModel.InvalidMessageContractException.InvalidMessageContractException(String,Exception)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.InvalidMessageContractException"></xref> class that uses the specified message and inner exception.
+  remarks: Creates a new <xref:System.ServiceModel.InvalidMessageContractException> object from the `message` and `innerException`.
+  syntax:
+    content: public InvalidMessageContractException (string message, Exception innerException);
+    parameters:
+    - id: message
+      type: System.String
+      description: The exception message.
+    - id: innerException
+      type: System.Exception
+      description: The inner exception.
+  overload: System.ServiceModel.InvalidMessageContractException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\InvalidMessageContractException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/InvalidMessageContractException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.SystemException
+  isExternal: false
+  name: System.SystemException
+- uid: System.ServiceModel.InvalidMessageContractException.#ctor
+  parent: System.ServiceModel.InvalidMessageContractException
+  isExternal: false
+  name: InvalidMessageContractException()
+  nameWithType: InvalidMessageContractException.InvalidMessageContractException()
+  fullName: System.ServiceModel.InvalidMessageContractException.InvalidMessageContractException()
+- uid: System.ServiceModel.InvalidMessageContractException.#ctor(System.String)
+  parent: System.ServiceModel.InvalidMessageContractException
+  isExternal: false
+  name: InvalidMessageContractException(String)
+  nameWithType: InvalidMessageContractException.InvalidMessageContractException(String)
+  fullName: System.ServiceModel.InvalidMessageContractException.InvalidMessageContractException(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.ServiceModel.InvalidMessageContractException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.ServiceModel.InvalidMessageContractException
+  isExternal: false
+  name: InvalidMessageContractException(SerializationInfo,StreamingContext)
+  nameWithType: InvalidMessageContractException.InvalidMessageContractException(SerializationInfo,StreamingContext)
+  fullName: System.ServiceModel.InvalidMessageContractException.InvalidMessageContractException(SerializationInfo,StreamingContext)
+- uid: System.Runtime.Serialization.SerializationInfo
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: SerializationInfo
+  nameWithType: SerializationInfo
+  fullName: System.Runtime.Serialization.SerializationInfo
+- uid: System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext
+- uid: System.ServiceModel.InvalidMessageContractException.#ctor(System.String,System.Exception)
+  parent: System.ServiceModel.InvalidMessageContractException
+  isExternal: false
+  name: InvalidMessageContractException(String,Exception)
+  nameWithType: InvalidMessageContractException.InvalidMessageContractException(String,Exception)
+  fullName: System.ServiceModel.InvalidMessageContractException.InvalidMessageContractException(String,Exception)
+- uid: System.Exception
+  parent: System
+  isExternal: false
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System.ServiceModel.InvalidMessageContractException.#ctor*
+  parent: System.ServiceModel.InvalidMessageContractException
+  isExternal: false
+  name: InvalidMessageContractException
+  nameWithType: InvalidMessageContractException.InvalidMessageContractException

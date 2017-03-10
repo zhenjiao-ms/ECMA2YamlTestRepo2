@@ -1,0 +1,738 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Web.Security.MembershipUserCollection
+  id: MembershipUserCollection
+  children:
+  - System.Web.Security.MembershipUserCollection.#ctor
+  - System.Web.Security.MembershipUserCollection.Add(System.Web.Security.MembershipUser)
+  - System.Web.Security.MembershipUserCollection.Clear
+  - System.Web.Security.MembershipUserCollection.CopyTo(System.Web.Security.MembershipUser[],System.Int32)
+  - System.Web.Security.MembershipUserCollection.Count
+  - System.Web.Security.MembershipUserCollection.GetEnumerator
+  - System.Web.Security.MembershipUserCollection.IsSynchronized
+  - System.Web.Security.MembershipUserCollection.Item(System.String)
+  - System.Web.Security.MembershipUserCollection.Remove(System.String)
+  - System.Web.Security.MembershipUserCollection.SetReadOnly
+  - System.Web.Security.MembershipUserCollection.SyncRoot
+  - System.Web.Security.MembershipUserCollection.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  langs:
+  - csharp
+  name: MembershipUserCollection
+  nameWithType: MembershipUserCollection
+  fullName: System.Web.Security.MembershipUserCollection
+  type: Class
+  summary: A collection of <xref href="System.Web.Security.MembershipUser"></xref> objects.
+  remarks: "A MembershipUserCollection is returned from the <xref:System.Web.Security.Membership.GetAllUsers%2A>, <xref:System.Web.Security.Membership.FindUsersByName%2A>, and <xref:System.Web.Security.Membership.FindUsersByEmail%2A> methods of the <xref:System.Web.Security.Membership?displayProperty=fullName> class. The MembershipUserCollection objects returned by the <xref:System.Web.Security.Membership.GetAllUsers%2A>, <xref:System.Web.Security.Membership.FindUsersByName%2A>, and <xref:System.Web.Security.Membership.FindUsersByEmail%2A> methods contain a snapshot of user information in the membership data store. That is, changes to the membership user information in a MembershipUserCollection are not reflected in the membership data store. To modify membership user information in the membership data store, use the <xref:System.Web.Security.Membership.UpdateUser%2A>, <xref:System.Web.Security.Membership.CreateUser%2A> and <xref:System.Web.Security.Membership.DeleteUser%2A> methods of the <xref:System.Web.Security.Membership?displayProperty=fullName> class.  \n  \n> [!NOTE]\n>  If you are not familiar with the membership features of ASP.NET, see [Introduction to Membership](../Topic/Introduction%20to%20Membership.md) before continuing. For a list of other topics related to membership, see [Managing Users by Using Membership](../Topic/Managing%20Users%20by%20Using%20Membership.md)."
+  example:
+  - "The following code example returns a list of membership users with a count of the number of users currently online. For an example of an ASP.NET application configured to use membership, see the <xref:System.Web.Security.Membership> class.  \n  \n [!code-vb[System.Web.Security.SqlMembershipProvider#5](~/add/codesnippet/visualbasic/t-system.web.security.me_3_1.aspx)]\n [!code-cs[System.Web.Security.SqlMembershipProvider#5](~/add/codesnippet/csharp/t-system.web.security.me_3_1.aspx)]"
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("System.Web, Version=2.0.0.0, Culture=Neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+
+      public sealed class MembershipUserCollection : System.Collections.ICollection
+  inheritance:
+  - System.Object
+  implements:
+  - System.Collections.ICollection
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Security\MembershipUserCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Security/MembershipUserCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Security.MembershipUserCollection.#ctor
+  id: '#ctor'
+  parent: System.Web.Security.MembershipUserCollection
+  langs:
+  - csharp
+  name: MembershipUserCollection()
+  nameWithType: MembershipUserCollection.MembershipUserCollection()
+  fullName: System.Web.Security.MembershipUserCollection.MembershipUserCollection()
+  type: Constructor
+  assemblies:
+  - System.Web
+  - System.Web.ApplicationServices
+  namespace: System.Web.Security
+  summary: Creates a new, empty membership user collection.
+  remarks: A <xref:System.Web.Security.MembershipUserCollection> is constructed by membership provider implementers and returned from the <xref:System.Web.Security.MembershipProvider.GetAllUsers%2A> and <xref:System.Web.Security.MembershipProvider.FindUsersByName%2A> methods of the <xref:System.Web.Security.MembershipProvider> abstract class.
+  example:
+  - "The following code example shows a sample <xref:System.Web.Security.MembershipProvider.GetAllUsers%2A> implementation.  \n  \n [!code-cs[System.Web.Security.IMembershipProvider#15](~/add/codesnippet/csharp/m-system.web.security.me_8_1.cs)]\n [!code-vb[System.Web.Security.IMembershipProvider#15](~/add/codesnippet/visualbasic/m-system.web.security.me_8_1.vb)]"
+  syntax:
+    content: public MembershipUserCollection ();
+    parameters: []
+  overload: System.Web.Security.MembershipUserCollection.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Security\MembershipUserCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Security/MembershipUserCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Security.MembershipUserCollection.Add(System.Web.Security.MembershipUser)
+  id: Add(System.Web.Security.MembershipUser)
+  parent: System.Web.Security.MembershipUserCollection
+  langs:
+  - csharp
+  name: Add(MembershipUser)
+  nameWithType: MembershipUserCollection.Add(MembershipUser)
+  fullName: System.Web.Security.MembershipUserCollection.Add(MembershipUser)
+  type: Method
+  assemblies:
+  - System.Web
+  - System.Web.ApplicationServices
+  namespace: System.Web.Security
+  summary: Adds the specified membership user to the collection.
+  remarks: The Add method is commonly used by membership provider implementations of the <xref:System.Web.Security.MembershipProvider.GetAllUsers%2A>, <xref:System.Web.Security.MembershipProvider.FindUsersByEmail%2A>, and <xref:System.Web.Security.MembershipProvider.FindUsersByName%2A> methods of the <xref:System.Web.Security.MembershipProvider> abstract class.
+  example:
+  - "The following code example shows a sample <xref:System.Web.Security.MembershipProvider.GetAllUsers%2A> implementation.  \n  \n [!code-cs[System.Web.Security.IMembershipProvider#15](~/add/codesnippet/csharp/d304dd8c-b6b4-4739-bf71-_1.cs)]\n [!code-vb[System.Web.Security.IMembershipProvider#15](~/add/codesnippet/visualbasic/d304dd8c-b6b4-4739-bf71-_1.vb)]"
+  syntax:
+    content: public void Add (System.Web.Security.MembershipUser user);
+    parameters:
+    - id: user
+      type: System.Web.Security.MembershipUser
+      description: A <xref href="System.Web.Security.MembershipUser"></xref> object to add to the collection.
+  overload: System.Web.Security.MembershipUserCollection.Add*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The collection is read-only.
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <xref href="stem.Web.Security.MembershipUser.UserName%2A"></xref> of the <code>user</code> is null.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: A <xref href="System.Web.Security.MembershipUser"></xref> object with the same <xref href="stem.Web.Security.MembershipUser.UserName%2A"></xref> value as <code>user</code> already exists in the collection.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Security\MembershipUserCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Security/MembershipUserCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Security.MembershipUserCollection.Clear
+  id: Clear
+  parent: System.Web.Security.MembershipUserCollection
+  langs:
+  - csharp
+  name: Clear()
+  nameWithType: MembershipUserCollection.Clear()
+  fullName: System.Web.Security.MembershipUserCollection.Clear()
+  type: Method
+  assemblies:
+  - System.Web
+  - System.Web.ApplicationServices
+  namespace: System.Web.Security
+  summary: Removes all membership user objects from the collection.
+  remarks: ''
+  example:
+  - "The following code example clears a <xref:System.Web.Security.MembershipUserCollection> before replacing it with the results of the <xref:System.Web.Security.Membership.GetAllUsers%2A> method.  \n  \n [!code-cs[System.Web.Security.MembershipUserCollection#4](~/add/codesnippet/csharp/m-system.web.security.me_0_1.aspx)]\n [!code-vb[System.Web.Security.MembershipUserCollection#4](~/add/codesnippet/visualbasic/m-system.web.security.me_0_1.aspx)]"
+  syntax:
+    content: public void Clear ();
+    parameters: []
+  overload: System.Web.Security.MembershipUserCollection.Clear*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Security\MembershipUserCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Security/MembershipUserCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Security.MembershipUserCollection.CopyTo(System.Web.Security.MembershipUser[],System.Int32)
+  id: CopyTo(System.Web.Security.MembershipUser[],System.Int32)
+  parent: System.Web.Security.MembershipUserCollection
+  langs:
+  - csharp
+  name: CopyTo(MembershipUser[],Int32)
+  nameWithType: MembershipUserCollection.CopyTo(MembershipUser[],Int32)
+  fullName: System.Web.Security.MembershipUserCollection.CopyTo(MembershipUser[],Int32)
+  type: Method
+  assemblies:
+  - System.Web
+  - System.Web.ApplicationServices
+  namespace: System.Web.Security
+  summary: Copies the membership user collection to a one-dimensional array.
+  syntax:
+    content: public void CopyTo (System.Web.Security.MembershipUser[] array, int index);
+    parameters:
+    - id: array
+      type: System.Web.Security.MembershipUser[]
+      description: A one-dimensional array of type <xref href="System.Web.Security.MembershipUser"></xref> that is the destination of the elements copied from the <xref href="System.Web.Security.MembershipUserCollection"></xref>. The array must have zero-based indexing.
+    - id: index
+      type: System.Int32
+      description: The zero-based index in the array at which copying begins.
+  overload: System.Web.Security.MembershipUserCollection.CopyTo*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Security\MembershipUserCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Security/MembershipUserCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Security.MembershipUserCollection.Count
+  id: Count
+  parent: System.Web.Security.MembershipUserCollection
+  langs:
+  - csharp
+  name: Count
+  nameWithType: MembershipUserCollection.Count
+  fullName: System.Web.Security.MembershipUserCollection.Count
+  type: Property
+  assemblies:
+  - System.Web
+  - System.Web.ApplicationServices
+  namespace: System.Web.Security
+  summary: Gets the number of membership user objects in the collection.
+  remarks: ''
+  example:
+  - "The following code example lists all of the users from the membership user data source, including a count of the total number of users.  \n  \n [!code-cs[System.Web.Security.MembershipUserCollection#1](~/add/codesnippet/csharp/p-system.web.security.me_14_1.aspx)]\n [!code-vb[System.Web.Security.MembershipUserCollection#1](~/add/codesnippet/visualbasic/p-system.web.security.me_14_1.aspx)]"
+  syntax:
+    content: public int Count { get; }
+    return:
+      type: System.Int32
+      description: The number of <xref href="System.Web.Security.MembershipUser"></xref> objects in the collection.
+  overload: System.Web.Security.MembershipUserCollection.Count*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Security\MembershipUserCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Security/MembershipUserCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Security.MembershipUserCollection.GetEnumerator
+  id: GetEnumerator
+  parent: System.Web.Security.MembershipUserCollection
+  langs:
+  - csharp
+  name: GetEnumerator()
+  nameWithType: MembershipUserCollection.GetEnumerator()
+  fullName: System.Web.Security.MembershipUserCollection.GetEnumerator()
+  type: Method
+  assemblies:
+  - System.Web
+  - System.Web.ApplicationServices
+  namespace: System.Web.Security
+  summary: Gets an enumerator that can iterate through the membership user collection.
+  remarks: Enumerators only allow reading the data in the collection. Enumerators cannot be used to modify the underlying collection. For more information, see <xref:System.Collections.IEnumerator>.
+  example:
+  - "The following code example uses the <xref:System.Collections.IEnumerator> returned from the GetEnumerator method to iterate through a <xref:System.Web.Security.MembershipUserCollection>.  \n  \n [!code-cs[System.Web.Security.MembershipUserCollection#7](~/add/codesnippet/csharp/m-system.web.security.me_23_1.aspx)]\n [!code-vb[System.Web.Security.MembershipUserCollection#7](~/add/codesnippet/visualbasic/m-system.web.security.me_23_1.aspx)]"
+  syntax:
+    content: public System.Collections.IEnumerator GetEnumerator ();
+    parameters: []
+    return:
+      type: System.Collections.IEnumerator
+      description: An <xref href="System.Collections.IEnumerator"></xref> for the entire <xref href="System.Web.Security.MembershipUserCollection"></xref>.
+  overload: System.Web.Security.MembershipUserCollection.GetEnumerator*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Security\MembershipUserCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Security/MembershipUserCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Security.MembershipUserCollection.IsSynchronized
+  id: IsSynchronized
+  parent: System.Web.Security.MembershipUserCollection
+  langs:
+  - csharp
+  name: IsSynchronized
+  nameWithType: MembershipUserCollection.IsSynchronized
+  fullName: System.Web.Security.MembershipUserCollection.IsSynchronized
+  type: Property
+  assemblies:
+  - System.Web
+  - System.Web.ApplicationServices
+  namespace: System.Web.Security
+  summary: Gets a value indicating whether the membership user collection is thread safe.
+  remarks: Application code does not normally use this property.
+  syntax:
+    content: public bool IsSynchronized { get; }
+    return:
+      type: System.Boolean
+      description: Always `false` because thread-safe membership user collections are not supported.
+  overload: System.Web.Security.MembershipUserCollection.IsSynchronized*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Security\MembershipUserCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Security/MembershipUserCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Security.MembershipUserCollection.Item(System.String)
+  id: Item(System.String)
+  parent: System.Web.Security.MembershipUserCollection
+  langs:
+  - csharp
+  name: Item(String)
+  nameWithType: MembershipUserCollection.Item(String)
+  fullName: System.Web.Security.MembershipUserCollection.Item(String)
+  type: Property
+  assemblies:
+  - System.Web
+  - System.Web.ApplicationServices
+  namespace: System.Web.Security
+  summary: Gets the membership user in the collection referenced by the specified user name.
+  remarks: The <xref:System.Web.Security.MembershipUser> object returned by Item property contains a snapshot of user information in the membership data store. That is, changes to the membership user information in the <xref:System.Web.Security.MembershipUserCollection> are not reflected in the membership data store. To modify membership user information in the membership data store, use the <xref:System.Web.Security.Membership.UpdateUser%2A>, <xref:System.Web.Security.Membership.CreateUser%2A>, and <xref:System.Web.Security.Membership.DeleteUser%2A> methods.
+  example:
+  - "The following code example displays all membership user names in a <xref:System.Web.UI.WebControls.ListBox> and shows specific membership information for the selected user name.  \n  \n [!code-cs[System.Web.Security.MembershipUserCollection#2](~/add/codesnippet/csharp/p-system.web.security.me_8_1.aspx)]\n [!code-vb[System.Web.Security.MembershipUserCollection#2](~/add/codesnippet/visualbasic/p-system.web.security.me_8_1.aspx)]"
+  syntax:
+    content: public System.Web.Security.MembershipUser this[string name] { get; }
+    parameters:
+    - id: name
+      type: System.String
+      description: The <xref href="stem.Web.Security.MembershipUser.UserName%2A"></xref> of the <xref href="System.Web.Security.MembershipUser"></xref> to retrieve from the collection.
+    return:
+      type: System.Web.Security.MembershipUser
+      description: A <xref href="System.Web.Security.MembershipUser"></xref> object representing the user specified by <code>name</code>.
+  overload: System.Web.Security.MembershipUserCollection.Item*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Security\MembershipUserCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Security/MembershipUserCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Security.MembershipUserCollection.Remove(System.String)
+  id: Remove(System.String)
+  parent: System.Web.Security.MembershipUserCollection
+  langs:
+  - csharp
+  name: Remove(String)
+  nameWithType: MembershipUserCollection.Remove(String)
+  fullName: System.Web.Security.MembershipUserCollection.Remove(String)
+  type: Method
+  assemblies:
+  - System.Web
+  - System.Web.ApplicationServices
+  namespace: System.Web.Security
+  summary: Removes the membership user object with the specified user name from the collection.
+  syntax:
+    content: public void Remove (string name);
+    parameters:
+    - id: name
+      type: System.String
+      description: The user name of the <xref href="System.Web.Security.MembershipUser"></xref> object to remove from the collection.
+  overload: System.Web.Security.MembershipUserCollection.Remove*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The collection is read-only.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Security\MembershipUserCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Security/MembershipUserCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Security.MembershipUserCollection.SetReadOnly
+  id: SetReadOnly
+  parent: System.Web.Security.MembershipUserCollection
+  langs:
+  - csharp
+  name: SetReadOnly()
+  nameWithType: MembershipUserCollection.SetReadOnly()
+  fullName: System.Web.Security.MembershipUserCollection.SetReadOnly()
+  type: Method
+  assemblies:
+  - System.Web
+  - System.Web.ApplicationServices
+  namespace: System.Web.Security
+  summary: Makes the contents of the membership user collection read-only.
+  remarks: The contents of a <xref:System.Web.Security.MembershipUserCollection> are considered read-only, as they are a snapshot of the membership user information in the membership data store. Membership user information is modified using the <xref:System.Web.Security.Membership.UpdateUser%2A>, <xref:System.Web.Security.Membership.CreateUser%2A> and <xref:System.Web.Security.Membership.DeleteUser%2A> methods. The SetReadOnly method marks the <xref:System.Web.Security.MembershipUserCollection> as read-only so that <xref:System.Web.Security.MembershipUser> objects cannot be added to or removed from the collection. Property values for the <xref:System.Web.Security.MembershipUser> objects are not marked as read-only. That is, you can modify the property values of a <xref:System.Web.Security.MembershipUser> in the <xref:System.Web.Security.MembershipUserCollection> regardless of whether the collection has been marked as read-only by the SetReadOnly method.
+  example:
+  - "The following code example returns all of the users from the membership data store. The <xref:System.Web.Security.MembershipUserCollection> returned is marked as read-only based on a `Boolean` parameter specified by the caller.  \n  \n [!code-cs[System.Web.Security.MembershipUserCollection#5](~/add/codesnippet/csharp/m-system.web.security.me_5_1.aspx)]\n [!code-vb[System.Web.Security.MembershipUserCollection#5](~/add/codesnippet/visualbasic/m-system.web.security.me_5_1.aspx)]"
+  syntax:
+    content: public void SetReadOnly ();
+    parameters: []
+  overload: System.Web.Security.MembershipUserCollection.SetReadOnly*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Security\MembershipUserCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Security/MembershipUserCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Security.MembershipUserCollection.SyncRoot
+  id: SyncRoot
+  parent: System.Web.Security.MembershipUserCollection
+  langs:
+  - csharp
+  name: SyncRoot
+  nameWithType: MembershipUserCollection.SyncRoot
+  fullName: System.Web.Security.MembershipUserCollection.SyncRoot
+  type: Property
+  assemblies:
+  - System.Web
+  - System.Web.ApplicationServices
+  namespace: System.Web.Security
+  summary: Gets the synchronization root.
+  remarks: Application code does not normally use this property.
+  syntax:
+    content: public object SyncRoot { get; }
+    return:
+      type: System.Object
+      description: Always `this`, because synchronization of membership user collections is not supported.
+  overload: System.Web.Security.MembershipUserCollection.SyncRoot*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Security\MembershipUserCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Security/MembershipUserCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Web.Security.MembershipUserCollection.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  id: System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  isEii: true
+  parent: System.Web.Security.MembershipUserCollection
+  langs:
+  - csharp
+  name: ICollection.CopyTo(Array,Int32)
+  nameWithType: MembershipUserCollection.ICollection.CopyTo(Array,Int32)
+  fullName: System.Web.Security.MembershipUserCollection.ICollection.CopyTo(Array,Int32)
+  type: Method
+  assemblies:
+  - System.Web
+  - System.Web.ApplicationServices
+  namespace: System.Web.Security
+  summary: Copies the contents of the <xref href="System.Web.Security.MembershipUserCollection"></xref> object to an <xref href="System.Array"></xref>, starting at a particular <xref href="System.Array"></xref> index.
+  syntax:
+    content: void ICollection.CopyTo (Array array, int index);
+    parameters:
+    - id: array
+      type: System.Array
+      description: The one-dimensional <xref href="System.Array"></xref> that is the destination for the objects copied from the <xref href="System.Web.Security.MembershipUserCollection"></xref> object. The <xref href="System.Array"></xref> must have zero-based indexing.
+    - id: index
+      type: System.Int32
+      description: The zero-based index in <code>array</code> at which copying begins.
+  overload: System.Web.Security.MembershipUserCollection.System#Collections#ICollection#CopyTo*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>array</code> is `null`.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>index</code> is less than 0.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: "<code>array</code> is multidimensional.  \n  \n -or-  \n  \n <code>index</code> is greater than or equal to the length of <code>array</code>.  \n  \n -or-  \n  \n The number of elements in the source <xref href=\"System.Web.Security.MembershipUserCollection\"></xref> is greater than the available space from <code>index</code> to the end of the destination array."
+  - type: System.InvalidCastException
+    commentId: T:System.InvalidCastException
+    description: The type of the source <xref href="System.Web.Security.MembershipUserCollection"></xref> cannot be cast automatically to the type of the destination array.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Web.Security\MembershipUserCollection.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Web.Security/MembershipUserCollection.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.NotSupportedException
+  parent: System
+  isExternal: false
+  name: NotSupportedException
+  nameWithType: NotSupportedException
+  fullName: System.NotSupportedException
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.InvalidCastException
+  parent: System
+  isExternal: false
+  name: InvalidCastException
+  nameWithType: InvalidCastException
+  fullName: System.InvalidCastException
+- uid: System.Web.Security.MembershipUserCollection.#ctor
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: MembershipUserCollection()
+  nameWithType: MembershipUserCollection.MembershipUserCollection()
+  fullName: System.Web.Security.MembershipUserCollection.MembershipUserCollection()
+- uid: System.Web.Security.MembershipUserCollection.Add(System.Web.Security.MembershipUser)
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: Add(MembershipUser)
+  nameWithType: MembershipUserCollection.Add(MembershipUser)
+  fullName: System.Web.Security.MembershipUserCollection.Add(MembershipUser)
+- uid: System.Web.Security.MembershipUser
+  parent: System.Web.Security
+  isExternal: false
+  name: MembershipUser
+  nameWithType: MembershipUser
+  fullName: System.Web.Security.MembershipUser
+- uid: System.Web.Security.MembershipUserCollection.Clear
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: Clear()
+  nameWithType: MembershipUserCollection.Clear()
+  fullName: System.Web.Security.MembershipUserCollection.Clear()
+- uid: System.Web.Security.MembershipUserCollection.CopyTo(System.Web.Security.MembershipUser[],System.Int32)
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: CopyTo(MembershipUser[],Int32)
+  nameWithType: MembershipUserCollection.CopyTo(MembershipUser[],Int32)
+  fullName: System.Web.Security.MembershipUserCollection.CopyTo(MembershipUser[],Int32)
+- uid: System.Web.Security.MembershipUser[]
+  parent: System.Web.Security
+  isExternal: false
+  name: MembershipUser[]
+  nameWithType: MembershipUser[]
+  fullName: System.Web.Security.MembershipUser[]
+  spec.csharp:
+  - uid: System.Web.Security.MembershipUser
+    name: MembershipUser
+    nameWithType: MembershipUser
+    fullName: MembershipUser[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Web.Security.MembershipUserCollection.Count
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: Count
+  nameWithType: MembershipUserCollection.Count
+  fullName: System.Web.Security.MembershipUserCollection.Count
+- uid: System.Web.Security.MembershipUserCollection.GetEnumerator
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: GetEnumerator()
+  nameWithType: MembershipUserCollection.GetEnumerator()
+  fullName: System.Web.Security.MembershipUserCollection.GetEnumerator()
+- uid: System.Collections.IEnumerator
+  parent: System.Collections
+  isExternal: false
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+- uid: System.Web.Security.MembershipUserCollection.IsSynchronized
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: IsSynchronized
+  nameWithType: MembershipUserCollection.IsSynchronized
+  fullName: System.Web.Security.MembershipUserCollection.IsSynchronized
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Web.Security.MembershipUserCollection.Item(System.String)
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: Item(String)
+  nameWithType: MembershipUserCollection.Item(String)
+  fullName: System.Web.Security.MembershipUserCollection.Item(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Web.Security.MembershipUserCollection.Remove(System.String)
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: Remove(String)
+  nameWithType: MembershipUserCollection.Remove(String)
+  fullName: System.Web.Security.MembershipUserCollection.Remove(String)
+- uid: System.Web.Security.MembershipUserCollection.SetReadOnly
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: SetReadOnly()
+  nameWithType: MembershipUserCollection.SetReadOnly()
+  fullName: System.Web.Security.MembershipUserCollection.SetReadOnly()
+- uid: System.Web.Security.MembershipUserCollection.SyncRoot
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: SyncRoot
+  nameWithType: MembershipUserCollection.SyncRoot
+  fullName: System.Web.Security.MembershipUserCollection.SyncRoot
+- uid: System.Web.Security.MembershipUserCollection.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: ICollection.CopyTo(Array,Int32)
+  nameWithType: MembershipUserCollection.ICollection.CopyTo(Array,Int32)
+  fullName: System.Web.Security.MembershipUserCollection.ICollection.CopyTo(Array,Int32)
+- uid: System.Array
+  parent: System
+  isExternal: false
+  name: Array
+  nameWithType: Array
+  fullName: System.Array
+- uid: System.Web.Security.MembershipUserCollection.#ctor*
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: MembershipUserCollection
+  nameWithType: MembershipUserCollection.MembershipUserCollection
+- uid: System.Web.Security.MembershipUserCollection.Add*
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: Add
+  nameWithType: MembershipUserCollection.Add
+- uid: System.Web.Security.MembershipUserCollection.Clear*
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: Clear
+  nameWithType: MembershipUserCollection.Clear
+- uid: System.Web.Security.MembershipUserCollection.CopyTo*
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: CopyTo
+  nameWithType: MembershipUserCollection.CopyTo
+- uid: System.Web.Security.MembershipUserCollection.Count*
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: Count
+  nameWithType: MembershipUserCollection.Count
+- uid: System.Web.Security.MembershipUserCollection.GetEnumerator*
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: GetEnumerator
+  nameWithType: MembershipUserCollection.GetEnumerator
+- uid: System.Web.Security.MembershipUserCollection.IsSynchronized*
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: IsSynchronized
+  nameWithType: MembershipUserCollection.IsSynchronized
+- uid: System.Web.Security.MembershipUserCollection.Item*
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: Item
+  nameWithType: MembershipUserCollection.Item
+- uid: System.Web.Security.MembershipUserCollection.Remove*
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: Remove
+  nameWithType: MembershipUserCollection.Remove
+- uid: System.Web.Security.MembershipUserCollection.SetReadOnly*
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: SetReadOnly
+  nameWithType: MembershipUserCollection.SetReadOnly
+- uid: System.Web.Security.MembershipUserCollection.SyncRoot*
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: SyncRoot
+  nameWithType: MembershipUserCollection.SyncRoot
+- uid: System.Web.Security.MembershipUserCollection.System#Collections#ICollection#CopyTo*
+  parent: System.Web.Security.MembershipUserCollection
+  isExternal: false
+  name: System.Collections.ICollection.CopyTo
+  nameWithType: MembershipUserCollection.System.Collections.ICollection.CopyTo

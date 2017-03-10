@@ -1,0 +1,184 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute
+  id: ScaffoldColumnAttribute
+  children:
+  - System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.#ctor(System.Boolean)
+  - System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.Scaffold
+  langs:
+  - csharp
+  name: ScaffoldColumnAttribute
+  nameWithType: ScaffoldColumnAttribute
+  fullName: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute
+  type: Class
+  summary: Specifies whether a class or data column uses scaffolding.
+  remarks: "Scaffolding is the mechanism for generating web page templates based on database schemas. ASP.NET Dynamic Data uses scaffolding to generate Web-based UI that lets a user to view and update a database. This class uses the <xref:System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.Scaffold%2A> property to enable scaffolding in a Dynamic Data Web Site.  \n  \n Scaffolding enhances ASP.NET page framework by dynamically displaying pages based on the data model with no physical pages required.  \n  \n Scaffolding provides the following capabilities:  \n  \n-   Minimal or no code to create a data-driven Web application.  \n  \n-   Quick development time.  \n  \n-   Pages that are fully functional and include display, insert, edit, delete, sorting, and paging functionalities.  \n  \n-   Built-in data validation that is based on the database schema.  \n  \n-   Filters that are created for each foreign key or Boolean fields.  \n  \n This class can be used to enable or disable scaffolding of data columns in a data model by applying this attribute to the appropriate data field object in the class that represents the table."
+  example:
+  - "The following code example exposes the ProductID column of the Products table in the AdventureWorksLT data base by applying the scaffold property to the ProductID object in the Products partial class and setting it to `true.` It hides the ThumbnailPhotoFileName column by applying the scaffold property to the ThumbnailPhotoFileName object and setting it to `false`.  \n  \n [!CODE [System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute#1](System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute#1)]  \n  \n```vb#  \n<MetadataType(GetType(ProductMetadata))>  \nPublic Partial Class Product   \n  \nEnd Class   \n  \nPublic Class ProductMetadata   \n    <ScaffoldColumn(True)>  \n    Public ProductID As Object   \n  \n    <ScaffoldColumn(False)>   \n    Public ThumbnailPhotoFileName As Object  \n  \nEnd Class  \n  \n```  \n  \n [C#]  \n  \n```  \n[MetadataType(typeof(ProductMetadata))]  \npublic partial class Product  \n{  \n  \n}  \n  \npublic class ProductMetadata  \n{  \n    [ScaffoldColumn(true)]  \n    public object ProductID;  \n  \n    [ScaffoldColumn(false)]  \n    public object ThumbnailPhotoFileName;  \n  \n}  \n```  \n  \n To compile the example code, you need the following:  \n  \n-   Visual Studio 2008 Service Pack 1 or Visual Developer 2008 Express Edition Service Pack 1.  \n  \n-   The AdventureWorksLT sample database. For information about how to download and install the SQL Server sample database, see [Microsoft SQL Server Product Samples: Database](http://go.microsoft.com/fwlink/?LinkId=117483) on the CodePlex site. Make sure that you install the correct version of the sample database for the version of SQL Server that you are running (SQL Server 2005 or SQL Server 2008).  \n  \n-   A Dynamic Data Web site. This enables you to create a data context for the database and the class that contains the data field to customize and the methods to override. In addition, it creates the environment in which to use the page described before. For more information, see [Walkthrough: Creating a New Dynamic Data Web Site Using Scaffolding](../Topic/Walkthrough:%20Creating%20a%20New%20Dynamic%20Data%20Web%20Site%20Using%20Scaffolding.md)."
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field, AllowMultiple=false)]
+
+      public class ScaffoldColumnAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel.DataAnnotations\ScaffoldColumnAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel.DataAnnotations/ScaffoldColumnAttribute.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.#ctor(System.Boolean)
+  id: '#ctor(System.Boolean)'
+  parent: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute
+  langs:
+  - csharp
+  name: ScaffoldColumnAttribute(Boolean)
+  nameWithType: ScaffoldColumnAttribute.ScaffoldColumnAttribute(Boolean)
+  fullName: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.ScaffoldColumnAttribute(Boolean)
+  type: Constructor
+  assemblies:
+  - System.ComponentModel.DataAnnotations
+  namespace: System.ComponentModel.DataAnnotations
+  summary: Initializes a new instance of <xref href="System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute"></xref> using the <xref href="stem.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.Scaffold%2A"></xref> property.
+  remarks: You can set `scaffold` to `true` for the entire data model to expose all data columns in the database for CRUD (Create, Read, Update and Delete) operations by setting `scaffold` to `true` in the Global.asax file or expose individual data columns in a data table to CRUD operations by setting `scaffold` to `true` in the partial class.
+  syntax:
+    content: public ScaffoldColumnAttribute (bool scaffold);
+    parameters:
+    - id: scaffold
+      type: System.Boolean
+      description: The value that specifies whether scaffolding is enabled.
+  overload: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel.DataAnnotations\ScaffoldColumnAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel.DataAnnotations/ScaffoldColumnAttribute.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.Scaffold
+  id: Scaffold
+  parent: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute
+  langs:
+  - csharp
+  name: Scaffold
+  nameWithType: ScaffoldColumnAttribute.Scaffold
+  fullName: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.Scaffold
+  type: Property
+  assemblies:
+  - System.ComponentModel.DataAnnotations
+  namespace: System.ComponentModel.DataAnnotations
+  summary: Gets or sets the value that specifies whether scaffolding is enabled.
+  remarks: You can use this property to enable scaffolding in individual data columns in a data model. If you set this property to `true` in the global.asax file, the entire data model will expose all data columns in the database for CRUD (Create, Read, Update and Delete) operations.
+  syntax:
+    content: public bool Scaffold { get; }
+    return:
+      type: System.Boolean
+      description: '`true`, if scaffolding is enabled; otherwise `false`.'
+  overload: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.Scaffold*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel.DataAnnotations\ScaffoldColumnAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel.DataAnnotations/ScaffoldColumnAttribute.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.#ctor(System.Boolean)
+  parent: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute
+  isExternal: false
+  name: ScaffoldColumnAttribute(Boolean)
+  nameWithType: ScaffoldColumnAttribute.ScaffoldColumnAttribute(Boolean)
+  fullName: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.ScaffoldColumnAttribute(Boolean)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.Scaffold
+  parent: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute
+  isExternal: false
+  name: Scaffold
+  nameWithType: ScaffoldColumnAttribute.Scaffold
+  fullName: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.Scaffold
+- uid: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.#ctor*
+  parent: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute
+  isExternal: false
+  name: ScaffoldColumnAttribute
+  nameWithType: ScaffoldColumnAttribute.ScaffoldColumnAttribute
+- uid: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute.Scaffold*
+  parent: System.ComponentModel.DataAnnotations.ScaffoldColumnAttribute
+  isExternal: false
+  name: Scaffold
+  nameWithType: ScaffoldColumnAttribute.Scaffold

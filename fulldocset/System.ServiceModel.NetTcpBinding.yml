@@ -1,0 +1,1439 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.NetTcpBinding
+  id: NetTcpBinding
+  children:
+  - System.ServiceModel.NetTcpBinding.#ctor
+  - System.ServiceModel.NetTcpBinding.#ctor(System.ServiceModel.SecurityMode)
+  - System.ServiceModel.NetTcpBinding.#ctor(System.String)
+  - System.ServiceModel.NetTcpBinding.#ctor(System.ServiceModel.SecurityMode,System.Boolean)
+  - System.ServiceModel.NetTcpBinding.CreateBindingElements
+  - System.ServiceModel.NetTcpBinding.EnvelopeVersion
+  - System.ServiceModel.NetTcpBinding.HostNameComparisonMode
+  - System.ServiceModel.NetTcpBinding.ListenBacklog
+  - System.ServiceModel.NetTcpBinding.MaxBufferPoolSize
+  - System.ServiceModel.NetTcpBinding.MaxBufferSize
+  - System.ServiceModel.NetTcpBinding.MaxConnections
+  - System.ServiceModel.NetTcpBinding.MaxReceivedMessageSize
+  - System.ServiceModel.NetTcpBinding.PortSharingEnabled
+  - System.ServiceModel.NetTcpBinding.ReaderQuotas
+  - System.ServiceModel.NetTcpBinding.ReliableSession
+  - System.ServiceModel.NetTcpBinding.Scheme
+  - System.ServiceModel.NetTcpBinding.Security
+  - System.ServiceModel.NetTcpBinding.ShouldSerializeListenBacklog
+  - System.ServiceModel.NetTcpBinding.ShouldSerializeMaxConnections
+  - System.ServiceModel.NetTcpBinding.ShouldSerializeReaderQuotas
+  - System.ServiceModel.NetTcpBinding.ShouldSerializeReliableSession
+  - System.ServiceModel.NetTcpBinding.ShouldSerializeSecurity
+  - System.ServiceModel.NetTcpBinding.ShouldSerializeTransactionProtocol
+  - System.ServiceModel.NetTcpBinding.System#ServiceModel#Channels#IBindingRuntimePreferences#ReceiveSynchronously
+  - System.ServiceModel.NetTcpBinding.TransactionFlow
+  - System.ServiceModel.NetTcpBinding.TransactionProtocol
+  - System.ServiceModel.NetTcpBinding.TransferMode
+  langs:
+  - csharp
+  name: NetTcpBinding
+  nameWithType: NetTcpBinding
+  fullName: System.ServiceModel.NetTcpBinding
+  type: Class
+  summary: A secure, reliable binding suitable for cross-machine communication.
+  remarks: "The NetTcpBinding generates a run-time communication stack by default, which uses transport security, TCP for message delivery, and a binary message encoding. This binding is an appropriate [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] system-provided choice for communicating over an Intranet.  \n  \n The default configuration for the NetTcpBinding is faster than the configuration provided by the <xref:System.ServiceModel.WSHttpBinding>, but it is intended only for [!INCLUDE[indigo2](~/add/includes/indigo2-md.md)]-to-[!INCLUDE[indigo2](~/add/includes/indigo2-md.md)] communication. The security behavior is configurable using the optional `securityMode` parameter in the constructor. The use of WS-ReliableMessaging is configurable using the optional `reliableSessionEnabled` parameter. But reliable messaging is off by default. More generally, the HTTP system-provided bindings such as <xref:System.ServiceModel.WSHttpBinding> and <xref:System.ServiceModel.BasicHttpBinding> are configured to turn things on by default, whereas the NetTcpBinding binding turns things off by default so that you have to opt-in to get support, for example, for one of the WS-* specifications. This means that the default configuration for TCP is faster at exchanging messages between endpoints than that configured for the HTTP bindings by default.  \n  \n> [!WARNING]\n>  The NetTcpBinding uses TCP connection pooling based on the service’s host DNS name and the port number the service is listening on. This works well when a client makes calls to different services on different ports, or services are hosted in a single process and share a port. If a single client calls multiple services sharing a port that are hosted in different processes, or are WAS/IIS hosted, the client side pooling may lead to problems where a connection to Service A is reused for Service B, resulting in an exception being thrown, the connection aborted, and a new channel created. To avoid this problem, use a CustomBinding and specify a different ConnectionPoolSettings.GroupName for each service the client communicates with."
+  example:
+  - "This example shows how to create a NetTcpBinding, setting the security mode and transport credential type.  \n  \n [!code-cs[S_UENetTcpBinding#1](~/add/codesnippet/csharp/t-system.servicemodel.ne_6_1.cs)]"
+  syntax:
+    content: 'public class NetTcpBinding : System.ServiceModel.Channels.Binding, System.ServiceModel.Channels.IBindingRuntimePreferences'
+  inheritance:
+  - System.Object
+  - System.ServiceModel.Channels.Binding
+  implements:
+  - System.ServiceModel.Channels.IBindingRuntimePreferences
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  - System.ServiceModel.Channels.Binding.BuildChannelFactory``1(System.Object[])
+  - System.ServiceModel.Channels.Binding.BuildChannelFactory``1(System.ServiceModel.Channels.BindingParameterCollection)
+  - System.ServiceModel.Channels.Binding.BuildChannelListener``1(System.Object[])
+  - System.ServiceModel.Channels.Binding.BuildChannelListener``1(System.ServiceModel.Channels.BindingParameterCollection)
+  - System.ServiceModel.Channels.Binding.BuildChannelListener``1(System.Uri,System.Object[])
+  - System.ServiceModel.Channels.Binding.BuildChannelListener``1(System.Uri,System.ServiceModel.Channels.BindingParameterCollection)
+  - System.ServiceModel.Channels.Binding.BuildChannelListener``1(System.Uri,System.String,System.Object[])
+  - System.ServiceModel.Channels.Binding.BuildChannelListener``1(System.Uri,System.String,System.ServiceModel.Channels.BindingParameterCollection)
+  - System.ServiceModel.Channels.Binding.BuildChannelListener``1(System.Uri,System.String,System.ServiceModel.Description.ListenUriMode,System.Object[])
+  - System.ServiceModel.Channels.Binding.BuildChannelListener``1(System.Uri,System.String,System.ServiceModel.Description.ListenUriMode,System.ServiceModel.Channels.BindingParameterCollection)
+  - System.ServiceModel.Channels.Binding.CanBuildChannelFactory``1(System.Object[])
+  - System.ServiceModel.Channels.Binding.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingParameterCollection)
+  - System.ServiceModel.Channels.Binding.CanBuildChannelListener``1(System.Object[])
+  - System.ServiceModel.Channels.Binding.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingParameterCollection)
+  - System.ServiceModel.Channels.Binding.CloseTimeout
+  - System.ServiceModel.Channels.Binding.GetProperty``1(System.ServiceModel.Channels.BindingParameterCollection)
+  - System.ServiceModel.Channels.Binding.MessageVersion
+  - System.ServiceModel.Channels.Binding.Name
+  - System.ServiceModel.Channels.Binding.Namespace
+  - System.ServiceModel.Channels.Binding.OpenTimeout
+  - System.ServiceModel.Channels.Binding.ReceiveTimeout
+  - System.ServiceModel.Channels.Binding.SendTimeout
+  - System.ServiceModel.Channels.Binding.ShouldSerializeName
+  - System.ServiceModel.Channels.Binding.ShouldSerializeNamespace
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.#ctor
+  id: '#ctor'
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: NetTcpBinding()
+  nameWithType: NetTcpBinding.NetTcpBinding()
+  fullName: System.ServiceModel.NetTcpBinding.NetTcpBinding()
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.NetTcpBinding"></xref> class.
+  remarks: By default, transport security is used to secure communication (that is, the value of <xref:System.ServiceModel.SecurityMode> is set to <xref:System.ServiceModel.SecurityMode>) and reliable sessions are disabled (that is <xref:System.ServiceModel.OptionalReliableSession.Enabled%2A> is `false`).
+  example:
+  - "This example shows how to create a <xref:System.ServiceModel.NetTcpBinding>, setting the security mode and transport credential type.  \n  \n [!code-cs[S_UENETTCPBINDING#1](~/add/codesnippet/csharp/m-system.servicemodel.ne_4_1.cs)]"
+  syntax:
+    content: public NetTcpBinding ();
+    parameters: []
+  overload: System.ServiceModel.NetTcpBinding.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.#ctor(System.ServiceModel.SecurityMode)
+  id: '#ctor(System.ServiceModel.SecurityMode)'
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: NetTcpBinding(SecurityMode)
+  nameWithType: NetTcpBinding.NetTcpBinding(SecurityMode)
+  fullName: System.ServiceModel.NetTcpBinding.NetTcpBinding(SecurityMode)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.NetTcpBinding"></xref> class with the type of security used specified.
+  remarks: Use this constructor when you want to configure the security. If you want to configure security and enable reliable sessions, use <xref:System.ServiceModel.NetTcpBinding.%23ctor%28System.ServiceModel.SecurityMode%2CSystem.Boolean%29?displayProperty=fullName>.
+  example:
+  - "This example shows how to create a <xref:System.ServiceModel.NetTcpBinding> using the security mode parameter.  \n  \n [!code-cs[S_UENETTCPBINDING#3](~/add/codesnippet/csharp/m-system.servicemodel.ne_1_1.cs)]"
+  syntax:
+    content: public NetTcpBinding (System.ServiceModel.SecurityMode securityMode);
+    parameters:
+    - id: securityMode
+      type: System.ServiceModel.SecurityMode
+      description: The <xref href="System.ServiceModel.SecurityMode"></xref> value that specifies the type of security used with the binding.
+  overload: System.ServiceModel.NetTcpBinding.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: NetTcpBinding(String)
+  nameWithType: NetTcpBinding.NetTcpBinding(String)
+  fullName: System.ServiceModel.NetTcpBinding.NetTcpBinding(String)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.NetTcpBinding"></xref> class with a specified configuration name.
+  remarks: Use this constructor when you want to initialize the binding settings from configuration.
+  example:
+  - "This example shows how to create a <xref:System.ServiceModel.NetTcpBinding> using the `configurationName` parameter.  \n  \n [!code-cs[S_UENETTCPBINDING#4](~/add/codesnippet/csharp/m-system.servicemodel.ne_5_1.cs)]"
+  syntax:
+    content: public NetTcpBinding (string configurationName);
+    parameters:
+    - id: configurationName
+      type: System.String
+      description: The binding configuration name for the <xref href="System.ServiceModel.NetTcpBinding"></xref>.
+  overload: System.ServiceModel.NetTcpBinding.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.#ctor(System.ServiceModel.SecurityMode,System.Boolean)
+  id: '#ctor(System.ServiceModel.SecurityMode,System.Boolean)'
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: NetTcpBinding(SecurityMode,Boolean)
+  nameWithType: NetTcpBinding.NetTcpBinding(SecurityMode,Boolean)
+  fullName: System.ServiceModel.NetTcpBinding.NetTcpBinding(SecurityMode,Boolean)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.NetTcpBinding"></xref> class with the type of security used specified and with a value that indicates whether reliable sessions are explicitly enabled.
+  remarks: Use this constructor when you want to configure the security and enable reliable sessions.
+  example:
+  - "This example shows how to create a <xref:System.ServiceModel.NetTcpBinding> using the `securityMode` and `reliableSessionEnabled` parameters.  \n  \n [!code-cs[S_UENETTCPBINDING#5](~/add/codesnippet/csharp/0f4e5f59-c6c6-4893-be61-_1.cs)]"
+  syntax:
+    content: public NetTcpBinding (System.ServiceModel.SecurityMode securityMode, bool reliableSessionEnabled);
+    parameters:
+    - id: securityMode
+      type: System.ServiceModel.SecurityMode
+      description: The <xref href="System.ServiceModel.SecurityMode"></xref> value that specifies the type of security used with the binding.
+    - id: reliableSessionEnabled
+      type: System.Boolean
+      description: '`true` if reliable sessions are enabled; otherwise, `false`.'
+  overload: System.ServiceModel.NetTcpBinding.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.CreateBindingElements
+  id: CreateBindingElements
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: CreateBindingElements()
+  nameWithType: NetTcpBinding.CreateBindingElements()
+  fullName: System.ServiceModel.NetTcpBinding.CreateBindingElements()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Creates a collection with the binding elements for the binding.
+  remarks: ''
+  example:
+  - "This example shows how to use the CreateBindingElements method to create a collection with the binding elements for the binding.  \n  \n [!code-cs[S_UENetTcpBinding#20](~/add/codesnippet/csharp/m-system.servicemodel.ne_0_1.cs)]"
+  syntax:
+    content: public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements ();
+    parameters: []
+    return:
+      type: System.ServiceModel.Channels.BindingElementCollection
+      description: The <xref href="stem.Collections.Generic.ICollection%601"></xref> of type <xref href="System.ServiceModel.Channels.BindingElement"></xref> that makes up the binding.
+  overload: System.ServiceModel.NetTcpBinding.CreateBindingElements*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.EnvelopeVersion
+  id: EnvelopeVersion
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: EnvelopeVersion
+  nameWithType: NetTcpBinding.EnvelopeVersion
+  fullName: System.ServiceModel.NetTcpBinding.EnvelopeVersion
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets the version of SOAP that is used for messages processed by this binding.
+  remarks: The property always returns SOAP 1.2. This value cannot be changed.
+  example:
+  - "This example shows how to get the EnvelopeVersion value.  \n  \n [!code-cs[S_UENETTCPBINDING#6](~/add/codesnippet/csharp/p-system.servicemodel.ne_13_1.cs)]"
+  syntax:
+    content: public System.ServiceModel.EnvelopeVersion EnvelopeVersion { get; }
+    return:
+      type: System.ServiceModel.EnvelopeVersion
+      description: The value of the <xref href="System.ServiceModel.EnvelopeVersion"></xref> that is used with this binding. The value is SOAP 1.2.
+  overload: System.ServiceModel.NetTcpBinding.EnvelopeVersion*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.HostNameComparisonMode
+  id: HostNameComparisonMode
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: HostNameComparisonMode
+  nameWithType: NetTcpBinding.HostNameComparisonMode
+  fullName: System.ServiceModel.NetTcpBinding.HostNameComparisonMode
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets a value that indicates whether the hostname is used to reach the service when matching the URI.
+  remarks: ''
+  example:
+  - "This example shows how to get the HostNameComparisonMode value.  \n  \n [!code-cs[S_UENetTcpBinding#7](~/add/codesnippet/csharp/p-system.servicemodel.ne_37_1.cs)]"
+  syntax:
+    content: public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get; set; }
+    return:
+      type: System.ServiceModel.HostNameComparisonMode
+      description: One of the <xref href="stem.ServiceModel.Configuration.WSDualHttpBindingElement.HostNameComparisonMode%2A"></xref> values that indicates whether the hostname is used to reach the service when matching the URI. The default value is <xref href="System.ServiceModel.HostNameComparisonMode"></xref>, which ignores the hostname in the match.
+  overload: System.ServiceModel.NetTcpBinding.HostNameComparisonMode*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.ListenBacklog
+  id: ListenBacklog
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: ListenBacklog
+  nameWithType: NetTcpBinding.ListenBacklog
+  fullName: System.ServiceModel.NetTcpBinding.ListenBacklog
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets the maximum number of queued connection requests that can be pending.
+  remarks: <xref:System.ServiceModel.Channels.TcpTransportBindingElement.ListenBacklog%2A> is a socket-level property that describes the number of "pending accept" requests to be queued. If the listen backlog queue fills up, new socket requests will be rejected.
+  example:
+  - "This example shows how to get the ListenBacklog value.  \n  \n [!code-cs[S_UENetTcpBinding#8](~/add/codesnippet/csharp/p-system.servicemodel.ne_25_1.cs)]"
+  syntax:
+    content: public int ListenBacklog { get; set; }
+    return:
+      type: System.Int32
+      description: Returns the maximum number of pending queued connection requests. The default is 10.
+  overload: System.ServiceModel.NetTcpBinding.ListenBacklog*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: The value cannot be less than zero.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.MaxBufferPoolSize
+  id: MaxBufferPoolSize
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: MaxBufferPoolSize
+  nameWithType: NetTcpBinding.MaxBufferPoolSize
+  fullName: System.ServiceModel.NetTcpBinding.MaxBufferPoolSize
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets the maximum size, in bytes, allowed for a buffer pool that stores TCP messages processed by the binding.
+  remarks: If you receive more data than you can buffer, the data that exceeds the buffer size remains on the underlying socket until your buffer has room for the rest of the data.
+  example:
+  - "This example shows how to get the MaxBufferPoolSize value.  \n  \n [!code-cs[S_UENetTcpBinding#9](~/add/codesnippet/csharp/p-system.servicemodel.ne_19_1.cs)]"
+  syntax:
+    content: public long MaxBufferPoolSize { get; set; }
+    return:
+      type: System.Int64
+      description: The maximum size allowed for a buffer pool that stores TCP messages processed by the binding. The default value is 524,288 bytes.
+  overload: System.ServiceModel.NetTcpBinding.MaxBufferPoolSize*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.MaxBufferSize
+  id: MaxBufferSize
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: MaxBufferSize
+  nameWithType: NetTcpBinding.MaxBufferSize
+  fullName: System.ServiceModel.NetTcpBinding.MaxBufferSize
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets a value that specifies the maximum size, in bytes, of the buffer used to store messages in memory.
+  remarks: If you receive more data than you can buffer, the data that exceeds the buffer size remains on the underlying socket until your buffer has room for the rest of the data.
+  example:
+  - "This example shows how to get the value of the MaxBufferSize.  \n  \n [!code-cs[S_UENetTcpBinding#10](~/add/codesnippet/csharp/p-system.servicemodel.ne_22_1.cs)]"
+  syntax:
+    content: public int MaxBufferSize { get; set; }
+    return:
+      type: System.Int32
+      description: The maximum size, in bytes, of the buffer used to store messages in memory. The default value is 65,536 bytes.
+  overload: System.ServiceModel.NetTcpBinding.MaxBufferSize*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.MaxConnections
+  id: MaxConnections
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: MaxConnections
+  nameWithType: NetTcpBinding.MaxConnections
+  fullName: System.ServiceModel.NetTcpBinding.MaxConnections
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets a value that controls the maximum number of connections to be pooled for subsequent reuse on the client and the maximum number of connections allowed to be pending dispatch on the server.
+  remarks: The default value is 10.
+  example:
+  - "This example shows how to get the MaxConnections value.  \n  \n [!code-cs[S_UENetTcpBinding#11](~/add/codesnippet/csharp/p-system.servicemodel.ne_36_1.cs)]"
+  syntax:
+    content: public int MaxConnections { get; set; }
+    return:
+      type: System.Int32
+      description: On the client, the maximum number of connections to be pooled for subsequent reuse; on the server, the maximum number of connections allowed to be pending dispatch.
+  overload: System.ServiceModel.NetTcpBinding.MaxConnections*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.MaxReceivedMessageSize
+  id: MaxReceivedMessageSize
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: MaxReceivedMessageSize
+  nameWithType: NetTcpBinding.MaxReceivedMessageSize
+  fullName: System.ServiceModel.NetTcpBinding.MaxReceivedMessageSize
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets the maximum size, in bytes, for a received message that is processed by the binding.
+  remarks: ''
+  example:
+  - "This example shows how to get the MaxReceivedMessageSize value.  \n  \n [!code-cs[S_UENetTcpBinding#12](~/add/codesnippet/csharp/p-system.servicemodel.ne_32_1.cs)]"
+  syntax:
+    content: public long MaxReceivedMessageSize { get; set; }
+    return:
+      type: System.Int64
+      description: The maximum size (in bytes) for a received message that is processed by the binding. The default value is 65,536 bytes.
+  overload: System.ServiceModel.NetTcpBinding.MaxReceivedMessageSize*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.PortSharingEnabled
+  id: PortSharingEnabled
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: PortSharingEnabled
+  nameWithType: NetTcpBinding.PortSharingEnabled
+  fullName: System.ServiceModel.NetTcpBinding.PortSharingEnabled
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets a value that indicates whether TCP port sharing is enabled for the connection configured with this binding.
+  remarks: "Using this setting requires enabling the [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] TCP Port Sharing Service by changing its startup type to Manual or Automatic.  \n  \n [!INCLUDE[crabout](~/add/includes/crabout-md.md)] the TCP Listener and how to start it, see<xref:System.Net.Sockets.TcpListener>."
+  example:
+  - "This example shows how to get the PortSharingEnabled value.  \n  \n [!code-cs[S_UENetTcpBinding#13](~/add/codesnippet/csharp/p-system.servicemodel.ne_9_1.cs)]"
+  syntax:
+    content: public bool PortSharingEnabled { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if TCP port sharing is enabled; otherwise, `false`. The default value is `false`.'
+  overload: System.ServiceModel.NetTcpBinding.PortSharingEnabled*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.ReaderQuotas
+  id: ReaderQuotas
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: ReaderQuotas
+  nameWithType: NetTcpBinding.ReaderQuotas
+  fullName: System.ServiceModel.NetTcpBinding.ReaderQuotas
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets constraints on the complexity of SOAP messages that can be processed by endpoints configured with this binding.
+  remarks: "The complexity constraints protect against a class of denial of service (DOS) attacks that attempt to use message complexity to tie up endpoint processing resources. The properties that express these constraints and their default values are as follows:  \n  \n-   <xref:System.Xml.XmlDictionaryReaderQuotas.MaxDepth%2A> = 32  \n  \n-   <xref:System.Xml.XmlDictionaryReaderQuotas.MaxStringContentLength%2A> = 8192  \n  \n-   <xref:System.Xml.XmlDictionaryReaderQuotas.MaxArrayLength%2A> = 16384  \n  \n-   <xref:System.Xml.XmlDictionaryReaderQuotas.MaxBytesPerRead%2A> = 4096  \n  \n-   <xref:System.Xml.XmlDictionaryReaderQuotas.MaxNameTableCharCount%2A> = 16384"
+  example:
+  - "The following example shows how to get the ReaderQuotas object.  \n  \n [!code-cs[S_UENetTcpBinding#14](~/add/codesnippet/csharp/p-system.servicemodel.ne_21_1.cs)]"
+  syntax:
+    content: public System.Xml.XmlDictionaryReaderQuotas ReaderQuotas { get; set; }
+    return:
+      type: System.Xml.XmlDictionaryReaderQuotas
+      description: The <xref href="System.Xml.XmlDictionaryReaderQuotas"></xref> that specifies the complexity constraints on soap messages exchanged. The default values for these constraints are provided in the following Remarks section.
+  overload: System.ServiceModel.NetTcpBinding.ReaderQuotas*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.ReliableSession
+  id: ReliableSession
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: ReliableSession
+  nameWithType: NetTcpBinding.ReliableSession
+  fullName: System.ServiceModel.NetTcpBinding.ReliableSession
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets an object that indicates whether a reliable session is established between channel endpoints.
+  remarks: ''
+  example:
+  - "This example shows how to get the ReliableSession value.  \n  \n [!code-cs[S_UENetTcpBinding#15](~/add/codesnippet/csharp/p-system.servicemodel.ne_16_1.cs)]"
+  syntax:
+    content: public System.ServiceModel.OptionalReliableSession ReliableSession { get; set; }
+    return:
+      type: System.ServiceModel.OptionalReliableSession
+      description: An <xref href="System.ServiceModel.OptionalReliableSession"></xref> that indicates whether a WS-RM reliable session is established between channel endpoints. The default value for <xref href="stem.ServiceModel.OptionalReliableSession.Enabled%2A"></xref> is `false`.
+  overload: System.ServiceModel.NetTcpBinding.ReliableSession*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.Scheme
+  id: Scheme
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: Scheme
+  nameWithType: NetTcpBinding.Scheme
+  fullName: System.ServiceModel.NetTcpBinding.Scheme
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Returns the URI scheme for the transport.
+  remarks: The property is provided to validate bindings against base addresses.
+  example:
+  - "This example shows how to get the Scheme value.  \n  \n [!code-cs[S_UENetTcpBinding#16](~/add/codesnippet/csharp/p-system.servicemodel.ne_34_1.cs)]"
+  syntax:
+    content: public override string Scheme { get; }
+    return:
+      type: System.String
+      description: The URI scheme for the transport, which is "net.tcp".
+  overload: System.ServiceModel.NetTcpBinding.Scheme*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.Security
+  id: Security
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: Security
+  nameWithType: NetTcpBinding.Security
+  fullName: System.ServiceModel.NetTcpBinding.Security
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets an object that specifies the type of security used with services configured with this binding.
+  remarks: The <xref:System.ServiceModel.NetTcpSecurity> provides the types of security and settings available to the <xref:System.ServiceModel.NetTcpBinding>.
+  example:
+  - "This example shows how to get the Security value.  \n  \n [!code-cs[S_UENetTcpBinding#17](~/add/codesnippet/csharp/p-system.servicemodel.ne_20_1.cs)]"
+  syntax:
+    content: public System.ServiceModel.NetTcpSecurity Security { get; set; }
+    return:
+      type: System.ServiceModel.NetTcpSecurity
+      description: The <xref href="System.ServiceModel.NetTcpSecurity"></xref> that contains the types of security used with this binding. The default mode of security for the `NetTCPBinding` is <xref href="System.ServiceModel.SecurityMode"></xref>.
+  overload: System.ServiceModel.NetTcpBinding.Security*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeListenBacklog
+  id: ShouldSerializeListenBacklog
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: ShouldSerializeListenBacklog()
+  nameWithType: NetTcpBinding.ShouldSerializeListenBacklog()
+  fullName: System.ServiceModel.NetTcpBinding.ShouldSerializeListenBacklog()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Returns a value that indicates whether the <xref href="stem.ServiceModel.NetTcpBinding.ListenBacklog%2A"></xref> property has changed from its default value and should be serialized.
+  syntax:
+    content: public bool ShouldSerializeListenBacklog ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="stem.ServiceModel.NetTcpBinding.ListenBacklog%2A"></xref> property value should be serialized; otherwise, `false`.'
+  overload: System.ServiceModel.NetTcpBinding.ShouldSerializeListenBacklog*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeMaxConnections
+  id: ShouldSerializeMaxConnections
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: ShouldSerializeMaxConnections()
+  nameWithType: NetTcpBinding.ShouldSerializeMaxConnections()
+  fullName: System.ServiceModel.NetTcpBinding.ShouldSerializeMaxConnections()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Returns a value that indicates whether the <xref href="stem.ServiceModel.NetTcpBinding.MaxConnections%2A"></xref> property has changed from its default value and should be serialized.
+  syntax:
+    content: public bool ShouldSerializeMaxConnections ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="stem.ServiceModel.NetTcpBinding.MaxConnections%2A"></xref> property value should be serialized; otherwise, `false`.'
+  overload: System.ServiceModel.NetTcpBinding.ShouldSerializeMaxConnections*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeReaderQuotas
+  id: ShouldSerializeReaderQuotas
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: ShouldSerializeReaderQuotas()
+  nameWithType: NetTcpBinding.ShouldSerializeReaderQuotas()
+  fullName: System.ServiceModel.NetTcpBinding.ShouldSerializeReaderQuotas()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Returns a value that indicates whether the <xref href="stem.ServiceModel.NetTcpBinding.ReaderQuotas%2A"></xref> property has changed from its default value and should be serialized.
+  syntax:
+    content: public bool ShouldSerializeReaderQuotas ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="stem.ServiceModel.NetTcpBinding.ReaderQuotas%2A"></xref> property value should be serialized; otherwise, `false`.'
+  overload: System.ServiceModel.NetTcpBinding.ShouldSerializeReaderQuotas*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeReliableSession
+  id: ShouldSerializeReliableSession
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: ShouldSerializeReliableSession()
+  nameWithType: NetTcpBinding.ShouldSerializeReliableSession()
+  fullName: System.ServiceModel.NetTcpBinding.ShouldSerializeReliableSession()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Returns a value that indicates whether the <xref href="stem.ServiceModel.NetTcpBinding.ReliableSession%2A"></xref> property has changed from its default value and should be serialized.
+  syntax:
+    content: public bool ShouldSerializeReliableSession ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="stem.ServiceModel.NetTcpBinding.ReliableSession%2A"></xref> property value should be serialized; otherwise, `false`.'
+  overload: System.ServiceModel.NetTcpBinding.ShouldSerializeReliableSession*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeSecurity
+  id: ShouldSerializeSecurity
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: ShouldSerializeSecurity()
+  nameWithType: NetTcpBinding.ShouldSerializeSecurity()
+  fullName: System.ServiceModel.NetTcpBinding.ShouldSerializeSecurity()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Returns a value that indicates whether the <xref href="stem.ServiceModel.NetTcpBinding.Security%2A"></xref> property has changed from its default value and should be serialized.
+  syntax:
+    content: public bool ShouldSerializeSecurity ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="stem.ServiceModel.NetTcpBinding.Security%2A"></xref> property value should be serialized; otherwise, `false`.'
+  overload: System.ServiceModel.NetTcpBinding.ShouldSerializeSecurity*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeTransactionProtocol
+  id: ShouldSerializeTransactionProtocol
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: ShouldSerializeTransactionProtocol()
+  nameWithType: NetTcpBinding.ShouldSerializeTransactionProtocol()
+  fullName: System.ServiceModel.NetTcpBinding.ShouldSerializeTransactionProtocol()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Returns a value that indicates whether the <xref href="stem.ServiceModel.NetTcpBinding.TransactionProtocol%2A"></xref> property has changed from its default value and should be serialized.
+  syntax:
+    content: public bool ShouldSerializeTransactionProtocol ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="stem.ServiceModel.NetTcpBinding.TransactionProtocol%2A"></xref> property value should be serialized; otherwise, `false`.'
+  overload: System.ServiceModel.NetTcpBinding.ShouldSerializeTransactionProtocol*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.System#ServiceModel#Channels#IBindingRuntimePreferences#ReceiveSynchronously
+  id: System#ServiceModel#Channels#IBindingRuntimePreferences#ReceiveSynchronously
+  isEii: true
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: IBindingRuntimePreferences.ReceiveSynchronously
+  nameWithType: NetTcpBinding.IBindingRuntimePreferences.ReceiveSynchronously
+  fullName: System.ServiceModel.NetTcpBinding.IBindingRuntimePreferences.ReceiveSynchronously
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets a value that indicates whether incoming requests are handled synchronously or asynchronously.
+  remarks: This run-time behavior for receiving messages in either a service or client application can be changed using [\&lt;synchronousReceive\&gt;](../Topic/%3CsynchronousReceive%3E%20element.md).
+  example:
+  - "This example shows how to get the <xref:System.ServiceModel.NetTcpBinding.TransferMode%2A> value.  \n  \n [!code-cs[S_UENetTcpBinding#21](~/add/codesnippet/csharp/f6b0b519-65f5-4048-a396-_1.cs)]"
+  syntax:
+    content: bool System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously { get; }
+    return:
+      type: System.Boolean
+      description: '`true` if incoming requests are handled synchronously; `false` if incoming requests are handled asynchronously. The default value is `false`.'
+  overload: System.ServiceModel.NetTcpBinding.System#ServiceModel#Channels#IBindingRuntimePreferences#ReceiveSynchronously*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.TransactionFlow
+  id: TransactionFlow
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: TransactionFlow
+  nameWithType: NetTcpBinding.TransactionFlow
+  fullName: System.ServiceModel.NetTcpBinding.TransactionFlow
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets a value that determines whether transaction flow is enabled.
+  remarks: ''
+  example:
+  - "This example shows how to get the TransactionFlow value.  \n  \n [!code-cs[S_UENetTcpBinding#18](~/add/codesnippet/csharp/p-system.servicemodel.ne_12_1.cs)]"
+  syntax:
+    content: public bool TransactionFlow { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if transaction flow is enabled; otherwise, `false`. The default value is `false`.'
+  overload: System.ServiceModel.NetTcpBinding.TransactionFlow*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.TransactionProtocol
+  id: TransactionProtocol
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: TransactionProtocol
+  nameWithType: NetTcpBinding.TransactionProtocol
+  fullName: System.ServiceModel.NetTcpBinding.TransactionProtocol
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets the transactions protocol used by the service to flow transactions.
+  remarks: ''
+  example:
+  - "This example shows how to get the TransactionProtocol value.  \n  \n [!code-cs[S_UENetTcpBinding#19](~/add/codesnippet/csharp/p-system.servicemodel.ne_38_1.cs)]"
+  syntax:
+    content: public System.ServiceModel.TransactionProtocol TransactionProtocol { get; set; }
+    return:
+      type: System.ServiceModel.TransactionProtocol
+      description: The <xref href="System.ServiceModel.TransactionProtocol"></xref> used by the service to flow transactions.
+  overload: System.ServiceModel.NetTcpBinding.TransactionProtocol*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpBinding.TransferMode
+  id: TransferMode
+  parent: System.ServiceModel.NetTcpBinding
+  langs:
+  - csharp
+  name: TransferMode
+  nameWithType: NetTcpBinding.TransferMode
+  fullName: System.ServiceModel.NetTcpBinding.TransferMode
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets a value that indicates whether the service configured with the binding uses streamed or buffered (or both) modes of message transfer.
+  remarks: ''
+  example:
+  - "This example shows how to get the TransferMode value.  \n  \n [!code-cs[S_UENetTcpBinding#22](~/add/codesnippet/csharp/p-system.servicemodel.ne_18_1.cs)]"
+  syntax:
+    content: public System.ServiceModel.TransferMode TransferMode { get; set; }
+    return:
+      type: System.ServiceModel.TransferMode
+      description: The <xref href="System.ServiceModel.TransferMode"></xref> value that indicates whether the service configured with the binding uses streamed or buffered (or both) modes of message transfer.
+  overload: System.ServiceModel.NetTcpBinding.TransferMode*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpBinding.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpBinding.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.ServiceModel.Channels.Binding
+  isExternal: false
+  name: System.ServiceModel.Channels.Binding
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.ServiceModel.NetTcpBinding.#ctor
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: NetTcpBinding()
+  nameWithType: NetTcpBinding.NetTcpBinding()
+  fullName: System.ServiceModel.NetTcpBinding.NetTcpBinding()
+- uid: System.ServiceModel.NetTcpBinding.#ctor(System.ServiceModel.SecurityMode)
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: NetTcpBinding(SecurityMode)
+  nameWithType: NetTcpBinding.NetTcpBinding(SecurityMode)
+  fullName: System.ServiceModel.NetTcpBinding.NetTcpBinding(SecurityMode)
+- uid: System.ServiceModel.SecurityMode
+  parent: System.ServiceModel
+  isExternal: false
+  name: SecurityMode
+  nameWithType: SecurityMode
+  fullName: System.ServiceModel.SecurityMode
+- uid: System.ServiceModel.NetTcpBinding.#ctor(System.String)
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: NetTcpBinding(String)
+  nameWithType: NetTcpBinding.NetTcpBinding(String)
+  fullName: System.ServiceModel.NetTcpBinding.NetTcpBinding(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.ServiceModel.NetTcpBinding.#ctor(System.ServiceModel.SecurityMode,System.Boolean)
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: NetTcpBinding(SecurityMode,Boolean)
+  nameWithType: NetTcpBinding.NetTcpBinding(SecurityMode,Boolean)
+  fullName: System.ServiceModel.NetTcpBinding.NetTcpBinding(SecurityMode,Boolean)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ServiceModel.NetTcpBinding.CreateBindingElements
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: CreateBindingElements()
+  nameWithType: NetTcpBinding.CreateBindingElements()
+  fullName: System.ServiceModel.NetTcpBinding.CreateBindingElements()
+- uid: System.ServiceModel.Channels.BindingElementCollection
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: BindingElementCollection
+  nameWithType: BindingElementCollection
+  fullName: System.ServiceModel.Channels.BindingElementCollection
+- uid: System.ServiceModel.NetTcpBinding.EnvelopeVersion
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: EnvelopeVersion
+  nameWithType: NetTcpBinding.EnvelopeVersion
+  fullName: System.ServiceModel.NetTcpBinding.EnvelopeVersion
+- uid: System.ServiceModel.EnvelopeVersion
+  parent: System.ServiceModel
+  isExternal: false
+  name: EnvelopeVersion
+  nameWithType: EnvelopeVersion
+  fullName: System.ServiceModel.EnvelopeVersion
+- uid: System.ServiceModel.NetTcpBinding.HostNameComparisonMode
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: HostNameComparisonMode
+  nameWithType: NetTcpBinding.HostNameComparisonMode
+  fullName: System.ServiceModel.NetTcpBinding.HostNameComparisonMode
+- uid: System.ServiceModel.HostNameComparisonMode
+  parent: System.ServiceModel
+  isExternal: false
+  name: HostNameComparisonMode
+  nameWithType: HostNameComparisonMode
+  fullName: System.ServiceModel.HostNameComparisonMode
+- uid: System.ServiceModel.NetTcpBinding.ListenBacklog
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ListenBacklog
+  nameWithType: NetTcpBinding.ListenBacklog
+  fullName: System.ServiceModel.NetTcpBinding.ListenBacklog
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.ServiceModel.NetTcpBinding.MaxBufferPoolSize
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: MaxBufferPoolSize
+  nameWithType: NetTcpBinding.MaxBufferPoolSize
+  fullName: System.ServiceModel.NetTcpBinding.MaxBufferPoolSize
+- uid: System.Int64
+  parent: System
+  isExternal: false
+  name: Int64
+  nameWithType: Int64
+  fullName: System.Int64
+- uid: System.ServiceModel.NetTcpBinding.MaxBufferSize
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: MaxBufferSize
+  nameWithType: NetTcpBinding.MaxBufferSize
+  fullName: System.ServiceModel.NetTcpBinding.MaxBufferSize
+- uid: System.ServiceModel.NetTcpBinding.MaxConnections
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: MaxConnections
+  nameWithType: NetTcpBinding.MaxConnections
+  fullName: System.ServiceModel.NetTcpBinding.MaxConnections
+- uid: System.ServiceModel.NetTcpBinding.MaxReceivedMessageSize
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: MaxReceivedMessageSize
+  nameWithType: NetTcpBinding.MaxReceivedMessageSize
+  fullName: System.ServiceModel.NetTcpBinding.MaxReceivedMessageSize
+- uid: System.ServiceModel.NetTcpBinding.PortSharingEnabled
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: PortSharingEnabled
+  nameWithType: NetTcpBinding.PortSharingEnabled
+  fullName: System.ServiceModel.NetTcpBinding.PortSharingEnabled
+- uid: System.ServiceModel.NetTcpBinding.ReaderQuotas
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ReaderQuotas
+  nameWithType: NetTcpBinding.ReaderQuotas
+  fullName: System.ServiceModel.NetTcpBinding.ReaderQuotas
+- uid: System.Xml.XmlDictionaryReaderQuotas
+  parent: System.Xml
+  isExternal: false
+  name: XmlDictionaryReaderQuotas
+  nameWithType: XmlDictionaryReaderQuotas
+  fullName: System.Xml.XmlDictionaryReaderQuotas
+- uid: System.ServiceModel.NetTcpBinding.ReliableSession
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ReliableSession
+  nameWithType: NetTcpBinding.ReliableSession
+  fullName: System.ServiceModel.NetTcpBinding.ReliableSession
+- uid: System.ServiceModel.OptionalReliableSession
+  parent: System.ServiceModel
+  isExternal: false
+  name: OptionalReliableSession
+  nameWithType: OptionalReliableSession
+  fullName: System.ServiceModel.OptionalReliableSession
+- uid: System.ServiceModel.NetTcpBinding.Scheme
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: Scheme
+  nameWithType: NetTcpBinding.Scheme
+  fullName: System.ServiceModel.NetTcpBinding.Scheme
+- uid: System.ServiceModel.NetTcpBinding.Security
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: Security
+  nameWithType: NetTcpBinding.Security
+  fullName: System.ServiceModel.NetTcpBinding.Security
+- uid: System.ServiceModel.NetTcpSecurity
+  parent: System.ServiceModel
+  isExternal: false
+  name: NetTcpSecurity
+  nameWithType: NetTcpSecurity
+  fullName: System.ServiceModel.NetTcpSecurity
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeListenBacklog
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ShouldSerializeListenBacklog()
+  nameWithType: NetTcpBinding.ShouldSerializeListenBacklog()
+  fullName: System.ServiceModel.NetTcpBinding.ShouldSerializeListenBacklog()
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeMaxConnections
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ShouldSerializeMaxConnections()
+  nameWithType: NetTcpBinding.ShouldSerializeMaxConnections()
+  fullName: System.ServiceModel.NetTcpBinding.ShouldSerializeMaxConnections()
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeReaderQuotas
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ShouldSerializeReaderQuotas()
+  nameWithType: NetTcpBinding.ShouldSerializeReaderQuotas()
+  fullName: System.ServiceModel.NetTcpBinding.ShouldSerializeReaderQuotas()
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeReliableSession
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ShouldSerializeReliableSession()
+  nameWithType: NetTcpBinding.ShouldSerializeReliableSession()
+  fullName: System.ServiceModel.NetTcpBinding.ShouldSerializeReliableSession()
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeSecurity
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ShouldSerializeSecurity()
+  nameWithType: NetTcpBinding.ShouldSerializeSecurity()
+  fullName: System.ServiceModel.NetTcpBinding.ShouldSerializeSecurity()
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeTransactionProtocol
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ShouldSerializeTransactionProtocol()
+  nameWithType: NetTcpBinding.ShouldSerializeTransactionProtocol()
+  fullName: System.ServiceModel.NetTcpBinding.ShouldSerializeTransactionProtocol()
+- uid: System.ServiceModel.NetTcpBinding.System#ServiceModel#Channels#IBindingRuntimePreferences#ReceiveSynchronously
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: IBindingRuntimePreferences.ReceiveSynchronously
+  nameWithType: NetTcpBinding.IBindingRuntimePreferences.ReceiveSynchronously
+  fullName: System.ServiceModel.NetTcpBinding.IBindingRuntimePreferences.ReceiveSynchronously
+- uid: System.ServiceModel.NetTcpBinding.TransactionFlow
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: TransactionFlow
+  nameWithType: NetTcpBinding.TransactionFlow
+  fullName: System.ServiceModel.NetTcpBinding.TransactionFlow
+- uid: System.ServiceModel.NetTcpBinding.TransactionProtocol
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: TransactionProtocol
+  nameWithType: NetTcpBinding.TransactionProtocol
+  fullName: System.ServiceModel.NetTcpBinding.TransactionProtocol
+- uid: System.ServiceModel.TransactionProtocol
+  parent: System.ServiceModel
+  isExternal: false
+  name: TransactionProtocol
+  nameWithType: TransactionProtocol
+  fullName: System.ServiceModel.TransactionProtocol
+- uid: System.ServiceModel.NetTcpBinding.TransferMode
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: TransferMode
+  nameWithType: NetTcpBinding.TransferMode
+  fullName: System.ServiceModel.NetTcpBinding.TransferMode
+- uid: System.ServiceModel.TransferMode
+  parent: System.ServiceModel
+  isExternal: false
+  name: TransferMode
+  nameWithType: TransferMode
+  fullName: System.ServiceModel.TransferMode
+- uid: System.ServiceModel.NetTcpBinding.#ctor*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: NetTcpBinding
+  nameWithType: NetTcpBinding.NetTcpBinding
+- uid: System.ServiceModel.NetTcpBinding.CreateBindingElements*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: CreateBindingElements
+  nameWithType: NetTcpBinding.CreateBindingElements
+- uid: System.ServiceModel.NetTcpBinding.EnvelopeVersion*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: EnvelopeVersion
+  nameWithType: NetTcpBinding.EnvelopeVersion
+- uid: System.ServiceModel.NetTcpBinding.HostNameComparisonMode*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: HostNameComparisonMode
+  nameWithType: NetTcpBinding.HostNameComparisonMode
+- uid: System.ServiceModel.NetTcpBinding.ListenBacklog*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ListenBacklog
+  nameWithType: NetTcpBinding.ListenBacklog
+- uid: System.ServiceModel.NetTcpBinding.MaxBufferPoolSize*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: MaxBufferPoolSize
+  nameWithType: NetTcpBinding.MaxBufferPoolSize
+- uid: System.ServiceModel.NetTcpBinding.MaxBufferSize*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: MaxBufferSize
+  nameWithType: NetTcpBinding.MaxBufferSize
+- uid: System.ServiceModel.NetTcpBinding.MaxConnections*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: MaxConnections
+  nameWithType: NetTcpBinding.MaxConnections
+- uid: System.ServiceModel.NetTcpBinding.MaxReceivedMessageSize*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: MaxReceivedMessageSize
+  nameWithType: NetTcpBinding.MaxReceivedMessageSize
+- uid: System.ServiceModel.NetTcpBinding.PortSharingEnabled*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: PortSharingEnabled
+  nameWithType: NetTcpBinding.PortSharingEnabled
+- uid: System.ServiceModel.NetTcpBinding.ReaderQuotas*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ReaderQuotas
+  nameWithType: NetTcpBinding.ReaderQuotas
+- uid: System.ServiceModel.NetTcpBinding.ReliableSession*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ReliableSession
+  nameWithType: NetTcpBinding.ReliableSession
+- uid: System.ServiceModel.NetTcpBinding.Scheme*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: Scheme
+  nameWithType: NetTcpBinding.Scheme
+- uid: System.ServiceModel.NetTcpBinding.Security*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: Security
+  nameWithType: NetTcpBinding.Security
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeListenBacklog*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ShouldSerializeListenBacklog
+  nameWithType: NetTcpBinding.ShouldSerializeListenBacklog
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeMaxConnections*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ShouldSerializeMaxConnections
+  nameWithType: NetTcpBinding.ShouldSerializeMaxConnections
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeReaderQuotas*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ShouldSerializeReaderQuotas
+  nameWithType: NetTcpBinding.ShouldSerializeReaderQuotas
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeReliableSession*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ShouldSerializeReliableSession
+  nameWithType: NetTcpBinding.ShouldSerializeReliableSession
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeSecurity*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ShouldSerializeSecurity
+  nameWithType: NetTcpBinding.ShouldSerializeSecurity
+- uid: System.ServiceModel.NetTcpBinding.ShouldSerializeTransactionProtocol*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: ShouldSerializeTransactionProtocol
+  nameWithType: NetTcpBinding.ShouldSerializeTransactionProtocol
+- uid: System.ServiceModel.NetTcpBinding.System#ServiceModel#Channels#IBindingRuntimePreferences#ReceiveSynchronously*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously
+  nameWithType: NetTcpBinding.System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously
+- uid: System.ServiceModel.NetTcpBinding.TransactionFlow*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: TransactionFlow
+  nameWithType: NetTcpBinding.TransactionFlow
+- uid: System.ServiceModel.NetTcpBinding.TransactionProtocol*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: TransactionProtocol
+  nameWithType: NetTcpBinding.TransactionProtocol
+- uid: System.ServiceModel.NetTcpBinding.TransferMode*
+  parent: System.ServiceModel.NetTcpBinding
+  isExternal: false
+  name: TransferMode
+  nameWithType: NetTcpBinding.TransferMode

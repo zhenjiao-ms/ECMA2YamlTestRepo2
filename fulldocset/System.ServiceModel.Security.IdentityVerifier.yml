@@ -1,0 +1,272 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.Security.IdentityVerifier
+  id: IdentityVerifier
+  children:
+  - System.ServiceModel.Security.IdentityVerifier.#ctor
+  - System.ServiceModel.Security.IdentityVerifier.CheckAccess(System.ServiceModel.EndpointIdentity,System.IdentityModel.Policy.AuthorizationContext)
+  - System.ServiceModel.Security.IdentityVerifier.CreateDefault
+  - System.ServiceModel.Security.IdentityVerifier.TryGetIdentity(System.ServiceModel.EndpointAddress,System.ServiceModel.EndpointIdentity@)
+  langs:
+  - csharp
+  name: IdentityVerifier
+  nameWithType: IdentityVerifier
+  fullName: System.ServiceModel.Security.IdentityVerifier
+  type: Class
+  summary: An `abstract` base class that can be implemented to verify an expected identity against an authorization context that represents a remote endpoint, or to create an identity from an endpoint address.
+  remarks: "The [!INCLUDE[indigo2](~/add/includes/indigo2-md.md)] infrastructure calls the <xref:System.ServiceModel.Security.IdentityVerifier.TryGetIdentity%2A> method first to retrieve the service's identity from the message. Next, the infrastructure calls the <xref:System.ServiceModel.Security.IdentityVerifier.CheckAccess%2A> method with the returned <xref:System.ServiceModel.EndpointIdentity> and <xref:System.IdentityModel.Policy.AuthorizationContext>.  \n  \n For more information about implementing the class, see [How to: Create a Custom Client Identity Verifier](../Topic/How%20to:%20Create%20a%20Custom%20Client%20Identity%20Verifier.md)."
+  syntax:
+    content: public abstract class IdentityVerifier
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Security\IdentityVerifier.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Security/IdentityVerifier.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Security.IdentityVerifier.#ctor
+  id: '#ctor'
+  parent: System.ServiceModel.Security.IdentityVerifier
+  langs:
+  - csharp
+  name: IdentityVerifier()
+  nameWithType: IdentityVerifier.IdentityVerifier()
+  fullName: System.ServiceModel.Security.IdentityVerifier.IdentityVerifier()
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Security
+  summary: Creates an instance of this class.
+  syntax:
+    content: protected IdentityVerifier ();
+    parameters: []
+  overload: System.ServiceModel.Security.IdentityVerifier.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Security\IdentityVerifier.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Security/IdentityVerifier.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Security.IdentityVerifier.CheckAccess(System.ServiceModel.EndpointIdentity,System.IdentityModel.Policy.AuthorizationContext)
+  id: CheckAccess(System.ServiceModel.EndpointIdentity,System.IdentityModel.Policy.AuthorizationContext)
+  parent: System.ServiceModel.Security.IdentityVerifier
+  langs:
+  - csharp
+  name: CheckAccess(EndpointIdentity,AuthorizationContext)
+  nameWithType: IdentityVerifier.CheckAccess(EndpointIdentity,AuthorizationContext)
+  fullName: System.ServiceModel.Security.IdentityVerifier.CheckAccess(EndpointIdentity,AuthorizationContext)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Security
+  summary: Implements a method to verify an identity.
+  syntax:
+    content: public abstract bool CheckAccess (System.ServiceModel.EndpointIdentity identity, System.IdentityModel.Policy.AuthorizationContext authContext);
+    parameters:
+    - id: identity
+      type: System.ServiceModel.EndpointIdentity
+      description: The <xref href="System.ServiceModel.EndpointIdentity"></xref> to verify.
+    - id: authContext
+      type: System.IdentityModel.Policy.AuthorizationContext
+      description: The <xref href="System.IdentityModel.Policy.AuthorizationContext"></xref> to test the <code>identity</code> against.
+    return:
+      type: System.Boolean
+      description: '`true` if the identity is verified; otherwise, `false`. The default is `false`.'
+  overload: System.ServiceModel.Security.IdentityVerifier.CheckAccess*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Security\IdentityVerifier.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Security/IdentityVerifier.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Security.IdentityVerifier.CreateDefault
+  id: CreateDefault
+  parent: System.ServiceModel.Security.IdentityVerifier
+  langs:
+  - csharp
+  name: CreateDefault()
+  nameWithType: IdentityVerifier.CreateDefault()
+  fullName: System.ServiceModel.Security.IdentityVerifier.CreateDefault()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Security
+  summary: Creates a default instance of this class.
+  syntax:
+    content: public static System.ServiceModel.Security.IdentityVerifier CreateDefault ();
+    parameters: []
+    return:
+      type: System.ServiceModel.Security.IdentityVerifier
+      description: A default instance of <xref href="System.ServiceModel.Security.IdentityVerifier"></xref>.
+  overload: System.ServiceModel.Security.IdentityVerifier.CreateDefault*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Security\IdentityVerifier.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Security/IdentityVerifier.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Security.IdentityVerifier.TryGetIdentity(System.ServiceModel.EndpointAddress,System.ServiceModel.EndpointIdentity@)
+  id: TryGetIdentity(System.ServiceModel.EndpointAddress,System.ServiceModel.EndpointIdentity@)
+  parent: System.ServiceModel.Security.IdentityVerifier
+  langs:
+  - csharp
+  name: TryGetIdentity(EndpointAddress,EndpointIdentity)
+  nameWithType: IdentityVerifier.TryGetIdentity(EndpointAddress,EndpointIdentity)
+  fullName: System.ServiceModel.Security.IdentityVerifier.TryGetIdentity(EndpointAddress,EndpointIdentity)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Security
+  summary: Tries to create an identity from an endpoint.
+  remarks: The default <xref:System.ServiceModel.Security.IdentityVerifier> creates a <xref:System.ServiceModel.DnsEndpointIdentity> based on the hostname portion of <xref:System.ServiceModel.EndpointAddress.Uri%2A> if an explicit <xref:System.ServiceModel.EndpointIdentity> has not been specified as part of the <xref:System.ServiceModel.EndpointAddress>.
+  syntax:
+    content: public abstract bool TryGetIdentity (System.ServiceModel.EndpointAddress reference, out System.ServiceModel.EndpointIdentity identity);
+    parameters:
+    - id: reference
+      type: System.ServiceModel.EndpointAddress
+      description: The <xref href="System.ServiceModel.EndpointAddress"></xref> to use for creating the identity.
+    - id: identity
+      type: System.ServiceModel.EndpointIdentity
+      description: The <xref href="System.ServiceModel.EndpointIdentity"></xref> that is returned.
+    return:
+      type: System.Boolean
+      description: '`true` if the identity is returned; otherwise, `false`. The default is `false`.'
+  overload: System.ServiceModel.Security.IdentityVerifier.TryGetIdentity*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Security\IdentityVerifier.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Security/IdentityVerifier.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ServiceModel.Security.IdentityVerifier.#ctor
+  parent: System.ServiceModel.Security.IdentityVerifier
+  isExternal: false
+  name: IdentityVerifier()
+  nameWithType: IdentityVerifier.IdentityVerifier()
+  fullName: System.ServiceModel.Security.IdentityVerifier.IdentityVerifier()
+- uid: System.ServiceModel.Security.IdentityVerifier.CheckAccess(System.ServiceModel.EndpointIdentity,System.IdentityModel.Policy.AuthorizationContext)
+  parent: System.ServiceModel.Security.IdentityVerifier
+  isExternal: false
+  name: CheckAccess(EndpointIdentity,AuthorizationContext)
+  nameWithType: IdentityVerifier.CheckAccess(EndpointIdentity,AuthorizationContext)
+  fullName: System.ServiceModel.Security.IdentityVerifier.CheckAccess(EndpointIdentity,AuthorizationContext)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ServiceModel.EndpointIdentity
+  parent: System.ServiceModel
+  isExternal: false
+  name: EndpointIdentity
+  nameWithType: EndpointIdentity
+  fullName: System.ServiceModel.EndpointIdentity
+- uid: System.IdentityModel.Policy.AuthorizationContext
+  parent: System.IdentityModel.Policy
+  isExternal: false
+  name: AuthorizationContext
+  nameWithType: AuthorizationContext
+  fullName: System.IdentityModel.Policy.AuthorizationContext
+- uid: System.ServiceModel.Security.IdentityVerifier.CreateDefault
+  parent: System.ServiceModel.Security.IdentityVerifier
+  isExternal: false
+  name: CreateDefault()
+  nameWithType: IdentityVerifier.CreateDefault()
+  fullName: System.ServiceModel.Security.IdentityVerifier.CreateDefault()
+- uid: System.ServiceModel.Security.IdentityVerifier
+  parent: System.ServiceModel.Security
+  isExternal: false
+  name: IdentityVerifier
+  nameWithType: IdentityVerifier
+  fullName: System.ServiceModel.Security.IdentityVerifier
+- uid: System.ServiceModel.Security.IdentityVerifier.TryGetIdentity(System.ServiceModel.EndpointAddress,System.ServiceModel.EndpointIdentity@)
+  parent: System.ServiceModel.Security.IdentityVerifier
+  isExternal: false
+  name: TryGetIdentity(EndpointAddress,EndpointIdentity)
+  nameWithType: IdentityVerifier.TryGetIdentity(EndpointAddress,EndpointIdentity)
+  fullName: System.ServiceModel.Security.IdentityVerifier.TryGetIdentity(EndpointAddress,EndpointIdentity)
+- uid: System.ServiceModel.EndpointAddress
+  parent: System.ServiceModel
+  isExternal: false
+  name: EndpointAddress
+  nameWithType: EndpointAddress
+  fullName: System.ServiceModel.EndpointAddress
+- uid: System.ServiceModel.Security.IdentityVerifier.#ctor*
+  parent: System.ServiceModel.Security.IdentityVerifier
+  isExternal: false
+  name: IdentityVerifier
+  nameWithType: IdentityVerifier.IdentityVerifier
+- uid: System.ServiceModel.Security.IdentityVerifier.CheckAccess*
+  parent: System.ServiceModel.Security.IdentityVerifier
+  isExternal: false
+  name: CheckAccess
+  nameWithType: IdentityVerifier.CheckAccess
+- uid: System.ServiceModel.Security.IdentityVerifier.CreateDefault*
+  parent: System.ServiceModel.Security.IdentityVerifier
+  isExternal: false
+  name: CreateDefault
+  nameWithType: IdentityVerifier.CreateDefault
+- uid: System.ServiceModel.Security.IdentityVerifier.TryGetIdentity*
+  parent: System.ServiceModel.Security.IdentityVerifier
+  isExternal: false
+  name: TryGetIdentity
+  nameWithType: IdentityVerifier.TryGetIdentity

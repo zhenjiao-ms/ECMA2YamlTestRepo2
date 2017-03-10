@@ -1,0 +1,272 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Threading.SemaphoreFullException
+  id: SemaphoreFullException
+  children:
+  - System.Threading.SemaphoreFullException.#ctor
+  - System.Threading.SemaphoreFullException.#ctor(System.String)
+  - System.Threading.SemaphoreFullException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.Threading.SemaphoreFullException.#ctor(System.String,System.Exception)
+  langs:
+  - csharp
+  name: SemaphoreFullException
+  nameWithType: SemaphoreFullException
+  fullName: System.Threading.SemaphoreFullException
+  type: Class
+  summary: The exception that is thrown when the <xref href="stem.Threading.Semaphore.Release%2A"></xref> method is called on a semaphore whose count is already at the maximum.
+  remarks: "The count on a semaphore is decremented each time a thread enters the semaphore, and incremented when a thread releases the semaphore. When the count is zero, subsequent requests block until other threads release the semaphore. When all threads have released the semaphore, the count is at the maximum value specified when the semaphore was created. If a programming error causes a thread to call the <xref:System.Threading.Semaphore.Release%2A?displayProperty=fullName> method at this point, a SemaphoreFullException is thrown.  \n  \n> [!NOTE]\n>  The <xref:System.Threading.Semaphore> class does not enforce thread identity on calls to the <xref:System.Threading.WaitHandle.WaitOne%2A?displayProperty=fullName> and <xref:System.Threading.Semaphore.Release%2A?displayProperty=fullName> methods. It is not necessary for the same thread that called <xref:System.Threading.WaitHandle.WaitOne%2A> to call <xref:System.Threading.Semaphore.Release%2A>.  \n  \n SemaphoreFullException does not necessarily indicate a problem with the code where the exception occurred. Consider the following scenario: Thread A and thread B enter a semaphore that has a maximum count of two. A programming error in thread B causes it to call <xref:System.Threading.Semaphore.Release%2A> twice, so that the count on the semaphore is full. As a result, when thread A eventually calls <xref:System.Threading.Semaphore.Release%2A>, a SemaphoreFullException is thrown.  \n  \n For a list of initial property values for an instance of the SemaphoreFullException class, see the <xref:System.Threading.SemaphoreFullException.%23ctor> constructor."
+  example:
+  - "The following code example shows how a programming error in one thread can lead to a SemaphoreFullException in another thread: Two threads enter a semaphore. The second thread releases the semaphore twice, while the first thread is still executing its task. When the first thread finishes and releases the semaphore, the semaphore count is already full and an exception is thrown.  \n  \n [!code-cpp[System.Threading.SemaphoreFullException#1](~/add/codesnippet/cpp/t-system.threading.semap_2_1.cpp)]\n [!code-cs[System.Threading.SemaphoreFullException#1](~/add/codesnippet/csharp/t-system.threading.semap_2_1.cs)]\n [!code-vb[System.Threading.SemaphoreFullException#1](~/add/codesnippet/visualbasic/t-system.threading.semap_2_1.vb)]"
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("System, Version=2.0.0.0, Culture=Neutral, PublicKeyToken=b77a5c561934e089")]
+
+      [System.Runtime.InteropServices.ComVisible(false)]
+
+      public class SemaphoreFullException : SystemException
+  inheritance:
+  - System.Object
+  - System.Exception
+  - System.SystemException
+  implements: []
+  inheritedMembers:
+  - System.Exception.Data
+  - System.Exception.GetBaseException
+  - System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.Exception.GetType
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.Message
+  - System.Exception.SerializeObjectState
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\SemaphoreFullException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/SemaphoreFullException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.SemaphoreFullException.#ctor
+  id: '#ctor'
+  parent: System.Threading.SemaphoreFullException
+  langs:
+  - csharp
+  name: SemaphoreFullException()
+  nameWithType: SemaphoreFullException.SemaphoreFullException()
+  fullName: System.Threading.SemaphoreFullException.SemaphoreFullException()
+  type: Constructor
+  assemblies:
+  - System
+  - mscorlib
+  namespace: System.Threading
+  summary: Initializes a new instance of the <xref href="System.Threading.SemaphoreFullException"></xref> class with default values.
+  remarks: "This constructor initializes the <xref:System.Exception.Message%2A> property of the new instance to a system-supplied message that describes the error, such as \"Adding the given count to the semaphore would cause it to exceed its maximum count.\" This message takes into account the current system culture.  \n  \n The following table shows the initial property values for an instance of the <xref:System.Threading.SemaphoreFullException> class.  \n  \n|Property|Value|  \n|--------------|-----------|  \n|<xref:System.Exception.InnerException%2A>|`null`.|  \n|<xref:System.Exception.Message%2A>|The system-supplied error message string.|"
+  syntax:
+    content: public SemaphoreFullException ();
+    parameters: []
+  overload: System.Threading.SemaphoreFullException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\SemaphoreFullException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/SemaphoreFullException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.SemaphoreFullException.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Threading.SemaphoreFullException
+  langs:
+  - csharp
+  name: SemaphoreFullException(String)
+  nameWithType: SemaphoreFullException.SemaphoreFullException(String)
+  fullName: System.Threading.SemaphoreFullException.SemaphoreFullException(String)
+  type: Constructor
+  assemblies:
+  - System
+  - mscorlib
+  namespace: System.Threading
+  summary: Initializes a new instance of the <xref href="System.Threading.SemaphoreFullException"></xref> class with a specified error message.
+  remarks: "The content of `message` is a text string intended to inform the user about the exception. The caller of this constructor is required to ensure that this string has been localized for the current system culture.  \n  \n The following table shows the initial property values for an instance of the <xref:System.Threading.SemaphoreFullException> class initialized with this constructor.  \n  \n|Property|Value|  \n|--------------|-----------|  \n|<xref:System.Exception.InnerException%2A>|`null`.|  \n|<xref:System.Exception.Message%2A>|`message`.|"
+  syntax:
+    content: public SemaphoreFullException (string message);
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message that explains the reason for the exception.
+  overload: System.Threading.SemaphoreFullException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\SemaphoreFullException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/SemaphoreFullException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.SemaphoreFullException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: '#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)'
+  parent: System.Threading.SemaphoreFullException
+  langs:
+  - csharp
+  name: SemaphoreFullException(SerializationInfo,StreamingContext)
+  nameWithType: SemaphoreFullException.SemaphoreFullException(SerializationInfo,StreamingContext)
+  fullName: System.Threading.SemaphoreFullException.SemaphoreFullException(SerializationInfo,StreamingContext)
+  type: Constructor
+  assemblies:
+  - System
+  - mscorlib
+  namespace: System.Threading
+  summary: Initializes a new instance of the <xref href="System.Threading.SemaphoreFullException"></xref> class with serialized data.
+  remarks: This constructor is called during deserialization to reconstitute the exception object transmitted over a stream. For more information, see [XML and SOAP Serialization](../Topic/XML%20and%20SOAP%20Serialization.md).
+  syntax:
+    content: protected SemaphoreFullException (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+    parameters:
+    - id: info
+      type: System.Runtime.Serialization.SerializationInfo
+      description: The <xref href="System.Runtime.Serialization.SerializationInfo"></xref> object that holds the serialized object data about the exception being thrown.
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+      description: The <xref href="System.Runtime.Serialization.StreamingContext"></xref> object that contains contextual information about the source or destination.
+  overload: System.Threading.SemaphoreFullException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\SemaphoreFullException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/SemaphoreFullException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.SemaphoreFullException.#ctor(System.String,System.Exception)
+  id: '#ctor(System.String,System.Exception)'
+  parent: System.Threading.SemaphoreFullException
+  langs:
+  - csharp
+  name: SemaphoreFullException(String,Exception)
+  nameWithType: SemaphoreFullException.SemaphoreFullException(String,Exception)
+  fullName: System.Threading.SemaphoreFullException.SemaphoreFullException(String,Exception)
+  type: Constructor
+  assemblies:
+  - System
+  - mscorlib
+  namespace: System.Threading
+  summary: Initializes a new instance of the <xref href="System.Threading.SemaphoreFullException"></xref> class with a specified error message and a reference to the inner exception that is the cause of this exception.
+  remarks: An exception that is thrown as a direct result of a previous exception should include a reference to the previous exception in the <xref:System.Exception.InnerException%2A> property. The <xref:System.Exception.InnerException%2A> property returns the same value that is passed into the constructor, or `null` if the <xref:System.Exception.InnerException%2A> property does not supply the inner exception value to the constructor.
+  syntax:
+    content: public SemaphoreFullException (string message, Exception innerException);
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message that explains the reason for the exception.
+    - id: innerException
+      type: System.Exception
+      description: The exception that is the cause of the current exception. If the <code>innerException</code> parameter is not `null`, the current exception is raised in a `catch` block that handles the inner exception.
+  overload: System.Threading.SemaphoreFullException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\SemaphoreFullException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/SemaphoreFullException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.SystemException
+  isExternal: false
+  name: System.SystemException
+- uid: System.Threading.SemaphoreFullException.#ctor
+  parent: System.Threading.SemaphoreFullException
+  isExternal: false
+  name: SemaphoreFullException()
+  nameWithType: SemaphoreFullException.SemaphoreFullException()
+  fullName: System.Threading.SemaphoreFullException.SemaphoreFullException()
+- uid: System.Threading.SemaphoreFullException.#ctor(System.String)
+  parent: System.Threading.SemaphoreFullException
+  isExternal: false
+  name: SemaphoreFullException(String)
+  nameWithType: SemaphoreFullException.SemaphoreFullException(String)
+  fullName: System.Threading.SemaphoreFullException.SemaphoreFullException(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Threading.SemaphoreFullException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.Threading.SemaphoreFullException
+  isExternal: false
+  name: SemaphoreFullException(SerializationInfo,StreamingContext)
+  nameWithType: SemaphoreFullException.SemaphoreFullException(SerializationInfo,StreamingContext)
+  fullName: System.Threading.SemaphoreFullException.SemaphoreFullException(SerializationInfo,StreamingContext)
+- uid: System.Runtime.Serialization.SerializationInfo
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: SerializationInfo
+  nameWithType: SerializationInfo
+  fullName: System.Runtime.Serialization.SerializationInfo
+- uid: System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext
+- uid: System.Threading.SemaphoreFullException.#ctor(System.String,System.Exception)
+  parent: System.Threading.SemaphoreFullException
+  isExternal: false
+  name: SemaphoreFullException(String,Exception)
+  nameWithType: SemaphoreFullException.SemaphoreFullException(String,Exception)
+  fullName: System.Threading.SemaphoreFullException.SemaphoreFullException(String,Exception)
+- uid: System.Exception
+  parent: System
+  isExternal: false
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System.Threading.SemaphoreFullException.#ctor*
+  parent: System.Threading.SemaphoreFullException
+  isExternal: false
+  name: SemaphoreFullException
+  nameWithType: SemaphoreFullException.SemaphoreFullException

@@ -1,0 +1,2289 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.Serialization.XmlSerializer
+  id: XmlSerializer
+  children:
+  - System.Xml.Serialization.XmlSerializer.#ctor
+  - System.Xml.Serialization.XmlSerializer.#ctor(System.Type)
+  - System.Xml.Serialization.XmlSerializer.#ctor(System.Xml.Serialization.XmlTypeMapping)
+  - System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.String)
+  - System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Type[])
+  - System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides)
+  - System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlRootAttribute)
+  - System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides,System.Type[],System.Xml.Serialization.XmlRootAttribute,System.String)
+  - System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides,System.Type[],System.Xml.Serialization.XmlRootAttribute,System.String,System.String)
+  - System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides,System.Type[],System.Xml.Serialization.XmlRootAttribute,System.String,System.String,System.Security.Policy.Evidence)
+  - System.Xml.Serialization.XmlSerializer.CanDeserialize(System.Xml.XmlReader)
+  - System.Xml.Serialization.XmlSerializer.CreateReader
+  - System.Xml.Serialization.XmlSerializer.CreateWriter
+  - System.Xml.Serialization.XmlSerializer.Deserialize(System.IO.Stream)
+  - System.Xml.Serialization.XmlSerializer.Deserialize(System.IO.TextReader)
+  - System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.Serialization.XmlSerializationReader)
+  - System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader)
+  - System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader,System.String)
+  - System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader,System.Xml.Serialization.XmlDeserializationEvents)
+  - System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader,System.String,System.Xml.Serialization.XmlDeserializationEvents)
+  - System.Xml.Serialization.XmlSerializer.FromMappings(System.Xml.Serialization.XmlMapping[])
+  - System.Xml.Serialization.XmlSerializer.FromMappings(System.Xml.Serialization.XmlMapping[],System.Security.Policy.Evidence)
+  - System.Xml.Serialization.XmlSerializer.FromMappings(System.Xml.Serialization.XmlMapping[],System.Type)
+  - System.Xml.Serialization.XmlSerializer.FromTypes(System.Type[])
+  - System.Xml.Serialization.XmlSerializer.GenerateSerializer(System.Type[],System.Xml.Serialization.XmlMapping[])
+  - System.Xml.Serialization.XmlSerializer.GenerateSerializer(System.Type[],System.Xml.Serialization.XmlMapping[],System.CodeDom.Compiler.CompilerParameters)
+  - System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(System.Type)
+  - System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(System.Type,System.String)
+  - System.Xml.Serialization.XmlSerializer.Serialize(System.IO.Stream,System.Object)
+  - System.Xml.Serialization.XmlSerializer.Serialize(System.IO.TextWriter,System.Object)
+  - System.Xml.Serialization.XmlSerializer.Serialize(System.Object,System.Xml.Serialization.XmlSerializationWriter)
+  - System.Xml.Serialization.XmlSerializer.Serialize(System.Xml.XmlWriter,System.Object)
+  - System.Xml.Serialization.XmlSerializer.Serialize(System.IO.Stream,System.Object,System.Xml.Serialization.XmlSerializerNamespaces)
+  - System.Xml.Serialization.XmlSerializer.Serialize(System.IO.TextWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces)
+  - System.Xml.Serialization.XmlSerializer.Serialize(System.Xml.XmlWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces)
+  - System.Xml.Serialization.XmlSerializer.Serialize(System.Xml.XmlWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces,System.String)
+  - System.Xml.Serialization.XmlSerializer.Serialize(System.Xml.XmlWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces,System.String,System.String)
+  - System.Xml.Serialization.XmlSerializer.UnknownAttribute
+  - System.Xml.Serialization.XmlSerializer.UnknownElement
+  - System.Xml.Serialization.XmlSerializer.UnknownNode
+  - System.Xml.Serialization.XmlSerializer.UnreferencedObject
+  langs:
+  - csharp
+  name: XmlSerializer
+  nameWithType: XmlSerializer
+  fullName: System.Xml.Serialization.XmlSerializer
+  type: Class
+  summary: Serializes and deserializes objects into and from XML documents. The XmlSerializer enables you to control how objects are encoded into XML.
+  remarks: "XML serialization is the process of converting an object's public properties and fields to a serial format (in this case, XML) for storage or transport. Deserialization re-creates the object in its original state from the XML output. You can think of serialization as a way of saving the state of an object into a stream or buffer. For example, ASP.NET uses the XmlSerializer class to encode XML Web service messages.  \n  \n The data in your objects is described using programming language constructs like classes, fields, properties, primitive types, arrays, and even embedded XML in the form of <xref:System.Xml.XmlElement> or <xref:System.Xml.XmlAttribute> objects. You have the option of creating your own classes, annotated with attributes, or using the [XML Schema Definition Tool (Xsd.exe)](../Topic/XML%20Schema%20Definition%20Tool%20\\(Xsd.exe\\).md) to generate the classes based on an existing XML Schema definition (XSD) document. If you have an XML Schema, you can run the Xsd.exe to produce a set of classes that are strongly typed to the schema and annotated with attributes to adhere to the schema when serialized.  \n  \n To transfer data between objects and XML requires a mapping from the programming language constructs to XML schema and from the XML schema to the programming language constructs. The XmlSerializer and related tools like Xsd.exe provide the bridge between these two technologies at both design time and runtime. At design time, use the Xsd.exe to produce an XML schema document (.xsd) from your custom classes or to produce classes from a given schema. In either case, the classes are annotated with custom attributes to instruct the XmlSerializer how to map between the XML schema system and the common language runtime. At runtime, instances of the classes can be serialized into XML documents that follow the given schema. Likewise, these XML documents can be deserialized into runtime objects. Note that the XML schema is optional, and not required at design time or runtime.  \n  \n## Controlling Generated XML  \n To control the generated XML, you can apply special attributes to classes and members. For example, to specify a different XML element name, apply an <xref:System.Xml.Serialization.XmlElementAttribute> to a public field or property, and set the <xref:System.Xml.Serialization.XmlElementAttribute.ElementName%2A> property. For a complete list of similar attributes, see [Attributes That Control XML Serialization](../Topic/Attributes%20That%20Control%20XML%20Serialization.md). You can also implement the <xref:System.Xml.Serialization.IXmlSerializable> interface to control the XML output.  \n  \n If the XML generated must conform to section 5 of the World Wide Consortium (www.w3.org) document, \"Simple Object Access Protocol (SOAP) 1.1\", you must construct the XmlSerializer with an <xref:System.Xml.Serialization.XmlTypeMapping>. To further control the encoded SOAP XML, use the attributes listed in [Attributes That Control Encoded SOAP Serialization](../Topic/Attributes%20That%20Control%20Encoded%20SOAP%20Serialization.md).  \n  \n With the XmlSerializer you can take advantage of working with strongly typed classes and still have the flexibility of XML. Using fields or properties of type <xref:System.Xml.XmlElement>, <xref:System.Xml.XmlAttribute> or <xref:System.Xml.XmlNode> in your strongly typed classes, you can read parts of the XML document directly into XML objects.  \n  \n If you work with extensible XML schemas, you can also use the <xref:System.Xml.Serialization.XmlAnyElementAttribute> and <xref:System.Xml.Serialization.XmlAnyAttributeAttribute> attributes to serialize and deserialize elements or attributes that are not found in the original schema. To use the objects, apply an <xref:System.Xml.Serialization.XmlAnyElementAttribute> to a field that returns an array of <xref:System.Xml.XmlElement> objects, or apply an <xref:System.Xml.Serialization.XmlAnyAttributeAttribute> to a field that returns an array of <xref:System.Xml.XmlAttribute> objects.  \n  \n If a property or field returns a complex object (such as an array or a class instance), the XmlSerializer converts it to an element nested within the main XML document. For example, the first class in the following code returns an instance of the second class.  \n  \n```vb#  \nPublic Class MyClass  \n    Public MyObjectProperty As MyObject  \nEnd Class  \n  \nPublic Class MyObject  \n    Public ObjectName As String  \nEnd Class  \n```  \n  \n```c#  \npublic class MyClass  \n{  \n    public MyObject MyObjectProperty;  \n}  \npublic class MyObject  \n{  \n    public string ObjectName;  \n}  \n```  \n  \n The serialized, XML output looks like this:  \n  \n```  \n<MyClass>  \n  <MyObjectProperty>  \n  <ObjectName>My String</ObjectName>  \n  </MyObjectProperty>  \n</MyClass>  \n```  \n  \n If a schema includes an element that is optional (minOccurs = '0'), or if the schema includes a default value, you have two options. One option is to use <xref:System.ComponentModel.DefaultValueAttribute?displayProperty=fullName> to specify the default value, as shown in the following code.  \n  \n```vb#  \nPublic Class PurchaseOrder  \n    <System.ComponentModel.DefaultValueAttribute (\"2002\")> _  \n    Public Year As String  \nEnd Class  \n```  \n  \n```c#  \npublic class PurchaseOrder  \n{  \n    [System.ComponentModel.DefaultValueAttribute (\"2002\")]  \n    public string Year;  \n}  \n```  \n  \n Another option is to use a special pattern to create a Boolean field recognized by the XmlSerializer, and to apply the <xref:System.Xml.Serialization.XmlIgnoreAttribute> to the field. The pattern is created in the form of `propertyNameSpecified`. For example, if there is a field named \"MyFirstName\" you would also create a field named \"MyFirstNameSpecified\" that instructs the XmlSerializer whether to generate the XML element named \"MyFirstName\". This is shown in the following example.  \n  \n```vb#  \nPublic Class OptionalOrder  \n    ' This field's value should not be serialized   \n    ' if it is uninitialized.  \n    Public FirstOrder As String  \n  \n    ' Use the XmlIgnoreAttribute to ignore the   \n    ' special field named \"FirstOrderSpecified\".  \n    <System.Xml.Serialization.XmlIgnoreAttribute> _  \n    Public FirstOrderSpecified As Boolean  \nEnd Class  \n```  \n  \n```c#  \npublic class OptionalOrder  \n{  \n    // This field should not be serialized   \n    // if it is uninitialized.  \n    public string FirstOrder;  \n  \n    // Use the XmlIgnoreAttribute to ignore the   \n    // special field named \"FirstOrderSpecified\".  \n    [System.Xml.Serialization.XmlIgnoreAttribute]  \n    public bool FirstOrderSpecified;  \n}  \n```  \n  \n## Overriding Default Serialization  \n You can also override the serialization of any set of objects and their fields and properties by creating one of the appropriate attributes, and adding it to an instance of the <xref:System.Xml.Serialization.XmlAttributes> class. Overriding serialization in this way has two uses: first, you can control and augment the serialization of objects found in a DLL, even if you do not have access to the source; second, you can create one set of serializable classes, but serialize the objects in multiple ways. For more details, see the <xref:System.Xml.Serialization.XmlAttributeOverrides> class and [How to: Control Serialization of Derived Classes](../Topic/How%20to:%20Control%20Serialization%20of%20Derived%20Classes.md).  \n  \n To serialize an object, call the <xref:System.Xml.Serialization.XmlSerializer.Serialize%2A> method. To deserialize an object, call the <xref:System.Xml.Serialization.XmlSerializer.Deserialize%2A> method.  \n  \n To add XML namespaces to an XML document, see <xref:System.Xml.Serialization.XmlSerializerNamespaces>.  \n  \n> [!NOTE]\n>  The XmlSerializer gives special treatment to classes that implement <xref:System.Collections.IEnumerable> or <xref:System.Collections.ICollection>. A class that implements <xref:System.Collections.IEnumerable> must implement a public `Add` method that takes a single parameter. The `Add` method's parameter must be of the same type as is returned from the `Current` property on the value returned from `GetEnumerator`, or one of that type's bases. A class that implements <xref:System.Collections.ICollection> (such as <xref:System.Collections.CollectionBase>) in addition to <xref:System.Collections.IEnumerable> must have a public `Item` indexed property (indexer in C#) that takes an integer, and it must have a public `Count` property of type integer. The parameter to the `Add` method must be the same type as is returned from the `Item` property, or one of that type's bases. For classes that implement <xref:System.Collections.ICollection>, values to be serialized are retrieved from the indexed `Item` property, not by calling `GetEnumerator`.  \n  \n You must have permission to write to the temporary directory (as defined by the TEMP environment variable) to deserialize an object.  \n  \n## Dynamically Generated Assemblies  \n To increase performance, the XML serialization infrastructure dynamically generates assemblies to serialize and deserialize specified types. The infrastructure finds and reuses those assemblies. This behavior occurs only when using the following constructors:  \n  \n <xref:System.Xml.Serialization.XmlSerializer.%23ctor%28System.Type%29?displayProperty=fullName>  \n  \n <xref:System.Xml.Serialization.XmlSerializer.%23ctor%28System.Type%2CSystem.String%29?displayProperty=fullName>  \n  \n If you use any of the other constructors, multiple versions of the same assembly are generated and never unloaded, which results in a memory leak and poor performance. The easiest solution is to use one of the previously mentioned two constructors. Otherwise, you must cache the assemblies in a <xref:System.Collections.Hashtable>, as shown in the following example.  \n  \n```c#  \nHashtable serializers = new Hashtable();  \n  \n// Use the constructor that takes a type and XmlRootAttribute.  \nXmlSerializer s = new XmlSerializer(typeof(MyClass), myRoot);  \n  \n// Implement a method named GenerateKey that creates unique keys   \n// for each instance of the XmlSerializer. The code should take   \n// into account all parameters passed to the XmlSerializer   \n// constructor.  \nobject key = GenerateKey(typeof(MyClass), myRoot);  \n  \n// Check the local cache for a matching serializer.  \nXmlSerializer ser = (XmlSerializer)serializers[key];  \nif (ser == null)   \n{  \n    ser = new XmlSerializer(typeof(MyClass), myRoot);  \n    // Cache the serializer.  \n    serializers[key] = ser;  \n}  \nelse  \n{  \n    // Use the serializer to serialize, or deserialize.  \n}  \n```  \n  \n```vb#  \nDim serializers As New Hashtable()  \n  \n' Use the constructor that takes a type and XmlRootAttribute.  \nDim s As New XmlSerializer(GetType([MyClass]), myRoot)  \n  \n' Implement a method named GenerateKey that creates unique keys   \n' for each instance of the XmlSerializer. The code should take   \n' into account all parameters passed to the XmlSerializer   \n' constructor.  \nDim key As Object = GenerateKey(GetType([MyClass]), myRoot)  \n  \n' Check the local cache for a matching serializer.  \nDim ser As XmlSerializer = CType(serializers(key), XmlSerializer)  \n  \nIf ser Is Nothing Then  \n    ser = New XmlSerializer(GetType([MyClass]), myRoot)  \n    ' Cache the serializer.  \n    serializers(key) = ser  \nElse   \n    ' Use the serializer to serialize, or deserialize.  \nEnd If  \n```  \n  \n## Serialization of ArrayList and Generic List  \n The XmlSerializer cannot serialize or deserialize the following:  \n  \n-   Arrays of <xref:System.Collections.ArrayList>  \n  \n-   Arrays of <xref:System.Collections.Generic.List%601>  \n  \n## Serialization of Enumerations of Unsigned Long  \n The XmlSerializer cannot be instantiated to serialize an enumeration if the following conditions are true: The enumeration is of type unsigned long (`ulong` in C#) and the enumeration contains any member with a value larger than 9,223,372,036,854,775,807. For example, the following cannot be serialized.  \n  \n<CodeContentPlaceHolder>9</CodeContentPlaceHolder>  \n## Objects marked with the Obsolete Attribute no longer serialized  \n In the [!INCLUDE[netfx35_short](~/add/includes/netfx35-short-md.md)] the XmlSerializer class no longer serializes objects that are marked as `[Obsolete]`."
+  example:
+  - "The following example contains two main classes: `PurchaseOrder` and `Test`. The `PurchaseOrder` class contains information about a single purchase. The `Test` class contains the methods that create the purchase order, and that read the created purchase order.  \n  \n [!code-cpp[Classic XmlSerializer Example#1](~/add/codesnippet/cpp/t-system.xml.serializati_4_1.cpp)]\n [!code-cs[Classic XmlSerializer Example#1](~/add/codesnippet/csharp/t-system.xml.serializati_4_1.cs)]\n [!code-vb[Classic XmlSerializer Example#1](~/add/codesnippet/visualbasic/t-system.xml.serializati_4_1.vb)]"
+  syntax:
+    content: public class XmlSerializer
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.#ctor
+  id: '#ctor'
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: XmlSerializer()
+  nameWithType: XmlSerializer.XmlSerializer()
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer()
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> class.
+  syntax:
+    content: protected XmlSerializer ();
+    parameters: []
+  overload: System.Xml.Serialization.XmlSerializer.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type)
+  id: '#ctor(System.Type)'
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: XmlSerializer(Type)
+  nameWithType: XmlSerializer.XmlSerializer(Type)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> class that can serialize objects of the specified type into XML documents, and deserialize XML documents into objects of the specified type.
+  remarks: Commonly, an application defines several classes that the <xref:System.Xml.Serialization.XmlSerializer> converts into a single XML-instance document. However, the <xref:System.Xml.Serialization.XmlSerializer> must know only one type--the type of the class that represents the XML root element. The <xref:System.Xml.Serialization.XmlSerializer> automatically serializes all subordinate class instances. Similarly, only the type of the XML root element is required for deserialization.
+  example:
+  - "The following example constructs an <xref:System.Xml.Serialization.XmlSerializer> that serializes an object named `Widget`. The example sets various properties of the object before calling the <xref:System.Xml.Serialization.XmlSerializer.Serialize%2A> method.  \n  \n [!code-vb[Classic XmlSerializer.XmlSerializer6 Example#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_7_1.vb)]\n [!code-cs[Classic XmlSerializer.XmlSerializer6 Example#1](~/add/codesnippet/csharp/m-system.xml.serializati_7_1.cs)]\n [!code-cpp[Classic XmlSerializer.XmlSerializer6 Example#1](~/add/codesnippet/cpp/m-system.xml.serializati_7_1.cpp)]"
+  syntax:
+    content: public XmlSerializer (Type type);
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type of the object that this <xref href="System.Xml.Serialization.XmlSerializer"></xref> can serialize.
+  overload: System.Xml.Serialization.XmlSerializer.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Xml.Serialization.XmlTypeMapping)
+  id: '#ctor(System.Xml.Serialization.XmlTypeMapping)'
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: XmlSerializer(XmlTypeMapping)
+  nameWithType: XmlSerializer.XmlSerializer(XmlTypeMapping)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(XmlTypeMapping)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes an instance of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> class using an object that maps one type to another.
+  remarks: This constructor is used to create an <xref:System.Xml.Serialization.XmlSerializer> when you serialize an object into a SOAP message. To control the SOAP messages generated, use the special attributes (beginning with the word "Soap") found in the <xref:System.Xml.Serialization> namespace.
+  example:
+  - "The following example serializes a class named `Group`. The serialization of the `GroupName`, `IgnoreThis` fields, and the members of the `GroupType` enumeration are overridden. In the `CreateOverrideSerializer` method, a <xref:System.Xml.Serialization.SoapAttributeOverrides> object is created, and for each overridden member or enumeration, a <xref:System.Xml.Serialization.SoapAttributes> object is created with the appropriate property set and added to the <xref:System.Xml.Serialization.SoapAttributeOverrides> object. An <xref:System.Xml.Serialization.XmlMapping> object is created using the <xref:System.Xml.Serialization.SoapAttributeOverrides> object, and that <xref:System.Xml.Serialization.XmlMapping> object is used to create the <xref:System.Xml.Serialization.XmlSerializer> that overrides the default serialization.  \n  \n [!code-cpp[SoapAttributesOverrides#1](~/add/codesnippet/cpp/1e0a1fc1-080c-4ef8-9fd9-_1.cpp)]\n [!code-vb[SoapAttributesOverrides#1](~/add/codesnippet/visualbasic/1e0a1fc1-080c-4ef8-9fd9-_1.vb)]\n [!code-cs[SoapAttributesOverrides#1](~/add/codesnippet/csharp/1e0a1fc1-080c-4ef8-9fd9-_1.cs)]"
+  syntax:
+    content: public XmlSerializer (System.Xml.Serialization.XmlTypeMapping xmlTypeMapping);
+    parameters:
+    - id: xmlTypeMapping
+      type: System.Xml.Serialization.XmlTypeMapping
+      description: An <xref href="System.Xml.Serialization.XmlTypeMapping"></xref> that maps one type to another.
+  overload: System.Xml.Serialization.XmlSerializer.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.String)
+  id: '#ctor(System.Type,System.String)'
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: XmlSerializer(Type,String)
+  nameWithType: XmlSerializer.XmlSerializer(Type,String)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type,String)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> class that can serialize objects of the specified type into XML documents, and deserialize XML documents into objects of the specified type. Specifies the default namespace for all the XML elements.
+  remarks: ''
+  example:
+  - "The following example constructs an <xref:System.Xml.Serialization.XmlSerializer> that serializes an object named `Widget`. The example sets various properties of the object before calling the <xref:System.Xml.Serialization.XmlSerializer.Serialize%2A> method.  \n  \n [!code-cs[Classic XmlSerializer.XmlSerializer1 Example#1](~/add/codesnippet/csharp/m-system.xml.serializati_5_1.cs)]\n [!code-cpp[Classic XmlSerializer.XmlSerializer1 Example#1](~/add/codesnippet/cpp/m-system.xml.serializati_5_1.cpp)]\n [!code-vb[Classic XmlSerializer.XmlSerializer1 Example#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_5_1.vb)]"
+  syntax:
+    content: public XmlSerializer (Type type, string defaultNamespace);
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type of the object that this <xref href="System.Xml.Serialization.XmlSerializer"></xref> can serialize.
+    - id: defaultNamespace
+      type: System.String
+      description: The default namespace to use for all the XML elements.
+  overload: System.Xml.Serialization.XmlSerializer.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Type[])
+  id: '#ctor(System.Type,System.Type[])'
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: XmlSerializer(Type,Type[])
+  nameWithType: XmlSerializer.XmlSerializer(Type,Type[])
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type,Type[])
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> class that can serialize objects of the specified type into XML documents, and deserialize XML documents into object of a specified type. If a property or field returns an array, the <code>extraTypes</code> parameter specifies objects that can be inserted into the array.
+  remarks: "By default, if a public property or field returns an object, or array of objects, the object types are automatically serialized. However, if a class contains a field or property that returns an array of type <xref:System.Object>, any object can be inserted into that array. In that case, the <xref:System.Xml.Serialization.XmlSerializer> must be instructed to expect all the possible object types that are inserted into the <xref:System.Object> array. To do this, use the `extraTypes` parameter to specify the extra object types to serialize or deserialize.  \n  \n You can also use the `extraTypes` parameter to specify types derived from a base class. For example, suppose a base class named `Phone` exists, and a class named `InternationalPhone` derives from it. Use the `extraTypes` parameter to specify the derived type as well."
+  example:
+  - "The following example serializes an instance of a class that contains a public field that returns an array of objects. The `extraTypes` parameter of the <xref:System.Xml.Serialization.XmlSerializer> constructor specifies the types of the objects that can be serialized in the array.  \n  \n [!code-cpp[Classic XmlSerializer.XmlSerializer3 Example#1](~/add/codesnippet/cpp/m-system.xml.serializati_37_1.cpp)]\n [!code-cs[Classic XmlSerializer.XmlSerializer3 Example#1](~/add/codesnippet/csharp/m-system.xml.serializati_37_1.cs)]\n [!code-vb[Classic XmlSerializer.XmlSerializer3 Example#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_37_1.vb)]"
+  syntax:
+    content: public XmlSerializer (Type type, Type[] extraTypes);
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type of the object that this <xref href="System.Xml.Serialization.XmlSerializer"></xref> can serialize.
+    - id: extraTypes
+      type: System.Type[]
+      description: A <xref href="System.Type"></xref> array of additional object types to serialize.
+  overload: System.Xml.Serialization.XmlSerializer.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides)
+  id: '#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides)'
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: XmlSerializer(Type,XmlAttributeOverrides)
+  nameWithType: XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> class that can serialize objects of the specified type into XML documents, and deserialize XML documents into objects of the specified type. Each object to be serialized can itself contain instances of classes, which this overload can override with other classes.
+  remarks: The `overrides` parameter can be used to control how fields and properties are encoded in XML. These settings override any attributes that already exist on the objects. This can be useful when the source code cannot be modified or multiple encodings are required for the same classes.
+  example:
+  - "The following example serializes an instance of a class that is defined in a DLL and to do so, overrides the public members found in the DLL.  \n  \n [!code-cpp[Classic XmlSerializer.XmlSerializer4 Example#1](~/add/codesnippet/cpp/4e98a659-d20d-4d86-8b2b-_1.cpp)]\n [!code-vb[Classic XmlSerializer.XmlSerializer4 Example#1](~/add/codesnippet/visualbasic/4e98a659-d20d-4d86-8b2b-_1.vb)]\n [!code-cs[Classic XmlSerializer.XmlSerializer4 Example#1](~/add/codesnippet/csharp/4e98a659-d20d-4d86-8b2b-_1.cs)]"
+  syntax:
+    content: public XmlSerializer (Type type, System.Xml.Serialization.XmlAttributeOverrides overrides);
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type of the object to serialize.
+    - id: overrides
+      type: System.Xml.Serialization.XmlAttributeOverrides
+      description: An <xref href="System.Xml.Serialization.XmlAttributeOverrides"></xref>.
+  overload: System.Xml.Serialization.XmlSerializer.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlRootAttribute)
+  id: '#ctor(System.Type,System.Xml.Serialization.XmlRootAttribute)'
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: XmlSerializer(Type,XmlRootAttribute)
+  nameWithType: XmlSerializer.XmlSerializer(Type,XmlRootAttribute)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type,XmlRootAttribute)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> class that can serialize objects of the specified type into XML documents, and deserialize an XML document into object of the specified type. It also specifies the class to use as the XML root element.
+  remarks: The root element of an XML document encloses all the other elements. By default, the object specified by the `type` parameter is serialized as the root element. Properties, such as the XML element name of the root element, are taken from the `type` object. However, the `root` parameter allows you to replace the default object's information by specifying an <xref:System.Xml.Serialization.XmlRootAttribute>; the object allows you to set a different namespace, element name, and so on.
+  example:
+  - "The following example constructs an <xref:System.Xml.Serialization.XmlSerializer> that uses an <xref:System.Xml.Serialization.XmlRootAttribute> that contains various properties of the XML root element, such as its namespace and element name.  \n  \n [!code-cs[Classic XmlSerializer.XmlSerializer2 Example#1](~/add/codesnippet/csharp/fe385c93-61c8-4afd-9655-_1.cs)]\n [!code-vb[Classic XmlSerializer.XmlSerializer2 Example#1](~/add/codesnippet/visualbasic/fe385c93-61c8-4afd-9655-_1.vb)]\n [!code-cpp[Classic XmlSerializer.XmlSerializer2 Example#1](~/add/codesnippet/cpp/fe385c93-61c8-4afd-9655-_1.cpp)]"
+  syntax:
+    content: public XmlSerializer (Type type, System.Xml.Serialization.XmlRootAttribute root);
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type of the object that this <xref href="System.Xml.Serialization.XmlSerializer"></xref> can serialize.
+    - id: root
+      type: System.Xml.Serialization.XmlRootAttribute
+      description: An <xref href="System.Xml.Serialization.XmlRootAttribute"></xref> that represents the XML root element.
+  overload: System.Xml.Serialization.XmlSerializer.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides,System.Type[],System.Xml.Serialization.XmlRootAttribute,System.String)
+  id: '#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides,System.Type[],System.Xml.Serialization.XmlRootAttribute,System.String)'
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String)
+  nameWithType: XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> class that can serialize objects of type <xref href="System.Object"></xref> into XML document instances, and deserialize XML document instances into objects of type <xref href="System.Object"></xref>. Each object to be serialized can itself contain instances of classes, which this overload overrides with other classes. This overload also specifies the default namespace for all the XML elements and the class to use as the XML root element.
+  remarks: "The `overrides` parameter allows for the creation of an <xref:System.Xml.Serialization.XmlSerializer> that serializes a class that extends or overrides the behavior of a base class. For example, given a DLL, it is possible to create a class that inherits or extends a class contained in the DLL. To serialize such a class, you must use an instance of the <xref:System.Xml.Serialization.XmlAttributeOverrides> class when constructing the <xref:System.Xml.Serialization.XmlSerializer>. For more details, see <xref:System.Xml.Serialization.XmlAttributeOverrides>.  \n  \n By default, if a public property or field returns an object, or array of objects, the object types are automatically serialized. However, if a class contains a field or property that returns an array of type <xref:System.Object>, any object can be inserted into that array. In that case, the <xref:System.Xml.Serialization.XmlSerializer> must be instructed to expect all the possible object types that are inserted into the <xref:System.Object> array. To do this, use the `extraTypes` parameter to specify the extra object types to serialize or deserialize.  \n  \n The root element of an XML document encloses all the other elements. By default, the object specified by the `type` parameter is serialized as the root element. Properties, such as the XML element name of the root element are taken from the `type` object. However, the `root` parameter allows you to replace the default object's information by specifying an <xref:System.Xml.Serialization.XmlRootAttribute>; the object allows you to set a different namespace, element name, and so on.  \n  \n Use the `defaultName` parameter to specify the default namespace of all XML elements generated by the <xref:System.Xml.Serialization.XmlSerializer>."
+  example:
+  - "The following example serializes an instance of a class that is defined in a DLL and to do so, overrides the public members found in the class. The example also specifies an array of extra types, the default namespace for all XML elements, and the class to use that provides the XML root element information. The example assumes that the code at the beginning has been compiled into a DLL named `HighSchool`.  \n  \n [!code-cpp[Classic XmlSerializer.XmlSerializer Example#1](~/add/codesnippet/cpp/3c62378d-24b1-41cf-9da6-_1.cpp)]\n [!code-cs[Classic XmlSerializer.XmlSerializer Example#1](~/add/codesnippet/csharp/3c62378d-24b1-41cf-9da6-_1.cs)]\n [!code-vb[Classic XmlSerializer.XmlSerializer Example#1](~/add/codesnippet/visualbasic/3c62378d-24b1-41cf-9da6-_1.vb)]"
+  syntax:
+    content: public XmlSerializer (Type type, System.Xml.Serialization.XmlAttributeOverrides overrides, Type[] extraTypes, System.Xml.Serialization.XmlRootAttribute root, string defaultNamespace);
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type of the object that this <xref href="System.Xml.Serialization.XmlSerializer"></xref> can serialize.
+    - id: overrides
+      type: System.Xml.Serialization.XmlAttributeOverrides
+      description: An <xref href="System.Xml.Serialization.XmlAttributeOverrides"></xref> that extends or overrides the behavior of the class specified in the <code>type</code> parameter.
+    - id: extraTypes
+      type: System.Type[]
+      description: A <xref href="System.Type"></xref> array of additional object types to serialize.
+    - id: root
+      type: System.Xml.Serialization.XmlRootAttribute
+      description: An <xref href="System.Xml.Serialization.XmlRootAttribute"></xref> that defines the XML root element properties.
+    - id: defaultNamespace
+      type: System.String
+      description: The default namespace of all XML elements in the XML document.
+  overload: System.Xml.Serialization.XmlSerializer.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides,System.Type[],System.Xml.Serialization.XmlRootAttribute,System.String,System.String)
+  id: '#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides,System.Type[],System.Xml.Serialization.XmlRootAttribute,System.String,System.String)'
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String,String)
+  nameWithType: XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String,String)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String,String)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> class that can serialize objects of type <xref href="System.Object"></xref> into XML document instances, and deserialize XML document instances into objects of type <xref href="System.Object"></xref>. Each object to be serialized can itself contain instances of classes, which this overload overrides with other classes. This overload also specifies the default namespace for all the XML elements and the class to use as the XML root element.
+  syntax:
+    content: public XmlSerializer (Type type, System.Xml.Serialization.XmlAttributeOverrides overrides, Type[] extraTypes, System.Xml.Serialization.XmlRootAttribute root, string defaultNamespace, string location);
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type of the object that this <xref href="System.Xml.Serialization.XmlSerializer"></xref> can serialize.
+    - id: overrides
+      type: System.Xml.Serialization.XmlAttributeOverrides
+      description: An <xref href="System.Xml.Serialization.XmlAttributeOverrides"></xref> that extends or overrides the behavior of the class specified in the <code>type</code> parameter.
+    - id: extraTypes
+      type: System.Type[]
+      description: A <xref href="System.Type"></xref> array of additional object types to serialize.
+    - id: root
+      type: System.Xml.Serialization.XmlRootAttribute
+      description: An <xref href="System.Xml.Serialization.XmlRootAttribute"></xref> that defines the XML root element properties.
+    - id: defaultNamespace
+      type: System.String
+      description: The default namespace of all XML elements in the XML document.
+    - id: location
+      type: System.String
+      description: The location of the types.
+  overload: System.Xml.Serialization.XmlSerializer.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides,System.Type[],System.Xml.Serialization.XmlRootAttribute,System.String,System.String,System.Security.Policy.Evidence)
+  id: '#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides,System.Type[],System.Xml.Serialization.XmlRootAttribute,System.String,System.String,System.Security.Policy.Evidence)'
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String,String,Evidence)
+  nameWithType: XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String,String,Evidence)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String,String,Evidence)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> class that can serialize objects of the specified type into XML document instances, and deserialize XML document instances into objects of the specified type. This overload allows you to supply other types that can be encountered during a serialization or deserialization operation, as well as a default namespace for all XML elements, the class to use as the XML root element, its location, and credentials required for access.
+  remarks: Allows more precise control over access to a temporary directory and prevents code injection and exploitation. To use this method, specify a location and give access only to specific users. Administrators can set up policies with evidence lists that match evidence to permissions.
+  syntax:
+    content: public XmlSerializer (Type type, System.Xml.Serialization.XmlAttributeOverrides overrides, Type[] extraTypes, System.Xml.Serialization.XmlRootAttribute root, string defaultNamespace, string location, System.Security.Policy.Evidence evidence);
+    parameters:
+    - id: type
+      type: System.Type
+      description: The type of the object that this <xref href="System.Xml.Serialization.XmlSerializer"></xref> can serialize.
+    - id: overrides
+      type: System.Xml.Serialization.XmlAttributeOverrides
+      description: An <xref href="System.Xml.Serialization.XmlAttributeOverrides"></xref> that extends or overrides the behavior of the class specified in the <code>type</code> parameter.
+    - id: extraTypes
+      type: System.Type[]
+      description: A <xref href="System.Type"></xref> array of additional object types to serialize.
+    - id: root
+      type: System.Xml.Serialization.XmlRootAttribute
+      description: An <xref href="System.Xml.Serialization.XmlRootAttribute"></xref> that defines the XML root element properties.
+    - id: defaultNamespace
+      type: System.String
+      description: The default namespace of all XML elements in the XML document.
+    - id: location
+      type: System.String
+      description: The location of the types.
+    - id: evidence
+      type: System.Security.Policy.Evidence
+      description: An instance of the <xref href="System.Security.Policy.Evidence"></xref> class that contains credentials required to access types.
+  overload: System.Xml.Serialization.XmlSerializer.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.CanDeserialize(System.Xml.XmlReader)
+  id: CanDeserialize(System.Xml.XmlReader)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: CanDeserialize(XmlReader)
+  nameWithType: XmlSerializer.CanDeserialize(XmlReader)
+  fullName: System.Xml.Serialization.XmlSerializer.CanDeserialize(XmlReader)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets a value that indicates whether this <xref href="System.Xml.Serialization.XmlSerializer"></xref> can deserialize a specified XML document.
+  remarks: ''
+  example:
+  - "The following example calls the CanDeserialize method to check whether an XML document can be deserialized.  \n  \n [!code-cs[Classic XmlSerializer.CanDeserialize Example#1](~/add/codesnippet/csharp/m-system.xml.serializati_39_1.cs)]\n [!code-cpp[Classic XmlSerializer.CanDeserialize Example#1](~/add/codesnippet/cpp/m-system.xml.serializati_39_1.cpp)]\n [!code-vb[Classic XmlSerializer.CanDeserialize Example#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_39_1.vb)]"
+  syntax:
+    content: public virtual bool CanDeserialize (System.Xml.XmlReader xmlReader);
+    parameters:
+    - id: xmlReader
+      type: System.Xml.XmlReader
+      description: An <xref href="System.Xml.XmlReader"></xref> that points to the document to deserialize.
+    return:
+      type: System.Boolean
+      description: '`true` if this <xref href="System.Xml.Serialization.XmlSerializer"></xref> can deserialize the object that the <xref href="System.Xml.XmlReader"></xref> points to; otherwise, `false`.'
+  overload: System.Xml.Serialization.XmlSerializer.CanDeserialize*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.CreateReader
+  id: CreateReader
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: CreateReader()
+  nameWithType: XmlSerializer.CreateReader()
+  fullName: System.Xml.Serialization.XmlSerializer.CreateReader()
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Returns an object used to read the XML document to be serialized.
+  syntax:
+    content: protected virtual System.Xml.Serialization.XmlSerializationReader CreateReader ();
+    parameters: []
+    return:
+      type: System.Xml.Serialization.XmlSerializationReader
+      description: An <xref href="System.Xml.Serialization.XmlSerializationReader"></xref> used to read the XML document.
+  overload: System.Xml.Serialization.XmlSerializer.CreateReader*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to access the method when the method is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.CreateWriter
+  id: CreateWriter
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: CreateWriter()
+  nameWithType: XmlSerializer.CreateWriter()
+  fullName: System.Xml.Serialization.XmlSerializer.CreateWriter()
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: When overridden in a derived class, returns a writer used to serialize the object.
+  syntax:
+    content: protected virtual System.Xml.Serialization.XmlSerializationWriter CreateWriter ();
+    parameters: []
+    return:
+      type: System.Xml.Serialization.XmlSerializationWriter
+      description: An instance that implements the <xref href="System.Xml.Serialization.XmlSerializationWriter"></xref> class.
+  overload: System.Xml.Serialization.XmlSerializer.CreateWriter*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to access the method when the method is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize(System.IO.Stream)
+  id: Deserialize(System.IO.Stream)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Deserialize(Stream)
+  nameWithType: XmlSerializer.Deserialize(Stream)
+  fullName: System.Xml.Serialization.XmlSerializer.Deserialize(Stream)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Deserializes the XML document contained by the specified <xref href="System.IO.Stream"></xref>.
+  remarks: "Deserialization is the process of reading an XML document and constructing an object that is strongly typed to the XML Schema (XSD) of the document.  \n  \n Before deserializing, an <xref:System.Xml.Serialization.XmlSerializer> must be constructed using the type of the object that is being deserialized.  \n  \n Use the `stream` parameter to specify an object that derives from the <xref:System.IO.Stream> class, which is designed to write to streams. Classes that derive from the <xref:System.IO.Stream> class include:  \n  \n-   <xref:System.IO.BufferedStream>  \n  \n-   <xref:System.IO.FileStream>  \n  \n-   <xref:System.IO.MemoryStream>  \n  \n-   <xref:System.Net.Sockets.NetworkStream>  \n  \n-   <xref:System.Security.Cryptography.CryptoStream>  \n  \n> [!NOTE]\n>  The <xref:System.Xml.Serialization.XmlSerializer> cannot deserialize the following: arrays of <xref:System.Collections.ArrayList> and arrays of <xref:System.Collections.Generic.List%601>."
+  example:
+  - "The following example deserializes an object using a <xref:System.IO.Stream> object.  \n  \n [!code-xml[Classic XmlSerializer.Deserialize Example#1](~/add/codesnippet/xml/m-system.xml.serializati_26_1.xml)]\n [!code-cpp[Classic XmlSerializer.Deserialize Example#1](~/add/codesnippet/cpp/m-system.xml.serializati_26_1.cpp)]\n [!code-vb[Classic XmlSerializer.Deserialize Example#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_26_1.vb)]\n [!code-cs[Classic XmlSerializer.Deserialize Example#1](~/add/codesnippet/csharp/m-system.xml.serializati_26_1.cs)]"
+  syntax:
+    content: public object Deserialize (System.IO.Stream stream);
+    parameters:
+    - id: stream
+      type: System.IO.Stream
+      description: The <xref href="System.IO.Stream"></xref> that contains the XML document to deserialize.
+    return:
+      type: System.Object
+      description: The <xref href="System.Object"></xref> being deserialized.
+  overload: System.Xml.Serialization.XmlSerializer.Deserialize*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize(System.IO.TextReader)
+  id: Deserialize(System.IO.TextReader)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Deserialize(TextReader)
+  nameWithType: XmlSerializer.Deserialize(TextReader)
+  fullName: System.Xml.Serialization.XmlSerializer.Deserialize(TextReader)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Deserializes the XML document contained by the specified <xref href="System.IO.TextReader"></xref>.
+  remarks: "Deserialization is the process of reading an instance of an XML document and constructing an object that is strongly typed to the XML Schema (XSD) of the document.  \n  \n Before deserializing, an <xref:System.Xml.Serialization.XmlSerializer> must be constructed using the type of the object that is being deserialized.  \n  \n Classes that inherit from <xref:System.IO.TextReader> include <xref:System.IO.StringReader> and <xref:System.IO.StreamReader>. If you are using a <xref:System.IO.StreamReader> to deserialize an object, you must construct the <xref:System.IO.StreamReader> with an appropriate <xref:System.Text.Encoding>. The encoding specified by the XML document is ignored.  \n  \n> [!NOTE]\n>  To use the encoding specified by the XML document, use the <xref:System.Xml.Serialization.XmlSerializer.Deserialize%2A> overload that takes an <xref:System.Xml.XmlReader> instead. The <xref:System.Xml.XmlReader> automatically detects and uses the encoding specified by the XML document.  \n  \n> [!NOTE]\n>  The <xref:System.Xml.Serialization.XmlSerializer> cannot deserialize the following: arrays of <xref:System.Collections.ArrayList> and arrays of <xref:System.Collections.Generic.List%601>."
+  example:
+  - "The following example deserializes an object using a <xref:System.IO.TextReader> object.  \n  \n [!code-cs[Classic XmlSerializer.Deserialize1 Example#1](~/add/codesnippet/csharp/m-system.xml.serializati_8_1.cs)]\n [!code-cpp[Classic XmlSerializer.Deserialize1 Example#1](~/add/codesnippet/cpp/m-system.xml.serializati_8_1.cpp)]\n [!code-vb[Classic XmlSerializer.Deserialize1 Example#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_8_1.vb)]"
+  syntax:
+    content: public object Deserialize (System.IO.TextReader textReader);
+    parameters:
+    - id: textReader
+      type: System.IO.TextReader
+      description: The <xref href="System.IO.TextReader"></xref> that contains the XML document to deserialize.
+    return:
+      type: System.Object
+      description: The <xref href="System.Object"></xref> being deserialized.
+  overload: System.Xml.Serialization.XmlSerializer.Deserialize*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: An error occurred during deserialization. The original exception is available using the <xref href="stem.Exception.InnerException%2A"></xref> property.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.Serialization.XmlSerializationReader)
+  id: Deserialize(System.Xml.Serialization.XmlSerializationReader)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Deserialize(XmlSerializationReader)
+  nameWithType: XmlSerializer.Deserialize(XmlSerializationReader)
+  fullName: System.Xml.Serialization.XmlSerializer.Deserialize(XmlSerializationReader)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Deserializes the XML document contained by the specified <xref href="System.Xml.Serialization.XmlSerializationReader"></xref>.
+  syntax:
+    content: protected virtual object Deserialize (System.Xml.Serialization.XmlSerializationReader reader);
+    parameters:
+    - id: reader
+      type: System.Xml.Serialization.XmlSerializationReader
+      description: The <xref href="System.Xml.Serialization.XmlSerializationReader"></xref> that contains the XML document to deserialize.
+    return:
+      type: System.Object
+      description: The deserialized object.
+  overload: System.Xml.Serialization.XmlSerializer.Deserialize*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to access the method when the method is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader)
+  id: Deserialize(System.Xml.XmlReader)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Deserialize(XmlReader)
+  nameWithType: XmlSerializer.Deserialize(XmlReader)
+  fullName: System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Deserializes the XML document contained by the specified <xref href="System.Xml.XmlReader"></xref>.
+  remarks: "Deserialization is the process of reading an instance of an XML document and constructing an object that is strongly typed to the XML Schema (XSD) of the document.  \n  \n Before deserializing, an <xref:System.Xml.Serialization.XmlSerializer> must be constructed using the type of the object that is being deserialized.  \n  \n The <xref:System.Xml.XmlReader> automatically detects and uses the encoding specified by the XML document.  \n  \n> [!NOTE]\n>  The <xref:System.Xml.Serialization.XmlSerializer> cannot deserialize the following: arrays of <xref:System.Collections.ArrayList> and arrays of <xref:System.Collections.Generic.List%601>."
+  example:
+  - "The following example deserializes an object using an <xref:System.Xml.XmlReader>.  \n  \n [!code-cpp[Classic XmlSerializer.Deserialize2 Example#1](~/add/codesnippet/cpp/m-system.xml.serializati_33_1.cpp)]\n [!code-xml[Classic XmlSerializer.Deserialize2 Example#1](~/add/codesnippet/xml/m-system.xml.serializati_33_1.xml)]\n [!code-cs[Classic XmlSerializer.Deserialize2 Example#1](~/add/codesnippet/csharp/m-system.xml.serializati_33_1.cs)]\n [!code-vb[Classic XmlSerializer.Deserialize2 Example#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_33_1.vb)]"
+  syntax:
+    content: public object Deserialize (System.Xml.XmlReader xmlReader);
+    parameters:
+    - id: xmlReader
+      type: System.Xml.XmlReader
+      description: The <xref href="System.Xml.XmlReader"></xref> that contains the XML document to deserialize.
+    return:
+      type: System.Object
+      description: The <xref href="System.Object"></xref> being deserialized.
+  overload: System.Xml.Serialization.XmlSerializer.Deserialize*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: An error occurred during deserialization. The original exception is available using the <xref href="stem.Exception.InnerException%2A"></xref> property.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader,System.String)
+  id: Deserialize(System.Xml.XmlReader,System.String)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Deserialize(XmlReader,String)
+  nameWithType: XmlSerializer.Deserialize(XmlReader,String)
+  fullName: System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader,String)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Deserializes the XML document contained by the specified <xref href="System.Xml.XmlReader"></xref> and encoding style.
+  remarks: "Deserialization is the process of reading an instance of an XML document and constructing an object that is strongly typed to the XML Schema (XSD) of the document.  \n  \n Before deserializing, an <xref:System.Xml.Serialization.XmlSerializer> must be constructed using the type of the object that is being deserialized.  \n  \n Set the `encodingStyle` parameter to \"http://schemas.xmlsoap.org/soap/encoding/ \" for SOAP version 1.1 encoding; otherwise, set it to \"http://www.w3.org/2001/12/soap-encoding\" for SOAP version 1.2 encoding.  \n  \n **Note** The <xref:System.Xml.Serialization.XmlSerializer> cannot deserialize the following: arrays of <xref:System.Collections.ArrayList> and arrays of <xref:System.Collections.Generic.List%601>."
+  syntax:
+    content: public object Deserialize (System.Xml.XmlReader xmlReader, string encodingStyle);
+    parameters:
+    - id: xmlReader
+      type: System.Xml.XmlReader
+      description: The <xref href="System.Xml.XmlReader"></xref> that contains the XML document to deserialize.
+    - id: encodingStyle
+      type: System.String
+      description: The encoding style of the serialized XML.
+    return:
+      type: System.Object
+      description: The deserialized object.
+  overload: System.Xml.Serialization.XmlSerializer.Deserialize*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: An error occurred during deserialization. The original exception is available using the <xref href="stem.Exception.InnerException%2A"></xref> property.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader,System.Xml.Serialization.XmlDeserializationEvents)
+  id: Deserialize(System.Xml.XmlReader,System.Xml.Serialization.XmlDeserializationEvents)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Deserialize(XmlReader,XmlDeserializationEvents)
+  nameWithType: XmlSerializer.Deserialize(XmlReader,XmlDeserializationEvents)
+  fullName: System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader,XmlDeserializationEvents)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Deserializes an XML document contained by the specified <xref href="System.Xml.XmlReader"></xref> and allows the overriding of events that occur during deserialization.
+  remarks: The object being deserialized.
+  syntax:
+    content: public object Deserialize (System.Xml.XmlReader xmlReader, System.Xml.Serialization.XmlDeserializationEvents events);
+    parameters:
+    - id: xmlReader
+      type: System.Xml.XmlReader
+      description: The <xref href="System.Xml.XmlReader"></xref> that contains the document to deserialize.
+    - id: events
+      type: System.Xml.Serialization.XmlDeserializationEvents
+      description: An instance of the <xref href="System.Xml.Serialization.XmlDeserializationEvents"></xref> class.
+    return:
+      type: System.Object
+      description: The <xref href="System.Object"></xref> being deserialized.
+  overload: System.Xml.Serialization.XmlSerializer.Deserialize*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader,System.String,System.Xml.Serialization.XmlDeserializationEvents)
+  id: Deserialize(System.Xml.XmlReader,System.String,System.Xml.Serialization.XmlDeserializationEvents)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Deserialize(XmlReader,String,XmlDeserializationEvents)
+  nameWithType: XmlSerializer.Deserialize(XmlReader,String,XmlDeserializationEvents)
+  fullName: System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader,String,XmlDeserializationEvents)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Deserializes the object using the data contained by the specified <xref href="System.Xml.XmlReader"></xref>.
+  remarks: This method is required for deserialization of unknown headers for Web Service scenarios only. This method allows you to avoid event synchronization in Web Service methods.
+  syntax:
+    content: public object Deserialize (System.Xml.XmlReader xmlReader, string encodingStyle, System.Xml.Serialization.XmlDeserializationEvents events);
+    parameters:
+    - id: xmlReader
+      type: System.Xml.XmlReader
+      description: An instance of the <xref href="System.Xml.XmlReader"></xref> class used to read the document.
+    - id: encodingStyle
+      type: System.String
+      description: The encoding used.
+    - id: events
+      type: System.Xml.Serialization.XmlDeserializationEvents
+      description: An instance of the <xref href="System.Xml.Serialization.XmlDeserializationEvents"></xref> class.
+    return:
+      type: System.Object
+      description: The object being deserialized.
+  overload: System.Xml.Serialization.XmlSerializer.Deserialize*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.FromMappings(System.Xml.Serialization.XmlMapping[])
+  id: FromMappings(System.Xml.Serialization.XmlMapping[])
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: FromMappings(XmlMapping[])
+  nameWithType: XmlSerializer.FromMappings(XmlMapping[])
+  fullName: System.Xml.Serialization.XmlSerializer.FromMappings(XmlMapping[])
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Returns an array of <xref href="System.Xml.Serialization.XmlSerializer"></xref> objects created from an array of <xref href="System.Xml.Serialization.XmlTypeMapping"></xref> objects.
+  syntax:
+    content: public static System.Xml.Serialization.XmlSerializer[] FromMappings (System.Xml.Serialization.XmlMapping[] mappings);
+    parameters:
+    - id: mappings
+      type: System.Xml.Serialization.XmlMapping[]
+      description: An array of <xref href="System.Xml.Serialization.XmlTypeMapping"></xref> that maps one type to another.
+    return:
+      type: System.Xml.Serialization.XmlSerializer[]
+      description: An array of <xref href="System.Xml.Serialization.XmlSerializer"></xref> objects.
+  overload: System.Xml.Serialization.XmlSerializer.FromMappings*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.FromMappings(System.Xml.Serialization.XmlMapping[],System.Security.Policy.Evidence)
+  id: FromMappings(System.Xml.Serialization.XmlMapping[],System.Security.Policy.Evidence)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: FromMappings(XmlMapping[],Evidence)
+  nameWithType: XmlSerializer.FromMappings(XmlMapping[],Evidence)
+  fullName: System.Xml.Serialization.XmlSerializer.FromMappings(XmlMapping[],Evidence)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Returns an instance of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> class created from mappings of one XML type to another.
+  syntax:
+    content: public static System.Xml.Serialization.XmlSerializer[] FromMappings (System.Xml.Serialization.XmlMapping[] mappings, System.Security.Policy.Evidence evidence);
+    parameters:
+    - id: mappings
+      type: System.Xml.Serialization.XmlMapping[]
+      description: An array of <xref href="System.Xml.Serialization.XmlMapping"></xref> objects used to map one type to another.
+    - id: evidence
+      type: System.Security.Policy.Evidence
+      description: An instance of the <xref href="System.Security.Policy.Evidence"></xref> class that contains host and assembly data presented to the common language runtime policy system.
+    return:
+      type: System.Xml.Serialization.XmlSerializer[]
+      description: An instance of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> class.
+  overload: System.Xml.Serialization.XmlSerializer.FromMappings*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.FromMappings(System.Xml.Serialization.XmlMapping[],System.Type)
+  id: FromMappings(System.Xml.Serialization.XmlMapping[],System.Type)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: FromMappings(XmlMapping[],Type)
+  nameWithType: XmlSerializer.FromMappings(XmlMapping[],Type)
+  fullName: System.Xml.Serialization.XmlSerializer.FromMappings(XmlMapping[],Type)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Returns an instance of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> class from the specified mappings.
+  syntax:
+    content: public static System.Xml.Serialization.XmlSerializer[] FromMappings (System.Xml.Serialization.XmlMapping[] mappings, Type type);
+    parameters:
+    - id: mappings
+      type: System.Xml.Serialization.XmlMapping[]
+      description: An array of <xref href="System.Xml.Serialization.XmlMapping"></xref> objects.
+    - id: type
+      type: System.Type
+      description: The <xref href="System.Type"></xref> of the deserialized object.
+    return:
+      type: System.Xml.Serialization.XmlSerializer[]
+      description: An instance of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> class.
+  overload: System.Xml.Serialization.XmlSerializer.FromMappings*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.FromTypes(System.Type[])
+  id: FromTypes(System.Type[])
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: FromTypes(Type[])
+  nameWithType: XmlSerializer.FromTypes(Type[])
+  fullName: System.Xml.Serialization.XmlSerializer.FromTypes(Type[])
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Returns an array of <xref href="System.Xml.Serialization.XmlSerializer"></xref> objects created from an array of types.
+  remarks: The FromTypes method allows you to efficiently create an array of <xref:System.Xml.Serialization.XmlSerializer> objects for processing an array of <xref:System.Type> objects.
+  example:
+  - "The following example uses the FromTypes method to return an array of <xref:System.Xml.Serialization.XmlSerializer> objects. The code includes three class definitions that are each used to create an array of <xref:System.Type> objects.  \n  \n [!code-cpp[Classic XmlSerializer.FromTypes Example#1](~/add/codesnippet/cpp/m-system.xml.serializati_18_1.cpp)]\n [!code-vb[Classic XmlSerializer.FromTypes Example#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_18_1.vb)]\n [!code-cs[Classic XmlSerializer.FromTypes Example#1](~/add/codesnippet/csharp/m-system.xml.serializati_18_1.cs)]"
+  syntax:
+    content: public static System.Xml.Serialization.XmlSerializer[] FromTypes (Type[] types);
+    parameters:
+    - id: types
+      type: System.Type[]
+      description: An array of <xref href="System.Type"></xref> objects.
+    return:
+      type: System.Xml.Serialization.XmlSerializer[]
+      description: An array of <xref href="System.Xml.Serialization.XmlSerializer"></xref> objects.
+  overload: System.Xml.Serialization.XmlSerializer.FromTypes*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.GenerateSerializer(System.Type[],System.Xml.Serialization.XmlMapping[])
+  id: GenerateSerializer(System.Type[],System.Xml.Serialization.XmlMapping[])
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: GenerateSerializer(Type[],XmlMapping[])
+  nameWithType: XmlSerializer.GenerateSerializer(Type[],XmlMapping[])
+  fullName: System.Xml.Serialization.XmlSerializer.GenerateSerializer(Type[],XmlMapping[])
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Returns an assembly that contains custom-made serializers used to serialize or deserialize the specified type or types, using the specified mappings.
+  syntax:
+    content: public static System.Reflection.Assembly GenerateSerializer (Type[] types, System.Xml.Serialization.XmlMapping[] mappings);
+    parameters:
+    - id: types
+      type: System.Type[]
+      description: A collection of types.
+    - id: mappings
+      type: System.Xml.Serialization.XmlMapping[]
+      description: A collection of <xref href="System.Xml.Serialization.XmlMapping"></xref> objects used to convert one type to another.
+    return:
+      type: System.Reflection.Assembly
+      description: An <xref href="System.Reflection.Assembly"></xref> object that contains serializers for the supplied types and mappings.
+  overload: System.Xml.Serialization.XmlSerializer.GenerateSerializer*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.GenerateSerializer(System.Type[],System.Xml.Serialization.XmlMapping[],System.CodeDom.Compiler.CompilerParameters)
+  id: GenerateSerializer(System.Type[],System.Xml.Serialization.XmlMapping[],System.CodeDom.Compiler.CompilerParameters)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: GenerateSerializer(Type[],XmlMapping[],CompilerParameters)
+  nameWithType: XmlSerializer.GenerateSerializer(Type[],XmlMapping[],CompilerParameters)
+  fullName: System.Xml.Serialization.XmlSerializer.GenerateSerializer(Type[],XmlMapping[],CompilerParameters)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Returns an assembly that contains custom-made serializers used to serialize or deserialize the specified type or types, using the specified mappings and compiler settings and options.
+  syntax:
+    content: public static System.Reflection.Assembly GenerateSerializer (Type[] types, System.Xml.Serialization.XmlMapping[] mappings, System.CodeDom.Compiler.CompilerParameters parameters);
+    parameters:
+    - id: types
+      type: System.Type[]
+      description: An array of type <xref href="System.Type"></xref> that contains objects used to serialize and deserialize data.
+    - id: mappings
+      type: System.Xml.Serialization.XmlMapping[]
+      description: An array of type <xref href="System.Xml.Serialization.XmlMapping"></xref> that maps the XML data to the type data.
+    - id: parameters
+      type: System.CodeDom.Compiler.CompilerParameters
+      description: An instance of the <xref href="System.CodeDom.Compiler.CompilerParameters"></xref> class that represents the parameters used to invoke a compiler.
+    return:
+      type: System.Reflection.Assembly
+      description: An <xref href="System.Reflection.Assembly"></xref> that contains special versions of the <xref href="System.Xml.Serialization.XmlSerializer"></xref>.
+  overload: System.Xml.Serialization.XmlSerializer.GenerateSerializer*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(System.Type)
+  id: GetXmlSerializerAssemblyName(System.Type)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: GetXmlSerializerAssemblyName(Type)
+  nameWithType: XmlSerializer.GetXmlSerializerAssemblyName(Type)
+  fullName: System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(Type)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Returns the name of the assembly that contains one or more versions of the <xref href="System.Xml.Serialization.XmlSerializer"></xref> especially created to serialize or deserialize the specified type.
+  remarks: "The [XML Serializer Generator Tool (Sgen.exe)](../Topic/XML%20Serializer%20Generator%20Tool%20\\(Sgen.exe\\).md) creates an XML serialization assembly for types in a specified assembly to improve the run-time performance of an <xref:System.Xml.Serialization.XmlSerializer> when it serializes or deserializes objects of the specified types. Use the GetXmlSerializerAssemblyName to return the name of such an assembly.  \n  \n If you are distributing such an assembly as part of a client application that calls a Web service, you can apply the <xref:System.Xml.Serialization.XmlSerializerAssemblyAttribute> to the client type to specify the location and name of the assembly."
+  syntax:
+    content: public static string GetXmlSerializerAssemblyName (Type type);
+    parameters:
+    - id: type
+      type: System.Type
+      description: The <xref href="System.Type"></xref> you are deserializing.
+    return:
+      type: System.String
+      description: The name of the assembly that contains an <xref href="System.Xml.Serialization.XmlSerializer"></xref> for the type.
+  overload: System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(System.Type,System.String)
+  id: GetXmlSerializerAssemblyName(System.Type,System.String)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: GetXmlSerializerAssemblyName(Type,String)
+  nameWithType: XmlSerializer.GetXmlSerializerAssemblyName(Type,String)
+  fullName: System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(Type,String)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Returns the name of the assembly that contains the serializer for the specified type in the specified namespace.
+  remarks: "The [XML Serializer Generator Tool (Sgen.exe)](../Topic/XML%20Serializer%20Generator%20Tool%20\\(Sgen.exe\\).md) creates an XML serialization assembly for types in a specified assembly to improve the run-time performance of an <xref:System.Xml.Serialization.XmlSerializer> when it serializes or deserializes objects of the specified types. Use the <xref:System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName%2A> to return the name of such an assembly.  \n  \n If you are distributing such an assembly as part of a client application that calls a Web service, you can apply the <xref:System.Xml.Serialization.XmlSerializerAssemblyAttribute> to the client type to specify the location and name of the assembly."
+  syntax:
+    content: public static string GetXmlSerializerAssemblyName (Type type, string defaultNamespace);
+    parameters:
+    - id: type
+      type: System.Type
+      description: The <xref href="System.Type"></xref> you are interested in.
+    - id: defaultNamespace
+      type: System.String
+      description: The namespace of the type.
+    return:
+      type: System.String
+      description: The name of the assembly that contains specially built serializers.
+  overload: System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.IO.Stream,System.Object)
+  id: Serialize(System.IO.Stream,System.Object)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Serialize(Stream,Object)
+  nameWithType: XmlSerializer.Serialize(Stream,Object)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(Stream,Object)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Serializes the specified <xref href="System.Object"></xref> and writes the XML document to a file using the specified <xref href="System.IO.Stream"></xref>.
+  remarks: "The <xref:System.Xml.Serialization.XmlSerializer.Serialize%2A> method converts the public fields and read/write properties of an object into XML. It does not convert methods, indexers, private fields, or read-only properties. To serialize all of an object's fields and properties, both public and private, use the <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter>.  \n  \n In the `stream` parameter, specify an object that derives from the abstract <xref:System.IO.Stream> class. Classes that derive from <xref:System.IO.Stream> include:  \n  \n-   <xref:System.IO.BufferedStream>  \n  \n-   <xref:System.IO.FileStream>  \n  \n-   <xref:System.IO.MemoryStream>  \n  \n-   <xref:System.Net.Sockets.NetworkStream>  \n  \n-   <xref:System.Security.Cryptography.CryptoStream>  \n  \n> [!NOTE]\n>  The <xref:System.Xml.Serialization.XmlSerializer> cannot serialize the following: arrays of <xref:System.Collections.ArrayList> and arrays of <xref:System.Collections.Generic.List%601>."
+  example:
+  - "The following example serializes an object using a <xref:System.IO.Stream> object.  \n  \n [!code-cs[Classic XmlSerializer.Serialize2 Example#1](~/add/codesnippet/csharp/4317af32-a9ae-4c82-be41-_1.cs)]\n [!code-xml[Classic XmlSerializer.Serialize2 Example#1](~/add/codesnippet/xml/4317af32-a9ae-4c82-be41-_1.xml)]\n [!code-cpp[Classic XmlSerializer.Serialize2 Example#1](~/add/codesnippet/cpp/4317af32-a9ae-4c82-be41-_1.cpp)]\n [!code-vb[Classic XmlSerializer.Serialize2 Example#1](~/add/codesnippet/visualbasic/4317af32-a9ae-4c82-be41-_1.vb)]"
+  syntax:
+    content: public void Serialize (System.IO.Stream stream, object o);
+    parameters:
+    - id: stream
+      type: System.IO.Stream
+      description: The <xref href="System.IO.Stream"></xref> used to write the XML document.
+    - id: o
+      type: System.Object
+      description: The <xref href="System.Object"></xref> to serialize.
+  overload: System.Xml.Serialization.XmlSerializer.Serialize*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: An error occurred during serialization. The original exception is available using the <xref href="stem.Exception.InnerException%2A"></xref> property.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.IO.TextWriter,System.Object)
+  id: Serialize(System.IO.TextWriter,System.Object)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Serialize(TextWriter,Object)
+  nameWithType: XmlSerializer.Serialize(TextWriter,Object)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(TextWriter,Object)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Serializes the specified <xref href="System.Object"></xref> and writes the XML document to a file using the specified <xref href="System.IO.TextWriter"></xref>.
+  remarks: "The Serialize method converts the public fields and read/write properties of an object into XML. It does not convert methods, indexers, private fields, or read-only properties. To serialize all an object's fields and properties, both public and private, use the <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter>.  \n  \n In the `textWriter` parameter, specify an object that derives from the abstract <xref:System.IO.TextWriter> class. Classes that derive from <xref:System.IO.TextWriter> include:  \n  \n-   <xref:System.IO.StreamWriter>  \n  \n-   <xref:System.IO.StringWriter>  \n  \n-   <xref:System.CodeDom.Compiler.IndentedTextWriter>  \n  \n> [!NOTE]\n>  The <xref:System.Xml.Serialization.XmlSerializer> cannot serialize the following: arrays of <xref:System.Collections.ArrayList> and arrays of <xref:System.Collections.Generic.List%601>."
+  example:
+  - "The following example serializes an object using a <xref:System.IO.TextWriter>.  \n  \n [!code-cs[Classic XmlSerializer.Serialize Example#1](~/add/codesnippet/csharp/a70f89ff-ca4d-4d2b-b991-_1.cs)]\n [!code-vb[Classic XmlSerializer.Serialize Example#1](~/add/codesnippet/visualbasic/a70f89ff-ca4d-4d2b-b991-_1.vb)]\n [!code-cpp[Classic XmlSerializer.Serialize Example#1](~/add/codesnippet/cpp/a70f89ff-ca4d-4d2b-b991-_1.cpp)]\n [!code-xml[Classic XmlSerializer.Serialize Example#1](~/add/codesnippet/xml/a70f89ff-ca4d-4d2b-b991-_1.xml)]"
+  syntax:
+    content: public void Serialize (System.IO.TextWriter textWriter, object o);
+    parameters:
+    - id: textWriter
+      type: System.IO.TextWriter
+      description: The <xref href="System.IO.TextWriter"></xref> used to write the XML document.
+    - id: o
+      type: System.Object
+      description: The <xref href="System.Object"></xref> to serialize.
+  overload: System.Xml.Serialization.XmlSerializer.Serialize*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.Object,System.Xml.Serialization.XmlSerializationWriter)
+  id: Serialize(System.Object,System.Xml.Serialization.XmlSerializationWriter)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Serialize(Object,XmlSerializationWriter)
+  nameWithType: XmlSerializer.Serialize(Object,XmlSerializationWriter)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(Object,XmlSerializationWriter)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Serializes the specified <xref href="System.Object"></xref> and writes the XML document to a file using the specified <xref href="System.Xml.Serialization.XmlSerializationWriter"></xref>.
+  syntax:
+    content: protected virtual void Serialize (object o, System.Xml.Serialization.XmlSerializationWriter writer);
+    parameters:
+    - id: o
+      type: System.Object
+      description: The <xref href="System.Object"></xref> to serialize.
+    - id: writer
+      type: System.Xml.Serialization.XmlSerializationWriter
+      description: The <xref href="System.Xml.Serialization.XmlSerializationWriter"></xref> used to write the XML document.
+  overload: System.Xml.Serialization.XmlSerializer.Serialize*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Any attempt is made to access the method when the method is not overridden in a descendant class.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.Xml.XmlWriter,System.Object)
+  id: Serialize(System.Xml.XmlWriter,System.Object)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Serialize(XmlWriter,Object)
+  nameWithType: XmlSerializer.Serialize(XmlWriter,Object)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(XmlWriter,Object)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Serializes the specified <xref href="System.Object"></xref> and writes the XML document to a file using the specified <xref href="System.Xml.XmlWriter"></xref>.
+  remarks: "The <xref:System.Xml.Serialization.XmlSerializer.Serialize%2A> method converts the public fields and read/write properties of an object into XML. It does not convert methods, indexers, private fields, or read-only properties. To serialize all an object's fields and properties, both public and private, use the <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter>.  \n  \n In the `xmlWriter` parameter, specify an object that derives from the abstract <xref:System.Xml.XmlWriter> class. The <xref:System.Xml.XmlTextWriter> derives from the <xref:System.Xml.XmlWriter>.  \n  \n> [!NOTE]\n>  The <xref:System.Xml.Serialization.XmlSerializer> cannot serialize the following: arrays of <xref:System.Collections.ArrayList> and arrays of <xref:System.Collections.Generic.List%601>."
+  example:
+  - "The following example serializes an object using an <xref:System.Xml.XmlWriter>.  \n  \n [!code-cs[Classic XmlSerializer.Serialize4 Example#1](~/add/codesnippet/csharp/bfb86c33-6346-4a1d-8a6f-_1.cs)]\n [!code-cpp[Classic XmlSerializer.Serialize4 Example#1](~/add/codesnippet/cpp/bfb86c33-6346-4a1d-8a6f-_1.cpp)]\n [!code-xml[Classic XmlSerializer.Serialize4 Example#1](~/add/codesnippet/xml/bfb86c33-6346-4a1d-8a6f-_1.xml)]\n [!code-vb[Classic XmlSerializer.Serialize4 Example#1](~/add/codesnippet/visualbasic/bfb86c33-6346-4a1d-8a6f-_1.vb)]"
+  syntax:
+    content: public void Serialize (System.Xml.XmlWriter xmlWriter, object o);
+    parameters:
+    - id: xmlWriter
+      type: System.Xml.XmlWriter
+      description: The <xref href="System.Xml.XmlWriter"></xref> used to write the XML document.
+    - id: o
+      type: System.Object
+      description: The <xref href="System.Object"></xref> to serialize.
+  overload: System.Xml.Serialization.XmlSerializer.Serialize*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: An error occurred during serialization. The original exception is available using the <xref href="stem.Exception.InnerException%2A"></xref> property.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.IO.Stream,System.Object,System.Xml.Serialization.XmlSerializerNamespaces)
+  id: Serialize(System.IO.Stream,System.Object,System.Xml.Serialization.XmlSerializerNamespaces)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Serialize(Stream,Object,XmlSerializerNamespaces)
+  nameWithType: XmlSerializer.Serialize(Stream,Object,XmlSerializerNamespaces)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(Stream,Object,XmlSerializerNamespaces)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Serializes the specified <xref href="System.Object"></xref> and writes the XML document to a file using the specified <xref href="System.IO.Stream"></xref>that references the specified namespaces.
+  remarks: "When the <xref:System.Xml.Serialization.XmlSerializer.Serialize%2A> method is invoked, the public fields and read/write properties of an object are converted into XML. Methods, indexers, private fields, and read-only properties are not serialized. To serialize all fields and properties, both public and private, use the <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter>.  \n  \n Use the `stream` parameter to specify an object that derives from the abstract <xref:System.IO.Stream> class, which is designed to write to streams. Classes that derive from the <xref:System.IO.Stream> class include:  \n  \n-   <xref:System.IO.BufferedStream>  \n  \n-   <xref:System.IO.FileStream>  \n  \n-   <xref:System.IO.MemoryStream>  \n  \n-   <xref:System.Net.Sockets.NetworkStream>  \n  \n-   <xref:System.Security.Cryptography.CryptoStream>  \n  \n> [!NOTE]\n>  The <xref:System.Xml.Serialization.XmlSerializer> cannot serialize the following: arrays of <xref:System.Collections.ArrayList> and arrays of <xref:System.Collections.Generic.List%601>."
+  example:
+  - "The following example serializes an object with a <xref:System.IO.Stream> object. The example also creates an <xref:System.Xml.Serialization.XmlSerializerNamespaces> and adds two namespaces to the object. The class that defines the serialized object is also attributed with <xref:System.Xml.Serialization.XmlElementAttribute> attributes to specify the namespace for each element.  \n  \n [!code-cs[Classic XmlSerializer.Serialize3 Example#1](~/add/codesnippet/csharp/5587a603-3296-44ff-adc6-_1.cs)]\n [!code-cpp[Classic XmlSerializer.Serialize3 Example#1](~/add/codesnippet/cpp/5587a603-3296-44ff-adc6-_1.cpp)]\n [!code-vb[Classic XmlSerializer.Serialize3 Example#1](~/add/codesnippet/visualbasic/5587a603-3296-44ff-adc6-_1.vb)]"
+  syntax:
+    content: public void Serialize (System.IO.Stream stream, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces);
+    parameters:
+    - id: stream
+      type: System.IO.Stream
+      description: The <xref href="System.IO.Stream"></xref> used to write the XML document.
+    - id: o
+      type: System.Object
+      description: The <xref href="System.Object"></xref> to serialize.
+    - id: namespaces
+      type: System.Xml.Serialization.XmlSerializerNamespaces
+      description: The <xref href="System.Xml.Serialization.XmlSerializerNamespaces"></xref> referenced by the object.
+  overload: System.Xml.Serialization.XmlSerializer.Serialize*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: An error occurred during serialization. The original exception is available using the <xref href="stem.Exception.InnerException%2A"></xref> property.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.IO.TextWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces)
+  id: Serialize(System.IO.TextWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Serialize(TextWriter,Object,XmlSerializerNamespaces)
+  nameWithType: XmlSerializer.Serialize(TextWriter,Object,XmlSerializerNamespaces)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(TextWriter,Object,XmlSerializerNamespaces)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Serializes the specified <xref href="System.Object"></xref> and writes the XML document to a file using the specified <xref href="System.IO.TextWriter"></xref> and references the specified namespaces.
+  remarks: "When the <xref:System.Xml.Serialization.XmlSerializer.Serialize%2A> method is invoked the public fields and read/write properties of an object are converted into XML. Methods, indexers, private fields, and read-only properties are not serialized. To serialize all fields and properties, both public and private, use the <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter>.  \n  \n Use the `textWriter` parameter to specify an object that derives from the abstract <xref:System.IO.TextWriter> class. Classes that derive from <xref:System.IO.TextWriter> class include:  \n  \n-   <xref:System.IO.StreamWriter>  \n  \n-   <xref:System.IO.StringWriter>  \n  \n-   <xref:System.CodeDom.Compiler.IndentedTextWriter>  \n  \n> [!NOTE]\n>  The <xref:System.Xml.Serialization.XmlSerializer> cannot serialize the following: arrays of <xref:System.Collections.ArrayList> and arrays of <xref:System.Collections.Generic.List%601>."
+  example:
+  - "The following example serializes an object with a <xref:System.IO.TextWriter>. The example also creates an <xref:System.Xml.Serialization.XmlSerializerNamespaces> object and adds two namespaces to the object. The class that defines the serialized object is also attributed with <xref:System.Xml.Serialization.XmlElementAttribute> attributes to specify the namespace for each element.  \n  \n [!code-xml[Classic XmlSerializer.Serialize1 Example#1](~/add/codesnippet/xml/34a44a9b-62df-47c1-b62f-_1.xml)]\n [!code-cs[Classic XmlSerializer.Serialize1 Example#1](~/add/codesnippet/csharp/34a44a9b-62df-47c1-b62f-_1.cs)]\n [!code-vb[Classic XmlSerializer.Serialize1 Example#1](~/add/codesnippet/visualbasic/34a44a9b-62df-47c1-b62f-_1.vb)]\n [!code-cpp[Classic XmlSerializer.Serialize1 Example#1](~/add/codesnippet/cpp/34a44a9b-62df-47c1-b62f-_1.cpp)]"
+  syntax:
+    content: public void Serialize (System.IO.TextWriter textWriter, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces);
+    parameters:
+    - id: textWriter
+      type: System.IO.TextWriter
+      description: The <xref href="System.IO.TextWriter"></xref> used to write the XML document.
+    - id: o
+      type: System.Object
+      description: The <xref href="System.Object"></xref> to serialize.
+    - id: namespaces
+      type: System.Xml.Serialization.XmlSerializerNamespaces
+      description: The <xref href="System.Xml.Serialization.XmlSerializerNamespaces"></xref> that contains namespaces for the generated XML document.
+  overload: System.Xml.Serialization.XmlSerializer.Serialize*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: An error occurred during serialization. The original exception is available using the <xref href="stem.Exception.InnerException%2A"></xref> property.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.Xml.XmlWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces)
+  id: Serialize(System.Xml.XmlWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Serialize(XmlWriter,Object,XmlSerializerNamespaces)
+  nameWithType: XmlSerializer.Serialize(XmlWriter,Object,XmlSerializerNamespaces)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(XmlWriter,Object,XmlSerializerNamespaces)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Serializes the specified <xref href="System.Object"></xref> and writes the XML document to a file using the specified <xref href="System.Xml.XmlWriter"></xref> and references the specified namespaces.
+  remarks: "When the <xref:System.Xml.Serialization.XmlSerializer.Serialize%2A> method is invoked, the public fields and read/write properties of an object are converted into XML. Methods, indexers, private fields, and read-only properties are not serialized. To serialize all fields and properties, both public and private, use the <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter>.  \n  \n Use the `xmlWriter` parameter to specify an object that derives from the abstract <xref:System.Xml.XmlWriter> class, which is designed to write XML documents. The <xref:System.Xml.XmlTextWriter> derives from the <xref:System.Xml.XmlWriter>.  \n  \n> [!NOTE]\n>  The <xref:System.Xml.Serialization.XmlSerializer> cannot serialize the following: arrays of <xref:System.Collections.ArrayList> and arrays of <xref:System.Collections.Generic.List%601>."
+  example:
+  - "The following example serializes an object with an <xref:System.Xml.XmlWriter>. The example also creates an <xref:System.Xml.Serialization.XmlSerializerNamespaces> and adds two namespaces to the object. Several instances of the <xref:System.Xml.Serialization.XmlElementAttribute> class are applied to the class members to specify the namespace for each element.  \n  \n [!code-cpp[Classic XmlSerializer.Serialize5 Example#1](~/add/codesnippet/cpp/c4f47c24-018d-4129-997d-_1.cpp)]\n [!code-cs[Classic XmlSerializer.Serialize5 Example#1](~/add/codesnippet/csharp/c4f47c24-018d-4129-997d-_1.cs)]\n [!code-vb[Classic XmlSerializer.Serialize5 Example#1](~/add/codesnippet/visualbasic/c4f47c24-018d-4129-997d-_1.vb)]\n [!code-xml[Classic XmlSerializer.Serialize5 Example#1](~/add/codesnippet/xml/c4f47c24-018d-4129-997d-_1.xml)]"
+  syntax:
+    content: public void Serialize (System.Xml.XmlWriter xmlWriter, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces);
+    parameters:
+    - id: xmlWriter
+      type: System.Xml.XmlWriter
+      description: The <xref href="System.Xml.XmlWriter"></xref> used to write the XML document.
+    - id: o
+      type: System.Object
+      description: The <xref href="System.Object"></xref> to serialize.
+    - id: namespaces
+      type: System.Xml.Serialization.XmlSerializerNamespaces
+      description: The <xref href="System.Xml.Serialization.XmlSerializerNamespaces"></xref> referenced by the object.
+  overload: System.Xml.Serialization.XmlSerializer.Serialize*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: An error occurred during serialization. The original exception is available using the <xref href="stem.Exception.InnerException%2A"></xref> property.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.Xml.XmlWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces,System.String)
+  id: Serialize(System.Xml.XmlWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces,System.String)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Serialize(XmlWriter,Object,XmlSerializerNamespaces,String)
+  nameWithType: XmlSerializer.Serialize(XmlWriter,Object,XmlSerializerNamespaces,String)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(XmlWriter,Object,XmlSerializerNamespaces,String)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Serializes the specified object and writes the XML document to a file using the specified <xref href="System.Xml.XmlWriter"></xref> and references the specified namespaces and encoding style.
+  remarks: "When the <xref:System.Xml.Serialization.XmlSerializer.Serialize%2A> method is invoked, the public fields and read/write properties of an object are converted into XML. Methods, indexers, private fields, and read-only properties are not serialized. To serialize all fields and properties, both public and private, use the <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter>.  \n  \n Use the `xmlWriter` parameter to specify an object that derives from the abstract <xref:System.Xml.XmlWriter> class, which is designed to write XML documents. The <xref:System.Xml.XmlTextWriter> derives from the <xref:System.Xml.XmlWriter>.  \n  \n Set the `encodingStyle` parameter to \"http://schemas.xmlsoap.org/soap/encoding/\" for SOAP version 1.1 encoding; otherwise, set it to \"http://www.w3.org/2001/12/soap-encoding\" for SOAP version 1.2 encoding.  \n  \n> [!NOTE]\n>  The <xref:System.Xml.Serialization.XmlSerializer> cannot serialize the following: arrays of <xref:System.Collections.ArrayList> and arrays of <xref:System.Collections.Generic.List%601>."
+  syntax:
+    content: public void Serialize (System.Xml.XmlWriter xmlWriter, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces, string encodingStyle);
+    parameters:
+    - id: xmlWriter
+      type: System.Xml.XmlWriter
+      description: The <xref href="System.Xml.XmlWriter"></xref> used to write the XML document.
+    - id: o
+      type: System.Object
+      description: The object to serialize.
+    - id: namespaces
+      type: System.Xml.Serialization.XmlSerializerNamespaces
+      description: The <xref href="System.Xml.Serialization.XmlSerializerNamespaces"></xref> referenced by the object.
+    - id: encodingStyle
+      type: System.String
+      description: The encoding style of the serialized XML.
+  overload: System.Xml.Serialization.XmlSerializer.Serialize*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: An error occurred during serialization. The original exception is available using the <xref href="stem.Exception.InnerException%2A"></xref> property.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.Xml.XmlWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces,System.String,System.String)
+  id: Serialize(System.Xml.XmlWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces,System.String,System.String)
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: Serialize(XmlWriter,Object,XmlSerializerNamespaces,String,String)
+  nameWithType: XmlSerializer.Serialize(XmlWriter,Object,XmlSerializerNamespaces,String,String)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(XmlWriter,Object,XmlSerializerNamespaces,String,String)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Serializes the specified <xref href="System.Object"></xref> and writes the XML document to a file using the specified <xref href="System.Xml.XmlWriter"></xref>, XML namespaces, and encoding.
+  remarks: The *id* parameter supplies the base string used to create SOAP ids. By default, these are "id1", "id2" and so on. But if the parameter is set to "myBase" the generated values are "myBaseid1", "myBaseid2" and so on. This functionality is used to create unique id values across the whole SOAP message.
+  syntax:
+    content: public void Serialize (System.Xml.XmlWriter xmlWriter, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces, string encodingStyle, string id);
+    parameters:
+    - id: xmlWriter
+      type: System.Xml.XmlWriter
+      description: The <xref href="System.Xml.XmlWriter"></xref> used to write the XML document.
+    - id: o
+      type: System.Object
+      description: The object to serialize.
+    - id: namespaces
+      type: System.Xml.Serialization.XmlSerializerNamespaces
+      description: An instance of the `XmlSerializaerNamespaces` that contains namespaces and prefixes to use.
+    - id: encodingStyle
+      type: System.String
+      description: The encoding used in the document.
+    - id: id
+      type: System.String
+      description: For SOAP encoded messages, the base used to generate id attributes.
+  overload: System.Xml.Serialization.XmlSerializer.Serialize*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.UnknownAttribute
+  id: UnknownAttribute
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: UnknownAttribute
+  nameWithType: XmlSerializer.UnknownAttribute
+  fullName: System.Xml.Serialization.XmlSerializer.UnknownAttribute
+  type: Event
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Occurs when the <xref href="System.Xml.Serialization.XmlSerializer"></xref> encounters an XML attribute of unknown type during deserialization.
+  remarks: "By default, after calling the <xref:System.Xml.Serialization.XmlSerializer.Deserialize%2A> method, the <xref:System.Xml.Serialization.XmlSerializer> ignores XML attributes of unknown types. However, you can use this event to handle such node types.  \n  \n If the instance of the class being deserialized contains a field that returns an array of <xref:System.Xml.XmlAttribute> objects and an <xref:System.Xml.Serialization.XmlAnyAttributeAttribute> has been applied to the field, the UnknownAttribute event does not occur. Instead, all unknown XML attributes are collected into the array."
+  example:
+  - "The following example prints information about any unknown attributes encountered while deserializing an XML document.  \n  \n [!code-cpp[Classic XmlSerializer.UnknownAttribute Example#1](~/add/codesnippet/cpp/e-system.xml.serializati_2_1.cpp)]\n [!code-vb[Classic XmlSerializer.UnknownAttribute Example#1](~/add/codesnippet/visualbasic/e-system.xml.serializati_2_1.vb)]\n [!code-cs[Classic XmlSerializer.UnknownAttribute Example#1](~/add/codesnippet/csharp/e-system.xml.serializati_2_1.cs)]"
+  syntax:
+    content: public event System.Xml.Serialization.XmlAttributeEventHandler UnknownAttribute;
+    return:
+      type: System.Xml.Serialization.XmlAttributeEventHandler
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.UnknownElement
+  id: UnknownElement
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: UnknownElement
+  nameWithType: XmlSerializer.UnknownElement
+  fullName: System.Xml.Serialization.XmlSerializer.UnknownElement
+  type: Event
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Occurs when the <xref href="System.Xml.Serialization.XmlSerializer"></xref> encounters an XML element of unknown type during deserialization.
+  remarks: "By default, after calling the <xref:System.Xml.Serialization.XmlSerializer.Deserialize%2A> method, the <xref:System.Xml.Serialization.XmlSerializer> ignores XML attributes of unknown types. However, you can use this event to handle such node types.  \n  \n> [!NOTE]\n>  If the <xref:System.Xml.Serialization.XmlAnyElementAttribute> is applied to a field that returns an array of <xref:System.Xml.XmlElement> objects, all unknown elements are collected in the array. In that case, the UnknownElement event does not occur."
+  example:
+  - "The following example deserializes a class named `Group` from a file named UnknownElements.xml. Whenever an element is found in the file that has no corresponding member in the class, the UnknownElement event occurs. To try the example, paste the following XML code into a file named UnknownElements.xml.  \n  \n```  \n<?xml version=\"1.0\" encoding=\"utf-8\"?>  \n<Group xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">  \n  <GroupName>MyGroup</GroupName>  \n  <GroupSize>Large</GroupSize>  \n  <GroupNumber>444</GroupNumber>  \n  <GroupBase>West</GroupBase>  \n</Group>  \n```  \n  \n [!code-cs[XmlSerializer.UnknownElement Example#1](~/add/codesnippet/csharp/e-system.xml.serializati_1_1.cs)]\n [!code-cpp[XmlSerializer.UnknownElement Example#1](~/add/codesnippet/cpp/e-system.xml.serializati_1_1.cpp)]\n [!code-vb[XmlSerializer.UnknownElement Example#1](~/add/codesnippet/visualbasic/e-system.xml.serializati_1_1.vb)]"
+  syntax:
+    content: public event System.Xml.Serialization.XmlElementEventHandler UnknownElement;
+    return:
+      type: System.Xml.Serialization.XmlElementEventHandler
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.UnknownNode
+  id: UnknownNode
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: UnknownNode
+  nameWithType: XmlSerializer.UnknownNode
+  fullName: System.Xml.Serialization.XmlSerializer.UnknownNode
+  type: Event
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Occurs when the <xref href="System.Xml.Serialization.XmlSerializer"></xref> encounters an XML node of unknown type during deserialization.
+  remarks: By default, after calling the <xref:System.Xml.Serialization.XmlSerializer.Deserialize%2A> method, the <xref:System.Xml.Serialization.XmlSerializer> ignores XML nodes of unknown types. However, you can use this event to handle such node types.
+  example:
+  - "The following example prints the type of any encountered unknown node.  \n  \n [!code-cs[Classic XmlSerializer.UnknownNode Example#1](~/add/codesnippet/csharp/e-system.xml.serializati_3_1.cs)]\n [!code-vb[Classic XmlSerializer.UnknownNode Example#1](~/add/codesnippet/visualbasic/e-system.xml.serializati_3_1.vb)]\n [!code-cpp[Classic XmlSerializer.UnknownNode Example#1](~/add/codesnippet/cpp/e-system.xml.serializati_3_1.cpp)]"
+  syntax:
+    content: public event System.Xml.Serialization.XmlNodeEventHandler UnknownNode;
+    return:
+      type: System.Xml.Serialization.XmlNodeEventHandler
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSerializer.UnreferencedObject
+  id: UnreferencedObject
+  parent: System.Xml.Serialization.XmlSerializer
+  langs:
+  - csharp
+  name: UnreferencedObject
+  nameWithType: XmlSerializer.UnreferencedObject
+  fullName: System.Xml.Serialization.XmlSerializer.UnreferencedObject
+  type: Event
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Occurs during deserialization of a SOAP-encoded XML stream, when the <xref href="System.Xml.Serialization.XmlSerializer"></xref> encounters a recognized type that is not used or is unreferenced.
+  remarks: "The UnreferencedObject event only occurs when the <xref:System.Xml.Serialization.XmlSerializer> is used to deserialize an XML document that contains a SOAP message that conforms to section 5 of the World Wide Web Consortium (www.w3.org) document, \"Simple Object Access Protocol (SOAP) 1.1\".  \n  \n Documents that conform to section 5 are in a special format. At the very least, such a document includes the main body of the SOAP message. However, rather than having all types defined inline in the document, some type definitions can be encoded as references to top-level elements in the document. Thus, for every element found in the main body that is a reference, there must be a corresponding element that contains the type definition. To correlate the referencing element and the type definition, the type definition has an `id` attribute set to a unique string ID and the referencing element has an `href` attribute that references the same ID.  \n  \n```  \n<Group xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" id=\"id1\" n1:GroupName=\".NET\" GroupNumber=\"ZDI=\" CreationDate=\"2002-05-02\" xmlns:n1=\"http:'www.cpandl.com\">  \n    <PosInt xsi:type=\"xsd:nonNegativeInteger\">10000</PosInt>  \n    <GroupVehicle href=\"#id2\" />  \n  </Group>  \n  <Vehicle id=\"id2\" n1:type=\"Vehicle\" xmlns:n1=\"http://www.w3.org/2001/XMLSchema-instance\">  \n    <licenseNumber xmlns:q1=\"http://www.w3.org/2001/XMLSchema\" n1:type=\"q1:string\">1234</licenseNumber>  \n  </Vehicle>  \n```  \n  \n The UnreferencedObject event occur when there is a type definition found in the document, but no parameter in the main body references it. When the event occurs, you can retrieve the XML type of the unreferenced object by examining the <xref:System.Xml.Serialization.UnreferencedObjectEventArgs.UnreferencedObject%2A> property of the <xref:System.Xml.Serialization.UnreferencedObjectEventArgs> class. The XML ID of the object is returned by the <xref:System.Xml.Serialization.UnreferencedObjectEventArgs.UnreferencedId%2A> property.  \n  \n The UnreferencedObject event should not be confused with the <xref:System.Xml.Serialization.XmlSerializer.UnknownElement> and <xref:System.Xml.Serialization.XmlSerializer.UnknownNode> events, which occur when there is no class member that corresponds to the XML node or element type."
+  example:
+  - "The following example adds an <xref:System.Xml.Serialization.UnreferencedObjectEventHandler> to an <xref:System.Xml.Serialization.XmlSerializer>. The event is handled by the `Serializer``_``UnreferencedObject` method. To run the example, cut and paste the following XML into a file named \"UnrefObj.xml\".  \n  \n```  \n<wrapper>  \n  <Group xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" id=\"id1\" n1:GroupName=\".NET\" xmlns:n1=\"http://www.cpandl.com\">  \n   </Group>  \n<Vehicle id=\"id2\" n1:type=\"Vehicle\" xmlns:n1=\"http://www.w3.org/2001/XMLSchema-instance\">  \n    <licenseNumber xmlns:q1=\"http://www.w3.org/2001/XMLSchema\" n1:type=\"q1:string\">ABCD</licenseNumber>  \n  </Vehicle>  \n<Vehicle id=\"id3\" n1:type=\"Vehicle\" xmlns:n1=\"http://www.w3.org/2001/XMLSchema-instance\">  \n    <licenseNumber xmlns:q1=\"http://www.w3.org/2001/XMLSchema\" n1:type=\"q1:string\">1234</licenseNumber>  \n  </Vehicle>  \n</wrapper>  \n```  \n  \n [!code-cs[UnreferencedObject Event Example#1](~/add/codesnippet/csharp/e-system.xml.serializati_0_1.cs)]\n [!code-cpp[UnreferencedObject Event Example#1](~/add/codesnippet/cpp/e-system.xml.serializati_0_1.cpp)]\n [!code-vb[UnreferencedObject Event Example#1](~/add/codesnippet/visualbasic/e-system.xml.serializati_0_1.vb)]"
+  syntax:
+    content: public event System.Xml.Serialization.UnreferencedObjectEventHandler UnreferencedObject;
+    return:
+      type: System.Xml.Serialization.UnreferencedObjectEventHandler
+      description: To be added.
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSerializer.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSerializer.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.NotImplementedException
+  parent: System
+  isExternal: false
+  name: NotImplementedException
+  nameWithType: NotImplementedException
+  fullName: System.NotImplementedException
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.Xml.Serialization.XmlSerializer.#ctor
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: XmlSerializer()
+  nameWithType: XmlSerializer.XmlSerializer()
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer()
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: XmlSerializer(Type)
+  nameWithType: XmlSerializer.XmlSerializer(Type)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type)
+- uid: System.Type
+  parent: System
+  isExternal: false
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Xml.Serialization.XmlTypeMapping)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: XmlSerializer(XmlTypeMapping)
+  nameWithType: XmlSerializer.XmlSerializer(XmlTypeMapping)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(XmlTypeMapping)
+- uid: System.Xml.Serialization.XmlTypeMapping
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: XmlTypeMapping
+  nameWithType: XmlTypeMapping
+  fullName: System.Xml.Serialization.XmlTypeMapping
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.String)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: XmlSerializer(Type,String)
+  nameWithType: XmlSerializer.XmlSerializer(Type,String)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type,String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Type[])
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: XmlSerializer(Type,Type[])
+  nameWithType: XmlSerializer.XmlSerializer(Type,Type[])
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type,Type[])
+- uid: System.Type[]
+  parent: System
+  isExternal: false
+  name: Type[]
+  nameWithType: Type[]
+  fullName: System.Type[]
+  spec.csharp:
+  - uid: System.Type
+    name: Type
+    nameWithType: Type
+    fullName: Type[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: XmlSerializer(Type,XmlAttributeOverrides)
+  nameWithType: XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides)
+- uid: System.Xml.Serialization.XmlAttributeOverrides
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: XmlAttributeOverrides
+  nameWithType: XmlAttributeOverrides
+  fullName: System.Xml.Serialization.XmlAttributeOverrides
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlRootAttribute)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: XmlSerializer(Type,XmlRootAttribute)
+  nameWithType: XmlSerializer.XmlSerializer(Type,XmlRootAttribute)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type,XmlRootAttribute)
+- uid: System.Xml.Serialization.XmlRootAttribute
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: XmlRootAttribute
+  nameWithType: XmlRootAttribute
+  fullName: System.Xml.Serialization.XmlRootAttribute
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides,System.Type[],System.Xml.Serialization.XmlRootAttribute,System.String)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String)
+  nameWithType: XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String)
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides,System.Type[],System.Xml.Serialization.XmlRootAttribute,System.String,System.String)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String,String)
+  nameWithType: XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String,String)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String,String)
+- uid: System.Xml.Serialization.XmlSerializer.#ctor(System.Type,System.Xml.Serialization.XmlAttributeOverrides,System.Type[],System.Xml.Serialization.XmlRootAttribute,System.String,System.String,System.Security.Policy.Evidence)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String,String,Evidence)
+  nameWithType: XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String,String,Evidence)
+  fullName: System.Xml.Serialization.XmlSerializer.XmlSerializer(Type,XmlAttributeOverrides,Type[],XmlRootAttribute,String,String,Evidence)
+- uid: System.Security.Policy.Evidence
+  parent: System.Security.Policy
+  isExternal: false
+  name: Evidence
+  nameWithType: Evidence
+  fullName: System.Security.Policy.Evidence
+- uid: System.Xml.Serialization.XmlSerializer.CanDeserialize(System.Xml.XmlReader)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: CanDeserialize(XmlReader)
+  nameWithType: XmlSerializer.CanDeserialize(XmlReader)
+  fullName: System.Xml.Serialization.XmlSerializer.CanDeserialize(XmlReader)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Xml.XmlReader
+  parent: System.Xml
+  isExternal: false
+  name: XmlReader
+  nameWithType: XmlReader
+  fullName: System.Xml.XmlReader
+- uid: System.Xml.Serialization.XmlSerializer.CreateReader
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: CreateReader()
+  nameWithType: XmlSerializer.CreateReader()
+  fullName: System.Xml.Serialization.XmlSerializer.CreateReader()
+- uid: System.Xml.Serialization.XmlSerializationReader
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: XmlSerializationReader
+  nameWithType: XmlSerializationReader
+  fullName: System.Xml.Serialization.XmlSerializationReader
+- uid: System.Xml.Serialization.XmlSerializer.CreateWriter
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: CreateWriter()
+  nameWithType: XmlSerializer.CreateWriter()
+  fullName: System.Xml.Serialization.XmlSerializer.CreateWriter()
+- uid: System.Xml.Serialization.XmlSerializationWriter
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: XmlSerializationWriter
+  nameWithType: XmlSerializationWriter
+  fullName: System.Xml.Serialization.XmlSerializationWriter
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize(System.IO.Stream)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Deserialize(Stream)
+  nameWithType: XmlSerializer.Deserialize(Stream)
+  fullName: System.Xml.Serialization.XmlSerializer.Deserialize(Stream)
+- uid: System.IO.Stream
+  parent: System.IO
+  isExternal: false
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize(System.IO.TextReader)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Deserialize(TextReader)
+  nameWithType: XmlSerializer.Deserialize(TextReader)
+  fullName: System.Xml.Serialization.XmlSerializer.Deserialize(TextReader)
+- uid: System.IO.TextReader
+  parent: System.IO
+  isExternal: false
+  name: TextReader
+  nameWithType: TextReader
+  fullName: System.IO.TextReader
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.Serialization.XmlSerializationReader)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Deserialize(XmlSerializationReader)
+  nameWithType: XmlSerializer.Deserialize(XmlSerializationReader)
+  fullName: System.Xml.Serialization.XmlSerializer.Deserialize(XmlSerializationReader)
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Deserialize(XmlReader)
+  nameWithType: XmlSerializer.Deserialize(XmlReader)
+  fullName: System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader)
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader,System.String)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Deserialize(XmlReader,String)
+  nameWithType: XmlSerializer.Deserialize(XmlReader,String)
+  fullName: System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader,String)
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader,System.Xml.Serialization.XmlDeserializationEvents)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Deserialize(XmlReader,XmlDeserializationEvents)
+  nameWithType: XmlSerializer.Deserialize(XmlReader,XmlDeserializationEvents)
+  fullName: System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader,XmlDeserializationEvents)
+- uid: System.Xml.Serialization.XmlDeserializationEvents
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: XmlDeserializationEvents
+  nameWithType: XmlDeserializationEvents
+  fullName: System.Xml.Serialization.XmlDeserializationEvents
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader,System.String,System.Xml.Serialization.XmlDeserializationEvents)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Deserialize(XmlReader,String,XmlDeserializationEvents)
+  nameWithType: XmlSerializer.Deserialize(XmlReader,String,XmlDeserializationEvents)
+  fullName: System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader,String,XmlDeserializationEvents)
+- uid: System.Xml.Serialization.XmlSerializer.FromMappings(System.Xml.Serialization.XmlMapping[])
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: FromMappings(XmlMapping[])
+  nameWithType: XmlSerializer.FromMappings(XmlMapping[])
+  fullName: System.Xml.Serialization.XmlSerializer.FromMappings(XmlMapping[])
+- uid: System.Xml.Serialization.XmlSerializer[]
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: XmlSerializer[]
+  nameWithType: XmlSerializer[]
+  fullName: System.Xml.Serialization.XmlSerializer[]
+  spec.csharp:
+  - uid: System.Xml.Serialization.XmlSerializer
+    name: XmlSerializer
+    nameWithType: XmlSerializer
+    fullName: XmlSerializer[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Xml.Serialization.XmlMapping[]
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: XmlMapping[]
+  nameWithType: XmlMapping[]
+  fullName: System.Xml.Serialization.XmlMapping[]
+  spec.csharp:
+  - uid: System.Xml.Serialization.XmlMapping
+    name: XmlMapping
+    nameWithType: XmlMapping
+    fullName: XmlMapping[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Xml.Serialization.XmlSerializer.FromMappings(System.Xml.Serialization.XmlMapping[],System.Security.Policy.Evidence)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: FromMappings(XmlMapping[],Evidence)
+  nameWithType: XmlSerializer.FromMappings(XmlMapping[],Evidence)
+  fullName: System.Xml.Serialization.XmlSerializer.FromMappings(XmlMapping[],Evidence)
+- uid: System.Xml.Serialization.XmlSerializer.FromMappings(System.Xml.Serialization.XmlMapping[],System.Type)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: FromMappings(XmlMapping[],Type)
+  nameWithType: XmlSerializer.FromMappings(XmlMapping[],Type)
+  fullName: System.Xml.Serialization.XmlSerializer.FromMappings(XmlMapping[],Type)
+- uid: System.Xml.Serialization.XmlSerializer.FromTypes(System.Type[])
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: FromTypes(Type[])
+  nameWithType: XmlSerializer.FromTypes(Type[])
+  fullName: System.Xml.Serialization.XmlSerializer.FromTypes(Type[])
+- uid: System.Xml.Serialization.XmlSerializer.GenerateSerializer(System.Type[],System.Xml.Serialization.XmlMapping[])
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: GenerateSerializer(Type[],XmlMapping[])
+  nameWithType: XmlSerializer.GenerateSerializer(Type[],XmlMapping[])
+  fullName: System.Xml.Serialization.XmlSerializer.GenerateSerializer(Type[],XmlMapping[])
+- uid: System.Reflection.Assembly
+  parent: System.Reflection
+  isExternal: false
+  name: Assembly
+  nameWithType: Assembly
+  fullName: System.Reflection.Assembly
+- uid: System.Xml.Serialization.XmlSerializer.GenerateSerializer(System.Type[],System.Xml.Serialization.XmlMapping[],System.CodeDom.Compiler.CompilerParameters)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: GenerateSerializer(Type[],XmlMapping[],CompilerParameters)
+  nameWithType: XmlSerializer.GenerateSerializer(Type[],XmlMapping[],CompilerParameters)
+  fullName: System.Xml.Serialization.XmlSerializer.GenerateSerializer(Type[],XmlMapping[],CompilerParameters)
+- uid: System.CodeDom.Compiler.CompilerParameters
+  parent: System.CodeDom.Compiler
+  isExternal: false
+  name: CompilerParameters
+  nameWithType: CompilerParameters
+  fullName: System.CodeDom.Compiler.CompilerParameters
+- uid: System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(System.Type)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: GetXmlSerializerAssemblyName(Type)
+  nameWithType: XmlSerializer.GetXmlSerializerAssemblyName(Type)
+  fullName: System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(Type)
+- uid: System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(System.Type,System.String)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: GetXmlSerializerAssemblyName(Type,String)
+  nameWithType: XmlSerializer.GetXmlSerializerAssemblyName(Type,String)
+  fullName: System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(Type,String)
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.IO.Stream,System.Object)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Serialize(Stream,Object)
+  nameWithType: XmlSerializer.Serialize(Stream,Object)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(Stream,Object)
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.IO.TextWriter,System.Object)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Serialize(TextWriter,Object)
+  nameWithType: XmlSerializer.Serialize(TextWriter,Object)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(TextWriter,Object)
+- uid: System.IO.TextWriter
+  parent: System.IO
+  isExternal: false
+  name: TextWriter
+  nameWithType: TextWriter
+  fullName: System.IO.TextWriter
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.Object,System.Xml.Serialization.XmlSerializationWriter)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Serialize(Object,XmlSerializationWriter)
+  nameWithType: XmlSerializer.Serialize(Object,XmlSerializationWriter)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(Object,XmlSerializationWriter)
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.Xml.XmlWriter,System.Object)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Serialize(XmlWriter,Object)
+  nameWithType: XmlSerializer.Serialize(XmlWriter,Object)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(XmlWriter,Object)
+- uid: System.Xml.XmlWriter
+  parent: System.Xml
+  isExternal: false
+  name: XmlWriter
+  nameWithType: XmlWriter
+  fullName: System.Xml.XmlWriter
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.IO.Stream,System.Object,System.Xml.Serialization.XmlSerializerNamespaces)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Serialize(Stream,Object,XmlSerializerNamespaces)
+  nameWithType: XmlSerializer.Serialize(Stream,Object,XmlSerializerNamespaces)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(Stream,Object,XmlSerializerNamespaces)
+- uid: System.Xml.Serialization.XmlSerializerNamespaces
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: XmlSerializerNamespaces
+  nameWithType: XmlSerializerNamespaces
+  fullName: System.Xml.Serialization.XmlSerializerNamespaces
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.IO.TextWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Serialize(TextWriter,Object,XmlSerializerNamespaces)
+  nameWithType: XmlSerializer.Serialize(TextWriter,Object,XmlSerializerNamespaces)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(TextWriter,Object,XmlSerializerNamespaces)
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.Xml.XmlWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Serialize(XmlWriter,Object,XmlSerializerNamespaces)
+  nameWithType: XmlSerializer.Serialize(XmlWriter,Object,XmlSerializerNamespaces)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(XmlWriter,Object,XmlSerializerNamespaces)
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.Xml.XmlWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces,System.String)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Serialize(XmlWriter,Object,XmlSerializerNamespaces,String)
+  nameWithType: XmlSerializer.Serialize(XmlWriter,Object,XmlSerializerNamespaces,String)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(XmlWriter,Object,XmlSerializerNamespaces,String)
+- uid: System.Xml.Serialization.XmlSerializer.Serialize(System.Xml.XmlWriter,System.Object,System.Xml.Serialization.XmlSerializerNamespaces,System.String,System.String)
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Serialize(XmlWriter,Object,XmlSerializerNamespaces,String,String)
+  nameWithType: XmlSerializer.Serialize(XmlWriter,Object,XmlSerializerNamespaces,String,String)
+  fullName: System.Xml.Serialization.XmlSerializer.Serialize(XmlWriter,Object,XmlSerializerNamespaces,String,String)
+- uid: System.Xml.Serialization.XmlSerializer.UnknownAttribute
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: UnknownAttribute
+  nameWithType: XmlSerializer.UnknownAttribute
+  fullName: System.Xml.Serialization.XmlSerializer.UnknownAttribute
+- uid: System.Xml.Serialization.XmlAttributeEventHandler
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: XmlAttributeEventHandler
+  nameWithType: XmlAttributeEventHandler
+  fullName: System.Xml.Serialization.XmlAttributeEventHandler
+- uid: System.Xml.Serialization.XmlSerializer.UnknownElement
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: UnknownElement
+  nameWithType: XmlSerializer.UnknownElement
+  fullName: System.Xml.Serialization.XmlSerializer.UnknownElement
+- uid: System.Xml.Serialization.XmlElementEventHandler
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: XmlElementEventHandler
+  nameWithType: XmlElementEventHandler
+  fullName: System.Xml.Serialization.XmlElementEventHandler
+- uid: System.Xml.Serialization.XmlSerializer.UnknownNode
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: UnknownNode
+  nameWithType: XmlSerializer.UnknownNode
+  fullName: System.Xml.Serialization.XmlSerializer.UnknownNode
+- uid: System.Xml.Serialization.XmlNodeEventHandler
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: XmlNodeEventHandler
+  nameWithType: XmlNodeEventHandler
+  fullName: System.Xml.Serialization.XmlNodeEventHandler
+- uid: System.Xml.Serialization.XmlSerializer.UnreferencedObject
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: UnreferencedObject
+  nameWithType: XmlSerializer.UnreferencedObject
+  fullName: System.Xml.Serialization.XmlSerializer.UnreferencedObject
+- uid: System.Xml.Serialization.UnreferencedObjectEventHandler
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: UnreferencedObjectEventHandler
+  nameWithType: UnreferencedObjectEventHandler
+  fullName: System.Xml.Serialization.UnreferencedObjectEventHandler
+- uid: System.Xml.Serialization.XmlSerializer.#ctor*
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: XmlSerializer
+  nameWithType: XmlSerializer.XmlSerializer
+- uid: System.Xml.Serialization.XmlSerializer.CanDeserialize*
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: CanDeserialize
+  nameWithType: XmlSerializer.CanDeserialize
+- uid: System.Xml.Serialization.XmlSerializer.CreateReader*
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: CreateReader
+  nameWithType: XmlSerializer.CreateReader
+- uid: System.Xml.Serialization.XmlSerializer.CreateWriter*
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: CreateWriter
+  nameWithType: XmlSerializer.CreateWriter
+- uid: System.Xml.Serialization.XmlSerializer.Deserialize*
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Deserialize
+  nameWithType: XmlSerializer.Deserialize
+- uid: System.Xml.Serialization.XmlSerializer.FromMappings*
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: FromMappings
+  nameWithType: XmlSerializer.FromMappings
+- uid: System.Xml.Serialization.XmlSerializer.FromTypes*
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: FromTypes
+  nameWithType: XmlSerializer.FromTypes
+- uid: System.Xml.Serialization.XmlSerializer.GenerateSerializer*
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: GenerateSerializer
+  nameWithType: XmlSerializer.GenerateSerializer
+- uid: System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName*
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: GetXmlSerializerAssemblyName
+  nameWithType: XmlSerializer.GetXmlSerializerAssemblyName
+- uid: System.Xml.Serialization.XmlSerializer.Serialize*
+  parent: System.Xml.Serialization.XmlSerializer
+  isExternal: false
+  name: Serialize
+  nameWithType: XmlSerializer.Serialize

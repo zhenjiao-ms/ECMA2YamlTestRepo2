@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Net.AuthenticationSchemeSelector
+  id: AuthenticationSchemeSelector
+  langs:
+  - csharp
+  name: AuthenticationSchemeSelector
+  nameWithType: AuthenticationSchemeSelector
+  fullName: System.Net.AuthenticationSchemeSelector
+  type: Delegate
+  summary: Selects the authentication scheme for an <xref href="System.Net.HttpListener"></xref> instance.
+  remarks: "Delegates of this type are used by <xref:System.Net.HttpListener> instances to select an authentication scheme based on the characteristics of a request.  \n  \n An AuthenticationSchemeSelector delegate is passed an <xref:System.Net.HttpListenerRequest> object for each incoming request that has not provided authentication information. The method invoked by the delegate uses the <xref:System.Net.HttpListenerRequest> object and any other available information to decide which authentication scheme to require. The delegate is specified by using the <xref:System.Net.HttpListener.AuthenticationSchemeSelectorDelegate%2A> property."
+  example:
+  - "The following example uses an instance of this type to set the <xref:System.Net.HttpListener.AuthenticationSchemeSelectorDelegate%2A> property.  \n  \n [!code-vb[NCLListener#2](~/add/codesnippet/visualbasic/t-system.net.authenticat_2_1.vb)]\n [!code-cs[NCLListener#2](~/add/codesnippet/csharp/t-system.net.authenticat_2_1.cs)]  \n  \n The following example shows the implementation of the method invoked by the AuthenticationSchemeSelector delegate in the previous example.  \n  \n [!code-vb[NCLListener#1](~/add/codesnippet/visualbasic/t-system.net.authenticat_2_2.vb)]\n [!code-cs[NCLListener#1](~/add/codesnippet/csharp/t-system.net.authenticat_2_2.cs)]"
+  syntax:
+    content: public delegate System.Net.AuthenticationSchemes AuthenticationSchemeSelector(HttpListenerRequest httpRequest);
+  inheritance:
+  - System.Object
+  - System.Delegate
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Net\AuthenticationSchemeSelector.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Net/AuthenticationSchemeSelector.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Delegate
+  isExternal: false
+  name: System.Delegate

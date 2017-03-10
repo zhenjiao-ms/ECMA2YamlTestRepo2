@@ -1,0 +1,500 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.Serialization.XmlAnyElementAttributes
+  id: XmlAnyElementAttributes
+  children:
+  - System.Xml.Serialization.XmlAnyElementAttributes.#ctor
+  - System.Xml.Serialization.XmlAnyElementAttributes.Add(System.Xml.Serialization.XmlAnyElementAttribute)
+  - System.Xml.Serialization.XmlAnyElementAttributes.Contains(System.Xml.Serialization.XmlAnyElementAttribute)
+  - System.Xml.Serialization.XmlAnyElementAttributes.CopyTo(System.Xml.Serialization.XmlAnyElementAttribute[],System.Int32)
+  - System.Xml.Serialization.XmlAnyElementAttributes.IndexOf(System.Xml.Serialization.XmlAnyElementAttribute)
+  - System.Xml.Serialization.XmlAnyElementAttributes.Insert(System.Int32,System.Xml.Serialization.XmlAnyElementAttribute)
+  - System.Xml.Serialization.XmlAnyElementAttributes.Item(System.Int32)
+  - System.Xml.Serialization.XmlAnyElementAttributes.Remove(System.Xml.Serialization.XmlAnyElementAttribute)
+  langs:
+  - csharp
+  name: XmlAnyElementAttributes
+  nameWithType: XmlAnyElementAttributes
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes
+  type: Class
+  summary: Represents a collection of <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref> objects.
+  remarks: "Use the XmlAnyElementAttributes to override the behavior of a set of <xref:System.Xml.Serialization.XmlAnyElementAttribute> objects. Multiple instances of the <xref:System.Xml.Serialization.XmlAnyElementAttribute> class can be applied to a class member, as long as each instance has a distinct <xref:System.Xml.Serialization.XmlAnyElementAttribute.Name%2A> property value; this instructs the <xref:System.Xml.Serialization.XmlSerializer> to collect unknown elements under the named element into the appropriate array. It is for this reason that multiple instances of the <xref:System.Xml.Serialization.XmlAnyElementAttribute> class can be added to the XmlAnyElementAttributes.  \n  \n To override a set of <xref:System.Xml.Serialization.XmlAnyElementAttribute> objects:  \n  \n1.  Create an XmlAnyElementAttributes.  \n  \n2.  Create the set of <xref:System.Xml.Serialization.XmlAnyElementAttribute> objects, and add each object to the collection using the <xref:System.Xml.Serialization.XmlAnyElementAttributes.Add%2A> method.  \n  \n3.  Create an <xref:System.Xml.Serialization.XmlAttributes>.  \n  \n4.  Set the <xref:System.Xml.Serialization.XmlAttributes.XmlAnyElements%2A> property to the XmlAnyElementAttributes.  \n  \n5.  Create an <xref:System.Xml.Serialization.XmlAttributeOverrides>.  \n  \n6.  Add the <xref:System.Xml.Serialization.XmlAttributes> to the <xref:System.Xml.Serialization.XmlAttributeOverrides> using the <xref:System.Xml.Serialization.XmlAttributeOverrides.Add%2A> method.  \n  \n7.  Create an instance of the <xref:System.Xml.Serialization.XmlSerializer> using the <xref:System.Xml.Serialization.XmlAttributeOverrides>.  \n  \n8.  Serialize or deserialize an object that contains the set of <xref:System.Xml.Serialization.XmlAnyElementAttribute> objects."
+  example:
+  - "The following example creates a new <xref:System.Xml.Serialization.XmlAnyElementAttribute> and adds it to the collection of objects accessed through the <xref:System.Xml.Serialization.XmlAttributes.XmlAnyElements%2A> property. The <xref:System.Xml.Serialization.XmlAttributes> is then added to a <xref:System.Xml.Serialization.XmlAttributeOverrides> which is used to create an <xref:System.Xml.Serialization.XmlSerializer>. The <xref:System.Xml.Serialization.XmlSerializer> is used to serialize or deserialize an object. To see the effect of using the XmlAnyElementAttributes property, create an XML document named UnknownElements.xml by running the `SerializeObject` method in the `Main` method. Edit the resulting document to include other (unknown) elements. Comment out the `SerializeObject` call in the `Main` method, and uncomment the call to the `DeserializeObject` method, which prints out the name and value of any unknown XML element.  \n  \n [!code-cpp[XmlAttributes.XmlAnyElements#1](~/add/codesnippet/cpp/t-system.xml.serializati_17_1.cpp)]\n [!code-cs[XmlAttributes.XmlAnyElements#1](~/add/codesnippet/csharp/t-system.xml.serializati_17_1.cs)]\n [!code-vb[XmlAttributes.XmlAnyElements#1](~/add/codesnippet/visualbasic/t-system.xml.serializati_17_1.vb)]"
+  syntax:
+    content: 'public class XmlAnyElementAttributes : System.Collections.CollectionBase'
+  inheritance:
+  - System.Object
+  - System.Collections.CollectionBase
+  implements: []
+  inheritedMembers:
+  - System.Collections.CollectionBase.Capacity
+  - System.Collections.CollectionBase.Clear
+  - System.Collections.CollectionBase.Count
+  - System.Collections.CollectionBase.GetEnumerator
+  - System.Collections.CollectionBase.InnerList
+  - System.Collections.CollectionBase.List
+  - System.Collections.CollectionBase.OnClear
+  - System.Collections.CollectionBase.OnClearComplete
+  - System.Collections.CollectionBase.OnInsert(System.Int32,System.Object)
+  - System.Collections.CollectionBase.OnInsertComplete(System.Int32,System.Object)
+  - System.Collections.CollectionBase.OnRemove(System.Int32,System.Object)
+  - System.Collections.CollectionBase.OnRemoveComplete(System.Int32,System.Object)
+  - System.Collections.CollectionBase.OnSet(System.Int32,System.Object,System.Object)
+  - System.Collections.CollectionBase.OnSetComplete(System.Int32,System.Object,System.Object)
+  - System.Collections.CollectionBase.OnValidate(System.Object)
+  - System.Collections.CollectionBase.RemoveAt(System.Int32)
+  - System.Collections.CollectionBase.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  - System.Collections.CollectionBase.System#Collections#ICollection#IsSynchronized
+  - System.Collections.CollectionBase.System#Collections#ICollection#SyncRoot
+  - System.Collections.CollectionBase.System#Collections#IList#Add(System.Object)
+  - System.Collections.CollectionBase.System#Collections#IList#Contains(System.Object)
+  - System.Collections.CollectionBase.System#Collections#IList#IndexOf(System.Object)
+  - System.Collections.CollectionBase.System#Collections#IList#Insert(System.Int32,System.Object)
+  - System.Collections.CollectionBase.System#Collections#IList#IsFixedSize
+  - System.Collections.CollectionBase.System#Collections#IList#IsReadOnly
+  - System.Collections.CollectionBase.System#Collections#IList#Item(System.Int32)
+  - System.Collections.CollectionBase.System#Collections#IList#Remove(System.Object)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAnyElementAttributes.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAnyElementAttributes.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.#ctor
+  id: '#ctor'
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  langs:
+  - csharp
+  name: XmlAnyElementAttributes()
+  nameWithType: XmlAnyElementAttributes.XmlAnyElementAttributes()
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.XmlAnyElementAttributes()
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlAnyElementAttributes"></xref> class.
+  syntax:
+    content: public XmlAnyElementAttributes ();
+    parameters: []
+  overload: System.Xml.Serialization.XmlAnyElementAttributes.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAnyElementAttributes.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAnyElementAttributes.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Add(System.Xml.Serialization.XmlAnyElementAttribute)
+  id: Add(System.Xml.Serialization.XmlAnyElementAttribute)
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  langs:
+  - csharp
+  name: Add(XmlAnyElementAttribute)
+  nameWithType: XmlAnyElementAttributes.Add(XmlAnyElementAttribute)
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.Add(XmlAnyElementAttribute)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Adds an <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref> to the collection.
+  remarks: ''
+  example:
+  - "The following example creates a new <xref:System.Xml.Serialization.XmlAnyElementAttribute> and adds it to the collection of objects accessed through the <xref:System.Xml.Serialization.XmlAttributes.XmlAnyElements%2A> property. The <xref:System.Xml.Serialization.XmlAttributes> is then added to an <xref:System.Xml.Serialization.XmlAttributeOverrides>, which is used to create an <xref:System.Xml.Serialization.XmlSerializer>. The <xref:System.Xml.Serialization.XmlSerializer> is used to serialize or deserialize an object. To see the effect of using the <xref:System.Xml.Serialization.XmlAnyElementAttributes> property, create an XML document named UnknownElements.xml by running the `SerializeObject` method in the `Main` method. Edit the resulting document to include other (unknown) elements. Comment out the `SerializeObject` call in the `Main` method, and uncomment the call to the `DeserializeObject` method, which prints out the name and value of any unknown XML element.  \n  \n [!code-cpp[XmlAttributes.XmlAnyElements#1](~/add/codesnippet/cpp/1228f82f-b6b5-46d2-9629-_1.cpp)]\n [!code-cs[XmlAttributes.XmlAnyElements#1](~/add/codesnippet/csharp/1228f82f-b6b5-46d2-9629-_1.cs)]\n [!code-vb[XmlAttributes.XmlAnyElements#1](~/add/codesnippet/visualbasic/1228f82f-b6b5-46d2-9629-_1.vb)]"
+  syntax:
+    content: public int Add (System.Xml.Serialization.XmlAnyElementAttribute attribute);
+    parameters:
+    - id: attribute
+      type: System.Xml.Serialization.XmlAnyElementAttribute
+      description: The <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref> to add.
+    return:
+      type: System.Int32
+      description: The index of the newly added <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref>.
+  overload: System.Xml.Serialization.XmlAnyElementAttributes.Add*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAnyElementAttributes.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAnyElementAttributes.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Contains(System.Xml.Serialization.XmlAnyElementAttribute)
+  id: Contains(System.Xml.Serialization.XmlAnyElementAttribute)
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  langs:
+  - csharp
+  name: Contains(XmlAnyElementAttribute)
+  nameWithType: XmlAnyElementAttributes.Contains(XmlAnyElementAttribute)
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.Contains(XmlAnyElementAttribute)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets a value that indicates whether the specified <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref> exists in the collection.
+  syntax:
+    content: public bool Contains (System.Xml.Serialization.XmlAnyElementAttribute attribute);
+    parameters:
+    - id: attribute
+      type: System.Xml.Serialization.XmlAnyElementAttribute
+      description: The <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref> you are interested in.
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref> exists in the collection; otherwise, `false`.'
+  overload: System.Xml.Serialization.XmlAnyElementAttributes.Contains*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAnyElementAttributes.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAnyElementAttributes.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.CopyTo(System.Xml.Serialization.XmlAnyElementAttribute[],System.Int32)
+  id: CopyTo(System.Xml.Serialization.XmlAnyElementAttribute[],System.Int32)
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  langs:
+  - csharp
+  name: CopyTo(XmlAnyElementAttribute[],Int32)
+  nameWithType: XmlAnyElementAttributes.CopyTo(XmlAnyElementAttribute[],Int32)
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.CopyTo(XmlAnyElementAttribute[],Int32)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Copies the entire collection to a compatible one-dimensional array of <xref href="System.Xml.Serialization.XmlElementAttribute"></xref> objects, starting at the specified index of the target array.
+  syntax:
+    content: public void CopyTo (System.Xml.Serialization.XmlAnyElementAttribute[] array, int index);
+    parameters:
+    - id: array
+      type: System.Xml.Serialization.XmlAnyElementAttribute[]
+      description: The one-dimensional array of <xref href="System.Xml.Serialization.XmlElementAttribute"></xref> objects that is the destination of the elements copied from the collection. The array must have zero-based indexing.
+    - id: index
+      type: System.Int32
+      description: The zero-based index in <code>array</code> at which copying begins.
+  overload: System.Xml.Serialization.XmlAnyElementAttributes.CopyTo*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAnyElementAttributes.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAnyElementAttributes.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.IndexOf(System.Xml.Serialization.XmlAnyElementAttribute)
+  id: IndexOf(System.Xml.Serialization.XmlAnyElementAttribute)
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  langs:
+  - csharp
+  name: IndexOf(XmlAnyElementAttribute)
+  nameWithType: XmlAnyElementAttributes.IndexOf(XmlAnyElementAttribute)
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.IndexOf(XmlAnyElementAttribute)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets the index of the specified <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref>.
+  syntax:
+    content: public int IndexOf (System.Xml.Serialization.XmlAnyElementAttribute attribute);
+    parameters:
+    - id: attribute
+      type: System.Xml.Serialization.XmlAnyElementAttribute
+      description: The <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref> whose index you want.
+    return:
+      type: System.Int32
+      description: The index of the specified <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref>.
+  overload: System.Xml.Serialization.XmlAnyElementAttributes.IndexOf*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAnyElementAttributes.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAnyElementAttributes.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Insert(System.Int32,System.Xml.Serialization.XmlAnyElementAttribute)
+  id: Insert(System.Int32,System.Xml.Serialization.XmlAnyElementAttribute)
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  langs:
+  - csharp
+  name: Insert(Int32,XmlAnyElementAttribute)
+  nameWithType: XmlAnyElementAttributes.Insert(Int32,XmlAnyElementAttribute)
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.Insert(Int32,XmlAnyElementAttribute)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Inserts an <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref> into the collection at the specified index.
+  syntax:
+    content: public void Insert (int index, System.Xml.Serialization.XmlAnyElementAttribute attribute);
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index where the <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref> is inserted.
+    - id: attribute
+      type: System.Xml.Serialization.XmlAnyElementAttribute
+      description: The <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref> to insert.
+  overload: System.Xml.Serialization.XmlAnyElementAttributes.Insert*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAnyElementAttributes.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAnyElementAttributes.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Item(System.Int32)
+  id: Item(System.Int32)
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  langs:
+  - csharp
+  name: Item(Int32)
+  nameWithType: XmlAnyElementAttributes.Item(Int32)
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.Item(Int32)
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets the <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref> at the specified index.
+  syntax:
+    content: public System.Xml.Serialization.XmlAnyElementAttribute this[int index] { get; set; }
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index of the <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref>.
+    return:
+      type: System.Xml.Serialization.XmlAnyElementAttribute
+      description: An <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref> at the specified index.
+  overload: System.Xml.Serialization.XmlAnyElementAttributes.Item*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAnyElementAttributes.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAnyElementAttributes.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Remove(System.Xml.Serialization.XmlAnyElementAttribute)
+  id: Remove(System.Xml.Serialization.XmlAnyElementAttribute)
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  langs:
+  - csharp
+  name: Remove(XmlAnyElementAttribute)
+  nameWithType: XmlAnyElementAttributes.Remove(XmlAnyElementAttribute)
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.Remove(XmlAnyElementAttribute)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Removes the specified <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref> from the collection.
+  syntax:
+    content: public void Remove (System.Xml.Serialization.XmlAnyElementAttribute attribute);
+    parameters:
+    - id: attribute
+      type: System.Xml.Serialization.XmlAnyElementAttribute
+      description: The <xref href="System.Xml.Serialization.XmlAnyElementAttribute"></xref> to remove.
+  overload: System.Xml.Serialization.XmlAnyElementAttributes.Remove*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlAnyElementAttributes.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlAnyElementAttributes.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Collections.CollectionBase
+  isExternal: false
+  name: System.Collections.CollectionBase
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.#ctor
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: XmlAnyElementAttributes()
+  nameWithType: XmlAnyElementAttributes.XmlAnyElementAttributes()
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.XmlAnyElementAttributes()
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Add(System.Xml.Serialization.XmlAnyElementAttribute)
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: Add(XmlAnyElementAttribute)
+  nameWithType: XmlAnyElementAttributes.Add(XmlAnyElementAttribute)
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.Add(XmlAnyElementAttribute)
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Xml.Serialization.XmlAnyElementAttribute
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: XmlAnyElementAttribute
+  nameWithType: XmlAnyElementAttribute
+  fullName: System.Xml.Serialization.XmlAnyElementAttribute
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Contains(System.Xml.Serialization.XmlAnyElementAttribute)
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: Contains(XmlAnyElementAttribute)
+  nameWithType: XmlAnyElementAttributes.Contains(XmlAnyElementAttribute)
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.Contains(XmlAnyElementAttribute)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.CopyTo(System.Xml.Serialization.XmlAnyElementAttribute[],System.Int32)
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: CopyTo(XmlAnyElementAttribute[],Int32)
+  nameWithType: XmlAnyElementAttributes.CopyTo(XmlAnyElementAttribute[],Int32)
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.CopyTo(XmlAnyElementAttribute[],Int32)
+- uid: System.Xml.Serialization.XmlAnyElementAttribute[]
+  parent: System.Xml.Serialization
+  isExternal: false
+  name: XmlAnyElementAttribute[]
+  nameWithType: XmlAnyElementAttribute[]
+  fullName: System.Xml.Serialization.XmlAnyElementAttribute[]
+  spec.csharp:
+  - uid: System.Xml.Serialization.XmlAnyElementAttribute
+    name: XmlAnyElementAttribute
+    nameWithType: XmlAnyElementAttribute
+    fullName: XmlAnyElementAttribute[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.IndexOf(System.Xml.Serialization.XmlAnyElementAttribute)
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: IndexOf(XmlAnyElementAttribute)
+  nameWithType: XmlAnyElementAttributes.IndexOf(XmlAnyElementAttribute)
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.IndexOf(XmlAnyElementAttribute)
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Insert(System.Int32,System.Xml.Serialization.XmlAnyElementAttribute)
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: Insert(Int32,XmlAnyElementAttribute)
+  nameWithType: XmlAnyElementAttributes.Insert(Int32,XmlAnyElementAttribute)
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.Insert(Int32,XmlAnyElementAttribute)
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Item(System.Int32)
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: Item(Int32)
+  nameWithType: XmlAnyElementAttributes.Item(Int32)
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.Item(Int32)
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Remove(System.Xml.Serialization.XmlAnyElementAttribute)
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: Remove(XmlAnyElementAttribute)
+  nameWithType: XmlAnyElementAttributes.Remove(XmlAnyElementAttribute)
+  fullName: System.Xml.Serialization.XmlAnyElementAttributes.Remove(XmlAnyElementAttribute)
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.#ctor*
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: XmlAnyElementAttributes
+  nameWithType: XmlAnyElementAttributes.XmlAnyElementAttributes
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Add*
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: Add
+  nameWithType: XmlAnyElementAttributes.Add
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Contains*
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: Contains
+  nameWithType: XmlAnyElementAttributes.Contains
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.CopyTo*
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: CopyTo
+  nameWithType: XmlAnyElementAttributes.CopyTo
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.IndexOf*
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: IndexOf
+  nameWithType: XmlAnyElementAttributes.IndexOf
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Insert*
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: Insert
+  nameWithType: XmlAnyElementAttributes.Insert
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Item*
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: Item
+  nameWithType: XmlAnyElementAttributes.Item
+- uid: System.Xml.Serialization.XmlAnyElementAttributes.Remove*
+  parent: System.Xml.Serialization.XmlAnyElementAttributes
+  isExternal: false
+  name: Remove
+  nameWithType: XmlAnyElementAttributes.Remove

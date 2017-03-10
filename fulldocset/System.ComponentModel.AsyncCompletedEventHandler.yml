@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ComponentModel.AsyncCompletedEventHandler
+  id: AsyncCompletedEventHandler
+  langs:
+  - csharp
+  name: AsyncCompletedEventHandler
+  nameWithType: AsyncCompletedEventHandler
+  fullName: System.ComponentModel.AsyncCompletedEventHandler
+  type: Delegate
+  summary: Represents the method that will handle the *MethodName*`Completed` event of an asynchronous operation.
+  remarks: "When you create an AsyncCompletedEventHandler delegate, you identify the method that will handle the event. To associate the event with your event handler, add an instance of the delegate to the event. The event-handler method is called whenever the event occurs, unless you remove the delegate. For more information about event-handler delegates, see [NIB: Events and Delegates](http://msdn.microsoft.com/en-us/d98fd58b-fa4f-4598-8378-addf4355a115).  \n  \n For an asynchronous method, called *MethodName*, in your component, you will have a corresponding *MethodName*`Completed` event, and an optional *MethodName*`CompletedEventArgs` class.  \n  \n For a component that supports multiple concurrent invocations of its asynchronous methods, the client can supply a unique token, or task ID, to distinguish which asynchronous task is raising particular events. The client's AsyncCompletedEventHandler can read the <xref:System.ComponentModel.AsyncCompletedEventArgs.UserState%2A?displayProperty=fullName> property to determine which task is reporting completion. Your implementation should use the <xref:System.ComponentModel.AsyncOperationManager?displayProperty=fullName> to create an <xref:System.ComponentModel.AsyncOperation?displayProperty=fullName> that associates the client's task IDs with pending asynchronous tasks."
+  example:
+  - For a code example of the AsyncCompletedEventHandler delegate, see the example in the <xref:System.ComponentModel.AsyncCompletedEventArgs?displayProperty=fullName> class.
+  syntax:
+    content: public delegate void AsyncCompletedEventHandler(object sender, AsyncCompletedEventArgs e);
+  inheritance:
+  - System.Object
+  - System.Delegate
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ComponentModel\AsyncCompletedEventHandler.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ComponentModel/AsyncCompletedEventHandler.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Delegate
+  isExternal: false
+  name: System.Delegate

@@ -1,0 +1,234 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Windows.Markup.ContentPropertyAttribute
+  id: ContentPropertyAttribute
+  children:
+  - System.Windows.Markup.ContentPropertyAttribute.#ctor
+  - System.Windows.Markup.ContentPropertyAttribute.#ctor(System.String)
+  - System.Windows.Markup.ContentPropertyAttribute.Name
+  langs:
+  - csharp
+  name: ContentPropertyAttribute
+  nameWithType: ContentPropertyAttribute
+  fullName: System.Windows.Markup.ContentPropertyAttribute
+  type: Class
+  summary: Indicates which property of a type is the XAML content property. A XAML processor uses this information when processing XAML child elements of XAML representations of the attributed type.
+  remarks: "If the associated property of a ContentPropertyAttribute is not of type `string` or `object`, a XAML processor attempts to identify a value conversion technique. The first check is for native type conversion, either of the XAML language primitives or of specific native conversions enabled by that particular XAML writer implementation. The next step is to look for a type converter. In the .NET implementations, a type converter is identified based on <xref:System.ComponentModel.TypeConverterAttribute> on either the member level or type level definition that applies. If no value conversion can be identified, a XAML object writer typically throws an exception.  \n  \n In order to accept more than a single object element as content, the type of the XAML content property must be supportable as a collection type.  \n  \n Because of the `Inherited=true` declaration of the attribute, a value for a ContentPropertyAttribute normally applies a content property designation to all derived classes as well. Applying an empty ContentPropertyAttribute enables a derived class to remove a declaration of a content property attribute by a base class (and to note that the class has no content property). Applying a differently named ContentPropertyAttribute replaces the inherited ContentPropertyAttribute with the new one.  \n  \n In previous versions of the .NET Framework, this class existed in the WPF-specific assembly WindowsBase, and also had a parallel implementation in [!INCLUDE[vsindigo](~/add/includes/vsindigo-md.md)]. In [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], ContentPropertyAttribute is in the System.Xaml assembly. For more information, see [Types Migrated from WPF to System.Xaml](../Topic/Types%20Migrated%20from%20WPF%20to%20System.Xaml.md).  \n  \n## WPF Usage Notes  \n An example of a class in [!INCLUDE[TLA#tla_winclient](~/add/includes/tlasharptla-winclient-md.md)] that uses the ContentPropertyAttribute is <xref:System.Windows.Controls.ContentControl>, which the <xref:System.Windows.Controls.Button> class inherits from.  The property <xref:System.Windows.Controls.ContentControl.Content%2A> on the <xref:System.Windows.Controls.ContentControl> is the content property set by the ContentPropertyAttribute.  If a <xref:System.Windows.Controls.Button> is instantiate in XAML <xref:System.Windows.Controls.ContentControl.Content%2A> of the <xref:System.Windows.Controls.Button> will be set to the element that is between the start and end button tags.  \n  \n<a name=\"xamlTextUsage_ContentPropertyAttribute\"></a>   \n## XAML Text Usage"
+  example:
+  - "The following example creates a class named `Film` that has a ContentPropertyAttribute applied.  The property named `Title` is indicated as the content property.  \n  \n [!code-vb[MarkupSnippets#MarkupContentPropertyAttribute](~/add/codesnippet/visualbasic/markupsnippets/window1.xaml.vb#markupcontentpropertyattribute)]\n [!code-cs[MarkupSnippets#MarkupContentPropertyAttribute](~/add/codesnippet/csharp/MarkupSnippets/Window1.xaml.cs#markupcontentpropertyattribute)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple=false, Inherited=true)]
+
+      [System.Runtime.CompilerServices.TypeForwardedFrom("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+
+      public sealed class ContentPropertyAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\ContentPropertyAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/ContentPropertyAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Windows.Markup.ContentPropertyAttribute.#ctor
+  id: '#ctor'
+  parent: System.Windows.Markup.ContentPropertyAttribute
+  langs:
+  - csharp
+  name: ContentPropertyAttribute()
+  nameWithType: ContentPropertyAttribute.ContentPropertyAttribute()
+  fullName: System.Windows.Markup.ContentPropertyAttribute.ContentPropertyAttribute()
+  type: Constructor
+  assemblies:
+  - WindowsBase
+  - System.Xaml
+  namespace: System.Windows.Markup
+  summary: Initializes a new instance of the <xref href="System.Windows.Markup.ContentPropertyAttribute"></xref> class.
+  remarks: Because of the `Inherited=true` declaration of the attribute, a value for a <xref:System.Windows.Markup.ContentPropertyAttribute> normally applies a content property designation to all derived classes as well. Using this signature, or applying an empty <xref:System.Windows.Markup.ContentPropertyAttribute>, enables a derived class to remove a declaration of a content property attribute by a base class (and note that the class has no content property).
+  syntax:
+    content: public ContentPropertyAttribute ();
+    parameters: []
+  overload: System.Windows.Markup.ContentPropertyAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\ContentPropertyAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/ContentPropertyAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Windows.Markup.ContentPropertyAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Windows.Markup.ContentPropertyAttribute
+  langs:
+  - csharp
+  name: ContentPropertyAttribute(String)
+  nameWithType: ContentPropertyAttribute.ContentPropertyAttribute(String)
+  fullName: System.Windows.Markup.ContentPropertyAttribute.ContentPropertyAttribute(String)
+  type: Constructor
+  assemblies:
+  - WindowsBase
+  - System.Xaml
+  namespace: System.Windows.Markup
+  summary: Initializes a new instance of the <xref href="System.Windows.Markup.ContentPropertyAttribute"></xref> class, by using the specified name.
+  remarks: Assuming CLR backing, the provided `name` should match the <xref:System.Reflection.MemberInfo.Name%2A?displayProperty=fullName> of the relevant property in the CLR type system.
+  syntax:
+    content: public ContentPropertyAttribute (string name);
+    parameters:
+    - id: name
+      type: System.String
+      description: The property name for the property that is the content property.
+  overload: System.Windows.Markup.ContentPropertyAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\ContentPropertyAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/ContentPropertyAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Windows.Markup.ContentPropertyAttribute.Name
+  id: Name
+  parent: System.Windows.Markup.ContentPropertyAttribute
+  langs:
+  - csharp
+  name: Name
+  nameWithType: ContentPropertyAttribute.Name
+  fullName: System.Windows.Markup.ContentPropertyAttribute.Name
+  type: Property
+  assemblies:
+  - WindowsBase
+  - System.Xaml
+  namespace: System.Windows.Markup
+  summary: Gets the name of the property that is the content property.
+  syntax:
+    content: public string Name { get; }
+    return:
+      type: System.String
+      description: The name of the property that is the content property.
+  overload: System.Windows.Markup.ContentPropertyAttribute.Name*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\ContentPropertyAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/ContentPropertyAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Windows.Markup.ContentPropertyAttribute.#ctor
+  parent: System.Windows.Markup.ContentPropertyAttribute
+  isExternal: false
+  name: ContentPropertyAttribute()
+  nameWithType: ContentPropertyAttribute.ContentPropertyAttribute()
+  fullName: System.Windows.Markup.ContentPropertyAttribute.ContentPropertyAttribute()
+- uid: System.Windows.Markup.ContentPropertyAttribute.#ctor(System.String)
+  parent: System.Windows.Markup.ContentPropertyAttribute
+  isExternal: false
+  name: ContentPropertyAttribute(String)
+  nameWithType: ContentPropertyAttribute.ContentPropertyAttribute(String)
+  fullName: System.Windows.Markup.ContentPropertyAttribute.ContentPropertyAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Windows.Markup.ContentPropertyAttribute.Name
+  parent: System.Windows.Markup.ContentPropertyAttribute
+  isExternal: false
+  name: Name
+  nameWithType: ContentPropertyAttribute.Name
+  fullName: System.Windows.Markup.ContentPropertyAttribute.Name
+- uid: System.Windows.Markup.ContentPropertyAttribute.#ctor*
+  parent: System.Windows.Markup.ContentPropertyAttribute
+  isExternal: false
+  name: ContentPropertyAttribute
+  nameWithType: ContentPropertyAttribute.ContentPropertyAttribute
+- uid: System.Windows.Markup.ContentPropertyAttribute.Name*
+  parent: System.Windows.Markup.ContentPropertyAttribute
+  isExternal: false
+  name: Name
+  nameWithType: ContentPropertyAttribute.Name

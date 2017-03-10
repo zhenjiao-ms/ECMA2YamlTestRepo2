@@ -1,0 +1,443 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.OperationCanceledException
+  id: OperationCanceledException
+  children:
+  - System.OperationCanceledException.#ctor
+  - System.OperationCanceledException.#ctor(System.String)
+  - System.OperationCanceledException.#ctor(System.Threading.CancellationToken)
+  - System.OperationCanceledException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.OperationCanceledException.#ctor(System.String,System.Exception)
+  - System.OperationCanceledException.#ctor(System.String,System.Threading.CancellationToken)
+  - System.OperationCanceledException.#ctor(System.String,System.Exception,System.Threading.CancellationToken)
+  - System.OperationCanceledException.CancellationToken
+  langs:
+  - csharp
+  name: OperationCanceledException
+  nameWithType: OperationCanceledException
+  fullName: System.OperationCanceledException
+  type: Class
+  summary: The exception that is thrown in a thread upon cancellation of an operation that the thread was executing.
+  remarks: If the task that was canceled had an associated cancellation token, it is returned by the <xref:System.OperationCanceledException.CancellationToken%2A> property, and the <xref:System.Threading.CancellationToken.IsCancellationRequested%2A?displayProperty=fullName> property of the token is set to `true`.
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public class OperationCanceledException : SystemException
+  inheritance:
+  - System.Object
+  - System.Exception
+  - System.SystemException
+  implements: []
+  inheritedMembers:
+  - System.Exception.Data
+  - System.Exception.GetBaseException
+  - System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.Exception.GetType
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.Message
+  - System.Exception.SerializeObjectState
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\OperationCanceledException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/OperationCanceledException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.OperationCanceledException.#ctor
+  id: '#ctor'
+  parent: System.OperationCanceledException
+  langs:
+  - csharp
+  name: OperationCanceledException()
+  nameWithType: OperationCanceledException.OperationCanceledException()
+  fullName: System.OperationCanceledException.OperationCanceledException()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.OperationCanceledException"></xref> class with a system-supplied error message.
+  remarks: "This constructor initializes the <xref:System.Exception.Message%2A> property of the new instance to a system-supplied message that describes the error, such as \"The operation was canceled.\" This message takes into account the current system culture.  \n  \n The following table shows the initial property values for an instance of <xref:System.OperationCanceledException>.  \n  \n|Property|Value|  \n|--------------|-----------|  \n|<xref:System.Exception.InnerException%2A>|A nullreference (`Nothing` in Visual Basic).|  \n|<xref:System.Exception.Message%2A>|The localized error message string.|  \n|<xref:System.OperationCanceledException.CancellationToken%2A>|A cancellation token created in the non-canceled state.|"
+  syntax:
+    content: public OperationCanceledException ();
+    parameters: []
+  overload: System.OperationCanceledException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\OperationCanceledException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/OperationCanceledException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.OperationCanceledException.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.OperationCanceledException
+  langs:
+  - csharp
+  name: OperationCanceledException(String)
+  nameWithType: OperationCanceledException.OperationCanceledException(String)
+  fullName: System.OperationCanceledException.OperationCanceledException(String)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.OperationCanceledException"></xref> class with a specified error message.
+  remarks: "The content of `message` is intended to be understood by humans. The caller of this constructor is required to ensure that this string has been localized for the current system culture.  \n  \n The following table shows the initial property values for an instance of <xref:System.OperationCanceledException>.  \n  \n|Property|Value|  \n|--------------|-----------|  \n|<xref:System.Exception.InnerException%2A>|A null reference (`Nothing` in Visual Basic).|  \n|<xref:System.Exception.Message%2A>|The error message string.|  \n|<xref:System.OperationCanceledException.CancellationToken%2A>|A cancellation token created in the non-canceled state.|"
+  syntax:
+    content: public OperationCanceledException (string message);
+    parameters:
+    - id: message
+      type: System.String
+      description: A <xref href="System.String"></xref> that describes the error.
+  overload: System.OperationCanceledException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\OperationCanceledException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/OperationCanceledException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.OperationCanceledException.#ctor(System.Threading.CancellationToken)
+  id: '#ctor(System.Threading.CancellationToken)'
+  parent: System.OperationCanceledException
+  langs:
+  - csharp
+  name: OperationCanceledException(CancellationToken)
+  nameWithType: OperationCanceledException.OperationCanceledException(CancellationToken)
+  fullName: System.OperationCanceledException.OperationCanceledException(CancellationToken)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.OperationCanceledException"></xref> class with a cancellation token.
+  remarks: "This constructor initializes the <xref:System.Exception.Message%2A> property of the new instance to a system-supplied message that describes the error, such as \"The operation was canceled.\" This message takes into account the current system culture.  \n  \n The following table shows the initial property values for an instance of <xref:System.OperationCanceledException>.  \n  \n|Property|Value|  \n|--------------|-----------|  \n|<xref:System.Exception.InnerException%2A>|A nullreference (`Nothing` in Visual Basic).|  \n|<xref:System.Exception.Message%2A>|The localized error message string.|  \n|<xref:System.OperationCanceledException.CancellationToken%2A>|`token`.|"
+  syntax:
+    content: public OperationCanceledException (System.Threading.CancellationToken token);
+    parameters:
+    - id: token
+      type: System.Threading.CancellationToken
+      description: A cancellation token associated with the operation that was canceled.
+  overload: System.OperationCanceledException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\OperationCanceledException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/OperationCanceledException.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.OperationCanceledException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: '#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)'
+  parent: System.OperationCanceledException
+  langs:
+  - csharp
+  name: OperationCanceledException(SerializationInfo,StreamingContext)
+  nameWithType: OperationCanceledException.OperationCanceledException(SerializationInfo,StreamingContext)
+  fullName: System.OperationCanceledException.OperationCanceledException(SerializationInfo,StreamingContext)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.OperationCanceledException"></xref> class with serialized data.
+  remarks: This constructor is called during deserialization to reconstitute the exception object transmitted over a stream. For more information, see [XML and SOAP Serialization](../Topic/XML%20and%20SOAP%20Serialization.md)
+  syntax:
+    content: protected OperationCanceledException (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+    parameters:
+    - id: info
+      type: System.Runtime.Serialization.SerializationInfo
+      description: The object that holds the serialized object data.
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+      description: The contextual information about the source or destination.
+  overload: System.OperationCanceledException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\OperationCanceledException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/OperationCanceledException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.OperationCanceledException.#ctor(System.String,System.Exception)
+  id: '#ctor(System.String,System.Exception)'
+  parent: System.OperationCanceledException
+  langs:
+  - csharp
+  name: OperationCanceledException(String,Exception)
+  nameWithType: OperationCanceledException.OperationCanceledException(String,Exception)
+  fullName: System.OperationCanceledException.OperationCanceledException(String,Exception)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.OperationCanceledException"></xref> class with a specified error message and a reference to the inner exception that is the cause of this exception.
+  remarks: "The content of `message` is intended to be understood by humans. The caller of this constructor is required to ensure that this string has been localized for the current system culture.  \n  \n An exception that is thrown as a direct result of a previous exception should include a reference to the previous exception in the <xref:System.Exception.InnerException%2A> property. The <xref:System.Exception.InnerException%2A> property returns the same value that is passed into the constructor, or `null` if the <xref:System.Exception.InnerException%2A> property does not supply the inner exception value to the constructor.  \n  \n The following table shows the initial property values for an instance of <xref:System.OperationCanceledException>.  \n  \n|Property Type|Condition|  \n|-------------------|---------------|  \n|<xref:System.Exception.InnerException%2A>|`innerException`.|  \n|<xref:System.Exception.Message%2A>|`message`.|  \n|<xref:System.OperationCanceledException.CancellationToken%2A>|A cancellation token created in the non-canceled state.|"
+  syntax:
+    content: public OperationCanceledException (string message, Exception innerException);
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message that explains the reason for the exception.
+    - id: innerException
+      type: System.Exception
+      description: The exception that is the cause of the current exception. If the <code>innerException</code> parameter is not `null`, the current exception is raised in a `catch` block that handles the inner exception.
+  overload: System.OperationCanceledException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\OperationCanceledException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/OperationCanceledException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.OperationCanceledException.#ctor(System.String,System.Threading.CancellationToken)
+  id: '#ctor(System.String,System.Threading.CancellationToken)'
+  parent: System.OperationCanceledException
+  langs:
+  - csharp
+  name: OperationCanceledException(String,CancellationToken)
+  nameWithType: OperationCanceledException.OperationCanceledException(String,CancellationToken)
+  fullName: System.OperationCanceledException.OperationCanceledException(String,CancellationToken)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.OperationCanceledException"></xref> class with a specified error message and a cancellation token.
+  remarks: "The content of `message` is intended to be understood by humans. The caller of this constructor is required to ensure that this string has been localized for the current system culture.  \n  \n The following table shows the initial property values for an instance of <xref:System.OperationCanceledException>.  \n  \n|Property|Value|  \n|--------------|-----------|  \n|<xref:System.Exception.InnerException%2A>|A null reference (`Nothing` in Visual Basic).|  \n|<xref:System.Exception.Message%2A>|`message`.|  \n|<xref:System.OperationCanceledException.CancellationToken%2A>|`token`.|"
+  syntax:
+    content: public OperationCanceledException (string message, System.Threading.CancellationToken token);
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message that explains the reason for the exception.
+    - id: token
+      type: System.Threading.CancellationToken
+      description: A cancellation token associated with the operation that was canceled.
+  overload: System.OperationCanceledException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\OperationCanceledException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/OperationCanceledException.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.OperationCanceledException.#ctor(System.String,System.Exception,System.Threading.CancellationToken)
+  id: '#ctor(System.String,System.Exception,System.Threading.CancellationToken)'
+  parent: System.OperationCanceledException
+  langs:
+  - csharp
+  name: OperationCanceledException(String,Exception,CancellationToken)
+  nameWithType: OperationCanceledException.OperationCanceledException(String,Exception,CancellationToken)
+  fullName: System.OperationCanceledException.OperationCanceledException(String,Exception,CancellationToken)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.OperationCanceledException"></xref> class with a specified error message, a reference to the inner exception that is the cause of this exception, and a cancellation token.
+  remarks: "The content of `message` is intended to be understood by humans. The caller of this constructor is required to ensure that this string has been localized for the current system culture.  \n  \n An exception that is thrown as a direct result of a previous exception should include a reference to the previous exception in the <xref:System.Exception.InnerException%2A> property. The <xref:System.Exception.InnerException%2A> property returns the same value that is passed into the constructor, or `null` if the <xref:System.Exception.InnerException%2A> property does not supply the inner exception value to the constructor.  \n  \n The following table shows the initial property values for an instance of <xref:System.OperationCanceledException>.  \n  \n|Property Type|Condition|  \n|-------------------|---------------|  \n|<xref:System.Exception.InnerException%2A>|`innerException`.|  \n|<xref:System.Exception.Message%2A>|`message`.|  \n|<xref:System.OperationCanceledException.CancellationToken%2A>|`token`.|"
+  syntax:
+    content: public OperationCanceledException (string message, Exception innerException, System.Threading.CancellationToken token);
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message that explains the reason for the exception.
+    - id: innerException
+      type: System.Exception
+      description: The exception that is the cause of the current exception. If the <code>innerException</code> parameter is not `null`, the current exception is raised in a `catch` block that handles the inner exception.
+    - id: token
+      type: System.Threading.CancellationToken
+      description: A cancellation token associated with the operation that was canceled.
+  overload: System.OperationCanceledException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\OperationCanceledException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/OperationCanceledException.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.OperationCanceledException.CancellationToken
+  id: CancellationToken
+  parent: System.OperationCanceledException
+  langs:
+  - csharp
+  name: CancellationToken
+  nameWithType: OperationCanceledException.CancellationToken
+  fullName: System.OperationCanceledException.CancellationToken
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets a token associated with the operation that was canceled.
+  remarks: If the token is associated with a canceled operation, the <xref:System.Threading.CancellationToken.IsCancellationRequested%2A?displayProperty=fullName> property of the token returns `true`.
+  syntax:
+    content: public System.Threading.CancellationToken CancellationToken { get; }
+    return:
+      type: System.Threading.CancellationToken
+      description: A token associated with the operation that was canceled, or a default token.
+  overload: System.OperationCanceledException.CancellationToken*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\OperationCanceledException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/OperationCanceledException.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.SystemException
+  isExternal: false
+  name: System.SystemException
+- uid: System.OperationCanceledException.#ctor
+  parent: System.OperationCanceledException
+  isExternal: false
+  name: OperationCanceledException()
+  nameWithType: OperationCanceledException.OperationCanceledException()
+  fullName: System.OperationCanceledException.OperationCanceledException()
+- uid: System.OperationCanceledException.#ctor(System.String)
+  parent: System.OperationCanceledException
+  isExternal: false
+  name: OperationCanceledException(String)
+  nameWithType: OperationCanceledException.OperationCanceledException(String)
+  fullName: System.OperationCanceledException.OperationCanceledException(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.OperationCanceledException.#ctor(System.Threading.CancellationToken)
+  parent: System.OperationCanceledException
+  isExternal: false
+  name: OperationCanceledException(CancellationToken)
+  nameWithType: OperationCanceledException.OperationCanceledException(CancellationToken)
+  fullName: System.OperationCanceledException.OperationCanceledException(CancellationToken)
+- uid: System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: false
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.OperationCanceledException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.OperationCanceledException
+  isExternal: false
+  name: OperationCanceledException(SerializationInfo,StreamingContext)
+  nameWithType: OperationCanceledException.OperationCanceledException(SerializationInfo,StreamingContext)
+  fullName: System.OperationCanceledException.OperationCanceledException(SerializationInfo,StreamingContext)
+- uid: System.Runtime.Serialization.SerializationInfo
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: SerializationInfo
+  nameWithType: SerializationInfo
+  fullName: System.Runtime.Serialization.SerializationInfo
+- uid: System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext
+- uid: System.OperationCanceledException.#ctor(System.String,System.Exception)
+  parent: System.OperationCanceledException
+  isExternal: false
+  name: OperationCanceledException(String,Exception)
+  nameWithType: OperationCanceledException.OperationCanceledException(String,Exception)
+  fullName: System.OperationCanceledException.OperationCanceledException(String,Exception)
+- uid: System.Exception
+  parent: System
+  isExternal: false
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System.OperationCanceledException.#ctor(System.String,System.Threading.CancellationToken)
+  parent: System.OperationCanceledException
+  isExternal: false
+  name: OperationCanceledException(String,CancellationToken)
+  nameWithType: OperationCanceledException.OperationCanceledException(String,CancellationToken)
+  fullName: System.OperationCanceledException.OperationCanceledException(String,CancellationToken)
+- uid: System.OperationCanceledException.#ctor(System.String,System.Exception,System.Threading.CancellationToken)
+  parent: System.OperationCanceledException
+  isExternal: false
+  name: OperationCanceledException(String,Exception,CancellationToken)
+  nameWithType: OperationCanceledException.OperationCanceledException(String,Exception,CancellationToken)
+  fullName: System.OperationCanceledException.OperationCanceledException(String,Exception,CancellationToken)
+- uid: System.OperationCanceledException.CancellationToken
+  parent: System.OperationCanceledException
+  isExternal: false
+  name: CancellationToken
+  nameWithType: OperationCanceledException.CancellationToken
+  fullName: System.OperationCanceledException.CancellationToken
+- uid: System.OperationCanceledException.#ctor*
+  parent: System.OperationCanceledException
+  isExternal: false
+  name: OperationCanceledException
+  nameWithType: OperationCanceledException.OperationCanceledException
+- uid: System.OperationCanceledException.CancellationToken*
+  parent: System.OperationCanceledException
+  isExternal: false
+  name: CancellationToken
+  nameWithType: OperationCanceledException.CancellationToken

@@ -1,0 +1,459 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.InteropServices.HandleCollector
+  id: HandleCollector
+  children:
+  - System.Runtime.InteropServices.HandleCollector.#ctor(System.String,System.Int32)
+  - System.Runtime.InteropServices.HandleCollector.#ctor(System.String,System.Int32,System.Int32)
+  - System.Runtime.InteropServices.HandleCollector.Add
+  - System.Runtime.InteropServices.HandleCollector.Count
+  - System.Runtime.InteropServices.HandleCollector.InitialThreshold
+  - System.Runtime.InteropServices.HandleCollector.MaximumThreshold
+  - System.Runtime.InteropServices.HandleCollector.Name
+  - System.Runtime.InteropServices.HandleCollector.Remove
+  langs:
+  - csharp
+  name: HandleCollector
+  nameWithType: HandleCollector
+  fullName: System.Runtime.InteropServices.HandleCollector
+  type: Class
+  summary: Tracks outstanding handles and forces a garbage collection when the specified threshold is reached.
+  remarks: The HandleCollector class keeps track of a limited number of handles to unmanaged resources.  Typically, unmanaged resources include handles to `HDC`s, `HWnd`s, and so on.
+  syntax:
+    content: public sealed class HandleCollector
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\HandleCollector.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/HandleCollector.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.HandleCollector.#ctor(System.String,System.Int32)
+  id: '#ctor(System.String,System.Int32)'
+  parent: System.Runtime.InteropServices.HandleCollector
+  langs:
+  - csharp
+  name: HandleCollector(String,Int32)
+  nameWithType: HandleCollector.HandleCollector(String,Int32)
+  fullName: System.Runtime.InteropServices.HandleCollector.HandleCollector(String,Int32)
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.Runtime.InteropServices
+  summary: Initializes a new instance of the <xref href="System.Runtime.InteropServices.HandleCollector"></xref> class using a name and a threshold at which to begin handle collection.
+  syntax:
+    content: public HandleCollector (string name, int initialThreshold);
+    parameters:
+    - id: name
+      type: System.String
+      description: A name for the collector. This parameter allows you to name collectors that track handle types separately.
+    - id: initialThreshold
+      type: System.Int32
+      description: A value that specifies the point at which collections should begin.
+  overload: System.Runtime.InteropServices.HandleCollector.#ctor*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: The <code>initialThreshold</code> parameter is less than 0.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\HandleCollector.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/HandleCollector.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.HandleCollector.#ctor(System.String,System.Int32,System.Int32)
+  id: '#ctor(System.String,System.Int32,System.Int32)'
+  parent: System.Runtime.InteropServices.HandleCollector
+  langs:
+  - csharp
+  name: HandleCollector(String,Int32,Int32)
+  nameWithType: HandleCollector.HandleCollector(String,Int32,Int32)
+  fullName: System.Runtime.InteropServices.HandleCollector.HandleCollector(String,Int32,Int32)
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.Runtime.InteropServices
+  summary: Initializes a new instance of the <xref href="System.Runtime.InteropServices.HandleCollector"></xref> class using a name, a threshold at which to begin handle collection, and a threshold at which handle collection must occur.
+  syntax:
+    content: public HandleCollector (string name, int initialThreshold, int maximumThreshold);
+    parameters:
+    - id: name
+      type: System.String
+      description: A name for the collector.  This parameter allows you to name collectors that track handle types separately.
+    - id: initialThreshold
+      type: System.Int32
+      description: A value that specifies the point at which collections should begin.
+    - id: maximumThreshold
+      type: System.Int32
+      description: A value that specifies the point at which collections must occur. This should be set to the maximum number of available handles.
+  overload: System.Runtime.InteropServices.HandleCollector.#ctor*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "The <code>initialThreshold</code> parameter is less than 0.  \n  \n -or-  \n  \n The <code>maximumThreshold</code> parameter is less than 0."
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The <code>maximumThreshold</code> parameter is less than the <code>initialThreshold</code> parameter.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\HandleCollector.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/HandleCollector.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.HandleCollector.Add
+  id: Add
+  parent: System.Runtime.InteropServices.HandleCollector
+  langs:
+  - csharp
+  name: Add()
+  nameWithType: HandleCollector.Add()
+  fullName: System.Runtime.InteropServices.HandleCollector.Add()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Runtime.InteropServices
+  summary: Increments the current handle count.
+  syntax:
+    content: public void Add ();
+    parameters: []
+  overload: System.Runtime.InteropServices.HandleCollector.Add*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The <xref href="stem.Runtime.InteropServices.HandleCollector.Count%2A"></xref> property is less than 0.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\HandleCollector.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/HandleCollector.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.HandleCollector.Count
+  id: Count
+  parent: System.Runtime.InteropServices.HandleCollector
+  langs:
+  - csharp
+  name: Count
+  nameWithType: HandleCollector.Count
+  fullName: System.Runtime.InteropServices.HandleCollector.Count
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Runtime.InteropServices
+  summary: Gets the number of handles collected.
+  syntax:
+    content: public int Count { get; }
+    return:
+      type: System.Int32
+      description: The number of handles collected.
+  overload: System.Runtime.InteropServices.HandleCollector.Count*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\HandleCollector.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/HandleCollector.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.HandleCollector.InitialThreshold
+  id: InitialThreshold
+  parent: System.Runtime.InteropServices.HandleCollector
+  langs:
+  - csharp
+  name: InitialThreshold
+  nameWithType: HandleCollector.InitialThreshold
+  fullName: System.Runtime.InteropServices.HandleCollector.InitialThreshold
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Runtime.InteropServices
+  summary: Gets a value that specifies the point at which collections should begin.
+  syntax:
+    content: public int InitialThreshold { get; }
+    return:
+      type: System.Int32
+      description: A value that specifies the point at which collections should begin.
+  overload: System.Runtime.InteropServices.HandleCollector.InitialThreshold*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\HandleCollector.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/HandleCollector.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.HandleCollector.MaximumThreshold
+  id: MaximumThreshold
+  parent: System.Runtime.InteropServices.HandleCollector
+  langs:
+  - csharp
+  name: MaximumThreshold
+  nameWithType: HandleCollector.MaximumThreshold
+  fullName: System.Runtime.InteropServices.HandleCollector.MaximumThreshold
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Runtime.InteropServices
+  summary: Gets a value that specifies the point at which collections must occur.
+  syntax:
+    content: public int MaximumThreshold { get; }
+    return:
+      type: System.Int32
+      description: A value that specifies the point at which collections must occur.
+  overload: System.Runtime.InteropServices.HandleCollector.MaximumThreshold*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\HandleCollector.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/HandleCollector.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.HandleCollector.Name
+  id: Name
+  parent: System.Runtime.InteropServices.HandleCollector
+  langs:
+  - csharp
+  name: Name
+  nameWithType: HandleCollector.Name
+  fullName: System.Runtime.InteropServices.HandleCollector.Name
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Runtime.InteropServices
+  summary: Gets the name of a <xref href="System.Runtime.InteropServices.HandleCollector"></xref> object.
+  syntax:
+    content: public string Name { get; }
+    return:
+      type: System.String
+      description: This Name property allows you to name collectors that track handle types separately.
+  overload: System.Runtime.InteropServices.HandleCollector.Name*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\HandleCollector.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/HandleCollector.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.InteropServices.HandleCollector.Remove
+  id: Remove
+  parent: System.Runtime.InteropServices.HandleCollector
+  langs:
+  - csharp
+  name: Remove()
+  nameWithType: HandleCollector.Remove()
+  fullName: System.Runtime.InteropServices.HandleCollector.Remove()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Runtime.InteropServices
+  summary: Decrements the current handle count.
+  syntax:
+    content: public void Remove ();
+    parameters: []
+  overload: System.Runtime.InteropServices.HandleCollector.Remove*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The <xref href="stem.Runtime.InteropServices.HandleCollector.Count%2A"></xref> property is less than 0.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.InteropServices\HandleCollector.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.InteropServices/HandleCollector.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.Runtime.InteropServices.HandleCollector.#ctor(System.String,System.Int32)
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: HandleCollector(String,Int32)
+  nameWithType: HandleCollector.HandleCollector(String,Int32)
+  fullName: System.Runtime.InteropServices.HandleCollector.HandleCollector(String,Int32)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Runtime.InteropServices.HandleCollector.#ctor(System.String,System.Int32,System.Int32)
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: HandleCollector(String,Int32,Int32)
+  nameWithType: HandleCollector.HandleCollector(String,Int32,Int32)
+  fullName: System.Runtime.InteropServices.HandleCollector.HandleCollector(String,Int32,Int32)
+- uid: System.Runtime.InteropServices.HandleCollector.Add
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: Add()
+  nameWithType: HandleCollector.Add()
+  fullName: System.Runtime.InteropServices.HandleCollector.Add()
+- uid: System.Runtime.InteropServices.HandleCollector.Count
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: Count
+  nameWithType: HandleCollector.Count
+  fullName: System.Runtime.InteropServices.HandleCollector.Count
+- uid: System.Runtime.InteropServices.HandleCollector.InitialThreshold
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: InitialThreshold
+  nameWithType: HandleCollector.InitialThreshold
+  fullName: System.Runtime.InteropServices.HandleCollector.InitialThreshold
+- uid: System.Runtime.InteropServices.HandleCollector.MaximumThreshold
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: MaximumThreshold
+  nameWithType: HandleCollector.MaximumThreshold
+  fullName: System.Runtime.InteropServices.HandleCollector.MaximumThreshold
+- uid: System.Runtime.InteropServices.HandleCollector.Name
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: Name
+  nameWithType: HandleCollector.Name
+  fullName: System.Runtime.InteropServices.HandleCollector.Name
+- uid: System.Runtime.InteropServices.HandleCollector.Remove
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: Remove()
+  nameWithType: HandleCollector.Remove()
+  fullName: System.Runtime.InteropServices.HandleCollector.Remove()
+- uid: System.Runtime.InteropServices.HandleCollector.#ctor*
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: HandleCollector
+  nameWithType: HandleCollector.HandleCollector
+- uid: System.Runtime.InteropServices.HandleCollector.Add*
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: Add
+  nameWithType: HandleCollector.Add
+- uid: System.Runtime.InteropServices.HandleCollector.Count*
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: Count
+  nameWithType: HandleCollector.Count
+- uid: System.Runtime.InteropServices.HandleCollector.InitialThreshold*
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: InitialThreshold
+  nameWithType: HandleCollector.InitialThreshold
+- uid: System.Runtime.InteropServices.HandleCollector.MaximumThreshold*
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: MaximumThreshold
+  nameWithType: HandleCollector.MaximumThreshold
+- uid: System.Runtime.InteropServices.HandleCollector.Name*
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: Name
+  nameWithType: HandleCollector.Name
+- uid: System.Runtime.InteropServices.HandleCollector.Remove*
+  parent: System.Runtime.InteropServices.HandleCollector
+  isExternal: false
+  name: Remove
+  nameWithType: HandleCollector.Remove

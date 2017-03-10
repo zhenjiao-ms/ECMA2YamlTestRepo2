@@ -1,0 +1,261 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.NetTcpSecurity
+  id: NetTcpSecurity
+  children:
+  - System.ServiceModel.NetTcpSecurity.#ctor
+  - System.ServiceModel.NetTcpSecurity.Message
+  - System.ServiceModel.NetTcpSecurity.Mode
+  - System.ServiceModel.NetTcpSecurity.Transport
+  langs:
+  - csharp
+  name: NetTcpSecurity
+  nameWithType: NetTcpSecurity
+  fullName: System.ServiceModel.NetTcpSecurity
+  type: Class
+  summary: Specifies the types of transport-level and message-level security used by an endpoint configured with a <xref href="System.ServiceModel.NetTcpBinding"></xref>.
+  remarks: "Each of the standard bindings provides parameters for controlling the transfer security requirements. These parameters typically include the security mode that specified whether message-level or transport-level security is used and the choice of client credential type. Based on the choice of options these parameters present, a channel stack is constructed with appropriate security.  \n  \n The system-provided bindings supplied by [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] are a set designed to meet some of the most common scenario requirements. Each of these bindings allows the specification of security requirements for some specific targeted scenarios.  \n  \n NetTcpSecurity provides the security specifications for <xref:System.ServiceModel.NetTcpBinding>. This is a secure, reliable, optimized binding suitable for cross-machine communication. By default it generates a run-time communication stack that supports TCP for message delivery and Windows Security for message security and authentication, WS-ReliableMessaging for reliability, and binary message encoding.  \n  \n This class is instantiated by the <xref:System.ServiceModel.NetTcpBinding>, and can be accessed by a read-only property called <xref:System.ServiceModel.NetTcpBinding.Security%2A>. Because this property is read-only you cannot make changes to the returned object. If you want to control the creation of the NetTcpSecurity object, you can derive a class from <xref:System.ServiceModel.NetTcpBinding>."
+  example:
+  - "The following code shows how to retrieve the NetTcpSecurity object from a <xref:System.ServiceModel.NetTcpBinding> and prints out the various settings it contains:  \n  \n [!code-cs[S_UE_TcpSecurity#0](~/add/codesnippet/csharp/t-system.servicemodel.ne_3_1.cs)]"
+  syntax:
+    content: public sealed class NetTcpSecurity
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpSecurity.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpSecurity.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpSecurity.#ctor
+  id: '#ctor'
+  parent: System.ServiceModel.NetTcpSecurity
+  langs:
+  - csharp
+  name: NetTcpSecurity()
+  nameWithType: NetTcpSecurity.NetTcpSecurity()
+  fullName: System.ServiceModel.NetTcpSecurity.NetTcpSecurity()
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.NetTcpSecurity"></xref> class.
+  syntax:
+    content: public NetTcpSecurity ();
+    parameters: []
+  overload: System.ServiceModel.NetTcpSecurity.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpSecurity.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpSecurity.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpSecurity.Message
+  id: Message
+  parent: System.ServiceModel.NetTcpSecurity
+  langs:
+  - csharp
+  name: Message
+  nameWithType: NetTcpSecurity.Message
+  fullName: System.ServiceModel.NetTcpSecurity.Message
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets the type of message-level security requirements for a service configured with a <xref href="System.ServiceModel.NetTcpBinding"></xref>.
+  remarks: Message uses message-level security for the integrity and confidentiality of the SOAP message and for mutual authentication of the communication peers. If this security mode is selected on a binding, the channel stack is configured with message security binding elements and the SOAP messages are secured in compliance with WS-Security* standards.
+  example:
+  - '[!code-cs[S_UE_TcpSecurity#1](~/add/codesnippet/csharp/p-system.servicemodel.ne_24_1.cs)]'
+  syntax:
+    content: public System.ServiceModel.MessageSecurityOverTcp Message { get; set; }
+    return:
+      type: System.ServiceModel.MessageSecurityOverTcp
+      description: The <xref href="System.ServiceModel.MessageSecurityOverTcp"></xref> that indicates the type of message-level security requirements for an endpoint.
+  overload: System.ServiceModel.NetTcpSecurity.Message*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpSecurity.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpSecurity.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpSecurity.Mode
+  id: Mode
+  parent: System.ServiceModel.NetTcpSecurity
+  langs:
+  - csharp
+  name: Mode
+  nameWithType: NetTcpSecurity.Mode
+  fullName: System.ServiceModel.NetTcpSecurity.Mode
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets or sets whether message-level security and transport-level security are used by an endpoint configured with a <xref href="System.ServiceModel.NetTcpBinding"></xref>.
+  remarks: The security mode determines the type of security required by an endpoint. [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] security offers a variety of mechanisms with which to secure the transfer of messages that are configured with the system-provided bindings. Each of the bindings supports a subset of these security modes. The mode determines the mechanisms by which message transfer security functions (integrity, confidentiality and authentication) are required.
+  example:
+  - '[!code-cs[S_UE_TcpSecurity#2](~/add/codesnippet/csharp/p-system.servicemodel.ne_39_1.cs)]'
+  syntax:
+    content: public System.ServiceModel.SecurityMode Mode { get; set; }
+    return:
+      type: System.ServiceModel.SecurityMode
+      description: A value of the <xref href="System.ServiceModel.SecurityMode"></xref> that indicates whether message-level security or transport-level security is used by an endpoint. The default value is <xref href="System.ServiceModel.SecurityMode"></xref>.
+  overload: System.ServiceModel.NetTcpSecurity.Mode*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: The value is not defined.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpSecurity.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpSecurity.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.NetTcpSecurity.Transport
+  id: Transport
+  parent: System.ServiceModel.NetTcpSecurity
+  langs:
+  - csharp
+  name: Transport
+  nameWithType: NetTcpSecurity.Transport
+  fullName: System.ServiceModel.NetTcpSecurity.Transport
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets the type of message-level security requirements for an endpoint configured with a <xref href="System.ServiceModel.NetTcpBinding"></xref>.
+  remarks: Use Transport security for integrity and confidentiality of the SOAP message and for mutual authentication. If this security mode is selected on a binding, the channel stack is configured using a secure transport and the SOAP messages are secured using transport security such as HTTPS or SSL over TCP.
+  example:
+  - '[!code-cs[S_UE_TcpSecurity#3](~/add/codesnippet/csharp/p-system.servicemodel.ne_10_1.cs)]'
+  syntax:
+    content: public System.ServiceModel.TcpTransportSecurity Transport { get; set; }
+    return:
+      type: System.ServiceModel.TcpTransportSecurity
+      description: The <xref href="System.ServiceModel.TcpTransportSecurity"></xref> that indicates the type of transport-level security requirements for an endpoint.
+  overload: System.ServiceModel.NetTcpSecurity.Transport*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\NetTcpSecurity.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/NetTcpSecurity.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.ServiceModel.NetTcpSecurity.#ctor
+  parent: System.ServiceModel.NetTcpSecurity
+  isExternal: false
+  name: NetTcpSecurity()
+  nameWithType: NetTcpSecurity.NetTcpSecurity()
+  fullName: System.ServiceModel.NetTcpSecurity.NetTcpSecurity()
+- uid: System.ServiceModel.NetTcpSecurity.Message
+  parent: System.ServiceModel.NetTcpSecurity
+  isExternal: false
+  name: Message
+  nameWithType: NetTcpSecurity.Message
+  fullName: System.ServiceModel.NetTcpSecurity.Message
+- uid: System.ServiceModel.MessageSecurityOverTcp
+  parent: System.ServiceModel
+  isExternal: false
+  name: MessageSecurityOverTcp
+  nameWithType: MessageSecurityOverTcp
+  fullName: System.ServiceModel.MessageSecurityOverTcp
+- uid: System.ServiceModel.NetTcpSecurity.Mode
+  parent: System.ServiceModel.NetTcpSecurity
+  isExternal: false
+  name: Mode
+  nameWithType: NetTcpSecurity.Mode
+  fullName: System.ServiceModel.NetTcpSecurity.Mode
+- uid: System.ServiceModel.SecurityMode
+  parent: System.ServiceModel
+  isExternal: false
+  name: SecurityMode
+  nameWithType: SecurityMode
+  fullName: System.ServiceModel.SecurityMode
+- uid: System.ServiceModel.NetTcpSecurity.Transport
+  parent: System.ServiceModel.NetTcpSecurity
+  isExternal: false
+  name: Transport
+  nameWithType: NetTcpSecurity.Transport
+  fullName: System.ServiceModel.NetTcpSecurity.Transport
+- uid: System.ServiceModel.TcpTransportSecurity
+  parent: System.ServiceModel
+  isExternal: false
+  name: TcpTransportSecurity
+  nameWithType: TcpTransportSecurity
+  fullName: System.ServiceModel.TcpTransportSecurity
+- uid: System.ServiceModel.NetTcpSecurity.#ctor*
+  parent: System.ServiceModel.NetTcpSecurity
+  isExternal: false
+  name: NetTcpSecurity
+  nameWithType: NetTcpSecurity.NetTcpSecurity
+- uid: System.ServiceModel.NetTcpSecurity.Message*
+  parent: System.ServiceModel.NetTcpSecurity
+  isExternal: false
+  name: Message
+  nameWithType: NetTcpSecurity.Message
+- uid: System.ServiceModel.NetTcpSecurity.Mode*
+  parent: System.ServiceModel.NetTcpSecurity
+  isExternal: false
+  name: Mode
+  nameWithType: NetTcpSecurity.Mode
+- uid: System.ServiceModel.NetTcpSecurity.Transport*
+  parent: System.ServiceModel.NetTcpSecurity
+  isExternal: false
+  name: Transport
+  nameWithType: NetTcpSecurity.Transport

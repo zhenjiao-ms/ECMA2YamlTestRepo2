@@ -1,0 +1,262 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.IdentityModel.DeflateCookieTransform
+  id: DeflateCookieTransform
+  children:
+  - System.IdentityModel.DeflateCookieTransform.#ctor
+  - System.IdentityModel.DeflateCookieTransform.Decode(System.Byte[])
+  - System.IdentityModel.DeflateCookieTransform.Encode(System.Byte[])
+  - System.IdentityModel.DeflateCookieTransform.MaxDecompressedSize
+  langs:
+  - csharp
+  name: DeflateCookieTransform
+  nameWithType: DeflateCookieTransform
+  fullName: System.IdentityModel.DeflateCookieTransform
+  type: Class
+  summary: Provides cookie compression using <xref href="System.IO.Compression.DeflateStream"></xref>.
+  syntax:
+    content: 'public sealed class DeflateCookieTransform : System.IdentityModel.CookieTransform'
+  inheritance:
+  - System.Object
+  - System.IdentityModel.CookieTransform
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.IdentityModel\DeflateCookieTransform.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.IdentityModel/DeflateCookieTransform.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IdentityModel.DeflateCookieTransform.#ctor
+  id: '#ctor'
+  parent: System.IdentityModel.DeflateCookieTransform
+  langs:
+  - csharp
+  name: DeflateCookieTransform()
+  nameWithType: DeflateCookieTransform.DeflateCookieTransform()
+  fullName: System.IdentityModel.DeflateCookieTransform.DeflateCookieTransform()
+  type: Constructor
+  assemblies:
+  - System.IdentityModel
+  namespace: System.IdentityModel
+  summary: Initializes a new instance of the <xref href="System.IdentityModel.DeflateCookieTransform"></xref> class.
+  syntax:
+    content: public DeflateCookieTransform ();
+    parameters: []
+  overload: System.IdentityModel.DeflateCookieTransform.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.IdentityModel\DeflateCookieTransform.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.IdentityModel/DeflateCookieTransform.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IdentityModel.DeflateCookieTransform.Decode(System.Byte[])
+  id: Decode(System.Byte[])
+  parent: System.IdentityModel.DeflateCookieTransform
+  langs:
+  - csharp
+  name: Decode(Byte[])
+  nameWithType: DeflateCookieTransform.Decode(Byte[])
+  fullName: System.IdentityModel.DeflateCookieTransform.Decode(Byte[])
+  type: Method
+  assemblies:
+  - System.IdentityModel
+  namespace: System.IdentityModel
+  summary: Inflates data.
+  syntax:
+    content: public override byte[] Decode (byte[] encoded);
+    parameters:
+    - id: encoded
+      type: System.Byte[]
+      description: Data previously returned from <xref href="stem.IdentityModel.DeflateCookieTransform.Encode%2A"></xref>
+    return:
+      type: System.Byte[]
+      description: The decoded data.
+  overload: System.IdentityModel.DeflateCookieTransform.Decode*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>value</code> is `null`.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>value</code> contains zero bytes.
+  - type: System.IdentityModel.Tokens.SecurityTokenException
+    commentId: T:System.IdentityModel.Tokens.SecurityTokenException
+    description: The decompressed length is larger than the maximum length specified by the <xref href="stem.IdentityModel.DeflateCookieTransform.MaxDecompressedSize%2A"></xref> property.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.IdentityModel\DeflateCookieTransform.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.IdentityModel/DeflateCookieTransform.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IdentityModel.DeflateCookieTransform.Encode(System.Byte[])
+  id: Encode(System.Byte[])
+  parent: System.IdentityModel.DeflateCookieTransform
+  langs:
+  - csharp
+  name: Encode(Byte[])
+  nameWithType: DeflateCookieTransform.Encode(Byte[])
+  fullName: System.IdentityModel.DeflateCookieTransform.Encode(Byte[])
+  type: Method
+  assemblies:
+  - System.IdentityModel
+  namespace: System.IdentityModel
+  summary: Deflates data.
+  syntax:
+    content: public override byte[] Encode (byte[] value);
+    parameters:
+    - id: value
+      type: System.Byte[]
+      description: The data to be compressed.
+    return:
+      type: System.Byte[]
+      description: The compressed data.
+  overload: System.IdentityModel.DeflateCookieTransform.Encode*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>value</code> is `null`.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>value</code> contains zero bytes.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.IdentityModel\DeflateCookieTransform.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.IdentityModel/DeflateCookieTransform.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IdentityModel.DeflateCookieTransform.MaxDecompressedSize
+  id: MaxDecompressedSize
+  parent: System.IdentityModel.DeflateCookieTransform
+  langs:
+  - csharp
+  name: MaxDecompressedSize
+  nameWithType: DeflateCookieTransform.MaxDecompressedSize
+  fullName: System.IdentityModel.DeflateCookieTransform.MaxDecompressedSize
+  type: Property
+  assemblies:
+  - System.IdentityModel
+  namespace: System.IdentityModel
+  summary: Gets or sets the maximum size, in bytes, of a decompressed cookie.
+  syntax:
+    content: public int MaxDecompressedSize { get; set; }
+    return:
+      type: System.Int32
+      description: The maximum size, in bytes, of a decompressed cookie.
+  overload: System.IdentityModel.DeflateCookieTransform.MaxDecompressedSize*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.IdentityModel\DeflateCookieTransform.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.IdentityModel/DeflateCookieTransform.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.IdentityModel.CookieTransform
+  isExternal: false
+  name: System.IdentityModel.CookieTransform
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.IdentityModel.Tokens.SecurityTokenException
+  parent: System.IdentityModel.Tokens
+  isExternal: false
+  name: SecurityTokenException
+  nameWithType: SecurityTokenException
+  fullName: System.IdentityModel.Tokens.SecurityTokenException
+- uid: System.IdentityModel.DeflateCookieTransform.#ctor
+  parent: System.IdentityModel.DeflateCookieTransform
+  isExternal: false
+  name: DeflateCookieTransform()
+  nameWithType: DeflateCookieTransform.DeflateCookieTransform()
+  fullName: System.IdentityModel.DeflateCookieTransform.DeflateCookieTransform()
+- uid: System.IdentityModel.DeflateCookieTransform.Decode(System.Byte[])
+  parent: System.IdentityModel.DeflateCookieTransform
+  isExternal: false
+  name: Decode(Byte[])
+  nameWithType: DeflateCookieTransform.Decode(Byte[])
+  fullName: System.IdentityModel.DeflateCookieTransform.Decode(Byte[])
+- uid: System.Byte[]
+  parent: System
+  isExternal: false
+  name: Byte[]
+  nameWithType: Byte[]
+  fullName: System.Byte[]
+  spec.csharp:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: Byte[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.IdentityModel.DeflateCookieTransform.Encode(System.Byte[])
+  parent: System.IdentityModel.DeflateCookieTransform
+  isExternal: false
+  name: Encode(Byte[])
+  nameWithType: DeflateCookieTransform.Encode(Byte[])
+  fullName: System.IdentityModel.DeflateCookieTransform.Encode(Byte[])
+- uid: System.IdentityModel.DeflateCookieTransform.MaxDecompressedSize
+  parent: System.IdentityModel.DeflateCookieTransform
+  isExternal: false
+  name: MaxDecompressedSize
+  nameWithType: DeflateCookieTransform.MaxDecompressedSize
+  fullName: System.IdentityModel.DeflateCookieTransform.MaxDecompressedSize
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.IdentityModel.DeflateCookieTransform.#ctor*
+  parent: System.IdentityModel.DeflateCookieTransform
+  isExternal: false
+  name: DeflateCookieTransform
+  nameWithType: DeflateCookieTransform.DeflateCookieTransform
+- uid: System.IdentityModel.DeflateCookieTransform.Decode*
+  parent: System.IdentityModel.DeflateCookieTransform
+  isExternal: false
+  name: Decode
+  nameWithType: DeflateCookieTransform.Decode
+- uid: System.IdentityModel.DeflateCookieTransform.Encode*
+  parent: System.IdentityModel.DeflateCookieTransform
+  isExternal: false
+  name: Encode
+  nameWithType: DeflateCookieTransform.Encode
+- uid: System.IdentityModel.DeflateCookieTransform.MaxDecompressedSize*
+  parent: System.IdentityModel.DeflateCookieTransform
+  isExternal: false
+  name: MaxDecompressedSize
+  nameWithType: DeflateCookieTransform.MaxDecompressedSize

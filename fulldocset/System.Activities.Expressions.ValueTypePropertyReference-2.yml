@@ -1,0 +1,345 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2
+  id: ValueTypePropertyReference`2
+  children:
+  - System.Activities.Expressions.ValueTypePropertyReference`2.#ctor
+  - System.Activities.Expressions.ValueTypePropertyReference`2.CacheMetadata(System.Activities.CodeActivityMetadata)
+  - System.Activities.Expressions.ValueTypePropertyReference`2.Execute(System.Activities.CodeActivityContext)
+  - System.Activities.Expressions.ValueTypePropertyReference`2.OperandLocation
+  - System.Activities.Expressions.ValueTypePropertyReference`2.PropertyName
+  langs:
+  - csharp
+  name: ValueTypePropertyReference<TOperand,TResult>
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>
+  fullName: System.Activities.Expressions.ValueTypePropertyReference<TOperand,TResult>
+  type: Class
+  summary: Represents a property on a value type that can be used as an l-value in an expression.
+  remarks: ''
+  example:
+  - "The following code example uses ValueTypePropertyReference(TOperand, in an `Assign` activity to assign a `string` value to a property and prints the property value to the console. The `Assign` activity is equivalent to the following statement when using the `struct` defined in the following example: `myStructVariable.AProperty = \"Hello\";`.  \n  \n> [!NOTE]\n>  Instead of instantiating the ValueTypePropertyReference(TOperand, l-value expression activity directly, it is strongly recommended that you call <xref:System.Activities.Expressions.ExpressionServices.ConvertReference%2A>, which provides a higher level of abstraction and enables you to implement your workflow more intuitively.  \n  \n```  \n  \n// Define a struct with a property named AProperty.  \nstruct StructWithProperty  \n{  \n    public string AProperty { get; set; }  \n}  \n  \npublic static void ValueTypePropertyReferenceSample()  \n{  \n    // Create a variable of type StructWithProperty to store the property.  \n    var swpvar = new Variable<StructWithProperty>(\"swpvar\", new StructWithProperty());  \n  \n    // Create the top-level activity to be invoked later.  \n    Activity myActivity = new Sequence  \n    {  \n        Variables = { swpvar },  \n        Activities =   \n        {                      \n            // Create an Assign activity for a property named AProperty.  \n            new Assign<string>  \n            {  \n                To = new ValueTypePropertyReference<StructWithProperty, string>  \n                {  \n                    OperandLocation = swpvar,  \n                    PropertyName = \"AProperty\",  \n                },  \n                // Assign a string literal to AProperty.  \n                Value = \"Hello\",  \n            },  \n            // Create a WriteLine activity to write the value of AProperty to the console.  \n            new WriteLine()  \n            {  \n                Text = ExpressionServices.Convert<string>(ctx => swpvar.Get(ctx).AProperty),  \n            }  \n        }  \n    };  \n  \n    // Invoke the Sequence activity.  \n    WorkflowInvoker.Invoke(myActivity);  \n}  \n  \n```"
+  syntax:
+    content: 'public sealed class ValueTypePropertyReference<TOperand,TResult> : System.Activities.CodeActivity<System.Activities.Location<TResult>>'
+    typeParameters:
+    - id: TOperand
+      description: The value type.
+    - id: TResult
+      description: The property type.
+  inheritance:
+  - System.Object
+  - System.Activities.Activity
+  - System.Activities.ActivityWithResult
+  - System.Activities.Activity`1
+  - System.Activities.CodeActivity`1
+  implements: []
+  inheritedMembers:
+  - System.Activities.Activity.CacheId
+  - System.Activities.Activity.Constraints
+  - System.Activities.Activity.DisplayName
+  - System.Activities.Activity.Id
+  - System.Activities.Activity.ShouldSerializeDisplayName
+  - System.Activities.Activity.ToString
+  - System.Activities.Activity`1.FromValue(`0)
+  - System.Activities.Activity`1.FromVariable(System.Activities.Variable)
+  - System.Activities.Activity`1.FromVariable(System.Activities.Variable{`0})
+  - System.Activities.Activity`1.op_Implicit(`0)
+  - System.Activities.Activity`1.op_Implicit(System.Activities.Variable)
+  - System.Activities.Activity`1.op_Implicit(System.Activities.Variable{`0})
+  - System.Activities.Activity`1.Result
+  - System.Activities.ActivityWithResult.ResultType
+  - System.Activities.CodeActivity`1.CacheMetadata(System.Activities.ActivityMetadata)
+  - System.Activities.CodeActivity`1.Implementation
+  - System.Activities.CodeActivity`1.ImplementationVersion
+  - System.Activities.CodeActivity`1.OnCreateDynamicUpdateMap(System.Activities.DynamicUpdate.UpdateMapMetadata,System.Activities.Activity)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Activities.Expressions\ValueTypePropertyReference`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Activities.Expressions/ValueTypePropertyReference`2.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.#ctor
+  id: '#ctor'
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  langs:
+  - csharp
+  name: ValueTypePropertyReference<TOperand,TResult>()
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.ValueTypePropertyReference<TOperand,TResult>()
+  fullName: System.Activities.Expressions.ValueTypePropertyReference<TOperand,TResult>.ValueTypePropertyReference<TOperand,TResult>()
+  type: Constructor
+  assemblies:
+  - System.Activities
+  namespace: System.Activities.Expressions
+  summary: Initializes a new instance of the <xref href="stem.Activities.Expressions.ValueTypePropertyReference%602"></xref> class.
+  syntax:
+    content: public ValueTypePropertyReference ();
+    parameters: []
+  overload: System.Activities.Expressions.ValueTypePropertyReference`2.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Activities.Expressions\ValueTypePropertyReference`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Activities.Expressions/ValueTypePropertyReference`2.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.CacheMetadata(System.Activities.CodeActivityMetadata)
+  id: CacheMetadata(System.Activities.CodeActivityMetadata)
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  langs:
+  - csharp
+  name: CacheMetadata(CodeActivityMetadata)
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.CacheMetadata(CodeActivityMetadata)
+  fullName: System.Activities.Expressions.ValueTypePropertyReference<TOperand,TResult>.CacheMetadata(CodeActivityMetadata)
+  type: Method
+  assemblies:
+  - System.Activities
+  namespace: System.Activities.Expressions
+  syntax:
+    content: protected override void CacheMetadata (System.Activities.CodeActivityMetadata metadata);
+    parameters:
+    - id: metadata
+      type: System.Activities.CodeActivityMetadata
+      description: To be added.
+  overload: System.Activities.Expressions.ValueTypePropertyReference`2.CacheMetadata*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Activities.Expressions\ValueTypePropertyReference`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Activities.Expressions/ValueTypePropertyReference`2.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.Execute(System.Activities.CodeActivityContext)
+  id: Execute(System.Activities.CodeActivityContext)
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  langs:
+  - csharp
+  name: Execute(CodeActivityContext)
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.Execute(CodeActivityContext)
+  fullName: System.Activities.Expressions.ValueTypePropertyReference<TOperand,TResult>.Execute(CodeActivityContext)
+  type: Method
+  assemblies:
+  - System.Activities
+  namespace: System.Activities.Expressions
+  syntax:
+    content: protected override System.Activities.Location<TResult> Execute (System.Activities.CodeActivityContext context);
+    parameters:
+    - id: context
+      type: System.Activities.CodeActivityContext
+      description: To be added.
+    return:
+      type: System.Activities.Location{TResult}
+      description: To be added.
+  overload: System.Activities.Expressions.ValueTypePropertyReference`2.Execute*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Activities.Expressions\ValueTypePropertyReference`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Activities.Expressions/ValueTypePropertyReference`2.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.OperandLocation
+  id: OperandLocation
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  langs:
+  - csharp
+  name: OperandLocation
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.OperandLocation
+  fullName: System.Activities.Expressions.ValueTypePropertyReference<TOperand,TResult>.OperandLocation
+  type: Property
+  assemblies:
+  - System.Activities
+  namespace: System.Activities.Expressions
+  summary: Gets or sets the instance of the value type that contains the property.
+  syntax:
+    content: public System.Activities.InOutArgument<TOperand> OperandLocation { get; set; }
+    return:
+      type: System.Activities.InOutArgument{TOperand}
+      description: The instance of the value type that contains the property.
+  overload: System.Activities.Expressions.ValueTypePropertyReference`2.OperandLocation*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Activities.Expressions\ValueTypePropertyReference`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Activities.Expressions/ValueTypePropertyReference`2.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.PropertyName
+  id: PropertyName
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  langs:
+  - csharp
+  name: PropertyName
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.PropertyName
+  fullName: System.Activities.Expressions.ValueTypePropertyReference<TOperand,TResult>.PropertyName
+  type: Property
+  assemblies:
+  - System.Activities
+  namespace: System.Activities.Expressions
+  summary: Gets or sets the name of the property.
+  syntax:
+    content: public string PropertyName { get; set; }
+    return:
+      type: System.String
+      description: The name of the property.
+  overload: System.Activities.Expressions.ValueTypePropertyReference`2.PropertyName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Activities.Expressions\ValueTypePropertyReference`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Activities.Expressions/ValueTypePropertyReference`2.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Activities.CodeActivity`1
+  isExternal: false
+  name: System.Activities.CodeActivity<System.Activities.Location<TResult>>
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.#ctor
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  isExternal: false
+  name: ValueTypePropertyReference<TOperand,TResult>()
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.ValueTypePropertyReference<TOperand,TResult>()
+  fullName: System.Activities.Expressions.ValueTypePropertyReference<TOperand,TResult>.ValueTypePropertyReference<TOperand,TResult>()
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.CacheMetadata(System.Activities.CodeActivityMetadata)
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  isExternal: false
+  name: CacheMetadata(CodeActivityMetadata)
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.CacheMetadata(CodeActivityMetadata)
+  fullName: System.Activities.Expressions.ValueTypePropertyReference<TOperand,TResult>.CacheMetadata(CodeActivityMetadata)
+- uid: System.Activities.CodeActivityMetadata
+  parent: System.Activities
+  isExternal: false
+  name: CodeActivityMetadata
+  nameWithType: CodeActivityMetadata
+  fullName: System.Activities.CodeActivityMetadata
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.Execute(System.Activities.CodeActivityContext)
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  isExternal: false
+  name: Execute(CodeActivityContext)
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.Execute(CodeActivityContext)
+  fullName: System.Activities.Expressions.ValueTypePropertyReference<TOperand,TResult>.Execute(CodeActivityContext)
+- uid: System.Activities.Location{TResult}
+  parent: System.Activities
+  isExternal: false
+  name: Location<TResult>
+  nameWithType: Location<TResult>
+  fullName: System.Activities.Location<TResult>
+  spec.csharp:
+  - uid: System.Activities.Location`1
+    name: Location
+    nameWithType: Location
+    fullName: Location<TResult>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TResult
+    name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Activities.CodeActivityContext
+  parent: System.Activities
+  isExternal: false
+  name: CodeActivityContext
+  nameWithType: CodeActivityContext
+  fullName: System.Activities.CodeActivityContext
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.OperandLocation
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  isExternal: false
+  name: OperandLocation
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.OperandLocation
+  fullName: System.Activities.Expressions.ValueTypePropertyReference<TOperand,TResult>.OperandLocation
+- uid: System.Activities.InOutArgument{TOperand}
+  parent: System.Activities
+  isExternal: false
+  name: InOutArgument<TOperand>
+  nameWithType: InOutArgument<TOperand>
+  fullName: System.Activities.InOutArgument<TOperand>
+  spec.csharp:
+  - uid: System.Activities.InOutArgument`1
+    name: InOutArgument
+    nameWithType: InOutArgument
+    fullName: InOutArgument<TOperand>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TOperand
+    name: TOperand
+    nameWithType: TOperand
+    fullName: TOperand
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.PropertyName
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  isExternal: false
+  name: PropertyName
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.PropertyName
+  fullName: System.Activities.Expressions.ValueTypePropertyReference<TOperand,TResult>.PropertyName
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.#ctor*
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  isExternal: false
+  name: ValueTypePropertyReference<TOperand,TResult>
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.ValueTypePropertyReference<TOperand,TResult>
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.CacheMetadata*
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  isExternal: false
+  name: CacheMetadata
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.CacheMetadata
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.Execute*
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  isExternal: false
+  name: Execute
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.Execute
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.OperandLocation*
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  isExternal: false
+  name: OperandLocation
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.OperandLocation
+- uid: System.Activities.Expressions.ValueTypePropertyReference`2.PropertyName*
+  parent: System.Activities.Expressions.ValueTypePropertyReference`2
+  isExternal: false
+  name: PropertyName
+  nameWithType: ValueTypePropertyReference<TOperand,TResult>.PropertyName

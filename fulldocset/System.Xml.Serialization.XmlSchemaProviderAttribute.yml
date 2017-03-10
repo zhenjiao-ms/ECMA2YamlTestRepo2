@@ -1,0 +1,241 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.Serialization.XmlSchemaProviderAttribute
+  id: XmlSchemaProviderAttribute
+  children:
+  - System.Xml.Serialization.XmlSchemaProviderAttribute.#ctor(System.String)
+  - System.Xml.Serialization.XmlSchemaProviderAttribute.IsAny
+  - System.Xml.Serialization.XmlSchemaProviderAttribute.MethodName
+  langs:
+  - csharp
+  name: XmlSchemaProviderAttribute
+  nameWithType: XmlSchemaProviderAttribute
+  fullName: System.Xml.Serialization.XmlSchemaProviderAttribute
+  type: Class
+  summary: When applied to a type, stores the name of a static method of the type that returns an XML schema and a <xref href="System.Xml.XmlQualifiedName"></xref> (or <xref href="System.Xml.Schema.XmlSchemaType"></xref> for anonymous types) that controls the serialization of the type.
+  remarks: "The main purpose of the XmlSchemaProviderAttribute is to enable the <xref:System.Xml.Serialization.XmlSchemaExporter> class to return a schema when queried by the Web Services Description Language tool (WSDL.exe), or when using the **Add Web Reference** feature of [!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)]. You can control the actual schema for the type in the static method.  \n  \n> [!NOTE]\n>  The target class of the attribute must implement the <xref:System.Xml.Serialization.IXmlSerializable> interface.  \n  \n The <xref:System.Xml.Serialization.XmlSchemaProviderAttribute.MethodName%2A> property returns the name of a static method through reflection. The method, which must be implemented, must take a single parameter, an <xref:System.Xml.Schema.XmlSchemaSet> object, which the method populates with an <xref:System.Xml.Schema.XmlSchema> object. The method must also return an <xref:System.Xml.XmlQualifiedName> object that identifies the data type.  \n  \n## Returning Anonymous Types  \n An anonymous complex type cannot be created using a method that returns <xref:System.Xml.XmlQualifiedName>. Because an anonymous type has no name, and you cannot add an anonymous type to a schema, the anonymous type must be returned as an <xref:System.Xml.Schema.XmlSchemaType>."
+  example:
+  - "The following example applies the XmlSchemaProviderAttribute to a server-side class. When invoked, the method named by the <xref:System.Xml.Serialization.XmlSchemaProviderAttribute.MethodName%2A> property creates the schema. This simple implementation reads an existing schema off the disk. However, you can also create a custom schema, if necessary, using the types found in the <xref:System.Xml.Schema> namespace.  \n  \n [!code-vb[HowToChunkSerializedData#2](~/add/codesnippet/visualbasic/t-system.xml.serializati_0_1.vb)]\n [!code-cs[HowToChunkSerializedData#2](~/add/codesnippet/csharp/t-system.xml.serializati_0_1.cs)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Class | System.AttributeTargets.Struct | System.AttributeTargets.Interface)]
+
+      public sealed class XmlSchemaProviderAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSchemaProviderAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSchemaProviderAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSchemaProviderAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Xml.Serialization.XmlSchemaProviderAttribute
+  langs:
+  - csharp
+  name: XmlSchemaProviderAttribute(String)
+  nameWithType: XmlSchemaProviderAttribute.XmlSchemaProviderAttribute(String)
+  fullName: System.Xml.Serialization.XmlSchemaProviderAttribute.XmlSchemaProviderAttribute(String)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.XmlSchemaProviderAttribute"></xref> class, taking the name of the static method that supplies the type's XML schema.
+  syntax:
+    content: public XmlSchemaProviderAttribute (string methodName);
+    parameters:
+    - id: methodName
+      type: System.String
+      description: The name of the static method that must be implemented.
+  overload: System.Xml.Serialization.XmlSchemaProviderAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSchemaProviderAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSchemaProviderAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSchemaProviderAttribute.IsAny
+  id: IsAny
+  parent: System.Xml.Serialization.XmlSchemaProviderAttribute
+  langs:
+  - csharp
+  name: IsAny
+  nameWithType: XmlSchemaProviderAttribute.IsAny
+  fullName: System.Xml.Serialization.XmlSchemaProviderAttribute.IsAny
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets a value that determines whether the target class is a wildcard, or that the schema for the class has contains only an `xs:any` element.
+  remarks: "The target class of the attribute can be any class. This can be achieved in the following ways:  \n  \n-   The method named by the attribute can return `null`.  \n  \n-   Set the value of this property to `true` to prevent the method from being called."
+  syntax:
+    content: public bool IsAny { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true`, if the class is a wildcard, or if the schema contains only the `xs:any` element; otherwise, `false`.'
+  overload: System.Xml.Serialization.XmlSchemaProviderAttribute.IsAny*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSchemaProviderAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSchemaProviderAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.Serialization.XmlSchemaProviderAttribute.MethodName
+  id: MethodName
+  parent: System.Xml.Serialization.XmlSchemaProviderAttribute
+  langs:
+  - csharp
+  name: MethodName
+  nameWithType: XmlSchemaProviderAttribute.MethodName
+  fullName: System.Xml.Serialization.XmlSchemaProviderAttribute.MethodName
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets the name of the static method that supplies the type's XML schema and the name of its XML Schema data type.
+  syntax:
+    content: public string MethodName { get; }
+    return:
+      type: System.String
+      description: The name of the method that is invoked by the XML infrastructure to return an XML schema.
+  overload: System.Xml.Serialization.XmlSchemaProviderAttribute.MethodName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml.Serialization\XmlSchemaProviderAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml.Serialization/XmlSchemaProviderAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Xml.Serialization.XmlSchemaProviderAttribute.#ctor(System.String)
+  parent: System.Xml.Serialization.XmlSchemaProviderAttribute
+  isExternal: false
+  name: XmlSchemaProviderAttribute(String)
+  nameWithType: XmlSchemaProviderAttribute.XmlSchemaProviderAttribute(String)
+  fullName: System.Xml.Serialization.XmlSchemaProviderAttribute.XmlSchemaProviderAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Xml.Serialization.XmlSchemaProviderAttribute.IsAny
+  parent: System.Xml.Serialization.XmlSchemaProviderAttribute
+  isExternal: false
+  name: IsAny
+  nameWithType: XmlSchemaProviderAttribute.IsAny
+  fullName: System.Xml.Serialization.XmlSchemaProviderAttribute.IsAny
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Xml.Serialization.XmlSchemaProviderAttribute.MethodName
+  parent: System.Xml.Serialization.XmlSchemaProviderAttribute
+  isExternal: false
+  name: MethodName
+  nameWithType: XmlSchemaProviderAttribute.MethodName
+  fullName: System.Xml.Serialization.XmlSchemaProviderAttribute.MethodName
+- uid: System.Xml.Serialization.XmlSchemaProviderAttribute.#ctor*
+  parent: System.Xml.Serialization.XmlSchemaProviderAttribute
+  isExternal: false
+  name: XmlSchemaProviderAttribute
+  nameWithType: XmlSchemaProviderAttribute.XmlSchemaProviderAttribute
+- uid: System.Xml.Serialization.XmlSchemaProviderAttribute.IsAny*
+  parent: System.Xml.Serialization.XmlSchemaProviderAttribute
+  isExternal: false
+  name: IsAny
+  nameWithType: XmlSchemaProviderAttribute.IsAny
+- uid: System.Xml.Serialization.XmlSchemaProviderAttribute.MethodName*
+  parent: System.Xml.Serialization.XmlSchemaProviderAttribute
+  isExternal: false
+  name: MethodName
+  nameWithType: XmlSchemaProviderAttribute.MethodName

@@ -1,0 +1,887 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.Channels.ContextBindingElement
+  id: ContextBindingElement
+  children:
+  - System.ServiceModel.Channels.ContextBindingElement.#ctor
+  - System.ServiceModel.Channels.ContextBindingElement.#ctor(System.Net.Security.ProtectionLevel)
+  - System.ServiceModel.Channels.ContextBindingElement.#ctor(System.Net.Security.ProtectionLevel,System.ServiceModel.Channels.ContextExchangeMechanism)
+  - System.ServiceModel.Channels.ContextBindingElement.#ctor(System.Net.Security.ProtectionLevel,System.ServiceModel.Channels.ContextExchangeMechanism,System.Uri)
+  - System.ServiceModel.Channels.ContextBindingElement.#ctor(System.Net.Security.ProtectionLevel,System.ServiceModel.Channels.ContextExchangeMechanism,System.Uri,System.Boolean)
+  - System.ServiceModel.Channels.ContextBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+  - System.ServiceModel.Channels.ContextBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+  - System.ServiceModel.Channels.ContextBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+  - System.ServiceModel.Channels.ContextBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+  - System.ServiceModel.Channels.ContextBindingElement.ClientCallbackAddress
+  - System.ServiceModel.Channels.ContextBindingElement.Clone
+  - System.ServiceModel.Channels.ContextBindingElement.ContextExchangeMechanism
+  - System.ServiceModel.Channels.ContextBindingElement.ContextManagementEnabled
+  - System.ServiceModel.Channels.ContextBindingElement.ExportPolicy(System.ServiceModel.Description.MetadataExporter,System.ServiceModel.Description.PolicyConversionContext)
+  - System.ServiceModel.Channels.ContextBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+  - System.ServiceModel.Channels.ContextBindingElement.ProtectionLevel
+  langs:
+  - csharp
+  name: ContextBindingElement
+  nameWithType: ContextBindingElement
+  fullName: System.ServiceModel.Channels.ContextBindingElement
+  type: Class
+  summary: Provides a protection level and an exchange mechanism as part of the context of a binding element and the functionality to build the channel listeners and factories.
+  remarks: "The ContextBindingElement allows the user to add an element to the binding of a service for managing its context exchange protocol. The ContextBindingElement is typically stacked on top of reliability, security, and transport binding elements. A ContextBindingElement does not require any configuration options and can create channel factories for <xref:System.ServiceModel.Channels.IRequestChannel>, <xref:System.ServiceModel.Channels.IRequestSessionChannel>, and <xref:System.ServiceModel.Channels.IDuplexSessionChannel>. It can also create channel listeners for <xref:System.ServiceModel.Channels.IReplyChannel>, <xref:System.ServiceModel.Channels.IReplySessionChannel>, and <xref:System.ServiceModel.Channels.IDuplexSessionChannel>. A context channel does not change the channel interface – the underlying channel stack must support the requested channel shape and session capability.  \n  \n The channel listeners and factories are used to construct the part of the channel stacks used to process incoming and outgoing messages.  \n  \n> [!NOTE]\n>  If a session-based binding is created with a ContextBindingElement and used with a contract that specifies <xref:System.ServiceModel.ServiceContractAttribute.SessionMode%2A> = <xref:System.ServiceModel.SessionMode>, an <xref:System.InvalidOperationException> is thrown when the channel is created with the following text: \"Channel context management cannot be enabled or disabled after the channel is opened.\" You must set <xref:System.ServiceModel.ServiceContractAttribute.SessionMode%2A> to <xref:System.ServiceModel.SessionMode> or <xref:System.ServiceModel.SessionMode> or not use a session-based channel.  \n  \n When creating a custom binding, it is recommended that you add the ContextBindingElement to the <xref:System.ServiceModel.Channels.BindingElementCollection> of the custom binding before adding any reliability and security binding elements, if present. If you do not, your service may throw a <xref:System.ServiceModel.ProtocolException> with the following message:  \n  \n \"Context channel received a message with context which does not match the current context cached at the channel. Ensure service does not change context after it was originally set or disable context management by setting channel property 'IContextManager.Enabled' to false.\""
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+
+      public class ContextBindingElement : System.ServiceModel.Channels.BindingElement, System.ServiceModel.Channels.IContextBindingElement, System.ServiceModel.Description.IPolicyExportExtension
+  inheritance:
+  - System.Object
+  - System.ServiceModel.Channels.BindingElement
+  implements:
+  - System.ServiceModel.Channels.IContextBindingElement
+  - System.ServiceModel.Description.IPolicyExportExtension
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.#ctor
+  id: '#ctor'
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: ContextBindingElement()
+  nameWithType: ContextBindingElement.ContextBindingElement()
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ContextBindingElement()
+  type: Constructor
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Channels.ContextBindingElement"></xref> class.
+  remarks: Sets the default values of <xref:System.Net.Security.ProtectionLevel> for <xref:System.Net.Security.ProtectionLevel> and <xref:System.ServiceModel.Channels.ContextExchangeMechanism> for <xref:System.ServiceModel.Channels.ContextExchangeMechanism>.
+  syntax:
+    content: public ContextBindingElement ();
+    parameters: []
+  overload: System.ServiceModel.Channels.ContextBindingElement.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.#ctor(System.Net.Security.ProtectionLevel)
+  id: '#ctor(System.Net.Security.ProtectionLevel)'
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: ContextBindingElement(ProtectionLevel)
+  nameWithType: ContextBindingElement.ContextBindingElement(ProtectionLevel)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ContextBindingElement(ProtectionLevel)
+  type: Constructor
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Channels.ContextBindingElement"></xref> class with a specified level of protection.
+  remarks: Sets the default value of <xref:System.ServiceModel.Channels.ContextExchangeMechanism> for <xref:System.ServiceModel.Channels.ContextExchangeMechanism>.
+  syntax:
+    content: public ContextBindingElement (System.Net.Security.ProtectionLevel protectionLevel);
+    parameters:
+    - id: protectionLevel
+      type: System.Net.Security.ProtectionLevel
+      description: The <xref href="System.Net.Security.ProtectionLevel"></xref> for the binding element.
+  overload: System.ServiceModel.Channels.ContextBindingElement.#ctor*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: The <code>protectionLevel</code> is not valid.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.#ctor(System.Net.Security.ProtectionLevel,System.ServiceModel.Channels.ContextExchangeMechanism)
+  id: '#ctor(System.Net.Security.ProtectionLevel,System.ServiceModel.Channels.ContextExchangeMechanism)'
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: ContextBindingElement(ProtectionLevel,ContextExchangeMechanism)
+  nameWithType: ContextBindingElement.ContextBindingElement(ProtectionLevel,ContextExchangeMechanism)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ContextBindingElement(ProtectionLevel,ContextExchangeMechanism)
+  type: Constructor
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Channels.ContextBindingElement"></xref> class with a specified level of protection and exchange mechanism.
+  syntax:
+    content: public ContextBindingElement (System.Net.Security.ProtectionLevel protectionLevel, System.ServiceModel.Channels.ContextExchangeMechanism contextExchangeMechanism);
+    parameters:
+    - id: protectionLevel
+      type: System.Net.Security.ProtectionLevel
+      description: The <xref href="System.Net.Security.ProtectionLevel"></xref> for the binding element.
+    - id: contextExchangeMechanism
+      type: System.ServiceModel.Channels.ContextExchangeMechanism
+      description: The <xref href="System.ServiceModel.Channels.ContextExchangeMechanism"></xref> that specifies the mechanism used to exchange context for the binding element.
+  overload: System.ServiceModel.Channels.ContextBindingElement.#ctor*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>protectionLevel</code> or <code>contextExchangeMechanism</code> is not valid.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.#ctor(System.Net.Security.ProtectionLevel,System.ServiceModel.Channels.ContextExchangeMechanism,System.Uri)
+  id: '#ctor(System.Net.Security.ProtectionLevel,System.ServiceModel.Channels.ContextExchangeMechanism,System.Uri)'
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: ContextBindingElement(ProtectionLevel,ContextExchangeMechanism,Uri)
+  nameWithType: ContextBindingElement.ContextBindingElement(ProtectionLevel,ContextExchangeMechanism,Uri)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ContextBindingElement(ProtectionLevel,ContextExchangeMechanism,Uri)
+  type: Constructor
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Channels.ContextBindingElement"></xref> class with the specified protection level, context exchange mechanism, and client callback address.
+  syntax:
+    content: public ContextBindingElement (System.Net.Security.ProtectionLevel protectionLevel, System.ServiceModel.Channels.ContextExchangeMechanism contextExchangeMechanism, Uri clientCallbackAddress);
+    parameters:
+    - id: protectionLevel
+      type: System.Net.Security.ProtectionLevel
+      description: The protection level form the binding element.
+    - id: contextExchangeMechanism
+      type: System.ServiceModel.Channels.ContextExchangeMechanism
+      description: The mechanism used to exchange context for the binding element.
+    - id: clientCallbackAddress
+      type: System.Uri
+      description: The client callback address.
+  overload: System.ServiceModel.Channels.ContextBindingElement.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.#ctor(System.Net.Security.ProtectionLevel,System.ServiceModel.Channels.ContextExchangeMechanism,System.Uri,System.Boolean)
+  id: '#ctor(System.Net.Security.ProtectionLevel,System.ServiceModel.Channels.ContextExchangeMechanism,System.Uri,System.Boolean)'
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: ContextBindingElement(ProtectionLevel,ContextExchangeMechanism,Uri,Boolean)
+  nameWithType: ContextBindingElement.ContextBindingElement(ProtectionLevel,ContextExchangeMechanism,Uri,Boolean)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ContextBindingElement(ProtectionLevel,ContextExchangeMechanism,Uri,Boolean)
+  type: Constructor
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Channels.ContextBindingElement"></xref> class with the specified protection level, context exchange mechanism, client callback address, and a value that specifies whether context management is enabled.
+  syntax:
+    content: public ContextBindingElement (System.Net.Security.ProtectionLevel protectionLevel, System.ServiceModel.Channels.ContextExchangeMechanism contextExchangeMechanism, Uri clientCallbackAddress, bool contextManagementEnabled);
+    parameters:
+    - id: protectionLevel
+      type: System.Net.Security.ProtectionLevel
+      description: The protection level for the binding element.
+    - id: contextExchangeMechanism
+      type: System.ServiceModel.Channels.ContextExchangeMechanism
+      description: The mechanism used to exchange context for the binding element.
+    - id: clientCallbackAddress
+      type: System.Uri
+      description: The client callback address.
+    - id: contextManagementEnabled
+      type: System.Boolean
+      description: '`true` if the context management is enabled; otherwise `false`.'
+  overload: System.ServiceModel.Channels.ContextBindingElement.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+  id: BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: BuildChannelFactory<TChannel>(BindingContext)
+  nameWithType: ContextBindingElement.BuildChannelFactory<TChannel>(BindingContext)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.BuildChannelFactory<TChannel>(BindingContext)
+  type: Method
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Builds the channel factory stack on the client that creates a specified type of channel for a specified context.
+  syntax:
+    content: public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel> (System.ServiceModel.Channels.BindingContext context);
+    parameters:
+    - id: context
+      type: System.ServiceModel.Channels.BindingContext
+      description: The <xref href="System.ServiceModel.Channels.BindingContext"></xref> for the channel.
+    return:
+      type: System.ServiceModel.Channels.IChannelFactory`1
+      description: An <xref href="stem.ServiceModel.Channels.IChannelFactory%601"></xref> of type <code>TChannel</code> for the specified context.
+  overload: System.ServiceModel.Channels.ContextBindingElement.BuildChannelFactory<TChannel>*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>context</code> set is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+  id: BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: BuildChannelListener<TChannel>(BindingContext)
+  nameWithType: ContextBindingElement.BuildChannelListener<TChannel>(BindingContext)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.BuildChannelListener<TChannel>(BindingContext)
+  type: Method
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Builds the channel listener stack on the client that accepts a specified type of channel for a specified context.
+  syntax:
+    content: 'public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel> (System.ServiceModel.Channels.BindingContext context) where TChannel : class, System.ServiceModel.Channels.IChannel;'
+    parameters:
+    - id: context
+      type: System.ServiceModel.Channels.BindingContext
+      description: The <xref href="System.ServiceModel.Channels.BindingContext"></xref> for the listener.
+    return:
+      type: System.ServiceModel.Channels.IChannelListener`1
+      description: An <xref href="stem.ServiceModel.Channels.IChannelListener%601"></xref> of type <code>TChannel</code> for the specified context.
+  overload: System.ServiceModel.Channels.ContextBindingElement.BuildChannelListener<TChannel>*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>context</code> set is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+  id: CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: CanBuildChannelFactory<TChannel>(BindingContext)
+  nameWithType: ContextBindingElement.CanBuildChannelFactory<TChannel>(BindingContext)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.CanBuildChannelFactory<TChannel>(BindingContext)
+  type: Method
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Returns a value that indicates whether the current binding element can build a factory for a specified type of channel and context.
+  syntax:
+    content: public override bool CanBuildChannelFactory<TChannel> (System.ServiceModel.Channels.BindingContext context);
+    parameters:
+    - id: context
+      type: System.ServiceModel.Channels.BindingContext
+      description: The <xref href="System.ServiceModel.Channels.BindingContext"></xref> for the factory.
+    return:
+      type: System.Boolean
+      description: '`true` if the specified channel factory stack can be built on the client; otherwise, `false`.'
+  overload: System.ServiceModel.Channels.ContextBindingElement.CanBuildChannelFactory<TChannel>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+  id: CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: CanBuildChannelListener<TChannel>(BindingContext)
+  nameWithType: ContextBindingElement.CanBuildChannelListener<TChannel>(BindingContext)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.CanBuildChannelListener<TChannel>(BindingContext)
+  type: Method
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Returns a value that indicates whether the current binding can build a listener for a specified type of channel and context.
+  syntax:
+    content: 'public override bool CanBuildChannelListener<TChannel> (System.ServiceModel.Channels.BindingContext context) where TChannel : class, System.ServiceModel.Channels.IChannel;'
+    parameters:
+    - id: context
+      type: System.ServiceModel.Channels.BindingContext
+      description: The <xref href="System.ServiceModel.Channels.BindingContext"></xref> for the listener.
+    return:
+      type: System.Boolean
+      description: '`true` if the specified channel listener stack can be built on the service; otherwise, `false`.'
+  overload: System.ServiceModel.Channels.ContextBindingElement.CanBuildChannelListener<TChannel>*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.ClientCallbackAddress
+  id: ClientCallbackAddress
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: ClientCallbackAddress
+  nameWithType: ContextBindingElement.ClientCallbackAddress
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ClientCallbackAddress
+  type: Property
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Gets or sets the client callback address for the binding element.
+  syntax:
+    content: public Uri ClientCallbackAddress { get; set; }
+    return:
+      type: System.Uri
+      description: The client callback address.
+  overload: System.ServiceModel.Channels.ContextBindingElement.ClientCallbackAddress*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.Clone
+  id: Clone
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: Clone()
+  nameWithType: ContextBindingElement.Clone()
+  fullName: System.ServiceModel.Channels.ContextBindingElement.Clone()
+  type: Method
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Creates a new <xref href="System.ServiceModel.Channels.ContextBindingElement"></xref> object initialized from the current one.
+  remarks: "The cloned <xref:System.ServiceModel.Channels.ContextBindingElement> object has the same <xref:System.ServiceModel.Channels.ContextBindingElement.ProtectionLevel%2A> and <xref:System.ServiceModel.Channels.ContextExchangeMechanism> values of the current <xref:System.ServiceModel.Channels.ContextBindingElement> object.  \n  \n This creates a complete copy of the current binding element object tree, also called a deep clone. A deep clone of an object creates a copy of the object and a copy of everything directly or indirectly referenced by that object. This is called copying the entire object graph. Returning a deep clone enables the runtime to support the case in which multiple custom bindings share a custom binding element. If a deep clone is not returned, the run-time behavior is undefined. A shallow clone of an object is a copy of the object only. If the object contains references to other objects, the shallow copy does not create copies of the referred objects; instead, it copies only the references to the original objects."
+  syntax:
+    content: public override System.ServiceModel.Channels.BindingElement Clone ();
+    parameters: []
+    return:
+      type: System.ServiceModel.Channels.BindingElement
+      description: A <xref href="System.ServiceModel.Channels.ContextBindingElement"></xref> object initialized from the current one.
+  overload: System.ServiceModel.Channels.ContextBindingElement.Clone*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.ContextExchangeMechanism
+  id: ContextExchangeMechanism
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: ContextExchangeMechanism
+  nameWithType: ContextBindingElement.ContextExchangeMechanism
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ContextExchangeMechanism
+  type: Property
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Gets or sets the exchange mechanism used to communicate context for the binding element.
+  syntax:
+    content: public System.ServiceModel.Channels.ContextExchangeMechanism ContextExchangeMechanism { get; set; }
+    return:
+      type: System.ServiceModel.Channels.ContextExchangeMechanism
+      description: The <xref href="System.ServiceModel.Channels.ContextExchangeMechanism"></xref> that specifies the mechanism used to exchange context for the binding element.
+  overload: System.ServiceModel.Channels.ContextBindingElement.ContextExchangeMechanism*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: The value set is not valid.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.ContextManagementEnabled
+  id: ContextManagementEnabled
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: ContextManagementEnabled
+  nameWithType: ContextBindingElement.ContextManagementEnabled
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ContextManagementEnabled
+  type: Property
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Gets or sets a value that specifies whether context management is enabled.
+  syntax:
+    content: public bool ContextManagementEnabled { get; set; }
+    return:
+      type: System.Boolean
+      description: '`true` if context management is enabled; otherwise, `false`.'
+  overload: System.ServiceModel.Channels.ContextBindingElement.ContextManagementEnabled*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.ExportPolicy(System.ServiceModel.Description.MetadataExporter,System.ServiceModel.Description.PolicyConversionContext)
+  id: ExportPolicy(System.ServiceModel.Description.MetadataExporter,System.ServiceModel.Description.PolicyConversionContext)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: ExportPolicy(MetadataExporter,PolicyConversionContext)
+  nameWithType: ContextBindingElement.ExportPolicy(MetadataExporter,PolicyConversionContext)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ExportPolicy(MetadataExporter,PolicyConversionContext)
+  type: Method
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Writes custom policy assertions into the context of the binding element.
+  syntax:
+    content: public virtual void ExportPolicy (System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context);
+    parameters:
+    - id: exporter
+      type: System.ServiceModel.Description.MetadataExporter
+      description: The <xref href="System.ServiceModel.Description.MetadataExporter"></xref> that exports the metadata information.
+    - id: context
+      type: System.ServiceModel.Description.PolicyConversionContext
+      description: A <xref href="System.ServiceModel.Description.WsdlContractConversionContext"></xref> object that provides mappings from exported WSDL elements to the contract description.
+  overload: System.ServiceModel.Channels.ContextBindingElement.ExportPolicy*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>context</code> is `null` or the policy assertion in the binding is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+  id: GetProperty``1(System.ServiceModel.Channels.BindingContext)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: GetProperty<T>(BindingContext)
+  nameWithType: ContextBindingElement.GetProperty<T>(BindingContext)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.GetProperty<T>(BindingContext)
+  type: Method
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Returns the typed object with the specified context from the appropriate layer in the channel stack.
+  syntax:
+    content: 'public override T GetProperty<T> (System.ServiceModel.Channels.BindingContext context) where T : class;'
+    parameters:
+    - id: context
+      type: System.ServiceModel.Channels.BindingContext
+      description: The <xref href="System.ServiceModel.Channels.BindingContext"></xref> specified.
+    return:
+      type: T
+      description: The typed object <code>T</code> requested if it is present.
+  overload: System.ServiceModel.Channels.ContextBindingElement.GetProperty<T>*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>context</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.Channels.ContextBindingElement.ProtectionLevel
+  id: ProtectionLevel
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  langs:
+  - csharp
+  name: ProtectionLevel
+  nameWithType: ContextBindingElement.ProtectionLevel
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ProtectionLevel
+  type: Property
+  assemblies:
+  - System.WorkflowServices
+  - System.ServiceModel
+  namespace: System.ServiceModel.Channels
+  summary: Gets or sets the level of protection for the binding element from the context.
+  syntax:
+    content: public System.Net.Security.ProtectionLevel ProtectionLevel { get; set; }
+    return:
+      type: System.Net.Security.ProtectionLevel
+      description: The <xref href="System.Net.Security.ProtectionLevel"></xref> for the binding element.
+  overload: System.ServiceModel.Channels.ContextBindingElement.ProtectionLevel*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: The value set is not valid.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel.Channels\ContextBindingElement.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel.Channels/ContextBindingElement.xml
+  version:
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.ServiceModel.Channels.BindingElement
+  isExternal: false
+  name: System.ServiceModel.Channels.BindingElement
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ServiceModel.Channels.ContextBindingElement.#ctor
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ContextBindingElement()
+  nameWithType: ContextBindingElement.ContextBindingElement()
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ContextBindingElement()
+- uid: System.ServiceModel.Channels.ContextBindingElement.#ctor(System.Net.Security.ProtectionLevel)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ContextBindingElement(ProtectionLevel)
+  nameWithType: ContextBindingElement.ContextBindingElement(ProtectionLevel)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ContextBindingElement(ProtectionLevel)
+- uid: System.Net.Security.ProtectionLevel
+  parent: System.Net.Security
+  isExternal: false
+  name: ProtectionLevel
+  nameWithType: ProtectionLevel
+  fullName: System.Net.Security.ProtectionLevel
+- uid: System.ServiceModel.Channels.ContextBindingElement.#ctor(System.Net.Security.ProtectionLevel,System.ServiceModel.Channels.ContextExchangeMechanism)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ContextBindingElement(ProtectionLevel,ContextExchangeMechanism)
+  nameWithType: ContextBindingElement.ContextBindingElement(ProtectionLevel,ContextExchangeMechanism)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ContextBindingElement(ProtectionLevel,ContextExchangeMechanism)
+- uid: System.ServiceModel.Channels.ContextExchangeMechanism
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: ContextExchangeMechanism
+  nameWithType: ContextExchangeMechanism
+  fullName: System.ServiceModel.Channels.ContextExchangeMechanism
+- uid: System.ServiceModel.Channels.ContextBindingElement.#ctor(System.Net.Security.ProtectionLevel,System.ServiceModel.Channels.ContextExchangeMechanism,System.Uri)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ContextBindingElement(ProtectionLevel,ContextExchangeMechanism,Uri)
+  nameWithType: ContextBindingElement.ContextBindingElement(ProtectionLevel,ContextExchangeMechanism,Uri)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ContextBindingElement(ProtectionLevel,ContextExchangeMechanism,Uri)
+- uid: System.Uri
+  parent: System
+  isExternal: false
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: System.ServiceModel.Channels.ContextBindingElement.#ctor(System.Net.Security.ProtectionLevel,System.ServiceModel.Channels.ContextExchangeMechanism,System.Uri,System.Boolean)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ContextBindingElement(ProtectionLevel,ContextExchangeMechanism,Uri,Boolean)
+  nameWithType: ContextBindingElement.ContextBindingElement(ProtectionLevel,ContextExchangeMechanism,Uri,Boolean)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ContextBindingElement(ProtectionLevel,ContextExchangeMechanism,Uri,Boolean)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ServiceModel.Channels.ContextBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: BuildChannelFactory<TChannel>(BindingContext)
+  nameWithType: ContextBindingElement.BuildChannelFactory<TChannel>(BindingContext)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.BuildChannelFactory<TChannel>(BindingContext)
+- uid: System.ServiceModel.Channels.IChannelFactory`1
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: IChannelFactory<TChannel>
+  nameWithType: IChannelFactory<TChannel>
+  fullName: System.ServiceModel.Channels.IChannelFactory<TChannel>
+- uid: System.ServiceModel.Channels.BindingContext
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: BindingContext
+  nameWithType: BindingContext
+  fullName: System.ServiceModel.Channels.BindingContext
+- uid: System.ServiceModel.Channels.ContextBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: BuildChannelListener<TChannel>(BindingContext)
+  nameWithType: ContextBindingElement.BuildChannelListener<TChannel>(BindingContext)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.BuildChannelListener<TChannel>(BindingContext)
+- uid: System.ServiceModel.Channels.IChannelListener`1
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: IChannelListener<TChannel>
+  nameWithType: IChannelListener<TChannel>
+  fullName: System.ServiceModel.Channels.IChannelListener<TChannel>
+- uid: System.ServiceModel.Channels.ContextBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: CanBuildChannelFactory<TChannel>(BindingContext)
+  nameWithType: ContextBindingElement.CanBuildChannelFactory<TChannel>(BindingContext)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.CanBuildChannelFactory<TChannel>(BindingContext)
+- uid: System.ServiceModel.Channels.ContextBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: CanBuildChannelListener<TChannel>(BindingContext)
+  nameWithType: ContextBindingElement.CanBuildChannelListener<TChannel>(BindingContext)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.CanBuildChannelListener<TChannel>(BindingContext)
+- uid: System.ServiceModel.Channels.ContextBindingElement.ClientCallbackAddress
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ClientCallbackAddress
+  nameWithType: ContextBindingElement.ClientCallbackAddress
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ClientCallbackAddress
+- uid: System.ServiceModel.Channels.ContextBindingElement.Clone
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: Clone()
+  nameWithType: ContextBindingElement.Clone()
+  fullName: System.ServiceModel.Channels.ContextBindingElement.Clone()
+- uid: System.ServiceModel.Channels.ContextBindingElement.ContextExchangeMechanism
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ContextExchangeMechanism
+  nameWithType: ContextBindingElement.ContextExchangeMechanism
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ContextExchangeMechanism
+- uid: System.ServiceModel.Channels.ContextBindingElement.ContextManagementEnabled
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ContextManagementEnabled
+  nameWithType: ContextBindingElement.ContextManagementEnabled
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ContextManagementEnabled
+- uid: System.ServiceModel.Channels.ContextBindingElement.ExportPolicy(System.ServiceModel.Description.MetadataExporter,System.ServiceModel.Description.PolicyConversionContext)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ExportPolicy(MetadataExporter,PolicyConversionContext)
+  nameWithType: ContextBindingElement.ExportPolicy(MetadataExporter,PolicyConversionContext)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ExportPolicy(MetadataExporter,PolicyConversionContext)
+- uid: System.ServiceModel.Description.MetadataExporter
+  parent: System.ServiceModel.Description
+  isExternal: false
+  name: MetadataExporter
+  nameWithType: MetadataExporter
+  fullName: System.ServiceModel.Description.MetadataExporter
+- uid: System.ServiceModel.Description.PolicyConversionContext
+  parent: System.ServiceModel.Description
+  isExternal: false
+  name: PolicyConversionContext
+  nameWithType: PolicyConversionContext
+  fullName: System.ServiceModel.Description.PolicyConversionContext
+- uid: System.ServiceModel.Channels.ContextBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: GetProperty<T>(BindingContext)
+  nameWithType: ContextBindingElement.GetProperty<T>(BindingContext)
+  fullName: System.ServiceModel.Channels.ContextBindingElement.GetProperty<T>(BindingContext)
+- uid: T
+  isExternal: true
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.ServiceModel.Channels.ContextBindingElement.ProtectionLevel
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ProtectionLevel
+  nameWithType: ContextBindingElement.ProtectionLevel
+  fullName: System.ServiceModel.Channels.ContextBindingElement.ProtectionLevel
+- uid: System.ServiceModel.Channels.ContextBindingElement.#ctor*
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ContextBindingElement
+  nameWithType: ContextBindingElement.ContextBindingElement
+- uid: System.ServiceModel.Channels.ContextBindingElement.BuildChannelFactory<TChannel>*
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: BuildChannelFactory<TChannel>
+  nameWithType: ContextBindingElement.BuildChannelFactory<TChannel>
+- uid: System.ServiceModel.Channels.ContextBindingElement.BuildChannelListener<TChannel>*
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: BuildChannelListener<TChannel>
+  nameWithType: ContextBindingElement.BuildChannelListener<TChannel>
+- uid: System.ServiceModel.Channels.ContextBindingElement.CanBuildChannelFactory<TChannel>*
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: CanBuildChannelFactory<TChannel>
+  nameWithType: ContextBindingElement.CanBuildChannelFactory<TChannel>
+- uid: System.ServiceModel.Channels.ContextBindingElement.CanBuildChannelListener<TChannel>*
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: CanBuildChannelListener<TChannel>
+  nameWithType: ContextBindingElement.CanBuildChannelListener<TChannel>
+- uid: System.ServiceModel.Channels.ContextBindingElement.ClientCallbackAddress*
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ClientCallbackAddress
+  nameWithType: ContextBindingElement.ClientCallbackAddress
+- uid: System.ServiceModel.Channels.ContextBindingElement.Clone*
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: Clone
+  nameWithType: ContextBindingElement.Clone
+- uid: System.ServiceModel.Channels.ContextBindingElement.ContextExchangeMechanism*
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ContextExchangeMechanism
+  nameWithType: ContextBindingElement.ContextExchangeMechanism
+- uid: System.ServiceModel.Channels.ContextBindingElement.ContextManagementEnabled*
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ContextManagementEnabled
+  nameWithType: ContextBindingElement.ContextManagementEnabled
+- uid: System.ServiceModel.Channels.ContextBindingElement.ExportPolicy*
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ExportPolicy
+  nameWithType: ContextBindingElement.ExportPolicy
+- uid: System.ServiceModel.Channels.ContextBindingElement.GetProperty<T>*
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: GetProperty<T>
+  nameWithType: ContextBindingElement.GetProperty<T>
+- uid: System.ServiceModel.Channels.ContextBindingElement.ProtectionLevel*
+  parent: System.ServiceModel.Channels.ContextBindingElement
+  isExternal: false
+  name: ProtectionLevel
+  nameWithType: ContextBindingElement.ProtectionLevel

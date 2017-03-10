@@ -1,0 +1,207 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.IdentityModel.ProtectedDataCookieTransform
+  id: ProtectedDataCookieTransform
+  children:
+  - System.IdentityModel.ProtectedDataCookieTransform.#ctor
+  - System.IdentityModel.ProtectedDataCookieTransform.Decode(System.Byte[])
+  - System.IdentityModel.ProtectedDataCookieTransform.Encode(System.Byte[])
+  langs:
+  - csharp
+  name: ProtectedDataCookieTransform
+  nameWithType: ProtectedDataCookieTransform
+  fullName: System.IdentityModel.ProtectedDataCookieTransform
+  type: Class
+  summary: Provides cookie integrity and confidentiality by using the <xref href="System.Security.Cryptography.ProtectedData"></xref> class. This class cannot be inherited.
+  remarks: Due to the nature of the <xref:System.Security.Cryptography.ProtectedData> class, cookies which use this transform can only be read by the same computer that wrote them. As such, this transform is not appropriate for use in applications that run on a web server farm.
+  syntax:
+    content: 'public sealed class ProtectedDataCookieTransform : System.IdentityModel.CookieTransform'
+  inheritance:
+  - System.Object
+  - System.IdentityModel.CookieTransform
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.IdentityModel\ProtectedDataCookieTransform.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.IdentityModel/ProtectedDataCookieTransform.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IdentityModel.ProtectedDataCookieTransform.#ctor
+  id: '#ctor'
+  parent: System.IdentityModel.ProtectedDataCookieTransform
+  langs:
+  - csharp
+  name: ProtectedDataCookieTransform()
+  nameWithType: ProtectedDataCookieTransform.ProtectedDataCookieTransform()
+  fullName: System.IdentityModel.ProtectedDataCookieTransform.ProtectedDataCookieTransform()
+  type: Constructor
+  assemblies:
+  - System.IdentityModel
+  namespace: System.IdentityModel
+  summary: Creates a new instance of the <xref href="System.IdentityModel.ProtectedDataCookieTransform"></xref> class.
+  syntax:
+    content: public ProtectedDataCookieTransform ();
+    parameters: []
+  overload: System.IdentityModel.ProtectedDataCookieTransform.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.IdentityModel\ProtectedDataCookieTransform.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.IdentityModel/ProtectedDataCookieTransform.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IdentityModel.ProtectedDataCookieTransform.Decode(System.Byte[])
+  id: Decode(System.Byte[])
+  parent: System.IdentityModel.ProtectedDataCookieTransform
+  langs:
+  - csharp
+  name: Decode(Byte[])
+  nameWithType: ProtectedDataCookieTransform.Decode(Byte[])
+  fullName: System.IdentityModel.ProtectedDataCookieTransform.Decode(Byte[])
+  type: Method
+  assemblies:
+  - System.IdentityModel
+  namespace: System.IdentityModel
+  summary: Verifies data protection and returns the decrypted data.
+  syntax:
+    content: public override byte[] Decode (byte[] encoded);
+    parameters:
+    - id: encoded
+      type: System.Byte[]
+      description: Data previously returned from the <xref href="stem.IdentityModel.ProtectedDataCookieTransform.Encode%2A"></xref> method.
+    return:
+      type: System.Byte[]
+      description: The decrypted data that was originally protected.
+  overload: System.IdentityModel.ProtectedDataCookieTransform.Decode*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>encoded</code> is `null`.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>encoded</code> contains zero bytes.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.IdentityModel\ProtectedDataCookieTransform.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.IdentityModel/ProtectedDataCookieTransform.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.IdentityModel.ProtectedDataCookieTransform.Encode(System.Byte[])
+  id: Encode(System.Byte[])
+  parent: System.IdentityModel.ProtectedDataCookieTransform
+  langs:
+  - csharp
+  name: Encode(Byte[])
+  nameWithType: ProtectedDataCookieTransform.Encode(Byte[])
+  fullName: System.IdentityModel.ProtectedDataCookieTransform.Encode(Byte[])
+  type: Method
+  assemblies:
+  - System.IdentityModel
+  namespace: System.IdentityModel
+  summary: Protects (encrypts) the specified data.
+  syntax:
+    content: public override byte[] Encode (byte[] value);
+    parameters:
+    - id: value
+      type: System.Byte[]
+      description: The data to be protected (encrypted).
+    return:
+      type: System.Byte[]
+      description: The protected (encrypted) data.
+  overload: System.IdentityModel.ProtectedDataCookieTransform.Encode*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>value</code> is `null`.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>value</code> contains zero bytes.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.IdentityModel\ProtectedDataCookieTransform.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.IdentityModel/ProtectedDataCookieTransform.xml
+  version:
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.IdentityModel.CookieTransform
+  isExternal: false
+  name: System.IdentityModel.CookieTransform
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.IdentityModel.ProtectedDataCookieTransform.#ctor
+  parent: System.IdentityModel.ProtectedDataCookieTransform
+  isExternal: false
+  name: ProtectedDataCookieTransform()
+  nameWithType: ProtectedDataCookieTransform.ProtectedDataCookieTransform()
+  fullName: System.IdentityModel.ProtectedDataCookieTransform.ProtectedDataCookieTransform()
+- uid: System.IdentityModel.ProtectedDataCookieTransform.Decode(System.Byte[])
+  parent: System.IdentityModel.ProtectedDataCookieTransform
+  isExternal: false
+  name: Decode(Byte[])
+  nameWithType: ProtectedDataCookieTransform.Decode(Byte[])
+  fullName: System.IdentityModel.ProtectedDataCookieTransform.Decode(Byte[])
+- uid: System.Byte[]
+  parent: System
+  isExternal: false
+  name: Byte[]
+  nameWithType: Byte[]
+  fullName: System.Byte[]
+  spec.csharp:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: Byte[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.IdentityModel.ProtectedDataCookieTransform.Encode(System.Byte[])
+  parent: System.IdentityModel.ProtectedDataCookieTransform
+  isExternal: false
+  name: Encode(Byte[])
+  nameWithType: ProtectedDataCookieTransform.Encode(Byte[])
+  fullName: System.IdentityModel.ProtectedDataCookieTransform.Encode(Byte[])
+- uid: System.IdentityModel.ProtectedDataCookieTransform.#ctor*
+  parent: System.IdentityModel.ProtectedDataCookieTransform
+  isExternal: false
+  name: ProtectedDataCookieTransform
+  nameWithType: ProtectedDataCookieTransform.ProtectedDataCookieTransform
+- uid: System.IdentityModel.ProtectedDataCookieTransform.Decode*
+  parent: System.IdentityModel.ProtectedDataCookieTransform
+  isExternal: false
+  name: Decode
+  nameWithType: ProtectedDataCookieTransform.Decode
+- uid: System.IdentityModel.ProtectedDataCookieTransform.Encode*
+  parent: System.IdentityModel.ProtectedDataCookieTransform
+  isExternal: false
+  name: Encode
+  nameWithType: ProtectedDataCookieTransform.Encode

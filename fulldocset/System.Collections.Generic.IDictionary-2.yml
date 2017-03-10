@@ -1,0 +1,518 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Collections.Generic.IDictionary`2
+  id: IDictionary`2
+  children:
+  - System.Collections.Generic.IDictionary`2.Add(`0,`1)
+  - System.Collections.Generic.IDictionary`2.ContainsKey(`0)
+  - System.Collections.Generic.IDictionary`2.Item(`0)
+  - System.Collections.Generic.IDictionary`2.Keys
+  - System.Collections.Generic.IDictionary`2.Remove(`0)
+  - System.Collections.Generic.IDictionary`2.TryGetValue(`0,`1@)
+  - System.Collections.Generic.IDictionary`2.Values
+  langs:
+  - csharp
+  name: IDictionary<TKey,TValue>
+  nameWithType: IDictionary<TKey,TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>
+  type: Interface
+  summary: Represents a generic collection of key/value pairs.
+  remarks: "The IDictionary(TKey, interface is the base interface for generic collections of key/value pairs.  \n  \n Each element is a key/value pair stored in a <xref:System.Collections.Generic.KeyValuePair%602> object.  \n  \n Each pair must have a unique key. Implementations can vary in whether they allow `key` to be `null`. The value can be `null` and does not have to be unique. The IDictionary(TKey, interface allows the contained keys and values to be enumerated, but it does not imply any particular sort order.  \n  \n The `foreach` statement of the C# language (`For Each` in Visual Basic, `for each` in C++) returns an object of the type of the elements in the collection. Since each element of the IDictionary(TKey, is a key/value pair, the element type is not the type of the key or the type of the value. Instead, the element type is <xref:System.Collections.Generic.KeyValuePair%602>. For example:  \n  \n [!code-cpp[Generic.IDictionary#11](~/add/codesnippet/cpp/t-system.collections.gen_10_1.cpp)]\n [!code-cs[Generic.IDictionary#11](~/add/codesnippet/csharp/t-system.collections.gen_10_1.cs)]\n [!code-vb[Generic.IDictionary#11](~/add/codesnippet/visualbasic/t-system.collections.gen_10_1.vb)]  \n  \n The `foreach` statement is a wrapper around the enumerator, which only allows reading from, not writing to, the collection.  \n  \n> [!NOTE]\n>  Because keys can be inherited and their behavior changed, their absolute uniqueness cannot be guaranteed by comparisons using the <xref:System.Type.Equals%2A> method."
+  example:
+  - "The following code example creates an empty <xref:System.Collections.Generic.Dictionary%602> of strings, with integer keys, and accesses it through the IDictionary(TKey, interface.  \n  \n The code example uses the <xref:System.Collections.Generic.IDictionary%602.Add%2A> method to add some elements. The example demonstrates that the <xref:System.Collections.Generic.IDictionary%602.Add%2A> method throws <xref:System.ArgumentException> when attempting to add a duplicate key.  \n  \n The example uses the <xref:System.Collections.Generic.IDictionary%602.Item%2A> property (the indexer in C#) to retrieve values, demonstrating that a <xref:System.Collections.Generic.KeyNotFoundException> is thrown when a requested key is not present, and showing that the value associated with a key can be replaced.  \n  \n The example shows how to use the <xref:System.Collections.Generic.IDictionary%602.TryGetValue%2A> method as a more efficient way to retrieve values if a program often must try key values that are not in the dictionary, and how to use the <xref:System.Collections.Generic.IDictionary%602.ContainsKey%2A> method to test whether a key exists prior to calling the <xref:System.Collections.Generic.IDictionary%602.Add%2A> method.  \n  \n Finally, the example shows how to enumerate the keys and values in the dictionary, and how to enumerate the values alone using the <xref:System.Collections.Generic.IDictionary%602.Values%2A> property.  \n  \n [!code-cpp[Generic.IDictionary#1](~/add/codesnippet/cpp/t-system.collections.gen_10_2.cpp)]\n [!code-cs[Generic.IDictionary#1](~/add/codesnippet/csharp/t-system.collections.gen_10_2.cs)]\n [!code-vb[Generic.IDictionary#1](~/add/codesnippet/visualbasic/t-system.collections.gen_10_2.vb)]"
+  syntax:
+    content: 'public interface IDictionary<TKey,TValue> : System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<TKey,TValue>>'
+    typeParameters:
+    - id: TKey
+      description: The type of keys in the dictionary.
+    - id: TValue
+      description: The type of values in the dictionary.
+  implements:
+  - System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>
+  - System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<TKey,TValue>>
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\IDictionary`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/IDictionary`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.IDictionary`2.Add(`0,`1)
+  id: Add(`0,`1)
+  parent: System.Collections.Generic.IDictionary`2
+  langs:
+  - csharp
+  name: Add(TKey,TValue)
+  nameWithType: IDictionary<TKey,TValue>.Add(TKey,TValue)
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>.Add(TKey,TValue)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: Adds an element with the provided key and value to the <xref href="stem.Collections.Generic.IDictionary%602"></xref>.
+  remarks: "You can also use the <xref:System.Collections.Generic.IDictionary%602.Item%2A> property to add new elements by setting the value of a key that does not exist in the dictionary; for example, `myCollection[\"myNonexistentKey\"] = myValue` in C# (`myCollection(\"myNonexistentKey\") = myValue` in Visual Basic). However, if the specified key already exists in the dictionary, setting the <xref:System.Collections.Generic.IDictionary%602.Item%2A> property overwrites the old value. In contrast, the Add method does not modify existing elements.  \n  \n Implementations can vary in how they determine equality of objects; for example, the <xref:System.Collections.Generic.List%601> class uses <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName>, whereas the <xref:System.Collections.Generic.Dictionary%602> class allows the user to specify the <xref:System.Collections.Generic.IComparer%601> implementation to use for comparing keys.  \n  \n Implementations can vary in whether they allow `key` to be `null`."
+  example:
+  - "The following code example creates an empty <xref:System.Collections.Generic.Dictionary%602> of strings, with integer keys, and accesses it through the <xref:System.Collections.Generic.IDictionary%602> interface. The code example uses the Add method to add some elements. The example demonstrates that the Add method throws an <xref:System.ArgumentException> when attempting to add a duplicate key.  \n  \n This code is part of a larger example that can be compiled and executed. See <xref:System.Collections.Generic.IDictionary%602?displayProperty=fullName>.  \n  \n [!code-cpp[Generic.IDictionary#2](~/add/codesnippet/cpp/m-system.collections.gen_12_1.cpp)]\n [!code-cs[Generic.IDictionary#2](~/add/codesnippet/csharp/m-system.collections.gen_12_1.cs)]\n [!code-vb[Generic.IDictionary#2](~/add/codesnippet/visualbasic/m-system.collections.gen_12_1.vb)]"
+  syntax:
+    content: public void Add (TKey key, TValue value);
+    parameters:
+    - id: key
+      type: TKey
+      description: The object to use as the key of the element to add.
+    - id: value
+      type: TValue
+      description: The object to use as the value of the element to add.
+  overload: System.Collections.Generic.IDictionary`2.Add*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: An element with the same key already exists in the <xref href="stem.Collections.Generic.IDictionary%602"></xref>.
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The <xref href="stem.Collections.Generic.IDictionary%602"></xref> is read-only.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\IDictionary`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/IDictionary`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.IDictionary`2.ContainsKey(`0)
+  id: ContainsKey(`0)
+  parent: System.Collections.Generic.IDictionary`2
+  langs:
+  - csharp
+  name: ContainsKey(TKey)
+  nameWithType: IDictionary<TKey,TValue>.ContainsKey(TKey)
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>.ContainsKey(TKey)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: Determines whether the <xref href="stem.Collections.Generic.IDictionary%602"></xref> contains an element with the specified key.
+  remarks: "Implementations can vary in how they determine equality of objects; for example, the <xref:System.Collections.Generic.List%601> class uses <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName>, whereas the <xref:System.Collections.Generic.Dictionary%602> class allows the user to specify the <xref:System.Collections.Generic.IComparer%601> implementation to use for comparing keys.  \n  \n Implementations can vary in whether they allow `key` to be `null`."
+  example:
+  - "The following code example shows how to use the ContainsKey method to test whether a key exists prior to calling the <xref:System.Collections.Generic.IDictionary%602.Add%2A> method. It also shows how to use the <xref:System.Collections.Generic.IDictionary%602.TryGetValue%2A> method, which can be a more efficient way to retrieve values if a program frequently tries key values that are not in the dictionary. Finally, it shows how to insert items using <xref:System.Collections.Generic.IDictionary%602.Item%2A> property (the indexer in C#).  \n  \n This code is part of a larger example that can be compiled and executed. See <xref:System.Collections.Generic.IDictionary%602?displayProperty=fullName>.  \n  \n [!code-cpp[Generic.IDictionary#6](~/add/codesnippet/cpp/m-system.collections.gen_13_1.cpp)]\n [!code-cs[Generic.IDictionary#6](~/add/codesnippet/csharp/m-system.collections.gen_13_1.cs)]\n [!code-vb[Generic.IDictionary#6](~/add/codesnippet/visualbasic/m-system.collections.gen_13_1.vb)]  \n[!code-cpp[Generic.IDictionary#5](~/add/codesnippet/cpp/m-system.collections.gen_13_2.cpp)]\n[!code-cs[Generic.IDictionary#5](~/add/codesnippet/csharp/m-system.collections.gen_13_2.cs)]\n[!code-vb[Generic.IDictionary#5](~/add/codesnippet/visualbasic/m-system.collections.gen_13_2.vb)]  \n[!code-cpp[Generic.IDictionary#4](~/add/codesnippet/cpp/m-system.collections.gen_13_3.cpp)]\n[!code-cs[Generic.IDictionary#4](~/add/codesnippet/csharp/m-system.collections.gen_13_3.cs)]\n[!code-vb[Generic.IDictionary#4](~/add/codesnippet/visualbasic/m-system.collections.gen_13_3.vb)]"
+  syntax:
+    content: public bool ContainsKey (TKey key);
+    parameters:
+    - id: key
+      type: TKey
+      description: The key to locate in the <xref href="stem.Collections.Generic.IDictionary%602"></xref>.
+    return:
+      type: System.Boolean
+      description: '`true` if the <xref href="stem.Collections.Generic.IDictionary%602"></xref> contains an element with the key; otherwise, `false`.'
+  overload: System.Collections.Generic.IDictionary`2.ContainsKey*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\IDictionary`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/IDictionary`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.IDictionary`2.Item(`0)
+  id: Item(`0)
+  parent: System.Collections.Generic.IDictionary`2
+  langs:
+  - csharp
+  name: Item(TKey)
+  nameWithType: IDictionary<TKey,TValue>.Item(TKey)
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>.Item(TKey)
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: Gets or sets the element with the specified key.
+  remarks: "This property provides the ability to access a specific element in the collection by using the following syntax: `myCollection[key]` (`myCollection(key)` in Visual Basic).  \n  \n You can also use the Item property to add new elements by setting the value of a key that does not exist in the dictionary; for example, `myCollection[\"myNonexistentKey\"] = myValue` in C# (`myCollection(\"myNonexistentKey\") = myValue` in Visual Basic). However, if the specified key already exists in the dictionary, setting the Item property overwrites the old value. In contrast, the <xref:System.Collections.Generic.IDictionary%602.Add%2A> method does not modify existing elements.  \n  \n Implementations can vary in how they determine equality of objects; for example, the <xref:System.Collections.Generic.List%601> class uses <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName>, whereas the <xref:System.Collections.Generic.Dictionary%602> class allows the user to specify the <xref:System.Collections.Generic.IComparer%601> implementation to use for comparing keys.  \n  \n The C# language uses the  keyword to define the indexers instead of implementing the Item property. Visual Basic implements Item as a default property, which provides the same indexing functionality.  \n  \n Implementations can vary in whether they allow `key` to be `null`."
+  example:
+  - "The following code example uses the Item property (the indexer in C#) to retrieve values, demonstrating that a <xref:System.Collections.Generic.KeyNotFoundException> is thrown when a requested key is not present, and showing that the value associated with a key can be replaced.  \n  \n The example also shows how to use the <xref:System.Collections.Generic.IDictionary%602.TryGetValue%2A> method as a more efficient way to retrieve values if a program often must try key values that are not in the dictionary.  \n  \n This code is part of a larger example that can be compiled and executed. See <xref:System.Collections.Generic.IDictionary%602?displayProperty=fullName>.  \n  \n [!code-cpp[Generic.IDictionary#3](~/add/codesnippet/cpp/p-system.collections.gen_7_1.cpp)]\n [!code-cs[Generic.IDictionary#3](~/add/codesnippet/csharp/p-system.collections.gen_7_1.cs)]\n [!code-vb[Generic.IDictionary#3](~/add/codesnippet/visualbasic/p-system.collections.gen_7_1.vb)]  \n[!code-cpp[Generic.IDictionary#4](~/add/codesnippet/cpp/p-system.collections.gen_7_2.cpp)]\n[!code-cs[Generic.IDictionary#4](~/add/codesnippet/csharp/p-system.collections.gen_7_2.cs)]\n[!code-vb[Generic.IDictionary#4](~/add/codesnippet/visualbasic/p-system.collections.gen_7_2.vb)]  \n[!code-cpp[Generic.IDictionary#5](~/add/codesnippet/cpp/p-system.collections.gen_7_3.cpp)]\n[!code-cs[Generic.IDictionary#5](~/add/codesnippet/csharp/p-system.collections.gen_7_3.cs)]\n[!code-vb[Generic.IDictionary#5](~/add/codesnippet/visualbasic/p-system.collections.gen_7_3.vb)]"
+  syntax:
+    content: public TValue this[TKey key] { get; set; }
+    parameters:
+    - id: key
+      type: TKey
+      description: The key of the element to get or set.
+    return:
+      type: TValue
+      description: The element with the specified key.
+  overload: System.Collections.Generic.IDictionary`2.Item*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  - type: System.Collections.Generic.KeyNotFoundException
+    commentId: T:System.Collections.Generic.KeyNotFoundException
+    description: The property is retrieved and <code>key</code> is not found.
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The property is set and the <xref href="stem.Collections.Generic.IDictionary%602"></xref> is read-only.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\IDictionary`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/IDictionary`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.IDictionary`2.Keys
+  id: Keys
+  parent: System.Collections.Generic.IDictionary`2
+  langs:
+  - csharp
+  name: Keys
+  nameWithType: IDictionary<TKey,TValue>.Keys
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>.Keys
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: Gets an <xref href="stem.Collections.Generic.ICollection%601"></xref> containing the keys of the <xref href="stem.Collections.Generic.IDictionary%602"></xref>.
+  remarks: The order of the keys in the returned <xref:System.Collections.Generic.ICollection%601> is unspecified, but it is guaranteed to be the same order as the corresponding values in the <xref:System.Collections.Generic.ICollection%601> returned by the <xref:System.Collections.Generic.IDictionary%602.Values%2A> property.
+  example:
+  - "The following code example shows how to enumerate keys alone using the Keys property.  \n  \n This code is part of a larger example that can be compiled and executed. See <xref:System.Collections.Generic.IDictionary%602?displayProperty=fullName>.  \n  \n [!code-cpp[Generic.IDictionary#9](~/add/codesnippet/cpp/p-system.collections.gen_18_1.cpp)]\n [!code-cs[Generic.IDictionary#9](~/add/codesnippet/csharp/p-system.collections.gen_18_1.cs)]\n [!code-vb[Generic.IDictionary#9](~/add/codesnippet/visualbasic/p-system.collections.gen_18_1.vb)]"
+  syntax:
+    content: public System.Collections.Generic.ICollection<TKey> Keys { get; }
+    return:
+      type: System.Collections.Generic.ICollection{TKey}
+      description: An <xref href="stem.Collections.Generic.ICollection%601"></xref> containing the keys of the object that implements <xref href="stem.Collections.Generic.IDictionary%602"></xref>.
+  overload: System.Collections.Generic.IDictionary`2.Keys*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\IDictionary`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/IDictionary`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.IDictionary`2.Remove(`0)
+  id: Remove(`0)
+  parent: System.Collections.Generic.IDictionary`2
+  langs:
+  - csharp
+  name: Remove(TKey)
+  nameWithType: IDictionary<TKey,TValue>.Remove(TKey)
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>.Remove(TKey)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: Removes the element with the specified key from the <xref href="stem.Collections.Generic.IDictionary%602"></xref>.
+  remarks: Implementations can vary in how they determine equality of objects; for example, the <xref:System.Collections.Generic.List%601> class uses <xref:System.Collections.Generic.Comparer%601.Default%2A?displayProperty=fullName>, whereas the <xref:System.Collections.Generic.Dictionary%602> class allows the user to specify the <xref:System.Collections.Generic.IComparer%601> implementation to use for comparing keys.
+  example:
+  - "The following code example shows how to remove a key/value pair from a dictionary using the Remove method.  \n  \n This code is part of a larger example that can be compiled and executed. See <xref:System.Collections.Generic.IDictionary%602?displayProperty=fullName>.  \n  \n [!code-cpp[Generic.IDictionary#10](~/add/codesnippet/cpp/m-system.collections.gen_34_1.cpp)]\n [!code-cs[Generic.IDictionary#10](~/add/codesnippet/csharp/m-system.collections.gen_34_1.cs)]\n [!code-vb[Generic.IDictionary#10](~/add/codesnippet/visualbasic/m-system.collections.gen_34_1.vb)]"
+  syntax:
+    content: public bool Remove (TKey key);
+    parameters:
+    - id: key
+      type: TKey
+      description: The key of the element to remove.
+    return:
+      type: System.Boolean
+      description: '`true` if the element is successfully removed; otherwise, `false`.  This method also returns `false` if <code>key</code> was not found in the original <xref href="stem.Collections.Generic.IDictionary%602"></xref>.'
+  overload: System.Collections.Generic.IDictionary`2.Remove*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The <xref href="stem.Collections.Generic.IDictionary%602"></xref> is read-only.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\IDictionary`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/IDictionary`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.IDictionary`2.TryGetValue(`0,`1@)
+  id: TryGetValue(`0,`1@)
+  parent: System.Collections.Generic.IDictionary`2
+  langs:
+  - csharp
+  name: TryGetValue(TKey,TValue)
+  nameWithType: IDictionary<TKey,TValue>.TryGetValue(TKey,TValue)
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>.TryGetValue(TKey,TValue)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: Gets the value associated with the specified key.
+  remarks: "This method combines the functionality of the <xref:System.Collections.Generic.IDictionary%602.ContainsKey%2A> method and the <xref:System.Collections.Generic.IDictionary%602.Item%2A> property.  \n  \n If the key is not found, then the `value` parameter gets the appropriate default value for the type `TValue`; for example, zero (0) for integer types, `false` for Boolean types, and `null` for reference types."
+  example:
+  - "The example shows how to use the TryGetValue method to retrieve values. If a program frequently tries key values that are not in a dictionary, the TryGetValue method can be more efficient than using the <xref:System.Collections.Generic.IDictionary%602.Item%2A> property (the indexer in C#), which throws exceptions when attempting to retrieve nonexistent keys.  \n  \n This code is part of a larger example that can be compiled and executed. See <xref:System.Collections.Generic.IDictionary%602?displayProperty=fullName>.  \n  \n [!code-cpp[Generic.IDictionary#5](~/add/codesnippet/cpp/m-system.collections.gen_66_1.cpp)]\n [!code-cs[Generic.IDictionary#5](~/add/codesnippet/csharp/m-system.collections.gen_66_1.cs)]\n [!code-vb[Generic.IDictionary#5](~/add/codesnippet/visualbasic/m-system.collections.gen_66_1.vb)]  \n[!code-cpp[Generic.IDictionary#4](~/add/codesnippet/cpp/m-system.collections.gen_66_2.cpp)]\n[!code-cs[Generic.IDictionary#4](~/add/codesnippet/csharp/m-system.collections.gen_66_2.cs)]\n[!code-vb[Generic.IDictionary#4](~/add/codesnippet/visualbasic/m-system.collections.gen_66_2.vb)]"
+  syntax:
+    content: public bool TryGetValue (TKey key, out TValue value);
+    parameters:
+    - id: key
+      type: TKey
+      description: The key whose value to get.
+    - id: value
+      type: TValue
+      description: When this method returns, the value associated with the specified key, if the key is found; otherwise, the default value for the type of the <code>value</code> parameter. This parameter is passed uninitialized.
+    return:
+      type: System.Boolean
+      description: '`true` if the object that implements <xref href="stem.Collections.Generic.IDictionary%602"></xref> contains an element with the specified key; otherwise, `false`.'
+  overload: System.Collections.Generic.IDictionary`2.TryGetValue*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>key</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\IDictionary`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/IDictionary`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.IDictionary`2.Values
+  id: Values
+  parent: System.Collections.Generic.IDictionary`2
+  langs:
+  - csharp
+  name: Values
+  nameWithType: IDictionary<TKey,TValue>.Values
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>.Values
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: Gets an <xref href="stem.Collections.Generic.ICollection%601"></xref> containing the values in the <xref href="stem.Collections.Generic.IDictionary%602"></xref>.
+  remarks: The order of the values in the returned <xref:System.Collections.Generic.ICollection%601> is unspecified, but it is guaranteed to be the same order as the corresponding keys in the <xref:System.Collections.Generic.ICollection%601> returned by the <xref:System.Collections.Generic.IDictionary%602.Keys%2A> property.
+  example:
+  - "The following code example shows how to enumerate values alone using the Values property.  \n  \n This code is part of a larger example that can be compiled and executed. See <xref:System.Collections.Generic.IDictionary%602?displayProperty=fullName>.  \n  \n [!code-cpp[Generic.IDictionary#8](~/add/codesnippet/cpp/p-system.collections.gen_16_1.cpp)]\n [!code-cs[Generic.IDictionary#8](~/add/codesnippet/csharp/p-system.collections.gen_16_1.cs)]\n [!code-vb[Generic.IDictionary#8](~/add/codesnippet/visualbasic/p-system.collections.gen_16_1.vb)]"
+  syntax:
+    content: public System.Collections.Generic.ICollection<TValue> Values { get; }
+    return:
+      type: System.Collections.Generic.ICollection{TValue}
+      description: An <xref href="stem.Collections.Generic.ICollection%601"></xref> containing the values in the object that implements <xref href="stem.Collections.Generic.IDictionary%602"></xref>.
+  overload: System.Collections.Generic.IDictionary`2.Values*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\IDictionary`2.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/IDictionary`2.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.NotSupportedException
+  parent: System
+  isExternal: false
+  name: NotSupportedException
+  nameWithType: NotSupportedException
+  fullName: System.NotSupportedException
+- uid: System.Collections.Generic.KeyNotFoundException
+  parent: System.Collections.Generic
+  isExternal: false
+  name: KeyNotFoundException
+  nameWithType: KeyNotFoundException
+  fullName: System.Collections.Generic.KeyNotFoundException
+- uid: System.Collections.Generic.IDictionary`2.Add(`0,`1)
+  parent: System.Collections.Generic.IDictionary`2
+  isExternal: false
+  name: Add(TKey,TValue)
+  nameWithType: IDictionary<TKey,TValue>.Add(TKey,TValue)
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>.Add(TKey,TValue)
+- uid: TKey
+  isExternal: true
+  name: TKey
+  nameWithType: TKey
+  fullName: TKey
+- uid: TValue
+  isExternal: true
+  name: TValue
+  nameWithType: TValue
+  fullName: TValue
+- uid: System.Collections.Generic.IDictionary`2.ContainsKey(`0)
+  parent: System.Collections.Generic.IDictionary`2
+  isExternal: false
+  name: ContainsKey(TKey)
+  nameWithType: IDictionary<TKey,TValue>.ContainsKey(TKey)
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>.ContainsKey(TKey)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Collections.Generic.IDictionary`2.Item(`0)
+  parent: System.Collections.Generic.IDictionary`2
+  isExternal: false
+  name: Item(TKey)
+  nameWithType: IDictionary<TKey,TValue>.Item(TKey)
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>.Item(TKey)
+- uid: System.Collections.Generic.IDictionary`2.Keys
+  parent: System.Collections.Generic.IDictionary`2
+  isExternal: false
+  name: Keys
+  nameWithType: IDictionary<TKey,TValue>.Keys
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>.Keys
+- uid: System.Collections.Generic.ICollection{TKey}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: ICollection<TKey>
+  nameWithType: ICollection<TKey>
+  fullName: System.Collections.Generic.ICollection<TKey>
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    nameWithType: ICollection
+    fullName: ICollection<TKey>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TKey
+    name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Collections.Generic.IDictionary`2.Remove(`0)
+  parent: System.Collections.Generic.IDictionary`2
+  isExternal: false
+  name: Remove(TKey)
+  nameWithType: IDictionary<TKey,TValue>.Remove(TKey)
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>.Remove(TKey)
+- uid: System.Collections.Generic.IDictionary`2.TryGetValue(`0,`1@)
+  parent: System.Collections.Generic.IDictionary`2
+  isExternal: false
+  name: TryGetValue(TKey,TValue)
+  nameWithType: IDictionary<TKey,TValue>.TryGetValue(TKey,TValue)
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>.TryGetValue(TKey,TValue)
+- uid: System.Collections.Generic.IDictionary`2.Values
+  parent: System.Collections.Generic.IDictionary`2
+  isExternal: false
+  name: Values
+  nameWithType: IDictionary<TKey,TValue>.Values
+  fullName: System.Collections.Generic.IDictionary<TKey,TValue>.Values
+- uid: System.Collections.Generic.ICollection{TValue}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: ICollection<TValue>
+  nameWithType: ICollection<TValue>
+  fullName: System.Collections.Generic.ICollection<TValue>
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    nameWithType: ICollection
+    fullName: ICollection<TValue>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: TValue
+    name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Collections.Generic.IDictionary`2.Add*
+  parent: System.Collections.Generic.IDictionary`2
+  isExternal: false
+  name: Add
+  nameWithType: IDictionary<TKey,TValue>.Add
+- uid: System.Collections.Generic.IDictionary`2.ContainsKey*
+  parent: System.Collections.Generic.IDictionary`2
+  isExternal: false
+  name: ContainsKey
+  nameWithType: IDictionary<TKey,TValue>.ContainsKey
+- uid: System.Collections.Generic.IDictionary`2.Item*
+  parent: System.Collections.Generic.IDictionary`2
+  isExternal: false
+  name: Item
+  nameWithType: IDictionary<TKey,TValue>.Item
+- uid: System.Collections.Generic.IDictionary`2.Keys*
+  parent: System.Collections.Generic.IDictionary`2
+  isExternal: false
+  name: Keys
+  nameWithType: IDictionary<TKey,TValue>.Keys
+- uid: System.Collections.Generic.IDictionary`2.Remove*
+  parent: System.Collections.Generic.IDictionary`2
+  isExternal: false
+  name: Remove
+  nameWithType: IDictionary<TKey,TValue>.Remove
+- uid: System.Collections.Generic.IDictionary`2.TryGetValue*
+  parent: System.Collections.Generic.IDictionary`2
+  isExternal: false
+  name: TryGetValue
+  nameWithType: IDictionary<TKey,TValue>.TryGetValue
+- uid: System.Collections.Generic.IDictionary`2.Values*
+  parent: System.Collections.Generic.IDictionary`2
+  isExternal: false
+  name: Values
+  nameWithType: IDictionary<TKey,TValue>.Values

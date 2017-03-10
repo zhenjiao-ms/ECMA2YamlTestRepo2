@@ -1,0 +1,259 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.CommunicationException
+  id: CommunicationException
+  children:
+  - System.ServiceModel.CommunicationException.#ctor
+  - System.ServiceModel.CommunicationException.#ctor(System.String)
+  - System.ServiceModel.CommunicationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.ServiceModel.CommunicationException.#ctor(System.String,System.Exception)
+  langs:
+  - csharp
+  name: CommunicationException
+  nameWithType: CommunicationException
+  fullName: System.ServiceModel.CommunicationException
+  type: Class
+  summary: Represents a communication error in either the service or client application.
+  remarks: "Robust client and service [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] applications handle CommunicationException objects that may be thrown during communication. There are also two CommunicationException-derived exception types (<xref:System.ServiceModel.FaultException%601> and <xref:System.ServiceModel.FaultException>) that clients also often expect. Therefore, in order to prevent the generic CommunicationException handler from catching these more specific exception types, catch these exceptions prior to handling CommunicationException.  \n  \n-   <xref:System.ServiceModel.FaultException%601> objects are thrown on the client when a SOAP fault that is specified in the operation contract is received in response to a two-way operation (that is, a method with an <xref:System.ServiceModel.OperationContractAttribute> attribute with <xref:System.ServiceModel.OperationContractAttribute.IsOneWay%2A> set to `false`).  \n  \n <xref:System.ServiceModel.FaultException> objects are thrown when a listener receives a SOAP fault that is not expected or specified in the operation contract. This usually occurs when the application is being debugged and the service has the <xref:System.ServiceModel.ServiceBehaviorAttribute.IncludeExceptionDetailInFaults%2A> property set to `true`.  \n  \n> [!NOTE]\n>  When implementing custom channels and binding elements, it is strongly recommended that your components throw only <xref:System.TimeoutException?displayProperty=fullName> or CommunicationException-derived objects. In the case where your components throw a recoverable exception that is specific to the component, wrap that exception inside a CommunicationExceptionobject.  \n  \n For more details about designing and using the [!INCLUDE[indigo2](~/add/includes/indigo2-md.md)] fault system, see [Specifying and Handling Faults in Contracts and Services](../Topic/Specifying%20and%20Handling%20Faults%20in%20Contracts%20and%20Services.md).  \n  \n> [!IMPORTANT]\n>  The WCF Runtime will not throw a CommunicationException that is unsafe to handle at the point where it leaves the WCF Runtime and enters user code."
+  example:
+  - "The following code example shows a client that handles CommunicationException types. This client also handles <xref:System.ServiceModel.FaultException> objects because the service has <xref:System.ServiceModel.ServiceBehaviorAttribute.IncludeExceptionDetailInFaults%2A> set to `true`.  \n  \n [!code-cs[IErrorHandler#3](~/add/codesnippet/csharp/ierrorhandler.client/client.cs#3)]\n [!code-vb[IErrorHandler#3](~/add/codesnippet/visualbasic/ierrorhandler.client/client.vb#3)]"
+  syntax:
+    content: 'public class CommunicationException : SystemException'
+  inheritance:
+  - System.Object
+  - System.Exception
+  - System.SystemException
+  implements: []
+  inheritedMembers:
+  - System.Exception.Data
+  - System.Exception.GetBaseException
+  - System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.Exception.GetType
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.Message
+  - System.Exception.SerializeObjectState
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\CommunicationException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/CommunicationException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.CommunicationException.#ctor
+  id: '#ctor'
+  parent: System.ServiceModel.CommunicationException
+  langs:
+  - csharp
+  name: CommunicationException()
+  nameWithType: CommunicationException.CommunicationException()
+  fullName: System.ServiceModel.CommunicationException.CommunicationException()
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.CommunicationException"></xref> class.
+  syntax:
+    content: public CommunicationException ();
+    parameters: []
+  overload: System.ServiceModel.CommunicationException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\CommunicationException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/CommunicationException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.CommunicationException.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.ServiceModel.CommunicationException
+  langs:
+  - csharp
+  name: CommunicationException(String)
+  nameWithType: CommunicationException.CommunicationException(String)
+  fullName: System.ServiceModel.CommunicationException.CommunicationException(String)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.CommunicationException"></xref> class, using the specified message.
+  syntax:
+    content: public CommunicationException (string message);
+    parameters:
+    - id: message
+      type: System.String
+      description: The description of the error condition.
+  overload: System.ServiceModel.CommunicationException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\CommunicationException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/CommunicationException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.CommunicationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: '#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)'
+  parent: System.ServiceModel.CommunicationException
+  langs:
+  - csharp
+  name: CommunicationException(SerializationInfo,StreamingContext)
+  nameWithType: CommunicationException.CommunicationException(SerializationInfo,StreamingContext)
+  fullName: System.ServiceModel.CommunicationException.CommunicationException(SerializationInfo,StreamingContext)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.CommunicationException"></xref> class, using the specified serialization information and context objects.
+  syntax:
+    content: protected CommunicationException (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+    parameters:
+    - id: info
+      type: System.Runtime.Serialization.SerializationInfo
+      description: Information relevant to the deserialization process.
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+      description: The context of the deserialization process.
+  overload: System.ServiceModel.CommunicationException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\CommunicationException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/CommunicationException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.CommunicationException.#ctor(System.String,System.Exception)
+  id: '#ctor(System.String,System.Exception)'
+  parent: System.ServiceModel.CommunicationException
+  langs:
+  - csharp
+  name: CommunicationException(String,Exception)
+  nameWithType: CommunicationException.CommunicationException(String,Exception)
+  fullName: System.ServiceModel.CommunicationException.CommunicationException(String,Exception)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.CommunicationException"></xref> class, using the specified message and the inner exception.
+  syntax:
+    content: public CommunicationException (string message, Exception innerException);
+    parameters:
+    - id: message
+      type: System.String
+      description: The description of the error condition.
+    - id: innerException
+      type: System.Exception
+      description: The inner exception to be used.
+  overload: System.ServiceModel.CommunicationException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\CommunicationException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/CommunicationException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.SystemException
+  isExternal: false
+  name: System.SystemException
+- uid: System.ServiceModel.CommunicationException.#ctor
+  parent: System.ServiceModel.CommunicationException
+  isExternal: false
+  name: CommunicationException()
+  nameWithType: CommunicationException.CommunicationException()
+  fullName: System.ServiceModel.CommunicationException.CommunicationException()
+- uid: System.ServiceModel.CommunicationException.#ctor(System.String)
+  parent: System.ServiceModel.CommunicationException
+  isExternal: false
+  name: CommunicationException(String)
+  nameWithType: CommunicationException.CommunicationException(String)
+  fullName: System.ServiceModel.CommunicationException.CommunicationException(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.ServiceModel.CommunicationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.ServiceModel.CommunicationException
+  isExternal: false
+  name: CommunicationException(SerializationInfo,StreamingContext)
+  nameWithType: CommunicationException.CommunicationException(SerializationInfo,StreamingContext)
+  fullName: System.ServiceModel.CommunicationException.CommunicationException(SerializationInfo,StreamingContext)
+- uid: System.Runtime.Serialization.SerializationInfo
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: SerializationInfo
+  nameWithType: SerializationInfo
+  fullName: System.Runtime.Serialization.SerializationInfo
+- uid: System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext
+- uid: System.ServiceModel.CommunicationException.#ctor(System.String,System.Exception)
+  parent: System.ServiceModel.CommunicationException
+  isExternal: false
+  name: CommunicationException(String,Exception)
+  nameWithType: CommunicationException.CommunicationException(String,Exception)
+  fullName: System.ServiceModel.CommunicationException.CommunicationException(String,Exception)
+- uid: System.Exception
+  parent: System
+  isExternal: false
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System.ServiceModel.CommunicationException.#ctor*
+  parent: System.ServiceModel.CommunicationException
+  isExternal: false
+  name: CommunicationException
+  nameWithType: CommunicationException.CommunicationException

@@ -1,0 +1,144 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Windows.Markup.IComponentConnector
+  id: IComponentConnector
+  children:
+  - System.Windows.Markup.IComponentConnector.Connect(System.Int32,System.Object)
+  - System.Windows.Markup.IComponentConnector.InitializeComponent
+  langs:
+  - csharp
+  name: IComponentConnector
+  nameWithType: IComponentConnector
+  fullName: System.Windows.Markup.IComponentConnector
+  type: Interface
+  summary: Provides markup compile and tools support for named XAML elements and for attaching event handlers to them.
+  remarks: "This interface is used internally by <xref:System.Windows.Baml2006.Baml2006Reader>.  \n  \n Implementations of <xref:System.Windows.Markup.IComponentConnector.InitializeComponent%2A> are widely observable as part of the infrastructure provided by frameworks or technologies that use XAML combined with application and programming models. For example, whenever you look at the generated classes for XAML root elements in WPF pages and applications, you will see <xref:System.Windows.Markup.IComponentConnector.InitializeComponent%2A> defined in the output. That method also exists in the compiled assembly and plays a role in the WPF application model of loading the XAML UI content at XAML parse time. For more information on the WPF integration of the `InitializeComponent` concept, see [Application Management Overview](../Topic/Application%20Management%20Overview.md) or [Code-Behind and XAML in WPF](../Topic/Code-Behind%20and%20XAML%20in%20WPF.md).  \n  \n In previous versions of the .NET Framework, this interface existed in the WPF-specific assembly WindowsBase. In [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], IComponentConnector is in the System.Xaml assembly. . For more information, see [Types Migrated from WPF to System.Xaml](../Topic/Types%20Migrated%20from%20WPF%20to%20System.Xaml.md).  \n  \n> [!TIP]\n>  A failure to resolve IComponentConnector during an attempted build is often an indicator that you have not updated your WPF project correctly. In particular, the project is not referencing the System.Xaml assembly for a project that targets [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)]. Try running the `devenv /upgrade` option for the project, or otherwise adjust the project assembly references so that System.Xaml is in the reference list."
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+
+      public interface IComponentConnector
+  implements: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\IComponentConnector.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/IComponentConnector.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Windows.Markup.IComponentConnector.Connect(System.Int32,System.Object)
+  id: Connect(System.Int32,System.Object)
+  parent: System.Windows.Markup.IComponentConnector
+  langs:
+  - csharp
+  name: Connect(Int32,Object)
+  nameWithType: IComponentConnector.Connect(Int32,Object)
+  fullName: System.Windows.Markup.IComponentConnector.Connect(Int32,Object)
+  type: Method
+  assemblies:
+  - WindowsBase
+  - System.Xaml
+  namespace: System.Windows.Markup
+  summary: Attaches events and names to compiled content.
+  remarks: <xref:System.Windows.Markup.IComponentConnector> is used internally by <xref:System.Windows.Baml2006.Baml2006Reader>.
+  syntax:
+    content: public void Connect (int connectionId, object target);
+    parameters:
+    - id: connectionId
+      type: System.Int32
+      description: An identifier token to distinguish calls.
+    - id: target
+      type: System.Object
+      description: The target to connect events and names to.
+  overload: System.Windows.Markup.IComponentConnector.Connect*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\IComponentConnector.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/IComponentConnector.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Windows.Markup.IComponentConnector.InitializeComponent
+  id: InitializeComponent
+  parent: System.Windows.Markup.IComponentConnector
+  langs:
+  - csharp
+  name: InitializeComponent()
+  nameWithType: IComponentConnector.InitializeComponent()
+  fullName: System.Windows.Markup.IComponentConnector.InitializeComponent()
+  type: Method
+  assemblies:
+  - WindowsBase
+  - System.Xaml
+  namespace: System.Windows.Markup
+  summary: Loads the compiled page of a component.
+  remarks: "<xref:System.Windows.Markup.IComponentConnector> is used internally by <xref:System.Windows.Baml2006.Baml2006Reader>.  \n  \n Implementations of InitializeComponent are widely observable as part of the infrastructure provided by frameworks or technologies that use XAML combined with application and programming models. For example, whenever you look at the generated classes for XAML root elements in WPF pages and applications, you will see InitializeComponent defined in the output. That method also exists in the compiled assembly and plays a role in the WPF application model of loading the XAML UI content at XAML parse time. For more information on the WPF integration of the `InitializeComponent` concept, see [Application Management Overview](../Topic/Application%20Management%20Overview.md) or [Code-Behind and XAML in WPF](../Topic/Code-Behind%20and%20XAML%20in%20WPF.md)."
+  syntax:
+    content: public void InitializeComponent ();
+    parameters: []
+  overload: System.Windows.Markup.IComponentConnector.InitializeComponent*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Windows.Markup\IComponentConnector.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Windows.Markup/IComponentConnector.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Windows.Markup.IComponentConnector.Connect(System.Int32,System.Object)
+  parent: System.Windows.Markup.IComponentConnector
+  isExternal: false
+  name: Connect(Int32,Object)
+  nameWithType: IComponentConnector.Connect(Int32,Object)
+  fullName: System.Windows.Markup.IComponentConnector.Connect(Int32,Object)
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Windows.Markup.IComponentConnector.InitializeComponent
+  parent: System.Windows.Markup.IComponentConnector
+  isExternal: false
+  name: InitializeComponent()
+  nameWithType: IComponentConnector.InitializeComponent()
+  fullName: System.Windows.Markup.IComponentConnector.InitializeComponent()
+- uid: System.Windows.Markup.IComponentConnector.Connect*
+  parent: System.Windows.Markup.IComponentConnector
+  isExternal: false
+  name: Connect
+  nameWithType: IComponentConnector.Connect
+- uid: System.Windows.Markup.IComponentConnector.InitializeComponent*
+  parent: System.Windows.Markup.IComponentConnector
+  isExternal: false
+  name: InitializeComponent
+  nameWithType: IComponentConnector.InitializeComponent

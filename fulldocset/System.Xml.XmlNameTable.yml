@@ -1,0 +1,358 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.XmlNameTable
+  id: XmlNameTable
+  children:
+  - System.Xml.XmlNameTable.#ctor
+  - System.Xml.XmlNameTable.Add(System.String)
+  - System.Xml.XmlNameTable.Add(System.Char[],System.Int32,System.Int32)
+  - System.Xml.XmlNameTable.Get(System.String)
+  - System.Xml.XmlNameTable.Get(System.Char[],System.Int32,System.Int32)
+  langs:
+  - csharp
+  name: XmlNameTable
+  nameWithType: XmlNameTable
+  fullName: System.Xml.XmlNameTable
+  type: Class
+  summary: Table of atomized string objects.
+  remarks: "Several classes, such as <xref:System.Xml.XmlDocument> and <xref:System.Xml.XmlReader>, use the `XmlNameTable` class internally to store attribute and element names. When an element or attribute name occurs multiple times in an XML document, it is stored only once in the `XmlNameTable`.  \n  \n The names are stored as common language runtime (CLR) object types. This enables you to do object comparisons on these strings rather than a more expensive string comparison. These string objects are referred to as  `atomized``strings`.  \n  \n `XmlNameTable` is implemented in the <xref:System.Xml.NameTable> class."
+  example:
+  - "The following example compares two element names.  \n  \n [!code-vb[NameTable_v2#1](~/add/codesnippet/visualbasic/t-system.xml.xmlnametable_1.vb)]\n [!code-cs[NameTable_v2#1](~/add/codesnippet/csharp/t-system.xml.xmlnametable_1.cs)]"
+  syntax:
+    content: public abstract class XmlNameTable
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlNameTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlNameTable.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlNameTable.#ctor
+  id: '#ctor'
+  parent: System.Xml.XmlNameTable
+  langs:
+  - csharp
+  name: XmlNameTable()
+  nameWithType: XmlNameTable.XmlNameTable()
+  fullName: System.Xml.XmlNameTable.XmlNameTable()
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: Initializes a new instance of the <xref href="System.Xml.XmlNameTable"></xref> class.
+  syntax:
+    content: protected XmlNameTable ();
+    parameters: []
+  overload: System.Xml.XmlNameTable.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlNameTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlNameTable.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlNameTable.Add(System.String)
+  id: Add(System.String)
+  parent: System.Xml.XmlNameTable
+  langs:
+  - csharp
+  name: Add(String)
+  nameWithType: XmlNameTable.Add(String)
+  fullName: System.Xml.XmlNameTable.Add(String)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: When overridden in a derived class, atomizes the specified string and adds it to the `XmlNameTable`.
+  remarks: For more information on atomized strings, see <xref:System.Xml.XmlNameTable>.
+  syntax:
+    content: public abstract string Add (string array);
+    parameters:
+    - id: array
+      type: System.String
+      description: The name to add.
+    return:
+      type: System.String
+      description: The new atomized string or the existing one if it already exists.
+  overload: System.Xml.XmlNameTable.Add*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>array</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlNameTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlNameTable.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlNameTable.Add(System.Char[],System.Int32,System.Int32)
+  id: Add(System.Char[],System.Int32,System.Int32)
+  parent: System.Xml.XmlNameTable
+  langs:
+  - csharp
+  name: Add(Char[],Int32,Int32)
+  nameWithType: XmlNameTable.Add(Char[],Int32,Int32)
+  fullName: System.Xml.XmlNameTable.Add(Char[],Int32,Int32)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: When overridden in a derived class, atomizes the specified string and adds it to the `XmlNameTable`.
+  remarks: For more information on atomized strings, see <xref:System.Xml.XmlNameTable>.
+  syntax:
+    content: public abstract string Add (char[] array, int offset, int length);
+    parameters:
+    - id: array
+      type: System.Char[]
+      description: The character array containing the name to add.
+    - id: offset
+      type: System.Int32
+      description: Zero-based index into the array specifying the first character of the name.
+    - id: length
+      type: System.Int32
+      description: The number of characters in the name.
+    return:
+      type: System.String
+      description: The new atomized string or the existing one if it already exists. If length is zero, String.Empty is returned.
+  overload: System.Xml.XmlNameTable.Add*
+  exceptions:
+  - type: System.IndexOutOfRangeException
+    commentId: T:System.IndexOutOfRangeException
+    description: "0 > <code>offset</code>  \n  \n -or-  \n  \n <code>offset</code> >= <code>array</code>.Length  \n  \n -or-  \n  \n <code>length</code> > <code>array</code>.Length  \n  \n The above conditions do not cause an exception to be thrown if <code>length</code> =0."
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>length</code> < 0.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlNameTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlNameTable.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlNameTable.Get(System.String)
+  id: Get(System.String)
+  parent: System.Xml.XmlNameTable
+  langs:
+  - csharp
+  name: Get(String)
+  nameWithType: XmlNameTable.Get(String)
+  fullName: System.Xml.XmlNameTable.Get(String)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: When overridden in a derived class, gets the atomized string containing the same value as the specified string.
+  remarks: For more information on atomized strings, see <xref:System.Xml.XmlNameTable>.
+  syntax:
+    content: public abstract string Get (string array);
+    parameters:
+    - id: array
+      type: System.String
+      description: The name to look up.
+    return:
+      type: System.String
+      description: The atomized string or `null` if the string has not already been atomized.
+  overload: System.Xml.XmlNameTable.Get*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>array</code> is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlNameTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlNameTable.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Xml.XmlNameTable.Get(System.Char[],System.Int32,System.Int32)
+  id: Get(System.Char[],System.Int32,System.Int32)
+  parent: System.Xml.XmlNameTable
+  langs:
+  - csharp
+  name: Get(Char[],Int32,Int32)
+  nameWithType: XmlNameTable.Get(Char[],Int32,Int32)
+  fullName: System.Xml.XmlNameTable.Get(Char[],Int32,Int32)
+  type: Method
+  assemblies:
+  - System.Xml
+  namespace: System.Xml
+  summary: When overridden in a derived class, gets the atomized string containing the same characters as the specified range of characters in the given array.
+  remarks: For more information on atomized strings, see <xref:System.Xml.XmlNameTable>.
+  syntax:
+    content: public abstract string Get (char[] array, int offset, int length);
+    parameters:
+    - id: array
+      type: System.Char[]
+      description: The character array containing the name to look up.
+    - id: offset
+      type: System.Int32
+      description: The zero-based index into the array specifying the first character of the name.
+    - id: length
+      type: System.Int32
+      description: The number of characters in the name.
+    return:
+      type: System.String
+      description: The atomized string or `null` if the string has not already been atomized. If <code>length</code> is zero, String.Empty is returned.
+  overload: System.Xml.XmlNameTable.Get*
+  exceptions:
+  - type: System.IndexOutOfRangeException
+    commentId: T:System.IndexOutOfRangeException
+    description: "0 > <code>offset</code>  \n  \n -or-  \n  \n <code>offset</code> >= <code>array</code>.Length  \n  \n -or-  \n  \n <code>length</code> > <code>array</code>.Length  \n  \n The above conditions do not cause an exception to be thrown if <code>length</code> =0."
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>length</code> < 0.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Xml\XmlNameTable.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Xml/XmlNameTable.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.IndexOutOfRangeException
+  parent: System
+  isExternal: false
+  name: IndexOutOfRangeException
+  nameWithType: IndexOutOfRangeException
+  fullName: System.IndexOutOfRangeException
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.Xml.XmlNameTable.#ctor
+  parent: System.Xml.XmlNameTable
+  isExternal: false
+  name: XmlNameTable()
+  nameWithType: XmlNameTable.XmlNameTable()
+  fullName: System.Xml.XmlNameTable.XmlNameTable()
+- uid: System.Xml.XmlNameTable.Add(System.String)
+  parent: System.Xml.XmlNameTable
+  isExternal: false
+  name: Add(String)
+  nameWithType: XmlNameTable.Add(String)
+  fullName: System.Xml.XmlNameTable.Add(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Xml.XmlNameTable.Add(System.Char[],System.Int32,System.Int32)
+  parent: System.Xml.XmlNameTable
+  isExternal: false
+  name: Add(Char[],Int32,Int32)
+  nameWithType: XmlNameTable.Add(Char[],Int32,Int32)
+  fullName: System.Xml.XmlNameTable.Add(Char[],Int32,Int32)
+- uid: System.Char[]
+  parent: System
+  isExternal: false
+  name: Char[]
+  nameWithType: Char[]
+  fullName: System.Char[]
+  spec.csharp:
+  - uid: System.Char
+    name: Char
+    nameWithType: Char
+    fullName: Char[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Xml.XmlNameTable.Get(System.String)
+  parent: System.Xml.XmlNameTable
+  isExternal: false
+  name: Get(String)
+  nameWithType: XmlNameTable.Get(String)
+  fullName: System.Xml.XmlNameTable.Get(String)
+- uid: System.Xml.XmlNameTable.Get(System.Char[],System.Int32,System.Int32)
+  parent: System.Xml.XmlNameTable
+  isExternal: false
+  name: Get(Char[],Int32,Int32)
+  nameWithType: XmlNameTable.Get(Char[],Int32,Int32)
+  fullName: System.Xml.XmlNameTable.Get(Char[],Int32,Int32)
+- uid: System.Xml.XmlNameTable.#ctor*
+  parent: System.Xml.XmlNameTable
+  isExternal: false
+  name: XmlNameTable
+  nameWithType: XmlNameTable.XmlNameTable
+- uid: System.Xml.XmlNameTable.Add*
+  parent: System.Xml.XmlNameTable
+  isExternal: false
+  name: Add
+  nameWithType: XmlNameTable.Add
+- uid: System.Xml.XmlNameTable.Get*
+  parent: System.Xml.XmlNameTable
+  isExternal: false
+  name: Get
+  nameWithType: XmlNameTable.Get

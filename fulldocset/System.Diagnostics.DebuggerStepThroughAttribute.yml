@@ -1,0 +1,133 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Diagnostics.DebuggerStepThroughAttribute
+  id: DebuggerStepThroughAttribute
+  children:
+  - System.Diagnostics.DebuggerStepThroughAttribute.#ctor
+  langs:
+  - csharp
+  name: DebuggerStepThroughAttribute
+  nameWithType: DebuggerStepThroughAttribute
+  fullName: System.Diagnostics.DebuggerStepThroughAttribute
+  type: Class
+  summary: Instructs the debugger to step through the code instead of stepping into the code. This class cannot be inherited.
+  remarks: "This attribute is provided for use by source code debuggers; the common language runtime is not affected by it. For example, the Visual Studio debugger does not stop in a method that is marked with this attribute even if a breakpoint is set in the method.  \n  \n The DebuggerStepThroughAttribute attribute affects the [Just My Code](../Topic/Just%20My%20Code.md) (JMC) feature of Visual Studio in the following ways:  \n  \n-   If JMC is enabled, the Visual Studio debugger will not stop at a breakpoint in a method marked with the DebuggerStepThroughAttribute attribute.  \n  \n-   If JMC is disabled, the debugger stops at the breakpoint even if the method is marked with the DebuggerStepThroughAttribute.  \n  \n The following code shows how the Visual Basic compiler uses the attribute.  \n  \n```  \n<System.Diagnostics.DebuggerStepThrough()> _  \n    Private Sub InitializeComponent()  \n        components = New System.ComponentModel.Container()  \n        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font  \n        Me.Text = \"Form1\"  \n    End Sub  \n```  \n  \n This attribute avoids having to step into compiler-provided code and only steps into developer-provided code. For example, if you are stepping through code by using the **F11** (Step Into) key, the attribute will cause the step to behave like an **F10** (Step Over) key for compiler-provided code. The method won’t be stepped into, but it will be executed.  \n  \n For more information about using attributes, see [Attributes](../Topic/Extending%20Metadata%20Using%20Attributes.md)."
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Class | System.AttributeTargets.Struct | System.AttributeTargets.Constructor | System.AttributeTargets.Method, Inherited=false)]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class DebuggerStepThroughAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics\DebuggerStepThroughAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics/DebuggerStepThroughAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Diagnostics.DebuggerStepThroughAttribute.#ctor
+  id: '#ctor'
+  parent: System.Diagnostics.DebuggerStepThroughAttribute
+  langs:
+  - csharp
+  name: DebuggerStepThroughAttribute()
+  nameWithType: DebuggerStepThroughAttribute.DebuggerStepThroughAttribute()
+  fullName: System.Diagnostics.DebuggerStepThroughAttribute.DebuggerStepThroughAttribute()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics
+  summary: Initializes a new instance of the <xref href="System.Diagnostics.DebuggerStepThroughAttribute"></xref> class.
+  syntax:
+    content: public DebuggerStepThroughAttribute ();
+    parameters: []
+  overload: System.Diagnostics.DebuggerStepThroughAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Diagnostics\DebuggerStepThroughAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Diagnostics/DebuggerStepThroughAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Diagnostics.DebuggerStepThroughAttribute.#ctor
+  parent: System.Diagnostics.DebuggerStepThroughAttribute
+  isExternal: false
+  name: DebuggerStepThroughAttribute()
+  nameWithType: DebuggerStepThroughAttribute.DebuggerStepThroughAttribute()
+  fullName: System.Diagnostics.DebuggerStepThroughAttribute.DebuggerStepThroughAttribute()
+- uid: System.Diagnostics.DebuggerStepThroughAttribute.#ctor*
+  parent: System.Diagnostics.DebuggerStepThroughAttribute
+  isExternal: false
+  name: DebuggerStepThroughAttribute
+  nameWithType: DebuggerStepThroughAttribute.DebuggerStepThroughAttribute

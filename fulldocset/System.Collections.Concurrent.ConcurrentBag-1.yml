@@ -1,0 +1,829 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Collections.Concurrent.ConcurrentBag`1
+  id: ConcurrentBag`1
+  children:
+  - System.Collections.Concurrent.ConcurrentBag`1.#ctor
+  - System.Collections.Concurrent.ConcurrentBag`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  - System.Collections.Concurrent.ConcurrentBag`1.Add(`0)
+  - System.Collections.Concurrent.ConcurrentBag`1.CopyTo(`0[],System.Int32)
+  - System.Collections.Concurrent.ConcurrentBag`1.Count
+  - System.Collections.Concurrent.ConcurrentBag`1.GetEnumerator
+  - System.Collections.Concurrent.ConcurrentBag`1.IsEmpty
+  - System.Collections.Concurrent.ConcurrentBag`1.System#Collections#Concurrent#IProducerConsumerCollection{T}#TryAdd(`0)
+  - System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  - System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#IsSynchronized
+  - System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#SyncRoot
+  - System.Collections.Concurrent.ConcurrentBag`1.System#Collections#IEnumerable#GetEnumerator
+  - System.Collections.Concurrent.ConcurrentBag`1.ToArray
+  - System.Collections.Concurrent.ConcurrentBag`1.TryPeek(`0@)
+  - System.Collections.Concurrent.ConcurrentBag`1.TryTake(`0@)
+  langs:
+  - csharp
+  name: ConcurrentBag<T>
+  nameWithType: ConcurrentBag<T>
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>
+  type: Class
+  summary: Represents a thread-safe, unordered collection of objects.
+  remarks: "Bags are useful for storing objects when ordering doesn't matter, and unlike sets, bags support duplicates. ConcurrentBag(T) is a thread-safe bag implementation, optimized for scenarios where the same thread will be both producing and consuming data stored in the bag.  \n  \n ConcurrentBag(T) accepts `null` as a valid value for reference types.  \n  \n For more information, see the entry [FAQ: Are all of the new concurrent collections lock-free?](http://blogs.msdn.com/b/pfxteam/archive/2010/01/26/9953725.aspx) in the Parallel Programming with .NET blog."
+  example:
+  - "The following example shows how to add and remove items from a ConcurrentBag(T):  \n  \n [!code-vb[System.Collections.Concurrent.ConcurrentBag#1](~/add/codesnippet/visualbasic/t-system.collections.con_5_1.vb)]\n [!code-cs[System.Collections.Concurrent.ConcurrentBag#1](~/add/codesnippet/csharp/t-system.collections.con_5_1.cs)]"
+  syntax:
+    content: >-
+      [System.Diagnostics.DebuggerDisplay("Count = {Count}")]
+
+      [System.Diagnostics.DebuggerTypeProxy(typeof(System.Collections.Concurrent.SystemThreadingCollection_IProducerConsumerCollectionDebugView`1))]
+
+      [System.Runtime.InteropServices.ComVisible(false)]
+
+      public class ConcurrentBag<T> : System.Collections.Concurrent.IProducerConsumerCollection<T>, System.Collections.Generic.IEnumerable<T>, System.Collections.Generic.IReadOnlyCollection<T>
+    typeParameters:
+    - id: T
+      description: The type of the elements to be stored in the collection.
+  inheritance:
+  - System.Object
+  implements:
+  - System.Collections.Concurrent.IProducerConsumerCollection<T>
+  - System.Collections.Generic.IEnumerable<T>
+  - System.Collections.Generic.IReadOnlyCollection<T>
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.#ctor
+  id: '#ctor'
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: ConcurrentBag<T>()
+  nameWithType: ConcurrentBag<T>.ConcurrentBag<T>()
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.ConcurrentBag<T>()
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Initializes a new instance of the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref> class.
+  syntax:
+    content: public ConcurrentBag ();
+    parameters: []
+  overload: System.Collections.Concurrent.ConcurrentBag`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  id: '#ctor(System.Collections.Generic.IEnumerable{`0})'
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: ConcurrentBag<T>(IEnumerable<T>)
+  nameWithType: ConcurrentBag<T>.ConcurrentBag<T>(IEnumerable<T>)
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.ConcurrentBag<T>(IEnumerable<T>)
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Initializes a new instance of the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref> class that contains elements copied from the specified collection.
+  syntax:
+    content: public ConcurrentBag (System.Collections.Generic.IEnumerable<T> collection);
+    parameters:
+    - id: collection
+      type: System.Collections.Generic.IEnumerable`1
+      description: The collection whose elements are copied to the new <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>.
+  overload: System.Collections.Concurrent.ConcurrentBag`1.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>collection</code> is a null reference (Nothing in Visual Basic).
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.Add(`0)
+  id: Add(`0)
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: Add(T)
+  nameWithType: ConcurrentBag<T>.Add(T)
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.Add(T)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Adds an object to the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>.
+  syntax:
+    content: public void Add (T item);
+    parameters:
+    - id: item
+      type: T
+      description: The object to be added to the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>. The value can be a null reference (Nothing in Visual Basic) for reference types.
+  overload: System.Collections.Concurrent.ConcurrentBag`1.Add*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.CopyTo(`0[],System.Int32)
+  id: CopyTo(`0[],System.Int32)
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: CopyTo(T[],Int32)
+  nameWithType: ConcurrentBag<T>.CopyTo(T[],Int32)
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.CopyTo(T[],Int32)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Copies the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref> elements to an existing one-dimensional <xref href="System.Array"></xref>, starting at the specified array index.
+  syntax:
+    content: public void CopyTo (T[] array, int index);
+    parameters:
+    - id: array
+      type: T[]
+      description: The one-dimensional <xref href="System.Array"></xref> that is the destination of the elements copied from the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>. The <xref href="System.Array"></xref> must have zero-based indexing.
+    - id: index
+      type: System.Int32
+      description: The zero-based index in <code>array</code> at which copying begins.
+  overload: System.Collections.Concurrent.ConcurrentBag`1.CopyTo*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>array</code> is a null reference (Nothing in Visual Basic).
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>index</code> is less than zero.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>index</code> is equal to or greater than the length of the <code>array</code> -or- the number of elements in the source <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref> is greater than the available space from <code>index</code> to the end of the destination <code>array</code>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.Count
+  id: Count
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: Count
+  nameWithType: ConcurrentBag<T>.Count
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.Count
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Gets the number of elements contained in the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>.
+  remarks: The count returned represents a moment-in-time snapshot of the contents of the bag. It is possible that other threads might add or remove items immediately after you access the `Count` property.
+  syntax:
+    content: public int Count { get; }
+    return:
+      type: System.Int32
+      description: The number of elements contained in the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>.
+  overload: System.Collections.Concurrent.ConcurrentBag`1.Count*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.GetEnumerator
+  id: GetEnumerator
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: GetEnumerator()
+  nameWithType: ConcurrentBag<T>.GetEnumerator()
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.GetEnumerator()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Returns an enumerator that iterates through the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>.
+  remarks: The enumeration represents a moment-in-time snapshot of the contents of the bag. It does not reflect any updates to the collection after GetEnumerator was called. The enumerator is safe to use concurrently with reads from and writes to the bag.
+  syntax:
+    content: public System.Collections.Generic.IEnumerator<T> GetEnumerator ();
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerator`1
+      description: An enumerator for the contents of the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>.
+  overload: System.Collections.Concurrent.ConcurrentBag`1.GetEnumerator*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.IsEmpty
+  id: IsEmpty
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: IsEmpty
+  nameWithType: ConcurrentBag<T>.IsEmpty
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.IsEmpty
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Gets a value that indicates whether the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref> is empty.
+  syntax:
+    content: public bool IsEmpty { get; }
+    return:
+      type: System.Boolean
+      description: true if the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref> is empty; otherwise, false.
+  overload: System.Collections.Concurrent.ConcurrentBag`1.IsEmpty*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#Concurrent#IProducerConsumerCollection{T}#TryAdd(`0)
+  id: System#Collections#Concurrent#IProducerConsumerCollection{T}#TryAdd(`0)
+  isEii: true
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: IProducerConsumerCollection<T>.TryAdd(T)
+  nameWithType: ConcurrentBag<T>.IProducerConsumerCollection<T>.TryAdd(T)
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.IProducerConsumerCollection<T>.TryAdd(T)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Attempts to add an object to the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>.
+  syntax:
+    content: bool IProducerConsumerCollection<T>.TryAdd (T item);
+    parameters:
+    - id: item
+      type: T
+      description: The object to be added to the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>. The value can be a null reference (Nothing in Visual Basic) for reference types.
+    return:
+      type: System.Boolean
+      description: Always returns true
+  overload: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#Concurrent#IProducerConsumerCollection<T>#TryAdd*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  id: System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  isEii: true
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: ICollection.CopyTo(Array,Int32)
+  nameWithType: ConcurrentBag<T>.ICollection.CopyTo(Array,Int32)
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.ICollection.CopyTo(Array,Int32)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Copies the elements of the <xref href="System.Collections.ICollection"></xref> to an <xref href="System.Array"></xref>, starting at a particular <xref href="System.Array"></xref> index.
+  syntax:
+    content: void ICollection.CopyTo (Array array, int index);
+    parameters:
+    - id: array
+      type: System.Array
+      description: The one-dimensional <xref href="System.Array"></xref> that is the destination of the elements copied from the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>. The <xref href="System.Array"></xref> must have zero-based indexing.
+    - id: index
+      type: System.Int32
+      description: The zero-based index in <code>array</code> at which copying begins.
+  overload: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#CopyTo*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>array</code> is a null reference (Nothing in Visual Basic).
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>index</code> is less than zero.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>array</code> is multidimensional. -or- <code>array</code> does not have zero-based indexing. -or- <code>index</code> is equal to or greater than the length of the <code>array</code> -or- The number of elements in the source <xref href="System.Collections.ICollection"></xref> is greater than the available space from <code>index</code> to the end of the destination <code>array</code>. -or- The type of the source <xref href="System.Collections.ICollection"></xref> cannot be cast automatically to the type of the destination <code>array</code>.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#IsSynchronized
+  id: System#Collections#ICollection#IsSynchronized
+  isEii: true
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: ICollection.IsSynchronized
+  nameWithType: ConcurrentBag<T>.ICollection.IsSynchronized
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.ICollection.IsSynchronized
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Gets a value indicating whether access to the <xref href="System.Collections.ICollection"></xref> is synchronized with the SyncRoot.
+  syntax:
+    content: bool System.Collections.ICollection.IsSynchronized { get; }
+    return:
+      type: System.Boolean
+      description: true if access to the <xref href="System.Collections.ICollection"></xref> is synchronized with the SyncRoot; otherwise, false. For <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>, this property always returns false.
+  overload: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#IsSynchronized*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#SyncRoot
+  id: System#Collections#ICollection#SyncRoot
+  isEii: true
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: ICollection.SyncRoot
+  nameWithType: ConcurrentBag<T>.ICollection.SyncRoot
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.ICollection.SyncRoot
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Gets an object that can be used to synchronize access to the <xref href="System.Collections.ICollection"></xref>. This property is not supported.
+  syntax:
+    content: object System.Collections.ICollection.SyncRoot { get; }
+    return:
+      type: System.Object
+      description: Returns null  (Nothing in Visual Basic).
+  overload: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#SyncRoot*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The SyncRoot property is not supported.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#IEnumerable#GetEnumerator
+  id: System#Collections#IEnumerable#GetEnumerator
+  isEii: true
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: IEnumerable.GetEnumerator()
+  nameWithType: ConcurrentBag<T>.IEnumerable.GetEnumerator()
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.IEnumerable.GetEnumerator()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Returns an enumerator that iterates through the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>.
+  remarks: The items enumerated represent a moment-in-time snapshot of the contents of the bag. It does not reflect any update to the collection after <xref:System.Collections.Concurrent.ConcurrentBag%601.GetEnumerator%2A> was called.
+  syntax:
+    content: System.Collections.IEnumerator IEnumerable.GetEnumerator ();
+    parameters: []
+    return:
+      type: System.Collections.IEnumerator
+      description: An enumerator for the contents of the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>.
+  overload: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#IEnumerable#GetEnumerator*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.ToArray
+  id: ToArray
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: ToArray()
+  nameWithType: ConcurrentBag<T>.ToArray()
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.ToArray()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Copies the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref> elements to a new array.
+  syntax:
+    content: public T[] ToArray ();
+    parameters: []
+    return:
+      type: T[]
+      description: A new array containing a snapshot of elements copied from the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>.
+  overload: System.Collections.Concurrent.ConcurrentBag`1.ToArray*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.TryPeek(`0@)
+  id: TryPeek(`0@)
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: TryPeek(T)
+  nameWithType: ConcurrentBag<T>.TryPeek(T)
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.TryPeek(T)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Attempts to return an object from the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref> without removing it.
+  syntax:
+    content: public bool TryPeek (out T result);
+    parameters:
+    - id: result
+      type: T
+      description: When this method returns, <code>result</code> contains an object from the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref> or the default value of <code>T</code> if the operation failed.
+    return:
+      type: System.Boolean
+      description: true if and object was returned successfully; otherwise, false.
+  overload: System.Collections.Concurrent.ConcurrentBag`1.TryPeek*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Concurrent.ConcurrentBag`1.TryTake(`0@)
+  id: TryTake(`0@)
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  langs:
+  - csharp
+  name: TryTake(T)
+  nameWithType: ConcurrentBag<T>.TryTake(T)
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.TryTake(T)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Collections.Concurrent
+  summary: Attempts to remove and return an object from the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref>.
+  syntax:
+    content: public bool TryTake (out T result);
+    parameters:
+    - id: result
+      type: T
+      description: When this method returns, <code>result</code> contains the object removed from the <xref href="stem.Collections.Concurrent.ConcurrentBag%601"></xref> or the default value of <code>T</code> if the bag is empty.
+    return:
+      type: System.Boolean
+      description: true if an object was removed successfully; otherwise, false.
+  overload: System.Collections.Concurrent.ConcurrentBag`1.TryTake*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Concurrent\ConcurrentBag`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Concurrent/ConcurrentBag`1.xml
+  version:
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.NotSupportedException
+  parent: System
+  isExternal: false
+  name: NotSupportedException
+  nameWithType: NotSupportedException
+  fullName: System.NotSupportedException
+- uid: System.Collections.Concurrent.ConcurrentBag`1.#ctor
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: ConcurrentBag<T>()
+  nameWithType: ConcurrentBag<T>.ConcurrentBag<T>()
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.ConcurrentBag<T>()
+- uid: System.Collections.Concurrent.ConcurrentBag`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: ConcurrentBag<T>(IEnumerable<T>)
+  nameWithType: ConcurrentBag<T>.ConcurrentBag<T>(IEnumerable<T>)
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.ConcurrentBag<T>(IEnumerable<T>)
+- uid: System.Collections.Generic.IEnumerable`1
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+- uid: System.Collections.Concurrent.ConcurrentBag`1.Add(`0)
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: Add(T)
+  nameWithType: ConcurrentBag<T>.Add(T)
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.Add(T)
+- uid: T
+  isExternal: true
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Collections.Concurrent.ConcurrentBag`1.CopyTo(`0[],System.Int32)
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: CopyTo(T[],Int32)
+  nameWithType: ConcurrentBag<T>.CopyTo(T[],Int32)
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.CopyTo(T[],Int32)
+- uid: T[]
+  isExternal: true
+  name: T[]
+  nameWithType: T[]
+  fullName: T[]
+  spec.csharp:
+  - uid: T
+    name: T
+    nameWithType: T
+    fullName: T[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Collections.Concurrent.ConcurrentBag`1.Count
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: Count
+  nameWithType: ConcurrentBag<T>.Count
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.Count
+- uid: System.Collections.Concurrent.ConcurrentBag`1.GetEnumerator
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: GetEnumerator()
+  nameWithType: ConcurrentBag<T>.GetEnumerator()
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.GetEnumerator()
+- uid: System.Collections.Generic.IEnumerator`1
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+- uid: System.Collections.Concurrent.ConcurrentBag`1.IsEmpty
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: IsEmpty
+  nameWithType: ConcurrentBag<T>.IsEmpty
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.IsEmpty
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#Concurrent#IProducerConsumerCollection{T}#TryAdd(`0)
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: IProducerConsumerCollection<T>.TryAdd(T)
+  nameWithType: ConcurrentBag<T>.IProducerConsumerCollection<T>.TryAdd(T)
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.IProducerConsumerCollection<T>.TryAdd(T)
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: ICollection.CopyTo(Array,Int32)
+  nameWithType: ConcurrentBag<T>.ICollection.CopyTo(Array,Int32)
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.ICollection.CopyTo(Array,Int32)
+- uid: System.Array
+  parent: System
+  isExternal: false
+  name: Array
+  nameWithType: Array
+  fullName: System.Array
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#IsSynchronized
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: ICollection.IsSynchronized
+  nameWithType: ConcurrentBag<T>.ICollection.IsSynchronized
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.ICollection.IsSynchronized
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#SyncRoot
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: ICollection.SyncRoot
+  nameWithType: ConcurrentBag<T>.ICollection.SyncRoot
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.ICollection.SyncRoot
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#IEnumerable#GetEnumerator
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: IEnumerable.GetEnumerator()
+  nameWithType: ConcurrentBag<T>.IEnumerable.GetEnumerator()
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.IEnumerable.GetEnumerator()
+- uid: System.Collections.IEnumerator
+  parent: System.Collections
+  isExternal: false
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+- uid: System.Collections.Concurrent.ConcurrentBag`1.ToArray
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: ToArray()
+  nameWithType: ConcurrentBag<T>.ToArray()
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.ToArray()
+- uid: System.Collections.Concurrent.ConcurrentBag`1.TryPeek(`0@)
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: TryPeek(T)
+  nameWithType: ConcurrentBag<T>.TryPeek(T)
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.TryPeek(T)
+- uid: System.Collections.Concurrent.ConcurrentBag`1.TryTake(`0@)
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: TryTake(T)
+  nameWithType: ConcurrentBag<T>.TryTake(T)
+  fullName: System.Collections.Concurrent.ConcurrentBag<T>.TryTake(T)
+- uid: System.Collections.Concurrent.ConcurrentBag`1.#ctor*
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: ConcurrentBag<T>
+  nameWithType: ConcurrentBag<T>.ConcurrentBag<T>
+- uid: System.Collections.Concurrent.ConcurrentBag`1.Add*
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: Add
+  nameWithType: ConcurrentBag<T>.Add
+- uid: System.Collections.Concurrent.ConcurrentBag`1.CopyTo*
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: CopyTo
+  nameWithType: ConcurrentBag<T>.CopyTo
+- uid: System.Collections.Concurrent.ConcurrentBag`1.Count*
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: Count
+  nameWithType: ConcurrentBag<T>.Count
+- uid: System.Collections.Concurrent.ConcurrentBag`1.GetEnumerator*
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: GetEnumerator
+  nameWithType: ConcurrentBag<T>.GetEnumerator
+- uid: System.Collections.Concurrent.ConcurrentBag`1.IsEmpty*
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: IsEmpty
+  nameWithType: ConcurrentBag<T>.IsEmpty
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#Concurrent#IProducerConsumerCollection<T>#TryAdd*
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: System.Collections.Concurrent.IProducerConsumerCollection<T>.TryAdd
+  nameWithType: ConcurrentBag<T>.System.Collections.Concurrent.IProducerConsumerCollection<T>.TryAdd
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#CopyTo*
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: System.Collections.ICollection.CopyTo
+  nameWithType: ConcurrentBag<T>.System.Collections.ICollection.CopyTo
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#IsSynchronized*
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: System.Collections.ICollection.IsSynchronized
+  nameWithType: ConcurrentBag<T>.System.Collections.ICollection.IsSynchronized
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#ICollection#SyncRoot*
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: System.Collections.ICollection.SyncRoot
+  nameWithType: ConcurrentBag<T>.System.Collections.ICollection.SyncRoot
+- uid: System.Collections.Concurrent.ConcurrentBag`1.System#Collections#IEnumerable#GetEnumerator*
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: System.Collections.IEnumerable.GetEnumerator
+  nameWithType: ConcurrentBag<T>.System.Collections.IEnumerable.GetEnumerator
+- uid: System.Collections.Concurrent.ConcurrentBag`1.ToArray*
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: ToArray
+  nameWithType: ConcurrentBag<T>.ToArray
+- uid: System.Collections.Concurrent.ConcurrentBag`1.TryPeek*
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: TryPeek
+  nameWithType: ConcurrentBag<T>.TryPeek
+- uid: System.Collections.Concurrent.ConcurrentBag`1.TryTake*
+  parent: System.Collections.Concurrent.ConcurrentBag`1
+  isExternal: false
+  name: TryTake
+  nameWithType: ConcurrentBag<T>.TryTake

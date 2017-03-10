@@ -1,0 +1,90 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Collections.Generic.IEnumerator`1
+  id: IEnumerator`1
+  children:
+  - System.Collections.Generic.IEnumerator`1.Current
+  langs:
+  - csharp
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  type: Interface
+  summary: Supports a simple iteration over a generic collection.
+  remarks: "IEnumerator(T) is the base interface for all generic enumerators.  \n  \n The `foreach` statement of the C# language (`for each` in C++, `For Each` in Visual Basic) hides the complexity of the enumerators.  Therefore, using `foreach` is recommended, instead of directly manipulating the enumerator.  \n  \n Enumerators can be used to read the data in the collection, but they cannot be used to modify the underlying collection.  \n  \n Initially, the enumerator is positioned before the first element in the collection. At this position, <xref:System.Collections.Generic.IEnumerator%601.Current%2A> is undefined. Therefore, you must call <xref:System.Collections.IEnumerator.MoveNext%2A> to advance the enumerator to the first element of the collection before reading the value of <xref:System.Collections.Generic.IEnumerator%601.Current%2A>.  \n  \n <xref:System.Collections.Generic.IEnumerator%601.Current%2A> returns the same object until <xref:System.Collections.IEnumerator.MoveNext%2A> is called. <xref:System.Collections.IEnumerator.MoveNext%2A> sets <xref:System.Collections.Generic.IEnumerator%601.Current%2A> to the next element.  \n  \n If <xref:System.Collections.IEnumerator.MoveNext%2A> passes the end of the collection, the enumerator is positioned after the last element in the collection and <xref:System.Collections.IEnumerator.MoveNext%2A> returns `false`. When the enumerator is at this position, subsequent calls to <xref:System.Collections.IEnumerator.MoveNext%2A> also return `false`. If the last call to <xref:System.Collections.IEnumerator.MoveNext%2A> returned `false`, <xref:System.Collections.Generic.IEnumerator%601.Current%2A> is undefined. You cannot set <xref:System.Collections.Generic.IEnumerator%601.Current%2A> to the first element of the collection again; you must create a new enumerator instance instead.  \n  \n The <xref:System.Collections.IEnumerator.Reset%2A> method is provided for COM interoperability. It does not necessarily need to be implemented; instead, the implementer can simply throw a <xref:System.NotSupportedException>. However, if you choose to do this, you should make sure no callers are relying on the <xref:System.Collections.IEnumerator.Reset%2A> functionality.  \n  \n An enumerator remains valid as long as the collection remains unchanged. If changes are made to the collection, such as adding, modifying, or deleting elements, the enumerator is irrecoverably invalidated and the next call to <xref:System.Collections.IEnumerator.MoveNext%2A> or <xref:System.Collections.IEnumerator.Reset%2A> throws an <xref:System.InvalidOperationException>.  \n  \n The enumerator does not have exclusive access to the collection; therefore, enumerating through a collection is intrinsically not a thread-safe procedure. To guarantee thread safety during enumeration, you can lock the collection during the entire enumeration. To allow the collection to be accessed by multiple threads for reading and writing, you must implement your own synchronization.  \n  \n Default implementations of collections in the <xref:System.Collections.Generic?displayProperty=fullName> namespace are not synchronized."
+  example:
+  - "The following example shows an implementation of the IEnumerator(T) interface for a collection class of custom objects. The custom object is an instance of the type `Box`, and the collection class is `BoxCollection`. This code example is part of a larger example provided for the <xref:System.Collections.Generic.ICollection%601> interface.  \n  \n [!code-cs[System.Collections.Generic.BoxExamples#3](~/add/codesnippet/csharp/t-system.collections.gen_12_1.cs)]\n [!code-vb[System.Collections.Generic.BoxExamples#3](~/add/codesnippet/visualbasic/t-system.collections.gen_12_1.vb)]"
+  syntax:
+    content: 'public interface IEnumerator<out T> : IDisposable, System.Collections.IEnumerator'
+    typeParameters:
+    - id: T
+      description: The type of objects to enumerate.
+  implements:
+  - System.Collections.IEnumerator
+  - System.IDisposable
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\IEnumerator`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/IEnumerator`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Collections.Generic.IEnumerator`1.Current
+  id: Current
+  parent: System.Collections.Generic.IEnumerator`1
+  langs:
+  - csharp
+  name: Current
+  nameWithType: IEnumerator<T>.Current
+  fullName: System.Collections.Generic.IEnumerator<T>.Current
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Collections.Generic
+  summary: Gets the element in the collection at the current position of the enumerator.
+  remarks: "Current is undefined under any of the following conditions:  \n  \n-   The enumerator is positioned before the first element in the collection, immediately after the enumerator is created.   <xref:System.Collections.IEnumerator.MoveNext%2A> must be called to advance the enumerator to the first element of the collection before reading the value of Current.  \n  \n-   The last call to <xref:System.Collections.IEnumerator.MoveNext%2A> returned `false`, which indicates the end of the collection.  \n  \n-   The enumerator is invalidated due to changes made in the collection, such as adding, modifying, or deleting elements.  \n  \n Current returns the same object until <xref:System.Collections.IEnumerator.MoveNext%2A> is called. <xref:System.Collections.IEnumerator.MoveNext%2A> sets Current to the next element."
+  syntax:
+    content: public T Current { get; }
+    return:
+      type: T
+      description: The element in the collection at the current position of the enumerator.
+  overload: System.Collections.Generic.IEnumerator`1.Current*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Collections.Generic\IEnumerator`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Collections.Generic/IEnumerator`1.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Collections.Generic.IEnumerator`1.Current
+  parent: System.Collections.Generic.IEnumerator`1
+  isExternal: false
+  name: Current
+  nameWithType: IEnumerator<T>.Current
+  fullName: System.Collections.Generic.IEnumerator<T>.Current
+- uid: T
+  isExternal: true
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Collections.Generic.IEnumerator`1.Current*
+  parent: System.Collections.Generic.IEnumerator`1
+  isExternal: false
+  name: Current
+  nameWithType: IEnumerator<T>.Current

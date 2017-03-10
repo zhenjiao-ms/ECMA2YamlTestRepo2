@@ -1,0 +1,231 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.Serialization.ObjectIDGenerator
+  id: ObjectIDGenerator
+  children:
+  - System.Runtime.Serialization.ObjectIDGenerator.#ctor
+  - System.Runtime.Serialization.ObjectIDGenerator.GetId(System.Object,System.Boolean@)
+  - System.Runtime.Serialization.ObjectIDGenerator.HasId(System.Object,System.Boolean@)
+  langs:
+  - csharp
+  name: ObjectIDGenerator
+  nameWithType: ObjectIDGenerator
+  fullName: System.Runtime.Serialization.ObjectIDGenerator
+  type: Class
+  summary: Generates IDs for objects.
+  remarks: "The ObjectIDGenerator keeps track of previously identified objects. When you ask for the ID of an object, the ObjectIDGenerator knows whether to return the existing ID, or generate and remember a new ID.  \n  \n The IDs are unique for the life of the ObjectIDGenerator instance. Generally, a ObjectIDGenerator life lasts as long as the <xref:System.Runtime.Serialization.Formatter> that created it. Object IDs have meaning only within a given serialized stream, and are used for tracking which objects have references to others within the serialized object graph.  \n  \n Using a hash table, the ObjectIDGenerator retains which ID is assigned to which object. The object references, which uniquely identify each object, are addresses in the runtime garbage-collected heap. Object reference values can change during serialization, but the table is updated automatically so the information is correct.  \n  \n Object IDs are 64-bit numbers. Allocation starts from one, so zero is never a valid object ID. A formatter can choose a zero value to represent an object reference whose value is `null`."
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public class ObjectIDGenerator
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\ObjectIDGenerator.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/ObjectIDGenerator.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.ObjectIDGenerator.#ctor
+  id: '#ctor'
+  parent: System.Runtime.Serialization.ObjectIDGenerator
+  langs:
+  - csharp
+  name: ObjectIDGenerator()
+  nameWithType: ObjectIDGenerator.ObjectIDGenerator()
+  fullName: System.Runtime.Serialization.ObjectIDGenerator.ObjectIDGenerator()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Serialization
+  summary: Initializes a new instance of the <xref href="System.Runtime.Serialization.ObjectIDGenerator"></xref> class.
+  syntax:
+    content: public ObjectIDGenerator ();
+    parameters: []
+  overload: System.Runtime.Serialization.ObjectIDGenerator.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\ObjectIDGenerator.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/ObjectIDGenerator.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.ObjectIDGenerator.GetId(System.Object,System.Boolean@)
+  id: GetId(System.Object,System.Boolean@)
+  parent: System.Runtime.Serialization.ObjectIDGenerator
+  langs:
+  - csharp
+  name: GetId(Object,Boolean)
+  nameWithType: ObjectIDGenerator.GetId(Object,Boolean)
+  fullName: System.Runtime.Serialization.ObjectIDGenerator.GetId(Object,Boolean)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Serialization
+  summary: Returns the ID for the specified object, generating a new ID if the specified object has not already been identified by the <xref href="System.Runtime.Serialization.ObjectIDGenerator"></xref>.
+  syntax:
+    content: public virtual long GetId (object obj, out bool firstTime);
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object you want an ID for.
+    - id: firstTime
+      type: System.Boolean
+      description: '`true` if <code>obj</code> was not previously known to the <xref href="System.Runtime.Serialization.ObjectIDGenerator"></xref>; otherwise, `false`.'
+    return:
+      type: System.Int64
+      description: The object's ID is used for serialization. <code>firstTime</code> is set to `true` if this is the first time the object has been identified; otherwise, it is set to `false`.
+  overload: System.Runtime.Serialization.ObjectIDGenerator.GetId*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>obj</code> parameter is `null`.
+  - type: System.Runtime.Serialization.SerializationException
+    commentId: T:System.Runtime.Serialization.SerializationException
+    description: The <xref href="System.Runtime.Serialization.ObjectIDGenerator"></xref> has been asked to keep track of too many objects.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\ObjectIDGenerator.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/ObjectIDGenerator.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Runtime.Serialization.ObjectIDGenerator.HasId(System.Object,System.Boolean@)
+  id: HasId(System.Object,System.Boolean@)
+  parent: System.Runtime.Serialization.ObjectIDGenerator
+  langs:
+  - csharp
+  name: HasId(Object,Boolean)
+  nameWithType: ObjectIDGenerator.HasId(Object,Boolean)
+  fullName: System.Runtime.Serialization.ObjectIDGenerator.HasId(Object,Boolean)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Serialization
+  summary: Determines whether an object has already been assigned an ID.
+  remarks: If the object has already been assigned an ID, the ID is returned and `firstTime` is set to `false`; otherwise, zero is returned and `firstTime` is set to `true`. HasId differs from <xref:System.Runtime.Serialization.ObjectIDGenerator.GetId%2A> in that it never creates an ID for an object that has not already been seen by the <xref:System.Runtime.Serialization.ObjectIDGenerator>.
+  syntax:
+    content: public virtual long HasId (object obj, out bool firstTime);
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object you are asking for.
+    - id: firstTime
+      type: System.Boolean
+      description: '`true` if <code>obj</code> was not previously known to the <xref href="System.Runtime.Serialization.ObjectIDGenerator"></xref>; otherwise, `false`.'
+    return:
+      type: System.Int64
+      description: The object ID of <code>obj</code> if previously known to the <xref href="System.Runtime.Serialization.ObjectIDGenerator"></xref>; otherwise, zero.
+  overload: System.Runtime.Serialization.ObjectIDGenerator.HasId*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>obj</code> parameter is `null`.
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Runtime.Serialization\ObjectIDGenerator.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Runtime.Serialization/ObjectIDGenerator.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.Runtime.Serialization.SerializationException
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: SerializationException
+  nameWithType: SerializationException
+  fullName: System.Runtime.Serialization.SerializationException
+- uid: System.Runtime.Serialization.ObjectIDGenerator.#ctor
+  parent: System.Runtime.Serialization.ObjectIDGenerator
+  isExternal: false
+  name: ObjectIDGenerator()
+  nameWithType: ObjectIDGenerator.ObjectIDGenerator()
+  fullName: System.Runtime.Serialization.ObjectIDGenerator.ObjectIDGenerator()
+- uid: System.Runtime.Serialization.ObjectIDGenerator.GetId(System.Object,System.Boolean@)
+  parent: System.Runtime.Serialization.ObjectIDGenerator
+  isExternal: false
+  name: GetId(Object,Boolean)
+  nameWithType: ObjectIDGenerator.GetId(Object,Boolean)
+  fullName: System.Runtime.Serialization.ObjectIDGenerator.GetId(Object,Boolean)
+- uid: System.Int64
+  parent: System
+  isExternal: false
+  name: Int64
+  nameWithType: Int64
+  fullName: System.Int64
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Runtime.Serialization.ObjectIDGenerator.HasId(System.Object,System.Boolean@)
+  parent: System.Runtime.Serialization.ObjectIDGenerator
+  isExternal: false
+  name: HasId(Object,Boolean)
+  nameWithType: ObjectIDGenerator.HasId(Object,Boolean)
+  fullName: System.Runtime.Serialization.ObjectIDGenerator.HasId(Object,Boolean)
+- uid: System.Runtime.Serialization.ObjectIDGenerator.#ctor*
+  parent: System.Runtime.Serialization.ObjectIDGenerator
+  isExternal: false
+  name: ObjectIDGenerator
+  nameWithType: ObjectIDGenerator.ObjectIDGenerator
+- uid: System.Runtime.Serialization.ObjectIDGenerator.GetId*
+  parent: System.Runtime.Serialization.ObjectIDGenerator
+  isExternal: false
+  name: GetId
+  nameWithType: ObjectIDGenerator.GetId
+- uid: System.Runtime.Serialization.ObjectIDGenerator.HasId*
+  parent: System.Runtime.Serialization.ObjectIDGenerator
+  isExternal: false
+  name: HasId
+  nameWithType: ObjectIDGenerator.HasId

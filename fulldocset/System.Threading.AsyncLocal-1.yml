@@ -1,0 +1,186 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Threading.AsyncLocal`1
+  id: AsyncLocal`1
+  children:
+  - System.Threading.AsyncLocal`1.#ctor
+  - System.Threading.AsyncLocal`1.#ctor(System.Action{System.Threading.AsyncLocalValueChangedArgs{`0}})
+  - System.Threading.AsyncLocal`1.Value
+  langs:
+  - csharp
+  name: AsyncLocal<T>
+  nameWithType: AsyncLocal<T>
+  fullName: System.Threading.AsyncLocal<T>
+  type: Class
+  summary: Represents ambient data that is local to a given asynchronous control flow, such as an asynchronous method.
+  remarks: "Because the task-based asynchronous programming model tends to abstract the use of threads, AsyncLocal(T) instances can be used to persist data across threads.  \n  \n The AsyncLocal(T) class also provides optional notifications when the value associated with the current thread changes, either because it was explicitly changed by setting the <xref:System.Threading.AsyncLocal%601.Value%2A> property, or implicitly changed when the thread encountered an `await` or other context transition."
+  example:
+  - "The following example uses the AsyncLocal(T) class to persist a string value across an asynchronous flow. It also contrasts the use of  AsyncLocal(T) with <xref:System.Threading.ThreadLocal%601>.  \n  \n [!code-vb[System.Threading.AsyncLocal#1](~/add/codesnippet/visualbasic/t-system.threading.async_1.vb)]\n [!code-cs[System.Threading.AsyncLocal#1](~/add/codesnippet/csharp/t-system.threading.async_1.cs)]"
+  syntax:
+    content: public sealed class AsyncLocal<T>
+    typeParameters:
+    - id: T
+      description: The type of the ambient data.
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\AsyncLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/AsyncLocal`1.xml
+  version:
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.AsyncLocal`1.#ctor
+  id: '#ctor'
+  parent: System.Threading.AsyncLocal`1
+  langs:
+  - csharp
+  name: AsyncLocal<T>()
+  nameWithType: AsyncLocal<T>.AsyncLocal<T>()
+  fullName: System.Threading.AsyncLocal<T>.AsyncLocal<T>()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Instantiates an <xref href="stem.Threading.AsyncLocal%601"></xref> instance that does not receive change notifications.
+  syntax:
+    content: public AsyncLocal ();
+    parameters: []
+  overload: System.Threading.AsyncLocal`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\AsyncLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/AsyncLocal`1.xml
+  version:
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.AsyncLocal`1.#ctor(System.Action{System.Threading.AsyncLocalValueChangedArgs{`0}})
+  id: '#ctor(System.Action{System.Threading.AsyncLocalValueChangedArgs{`0}})'
+  parent: System.Threading.AsyncLocal`1
+  langs:
+  - csharp
+  name: AsyncLocal<T>(Action<AsyncLocalValueChangedArgs<T>>)
+  nameWithType: AsyncLocal<T>.AsyncLocal<T>(Action<AsyncLocalValueChangedArgs<T>>)
+  fullName: System.Threading.AsyncLocal<T>.AsyncLocal<T>(Action<AsyncLocalValueChangedArgs<T>>)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Instantiates an <xref href="stem.Threading.AsyncLocal%601"></xref> local instance that receives change notifications.
+  remarks: The delegate's signature is `Action<ASyncLocalValueChangedArgs<T>`.
+  syntax:
+    content: public AsyncLocal (Action<System.Threading.AsyncLocalValueChangedArgs<T>> valueChangedHandler);
+    parameters:
+    - id: valueChangedHandler
+      type: System.Action{System.Threading.AsyncLocalValueChangedArgs{T}}
+      description: The delegate that is called whenever the current value changes on any thread.
+  overload: System.Threading.AsyncLocal`1.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\AsyncLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/AsyncLocal`1.xml
+  version:
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Threading.AsyncLocal`1.Value
+  id: Value
+  parent: System.Threading.AsyncLocal`1
+  langs:
+  - csharp
+  name: Value
+  nameWithType: AsyncLocal<T>.Value
+  fullName: System.Threading.AsyncLocal<T>.Value
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Gets or sets the value of the ambient data.
+  syntax:
+    content: public T Value { get; set; }
+    return:
+      type: T
+      description: The value of the ambient data.
+  overload: System.Threading.AsyncLocal`1.Value*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Threading\AsyncLocal`1.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Threading/AsyncLocal`1.xml
+  version:
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.Threading.AsyncLocal`1.#ctor
+  parent: System.Threading.AsyncLocal`1
+  isExternal: false
+  name: AsyncLocal<T>()
+  nameWithType: AsyncLocal<T>.AsyncLocal<T>()
+  fullName: System.Threading.AsyncLocal<T>.AsyncLocal<T>()
+- uid: System.Threading.AsyncLocal`1.#ctor(System.Action{System.Threading.AsyncLocalValueChangedArgs{`0}})
+  parent: System.Threading.AsyncLocal`1
+  isExternal: false
+  name: AsyncLocal<T>(Action<AsyncLocalValueChangedArgs<T>>)
+  nameWithType: AsyncLocal<T>.AsyncLocal<T>(Action<AsyncLocalValueChangedArgs<T>>)
+  fullName: System.Threading.AsyncLocal<T>.AsyncLocal<T>(Action<AsyncLocalValueChangedArgs<T>>)
+- uid: System.Action{System.Threading.AsyncLocalValueChangedArgs{T}}
+  parent: System
+  isExternal: false
+  name: Action<AsyncLocalValueChangedArgs<T>>
+  nameWithType: Action<AsyncLocalValueChangedArgs<T>>
+  fullName: System.Action<System.Threading.AsyncLocalValueChangedArgs<T>>
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action<System.Threading.AsyncLocalValueChangedArgs<T>>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Threading.AsyncLocalValueChangedArgs`1
+    name: AsyncLocalValueChangedArgs
+    nameWithType: AsyncLocalValueChangedArgs
+    fullName: AsyncLocalValueChangedArgs<T>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: T
+    name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Threading.AsyncLocal`1.Value
+  parent: System.Threading.AsyncLocal`1
+  isExternal: false
+  name: Value
+  nameWithType: AsyncLocal<T>.Value
+  fullName: System.Threading.AsyncLocal<T>.Value
+- uid: T
+  isExternal: true
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Threading.AsyncLocal`1.#ctor*
+  parent: System.Threading.AsyncLocal`1
+  isExternal: false
+  name: AsyncLocal<T>
+  nameWithType: AsyncLocal<T>.AsyncLocal<T>
+- uid: System.Threading.AsyncLocal`1.Value*
+  parent: System.Threading.AsyncLocal`1
+  isExternal: false
+  name: Value
+  nameWithType: AsyncLocal<T>.Value

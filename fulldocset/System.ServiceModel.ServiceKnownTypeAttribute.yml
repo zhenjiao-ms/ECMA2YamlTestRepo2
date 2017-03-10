@@ -1,0 +1,381 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.ServiceKnownTypeAttribute
+  id: ServiceKnownTypeAttribute
+  children:
+  - System.ServiceModel.ServiceKnownTypeAttribute.#ctor(System.String)
+  - System.ServiceModel.ServiceKnownTypeAttribute.#ctor(System.Type)
+  - System.ServiceModel.ServiceKnownTypeAttribute.#ctor(System.String,System.Type)
+  - System.ServiceModel.ServiceKnownTypeAttribute.DeclaringType
+  - System.ServiceModel.ServiceKnownTypeAttribute.MethodName
+  - System.ServiceModel.ServiceKnownTypeAttribute.Type
+  langs:
+  - csharp
+  name: ServiceKnownTypeAttribute
+  nameWithType: ServiceKnownTypeAttribute
+  fullName: System.ServiceModel.ServiceKnownTypeAttribute
+  type: Class
+  summary: Specifies known types to be used by a service when serializing or deserializing.
+  remarks: "The ServiceKnownTypeAttribute is intended for use when creating [!INCLUDE[indigo1](~/add/includes/indigo1-md.md)] service contracts (interfaces that define the service and its methods). The *known types* are types that may be present in an object graph when serialization or deserialization occurs. For more information about known types, see [Data Contract Known Types](../Topic/Data%20Contract%20Known%20Types.md).  \n  \n To use the <xref:System.ServiceModel.ServiceKnownTypeAttribute.MethodName%2A> property, create a class that contains a method (or methods) that returns an array of types (each being a known type). When applying the attribute, set the `methodName` to the name of a method that returns the list of types and set the `declaringType` to the type that contains the method. The method must return a type that implements the <xref:System.Collections.Generic.IEnumerable%601> interface. The method must also include a parameter of type <xref:System.Reflection.ICustomAttributeProvider>.  \n  \n You can also apply the attribute several times to an interface, class, or method, each time specifying a new known type.  \n  \n> [!NOTE]\n>  You can use the word `ServiceKnownType` in your Microsoft Visual Basic or C# code instead of the longer `ServiceKnownTypeAttribute`."
+  example:
+  - "The following example applies the ServiceKnownTypeAttribute attribute to an interface where the attribute specifies a method name and a declaring type.  \n  \n [!code-cs[ServiceKnownTypeAttribute#1](~/add/codesnippet/csharp/t-system.servicemodel.se_4_1.cs)]\n [!code-vb[ServiceKnownTypeAttribute#1](~/add/codesnippet/visualbasic/t-system.servicemodel.se_4_1.vb)]  \n  \n Alternatively, apply the attribute to the interface specifying the known type to include.  \n  \n [!code-cs[ServiceKnownTypeAttribute#2](~/add/codesnippet/csharp/t-system.servicemodel.se_4_2.cs)]\n [!code-vb[ServiceKnownTypeAttribute#2](~/add/codesnippet/visualbasic/t-system.servicemodel.se_4_2.vb)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Class | System.AttributeTargets.Method | System.AttributeTargets.Interface, AllowMultiple=true, Inherited=true)]
+
+      public sealed class ServiceKnownTypeAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ServiceKnownTypeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ServiceKnownTypeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  langs:
+  - csharp
+  name: ServiceKnownTypeAttribute(String)
+  nameWithType: ServiceKnownTypeAttribute.ServiceKnownTypeAttribute(String)
+  fullName: System.ServiceModel.ServiceKnownTypeAttribute.ServiceKnownTypeAttribute(String)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.ServiceKnownTypeAttribute"></xref> class and specifies the name of a method that returns the known types.
+  remarks: Use this constructor when applying the <xref:System.ServiceModel.ServiceKnownTypeAttribute> to a class that contains methods that return known types.
+  syntax:
+    content: public ServiceKnownTypeAttribute (string methodName);
+    parameters:
+    - id: methodName
+      type: System.String
+      description: The name of a method that returns the known types.
+  overload: System.ServiceModel.ServiceKnownTypeAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ServiceKnownTypeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ServiceKnownTypeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.#ctor(System.Type)
+  id: '#ctor(System.Type)'
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  langs:
+  - csharp
+  name: ServiceKnownTypeAttribute(Type)
+  nameWithType: ServiceKnownTypeAttribute.ServiceKnownTypeAttribute(Type)
+  fullName: System.ServiceModel.ServiceKnownTypeAttribute.ServiceKnownTypeAttribute(Type)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.ServiceKnownTypeAttribute"></xref> class with the specified known type.
+  remarks: The <xref:System.ServiceModel.ServiceKnownTypeAttribute> can be applied several times to a method, with each application naming a different known type that may be present in the object graph returned by the method.
+  example:
+  - "The following example applies the <xref:System.ServiceModel.ServiceKnownTypeAttribute> attribute to an interface where the attribute specifies the type to include.  \n  \n [!code-cs[ServiceKnownTypeAttribute#2](~/add/codesnippet/csharp/m-system.servicemodel.se_0_1.cs)]\n [!code-vb[ServiceKnownTypeAttribute#2](~/add/codesnippet/visualbasic/m-system.servicemodel.se_0_1.vb)]"
+  syntax:
+    content: public ServiceKnownTypeAttribute (Type type);
+    parameters:
+    - id: type
+      type: System.Type
+      description: Specifies a known type that can be used in a parameter or return value defined by the service.
+  overload: System.ServiceModel.ServiceKnownTypeAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ServiceKnownTypeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ServiceKnownTypeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.#ctor(System.String,System.Type)
+  id: '#ctor(System.String,System.Type)'
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  langs:
+  - csharp
+  name: ServiceKnownTypeAttribute(String,Type)
+  nameWithType: ServiceKnownTypeAttribute.ServiceKnownTypeAttribute(String,Type)
+  fullName: System.ServiceModel.ServiceKnownTypeAttribute.ServiceKnownTypeAttribute(String,Type)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.ServiceKnownTypeAttribute"></xref> class with the name of a method that returns the known types and the type that contains the method (or methods) that returns the known types.
+  remarks: ''
+  example:
+  - "The following example applies the <xref:System.ServiceModel.ServiceKnownTypeAttribute> attribute to an interface where the attribute specifies a method name and a declaring type.  \n  \n [!code-cs[ServiceKnownTypeAttribute#1](~/add/codesnippet/csharp/71482bac-84f8-4abe-81b9-_1.cs)]\n [!code-vb[ServiceKnownTypeAttribute#1](~/add/codesnippet/visualbasic/71482bac-84f8-4abe-81b9-_1.vb)]"
+  syntax:
+    content: public ServiceKnownTypeAttribute (string methodName, Type declaringType);
+    parameters:
+    - id: methodName
+      type: System.String
+      description: The name of a method that returns the known types.
+    - id: declaringType
+      type: System.Type
+      description: The type that can use the known types in its object graph.
+  overload: System.ServiceModel.ServiceKnownTypeAttribute.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ServiceKnownTypeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ServiceKnownTypeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.DeclaringType
+  id: DeclaringType
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  langs:
+  - csharp
+  name: DeclaringType
+  nameWithType: ServiceKnownTypeAttribute.DeclaringType
+  fullName: System.ServiceModel.ServiceKnownTypeAttribute.DeclaringType
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets the type that contains the methods that return the known types.
+  syntax:
+    content: public Type DeclaringType { get; }
+    return:
+      type: System.Type
+      description: The <xref href="System.Type"></xref> that contains the methods that return the known types.
+  overload: System.ServiceModel.ServiceKnownTypeAttribute.DeclaringType*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ServiceKnownTypeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ServiceKnownTypeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.MethodName
+  id: MethodName
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  langs:
+  - csharp
+  name: MethodName
+  nameWithType: ServiceKnownTypeAttribute.MethodName
+  fullName: System.ServiceModel.ServiceKnownTypeAttribute.MethodName
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets the name of a method that returns the collection of known types.
+  remarks: The MethodName must be the name of a method on the type specified by the <xref:System.ServiceModel.ServiceKnownTypeAttribute.DeclaringType%2A> property.
+  syntax:
+    content: public string MethodName { get; }
+    return:
+      type: System.String
+      description: The name of the method that returns the known types.
+  overload: System.ServiceModel.ServiceKnownTypeAttribute.MethodName*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ServiceKnownTypeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ServiceKnownTypeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.Type
+  id: Type
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  langs:
+  - csharp
+  name: Type
+  nameWithType: ServiceKnownTypeAttribute.Type
+  fullName: System.ServiceModel.ServiceKnownTypeAttribute.Type
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: The known type that can be included in an object graph.
+  syntax:
+    content: public Type Type { get; }
+    return:
+      type: System.Type
+      description: The <xref href="System.Type"></xref> of the known type.
+  overload: System.ServiceModel.ServiceKnownTypeAttribute.Type*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.ServiceModel\ServiceKnownTypeAttribute.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.ServiceModel/ServiceKnownTypeAttribute.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.#ctor(System.String)
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  isExternal: false
+  name: ServiceKnownTypeAttribute(String)
+  nameWithType: ServiceKnownTypeAttribute.ServiceKnownTypeAttribute(String)
+  fullName: System.ServiceModel.ServiceKnownTypeAttribute.ServiceKnownTypeAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.#ctor(System.Type)
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  isExternal: false
+  name: ServiceKnownTypeAttribute(Type)
+  nameWithType: ServiceKnownTypeAttribute.ServiceKnownTypeAttribute(Type)
+  fullName: System.ServiceModel.ServiceKnownTypeAttribute.ServiceKnownTypeAttribute(Type)
+- uid: System.Type
+  parent: System
+  isExternal: false
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.#ctor(System.String,System.Type)
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  isExternal: false
+  name: ServiceKnownTypeAttribute(String,Type)
+  nameWithType: ServiceKnownTypeAttribute.ServiceKnownTypeAttribute(String,Type)
+  fullName: System.ServiceModel.ServiceKnownTypeAttribute.ServiceKnownTypeAttribute(String,Type)
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.DeclaringType
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  isExternal: false
+  name: DeclaringType
+  nameWithType: ServiceKnownTypeAttribute.DeclaringType
+  fullName: System.ServiceModel.ServiceKnownTypeAttribute.DeclaringType
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.MethodName
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  isExternal: false
+  name: MethodName
+  nameWithType: ServiceKnownTypeAttribute.MethodName
+  fullName: System.ServiceModel.ServiceKnownTypeAttribute.MethodName
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.Type
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  isExternal: false
+  name: Type
+  nameWithType: ServiceKnownTypeAttribute.Type
+  fullName: System.ServiceModel.ServiceKnownTypeAttribute.Type
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.#ctor*
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  isExternal: false
+  name: ServiceKnownTypeAttribute
+  nameWithType: ServiceKnownTypeAttribute.ServiceKnownTypeAttribute
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.DeclaringType*
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  isExternal: false
+  name: DeclaringType
+  nameWithType: ServiceKnownTypeAttribute.DeclaringType
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.MethodName*
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  isExternal: false
+  name: MethodName
+  nameWithType: ServiceKnownTypeAttribute.MethodName
+- uid: System.ServiceModel.ServiceKnownTypeAttribute.Type*
+  parent: System.ServiceModel.ServiceKnownTypeAttribute
+  isExternal: false
+  name: Type
+  nameWithType: ServiceKnownTypeAttribute.Type

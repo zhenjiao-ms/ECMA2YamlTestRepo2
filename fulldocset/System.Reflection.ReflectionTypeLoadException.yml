@@ -1,0 +1,356 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Reflection.ReflectionTypeLoadException
+  id: ReflectionTypeLoadException
+  children:
+  - System.Reflection.ReflectionTypeLoadException.#ctor(System.Type[],System.Exception[])
+  - System.Reflection.ReflectionTypeLoadException.#ctor(System.Type[],System.Exception[],System.String)
+  - System.Reflection.ReflectionTypeLoadException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.Reflection.ReflectionTypeLoadException.LoaderExceptions
+  - System.Reflection.ReflectionTypeLoadException.Types
+  langs:
+  - csharp
+  name: ReflectionTypeLoadException
+  nameWithType: ReflectionTypeLoadException
+  fullName: System.Reflection.ReflectionTypeLoadException
+  type: Class
+  summary: The exception that is thrown by the <xref href="stem.Reflection.Module.GetTypes%2A"></xref> method if any of the classes in a module cannot be loaded. This class cannot be inherited.
+  remarks: "`ReflectionTypeLoadException` uses the HRESULT COR_E_REFLECTIONTYPELOAD that has the value 0x80131602.  \n  \n An instance contains the array of classes (Types property) that were defined in the module and were loaded. The array can contain some null values. There is also another array of exceptions (`LoaderExceptions` property). This exception array represents the exceptions that were thrown by the class loader. The holes in the class array line up with the exceptions.  \n  \n This exception exposes both the array of classes and the array of `TypeLoadExceptions`."
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class ReflectionTypeLoadException : SystemException
+  inheritance:
+  - System.Object
+  - System.Exception
+  - System.SystemException
+  implements: []
+  inheritedMembers:
+  - System.Exception.Data
+  - System.Exception.GetBaseException
+  - System.Exception.GetType
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.Message
+  - System.Exception.SerializeObjectState
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\ReflectionTypeLoadException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/ReflectionTypeLoadException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.ReflectionTypeLoadException.#ctor(System.Type[],System.Exception[])
+  id: '#ctor(System.Type[],System.Exception[])'
+  parent: System.Reflection.ReflectionTypeLoadException
+  langs:
+  - csharp
+  name: ReflectionTypeLoadException(Type[],Exception[])
+  nameWithType: ReflectionTypeLoadException.ReflectionTypeLoadException(Type[],Exception[])
+  fullName: System.Reflection.ReflectionTypeLoadException.ReflectionTypeLoadException(Type[],Exception[])
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Initializes a new instance of the <xref href="System.Reflection.ReflectionTypeLoadException"></xref> class with the given classes and their associated exceptions.
+  syntax:
+    content: public ReflectionTypeLoadException (Type[] classes, Exception[] exceptions);
+    parameters:
+    - id: classes
+      type: System.Type[]
+      description: An array of type `Type` containing the classes that were defined in the module and loaded. This array can contain null reference (`Nothing` in Visual Basic) values.
+    - id: exceptions
+      type: System.Exception[]
+      description: An array of type `Exception` containing the exceptions that were thrown by the class loader. The null reference (`Nothing` in Visual Basic) values in the <code>classes</code> array line up with the exceptions in this <code>exceptions</code> array.
+  overload: System.Reflection.ReflectionTypeLoadException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\ReflectionTypeLoadException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/ReflectionTypeLoadException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.ReflectionTypeLoadException.#ctor(System.Type[],System.Exception[],System.String)
+  id: '#ctor(System.Type[],System.Exception[],System.String)'
+  parent: System.Reflection.ReflectionTypeLoadException
+  langs:
+  - csharp
+  name: ReflectionTypeLoadException(Type[],Exception[],String)
+  nameWithType: ReflectionTypeLoadException.ReflectionTypeLoadException(Type[],Exception[],String)
+  fullName: System.Reflection.ReflectionTypeLoadException.ReflectionTypeLoadException(Type[],Exception[],String)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Initializes a new instance of the <xref href="System.Reflection.ReflectionTypeLoadException"></xref> class with the given classes, their associated exceptions, and exception descriptions.
+  syntax:
+    content: public ReflectionTypeLoadException (Type[] classes, Exception[] exceptions, string message);
+    parameters:
+    - id: classes
+      type: System.Type[]
+      description: An array of type `Type` containing the classes that were defined in the module and loaded. This array can contain null reference (`Nothing` in Visual Basic) values.
+    - id: exceptions
+      type: System.Exception[]
+      description: An array of type `Exception` containing the exceptions that were thrown by the class loader. The null reference (`Nothing` in Visual Basic) values in the <code>classes</code> array line up with the exceptions in this <code>exceptions</code> array.
+    - id: message
+      type: System.String
+      description: A `String` describing the reason the exception was thrown.
+  overload: System.Reflection.ReflectionTypeLoadException.#ctor*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\ReflectionTypeLoadException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/ReflectionTypeLoadException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.ReflectionTypeLoadException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.Reflection.ReflectionTypeLoadException
+  langs:
+  - csharp
+  name: GetObjectData(SerializationInfo,StreamingContext)
+  nameWithType: ReflectionTypeLoadException.GetObjectData(SerializationInfo,StreamingContext)
+  fullName: System.Reflection.ReflectionTypeLoadException.GetObjectData(SerializationInfo,StreamingContext)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Provides an <xref href="System.Runtime.Serialization.ISerializable"></xref> implementation for serialized objects.
+  syntax:
+    content: public override void GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+    parameters:
+    - id: info
+      type: System.Runtime.Serialization.SerializationInfo
+      description: The information and data needed to serialize or deserialize an object.
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+      description: The context for the serialization.
+  overload: System.Reflection.ReflectionTypeLoadException.GetObjectData*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: '`info` is `null`.'
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\ReflectionTypeLoadException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/ReflectionTypeLoadException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.ReflectionTypeLoadException.LoaderExceptions
+  id: LoaderExceptions
+  parent: System.Reflection.ReflectionTypeLoadException
+  langs:
+  - csharp
+  name: LoaderExceptions
+  nameWithType: ReflectionTypeLoadException.LoaderExceptions
+  fullName: System.Reflection.ReflectionTypeLoadException.LoaderExceptions
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Gets the array of exceptions thrown by the class loader.
+  remarks: The LoaderExceptions property retrieves an array of type `Exception` that is parallel to the <xref:System.Reflection.ReflectionTypeLoadException.Types%2A> array. This array will contain null values whenever reflection cannot load a class.
+  syntax:
+    content: public Exception[] LoaderExceptions { get; }
+    return:
+      type: System.Exception[]
+      description: An array of type `Exception` containing the exceptions thrown by the class loader. The null values in the <xref href="stem.Reflection.ReflectionTypeLoadException.Types%2A"></xref> array of this instance line up with the exceptions in this array.
+  overload: System.Reflection.ReflectionTypeLoadException.LoaderExceptions*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\ReflectionTypeLoadException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/ReflectionTypeLoadException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+- uid: System.Reflection.ReflectionTypeLoadException.Types
+  id: Types
+  parent: System.Reflection.ReflectionTypeLoadException
+  langs:
+  - csharp
+  name: Types
+  nameWithType: ReflectionTypeLoadException.Types
+  fullName: System.Reflection.ReflectionTypeLoadException.Types
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Gets the array of classes that were defined in the module and loaded.
+  remarks: The <xref:System.Reflection.ReflectionTypeLoadException.LoaderExceptions%2A> property retrieves an array of type `Exception` that is parallel to this `Types` array. This array will contain null values whenever reflection cannot load a class.
+  syntax:
+    content: public Type[] Types { get; }
+    return:
+      type: System.Type[]
+      description: An array of type `Type` containing the classes that were defined in the module and loaded. This array can contain some `null` values.
+  overload: System.Reflection.ReflectionTypeLoadException.Types*
+  exceptions: []
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System.Reflection\ReflectionTypeLoadException.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System.Reflection/ReflectionTypeLoadException.xml
+  version:
+  - netframework-3.0
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.SystemException
+  isExternal: false
+  name: System.SystemException
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.Reflection.ReflectionTypeLoadException.#ctor(System.Type[],System.Exception[])
+  parent: System.Reflection.ReflectionTypeLoadException
+  isExternal: false
+  name: ReflectionTypeLoadException(Type[],Exception[])
+  nameWithType: ReflectionTypeLoadException.ReflectionTypeLoadException(Type[],Exception[])
+  fullName: System.Reflection.ReflectionTypeLoadException.ReflectionTypeLoadException(Type[],Exception[])
+- uid: System.Type[]
+  parent: System
+  isExternal: false
+  name: Type[]
+  nameWithType: Type[]
+  fullName: System.Type[]
+  spec.csharp:
+  - uid: System.Type
+    name: Type
+    nameWithType: Type
+    fullName: Type[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Exception[]
+  parent: System
+  isExternal: false
+  name: Exception[]
+  nameWithType: Exception[]
+  fullName: System.Exception[]
+  spec.csharp:
+  - uid: System.Exception
+    name: Exception
+    nameWithType: Exception
+    fullName: Exception[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Reflection.ReflectionTypeLoadException.#ctor(System.Type[],System.Exception[],System.String)
+  parent: System.Reflection.ReflectionTypeLoadException
+  isExternal: false
+  name: ReflectionTypeLoadException(Type[],Exception[],String)
+  nameWithType: ReflectionTypeLoadException.ReflectionTypeLoadException(Type[],Exception[],String)
+  fullName: System.Reflection.ReflectionTypeLoadException.ReflectionTypeLoadException(Type[],Exception[],String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Reflection.ReflectionTypeLoadException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.Reflection.ReflectionTypeLoadException
+  isExternal: false
+  name: GetObjectData(SerializationInfo,StreamingContext)
+  nameWithType: ReflectionTypeLoadException.GetObjectData(SerializationInfo,StreamingContext)
+  fullName: System.Reflection.ReflectionTypeLoadException.GetObjectData(SerializationInfo,StreamingContext)
+- uid: System.Runtime.Serialization.SerializationInfo
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: SerializationInfo
+  nameWithType: SerializationInfo
+  fullName: System.Runtime.Serialization.SerializationInfo
+- uid: System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext
+- uid: System.Reflection.ReflectionTypeLoadException.LoaderExceptions
+  parent: System.Reflection.ReflectionTypeLoadException
+  isExternal: false
+  name: LoaderExceptions
+  nameWithType: ReflectionTypeLoadException.LoaderExceptions
+  fullName: System.Reflection.ReflectionTypeLoadException.LoaderExceptions
+- uid: System.Reflection.ReflectionTypeLoadException.Types
+  parent: System.Reflection.ReflectionTypeLoadException
+  isExternal: false
+  name: Types
+  nameWithType: ReflectionTypeLoadException.Types
+  fullName: System.Reflection.ReflectionTypeLoadException.Types
+- uid: System.Reflection.ReflectionTypeLoadException.#ctor*
+  parent: System.Reflection.ReflectionTypeLoadException
+  isExternal: false
+  name: ReflectionTypeLoadException
+  nameWithType: ReflectionTypeLoadException.ReflectionTypeLoadException
+- uid: System.Reflection.ReflectionTypeLoadException.GetObjectData*
+  parent: System.Reflection.ReflectionTypeLoadException
+  isExternal: false
+  name: GetObjectData
+  nameWithType: ReflectionTypeLoadException.GetObjectData
+- uid: System.Reflection.ReflectionTypeLoadException.LoaderExceptions*
+  parent: System.Reflection.ReflectionTypeLoadException
+  isExternal: false
+  name: LoaderExceptions
+  nameWithType: ReflectionTypeLoadException.LoaderExceptions
+- uid: System.Reflection.ReflectionTypeLoadException.Types*
+  parent: System.Reflection.ReflectionTypeLoadException
+  isExternal: false
+  name: Types
+  nameWithType: ReflectionTypeLoadException.Types

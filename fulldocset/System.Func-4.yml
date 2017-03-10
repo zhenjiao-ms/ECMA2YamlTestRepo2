@@ -1,0 +1,48 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Func`4
+  id: Func`4
+  langs:
+  - csharp
+  name: Func<T1,T2,T3,TResult>
+  nameWithType: Func<T1,T2,T3,TResult>
+  fullName: System.Func<T1,T2,T3,TResult>
+  type: Delegate
+  summary: Encapsulates a method that has three parameters and returns a value of the type specified by the <code>TResult</code> parameter.
+  remarks: "You can use this delegate to represent a method that can be passed as a parameter without explicitly declaring a custom delegate. The encapsulated method must correspond to the method signature that is defined by this delegate. This means that the encapsulated method must have three parameters, each of which is passed to it by value, and that it must return a value.  \n  \n> [!NOTE]\n>  To reference a method that has three parameters and returns `void` (or in Visual Basic, that is declared as a `Sub` rather than as a `Function`), use the generic <xref:System.Action%603> delegate instead.  \n  \n When you use the Func(T1, delegate, you do not have to explicitly define a delegate that encapsulates a method with three parameters. For example, the following code explicitly declares a generic delegate named `ParseNumber` and assigns a reference to the <xref:System.Int32.Parse%2A> method to its delegate instance.  \n  \n [!code-cs[System.Func~4#1](~/add/codesnippet/csharp/t-system.func`4_1.cs)]\n [!code-vb[System.Func~4#1](~/add/codesnippet/visualbasic/t-system.func`4_1.vb)]  \n  \n The following example simplifies this code by instantiating the Func(T1, delegate instead of explicitly defining a new delegate and assigning a named method to it.  \n  \n [!code-vb[System.Func~4#2](~/add/codesnippet/visualbasic/t-system.func`4_2.vb)]\n [!code-cs[System.Func~4#2](~/add/codesnippet/csharp/t-system.func`4_2.cs)]  \n  \n You can use the Func(T1, delegate with anonymous methods in C#, as the following example illustrates. (For an introduction to anonymous methods, see [Anonymous Methods](../Topic/Anonymous%20Methods%20\\(C%23%20Programming%20Guide\\).md).)  \n  \n [!code-cs[System.Func~4#3](~/add/codesnippet/csharp/t-system.func`4_3.cs)]  \n  \n You can also assign a lambda expression to a Func(T1, delegate, as the following example illustrates. (For an introduction to lambda expressions, see [Lambda Expressions](../Topic/Lambda%20Expressions%20\\(Visual%20Basic\\).md) and [Lambda Expressions](../Topic/Lambda%20Expressions%20\\(C%23%20Programming%20Guide\\).md).)  \n  \n [!code-vb[System.Func~4#4](~/add/codesnippet/visualbasic/t-system.func`4_4.vb)]\n [!code-cs[System.Func~4#4](~/add/codesnippet/csharp/t-system.func`4_4.cs)]  \n  \n The underlying type of a lambda expression is one of the generic `Func` delegates. This makes it possible to pass a lambda expression as a parameter without explicitly assigning it to a delegate. In particular, because many methods of types in the <xref:System.Linq> namespace have `Func` parameters, you can pass these methods a lambda expression without explicitly instantiating a `Func` delegate."
+  example:
+  - "The following example demonstrates how to declare and use a <xref:System.Func%603> delegate. This example declares a <xref:System.Func%603> variable and assigns it a lambda expression that takes a <xref:System.String> value and an <xref:System.Int32> value as parameters. The lambda expression returns `true` if the length of the <xref:System.String> parameter is equal to the value of the <xref:System.Int32> parameter. The delegate that encapsulates this method is subsequently used in a query to filter strings in an array of strings.  \n  \n [!code-cs[System.Func~3#5](~/add/codesnippet/csharp/t-system.func`4_5.cs)]\n [!code-vb[System.Func~3#5](~/add/codesnippet/visualbasic/t-system.func`4_5.vb)]"
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("System.Core, Version=3.5.0.0, Culture=Neutral, PublicKeyToken=b77a5c561934e089")]
+
+      public delegate TResult Func<in T1,in T2,in T3,out TResult>(T1 arg1, T2 arg2, T3 arg3);
+    typeParameters:
+    - id: T1
+      description: The type of the first parameter of the method that this delegate encapsulates.
+    - id: T2
+      description: The type of the second parameter of the method that this delegate encapsulates.
+    - id: T3
+      description: The type of the third parameter of the method that this delegate encapsulates.
+    - id: TResult
+      description: The type of the return value of the method that this delegate encapsulates.
+  inheritance:
+  - System.Object
+  - System.Delegate
+  original_ecmaxml_local_path: E:\mdoc\ECMA2YamlTestRepo2\fulldocset\xml\System\Func`4.xml
+  content_git_url: https://github.com/TianqiZhang/ECMA2YamlTestRepo2/blob/masterwithyml/fulldocset/xml/System/Func`4.xml
+  version:
+  - netframework-3.5-client
+  - netframework-3.5
+  - netframework-4.0-client
+  - netframework-4.0
+  - netframework-4.5.1
+  - netframework-4.5.2
+  - netframework-4.5
+  - netframework-4.6.1
+  - netframework-4.6.2
+  - netframework-4.6
+references:
+- uid: System.Delegate
+  isExternal: false
+  name: System.Delegate

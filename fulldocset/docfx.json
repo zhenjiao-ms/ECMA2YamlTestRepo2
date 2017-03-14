@@ -1,0 +1,62 @@
+{
+  "merge": {
+    "content": [
+      {
+        "files": [
+          "*.yml"
+        ],
+        "exclude": [
+          "add/includes/**/*.md",
+          "add/metadata/**/*.md",
+          "**/obj/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE"
+        ]
+      }
+    ],
+    "dest": ".",
+    "tocMetadata": "version"
+  },
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "add/includes/**/*.md",
+          "add/metadata/**/*.md",
+          "**/obj/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "/**/*.png",
+          "add/**/*.jpg",
+          "add/**/*.gif"
+        ],
+        "exclude": [
+          "add/codesnippet/**/*.*",
+          "**/obj/**",
+          "**/includes/**"
+        ]
+      }
+    ],
+    "overwrite": [],
+    "externalReference": [],
+    "globalMetadata": {
+      "breadcrumb_path": "~/breadcrumb/toc.yml"
+    },
+    "fileMetadata": {},
+    "template": [],
+    "lruSize": 0,
+    "dest": "fulldotnet"
+  }
+}
